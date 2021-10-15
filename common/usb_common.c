@@ -551,6 +551,8 @@ void usb_mux_set_safe_mode(int port)
 	/* Isolate the SBU lines. */
 	if (IS_ENABLED(CONFIG_USBC_PPC_SBU) && board_is_port_ppc(port))
 		ppc_set_sbu(port, 0);
+	if (IS_ENABLED(CONFIG_USB_PD_SBU) && board_is_port_tcpc_sbu(port))
+		tcpc_set_sbu(port, 0);
 }
 
 void usb_mux_set_safe_mode_exit(int port)
@@ -562,6 +564,8 @@ void usb_mux_set_safe_mode_exit(int port)
 	/* Isolate the SBU lines. */
 	if (IS_ENABLED(CONFIG_USBC_PPC_SBU) && board_is_port_ppc(port))
 		ppc_set_sbu(port, 0);
+	if (IS_ENABLED(CONFIG_USB_PD_SBU) && board_is_port_tcpc_sbu(port))
+		tcpc_set_sbu(port, 0);
 }
 
 static void pd_send_hard_reset(int port)

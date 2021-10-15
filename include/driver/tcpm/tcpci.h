@@ -295,6 +295,11 @@ bool tcpci_tcpm_get_src_ctrl(int port);
 int tcpci_tcpm_set_src_ctrl(int port, int enable);
 #endif
 
+#ifdef CONFIG_USB_PD_SBU
+int tcpc_set_sbu(int port, bool enable);
+#endif
+__override_proto bool board_is_port_tcpc_sbu(int port);
+
 int tcpci_tcpc_fast_role_swap_enable(int port, int enable);
 
 #endif /* __CROS_EC_USB_PD_TCPM_TCPCI_H */

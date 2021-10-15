@@ -13,6 +13,8 @@
 #define CCGXXF_I2C_ADDR1_FLAGS	0x0B
 #define CCGXXF_I2C_ADDR2_FLAGS	0x1B
 
+/* TODO: Add registers */
+
 /* CCGXXF built in I/O expander definitions */
 #ifdef CONFIG_IO_EXPANDER_CCGXXF
 

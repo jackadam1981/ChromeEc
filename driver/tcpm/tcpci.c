@@ -1481,6 +1481,11 @@ int tcpci_tcpm_init(int port)
 	return EC_SUCCESS;
 }
 
+__overridable bool board_is_port_tcpc_sbu(int port)
+{
+	return true;
+}
+
 #ifdef CONFIG_USB_PD_TCPM_MUX
 
 /*
