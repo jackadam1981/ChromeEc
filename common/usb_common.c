@@ -556,7 +556,9 @@ void usb_mux_set_safe_mode(int port)
 	}
 
 	/* Isolate the SBU lines. */
-	if (IS_ENABLED(CONFIG_USBC_PPC_SBU))
+	if (IS_ENABLED(CONFIG_USB_PD_SBU) && tcpc_config[port].tcpc_set_sbu)
+		tcpc_set_sbu(port, 0);
+	else if (IS_ENABLED(CONFIG_USBC_PPC_SBU))
 		ppc_set_sbu(port, 0);
 }
 
@@ -567,7 +569,9 @@ void usb_mux_set_safe_mode_exit(int port)
 			    polarity_rm_dts(pd_get_polarity(port)));
 
 	/* Isolate the SBU lines. */
-	if (IS_ENABLED(CONFIG_USBC_PPC_SBU))
+	if (IS_ENABLED(CONFIG_USB_PD_SBU) && tcpc_config[port].tcpc_set_sbu)
+		tcpc_set_sbu(port, 0);
+	else if (IS_ENABLED(CONFIG_USBC_PPC_SBU))
 		ppc_set_sbu(port, 0);
 }
 

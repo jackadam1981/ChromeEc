@@ -867,7 +867,10 @@ void set_tbt_compat_mode_ready(int port)
 	if (IS_ENABLED(CONFIG_USBC_SS_MUX) &&
 	    IS_ENABLED(CONFIG_USB_PD_TBT_COMPAT_MODE)) {
 		/* Connect the SBU and USB lines to the connector. */
-		if (IS_ENABLED(CONFIG_USBC_PPC_SBU))
+		if (IS_ENABLED(CONFIG_USB_PD_SBU) &&
+			tcpc_config[port].tcpc_set_sbu)
+			tcpc_set_sbu(port, 1);
+		else if (IS_ENABLED(CONFIG_USBC_PPC_SBU))
 			ppc_set_sbu(port, 1);
 
 		/* Set usb mux to Thunderbolt-compatible mode */
@@ -1298,8 +1301,12 @@ __overridable void svdm_dp_post_config(int port)
 {
 	mux_state_t mux_mode = svdm_dp_get_mux_mode(port);
 	/* Connect the SBU and USB lines to the connector. */
-	if (IS_ENABLED(CONFIG_USBC_PPC_SBU))
+	if (IS_ENABLED(CONFIG_USB_PD_SBU) &&
+		tcpc_config[port].tcpc_set_sbu)
+		tcpc_set_sbu(port, 1);
+	else if (IS_ENABLED(CONFIG_USBC_PPC_SBU))
 		ppc_set_sbu(port, 1);
+
 	usb_mux_set(port, mux_mode, USB_SWITCH_CONNECT,
 		polarity_rm_dts(pd_get_polarity(port)));
 

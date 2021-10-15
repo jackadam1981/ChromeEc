@@ -953,6 +953,13 @@ config PLATFORM_EC_USBC_PPC_DEDICATED_INT
 
 endif  # PLATFORM_EC_USBC_PPC
 
+config PLATFORM_EC_USB_PD_SBU
+	bool "PD chip has integrated port protection for SBU lines"
+	help
+	  Some PD chips have integrated port protection for SBU lines.
+	  If the switches to enable those SBU lines are controlled by the PD
+	  chip, enable this config.
+
 config PLATFORM_EC_USB_PD_TCPC_LOW_POWER
 	bool "Allow Type-C Port Controller to enter low-power mode"
 	default y
