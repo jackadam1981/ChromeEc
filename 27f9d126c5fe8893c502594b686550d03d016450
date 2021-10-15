@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6aca16a9_3f6737d5",
+        "filename": "board/kingoftown/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1444467
+      },
+      "writtenOn": "2021-10-15T05:51:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "968e0dbd_fe87a3d5",
+      "range": {
+        "startLine": 61,
+        "startChar": 1,
+        "endLine": 61,
+        "endChar": 24
+      },
+      "revId": "27f9d126c5fe8893c502594b686550d03d016450",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "936ae6de_98b0856b",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-10-14T17:56:19Z",
       "side": 1,
       "message": "Align this line to the above \u0027(\u0027, like using 4 spaces.",
+      "range": {
+        "startLine": 110,
+        "startChar": 1,
+        "endLine": 110,
+        "endChar": 2
+      },
+      "revId": "27f9d126c5fe8893c502594b686550d03d016450",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e9061ba_6b1b8c56",
+        "filename": "board/kingoftown/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1444467
+      },
+      "writtenOn": "2021-10-15T05:51:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "936ae6de_98b0856b",
       "range": {
         "startLine": 110,
         "startChar": 1,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "56a96190_c6a36da1",
+        "filename": "board/kingoftown/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1444467
+      },
+      "writtenOn": "2021-10-15T05:51:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e56c6c37_c9c24da7",
+      "range": {
+        "startLine": 119,
+        "startChar": 1,
+        "endLine": 119,
+        "endChar": 2
+      },
+      "revId": "27f9d126c5fe8893c502594b686550d03d016450",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d0ffdb6e_6909bc2c",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-10-14T17:56:19Z",
       "side": 1,
       "message": "Why reset it? Have you verified the above suspend behavior?",
+      "range": {
+        "startLine": 121,
+        "startChar": 1,
+        "endLine": 121,
+        "endChar": 17
+      },
+      "revId": "27f9d126c5fe8893c502594b686550d03d016450",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f11d0cdf_b7ae12a7",
+        "filename": "board/kingoftown/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1444467
+      },
+      "writtenOn": "2021-10-15T05:51:57Z",
+      "side": 1,
+      "message": "No, since there\u0027s still issue that the system cannot enter suspend mode as I mentioned in b:202464175. I\u0027ll verify this situation once the system suspend issue is fixed. Thanks for your review!",
+      "parentUuid": "d0ffdb6e_6909bc2c",
       "range": {
         "startLine": 121,
         "startChar": 1,
