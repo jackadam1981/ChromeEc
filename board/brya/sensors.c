@@ -7,7 +7,8 @@
 #include "accelgyro.h"
 #include "adc.h"
 #include "driver/accel_lis2dw12.h"
-#include "driver/accelgyro_lsm6dso.h"
+#include "driver/accelgyro_lsm6dsv.h"
+#include "driver/accelgyro_lsm6dsv.h"
 #include "driver/als_tcs3400_public.h"
 #include "hooks.h"
 #include "motion_sense.h"
@@ -51,7 +52,7 @@ BUILD_ASSERT(ARRAY_SIZE(adc_channels) == ADC_CH_COUNT);
 K_MUTEX_DEFINE(g_lid_accel_mutex);
 K_MUTEX_DEFINE(g_base_accel_mutex);
 static struct stprivate_data g_lis2dw12_data;
-static struct lsm6dso_data lsm6dso_data;
+static struct lsm6dsv_data lsm6dsv_data;
 
 /* TODO(b/184779333): calibrate the orientation matrix on later board stage */
 static const mat33_fp_t lid_standard_ref = {
@@ -154,21 +155,20 @@ struct motion_sensor_t motion_sensors[] = {
 	[BASE_ACCEL] = {
 		.name = "Base Accel",
 		.active_mask = SENSOR_ACTIVE_S0_S3,
-		.chip = MOTIONSENSE_CHIP_LSM6DSO,
+		.chip = MOTIONSENSE_CHIP_LSM6DSV,
 		.type = MOTIONSENSE_TYPE_ACCEL,
 		.location = MOTIONSENSE_LOC_BASE,
-		.drv = &lsm6dso_drv,
+		.drv = &lsm6dsv_drv,
 		.mutex = &g_base_accel_mutex,
-		.drv_data = LSM6DSO_ST_DATA(lsm6dso_data,
-				MOTIONSENSE_TYPE_ACCEL),
+		.drv_data = LSM6DSV_ST_DATA(lsm6dsv_data, LSM6DSV_FIFO_DEV_ACCEL),
 		.int_signal = GPIO_EC_IMU_INT_R_L,
 		.flags = MOTIONSENSE_FLAG_INT_SIGNAL,
 		.port = I2C_PORT_SENSOR,
-		.i2c_spi_addr_flags = LSM6DSO_ADDR0_FLAGS,
+		.i2c_spi_addr_flags = LSM6DSV_ADDR0_FLAGS,
 		.rot_standard_ref = &base_standard_ref,
 		.default_range = 4,  /* g */
-		.min_frequency = LSM6DSO_ODR_MIN_VAL,
-		.max_frequency = LSM6DSO_ODR_MAX_VAL,
+		.min_frequency = LSM6DSV_ODR_MIN_VAL,
+		.max_frequency = LSM6DSV_ODR_MAX_VAL,
 		.config = {
 			[SENSOR_CONFIG_EC_S0] = {
 				.odr = 13000 | ROUND_UP_FLAG,
@@ -184,21 +184,39 @@ struct motion_sensor_t motion_sensors[] = {
 	[BASE_GYRO] = {
 		.name = "Base Gyro",
 		.active_mask = SENSOR_ACTIVE_S0_S3,
-		.chip = MOTIONSENSE_CHIP_LSM6DSO,
+		.chip = MOTIONSENSE_CHIP_LSM6DSV,
 		.type = MOTIONSENSE_TYPE_GYRO,
 		.location = MOTIONSENSE_LOC_BASE,
-		.drv = &lsm6dso_drv,
+		.drv = &lsm6dsv_drv,
 		.mutex = &g_base_accel_mutex,
-		.drv_data = LSM6DSO_ST_DATA(lsm6dso_data,
-				MOTIONSENSE_TYPE_GYRO),
+		.drv_data = LSM6DSV_ST_DATA(lsm6dsv_data, LSM6DSV_FIFO_DEV_GYRO),
 		.int_signal = GPIO_EC_IMU_INT_R_L,
 		.flags = MOTIONSENSE_FLAG_INT_SIGNAL,
 		.port = I2C_PORT_SENSOR,
-		.i2c_spi_addr_flags = LSM6DSO_ADDR0_FLAGS,
+		.i2c_spi_addr_flags = LSM6DSV_ADDR0_FLAGS,
 		.default_range = 1000 | ROUND_UP_FLAG, /* dps */
 		.rot_standard_ref = &base_standard_ref,
-		.min_frequency = LSM6DSO_ODR_MIN_VAL,
-		.max_frequency = LSM6DSO_ODR_MAX_VAL,
+		.min_frequency = LSM6DSV_ODR_MIN_VAL,
+		.max_frequency = LSM6DSV_ODR_MAX_VAL,
+	},
+
+	[BASE_PROX] = {
+		.name = "Base Qvar",
+		.active_mask = SENSOR_ACTIVE_S0_S3,
+		.chip = MOTIONSENSE_CHIP_LSM6DSV,
+		.type = MOTIONSENSE_TYPE_PROX,
+		.location = MOTIONSENSE_LOC_BASE,
+		.drv = &lsm6dsv_drv,
+		.mutex = &g_base_accel_mutex,
+		.drv_data = LSM6DSV_ST_DATA(lsm6dsv_data, LSM6DSV_FIFO_DEV_QVAR),
+		.int_signal = GPIO_EC_IMU_INT_R_L,
+		.flags = MOTIONSENSE_FLAG_INT_SIGNAL,
+		.port = I2C_PORT_SENSOR,
+		.i2c_spi_addr_flags = LSM6DSV_ADDR0_FLAGS,
+		.default_range = 1, /* Does not seems to be used. */
+		.rot_standard_ref = &base_standard_ref,
+		.min_frequency = LSM6DSV_ODR_MIN_VAL,
+		.max_frequency = LSM6DSV_ODR_MAX_VAL,
 	},
 
 	[CLEAR_ALS] = {
