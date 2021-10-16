@@ -142,6 +142,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c79b963_07d3910f",
+        "filename": "board/cr50/dcrypto/u2f.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 659,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-10-16T00:04:39Z",
+      "side": 1,
+      "message": "memset was probably ok here, unless u2f_attest() is inlined. but nothing wrong in using always_memset in any case",
+      "parentUuid": "be612590_e441e802",
+      "range": {
+        "startLine": 659,
+        "startChar": 2,
+        "endLine": 659,
+        "endChar": 8
+      },
+      "revId": "989fa1b3730ac4af3c31195fa2af51b67c7011e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3cba55c6_dd47a2b2",
