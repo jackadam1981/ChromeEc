@@ -166,6 +166,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba68cf73_329e5cce",
+        "filename": "board/cr50/dcrypto/u2f.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 659,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-10-16T04:35:39Z",
+      "side": 1,
+      "message": "in cr50 they are same thing. it is just regarding memset compiler may have some assumptions about semantic which may be not desirable here.",
+      "parentUuid": "0c79b963_07d3910f",
+      "range": {
+        "startLine": 659,
+        "startChar": 2,
+        "endLine": 659,
+        "endChar": 8
+      },
+      "revId": "989fa1b3730ac4af3c31195fa2af51b67c7011e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3cba55c6_dd47a2b2",
