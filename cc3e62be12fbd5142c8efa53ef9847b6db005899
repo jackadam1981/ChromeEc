@@ -97,6 +97,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8c032994_899f4b1e",
+        "filename": "zephyr/include/emul/emul_syv682x.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-10-16T03:49:04Z",
+      "side": 1,
+      "message": "Gotcha, could you update the @param documentation to specify that it\u0027s SYV682X_CONTROL_4_INT_MASK that will be used to mask the argument?",
+      "parentUuid": "c081f0a8_60f5598a",
+      "range": {
+        "startLine": 129,
+        "startChar": 5,
+        "endLine": 129,
+        "endChar": 31
+      },
+      "revId": "cc3e62be12fbd5142c8efa53ef9847b6db005899",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7b2a6a71_b066de58",
         "filename": "zephyr/test/drivers/src/ppc.c",
         "patchSetId": 1
