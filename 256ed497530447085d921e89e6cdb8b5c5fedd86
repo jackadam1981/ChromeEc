@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2c6c0dce_d1882d0c",
+        "filename": "util/build_with_clang.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-10-16T00:12:02Z",
+      "side": 1,
+      "message": "The idea is to make it easy to run both with and without firmware_builder.py.\n\nbash is not a good language to use for anything; inevitably it will end up being complex and impossible to maintain: http://go/deshell",
+      "parentUuid": "803301ef_0646e965",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 62
+      },
+      "revId": "256ed497530447085d921e89e6cdb8b5c5fedd86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d92465f6_db7d2563",
         "filename": "util/build_with_clang.py",
         "patchSetId": 5
