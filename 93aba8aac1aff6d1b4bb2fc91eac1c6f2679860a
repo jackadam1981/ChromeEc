@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "041308bd_98117927",
+        "filename": "board/kingoftown/led.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1444467
+      },
+      "writtenOn": "2021-10-16T09:03:12Z",
+      "side": 1,
+      "message": "I guess I missed `return` here. When power state is in suspend, the behavior of battery LED should be overridden to power LED. After we set to power LED, the function should be returned. Thanks for pointing out this bug!",
+      "revId": "93aba8aac1aff6d1b4bb2fc91eac1c6f2679860a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
