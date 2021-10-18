@@ -16,6 +16,70 @@
       "message": "Restored patchset 5 which shows reliable results.",
       "revId": "0f81072c8b71b65753bd6131e9a9ea0c9789fd7e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d912fe38_f2af6b98",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-10-18T20:51:16Z",
+      "side": 1,
+      "message": "\u003e Restored patchset 5 which shows reliable results.\n\nThis is unfortunate, but ack. Please disregard other CIL - started commenting before noticing that we are returning to PS5.",
+      "parentUuid": "c357475f_fd31e415",
+      "revId": "0f81072c8b71b65753bd6131e9a9ea0c9789fd7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19e5589d_52278851",
+        "filename": "chip/g/usb_spi_v2.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 481,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-10-18T20:51:16Z",
+      "side": 1,
+      "message": "nit: why did we drop \u0027recent\u0027 here?",
+      "range": {
+        "startLine": 481,
+        "startChar": 3,
+        "endLine": 481,
+        "endChar": 11
+      },
+      "revId": "0f81072c8b71b65753bd6131e9a9ea0c9789fd7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "933778b4_a62079fe",
+        "filename": "chip/g/usb_spi_v2.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 543,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-10-18T20:51:16Z",
+      "side": 1,
+      "message": "is there a need to check? if it was !\u003d we\u0027d error out in the previous if statement",
+      "range": {
+        "startLine": 543,
+        "startChar": 2,
+        "endLine": 543,
+        "endChar": 53
+      },
+      "revId": "0f81072c8b71b65753bd6131e9a9ea0c9789fd7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
