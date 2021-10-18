@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "88e9cacc_4e13575e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-10-18T18:55:30Z",
+      "side": 1,
+      "message": "These style violations sneaked in probably because of \u0027repo upload --no-verify\u0027. What do you think of running the style check in Tricium?",
+      "revId": "0f9dc223d7d916b046df2cf2c8d697d0ca8b6d96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
