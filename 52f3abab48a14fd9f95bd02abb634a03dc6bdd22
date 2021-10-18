@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5c5bd724_09d79029",
+        "filename": "zephyr/test/drivers/src/ln9310.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2021-10-18T23:55:40Z",
+      "side": 1,
+      "message": "Thanks, removed.",
+      "parentUuid": "f10a001e_1d85abe9",
+      "range": {
+        "startLine": 308,
+        "startChar": 12,
+        "endLine": 308,
+        "endChar": 13
+      },
+      "revId": "52f3abab48a14fd9f95bd02abb634a03dc6bdd22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e74f01b1_30eebcfa",
         "filename": "zephyr/test/drivers/src/ln9310.c",
         "patchSetId": 7
@@ -66,6 +90,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "864290e1_7efc7e4f",
+        "filename": "zephyr/test/drivers/src/ln9310.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 325,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2021-10-18T23:55:40Z",
+      "side": 1,
+      "message": "Thanks, removed.",
+      "parentUuid": "e74f01b1_30eebcfa",
+      "range": {
+        "startLine": 325,
+        "startChar": 0,
+        "endLine": 325,
+        "endChar": 0
+      },
+      "revId": "52f3abab48a14fd9f95bd02abb634a03dc6bdd22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1d802c05_57daa2c7",
         "filename": "zephyr/test/drivers/src/ln9310.c",
         "patchSetId": 7
@@ -77,6 +125,30 @@
       "writtenOn": "2021-10-14T00:30:09Z",
       "side": 1,
       "message": "Is it intended to call ln9310_software_enable(1) twice?",
+      "range": {
+        "startLine": 327,
+        "startChar": 0,
+        "endLine": 331,
+        "endChar": 42
+      },
+      "revId": "52f3abab48a14fd9f95bd02abb634a03dc6bdd22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "24c02c33_292854c6",
+        "filename": "zephyr/test/drivers/src/ln9310.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2021-10-18T23:55:40Z",
+      "side": 1,
+      "message": "Not sure how I missed when doing my own review. Oy. Thank you!!!",
+      "parentUuid": "1d802c05_57daa2c7",
       "range": {
         "startLine": 327,
         "startChar": 0,

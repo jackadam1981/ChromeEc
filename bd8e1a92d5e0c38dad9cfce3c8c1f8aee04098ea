@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae5571cf_815518ac",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2021-10-18T23:55:40Z",
+      "side": 1,
+      "message": "Thanks for the comments! Sorry it took me a minute. Actually removing the extra sleep here revealed a flaky deadlock in another test (usb_mux.c) that I made a priority to get fixed. That CL is out for review from peress now.\n\nJust wanted to let you know why it took me so long to respond.",
+      "revId": "bd8e1a92d5e0c38dad9cfce3c8c1f8aee04098ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
