@@ -70,6 +70,30 @@
       },
       "revId": "a176eb8df2ab281270676c37dbe6968a350f1841",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1184a8f8_bdf07499",
+        "filename": "chip/npcx/watchdog.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2021-10-18T06:55:58Z",
+      "side": 1,
+      "message": "Before this change (2814041), there is an issue that the watchdog triggers randomly at 1600~2700 ms because the WATCHDOG count and AUX timer are not synchronous (see comment #1 in b:184681421 for more detail). \nIn this CL, we adopted Tom\u0027s suggestion to kick WATCHDOG and also (reload) AUX timer at the same time to fix the random trigger issue.\nHowever, we don\u0027t trigger a system reset immediately when AUX timer expires because of the reason in my previous comment.\nWith this CL + option 1, we can resolve the random trigger issue and also prevent the code from execution between 1 and 2.\nDo you think the option 1 change make sense?\nIf it is, we will submit an CL for it.",
+      "parentUuid": "5d6cd231_b505c471",
+      "range": {
+        "startLine": 118,
+        "startChar": 6,
+        "endLine": 118,
+        "endChar": 28
+      },
+      "revId": "a176eb8df2ab281270676c37dbe6968a350f1841",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
