@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "63f7e86d_cbb12bca",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-10-18T22:04:21Z",
+      "side": 1,
+      "message": "This build target needs to be removed from the config.star files first, otherwise this will cause CQ failures.",
+      "revId": "4f38a220243d773cc049a2070c863bedaff3855c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
