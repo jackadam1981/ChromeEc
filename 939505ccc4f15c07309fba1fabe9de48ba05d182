@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f929a75a_9e213d5b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2021-10-18T18:06:01Z",
+      "side": 1,
+      "message": "Tom, I see you\u0027ve added a dynamic way to detect and enable the SYV682X PPC on port 0 for Proto1. Do we want to implement something similar or just created a separate device tree for Proto1 that has the SYV682X PPC on Port 0 and SN5S330 PPC on Port 1?",
+      "revId": "939505ccc4f15c07309fba1fabe9de48ba05d182",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
