@@ -4,7 +4,7 @@
 #
 
 CC=gcc
-CFLAGS=-O2 -Isrc -I../../include
+CFLAGS=-O2 -Isrc -I../../include -I../../common
 
 genvif: ../../util/genvif.c src/helper.c
 	@$(CC) -o $@ $^ $(CFLAGS)
