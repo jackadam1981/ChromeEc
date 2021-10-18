@@ -16,6 +16,23 @@
       "message": "These style violations sneaked in probably because of \u0027repo upload --no-verify\u0027. What do you think of running the style check in Tricium?",
       "revId": "0f9dc223d7d916b046df2cf2c8d697d0ca8b6d96",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a409be8_6054aed7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-10-18T19:29:08Z",
+      "side": 1,
+      "message": "+1 on adding enforcement to tricium if possible.",
+      "revId": "0f9dc223d7d916b046df2cf2c8d697d0ca8b6d96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
