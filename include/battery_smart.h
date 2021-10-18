@@ -166,6 +166,8 @@
 #define MANUFACTURE_DATE_YEAR_SHIFT	9
 #define MANUFACTURE_DATE_YEAR_OFFSET	1980
 
+#define SBS_MAX_STRING_SIZE		31
+
 /* Read from battery */
 int sb_read(int cmd, int *param);
 
