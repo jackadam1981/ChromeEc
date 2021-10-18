@@ -94,8 +94,10 @@ static void disable_adc_irqs_deferred(void)
 	 * force the PGOOD value to 0 and have the chipset task re-evaluate.
 	 * This should help prevent leakage.
 	 */
+#ifdef BOARD_BUGZZY
 	if (chipset_in_state(CHIPSET_STATE_HARD_OFF))
 		pp3300_a_pgood = 0;
+#endif
 	power_signal_interrupt(GPIO_PG_EC_DSW_PWROK);
 }
 DECLARE_DEFERRED(disable_adc_irqs_deferred);
