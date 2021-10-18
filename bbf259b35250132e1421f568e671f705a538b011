@@ -46,6 +46,30 @@
       },
       "revId": "bbf259b35250132e1421f568e671f705a538b011",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3251a2f2_1223fd8e",
+        "filename": "zephyr/shim/src/bc12_pi3usb9201.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-10-18T21:51:01Z",
+      "side": 1,
+      "message": "The gpio_map.h defines the GPIO interrupt handler, like: \n  GPIO_INT(GPIO_USB_C0_BC12_INT_L, GPIO_INT_EDGE_FALLING, usb0_evt)\n\nThe `shim/src/gpio.c` driver registers a combined GPIO callback function to Zephyr. When the GPIO signal falls, it triggers the callback function and then call the individual handler, like the `usb0_evt()`.\n\nSince these interrupt handlers are removed from gpio_map.h, you need to register these GPIO callbacks to Zephyr, similar to what `shim/src/gpio.c` does.",
+      "parentUuid": "0be77486_656f9254",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 38
+      },
+      "revId": "bbf259b35250132e1421f568e671f705a538b011",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
