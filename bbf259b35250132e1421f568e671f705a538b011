@@ -22,6 +22,30 @@
       },
       "revId": "bbf259b35250132e1421f568e671f705a538b011",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0be77486_656f9254",
+        "filename": "zephyr/shim/src/bc12_pi3usb9201.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2021-10-18T21:26:01Z",
+      "side": 1,
+      "message": "Could you explain further? The code change built and ran as expected.",
+      "parentUuid": "2631c199_d4974c0c",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 38
+      },
+      "revId": "bbf259b35250132e1421f568e671f705a538b011",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
