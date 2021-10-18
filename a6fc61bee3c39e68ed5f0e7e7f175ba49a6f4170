@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ffdcf2fc_444ad0c8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1523223
+      },
+      "writtenOn": "2021-10-18T21:56:05Z",
+      "side": 1,
+      "message": "Lots of time was taken to shorten solution to fit on all boards.\n\nSome boards were too small regardless; I set up a define controlled by a flag (CONFIG_SIMPLE_OUTPUT) that allows those boards to compile an even smaller (but less verbose) version of this command. The flag name (and this general approach) is definitely up for debate. ",
+      "revId": "a6fc61bee3c39e68ed5f0e7e7f175ba49a6f4170",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
