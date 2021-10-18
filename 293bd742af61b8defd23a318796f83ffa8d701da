@@ -22,6 +22,30 @@
       },
       "revId": "293bd742af61b8defd23a318796f83ffa8d701da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5bf7af67_6444ec91",
+        "filename": "baseboard/intelrvp/adlrvp.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2021-10-18T21:32:24Z",
+      "side": 1,
+      "message": "If we further split into different functions, then we may have to have a single board id read - int bid \u003d ADL_RVP_BOARD_ID(board_get_version()) to avoid multiple reads. Then retrieved board id needs to be passed to multiple functions like configure_retimer_usbmux(bid) , configure_battery(bid) , configure_usbports(bid)(function set the num of typec ports) etc basee on what all we may need to configure. But, each of these functions will have switch cases to do the needful based on bid. But, wouldn\u0027t that too a bit long with many similar switch cases in various functions? But, i also agree that there will be clear segregation on what each function intends to do.",
+      "parentUuid": "3d93d07c_cbd9ed5b",
+      "range": {
+        "startLine": 331,
+        "startChar": 12,
+        "endLine": 331,
+        "endChar": 46
+      },
+      "revId": "293bd742af61b8defd23a318796f83ffa8d701da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
