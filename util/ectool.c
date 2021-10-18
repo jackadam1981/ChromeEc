@@ -32,6 +32,7 @@
 #include "lock/gec_lock.h"
 #include "misc_util.h"
 #include "panic.h"
+#include "battery_smart.h"
 #include "usb_pd.h"
 
 /* Maximum flash size (16 MB, conservative) */
@@ -7871,6 +7872,10 @@ int get_battery_command(int index)
 	int rv;
 
 	printf("Battery %d info:\n", index);
+	if (sizeof(static_r.manufacturer_ext) < SBS_MAX_STRING_SIZE)
+		printf("(WARNING: String values are truncated to %ld chars. "
+		       "Read from /sys/class/power_supply/sbs-* for full "
+		       "strings.)\n", sizeof(static_r.manufacturer_ext));
 
 	static_p.index = index;
 	rv = ec_command(EC_CMD_BATTERY_GET_STATIC, 1,
