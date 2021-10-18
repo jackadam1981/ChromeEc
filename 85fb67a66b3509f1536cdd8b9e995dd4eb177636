@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9207d2c_602786ad",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 993,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-10-18T18:56:58Z",
+      "side": 1,
+      "message": "I think using +1 on a pointer to reach memory adjacent to the object is pretty idiomatic in C, I added a comment to clarify the intent, hope this is OK.",
+      "parentUuid": "67e0df58_bcba9772",
+      "range": {
+        "startLine": 993,
+        "startChar": 24,
+        "endLine": 993,
+        "endChar": 26
+      },
+      "revId": "85fb67a66b3509f1536cdd8b9e995dd4eb177636",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "30ae33bf_974d6658",
@@ -109,6 +133,30 @@
       "side": 1,
       "message": "crossed eyes, I meant line 1317-18. if call fails, rootk can be not initialized.",
       "parentUuid": "e761a772_312f3bb6",
+      "range": {
+        "startLine": 1328,
+        "startChar": 1,
+        "endLine": 1328,
+        "endChar": 14
+      },
+      "revId": "85fb67a66b3509f1536cdd8b9e995dd4eb177636",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "806c29e1_07a3bd20",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1328,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-10-18T18:56:58Z",
+      "side": 1,
+      "message": "ok, just in case added assignment of rootk to NULL.",
+      "parentUuid": "d3bed5fb_0bc672db",
       "range": {
         "startLine": 1328,
         "startChar": 1,
