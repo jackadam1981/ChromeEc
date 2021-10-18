@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f5c29f82_df31a8f6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2021-10-18T22:08:40Z",
+      "side": 1,
+      "message": "Vadim, can you double check this change. There were merge conflicts because the prepvt branch doesn\u0027t have the AP RO verification v2 support.\n\nI did verify the AP RO status works correctly with this change.",
+      "revId": "09c8743376e6e1a6c00f687f26d70f9a363b4516",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
