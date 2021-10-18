@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0074279_87a11b9b",
+        "filename": "common/virtual_battery.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-10-18T18:49:11Z",
+      "side": 1,
+      "message": "nit: this could use braces for style since it\u0027s multiple lines with the comment below",
+      "range": {
+        "startLine": 206,
+        "startChar": 34,
+        "endLine": 206,
+        "endChar": 35
+      },
+      "revId": "db7ce12fe3232002fdf48b99c193e704244e62a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cef0756c_1598484b",
+        "filename": "common/virtual_battery.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 316,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-10-18T18:49:11Z",
+      "side": 1,
+      "message": "same here",
+      "range": {
+        "startLine": 316,
+        "startChar": 2,
+        "endLine": 316,
+        "endChar": 4
+      },
+      "revId": "db7ce12fe3232002fdf48b99c193e704244e62a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "efdfbdc1_84e91bd8",
+        "filename": "common/virtual_battery.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 323,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-10-18T18:49:11Z",
+      "side": 1,
+      "message": "same here",
+      "range": {
+        "startLine": 323,
+        "startChar": 2,
+        "endLine": 323,
+        "endChar": 4
+      },
+      "revId": "db7ce12fe3232002fdf48b99c193e704244e62a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "45dc4c74_c3ac069b",
+        "filename": "include/battery.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-10-18T18:49:11Z",
+      "side": 1,
+      "message": "can you file a bug for it so we don\u0027t forget?",
+      "range": {
+        "startLine": 81,
+        "startChar": 4,
+        "endLine": 81,
+        "endChar": 8
+      },
+      "revId": "db7ce12fe3232002fdf48b99c193e704244e62a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
