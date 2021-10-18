@@ -47,6 +47,9 @@
 #undef CONFIG_CHARGER_MT6370_BC12_GPIO
 #endif
 
+/* Disable verbose output in EC pd */
+#define CONFIG_SIMPLE_OUTPUT
+
 /* Motion Sensors */
 #ifdef SECTION_IS_RW
 #ifndef BOARD_KRANE
