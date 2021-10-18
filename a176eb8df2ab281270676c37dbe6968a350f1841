@@ -94,6 +94,30 @@
       },
       "revId": "a176eb8df2ab281270676c37dbe6968a350f1841",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "173530f4_abb74635",
+        "filename": "chip/npcx/watchdog.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-10-18T15:27:14Z",
+      "side": 1,
+      "message": "We only need one counter (which can trigger an IRQ with the highest priority). That IRQ handler should save panic info and do reset. I assume that is what option #1 means. If you\u0027re still talking about having two timers (or equalizing the AUX timer to the WATCHDOG count), I\u0027m afraid there is no time for saving panic info.",
+      "parentUuid": "1184a8f8_bdf07499",
+      "range": {
+        "startLine": 118,
+        "startChar": 6,
+        "endLine": 118,
+        "endChar": 28
+      },
+      "revId": "a176eb8df2ab281270676c37dbe6968a350f1841",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
