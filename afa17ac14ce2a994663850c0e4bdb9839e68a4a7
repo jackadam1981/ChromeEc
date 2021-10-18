@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "707d08bd_327a60ec",
+        "filename": "driver/accelgyro_bmi260.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2021-10-18T20:23:22Z",
+      "side": 1,
+      "message": "I\u0027m aware this break is rather silly but lcov complains about the line below if I leave it out.",
+      "revId": "afa17ac14ce2a994663850c0e4bdb9839e68a4a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
