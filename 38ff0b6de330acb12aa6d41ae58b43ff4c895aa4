@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8bf8086_3796d890",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-10-18T17:51:20Z",
+      "side": 1,
+      "message": "This change is not specific to bugzzy, but all dedede boards.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 6
+      },
+      "revId": "38ff0b6de330acb12aa6d41ae58b43ff4c895aa4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "47fdba3d_004eca3b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-10-18T17:51:20Z",
+      "side": 1,
+      "message": "This is not a sufficient test. Please expand upon what was actually tested.",
+      "revId": "38ff0b6de330acb12aa6d41ae58b43ff4c895aa4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7838a85d_6768b74b",
+        "filename": "baseboard/dedede/baseboard.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-10-18T17:51:20Z",
+      "side": 1,
+      "message": "At first glance, this seems like it would hide leakage. Why is pp3300_a_pgood high when the enable is low? (which is what this is implying)",
+      "range": {
+        "startLine": 130,
+        "startChar": 0,
+        "endLine": 131,
+        "endChar": 11
+      },
+      "revId": "38ff0b6de330acb12aa6d41ae58b43ff4c895aa4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
