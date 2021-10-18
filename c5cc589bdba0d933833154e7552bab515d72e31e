@@ -377,6 +377,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "45ef0a98_066822b7",
+        "filename": "zephyr/projects/trogdor/lazor/src/led.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-10-18T22:32:15Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "98365532_13c4c1ad",
+      "range": {
+        "startLine": 105,
+        "startChar": 13,
+        "endLine": 105,
+        "endChar": 73
+      },
+      "revId": "c5cc589bdba0d933833154e7552bab515d72e31e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "418d4f41_12cf98f1",
@@ -414,6 +438,30 @@
       "side": 1,
       "message": "I tried UTIL_LISTIFY(MAX_COLOR, LED_COLOR_INIT, state_id), but .led_color requires 0,1,2,3 and .acc_period requires 1,2,3,4 as it uses UTIL_LISTIFY again (Difficult to do (color_num + 1).",
       "parentUuid": "418d4f41_12cf98f1",
+      "range": {
+        "startLine": 139,
+        "startChar": 16,
+        "endLine": 142,
+        "endChar": 44
+      },
+      "revId": "c5cc589bdba0d933833154e7552bab515d72e31e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2bcda501_79df94b4",
+        "filename": "zephyr/projects/trogdor/lazor/src/led.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-10-18T22:32:15Z",
+      "side": 1,
+      "message": "OK. Let\u0027s keep as it.",
+      "parentUuid": "96a5796f_45a30072",
       "range": {
         "startLine": 139,
         "startChar": 16,
@@ -696,6 +744,30 @@
       "side": 1,
       "message": "led.c is also restricted to lazor for this change. So should these files be together as they all relate to lazor. Or .yaml and .dts are considered infra changes and should be in a different CL than led.c file changes?",
       "parentUuid": "00c2a9a5_6a8a89b6",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 11
+      },
+      "revId": "c5cc589bdba0d933833154e7552bab515d72e31e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c521b9a4_69b1966e",
+        "filename": "zephyr/projects/trogdor/lazor/zmake.yaml",
+        "patchSetId": 13
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-10-18T22:32:15Z",
+      "side": 1,
+      "message": "Right. They both are related to Lazor. You can put the dts change together.",
+      "parentUuid": "f6664c38_a3618006",
       "range": {
         "startLine": 10,
         "startChar": 0,

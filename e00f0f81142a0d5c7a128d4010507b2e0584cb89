@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf83bdfc_30baae14",
+        "filename": "zephyr/projects/trogdor/lazor/src/led.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-10-18T22:32:15Z",
+      "side": 1,
+      "message": "If the MAX_COLOR is 4, should support 4 different colors, right?",
+      "range": {
+        "startLine": 86,
+        "startChar": 13,
+        "endLine": 86,
+        "endChar": 14
+      },
+      "revId": "e00f0f81142a0d5c7a128d4010507b2e0584cb89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88bfd7a6_84e8b82a",
+        "filename": "zephyr/projects/trogdor/lazor/src/led.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-10-18T22:32:15Z",
+      "side": 1,
+      "message": "Please add a comment to note this is a simplified version to only S0, S3, and S5. Not all the chipset states are covered.",
+      "range": {
+        "startLine": 154,
+        "startChar": 1,
+        "endLine": 154,
+        "endChar": 40
+      },
+      "revId": "e00f0f81142a0d5c7a128d4010507b2e0584cb89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6584fa1e_9c761bb0",
+        "filename": "zephyr/projects/trogdor/lazor/src/led.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-10-18T22:32:15Z",
+      "side": 1,
+      "message": "Please add a comment to explain the return value. What does -1 mean?",
+      "range": {
+        "startLine": 205,
+        "startChar": 7,
+        "endLine": 205,
+        "endChar": 10
+      },
+      "revId": "e00f0f81142a0d5c7a128d4010507b2e0584cb89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
