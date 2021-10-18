@@ -59,6 +59,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "94facbfd_bc69956b",
+        "filename": "chip/g/usb_spi_v2.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 481,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-10-18T20:59:06Z",
+      "side": 1,
+      "message": "not sure where it went, fixed.",
+      "parentUuid": "19e5589d_52278851",
+      "range": {
+        "startLine": 481,
+        "startChar": 3,
+        "endLine": 481,
+        "endChar": 11
+      },
+      "revId": "0f81072c8b71b65753bd6131e9a9ea0c9789fd7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "933778b4_a62079fe",
@@ -72,6 +96,30 @@
       "writtenOn": "2021-10-18T20:51:16Z",
       "side": 1,
       "message": "is there a need to check? if it was !\u003d we\u0027d error out in the previous if statement",
+      "range": {
+        "startLine": 543,
+        "startChar": 2,
+        "endLine": 543,
+        "endChar": 53
+      },
+      "revId": "0f81072c8b71b65753bd6131e9a9ea0c9789fd7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "17d59038_ac2a38ef",
+        "filename": "chip/g/usb_spi_v2.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 543,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-10-18T20:59:06Z",
+      "side": 1,
+      "message": "good point, I was looking at this but forgot to fix, done now, we re-run the tests just in case.",
+      "parentUuid": "933778b4_a62079fe",
       "range": {
         "startLine": 543,
         "startChar": 2,
