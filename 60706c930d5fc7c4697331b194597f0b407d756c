@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "433b6230_6d657b6d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-10-18T14:36:49Z",
+      "side": 1,
+      "message": "Thanks for verification.",
+      "parentUuid": "29166d2f_081617c1",
+      "revId": "60706c930d5fc7c4697331b194597f0b407d756c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "349958e8_a3dfef79",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-10-18T12:50:56Z",
       "side": 1,
       "message": "Is there any reason to undef this config?",
+      "revId": "60706c930d5fc7c4697331b194597f0b407d756c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ebecd494_ea36999f",
+        "filename": "baseboard/kukui/baseboard.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-10-18T14:36:49Z",
+      "side": 1,
+      "message": "burnet fails to build because of ROM space shortage. I moved it to a separate CL.",
+      "parentUuid": "349958e8_a3dfef79",
       "revId": "60706c930d5fc7c4697331b194597f0b407d756c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -52,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "89a1ef72_3fdce644",
+        "filename": "common/battery.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 398,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-10-18T14:36:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "89855060_2aae3b7c",
+      "revId": "60706c930d5fc7c4697331b194597f0b407d756c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0ae2ed03_67ae35aa",
@@ -65,6 +119,24 @@
       "writtenOn": "2021-10-18T12:50:56Z",
       "side": 1,
       "message": "So we don\u0027t have to specify the param reading size now, right?",
+      "revId": "60706c930d5fc7c4697331b194597f0b407d756c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a138467_3840b034",
+        "filename": "common/battery.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 418,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-10-18T14:36:49Z",
+      "side": 1,
+      "message": "Yes. The buffer is fixed to 32-byte which is the longest defined in the SBS spec. \u003cparam\u003e may still exceed vendor_param_start + string_length. So, we validate it here.",
+      "parentUuid": "0ae2ed03_67ae35aa",
       "revId": "60706c930d5fc7c4697331b194597f0b407d756c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
