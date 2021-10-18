@@ -70,6 +70,30 @@
       },
       "revId": "5fe7b6e1ad384fa2d7d67de4e92115374a257f9f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "26bb51ad_e0aeef2c",
+        "filename": "zephyr/projects/herobrine/herobrine_npcx9/usbc.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2021-10-18T02:35:53Z",
+      "side": 1,
+      "message": "I was confused by the \"@\" but after changing the label name, it works.",
+      "parentUuid": "cf3e228d_363474ce",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 23
+      },
+      "revId": "5fe7b6e1ad384fa2d7d67de4e92115374a257f9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
