@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "29166d2f_081617c1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1444467
+      },
+      "writtenOn": "2021-10-18T12:50:56Z",
+      "side": 1,
+      "message": "Hi Daisuke,\n\nI have updated this CL based on your thoughts. Also, I have verified this chain on my kingoftown, and it seems to work fine. But I have some concerns as my attached comments. Could you help to check them?\n\nThanks!",
+      "revId": "60706c930d5fc7c4697331b194597f0b407d756c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "349958e8_a3dfef79",
+        "filename": "baseboard/kukui/baseboard.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1444467
+      },
+      "writtenOn": "2021-10-18T12:50:56Z",
+      "side": 1,
+      "message": "Is there any reason to undef this config?",
+      "revId": "60706c930d5fc7c4697331b194597f0b407d756c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89855060_2aae3b7c",
+        "filename": "common/battery.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 398,
+      "author": {
+        "id": 1444467
+      },
+      "writtenOn": "2021-10-18T12:50:56Z",
+      "side": 1,
+      "message": "Should we add `__overridable` here since there\u0027s a specific definition of this function in board/eve/battery.c? \nAlso \"eve\" cannot be built with this chain.",
+      "revId": "60706c930d5fc7c4697331b194597f0b407d756c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ae2ed03_67ae35aa",
+        "filename": "common/battery.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 418,
+      "author": {
+        "id": 1444467
+      },
+      "writtenOn": "2021-10-18T12:50:56Z",
+      "side": 1,
+      "message": "So we don\u0027t have to specify the param reading size now, right?",
+      "revId": "60706c930d5fc7c4697331b194597f0b407d756c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
