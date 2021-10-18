@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "40c7ec0a_b033c273",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-10-18T23:10:23Z",
+      "side": 1,
+      "message": "the sense resistor is a property of the board, not the charger.\nin theory, you could have 2 boards using the same charger with\ndifferent sense resistors.\n\nit makes sense to add the charger chip name to CONFIG_CHARGER_SENSE_RESISTOR.\n\nthis patch is mostly consistent with that, but i don\u0027t think we\nshould separate BQ25710 vs. BQ25720 sense resistor settings.\nthe driver doesn\u0027t support both chips at the same time and i don\u0027t think\nthere\u0027s a difference between the two chips in this area.\n\nfor historical reasons, most registers are labelled BQ25710 with\nthe BQ25720 deltas using BQ25720 in their name. some day, we should\nrename the common registers BQ257x0 or similar to beter reflect\nthe chip behavior.\n\nsince you\u0027re doing a \"global\" change, it might make sense to make the\nnames consistent and use the CONFIG_CHARGER_\u003cname\u003e_SENSE_RESISTOR form\neverywhere.",
+      "revId": "85f330b9978149d9ba3e6c59c7f7ad497d2419ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
