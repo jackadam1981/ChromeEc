@@ -127,6 +127,10 @@ __override int intel_x86_get_pg_ec_dsw_pwrok(void)
 	 * read the ADC values during an interrupt, therefore, this power good
 	 * value is updated via ADC threshold interrupts.
 	 */
+#ifdef BOARD_BUGZZY
+	if (gpio_get_level(GPIO_EN_PP3300_A) == 0)
+		return 0;
+#endif
 	return pp3300_a_pgood;
 }
 
