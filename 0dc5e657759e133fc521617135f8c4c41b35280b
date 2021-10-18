@@ -183,6 +183,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "049fcea8_b2b40e48",
+        "filename": "chip/g/usb_spi_v2.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 626,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-10-18T17:16:34Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "48b6c086_f90b1800",
+      "range": {
+        "startLine": 626,
+        "startChar": 3,
+        "endLine": 626,
+        "endChar": 55
+      },
+      "revId": "0dc5e657759e133fc521617135f8c4c41b35280b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ead65bda_ca88edce",
