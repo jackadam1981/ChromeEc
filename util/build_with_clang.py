@@ -21,6 +21,22 @@ BOARDS_THAT_COMPILE_SUCCESSFULLY_WITH_CLANG = [
     'bloonchipper',
     'nucleo-f412zg',
     'nucleo-h743zi',
+    'zinger',
+    'minimuffin',
+    'servo_micro',
+    'c2d2',
+    'dingdong',
+    'discovery-stm32f072',
+    'hoho',
+    'nucleo-f072rb',
+    'plankton',
+    'tigertail',
+    'twinkie',
+    'coffeecake',
+    'polyberry',
+    'stm32f446e-eval',
+    'sweetberry',
+    'nucleo-g431rb',
 ]
 
 
