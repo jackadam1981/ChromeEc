@@ -190,30 +190,9 @@ static void setup_usb_mux_proxy_chain(void)
 	}
 }
 
-static void suspend_usbc_task(bool suspend)
-{
-	static const task_id_t cros_tids[] = {
-		COND_CODE_1(HAS_TASK_PD_C0, (TASK_ID_PD_C0,), ())
-		COND_CODE_1(HAS_TASK_PD_C1, (TASK_ID_PD_C1,), ())
-		COND_CODE_1(HAS_TASK_PD_C2, (TASK_ID_PD_C2,), ())
-		COND_CODE_1(HAS_TASK_PD_C3, (TASK_ID_PD_C3,), ())
-	};
-
-	for (int i = 0; i < ARRAY_SIZE(cros_tids); ++i) {
-		k_tid_t pd_c1_tid = task_get_zephyr_tid(cros_tids[i]);
-
-		if (suspend) {
-			k_thread_suspend(pd_c1_tid);
-		} else {
-			k_thread_resume(pd_c1_tid);
-		}
-	}
-}
-
 /** Restore original usb_mux chain without proxy */
 static void resotre_usb_mux_chain(void)
 {
-	suspend_usbc_task(/*suspend=*/ false);
 	memcpy(&usb_muxes[USBC_PORT_C1], &usb_mux_c1, sizeof(struct usb_mux));
 }
 
@@ -592,7 +571,6 @@ void test_usb_mux_chipset_reset(void)
 /** Setup proxy chain and uninit usb muxes */
 void setup_uninit_mux(void)
 {
-	suspend_usbc_task(/*suspend=*/ true);
 	setup_usb_mux_proxy_chain();
 
 	/* Makes sure that usb muxes of port 1 are not init */
@@ -603,13 +581,17 @@ void setup_uninit_mux(void)
 /** Setup proxy chain and init usb muxes */
 void setup_init_mux(void)
 {
-	suspend_usbc_task(/*suspend=*/ true);
 	setup_usb_mux_proxy_chain();
 
 	/* Makes sure that usb muxes of port 1 are init */
 	setup_ztest_proxy_init(0, 2, EC_SUCCESS);
 	usb_mux_init(USBC_PORT_C1);
 }
+
+/*
+ * TODO(203203231): Add usbc_task suspension from test to a generic api
+ * described by a proper header.
+ */
 
 void test_suite_usb_mux(void)
 {
@@ -636,5 +618,8 @@ void test_suite_usb_mux(void)
 			 ztest_unit_test_setup_teardown(
 				test_usb_mux_chipset_reset,
 				setup_init_mux, resotre_usb_mux_chain));
+
+	usbc_pd_task_suspend();
 	ztest_run_test_suite(usb_mux);
+	usbc_pd_task_resume();
 }

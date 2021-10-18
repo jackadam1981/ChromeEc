@@ -16,7 +16,11 @@
 #include "gpio.h"
 #include "hooks.h"
 #include "host_command.h"
+#include "kernel.h"
 #include "registers.h"
+#include "sys/__assert.h"
+#include "sys/atomic.h"
+#include "sys/atomic_builtin.h"
 #include "system.h"
 #include "task.h"
 #include "timer.h"
@@ -50,6 +54,60 @@ extern int _GPIO_CCD_MODE_ODL;
 #endif /* CONFIG_ASSERT_CCD_MODE_ON_DTS_CONNECT */
 
 static uint8_t paused[CONFIG_USB_PD_PORT_MAX_COUNT];
+
+#ifdef CONFIG_ZTEST
+static volatile bool suspend_requested;
+static volatile int pd_task_running_count;
+static K_CONDVAR_DEFINE(pd_condvar);
+static K_MUTEX_DEFINE(pd_mutex);
+
+/* Why we need this timeout:
+ * Since we only suspend tasks when they're in a consistent state and because
+ * these tasks may rely on each other to finish their work, we timeout and try
+ * to suspend the tasks again in case one is waiting for the other to complete
+ * some work - exact number of microseconds was chosen arbitrarily.
+ */
+#define RETRY_TASK_SUSPEND (10)
+#define RETRY_TASK_MAX_COUNT (1000)
+
+void usbc_pd_task_suspend(void)
+{
+	int retry_count = 0;
+
+	suspend_requested = true;
+
+	k_usleep(RETRY_TASK_SUSPEND);
+	while (pd_task_running_count > 0) {
+		__ASSERT_NO_MSG(++retry_count < RETRY_TASK_MAX_COUNT);
+
+		k_condvar_broadcast(&pd_condvar);
+		k_usleep(RETRY_TASK_SUSPEND);
+	}
+}
+
+void usbc_pd_task_resume(void)
+{
+	suspend_requested = false;
+	k_condvar_broadcast(&pd_condvar);
+}
+
+static void usbc_pd_task_inc(void)
+{
+	k_mutex_lock(&pd_mutex, K_FOREVER);
+	if (suspend_requested)
+		k_condvar_wait(&pd_condvar, &pd_mutex, K_FOREVER);
+	pd_task_running_count++;
+	k_mutex_unlock(&pd_mutex);
+}
+
+static void usbc_pd_task_dec(void)
+{
+	k_mutex_lock(&pd_mutex, K_FOREVER);
+	pd_task_running_count--;
+	k_mutex_unlock(&pd_mutex);
+}
+
+#endif /* CONFIG_ZTEST */
 
 void tc_pause_event_loop(int port)
 {
@@ -116,8 +174,14 @@ static int pd_task_timeout(int port)
 
 static bool pd_task_loop(int port)
 {
+	if (IS_ENABLED(CONFIG_ZTEST))
+		usbc_pd_task_dec();
+
 	/* wait for next event/packet or timeout expiration */
 	const uint32_t evt = task_wait_event(pd_task_timeout(port));
+
+	if (IS_ENABLED(CONFIG_ZTEST))
+		usbc_pd_task_inc();
 
 	/* Manage expired PD Timers on timeouts */
 	if (evt & TASK_EVENT_TIMER)
@@ -167,6 +231,9 @@ void pd_task(void *u)
 		return;
 
 	while (1) {
+		if (IS_ENABLED(CONFIG_ZTEST))
+			usbc_pd_task_inc();
+
 		pd_timer_init(port);
 		pd_task_init(port);
 
@@ -178,5 +245,8 @@ void pd_task(void *u)
 		 */
 		while (pd_task_loop(port))
 			continue;
+
+		if (IS_ENABLED(CONFIG_ZTEST))
+			usbc_pd_task_dec();
 	}
 }
