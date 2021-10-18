@@ -33,6 +33,24 @@
       "message": "+1 on adding enforcement to tricium if possible.",
       "revId": "0f9dc223d7d916b046df2cf2c8d697d0ca8b6d96",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "20c356ba_d4277c3d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-10-18T20:26:24Z",
+      "side": 1,
+      "message": "We definitely should run it server-side. We could either do it with Tricium or make the firmware_builder.py script run it, which would prevent the CL from being submitted if it doesn\u0027t pass (I\u0027m not sure if there\u0027s a way to make the Tricium comments blocking as opposed to just suggestions).\n\nFor platform2, I enabled the \"fullcheckout-presubmit\" builder, which runs all presubmit hooks and blocks the CL if it fails: http://g/chromeos-chatty-eng/YqPqo_R680g/DcHHS1MRCAAJ\n\nFiled a bug: https://issuetracker.google.com/203448780",
+      "parentUuid": "88e9cacc_4e13575e",
+      "revId": "0f9dc223d7d916b046df2cf2c8d697d0ca8b6d96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
