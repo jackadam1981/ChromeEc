@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "32d379af_afe3726d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 11
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2021-10-18T18:07:39Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "f3608b8d_efd17869",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 15
+      },
+      "revId": "bdefaed5cb1fa93ac830ead42c57fd3f1cf37569",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3b75f8e3_c8873cdd",
@@ -37,6 +61,24 @@
       "writtenOn": "2021-10-15T19:36:49Z",
       "side": 1,
       "message": "Does any file need to be included here?",
+      "revId": "bdefaed5cb1fa93ac830ead42c57fd3f1cf37569",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4de34ebc_2018d19c",
+        "filename": "zephyr/projects/brya/brya/CMakeLists.txt",
+        "patchSetId": 11
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2021-10-18T18:07:39Z",
+      "side": 1,
+      "message": "I inherited it from volteer. There are few header files inside board and baseborad directory. In the initial patch we were using board specific led.c file but later that functionality is moved to shim layer and we dropped that file from compilation. It seems, these changes are not required now. I don\u0027t see any compilation after dropping these changes, I Will submit new patch for this and update CL.",
+      "parentUuid": "3b75f8e3_c8873cdd",
       "revId": "bdefaed5cb1fa93ac830ead42c57fd3f1cf37569",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -58,6 +100,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e19e25bb_253fc615",
+        "filename": "zephyr/projects/brya/brya/prj.conf",
+        "patchSetId": 11
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2021-10-18T18:07:39Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0ac3f4ed_019db6f5",
+      "revId": "bdefaed5cb1fa93ac830ead42c57fd3f1cf37569",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8bcaf923_563d7adc",
@@ -71,6 +131,30 @@
       "writtenOn": "2021-10-15T19:36:49Z",
       "side": 1,
       "message": "nit: Remove extra lines.",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 0
+      },
+      "revId": "bdefaed5cb1fa93ac830ead42c57fd3f1cf37569",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1dfbb55_63374419",
+        "filename": "zephyr/projects/brya/brya/pwm_leds.dts",
+        "patchSetId": 11
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2021-10-18T18:07:39Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "8bcaf923_563d7adc",
       "range": {
         "startLine": 43,
         "startChar": 0,
