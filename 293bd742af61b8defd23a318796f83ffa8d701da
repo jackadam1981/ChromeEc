@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d93d07c_cbd9ed5b",
+        "filename": "baseboard/intelrvp/adlrvp.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-10-18T16:25:55Z",
+      "side": 1,
+      "message": "rebase it on correct patch series \nthis is getting little too big\nkeep this original function name\njust add a new function \n\nstatic void configure_battery(void)\n{\ndo these changes \n}",
+      "range": {
+        "startLine": 331,
+        "startChar": 12,
+        "endLine": 331,
+        "endChar": 46
+      },
+      "revId": "293bd742af61b8defd23a318796f83ffa8d701da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
