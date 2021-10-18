@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca95dd90_364b2d98",
+        "filename": "baseboard/intelrvp/adlrvp.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-10-18T16:34:36Z",
+      "side": 1,
+      "message": "nit: sorry for the late change, looks like this list is getting bigger with  single binary approach hence use a new function and add these changes.\nvoid configure_battery(void)",
+      "range": {
+        "startLine": 330,
+        "startChar": 12,
+        "endLine": 330,
+        "endChar": 44
+      },
+      "revId": "9afb3ae33cecd01d4255a4b4abe9561ecc38d310",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
