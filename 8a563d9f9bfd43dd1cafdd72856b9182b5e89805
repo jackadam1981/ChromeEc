@@ -89,6 +89,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e9ec86f_7197baa8",
+        "filename": "zephyr/boards/arm/brya/brya.dts",
+        "patchSetId": 4
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1523723
+      },
+      "writtenOn": "2021-10-19T22:59:41Z",
+      "side": 1,
+      "message": "This helps,Thanks Keith !!",
+      "parentUuid": "aa900b40_a6223939",
+      "revId": "8a563d9f9bfd43dd1cafdd72856b9182b5e89805",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "955b5509_0aca0b28",
@@ -150,6 +168,30 @@
       "side": 1,
       "message": "Defaults are found in the various platform/ec/zephyr/Kconfig* files.\n\nLooks like CONFIG_PLATFORM_EC_ADC defaults to y, and implies CONFIG_ADC.\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/81e812f8/zephyr/Kconfig.adc#5\n\nBut you shouldd CONFIG_ADC_SHELL\u003dn to this file.  This ensures that the \"adc\" console command is provided by the legacy platform/ec code instead of the upstream Zephyr \"adc\" command.",
       "parentUuid": "4093b3d9_b950f9a1",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 24
+      },
+      "revId": "8a563d9f9bfd43dd1cafdd72856b9182b5e89805",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "485b78f1_0e11a40b",
+        "filename": "zephyr/projects/brya/brya/prj.conf",
+        "patchSetId": 4
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1523723
+      },
+      "writtenOn": "2021-10-19T22:59:41Z",
+      "side": 1,
+      "message": "Thanks for this info Keith !!",
+      "parentUuid": "e96153c7_3297f136",
       "range": {
         "startLine": 45,
         "startChar": 0,
