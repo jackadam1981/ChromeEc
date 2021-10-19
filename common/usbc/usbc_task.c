@@ -16,6 +16,7 @@
 #include "gpio.h"
 #include "hooks.h"
 #include "host_command.h"
+#include "kernel.h"
 #include "registers.h"
 #include "system.h"
 #include "task.h"
@@ -32,6 +33,8 @@
 #include "usb_sm.h"
 #include "usb_tc_sm.h"
 #include "usbc_ppc.h"
+#include <stdbool.h>
+#include <stdio.h>
 
 #define USBC_EVENT_TIMEOUT (5 * MSEC)
 #define USBC_MIN_EVENT_TIMEOUT (1 * MSEC)
@@ -51,9 +54,54 @@ extern int _GPIO_CCD_MODE_ODL;
 
 static uint8_t paused[CONFIG_USB_PD_PORT_MAX_COUNT];
 
+__test_only K_MUTEX_DEFINE(pd_mutex);
+
+/* Used by PD task to signal to unit test of suspend state change. */
+__test_only K_CONDVAR_DEFINE(pd_condvar);
+
+/* Used to notify a task to safely suspend itself */
+__test_only static volatile bool port_to_suspend[CONFIG_USB_PD_PORT_MAX_COUNT];
+
+__test_only void usbc_pd_task_suspend(task_id_t task)
+{
+	int port = TASK_ID_TO_PD_PORT(task);
+
+	k_mutex_lock(&pd_mutex, K_FOREVER);
+
+	port_to_suspend[port] = true;
+
+	/* Task might be sleeping, wake it up so we can suspend it our way. */
+	tc_start_event_loop(port);
+
+	printf("started suspend condvar wait\n");
+	k_condvar_wait(&pd_condvar, &pd_mutex, K_FOREVER);
+	printf("condvar was signaled\n");
+
+	k_mutex_unlock(&pd_mutex);
+}
+
+__test_only void usbc_pd_task_resume(task_id_t task)
+{
+	int port = TASK_ID_TO_PD_PORT(task);
+
+	k_mutex_lock(&pd_mutex, K_FOREVER);
+	port_to_suspend[port] = false;
+	k_thread_resume(task_get_zephyr_tid(task));
+
+	k_condvar_wait(&pd_condvar, &pd_mutex, K_FOREVER);
+
+	k_mutex_unlock(&pd_mutex);
+}
+
 void tc_pause_event_loop(int port)
 {
+	if(IS_ENABLED(CONFIG_ZTEST))
+		k_mutex_lock(&pd_mutex, K_FOREVER);
+
 	paused[port] = 1;
+
+	if(IS_ENABLED(CONFIG_ZTEST))
+		k_mutex_unlock(&pd_mutex);
 }
 
 bool tc_event_loop_is_paused(int port)
@@ -63,6 +111,9 @@ bool tc_event_loop_is_paused(int port)
 
 void tc_start_event_loop(int port)
 {
+	if(IS_ENABLED(CONFIG_ZTEST))
+		k_mutex_lock(&pd_mutex, K_FOREVER);
+
 	/*
 	 * Only generate TASK_EVENT_WAKE event if state
 	 * machine is transitioning to un-paused
@@ -71,6 +122,9 @@ void tc_start_event_loop(int port)
 		paused[port] = 0;
 		task_set_event(PD_PORT_TO_TASK_ID(port), TASK_EVENT_WAKE);
 	}
+
+	if(IS_ENABLED(CONFIG_ZTEST))
+		k_mutex_unlock(&pd_mutex);
 }
 
 static void pd_task_init(int port)
@@ -116,8 +170,13 @@ static int pd_task_timeout(int port)
 
 static bool pd_task_loop(int port)
 {
+	if (IS_ENABLED(CONFIG_ZTEST) && port_to_suspend[port])
+		return false;
+
+	printf("port=%d before task_wait\n", port);
 	/* wait for next event/packet or timeout expiration */
 	const uint32_t evt = task_wait_event(pd_task_timeout(port));
+	printf("port=%d after task_wait\n", port);
 
 	/* Manage expired PD Timers on timeouts */
 	if (evt & TASK_EVENT_TIMER)
@@ -152,7 +211,7 @@ static bool pd_task_loop(int port)
 	/* Run TypeC state machine */
 	if (IS_ENABLED(CONFIG_USB_TYPEC_SM))
 		tc_run(port);
-
+	
 	return true;
 }
 
@@ -167,6 +226,16 @@ void pd_task(void *u)
 		return;
 
 	while (1) {
+		if (IS_ENABLED(CONFIG_ZTEST) && port_to_suspend[port]) {
+			k_mutex_lock(&pd_mutex, K_FOREVER);
+			k_condvar_signal(&pd_condvar);
+			k_mutex_unlock(&pd_mutex);
+
+			k_thread_suspend(task_get_zephyr_tid(task_get_current()));
+
+			k_condvar_signal(&pd_condvar);
+		}
+
 		pd_timer_init(port);
 		pd_task_init(port);
 
