@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc77a965_e181fef1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-10-19T20:26:27Z",
+      "side": 1,
+      "message": "So it turns out that the other fix I made on disconnect also broke disconnect just a little bit... this reminds me of how I wish we had a full-stack PD unit test checking things like \"plug in DP monitor, unplug and confirm mux none and HPD low\" ",
+      "revId": "8878ce4b1023d39a42c38b69ee20e9e72c2479c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
