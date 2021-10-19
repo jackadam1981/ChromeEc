@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1424f336_d7e523eb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 16
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-10-19T16:55:47Z",
+      "side": 1,
+      "message": "Valid points. Want to see other\u0027s opinions.\n\nIMO, complex code can be simplified by better software architecture, like abstraction, code refactoring, etc. We don\u0027t need to preserve original code structure, which implements all functions in a single big file. The important thing is the easy-understandable dt definition. The partners just need to modify the dt file.\n\nThis CL is just a beginning, still far away from the final destination. Parth chose to use an incremental and iterative approach, starting from the Lazor\u0027s LED policy, and step-by-step to extend to more boards. So this CL may not be fit other boards\u0027 policies; just try to make the dt node general enough so won\u0027t be super pain to extend to other boards in the future.",
+      "parentUuid": "9b857393_276cfbef",
+      "revId": "63e7af6d2c0b21be8e972d64fd30eb8641672e61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c39892f2_07d0847e",
         "filename": "zephyr/projects/trogdor/lazor/led.dts",
         "patchSetId": 16
@@ -31,6 +49,30 @@
       "writtenOn": "2021-10-19T13:00:50Z",
       "side": 1,
       "message": "Do you need the extra node at all? It only contains gpio-led-colors...",
+      "range": {
+        "startLine": 2,
+        "startChar": 0,
+        "endLine": 4,
+        "endChar": 0
+      },
+      "revId": "63e7af6d2c0b21be8e972d64fd30eb8641672e61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "370c78fb_53d7504e",
+        "filename": "zephyr/projects/trogdor/lazor/led.dts",
+        "patchSetId": 16
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-10-19T16:55:47Z",
+      "side": 1,
+      "message": "I think there will be several other sub-nodes, like the underlying GPIO phandles, color to GPIO mapping, brightness, etc. So far, only the color policy is implemented, in this CL.\n\nOne gpio-led-behavior node maps to one physical LED. If the board has multiple physical LEDs, many gpio-led-behavior nodes will be created.",
+      "parentUuid": "c39892f2_07d0847e",
       "range": {
         "startLine": 2,
         "startChar": 0,
