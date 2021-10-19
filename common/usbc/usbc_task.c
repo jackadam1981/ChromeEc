@@ -51,6 +51,24 @@ extern int _GPIO_CCD_MODE_ODL;
 
 static uint8_t paused[CONFIG_USB_PD_PORT_MAX_COUNT];
 
+__test_only void usbc_pd_task_suspend(task_id_t task)
+{
+	int port = TASK_ID_TO_PD_PORT(task);
+
+	tc_pause_event_loop(port);
+	while (!tc_event_loop_is_paused(port))
+		k_usleep(1);
+}
+
+__test_only void usbc_pd_task_resume(task_id_t task)
+{
+	int port = TASK_ID_TO_PD_PORT(task);
+
+	tc_start_event_loop(port);
+	while (tc_event_loop_is_paused(port))
+		k_usleep(1);
+}
+
 void tc_pause_event_loop(int port)
 {
 	paused[port] = 1;

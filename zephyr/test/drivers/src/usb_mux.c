@@ -200,12 +200,10 @@ static void suspend_usbc_task(bool suspend)
 	};
 
 	for (int i = 0; i < ARRAY_SIZE(cros_tids); ++i) {
-		k_tid_t pd_c1_tid = task_get_zephyr_tid(cros_tids[i]);
-
 		if (suspend) {
-			k_thread_suspend(pd_c1_tid);
+			usbc_pd_task_suspend(cros_tids[i]);
 		} else {
-			k_thread_resume(pd_c1_tid);
+			usbc_pd_task_resume(cros_tids[i]);
 		}
 	}
 }
