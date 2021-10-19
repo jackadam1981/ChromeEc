@@ -3409,4 +3409,31 @@ void typec_select_src_collision_rp(int port, enum tcpc_rp_value rp);
 int typec_update_cc(int port);
 /****************************************************************************/
 
+#ifdef CONFIG_ZTEST
+
+#include "shimmed_task_id.h"
+
+/**
+ * @brief Suspends usbc power delivery task.
+ *
+ * Used by unit tests to suspend usb pd tasks in a clean way where
+ * they are suspended in a consistent state, tasks may be resumed by calling
+ * usbc_pd_task_resume().
+ *
+ * @param The cros task id
+ */
+void usbc_pd_task_suspend(task_id_t task);
+
+/**
+ * @brief Resumes usbc power delivery task from suspension.
+ *
+ * Used by unit tests to resume usbc pd tasks after a prior call to
+ * usbc_pd_task_suspend().
+ *
+ * @param The cros task id
+ */
+void usbc_pd_task_resume(task_id_t task);
+
+#endif /* CONFIG_ZTEST */
+
 #endif  /* __CROS_EC_USB_PD_H */
