@@ -71,6 +71,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa900b40_a6223939",
+        "filename": "zephyr/boards/arm/brya/brya.dts",
+        "patchSetId": 4
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-10-19T22:49:24Z",
+      "side": 1,
+      "message": "For your reference, the actual device driver is defined by Nuvoton here:\nhttps://chromium.googlesource.com/chromiumos/third_party/zephyr/+/b303cb07/dts/arm/nuvoton/npcx.dtsi#364\n\nNote that the default status is \"disabled\", that is why it must explicitly be set to \"okay\" in your board devicetree overlay here.",
+      "parentUuid": "c373254b_712eb6d2",
+      "revId": "8a563d9f9bfd43dd1cafdd72856b9182b5e89805",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "955b5509_0aca0b28",
@@ -108,6 +126,30 @@
       "side": 1,
       "message": "Done.\nWhere is the defaults configuration defined in zephyr?\n\nI can see CONFIG_ADC\u003dy and CONFIG_ADC_SHELL\u003dn in \"zephyr/boards/arm/volteer/volteer_defconfig\" file but these are not defined in \"zephyr/boards/arm/brya/brya_defconfig\". \n\nDo we need to add these in \"zephyr/boards/arm/brya/brya_defconfig\" file to enable by default ?",
       "parentUuid": "955b5509_0aca0b28",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 24
+      },
+      "revId": "8a563d9f9bfd43dd1cafdd72856b9182b5e89805",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e96153c7_3297f136",
+        "filename": "zephyr/projects/brya/brya/prj.conf",
+        "patchSetId": 4
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-10-19T22:49:24Z",
+      "side": 1,
+      "message": "Defaults are found in the various platform/ec/zephyr/Kconfig* files.\n\nLooks like CONFIG_PLATFORM_EC_ADC defaults to y, and implies CONFIG_ADC.\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/81e812f8/zephyr/Kconfig.adc#5\n\nBut you shouldd CONFIG_ADC_SHELL\u003dn to this file.  This ensures that the \"adc\" console command is provided by the legacy platform/ec code instead of the upstream Zephyr \"adc\" command.",
+      "parentUuid": "4093b3d9_b950f9a1",
       "range": {
         "startLine": 45,
         "startChar": 0,
