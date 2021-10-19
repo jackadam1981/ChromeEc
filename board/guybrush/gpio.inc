@@ -16,6 +16,9 @@ GPIO_INT(TABLET_MODE,		PIN(C, 1), GPIO_INT_BOTH, gmr_tablet_switch_isr)			/* 360
 ALTERNATE(/*EC_PWM_LED_CHRG_L*/	PIN_MASK(C, BIT(4)), 0, 			MODULE_PWM, 0)		/* Charging LED */
 ALTERNATE(/*EC_PWM_LED_FULL_L*/	PIN_MASK(8, BIT(0)), 0, 			MODULE_PWM, 0)		/* Full LED */
 
+/* Keyboard Signals */
+GPIO(EN_KB_BL, 			PIN(9, 7), GPIO_OUT_HIGH)						/* Enable Keyboard Backlight */
+
 /* Test Points */
 GPIO(EC_GPIO56,			PIN(5, 6), GPIO_INPUT | GPIO_PULL_UP)
 GPIO(EC_PS2_CLK,		PIN(6, 7), GPIO_INPUT | GPIO_PULL_UP)

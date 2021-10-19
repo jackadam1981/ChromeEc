@@ -15,6 +15,7 @@
 
 /* Keyboard features */
 #define CONFIG_KEYBOARD_FACTORY_TEST
+#define GPIO_EN_KEYBOARD_BACKLIGHT	GPIO_EN_KB_BL
 
 /* Sensors */
 #define CONFIG_ACCELGYRO_BMI160

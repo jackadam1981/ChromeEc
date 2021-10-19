@@ -101,7 +101,6 @@ ALTERNATE(			PIN_MASK(E, BIT(3) | BIT(4)), 0, 		MODULE_I2C, 0)		/* I2C6 */
 ALTERNATE(			PIN_MASK(B, BIT(2) | BIT(3)), 0, 		MODULE_I2C, 0)		/* I2C7 */
 
 /* Keyboard Signals */
-GPIO(EN_KB_BL, 			PIN(9, 7), GPIO_OUT_HIGH)						/* Enable Keyboard Backlight */
 ALTERNATE(/*PWM_KB_BL*/ 	PIN_MASK(C, BIT(2)), 0, 			MODULE_PWM, 0)		/* Keyboard Backlight Level */
 ALTERNATE(/*KSI_00-01*/		PIN_MASK(3, BIT(0) | BIT(1)), 0, 		MODULE_KEYBOARD_SCAN, GPIO_INPUT)
 ALTERNATE(/*KSI_02-07*/		PIN_MASK(2, GENMASK(7, 2)), 0, 			MODULE_KEYBOARD_SCAN, GPIO_INPUT)
