@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa371d50_04cc1824",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-10-19T22:15:22Z",
+      "side": 1,
+      "message": "As far as I understand from the bug description - 45W is the AC adapter rating, not the max allowed system power. Taeko can still operate at 60W (with a different adapter), right?  In that case PD_MAX_POWER should be left at 60W.\n\nIf you would like to change the maximum allowed system power - you might want to change the PD_MAX_VOLTAGE/CURRENT accordingly.",
+      "revId": "05594d1d759690cd52a8180ad1f2ad7e4afdc16b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "915ff9cf_33069d8e",
