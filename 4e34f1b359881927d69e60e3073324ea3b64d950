@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f3ebfb1_60ce3ba2",
+        "filename": "common/usbc/usbc_task.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2021-10-19T23:12:43Z",
+      "side": 1,
+      "message": "I think the one glaring issue with this approach is if another thread comes along and calls these functions, all bets are off.\n\nThere are some things we could do to make this more thread safe, like using a lock (zephyr\u0027s are reentrant btw) to keep usbc pd event loop manipulation to a single thread. But I want to hold off on that until I get more feedback on this approach.",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 34
+      },
+      "revId": "4e34f1b359881927d69e60e3073324ea3b64d950",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
