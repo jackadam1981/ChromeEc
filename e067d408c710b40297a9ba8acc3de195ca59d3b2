@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e833e17_034c43d5",
+        "filename": "zephyr/test/drivers/src/ln9310.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-10-19T04:35:14Z",
+      "side": 1,
+      "message": "Prefer zassert_true(ln9310_init() !\u003d 0, NULL)\n\nThe negation makes the \"ok\" a bit confusing.",
+      "range": {
+        "startLine": 289,
+        "startChar": 1,
+        "endLine": 289,
+        "endChar": 26
+      },
+      "revId": "e067d408c710b40297a9ba8acc3de195ca59d3b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
