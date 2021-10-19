@@ -16,6 +16,29 @@
       "message": "Follow OD SPEC to define PD_MAX_POWER_MW as 45W",
       "revId": "05594d1d759690cd52a8180ad1f2ad7e4afdc16b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "915ff9cf_33069d8e",
+        "filename": "board/taeko/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1160139
+      },
+      "writtenOn": "2021-10-19T16:43:46Z",
+      "side": 1,
+      "message": "This addition is not part of the CL description. Please either separate it to different CL or re-word the description to include the addition.\n\nThanks.",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 47
+      },
+      "revId": "05594d1d759690cd52a8180ad1f2ad7e4afdc16b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
