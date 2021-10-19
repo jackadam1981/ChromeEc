@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0751fc8c_a6da8c75",
+        "filename": "util/build_with_clang.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-10-19T14:54:34Z",
+      "side": 1,
+      "message": "Come to think of it, I think this feels awkward because it belongs in the Makefile and board.mk.  I.e., that\u0027s normally where we do toolchain config, and also where we know about things like the architecutre so we can select the right compilers.",
+      "parentUuid": "2c6c0dce_d1882d0c",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 62
+      },
+      "revId": "256ed497530447085d921e89e6cdb8b5c5fedd86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d92465f6_db7d2563",
         "filename": "util/build_with_clang.py",
         "patchSetId": 5
