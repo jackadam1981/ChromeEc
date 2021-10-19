@@ -117,6 +117,30 @@
       },
       "revId": "9e3ddeb639a5644d1eed184a8ff1cdcff8bb5e75",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d92b082_fd5cf937",
+        "filename": "driver/usb_mux/virtual.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-10-19T20:29:46Z",
+      "side": 1,
+      "message": "Okay, changed our logic here to wait if the mux changes only.  I also created a CL on top of this to wait on HPD ACKs, if that\u0027s necessary.  You can test it out with your scenario that\u0027s failing on brya and let me know.",
+      "parentUuid": "5645b323_2a79cb28",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 22
+      },
+      "revId": "9e3ddeb639a5644d1eed184a8ff1cdcff8bb5e75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
