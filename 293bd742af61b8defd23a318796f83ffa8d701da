@@ -46,6 +46,30 @@
       },
       "revId": "293bd742af61b8defd23a318796f83ffa8d701da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e4c7bcbf_93754438",
+        "filename": "baseboard/intelrvp/adlrvp.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-10-19T04:12:24Z",
+      "side": 1,
+      "message": "board id already is cached, no need to pass the variable, can you correct the link chain of this CL?",
+      "parentUuid": "5bf7af67_6444ec91",
+      "range": {
+        "startLine": 331,
+        "startChar": 12,
+        "endLine": 331,
+        "endChar": 46
+      },
+      "revId": "293bd742af61b8defd23a318796f83ffa8d701da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
