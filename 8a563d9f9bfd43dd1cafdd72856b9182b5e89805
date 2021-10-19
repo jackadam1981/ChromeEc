@@ -16,6 +16,46 @@
       "message": "nit: Can be ordered alphabetically.",
       "revId": "8a563d9f9bfd43dd1cafdd72856b9182b5e89805",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b5d0692_9c4f795f",
+        "filename": "zephyr/boards/arm/brya/brya.dts",
+        "patchSetId": 4
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-10-19T20:31:47Z",
+      "side": 1,
+      "message": "You also need to enable the ADC driver in the EC:\n\u0026adc0 {\n\tstatus \u003d \"okay\";\n};",
+      "revId": "8a563d9f9bfd43dd1cafdd72856b9182b5e89805",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "955b5509_0aca0b28",
+        "filename": "zephyr/projects/brya/brya/prj.conf",
+        "patchSetId": 4
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-10-19T20:31:47Z",
+      "side": 1,
+      "message": "This config option is enabled by default, so this line can be deleted.",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 24
+      },
+      "revId": "8a563d9f9bfd43dd1cafdd72856b9182b5e89805",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
