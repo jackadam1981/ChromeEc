@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c350b570_bfeb1771",
+        "filename": "chip/npcx/hwtimer.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-10-19T22:41:21Z",
+      "side": 1,
+      "message": "should this also be uint32_t to keep types consistent?",
+      "range": {
+        "startLine": 350,
+        "startChar": 1,
+        "endLine": 350,
+        "endChar": 9
+      },
+      "revId": "d765003d01df5c52fc676ad561fa3c7209c2c279",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
