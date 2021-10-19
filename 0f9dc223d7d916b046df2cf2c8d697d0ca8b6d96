@@ -51,6 +51,24 @@
       "parentUuid": "88e9cacc_4e13575e",
       "revId": "0f9dc223d7d916b046df2cf2c8d697d0ca8b6d96",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca64a4f9_8f1ea436",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-10-19T00:06:55Z",
+      "side": 1,
+      "message": "Thanks, Tom.\n\nI think Tricium (or another instance of Tricium) is better because reviewers are more likely presented with formatted changes.\n\nLetting Tricium block CLs would be nice but what are the options for the patches which have no option other than disabling a check (e.g. copyright)?",
+      "parentUuid": "20c356ba_d4277c3d",
+      "revId": "0f9dc223d7d916b046df2cf2c8d697d0ca8b6d96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
