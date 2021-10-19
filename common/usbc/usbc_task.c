@@ -51,9 +51,75 @@ extern int _GPIO_CCD_MODE_ODL;
 
 static uint8_t paused[CONFIG_USB_PD_PORT_MAX_COUNT];
 
+K_MUTEX_DEFINE(pd_mutex);
+
+/* Used by PD task to signal to unit test of suspend state change. */
+K_CONDVAR_DEFINE(pd_condvar);
+
+enum port_task_state {
+	PORT_TASK_STATE_RUNNING = 0,
+	PORT_TASK_STATE_SUSPENDING,
+	PORT_TASK_STATE_SUSPENDED,
+};
+
+static volatile enum port_task_state
+	port_task_curr_state[CONFIG_USB_PD_PORT_MAX_COUNT];
+
+#ifdef CONFIG_ZTEST
+
+void usbc_pd_task_suspend(task_id_t task)
+{
+	int port = TASK_ID_TO_PD_PORT(task);
+
+	mutex_lock(&pd_mutex);
+
+	if (port_task_curr_state[port] == PORT_TASK_STATE_SUSPENDED) {
+		mutex_unlock(&pd_mutex);
+		return;
+	}
+
+	port_task_curr_state[port] = PORT_TASK_STATE_SUSPENDING;
+
+	/* Task might be sleeping, wake it up so we can suspend it our way. */
+	tc_start_event_loop(port);
+
+	k_condvar_wait(&pd_condvar, &pd_mutex, K_FOREVER);
+	__ASSERT_NO_MSG(port_task_curr_state[port] ==
+			PORT_TASK_STATE_SUSPENDED);
+
+	mutex_unlock(&pd_mutex);
+}
+
+void usbc_pd_task_resume(task_id_t task)
+{
+	int port = TASK_ID_TO_PD_PORT(task);
+
+	mutex_lock(&pd_mutex);
+
+	if (port_task_curr_state[port] == PORT_TASK_STATE_RUNNING) {
+		mutex_unlock(&pd_mutex);
+		return;
+	}
+
+	k_thread_resume(task_get_zephyr_tid(task));
+	k_condvar_wait(&pd_condvar, &pd_mutex, K_FOREVER);
+	__ASSERT_NO_MSG(port_task_curr_state[port] == PORT_TASK_STATE_RUNNING);
+
+	mutex_unlock(&pd_mutex);
+}
+
+#endif /* CONFIG_ZTEST */
+
 void tc_pause_event_loop(int port)
 {
+	/* Lock here to prevent pause after usbc_pd_task_suspend starts task */
+	if (IS_ENABLED(CONFIG_ZTEST))
+		mutex_lock(&pd_mutex);
+
 	paused[port] = 1;
+
+	if (IS_ENABLED(CONFIG_ZTEST))
+		mutex_unlock(&pd_mutex);
 }
 
 bool tc_event_loop_is_paused(int port)
@@ -119,6 +185,18 @@ static bool pd_task_loop(int port)
 	/* wait for next event/packet or timeout expiration */
 	const uint32_t evt = task_wait_event(pd_task_timeout(port));
 
+	if (IS_ENABLED(CONFIG_ZTEST)) {
+		bool is_suspending = false;
+
+		mutex_lock(&pd_mutex);
+		is_suspending = port_task_curr_state[port] ==
+				PORT_TASK_STATE_SUSPENDING;
+		mutex_unlock(&pd_mutex);
+
+		if (is_suspending)
+			return false;
+	}
+
 	/* Manage expired PD Timers on timeouts */
 	if (evt & TASK_EVENT_TIMER)
 		pd_timer_manage_expired(port);
@@ -167,6 +245,39 @@ void pd_task(void *u)
 		return;
 
 	while (1) {
+		if (IS_ENABLED(CONFIG_ZTEST)) {
+			bool is_suspending = false;
+
+			mutex_lock(&pd_mutex);
+
+			is_suspending = port_task_curr_state[port] ==
+					PORT_TASK_STATE_SUSPENDING;
+			if (is_suspending) {
+				/* Signal we've suspended */
+				port_task_curr_state[port] =
+					PORT_TASK_STATE_SUSPENDED;
+				k_condvar_signal(&pd_condvar);
+
+				mutex_unlock(&pd_mutex);
+
+#ifdef CONFIG_ZEPHYR
+				/*
+				 * TODO(None): Shim k_thread_suspend and
+				 * task_get_zephyr_tid
+				 */
+
+				k_thread_suspend(task_get_zephyr_tid(
+					task_get_current()));
+#endif /* CONFIG_ZEPHYR */
+
+				/* Signal we've resumed */
+				port_task_curr_state[port] =
+					PORT_TASK_STATE_RUNNING;
+				k_condvar_signal(&pd_condvar);
+			}
+			mutex_unlock(&pd_mutex);
+		}
+
 		pd_timer_init(port);
 		pd_task_init(port);
 
