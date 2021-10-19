@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b857393_276cfbef",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 16
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2021-10-19T13:00:50Z",
+      "side": 1,
+      "message": "Hey good job driving this so far. Added few comments, my main thought about this is that the resulting code is fairly complex, wondering if it\u0027s really necessary to have a fully configurable choice tree in the devicetree, or if we would not be better off with few different hardcoded behaviors (just referred by name in the dt) plus config. +r jrosenth@ who may have a better idea about it. I tried to look through the current gpio LED configs and could not quite wrap my head around it, but it may be worth doing a bit of an analysis of what\u0027s been currently deployed in production and decide if this is really the best approach to try and model all of them with the least amount of code duplication.",
+      "revId": "63e7af6d2c0b21be8e972d64fd30eb8641672e61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c39892f2_07d0847e",
+        "filename": "zephyr/projects/trogdor/lazor/led.dts",
+        "patchSetId": 16
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2021-10-19T13:00:50Z",
+      "side": 1,
+      "message": "Do you need the extra node at all? It only contains gpio-led-colors...",
+      "range": {
+        "startLine": 2,
+        "startChar": 0,
+        "endLine": 4,
+        "endChar": 0
+      },
+      "revId": "63e7af6d2c0b21be8e972d64fd30eb8641672e61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ed9d34d_b5816fd1",
+        "filename": "zephyr/projects/trogdor/lazor/src/led.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2021-10-19T13:00:50Z",
+      "side": 1,
+      "message": "This is not used in this patch right? Should it go in a different one?",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 50
+      },
+      "revId": "63e7af6d2c0b21be8e972d64fd30eb8641672e61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae4cbddf_4de8817b",
+        "filename": "zephyr/projects/trogdor/lazor/src/led.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2021-10-19T13:00:50Z",
+      "side": 1,
+      "message": "I think there should be an \"else\" case here, otherwise this could potentially return noise... isn\u0027t the compiler printing a warning about it?",
+      "range": {
+        "startLine": 171,
+        "startChar": 1,
+        "endLine": 171,
+        "endChar": 8
+      },
+      "revId": "63e7af6d2c0b21be8e972d64fd30eb8641672e61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
