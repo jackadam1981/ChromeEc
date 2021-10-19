@@ -65,6 +65,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e0f9d12_d0843d30",
+        "filename": "zephyr/test/drivers/src/ln9310.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2021-10-19T18:49:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5c5bd724_09d79029",
+      "range": {
+        "startLine": 308,
+        "startChar": 12,
+        "endLine": 308,
+        "endChar": 13
+      },
+      "revId": "52f3abab48a14fd9f95bd02abb634a03dc6bdd22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e74f01b1_30eebcfa",
@@ -112,6 +136,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b331b785_44ce4b21",
+        "filename": "zephyr/test/drivers/src/ln9310.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 325,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2021-10-19T18:49:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "864290e1_7efc7e4f",
+      "range": {
+        "startLine": 325,
+        "startChar": 0,
+        "endLine": 325,
+        "endChar": 0
+      },
+      "revId": "52f3abab48a14fd9f95bd02abb634a03dc6bdd22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1d802c05_57daa2c7",
@@ -149,6 +197,30 @@
       "side": 1,
       "message": "Not sure how I missed when doing my own review. Oy. Thank you!!!",
       "parentUuid": "1d802c05_57daa2c7",
+      "range": {
+        "startLine": 327,
+        "startChar": 0,
+        "endLine": 331,
+        "endChar": 42
+      },
+      "revId": "52f3abab48a14fd9f95bd02abb634a03dc6bdd22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "46c34192_8c75bb47",
+        "filename": "zephyr/test/drivers/src/ln9310.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2021-10-19T18:49:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "24c02c33_292854c6",
       "range": {
         "startLine": 327,
         "startChar": 0,
