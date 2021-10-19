@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92d9403a_b205dcd7",
+        "filename": "board/reef/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-10-19T17:10:24Z",
+      "side": 1,
+      "message": "Nit: Line over 80 columns.",
+      "revId": "617167d22e6337d08773523db0052f1616e7ae7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44d15a10_53940dc7",
+        "filename": "board/reef_mchp/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-10-19T17:10:24Z",
+      "side": 1,
+      "message": "Nit: Line over 80 columns. Not a linter issue in gpio.inc, but the rest of this comment is formatted.",
+      "revId": "617167d22e6337d08773523db0052f1616e7ae7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "20c7ef4d_6cb3b739",
+        "filename": "chip/npcx/shi_chip.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-10-19T17:10:24Z",
+      "side": 1,
+      "message": "Out of scope, but I think the include guard in this file has a non-standard name, and it\u0027s weird to me that the declarations here are gated by the config check.",
+      "revId": "617167d22e6337d08773523db0052f1616e7ae7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
