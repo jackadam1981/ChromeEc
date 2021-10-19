@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d17f938a_35dcf568",
+        "filename": "zephyr/drivers/cros_shi/Kconfig",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-10-19T14:45:43Z",
+      "side": 1,
+      "message": "Nit - I think I prefer\n   default y if PLATFORM_EC_HOST_INTERFACE_SHI\n   \nWhat do you think?",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 10
+      },
+      "revId": "118326adafd1a8dbbbe2a201106610702183d946",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
