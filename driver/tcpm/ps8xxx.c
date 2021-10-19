@@ -645,6 +645,7 @@ static int ps8xxx_get_chip_info(int port, int live,
 	int reg;
 	int rv = tcpci_get_chip_info(port, live, chip_info);
 
+	CPRINTS("[Reno] C%d===> %s()", port, __func__);
 	if (rv != EC_SUCCESS)
 		return rv;
 
@@ -681,11 +682,13 @@ static int ps8xxx_get_chip_info(int port, int live,
 	}
 #endif
 	reg = get_reg_by_product(port, REG_FW_VER);
+
 	rv = tcpc_read(port, reg, &val);
 	if (rv != EC_SUCCESS)
 		return rv;
 
 	chip_info->fw_version_number = val;
+	CPRINTS("[Reno] C%d===> val of %s() is 0x%x", port, __func__, val);
 
 	/* Treat unexpected values as error (FW not initiated from reset) */
 	if (live && (

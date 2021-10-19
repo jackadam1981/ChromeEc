@@ -230,6 +230,7 @@ static bool board_detect_ps8815_db(void)
 
 void board_reset_pd_mcu(void)
 {
+	CPRINTSUSB("[Reno]====> board_reset_pd_mcu");
 	/*
 	 * TODO(b/194618663): figure out correct timing
 	 */

@@ -19,7 +19,7 @@
 #include "usb_mux.h"
 #include "usb_pd_tcpm.h"
 #include "usb_pd.h"
-#ifdef CONFIG_COMMON_RUNTIME
+#if 1
 struct ec_params_usb_pd_rw_hash_entry rw_hash_table[RW_HASH_ENTRIES];
 
 #define CPRINTF(format, args...) cprintf(CC_USBPD, format, ## args)
@@ -84,6 +84,8 @@ static enum ec_status hc_remote_pd_chip_info(struct host_cmd_handler_args *args)
 	const struct ec_params_pd_chip_info *p = args->params;
 	struct ec_response_pd_chip_info_v1 info;
 
+	CPRINTS("[Reno] ====> USBC%d: %s", p->port, __func__);
+
 	if (p->port >= board_get_usb_pd_port_count())
 		return EC_RES_INVALID_PARAM;
 
@@ -99,6 +101,8 @@ static enum ec_status hc_remote_pd_chip_info(struct host_cmd_handler_args *args)
 			      : sizeof(struct ec_response_pd_chip_info);
 
 	memcpy(args->response, &info, args->response_size);
+
+	CPRINTS("[Reno] ====> USBC%d: %s [Done]", p->port, __func__);
 
 	return EC_RES_SUCCESS;
 }
