@@ -91,6 +91,30 @@
       },
       "revId": "db7ce12fe3232002fdf48b99c193e704244e62a4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e7451c26_2cb757ff",
+        "filename": "include/battery.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-10-19T15:18:56Z",
+      "side": 1,
+      "message": "Done. b/203539536.",
+      "parentUuid": "45dc4c74_c3ac069b",
+      "range": {
+        "startLine": 81,
+        "startChar": 4,
+        "endLine": 81,
+        "endChar": 8
+      },
+      "revId": "db7ce12fe3232002fdf48b99c193e704244e62a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
