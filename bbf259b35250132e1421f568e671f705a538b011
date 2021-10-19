@@ -70,6 +70,30 @@
       },
       "revId": "bbf259b35250132e1421f568e671f705a538b011",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85471714_43b36413",
+        "filename": "zephyr/shim/src/bc12_pi3usb9201.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2021-10-19T16:02:40Z",
+      "side": 1,
+      "message": "I understand. In gpio.c the pins are configured and the callbacks assigned. Should the pin configuration as well as setting the callbacks be moved to this file? I\u0027m inclined to leave things as they are and implement pin configuration when we have a proper driver.",
+      "parentUuid": "3251a2f2_1223fd8e",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 38
+      },
+      "revId": "bbf259b35250132e1421f568e671f705a538b011",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
