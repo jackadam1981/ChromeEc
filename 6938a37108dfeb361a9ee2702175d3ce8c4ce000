@@ -22,6 +22,30 @@
       },
       "revId": "6938a37108dfeb361a9ee2702175d3ce8c4ce000",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "facc23fc_f3279f84",
+        "filename": "board/cherry/gpio.inc",
+        "patchSetId": 4
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2021-10-19T09:29:14Z",
+      "side": 1,
+      "message": "ah... fixed",
+      "parentUuid": "a98b789a_62b4dcbf",
+      "range": {
+        "startLine": 123,
+        "startChar": 22,
+        "endLine": 123,
+        "endChar": 32
+      },
+      "revId": "6938a37108dfeb361a9ee2702175d3ce8c4ce000",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
