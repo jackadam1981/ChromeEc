@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0da9d1ce_e104b228",
+        "filename": "zephyr/boards/arm/brya/brya.dts",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1523723
+      },
+      "writtenOn": "2021-10-19T22:35:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2f234064_55a730c9",
+      "revId": "8a563d9f9bfd43dd1cafdd72856b9182b5e89805",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4b5d0692_9c4f795f",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c373254b_712eb6d2",
+        "filename": "zephyr/boards/arm/brya/brya.dts",
+        "patchSetId": 4
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1523723
+      },
+      "writtenOn": "2021-10-19T22:35:26Z",
+      "side": 1,
+      "message": "Is it only below code enough to enable EC driver? or do we need to enable from somewhere else ?\n\n\u0026adc0 {\n\tstatus \u003d \"okay\";\n};",
+      "parentUuid": "4b5d0692_9c4f795f",
+      "revId": "8a563d9f9bfd43dd1cafdd72856b9182b5e89805",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "955b5509_0aca0b28",
@@ -48,6 +84,30 @@
       "writtenOn": "2021-10-19T20:31:47Z",
       "side": 1,
       "message": "This config option is enabled by default, so this line can be deleted.",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 24
+      },
+      "revId": "8a563d9f9bfd43dd1cafdd72856b9182b5e89805",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4093b3d9_b950f9a1",
+        "filename": "zephyr/projects/brya/brya/prj.conf",
+        "patchSetId": 4
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1523723
+      },
+      "writtenOn": "2021-10-19T22:35:26Z",
+      "side": 1,
+      "message": "Done.\nWhere is the defaults configuration defined in zephyr?\n\nI can see CONFIG_ADC\u003dy and CONFIG_ADC_SHELL\u003dn in \"zephyr/boards/arm/volteer/volteer_defconfig\" file but these are not defined in \"zephyr/boards/arm/brya/brya_defconfig\". \n\nDo we need to add these in \"zephyr/boards/arm/brya/brya_defconfig\" file to enable by default ?",
+      "parentUuid": "955b5509_0aca0b28",
       "range": {
         "startLine": 45,
         "startChar": 0,
