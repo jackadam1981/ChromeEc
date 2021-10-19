@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d81b6b91_8cd8dabf",
+        "filename": "chip/mec1322/hwtimer.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-10-19T22:45:35Z",
+      "side": 1,
+      "message": "UINT32_MAX?",
+      "range": {
+        "startLine": 116,
+        "startChar": 15,
+        "endLine": 116,
+        "endChar": 25
+      },
+      "revId": "45bd45aa6b24b308759c30e4303a5b51a746c958",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "281409aa_47bc0b48",
+        "filename": "chip/mec1322/hwtimer.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-10-19T22:45:35Z",
+      "side": 1,
+      "message": "uint32_t for consistency?",
+      "range": {
+        "startLine": 116,
+        "startChar": 1,
+        "endLine": 116,
+        "endChar": 9
+      },
+      "revId": "45bd45aa6b24b308759c30e4303a5b51a746c958",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
