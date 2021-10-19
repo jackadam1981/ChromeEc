@@ -371,16 +371,21 @@ static void clock_select_clock(enum scp_clock_source src)
 	SCP_CLK_SW_SEL = sel;
 }
 
+extern void uart_enable_irq(void);
+extern void uart_disable_irq(void);
+
 __override void
 power_chipset_handle_host_sleep_event(enum host_sleep_event state,
 				      struct host_sleep_event_context *ctx)
 {
 	if (state == HOST_SLEEP_EVENT_S3_SUSPEND) {
 		CPRINTS("AP suspend");
+		uart_disable_irq();
 		clock_select_clock(SCP_CLK_32K);
 	} else if (state == HOST_SLEEP_EVENT_S3_RESUME) {
-		CPRINTS("AP resume");
 		clock_select_clock(SCP_CLK_ULPOSC2_HIGH_SPEED);
+		uart_enable_irq();
+		CPRINTS("AP resume");
 	}
 }
 
