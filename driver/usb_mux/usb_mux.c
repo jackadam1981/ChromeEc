@@ -723,9 +723,13 @@ static enum ec_status hc_usb_pd_mux_info(struct host_cmd_handler_args *args)
 
 	r->flags = mux_state;
 
-	/* Clear HPD IRQ event since we're about to inform host of it. */
+	/*
+	 * Clear HPD IRQ event since we're about to inform host of it, unless we
+	 * have already exited DP mode.
+	 */
 	if (IS_ENABLED(CONFIG_USB_MUX_VIRTUAL) &&
-	    (r->flags & USB_PD_MUX_HPD_IRQ)) {
+	    (r->flags & USB_PD_MUX_HPD_IRQ) &&
+	    (r->flags & USB_PD_MUX_DP_ENABLED)) {
 		usb_mux_hpd_update(port, r->flags & USB_PD_MUX_HPD_LVL);
 	}
 
