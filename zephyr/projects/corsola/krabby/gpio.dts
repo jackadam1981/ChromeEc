@@ -261,17 +261,7 @@
 			label = "HDMI_PRSNT_ODL";
 		};
 
-		/* pins used in power/mt8192, to be removed */
-		ap_ec_watchdog_l: ap_ec_watchdog_l {
-			gpios = <&gpiox 0 GPIO_INPUT>;
-			enum-name = "GPIO_AP_EC_WATCHDOG_L";
-			label = "AP_EC_WATCHDOG_L";
-		};
-		ec_pmic_watchdog_l: ec_pmic_watchdog_l {
-			gpios = <&gpiox 0 GPIO_INPUT>;
-			enum-name = "GPIO_EC_PMIC_WATCHDOG_L";
-			label = "EC_PMIC_WATCHDOG_L";
-		};
+		/* unimplemented pin */
 		pmic_ec_pwrgd: pmic_ec_pwrgd {
 			gpios = <&gpiox 0 GPIO_INPUT>;
 			enum-name = "GPIO_PMIC_EC_PWRGD";
@@ -287,18 +277,14 @@
 	};
 
 	power_signal_list: power-signal-list {
-		compatible = "mediatek,power-signal-list";
-		pmic_pwr_good {
-			power-enum-name = "PMIC_PWR_GOOD";
-			gpio = <&pmic_ec_pwrgd>;
-		};
+		compatible = "mt8186,power-signal-list";
 		ap_in_s3_l {
 			power-enum-name = "AP_IN_S3_L";
 			gpio = <&ap_in_sleep_l>;
 		};
-		ap_wdt_asserted {
-			power-enum-name = "AP_WDT_ASSERTED";
-			gpio = <&ap_ec_watchdog_l>;
+		pmic_pwr_good {
+			power-enum-name = "PMIC_PWR_GOOD";
+			gpio = <&pmic_ec_pwrgd>;
 		};
 	};
 
