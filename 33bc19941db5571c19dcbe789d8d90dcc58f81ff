@@ -63,6 +63,24 @@
       "message": "both \"make -j buildall\" and \"zmake testall\" are passing with this change. \nDetails on the CQ fail are not available. Kindly help.",
       "revId": "33bc19941db5571c19dcbe789d8d90dcc58f81ff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11c10da1_33d55e21",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-10-19T22:19:21Z",
+      "side": 1,
+      "message": "hmmm... not sure what happened: typical python backtrace instead of informative error handling:\n\nsingleimage/zephyr/zephyr.elf]\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\nDEBUG: [test /mnt/host/source/src/platform/ec/build/zephyr-coverage/test/drivers/build-singleimage/zephyr/zephyr.elf]START - test_tcpci_set_polarity\nDEBUG: [test /mnt/host/source/src/platform/ec/build/zephyr-coverage/test/drivers/build-singleimage/zephyr/zephyr.elf] PASS - test_tcpci_set_polarity in 0.0 seconds\nDEBUG: [test /mnt/host/source/src/platform/ec/build/zephyr-coverage/test/drivers/build-singleimage/zephyr/zephyr.elf]\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\nERROR: Execution failed (return code\u003d1): /mnt/host/source/src/platform/ec/build/zephyr-coverage/test/drivers/build-singleimage/zephyr/zephyr.elf\nTraceback (most recent call last):\n  File \"/mnt/host/source/src/platform/ec/zephyr/zmake/zmake/multiproc.py\", line 294, in _run_fn\n    result \u003d func()\n  File \"/mnt/host/source/src/platform/ec/zephyr/zmake/zmake/zmake.py\", line 714, in \u003clambda\u003e\n    project, project_build_dir, lcov_file\n  File \"/mnt/host/source/src/platform/ec/zephyr/zmake/zmake/zmake.py\", line 689, in _coverage_run_test\n    coverage\u003dTrue,\n  File \"/mnt/host/source/src/platform/ec/zephyr/zmake/zmake/zmake.py\", line 342, in configure\n    rv \u003d self.test(build_dir\u003dbuild_dir)\n  File \"/mnt/host/source/src/platform/ec/zephyr/zmake/zmake/zmake.py\", line 511, in test\n    raise OSError(get_process_failure_msg(proc))\nOSError: Execution failed (return code\u003d1): /mnt/host/source/src/platform/ec/build/zephyr-coverage/test/drivers/build-singleimage/zephyr/zephyr.elf\n\nDEBUG: [test /mnt/host/source/src/platform/ec/build/zephyr-coverage/test/drivers/build-singleimage/zephyr/zephyr.elf]START - test_tcpci_set_vconn\nDEBUG: [test /mnt/host/source/src/platform/ec/build/zephyr-coverage/test/drivers/build-singleimage/zephyr/zephyr.elf] PASS - test_tcpci_set_vconn in 0.0 seconds\nDEBUG: [test /mnt/host/source/src/platform/ec/build/zephyr-coverage/test/drivers/build-singleimage/zephyr/zephyr.elf]\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\nDEBUG: [test /mnt/host/source/src/platform/ec/build/zephyr-coverage/test/drivers/build-singleimage/zephyr/zephyr.elf]Test suite tcpci succeeded\nDEBUG: [test /mnt/host/source/src/platform/ec/build/zephyr-coverage/test/drivers/build-singleimage/zephyr/zephyr.elf]\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\nDEBUG: [test /mnt/host/source/src/platform/ec/build/zephyr-coverage/test/drivers/build-singleimage/zephyr/zephyr.elf]PROJECT EXECUTION FAILED\n04:13:14.889: INFO: Endpoint execution completed, return code: 3",
+      "parentUuid": "73ffd69c_9b7a1822",
+      "revId": "33bc19941db5571c19dcbe789d8d90dcc58f81ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
