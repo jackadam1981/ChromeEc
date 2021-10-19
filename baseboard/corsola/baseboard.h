@@ -22,7 +22,7 @@
  * allow the second reset to be treated as a power-on.
  */
 #define CONFIG_BOARD_RESET_AFTER_POWER_ON
-#define CONFIG_CHIPSET_MT8192
+#define CONFIG_CHIPSET_MT8186
 #define CONFIG_EXTPOWER_GPIO
 #define CONFIG_HIBERNATE_WAKE_PINS_DYNAMIC
 #define CONFIG_POWER_SLEEP_FAILURE_DETECTION
@@ -186,7 +186,7 @@
 
 #include "gpio_signal.h"
 #include "registers.h"
-#include "power/mt8192.h"
+#include "power/mt8186.h"
 
 void board_reset_pd_mcu(void);
 enum board_sub_board board_get_sub_board(void);
