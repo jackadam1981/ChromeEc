@@ -16,6 +16,24 @@
       "message": "can we make it TUSB10XX instead? what if someone enables both 1064 and 1044?",
       "revId": "79038db3dfcd42ff6355f42b9f5333b1dcf04a36",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "213c7967_cbba400a",
+        "filename": "driver/build.mk",
+        "patchSetId": 4
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2021-10-19T11:39:34Z",
+      "side": 0,
+      "message": "Thanks, added an error check to catch this. Practically we expect a platform should have only one version of the chip.",
+      "parentUuid": "703882cf_3b384318",
+      "revId": "79038db3dfcd42ff6355f42b9f5333b1dcf04a36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
