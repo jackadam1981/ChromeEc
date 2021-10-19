@@ -33,6 +33,24 @@
       "message": "gsctool changes not included? will we sync the non-firmware code as well to simplify cherry-picks in the future?",
       "revId": "09c8743376e6e1a6c00f687f26d70f9a363b4516",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b31bb715_4857e386",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-10-19T01:55:43Z",
+      "side": 1,
+      "message": "we have not been cherry picking non-embedded code, it\u0027s not a big deal, just drop the files which are not in the branch when cherry picking.",
+      "parentUuid": "90ffcacb_7f32aedb",
+      "revId": "09c8743376e6e1a6c00f687f26d70f9a363b4516",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
