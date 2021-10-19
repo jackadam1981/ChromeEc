@@ -71,6 +71,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "30278dbe_54b337a9",
+        "filename": "baseboard/kukui/baseboard.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1444467
+      },
+      "writtenOn": "2021-10-19T12:36:23Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ebecd494_ea36999f",
+      "revId": "60706c930d5fc7c4697331b194597f0b407d756c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "89855060_2aae3b7c",
@@ -137,6 +155,24 @@
       "side": 1,
       "message": "Yes. The buffer is fixed to 32-byte which is the longest defined in the SBS spec. \u003cparam\u003e may still exceed vendor_param_start + string_length. So, we validate it here.",
       "parentUuid": "0ae2ed03_67ae35aa",
+      "revId": "60706c930d5fc7c4697331b194597f0b407d756c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2df0a17a_fa4ad8b0",
+        "filename": "common/battery.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 418,
+      "author": {
+        "id": 1444467
+      },
+      "writtenOn": "2021-10-19T12:36:23Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "2a138467_3840b034",
       "revId": "60706c930d5fc7c4697331b194597f0b407d756c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
