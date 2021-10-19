@@ -118,6 +118,30 @@
       },
       "revId": "a176eb8df2ab281270676c37dbe6968a350f1841",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6963785c_0f62b9fa",
+        "filename": "chip/npcx/watchdog.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2021-10-19T02:50:10Z",
+      "side": 1,
+      "message": "Hi Daisuke,\nYes, the option 1 is close to what you assumed.\nBy the way, I reopen the issue b:184681421.\nLet\u0027s continues to our discussion there.",
+      "parentUuid": "173530f4_abb74635",
+      "range": {
+        "startLine": 118,
+        "startChar": 6,
+        "endLine": 118,
+        "endChar": 28
+      },
+      "revId": "a176eb8df2ab281270676c37dbe6968a350f1841",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
