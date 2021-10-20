@@ -104,6 +104,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9904fbcf_2d06643f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-10-20T22:51:34Z",
+      "side": 1,
+      "message": "Sorry for the delayed review.\n\nThis change introduces a new config option: CONFIG_SIMPLE_OUTPUT. \n1. The name \"simple output\" is very broad, I would suggest CONFIG_CMD_SRCCAPS_SIMPLE_OUTPUT or CONFIG_CMD_SRCCAPS_REDUCED_SIZE\n2. Please add the default with a brief comment to ec/include/config.h  \n",
+      "revId": "389823858ecd51054c30b122140f2192f9cb13d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "853c640f_6f77b03d",
@@ -140,6 +157,23 @@
         "endLine": 1017,
         "endChar": 7
       },
+      "revId": "389823858ecd51054c30b122140f2192f9cb13d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65cf3007_5177b9fe",
+        "filename": "common/usb_common.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 1049,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-10-20T22:51:34Z",
+      "side": 1,
+      "message": "When CONFIG_SIMPLE_OUTPUT is defined, we clearly want to save a few bytes in flash. So how about skipping the print at all? It will leave a few extra bytes on those platforms",
       "revId": "389823858ecd51054c30b122140f2192f9cb13d3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
