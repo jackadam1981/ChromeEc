@@ -22,6 +22,30 @@
       },
       "revId": "449578adbd3c89dd90b026bdfe7f1a63ad705401",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff2c11d1_a6b4005e",
+        "filename": "board/taeko/fw_config.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1160139
+      },
+      "writtenOn": "2021-10-20T21:32:40Z",
+      "side": 1,
+      "message": "Good catch. Since the rest of the bits are not used 16 or 17 should behave the same?",
+      "parentUuid": "25f38a6c_665e3bad",
+      "range": {
+        "startLine": 47,
+        "startChar": 27,
+        "endLine": 47,
+        "endChar": 29
+      },
+      "revId": "449578adbd3c89dd90b026bdfe7f1a63ad705401",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
