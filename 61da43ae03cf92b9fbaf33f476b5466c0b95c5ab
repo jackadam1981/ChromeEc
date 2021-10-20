@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "78e2c0a3_8bde8b6a",
+        "filename": "baseboard/intelrvp/adlrvp.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-10-20T21:00:20Z",
+      "side": 1,
+      "message": "functions and arrays are already effectively pointers.\nso, referring to them as \"\u0026foo\" is the same as \"foo\".",
+      "parentUuid": "c5fb3f6e_8f27a10f",
+      "range": {
+        "startLine": 339,
+        "startChar": 5,
+        "endLine": 339,
+        "endChar": 6
+      },
+      "revId": "61da43ae03cf92b9fbaf33f476b5466c0b95c5ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5dc78890_3650e76e",
         "filename": "baseboard/intelrvp/adlrvp.c",
         "patchSetId": 4
