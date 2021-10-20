@@ -117,6 +117,24 @@
       "parentUuid": "18b1fc1c_b9ee2eef",
       "revId": "33bc19941db5571c19dcbe789d8d90dcc58f81ff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2956e1a1_51357fc7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-10-20T08:00:55Z",
+      "side": 1,
+      "message": "right, it\u0027s some unrelated zephyr thing (b/203622938) that\u0027s\naffecting a bunch of patches i\u0027ve looked at tonight.",
+      "parentUuid": "7c58a764_e0a84402",
+      "revId": "33bc19941db5571c19dcbe789d8d90dcc58f81ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
