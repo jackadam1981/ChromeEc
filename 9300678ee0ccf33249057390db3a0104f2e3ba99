@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fddbd3e2_abee744d",
+        "filename": "board/anahera/board.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2021-10-20T19:45:35Z",
+      "side": 1,
+      "message": "Ack, removed sense resistors with name BQ25720 as they are same as BQ25710",
+      "parentUuid": "ba0e5981_97a3052f",
+      "range": {
+        "startLine": 141,
+        "startChar": 23,
+        "endLine": 141,
+        "endChar": 30
+      },
+      "revId": "9300678ee0ccf33249057390db3a0104f2e3ba99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fe03c8ff_e2ddaa77",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-10-20T03:34:35Z",
       "side": 1,
       "message": "please add the corresponding zephyr Kconfig, etc.",
+      "range": {
+        "startLine": 164,
+        "startChar": 0,
+        "endLine": 167,
+        "endChar": 40
+      },
+      "revId": "9300678ee0ccf33249057390db3a0104f2e3ba99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0bae9c9c_88d89bf2",
+        "filename": "util/config_allowed.txt",
+        "patchSetId": 6
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2021-10-20T19:45:35Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "fe03c8ff_e2ddaa77",
       "range": {
         "startLine": 164,
         "startChar": 0,
