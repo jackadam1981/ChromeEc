@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5bd12917_605ac8c9",
+        "filename": "driver/build.mk",
+        "patchSetId": 6
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2021-10-20T08:36:58Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a5ae00c3_9e7a856b",
+      "range": {
+        "startLine": 193,
+        "startChar": 0,
+        "endLine": 194,
+        "endChar": 53
+      },
+      "revId": "4a83e68a2b92a00874f0c9204b4110bdb11a7a87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cb18cddb_04a96eaf",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "87a33b21_bf6b97bb",
+        "filename": "driver/usb_mux/tusb1064.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2021-10-20T08:36:58Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "cb18cddb_04a96eaf",
+      "range": {
+        "startLine": 14,
+        "startChar": 68,
+        "endLine": 14,
+        "endChar": 69
+      },
+      "revId": "4a83e68a2b92a00874f0c9204b4110bdb11a7a87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d6763d34_0c675417",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-10-19T23:52:19Z",
       "side": 1,
       "message": "will this compile on the 1064?",
+      "range": {
+        "startLine": 80,
+        "startChar": 9,
+        "endLine": 80,
+        "endChar": 35
+      },
+      "revId": "4a83e68a2b92a00874f0c9204b4110bdb11a7a87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2be38da7_f7bac2fe",
+        "filename": "driver/usb_mux/tusb1064.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2021-10-20T08:36:58Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d6763d34_0c675417",
       "range": {
         "startLine": 80,
         "startChar": 9,
