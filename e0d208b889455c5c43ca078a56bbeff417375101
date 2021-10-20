@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "58233dc2_64c73c71",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-10-20T00:21:38Z",
+      "side": 1,
+      "message": "My understanding of this design has always been that the GSCVD requirement would be hardcoded (based on board ID). This approach does not seem safe. If an attacker can manage to erase the cache (e.g. by triggering a cache update by installing a valid new firmware image and then cutting power at just the right moment), they can circumvent the protection.",
+      "revId": "e0d208b889455c5c43ca078a56bbeff417375101",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "16b9153f_f9a7a059",
