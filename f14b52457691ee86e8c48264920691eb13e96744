@@ -71,6 +71,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "169e916c_a2700270",
+        "filename": "zephyr/test/drivers/src/bmi260.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1928,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-10-20T20:47:55Z",
+      "side": 1,
+      "message": "Huh, I thought the linter complained about this. But if the linter is running and not complaining, you can leave this as is.",
+      "parentUuid": "b4c96bae_24f8acac",
+      "revId": "f14b52457691ee86e8c48264920691eb13e96744",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ccf38b12_56abe69c",
@@ -149,6 +167,24 @@
       "side": 1,
       "message": "We are relying on a particular Kconfig flag [not] being set so commenting this would be a good idea. Do you know where the relevant Kconfig file lives? I\u0027m having trouble finding it.",
       "parentUuid": "30c73e6e_0196b129",
+      "revId": "f14b52457691ee86e8c48264920691eb13e96744",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a68116b7_7fbd239f",
+        "filename": "zephyr/test/drivers/src/bmi260.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1977,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-10-20T20:47:55Z",
+      "side": 1,
+      "message": "The configuration for this build is in zephyr/test/drivers/prj.conf.",
+      "parentUuid": "7b3ac1ea_b3e6c183",
       "revId": "f14b52457691ee86e8c48264920691eb13e96744",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
