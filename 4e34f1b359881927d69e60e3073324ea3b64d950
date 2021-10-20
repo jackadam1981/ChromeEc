@@ -3,6 +3,63 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4e3f961b_c8279323",
+        "filename": "common/usbc/usbc_task.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-10-20T02:27:46Z",
+      "side": 1,
+      "message": "I think my comments below would avoid the issue of someone calling tc_start_event_loop after the suspend, but I think that you should use a lock here to make sure that after calling pause nobody can start while you\u0027re waiting for things to stabilize.\n\nSo basically:\n\n- lock\n- tc_pause_event_loop\n- wait for tc_event_loop_is_paused (which should use a condvar instead of just sleeping/yielding)\n- k_thread_suspend\n- unlock\n\n(same with usbc_pd_task_resume)",
+      "range": {
+        "startLine": 60,
+        "startChar": 2,
+        "endLine": 60,
+        "endChar": 14
+      },
+      "revId": "4e34f1b359881927d69e60e3073324ea3b64d950",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca2c3172_ea0f445d",
+        "filename": "common/usbc/usbc_task.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-10-20T02:27:46Z",
+      "side": 1,
+      "message": "I think you should add:\nk_thread_suspend(task_get_zephyr_tid(task));",
+      "revId": "4e34f1b359881927d69e60e3073324ea3b64d950",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1cd2271f_9ff9b793",
+        "filename": "common/usbc/usbc_task.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-10-20T02:27:46Z",
+      "side": 1,
+      "message": "k_thread_resume(task_get_zephyr_tid(task));",
+      "revId": "4e34f1b359881927d69e60e3073324ea3b64d950",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1f3ebfb1_60ce3ba2",
         "filename": "common/usbc/usbc_task.c",
         "patchSetId": 2
@@ -19,6 +76,53 @@
         "startChar": 0,
         "endLine": 82,
         "endChar": 34
+      },
+      "revId": "4e34f1b359881927d69e60e3073324ea3b64d950",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b1413ce_ee32d449",
+        "filename": "common/usbc/usbc_task.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-10-20T02:27:46Z",
+      "side": 1,
+      "message": "See my comment above, if you actually suspend the thread after reaching a stable point then calling tc_start_event_loop won\u0027t matter",
+      "parentUuid": "1f3ebfb1_60ce3ba2",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 34
+      },
+      "revId": "4e34f1b359881927d69e60e3073324ea3b64d950",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27f4db5c_b8cffa19",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 3425,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-10-20T02:27:46Z",
+      "side": 1,
+      "message": "__test_only",
+      "range": {
+        "startLine": 3425,
+        "startChar": 0,
+        "endLine": 3425,
+        "endChar": 4
       },
       "revId": "4e34f1b359881927d69e60e3073324ea3b64d950",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
