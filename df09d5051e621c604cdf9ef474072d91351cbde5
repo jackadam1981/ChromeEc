@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9e5d0b3_7b499c0b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2021-10-20T08:55:49Z",
+      "side": 1,
+      "message": "Suspect the CQ error is caused by a bug. Need to clarify it later. COuld you please try to:\n1. remove the link\n2. add a new file called \" charger_isl9241.c\" and modify the build.mk\nSubmit a cl for this. Let see if it works",
+      "revId": "df09d5051e621c604cdf9ef474072d91351cbde5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
