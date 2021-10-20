@@ -46,6 +46,30 @@
       },
       "revId": "9afb3ae33cecd01d4255a4b4abe9561ecc38d310",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d6f40f0_b12efc36",
+        "filename": "baseboard/intelrvp/adlrvp.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2021-10-20T18:57:57Z",
+      "side": 1,
+      "message": "I think, better to rename configure_battery() to configure_charger() as it is already used in single bin approach for battery reconfig.",
+      "parentUuid": "78278b68_13ab7611",
+      "range": {
+        "startLine": 330,
+        "startChar": 12,
+        "endLine": 330,
+        "endChar": 44
+      },
+      "revId": "9afb3ae33cecd01d4255a4b4abe9561ecc38d310",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
