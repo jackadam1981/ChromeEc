@@ -83,6 +83,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b27681b9_23680ae0",
+        "filename": "zephyr/projects/trogdor/lazor/led.dts",
+        "patchSetId": 16
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1513493
+      },
+      "writtenOn": "2021-10-20T05:03:21Z",
+      "side": 1,
+      "message": "Yes, auto-control, brightness-range etc will be children of this particular node. This CL only covers battery SM.",
+      "parentUuid": "370c78fb_53d7504e",
+      "range": {
+        "startLine": 2,
+        "startChar": 0,
+        "endLine": 4,
+        "endChar": 0
+      },
+      "revId": "63e7af6d2c0b21be8e972d64fd30eb8641672e61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4ed9d34d_b5816fd1",
@@ -106,6 +130,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d22a30c8_81cf93ef",
+        "filename": "zephyr/projects/trogdor/lazor/src/led.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1513493
+      },
+      "writtenOn": "2021-10-20T05:03:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4ed9d34d_b5816fd1",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 50
+      },
+      "revId": "63e7af6d2c0b21be8e972d64fd30eb8641672e61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ae4cbddf_4de8817b",
@@ -119,6 +167,30 @@
       "writtenOn": "2021-10-19T13:00:50Z",
       "side": 1,
       "message": "I think there should be an \"else\" case here, otherwise this could potentially return noise... isn\u0027t the compiler printing a warning about it?",
+      "range": {
+        "startLine": 171,
+        "startChar": 1,
+        "endLine": 171,
+        "endChar": 8
+      },
+      "revId": "63e7af6d2c0b21be8e972d64fd30eb8641672e61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e55468da_126855aa",
+        "filename": "zephyr/projects/trogdor/lazor/src/led.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1513493
+      },
+      "writtenOn": "2021-10-20T05:03:21Z",
+      "side": 1,
+      "message": "For else case LED is OFF. So initialized the variable to 0 and removed return from if node \u003c 0 (ln 288)",
+      "parentUuid": "ae4cbddf_4de8817b",
       "range": {
         "startLine": 171,
         "startChar": 1,
