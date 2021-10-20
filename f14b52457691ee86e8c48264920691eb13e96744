@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "510f0000_5e92e1ae",
+        "filename": "zephyr/test/drivers/src/bmi260.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1924,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-10-20T18:23:05Z",
+      "side": 1,
+      "message": "Nit: You can just initialize these when you declare them.",
+      "revId": "f14b52457691ee86e8c48264920691eb13e96744",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ec54c67_1378635a",
+        "filename": "zephyr/test/drivers/src/bmi260.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1928,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-10-20T18:23:05Z",
+      "side": 1,
+      "message": "EC (kernel) code style is to have a line with just /* at the beginning of a block comment. I\u0027m not sure if we\u0027re running the same checks on our Zephyr code, but I might have expected the linter to flag this.",
+      "revId": "f14b52457691ee86e8c48264920691eb13e96744",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ccf38b12_56abe69c",
+        "filename": "zephyr/test/drivers/src/bmi260.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1952,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-10-20T18:23:05Z",
+      "side": 1,
+      "message": "Just a comment to consider, not necessarily a request: I find the setup of this test case a little odd. You\u0027re changing the config structure while leaving the emulator in its original state, which is to actually return the correct value. That effectively covers each of the cases in the init function, but the test is basically exercising what the driver does when the code (config struct) is incorrect.\n\nLooking at the init function, at least as it is currently written, it should return access denied any time the configured chip ID is invalid, or the read chip ID doesn\u0027t match the configured chip ID. You could use the same incorrect register value to cover all 3 cases. At least for the first 2 cases, that would model the case where the config is supposedly correct, but the part is misbehaving. That would also reduce the number of times that this test changes the config, which would make it marginally easier for the reader to follow.",
+      "range": {
+        "startLine": 1944,
+        "startChar": 1,
+        "endLine": 1952,
+        "endChar": 37
+      },
+      "revId": "f14b52457691ee86e8c48264920691eb13e96744",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30c73e6e_0196b129",
+        "filename": "zephyr/test/drivers/src/bmi260.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1977,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-10-20T18:23:05Z",
+      "side": 1,
+      "message": "Does this test case make this test more sensitive to the test Kconfig than it otherwise would be? If so, I would suggest mentioning the relevant config by name in this comment and commenting the Kconfig to note that this test requires a particular config to be disabled.",
+      "revId": "f14b52457691ee86e8c48264920691eb13e96744",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
