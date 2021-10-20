@@ -55,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "444c2cef_cde4dc4c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-10-20T23:54:05Z",
+      "side": 1,
+      "message": "The bug mentions limiting to 15V3A, but the PD_MAX_VOLTAGE is still 20V here. Please double check that it is OK.",
+      "parentUuid": "4daffb3c_81711111",
+      "revId": "05594d1d759690cd52a8180ad1f2ad7e4afdc16b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "915ff9cf_33069d8e",
         "filename": "board/taeko/board.h",
         "patchSetId": 1
