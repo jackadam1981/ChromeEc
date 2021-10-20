@@ -1,6 +1,57 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "117dca60_791c214f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-10-20T04:34:05Z",
+      "side": 1,
+      "message": "Please sign commits in this repo. You can use `git commit -s --amend`",
+      "revId": "389823858ecd51054c30b122140f2192f9cb13d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "25d0cd4f_783bf5d3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-10-20T04:34:05Z",
+      "side": 1,
+      "message": "nit: please add a short description of the change.",
+      "revId": "389823858ecd51054c30b122140f2192f9cb13d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f93f80e2_3bf530b8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-10-20T04:34:05Z",
+      "side": 1,
+      "message": "nit: remove, it\u0027s not nedeed.",
+      "revId": "389823858ecd51054c30b122140f2192f9cb13d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "35230607_3909b8f6",
@@ -14,6 +65,86 @@
       "writtenOn": "2021-10-18T22:57:45Z",
       "side": 1,
       "message": "Patchset 9 \u003d\u003d Patchset 7, only difference is that patchset 9 is more up to date with cros/main",
+      "revId": "389823858ecd51054c30b122140f2192f9cb13d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3356c6b2_cc3247f4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-10-20T04:34:05Z",
+      "side": 1,
+      "message": "Mainly stylistic nits. It\u0027s a bit awkward to have a define for this specific variation of a sub command. If you try redefining the CONFIG_CONSOLE_HISTORY for these boards to 4 or less, do they build?\n\n\u0026\u0026 if so, I\u0027d split the board specific changes out to separate commits and have them as parents of the common change. You can use a circular CQ-DEPEND to make sure that they go in as a group.",
+      "revId": "389823858ecd51054c30b122140f2192f9cb13d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "853c640f_6f77b03d",
+        "filename": "common/usb_common.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-10-20T04:34:05Z",
+      "side": 1,
+      "message": "Overall, no one liners.",
+      "revId": "389823858ecd51054c30b122140f2192f9cb13d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c26eeb7_43b400f5",
+        "filename": "common/usb_common.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 1017,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-10-20T04:34:05Z",
+      "side": 1,
+      "message": "nit: add space before that paren",
+      "range": {
+        "startLine": 1017,
+        "startChar": 5,
+        "endLine": 1017,
+        "endChar": 7
+      },
+      "revId": "389823858ecd51054c30b122140f2192f9cb13d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81ed9dd3_debc9ed3",
+        "filename": "common/usb_common.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 1050,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-10-20T04:34:05Z",
+      "side": 1,
+      "message": "nit: align with the first character after the paren. (for this entire block). Also, add spaces after the commas,",
+      "range": {
+        "startLine": 1050,
+        "startChar": 3,
+        "endLine": 1050,
+        "endChar": 4
+      },
       "revId": "389823858ecd51054c30b122140f2192f9cb13d3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
