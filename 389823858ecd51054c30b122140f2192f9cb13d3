@@ -159,6 +159,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c7961fda_a8792fb2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-10-20T23:23:26Z",
+      "side": 1,
+      "message": "Yeah, if you\u0027re down to 1 history entry, I would just undefine it entirely. It\u0027s not the end of the world.\n\nCheckout this link for some suggestions: https://chromium.googlesource.com/chromiumos/platform/ec/+/main/docs/reducing_ec_image_size.md#disable-console-commands",
+      "parentUuid": "cf92b166_686e40d5",
+      "revId": "389823858ecd51054c30b122140f2192f9cb13d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "853c640f_6f77b03d",
         "filename": "common/usb_common.c",
         "patchSetId": 9
@@ -188,6 +206,24 @@
       "side": 1,
       "message": "What do you mean by this?",
       "parentUuid": "853c640f_6f77b03d",
+      "revId": "389823858ecd51054c30b122140f2192f9cb13d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca0d08cb_628bbea7",
+        "filename": "common/usb_common.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-10-20T23:23:26Z",
+      "side": 1,
+      "message": "I see lots of places where you have:\n    \n    if (cond) { do_something(); }\n    \nOr    \n    case FOO:   do_something(); break;\n    \n    \nPlease write them as the following instead:\n     \n     if (cond)\n             do_something();\n             \n             \n     case FOO:\n             do_something();\n             break;\n             \n     case BAR:\n             ...",
+      "parentUuid": "23e3bb9c_33e453c9",
       "revId": "389823858ecd51054c30b122140f2192f9cb13d3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
