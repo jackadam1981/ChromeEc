@@ -1,6 +1,52 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "10e65c3f_1999726e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-10-20T07:42:34Z",
+      "side": 1,
+      "message": "does",
+      "range": {
+        "startLine": 9,
+        "startChar": 7,
+        "endLine": 9,
+        "endChar": 9
+      },
+      "revId": "8bb0cab1baaf435b3338bfba432b1f67fc567a21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5aaa3929_12ba4907",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-10-20T07:42:34Z",
+      "side": 1,
+      "message": "you might want to note that you\u0027re setting the limit\nto about 8A.",
+      "range": {
+        "startLine": 11,
+        "startChar": 40,
+        "endLine": 11,
+        "endChar": 45
+      },
+      "revId": "8bb0cab1baaf435b3338bfba432b1f67fc567a21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "b48cb37c_c4899345",
@@ -48,6 +94,24 @@
       "writtenOn": "2021-10-20T01:38:25Z",
       "side": 1,
       "message": "For IDCHG_TH2, probably yes. this should be base on the battery profile.",
+      "revId": "8bb0cab1baaf435b3338bfba432b1f67fc567a21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c295e52_2e3d828d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-10-20T07:42:34Z",
+      "side": 1,
+      "message": "i filed b/203625022 to investigate for brya.",
+      "parentUuid": "85debbf2_30bb8179",
       "revId": "8bb0cab1baaf435b3338bfba432b1f67fc567a21",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
