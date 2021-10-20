@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9308a65_ca572bb9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-10-20T17:27:03Z",
+      "side": 1,
+      "message": "Have you thought about upgrading struct charger_config_t?\n\n\tstruct charger_config_t {\n\t\tint i2c_port;\n\t\tuint16_t i2c_addr_flags;\n\t\tconst struct charger_drv *drv;\n\t\tuint8_t sense_resistor_charge;         /* new (mOhms) */\n\t\tuint8_t sense_resistor_input_current;  /* new (mOhms) */\n\t};\n\nI think it would make the code much easier to read.",
+      "revId": "9300678ee0ccf33249057390db3a0104f2e3ba99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ba0e5981_97a3052f",
