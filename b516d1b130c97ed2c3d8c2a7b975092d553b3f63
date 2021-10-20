@@ -16,6 +16,137 @@
       "message": "So how is this structure here? Obviously have a lot of print statements and whatnot to remove (was debugging writing ZCONFIG_TEST vs CONFIG_ZTEST)\n\nThis may need to change because after this the usb_mux code works great! But now `test suite ppc_sn5s330` is failing with `Assertion failed at CMAKE_SOURCE_DIR/src/ppc_sn5s330.c:51: test_fail_once_func_set1: (func_set1_value \u0026 SN5S330_ILIM_1_62) !\u003d 0 is false`\n\nI\u0027m looking into this and will let you know if our fix here causes the issue and why it does.",
       "revId": "b516d1b130c97ed2c3d8c2a7b975092d553b3f63",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ea4af25_94c32a23",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-10-20T18:09:04Z",
+      "side": 1,
+      "message": "Looks really good, a few minor comments, but I think we should be able to merge today or tomorrow",
+      "revId": "b516d1b130c97ed2c3d8c2a7b975092d553b3f63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4067b415_8e1bcf08",
+        "filename": "common/usbc/usbc_task.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-10-20T18:09:04Z",
+      "side": 1,
+      "message": "Check if already suspended for early return?",
+      "revId": "b516d1b130c97ed2c3d8c2a7b975092d553b3f63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "97d3d298_2dc29c92",
+        "filename": "common/usbc/usbc_task.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-10-20T18:09:04Z",
+      "side": 1,
+      "message": "Same here, check if we can early return",
+      "revId": "b516d1b130c97ed2c3d8c2a7b975092d553b3f63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "45cd0fb2_0ad7ffac",
+        "filename": "common/usbc/usbc_task.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-10-20T18:09:04Z",
+      "side": 1,
+      "message": "Do we still need to lock here?",
+      "range": {
+        "startLine": 98,
+        "startChar": 0,
+        "endLine": 104,
+        "endChar": 28
+      },
+      "revId": "b516d1b130c97ed2c3d8c2a7b975092d553b3f63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b43cecb_a8a41d84",
+        "filename": "common/usbc/usbc_task.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-10-20T18:09:04Z",
+      "side": 1,
+      "message": "Here too, I don\u0027t think you need these locks anymore",
+      "range": {
+        "startLine": 114,
+        "startChar": 0,
+        "endLine": 115,
+        "endChar": 37
+      },
+      "revId": "b516d1b130c97ed2c3d8c2a7b975092d553b3f63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9fbbded8_d47d51c4",
+        "filename": "common/usbc/usbc_task.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-10-20T18:09:04Z",
+      "side": 1,
+      "message": "if (IS_ENABLED(CONFIG_ZTEST)) {\n  bool is_suspending\n  lock\n  is_suspending \u003d port_to_suspend[port]\n  unlock\n  if (is_suspending) {\n    return false;\n  }\n}",
+      "revId": "b516d1b130c97ed2c3d8c2a7b975092d553b3f63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e021e12_89cfd342",
+        "filename": "common/usbc/usbc_task.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-10-20T18:09:04Z",
+      "side": 1,
+      "message": "Same here, you need to lock before reading port_to_suspend",
+      "revId": "b516d1b130c97ed2c3d8c2a7b975092d553b3f63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
