@@ -88,6 +88,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cf92b166_686e40d5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1523223
+      },
+      "writtenOn": "2021-10-20T22:49:58Z",
+      "side": 1,
+      "message": "I agree I\u0027d rather have a solution that avoids introducing a new flag.\n\nGood news is that volteer, kukui, and terrador still work when CONFIG_SIMPLE_OUTPUT is removed, I assume some upstream change saved extra memory for these boards. \n\nBad news is redefining CONFIG_CONSOLE_HISTORY for the other boards, burnet and kodama, only worked when the value was lowered to 1. Worse, servo_v4 already had the value undef\u0027ed in it\u0027s header file. \n\nOne line of console history doesn\u0027t seem very useful, are there other flags that could be changed instead?",
+      "parentUuid": "3356c6b2_cc3247f4",
+      "revId": "389823858ecd51054c30b122140f2192f9cb13d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "853c640f_6f77b03d",
         "filename": "common/usb_common.c",
         "patchSetId": 9
