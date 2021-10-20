@@ -67,6 +67,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1244fe1c_a2c21c4e",
+        "filename": "board/felwinter/fw_config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2021-10-20T14:44:25Z",
+      "side": 1,
+      "message": "How about split the USB3/USB4 information from the DB? The DB can support the information like typec or typea or hdmi. And another bit to indicate either it is a USB3 or USB4. Another approach is that adding a check to make sure the MB_USB4 pair with USB4 DB and MB_USB3 pair with USB3.\n\nCaveh/Boris, do you have any suggestion for this? Or Do you agree to have the new field for the MB_USB*?",
+      "parentUuid": "d9e363bd_5bb0d4a8",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 20
+      },
+      "revId": "dc8053a099b3d78caf3c4da0078b032ac51f0b91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "398e18ed_ecd49894",
         "filename": "board/felwinter/usbc_config.c",
         "patchSetId": 2
