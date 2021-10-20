@@ -37,6 +37,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "53e3f029_df1d9f32",
+        "filename": "include/config.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 643,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-10-20T15:34:36Z",
+      "side": 1,
+      "message": "This should be moved above the previous comment, and documented separately.",
+      "range": {
+        "startLine": 643,
+        "startChar": 0,
+        "endLine": 643,
+        "endChar": 24
+      },
+      "revId": "22afe362c1f2d7c5f58c47baad3d01b60a54e43e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d19fd549_c33ae6ed",
         "filename": "zephyr/Kconfig.battery",
         "patchSetId": 5
@@ -140,6 +163,30 @@
       "writtenOn": "2021-10-19T18:07:00Z",
       "side": 1,
       "message": "this should come from device tree, not kconfig",
+      "range": {
+        "startLine": 536,
+        "startChar": 0,
+        "endLine": 540,
+        "endChar": 27
+      },
+      "revId": "22afe362c1f2d7c5f58c47baad3d01b60a54e43e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca04e52b_d8339de4",
+        "filename": "zephyr/Kconfig.battery",
+        "patchSetId": 5
+      },
+      "lineNbr": 540,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-10-20T15:34:36Z",
+      "side": 1,
+      "message": "I think this is okay as a Kconfig instead of a devicetree property at the moment.  This count only adjusts the size of a couple zero-initialzied arrays.  The battery_v2.c module doesn\u0027t currently have any board specific properties that need to be setup from the devicetree - except for the battery count.\n\nHowever, the help text needs more detail. It needs to be clear to the user how this differs from BATTERY_TYPE_COUNT.",
+      "parentUuid": "c49447bf_824223b4",
       "range": {
         "startLine": 536,
         "startChar": 0,
