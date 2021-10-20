@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d9e363bd_5bb0d4a8",
+        "filename": "board/felwinter/fw_config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1302511
+      },
+      "writtenOn": "2021-10-20T01:32:21Z",
+      "side": 1,
+      "message": "The reason why we separated the MB from DB using different bits is that we might need to reserve DB_USB for future IO board. For example, perhaps in the case of  USB4.0+HDMI, or change component/IC, etc.., we might need different settings.",
+      "parentUuid": "e3572b13_5e9fcc98",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 20
+      },
+      "revId": "dc8053a099b3d78caf3c4da0078b032ac51f0b91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "398e18ed_ecd49894",
         "filename": "board/felwinter/usbc_config.c",
         "patchSetId": 2
