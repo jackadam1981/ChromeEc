@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5891a82c_d10e76a7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-10-20T22:01:18Z",
+      "side": 1,
+      "message": "i don\u0027t think CONFIG_\u003c...\u003e_RUNTIME_CONFIG is a very elegant solution,\nbut i recognize there is much precedent.\n\nis there a problem here that can\u0027t be solved by having\nboard_get_default_battery_type() return the matching battery index?",
+      "revId": "cff0d5838faa4cf32e95340060316d096ea0672d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
