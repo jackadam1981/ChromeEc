@@ -33,6 +33,23 @@
       "message": "Is that change applicable to other Brya boards using BQ25720?",
       "revId": "8bb0cab1baaf435b3338bfba432b1f67fc567a21",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ca1e07c_e8ba3265",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2021-10-20T01:38:25Z",
+      "side": 1,
+      "message": "For IDCHG_TH2, probably yes. this should be base on the battery profile.",
+      "revId": "8bb0cab1baaf435b3338bfba432b1f67fc567a21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
