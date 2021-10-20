@@ -62,6 +62,30 @@
       },
       "revId": "dc8053a099b3d78caf3c4da0078b032ac51f0b91",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17cb68dd_d8aa30c3",
+        "filename": "board/felwinter/usbc_config.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 389,
+      "author": {
+        "id": 1316237
+      },
+      "writtenOn": "2021-10-20T01:06:35Z",
+      "side": 1,
+      "message": "Yap, I forgot this one, thank you remind",
+      "parentUuid": "398e18ed_ecd49894",
+      "range": {
+        "startLine": 389,
+        "startChar": 5,
+        "endLine": 389,
+        "endChar": 27
+      },
+      "revId": "dc8053a099b3d78caf3c4da0078b032ac51f0b91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
