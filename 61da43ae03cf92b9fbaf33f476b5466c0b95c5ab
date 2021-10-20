@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5fb3f6e_8f27a10f",
+        "filename": "baseboard/intelrvp/adlrvp.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2021-10-20T08:37:38Z",
+      "side": 1,
+      "message": "its needed as it is as it is pointer type.",
+      "parentUuid": "b9f0d9df_be21b9e9",
+      "range": {
+        "startLine": 339,
+        "startChar": 5,
+        "endLine": 339,
+        "endChar": 6
+      },
+      "revId": "61da43ae03cf92b9fbaf33f476b5466c0b95c5ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5dc78890_3650e76e",
