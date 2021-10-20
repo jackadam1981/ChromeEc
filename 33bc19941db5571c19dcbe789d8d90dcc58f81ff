@@ -81,6 +81,24 @@
       "parentUuid": "73ffd69c_9b7a1822",
       "revId": "33bc19941db5571c19dcbe789d8d90dcc58f81ff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18b1fc1c_b9ee2eef",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-10-20T06:45:15Z",
+      "side": 1,
+      "message": "this time it\u0027s:\n\nERROR: [/mnt/host/source/src/platform/ec/build/zephyr/projects/kohaku:ro]/mnt/host/source/src/third_party/zephyr/main/v2.7/arch/arm/core/aarch32/mpu/arm_core_mpu.c:307:9: error: \u0027arm_core_mpu_configure_dynamic_mpu_regions\u0027 reading 12 bytes from a region of size 0 [-Werror\u003dstringop-overread]",
+      "parentUuid": "11c10da1_33d55e21",
+      "revId": "33bc19941db5571c19dcbe789d8d90dcc58f81ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
