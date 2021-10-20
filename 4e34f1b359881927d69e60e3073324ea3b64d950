@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "016a3555_7110a34c",
+        "filename": "common/usbc/usbc_task.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2021-10-20T15:46:34Z",
+      "side": 1,
+      "message": "Not sure I agree with the usage of a condvar for suspending because one of the things that does occur is the pd task will reach a paused state before we ask it to unpause, if it has reached that state before the test thread waits on a condvar, the condvar will never get signaled.\n\nI see two straight forward ways to handle that scenario:\n\n1) I could add some state to track this and handle appropriately, but I\u0027ve been trying to avoid state as much as possible here.\n\n2) I could make a call to tc_start_event_loop and then subsequently ask it to pause and signal on our own terms. I think this would be fine, but it seems unnecessary to me when pausing a paused task should be a noop (besides keeping it from starting again).",
+      "parentUuid": "4e3f961b_c8279323",
+      "range": {
+        "startLine": 60,
+        "startChar": 2,
+        "endLine": 60,
+        "endChar": 14
+      },
+      "revId": "4e34f1b359881927d69e60e3073324ea3b64d950",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ca2c3172_ea0f445d",
         "filename": "common/usbc/usbc_task.c",
         "patchSetId": 2
@@ -37,6 +61,24 @@
       "writtenOn": "2021-10-20T02:27:46Z",
       "side": 1,
       "message": "I think you should add:\nk_thread_suspend(task_get_zephyr_tid(task));",
+      "revId": "4e34f1b359881927d69e60e3073324ea3b64d950",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12624ddf_587d39df",
+        "filename": "common/usbc/usbc_task.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2021-10-20T15:46:34Z",
+      "side": 1,
+      "message": "I like this and the other k_thread_resume because it essentially keeps us in strong control over the tasks. I see it unlikely some other test will call k_thread_resume/suspend on these (besides some other unit test thread).",
+      "parentUuid": "ca2c3172_ea0f445d",
       "revId": "4e34f1b359881927d69e60e3073324ea3b64d950",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -118,6 +160,30 @@
       "writtenOn": "2021-10-20T02:27:46Z",
       "side": 1,
       "message": "__test_only",
+      "range": {
+        "startLine": 3425,
+        "startChar": 0,
+        "endLine": 3425,
+        "endChar": 4
+      },
+      "revId": "4e34f1b359881927d69e60e3073324ea3b64d950",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d4df5a3_06ab3681",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 3425,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2021-10-20T15:46:34Z",
+      "side": 1,
+      "message": "Whoops. I\u0027ll also update the header comment",
+      "parentUuid": "27f4db5c_b8cffa19",
       "range": {
         "startLine": 3425,
         "startChar": 0,
