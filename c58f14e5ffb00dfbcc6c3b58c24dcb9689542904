@@ -94,6 +94,30 @@
       },
       "revId": "c58f14e5ffb00dfbcc6c3b58c24dcb9689542904",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6e167b6_a7ba3f08",
+        "filename": "board/brya/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-10-20T23:41:42Z",
+      "side": 1,
+      "message": "ah, never mind... the parent patch is -1.",
+      "parentUuid": "d52ea193_aa3a46f3",
+      "range": {
+        "startLine": 19,
+        "startChar": 55,
+        "endLine": 19,
+        "endChar": 60
+      },
+      "revId": "c58f14e5ffb00dfbcc6c3b58c24dcb9689542904",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
