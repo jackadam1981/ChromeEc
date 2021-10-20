@@ -717,11 +717,11 @@ static void tc_set_modes_exit(int port)
 static void tc_detached(int port)
 {
 	TC_CLR_FLAG(port, TC_FLAGS_TS_DTS_PARTNER);
+	tc_set_modes_exit(port);
 	hook_notify(HOOK_USB_PD_DISCONNECT);
 	tc_pd_connection(port, 0);
 	tcpm_debug_accessory(port, 0);
 	set_ccd_mode(port, 0);
-	tc_set_modes_exit(port);
 	if (IS_ENABLED(CONFIG_USB_PRL_SM))
 		prl_set_default_pd_revision(port);
 
