@@ -22,6 +22,30 @@
       },
       "revId": "6bf3837d7e6d2610e4a8a1fbeb10e934320160f9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7925d45_a1964ce0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-10-20T01:03:17Z",
+      "side": 1,
+      "message": "this comment is not about the lookup order, this is about attempts to iterate over ever decreasing intervals hoping that FMAP could be on a higher than 4K aligned boundary.\n\nIf we need to check more than one location doing this decreasing interval search becomes more complicated. \n\nIn any case it takes just couple of hundreds of ms, which is fine for this use case.\n\nWhy is it important to start from the top? This could run on a device where FMAP is in the lower half of flash just as well, right?\n\nA bigger issue is that the code assumes 32M flash chip, so on systems with smaller flash it ends up scanning the chip more than once. It still works, as only the correct FMAP offset will match the GVD contents, but still could be improved.",
+      "parentUuid": "98c068b1_1a2c4d1c",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 41
+      },
+      "revId": "6bf3837d7e6d2610e4a8a1fbeb10e934320160f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
