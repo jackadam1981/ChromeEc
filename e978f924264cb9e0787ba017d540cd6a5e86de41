@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a12fc94_f49c51d2",
+        "filename": "baseboard/dedede/variant_ec_npcx796fc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-10-20T16:51:38Z",
+      "side": 1,
+      "message": "We can remove this statement since we\u0027re now using it for shutdown too.",
+      "range": {
+        "startLine": 104,
+        "startChar": 3,
+        "endLine": 104,
+        "endChar": 54
+      },
+      "revId": "e978f924264cb9e0787ba017d540cd6a5e86de41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
