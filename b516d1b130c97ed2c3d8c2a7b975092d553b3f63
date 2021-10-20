@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "94e35f5c_ef6d2144",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2021-10-20T17:49:04Z",
+      "side": 1,
+      "message": "So how is this structure here? Obviously have a lot of print statements and whatnot to remove (was debugging writing ZCONFIG_TEST vs CONFIG_ZTEST)\n\nThis may need to change because after this the usb_mux code works great! But now `test suite ppc_sn5s330` is failing with `Assertion failed at CMAKE_SOURCE_DIR/src/ppc_sn5s330.c:51: test_fail_once_func_set1: (func_set1_value \u0026 SN5S330_ILIM_1_62) !\u003d 0 is false`\n\nI\u0027m looking into this and will let you know if our fix here causes the issue and why it does.",
+      "revId": "b516d1b130c97ed2c3d8c2a7b975092d553b3f63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
