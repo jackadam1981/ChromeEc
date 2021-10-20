@@ -52,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c45e69a7_06d3f8b9",
+        "filename": "common/usbc/usbc_task.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2021-10-20T20:04:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4067b415_8e1bcf08",
+      "revId": "b516d1b130c97ed2c3d8c2a7b975092d553b3f63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "97d3d298_2dc29c92",
@@ -69,6 +87,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "88b26a2a_45ad8647",
+        "filename": "common/usbc/usbc_task.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2021-10-20T20:04:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "97d3d298_2dc29c92",
+      "revId": "b516d1b130c97ed2c3d8c2a7b975092d553b3f63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "45cd0fb2_0ad7ffac",
@@ -82,6 +118,30 @@
       "writtenOn": "2021-10-20T18:09:04Z",
       "side": 1,
       "message": "Do we still need to lock here?",
+      "range": {
+        "startLine": 98,
+        "startChar": 0,
+        "endLine": 104,
+        "endChar": 28
+      },
+      "revId": "b516d1b130c97ed2c3d8c2a7b975092d553b3f63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0e60fb3_aad629fc",
+        "filename": "common/usbc/usbc_task.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2021-10-20T20:04:12Z",
+      "side": 1,
+      "message": "I think there could be an interleaving with the following:\n1) TestThread calls usbc_pd_task_suspend() # just executed tc_start_event_loop\n2) SomeOtherThread calls tc_pause_event_loop()\n3) PD Task is still paused and never signals TestThread that it\u0027s suspended.\n\nSo my purpose for that lock is to ensure that we suspend the PD thread *our* way, where we have a lot more control.",
+      "parentUuid": "45cd0fb2_0ad7ffac",
       "range": {
         "startLine": 98,
         "startChar": 0,
@@ -115,6 +175,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "59da20af_0acee541",
+        "filename": "common/usbc/usbc_task.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2021-10-20T20:04:12Z",
+      "side": 1,
+      "message": "You\u0027re right. I think for this function it is unnecessary.",
+      "parentUuid": "6b43cecb_a8a41d84",
+      "range": {
+        "startLine": 114,
+        "startChar": 0,
+        "endLine": 115,
+        "endChar": 37
+      },
+      "revId": "b516d1b130c97ed2c3d8c2a7b975092d553b3f63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9fbbded8_d47d51c4",
@@ -132,6 +216,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "07188f0f_18b7845f",
+        "filename": "common/usbc/usbc_task.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2021-10-20T20:04:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9fbbded8_d47d51c4",
+      "revId": "b516d1b130c97ed2c3d8c2a7b975092d553b3f63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9e021e12_89cfd342",
@@ -145,6 +247,24 @@
       "writtenOn": "2021-10-20T18:09:04Z",
       "side": 1,
       "message": "Same here, you need to lock before reading port_to_suspend",
+      "revId": "b516d1b130c97ed2c3d8c2a7b975092d553b3f63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b5bd718_c8dae986",
+        "filename": "common/usbc/usbc_task.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2021-10-20T20:04:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9e021e12_89cfd342",
       "revId": "b516d1b130c97ed2c3d8c2a7b975092d553b3f63",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

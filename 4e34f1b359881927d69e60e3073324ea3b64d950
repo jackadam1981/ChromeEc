@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6a909bc_dac48587",
+        "filename": "common/usbc/usbc_task.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2021-10-20T20:04:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "016a3555_7110a34c",
+      "range": {
+        "startLine": 60,
+        "startChar": 2,
+        "endLine": 60,
+        "endChar": 14
+      },
+      "revId": "4e34f1b359881927d69e60e3073324ea3b64d950",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ca2c3172_ea0f445d",
@@ -83,6 +107,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "549ac04b_0d4e8ce3",
+        "filename": "common/usbc/usbc_task.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2021-10-20T20:04:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "12624ddf_587d39df",
+      "revId": "4e34f1b359881927d69e60e3073324ea3b64d950",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1cd2271f_9ff9b793",
@@ -96,6 +138,24 @@
       "writtenOn": "2021-10-20T02:27:46Z",
       "side": 1,
       "message": "k_thread_resume(task_get_zephyr_tid(task));",
+      "revId": "4e34f1b359881927d69e60e3073324ea3b64d950",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1e36084_356bf074",
+        "filename": "common/usbc/usbc_task.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2021-10-20T20:04:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1cd2271f_9ff9b793",
       "revId": "4e34f1b359881927d69e60e3073324ea3b64d950",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -137,6 +197,30 @@
       "side": 1,
       "message": "See my comment above, if you actually suspend the thread after reaching a stable point then calling tc_start_event_loop won\u0027t matter",
       "parentUuid": "1f3ebfb1_60ce3ba2",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 34
+      },
+      "revId": "4e34f1b359881927d69e60e3073324ea3b64d950",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d59bb04f_45f795b6",
+        "filename": "common/usbc/usbc_task.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2021-10-20T20:04:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1b1413ce_ee32d449",
       "range": {
         "startLine": 72,
         "startChar": 0,
