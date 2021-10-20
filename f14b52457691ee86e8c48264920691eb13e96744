@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1297d3c3_3a9ca789",
+        "filename": "zephyr/test/drivers/src/bmi260.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1924,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2021-10-20T20:44:11Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "510f0000_5e92e1ae",
+      "revId": "f14b52457691ee86e8c48264920691eb13e96744",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0ec54c67_1378635a",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-10-20T18:23:05Z",
       "side": 1,
       "message": "EC (kernel) code style is to have a line with just /* at the beginning of a block comment. I\u0027m not sure if we\u0027re running the same checks on our Zephyr code, but I might have expected the linter to flag this.",
+      "revId": "f14b52457691ee86e8c48264920691eb13e96744",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b4c96bae_24f8acac",
+        "filename": "zephyr/test/drivers/src/bmi260.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1928,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2021-10-20T20:44:11Z",
+      "side": 1,
+      "message": "There is a linter that runs before uploading commits, but I can put the /* on its own line if you\u0027d like.",
+      "parentUuid": "0ec54c67_1378635a",
       "revId": "f14b52457691ee86e8c48264920691eb13e96744",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -58,6 +94,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5329ae58_8d0d80ab",
+        "filename": "zephyr/test/drivers/src/bmi260.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1952,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2021-10-20T20:44:11Z",
+      "side": 1,
+      "message": "Yeah, I could use some dummy chip ID value like 0xFF and set it once",
+      "parentUuid": "ccf38b12_56abe69c",
+      "range": {
+        "startLine": 1944,
+        "startChar": 1,
+        "endLine": 1952,
+        "endChar": 37
+      },
+      "revId": "f14b52457691ee86e8c48264920691eb13e96744",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "30c73e6e_0196b129",
@@ -71,6 +131,24 @@
       "writtenOn": "2021-10-20T18:23:05Z",
       "side": 1,
       "message": "Does this test case make this test more sensitive to the test Kconfig than it otherwise would be? If so, I would suggest mentioning the relevant config by name in this comment and commenting the Kconfig to note that this test requires a particular config to be disabled.",
+      "revId": "f14b52457691ee86e8c48264920691eb13e96744",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b3ac1ea_b3e6c183",
+        "filename": "zephyr/test/drivers/src/bmi260.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1977,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2021-10-20T20:44:11Z",
+      "side": 1,
+      "message": "We are relying on a particular Kconfig flag [not] being set so commenting this would be a good idea. Do you know where the relevant Kconfig file lives? I\u0027m having trouble finding it.",
+      "parentUuid": "30c73e6e_0196b129",
       "revId": "f14b52457691ee86e8c48264920691eb13e96744",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
