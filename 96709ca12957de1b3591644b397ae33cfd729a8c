@@ -98,6 +98,30 @@
       },
       "revId": "96709ca12957de1b3591644b397ae33cfd729a8c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4137d73_e4d4f066",
+        "filename": "common/thermal.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-10-20T17:15:58Z",
+      "side": 1,
+      "message": "Have you tried this?",
+      "parentUuid": "403738d0_232eba31",
+      "range": {
+        "startLine": 127,
+        "startChar": 0,
+        "endLine": 128,
+        "endChar": 33
+      },
+      "revId": "96709ca12957de1b3591644b397ae33cfd729a8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
