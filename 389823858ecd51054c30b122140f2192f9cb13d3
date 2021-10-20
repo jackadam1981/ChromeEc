@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b10d13e5_3b5da23e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1523223
+      },
+      "writtenOn": "2021-10-20T23:13:32Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "117dca60_791c214f",
+      "revId": "389823858ecd51054c30b122140f2192f9cb13d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "25d0cd4f_783bf5d3",
@@ -121,6 +139,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d29046cc_67298053",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1523223
+      },
+      "writtenOn": "2021-10-20T23:13:32Z",
+      "side": 1,
+      "message": "Hopefully I can leave out the flag entirely, but I agree I\u0027ll make the name more specific, and add it to include/config.h",
+      "parentUuid": "9904fbcf_2d06643f",
+      "revId": "389823858ecd51054c30b122140f2192f9cb13d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "853c640f_6f77b03d",
@@ -140,6 +176,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "23e3bb9c_33e453c9",
+        "filename": "common/usb_common.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1523223
+      },
+      "writtenOn": "2021-10-20T23:13:32Z",
+      "side": 1,
+      "message": "What do you mean by this?",
+      "parentUuid": "853c640f_6f77b03d",
+      "revId": "389823858ecd51054c30b122140f2192f9cb13d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1c26eeb7_43b400f5",
         "filename": "common/usb_common.c",
         "patchSetId": 9
@@ -151,6 +205,30 @@
       "writtenOn": "2021-10-20T04:34:05Z",
       "side": 1,
       "message": "nit: add space before that paren",
+      "range": {
+        "startLine": 1017,
+        "startChar": 5,
+        "endLine": 1017,
+        "endChar": 7
+      },
+      "revId": "389823858ecd51054c30b122140f2192f9cb13d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8bee7d1_9995367a",
+        "filename": "common/usb_common.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 1017,
+      "author": {
+        "id": 1523223
+      },
+      "writtenOn": "2021-10-20T23:13:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1c26eeb7_43b400f5",
       "range": {
         "startLine": 1017,
         "startChar": 5,
@@ -180,6 +258,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c9c93c3a_b41556cf",
+        "filename": "common/usb_common.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 1049,
+      "author": {
+        "id": 1523223
+      },
+      "writtenOn": "2021-10-20T23:13:32Z",
+      "side": 1,
+      "message": "I thought about that, but then I thought why not just leave the original code for printing out srccaps? It\u0027s currently working for all boards. \n\nWorst case I\u0027d rather fallback on that.",
+      "parentUuid": "65cf3007_5177b9fe",
+      "revId": "389823858ecd51054c30b122140f2192f9cb13d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "81ed9dd3_debc9ed3",
         "filename": "common/usb_common.c",
         "patchSetId": 9
@@ -191,6 +287,30 @@
       "writtenOn": "2021-10-20T04:34:05Z",
       "side": 1,
       "message": "nit: align with the first character after the paren. (for this entire block). Also, add spaces after the commas,",
+      "range": {
+        "startLine": 1050,
+        "startChar": 3,
+        "endLine": 1050,
+        "endChar": 4
+      },
+      "revId": "389823858ecd51054c30b122140f2192f9cb13d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "210d8a11_3f11645f",
+        "filename": "common/usb_common.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 1050,
+      "author": {
+        "id": 1523223
+      },
+      "writtenOn": "2021-10-20T23:13:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "81ed9dd3_debc9ed3",
       "range": {
         "startLine": 1050,
         "startChar": 3,
