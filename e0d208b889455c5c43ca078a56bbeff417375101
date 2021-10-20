@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "a161c15a_b2a7570e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-10-20T01:09:29Z",
+      "side": 1,
+      "message": "this is a good point, the intention was to allow older boards to update to new RO versions with RO_GSCVD areas present.\n\nMaintaining an ever growing list of included board IDs does not seem practical. We can add another indicator of the impending cache erase/update, this way even if power is interrupted after erase before the update we\u0027d know that this device is supposed to run verification.\n\nLet\u0027s discuss this further on the tracker.",
+      "parentUuid": "58233dc2_64c73c71",
+      "revId": "e0d208b889455c5c43ca078a56bbeff417375101",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "16b9153f_f9a7a059",
