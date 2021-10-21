@@ -96,6 +96,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "579191de_fbc521a6",
+        "filename": "baseboard/intelrvp/adlrvp.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-10-21T13:35:27Z",
+      "side": 1,
+      "message": "oops, that\u0027s the struct, not the function.",
+      "parentUuid": "afa912a2_55717ead",
+      "range": {
+        "startLine": 339,
+        "startChar": 5,
+        "endLine": 339,
+        "endChar": 6
+      },
+      "revId": "61da43ae03cf92b9fbaf33f476b5466c0b95c5ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5dc78890_3650e76e",
