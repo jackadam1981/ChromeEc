@@ -78,6 +78,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f313f094_9777827a",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1195,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-10-21T18:33:09Z",
+      "side": 1,
+      "message": "let me address these in an update after this patch\u0027s logic changes have been reviewed.",
+      "parentUuid": "366ff520_d7b6740e",
+      "range": {
+        "startLine": 1195,
+        "startChar": 9,
+        "endLine": 1195,
+        "endChar": 19
+      },
+      "revId": "e0d208b889455c5c43ca078a56bbeff417375101",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e124a118_746491f9",
         "filename": "common/ap_ro_integrity_check.c",
         "patchSetId": 2
