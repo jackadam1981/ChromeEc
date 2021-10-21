@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2000096b_29a38fdc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-10-21T00:54:54Z",
+      "side": 1,
+      "message": "looks like it failed on felwinter:\n\ndriver/charger/isl9241.c:337:18: note: in expansion of macro \u0027AC_REG_TO_CURRENT\u0027\n  337 |         if (ma \u003e AC_REG_TO_CURRENT(ISL9241_AC_PROCHOT_CURRENT_MAX))\n      |                  ^~~~~~~~~~~~~~~~~\ndriver/charger/isl9241.c: In function \u0027isl9241_set_current\u0027:\ndriver/charger/isl9241.c:246:1: error: control reaches end of non-void function [-Werror\u003dreturn-type]\n  246 | }\n      | ^\ncc1: all warnings being treated as errors\nmake[2]: *** [Makefile.rules:580: build/felwinter/RW/driver/charger/isl9241.o] Error 1",
+      "revId": "58a520bad2574207ca93180df99ecefe3f9cb093",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
