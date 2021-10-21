@@ -3,7 +3,7 @@
  * found in the LICENSE file.
  */
 
-/* Krabby board-specific USB-C configuration */
+/* Kingler board-specific USB-C configuration */
 
 #include "driver/usb_mux/ps8743.h"
 #include "hooks.h"
