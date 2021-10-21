@@ -37,7 +37,7 @@ GPIO_INT(PG_PP950_VCCIO_OD,    PIN(1, 7), GPIO_INT_BOTH, power_signal_interrupt)
 GPIO_INT(SLP_S0_L,             PIN(D, 5), GPIO_INT_BOTH, power_signal_interrupt)
 GPIO_INT(IMVP8_VRRDY_OD,       PIN(1, 6), GPIO_INT_BOTH, power_signal_interrupt)
 /* ALS signals */
-GPIO_INT(EC_RGB_INT_L,         PIN(9, 7), GPIO_INT_FALLING | GPIO_SEL_1P8V, tcs3400_interrupt)
+GPIO_INT(EC_RGB_INT_L,         PIN(9, 7), GPIO_INT_FALLING, tcs3400_interrupt)
 /*
  * Directly connected recovery button (not available on some boards).
  */
@@ -120,8 +120,8 @@ GPIO(I2C1_SCL,                 PIN(9, 0), GPIO_INPUT)           /* EC_I2C_USB_C0
 GPIO(I2C1_SDA,                 PIN(8, 7), GPIO_INPUT)           /* EC_I2C_USB_C0_TCPPC_SDA */
 GPIO(I2C2_SCL,                 PIN(9, 2), GPIO_INPUT)           /* EC_I2C_DDR_SCALER_SCL */
 GPIO(I2C2_SDA,                 PIN(9, 1), GPIO_INPUT)           /* EC_I2C_DDR_SCALER_SDA */
-GPIO(I2C3_SCL,                 PIN(D, 1), GPIO_INPUT)           /* EC_I2C_ALS_SCL */
-GPIO(I2C3_SDA,                 PIN(D, 0), GPIO_INPUT)           /* EC_I2C_ALS_SDA */
+GPIO(I2C3_SCL,                 PIN(D, 1), GPIO_INPUT | GPIO_SEL_1P8V)           /* EC_I2C_ALS_SCL */
+GPIO(I2C3_SDA,                 PIN(D, 0), GPIO_INPUT | GPIO_SEL_1P8V)           /* EC_I2C_ALS_SDA */
 GPIO(I2C5_SCL,                 PIN(3, 3), GPIO_INPUT)           /* EC_I2C_IMVP8_SCL */
 GPIO(I2C5_SDA,                 PIN(3, 6), GPIO_INPUT)           /* EC_I2C_IMVP8_SDA */
 GPIO(I2C7_SCL,                 PIN(B, 3), GPIO_INPUT)           /* EC_I2C_EEPROM_SCL */
