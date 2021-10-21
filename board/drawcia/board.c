@@ -67,6 +67,16 @@ __override void board_process_pd_alert(int port)
 	sm5803_handle_interrupt(port);
 }
 
+__override void board_set_charge_control_idle(void)
+{
+	/*
+	 * C0 charging is controlled by sm5803, while C1 is controlled
+	 * by OCPC. Only C0 needs this specific routine.
+	 */
+	if (charge_manager_get_active_charge_port() == CHARGER_PRIMARY)
+		sm5803_set_charge_control_idle(CHARGER_PRIMARY);
+}
+
 /* C0 interrupt line shared by BC 1.2 and charger */
 static void check_c0_line(void);
 DECLARE_DEFERRED(check_c0_line);
