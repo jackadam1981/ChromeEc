@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "716223ac_13154488",
+        "filename": "board/cr50/factory_mode.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2021-10-21T17:36:03Z",
+      "side": 1,
+      "message": "If any of these parenthesis get messed up, it could break the check. Do you think there\u0027s any risk with this?\n\nShould I break up the 0.13 and {0|3}.22 checks into separate ifs?",
+      "range": {
+        "startLine": 35,
+        "startChar": 4,
+        "endLine": 37,
+        "endChar": 29
+      },
+      "revId": "d3232ae30a6155fd1f39b552102eb7e2abff8dfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
