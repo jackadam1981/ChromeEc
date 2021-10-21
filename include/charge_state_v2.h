@@ -109,6 +109,12 @@ void board_enable_base_power(int enable);
 void board_base_reset(void);
 
 /**
+ * Board-specific routine to set charge control mode idle to make charging
+ * current on battery absolutely equal to zero.
+ */
+__override_proto void board_set_charge_control_idle(void);
+
+/**
  * Callback with which boards determine action on critical low battery
  *
  * The default implementation is provided in charge_state_v2.c. Overwrite it

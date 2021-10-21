@@ -94,6 +94,7 @@ static unsigned int user_current_limit = -1U;
 test_export_static timestamp_t shutdown_target_time;
 static timestamp_t precharge_start_time;
 static struct sustain_soc sustain_soc;
+static bool is_chg_ctrl_mode_idle_disabled = true;
 
 /*
  * The timestamp when the battery charging current becomes stable.
@@ -1420,6 +1421,10 @@ void chgstate_set_manual_voltage(int volt_mv)
 	manual_voltage = charger_closest_voltage(volt_mv);
 }
 
+__overridable void board_set_charge_control_idle(void)
+{
+}
+
 /* Force charging off before the battery is full. */
 static int set_chg_ctrl_mode(enum ec_charge_control_mode mode)
 {
@@ -1456,6 +1461,9 @@ static int set_chg_ctrl_mode(enum ec_charge_control_mode mode)
 		if (rv != EC_SUCCESS)
 			return rv;
 	}
+
+	if (chg_ctl_mode != CHARGE_CONTROL_IDLE)
+		is_chg_ctrl_mode_idle_disabled = true;
 
 	/* Commit all atomically */
 	chg_ctl_mode = mode;
@@ -2297,6 +2305,17 @@ wait_for_it:
 #else
 		charge_request(curr.requested_voltage, curr.requested_current);
 #endif
+
+		/*
+		 * Some specific board needs to run this routine to make charging
+		 * current on battery absolutely equal to zero when set charge
+		 * control mode idle.
+		 */
+		if ((get_chg_ctrl_mode() == CHARGE_CONTROL_IDLE) &&
+		     is_chg_ctrl_mode_idle_disabled) {
+				board_set_charge_control_idle();
+				is_chg_ctrl_mode_idle_disabled = false;
+		}
 
 		/* How long to sleep? */
 		if (problems_exist)
