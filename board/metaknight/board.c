@@ -747,6 +747,7 @@ const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 		},
 		.flags = TCPC_FLAGS_TCPCI_REV2_0,
 		.drv = &raa489000_tcpm_drv,
+		.alert_signal = GPIO_USB_C0_INT_ODL,
 	},
 };
 
@@ -763,6 +764,7 @@ uint16_t tcpc_get_alert_status(void)
 {
 	uint16_t status = 0;
 	int regval;
+	int p;
 
 	/*
 	 * The interrupt line is shared between the TCPC and BC1.2 detector IC.
@@ -780,15 +782,23 @@ uint16_t tcpc_get_alert_status(void)
 		}
 	}
 
-	if (board_get_usb_pd_port_count() > 1 &&
-				!gpio_get_level(GPIO_SUB_C1_INT_EN_RAILS_ODL)) {
-		if (!tcpc_read16(1, TCPC_REG_ALERT, &regval)) {
-			/* TCPCI spec Rev 1.0 says to ignore bits 14:12. */
-			if (!(tcpc_config[1].flags & TCPC_FLAGS_TCPCI_REV2_0))
-				regval &= ~((1 << 14) | (1 << 13) | (1 << 12));
+	for (p = 0; p < board_get_usb_pd_port_count(); p++) {
+		if (gpio_get_level(tcpc_config[p].alert_signal))
+			continue;
 
-			if (regval)
-				status |= PD_STATUS_TCPC_ALERT_1;
+		if (board_get_usb_pd_port_count() > 1 &&
+		    !gpio_get_level(GPIO_SUB_C1_INT_EN_RAILS_ODL)) {
+			if (!tcpc_read16(1, TCPC_REG_ALERT, &regval)) {
+				/* TCPCI spec Rev 1.0 says to ignore bits 14:12.
+				 */
+				if (!(tcpc_config[p].flags &
+				      TCPC_FLAGS_TCPCI_REV2_0))
+					regval &= ~((1 << 14) | (1 << 13) |
+						    (1 << 12));
+
+				if (regval)
+					status |= (PD_STATUS_TCPC_ALERT_0 << p);
+			}
 		}
 	}
 
