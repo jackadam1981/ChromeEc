@@ -72,6 +72,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "afa912a2_55717ead",
+        "filename": "baseboard/intelrvp/adlrvp.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2021-10-21T13:21:16Z",
+      "side": 1,
+      "message": "Sorry, i see below error when i remove the \u0026\n\nbaseboard/intelrvp/adlrvp.c:336:35: error: incompatible types when assigning to type \u0027const struct usb_mux_driver *\u0027 from type \u0027const struct usb_mux_driver\u0027\n   usb_muxes[TYPE_C_PORT_0].driver \u003d\n                                   ^",
+      "parentUuid": "78e2c0a3_8bde8b6a",
+      "range": {
+        "startLine": 339,
+        "startChar": 5,
+        "endLine": 339,
+        "endChar": 6
+      },
+      "revId": "61da43ae03cf92b9fbaf33f476b5466c0b95c5ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5dc78890_3650e76e",
