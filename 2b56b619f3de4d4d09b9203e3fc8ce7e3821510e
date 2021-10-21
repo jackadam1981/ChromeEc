@@ -1,0 +1,158 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "743c5a3a_e237a57d",
+        "filename": "common/usbc/usbc_task.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-10-21T04:15:38Z",
+      "side": 1,
+      "message": "Since this is in common/ you\u0027ll need to use the generic wrappers we\u0027ve created for Zephyr\u0027s mutexes. See task.h\u0027s:\n  typedef struct k_mutex mutex_t;\n\n\nWe don\u0027t have this yet for k_condvar so you\u0027ll need to create it. Alternatively, you could try to do this in the shim layer and add hooks to it in the header (it would get messy but I\u0027m not sure if it\u0027ll be easier than providing a k_condvar to cros_ec).",
+      "revId": "2b56b619f3de4d4d09b9203e3fc8ce7e3821510e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40e2a2ac_b9a2adbb",
+        "filename": "common/usbc/usbc_task.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-10-21T04:15:38Z",
+      "side": 1,
+      "message": "This is a zephyr include, should be \u003ckernel.h\u003e and guarded with ifdef CONFIG_ZTEST",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 19
+      },
+      "revId": "2b56b619f3de4d4d09b9203e3fc8ce7e3821510e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0757f713_76db4f3a",
+        "filename": "common/usbc/usbc_task.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-10-21T04:15:38Z",
+      "side": 1,
+      "message": "remove",
+      "revId": "2b56b619f3de4d4d09b9203e3fc8ce7e3821510e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9f5f539_62f1e37c",
+        "filename": "common/usbc/usbc_task.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-10-21T04:15:38Z",
+      "side": 1,
+      "message": "Combine into an enum: PORT_THREAD_STATE_(RUNNING, SUSPENDING, SUSPENDED)",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 81
+      },
+      "revId": "2b56b619f3de4d4d09b9203e3fc8ce7e3821510e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c41a85ca_d803a569",
+        "filename": "common/usbc/usbc_task.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-10-21T04:15:38Z",
+      "side": 1,
+      "message": "Move this to where you notify the condvar and replace this with __ASSERT(port_thread_state \u003d\u003d PORT_THREAD_STATE_SUSPENDED);",
+      "revId": "2b56b619f3de4d4d09b9203e3fc8ce7e3821510e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5815dce9_69f5d623",
+        "filename": "common/usbc/usbc_task.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-10-21T04:15:38Z",
+      "side": 1,
+      "message": "Same here, this should be an assert and you should set this where you resumed the thread",
+      "revId": "2b56b619f3de4d4d09b9203e3fc8ce7e3821510e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e82b82a_a1305e33",
+        "filename": "common/usbc/usbc_task.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-10-21T04:15:38Z",
+      "side": 1,
+      "message": "I don\u0027t think you can get around ifdef CONFIG_ZTEST here. This is a shared file under common/ so this will break cros_ec builds that don\u0027t have Zephyr",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 108,
+        "endChar": 1
+      },
+      "revId": "2b56b619f3de4d4d09b9203e3fc8ce7e3821510e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9988a4f6_0addcb68",
+        "filename": "common/usbc/usbc_task.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-10-21T04:15:38Z",
+      "side": 1,
+      "message": "nit: extra tab snuck in",
+      "revId": "2b56b619f3de4d4d09b9203e3fc8ce7e3821510e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
