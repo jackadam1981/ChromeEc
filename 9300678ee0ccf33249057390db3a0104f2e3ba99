@@ -56,6 +56,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ca5f7c48_75bcbdbc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2021-10-21T19:40:13Z",
+      "side": 1,
+      "message": "Yes, we can pass the sense resistor values to the driver using chg_chips[].\n\ndoes this also means remove CONFIG_CHARGER_BQ25710_SENSE_RESISTOR and CONFIG_CHARGER_BQ25710_SENSE_RESISTOR_AC defines?\nIf yes, this would affect the macros implemented in BQ driver, we may need to remove all of them and introduce global variables, initialize these with appropriate values at run time i.e may be part of bq25710_init() api. We also need to initialize the \u0027bq25710_charger_info\u0027 params in driver init api",
+      "parentUuid": "fd549a71_d00b5ca9",
+      "revId": "9300678ee0ccf33249057390db3a0104f2e3ba99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ba0e5981_97a3052f",
         "filename": "board/anahera/board.h",
         "patchSetId": 6
