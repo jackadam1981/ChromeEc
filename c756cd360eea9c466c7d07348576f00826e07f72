@@ -1,0 +1,237 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3251997_3cb5aebd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-10-21T22:09:03Z",
+      "side": 1,
+      "message": "Nit: Line over 80 columns. (We don\u0027t have a git commit style guide, but this  will make git log output wrap on an 80-column terminal window.)",
+      "revId": "c756cd360eea9c466c7d07348576f00826e07f72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6acdc111_86443af2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-10-21T22:09:03Z",
+      "side": 1,
+      "message": "In general, it looks like this test is redundantly covering some of the generic TCPCI logic and not covering all of the PS8xxx-specific logic. It\u0027s OK if the CL doesn\u0027t get all of ps8xxx.c in one shot, but can you avoid testing the generic logic and communicate in the commit message what this CL newly covers?",
+      "revId": "c756cd360eea9c466c7d07348576f00826e07f72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ae49253_2a12a8e0",
+        "filename": "zephyr/test/drivers/src/ps8xxx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-10-21T22:09:03Z",
+      "side": 1,
+      "message": "I\u0027m not sure if we have a util directory for test infrastructure yet, but you might want to have just one version of this function in such a directory.",
+      "revId": "c756cd360eea9c466c7d07348576f00826e07f72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "306d72a0_06123753",
+        "filename": "zephyr/test/drivers/src/ps8xxx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-10-21T22:09:03Z",
+      "side": 1,
+      "message": "I\u0027m not sure I\u0027m following the logic here. It looks like you\u0027re covering logic in the generic TCPCI driver, but I thought that was already covered in the generic TCPCI test. Here, I might expect checks for things like the length of the sleep after failing to read FW_VER.",
+      "revId": "c756cd360eea9c466c7d07348576f00826e07f72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f3f7d2a_f795d08e",
+        "filename": "zephyr/test/drivers/src/ps8xxx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-10-21T22:09:03Z",
+      "side": 1,
+      "message": "Does ztest have per-test-case cleanup? If so, it might make sense to cancel and I2C errors as part of that instead of remembering to do it for cases that need it.",
+      "revId": "c756cd360eea9c466c7d07348576f00826e07f72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a91ef432_1fdf6443",
+        "filename": "zephyr/test/drivers/src/ps8xxx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-10-21T22:09:03Z",
+      "side": 1,
+      "message": "For the PS8805 (and most other variants), this driver just calls the generic TCPCI code, which is already covered by another test. Do you need to test anything besides the success case here to get the coverage you want?\n\n(It would be valuable to verify the generic TCPCI invariants against each driver, in case people change the drivers. But I would hope that we could run the existing TCPCI tests against different hardware configs to achieve that.)",
+      "revId": "c756cd360eea9c466c7d07348576f00826e07f72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "43c4ee05_a86b21a2",
+        "filename": "zephyr/test/drivers/src/ps8xxx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-10-21T22:09:03Z",
+      "side": 1,
+      "message": "Nit: arbitrarily",
+      "range": {
+        "startLine": 158,
+        "startChar": 54,
+        "endLine": 158,
+        "endChar": 63
+      },
+      "revId": "c756cd360eea9c466c7d07348576f00826e07f72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7cbd26f1_1f87d3af",
+        "filename": "zephyr/test/drivers/src/ps8xxx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-10-21T22:09:03Z",
+      "side": 1,
+      "message": "Similar comment here as for _get_cc. Do we need to test anything specific to ps8xxx besides the delay when enabling VCONN?",
+      "revId": "c756cd360eea9c466c7d07348576f00826e07f72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9f7937c_a3a839ca",
+        "filename": "zephyr/test/drivers/src/ps8xxx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-10-21T22:09:03Z",
+      "side": 1,
+      "message": "This is what I would expect to happen, but this line is technically testing the emulator, not the driver. The drive did try to change the value of POWER_CTRL. I think this check is extraneous in this test.",
+      "revId": "c756cd360eea9c466c7d07348576f00826e07f72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "803347c4_ce03df2c",
+        "filename": "zephyr/test/drivers/src/ps8xxx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-10-21T22:09:03Z",
+      "side": 1,
+      "message": "Nit: Typically, we would just write b/185202064 instead of the full URL.",
+      "range": {
+        "startLine": 186,
+        "startChar": 4,
+        "endLine": 186,
+        "endChar": 64
+      },
+      "revId": "c756cd360eea9c466c7d07348576f00826e07f72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "771b0a3f_92d3f86c",
+        "filename": "zephyr/test/drivers/src/ps8xxx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-10-21T22:09:03Z",
+      "side": 1,
+      "message": "Nit: What you are measuring here is the amount of time that ps8xxx_tcpm_drv.set_vconn took to return. So I guess you should get the time as soon as it returns. After the zassert_equal would be fine. I\u0027m not actually concerned about over-counting the time, but I think that would make it more obvious what the test is looking for here.",
+      "revId": "c756cd360eea9c466c7d07348576f00826e07f72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d8e2df26_cb65b0d1",
+        "filename": "zephyr/test/drivers/src/ps8xxx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-10-21T22:09:03Z",
+      "side": 1,
+      "message": "If this is the default board_get_ps8xxx_product_id, then that\u0027s part of the UUT (called by the driver). The test code should directly specify here the value that that function would be expected to return for the configuration.",
+      "revId": "c756cd360eea9c466c7d07348576f00826e07f72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "106c7905_9f4dff0b",
+        "filename": "zephyr/test/drivers/src/ps8xxx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-10-21T22:09:03Z",
+      "side": 1,
+      "message": "If I\u0027m not mistaken, at least some of these checks are re-testing the generic TCPCI implementation. Can you test only the PS8xxx-specific logic in this test?",
+      "revId": "c756cd360eea9c466c7d07348576f00826e07f72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
