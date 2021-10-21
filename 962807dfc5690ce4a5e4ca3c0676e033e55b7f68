@@ -39,6 +39,30 @@
       },
       "revId": "962807dfc5690ce4a5e4ca3c0676e033e55b7f68",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67ea50d6_6aa865cc",
+        "filename": "common/timer.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-10-21T17:17:24Z",
+      "side": 1,
+      "message": "The zinger platform #undefs CONFIG_COMMON_TIMER, so this file isn\u0027t even built on zinger.\n\nIt seems like the __overrideable attribute isn\u0027t needed at all.  CONFIG_COMMON_TIMER\u003dn and CONFIG_FW_SPECIFIC_UDELAY\u003dy seem like they were redundant.",
+      "parentUuid": "c11c84f2_1f866871",
+      "range": {
+        "startLine": 113,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 13
+      },
+      "revId": "962807dfc5690ce4a5e4ca3c0676e033e55b7f68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
