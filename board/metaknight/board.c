@@ -780,7 +780,7 @@ uint16_t tcpc_get_alert_status(void)
 		}
 	}
 
-	if (board_get_usb_pd_port_count() > 1 &&
+	if (CONFIG_USB_PD_PORT_MAX_COUNT > 1 &&
 				!gpio_get_level(GPIO_SUB_C1_INT_EN_RAILS_ODL)) {
 		if (!tcpc_read16(1, TCPC_REG_ALERT, &regval)) {
 			/* TCPCI spec Rev 1.0 says to ignore bits 14:12. */
