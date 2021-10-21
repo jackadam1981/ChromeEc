@@ -46,6 +46,30 @@
       },
       "revId": "d3232ae30a6155fd1f39b552102eb7e2abff8dfe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "30c68ef2_54ee1906",
+        "filename": "board/cr50/factory_mode.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2021-10-21T18:42:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "69cf71d6_73d8db5a",
+      "range": {
+        "startLine": 35,
+        "startChar": 4,
+        "endLine": 37,
+        "endChar": 29
+      },
+      "revId": "d3232ae30a6155fd1f39b552102eb7e2abff8dfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
