@@ -35,6 +35,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9d102f5_6c441754",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2021-10-21T19:44:29Z",
+      "side": 1,
+      "message": "My preference is to go ahead and shim the condvar in CL to be depended upon by this one because I see us using it in the future.",
+      "revId": "8f7f46112ac414b0cc3276e08d608c0468e75002",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a2048aad_d36ec622",
