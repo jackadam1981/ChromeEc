@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "fbafb639_40af106b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-10-21T23:36:17Z",
+      "side": 1,
+      "message": "I\u0027m pretty sure we have no interest in updating RO_GSCVD sections to boards that didn\u0027t originally ship with them. That\u0027s just way too complicated and too big of a change to be worth it for stable boards. There\u0027s no major use case where RO firmware gets updated after a board ships anyway (it\u0027s not worth adding this feature just to the few devices that go through RMA).\n\n\u003e Maintaining an ever growing list of included board IDs does not seem practical.\n\nPresumably the list would only need to grow until the point where we switch to Dauntless/OT... at that point, every board supported by those chips would use this scheme (in the full RO verification with WP monitoring version). So hopefully the handful of boards we\u0027re still going to newly ship before that could fit in a hardcoded list without too much trouble?",
+      "parentUuid": "a161c15a_b2a7570e",
+      "revId": "e0d208b889455c5c43ca078a56bbeff417375101",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "16b9153f_f9a7a059",
