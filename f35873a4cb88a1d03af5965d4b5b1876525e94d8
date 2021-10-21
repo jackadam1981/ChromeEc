@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b93b850c_c23c9c9a",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2021-10-21T12:04:17Z",
+      "side": 1,
+      "message": "This is for run once, right?",
+      "range": {
+        "startLine": 97,
+        "startChar": 12,
+        "endLine": 97,
+        "endChar": 42
+      },
+      "revId": "f35873a4cb88a1d03af5965d4b5b1876525e94d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb63a0aa_ede9651f",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1455,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2021-10-21T12:04:17Z",
+      "side": 1,
+      "message": "If this extra control is needed, Could we hook to below here?",
+      "range": {
+        "startLine": 1455,
+        "startChar": 3,
+        "endLine": 1455,
+        "endChar": 15
+      },
+      "revId": "f35873a4cb88a1d03af5965d4b5b1876525e94d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06eadd94_5a32ade4",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1465,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2021-10-21T12:04:17Z",
+      "side": 1,
+      "message": "Why not \"mode\" ?",
+      "range": {
+        "startLine": 1465,
+        "startChar": 5,
+        "endLine": 1465,
+        "endChar": 17
+      },
+      "revId": "f35873a4cb88a1d03af5965d4b5b1876525e94d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
