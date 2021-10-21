@@ -113,6 +113,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dbebcd12_54bfe605",
+        "filename": "board/felwinter/fw_config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2021-10-21T09:21:55Z",
+      "side": 1,
+      "message": "ok, then let\u0027s check if we can do some check in the config.star.",
+      "parentUuid": "b959c0da_6fccec1a",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 20
+      },
+      "revId": "dc8053a099b3d78caf3c4da0078b032ac51f0b91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "398e18ed_ecd49894",
