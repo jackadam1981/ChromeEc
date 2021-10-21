@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b8917128_4eb2d1d0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1523223
+      },
+      "writtenOn": "2021-10-21T20:55:15Z",
+      "side": 1,
+      "message": "I noticed that the old code for srccaps does not support printing out a range of voltages when a source pdo type is battery or variable. I want to look into this before this gets pushed to the CQ.",
+      "revId": "6d815966fc6a27d8562891d1223c4893ffb8f575",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

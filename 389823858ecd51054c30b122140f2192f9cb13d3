@@ -53,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a27c997d_d8bbcbe0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1523223
+      },
+      "writtenOn": "2021-10-21T20:55:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "25d0cd4f_783bf5d3",
+      "revId": "389823858ecd51054c30b122140f2192f9cb13d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f93f80e2_3bf530b8",
@@ -66,6 +84,24 @@
       "writtenOn": "2021-10-20T04:34:05Z",
       "side": 1,
       "message": "nit: remove, it\u0027s not nedeed.",
+      "revId": "389823858ecd51054c30b122140f2192f9cb13d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a112841_3ccfc9aa",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1523223
+      },
+      "writtenOn": "2021-10-21T20:55:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f93f80e2_3bf530b8",
       "revId": "389823858ecd51054c30b122140f2192f9cb13d3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -177,6 +213,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "011abb57_507d677b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1523223
+      },
+      "writtenOn": "2021-10-21T20:55:15Z",
+      "side": 1,
+      "message": "Thanks for the link! It\u0027ll be a good resource going forward. I solved the issue by defaulting to the old way of printing `srccaps` for boards like servo_v4.\n\nGoing back to what you said earlier, is there a resource I could read to go ahead and restructure the commits? So that the board specific changes are standalone but dependent? I\u0027m not sure if I\u0027d go about changing things on gerrit or locally.",
+      "parentUuid": "c7961fda_a8792fb2",
+      "revId": "389823858ecd51054c30b122140f2192f9cb13d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "853c640f_6f77b03d",
         "filename": "common/usb_common.c",
         "patchSetId": 9
@@ -224,6 +278,24 @@
       "side": 1,
       "message": "I see lots of places where you have:\n    \n    if (cond) { do_something(); }\n    \nOr    \n    case FOO:   do_something(); break;\n    \n    \nPlease write them as the following instead:\n     \n     if (cond)\n             do_something();\n             \n             \n     case FOO:\n             do_something();\n             break;\n             \n     case BAR:\n             ...",
       "parentUuid": "23e3bb9c_33e453c9",
+      "revId": "389823858ecd51054c30b122140f2192f9cb13d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f5caa8f_500d9da8",
+        "filename": "common/usb_common.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1523223
+      },
+      "writtenOn": "2021-10-21T20:55:15Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ca0d08cb_628bbea7",
       "revId": "389823858ecd51054c30b122140f2192f9cb13d3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -306,6 +378,24 @@
       "side": 1,
       "message": "I thought about that, but then I thought why not just leave the original code for printing out srccaps? It\u0027s currently working for all boards. \n\nWorst case I\u0027d rather fallback on that.",
       "parentUuid": "65cf3007_5177b9fe",
+      "revId": "389823858ecd51054c30b122140f2192f9cb13d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "65a23336_025c9a0e",
+        "filename": "common/usb_common.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 1049,
+      "author": {
+        "id": 1523223
+      },
+      "writtenOn": "2021-10-21T20:55:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c9c93c3a_b41556cf",
       "revId": "389823858ecd51054c30b122140f2192f9cb13d3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
