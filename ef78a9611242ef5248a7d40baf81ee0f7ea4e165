@@ -16,6 +16,23 @@
       "message": "Verified on the bug",
       "revId": "ef78a9611242ef5248a7d40baf81ee0f7ea4e165",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b10d9978_578483b6",
+        "filename": "baseboard/guybrush/baseboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 899,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-10-21T18:15:17Z",
+      "side": 1,
+      "message": "nit: \"PG_GROUPC_S0_OD *high* while EN_PWR_S0_R low\"?",
+      "revId": "ef78a9611242ef5248a7d40baf81ee0f7ea4e165",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
