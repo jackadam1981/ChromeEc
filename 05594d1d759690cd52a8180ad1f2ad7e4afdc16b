@@ -71,6 +71,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "604aab0f_d60f2bba",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1477218
+      },
+      "writtenOn": "2021-10-21T13:18:00Z",
+      "side": 1,
+      "message": "Taeko doesn\u0027t enable PD_PREFER_LOW_VOLTAGE and PD_PREFER_HIGH_VOLTAGE.\nIf adapter advertise two PDOs which are same wattage, EC may select the lower precedence.\n\nI check lenovo\u0027s 45W shipping adapter. 15V3A is located in PDO3 and 20V2.25A is located in PDO4. So, EC pick up PDO3. I upload picture to b:196426265\n\nToday, I also talked with power team, they want us to enable  PD_PREFER_LOW_VOLTAGE. It can reduce charger to do boot (15V3A and 20V2.25A) and extend charger\u0027s life. I\u0027ll fire a tracker for this requirement later.\nI\u0027ll also inform our thermal to test adapter for 20V2.25A PDO.\nHigher voltage may bring higher temperature, but it won\u0027t affect our next build. Our factory build taeko with lenovo\u0027s 45W shipping adapter.",
+      "parentUuid": "444c2cef_cde4dc4c",
+      "revId": "05594d1d759690cd52a8180ad1f2ad7e4afdc16b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "915ff9cf_33069d8e",
