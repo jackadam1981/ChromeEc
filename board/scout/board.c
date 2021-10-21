@@ -474,6 +474,8 @@ static void board_init(void)
 	 */
 	if (board_version < 2)
 		button_disable_gpio(BUTTON_RECOVERY);
+
+	gpio_enable_interrupt(GPIO_LAN_WAKE_ODL);
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
@@ -688,4 +690,13 @@ static void power_monitor(void)
 		gpio_set_level(GPIO_USB_A_LOW_PWR_OD, typea_bc);
 	}
 	hook_call_deferred(&power_monitor_data, delay);
+}
+
+void lan_wake_interrupt(enum gpio_signal signal)
+{
+	if (chipset_in_state(CHIPSET_STATE_ON))
+		return;
+
+	power_button_pch_pulse();
+	CPRINTS("LAN wake up");
 }

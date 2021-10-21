@@ -38,6 +38,8 @@ GPIO_INT(SLP_S0_L,             PIN(D, 5), GPIO_INT_BOTH, power_signal_interrupt)
 GPIO_INT(IMVP8_VRRDY_OD,       PIN(1, 6), GPIO_INT_BOTH, power_signal_interrupt)
 /* ALS signals */
 GPIO_INT(EC_RGB_INT_L,         PIN(9, 7), GPIO_INT_FALLING, tcs3400_interrupt)
+/* LAN interrupt */
+GPIO_INT(LAN_WAKE_ODL,         PIN(8, 1), GPIO_INT_FALLING, lan_wake_interrupt)
 /*
  * Directly connected recovery button (not available on some boards).
  */
@@ -158,7 +160,6 @@ UNUSED(PIN(4, 2))						/* ADC3/TEMP_SENSOR_3 */
 UNUSED(PIN(C, 2))						/* A12 NC */
 UNUSED(PIN(1, 2))						/* C6  NC */
 UNUSED(PIN(6, 6))						/* H4  NC */
-UNUSED(PIN(8, 1))						/* L6  NC */
 UNUSED(PIN(8, 5))						/* L7  NC */
 UNUSED(PIN(3, 2))						/* E5  NC */
 UNUSED(PIN(D, 6))						/* F6  NC */

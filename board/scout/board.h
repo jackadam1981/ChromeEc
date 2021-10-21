@@ -210,6 +210,7 @@ void board_reset_pd_mcu(void);
 void board_set_tcpc_power_mode(int port, int mode);
 void led_alert(int enable);
 void show_critical_error(void);
+void lan_wake_interrupt(enum gpio_signal signal);
 
 /*
  * firmware config fields
