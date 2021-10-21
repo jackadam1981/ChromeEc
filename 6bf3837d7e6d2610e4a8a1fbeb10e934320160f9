@@ -46,6 +46,30 @@
       },
       "revId": "6bf3837d7e6d2610e4a8a1fbeb10e934320160f9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "04d0a6d6_bbdfcccc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-10-21T23:56:24Z",
+      "side": 1,
+      "message": "\u003e A bigger issue is that the code assumes 32M flash chip, so on systems with smaller flash it ends up scanning the chip more than once. It still works, as only the correct FMAP offset will match the GVD contents, but still could be improved.\n\nHmm... yeah... okay I guess that\u0027s a good point in favor of linear scanning. Decreasing-alignment scanning is going to find the section a lot faster (e.g. maybe 32 times faster depending on how well-aligned a spot we can find for the section) but since the location will usually be cached anyway maybe that doesn\u0027t really matter. Okay, we can wait and see if this is good enough.",
+      "parentUuid": "d7925d45_a1964ce0",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 41
+      },
+      "revId": "6bf3837d7e6d2610e4a8a1fbeb10e934320160f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
