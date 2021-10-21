@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ccd74cce_83a44e46",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-10-21T00:26:19Z",
+      "side": 1,
+      "message": "@keith, wanted to confirm\nzephyr/shim/src/hwtimer.c:__override void udelay(unsigned us)\nis correct and there isn\u0027t some expectation elsewhere in zephyr\nto be able to override udelay() in the shim case?",
+      "revId": "962807dfc5690ce4a5e4ca3c0676e033e55b7f68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c11c84f2_1f866871",
         "filename": "common/timer.c",
         "patchSetId": 3
