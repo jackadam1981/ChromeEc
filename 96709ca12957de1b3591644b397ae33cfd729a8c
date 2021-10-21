@@ -122,6 +122,30 @@
       },
       "revId": "96709ca12957de1b3591644b397ae33cfd729a8c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d7f8802_e25a4860",
+        "filename": "common/thermal.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2021-10-21T01:17:02Z",
+      "side": 1,
+      "message": "Yes, this is not work as my mention before. https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3141333/comments/55b3e3d8_813f5afa",
+      "parentUuid": "d4137d73_e4d4f066",
+      "range": {
+        "startLine": 127,
+        "startChar": 0,
+        "endLine": 128,
+        "endChar": 33
+      },
+      "revId": "96709ca12957de1b3591644b397ae33cfd729a8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
