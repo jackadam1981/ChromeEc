@@ -22,6 +22,30 @@
       },
       "revId": "d765003d01df5c52fc676ad561fa3c7209c2c279",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "42eea51b_3d3b028c",
+        "filename": "chip/npcx/hwtimer.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-10-21T00:15:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c350b570_bfeb1771",
+      "range": {
+        "startLine": 350,
+        "startChar": 1,
+        "endLine": 350,
+        "endChar": 9
+      },
+      "revId": "d765003d01df5c52fc676ad561fa3c7209c2c279",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
