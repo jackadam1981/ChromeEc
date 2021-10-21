@@ -16,6 +16,23 @@
       "message": "Hi Aseda，RongChang：    \nbmi220 is a new Gsensor driver and needs to be imported into the factory branch，so I cherry pick this cl to 13683 factory branch, please help to review it, thanks",
       "revId": "586bcd24c994258de30944ae7a18bb5c4c6fe549",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f6ac981_8e7288b3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2021-10-21T12:04:21Z",
+      "side": 1,
+      "message": "Are you running ec fw from factory branch? If I remember correctly, you should use fw from fw branch.",
+      "revId": "586bcd24c994258de30944ae7a18bb5c4c6fe549",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
