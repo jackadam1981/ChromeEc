@@ -118,6 +118,30 @@
       },
       "revId": "c58f14e5ffb00dfbcc6c3b58c24dcb9689542904",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48a070f0_8a61c75c",
+        "filename": "board/brya/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2021-10-21T00:59:05Z",
+      "side": 1,
+      "message": "Ah.. sorry for my late reply. I missed this thread. Yeah, we need to fix the parent bug first.",
+      "parentUuid": "c6e167b6_a7ba3f08",
+      "range": {
+        "startLine": 19,
+        "startChar": 55,
+        "endLine": 19,
+        "endChar": 60
+      },
+      "revId": "c58f14e5ffb00dfbcc6c3b58c24dcb9689542904",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
