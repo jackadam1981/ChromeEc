@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a46ee974_c9716736",
+        "filename": "common/usbc/usbc_task.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-10-21T19:08:23Z",
+      "side": 1,
+      "message": "You have to think of this as 2 steps: compile then link\n\nIf you use k_mutex, but don\u0027t build for zephyr (even if you have __test_only) it will break, because cros_ec doesn\u0027t know about k_mutex. If you had a `struct k_mutex;` somewhere in the line it would compile since the declaration was there. Since you\u0027re not using it anywhere, the linker would remove it and it will never need the declaration of what the struct looks like.",
+      "parentUuid": "59b75f1d_13d6b6fa",
+      "revId": "2b56b619f3de4d4d09b9203e3fc8ce7e3821510e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "40e2a2ac_b9a2adbb",
         "filename": "common/usbc/usbc_task.c",
         "patchSetId": 4
@@ -272,6 +290,30 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "5e82b82a_a1305e33",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 108,
+        "endChar": 1
+      },
+      "revId": "2b56b619f3de4d4d09b9203e3fc8ce7e3821510e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce24b5b3_fa1d85d2",
+        "filename": "common/usbc/usbc_task.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-10-21T19:08:23Z",
+      "side": 1,
+      "message": "Marking done",
+      "parentUuid": "1a083941_72b877ba",
       "range": {
         "startLine": 57,
         "startChar": 0,

@@ -16,6 +16,75 @@
       "message": "Largely just responded to comments. I noticed my language server auto adds things to the header so I get the symbol I need a lot and I forget to check it. I should try configuring that.",
       "revId": "8f7f46112ac414b0cc3276e08d608c0468e75002",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2048aad_d36ec622",
+        "filename": "common/usbc/usbc_task.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-10-21T19:08:23Z",
+      "side": 1,
+      "message": "To get the code below to compile on cros-ec, you\u0027ll need this outside the ifdef,\n\n__test_only static mutex_t pd_mutex;\n\nThe abstraction layer would convert the mutex_t to a k_mutex for zephyr and keep it as a cros-ec mutex for cros-ec builds. Since it\u0027s __test_only, the linker will remove it in cros-ec builds.\n\nYou would need to do the Zephyr initialization for the mutex yourself, I don\u0027t think we\u0027ve abstracted that away, but you should double check in task.h",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 25
+      },
+      "revId": "8f7f46112ac414b0cc3276e08d608c0468e75002",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b05b75c_a3fbc471",
+        "filename": "common/usbc/usbc_task.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-10-21T19:08:23Z",
+      "side": 1,
+      "message": "This will not compile for cros-ec still.\n\nIS_ENABLED(CONFIG_ZTEST) will resolve to 0, but k_mutex_lock and pd_mutex still need to exist for the compile step. Only when we get to the optimization phase will `if (0)` be removed. So k_mutex_lock and pd_mutex don\u0027t have to be defined, but they do need to be declared.",
+      "range": {
+        "startLine": 120,
+        "startChar": 1,
+        "endLine": 121,
+        "endChar": 37
+      },
+      "revId": "8f7f46112ac414b0cc3276e08d608c0468e75002",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93851a4d_bd7ae039",
+        "filename": "common/usbc/usbc_task.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-10-21T19:08:23Z",
+      "side": 1,
+      "message": "Same here, these will not compile since they need to be declared.",
+      "range": {
+        "startLine": 189,
+        "startChar": 1,
+        "endLine": 199,
+        "endChar": 2
+      },
+      "revId": "8f7f46112ac414b0cc3276e08d608c0468e75002",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
