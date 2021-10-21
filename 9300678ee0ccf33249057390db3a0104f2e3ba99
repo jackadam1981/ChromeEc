@@ -74,6 +74,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6a6e784d_c23fc84f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-10-21T21:00:50Z",
+      "side": 1,
+      "message": "Yes, I meant we remove all CONFIG_CHARGER_SENSE_REGISTER and likes.",
+      "parentUuid": "ca5f7c48_75bcbdbc",
+      "revId": "9300678ee0ccf33249057390db3a0104f2e3ba99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ba0e5981_97a3052f",
         "filename": "board/anahera/board.h",
         "patchSetId": 6
