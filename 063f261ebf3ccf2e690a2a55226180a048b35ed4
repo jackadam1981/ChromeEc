@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "71c4d509_b520109e",
+        "filename": "board/felwinter/usbc_config.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1316237
+      },
+      "writtenOn": "2021-10-21T09:43:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e49bfa83_c2ca764c",
+      "range": {
+        "startLine": 124,
+        "startChar": 15,
+        "endLine": 124,
+        "endChar": 24
+      },
+      "revId": "063f261ebf3ccf2e690a2a55226180a048b35ed4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c9824879_46e6fcc3",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-10-21T09:12:01Z",
       "side": 1,
       "message": "i think this can be \"static const\"?\n(same for usb_muxes_c1).",
+      "range": {
+        "startLine": 144,
+        "startChar": 0,
+        "endLine": 144,
+        "endChar": 6
+      },
+      "revId": "063f261ebf3ccf2e690a2a55226180a048b35ed4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "713bac3f_3bddd2e2",
+        "filename": "board/felwinter/usbc_config.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1316237
+      },
+      "writtenOn": "2021-10-21T09:43:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c9824879_46e6fcc3",
       "range": {
         "startLine": 144,
         "startChar": 0,
