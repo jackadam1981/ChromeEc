@@ -16,6 +16,46 @@
       "message": "I noticed that the old code for srccaps does not support printing out a range of voltages when a source pdo type is battery or variable. I want to look into this before this gets pushed to the CQ.",
       "revId": "6d815966fc6a27d8562891d1223c4893ffb8f575",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9ffca8d_0f6b03a2",
+        "filename": "common/usb_common.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 1013,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-10-21T21:54:25Z",
+      "side": 1,
+      "message": "nit: Add a space before this paren.",
+      "range": {
+        "startLine": 1013,
+        "startChar": 8,
+        "endLine": 1013,
+        "endChar": 9
+      },
+      "revId": "6d815966fc6a27d8562891d1223c4893ffb8f575",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "753aa87e_951a3d5a",
+        "filename": "common/usb_common.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 1039,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-10-21T21:54:25Z",
+      "side": 1,
+      "message": "Try to keep lines under 80 cols.",
+      "revId": "6d815966fc6a27d8562891d1223c4893ffb8f575",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

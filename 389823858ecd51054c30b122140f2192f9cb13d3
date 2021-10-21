@@ -231,6 +231,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "be2c1b0d_b9fac4f2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-10-21T21:54:25Z",
+      "side": 1,
+      "message": "The closest one that I can think of is this: https://chromium.googlesource.com/chromiumos/docs/+/HEAD/firmware_code_reviews.md\n\nI think for this if you split of the board changes into separate CLs, have this CL Cq-Depend on the one on the top of your stack. And have that one Cq-Depend on this CL.",
+      "parentUuid": "011abb57_507d677b",
+      "revId": "389823858ecd51054c30b122140f2192f9cb13d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "853c640f_6f77b03d",
         "filename": "common/usb_common.c",
         "patchSetId": 9
