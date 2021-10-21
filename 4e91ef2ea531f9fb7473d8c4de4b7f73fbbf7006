@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c052e332_e0e2e606",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2021-10-21T09:46:22Z",
+      "side": 1,
+      "message": "As I described in the bug, I\u0027m not sure if Herobrine is blocked. If it\u0027s not, I think we should focus on the ultimate solution.\n\nI prepared the change to show one of the potential solutions and have anything to discuss about.",
+      "parentUuid": "c551403d_d2168194",
+      "revId": "4e91ef2ea531f9fb7473d8c4de4b7f73fbbf7006",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2a32bf7e_366d9efb",
         "filename": "zephyr/dts/bindings/motionsense/motionsense-sensor-base.yaml",
         "patchSetId": 2
@@ -31,6 +49,30 @@
       "writtenOn": "2021-10-20T18:47:09Z",
       "side": 1,
       "message": "We should not being doing this again. I think we\u0027re overloading what devicetree was intended to do here.",
+      "range": {
+        "startLine": 68,
+        "startChar": 2,
+        "endLine": 75,
+        "endChar": 30
+      },
+      "revId": "4e91ef2ea531f9fb7473d8c4de4b7f73fbbf7006",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "181d8b08_b98e4f10",
+        "filename": "zephyr/dts/bindings/motionsense/motionsense-sensor-base.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2021-10-21T09:46:22Z",
+      "side": 1,
+      "message": "I agree. It was an easy way to present this kind of approach, but as I pointed in the bug it could be replaced.",
+      "parentUuid": "2a32bf7e_366d9efb",
       "range": {
         "startLine": 68,
         "startChar": 2,
