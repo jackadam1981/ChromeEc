@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c11c84f2_1f866871",
+        "filename": "common/timer.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-10-21T00:23:39Z",
+      "side": 1,
+      "message": "actually, how is this going to work for boards that provide their\nown udelay(). i only see zinger do this.\n\nif the common implementation is weak, then one of the non-weak\nimplementations under chip/... or core/host will prevail. we\nshould mark those as __override.\n\nbut, if a board provides its own override, like zinger does,\nit would collide with the udelay() defined in chip/....\nturns out, in the zinger case, there is no chip specific\nimplementation, so we\u0027ll get away with it.\n\nare you OK with accepting this hypothetical issue?",
+      "range": {
+        "startLine": 113,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 13
+      },
+      "revId": "962807dfc5690ce4a5e4ca3c0676e033e55b7f68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
