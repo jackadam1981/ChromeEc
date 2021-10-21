@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3fde420_efb40cbf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2021-10-21T19:43:25Z",
+      "side": 1,
+      "message": "Quick question in comment.",
+      "revId": "8f7f46112ac414b0cc3276e08d608c0468e75002",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a2048aad_d36ec622",
@@ -82,6 +99,29 @@
         "startChar": 1,
         "endLine": 199,
         "endChar": 2
+      },
+      "revId": "8f7f46112ac414b0cc3276e08d608c0468e75002",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9fc30ee_2b1331ef",
+        "filename": "common/usbc/usbc_task.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2021-10-21T19:43:25Z",
+      "side": 1,
+      "message": "Now that I have better understanding, I see how you\u0027re right that I\u0027ll have to shim k_condvar.\n\nIn order to get this CL in sooner and keep it smaller, should I just wrap things in #ifdefs or are we okay with creating and subsequently using a CL for shimming the k_condvar? Which would you prefer?",
+      "range": {
+        "startLine": 273,
+        "startChar": 4,
+        "endLine": 273,
+        "endChar": 34
       },
       "revId": "8f7f46112ac414b0cc3276e08d608c0468e75002",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
