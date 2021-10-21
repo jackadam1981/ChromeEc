@@ -91,6 +91,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b959c0da_6fccec1a",
+        "filename": "board/felwinter/fw_config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-10-21T09:12:01Z",
+      "side": 1,
+      "message": "i think it\u0027s OK to have a separate field for the MB port\njust like we would have a field for the DB port.\n\nfor lab/test cases, i think it makes a lot of sense to be able\nto represent many configurations even though only a few combinations\nmay actually be valid for a shipping device.\n\ni don\u0027t think the firmware should check if the MB/DB config is\nvalid for a product... i hope that\u0027s done at a much higher level\nlike the build matrix 😊 or when the FW_CONFIG flash chip contents\nare generated for the build.",
+      "parentUuid": "1244fe1c_a2c21c4e",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 20
+      },
+      "revId": "dc8053a099b3d78caf3c4da0078b032ac51f0b91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "398e18ed_ecd49894",
         "filename": "board/felwinter/usbc_config.c",
         "patchSetId": 2
