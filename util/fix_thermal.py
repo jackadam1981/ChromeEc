@@ -14,7 +14,10 @@ To fix all instances:
 git grep --name-only 'struct ec_thermal_config' board | xargs -I {} ./util/fix_thermal.py -f {}
 """
 
-DEFINE_STR = '''#define {var_upper} \\
+DEFINE_STR = '''/*
+ * TODO(b/202062363): Remove when clang is fixed.
+ */
+#define {var_upper} \\
 	{{ \\
 {body}	}}
 '''
