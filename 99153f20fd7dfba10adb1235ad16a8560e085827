@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6089cbb1_e975a371",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1402,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2021-10-21T18:42:12Z",
+      "side": 1,
+      "message": "No. We could add a VENDOR_CMD_FROM_USB check here and remove the check from extension.c.",
+      "parentUuid": "25ff5ba1_700e14a7",
+      "range": {
+        "startLine": 1402,
+        "startChar": 7,
+        "endLine": 1402,
+        "endChar": 41
+      },
+      "revId": "99153f20fd7dfba10adb1235ad16a8560e085827",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "20377304_65ce7968",
         "filename": "include/ccd_config.h",
         "patchSetId": 2
@@ -37,6 +61,30 @@
       "writtenOn": "2021-10-21T17:55:11Z",
       "side": 1,
       "message": "maybe \u0027Allow AP RO verification...\u0027",
+      "range": {
+        "startLine": 135,
+        "startChar": 4,
+        "endLine": 135,
+        "endChar": 9
+      },
+      "revId": "99153f20fd7dfba10adb1235ad16a8560e085827",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0dba5e27_8e22e36f",
+        "filename": "include/ccd_config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2021-10-21T18:42:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "20377304_65ce7968",
       "range": {
         "startLine": 135,
         "startChar": 4,
