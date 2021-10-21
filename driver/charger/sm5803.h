@@ -408,6 +408,9 @@ enum ec_error_list sm5803_get_chg_det(int chgnum, int *chg_det);
 enum ec_error_list sm5803_set_vbus_disch(int chgnum, int enable);
 enum ec_error_list sm5803_vbus_sink_enable(int chgnum, int enable);
 
+/* Expose function to set charge control mode idle */
+enum ec_error_list sm5803_set_charge_control_idle(int chgnum);
+
 void sm5803_hibernate(int chgnum);
 void sm5803_interrupt(int chgnum);
 

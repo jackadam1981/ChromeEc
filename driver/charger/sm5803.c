@@ -367,6 +367,33 @@ enum ec_error_list sm5803_vbus_sink_enable(int chgnum, int enable)
 
 }
 
+enum ec_error_list sm5803_set_charge_control_idle(int chgnum)
+{
+	enum ec_error_list rv;
+
+	/*
+	 * (a) Stop the charger and the system is supplied by battery
+	 *     even if VBUS is present.
+	 */
+	rv = sm5803_flow1_update(chgnum, CHARGER_MODE_SINK,
+				  MASK_CLR);
+
+	/*
+	 * (b) Disable trickle, pre and fast charge.
+	 */
+	rv |= sm5803_flow2_update(chgnum, SM5803_FLOW2_AUTO_ENABLED,
+				  MASK_CLR);
+
+	/*
+	 * (c) Enable the charger and the system is supplied from VBUS,
+	 *     the battery not charged due to (b) setting.
+	 */
+	rv |= sm5803_flow1_update(chgnum, CHARGER_MODE_SINK,
+				  MASK_SET);
+
+	return rv;
+}
+
 /*
  * Track and store whether we've initialized the charger chips already on this
  * boot.  This should prevent us from re-running inits after sysjumps.
