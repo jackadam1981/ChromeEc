@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "59b75f1d_13d6b6fa",
+        "filename": "common/usbc/usbc_task.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2021-10-21T17:44:14Z",
+      "side": 1,
+      "message": "Wait, so I\u0027d even need to do this with CONFIG_ZTEST?",
+      "parentUuid": "743c5a3a_e237a57d",
+      "revId": "2b56b619f3de4d4d09b9203e3fc8ce7e3821510e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "40e2a2ac_b9a2adbb",
         "filename": "common/usbc/usbc_task.c",
         "patchSetId": 4
@@ -31,6 +49,30 @@
       "writtenOn": "2021-10-21T04:15:38Z",
       "side": 1,
       "message": "This is a zephyr include, should be \u003ckernel.h\u003e and guarded with ifdef CONFIG_ZTEST",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 19
+      },
+      "revId": "2b56b619f3de4d4d09b9203e3fc8ce7e3821510e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f0bb319_28f9a43d",
+        "filename": "common/usbc/usbc_task.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2021-10-21T17:44:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "40e2a2ac_b9a2adbb",
       "range": {
         "startLine": 19,
         "startChar": 0,
@@ -58,6 +100,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "54ebccee_eebfe5a7",
+        "filename": "common/usbc/usbc_task.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2021-10-21T17:44:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0757f713_76db4f3a",
+      "revId": "2b56b619f3de4d4d09b9203e3fc8ce7e3821510e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a9f5f539_62f1e37c",
@@ -71,6 +131,30 @@
       "writtenOn": "2021-10-21T04:15:38Z",
       "side": 1,
       "message": "Combine into an enum: PORT_THREAD_STATE_(RUNNING, SUSPENDING, SUSPENDED)",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 81
+      },
+      "revId": "2b56b619f3de4d4d09b9203e3fc8ce7e3821510e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "954ec80a_4b864115",
+        "filename": "common/usbc/usbc_task.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2021-10-21T17:44:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a9f5f539_62f1e37c",
       "range": {
         "startLine": 62,
         "startChar": 0,
@@ -98,6 +182,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3fb62ceb_18a0cee9",
+        "filename": "common/usbc/usbc_task.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2021-10-21T17:44:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c41a85ca_d803a569",
+      "revId": "2b56b619f3de4d4d09b9203e3fc8ce7e3821510e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5815dce9_69f5d623",
@@ -111,6 +213,24 @@
       "writtenOn": "2021-10-21T04:15:38Z",
       "side": 1,
       "message": "Same here, this should be an assert and you should set this where you resumed the thread",
+      "revId": "2b56b619f3de4d4d09b9203e3fc8ce7e3821510e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "212c795a_dc60108a",
+        "filename": "common/usbc/usbc_task.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2021-10-21T17:44:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5815dce9_69f5d623",
       "revId": "2b56b619f3de4d4d09b9203e3fc8ce7e3821510e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -140,6 +260,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1a083941_72b877ba",
+        "filename": "common/usbc/usbc_task.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2021-10-21T17:44:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5e82b82a_a1305e33",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 108,
+        "endChar": 1
+      },
+      "revId": "2b56b619f3de4d4d09b9203e3fc8ce7e3821510e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9988a4f6_0addcb68",
         "filename": "common/usbc/usbc_task.c",
         "patchSetId": 4
@@ -151,6 +295,24 @@
       "writtenOn": "2021-10-21T04:15:38Z",
       "side": 1,
       "message": "nit: extra tab snuck in",
+      "revId": "2b56b619f3de4d4d09b9203e3fc8ce7e3821510e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8706dde2_0cb364df",
+        "filename": "common/usbc/usbc_task.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2021-10-21T17:44:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9988a4f6_0addcb68",
       "revId": "2b56b619f3de4d4d09b9203e3fc8ce7e3821510e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
