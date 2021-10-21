@@ -659,3 +659,11 @@ static void power_monitor(void)
 	}
 	hook_call_deferred(&power_monitor_data, delay);
 }
+
+void lan_wake_interrupt(enum gpio_signal signal)
+{
+	if (!chipset_in_state(CHIPSET_STATE_ON)) {
+		power_button_pch_pulse();
+		CPRINTS("LAN wake up");
+	}
+}
