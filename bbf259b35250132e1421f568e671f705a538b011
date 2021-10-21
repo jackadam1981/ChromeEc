@@ -118,6 +118,30 @@
       },
       "revId": "bbf259b35250132e1421f568e671f705a538b011",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9aaab76_40759030",
+        "filename": "zephyr/shim/src/bc12_pi3usb9201.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2021-10-21T19:14:29Z",
+      "side": 1,
+      "message": "Moving the pin configuration and callbacks over is a bit involved. I\u0027m thinking it might be better to do it in a separate CL and leave this CL to just introducing the use of device trees. What do you think?",
+      "parentUuid": "1f7c8d04_a23b4f22",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 38
+      },
+      "revId": "bbf259b35250132e1421f568e671f705a538b011",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
