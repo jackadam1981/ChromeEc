@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "179c28b9_6d352777",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2021-10-22T11:29:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b3251997_3cb5aebd",
+      "revId": "c756cd360eea9c466c7d07348576f00826e07f72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6acdc111_86443af2",
@@ -52,6 +70,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e88f533e_e9d229c6",
+        "filename": "zephyr/test/drivers/src/ps8xxx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2021-10-22T11:29:48Z",
+      "side": 1,
+      "message": "Added in new CL https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3236716 common place for TCPCI test functions that should be shared between multiple test suites. Please check it.",
+      "parentUuid": "0ae49253_2a12a8e0",
+      "revId": "c756cd360eea9c466c7d07348576f00826e07f72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "306d72a0_06123753",
@@ -71,6 +107,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cf8a6320_b521f612",
+        "filename": "zephyr/test/drivers/src/ps8xxx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2021-10-22T11:29:48Z",
+      "side": 1,
+      "message": "Here I just wanted to test if fail of underlying TCPCI function is propagated up to PS8xxx function.",
+      "parentUuid": "306d72a0_06123753",
+      "revId": "c756cd360eea9c466c7d07348576f00826e07f72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4f3f7d2a_f795d08e",
         "filename": "zephyr/test/drivers/src/ps8xxx.c",
         "patchSetId": 2
@@ -82,6 +136,24 @@
       "writtenOn": "2021-10-21T22:09:03Z",
       "side": 1,
       "message": "Does ztest have per-test-case cleanup? If so, it might make sense to cancel and I2C errors as part of that instead of remembering to do it for cases that need it.",
+      "revId": "c756cd360eea9c466c7d07348576f00826e07f72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f89bff8_0faaab24",
+        "filename": "zephyr/test/drivers/src/ps8xxx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2021-10-22T11:29:48Z",
+      "side": 1,
+      "message": "Yes, it has ztest_unit_test variant with setup/teardown functions. Added NO_FAIL_REG for all PS8xxx I2C devices to setup.",
+      "parentUuid": "4f3f7d2a_f795d08e",
       "revId": "c756cd360eea9c466c7d07348576f00826e07f72",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -105,6 +177,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5a2d7455_c7067931",
+        "filename": "zephyr/test/drivers/src/ps8xxx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2021-10-22T11:29:48Z",
+      "side": 1,
+      "message": "I tried to verify that return code from generic TCPCI is propagated to PS8xxx (someone could implement it as calling TCPCI, but always returning success). If you think that it is unnecessary, I will leave only success path.",
+      "parentUuid": "a91ef432_1fdf6443",
+      "revId": "c756cd360eea9c466c7d07348576f00826e07f72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "43c4ee05_a86b21a2",
         "filename": "zephyr/test/drivers/src/ps8xxx.c",
         "patchSetId": 2
@@ -116,6 +206,30 @@
       "writtenOn": "2021-10-21T22:09:03Z",
       "side": 1,
       "message": "Nit: arbitrarily",
+      "range": {
+        "startLine": 158,
+        "startChar": 54,
+        "endLine": 158,
+        "endChar": 63
+      },
+      "revId": "c756cd360eea9c466c7d07348576f00826e07f72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "39fb889e_919193ed",
+        "filename": "zephyr/test/drivers/src/ps8xxx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2021-10-22T11:29:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "43c4ee05_a86b21a2",
       "range": {
         "startLine": 158,
         "startChar": 54,
@@ -160,6 +274,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c0ed092_f334017a",
+        "filename": "zephyr/test/drivers/src/ps8xxx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2021-10-22T11:29:48Z",
+      "side": 1,
+      "message": "You are right, this check shouldn\u0027t be there.",
+      "parentUuid": "c9f7937c_a3a839ca",
+      "revId": "c756cd360eea9c466c7d07348576f00826e07f72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "803347c4_ce03df2c",
@@ -173,6 +305,30 @@
       "writtenOn": "2021-10-21T22:09:03Z",
       "side": 1,
       "message": "Nit: Typically, we would just write b/185202064 instead of the full URL.",
+      "range": {
+        "startLine": 186,
+        "startChar": 4,
+        "endLine": 186,
+        "endChar": 64
+      },
+      "revId": "c756cd360eea9c466c7d07348576f00826e07f72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e1ce7a65_cfb81d1c",
+        "filename": "zephyr/test/drivers/src/ps8xxx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2021-10-22T11:29:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "803347c4_ce03df2c",
       "range": {
         "startLine": 186,
         "startChar": 4,
@@ -200,6 +356,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b2a989d8_1d452a09",
+        "filename": "zephyr/test/drivers/src/ps8xxx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2021-10-22T11:29:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "771b0a3f_92d3f86c",
+      "revId": "c756cd360eea9c466c7d07348576f00826e07f72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d8e2df26_cb65b0d1",
@@ -217,6 +391,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c0f9596d_139e3f90",
+        "filename": "zephyr/test/drivers/src/ps8xxx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2021-10-22T11:29:48Z",
+      "side": 1,
+      "message": "In next CL (PS8815) board_get_ps8xxx_product_id is replaced by stub function. However it makes sens to directly specify product ID. Added product ID as an argument to this test.",
+      "parentUuid": "d8e2df26_cb65b0d1",
+      "revId": "c756cd360eea9c466c7d07348576f00826e07f72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "106c7905_9f4dff0b",
@@ -230,6 +422,24 @@
       "writtenOn": "2021-10-21T22:09:03Z",
       "side": 1,
       "message": "If I\u0027m not mistaken, at least some of these checks are re-testing the generic TCPCI implementation. Can you test only the PS8xxx-specific logic in this test?",
+      "revId": "c756cd360eea9c466c7d07348576f00826e07f72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f2f4422_fe90e3fe",
+        "filename": "zephyr/test/drivers/src/ps8xxx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2021-10-22T11:29:48Z",
+      "side": 1,
+      "message": "It is similar to _get_cc test. I wanted to make sure that error code from TCPCI is propagated.",
+      "parentUuid": "106c7905_9f4dff0b",
       "revId": "c756cd360eea9c466c7d07348576f00826e07f72",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
