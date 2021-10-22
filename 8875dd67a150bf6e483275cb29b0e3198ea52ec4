@@ -46,6 +46,30 @@
       },
       "revId": "8875dd67a150bf6e483275cb29b0e3198ea52ec4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e5031059_a00c3347",
+        "filename": "core/riscv-rv32i/panic.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1470933
+      },
+      "writtenOn": "2021-10-22T05:39:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7a751580_4d80f0cc",
+      "range": {
+        "startLine": 172,
+        "startChar": 12,
+        "endLine": 172,
+        "endChar": 37
+      },
+      "revId": "8875dd67a150bf6e483275cb29b0e3198ea52ec4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
