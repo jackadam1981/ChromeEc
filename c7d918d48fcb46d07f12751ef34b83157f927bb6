@@ -22,6 +22,30 @@
       },
       "revId": "c7d918d48fcb46d07f12751ef34b83157f927bb6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e07ddc6_1e0fbc40",
+        "filename": "baseboard/intelrvp/adlrvp.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 363,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2021-10-22T12:09:06Z",
+      "side": 1,
+      "message": "missed out from my side.",
+      "parentUuid": "57d2643b_df1c7d3e",
+      "range": {
+        "startLine": 361,
+        "startChar": 0,
+        "endLine": 363,
+        "endChar": 34
+      },
+      "revId": "c7d918d48fcb46d07f12751ef34b83157f927bb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
