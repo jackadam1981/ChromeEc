@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7195c6a7_9a15e102",
+        "filename": "board/metaknight/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 787,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-10-22T16:31:40Z",
+      "side": 0,
+      "message": "This is the problem. A proper fix should be handling each port in a for-loop. Can you try this?\n\n--- a/board/metaknight/board.c\n+++ b/board/metaknight/board.c\n@@ -737,6 +737,7 @@ const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_MAX_COUNT] \u003d {\n                },\n                .flags \u003d TCPC_FLAGS_TCPCI_REV2_0,\n                .drv \u003d \u0026raa489000_tcpm_drv,\n+               .alert_signal \u003d GPIO_USB_C0_INT_ODL,\n        },\n };\n \n@@ -746,6 +747,7 @@ const struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] \u003d {\n                .i2c_port \u003d I2C_PORT_USB_C0,\n                .i2c_addr_flags \u003d PI3USB3X532_I2C_ADDR0,\n                .driver \u003d \u0026pi3usb3x532_usb_mux_driver,\n+               .alert_signal \u003d GPIO_SUB_C1_INT_EN_RAILS_ODL,\n        },\n };\n \n@@ -753,32 +755,24 @@ uint16_t tcpc_get_alert_status(void)\n {\n        uint16_t status \u003d 0;\n        int regval;\n+       int p;\n \n        /*\n         * The interrupt line is shared between the TCPC and BC1.2 detector IC.\n         * Therefore, go out and actually read the alert registers to report the\n         * alert status.\n         */\n-       if (!gpio_get_level(GPIO_USB_C0_INT_ODL)) {\n-               if (!tcpc_read16(0, TCPC_REG_ALERT, \u0026regval)) {\n-                       /* The TCPCI Rev 1.0 spec says to ignore bits 14:12. */\n-                       if (!(tcpc_config[0].flags \u0026 TCPC_FLAGS_TCPCI_REV2_0))\n-                               regval \u0026\u003d ~((1 \u003c\u003c 14) | (1 \u003c\u003c 13) | (1 \u003c\u003c 12));\n-\n-                       if (regval)\n-                               status |\u003d PD_STATUS_TCPC_ALERT_0;\n-               }\n-       }\n+       for (p \u003d 0; p \u003c board_get_usb_pd_port_count(); p++) {\n+               if (gpio_get_level(tcpc_config[p].alert_signal))\n+                       continue;\n \n-       if (board_get_usb_pd_port_count() \u003e 1 \u0026\u0026\n-                               !gpio_get_level(GPIO_SUB_C1_INT_EN_RAILS_ODL)) {\n-               if (!tcpc_read16(1, TCPC_REG_ALERT, \u0026regval)) {\n-                       /* TCPCI spec Rev 1.0 says to ignore bits 14:12. */\n-                       if (!(tcpc_config[1].flags \u0026 TCPC_FLAGS_TCPCI_REV2_0))\n+               if (!tcpc_read16(p, TCPC_REG_ALERT, \u0026regval)) {\n+                       /* The TCPCI Rev 1.0 spec says to ignore bits 14:12. */\n+                       if (!(tcpc_config[p].flags \u0026 TCPC_FLAGS_TCPCI_REV2_0))\n                                regval \u0026\u003d ~((1 \u003c\u003c 14) | (1 \u003c\u003c 13) | (1 \u003c\u003c 12));\n \n                        if (regval)\n-                               status |\u003d PD_STATUS_TCPC_ALERT_1;\n+                               status |\u003d (PD_STATUS_TCPC_ALERT_0 \u003c\u003c p);\n                }\n        }\n \ndiff --git a/include/usb_pd_tcpm.h b/include/usb_pd_tcpm.h\nindex 08c332efa2..493b313419 100644\n--- a/include/usb_pd_tcpm.h\n+++ b/include/usb_pd_tcpm.h\n@@ -503,6 +503,7 @@ struct tcpc_config_t {\n        const struct tcpm_drv *drv;\n        /* See TCPC_FLAGS_* above */\n        uint32_t flags;\n+       const enum gpio_signal alert_signal;\n };",
+      "range": {
+        "startLine": 787,
+        "startChar": 9,
+        "endLine": 787,
+        "endChar": 23
+      },
+      "revId": "66e3378ec2b3d0c4395638c0d28984b6b377631d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
