@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ff8b828c_92bb15a5",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1444467
+      },
+      "writtenOn": "2021-10-22T02:06:44Z",
+      "side": 1,
+      "message": "Yes!",
+      "parentUuid": "b93b850c_c23c9c9a",
+      "range": {
+        "startLine": 97,
+        "startChar": 12,
+        "endLine": 97,
+        "endChar": 42
+      },
+      "revId": "f35873a4cb88a1d03af5965d4b5b1876525e94d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "eb63a0aa_ede9651f",
         "filename": "common/charge_state_v2.c",
         "patchSetId": 1
@@ -49,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b32d7c4c_507a3643",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1455,
+      "author": {
+        "id": 1444467
+      },
+      "writtenOn": "2021-10-22T02:06:44Z",
+      "side": 1,
+      "message": "The current scenario I have tested is run `ectool chargecontrol idle` without the extra control and run those specific routine manually. Yeah, I can also test by putting the extra control here. If it works fine, then I think `is_chg_ctrl_mode_idle_disabled` can be removed.",
+      "parentUuid": "eb63a0aa_ede9651f",
+      "range": {
+        "startLine": 1455,
+        "startChar": 3,
+        "endLine": 1455,
+        "endChar": 15
+      },
+      "revId": "f35873a4cb88a1d03af5965d4b5b1876525e94d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "06eadd94_5a32ade4",
         "filename": "common/charge_state_v2.c",
         "patchSetId": 1
@@ -60,6 +108,30 @@
       "writtenOn": "2021-10-21T12:04:17Z",
       "side": 1,
       "message": "Why not \"mode\" ?",
+      "range": {
+        "startLine": 1465,
+        "startChar": 5,
+        "endLine": 1465,
+        "endChar": 17
+      },
+      "revId": "f35873a4cb88a1d03af5965d4b5b1876525e94d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "328d4132_de819013",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1465,
+      "author": {
+        "id": 1444467
+      },
+      "writtenOn": "2021-10-22T02:06:44Z",
+      "side": 1,
+      "message": "Since `is_chg_ctrl_mode_idle_disabled` is defined as the variable to check if the extra control has been carried out. If we are up to set charge control idle, at this moment, `mode` should be CHARGE_CONTROL_IDLE. `chg_ctl_mode` stands for the mode before we set to idle mode, which means that it is not CHARGE_CONTROL_IDLE if we did not set it to idle mode and the extra control has not been carried out.",
+      "parentUuid": "06eadd94_5a32ade4",
       "range": {
         "startLine": 1465,
         "startChar": 5,
