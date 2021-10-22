@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9124b82d_babf8c19",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-10-22T14:31:43Z",
+      "side": 1,
+      "message": "Hi Tom, I believe the right fix is to unite the two enums:\n\nenum chipset_reset_reason {\n\tCHIPSET_RESET_BEGIN \u003d 0,\n\tCHIPSET_RESET_UNKNOWN \u003d CHIPSET_RESET_BEGIN,\n\t/* Custom reason defined by a board.c or baseboard.c file */\n\tCHIPSET_RESET_BOARD_CUSTOM,\n\t/* Believe that the AP has hung */\n\tCHIPSET_RESET_HANG_REBOOT,\n\t/* Reset by EC console command */\n\tCHIPSET_RESET_CONSOLE_CMD,\n\t/* Reset by EC host command */\n\tCHIPSET_RESET_HOST_CMD,\n\t/* Keyboard module reset key combination */\n\tCHIPSET_RESET_KB_SYSRESET,\n\t/* Keyboard module warm reboot */\n\tCHIPSET_RESET_KB_WARM_REBOOT,\n\t/* Debug module warm reboot */\n\tCHIPSET_RESET_DBG_WARM_REBOOT,\n\t/* I cannot self-terminate.  You must lower me into the steel. */\n\tCHIPSET_RESET_AP_REQ,\n\t/* Reset as side-effect of startup sequence */\n\tCHIPSET_RESET_INIT,\n\t/* EC detected an AP watchdog event. */\n\tCHIPSET_RESET_AP_WATCHDOG,\n\n\tCHIPSET_RESET_COUNT,\n};\n\nand\n\n/*\n * AP hard shutdowns are logged on the same path as resets.\n */\nenum chipset_shutdown_reason {\n\tCHIPSET_SHUTDOWN_BEGIN \u003d BIT(15),\n\tCHIPSET_SHUTDOWN_POWERFAIL \u003d CHIPSET_SHUTDOWN_BEGIN,\n\t/* Forcing a shutdown as part of EC initialization */\n\tCHIPSET_SHUTDOWN_INIT,\n\t/* Custom reason on a per-board basis. */\n\tCHIPSET_SHUTDOWN_BOARD_CUSTOM,\n\t/* This is a reason to inhibit startup, not cause shut down. */\n\tCHIPSET_SHUTDOWN_BATTERY_INHIBIT,\n\t/* A power_wait_signal is being asserted */\n\tCHIPSET_SHUTDOWN_WAIT,\n\t/* Critical battery level. */\n\tCHIPSET_SHUTDOWN_BATTERY_CRIT,\n\t/* Because you told me to. */\n\tCHIPSET_SHUTDOWN_CONSOLE_CMD,\n\t/* Forcing a shutdown to effect entry to G3. */\n\tCHIPSET_SHUTDOWN_G3,\n\t/* Force shutdown due to over-temperature. */\n\tCHIPSET_SHUTDOWN_THERMAL,\n\t/* Force a chipset shutdown from the power button through EC */\n\tCHIPSET_SHUTDOWN_BUTTON,\n\n\tCHIPSET_SHUTDOWN_COUNT,\n};\n\ninto\n\nenum chipset_shutdown_reason {\n\tCHIPSET_RESET_BEGIN \u003d 0,\n\tCHIPSET_RESET_UNKNOWN \u003d CHIPSET_RESET_BEGIN,\n\t/* Custom reason defined by a board.c or baseboard.c file */\n\tCHIPSET_RESET_BOARD_CUSTOM,\n\t/* Believe that the AP has hung */\n\tCHIPSET_RESET_HANG_REBOOT,\n\t/* Reset by EC console command */\n\tCHIPSET_RESET_CONSOLE_CMD,\n\t/* Reset by EC host command */\n\tCHIPSET_RESET_HOST_CMD,\n\t/* Keyboard module reset key combination */\n\tCHIPSET_RESET_KB_SYSRESET,\n\t/* Keyboard module warm reboot */\n\tCHIPSET_RESET_KB_WARM_REBOOT,\n\t/* Debug module warm reboot */\n\tCHIPSET_RESET_DBG_WARM_REBOOT,\n\t/* I cannot self-terminate.  You must lower me into the steel. */\n\tCHIPSET_RESET_AP_REQ,\n\t/* Reset as side-effect of startup sequence */\n\tCHIPSET_RESET_INIT,\n\t/* EC detected an AP watchdog event. */\n\tCHIPSET_RESET_AP_WATCHDOG,\n\n\tCHIPSET_RESET_COUNT,\n\n\tCHIPSET_SHUTDOWN_BEGIN \u003d BIT(15),\n\tCHIPSET_SHUTDOWN_POWERFAIL \u003d CHIPSET_SHUTDOWN_BEGIN,\n\t/* Forcing a shutdown as part of EC initialization */\n\tCHIPSET_SHUTDOWN_INIT,\n\t/* Custom reason on a per-board basis. */\n\tCHIPSET_SHUTDOWN_BOARD_CUSTOM,\n\t/* This is a reason to inhibit startup, not cause shut down. */\n\tCHIPSET_SHUTDOWN_BATTERY_INHIBIT,\n\t/* A power_wait_signal is being asserted */\n\tCHIPSET_SHUTDOWN_WAIT,\n\t/* Critical battery level. */\n\tCHIPSET_SHUTDOWN_BATTERY_CRIT,\n\t/* Because you told me to. */\n\tCHIPSET_SHUTDOWN_CONSOLE_CMD,\n\t/* Forcing a shutdown to effect entry to G3. */\n\tCHIPSET_SHUTDOWN_G3,\n\t/* Force shutdown due to over-temperature. */\n\tCHIPSET_SHUTDOWN_THERMAL,\n\t/* Force a chipset shutdown from the power button through EC */\n\tCHIPSET_SHUTDOWN_BUTTON,\n\n\tCHIPSET_SHUTDOWN_COUNT,\n};",
+      "revId": "4302df292a1026479b811c8c094820e6c7ec7d3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
