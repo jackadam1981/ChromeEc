@@ -166,6 +166,30 @@
       },
       "revId": "bbf259b35250132e1421f568e671f705a538b011",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce1fa458_a633f4f6",
+        "filename": "zephyr/shim/src/bc12_pi3usb9201.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2021-10-22T00:32:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9c836b42_80a893ea",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 38
+      },
+      "revId": "bbf259b35250132e1421f568e671f705a538b011",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
