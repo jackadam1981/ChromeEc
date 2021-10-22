@@ -92,6 +92,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d861e29a_9c0fe661",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2021-10-22T08:45:35Z",
+      "side": 1,
+      "message": "I feel this needs to be implemented carefully as the changes are across multiple files and headers. Planning to start working on each driver separately and publish CL for each.\nFor few drivers like Isl923x and Bq25710 we can recheck if it is possible to maintain driver specific sense resistor defines which may help in retaining driver code readability.\n\nPreviously I have created a cross bug for the clean up.\n203525330: cleanup: driver/charger : change sense resistor configs\nI would like to consider this implementation as part of other CL, hope this is fine. Kindly comment.",
+      "parentUuid": "6a6e784d_c23fc84f",
+      "revId": "9300678ee0ccf33249057390db3a0104f2e3ba99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ba0e5981_97a3052f",
         "filename": "board/anahera/board.h",
         "patchSetId": 6
