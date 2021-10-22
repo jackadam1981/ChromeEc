@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "11be2ba3_a7f53acf",
+        "filename": "baseboard/intelrvp/adlrvp.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2021-10-22T09:03:54Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "1c6cffe1_6cee9d76",
+      "range": {
+        "startLine": 344,
+        "startChar": 0,
+        "endLine": 344,
+        "endChar": 67
+      },
+      "revId": "34006c14bc8eaa18183c752248d17aef28cc9d85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2bcd62dc_630abed3",
@@ -37,6 +61,24 @@
       "writtenOn": "2021-10-22T01:48:09Z",
       "side": 1,
       "message": "rebase and call from here configure_charger()",
+      "revId": "34006c14bc8eaa18183c752248d17aef28cc9d85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc30767e_649022ba",
+        "filename": "baseboard/intelrvp/adlrvp.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 487,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2021-10-22T09:03:54Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "2bcd62dc_630abed3",
       "revId": "34006c14bc8eaa18183c752248d17aef28cc9d85",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
