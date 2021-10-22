@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "57bbf102_9c8d3095",
+        "filename": "zephyr/test/drivers/src/ps8xxx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2021-10-22T11:26:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f2f7295a_b16281f9",
+      "range": {
+        "startLine": 331,
+        "startChar": 0,
+        "endLine": 334,
+        "endChar": 4
+      },
+      "revId": "1a8adbb17e279e36ecf3448da510ad0f313eff42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "be142742_ebe25165",
@@ -54,6 +78,24 @@
       "writtenOn": "2021-10-21T19:16:30Z",
       "side": 1,
       "message": "Can you comment why this is a ztest_user_unit_test and not just a ztest_unit_test?",
+      "revId": "1a8adbb17e279e36ecf3448da510ad0f313eff42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b509a019_503da500",
+        "filename": "zephyr/test/drivers/src/ps8xxx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 694,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2021-10-22T11:26:58Z",
+      "side": 1,
+      "message": "I just copied this from other test. There is no reason to use here ztest_user_unit_test instead of ztest_unit_test. Changed it.",
+      "parentUuid": "be142742_ebe25165",
       "revId": "1a8adbb17e279e36ecf3448da510ad0f313eff42",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
