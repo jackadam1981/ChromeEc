@@ -309,7 +309,8 @@ int pd_check_requested_voltage(uint32_t rdo, const int port)
 	int idx = RDO_POS(rdo);
 	uint32_t pdo;
 	uint32_t pdo_ma;
-#if defined(CONFIG_USB_PD_TCPMV2) && defined(CONFIG_USB_PE_SM)
+#if defined(CONFIG_USB_PD_TCPMV2) && defined(CONFIG_USB_PE_SM) && \
+				!defined(CONFIG_USB_SERVO)
 	const uint32_t *src_pdo;
 	const int pdo_cnt = dpm_get_source_pdo(&src_pdo, port);
 #elif defined(CONFIG_USB_PD_DYNAMIC_SRC_CAP) || \
