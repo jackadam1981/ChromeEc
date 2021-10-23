@@ -1095,6 +1095,9 @@ static bool dpm_dfp_enter_mode_msg(int port)
 		IS_ENABLED(CONFIG_USB_PD_REQUIRE_AP_MODE_ENTRY) ? false : true;
 	enum dpm_msg_setup_status status = MSG_SETUP_UNSUPPORTED;
 
+	if (IS_ENABLED(CONFIG_USB_SERVO))
+		return false;
+
 #ifdef CONFIG_AP_POWER_CONTROL
 	/*
 	 * Do not try to enter mode while CPU is off.

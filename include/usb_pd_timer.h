@@ -256,6 +256,9 @@ enum pd_timer_range {
  * @param port USB-C port number
  */
 void pd_timer_init(int port);
+void tc_timer_init(int port);
+void pe_timer_init(int port);
+void pr_timer_init(int port);
 
 /*
  * pd_timer_enable
@@ -304,6 +307,14 @@ bool pd_timer_is_disabled(int port, enum pd_task_timer timer);
  * @return True if the timer is enabled and expired, otherwise false
  */
 bool pd_timer_is_expired(int port, enum pd_task_timer timer);
+
+/*
+ * pd_timer_update
+ * Updates the running pd_timers. Should be called once every 5ms.
+ *
+ * @param port USB-C port number
+ */
+void pd_timer_update(int port);
 
 /*
  * pd_timer_manage_expired

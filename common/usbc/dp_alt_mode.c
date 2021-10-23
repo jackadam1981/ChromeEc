@@ -232,6 +232,9 @@ enum dpm_msg_setup_status dp_setup_next_vdm(int port, int *vdo_count,
 		pd_get_amode_data(port, TCPCI_MSG_SOP, USB_SID_DISPLAYPORT);
 	int vdo_count_ret;
 
+	if (IS_ENABLED(CONFIG_USB_SERVO))
+		return MSG_SETUP_UNSUPPORTED;
+
 	if (*vdo_count < VDO_MAX_SIZE)
 		return MSG_SETUP_ERROR;
 
