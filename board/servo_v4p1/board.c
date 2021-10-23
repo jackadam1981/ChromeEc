@@ -38,6 +38,7 @@
 #include "usb_pd.h"
 #include "usb_spi.h"
 #include "usb-stream.h"
+#include "usb_tc_snk_sm.h"
 #include "usb_tc_sm.h"
 #include "util.h"
 
@@ -47,10 +48,19 @@
 #define CROS_EC_SECTION "RW"
 #endif
 
+/* Servo Alternate Power Plug Event */
+#define SERVO_EVT_TCPC       BIT(0)
+
+#define SET_EVENT(evt) atomic_or(&evt_flags, (evt))
+#define CLR_EVENT(evt) atomic_clear_bits(&evt_flags, (evt))
+#define CHK_EVENT(evt) (evt_flags & (evt))
+
+#ifdef SECTION_IS_RO
+static uint32_t  evt_flags;
+
 /******************************************************************************
  * GPIO interrupt handlers.
  */
-#ifdef SECTION_IS_RO
 static void vbus0_evt(enum gpio_signal signal)
 {
 	task_wake(TASK_ID_PD_C0);
@@ -159,7 +169,7 @@ static void dp_evt(enum gpio_signal signal)
 
 static void tcpc_evt(enum gpio_signal signal)
 {
-	update_status_fusb302b();
+	SET_EVENT(SERVO_EVT_TCPC);
 }
 
 #define HOST_HUB		0
@@ -465,7 +475,6 @@ static void board_init(void)
 	init_uservo_port();
 	init_pathsel();
 	init_ina231s();
-	init_fusb302b(1);
 
 	/* Disable power to DUT by default */
 	chg_power_select(CHG_POWER_OFF);
@@ -512,6 +521,27 @@ static void board_init(void)
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
 #ifdef SECTION_IS_RO
+void handle_events(void)
+{
+	if (CHK_EVENT(SERVO_EVT_TCPC)) {
+		CLR_EVENT(SERVO_EVT_TCPC);
+		fusb302b_evt();
+	}
+}
+
+void servo_task(void *u)
+{
+	init_fusb302b(1);
+	if (usb_tc_snk_sm_init())
+		ccprintf("FAULT: Servo Alternate Power not functioning\n");
+
+	while (1) {
+		task_wait_event(5*MSEC);
+		handle_events();
+		usb_tc_snk_sm_run();
+	}
+}
+
 void tick_event(void)
 {
 	static int i = 0;
