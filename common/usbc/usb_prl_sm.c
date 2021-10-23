@@ -607,7 +607,10 @@ static void prl_init(int port)
 	for (i = 0; i < NUM_SOP_STAR_TYPES; i++)
 		prl_reset_msg_ids(port, i);
 
-	pd_timer_disable_range(port, PR_TIMER_RANGE);
+	if (IS_ENABLED(CONFIG_USB_SERVO))
+		pr_timer_init(port);
+	else
+		pd_timer_disable_range(port, PR_TIMER_RANGE);
 
 	/* Clear state machines and set initial states */
 	prl_tx[port].ctx = cleared;
