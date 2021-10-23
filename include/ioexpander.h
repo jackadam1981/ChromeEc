@@ -59,6 +59,16 @@ struct ioexpander_drv {
 /* IO Expander has been initialized */
 #define IOEX_FLAGS_INITIALIZED	BIT(1)
 
+/*
+ * BITS 24 to 31 are used by io-expander drivers that need to control multiple
+ * devices
+ */
+
+/* Used by io-expander tca64xxa.c driver for control of tca6416a */
+#define IOEX_FLAGS_TCA64XXA_FLAG_VER_TCA6416A BIT(24)
+/* Used by io-expander tca64xxa.c driver for control of tca6424a */
+#define IOEX_FLAGS_TCA64XXA_FLAG_VER_TCA6424A BIT(25)
+
 struct ioexpander_config_t {
 	/* Physical I2C port connects to the IO expander chip. */
 	int i2c_host_port;
