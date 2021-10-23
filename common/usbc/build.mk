@@ -5,7 +5,11 @@
 # Build for USB Type-C and Power Delivery
 
 ifneq ($(CONFIG_USB_PD_TCPMV2),)
-common-usbc-$(CONFIG_USB_PD_TCPMV2) += usb_pd_timer.o usb_sm.o usbc_task.o
+ifeq ($(CONFIG_USB_SERVO),)
+common-usbc-$(CONFIG_USB_PD_TCPMV2) += usb_pd_timer.o
+endif # CONFIG_USB_SERVO
+common-usbc-$(CONFIG_USB_PD_TCPMV2) += usb_sm.o
+common-usbc-$(CONFIG_USB_PD_TCPMV2) += usbc_task.o
 
 # Type-C state machines
 ifneq ($(CONFIG_USB_TYPEC_SM),)
@@ -13,6 +17,8 @@ common-usbc-$(CONFIG_USB_VPD) += usb_tc_vpd_sm.o
 common-usbc-$(CONFIG_USB_CTVPD) += usb_tc_ctvpd_sm.o
 common-usbc-$(CONFIG_USB_DRP_ACC_TRYSRC) += usb_tc_drp_acc_trysrc_sm.o
 endif # CONFIG_USB_TYPEC_SM
+
+common-usbc-$(CONFIG_USB_SERVO) += usb_pd_servo_timer.o
 
 # Protocol state machine
 ifneq ($(CONFIG_USB_PRL_SM),)
