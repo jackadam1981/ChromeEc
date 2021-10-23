@@ -4318,10 +4318,12 @@
  *
  * VPD - Vconn Powered Device
  * CTVPD - Charge Through Vconn Powered Device
+ * SERVOV - Servo V4x Device
  * DRP_ACC_TRYSRC - Dual Role Port, Audio Accessory, and Try.SRC Device
  */
 #undef CONFIG_USB_VPD
 #undef CONFIG_USB_CTVPD
+#undef CONFIG_USB_SERVOV
 #undef CONFIG_USB_DRP_ACC_TRYSRC
 
 /*
@@ -5646,6 +5648,7 @@
 #ifdef CONFIG_USB_PD_TCPMV2
 #if defined(CONFIG_USB_VPD) + \
 	defined(CONFIG_USB_CTVPD) + \
+	defined(CONFIG_USB_SERVOV) + \
 	defined(CONFIG_USB_DRP_ACC_TRYSRC) != 1
 #error Must define exactly one CONFIG_USB_ device type.
 #endif
