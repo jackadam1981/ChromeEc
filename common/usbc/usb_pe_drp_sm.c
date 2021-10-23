@@ -578,6 +578,7 @@ static struct policy_engine {
 	uint32_t curr_limit;
 	uint32_t supply_voltage;
 
+#ifndef CONFIG_USB_SERVO
 	/* PD_VDO_INVALID is used when there is an invalid VDO */
 	int32_t ama_vdo;
 	int32_t vpd_vdo;
@@ -585,6 +586,7 @@ static struct policy_engine {
 	struct pd_discovery discovery[DISCOVERY_TYPE_COUNT];
 	/* Active alternate modes */
 	struct partner_active_modes partner_amodes[AMODE_TYPE_COUNT];
+#endif
 
 	/* Partner type to send */
 	enum tcpci_msg_type tx_type;
@@ -768,7 +770,12 @@ static void pe_init(int port)
 	memset(&pe[port].flags_a, 0, sizeof(pe[port].flags_a));
 	pe[port].dpm_request = 0;
 	pe[port].dpm_curr_request = 0;
-	pd_timer_disable_range(port, PE_TIMER_RANGE);
+
+	if (IS_ENABLED(CONFIG_USB_SERVO))
+		pe_timer_init(port);
+	else
+		pd_timer_disable_range(port, PE_TIMER_RANGE);
+
 	pe[port].data_role = pd_get_data_role(port);
 	pe[port].tx_type = TCPCI_MSG_INVALID;
 	pe[port].events = 0;
@@ -909,9 +916,10 @@ void pe_got_hard_reset(int port)
 	 */
 	pe[port].power_role = pd_get_power_role(port);
 
+#ifndef CONFIG_USB_SERVO
 	/* Exit BIST Test mode, in case the TCPC entered it. */
 	tcpc_set_bist_test_mode(port, false);
-
+#endif
 	if (pe[port].power_role == PD_ROLE_SOURCE)
 		set_state_pe(port, PE_SRC_HARD_RESET_RECEIVED);
 	else
@@ -1060,7 +1068,7 @@ uint32_t pd_get_requested_current(int port)
  * communicate with the cable plug, with an implication that it must be Vconn
  * source as well (6.3.11 VCONN_Swap Message).
  */
-static bool pe_can_send_sop_prime(int port)
+__maybe_unused static bool pe_can_send_sop_prime(int port)
 {
 	if (IS_ENABLED(CONFIG_USBC_VCONN)) {
 		if (PE_CHK_FLAG(port, PE_FLAGS_EXPLICIT_CONTRACT)) {
@@ -1379,6 +1387,29 @@ void pd_send_vdm(int port, uint32_t vid, int cmd, const uint32_t *data,
 	task_wake(PD_PORT_TO_TASK_ID(port));
 }
 
+#ifdef CONFIG_USB_SERVO
+void pd_send_hpd(int port, enum hpd_event hpd)
+{
+	uint32_t data[1];
+	int opos = pd_alt_mode(port, TCPCI_MSG_SOP, USB_SID_DISPLAYPORT);
+
+	if (!opos)
+		return;
+
+	data[0] = VDO_DP_STATUS((hpd == hpd_irq),  /* IRQ_HPD */
+		(hpd != hpd_low),     /* HPD_HI|LOW */
+		0,                    /* request exit DP */
+		0,                    /* request exit USB */
+		0,                    /* MF pref */
+		1,                    /* enabled */
+		0,                    /* power low */
+		0x2);
+
+	pd_send_vdm(port, USB_SID_DISPLAYPORT,
+		VDO_OPOS(opos) | CMD_ATTENTION, data, 1);
+}
+#endif
+
 #ifdef TEST_BUILD
 /*
  * Allow unit tests to access this function to clear internal state data between
@@ -1410,6 +1441,7 @@ static void pe_clear_port_data(int port)
 	pd_set_src_caps(port, 0, NULL);
 	pe_set_snk_caps(port, 0, NULL);
 
+#ifndef CONFIG_USB_SERVO
 	/*
 	 * Saved Revision responses are no longer valid on disconnect
 	 */
@@ -1418,9 +1450,7 @@ static void pe_clear_port_data(int port)
 	pe[port].partner_rmdo.major_ver = 0;
 	pe[port].partner_rmdo.minor_rev = 0;
 	pe[port].partner_rmdo.major_rev = 0;
-
-	/* Clear any stored discovery data, but leave modes for alt mode exit */
-	pd_dfp_discovery_init(port);
+#endif
 
 	/* Clear any pending alerts */
 	pe_clear_ado(port);
@@ -1428,8 +1458,10 @@ static void pe_clear_port_data(int port)
 	dpm_remove_sink(port);
 	dpm_remove_source(port);
 
+#ifndef CONFIG_USB_SERVO
 	/* Exit BIST Test mode, in case the TCPC entered it. */
 	tcpc_set_bist_test_mode(port, false);
+#endif
 }
 
 int pe_set_ado(int port, uint32_t data)
@@ -1566,12 +1598,14 @@ static bool common_src_snk_dpm_requests(int port)
 			 * port discovery, and also clear any pending VDM send
 			 * requests.
 			 */
+#ifndef CONFIG_USB_SERVO
 			pd_dfp_discovery_init(port);
 			/*
 			 * TODO(b/189353401): Do not reinitialize modes when no
 			 * longer required.
 			 */
 			pd_dfp_mode_init(port);
+#endif
 			pe[port].dr_swap_attempt_counter = 0;
 			pe[port].discover_identity_counter = 0;
 			pd_timer_enable(port, PE_TIMER_DISCOVER_IDENTITY,
@@ -1813,16 +1847,19 @@ static void pe_send_request_msg(int port)
 	uint32_t supply_voltage;
 
 	/*
-	 * If we are charging through a VPD, the requested voltage and current
-	 * might need adjusting.
+	 * If we are charging through a VPD, the requested voltage and
+	 * current might need adjusting.
 	 */
-	if ((get_usb_pd_cable_type(port) == IDH_PTYPE_VPD) &&
-						is_vpd_ct_supported(port)) {
+	if (!IS_ENABLED(CONFIG_USB_SERVO) &&
+		(get_usb_pd_cable_type(port) == IDH_PTYPE_VPD) &&
+					is_vpd_ct_supported(port)) {
 		union vpd_vdo vpd = pd_get_am_discovery(port,
-				TCPCI_MSG_SOP_PRIME)->identity.product_t1.vpd;
+			TCPCI_MSG_SOP_PRIME)->identity.product_t1.vpd;
 
 		/* The raw vpd_vdo is passed to pd_build_request */
 		vpd_vdo = vpd.raw_value;
+	} else {
+		vpd_vdo = PD_VDO_INVALID;
 	}
 
 	/* Build and send request RDO */
@@ -2054,7 +2091,7 @@ void pd_dev_get_rw_hash(int port, uint16_t *dev_id, uint8_t *rw_hash,
  * message but the partner gets a message in first, may not want to
  * disable and restart it.
  */
-static void pe_update_wait_and_add_jitter_timer(int port)
+__maybe_unused static void pe_update_wait_and_add_jitter_timer(int port)
 {
 	/*
 	 * In PD2.0 Mode
@@ -2124,6 +2161,7 @@ static enum pe_msg_check pe_sender_response_msg_run(const int port)
 {
 	timestamp_t tx_success_ts;
 	uint32_t offset;
+
 	if (pd_timer_is_disabled(port, PE_TIMER_SENDER_RESPONSE)) {
 		/* Check for Discard */
 		if (PE_CHK_FLAG(port, PE_FLAGS_MSG_DISCARDED)) {
@@ -2240,26 +2278,37 @@ static void pe_src_startup_entry(int port)
 		 */
 		pd_timer_enable(port, PE_TIMER_SWAP_SOURCE_START, 0);
 
-		/*
-		 * Set DiscoverIdentityTimer to trigger when we enter
-		 * src_discovery for the first time.  After initial startup
-		 * set, vdm_identity_request_cbl will handle the timer updates.
-		 */
-		pd_timer_enable(port, PE_TIMER_DISCOVER_IDENTITY, 0);
+		if (!IS_ENABLED(CONFIG_USB_SERVO)) {
+			/*
+			 * Set DiscoverIdentityTimer to trigger when we enter
+			 * src_discovery for the first time.  After initial
+			 * startup set, vdm_identity_request_cbl will handle\
+			 * the timer updates.
+			 */
+			pd_timer_enable(port, PE_TIMER_DISCOVER_IDENTITY, 0);
 
-		/* Clear port discovery/mode flags */
-		pd_dfp_discovery_init(port);
-		pd_dfp_mode_init(port);
+			/* Clear port discovery/mode flags */
+
+			pd_dfp_discovery_init(port);
+			pd_dfp_mode_init(port);
+		}
+
 		dpm_init(port);
+
+#ifndef CONFIG_USB_SERVO
 		pe[port].ama_vdo = PD_VDO_INVALID;
 		pe[port].vpd_vdo = PD_VDO_INVALID;
+#endif
+
 		pe[port].discover_identity_counter = 0;
 
 		/* Reset dr swap attempt counter */
 		pe[port].dr_swap_attempt_counter = 0;
 
-		/* Reset VCONN swap counter */
-		pe[port].vconn_swap_counter = 0;
+		if (!IS_ENABLED(CONFIG_USB_SERVO)) {
+			/* Reset VCONN swap counter */
+			pe[port].vconn_swap_counter = 0;
+		}
 
 		/* Request partner sink caps if a feature requires them */
 		if (IS_ENABLED(CONFIG_USB_PD_HOST_CMD) ||
@@ -2310,7 +2359,9 @@ static void pe_src_discovery_entry(int port)
 	 * Note: Cable identity is the only valid VDM to probe before a contract
 	 * is in place.  All other probing must happen from ready states.
 	 */
+#ifndef CONFIG_USB_SERVO
 	if (get_last_state_pe(port) != PE_VDM_IDENTITY_REQUEST_CBL)
+#endif
 		pd_timer_enable(port, PE_TIMER_SOURCE_CAP,
 				PD_T_SEND_SOURCE_CAP);
 }
@@ -2346,7 +2397,8 @@ static void pe_src_discovery_run(int port)
 	 * contract, we use it here to ensure we space any potential BUSY
 	 * requests properly.
 	 */
-	if (pd_get_identity_discovery(port, TCPCI_MSG_SOP_PRIME) ==
+	if (!IS_ENABLED(CONFIG_USB_SERVO) &&
+			pd_get_identity_discovery(port, TCPCI_MSG_SOP_PRIME) ==
 				PD_DISC_NEEDED
 			&& pd_timer_is_expired(port, PE_TIMER_DISCOVER_IDENTITY)
 			&& pe_can_send_sop_prime(port)
@@ -2451,7 +2503,8 @@ static void pe_src_send_capabilities_run(int port)
 			prl_set_rev(port, TCPCI_MSG_SOP,
 			MIN(PD_REVISION, PD_HEADER_REV(rx_emsg[port].header)));
 
-			init_cable_rev(port);
+			if (!IS_ENABLED(CONFIG_USB_SERVO))
+				init_cable_rev(port);
 
 			/* We are PD connected */
 			PE_SET_FLAG(port, PE_FLAGS_PD_CONNECTION);
@@ -2611,13 +2664,13 @@ static void pe_src_transition_supply_run(int port)
 
 		if (PE_CHK_FLAG(port, PE_FLAGS_PS_READY)) {
 			PE_CLR_FLAG(port, PE_FLAGS_PS_READY);
-
 			/*
 			 * Set first message flag to trigger a wait and add
 			 * jitter delay when operating in PD2.0 mode. Skip
 			 * if we already have a contract.
 			 */
-			if (!pe_is_explicit_contract(port)) {
+			if (!IS_ENABLED(CONFIG_USB_SERVO) &&
+					!pe_is_explicit_contract(port)) {
 				PE_SET_FLAG(port, PE_FLAGS_FIRST_MSG);
 				pd_timer_disable(port,
 						PE_TIMER_WAIT_AND_ADD_JITTER);
@@ -2626,7 +2679,6 @@ static void pe_src_transition_supply_run(int port)
 			/* NOTE: Second pass through this code block */
 			/* Explicit Contract is now in place */
 			pe_set_explicit_contract(port);
-
 			/*
 			 * Setup to get Device Policy Manager to request
 			 * Source Capabilities, if needed, for possible
@@ -2636,19 +2688,26 @@ static void pe_src_transition_supply_run(int port)
 			 */
 			if (pe[port].src_cap_cnt == 0)
 				pd_dpm_request(port, DPM_REQUEST_GET_SRC_CAPS);
-
 			set_state_pe(port, PE_SRC_READY);
 		} else {
 			/* NOTE: First pass through this code block */
 			/* Wait for tSrcTransition before changing supply. */
-			pd_timer_enable(port, PE_TIMER_SRC_TRANSITION,
+			if (IS_ENABLED(CONFIG_USB_SERVO)) {
+				pd_transition_voltage(pe[port].requested_idx);
+				send_ctrl_msg(port,
+					TCPCI_MSG_SOP, PD_CTRL_PS_RDY);
+				PE_SET_FLAG(port, PE_FLAGS_PS_READY);
+			} else {
+				pd_timer_enable(port, PE_TIMER_SRC_TRANSITION,
 					PD_T_SRC_TRANSITION);
+			}
 		}
 
 		return;
 	}
 
-	if (pd_timer_is_expired(port, PE_TIMER_SRC_TRANSITION)) {
+	if (!IS_ENABLED(CONFIG_USB_SERVO) &&
+			pd_timer_is_expired(port, PE_TIMER_SRC_TRANSITION)) {
 		pd_timer_disable(port, PE_TIMER_SRC_TRANSITION);
 		/* Transition power supply and send PS_RDY. */
 		pd_transition_voltage(pe[port].requested_idx);
@@ -2677,6 +2736,7 @@ static void pe_src_transition_supply_exit(int port)
  */
 static void extended_message_not_supported(int port, uint32_t *payload)
 {
+#ifndef CONFIG_USB_SERVO
 	uint16_t ext_header = GET_EXT_HEADER(*payload);
 
 	if (IS_ENABLED(CONFIG_USB_PD_REV30) &&
@@ -2689,7 +2749,7 @@ static void extended_message_not_supported(int port, uint32_t *payload)
 				PE_SRC_CHUNK_RECEIVED : PE_SNK_CHUNK_RECEIVED);
 		return;
 	}
-
+#endif
 	set_state_pe(port, PE_SEND_NOT_SUPPORTED);
 }
 
@@ -2710,7 +2770,8 @@ static void pe_src_ready_entry(int port)
 	 * Wait and add jitter if we are operating in PD2.0 mode and no messages
 	 * have been sent since enter this state.
 	 */
-	pe_update_wait_and_add_jitter_timer(port);
+	if (!IS_ENABLED(CONFIG_USB_SERVO))
+		pe_update_wait_and_add_jitter_timer(port);
 }
 
 static void pe_src_ready_run(int port)
@@ -2866,18 +2927,19 @@ static void pe_src_ready_run(int port)
 		PE_SET_DPM_REQUEST(port, DPM_REQUEST_PR_SWAP);
 	}
 
+#ifndef CONFIG_USB_SERVO
 	if (pd_timer_is_disabled(port, PE_TIMER_WAIT_AND_ADD_JITTER) ||
 	    pd_timer_is_expired(port, PE_TIMER_WAIT_AND_ADD_JITTER)) {
-
 		PE_CLR_FLAG(port, PE_FLAGS_FIRST_MSG);
 		pd_timer_disable(port, PE_TIMER_WAIT_AND_ADD_JITTER);
-
+#endif
 		/*
 		 * Handle Device Policy Manager Requests
 		 */
 		if (source_dpm_requests(port))
 			return;
 
+#ifndef CONFIG_USB_SERVO
 		/*
 		 * Attempt discovery if possible, and return if state was
 		 * changed for that discovery.
@@ -2888,6 +2950,7 @@ static void pe_src_ready_run(int port)
 		/* No DPM requests; attempt mode entry/exit if needed */
 		dpm_run(port);
 	}
+#endif
 }
 
 /**
@@ -2897,6 +2960,7 @@ static void pe_src_disabled_entry(int port)
 {
 	print_current_state(port);
 
+#ifndef CONFIG_USB_SERVO
 	if ((get_usb_pd_cable_type(port) == IDH_PTYPE_VPD) &&
 						is_vpd_ct_supported(port)) {
 		/*
@@ -2905,6 +2969,7 @@ static void pe_src_disabled_entry(int port)
 		 */
 		tc_ctvpd_detected(port);
 	}
+#endif
 
 	if (pd_get_power_role(port) == PD_ROLE_SOURCE)
 		dpm_add_non_pd_sink(port);
@@ -3132,8 +3197,10 @@ static void pe_snk_startup_entry(int port)
 		pd_timer_enable(port, PE_TIMER_DISCOVER_IDENTITY, 0);
 
 		/* Clear port discovery/mode flags */
+#ifndef CONFIG_USB_SERVO
 		pd_dfp_discovery_init(port);
 		pd_dfp_mode_init(port);
+#endif
 		dpm_init(port);
 		pe[port].discover_identity_counter = 0;
 
@@ -3238,6 +3305,7 @@ static void pe_snk_wait_for_capabilities_run(int port)
 	}
 
 	/* When the SinkWaitCapTimer times out, perform a Hard Reset. */
+	/* Initialize and start the SinkWaitCapTimer */
 	if (pd_timer_is_expired(port, PE_TIMER_TIMEOUT)) {
 		PE_SET_FLAG(port, PE_FLAGS_SNK_WAIT_CAP_TIMEOUT);
 		pe_set_hard_reset(port);
@@ -3266,7 +3334,8 @@ static void pe_snk_evaluate_capability_entry(int port)
 	prl_set_rev(port, TCPCI_MSG_SOP,
 			MIN(PD_REVISION, PD_HEADER_REV(rx_emsg[port].header)));
 
-	init_cable_rev(port);
+	if (!IS_ENABLED(CONFIG_USB_SERVO))
+		init_cable_rev(port);
 
 	/* Parse source caps if they have changed */
 	if (pe[port].src_cap_cnt != num ||
@@ -3466,12 +3535,16 @@ static void pe_snk_transition_sink_run(int port)
 		if ((PD_HEADER_CNT(rx_emsg[port].header) == 0) &&
 			   (PD_HEADER_TYPE(rx_emsg[port].header) ==
 			   PD_CTRL_PS_RDY)) {
-			/*
-			 * Set first message flag to trigger a wait and add
-			 * jitter delay when operating in PD2.0 mode.
-			 */
-			PE_SET_FLAG(port, PE_FLAGS_FIRST_MSG);
-			pd_timer_disable(port, PE_TIMER_WAIT_AND_ADD_JITTER);
+
+			if (!IS_ENABLED(CONFIG_USB_SERVO)) {
+				/*
+				 * Set first message flag to trigger a wait and
+				 * jitter delay when operating in PD2.0 mode.
+				 */
+				PE_SET_FLAG(port, PE_FLAGS_FIRST_MSG);
+				pd_timer_disable(port,
+					PE_TIMER_WAIT_AND_ADD_JITTER);
+			}
 
 			/*
 			 * If we've successfully completed our new power
@@ -3559,7 +3632,8 @@ static void pe_snk_ready_entry(int port)
 	 * Wait and add jitter if we are operating in PD2.0 mode and no messages
 	 * have been sent since enter this state.
 	 */
-	pe_update_wait_and_add_jitter_timer(port);
+	if (!IS_ENABLED(CONFIG_USB_SERVO))
+		pe_update_wait_and_add_jitter_timer(port);
 }
 
 static void pe_snk_ready_run(int port)
@@ -3709,11 +3783,12 @@ static void pe_snk_ready_run(int port)
 		return;
 	}
 
+#ifndef CONFIG_USB_SERVO
 	if (pd_timer_is_disabled(port, PE_TIMER_WAIT_AND_ADD_JITTER) ||
 	    pd_timer_is_expired(port, PE_TIMER_WAIT_AND_ADD_JITTER)) {
 		PE_CLR_FLAG(port, PE_FLAGS_FIRST_MSG);
 		pd_timer_disable(port, PE_TIMER_WAIT_AND_ADD_JITTER);
-
+#endif
 		if (pd_timer_is_expired(port, PE_TIMER_SINK_REQUEST)) {
 			pd_timer_disable(port, PE_TIMER_SINK_REQUEST);
 			set_state_pe(port, PE_SNK_SELECT_CAPABILITY);
@@ -3735,8 +3810,9 @@ static void pe_snk_ready_run(int port)
 
 		/* No DPM requests; attempt mode entry/exit if needed */
 		dpm_run(port);
-
+#ifndef CONFIG_USB_SERVO
 	}
+#endif
 }
 
 /**
@@ -4616,7 +4692,9 @@ static void pe_prs_src_snk_transition_to_off_entry(int port)
 	/* Contract is invalid */
 	pe_invalidate_explicit_contract(port);
 
-	pd_timer_enable(port, PE_TIMER_SRC_TRANSITION, PD_T_SRC_TRANSITION);
+	if (!IS_ENABLED(CONFIG_USB_SERVO))
+		pd_timer_enable(port,
+			PE_TIMER_SRC_TRANSITION, PD_T_SRC_TRANSITION);
 }
 
 static void pe_prs_src_snk_transition_to_off_run(int port)
@@ -4648,16 +4726,20 @@ static void pe_prs_src_snk_transition_to_off_run(int port)
 	}
 
 	/* Give time for supply to power off */
-	if (pd_timer_is_expired(port, PE_TIMER_PS_SOURCE) &&
-	    pd_check_vbus_level(port, VBUS_SAFE0V))
+	if (!IS_ENABLED(CONFIG_USB_SERVO) ||
+			(pd_timer_is_expired(port, PE_TIMER_PS_SOURCE) &&
+			pd_check_vbus_level(port, VBUS_SAFE0V)))
 		set_state_pe(port, PE_PRS_SRC_SNK_ASSERT_RD);
 }
 
 static void pe_prs_src_snk_transition_to_off_exit(int port)
 {
 	PE_CLR_FLAG(port, PE_FLAGS_SRC_SNK_SETTLE);
-	pd_timer_disable(port, PE_TIMER_SRC_TRANSITION);
-	pd_timer_disable(port, PE_TIMER_PS_SOURCE);
+
+	if (!IS_ENABLED(CONFIG_USB_SERVO)) {
+		pd_timer_disable(port, PE_TIMER_SRC_TRANSITION);
+		pd_timer_disable(port, PE_TIMER_PS_SOURCE);
+	}
 }
 
 /**
@@ -4690,7 +4772,7 @@ static void pe_prs_src_snk_wait_source_on_entry(int port)
 static void pe_prs_src_snk_wait_source_on_run(int port)
 {
 	if (pd_timer_is_disabled(port, PE_TIMER_PS_SOURCE) &&
-	    PE_CHK_FLAG(port, PE_FLAGS_TX_COMPLETE)) {
+		PE_CHK_FLAG(port, PE_FLAGS_TX_COMPLETE)) {
 		PE_CLR_FLAG(port, PE_FLAGS_TX_COMPLETE);
 
 		/* Update pe power role */
@@ -4703,7 +4785,7 @@ static void pe_prs_src_snk_wait_source_on_run(int port)
 	 *   1) A PS_RDY Message is received.
 	 */
 	if (!pd_timer_is_disabled(port, PE_TIMER_PS_SOURCE) &&
-	    PE_CHK_FLAG(port, PE_FLAGS_MSG_RECEIVED)) {
+		PE_CHK_FLAG(port, PE_FLAGS_MSG_RECEIVED)) {
 		int type = PD_HEADER_TYPE(rx_emsg[port].header);
 		int cnt = PD_HEADER_CNT(rx_emsg[port].header);
 		int ext = PD_HEADER_EXT(rx_emsg[port].header);
@@ -5216,6 +5298,7 @@ __maybe_unused static void pe_prs_frs_shared_exit(int port)
 	PE_CLR_FLAG(port, PE_FLAGS_FAST_ROLE_SWAP_PATH);
 }
 
+#ifndef CONFIG_USB_SERVO
 /**
  * PE_BIST_TX
  */
@@ -5305,6 +5388,7 @@ static void pe_bist_tx_exit(int port)
 {
 	pd_timer_disable(port, PE_TIMER_BIST_CONT_MODE);
 }
+#endif
 
 /**
  * Give_Sink_Cap Message
@@ -5396,6 +5480,7 @@ static void pe_handle_custom_vdm_request_exit(int port)
 	PE_CLR_FLAG(port, PE_FLAGS_INTERRUPTIBLE_AMS);
 }
 
+#ifndef CONFIG_USB_SERVO
 static enum vdm_response_result parse_vdm_response_common(int port)
 {
 	/* Retrieve the message information */
@@ -5464,6 +5549,7 @@ static enum vdm_response_result parse_vdm_response_common(int port)
 	PE_SET_FLAG(port, PE_FLAGS_MSG_RECEIVED);
 	return VDM_RESULT_NO_ACTION;
 }
+#endif
 
 /**
  * PE_VDM_SEND_REQUEST
@@ -5549,6 +5635,7 @@ static void pe_vdm_send_request_exit(int port)
 	pd_timer_disable(port, PE_TIMER_VDM_RESPONSE);
 }
 
+#ifndef CONFIG_USB_SERVO
 /**
  * PE_VDM_IDENTITY_REQUEST_CBL
  * Combination of PE_INIT_PORT_VDM_Identity_Request State specific to the
@@ -6157,6 +6244,7 @@ static void pe_vdm_request_dpm_exit(int port)
 	if (!PE_CHK_FLAG(port, PE_FLAGS_VDM_REQUEST_CONTINUE))
 		pe[port].tx_type = TCPCI_MSG_INVALID;
 }
+#endif
 
 /**
  * PE_VDM_Response
@@ -6338,6 +6426,7 @@ static void pe_vdm_response_exit(int port)
 	PE_CLR_FLAG(port, PE_FLAGS_INTERRUPTIBLE_AMS);
 }
 
+#ifndef CONFIG_USB_SERVO
 /**
  * PE_DEU_SEND_ENTER_USB
  */
@@ -6447,6 +6536,7 @@ static void pe_enter_usb_exit(int port)
 {
 	pe_sender_response_msg_exit(port);
 }
+#endif
 
 #ifdef CONFIG_USBC_VCONN
 /*
@@ -7736,6 +7826,7 @@ uint8_t pd_get_src_cap_cnt(int port)
 	return 0;
 }
 
+#ifndef CONFIG_USB_SERVO
 /* Track access to the PD discovery structures during HC execution */
 atomic_t task_access[CONFIG_USB_PD_PORT_MAX_COUNT][DISCOVERY_TYPE_COUNT];
 
@@ -7829,6 +7920,7 @@ __maybe_unused void pd_set_dfp_enter_mode_flag(int port, bool set)
 	else
 		PE_CLR_FLAG(port, PE_FLAGS_MODAL_OPERATION);
 }
+#endif
 
 const char *pe_get_current_state(int port)
 {
@@ -8084,6 +8176,7 @@ static __const_data const struct usb_state pe_states[] = {
 		.exit   = pe_vcs_cbl_send_soft_reset_exit,
 	},
 #endif /* CONFIG_USBC_VCONN */
+#ifndef CONFIG_USB_SERVO
 	[PE_VDM_IDENTITY_REQUEST_CBL] = {
 		.entry  = pe_vdm_identity_request_cbl_entry,
 		.run    = pe_vdm_identity_request_cbl_run,
@@ -8114,6 +8207,7 @@ static __const_data const struct usb_state pe_states[] = {
 		.exit  = pe_vdm_request_dpm_exit,
 		.parent = &pe_states[PE_VDM_SEND_REQUEST],
 	},
+#endif
 	[PE_VDM_RESPONSE] = {
 		.entry = pe_vdm_response_entry,
 		.run   = pe_vdm_response_run,
@@ -8124,20 +8218,24 @@ static __const_data const struct usb_state pe_states[] = {
 		.run   = pe_handle_custom_vdm_request_run,
 		.exit  = pe_handle_custom_vdm_request_exit,
 	},
+#ifndef CONFIG_USB_SERVO
 	[PE_DEU_SEND_ENTER_USB] = {
 		.entry = pe_enter_usb_entry,
 		.run = pe_enter_usb_run,
 		.exit = pe_enter_usb_exit,
 	},
+#endif
 	[PE_WAIT_FOR_ERROR_RECOVERY] = {
 		.entry = pe_wait_for_error_recovery_entry,
 		.run   = pe_wait_for_error_recovery_run,
 	},
+#ifndef CONFIG_USB_SERVO
 	[PE_BIST_TX] = {
 		.entry = pe_bist_tx_entry,
 		.run   = pe_bist_tx_run,
 		.exit  = pe_bist_tx_exit,
 	},
+#endif
 	[PE_DR_GET_SINK_CAP] = {
 		.entry = pe_dr_get_sink_cap_entry,
 		.run   = pe_dr_get_sink_cap_run,

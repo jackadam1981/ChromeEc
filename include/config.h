@@ -4551,6 +4551,8 @@
  */
 #undef CONFIG_USB_PD_DATA_RESET_MSG
 
+#undef CONFIG_USB_SERVO
+
 /*
  * Define if this board can enable VBUS discharge (eg. through a GPIO-controlled
  * discharge circuit, or through port controller registers) to discharge VBUS

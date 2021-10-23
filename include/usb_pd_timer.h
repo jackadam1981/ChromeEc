@@ -167,7 +167,6 @@ enum pd_task_timer {
 	 */
 	PE_TIMER_WAIT_AND_ADD_JITTER,
 
-
 	/* Chunk Sender Response timer */
 	PR_TIMER_CHUNK_SENDER_RESPONSE,
 
@@ -182,7 +181,6 @@ enum pd_task_timer {
 
 	/* timeout to limit waiting on TCPC response (not in spec) */
 	PR_TIMER_TCPC_TX_TIMEOUT,
-
 
 	/* Time a port shall wait before it can determine it is attached */
 	TC_TIMER_CC_DEBOUNCE,
@@ -242,6 +240,9 @@ enum pd_timer_range {
  * @param port USB-C port number
  */
 void pd_timer_init(int port);
+void tc_timer_init(int port);
+void pe_timer_init(int port);
+void pr_timer_init(int port);
 
 /*
  * pd_timer_enable
@@ -311,6 +312,8 @@ void pd_timer_manage_expired(int port);
  */
 int pd_timer_next_expiration(int port);
 
+
+void pd_timer_update(int port);
 
 /*
  * pd_timer_dump
