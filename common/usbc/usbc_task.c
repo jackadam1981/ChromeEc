@@ -63,11 +63,13 @@ bool tc_event_loop_is_paused(int port)
 
 void tc_start_event_loop(int port)
 {
+	ccprintf("OK %d, %d\n", port, paused[port]);
 	/*
 	 * Only generate TASK_EVENT_WAKE event if state
 	 * machine is transitioning to un-paused
 	 */
 	if (paused[port]) {
+		ccprintf("START PD %d\n", port);
 		paused[port] = 0;
 		task_set_event(PD_PORT_TO_TASK_ID(port), TASK_EVENT_WAKE);
 	}
@@ -77,7 +79,9 @@ static void pd_task_init(int port)
 {
 	if (IS_ENABLED(CONFIG_USB_TYPEC_SM))
 		tc_state_init(port);
-	paused[port] = 0;
+
+	if (!IS_ENABLED(CONFIG_USB_SERVO))
+		paused[port] = 0;
 
 	/*
 	 * Since most boards configure the TCPC interrupt as edge
@@ -100,17 +104,18 @@ static void pd_task_init(int port)
 
 static int pd_task_timeout(int port)
 {
-	int timeout;
+	int timeout = USBC_EVENT_TIMEOUT;
 
-	if (paused[port])
+	if (paused[port]) {
 		timeout = -1;
-	else {
+	} else if (!IS_ENABLED(CONFIG_USB_SERVO)) {
 		timeout = pd_timer_next_expiration(port);
 		if (timeout < 0 || timeout > USBC_EVENT_TIMEOUT)
 			timeout = USBC_EVENT_TIMEOUT;
 		else if (timeout < USBC_MIN_EVENT_TIMEOUT)
 			timeout = USBC_MIN_EVENT_TIMEOUT;
 	}
+
 	return timeout;
 }
 
@@ -119,9 +124,13 @@ static bool pd_task_loop(int port)
 	/* wait for next event/packet or timeout expiration */
 	const uint32_t evt = task_wait_event(pd_task_timeout(port));
 
-	/* Manage expired PD Timers on timeouts */
-	if (evt & TASK_EVENT_TIMER)
-		pd_timer_manage_expired(port);
+	if (IS_ENABLED(CONFIG_USB_SERVO)) {
+		pd_timer_update(port);
+	} else {
+		/* Manage expired PD Timers on timeouts */
+		if (evt & TASK_EVENT_TIMER)
+			pd_timer_manage_expired(port);
+	}
 
 	/*
 	 * Re-use TASK_EVENT_RESET_DONE in tests to restart the USB task
@@ -166,8 +175,13 @@ void pd_task(void *u)
 	if (port >= board_get_usb_pd_port_count())
 		return;
 
+	if (IS_ENABLED(CONFIG_USB_SERVO)) {
+		paused[port] = 1;
+	}
+
 	while (1) {
 		pd_timer_init(port);
+
 		pd_task_init(port);
 
 		/* As long as pd_task_loop returns true, keep running the loop.
