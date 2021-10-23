@@ -38,6 +38,7 @@
 #include "usb_pd.h"
 #include "usb_spi.h"
 #include "usb-stream.h"
+#include "usb_tc_sm.h"
 #include "util.h"
 
 #ifdef SECTION_IS_RO
@@ -206,6 +207,14 @@ void ext_hpd_detection_enable(int enable)
 		gpio_disable_interrupt(GPIO_DP_HPD);
 	}
 }
+
+static void start_usbc_pd(void)
+{
+	tc_start_event_loop(DUT);
+	tc_start_event_loop(CHG);
+}
+DECLARE_DEFERRED(start_usbc_pd);
+
 #endif /* SECTION_IS_RO */
 
 #include "gpio_list.h"
@@ -457,7 +466,9 @@ static void board_init(void)
 	init_pathsel();
 	init_ina231s();
 	init_fusb302b(1);
-	vbus_dischrg_en(0);
+
+	/* Disable power to DUT by default */
+	chg_power_select(CHG_POWER_OFF);
 
 	/* Bring atmel part out of reset */
 	atmel_reset_l(1);
@@ -484,14 +495,16 @@ static void board_init(void)
 	/* Disable power to DUT by default */
 	chg_power_select(CHG_POWER_OFF);
 
+	/* Start SuzyQ detection */
+	start_ccd_meas_sbu_cycle();
+
 	/*
 	 * Voltage transition needs to occur in lockstep between the CHG and
 	 * DUT ports, so initially limit voltage to 5V.
 	 */
 	pd_set_max_voltage(PD_MIN_MV);
+	hook_call_deferred(&start_usbc_pd_data, 1000 * MSEC);
 
-	/* Start SuzyQ detection */
-	start_ccd_meas_sbu_cycle();
 #else /* SECTION_IS_RO */
 	CPRINTS("Board ID is %d", board_id_det());
 #endif /* SECTION_IS_RO */
