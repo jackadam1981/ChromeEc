@@ -15,6 +15,55 @@
 /*
  * List of all timers that will be managed by usb_pd_timer
  */
+#ifdef CONFIG_USB_SERVO
+enum pd_task_timer {
+	TC_TIMER_SRC_RECOVER,
+	TC_TIMER_SAFE_0V,
+	TC_TIMER_SRC_RECOVER_MAX,
+	TC_TIMER_CC_DEBOUNCE,
+	TC_TIMER_PD_DEBOUNCE,
+	TC_TIMER_POWER_SUPPLY_TURN_ON_DELAY,
+	TC_TIMER_ERROR_RECOVERY,
+	TC_TIMER_SRC_TURN_ON,
+	TC_TIMER_RP_VALUE_CHANGE,
+	TC_TIMER_DRP_SNK,
+	TC_TIMER_DRP_SRC,
+	TC_TIMER_SRC_DISCONNECT,
+	TC_TIMER_VBUS_DEBOUNCE,
+	TC_TIMER_TIMEOUT,
+
+	PE_TIMER_PS_SOURCE_OFF,
+	PE_TIMER_NO_RESPONSE,
+	PE_TIMER_SENDER_RESPONSE,
+	PE_TIMER_PS_TRANSITION,
+	PE_TIMER_PS_SOURCE,
+	PE_TIMER_PS_HARD_RESET,
+	PE_TIMER_VCONN_SOURCE_ON,
+	PE_TIMER_SINK_REQUEST,
+	PE_TIMER_SWAP_SOURCE_START,
+	PE_TIMER_RP_VALUE_CHANGE,
+	PE_TIMER_SRC_DISCONNECT,
+	PE_TIMER_SRC_TRANSITION,
+	PE_TIMER_VCONN_STABLE,
+	PE_TIMER_DISCOVER_IDENTITY,
+	PE_TIMER_PR_SWAP_WAIT,
+	PE_TIMER_SOURCE_CAP,
+	PE_TIMER_SINK_WAIT_CAP,
+	PE_TIMER_TIMEOUT,
+
+	PE_TIMER_VDM_BUSY,
+	PE_TIMER_VDM_E_MODE,
+	PE_TIMER_VDM_RCVR_RSP,
+	PE_TIMER_VDM_SNDR_RSP,
+	PE_TIMER_VDM_WAIT_MODE_E,
+
+	PR_TIMER_TCPC_TX_TIMEOUT,
+	PR_TIMER_SINK_TX,
+	PR_TIMER_HARD_RESET_COMPLETE,
+
+	PD_TIMER_COUNT
+};
+#else
 enum pd_task_timer {
 	/*
 	 * In BIST_TX mode, this timer is used by a UUT to ensure that a
@@ -219,6 +268,7 @@ enum pd_task_timer {
 
 	PD_TIMER_COUNT
 };
+#endif
 
 enum pd_timer_range {
 	PE_TIMER_RANGE,
@@ -241,6 +291,10 @@ enum pd_timer_range {
  * @param port USB-C port number
  */
 void pd_timer_init(int port);
+void tc_timer_init(int port);
+void pe_timer_init(int port);
+void pr_timer_init(int port);
+bool pd_timer_is_enabled(int port, enum pd_task_timer timer);
 
 /*
  * pd_timer_enable
@@ -310,6 +364,8 @@ void pd_timer_manage_expired(int port);
  */
 int pd_timer_next_expiration(int port);
 
+
+void pd_timer_update(int port);
 
 /*
  * pd_timer_dump
