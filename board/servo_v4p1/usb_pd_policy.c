@@ -240,7 +240,6 @@ static void board_manage_dut_port(void)
 		if (allowed_role == PD_DRP_FORCE_SINK) {
 			/* We've lost charge through. Disable VBUS. */
 			chg_power_select(CHG_POWER_OFF);
-			dut_chg_en(0);
 
 			/* Mark as SNK only. */
 			pd_set_dual_role(DUT, PD_DRP_FORCE_SINK);
@@ -773,7 +772,6 @@ int pd_set_power_supply_ready(int port)
 	if (charge_port_is_active()) {
 		/* Enable VBUS */
 		chg_power_select(CHG_POWER_VBUS);
-		dut_chg_en(1);
 
 		if (vbus[CHG].mv != PD_MIN_MV)
 			CPRINTS("ERROR, CHG port voltage %d != PD_MIN_MV",
@@ -785,7 +783,7 @@ int pd_set_power_supply_ready(int port)
 	} else {
 		vbus[DUT].mv = 0;
 		vbus[DUT].ma = 0;
-		dut_chg_en(0);
+		chg_power_select(CHG_POWER_OFF);
 		pd_set_dual_role(DUT, PD_DRP_FORCE_SINK);
 		return EC_ERROR_NOT_POWERED;
 	}
@@ -801,7 +799,6 @@ void pd_power_supply_reset(int port)
 
 	/* Disable VBUS */
 	chg_power_select(CHG_POWER_OFF);
-	dut_chg_en(0);
 
 	/* DUT is lost, back to 5V limit on CHG */
 	pd_set_external_voltage_limit(CHG, PD_MIN_MV);
@@ -907,7 +904,7 @@ __override void pd_check_dr_role(int port, enum pd_data_role dr_role, int flags)
 		return;
 
 	/* If DFP, try to switch to UFP, to let DUT see the USB hub. */
-	if ((flags & PD_FLAGS_PARTNER_DR_DATA) && dr_role == PD_ROLE_DFP)
+	if (dr_role == PD_ROLE_DFP)
 		pd_request_data_swap(port);
 }
 

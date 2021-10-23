@@ -217,7 +217,8 @@ __overridable int pd_board_check_request(uint32_t rdo, int pdo_cnt)
 
 int pd_get_source_pdo(const uint32_t **src_pdo_p, const int port)
 {
-#if defined(CONFIG_USB_PD_TCPMV2) && defined(CONFIG_USB_PE_SM)
+#if defined(CONFIG_USB_PD_TCPMV2) && defined(CONFIG_USB_PE_SM) && \
+				!defined(CONFIG_USB_SERVO)
 	const uint32_t *src_pdo;
 	const int pdo_cnt = dpm_get_source_pdo(&src_pdo, port);
 #elif defined(CONFIG_USB_PD_DYNAMIC_SRC_CAP) || \

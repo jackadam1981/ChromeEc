@@ -575,7 +575,8 @@ static void prl_init(int port)
 	for (i = 0; i < NUM_SOP_STAR_TYPES; i++)
 		prl_reset_msg_ids(port, i);
 
-	pd_timer_disable_range(port, PR_TIMER_RANGE);
+	if (!IS_ENABLED(CONFIG_USB_SERVO))
+		pd_timer_disable_range(port, PR_TIMER_RANGE);
 
 	/* Clear state machines and set initial states */
 	prl_tx[port].ctx = cleared;
@@ -1223,7 +1224,7 @@ static void prl_tx_snk_pending_run(const int port)
 	 * gone or the TCPC CC_STATUS update time could be too long to meet
 	 * tFRSwapInit.
 	 */
-	if (pe_in_frs_mode(port)) {
+	if (!IS_ENABLED(CONFIG_USB_SERVO) && pe_in_frs_mode(port)) {
 		/* shortcut to save some i2c_xfer calls on the FRS path. */
 		start_tx = true;
 	} else {
