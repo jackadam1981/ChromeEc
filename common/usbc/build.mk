@@ -8,7 +8,9 @@
 _usbc_dir:=$(dir $(lastword $(MAKEFILE_LIST)))
 
 ifneq ($(CONFIG_USB_PD_TCPMV2),)
+ifeq ($(CONFIG_USB_SERVO),)
 all-obj-$(CONFIG_USB_PD_TCPMV2)+=$(_usbc_dir)usb_pd_timer.o
+endif # CONFIG_USB_SERVO
 all-obj-$(CONFIG_USB_PD_TCPMV2)+=$(_usbc_dir)usb_sm.o
 all-obj-$(CONFIG_USB_PD_TCPMV2)+=$(_usbc_dir)usbc_task.o
 
@@ -18,6 +20,8 @@ all-obj-$(CONFIG_USB_VPD)+=$(_usbc_dir)usb_tc_vpd_sm.o
 all-obj-$(CONFIG_USB_CTVPD)+=$(_usbc_dir)usb_tc_ctvpd_sm.o
 all-obj-$(CONFIG_USB_DRP_ACC_TRYSRC)+=$(_usbc_dir)usb_tc_drp_acc_trysrc_sm.o
 endif # CONFIG_USB_TYPEC_SM
+
+all-obj-$(CONFIG_USB_SERVO)+=$(_usbc_dir)usb_pd_servo_timer.o
 
 # Protocol state machine
 ifneq ($(CONFIG_USB_PRL_SM),)
