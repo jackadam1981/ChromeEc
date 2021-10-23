@@ -16,6 +16,23 @@
       "message": "CQ keep failed at \"AttributeError(\u0027\u0027NoneType\u0027 object has no attribute \u0027gs_bucket\u0027\u0027)\", might consider to chump in thie CL.",
       "revId": "fe78fd6983a54a0df9327fcf60b3e8aea88b2925",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0447554b_39c139a5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1525237
+      },
+      "writtenOn": "2021-10-23T01:29:14Z",
+      "side": 1,
+      "message": "CQ failed reason seems nothing to do with this CL, after sync with sheriff, I\u0027ll going to chump in this CL.",
+      "revId": "fe78fd6983a54a0df9327fcf60b3e8aea88b2925",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
