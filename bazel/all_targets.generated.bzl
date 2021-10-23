@@ -2038,6 +2038,13 @@ def all_targets():
         zephyr = False,
     )
     ec_target(
+        name = "servo_v4p1_tcpmv2",
+        board = "servo_v4p1_tcpmv2",
+        chip = "stm32",
+        core = "cortex-m0",
+        zephyr = False,
+    )
+    ec_target(
         name = "shotzo",
         baseboard = "dedede",
         board = "shotzo",

@@ -223,6 +223,7 @@ int pd_dfp_exit_mode(int port, enum tcpci_msg_type type, uint16_t svid,
 	return 0;
 }
 
+#ifndef CONFIG_USB_SERVO
 /*
  * Note: this interface is used in board code, but should be obsoleted
  * TODO(b/267545470): Fold board DP code into the DP module
@@ -237,6 +238,7 @@ int pd_alt_mode(int port, enum tcpci_msg_type type, uint16_t svid)
 
 	return -1;
 }
+#endif
 
 void dfp_consume_attention(int port, uint32_t *payload)
 {
@@ -1202,6 +1204,9 @@ static bool dpm_dfp_enter_mode_msg(int port)
 	bool enter_mode_requested =
 		IS_ENABLED(CONFIG_USB_PD_REQUIRE_AP_MODE_ENTRY) ? false : true;
 	enum dpm_msg_setup_status status = MSG_SETUP_UNSUPPORTED;
+
+	if (IS_ENABLED(CONFIG_USB_SERVO))
+		return false;
 
 #ifdef CONFIG_AP_POWER_CONTROL
 	/*
