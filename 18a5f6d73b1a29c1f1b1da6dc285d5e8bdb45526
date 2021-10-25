@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb4b3271_f51e9e2c",
+        "filename": "baseboard/intelrvp/adlrvp.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 519,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2021-10-25T20:43:53Z",
+      "side": 1,
+      "message": "Moved to next CL:3220904",
+      "parentUuid": "5a92785a_886837e8",
+      "range": {
+        "startLine": 519,
+        "startChar": 10,
+        "endLine": 519,
+        "endChar": 35
+      },
+      "revId": "18a5f6d73b1a29c1f1b1da6dc285d5e8bdb45526",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "97dae3b2_e1db4d05",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-10-12T00:54:12Z",
       "side": 1,
       "message": "Why not int? \u0027port\u0027 is usually defined as int.",
+      "range": {
+        "startLine": 345,
+        "startChar": 17,
+        "endLine": 345,
+        "endChar": 24
+      },
+      "revId": "18a5f6d73b1a29c1f1b1da6dc285d5e8bdb45526",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "23133a4b_d7f1bbad",
+        "filename": "include/charge_manager.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2021-10-25T20:43:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "97dae3b2_e1db4d05",
       "range": {
         "startLine": 345,
         "startChar": 17,
