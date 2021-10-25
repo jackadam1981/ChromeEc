@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7897f1b1_c2e63ec8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 18
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-10-25T22:59:30Z",
+      "side": 1,
+      "message": "I think we can push this CL forward. It changes the Lazor implementation and more work will be coming to close the gap to the final solution (a general LED definition).\n\nParth will draft a doc for this LED definition and several concepts we discuss in this CL. Then we can collect more partner requests in the doc.",
+      "revId": "c957812816be8abf28f88a605bed572c1f61b371",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
