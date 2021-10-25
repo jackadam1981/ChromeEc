@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "da99e132_cc593261",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-10-25T06:53:04Z",
+      "side": 1,
+      "message": "I was trying to clean up guybrush and x86 configs in another CL, but cleaning it here is also fine to me.",
+      "revId": "167eb5ed92924dce29b632484f6d478f394d7bce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6b399f62_a9f86bb9",
@@ -14,6 +31,30 @@
       "writtenOn": "2021-10-21T14:30:12Z",
       "side": 1,
       "message": "Crosola/kingler is going to launch with Zephyr? You probably don\u0027t want this.  There should be no depedency on the platform/ec/board directory for non-proof-of-concept projects.",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 44
+      },
+      "revId": "167eb5ed92924dce29b632484f6d478f394d7bce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2767b8c1_ab1a8ea3",
+        "filename": "zephyr/projects/corsola/kingler/CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-10-25T06:53:04Z",
+      "side": 1,
+      "message": "Yes, corsola/krabby/kingler will be lauched with Zephyr.",
+      "parentUuid": "6b399f62_a9f86bb9",
       "range": {
         "startLine": 12,
         "startChar": 0,
@@ -47,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e40c01b_cc7e5e00",
+        "filename": "zephyr/projects/corsola/kingler/CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-10-25T06:53:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "74a92f41_a40816aa",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 41
+      },
+      "revId": "167eb5ed92924dce29b632484f6d478f394d7bce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dc94233c_02cf1ea9",
@@ -60,6 +125,30 @@
       "writtenOn": "2021-10-21T14:30:12Z",
       "side": 1,
       "message": "looks like x86 stuff from the guybrush copy. delete it",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 2
+      },
+      "revId": "167eb5ed92924dce29b632484f6d478f394d7bce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7572e645_d924e6a9",
+        "filename": "zephyr/projects/corsola/kingler/include/gpio_map.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-10-25T06:53:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dc94233c_02cf1ea9",
       "range": {
         "startLine": 12,
         "startChar": 0,
@@ -93,6 +182,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d55c74b_95c8ecd0",
+        "filename": "zephyr/projects/corsola/kingler/include/gpio_map.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-10-25T06:53:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "138cfbdb_4bb52020",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 0
+      },
+      "revId": "167eb5ed92924dce29b632484f6d478f394d7bce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "24078543_96a2087a",
@@ -106,6 +219,30 @@
       "writtenOn": "2021-10-21T14:30:12Z",
       "side": 1,
       "message": "mentioned earlier ... this file is extremely guybrush specific. it probably has little use to an ARM platform. delete it",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 63
+      },
+      "revId": "167eb5ed92924dce29b632484f6d478f394d7bce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6434bc69_aa256973",
+        "filename": "zephyr/projects/corsola/kingler/power_signals.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-10-25T06:53:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "24078543_96a2087a",
       "range": {
         "startLine": 1,
         "startChar": 0,
