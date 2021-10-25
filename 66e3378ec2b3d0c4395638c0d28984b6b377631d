@@ -46,6 +46,30 @@
       },
       "revId": "66e3378ec2b3d0c4395638c0d28984b6b377631d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e94d4934_4d8bacef",
+        "filename": "board/metaknight/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 787,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-10-25T20:51:45Z",
+      "side": 0,
+      "message": "I also had to remove the const on alert_signal since it\u0027s assigned on other boards:\n\n board/boldar/board.c:363:28: error: cannot assign to lvalue with const-qualified data member \u0027alert_signal\u0027\n        tcpc_config[USBC_PORT_C1] \u003d tcpc_config_p1_usb3;\n        ~~~~~~~~~~~~~~~~~~~~~~~~~ ^\ninclude/usb_pd_tcpm.h:506:25: note: data member \u0027alert_signal\u0027 declared const here\n        const enum gpio_signal alert_signal;\n        ~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~",
+      "parentUuid": "1e4b5c68_5bc9b920",
+      "range": {
+        "startLine": 787,
+        "startChar": 9,
+        "endLine": 787,
+        "endChar": 23
+      },
+      "revId": "66e3378ec2b3d0c4395638c0d28984b6b377631d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
