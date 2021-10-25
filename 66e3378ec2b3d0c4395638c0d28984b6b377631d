@@ -22,6 +22,30 @@
       },
       "revId": "66e3378ec2b3d0c4395638c0d28984b6b377631d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e4b5c68_5bc9b920",
+        "filename": "board/metaknight/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 787,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-10-25T20:45:09Z",
+      "side": 0,
+      "message": "The patch shows up with strange formatting in the comment. Can you see if I applied it correctly?",
+      "parentUuid": "7195c6a7_9a15e102",
+      "range": {
+        "startLine": 787,
+        "startChar": 9,
+        "endLine": 787,
+        "endChar": 23
+      },
+      "revId": "66e3378ec2b3d0c4395638c0d28984b6b377631d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
