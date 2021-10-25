@@ -50,17 +50,17 @@ endif
 
 chip-$(CONFIG_SHA256_HW_ACCELERATE)+=sha256_chip.o
 
-# spi monitor program fw for openocd and UUT(UART Update Tool)
-npcx-monitor-fw=chip/npcx/spiflashfw/npcx_monitor
-npcx-monitor-fw-bin=${out}/$(npcx-monitor-fw).bin
-PROJECT_EXTRA+=${npcx-monitor-fw-bin}
-# Monitor header is only used for UUT which is not supported on npcx5.
-ifneq "$(CHIP_FAMILY)" "npcx5"
-npcx-monitor-hdr=chip/npcx/spiflashfw/monitor_hdr
-npcx-monitor-hdr-ro-bin=${out}/$(npcx-monitor-hdr)_ro.bin
-npcx-monitor-hdr-rw-bin=${out}/$(npcx-monitor-hdr)_rw.bin
-PROJECT_EXTRA+=${npcx-monitor-hdr-ro-bin} ${npcx-monitor-hdr-rw-bin}
-endif
+## spi monitor program fw for openocd and UUT(UART Update Tool)
+#npcx-monitor-fw=chip/npcx/spiflashfw/npcx_monitor
+#npcx-monitor-fw-bin=${out}/$(npcx-monitor-fw).bin
+#PROJECT_EXTRA+=${npcx-monitor-fw-bin}
+## Monitor header is only used for UUT which is not supported on npcx5.
+#ifneq "$(CHIP_FAMILY)" "npcx5"
+#npcx-monitor-hdr=chip/npcx/spiflashfw/monitor_hdr
+#npcx-monitor-hdr-ro-bin=${out}/$(npcx-monitor-hdr)_ro.bin
+#npcx-monitor-hdr-rw-bin=${out}/$(npcx-monitor-hdr)_rw.bin
+#PROJECT_EXTRA+=${npcx-monitor-hdr-ro-bin} ${npcx-monitor-hdr-rw-bin}
+#endif
 
 # ECST tool is for filling the header used by booter of npcx EC
 show_esct_cmd=$(if $(V),,echo '  ECST   ' $(subst $(out)/,,$@) ; )
