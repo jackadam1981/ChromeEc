@@ -24,6 +24,7 @@
 #include "usb_mux.h"
 #include "usbc_ocp.h"
 #include "usbc_ppc.h"
+#include "usbc/ppc.h"
 
 #define CPRINTS(format, args...) cprints(CC_USBCHARGE, format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_USBCHARGE, format, ## args)
@@ -201,7 +202,7 @@ static void board_init_usbc(void)
 
 	/* Configure the PPC driver */
 	if (board_has_syv_ppc())
-		memcpy(&ppc_chips[0],
+		memcpy(&ppc_chips[PPC_ID(DT_NODELABEL(ppc_port0))],
 		       &ppc_syv682x_port0,
 		       sizeof(struct ppc_config_t));
 }
