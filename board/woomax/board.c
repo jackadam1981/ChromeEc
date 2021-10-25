@@ -861,7 +861,7 @@ enum gpio_signal board_usbc_port_to_hpd_gpio(int port)
 	else if (ec_config_has_mst_hub_rtd2141b())
 		return (board_ver >= 2)
 			? GPIO_USB_C1_HPD_IN_DB
-			: IOEX_USB_C1_HPD_IN_DB;
+			: (enum gpio_signal)IOEX_USB_C1_HPD_IN_DB;
 
 	/* USB-C1 OPT1 DB use DP2_HPD. */
 	return GPIO_DP2_HPD;
