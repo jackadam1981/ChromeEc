@@ -16,6 +16,23 @@
       "message": "I don\u0027t have Herobrine so I wasn\u0027t able to test the change on hardware.",
       "revId": "8859a3d7cbd33e5e722c0acc86ee0d004322dee1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a4d531b_a74f0796",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-10-25T16:29:23Z",
+      "side": 1,
+      "message": "Thanks for pointing out this point. Besides this shim layer code, many places in the Cros-EC code assumes ppc_chips[0] is for the port-0 and have the similar problem. Can the ppc_chips[] be created to have a proper order so the ppc_chips[] can be used as-is?",
+      "revId": "8859a3d7cbd33e5e722c0acc86ee0d004322dee1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
