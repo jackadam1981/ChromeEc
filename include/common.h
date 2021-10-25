@@ -522,4 +522,45 @@ enum ec_error_list {
 	__cfg_select(option, extern, COND_CODE_1(option, (extern), (static)))
 #endif /* CONFIG_ZEPHYR */
 
+/**
+ * Makes a global variable static inline when a config option is enabled,
+ * extern otherwise (with the intention to cause linker errors if the
+ * variable is used outside of a config context, for example thru
+ * IS_ENABLED, that it should be).
+ *
+ * This follows the same constraints as IS_ENABLED, the config option
+ * should be defined to nothing or undefined.
+ */
+#ifndef CONFIG_ZEPHYR
+#define STATIC_INLINE_IF(option) \
+	__cfg_select_build_assert(#option, option, static inline, extern)
+#else
+/*
+ * Version of STATIC_INLINE_IF for Zephyr, with similar considerations to
+ * IS_ENABLED.
+ *
+ * Note, if __cfg_select fails, then we check using Zephyr's COND_CODE_1 macro
+ * to determine if the config option is enabled by Zephyr's definition.
+ */
+#define STATIC_INLINE_IF(option)                   \
+	__cfg_select(option, static inline, \
+		     COND_CODE_1(option, (static inline), (extern)))
+#endif /* CONFIG_ZEPHYR */
+
+/**
+ * Inverse of STATIC_INLINE_IF
+ */
+#ifndef CONFIG_ZEPHYR
+#define STATIC_INLINE_IF_NOT(option) \
+	__cfg_select_build_assert(#option, option, extern, static inline)
+#else
+/*
+ * Version of STATIC_INLINE_IF_NOT for Zephyr, with similar considerations to
+ * IS_ENABLED.
+ */
+#define STATIC_INLINE_IF_NOT(option)                   \
+	__cfg_select(option, extern, \
+		     COND_CODE_1(option, (extern), (static inline)))
+#endif /* CONFIG_ZEPHYR */
+
 #endif  /* __CROS_EC_COMMON_H */
