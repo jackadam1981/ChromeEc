@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "25ee0322_840c0c25",
+        "filename": "include/ioexpander.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2021-10-25T20:45:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "272a22a3_9b59ac6d",
+      "range": {
+        "startLine": 168,
+        "startChar": 0,
+        "endLine": 170,
+        "endChar": 52
+      },
+      "revId": "84a1a1b5fff3854552993c7bb4b3e7caf5e1858a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "28d46f2a_a3f6dc23",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-10-12T00:46:56Z",
       "side": 1,
       "message": "Why not int?",
+      "range": {
+        "startLine": 172,
+        "startChar": 17,
+        "endLine": 172,
+        "endChar": 24
+      },
+      "revId": "84a1a1b5fff3854552993c7bb4b3e7caf5e1858a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6f2aac1_18585f24",
+        "filename": "include/ioexpander.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2021-10-25T20:45:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "28d46f2a_a3f6dc23",
       "range": {
         "startLine": 172,
         "startChar": 17,
