@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b487b0ec_3b2bd73c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2021-10-25T23:47:14Z",
+      "side": 1,
+      "message": "I\u0027m not sure about the mocking pattern we\u0027re using here. Though I expect things like this to get a lot easier now that we soon have fff.\n\n",
+      "revId": "f6d14be1dfbf33ccfcb433290e7d350795aaca85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "662571cf_e9567304",
+        "filename": "zephyr/test/drivers/src/bmi260.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1930,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2021-10-25T23:47:14Z",
+      "side": 1,
+      "message": "As you mentioned earlier, I believe this prevents future tests from testing init_rom_map besides using this function.\n\nI\u0027m not sure what the best path forward here is so I\u0027m adding Yuval as a reviewer.",
+      "revId": "f6d14be1dfbf33ccfcb433290e7d350795aaca85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
