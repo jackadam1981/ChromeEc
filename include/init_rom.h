@@ -14,7 +14,12 @@
 
 #include "stdbool.h"
 
-#ifdef CONFIG_CHIP_INIT_ROM_REGION
+#if defined(CONFIG_CHIP_INIT_ROM_REGION) || defined(CONFIG_ZTEST)
+/* Use these declarations when unit testing along with the stubs in
+ * `stub_init_rom.c`. Forcing the use of actual functions, as opposed to the
+ * inline stubs below, allows us to mock them in tests.
+ */
+
 /**
  * Get the memory mapped address of an .init_rom data object.
  *
