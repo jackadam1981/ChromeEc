@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92211175_aeee3cf8",
+        "filename": "zephyr/test/drivers/src/ps8xxx.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-10-25T16:46:41Z",
+      "side": 1,
+      "message": "This is a different I2C device than the emulated PS8XXXes, right? Does it get used in this test?",
+      "revId": "58761e9e3db671f612ab14c12e50e16c0545993b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30a3ae10_4e8e540a",
+        "filename": "zephyr/test/drivers/src/ps8xxx.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 399,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-10-25T16:46:41Z",
+      "side": 1,
+      "message": "What is this device? Does it get used in this test?",
+      "revId": "58761e9e3db671f612ab14c12e50e16c0545993b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

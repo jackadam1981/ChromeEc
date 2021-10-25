@@ -125,6 +125,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fe051395_7aa0811e",
+        "filename": "zephyr/test/drivers/src/ps8xxx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-10-25T16:46:41Z",
+      "side": 1,
+      "message": "Since the driver just directly returns the TCPCI function return value, the test of the success case below tests that propagation as well as this case. I would suggest removing this case. If we change the implementation of tcpci_tcpm_release to not write ALERT_MASK, it shouldn\u0027t break this test if it can be helped.",
+      "parentUuid": "cf8a6320_b521f612",
+      "revId": "c756cd360eea9c466c7d07348576f00826e07f72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4f3f7d2a_f795d08e",
         "filename": "zephyr/test/drivers/src/ps8xxx.c",
         "patchSetId": 2
@@ -189,6 +207,24 @@
       "side": 1,
       "message": "I tried to verify that return code from generic TCPCI is propagated to PS8xxx (someone could implement it as calling TCPCI, but always returning success). If you think that it is unnecessary, I will leave only success path.",
       "parentUuid": "a91ef432_1fdf6443",
+      "revId": "c756cd360eea9c466c7d07348576f00826e07f72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b1227e2_68a090fd",
+        "filename": "zephyr/test/drivers/src/ps8xxx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-10-25T16:46:41Z",
+      "side": 1,
+      "message": "I would say writing test code for multiple paths in tcpci.c is unnecessary. Someone might change ps8xxx.c to treat tcpci.c incorrectly, and I think that would be a good argument for running the TCPCI test suite against the PS8xxx driver. But that would be out of scope for this CL.",
+      "parentUuid": "5a2d7455_c7067931",
       "revId": "c756cd360eea9c466c7d07348576f00826e07f72",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -440,6 +476,24 @@
       "side": 1,
       "message": "It is similar to _get_cc test. I wanted to make sure that error code from TCPCI is propagated.",
       "parentUuid": "106c7905_9f4dff0b",
+      "revId": "c756cd360eea9c466c7d07348576f00826e07f72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb93c3ac_1922b19d",
+        "filename": "zephyr/test/drivers/src/ps8xxx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-10-25T16:46:41Z",
+      "side": 1,
+      "message": "As I describe elsewhere, I think a better way to do this would be to run the existing TCPCI test suite against the PS8xxx driver.",
+      "parentUuid": "0f2f4422_fe90e3fe",
       "revId": "c756cd360eea9c466c7d07348576f00826e07f72",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
