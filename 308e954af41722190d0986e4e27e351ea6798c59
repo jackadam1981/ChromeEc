@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9bdf5e39_558335b7",
+        "filename": "board/felwinter/usbc_config.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-10-25T21:20:17Z",
+      "side": 1,
+      "message": "i think we should have 2 code paths here, one for each\nenum type. we concretely know the type, so i don\u0027t think\nwe should loose that type info.\n\nconverting enable to a signal level can be done independently\nof the enum type, so we should still only have 1 level of\nconditionals.",
+      "range": {
+        "startLine": 203,
+        "startChar": 1,
+        "endLine": 203,
+        "endChar": 4
+      },
+      "revId": "308e954af41722190d0986e4e27e351ea6798c59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
