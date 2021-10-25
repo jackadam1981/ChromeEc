@@ -11,6 +11,7 @@
 #include "common.h"
 #include "compile_time_macros.h"
 #include "task_id.h"
+#include <assert.h>
 
 /* Task event bitmasks */
 /* Tasks may use the bits in TASK_EVENT_CUSTOM_BIT for their own events */
@@ -397,6 +398,29 @@ void mutex_unlock(mutex_t *mtx);
 /** Zephyr will try to init the mutex using `k_mutex_init()`. */
 #define k_mutex_init(mutex) 0
 #endif /* CONFIG_ZEPHYR */
+
+/* Begin Shimming Zephyr k_condvar */
+#ifndef CONFIG_ZEPHYR
+struct k_condvar {};
+
+/* Just a place holder to keep k_condvar zephyr api consistent. Is not used. */
+#define K_FOREVER -1
+
+
+__test_only static inline void __k_condvar_err(struct k_condvar *cond,
+					       mutex_t *mutex, int timeout)
+{
+	assert(0);
+}
+
+#define k_condvar_signal(cond_ptr) (__k_condvar_err(cond_ptr, NULL, 0))
+#define k_condvar_wait(cond_ptr, mutex_ptr, timeout) \
+	(__k_condvar_err(cond_ptr, mutex_ptr, timeout))
+
+#define K_CONDVAR_DEFINE(name) static struct k_condvar name = {}
+#endif /* CONFIG_ZEPHYR */
+
+/* End Shimming Zephyr Condvar */
 
 struct irq_priority {
 	uint8_t irq;
