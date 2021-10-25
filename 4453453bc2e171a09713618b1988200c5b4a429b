@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f772e8d_99265f85",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2021-10-25T05:35:02Z",
+      "side": 1,
+      "message": "Will it be more straightforward to disable SCP WDT during S3?",
+      "revId": "4453453bc2e171a09713618b1988200c5b4a429b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "653582f8_7c463712",
+        "filename": "chip/mt_scp/rv32i_common/uart.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2021-10-25T05:35:02Z",
+      "side": 1,
+      "message": "saved_uart_ier",
+      "range": {
+        "startLine": 25,
+        "startChar": 16,
+        "endLine": 25,
+        "endChar": 29
+      },
+      "revId": "4453453bc2e171a09713618b1988200c5b4a429b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
