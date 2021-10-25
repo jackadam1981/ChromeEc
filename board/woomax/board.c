@@ -29,6 +29,7 @@
 #include "hooks.h"
 #include "keyboard_scan.h"
 #include "lid_switch.h"
+#include "motion_lid.h"
 #include "power.h"
 #include "power_button.h"
 #include "pwm.h"
@@ -855,4 +856,13 @@ enum gpio_signal board_usbc_port_to_hpd_gpio(int port)
 
 	/* USB-C1 OPT1 DB use DP2_HPD. */
 	return GPIO_DP2_HPD;
+}
+
+int board_sensor_at_360(void)
+{
+	int angle;
+
+	msleep(500);
+	angle = motion_lid_get_angle();
+	return (angle <= 180) ? 0 : !gpio_get_level(GMR_TABLET_MODE_GPIO_L);
 }
