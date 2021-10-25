@@ -401,9 +401,11 @@ static int irq_handler(struct motion_sensor_t *s, uint32_t *event)
 
 /*
  * If the .init_rom section is not memory mapped, we need a static
- * buffer in RAM to access the BMI configuration data.
+ * buffer in RAM to access the BMI configuration data. We also need it
+ * during unit testing for situations where we force use of the RAM
+ * buffer.
  */
-#ifdef CONFIG_CHIP_INIT_ROM_REGION
+#if defined(CONFIG_CHIP_INIT_ROM_REGION) || defined(CONFIG_ZTEST)
 #define BMI_RAM_BUFFER_SIZE		256
 static uint8_t bmi_ram_buffer[BMI_RAM_BUFFER_SIZE];
 #else

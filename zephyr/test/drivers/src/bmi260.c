@@ -31,6 +31,14 @@
 		r[2] = v[2];		\
 	} while (0)
 
+/** Used to command the init_rom_map() mock to return the passed address
+ *  or NULL
+ */
+enum init_rom_map_return_mode {
+	INIT_ROM_MAP_RETURN_ADDR = 0,
+	INIT_ROM_MAP_RETURN_NULL,
+};
+
 /** Rotation used in some tests */
 static const mat33_fp_t test_rotation = {
 	{ 0, FLOAT_TO_FP(1), 0},
@@ -1577,6 +1585,9 @@ static void test_bmi_init(void)
 	ms_acc = &motion_sensors[BMI_ACC_SENSOR_ID];
 	ms_gyr = &motion_sensors[BMI_GYR_SENSOR_ID];
 
+	/* The mock should return whatever is passed in to its addr param */
+	ztest_returns_value(init_rom_map, INIT_ROM_MAP_RETURN_ADDR);
+
 	/*
 	 * Test successful init. It is needed custom function to set value of
 	 * BMI260_INTERNAL_STATUS register, because init function triggers reset
@@ -1915,6 +1926,25 @@ void test_interrupt_handler(void)
 		     "Event flag is not set after firing interrupt");
 }
 
+/* Mocked function */
+const void *init_rom_map(const void *addr, int size)
+{
+	/* Recycle the ztest return value to instead control how this
+	 * function should behave: (a) return the value of `addr` or (b) return
+	 * NULL
+	 */
+
+	enum init_rom_map_return_mode mode = ztest_get_return_value();
+
+	switch (mode) {
+	case INIT_ROM_MAP_RETURN_NULL:
+		return NULL;
+	case INIT_ROM_MAP_RETURN_ADDR:
+	default:
+		return addr;
+	}
+}
+
 void test_bmi_init_chip_id(void)
 {
 	struct i2c_emul *emul = bmi_emul_get(BMI_ORD);
@@ -1969,6 +1999,49 @@ void test_bmi_init_chip_id(void)
 		      EC_ERROR_ACCESS_DENIED, ret);
 }
 
+static int bmi_config_load_no_mapped_flash_mock_read_fn(struct i2c_emul *emul,
+							int reg, uint8_t *val,
+							int bytes, void *data)
+{
+	if (reg == BMI260_INTERNAL_STATUS && val) {
+		/* We want to force-return a status of 'initialized' when this
+		 * is read.
+		 */
+		*val = BMI260_INIT_OK;
+		return 0;
+	}
+	/* For other registers, go through the normal emulator route */
+	return 1;
+}
+
+void test_bmi_config_load_no_mapped_flash(void)
+{
+	/* Tests the situation where we load BMI config data when flash memory
+	 * is not mapped (basically what occurs when `init_rom_map()` in
+	 * `bmi_config_load()` returns NULL)
+	 */
+
+	struct i2c_emul *emul = bmi_emul_get(BMI_ORD);
+	struct motion_sensor_t *ms_acc = &motion_sensors[BMI_ACC_SENSOR_ID];
+
+	/* Force bmi_config_load() to have to manually copy from memory */
+	ztest_returns_value(init_rom_map, INIT_ROM_MAP_RETURN_NULL);
+
+	/* Set proper chip ID and raise the INIT_OK flag to signal that config
+	 * succeeded.
+	 */
+	bmi_emul_set_reg(emul, BMI260_CHIP_ID, BMI260_CHIP_ID_MAJOR);
+	i2c_common_emul_set_read_func(
+		emul, bmi_config_load_no_mapped_flash_mock_read_fn, NULL);
+
+	int ret = ms_acc->drv->init(ms_acc);
+
+	zassert_equal(ret, EC_RES_SUCCESS, "Got %d but expected %d", ret,
+		      EC_RES_SUCCESS);
+
+	i2c_common_emul_set_read_func(emul, NULL, NULL);
+}
+
 void test_suite_bmi260(void)
 {
 	ztest_test_suite(bmi260,
@@ -1992,6 +2065,8 @@ void test_suite_bmi260(void)
 			 ztest_user_unit_test(test_bmi_gyr_fifo),
 			 ztest_user_unit_test(test_unsupported_configs),
 			 ztest_user_unit_test(test_interrupt_handler),
-			 ztest_user_unit_test(test_bmi_init_chip_id));
+			 ztest_user_unit_test(test_bmi_init_chip_id),
+			 ztest_user_unit_test(
+				 test_bmi_config_load_no_mapped_flash));
 	ztest_run_test_suite(bmi260);
 }
