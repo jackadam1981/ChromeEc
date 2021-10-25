@@ -16,6 +16,24 @@
       "message": "i don\u0027t think CONFIG_\u003c...\u003e_RUNTIME_CONFIG is a very elegant solution,\nbut i recognize there is much precedent.\n\nis there a problem here that can\u0027t be solved by having\nboard_get_default_battery_type() return the matching battery index?",
       "revId": "cff0d5838faa4cf32e95340060316d096ea0672d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b16c55fa_0fe118db",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2021-10-25T06:40:43Z",
+      "side": 1,
+      "message": "board_get_default_battery_type()  gets called only in the case where (type\u003d\u003d  BATTERY_TYPE_COUNT) , which means manufacturer name read from fuel guage doesnt match that of  board_battery_info.\nReference : common/battery_fuel_gauge.c : 93\nFor example, as in getac type battery, where manufacturer name is same, irrespective of 2s/3S cell type, call to board_get_battery_cell_type will not be hit only, as name matches.\n\nAlso, Currently, i see only a single driver ln9310\n(driver/ln9310.c:434: batt \u003d board_get_battery_cell_type();) \n that  uses board_get_battery_cell_type() , which decides 2S or 3S type battery  and follows different initialization based on it.",
+      "parentUuid": "5891a82c_d10e76a7",
+      "revId": "cff0d5838faa4cf32e95340060316d096ea0672d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
