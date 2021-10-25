@@ -10,6 +10,7 @@
 #include "usb_pd.h"
 #include "usbc_ocp.h"
 #include "usbc_ppc.h"
+#include "usbc/ppc.h"
 
 #if DT_HAS_COMPAT_STATUS_OKAY(DT_DRV_COMPAT)
 
@@ -17,7 +18,7 @@ BUILD_ASSERT(DT_NUM_INST_STATUS_OKAY(DT_DRV_COMPAT) > 0,
 		"No compatible PPC instance found");
 
 #define USBC_PORT_PPC(inst)                                                   \
-	{                                                                     \
+	[PPC_ID(DT_DRV_INST(inst))] = {                                       \
 		.i2c_port = I2C_PORT(DT_PHANDLE(DT_DRV_INST(inst), port)),    \
 		.i2c_addr_flags = DT_STRING_UPPER_TOKEN(                      \
 					DT_DRV_INST(inst), i2c_addr_flags),   \
