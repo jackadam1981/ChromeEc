@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "651cf23b_e231fb4d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2021-10-25T22:47:14Z",
+      "side": 1,
+      "message": "I initially didn\u0027t want to go this route, but Abe and Yuval didn\u0027t think it would be a problem as long as I documented the dependency on CONFIG_ACCELGYRO_BMI220 being NOT set. I also backed this up with an #if block that fails the build if somebody turns it on.",
+      "revId": "e270deef7446271a5af9f7e304429b9c70bae91c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
