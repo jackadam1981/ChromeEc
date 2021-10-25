@@ -46,6 +46,30 @@
       },
       "revId": "118326adafd1a8dbbbe2a201106610702183d946",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa7300f4_e90f20ed",
+        "filename": "zephyr/drivers/cros_shi/Kconfig",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-10-25T16:15:43Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ec711eb3_a981ccc3",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 10
+      },
+      "revId": "118326adafd1a8dbbbe2a201106610702183d946",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
