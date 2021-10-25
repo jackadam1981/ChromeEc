@@ -5,7 +5,12 @@
 
 / {
 	usbc {
-		port0: usbc-port0 {
+		compatible = "named-usbc-ports";
+		#address-cells = <1>;
+		#size-cells = <0>;
+		port0: usbc-port@0 {
+			compatible = "named-usbc-port";
+			reg = <0>;
 			bc12 {
 				compatible = "pericom,pi3usb9201";
 				status = "okay";
@@ -21,7 +26,9 @@
 			};
 		};
 
-		port1: usbc-port1 {
+		port1: usbc-port1@0 {
+			compatible = "named-usbc-port";
+			reg = <0>;
 			bc12 {
 				compatible = "pericom,pi3usb9201";
 				status = "okay";
