@@ -34,6 +34,24 @@
       "parentUuid": "5891a82c_d10e76a7",
       "revId": "cff0d5838faa4cf32e95340060316d096ea0672d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c373692_89151d9d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-10-25T21:35:42Z",
+      "side": 1,
+      "message": "is type battery .device_name also the same for the 2S vs. 3S model\nfor that manufacturer? if the manufacturer programmed the same\nmodel number on different battery types, i can see this getting\ndifficult.\n\ni\u0027ve actually had a somewhat opposite problem from this - the brya\nbattery was not recognized because we had a mismatch in the\nconfigured .device_name.",
+      "parentUuid": "b16c55fa_0fe118db",
+      "revId": "cff0d5838faa4cf32e95340060316d096ea0672d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
