@@ -68,6 +68,7 @@ BOARDS_THAT_COMPILE_SUCCESSFULLY_WITH_CLANG = [
     'moonbuggy',
     'morphius',
     'nightfury',
+    'oak',
     'primus',
     'puff',
     'redrix',
@@ -95,7 +96,6 @@ BOARDS_THAT_COMPILE_SUCCESSFULLY_WITH_CLANG = [
     #'burnet',
     #'damu',
     #'willow',
-    #'oak',
     #'kappa',         # enough space when reverting use of compiler-rt
     #'fusb307bgevb',  # enough space when reverting use of compiler-rt
 # Other errors:
