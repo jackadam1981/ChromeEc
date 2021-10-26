@@ -56,6 +56,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6d138cbc_f5e579d5",
+        "filename": "zephyr/test/drivers/src/ps8xxx.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2021-10-26T16:49:23Z",
+      "side": 1,
+      "message": "1. OK, I will move this to CLs where it is used\n\n2. PS8xxx emulator has its own DTS node with phandle to TCPCI emulator. PS8xxx register itself as an extension using tcpci_emul_set_dev_ops(). I2C messages goes to TCPCI emulator which call dev_ops. In dev_ops callback, PS8xxx handles its specific registers (e.g. FW_REV) or gives control back to generic TCPCI.\n\nI am considering to add function ps8xxx_emul_get_tcpci() to get pointer to TCPCI emulator which can be used with tcpci_emul_* functions.\n\n3. TCPCI emulator uses i2c_emul_register() for main address. PS8xxx emulator uses i2c_emul_register() only for secondary addresses (p0, p1 and gpio).\n\nI would expect that other TCPCI devices don\u0027t have secondary addresses, then only TCPCI emulator will use i2c_emul_register() and device emulator will use only tcpci_emul_set_dev_ops()",
+      "parentUuid": "20d90822_217bf747",
+      "revId": "58761e9e3db671f612ab14c12e50e16c0545993b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "30a3ae10_4e8e540a",
         "filename": "zephyr/test/drivers/src/ps8xxx.c",
         "patchSetId": 3
@@ -103,6 +121,24 @@
       "side": 1,
       "message": "Can you then put this init code in the next CL?",
       "parentUuid": "6ec6297a_c0630fcc",
+      "revId": "58761e9e3db671f612ab14c12e50e16c0545993b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "222ac0e4_dd48643f",
+        "filename": "zephyr/test/drivers/src/ps8xxx.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 399,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2021-10-26T16:49:23Z",
+      "side": 1,
+      "message": "Ok, I will do it (and I will mark this comment as resolved after pushing changes)",
+      "parentUuid": "d8d5b32e_a84cbc66",
       "revId": "58761e9e3db671f612ab14c12e50e16c0545993b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
