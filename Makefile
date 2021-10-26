@@ -39,6 +39,7 @@ ifeq (,$(BDIR))
 BDIR:=$(PBDIR)
 endif
 
+
 PROJECT?=ec
 
 # An empty string.
