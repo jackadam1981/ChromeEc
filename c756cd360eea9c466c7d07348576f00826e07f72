@@ -53,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ed38ef5_ac1e1eac",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-10-26T15:46:23Z",
+      "side": 1,
+      "message": "Removing the TCPCI test code from this test LGTM in general. Looks like you removed the get_cc and set_cc tests entirely. I\u0027m OK with that in this CL, but I\u0027ll note that there is a small amount of code to cover in these functions. I\u0027m guessing that you will end up covering these functions when you add tests specific to the PS8815 and PS8751.",
+      "parentUuid": "6acdc111_86443af2",
+      "revId": "c756cd360eea9c466c7d07348576f00826e07f72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0ae49253_2a12a8e0",
@@ -155,6 +173,24 @@
       "side": 1,
       "message": "Removed this kind of tests from this CL.",
       "parentUuid": "fe051395_7aa0811e",
+      "revId": "c756cd360eea9c466c7d07348576f00826e07f72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "26a9bd1e_3833077c",
+        "filename": "zephyr/test/drivers/src/ps8xxx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-10-26T15:46:23Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "7a8359e4_a9320145",
       "revId": "c756cd360eea9c466c7d07348576f00826e07f72",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -265,6 +301,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "06656631_b11c6426",
+        "filename": "zephyr/test/drivers/src/ps8xxx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-10-26T15:46:23Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "f7e03ae7_ce77feca",
+      "revId": "c756cd360eea9c466c7d07348576f00826e07f72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "43c4ee05_a86b21a2",
@@ -325,6 +379,24 @@
       "writtenOn": "2021-10-21T22:09:03Z",
       "side": 1,
       "message": "Similar comment here as for _get_cc. Do we need to test anything specific to ps8xxx besides the delay when enabling VCONN?",
+      "revId": "c756cd360eea9c466c7d07348576f00826e07f72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "56213018_95dcccb1",
+        "filename": "zephyr/test/drivers/src/ps8xxx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-10-26T15:46:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7cbd26f1_1f87d3af",
       "revId": "c756cd360eea9c466c7d07348576f00826e07f72",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -530,6 +602,24 @@
       "side": 1,
       "message": "As I describe elsewhere, I think a better way to do this would be to run the existing TCPCI test suite against the PS8xxx driver.",
       "parentUuid": "0f2f4422_fe90e3fe",
+      "revId": "c756cd360eea9c466c7d07348576f00826e07f72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "84af361a_7d80d8fc",
+        "filename": "zephyr/test/drivers/src/ps8xxx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-10-26T15:46:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cb93c3ac_1922b19d",
       "revId": "c756cd360eea9c466c7d07348576f00826e07f72",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

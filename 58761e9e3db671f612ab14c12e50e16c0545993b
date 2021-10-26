@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "20d90822_217bf747",
+        "filename": "zephyr/test/drivers/src/ps8xxx.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-10-26T15:46:23Z",
+      "side": 1,
+      "message": "I\u0027m not totally following this. (I might be missing context from earlier CLs. Feel free to refer me to those.)\n\n1. If this CL does not require some kind of initialization, but a follow-on CL does, please do that initialization in the follow-on CL.\n\n2. I might have expected that the PS8xxx emulator would transparently support the operations of the generic emulator that it is based on, i.e. this test would operate on one emulated device and have one handle for it. When the test did TCPCI things, the PS8xxx emulator code would invoke the TCPCI emulator code. Is that not accurate? Are the device tree labels for the different emulators listed here backed by the same emulator instance?\n\n3. Does the TCPCI emulator not have a port associated with it?",
+      "parentUuid": "dc71d2ba_015ad4a0",
+      "revId": "58761e9e3db671f612ab14c12e50e16c0545993b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "30a3ae10_4e8e540a",
         "filename": "zephyr/test/drivers/src/ps8xxx.c",
         "patchSetId": 3
@@ -67,6 +85,24 @@
       "side": 1,
       "message": "It is used in next CL in test_ps8805_gpio() test.",
       "parentUuid": "30a3ae10_4e8e540a",
+      "revId": "58761e9e3db671f612ab14c12e50e16c0545993b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d8d5b32e_a84cbc66",
+        "filename": "zephyr/test/drivers/src/ps8xxx.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 399,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-10-26T15:46:23Z",
+      "side": 1,
+      "message": "Can you then put this init code in the next CL?",
+      "parentUuid": "6ec6297a_c0630fcc",
       "revId": "58761e9e3db671f612ab14c12e50e16c0545993b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
