@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85909c94_275b8578",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 6084,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-10-26T21:11:14Z",
+      "side": 1,
+      "message": "Can you add some decoration around these lines? We want these two groups to continue to have consistent numbering as they grow.",
+      "range": {
+        "startLine": 6081,
+        "startChar": 0,
+        "endLine": 6084,
+        "endChar": 0
+      },
+      "revId": "8896045405d5f9f89b6ec2d1293b33ec2af94cc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
