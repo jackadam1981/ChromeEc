@@ -143,6 +143,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7a8359e4_a9320145",
+        "filename": "zephyr/test/drivers/src/ps8xxx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2021-10-26T11:05:34Z",
+      "side": 1,
+      "message": "Removed this kind of tests from this CL.",
+      "parentUuid": "fe051395_7aa0811e",
+      "revId": "c756cd360eea9c466c7d07348576f00826e07f72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4f3f7d2a_f795d08e",
         "filename": "zephyr/test/drivers/src/ps8xxx.c",
         "patchSetId": 2
@@ -225,6 +243,24 @@
       "side": 1,
       "message": "I would say writing test code for multiple paths in tcpci.c is unnecessary. Someone might change ps8xxx.c to treat tcpci.c incorrectly, and I think that would be a good argument for running the TCPCI test suite against the PS8xxx driver. But that would be out of scope for this CL.",
       "parentUuid": "5a2d7455_c7067931",
+      "revId": "c756cd360eea9c466c7d07348576f00826e07f72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7e03ae7_ce77feca",
+        "filename": "zephyr/test/drivers/src/ps8xxx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2021-10-26T11:05:34Z",
+      "side": 1,
+      "message": "I will create another CL where I will test PS8xxx with TCPCI tests.",
+      "parentUuid": "7b1227e2_68a090fd",
       "revId": "c756cd360eea9c466c7d07348576f00826e07f72",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },

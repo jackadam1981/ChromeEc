@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "dc71d2ba_015ad4a0",
+        "filename": "zephyr/test/drivers/src/ps8xxx.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2021-10-26T11:05:34Z",
+      "side": 1,
+      "message": "This is TCPCI emulator on top of which PS8XXX operate. TCPCI emulator handles access to registers described in TCPCI specification (this include registers reserved for vendor). PS8XXX emulator controls everything that is not generic (additional P0 and P1 addresses and GPIO controller for PS8805). Some of these I2C devices are not accessed by this CL, but are accessed in unit tests specific for PS8805 and PS8815.",
+      "parentUuid": "92211175_aeee3cf8",
+      "revId": "58761e9e3db671f612ab14c12e50e16c0545993b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "30a3ae10_4e8e540a",
         "filename": "zephyr/test/drivers/src/ps8xxx.c",
         "patchSetId": 3
@@ -31,6 +49,24 @@
       "writtenOn": "2021-10-25T16:46:41Z",
       "side": 1,
       "message": "What is this device? Does it get used in this test?",
+      "revId": "58761e9e3db671f612ab14c12e50e16c0545993b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ec6297a_c0630fcc",
+        "filename": "zephyr/test/drivers/src/ps8xxx.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 399,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2021-10-26T11:05:34Z",
+      "side": 1,
+      "message": "It is used in next CL in test_ps8805_gpio() test.",
+      "parentUuid": "30a3ae10_4e8e540a",
       "revId": "58761e9e3db671f612ab14c12e50e16c0545993b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
