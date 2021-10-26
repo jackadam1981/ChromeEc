@@ -4,7 +4,7 @@
  */
 
 /* Type-C port manager */
-
+#include <stdio.h>
 #include "atomic.h"
 #include "anx74xx.h"
 #include "compile_time_macros.h"
@@ -345,6 +345,7 @@ static int init_alert_mask(int port)
 		mask |= TCPC_REG_ALERT_ALERT_EXT;
 
 	/* Set the alert mask in TCPC */
+	printf("init_alert_mask(%d) writing mask = %x\n", port, mask);
 	rv = tcpc_write16(port, TCPC_REG_ALERT_MASK, mask);
 
 	if (IS_ENABLED(CONFIG_USB_PD_FRS_TCPC)) {
@@ -360,6 +361,7 @@ static int init_alert_mask(int port)
 
 static int clear_alert_mask(int port)
 {
+	printf("clear_alert_mask(%d) writing mask = %x\n", port, 0);
 	return tcpc_write16(port, TCPC_REG_ALERT_MASK, 0);
 }
 
@@ -1513,6 +1515,7 @@ int tcpci_tcpm_mux_init(const struct usb_mux *me)
 	}
 
 	/* Turn off all alerts and acknowledge any pending IRQ */
+	printf("tcpci_tcpm_mux_init(?) writing mask = %x\n", 0);
 	error = mux_write16(me, TCPC_REG_ALERT_MASK, 0);
 	error |= mux_write16(me, TCPC_REG_ALERT, 0xffff);
 
