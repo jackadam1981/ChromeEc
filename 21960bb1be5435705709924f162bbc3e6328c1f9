@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c7838a5_3bfa1aee",
+        "filename": "baseboard/mtscp-rv32i/baseboard.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1470932
+      },
+      "writtenOn": "2021-10-26T02:38:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0dbf3093_7ba3f1d1",
+      "range": {
+        "startLine": 17,
+        "startChar": 8,
+        "endLine": 17,
+        "endChar": 35
+      },
+      "revId": "21960bb1be5435705709924f162bbc3e6328c1f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "91188b0a_b7970e47",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-10-25T08:22:50Z",
       "side": 1,
       "message": "#endif /* CONFIG_SOFTWARE_PANIC */",
+      "range": {
+        "startLine": 204,
+        "startChar": 0,
+        "endLine": 204,
+        "endChar": 6
+      },
+      "revId": "21960bb1be5435705709924f162bbc3e6328c1f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d48d0df8_fc673fa3",
+        "filename": "core/riscv-rv32i/panic.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1470932
+      },
+      "writtenOn": "2021-10-26T02:38:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "91188b0a_b7970e47",
       "range": {
         "startLine": 204,
         "startChar": 0,
@@ -64,6 +112,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "67775d4b_948d3dfa",
+        "filename": "core/riscv-rv32i/panic.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1470932
+      },
+      "writtenOn": "2021-10-26T02:38:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e840a807_19e63992",
+      "revId": "21960bb1be5435705709924f162bbc3e6328c1f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c6e3acf8_42aa12dd",
@@ -77,6 +143,24 @@
       "writtenOn": "2021-10-25T08:22:50Z",
       "side": 1,
       "message": "#endif /* CONFIG_PANIC_CONSOLE_OUTPUT */",
+      "revId": "21960bb1be5435705709924f162bbc3e6328c1f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bec9e195_81c9d5f6",
+        "filename": "core/riscv-rv32i/panic.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1470932
+      },
+      "writtenOn": "2021-10-26T02:38:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c6e3acf8_42aa12dd",
       "revId": "21960bb1be5435705709924f162bbc3e6328c1f9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -104,6 +188,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b8cf0139_0b7f54e2",
+        "filename": "include/panic.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1470932
+      },
+      "writtenOn": "2021-10-26T02:38:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c26e2883_8557a07e",
+      "range": {
+        "startLine": 179,
+        "startChar": 0,
+        "endLine": 179,
+        "endChar": 34
+      },
+      "revId": "21960bb1be5435705709924f162bbc3e6328c1f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "25897832_f2738267",
@@ -117,6 +225,30 @@
       "writtenOn": "2021-10-25T08:22:50Z",
       "side": 1,
       "message": "this config option is not cros_scp specific. remove \"to observe panic ... \"",
+      "range": {
+        "startLine": 182,
+        "startChar": 18,
+        "endLine": 182,
+        "endChar": 26
+      },
+      "revId": "21960bb1be5435705709924f162bbc3e6328c1f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d559447_3b9692d1",
+        "filename": "include/panic.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1470932
+      },
+      "writtenOn": "2021-10-26T02:38:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "25897832_f2738267",
       "range": {
         "startLine": 182,
         "startChar": 18,
