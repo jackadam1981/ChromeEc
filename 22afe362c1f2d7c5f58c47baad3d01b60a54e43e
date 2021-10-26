@@ -129,6 +129,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c8e3c9c_845cc87e",
+        "filename": "zephyr/Kconfig.battery",
+        "patchSetId": 5
+      },
+      "lineNbr": 522,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-10-26T18:33:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4f29db0b_fd4fd317",
+      "range": {
+        "startLine": 522,
+        "startChar": 0,
+        "endLine": 522,
+        "endChar": 35
+      },
+      "revId": "22afe362c1f2d7c5f58c47baad3d01b60a54e43e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6182cdd5_4bc1ee40",

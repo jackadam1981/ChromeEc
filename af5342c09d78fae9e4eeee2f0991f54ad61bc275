@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ecd41e94_747d9412",
+        "filename": "zephyr/Kconfig.battery",
+        "patchSetId": 7
+      },
+      "lineNbr": 526,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-10-26T18:33:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "068cf50a_85c69d9c",
+      "range": {
+        "startLine": 524,
+        "startChar": 3,
+        "endLine": 526,
+        "endChar": 0
+      },
+      "revId": "af5342c09d78fae9e4eeee2f0991f54ad61bc275",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7a0b37ae_453d238b",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-10-26T17:53:41Z",
       "side": 1,
       "message": "Delete this - this note should be captured in the PLATFORM_EC_BATTERY_API choice above.",
+      "range": {
+        "startLine": 533,
+        "startChar": 45,
+        "endLine": 535,
+        "endChar": 0
+      },
+      "revId": "af5342c09d78fae9e4eeee2f0991f54ad61bc275",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5376ce91_ccd56b1b",
+        "filename": "zephyr/Kconfig.battery",
+        "patchSetId": 7
+      },
+      "lineNbr": 535,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-10-26T18:33:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7a0b37ae_453d238b",
       "range": {
         "startLine": 533,
         "startChar": 45,
