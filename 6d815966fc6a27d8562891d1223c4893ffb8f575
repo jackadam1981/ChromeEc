@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "15795259_76a40a86",
+        "filename": "common/usb_common.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 1013,
+      "author": {
+        "id": 1523223
+      },
+      "writtenOn": "2021-10-26T17:53:01Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c9ffca8d_0f6b03a2",
+      "range": {
+        "startLine": 1013,
+        "startChar": 8,
+        "endLine": 1013,
+        "endChar": 9
+      },
+      "revId": "6d815966fc6a27d8562891d1223c4893ffb8f575",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "753aa87e_951a3d5a",
@@ -54,6 +78,24 @@
       "writtenOn": "2021-10-21T21:54:25Z",
       "side": 1,
       "message": "Try to keep lines under 80 cols.",
+      "revId": "6d815966fc6a27d8562891d1223c4893ffb8f575",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e61129b0_4d01723e",
+        "filename": "common/usb_common.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 1039,
+      "author": {
+        "id": 1523223
+      },
+      "writtenOn": "2021-10-26T17:53:01Z",
+      "side": 1,
+      "message": "Split the line, although technically it\u0027s only 78 cols",
+      "parentUuid": "753aa87e_951a3d5a",
       "revId": "6d815966fc6a27d8562891d1223c4893ffb8f575",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
