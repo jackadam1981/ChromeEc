@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7cf346dd_3e4603ea",
+        "filename": "zephyr/test/drivers/src/ps8xxx.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 849,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2021-10-26T11:21:12Z",
+      "side": 1,
+      "message": "sry missed it form the first pass, I think these should be static as well unless I\u0027m missing something",
+      "range": {
+        "startLine": 849,
+        "startChar": 0,
+        "endLine": 849,
+        "endChar": 23
+      },
+      "revId": "525aa430bf348643c13986e58c0d3bfe929ef10c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
