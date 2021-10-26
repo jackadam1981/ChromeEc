@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2cd69a09_3da54b39",
+        "filename": "Makefile.toolchain",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2021-10-26T22:17:19Z",
+      "side": 1,
+      "message": "Maybe as Mike pointed out, HOST and BUILD mean the same thing in this context? \n\n`BUILD_PKG_CONFIG` and `HOST_PKG_CONFIG` will equate to the same thing.\n\nIf this is the case, I\u0027m not sure why your compile failed....",
+      "range": {
+        "startLine": 40,
+        "startChar": 39,
+        "endLine": 40,
+        "endChar": 59
+      },
+      "revId": "6a63c9f5cc63a74fcfa2c6f01a415b53b0ded778",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "483e740b_3cb937e1",
+        "filename": "Makefile.toolchain",
+        "patchSetId": 4
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2021-10-26T22:17:19Z",
+      "side": 1,
+      "message": "Do you want $(cc-name) like above?",
+      "range": {
+        "startLine": 44,
+        "startChar": 60,
+        "endLine": 44,
+        "endChar": 63
+      },
+      "revId": "6a63c9f5cc63a74fcfa2c6f01a415b53b0ded778",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
