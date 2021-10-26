@@ -16,6 +16,24 @@
       "message": ".alert_signal \u003d GPIO_SUB_C1_INT_EN_RAILS_ODL is missing.",
       "revId": "fbae5998fd249cbf25a368f3b34b5e975555a2a1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8f893de_b58fb357",
+        "filename": "board/metaknight/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 760,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-10-26T18:03:13Z",
+      "side": 1,
+      "message": "This variable is of type \"struct usb_mux\". Do you want me to add \"enum gpio_signal alert_signal\" to it as well? Looks like usb_mux is not used in this file?",
+      "parentUuid": "0f78d570_c276243b",
+      "revId": "fbae5998fd249cbf25a368f3b34b5e975555a2a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
