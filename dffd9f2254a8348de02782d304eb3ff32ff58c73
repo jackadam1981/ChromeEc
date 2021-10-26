@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "42a0f9d3_bea6d2a4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-10-26T19:42:32Z",
+      "side": 1,
+      "message": "Just one typo to fix.",
+      "revId": "dffd9f2254a8348de02782d304eb3ff32ff58c73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31d1f89b_75bc2f50",
+        "filename": "zephyr/Kconfig.battery",
+        "patchSetId": 8
+      },
+      "lineNbr": 533,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-10-26T19:42:32Z",
+      "side": 1,
+      "message": "characters",
+      "range": {
+        "startLine": 533,
+        "startChar": 57,
+        "endLine": 533,
+        "endChar": 67
+      },
+      "revId": "dffd9f2254a8348de02782d304eb3ff32ff58c73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
