@@ -34,6 +34,24 @@
       "parentUuid": "1ecd7a27_eee00d13",
       "revId": "308e954af41722190d0986e4e27e351ea6798c59",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55a664ae_5a367481",
+        "filename": "power/rk3399.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 605,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-10-26T16:58:23Z",
+      "side": 0,
+      "message": "Yeah, it looks like this is just used on a couple of old platforms.  I suppose this CL isn\u0027t any more broken than before.  Probably just add a TODO comment to fix if we ever have another platform with this power sequencing?",
+      "parentUuid": "5a6bbd0e_7000c143",
+      "revId": "308e954af41722190d0986e4e27e351ea6798c59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
