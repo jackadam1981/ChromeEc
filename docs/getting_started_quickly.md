@@ -31,7 +31,7 @@ toolchain incompatibilities may require extra debug.
 1.  Build your EC image:
 
     ```bash
-    HOSTCC=x86_64-linux-gnu-gcc CROSS_COMPILE_arm=arm-none-eabi- make BOARD=${BOARD}
+    HOST_CC=x86_64-linux-gnu-gcc CROSS_COMPILE_arm=arm-none-eabi- make BOARD=${BOARD}
     ```
 
     Note: the EC supports multiple architectures, check `core/*/build.mk` files

@@ -99,15 +99,15 @@ cmd_c_to_o = $(CC) $(C_WARN) $(CFLAGS) -MMD -MP -MF $@.d -c $< \
 		-MT $(@D)/$(@F) -o $(@D)/$(@F)
 cmd_cxx_to_o = $(CXX) -std=c++11 $(CFLAGS) $(CXXFLAGS) -MMD -MP -MF $@.d -c $< \
 		      -MT $(@D)/$(@F) -o $(@D)/$(@F)
-cmd_c_to_build = $(BUILDCC) $(BUILD_CFLAGS) \
+cmd_c_to_build = $(BUILD_CC) $(BUILD_CFLAGS) \
 	         $(sort $(foreach c,$($(*F)-objs),util/$(c:%.o=%.c)) $(wildcard $*.c)) \
 	         $(BUILD_LDFLAGS) \
 	         -MMD -MF $@.d -MT $@ -o $@
-cmd_c_to_vif = $(BUILDCC) $(BUILD_CFLAGS) $(STANDALONE_FLAGS) \
+cmd_c_to_vif = $(BUILD_CC) $(BUILD_CFLAGS) $(STANDALONE_FLAGS) \
 		-MMD -MF $@.d -c $< -flto -MT $@ -o $@
-cmd_c_to_host = $(HOSTCC) $(HOST_CFLAGS) -MMD -MF $@.d -MT $@ -o $@ \
+cmd_c_to_host = $(HOST_CC) $(HOST_CFLAGS) -MMD -MF $@.d -MT $@ -o $@ \
 	         $(sort $(foreach c,$($(*F)-objs),util/$(c:%.o=%.c)) $(wildcard $*.c)) $(HOST_LDFLAGS)
-cmd_cxx_to_host = $(HOSTCXX) -std=gnu++17 $(HOST_CXXFLAGS) \
+cmd_cxx_to_host = $(HOST_CXX) -std=gnu++17 $(HOST_CXXFLAGS) \
 		-MMD -MF $@.d -MT $@ -o $@ \
 		$(sort $(foreach c,$($(*F)-objs),util/$(c:%.o=%.cc)) $(wildcard $*.cc)) $(HOST_LDFLAGS)
 cmd_o_to_a = $(AR) rcs $@ $^
@@ -131,10 +131,10 @@ cmd_sharedlib_elf = $(CC) $(libsharedobjs_deps) \
 	-Wl,-T,common/ec.$(SHOBJLIB).ld $(LDFLAGS) \
 	-o $(out)/$(SHOBJLIB)/$(SHOBJLIB).elf \
 	-Wl,-Map,$(out)/$(SHOBJLIB)/$(SHOBJLIB).map
-cmd_c_to_taskinfo = $(BUILDCC) \
+cmd_c_to_taskinfo = $(BUILD_CC) \
 	$(filter-out -DSECTION_IS_$(BLD)=$(EMPTY),$(BUILD_CFLAGS)) \
 	-DSECTION_IS_$(3)=$(EMPTY) -MMD -MF $@.d -c $< -flto -MT $@ -o $@
-cmd_link_taskinfo = $(BUILDCC) $(BUILD_CFLAGS) --shared -fPIC $^ \
+cmd_link_taskinfo = $(BUILD_CC) $(BUILD_CFLAGS) --shared -fPIC $^ \
 	$(BUILD_LDFLAGS) -flto -o $@
 cmd_proto_to_cxx = $(PROTOC) -I. --cpp_out=$(out)/gen $^
 
@@ -344,7 +344,7 @@ run-fuzz-test-targets=$(foreach t,$(fuzz-test-list-host),run-$(t))
 
 $(fuzz-test-targets): TEST_FLAG=TEST_FUZZ=y TEST_ASAN=$(TEST_ASAN) \
 	TEST_MSAN=$(TEST_MSAN) TEST_UBSAN=$(TEST_UBSAN) \
-	CROSS_COMPILE=$(shell echo $(HOSTCC) | grep -v ccache | \
+	CROSS_COMPILE=$(shell echo $(HOST_CC) | grep -v ccache | \
 		sed -e 's/[^-]*$$//')
 $(fuzz-test-targets): host-%: | $(FAILED_BOARDS_DIR)
 	@touch $(FAILED_BOARDS_DIR)/test-$*
@@ -639,10 +639,10 @@ $(out)/ec_version.h:
 	$(call quiet,version,VERSION)
 
 $(build-utils): $(out)/%:$(build-srcs)
-	$(call quiet,c_to_build,BUILDCC)
+	$(call quiet,c_to_build,BUILD_CC)
 
 $(host-utils): $(out)/%:$(host-srcs)
-	$(call quiet,c_to_host,HOSTCC )
+	$(call quiet,c_to_host,HOST_CC )
 
 $(out)/cscope.files: $(out)/$(PROJECT).bin
 	$(call quiet,deps_to_list,SH     )

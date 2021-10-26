@@ -39,6 +39,7 @@ ifeq (,$(BDIR))
 BDIR:=$(PBDIR)
 endif
 
+
 PROJECT?=ec
 
 # An empty string.
@@ -378,7 +379,7 @@ ifeq ($(CONFIG_FW_INCLUDE_RO),y)
 def_all_deps+=ro
 endif
 all_deps?=$(def_all_deps)
-all: $(all_deps)
+all: $(all_deps) ; $(info $$var is [${var}])echo Hello world
 compile-only: $(ro-objs) $(rw-objs)
 
 ro: override BLD:=RO

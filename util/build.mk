@@ -62,10 +62,10 @@ STANDALONE_FLAGS=-ffreestanding -fno-builtin -nostdinc \
 
 $(out)/util/%/usb_pd_policy.o: %/usb_pd_policy.c
 	-@ mkdir -p $(@D)
-	$(call quiet,c_to_vif,BUILDCC)
+	$(call quiet,c_to_vif,BUILD_CC)
 $(out)/common/usb_common.o: common/usb_common.c
 	-@ mkdir -p $(@D)
-	$(call quiet,c_to_vif,BUILDCC)
+	$(call quiet,c_to_vif,BUILD_CC)
 endif # CONFIG_USB_POWER_DELIVERY
 
 ifneq ($(CONFIG_BOOTBLOCK),)
@@ -89,11 +89,11 @@ build-util-bin-y += gen_touchpad_hash
 # Assume RW section (touchpad FW must be identical for both RO+RW)
 $(out)/util/gen_touchpad_hash: BUILD_LDFLAGS += -DSECTION_IS_RW=$(EMPTY)
 
-HOST_OPENSSL_CFLAGS := $(shell $(HOST_PKG_CONFIG) --cflags openssl)
-HOST_OPENSSL_LDFLAGS := $(shell $(HOST_PKG_CONFIG) --libs openssl)
+BUILD_OPENSSL_CFLAGS := $(shell $(BUILD_PKG_CONFIG) --cflags openssl)
+BUILD_OPENSSL_LDFLAGS := $(shell $(BUILD_PKG_CONFIG) --libs openssl)
 
-$(out)/util/gen_touchpad_hash: BUILD_CFLAGS += $(HOST_OPENSSL_CFLAGS)
-$(out)/util/gen_touchpad_hash: BUILD_LDFLAGS += $(HOST_OPENSSL_LDFLAGS)
+$(out)/util/gen_touchpad_hash: BUILD_CFLAGS += $(BUILD_OPENSSL_CFLAGS)
+$(out)/util/gen_touchpad_hash: BUILD_LDFLAGS += $(BUILD_OPENSSL_LDFLAGS)
 
 deps-y += $(out)/util/gen_touchpad_hash.d
 endif # CONFIG_TOUCHPAD_VIRTUAL_OFF
@@ -105,9 +105,9 @@ $(out)/util/export_taskinfo.so: $(out)/util/export_taskinfo_ro.o \
 	$(call quiet,link_taskinfo,BUILDLD)
 
 $(out)/util/export_taskinfo_ro.o: util/export_taskinfo.c
-	$(call quiet,c_to_taskinfo,BUILDCC,RO)
+	$(call quiet,c_to_taskinfo,BUILD_CC,RO)
 
 $(out)/util/export_taskinfo_rw.o: util/export_taskinfo.c
-	$(call quiet,c_to_taskinfo,BUILDCC,RW)
+	$(call quiet,c_to_taskinfo,BUILD_CC,RW)
 
 deps-y += $(out)/util/export_taskinfo_ro.o.d $(out)/util/export_taskinfo_rw.o.d
