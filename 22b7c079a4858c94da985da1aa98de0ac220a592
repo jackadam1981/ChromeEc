@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7694b9cb_bd9fcfab",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-10-26T02:05:12Z",
+      "side": 0,
+      "message": "how about removing this macro?",
+      "range": {
+        "startLine": 174,
+        "startChar": 25,
+        "endLine": 174,
+        "endChar": 42
+      },
+      "revId": "22b7c079a4858c94da985da1aa98de0ac220a592",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
