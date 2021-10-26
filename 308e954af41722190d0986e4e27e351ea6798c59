@@ -70,6 +70,30 @@
       },
       "revId": "308e954af41722190d0986e4e27e351ea6798c59",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a745432_b0a4e5a3",
+        "filename": "board/felwinter/usbc_config.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-10-26T21:41:54Z",
+      "side": 1,
+      "message": ":) I guess I meant that the pattern was being used in that the compiler was allowing \"gpio_signal\" to be used for both \"gpio_signal\" and \"ioex_signal\", so it was essentially already an int.\n\nI thought about creating a union, but that doesn\u0027t tell you which of the types it actually is (other than using the existing range checking).",
+      "parentUuid": "c5a06e37_2fb284c5",
+      "range": {
+        "startLine": 203,
+        "startChar": 1,
+        "endLine": 203,
+        "endChar": 4
+      },
+      "revId": "308e954af41722190d0986e4e27e351ea6798c59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
