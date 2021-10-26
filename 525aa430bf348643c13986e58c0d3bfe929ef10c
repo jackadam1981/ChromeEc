@@ -22,6 +22,30 @@
       },
       "revId": "525aa430bf348643c13986e58c0d3bfe929ef10c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2185ce47_1a846169",
+        "filename": "zephyr/test/drivers/src/ps8xxx.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 849,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2021-10-26T11:39:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7cf346dd_3e4603ea",
+      "range": {
+        "startLine": 849,
+        "startChar": 0,
+        "endLine": 849,
+        "endChar": 23
+      },
+      "revId": "525aa430bf348643c13986e58c0d3bfe929ef10c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
