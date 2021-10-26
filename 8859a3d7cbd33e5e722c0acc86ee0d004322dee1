@@ -51,6 +51,24 @@
       "parentUuid": "dd50fa70_c48b7871",
       "revId": "8859a3d7cbd33e5e722c0acc86ee0d004322dee1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c90210b5_b2ac1052",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2021-10-26T00:48:35Z",
+      "side": 1,
+      "message": "I verified that this CL works. I was able to charge from both ports",
+      "parentUuid": "4b66bd23_c7b8dc41",
+      "revId": "8859a3d7cbd33e5e722c0acc86ee0d004322dee1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
