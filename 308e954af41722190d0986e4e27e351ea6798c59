@@ -22,6 +22,30 @@
       },
       "revId": "308e954af41722190d0986e4e27e351ea6798c59",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "163d745b_00c5268d",
+        "filename": "board/felwinter/usbc_config.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-10-26T15:54:30Z",
+      "side": 1,
+      "message": "I generally agree about ideally not wanting to lose the type info. FWIW, the pattern I put here seems to be used in other places: https://crrev.com/c/3243005.",
+      "parentUuid": "9bdf5e39_558335b7",
+      "range": {
+        "startLine": 203,
+        "startChar": 1,
+        "endLine": 203,
+        "endChar": 4
+      },
+      "revId": "308e954af41722190d0986e4e27e351ea6798c59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
