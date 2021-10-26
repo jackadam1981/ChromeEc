@@ -82,7 +82,20 @@ BOARDS_THAT_COMPILE_SUCCESSFULLY_WITH_CLANG = [
     'volet',
     'voxel',
     'woomax',
+    'burnet',
+    'damu',
+    'elm',
+    'jacuzzi',
+    'kappa',
+    'oak',
+    'scarlet',
+    'stern',
+    'willow',
+    'rainier',
 # The following compile, but run out of space:
+    #'fennel',
+    #'kodama',
+    #'makomo',
     #'halvor',
     #'malefor',
     #'terrador',
@@ -90,6 +103,8 @@ BOARDS_THAT_COMPILE_SUCCESSFULLY_WITH_CLANG = [
     #'volteer',
     #'todor',
     #'trondo',
+# Other errors:
+    #'fluffy',
 ]
 
 
