@@ -1,0 +1,47 @@
+/* Copyright 2021 The Chromium OS Authors. All rights reserved.
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+/ {
+	named-gpios {
+		compatible = "named-gpios";
+
+		lid_open: lid_open {
+			gpios = <&gpiod 2 GPIO_INPUT>;
+			enum-name = "GPIO_LID_OPEN";
+			label = "LID_OPEN";
+		};
+
+		gsc_ec_pwr_btn_odl: power_btn {
+			gpios = <&gpio0 1 GPIO_INPUT>;
+			enum-name = "GPIO_POWER_BUTTON_L";
+			label = "GSC_EC_PWR_BTN_ODL";
+		};
+		wp_l {
+			gpios = <&gpioa 1 GPIO_INPUT>;
+			enum-name = "GPIO_WP_L";
+			label = "EC_WP_ODL";
+		};
+		ec_chg_led_l_y {
+			gpios = <&gpioc 4 GPIO_OUT_LOW>;
+			enum-name = "GPIO_EC_CHG_LED_Y_C0";
+			label = "EC_CHG_LED_L_Y";
+		};
+		ec_chg_led_l_w {
+			gpios = <&gpioc 3 GPIO_OUT_LOW>;
+			enum-name = "GPIO_EC_CHG_LED_W_C0";
+			label = "EC_CHG_LED_L_W";
+		};
+		ec_chg_led_r_y {
+			gpios = <&gpiof 2 GPIO_OUT_LOW>;
+			enum-name = "GPIO_EC_CHG_LED_Y_C1";
+			label = "EC_CHG_LED_R_Y";
+		};
+		ec_chg_led_r_w {
+			gpios = <&gpiof 3 GPIO_OUT_LOW>;
+			enum-name = "GPIO_EC_CHG_LED_W_C1";
+			label = "EC_CHG_LED_R_W";
+		};
+	};
+};
