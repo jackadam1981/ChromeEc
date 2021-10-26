@@ -52,6 +52,24 @@
       "parentUuid": "5a6bbd0e_7000c143",
       "revId": "308e954af41722190d0986e4e27e351ea6798c59",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ed50b1b_ff4fdb86",
+        "filename": "power/rk3399.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 605,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-10-26T17:15:34Z",
+      "side": 0,
+      "message": "I think we should try to fix it; otherwise I\u0027m sure it will never be fixed and the code may be copied into other places.",
+      "parentUuid": "55a664ae_5a367481",
+      "revId": "308e954af41722190d0986e4e27e351ea6798c59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
