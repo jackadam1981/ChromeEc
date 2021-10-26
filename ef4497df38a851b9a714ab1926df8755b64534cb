@@ -16,6 +16,46 @@
       "message": "Tests were also run with a follow up wip CL that tests its functionality.",
       "revId": "ef4497df38a851b9a714ab1926df8755b64534cb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1f554b2_1453baa0",
+        "filename": "include/task.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-10-26T02:15:24Z",
+      "side": 1,
+      "message": "I think replace \u003c\u003e with \"\"?",
+      "range": {
+        "startLine": 14,
+        "startChar": 9,
+        "endLine": 14,
+        "endChar": 19
+      },
+      "revId": "ef4497df38a851b9a714ab1926df8755b64534cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3790d80_0ce6ba18",
+        "filename": "include/task.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 402,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-10-26T02:15:24Z",
+      "side": 1,
+      "message": "Elaborate on the k_ prefix and why we did it, along the lines of: \"Should make it easy to remove this when we remove the shim layer\"",
+      "revId": "ef4497df38a851b9a714ab1926df8755b64534cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
