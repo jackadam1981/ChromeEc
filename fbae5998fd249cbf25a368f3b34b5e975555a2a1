@@ -34,6 +34,24 @@
       "parentUuid": "0f78d570_c276243b",
       "revId": "fbae5998fd249cbf25a368f3b34b5e975555a2a1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a86af8d_51cdc48d",
+        "filename": "board/metaknight/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 760,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-10-26T18:12:12Z",
+      "side": 1,
+      "message": "Ah, my bad. The original code is wrongly referencing the 2nd port, which doesn\u0027t exist in metaknight. So, this is good.",
+      "parentUuid": "e8f893de_b58fb357",
+      "revId": "fbae5998fd249cbf25a368f3b34b5e975555a2a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
