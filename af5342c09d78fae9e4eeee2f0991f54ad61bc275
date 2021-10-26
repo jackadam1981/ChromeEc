@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "068cf50a_85c69d9c",
+        "filename": "zephyr/Kconfig.battery",
+        "patchSetId": 7
+      },
+      "lineNbr": 526,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-10-26T17:53:41Z",
+      "side": 1,
+      "message": "\"This enables battery API version 1, with support for only a single battery.\"",
+      "range": {
+        "startLine": 524,
+        "startChar": 3,
+        "endLine": 526,
+        "endChar": 0
+      },
+      "revId": "af5342c09d78fae9e4eeee2f0991f54ad61bc275",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a0b37ae_453d238b",
+        "filename": "zephyr/Kconfig.battery",
+        "patchSetId": 7
+      },
+      "lineNbr": 535,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-10-26T17:53:41Z",
+      "side": 1,
+      "message": "Delete this - this note should be captured in the PLATFORM_EC_BATTERY_API choice above.",
+      "range": {
+        "startLine": 533,
+        "startChar": 45,
+        "endLine": 535,
+        "endChar": 0
+      },
+      "revId": "af5342c09d78fae9e4eeee2f0991f54ad61bc275",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

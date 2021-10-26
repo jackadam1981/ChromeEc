@@ -107,6 +107,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4f29db0b_fd4fd317",
+        "filename": "zephyr/Kconfig.battery",
+        "patchSetId": 5
+      },
+      "lineNbr": 522,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-10-26T17:53:41Z",
+      "side": 1,
+      "message": "Please organize these two options a choice.\n\nchoice PLATFORM_EC_BATTERY_API\n    prompt \"Battery API version\"\n    default PLATFORM_EC_BATTERY_V2\n    help\n      Select the battery API version. V2 is required on dual-battery-systems and hostless bases with a battery. V1 should not be used except for testing on legacy boards.\n      \nconfig PLATFORM_EC_BATTERY_V2\n    ...\n    \nconfig PLATFORM_EC_BATTERY_V1\n    ...\n\nendchoice\n\nif PLATFORM_EC_BATTERY_V2\nconfig PLATFORM_EC_BATTERY_COUNT\n    ...\nendif # PLATFORM_EC_BATTERY_V2",
+      "parentUuid": "d19fd549_c33ae6ed",
+      "range": {
+        "startLine": 522,
+        "startChar": 0,
+        "endLine": 522,
+        "endChar": 35
+      },
+      "revId": "22afe362c1f2d7c5f58c47baad3d01b60a54e43e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6182cdd5_4bc1ee40",
         "filename": "zephyr/Kconfig.battery",
         "patchSetId": 5
