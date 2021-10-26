@@ -1,0 +1,25 @@
+menuconfig ALTERSENSE
+	bool "Alternate Sensor Selection"
+	help
+	  This option enables the alternate sensor selection module which allows
+	  boards to select between various sensors at runtime.
+
+if ALTERSENSE
+
+module = ALTERSENSE
+module-str = Alternate Sensor Selection
+source "subsys/logging/Kconfig.template.log_config"
+
+config ALTERSENSE_CBI_MODE_SSFC
+	bool
+	help
+	  Select alternate sensor based on Second Source Firmware Cache value
+
+config ALTERSENSE_CBI_MODE_BOARD_VERSION
+	bool
+	help
+	  Select alternate sensor based on board version
+
+endif # ALTERSENSE
+
+endmenu # ALTERSENSE
