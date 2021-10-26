@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a78b80b4_16950c5b",
+        "filename": "driver/ioexpander/tca64xxa.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-10-26T00:51:16Z",
+      "side": 0,
+      "message": "i see the preceding patch moves these into the common\nioexpander.h. we i\u0027d rather not put chip specific definitions in\na common header. i think what we can do is to define the concept\nof a driver specific range of bits in the flags field as you\nhave done. with that, we can leave the definitions here, but we\u0027ll\nneed to start with whatever bit position we reserve for the drivers\nin the common header file.\nso, the ioexpander.h will likely need to have a #define for whatever\nbit position that is - looks like you chose 24. then, the the\ndriver(s) start with that as the base bit position, etc.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 36
+      },
+      "revId": "b0226926d1c963307fc4557fb6cddfdd41f29e33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
