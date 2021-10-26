@@ -20,6 +20,69 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e4508922_38983dc6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-10-26T02:12:08Z",
+      "side": 1,
+      "message": "Sorry Tristan that I didn\u0027t quite understand what we were trying to do when we spoke earlier. I think this is a better candidate for the syscon driver. See https://github.com/zephyrproject-rtos/zephyr/tree/00f5f3fab4c48097b1c2bc49698137fc50bcc90d/tests/drivers/syscon for the use in a test. You can actually create a memory map for this and read/write to the mapped address. I think especially since our ultimate goal here is an integration test that mirrors a real device, we should be going that route.",
+      "revId": "f6d14be1dfbf33ccfcb433290e7d350795aaca85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c43555c_5671a6da",
+        "filename": "driver/accelgyro_bmi260.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 408,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-10-26T02:12:08Z",
+      "side": 1,
+      "message": "We might have memory mapped sections in ztest. This is a great opportunity to learn about Kconfig 😊\n\nYou should add to the top level zephyr/Kconfig a new `config PLATFORM_EC_CHIP_INIT_ROM_REGION` and pipe it through the config_chip.h like I showed you today.",
+      "range": {
+        "startLine": 408,
+        "startChar": 52,
+        "endLine": 408,
+        "endChar": 64
+      },
+      "revId": "f6d14be1dfbf33ccfcb433290e7d350795aaca85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5149ec50_3f4b0a70",
+        "filename": "include/init_rom.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-10-26T02:12:08Z",
+      "side": 1,
+      "message": "Same here, this will go away",
+      "range": {
+        "startLine": 17,
+        "startChar": 44,
+        "endLine": 17,
+        "endChar": 51
+      },
+      "revId": "f6d14be1dfbf33ccfcb433290e7d350795aaca85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "662571cf_e9567304",
         "filename": "zephyr/test/drivers/src/bmi260.c",
         "patchSetId": 2
