@@ -15,6 +15,9 @@ child-binding:
           description: |
             Human readable string describing the device (used as
             device_get_binding() argument)
+       power-signal-enum-name:
+          required: false
+          type: string
        "#gpio-cells":
           type: int
           required: false
