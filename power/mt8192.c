@@ -79,6 +79,8 @@
 /* 30 ms for hard reset, we hold it longer to prevent TPM false alarm. */
 #define SYS_RST_PULSE_LENGTH (50 * MSEC)
 
+#ifndef CONFIG_ZEPHYR
+
 /* power signal list.  Must match order of enum power_signal. */
 const struct power_signal_info power_signal_list[] = {
 	{GPIO_PMIC_EC_PWRGD, POWER_SIGNAL_ACTIVE_HIGH, "PMIC_PWR_GOOD"},
@@ -86,6 +88,17 @@ const struct power_signal_info power_signal_list[] = {
 	{GPIO_AP_EC_WATCHDOG_L, POWER_SIGNAL_ACTIVE_LOW, "AP_WDT_ASSERTED"},
 };
 BUILD_ASSERT(ARRAY_SIZE(power_signal_list) == POWER_SIGNAL_COUNT);
+
+#else
+
+const struct power_signal_info power_signal_oldlist[] = {
+	{GPIO_PMIC_EC_PWRGD, POWER_SIGNAL_ACTIVE_HIGH, "PMIC_PWR_GOOD"},
+	{GPIO_AP_IN_SLEEP_L, POWER_SIGNAL_ACTIVE_LOW, "AP_IN_S3_L"},
+	{GPIO_AP_EC_WATCHDOG_L, POWER_SIGNAL_ACTIVE_LOW, "AP_WDT_ASSERTED"},
+};
+BUILD_ASSERT(ARRAY_SIZE(power_signal_oldlist) == POWER_SIGNAL_COUNT);
+
+#endif /* !CONFIG_ZEPHYR */
 
 static int forcing_shutdown;
 
@@ -262,6 +275,45 @@ enum power_state power_handle_state(enum power_state state)
 	 * transition to S5, G3.
 	 */
 	static int ap_shutdown;
+
+	ccprints("power_handle_state");
+	if (!(PMIC_PWR_GOOD == 0))
+		ccprints("PMIC_PWR_GOOD not correct");
+	if (!(power_signal_list[PMIC_PWR_GOOD].gpio ==
+		power_signal_oldlist[PMIC_PWR_GOOD].gpio))
+		ccprints("PMIC_PWR_GOOD.gpio not correct");
+	if (!(power_signal_list[PMIC_PWR_GOOD].flags ==
+		power_signal_oldlist[PMIC_PWR_GOOD].flags))
+		ccprints("PMIC_PWR_GOOD.flags not correct");
+	if (!(!strcmp(power_signal_list[PMIC_PWR_GOOD].name,
+		power_signal_oldlist[PMIC_PWR_GOOD].name)))
+		ccprints("PMIC_PWR_GOOD.name not correct");
+
+	if (!(AP_IN_S3_L == 1))
+		ccprints("AP_IN_S3_L not correct");
+	if (!(power_signal_list[AP_IN_S3_L].gpio ==
+		power_signal_oldlist[AP_IN_S3_L].gpio))
+		ccprints("AP_IN_S3_L.gpio not correct");
+	if (!(power_signal_list[AP_IN_S3_L].flags ==
+		power_signal_oldlist[AP_IN_S3_L].flags))
+		ccprints("AP_IN_S3_L.flags not correct");
+	if (!(!strcmp(power_signal_list[AP_IN_S3_L].name,
+		power_signal_oldlist[AP_IN_S3_L].name)))
+		ccprints("AP_IN_S3_L.name not correct");
+
+	if (!(AP_WDT_ASSERTED == 2))
+		ccprints("AP_WDT_ASSERTED not correct");
+	if (!(power_signal_list[AP_WDT_ASSERTED].gpio ==
+		power_signal_oldlist[AP_WDT_ASSERTED].gpio))
+		ccprints("AP_WDT_ASSERTED.gpio not correct");
+	if (!(power_signal_list[AP_WDT_ASSERTED].flags ==
+		power_signal_oldlist[AP_WDT_ASSERTED].flags))
+		ccprints("AP_WDT_ASSERTED.flags not correct");
+	if (!(!strcmp(power_signal_list[AP_WDT_ASSERTED].name,
+		power_signal_oldlist[AP_WDT_ASSERTED].name)))
+		ccprints("AP_WDT_ASSERTED.name not correct");
+	ccprints("checks completed");
+
 
 	switch (state) {
 	case POWER_G3:
