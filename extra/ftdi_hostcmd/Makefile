@@ -10,7 +10,7 @@ MPSSE_DIR = $(PLATFORM2)/trunks/ftdi
 PROG = test_cmds
 SRCS = test_cmds.c $(MPSSE_DIR)/mpsse.c $(MPSSE_DIR)/support.c
 
-CFLAGS = \
+BUILD_CFLAGS = \
 	-std=gnu99 \
 	-g3 \
 	-O3 \
@@ -24,13 +24,13 @@ CFLAGS = \
         -Wredundant-decls \
         -Wmissing-declarations
 
-CFLAGS += -I../../include -I${MPSSE_DIR} -I${PLATFORM2}
+BUILD_CFLAGS += -I../../include -I${MPSSE_DIR} -I${PLATFORM2}
 
-CFLAGS += $(shell pkg-config --cflags libusb-1.0 libftdi1)
-LIBS   += $(shell pkg-config --libs   libusb-1.0 libftdi1)
+BUILD_CFLAGS += $(shell ${BUILD_PKG_CONFIG} --cflags libusb-1.0 libftdi1)
+BUILD_LIBS   += $(shell ${BUILD_PKG_CONFIG} --libs   libusb-1.0 libftdi1)
 
 $(PROG): $(SRCS) Makefile
-	gcc $(CFLAGS) $(SRCS) $(LDFLAGS) $(LIBS) -o $@
+	$(BUILD_CC) $(BUILD_CFLAGS) $(SRCS) $(BUILD_LDFLAGS) $(BUILD_LIBS) -o $@
 
 .PHONY: clean
 clean:
