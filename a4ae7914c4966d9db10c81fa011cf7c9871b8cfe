@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2bd6990f_b78f86af",
+        "filename": "zephyr/test/drivers/src/ln9310.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2021-10-26T23:45:28Z",
+      "side": 1,
+      "message": "That\u0027s an awesome idea!",
+      "parentUuid": "19db2615_3b6c45e7",
+      "range": {
+        "startLine": 339,
+        "startChar": 0,
+        "endLine": 342,
+        "endChar": 0
+      },
+      "revId": "a4ae7914c4966d9db10c81fa011cf7c9871b8cfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "40681c48_bad1473d",
         "filename": "zephyr/test/drivers/src/ln9310.c",
         "patchSetId": 5
@@ -37,6 +61,30 @@
       "writtenOn": "2021-10-14T01:43:45Z",
       "side": 1,
       "message": "These will be removed once you\u0027ve replaced with a struct",
+      "range": {
+        "startLine": 402,
+        "startChar": 1,
+        "endLine": 403,
+        "endChar": 22
+      },
+      "revId": "a4ae7914c4966d9db10c81fa011cf7c9871b8cfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bdb2b469_2771878a",
+        "filename": "zephyr/test/drivers/src/ln9310.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 403,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2021-10-26T23:45:28Z",
+      "side": 1,
+      "message": "get_time_mock is global from timer.h",
+      "parentUuid": "40681c48_bad1473d",
       "range": {
         "startLine": 402,
         "startChar": 1,
