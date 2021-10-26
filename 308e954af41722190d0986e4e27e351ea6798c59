@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ecd7a27_eee00d13",
+        "filename": "power/rk3399.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 605,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-10-26T14:12:40Z",
+      "side": 0,
+      "message": "Does this actually make sense?  I assume the intent is to derive a signal to send that\u0027s beyond the number of power signals, but these are separate enums so it seems like this could still be a valid power signal (or a random GPIO of some other sort).  Would GPIO_COUNT be more correct?",
+      "revId": "308e954af41722190d0986e4e27e351ea6798c59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
