@@ -1,0 +1,13 @@
+# Copyright 2021 Google LLC
+# SPDX-License-Identifier: Apache-2.0
+
+description: MT, Power Signal List
+compatible: "mt,mt-power-signal-list"
+include: power-signal-list.yaml
+child-binding:
+  properties:
+    power-enum-name:
+      enum:
+        - AP_IN_S3_L
+        - AP_WDT_ASSERTED
+        - PMIC_PWR_GOOD
