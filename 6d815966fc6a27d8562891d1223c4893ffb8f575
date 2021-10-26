@@ -98,6 +98,24 @@
       "parentUuid": "753aa87e_951a3d5a",
       "revId": "6d815966fc6a27d8562891d1223c4893ffb8f575",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e66c5bb_65f50258",
+        "filename": "common/usb_common.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 1039,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-10-26T19:35:41Z",
+      "side": 1,
+      "message": "Are you using 4-space tabs? We use 8.",
+      "parentUuid": "e61129b0_4d01723e",
+      "revId": "6d815966fc6a27d8562891d1223c4893ffb8f575",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

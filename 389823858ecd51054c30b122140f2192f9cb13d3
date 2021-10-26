@@ -267,6 +267,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "dcb04fb7_61912c5c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-10-26T19:35:41Z",
+      "side": 1,
+      "message": "separate for each. That way if someone wanted to cherry-pick the change, they don\u0027t have to bring in irrelevant boards to their branch.",
+      "parentUuid": "455d36cb_1407ae0e",
+      "revId": "389823858ecd51054c30b122140f2192f9cb13d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "853c640f_6f77b03d",
         "filename": "common/usb_common.c",
         "patchSetId": 9
