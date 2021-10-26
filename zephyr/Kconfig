@@ -61,6 +61,7 @@ rsource "Kconfig.timer"
 rsource "Kconfig.throttle_ap"
 rsource "Kconfig.usbc"
 rsource "Kconfig.watchdog"
+rsource "subsys/Kconfig"
 
 # Define PLATFORM_EC_... options to enable EC features. Each Kconfig should be
 # matched by a line in zephyr/shim/include/config_chip.h which #defines the
