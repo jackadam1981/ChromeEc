@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "31b44ace_7d46d86f",
+        "filename": "chip/mt_scp/rv32i_common/watchdog.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1470932
+      },
+      "writtenOn": "2021-10-26T03:38:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6bd73b43_2f8fae67",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 17
+      },
+      "revId": "5e4e33f4cdaa2e142a01f0565df2490773f2adf1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "71a29be7_5343e2bf",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-10-26T02:43:17Z",
       "side": 1,
       "message": "sort header files",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 20
+      },
+      "revId": "5e4e33f4cdaa2e142a01f0565df2490773f2adf1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f558708e_515423c8",
+        "filename": "core/riscv-rv32i/panic.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1470932
+      },
+      "writtenOn": "2021-10-26T03:38:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "71a29be7_5343e2bf",
       "range": {
         "startLine": 6,
         "startChar": 0,
