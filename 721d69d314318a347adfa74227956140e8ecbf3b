@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab3d8c0b_03d636b4",
+        "filename": "board/felwinter/fw_config.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1316237
+      },
+      "writtenOn": "2021-10-26T06:34:34Z",
+      "side": 1,
+      "message": "should be followed felwinter/config.star.",
+      "parentUuid": "9d131027_9fb73574",
+      "range": {
+        "startLine": 35,
+        "startChar": 14,
+        "endLine": 35,
+        "endChar": 20
+      },
+      "revId": "721d69d314318a347adfa74227956140e8ecbf3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cb5b6443_39d42c5b",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-10-26T01:25:09Z",
       "side": 1,
       "message": "this is 2 bits in felwinter/config.star.",
+      "range": {
+        "startLine": 39,
+        "startChar": 24,
+        "endLine": 39,
+        "endChar": 25
+      },
+      "revId": "721d69d314318a347adfa74227956140e8ecbf3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "64704689_6c4239e6",
+        "filename": "board/felwinter/fw_config.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1316237
+      },
+      "writtenOn": "2021-10-26T06:34:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cb5b6443_39d42c5b",
       "range": {
         "startLine": 39,
         "startChar": 24,
