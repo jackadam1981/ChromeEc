@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d131027_9fb73574",
+        "filename": "board/felwinter/fw_config.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-10-26T01:25:09Z",
+      "side": 1,
+      "message": "this is called \"WIFI\" in felwinter/config.star.\nthe names should closely resemble each other,\nbut i\u0027m not sure which is correct.",
+      "range": {
+        "startLine": 35,
+        "startChar": 14,
+        "endLine": 35,
+        "endChar": 20
+      },
+      "revId": "721d69d314318a347adfa74227956140e8ecbf3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb5b6443_39d42c5b",
+        "filename": "board/felwinter/fw_config.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-10-26T01:25:09Z",
+      "side": 1,
+      "message": "this is 2 bits in felwinter/config.star.",
+      "range": {
+        "startLine": 39,
+        "startChar": 24,
+        "endLine": 39,
+        "endChar": 25
+      },
+      "revId": "721d69d314318a347adfa74227956140e8ecbf3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
