@@ -27,15 +27,18 @@
 			enum-name = "GPIO_AP_EC_WARM_RST_REQ";
 			label = "AP_EC_WARM_RST_REQ";
 		};
-		ap_ec_watchdog_l {
-			gpios = <&gpioc 7 (GPIO_INPUT | GPIO_VOLTAGE_1P8)>;
+		ap_ec_watchdog_l: ap_ec_watchdog_l {
+			gpios = <&gpioc 7 (GPIO_INPUT | GPIO_VOLTAGE_1P8 |
+					GPIO_ACTIVE_LOW)>;
 			enum-name = "GPIO_AP_EC_WATCHDOG_L";
+			power-signal-enum-name = "AP_WDT_ASSERTED";
 			label = "AP_EC_WATCHDOG_L";
 		};
-		ap_in_sleep_l {
+		ap_in_sleep_l: ap_in_sleep_l {
 			gpios = <&gpiof 2 (GPIO_INPUT | GPIO_PULL_DOWN |
-					GPIO_VOLTAGE_1P8)>;
+					GPIO_VOLTAGE_1P8 | GPIO_ACTIVE_LOW)>;
 			enum-name = "GPIO_AP_IN_SLEEP_L";
+			power-signal-enum-name = "AP_IN_S3_L";
 			label = "AP_IN_SLEEP_L";
 		};
 		ap-xhci-init-done {
@@ -44,10 +47,11 @@
 			enum-name = "GPIO_AP_XHCI_INIT_DONE";
 			label = "AP_XHCI_INIT_DONE";
 		};
-		pmic_ec_pwrgd {
+		pmic_ec_pwrgd: pmic_ec_pwrgd {
 			gpios = <&gpiof 3 (GPIO_INPUT | GPIO_PULL_DOWN |
-					GPIO_VOLTAGE_1P8)>;
+					GPIO_VOLTAGE_1P8 | GPIO_ACTIVE_HIGH)>;
 			enum-name = "GPIO_PMIC_EC_PWRGD";
+			power-signal-enum-name = "PMIC_PWR_GOOD";
 			label = "PMIC_EC_PWRGD";
 		};
 		gpio_accel_gyro_int_l: base_imu_int_l {
