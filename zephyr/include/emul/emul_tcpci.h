@@ -240,6 +240,8 @@ void tcpci_emul_set_rev(const struct emul *emul, enum tcpci_emul_rev rev);
 void tcpci_emul_set_dev_ops(const struct emul *emul,
 			    struct tcpci_emul_dev_ops *dev_ops);
 
+void tcpci_emul_connect_partner(const struct emul *emul, struct tcpci_emul_partner_ops *partner_emul);
+int tcpci_emul_disconnect_partner(const struct emul *emul);
 /**
  * @}
  */

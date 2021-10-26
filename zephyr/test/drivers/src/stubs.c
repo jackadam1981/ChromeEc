@@ -271,3 +271,21 @@ void chipset_force_shutdown(enum chipset_shutdown_reason reason)
 
 /* Power signals list. Must match order of enum power_signal. */
 const struct power_signal_info power_signal_list[] = {};
+
+void tcpc_alert_event(enum gpio_signal signal)
+{
+	int port;
+
+	switch (signal) {
+	case GPIO_USB_C0_TCPC_INT_ODL:
+		port = 0;
+		break;
+	case GPIO_USB_C1_TCPC_INT_ODL:
+		port = 1;
+		break;
+	default:
+		return;
+	}
+
+	schedule_deferred_pd_interrupt(port);
+}
