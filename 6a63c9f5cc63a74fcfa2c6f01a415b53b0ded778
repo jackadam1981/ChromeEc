@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7db82278_fcd3a688",
+        "filename": "Makefile.toolchain",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1273086
+      },
+      "writtenOn": "2021-10-26T23:53:20Z",
+      "side": 1,
+      "message": "I may be mistaken.  I interpreted Mikes comment as the ec ebuild (improperly) equates HOST and BUILD.  This change was an attempt to bring that to be more standard.  The addition of the dependency in the .eclass was all that I needed to get past the build time error.",
+      "parentUuid": "2cd69a09_3da54b39",
+      "range": {
+        "startLine": 40,
+        "startChar": 39,
+        "endLine": 40,
+        "endChar": 59
+      },
+      "revId": "6a63c9f5cc63a74fcfa2c6f01a415b53b0ded778",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "483e740b_3cb937e1",
         "filename": "Makefile.toolchain",
         "patchSetId": 4
@@ -37,6 +61,30 @@
       "writtenOn": "2021-10-26T22:17:19Z",
       "side": 1,
       "message": "Do you want $(cc-name) like above?",
+      "range": {
+        "startLine": 44,
+        "startChar": 60,
+        "endLine": 44,
+        "endChar": 63
+      },
+      "revId": "6a63c9f5cc63a74fcfa2c6f01a415b53b0ded778",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "df85e972_fb8e6f92",
+        "filename": "Makefile.toolchain",
+        "patchSetId": 4
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1273086
+      },
+      "writtenOn": "2021-10-26T23:53:20Z",
+      "side": 1,
+      "message": "I think that change above came in after I did the copy.  I fixed the conflict below.  I will fix this as well.",
+      "parentUuid": "483e740b_3cb937e1",
       "range": {
         "startLine": 44,
         "startChar": 60,
