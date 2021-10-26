@@ -16,6 +16,24 @@
       "message": "I\u0027d be slightly cautious about this one unless you\u0027re certain the boards don\u0027t need any kind of TCPC FW update in RO.  I don\u0027t think the scarlet TCPC I see in its board files supports FW update, but I\u0027m less certain about elm and oak, particularly since it looks like elm enables EC_CMD_PD_CONTROL in line 124 above.",
       "revId": "b39f06f8fc9f2f2d5fc8aaac15a38b0bd4cd01fd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c0aa508_18d11ce0",
+        "filename": "board/elm/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-10-26T21:45:08Z",
+      "side": 1,
+      "message": "Ah, ok. I didn\u0027t realize that those commands were used for FW update. Let me look at this more.",
+      "parentUuid": "3916895a_90879968",
+      "revId": "b39f06f8fc9f2f2d5fc8aaac15a38b0bd4cd01fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
