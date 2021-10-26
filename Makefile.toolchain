@@ -32,6 +32,12 @@ ifeq ($(origin HOST_CROSS_COMPILE),undefined)
 HOST_CROSS_COMPILE:=$(if $(shell which x86_64-pc-linux-gnu-gcc 2>/dev/null),x86_64-pc-linux-gnu-,)
 endif
 
+ifeq ($(origin BUILD_CROSS_COMPILE),undefined)
+BUILD_CROSS_COMPILE:=$(if $(shell which x86_64-pc-linux-gnu-gcc 2>/dev/null),x86_64-pc-linux-gnu-,)
+endif
+BUILD_PKG_CONFIG?=$(BUILD_CROSS_COMPILE)pkg-config
+BUILDCC?=$(CCACHE) gcc
+
 AR=$(CROSS_COMPILE)ar
 CC=$(CCACHE) $(CROSS_COMPILE)$(cc-name)
 CPP=$(CC) -E
@@ -42,7 +48,6 @@ OBJCOPY=$(CROSS_COMPILE)objcopy
 OBJDUMP=$(CROSS_COMPILE)objdump
 ADDR2LINE=$(CROSS_COMPILE)addr2line
 PKG_CONFIG?=pkg-config
-BUILDCC?=$(CCACHE) gcc
 HOSTCC?=$(CCACHE) $(HOST_CROSS_COMPILE)gcc
 HOSTCXX?=$(CCACHE) $(HOST_CROSS_COMPILE)clang++
 HOST_PKG_CONFIG?=$(HOST_CROSS_COMPILE)pkg-config
