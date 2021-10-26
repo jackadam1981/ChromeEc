@@ -123,6 +123,14 @@
 #define CONFIG_CMD_I2C_PROTECT
 #define CONFIG_HOSTCMD_PD_CONTROL
 
+/* Modules to exclude */
+#undef CONFIG_CMD_ACCELSPOOF
+#undef CONFIG_CMD_BATTFAKE
+#ifdef SECTION_IS_RO
+#undef CONFIG_CONSOLE_CMDHELP
+#undef CONFIG_USB_PD_HOST_CMD
+#endif /* SECTION_IS_RO */
+
 /*
  * Flash layout:
  *                            PSTATE(4KB)
