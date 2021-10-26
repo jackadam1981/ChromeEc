@@ -72,6 +72,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "db441fd4_2ae1d732",
+        "filename": "zephyr/test/drivers/src/ps8xxx.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-10-26T18:24:24Z",
+      "side": 1,
+      "message": "Ack WRT 2 and 3. I will await #1.",
+      "parentUuid": "6d138cbc_f5e579d5",
+      "revId": "58761e9e3db671f612ab14c12e50e16c0545993b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "30a3ae10_4e8e540a",
