@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c0ac5832_b40ee86c",
+        "filename": "baseboard/intelrvp/adlrvp.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 406,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-10-26T02:03:56Z",
+      "side": 1,
+      "message": "#define ADL_N_M_USB_PD_PORT_MAX_COUNT 2",
+      "range": {
+        "startLine": 406,
+        "startChar": 22,
+        "endLine": 406,
+        "endChar": 23
+      },
+      "revId": "22b7c079a4858c94da985da1aa98de0ac220a592",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
