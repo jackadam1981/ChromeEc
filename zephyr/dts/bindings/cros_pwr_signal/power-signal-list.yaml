@@ -1,0 +1,15 @@
+# Copyright 2021 Google LLC
+# SPDX-License-Identifier: Apache-2.0
+
+description: Power Signal List
+child-binding:
+  description: Power Signal List child node
+  properties:
+    gpio:
+      type: phandle
+      required: true
+    power-enum-name:
+      description:
+        Enumeration values for power-signal-list
+      type: string
+      required: true
