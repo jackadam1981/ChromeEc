@@ -70,6 +70,24 @@
       "parentUuid": "55a664ae_5a367481",
       "revId": "308e954af41722190d0986e4e27e351ea6798c59",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef5c398b_e7dd76d8",
+        "filename": "power/rk3399.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 605,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-10-26T20:16:17Z",
+      "side": 0,
+      "message": "Sounds reasonable.  If you change to GPIO_COUNT and don\u0027t have a rainier or scarlet to test on, then at a minimum I\u0027d assume the commit message should reflect that this is a functional change (rather than just a cast) so branch cherry-pickers can beware.",
+      "parentUuid": "6ed50b1b_ff4fdb86",
+      "revId": "308e954af41722190d0986e4e27e351ea6798c59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
