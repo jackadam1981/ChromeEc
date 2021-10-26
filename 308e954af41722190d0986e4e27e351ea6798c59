@@ -46,6 +46,30 @@
       },
       "revId": "308e954af41722190d0986e4e27e351ea6798c59",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5a06e37_2fb284c5",
+        "filename": "board/felwinter/usbc_config.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-10-26T21:19:13Z",
+      "side": 1,
+      "message": "I\u0027ll note the pattern used on https://crrev.com/c/3243005 was created by you, Tom 😊\n\nBut since gpio_or_ioex_set_level() expects an int and already has bounds checking, I\u0027m good with using int here.",
+      "parentUuid": "163d745b_00c5268d",
+      "range": {
+        "startLine": 203,
+        "startChar": 1,
+        "endLine": 203,
+        "endChar": 4
+      },
+      "revId": "308e954af41722190d0986e4e27e351ea6798c59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
