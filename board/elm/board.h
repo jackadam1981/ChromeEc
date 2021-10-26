@@ -125,6 +125,14 @@
 /* Disable verbose output in EC pd */
 #define CONFIG_CMD_PD_SRCCAPS_REDUCED_SIZE
 
+/* Modules to exclude */
+#undef CONFIG_CMD_ACCELSPOOF
+#undef CONFIG_CMD_BATTFAKE
+#ifdef SECTION_IS_RO
+#undef CONFIG_CONSOLE_CMDHELP
+#undef CONFIG_USB_PD_HOST_CMD
+#endif /* SECTION_IS_RO */
+
 /*
  * Flash layout:
  *                            PSTATE(4KB)
