@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "400a8a3c_b96df566",
+        "filename": "driver/ioexpander/tca64xxa.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-10-27T00:07:52Z",
+      "side": 1,
+      "message": "could you add a define for this in ioexpander.h?\ni\u0027m thinking along the lines of what we have\nfor task event masks. see:\nTASK_EVENT_CUSTOM_BIT(...)",
+      "range": {
+        "startLine": 10,
+        "startChar": 50,
+        "endLine": 10,
+        "endChar": 52
+      },
+      "revId": "fab8fa59d09f296b044608bbce363d1e7188de02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
