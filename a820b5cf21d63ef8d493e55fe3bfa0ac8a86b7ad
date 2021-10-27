@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e8ca8dc_6ea2b434",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-10-27T15:29:45Z",
+      "side": 1,
+      "message": "When we have more TCPCI emulators, perhaps we need to just loop over them and run the generic tests, then everytime we add one to DTS, the tests would cover it also.\n\nBut for now this is fine also.",
+      "revId": "a820b5cf21d63ef8d493e55fe3bfa0ac8a86b7ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
