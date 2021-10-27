@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7e8f1097_c66a8a35",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-10-27T17:03:52Z",
+      "side": 1,
+      "message": "this comment is obsolete, right? If yes - mark it as resolved",
+      "parentUuid": "b8917128_4eb2d1d0",
+      "revId": "6d815966fc6a27d8562891d1223c4893ffb8f575",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c9ffca8d_0f6b03a2",
         "filename": "common/usb_common.c",
         "patchSetId": 13
