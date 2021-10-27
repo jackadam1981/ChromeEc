@@ -62,6 +62,30 @@
       },
       "revId": "8e976255111537dc9fd64f332609b72f295c37c3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea7aa314_84c18eae",
+        "filename": "chip/npcx/flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 642,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-10-27T17:56:10Z",
+      "side": 1,
+      "message": "There is the same code sequence in flash_check_prot_reg. And crec_flash_physical_get_protect_flags sets EC_FLASH_PROTECT_RO_AT_BOOT if flash_check_prot_reg returns error. Is this intended?\n\nIf not, we need to fix EC_FLASH_PROTECT_RO_AT_BOOT as well. We may as well add a different (\u0026 new) error (e.g. EC_FLASH_PROTECT_ERROR_UNKNOWN).",
+      "parentUuid": "ec24de91_ac32e3f6",
+      "range": {
+        "startLine": 642,
+        "startChar": 5,
+        "endLine": 642,
+        "endChar": 67
+      },
+      "revId": "8e976255111537dc9fd64f332609b72f295c37c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
