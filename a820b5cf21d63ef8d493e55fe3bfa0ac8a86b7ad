@@ -16,6 +16,24 @@
       "message": "When we have more TCPCI emulators, perhaps we need to just loop over them and run the generic tests, then everytime we add one to DTS, the tests would cover it also.\n\nBut for now this is fine also.",
       "revId": "a820b5cf21d63ef8d493e55fe3bfa0ac8a86b7ad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "39362e7c_a8782868",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2021-10-27T15:50:28Z",
+      "side": 1,
+      "message": "It is good idea, but some of the generic tests will fail on specific device. E.g. drp_toggle for PS8805/PS8815 needs to select RD or RP pull based on current connection, while generic TCPCI always select RP for rev 2.0 and RD for rev 1.0.",
+      "parentUuid": "6e8ca8dc_6ea2b434",
+      "revId": "a820b5cf21d63ef8d493e55fe3bfa0ac8a86b7ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
