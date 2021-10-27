@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec23af12_29c7ab8d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-10-27T17:25:42Z",
+      "side": 1,
+      "message": "I don\u0027t think that markdown works in commit messages..",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 3
+      },
+      "revId": "1605257eee832957eccc30c636656ded617a4107",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15f4d438_bf52565c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-10-27T17:25:42Z",
+      "side": 1,
+      "message": "Please move above BRANCH\u003d line",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 3
+      },
+      "revId": "1605257eee832957eccc30c636656ded617a4107",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d3fb170_74230f24",
+        "filename": "common/usb_common.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1027,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-10-27T17:25:42Z",
+      "side": 1,
+      "message": "is that intended or a typo of Augment/Augmented?",
+      "range": {
+        "startLine": 1027,
+        "startChar": 15,
+        "endLine": 1027,
+        "endChar": 21
+      },
+      "revId": "1605257eee832957eccc30c636656ded617a4107",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1743e78_574ff5ed",
+        "filename": "common/usb_common.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1042,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-10-27T17:25:42Z",
+      "side": 1,
+      "message": "I\u0027m a little bit confused: max_ma is the current in milli Amps, why do we print mW [Watts] here?",
+      "range": {
+        "startLine": 1042,
+        "startChar": 36,
+        "endLine": 1042,
+        "endChar": 40
+      },
+      "revId": "1605257eee832957eccc30c636656ded617a4107",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
