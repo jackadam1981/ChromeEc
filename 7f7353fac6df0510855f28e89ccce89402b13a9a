@@ -16,6 +16,87 @@
       "message": "Okay Ed, poke holes in this wherever you can.  I\u0027d say it\u0027s not perfect based on reset testing sometimes browning out, but certainly errs on the side of \"whoops, browned out the whole board\" versus \"happily allowed voltage passthru\" ",
       "revId": "7f7353fac6df0510855f28e89ccce89402b13a9a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f882e229_81bb3578",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2021-10-27T21:05:19Z",
+      "side": 1,
+      "message": "Thanks Diana! This looks good to me, just a few minor comments.",
+      "parentUuid": "e1acd1b5_2ba0c99a",
+      "revId": "7f7353fac6df0510855f28e89ccce89402b13a9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "000e8292_ec134310",
+        "filename": "baseboard/guybrush/baseboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 436,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2021-10-27T21:05:19Z",
+      "side": 1,
+      "message": "cur_port no longer used, can delete.",
+      "range": {
+        "startLine": 436,
+        "startChar": 5,
+        "endLine": 436,
+        "endChar": 13
+      },
+      "revId": "7f7353fac6df0510855f28e89ccce89402b13a9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39f34a6b_8bca7b8f",
+        "filename": "baseboard/guybrush/baseboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 472,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2021-10-27T21:05:19Z",
+      "side": 1,
+      "message": "Move this to be after the dead battery stuff?",
+      "range": {
+        "startLine": 468,
+        "startChar": 2,
+        "endLine": 472,
+        "endChar": 2
+      },
+      "revId": "7f7353fac6df0510855f28e89ccce89402b13a9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f54238e7_bd73dd77",
+        "filename": "baseboard/guybrush/baseboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 474,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2021-10-27T21:05:19Z",
+      "side": 1,
+      "message": "I think it would be good to keep some of the old comment + link to b/183660105 for why we want to avoid having the other port left in dead battery mode.",
+      "revId": "7f7353fac6df0510855f28e89ccce89402b13a9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
