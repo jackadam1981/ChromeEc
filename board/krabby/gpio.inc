@@ -27,7 +27,7 @@ GPIO_INT(AP_IN_SLEEP_L,      PIN(B, 6),
 
 /* Sensor Interrupts */
 GPIO_INT(BASE_IMU_INT_L,     PIN(M, 3), GPIO_INT_FALLING | GPIO_SEL_1P8V,
-         motion_interrupt)
+         icm426xx_interrupt)
 GPIO_INT(LID_ACCEL_INT_L,    PIN(M, 2), GPIO_INT_FALLING | GPIO_SEL_1P8V,
          lis2dw12_interrupt)
 
