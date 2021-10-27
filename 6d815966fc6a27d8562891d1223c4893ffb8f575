@@ -116,6 +116,24 @@
       "parentUuid": "e61129b0_4d01723e",
       "revId": "6d815966fc6a27d8562891d1223c4893ffb8f575",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "48709cd6_3a0d0b32",
+        "filename": "common/usb_common.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 1039,
+      "author": {
+        "id": 1523223
+      },
+      "writtenOn": "2021-10-27T15:48:25Z",
+      "side": 1,
+      "message": "I was, thanks for catching that! Explains the discrepancy with the cols",
+      "parentUuid": "6e66c5bb_65f50258",
+      "revId": "6d815966fc6a27d8562891d1223c4893ffb8f575",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
