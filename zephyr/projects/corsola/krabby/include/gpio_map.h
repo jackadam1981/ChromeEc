@@ -48,7 +48,7 @@ static inline void motion_interrupt(enum gpio_signal signal)
 	GPIO_INT(GPIO_AP_IN_SLEEP_L,					\
 		 GPIO_INT_EDGE_BOTH, power_signal_interrupt)		\
 	GPIO_INT(GPIO_BASE_IMU_INT_L,					\
-		 GPIO_INT_EDGE_FALLING, motion_interrupt)		\
+		 GPIO_INT_EDGE_FALLING, icm426xx_interrupt)		\
 	GPIO_INT(GPIO_LID_ACCEL_INT_L,					\
 		 GPIO_INT_EDGE_FALLING, lis2dw12_interrupt)		\
 	GPIO_INT(GPIO_VOLUME_DOWN_L,					\
