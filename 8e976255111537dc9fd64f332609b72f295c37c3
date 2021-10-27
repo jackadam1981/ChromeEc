@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "857f2056_ffade4d4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-10-27T16:31:27Z",
+      "side": 1,
+      "message": "This also needs to be added to the Zephyr cros_flash driver.",
+      "revId": "8e976255111537dc9fd64f332609b72f295c37c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e051eff_cdb9640d",
+        "filename": "chip/npcx/flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 630,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-10-27T16:31:27Z",
+      "side": 1,
+      "message": "The status register 1 and status register 2 are always read at the same time.  Can these functions get combined in another CL? This will eliminate the duplicate mutex operations and tri-state operations.",
+      "range": {
+        "startLine": 629,
+        "startChar": 0,
+        "endLine": 630,
+        "endChar": 35
+      },
+      "revId": "8e976255111537dc9fd64f332609b72f295c37c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec24de91_ac32e3f6",
+        "filename": "chip/npcx/flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 642,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-10-27T16:31:27Z",
+      "side": 1,
+      "message": "It looks like spi_flash_reg_to_protect() can fail if flash_get_status1/2 returns 0xFF (which would indicate a failure to read the status registers).  \n\nDoes it make sense to also return EC_FLASH_PROTECT_ERROR_INCONSISTENT for this case?  This type of failure is probably rare.",
+      "range": {
+        "startLine": 642,
+        "startChar": 5,
+        "endLine": 642,
+        "endChar": 67
+      },
+      "revId": "8e976255111537dc9fd64f332609b72f295c37c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
