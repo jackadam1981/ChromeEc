@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d85cf1a_8c87e4a9",
+        "filename": "board/quackingstick/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-10-27T16:49:02Z",
+      "side": 1,
+      "message": "This bitmask is not GPIO34. 0x40 is GPIO46.\n\nYou need to create another row for GPIO34, like:\nALTERNATE(PIN_MASK(3, 0x10), 0, MODULE_ADC, 0)",
+      "range": {
+        "startLine": 189,
+        "startChar": 24,
+        "endLine": 189,
+        "endChar": 25
+      },
+      "revId": "799df4fd6ea2a6143829e49dba04ffb4ef260473",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
