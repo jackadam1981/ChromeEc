@@ -230,6 +230,8 @@ int tc_is_vconn_src(int port);
  */
 void pd_request_vconn_swap_on(int port);
 
+void tc_set_flag_notsupport_vconn_swap(int port);
+
 /**
  * Instructs the Attached.SRC or Attached.SNK to stop sourcing VCONN.
  * This function is called from the Policy Engine and only has effect
