@@ -72,6 +72,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "865997fd_63a4624c",
+        "filename": "Makefile.toolchain",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2021-10-27T16:22:12Z",
+      "side": 1,
+      "message": "So this looks correct now that I\u0027ve traced the build file some more.",
+      "parentUuid": "d3fb4df4_83068938",
+      "range": {
+        "startLine": 40,
+        "startChar": 39,
+        "endLine": 40,
+        "endChar": 59
+      },
+      "revId": "6a63c9f5cc63a74fcfa2c6f01a415b53b0ded778",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "483e740b_3cb937e1",

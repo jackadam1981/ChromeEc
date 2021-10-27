@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "785ff3d3_3e95a074",
+        "filename": "Makefile.toolchain",
+        "patchSetId": 5
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2021-10-27T16:22:12Z",
+      "side": 1,
+      "message": "We need to remove this one since it doesn\u0027t actually make sense. We can do that in a follow up CL.",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 22
+      },
+      "revId": "c721cf7e0a505616ea694983133786baee0105f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
