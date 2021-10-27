@@ -143,10 +143,10 @@ static void assert_prochot(void)
 	adpt_mw = cal_sys_watt();
 
 	/* Read battery info
-	 * if any flag is set, skip this cycle and hope
+	 * if any flag is set and no AC, skip this cycle and hope
 	 * the next cycle succeeds
 	 */
-	if (get_batt_parameter())
+	if (get_batt_parameter() && !extpower_is_present())
 		return;
 
 	/* When battery is discharging, the battery current will be negative */
