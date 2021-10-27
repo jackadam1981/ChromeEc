@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "261b9297_2ccf421b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2021-10-27T16:32:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c6bb8b46_c96f190d",
+      "revId": "c36c8bbd060dab8611d2e7c928a49bf76a7c2ef0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8eb9ebaa_540940d6",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-10-27T04:03:26Z",
       "side": 1,
       "message": "Same value twice",
+      "range": {
+        "startLine": 450,
+        "startChar": 2,
+        "endLine": 451,
+        "endChar": 26
+      },
+      "revId": "c36c8bbd060dab8611d2e7c928a49bf76a7c2ef0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "827934dc_85afbddf",
+        "filename": "zephyr/test/drivers/src/ln9310.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 451,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2021-10-27T16:32:20Z",
+      "side": 1,
+      "message": "Whoops. Guess it didn\u0027t matter due to initialization. Thanks for catching.",
+      "parentUuid": "8eb9ebaa_540940d6",
       "range": {
         "startLine": 450,
         "startChar": 2,
