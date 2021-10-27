@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4d1dc94b_3ce9dea4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1523223
+      },
+      "writtenOn": "2021-10-27T18:39:39Z",
+      "side": 1,
+      "message": "It doesn\u0027t, but I added the ticks to emphasize that this next part is output from the command. \n\nI\u0027m ok with it being removed though if it\u0027ll improve the commit msg.",
+      "parentUuid": "ec23af12_29c7ab8d",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 3
+      },
+      "revId": "1605257eee832957eccc30c636656ded617a4107",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "15f4d438_bf52565c",
         "filename": "/COMMIT_MSG",
         "patchSetId": 3
@@ -37,6 +61,30 @@
       "writtenOn": "2021-10-27T17:25:42Z",
       "side": 1,
       "message": "Please move above BRANCH\u003d line",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 3
+      },
+      "revId": "1605257eee832957eccc30c636656ded617a4107",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "46c2a867_633d8112",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1523223
+      },
+      "writtenOn": "2021-10-27T18:39:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "15f4d438_bf52565c",
       "range": {
         "startLine": 14,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c4b7fac_b3f71f81",
+        "filename": "common/usb_common.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1027,
+      "author": {
+        "id": 1523223
+      },
+      "writtenOn": "2021-10-27T18:39:39Z",
+      "side": 1,
+      "message": "It\u0027s intended, to save some bytes",
+      "parentUuid": "4d3fb170_74230f24",
+      "range": {
+        "startLine": 1027,
+        "startChar": 15,
+        "endLine": 1027,
+        "endChar": 21
+      },
+      "revId": "1605257eee832957eccc30c636656ded617a4107",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c1743e78_574ff5ed",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-10-27T17:25:42Z",
       "side": 1,
       "message": "I\u0027m a little bit confused: max_ma is the current in milli Amps, why do we print mW [Watts] here?",
+      "range": {
+        "startLine": 1042,
+        "startChar": 36,
+        "endLine": 1042,
+        "endChar": 40
+      },
+      "revId": "1605257eee832957eccc30c636656ded617a4107",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "76258a94_e88aba30",
+        "filename": "common/usb_common.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1042,
+      "author": {
+        "id": 1523223
+      },
+      "writtenOn": "2021-10-27T18:39:39Z",
+      "side": 1,
+      "message": "Turns out max_ma actually stores milliwatts, but only if pdo type is battery. \n\nIf you look into how max_ma is taken and processed within pd_extract_pdo_power() the code shows nudges towards that conclusion (same with print_pdo_battery() at ectool.c:9874)",
+      "parentUuid": "c1743e78_574ff5ed",
       "range": {
         "startLine": 1042,
         "startChar": 36,
