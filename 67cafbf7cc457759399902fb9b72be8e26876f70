@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2efb3980_68151f22",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-10-27T20:18:05Z",
+      "side": 1,
+      "message": "Your change LGTM, however, I would reorder your commits and combine the first one in the series with this one.\n\nIn order for these patches to land as a complete unit, you\u0027ll want to have the common change (which includes introducing the CONFIG_* option) be the first one in the set. You\u0027ll then want to add a \"Cq-Depend\" label to this commit. It should reference the last board specific change that you made. And on that board specific change, you should add a Cq-Depend label to that commit referencing this commit. This sets up a circular dependency such that the entire unit will enter the CQ together.\n\nAfter the \"TEST\u003d\" you can add the Cq-Depend.\n    \n Cq-Depend: chromium:3248344",
+      "revId": "67cafbf7cc457759399902fb9b72be8e26876f70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
