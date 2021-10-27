@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5f69bff_b62cfc1f",
+        "filename": "zephyr/dts/bindings/gpio/named-gpios.yaml",
+        "patchSetId": 4
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-10-27T22:21:04Z",
+      "side": 1,
+      "message": "This needs a description. It probably needs a separate file similar to gpio-enum-name because the enum value here is important.\n\nThe list of valid enums differs for each AP.  I wonder if we can come up with a strategy where we split the valid enums by AP.  e.g. one yaml file describes the mt8192 power signals, another describes the QCOM signals.",
+      "range": {
+        "startLine": 18,
+        "startChar": 7,
+        "endLine": 18,
+        "endChar": 29
+      },
+      "revId": "c213fde76491dc196303f2ce6eea81ec650d6165",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b57df798_bf12da10",
+        "filename": "zephyr/projects/asurada/hayato/gpio.dts",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-10-27T22:21:04Z",
+      "side": 1,
+      "message": "I think a better approach would be to create a separate node that lists the power signals.  The active low/active high can still be set here, but the binding to the power signals should be done in a separate node.\n\npower-signal-list { \n    ap_wdt_asserted {\n        power-enum-name \u003d \"AP_WDT_ASSERTED\";\n        gpios \u003d \u003c\u0026ap_ec_watchdog_l\u003e;\n    }\n    ap_in_s3_l {\n        power-enum-name \u003d \"AP_IN_S3_L\";\n        gpios \u003d \u003c\u0026ap_in_sleep_l\u003e;\n    }\n}\n\nSee the bb_retimer.dts file on Volteer for an example of referencing the a node from the named-gpios property.",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 46
+      },
+      "revId": "c213fde76491dc196303f2ce6eea81ec650d6165",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6259a262_38eb82c0",
+        "filename": "zephyr/shim/include/power/power.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-10-27T22:21:04Z",
+      "side": 1,
+      "message": "Add the declared initialization.\n.gpio \u003d DT_STRING_UPPER_TOKEN(cid, enum_name)\n.flags \u003d \n.name \u003d",
+      "range": {
+        "startLine": 39,
+        "startChar": 1,
+        "endLine": 39,
+        "endChar": 22
+      },
+      "revId": "c213fde76491dc196303f2ce6eea81ec650d6165",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "add961b7_bb821589",
+        "filename": "zephyr/shim/include/power/power.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-10-27T22:21:04Z",
+      "side": 1,
+      "message": "This should explicitly assigned to a specific entry in the power_signal_list[] array to ensure the order matches the enum power_signal below.\n\nSomething like:\n   COND_CODE_1(HAS_PROP(power_signal_enum_name),\n       ([GEN_POWER_SIGNAL_ENUM_ENTRY(cid) \u003d GEN_POWER_SIGNAL_STRUCT_ENTRY(cid)),\n       ())",
+      "range": {
+        "startLine": 58,
+        "startChar": 1,
+        "endLine": 58,
+        "endChar": 12
+      },
+      "revId": "c213fde76491dc196303f2ce6eea81ec650d6165",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
