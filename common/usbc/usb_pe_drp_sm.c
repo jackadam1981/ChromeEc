@@ -6399,8 +6399,10 @@ static void pe_vcs_send_swap_run(int port)
 			 */
 			if (type == PD_CTRL_NOT_SUPPORTED) {
 				if (IS_ENABLED(CONFIG_USB_PD_REV30) &&
-							!tc_is_vconn_src(port))
+						!tc_is_vconn_src(port)) {
+					tc_set_flag_notsupport_vconn_swap(port);
 					set_state_pe(port, PE_VCS_FORCE_VCONN);
+				}
 				else
 					pe_set_ready_state(port);
 				return;

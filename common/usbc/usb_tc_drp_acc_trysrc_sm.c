@@ -125,9 +125,11 @@ void print_flag(int port, int set_or_clear, int flag);
 #define TC_FLAGS_USB_RETIMER_FW_UPDATE_LTD_RUN BIT(21)
 /* Flag for asynchronous call to request Error Recovery */
 #define TC_FLAGS_REQUEST_ERROR_RECOVERY	BIT(22)
+/* Flag to note request to swap VCONN is being not support */
+#define TC_FLAGS_NOTSUPPORT_VCONN_SWAP	BIT(23)
 
 /* For checking flag_bit_names[] array */
-#define TC_FLAGS_COUNT			23
+#define TC_FLAGS_COUNT			24
 
 /* On disconnect, clear most of the flags. */
 #define CLR_FLAGS_ON_DISCONNECT(port) TC_CLR_FLAG(port, \
@@ -1812,9 +1814,10 @@ static void set_vconn(int port, int enable)
 {
 	if (enable)
 		TC_SET_FLAG(port, TC_FLAGS_VCONN_ON);
-	else
+	else {
 		TC_CLR_FLAG(port, TC_FLAGS_VCONN_ON);
-
+		TC_CLR_FLAG(port, TC_FLAGS_NOTSUPPORT_VCONN_SWAP);
+	}
 	/*
 	 * Check our OC event counter.  If we've exceeded our threshold, then
 	 * let's latch our source path off to prevent continuous cycling.  When
@@ -1897,7 +1900,8 @@ __maybe_unused static void handle_new_power_state(int port)
 	 */
 	if (IS_ENABLED(CONFIG_USB_PE_SM)) {
 		if (tc_is_vconn_src(port) && tc_is_attached_snk(port) &&
-						!pd_check_vconn_swap(port))
+			!pd_check_vconn_swap(port) && !TC_CHK_FLAG(port,
+			TC_FLAGS_NOTSUPPORT_VCONN_SWAP))
 			pd_dpm_request(port, DPM_REQUEST_HARD_RESET_SEND);
 	}
 
@@ -1932,6 +1936,12 @@ void pd_request_vconn_swap_on(int port)
 		TC_SET_FLAG(port, TC_FLAGS_REQUEST_VC_SWAP_ON);
 		task_wake(PD_PORT_TO_TASK_ID(port));
 	}
+}
+
+void tc_set_flag_notsupport_vconn_swap(int port)
+{
+	CPRINTS("set pd force sourcing vconn flags!");
+	TC_SET_FLAG(port, TC_FLAGS_NOTSUPPORT_VCONN_SWAP);
 }
 
 void pd_request_vconn_swap(int port)
