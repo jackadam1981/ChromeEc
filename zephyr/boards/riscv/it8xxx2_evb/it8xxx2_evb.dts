@@ -194,22 +194,37 @@
 
 	named-pwms {
 		compatible = "named-pwms";
+
 		/* NOTE: &pwm number needs same with channel number */
-		test0 {
-			pwms = <&pwm7 PWM_CHANNEL_7 PWM_POLARITY_INVERTED>;
-			label = "TEST0";
+		pwm_test: test {
+			pwms = <&pwm0 PWM_CHANNEL_0 PWM_POLARITY_NORMAL>;
+			label = "TEST";
 			/*
 			 * If we need pwm output in ITE chip power saving
 			 * mode, then we should set frequency <=324Hz.
 			 */
 			frequency = <324>;
 		};
-		test1 {
-			pwms = <&pwm0 PWM_CHANNEL_0 PWM_POLARITY_NORMAL>;
-			label = "TEST1";
-			frequency = <30000>;
+		pwm_fan: fan {
+			pwms = <&pwm7 PWM_CHANNEL_7 PWM_POLARITY_NORMAL>;
+			label = "FAN";
+			frequency = <15000>;
 		};
 	};
+
+	named-fans {
+		compatible = "named-fans";
+
+		fan_0 {
+			label = "FAN_0";
+			pwm = <&pwm_fan>;
+			tach = <&tach0>;
+			rpm_min = <1500>;
+			rpm_start = <1500>;
+			rpm_max = <6500>;
+		};
+	};
+
 };
 
 &adc0 {
@@ -242,14 +257,27 @@
 	clock-frequency = <1804800>;
 };
 
-/* TEST1 */
+/* pwm for test */
 &pwm0 {
 	status = "okay";
 	prescaler-cx = <PWM_PRESCALER_C6>;
 };
 
-/* TEST0 */
+/* pwm for fan */
 &pwm7 {
 	status = "okay";
 	prescaler-cx = <PWM_PRESCALER_C4>;
+};
+
+/* fan tachometer sensor */
+&tach0 {
+	status = "okay";
+	/*
+	 * Tach0 module can select input only from [TACH0_CHANNEL_A |
+	 * TACH0_CHANNEL_B]; tach1 module can select input only from
+	 * [TACH1_CHANNEL_A | TACH1_CHANNEL_B]. We don't support that a
+	 * tach dynamically switch input from channel A/B in running time.
+	 */
+	channel = <TACH0_CHANNEL_A>;
+	pulses-per-round = <2>;
 };
