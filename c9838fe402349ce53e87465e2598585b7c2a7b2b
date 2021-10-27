@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dec8e73c_133bdf3c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-10-27T04:17:51Z",
+      "side": 1,
+      "message": "LGTM but lets do fast follow to migrate this function to a proper mock.",
+      "revId": "c9838fe402349ce53e87465e2598585b7c2a7b2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d049efc2_8bbe8b57",
+        "filename": "zephyr/test/drivers/src/bmi260.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1954,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-10-27T04:17:51Z",
+      "side": 1,
+      "message": "This is why we needed FFF 😊\n\nCan you add a TODO with a bug to refactor this? I think it\u0027s a great candidate for it and would be a good way for you to try out the mocking library.",
+      "range": {
+        "startLine": 1950,
+        "startChar": 0,
+        "endLine": 1954,
+        "endChar": 17
+      },
+      "revId": "c9838fe402349ce53e87465e2598585b7c2a7b2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6965e7b8_75016a16",
+        "filename": "zephyr/test/drivers/src/bmi260.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1958,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-10-27T04:17:51Z",
+      "side": 1,
+      "message": "I\u0027m a bit confused by this. This is the implementation for the function in init_rom.h right?\n\nIf so, we\u0027re running into the same issue that Aaron was saying that you\u0027re locking the mock into this compilational unit. As a part of the above TODO this should really be to:\n\n1. Add a new zephyr/test/drivers/include/test_mocks.h with:\n    #include \u003cfff.h\u003e\n\n    DECLARE_FAKE_VALUE_FUNC(int, init_rom_copy, int, int, char*);\n2. Add a new zephyr/test/drivers/src/test_mocks.c with:\n    #include \"test_mocks.h\"\n    \n    DEFINE_FAKE_VALUE_FUNC(int, init_rom_copy, int, int, char*);\n    \nWith that we\u0027ll be able to use this mock in all our tests by just including \"test_mocks.h\"",
+      "range": {
+        "startLine": 1958,
+        "startChar": 4,
+        "endLine": 1958,
+        "endChar": 17
+      },
+      "revId": "c9838fe402349ce53e87465e2598585b7c2a7b2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
