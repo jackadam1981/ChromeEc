@@ -8,7 +8,10 @@ add_compile_definitions(BOARD_KRABBY)
 find_package(Zephyr REQUIRED HINTS $ENV{ZEPHYR_BASE})
 project(krabby)
 
-zephyr_library_include_directories(include)
+zephyr_library_include_directories(
+  include
+  "${PLATFORM_EC_BASEBOARD}"
+  "${PLATFORM_EC_BOARD}")
 
 set(PLATFORM_EC_BASEBOARD "${PLATFORM_EC}/baseboard/corsola" CACHE PATH
     "Path to the platform/ec baseboard directory")
