@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30c68e1c_09b15b9f",
+        "filename": "board/brya/ec.tasklist",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-10-27T15:12:27Z",
+      "side": 1,
+      "message": "I\u0027d suggest also upping the PD_INT tasks.  They also go through a bunch of driver indirection followed by i2c transactions, so they can get pretty stack heavy.",
+      "revId": "9c4302cb96d33c074522fb098ccb6b490a2fde3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
