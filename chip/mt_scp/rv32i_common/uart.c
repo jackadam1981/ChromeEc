@@ -122,14 +122,14 @@ void uart_tx_stop(void)
 
 void uart_disable_irq(void)
 {
-	saved_uart_ier = UART_IER(UARTN);
-	UART_IER(UARTN) = 0;
+	/* saved_uart_ier = UART_IER(UARTN); */
+	/* UART_IER(UARTN) = 0; */
 }
 
 void uart_enable_irq(void)
 {
-	UART_IER(UARTN) = saved_uart_ier;
-	saved_uart_ier = 0;
+	/* UART_IER(UARTN) = saved_uart_ier; */
+	/* saved_uart_ier = 0; */
 }
 
 static void uart_process(void)
