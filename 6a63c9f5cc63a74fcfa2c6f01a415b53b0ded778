@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d3fb4df4_83068938",
+        "filename": "Makefile.toolchain",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2021-10-27T06:15:33Z",
+      "side": 1,
+      "message": "using BUILD, not HOST, for these things is more common in the wider world.  if we look at just the Linux kernel \u0026 Linux(ish) firmware space however, they\u0027ve decided to use HOST, not BUILD.  at this point, it seems extremely unlikely that they\u0027ll ever change (at least the kernel folks).\n\nwhether the EC projects choose to stick with the HOST convention is up to them.  i\u0027m only highlighting possible sources of confusion in the matter.",
+      "parentUuid": "7db82278_fcd3a688",
+      "range": {
+        "startLine": 40,
+        "startChar": 39,
+        "endLine": 40,
+        "endChar": 59
+      },
+      "revId": "6a63c9f5cc63a74fcfa2c6f01a415b53b0ded778",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "483e740b_3cb937e1",
         "filename": "Makefile.toolchain",
         "patchSetId": 4
