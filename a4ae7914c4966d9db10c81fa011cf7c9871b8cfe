@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd705f7b_0b514d8a",
+        "filename": "zephyr/test/drivers/src/ln9310.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2021-10-27T16:32:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2bd6990f_b78f86af",
+      "range": {
+        "startLine": 339,
+        "startChar": 0,
+        "endLine": 342,
+        "endChar": 0
+      },
+      "revId": "a4ae7914c4966d9db10c81fa011cf7c9871b8cfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "40681c48_bad1473d",
@@ -85,6 +109,30 @@
       "side": 1,
       "message": "get_time_mock is global from timer.h",
       "parentUuid": "40681c48_bad1473d",
+      "range": {
+        "startLine": 402,
+        "startChar": 1,
+        "endLine": 403,
+        "endChar": 22
+      },
+      "revId": "a4ae7914c4966d9db10c81fa011cf7c9871b8cfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba249e7d_477fa5ac",
+        "filename": "zephyr/test/drivers/src/ln9310.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 403,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2021-10-27T16:32:07Z",
+      "side": 1,
+      "message": "Leaving open for discussion",
+      "parentUuid": "bdb2b469_2771878a",
       "range": {
         "startLine": 402,
         "startChar": 1,
