@@ -17,6 +17,7 @@
 #include "registers.h"
 #include "scp_uart.h"
 #include "timer.h"
+#include "scp_watchdog.h"
 
 #define CPRINTF(format, args...) cprintf(CC_CLOCK, format, ##args)
 #define CPRINTS(format, args...) cprints(CC_CLOCK, format, ##args)
@@ -378,10 +379,12 @@ power_chipset_handle_host_sleep_event(enum host_sleep_event state,
 {
 	if (state == HOST_SLEEP_EVENT_S3_SUSPEND) {
 		CPRINTS("AP suspend");
+		disable_watchdog();
 		uart_disable_irq();
 		clock_select_clock(SCP_CLK_32K);
 	} else if (state == HOST_SLEEP_EVENT_S3_RESUME) {
 		clock_select_clock(SCP_CLK_ULPOSC2_HIGH_SPEED);
+		enable_watchdog();
 		uart_enable_irq();
 		CPRINTS("AP resume");
 	}
