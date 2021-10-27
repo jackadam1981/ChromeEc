@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "383e3a95_e52ccffd",
+        "filename": "board/brya/i2c.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-10-27T15:21:41Z",
+      "side": 1,
+      "message": "Why not use i2c_set_freq() directly?  This function already provides locking. I think it\u0027s reasonable that the \"ppc1\" port should set I@C_PORT_FLAG_DYNAMIC_SPEED because you are changing the speed at runtime.",
+      "range": {
+        "startLine": 101,
+        "startChar": 1,
+        "endLine": 101,
+        "endChar": 18
+      },
+      "revId": "849850696099af1bbb47351d33c36b90c5efd60d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
