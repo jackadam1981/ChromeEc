@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf71b3f5_292ec6ef",
+        "filename": "chip/npcx/flash.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 703,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-10-28T18:09:24Z",
+      "side": 1,
+      "message": "We need EC_FLASH_PROTECT_ERROR_UNKNOWN here.",
+      "revId": "b7ce102f7992a5f8143ee3635322a489ab5677a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
