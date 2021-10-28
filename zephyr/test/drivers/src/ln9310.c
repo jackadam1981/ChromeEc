@@ -43,7 +43,7 @@ static void test_ln9310_read_chip_fails(void)
 
 	i2c_common_emul_set_read_fail_reg(i2c_emul, LN9310_REG_BC_STS_C);
 
-	zassert_ok(!ln9310_init(), NULL);
+	zassert_true(ln9310_init() != 0, NULL);
 	zassert_false(ln9310_emul_is_init(emulator), NULL);
 
 	/* TODO(b/201420132) */
@@ -104,19 +104,28 @@ static void test_ln9310_3s_powers_up(void)
 	zassert_true(ln9310_power_good(), NULL);
 }
 
-static bool startup_workaround_attempted;
+struct startup_workaround_data {
+	bool startup_workaround_attempted;
+	bool startup_workaround_should_fail;
+};
 
 static int mock_write_fn_intercept_startup_workaround(struct i2c_emul *emul,
 						      int reg, uint8_t val,
 						      int bytes, void *data)
 {
+	struct startup_workaround_data *test_data = data;
+
 	uint8_t startup_workaround_val =
 		(LN9310_TEST_MODE_CTRL_FORCE_SC_OUT_PRECHARGE_ON |
 		 LN9310_TEST_MODE_CTRL_FORCE_SC_OUT_PREDISCHARGE_ON);
 
-	startup_workaround_attempted = startup_workaround_attempted ||
-				       ((reg == LN9310_REG_TEST_MODE_CTRL) &&
-					(val == startup_workaround_val));
+	test_data->startup_workaround_attempted =
+		test_data->startup_workaround_attempted ||
+		((reg == LN9310_REG_TEST_MODE_CTRL) &&
+		 (val == startup_workaround_val));
+
+	if (test_data->startup_workaround_should_fail)
+		return -1;
 
 	return 1;
 }
@@ -127,6 +136,11 @@ static void test_ln9310_2s_cfly_precharge_startup(void)
 		emul_get_binding(DT_LABEL(DT_NODELABEL(ln9310)));
 
 	struct i2c_emul *emul = ln9310_emul_get_i2c_emul(emulator);
+
+	struct startup_workaround_data test_data = {
+		.startup_workaround_attempted = false,
+		.startup_workaround_should_fail = false,
+	};
 
 	zassert_not_null(emulator, NULL);
 
@@ -144,10 +158,10 @@ static void test_ln9310_2s_cfly_precharge_startup(void)
 	zassert_false(ln9310_power_good(), NULL);
 
 	i2c_common_emul_set_write_func(
-		emul, &mock_write_fn_intercept_startup_workaround, NULL);
+		emul, &mock_write_fn_intercept_startup_workaround, &test_data);
 
 	ln9310_software_enable(1);
-	zassert_true(startup_workaround_attempted, NULL);
+	zassert_true(test_data.startup_workaround_attempted, NULL);
 
 	/* TODO(b/201420132) */
 	k_msleep(TEST_DELAY_MS);
@@ -158,6 +172,8 @@ static void test_ln9310_2s_cfly_precharge_startup(void)
 	/* TODO(b/201420132) */
 	k_msleep(TEST_DELAY_MS);
 	zassert_false(ln9310_power_good(), NULL);
+
+	i2c_common_emul_set_write_func(emul, NULL, NULL);
 }
 
 static void test_ln9310_3s_cfly_precharge_startup(void)
@@ -165,6 +181,11 @@ static void test_ln9310_3s_cfly_precharge_startup(void)
 	const struct emul *emulator =
 		emul_get_binding(DT_LABEL(DT_NODELABEL(ln9310)));
 	struct i2c_emul *emul = ln9310_emul_get_i2c_emul(emulator);
+
+	struct startup_workaround_data test_data = {
+		.startup_workaround_attempted = false,
+		.startup_workaround_should_fail = false,
+	};
 
 	zassert_not_null(emulator, NULL);
 
@@ -182,10 +203,10 @@ static void test_ln9310_3s_cfly_precharge_startup(void)
 	zassert_false(ln9310_power_good(), NULL);
 
 	i2c_common_emul_set_write_func(
-		emul, &mock_write_fn_intercept_startup_workaround, NULL);
+		emul, &mock_write_fn_intercept_startup_workaround, &test_data);
 
 	ln9310_software_enable(1);
-	zassert_true(startup_workaround_attempted, NULL);
+	zassert_true(test_data.startup_workaround_attempted, NULL);
 
 	/* TODO(b/201420132) */
 	k_msleep(TEST_DELAY_MS);
@@ -196,18 +217,161 @@ static void test_ln9310_3s_cfly_precharge_startup(void)
 	/* TODO(b/201420132) */
 	k_msleep(TEST_DELAY_MS);
 	zassert_false(ln9310_power_good(), NULL);
+
+	i2c_common_emul_set_write_func(emul, NULL, NULL);
+}
+
+static void test_ln9310_cfly_precharge_exceeds_retries(void)
+{
+	const struct emul *emulator =
+		emul_get_binding(DT_LABEL(DT_NODELABEL(ln9310)));
+
+	struct i2c_emul *emul = ln9310_emul_get_i2c_emul(emulator);
+
+	struct startup_workaround_data test_data = {
+		.startup_workaround_attempted = false,
+		.startup_workaround_should_fail = true,
+	};
+
+	zassert_not_null(emulator, NULL);
+
+	ln9310_emul_set_context(emulator);
+	ln9310_emul_reset(emulator);
+	/*
+	 * Battery and chip rev won't matter for statement
+	 * coverage here so only testing one pair.
+	 */
+	ln9310_emul_set_battery_cell_type(emulator, BATTERY_CELL_TYPE_2S);
+	ln9310_emul_set_version(emulator,
+				REQUIRES_CFLY_PRECHARGE_STARTUP_CHIP_REV);
+
+	zassert_ok(ln9310_init(), NULL);
+	zassert_true(ln9310_emul_is_init(emulator), NULL);
+
+	/* TODO(b/201420132) */
+	k_msleep(TEST_DELAY_MS);
+	zassert_false(ln9310_power_good(), NULL);
+
+	i2c_common_emul_set_write_func(
+		emul, &mock_write_fn_intercept_startup_workaround, &test_data);
+
+	ln9310_software_enable(1);
+	zassert_true(test_data.startup_workaround_attempted, NULL);
+
+	/* TODO(b/201420132) */
+	k_msleep(TEST_DELAY_MS);
+	zassert_false(ln9310_power_good(), NULL);
+
+	i2c_common_emul_set_write_func(emul, NULL, NULL);
+}
+
+static void test_ln9310_battery_unknown(void)
+{
+	const struct emul *emulator =
+		emul_get_binding(DT_LABEL(DT_NODELABEL(ln9310)));
+
+	zassert_not_null(emulator, NULL);
+
+	ln9310_emul_set_context(emulator);
+	ln9310_emul_reset(emulator);
+	/*
+	 * Chip rev won't matter for statement
+	 * cov so only testing one version.
+	 */
+	ln9310_emul_set_battery_cell_type(emulator, BATTERY_CELL_TYPE_UNKNOWN);
+	ln9310_emul_set_version(emulator, LN9310_BC_STS_C_CHIP_REV_FIXED);
+
+	zassert_true(ln9310_init() != 0, NULL);
+	zassert_false(ln9310_emul_is_init(emulator), NULL);
+
+	/* TODO(b/201420132) */
+	k_msleep(TEST_DELAY_MS);
+	zassert_false(ln9310_power_good(), NULL);
+
+	ln9310_software_enable(1);
+
+	/* TODO(b/201420132) */
+	k_msleep(TEST_DELAY_MS);
+	zassert_false(ln9310_power_good(), NULL);
+}
+
+static void test_ln9310_2s_battery_read_fails(void)
+{
+	const struct emul *emulator =
+		emul_get_binding(DT_LABEL(DT_NODELABEL(ln9310)));
+	struct i2c_emul *i2c_emul = ln9310_emul_get_i2c_emul(emulator);
+
+	zassert_not_null(emulator, NULL);
+	zassert_not_null(i2c_emul, NULL);
+
+	ln9310_emul_set_context(emulator);
+	ln9310_emul_reset(emulator);
+	/* Battery won't matter here so only testing one version */
+	ln9310_emul_set_battery_cell_type(emulator, BATTERY_CELL_TYPE_2S);
+	ln9310_emul_set_version(emulator, LN9310_BC_STS_C_CHIP_REV_FIXED);
+
+	i2c_common_emul_set_read_fail_reg(i2c_emul, LN9310_REG_BC_STS_B);
+
+	zassert_true(ln9310_init() != 0, NULL);
+	zassert_false(ln9310_emul_is_init(emulator), NULL);
+
+	/* TODO(b/201420132) */
+	k_msleep(TEST_DELAY_MS);
+	zassert_false(ln9310_power_good(), NULL);
+}
+
+static void test_ln9310_lion_ctrl_reg_fails(void)
+{
+	const struct emul *emulator =
+		emul_get_binding(DT_LABEL(DT_NODELABEL(ln9310)));
+	struct i2c_emul *i2c_emul = ln9310_emul_get_i2c_emul(emulator);
+
+	zassert_not_null(emulator, NULL);
+	zassert_not_null(i2c_emul, NULL);
+
+	ln9310_emul_set_context(emulator);
+	ln9310_emul_reset(emulator);
+	/* Battery won't matter here so only testing one version */
+	ln9310_emul_set_battery_cell_type(emulator, BATTERY_CELL_TYPE_2S);
+	ln9310_emul_set_version(emulator, LN9310_BC_STS_C_CHIP_REV_FIXED);
+
+	i2c_common_emul_set_read_fail_reg(i2c_emul, LN9310_REG_LION_CTRL);
+
+	zassert_true(ln9310_init() != 0, NULL);
+	zassert_false(ln9310_emul_is_init(emulator), NULL);
+
+	/* TODO(b/201420132) */
+	k_msleep(TEST_DELAY_MS);
+	zassert_false(ln9310_power_good(), NULL);
+
+	/* TODO(b/201420132) */
+	k_msleep(TEST_DELAY_MS);
+	ln9310_software_enable(1);
+	zassert_false(ln9310_power_good(), NULL);
+
+	i2c_common_emul_set_read_fail_reg(i2c_emul,
+					  I2C_COMMON_EMUL_NO_FAIL_REG);
 }
 
 static void reset_ln9310_state(void)
 {
 	ln9310_reset_to_initial_state();
-	startup_workaround_attempted = false;
 }
 
 void test_suite_ln9310(void)
 {
 	ztest_test_suite(
 		ln9310,
+		ztest_unit_test_setup_teardown(test_ln9310_lion_ctrl_reg_fails,
+					       reset_ln9310_state,
+					       reset_ln9310_state),
+		ztest_unit_test_setup_teardown(
+			test_ln9310_2s_battery_read_fails,
+			reset_ln9310_state,
+			reset_ln9310_state),
+		ztest_unit_test_setup_teardown(test_ln9310_battery_unknown,
+					       reset_ln9310_state,
+					       reset_ln9310_state),
 		ztest_unit_test_setup_teardown(test_ln9310_read_chip_fails,
 					       reset_ln9310_state,
 					       reset_ln9310_state),
@@ -217,6 +381,9 @@ void test_suite_ln9310(void)
 		ztest_unit_test_setup_teardown(test_ln9310_3s_powers_up,
 					       reset_ln9310_state,
 					       reset_ln9310_state),
+		ztest_unit_test_setup_teardown(
+			test_ln9310_cfly_precharge_exceeds_retries,
+			reset_ln9310_state, reset_ln9310_state),
 		ztest_unit_test_setup_teardown(
 			test_ln9310_2s_cfly_precharge_startup,
 			reset_ln9310_state, reset_ln9310_state),
