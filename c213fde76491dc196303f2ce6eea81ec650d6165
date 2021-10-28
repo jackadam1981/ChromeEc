@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4405d898_fd4bfc7b",
+        "filename": "zephyr/dts/bindings/gpio/named-gpios.yaml",
+        "patchSetId": 4
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-10-28T17:06:10Z",
+      "side": 1,
+      "message": "I can change the name from power-signal-enum-name to just be power-signal-name to remove concern about needing the enumerations defined",
+      "parentUuid": "197fd446_4d49ba14",
+      "range": {
+        "startLine": 18,
+        "startChar": 7,
+        "endLine": 18,
+        "endChar": 29
+      },
+      "revId": "c213fde76491dc196303f2ce6eea81ec650d6165",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b57df798_bf12da10",
         "filename": "zephyr/projects/asurada/hayato/gpio.dts",
         "patchSetId": 4
@@ -120,6 +144,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e28f26f7_51fc7231",
+        "filename": "zephyr/shim/include/power/power.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-10-28T17:06:10Z",
+      "side": 1,
+      "message": "noted... I will change this",
+      "parentUuid": "6259a262_38eb82c0",
+      "range": {
+        "startLine": 39,
+        "startChar": 1,
+        "endLine": 39,
+        "endChar": 22
+      },
+      "revId": "c213fde76491dc196303f2ce6eea81ec650d6165",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "add961b7_bb821589",
         "filename": "zephyr/shim/include/power/power.h",
         "patchSetId": 4
@@ -131,6 +179,30 @@
       "writtenOn": "2021-10-27T22:21:04Z",
       "side": 1,
       "message": "This should explicitly assigned to a specific entry in the power_signal_list[] array to ensure the order matches the enum power_signal below.\n\nSomething like:\n   COND_CODE_1(HAS_PROP(power_signal_enum_name),\n       ([GEN_POWER_SIGNAL_ENUM_ENTRY(cid) \u003d GEN_POWER_SIGNAL_STRUCT_ENTRY(cid)),\n       ())",
+      "range": {
+        "startLine": 58,
+        "startChar": 1,
+        "endLine": 58,
+        "endChar": 12
+      },
+      "revId": "c213fde76491dc196303f2ce6eea81ec650d6165",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "346d480b_940040bd",
+        "filename": "zephyr/shim/include/power/power.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-10-28T17:06:10Z",
+      "side": 1,
+      "message": "this is using the same loops with the same header... it should already ensure the same order",
+      "parentUuid": "add961b7_bb821589",
       "range": {
         "startLine": 58,
         "startChar": 1,
