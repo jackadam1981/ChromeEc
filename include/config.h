@@ -1526,6 +1526,9 @@
 /* Don't save General Purpose Registers during panic */
 #undef CONFIG_PANIC_STRIP_GPR
 
+/* Provide another output method of panic information by console channel */
+#undef CONFIG_PANIC_CONSOLE_OUTPUT
+
 /*
  * Provide the default GPIO abstraction layer.
  * You want this unless you are doing a really tiny firmware.
