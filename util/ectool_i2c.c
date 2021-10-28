@@ -141,7 +141,7 @@ int cmd_i2c_read(int argc, char *argv[])
 {
 	unsigned int port, addr8, addr7;
 	int read_len, write_len;
-	uint8_t write_buf[1];
+	uint8_t write_buf[2];
 	uint8_t *read_buf = NULL;
 	char *e;
 	int rv;
@@ -171,12 +171,31 @@ int cmd_i2c_read(int argc, char *argv[])
 	}
 	addr7 = addr8 >> 1;
 
-	write_buf[0] = strtol(argv[4], &e, 0);
-	if (e && *e) {
-		fprintf(stderr, "Bad offset.\n");
-		return -1;
+	if (strtol(argv[4], &e, 0) > 0xFF) {
+
+		write_buf[0] = strtol(argv[4], &e, 0) >> 8;
+		if (e && *e) {
+			fprintf(stderr, "Bad offset.\n");
+			return -1;
+		}
+
+		write_buf[1] = strtol(argv[4], &e, 0);
+		if (e && *e) {
+			fprintf(stderr, "Bad offset.\n");
+			return -1;
+		}
+
+	} else {
+		write_buf[0] = 0x00;
+		write_buf[1] = strtol(argv[4], &e, 0);
+		if (e && *e) {
+			fprintf(stderr, "Bad offset.\n");
+			return -1;
+		}
+
 	}
-	write_len = 1;
+		write_len = 2;
+
 
 	rv = do_i2c_xfer(port, addr7, write_buf, write_len, &read_buf,
 			 read_len);
@@ -184,8 +203,14 @@ int cmd_i2c_read(int argc, char *argv[])
 	if (rv < 0)
 		return rv;
 
-	printf("Read from I2C port %d at 0x%x offset 0x%x = 0x%x\n",
-	       port, addr8, write_buf[0], *(uint16_t *)read_buf);
+
+	if (write_buf[0] == 0x00)
+		printf("Read from I2C port %d at 0x%x offset 0x00 %x = 0x%x\n",
+			port, addr8, write_buf[1], *(uint16_t *)read_buf);
+	else
+		printf("Read from I2C port %d at 0x%x offset 0x%x %x = 0x%x\n",
+			port, addr8, write_buf[0], write_buf[1], *(uint16_t *)read_buf);
+
 	return 0;
 }
 
@@ -193,7 +218,7 @@ int cmd_i2c_write(int argc, char *argv[])
 {
 	unsigned int port, addr8, addr7;
 	int write_len;
-	uint8_t write_buf[3];
+	uint8_t write_buf[4];
 	char *e;
 	int rv;
 
@@ -208,7 +233,7 @@ int cmd_i2c_write(int argc, char *argv[])
 		return -1;
 	}
 	/* Include offset (length 1) */
-	write_len = 1 + write_len / 8;
+	write_len = 2 + write_len / 8;
 
 	port = strtol(argv[2], &e, 0);
 	if (e && *e) {
@@ -222,26 +247,56 @@ int cmd_i2c_write(int argc, char *argv[])
 		return -1;
 	}
 	addr7 = addr8 >> 1;
+	if (strtol(argv[4], &e, 0) > 0xFF) {
+		write_buf[0] = strtol(argv[4], &e, 0) >> 8;
+		if (e && *e) {
+			fprintf(stderr, "Bad offset.\n");
+			return -1;
+		}
 
-	write_buf[0] = strtol(argv[4], &e, 0);
-	if (e && *e) {
-		fprintf(stderr, "Bad offset.\n");
-		return -1;
+		write_buf[1] = strtol(argv[4], &e, 0);
+		if (e && *e) {
+			fprintf(stderr, "Bad offset.\n");
+			return -1;
+		}
+
+		*((uint16_t *)&write_buf[2]) = strtol(argv[5], &e, 0);
+		if (e && *e) {
+			fprintf(stderr, "Bad data.\n");
+			return -1;
+		}
+	} else {
+		write_buf[0] = 0x00;
+		write_buf[1] = strtol(argv[4], &e, 0);
+		if (e && *e) {
+			fprintf(stderr, "Bad offset.\n");
+			return -1;
+		}
+
+		*((uint16_t *)&write_buf[2]) = strtol(argv[5], &e, 0);
+
+		if (e && *e) {
+			fprintf(stderr, "Bad data.\n");
+			return -1;
+		}
 	}
 
-	*((uint16_t *)&write_buf[1]) = strtol(argv[5], &e, 0);
-	if (e && *e) {
-		fprintf(stderr, "Bad data.\n");
-		return -1;
-	}
 
 	rv = do_i2c_xfer(port, addr7, write_buf, write_len, NULL, 0);
 
 	if (rv < 0)
 		return rv;
 
-	printf("Wrote 0x%x to I2C port %d at 0x%x offset 0x%x.\n",
-	       *((uint16_t *)&write_buf[1]), port, addr8, write_buf[0]);
+
+	if (write_buf[0] == 0x00)
+		printf("Wrote 0x%x to I2C port %d at 0x%x offset 0x00 %x.\n",
+			*((uint16_t *)&write_buf[2]), port, addr8,
+		 write_buf[1]);
+	else
+		printf("Wrote 0x%x to I2C port %d at 0x%x offset 0x%x %x.\n",
+			*((uint16_t *)&write_buf[2]), port, addr8,
+		write_buf[0], write_buf[1]);
+
 	return 0;
 }
 
