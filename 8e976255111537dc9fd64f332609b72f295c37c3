@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e483661a_f1f8497a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1394446
+      },
+      "writtenOn": "2021-10-28T07:34:46Z",
+      "side": 1,
+      "message": "The npcx flash driver upstream is ongoing.\nhttps://github.com/zephyrproject-rtos/zephyr/pull/39644\nWe will submit it for zephyr cros_flash driver soon.",
+      "parentUuid": "857f2056_ffade4d4",
+      "revId": "8e976255111537dc9fd64f332609b72f295c37c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9e051eff_cdb9640d",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-10-27T16:31:27Z",
       "side": 1,
       "message": "The status register 1 and status register 2 are always read at the same time.  Can these functions get combined in another CL? This will eliminate the duplicate mutex operations and tri-state operations.",
+      "range": {
+        "startLine": 629,
+        "startChar": 0,
+        "endLine": 630,
+        "endChar": 35
+      },
+      "revId": "8e976255111537dc9fd64f332609b72f295c37c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "19cc7bfc_cbfd485e",
+        "filename": "chip/npcx/flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 630,
+      "author": {
+        "id": 1394446
+      },
+      "writtenOn": "2021-10-28T07:34:46Z",
+      "side": 1,
+      "message": "Please check CL:3247742.",
+      "parentUuid": "9e051eff_cdb9640d",
       "range": {
         "startLine": 629,
         "startChar": 0,
@@ -78,6 +120,30 @@
       "side": 1,
       "message": "There is the same code sequence in flash_check_prot_reg. And crec_flash_physical_get_protect_flags sets EC_FLASH_PROTECT_RO_AT_BOOT if flash_check_prot_reg returns error. Is this intended?\n\nIf not, we need to fix EC_FLASH_PROTECT_RO_AT_BOOT as well. We may as well add a different (\u0026 new) error (e.g. EC_FLASH_PROTECT_ERROR_UNKNOWN).",
       "parentUuid": "ec24de91_ac32e3f6",
+      "range": {
+        "startLine": 642,
+        "startChar": 5,
+        "endLine": 642,
+        "endChar": 67
+      },
+      "revId": "8e976255111537dc9fd64f332609b72f295c37c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e2bb5bc_744dcccc",
+        "filename": "chip/npcx/flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 642,
+      "author": {
+        "id": 1394446
+      },
+      "writtenOn": "2021-10-28T07:34:46Z",
+      "side": 1,
+      "message": "ACK. Introducing the EC_FLASH_PROTECT_ERROR_UNKNOWN flag is a good idea.",
+      "parentUuid": "ea7aa314_84c18eae",
       "range": {
         "startLine": 642,
         "startChar": 5,
