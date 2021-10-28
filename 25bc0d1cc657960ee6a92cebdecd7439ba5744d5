@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "103d2730_87f588fa",
+        "filename": "util/build.mk",
+        "patchSetId": 7
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2021-10-28T15:22:11Z",
+      "side": 0,
+      "message": "So iteflash is actually a host-util.\n\nhttps://source.corp.google.com/chromeos_public/src/third_party/chromiumos-overlay/chromeos-base/ec-devutils/ec-devutils-9999.ebuild;l\u003d74",
+      "range": {
+        "startLine": 11,
+        "startChar": 29,
+        "endLine": 11,
+        "endChar": 37
+      },
+      "revId": "25bc0d1cc657960ee6a92cebdecd7439ba5744d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
