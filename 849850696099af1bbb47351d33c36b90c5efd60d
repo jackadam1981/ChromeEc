@@ -22,6 +22,30 @@
       },
       "revId": "849850696099af1bbb47351d33c36b90c5efd60d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4323eabc_47d6ea4e",
+        "filename": "board/brya/i2c.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-10-28T02:21:33Z",
+      "side": 1,
+      "message": "i decided against enabling I2C_PORT_FLAG_DYNAMIC_SPEED on ppc1\nbecause i don\u0027t intend to enable speed change capability\non ppp1 in general. we really only need to \"patch\" the speeds\non board ID 1 and if/when we drop support for board ID 1,\nwe can remove set_board_legacy_i2c_speeds ugliness.\n\nyes, we are changing speed at runtime here, but this is a very\nrestricted form. it happens right after the I2C controllers\nare initialized but before most I2C devices are used.\ni think CBI is the only exception. i actually\ndoubt i2c_lock() is even needed here, but i couldn\u0027t prove\nit to myself.\n\ni originally started mimicking the CONFIG_USB_PD_TCPC_RUNTIME_CONFIG\ndesign pattern for i2c_ports[],\nbut that presented its own complexities because\nthis array is accessed very early - before we know the board ID\nas that comes from CBI (I2C PROM).\n\nthoughts?",
+      "parentUuid": "383e3a95_e52ccffd",
+      "range": {
+        "startLine": 101,
+        "startChar": 1,
+        "endLine": 101,
+        "endChar": 18
+      },
+      "revId": "849850696099af1bbb47351d33c36b90c5efd60d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
