@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ff48a93_6c2ae9b1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-10-28T16:54:03Z",
+      "side": 1,
+      "message": "Looks like building coverage failed (segfault?), but it works for me locally, even after rebasing.",
+      "revId": "e5c548abfe1604cb5973a377640efc8d33328918",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
