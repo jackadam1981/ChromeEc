@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "804195cf_2c70b025",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2021-10-28T07:14:45Z",
+      "side": 1,
+      "message": "Let\u0027s split this CL to 2. One contains the panic part:\n  include/panic.h\n  include/config.h\n  core/riscv-rv32i/panic.h\n\nAnd another one on top has mtscp changes.",
+      "revId": "16576fdf695b31c3ff67455db60e834a49d6885e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
