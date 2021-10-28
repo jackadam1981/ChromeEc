@@ -22,6 +22,30 @@
       },
       "revId": "8d663f578a37ef21c96d516d03784aa473376ed1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3741a867_9f0f7585",
+        "filename": "zephyr/boards/arm/herobrine_npcx9/herobrine_npcx9.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2021-10-28T14:29:23Z",
+      "side": 1,
+      "message": "Yeah good point, I have mixed feelings about it: the documentation does not give a strong guideline[1]. Chosen is used for system or subsystem config (flash, sram, console...), it could certainly be used here, but then we\u0027d have to have a node label to point to anyway, so I feel like this would only add a bunch of redundant \"chosen { cros,kblight \u003d \u0026kblight; };\", which could be useful if we had some other reason to have a generic node label for the named pwm (I mean, not \"kblight\"), but we don\u0027t with the named-pwm entries.\n\nSimilar story with aliases, which do kinda the same thing but are mostly used to have portable samples so far.\n\nIn practice I think either would only add more redundancy. The other valid alternative, and potential evolution of this if we need more flexibility, would be to add a node, compatible and binding, and use that to find the device, though it seems unnecessary at this stage since the phandle is all that\u0027s needed by the driver.\n\nSo I think it\u0027s fine to use the node label for now, and then convert this to a normal device node once we\u0027ll get to the point of writing native drivers -- but if you feel strongly about it I\u0027m happy to switch it to a chosen or alias instead.\n\n[1] https://docs.zephyrproject.org/latest/guides/dts/intro.html#aliases-and-chosen-nodes",
+      "parentUuid": "9276033f_f83465ca",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 20
+      },
+      "revId": "8d663f578a37ef21c96d516d03784aa473376ed1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
