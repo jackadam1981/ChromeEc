@@ -141,6 +141,30 @@
       },
       "revId": "a4ae7914c4966d9db10c81fa011cf7c9871b8cfe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f6fd2c9_ccf124e0",
+        "filename": "zephyr/test/drivers/src/ln9310.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 403,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-10-28T00:05:57Z",
+      "side": 1,
+      "message": "Ah, I just got a little trigger happy with the highlighter. +2 😊",
+      "parentUuid": "ba249e7d_477fa5ac",
+      "range": {
+        "startLine": 402,
+        "startChar": 1,
+        "endLine": 403,
+        "endChar": 22
+      },
+      "revId": "a4ae7914c4966d9db10c81fa011cf7c9871b8cfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
