@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dfcfbf68_44d96cb9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1273086
+      },
+      "writtenOn": "2021-10-28T02:34:34Z",
+      "side": 1,
+      "message": "cs/ doesn\u0027t show anwhere that the include directory for this library is added to a PATH\n\n(cr) moragues@moragues-cloud /build/strongbad $ find . -name ftdi.h\n./usr/include/libftdi1/ftdi.h",
+      "parentUuid": "1bcf3f7b_5b4a6c9c",
+      "revId": "eed68221c14aef8a4dafcaf1035596651215920d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1bf3e73f_010ec586",
