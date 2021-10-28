@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1bcf3f7b_5b4a6c9c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1273086
+      },
+      "writtenOn": "2021-10-28T01:02:40Z",
+      "side": 1,
+      "message": "Current state does not appear to be properly configured.\nchromeos-ec-9999: util/iteflash.c:13:10: fatal error: ftdi.h: No such file or directory\nchromeos-ec-9999:    13 | #include \u003cftdi.h\u003e\nchromeos-ec-9999:       |          ^~~~~~~~\nchromeos-ec-9999: compilation terminated.\nchromeos-ec-9999: In file included from util/usb_if.c:11:\nchromeos-ec-9999: util/usb_if.h:10:10: fatal error: libusb.h: No such file or directory\nchromeos-ec-9999:    10 | #include \u003clibusb.h\u003e\nchromeos-ec-9999:       |          ^~~~~~~~~~\nchromeos-ec-9999: compilation terminated.",
+      "revId": "eed68221c14aef8a4dafcaf1035596651215920d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1bf3e73f_010ec586",
