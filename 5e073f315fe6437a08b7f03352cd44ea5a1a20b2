@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f029efa1_74950c01",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1273086
+      },
+      "writtenOn": "2021-10-28T19:04:43Z",
+      "side": 1,
+      "message": "Note:  This is probably OK, but BUG\u003dnone can be problematic if you want to do things like merge to a release branch.  In general, feature adds should have a bug associated with them.",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 8
+      },
+      "revId": "5e073f315fe6437a08b7f03352cd44ea5a1a20b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
