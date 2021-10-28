@@ -84,6 +84,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c6369da0_dd0beaf0",
+        "filename": "driver/accelgyro_bmi260.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 408,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2021-10-28T16:48:36Z",
+      "side": 1,
+      "message": "This would be a new Kconfig that we only enable in the driver test\u0027s prj.conf?",
+      "parentUuid": "8f991533_a69b18aa",
+      "range": {
+        "startLine": 408,
+        "startChar": 52,
+        "endLine": 408,
+        "endChar": 64
+      },
+      "revId": "f6d14be1dfbf33ccfcb433290e7d350795aaca85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5149ec50_3f4b0a70",
         "filename": "include/init_rom.h",
         "patchSetId": 2
@@ -136,6 +160,24 @@
       "side": 1,
       "message": "Similar to the other CL this should be using fff by splitting the declaration and definition int a test_mocks.h and test_mocks.c",
       "parentUuid": "662571cf_e9567304",
+      "revId": "f6d14be1dfbf33ccfcb433290e7d350795aaca85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2ce7c9d_9d455c38",
+        "filename": "zephyr/test/drivers/src/bmi260.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1930,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2021-10-28T16:48:36Z",
+      "side": 1,
+      "message": "You want to switch to FFF right now in this CL? I feel that I know enough about how it works now that I could do that.",
+      "parentUuid": "0028df9b_b32f2040",
       "revId": "f6d14be1dfbf33ccfcb433290e7d350795aaca85",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
