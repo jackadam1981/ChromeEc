@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58aaa9d9_55988ab6",
+        "filename": "baseboard/brya/prochot.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-10-28T10:04:01Z",
+      "side": 1,
+      "message": "you might want to split this into 2 patches.\n1st, move the #defines into variants.\n2nd, add this new parameter to each variant where it is relevant.\n\nyou could actually skip the 1st patch since this is a new\nparameter. it probably makes more sense to keep all the\nparameters together, though.",
+      "range": {
+        "startLine": 200,
+        "startChar": 3,
+        "endLine": 200,
+        "endChar": 31
+      },
+      "revId": "357c551c15d7964a8626cb5fd313c9aa5af916b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
