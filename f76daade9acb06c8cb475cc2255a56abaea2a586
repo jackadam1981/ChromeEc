@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f17efd85_0b497531",
+        "filename": "zephyr/dts/bindings/usbc/named-usbc-ports.yaml",
+        "patchSetId": 7
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-10-28T18:47:59Z",
+      "side": 1,
+      "message": "When you specify required: true it forces you to also add this to the .dts file and ignores the const: 1.\n\nRemove the \"required: true\" lines and you\u0027ll get the defaults.",
+      "range": {
+        "startLine": 12,
+        "startChar": 4,
+        "endLine": 13,
+        "endChar": 12
+      },
+      "revId": "f76daade9acb06c8cb475cc2255a56abaea2a586",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99a09f35_28e6f9fa",
+        "filename": "zephyr/projects/herobrine/herobrine_npcx9/usbc.dts",
+        "patchSetId": 7
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-10-28T18:47:59Z",
+      "side": 1,
+      "message": "There\u0027s no binding for this is there? I think you can remove these lines.",
+      "range": {
+        "startLine": 12,
+        "startChar": 3,
+        "endLine": 12,
+        "endChar": 34
+      },
+      "revId": "f76daade9acb06c8cb475cc2255a56abaea2a586",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
