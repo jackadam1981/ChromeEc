@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "197fd446_4d49ba14",
+        "filename": "zephyr/dts/bindings/gpio/named-gpios.yaml",
+        "patchSetId": 4
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-10-28T00:15:53Z",
+      "side": 1,
+      "message": "So the interesting change to DT with DT_STRING_UPPER_TOKEN the binding doesn\u0027t have to be an enum, any string works. I think this is fine for the binding and we can have an overlay DTS file per AP. The overlay can amend the nodes with:\n\n\u0026ap_in_sleep_l {\n  power-signal-enum-name \u003d \"AP_IN_S3_L\";\n};\n\nSo just like we have a default dts file per EC chip, we could do the same thing with overlaying the AP information.",
+      "parentUuid": "d5f69bff_b62cfc1f",
+      "range": {
+        "startLine": 18,
+        "startChar": 7,
+        "endLine": 18,
+        "endChar": 29
+      },
+      "revId": "c213fde76491dc196303f2ce6eea81ec650d6165",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b57df798_bf12da10",
         "filename": "zephyr/projects/asurada/hayato/gpio.dts",
         "patchSetId": 4
@@ -37,6 +61,30 @@
       "writtenOn": "2021-10-27T22:21:04Z",
       "side": 1,
       "message": "I think a better approach would be to create a separate node that lists the power signals.  The active low/active high can still be set here, but the binding to the power signals should be done in a separate node.\n\npower-signal-list { \n    ap_wdt_asserted {\n        power-enum-name \u003d \"AP_WDT_ASSERTED\";\n        gpios \u003d \u003c\u0026ap_ec_watchdog_l\u003e;\n    }\n    ap_in_s3_l {\n        power-enum-name \u003d \"AP_IN_S3_L\";\n        gpios \u003d \u003c\u0026ap_in_sleep_l\u003e;\n    }\n}\n\nSee the bb_retimer.dts file on Volteer for an example of referencing the a node from the named-gpios property.",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 46
+      },
+      "revId": "c213fde76491dc196303f2ce6eea81ec650d6165",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0eb83dd_999a6f5f",
+        "filename": "zephyr/projects/asurada/hayato/gpio.dts",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-10-28T00:15:53Z",
+      "side": 1,
+      "message": "Denis and I considered this approach but it seemed messy. Since the active low/high is added here and so is other \"naming\" things, to me it seemed natural to include the enum name here.\n\nLong term we\u0027ll be using `struct device*` directly in all our code and will no longer have these enums. I think this will be easier to remove than having a new node.",
+      "parentUuid": "b57df798_bf12da10",
       "range": {
         "startLine": 34,
         "startChar": 0,
