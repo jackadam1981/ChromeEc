@@ -60,6 +60,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8f991533_a69b18aa",
+        "filename": "driver/accelgyro_bmi260.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 408,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-10-28T00:22:52Z",
+      "side": 1,
+      "message": "I still think that not all tests will want this. Can we make this a Kconfig?",
+      "parentUuid": "2c43555c_5671a6da",
+      "range": {
+        "startLine": 408,
+        "startChar": 52,
+        "endLine": 408,
+        "endChar": 64
+      },
+      "revId": "f6d14be1dfbf33ccfcb433290e7d350795aaca85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5149ec50_3f4b0a70",
         "filename": "include/init_rom.h",
         "patchSetId": 2
@@ -94,6 +118,24 @@
       "writtenOn": "2021-10-25T23:47:14Z",
       "side": 1,
       "message": "As you mentioned earlier, I believe this prevents future tests from testing init_rom_map besides using this function.\n\nI\u0027m not sure what the best path forward here is so I\u0027m adding Yuval as a reviewer.",
+      "revId": "f6d14be1dfbf33ccfcb433290e7d350795aaca85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0028df9b_b32f2040",
+        "filename": "zephyr/test/drivers/src/bmi260.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1930,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-10-28T00:22:52Z",
+      "side": 1,
+      "message": "Similar to the other CL this should be using fff by splitting the declaration and definition int a test_mocks.h and test_mocks.c",
+      "parentUuid": "662571cf_e9567304",
       "revId": "f6d14be1dfbf33ccfcb433290e7d350795aaca85",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
