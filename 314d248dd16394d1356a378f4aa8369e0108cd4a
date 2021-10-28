@@ -16,6 +16,29 @@
       "message": "please provide code review +2 on the patch. Thank you",
       "revId": "314d248dd16394d1356a378f4aa8369e0108cd4a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c6d139d_54a0df5e",
+        "filename": "include/config.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 1144,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-10-28T16:48:12Z",
+      "side": 1,
+      "message": "I thought we needed to say CONFIG_CHARGER_SENSE_RESISTOR is no longer used for BQ25710/25720 but a build will break if CONFIG_CHARGER_BQ25710_SENSE_REGISTOR isn\u0027t defined. So, I think it\u0027s ok.",
+      "range": {
+        "startLine": 1144,
+        "startChar": 0,
+        "endLine": 1144,
+        "endChar": 50
+      },
+      "revId": "314d248dd16394d1356a378f4aa8369e0108cd4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
