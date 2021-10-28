@@ -8,6 +8,7 @@
 #define __CROS_EC_DRIVER_TCPM_IT83XX_H
 
 #include "driver/tcpm/it8xxx2_pd_public.h"
+#include "stdint.h"
 
 /* USBPD Controller */
 #if defined(CONFIG_USB_PD_TCPM_DRIVER_IT83XX)
