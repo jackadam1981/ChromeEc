@@ -46,6 +46,30 @@
       },
       "revId": "849850696099af1bbb47351d33c36b90c5efd60d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1bb6cc1_e96d074e",
+        "filename": "board/brya/i2c.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-10-28T19:08:18Z",
+      "side": 1,
+      "message": "The documentation for dynamic speed actually calls out the board version use case.  I think you should use the common i2c_set_freq() instead of reinventing it in a board specific function.\n\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/1f1103b4/docs/configuration/i2c.md#180",
+      "parentUuid": "4323eabc_47d6ea4e",
+      "range": {
+        "startLine": 101,
+        "startChar": 1,
+        "endLine": 101,
+        "endChar": 18
+      },
+      "revId": "849850696099af1bbb47351d33c36b90c5efd60d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
