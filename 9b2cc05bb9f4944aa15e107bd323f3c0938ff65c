@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88a806e8_7431055f",
+        "filename": "zephyr/dts/bindings/usbc/named-usbc-port.yaml",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-10-28T00:26:08Z",
+      "side": 1,
+      "message": "Can this be\n\n```\ninclude: base.yaml\n\nproperties:\n  reg:\n    required: true\n```\n\nUsing reg as the index will guarantee uniqueness due to how devicetree enforces addressing",
+      "revId": "9b2cc05bb9f4944aa15e107bd323f3c0938ff65c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
