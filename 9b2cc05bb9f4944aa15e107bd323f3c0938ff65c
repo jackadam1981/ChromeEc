@@ -34,6 +34,24 @@
       "parentUuid": "88a806e8_7431055f",
       "revId": "9b2cc05bb9f4944aa15e107bd323f3c0938ff65c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "10d84d39_8ca5fa4c",
+        "filename": "zephyr/dts/bindings/usbc/named-usbc-port.yaml",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2021-10-28T09:16:52Z",
+      "side": 1,
+      "message": "I wasn\u0027t that simple, but it uses the reg property now.",
+      "parentUuid": "e6097ab4_6ccb6a56",
+      "revId": "9b2cc05bb9f4944aa15e107bd323f3c0938ff65c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
