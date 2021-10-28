@@ -108,6 +108,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bfd2dbc8_22c7a417",
+        "filename": "driver/accelgyro_bmi260.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 408,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-10-28T18:49:52Z",
+      "side": 1,
+      "message": "Looks like a lot of boards use this so we\u0027ll need it eventually. Do a codesearch for \"CONFIG_CHIP_INIT_ROM_REGION\" under the platform/ec directory and you\u0027ll see the use cases.",
+      "parentUuid": "c6369da0_dd0beaf0",
+      "range": {
+        "startLine": 408,
+        "startChar": 52,
+        "endLine": 408,
+        "endChar": 64
+      },
+      "revId": "f6d14be1dfbf33ccfcb433290e7d350795aaca85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5149ec50_3f4b0a70",
         "filename": "include/init_rom.h",
         "patchSetId": 2
@@ -178,6 +202,24 @@
       "side": 1,
       "message": "You want to switch to FFF right now in this CL? I feel that I know enough about how it works now that I could do that.",
       "parentUuid": "0028df9b_b32f2040",
+      "revId": "f6d14be1dfbf33ccfcb433290e7d350795aaca85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de1a11bb_5b0c5207",
+        "filename": "zephyr/test/drivers/src/bmi260.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1930,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-10-28T18:49:52Z",
+      "side": 1,
+      "message": "Go for it! 😊",
+      "parentUuid": "c2ce7c9d_9d455c38",
       "revId": "f6d14be1dfbf33ccfcb433290e7d350795aaca85",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
