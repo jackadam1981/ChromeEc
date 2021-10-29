@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "19560cce_b26648c7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1347380
+      },
+      "writtenOn": "2021-10-29T19:26:40Z",
+      "side": 1,
+      "message": "Thanks for catching that, full duplex mode has not been tested on the STM32 with this interface as far as I\u0027m aware.",
+      "revId": "b5c351d1af6ad4b3d7408cf1be8651a095325c86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
