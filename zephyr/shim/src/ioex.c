@@ -353,3 +353,11 @@ int ioex_get_ioex_flags(enum ioex_signal signal, int *val)
 
 	return EC_SUCCESS;
 }
+
+void ioex_test_interrupt(enum gpio_signal sig)
+{
+	int val = -1;
+
+	ioex_get_level(sig, &val);
+	ccprintf("IOEX test interrupt: %d\n", val);
+}
