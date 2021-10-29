@@ -84,6 +84,7 @@ static bool fast_charge_disabled;
 static int sm5803_is_sourcing_otg_power(int chgnum, int port);
 static enum ec_error_list sm5803_get_dev_id(int chgnum, int *id);
 static enum ec_error_list sm5803_set_current(int chgnum, int current);
+static enum ec_error_list sm5803_set_hw_ramp(int chgnum, int enable);
 
 static inline enum ec_error_list chg_read8(int chgnum, int offset, int *value)
 {
@@ -753,6 +754,10 @@ static void sm5803_init(int chgnum)
 		reg |= SM5803_SW_BCK_BST_CONF_AUTO;
 		rv |= chg_write8(chgnum, SM5803_REG_SWITCHER_CONF, reg);
 	}
+
+#ifdef CONFIG_CHARGE_RAMP_HW
+	sm5803_set_hw_ramp(chgnum, 1);
+#endif
 
 	if (rv)
 		CPRINTS("%s %d: Failed initialization", CHARGER_NAME, chgnum);

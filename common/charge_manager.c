@@ -852,7 +852,7 @@ static void charge_manager_refresh(void)
 				registration_time[new_port],
 				new_charge_voltage);
 #else
-#ifdef CONFIG_CHARGE_RAMP_HW
+#if defined(CONFIG_CHARGE_RAMP_HW) && !defined(CONFIG_CHARGER_SM5803)
 		/* Enable or disable charge ramp */
 		charger_set_hw_ramp(chg_ramp_allowed(new_port, new_supplier));
 #endif
