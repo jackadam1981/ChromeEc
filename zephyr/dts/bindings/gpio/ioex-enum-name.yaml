@@ -5,6 +5,14 @@ properties:
     description:
       Names used for IO expanders pins
     enum:
+      - IOEX_FAKE0
+      - IOEX_FAKE1
+      - IOEX_FAKE2
+      - IOEX_FAKE3
+      - IOEX_FAKE4
+      - IOEX_FAKE5
+      - IOEX_FAKE6
+      - IOEX_FAKE7
       - IOEX_5V_DC_DC_MODE_CTRL
       - IOEX_ATMEL_MISO
       - IOEX_ATMEL_MOSI
