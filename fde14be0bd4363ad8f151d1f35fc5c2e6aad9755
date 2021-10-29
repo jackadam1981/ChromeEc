@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d65b97d_5a10ad0b",
+        "filename": "core/cortex-m0/task.c",
+        "patchSetId": 43
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-10-29T23:02:42Z",
+      "side": 1,
+      "message": "Since you\u0027re moving this to C code, what about just masking the lower 9 bits?\n\n   return ret \u0026 GENMASK(8,0);\n   \nI find this clearer to read.  I tested this out and gcc generates the left shift:\n\n 8002e4e:       f3ef 8305       mrs     r3, IPSR\n 8002e52:       05db            lsls    r3, r3, #23",
+      "range": {
+        "startLine": 179,
+        "startChar": 0,
+        "endLine": 179,
+        "endChar": 53
+      },
+      "revId": "fde14be0bd4363ad8f151d1f35fc5c2e6aad9755",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
