@@ -51,6 +51,41 @@
       "message": "Lets cherry-pick over to servo firmware branch once we have tested it 😊",
       "revId": "1053767af03e18d28912226e1cc74b175657b490",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4433dfc8_75e75c75",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2021-10-29T23:05:35Z",
+      "side": 1,
+      "message": "Thanks for the quick review.",
+      "revId": "1053767af03e18d28912226e1cc74b175657b490",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c0b9c10d_7da0f153",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2021-10-29T23:05:35Z",
+      "side": 1,
+      "message": "Good plan, I want to stress that while I have tested this in the HypderDebug code that I am working on, my code SPI currently does not use DMA as I had some issues with the DMAMUX of STM32L5, so I cannot tell if the ToT code would work with full duplex SPI forwarding, there could be some other bug in the way that the DMA is set up for simultaneous input and output.\n\nTesting this on a servo v4, for instance by uploading code to D2DB without the ugly workarounds in spiflash, would be the best way to find out.  I do not have a servo v4 setup though, as I have a birds nest of wires between HyperDebug and Andreiboard on my desk, that I do not want to set aside at the moment.",
+      "parentUuid": "c540956c_65d6a4e0",
+      "revId": "1053767af03e18d28912226e1cc74b175657b490",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
