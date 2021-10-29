@@ -164,6 +164,41 @@ static int bq25710_set_low_power_mode(int chgnum, int enable)
 	return EC_SUCCESS;
 }
 
+static int bq25710_set_psys_sensing(int chgnum, int enable)
+{
+	int rv;
+	int reg;
+	int mask, on, off;
+
+	rv = raw_read16(chgnum, BQ25710_REG_CHARGE_OPTION_1, &reg);
+	if (rv)
+		return rv;
+
+#if defined(CONFIG_CHARGER_BQ25720)
+	mask = BQ25720_CHARGE_OPTION_1_PSYS_MASK;
+	on = BQ25720_CHARGE_OPTION_1_PSYS_ON;
+	off = BQ25720_CHARGE_OPTION_1_PSYS_OFF;
+#elif defined(CONFIG_CHARGER_BQ25710)
+	mask = BQ25710_CHARGE_OPTION_1_PSYS_MASK;
+	on = BQ25710_CHARGE_OPTION_1_PSYS_ON;
+	off = BQ25710_CHARGE_OPTION_1_PSYS_OFF;
+#else
+#error Only the BQ25720 and BQ25710 are supported by bq25710 driver.
+#endif
+
+	reg &= ~mask;
+	if (enable)
+		reg |= on;
+	else
+		reg |= off;
+
+	rv = raw_write16(chgnum, BQ25710_REG_CHARGE_OPTION_1, reg);
+	if (rv)
+		return rv;
+
+	return EC_SUCCESS;
+}
+
 static int bq25710_adc_start(int chgnum, int adc_en_mask)
 {
 	int reg;
@@ -244,6 +279,9 @@ static void bq25710_init(int chgnum)
 		/* Reenable low power mode */
 		bq25710_set_low_power_mode(chgnum, 1);
 	}
+
+	if (IS_ENABLED(CONFIG_CHARGER_BQ25710_PSYS_SENSING))
+		bq25710_set_psys_sensing(chgnum, 1);
 
 	if (!raw_read16(chgnum, BQ25710_REG_PROCHOT_OPTION_1, &reg)) {
 		/* Disable VDPM prochot profile at initialization */
