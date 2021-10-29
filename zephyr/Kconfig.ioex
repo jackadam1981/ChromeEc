@@ -38,6 +38,12 @@ config PLATFORM_EC_IOEX_CCGXXF
 	help
 	  Enables driver for Cypress CCGXXF IO expander (built inside PD chip)
 
+config PLATFORM_EC_IOEX_FAKE
+	bool "Fake"
+	select PLATFORM_EC_IOEX_CROS_DRV
+	help
+	  Enables fake ioex driver for testing purposes
+
 config PLATFORM_EC_IOEX_IT8801
 	bool "IT8801"
 	select PLATFORM_EC_IOEX_CROS_DRV
