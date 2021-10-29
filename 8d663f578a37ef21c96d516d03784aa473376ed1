@@ -46,6 +46,30 @@
       },
       "revId": "8d663f578a37ef21c96d516d03784aa473376ed1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d2cbd288_f973e48e",
+        "filename": "zephyr/boards/arm/herobrine_npcx9/herobrine_npcx9.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-10-29T18:01:16Z",
+      "side": 1,
+      "message": "The main benefit of using a chosen node is that the named-pwm child can use a name matching the schematic.  But I guess this can also be done at the child node.\ne.g.\n   kblight: kb_bl_pwm { ... };",
+      "parentUuid": "3741a867_9f0f7585",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 20
+      },
+      "revId": "8d663f578a37ef21c96d516d03784aa473376ed1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
