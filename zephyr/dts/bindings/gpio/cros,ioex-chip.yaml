@@ -1,0 +1,32 @@
+description: IEOX chip definition
+
+compatible: "cros,ioex-chip"
+
+include: [base.yaml]
+
+properties:
+    port-named:
+      type: string
+
+    i2c-addr:
+      type: int
+      required: true
+
+    flags:
+      type: int
+      required: true
+
+    drv:
+      type: string
+      required: true
+      enum:
+        - "ccgxxf_ioexpander_drv"
+        - "it8801_ioexpander_drv"
+        - "nct38xx_ioexpander_drv"
+        - "pca9675_ioexpander_drv"
+        - "pcal6408_ioexpander_drv"
+        - "tca64xxa_ioexpander_drv"
+
+    int-gpios:
+      type: phandle-array
+      required: false
