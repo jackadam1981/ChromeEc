@@ -119,6 +119,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a894836f_e7f838a5",
+        "filename": "zephyr/projects/asurada/hayato/gpio.dts",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-10-29T20:49:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b0eb83dd_999a6f5f",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 46
+      },
+      "revId": "c213fde76491dc196303f2ce6eea81ec650d6165",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6259a262_38eb82c0",
@@ -203,6 +227,30 @@
       "side": 1,
       "message": "this is using the same loops with the same header... it should already ensure the same order",
       "parentUuid": "add961b7_bb821589",
+      "range": {
+        "startLine": 58,
+        "startChar": 1,
+        "endLine": 58,
+        "endChar": 12
+      },
+      "revId": "c213fde76491dc196303f2ce6eea81ec650d6165",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e07b8cd5_f1b57621",
+        "filename": "zephyr/shim/include/power/power.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-10-29T20:49:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "346d480b_940040bd",
       "range": {
         "startLine": 58,
         "startChar": 1,
