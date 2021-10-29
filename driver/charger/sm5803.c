@@ -84,6 +84,7 @@ static bool fast_charge_disabled;
 static int sm5803_is_sourcing_otg_power(int chgnum, int port);
 static enum ec_error_list sm5803_get_dev_id(int chgnum, int *id);
 static enum ec_error_list sm5803_set_current(int chgnum, int current);
+static enum ec_error_list sm5803_set_hw_ramp(int chgnum, int enable);
 
 static inline enum ec_error_list chg_read8(int chgnum, int offset, int *value)
 {
@@ -1594,6 +1595,11 @@ enum ec_error_list sm5803_is_acok(int chgnum, bool *acok)
 	/* If we're not sinking, then AC can't be OK. */
 	if (!(reg & SM5803_STATUS1_CHG_DET)) {
 		*acok = false;
+
+		/* Disable charge ramp when we're not sinking. */
+		if (IS_ENABLED(CONFIG_CHARGE_RAMP_HW))
+			sm5803_set_hw_ramp(chgnum, 0);
+
 		return EC_SUCCESS;
 	}
 
@@ -1608,6 +1614,10 @@ enum ec_error_list sm5803_is_acok(int chgnum, bool *acok)
 
 	/* Assume that ACOK would be asserted if VBUS is higher than ~4V. */
 	*acok = vbus_mv >= 4000;
+
+	/* When ACOK is asserted, enable charge ramp. */
+	if (*acok && IS_ENABLED(CONFIG_CHARGE_RAMP_HW))
+		sm5803_set_hw_ramp(chgnum, 1);
 
 	return EC_SUCCESS;
 }
