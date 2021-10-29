@@ -16,6 +16,24 @@
       "message": "You will need to add this to zephyr:\n  zephyr/shim/include/config_chip.h",
       "revId": "f66b5fdaf9e1f1f6e85d8c946a2d5f68b0268329",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae74bbca_d32d13df",
+        "filename": "include/config.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 1530,
+      "author": {
+        "id": 1470933
+      },
+      "writtenOn": "2021-10-29T08:38:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b9d0a872_de9dcffc",
+      "revId": "f66b5fdaf9e1f1f6e85d8c946a2d5f68b0268329",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
