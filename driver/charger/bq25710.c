@@ -218,7 +218,8 @@ static int bq25710_adc_start(int chgnum, int adc_en_mask)
 	 * maps to bit[7:0] in ADCOption register.
 	 */
 	reg = (adc_en_mask & BQ25710_ADC_OPTION_EN_ADC_ALL) |
-	      BQ25710_ADC_OPTION_ADC_START;
+		BQ25710_ADC_OPTION_FULL_SCALE |
+		BQ25710_ADC_OPTION_ADC_START;
 	if (raw_write16(chgnum, BQ25710_REG_ADC_OPTION, reg))
 		return EC_ERROR_UNKNOWN;
 
