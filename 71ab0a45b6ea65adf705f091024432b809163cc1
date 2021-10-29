@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a4cb6a8_83dc6606",
+        "filename": "include/driver/tcpm/tcpm.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-10-29T16:40:47Z",
+      "side": 1,
+      "message": "How about we just eliminate this config and only use the new flag?  The flag is more flexible and as you note can be set differently for each port.",
+      "range": {
+        "startLine": 230,
+        "startChar": 16,
+        "endLine": 230,
+        "endChar": 40
+      },
+      "revId": "71ab0a45b6ea65adf705f091024432b809163cc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
