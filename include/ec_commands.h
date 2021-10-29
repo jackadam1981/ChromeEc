@@ -4018,6 +4018,7 @@ struct ec_params_temp_sensor_get_info {
 struct ec_response_temp_sensor_get_info {
 	char sensor_name[32];
 	uint8_t sensor_type;
+	int thermal_fan_percent;
 } __ec_align1;
 
 /*****************************************************************************/

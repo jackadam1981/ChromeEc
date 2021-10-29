@@ -160,6 +160,7 @@ DECLARE_CONSOLE_COMMAND(temps, command_temps,
 static enum ec_status
 temp_sensor_command_get_info(struct host_cmd_handler_args *args)
 {
+	int rv, t;
 	const struct ec_params_temp_sensor_get_info *p = args->params;
 	struct ec_response_temp_sensor_get_info *r = args->response;
 	int id = p->id;
@@ -170,6 +171,18 @@ temp_sensor_command_get_info(struct host_cmd_handler_args *args)
 	strzcpy(r->sensor_name, temp_sensors[id].name, sizeof(r->sensor_name));
 	r->sensor_type = temp_sensors[id].type;
 
+#ifdef CONFIG_THROTTLE_AP
+	rv = temp_sensor_read(id, &t);
+	if (rv != EC_SUCCESS)
+		ccprintf("Temp_sensor_read failed!\n");
+
+	if (thermal_params[id].temp_fan_off &&
+	    thermal_params[id].temp_fan_max)
+		r->thermal_fan_percent =  thermal_fan_percent(
+				thermal_params[id].temp_fan_off,
+				thermal_params[id].temp_fan_max,
+				t);
+#endif
 	args->response_size = sizeof(*r);
 
 	return EC_RES_SUCCESS;
