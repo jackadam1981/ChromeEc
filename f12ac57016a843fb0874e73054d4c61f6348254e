@@ -22,6 +22,30 @@
       },
       "revId": "f12ac57016a843fb0874e73054d4c61f6348254e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "359b3ab0_a7ba5cd6",
+        "filename": "board/kingler/usbc_config.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2021-10-29T03:57:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c5eece08_9afd39d1",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 28
+      },
+      "revId": "f12ac57016a843fb0874e73054d4c61f6348254e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
