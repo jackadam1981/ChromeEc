@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7202a444_48fe1f76",
+        "filename": "zephyr/shim/include/usbc/ppc_syv682x.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-10-29T22:26:30Z",
+      "side": 1,
+      "message": "Add the USB-C port number:\n    [DT_USBC_PORT(id)] \u003d { ... },",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 3
+      },
+      "revId": "8a7096116d82bd9e8ba104edd570f9cb46056256",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
