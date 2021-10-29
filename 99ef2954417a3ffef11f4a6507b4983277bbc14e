@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5cd3b87a_466fb55c",
+        "filename": "zephyr/test/drivers/src/bmi260.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1592,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-10-29T21:47:44Z",
+      "side": 1,
+      "message": "Yeah, this really belongs in a test-rule (https://github.com/zephyrproject-rtos/zephyr/pull/39714) so please up-vote 😊",
+      "parentUuid": "edec0bd8_ae84c54b",
+      "revId": "99ef2954417a3ffef11f4a6507b4983277bbc14e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3da2ce06_c9ef9e31",
         "filename": "zephyr/test/drivers/src/bmi260.c",
         "patchSetId": 4
@@ -73,6 +91,30 @@
       "side": 1,
       "message": "So I was also thinking about our talk more. Given that the value is changing the contents of the val ptr instead of just returning a value, we may need a bit of indirection.\n\nThis is what I\u0027m gathering from the example here: https://github.com/meekrosoft/fff#custom-return-value-delegate-sequences",
       "parentUuid": "3da2ce06_c9ef9e31",
+      "range": {
+        "startLine": 1987,
+        "startChar": 11,
+        "endLine": 1987,
+        "endChar": 55
+      },
+      "revId": "99ef2954417a3ffef11f4a6507b4983277bbc14e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "36410c39_240de70b",
+        "filename": "zephyr/test/drivers/src/bmi260.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1987,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-10-29T21:47:44Z",
+      "side": 1,
+      "message": "Yes, using delegates. But you get more power by still being able to assert on the calls etc. I don\u0027t feel terribly strongly about this one, but I do want us to explore this option.",
+      "parentUuid": "fd6376ff_63b426ea",
       "range": {
         "startLine": 1987,
         "startChar": 11,
