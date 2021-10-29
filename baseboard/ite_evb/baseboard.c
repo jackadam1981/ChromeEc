@@ -67,7 +67,7 @@ const struct fan_tach_t fan_tach[] = {
 		.s_duty = -1,
 	},
 	[PWM_HW_CH_DCR2] = {
-		.ch_tach = TACH_CH_TACH1A,
+		.ch_tach = TACH_CH_TACH0A,
 		.fan_p = -1,
 		.rpm_re = -1,
 		.s_duty = -1,
@@ -97,7 +97,7 @@ const struct fan_tach_t fan_tach[] = {
 		.s_duty = -1,
 	},
 	[PWM_HW_CH_DCR7] = {
-		.ch_tach = TACH_CH_TACH0A,
+		.ch_tach = TACH_CH_TACH1A,
 		.fan_p = 2,
 		.rpm_re = 50,
 		.s_duty = 30,
