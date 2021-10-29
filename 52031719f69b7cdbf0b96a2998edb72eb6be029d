@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "78b7b49e_7a4db1d3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1470933
+      },
+      "writtenOn": "2021-10-29T08:44:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "53895080_1e3c750a",
+      "revId": "52031719f69b7cdbf0b96a2998edb72eb6be029d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4f9736a4_470cf0a1",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e1e883d_51768dba",
+        "filename": "chip/mt_scp/mt8195/clock.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1470933
+      },
+      "writtenOn": "2021-10-29T08:44:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4f9736a4_470cf0a1",
+      "revId": "52031719f69b7cdbf0b96a2998edb72eb6be029d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9b9aced8_d6bb0c0c",
@@ -48,6 +84,24 @@
       "writtenOn": "2021-10-29T05:48:26Z",
       "side": 1,
       "message": "Sort.",
+      "revId": "52031719f69b7cdbf0b96a2998edb72eb6be029d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ac0227d_c40cd5e7",
+        "filename": "chip/mt_scp/rv32i_common/watchdog.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1470933
+      },
+      "writtenOn": "2021-10-29T08:44:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9b9aced8_d6bb0c0c",
       "revId": "52031719f69b7cdbf0b96a2998edb72eb6be029d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
