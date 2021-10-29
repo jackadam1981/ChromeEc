@@ -626,6 +626,9 @@ enum ec_error_list charger_set_hw_ramp(int enable)
 {
 	int chgnum = 0;
 
+	if (IS_ENABLED(CONFIG_OCPC))
+		chgnum = charge_get_active_chg_chip();
+
 	if ((chgnum < 0) || (chgnum >= board_get_charger_chip_count())) {
 		CPRINTS("%s(%d) Invalid charger!", __func__, chgnum);
 		return EC_ERROR_INVAL;
