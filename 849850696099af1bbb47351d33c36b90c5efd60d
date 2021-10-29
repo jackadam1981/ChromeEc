@@ -70,6 +70,30 @@
       },
       "revId": "849850696099af1bbb47351d33c36b90c5efd60d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "786aac18_a7cc85dd",
+        "filename": "board/brya/i2c.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-10-29T01:02:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b1bb6cc1_e96d074e",
+      "range": {
+        "startLine": 101,
+        "startChar": 1,
+        "endLine": 101,
+        "endChar": 18
+      },
+      "revId": "849850696099af1bbb47351d33c36b90c5efd60d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
