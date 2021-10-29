@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3da2ce06_c9ef9e31",
+        "filename": "zephyr/test/drivers/src/bmi260.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1987,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-10-29T21:37:44Z",
+      "side": 1,
+      "message": "Had a chat with Aaron about this exact mock function today, can this be an FFF mock too? The up side is that the logic can live in the calling test function instead of in the function body so it\u0027s more obvious what\u0027s going on.",
+      "range": {
+        "startLine": 1987,
+        "startChar": 11,
+        "endLine": 1987,
+        "endChar": 55
+      },
+      "revId": "99ef2954417a3ffef11f4a6507b4983277bbc14e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
