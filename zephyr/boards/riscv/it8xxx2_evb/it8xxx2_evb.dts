@@ -218,7 +218,7 @@
 		fan_0 {
 			label = "FAN_0";
 			pwm = <&pwm_fan>;
-			tach = <&tach0>;
+			tach = <&tach1>;
 			rpm_min = <1500>;
 			rpm_start = <1500>;
 			rpm_max = <6500>;
@@ -270,7 +270,7 @@
 };
 
 /* fan tachometer sensor */
-&tach0 {
+&tach1 {
 	status = "okay";
 	channel = <TACH_CHANNEL_A>;
 	pulses-per-round = <2>;
