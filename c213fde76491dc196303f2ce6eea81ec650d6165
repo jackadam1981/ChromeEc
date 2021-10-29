@@ -72,6 +72,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a2c1556a_020eeace",
+        "filename": "zephyr/dts/bindings/gpio/named-gpios.yaml",
+        "patchSetId": 4
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-10-29T20:50:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4405d898_fd4bfc7b",
+      "range": {
+        "startLine": 18,
+        "startChar": 7,
+        "endLine": 18,
+        "endChar": 29
+      },
+      "revId": "c213fde76491dc196303f2ce6eea81ec650d6165",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b57df798_bf12da10",
@@ -180,6 +204,30 @@
       "side": 1,
       "message": "noted... I will change this",
       "parentUuid": "6259a262_38eb82c0",
+      "range": {
+        "startLine": 39,
+        "startChar": 1,
+        "endLine": 39,
+        "endChar": 22
+      },
+      "revId": "c213fde76491dc196303f2ce6eea81ec650d6165",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dcc36676_c7643dc3",
+        "filename": "zephyr/shim/include/power/power.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-10-29T20:50:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e28f26f7_51fc7231",
       "range": {
         "startLine": 39,
         "startChar": 1,
