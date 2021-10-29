@@ -22,6 +22,30 @@
       },
       "revId": "71ab0a45b6ea65adf705f091024432b809163cc1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed03edd0_c051245c",
+        "filename": "include/driver/tcpm/tcpm.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-10-29T21:25:33Z",
+      "side": 1,
+      "message": "agreed, but i think it\u0027ll be a pretty big tree-wide scrub to get there.\nwe\u0027ll have to think about the possibility of a compile-time assert\nto demonstrate equivalence. filed b/204591839.",
+      "parentUuid": "2a4cb6a8_83dc6606",
+      "range": {
+        "startLine": 230,
+        "startChar": 16,
+        "endLine": 230,
+        "endChar": 40
+      },
+      "revId": "71ab0a45b6ea65adf705f091024432b809163cc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
