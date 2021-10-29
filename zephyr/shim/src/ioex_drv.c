@@ -25,6 +25,9 @@
 #ifdef CONFIG_PLATFORM_EC_IOEX_CCGXXF
 #include "driver/tcpm/ccgxxf.h"
 #endif
+#ifdef CONFIG_PLATFORM_EC_IOEX_FAKE
+#include"ioex_drv_fake_cros.h"
+#endif
 #ifdef CONFIG_PLATFORM_EC_IOEX_IT8801
 #include "driver/ioexpander/it8801.h"
 #endif
