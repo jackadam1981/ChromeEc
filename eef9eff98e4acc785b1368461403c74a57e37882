@@ -22,6 +22,30 @@
       },
       "revId": "eef9eff98e4acc785b1368461403c74a57e37882",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b52262c1_c823d087",
+        "filename": "zephyr/test/drivers/src/ln9310.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 394,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2021-10-29T17:04:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "464c4b88_3d90133b",
+      "range": {
+        "startLine": 391,
+        "startChar": 1,
+        "endLine": 394,
+        "endChar": 3
+      },
+      "revId": "eef9eff98e4acc785b1368461403c74a57e37882",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
