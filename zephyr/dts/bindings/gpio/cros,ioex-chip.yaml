@@ -21,6 +21,7 @@ properties:
       required: true
       enum:
         - "ccgxxf_ioexpander_drv"
+        - "fake_ioexpander_drv"
         - "it8801_ioexpander_drv"
         - "nct38xx_ioexpander_drv"
         - "pca9675_ioexpander_drv"
