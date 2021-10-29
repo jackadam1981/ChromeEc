@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5215480c_2276d82f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-10-29T22:24:48Z",
+      "side": 1,
+      "message": "properties",
+      "range": {
+        "startLine": 12,
+        "startChar": 18,
+        "endLine": 12,
+        "endChar": 28
+      },
+      "revId": "a01d82b51f18b3f70e97c5d4504cb2123f64a0e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0cd01f07_c7697426",
+        "filename": "zephyr/dts/bindings/usbc/ti,sn5s330.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-10-29T22:24:48Z",
+      "side": 1,
+      "message": "Add this property and the description to the shared ppc-chip.yaml.  Then this file only needs to specify the default and enum attributes.\n\nThis also ensures all PPC chips include the i2c-addr-flags property.",
+      "range": {
+        "startLine": 8,
+        "startChar": 1,
+        "endLine": 9,
+        "endChar": 16
+      },
+      "revId": "a01d82b51f18b3f70e97c5d4504cb2123f64a0e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b179b947_4fe49108",
+        "filename": "zephyr/shim/include/usbc/ppc_sn5s330.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-10-29T22:24:48Z",
+      "side": 1,
+      "message": "You need to assign this to a specific array member using something like:\n    [DT_REG_ADDR(DT_PARENT(DT_DRV_INST(inst)))] \u003d { ... },\n\nYou should create a helper macro to get the USB-C port index, as it will be used by all the children drivers.",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 2
+      },
+      "revId": "a01d82b51f18b3f70e97c5d4504cb2123f64a0e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
