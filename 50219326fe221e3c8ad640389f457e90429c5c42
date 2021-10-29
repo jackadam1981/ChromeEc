@@ -16,6 +16,24 @@
       "message": "also drop this line.",
       "revId": "50219326fe221e3c8ad640389f457e90429c5c42",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a133c691_9bb50805",
+        "filename": "board/kingler/usbc_config.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2021-10-29T05:57:22Z",
+      "side": 1,
+      "message": "need this for function prototype declaration",
+      "parentUuid": "8f9d8847_f9cbdbb1",
+      "revId": "50219326fe221e3c8ad640389f457e90429c5c42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
