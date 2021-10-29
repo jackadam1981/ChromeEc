@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d32be75_33572aa4",
+        "filename": "driver/charger/bq25710.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-10-29T18:31:32Z",
+      "side": 1,
+      "message": "Nit - prefer a bool here or an enum type, so the caller\u0027s are self documenting:\n\nbq25710_set_psys_sensing(chgnum, true);\nbq25710_set_psys_sensing(chgnum, PSYS_ON);",
+      "range": {
+        "startLine": 167,
+        "startChar": 48,
+        "endLine": 167,
+        "endChar": 58
+      },
+      "revId": "3a8180eeeba8ee148560d92ef7b7f9f7499a11f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cce84d85_801654e6",
+        "filename": "driver/charger/bq25710.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-10-29T18:31:32Z",
+      "side": 1,
+      "message": "Use IS_ENABLED() here.",
+      "range": {
+        "startLine": 177,
+        "startChar": 0,
+        "endLine": 177,
+        "endChar": 35
+      },
+      "revId": "3a8180eeeba8ee148560d92ef7b7f9f7499a11f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be55919b_308a0d60",
+        "filename": "driver/charger/bq25710.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-10-29T18:31:32Z",
+      "side": 1,
+      "message": "Move this check to the top of the file.",
+      "range": {
+        "startLine": 186,
+        "startChar": 0,
+        "endLine": 186,
+        "endChar": 68
+      },
+      "revId": "3a8180eeeba8ee148560d92ef7b7f9f7499a11f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "339f3762_d0eb66de",
+        "filename": "driver/charger/bq25710.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-10-29T18:31:32Z",
+      "side": 1,
+      "message": "Because you\u0027ve defined separate name spaces here, you don\u0027t need this #ifdef and then driver can use IS_ENABLED().",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 35
+      },
+      "revId": "3a8180eeeba8ee148560d92ef7b7f9f7499a11f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a950adc9_82b64ad1",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1057,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-10-29T18:31:32Z",
+      "side": 1,
+      "message": "I think there a hardware requirement here.  The board must connect a resistor between the PSYS and ground to use this feature.",
+      "range": {
+        "startLine": 1057,
+        "startChar": 44,
+        "endLine": 1057,
+        "endChar": 64
+      },
+      "revId": "3a8180eeeba8ee148560d92ef7b7f9f7499a11f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
