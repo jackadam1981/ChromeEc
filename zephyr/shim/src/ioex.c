@@ -28,6 +28,15 @@ struct ioex_gpio_config {
 	gpio_pin_t pin;
 	/* From DTS, excludes interrupts flags */
 	gpio_flags_t init_flags;
+	/*
+	 * Index of CrOS IO expander chip
+	 * If IO expander uses CrOS EC driver, this value will be one
+	 * of the possible from enum ioexpander_id
+	 * otherwise, if using the Zephyr GPIO driver, this will be -1
+	 */
+	int ioex;
+	/* Port of IO expander. Valid only if ioex field is not -1 */
+	int port;
 };
 
 struct ioex_int_config {
@@ -129,6 +138,12 @@ static const struct ioex_gpio_config *ioex_get_signal_info(
 	ASSERT(signal_is_ioex(signal));
 
 	g = ioex_configs + signal - IOEX_SIGNAL_START;
+
+	if (g->ioex >= 0 &&
+	    !(ioex_config[g->ioex].flags & IOEX_FLAGS_INITIALIZED)) {
+		LOG_ERR("ioex %s disabled", g->name);
+		return NULL;
+	}
 
 	return g;
 }
@@ -285,6 +300,23 @@ static int ioex_init_default(const struct device *unused)
 	for (i = 0; i < IOEX_COUNT; i++) {
 		const struct ioex_gpio_config *g =
 				ioex_get_signal_info(IOEX_SIGNAL_START + i);
+		const struct ioexpander_drv *drv;
+		int flags;
+
+		if (!g || g->ioex < 0)
+			continue;
+
+		flags = convert_from_zephyr_flags(g->init_flags);
+		drv = ioex_config[g->ioex].drv;
+
+		if (!(flags & GPIO_DEFAULT)) {
+			/* Late-sysJump should not set the output levels */
+			if (system_jumped_late())
+				flags &= ~(GPIO_LOW | GPIO_HIGH);
+
+			drv->set_flags_by_mask(g->ioex, g->port,
+					(1 << g->pin), flags);
+		}
 
 		ioexes_flags[i] = g->init_flags;
 	}
@@ -323,8 +355,14 @@ int ioex_get_ioex_flags(enum ioex_signal signal, int *val)
 	if (g == NULL)
 		return EC_ERROR_INVAL;
 
-	/* Zephyr gpio drivers are initialized by internal subsystem */
-	*val = IOEX_FLAGS_INITIALIZED;
+	if (g->ioex < 0) {
+		/* Zephyr gpio drivers are initialized by internal subsystem */
+		*val = IOEX_FLAGS_INITIALIZED;
+		return EC_SUCCESS;
+	}
+
+	*val = ioex_config[g->ioex].flags;
+
 	return EC_SUCCESS;
 }
 
