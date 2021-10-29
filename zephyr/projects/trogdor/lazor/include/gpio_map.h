@@ -64,4 +64,7 @@
 		 bmi160_interrupt)                                            \
 	GPIO_INT(GPIO_TABLET_MODE_L, GPIO_INT_EDGE_BOTH, gmr_tablet_switch_isr)
 
+#define EC_CROS_IOEX_INTERRUPTS \
+	IOEX_INT(IOEX_FAKE5, GPIO_INT_EDGE_BOTH, ioex_test_interrupt)
+
 #endif /* __ZEPHYR_GPIO_MAP_H */
