@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cdb3cd4a_ac3a6fa8",
+        "filename": "zephyr/projects/herobrine/herobrine_npcx9/src/usbc_config.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-10-29T22:46:42Z",
+      "side": 1,
+      "message": "Is it possible to create a public function in the ppc.c shim to perform this copy?\n\nThen users only need to specify the alternate node to activate:\n\n    ppc_enable_alternate(ppc_port0_syv);\n    \nIf this isn\u0027t possible as runtime function, it can probably be done using a macro function.",
+      "range": {
+        "startLine": 199,
+        "startChar": 0,
+        "endLine": 200,
+        "endChar": 61
+      },
+      "revId": "82d2095ed570b2e4e3d5995543471fd836776ded",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
