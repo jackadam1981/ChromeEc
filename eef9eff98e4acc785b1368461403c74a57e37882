@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "464c4b88_3d90133b",
+        "filename": "zephyr/test/drivers/src/ln9310.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 394,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-10-29T15:59:28Z",
+      "side": 1,
+      "message": "This broke the build on gitlab.\n\n```\nERROR: [/tmp/zbuild-733_f94x-drivers:singleimage]/builds/zephyr-ec/ec/zephyr/test/drivers/src/ln9310.c: In function ‘test_ln9310_cfly_precharge_timesout’:\nERROR: [/tmp/zbuild-733_f94x-drivers:singleimage]/builds/zephyr-ec/ec/zephyr/test/drivers/src/ln9310.c:391:44: error: missing braces around initializer [-Werror\u003dmissing-braces]\nERROR: [/tmp/zbuild-733_f94x-drivers:singleimage]  391 |  struct precharge_timeout_data test_data \u003d {\nERROR: [/tmp/zbuild-733_f94x-drivers:singleimage]      |                                            ^\nERROR: [/tmp/zbuild-733_f94x-drivers:singleimage]  392 |   .time_to_mock \u003d -1,\nERROR: [/tmp/zbuild-733_f94x-drivers:singleimage]      |                   { }\nERROR: [/tmp/zbuild-733_f94x-drivers:singleimage]cc1: all warnings being treated as errors\n```",
+      "range": {
+        "startLine": 391,
+        "startChar": 1,
+        "endLine": 394,
+        "endChar": 3
+      },
+      "revId": "eef9eff98e4acc785b1368461403c74a57e37882",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
