@@ -25,6 +25,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0390beab_3263e7e5",
+        "filename": "zephyr/test/drivers/src/bmi260.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2126,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2021-10-29T20:43:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2bc58591_83060b9f",
+      "range": {
+        "startLine": 2126,
+        "startChar": 16,
+        "endLine": 2126,
+        "endChar": 24
+      },
+      "revId": "1e824e6df9769217e89f3e525ed03fad3bc6be3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "44ce9557_9f633133",
@@ -38,6 +62,24 @@
       "writtenOn": "2021-10-28T21:12:59Z",
       "side": 1,
       "message": "This should cause a linter error. Zephyr style, aka Linux style says declarations go at the beginning of the block.",
+      "revId": "1e824e6df9769217e89f3e525ed03fad3bc6be3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "257dbb56_fc6a465a",
+        "filename": "zephyr/test/drivers/src/bmi260.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2138,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2021-10-29T20:43:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "44ce9557_9f633133",
       "revId": "1e824e6df9769217e89f3e525ed03fad3bc6be3f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
