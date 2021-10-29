@@ -123,6 +123,30 @@
       },
       "revId": "99ef2954417a3ffef11f4a6507b4983277bbc14e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ade0831_2657f67b",
+        "filename": "zephyr/test/drivers/src/bmi260.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1987,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2021-10-29T21:56:39Z",
+      "side": 1,
+      "message": "What if we mock a new function in the emulator that\u0027s like so:\n\nstatic int ln9310_emul_mock_read_val(struct i2c_emul *emul, int reg, uint8_t *val,\n\t\t\t\t     int bytes)\n{\n\treturn *val;\n}\n\nThen at the end of a normal emulator read we have something like:\n\n\tdefault:\n\t\treturn -EINVAL;\n\t}\n\n\t*val \u003d ln9310_emul_mock_read_val(emul, reg, val, bytes);\n\treturn 0;\n}",
+      "parentUuid": "36410c39_240de70b",
+      "range": {
+        "startLine": 1987,
+        "startChar": 11,
+        "endLine": 1987,
+        "endChar": 55
+      },
+      "revId": "99ef2954417a3ffef11f4a6507b4983277bbc14e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
