@@ -16,6 +16,23 @@
       "message": "I\u0027m expecting this to fail in CQ, because the underlying breakage is unfixed.",
       "revId": "8664e8edf70ca9d5c3e5153efbeaf2678c908907",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "77b7d215_2b6d18e4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2021-10-29T15:53:03Z",
+      "side": 1,
+      "message": "Total nit: looks like we\u0027re listing the motivation first and the solution/action after.",
+      "revId": "8664e8edf70ca9d5c3e5153efbeaf2678c908907",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
