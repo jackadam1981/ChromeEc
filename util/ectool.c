@@ -3016,11 +3016,25 @@ int read_mapped_temperature(int id)
 	return rv;
 }
 
+static void cmd_temperature_print(
+	const struct ec_params_temp_sensor_get_info p,
+	const int rv, int *const rc)
+{
+	struct ec_response_temp_sensor_get_info r;
+	*rc = ec_command(EC_CMD_TEMP_SENSOR_GET_INFO, 0, &p, sizeof(p),
+			 &r, sizeof(r));
+	if (*rc >= 0)
+		printf("%-20s: %d K = %d C  %d%%\n", r.sensor_name,
+		       rv + EC_TEMP_SENSOR_OFFSET,
+		       K_TO_C(rv + EC_TEMP_SENSOR_OFFSET),
+		       r.thermal_fan_percent);
+}
 
 int cmd_temperature(int argc, char *argv[])
 {
+	struct ec_params_temp_sensor_get_info p;
 	int rv;
-	int id;
+	int rc = 0;
 	char *e;
 
 	if (argc != 2) {
@@ -3029,45 +3043,44 @@ int cmd_temperature(int argc, char *argv[])
 	}
 
 	if (strcmp(argv[1], "all") == 0) {
-		for (id = 0;
-		     id < EC_TEMP_SENSOR_ENTRIES + EC_TEMP_SENSOR_B_ENTRIES;
-		     id++) {
-			rv = read_mapped_temperature(id);
+		for (p.id = 0;
+		     p.id < EC_TEMP_SENSOR_ENTRIES + EC_TEMP_SENSOR_B_ENTRIES;
+		     p.id++) {
+			rv = read_mapped_temperature(p.id);
 			switch (rv) {
 			case EC_TEMP_SENSOR_NOT_PRESENT:
 				break;
 			case EC_TEMP_SENSOR_ERROR:
-				fprintf(stderr, "Sensor %d error\n", id);
+				fprintf(stderr, "Sensor %d error\n", p.id);
 				break;
 			case EC_TEMP_SENSOR_NOT_POWERED:
-				fprintf(stderr, "Sensor %d disabled\n", id);
+				fprintf(stderr, "Sensor %d disabled\n", p.id);
 				break;
 			case EC_TEMP_SENSOR_NOT_CALIBRATED:
 				fprintf(stderr, "Sensor %d not calibrated\n",
-					id);
+					p.id);
 				break;
 			default:
-				printf("%d: %d K\n", id,
-				       rv + EC_TEMP_SENSOR_OFFSET);
+				cmd_temperature_print(p, rv, &rc);
 			}
 		}
 		return 0;
 	}
 
-	id = strtol(argv[1], &e, 0);
+	p.id = strtol(argv[1], &e, 0);
 	if (e && *e) {
 		fprintf(stderr, "Bad sensor ID.\n");
 		return -1;
 	}
 
-	if (id < 0 ||
-	    id >= EC_TEMP_SENSOR_ENTRIES + EC_TEMP_SENSOR_B_ENTRIES) {
+	if (p.id < 0 ||
+	    p.id >= EC_TEMP_SENSOR_ENTRIES + EC_TEMP_SENSOR_B_ENTRIES) {
 		printf("Sensor ID invalid.\n");
 		return -1;
 	}
 
 	printf("Reading temperature...");
-	rv = read_mapped_temperature(id);
+	rv = read_mapped_temperature(p.id);
 
 	switch (rv) {
 	case EC_TEMP_SENSOR_NOT_PRESENT:
@@ -3083,8 +3096,8 @@ int cmd_temperature(int argc, char *argv[])
 		fprintf(stderr, "Sensor not calibrated\n");
 		return -1;
 	default:
-		printf("%d K\n", rv + EC_TEMP_SENSOR_OFFSET);
-		return 0;
+		cmd_temperature_print(p, rv, &rc);
+		return rc;
 	}
 }
 
