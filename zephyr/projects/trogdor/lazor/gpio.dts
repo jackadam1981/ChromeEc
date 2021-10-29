@@ -443,4 +443,139 @@
 			<&gpio6 0 0>,
 			<&gpio7 2 0>;
 	};
+
+	named-ioexes {
+		compatible = "named-ioexes";
+
+		fake0 {
+			gpios = <&ioex_chip0_port0 0 GPIO_OUT_LOW>;
+			enum-name = "IOEX_FAKE0";
+			label = "IOEX_FAKE0";
+		};
+
+		fake1 {
+			gpios = <&ioex1_port0 2 GPIO_OUT_LOW>;
+			enum-name = "IOEX_FAKE1";
+			label = "IOEX_FAKE1";
+		};
+
+		fake2 {
+			gpios = <&ioex_chip0_port1 2 GPIO_OUT_LOW>;
+			enum-name = "IOEX_FAKE2";
+			label = "IOEX_FAKE2";
+		};
+
+		fake3 {
+			gpios = <&ioex1_port1 5 GPIO_OUT_HIGH>;
+			enum-name = "IOEX_FAKE3";
+			label = "IOEX_FAKE3";
+		};
+
+		fake4 {
+			gpios = <&fake_chip0_port0 0 GPIO_OUT_HIGH>;
+			enum-name = "IOEX_FAKE4";
+			label = "IOEX_FAKE4";
+		};
+
+		fake_int_pin: fake5 {
+			gpios = <&fake_chip0_port0 5 GPIO_INPUT>;
+			enum-name = "IOEX_FAKE5";
+			label = "IOEX_FAKE5";
+		};
+
+		fake6 {
+			gpios = <&fake_chip0_port1 0 GPIO_OUT_LOW>;
+			enum-name = "IOEX_FAKE6";
+			label = "IOEX_FAKE6";
+		};
+
+		fake7 {
+			gpios = <&fake_chip0_port1 6 GPIO_OUT_LOW>;
+			enum-name = "IOEX_FAKE7";
+			label = "IOEX_FAKE7";
+		};
+	};
+
+	fake_chip0: fake_chip0 {
+		compatible = "cros,ioex-chip";
+		i2c-port = <&i2c_battery>;
+		i2c-addr = <0x50>;
+		drv = "fake_ioexpander_drv";
+		flags = <0>;
+		int-gpios = <&gpiof 5 GPIO_ACTIVE_LOW>;
+		#address-cells = <1>;
+		#size-cells = <0>;
+		fake_chip0_port0: fake_chip0_port0@0 {
+			compatible = "cros,ioex-port";
+			reg = <0>;
+			gpio-controller;
+			#gpio-cells = <2>;
+			ngpios = <8>;
+		};
+		fake_chip0_port1: fake_chip0_port1@1 {
+			compatible = "cros,ioex-port";
+			reg = <1>;
+			gpio-controller;
+			#gpio-cells = <2>;
+			ngpios = <8>;
+		};
+	};
+
+	ioex_chip0: ioex_chip0 {
+		compatible = "cros,ioex-chip";
+		i2c-port = <&i2c_battery>;
+		i2c-addr = <0x50>;
+		drv = "tca64xxa_ioexpander_drv";
+		flags = <0x04000001>;
+		#address-cells = <1>;
+		#size-cells = <0>;
+		ioex_chip0_port0: ioex_chip0_port0@0 {
+			compatible = "cros,ioex-port";
+			reg = <0>;
+			gpio-controller;
+			#gpio-cells = <2>;
+			ngpios = <8>;
+		};
+		ioex_chip0_port1: ioex_chip0_port1@1 {
+			compatible = "cros,ioex-port";
+			reg = <1>;
+			gpio-controller;
+			#gpio-cells = <2>;
+			ngpios = <8>;
+		};
+	};
+};
+
+&i2c0_0 {
+	status = "okay";
+
+	ioex_ctrl1: ioex-ctrl@20 {
+		compatible = "cypress,cy8c95xx-gpio";
+		reg = <0x20>;
+		label = "cy8c95xx_gpio";
+
+		ranges;
+		#address-cells = <1>;
+		#size-cells = <0>;
+
+		ioex1_port0: cy8c95xx_port@0 {
+			compatible = "cypress,cy8c95xx-gpio-port";
+			reg = <0x00>;
+			label = "cy8c95xx_port0";
+			gpio-controller;
+			#gpio-cells = <2>;
+			ngpios = <8>;
+			status = "okay";
+		};
+
+		ioex1_port1: cy8c95xx_port@1 {
+			compatible = "cypress,cy8c95xx-gpio-port";
+			reg = <0x01>;
+			label = "cy8c95xx_port1";
+			gpio-controller;
+			#gpio-cells = <2>;
+			ngpios = <8>;
+			status = "okay";
+		};
+	};
 };
