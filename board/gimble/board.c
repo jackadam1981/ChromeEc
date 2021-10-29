@@ -25,6 +25,7 @@
 #include "lid_switch.h"
 #include "power_button.h"
 #include "power.h"
+#include "ps8xxx.h"
 #include "registers.h"
 #include "switch.h"
 #include "tablet_mode.h"
@@ -135,6 +136,43 @@ static void board_init(void)
 	}
 }
 DECLARE_HOOK(HOOK_SECOND, board_init, HOOK_PRIO_DEFAULT);
+
+__overridable void board_ps8xxx_tcpc_init(int port)
+{
+	int val;
+
+	if (i2c_read8(I2C_PORT_USB_C1_TCPC,
+		PS8751_I2C_ADDR1_P1_FLAGS, 0x20, &val))
+		CPRINTS("ps8815: fail to read reg 0x20");
+
+	if (i2c_write8(I2C_PORT_USB_C1_TCPC,
+		PS8751_I2C_ADDR1_P1_FLAGS, 0x20, 0x99))
+		CPRINTS("ps8815: fail to write reg 0x20");
+
+	if (i2c_read8(I2C_PORT_USB_C1_TCPC,
+		PS8751_I2C_ADDR1_P1_FLAGS, 0x22, &val))
+		CPRINTS("ps8815: fail to read reg 0x22");
+
+	if (i2c_write8(I2C_PORT_USB_C1_TCPC,
+		PS8751_I2C_ADDR1_P1_FLAGS, 0x22, 0x64))
+		CPRINTS("ps8815: fail to write reg 0x22");
+
+	if (i2c_read8(I2C_PORT_USB_C1_TCPC,
+		PS8751_I2C_ADDR1_P1_FLAGS, 0x24, &val))
+		CPRINTS("ps8815: fail to read reg 0x24");
+
+	if (i2c_write8(I2C_PORT_USB_C1_TCPC,
+		PS8751_I2C_ADDR1_P1_FLAGS, 0x24, 0x44))
+		CPRINTS("ps8815: fail to write reg 0x24");
+
+	if (i2c_read8(I2C_PORT_USB_C1_TCPC,
+		PS8751_I2C_ADDR1_P1_FLAGS, 0x26, &val))
+		CPRINTS("ps8815: fail to read reg 0x26");
+
+	if (i2c_write8(I2C_PORT_USB_C1_TCPC,
+		PS8751_I2C_ADDR1_P1_FLAGS, 0x26, 0x44))
+		CPRINTS("ps8815: fail to write reg 0x26");
+}
 
 __override void board_set_charge_limit(int port, int supplier, int charge_ma,
 			    int max_ma, int charge_mv)
