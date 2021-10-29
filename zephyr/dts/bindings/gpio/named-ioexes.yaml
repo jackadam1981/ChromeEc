@@ -1,0 +1,21 @@
+description: Named IOEXes parent node
+
+compatible: "named-ioexes"
+
+child-binding:
+    description: Named IOEXes child node
+    include: ioex-enum-name.yaml
+    properties:
+       gpios:
+          type: phandle-array
+          required: true
+       label:
+          required: true
+          type: string
+          description: |
+            Human readable string describing the device (used as
+            device_get_binding() argument)
+       "#gpio-cells":
+          type: int
+          required: false
+          const: 0
