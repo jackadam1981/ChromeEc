@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e4aac31_f1cb110e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 38
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-10-29T16:34:36Z",
+      "side": 1,
+      "message": "This would also probably be fixed by using #ifdef instead of IS_ENABLED() for this block, ",
+      "revId": "384ca6d0c130f0664519ac7b9c909d22bdbfdca3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a664e97_c8b26692",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 38
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-10-29T16:34:36Z",
+      "side": 1,
+      "message": "Changing this to #ifdef CONFIG_LSMDSM_SEC_I2C would probably also fix this error. But I\u0027m good with keeping the IS_ENABLED().",
+      "range": {
+        "startLine": 190,
+        "startChar": 0,
+        "endLine": 190,
+        "endChar": 42
+      },
+      "revId": "384ca6d0c130f0664519ac7b9c909d22bdbfdca3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
