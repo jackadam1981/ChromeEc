@@ -1,0 +1,20 @@
+description: IEOX port definition
+
+compatible: "cros,ioex-port"
+
+include: [gpio-controller.yaml, base.yaml]
+
+properties:
+    reg:
+      required: true
+
+    "#gpio-cells":
+      const: 2
+
+    ngpios:
+      required: true
+      const: 8
+
+gpio-cells:
+  - pin
+  - flags
