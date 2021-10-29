@@ -16,6 +16,24 @@
       "message": "thanks for fixing.\nI wouldn\u0027t be surprised if this is exactly what affected spiflash-over-servo for DTDBs and required blind-write workaround there.",
       "revId": "1053767af03e18d28912226e1cc74b175657b490",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "598da79c_5cc24a92",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-10-29T20:09:24Z",
+      "side": 1,
+      "message": "probably all what\u0027s left is to educate flashrom of another possible raiden device.",
+      "parentUuid": "86607f7d_105c49a1",
+      "revId": "1053767af03e18d28912226e1cc74b175657b490",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
