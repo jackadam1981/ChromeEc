@@ -34,6 +34,23 @@
       "parentUuid": "86607f7d_105c49a1",
       "revId": "1053767af03e18d28912226e1cc74b175657b490",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c540956c_65d6a4e0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2021-10-29T20:16:22Z",
+      "side": 1,
+      "message": "Lets cherry-pick over to servo firmware branch once we have tested it 😊",
+      "revId": "1053767af03e18d28912226e1cc74b175657b490",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
