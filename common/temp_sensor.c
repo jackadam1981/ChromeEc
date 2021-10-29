@@ -107,19 +107,20 @@ int print_temps(void)
 	int t, i;
 	int rv, rv1 = EC_SUCCESS;
 
+	ccprintf("--sensor name -------- temperature -------- fan speed --\n");
 	for (i = 0; i < TEMP_SENSOR_COUNT; ++i) {
-		ccprintf("  %-20s: ", temp_sensors[i].name);
+		ccprintf("  %-20s  ", temp_sensors[i].name);
 		rv = temp_sensor_read(i, &t);
 		if (rv)
 			rv1 = rv;
 
 		switch (rv) {
 		case EC_SUCCESS:
-			ccprintf("%d K = %d C", t, K_TO_C(t));
+			ccprintf("%d K (= %d C)", t, K_TO_C(t));
 #ifdef CONFIG_THROTTLE_AP
 			if (thermal_params[i].temp_fan_off &&
 			    thermal_params[i].temp_fan_max)
-				ccprintf("  %d%%",
+				ccprintf("  %11d%%",
 					 thermal_fan_percent(
 						 thermal_params[i].temp_fan_off,
 						 thermal_params[i].temp_fan_max,
