@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "edec0bd8_ae84c54b",
+        "filename": "zephyr/test/drivers/src/bmi260.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1592,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2021-10-29T21:42:20Z",
+      "side": 1,
+      "message": "I\u0027d also be happy with doing that in a tiny followup CL.",
+      "parentUuid": "284c0d22_8ab8e055",
+      "revId": "99ef2954417a3ffef11f4a6507b4983277bbc14e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3da2ce06_c9ef9e31",
         "filename": "zephyr/test/drivers/src/bmi260.c",
         "patchSetId": 4
