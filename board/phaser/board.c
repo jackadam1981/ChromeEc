@@ -252,7 +252,15 @@ static void cbi_init(void)
 }
 DECLARE_HOOK(HOOK_INIT, cbi_init, HOOK_PRIO_INIT_I2C + 1);
 
+<<<<<<< HEAD   (caf383 driver: add ICM-42607 driver support)
 #ifndef TEST_BUILD
+=======
+void board_hibernate_late(void)
+{
+	NPCX_KBSINPU = 0x0A;
+}
+
+>>>>>>> CHANGE (c17735 phaser: undef hibernate psl and keep KSI1/3 high in deep sle)
 /* This callback disables keyboard when convertibles are fully open */
 void lid_angle_peripheral_enable(int enable)
 {
