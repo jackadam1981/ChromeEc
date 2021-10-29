@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "363052b3_ae945d07",
+        "filename": "zephyr/dts/bindings/usbc/named-usbc-ports.yaml",
+        "patchSetId": 7
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2021-10-29T06:46:31Z",
+      "side": 1,
+      "message": "Unfortunately, it doesn\u0027t work that way with # * - cells. The value has to be specified in dts otherwise defaults are used (# address-cells \u003d 2, # size-cells \u003d 1). Additionally, using default values for these properties generates warnings.",
+      "parentUuid": "f17efd85_0b497531",
+      "range": {
+        "startLine": 12,
+        "startChar": 4,
+        "endLine": 13,
+        "endChar": 12
+      },
+      "revId": "f76daade9acb06c8cb475cc2255a56abaea2a586",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "99a09f35_28e6f9fa",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-10-28T18:47:59Z",
       "side": 1,
       "message": "There\u0027s no binding for this is there? I think you can remove these lines.",
+      "range": {
+        "startLine": 12,
+        "startChar": 3,
+        "endLine": 12,
+        "endChar": 34
+      },
+      "revId": "f76daade9acb06c8cb475cc2255a56abaea2a586",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b50baead_13864b72",
+        "filename": "zephyr/projects/herobrine/herobrine_npcx9/usbc.dts",
+        "patchSetId": 7
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2021-10-29T06:46:31Z",
+      "side": 1,
+      "message": "True, there is no binding for \"named-usbc-port\". I added it, because if you include \"base.yaml\"(to use \"reg\") compatible property is required. Now, I specify the \"reg\" on my own, without including base.yaml, so \"compatible\" is not needed.",
+      "parentUuid": "99a09f35_28e6f9fa",
       "range": {
         "startLine": 12,
         "startChar": 3,
