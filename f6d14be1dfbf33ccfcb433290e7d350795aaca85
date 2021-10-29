@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "66201d2f_7173ad99",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2021-10-29T20:24:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e4508922_38983dc6",
+      "revId": "f6d14be1dfbf33ccfcb433290e7d350795aaca85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2c43555c_5671a6da",
@@ -130,6 +148,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c0d4dd02_8a19f383",
+        "filename": "driver/accelgyro_bmi260.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 408,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2021-10-29T20:24:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bfd2dbc8_22c7a417",
+      "range": {
+        "startLine": 408,
+        "startChar": 52,
+        "endLine": 408,
+        "endChar": 64
+      },
+      "revId": "f6d14be1dfbf33ccfcb433290e7d350795aaca85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5149ec50_3f4b0a70",
@@ -143,6 +185,30 @@
       "writtenOn": "2021-10-26T02:12:08Z",
       "side": 1,
       "message": "Same here, this will go away",
+      "range": {
+        "startLine": 17,
+        "startChar": 44,
+        "endLine": 17,
+        "endChar": 51
+      },
+      "revId": "f6d14be1dfbf33ccfcb433290e7d350795aaca85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f52d23b_a3df708c",
+        "filename": "include/init_rom.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2021-10-29T20:24:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5149ec50_3f4b0a70",
       "range": {
         "startLine": 17,
         "startChar": 44,
@@ -220,6 +286,24 @@
       "side": 1,
       "message": "Go for it! 😊",
       "parentUuid": "c2ce7c9d_9d455c38",
+      "revId": "f6d14be1dfbf33ccfcb433290e7d350795aaca85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1503830c_cc8e7c97",
+        "filename": "zephyr/test/drivers/src/bmi260.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1930,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2021-10-29T20:24:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "de1a11bb_5b0c5207",
       "revId": "f6d14be1dfbf33ccfcb433290e7d350795aaca85",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
