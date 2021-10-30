@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee5495ab_dfeb691d",
+        "filename": "driver/charger/bq25710.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-10-30T00:56:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4d32be75_33572aa4",
+      "range": {
+        "startLine": 167,
+        "startChar": 48,
+        "endLine": 167,
+        "endChar": 58
+      },
+      "revId": "3a8180eeeba8ee148560d92ef7b7f9f7499a11f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cce84d85_801654e6",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-10-29T18:31:32Z",
       "side": 1,
       "message": "Use IS_ENABLED() here.",
+      "range": {
+        "startLine": 177,
+        "startChar": 0,
+        "endLine": 177,
+        "endChar": 35
+      },
+      "revId": "3a8180eeeba8ee148560d92ef7b7f9f7499a11f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dbb30fd6_302212ac",
+        "filename": "driver/charger/bq25710.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-10-30T00:56:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cce84d85_801654e6",
       "range": {
         "startLine": 177,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ebdc962a_87a1f967",
+        "filename": "driver/charger/bq25710.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-10-30T00:56:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "be55919b_308a0d60",
+      "range": {
+        "startLine": 186,
+        "startChar": 0,
+        "endLine": 186,
+        "endChar": 68
+      },
+      "revId": "3a8180eeeba8ee148560d92ef7b7f9f7499a11f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "339f3762_d0eb66de",
@@ -93,6 +165,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4dcef37_258dbd78",
+        "filename": "driver/charger/bq25710.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-10-30T00:56:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "339f3762_d0eb66de",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 35
+      },
+      "revId": "3a8180eeeba8ee148560d92ef7b7f9f7499a11f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a950adc9_82b64ad1",
@@ -106,6 +202,30 @@
       "writtenOn": "2021-10-29T18:31:32Z",
       "side": 1,
       "message": "I think there a hardware requirement here.  The board must connect a resistor between the PSYS and ground to use this feature.",
+      "range": {
+        "startLine": 1057,
+        "startChar": 44,
+        "endLine": 1057,
+        "endChar": 64
+      },
+      "revId": "3a8180eeeba8ee148560d92ef7b7f9f7499a11f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e941928c_12fcd3de",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1057,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-10-30T00:56:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a950adc9_82b64ad1",
       "range": {
         "startLine": 1057,
         "startChar": 44,
