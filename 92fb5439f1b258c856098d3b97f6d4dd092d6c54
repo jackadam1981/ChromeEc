@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3b16398_51513c6f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-10-30T00:29:33Z",
+      "side": 1,
+      "message": "Just curious. Since this is coming from the same button, when Power Button is NOT pressed - both lines would be asserted and EC will get 2 interrupts for every Recovery button press. Is that behavior intended? What is the purpose of GSC_EC_RECOVERY_BUTTON line?",
+      "revId": "92fb5439f1b258c856098d3b97f6d4dd092d6c54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
