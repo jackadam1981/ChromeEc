@@ -104,6 +104,24 @@
       "parentUuid": "c0b9c10d_7da0f153",
       "revId": "1053767af03e18d28912226e1cc74b175657b490",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6ea20f4_42e6f0d7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2021-10-30T01:50:35Z",
+      "side": 1,
+      "message": "Yes, my mistake.  This code runs on servo micro (not the v4).",
+      "parentUuid": "7b433a6b_cfd49d00",
+      "revId": "1053767af03e18d28912226e1cc74b175657b490",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
