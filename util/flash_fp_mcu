@@ -1,4 +1,4 @@
-#!/bin/bash
+y!/bin/bash
 # Copyright 2019 The Chromium OS Authors. All rights reserved.
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
@@ -597,6 +597,11 @@ config_brya() {
   readonly GPIO_BOOT0=312
   # FP_PWR_EN is on GPP_D2 = 312 + (101 - 99) = 314
   readonly GPIO_PWREN=314
+}
+
+config_brask() {
+  # Let's call the config_brya since brask follows the brya HW design
+  config_brya
 }
 
 config_zork() {
