@@ -34,6 +34,24 @@
       "parentUuid": "f3b16398_51513c6f",
       "revId": "92fb5439f1b258c856098d3b97f6d4dd092d6c54",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b4c653d6_f8392161",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2021-10-31T05:12:11Z",
+      "side": 1,
+      "message": "I submitted a patch to remove the CONFIG_DEDICATED_RECOVERY_BUTTON_2 which is used for the EC_RECOVERY_BTN_OD. I have verified this patch with below cases:\n\n1. recovery mode (Press power key and recovery button, release the recovery button and wait 1s before releasing power key).\n2. press recovery key in the OS to trigger sysrq and warm reset.\n3. press recovery key to switch to dev mode.",
+      "parentUuid": "30506d14_f70dc1ed",
+      "revId": "92fb5439f1b258c856098d3b97f6d4dd092d6c54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
