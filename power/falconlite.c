@@ -519,6 +519,7 @@ enum power_state power_handle_state(enum power_state state)
 
 		GPIO_SET_LEVEL(GPIO_SYS_RST_ODL, 1);
 
+#if 0
 		if (power_wait_mask_signals_timeout(0, IN_AP_WDT,
 						    AP_EC_WDT_TIMEOUT)) {
 			if (s5s3_retry) {
@@ -529,6 +530,7 @@ enum power_state power_handle_state(enum power_state state)
 			/* Give up, go back to G3. */
 			return POWER_S5G3;
 		}
+#endif
 
 		/* Call hooks now that rails are up */
 		hook_notify(HOOK_CHIPSET_STARTUP);
@@ -545,8 +547,10 @@ enum power_state power_handle_state(enum power_state state)
 		 * asserting WDT.
 		 */
 		GPIO_SET_LEVEL(GPIO_SYS_RST_ODL, 0);
+#if 0
 		if (power_wait_signals_timeout(IN_AP_WDT, AP_EC_WDT_TIMEOUT))
 			CPRINTS("Timeout waitting AP watchdog, force if off");
+#endif
 		power_signal_disable_interrupt(GPIO_AP_EC_WATCHDOG_L);
 
 		power_seq_run(s3s5_power_seq, ARRAY_SIZE(s3s5_power_seq));
