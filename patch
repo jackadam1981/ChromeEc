@@ -1,0 +1,231 @@
+diff --git a/board/beetley/board.c b/board/beetley/board.c
+index 08c9ba506..435071414 100644
+--- a/board/beetley/board.c
++++ b/board/beetley/board.c
+@@ -21,6 +21,9 @@
+ #include "driver/tcpm/raa489000.h"
+ #include "driver/tcpm/tcpci.h"
+ #include "driver/usb_mux/it5205.h"
++#include "driver/accelgyro_bmi_common.h"
++#include "driver/accelgyro_bmi260.h"
++#include "driver/accelgyro_icm42607.h"
+ #include "gpio.h"
+ #include "hooks.h"
+ #include "intc.h"
+@@ -43,6 +46,7 @@
+ #include "usb_pd.h"
+ #include "usb_pd_tcpm.h"
+ 
++#define CPRINTF(format, args...) cprints(CC_SYSTEM, format, ## args)
+ #define CPRINTUSB(format, args...) cprints(CC_USBCHARGE, format, ## args)
+ #define INT_RECHECK_US 5000
+ 
+@@ -306,7 +310,107 @@ struct motion_sensor_t motion_sensors[] = {
+ 	},
+ };
+ 
+-const unsigned int motion_sensor_count = ARRAY_SIZE(motion_sensors);
++unsigned int motion_sensor_count = ARRAY_SIZE(motion_sensors);
++
++static struct bmi_drv_data_t g_bmi220_data;
++const mat33_fp_t based_ref_bmi220 = {
++	{ 0, FLOAT_TO_FP(1), 0},
++	{ FLOAT_TO_FP(-1), 0, 0},
++	{ 0, 0, FLOAT_TO_FP(1)}
++};
++struct motion_sensor_t bmi220_base_accel = {
++	 .name = "Base Accel",
++	 .active_mask = SENSOR_ACTIVE_S0_S3,
++	 .chip = MOTIONSENSE_CHIP_BMI220,
++	 .type = MOTIONSENSE_TYPE_ACCEL,
++	 .location = MOTIONSENSE_LOC_BASE,
++	 .drv = &bmi260_drv,
++	 .mutex = &g_base_mutex,
++	 .drv_data = &g_bmi220_data,
++	 .port = I2C_PORT_SENSOR,
++	 .i2c_spi_addr_flags = BMI260_ADDR0_FLAGS,
++	 .default_range = 4, /* g, to meet CDD 7.3.1/C-1-4 reqs.*/
++	 .rot_standard_ref = &based_ref_bmi220,
++	 .min_frequency = BMI_ACCEL_MIN_FREQ,
++	 .max_frequency = BMI_ACCEL_MAX_FREQ,
++	 .config = {
++		[SENSOR_CONFIG_EC_S0] = {
++				.odr = 13000 | ROUND_UP_FLAG,
++				.ec_rate = 100 * MSEC,
++		},
++		[SENSOR_CONFIG_EC_S3] = {
++			.odr = 10000 | ROUND_UP_FLAG,
++			.ec_rate = 100 * MSEC,
++		},
++	 },
++};
++
++struct motion_sensor_t bmi220_base_gyro = {
++	 .name = "Base Gyro",
++	 .active_mask = SENSOR_ACTIVE_S0_S3,
++	 .chip = MOTIONSENSE_CHIP_BMI220,
++	 .type = MOTIONSENSE_TYPE_GYRO,
++	 .location = MOTIONSENSE_LOC_BASE,
++	 .drv = &bmi260_drv,
++	 .mutex = &g_base_mutex,
++	 .drv_data = &g_bmi220_data,
++	 .port = I2C_PORT_SENSOR,
++	 .i2c_spi_addr_flags = BMI260_ADDR0_FLAGS,
++	 .default_range = 1000, /* dps */
++	 .rot_standard_ref = &based_ref_bmi220,
++	 .min_frequency = BMI_GYRO_MIN_FREQ,
++	 .max_frequency = BMI_GYRO_MAX_FREQ,
++};
++
++static struct icm_drv_data_t g_icm42607_data;
++const mat33_fp_t based_ref_icm42607 = {
++	{ FLOAT_TO_FP(1), 0, 0},
++	{ 0, FLOAT_TO_FP(1), 0},
++	{ 0, 0, FLOAT_TO_FP(1)}
++};
++struct motion_sensor_t icm42607_base_accel = {
++	 .name = "Base Accel",
++	 .active_mask = SENSOR_ACTIVE_S0_S3,
++	 .chip = MOTIONSENSE_CHIP_ICM42607,
++	 .type = MOTIONSENSE_TYPE_ACCEL,
++	 .location = MOTIONSENSE_LOC_BASE,
++	 .drv = &icm42607_drv,
++	 .mutex = &g_base_mutex,
++	 .drv_data = &g_icm42607_data,
++	 .port = I2C_PORT_SENSOR,
++	 .i2c_spi_addr_flags = ICM42607_ADDR0_FLAGS,
++	 .default_range = 4, /* g, to meet CDD 7.3.1/C-1-4 reqs.*/
++	 .rot_standard_ref = &based_ref_icm42607,
++	 .min_frequency = ICM42607_ACCEL_MIN_FREQ,
++	 .max_frequency = ICM42607_ACCEL_MAX_FREQ,
++	 .config = {
++		 /* EC use accel for angle detection */
++		[SENSOR_CONFIG_EC_S0] = {
++			.odr = 10000 | ROUND_UP_FLAG,
++		},
++		/* EC use accel for angle detection */
++		[SENSOR_CONFIG_EC_S3] = {
++			.odr = 10000 | ROUND_UP_FLAG,
++		},
++	 },
++};
++
++struct motion_sensor_t icm42607_base_gyro = {
++	 .name = "Base Gyro",
++	 .active_mask = SENSOR_ACTIVE_S0_S3,
++	 .chip = MOTIONSENSE_CHIP_ICM42607,
++	 .type = MOTIONSENSE_TYPE_GYRO,
++	 .location = MOTIONSENSE_LOC_BASE,
++	 .drv = &icm42607_drv,
++	 .mutex = &g_base_mutex,
++	 .drv_data = &g_icm42607_data,
++	 .port = I2C_PORT_SENSOR,
++	 .i2c_spi_addr_flags = ICM42607_ADDR0_FLAGS,
++	 .default_range = 1000, /* dps */
++	 .rot_standard_ref = &based_ref_icm42607,
++	 .min_frequency = ICM42607_GYRO_MIN_FREQ,
++	 .max_frequency = ICM42607_GYRO_MAX_FREQ,
++};
+ 
+ void board_init(void)
+ {
+@@ -336,9 +440,51 @@ void board_init(void)
+ 	keyscan_config.actual_key_mask[13] = 0xff;
+ 	keyscan_config.actual_key_mask[14] = 0xff;
+ 
++	if (get_cbi_fw_config_tablet_mode()) {
++		if (get_cbi_ssfc_base_sensor() ==
++					SSFC_SENSOR_ICM42607) {
++			motion_sensors[BASE_ACCEL] =
++					icm42607_base_accel;
++			motion_sensors[BASE_GYRO] = icm42607_base_gyro;
++			CPRINTF("BASE GYRO is ICM42607");
++		} else if (get_cbi_ssfc_base_sensor() ==
++					SSFC_SENSOR_BMI220) {
++			motion_sensors[BASE_ACCEL] = bmi220_base_accel;
++			motion_sensors[BASE_GYRO] = bmi220_base_gyro;
++			CPRINTF("BASE GYRO is BMI220");
++		} else {
++			CPRINTF("BASE GYRO is LSM6DSM");
++		}
++	} else {
++		motion_sensor_count = 0;
++		gmr_tablet_switch_disable();
++		/*
++		 * Base accel is not stuffed, don't allow
++		 * line to float.
++		 */
++		gpio_set_flags(GPIO_BASE_SIXAXIS_INT_L,
++				GPIO_INPUT | GPIO_PULL_DOWN);
++	}
+ }
+ DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
+ 
++
++void motion_interrupt(enum gpio_signal signal)
++{
++		switch (get_cbi_ssfc_base_sensor()) {
++		case SSFC_SENSOR_ICM42607:
++			icm42607_interrupt(signal);
++			break;
++		case SSFC_SENSOR_BMI220:
++			bmi260_interrupt(signal);
++			break;
++		case SSFC_SENSOR_LSM6DSM:
++		default:
++			lsm6dsm_interrupt(signal);
++			break;
++		}
++}
++
+ void board_hibernate(void)
+ {
+ 	/*
+diff --git a/board/beetley/board.h b/board/beetley/board.h
+index bac25d4d6..64ea25172 100644
+--- a/board/beetley/board.h
++++ b/board/beetley/board.h
+@@ -51,10 +51,16 @@
+ #define CONFIG_ACCEL_FIFO_SIZE 256	/* Must be a power of 2 */
+ #define CONFIG_ACCEL_FIFO_THRES (CONFIG_ACCEL_FIFO_SIZE / 3)
+ 
++#define CONFIG_ACCELGYRO_BMI220
++#define CONFIG_I2C_XFER_LARGE_TRANSFER
++
+ #define CONFIG_ACCEL_INTERRUPTS
+ #define CONFIG_ACCEL_LSM6DSM_INT_EVENT \
+ 	TASK_EVENT_MOTION_SENSOR_INTERRUPT(BASE_ACCEL)
+ 
++#define CONFIG_ACCELGYRO_BMI260_INT_EVENT \
++	TASK_EVENT_MOTION_SENSOR_INTERRUPT(BASE_ACCEL)
++
+ #define CONFIG_LID_ANGLE
+ #define CONFIG_LID_ANGLE_UPDATE
+ #define CONFIG_LID_ANGLE_SENSOR_BASE BASE_ACCEL
+diff --git a/board/beetley/cbi_ssfc.h b/board/beetley/cbi_ssfc.h
+index 935049b6a..f4a51b8e9 100644
+--- a/board/beetley/cbi_ssfc.h
++++ b/board/beetley/cbi_ssfc.h
+@@ -20,7 +20,8 @@ enum ec_ssfc_base_sensor {
+ 	SSFC_SENSOR_BMI160 = 1,
+ 	SSFC_SENSOR_ICM426XX = 2,
+ 	SSFC_SENSOR_LSM6DSM = 3,
+-	SSFC_SENSOR_ICM42607 = 4
++	SSFC_SENSOR_ICM42607 = 4,
++	SSFC_SENSOR_BMI220 = 5
+ };
+ 
+ /*
+diff --git a/board/beetley/gpio.inc b/board/beetley/gpio.inc
+index bbb793ee4..e89fe5ae5 100644
+--- a/board/beetley/gpio.inc
++++ b/board/beetley/gpio.inc
+@@ -37,7 +37,7 @@ GPIO_INT(LID_OPEN,		PIN(F, 3), GPIO_INT_BOTH, lid_interrupt)
+ GPIO_INT(LID_360_L,		PIN(A, 7), GPIO_INT_BOTH, gmr_tablet_switch_isr)
+ GPIO_INT(VOLDN_BTN_ODL,		PIN(I, 6), GPIO_INT_BOTH | GPIO_PULL_UP, button_interrupt)
+ GPIO_INT(VOLUP_BTN_ODL,		PIN(I, 7), GPIO_INT_BOTH | GPIO_PULL_UP, button_interrupt)
+-GPIO_INT(BASE_SIXAXIS_INT_L,	PIN(J, 0), GPIO_INT_FALLING | GPIO_SEL_1P8V, lsm6dsm_interrupt)
++GPIO_INT(BASE_SIXAXIS_INT_L,	PIN(J, 0), GPIO_INT_FALLING | GPIO_SEL_1P8V, motion_interrupt)
+ GPIO_INT(EC_WP_OD,		PIN(A, 6), GPIO_INT_BOTH, switch_interrupt)
+ GPIO_INT(HDMI_HPD_SUB_ODL,	PIN(E, 7), GPIO_INT_BOTH, hdmi_hpd_interrupt)
+ 
