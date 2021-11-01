@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c2e2103_83e4f901",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-11-01T21:57:52Z",
+      "side": 1,
+      "message": "Folks, let me know if you want to set up a s",
+      "revId": "c4fae0d00d1b7db089332d77e0468d623ace7a97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "13214571_9deb2121",
@@ -41,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ace4885_e9bae14c",
+        "filename": "zephyr/zmake/tests/test_zmake.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-11-01T21:57:52Z",
+      "side": 1,
+      "message": "Thanks, I\u0027m adding a follow-on CL with a README on BUILD.py and more.",
+      "parentUuid": "13214571_9deb2121",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 0
+      },
+      "revId": "c4fae0d00d1b7db089332d77e0468d623ace7a97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a3ac9e3a_5ed73811",
@@ -54,6 +95,30 @@
       "writtenOn": "2021-11-01T21:53:25Z",
       "side": 1,
       "message": "As discussed in the meeting, change this \"project\" or \"project_name\". So the BUILD.py files show \"project_name\u003d\".",
+      "range": {
+        "startLine": 40,
+        "startChar": 25,
+        "endLine": 40,
+        "endChar": 29
+      },
+      "revId": "c4fae0d00d1b7db089332d77e0468d623ace7a97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a08277e2_347a71a1",
+        "filename": "zephyr/zmake/zmake/project.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-11-01T21:57:52Z",
+      "side": 1,
+      "message": "Thanks, will do in a follow-on to reduce churn here.",
+      "parentUuid": "a3ac9e3a_5ed73811",
       "range": {
         "startLine": 40,
         "startChar": 25,
