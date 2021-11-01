@@ -59,6 +59,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e4ebbc7_82fec8cb",
+        "filename": "baseboard/guybrush/baseboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 436,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-11-01T18:00:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "000e8292_ec134310",
+      "range": {
+        "startLine": 436,
+        "startChar": 5,
+        "endLine": 436,
+        "endChar": 13
+      },
+      "revId": "7f7353fac6df0510855f28e89ccce89402b13a9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "39f34a6b_8bca7b8f",
@@ -82,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d5f20d3_a050660f",
+        "filename": "baseboard/guybrush/baseboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 472,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-11-01T18:00:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "39f34a6b_8bca7b8f",
+      "range": {
+        "startLine": 468,
+        "startChar": 2,
+        "endLine": 472,
+        "endChar": 2
+      },
+      "revId": "7f7353fac6df0510855f28e89ccce89402b13a9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f54238e7_bd73dd77",
@@ -95,6 +143,24 @@
       "writtenOn": "2021-10-27T21:05:19Z",
       "side": 1,
       "message": "I think it would be good to keep some of the old comment + link to b/183660105 for why we want to avoid having the other port left in dead battery mode.",
+      "revId": "7f7353fac6df0510855f28e89ccce89402b13a9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a5efdc2_b58f1a6e",
+        "filename": "baseboard/guybrush/baseboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 474,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-11-01T18:00:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f54238e7_bd73dd77",
       "revId": "7f7353fac6df0510855f28e89ccce89402b13a9a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
