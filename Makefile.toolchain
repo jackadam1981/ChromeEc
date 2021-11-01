@@ -58,7 +58,7 @@ PROTOC?=protoc
 GCOV=$(CROSS_COMPILE)gcov
 HOSTGCOV=$(CURDIR)/util/llvm-gcov.sh
 
-C_WARN = -Wstrict-prototypes -Wdeclaration-after-statement -Wno-pointer-sign
+C_WARN = -Wstrict-prototypes -Wno-pointer-sign
 COMMON_WARN = -Wall -Wundef -Werror -Werror-implicit-function-declaration \
 	-Wno-trigraphs -Wno-format-security -Wno-address-of-packed-member \
 	-fno-common -fno-strict-aliasing -fno-strict-overflow
