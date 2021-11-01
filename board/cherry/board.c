@@ -4,6 +4,7 @@
  */
 /* Cherry board configuration */
 
+#include "battery_fuel_gauge.h"
 #include "common.h"
 #include "console.h"
 #include "driver/accel_bma422.h"
@@ -177,3 +178,10 @@ static void board_init(void)
 	}
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
+
+void board_hibernate(void)
+{
+	/* Try to put our battery fuel gauge into sleep mode */
+	if (battery_sleep_fuel_gauge() != EC_SUCCESS)
+		cprints(CC_SYSTEM, "Failed to send battery sleep command");
+}
