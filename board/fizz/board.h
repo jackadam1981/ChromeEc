@@ -61,6 +61,9 @@
 /* EC console commands */
 #define CONFIG_CMD_BUTTON
 
+/* Reduce flash space usage */
+#undef  CONFIG_CONSOLE_CMDHELP
+
 /* SOC */
 #define CONFIG_CHIPSET_SKYLAKE
 #define CONFIG_CHIPSET_HAS_PLATFORM_PMIC_RESET
