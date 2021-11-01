@@ -125,6 +125,9 @@
 #define CONFIG_THROTTLE_AP
 #define CONFIG_STEINHART_HART_3V3_30K9_47K_4050B
 
+/* Reduce flash space usage */
+#undef  CONFIG_CONSOLE_CMDHELP
+
 /* MST */
 /*
  * TDOD (b/124068003): This inherently assumes the MST chip is connected to only
