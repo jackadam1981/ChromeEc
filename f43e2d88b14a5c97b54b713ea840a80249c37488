@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "74ac0259_b9d40c6d",
+        "filename": "power/mt8192.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-11-01T23:10:59Z",
+      "side": 1,
+      "message": "A build time assert is a good idea, but should be moved to the shim/power.c.\n\nYou could add a property to power-signal-list that defines the number of required power signals and then set the default value in the AP specific file.",
+      "parentUuid": "30b2f458_39b69af3",
+      "range": {
+        "startLine": 94,
+        "startChar": 0,
+        "endLine": 100,
+        "endChar": 0
+      },
+      "revId": "f43e2d88b14a5c97b54b713ea840a80249c37488",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "50b28f48_8fd45fc8",
         "filename": "power/mt8192.c",
         "patchSetId": 12
@@ -49,6 +73,92 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3a67758d_2b62bcca",
+        "filename": "zephyr/dts/bindings/cros_pwr_signal/power-signal-list.yaml",
+        "patchSetId": 12
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-11-01T23:10:59Z",
+      "side": 1,
+      "message": "If you another property here that sets the required number of power signals, you can then add a build time check that the user specified the correct number of signals.",
+      "revId": "f43e2d88b14a5c97b54b713ea840a80249c37488",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f0bf13d_432b4c68",
+        "filename": "zephyr/projects/asurada/hayato/gpio.dts",
+        "patchSetId": 12
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-11-01T23:10:59Z",
+      "side": 1,
+      "message": "Delete",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 21
+      },
+      "revId": "f43e2d88b14a5c97b54b713ea840a80249c37488",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "edaae30d_e2560b9f",
+        "filename": "zephyr/projects/asurada/hayato/gpio.dts",
+        "patchSetId": 12
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-11-01T23:10:59Z",
+      "side": 1,
+      "message": "Delete",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 21
+      },
+      "revId": "f43e2d88b14a5c97b54b713ea840a80249c37488",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d8f1aba9_1b1a3b44",
+        "filename": "zephyr/projects/asurada/hayato/gpio.dts",
+        "patchSetId": 12
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-11-01T23:10:59Z",
+      "side": 1,
+      "message": "Delete",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 21
+      },
+      "revId": "f43e2d88b14a5c97b54b713ea840a80249c37488",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fdc9dab6_3e3cbc32",
         "filename": "zephyr/shim/include/power/power.h",
         "patchSetId": 12
@@ -60,6 +170,30 @@
       "writtenOn": "2021-11-01T21:17:34Z",
       "side": 1,
       "message": "this has a problem and I can\u0027t put my finger on it",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 0
+      },
+      "revId": "f43e2d88b14a5c97b54b713ea840a80249c37488",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc362839_a4b4a406",
+        "filename": "zephyr/shim/include/power/power.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-11-01T23:10:59Z",
+      "side": 1,
+      "message": "I think you want this to extract the flags from the linked phandle:\n.flags \u003d DT_GPIO_FLAGS(DT_PHANDLE(cid, gpio))",
+      "parentUuid": "fdc9dab6_3e3cbc32",
       "range": {
         "startLine": 35,
         "startChar": 0,
