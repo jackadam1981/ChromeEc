@@ -8,7 +8,9 @@
 #include "charger.h"
 #include "charger/isl923x_public.h"
 #include "charge_state.h"
+#include "temp_sensor.h"
 #include "usb_pd.h"
+#include "util.h"
 
 #define CPRINTS(format, args...) cprints(CC_USBCHARGE, format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_USBCHARGE, format, ## args)
@@ -23,11 +25,27 @@ const struct charger_config_t chg_chips[] = {
 
 int charger_profile_override(struct charge_state_data *curr)
 {
+	int charger_temp, charger_temp_c;
 	int usb_mv;
 	int port;
 
 	if (curr->state != ST_CHARGE)
 		return 0;
+
+	/* charge current control depends on temp if the system is on */
+	if (chipset_in_state(CHIPSET_STATE_ON)) {
+		temp_sensor_read(TEMP_SENSOR_SYS2, &charger_temp);
+		charger_temp_c = K_TO_C(charger_temp);
+		if (charger_temp_c > 56)
+			curr->requested_current = MIN(curr->requested_current,
+			    800);
+		else if (charger_temp_c > 53)
+			curr->requested_current = MIN(curr->requested_current,
+			    1000);
+		else if (charger_temp_c > 50)
+			curr->requested_current = MIN(curr->requested_current,
+			    1500);
+	}
 
 	/* Lower the max requested voltage to 5V when battery is full. */
 	if (chipset_in_state(CHIPSET_STATE_ANY_OFF) &&
