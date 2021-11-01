@@ -54,6 +54,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf424ac9_e7271e60",
+        "filename": "zephyr/test/drivers/src/bmi260.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1592,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2021-11-01T19:28:32Z",
+      "side": 1,
+      "message": "Agreed, but we don\u0027t really have a good place to call such a thing right now. It\u0027s crazy that ztest doesn\u0027t have a setup and teardown helper. I propose coming back once Yuval\u0027s PR is accepted.",
+      "parentUuid": "5cd3b87a_466fb55c",
+      "revId": "99ef2954417a3ffef11f4a6507b4983277bbc14e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3da2ce06_c9ef9e31",
@@ -162,6 +180,30 @@
       "writtenOn": "2021-11-01T18:03:03Z",
       "side": 1,
       "message": "Related: https://github.com/meekrosoft/fff#how-do-i-fake-a-function-that-returns-a-value-by-reference",
+      "parentUuid": "8ade0831_2657f67b",
+      "range": {
+        "startLine": 1987,
+        "startChar": 11,
+        "endLine": 1987,
+        "endChar": 55
+      },
+      "revId": "99ef2954417a3ffef11f4a6507b4983277bbc14e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28f568df_25bd2c01",
+        "filename": "zephyr/test/drivers/src/bmi260.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1987,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2021-11-01T19:28:32Z",
+      "side": 1,
+      "message": "The one FFF value-add I can think of for this particular test would be the call history so we could explicitly assert that a read on this register did occur. (I don\u0027t think FFF can do this natively but we can write a loop that steps through `myfake.call_history[i]` and checks that BMI260_INTERNAL_STATUS was passed in for N invocations). What do you think about this?",
       "parentUuid": "8ade0831_2657f67b",
       "range": {
         "startLine": 1987,
