@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7fc5aa33_7ac6d90b",
+        "filename": "core/cortex-m0/build.mk",
+        "patchSetId": 49
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-11-01T15:57:36Z",
+      "side": 1,
+      "message": "It seems like you could just have one ifneq clause for this stuff. I\u0027m assuming you wanted to avoid changing the link order in this CL.",
+      "revId": "2701199af1a036b9e8f69a991ecde8482d0e6988",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
