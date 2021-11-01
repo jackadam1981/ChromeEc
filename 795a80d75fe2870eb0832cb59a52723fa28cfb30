@@ -33,6 +33,23 @@
       "message": "LGTM, add Diana to approve. Thanks! ",
       "revId": "795a80d75fe2870eb0832cb59a52723fa28cfb30",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9144454_9d1d97e5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1126689
+      },
+      "writtenOn": "2021-11-01T20:19:46Z",
+      "side": 1,
+      "message": "Reno, We need to contain this change to Phaser+Phaser360 only. We cannot allow this change to be made to all Octopus devices.",
+      "revId": "795a80d75fe2870eb0832cb59a52723fa28cfb30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
