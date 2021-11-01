@@ -8,7 +8,9 @@
 #include "charger.h"
 #include "charger/isl923x_public.h"
 #include "charge_state.h"
+#include "temp_sensor.h"
 #include "usb_pd.h"
+#include "util.h"
 
 #define CPRINTS(format, args...) cprints(CC_USBCHARGE, format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_USBCHARGE, format, ## args)
@@ -21,13 +23,63 @@ const struct charger_config_t chg_chips[] = {
 	},
 };
 
+struct temp_chg_step {
+	int on;
+	int off;
+	int current;
+};
+
+static const struct temp_chg_step temp_chg_table[] = {
+	{.on =  0, .off =  1, .current = 0},		/* Lv0: normal charge */
+	{.on =  50, .off =  48, .current = 1500},
+	{.on =  53, .off =  51, .current = 1000},
+	{.on =  56, .off =  54, .current = 800},
+};
+#define NUM_TEMP_CHG_LEVELS ARRAY_SIZE(temp_chg_table)
+
 int charger_profile_override(struct charge_state_data *curr)
 {
+	static int current_level;
+	static int previous_temp_c;
+	int i;
+	int charger_temp, charger_temp_c;
 	int usb_mv;
 	int port;
 
 	if (curr->state != ST_CHARGE)
 		return 0;
+
+	/* charge current control depends on temp if the system is on */
+	if (chipset_in_state(CHIPSET_STATE_ON)) {
+		temp_sensor_read(TEMP_SENSOR_SYS2, &charger_temp);
+		charger_temp_c = K_TO_C(charger_temp);
+		if (charger_temp_c < previous_temp_c) {
+			for (i = current_level; i >= 0; i--) {
+				if (charger_temp_c <= temp_chg_table[i].off)
+					current_level = i - 1;
+				else
+					break;
+			}
+		}
+		if (charger_temp_c > previous_temp_c) {
+			for (i = current_level + 1; i < NUM_TEMP_CHG_LEVELS;
+			     i++) {
+				if (charger_temp_c >= temp_chg_table[i].on)
+					current_level = i;
+				else
+					break;
+			}
+		}
+		if (current_level < 0)
+			current_level = 0;
+
+		previous_temp_c = charger_temp_c;
+
+		/* Level 0: normal, don't set charge current here */
+		if (current_level > 0)
+			curr->requested_current = MIN(curr->requested_current,
+				temp_chg_table[current_level].current);
+	}
 
 	/* Lower the max requested voltage to 5V when battery is full. */
 	if (chipset_in_state(CHIPSET_STATE_ANY_OFF) &&
