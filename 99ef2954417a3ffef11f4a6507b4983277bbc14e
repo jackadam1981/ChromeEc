@@ -147,6 +147,30 @@
       },
       "revId": "99ef2954417a3ffef11f4a6507b4983277bbc14e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5686e8a8_c56e20f9",
+        "filename": "zephyr/test/drivers/src/bmi260.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1987,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2021-11-01T18:03:03Z",
+      "side": 1,
+      "message": "Related: https://github.com/meekrosoft/fff#how-do-i-fake-a-function-that-returns-a-value-by-reference",
+      "parentUuid": "8ade0831_2657f67b",
+      "range": {
+        "startLine": 1987,
+        "startChar": 11,
+        "endLine": 1987,
+        "endChar": 55
+      },
+      "revId": "99ef2954417a3ffef11f4a6507b4983277bbc14e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
