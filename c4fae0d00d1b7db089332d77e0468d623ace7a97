@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "99e80f13_15c19a66",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-11-01T21:53:25Z",
+      "side": 1,
+      "message": "My comments can be added as a separate CL.",
+      "revId": "c4fae0d00d1b7db089332d77e0468d623ace7a97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13214571_9deb2121",
+        "filename": "zephyr/zmake/tests/test_zmake.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-11-01T21:53:25Z",
+      "side": 1,
+      "message": "Please add a separate README file describing all the supported project fields.",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 0
+      },
+      "revId": "c4fae0d00d1b7db089332d77e0468d623ace7a97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3ac9e3a_5ed73811",
+        "filename": "zephyr/zmake/zmake/project.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-11-01T21:53:25Z",
+      "side": 1,
+      "message": "As discussed in the meeting, change this \"project\" or \"project_name\". So the BUILD.py files show \"project_name\u003d\".",
+      "range": {
+        "startLine": 40,
+        "startChar": 25,
+        "endLine": 40,
+        "endChar": 29
+      },
+      "revId": "c4fae0d00d1b7db089332d77e0468d623ace7a97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
