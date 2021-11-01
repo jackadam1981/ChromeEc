@@ -1811,6 +1811,7 @@ static enum ec_error_list sm5803_set_hw_ramp(int chgnum, int enable)
 	enum ec_error_list rv;
 	int reg;
 
+	ccprints("!!! sm5803_set_hw_ramp(chgnum = %d, enable = %d) !!!", chgnum, enable);
 	rv = chg_read8(chgnum, SM5803_REG_CHG_MON_REG, &reg);
 
 	if (enable)
