@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1812e446_c1a7314f",
+        "filename": "zephyr/dts/bindings/cros_pwr_signal/mt,mt-power-signal-list.yaml",
+        "patchSetId": 6
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-11-01T18:38:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fbb28bcc_4ef72865",
+      "range": {
+        "startLine": 5,
+        "startChar": 13,
+        "endLine": 5,
+        "endChar": 36
+      },
+      "revId": "f36cba227325faf2c770d99db206c35540d52769",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4643d329_a029b453",
@@ -90,6 +114,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "71dcc3ea_c9169e38",
+        "filename": "zephyr/projects/asurada/hayato/gpio.dts",
+        "patchSetId": 6
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-11-01T18:38:10Z",
+      "side": 1,
+      "message": "DEBUG: [zephyr/projects/asurada/hayato:ro]-- Found BOARD.dts: /mnt/host/source/src/platform/ec/build/zephyr/projects/asurada/hayato/modules/ec/zephyr/boards/riscv/asurada/asurada.dts\nDEBUG: [zephyr/projects/asurada/hayato:ro]asurada.dts.pre.tmp:1631.19-1634.5: Warning (gpios_property): /power-signal-list/ap_wdt_asserted: Missing property \u0027#gpio-cells\u0027 in node /named-gpios/ap_ec_watchdog_l or bad phandle (referred from gpios[0])\nDEBUG: [zephyr/projects/asurada/hayato:ro]asurada.dts.pre.tmp:1635.14-1638.5: Warning (gpios_property): /power-signal-list/ap_in_s3_l: Missing property \u0027#gpio-cells\u0027 in node /named-gpios/ap_in_sleep_l or bad phandle (referred from gpios[0])\nDEBUG: [zephyr/projects/asurada/hayato:ro]asurada.dts.pre.tmp:1639.17-1642.5: Warning (gpios_property): /power-signal-list/pmic_pwr_good: Missing property \u0027#gpio-cells\u0027 in node /named-gpios/pmic_ec_pwrgd or bad phandle (referred from gpios[0])\nERROR: [zephyr/projects/asurada/hayato:ro]devicetree error: \u003cNode /named-gpios/ap_ec_watchdog_l in \u0027asurada.dts.pre.tmp\u0027\u003e lacks #gpio-cells",
+      "parentUuid": "437604a1_9e3cf77f",
+      "range": {
+        "startLine": 31,
+        "startChar": 18,
+        "endLine": 31,
+        "endChar": 20
+      },
+      "revId": "f36cba227325faf2c770d99db206c35540d52769",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0f5fd624_83682884",
         "filename": "zephyr/projects/asurada/hayato/gpio.dts",
         "patchSetId": 6
@@ -101,6 +149,30 @@
       "writtenOn": "2021-10-29T21:54:44Z",
       "side": 1,
       "message": "I\u0027m happy with how this looks. Thanks",
+      "range": {
+        "startLine": 334,
+        "startChar": 0,
+        "endLine": 349,
+        "endChar": 0
+      },
+      "revId": "f36cba227325faf2c770d99db206c35540d52769",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b10129e9_2f419454",
+        "filename": "zephyr/projects/asurada/hayato/gpio.dts",
+        "patchSetId": 6
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-11-01T18:38:10Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0f5fd624_83682884",
       "range": {
         "startLine": 334,
         "startChar": 0,
@@ -136,6 +208,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7421ff7f_d7c37dcf",
+        "filename": "zephyr/shim/include/power/power.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-11-01T18:38:10Z",
+      "side": 1,
+      "message": "That gets me to a property of the phandle and I want the node. How do I get there from here",
+      "parentUuid": "128ebeb8_ebc8f521",
+      "range": {
+        "startLine": 38,
+        "startChar": 2,
+        "endLine": 38,
+        "endChar": 21
+      },
+      "revId": "f36cba227325faf2c770d99db206c35540d52769",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a6bf5a78_081f1652",
         "filename": "zephyr/shim/include/power/power.h",
         "patchSetId": 6
@@ -147,6 +243,30 @@
       "writtenOn": "2021-10-29T21:32:50Z",
       "side": 1,
       "message": "See below about DT_PATH",
+      "range": {
+        "startLine": 47,
+        "startChar": 2,
+        "endLine": 47,
+        "endChar": 9
+      },
+      "revId": "f36cba227325faf2c770d99db206c35540d52769",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7dfe8941_2a238641",
+        "filename": "zephyr/shim/include/power/power.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-11-01T18:38:10Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a6bf5a78_081f1652",
       "range": {
         "startLine": 47,
         "startChar": 2,
@@ -194,6 +314,30 @@
       "side": 1,
       "message": "You can also create a helper macro to represent the power-signal-list node.\n#define POWER_SIGNAL_LIST_NODE DT_NODELABEL(power_signal_list)",
       "parentUuid": "fc2ae264_db54664c",
+      "range": {
+        "startLine": 63,
+        "startChar": 2,
+        "endLine": 63,
+        "endChar": 9
+      },
+      "revId": "f36cba227325faf2c770d99db206c35540d52769",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4586e4cd_2b1d0762",
+        "filename": "zephyr/shim/include/power/power.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-11-01T18:38:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6ae0209f_864dddf3",
       "range": {
         "startLine": 63,
         "startChar": 2,
