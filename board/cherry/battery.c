@@ -17,6 +17,9 @@ const struct board_batt_params board_battery_info[] = {
 				.reg_addr = 0x3A,
 				.reg_data = { 0xC574, 0xC574 },
 			},
+			.sleep_mode = {
+				/* sleep mode is enabled automatically */
+			},
 			.fet = {
 				.reg_addr = 0x0,
 				.reg_mask = 0x4000,
@@ -43,6 +46,9 @@ const struct board_batt_params board_battery_info[] = {
 			.ship_mode = {
 				.reg_addr = 0x3A,
 				.reg_data = { 0xC574, 0xC574 },
+			},
+			.sleep_mode = {
+				/* sleep mode is enabled automatically */
 			},
 			.fet = {
 				.reg_addr = 0x0,
@@ -71,6 +77,11 @@ const struct board_batt_params board_battery_info[] = {
 			.ship_mode = {
 				.reg_addr = 0x3A,
 				.reg_data = { 0xC574, 0xC574 },
+			},
+			.sleep_mode = {
+				.sleep_supported = true,
+				.reg_addr = 0x00,
+				.reg_data = 0x0011,
 			},
 			.fet = {
 				.mfgacc_support = 1,
