@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30b2f458_39b69af3",
+        "filename": "power/mt8192.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-11-01T21:17:34Z",
+      "side": 1,
+      "message": "this is here only until I verify all of the fields are correctly getting created in the DT struct",
+      "range": {
+        "startLine": 94,
+        "startChar": 0,
+        "endLine": 100,
+        "endChar": 0
+      },
+      "revId": "f43e2d88b14a5c97b54b713ea840a80249c37488",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "50b28f48_8fd45fc8",
+        "filename": "power/mt8192.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 316,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-11-01T21:17:34Z",
+      "side": 1,
+      "message": "this is here only until I verify all of the fields are correctly getting created in the DT struct",
+      "range": {
+        "startLine": 279,
+        "startChar": 0,
+        "endLine": 316,
+        "endChar": 0
+      },
+      "revId": "f43e2d88b14a5c97b54b713ea840a80249c37488",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fdc9dab6_3e3cbc32",
+        "filename": "zephyr/shim/include/power/power.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-11-01T21:17:34Z",
+      "side": 1,
+      "message": "this has a problem and I can\u0027t put my finger on it",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 0
+      },
+      "revId": "f43e2d88b14a5c97b54b713ea840a80249c37488",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "990d224f_595364e6",
+        "filename": "zephyr/shim/include/power/power.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-11-01T21:17:34Z",
+      "side": 1,
+      "message": "this is a hack to .flags in order to boot to kernel until the top option is working",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 0
+      },
+      "revId": "f43e2d88b14a5c97b54b713ea840a80249c37488",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
