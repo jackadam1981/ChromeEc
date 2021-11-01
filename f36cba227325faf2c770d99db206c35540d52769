@@ -136,6 +136,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1de20541_0168bf97",
+        "filename": "zephyr/projects/asurada/hayato/gpio.dts",
+        "patchSetId": 6
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-11-01T18:46:49Z",
+      "side": 1,
+      "message": "builds but gives warnings for the missing #gpio-cells line. Going to leave this in to avoid the warnings",
+      "parentUuid": "71dcc3ea_c9169e38",
+      "range": {
+        "startLine": 31,
+        "startChar": 18,
+        "endLine": 31,
+        "endChar": 20
+      },
+      "revId": "f36cba227325faf2c770d99db206c35540d52769",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0f5fd624_83682884",
@@ -220,6 +244,30 @@
       "side": 1,
       "message": "That gets me to a property of the phandle and I want the node. How do I get there from here",
       "parentUuid": "128ebeb8_ebc8f521",
+      "range": {
+        "startLine": 38,
+        "startChar": 2,
+        "endLine": 38,
+        "endChar": 21
+      },
+      "revId": "f36cba227325faf2c770d99db206c35540d52769",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd4eaa96_df246b34",
+        "filename": "zephyr/shim/include/power/power.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-11-01T18:46:49Z",
+      "side": 1,
+      "message": "I changed the phandle_array to be a phandle and that allow me to build again.",
+      "parentUuid": "7421ff7f_d7c37dcf",
       "range": {
         "startLine": 38,
         "startChar": 2,
