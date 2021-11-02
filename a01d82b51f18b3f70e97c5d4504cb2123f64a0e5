@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "31a6b4b4_3264d874",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2021-11-02T13:40:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5215480c_2276d82f",
+      "range": {
+        "startLine": 12,
+        "startChar": 18,
+        "endLine": 12,
+        "endChar": 28
+      },
+      "revId": "a01d82b51f18b3f70e97c5d4504cb2123f64a0e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0cd01f07_c7697426",
@@ -84,6 +108,30 @@
       "side": 1,
       "message": "My mistake, I didn\u0027t notice the intermediate macro PPC_CHIP_ELE_PRIM() handles this.",
       "parentUuid": "b179b947_4fe49108",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 2
+      },
+      "revId": "a01d82b51f18b3f70e97c5d4504cb2123f64a0e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "df699e0c_dde324ae",
+        "filename": "zephyr/shim/include/usbc/ppc_sn5s330.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2021-11-02T13:40:04Z",
+      "side": 1,
+      "message": "I\u0027ve done it this way because indexes for `ppc_chips` and `ppc_chips_alt` arrays are different.",
+      "parentUuid": "c12c0f91_6c0c6743",
       "range": {
         "startLine": 11,
         "startChar": 0,
