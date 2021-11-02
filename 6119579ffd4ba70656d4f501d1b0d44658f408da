@@ -283,6 +283,24 @@
       "parentUuid": "6d37b398_7e8993b9",
       "revId": "6119579ffd4ba70656d4f501d1b0d44658f408da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28e47992_c57cd9b4",
+        "filename": "chip/stm32/usb_hid_keyboard.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2021-11-02T21:40:46Z",
+      "side": 1,
+      "message": "That\u0027s a possibility, but I don\u0027t see why it\u0027s easier than changing the HID descriptor (since it would require a Kernel change) — could you elaborate on why the boot protocol is a problem here? (And what exactly you\u0027re referring to; is this something in Coreboot?)\n\nWould it be easier to only change the HID descriptor on new Hammer designs? That way we wouldn\u0027t have to change existing boot protocols, and we could just have a list of the VID:PIDs of old Hammer units without having to worry about keeping that list up-to-date in the future.",
+      "parentUuid": "e99ec3f3_05cc8885",
+      "revId": "6119579ffd4ba70656d4f501d1b0d44658f408da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
