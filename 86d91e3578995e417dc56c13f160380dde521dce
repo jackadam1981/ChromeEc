@@ -16,6 +16,24 @@
       "message": "I guess this CL can be abandoned. Did you perhaps change the Change-Id between patchsets?",
       "revId": "86d91e3578995e417dc56c13f160380dde521dce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0260f83a_53dfcbbf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 22
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1523223
+      },
+      "writtenOn": "2021-11-02T18:15:42Z",
+      "side": 1,
+      "message": "Ah yes during rebasing I tried to keep this CL as part of the chain using Change-Id, but that didn\u0027t pan out.\n\nI\u0027ll mark it abandoned.",
+      "parentUuid": "f3cbba64_d7111c51",
+      "revId": "86d91e3578995e417dc56c13f160380dde521dce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
