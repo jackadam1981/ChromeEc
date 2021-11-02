@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ffb733f5_eaf6d318",
+        "filename": "zephyr/dts/bindings/usbc/ppc-chip.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2021-11-02T13:43:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "26510007_9d021549",
+      "range": {
+        "startLine": 22,
+        "startChar": 6,
+        "endLine": 22,
+        "endChar": 68
+      },
+      "revId": "0eaa513fcb2fc02573b1de064b4b35505beca8f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a8c17a71_05d503b3",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-10-29T22:34:16Z",
       "side": 1,
       "message": "This array can be unordered, but the ppc_chips[] array must have an explicit order to match the \u003creg\u003e field.  So you probably need a separate macro for each array.",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 39
+      },
+      "revId": "0eaa513fcb2fc02573b1de064b4b35505beca8f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a1a9200_9d2f7c0c",
+        "filename": "zephyr/shim/src/ppc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2021-11-02T13:43:31Z",
+      "side": 1,
+      "message": "True, that\u0027s why I used `PPC_CHIP_ALT` instead of `PPC_CHIP_PRIM`. Am I missing anything?",
+      "parentUuid": "a8c17a71_05d503b3",
       "range": {
         "startLine": 37,
         "startChar": 0,
