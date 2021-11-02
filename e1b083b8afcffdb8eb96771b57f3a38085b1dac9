@@ -16,6 +16,29 @@
       "message": "Do you get the confirmation from the SOC team? It would be good to clarify why the i2c address needs to be different.",
       "revId": "e1b083b8afcffdb8eb96771b57f3a38085b1dac9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d943f072_477e8fa7",
+        "filename": "board/brask/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-11-02T23:51:06Z",
+      "side": 1,
+      "message": "nit: update the comment",
+      "range": {
+        "startLine": 118,
+        "startChar": 0,
+        "endLine": 118,
+        "endChar": 28
+      },
+      "revId": "e1b083b8afcffdb8eb96771b57f3a38085b1dac9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
