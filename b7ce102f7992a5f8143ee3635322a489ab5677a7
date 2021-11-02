@@ -51,6 +51,24 @@
       "parentUuid": "bf71b3f5_292ec6ef",
       "revId": "b7ce102f7992a5f8143ee3635322a489ab5677a7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72634e72_51259faa",
+        "filename": "chip/npcx/flash.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 703,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-11-02T17:47:59Z",
+      "side": 1,
+      "message": "Yes, please add EC_FLASH_PROTECT_ERROR_UNKNOWN to the shared flash_command_protect() function.",
+      "parentUuid": "f2ec15a0_3c1f3d69",
+      "revId": "b7ce102f7992a5f8143ee3635322a489ab5677a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
