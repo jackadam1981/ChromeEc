@@ -16,6 +16,24 @@
       "message": "Caveh, do we want the same change on other brya family boards which use BQ25720?",
       "revId": "d2ed40e3d3b8d156ab408d566fbaad67d728c877",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ebf1ea0_703b90c8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-11-02T19:54:56Z",
+      "side": 1,
+      "message": "yes, but it depends on whether the board supports it.\nit\u0027s probably best if all ODMs evaluate if this feature applies to their design.",
+      "parentUuid": "fa4cdbae_495693b4",
+      "revId": "d2ed40e3d3b8d156ab408d566fbaad67d728c877",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
