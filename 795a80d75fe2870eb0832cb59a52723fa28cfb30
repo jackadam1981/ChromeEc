@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "02e3374d_b4372b91",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1477218
+      },
+      "writtenOn": "2021-11-02T07:00:14Z",
+      "side": 1,
+      "message": "Sorry, it\u0027s typo. It should be phaser.\nI only test system power on from ec deep idle and battery only.\nI\u0027ll do more power on/off testing later.",
+      "parentUuid": "503a3d78_22d9100a",
+      "revId": "795a80d75fe2870eb0832cb59a52723fa28cfb30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "e4b98a23_c84f20d8",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -66,6 +84,23 @@
       "side": 1,
       "message": "hi,Vineeth, yes, this CL just only undefine \"CONFIG_HIBERNATE_PSL\" in board/phaser, we think it won\u0027t affect other variant ?",
       "parentUuid": "e9144454_9d1d97e5",
+      "revId": "795a80d75fe2870eb0832cb59a52723fa28cfb30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f04b73ac_0f0ab56e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1477218
+      },
+      "writtenOn": "2021-11-02T07:00:14Z",
+      "side": 1,
+      "message": "I only test system power on from ec deep idle and battery only.\nI\u0027ll do more testing later.",
       "revId": "795a80d75fe2870eb0832cb59a52723fa28cfb30",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
