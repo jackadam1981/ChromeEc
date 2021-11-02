@@ -1,0 +1,9 @@
+<<<<<<< HEAD   (fa4af4 Merge remote-tracking branch cros/main into firmware-dedede-)
+=======
+# Fingerprint Sensor
+
+# Don't inherit owners from elsewhere in the manifest
+set noparent
+
+include chromiumos/platform2:/biod/OWNERS
+>>>>>>> BRANCH (5ff003 zephyr: zmake: Upgrade to new BUILD.py format)
