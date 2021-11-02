@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60753117_9025c86c",
+        "filename": "zephyr/projects/brya/brya/CMakeLists.txt",
+        "patchSetId": 9
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-11-02T18:30:31Z",
+      "side": 1,
+      "message": "This belongs in zephyr/CMakeLists.txt instead of here.",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 0
+      },
+      "revId": "274e58f12bcc29d04703a496828707274e43e352",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ecb1cb24_d997f10d",
+        "filename": "zephyr/projects/brya/brya/include/gpio_map.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-11-02T18:30:31Z",
+      "side": 1,
+      "message": "Nit - there is a mix of tabs and spaces used at the end of each line here.  Use spaces to match the other entries.",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 63
+      },
+      "revId": "274e58f12bcc29d04703a496828707274e43e352",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
