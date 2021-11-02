@@ -52,6 +52,14 @@ struct sn5s330_emul_data {
 	uint8_t func_set11_reg;
 	/** Emulated FUNC_SET12 register */
 	uint8_t func_set12_reg;
+	/** Emulated INT_STATUS_REG1 register */
+	uint8_t int_status_reg1;
+	/** Emulated INT_STATUS_REG2 register */
+	uint8_t int_status_reg2;
+	/** Emulated INT_STATUS_REG3 register */
+	uint8_t int_status_reg3;
+	/** Emulated INT_STATUS_REG4 register */
+	uint8_t int_status_reg4;
 };
 
 struct sn5s330_emul_cfg {
@@ -134,6 +142,22 @@ static int sn5s330_emul_read_byte(struct i2c_emul *emul, int reg, uint8_t *val,
 		__ASSERT_NO_MSG(bytes == 0);
 		*val = data->func_set12_reg;
 		break;
+	case SN5S330_INT_STATUS_REG1:
+		__ASSERT_NO_MSG(bytes == 0);
+		*val = data->int_status_reg1;
+		break;
+	case SN5S330_INT_STATUS_REG2:
+		__ASSERT_NO_MSG(bytes == 0);
+		*val = data->int_status_reg2;
+		break;
+	case SN5S330_INT_STATUS_REG3:
+		__ASSERT_NO_MSG(bytes == 0);
+		*val = data->int_status_reg3;
+		break;
+	case SN5S330_INT_STATUS_REG4:
+		__ASSERT_NO_MSG(bytes == 0);
+		*val = data->int_status_reg4;
+		break;
 	default:
 		return -EINVAL;
 	}
@@ -195,7 +219,19 @@ static int sn5s330_emul_write_byte(struct i2c_emul *emul, int reg, uint8_t val,
 		__ASSERT_NO_MSG(bytes == 1);
 		data->func_set12_reg = val;
 		break;
-
+	case SN5S330_INT_STATUS_REG1:
+		LOG_ERR("Can't write to INT STATUS REG1 register");
+		return -EINVAL;
+	case SN5S330_INT_STATUS_REG2:
+		LOG_ERR("Can't write to INT STATUS REG2 register");
+		return -EINVAL;
+	case SN5S330_INT_STATUS_REG3:
+		LOG_ERR("Can't write to INT STATUS REG3 register");
+		return -EINVAL;
+	case SN5S330_INT_STATUS_REG4:
+		__ASSERT_NO_MSG(bytes == 1);
+		data->int_status_reg4 = val;
+		break;
 	default:
 		return -EINVAL;
 	}
