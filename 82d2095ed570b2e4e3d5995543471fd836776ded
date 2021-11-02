@@ -22,6 +22,30 @@
       },
       "revId": "82d2095ed570b2e4e3d5995543471fd836776ded",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f7924375_882a66ec",
+        "filename": "zephyr/projects/herobrine/herobrine_npcx9/src/usbc_config.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2021-11-02T13:48:31Z",
+      "side": 1,
+      "message": "It is hard to implement such a function because many devicetree macros have to be used based on nodelabel, but it is not possible to pass the nodelabel as an argument. Anyway, I created the macro which looks reasonable, because it is only one memcpy call.",
+      "parentUuid": "cdb3cd4a_ac3a6fa8",
+      "range": {
+        "startLine": 199,
+        "startChar": 0,
+        "endLine": 200,
+        "endChar": 61
+      },
+      "revId": "82d2095ed570b2e4e3d5995543471fd836776ded",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
