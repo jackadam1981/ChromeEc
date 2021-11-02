@@ -16,6 +16,24 @@
       "message": "OK, looed at the error, the issue is that you\u0027re defining CONFIG_CHIP_INIT_ROM_REGION\u003dy which means that it\u0027s looking for a definition of this function and failing (since there\u0027s no static inline version of it anymore).\n\nWhat you need to do is add to the test_mocks.c the FFF definitions of these functions (or at least some implementation).",
       "revId": "b84545369f3543a7a9efacbf74777135bed16b38",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d3a7b5dd_a9ec6014",
+        "filename": "include/init_rom.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2021-11-02T18:04:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e88ed485_00e12946",
+      "revId": "b84545369f3543a7a9efacbf74777135bed16b38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
