@@ -22,6 +22,30 @@
       },
       "revId": "30798d8922ec2c3ecda66f79b3f700e99c24044c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eef938e9_9fab24c6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-11-02T16:10:12Z",
+      "side": 1,
+      "message": "The command I ran was `zmake` so zmake requires it.",
+      "parentUuid": "55f81f3a_2479693f",
+      "range": {
+        "startLine": 9,
+        "startChar": 28,
+        "endLine": 9,
+        "endChar": 51
+      },
+      "revId": "30798d8922ec2c3ecda66f79b3f700e99c24044c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
