@@ -237,6 +237,30 @@
       },
       "revId": "99ef2954417a3ffef11f4a6507b4983277bbc14e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d5893f6_a3b79dcf",
+        "filename": "zephyr/test/drivers/src/bmi260.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1987,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2021-11-02T19:46:14Z",
+      "side": 1,
+      "message": "Added such macro and used it in the test.",
+      "parentUuid": "c47590fd_606aed96",
+      "range": {
+        "startLine": 1987,
+        "startChar": 11,
+        "endLine": 1987,
+        "endChar": 55
+      },
+      "revId": "99ef2954417a3ffef11f4a6507b4983277bbc14e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
