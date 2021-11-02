@@ -50,6 +50,24 @@
       "message": "Reno, We need to contain this change to Phaser+Phaser360 only. We cannot allow this change to be made to all Octopus devices.",
       "revId": "795a80d75fe2870eb0832cb59a52723fa28cfb30",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "09d0f368_c0bc14b0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1418383
+      },
+      "writtenOn": "2021-11-02T02:24:30Z",
+      "side": 1,
+      "message": "hi,Vineeth, yes, this CL just only undefine \"CONFIG_HIBERNATE_PSL\" in board/phaser, we think it won\u0027t affect other variant ?",
+      "parentUuid": "e9144454_9d1d97e5",
+      "revId": "795a80d75fe2870eb0832cb59a52723fa28cfb30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
