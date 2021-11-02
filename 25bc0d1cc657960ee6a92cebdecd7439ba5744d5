@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "24d85b38_fb101b30",
+        "filename": "driver/ioexpander/tca64xxa.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1477788
+      },
+      "writtenOn": "2021-11-02T12:15:59Z",
+      "side": 1,
+      "message": "These macros were meant to be used to convert the tca64xxa flags to values representing number of ports in chip and offset between registers (that\u0027s why 24bit chip has value of 4, because of additional padding).\nSince you are now checking for the specific bits, without masking them, these macros are obsolete and can be removed. Also TCA64XXA_PORT_ID macro doesn\u0027t need to extract the bits from \u0027flags\u0027 parameter anymore",
+      "revId": "25bc0d1cc657960ee6a92cebdecd7439ba5744d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
