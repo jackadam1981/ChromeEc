@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8c6faaa_90bab512",
+        "filename": "board/brask/gpio.inc",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-11-02T08:06:03Z",
+      "side": 1,
+      "message": "do we need INT_BOTH here? we cleaned up a lot of the INT_BOTH\nbrya inherited from previous boards and set them to the\ndesigned level/edge - i\u0027m wondering if this is another one\nof those cases.",
+      "range": {
+        "startLine": 30,
+        "startChar": 53,
+        "endLine": 30,
+        "endChar": 61
+      },
+      "revId": "c6b184e9584873d59f6107a1fe8a29dbc81adaef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
