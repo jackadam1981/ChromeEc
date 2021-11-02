@@ -22,6 +22,30 @@
       },
       "revId": "c6b184e9584873d59f6107a1fe8a29dbc81adaef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9364f49e_bb0b6320",
+        "filename": "board/brask/gpio.inc",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2021-11-02T08:42:00Z",
+      "side": 1,
+      "message": "Thanks Caveh for the information 😊 Do you have the bug for the INT_BOTH clean up?\n\nFrom what i understand for the button_interrupt implementation, it would expect to use the edge rising/falling to detect if the button is pressed or not. If my understanding is incorrect, please correct me",
+      "parentUuid": "a8c6faaa_90bab512",
+      "range": {
+        "startLine": 30,
+        "startChar": 53,
+        "endLine": 30,
+        "endChar": 61
+      },
+      "revId": "c6b184e9584873d59f6107a1fe8a29dbc81adaef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
