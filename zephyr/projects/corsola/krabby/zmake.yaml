@@ -4,8 +4,10 @@
 
 board: it8xxx2
 dts-overlays:
+  - adc.dts
   - battery.dts
   - gpio.dts
+  - i2c.dts
   - motionsense.dts
   - pwm.dts
 supported-toolchains:
