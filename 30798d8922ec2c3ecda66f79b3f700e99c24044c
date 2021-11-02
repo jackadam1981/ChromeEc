@@ -46,6 +46,30 @@
       },
       "revId": "30798d8922ec2c3ecda66f79b3f700e99c24044c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4642a89c_1f7ca242",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-11-02T17:08:28Z",
+      "side": 1,
+      "message": "Well zmake doesn\u0027t use it, Zephyr\u0027s cmake system requires it.",
+      "parentUuid": "eef938e9_9fab24c6",
+      "range": {
+        "startLine": 9,
+        "startChar": 28,
+        "endLine": 9,
+        "endChar": 51
+      },
+      "revId": "30798d8922ec2c3ecda66f79b3f700e99c24044c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
