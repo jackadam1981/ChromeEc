@@ -206,6 +206,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "92399d9e_ddebb2e7",
+        "filename": "zephyr/shim/include/power/power.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-11-02T04:23:58Z",
+      "side": 1,
+      "message": "I think it\u0027s\n\nDT_GPIO_FLAGS(cid, gpio) \u0026 GPIO_ACTIVE_LOW ? ...\n\nDT_GPIO_FLAGS takes a node_id (cid) and a gpio_pha (which is the phandle name for the gpios).",
+      "parentUuid": "bc362839_a4b4a406",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 0
+      },
+      "revId": "f43e2d88b14a5c97b54b713ea840a80249c37488",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "990d224f_595364e6",
         "filename": "zephyr/shim/include/power/power.h",
         "patchSetId": 12
