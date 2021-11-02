@@ -130,6 +130,23 @@ static void test_ppc_syv682x_interrupt(void)
 	syv682x_emul_set_status(emul, 0);
 
 	/*
+	 * An FRS event when the PPC is Sink should cause the PPC to switch from
+	 * Sink to Source.
+	 * TODO(b/190519131): It should also prompt the FRS PD message flow.
+	 * Test this in an integration test.
+	 */
+	ppc_vbus_sink_enable(syv682x_port, true);
+	ppc_set_frs_enable(syv682x_port, true);
+	zassert_false(ppc_is_sourcing_vbus(syv682x_port),
+			"PPC is sourcing VBUS after sink enabled");
+	syv682x_emul_set_status(emul, SYV682X_STATUS_FRS);
+	syv682x_interrupt(syv682x_port);
+	/* TODO(b/201420132): Simulate passage of time instead of sleeping. */
+	msleep(1);
+	zassert_true(ppc_is_sourcing_vbus(syv682x_port),
+			"PPC is not sourcing VBUS after FRS signal handled");
+
+	/*
 	 * A VCONN OC event less than 100 ms should not cause the driver to turn
 	 * VCONN off.
 	 */
