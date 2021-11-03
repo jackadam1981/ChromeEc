@@ -22,6 +22,30 @@
       },
       "revId": "fde14be0bd4363ad8f151d1f35fc5c2e6aad9755",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e939587d_272617bf",
+        "filename": "core/cortex-m0/task.c",
+        "patchSetId": 43
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-11-03T22:44:59Z",
+      "side": 1,
+      "message": "I agree that is clearer. It looks like it\u0027s slightly different though, since it adds a right shift after the left shift:\n\n arm-none-eabi-objdump -d ./build/servo_micro/RO/core/cortex-m0/task.o\n\n Disassembly of section .text.in_interrupt_context:\n\n 00000000 \u003cin_interrupt_context\u003e:\n    0:   f3ef 8005       mrs     r0, IPSR\n    4:   05c0            lsls    r0, r0, #23\n    6:   0dc0            lsrs    r0, r0, #23\n    8:   4770            bx      lr\n   \n   \nSince it looks like this is supposed to be a bool, I tried:\n\n return !!(ret \u0026 GENMASK(8, 0));\n \nwhich generates:\n\n 00000000 \u003cin_interrupt_context\u003e:\n    0:   f3ef 8005       mrs     r0, IPSR\n    4:   05c0            lsls    r0, r0, #23\n    6:   1e43            subs    r3, r0, #1\n    8:   4198            sbcs    r0, r3\n    a:   4770            bx      lr\n    \nEven though it\u0027s more instructions, I think the readability is the more important aspect.",
+      "parentUuid": "0d65b97d_5a10ad0b",
+      "range": {
+        "startLine": 179,
+        "startChar": 0,
+        "endLine": 179,
+        "endChar": 53
+      },
+      "revId": "fde14be0bd4363ad8f151d1f35fc5c2e6aad9755",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
