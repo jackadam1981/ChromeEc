@@ -39,6 +39,30 @@
       },
       "revId": "0727855b3a51d9f51a24e4006437a7f6c9d5b1be",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf9faf85_01600d0d",
+        "filename": "common/keyboard_backlight.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-11-03T01:07:22Z",
+      "side": 1,
+      "message": "Based on how kblight_enable is written, GPIO_EN_KEYBOARD_BACKLIGHT seems orthogonal to kblight.drv-\u003eenable. So, I think we need to do:\n\n  int kblight_get_enabled(void)\n  {\n  #ifdef GPIO_EN_KEYBOARD_BACKLIGHT\n    if (!gpio_get_level(GPIO_EN_KEYBOARD_BACKLIGHT))\n      return 0;\n  #endif\n    if (kblight.drv \u0026\u0026 kblight.drv-\u003eget_enabled)\n\treturn kblight.drv-\u003eget_enabled();\n    return 1;\n  }",
+      "parentUuid": "59412259_fecb5332",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 55
+      },
+      "revId": "0727855b3a51d9f51a24e4006437a7f6c9d5b1be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
