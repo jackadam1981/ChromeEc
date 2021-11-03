@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bfb96915_49eb2cde",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2021-11-03T22:58:56Z",
+      "side": 1,
+      "message": "Okay, I\u0027ll just pull out the #ifdef from the header (and also undo this change to the .c file). That\u0027ll make my testing a lot easier, too, since I don\u0027t need to go through the process of enabling CONFIG_BMI_SEC_I2C.",
+      "parentUuid": "06ed7199_8ab594da",
+      "range": {
+        "startLine": 9,
+        "startChar": 1,
+        "endLine": 10,
+        "endChar": 46
+      },
+      "revId": "d2176e66983cce56fe98029330fad303fef7244f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f14fbdb5_06b3f3f5",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
