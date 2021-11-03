@@ -58,6 +58,12 @@
 #define BQ257X0_CHARGE_OPTION_3_IL_AVG_BITS	2
 #define BQ25720_CHARGE_OPTION_3_IL_AVG__10A	1
 
+/* ProchotOption1 Register (0x34) */
+
+#define BQ257X0_PROCHOT_OPTION_1_PP_INOM_SHIFT		4
+#define BQ257X0_PROCHOT_OPTION_1_PP_INOM_BITS		1
+#define BQ257X0_PROCHOT_OPTION_1_PP_INOM__DISABLE	0
+#define BQ257X0_PROCHOT_OPTION_1_PP_INOM__ENABLE	1
 
 /* ChargeCurrent Register */
 #define BQ257X0_CHARGE_CURRENT_CHARGE_CURRENT_SHIFT	6
@@ -131,7 +137,8 @@
 #define SET_CO4(_f, _v, _x)		SET_BQ25720(CHARGE_OPTION_4, _f, _v, (_x))
 #define SET_CO4_BY_NAME(_f, _e, _x)	SET_BQ25720_BY_NAME(CHARGE_OPTION_4, _f, _e, (_x))
 
-
+#define SET_PO1_BY_NAME(_field, _e, _x)	SET_BQ257X0_BY_NAME(PROCHOT_OPTION_1, \
+							    _field, _e, (_x))
 
 
 #endif /* __CROS_EC_BQ257X0_REGS_H */
