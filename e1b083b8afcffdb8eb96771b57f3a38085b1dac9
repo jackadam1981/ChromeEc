@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "51e3981c_a42111d8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1215230
+      },
+      "writtenOn": "2021-11-03T02:43:17Z",
+      "side": 1,
+      "message": "Yes, SOC team had confirmed we can use this BBR FW for brask.\nSOC team said we can use any BBR FW that downloads from SOC site.\nSo EE chose 0x58/0x59 FW for proto.",
+      "parentUuid": "433ba4bb_e36c4296",
+      "revId": "e1b083b8afcffdb8eb96771b57f3a38085b1dac9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d943f072_477e8fa7",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-11-02T23:51:06Z",
       "side": 1,
       "message": "nit: update the comment",
+      "range": {
+        "startLine": 118,
+        "startChar": 0,
+        "endLine": 118,
+        "endChar": 28
+      },
+      "revId": "e1b083b8afcffdb8eb96771b57f3a38085b1dac9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8cb300a3_ee0caee4",
+        "filename": "board/brask/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1215230
+      },
+      "writtenOn": "2021-11-03T02:43:17Z",
+      "side": 1,
+      "message": "I don\u0027t have permission to access this issue.",
+      "parentUuid": "d943f072_477e8fa7",
       "range": {
         "startLine": 118,
         "startChar": 0,
