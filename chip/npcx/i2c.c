@@ -132,12 +132,19 @@ struct i2c_timing {
 	uint8_t k2;    /* k2 = SCL high-time (Unit: clocks) */
 };
 
-/* I2C timing setting array of 400K & 1M Hz */
+/* I2C timing setting array of 100K Hz */
+static const struct i2c_timing i2c_100k_timings[] = {
+	{20,  42, 102, 0},
+	{15,  35, 76, 0},};
+const unsigned int i2c_100k_timing_used = ARRAY_SIZE(i2c_100k_timings);
+
+/* I2C timing setting array of 400K Hz */
 static const struct i2c_timing i2c_400k_timings[] = {
 	{20,  7, 32, 22},
 	{15,  7, 24, 18},};
 const unsigned int i2c_400k_timing_used = ARRAY_SIZE(i2c_400k_timings);
 
+/* I2C timing setting array of 1M Hz */
 static const struct i2c_timing i2c_1m_timings[] = {
 	{20, 7, 16, 10},
 	{15, 7, 14, 10},};
@@ -1057,10 +1064,17 @@ static void i2c_port_set_freq(const int ctrl, const int bus_freq_kbps)
 	if (bus_freq_kbps <= 100) {
 		i2c_stsobjs[ctrl].kbps = bus_freq_kbps;
 		/* Set divider value of SCL */
-		SET_FIELD(NPCX_SMBCTL2(ctrl), NPCX_SMBCTL2_SCLFRQ7_FIELD,
-			  (scl_freq & 0x7F));
-		SET_FIELD(NPCX_SMBCTL3(ctrl), NPCX_SMBCTL3_SCLFRQ2_FIELD,
-			  (scl_freq >> 7));
+		pTiming = i2c_100k_timings;
+		for (j = 0; j < i2c_100k_timing_used; j++, pTiming++) {
+			SET_FIELD(NPCX_SMBCTL2(ctrl),
+				  NPCX_SMBCTL2_SCLFRQ7_FIELD,
+				  (pTiming->k1/2 & 0x7F));
+			SET_FIELD(NPCX_SMBCTL3(ctrl),
+				  NPCX_SMBCTL3_SCLFRQ2_FIELD,
+				  (pTiming->k1/2 >> 7));
+			SET_FIELD(NPCX_SMBCTL4(ctrl),
+				  NPCX_SMBCTL4_HLDT_FIELD, pTiming->HLDT);
+		}
 		return;
 	}
 
