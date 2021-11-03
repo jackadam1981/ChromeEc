@@ -1,0 +1,9 @@
+<<<<<<< HEAD   (7c4706 tablet_mode: Fix mode error after gmr360 triggered)
+=======
+# Fingerprint Sensor
+
+# Don't inherit owners from elsewhere in the manifest
+set noparent
+
+include chromiumos/platform2:/biod/OWNERS
+>>>>>>> BRANCH (7709b4 zephyr: mt8192: gather power-signal information from DT)
