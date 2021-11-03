@@ -26,6 +26,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e4d182f7_55a5af69",
+        "filename": "zephyr/shim/include/power/power.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-11-03T20:00:23Z",
+      "side": 1,
+      "message": "Is this comment still accurate?",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 0
+      },
+      "revId": "bd3ee101a4a1aec0268685138e05ee2a46b1a969",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a62456c0_c4089775",
         "filename": "zephyr/shim/include/power/power.h",
         "patchSetId": 14
