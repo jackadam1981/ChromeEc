@@ -7,6 +7,10 @@
 #include "mt8183/config_chip.h"
 #endif
 
+#ifdef CHIP_VARIANT_MT8186
+#include "mt8186/config_chip.h"
+#endif
+
 #if defined(CHIP_VARIANT_MT8192) || defined(CHIP_VARIANT_MT8195)
 #include "rv32i_common/config_chip.h"
 #endif
