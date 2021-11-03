@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae392df8_ffc85964",
+        "filename": "zephyr/dts/bindings/cros_pwr_signal/power-signal-list.yaml",
+        "patchSetId": 14
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-11-03T20:36:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6945c3c8_c3c2f746",
+      "range": {
+        "startLine": 7,
+        "startChar": 2,
+        "endLine": 7,
+        "endChar": 20
+      },
+      "revId": "bd3ee101a4a1aec0268685138e05ee2a46b1a969",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e4d182f7_55a5af69",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-11-03T20:00:23Z",
       "side": 1,
       "message": "Is this comment still accurate?",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 0
+      },
+      "revId": "bd3ee101a4a1aec0268685138e05ee2a46b1a969",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9468efd_0ce390ce",
+        "filename": "zephyr/shim/include/power/power.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-11-03T20:36:10Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e4d182f7_55a5af69",
       "range": {
         "startLine": 19,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9276965_f6797615",
+        "filename": "zephyr/shim/include/power/power.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-11-03T20:36:10Z",
+      "side": 1,
+      "message": "Need the comma for this path",
+      "parentUuid": "a62456c0_c4089775",
+      "range": {
+        "startLine": 81,
+        "startChar": 2,
+        "endLine": 81,
+        "endChar": 23
+      },
+      "revId": "bd3ee101a4a1aec0268685138e05ee2a46b1a969",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dc902d6a_7a0746f1",
@@ -93,6 +165,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1bdde9e8_1be95a51",
+        "filename": "zephyr/shim/include/power/power.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-11-03T20:36:10Z",
+      "side": 1,
+      "message": "Have to call into GEN_POWER_SIGNAL_ENUM to get the \",\" appended.  Would have just added this in _ENTRY but that is used above without the comma",
+      "parentUuid": "dc902d6a_7a0746f1",
+      "range": {
+        "startLine": 89,
+        "startChar": 1,
+        "endLine": 89,
+        "endChar": 23
+      },
+      "revId": "bd3ee101a4a1aec0268685138e05ee2a46b1a969",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3f8090ea_1c288504",
@@ -106,6 +202,30 @@
       "writtenOn": "2021-11-03T19:59:51Z",
       "side": 1,
       "message": "Use the DT_FOREACH_CHILD here directly:\n\n    DT_FOREACH_CHILD(POWER_SIGNAL_LIST_NODE, GEN_POWER_SIGNAL_STRUCT)",
+      "range": {
+        "startLine": 15,
+        "startChar": 1,
+        "endLine": 15,
+        "endChar": 25
+      },
+      "revId": "bd3ee101a4a1aec0268685138e05ee2a46b1a969",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "78bfd4b8_76fc5d53",
+        "filename": "zephyr/shim/src/power.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-11-03T20:36:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3f8090ea_1c288504",
       "range": {
         "startLine": 15,
         "startChar": 1,
