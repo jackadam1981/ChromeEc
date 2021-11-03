@@ -31,6 +31,10 @@
 #error "BQ25710 is a NVDC charger, please enable CONFIG_CHARGER_NARROW_VDC."
 #endif
 
+#ifndef CONFIG_BQ25720_CHARGE_OPTION_4_VSYS_UVP_CUSTOM
+#define CONFIG_BQ25720_CHARGE_OPTION_4_VSYS_UVP 2P4
+#endif
+
 /*
  * Delay required from taking the bq25710 out of low power mode and having the
  * correct value in register 0x3E for VSYS_MIN voltage. The length of the delay
@@ -421,6 +425,16 @@ static void bq25710_init(int chgnum)
 		 */
 		reg = SET_CO3(IL_AVG, BQ25720_CHARGE_OPTION_3_IL_AVG__10A, reg);
 		raw_write16(chgnum, BQ25710_REG_CHARGE_OPTION_3, reg);
+	}
+
+	if (IS_ENABLED(CONFIG_CHARGER_BQ25720) &&
+	    !raw_read16(chgnum, BQ25720_REG_CHARGE_OPTION_4, &reg)) {
+		if (IS_ENABLED(CONFIG_BQ25720_CHARGE_OPTION_4_VSYS_UVP_CUSTOM)) {
+			reg = SET_CO4_BY_NAME(VSYS_UVP,
+					CONFIG_BQ25720_CHARGE_OPTION_4_VSYS_UVP,
+					reg);
+		}
+		raw_write16(chgnum, BQ25720_REG_CHARGE_OPTION_4, reg);
 	}
 }
 
