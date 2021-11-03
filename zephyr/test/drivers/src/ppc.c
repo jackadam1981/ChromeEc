@@ -130,23 +130,6 @@ static void test_ppc_syv682x_interrupt(void)
 	syv682x_emul_set_status(emul, 0);
 
 	/*
-	 * An FRS event when the PPC is Sink should cause the PPC to switch from
-	 * Sink to Source.
-	 * TODO(b/190519131): It should also prompt the FRS PD message flow.
-	 * Test this in an integration test.
-	 */
-	ppc_vbus_sink_enable(syv682x_port, true);
-	ppc_set_frs_enable(syv682x_port, true);
-	zassert_false(ppc_is_sourcing_vbus(syv682x_port),
-			"PPC is sourcing VBUS after sink enabled");
-	syv682x_emul_set_status(emul, SYV682X_STATUS_FRS);
-	syv682x_interrupt(syv682x_port);
-	/* TODO(b/201420132): Simulate passage of time instead of sleeping. */
-	msleep(1);
-	zassert_true(ppc_is_sourcing_vbus(syv682x_port),
-			"PPC is not sourcing VBUS after FRS signal handled");
-
-	/*
 	 * A VCONN OC event less than 100 ms should not cause the driver to turn
 	 * VCONN off.
 	 */
@@ -213,12 +196,68 @@ static void test_ppc_syv682x_interrupt(void)
 	 */
 }
 
+static void test_ppc_syv682x_frs(void)
+{
+	struct i2c_emul *emul = syv682x_emul_get(SYV682X_ORD);
+	uint8_t reg;
+
+	/*
+	 * Enabling FRS should enable only the appropriate CC line enabled based
+	 * on polarity. Disabling FRS should enable both CC lines.
+	 */
+	ppc_vbus_sink_enable(syv682x_port, true);
+	zassert_false(ppc_is_sourcing_vbus(syv682x_port),
+			"PPC is sourcing VBUS after sink enabled");
+	ppc_set_polarity(syv682x_port, 0 /* CC1 */);
+	ppc_set_frs_enable(syv682x_port, true);
+	zassert_ok(syv682x_emul_get_reg(emul, SYV682X_CONTROL_4_REG, &reg),
+			"Reading CONTROL_4 failed");
+	zassert_equal(reg &
+			(SYV682X_CONTROL_4_CC1_BPS | SYV682X_CONTROL_4_CC2_BPS),
+			SYV682X_CONTROL_4_CC1_BPS,
+			"FRS enabled with CC1 polarity, but CONTROL_4 is 0x%x",
+			reg);
+#if 0
+	ppc_set_frs_enable(syv682x_port, false);
+	zassert_ok(syv682x_emul_get_reg(emul, SYV682X_CONTROL_4_REG, &reg),
+			"Reading CONTROL_4 failed");
+	zassert_equal(reg &
+			(SYV682X_CONTROL_4_CC1_BPS | SYV682X_CONTROL_4_CC2_BPS),
+			SYV682X_CONTROL_4_CC1_BPS | SYV682X_CONTROL_4_CC2_BPS,
+			"FRS enabled with CC1 polarity, but CONTROL_4 is 0x%x",
+			reg);
+
+	ppc_set_polarity(syv682x_port, 1 /* CC2 */);
+	ppc_set_frs_enable(syv682x_port, true);
+	zassert_ok(syv682x_emul_get_reg(emul, SYV682X_CONTROL_4_REG, &reg),
+			"Reading CONTROL_4 failed");
+	zassert_equal(reg &
+			(SYV682X_CONTROL_4_CC1_BPS | SYV682X_CONTROL_4_CC2_BPS),
+			SYV682X_CONTROL_4_CC2_BPS,
+			"FRS enabled with CC2 polarity, but CONTROL_4 is 0x%x",
+			reg);
+#endif
+
+	/*
+	 * An FRS event when the PPC is Sink should cause the PPC to switch from
+	 * Sink to Source.
+	 */
+	syv682x_emul_set_status(emul, SYV682X_STATUS_FRS);
+	syv682x_interrupt(syv682x_port);
+	/* TODO(b/201420132): Simulate passage of time instead of sleeping. */
+	msleep(1);
+	zassert_true(ppc_is_sourcing_vbus(syv682x_port),
+			"PPC is not sourcing VBUS after FRS signal handled");
+
+}
+
 static void test_ppc_syv682x(void)
 {
 	zassert_ok(ppc_init(syv682x_port), "PPC init failed");
 
 	test_ppc_syv682x_vbus_enable();
 	test_ppc_syv682x_interrupt();
+	test_ppc_syv682x_frs();
 }
 
 void test_suite_ppc(void)

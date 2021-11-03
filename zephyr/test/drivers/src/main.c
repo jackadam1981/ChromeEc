@@ -38,6 +38,7 @@ void test_main(void)
 	ec_app_main();
 
 	/* Test suites to run after ec_app_main.*/
+#if 0
 	test_suite_battery();
 	test_suite_cbi();
 	test_suite_smart_battery();
@@ -45,7 +46,9 @@ void test_main(void)
 	test_suite_temp_sensor();
 	test_suite_bma2x2();
 	test_suite_bc12();
+#endif
 	test_suite_ppc();
+#if 0
 	test_suite_bmi260();
 	test_suite_bmi160();
 	test_suite_tcs3400();
@@ -61,4 +64,5 @@ void test_main(void)
 	test_suite_cros_cbi();
 	test_suite_tcpci();
 	test_suite_ps8xxx();
+#endif
 }
