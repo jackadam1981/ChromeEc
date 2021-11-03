@@ -387,8 +387,17 @@ static void bq25710_init(int chgnum)
 		/* Set ACOC_VTH to 133% of ILIM2 */
 		reg = SET_CO2_BY_NAME(ACOC_VTH, 1P33, reg);
 
+		if (IS_ENABLED(CONFIG_CHARGER_BQ25720))
+			reg = SET_BQ_FIELD_BY_NAME(BQ25720, CHARGE_OPTION_2,
+						   BATOC_VTH, 1P33, reg);
+		else
+			reg = SET_BQ_FIELD_BY_NAME(BQ25710, CHARGE_OPTION_2,
+						   BATOC_VTH, 1P50, reg);
+
 		raw_write16(chgnum, BQ25710_REG_CHARGE_OPTION_2, reg);
 	}
+
+
 }
 
 /* Charger interfaces */
