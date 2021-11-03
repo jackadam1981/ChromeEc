@@ -84,6 +84,7 @@ static __maybe_unused int bmi160_sec_access_ctrl(
 			  BMI160_MAG_IF_1, mag_if_ctrl);
 }
 
+#ifdef CONFIG_BMI_SEC_I2C
 /**
  * Read register from compass.
  * Assuming we are in manual access mode, read compass i2c register.
@@ -112,6 +113,7 @@ int bmi160_sec_raw_write8(const int port,
 	return bmi_write8(port, i2c_spi_addr_flags,
 			  BMI160_MAG_I2C_WRITE_ADDR, reg);
 }
+#endif /* CONFIG_BMI_SEC_I2C */
 
 static int set_data_rate(const struct motion_sensor_t *s,
 				int rate,
@@ -716,7 +718,7 @@ static int init(struct motion_sensor_t *s)
 		task_set_event(TASK_ID_MOTIONSENSE,
 			       CONFIG_ACCELGYRO_BMI160_INT_EVENT);
 	}
-#endif
+#endif /* CONFIG_BMI_SEC_I2C */
 
 	for (i = X; i <= Z; i++)
 		saved_data->scale[i] = MOTION_SENSE_DEFAULT_SCALE;
