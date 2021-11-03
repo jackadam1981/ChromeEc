@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "70f2013a_c7400a4d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-11-03T19:50:19Z",
+      "side": 1,
+      "message": "Hi Tom,\n\nHave you seen https://patchwork.kernel.org/project/linux-kbuild/patch/c6fda26e8d134264b04fadc3386d6c32@gmail.com/? I\u0027m inclined to keep -Wdeclaration-after-statement because it increases readability by forcing declarations to be placed in predictable locations. You may want to take a look at the thread to see why people (including Linus) decided to keep the warning on by default.",
+      "revId": "0299a39c3edf91ae59af3712aeecfc6e5504ab57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
