@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "16eb8fbd_498b5836",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-11-03T20:07:34Z",
+      "side": 1,
+      "message": "LGTM with one change to the CMakelists.txt",
+      "revId": "2522cb6b2c0fcaa7430bd127577b73ace1d032c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44e37eba_db92b007",
+        "filename": "zephyr/shim/src/CMakeLists.txt",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-11-03T20:07:34Z",
+      "side": 1,
+      "message": "Guard with CONFIG_PLATFORM_EC_USBC_PPC",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 29
+      },
+      "revId": "2522cb6b2c0fcaa7430bd127577b73ace1d032c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
