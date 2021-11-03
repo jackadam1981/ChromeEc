@@ -63,6 +63,30 @@
       },
       "revId": "0727855b3a51d9f51a24e4006437a7f6c9d5b1be",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3ed5702_f90c7ef7",
+        "filename": "common/keyboard_backlight.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-11-03T17:02:39Z",
+      "side": 1,
+      "message": "Ok, but it seems like it would be better to return -1 at the end, to indicate we have no idea if it is enabled or not.",
+      "parentUuid": "bf9faf85_01600d0d",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 55
+      },
+      "revId": "0727855b3a51d9f51a24e4006437a7f6c9d5b1be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
