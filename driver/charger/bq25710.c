@@ -176,6 +176,27 @@ static int bq25710_set_low_power_mode(int chgnum, int enable)
 	return EC_SUCCESS;
 }
 
+static int bq25710_set_cmp_ref_1p2(int chgnum, bool enable)
+{
+	int rv;
+	int reg;
+
+	rv = raw_read16(chgnum, BQ25710_REG_CHARGE_OPTION_1, &reg);
+	if (rv)
+		return rv;
+
+	if (enable)
+		reg = SET_CO1_BY_NAME(CMP_REF, 1P2, reg);
+	else
+		reg = SET_CO1_BY_NAME(CMP_REF, 2P3, reg);
+
+	rv = raw_write16(chgnum, BQ25710_REG_CHARGE_OPTION_1, reg);
+	if (rv)
+		return rv;
+
+	return EC_SUCCESS;
+}
+
 static int bq25710_set_psys_sensing(int chgnum, bool enable)
 {
 	int rv;
@@ -293,6 +314,9 @@ static void bq25710_init(int chgnum)
 
 	if (IS_ENABLED(CONFIG_CHARGER_BQ25710_PSYS_SENSING))
 		bq25710_set_psys_sensing(chgnum, true);
+
+	if (IS_ENABLED(CONFIG_CHARGER_BQ25710_CMP_REF_1P2))
+		bq25710_set_cmp_ref_1p2(chgnum, true);
 
 	if (!raw_read16(chgnum, BQ25710_REG_PROCHOT_OPTION_1, &reg)) {
 		/* Disable VDPM prochot profile at initialization */
