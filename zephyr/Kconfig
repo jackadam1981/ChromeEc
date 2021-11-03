@@ -751,6 +751,11 @@ config PLATFORM_EC_SYSTEM_UNLOCKED
 
 	  Also, this enables PD in RO for TCPMv2.
 
+config PLATFORM_EC_TCPC
+	bool "TCPC shim"
+	help
+	  Enable Zephyr TCPC port mapping to Cros TCPC config.
+
 config PLATFORM_EC_THROTTLE_AP
 	bool "CPU throttling"
 	help
