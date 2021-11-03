@@ -419,6 +419,24 @@ config PLATFORM_EC_CHARGER_BQ25710_VSYS_MIN_VOLTAGE_MV
 	  battery cells connected in series using the CELL_BATPRESZ
 	  strap.
 
+config PLATFORM_EC_CHARGER_BQ25720_IDCHG_TH2_CUSTOM
+	bool "IDCHG_TH2 override"
+	depends on PLATFORM_EC_CHARGER_BQ25720
+	help
+	  Enable customizing the charger's 2nd battery discharge current
+	  limit (IDCHG_TH2).
+
+config PLATFORM_EC_CHARGER_BQ25720_IDCHG_TH2
+	int "IDCHG threshold 2"
+	range 0 7
+	default 1
+	depends on PLATFORM_EC_CHARGER_BQ25720_IDCHG_TH2_CUSTOM
+	help
+	  Sets the charger's 2nd battery discharge current limit
+	  (IDCHG_TH2) as a percentage of IDCHG_TH1. This is a 3 bit
+	  field with default value 1 (150%). The encoded value ranges
+	  from 125% to 400%.
+
 config PLATFORM_EC_CHARGER_MAINTAIN_VBAT
 	bool "Maintain VBAT voltage regardless of AC state"
 	help
