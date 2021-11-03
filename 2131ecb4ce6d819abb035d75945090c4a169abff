@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f080e677_47ea58b5",
+        "filename": "power/qcom.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 587,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-11-03T23:40:21Z",
+      "side": 1,
+      "message": "Without this change, on a cold boot when EFS2 successfully jumps to RW the AP always stays off.  It requires a manual power button press to boot.\n\nDo you want me to add a reference to b:201099749 here, so this block of code gets looked at when the EC bootloader is added?\n\nI tested the flow noted by b:172229408. Recovery mode -\u003e power button press -\u003e jump to RW (AP stays off).",
+      "parentUuid": "dcdd22dc_21f91dab",
+      "range": {
+        "startLine": 586,
+        "startChar": 10,
+        "endLine": 587,
+        "endChar": 43
+      },
+      "revId": "2131ecb4ce6d819abb035d75945090c4a169abff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "dc9f7ada_6f499706",
         "filename": "power/qcom.c",
         "patchSetId": 1
@@ -54,6 +78,30 @@
       "writtenOn": "2021-11-03T22:41:38Z",
       "side": 1,
       "message": "reset_flags should be the same as the ones printed by system_print_banner. Why don\u0027t we avoid duplicates?",
+      "range": {
+        "startLine": 600,
+        "startChar": 25,
+        "endLine": 601,
+        "endChar": 27
+      },
+      "revId": "2131ecb4ce6d819abb035d75945090c4a169abff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f946e933_52c3a607",
+        "filename": "power/qcom.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 601,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-11-03T23:40:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dc9f7ada_6f499706",
       "range": {
         "startLine": 600,
         "startChar": 25,
