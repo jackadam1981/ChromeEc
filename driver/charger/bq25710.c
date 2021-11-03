@@ -247,7 +247,8 @@ static int bq257x0_init_charge_option_1(int chgnum)
 	int rv;
 	int reg;
 
-	if (!IS_ENABLED(CONFIG_CHARGER_BQ25710_PSYS_SENSING))
+	if (!IS_ENABLED(CONFIG_CHARGER_BQ25710_PSYS_SENSING) &&
+	    !IS_ENABLED(CONFIG_CHARGER_BQ25710_CMP_REF_1P2))
 		return EC_SUCCESS;
 
 	rv = raw_read16(chgnum, BQ25710_REG_CHARGE_OPTION_1, &reg);
@@ -256,6 +257,9 @@ static int bq257x0_init_charge_option_1(int chgnum)
 
 	if (IS_ENABLED(CONFIG_CHARGER_BQ25710_PSYS_SENSING))
 		reg = co1_set_psys_sensing(reg, true);
+
+	if (IS_ENABLED(CONFIG_CHARGER_BQ25710_CMP_REF_1P2))
+		reg = SET_CO1_BY_NAME(CMP_REF, 1P2, reg);
 
 	return raw_write16(chgnum, BQ25710_REG_CHARGE_OPTION_1, reg);
 }
