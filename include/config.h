@@ -1037,6 +1037,17 @@
  */
 #undef CONFIG_CHARGER_BQ25710_IDCHG_LIMIT_MA
 
+/* Enable if CONFIG_CHARGER_BQ25720_IDCHG_DEG2 should be applied */
+#undef CONFIG_CHARGER_BQ25720_IDCHG_DEG2_CUSTOM
+
+/*
+ * This config option is used to set the 2nd battery discharge current
+ * limit (IDCHG_TH2) deglitch time (IDCHG_DEG2). This is a 2 bit field
+ * with default value 1 (1.6 ms). The encoded value ranges from 100 us
+ * to 12 ms.
+ */
+#undef CONFIG_CHARGER_BQ25720_IDCHG_DEG2
+
 /* Enable if CONFIG_CHARGER_BQ25720_VSYS_TH2_DV should be applied */
 #undef CONFIG_CHARGER_BQ25720_VSYS_TH2_CUSTOM
 
@@ -1060,17 +1071,6 @@
  * in the range of 2.4 V to 8.0 V to be specified.
  */
 #undef CONFIG_CHARGER_BQ25720_VSYS_UVP
-
-/* Enable if CONFIG_CHARGER_BQ25720_IDCHG_DEG2 should be applied */
-#undef CONFIG_CHARGER_BQ25720_IDCHG_DEG2_CUSTOM
-
-/*
- * This config option is used to set the 2nd battery discharge current
- * limit (IDCHG_TH2) deglitch time (IDCHG_DEG2). This is a 2 bit field
- * with default value 1 (1.6 ms). The encoded value ranges from 100 us
- * to 12 ms.
- */
-#undef CONFIG_CHARGER_BQ25720_IDCHG_DEG2
 
 /* Value of the bq25710 charge sense resistor, in mOhms */
 #undef CONFIG_CHARGER_BQ25710_SENSE_RESISTOR
@@ -1151,6 +1151,17 @@
  * battery cells connected in series using the CELL_BATPRESZ strap.
  */
 #undef CONFIG_CHARGER_BQ25710_VSYS_MIN_VOLTAGE_MV
+
+/* Enable if CONFIG_CHARGER_BQ25720_IDCHG_TH2 should be applied */
+#undef CONFIG_CHARGER_BQ25720_IDCHG_TH2_CUSTOM
+
+/*
+ * This config option is used to set the charger's 2nd battery discharge
+ * current limit (IDCHG_TH2) as a percentage of IDCHG_TH1. This is a 3
+ * bit field with default value 1 (150%). The encoded value ranges from
+ * 125% to 400%.
+ */
+#undef CONFIG_CHARGER_BQ25720_IDCHG_TH2
 
 /*
  * Board specific maximum input current limit, in mA.
