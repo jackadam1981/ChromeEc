@@ -370,6 +370,8 @@ static void bq25710_init(int chgnum)
 	}
 
 	if (!raw_read16(chgnum, BQ25710_REG_CHARGE_OPTION_2, &reg)) {
+		int mask, on, off;
+
 		/*
 		 * Reduce peak power mode overload and relax cycle time
 		 * from default 20 msec to the minimum of 5 msec on the
@@ -380,6 +382,12 @@ static void bq25710_init(int chgnum)
 		 * Enable AC input over-current protection.
 		 */
 		reg |= BQ25710_CHARGE_OPTION_2_EN_ACOC;
+
+		mask = BQ25710_CHARGE_OPTION_2_ACOC_VTH_MASK;
+		on = BQ25710_CHARGE_OPTION_2_ACOC_VTH_200;
+		off = BQ25710_CHARGE_OPTION_2_ACOC_VTH_133;
+		reg = set_field(reg, mask, on, off, false);
+
 		raw_write16(chgnum, BQ25710_REG_CHARGE_OPTION_2, reg);
 	}
 }
