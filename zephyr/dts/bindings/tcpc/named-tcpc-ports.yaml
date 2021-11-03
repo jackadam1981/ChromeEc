@@ -1,0 +1,31 @@
+# Copyright (c) 2021 The Chromium OS Authors
+# SPDX-License-Identifier: Apache-2.0
+
+description: Named TCPC ports parent node
+
+compatible: "named-tcpc-ports"
+
+child-binding:
+  description: Named TCPC ports child node
+    
+  properties:
+    tcpc-port:
+      type: phandle
+      required: true
+    enum-name:
+      type: string
+      required: true
+      description:
+        Enum values used in the source code to refer to the TCPC port
+      enum:
+      - USBC_PORT_C0
+      - USBC_PORT_C1
+      - USBC_PORT_C2
+
+    label:
+      required: true
+      type: string
+      description:
+        Human readable string describing the device (used as device_get_binding()
+        argument).
+
