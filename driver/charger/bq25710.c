@@ -39,6 +39,10 @@
 #define CONFIG_BQ25720_CHARGE_OPTION_4_IDCHG_DEG2 1P6MS
 #endif
 
+#ifndef CONFIG_BQ25720_CHARGE_OPTION_4_IDCHG_TH2_CUSTOM
+#define CONFIG_BQ25720_CHARGE_OPTION_4_IDCHG_TH2 1P5
+#endif
+
 /*
  * Delay required from taking the bq25710 out of low power mode and having the
  * correct value in register 0x3E for VSYS_MIN voltage. The length of the delay
@@ -441,6 +445,11 @@ static void bq25710_init(int chgnum)
 		if (IS_ENABLED(CONFIG_BQ25720_CHARGE_OPTION_4_IDCHG_DEG2_CUSTOM)) {
 			reg = SET_CO4_BY_NAME(IDCHG_DEG2,
 				CONFIG_BQ25720_CHARGE_OPTION_4_IDCHG_DEG2,
+				reg);
+		}
+		if (IS_ENABLED(CONFIG_BQ25720_CHARGE_OPTION_4_IDCHG_TH2_CUSTOM)) {
+			reg = SET_CO4_BY_NAME(IDCHG_TH2,
+				CONFIG_BQ25720_CHARGE_OPTION_4_IDCHG_TH2,
 				reg);
 		}
 		raw_write16(chgnum, BQ25720_REG_CHARGE_OPTION_4, reg);
