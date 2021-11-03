@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae5de599_a47f6d4f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 17
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2021-11-03T16:47:31Z",
+      "side": 1,
+      "message": "Could you please add the reference to the bug for the port 0/2 issue in commit message. Also short description of the issue.",
+      "revId": "deef22490166f3152524f7d0b239b11c73f60324",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4965d65e_3c6f1171",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 17
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2021-11-03T16:47:31Z",
+      "side": 1,
+      "message": "Please add the test details.",
+      "revId": "deef22490166f3152524f7d0b239b11c73f60324",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "79621938_e7665c30",
+        "filename": "board/brya/usbc_config.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2021-11-03T16:47:31Z",
+      "side": 1,
+      "message": "Any reason to not have this for zephyr, as it is redefined here\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3218111/17/zephyr/projects/brya/brya/prj.conf#92",
+      "revId": "deef22490166f3152524f7d0b239b11c73f60324",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65de0f32_fd109f20",
+        "filename": "board/brya/usbc_config.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2021-11-03T16:47:31Z",
+      "side": 1,
+      "message": "Please add brief description for this change.",
+      "revId": "deef22490166f3152524f7d0b239b11c73f60324",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c911fbaa_add0f72d",
+        "filename": "include/console_channel.inc",
+        "patchSetId": 17
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2021-11-03T16:47:31Z",
+      "side": 1,
+      "message": "Do you still need this if you have https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3176402",
+      "revId": "deef22490166f3152524f7d0b239b11c73f60324",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7502eb1b_be93ca70",
+        "filename": "zephyr/projects/brya/brya/gpio.dts",
+        "patchSetId": 17
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2021-11-03T16:47:31Z",
+      "side": 1,
+      "message": "nit: Please remove extra lines.",
+      "revId": "deef22490166f3152524f7d0b239b11c73f60324",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
