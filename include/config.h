@@ -1139,6 +1139,17 @@
  */
 #undef CONFIG_CHARGER_BQ25710_PP_ACOK
 
+/* Enable if CONFIG_CHARGER_BQ25720_IDCHG_TH2 should be applied */
+#undef CONFIG_CHARGER_BQ25720_IDCHG_TH2_CUSTOM
+
+/*
+ * This config option is used to set the charger's 2nd battery discharge
+ * current limit (IDCHG_TH2) as a percentage of IDCHG_TH1. This is a 3
+ * bit field with default value 1 (150%). The encoded value ranges from
+ * 125% to 400%.
+ */
+#undef CONFIG_CHARGER_BQ25720_IDCHG_TH2
+
 /*
  * Board specific maximum input current limit, in mA.
  */
