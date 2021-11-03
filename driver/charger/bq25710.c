@@ -423,6 +423,16 @@ static void bq25710_init(int chgnum)
 		raw_write16(chgnum, BQ25710_REG_CHARGE_OPTION_3, reg);
 	}
 
+	if (IS_ENABLED(CONFIG_CHARGER_BQ25720) &&
+	    !raw_read16(chgnum, BQ25720_REG_CHARGE_OPTION_4, &reg)) {
+		if (IS_ENABLED(CONFIG_BQ25720_CHARGE_OPTION_4_VSYS_UVP_CUSTOM)) {
+			reg = set_field_val(reg,
+				BQ25720_CHARGE_OPTION_4_VSYS_UVP_MASK,
+				CONFIG_BQ25720_CHARGE_OPTION_4_VSYS_UVP);
+		}
+		raw_write16(chgnum, BQ25720_REG_CHARGE_OPTION_4, reg);
+	}
+
 }
 
 /* Charger interfaces */
