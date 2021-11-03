@@ -10,6 +10,7 @@
 
 #include "common.h"
 #include "compile_time_macros.h"
+#include "stdbool.h"
 #include "task_id.h"
 
 /* Task event bitmasks */
@@ -118,7 +119,7 @@ void irq_unlock(uint32_t key);
 /**
  * Return true if we are in interrupt context.
  */
-int in_interrupt_context(void);
+bool in_interrupt_context(void);
 
 /**
  * Return true if we are in software interrupt context.

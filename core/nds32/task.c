@@ -234,7 +234,7 @@ inline int is_interrupt_enabled(void)
 	return !!(val & 0xFFFC);
 }
 
-inline int in_interrupt_context(void)
+inline bool in_interrupt_context(void)
 {
 	/* check INTL (Interrupt Stack Level) bits */
 	return get_psw() & PSW_INTL_MASK;

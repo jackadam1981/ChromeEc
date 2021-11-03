@@ -185,7 +185,7 @@ inline int is_interrupt_enabled(void)
 	return !!(eflags & 0x200);
 }
 
-inline int in_interrupt_context(void)
+inline bool in_interrupt_context(void)
 {
 	return !!__in_isr;
 }

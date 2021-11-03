@@ -209,7 +209,7 @@ inline int is_interrupt_enabled(void)
 	return !!(mie & 0x800);
 }
 
-inline int in_interrupt_context(void)
+inline bool in_interrupt_context(void)
 {
 	return in_interrupt;
 }
