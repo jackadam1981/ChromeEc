@@ -39,6 +39,29 @@
       },
       "revId": "2131ecb4ce6d819abb035d75945090c4a169abff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc9f7ada_6f499706",
+        "filename": "power/qcom.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 601,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-11-03T22:41:38Z",
+      "side": 1,
+      "message": "reset_flags should be the same as the ones printed by system_print_banner. Why don\u0027t we avoid duplicates?",
+      "range": {
+        "startLine": 600,
+        "startChar": 25,
+        "endLine": 601,
+        "endChar": 27
+      },
+      "revId": "2131ecb4ce6d819abb035d75945090c4a169abff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
