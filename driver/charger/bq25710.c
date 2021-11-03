@@ -38,6 +38,10 @@
 							     UINT16_MAX)
 #endif
 
+#ifndef CONFIG_BQ25710_MIN_SYSTEM_VOLTAGE_CUSTOM
+#define CONFIG_BQ25710_MIN_SYSTEM_VOLTAGE_MV 0
+#endif
+
 #ifndef CONFIG_BQ25720_VSYS_UVP_CUSTOM
 #define CONFIG_BQ25720_VSYS_UVP 0
 #endif
@@ -490,7 +494,15 @@ static void bq25710_init(int chgnum)
 		rv = bq25710_set_low_power_mode(chgnum, 0);
 		/* Allow enough time for VDDA to be powered */
 		msleep(BQ25710_VDDA_STARTUP_DELAY_MSEC);
-		rv |= raw_read16(chgnum, BQ25710_REG_MIN_SYSTEM_VOLTAGE, &vsys);
+
+		if (IS_ENABLED(CONFIG_BQ25710_MIN_SYSTEM_VOLTAGE_CUSTOM)) {
+			vsys = min_system_voltage_to_reg(
+				CONFIG_BQ25710_MIN_SYSTEM_VOLTAGE_MV);
+		} else {
+			rv |= raw_read16(chgnum,
+					 BQ25710_REG_MIN_SYSTEM_VOLTAGE, &vsys);
+		}
+
 		rv |= raw_read16(chgnum, BQ25710_REG_CHARGE_OPTION_3, &reg);
 		if (!rv) {
 			reg = SET_BQ_FIELD(BQ257X0, CHARGE_OPTION_3, RESET_REG,
