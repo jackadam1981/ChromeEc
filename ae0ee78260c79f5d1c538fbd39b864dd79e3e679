@@ -16,6 +16,24 @@
       "message": "This device has ~30 registers covering ~48 bytes of address space, and the read and write functions are starting to get pretty tedious. I would suggest storing the register values as just an array of bytes that you index by the register offset and just taking that offset directly in the read and write functions.\n\nYou can still check for specific register offsets to add specific handling for particular registers.",
       "revId": "ae0ee78260c79f5d1c538fbd39b864dd79e3e679",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46cb3418_82102e9d",
+        "filename": "zephyr/emul/emul_sn5s330.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2021-11-03T17:02:13Z",
+      "side": 1,
+      "message": "That approach would definitely save initial emulator coding time.\n\nI\u0027m concerned that the implicit nature of the array approach could lead to difficult to detect/diagnose emulator/driver bugs, especially if the driver changes. One advantage of the albeit verbose and tedious approach is that any fall through for unhandled registers will hit a default return of -EINVAL; I consider this an advantage because it\u0027s more explicit about what registers we\u0027ve thought about.\n\nFor example: I wouldn\u0027t have considered how SN5S330_INT_STATUS_REG1 cannot be written to (this is only implied by not writing in driver) while SN5S330_INT_STATUS_REG4 could be written to as I likely would not have looked at each individual use-site. If I had forgotten to do that due to the emulator just working, I may have allowed a possible bug in a driver change that eventually does write to SN5S330_INT_STATUS_REG1.\n\nDo you think this is being too proactive about potential driver changes that will likely never happen?",
+      "parentUuid": "b0d1330c_ad9c9f4c",
+      "revId": "ae0ee78260c79f5d1c538fbd39b864dd79e3e679",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
