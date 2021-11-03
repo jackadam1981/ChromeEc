@@ -180,6 +180,11 @@ static int set_field(int reg, int mask, int on, int off, bool enable)
 	return reg;
 }
 
+static int set_field_val(int reg, int mask, int on)
+{
+	return set_field(reg, mask, on, on, true);
+}
+
 static int bq25710_set_cmp_ref_1p2(int chgnum, bool enable)
 {
 	int rv;
@@ -395,6 +400,19 @@ static void bq25710_init(int chgnum)
 
 		raw_write16(chgnum, BQ25710_REG_CHARGE_OPTION_2, reg);
 	}
+
+	if (IS_ENABLED(CONFIG_CHARGER_BQ25720) &&
+	    !raw_read16(chgnum, BQ25710_REG_CHARGE_OPTION_3, &reg)) {
+		/*
+		 * The bq25720 defaults to 15 A while the bq25710
+		 * defaults to 10A.
+		 */
+		reg = set_field_val(reg,
+				    BQ25710_CHARGE_OPTION_3_IL_AVG_MASK,
+				    BQ25720_CHARGE_OPTION_3_IL_AVG_10A);
+		raw_write16(chgnum, BQ25710_REG_CHARGE_OPTION_3, reg);
+	}
+
 }
 
 /* Charger interfaces */
