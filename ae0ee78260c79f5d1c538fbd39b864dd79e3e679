@@ -34,6 +34,24 @@
       "parentUuid": "b0d1330c_ad9c9f4c",
       "revId": "ae0ee78260c79f5d1c538fbd39b864dd79e3e679",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c02e22c9_12d5ed19",
+        "filename": "zephyr/emul/emul_sn5s330.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-11-03T17:29:34Z",
+      "side": 1,
+      "message": "This brings up a few points:\n1. If we\u0027re using this emulator for unit tests, we would typically test the driver against its requirements. If it tries to access registers that aren\u0027t defined, that\u0027s probably a bad sign, but if it still leaves the device in the state we expect (as measured by the test code), that isn\u0027t technically a bug, in and of itself.\n\n2. If we\u0027re using the emulator for integration tests, then it should conform fairly well to the behavior of the actual device. I don\u0027t see anything in the datasheet that says that writes to a read-only register will fail at the I2C level. Most parts I\u0027ve observed will accept write messages that change read-only bits but not change the bits.\n\n3. I would say this is probably too proactive. The most likely scenario where the driver writes to a register not considered by this emulator is that TI produces another part in this family with more registers, and we try to reuse the driver. In that case, checking for valid registers in this emulator would be an unwanted burden for the driver developer. I think the scenario where a) we change the code to write to a register that actually doesn\u0027t exist, and b) that change does not break an otherwise well defined unit test, but c) that change does break the code in real life will be fairly rare.\n\n4. If you want to check for valid register offsets anyway, you could write a function that just does that and call it from the read and write functions, which you could then implement via array accesses. That would make it easier to update the list of supported registers in the future. (I\u0027m torn on whether it would be a good idea to log a warning in this case.)",
+      "parentUuid": "46cb3418_82102e9d",
+      "revId": "ae0ee78260c79f5d1c538fbd39b864dd79e3e679",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
