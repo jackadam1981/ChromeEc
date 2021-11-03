@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2c769a46_2e49e43f",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 4021,
+      "author": {
+        "id": 1523269
+      },
+      "writtenOn": "2021-11-03T12:44:07Z",
+      "side": 1,
+      "message": "Hi Dai,\n\nMany Thanks for your comment. Do agree with your comment.\nWe are trying to use the existing command \"EC_CMD_THERMAL_GET_THRESHOLD\".\nWill update the patch once we are clear on testing.\n\nThanks,\nHarsha",
+      "parentUuid": "285ce157_8749a609",
+      "range": {
+        "startLine": 4021,
+        "startChar": 5,
+        "endLine": 4021,
+        "endChar": 24
+      },
+      "revId": "5f80a002abd7c2359ec0390c6932cb250545a199",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "296c2728_7a70cc75",
         "filename": "util/ectool.c",
         "patchSetId": 2
