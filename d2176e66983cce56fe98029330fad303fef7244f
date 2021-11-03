@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0d85fab6_b070dc2a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2021-11-03T22:06:59Z",
+      "side": 1,
+      "message": "You mean eliminate the `#ifdef CONFIG_BMI_SEC_I2C` from the header so these functions are always present? That\u0027d be easy and it\u0027d work; it\u0027d just make it less clear that these functions aren\u0027t actually supported without a magnetometer on the secondary I2C bus.",
+      "parentUuid": "4ed62a5f_c1fbe944",
+      "range": {
+        "startLine": 9,
+        "startChar": 1,
+        "endLine": 10,
+        "endChar": 46
+      },
+      "revId": "d2176e66983cce56fe98029330fad303fef7244f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f14fbdb5_06b3f3f5",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -37,6 +61,30 @@
       "writtenOn": "2021-11-03T21:38:15Z",
       "side": 1,
       "message": "test-drivers\n\n(yes, the path works for now, but would be nice to start un-documenting the path-based execution)",
+      "range": {
+        "startLine": 15,
+        "startChar": 28,
+        "endLine": 15,
+        "endChar": 40
+      },
+      "revId": "d2176e66983cce56fe98029330fad303fef7244f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d386350_6e1e0343",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2021-11-03T22:06:59Z",
+      "side": 1,
+      "message": "Ack; changing to `zmake -D configure --test test-drivers`",
+      "parentUuid": "f14fbdb5_06b3f3f5",
       "range": {
         "startLine": 15,
         "startChar": 28,
