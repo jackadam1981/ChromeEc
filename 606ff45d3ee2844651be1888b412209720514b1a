@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3e4ba07_21c3e94f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-11-03T20:22:51Z",
+      "side": 1,
+      "message": "LGTM, but I have some follow up questions in ppc.h",
+      "revId": "606ff45d3ee2844651be1888b412209720514b1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5fd16b4f_d8fbdd40",
+        "filename": "zephyr/shim/include/usbc/ppc.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-11-03T20:22:51Z",
+      "side": 1,
+      "message": "I assume this generates a compile error if nodelabel doesn\u0027t exist.  Is an explicitly BUILD_ASSERT() needed to help the user fix this problem?\n\nI like the macro so the board code doesn\u0027t have to replicate all the indexing magic below.\n\nAs a follow on CL, could this macro get changed to specify the USBC port number and the compatible field instead of the nodelabel?  For example:\n\n    PPC_ENABLE_ALTERNATE(0, SYV682X_COMPAT);",
+      "range": {
+        "startLine": 31,
+        "startChar": 29,
+        "endLine": 31,
+        "endChar": 38
+      },
+      "revId": "606ff45d3ee2844651be1888b412209720514b1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

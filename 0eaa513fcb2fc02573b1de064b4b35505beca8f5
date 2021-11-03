@@ -93,6 +93,30 @@
       },
       "revId": "0eaa513fcb2fc02573b1de064b4b35505beca8f5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1794dfe3_f5ba53af",
+        "filename": "zephyr/shim/src/ppc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-11-03T20:22:51Z",
+      "side": 1,
+      "message": "You\u0027re correct. I meant to resolve this comment after noticing you are using the VARGS version of the FOREACH macro.",
+      "parentUuid": "9a1a9200_9d2f7c0c",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 39
+      },
+      "revId": "0eaa513fcb2fc02573b1de064b4b35505beca8f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
