@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6945c3c8_c3c2f746",
+        "filename": "zephyr/dts/bindings/cros_pwr_signal/power-signal-list.yaml",
+        "patchSetId": 14
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-11-03T19:59:51Z",
+      "side": 1,
+      "message": "Change this to power-signals-required to distinguish this DT property from the POWER_SIGNAL_COUNT enum value that gets created.",
+      "range": {
+        "startLine": 7,
+        "startChar": 2,
+        "endLine": 7,
+        "endChar": 20
+      },
+      "revId": "bd3ee101a4a1aec0268685138e05ee2a46b1a969",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a62456c0_c4089775",
+        "filename": "zephyr/shim/include/power/power.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-11-03T19:59:51Z",
+      "side": 1,
+      "message": "You can just reference GEN_POWER_SIGNAL_ENUM_ENTRY here instead.  I don\u0027t see the value in this helper macro.",
+      "range": {
+        "startLine": 81,
+        "startChar": 2,
+        "endLine": 81,
+        "endChar": 23
+      },
+      "revId": "bd3ee101a4a1aec0268685138e05ee2a46b1a969",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc902d6a_7a0746f1",
+        "filename": "zephyr/shim/include/power/power.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-11-03T19:59:51Z",
+      "side": 1,
+      "message": "I think this is clearer if you use the DT_FOREACH_CHILD macro directly in the enum definition.\n\nenum power_signal {\n    DT_FOREACH_CHILD(POWER_SIGNAL_LIST_NODE, GEN_POWER_SIGNAL_ENUM_ENTRY)\n    POWER_SIGNAL_COUNT\n};",
+      "range": {
+        "startLine": 89,
+        "startChar": 1,
+        "endLine": 89,
+        "endChar": 23
+      },
+      "revId": "bd3ee101a4a1aec0268685138e05ee2a46b1a969",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f8090ea_1c288504",
+        "filename": "zephyr/shim/src/power.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-11-03T19:59:51Z",
+      "side": 1,
+      "message": "Use the DT_FOREACH_CHILD here directly:\n\n    DT_FOREACH_CHILD(POWER_SIGNAL_LIST_NODE, GEN_POWER_SIGNAL_STRUCT)",
+      "range": {
+        "startLine": 15,
+        "startChar": 1,
+        "endLine": 15,
+        "endChar": 25
+      },
+      "revId": "bd3ee101a4a1aec0268685138e05ee2a46b1a969",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
