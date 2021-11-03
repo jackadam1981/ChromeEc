@@ -222,11 +222,7 @@ static int bq25710_set_psys_sensing(int chgnum, bool enable)
 		off = BQ25710_CHARGE_OPTION_1_PSYS_OFF;
 	}
 
-	reg &= ~mask;
-	if (enable)
-		reg |= on;
-	else
-		reg |= off;
+	reg = set_field(reg, mask, on, off, enable);
 
 	rv = raw_write16(chgnum, BQ25710_REG_CHARGE_OPTION_1, reg);
 	if (rv)
