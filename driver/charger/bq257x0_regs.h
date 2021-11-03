@@ -16,6 +16,12 @@
 #define BQ257X0_CHARGE_OPTION_1_CMP_REF__2P3	0
 #define BQ257X0_CHARGE_OPTION_1_CMP_REF__1P2	1
 
+/* ChargeOption2 Register (0x31) */
+#define BQ257X0_CHARGE_OPTION_2_EN_ACOC_SHIFT		3
+#define BQ257X0_CHARGE_OPTION_2_EN_ACOC_BITS		1
+#define BQ257X0_CHARGE_OPTION_2_EN_ACOC__DISABLE	0
+#define BQ257X0_CHARGE_OPTION_2_EN_ACOC__ENABLE		1
+
 /* ChargeCurrent Register */
 #define BQ257X0_CHARGE_CURRENT_CHARGE_CURRENT_SHIFT	6
 #define BQ257X0_CHARGE_CURRENT_CHARGE_CURRENT_BITS	7
@@ -57,6 +63,11 @@
 
 #define SET_CO1_BY_NAME(_f, _e, _x)	SET_BQ257X0_BY_NAME(CHARGE_OPTION_1, \
 							    _f, _e, (_x))
+
+#define SET_CO2(_field, _v, _x)		SET_BQ257X0(CHARGE_OPTION_2, \
+							    _field, _v, (_x))
+#define SET_CO2_BY_NAME(_field, _e, _x)	SET_BQ257X0_BY_NAME(CHARGE_OPTION_2, \
+							    _field, _e, (_x))
 
 #define SET_CO4(_f, _v, _x)		SET_BQ25720(CHARGE_OPTION_4, _f, _v, (_x))
 #define SET_CO4_BY_NAME(_f, _e, _x)	SET_BQ25720_BY_NAME(CHARGE_OPTION_4, _f, _e, (_x))

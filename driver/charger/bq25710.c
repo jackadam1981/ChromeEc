@@ -365,12 +365,17 @@ static void bq25710_init(int chgnum)
 		raw_write16(chgnum, BQ25710_REG_PROCHOT_OPTION_0, reg);
 	}
 
-	/*
-	 * Reduce peak power mode overload and relax cycle time from default 20
-	 * msec to the minimum of 5 msec.
-	 */
 	if (!raw_read16(chgnum, BQ25710_REG_CHARGE_OPTION_2, &reg)) {
+		/*
+		 * Reduce peak power mode overload and relax cycle time
+		 * from default 20 msec to the minimum of 5 msec on the
+		 * bq25710 or 20 msec on the bq25720.
+		 */
 		reg &= ~BQ25710_CHARGE_OPTION_2_TMAX_MASK;
+		/*
+		 * Enable AC input over-current protection.
+		 */
+		reg = SET_CO2_BY_NAME(EN_ACOC, ENABLE, reg);
 		raw_write16(chgnum, BQ25710_REG_CHARGE_OPTION_2, reg);
 	}
 }
