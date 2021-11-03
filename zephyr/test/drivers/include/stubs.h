@@ -22,4 +22,18 @@ void set_mock_power_state(enum power_state state);
  */
 void board_set_ps8xxx_product_id(uint16_t product_id);
 
+/**
+ * @brief Set specific bits in alert status
+ *
+ * @param mask Bits to set
+ */
+void stub_set_alert_status(uint16_t mask);
+
+/**
+ * @brief Clears specific bits in alert status
+ *
+ * @param mask Bits to clear
+ */
+void stub_clear_alert_status(uint16_t mask);
+
 #endif /* __TEST_DRIVERS_STUBS_H */

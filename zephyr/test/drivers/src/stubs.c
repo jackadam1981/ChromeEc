@@ -238,9 +238,21 @@ void system_hibernate(uint32_t seconds, uint32_t microseconds)
 {
 }
 
+static uint16_t alert_status;
+
+void stub_set_alert_status(uint16_t mask)
+{
+	alert_status |= mask;
+}
+
+void stub_clear_alert_status(uint16_t mask)
+{
+	alert_status &= ~mask;
+}
+
 uint16_t tcpc_get_alert_status(void)
 {
-	return 0;
+	return alert_status;
 }
 
 enum power_state power_chipset_init(void)
