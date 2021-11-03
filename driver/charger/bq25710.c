@@ -388,6 +388,11 @@ static void bq25710_init(int chgnum)
 		off = BQ25710_CHARGE_OPTION_2_ACOC_VTH_133;
 		reg = set_field(reg, mask, on, off, false);
 
+		mask = BQ25710_CHARGE_OPTION_2_BATOC_VTH_MASK;
+		on = BQ25710_CHARGE_OPTION_2_BATOC_VTH_200;
+		off = BQ25710_CHARGE_OPTION_2_BATOC_VTH_150;
+		reg = set_field(reg, mask, on, off, false);
+
 		raw_write16(chgnum, BQ25710_REG_CHARGE_OPTION_2, reg);
 	}
 }
