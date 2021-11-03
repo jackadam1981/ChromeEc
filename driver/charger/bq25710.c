@@ -345,6 +345,10 @@ static void bq25710_init(int chgnum)
 		reg = SET_PO1(PP_IDCHG, true, reg);
 
 #endif
+
+		if (IS_ENABLED(CONFIG_CHARGER_BQ25710_PP_INOM))
+			reg = SET_PO1_BY_NAME(PP_INOM, ENABLE, reg);
+
 		raw_write16(chgnum, BQ25710_REG_PROCHOT_OPTION_1, reg);
 #ifdef CONFIG_CHARGER_BQ25720_VSYS_TH2_DV
 		/*
