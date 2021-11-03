@@ -11,7 +11,13 @@
 #include "bq25710.h"
 
 
+/* ChargeCurrent Register */
+#define BQ257X0_CHARGE_CURRENT_CHARGE_CURRENT_SHIFT	6
+#define BQ257X0_CHARGE_CURRENT_CHARGE_CURRENT_BITS	7
 
+#define BQ257X0_CHARGE_CURRENT_MASK	BQ257X0_MASK(BQ257X0, \
+						CHARGE_CURRENT, \
+						CHARGE_CURRENT)
 
 #define BQ257X0_MASK(_chip, _reg, _field)				\
 	GENMASK(							\
