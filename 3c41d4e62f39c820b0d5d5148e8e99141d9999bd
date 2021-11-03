@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3f96670_772bd3d1",
+        "filename": "board/krabby/gpio.inc",
+        "patchSetId": 5
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-11-03T05:48:02Z",
+      "side": 1,
+      "message": "Do we still need pull down as there\u0027s already an external pull down?",
+      "range": {
+        "startLine": 127,
+        "startChar": 53,
+        "endLine": 127,
+        "endChar": 67
+      },
+      "revId": "3c41d4e62f39c820b0d5d5148e8e99141d9999bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9acd58d_d895e4cb",
+        "filename": "board/krabby/gpio.inc",
+        "patchSetId": 5
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-11-03T05:48:02Z",
+      "side": 1,
+      "message": "This pin also has a external 3.3V pull up.",
+      "range": {
+        "startLine": 128,
+        "startChar": 53,
+        "endLine": 128,
+        "endChar": 67
+      },
+      "revId": "3c41d4e62f39c820b0d5d5148e8e99141d9999bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15a1539a_5eda2515",
+        "filename": "board/krabby/gpio.inc",
+        "patchSetId": 5
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-11-03T05:48:02Z",
+      "side": 1,
+      "message": "Not seeing this on schematic, but this is showed in corsola ec pinmux sheet.",
+      "range": {
+        "startLine": 129,
+        "startChar": 5,
+        "endLine": 129,
+        "endChar": 25
+      },
+      "revId": "3c41d4e62f39c820b0d5d5148e8e99141d9999bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4fb28f9_79b3e884",
+        "filename": "board/krabby/gpio.inc",
+        "patchSetId": 5
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-11-03T05:48:02Z",
+      "side": 1,
+      "message": "GPIO_OUTPUT ?",
+      "range": {
+        "startLine": 130,
+        "startChar": 40,
+        "endLine": 130,
+        "endChar": 50
+      },
+      "revId": "3c41d4e62f39c820b0d5d5148e8e99141d9999bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4721f60d_52c548a2",
+        "filename": "board/krabby/gpio.inc",
+        "patchSetId": 5
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-11-03T05:48:02Z",
+      "side": 1,
+      "message": "SPI_CLK_GPG6?",
+      "range": {
+        "startLine": 141,
+        "startChar": 5,
+        "endLine": 141,
+        "endChar": 17
+      },
+      "revId": "3c41d4e62f39c820b0d5d5148e8e99141d9999bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
