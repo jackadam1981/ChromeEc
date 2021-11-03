@@ -412,6 +412,11 @@ static void bq25710_init(int chgnum)
 				CONFIG_BQ25720_CHARGE_OPTION_4_IDCHG_DEG2,
 				reg);
 		}
+		if (IS_ENABLED(CONFIG_BQ25720_CHARGE_OPTION_4_IDCHG_TH2_CUSTOM)) {
+			reg = SET_CO4_BY_NAME(IDCHG_TH2,
+				CONFIG_BQ25720_CHARGE_OPTION_4_IDCHG_TH2,
+				reg);
+		}
 		raw_write16(chgnum, BQ25720_REG_CHARGE_OPTION_4, reg);
 	}
 
