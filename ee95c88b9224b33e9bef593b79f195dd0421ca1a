@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e4898fcf_c4b6e5f6",
+        "filename": "zephyr/test/drivers/src/bmi160.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1882,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-11-04T22:47:01Z",
+      "side": 1,
+      "message": "Nit - I think this is easier to follow if you move right after checking the return value from bmi160_sec_raw_read8().",
+      "range": {
+        "startLine": 1878,
+        "startChar": 0,
+        "endLine": 1882,
+        "endChar": 0
+      },
+      "revId": "ee95c88b9224b33e9bef593b79f195dd0421ca1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
