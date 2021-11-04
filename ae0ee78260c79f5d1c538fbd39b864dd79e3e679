@@ -70,6 +70,24 @@
       "parentUuid": "c02e22c9_12d5ed19",
       "revId": "ae0ee78260c79f5d1c538fbd39b864dd79e3e679",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b6ff75a_366a15e7",
+        "filename": "zephyr/emul/emul_sn5s330.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-11-04T21:58:06Z",
+      "side": 1,
+      "message": "My concern is that the read and write functions have a lot of repeated and boilerplate C code, and that might get tedious to maintain. I\u0027m not worried about the size of the generated code. I\u0027ll concede there\u0027s value in checking the register accesses, but I think that could be done a bit more tersely, e.g.\n\n zassert_true(is_valid_reg(reg, bytes));\n mem[reg] \u003d val;\n \n bool is_valid_reg(int reg, int bytes)\n {\n   for (/* addr in valid_addrs */)\n     if (reg \u003d\u003d addr.offset)\n       return bytes \u003d\u003d addr.size);\n   return false\n  }\n \nIt would be trickier and maybe even not worth the hassle for multi-byte registers, but I don\u0027t think this part has any.\n\n\u003e The emulator needs to model the actual chip behavior.\n\nWhen I poke this part on a volteer, it accepts writes to read-only bits and just doesn\u0027t apply them. Addresses off the map act like read-only registers whose value is 0. They don\u0027t generate I2C errors.",
+      "parentUuid": "051b7446_04123827",
+      "revId": "ae0ee78260c79f5d1c538fbd39b864dd79e3e679",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
