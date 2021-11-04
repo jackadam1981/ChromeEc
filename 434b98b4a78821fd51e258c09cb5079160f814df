@@ -16,6 +16,24 @@
       "message": "What are your thoughts for introducing the wake to all TCPCI TCPCs, versus just the one we tested?  It seems like it should be relatively straightforward to add, but TCPCs have so very many corner cases",
       "revId": "434b98b4a78821fd51e258c09cb5079160f814df",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b113b5fe_1a87af4d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-11-04T23:46:26Z",
+      "side": 1,
+      "message": "I think we should at least run FAFT PD and compare results before making the change for any TCPC. At least, that can give us _some_ confidence that things aren\u0027t super broken. Anything beyond that, we\u0027ll just have to deal with as they arise.",
+      "parentUuid": "e604fb89_50058758",
+      "revId": "434b98b4a78821fd51e258c09cb5079160f814df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
