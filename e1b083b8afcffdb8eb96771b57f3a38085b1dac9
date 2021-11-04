@@ -81,6 +81,30 @@
       },
       "revId": "e1b083b8afcffdb8eb96771b57f3a38085b1dac9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3753d68_61b595fa",
+        "filename": "board/brask/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-11-04T09:03:19Z",
+      "side": 1,
+      "message": "the title of that bug is\n\"brya: USB4 retimer Burnside bridge FW enabling and update\"\nit doesn\u0027t seem relevant here, so should be OK to remove.",
+      "parentUuid": "8cb300a3_ee0caee4",
+      "range": {
+        "startLine": 118,
+        "startChar": 0,
+        "endLine": 118,
+        "endChar": 28
+      },
+      "revId": "e1b083b8afcffdb8eb96771b57f3a38085b1dac9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
