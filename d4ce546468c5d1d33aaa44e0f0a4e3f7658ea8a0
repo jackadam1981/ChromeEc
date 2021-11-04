@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "27fb5942_af373ff7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2021-11-04T22:04:29Z",
+      "side": 1,
+      "message": "This is the label I\u0027ve been told to use for these tests. I will ask Yuval about this tomorrow.",
+      "parentUuid": "3971213d_a0ec765e",
+      "revId": "d4ce546468c5d1d33aaa44e0f0a4e3f7658ea8a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "efc9065d_417e6562",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -31,6 +49,30 @@
       "writtenOn": "2021-11-04T20:46:52Z",
       "side": 1,
       "message": "Did we also run `make runhosttests`? Looks like this is used by a lot of non-zephyr boards.",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 43
+      },
+      "revId": "d4ce546468c5d1d33aaa44e0f0a4e3f7658ea8a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "41aa62f9_ec0602ce",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2021-11-04T22:04:29Z",
+      "side": 1,
+      "message": "That passes. This is also only a static helper function used in one spot and we did an nearly identical change to the BMI260 driver in CL 3232755",
+      "parentUuid": "efc9065d_417e6562",
       "range": {
         "startLine": 15,
         "startChar": 0,
@@ -89,6 +131,24 @@
       "writtenOn": "2021-11-04T20:47:13Z",
       "side": 1,
       "message": "Accidental duplicate comment.",
+      "revId": "d4ce546468c5d1d33aaa44e0f0a4e3f7658ea8a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e946574c_cf42323e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2021-11-04T22:04:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2bff71f4_9cdf1c43",
       "revId": "d4ce546468c5d1d33aaa44e0f0a4e3f7658ea8a0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
