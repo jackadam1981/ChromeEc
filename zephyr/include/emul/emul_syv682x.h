@@ -100,6 +100,28 @@
 #define SYV682X_CONTROL_4_CC_FRS	BIT(1)
 #define SYV682X_CONTROL_4_INT_MASK	0x0c
 
+enum syv682x_emul_interrupt_condition {
+	SYV682X_EMUL_COND_OC_HV,
+};
+
+struct syv682x_emul_conditions {
+	/* Status register conditions */
+	bool oc_hv;
+	bool rvs;
+	bool oc_5v;
+	bool ovp;
+	bool frs;
+	bool tsd;
+	bool vsafe5v;
+	bool vsafe0v;
+	/* Control register 4 conditions */
+	bool vbat_ovp;
+	bool vconn_oc;
+};
+
+void syv682x_emul_set_condition(struct i2c_emul *emul,
+		struct syv682x_emul_conditions cond);
+
 /**
  * @brief Get pointer to SYV682x emulator using device tree order number.
  *
