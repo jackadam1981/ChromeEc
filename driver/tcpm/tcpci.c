@@ -1440,25 +1440,7 @@ int tcpci_tcpm_init(int port)
 	/* Initialize power_status_mask */
 	init_power_status_mask(port);
 
-	if (TCPC_FLAGS_VSAFE0V(tcpc_config[port].flags)) {
-		int ext_status = 0;
-
-		/* Read Extended Status register */
-		tcpm_ext_status(port, &ext_status);
-		/* Initial level, set appropriately */
-		if (power_status & TCPC_REG_POWER_STATUS_VBUS_PRES)
-			tcpc_vbus[port] = BIT(VBUS_PRESENT);
-		else if (ext_status & TCPC_REG_EXT_STATUS_SAFE0V)
-			tcpc_vbus[port] = BIT(VBUS_SAFE0V);
-		else
-			tcpc_vbus[port] = 0;
-	} else {
-		/* Initial level, set appropriately */
-		tcpc_vbus[port] = (power_status &
-				   TCPC_REG_POWER_STATUS_VBUS_PRES)
-					? BIT(VBUS_PRESENT)
-					: BIT(VBUS_SAFE0V);
-	}
+	tcpc_vbus[port] = 0;
 
 	/*
 	 * Force an update to the VBUS status in case the TCPC doesn't send a
