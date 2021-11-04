@@ -184,4 +184,8 @@ SHELL_CMD_REGISTER(flashchip, NULL, "Information about flash chip",
 	CONFIG_PLATFORM_EC_GPIO_INIT_PRIORITY
 #error "Flash must be initialized after GPIOs"
 #endif
+#if CONFIG_PLATFORM_EC_FLASH_INIT_PRIORITY <= \
+	CONFIG_CROS_FLASH_NPCX_INIT_PRIORITY
+#error "Flash must be initialized after flash_npcx_init"
+#endif
 SYS_INIT(flash_dev_init, POST_KERNEL, CONFIG_PLATFORM_EC_FLASH_INIT_PRIORITY);
