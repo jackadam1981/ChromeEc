@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3a85eb9e_a2329d55",
+        "filename": "zephyr/shim/src/gpio.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1477788
+      },
+      "writtenOn": "2021-11-04T18:23:11Z",
+      "side": 1,
+      "message": "It was to improve the visibility where the macro ends. But too small change to send it separately. I can remove this if you don\u0027t like it.",
+      "parentUuid": "65bfbbb9_99b1e85c",
+      "revId": "4107781a7cf56d8270c624c018e7272ba0e59008",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b5d8c062_42f22f3b",
         "filename": "zephyr/shim/src/gpio.c",
         "patchSetId": 1
@@ -31,6 +49,30 @@
       "writtenOn": "2021-11-04T17:44:48Z",
       "side": 1,
       "message": "please use clang format on this ... looks kinda funky",
+      "range": {
+        "startLine": 251,
+        "startChar": 0,
+        "endLine": 261,
+        "endChar": 0
+      },
+      "revId": "4107781a7cf56d8270c624c018e7272ba0e59008",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc5f4898_a75f1a9b",
+        "filename": "zephyr/shim/src/gpio.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1477788
+      },
+      "writtenOn": "2021-11-04T18:23:11Z",
+      "side": 1,
+      "message": "It\u0027s better now, thanks",
+      "parentUuid": "b5d8c062_42f22f3b",
       "range": {
         "startLine": 251,
         "startChar": 0,
