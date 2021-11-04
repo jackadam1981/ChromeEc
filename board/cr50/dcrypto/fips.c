@@ -46,13 +46,18 @@ uint8_t fips_break_cmd;
 
 /**
  * Return true if no blocking crypto errors detected.
- * Until self-integrity works properly (b/138578318), ignore it.
- * TODO(b/138578318): remove ignoring of FIPS_FATAL_SELF_INTEGRITY.
  */
 static inline bool fips_is_no_crypto_error(void)
 {
-	return (_fips_status &
-		(FIPS_ERROR_MASK & (~FIPS_FATAL_SELF_INTEGRITY))) == 0;
+#ifdef CRYPTO_TEST_SETUP
+	/* For CRYPTO_TEST ignore self-integrity errors. */
+	const enum fips_status error_mask = FIPS_ERROR_MASK &
+					    (~FIPS_FATAL_SELF_INTEGRITY);
+#else
+	const enum fips_status error_mask = FIPS_ERROR_MASK;
+#endif
+
+	return (_fips_status & error_mask) == 0;
 }
 
 /* Return true if crypto can be used (no failures detected). */
@@ -79,6 +84,8 @@ void fips_throw_err(enum fips_status err)
 	fips_set_status(err);
 	if (!fips_is_no_crypto_error()) {
 #ifdef CONFIG_FLASH_LOG
+		/* Drop FIPS_MODE_ACTIVE flag. */
+		_fips_status &= ~FIPS_MODE_ACTIVE;
 		fips_vtable->flash_log_add_event(FE_LOG_FIPS_FAILURE,
 						 sizeof(_fips_status),
 						 &_fips_status);
@@ -678,7 +685,8 @@ void fips_power_up_tests(void)
 	uint64_t starttime;
 
 	starttime = fips_vtable->get_time().val;
-
+	/* Drop flags for in case of rerunning tests. */
+	_fips_status &= ~(FIPS_MODE_ACTIVE | FIPS_POWER_UP_TEST_DONE);
 	/* SHA2-256 is used for self-integrity test, so check it first. */
 	if (!fips_sha256_kat())
 		_fips_status |= FIPS_FATAL_SHA256;
@@ -765,6 +773,11 @@ void fips_power_up_tests(void)
 		_fips_status |= FIPS_FATAL_OTHER;
 
 	fips_last_kat_test_duration = fips_vtable->get_time().val - starttime;
+
+	fips_set_status(_fips_status);
+	/* Check if we can set FIPS-approved mode. */
+	if (fips_crypto_allowed())
+		fips_set_status(FIPS_MODE_ACTIVE);
 }
 
 void fips_power_on(void)
@@ -782,11 +795,6 @@ void fips_power_on(void)
 		fips_power_up_tests();
 	else	/* tests were already completed before sleep */
 		_fips_status |= FIPS_POWER_UP_TEST_DONE;
-
-	/* Check if we can set FIPS-approved mode. */
-	if (fips_crypto_allowed())
-		fips_set_status(FIPS_MODE_ACTIVE);
-
 }
 
 const struct fips_vtable *fips_vtable;
