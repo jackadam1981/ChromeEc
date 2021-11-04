@@ -397,6 +397,15 @@ static void bq25710_init(int chgnum)
 		raw_write16(chgnum, BQ25710_REG_CHARGE_OPTION_2, reg);
 	}
 
+	if (IS_ENABLED(CONFIG_CHARGER_BQ25720) &&
+	    !raw_read16(chgnum, BQ25710_REG_CHARGE_OPTION_3, &reg)) {
+		/*
+		 * The bq25720 defaults to 15 A while the bq25710
+		 * defaults to 10A.
+		 */
+		reg = SET_CO3(IL_AVG, BQ25720_CHARGE_OPTION_3_IL_AVG__10A, reg);
+		raw_write16(chgnum, BQ25710_REG_CHARGE_OPTION_3, reg);
+	}
 
 }
 
