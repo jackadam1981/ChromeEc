@@ -63,6 +63,30 @@
       },
       "revId": "606ff45d3ee2844651be1888b412209720514b1a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b10dff89_75bdf0a0",
+        "filename": "zephyr/shim/include/usbc/ppc.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-11-04T22:33:01Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "69da5240_a1b3f34f",
+      "range": {
+        "startLine": 31,
+        "startChar": 29,
+        "endLine": 31,
+        "endChar": 38
+      },
+      "revId": "606ff45d3ee2844651be1888b412209720514b1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
