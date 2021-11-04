@@ -16,6 +16,24 @@
       "message": "where are the register definitions used here?",
       "revId": "9981e3ad11bd0ba547c47c9d2210f3b34dc2be77",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "434c8265_340746ea",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1477740
+      },
+      "writtenOn": "2021-11-04T05:55:32Z",
+      "side": 1,
+      "message": "These register definitions are used for USB EQ setting. The setting values are the adjusted results from vendor.",
+      "parentUuid": "538561e1_d0ba1498",
+      "revId": "9981e3ad11bd0ba547c47c9d2210f3b34dc2be77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
