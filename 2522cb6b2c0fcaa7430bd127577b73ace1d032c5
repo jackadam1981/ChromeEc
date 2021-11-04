@@ -39,6 +39,30 @@
       },
       "revId": "2522cb6b2c0fcaa7430bd127577b73ace1d032c5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8379e13c_211b68a2",
+        "filename": "zephyr/shim/src/CMakeLists.txt",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2021-11-04T11:30:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "44e37eba_db92b007",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 29
+      },
+      "revId": "2522cb6b2c0fcaa7430bd127577b73ace1d032c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
