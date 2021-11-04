@@ -1,0 +1,222 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d3c4068_80078e6e",
+        "filename": "zephyr/drivers/cros_flash/Kconfig",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-11-04T21:54:39Z",
+      "side": 1,
+      "message": "Add a blank line before this \"if\"",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 18
+      },
+      "revId": "64e1d4b660e2835d7d255325d07feea7461d30a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b33ba0e_f01832a3",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_npcx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-11-04T21:54:39Z",
+      "side": 1,
+      "message": "This initialization is not required.",
+      "range": {
+        "startLine": 36,
+        "startChar": 35,
+        "endLine": 36,
+        "endChar": 38
+      },
+      "revId": "64e1d4b660e2835d7d255325d07feea7461d30a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c054be12_d7fd65f2",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_npcx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-11-04T21:54:39Z",
+      "side": 1,
+      "message": "Is this command unique to the Nuvoton flash, or can this definition get added upstream?",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 30
+      },
+      "revId": "64e1d4b660e2835d7d255325d07feea7461d30a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa2332ed_c2907636",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_npcx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-11-04T21:54:39Z",
+      "side": 1,
+      "message": "Shouldn\u0027t the tx_set and rx_set use separate buffers? \nSomething like:\n\tconst struct spi_buf tx_buf[2] \u003d {\n\t\t{\n\t\t\t.buf \u003d \u0026opcode,\n\t\t\t.len \u003d 1\n\t\t},\n\t\t{\n\t\t\t.buf \u003d NULL,\n\t\t\t.len \u003d 1\n\t\t}\n\t};\n\tconst struct spi_buf rx_buf[2] \u003d {\n\t\t{\n\t\t\t.buf \u003d NULL,\n\t\t\t.len \u003d 1\n\t\t},\n\t\t{\n\t\t\t.buf \u003d data,\n\t\t\t.len \u003d 1\n\t\t}\n\t};",
+      "range": {
+        "startLine": 63,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 0
+      },
+      "revId": "64e1d4b660e2835d7d255325d07feea7461d30a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f55d95b2_03f7d792",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_npcx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-11-04T21:54:39Z",
+      "side": 1,
+      "message": "Use NULL",
+      "range": {
+        "startLine": 148,
+        "startChar": 61,
+        "endLine": 148,
+        "endChar": 62
+      },
+      "revId": "64e1d4b660e2835d7d255325d07feea7461d30a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d22fa374_a8cf6d1e",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_npcx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-11-04T21:54:39Z",
+      "side": 1,
+      "message": "Use NULL",
+      "range": {
+        "startLine": 188,
+        "startChar": 65,
+        "endLine": 188,
+        "endChar": 66
+      },
+      "revId": "64e1d4b660e2835d7d255325d07feea7461d30a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "938d60d1_e92b1b34",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_npcx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 433,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-11-04T21:54:39Z",
+      "side": 1,
+      "message": "Add a TODO here to move these routines into the common shim/flash.c driver.\n\nTODO(b/205175314): Migrate cros-flash driver to Zephyr flash driver",
+      "revId": "64e1d4b660e2835d7d255325d07feea7461d30a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d181bd6a_cf3c5f52",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_npcx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 629,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-11-04T21:54:39Z",
+      "side": 1,
+      "message": "Reference the CONFIG names here instead of the function names in the error.",
+      "range": {
+        "startLine": 629,
+        "startChar": 50,
+        "endLine": 629,
+        "endChar": 62
+      },
+      "revId": "64e1d4b660e2835d7d255325d07feea7461d30a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63c984fe_9c47f73c",
+        "filename": "zephyr/include/cros/nuvoton/npcx.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-11-04T21:54:39Z",
+      "side": 1,
+      "message": "Delete this nodelabel because it is not used.  It is also easy to confuse with the spi_fiu0 nodelabel on the actual FIU driver.",
+      "range": {
+        "startLine": 63,
+        "startChar": 1,
+        "endLine": 63,
+        "endChar": 6
+      },
+      "revId": "64e1d4b660e2835d7d255325d07feea7461d30a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f3b2685_7e5f1706",
+        "filename": "zephyr/shim/src/flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-11-04T21:54:39Z",
+      "side": 1,
+      "message": "Use the CONFIG names in the error message.",
+      "revId": "64e1d4b660e2835d7d255325d07feea7461d30a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
