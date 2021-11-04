@@ -22,6 +22,30 @@
       },
       "revId": "cf95d932855e6924021183cbf30e53fa9fbd43a5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "59e86e52_f0a13baf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-11-04T21:51:30Z",
+      "side": 1,
+      "message": "yes, we ran ACVP using Tast on ChromeOS. this change doesn\u0027t alter regular behavior - just add specifics for testing.",
+      "parentUuid": "d75185b6_4a2b3219",
+      "range": {
+        "startLine": 16,
+        "startChar": 1,
+        "endLine": 16,
+        "endChar": 4
+      },
+      "revId": "cf95d932855e6924021183cbf30e53fa9fbd43a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
