@@ -16,7 +16,21 @@
 #define BQ257X0_CHARGE_OPTION_1_CMP_REF__2P3	0
 #define BQ257X0_CHARGE_OPTION_1_CMP_REF__1P2	1
 
+#define BQ25710_CHARGE_OPTION_1_EN_PSYS_SHIFT		12
+#define BQ25710_CHARGE_OPTION_1_EN_PSYS_BITS		1
+#define xBQ25710_CHARGE_OPTION_1_EN_PSYS__disable	0
+#define xBQ25710_CHARGE_OPTION_1_EN_PSYS__enable		1
+#define BQ25720_CHARGE_OPTION_1_PSYS_CONFIG_SHIFT	12
+#define BQ25720_CHARGE_OPTION_1_PSYS_CONFIG_BITS	2
+#define BQ25720_CHARGE_OPTION_1_PSYS_CONFIG__PBUS_PBAT	0
+#define BQ25720_CHARGE_OPTION_1_PSYS_CONFIG__OFF	3
+
 /* ChargeOption2 Register (0x31) */
+#define BQ257X0_CHARGE_OPTION_2_ACOC_VTH_SHIFT		2
+#define BQ257X0_CHARGE_OPTION_2_ACOC_VTH_BITS		1
+#define BQ257X0_CHARGE_OPTION_2_ACOC_VTH__1P33		0
+#define BQ257X0_CHARGE_OPTION_2_ACOC_VTH__2P00		1
+
 #define BQ257X0_CHARGE_OPTION_2_EN_ACOC_SHIFT		3
 #define BQ257X0_CHARGE_OPTION_2_EN_ACOC_BITS		1
 #define BQ257X0_CHARGE_OPTION_2_EN_ACOC__DISABLE	0
@@ -42,17 +56,30 @@
 		_chip##_##_reg##_##_field##_SHIFT)
 
 #define BQ257X0_MASK(_reg, _field)	BQ257X0_MASK_(BQ257X0, _reg, _field)
+#define BQ25710_MASK(_reg, _field)	BQ257X0_MASK_(BQ25710, _reg, _field)
 #define BQ25720_MASK(_reg, _field)	BQ257X0_MASK_(BQ25720, _reg, _field)
 
 #define GET_BQ25720(_reg, _field, _x)				\
 	(((_x) >> BQ25720_##_reg##_##_field##_SHIFT) &		\
 	 GENMASK(BQ25720_##_reg##_##_field##_BITS - 1, 0))
 
+#define SET_BQ25710(_reg, _field, _v, _x)				\
+	(((_x) & ~BQ25710_MASK(_reg, _field)) |				\
+	 (((_v) &							\
+	   GENMASK(BQ25710_##_reg##_##_field##_BITS - 1, 0)) <<		\
+	  BQ25710_##_reg##_##_field##_SHIFT))
+
 #define SET_BQ25720(_reg, _field, _v, _x)				\
 	(((_x) & ~BQ25720_MASK(_reg, _field)) |				\
 	 (((_v) &							\
 	   GENMASK(BQ25720_##_reg##_##_field##_BITS - 1, 0)) <<		\
 	  BQ25720_##_reg##_##_field##_SHIFT))
+
+#define SET_BQ257X0(_reg, _field, _v, _x)				\
+	(((_x) & ~BQ257X0_MASK(_reg, _field)) |				\
+	 (((_v) &							\
+	   GENMASK(BQ257X0_##_reg##_##_field##_BITS - 1, 0)) <<		\
+	  BQ257X0_##_reg##_##_field##_SHIFT))
 
 #define SET_BQ257X0_BY_NAME(_reg, _field, _e, _x)			\
 	(((_x) & ~BQ257X0_MASK(_reg, _field)) |				\

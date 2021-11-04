@@ -198,27 +198,19 @@ static int bq25710_set_psys_sensing(int chgnum, bool enable)
 {
 	int rv;
 	int reg;
-	int mask, on, off;
 
 	rv = raw_read16(chgnum, BQ25710_REG_CHARGE_OPTION_1, &reg);
 	if (rv)
 		return rv;
 
 	if (IS_ENABLED(CONFIG_CHARGER_BQ25720)) {
-		mask = BQ25720_CHARGE_OPTION_1_PSYS_MASK;
-		on = BQ25720_CHARGE_OPTION_1_PSYS_ON;
-		off = BQ25720_CHARGE_OPTION_1_PSYS_OFF;
+		if (enable)
+			reg = SET_BQ25720_BY_NAME(CHARGE_OPTION_1, PSYS_CONFIG, PBUS_PBAT, reg);
+		else
+			reg = SET_BQ25720_BY_NAME(CHARGE_OPTION_1, PSYS_CONFIG, OFF, reg);
 	} else if (IS_ENABLED(CONFIG_CHARGER_BQ25710)) {
-		mask = BQ25710_CHARGE_OPTION_1_PSYS_MASK;
-		on = BQ25710_CHARGE_OPTION_1_PSYS_ON;
-		off = BQ25710_CHARGE_OPTION_1_PSYS_OFF;
+		reg = SET_BQ25710(CHARGE_OPTION_1, EN_PSYS, enable, reg);
 	}
-
-	reg &= ~mask;
-	if (enable)
-		reg |= on;
-	else
-		reg |= off;
 
 	rv = raw_write16(chgnum, BQ25710_REG_CHARGE_OPTION_1, reg);
 	if (rv)
