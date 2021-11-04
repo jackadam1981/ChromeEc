@@ -39,6 +39,30 @@
       },
       "revId": "606ff45d3ee2844651be1888b412209720514b1a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69da5240_a1b3f34f",
+        "filename": "zephyr/shim/include/usbc/ppc.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2021-11-04T11:33:41Z",
+      "side": 1,
+      "message": "Thanks, I added `BUILD_ASSERT`.\n\nI\u0027ve tried to prepare a new macro to use `PPC_ENABLE_ALTERNATE(0, SYV682X_COMPAT);`, but it is not easy and doesn\u0027t look good, so I would stick to the current implementation.",
+      "parentUuid": "5fd16b4f_d8fbdd40",
+      "range": {
+        "startLine": 31,
+        "startChar": 29,
+        "endLine": 31,
+        "endChar": 38
+      },
+      "revId": "606ff45d3ee2844651be1888b412209720514b1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
