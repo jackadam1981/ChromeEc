@@ -41,8 +41,10 @@
 /* TODO(b/197505149): need to fix the build error and clarify
  * how to set the usb_ls_en_gpio and retimer_rst_gpio
  * in the same array.
+ * TODO: Do not add CONFIG_KB800X_CUSTOM_XBAR until find out how
+ * to config ss_lane.
  */
-/* #define CONFIG_USBC_RETIMER_KB800X */
+#define CONFIG_USBC_RETIMER_KB800X
 #define CONFIG_USBC_PPC_SYV682X
 
 /* TODO: b/177608416 - measure and check these values on brya */
