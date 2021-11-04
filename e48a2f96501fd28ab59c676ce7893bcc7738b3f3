@@ -46,6 +46,30 @@
       },
       "revId": "e48a2f96501fd28ab59c676ce7893bcc7738b3f3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f4aefea_7092b93d",
+        "filename": "update_from_main.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-11-04T22:54:26Z",
+      "side": 1,
+      "message": "long term I wonder if we could have bugjuggler remind us quarterly on a bug to sync up with main and do a little bit of manual testing... would keep the bitrot away and likely minimal effort if we keep on a good schedule of doing it periodically",
+      "parentUuid": "dcf3564d_2bf205db",
+      "range": {
+        "startLine": 87,
+        "startChar": 4,
+        "endLine": 132,
+        "endChar": 20
+      },
+      "revId": "e48a2f96501fd28ab59c676ce7893bcc7738b3f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
