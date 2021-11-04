@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0765f2c7_45dc47fa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-11-04T09:25:06Z",
+      "side": 1,
+      "message": "please separate the baseboard cbi_ssfc changes into a new patch.\nneed to check with zhuohao or YH about support in program.star\n(project.star?) for these parameters.",
+      "revId": "a4fcb4a8d3cf4a73017a4f5688bbf51d60f3aa03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
