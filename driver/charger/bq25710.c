@@ -389,6 +389,10 @@ static void bq25710_init(int chgnum)
 		 * Enable AC input over-current protection.
 		 */
 		reg = SET_CO2_BY_NAME(EN_ACOC, ENABLE, reg);
+
+		/* Set ACOC_VTH to 133% of ILIM2 */
+		reg = SET_CO2_BY_NAME(ACOC_VTH, 1P33, reg);
+
 		raw_write16(chgnum, BQ25710_REG_CHARGE_OPTION_2, reg);
 	}
 }
