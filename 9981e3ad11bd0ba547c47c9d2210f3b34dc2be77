@@ -52,6 +52,24 @@
       "parentUuid": "434c8265_340746ea",
       "revId": "9981e3ad11bd0ba547c47c9d2210f3b34dc2be77",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76fd390a_c5ef57f5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-11-04T07:13:17Z",
+      "side": 1,
+      "message": "please add a patch that defines these register numbers in ps8xxx.h,\nthen replace the register numbers with the new constants.\nalso, add comment with each register write indicating\nwhat RX/TX EQ setting is being selected.\nfor example \"RX2 EQ 18dB, RX1 EQ 16dB\"",
+      "parentUuid": "90c89380_330e3aba",
+      "revId": "9981e3ad11bd0ba547c47c9d2210f3b34dc2be77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
