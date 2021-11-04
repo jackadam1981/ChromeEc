@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3971213d_a0ec765e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2021-11-04T20:46:52Z",
+      "side": 1,
+      "message": "replace \"zephyr\" with \"drivers\" since this affects non-zephyr code.",
+      "revId": "d4ce546468c5d1d33aaa44e0f0a4e3f7658ea8a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "efc9065d_417e6562",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2021-11-04T20:46:52Z",
+      "side": 1,
+      "message": "Did we also run `make runhosttests`? Looks like this is used by a lot of non-zephyr boards.",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 43
+      },
+      "revId": "d4ce546468c5d1d33aaa44e0f0a4e3f7658ea8a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95d3e901_79335179",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2021-11-04T20:46:52Z",
+      "side": 1,
+      "message": "Did you also do a `make runhosttests` on this change?",
+      "revId": "d4ce546468c5d1d33aaa44e0f0a4e3f7658ea8a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
