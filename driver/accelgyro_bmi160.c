@@ -394,12 +394,10 @@ static int manage_activity(const struct motion_sensor_t *s,
 }
 #endif
 
+/** Assumes that the passed sensor `*s` is an accelerometer */
 static __maybe_unused int config_interrupt(const struct motion_sensor_t *s)
 {
 	int ret, tmp;
-
-	if (s->type != MOTIONSENSE_TYPE_ACCEL)
-		return EC_SUCCESS;
 
 	mutex_lock(s->mutex);
 	bmi_write8(s->port, s->i2c_spi_addr_flags,
