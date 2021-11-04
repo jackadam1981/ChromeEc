@@ -70,6 +70,29 @@
       },
       "revId": "e48a2f96501fd28ab59c676ce7893bcc7738b3f3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5dfee762_2daee2bc",
+        "filename": "update_from_main.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-11-04T23:36:32Z",
+      "side": 1,
+      "message": "Since you\u0027ve already deleted the files you don\u0027t care about, a \"git merge\" should do the right thing while preserving history. You\u0027ll probably need to play around with the merge \"strategy\" or just use the \"update_release_branch.py\" script: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/util/update_release_branch.py",
+      "range": {
+        "startLine": 273,
+        "startChar": 0,
+        "endLine": 273,
+        "endChar": 46
+      },
+      "revId": "e48a2f96501fd28ab59c676ce7893bcc7738b3f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
