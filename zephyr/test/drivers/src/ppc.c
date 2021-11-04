@@ -46,7 +46,12 @@ static void test_ppc_syv682x_interrupt(void)
 	uint8_t reg;
 
 	/* An OC event less than 100 ms should not cause VBUS to turn off. */
+#if 0
 	syv682x_emul_set_status(emul, SYV682X_STATUS_OC_5V);
+#else
+	union syv682x_emul_conditions cond = {.oc_5v = true};
+	syv682x_emul_set_condition(emul, cond);
+#endif
 	syv682x_interrupt(syv682x_port);
 	/* TODO(b/201420132): Simulate passage of time instead of sleeping. */
 	msleep(50);
@@ -76,7 +81,13 @@ static void test_ppc_syv682x_interrupt(void)
 	 */
 	zassert_ok(ppc_vbus_source_enable(syv682x_port, true),
 			"Source enable failed");
+#if 0
 	syv682x_emul_set_status(emul, SYV682X_STATUS_TSD);
+#else
+	cond.val = 0;
+	cond.tsd = true;
+	syv682x_emul_set_condition(emul, cond);
+#endif
 	syv682x_interrupt(syv682x_port);
 	/* TODO(b/201420132): Simulate passage of time instead of sleeping. */
 	msleep(1);

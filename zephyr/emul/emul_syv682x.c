@@ -60,6 +60,27 @@ int syv682x_emul_set_reg(struct i2c_emul *emul, int reg, uint8_t val)
 	return 0;
 }
 
+void syv682x_emul_set_condition(struct i2c_emul *emul,
+		union syv682x_emul_conditions cond)
+{
+	uint8_t status_val = 0;
+	uint8_t control_4_val = 0;
+
+	if (cond.oc_hv)   status_val |= SYV682X_STATUS_OC_HV;
+	if (cond.rvs)     status_val |= SYV682X_STATUS_RVS;
+	if (cond.oc_5v)   status_val |= SYV682X_STATUS_OC_5V;
+	if (cond.ovp)     status_val |= SYV682X_STATUS_OVP;
+	if (cond.frs)     status_val |= SYV682X_STATUS_FRS;
+	if (cond.tsd)     status_val |= SYV682X_STATUS_TSD;
+	if (cond.vsafe5v) status_val |= SYV682X_STATUS_VSAFE_5V;
+	if (cond.vsafe0v) status_val |= SYV682X_STATUS_VSAFE_0V;
+	syv682x_emul_set_status(emul, status_val);
+
+	if (cond.vbat_ovp) control_4_val |= SYV682X_CONTROL_4_VBAT_OVP;
+	if (cond.vconn_oc) control_4_val |= SYV682X_CONTROL_4_VCONN_OCP;
+	syv682x_emul_set_control_4(emul, control_4_val);
+}
+
 void syv682x_emul_set_status(struct i2c_emul *emul, uint8_t val)
 {
 	struct syv682x_emul_data *data;
