@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9c51c7a_a8d15554",
+        "filename": "zephyr/test/drivers/src/bmi160.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2005,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-11-04T23:50:14Z",
+      "side": 1,
+      "message": "Is it \"not set\"? as the above bitmask CONFIG_ACCELGYRO_BMI160_INT_EVENT is 0?",
+      "range": {
+        "startLine": 2005,
+        "startChar": 22,
+        "endLine": 2005,
+        "endChar": 25
+      },
+      "revId": "4a2b0eb5a50c8f840bae2e5dbf797615a47ab00e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
