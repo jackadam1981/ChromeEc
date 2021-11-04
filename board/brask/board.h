@@ -42,7 +42,7 @@
  * how to set the usb_ls_en_gpio and retimer_rst_gpio
  * in the same array.
  */
-/* #define CONFIG_USBC_RETIMER_KB800X */
+#define CONFIG_USBC_RETIMER_KB800X
 #define CONFIG_USBC_PPC_SYV682X
 
 /* TODO: b/177608416 - measure and check these values on brya */
