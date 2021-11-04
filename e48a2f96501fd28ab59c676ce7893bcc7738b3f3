@@ -22,6 +22,30 @@
       },
       "revId": "e48a2f96501fd28ab59c676ce7893bcc7738b3f3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dcf3564d_2bf205db",
+        "filename": "update_from_main.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-11-04T22:43:54Z",
+      "side": 1,
+      "message": "yeah the idea is the script fails and we (the branch maintainers) have to fix it manually when we pull in new changes.\n\nideally we don\u0027t have to be doing it too often as I think we want to do manual testing on arcada/drallion, but it would be nice just to sync up every once in the while.",
+      "parentUuid": "b1603d24_1d8518b2",
+      "range": {
+        "startLine": 87,
+        "startChar": 4,
+        "endLine": 132,
+        "endChar": 20
+      },
+      "revId": "e48a2f96501fd28ab59c676ce7893bcc7738b3f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
