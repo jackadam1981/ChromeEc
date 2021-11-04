@@ -1,0 +1,28 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc04bac4_cc9fbb2f",
+        "filename": "zephyr/test/drivers/src/smart.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2021-11-04T13:35:32Z",
+      "side": 1,
+      "message": "\u003e \"beggining\" is a possible misspelling of \"beginning\".\n\nPlease fix.",
+      "parentUuid": "9ba0370d_2881b6ca",
+      "range": {
+        "startLine": 345,
+        "startChar": 8,
+        "endLine": 345,
+        "endChar": 17
+      },
+      "revId": "1d13feefaa6607ef81508962ae2910d9eefb469d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
