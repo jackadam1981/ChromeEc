@@ -39,6 +39,30 @@
       },
       "revId": "c0a2aeb780fd932823da2ea348d12d41c4f074a9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4cb7e6fb_34b6cbae",
+        "filename": "board/brask/usbc_config.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1215230
+      },
+      "writtenOn": "2021-11-04T10:05:15Z",
+      "side": 1,
+      "message": "Build error fix and set retimer_rst_gpio through kb800x_control.",
+      "parentUuid": "9731fa9a_fe6aff5a",
+      "range": {
+        "startLine": 132,
+        "startChar": 5,
+        "endLine": 132,
+        "endChar": 22
+      },
+      "revId": "c0a2aeb780fd932823da2ea348d12d41c4f074a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
