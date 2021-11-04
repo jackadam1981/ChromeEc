@@ -52,6 +52,24 @@
       "parentUuid": "46cb3418_82102e9d",
       "revId": "ae0ee78260c79f5d1c538fbd39b864dd79e3e679",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "051b7446_04123827",
+        "filename": "zephyr/emul/emul_sn5s330.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-11-04T17:06:25Z",
+      "side": 1,
+      "message": "Jumping in on this thread. I\u0027m not really sure I understand the concern. Having explicit register names and sizes isn\u0027t a bad thing and will likely reduce bugs. Having an array of uint8_t for all the registers is much more prone to bugs when you start accessing 2+ byte registers. Regardless, in an array you\u0027re still relying on some kind of name by doing something like `reg[INT_STATUS_1]` vs `int_status_reg1` so you\u0027re not really saving any raw code size.\n\nAs a side note:\nDatasheets are usually out of date, OEMs don\u0027t maintain them well. The emulator needs to model the actual chip behavior.",
+      "parentUuid": "c02e22c9_12d5ed19",
+      "revId": "ae0ee78260c79f5d1c538fbd39b864dd79e3e679",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
