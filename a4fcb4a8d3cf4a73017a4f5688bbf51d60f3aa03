@@ -34,6 +34,24 @@
       "parentUuid": "0765f2c7_45dc47fa",
       "revId": "a4fcb4a8d3cf4a73017a4f5688bbf51d60f3aa03",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fdaf0f0a_5ad2db68",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-11-04T20:37:52Z",
+      "side": 1,
+      "message": "it\u0027s technically possible if the sensors have reliable product\nID registers or similar way to tell them apart. i\u0027m not sure\nhow many devices (if any) ship with code that tries to identify\nthe chip at runtime instead of relying on config info. it might\nbe worth scanning through other boards to see if this is a common\nimplementation.\n\nthe usual argument against doing runtime detection is that you\ncan\u0027t tell the difference between a chip/hardware failure and\na missing chip. i\u0027m guessing that in this case you always expect\na chip to exist, but you have to figure out which one is connected.",
+      "parentUuid": "6f78b7f5_72478862",
+      "revId": "a4fcb4a8d3cf4a73017a4f5688bbf51d60f3aa03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
