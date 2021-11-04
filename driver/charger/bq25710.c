@@ -9,7 +9,7 @@
 
 #include "battery.h"
 #include "battery_smart.h"
-#include "bq25710.h"
+#include "bq257x0_regs.h"
 #include "charge_ramp.h"
 #include "charge_state_v2.h"
 #include "charger.h"
