@@ -681,11 +681,6 @@ static int system_run_image_copy_with_flags(enum ec_image copy,
 		init_addr = system_get_fw_reset_vector(base);
 	} else {
 		uintptr_t init = base + 4;
-
-		/* Skip any head room in the RO image */
-		if (copy == EC_IMAGE_RO)
-			init += CONFIG_RO_HEAD_ROOM;
-
 		init_addr = *(uintptr_t *)(init);
 
 		/* Make sure the reset vector is inside the destination image */
@@ -1696,7 +1691,7 @@ DECLARE_HOST_COMMAND(EC_CMD_GET_CHIP_INFO,
 		     host_command_get_chip_info,
 		     EC_VER_MASK(0));
 
-enum ec_status
+static enum ec_status
 host_command_get_board_version(struct host_cmd_handler_args *args)
 {
 	struct ec_response_board_version *r = args->response;
@@ -1717,7 +1712,7 @@ DECLARE_HOST_COMMAND(EC_CMD_GET_BOARD_VERSION,
 		     host_command_get_board_version,
 		     EC_VER_MASK(0));
 
-enum ec_status host_command_reboot(struct host_cmd_handler_args *args)
+static enum ec_status host_command_reboot(struct host_cmd_handler_args *args)
 {
 	struct ec_params_reboot_ec p;
 

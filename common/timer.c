@@ -211,9 +211,18 @@ void usleep(unsigned us)
 			  evt & ~TASK_EVENT_TIMER);
 }
 
+#ifdef CONFIG_ZTEST
+timestamp_t *get_time_mock;
+#endif /* CONFIG_ZTEST */
+
 timestamp_t get_time(void)
 {
 	timestamp_t ts;
+
+#ifdef CONFIG_ZTEST
+	if (get_time_mock != NULL)
+		return *get_time_mock;
+#endif /* CONFIG_ZTEST */
 
 	if (IS_ENABLED(CONFIG_HWTIMER_64BIT)) {
 		ts.val = __hw_clock_source_read64();
@@ -405,7 +414,7 @@ DECLARE_SAFE_CONSOLE_COMMAND(gettime, command_get_time,
 #endif
 
 #ifdef CONFIG_CMD_TIMERINFO
-int command_timer_info(int argc, char **argv)
+static int command_timer_info(int argc, char **argv)
 {
 	timer_print_info();
 
