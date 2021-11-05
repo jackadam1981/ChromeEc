@@ -10,8 +10,6 @@
 CFLAGS_CPU+=-mthumb
 ifeq ($(cc-name),clang)
 CFLAGS_CPU+=-Oz		# Like -Os (and thus -O2), but reduces code size further.
-# Link compiler-rt when using clang, so clang finds the builtins it provides.
-LDFLAGS_EXTRA+=-lclang_rt.builtins-armv6m
 else
 CFLAGS_CPU+=-Os
 CFLAGS_CPU+=-mno-sched-prolog
@@ -24,16 +22,10 @@ LDFLAGS_EXTRA+=-flto
 endif
 
 core-y=cpu.o debug.o init.o thumb_case.o mula.o
-# When using clang, we get these as builtins from compiler-rt.
-ifneq ($(cc-name),clang)
 core-y+=div.o lmul.o ldivmod.o uldivmod.o
-endif
 
 core-y+=vecttable.o
-# When using clang, we get these as builtins from compiler-rt.
-ifneq ($(cc-name),clang)
 core-y+=__builtin.o
-endif
 core-$(CONFIG_COMMON_PANIC_OUTPUT)+=panic.o
 core-$(CONFIG_COMMON_RUNTIME)+=switch.o task.o
 
