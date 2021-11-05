@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c75c41f_2177539c",
+        "filename": "zephyr/dts/bindings/gpio/cros,ioex-chip.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-11-05T21:47:16Z",
+      "side": 1,
+      "message": "Please add descriptions for the properties.",
+      "revId": "df197b82d272352e3383f7429ba91664c1f50428",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec15bf65_a126939a",
+        "filename": "zephyr/dts/bindings/gpio/cros,ioex-chip.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-11-05T21:47:16Z",
+      "side": 1,
+      "message": "This is the I2C port name?  Can you use a phandle to the named-i2c bus instead?",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 0
+      },
+      "revId": "df197b82d272352e3383f7429ba91664c1f50428",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ab4be35_98e95b58",
+        "filename": "zephyr/dts/bindings/gpio/crox,ioex-port.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-11-05T21:47:16Z",
+      "side": 1,
+      "message": "I\u0027m not sure all IO expanders always use 8 bits per port. So I\u0027m not sure const is appropriate here.",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 14
+      },
+      "revId": "df197b82d272352e3383f7429ba91664c1f50428",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
