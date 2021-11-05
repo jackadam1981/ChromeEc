@@ -215,6 +215,7 @@ class Zmake:
         bringup=False,
         coverage=False,
         allow_warnings=False,
+        save_temps=False,
     ):
         """Locate a project by name or directory and then call _configure."""
         root_dir = pathlib.Path(project_name_or_dir)
@@ -240,6 +241,7 @@ class Zmake:
             bringup=bringup,
             coverage=coverage,
             allow_warnings=allow_warnings,
+            save_temps=save_temps,
         )
 
     def _configure(
@@ -253,6 +255,7 @@ class Zmake:
         bringup=False,
         coverage=False,
         allow_warnings=False,
+        save_temps=False,
     ):
         """Set up a build directory to later be built by "zmake build"."""
         supported_version = util.parse_zephyr_version(project.config.zephyr_version)
@@ -324,6 +327,10 @@ class Zmake:
         if allow_warnings:
             base_config |= zmake.build_config.BuildConfig(
                 cmake_defs={"ALLOW_WARNINGS": "ON"}
+            )
+        if save_temps:
+            base_config |= zmake.build_config.BuildConfig(
+                cmake_defs={"EXTRA_CFLAGS": "-save-temps=obj"}
             )
 
         if not build_dir.exists():

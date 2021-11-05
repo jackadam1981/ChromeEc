@@ -190,6 +190,12 @@ def main(argv=None):
         help="Do not treat warnings as errors",
     )
     configure.add_argument(
+        "--save-temps",
+        action="store_true",
+        default=False,
+        help="Save gcc temporary objects, eg. preprocessed C files",
+    )
+    configure.add_argument(
         "-B", "--build-dir", type=pathlib.Path, help="Build directory"
     )
     configure.add_argument(
