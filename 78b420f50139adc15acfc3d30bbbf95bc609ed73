@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5fe6ae08_80c209a6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-11-05T00:09:06Z",
+      "side": 1,
+      "message": "This is a proof of concept of cleaning up the API for setting interrupt conditions on the SYV682 and possible other emulators. Designated initializers couldn\u0027t be used everywhere that I had hoped, so it\u0027s more verbose than I\u0027d like.\n\nDo you think this is worth pursuing further?",
+      "revId": "78b420f50139adc15acfc3d30bbbf95bc609ed73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7461410e_4b975b1b",
+        "filename": "zephyr/test/drivers/src/ppc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-11-05T00:09:06Z",
+      "side": 1,
+      "message": "{.oc_5v} in the function arguments won\u0027t build.",
+      "revId": "78b420f50139adc15acfc3d30bbbf95bc609ed73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "12e6490b_637519ea",
+        "filename": "zephyr/test/drivers/src/ppc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-11-05T00:09:06Z",
+      "side": 1,
+      "message": "Neither will\n cond \u003d {.tsd \u003d true};\n \nI think designated initializers are only for initialization.",
+      "revId": "78b420f50139adc15acfc3d30bbbf95bc609ed73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
