@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b66e451_9d583307",
+        "filename": "driver/tcpm/ps8xxx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 766,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-11-05T21:53:47Z",
+      "side": 1,
+      "message": "This function is only called if CONFIG_USB_PD_TCPM_PS8815.  Is there a platform that enables multiple PS8xxx chip types?",
+      "range": {
+        "startLine": 766,
+        "startChar": 0,
+        "endLine": 766,
+        "endChar": 77
+      },
+      "revId": "2ff29f3395657ec6bdbd0a07a1f4f43c3828d498",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
