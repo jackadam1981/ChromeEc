@@ -16,6 +16,24 @@
       "message": "The change LGTM, but could we a test case for this?",
       "revId": "b0a63142e8bb143b44a3b158be6d7201a8079dba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5853dab4_fc4f54c5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-11-05T19:50:31Z",
+      "side": 1,
+      "message": "Sure.  Unit test to check we wake when in LPM but now when we\u0027re out of LPM?  I feel like that could work.  Checking the actual toggle/sink only sets would be more time consuming since that would require mocking all the chipset logic and such.",
+      "parentUuid": "4e5862bc_fc9a11f3",
+      "revId": "b0a63142e8bb143b44a3b158be6d7201a8079dba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
