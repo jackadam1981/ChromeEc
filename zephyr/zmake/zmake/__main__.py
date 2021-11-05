@@ -184,6 +184,12 @@ def main(argv=None):
         help="Enable bringup debugging features",
     )
     configure.add_argument(
+        "--no-errors",
+        action="store_true",
+        default=False,
+        help="Disable treating warnings as errors",
+    )
+    configure.add_argument(
         "-B", "--build-dir", type=pathlib.Path, help="Build directory"
     )
     configure.add_argument(
