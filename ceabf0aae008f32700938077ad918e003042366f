@@ -39,6 +39,30 @@
       },
       "revId": "ceabf0aae008f32700938077ad918e003042366f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b275a33c_d84da19e",
+        "filename": "driver/ioexpander/ccgxxf.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1477788
+      },
+      "writtenOn": "2021-11-05T15:56:37Z",
+      "side": 1,
+      "message": "Maybe the name of the flag is misleading (I have added it :( )\nThis config means that ioex API will have get_port function which will read whole port in one i2c transaction, in opposite to get_level which returns only level of one pin.\nThis functionality was added because servo_v4p1 contains some error flags connected to ioex, and checking every flag means 8 times reading the same i2c register. But because it was servo, I have implemented this feature only to tca64xxa driver. Others have just NULL pointer in case this config is enabled.\nBut zephyr is basing on reading whole port, so it requires to use function to read whole port, which if isn\u0027t implemented by driver, now should report error.\n\nTldr: this flag means that IOEX subsystem supports functions that read whole port, not that specific driver implements it.",
+      "parentUuid": "f6c2a8f2_1278586a",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 42
+      },
+      "revId": "ceabf0aae008f32700938077ad918e003042366f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
