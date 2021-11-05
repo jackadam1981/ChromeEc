@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8cade8eb_3736ddb9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-11-05T22:17:13Z",
+      "side": 1,
+      "message": "I haven\u0027t done a full review - but I need convincing on the accessor macros.\n",
+      "revId": "fc8556051e209980618f556f8f8bacc8765713df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa1c7c6a_6f8a478c",
+        "filename": "driver/charger/bq25710.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-11-05T22:17:13Z",
+      "side": 1,
+      "message": "How about creating SET/CLR pairs in place of the 2nd parameter?",
+      "range": {
+        "startLine": 162,
+        "startChar": 8,
+        "endLine": 162,
+        "endChar": 15
+      },
+      "revId": "fc8556051e209980618f556f8f8bacc8765713df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c70bc4b1_f045ebc5",
+        "filename": "driver/charger/bq25710.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-11-05T22:17:13Z",
+      "side": 1,
+      "message": "These accesssor macros don\u0027t seem like an improvement.  For the SET_BQ_FIELD, the usage of the _v macro varies significantly.  I at first thought this was meant as a set/clear flag, but I\u0027m not sure.\n\nFor this block in particular, I find the original code much easier to read.",
+      "range": {
+        "startLine": 185,
+        "startChar": 0,
+        "endLine": 192,
+        "endChar": 0
+      },
+      "revId": "fc8556051e209980618f556f8f8bacc8765713df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c8bdfb18_4f1fab89",
+        "filename": "driver/charger/bq25710.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 404,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-11-05T22:17:13Z",
+      "side": 1,
+      "message": "Why not use SET_CO0() here?",
+      "range": {
+        "startLine": 404,
+        "startChar": 0,
+        "endLine": 404,
+        "endChar": 66
+      },
+      "revId": "fc8556051e209980618f556f8f8bacc8765713df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
