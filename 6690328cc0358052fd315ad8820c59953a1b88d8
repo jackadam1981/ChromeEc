@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9ca8f1c_88294213",
+        "filename": "core/riscv-rv32i/task.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-11-05T23:02:03Z",
+      "side": 1,
+      "message": "seems repeated for all the cores exactly the same.\n\ncan we put it in common code instea?",
+      "range": {
+        "startLine": 217,
+        "startChar": 0,
+        "endLine": 220,
+        "endChar": 1
+      },
+      "revId": "6690328cc0358052fd315ad8820c59953a1b88d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
