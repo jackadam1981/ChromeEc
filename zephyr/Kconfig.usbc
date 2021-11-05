@@ -866,6 +866,11 @@ config PLATFORM_EC_USBC_PPC_NX20P3483
 	  The NX20P3483 is a product with combined multiple power switches
 	  and a LDO for USB PD application.
 
+config PLATFORM_EC_USBC_PPC_RT1739
+	bool "RT1739"
+	help
+	  <TODO>
+
 config PLATFORM_EC_USBC_PPC_SN5S330
 	bool "TI SN5S330 PD 3.0 power mux"
 	select PLATFORM_EC_USBC_OCP
