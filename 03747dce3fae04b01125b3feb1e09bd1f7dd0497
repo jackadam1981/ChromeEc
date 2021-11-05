@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c82905b5_711844a2",
+        "filename": "driver/charger/bq257x0_regs.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-11-05T23:50:52Z",
+      "side": 1,
+      "message": "Is this intentionally double or a typo?",
+      "range": {
+        "startLine": 41,
+        "startChar": 43,
+        "endLine": 41,
+        "endChar": 45
+      },
+      "revId": "03747dce3fae04b01125b3feb1e09bd1f7dd0497",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c304c4d4_c430918f",
+        "filename": "driver/charger/bq257x0_regs.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-11-05T23:50:52Z",
+      "side": 1,
+      "message": "(same question here an below)",
+      "range": {
+        "startLine": 60,
+        "startChar": 39,
+        "endLine": 60,
+        "endChar": 41
+      },
+      "revId": "03747dce3fae04b01125b3feb1e09bd1f7dd0497",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
