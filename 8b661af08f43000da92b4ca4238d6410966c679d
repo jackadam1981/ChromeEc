@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5630cad4_73d3f6fc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-11-05T21:49:36Z",
+      "side": 1,
+      "message": "In general, I like the concept.  The only major change is changing the \"port-named\" property to an named-i2c phandle if it\u0027s possible.",
+      "revId": "8b661af08f43000da92b4ca4238d6410966c679d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
