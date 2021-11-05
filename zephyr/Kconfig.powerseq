@@ -109,6 +109,12 @@ config PLATFORM_EC_POWERSEQ_S0IX
 	  option, Intel's low-power idle sleep state, also known as
 	  "modern sleep".
 
+config PLATFORM_EC_POWERSEQ_S4
+	bool "Enable S4 residency"
+	help
+	  Enable the CONFIG_POWER_S4_RESIDENCY platform/ec
+	  configuration option.
+
 config PLATFORM_EC_POWERSEQ_COMETLAKE
 	bool "Use common Comet Lake code for power sequencing"
 	depends on AP_X86_INTEL_CML
