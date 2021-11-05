@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de3f5673_0e557b2a",
+        "filename": "zephyr/shim/src/tasks.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-11-05T19:50:30Z",
+      "side": 1,
+      "message": "Just add a comment indicating that the shimmed_task_static does not need an extra entry for the sysworkq.",
+      "range": {
+        "startLine": 86,
+        "startChar": 0,
+        "endLine": 86,
+        "endChar": 75
+      },
+      "revId": "1c45efd884eb6a944845d6c5979a4ad6e624d078",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
