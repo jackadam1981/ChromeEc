@@ -12,12 +12,9 @@
 
 /*
  * Emulate the CLZ/CTZ instructions since the CPU core is lacking support.
- * When building with clang, we rely on compiler_rt to provide this support.
  */
-#ifndef __clang__
 #define CONFIG_SOFTWARE_CLZ
 #define CONFIG_SOFTWARE_CTZ
-#endif /* __clang__ */
 #define CONFIG_SOFTWARE_PANIC
 
 #define CONFIG_ASSEMBLY_MULA32
