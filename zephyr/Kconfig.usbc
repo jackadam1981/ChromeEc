@@ -250,6 +250,32 @@ menuconfig PLATFORM_EC_USB_POWER_DELIVERY
 
 if PLATFORM_EC_USB_POWER_DELIVERY
 
+menuconfig PLATFORM_EC_USB_PD_INT_SHARED
+	bool "USB-C ports share PD interrupts"
+	select HAS_TASK_PD_INT_SHARED
+	help
+	  This enables processing of shared interrupts where multiple ports
+	  share a single IRQ on the EC.
+
+if PLATFORM_EC_USB_PD_INT_SHARED
+
+config PLATFORM_EC_USB_PD_PORT_0_SHARED
+	bool "Port 0 IRQ is shared"
+
+config PLATFORM_EC_USB_PD_PORT_1_SHARED
+	bool "Port 1 IRQ is shared"
+	depends on PLATFORM_EC_USB_PD_PORT_MAX_COUNT > 1
+
+config PLATFORM_EC_USB_PD_PORT_2_SHARED
+	bool "Port 2 IRQ is shared"
+	depends on PLATFORM_EC_USB_PD_PORT_MAX_COUNT > 2
+
+config PLATFORM_EC_USB_PD_PORT_3_SHARED
+	bool "Port 3 IRQ is shared"
+	depends on PLATFORM_EC_USB_PD_PORT_MAX_COUNT > 3
+
+endif # PLATFORM_EC_USB_PD_INT_SHARED
+
 config PLATFORM_EC_USB_PD_HOST_CMD
 	bool "Host commands related to USB Power Delivery"
 	default y
