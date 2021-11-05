@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "39232a8e_a11de2f9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1260470
+      },
+      "writtenOn": "2021-11-05T22:25:14Z",
+      "side": 1,
+      "message": "Hi Jack and Keith,\n\nCan you take a look at this and let me know your initial thoughts? After chatting with Jack over VC, we think I need to bring back STATE_S5S3/S3S5 at least for ARM. Making Intel devices always go through S4 I think makes sense, but on ARM devices there really is no S4 state, so churning the world to transition through a fake state there seems unnecessary. There are also some other cases to handle, like whether to treat S4 as a SOFT_OFF case or SUSPEND (I chose soft off here), and whether to run the chipset off hooks when we reach S4 (I think no?).",
+      "revId": "3cda9a067a6da9ea36f79e855cf8970f082eb6e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
