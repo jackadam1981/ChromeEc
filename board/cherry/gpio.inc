@@ -32,11 +32,11 @@ GPIO_INT(PMIC_EC_PWRGD, PIN(F, 3),
 GPIO_INT(BASE_IMU_INT_L,     PIN(M, 3), GPIO_INT_FALLING | GPIO_SEL_1P8V,
          icm42607_interrupt)
 /* USB-C interrupts */
-GPIO_INT(USB_C0_PPC_INT_ODL, PIN(D, 1), GPIO_INT_BOTH, ppc_interrupt)
+GPIO_INT(USB_C0_PPC_INT_ODL, PIN(D, 1), GPIO_INT_BOTH, rt1739_interrupt)
 #ifdef BOARD_CHERRY
 GPIO_INT(USB_C0_BC12_INT_ODL,PIN(J, 4), GPIO_INT_FALLING, bc12_interrupt)
 #else /* TOMATO */
-GPIO_INT(USB_C0_BC12_INT_ODL,PIN(I, 5), GPIO_INT_FALLING, bc12_interrupt)
+GPIO_INT(USB_C0_BC12_INT_ODL,PIN(I, 5), GPIO_INT_FALLING, rt1739_interrupt)
 #endif
 GPIO_INT(USB_C1_INT_ODL,     PIN(B, 2), GPIO_INT_FALLING, rt1718s_tcpc_interrupt)
 /* TODO: not used in other devices? */
