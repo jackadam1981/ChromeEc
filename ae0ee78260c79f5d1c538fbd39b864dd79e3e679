@@ -106,6 +106,24 @@
       "parentUuid": "5b6ff75a_366a15e7",
       "revId": "ae0ee78260c79f5d1c538fbd39b864dd79e3e679",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "827ebc7c_97be112f",
+        "filename": "zephyr/emul/emul_sn5s330.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-11-05T15:24:02Z",
+      "side": 1,
+      "message": "Well, I won\u0027t be a stickler about the structure.\n\nI do think the read and write functions should return success when writing to read-only registers, to be consistent with the actual device. If you want to throw up test errors for that case, you can, but the emulator shouldn\u0027t do things that might mess with the behavior of the driver.",
+      "parentUuid": "68f20f82_1e8ddbb9",
+      "revId": "ae0ee78260c79f5d1c538fbd39b864dd79e3e679",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
