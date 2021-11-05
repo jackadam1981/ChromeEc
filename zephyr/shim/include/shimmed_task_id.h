@@ -67,6 +67,18 @@ typedef uint8_t task_id_t;
 	COND_CODE_1(HAS_TASK_PD_C3,                                       \
 		     (CROS_EC_TASK(PD_C3, pd_task, 0,                     \
 				   CONFIG_TASK_PD_STACK_SIZE)), ())       \
+	IF_ENABLED(HAS_TASK_PD_INT_SHARED,				  \
+		   (CROS_EC_TASK(PD_INT_SHARED, pd_shared_alert_task,	  \
+				 FOR_EACH_NONEMPTY_TERM(BIT, (|),	  \
+					 IF_ENABLED(CONFIG_PLATFORM_EC_USB_PD_PORT_0_SHARED, \
+						    (0)),		  \
+					 IF_ENABLED(CONFIG_PLATFORM_EC_USB_PD_PORT_1_SHARED, \
+						    (1)),		  \
+					 IF_ENABLED(CONFIG_PLATFORM_EC_USB_PD_PORT_2_SHARED, \
+						    (2)),		  \
+					 IF_ENABLED(CONFIG_PLATFORM_EC_USB_PD_PORT_3_SHARED, \
+						    (3)),		  \
+				 ) 0, CONFIG_TASK_PD_INT_STACK_SIZE)))	  \
 	COND_CODE_1(HAS_TASK_PD_INT_C0,                                   \
 		     (CROS_EC_TASK(PD_INT_C0, pd_interrupt_handler_task, 0, \
 				   CONFIG_TASK_PD_INT_STACK_SIZE)), ())   \
