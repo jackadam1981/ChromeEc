@@ -214,6 +214,7 @@ class Zmake:
         test_after_configure=False,
         bringup=False,
         coverage=False,
+        no_errors=False,
     ):
         """Locate a project by name or directory and then call _configure."""
         root_dir = pathlib.Path(project_name_or_dir)
@@ -238,6 +239,7 @@ class Zmake:
             test_after_configure=test_after_configure,
             bringup=bringup,
             coverage=coverage,
+            no_errors=no_errors,
         )
 
     def _configure(
@@ -250,6 +252,7 @@ class Zmake:
         test_after_configure=False,
         bringup=False,
         coverage=False,
+        no_errors=False,
     ):
         """Set up a build directory to later be built by "zmake build"."""
         supported_version = util.parse_zephyr_version(project.config.zephyr_version)
@@ -317,6 +320,10 @@ class Zmake:
         if coverage:
             base_config |= zmake.build_config.BuildConfig(
                 kconfig_defs={"CONFIG_COVERAGE": "y"}
+            )
+        if no_errors:
+            base_config |= zmake.build_config.BuildConfig(
+                cmake_defs={"NO_ERRORS": "ON"}
             )
 
         if not build_dir.exists():

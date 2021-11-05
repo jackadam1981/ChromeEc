@@ -40,7 +40,10 @@ if(DEFINED CONFIG_PLATFORM_EC)
   zephyr_compile_definitions("CONFIG_ZEPHYR")
 
   # Force compiler warnings to generate errors
-  zephyr_compile_options(-Werror)
+  option(NO_ERRORS "Do not enable -Werror compilation flag")
+  if (NOT NO_ERRORS)
+    zephyr_compile_options(-Werror)
+  endif()
 
   include(fpu.cmake)
 
