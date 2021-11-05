@@ -41,6 +41,7 @@
 #else
 #define SLP_S4_SIGNAL_L GPIO_PCH_SLP_S4_L
 #endif
+#define SLP_S5_SIGNAL_L VW_SLP_S5_L
 
 /**
  * Handle RSMRST signal.

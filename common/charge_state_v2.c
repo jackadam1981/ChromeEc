@@ -1200,7 +1200,7 @@ static int shutdown_on_critical_battery(void)
 		switch (board_critical_shutdown_check(&curr)) {
 		case CRITICAL_SHUTDOWN_HIBERNATE:
 			if (IS_ENABLED(CONFIG_HIBERNATE)) {
-				if (power_get_state() == POWER_S3S5)
+				if ((power_get_state() == POWER_S3S4) || (power_get_state() == POWER_S4S5))
 					sleep(1);
 				CPRINTS("Hibernate due to critical battery");
 				cflush();
@@ -1208,7 +1208,7 @@ static int shutdown_on_critical_battery(void)
 			}
 			break;
 		case CRITICAL_SHUTDOWN_CUTOFF:
-			if (power_get_state() == POWER_S3S5)
+			if ((power_get_state() == POWER_S3S4) || (power_get_state() == POWER_S4S5))
 				sleep(1);
 			CPRINTS("Cutoff due to critical battery");
 			cflush();
