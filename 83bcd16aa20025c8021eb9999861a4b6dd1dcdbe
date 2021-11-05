@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "55e1abcf_28efe93e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-11-05T19:31:54Z",
+      "side": 1,
+      "message": "Side discussion with Abe, can you just set the environment variable for this when you want the feature?  I don\u0027t think the added utility to zmake would be all that widely useful.",
+      "revId": "83bcd16aa20025c8021eb9999861a4b6dd1dcdbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "64307137_37283117",
@@ -36,6 +53,29 @@
         "startChar": 13,
         "endLine": 196,
         "endChar": 14
+      },
+      "revId": "83bcd16aa20025c8021eb9999861a4b6dd1dcdbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "43d897c7_27ae6546",
+        "filename": "zephyr/zmake/zmake/__main__.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-11-05T19:31:54Z",
+      "side": 1,
+      "message": "\"e.g.,\"",
+      "range": {
+        "startLine": 196,
+        "startChar": 43,
+        "endLine": 196,
+        "endChar": 46
       },
       "revId": "83bcd16aa20025c8021eb9999861a4b6dd1dcdbe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
