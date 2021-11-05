@@ -240,6 +240,32 @@ config HAS_TASK_PD_INT_C0
 	  tasks for each USB-C port on the device, but they are enabled
 	  separately depending on how many ports are present.
 
+menuconfig TASK_PD_INT_C0_SHARED
+  bool "Share USB-C0 PD IRQ with other ports"
+  depends on HAS_TASK_PD_INT_C0
+  default n
+  help
+    This enables support for a shared interrupt between USB-C port 0 and one or
+    more other ports. Port 0 is always one of the shared ports.
+
+if TASK_PD_INT_C0_SHARED
+  config TASK_PD_INT_C1_SHARED
+    bool "Port 1 shared IRQ"
+    depends on PLATFORM_EC_USB_PD_PORT_MAX_COUNT > 1
+    depends on !HAS_TASK_PD_INT_C1
+    default n
+  config TASK_PD_INT_C2_SHARED
+    bool "Port 2 shared IRQ"
+    depends on PLATFORM_EC_USB_PD_PORT_MAX_COUNT > 2
+    depends on !HAS_TASK_PD_INT_C2
+    default n
+  config TASK_PD_INT_C3_SHARED
+    bool "Port 3 shared IRQ"
+    depends on PLATFORM_EC_USB_PD_PORT_MAX_COUNT > 3
+    depends on !HAS_TASK_PD_INT_C3
+    default n
+endif # TASK_PD_INT_C0_SHARED
+
 config HAS_TASK_PD_INT_C1
 	bool
 	depends on PLATFORM_EC_USB_POWER_DELIVERY

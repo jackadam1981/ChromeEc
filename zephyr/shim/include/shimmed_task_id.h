@@ -67,9 +67,20 @@ typedef uint8_t task_id_t;
 	COND_CODE_1(HAS_TASK_PD_C3,                                       \
 		     (CROS_EC_TASK(PD_C3, pd_task, 0,                     \
 				   CONFIG_TASK_PD_STACK_SIZE)), ())       \
-	COND_CODE_1(HAS_TASK_PD_INT_C0,                                   \
-		     (CROS_EC_TASK(PD_INT_C0, pd_interrupt_handler_task, 0, \
-				   CONFIG_TASK_PD_INT_STACK_SIZE)), ())   \
+	IF_ENABLED(HAS_TASK_PD_INT_C0, (						\
+		COND_CODE_1(CONFIG_TASK_PD_INT_C0_SHARED,				\
+			/* shared alert task always handles port 0			\
+			 * and possibly others */					\
+			(CROS_EC_TASK(PD_INT_C0, pd_shared_alert_task,			\
+				(BIT(0)							\
+				 IF_ENABLED(TASK_PD_INT_C1_SHARED, (| BIT(1)))		\
+				 IF_ENABLED(TASK_PD_INT_C2_SHARED, (| BIT(2)))		\
+				 IF_ENABLED(TASK_PD_INT_C3_SHARED, (| BIT(3)))),	\
+				 CONFIG_TASK_PD_INT_STACK_SIZE)),			\
+			(CROS_EC_TASK(PD_INT_C0, pd_interrupt_handler_task, 0,		\
+				      CONFIG_TASK_PD_INT_STACK_SIZE))			\
+		)									\
+	))										\
 	COND_CODE_1(HAS_TASK_PD_INT_C1,                                   \
 		     (CROS_EC_TASK(PD_INT_C1, pd_interrupt_handler_task, 1, \
 				   CONFIG_TASK_PD_INT_STACK_SIZE)), ())   \
