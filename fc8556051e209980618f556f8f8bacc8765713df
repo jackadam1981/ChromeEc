@@ -20,6 +20,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "65b70aa3_22fe088e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-11-05T22:59:19Z",
+      "side": 1,
+      "message": "i have another patch series that is still WIP that\nis built on top of these helper/accessor macros. it may provide\nbetter context for the style of macros defined here.\n\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3259006",
+      "revId": "fc8556051e209980618f556f8f8bacc8765713df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fa1c7c6a_6f8a478c",
         "filename": "driver/charger/bq25710.c",
         "patchSetId": 2
@@ -31,6 +48,30 @@
       "writtenOn": "2021-11-05T22:17:13Z",
       "side": 1,
       "message": "How about creating SET/CLR pairs in place of the 2nd parameter?",
+      "range": {
+        "startLine": 162,
+        "startChar": 8,
+        "endLine": 162,
+        "endChar": 15
+      },
+      "revId": "fc8556051e209980618f556f8f8bacc8765713df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0480e73a_70829b00",
+        "filename": "driver/charger/bq25710.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-11-05T22:59:19Z",
+      "side": 1,
+      "message": "assuming you\u0027re thinking of single bit SET/CLR macros,\nkeep in mind that the macros don\u0027t know the size of the\nbit fields so, i\u0027d prefer to avoid having a single bit\nand a arbitrary-bit version of the accessors unless we\ncan figure out a static assert for the type mismatch.\n\nwhat i\u0027d really like to do here is:\nSET_CO0(EN_LWPWR, enable, reg)\nor\nSET_CO0(EN_LWPWR, !!enable, reg)\ndepending on what we know about the possible values of enable.\n\nif i recall correctly, this is one of the changes\nthat won\u0027t pass compare_builds.sh. i think the change\nis correct, just won\u0027t generate identical instructions.",
+      "parentUuid": "fa1c7c6a_6f8a478c",
       "range": {
         "startLine": 162,
         "startChar": 8,
@@ -66,6 +107,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bcaf59e6_7815b895",
+        "filename": "driver/charger/bq25710.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-11-05T22:59:19Z",
+      "side": 1,
+      "message": "i\u0027m planning on \"fixing\" this block:\n\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3261375",
+      "parentUuid": "c70bc4b1_f045ebc5",
+      "range": {
+        "startLine": 185,
+        "startChar": 0,
+        "endLine": 192,
+        "endChar": 0
+      },
+      "revId": "fc8556051e209980618f556f8f8bacc8765713df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c8bdfb18_4f1fab89",
         "filename": "driver/charger/bq25710.c",
         "patchSetId": 2
@@ -77,6 +142,30 @@
       "writtenOn": "2021-11-05T22:17:13Z",
       "side": 1,
       "message": "Why not use SET_CO0() here?",
+      "range": {
+        "startLine": 404,
+        "startChar": 0,
+        "endLine": 404,
+        "endChar": 66
+      },
+      "revId": "fc8556051e209980618f556f8f8bacc8765713df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75c797a1_a4b14788",
+        "filename": "driver/charger/bq25710.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 404,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-11-05T22:59:19Z",
+      "side": 1,
+      "message": "i limited changes to what i could get to pass using\nutil/compare_build.sh as a correctness proof.\n\nwe\u0027ll need to do another pass to fully use the new helper\nmacros for cases where the resulting code is equivalent\nbut not identical.",
+      "parentUuid": "c8bdfb18_4f1fab89",
       "range": {
         "startLine": 404,
         "startChar": 0,
