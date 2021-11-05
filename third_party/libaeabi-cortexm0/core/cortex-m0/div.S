@@ -32,7 +32,6 @@
 @ Use __aeabi_uidivmod() but check signs before and change signs afterwards.
 @
 	.thumb_func
-	.section .text.__aeabi_idiv
 	.global __aeabi_idiv
 __aeabi_idiv:
 
@@ -67,7 +66,6 @@ L_neg_result:
 @ Divide r0 by r1 and return the quotient in r0 and the remainder in r1
 @
 	.thumb_func
-	.section .text.__aeabi_idivmod
 	.global __aeabi_idivmod
 __aeabi_idivmod:
 
@@ -109,7 +107,6 @@ L_num_pos_bis:
 @ Just an alias for __aeabi_uidivmod(), the remainder is ignored
 @
 	.thumb_func
-	.section .text.__aeabi_uidivmod
 	.global __aeabi_uidiv
 __aeabi_uidiv:
 
