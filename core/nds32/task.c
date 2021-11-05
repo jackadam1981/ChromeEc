@@ -240,6 +240,11 @@ inline int in_interrupt_context(void)
 	return get_psw() & PSW_INTL_MASK;
 }
 
+inline bool in_deferred_context(void)
+{
+	return (task_get_current() == TASK_ID_HOOKS);
+}
+
 task_id_t task_get_current(void)
 {
 #ifdef CONFIG_DEBUG_BRINGUP

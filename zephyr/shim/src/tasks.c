@@ -369,6 +369,12 @@ inline int in_interrupt_context(void)
 	return k_is_in_isr();
 }
 
+inline bool in_deferred_context(void)
+{
+	/* Deferred calls run in the sysworkq, first ID after EC tasks */
+	return (task_get_current() == TASK_ID_COUNT);
+}
+
 #if IS_ENABLED(CONFIG_KERNEL_SHELL) && IS_ENABLED(CONFIG_THREAD_MONITOR)
 static int taskinfo(const struct shell *shell, size_t argc, char **argv)
 {

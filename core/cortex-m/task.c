@@ -245,6 +245,11 @@ inline int in_interrupt_context(void)
 	return ret;
 }
 
+inline bool in_deferred_context(void)
+{
+	return (task_get_current() == TASK_ID_HOOKS);
+}
+
 #ifdef CONFIG_TASK_PROFILING
 static inline int get_interrupt_context(void)
 {

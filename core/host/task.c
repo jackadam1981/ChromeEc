@@ -124,6 +124,11 @@ int in_interrupt_context(void)
 	return !!in_interrupt;
 }
 
+inline bool in_deferred_context(void)
+{
+	return (task_get_current() == TASK_ID_HOOKS);
+}
+
 test_mockable void interrupt_disable(void)
 {
 	pthread_mutex_lock(&interrupt_lock);

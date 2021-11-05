@@ -190,6 +190,11 @@ inline int in_interrupt_context(void)
 	return !!__in_isr;
 }
 
+inline bool in_deferred_context(void)
+{
+	return (task_get_current() == TASK_ID_HOOKS);
+}
+
 task_id_t task_get_current(void)
 {
 	/* If we haven't done a context switch then our task ID isn't valid */

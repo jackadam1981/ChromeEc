@@ -214,6 +214,11 @@ inline int in_interrupt_context(void)
 	return in_interrupt;
 }
 
+inline bool in_deferred_context(void)
+{
+	return (task_get_current() == TASK_ID_HOOKS);
+}
+
 int in_soft_interrupt_context(void)
 {
 	/* group 16 is reserved for soft-irq */
