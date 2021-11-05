@@ -48,7 +48,7 @@ __aeabi_idiv:
 
 L_num_pos:
 	cmp	r1, #0
-	bge	__aeabi_uidivmod
+	bge	Luidivmod
 
 	rsbs	r1, r1, #0		@ den = -den
 
@@ -92,7 +92,7 @@ L_neg_both:
 
 L_num_pos_bis:
 	cmp	r1, #0
-	bge	__aeabi_uidivmod
+	bge	Luidivmod
 
 	rsbs	r1, r1, #0		@ den = -den
 	push	{lr}
@@ -122,6 +122,7 @@ __aeabi_uidiv:
 __aeabi_uidivmod:
 
 
+Luidivmod:
 	cmp	r1, #0
 	bne	L_no_div0
 	b	__aeabi_idiv0
