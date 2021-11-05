@@ -50,6 +50,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "84bd8bd7_c71bdc44",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-11-05T23:13:19Z",
+      "side": 1,
+      "message": "it\u0027s a formality, but can you please mention it in the patch description that Cros is booting fine,",
+      "parentUuid": "59e86e52_f0a13baf",
+      "range": {
+        "startLine": 16,
+        "startChar": 1,
+        "endLine": 16,
+        "endChar": 4
+      },
+      "revId": "cf95d932855e6924021183cbf30e53fa9fbd43a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "b4758f0a_84c75a68",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
@@ -61,6 +85,23 @@
       "writtenOn": "2021-11-05T22:57:22Z",
       "side": 1,
       "message": "Mary, this CL should also come to certified version of U2F",
+      "revId": "cf95d932855e6924021183cbf30e53fa9fbd43a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f220cf97_97190d65",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-11-05T23:13:19Z",
+      "side": 1,
+      "message": "feel free to +2 after updating the patch description. I\u0027d +2 it myself but don\u0027t want to trigger CQ+2",
       "revId": "cf95d932855e6924021183cbf30e53fa9fbd43a5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
