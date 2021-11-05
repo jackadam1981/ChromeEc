@@ -60,7 +60,7 @@ struct ppc_config_t ppc_chips[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 unsigned int ppc_cnt = ARRAY_SIZE(ppc_chips);
 
 struct bc12_config bc12_ports[CONFIG_USB_PD_PORT_MAX_COUNT] = {
-	{ .drv = NULL },
+	{ .drv = &pi3usb9201_drv },
 	{ .drv = &pi3usb9201_drv },
 };
 
