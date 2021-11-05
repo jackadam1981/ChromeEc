@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c4a6c69_f4c938d2",
+        "filename": "board/kano/sensors.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-11-05T21:51:46Z",
+      "side": 1,
+      "message": "you\u0027ll need to add an entry to thermal_params.\ncommon code iterates through this array assuming\nthe size TEMP_SENSOR_COUNT.",
+      "range": {
+        "startLine": 228,
+        "startChar": 60,
+        "endLine": 228,
+        "endChar": 64
+      },
+      "revId": "c8451730d0f5b52fd6960ea3ae14b187b0acbee7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
