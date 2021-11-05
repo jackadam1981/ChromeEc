@@ -12,6 +12,7 @@
 #include "charger.h"
 #include "console.h"
 #include "driver/charger/rt9490.h"
+#include "driver/ppc/rt1739.h"
 #include "driver/tcpm/it83xx_pd.h"
 #include "driver/usb_mux/ps8743.h"
 #include "hooks.h"
@@ -46,8 +47,8 @@ const struct pi3usb9201_config_t
 struct ppc_config_t ppc_chips[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 	{
 		.i2c_port = I2C_PORT_PPC0,
-		.i2c_addr_flags = SYV682X_ADDR0_FLAGS,
-		.drv = &syv682x_drv,
+		.i2c_addr_flags = RT1739_ADDR1,
+		.drv = &rt1739_ppc_drv,
 		.frs_en = GPIO_USB_C0_PPC_FRSINFO,
 	},
 	{
@@ -60,7 +61,7 @@ struct ppc_config_t ppc_chips[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 unsigned int ppc_cnt = ARRAY_SIZE(ppc_chips);
 
 struct bc12_config bc12_ports[CONFIG_USB_PD_PORT_MAX_COUNT] = {
-	{ .drv = NULL },
+	{ .drv = &rt1739_bc12_drv },
 	{ .drv = &pi3usb9201_drv },
 };
 
