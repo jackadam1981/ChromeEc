@@ -16,6 +16,52 @@
       "message": "It is something I personally needed many times when developing logic that uses device tree macros. I think it may be worth adding this as zmake option.",
       "revId": "83bcd16aa20025c8021eb9999861a4b6dd1dcdbe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "64307137_37283117",
+        "filename": "zephyr/zmake/zmake/__main__.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-11-05T19:03:12Z",
+      "side": 1,
+      "message": "Remove unnecessary parenthesis",
+      "range": {
+        "startLine": 196,
+        "startChar": 13,
+        "endLine": 196,
+        "endChar": 14
+      },
+      "revId": "83bcd16aa20025c8021eb9999861a4b6dd1dcdbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f2dca9fc_ee43ce97",
+        "filename": "zephyr/zmake/zmake/zmake.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-11-05T19:03:12Z",
+      "side": 1,
+      "message": "Instead of using EXTRA_CFLAGS, I think an option should actually be plumbed into this upstream. Specifying the compiler flags directly in Zmake was never what Zmake was intended for, especially when we consider multiple toolchain support, etc.\n\nThis is fine for now, but please do follow up with an upstream PR.",
+      "range": {
+        "startLine": 333,
+        "startChar": 28,
+        "endLine": 333,
+        "endChar": 61
+      },
+      "revId": "83bcd16aa20025c8021eb9999861a4b6dd1dcdbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
