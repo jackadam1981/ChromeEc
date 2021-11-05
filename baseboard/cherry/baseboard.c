@@ -19,7 +19,7 @@
 #include "driver/bc12/pi3usb9201.h"
 #include "driver/charger/isl923x.h"
 #include "driver/ppc/rt1718s.h"
-#include "driver/ppc/syv682x.h"
+#include "driver/ppc/rt1739.h"
 #include "driver/retimer/ps8802.h"
 #include "driver/tcpm/it83xx_pd.h"
 #include "driver/tcpm/rt1718s.h"
@@ -51,8 +51,6 @@
 #include "usb_pd_tcpm.h"
 #include "usb_tc_sm.h"
 
-static void bc12_interrupt(enum gpio_signal signal);
-static void ppc_interrupt(enum gpio_signal signal);
 static void xhci_init_done_interrupt(enum gpio_signal signal);
 
 #include "gpio_list.h"
@@ -142,8 +140,8 @@ const struct temp_sensor_t temp_sensors[] = {
 struct ppc_config_t ppc_chips[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 	{
 		.i2c_port = I2C_PORT_PPC0,
-		.i2c_addr_flags = SYV682X_ADDR0_FLAGS,
-		.drv = &syv682x_drv,
+		.i2c_addr_flags = 0x70,
+		.drv = &rt1739_ppc_drv,
 		.frs_en = GPIO_USB_C0_FRS_EN,
 	},
 	{
@@ -170,25 +168,9 @@ __maybe_unused const struct pi3usb9201_config_t
 };
 
 struct bc12_config bc12_ports[CONFIG_USB_PD_PORT_MAX_COUNT] = {
-#ifdef CONFIG_BC12_DETECT_PI3USB9201
-	{ .drv = &pi3usb9201_drv },
-#elif defined(CONFIG_BC12_DETECT_MT6360)
-	{ .drv = &mt6360_drv },
-#else
-#error must pick one of PI3USB9201 or MT6360 for port 0
-#endif
+	{ .drv = &rt1739_bc12_drv },
 	{ .drv = &rt1718s_bc12_drv },
 };
-
-static void bc12_interrupt(enum gpio_signal signal)
-{
-	task_set_event(TASK_ID_USB_CHG_P0, USB_CHG_EVENT_BC12);
-}
-
-static void ppc_interrupt(enum gpio_signal signal)
-{
-	syv682x_interrupt(0);
-}
 
 /* PWM */
 
