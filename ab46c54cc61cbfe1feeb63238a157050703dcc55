@@ -16,6 +16,41 @@
       "message": "class YourActivity : AppCompatActivity() {\n    // ...\n\n    private lateinit var oneTapClient: SignInClient\n    private lateinit var signInRequest: BeginSignInRequest\n\n    override fun onCreate(savedInstanceState: Bundle?) {\n        super.onCreate(savedInstanceState)\n        setContentView(R.layout.activity_main)\n\n        oneTapClient \u003d Identity.getSignInClient(this)\n        signInRequest \u003d BeginSignInRequest.builder()\n            .setPasswordRequestOptions(BeginSignInRequest.PasswordRequestOptions.builder()\n                .setSupported(true)\n                .build())\n            .setGoogleIdTokenRequestOptions(\n                BeginSignInRequest.GoogleIdTokenRequestOptions.builder()\n                    .setSupported(true)\n                    // Your server\u0027s client ID, not your Android client ID.\n                    .setServerClientId(getString(R.string.your_web_client_id))\n                    // Only show accounts previously used to sign in.\n                    .setFilterByAuthorizedAccounts(true)\n                    .build())\n            // Automatically sign in when exactly one credential is retrieved.\n            .setAutoSelectEnabled(true)\n            .build()\n        // ...\n    }\n    // ...\n}",
       "revId": "ab46c54cc61cbfe1feeb63238a157050703dcc55",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "332f2403_3e45f187",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1526952
+      },
+      "writtenOn": "2021-11-06T18:16:55Z",
+      "side": 1,
+      "message": "Google gmail",
+      "parentUuid": "34758fa0_cd68357d",
+      "revId": "ab46c54cc61cbfe1feeb63238a157050703dcc55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0659f972_f4b3b665",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1526952
+      },
+      "writtenOn": "2021-11-06T18:16:55Z",
+      "side": 1,
+      "message": "please help",
+      "revId": "ab46c54cc61cbfe1feeb63238a157050703dcc55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
