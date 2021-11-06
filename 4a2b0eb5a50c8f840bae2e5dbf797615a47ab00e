@@ -46,6 +46,30 @@
       },
       "revId": "4a2b0eb5a50c8f840bae2e5dbf797615a47ab00e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9de4631e_d16dba1d",
+        "filename": "zephyr/test/drivers/src/bmi160.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2005,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-11-06T04:21:06Z",
+      "side": 1,
+      "message": "Ohh, this is an error message of the assertion. I thought it was a comment.",
+      "parentUuid": "6ed89ad1_2c44dafc",
+      "range": {
+        "startLine": 2005,
+        "startChar": 22,
+        "endLine": 2005,
+        "endChar": 25
+      },
+      "revId": "4a2b0eb5a50c8f840bae2e5dbf797615a47ab00e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
