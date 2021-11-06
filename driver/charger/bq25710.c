@@ -259,6 +259,25 @@ static int bq25710_adc_start(int chgnum, int adc_en_mask)
 }
 #endif
 
+static int bq257x0_init_charge_option_2(int chgnum)
+{
+	int reg;
+	int rv;	
+
+	rv = raw_read16(chgnum, BQ25710_REG_CHARGE_OPTION_2, &reg);
+	if (rv)
+		return rv;
+
+	/*
+	 * Reduce peak power mode overload and relax cycle time from
+	 * default 20 msec to the minimum of 5 msec on the bq25710 or 20
+	 * msec on the bq25720.
+	 */
+	reg &= ~BQ_FIELD_MASK(BQ257X0, CHARGE_OPTION_2, PKPWR_TMAX);
+
+	return raw_write16(chgnum, BQ25710_REG_CHARGE_OPTION_2, reg);
+}
+
 static void bq25710_init(int chgnum)
 {
 	int reg;
@@ -353,14 +372,7 @@ static void bq25710_init(int chgnum)
 		raw_write16(chgnum, BQ25710_REG_PROCHOT_OPTION_0, reg);
 	}
 
-	/*
-	 * Reduce peak power mode overload and relax cycle time from default 20
-	 * msec to the minimum of 5 msec.
-	 */
-	if (!raw_read16(chgnum, BQ25710_REG_CHARGE_OPTION_2, &reg)) {
-		reg &= ~BQ_FIELD_MASK(BQ257X0, CHARGE_OPTION_2, PKPWR_TMAX);
-		raw_write16(chgnum, BQ25710_REG_CHARGE_OPTION_2, reg);
-	}
+	bq257x0_init_charge_option_2(chgnum);
 }
 
 /* Charger interfaces */
