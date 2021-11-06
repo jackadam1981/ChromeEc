@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2a48fd2a_5ce4c7bb",
+        "filename": "driver/charger/bq257x0_regs.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-11-06T00:30:19Z",
+      "side": 1,
+      "message": "it\u0027s intentional. the *_BY_NAME() macros can compose\nthese macro names and this means you won\u0027t be able\nto use SHIFT and BITS as constants to be assigned to\nthese field.\n\nfor example,\nSET_CO1(PSYS_CONFIG, PBUS_PBAT, reg)\nwill work, but \nSET_CO1(PSYS_CONFIG, SHIFT, reg)\nwill not work (intended).",
+      "parentUuid": "c82905b5_711844a2",
+      "range": {
+        "startLine": 41,
+        "startChar": 43,
+        "endLine": 41,
+        "endChar": 45
+      },
+      "revId": "03747dce3fae04b01125b3feb1e09bd1f7dd0497",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c304c4d4_c430918f",
         "filename": "driver/charger/bq257x0_regs.h",
         "patchSetId": 1
@@ -37,6 +61,30 @@
       "writtenOn": "2021-11-05T23:50:52Z",
       "side": 1,
       "message": "(same question here an below)",
+      "range": {
+        "startLine": 60,
+        "startChar": 39,
+        "endLine": 60,
+        "endChar": 41
+      },
+      "revId": "03747dce3fae04b01125b3feb1e09bd1f7dd0497",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0efc1271_669e0359",
+        "filename": "driver/charger/bq257x0_regs.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-11-06T00:30:19Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c304c4d4_c430918f",
       "range": {
         "startLine": 60,
         "startChar": 39,
