@@ -264,6 +264,50 @@ static int bq257x0_init_charge_option_1(int chgnum)
 	return raw_write16(chgnum, BQ25710_REG_CHARGE_OPTION_1, reg);
 }
 
+static int bq257x0_init_prochot_option_1(int chgnum)
+{
+	int rv;
+	int reg;
+
+	rv = raw_read16(chgnum, BQ25710_REG_PROCHOT_OPTION_1, &reg);
+	if (rv)
+		return rv;
+
+	/* Disable VDPM prochot profile at initialization */
+	reg = SET_PO1(PP_VDPM, false, reg);
+
+	/*
+	 * Enable PROCHOT to be asserted with VSYS min detection. Note
+	 * that when no battery is present, then VSYS will be set to the
+	 * value in register 0x3E (MinSysVoltage) which means that when
+	 * no battery is present prochot will continuosly be asserted.
+	 */
+	reg = SET_PO1(PP_VSYS, true, reg);
+
+#ifdef CONFIG_CHARGER_BQ25710_IDCHG_LIMIT_MA
+	/*
+	 * Set the IDCHG limit who's value is defined in the config
+	 * option in mA.
+	 *
+	 * IDCHG limit is in 512 mA steps. Note there is a 128 mA offset
+	 * so the actual IDCHG limit will be the value stored in
+	 * IDCHG_VTH + 128 mA.
+	 */
+	reg = SET_PO1(IDCHG_VTH,
+		      CONFIG_CHARGER_BQ25710_IDCHG_LIMIT_MA >> 9,
+		      reg);
+
+	/*  Enable IDCHG trigger for prochot. */
+	reg = SET_PO1(PP_IDCHG, true, reg);
+#endif
+
+	rv = raw_write16(chgnum, BQ25710_REG_PROCHOT_OPTION_1, reg);
+	if (rv)
+		return rv;
+
+	return EC_SUCCESS;
+}
+
 static int bq257x0_init_charge_option_2(int chgnum)
 {
 	int reg;
@@ -334,37 +378,8 @@ static void bq25710_init(int chgnum)
 
 	bq257x0_init_charge_option_1(chgnum);
 
-	if (!raw_read16(chgnum, BQ25710_REG_PROCHOT_OPTION_1, &reg)) {
-		/* Disable VDPM prochot profile at initialization */
-		reg = SET_BQ_FIELD(BQ257X0, PROCHOT_OPTION_1, PP_VDPM, false,
-				   reg);
-		/*
-		 * Enable PROCHOT to be asserted with VSYS min detection. Note
-		 * that when no battery is present, then VSYS will be set to the
-		 * value in register 0x3E (MinSysVoltage) which means that when
-		 * no battery is present prochot will continuosly be asserted.
-		 */
-		reg = SET_BQ_FIELD(BQ257X0, PROCHOT_OPTION_1, PP_VSYS, true,
-				   reg);
-#ifdef CONFIG_CHARGER_BQ25710_IDCHG_LIMIT_MA
-		/*
-		 * Set the IDCHG limit who's value is defined in the config
-		 * option in mA. Also, enable IDCHG trigger for prochot.
-		 */
-		/*
-		 * IDCHG limit is in 512 mA steps. Note there is a 128 mA offset
-		 * so the actual IDCHG limit will be the value stored in bits
-		 * 15:10 + 128 mA.
-		 */
+	bq257x0_init_prochot_option_1(chgnum);
 
-		reg = SET_BQ_FIELD(BQ257X0, PROCHOT_OPTION_1, IDCHG_VTH,
-				   CONFIG_CHARGER_BQ25710_IDCHG_LIMIT_MA >> 9,
-				   reg);
-		reg = SET_BQ_FIELD(BQ257X0, PROCHOT_OPTION_1, PP_IDCHG, true,
-				   reg);
-#endif
-		raw_write16(chgnum, BQ25710_REG_PROCHOT_OPTION_1, reg);
-	}
 #ifdef CONFIG_CHARGER_BQ25720_VSYS_TH2_DV
 	/*
 	 * The default VSYS_TH2 is 5.9v for a 2S config. Boards
