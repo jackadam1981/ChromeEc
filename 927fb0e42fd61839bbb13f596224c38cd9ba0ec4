@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9459f4e2_807ce876",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2021-11-08T21:30:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f6c2f5a6_2942fa4d",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 43
+      },
+      "revId": "927fb0e42fd61839bbb13f596224c38cd9ba0ec4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bc675663_88f5fc6c",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-11-08T16:56:11Z",
       "side": 1,
       "message": "Do we support only sensor types that are *both* or should this be an || ?",
+      "range": {
+        "startLine": 251,
+        "startChar": 39,
+        "endLine": 251,
+        "endChar": 41
+      },
+      "revId": "927fb0e42fd61839bbb13f596224c38cd9ba0ec4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "04c8382b_72992de0",
+        "filename": "driver/accelgyro_bmi160.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2021-11-08T21:30:18Z",
+      "side": 1,
+      "message": "It\u0027s a !\u003d so this allows only accels or gyros to proceed.",
+      "parentUuid": "bc675663_88f5fc6c",
       "range": {
         "startLine": 251,
         "startChar": 39,
