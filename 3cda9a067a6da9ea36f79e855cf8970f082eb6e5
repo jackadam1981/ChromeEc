@@ -33,6 +33,23 @@
       "message": "Waiting for the next round of cleanup (with everything at least compiling) and then will start review",
       "revId": "3cda9a067a6da9ea36f79e855cf8970f082eb6e5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4427cc75_c8708b00",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-11-08T22:18:25Z",
+      "side": 1,
+      "message": "Adding Daisuke - the EC power domain lead.  This probably needs a design doc.\n\nFrom the Zephyr perspective, we\u0027re using the power/common.c driver as is.  GPIO access are routed through a shim to the native Zephyr GPIO drivers. So probably the only change will be if you add CONFIG options (which need to be ported to Zephyr Kconfig).\n\nTests - yes.  This is badly needed in this area.",
+      "revId": "3cda9a067a6da9ea36f79e855cf8970f082eb6e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
