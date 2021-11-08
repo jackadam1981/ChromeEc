@@ -345,6 +345,15 @@ static int init_gpios(const struct device *unused)
 				configs[signal].name, rv);
 			continue;
 		}
+
+		rv = gpio_pin_interrupt_configure(configs[signal].dev,
+						configs[signal].pin,
+						gpio_interrupts[i].flags);
+		if (rv < 0) {
+			LOG_ERR("Interrupt configure failed %s (%d)",
+				configs[signal].name, rv);
+			continue;
+		}
 	}
 
 	/* Configure unused pins in chip driver for better power consumption */
