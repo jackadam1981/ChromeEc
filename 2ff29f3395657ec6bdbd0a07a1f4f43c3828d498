@@ -22,6 +22,30 @@
       },
       "revId": "2ff29f3395657ec6bdbd0a07a1f4f43c3828d498",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f19e293b_a64fb78b",
+        "filename": "driver/tcpm/ps8xxx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 766,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2021-11-08T10:16:50Z",
+      "side": 1,
+      "message": "There are platforms that have multiple PS8xxx chips, but they don\u0027t use PS8815. Only exception is zephyr unit test which has both configs enabled at the same time. If we don\u0027t need check added by this patch, then do we need it in ps8815_transmit_buffer_workaround_check() function?",
+      "parentUuid": "1b66e451_9d583307",
+      "range": {
+        "startLine": 766,
+        "startChar": 0,
+        "endLine": 766,
+        "endChar": 77
+      },
+      "revId": "2ff29f3395657ec6bdbd0a07a1f4f43c3828d498",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
