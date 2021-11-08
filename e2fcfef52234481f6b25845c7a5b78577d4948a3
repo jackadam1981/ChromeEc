@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d80a561_aa9f4757",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-11-08T19:39:32Z",
+      "side": 1,
+      "message": "much improved, thank you",
+      "revId": "e2fcfef52234481f6b25845c7a5b78577d4948a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d39ae84_6d46ee51",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_npcx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-11-08T19:39:32Z",
+      "side": 1,
+      "message": "nit, use uint8_t to match the type of opcode",
+      "range": {
+        "startLine": 47,
+        "startChar": 7,
+        "endLine": 47,
+        "endChar": 11
+      },
+      "revId": "e2fcfef52234481f6b25845c7a5b78577d4948a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
