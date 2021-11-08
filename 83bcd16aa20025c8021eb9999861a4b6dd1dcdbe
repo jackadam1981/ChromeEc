@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "a818beac_1530e917",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-11-08T19:41:20Z",
+      "side": 1,
+      "message": "Bug needs edited then to accomidate more than just -Werror...",
+      "parentUuid": "5b24c253_63d760ef",
+      "range": {
+        "startLine": 14,
+        "startChar": 4,
+        "endLine": 14,
+        "endChar": 15
+      },
+      "revId": "83bcd16aa20025c8021eb9999861a4b6dd1dcdbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "49298b70_639904fb",
