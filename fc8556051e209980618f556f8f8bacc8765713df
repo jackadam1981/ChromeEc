@@ -84,6 +84,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "846c3160_4959baf9",
+        "filename": "driver/charger/bq25710.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-11-08T21:43:19Z",
+      "side": 1,
+      "message": "As a first pass, can you use the BQ_FIELD macros exclusively?  Then as a follow-on CL switch to the helper macros for the charge option and prochot option registers.",
+      "parentUuid": "0480e73a_70829b00",
+      "range": {
+        "startLine": 162,
+        "startChar": 8,
+        "endLine": 162,
+        "endChar": 15
+      },
+      "revId": "fc8556051e209980618f556f8f8bacc8765713df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c70bc4b1_f045ebc5",
         "filename": "driver/charger/bq25710.c",
         "patchSetId": 2
