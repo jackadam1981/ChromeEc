@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb101c69_dab3b721",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 4021,
+      "author": {
+        "id": 1527153
+      },
+      "writtenOn": "2021-11-08T13:22:51Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "2c769a46_2e49e43f",
+      "range": {
+        "startLine": 4021,
+        "startChar": 5,
+        "endLine": 4021,
+        "endChar": 24
+      },
+      "revId": "5f80a002abd7c2359ec0390c6932cb250545a199",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "296c2728_7a70cc75",
@@ -61,6 +85,30 @@
       "writtenOn": "2021-11-02T20:02:05Z",
       "side": 1,
       "message": "Let\u0027s just return int (for rv \u003d )  for consistency and simplicity.",
+      "range": {
+        "startLine": 3019,
+        "startChar": 7,
+        "endLine": 3019,
+        "endChar": 11
+      },
+      "revId": "5f80a002abd7c2359ec0390c6932cb250545a199",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f10e9b2_7eeac7e1",
+        "filename": "util/ectool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 3019,
+      "author": {
+        "id": 1527153
+      },
+      "writtenOn": "2021-11-08T13:22:51Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "296c2728_7a70cc75",
       "range": {
         "startLine": 3019,
         "startChar": 7,
