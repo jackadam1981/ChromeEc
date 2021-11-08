@@ -93,6 +93,52 @@
       },
       "revId": "03747dce3fae04b01125b3feb1e09bd1f7dd0497",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e84bef1_7f3a6dbb",
+        "filename": "driver/charger/bq257x0_regs.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-11-08T21:39:17Z",
+      "side": 1,
+      "message": "Please document the macro parameters used below.  _c, _v, and _x are no immediately obvious to me.",
+      "range": {
+        "startLine": 197,
+        "startChar": 0,
+        "endLine": 198,
+        "endChar": 1
+      },
+      "revId": "03747dce3fae04b01125b3feb1e09bd1f7dd0497",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0bab9d1a_4bb9fd97",
+        "filename": "driver/charger/bq257x0_regs.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-11-08T21:39:17Z",
+      "side": 1,
+      "message": "I think it would be better to add these intermediate macros as a second step. I realize this is more work, but it will make the driver C code easier to review.",
+      "range": {
+        "startLine": 224,
+        "startChar": 0,
+        "endLine": 257,
+        "endChar": 0
+      },
+      "revId": "03747dce3fae04b01125b3feb1e09bd1f7dd0497",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
