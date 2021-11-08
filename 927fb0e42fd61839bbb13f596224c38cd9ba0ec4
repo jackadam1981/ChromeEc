@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6c2f5a6_2942fa4d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2021-11-08T16:56:11Z",
+      "side": 1,
+      "message": "Since this driver is used outside of zephyr I think we should also do a make runhosttests",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 43
+      },
+      "revId": "927fb0e42fd61839bbb13f596224c38cd9ba0ec4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc675663_88f5fc6c",
+        "filename": "driver/accelgyro_bmi160.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2021-11-08T16:56:11Z",
+      "side": 1,
+      "message": "Do we support only sensor types that are *both* or should this be an || ?",
+      "range": {
+        "startLine": 251,
+        "startChar": 39,
+        "endLine": 251,
+        "endChar": 41
+      },
+      "revId": "927fb0e42fd61839bbb13f596224c38cd9ba0ec4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
