@@ -7,3 +7,10 @@ description: Zephyr TCPCI Emulator
 compatible: "cros,tcpci-emul"
 
 include: base.yaml
+
+properties:
+    alert_gpio:
+      type: phandle
+      required: true
+      description:
+        Reference to Alert# GPIO.
