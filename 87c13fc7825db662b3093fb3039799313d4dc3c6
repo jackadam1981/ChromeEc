@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d7226d5_9e3ad037",
+        "filename": "zephyr/shim/src/gpio.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-11-08T23:21:56Z",
+      "side": 1,
+      "message": "This same step is done by gpio_enable_interrupt() at line 390.\nYour change will automatically enable all GPIO interrupts at boot, which isn\u0027t what we want.  We currently require the board code or driver to call gpio_enable_interrupt().\n\nIt might make sense to call gpio_disable_interrupt() here to ensure the interrupts are disabled at boot, but I think this is redundant.",
+      "range": {
+        "startLine": 349,
+        "startChar": 7,
+        "endLine": 349,
+        "endChar": 35
+      },
+      "revId": "87c13fc7825db662b3093fb3039799313d4dc3c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
