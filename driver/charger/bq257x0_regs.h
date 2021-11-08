@@ -264,4 +264,42 @@
 	SET_BQ_FIELD(_chip, _reg, _field,				\
 		     _chip##_##_reg##_##_field##__##_c, (_x))
 
+/*
+ * Helper macros
+ */
+
+#define SET_CO0(_field, _v, _x)		SET_BQ_FIELD(BQ257X0, \
+						     CHARGE_OPTION_0,	\
+						     _field, _v, (_x))
+
+#define SET_CO1_BY_NAME(_f, _c, _x)	SET_BQ_FIELD_BY_NAME(BQ257X0,	\
+							     CHARGE_OPTION_1, \
+							     _f, _c, (_x))
+
+#define SET_CO2(_field, _v, _x)		SET_BQ_FIELD(BQ257X0, \
+						     CHARGE_OPTION_2,	\
+						     _field, _v, (_x))
+#define SET_CO2_BY_NAME(_field, _c, _x)	SET_BQ_FIELD_BY_NAME(BQ257X0,	\
+							     CHARGE_OPTION_2, \
+							     _field, _c, (_x))
+
+#define SET_CO3(_field, _v, _x)		SET_BQ_FIELD(BQ257X0, CHARGE_OPTION_3, \
+						     _field, _v, (_x))
+
+#define SET_CO4(_f, _v, _x)		SET_BQ_FIELD(BQ25720, CHARGE_OPTION_4, \
+						     _f, _v, (_x))
+#define SET_CO4_BY_NAME(_f, _c, _x)	SET_BQ_FIELD_BY_NAME(BQ25720, \
+						CHARGE_OPTION_4, _f, _c, (_x))
+
+#define SET_PO0(_field, _v, _x)		SET_BQ_FIELD(BQ257X0, \
+						     PROCHOT_OPTION_0,	\
+						     _field, _v, (_x))
+
+#define SET_PO1(_field, _v, _x)		SET_BQ_FIELD(BQ257X0, \
+						     PROCHOT_OPTION_1,	\
+						     _field, _v, (_x))
+#define SET_PO1_BY_NAME(_field, _c, _x)	SET_BQ_FIELD_BY_NAME(BQ257X0, \
+							     PROCHOT_OPTION_1, \
+							     _field, _c, (_x))
+
 #endif /* __CROS_EC_BQ257X0_REGS_H */
