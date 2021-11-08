@@ -22,6 +22,30 @@
       },
       "revId": "87c13fc7825db662b3093fb3039799313d4dc3c6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de0b508d_5ff2a613",
+        "filename": "zephyr/shim/src/gpio.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-11-08T23:59:51Z",
+      "side": 1,
+      "message": "Correct, actually, if you look back a bit in the git history of this file, I believe code pretty similar to what you\u0027re doing now used to be here and we had to delete it, since as Keith mentions, this should be done by gpio_enable_interrupt.",
+      "parentUuid": "7d7226d5_9e3ad037",
+      "range": {
+        "startLine": 349,
+        "startChar": 7,
+        "endLine": 349,
+        "endChar": 35
+      },
+      "revId": "87c13fc7825db662b3093fb3039799313d4dc3c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
