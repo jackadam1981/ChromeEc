@@ -319,6 +319,24 @@
       "parentUuid": "28e47992_c57cd9b4",
       "revId": "6119579ffd4ba70656d4f501d1b0d44658f408da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07cc8d58_f37d6d09",
+        "filename": "chip/stm32/usb_hid_keyboard.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2021-11-08T19:13:52Z",
+      "side": 1,
+      "message": "I see. My question about whether we can just make the change on newer Hammers still stands, though; we could keep the report and boot protocols compatible in that case, right?\n\nAs a security matter permission_broker doesn\u0027t allow access to hidraw nodes for recognized input devices like keyboards and touchpads, so I don\u0027t think that\u0027s an option.",
+      "parentUuid": "b97e2904_ea411695",
+      "revId": "6119579ffd4ba70656d4f501d1b0d44658f408da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
