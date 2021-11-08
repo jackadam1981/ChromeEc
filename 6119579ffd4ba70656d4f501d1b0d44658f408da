@@ -301,6 +301,24 @@
       "parentUuid": "e99ec3f3_05cc8885",
       "revId": "6119579ffd4ba70656d4f501d1b0d44658f408da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b97e2904_ea411695",
+        "filename": "chip/stm32/usb_hid_keyboard.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2021-11-08T10:30:50Z",
+      "side": 1,
+      "message": "Boot protocol is a predefined simple hid protocol for BIOS (or anything that does not implement full usb hid spec). Report prototol has less restrictions and can define whatever you want.\n\nBoot protocol and report protocol are two independent things, but we used to keep the report protocol format compatable with the boot protocol. My main concern is that after splitting boot protocol and report protocol, the boot protocol code path will be hard to test, because it only used inside firmware.\n\nKernel change is not required, it\u0027s also possible to talk to /dev/hidrawN directly to get/send feature report (https://www.kernel.org/doc/Documentation/hid/hidraw.txt)",
+      "parentUuid": "28e47992_c57cd9b4",
+      "revId": "6119579ffd4ba70656d4f501d1b0d44658f408da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
