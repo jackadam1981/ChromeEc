@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "658115f4_8c15a8e2",
+        "filename": "zephyr/Kconfig.tasks",
+        "patchSetId": 3
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-11-08T22:51:29Z",
+      "side": 1,
+      "message": "This isn\u0027t required by the pd_shared_alert_task(), correct?\n\nI think it makes more sense to put some of this logic into Kconfig.usbc\n\n    config PLATFORM_EC_USB_PD_INT_SHARED\n        bool # no help text, intermediate helper option only\n       \n    if PLATFORM_EC_USB_PD_INT_SHARED\n    config PLATFORM_EC_USB_PD_PORT_0_SHARED\n        bool \"USB-C port 0 interrupt is shared\"\n        select PLATFORM_EC_USB_PD_INT_SHARED\n    ...\n    config PLATFORM_EC_USB_PD_PORT_3_SHARED\n        bool \"USB-C port 3 interrupt is shared\"\n        select PLATFORM_EC_USB_PD_INT_SHARED\n    endif # PLATFORM_EC_USB_PD_INT_SHARED\n\nThen here, you add an HAS_TASK for the shared interrupt, and guard the individual port interrupts.\n\n    config HAS_TASK_PD_INT_SHARED\n        bool\n        depends on PLATFORM_EC_USB_PD_INT_SHARED\n        \n    config HAS_TASK_PD_INT_C0\n\tbool\n\tdepends on PLATFORM_EC_USB_POWER_DELIVERY\n\tdepends on !PLATFORM_EC_USB_PD_INT_SHARED\n        default y if PLATFORM_EC_USB_PD_PORT_MAX_COUNT \u003e 0",
+      "range": {
+        "startLine": 249,
+        "startChar": 22,
+        "endLine": 249,
+        "endChar": 62
+      },
+      "revId": "9826cbd4e8e2d5adc258140682dc973bb2231d48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f364ffd_2779766e",
+        "filename": "zephyr/Kconfig.tasks",
+        "patchSetId": 3
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-11-08T22:51:29Z",
+      "side": 1,
+      "message": "I think it\u0027s redundant to guard the \"default y\" with \"!TASK_PD_INT_C1_SHARED\" because this is already an explicit dependency.",
+      "range": {
+        "startLine": 269,
+        "startChar": 0,
+        "endLine": 270,
+        "endChar": 77
+      },
+      "revId": "9826cbd4e8e2d5adc258140682dc973bb2231d48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17c17e15_419c688a",
+        "filename": "zephyr/shim/include/shimmed_task_id.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-11-08T22:51:29Z",
+      "side": 1,
+      "message": "Please revert this or change the whitespace in a standalone CL.",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 66
+      },
+      "revId": "9826cbd4e8e2d5adc258140682dc973bb2231d48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2492c0cc_ef202c67",
+        "filename": "zephyr/shim/include/shimmed_task_id.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-11-08T22:51:29Z",
+      "side": 1,
+      "message": "Hopefully with the suggested Kconfig changes, the logic here simplifies to:\n    COND_CODE_1(HAS_TASK_PD_INT_SHARED, ...)\n    COND_CODE_1(HAS_TASK_PD_INT_C0, ...)\n    COND_CODE_1(HAS_TASK_PD_INT_C1, ...)\n    COND_CODE_1(HAS_TASK_PD_INT_C2, ...)\n    COND_CODE_1(HAS_TASK_PD_INT_C3, ...)",
+      "range": {
+        "startLine": 86,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 0
+      },
+      "revId": "9826cbd4e8e2d5adc258140682dc973bb2231d48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "094efe39_ffbe1721",
+        "filename": "zephyr/shim/include/shimmed_task_id.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-11-08T22:51:29Z",
+      "side": 1,
+      "message": "This should be IF_ENABLED(CONFIG_TASK_PD_INT_C1_SHARED).",
+      "range": {
+        "startLine": 96,
+        "startChar": 23,
+        "endLine": 96,
+        "endChar": 44
+      },
+      "revId": "9826cbd4e8e2d5adc258140682dc973bb2231d48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
