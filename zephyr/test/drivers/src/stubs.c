@@ -240,7 +240,23 @@ void system_hibernate(uint32_t seconds, uint32_t microseconds)
 
 uint16_t tcpc_get_alert_status(void)
 {
-	return 0;
+	uint16_t status = 0;
+
+	/*
+	 * Check which port has the ALERT line set and ignore if that TCPC has
+	 * its reset line active.
+	 */
+	if (!gpio_get_level(GPIO_USB_C0_TCPC_INT_ODL)) {
+		if (gpio_get_level(GPIO_USB_C0_TCPC_RST_L) != 0)
+			status |= PD_STATUS_TCPC_ALERT_0;
+	}
+
+	if (!gpio_get_level(GPIO_USB_C1_TCPC_INT_ODL)) {
+		if (gpio_get_level(GPIO_USB_C1_TCPC_RST_L) != 0)
+			status |= PD_STATUS_TCPC_ALERT_1;
+	}
+
+	return status;
 }
 
 enum power_state power_chipset_init(void)
@@ -271,3 +287,21 @@ void chipset_force_shutdown(enum chipset_shutdown_reason reason)
 
 /* Power signals list. Must match order of enum power_signal. */
 const struct power_signal_info power_signal_list[] = {};
+
+void tcpc_alert_event(enum gpio_signal signal)
+{
+	int port;
+
+	switch (signal) {
+	case GPIO_USB_C0_TCPC_INT_ODL:
+		port = 0;
+		break;
+	case GPIO_USB_C1_TCPC_INT_ODL:
+		port = 1;
+		break;
+	default:
+		return;
+	}
+
+	schedule_deferred_pd_interrupt(port);
+}

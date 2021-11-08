@@ -11,6 +11,7 @@
 #include "usb_pd.h"
 #include "usb_pd_tcpc.h"
 #include "usb_pd_tcpm.h"
+#include "hooks.h"
 
 static int init_alert_mask(int port)
 {
@@ -157,3 +158,12 @@ void tcpc_alert(int port)
 					   TCPC_TX_COMPLETE_FAILED);
 	}
 }
+
+static void usbc_interrupt_init(void)
+{
+	/* Enable TCPC interrupts. */
+	gpio_enable_interrupt(GPIO_USB_C0_TCPC_INT_ODL);
+	gpio_enable_interrupt(GPIO_USB_C1_TCPC_INT_ODL);
+
+}
+DECLARE_HOOK(HOOK_INIT, usbc_interrupt_init, HOOK_PRIO_INIT_I2C + 1);
