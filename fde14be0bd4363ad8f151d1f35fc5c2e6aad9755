@@ -70,6 +70,30 @@
       },
       "revId": "fde14be0bd4363ad8f151d1f35fc5c2e6aad9755",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "59f17430_ead94d09",
+        "filename": "core/cortex-m0/task.c",
+        "patchSetId": 43
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-11-08T18:11:37Z",
+      "side": 1,
+      "message": "I made another CL to change the return type to \"bool\", so we don\u0027t have to use the \"!!\": https://crrev.com/c/3262593",
+      "parentUuid": "dfb4a8b9_707f49ab",
+      "range": {
+        "startLine": 179,
+        "startChar": 0,
+        "endLine": 179,
+        "endChar": 53
+      },
+      "revId": "fde14be0bd4363ad8f151d1f35fc5c2e6aad9755",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
