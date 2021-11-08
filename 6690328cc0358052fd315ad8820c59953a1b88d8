@@ -72,6 +72,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a407ef8c_0b565339",
+        "filename": "core/riscv-rv32i/task.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-11-08T19:00:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "45f20309_7822287e",
+      "range": {
+        "startLine": 217,
+        "startChar": 0,
+        "endLine": 220,
+        "endChar": 1
+      },
+      "revId": "6690328cc0358052fd315ad8820c59953a1b88d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "08b7fcc3_97703d9f",
@@ -85,6 +109,30 @@
       "writtenOn": "2021-11-08T18:01:04Z",
       "side": 1,
       "message": "This needs to check for the hooks task and the sysworkq.\n   task_get_current() \u003d\u003d TASK_ID_HOOKS ||\n   task_get_current() \u003d\u003d TASK_ID_COUNT\n   \nI would also create an alias for the sysworkq task.\n#define TASK_SYSWORKQ TASK_ID_COUNT",
+      "range": {
+        "startLine": 375,
+        "startChar": 0,
+        "endLine": 375,
+        "endChar": 46
+      },
+      "revId": "6690328cc0358052fd315ad8820c59953a1b88d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2704271e_d7a09507",
+        "filename": "zephyr/shim/src/tasks.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-11-08T19:00:00Z",
+      "side": 1,
+      "message": "I like the define.  I\u0027m torn on the check for HOOKS or SYSWORKQ.  On the one hand, that more correctly reflects previous usage of this check.  On the other, the HOOKS items aren\u0027t deferred in that they don\u0027t use our macros and functions that say \"deferred\".",
+      "parentUuid": "08b7fcc3_97703d9f",
       "range": {
         "startLine": 375,
         "startChar": 0,
