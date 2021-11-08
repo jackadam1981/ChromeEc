@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b24c253_63d760ef",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1477788
+      },
+      "writtenOn": "2021-11-08T13:54:12Z",
+      "side": 1,
+      "message": "I interpreted this bug as feature request to improve/ease development process, so in that case, this CL can be seen as related.",
+      "parentUuid": "83825010_bf59ce0b",
+      "range": {
+        "startLine": 14,
+        "startChar": 4,
+        "endLine": 14,
+        "endChar": 15
+      },
+      "revId": "83bcd16aa20025c8021eb9999861a4b6dd1dcdbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "49298b70_639904fb",
@@ -78,6 +102,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "95d98f08_a4812e1c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1477788
+      },
+      "writtenOn": "2021-11-08T13:54:12Z",
+      "side": 1,
+      "message": "Zephyr doesn\u0027t allow to use environment variables. In the generic_toolchain.cmake there\u0027s note about it:\n\"# Don\u0027t inherit compiler flags from the environment\n...\nunset(ENV{${var}})\"\nThese must be defined as EXTRA_CFLAGS parameter to cmake, which call is wrapped by zmake.",
+      "parentUuid": "27897c07_11016c72",
+      "revId": "83bcd16aa20025c8021eb9999861a4b6dd1dcdbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "64307137_37283117",
         "filename": "zephyr/zmake/zmake/__main__.py",
         "patchSetId": 1
@@ -124,6 +166,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "4453e9d9_eb00f5d4",
+        "filename": "zephyr/zmake/zmake/__main__.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1477788
+      },
+      "writtenOn": "2021-11-08T13:54:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "64307137_37283117",
+      "range": {
+        "startLine": 196,
+        "startChar": 13,
+        "endLine": 196,
+        "endChar": 14
+      },
+      "revId": "83bcd16aa20025c8021eb9999861a4b6dd1dcdbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "f2dca9fc_ee43ce97",
         "filename": "zephyr/zmake/zmake/zmake.py",
         "patchSetId": 1
@@ -135,6 +201,30 @@
       "writtenOn": "2021-11-05T19:03:12Z",
       "side": 1,
       "message": "Instead of using EXTRA_CFLAGS, I think an option should actually be plumbed into this upstream. Specifying the compiler flags directly in Zmake was never what Zmake was intended for, especially when we consider multiple toolchain support, etc.\n\nThis is fine for now, but please do follow up with an upstream PR.",
+      "range": {
+        "startLine": 333,
+        "startChar": 28,
+        "endLine": 333,
+        "endChar": 61
+      },
+      "revId": "83bcd16aa20025c8021eb9999861a4b6dd1dcdbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e11f17c_5edf6c16",
+        "filename": "zephyr/zmake/zmake/zmake.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1477788
+      },
+      "writtenOn": "2021-11-08T13:54:12Z",
+      "side": 1,
+      "message": "Good idea",
+      "parentUuid": "f2dca9fc_ee43ce97",
       "range": {
         "startLine": 333,
         "startChar": 28,
