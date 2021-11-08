@@ -16,6 +16,75 @@
       "message": "Hi Dai,\n\nModified code addressing your comments.\nPlease let us know your view on the same.\n\nThanks,\nHarsha",
       "revId": "4b53a6d68942947da892ac23aabc15647402fa76",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ac77ab6_d5758dee",
+        "filename": "util/ectool.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 3032,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-11-08T16:54:53Z",
+      "side": 1,
+      "message": "This doesn\u0027t work because EC_CMD_THERMAL_GET_THRESHOLD v0 returns  ec_response_thermal_get_threshold (not ec_thermal_config).\n\nIt\u0027s tedious but you need to write quite different code for v0 and v1.",
+      "range": {
+        "startLine": 3027,
+        "startChar": 0,
+        "endLine": 3032,
+        "endChar": 30
+      },
+      "revId": "4b53a6d68942947da892ac23aabc15647402fa76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13311ac5_82399eba",
+        "filename": "util/ectool.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 3043,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-11-08T16:54:53Z",
+      "side": 1,
+      "message": "You can receive \u0027int id\u0027 as a function param and pass it to a local \u0027struct ec_params_temp_sensor_get_info\u0027.",
+      "range": {
+        "startLine": 3041,
+        "startChar": 1,
+        "endLine": 3043,
+        "endChar": 1
+      },
+      "revId": "4b53a6d68942947da892ac23aabc15647402fa76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2fe52e54_6157f416",
+        "filename": "util/ectool.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 3070,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-11-08T16:54:53Z",
+      "side": 1,
+      "message": "Can you please revert this change: id -\u003e p.id? struct ec_params_temp_sensor_get_info isn\u0027t needed in this function.",
+      "range": {
+        "startLine": 3070,
+        "startChar": 7,
+        "endLine": 3070,
+        "endChar": 11
+      },
+      "revId": "4b53a6d68942947da892ac23aabc15647402fa76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
