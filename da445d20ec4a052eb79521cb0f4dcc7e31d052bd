@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38b1b82c_9c6cdb64",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 4
+      },
+      "lineNbr": 505,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-11-08T22:06:12Z",
+      "side": 1,
+      "message": "As a follow on CL, can you enable this by default when any of the Parade (PS8xxx) retimers or TCPC chips are used?\n\nProbably best to use the \"imply\" keyword on the Parade drivers.",
+      "revId": "da445d20ec4a052eb79521cb0f4dcc7e31d052bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3632ddb2_96c84495",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 4
+      },
+      "lineNbr": 511,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-11-08T22:06:12Z",
+      "side": 1,
+      "message": "Nit - space at start of sentence.",
+      "range": {
+        "startLine": 511,
+        "startChar": 43,
+        "endLine": 511,
+        "endChar": 47
+      },
+      "revId": "da445d20ec4a052eb79521cb0f4dcc7e31d052bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
