@@ -218,3 +218,7 @@ properties:
       - GPIO_WP_L
       - GPIO_X_EC_GPIO1
       - GPIO_X_EC_GPIO2
+      - GPIO_PCH_SMI_L
+      - GPIO_PCH_SCI_L
+      - GPIO_GATE_A20_H
+      - GPIO_LPC_CLKRUN_L
