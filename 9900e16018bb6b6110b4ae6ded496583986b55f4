@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d43582a_4b525bae",
+        "filename": "driver/accelgyro_bmi160.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 397,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2021-11-08T21:53:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "44e33b38_37b8da0f",
+      "range": {
+        "startLine": 397,
+        "startChar": 4,
+        "endLine": 397,
+        "endChar": 11
+      },
+      "revId": "9900e16018bb6b6110b4ae6ded496583986b55f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2bd88a34_f3999e8c",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-11-05T22:22:16Z",
       "side": 1,
       "message": "How about changing the name to \"config_accel_interrupt\"?",
+      "range": {
+        "startLine": 398,
+        "startChar": 26,
+        "endLine": 398,
+        "endChar": 42
+      },
+      "revId": "9900e16018bb6b6110b4ae6ded496583986b55f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "55779af8_bfd5cd78",
+        "filename": "driver/accelgyro_bmi160.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 398,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2021-11-08T21:53:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2bd88a34_f3999e8c",
       "range": {
         "startLine": 398,
         "startChar": 26,
