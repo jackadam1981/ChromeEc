@@ -210,6 +210,12 @@ def main(argv=None):
         dest="coverage",
         help="Enable CONFIG_COVERAGE Kconfig.",
     )
+    configure.add_argument(
+        "--compdb",
+        action="store_true",
+        dest="compdb",
+        help="Generate compilation database",
+    )
 
     build = sub.add_parser("build")
     build.add_argument(

@@ -214,6 +214,7 @@ class Zmake:
         test_after_configure=False,
         bringup=False,
         coverage=False,
+        compdb=False,
     ):
         """Locate a project by name or directory and then call _configure."""
         root_dir = pathlib.Path(project_name_or_dir)
@@ -238,6 +239,7 @@ class Zmake:
             test_after_configure=test_after_configure,
             bringup=bringup,
             coverage=coverage,
+            compdb=compdb,
         )
 
     def _configure(
@@ -250,6 +252,7 @@ class Zmake:
         test_after_configure=False,
         bringup=False,
         coverage=False,
+        compdb=False,
     ):
         """Set up a build directory to later be built by "zmake build"."""
         supported_version = util.parse_zephyr_version(project.config.zephyr_version)
@@ -283,15 +286,18 @@ class Zmake:
             shutil.rmtree(build_dir)
 
         generated_include_dir = (build_dir / "include").resolve()
+        cmake_defs={
+            "DTS_ROOT": str(self.module_paths["ec"] / "zephyr"),
+            "SYSCALL_INCLUDE_DIRS": str(
+                self.module_paths["ec"] / "zephyr" / "include" / "drivers"
+            ),
+            "ZMAKE_INCLUDE_DIR": str(generated_include_dir),
+        }
+        if compdb:
+            cmake_defs["CMAKE_EXPORT_COMPILE_COMMANDS"]="ON"
         base_config = zmake.build_config.BuildConfig(
             environ_defs={"ZEPHYR_BASE": str(zephyr_base), "PATH": "/usr/bin"},
-            cmake_defs={
-                "DTS_ROOT": str(self.module_paths["ec"] / "zephyr"),
-                "SYSCALL_INCLUDE_DIRS": str(
-                    self.module_paths["ec"] / "zephyr" / "include" / "drivers"
-                ),
-                "ZMAKE_INCLUDE_DIR": str(generated_include_dir),
-            },
+            cmake_defs=cmake_defs,
         )
 
         # Prune the module paths to just those required by the project.
@@ -391,7 +397,7 @@ class Zmake:
         elif build_after_configure:
             return self.build(build_dir=build_dir)
 
-    def build(self, build_dir, output_files_out=None, fail_on_warnings=False):
+    def build(self, build_dir, output_files_out=None, fail_on_warnings=False,):
         """Build a pre-configured build directory."""
 
         def wait_and_check_success(procs, writers):
