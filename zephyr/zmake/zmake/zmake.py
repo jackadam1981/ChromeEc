@@ -291,6 +291,7 @@ class Zmake:
                     self.module_paths["ec"] / "zephyr" / "include" / "drivers"
                 ),
                 "ZMAKE_INCLUDE_DIR": str(generated_include_dir),
+                "CMAKE_EXPORT_COMPILE_COMMANDS": "ON",
             },
         )
 
