@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "310a2623_ca42eb36",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-11-08T22:51:05Z",
+      "side": 1,
+      "message": "For testing that builds at least work, I\u0027d recommend trying to enable shared ports on board that already has USB-C enabled.  Use the \"kernel threads\" command to verify that the shared PD int task gets created.\n\nUSB-C on brya will take a bit more work to get things compiling.",
+      "revId": "c89ef629655fe15d038120899b7659e998dbbd65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
