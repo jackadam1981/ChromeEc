@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4890150_c942be08",
+        "filename": "zephyr/drivers/cros_flash/Kconfig",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2021-11-08T07:13:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "829e516d_0d0fca75",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 18
+      },
+      "revId": "64e1d4b660e2835d7d255325d07feea7461d30a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bbc304b0_9e4893a8",
@@ -61,6 +85,30 @@
       "writtenOn": "2021-11-05T02:14:41Z",
       "side": 1,
       "message": "blank line before\n\nalso please add  # CROS_FLASH_NPCX at the end of the line",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 5
+      },
+      "revId": "64e1d4b660e2835d7d255325d07feea7461d30a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a3fa85b_1cbc3a25",
+        "filename": "zephyr/drivers/cros_flash/Kconfig",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2021-11-08T07:13:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bbc304b0_9e4893a8",
       "range": {
         "startLine": 23,
         "startChar": 0,
@@ -94,6 +142,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "26ccb6f3_fe4eff3e",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_npcx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2021-11-08T07:13:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6b33ba0e_f01832a3",
+      "range": {
+        "startLine": 36,
+        "startChar": 35,
+        "endLine": 36,
+        "endChar": 38
+      },
+      "revId": "64e1d4b660e2835d7d255325d07feea7461d30a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c054be12_d7fd65f2",
@@ -107,6 +179,30 @@
       "writtenOn": "2021-11-04T21:54:39Z",
       "side": 1,
       "message": "Is this command unique to the Nuvoton flash, or can this definition get added upstream?",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 30
+      },
+      "revId": "64e1d4b660e2835d7d255325d07feea7461d30a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2d69460_4629b690",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_npcx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2021-11-08T07:13:25Z",
+      "side": 1,
+      "message": "It seems that the there is no standard to read the status register 2.\nDifferent SPI NOR flashes may use different opcode to read the status register 2.\nOne example is here:\nhttps://elixir.bootlin.com/linux/latest/source/include/linux/mtd/spi-nor.h#L27",
+      "parentUuid": "c054be12_d7fd65f2",
       "range": {
         "startLine": 43,
         "startChar": 0,
@@ -140,6 +236,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d7ffe3db_5819d265",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_npcx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2021-11-08T07:13:25Z",
+      "side": 1,
+      "message": "For normal case of SPI transaction, it should use separate buffers.\nAs we are accessing the SPI NOR flash, we can ignore received data when transmitting and vice versa. So we can just use the same buffer.\nThis is also what spi_nor flash driver did in Zephyr:\nhttps://github.com/zephyrproject-rtos/zephyr/blob/main/drivers/flash/spi_nor.c#L338",
+      "parentUuid": "aa2332ed_c2907636",
+      "range": {
+        "startLine": 63,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 0
+      },
+      "revId": "64e1d4b660e2835d7d255325d07feea7461d30a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "39cf618c_fb297601",
@@ -153,6 +273,30 @@
       "writtenOn": "2021-11-05T02:14:41Z",
       "side": 1,
       "message": "initialize here instead of setting later",
+      "range": {
+        "startLine": 128,
+        "startChar": 9,
+        "endLine": 128,
+        "endChar": 15
+      },
+      "revId": "64e1d4b660e2835d7d255325d07feea7461d30a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "25905308_bb7358ff",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_npcx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2021-11-08T07:13:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "39cf618c_fb297601",
       "range": {
         "startLine": 128,
         "startChar": 9,
@@ -186,6 +330,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "90e1ab1c_20332747",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_npcx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2021-11-08T07:13:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f55d95b2_03f7d792",
+      "range": {
+        "startLine": 148,
+        "startChar": 61,
+        "endLine": 148,
+        "endChar": 62
+      },
+      "revId": "64e1d4b660e2835d7d255325d07feea7461d30a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c80ca5f7_b2c3438b",
@@ -199,6 +367,30 @@
       "writtenOn": "2021-11-05T02:14:41Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 187,
+        "startChar": 0,
+        "endLine": 187,
+        "endChar": 27
+      },
+      "revId": "64e1d4b660e2835d7d255325d07feea7461d30a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "709f5b87_e6608c6c",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_npcx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2021-11-08T07:13:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c80ca5f7_b2c3438b",
       "range": {
         "startLine": 187,
         "startChar": 0,
@@ -232,6 +424,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e40f367e_11060799",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_npcx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2021-11-08T07:13:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d22fa374_a8cf6d1e",
+      "range": {
+        "startLine": 188,
+        "startChar": 65,
+        "endLine": 188,
+        "endChar": 66
+      },
+      "revId": "64e1d4b660e2835d7d255325d07feea7461d30a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "938d60d1_e92b1b34",
@@ -249,6 +465,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f420be4_7fd10555",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_npcx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 433,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2021-11-08T07:13:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "938d60d1_e92b1b34",
+      "revId": "64e1d4b660e2835d7d255325d07feea7461d30a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d181bd6a_cf3c5f52",
@@ -262,6 +496,30 @@
       "writtenOn": "2021-11-04T21:54:39Z",
       "side": 1,
       "message": "Reference the CONFIG names here instead of the function names in the error.",
+      "range": {
+        "startLine": 629,
+        "startChar": 50,
+        "endLine": 629,
+        "endChar": 62
+      },
+      "revId": "64e1d4b660e2835d7d255325d07feea7461d30a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a97070f3_b8f492c9",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_npcx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 629,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2021-11-08T07:13:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d181bd6a_cf3c5f52",
       "range": {
         "startLine": 629,
         "startChar": 50,
@@ -295,6 +553,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8088ba76_2aac0ae8",
+        "filename": "zephyr/include/cros/nuvoton/npcx.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2021-11-08T07:13:25Z",
+      "side": 1,
+      "message": "This node label is currently used in https://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/main/zephyr/shim/src/flash.c#18.\nit cannot be deleted.",
+      "parentUuid": "63c984fe_9c47f73c",
+      "range": {
+        "startLine": 63,
+        "startChar": 1,
+        "endLine": 63,
+        "endChar": 6
+      },
+      "revId": "64e1d4b660e2835d7d255325d07feea7461d30a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0f3b2685_7e5f1706",
@@ -308,6 +590,24 @@
       "writtenOn": "2021-11-04T21:54:39Z",
       "side": 1,
       "message": "Use the CONFIG names in the error message.",
+      "revId": "64e1d4b660e2835d7d255325d07feea7461d30a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d085d97a_378ba772",
+        "filename": "zephyr/shim/src/flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2021-11-08T07:13:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0f3b2685_7e5f1706",
       "revId": "64e1d4b660e2835d7d255325d07feea7461d30a0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
