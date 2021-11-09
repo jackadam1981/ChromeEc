@@ -7,11 +7,15 @@
 
 #include "adc.h"
 #include "base_fw_config.h"
+#include "battery.h"
 #include "board_fw_config.h"
 #include "button.h"
+#include "charger.h"
+#include "charge_state_v2.h"
 #include "chipset.h"
 #include "common.h"
 #include "cros_board_info.h"
+#include "driver/charger/isl9241_public.h"
 #include "driver/retimer/pi3hdx1204.h"
 #include "driver/retimer/ps8811.h"
 #include "driver/retimer/ps8818.h"
@@ -20,6 +24,7 @@
 #include "extpower.h"
 #include "gpio.h"
 #include "hooks.h"
+#include "isl9241.h"
 #include "keyboard_scan.h"
 #include "lid_switch.h"
 #include "power.h"
@@ -475,3 +480,54 @@ static void hdmi_hpd_interrupt(enum gpio_signal signal)
 	/* Debounce for 2 msec */
 	hook_call_deferred(&hdmi_hpd_handler_data, (2 * MSEC));
 }
+
+void board_set_charger_limit(void)
+{
+	int soc = -1;
+	static int ac_limit_backup;
+
+	/* Battery not present, AC present */
+	if (battery_is_present() == BP_NO) {
+		ac_limit_backup = 2560;
+		isl9241_set_ac_prochot(CHARGER_SOLO, ac_limit_backup);
+		/* Set charger input current limit to 6A when AC only */
+		chg_chips[0].drv->set_input_current_limit(CHARGER_SOLO, 0x1770);
+	} else {
+		/* Battery present and < 4%, or battery error */
+		if (((battery_state_of_charge_abs(&soc) == EC_SUCCESS
+			  && soc < 4)
+			|| battery_state_of_charge_abs(&soc))
+			&& (ac_limit_backup != 2560)) {
+			ac_limit_backup = 2560;
+			isl9241_set_ac_prochot(CHARGER_SOLO, ac_limit_backup);
+		} else {
+			if (((charge_manager_get_power_limit_uw() / 1000
+				  >= 45000)
+			&& (charge_manager_get_power_limit_uw() / 1000
+				<= 65000))
+			&& (ac_limit_backup != 3328)) {
+				ac_limit_backup = 3328;
+				isl9241_set_ac_prochot(CHARGER_SOLO,
+				ac_limit_backup);
+			} else if (((charge_manager_get_power_limit_uw()
+						/ 1000 >= 90000)
+			&& (charge_manager_get_power_limit_uw() / 1000
+				<= 100000))
+			&& (ac_limit_backup != 5120)) {
+				ac_limit_backup = 5120;
+				isl9241_set_ac_prochot(CHARGER_SOLO,
+				ac_limit_backup);
+			/* Default 3328 */
+			} else {
+				if (ac_limit_backup != 3328) {
+					ac_limit_backup = 3328;
+					isl9241_set_ac_prochot(CHARGER_SOLO,
+					ac_limit_backup);
+				}
+			}
+		}
+	}
+}
+DECLARE_HOOK(HOOK_AC_CHANGE, board_set_charger_limit, HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_BATTERY_SOC_CHANGE, board_set_charger_limit,
+			 HOOK_PRIO_DEFAULT);
