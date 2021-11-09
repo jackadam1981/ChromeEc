@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "31984889_506f5c07",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-11-09T17:18:20Z",
+      "side": 1,
+      "message": "I\u0027m not sure that I understand the rationale for this change. The introduction of `stable_count` seems to just be waiting for fixed time before acting on the charge_request(). It kind of seems like a workaround ignoring the early values of current_ma. \n\nWhat is *not* getting updated when `charge_ma` gets updated?",
+      "revId": "16eae02b98f1ef348ac90a5d590ad6c2a67f93f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
