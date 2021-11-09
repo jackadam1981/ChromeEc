@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b085a97_7fe25f74",
+        "filename": "board/gimble/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-11-09T09:19:54Z",
+      "side": 1,
+      "message": "it would be good to indent the line continuation one more level or just\nrun this through a formatter.",
+      "range": {
+        "startLine": 147,
+        "startChar": 2,
+        "endLine": 147,
+        "endChar": 27
+      },
+      "revId": "db3209053f77ab62d87d634bb136b44e7eccfaf6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
