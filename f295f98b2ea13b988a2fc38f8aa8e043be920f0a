@@ -16,6 +16,115 @@
       "message": "Hi Dai,\n\nDone changes addressing your comments.\nRegarding implementation specific to version 0 for EC_CMD_THERMAL_GET_THRESHOLD,\nEC code doesn\u0027t support V0 for EC_CMD_THERMAL_GET_THRESHOLD. The implementation \nwrt thermal/fan was done only for V1. Below is the reference commit where the \nchanges wrt thermal/fan implementation was done.\n\ncommit fcce7223a5493e512e77d9f7b758d874ac502df5\nAuthor: Bill Richardson \u003cwfrichar@chromium.org\u003e\nDate:   Wed Aug 7 15:34:04 2013 -0700\nCompletely new thermal/fan implementation\n\n\nThanks,\nHarsha",
       "revId": "f295f98b2ea13b988a2fc38f8aa8e043be920f0a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a381a4e2_819617b7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-11-09T19:24:58Z",
+      "side": 1,
+      "message": "Hi Harsha,\n\nThe patch mostly looks good. It needs just a few style changes and handling errors explicitly.",
+      "revId": "f295f98b2ea13b988a2fc38f8aa8e043be920f0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "806245ec_5b133488",
+        "filename": "util/ectool.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 3021,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-11-09T19:24:58Z",
+      "side": 1,
+      "message": "nit: \u0027temp\u0027 or something for readability.",
+      "range": {
+        "startLine": 3021,
+        "startChar": 39,
+        "endLine": 3021,
+        "endChar": 40
+      },
+      "revId": "f295f98b2ea13b988a2fc38f8aa8e043be920f0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "876e40a7_d44bc09f",
+        "filename": "util/ectool.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 3031,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-11-09T19:24:58Z",
+      "side": 1,
+      "message": "Let\u0027s return -1 for this. It\u0027s not fan\u003d0%.",
+      "range": {
+        "startLine": 3031,
+        "startChar": 5,
+        "endLine": 3031,
+        "endChar": 12
+      },
+      "revId": "f295f98b2ea13b988a2fc38f8aa8e043be920f0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b34ee390_922f0008",
+        "filename": "util/ectool.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 3035,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-11-09T19:24:58Z",
+      "side": 1,
+      "message": "Let\u0027s return -1 for temp_fan_max \u003d\u003d temp_fan_off.",
+      "range": {
+        "startLine": 3035,
+        "startChar": 38,
+        "endLine": 3035,
+        "endChar": 69
+      },
+      "revId": "f295f98b2ea13b988a2fc38f8aa8e043be920f0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f73a89a_c210aadc",
+        "filename": "util/ectool.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 3060,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-11-09T19:24:58Z",
+      "side": 1,
+      "message": "Can you please rename this to \u0027temp\u0027 or something? (I know this isn\u0027t from your change. This is hurting the readability.)",
+      "range": {
+        "startLine": 3060,
+        "startChar": 5,
+        "endLine": 3060,
+        "endChar": 7
+      },
+      "revId": "f295f98b2ea13b988a2fc38f8aa8e043be920f0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
