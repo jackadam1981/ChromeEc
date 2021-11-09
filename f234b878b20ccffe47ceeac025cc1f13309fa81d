@@ -22,6 +22,30 @@
       },
       "revId": "f234b878b20ccffe47ceeac025cc1f13309fa81d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7fe1ce86_3551a604",
+        "filename": "driver/charger/bq25710.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-11-09T21:55:05Z",
+      "side": 1,
+      "message": "yes, but it likely won\u0027t pass compare_builds.sh (i had\nsome similar constructs where that became a problem).\ni want to make sure this large patch can be \"proven\" correct\nusing compare_builds.sh, then follow up with patches that\nimprove the coding using the new macros.",
+      "parentUuid": "40f9351a_b6be19c1",
+      "range": {
+        "startLine": 159,
+        "startChar": 0,
+        "endLine": 164,
+        "endChar": 12
+      },
+      "revId": "f234b878b20ccffe47ceeac025cc1f13309fa81d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
