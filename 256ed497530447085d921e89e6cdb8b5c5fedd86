@@ -96,6 +96,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1dff8454_190ebb67",
+        "filename": "util/build_with_clang.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-11-09T18:28:50Z",
+      "side": 1,
+      "message": "In this case I wanted to avoid adding it to buildall. The Makefile is already complex, and I also don\u0027t want to force everyone to build the code twice (once with clang and once with gcc). This approach is similar to how zephyr has a separate build command. 99% of the time if it works with gcc it will work with clang, but we can still catch the 1% server-side.",
+      "parentUuid": "0751fc8c_a6da8c75",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 62
+      },
+      "revId": "256ed497530447085d921e89e6cdb8b5c5fedd86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d92465f6_db7d2563",
@@ -109,6 +133,30 @@
       "writtenOn": "2021-10-15T23:27:03Z",
       "side": 1,
       "message": "subprocess.run(cmd, check\u003dTrue)",
+      "range": {
+        "startLine": 36,
+        "startChar": 4,
+        "endLine": 36,
+        "endChar": 31
+      },
+      "revId": "256ed497530447085d921e89e6cdb8b5c5fedd86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6c9d074_165452c2",
+        "filename": "util/build_with_clang.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-11-09T18:28:50Z",
+      "side": 1,
+      "message": "check_return_code() does the same thing (throws exception on error)",
+      "parentUuid": "d92465f6_db7d2563",
       "range": {
         "startLine": 36,
         "startChar": 4,
