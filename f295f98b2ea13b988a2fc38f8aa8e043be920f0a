@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff2a85df_b3d3087d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1523269
+      },
+      "writtenOn": "2021-11-09T12:08:02Z",
+      "side": 1,
+      "message": "Hi Dai,\n\nDone changes addressing your comments.\nRegarding implementation specific to version 0 for EC_CMD_THERMAL_GET_THRESHOLD,\nEC code doesn\u0027t support V0 for EC_CMD_THERMAL_GET_THRESHOLD. The implementation \nwrt thermal/fan was done only for V1. Below is the reference commit where the \nchanges wrt thermal/fan implementation was done.\n\ncommit fcce7223a5493e512e77d9f7b758d874ac502df5\nAuthor: Bill Richardson \u003cwfrichar@chromium.org\u003e\nDate:   Wed Aug 7 15:34:04 2013 -0700\nCompletely new thermal/fan implementation\n\n\nThanks,\nHarsha",
+      "revId": "f295f98b2ea13b988a2fc38f8aa8e043be920f0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

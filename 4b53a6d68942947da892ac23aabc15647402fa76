@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2dae4f5f_9943c92a",
+        "filename": "util/ectool.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 3032,
+      "author": {
+        "id": 1523269
+      },
+      "writtenOn": "2021-11-09T12:08:02Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "7ac77ab6_d5758dee",
+      "range": {
+        "startLine": 3027,
+        "startChar": 0,
+        "endLine": 3032,
+        "endChar": 30
+      },
+      "revId": "4b53a6d68942947da892ac23aabc15647402fa76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "13311ac5_82399eba",
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1faa4fb0_10fa34ce",
+        "filename": "util/ectool.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 3043,
+      "author": {
+        "id": 1523269
+      },
+      "writtenOn": "2021-11-09T12:08:02Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "13311ac5_82399eba",
+      "range": {
+        "startLine": 3041,
+        "startChar": 1,
+        "endLine": 3043,
+        "endChar": 1
+      },
+      "revId": "4b53a6d68942947da892ac23aabc15647402fa76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2fe52e54_6157f416",
@@ -77,6 +125,30 @@
       "writtenOn": "2021-11-08T16:54:53Z",
       "side": 1,
       "message": "Can you please revert this change: id -\u003e p.id? struct ec_params_temp_sensor_get_info isn\u0027t needed in this function.",
+      "range": {
+        "startLine": 3070,
+        "startChar": 7,
+        "endLine": 3070,
+        "endChar": 11
+      },
+      "revId": "4b53a6d68942947da892ac23aabc15647402fa76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c2ebc8b_2e1adce1",
+        "filename": "util/ectool.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 3070,
+      "author": {
+        "id": 1523269
+      },
+      "writtenOn": "2021-11-09T12:08:02Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "2fe52e54_6157f416",
       "range": {
         "startLine": 3070,
         "startChar": 7,
