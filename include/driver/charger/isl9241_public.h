@@ -24,6 +24,9 @@ extern const struct charger_drv isl9241_drv;
  */
 int isl9241_set_ac_prochot(int chgnum, int ma);
 
+enum ec_error_list isl9241_set_input_current_limit(int chgnum,
+							  int input_current);
+
 /**
  * Set DC prochot threshold
  *

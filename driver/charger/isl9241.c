@@ -93,7 +93,7 @@ static inline enum ec_error_list isl9241_update(int chgnum, int offset,
 
 /*****************************************************************************/
 /* Charger interfaces */
-static enum ec_error_list isl9241_set_input_current_limit(int chgnum,
+enum ec_error_list isl9241_set_input_current_limit(int chgnum,
 							  int input_current)
 {
 	int rv;
