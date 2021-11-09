@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "020d8019_bed78cc0",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 6
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-11-09T15:36:02Z",
+      "side": 1,
+      "message": "Update help to indicate that only one shared interrupt is supported, but the shared interrupt can support 1 to 4 PD ports.",
+      "range": {
+        "startLine": 257,
+        "startChar": 0,
+        "endLine": 259,
+        "endChar": 0
+      },
+      "revId": "277c10d438e567180ffdbc47d59a1f27d8a3a0c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3014258_82a42e86",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 6
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-11-09T15:36:02Z",
+      "side": 1,
+      "message": "Add help text to each option here.",
+      "revId": "277c10d438e567180ffdbc47d59a1f27d8a3a0c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c859478a_9314385d",
+        "filename": "zephyr/shim/include/shimmed_task_id.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-11-09T15:36:02Z",
+      "side": 1,
+      "message": "Move this block into a separate macro.  Maybe PD_INT_SHARED_PORT_MASK?",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 20
+      },
+      "revId": "277c10d438e567180ffdbc47d59a1f27d8a3a0c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "575b677f_3a065774",
+        "filename": "zephyr/shim/include/shimmed_tasks.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-11-09T15:36:02Z",
+      "side": 1,
+      "message": "HAS_TASK_PD_INT_SHARED isn\u0027t used anywhere so this can be deleted.",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 0
+      },
+      "revId": "277c10d438e567180ffdbc47d59a1f27d8a3a0c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
