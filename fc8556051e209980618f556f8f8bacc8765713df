@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "aeb972f7_d9614e5d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-11-09T01:46:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "65b70aa3_22fe088e",
+      "revId": "fc8556051e209980618f556f8f8bacc8765713df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fa1c7c6a_6f8a478c",
@@ -106,6 +124,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0effcd8b_b92a7cb7",
+        "filename": "driver/charger/bq25710.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-11-09T01:46:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "846c3160_4959baf9",
+      "range": {
+        "startLine": 162,
+        "startChar": 8,
+        "endLine": 162,
+        "endChar": 15
+      },
+      "revId": "fc8556051e209980618f556f8f8bacc8765713df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c70bc4b1_f045ebc5",
@@ -153,6 +195,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eff40813_c27cccb4",
+        "filename": "driver/charger/bq25710.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-11-09T01:46:57Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "bcaf59e6_7815b895",
+      "range": {
+        "startLine": 185,
+        "startChar": 0,
+        "endLine": 192,
+        "endChar": 0
+      },
+      "revId": "fc8556051e209980618f556f8f8bacc8765713df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c8bdfb18_4f1fab89",
@@ -190,6 +256,30 @@
       "side": 1,
       "message": "i limited changes to what i could get to pass using\nutil/compare_build.sh as a correctness proof.\n\nwe\u0027ll need to do another pass to fully use the new helper\nmacros for cases where the resulting code is equivalent\nbut not identical.",
       "parentUuid": "c8bdfb18_4f1fab89",
+      "range": {
+        "startLine": 404,
+        "startChar": 0,
+        "endLine": 404,
+        "endChar": 66
+      },
+      "revId": "fc8556051e209980618f556f8f8bacc8765713df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7edb7378_3a86d18f",
+        "filename": "driver/charger/bq25710.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 404,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-11-09T01:46:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "75c797a1_a4b14788",
       "range": {
         "startLine": 404,
         "startChar": 0,
