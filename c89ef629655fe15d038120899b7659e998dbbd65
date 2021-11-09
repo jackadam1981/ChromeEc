@@ -34,6 +34,24 @@
       "parentUuid": "310a2623_ca42eb36",
       "revId": "c89ef629655fe15d038120899b7659e998dbbd65",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b72140e_305fb242",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2021-11-09T03:25:48Z",
+      "side": 1,
+      "message": "Verified by inspecting the symbols of tasks.c.obj (arm-none-eabi-nm -S .../tasks.c.obj) that the shared interrupt task exists by verifying that the data symbol PD_INT_SHARED_STACK exists.\n\nI was able to build a brya image by working on top of https://crrev.com/c/3218111, but didn\u0027t try to run it on a device.",
+      "parentUuid": "67976126_49247698",
+      "revId": "c89ef629655fe15d038120899b7659e998dbbd65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
