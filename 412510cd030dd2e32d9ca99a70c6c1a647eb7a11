@@ -22,6 +22,30 @@
       },
       "revId": "412510cd030dd2e32d9ca99a70c6c1a647eb7a11",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e80c9b23_f75c9992",
+        "filename": "zephyr/zmake/zmake/__main__.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-11-09T23:12:37Z",
+      "side": 1,
+      "message": "+1, would globally rename on all files here, \"no errors\" is confusing",
+      "parentUuid": "4404aed2_b926d03b",
+      "range": {
+        "startLine": 187,
+        "startChar": 11,
+        "endLine": 187,
+        "endChar": 20
+      },
+      "revId": "412510cd030dd2e32d9ca99a70c6c1a647eb7a11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
