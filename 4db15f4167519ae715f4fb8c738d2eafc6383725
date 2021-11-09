@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71eac0d8_4fb2c3bc",
+        "filename": "board/kano/sensors.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-11-09T20:48:02Z",
+      "side": 1,
+      "message": "i\u0027m not sure how well a zero\u0027d out thermal config is going\nto behave. the last time i had to do something like this,\ni just replicated one of the other configs with a TODO\nto get the right values later.",
+      "revId": "4db15f4167519ae715f4fb8c738d2eafc6383725",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
