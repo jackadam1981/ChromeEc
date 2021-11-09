@@ -16,6 +16,24 @@
       "message": "Nit: Zephyr coding style requires braces for single-line code",
       "revId": "3851fd7761ff15e29a774ddb4e7ba00b10eff974",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d92f4f8b_ae28bf2d",
+        "filename": "zephyr/emul/emul_tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-11-09T17:19:29Z",
+      "side": 1,
+      "message": "Hmm, I removed the braces because the repo upload presubmit told me to.\n\n```\n$ /home/jbettis/chromiumos/src/repohooks/checkpatch.pl -f /home/jbettis/chromiumos/src/platform/ec/zephyr/emul/emul_tcpci.c\nWARNING: braces {} are not necessary for single statement blocks\n#109: FILE: /home/jbettis/chromiumos/src/platform/ec/zephyr/emul/emul_tcpci.c:109:\n+       if (reg \u003c 0 || reg \u003e TCPCI_EMUL_REG_COUNT) {\n+               return -EINVAL;\n+       }\n```",
+      "parentUuid": "7e329bfe_407fb5a7",
+      "revId": "3851fd7761ff15e29a774ddb4e7ba00b10eff974",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
