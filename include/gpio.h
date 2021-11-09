@@ -201,8 +201,7 @@ int gpio_get_default_flags(enum gpio_signal signal);
  * Set the value of a signal.
  *
  * @param signal	Signal to set
- * @param value		New value for signal (0 = low, 1 = high)
- */
+ * @param value		New value for signal (0 = low, != high */
 void gpio_set_level(enum gpio_signal signal, int value);
 
 /**
