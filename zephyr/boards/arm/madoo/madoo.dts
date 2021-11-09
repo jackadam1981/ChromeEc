@@ -29,6 +29,12 @@
 
 	named-adc-channels {
 		compatible = "named-adc-channels";
+		adc_pp3300_regulator: pp3300_regulator {
+			label = "EC_VSNS_PP3300_A";
+			enum-name = "ADC_VSNS_PP3300_A";
+			channel = <9>;
+		};
+
 	};
 
 	def-lvol-io-list {
