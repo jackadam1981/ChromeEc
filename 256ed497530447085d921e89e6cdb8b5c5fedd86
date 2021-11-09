@@ -122,6 +122,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2ef68cbc_3cd32850",
+        "filename": "util/build_with_clang.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-11-09T23:15:08Z",
+      "side": 1,
+      "message": "zephyr is different here since we\u0027re interfacing with an entirely separate build system (cmake) ...\n\nwould still suggest putting it in buildall",
+      "parentUuid": "1dff8454_190ebb67",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 62
+      },
+      "revId": "256ed497530447085d921e89e6cdb8b5c5fedd86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d92465f6_db7d2563",
         "filename": "util/build_with_clang.py",
         "patchSetId": 5
@@ -157,6 +181,30 @@
       "side": 1,
       "message": "check_return_code() does the same thing (throws exception on error)",
       "parentUuid": "d92465f6_db7d2563",
+      "range": {
+        "startLine": 36,
+        "startChar": 4,
+        "endLine": 36,
+        "endChar": 31
+      },
+      "revId": "256ed497530447085d921e89e6cdb8b5c5fedd86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fea6c95e_d0db16b7",
+        "filename": "util/build_with_clang.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-11-09T23:15:08Z",
+      "side": 1,
+      "message": "check\u003dTrue is just what pylint prefers",
+      "parentUuid": "d6c9d074_165452c2",
       "range": {
         "startLine": 36,
         "startChar": 4,
