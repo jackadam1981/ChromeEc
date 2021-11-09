@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6774dde_f73e5a75",
+        "filename": "zephyr/Kconfig.tasks",
+        "patchSetId": 3
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2021-11-09T03:15:18Z",
+      "side": 1,
+      "message": "Put a _SHARED option in Kconfig.usbc guarding the option for each port that selects a new _SHARED task. Seems like the default isn\u0027t necessary where perhaps it was before, or I was misreading something.",
+      "parentUuid": "30445349_bff62df8",
+      "range": {
+        "startLine": 249,
+        "startChar": 22,
+        "endLine": 249,
+        "endChar": 62
+      },
+      "revId": "9826cbd4e8e2d5adc258140682dc973bb2231d48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0f364ffd_2779766e",
@@ -118,6 +142,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "13d5922f_53cc03c4",
+        "filename": "zephyr/shim/include/shimmed_task_id.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2021-11-09T03:15:18Z",
+      "side": 1,
+      "message": "clang-format\u0027s doing. Reverted.",
+      "parentUuid": "17c17e15_419c688a",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 66
+      },
+      "revId": "9826cbd4e8e2d5adc258140682dc973bb2231d48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2492c0cc_ef202c67",
@@ -141,6 +189,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec6cfe6a_9321fe3e",
+        "filename": "zephyr/shim/include/shimmed_task_id.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2021-11-09T03:15:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2492c0cc_ef202c67",
+      "range": {
+        "startLine": 86,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 0
+      },
+      "revId": "9826cbd4e8e2d5adc258140682dc973bb2231d48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "094efe39_ffbe1721",
@@ -154,6 +226,30 @@
       "writtenOn": "2021-11-08T22:51:29Z",
       "side": 1,
       "message": "This should be IF_ENABLED(CONFIG_TASK_PD_INT_C1_SHARED).",
+      "range": {
+        "startLine": 96,
+        "startChar": 23,
+        "endLine": 96,
+        "endChar": 44
+      },
+      "revId": "9826cbd4e8e2d5adc258140682dc973bb2231d48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "71e83541_60af4386",
+        "filename": "zephyr/shim/include/shimmed_task_id.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2021-11-09T03:15:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "094efe39_ffbe1721",
       "range": {
         "startLine": 96,
         "startChar": 23,
