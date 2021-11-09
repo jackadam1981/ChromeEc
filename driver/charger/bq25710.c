@@ -275,6 +275,9 @@ static int bq257x0_init_charge_option_2(int chgnum)
 	 */
 	reg &= ~BQ_FIELD_MASK(BQ257X0, CHARGE_OPTION_2, PKPWR_TMAX);
 
+	/* Set ACOC_VTH to 133% of ILIM2 */
+	reg = SET_CO2_BY_NAME(ACOC_VTH, 1P33, reg);
+
 	/* Enable AC input over-current protection. */
 	reg = SET_CO2_BY_NAME(EN_ACOC, ENABLE, reg);
 
