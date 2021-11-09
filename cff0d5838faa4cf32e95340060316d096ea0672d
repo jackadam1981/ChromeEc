@@ -52,6 +52,24 @@
       "parentUuid": "b16c55fa_0fe118db",
       "revId": "cff0d5838faa4cf32e95340060316d096ea0672d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c68abd1f_c5ac2f2a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2021-11-09T19:10:36Z",
+      "side": 1,
+      "message": "Hi Caveh,\nYes, even the battery.devicename is also same for 2S \u0026 3S.\nOne possible way would be to intentionally configure the manufacturer name(board_battery_info[x].fuel_gauge.manuf_name )  as Getac_3s \u0026 Getac_2S instead of Getac so that , we hit the condition where type \u003d BATTERY_TYPE_COUNT , so that board_get_default_battery_type() can get cald. But , problem in this forceful fake name case is that , the 1st call to identify battery (init_battery_type() ) will fail and we will get the result that battery not found, which is not right.",
+      "parentUuid": "7c373692_89151d9d",
+      "revId": "cff0d5838faa4cf32e95340060316d096ea0672d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
