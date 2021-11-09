@@ -24,6 +24,10 @@ LOG_MODULE_REGISTER(ln9310_emul, CONFIG_LN9310_EMUL_LOG_LEVEL);
 	CONTAINER_OF(CONTAINER_OF(_emul, struct i2c_common_emul_data, emul), \
 		     struct ln9310_emul_data, common)
 
+#ifndef CONFIG_ASSERT
+#error CONFIG_ASSERT must be enabled.
+#endif /* CONFIG_ASSRT */
+
 enum functional_mode {
 	/* TODO shutdown_mode, */
 	/* TODO bypass, */
@@ -279,8 +283,11 @@ static int ln9310_emul_write_byte(struct i2c_emul *emul, int reg, uint8_t val,
 		data->bc_sts_b_reg = val;
 		break;
 	case LN9310_REG_BC_STS_C:
-		LOG_ERR("Can't write to BC STS C register");
-		return -EINVAL;
+		__ASSERT(false,
+			 "Write to an unverified as safe "
+			 "read-only register on 0x%x",
+			 reg);
+		break;
 	case LN9310_REG_CFG_0:
 		__ASSERT_NO_MSG(bytes == 1);
 		data->cfg_0_reg = val;
@@ -350,7 +357,8 @@ static int ln9310_emul_write_byte(struct i2c_emul *emul, int reg, uint8_t val,
 		data->test_mode_ctrl_reg = val;
 		break;
 	default:
-		return -EINVAL;
+		__ASSERT(false, "Unimplemented Register Access Error on 0x%x",
+			 reg);
 	}
 	mode_change(data);
 	return 0;
