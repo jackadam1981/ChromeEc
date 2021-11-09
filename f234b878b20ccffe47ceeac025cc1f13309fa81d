@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9d941de_3f95f539",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-11-09T22:32:03Z",
+      "side": 1,
+      "message": "LGTM - but for consistency I think all the read-modify-write operations should use SET_BQ_FIELD instead of BQ_FIELD_MASK.",
+      "revId": "f234b878b20ccffe47ceeac025cc1f13309fa81d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "40f9351a_b6be19c1",
@@ -43,6 +60,121 @@
         "startChar": 0,
         "endLine": 164,
         "endChar": 12
+      },
+      "revId": "f234b878b20ccffe47ceeac025cc1f13309fa81d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c8489034_f4fa2831",
+        "filename": "driver/charger/bq25710.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-11-09T22:32:03Z",
+      "side": 1,
+      "message": "Use SET_BQ_FIELD.",
+      "range": {
+        "startLine": 280,
+        "startChar": 10,
+        "endLine": 280,
+        "endChar": 23
+      },
+      "revId": "f234b878b20ccffe47ceeac025cc1f13309fa81d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38eca0d5_f6514586",
+        "filename": "driver/charger/bq25710.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-11-09T22:32:03Z",
+      "side": 1,
+      "message": "SET_BQ_FIELD",
+      "range": {
+        "startLine": 356,
+        "startChar": 10,
+        "endLine": 356,
+        "endChar": 23
+      },
+      "revId": "f234b878b20ccffe47ceeac025cc1f13309fa81d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "575ff8b7_97fed7da",
+        "filename": "driver/charger/bq25710.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 412,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-11-09T22:32:03Z",
+      "side": 1,
+      "message": "SET_BQ_FIELD",
+      "range": {
+        "startLine": 409,
+        "startChar": 0,
+        "endLine": 412,
+        "endChar": 20
+      },
+      "revId": "f234b878b20ccffe47ceeac025cc1f13309fa81d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "42822afc_c8a74227",
+        "filename": "driver/charger/bq25710.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 471,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-11-09T22:32:03Z",
+      "side": 1,
+      "message": "SET_BQ_FIELD",
+      "range": {
+        "startLine": 469,
+        "startChar": 0,
+        "endLine": 471,
+        "endChar": 63
+      },
+      "revId": "f234b878b20ccffe47ceeac025cc1f13309fa81d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2af8c298_118a4806",
+        "filename": "driver/charger/bq25710.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 668,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-11-09T22:32:03Z",
+      "side": 1,
+      "message": "SET_BQ_FIELD",
+      "range": {
+        "startLine": 649,
+        "startChar": 0,
+        "endLine": 668,
+        "endChar": 22
       },
       "revId": "f234b878b20ccffe47ceeac025cc1f13309fa81d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
