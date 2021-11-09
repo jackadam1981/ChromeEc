@@ -29,6 +29,24 @@
 
 	named-adc-channels {
 		compatible = "named-adc-channels";
+		adc_pp3300_regulator: pp3300_regulator {
+			label = "EC_VSNS_PP3300_A";
+			enum-name = "ADC_VSNS_PP3300_A";
+			channel = <9>;
+		};
+
+	};
+
+	adc-cmp {
+		cmp_pp3300_on: pp3300_on {
+			compatible = "nuvoton,adc-cmp";
+			io-channels = <&adc0 9>;
+		};
+
+		cmp_pp3300_off: pp3300_off {
+			compatible = "nuvoton,adc-cmp";
+			io-channels = <&adc0 9>;
+		};
 	};
 
 	def-lvol-io-list {

@@ -8,3 +8,6 @@ find_package(Zephyr REQUIRED HINTS $ENV{ZEPHYR_BASE})
 project(madoo)
 
 zephyr_include_directories(include)
+
+zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_POWERSEQ
+  "src/power_signals.c")
