@@ -23,7 +23,6 @@ LOG_MODULE_REGISTER(cros_flash, LOG_LEVEL_ERR);
 static int all_protected; /* Has all-flash protection been requested? */
 static int addr_prot_start;
 static int addr_prot_length;
-static uint8_t flag_prot_inconsistent;
 static uint8_t saved_sr1;
 static uint8_t saved_sr2;
 
@@ -507,17 +506,27 @@ static int cros_flash_npcx_get_protect(const struct device *dev, int bank)
 static uint32_t cros_flash_npcx_get_protect_flags(const struct device *dev)
 {
 	uint32_t flags = 0;
+	int rv;
+	uint8_t sr1, sr2;
+	unsigned int start, len;
 
 	/* Check if WP region is protected in status register */
-	if (flash_check_prot_reg(dev, WP_BANK_OFFSET * CONFIG_FLASH_BANK_SIZE,
-				 WP_BANK_COUNT * CONFIG_FLASH_BANK_SIZE))
+	rv = flash_check_prot_reg(dev, WP_BANK_OFFSET * CONFIG_FLASH_BANK_SIZE,
+				 WP_BANK_COUNT * CONFIG_FLASH_BANK_SIZE);
+	if (rv == EC_ERROR_ACCESS_DENIED)
 		flags |= EC_FLASH_PROTECT_RO_AT_BOOT;
+	else if (rv)
+		return EC_FLASH_PROTECT_ERROR_UNKNOWN;
 
 	/*
-	 * TODO: If status register protects a range, but SRP0 is not set,
-	 * flags should indicate EC_FLASH_PROTECT_ERROR_INCONSISTENT.
+	 * If the status register protects a range, but SRP0 is not set, or QE
+	 * is set, flags should indicate EC_FLASH_PROTECT_ERROR_INCONSISTENT.
 	 */
-	if (flag_prot_inconsistent)
+	flash_get_status(dev, &sr1, &sr2);
+	rv = spi_flash_reg_to_protect(sr1, sr2, &start, &len);
+	if (rv)
+		return EC_FLASH_PROTECT_ERROR_UNKNOWN;
+	if (len && (!(sr1 & SPI_FLASH_SR1_SRP0) || (sr2 & SPI_FLASH_SR2_QE)))
 		flags |= EC_FLASH_PROTECT_ERROR_INCONSISTENT;
 
 	/* Read all-protected state from our shadow copy */
