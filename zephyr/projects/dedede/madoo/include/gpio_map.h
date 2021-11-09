@@ -10,8 +10,9 @@
 #include <gpio_signal.h>
 
 #define GPIO_ENTERING_RW	GPIO_UNIMPLEMENTED
-#define GPIO_WP_L		GPIO_UNIMPLEMENTED
 
+#define POWER_SIGNAL_INT(gpio, edge)                                      \
+	GPIO_INT(gpio, edge, power_signal_interrupt)
 /*
  * Set EC_CROS_GPIO_INTERRUPTS to a space-separated list of GPIO_INT items.
  *
@@ -27,10 +28,12 @@
  * #define EC_CROS_GPIO_INTERRUPTS \
  *   GPIO_INT(NAMED_GPIO(h1_ec_pwr_btn_odl), GPIO_INT_EDGE_BOTH, button_print)
  */
+
 #define EC_CROS_GPIO_INTERRUPTS                                           \
 	GPIO_INT(GPIO_LID_OPEN, GPIO_INT_EDGE_BOTH, lid_interrupt)        \
+	POWER_SIGNAL_INT(GPIO_PCH_SLP_S3_L, GPIO_INT_EDGE_BOTH)           \
+	POWER_SIGNAL_INT(GPIO_SLP_SUS_L, GPIO_INT_EDGE_BOTH)              \
 	GPIO_INT(GPIO_POWER_BUTTON_L, GPIO_INT_EDGE_BOTH,                 \
-		 power_button_interrupt)                                  \
+		power_button_interrupt)                                   \
 	GPIO_INT(GPIO_WP_L, GPIO_INT_EDGE_BOTH, switch_interrupt)
-
 #endif /* __ZEPHYR_GPIO_MAP_H */
