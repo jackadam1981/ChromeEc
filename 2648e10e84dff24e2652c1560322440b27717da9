@@ -33,6 +33,24 @@
       "message": "Compiling with -Werror on helps you keep the code clean. I don\u0027t think we should add this option.",
       "revId": "2648e10e84dff24e2652c1560322440b27717da9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1820e30c_70c3e57f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-11-09T15:50:38Z",
+      "side": 1,
+      "message": "I see value in giving the user this capability.  The CQ should never turn this on, so no CLs that introduce warnings should land.",
+      "parentUuid": "9e320802_3779a9a7",
+      "revId": "2648e10e84dff24e2652c1560322440b27717da9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
