@@ -120,6 +120,7 @@ menuconfig PLATFORM_EC_POWERSEQ_ICELAKE
 	bool "Use common Icelake code for power sequencing"
 	default y if AP_X86_INTEL_TGL
 	default y if AP_X86_INTEL_ADL
+	default y if AP_X86_INTEL_JSL
 	help
 	  Use the Icelake common code for power sequencing.  Note that
 	  this applies to more platforms than just Icelake.  For
