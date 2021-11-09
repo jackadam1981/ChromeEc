@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "354b6bf7_a0d8097c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 41
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-11-09T23:19:16Z",
+      "side": 1,
+      "message": "Is there any alternative ... this seems extremely pollutive and unintuitive. It also goes against linux kernel code style (with specific regards to how the EXPORT macro is used): https://www.kernel.org/doc/html/v5.14/process/coding-style.html#functions",
+      "revId": "629876e77a33553bbfe43590a9c0117eb0260a31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
