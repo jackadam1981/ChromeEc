@@ -273,6 +273,7 @@ int ocpc_config_secondary_charger(int *desired_input_current,
 	int i, step, loc;
 	bool icl_reached = false;
 	static timestamp_t precharge_exit;
+	int stable_count = 0;
 
 	/*
 	 * There's nothing to do if we're not using this charger.  Should
@@ -340,6 +341,7 @@ int ocpc_config_secondary_charger(int *desired_input_current,
 		ph = PHASE_UNKNOWN;
 		precharge_exit.val = 0;
 		iterations = 0;
+		stable_count = 0;
 	}
 
 
@@ -381,17 +383,23 @@ int ocpc_config_secondary_charger(int *desired_input_current,
 		    ((batt.voltage < batt_info->voltage_normal) &&
 		    (current_ma <= batt_info->precharge_current))) &&
 		    (ph != PHASE_PRECHARGE)) {
-			/*
-			 * If the charger IC doesn't support the linear charge
-			 * feature, proceed to the CC phase.
-			 */
-			result = ocpc_precharge_enable(true);
-			if (result == EC_ERROR_UNIMPLEMENTED) {
-				ph = PHASE_CC;
-			} else if (result == EC_SUCCESS) {
-				CPRINTS("OCPC: Enabling linear precharge");
-				ph = PHASE_PRECHARGE;
-				i_ma = current_ma;
+			/* wait current_ma stable */
+			if (stable_count < 3)
+				stable_count++;
+			else {
+				/*
+				 * If the charger IC doesn't support the linear
+				 * charge feature, proceed to the CC phase.
+				 */
+				result = ocpc_precharge_enable(true);
+				if (result == EC_ERROR_UNIMPLEMENTED) {
+					ph = PHASE_CC;
+				} else if (result == EC_SUCCESS) {
+					CPRINTS("OCPC: Enabling linear "
+						"precharge");
+					ph = PHASE_PRECHARGE;
+					i_ma = current_ma;
+				}
 			}
 		} else if (batt.voltage < batt.desired_voltage) {
 			if ((ph == PHASE_PRECHARGE) &&
@@ -426,6 +434,7 @@ int ocpc_config_secondary_charger(int *desired_input_current,
 			if ((ph != PHASE_PRECHARGE) && (ph < PHASE_CV_TRIP))
 				ph = PHASE_CC;
 			i_ma = current_ma;
+			stable_count = 0;
 		} else {
 			/*
 			 * Once the battery voltage reaches the desired voltage,
@@ -433,6 +442,7 @@ int ocpc_config_secondary_charger(int *desired_input_current,
 			 * VSYS to the desired CV + offset.
 			 */
 			i_ma = batt.current;
+			stable_count = 0;
 			ph = ph == PHASE_CC ? PHASE_CV_TRIP : PHASE_CV_COMPLETE;
 			if (ph == PHASE_CV_TRIP)
 				i_ma_CC_CV = batt.current;
