@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f7850cb4_208f4c1c",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 4
+      },
+      "lineNbr": 505,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2021-11-09T10:22:00Z",
+      "side": 1,
+      "message": "I\u0027ve done it for TCPC chips listed here https://b.corp.google.com/issues/200280341#comment12 and for chips listed in the update procedure https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/depthcharge/src/drivers/ec/ps8751/ps8751.c;l\u003d1687;drc\u003d8bdc19a573516df0784d94ba8e8b2022dd550648",
+      "parentUuid": "38b1b82c_9c6cdb64",
+      "revId": "da445d20ec4a052eb79521cb0f4dcc7e31d052bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3632ddb2_96c84495",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-11-08T22:06:12Z",
       "side": 1,
       "message": "Nit - space at start of sentence.",
+      "range": {
+        "startLine": 511,
+        "startChar": 43,
+        "endLine": 511,
+        "endChar": 47
+      },
+      "revId": "da445d20ec4a052eb79521cb0f4dcc7e31d052bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1dc893d3_33d90243",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 4
+      },
+      "lineNbr": 511,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2021-11-09T10:22:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3632ddb2_96c84495",
       "range": {
         "startLine": 511,
         "startChar": 43,
