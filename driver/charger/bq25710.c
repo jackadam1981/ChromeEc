@@ -275,6 +275,9 @@ static int bq257x0_init_charge_option_2(int chgnum)
 	 */
 	reg &= ~BQ_FIELD_MASK(BQ257X0, CHARGE_OPTION_2, PKPWR_TMAX);
 
+	/* Enable AC input over-current protection. */
+	reg = SET_CO2_BY_NAME(EN_ACOC, ENABLE, reg);
+
 	return raw_write16(chgnum, BQ25710_REG_CHARGE_OPTION_2, reg);
 }
 
