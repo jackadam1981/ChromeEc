@@ -32,6 +32,12 @@ config AP_X86_INTEL_ADL
 	help
 	  The application processor is Intel Alder Lake (ADL) chipset.
 
+config AP_X86_INTEL_JSL
+	bool "AP is JSL chipset"
+	select AP_X86_INTEL
+	help
+	  The application processor is Intel Jasper Lake (JSL) chipset.
+
 config AP_X86_AMD
 	bool "AP is an AMD chipset"
 	select AP_x86

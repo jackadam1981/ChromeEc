@@ -34,6 +34,7 @@ properties:
       - GPIO_EC_ACCEL_INT
       - GPIO_EC_ALS_RGB_INT_L
       - GPIO_EC_AP_DP_HPD_ODL
+      - GPIO_EC_AP_PCH_PWROK_OD
       - GPIO_EC_BL_EN_OD
       - GPIO_EC_CBI_WP
       - GPIO_EC_CHG_LED_B_C1
@@ -97,6 +98,8 @@ properties:
       - GPIO_EN_SLP_Z
       - GPIO_EN_ULP
       - GPIO_EN_USB_A_5V
+      - GPIO_EN_VCCIO_EXT
+      - GPIO_EN_VCCST
       - GPIO_HDMI_PRSNT_ODL
       - GPIO_HIBERNATE_L
       - GPIO_HUB_RST
@@ -131,6 +134,7 @@ properties:
       - GPIO_PCH_SYS_PWROK
       - GPIO_PCORE_OCP_L
       - GPIO_PGOOD_FAN
+      - GPIO_PG_DRAM_OD
       - GPIO_PG_EC_ALL_SYS_PWRGD
       - GPIO_PG_EC_DSW_PWROK
       - GPIO_PG_EC_RSMRST_ODL
@@ -141,8 +145,10 @@ properties:
       - GPIO_PG_MT6315_GPU_ODL
       - GPIO_PG_MT6315_PROC_ODL
       - GPIO_PG_MT6360_ODL
+      - GPIO_PG_PP1050_ST_S_OD
       - GPIO_PG_PP5000_A_ODL
       - GPIO_PG_PP5000_Z2_OD
+      - GPIO_PG_VCCIO_EXT_OD
       - GPIO_PMIC_EC_PWRGD
       - GPIO_PMIC_KPD_PWR_ODL
       - GPIO_PMIC_RESIN_L
@@ -211,6 +217,7 @@ properties:
       - GPIO_USB_FAULT_ODL
       - GPIO_VCCST_PWRGD_OD
       - GPIO_VBOB_EN
+      - GPIO_VCCST_PWRGD_OD
       - GPIO_VOLUME_DOWN_L
       - GPIO_VOLUME_UP_L
       - GPIO_WARM_RESET_L

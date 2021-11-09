@@ -29,6 +29,27 @@
 
 	named-adc-channels {
 		compatible = "named-adc-channels";
+		adc_pp3300_regulator: pp3300_regulator {
+			label = "EC_VSNS_PP3300_A";
+			enum-name = "ADC_VSNS_PP3300_A";
+			channel = <9>;
+		};
+
+	};
+
+	adc-cmp {
+		cmp_pp3300_high: pp3300_high {
+			compatible = "nuvoton,adc-cmp";
+			io-channels = <&adc0 9>;
+			comparison = "ADC_CMP_NPCX_COMPARISON_GREATER";
+			threshold = <900>;
+		};
+			cmp_pp3300_low: pp3300_low {
+			compatible = "nuvoton,adc-cmp";
+			io-channels = <&adc0 9>;
+			comparison = "ADC_CMP_NPCX_COMPARISON_LESS_OR_EQUAL";
+			threshold = <200>;
+		};
 	};
 
 	def-lvol-io-list {
