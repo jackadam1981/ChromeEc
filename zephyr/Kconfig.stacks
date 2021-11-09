@@ -28,7 +28,9 @@ config TASK_CHG_RAMP_STACK_SIZE
 	default 608
 
 config TASK_CHIPSET_STACK_SIZE
-	default 1056
+	default 1056 if AP_x86
+	default 684 if AP_ARM
+	default 1200 # Safe default
 
 config TASK_HOOKS_STACK_SIZE
 	default 672
@@ -84,7 +86,9 @@ config TASK_CHARGER_STACK_SIZE
 	default 750
 
 config TASK_CHIPSET_STACK_SIZE
-	default 684
+	default 1056 if AP_x86
+	default 684 if AP_ARM
+	default 1200 # Safe default
 
 config TASK_HOOKS_STACK_SIZE
 	default 672
