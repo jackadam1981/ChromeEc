@@ -34,6 +34,24 @@
       "parentUuid": "3f00ac09_783dd52e",
       "revId": "3dcf0b2f23c09dda2b8216238ac790fd3536eebb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f5f1c7e_988f4130",
+        "filename": "zephyr/zmake/zmake/zmake.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 294,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-11-09T17:17:39Z",
+      "side": 1,
+      "message": "it already was alphabetical\n\nalphabetizing where we maintain larger lists is good practice... makes reading slightly easier",
+      "parentUuid": "4ddcd7b9_9ec3d8e7",
+      "revId": "3dcf0b2f23c09dda2b8216238ac790fd3536eebb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
