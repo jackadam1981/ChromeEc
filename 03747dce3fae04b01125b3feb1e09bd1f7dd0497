@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "03e9bf13_44c6a601",
+        "filename": "driver/charger/bq257x0_regs.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-11-09T01:29:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2a48fd2a_5ce4c7bb",
+      "range": {
+        "startLine": 41,
+        "startChar": 43,
+        "endLine": 41,
+        "endChar": 45
+      },
+      "revId": "03747dce3fae04b01125b3feb1e09bd1f7dd0497",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c304c4d4_c430918f",
@@ -118,6 +142,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d2a0b1a_12eea9ca",
+        "filename": "driver/charger/bq257x0_regs.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-11-09T01:29:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3e84bef1_7f3a6dbb",
+      "range": {
+        "startLine": 197,
+        "startChar": 0,
+        "endLine": 198,
+        "endChar": 1
+      },
+      "revId": "03747dce3fae04b01125b3feb1e09bd1f7dd0497",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0bab9d1a_4bb9fd97",
@@ -131,6 +179,30 @@
       "writtenOn": "2021-11-08T21:39:17Z",
       "side": 1,
       "message": "I think it would be better to add these intermediate macros as a second step. I realize this is more work, but it will make the driver C code easier to review.",
+      "range": {
+        "startLine": 224,
+        "startChar": 0,
+        "endLine": 257,
+        "endChar": 0
+      },
+      "revId": "03747dce3fae04b01125b3feb1e09bd1f7dd0497",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3274ff1c_61501abd",
+        "filename": "driver/charger/bq257x0_regs.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-11-09T01:29:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0bab9d1a_4bb9fd97",
       "range": {
         "startLine": 224,
         "startChar": 0,
