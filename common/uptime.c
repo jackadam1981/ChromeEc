@@ -9,8 +9,7 @@
 #include "host_command.h"
 #include "util.h"
 
-static enum ec_status
-host_command_get_uptime_info(struct host_cmd_handler_args *args)
+static int host_command_get_uptime_info(struct host_cmd_handler_args *args)
 {
 	/*
 	 * In the current implementation, not all terms are preserved across a

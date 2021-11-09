@@ -440,7 +440,7 @@ int i2c_port_to_controller(int port);
  * @param args:	host command handler arguments
  * @return	EC_SUCCESS
  */
-enum ec_status i2c_get_protocol_info(struct host_cmd_handler_args *args);
+int i2c_get_protocol_info(struct host_cmd_handler_args *args);
 
 /**
  * Callbacks processing received data and response

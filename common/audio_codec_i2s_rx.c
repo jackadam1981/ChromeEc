@@ -12,7 +12,7 @@
 
 static uint8_t i2s_rx_enabled;
 
-static enum ec_status i2s_rx_enable(struct host_cmd_handler_args *args)
+static int i2s_rx_enable(struct host_cmd_handler_args *args)
 {
 	if (i2s_rx_enabled)
 		return EC_RES_BUSY;
@@ -25,7 +25,7 @@ static enum ec_status i2s_rx_enable(struct host_cmd_handler_args *args)
 	return EC_RES_SUCCESS;
 }
 
-static enum ec_status i2s_rx_disable(struct host_cmd_handler_args *args)
+static int i2s_rx_disable(struct host_cmd_handler_args *args)
 {
 	if (!i2s_rx_enabled)
 		return EC_RES_BUSY;
@@ -38,8 +38,7 @@ static enum ec_status i2s_rx_disable(struct host_cmd_handler_args *args)
 	return EC_RES_SUCCESS;
 }
 
-static enum ec_status
-i2s_rx_set_sample_depth(struct host_cmd_handler_args *args)
+static int i2s_rx_set_sample_depth(struct host_cmd_handler_args *args)
 {
 	const struct ec_param_ec_codec_i2s_rx *p = args->params;
 	const uint8_t depth = p->set_sample_depth_param.depth;
@@ -55,7 +54,7 @@ i2s_rx_set_sample_depth(struct host_cmd_handler_args *args)
 	return EC_RES_SUCCESS;
 }
 
-static enum ec_status i2s_rx_set_daifmt(struct host_cmd_handler_args *args)
+static int i2s_rx_set_daifmt(struct host_cmd_handler_args *args)
 {
 	const struct ec_param_ec_codec_i2s_rx *p = args->params;
 	const uint8_t daifmt = p->set_daifmt_param.daifmt;
@@ -71,7 +70,7 @@ static enum ec_status i2s_rx_set_daifmt(struct host_cmd_handler_args *args)
 	return EC_RES_SUCCESS;
 }
 
-static enum ec_status i2s_rx_set_bclk(struct host_cmd_handler_args *args)
+static int i2s_rx_set_bclk(struct host_cmd_handler_args *args)
 {
 	const struct ec_param_ec_codec_i2s_rx *p = args->params;
 
@@ -103,7 +102,7 @@ static char *strcmd[] = {
 BUILD_ASSERT(ARRAY_SIZE(sub_cmds) == ARRAY_SIZE(strcmd));
 #endif
 
-static enum ec_status i2s_rx_host_command(struct host_cmd_handler_args *args)
+static int i2s_rx_host_command(struct host_cmd_handler_args *args)
 {
 	const struct ec_param_ec_codec_i2s_rx *p = args->params;
 

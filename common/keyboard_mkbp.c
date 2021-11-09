@@ -448,7 +448,7 @@ static uint32_t get_supported_switches(void)
 	return val;
 }
 
-static enum ec_status mkbp_get_info(struct host_cmd_handler_args *args)
+static int mkbp_get_info(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_mkbp_info *p = args->params;
 
@@ -679,8 +679,7 @@ static void keyscan_copy_config(const struct ec_mkbp_config *src,
 	dst->flags = new_flags;
 }
 
-static enum ec_status
-host_command_mkbp_set_config(struct host_cmd_handler_args *args)
+static int host_command_mkbp_set_config(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_mkbp_set_config *req = args->params;
 
@@ -694,8 +693,7 @@ DECLARE_HOST_COMMAND(EC_CMD_MKBP_SET_CONFIG,
 		     host_command_mkbp_set_config,
 		     EC_VER_MASK(0));
 
-static enum ec_status
-host_command_mkbp_get_config(struct host_cmd_handler_args *args)
+static int host_command_mkbp_get_config(struct host_cmd_handler_args *args)
 {
 	struct ec_response_mkbp_get_config *resp = args->response;
 	struct ec_mkbp_config *dst = &resp->config;

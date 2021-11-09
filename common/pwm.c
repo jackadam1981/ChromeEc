@@ -54,8 +54,7 @@ __attribute__((weak)) uint16_t pwm_get_raw_duty(enum pwm_channel ch)
 	return (pwm_get_duty(ch) * 65535) / 100;
 }
 
-static enum ec_status
-host_command_pwm_set_duty(struct host_cmd_handler_args *args)
+static int host_command_pwm_set_duty(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_pwm_set_duty *p = args->params;
 	enum pwm_channel channel;
@@ -72,8 +71,7 @@ DECLARE_HOST_COMMAND(EC_CMD_PWM_SET_DUTY,
 		     host_command_pwm_set_duty,
 		     EC_VER_MASK(0));
 
-static enum ec_status
-host_command_pwm_get_duty(struct host_cmd_handler_args *args)
+static int host_command_pwm_get_duty(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_pwm_get_duty *p = args->params;
 	struct ec_response_pwm_get_duty *r = args->response;

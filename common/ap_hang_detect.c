@@ -159,8 +159,7 @@ DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, hang_detect_shutdown, HOOK_PRIO_DEFAULT);
 /*****************************************************************************/
 /* Host command */
 
-static enum ec_status
-hang_detect_host_command(struct host_cmd_handler_args *args)
+static int hang_detect_host_command(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_hang_detect *p = args->params;
 
