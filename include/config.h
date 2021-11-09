@@ -1648,11 +1648,6 @@
 #undef CONFIG_FLASH_PSTATE_LOCKED
 
 /*
- * Enable readout protection.
- */
-#undef CONFIG_FLASH_READOUT_PROTECTION
-
-/*
  * Use Read-out protection status as PSTATE, i.e. after RDP is enabled, we never
  * allow RO protection to be disabled.
  *
