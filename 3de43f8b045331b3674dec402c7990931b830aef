@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf507398_f65dd318",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_npcx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-11-09T17:26:56Z",
+      "side": 1,
+      "message": "Pass in \"regs\" here instead. \u0026regs[0] implies that you are only passing in the first byte.",
+      "range": {
+        "startLine": 257,
+        "startChar": 42,
+        "endLine": 257,
+        "endChar": 50
+      },
+      "revId": "3de43f8b045331b3674dec402c7990931b830aef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
