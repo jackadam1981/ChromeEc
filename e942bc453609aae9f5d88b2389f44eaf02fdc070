@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "49647cde_506f116f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2021-11-09T22:15:32Z",
+      "side": 1,
+      "message": "Ready for review:\n@alevkoy, you mentioned when you poked the read-only registers no error was found. Do you think that\u0027s enough for now to remove any assertions on writes to read-only that the driver doesn\u0027t currently do or should I keep this CL as is? I\u0027m happy to do either way if you actually poked those registers on a volteer.",
+      "revId": "e942bc453609aae9f5d88b2389f44eaf02fdc070",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
