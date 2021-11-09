@@ -70,6 +70,24 @@
       "parentUuid": "9f5f1c7e_988f4130",
       "revId": "3dcf0b2f23c09dda2b8216238ac790fd3536eebb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cfa2b043_d08071e0",
+        "filename": "zephyr/zmake/zmake/zmake.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 294,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-11-09T17:20:59Z",
+      "side": 1,
+      "message": "Un-resolving comment so it gets handled",
+      "parentUuid": "8954ac6a_066fced5",
+      "revId": "3dcf0b2f23c09dda2b8216238ac790fd3536eebb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
