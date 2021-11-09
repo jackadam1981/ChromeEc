@@ -7,11 +7,15 @@
 
 #include "adc.h"
 #include "base_fw_config.h"
+#include "battery.h"
 #include "board_fw_config.h"
 #include "button.h"
+#include "charger.h"
+#include "charge_state_v2.h"
 #include "chipset.h"
 #include "common.h"
 #include "cros_board_info.h"
+#include "driver/charger/isl9241_public.h"
 #include "driver/retimer/pi3hdx1204.h"
 #include "driver/retimer/ps8811.h"
 #include "driver/retimer/ps8818.h"
@@ -20,6 +24,7 @@
 #include "extpower.h"
 #include "gpio.h"
 #include "hooks.h"
+#include "isl9241.h"
 #include "keyboard_scan.h"
 #include "lid_switch.h"
 #include "power.h"
@@ -475,3 +480,53 @@ static void hdmi_hpd_interrupt(enum gpio_signal signal)
 	/* Debounce for 2 msec */
 	hook_call_deferred(&hdmi_hpd_handler_data, (2 * MSEC));
 }
+
+#define AC_PROCHOT_LIMIT_2560_MA 2560
+#define AC_PROCHOT_LIMIT_3328_MA 3328
+#define AC_PROCHOT_LIMIT_5120_MA 5120
+#define BATT_LIMIT 4
+
+void board_set_ac_prochot(int ma)
+{
+	static int ac_limit_backup;
+
+	if (ma != ac_limit_backup) {
+		isl9241_set_ac_prochot(CHARGER_SOLO, ma);
+		ac_limit_backup = ma;
+	}
+}
+
+void board_set_charger_limit(void)
+{
+	int soc = -1;
+	int adapter_mw;
+
+	adapter_mw = charge_manager_get_power_limit_uw() / 1000;
+
+	/* Battery not present or battery error, AC present */
+	if (battery_is_present() == BP_NO
+		|| battery_state_of_charge_abs(&soc)) {
+		board_set_ac_prochot(AC_PROCHOT_LIMIT_2560_MA);
+		/* Set charger input current limit to 6A when AC only */
+		charger_set_input_current_limit(CHARGER_SOLO, 0x1770);
+	} else {
+		/* AC + Battery present and < 4% */
+		if (battery_state_of_charge_abs(&soc) == EC_SUCCESS
+			  && soc < BATT_LIMIT){
+			board_set_ac_prochot(AC_PROCHOT_LIMIT_2560_MA);
+		} else {
+			if ((adapter_mw >= 45000) && (adapter_mw <= 65000)) {
+				board_set_ac_prochot(AC_PROCHOT_LIMIT_3328_MA);
+			} else if ((adapter_mw >= 90000)
+					&& (adapter_mw <= 100000)) {
+				board_set_ac_prochot(AC_PROCHOT_LIMIT_5120_MA);
+			} else {
+				/* Default 3328 mA */
+				board_set_ac_prochot(AC_PROCHOT_LIMIT_3328_MA);
+			}
+		}
+	}
+}
+DECLARE_HOOK(HOOK_AC_CHANGE, board_set_charger_limit, HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_BATTERY_SOC_CHANGE, board_set_charger_limit,
+			 HOOK_PRIO_DEFAULT);
