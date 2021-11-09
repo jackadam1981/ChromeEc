@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8010d6f7_dfa57255",
+        "filename": "zephyr/test/drivers/src/smart.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 386,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2021-11-09T20:55:12Z",
+      "side": 1,
+      "message": "Do we have macros defined somewhere that define the upper and lower bounds for these parameters? If so I think those would be nice to use here. Otherwise, maybe comment in the test what they should be?",
+      "range": {
+        "startLine": 386,
+        "startChar": 25,
+        "endLine": 386,
+        "endChar": 45
+      },
+      "revId": "58302f76fe1f4e77fef72c1ff8604167c77102e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f13dc615_d4184fd8",
+        "filename": "zephyr/test/drivers/src/smart.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 409,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2021-11-09T20:55:12Z",
+      "side": 1,
+      "message": "Do state of charge and remaining capacity make more sense to express in decimal? (same comment near lines 421 and 437)",
+      "range": {
+        "startLine": 409,
+        "startChar": 56,
+        "endLine": 409,
+        "endChar": 68
+      },
+      "revId": "58302f76fe1f4e77fef72c1ff8604167c77102e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55133f86_0e66f554",
+        "filename": "zephyr/test/drivers/src/smart.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 430,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2021-11-09T20:55:12Z",
+      "side": 1,
+      "message": "This may be a linguistic thing, but should this say \"test that fake charge level is not applied\" since you disabled it above? (If so, same comment for lines 479 and 491)",
+      "range": {
+        "startLine": 430,
+        "startChar": 9,
+        "endLine": 430,
+        "endChar": 11
+      },
+      "revId": "58302f76fe1f4e77fef72c1ff8604167c77102e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
