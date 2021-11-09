@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40f9351a_b6be19c1",
+        "filename": "driver/charger/bq25710.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-11-09T21:38:08Z",
+      "side": 1,
+      "message": "nit: can it be simplified to this?\n```\nreg \u003d SET_BQ_FIELD(BQ257X0, CHARGE_OPTION_0, EN_LWPWR, enable, reg);\n\n```",
+      "range": {
+        "startLine": 159,
+        "startChar": 0,
+        "endLine": 164,
+        "endChar": 12
+      },
+      "revId": "f234b878b20ccffe47ceeac025cc1f13309fa81d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
