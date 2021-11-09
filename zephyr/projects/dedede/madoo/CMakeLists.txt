@@ -7,4 +7,11 @@ cmake_minimum_required(VERSION 3.13.1)
 find_package(Zephyr REQUIRED HINTS $ENV{ZEPHYR_BASE})
 project(madoo)
 
-zephyr_include_directories(include)
+set(PLATFORM_EC_BASEBOARD "${PLATFORM_EC}/baseboard/dedede" CACHE PATH
+    "Path to the platform/ec baseboard directory")
+
+zephyr_include_directories(include
+  "${PLATFORM_EC_BASEBOARD}")
+
+zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_POWERSEQ
+  "${PLATFORM_EC_BASEBOARD}/power.c")
