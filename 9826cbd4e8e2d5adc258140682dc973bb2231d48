@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "30445349_bff62df8",
+        "filename": "zephyr/Kconfig.tasks",
+        "patchSetId": 3
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2021-11-09T00:12:56Z",
+      "side": 1,
+      "message": "I thought this was limited to using task IDs defined by ECOS (and each existing user always puts the shared one in TASK_PD_INT_C0), but it turns out the task IDs are derived from this list. Will adjust to have a separate shared task.",
+      "parentUuid": "658115f4_8c15a8e2",
+      "range": {
+        "startLine": 249,
+        "startChar": 22,
+        "endLine": 249,
+        "endChar": 62
+      },
+      "revId": "9826cbd4e8e2d5adc258140682dc973bb2231d48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0f364ffd_2779766e",
         "filename": "zephyr/Kconfig.tasks",
         "patchSetId": 3
@@ -37,6 +61,30 @@
       "writtenOn": "2021-11-08T22:51:29Z",
       "side": 1,
       "message": "I think it\u0027s redundant to guard the \"default y\" with \"!TASK_PD_INT_C1_SHARED\" because this is already an explicit dependency.",
+      "range": {
+        "startLine": 269,
+        "startChar": 0,
+        "endLine": 270,
+        "endChar": 77
+      },
+      "revId": "9826cbd4e8e2d5adc258140682dc973bb2231d48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "08868862_2cc19820",
+        "filename": "zephyr/Kconfig.tasks",
+        "patchSetId": 3
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2021-11-09T00:12:56Z",
+      "side": 1,
+      "message": "I found that the default was causing a conflict with C1_SHARED such that kconfig chose to keep the task enabled and force _SHARED off while emitting a warning; having both retains the expected behavior where I can enable _SHARED in the project configuration file and it disables the task (so the task doesn\u0027t need to be set to n at the same time).",
+      "parentUuid": "0f364ffd_2779766e",
       "range": {
         "startLine": 269,
         "startChar": 0,
