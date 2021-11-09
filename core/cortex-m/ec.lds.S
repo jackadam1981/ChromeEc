@@ -54,6 +54,11 @@ MEMORY
         LENGTH = FW_SIZE(SECTION)
 #endif /* CONFIG_EXTERNAL_STORAGE */
 
+#ifdef CONFIG_USB_RAM_SIZE
+    USB_RAM (rw) : \
+        ORIGIN = CONFIG_USB_RAM_BASE, \
+        LENGTH = CONFIG_USB_RAM_SIZE * CONFIG_USB_RAM_ACCESS_SIZE / 2
+#endif
 #ifdef CONFIG_CHIP_MEMORY_REGIONS
 #define REGION(name, attr, start, size) \
     name(attr) : ORIGIN = (start), LENGTH = (size)
@@ -440,6 +445,14 @@ SECTIONS
     __image_size = __hey_flash_used;
 #endif
 
+#ifdef CONFIG_USB_RAM_SIZE
+    .usb_ram (NOLOAD) : {
+        __usb_ram_start = .;
+        . = ALIGN(8);
+        *(.usb_ram.btable)
+        *(.usb_ram.data)
+    } > USB_RAM
+#endif
 #ifdef CONFIG_CHIP_MEMORY_REGIONS
 #define REGION(name, attr, start, size) \
     .name(NOLOAD) : { \
