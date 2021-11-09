@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5dce80a5_2230a675",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-11-09T23:11:07Z",
+      "side": 1,
+      "message": "expand acronyms",
+      "range": {
+        "startLine": 10,
+        "startChar": 44,
+        "endLine": 10,
+        "endChar": 53
+      },
+      "revId": "040ee638d88da590556aac396dd2af5f1692a66d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a920570f_e5268072",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_npcx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 515,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-11-09T23:11:07Z",
+      "side": 1,
+      "message": "indent should align with (\n\nuse clang-format to automatically fix",
+      "range": {
+        "startLine": 515,
+        "startChar": 5,
+        "endLine": 515,
+        "endChar": 41
+      },
+      "revId": "040ee638d88da590556aac396dd2af5f1692a66d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ccf26837_bdbe50d7",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_npcx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 522,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-11-09T23:11:07Z",
+      "side": 1,
+      "message": "quad enable",
+      "range": {
+        "startLine": 522,
+        "startChar": 69,
+        "endLine": 522,
+        "endChar": 71
+      },
+      "revId": "040ee638d88da590556aac396dd2af5f1692a66d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
