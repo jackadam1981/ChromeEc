@@ -1,0 +1,34 @@
+description: ADC Threshold IRQ Configuration
+compatible: "cros-adc-thresholds"
+child-binding:
+  description:
+    Configure threshold interruptions during initialization.
+  properties:
+    channel:
+      required: true
+      type: int
+      description:
+        Set ADC cahennel to be used to read signal.
+      default: 0
+    assert-value:
+      required: true
+      type: int
+      description:
+        Set ADC threshold assert value in mV.
+      default: 0
+    assert-mode:
+      required: true
+      type: string
+      description:
+        Determines relation between measured value and assertion threshold.
+      enum:
+      - ADC_THR_ASSERT_MODE_NONE
+      - ADC_THR_ASSERT_MODE_RISE
+      - ADC_THR_ASSERT_MODE_FALL
+      - ADC_THR_ASSERT_MODE_MAX
+      default: ADC_THR_ASSERT_MODE_NONE
+    enabled:
+      required: false
+      type: boolean
+      description:
+        Enables ADC trheshold interruption.
