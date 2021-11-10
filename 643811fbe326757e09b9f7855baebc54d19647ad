@@ -33,6 +33,24 @@
       "message": "Same question as previous CL. Same lack of urgency. Can we check the message size once before checking the register address?",
       "revId": "643811fbe326757e09b9f7855baebc54d19647ad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1585d34d_05c219a7",
+        "filename": "zephyr/emul/emul_sn5s330.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2021-11-10T18:18:50Z",
+      "side": 1,
+      "message": "Absolutely. And as previously mentioned mind if I combine all these as a refactor CL?",
+      "parentUuid": "aa62f811_fcb76158",
+      "revId": "643811fbe326757e09b9f7855baebc54d19647ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
