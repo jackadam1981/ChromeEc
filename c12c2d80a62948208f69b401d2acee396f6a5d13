@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "1cd56bf8_9cf5eb07",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-11-10T23:16:55Z",
+      "side": 1,
+      "message": "not sure we should call this second source in case this\nconfuses people with SSFC. maybe refer to these as alternate\nsensors?",
+      "range": {
+        "startLine": 9,
+        "startChar": 12,
+        "endLine": 9,
+        "endChar": 25
+      },
+      "revId": "c12c2d80a62948208f69b401d2acee396f6a5d13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "1afc5d63_34caf9d5",
@@ -43,6 +66,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c9597c5e_f5c12034",
+        "filename": "board/kano/sensors.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-11-10T23:16:55Z",
+      "side": 1,
+      "message": "add static const for all 3 of these?",
+      "range": {
+        "startLine": 88,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 6
+      },
+      "revId": "c12c2d80a62948208f69b401d2acee396f6a5d13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "96841b38_d1f07b5b",
         "filename": "board/kano/sensors.c",
         "patchSetId": 4
@@ -54,6 +100,46 @@
       "writtenOn": "2021-11-10T23:15:20Z",
       "side": 1,
       "message": "suggestion: keep a static variable around so this initialization is only done at the first chipset startup and not every subsequent too",
+      "revId": "c12c2d80a62948208f69b401d2acee396f6a5d13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7f9cd33_5fcbbbe4",
+        "filename": "board/kano/sensors.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-11-10T23:16:55Z",
+      "side": 1,
+      "message": "is the bma422 always paired with the bmi260 and the\nkx022 with the icm426xx?",
+      "range": {
+        "startLine": 262,
+        "startChar": 2,
+        "endLine": 262,
+        "endChar": 23
+      },
+      "revId": "c12c2d80a62948208f69b401d2acee396f6a5d13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11771fb1_bb48c586",
+        "filename": "board/kano/sensors.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-11-10T23:16:55Z",
+      "side": 1,
+      "message": "you may want to return immediately on BASE_GYRO_NONE\nin case interrupts show up before deciding which\nchip is out there.",
       "revId": "c12c2d80a62948208f69b401d2acee396f6a5d13",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
