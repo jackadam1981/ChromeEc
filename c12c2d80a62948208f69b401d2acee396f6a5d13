@@ -16,6 +16,46 @@
       "message": "ping ",
       "revId": "c12c2d80a62948208f69b401d2acee396f6a5d13",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a381513_b1f54a11",
+        "filename": "board/kano/board.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2021-11-10T23:15:20Z",
+      "side": 1,
+      "message": "nit: remove this extra tab",
+      "range": {
+        "startLine": 136,
+        "startChar": 24,
+        "endLine": 136,
+        "endChar": 25
+      },
+      "revId": "c12c2d80a62948208f69b401d2acee396f6a5d13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "96841b38_d1f07b5b",
+        "filename": "board/kano/sensors.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2021-11-10T23:15:20Z",
+      "side": 1,
+      "message": "suggestion: keep a static variable around so this initialization is only done at the first chipset startup and not every subsequent too",
+      "revId": "c12c2d80a62948208f69b401d2acee396f6a5d13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
