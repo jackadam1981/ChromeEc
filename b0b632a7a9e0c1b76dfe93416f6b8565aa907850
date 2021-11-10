@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "007b20f6_83ccae8c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-11-10T20:24:58Z",
+      "side": 1,
+      "message": "Just minor nits.",
+      "revId": "b0b632a7a9e0c1b76dfe93416f6b8565aa907850",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85501166_23453970",
+        "filename": "zephyr/test/drivers/src/smart.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-11-10T20:24:58Z",
+      "side": 1,
+      "message": "Nit - this isn\u0027t used by the 10mAh discharge test.",
+      "range": {
+        "startLine": 202,
+        "startChar": 0,
+        "endLine": 202,
+        "endChar": 17
+      },
+      "revId": "b0b632a7a9e0c1b76dfe93416f6b8565aa907850",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23de42e0_715d921b",
+        "filename": "zephyr/test/drivers/src/smart.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-11-10T20:24:58Z",
+      "side": 1,
+      "message": "Nit - change to\n\nso AtRateOK() register should return 0.",
+      "range": {
+        "startLine": 218,
+        "startChar": 5,
+        "endLine": 218,
+        "endChar": 27
+      },
+      "revId": "b0b632a7a9e0c1b76dfe93416f6b8565aa907850",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
