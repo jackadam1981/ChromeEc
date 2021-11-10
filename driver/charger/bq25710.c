@@ -155,11 +155,11 @@ static int bq25710_set_low_power_mode(int chgnum, int enable)
 		bq25710_perf_mode_req |= (1 << task_get_current());
 	enable = !bq25710_perf_mode_req;
 #endif
-
-	if (enable)
-		reg |= BQ25710_CHARGE_OPTION_0_LOW_POWER_MODE;
-	else
-		reg &= ~BQ25710_CHARGE_OPTION_0_LOW_POWER_MODE;
+	/*This change is for dump_intel_rapl_consumption psys value correct!*/
+//	if (enable)
+//		reg |= BQ25710_CHARGE_OPTION_0_LOW_POWER_MODE;
+//	else
+	reg &= ~BQ25710_CHARGE_OPTION_0_LOW_POWER_MODE;
 
 	rv = raw_write16(chgnum, BQ25710_REG_CHARGE_OPTION_0, reg);
 #ifdef CONFIG_CHARGER_BQ25710_IDCHG_LIMIT_MA
