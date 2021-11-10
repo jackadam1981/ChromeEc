@@ -32,7 +32,6 @@
 #define GPIO_INT_SHARED    BIT(15) /* Shared among multiple pins */
 #define GPIO_SEL_1P8V      BIT(16) /* Support 1.8v */
 #define GPIO_ALTERNATE     BIT(17) /* GPIO used for alternate function. */
-#define GPIO_LOCKED        BIT(18) /* Lock GPIO output and configuration */
 #define GPIO_HIB_WAKE_HIGH    BIT(19) /* Hibernate wake on high level */
 #define GPIO_HIB_WAKE_LOW     BIT(20) /* Hibernate wake on low level */
 #define GPIO_HIB_WAKE_RISING  BIT(21) /* Hibernate wake on rising edge */
