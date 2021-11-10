@@ -16,6 +16,24 @@
       "message": "i\u0027m not sure how well a zero\u0027d out thermal config is going\nto behave. the last time i had to do something like this,\ni just replicated one of the other configs with a TODO\nto get the right values later.",
       "revId": "4db15f4167519ae715f4fb8c738d2eafc6383725",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c8c4e536_1ac8d80d",
+        "filename": "board/kano/sensors.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1215230
+      },
+      "writtenOn": "2021-11-10T02:42:17Z",
+      "side": 1,
+      "message": "Our thermal only need charge sensor to control charge current.\nSo we don\u0027t need thermal config here.",
+      "parentUuid": "71eac0d8_4fb2c3bc",
+      "revId": "4db15f4167519ae715f4fb8c738d2eafc6383725",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
