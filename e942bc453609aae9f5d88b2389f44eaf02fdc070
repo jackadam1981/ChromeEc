@@ -54,6 +54,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b21be9a4_a4d7d40a",
+        "filename": "zephyr/emul/emul_sn5s330.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2021-11-10T18:14:24Z",
+      "side": 1,
+      "message": "Good point. I\u0027ll include changing this with the refactor CL I suggested for the 237 line comment. Is that acceptable?",
+      "parentUuid": "7a596a22_905fab43",
+      "revId": "e942bc453609aae9f5d88b2389f44eaf02fdc070",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6a7af7c2_1b9a5b7d",
         "filename": "zephyr/emul/emul_sn5s330.c",
         "patchSetId": 2
@@ -92,6 +110,48 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "054a06c5_883b05d1",
+        "filename": "zephyr/emul/emul_sn5s330.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2021-11-10T18:14:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6a7af7c2_1b9a5b7d",
+      "range": {
+        "startLine": 232,
+        "startChar": 17,
+        "endLine": 232,
+        "endChar": 35
+      },
+      "revId": "e942bc453609aae9f5d88b2389f44eaf02fdc070",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "33c4d6ed_058b97be",
+        "filename": "zephyr/emul/emul_sn5s330.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2021-11-10T18:14:24Z",
+      "side": 1,
+      "message": "Sorry could you be more specific? Do you mean that the reg parameter has its own line?",
+      "parentUuid": "b866eb46_21b9248b",
+      "revId": "e942bc453609aae9f5d88b2389f44eaf02fdc070",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "21376285_d2a86c4e",
@@ -105,6 +165,24 @@
       "writtenOn": "2021-11-10T17:24:40Z",
       "side": 1,
       "message": "Same question as above. It looks like every register listed in the datasheet is one byte.",
+      "revId": "e942bc453609aae9f5d88b2389f44eaf02fdc070",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b052ef12_6d13cc07",
+        "filename": "zephyr/emul/emul_sn5s330.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2021-11-10T18:14:24Z",
+      "side": 1,
+      "message": "That\u0027s a great point. Would you accept my refactoring all of these to a single check with a register message in a follow up CL? I\u0027ll assign you as reviewer.",
+      "parentUuid": "21376285_d2a86c4e",
       "revId": "e942bc453609aae9f5d88b2389f44eaf02fdc070",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
