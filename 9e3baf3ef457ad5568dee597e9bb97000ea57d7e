@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8779ec27_4bca0b68",
+        "filename": "board/quackingstick/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1273086
+      },
+      "writtenOn": "2021-11-10T17:59:43Z",
+      "side": 0,
+      "message": "Is this consistent with the next file?\nOn this change it looks like you completely disable BMI260.\nThe next file seems to allow it.",
+      "range": {
+        "startLine": 59,
+        "startChar": 24,
+        "endLine": 59,
+        "endChar": 31
+      },
+      "revId": "9e3baf3ef457ad5568dee597e9bb97000ea57d7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
