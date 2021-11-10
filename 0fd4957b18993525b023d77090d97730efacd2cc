@@ -1,0 +1,205 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed041426_c20162b3",
+        "filename": "zephyr/shim/src/ioex.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-11-10T22:31:48Z",
+      "side": 1,
+      "message": "These two fields need to be moved into the next CL (add bridge...)",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 63
+      },
+      "revId": "0fd4957b18993525b023d77090d97730efacd2cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b4cfc66_21f4d42a",
+        "filename": "zephyr/shim/src/ioex.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-11-10T22:31:48Z",
+      "side": 1,
+      "message": "Add a BUILD_ASSERT(ARRAY_SIZE(ioexes_flags), IOEX_SIZE)) because the init code assumes this at line 285.",
+      "range": {
+        "startLine": 93,
+        "startChar": 20,
+        "endLine": 93,
+        "endChar": 32
+      },
+      "revId": "0fd4957b18993525b023d77090d97730efacd2cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a33a176_b783b2f1",
+        "filename": "zephyr/shim/src/ioex.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-11-10T22:31:48Z",
+      "side": 1,
+      "message": "Move to next CL.",
+      "range": {
+        "startLine": 97,
+        "startChar": 0,
+        "endLine": 104,
+        "endChar": 0
+      },
+      "revId": "0fd4957b18993525b023d77090d97730efacd2cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9fb8519f_1cee691a",
+        "filename": "zephyr/shim/src/ioex.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-11-10T22:31:48Z",
+      "side": 1,
+      "message": "Add a LOG_ERR if this call fails.",
+      "range": {
+        "startLine": 145,
+        "startChar": 7,
+        "endLine": 145,
+        "endChar": 35
+      },
+      "revId": "0fd4957b18993525b023d77090d97730efacd2cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "708e798f_cd559e7e",
+        "filename": "zephyr/shim/src/ioex.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-11-10T22:31:48Z",
+      "side": 1,
+      "message": "Add LOG_ERR for failures.",
+      "range": {
+        "startLine": 162,
+        "startChar": 7,
+        "endLine": 162,
+        "endChar": 35
+      },
+      "revId": "0fd4957b18993525b023d77090d97730efacd2cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d2c15131_b29aade3",
+        "filename": "zephyr/shim/src/ioex.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-11-10T22:31:48Z",
+      "side": 1,
+      "message": "Change to \n  if (!signal_is_ioex())\n       return ERROR;       \n  *flags \u003d convert_from_zephyr_flags()",
+      "range": {
+        "startLine": 171,
+        "startChar": 0,
+        "endLine": 178,
+        "endChar": 0
+      },
+      "revId": "0fd4957b18993525b023d77090d97730efacd2cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6b53a55_6e94b020",
+        "filename": "zephyr/shim/src/ioex.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-11-10T22:31:48Z",
+      "side": 1,
+      "message": "Why not gpio_pin_get_raw()?  ioex_get_port() below could use gpio_port_get_raw().",
+      "range": {
+        "startLine": 208,
+        "startChar": 7,
+        "endLine": 208,
+        "endChar": 24
+      },
+      "revId": "0fd4957b18993525b023d77090d97730efacd2cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8f6e7d0_9f205806",
+        "filename": "zephyr/shim/src/ioex.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-11-10T22:31:48Z",
+      "side": 1,
+      "message": "Use the BIT() macro.",
+      "range": {
+        "startLine": 298,
+        "startChar": 6,
+        "endLine": 298,
+        "endChar": 38
+      },
+      "revId": "0fd4957b18993525b023d77090d97730efacd2cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8bb85f2f_14efda27",
+        "filename": "zephyr/shim/src/ioex.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-11-10T22:31:48Z",
+      "side": 1,
+      "message": "I don\u0027t think you want to enable interrupts by default.  We usually let the application/driver code do this as needed.",
+      "revId": "0fd4957b18993525b023d77090d97730efacd2cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
