@@ -6,6 +6,7 @@
 /* High-priority interrupt tasks implementations */
 
 #include <stdint.h>
+#include <stdio.h>
 
 #include "assert.h"
 #include "common.h"
@@ -36,13 +37,16 @@ static uint8_t pd_int_task_id[CONFIG_USB_PD_PORT_MAX_COUNT];
 
 void schedule_deferred_pd_interrupt(const int port)
 {
+	printf("In schedule_deferred_pd_interrupt\n");
 	/*
 	 * Don't set event to idle task if task id is 0. This happens when
 	 * not all the port have pd int task, the pd_int_task_id of port
 	 * that doesn't have pd int task is 0.
 	 */
-	if (pd_int_task_id[port] != 0)
+	if (pd_int_task_id[port] != 0) {
+		printf("Setting PD_PROCESS_INTERRUPT on port %d\n", port);
 		task_set_event(pd_int_task_id[port], PD_PROCESS_INTERRUPT);
+	}
 }
 
 static struct {
@@ -54,6 +58,7 @@ static void service_one_port(int port)
 {
 	timestamp_t now;
 
+	printf("service_one_port(%d)\n", port);
 	tcpc_alert(port);
 
 	now = get_time();
@@ -107,6 +112,7 @@ void pd_interrupt_handler_task(void *p)
 	while (1) {
 		const int evt = task_wait_event(-1);
 
+		printf("pd_interrupt_handler_task(%d): Got event %d\n", port, evt);
 		if ((evt & PD_PROCESS_INTERRUPT) == 0)
 			continue;
 		/*
