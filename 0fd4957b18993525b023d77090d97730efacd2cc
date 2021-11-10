@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2515d6df_94ee15ab",
+        "filename": "zephyr/shim/include/zephyr_gpio_signal.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-11-10T23:12:23Z",
+      "side": 1,
+      "message": "Move to next CL.",
+      "range": {
+        "startLine": 66,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 0
+      },
+      "revId": "0fd4957b18993525b023d77090d97730efacd2cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ed041426_c20162b3",
         "filename": "zephyr/shim/src/ioex.c",
         "patchSetId": 5
@@ -60,6 +83,30 @@
       "writtenOn": "2021-11-10T22:31:48Z",
       "side": 1,
       "message": "Move to next CL.",
+      "range": {
+        "startLine": 97,
+        "startChar": 0,
+        "endLine": 104,
+        "endChar": 0
+      },
+      "revId": "0fd4957b18993525b023d77090d97730efacd2cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1a0e322_929ec889",
+        "filename": "zephyr/shim/src/ioex.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-11-10T23:12:23Z",
+      "side": 1,
+      "message": "Or is this used at all?",
+      "parentUuid": "9a33a176_b783b2f1",
       "range": {
         "startLine": 97,
         "startChar": 0,
@@ -158,6 +205,46 @@
         "endLine": 208,
         "endChar": 24
       },
+      "revId": "0fd4957b18993525b023d77090d97730efacd2cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6cd93fd_7aa5a385",
+        "filename": "zephyr/shim/src/ioex.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-11-10T23:12:23Z",
+      "side": 1,
+      "message": "This belongs in the next CL.",
+      "range": {
+        "startLine": 247,
+        "startChar": 0,
+        "endLine": 247,
+        "endChar": 23
+      },
+      "revId": "0fd4957b18993525b023d77090d97730efacd2cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b060f8c_2e3800e0",
+        "filename": "zephyr/shim/src/ioex.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-11-10T23:12:23Z",
+      "side": 1,
+      "message": "Call gpio_pin_configure() here to match the gpio shim.",
       "revId": "0fd4957b18993525b023d77090d97730efacd2cc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
