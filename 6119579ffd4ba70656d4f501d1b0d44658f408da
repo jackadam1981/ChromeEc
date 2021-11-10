@@ -337,6 +337,24 @@
       "parentUuid": "b97e2904_ea411695",
       "revId": "6119579ffd4ba70656d4f501d1b0d44658f408da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "978f4a65_de65be1e",
+        "filename": "chip/stm32/usb_hid_keyboard.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2021-11-10T09:45:43Z",
+      "side": 1,
+      "message": "\u003e we could keep the report and boot protocols compatible in that case, right?\n\nNo, because boot protocol is defined in HID spec, we can\u0027t change it. The \"compatable\" here I meant is I want to put the keystrokes in a 6-byte array. (The allowed value of this aray is 0~164 currently, that\u0027s why evtest reports a large amount of unexist keys). It\u0027s possible to shrink this range, but I don\u0027t have any idea about how to exclude an random interval inside the range.\n\n\u003e As a security matter permission_broker doesn\u0027t allow access to hidraw nodes for recognized input devices like keyboards and touchpads, so I don\u0027t think that\u0027s an option.\n\nah.. ok",
+      "parentUuid": "07cc8d58_f37d6d09",
+      "revId": "6119579ffd4ba70656d4f501d1b0d44658f408da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
