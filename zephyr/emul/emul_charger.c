@@ -4,7 +4,7 @@
  */
 
 #include <logging/log.h>
-LOG_MODULE_REGISTER(charger_emul, CONFIG_TCPCI_EMUL_LOG_LEVEL);
+LOG_MODULE_REGISTER(charger_emul, 4);
 
 #include <zephyr.h>
 

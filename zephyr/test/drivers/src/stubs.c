@@ -31,6 +31,9 @@ LOG_MODULE_REGISTER(stubs);
 #define CPRINTS(format, args...) cprints(CC_USBCHARGE, format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_USBCHARGE, format, ## args)
 
+#include <logging/log.h>
+LOG_MODULE_REGISTER(stubs);
+
 /* All of these definitions are just to get the test to link. None of these
  * functions are useful or behave as they should. Please remove them once the
  * real code is able to be added.  Most of the things here should either be
@@ -314,6 +317,7 @@ uint16_t tcpc_get_alert_status(void)
 	 * its reset line active.
 	 */
 	if (!gpio_get_level(GPIO_USB_C0_TCPC_INT_ODL)) {
+		LOG_WRN("GPIO_USB_C0_TCPC_RST_L=%d\n", gpio_get_level(GPIO_USB_C0_TCPC_RST_L));
 		if (gpio_get_level(GPIO_USB_C0_TCPC_RST_L) != 0)
 			status |= PD_STATUS_TCPC_ALERT_0;
 	}
@@ -323,6 +327,7 @@ uint16_t tcpc_get_alert_status(void)
 			status |= PD_STATUS_TCPC_ALERT_1;
 	}
 
+	LOG_WRN("In tcpc_get_alert_status status=%d\n", status);
 	return status;
 }
 
@@ -358,6 +363,8 @@ const struct power_signal_info power_signal_list[] = {};
 void tcpc_alert_event(enum gpio_signal signal)
 {
 	int port;
+
+	LOG_WRN("In tcpc_alert_event signal=%d\n", signal);
 
 	switch (signal) {
 	case GPIO_USB_C0_TCPC_INT_ODL:
