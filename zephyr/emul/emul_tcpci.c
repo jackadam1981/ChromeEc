@@ -1,3 +1,4 @@
+/* SPDX-License-Identifier: BSD-3-Clause */
 /* Copyright 2021 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
@@ -106,11 +107,16 @@ int tcpci_emul_set_reg(const struct emul *emul, int reg, uint16_t val)
 	struct tcpci_emul_data *data = emul->data;
 	int byte;
 
-	if (reg < 0 || reg > TCPCI_EMUL_REG_COUNT) {
+	if (reg < 0 || reg > TCPCI_EMUL_REG_COUNT)
 		return -EINVAL;
-	}
 
 	for (byte = tcpci_emul_reg_bytes(reg); byte > 0; byte--) {
+		if (reg == TCPC_REG_ALERT_MASK)
+			LOG_WRN("%s %s TCPC_REG_ALERT_MASK: %x", __func__,
+				emul->dev_label, val & 0xff);
+		if (reg == TCPC_REG_ALERT_MASK + 1)
+			LOG_WRN("%s %s TCPC_REG_ALERT_MASK+1: %x", __func__,
+				emul->dev_label, val & 0xff);
 		data->reg[reg] = val & 0xff;
 		val >>= 8;
 		reg++;
@@ -125,9 +131,8 @@ int tcpci_emul_get_reg(const struct emul *emul, int reg, uint16_t *val)
 	struct tcpci_emul_data *data = emul->data;
 	int byte;
 
-	if (reg < 0 || reg > TCPCI_EMUL_REG_COUNT || val == NULL) {
+	if (reg < 0 || reg > TCPCI_EMUL_REG_COUNT || val == NULL)
 		return -EINVAL;
-	}
 
 	*val = 0;
 
@@ -186,11 +191,13 @@ static bool tcpci_emul_check_int(const struct emul *emul)
 	}
 
 	/* Nested alerts are handled above */
+	LOG_WRN("Raw alert is %x, mask is %x", alert, alert_mask);
+
 	alert &= ~(TCPC_REG_ALERT_ALERT_EXT | TCPC_REG_ALERT_EXT_STATUS |
 		   TCPC_REG_ALERT_FAULT | TCPC_REG_ALERT_POWER_STATUS);
-	if (alert & alert_mask) {
+	LOG_WRN("Corrected alert is %x, mask is %x", alert, alert_mask);
+	if (alert & alert_mask)
 		return true;
-	}
 
 	return false;
 }
@@ -220,9 +227,8 @@ static int tcpci_emul_alert_changed(const struct emul *emul)
 	}
 
 	/* Nothing to do */
-	if (data->alert_callback == NULL) {
+	if (data->alert_callback == NULL)
 		return 0;
-	}
 
 	data->alert_callback(emul, alert_is_active,
 			     data->alert_callback_data);
@@ -313,6 +319,49 @@ void tcpci_emul_set_dev_ops(const struct emul *emul,
 	struct tcpci_emul_data *data = emul->data;
 
 	data->dev_ops = dev_ops;
+}
+
+/** Check description in emul_tcpci.h */
+void tcpci_emul_connect_partner(const struct emul *emul,
+	struct tcpci_emul_partner_ops *partner_emul)
+{
+	struct tcpci_emul_data *data = emul->data;
+
+	data->partner = partner_emul;
+	partner_emul->control_change(emul, partner_emul);
+}
+
+/** Check description in emul_tcpci.h */
+int tcpci_emul_disconnect_partner(const struct emul *emul)
+{
+	struct tcpci_emul_data *data = emul->data;
+	uint16_t val;
+	uint16_t term;
+	int rc;
+
+	data->partner = NULL;
+	/* Set both CC lines to open to indicate disconnect. */
+	rc = tcpci_emul_get_reg(emul, TCPC_REG_CC_STATUS, &val);
+	if (rc != 0)
+		return rc;
+
+	term = TCPC_REG_CC_STATUS_TERM(val);
+
+	rc = tcpci_emul_set_reg(emul, TCPC_REG_CC_STATUS,
+		TCPC_REG_CC_STATUS_SET(term, TYPEC_CC_VOLT_OPEN,
+		TYPEC_CC_VOLT_OPEN));
+	if (rc != 0)
+		return rc;
+
+	data->reg[TCPC_REG_ALERT] |= TCPC_REG_ALERT_CC_STATUS;
+	rc = tcpci_emul_alert_changed(emul);
+	if (rc != 0)
+		return rc;
+	/* TODO: Wait until DisableSourceVbus (TCPC_REG_COMMAND_SRC_CTRL_LOW?),
+	 * and then set VBUS present = 0 and vSafe0V = 1 after appropriate
+	 * delays.
+	 */
+	return 0;
 }
 
 
@@ -467,9 +516,8 @@ static int tcpci_emul_reset(const struct emul *emul)
 
 	tcpci_emul_reset_role_ctrl(emul);
 
-	if (data->dev_ops && data->dev_ops->reset) {
+	if (data->dev_ops && data->dev_ops->reset)
 		data->dev_ops->reset(emul, data->dev_ops);
-	}
 
 	return tcpci_emul_alert_changed(emul);
 }
@@ -553,11 +601,10 @@ static int tcpci_emul_handle_rx_buf(const struct emul *emul, int reg,
 			tcpci_emul_set_i2c_interface_err(emul);
 			return -EIO;
 		}
-		if (data->rx_msg == NULL) {
+		if (data->rx_msg == NULL)
 			*val = 0;
-		} else {
+		else
 			*val = data->rx_msg->type;
-		}
 		break;
 
 	case TCPC_REG_RX_HDR:
@@ -803,11 +850,10 @@ static int tcpci_emul_write_byte(struct i2c_emul *i2c_emul, int reg,
 		return 0;
 	}
 
-	if (bytes == 1) {
+	if (bytes == 1)
 		data->write_data = val;
-	} else if (bytes == 2) {
+	else if (bytes == 2)
 		data->write_data |= (uint16_t)val << 8;
-	}
 
 	return 0;
 }
@@ -829,9 +875,8 @@ static int tcpci_emul_handle_command(const struct emul *emul)
 		data->tx_msg->idx = 0;
 		break;
 	case TCPC_REG_COMMAND_RESET_RECEIVE_BUF:
-		if (data->rx_msg) {
+		if (data->rx_msg)
 			data->rx_msg->idx = 0;
-		}
 		break;
 	case TCPC_REG_COMMAND_ENABLE_VBUS_DETECT:
 	case TCPC_REG_COMMAND_SNK_CTRL_LOW:
@@ -902,9 +947,8 @@ static int tcpci_emul_handle_write(struct i2c_emul *i2c_emul, int reg,
 	int rc;
 
 	/* This write message was setting register before read */
-	if (msg_len == 1) {
+	if (msg_len == 1)
 		return 0;
-	}
 
 	/* Exclude register address byte from message length */
 	msg_len--;
@@ -1057,9 +1101,8 @@ static int tcpci_emul_handle_write(struct i2c_emul *i2c_emul, int reg,
 			return rc;
 	}
 
-	if (inform_partner && data->partner && data->partner->control_change) {
+	if (inform_partner && data->partner && data->partner->control_change)
 		data->partner->control_change(emul, data->partner);
-	}
 
 	return 0;
 }
