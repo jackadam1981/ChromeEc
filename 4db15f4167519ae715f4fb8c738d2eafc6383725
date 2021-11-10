@@ -34,6 +34,24 @@
       "parentUuid": "71eac0d8_4fb2c3bc",
       "revId": "4db15f4167519ae715f4fb8c738d2eafc6383725",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3bb48b7_ee24b57d",
+        "filename": "board/kano/sensors.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1215230
+      },
+      "writtenOn": "2021-11-10T03:34:39Z",
+      "side": 1,
+      "message": "Define config value to zero to disable charger thermal control.",
+      "parentUuid": "c8c4e536_1ac8d80d",
+      "revId": "4db15f4167519ae715f4fb8c738d2eafc6383725",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
