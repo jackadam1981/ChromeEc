@@ -142,6 +142,24 @@
       "parentUuid": "827ebc7c_97be112f",
       "revId": "ae0ee78260c79f5d1c538fbd39b864dd79e3e679",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a678360_87e34102",
+        "filename": "zephyr/emul/emul_sn5s330.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-11-10T17:24:40Z",
+      "side": 1,
+      "message": "At least IMO, it\u0027s acceptable and common for a CL author to mark a thread as resolved if the author thinks they have answered the reviewer satisfactorily. If the reviewer disagrees, the reviewer can reopen the thread and withhold CR+2. I see no reason to do so now.",
+      "parentUuid": "bb9793bb_1863dd3f",
+      "revId": "ae0ee78260c79f5d1c538fbd39b864dd79e3e679",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

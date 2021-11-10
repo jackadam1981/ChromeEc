@@ -16,6 +16,97 @@
       "message": "Ready for review:\n@alevkoy, you mentioned when you poked the read-only registers no error was found. Do you think that\u0027s enough for now to remove any assertions on writes to read-only that the driver doesn\u0027t currently do or should I keep this CL as is? I\u0027m happy to do either way if you actually poked those registers on a volteer.",
       "revId": "e942bc453609aae9f5d88b2389f44eaf02fdc070",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2e924a9_a3405178",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-11-10T17:24:40Z",
+      "side": 1,
+      "message": "None of my open comments are critical. Feel free to address in a followup CL (or not at all in the case of the nits) as you see fit.",
+      "revId": "e942bc453609aae9f5d88b2389f44eaf02fdc070",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a596a22_905fab43",
+        "filename": "zephyr/emul/emul_sn5s330.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-11-10T17:24:40Z",
+      "side": 1,
+      "message": "Would it work to just do this assert once before checking the address?",
+      "revId": "e942bc453609aae9f5d88b2389f44eaf02fdc070",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a7af7c2_1b9a5b7d",
+        "filename": "zephyr/emul/emul_sn5s330.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-11-10T17:24:40Z",
+      "side": 1,
+      "message": "Super nit: Unverified-as-safe is a compound adjective and should thus be hyphenated in the same style as read-only. This would make this message easier to parse, IMO.",
+      "range": {
+        "startLine": 232,
+        "startChar": 17,
+        "endLine": 232,
+        "endChar": 35
+      },
+      "revId": "e942bc453609aae9f5d88b2389f44eaf02fdc070",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b866eb46_21b9248b",
+        "filename": "zephyr/emul/emul_sn5s330.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-11-10T17:24:40Z",
+      "side": 1,
+      "message": "Nit: Weird line break.",
+      "revId": "e942bc453609aae9f5d88b2389f44eaf02fdc070",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21376285_d2a86c4e",
+        "filename": "zephyr/emul/emul_sn5s330.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-11-10T17:24:40Z",
+      "side": 1,
+      "message": "Same question as above. It looks like every register listed in the datasheet is one byte.",
+      "revId": "e942bc453609aae9f5d88b2389f44eaf02fdc070",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
