@@ -299,6 +299,9 @@ int tcpci_emul_connect_partner(const struct emul *emul,
 			       enum tcpc_cc_voltage_status partner_cc2,
 			       enum tcpc_cc_polarity polarity);
 
+/** TODO DOCUMENT ME */
+int tcpci_emul_disconnect_partner(const struct emul *emul);
+
 /**
  * @brief Allows port partner to select if message was received correctly
  *
