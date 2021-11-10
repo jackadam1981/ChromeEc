@@ -275,11 +275,6 @@ DECLARE_CONSOLE_COMMAND(waitms, command_wait,
 #endif
 
 #ifdef CONFIG_CMD_FORCETIME
-/*
- * Force the hwtimer to a given time. This may have undesired consequences,
- * especially when going "backward" in time, because task deadlines are
- * left un-adjusted.
- */
 static int command_force_time(int argc, char **argv)
 {
 	char *e;
