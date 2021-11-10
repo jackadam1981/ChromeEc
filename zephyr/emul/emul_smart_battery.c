@@ -274,7 +274,7 @@ static int sbat_emul_read_at_rate_ok(struct sbat_emul_bat_data *bat,
  *
  * @return value which equals to computed status register
  */
-static uint16_t sbat_emul_read_status(struct i2c_emul *emul)
+static uint16_t __attribute__((optnone)) sbat_emul_read_status(struct i2c_emul *emul)
 {
 	uint16_t status, cap, rem_time, charge_percent;
 	struct sbat_emul_bat_data *bat;
