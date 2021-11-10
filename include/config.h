@@ -3973,9 +3973,6 @@
 
 /*****************************************************************************/
 
-/* Support early firmware selection */
-#undef CONFIG_VBOOT_EFS
-
 /* Support computing hash of code for verified boot */
 #undef CONFIG_VBOOT_HASH
 
