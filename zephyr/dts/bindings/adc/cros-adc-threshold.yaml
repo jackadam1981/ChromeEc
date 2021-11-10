@@ -1,0 +1,25 @@
+description: Threshold Parameters
+compatible: "cros,threshold"
+properties:
+  threshold-assert:
+    required: true
+    type: int
+    description:
+      Set ADC threshold assert value in mV.
+    default: 0
+  threshold-mode:
+    required: true
+    type: string
+    description:
+      Determines relation between measured value and assertion threshold.
+    enum:
+    - ADC_THR_ASSERT_MODE_NONE
+    - ADC_THR_ASSERT_MODE_RISE
+    - ADC_THR_ASSERT_MODE_FALL
+    - ADC_THR_ASSERT_MODE_MAX
+    default: ADC_THR_ASSERT_MODE_NONE
+  threshold-enabled:
+    required: false
+    type: boolean
+    description:
+      Enables ADC trheshold interruption during initialization.
