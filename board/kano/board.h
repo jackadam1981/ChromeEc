@@ -214,8 +214,7 @@ enum sensor_id {
 };
 
 enum battery_type {
-	BATTERY_POWER_TECH,
-	BATTERY_LGC011,
+	BATTERY_AP19B8M,
 	BATTERY_TYPE_COUNT
 };
 
