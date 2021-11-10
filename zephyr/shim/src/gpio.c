@@ -13,7 +13,7 @@
 #include "sysjump.h"
 #include "cros_version.h"
 
-LOG_MODULE_REGISTER(gpio_shim, LOG_LEVEL_ERR);
+LOG_MODULE_REGISTER(gpio_shim);
 
 /*
  * Static information about each GPIO that is configured in the named_gpios
@@ -211,8 +211,11 @@ const char *gpio_get_name(enum gpio_signal signal)
 
 void gpio_set_level(enum gpio_signal signal, int value)
 {
-	if (!gpio_is_implemented(signal))
+	LOG_WRN("Setting GPIO %s to %d", gpio_get_name(signal), value);
+	if (!gpio_is_implemented(signal)) {
+		LOG_WRN("GPIO %d is not implemented", signal);
 		return;
+	}
 
 	int rv = gpio_pin_set_raw(configs[signal].dev,
 				  configs[signal].pin,
