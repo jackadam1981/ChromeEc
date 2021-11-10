@@ -108,7 +108,7 @@ static int i2c_common_emul_start_write(struct i2c_emul *emul,
  *
  * @retval finish_write emulator callback return code
  */
-static int i2c_common_emul_finish_write(struct i2c_emul *emul,
+static int __attribute__((optnone)) i2c_common_emul_finish_write(struct i2c_emul *emul,
 					struct i2c_common_emul_data *data)
 {
 	int ret = 0;

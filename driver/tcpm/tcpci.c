@@ -4,7 +4,7 @@
  */
 
 /* Type-C port manager */
-
+#include <stdio.h>
 #include "atomic.h"
 #include "anx74xx.h"
 #include "compile_time_macros.h"

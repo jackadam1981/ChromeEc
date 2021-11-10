@@ -274,7 +274,7 @@ static int isl923x_emul_read_byte(struct i2c_emul *emul, int reg, uint8_t *val,
 	return 0;
 }
 
-static int isl923x_emul_write_byte(struct i2c_emul *emul, int reg, uint8_t val,
+static int __attribute__((optnone)) isl923x_emul_write_byte(struct i2c_emul *emul, int reg, uint8_t val,
 				   int bytes)
 {
 	struct isl923x_emul_data *data = ISL923X_DATA_FROM_I2C_EMUL(emul);
