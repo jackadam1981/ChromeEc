@@ -6,7 +6,7 @@
 #define DT_DRV_COMPAT cros_tcpci_emul
 
 #include <logging/log.h>
-LOG_MODULE_REGISTER(tcpci_emul, CONFIG_TCPCI_EMUL_LOG_LEVEL);
+LOG_MODULE_REGISTER(tcpci_emul, 4);
 
 #include <device.h>
 #include <emul.h>
@@ -1127,7 +1127,7 @@ static int tcpci_emul_get_next_rx_msg(const struct emul *emul)
  * @return 0 on success
  * @return -EIO on error
  */
-static int tcpci_emul_handle_write(struct i2c_emul *i2c_emul, int reg,
+static int __attribute__((optnone)) tcpci_emul_handle_write(struct i2c_emul *i2c_emul, int reg,
 				   int msg_len)
 {
 	struct tcpci_emul_data *data;
