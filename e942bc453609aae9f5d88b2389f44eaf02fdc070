@@ -70,6 +70,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b209dad_b50e364b",
+        "filename": "zephyr/emul/emul_sn5s330.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-11-10T18:43:18Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b21be9a4_a4d7d40a",
+      "revId": "e942bc453609aae9f5d88b2389f44eaf02fdc070",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6a7af7c2_1b9a5b7d",
@@ -154,6 +172,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "efa2985b_1dbc4ca9",
+        "filename": "zephyr/emul/emul_sn5s330.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-11-10T18:43:18Z",
+      "side": 1,
+      "message": "I\u0027m referring to the string on lines 232 and 233. When it\u0027s not possible to fit a single string on one line, I would typically expect each line to continue until the next word wouldn\u0027t fit. We don\u0027t have a rule about this, and it looks like you\u0027ll need to break the string somewhere, so do as you will.",
+      "parentUuid": "33c4d6ed_058b97be",
+      "revId": "e942bc453609aae9f5d88b2389f44eaf02fdc070",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "21376285_d2a86c4e",
         "filename": "zephyr/emul/emul_sn5s330.c",
         "patchSetId": 2
@@ -183,6 +219,24 @@
       "side": 1,
       "message": "That\u0027s a great point. Would you accept my refactoring all of these to a single check with a register message in a follow up CL? I\u0027ll assign you as reviewer.",
       "parentUuid": "21376285_d2a86c4e",
+      "revId": "e942bc453609aae9f5d88b2389f44eaf02fdc070",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "edf783e2_fc5f1273",
+        "filename": "zephyr/emul/emul_sn5s330.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-11-10T18:43:18Z",
+      "side": 1,
+      "message": "See my earlier comment. Go right ahead.",
+      "parentUuid": "b052ef12_6d13cc07",
       "revId": "e942bc453609aae9f5d88b2389f44eaf02fdc070",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
