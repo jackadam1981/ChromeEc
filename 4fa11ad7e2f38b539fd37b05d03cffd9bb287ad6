@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c25e96f_a7b45887",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1527153
+      },
+      "writtenOn": "2021-11-10T07:07:50Z",
+      "side": 1,
+      "message": "Hi Dai,\n\nI have addressed your comments accordingly. Please let me know for any further \nchanges if required.\n\n1. mtemp -\u003e mapped temperature\n2. The below condition is kept inline with EC implementation,\n       if (temp \u003c r.temp_fan_off)\n\t\treturn 0;\n\nThanks,\nHarsha",
+      "revId": "4fa11ad7e2f38b539fd37b05d03cffd9bb287ad6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

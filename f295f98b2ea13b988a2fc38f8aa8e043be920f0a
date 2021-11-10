@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "72e0cf0a_f3b9ffc3",
+        "filename": "util/ectool.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 3021,
+      "author": {
+        "id": 1527153
+      },
+      "writtenOn": "2021-11-10T07:07:50Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "806245ec_5b133488",
+      "range": {
+        "startLine": 3021,
+        "startChar": 39,
+        "endLine": 3021,
+        "endChar": 40
+      },
+      "revId": "f295f98b2ea13b988a2fc38f8aa8e043be920f0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "876e40a7_d44bc09f",
@@ -71,6 +95,30 @@
       "writtenOn": "2021-11-09T19:24:58Z",
       "side": 1,
       "message": "Let\u0027s return -1 for this. It\u0027s not fan\u003d0%.",
+      "range": {
+        "startLine": 3031,
+        "startChar": 5,
+        "endLine": 3031,
+        "endChar": 12
+      },
+      "revId": "f295f98b2ea13b988a2fc38f8aa8e043be920f0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0fb302ce_f10ee833",
+        "filename": "util/ectool.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 3031,
+      "author": {
+        "id": 1527153
+      },
+      "writtenOn": "2021-11-10T07:07:50Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "876e40a7_d44bc09f",
       "range": {
         "startLine": 3031,
         "startChar": 5,
@@ -104,6 +152,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "513cd8a9_d3f14044",
+        "filename": "util/ectool.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 3035,
+      "author": {
+        "id": 1527153
+      },
+      "writtenOn": "2021-11-10T07:07:50Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b34ee390_922f0008",
+      "range": {
+        "startLine": 3035,
+        "startChar": 38,
+        "endLine": 3035,
+        "endChar": 69
+      },
+      "revId": "f295f98b2ea13b988a2fc38f8aa8e043be920f0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5f73a89a_c210aadc",
@@ -117,6 +189,30 @@
       "writtenOn": "2021-11-09T19:24:58Z",
       "side": 1,
       "message": "Can you please rename this to \u0027temp\u0027 or something? (I know this isn\u0027t from your change. This is hurting the readability.)",
+      "range": {
+        "startLine": 3060,
+        "startChar": 5,
+        "endLine": 3060,
+        "endChar": 7
+      },
+      "revId": "f295f98b2ea13b988a2fc38f8aa8e043be920f0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e7e134c_d678d5c4",
+        "filename": "util/ectool.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 3060,
+      "author": {
+        "id": 1527153
+      },
+      "writtenOn": "2021-11-10T07:07:50Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "5f73a89a_c210aadc",
       "range": {
         "startLine": 3060,
         "startChar": 5,
