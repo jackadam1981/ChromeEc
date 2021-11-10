@@ -16,6 +16,69 @@
       "message": "Hi Dai,\n\nI have addressed your comments accordingly. Please let me know for any further \nchanges if required.\n\n1. mtemp -\u003e mapped temperature\n2. The below condition is kept inline with EC implementation,\n       if (temp \u003c r.temp_fan_off)\n\t\treturn 0;\n\nThanks,\nHarsha",
       "revId": "4fa11ad7e2f38b539fd37b05d03cffd9bb287ad6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d88368b_7f41b38f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-11-10T16:11:17Z",
+      "side": 1,
+      "message": "Just a few fixes. Thanks,",
+      "revId": "4fa11ad7e2f38b539fd37b05d03cffd9bb287ad6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20450dee_1f3aacc1",
+        "filename": "util/ectool.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 3027,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-11-10T16:11:17Z",
+      "side": 1,
+      "message": "This check isn\u0027t needed. EC has a built-in command version check. The next line will return EC_RES_INVALID_VERSION if version 1 isn\u0027t supported.",
+      "range": {
+        "startLine": 3027,
+        "startChar": 5,
+        "endLine": 3027,
+        "endChar": 62
+      },
+      "revId": "4fa11ad7e2f38b539fd37b05d03cffd9bb287ad6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1aa0e34e_a511e790",
+        "filename": "util/ectool.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 3054,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-11-10T16:11:17Z",
+      "side": 1,
+      "message": "nit: This is repeated. It can be copied to a local var for readability.",
+      "range": {
+        "startLine": 3054,
+        "startChar": 8,
+        "endLine": 3054,
+        "endChar": 37
+      },
+      "revId": "4fa11ad7e2f38b539fd37b05d03cffd9bb287ad6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
