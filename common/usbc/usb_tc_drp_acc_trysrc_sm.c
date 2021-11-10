@@ -25,6 +25,7 @@
 #include "usbc_ppc.h"
 #include "vboot.h"
 
+#include <stdio.h>
 /*
  * USB Type-C DRP with Accessory and Try.SRC module
  *   See Figure 4-16 in Release 1.4 of USB Type-C Spec.
@@ -1055,6 +1056,7 @@ static void tc_set_partner_role(int port, enum ppc_device_role role)
 
 void pd_set_suspend(int port, int suspend)
 {
+printf("pd_set_suspend port=%d suspend=%d\n", port, suspend);
 	if (pd_is_port_enabled(port) == !suspend)
 		return;
 
