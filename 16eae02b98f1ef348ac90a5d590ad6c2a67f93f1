@@ -16,6 +16,24 @@
       "message": "I\u0027m not sure that I understand the rationale for this change. The introduction of `stable_count` seems to just be waiting for fixed time before acting on the charge_request(). It kind of seems like a workaround ignoring the early values of current_ma. \n\nWhat is *not* getting updated when `charge_ma` gets updated?",
       "revId": "16eae02b98f1ef348ac90a5d590ad6c2a67f93f1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dfa46e84_f0486bef",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1294441
+      },
+      "writtenOn": "2021-11-10T01:09:23Z",
+      "side": 1,
+      "message": "The \u0027current_ma\u0027 value is zero when AC plug moment.\nIt will enable \u0027ocpc: enable linear precharge\u0027 when battery voltage less than \"battery normal voltage\".\nBut the \u0027current_ma\u0027 will be updated next time.\nI think we can ignore \u0027current_ma\u0027 first time.",
+      "parentUuid": "31984889_506f5c07",
+      "revId": "16eae02b98f1ef348ac90a5d590ad6c2a67f93f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
