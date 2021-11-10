@@ -49,6 +49,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d3cde93c_8b48c762",
+        "filename": "zephyr/shim/src/ioex.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-11-10T23:29:30Z",
+      "side": 1,
+      "message": "Change the name to ioex_gpio_configs[].  The current name is too close to ioex_config[].",
+      "range": {
+        "startLine": 89,
+        "startChar": 37,
+        "endLine": 89,
+        "endChar": 49
+      },
+      "revId": "0fd4957b18993525b023d77090d97730efacd2cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5b4cfc66_21f4d42a",
         "filename": "zephyr/shim/src/ioex.c",
         "patchSetId": 5
@@ -227,6 +250,29 @@
         "startChar": 0,
         "endLine": 247,
         "endChar": 23
+      },
+      "revId": "0fd4957b18993525b023d77090d97730efacd2cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d2874ae_d7fddd78",
+        "filename": "zephyr/shim/src/ioex.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-11-10T23:29:30Z",
+      "side": 1,
+      "message": "I think this belongs in shim_ioex_init() instead.  This is only done for the cros-ioex drivers, correct?",
+      "range": {
+        "startLine": 252,
+        "startChar": 0,
+        "endLine": 262,
+        "endChar": 0
       },
       "revId": "0fd4957b18993525b023d77090d97730efacd2cc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
