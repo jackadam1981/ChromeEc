@@ -45,6 +45,29 @@
       },
       "revId": "871ed2e4b6ff71751717bb080cec8207223b159a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5be1b8a_d70c80ae",
+        "filename": "zephyr/Kconfig.stacks",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-11-10T23:34:42Z",
+      "side": 1,
+      "message": "As noted on b:205746466.  684 bytes is sufficient for ARM APs, but Intel APs need 1056 bytes.\n\nChange this to:\n\nconfig TASK_CHIPSET_STACK_SIZE\n    default 1056 if AP_x86\n    default 684 if AP_ARM\n    default 1200 # Safe default",
+      "range": {
+        "startLine": 87,
+        "startChar": 9,
+        "endLine": 87,
+        "endChar": 13
+      },
+      "revId": "871ed2e4b6ff71751717bb080cec8207223b159a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
