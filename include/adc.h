@@ -73,4 +73,32 @@ int adc_disable_watchdog(void);
  */
 int adc_set_watchdog_delay(int delay_ms);
 
+/**
+ * Configures adc threshold interruption. ADC will be continously working.
+ * This does not enable interruption.
+ *
+ * @param threshold_cfg   Pointer to configuration structure.
+ *
+ * @return                EC_SUCCESS, or non-zero if any error or not supported.
+ */
+int adc_config_threshold_interrupt(struct adc_threshold_cfg *threshold_cfg);
+
+/**
+ * Enable ADC threshold interruption. Interruption must be prevoiously configured.
+ *
+ * @param threshold_id    Identifier of threshold interruption to be enabled.
+ *
+ * @return              EC_SUCCESS, or non-zero if any error or not supported.
+ */
+int adc_enable_threshold_interrupt(const int threshold_id);
+
+/**
+ * Disable ADC threshold interruption. Interruption must be prevoiously configured.
+ *
+ * @param threshold_id    Identifier of threshold interruption to be disabled.
+ *
+ * @return              EC_SUCCESS, or non-zero if any error or not supported.
+ */
+int adc_disable_threshold_interrupt(const int threshold_id);
+
 #endif  /* __CROS_EC_ADC_H */

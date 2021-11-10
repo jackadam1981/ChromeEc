@@ -5,6 +5,7 @@
 
 #include <drivers/adc.h>
 #include <logging/log.h>
+#include "system.h"
 #include "adc.h"
 #include "zephyr_adc.h"
 
@@ -80,4 +81,21 @@ int adc_read_channel(enum adc_channel ch)
 			      CONFIG_PLATFORM_EC_ADC_RESOLUTION, &ret);
 	ret = (ret * adc_channels[ch].factor_mul) / adc_channels[ch].factor_div;
 	return ret;
+}
+
+int adc_config_threshold_interrupt(struct adc_threshold_cfg *threshold_cfg)
+{
+	return adc_config_threshold_irq(adc_dev, threshold_cfg);
+}
+
+int adc_enable_threshold_interrupt(const int threshold_id)
+{
+	disable_sleep(SLEEP_MASK_ADC);
+	return adc_enable_threshold_irq(adc_dev, threshold_id);
+}
+
+int adc_disable_threshold_interrupt(const int threshold_id)
+{
+	enable_sleep(SLEEP_MASK_ADC);
+	return adc_disable_threshold_irq(adc_dev, threshold_id);
 }
