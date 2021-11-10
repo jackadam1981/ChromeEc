@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dccaf567_395940bd",
+        "filename": "common/timer.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-11-10T20:53:59Z",
+      "side": 0,
+      "message": "wonder if we should remove this from config.h as well?\n\nif i did \"git grep\" on that branch correctly,\nthis is still defined in cr50/board.h. do we need\nto fix that as well?",
+      "range": {
+        "startLine": 97,
+        "startChar": 8,
+        "endLine": 97,
+        "endChar": 33
+      },
+      "revId": "e55621510b957b00fc9897fb60b95b00e2b4d54b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
