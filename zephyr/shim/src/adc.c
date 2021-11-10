@@ -39,6 +39,40 @@ const struct adc_t adc_channels[] = { DT_FOREACH_CHILD(
 #endif
 #endif /* named_adc_channels */
 
+#ifdef CONFIG_ADC_THRESHOLD_IRQ
+#define ADC_THRESHOLD_CALLBACK_DEF(node_id)                               \
+	void __weak DT_STRING_TOKEN(node_id, callback) (void){ }
+
+DT_FOREACH_CHILD_STATUS_OKAY(DT_INST(0, cros_adc_thresholds),
+	ADC_THRESHOLD_CALLBACK_DEF)
+
+#define ADC_THRESHOLD_DEF(node_id)                                         \
+	{                                                                  \
+		.channel_id = DT_PROP(node_id, channel),                   \
+		.assert_value = DT_PROP(node_id, assert_value),            \
+		.assert_mode = DT_STRING_TOKEN(node_id, assert_mode),      \
+		.adc_threshold_cb = DT_STRING_TOKEN(node_id, callback)     \
+	},
+const struct adc_threshold_cfg threshold_configs[] = {
+	DT_FOREACH_CHILD_STATUS_OKAY(DT_INST(0, cros_adc_thresholds),
+	ADC_THRESHOLD_DEF) };
+
+#define ADC_TRHESHOLD_IS_ENABLED(id)                                      \
+	DT_PROP(id, enabled),
+const bool thresholds_enabled[] = {
+	DT_FOREACH_CHILD_STATUS_OKAY(DT_INST(0, cros_adc_thresholds),
+	ADC_TRHESHOLD_IS_ENABLED) };
+#endif /* CONFIG_ADC_THRESHOLD_IRQ */
+
+void init_thresholds(void)
+{
+	for (int i = 0; i < ARRAY_SIZE(threshold_configs); i++) {
+		adc_config_threshold_irq(adc_dev, &threshold_configs[i]);
+		if (thresholds_enabled[i])
+			adc_enable_threshold_irq(adc_dev, true);
+	}
+}
+
 static int init_device_bindings(const struct device *device)
 {
 	ARG_UNUSED(device);
@@ -50,6 +84,9 @@ static int init_device_bindings(const struct device *device)
 #if HAS_NAMED_ADC_CHANNELS
 	for (int i = 0; i < ARRAY_SIZE(adc_channels); i++)
 		adc_channel_setup(adc_dev, &adc_channels[i].channel_cfg);
+
+	if (IS_ENABLED(CONFIG_ADC_THRESHOLD_IRQ))
+		init_thresholds();
 #endif
 
 	return 0;
