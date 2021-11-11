@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "96f03f38_f08e6601",
+        "filename": "zephyr/dts/bindings/emul/zephyr,syv682x.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-11-11T00:26:07Z",
+      "side": 1,
+      "message": "The emulator C code requires this, correct?",
+      "range": {
+        "startLine": 15,
+        "startChar": 14,
+        "endLine": 15,
+        "endChar": 19
+      },
+      "revId": "ffd84118767c9be459568ee94e8c9e092e060a5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
