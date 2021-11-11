@@ -610,3 +610,20 @@ int ppc_get_alert_status(int port)
 	else
 		return gpio_get_level(GPIO_USB_C1_PPC_INT_ODL) == 0;
 }
+
+static void tcpc_detetch(void)
+{
+	int regval=0;
+	//int regval1=0;
+
+	i2c_read8(ppc_chips[1].i2c_port,
+		ppc_chips[1].i2c_addr_flags,
+		0x4,
+		&regval);
+	CPRINTS("[SC] regval=%d", regval);
+	if ((regval & 0xc0) == 0) {
+		ppc_init(1);
+	}
+
+}
+DECLARE_HOOK(HOOK_SECOND, tcpc_detetch, HOOK_PRIO_DEFAULT);
