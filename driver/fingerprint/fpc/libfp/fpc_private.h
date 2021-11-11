@@ -125,7 +125,12 @@ typedef struct {
 int fp_sensor_maintenance(uint8_t *image_data,
 			  fp_sensor_info_t *fp_sensor_info);
 
-/* Read the HWID from the sensor. */
-int fpc_check_hwid(void);
+/**
+ * Get the HWID of the sensor.
+ *
+ * @param id Pointer to where to store the HWID value.
+ * @return EC_SUCCESS, EC_ERROR_HW_INTERNAL, or EC_ERROR_INVAL
+ */
+int fpc_get_hwid(uint16_t *id);
 
 #endif /* __CROS_EC_FPC_PRIVATE_H */
