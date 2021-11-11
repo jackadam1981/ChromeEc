@@ -6,15 +6,28 @@
 #include "common.h"
 #include "test_util.h"
 #include "fpc_private.h"
+//#include "fpc/fpc_sensor.h"
+
+#include "bep/fpc1025_private.h"
+
+
+//#if defined(CONFIG_FP_SENSOR_FPC1025)
+//#include "bep/fpc1025_private.h"
+//#elif defined(CONFIG_FP_SENSOR_FPC1035)
+//#include "bep/fpc1035_private.h"
+//#elif defined(CONFIG_FP_SENSOR_FPC1145)
+//#include "libfp/fpc1145_private.h"
+//#else
+//#error "Sensor type not defined!"
+//#endif
 
 /* Hardware-dependent smoke test that makes a SPI transaction with the
  * fingerprint sensor.
  */
 test_static int test_fp_check_hwid(void)
 {
-	/* TODO(b/187134801): modify fpc_check_hwid() to return the hwid. */
 	if (IS_ENABLED(SECTION_IS_RW))
-		TEST_EQ(fpc_check_hwid(), EC_SUCCESS, "%d");
+		TEST_EQ(fpc_check_hwid(), FP_SENSOR_HWID, "%d");
 
 	return EC_SUCCESS;
 }
