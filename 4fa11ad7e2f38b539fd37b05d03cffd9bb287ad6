@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2dd0782e_1029a67a",
+        "filename": "util/ectool.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 3027,
+      "author": {
+        "id": 1527153
+      },
+      "writtenOn": "2021-11-11T10:45:35Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "20450dee_1f3aacc1",
+      "range": {
+        "startLine": 3027,
+        "startChar": 5,
+        "endLine": 3027,
+        "endChar": 62
+      },
+      "revId": "4fa11ad7e2f38b539fd37b05d03cffd9bb287ad6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1aa0e34e_a511e790",
@@ -71,6 +95,30 @@
       "writtenOn": "2021-11-10T16:11:17Z",
       "side": 1,
       "message": "nit: This is repeated. It can be copied to a local var for readability.",
+      "range": {
+        "startLine": 3054,
+        "startChar": 8,
+        "endLine": 3054,
+        "endChar": 37
+      },
+      "revId": "4fa11ad7e2f38b539fd37b05d03cffd9bb287ad6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "65e3d050_de6e23a3",
+        "filename": "util/ectool.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 3054,
+      "author": {
+        "id": 1527153
+      },
+      "writtenOn": "2021-11-11T10:45:35Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "1aa0e34e_a511e790",
       "range": {
         "startLine": 3054,
         "startChar": 8,
