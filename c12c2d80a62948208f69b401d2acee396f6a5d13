@@ -201,6 +201,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b55b3fb7_c945d98f",
+        "filename": "board/kano/sensors.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-11-11T02:21:45Z",
+      "side": 1,
+      "message": "ok, was just wondering since you don\u0027t track bma422 vs. kx022\nother than updating the LID_ACCEL entry. if you don\u0027t need\nto distinguish between the two chips later similar to\nmotion_interrupt(), i guess that\u0027s OK.",
+      "parentUuid": "775059d1_f4fa796c",
+      "range": {
+        "startLine": 262,
+        "startChar": 2,
+        "endLine": 262,
+        "endChar": 23
+      },
+      "revId": "c12c2d80a62948208f69b401d2acee396f6a5d13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "11771fb1_bb48c586",
         "filename": "board/kano/sensors.c",
         "patchSetId": 4
