@@ -3,6 +3,121 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "01fb1d43_ed9c476f",
+        "filename": "zephyr/Kconfig.ioex",
+        "patchSetId": 5
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-11-11T00:15:29Z",
+      "side": 1,
+      "message": "IO expander",
+      "range": {
+        "startLine": 16,
+        "startChar": 6,
+        "endLine": 16,
+        "endChar": 10
+      },
+      "revId": "0fd4957b18993525b023d77090d97730efacd2cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8de98335_0ecdf1a2",
+        "filename": "zephyr/Kconfig.ioex",
+        "patchSetId": 5
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-11-11T00:15:29Z",
+      "side": 1,
+      "message": "IO expander",
+      "range": {
+        "startLine": 20,
+        "startChar": 54,
+        "endLine": 20,
+        "endChar": 58
+      },
+      "revId": "0fd4957b18993525b023d77090d97730efacd2cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b790e8a_8328deef",
+        "filename": "zephyr/Kconfig.ioex",
+        "patchSetId": 5
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-11-11T00:15:29Z",
+      "side": 1,
+      "message": "IO",
+      "range": {
+        "startLine": 23,
+        "startChar": 33,
+        "endLine": 23,
+        "endChar": 35
+      },
+      "revId": "0fd4957b18993525b023d77090d97730efacd2cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db855259_b98933a6",
+        "filename": "zephyr/Kconfig.ioex",
+        "patchSetId": 5
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-11-11T00:15:29Z",
+      "side": 1,
+      "message": "IO",
+      "range": {
+        "startLine": 26,
+        "startChar": 29,
+        "endLine": 26,
+        "endChar": 31
+      },
+      "revId": "0fd4957b18993525b023d77090d97730efacd2cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7902639_1a516575",
+        "filename": "zephyr/Kconfig.ioex",
+        "patchSetId": 5
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-11-11T00:15:29Z",
+      "side": 1,
+      "message": "IO",
+      "range": {
+        "startLine": 28,
+        "startChar": 42,
+        "endLine": 28,
+        "endChar": 44
+      },
+      "revId": "0fd4957b18993525b023d77090d97730efacd2cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2515d6df_94ee15ab",
         "filename": "zephyr/shim/include/zephyr_gpio_signal.h",
         "patchSetId": 5
