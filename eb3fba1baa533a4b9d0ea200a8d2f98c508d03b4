@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f370316_5475b608",
+        "filename": "zephyr/Kconfig.powerseq",
+        "patchSetId": 10
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2021-11-11T19:05:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7cb81c3f_300f81d7",
+      "range": {
+        "startLine": 119,
+        "startChar": 0,
+        "endLine": 119,
+        "endChar": 10
+      },
+      "revId": "eb3fba1baa533a4b9d0ea200a8d2f98c508d03b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c6172c83_4674a031",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-11-11T18:56:49Z",
       "side": 1,
       "message": "Delete this comment, it no longer applies.",
+      "range": {
+        "startLine": 27,
+        "startChar": 6,
+        "endLine": 28,
+        "endChar": 31
+      },
+      "revId": "eb3fba1baa533a4b9d0ea200a8d2f98c508d03b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0503178d_2c4d3415",
+        "filename": "zephyr/projects/brya/brya/prj.conf",
+        "patchSetId": 10
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2021-11-11T19:05:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c6172c83_4674a031",
       "range": {
         "startLine": 27,
         "startChar": 6,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ced6a924_d46e4648",
+        "filename": "zephyr/projects/brya/brya/prj.conf",
+        "patchSetId": 10
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2021-11-11T19:05:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4acd5549_13408de5",
+      "range": {
+        "startLine": 31,
+        "startChar": 36,
+        "endLine": 31,
+        "endChar": 54
+      },
+      "revId": "eb3fba1baa533a4b9d0ea200a8d2f98c508d03b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "26333708_85995058",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-11-11T18:56:49Z",
       "side": 1,
       "message": "Nit - space before comment.",
+      "range": {
+        "startLine": 64,
+        "startChar": 1,
+        "endLine": 64,
+        "endChar": 6
+      },
+      "revId": "eb3fba1baa533a4b9d0ea200a8d2f98c508d03b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "63e92ced_8559bea1",
+        "filename": "zephyr/projects/brya/brya/prj.conf",
+        "patchSetId": 10
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2021-11-11T19:05:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "26333708_85995058",
       "range": {
         "startLine": 64,
         "startChar": 1,
