@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc18033f_2abea295",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-11-11T15:05:14Z",
+      "side": 1,
+      "message": "It\u0027s not clear what \u002716%\u0027 means. For example, you can do:\n\n- Update help/usage text.\n- Add a header line (--- sensor name --- temperature --- fan speed ---\n- \"DDR and SOC         : 312 K (\u003d 39 C)  fan\u003d16%\"\n\nor all.",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 39
+      },
+      "revId": "45cfaccc9d9f871d6d1d3f35c3e363fa574de433",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
