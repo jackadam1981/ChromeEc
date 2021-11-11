@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7cb81c3f_300f81d7",
+        "filename": "zephyr/Kconfig.powerseq",
+        "patchSetId": 10
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-11-11T18:56:49Z",
+      "side": 1,
+      "message": "Use \"config\" here.  \"menuconfig\" is used to hide options in the user interface that depend on this option.  Because there are no options that depend on CHIPSET_ALDERLAKE_SLG4BD44540, config is more appropriate.",
+      "range": {
+        "startLine": 119,
+        "startChar": 0,
+        "endLine": 119,
+        "endChar": 10
+      },
+      "revId": "eb3fba1baa533a4b9d0ea200a8d2f98c508d03b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6172c83_4674a031",
+        "filename": "zephyr/projects/brya/brya/prj.conf",
+        "patchSetId": 10
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-11-11T18:56:49Z",
+      "side": 1,
+      "message": "Delete this comment, it no longer applies.",
+      "range": {
+        "startLine": 27,
+        "startChar": 6,
+        "endLine": 28,
+        "endChar": 31
+      },
+      "revId": "eb3fba1baa533a4b9d0ea200a8d2f98c508d03b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4acd5549_13408de5",
+        "filename": "zephyr/projects/brya/brya/prj.conf",
+        "patchSetId": 10
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-11-11T18:56:49Z",
+      "side": 1,
+      "message": "Delete",
+      "range": {
+        "startLine": 31,
+        "startChar": 36,
+        "endLine": 31,
+        "endChar": 54
+      },
+      "revId": "eb3fba1baa533a4b9d0ea200a8d2f98c508d03b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26333708_85995058",
+        "filename": "zephyr/projects/brya/brya/prj.conf",
+        "patchSetId": 10
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-11-11T18:56:49Z",
+      "side": 1,
+      "message": "Nit - space before comment.",
+      "range": {
+        "startLine": 64,
+        "startChar": 1,
+        "endLine": 64,
+        "endChar": 6
+      },
+      "revId": "eb3fba1baa533a4b9d0ea200a8d2f98c508d03b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
