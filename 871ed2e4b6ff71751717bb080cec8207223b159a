@@ -140,6 +140,30 @@
       },
       "revId": "871ed2e4b6ff71751717bb080cec8207223b159a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eff76051_b6fedb12",
+        "filename": "zephyr/Kconfig.stacks",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2021-11-11T01:07:18Z",
+      "side": 1,
+      "message": "This change has been done both NPCX7 and NPCX9",
+      "parentUuid": "4a233dc6_db6476e8",
+      "range": {
+        "startLine": 87,
+        "startChar": 9,
+        "endLine": 87,
+        "endChar": 13
+      },
+      "revId": "871ed2e4b6ff71751717bb080cec8207223b159a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
