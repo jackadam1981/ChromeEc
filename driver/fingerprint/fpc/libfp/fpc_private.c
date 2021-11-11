@@ -121,7 +121,7 @@ int fpc_check_hwid(void)
 	}
 	CPRINTS(FP_SENSOR_NAME " id 0x%04x", id);
 
-	return EC_SUCCESS;
+	return (id >> 4);
 }
 
 static uint8_t fpc_read_clear_int(void)
@@ -163,7 +163,7 @@ static int fpc_pulse_hw_reset(void)
 
 	/* Check the Hardware ID */
 	ret = fpc_check_hwid();
-	if (ret != EC_SUCCESS) {
+	if (ret != FP_SENSOR_HWID) {
 		CPRINTS("Failed to verify HW ID");
 		rc = EC_ERROR_HW_INTERNAL;
 	}
