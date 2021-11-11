@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c671921f_20ab3fac",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1527153
+      },
+      "writtenOn": "2021-11-11T17:20:26Z",
+      "side": 1,
+      "message": "Hi Dai,\n\nThis will deviate from what is displayed on EC Console for similar command - temps all,\n21-11-12 06:41:46.929 \u003e temps all\n21-11-12 06:41:47.881   DDR and SOC         : 312 K \u003d 39 C  16%\n21-11-12 06:41:47.884   Ambient             : 312 K \u003d 39 C  16%\n21-11-12 06:41:47.887   Charger             : 319 K \u003d 46 C  44%\n21-11-12 06:41:47.892   WWAN                : 309 K \u003d 36 C  4%\n\nis it still okay to update display only to ectool temps command as below ?\n--- sensor name ---   temperature --- fan speed ---\nDDR and SOC         : 312 K (\u003d 39 C)  fan\u003d16%\"\n\nThanks,\nHarsha",
+      "parentUuid": "bc18033f_2abea295",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 39
+      },
+      "revId": "45cfaccc9d9f871d6d1d3f35c3e363fa574de433",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3871df04_4e118948",
         "filename": "util/ectool.c",
         "patchSetId": 7
