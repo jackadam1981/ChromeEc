@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21ec6c8a_76c31240",
+        "filename": "zephyr/emul/emul_tcpci.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1144,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-11-11T15:30:12Z",
+      "side": 1,
+      "message": "```\n ERROR: [/tmp/zbuild-7kp8_nzk-test-drivers:singleimage]/mnt/host/source/src/platform/ec/zephyr/emul/emul_tcpci.c:1156:29: error: use of undeclared identifier \u0027__device_dts_ord_DT_N_S_i2c_100_S_tcpci_emul_82_P_alert_gpio_P_gpios_IDX_0_PH_ORD\u0027\n ERROR: [/tmp/zbuild-7kp8_nzk-test-drivers:singleimage]DT_INST_FOREACH_STATUS_OKAY(TCPCI_EMUL)\n ERROR: [/tmp/zbuild-7kp8_nzk-test-drivers:singleimage]                            ^\n ERROR: [/tmp/zbuild-7kp8_nzk-test-drivers:singleimage]/mnt/host/source/src/platform/ec/zephyr/emul/emul_tcpci.c:1156:29: error: use of undeclared identifier \u0027DT_N_S_i2c_100_S_tcpci_emul_82_P_alert_gpio_P_gpios_IDX_0_VAL_pin\u0027\n ERROR: [/tmp/zbuild-7kp8_nzk-test-drivers:singleimage]/mnt/host/source/src/platform/ec/zephyr/emul/emul_tcpci.c:1156:29: error: use of undeclared identifier \u0027__device_dts_ord_DT_N_S_i2c_400_S_tcpci_ps8xxx_emul_b_P_alert_gpio_P_gpios_IDX_0_PH_ORD\u0027\n ERROR: [/tmp/zbuild-7kp8_nzk-test-drivers:singleimage]/mnt/host/source/src/platform/ec/zephyr/emul/emul_tcpci.c:1156:29: error: use of undeclared identifier \u0027DT_N_S_i2c_400_S_tcpci_ps8xxx_emul_b_P_alert_gpio_P_gpios_IDX_0_VAL_pin\u0027\n ERROR: [/tmp/zbuild-7kp8_nzk-test-drivers:singleimage]4 errors generated.\n```",
+      "range": {
+        "startLine": 1141,
+        "startChar": 2,
+        "endLine": 1144,
+        "endChar": 40
+      },
+      "revId": "174ce196c204f6e197fa983515c1e2a62e701a73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
