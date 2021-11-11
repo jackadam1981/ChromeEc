@@ -55,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2ca41274_493c7179",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2021-11-11T04:01:51Z",
+      "side": 1,
+      "message": "I think you just fix the build error. If the CONFIG_KB800X_CUSTOM_XBAR is defined, the same array can\u0027t be used as i mentioned in the bug.",
+      "parentUuid": "5a7f5416_c90cbb3f",
+      "revId": "c0a2aeb780fd932823da2ea348d12d41c4f074a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9731fa9a_fe6aff5a",
         "filename": "board/brask/usbc_config.c",
         "patchSetId": 2
