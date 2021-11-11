@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f737005_6c5d43ec",
+        "filename": "zephyr/projects/herobrine/herobrine_npcx9/src/usbc_config.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-11-11T18:28:14Z",
+      "side": 1,
+      "message": "As a follow-on CL, can you move this interrupt handler into shim/ppc.c? The ppc node needs to add a property for the GPIO, but once that is done, the shim driver can manage the interrupt.",
+      "revId": "282be03d34ab4764b7c95653c5cea99a0731b16e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
