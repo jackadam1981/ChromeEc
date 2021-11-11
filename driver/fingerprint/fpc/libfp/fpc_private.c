@@ -124,6 +124,26 @@ int fpc_check_hwid(void)
 	return EC_SUCCESS;
 }
 
+int fpc_get_hwid(void)
+{
+	uint16_t id;
+	int rc;
+
+	spi_buf[0] = FPC_CMD_HW_ID;
+
+	rc = spi_transaction(SPI_FP_DEVICE, spi_buf, 3, spi_buf,
+			     SPI_READBACK_ALL);
+	if (rc) {
+		CPRINTS("FPC HW ID read failed %d", rc);
+		return FP_ERROR_SPI_COMM;
+	}
+
+	id = (spi_buf[1] << 8) | spi_buf[2];
+	CPRINTS(FP_SENSOR_NAME " id 0x%04x", id);
+
+	return (id >> 4);
+}
+
 static uint8_t fpc_read_clear_int(void)
 {
 	spi_buf[0] = FPC_CMD_INT_CLR;
