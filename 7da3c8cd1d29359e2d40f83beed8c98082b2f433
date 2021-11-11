@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a63365b7_a2a6c38f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2021-11-11T08:37:17Z",
+      "side": 1,
+      "message": "Hi Denis,\nAdding chromium:3246296 patch to build will generate a warning like the commit message above, which looks like a conflict between the named \u0027gpio\u0027 and the phandle of pointing \u0027gpios\u0027.",
+      "revId": "7da3c8cd1d29359e2d40f83beed8c98082b2f433",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
