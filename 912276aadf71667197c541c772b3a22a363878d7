@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ca9641f_c3f18c4e",
+        "filename": "include/power.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2021-11-11T23:58:56Z",
+      "side": 1,
+      "message": "This may be done in a separate CL, this was preventing function from getting overridden.",
+      "range": {
+        "startLine": 99,
+        "startChar": 4,
+        "endLine": 99,
+        "endChar": 26
+      },
+      "revId": "912276aadf71667197c541c772b3a22a363878d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
