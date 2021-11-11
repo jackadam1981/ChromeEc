@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "5ad7a6bf_911a191c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2021-11-11T03:01:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "acc1238e_e0eb9895",
+      "range": {
+        "startLine": 14,
+        "startChar": 12,
+        "endLine": 14,
+        "endChar": 19
+      },
+      "revId": "3de43f8b045331b3674dec402c7990931b830aef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "c0ef428a_72f738be",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "906ec0ee_8008982f",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_npcx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2021-11-11T03:01:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cf507398_f65dd318",
+      "range": {
+        "startLine": 257,
+        "startChar": 42,
+        "endLine": 257,
+        "endChar": 50
+      },
+      "revId": "3de43f8b045331b3674dec402c7990931b830aef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6236feab_78c4099b",
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f94a09b_f3aa914e",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_npcx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 398,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2021-11-11T03:01:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6236feab_78c4099b",
+      "range": {
+        "startLine": 398,
+        "startChar": 60,
+        "endLine": 398,
+        "endChar": 63
+      },
+      "revId": "3de43f8b045331b3674dec402c7990931b830aef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "432482ff_abdcd6fa",
@@ -100,6 +172,30 @@
       "writtenOn": "2021-11-09T23:09:21Z",
       "side": 1,
       "message": "false",
+      "range": {
+        "startLine": 424,
+        "startChar": 28,
+        "endLine": 424,
+        "endChar": 29
+      },
+      "revId": "3de43f8b045331b3674dec402c7990931b830aef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "09da5332_6a59e102",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_npcx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 424,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2021-11-11T03:01:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "432482ff_abdcd6fa",
       "range": {
         "startLine": 424,
         "startChar": 28,
