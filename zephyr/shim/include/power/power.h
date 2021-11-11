@@ -20,7 +20,7 @@
 	DT_STRING_UPPER_TOKEN(                                                \
 		DT_PROP(                                                      \
 			cid,                                                  \
-			gpio                                                  \
+			powergpio                                             \
 		),                                                            \
 		enum_name                                                     \
 	)
