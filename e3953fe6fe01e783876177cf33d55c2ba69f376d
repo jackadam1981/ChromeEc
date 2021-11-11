@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc8c7896_91775e79",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-11-11T13:59:27Z",
+      "side": 1,
+      "message": "And you ran ectool temps all and got an expected output? It\u0027s a good practice to put a sample output in the description. (e.g. crrev.com/c/3271886)",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 4
+      },
+      "revId": "e3953fe6fe01e783876177cf33d55c2ba69f376d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "80114097_958042e9",
