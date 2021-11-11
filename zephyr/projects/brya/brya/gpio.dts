@@ -62,6 +62,11 @@
 			enum-name = "GPIO_EC_INT_L";
 			label = "EC_PCH_INT_ODL";
 		};
+		ec_edp_bl_en {
+			gpios = <&gpiod 3 GPIO_OUT_HIGH>;
+			enum-name = "GPIO_ENABLE_BACKLIGHT";
+			label = "EC_EDP_BL_EN";
+		};
 	};
 
 	hibernate-wake-pins {
