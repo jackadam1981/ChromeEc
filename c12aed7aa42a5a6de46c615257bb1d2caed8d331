@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f9203f1_c3403eb0",
+        "filename": "chip/it83xx/config_chip_it8xxx2.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2021-11-11T23:16:44Z",
+      "side": 1,
+      "message": "IT81202 and IT81302 series are all 60KB SRAM.",
+      "range": {
+        "startLine": 91,
+        "startChar": 36,
+        "endLine": 91,
+        "endChar": 46
+      },
+      "revId": "c12aed7aa42a5a6de46c615257bb1d2caed8d331",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
