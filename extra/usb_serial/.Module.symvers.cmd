@@ -1,0 +1,1 @@
+cmd_/home/chromebook/chromiumos/src/platform/ec/extra/usb_serial/Module.symvers := sed 's/ko$$/o/' /home/chromebook/chromiumos/src/platform/ec/extra/usb_serial/modules.order | scripts/mod/modpost -m -a   -o /home/chromebook/chromiumos/src/platform/ec/extra/usb_serial/Module.symvers -e -i Module.symvers   -T -

@@ -1,0 +1,1 @@
+cmd_/home/chromebook/chromiumos/src/platform/ec/extra/usb_serial/raiden.mod := { echo  /home/chromebook/chromiumos/src/platform/ec/extra/usb_serial/raiden.o;  echo; } > /home/chromebook/chromiumos/src/platform/ec/extra/usb_serial/raiden.mod

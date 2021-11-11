@@ -1,0 +1,1 @@
+cmd_/home/chromebook/chromiumos/src/platform/ec/extra/usb_serial/modules.order := {   echo /home/chromebook/chromiumos/src/platform/ec/extra/usb_serial/raiden.ko; :; } | awk '!x[$$0]++' - > /home/chromebook/chromiumos/src/platform/ec/extra/usb_serial/modules.order
