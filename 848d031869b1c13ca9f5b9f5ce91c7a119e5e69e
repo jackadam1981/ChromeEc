@@ -22,6 +22,30 @@
       },
       "revId": "848d031869b1c13ca9f5b9f5ce91c7a119e5e69e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2866ad69_47a4c959",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1048,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-11-11T19:49:30Z",
+      "side": 1,
+      "message": "agreed. most of these should be tagged with BQ257X0.\nfor historical reasons, i\u0027m continuing to use\nBQ25710 for common options and BQ25720 for new features.\nVSYS_TH2 is only available in the bq25720.",
+      "parentUuid": "48035226_b59e2ceb",
+      "range": {
+        "startLine": 1048,
+        "startChar": 7,
+        "endLine": 1048,
+        "endChar": 41
+      },
+      "revId": "848d031869b1c13ca9f5b9f5ce91c7a119e5e69e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
