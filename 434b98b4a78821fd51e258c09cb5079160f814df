@@ -52,6 +52,24 @@
       "parentUuid": "b113b5fe_1a87af4d",
       "revId": "434b98b4a78821fd51e258c09cb5079160f814df",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1d1654d_11efa33f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-11-11T18:48:24Z",
+      "side": 1,
+      "message": "Okay, ran FAFT on storo before and after the change and pass rate is the same",
+      "parentUuid": "29d88301_af8a4f75",
+      "revId": "434b98b4a78821fd51e258c09cb5079160f814df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
