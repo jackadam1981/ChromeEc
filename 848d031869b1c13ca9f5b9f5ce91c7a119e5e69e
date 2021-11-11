@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48035226_b59e2ceb",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1048,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-11-11T18:46:26Z",
+      "side": 1,
+      "message": "As a follow on CL, the config names should be cleaned up to BQ257x0 to indicate support for both BQ25710 and BQ25720.",
+      "range": {
+        "startLine": 1048,
+        "startChar": 7,
+        "endLine": 1048,
+        "endChar": 41
+      },
+      "revId": "848d031869b1c13ca9f5b9f5ce91c7a119e5e69e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
