@@ -6,15 +6,16 @@
 #include "common.h"
 #include "test_util.h"
 #include "fpc_private.h"
+#include "board.h"
+#include "fpc/fpc_sensor.h"
 
 /* Hardware-dependent smoke test that makes a SPI transaction with the
  * fingerprint sensor.
  */
 test_static int test_fp_check_hwid(void)
 {
-	/* TODO(b/187134801): modify fpc_check_hwid() to return the hwid. */
 	if (IS_ENABLED(SECTION_IS_RW))
-		TEST_EQ(fpc_check_hwid(), EC_SUCCESS, "%d");
+		TEST_EQ(fpc_check_hwid(), FP_SENSOR_HWID, "%d");
 
 	return EC_SUCCESS;
 }
