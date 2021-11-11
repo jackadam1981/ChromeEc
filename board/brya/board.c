@@ -19,6 +19,7 @@
 #include "fw_config.h"
 #include "hooks.h"
 #include "lid_switch.h"
+#include "power_status.h"
 #include "power_button.h"
 #include "power.h"
 #include "registers.h"
@@ -42,6 +43,16 @@ const int usb_port_enable[USB_PORT_COUNT] = {
 BUILD_ASSERT(ARRAY_SIZE(usb_port_enable) == USB_PORT_COUNT);
 
 /******************************************************************************/
+
+static const struct board_power_config board_config = {
+	.rop_worst = 0x50,
+	.adapter_rating = 0x80,
+};
+
+const struct board_power_config *board_get_power_config(void)
+{
+	return &board_config;
+}
 
 __override void board_cbi_init(void)
 {
