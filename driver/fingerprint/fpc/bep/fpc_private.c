@@ -135,7 +135,7 @@ int fpc_check_hwid(void)
 	}
 	CPRINTS(FP_SENSOR_NAME " id 0x%04x", id);
 
-	return EC_SUCCESS;
+	return (id >> 4);
 }
 
 /* Reset and initialize the sensor IC */

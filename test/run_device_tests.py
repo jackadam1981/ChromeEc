@@ -126,8 +126,10 @@ class AllTests:
                 TestConfig(name='flash_write_protect',
                            image_to_use=ImageType.RO,
                            toggle_power=True, enable_hw_write_protect=True),
+            # This test uses ImageType.RW because it exercises the HWID, which
+            # is only available in RW.
             'fpsensor_hw':
-                TestConfig(name='fpsensor_hw'),
+                TestConfig(name='fpsensor_hw', image_to_use=ImageType.RW),
             'fpsensor_spi_ro':
                 TestConfig(name='fpsensor', image_to_use=ImageType.RO,
                            test_args=['spi']),
@@ -257,7 +259,7 @@ def hw_write_protect(enable: bool) -> None:
     subprocess.run(cmd).check_returncode()
 
 
-def build(test_name: str, board_name: str, compiler: str) -> None:
+def build(test_name: str, image_to_use: ImageType, board_name: str, compiler: str) -> None:
     """Build specified test for specified board."""
     cmd = ['make']
 
@@ -265,9 +267,11 @@ def build(test_name: str, board_name: str, compiler: str) -> None:
         cmd = cmd + ['CC=arm-none-eabi-clang']
 
     cmd = cmd + [
+        'TEST_BUILD=y',
         'BOARD=' + board_name,
-        'test-' + test_name,
+        'PROJECT=' + test_name,
         '-j',
+        image_to_use.name.lower(),
     ]
 
     logging.debug('Running command: "%s"', ' '.join(cmd))
@@ -467,7 +471,7 @@ def main():
 
     for test in test_list:
         # build test binary
-        build(test.name, args.board, args.compiler)
+        build(test.name, test.image_to_use, args.board, args.compiler)
 
         # flash test binary
         # TODO(b/158327221): First attempt to flash fails after
