@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "65e81f0a_0993275c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-11-11T18:39:20Z",
+      "side": 1,
+      "message": "Just a couple nits.",
+      "revId": "841ec1161a8fa277a92128a412a7eab99c48ce32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b7f6e50_3b12eae5",
+        "filename": "zephyr/test/drivers/overlay.dts",
+        "patchSetId": 6
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-11-11T18:39:20Z",
+      "side": 1,
+      "message": "Nit - keep the property ordering the same as other GPIOs - enum-name then label.",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 81,
+        "endChar": 4
+      },
+      "revId": "841ec1161a8fa277a92128a412a7eab99c48ce32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0ccdc54_8467c213",
+        "filename": "zephyr/test/drivers/src/stubs.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-11-11T18:39:20Z",
+      "side": 1,
+      "message": "Please open a bug.",
+      "range": {
+        "startLine": 310,
+        "startChar": 3,
+        "endLine": 310,
+        "endChar": 7
+      },
+      "revId": "841ec1161a8fa277a92128a412a7eab99c48ce32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
