@@ -114,9 +114,15 @@ void fp_sensor_low_power(void)
 	fpc_send_cmd(FPC_CMD_DEEPSLEEP);
 }
 
-int fpc_check_hwid(void)
+/**
+ * Get the HWID of the sensor.
+ *
+ * @param id Pointer to where to store the HWID value.
+ * @return EC_SUCCESS, FP_ERROR_SPI_COMM, or FP_ERROR_BAD_HWID
+ */
+
+int fpc_get_hwid(uint16_t *id)
 {
-	uint16_t id;
 	int rc;
 
 	spi_buf[0] = FPC_CMD_HW_ID;
@@ -128,14 +134,25 @@ int fpc_check_hwid(void)
 		return FP_ERROR_SPI_COMM;
 	}
 
-	id = (spi_buf[1] << 8) | spi_buf[2];
-	if ((id >> 4) != FP_SENSOR_HWID) {
-		CPRINTS("FPC unknown silicon 0x%04x", id);
+	*id = ((spi_buf[1] << 8) | spi_buf[2]) >> 4;
+	if (*id != FP_SENSOR_HWID) {
+		CPRINTS("FPC unknown silicon 0x%04x", *id);
 		return FP_ERROR_BAD_HWID;
 	}
-	CPRINTS(FP_SENSOR_NAME " id 0x%04x", id);
 
 	return EC_SUCCESS;
+}
+
+int fpc_check_hwid(void)
+{
+	uint16_t id;
+	int status;
+
+	id = 0;
+
+	status = fpc_get_hwid(&id);
+	CPRINTS(FP_SENSOR_NAME " id 0x%04x", id);
+	return status;
 }
 
 /* Reset and initialize the sensor IC */
