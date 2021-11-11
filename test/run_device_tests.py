@@ -265,9 +265,11 @@ def build(test_name: str, board_name: str, compiler: str) -> None:
         cmd = cmd + ['CC=arm-none-eabi-clang']
 
     cmd = cmd + [
+        'TEST_BUILD=y',
         'BOARD=' + board_name,
-        'test-' + test_name,
+        'PROJECT=' + test_name,
         '-j',
+        'rw',
     ]
 
     logging.debug('Running command: "%s"', ' '.join(cmd))
