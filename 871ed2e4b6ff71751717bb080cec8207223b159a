@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "80fd22e1_8946b706",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2021-11-11T00:11:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ba0b6e13_7144344d",
+      "range": {
+        "startLine": 7,
+        "startChar": 8,
+        "endLine": 7,
+        "endChar": 12
+      },
+      "revId": "871ed2e4b6ff71751717bb080cec8207223b159a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9453f8bf_4ff8c287",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "edf1c5eb_852513e0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2021-11-11T00:11:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9453f8bf_4ff8c287",
+      "range": {
+        "startLine": 14,
+        "startChar": 36,
+        "endLine": 14,
+        "endChar": 61
+      },
+      "revId": "871ed2e4b6ff71751717bb080cec8207223b159a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b5be1b8a_d70c80ae",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-11-10T23:34:42Z",
       "side": 1,
       "message": "As noted on b:205746466.  684 bytes is sufficient for ARM APs, but Intel APs need 1056 bytes.\n\nChange this to:\n\nconfig TASK_CHIPSET_STACK_SIZE\n    default 1056 if AP_x86\n    default 684 if AP_ARM\n    default 1200 # Safe default",
+      "range": {
+        "startLine": 87,
+        "startChar": 9,
+        "endLine": 87,
+        "endChar": 13
+      },
+      "revId": "871ed2e4b6ff71751717bb080cec8207223b159a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a233dc6_db6476e8",
+        "filename": "zephyr/Kconfig.stacks",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2021-11-11T00:11:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b5be1b8a_d70c80ae",
       "range": {
         "startLine": 87,
         "startChar": 9,
