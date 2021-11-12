@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea073faf_78c5fdbc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2021-11-12T20:43:29Z",
+      "side": 1,
+      "message": "Updated Kconfig which was causing the issue with other boards. Compiled with \"zmake testall\" now.",
+      "revId": "226e69a269a6adffa96dcf3f24e9673f78d5fe15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
