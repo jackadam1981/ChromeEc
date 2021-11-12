@@ -73,6 +73,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c98b887e_33367fe4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1215230
+      },
+      "writtenOn": "2021-11-12T07:07:34Z",
+      "side": 1,
+      "message": "Could we use dummy value like 0xFF for ss_lane to skip xbar override?",
+      "parentUuid": "2ca41274_493c7179",
+      "revId": "c0a2aeb780fd932823da2ea348d12d41c4f074a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9731fa9a_fe6aff5a",
         "filename": "board/brask/usbc_config.c",
         "patchSetId": 2
