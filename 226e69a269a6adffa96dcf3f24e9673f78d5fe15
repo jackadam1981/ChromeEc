@@ -16,6 +16,46 @@
       "message": "Updated Kconfig which was causing the issue with other boards. Compiled with \"zmake testall\" now.",
       "revId": "226e69a269a6adffa96dcf3f24e9673f78d5fe15",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "abe65d2b_0e64c032",
+        "filename": "zephyr/Kconfig.powerseq",
+        "patchSetId": 13
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-11-12T21:03:54Z",
+      "side": 1,
+      "message": "This should be: \n    depends on AP_X86_INTEL_ADL\n    default y",
+      "range": {
+        "startLine": 121,
+        "startChar": 0,
+        "endLine": 121,
+        "endChar": 36
+      },
+      "revId": "226e69a269a6adffa96dcf3f24e9673f78d5fe15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06296d5f_50d5f3bc",
+        "filename": "zephyr/Kconfig.powerseq",
+        "patchSetId": 13
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-11-12T21:03:54Z",
+      "side": 1,
+      "message": "depends on AP_X86_INTEL_TGL\ndefault y",
+      "revId": "226e69a269a6adffa96dcf3f24e9673f78d5fe15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
