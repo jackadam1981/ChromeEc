@@ -7,6 +7,7 @@
 #ifndef __CROS_EC_BOARD_H
 #define __CROS_EC_BOARD_H
 
+#define VARIANT_EC_NPCX9M6F
 #include "baseboard.h"
 
 /* Chipset config */
@@ -71,6 +72,7 @@
 
 /* SPI / Host Command */
 #undef CONFIG_HOSTCMD_DEBUG_MODE
+#undef CONFIG_HOSTCMD_REGULATOR
 #define CONFIG_HOSTCMD_DEBUG_MODE HCDEBUG_OFF
 
 /* USB-A */
@@ -94,13 +96,10 @@ enum sensor_id {
 };
 
 enum adc_channel {
-	ADC_VBUS_C0,             /* ADC 0 */
+	ADC_CHARGER_PMON,        /* ADC 0 */
 	ADC_BOARD_ID_0,          /* ADC 1 */
 	ADC_BOARD_ID_1,          /* ADC 2 */
 	ADC_CHARGER_AMON_R,      /* ADC 3 */
-	ADC_VBUS_C1,             /* ADC 5 */
-	ADC_CHARGER_PMON,        /* ADC 6 */
-
 	/* Number of ADC channels */
 	ADC_CH_COUNT,
 };
@@ -109,6 +108,7 @@ enum pwm_channel {
 	PWM_CH_LED1,
 	PWM_CH_LED2,
 	PWM_CH_LED3,
+	PWM_CH_KBBL,
 	PWM_CH_COUNT,
 };
 

@@ -162,9 +162,12 @@ int pd_snk_is_vbus_provided(int port)
 	 * (b:181203590#comment20) TODO(yllin): use
 	 *  PD_VSINK_DISCONNECT_PD for non-5V case.
 	 */
-	vbus = adc_read_channel(board_get_vbus_adc(port)) >=
-	       PD_V_SINK_DISCONNECT_MAX;
-
+	#if defined(VARIANT_EC_IT81202)
+		vbus = adc_read_channel(board_get_vbus_adc(port)) >=
+			PD_V_SINK_DISCONNECT_MAX;
+	#elif defined(VARIANT_EC_NPCX9M6F)
+		vbus = board_get_vbus_voltage(port);
+	#endif
 #ifdef CONFIG_USB_CHARGER
 	/*
 	 * There's no PPC to inform VBUS change for usb_charger, so inform

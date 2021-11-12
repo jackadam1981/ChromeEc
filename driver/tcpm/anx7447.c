@@ -408,7 +408,7 @@ static int anx7447_release(int port)
 }
 
 #ifdef CONFIG_USB_PD_VBUS_DETECT_TCPC
-static int anx7447_get_vbus_voltage(int port)
+int anx7447_get_vbus_voltage(int port)
 {
 	int vbus_volt = 0;
 
