@@ -495,8 +495,13 @@ static void pchg_suspend_complete(void)
 	CPRINTS("%s", __func__);
 	device_enable_event(EC_DEVICE_EVENT_WLC);
 }
+#ifdef CONFIG_CHIPSET_RESUME_INIT_HOOK
 DECLARE_HOOK(HOOK_CHIPSET_SUSPEND_COMPLETE, pchg_suspend_complete,
 	     HOOK_PRIO_DEFAULT);
+#else
+DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, pchg_suspend_complete,
+	     HOOK_PRIO_DEFAULT);
+#endif
 
 static void pchg_startup(void)
 {
