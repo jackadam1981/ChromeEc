@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a29ea8f5_10c09d9e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1527153
+      },
+      "writtenOn": "2021-11-12T11:00:49Z",
+      "side": 1,
+      "message": "Hi Dai,\n\nI have modified the display message of temps command for both ectool and EC console,\n\nCPU Console:\nlocalhost ~ # ectool temps all\n--sensor name -------- temperature -------- fan speed --\nDDR and SOC           314 K (\u003d 41 C)          40%\nFan                   302 K (\u003d 29 C)           0%\nCharger               314 K (\u003d 41 C)          40%\n\nEC Console:\n21-11-12 23:48:28.059 --sensor name -------- temperature -------- fan speed --\n21-11-12 23:48:28.062   DDR and SOC           314 K (\u003d 41 C)       40%\n21-11-12 23:48:28.067   Fan                   302 K (\u003d 29 C)        0%\n21-11-12 23:48:28.069   Charger               314 K (\u003d 41 C)       40\n\nPlease let me know for any modifications if required.\n\nThanks,\nHarsha",
+      "revId": "50650b6801f4da5a349608a74fdcb333ab5865a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
