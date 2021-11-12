@@ -33,6 +33,7 @@
 #include "power.h"
 #include "regulator.h"
 #include "spi.h"
+#include "shi_chip.h"
 #include "switch.h"
 #include "tablet_mode.h"
 #include "task.h"
@@ -67,6 +68,7 @@ int hibernate_wake_pins_used = ARRAY_SIZE(hibernate_wake_pins);
  * Channel F is reserved for EC debug.
  */
 
+#if defined(VARIANT_EC_IT81202)
 /* I2C ports */
 const struct i2c_port_t i2c_ports[] = {
 	{"bat_chg",  IT83XX_I2C_CH_A, 100, GPIO_I2C_A_SCL, GPIO_I2C_A_SDA},
@@ -80,3 +82,20 @@ int board_allow_i2c_passthru(int port)
 {
 	return (port == I2C_PORT_VIRTUAL_BATTERY);
 }
+#elif defined(VARIANT_EC_NPCX9M6F)
+/* I2C ports */
+const struct i2c_port_t i2c_ports[] = {
+	{"sensor", NPCX_I2C_PORT0_0, 400, GPIO_EC_I2C_SENSOR_SCL,
+		GPIO_EC_I2C_SENSOR_SDA},
+	{"usb0", NPCX_I2C_PORT1_0, 400, GPIO_EC_I2C_USB_C0_SCL,
+		GPIO_EC_I2C_USB_C0_SDA},
+	{"usb1", NPCX_I2C_PORT2_0, 400, GPIO_EC_I2C_USB_C1_SCL,
+		GPIO_EC_I2C_USB_C1_SDA},
+	{"chg_cbi", NPCX_I2C_PORT3_0, 100, GPIO_EC_I2C_PWR_CBI_SCL,
+		GPIO_EC_I2C_PWR_CBI_SDA},
+	{"bat", NPCX_I2C_PORT5_0, 100, GPIO_EC_I2C_BATT_SCL,
+		GPIO_EC_I2C_BATT_SDA},
+};
+const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
+
+#endif
