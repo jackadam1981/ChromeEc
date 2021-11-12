@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0fb19a1a_cf362d4c",
+        "filename": "baseboard/brya/battery_presence.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-11-12T20:45:15Z",
+      "side": 1,
+      "message": "Sounds like cbi.h needs to include common.h",
+      "parentUuid": "69afc569_71ecf003",
+      "revId": "cfb91f69112d807320d796e0ea562b44ff215439",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c828fbc6_e2609086",
         "filename": "board/brya/fw_config.c",
         "patchSetId": 1
@@ -84,6 +102,24 @@
       "side": 1,
       "message": "cbi.h is using \"__override_proto\" which is #defined in common.h. moving cbi.h before common.h will cause compilation to fail.",
       "parentUuid": "910a467f_d5042b10",
+      "revId": "cfb91f69112d807320d796e0ea562b44ff215439",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4538fb0b_628a4fec",
+        "filename": "board/brya/usbc_config.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-11-12T20:45:15Z",
+      "side": 1,
+      "message": "See above, sounds like cbi.h is not including all of it\u0027s required headers",
+      "parentUuid": "739cc90c_3dce1d08",
       "revId": "cfb91f69112d807320d796e0ea562b44ff215439",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
