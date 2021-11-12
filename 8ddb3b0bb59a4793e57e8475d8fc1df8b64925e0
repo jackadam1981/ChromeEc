@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "690aa327_0a14e8e8",
+        "filename": "chip/it83xx/config_chip_it8xxx2.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2021-11-12T02:24:29Z",
+      "side": 1,
+      "message": "I assume that we won\u0027t use 256KB part on this codebase. (RAM base of 256 KB part is also 0x80080000)",
+      "range": {
+        "startLine": 96,
+        "startChar": 0,
+        "endLine": 96,
+        "endChar": 74
+      },
+      "revId": "8ddb3b0bb59a4793e57e8475d8fc1df8b64925e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
