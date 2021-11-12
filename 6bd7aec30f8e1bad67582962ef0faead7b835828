@@ -1,6 +1,40 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d027b9c_101ca3bd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-11-12T20:33:03Z",
+      "side": 1,
+      "message": "Probably add a one-line description",
+      "revId": "6bd7aec30f8e1bad67582962ef0faead7b835828",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "312f0074_8fb60a78",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-11-12T20:33:03Z",
+      "side": 1,
+      "message": "I\u0027m guessing you also tried with the new tsv param, and a classic bad param like \"fish\"?",
+      "revId": "6bd7aec30f8e1bad67582962ef0faead7b835828",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "fa118941_4a80aaaf",
@@ -14,6 +48,47 @@
       "writtenOn": "2021-11-12T17:16:05Z",
       "side": 1,
       "message": "Please LMK if there are any conventions or processes I have missed for committing to the ec repo.\n\nAre there any existing tast tests or anything that verify ectool functionality which I should go update or add to?",
+      "revId": "6bd7aec30f8e1bad67582962ef0faead7b835828",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b371506_c63d6f85",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-11-12T20:33:03Z",
+      "side": 1,
+      "message": "We always run \"make -j buildall\" and the zephyr build equivalent, though CQ+1 will cover both for you.  They run all our unit tests we have in the codebase. \n\nI don\u0027t believe I\u0027ve heard of ectool tast tests.  I usually just test the commands that I\u0027ve been changing on a system and call it good. Adding Jeremy in case he\u0027s heard of ectool unit and/or system tests.",
+      "parentUuid": "fa118941_4a80aaaf",
+      "revId": "6bd7aec30f8e1bad67582962ef0faead7b835828",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ac073c9_76aa111f",
+        "filename": "util/ectool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 6387,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-11-12T20:33:03Z",
+      "side": 1,
+      "message": "Already checked in the if before this?",
+      "range": {
+        "startLine": 6387,
+        "startChar": 6,
+        "endLine": 6387,
+        "endChar": 10
+      },
       "revId": "6bd7aec30f8e1bad67582962ef0faead7b835828",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
