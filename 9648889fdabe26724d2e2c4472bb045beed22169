@@ -16,6 +16,29 @@
       "message": "Can you also verify the RAM base is correct as well?",
       "revId": "9648889fdabe26724d2e2c4472bb045beed22169",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6bf3beb6_aa4b21fc",
+        "filename": "chip/it83xx/config_chip_it8xxx2.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2021-11-12T02:04:31Z",
+      "side": 1,
+      "message": "The RAM base are below:\n1MB part: 0x80100000\n512KB part: 0x80080000",
+      "range": {
+        "startLine": 96,
+        "startChar": 0,
+        "endLine": 96,
+        "endChar": 46
+      },
+      "revId": "9648889fdabe26724d2e2c4472bb045beed22169",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
