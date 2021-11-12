@@ -91,6 +91,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e1b85f0c_433121e5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2021-11-12T09:08:22Z",
+      "side": 1,
+      "message": "I\u0027m not quite sure if we can use it. But the current structure can\u0027t support this. Maybe you can add a #if defined(CONFIG_KB800X_CUSTOM_XBAR) #ERROR \"Structure not support\" to avoid someone adds CONFIG_KB800X_CUSTOM_XBAR? Or maybe you can fix the structure issue.",
+      "parentUuid": "c98b887e_33367fe4",
+      "revId": "c0a2aeb780fd932823da2ea348d12d41c4f074a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9731fa9a_fe6aff5a",
         "filename": "board/brask/usbc_config.c",
         "patchSetId": 2
