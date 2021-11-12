@@ -19,8 +19,6 @@
 #define ULPOSC2_CLOCK_MHZ 330
 #endif
 
-void scp_enable_clock(void);
-
 enum scp_clock_source {
 	SCP_CLK_26M = CLK_SEL_SYS_26M,
 	SCP_CLK_32K = CLK_SEL_32K,
