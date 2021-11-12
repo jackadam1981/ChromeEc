@@ -32,12 +32,19 @@
 #include "timer.h"
 #include "uart.h"
 
+const struct spi_device_t spi_devices[] = {};
+const unsigned int spi_devices_used = ARRAY_SIZE(spi_devices);
+
 /* Initialize board. */
 static void board_init(void)
 {
 	/* Enable motion sensor interrupt */
 	gpio_enable_interrupt(GPIO_BASE_IMU_INT_L);
 	gpio_enable_interrupt(GPIO_LID_ACCEL_INT_L);
+
+	pwm_set_duty(PWM_CH_LED1, 70);
+	pwm_set_duty(PWM_CH_LED2, 70);
+	pwm_set_duty(PWM_CH_LED3, 70);
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
@@ -134,14 +141,12 @@ void motion_interrupt(enum gpio_signal signal)
 /* ADC channels. Must be in the exactly same order as in enum adc_channel. */
 const struct adc_t adc_channels[] = {
 	/* Convert to mV (3000mV/1024). */
-	{"VBUS_C0", ADC_MAX_MVOLT * 10, ADC_READ_MAX + 1, 0, CHIP_ADC_CH0},
-	{"BOARD_ID_0", ADC_MAX_MVOLT, ADC_READ_MAX + 1, 0, CHIP_ADC_CH1},
-	{"BOARD_ID_1", ADC_MAX_MVOLT, ADC_READ_MAX + 1, 0, CHIP_ADC_CH2},
+	{"CHARGER_PMON", NPCX_ADC_CH0, ADC_MAX_VOLT, ADC_READ_MAX + 1, 0},
+	{"BOARD_ID_0", NPCX_ADC_CH1, ADC_MAX_VOLT, ADC_READ_MAX + 1, 0},
+	{"BOARD_ID_1", NPCX_ADC_CH2, ADC_MAX_VOLT, ADC_READ_MAX + 1, 0},
 	/* AMON/BMON gain = 17.97 */
-	{"CHARGER_AMON_R", ADC_MAX_MVOLT * 1000 / 17.97, ADC_READ_MAX + 1, 0,
-	 CHIP_ADC_CH3},
-	{"VBUS_C1", ADC_MAX_MVOLT * 10, ADC_READ_MAX + 1, 0, CHIP_ADC_CH5},
-	{"CHARGER_PMON", ADC_MAX_MVOLT, ADC_READ_MAX + 1, 0, CHIP_ADC_CH6},
+	{"CHARGER_AMON_R", NPCX_ADC_CH3, ADC_MAX_VOLT * 1000 / 17.97,
+				ADC_READ_MAX + 1, 0},
 };
 BUILD_ASSERT(ARRAY_SIZE(adc_channels) == ADC_CH_COUNT);
 
@@ -157,20 +162,22 @@ const struct pwm_t pwm_channels[] = {
 	[PWM_CH_LED1] = {
 		.channel = 0,
 		.flags = PWM_CONFIG_DSLEEP | PWM_CONFIG_ACTIVE_LOW,
-		.freq_hz = 324, /* maximum supported frequency */
-		.pcfsr_sel = PWM_PRESCALER_C4
+		.freq = 4800, /* maximum supported frequency */
 	},
 	[PWM_CH_LED2] = {
 		.channel = 1,
 		.flags = PWM_CONFIG_DSLEEP | PWM_CONFIG_ACTIVE_LOW,
-		.freq_hz = 324, /* maximum supported frequency */
-		.pcfsr_sel = PWM_PRESCALER_C4
+		.freq = 4800, /* maximum supported frequency */
 	},
 	[PWM_CH_LED3] = {
 		.channel = 2,
 		.flags = PWM_CONFIG_DSLEEP | PWM_CONFIG_ACTIVE_LOW,
-		.freq_hz = 324, /* maximum supported frequency */
-		.pcfsr_sel = PWM_PRESCALER_C4
+		.freq = 4800, /* maximum supported frequency */
+	},
+	[PWM_CH_KBLIGHT] = {
+		.channel = 5,
+		.flags = 0,
+		.freq = 2400, /* maximum supported frequency */
 	},
 };
 BUILD_ASSERT(ARRAY_SIZE(pwm_channels) == PWM_CH_COUNT);
