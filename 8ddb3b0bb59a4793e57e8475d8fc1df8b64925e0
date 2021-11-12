@@ -142,6 +142,30 @@
       },
       "revId": "8ddb3b0bb59a4793e57e8475d8fc1df8b64925e0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "83c362a0_7137cd7f",
+        "filename": "chip/it83xx/config_chip_it8xxx2.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2021-11-12T03:29:19Z",
+      "side": 1,
+      "message": "LGTM",
+      "parentUuid": "76057d43_8ff24f1d",
+      "range": {
+        "startLine": 96,
+        "startChar": 0,
+        "endLine": 96,
+        "endChar": 74
+      },
+      "revId": "8ddb3b0bb59a4793e57e8475d8fc1df8b64925e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
