@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5015ef7e_154091ed",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-11-12T20:27:39Z",
+      "side": 1,
+      "message": "Looks like zephyr build has errors, but otherwise looking good to me:\n\n ERROR: [/tmp/zbuild-24xa1yfu-brya:ro]In file included from /tmp/zbuild-24xa1yfu-brya/modules/ec/include/common.h:242,\n ERROR: [/tmp/zbuild-24xa1yfu-brya:ro]                 from /mnt/host/source/src/platform/ec/zephyr/shim/chip/npcx/system_download_from_flash.c:9:\n ERROR: [/tmp/zbuild-24xa1yfu-brya:ro]/tmp/zbuild-24xa1yfu-brya/modules/ec/include/config.h:5453:2: error: #error \"S4_RESIDENCY needs eSPI support or SLP_S5 routed\"\n ERROR: [/tmp/zbuild-24xa1yfu-brya:ro] 5453 | #error \"S4_RESIDENCY needs eSPI support or SLP_S5 routed\"\n ERROR: [/tmp/zbuild-24xa1yfu-brya:ro]      |  ^~~~~",
+      "revId": "ebf97b080d6fe83068f0088f3d318a5b5bc0a427",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
