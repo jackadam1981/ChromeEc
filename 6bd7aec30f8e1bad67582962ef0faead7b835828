@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b594bd63_79e4b7fa",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1196554
+      },
+      "writtenOn": "2021-11-12T21:14:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8b551a26_ee99a198",
+      "revId": "6bd7aec30f8e1bad67582962ef0faead7b835828",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "312f0074_8fb60a78",
@@ -67,6 +85,24 @@
       "side": 1,
       "message": "Yes, I tried invalid args and number of args as well.",
       "parentUuid": "312f0074_8fb60a78",
+      "revId": "6bd7aec30f8e1bad67582962ef0faead7b835828",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "639bb8cb_bbe80a55",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1196554
+      },
+      "writtenOn": "2021-11-12T21:14:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9bce264c_a8a5b010",
       "revId": "6bd7aec30f8e1bad67582962ef0faead7b835828",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -161,6 +197,30 @@
       "side": 1,
       "message": "Previous one is \u003e\u003d, where this one is \u003e.\n\nIf we have 2 or more args, we either have invalid args (checked here), or a valid arg (tsv).",
       "parentUuid": "7ac073c9_76aa111f",
+      "range": {
+        "startLine": 6387,
+        "startChar": 6,
+        "endLine": 6387,
+        "endChar": 10
+      },
+      "revId": "6bd7aec30f8e1bad67582962ef0faead7b835828",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0296e9a5_8596c26d",
+        "filename": "util/ectool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 6387,
+      "author": {
+        "id": 1196554
+      },
+      "writtenOn": "2021-11-12T21:14:47Z",
+      "side": 1,
+      "message": "Anyways, the way I originally wrote this is weird. I think the next patchset is easier to read.\n\nAlso, PS1 erroneously accepted `tsvblah` as a valid parameter.",
+      "parentUuid": "01a01c4e_6fd5d6f8",
       "range": {
         "startLine": 6387,
         "startChar": 6,
