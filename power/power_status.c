@@ -26,8 +26,8 @@
 #include "battery_smart.h"
 #include "charge_manager.h"
 #include "charge_state.h"
-#include "console.h"
 #include "chipset.h"
+#include "console.h"
 #include "ec_commands.h"
 #include "extpower.h"
 #include "hooks.h"
@@ -146,7 +146,8 @@ static void program_dbpt_params(void)
 	CPRINTS("Battery supports DBPT, programmed");
 
 	dbpt_available = true;
-	update_dbpt();
+	if (IS_ENABLED(CONFIG_BATTERY_SUPPORTS_DBPT_V2PLUS))
+		update_dbpt();
 }
 
 /***************************************************************
@@ -196,7 +197,7 @@ static void deassert_prochot(void)
 {
 	if (prochot_action == PROCHOT_DEASSERT_OK)
 		throttle_ap(THROTTLE_OFF, THROTTLE_HARD,
-			THROTTLE_SRC_BAT_DISCHG_CURRENT);
+				THROTTLE_SRC_BAT_DISCHG_CURRENT);
 }
 DECLARE_DEFERRED(deassert_prochot);
 
@@ -231,17 +232,31 @@ void increment_pd_seq(void)
 static void update_power_source(void)
 {
 	const enum system_power_source old_power_source = current_power_source;
+	const bool batt_pres = battery_is_present() == BP_YES;
+	const int ext_pres = extpower_is_present();
 	int batt_soc;
 	bool on_battery;
 
 	batt_soc = usb_get_battery_soc();
 
 	/* Determine new power source */
-	on_battery = get_latest_power_source();
+	if (ext_pres && batt_pres) {
+		current_power_source = POWER_SOURCE_AC_BATTERY;
+	} else if (ext_pres) {
+		current_power_source = POWER_SOURCE_AC;
+	} else if (batt_pres) {
+		current_power_source = POWER_SOURCE_BATTERY;
+	} else {
+		CPRINTS("Power glitch encountered, no power source!");
+		current_power_source = POWER_SOURCE_UNKNOWN;
+	}
+
+	on_battery = (current_power_source == POWER_SOURCE_BATTERY ||
+		      current_power_source == POWER_SOURCE_AC_BATTERY);
 
 	/*
 	 * Inform the AP and assert PROCHOT when power sources change,
-	 * or if the battey SoC is less than or equal to BATTERY_LEVEL_LOW.
+	 * or if the battery SoC is less than or equal to BATTERY_LEVEL_LOW.
 	 */
 	if ((old_power_source != current_power_source) ||
 		(on_battery && batt_soc <= BATTERY_LEVEL_LOW)) {
@@ -255,6 +270,7 @@ static void update_power_source(void)
 				THROTTLE_SRC_BAT_DISCHG_CURRENT);
 		hook_call_deferred(&deassert_prochot_data, 2 * SECOND);
 	}
+
 }
 DECLARE_HOOK(HOOK_BATTERY_SOC_CHANGE, update_power_source, HOOK_PRIO_DEFAULT);
 DECLARE_HOOK(HOOK_USB_PD_DISCONNECT, update_power_source, HOOK_PRIO_DEFAULT);
@@ -312,6 +328,7 @@ DECLARE_HOOK(HOOK_INIT, power_status_init, HOOK_PRIO_LAST);
 static enum ec_status host_command_power_info(
 	struct host_cmd_handler_args *args)
 {
+	const struct board_power_config *config = board_get_power_config();
 	const unsigned int ac_power = charge_manager_get_power_limit_uw() /
 		1000000;
 	struct ec_response_power_info_v1 *r = args->response;
@@ -321,26 +338,27 @@ static enum ec_status host_command_power_info(
 	if (IS_ENABLED(CONFIG_BATTERY_SUPPORTS_DBPT_V2PLUS) && dbpt_available)
 		dbpt_level = 2;
 
-	/* Get static values */
-	r->config = board_get_power_config();
+	/* These values are static */
+	r->nominal_charger_eff = config->nominal_charger_eff;
+	r->rop_avg_eff = config->rop_avg_eff;
+	r->rop_peak_eff = config->rop_peak_eff;
+	r->soc_avg_eff = config->soc_avg_eff;
+	r->soc_peak_eff = config->soc_peak_eff;
+	r->rop_worst = config->rop_worst;
+	r->rop_avg = config->rop_avg;
+	r->rop_peak = config->rop_peak;
 
 	/* These values are dynamic */
 	r->battery_1cd = batt_1C_derated;
 	r->ac_adapter_100pct = ac_power;
 	r->battery_soc = batt_soc;
 	r->system_power_source = current_power_source;
+	r->pd_sequence = pd_state_sequence;
 
 	/* Intel-specific items */
 	r->intel.batt_dbpt_support_level = dbpt_level;
-
-	/* Fill the batt power values based on the battery config */
-	if (IS_ENABLED(CONFIG_BATTERY_SUPPORTS_DBPT_V2PLUS)) {
-		r->intel.batt_dbpt_max_peak_power = 0;
-		r->intel.batt_dbpt_sus_peak_power = 0;
-	} else {
-		r->intel.batt_dbpt_max_peak_power = batt_max_peak_power;
-		r->intel.batt_dbpt_sus_peak_power = batt_sus_peak_power;
-	}
+	r->intel.batt_dbpt_max_peak_power = batt_max_peak_power;
+	r->intel.batt_dbpt_sus_peak_power = batt_sus_peak_power;
 
 	/*
 	 * If USB-PD is used, then this number is the same as the 100pct
@@ -358,6 +376,19 @@ static enum ec_status host_command_power_info(
 DECLARE_HOST_COMMAND(EC_CMD_POWER_INFO,
 		host_command_power_info,
 		EC_VER_MASK(1));
+
+/***************************************************************
+ * Host command to retrieve battery info
+ */
+static enum ec_status host_command_battery_info(
+		struct host_cmd_handler_args *args)
+{
+	const struct ec_battery_info_v1 *p = args->params;
+
+	return EC_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_BATTERY_INFO, host_command_battery_info,
+			EC_VER_MASK(1));
 
 /***************************************************************
  * Host command for Power Boss OK
