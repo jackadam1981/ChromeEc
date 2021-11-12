@@ -5,10 +5,14 @@
 #
 # Board specific files build
 
-# the IC is ITE IT8xxx2
-CHIP:=it83xx
-CHIP_FAMILY:=it8xxx2
-CHIP_VARIANT:=it81202bx_1024
+# the IC is Nuvoton NPCX9 M-Series EC (npcx9m3f, npcx9m6f)
+# CHIP_VARIANT:
+#    npcx9m6f  - for npcx9 ec with 512 KByte internal flash.
+#    npcx9m3f  - for npcx9 ec with 512 KByte internal flash, more RAM.
+
+CHIP:=npcx
+CHIP_FAMILY:=npcx9
+CHIP_VARIANT:=npcx9m6f
 BASEBOARD:=corsola
 
 board-y=led.o
