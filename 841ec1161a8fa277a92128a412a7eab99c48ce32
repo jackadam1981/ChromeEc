@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "74794661_08c642c7",
+        "filename": "zephyr/test/drivers/overlay.dts",
+        "patchSetId": 6
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-11-12T15:56:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5b7f6e50_3b12eae5",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 81,
+        "endChar": 4
+      },
+      "revId": "841ec1161a8fa277a92128a412a7eab99c48ce32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a0ccdc54_8467c213",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-11-11T18:39:20Z",
       "side": 1,
       "message": "Please open a bug.",
+      "range": {
+        "startLine": 310,
+        "startChar": 3,
+        "endLine": 310,
+        "endChar": 7
+      },
+      "revId": "841ec1161a8fa277a92128a412a7eab99c48ce32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cbb36c66_c5867ec1",
+        "filename": "zephyr/test/drivers/src/stubs.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-11-12T15:56:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a0ccdc54_8467c213",
       "range": {
         "startLine": 310,
         "startChar": 3,
