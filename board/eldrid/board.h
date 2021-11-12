@@ -180,6 +180,12 @@ enum usbc_port {
 };
 
 void board_reset_pd_mcu(void);
+void flick_led_1sec_on_1sec_off(void);
+void flick_led_1sec_on_3sec_off(void);
+void flick_led_3sec_on_1sec_off(void);
+void flick_led_3sec_on_3sec_off(void);
+void flick_led_1sec_on_6sec_off(void);
+void flick_led_6sec_on_1sec_off(void);
 
 #endif /* !__ASSEMBLER__ */
 

@@ -19,6 +19,8 @@
 #include "usb_pd.h"
 #include "util.h"
 
+#include "../../../board/eldrid/board.h"
+
 #define SYV682X_FLAGS_SOURCE_ENABLED	BIT(0)
 #define SYV682X_FLAGS_SINK_ENABLED	BIT(1)
 /* 0 -> CC1, 1 -> CC2 */
@@ -286,6 +288,7 @@ static void syv682x_handle_status_interrupt(int port, int regval)
 				     SYV682X_FLAGS_5V_OC)) {
 		vbus_oc_timer[port].val =
 			get_time().val + SOURCE_OC_DEGLITCH_MS * MSEC;
+		flick_led_3sec_on_1sec_off(); //[SC]
 	} else if ((regval & SYV682X_STATUS_OC_5V) &&
 		   (get_time().val > vbus_oc_timer[port].val)) {
 		vbus_oc_timer[port].val = UINT64_MAX;
@@ -307,6 +310,7 @@ static void syv682x_handle_status_interrupt(int port, int regval)
 	if (syv682x_interrupt_filter(port, regval, SYV682X_STATUS_TSD,
 				     SYV682X_FLAGS_TSD)) {
 		ppc_prints("TSD!", port);
+		flick_led_3sec_on_3sec_off(); //[SC]
 		atomic_clear_bits(&flags[port],
 				  SYV682X_FLAGS_SOURCE_ENABLED |
 					  SYV682X_FLAGS_SINK_ENABLED);
@@ -314,6 +318,7 @@ static void syv682x_handle_status_interrupt(int port, int regval)
 	if (syv682x_interrupt_filter(port, regval, SYV682X_STATUS_OVP,
 				     SYV682X_FLAGS_OVP)) {
 		ppc_prints("VBUS OVP!", port);
+		flick_led_1sec_on_6sec_off(); //[SC]
 		atomic_clear_bits(&flags[port], SYV682X_FLAGS_SOURCE_ENABLED);
 	}
 
@@ -326,6 +331,7 @@ static void syv682x_handle_status_interrupt(int port, int regval)
 	if (regval & SYV682X_STATUS_OC_HV) {
 		ppc_prints("Sink OCP!", port);
 		atomic_add(&sink_ocp_count[port], 1);
+		flick_led_6sec_on_1sec_off(); //[SC]
 		if ((sink_ocp_count[port] < OCP_COUNT_LIMIT) &&
 		    (flags[port] & SYV682X_FLAGS_SINK_ENABLED)) {
 			syv682x_vbus_sink_enable(port, 1);
@@ -350,6 +356,7 @@ static int syv682x_handle_control_4_interrupt(int port, int regval)
 	 */
 	if (syv682x_interrupt_filter(port, regval, SYV682X_CONTROL_4_VCONN_OCP,
 				     SYV682X_FLAGS_VCONN_OCP)) {
+		flick_led_1sec_on_1sec_off(); //[SC]
 		vconn_oc_timer[port].val =
 			get_time().val + VCONN_OC_DEGLITCH_MS * MSEC;
 	} else if ((regval & SYV682X_CONTROL_4_VCONN_OCP) &&
@@ -373,6 +380,7 @@ static int syv682x_handle_control_4_interrupt(int port, int regval)
 	 * recoverable.
 	 */
 	if (regval & SYV682X_CONTROL_4_VBAT_OVP) {
+		flick_led_1sec_on_3sec_off(); //[SC]
 		ppc_prints("VBAT or CC OVP!", port);
 		syv682x_init(port);
 		pd_handle_cc_overvoltage(port);

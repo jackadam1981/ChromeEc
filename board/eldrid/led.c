@@ -108,11 +108,11 @@ void led_set_color_battery(enum ec_led_colors color)
 
 void led_set_color_power(enum ec_led_colors color)
 {
-	if (color == EC_LED_COLOR_WHITE)
-		gpio_set_level(GPIO_POWER_LED_GATE, PWR_LED_ON_LVL);
-	else
+	//if (color == EC_LED_COLOR_WHITE)
+		//gpio_set_level(GPIO_POWER_LED_GATE, PWR_LED_ON_LVL);
+	//else
 		/* LED_OFF and unsupported colors */
-		gpio_set_level(GPIO_POWER_LED_GATE, PWR_LED_OFF_LVL);
+		//gpio_set_level(GPIO_POWER_LED_GATE, PWR_LED_OFF_LVL);
 }
 
 void led_get_brightness_range(enum ec_led_id led_id, uint8_t *brightness_range)

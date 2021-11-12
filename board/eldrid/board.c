@@ -65,7 +65,8 @@ struct keyboard_scan_config keyscan_config = {
 		0xa4, 0xff, 0xfe, 0x55, 0xfa, 0xca  /* full set */
 	},
 };
-
+static int counter;
+static int triggered;
 /******************************************************************************/
 /*
  * FW_CONFIG defaults for Volteer if the CBI data is not initialized.
@@ -610,3 +611,124 @@ int ppc_get_alert_status(int port)
 	else
 		return gpio_get_level(GPIO_USB_C1_PPC_INT_ODL) == 0;
 }
+
+void flick_led_1sec_on_1sec_off(void)
+{
+	triggered=1;
+}
+
+void flick_led_1sec_on_1sec_off_hook(void)
+{
+	if(!(triggered == 1))
+		return;
+	
+	counter++;
+	if((counter % 2) == 0) {
+		CPRINTS("[SC] 11");
+		gpio_set_level(GPIO_POWER_LED_GATE, 1);
+	}else{
+		gpio_set_level(GPIO_POWER_LED_GATE, 0);
+	}
+}
+DECLARE_HOOK(HOOK_SECOND, flick_led_1sec_on_1sec_off_hook, HOOK_PRIO_DEFAULT);
+
+void flick_led_1sec_on_3sec_off(void)
+{
+	triggered=2;
+}
+
+void flick_led_1sec_on_3sec_off_hook(void)
+{
+	if(!(triggered == 2))
+		return;
+	
+	counter++;
+	if((counter % 3) == 0) {
+		CPRINTS("[SC] 13");
+		gpio_set_level(GPIO_POWER_LED_GATE, 1);
+	}else{
+		gpio_set_level(GPIO_POWER_LED_GATE, 0);
+	}
+}
+DECLARE_HOOK(HOOK_SECOND, flick_led_1sec_on_3sec_off_hook, HOOK_PRIO_DEFAULT);
+
+void flick_led_3sec_on_1sec_off(void)
+{
+	triggered=3;
+}
+
+void flick_led_3sec_on_1sec_off_hook(void)
+{
+	if(!(triggered == 3))
+		return;
+	
+	counter++;
+	if((counter % 3) == 0) {
+		CPRINTS("[SC] 31");
+		gpio_set_level(GPIO_POWER_LED_GATE, 0);
+	}else{
+		gpio_set_level(GPIO_POWER_LED_GATE, 1);
+	}
+}
+DECLARE_HOOK(HOOK_SECOND, flick_led_3sec_on_1sec_off_hook, HOOK_PRIO_DEFAULT);
+
+void flick_led_3sec_on_3sec_off(void)
+{
+	triggered=4;
+}
+
+void flick_led_3sec_on_3sec_off_hook(void)
+{
+	if(!(triggered == 4))
+		return;
+
+	counter++;
+
+	if((counter % 6) < 3) {
+		CPRINTS("[SC] 33");
+		gpio_set_level(GPIO_POWER_LED_GATE, 0);
+	}else{
+		gpio_set_level(GPIO_POWER_LED_GATE, 1);
+	}
+}
+DECLARE_HOOK(HOOK_SECOND, flick_led_3sec_on_3sec_off_hook, HOOK_PRIO_DEFAULT);
+
+void flick_led_1sec_on_6sec_off(void)
+{
+	triggered=5;
+}
+
+void flick_led_1sec_on_6sec_off_hook(void)
+{
+	if(!(triggered == 5))
+		return;
+	
+	counter++;
+	if((counter % 6) == 0) {
+		CPRINTS("[SC] 16");
+		gpio_set_level(GPIO_POWER_LED_GATE, 1);
+	}else{
+		gpio_set_level(GPIO_POWER_LED_GATE, 0);
+	}
+}
+DECLARE_HOOK(HOOK_SECOND, flick_led_1sec_on_6sec_off_hook, HOOK_PRIO_DEFAULT);
+
+void flick_led_6sec_on_1sec_off(void)
+{
+	triggered=6;
+}
+
+void flick_led_6sec_on_1sec_off_hook(void)
+{
+	if(!(triggered == 6))
+		return;
+	
+	counter++;
+	if((counter % 6) == 0) {
+		CPRINTS("[SC] 61");
+		gpio_set_level(GPIO_POWER_LED_GATE, 0);
+	}else{
+		gpio_set_level(GPIO_POWER_LED_GATE, 1);
+	}
+}
+DECLARE_HOOK(HOOK_SECOND, flick_led_6sec_on_1sec_off_hook, HOOK_PRIO_DEFAULT);
