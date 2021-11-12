@@ -14,3 +14,4 @@ BASEBOARD:=corsola
 board-y=led.o
 board-y+=battery.o board.o hooks.o
 board-y+=usbc_config.o
+board-y+=regulator.o

@@ -7,6 +7,7 @@
 #ifndef __CROS_EC_BOARD_H
 #define __CROS_EC_BOARD_H
 
+#define VARIANT_EC_IT81202
 #include "baseboard.h"
 
 /* Chipset config */
@@ -70,6 +71,10 @@
 /* SPI / Host Command */
 #undef CONFIG_HOSTCMD_DEBUG_MODE
 #define CONFIG_HOSTCMD_DEBUG_MODE HCDEBUG_OFF
+
+#define CONFIG_BC12_DETECT_MT6360
+/* Voltage regulator control */
+#define CONFIG_HOSTCMD_REGULATOR
 
 /* USB-A */
 #define USBA_PORT_COUNT 1
