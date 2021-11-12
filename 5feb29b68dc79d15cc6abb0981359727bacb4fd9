@@ -22,6 +22,30 @@
       },
       "revId": "5feb29b68dc79d15cc6abb0981359727bacb4fd9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5ec5eee_76e53c03",
+        "filename": "board/gimble/pwm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1518153
+      },
+      "writtenOn": "2021-11-12T12:39:05Z",
+      "side": 1,
+      "message": "1. kblight_suspend (turn off KBBL)\n2. enter S5, found sysjump RW\n3. static void board_pwm_init(turn on KBBL)",
+      "parentUuid": "df65781a_168ed1ee",
+      "range": {
+        "startLine": 68,
+        "startChar": 2,
+        "endLine": 68,
+        "endChar": 8
+      },
+      "revId": "5feb29b68dc79d15cc6abb0981359727bacb4fd9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
