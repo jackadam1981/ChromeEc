@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "69afc569_71ecf003",
+        "filename": "baseboard/brya/battery_presence.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2021-11-12T20:39:43Z",
+      "side": 1,
+      "message": "Jack, cbi.h is using \"__override_proto\" which is #defined in common.h. moving cbi.h before common.h will cause compilation to fail.",
+      "parentUuid": "13a9e9bd_862fe471",
+      "revId": "cfb91f69112d807320d796e0ea562b44ff215439",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c828fbc6_e2609086",
         "filename": "board/brya/fw_config.c",
         "patchSetId": 1
@@ -48,6 +66,24 @@
       "writtenOn": "2021-11-12T20:30:16Z",
       "side": 1,
       "message": "alphasort needs fixed",
+      "revId": "cfb91f69112d807320d796e0ea562b44ff215439",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "739cc90c_3dce1d08",
+        "filename": "board/brya/usbc_config.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2021-11-12T20:39:43Z",
+      "side": 1,
+      "message": "cbi.h is using \"__override_proto\" which is #defined in common.h. moving cbi.h before common.h will cause compilation to fail.",
+      "parentUuid": "910a467f_d5042b10",
       "revId": "cfb91f69112d807320d796e0ea562b44ff215439",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
