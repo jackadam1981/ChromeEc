@@ -54,6 +54,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ee57d61_b1ccc1a8",
+        "filename": "baseboard/brya/battery_presence.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2021-11-12T22:30:56Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0fb19a1a_cf362d4c",
+      "revId": "cfb91f69112d807320d796e0ea562b44ff215439",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c828fbc6_e2609086",
@@ -67,6 +85,24 @@
       "writtenOn": "2021-11-12T20:30:16Z",
       "side": 1,
       "message": "needs alphasorted",
+      "revId": "cfb91f69112d807320d796e0ea562b44ff215439",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "29432099_121e7e18",
+        "filename": "board/brya/fw_config.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2021-11-12T22:30:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c828fbc6_e2609086",
       "revId": "cfb91f69112d807320d796e0ea562b44ff215439",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -120,6 +156,24 @@
       "side": 1,
       "message": "See above, sounds like cbi.h is not including all of it\u0027s required headers",
       "parentUuid": "739cc90c_3dce1d08",
+      "revId": "cfb91f69112d807320d796e0ea562b44ff215439",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b8c273a6_9ad51c31",
+        "filename": "board/brya/usbc_config.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2021-11-12T22:30:56Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "4538fb0b_628a4fec",
       "revId": "cfb91f69112d807320d796e0ea562b44ff215439",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
