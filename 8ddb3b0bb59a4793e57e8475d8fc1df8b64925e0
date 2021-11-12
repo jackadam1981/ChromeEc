@@ -70,6 +70,30 @@
       },
       "revId": "8ddb3b0bb59a4793e57e8475d8fc1df8b64925e0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ace026e_40d4b0a1",
+        "filename": "chip/it83xx/config_chip_it8xxx2.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2021-11-12T02:29:41Z",
+      "side": 1,
+      "message": "(Which is to say: yes, I\u0027d rather explicitly state the base address.)",
+      "parentUuid": "19f449e0_ff27987a",
+      "range": {
+        "startLine": 96,
+        "startChar": 0,
+        "endLine": 96,
+        "endChar": 74
+      },
+      "revId": "8ddb3b0bb59a4793e57e8475d8fc1df8b64925e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
