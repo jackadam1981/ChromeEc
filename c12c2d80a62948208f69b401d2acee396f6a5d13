@@ -249,6 +249,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8fc6ce09_a5eade96",
+        "filename": "board/kano/sensors.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1215230
+      },
+      "writtenOn": "2021-11-12T07:13:30Z",
+      "side": 1,
+      "message": "LID_ACCEL use force_mode, set correct config is enough.",
+      "parentUuid": "b55b3fb7_c945d98f",
+      "range": {
+        "startLine": 262,
+        "startChar": 2,
+        "endLine": 262,
+        "endChar": 23
+      },
+      "revId": "c12c2d80a62948208f69b401d2acee396f6a5d13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "11771fb1_bb48c586",
         "filename": "board/kano/sensors.c",
         "patchSetId": 4
