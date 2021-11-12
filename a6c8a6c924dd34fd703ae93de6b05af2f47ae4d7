@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f5dc91c_c4156b79",
+        "filename": "common/temp_sensor.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1527153
+      },
+      "writtenOn": "2021-11-12T18:13:25Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "89557b98_32c0980a",
+      "range": {
+        "startLine": 110,
+        "startChar": 1,
+        "endLine": 110,
+        "endChar": 72
+      },
+      "revId": "a6c8a6c924dd34fd703ae93de6b05af2f47ae4d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1a1cd5a2_862da744",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5fb566b0_9a379947",
+        "filename": "common/temp_sensor.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1527153
+      },
+      "writtenOn": "2021-11-12T18:13:25Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "1a1cd5a2_862da744",
+      "range": {
+        "startLine": 155,
+        "startChar": 15,
+        "endLine": 155,
+        "endChar": 22
+      },
+      "revId": "a6c8a6c924dd34fd703ae93de6b05af2f47ae4d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9de50a05_df5fad98",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-11-12T16:30:26Z",
       "side": 1,
       "message": "nit: You can share the header string.\n\n  const char header \u003d \"--sensor name ---...\\n\";\n  fprintf(stdout, \"\\n\");\n  fprintf(stdout, header);",
+      "range": {
+        "startLine": 3125,
+        "startChar": 2,
+        "endLine": 3126,
+        "endChar": 29
+      },
+      "revId": "a6c8a6c924dd34fd703ae93de6b05af2f47ae4d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aea67687_f4e5faf8",
+        "filename": "util/ectool.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 3126,
+      "author": {
+        "id": 1527153
+      },
+      "writtenOn": "2021-11-12T18:13:25Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9de50a05_df5fad98",
       "range": {
         "startLine": 3125,
         "startChar": 2,
