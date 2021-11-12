@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df65781a_168ed1ee",
+        "filename": "board/gimble/pwm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-11-12T07:59:17Z",
+      "side": 1,
+      "message": "is this function called on G3 entry?\nhow does this fix the KB backlight problem?",
+      "range": {
+        "startLine": 68,
+        "startChar": 2,
+        "endLine": 68,
+        "endChar": 8
+      },
+      "revId": "5feb29b68dc79d15cc6abb0981359727bacb4fd9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
