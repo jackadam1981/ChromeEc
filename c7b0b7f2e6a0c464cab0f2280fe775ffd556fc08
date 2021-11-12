@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "648175c1_6fe75d84",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1003039
+      },
+      "writtenOn": "2021-11-12T22:08:24Z",
+      "side": 1,
+      "message": "Let\u0027s try filing a bug too to edit this, and place the bug number here using the format:\nBUG\u003db:\u003cbuganizer number\u003e\n\ngo to b/new and file a new bug under \nChromeOS \u003e Platform \u003e Technologies \u003e USB",
+      "range": {
+        "startLine": 13,
+        "startChar": 4,
+        "endLine": 13,
+        "endChar": 8
+      },
+      "revId": "c7b0b7f2e6a0c464cab0f2280fe775ffd556fc08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "25c2a05a_b5976b70",
@@ -14,6 +37,161 @@
       "writtenOn": "2021-11-12T21:50:04Z",
       "side": 1,
       "message": "Hey Benson, can you review this addition to usb-c.md?",
+      "revId": "c7b0b7f2e6a0c464cab0f2280fe775ffd556fc08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "397d18fd_ea62d4e0",
+        "filename": "docs/usb-c.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1003039
+      },
+      "writtenOn": "2021-11-12T22:08:24Z",
+      "side": 1,
+      "message": "It\u0027s not always the computer\u0027s operating system that determines this. Sometimes (in the case of our EC, the EC\u0027s firmware makes the decisions on these, especially when the AP\u0027s OS is shut down or sleeping) . You can shorten this to say \"system\".",
+      "range": {
+        "startLine": 5,
+        "startChar": 30,
+        "endLine": 5,
+        "endChar": 46
+      },
+      "revId": "c7b0b7f2e6a0c464cab0f2280fe775ffd556fc08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b90ea8c1_d2f62e4d",
+        "filename": "docs/usb-c.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1003039
+      },
+      "writtenOn": "2021-11-12T22:08:24Z",
+      "side": 1,
+      "message": "500mA",
+      "range": {
+        "startLine": 12,
+        "startChar": 63,
+        "endLine": 12,
+        "endChar": 68
+      },
+      "revId": "c7b0b7f2e6a0c464cab0f2280fe775ffd556fc08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9873a816_422c28dc",
+        "filename": "docs/usb-c.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1003039
+      },
+      "writtenOn": "2021-11-12T22:08:24Z",
+      "side": 1,
+      "message": "USB-C",
+      "range": {
+        "startLine": 18,
+        "startChar": 32,
+        "endLine": 18,
+        "endChar": 36
+      },
+      "revId": "c7b0b7f2e6a0c464cab0f2280fe775ffd556fc08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "151238ba_6de2ca7a",
+        "filename": "docs/usb-c.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1003039
+      },
+      "writtenOn": "2021-11-12T22:08:24Z",
+      "side": 1,
+      "message": "flexibility",
+      "revId": "c7b0b7f2e6a0c464cab0f2280fe775ffd556fc08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1bda307f_de859616",
+        "filename": "docs/usb-c.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1003039
+      },
+      "writtenOn": "2021-11-12T22:08:24Z",
+      "side": 1,
+      "message": "Hmm. Again, the operating system isn\u0027t necessarily doing all of this.\n\nYou\u0027re describing a \"TCPM\" or a Type-C Port Manager. In the case of our EC based systems on Chrome OS, that does not live in the AP hosted OS, but in our EC.\n\nOur OS\u0027s kernel and userspace pieces are taking on more responsibility for higher level policy decisions, but not all of it just yet.",
+      "range": {
+        "startLine": 20,
+        "startChar": 9,
+        "endLine": 20,
+        "endChar": 25
+      },
+      "revId": "c7b0b7f2e6a0c464cab0f2280fe775ffd556fc08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba55ae95_a93110b5",
+        "filename": "docs/usb-c.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1003039
+      },
+      "writtenOn": "2021-11-12T22:08:24Z",
+      "side": 1,
+      "message": "Ah, there is no such thing as \"USB-C PD\". There is USB-C, which is the connector, and USB Power Delivery (shorthand USB PD), which is the protocol.",
+      "range": {
+        "startLine": 20,
+        "startChar": 27,
+        "endLine": 20,
+        "endChar": 36
+      },
+      "revId": "c7b0b7f2e6a0c464cab0f2280fe775ffd556fc08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb158672_eeded913",
+        "filename": "docs/usb-c.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1003039
+      },
+      "writtenOn": "2021-11-12T22:08:24Z",
+      "side": 1,
+      "message": "USB PD",
+      "range": {
+        "startLine": 20,
+        "startChar": 72,
+        "endLine": 20,
+        "endChar": 81
+      },
       "revId": "c7b0b7f2e6a0c464cab0f2280fe775ffd556fc08",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
