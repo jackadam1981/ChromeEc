@@ -78,8 +78,6 @@ void system_pre_init(void)
 {
 	/* CM4 Modification */
 	scp_cm4_mod();
-	/* Clock */
-	scp_enable_clock();
 	/* Peripheral IRQ */
 	scp_enable_pirq();
 	/* Init dram mapping (and cache) */
