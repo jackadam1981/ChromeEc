@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b64bc92_180addbd",
+        "filename": "zephyr/Kconfig.powerseq",
+        "patchSetId": 13
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2021-11-12T22:30:50Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "abe65d2b_0e64c032",
+      "range": {
+        "startLine": 121,
+        "startChar": 0,
+        "endLine": 121,
+        "endChar": 36
+      },
+      "revId": "226e69a269a6adffa96dcf3f24e9673f78d5fe15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "06296d5f_50d5f3bc",
@@ -54,6 +78,24 @@
       "writtenOn": "2021-11-12T21:03:54Z",
       "side": 1,
       "message": "depends on AP_X86_INTEL_TGL\ndefault y",
+      "revId": "226e69a269a6adffa96dcf3f24e9673f78d5fe15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "44538498_894feed4",
+        "filename": "zephyr/Kconfig.powerseq",
+        "patchSetId": 13
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2021-11-12T22:30:50Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "06296d5f_50d5f3bc",
       "revId": "226e69a269a6adffa96dcf3f24e9673f78d5fe15",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
