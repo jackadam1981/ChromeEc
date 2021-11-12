@@ -138,6 +138,7 @@ int anx7447_board_charging_enable(int port, int enable);
 
 void anx7447_hpd_mode_en(int port);
 void anx7447_hpd_output_en(int port);
+int anx7447_get_vbus_voltage(int port);
 
 extern const struct tcpm_drv anx7447_tcpm_drv;
 extern const struct usb_mux_driver anx7447_usb_mux_driver;
