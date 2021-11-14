@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b232497_a01fc45b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-11-14T04:01:48Z",
+      "side": 1,
+      "message": "baseboard/brya/battery_presence.c: In function \u0027battery_hw_present\u0027:\nbaseboard/brya/battery_presence.c:24:29: error: \u0027GPIO_ID_1_EC_BATT_PRES_ODL\u0027 undeclared (first use in this function); did you mean \u0027GPIO_EC_BATT_PRES_ODL\u0027?\n   24 |                 batt_pres \u003d GPIO_ID_1_EC_BATT_PRES_ODL;\n      |                             ^~~~~~~~~~~~~~~~~~~~~~~~~~\n      |                             GPIO_EC_BATT_PRES_ODL\nbaseboard/brya/battery_presence.c:24:29: note: each undeclared identifier is reported only once for each function it appears in\nmake[2]: *** [Makefile.rules:583: build/kano/RW/baseboard/brya/battery_presence.o] Error 1\nmake[1]: *** [Makefile.rules:257: proj-kano] Error 2\nmake[1]: *** Waiting for unfinished jobs....",
+      "revId": "29ac637daf77d4b5daf779741bb4a153a687db35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
