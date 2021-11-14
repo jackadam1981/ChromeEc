@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3524c3d_6f89659c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2021-11-14T06:06:33Z",
+      "side": 1,
+      "message": "battery_hw_present function has been moved from baseboard/brya/battery_presence.c to board/brya/battery.c.\n\nNow build is passing for all platform  tested with \"make buildall -j\"",
+      "revId": "fc4280f6ca3f8ffb6f5a9fd2286fd444db68a368",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
