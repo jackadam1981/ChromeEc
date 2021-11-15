@@ -16,6 +16,24 @@
       "message": "also not sure if this one should be reverted",
       "revId": "bd96d2e3e97ac35c5f8379843e6039925f3088d3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9fbd91fa_5b646584",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2021-11-15T22:15:48Z",
+      "side": 1,
+      "message": "ok I\u0027ll leave it out. waitms is not included in cr50 images anyways.",
+      "parentUuid": "a38c8cf9_08d6919b",
+      "revId": "bd96d2e3e97ac35c5f8379843e6039925f3088d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
