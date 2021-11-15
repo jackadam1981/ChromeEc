@@ -16,6 +16,24 @@
       "message": "Should we use pd_is_battery_capable()?  We\u0027ve used that in a lot of places as a catch-all for \"could we live if Vbus were to disappear\"?",
       "revId": "ce062a883261fbf19fa1dc2ff081639eb9bd7c46",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1a68d3e_7bce749b",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1588,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2021-11-15T17:32:57Z",
+      "side": 1,
+      "message": "Yes that API call works.",
+      "parentUuid": "db0ebd8c_d8d238de",
+      "revId": "ce062a883261fbf19fa1dc2ff081639eb9bd7c46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
