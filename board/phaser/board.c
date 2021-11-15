@@ -246,6 +246,12 @@ static void cbi_init(void)
 	support_syv_ppc = board_is_support_syv_ppc();
 }
 DECLARE_HOOK(HOOK_INIT, cbi_init, HOOK_PRIO_INIT_I2C + 1);
+#if 1
+void board_hibernate_late(void)
+{
+	NPCX_KBSINPU = 0x0A;
+}
+#endif
 
 /* This callback disables keyboard when convertibles are fully open */
 __override void lid_angle_peripheral_enable(int enable)
