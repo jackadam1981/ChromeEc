@@ -20,6 +20,13 @@ extern struct motion_sensor_t motion_sensors_alt[];
  */
 int motion_sense_probe(enum sensor_alt_id alt_idx);
 
+/*
+ * Performs checking CBI SSFC fields defined in DTS to verify if an alternate
+ * motion sensor is present. If there is a match, the function replaces
+ * a default motion sensor in the motion_sensors array.
+ */
+void motion_sensors_check_ssfc(void);
+
 #define ENABLE_ALT_MOTION_SENSOR(new_id, old_id) \
 	motion_sensors[SENSOR_ID(old_id)] =      \
 		motion_sensors_alt[SENSOR_ID(new_id)];
