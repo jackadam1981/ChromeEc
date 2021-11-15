@@ -46,6 +46,30 @@
       },
       "revId": "ea6ada379605e24d2c76bb5eb4995bb503e78d1f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc1ed1bd_024c575d",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-11-15T20:17:31Z",
+      "side": 1,
+      "message": "Okay, after discussion we\u0027ll submit the task as-is.  We will keep an eye out for any issues related to latency of sharing the mux task, and can add more tasks if this occurs.  Adding more tasks if needed will be made easier by the cleaning up of obsolete TGL boards from ToT which weren\u0027t released and are almost always running out of flash space.",
+      "parentUuid": "96399b2f_bf9affc4",
+      "range": {
+        "startLine": 341,
+        "startChar": 11,
+        "endLine": 341,
+        "endChar": 27
+      },
+      "revId": "ea6ada379605e24d2c76bb5eb4995bb503e78d1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
