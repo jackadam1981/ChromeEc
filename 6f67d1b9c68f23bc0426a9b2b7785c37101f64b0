@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8f8b89f_1c42863c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1409791
+      },
+      "writtenOn": "2021-11-15T20:42:39Z",
+      "side": 1,
+      "message": "Presubmit complained about lack of unit test results but this seems safe enough to skip that check",
+      "revId": "6f67d1b9c68f23bc0426a9b2b7785c37101f64b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
