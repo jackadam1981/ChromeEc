@@ -109,6 +109,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ab32efdf_a8882ad0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1215230
+      },
+      "writtenOn": "2021-11-15T09:10:03Z",
+      "side": 1,
+      "message": "I think we might need to figure out what\u0027s the ss_lane doing and then figure out what should we do for CONFIG_KB800X_CUSTOM_XBAR.\nCurrently I will add a TODO to comment that not defined CONFIG_KB800X_CUSTOM_XBAR in brask since this define is in board.h only.",
+      "parentUuid": "e1b85f0c_433121e5",
+      "revId": "c0a2aeb780fd932823da2ea348d12d41c4f074a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9731fa9a_fe6aff5a",
         "filename": "board/brask/usbc_config.c",
         "patchSetId": 2
@@ -144,6 +162,30 @@
       "side": 1,
       "message": "Build error fix and set retimer_rst_gpio through kb800x_control.",
       "parentUuid": "9731fa9a_fe6aff5a",
+      "range": {
+        "startLine": 132,
+        "startChar": 5,
+        "endLine": 132,
+        "endChar": 22
+      },
+      "revId": "c0a2aeb780fd932823da2ea348d12d41c4f074a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "657de7b6_2dba201b",
+        "filename": "board/brask/usbc_config.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1215230
+      },
+      "writtenOn": "2021-11-15T09:10:03Z",
+      "side": 1,
+      "message": "Should I remove this TODO?",
+      "parentUuid": "4cb7e6fb_34b6cbae",
       "range": {
         "startLine": 132,
         "startChar": 5,
