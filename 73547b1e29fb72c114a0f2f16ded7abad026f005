@@ -16,6 +16,24 @@
       "message": "Does this need a corresponding config.star change?",
       "revId": "73547b1e29fb72c114a0f2f16ded7abad026f005",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "abf0aca1_e2b09ff4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-11-15T21:13:19Z",
+      "side": 1,
+      "message": "Halvor should be gone with this change https://crrev.com/i/4234622",
+      "parentUuid": "82b725e0_a4a65622",
+      "revId": "73547b1e29fb72c114a0f2f16ded7abad026f005",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
