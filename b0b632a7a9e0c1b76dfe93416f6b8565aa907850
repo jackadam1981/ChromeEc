@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4427aba7_12eb6bbe",
+        "filename": "zephyr/test/drivers/src/smart.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2021-11-15T11:06:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "85501166_23453970",
+      "range": {
+        "startLine": 202,
+        "startChar": 0,
+        "endLine": 202,
+        "endChar": 17
+      },
+      "revId": "b0b632a7a9e0c1b76dfe93416f6b8565aa907850",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "23de42e0_715d921b",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-11-10T20:24:58Z",
       "side": 1,
       "message": "Nit - change to\n\nso AtRateOK() register should return 0.",
+      "range": {
+        "startLine": 218,
+        "startChar": 5,
+        "endLine": 218,
+        "endChar": 27
+      },
+      "revId": "b0b632a7a9e0c1b76dfe93416f6b8565aa907850",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dbbe8a4d_461f4d45",
+        "filename": "zephyr/test/drivers/src/smart.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2021-11-15T11:06:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "23de42e0_715d921b",
       "range": {
         "startLine": 218,
         "startChar": 5,
