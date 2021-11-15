@@ -16,6 +16,24 @@
       "message": "not sure about reverting this one",
       "revId": "0ea2aaeaf992bd97786f5e2cf35c333ddc48a076",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa81bd91_3d103621",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2021-11-15T22:35:41Z",
+      "side": 1,
+      "message": "It reduces the diff and doesn\u0027t really change behavior, so I think we should still revert it.",
+      "parentUuid": "f0067357_8eb92f23",
+      "revId": "0ea2aaeaf992bd97786f5e2cf35c333ddc48a076",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
