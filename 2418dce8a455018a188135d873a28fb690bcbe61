@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "290708c3_4012676d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-11-15T21:17:15Z",
+      "side": 1,
+      "message": "Should this be uart_poll_out? I don\u0027t see any call sites of uart_write_char changing here.",
+      "range": {
+        "startLine": 7,
+        "startChar": 12,
+        "endLine": 7,
+        "endChar": 27
+      },
+      "revId": "2418dce8a455018a188135d873a28fb690bcbe61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
