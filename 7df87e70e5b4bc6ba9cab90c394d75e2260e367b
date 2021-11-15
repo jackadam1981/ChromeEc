@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "de981736_9281ef1c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2021-11-15T17:42:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "82fc8b76_1a115b07",
+      "range": {
+        "startLine": 7,
+        "startChar": 28,
+        "endLine": 7,
+        "endChar": 31
+      },
+      "revId": "7df87e70e5b4bc6ba9cab90c394d75e2260e367b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d1b5263d_2ee598ad",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-11-11T18:44:14Z",
       "side": 1,
       "message": "\"lid\" (lowercase)",
+      "range": {
+        "startLine": 9,
+        "startChar": 41,
+        "endLine": 9,
+        "endChar": 44
+      },
+      "revId": "7df87e70e5b4bc6ba9cab90c394d75e2260e367b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe467153_a8ef80cc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2021-11-15T17:42:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d1b5263d_2ee598ad",
       "range": {
         "startLine": 9,
         "startChar": 41,
@@ -84,6 +132,30 @@
       "side": 1,
       "message": "Tested on brya.\nWithout this change , we will not see display coming up after enabling power seq.",
       "parentUuid": "b17d4931_97861513",
+      "range": {
+        "startLine": 13,
+        "startChar": 5,
+        "endLine": 13,
+        "endChar": 42
+      },
+      "revId": "7df87e70e5b4bc6ba9cab90c394d75e2260e367b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b691678_d43f8403",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2021-11-15T17:42:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0b93c94c_bffa6a96",
       "range": {
         "startLine": 13,
         "startChar": 5,
