@@ -141,6 +141,30 @@
       },
       "revId": "9e3ddeb639a5644d1eed184a8ff1cdcff8bb5e75",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "73fd86ce_347ba23c",
+        "filename": "driver/usb_mux/virtual.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-11-15T21:30:34Z",
+      "side": 1,
+      "message": "What would be your preference for the Intel RVP boards?  Mux task or no mux task enabled?  If some boards would prefer not to use the mux task, then we can consider the IS_ENABLED check here to maintain compatibility with both",
+      "parentUuid": "ca522c71_4c4b7cb3",
+      "range": {
+        "startLine": 57,
+        "startChar": 2,
+        "endLine": 57,
+        "endChar": 14
+      },
+      "revId": "9e3ddeb639a5644d1eed184a8ff1cdcff8bb5e75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
