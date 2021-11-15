@@ -16,6 +16,29 @@
       "message": "battery_hw_present function has been moved from baseboard/brya/battery_presence.c to board/brya/battery.c.\n\nNow build is passing for all platform  tested with \"make buildall -j\"",
       "revId": "fc4280f6ca3f8ffb6f5a9fd2286fd444db68a368",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "36d6a2c8_c3d86924",
+        "filename": "board/brya/battery.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-11-15T23:02:24Z",
+      "side": 1,
+      "message": "Note - this will have to move again when you add battery support for the Zephyr byra project.  Batteries are specified using only the devicetree, so the board_battery_info[] isn\u0027t needed with Zephyr.",
+      "range": {
+        "startLine": 101,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 45
+      },
+      "revId": "fc4280f6ca3f8ffb6f5a9fd2286fd444db68a368",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
