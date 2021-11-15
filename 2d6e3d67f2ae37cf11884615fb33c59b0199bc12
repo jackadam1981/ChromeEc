@@ -16,6 +16,24 @@
       "message": "is it also needed?",
       "revId": "2d6e3d67f2ae37cf11884615fb33c59b0199bc12",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67145549_9b65d08a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2021-11-15T22:19:56Z",
+      "side": 1,
+      "message": "I searched for \"define.CONFIG_BOARD_VERSION\" in platform/cr50 and I didn\u0027t see anything, so I think it\u0027s ok to revert this change. It just reduces the diff between prepvt and tot. None of this code is used though.",
+      "parentUuid": "8cd649a7_0715bc3f",
+      "revId": "2d6e3d67f2ae37cf11884615fb33c59b0199bc12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
