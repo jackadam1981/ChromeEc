@@ -16,6 +16,24 @@
       "message": "LGTM - but I want to wait to merge this until the required depthcharge change has been uploaded. depthcharge needs to add CONFIG_DRIVER_EC_PS8751_I2C_SPEED_CONTROL to dynamically change the I2C bus frequency during Parade firmware updates.",
       "revId": "ba5888b7f43724f1f563a6f658ddbc17e18b8f3e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "20335ed3_25877690",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2021-11-15T07:08:25Z",
+      "side": 1,
+      "message": "Makes sense.",
+      "parentUuid": "aa0be8b9_0af00818",
+      "revId": "ba5888b7f43724f1f563a6f658ddbc17e18b8f3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
