@@ -118,6 +118,13 @@ int motion_sense_probe(enum sensor_alt_id alt_idx);
  */
 int motion_sense_enable_alt(enum sensor_alt_id alt_idx);
 
+/*
+ * Performs checking CBI SSFC fields defined in DRS to verify if an alternate
+ * motion sensor is present. If there is a match, the function replaces
+ * a default motion sensor in the motion_sensors array.
+ */
+void motion_sensors_check_ssfc(void);
+
 #define MOTIONSENSE_ENABLE_ALTERNATE(nodelabel)                              \
 	do {                                                                 \
 		BUILD_ASSERT(DT_NODE_EXISTS(DT_NODELABEL(nodelabel)),        \
@@ -134,4 +141,6 @@ int motion_sense_enable_alt(enum sensor_alt_id alt_idx);
 				SENSOR_ID(DT_NODELABEL(nodelabel)));         \
 	} while (0)
 
+#define MOTIONSENSE_SSFC_ENABLE_ALTERNATE()                                  \
+	motion_sensors_check_ssfc()
 #endif /* __CROS_EC_MOTIONSENSE_SENSORS_H */
