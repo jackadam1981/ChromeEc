@@ -683,6 +683,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5ad1526_30d804d8",
+        "filename": "zephyr/shim/src/ioex.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-11-15T23:51:22Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b28d544e_4d868fb9",
+      "range": {
+        "startLine": 208,
+        "startChar": 7,
+        "endLine": 208,
+        "endChar": 24
+      },
+      "revId": "0fd4957b18993525b023d77090d97730efacd2cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c6cd93fd_7aa5a385",
@@ -767,6 +791,30 @@
       "side": 1,
       "message": "Yes, it is done only for cros drivers, but the purpose of this is, if you have init_disabled ioex, which means that ioex won\u0027t be initialized on startup, it has to be initialized manually. This is done by calling ioex_init(ioex_enum).\nIf this would be in shim_ioex_init, it would be called automatically on zephyr boot and couldn\u0027t be called manually.",
       "parentUuid": "8d2874ae_d7fddd78",
+      "range": {
+        "startLine": 252,
+        "startChar": 0,
+        "endLine": 262,
+        "endChar": 0
+      },
+      "revId": "0fd4957b18993525b023d77090d97730efacd2cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb0cdaba_674b9615",
+        "filename": "zephyr/shim/src/ioex.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-11-15T23:51:22Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "dec8d7cb_28d0c512",
       "range": {
         "startLine": 252,
         "startChar": 0,
@@ -890,6 +938,24 @@
       "side": 1,
       "message": "If drivers enable, that\u0027s ok. But sometimes the board logic enables them. Are there any plans to wrap this to eliminate board code? Or is it a part of code that can\u0027t be removed?",
       "parentUuid": "8bb85f2f_14efda27",
+      "revId": "0fd4957b18993525b023d77090d97730efacd2cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed52a727_78a4d518",
+        "filename": "zephyr/shim/src/ioex.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-11-15T23:51:22Z",
+      "side": 1,
+      "message": "In most cases, when the board code gets configured to a devicetree based driver, the new devicetree driver can enable the interrupts that are configured in the node.  Eventually we also want to get rid of gpio_map.h completely, and just have each driver init and register it\u0027s own GPIO interrupts.\n\nWe\u0027ll have to see if we can 100% eliminate the board code.",
+      "parentUuid": "2b2c63a2_f3e31bdc",
       "revId": "0fd4957b18993525b023d77090d97730efacd2cc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
