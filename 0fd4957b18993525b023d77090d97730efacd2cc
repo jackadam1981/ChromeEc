@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "573af682_d014d2dc",
+        "filename": "zephyr/Kconfig.ioex",
+        "patchSetId": 5
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1477788
+      },
+      "writtenOn": "2021-11-15T17:23:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "01fb1d43_ed9c476f",
+      "range": {
+        "startLine": 16,
+        "startChar": 6,
+        "endLine": 16,
+        "endChar": 10
+      },
+      "revId": "0fd4957b18993525b023d77090d97730efacd2cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8de98335_0ecdf1a2",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-11-11T00:15:29Z",
       "side": 1,
       "message": "IO expander",
+      "range": {
+        "startLine": 20,
+        "startChar": 54,
+        "endLine": 20,
+        "endChar": 58
+      },
+      "revId": "0fd4957b18993525b023d77090d97730efacd2cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3137205d_b1bd4457",
+        "filename": "zephyr/Kconfig.ioex",
+        "patchSetId": 5
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1477788
+      },
+      "writtenOn": "2021-11-15T17:23:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8de98335_0ecdf1a2",
       "range": {
         "startLine": 20,
         "startChar": 54,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "66be1d22_c1e2059b",
+        "filename": "zephyr/Kconfig.ioex",
+        "patchSetId": 5
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1477788
+      },
+      "writtenOn": "2021-11-15T17:23:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6b790e8a_8328deef",
+      "range": {
+        "startLine": 23,
+        "startChar": 33,
+        "endLine": 23,
+        "endChar": 35
+      },
+      "revId": "0fd4957b18993525b023d77090d97730efacd2cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "db855259_b98933a6",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-11-11T00:15:29Z",
       "side": 1,
       "message": "IO",
+      "range": {
+        "startLine": 26,
+        "startChar": 29,
+        "endLine": 26,
+        "endChar": 31
+      },
+      "revId": "0fd4957b18993525b023d77090d97730efacd2cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3cfc5fb_7aaf8242",
+        "filename": "zephyr/Kconfig.ioex",
+        "patchSetId": 5
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1477788
+      },
+      "writtenOn": "2021-11-15T17:23:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "db855259_b98933a6",
       "range": {
         "startLine": 26,
         "startChar": 29,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4e46bb6_8b32aff5",
+        "filename": "zephyr/Kconfig.ioex",
+        "patchSetId": 5
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1477788
+      },
+      "writtenOn": "2021-11-15T17:23:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a7902639_1a516575",
+      "range": {
+        "startLine": 28,
+        "startChar": 42,
+        "endLine": 28,
+        "endChar": 44
+      },
+      "revId": "0fd4957b18993525b023d77090d97730efacd2cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2515d6df_94ee15ab",
@@ -129,6 +249,30 @@
       "writtenOn": "2021-11-10T23:12:23Z",
       "side": 1,
       "message": "Move to next CL.",
+      "range": {
+        "startLine": 66,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 0
+      },
+      "revId": "0fd4957b18993525b023d77090d97730efacd2cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d69de83b_16f9ffa8",
+        "filename": "zephyr/shim/include/zephyr_gpio_signal.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1477788
+      },
+      "writtenOn": "2021-11-15T17:23:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2515d6df_94ee15ab",
       "range": {
         "startLine": 66,
         "startChar": 0,
@@ -162,6 +306,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a624b6a_18dcf41f",
+        "filename": "zephyr/shim/src/ioex.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1477788
+      },
+      "writtenOn": "2021-11-15T17:23:17Z",
+      "side": 1,
+      "message": "I\u0027ve forgotten about defines... Done",
+      "parentUuid": "ed041426_c20162b3",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 63
+      },
+      "revId": "0fd4957b18993525b023d77090d97730efacd2cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d3cde93c_8b48c762",
@@ -185,6 +353,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a268db3_cc5edb31",
+        "filename": "zephyr/shim/src/ioex.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1477788
+      },
+      "writtenOn": "2021-11-15T17:23:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d3cde93c_8b48c762",
+      "range": {
+        "startLine": 89,
+        "startChar": 37,
+        "endLine": 89,
+        "endChar": 49
+      },
+      "revId": "0fd4957b18993525b023d77090d97730efacd2cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5b4cfc66_21f4d42a",
@@ -198,6 +390,30 @@
       "writtenOn": "2021-11-10T22:31:48Z",
       "side": 1,
       "message": "Add a BUILD_ASSERT(ARRAY_SIZE(ioexes_flags), IOEX_SIZE)) because the init code assumes this at line 285.",
+      "range": {
+        "startLine": 93,
+        "startChar": 20,
+        "endLine": 93,
+        "endChar": 32
+      },
+      "revId": "0fd4957b18993525b023d77090d97730efacd2cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "74868d1b_9f0bbf55",
+        "filename": "zephyr/shim/src/ioex.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1477788
+      },
+      "writtenOn": "2021-11-15T17:23:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5b4cfc66_21f4d42a",
       "range": {
         "startLine": 93,
         "startChar": 20,
@@ -255,6 +471,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e46427d_12f528ec",
+        "filename": "zephyr/shim/src/ioex.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1477788
+      },
+      "writtenOn": "2021-11-15T17:23:17Z",
+      "side": 1,
+      "message": "It was unused. Done",
+      "parentUuid": "c1a0e322_929ec889",
+      "range": {
+        "startLine": 97,
+        "startChar": 0,
+        "endLine": 104,
+        "endChar": 0
+      },
+      "revId": "0fd4957b18993525b023d77090d97730efacd2cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9fb8519f_1cee691a",
@@ -268,6 +508,30 @@
       "writtenOn": "2021-11-10T22:31:48Z",
       "side": 1,
       "message": "Add a LOG_ERR if this call fails.",
+      "range": {
+        "startLine": 145,
+        "startChar": 7,
+        "endLine": 145,
+        "endChar": 35
+      },
+      "revId": "0fd4957b18993525b023d77090d97730efacd2cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "78da92e5_2b48ffe6",
+        "filename": "zephyr/shim/src/ioex.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1477788
+      },
+      "writtenOn": "2021-11-15T17:23:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9fb8519f_1cee691a",
       "range": {
         "startLine": 145,
         "startChar": 7,
@@ -301,6 +565,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb1c3585_cf1f737a",
+        "filename": "zephyr/shim/src/ioex.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1477788
+      },
+      "writtenOn": "2021-11-15T17:23:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "708e798f_cd559e7e",
+      "range": {
+        "startLine": 162,
+        "startChar": 7,
+        "endLine": 162,
+        "endChar": 35
+      },
+      "revId": "0fd4957b18993525b023d77090d97730efacd2cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d2c15131_b29aade3",
@@ -314,6 +602,30 @@
       "writtenOn": "2021-11-10T22:31:48Z",
       "side": 1,
       "message": "Change to \n  if (!signal_is_ioex())\n       return ERROR;       \n  *flags \u003d convert_from_zephyr_flags()",
+      "range": {
+        "startLine": 171,
+        "startChar": 0,
+        "endLine": 178,
+        "endChar": 0
+      },
+      "revId": "0fd4957b18993525b023d77090d97730efacd2cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3948be44_cf39165c",
+        "filename": "zephyr/shim/src/ioex.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1477788
+      },
+      "writtenOn": "2021-11-15T17:23:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d2c15131_b29aade3",
       "range": {
         "startLine": 171,
         "startChar": 0,
@@ -349,6 +661,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b28d544e_4d868fb9",
+        "filename": "zephyr/shim/src/ioex.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1477788
+      },
+      "writtenOn": "2021-11-15T17:23:17Z",
+      "side": 1,
+      "message": "There is a difference between cros and zephyr error codes. Zephyr uses negative error codes, and cros uses positive. I\u0027ve used it to tell apart the values from error codes, but I\u0027ve later added the correct error codes in ioex_drv and didn\u0027t change this. Done.\n\nAlso the ioex_get_port can\u0027t be implemented, because it operates not on signal, but on port, where... using the zephyr\u0027s drivers, there won\u0027t be ioex id, nor port.\nThe ioex_get_port is used only on servo_v4p1, so it isn\u0027t important function.",
+      "parentUuid": "c6b53a55_6e94b020",
+      "range": {
+        "startLine": 208,
+        "startChar": 7,
+        "endLine": 208,
+        "endChar": 24
+      },
+      "revId": "0fd4957b18993525b023d77090d97730efacd2cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c6cd93fd_7aa5a385",
         "filename": "zephyr/shim/src/ioex.c",
         "patchSetId": 5
@@ -360,6 +696,30 @@
       "writtenOn": "2021-11-10T23:12:23Z",
       "side": 1,
       "message": "This belongs in the next CL.",
+      "range": {
+        "startLine": 247,
+        "startChar": 0,
+        "endLine": 247,
+        "endChar": 23
+      },
+      "revId": "0fd4957b18993525b023d77090d97730efacd2cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f78e8726_1008ffff",
+        "filename": "zephyr/shim/src/ioex.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1477788
+      },
+      "writtenOn": "2021-11-15T17:23:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c6cd93fd_7aa5a385",
       "range": {
         "startLine": 247,
         "startChar": 0,
@@ -395,6 +755,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "dec8d7cb_28d0c512",
+        "filename": "zephyr/shim/src/ioex.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1477788
+      },
+      "writtenOn": "2021-11-15T17:23:17Z",
+      "side": 1,
+      "message": "Yes, it is done only for cros drivers, but the purpose of this is, if you have init_disabled ioex, which means that ioex won\u0027t be initialized on startup, it has to be initialized manually. This is done by calling ioex_init(ioex_enum).\nIf this would be in shim_ioex_init, it would be called automatically on zephyr boot and couldn\u0027t be called manually.",
+      "parentUuid": "8d2874ae_d7fddd78",
+      "range": {
+        "startLine": 252,
+        "startChar": 0,
+        "endLine": 262,
+        "endChar": 0
+      },
+      "revId": "0fd4957b18993525b023d77090d97730efacd2cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0b060f8c_2e3800e0",
         "filename": "zephyr/shim/src/ioex.c",
         "patchSetId": 5
@@ -406,6 +790,24 @@
       "writtenOn": "2021-11-10T23:12:23Z",
       "side": 1,
       "message": "Call gpio_pin_configure() here to match the gpio shim.",
+      "revId": "0fd4957b18993525b023d77090d97730efacd2cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "79bf1ff1_1ffdcfe9",
+        "filename": "zephyr/shim/src/ioex.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1477788
+      },
+      "writtenOn": "2021-11-15T17:23:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0b060f8c_2e3800e0",
       "revId": "0fd4957b18993525b023d77090d97730efacd2cc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -433,6 +835,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b4b1b6a_b32b0f35",
+        "filename": "zephyr/shim/src/ioex.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1477788
+      },
+      "writtenOn": "2021-11-15T17:23:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f8f6e7d0_9f205806",
+      "range": {
+        "startLine": 298,
+        "startChar": 6,
+        "endLine": 298,
+        "endChar": 38
+      },
+      "revId": "0fd4957b18993525b023d77090d97730efacd2cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8bb85f2f_14efda27",
@@ -446,6 +872,24 @@
       "writtenOn": "2021-11-10T22:31:48Z",
       "side": 1,
       "message": "I don\u0027t think you want to enable interrupts by default.  We usually let the application/driver code do this as needed.",
+      "revId": "0fd4957b18993525b023d77090d97730efacd2cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b2c63a2_f3e31bdc",
+        "filename": "zephyr/shim/src/ioex.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1477788
+      },
+      "writtenOn": "2021-11-15T17:23:17Z",
+      "side": 1,
+      "message": "If drivers enable, that\u0027s ok. But sometimes the board logic enables them. Are there any plans to wrap this to eliminate board code? Or is it a part of code that can\u0027t be removed?",
+      "parentUuid": "8bb85f2f_14efda27",
       "revId": "0fd4957b18993525b023d77090d97730efacd2cc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
