@@ -83,6 +83,7 @@ GPIO(EC_PCH_INT_ODL,           PIN(B, 0), GPIO_ODR_HIGH)
 /* USB and USBC Signals */
 GPIO(EN_PP5000_USBA,		PIN(C, 6), GPIO_OUT_LOW)	/* Enable USB-A charging - all ports */
 GPIO(USB_A_LOW_PWR_OD,		PIN(6, 6), GPIO_ODR_LOW)	/* Don't limit USB-A charging by default - all ports */
+GPIO(EN_PP5000_USB_AG,		PIN(A, 7), GPIO_OUT_HIGH)
 
 GPIO(USB_C1_RT_RST_ODL,			PIN(8, 3), GPIO_ODR_LOW)
 GPIO(USB_C0_OC_ODL,			PIN(B, 1), GPIO_ODR_HIGH)
