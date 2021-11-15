@@ -16,6 +16,195 @@
       "message": "Looks like zephyr build has errors, but otherwise looking good to me:\n\n ERROR: [/tmp/zbuild-24xa1yfu-brya:ro]In file included from /tmp/zbuild-24xa1yfu-brya/modules/ec/include/common.h:242,\n ERROR: [/tmp/zbuild-24xa1yfu-brya:ro]                 from /mnt/host/source/src/platform/ec/zephyr/shim/chip/npcx/system_download_from_flash.c:9:\n ERROR: [/tmp/zbuild-24xa1yfu-brya:ro]/tmp/zbuild-24xa1yfu-brya/modules/ec/include/config.h:5453:2: error: #error \"S4_RESIDENCY needs eSPI support or SLP_S5 routed\"\n ERROR: [/tmp/zbuild-24xa1yfu-brya:ro] 5453 | #error \"S4_RESIDENCY needs eSPI support or SLP_S5 routed\"\n ERROR: [/tmp/zbuild-24xa1yfu-brya:ro]      |  ^~~~~",
       "revId": "ebf97b080d6fe83068f0088f3d318a5b5bc0a427",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0e2d3d7_096a5445",
+        "filename": "baseboard/brask/baseboard.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-11-15T19:09:41Z",
+      "side": 1,
+      "message": "Move the board changes to a separate CL.",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 33
+      },
+      "revId": "ebf97b080d6fe83068f0088f3d318a5b5bc0a427",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dcdf1d25_31f8cc5e",
+        "filename": "include/power/intel_x86.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-11-15T19:09:41Z",
+      "side": 1,
+      "message": "I think you should add CONFIG_HOSTCMD_ESPI_VW_SLP_S5 to follow the existing pattern.",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 39
+      },
+      "revId": "ebf97b080d6fe83068f0088f3d318a5b5bc0a427",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f56ec14_fc0a4878",
+        "filename": "power/common.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 552,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-11-15T19:09:41Z",
+      "side": 1,
+      "message": "I\u0027m not sure why the original code didn\u0027t use fall-through for S3, S0, and S0ix.  But this should be done consistently.\n\nHow about creating a full state here in this CL, and then as a follow up CL, combine the states?",
+      "range": {
+        "startLine": 533,
+        "startChar": 0,
+        "endLine": 552,
+        "endChar": 0
+      },
+      "revId": "ebf97b080d6fe83068f0088f3d318a5b5bc0a427",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b95271c_1863c746",
+        "filename": "power/falconlite.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 462,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-11-15T19:09:41Z",
+      "side": 1,
+      "message": "Move this (and all non-Intel changes) to a separate CL.",
+      "range": {
+        "startLine": 459,
+        "startChar": 0,
+        "endLine": 462,
+        "endChar": 0
+      },
+      "revId": "ebf97b080d6fe83068f0088f3d318a5b5bc0a427",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "79ffafa5_ddb6dd94",
+        "filename": "util/config_allowed.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 735,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-11-15T19:09:41Z",
+      "side": 1,
+      "message": "This shouldn\u0027t be required as you have defined this in config_chip.h",
+      "range": {
+        "startLine": 735,
+        "startChar": 0,
+        "endLine": 735,
+        "endChar": 25
+      },
+      "revId": "ebf97b080d6fe83068f0088f3d318a5b5bc0a427",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49c5fe58_a9261ee8",
+        "filename": "zephyr/Kconfig.powerseq",
+        "patchSetId": 2
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-11-15T19:09:41Z",
+      "side": 1,
+      "message": "Based on config.h, this depends on eSPI, correct?\nadd \"depends PLATFORM_EC_ESPI\"",
+      "revId": "ebf97b080d6fe83068f0088f3d318a5b5bc0a427",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "25b4a327_ff9bc159",
+        "filename": "zephyr/Kconfig.powerseq",
+        "patchSetId": 2
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-11-15T19:09:41Z",
+      "side": 1,
+      "message": "Set the default to y if TGL or ADL is enabled:\n\n\tdefault y if AP_X86_INTEL_TGL\n\tdefault y if AP_X86_INTEL_ADL",
+      "revId": "ebf97b080d6fe83068f0088f3d318a5b5bc0a427",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d470fdb_7195ae0e",
+        "filename": "zephyr/Kconfig.powerseq",
+        "patchSetId": 2
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-11-15T19:09:41Z",
+      "side": 1,
+      "message": "I realize you\u0027re following the pattern of PLATFORM_EC_POWERSEQ_S0IX, but please describe the Kconfig option without referencing the platform/ec option.  Eventually the legacy platform/ec options will get deleted. \n\nAlso probably good to mention that Intel Key Locker platforms need this enabled.",
+      "range": {
+        "startLine": 115,
+        "startChar": 0,
+        "endLine": 116,
+        "endChar": 24
+      },
+      "revId": "ebf97b080d6fe83068f0088f3d318a5b5bc0a427",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66044d47_1ce60188",
+        "filename": "zephyr/projects/brya/brya/prj.conf",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-11-15T19:09:41Z",
+      "side": 1,
+      "message": "Move to a separate CL.",
+      "revId": "ebf97b080d6fe83068f0088f3d318a5b5bc0a427",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
