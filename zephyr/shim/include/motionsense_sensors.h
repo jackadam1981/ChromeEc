@@ -107,4 +107,11 @@ enum sensor_alt_id {
  */
 void motion_sense_probe_sensors(void);
 
+/*
+ * Performs checking CBI SSFC fields defined in DRS to verify if an alternate
+ * motion sensor is present. If there is a match, the function replaces
+ * a default motion sensor in the motion_sensors array.
+ */
+void motion_sensors_check_ssfc(void);
+
 #endif /* __CROS_EC_MOTIONSENSE_SENSORS_H */
