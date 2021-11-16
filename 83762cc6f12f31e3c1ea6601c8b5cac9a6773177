@@ -59,6 +59,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a56a8a8_e775424b",
+        "filename": "zephyr/emul/emul_charger.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2021-11-16T18:39:32Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "67f2db8b_bebbaab0",
+      "revId": "83762cc6f12f31e3c1ea6601c8b5cac9a6773177",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "554e489b_b550aaba",
@@ -102,6 +120,154 @@
         "endLine": 49,
         "endChar": 1
       },
+      "revId": "83762cc6f12f31e3c1ea6601c8b5cac9a6773177",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ced7ed54_2bf014e2",
+        "filename": "zephyr/emul/emul_charger.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2021-11-16T18:39:32Z",
+      "side": 1,
+      "message": "Can you explain why this is necessary? Or explain by extracting it as an explanatory variable and passing it in?",
+      "range": {
+        "startLine": 78,
+        "startChar": 20,
+        "endLine": 78,
+        "endChar": 26
+      },
+      "revId": "83762cc6f12f31e3c1ea6601c8b5cac9a6773177",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f14e1e33_44547427",
+        "filename": "zephyr/emul/emul_charger.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2021-11-16T18:39:32Z",
+      "side": 1,
+      "message": "Is there any concurrent usage of this queue?",
+      "revId": "83762cc6f12f31e3c1ea6601c8b5cac9a6773177",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c57fb6e4_9c4c5848",
+        "filename": "zephyr/emul/emul_charger.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2021-11-16T18:39:32Z",
+      "side": 1,
+      "message": "Can you explain why this is necessary if we\u0027re already checking if the queue is empty?",
+      "revId": "83762cc6f12f31e3c1ea6601c8b5cac9a6773177",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e06c8ae8_ef8da6b5",
+        "filename": "zephyr/emul/emul_charger.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2021-11-16T18:39:32Z",
+      "side": 1,
+      "message": "nit: should be EC_SUCCESS?",
+      "revId": "83762cc6f12f31e3c1ea6601c8b5cac9a6773177",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bcac87d8_9d80e887",
+        "filename": "zephyr/emul/emul_charger.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2021-11-16T18:39:32Z",
+      "side": 1,
+      "message": "nit: should this be EC_SUCCESS instead?",
+      "revId": "83762cc6f12f31e3c1ea6601c8b5cac9a6773177",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0446af86_7be98eba",
+        "filename": "zephyr/emul/emul_charger.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2021-11-16T18:39:32Z",
+      "side": 1,
+      "message": "nit: \"send\" to \"sent\"",
+      "revId": "83762cc6f12f31e3c1ea6601c8b5cac9a6773177",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "adb6edac_a141f61e",
+        "filename": "zephyr/emul/emul_charger.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2021-11-16T18:39:32Z",
+      "side": 1,
+      "message": "nit: \"not\" to \"no\"",
+      "range": {
+        "startLine": 304,
+        "startChar": 75,
+        "endLine": 304,
+        "endChar": 78
+      },
+      "revId": "83762cc6f12f31e3c1ea6601c8b5cac9a6773177",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed0ccc24_c71cac83",
+        "filename": "zephyr/include/emul/emul_charger.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2021-11-16T18:39:32Z",
+      "side": 1,
+      "message": "nit: Should this be EC_SUCCESS?",
       "revId": "83762cc6f12f31e3c1ea6601c8b5cac9a6773177",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
