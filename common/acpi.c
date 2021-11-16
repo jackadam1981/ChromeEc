@@ -169,6 +169,7 @@ static int acpi_read(uint8_t addr)
 	}
 }
 
+extern void pm_put_data_out_nwait(uint32_t out);
 /*
  * This handles AP writes to the EC via the ACPI I/O port. There are only a few
  * ACPI commands (EC_CMD_ACPI_*), but they are all handled here.
@@ -183,6 +184,7 @@ int acpi_ap_to_ec(int is_cmd, uint8_t value, uint8_t *resultptr)
 	if (is_cmd) {
 		acpi_cmd = value;
 		acpi_data_count = 0;
+		//CPRINTS("===ACPI command %x===", value);
 	} else {
 		data = value;
 		/*
@@ -191,6 +193,7 @@ int acpi_ap_to_ec(int is_cmd, uint8_t value, uint8_t *resultptr)
 		 */
 		if (!acpi_data_count++)
 			acpi_addr = data;
+		//CPRINTS("===ACPI data %x===", value);
 	}
 
 	/* Process complete commands */
@@ -437,6 +440,29 @@ int acpi_ap_to_ec(int is_cmd, uint8_t value, uint8_t *resultptr)
 		/* Leave burst mode */
 		hook_call_deferred(&acpi_disable_burst_deferred_data, -1);
 		lpc_clear_acpi_status_mask(EC_LPC_STATUS_BURST_MODE);
+	} else {
+		/* TEST-ONLY */
+		switch (acpi_cmd) {
+		case 0x9:
+			pm_put_data_out_nwait(0x4b);
+			pm_put_data_out_nwait(0x53);
+			pm_put_data_out_nwait(0x43);
+			pm_put_data_out_nwait(0x96);
+			break;
+		case 0xd:
+			pm_put_data_out_nwait(0x00);
+			pm_put_data_out_nwait(0x53);
+			break;
+		case 0x8a:
+			pm_put_data_out_nwait(0x0);
+			break;
+		case 0x90:
+			pm_put_data_out_nwait(0x1);
+			pm_put_data_out_nwait(0x28);
+			break;
+		default:
+			break;
+		}
 	}
 
 	return retval;
