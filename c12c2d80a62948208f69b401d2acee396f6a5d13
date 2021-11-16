@@ -178,6 +178,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d43d4f02_30e5951e",
+        "filename": "board/kano/sensors.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1215230
+      },
+      "writtenOn": "2021-11-16T06:08:12Z",
+      "side": 1,
+      "message": "if (base_accelgyro_config !\u003d BASE_GYRO_NONE) return;\nIs this enough?\nOr we need lid_accelgyro_config too?",
+      "parentUuid": "96841b38_d1f07b5b",
+      "revId": "c12c2d80a62948208f69b401d2acee396f6a5d13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d7f9cd33_5fcbbbe4",
         "filename": "board/kano/sensors.c",
         "patchSetId": 4
