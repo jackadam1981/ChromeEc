@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "31797917_e73983bb",
+        "filename": "baseboard/brask/baseboard.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1260470
+      },
+      "writtenOn": "2021-11-16T20:11:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a0e2d3d7_096a5445",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 33
+      },
+      "revId": "ebf97b080d6fe83068f0088f3d318a5b5bc0a427",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dcdf1d25_31f8cc5e",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-11-15T19:09:41Z",
       "side": 1,
       "message": "I think you should add CONFIG_HOSTCMD_ESPI_VW_SLP_S5 to follow the existing pattern.",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 39
+      },
+      "revId": "ebf97b080d6fe83068f0088f3d318a5b5bc0a427",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "263e0d51_a9f6c580",
+        "filename": "include/power/intel_x86.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1260470
+      },
+      "writtenOn": "2021-11-16T20:11:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dcdf1d25_31f8cc5e",
       "range": {
         "startLine": 49,
         "startChar": 0,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b33cdbc4_0995fc2e",
+        "filename": "power/common.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 552,
+      "author": {
+        "id": 1260470
+      },
+      "writtenOn": "2021-11-16T20:11:49Z",
+      "side": 1,
+      "message": "Sure. But in the interest of keeping the S4 introduction easily revertable, I\u0027m going to flip the order (ie first a CL to merge them, then the next to add S4).",
+      "parentUuid": "5f56ec14_fc0a4878",
+      "range": {
+        "startLine": 533,
+        "startChar": 0,
+        "endLine": 552,
+        "endChar": 0
+      },
+      "revId": "ebf97b080d6fe83068f0088f3d318a5b5bc0a427",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4b95271c_1863c746",
@@ -100,6 +172,30 @@
       "writtenOn": "2021-11-15T19:09:41Z",
       "side": 1,
       "message": "Move this (and all non-Intel changes) to a separate CL.",
+      "range": {
+        "startLine": 459,
+        "startChar": 0,
+        "endLine": 462,
+        "endChar": 0
+      },
+      "revId": "ebf97b080d6fe83068f0088f3d318a5b5bc0a427",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "51bb694a_e9e52cd3",
+        "filename": "power/falconlite.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 462,
+      "author": {
+        "id": 1260470
+      },
+      "writtenOn": "2021-11-16T20:11:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4b95271c_1863c746",
       "range": {
         "startLine": 459,
         "startChar": 0,
@@ -133,6 +229,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f03cee70_360526aa",
+        "filename": "util/config_allowed.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 735,
+      "author": {
+        "id": 1260470
+      },
+      "writtenOn": "2021-11-16T20:11:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "79ffafa5_ddb6dd94",
+      "range": {
+        "startLine": 735,
+        "startChar": 0,
+        "endLine": 735,
+        "endChar": 25
+      },
+      "revId": "ebf97b080d6fe83068f0088f3d318a5b5bc0a427",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "49c5fe58_a9261ee8",
@@ -150,6 +270,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf246cff_23b4d3c0",
+        "filename": "zephyr/Kconfig.powerseq",
+        "patchSetId": 2
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1260470
+      },
+      "writtenOn": "2021-11-16T20:11:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "49c5fe58_a9261ee8",
+      "revId": "ebf97b080d6fe83068f0088f3d318a5b5bc0a427",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "25b4a327_ff9bc159",
@@ -163,6 +301,24 @@
       "writtenOn": "2021-11-15T19:09:41Z",
       "side": 1,
       "message": "Set the default to y if TGL or ADL is enabled:\n\n\tdefault y if AP_X86_INTEL_TGL\n\tdefault y if AP_X86_INTEL_ADL",
+      "revId": "ebf97b080d6fe83068f0088f3d318a5b5bc0a427",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "010e7d09_320bfe53",
+        "filename": "zephyr/Kconfig.powerseq",
+        "patchSetId": 2
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1260470
+      },
+      "writtenOn": "2021-11-16T20:11:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "25b4a327_ff9bc159",
       "revId": "ebf97b080d6fe83068f0088f3d318a5b5bc0a427",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -190,6 +346,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e63af656_b3c40e64",
+        "filename": "zephyr/Kconfig.powerseq",
+        "patchSetId": 2
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1260470
+      },
+      "writtenOn": "2021-11-16T20:11:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7d470fdb_7195ae0e",
+      "range": {
+        "startLine": 115,
+        "startChar": 0,
+        "endLine": 116,
+        "endChar": 24
+      },
+      "revId": "ebf97b080d6fe83068f0088f3d318a5b5bc0a427",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "66044d47_1ce60188",
@@ -203,6 +383,24 @@
       "writtenOn": "2021-11-15T19:09:41Z",
       "side": 1,
       "message": "Move to a separate CL.",
+      "revId": "ebf97b080d6fe83068f0088f3d318a5b5bc0a427",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "617f0174_cfb89bdc",
+        "filename": "zephyr/projects/brya/brya/prj.conf",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1260470
+      },
+      "writtenOn": "2021-11-16T20:11:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "66044d47_1ce60188",
       "revId": "ebf97b080d6fe83068f0088f3d318a5b5bc0a427",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
