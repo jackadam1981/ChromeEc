@@ -4,19 +4,6 @@
  */
 
 / {
-	gpiox: gpio@0 {
-		status = "okay";
-		compatible = "zephyr,gpio-emul";
-		label = "GPIO_UNIMPLEMENTED";
-		reg = <0x800 0x4>;
-		rising-edge;
-		falling-edge;
-		high-level;
-		low-level;
-		gpio-controller;
-		#gpio-cells = <2>;
-	};
-
 	named-gpios {
 		compatible = "named-gpios";
 
@@ -260,23 +247,6 @@
 			enum-name = "GPIO_HDMI_PRSNT_ODL";
 			label = "HDMI_PRSNT_ODL";
 		};
-
-		/* pins used in power/mt8192, to be removed */
-		ap_ec_watchdog_l: ap_ec_watchdog_l {
-			gpios = <&gpiox 0 GPIO_INPUT>;
-			enum-name = "GPIO_AP_EC_WATCHDOG_L";
-			label = "AP_EC_WATCHDOG_L";
-		};
-		ec_pmic_watchdog_l: ec_pmic_watchdog_l {
-			gpios = <&gpiox 0 GPIO_INPUT>;
-			enum-name = "GPIO_EC_PMIC_WATCHDOG_L";
-			label = "EC_PMIC_WATCHDOG_L";
-		};
-		pmic_ec_pwrgd: pmic_ec_pwrgd {
-			gpios = <&gpiox 0 GPIO_INPUT>;
-			enum-name = "GPIO_PMIC_EC_PWRGD";
-			label = "PMIC_EC_PWRGD";
-		};
 	};
 
 	hibernate-wake-pins {
@@ -287,18 +257,14 @@
 	};
 
 	power_signal_list: power-signal-list {
-		compatible = "mt8192,power-signal-list";
-		pmic_pwr_good {
-			power-enum-name = "PMIC_PWR_GOOD";
-			power-gpio-pin = <&pmic_ec_pwrgd>;
-		};
+		compatible = "mt8186,power-signal-list";
 		ap_in_s3_l {
 			power-enum-name = "AP_IN_S3_L";
 			power-gpio-pin = <&ap_in_sleep_l>;
 		};
-		ap_wdt_asserted {
-			power-enum-name = "AP_WDT_ASSERTED";
-			power-gpio-pin = <&ap_ec_watchdog_l>;
+		pmic_pwr_good {
+			power-enum-name = "PMIC_PWR_GOOD";
+			power-gpio-pin = <&ap_ec_sysrst_odl>;
 		};
 	};
 
