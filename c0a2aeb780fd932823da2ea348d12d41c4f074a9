@@ -127,6 +127,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bf40afdd_6ac87e81",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2021-11-16T02:35:06Z",
+      "side": 1,
+      "message": "ok, i\u0027m fine for this.",
+      "parentUuid": "ab32efdf_a8882ad0",
+      "revId": "c0a2aeb780fd932823da2ea348d12d41c4f074a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9731fa9a_fe6aff5a",
         "filename": "board/brask/usbc_config.c",
         "patchSetId": 2
@@ -186,6 +204,30 @@
       "side": 1,
       "message": "Should I remove this TODO?",
       "parentUuid": "4cb7e6fb_34b6cbae",
+      "range": {
+        "startLine": 132,
+        "startChar": 5,
+        "endLine": 132,
+        "endChar": 22
+      },
+      "revId": "c0a2aeb780fd932823da2ea348d12d41c4f074a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e4e7fecb_4051d758",
+        "filename": "board/brask/usbc_config.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2021-11-16T02:35:06Z",
+      "side": 1,
+      "message": "I think you can remove this.",
+      "parentUuid": "657de7b6_2dba201b",
       "range": {
         "startLine": 132,
         "startChar": 5,
