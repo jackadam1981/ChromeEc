@@ -22,6 +22,30 @@
       },
       "revId": "ed01d387644a46f78a691c1876ab8a491a518987",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71b4049a_f0ebddcb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-11-16T23:05:09Z",
+      "side": 1,
+      "message": "On the one hand, the driver does provide a central location to sanity-check that HPD is only set when DP is active.  But on the other hand, usually drivers are supposed to perform what they\u0027re told to with a minimal level of additional \"thinking\". \n\nI suppose the other location may be to ignore the VDM Attention HPD sets after safe state is set? I should take a look at that one.",
+      "parentUuid": "7aecde55_c61bcf71",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 62
+      },
+      "revId": "ed01d387644a46f78a691c1876ab8a491a518987",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
