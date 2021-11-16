@@ -143,6 +143,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "11723ba0_25d7585d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1215230
+      },
+      "writtenOn": "2021-11-16T06:03:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bf40afdd_6ac87e81",
+      "revId": "c0a2aeb780fd932823da2ea348d12d41c4f074a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9731fa9a_fe6aff5a",
@@ -228,6 +246,30 @@
       "side": 1,
       "message": "I think you can remove this.",
       "parentUuid": "657de7b6_2dba201b",
+      "range": {
+        "startLine": 132,
+        "startChar": 5,
+        "endLine": 132,
+        "endChar": 22
+      },
+      "revId": "c0a2aeb780fd932823da2ea348d12d41c4f074a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5119871b_e234ead6",
+        "filename": "board/brask/usbc_config.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1215230
+      },
+      "writtenOn": "2021-11-16T06:03:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e4e7fecb_4051d758",
       "range": {
         "startLine": 132,
         "startChar": 5,
