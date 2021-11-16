@@ -10,3 +10,4 @@ CHIP:=mt_scp
 CHIP_VARIANT:=mt8188
 CHIP_FAMILY:=RV55
 BASEBOARD:=mtscp-rv32i
+board-y+=dram_test.o
