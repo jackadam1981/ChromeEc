@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5194c911_1e5c9533",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-11-16T19:03:40Z",
+      "side": 1,
+      "message": "We don\u0027t have any other emulators in platform/ec/zephyr/emul that are like this one. Our other emulators are faking out specific hardware, not providing a generic device like this.\n\nHowever this is very similar to the gpio_emul in zephyr itself, to provide gpios on native_posix.\n\nI think this is a good thing to have, and putting it into platform/ec/zephyr/emul still seems like the right thing to do. \n\nAnother approach would be to make a emulator specific to one of the chips, then for tests you could configure the driver for that chip and also the emulator for that chip.",
+      "revId": "00f5f5406878a4e78d27b7a2cdb72de76a3fd777",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
