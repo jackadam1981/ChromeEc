@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "103d8f3d_82c5a82a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2021-11-16T17:19:36Z",
+      "side": 1,
+      "message": "nit: remove",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 10
+      },
+      "revId": "83762cc6f12f31e3c1ea6601c8b5cac9a6773177",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb3fce3e_0da50f0e",
+        "filename": "zephyr/emul/emul_charger.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2021-11-16T17:19:36Z",
+      "side": 1,
+      "message": "I had the understanding we were avoiding any sort of `malloc()` or `k_malloc()` in EC codebase; is this not the case?\n\nHolding off on the rest of the review until this is addressed since if we switch memory allocation paradigms, it will probably result in large changes to the CL.",
+      "revId": "83762cc6f12f31e3c1ea6601c8b5cac9a6773177",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
