@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5effad94_9cfa2afa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2021-11-16T14:23:53Z",
+      "side": 1,
+      "message": "Because of bug in gpio emulator, tcpc_get_alert_status() is not working properly (get GPIO reset pin return 0, but it is set to 1). TCPCI alerts are not handled. With patch in ZephyrOS https://github.com/zephyrproject-rtos/zephyr/pull/40294 this test works correctly.",
+      "revId": "da368d60509c3c13cdd68e8db8bcf1698fdec015",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
