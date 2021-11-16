@@ -1,0 +1,285 @@
+/* Copyright 2021 The Chromium OS Authors. All rights reserved.
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+/dts-v1/;
+
+#include <cros/ite/it8xxx2.dtsi>
+#include <dt-bindings/gpio_defines.h>
+#include <it8xxx2.dtsi>
+
+/ {
+	model = "ADLRVP ITE MECC";
+
+	chosen {
+		zephyr,sram = &sram0;
+		zephyr,console = &uart1;
+		zephyr,shell-uart = &uart1;
+		zephyr,flash = &flash0;
+		zephyr,flash-controller = &flashctrl;
+	};
+
+	named-gpios {
+		compatible = "named-gpios";
+
+		power_button_l: power_button_l {
+			gpios = <&gpioe 4 GPIO_INPUT_PULL_UP>;
+			enum-name = "GPIO_POWER_BUTTON_L";
+			label = "POWER_BUTTON_L";
+		};
+		lid_open: lid_open {
+			gpios = <&gpioe 2 GPIO_INPUT_PULL_UP>;
+			enum-name = "GPIO_LID_OPEN";
+			label = "LID_OPEN";
+		};
+		wp_l {
+			gpios = <&gpioi 4 GPIO_INPUT_PULL_UP>;
+			enum-name = "GPIO_WP_L";
+			label = "WP_L";
+		};
+		uart1_rx {
+			gpios = <&gpiob 0 GPIO_INPUT_PULL_UP>;
+			#enum-name = "GPIO_UART1_RX";
+			label = "UART1_RX";
+		};
+		sys_reset_l {
+			gpios = <&gpiob 6 GPIO_ODR_HIGH>;
+			enum-name = "GPIO_SYS_RESET_L";
+			label = "SYS_RESET_L";
+		};
+		pch_wake_l {
+			gpios = <&gpioh 4 GPIO_ODR_HIGH>;
+			enum-name = "GPIO_EC_PCH_WAKE_ODL";
+			label = "PCH_WAKE_L";
+		};
+		i2c_a_scl {
+			gpios = <&gpiob 3 GPIO_INPUT>;
+			enum-name = "GPIO_EC_I2C0_SENSOR_SCL";
+			label = "I2C_A_SCL";
+		};
+		i2c_a_sda {
+			gpios = <&gpiob 4 GPIO_INPUT>;
+			enum-name = "GPIO_EC_I2C0_SENSOR_SDA";
+			label = "I2C_A_SDA";
+		};
+		i2c_b_scl {
+			gpios = <&gpioc 1 GPIO_INPUT>;
+			enum-name = "GPIO_EC_I2C1_USB_C0_SCL";
+			label = "I2C_B_SCL";
+		};
+		i2c_b_sda {
+			gpios = <&gpioc 2 GPIO_INPUT>;
+			enum-name = "GPIO_EC_I2C1_USB_C0_SDA";
+			label = "I2C_B_SDA";
+		};
+		i2c_e_scl {
+			gpios = <&gpioe 0 GPIO_INPUT>;
+			enum-name = "GPIO_EC_I2C5_BATTERY_SCL";
+			label = "I2C_E_SCL";
+		};
+		i2c_e_sda {
+			gpios = <&gpioe 7 GPIO_INPUT>;
+			enum-name = "GPIO_EC_I2C5_BATTERY_SDA";
+			label = "I2C_E_SDA";
+		};
+		ec_pch_pwr_btn_odl {
+			gpios = <&gpiod 0 GPIO_ODR_HIGH>;
+			enum-name = "GPIO_PCH_PWRBTN_L";
+			label = "EC_PCH_PWR_BTN_ODL";
+		};
+		ec_pch_dsw_pwrok {
+			gpios = <&gpioj 5 GPIO_OUT_LOW>;
+			enum-name = "GPIO_PCH_DSW_PWROK";
+			label = "EC_PCH_DSW_PWROK";
+		};
+		ec_prochot_odl {
+			gpios = <&gpioe 5 GPIO_INPUT>;
+			enum-name = "GPIO_CPU_PROCHOT";
+			label = "EC_PROCHOT_ODL";
+		};
+		pg_ec_rsmrst_odl {
+			gpios = <&gpiob 7 GPIO_INPUT>;
+			enum-name = "GPIO_PG_EC_RSMRST_ODL";
+			label = "PG_EC_RSMRST_ODL";
+		};
+		ec_pch_rsmrst_odl {
+			gpios = <&gpioc 6 GPIO_OUT_LOW>;
+			enum-name = "GPIO_PCH_RSMRST_L";
+			label = "EC_PCH_RSMRST_ODL";
+		};
+		slp_s0_l {
+			gpios = <&gpiof 0 GPIO_INPUT>;
+			enum-name = "GPIO_PCH_SLP_S0_L";
+			label = "SLP_S0_L";
+		};
+		slp_sus_l {
+			gpios = <&gpiog 1 GPIO_INPUT>;
+			enum-name = "GPIO_SLP_SUS_L";
+			label = "SLP_SUS_L";
+		};
+		pg_ec_dsw_pwrok {
+			gpios = <&gpioi 0 GPIO_INPUT>;
+			enum-name = "GPIO_PG_EC_DSW_PWROK";
+			label = "PG_EC_DSW_PWROK";
+		};
+		pg_ec_all_sys_pwrgd {
+			gpios = <&gpioi 7 GPIO_INPUT>;
+			enum-name = "GPIO_PG_EC_ALL_SYS_PWRGD";
+			label = "PG_EC_ALL_SYS_PWRGD";
+		};
+		en_pp3300_a {
+			gpios = <&gpiol 4 GPIO_OUT_LOW>;
+			enum-name = "GPIO_EN_PP3300_A";
+			label = "EN_PP3300_A";
+		};
+		sys_pwrok_ec {
+			gpios = <&gpiok 1 GPIO_OUT_LOW>;
+			enum-name = "GPIO_SYS_PWROK_EC";
+			label = "SYS_PWROK_EC";
+		};
+		acok_od {
+			gpios = <&gpioa 6 GPIO_INPUT>;
+			enum-name = "GPIO_AC_PRESENT";
+			label = "ACOK_OD";
+		};
+	};
+
+	hibernate-wake-pins {
+		compatible = "cros-ec,hibernate-wake-pins";
+		wakeup-pins = <&power_button_l
+			       &lid_open>;
+	};
+
+	named-adc-channels {
+		compatible = "named-adc-channels";
+
+		adc_temp_ambient: temp_ambient {
+			label = "ADC_TEMP_SENSOR_AMBIENT";
+			enum-name = "ADC_TEMP_SENSOR_AMBIENT";
+			channel = <3>;
+		};
+		adc_temp_ddr: temp_ddr {
+			label = "ADC_TEMP_SENSOR_DDR_SOC";
+			enum-name = "ADC_TEMP_SENSOR_DDR_SOC";
+			channel = <5>;
+		};
+		adc_temp_skin: temp_skin {
+			label = "ADC_TEMP_SENSOR_SKIN";
+			enum-name = "ADC_TEMP_SENSOR_SKIN";
+			channel = <6>;
+		};
+		adc_temp_vr: temp_vr {
+			label = "ADC_TEMP_SENSOR_VR";
+			enum-name = "ADC_TEMP_SENSOR_VR";
+			channel = <2>;
+		};
+	};
+
+	named-i2c-ports {
+		compatible = "named-i2c-ports";
+
+		battery {
+			i2c-port = <&i2c0>;
+			enum-name = "I2C_PORT_BATTERY";
+		};
+		tcpc0 {
+			i2c-port = <&i2c1>;
+			enum-name = "I2C_PORT_TCPC0";
+		};
+		tcpc1 {
+			#i2c-port = <&i2c2>;
+			i2c-port = <&i2c1>;
+			enum-name = "I2C_PORT_TCPC1";
+		};
+		i2c-evb3 {
+			i2c-port = <&i2c3>;
+			enum-name = "I2C_PORT_EVB_3";
+		};
+		i2c-evb4 {
+			i2c-port = <&i2c4>;
+			enum-name = "I2C_PORT_EVB_4";
+		};
+		i2c-prog {
+			i2c-port = <&i2c5>;
+			enum-name = "I2C_PORT_EVB_5";
+		};
+	};
+
+	named-pwms {
+		compatible = "named-pwms";
+		/* NOTE: &pwm number needs same with channel number */
+		cpu_fan {
+			pwms = <&pwm2 PWM_CHANNEL_2 PWM_POLARITY_NORMAL>;
+			label = "CPU_FAN";
+			frequency = <20000>;
+		};
+	};
+
+	soc {
+		/delete-node/ kscan@f01d00;
+
+		cros_kb_raw: cros-kb-raw@f01d00 {
+			compatible = "ite,it8xxx2-cros-kb-raw";
+			reg = <0x00f01d00 0x29>;
+			label = "CROS_KB_RAW_0";
+			interrupt-parent = <&intc>;
+			interrupts = <13 IRQ_TYPE_LEVEL_HIGH>;
+			status = "disabled";
+		};
+	};
+};
+
+&adc0 {
+	status = "okay";
+};
+
+&espi0 {
+	status = "okay";
+};
+
+&i2c0 {
+	status = "okay";
+	clock-frequency = <I2C_BITRATE_STANDARD>;
+};
+
+&i2c1 {
+	status = "okay";
+	clock-frequency = <I2C_BITRATE_STANDARD>;
+};
+
+&i2c2 {
+	status = "disabled";
+	clock-frequency = <I2C_BITRATE_STANDARD>;
+};
+
+&i2c3 {
+	status = "okay";
+	clock-frequency = <I2C_BITRATE_STANDARD>;
+};
+
+&i2c4 {
+	status = "okay";
+	clock-frequency = <I2C_BITRATE_STANDARD>;
+};
+
+&i2c5 {
+	status = "okay";
+	clock-frequency = <I2C_BITRATE_STANDARD>;
+};
+
+&uart1 {
+	status = "okay";
+	current-speed = <115200>;
+	clock-frequency = <1804800>;
+};
+
+&ite_uart1_wrapper {
+	status = "okay";
+};
+
+/* FAN */
+&pwm2 {
+	status = "okay";
+	prescaler-cx = <PWM_PRESCALER_C4>;
+};
