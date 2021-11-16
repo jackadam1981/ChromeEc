@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7aecde55_c61bcf71",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-11-16T20:46:45Z",
+      "side": 1,
+      "message": "Are there other scenarios where the DP mode can change in between the mux enqueue and the task running?\nI wonder if it would be better to check this in the usb_mux_task(). \n\nSomething like:\n    if (next.type \u003d\u003d USB_MUX_HPD_UPDATE)\n        if (HPD_LEVEL_DEASSERTED) /* Always allow de-assertion */\n            perform_mux_hpd_update();\n        if (DP_ENABLED)\n            perform_mux_hpd_update();",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 62
+      },
+      "revId": "ed01d387644a46f78a691c1876ab8a491a518987",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
