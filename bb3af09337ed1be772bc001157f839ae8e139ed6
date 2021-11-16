@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0cb22c63_e157a1f3",
+        "filename": "driver/charger/bq25710.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-11-16T21:58:58Z",
+      "side": 1,
+      "message": "Because writing this value is already guarded, how about setting the default directly in config.h.  This better matches what you\u0027re doing with Kconfig anyway.",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 34
+      },
+      "revId": "bb3af09337ed1be772bc001157f839ae8e139ed6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52b66a3d_f2173147",
+        "filename": "driver/charger/bq25710.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 425,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-11-16T21:58:58Z",
+      "side": 1,
+      "message": "How about a single bool option here: CONFIG_BQ25720_CHARGE_OPTION_4_CUSTOM? The user would then be required to specify all the fields.\n\nI\u0027m not sure it\u0027s worth the baggage to enable/disable every single field.\n\nThis could be done as a follow up CL.",
+      "range": {
+        "startLine": 425,
+        "startChar": 0,
+        "endLine": 425,
+        "endChar": 51
+      },
+      "revId": "bb3af09337ed1be772bc001157f839ae8e139ed6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "404b691d_a5dd0d9d",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1152,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-11-16T21:58:58Z",
+      "side": 1,
+      "message": "Nit - please group this with the IDCHG_DEG2 configs.",
+      "range": {
+        "startLine": 1142,
+        "startChar": 0,
+        "endLine": 1152,
+        "endChar": 0
+      },
+      "revId": "bb3af09337ed1be772bc001157f839ae8e139ed6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
