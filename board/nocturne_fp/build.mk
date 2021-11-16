@@ -37,6 +37,7 @@ test-list-y=\
        fpsensor_hw \
        mpu \
        mutex \
+       panic \
        pingpong \
        printf \
        queue \
