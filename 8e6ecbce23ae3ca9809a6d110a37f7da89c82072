@@ -16,6 +16,23 @@
       "message": "Code reviewed.\nTested ST nucleo board only, so please tag verified when you tested on your platform",
       "revId": "8e6ecbce23ae3ca9809a6d110a37f7da89c82072",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d2d1a89c_2b09337f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507338
+      },
+      "writtenOn": "2021-11-16T06:43:43Z",
+      "side": 1,
+      "message": "\u003e Patch Set 2: Code-Review+1\n\u003e \n\u003e (1 comment)\n\u003e \n\u003e By voting Code-Review+1 the following files are now code-owner approved by \u003cGERRIT_ACCOUNT_1507306\u003e:\n\u003e * common/build.mk\n\u003e * driver/accelgyro_icm42607.c\n\u003e * driver/accelgyro_icm42607.h\n\u003e * driver/build.mk\n\u003e * include/ec_commands.h\n\u003e * util/ectool.c\n\u003e \n\nSorry about using gmail account ....",
+      "revId": "8e6ecbce23ae3ca9809a6d110a37f7da89c82072",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
