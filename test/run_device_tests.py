@@ -154,6 +154,8 @@ class AllTests:
                            finish_regexes=[board_config.mpu_regex]),
             'mutex':
                 TestConfig(name='mutex'),
+            'panic':
+                TestConfig(name='panic'),
             'pingpong':
                 TestConfig(name='pingpong'),
             'printf':
