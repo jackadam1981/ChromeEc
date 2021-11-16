@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b39a4bd_83420c28",
+        "filename": "zephyr/include/emul/emul_tcpci.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-11-16T23:22:32Z",
+      "side": 1,
+      "message": "If practical, I\u0027d like to avoid too many bool parameters, since it makes call sites harder to type correctly. For \"src,\" we could use enum pd_power_role (with a parameter name along the lines of power_role). Similarly, we could use enum tcpc_cc_polarity in place of \"cc1.\"\n\nI\u0027m not immediately sure what the best way to represent active_cable would be. You could have this function take two parameters with pull values for the resistor values of each CC line. I don\u0027t know whether that would work well with the way you want to call this. (You\u0027d have to switch the arguments to indicate the same device plugged in with the cable flipped.)",
+      "revId": "82d716f1c935024102afc3acf8fc2a0c1bf2be7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
