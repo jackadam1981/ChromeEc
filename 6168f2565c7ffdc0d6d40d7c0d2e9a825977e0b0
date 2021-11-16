@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "59993785_acb8d4fd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2021-11-16T18:27:24Z",
+      "side": 1,
+      "message": "Patchset 2 changed the i2c_command_lookup definition since I dropped the host command enum ec_status change.\n\nstatic enum ec_status i2c_command_lookup(",
+      "revId": "6168f2565c7ffdc0d6d40d7c0d2e9a825977e0b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
