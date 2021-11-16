@@ -10,6 +10,7 @@ CHIP:=mt_scp
 ifeq ($(BOARD), cherry_scp_core1)
 CHIP_VARIANT:=mt8195_core1
 board-y+=ipi_test.o
+board-y+=dram_test.o
 else
 CHIP_VARIANT:=mt8195
 endif
