@@ -98,6 +98,7 @@ child-binding:
       - ADC_TEMP_SENSOR_1
       - ADC_TEMP_SENSOR_2
       - ADC_TEMP_SENSOR_3
+      - ADC_TEMP_SENSOR_AMBIENT
       - ADC_TEMP_SENSOR_CHARGER
       - ADC_TEMP_SENSOR_DDR_SOC
       - ADC_TEMP_SENSOR_FAN
@@ -108,6 +109,8 @@ child-binding:
       - ADC_TEMP_SENSOR_2_AMBIENT
       - ADC_TEMP_SENSOR_3_CHARGER
       - ADC_TEMP_SENSOR_4_WWAN
+      - ADC_TEMP_SENSOR_SKIN
+      - ADC_TEMP_SENSOR_VR
       - ADC_VBUS
       - ADC_VBUS_C0
       - ADC_VBUS_C1
