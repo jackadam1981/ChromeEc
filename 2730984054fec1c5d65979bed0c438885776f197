@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "220c806d_8bce7d99",
+        "filename": "board/dewatt/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-11-16T21:35:54Z",
+      "side": 1,
+      "message": "nit: if your battery fuel gauge supports a sleep mode, then you can fill it in here and we can save power by sleeping it before EC hibernate.  If it doesn\u0027t support it, then that\u0027s fine as well",
+      "revId": "2730984054fec1c5d65979bed0c438885776f197",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
