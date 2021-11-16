@@ -39,6 +39,23 @@
       "message": "Will submitted other stack after this patch merged.",
       "revId": "ec3da05119cfea1117439c42f85c7db99d51492c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0782f1b6_588a0d88",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1238380
+      },
+      "writtenOn": "2021-11-16T00:45:51Z",
+      "side": 1,
+      "message": "Since the CL:3277938 merged, I need to rebase to solve the conflict.",
+      "revId": "ec3da05119cfea1117439c42f85c7db99d51492c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
