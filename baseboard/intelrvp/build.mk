@@ -8,7 +8,7 @@
 
 #Intel RVP common files
 baseboard-y=baseboard.o
-baseboard-$(CONFIG_LED_COMMON)+=led.o led_states.o
+baseboard-$(CONFIG_LED_COMMON)+=led.o led_states.o power.o
 
 ifneq ($(CONFIG_USB_POWER_DELIVERY),)
 baseboard-$(CONFIG_USB_POWER_DELIVERY)+=chg_usb_pd.o
@@ -29,7 +29,7 @@ baseboard-$(CONFIG_BC12_DETECT_MAX14637)+=bc12.o
 #Common board specific files
 ifneq ($(filter y,$(BOARD_ADLRVPP_ITE) $(BOARD_ADLRVPM_ITE) \
 		$(BOARD_ADLRVPP_MCHP1521) $(BOARD_ADLRVPP_NPCX) \
-		$(BOARD_ADLRVPP_MCHP1727)),)
+		$(BOARD_ADLRVPP_MCHP1727) $(BOARD_ADLRVPP_ITE_IT81302)),)
 baseboard-y+=adlrvp.o
 ifneq ($(BOARD_ADLRVPM_ITE),)
 baseboard-$(CONFIG_BATTERY_SMART)+=adlrvp_battery2s.o
