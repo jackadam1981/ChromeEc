@@ -16,6 +16,24 @@
       "message": "is it okay to exceed the maximum supported freq?",
       "revId": "3442161f11fc18a32b7b9dca7bd8c096dcca47e2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10d9b539_40c99ee5",
+        "filename": "board/goroh/board.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-11-17T01:32:00Z",
+      "side": 1,
+      "message": "syv226 supports freq range from 10k to 100k, so it should be still in the support frequency.",
+      "parentUuid": "b3f6ea4d_cb312f62",
+      "revId": "3442161f11fc18a32b7b9dca7bd8c096dcca47e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
