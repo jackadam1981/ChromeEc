@@ -34,6 +34,24 @@
       "parentUuid": "93127d15_de59d03e",
       "revId": "61463dc4c30add5be865b412b868b819a75caf49",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "43661a5f_ed4c4f35",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1456082
+      },
+      "writtenOn": "2021-11-17T14:21:26Z",
+      "side": 1,
+      "message": "Hi Nick, what do you think? ODM explained the meaning of sensor 0 ~ 4 in #comment31\n\nAs a result, in the dark room\nLED off: C: 0, R: 66, G: 41, B: 5\nLED on: C: 300, R: 338, G: 341, B: 322",
+      "parentUuid": "f2e3e0e7_5d471983",
+      "revId": "61463dc4c30add5be865b412b868b819a75caf49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
