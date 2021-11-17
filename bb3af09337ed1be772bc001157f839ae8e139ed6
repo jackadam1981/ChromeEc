@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9b837933_c41b58cb",
+        "filename": "driver/charger/bq25710.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-11-17T02:06:04Z",
+      "side": 1,
+      "message": "how do you mean? if we don\u0027t select\nPLATFORM_EC_CHARGER_BQ25720_IDCHG_TH2_CUSTOM\nin kconfig, then\nPLATFORM_EC_CHARGER_BQ25720_IDCHG_TH2\nwon\u0027t be defined.\n\ntrouble is, code guarded by\nIS_ENABLED(PLATFORM_EC_CHARGER_BQ25720_IDCHG_TH2)\nstill needs to compile, but PLATFORM_EC_CHARGER_BQ25720_IDCHG_TH2\nmay not be defined. we\u0027d have to remove\ndepends on PLATFORM_EC_CHARGER_BQ25720_IDCHG_DEG2_CUSTOM\nfrom kconfig.\n\ni didn\u0027t want unused definitions to show up in the resulting\n.config, hence the \"depends...\".",
+      "parentUuid": "0cb22c63_e157a1f3",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 34
+      },
+      "revId": "bb3af09337ed1be772bc001157f839ae8e139ed6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "52b66a3d_f2173147",
         "filename": "driver/charger/bq25710.c",
         "patchSetId": 1
@@ -37,6 +61,30 @@
       "writtenOn": "2021-11-16T21:58:58Z",
       "side": 1,
       "message": "How about a single bool option here: CONFIG_BQ25720_CHARGE_OPTION_4_CUSTOM? The user would then be required to specify all the fields.\n\nI\u0027m not sure it\u0027s worth the baggage to enable/disable every single field.\n\nThis could be done as a follow up CL.",
+      "range": {
+        "startLine": 425,
+        "startChar": 0,
+        "endLine": 425,
+        "endChar": 51
+      },
+      "revId": "bb3af09337ed1be772bc001157f839ae8e139ed6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "11373ba2_138cc2ad",
+        "filename": "driver/charger/bq25710.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 425,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-11-17T02:06:04Z",
+      "side": 1,
+      "message": "for now, i\u0027d like to keep these independent.\nif we find that per-field customization is too detailed\ncompared to per-register customization, we can merge these.",
+      "parentUuid": "52b66a3d_f2173147",
       "range": {
         "startLine": 425,
         "startChar": 0,
@@ -60,6 +108,30 @@
       "writtenOn": "2021-11-16T21:58:58Z",
       "side": 1,
       "message": "Nit - please group this with the IDCHG_DEG2 configs.",
+      "range": {
+        "startLine": 1142,
+        "startChar": 0,
+        "endLine": 1152,
+        "endChar": 0
+      },
+      "revId": "bb3af09337ed1be772bc001157f839ae8e139ed6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ebeabb5_361c9d8d",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1152,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-11-17T02:06:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "404b691d_a5dd0d9d",
       "range": {
         "startLine": 1142,
         "startChar": 0,
