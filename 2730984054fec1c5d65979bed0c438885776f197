@@ -16,6 +16,24 @@
       "message": "nit: if your battery fuel gauge supports a sleep mode, then you can fill it in here and we can save power by sleeping it before EC hibernate.  If it doesn\u0027t support it, then that\u0027s fine as well",
       "revId": "2730984054fec1c5d65979bed0c438885776f197",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "669fbf46_7e649a69",
+        "filename": "board/dewatt/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1293891
+      },
+      "writtenOn": "2021-11-17T07:23:47Z",
+      "side": 1,
+      "message": "AP19B8M can enter sleep mode automatically with no communication for 1 minutes. It doesn\u0027t have command to let it enter sleep mode.",
+      "parentUuid": "220c806d_8bce7d99",
+      "revId": "2730984054fec1c5d65979bed0c438885776f197",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
