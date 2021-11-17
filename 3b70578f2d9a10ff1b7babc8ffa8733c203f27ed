@@ -22,6 +22,30 @@
       },
       "revId": "3b70578f2d9a10ff1b7babc8ffa8733c203f27ed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a0a475bc_c7a96640",
+        "filename": "zephyr/emul/emul_tcpci.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2021-11-17T18:24:16Z",
+      "side": 1,
+      "message": "Could you please check if next commit (https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3285064) address this issue? I think that I handled everything what you described here.",
+      "parentUuid": "c887f246_57b01499",
+      "range": {
+        "startLine": 360,
+        "startChar": 0,
+        "endLine": 368,
+        "endChar": 2
+      },
+      "revId": "3b70578f2d9a10ff1b7babc8ffa8733c203f27ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
