@@ -240,6 +240,16 @@ void board_init(void)
 	/* Enable gpio interrupt for base accelgyro sensor */
 	gpio_enable_interrupt(GPIO_BASE_SIXAXIS_INT_L);
 
+	/* add 1.8V pull up to TSP_TA to improve skin temperature */
+	if (board_id == -1) {
+		uint32_t val;
+
+		if (cbi_get_board_version(&val) == EC_SUCCESS)
+			board_id = val;
+	}
+	if (board_id > 7)
+		gpio_set_flags(GPIO_TSP_TA, GPIO_ODR_HIGH | GPIO_SEL_1P8V);
+
 	/* Turn on 5V if the system is on, otherwise turn it off. */
 	on = chipset_in_state(CHIPSET_STATE_ON | CHIPSET_STATE_ANY_SUSPEND |
 			      CHIPSET_STATE_SOFT_OFF);
