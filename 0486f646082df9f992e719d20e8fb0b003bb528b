@@ -22,6 +22,30 @@
       },
       "revId": "0486f646082df9f992e719d20e8fb0b003bb528b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea8df522_66a799cd",
+        "filename": "board/quackingstick/usbc_config.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1293891
+      },
+      "writtenOn": "2021-11-17T06:56:11Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c3b7430f_c72ab587",
+      "range": {
+        "startLine": 39,
+        "startChar": 23,
+        "endLine": 39,
+        "endChar": 25
+      },
+      "revId": "0486f646082df9f992e719d20e8fb0b003bb528b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
