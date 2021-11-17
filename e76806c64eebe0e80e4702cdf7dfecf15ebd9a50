@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "df072e29_9599fb47",
+        "filename": "zephyr/emul/emul_tcpci.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 397,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-11-17T18:40:43Z",
+      "side": 1,
+      "message": "Right now, this treats DRPAutotoggle as if it automatically gets to the correct CC values for what was plugged in. That\u0027s OK for any high-level test, and you can\u0027t do much more with a generic TCPCI emulator.\n\nSome TCPCs, including some TCPCs that implement TCPCI, make the duty cycle and length of the DRPAutotoggle cycle configurable, and those parameters can affect whether this actually works. They could also influence what happens if you plug in another device that is also toggling roles. Tests for that stuff will need to be driver-specific, and they aren\u0027t super high priority in my mind.\n\nRelatedly, this emulator can\u0027t really emulate the case where we have DRPAutotoggle enabled and plug in another device that is also toggling. We have some code in the Type-C layer to handle that, and you might need to emulate there here to fully test that code.\n\nAll that stuff can be another CL. This is fine for now.",
+      "revId": "e76806c64eebe0e80e4702cdf7dfecf15ebd9a50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
