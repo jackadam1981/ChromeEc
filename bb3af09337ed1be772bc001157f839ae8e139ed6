@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "043ac412_d9c4e2ff",
+        "filename": "driver/charger/bq25710.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-11-17T16:46:19Z",
+      "side": 1,
+      "message": "Ack.  I forgot the depends prevents PLATFORM_EC_CHARGER_BQ25720_IDCHG_TH2 from getting defined.",
+      "parentUuid": "9b837933_c41b58cb",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 34
+      },
+      "revId": "bb3af09337ed1be772bc001157f839ae8e139ed6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "52b66a3d_f2173147",
@@ -85,6 +109,30 @@
       "side": 1,
       "message": "for now, i\u0027d like to keep these independent.\nif we find that per-field customization is too detailed\ncompared to per-register customization, we can merge these.",
       "parentUuid": "52b66a3d_f2173147",
+      "range": {
+        "startLine": 425,
+        "startChar": 0,
+        "endLine": 425,
+        "endChar": 51
+      },
+      "revId": "bb3af09337ed1be772bc001157f839ae8e139ed6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "47499078_fc34718d",
+        "filename": "driver/charger/bq25710.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 425,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-11-17T16:46:19Z",
+      "side": 1,
+      "message": "My thinking is that the number of sub-configs for this driver is getting large.  However, I think once this driver gets converted to the Zephyr device model, all these register/field overrides should move to the devicetree anyway,  Zephyr specifically documents using default properties for the power-on reset values for drivers, which I think matches the use case here well.  https://docs.zephyrproject.org/latest/guides/dts/bindings.html#default-values-for-properties\n\nI opened b:206801723 for the upstream effort on this driver.",
+      "parentUuid": "11373ba2_138cc2ad",
       "range": {
         "startLine": 425,
         "startChar": 0,
