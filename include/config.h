@@ -3184,15 +3184,15 @@
  * SLP signals (SLP_S3, SLP_S4, and SLP_S5) use virtual wires instead of
  * physical pins with eSPI interface.
  */
-#undef CONFIG_HOSTCMD_ESPI_VW_SLP_S3
-#undef CONFIG_HOSTCMD_ESPI_VW_SLP_S4
-#undef CONFIG_HOSTCMD_ESPI_VW_SLP_S5
+#undef CONFIG_HOST_INTERFACE_ESPI_VW_SLP_S3
+#undef CONFIG_HOST_INTERFACE_ESPI_VW_SLP_S4
+#undef CONFIG_HOST_INTERFACE_ESPI_VW_SLP_S5
 
 /* MCHP next two items are EC eSPI slave configuration */
 /* Maximum clock frequence eSPI EC slave advertises
  * Values in MHz are 20, 25, 33, 50, and 66
  */
-#undef CONFIG_HOSTCMD_ESPI_EC_MAX_FREQ
+#undef CONFIG_HOST_INTERFACE_ESPI_EC_MAX_FREQ
 
 /* EC eSPI slave advertises IO lanes
  * 0 = Single
@@ -3200,7 +3200,7 @@
  * 2 = Single and Quad
  * 3 = Single, Dual, and Quad
  */
-#undef CONFIG_HOSTCMD_ESPI_EC_MODE
+#undef CONFIG_HOST_INTERFACE_ESPI_EC_MODE
 
 /* Bit map of eSPI channels EC advertises
  * bit[0] = 1 Peripheral channel
@@ -3208,7 +3208,7 @@
  * bit[2] = 1 OOB channel
  * bit[3] = 1 Flash channel
  */
-#undef CONFIG_HOSTCMD_ESPI_EC_CHAN_BITMAP
+#undef CONFIG_HOST_INTERFACE_ESPI_EC_CHAN_BITMAP
 
 /*
  * Background information (from Intel eSPI Compatibility Specification):
@@ -3239,7 +3239,7 @@
  * Don't enable this config if the platform implements the Deep-Sx entry as EC
  * needs to maintain these pins' states per request.
  */
-#undef CONFIG_HOSTCMD_ESPI_RESET_SLP_SX_VW_ON_ESPI_RST
+#undef CONFIG_HOST_INTERFACE_ESPI_RESET_SLP_SX_VW_ON_ESPI_RST
 
 /* Base address of low power RAM. */
 #undef CONFIG_LPRAM_BASE
@@ -5543,9 +5543,9 @@
  * Define CONFIG_HOST_ESPI_VW_POWER_SIGNAL if any power signals from the host
  * are configured as virtual wires.
  */
-#if defined(CONFIG_HOSTCMD_ESPI_VW_SLP_S3) || \
-	defined(CONFIG_HOSTCMD_ESPI_VW_SLP_S4) || \
-	defined(CONFIG_HOSTCMD_ESPI_VW_SLP_S5)
+#if defined(CONFIG_HOST_INTERFACE_ESPI_VW_SLP_S3) || \
+	defined(CONFIG_HOST_INTERFACE_ESPI_VW_SLP_S4) || \
+	defined(CONFIG_HOST_INTERFACE_ESPI_VW_SLP_S5)
 #define CONFIG_HOST_ESPI_VW_POWER_SIGNAL
 #endif
 
@@ -5557,7 +5557,7 @@
  * with Key Locker support (TGL+).
  */
 #if defined(CONFIG_POWER_S4_RESIDENCY) && \
-	!defined(CONFIG_HOSTCMD_ESPI_VW_SLP_S5)
+	!defined(CONFIG_HOST_INTERFACE_ESPI_VW_SLP_S5)
 #error "S4_RESIDENCY needs eSPI support or SLP_S5 routed"
 #endif
 
@@ -6220,7 +6220,7 @@
 #define CONFIG_CHIPSET_X86_RSMRST_DELAY
 #endif
 
-#if defined(CONFIG_HOSTCMD_ESPI_VW_SLP_S3) && \
+#if defined(CONFIG_HOST_INTERFACE_ESPI_VW_SLP_S3) && \
 	defined(CONFIG_CHIPSET_SLP_S3_L_OVERRIDE)
 #error "Cannot use CONFIG_CHIPSET_SLP_S3_L_OVERRIDE if SLP_S3 is a virtual wire"
 #endif
