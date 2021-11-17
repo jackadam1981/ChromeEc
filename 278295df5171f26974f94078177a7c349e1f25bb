@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bec6c4df_bbb7a6fd",
+        "filename": "driver/charger/bq25710.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 398,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-11-17T23:36:35Z",
+      "side": 1,
+      "message": "For BQ25710 it was 1P50... maybe changing the define to BQ257X0_CHARGE_OPTION_2_BATOC_VTH__MIN or something similar can help?",
+      "range": {
+        "startLine": 398,
+        "startChar": 35,
+        "endLine": 398,
+        "endChar": 39
+      },
+      "revId": "278295df5171f26974f94078177a7c349e1f25bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
