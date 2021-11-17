@@ -418,7 +418,7 @@ static int bq257x0_init_charge_option_3(int chgnum)
 	 * The bq25720 defaults to 15 A while the bq25710
 	 * defaults to 10A. Set the bq25720 to 10A as well.
 	 */
-	reg = SET_CO3(IL_AVG, BQ25720_CHARGE_OPTION_3_IL_AVG__10A, reg);
+	reg = SET_CO3(IL_AVG, BQ257X0_CHARGE_OPTION_3_IL_AVG__10A, reg);
 
 	return raw_write16(chgnum, BQ25710_REG_CHARGE_OPTION_3, reg);
 }
