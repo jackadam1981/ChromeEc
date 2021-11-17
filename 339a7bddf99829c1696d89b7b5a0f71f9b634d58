@@ -33,6 +33,24 @@
       "message": "Verified on brya id 2 on our PD setup. The issue when PS8815 couldn\u0027t negotiate over 5V because of sleep mode is gone.\n",
       "revId": "339a7bddf99829c1696d89b7b5a0f71f9b634d58",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b09784f3_e5aedf4e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-11-17T23:04:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a07dfad6_7aa96758",
+      "revId": "339a7bddf99829c1696d89b7b5a0f71f9b634d58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
