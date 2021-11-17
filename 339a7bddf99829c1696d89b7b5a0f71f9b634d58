@@ -16,6 +16,23 @@
       "message": "let me check the history behind sending the I2CIDLE command\n(there is much history).\n",
       "revId": "339a7bddf99829c1696d89b7b5a0f71f9b634d58",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3cf7e066_d6f73fd4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-11-17T01:26:44Z",
+      "side": 1,
+      "message": "Verified on brya id 2 on our PD setup. The issue when PS8815 couldn\u0027t negotiate over 5V because of sleep mode is gone.\n",
+      "revId": "339a7bddf99829c1696d89b7b5a0f71f9b634d58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
