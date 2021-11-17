@@ -196,6 +196,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9dcc165_ff1d720b",
+        "filename": "zephyr/emul/emul_charger.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2021-11-17T18:15:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "258430b5_628b9942",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 1
+      },
+      "revId": "83762cc6f12f31e3c1ea6601c8b5cac9a6773177",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ced7ed54_2bf014e2",
