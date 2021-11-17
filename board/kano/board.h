@@ -11,7 +11,7 @@
 #include "compile_time_macros.h"
 
 /*
- * Early brya boards are not set up for vivaldi
+ * Early Kano boards are not set up for vivaldi
  */
 #undef CONFIG_KEYBOARD_VIVALDI
 
