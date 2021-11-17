@@ -190,6 +190,30 @@
       },
       "revId": "7e4803142703dadc2910b39ff3f85582e2b4eb60",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e82ffe39_f8c3c329",
+        "filename": "core/cortex-m0/panic.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-11-17T22:48:43Z",
+      "side": 1,
+      "message": "What command did you use to crash stm32f072? \u0027crash watchdog\u0027 and \u0027crash assert\u0027 are handled differently. So, I think you need to use others (e.g. \u0027crash divzero\u0027, \u0027crash unaligned\u0027 or \u0027crash break\u0027 https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3290316).",
+      "parentUuid": "dab73cdd_febced4c",
+      "range": {
+        "startLine": 172,
+        "startChar": 3,
+        "endLine": 172,
+        "endChar": 8
+      },
+      "revId": "7e4803142703dadc2910b39ff3f85582e2b4eb60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
