@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90db4466_5174c170",
+        "filename": "zephyr/emul/emul_ln9310.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-11-17T01:42:44Z",
+      "side": 1,
+      "message": "I think you still need to return an error after this. If `CONFIG_ASSERT` is not turned on this assert will do nothing. Alternatively, I think you can call `__ASSERT_POST_ACTION()` but you should verify",
+      "range": {
+        "startLine": 282,
+        "startChar": 2,
+        "endLine": 282,
+        "endChar": 10
+      },
+      "revId": "9991b99c0ec41a907ddf7f70f76a3682aab740b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
