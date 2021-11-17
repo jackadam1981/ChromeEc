@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "adeec205_911862c1",
+        "filename": "zephyr/shim/src/motionsense_sensors.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 399,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-11-17T17:38:52Z",
+      "side": 1,
+      "message": "For this proposal, would this also move into the check_alternate_devices() call?",
+      "range": {
+        "startLine": 399,
+        "startChar": 0,
+        "endLine": 399,
+        "endChar": 58
+      },
+      "revId": "35a85893ad8b3d9cb942c89f6094c8ba13bade65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da30620f_ca6b88aa",
+        "filename": "zephyr/shim/src/motionsense_sensors.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 443,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-11-17T17:38:52Z",
+      "side": 1,
+      "message": "We could consider removing the \"run-probe\" property, and letting the board code decide which sensors to probe.\n\nSomething like:\n    if (probe_sensor(\u003clabel\u003e))\n        replace_alt_motion_sensor(\u003clabel\u003e)\n        \nI think a doc is probably warranted to describe the known use cases for replacing sensors and USB-C chips.",
+      "range": {
+        "startLine": 440,
+        "startChar": 0,
+        "endLine": 443,
+        "endChar": 1
+      },
+      "revId": "35a85893ad8b3d9cb942c89f6094c8ba13bade65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
