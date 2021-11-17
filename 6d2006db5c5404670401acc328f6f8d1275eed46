@@ -39,6 +39,30 @@
       },
       "revId": "6d2006db5c5404670401acc328f6f8d1275eed46",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5e09542_79e3cf81",
+        "filename": "zephyr/shim/src/espi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 565,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2021-11-17T08:04:32Z",
+      "side": 1,
+      "message": "The get_acpi_value() implementation of posix is different from other SOCs. The function use ACPI_TYPE_POS to shift data (but the data should be shifted by ACPI_DATA_POS?).\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/main/zephyr/shim/chip/posix/espi.c#26\n\nIf the function should be fixed by using ACPI_DATA_POS, we can remove this ifdef.\nAdded Yuval to comment this change.",
+      "parentUuid": "d87c7a2b_22207f1e",
+      "range": {
+        "startLine": 565,
+        "startChar": 0,
+        "endLine": 565,
+        "endChar": 25
+      },
+      "revId": "6d2006db5c5404670401acc328f6f8d1275eed46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
