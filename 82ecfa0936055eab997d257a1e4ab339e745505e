@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f047ab54_3739d8b6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1415203
+      },
+      "writtenOn": "2021-11-17T22:07:06Z",
+      "side": 1,
+      "message": "moving out of hibernate mode by lid_open\n     and connecting charger to usb port\n\nAre these two test cases? in that case, we should say “by lid_open and by connecting”\nis lid_open a command? or just human action? if human action, why ”_”?",
+      "revId": "82ecfa0936055eab997d257a1e4ab339e745505e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
