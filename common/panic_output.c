@@ -3,6 +3,7 @@
  * found in the LICENSE file.
  */
 
+#include "assert.h"
 #include "common.h"
 #include "console.h"
 #include "cpu.h"
@@ -379,6 +380,8 @@ static int command_crash(int argc, char **argv)
 
 		/* Unreachable, but included for consistency */
 		irq_unlock(lock_key);
+	} else if (!strcasecmp(argv[1], "break")) {
+		ARCH_SOFTWARE_BREAKPOINT;
 	} else {
 		return EC_ERROR_PARAM1;
 	}
@@ -391,8 +394,8 @@ DECLARE_CONSOLE_COMMAND(crash, command_crash,
 #ifdef CONFIG_CMD_STACKOVERFLOW
 			" | stack"
 #endif
-			" | unaligned | watchdog | hang]",
-		"Crash the system (for testing)");
+			" | unaligned | watchdog | hang | break]",
+		"Crash system");
 #endif /* CONFIG_CMD_CRASH */
 
 static int command_panicinfo(int argc, char **argv)

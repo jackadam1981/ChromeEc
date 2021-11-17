@@ -13,6 +13,20 @@
 #include "common.h"
 #endif
 
+/* We should put this in config_core.h. */
+#if defined(__arm__)
+#define ARCH_SOFTWARE_BREAKPOINT __asm("bkpt")
+#elif defined(__nds32__)
+#define ARCH_SOFTWARE_BREAKPOINT __asm("break 0")
+#elif defined(__riscv)
+#define ARCH_SOFTWARE_BREAKPOINT __asm("ebreak")
+#elif defined(VIF_BUILD)
+/* The genvif utility compiles usb_pd_policy.c and needs an empty definition. */
+#define ARCH_SOFTWARE_BREAKPOINT
+#elif defined(__i386__)
+#define ARCH_SOFTWARE_BREAKPOINT __asm("int3")
+#endif
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -41,19 +55,6 @@ extern noreturn void panic_assert_fail(const char *msg, const char *func,
 #endif /* CONFIG_DEBUG_ASSERT_BRIEF */
 
 #else /* !CONFIG_DEBUG_ASSERT_REBOOTS */
-
-#if defined(__arm__)
-#define ARCH_SOFTWARE_BREAKPOINT __asm("bkpt")
-#elif defined(__nds32__)
-#define ARCH_SOFTWARE_BREAKPOINT __asm("break 0")
-#elif defined(__riscv)
-#define ARCH_SOFTWARE_BREAKPOINT __asm("ebreak")
-#elif defined(VIF_BUILD)
-/* The genvif utility compiles usb_pd_policy.c and needs an empty definition. */
-#define ARCH_SOFTWARE_BREAKPOINT
-#else
-#error "CONFIG_DEBUG_ASSERT_REBOOTS must be defined on this architecture"
-#endif
 
 #define ASSERT(cond)                              \
 	do {                                      \
