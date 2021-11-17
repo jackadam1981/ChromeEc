@@ -121,7 +121,7 @@ config PLATFORM_EC_POWERSEQ_S0IX
 
 config PLATFORM_EC_POWERSEQ_S4
 	bool "Advertise S4 residency"
-	depends on PLATFORM_EC_ESPI_VW_SLP_S5
+	depends on PLATFORM_HOST_INTERFACE_EC_ESPI_VW_SLP_S5
 	default y if AP_X86_INTEL_TGL
 	default y if AP_X86_INTEL_ADL
 	default y if AP_X86_INTEL_MTL
