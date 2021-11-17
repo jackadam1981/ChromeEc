@@ -16,6 +16,24 @@
       "message": "If practical, I\u0027d like to avoid too many bool parameters, since it makes call sites harder to type correctly. For \"src,\" we could use enum pd_power_role (with a parameter name along the lines of power_role). Similarly, we could use enum tcpc_cc_polarity in place of \"cc1.\"\n\nI\u0027m not immediately sure what the best way to represent active_cable would be. You could have this function take two parameters with pull values for the resistor values of each CC line. I don\u0027t know whether that would work well with the way you want to call this. (You\u0027d have to switch the arguments to indicate the same device plugged in with the cable flipped.)",
       "revId": "82d716f1c935024102afc3acf8fc2a0c1bf2be7b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "baf3df54_fadb0db3",
+        "filename": "zephyr/include/emul/emul_tcpci.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2021-11-17T12:45:17Z",
+      "side": 1,
+      "message": "I decided to add parameters for both partner CC lines. If partner wants to present active cable it should set one line to Ra. There is also polarity argument which flip CC lines inside tcpci_emul_connect_partner function. I think it maybe easier to follow to have separate polarity parameter then flipping argument each time when connect is called.",
+      "parentUuid": "9b39a4bd_83420c28",
+      "revId": "82d716f1c935024102afc3acf8fc2a0c1bf2be7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
