@@ -22,6 +22,30 @@
       },
       "revId": "a8197513f7043ead08d53ed144531fe4f5497206",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4aafb4fe_18f73d83",
+        "filename": "zephyr/boards/riscv/it8xxx2/it8xxx2_defconfig",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-11-17T12:33:36Z",
+      "side": 0,
+      "message": "Please ignore # Keyboard part, only below line:\n \n CONFIG_PLATFORM_EC_FLASH_CROS\u003dy",
+      "parentUuid": "28653023_857db3d0",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 0
+      },
+      "revId": "a8197513f7043ead08d53ed144531fe4f5497206",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
