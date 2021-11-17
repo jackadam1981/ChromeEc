@@ -46,7 +46,7 @@
 
 /* Host communication */
 #define CONFIG_HOST_INTERFACE_ESPI
-#define CONFIG_HOSTCMD_ESPI_VW_SLP_S4
+#define CONFIG_HOST_INTERFACE_ESPI_VW_SLP_S4
 
 /*
  * TODO(b/179648721): implement sensors
@@ -109,7 +109,7 @@
 #define CONFIG_POWER_TRACK_HOST_SLEEP_STATE
 #define CONFIG_LOW_POWER_IDLE
 
-#define CONFIG_HOSTCMD_ESPI_RESET_SLP_SX_VW_ON_ESPI_RST
+#define CONFIG_HOST_INTERFACE_ESPI_RESET_SLP_SX_VW_ON_ESPI_RST
 
 /*
  * TODO(b/191742284): When DAM enabled coreboot image is flashed on top of DAM
