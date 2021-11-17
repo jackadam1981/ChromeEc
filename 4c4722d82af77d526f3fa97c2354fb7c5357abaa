@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6e9f01d_b2ca61e9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-11-17T18:27:49Z",
+      "side": 1,
+      "message": "That\u0027s unfortunate...",
+      "range": {
+        "startLine": 20,
+        "startChar": 16,
+        "endLine": 20,
+        "endChar": 71
+      },
+      "revId": "4c4722d82af77d526f3fa97c2354fb7c5357abaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "50d01def_356e864d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-11-17T18:27:49Z",
+      "side": 1,
+      "message": "nit: CONFIG_POWER_S4_RESIDENCY.",
+      "range": {
+        "startLine": 55,
+        "startChar": 29,
+        "endLine": 55,
+        "endChar": 36
+      },
+      "revId": "4c4722d82af77d526f3fa97c2354fb7c5357abaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1965988a_c2ac1504",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1208,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-11-17T18:27:49Z",
+      "side": 1,
+      "message": "Line 1199 already checks we\u0027re in or transitioning to CHIPSET_STATE_ANY_OFF. So, I think this check is redundant here. We should have it in the else clause starting line 1231.\n\nI think it\u0027s better to fix it in a separate CL.",
+      "range": {
+        "startLine": 1203,
+        "startChar": 0,
+        "endLine": 1208,
+        "endChar": 49
+      },
+      "revId": "4c4722d82af77d526f3fa97c2354fb7c5357abaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "206f908b_d18e3ca8",
+        "filename": "common/ec_features.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-11-17T18:27:49Z",
+      "side": 1,
+      "message": "Can you please put this in a separate CL?",
+      "range": {
+        "startLine": 150,
+        "startChar": 0,
+        "endLine": 152,
+        "endChar": 6
+      },
+      "revId": "4c4722d82af77d526f3fa97c2354fb7c5357abaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
