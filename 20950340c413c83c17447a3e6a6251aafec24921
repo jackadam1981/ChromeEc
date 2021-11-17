@@ -16,6 +16,23 @@
       "message": "Gah, I included assert.h, but it\u0027s still not happy, some zephyrism I think.\n\nDEBUG: [/tmp/zbuild-zqp95t5e-hayato:ro][102/289] Building C object CMakeFiles/app.dir/tmp/zbuild-zqp95t5e-hayato/modules/ec/power/mt8192.c.obj\nINFO: [/tmp/zbuild-zqp95t5e-hayato:ro]FAILED: CMakeFiles/app.dir/tmp/zbuild-zqp95t5e-hayato/modules/ec/power/mt8192.c.obj \nDEBUG: [/tmp/zbuild-zqp95t5e-hayato:ro]ccache /opt/coreboot-sdk/bin/riscv64-elf-gcc -DBOARD_HAYATO -DBUILD_VERSION\u003dv2.7.99-202-gcab07003a174 -DCHROMIUM_EC -DCONFIG_ZEPHYR -DKERNEL -D_FORTIFY_SOURCE\u003d2 -D__ZEPHYR__\u003d1 -I/mnt/host/source/src/platform/ec/zephyr/include -I/tmp/zbuild-zqp95t5e-hayato/modules/ec/zephyr/shim/include -I/tmp/zbuild-zqp95t5e-hayato/modules/ec/fuzz -I/tmp/zbuild-zqp95t5e-hayato/modules/ec/test -I/tmp/zbuild-zqp95t5e-hayato/modules/ec -I/tmp/zbuild-zqp95t5e-hayato/modules/ec/include -I/tmp/zbuild-zqp95t5e-hayato/modules/ec/include/driver -I/tmp/zbuild-zqp95t5e-hayato/modules/ec/third_party -I/mnt/host/source/src/platform/ec/zephyr/app/ec/include -I/mnt/host/source/src/platform/ec/zephyr/shim/chip/it8xxx2/include -I/mnt/host/source/src/platform/ec/zephyr/projects/asurada/hayato/include -I/mnt/host/source/src/third_party/zephyr/main/v2.7/include -Izephyr/include/generated -I/mnt/host/source/src/third_party/zephyr/main/v2.7/soc/riscv/riscv-ite/it8xxx2 -I/mnt/host/source/src/third_party/zephyr/main/v2.7/soc/riscv/riscv-ite/common/. -I/tmp/zbuild-zqp95t5e-hayato/include -isystem /mnt/host/source/src/third_party/zephyr/main/v2.7/lib/libc/minimal/include -isystem /opt/coreboot-sdk/lib/gcc/riscv64-elf/11.2.0/include -isystem /opt/coreboot-sdk/lib/gcc/riscv64-elf/11.2.0/include-fixed -Os -imacros /tmp/zbuild-zqp95t5e-hayato/build-ro/zephyr/include/generated/autoconf.h -ffreestanding -fno-common -g -gdwarf-4 -fdiagnostics-color\u003dalways -mabi\u003dilp32 -march\u003drv32imac -imacros /mnt/host/source/src/third_party/zephyr/main/v2.7/include/toolchain/zephyr_stdint.h -Wall -Wformat -Wformat-security -Wno-format-zero-length -Wno-main -Wno-pointer-sign -Wpointer-arith -Wexpansion-to-defined -Wno-address-of-packed-member -Wno-unused-but-set-variable -Werror\u003dimplicit-int -fno-asynchronous-unwind-tables -fno-pie -fno-pic -fno-strict-overflow -fno-reorder-functions -fno-defer-pop -fmacro-prefix-map\u003d/mnt/host/source/src/platform/ec/zephyr/projects/asurada/hayato\u003dCMAKE_SOURCE_DIR -fmacro-prefix-map\u003d/mnt/host/source/src/third_party/zephyr/main/v2.7\u003dZEPHYR_BASE -ffunction-sections -fdata-sections -Werror -std\u003dc99 -nostdinc -MD -MT CMakeFiles/app.dir/tmp/zbuild-zqp95t5e-hayato/modules/ec/power/mt8192.c.obj -MF CMakeFiles/app.dir/tmp/zbuild-zqp95t5e-hayato/modules/ec/power/mt8192.c.obj.d -o CMakeFiles/app.dir/tmp/zbuild-zqp95t5e-hayato/modules/ec/power/mt8192.c.obj -c /tmp/zbuild-zqp95t5e-hayato/modules/ec/power/mt8192.c\nERROR: [/tmp/zbuild-zqp95t5e-hayato:ro]/tmp/zbuild-zqp95t5e-hayato/modules/ec/power/mt8192.c: In function \u0027power_handle_state\u0027:\nERROR: [/tmp/zbuild-zqp95t5e-hayato:ro]/tmp/zbuild-zqp95t5e-hayato/modules/ec/power/mt8192.c:483:17: error: implicit declaration of function \u0027ASSERT\u0027 [-Werror\u003dimplicit-function-declaration]\nERROR: [/tmp/zbuild-zqp95t5e-hayato:ro]  483 |                 ASSERT(0);\nERROR: [/tmp/zbuild-zqp95t5e-hayato:ro]      |                 ^~~~~~\nERROR: [/tmp/zbuild-zqp95t5e-hayato:ro]cc1: all warnings being treated as errors",
       "revId": "20950340c413c83c17447a3e6a6251aafec24921",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "574f57e3_9ae27f35",
+        "filename": "power/mt8192.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-11-17T23:55:23Z",
+      "side": 1,
+      "message": "Does this work if you include \"util.h\" instead?\nYou can test locally by running \"zmake configure -b hayato\"",
+      "revId": "20950340c413c83c17447a3e6a6251aafec24921",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
