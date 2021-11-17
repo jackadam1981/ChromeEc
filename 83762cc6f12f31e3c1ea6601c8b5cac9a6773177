@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c926a3a_16428498",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2021-11-17T12:45:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "103d8f3d_82c5a82a",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 10
+      },
+      "revId": "83762cc6f12f31e3c1ea6601c8b5cac9a6773177",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fb3fce3e_0da50f0e",
@@ -149,6 +173,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "db007959_6e4992b5",
+        "filename": "zephyr/emul/emul_charger.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2021-11-17T12:45:55Z",
+      "side": 1,
+      "message": "There are only 8 bits for message id in header. I decided to put mask on creating PD_HEADER instead on msg_id incrementation, because knowing how many messages were exchanged since last reset may be useful information while testing.",
+      "parentUuid": "ced7ed54_2bf014e2",
+      "range": {
+        "startLine": 78,
+        "startChar": 20,
+        "endLine": 78,
+        "endChar": 26
+      },
+      "revId": "83762cc6f12f31e3c1ea6601c8b5cac9a6773177",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f14e1e33_44547427",
         "filename": "zephyr/emul/emul_charger.c",
         "patchSetId": 3
@@ -160,6 +208,24 @@
       "writtenOn": "2021-11-16T18:39:32Z",
       "side": 1,
       "message": "Is there any concurrent usage of this queue?",
+      "revId": "83762cc6f12f31e3c1ea6601c8b5cac9a6773177",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8062a863_75eb3917",
+        "filename": "zephyr/emul/emul_charger.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2021-11-17T12:45:55Z",
+      "side": 1,
+      "message": "This is only consumer of this queue. k_fifo_* functions are thread-safe (they call k_queue_* functions).",
+      "parentUuid": "f14e1e33_44547427",
       "revId": "83762cc6f12f31e3c1ea6601c8b5cac9a6773177",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -183,6 +249,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "af79e6bd_1a9f4c77",
+        "filename": "zephyr/emul/emul_charger.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2021-11-17T12:45:55Z",
+      "side": 1,
+      "message": "k_fifo_is_empty doesn\u0027t guarantee that different thread doesn\u0027t get element from queue in meantime. However this is only consumer of this FIFO, so it is safe to remove this check.",
+      "parentUuid": "c57fb6e4_9c4c5848",
+      "revId": "83762cc6f12f31e3c1ea6601c8b5cac9a6773177",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e06c8ae8_ef8da6b5",
         "filename": "zephyr/emul/emul_charger.c",
         "patchSetId": 3
@@ -194,6 +278,24 @@
       "writtenOn": "2021-11-16T18:39:32Z",
       "side": 1,
       "message": "nit: should be EC_SUCCESS?",
+      "revId": "83762cc6f12f31e3c1ea6601c8b5cac9a6773177",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9bc9dc04_af2ca59f",
+        "filename": "zephyr/emul/emul_charger.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2021-11-17T12:45:55Z",
+      "side": 1,
+      "message": "Isn\u0027t ZephyrOS using 0 as success code and EC_SUCCESS is only used across EC?",
+      "parentUuid": "e06c8ae8_ef8da6b5",
       "revId": "83762cc6f12f31e3c1ea6601c8b5cac9a6773177",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -232,6 +334,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "322fd638_c81810ba",
+        "filename": "zephyr/emul/emul_charger.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2021-11-17T12:45:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0446af86_7be98eba",
+      "revId": "83762cc6f12f31e3c1ea6601c8b5cac9a6773177",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "adb6edac_a141f61e",
@@ -245,6 +365,30 @@
       "writtenOn": "2021-11-16T18:39:32Z",
       "side": 1,
       "message": "nit: \"not\" to \"no\"",
+      "range": {
+        "startLine": 304,
+        "startChar": 75,
+        "endLine": 304,
+        "endChar": 78
+      },
+      "revId": "83762cc6f12f31e3c1ea6601c8b5cac9a6773177",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a7df744_6d275fe6",
+        "filename": "zephyr/emul/emul_charger.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2021-11-17T12:45:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "adb6edac_a141f61e",
       "range": {
         "startLine": 304,
         "startChar": 75,
