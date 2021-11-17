@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "336cfef5_1510fd55",
+        "filename": ".gitlab-ci.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-11-17T23:46:45Z",
+      "side": 1,
+      "message": "We actually have coverage for zephyr/drivers/cros_cbi.\n\nI would only exclude the things that are nxp and npcx based: zephyr/drivers/cros_flash, zephyr/drivers/cros_kb_raw, zephyr/drivers/cros_rtc, zephyr/drivers/cros_shi, drivers/cros_system\n\nWhich is everything, except zephyr/drivers/cros_cbi",
+      "range": {
+        "startLine": 183,
+        "startChar": 102,
+        "endLine": 183,
+        "endChar": 120
+      },
+      "revId": "3c33f2a60091747a263e9d855faab4350946b329",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
