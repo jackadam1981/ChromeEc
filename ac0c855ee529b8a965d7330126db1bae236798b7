@@ -16,6 +16,24 @@
       "message": "LGTM but is it possible to just turn off the warning on that specific place?",
       "revId": "ac0c855ee529b8a965d7330126db1bae236798b7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b7d486c_b1790508",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 56
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-11-17T16:54:45Z",
+      "side": 1,
+      "message": "Unfortunately not that I\u0027m aware of since this is a warning from the linker. It\u0027s possible to disable warnings from the compiler on specific lines, but I don\u0027t think there\u0027s a way to do that with the linker.",
+      "parentUuid": "315998d0_085eb672",
+      "revId": "ac0c855ee529b8a965d7330126db1bae236798b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
