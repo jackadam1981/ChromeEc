@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9fd259a_f6f9b03f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1260470
+      },
+      "writtenOn": "2021-11-17T22:11:24Z",
+      "side": 1,
+      "message": "Yeah. I suspect the underlying mechanism is a shuttle between the CPUs and a secret register in the PCH, so if you lose PCH power, the register is lost. I also confirmed with Intel this is the behavior for TGL and ADL.",
+      "parentUuid": "d6e9f01d_b2ca61e9",
+      "range": {
+        "startLine": 20,
+        "startChar": 16,
+        "endLine": 20,
+        "endChar": 71
+      },
+      "revId": "4c4722d82af77d526f3fa97c2354fb7c5357abaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "50d01def_356e864d",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-11-17T18:27:49Z",
       "side": 1,
       "message": "nit: CONFIG_POWER_S4_RESIDENCY.",
+      "range": {
+        "startLine": 55,
+        "startChar": 29,
+        "endLine": 55,
+        "endChar": 36
+      },
+      "revId": "4c4722d82af77d526f3fa97c2354fb7c5357abaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4887eae_f4347786",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1260470
+      },
+      "writtenOn": "2021-11-17T22:11:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "50d01def_356e864d",
       "range": {
         "startLine": 55,
         "startChar": 29,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c21d939c_3d005cb1",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1208,
+      "author": {
+        "id": 1260470
+      },
+      "writtenOn": "2021-11-17T22:11:24Z",
+      "side": 1,
+      "message": "I read line 1199 as \"are we in or on our way to OFF\", which is different than this check, which says \"if we are not there yet, sleep to hopefully get there\". The lines that this CL replaced (checking for STATE_S3S5) qualify as \"transitioning to OFF\" but not \"in OFF\", which is how this code got activated before. I\u0027m touching it because my new states expand the definition of \"transitioning to off\", which is what these chipset_in_state() functions were meant to handle anyway.\n\nWill move this to a new CL.",
+      "parentUuid": "1965988a_c2ac1504",
+      "range": {
+        "startLine": 1203,
+        "startChar": 0,
+        "endLine": 1208,
+        "endChar": 49
+      },
+      "revId": "4c4722d82af77d526f3fa97c2354fb7c5357abaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "206f908b_d18e3ca8",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-11-17T18:27:49Z",
       "side": 1,
       "message": "Can you please put this in a separate CL?",
+      "range": {
+        "startLine": 150,
+        "startChar": 0,
+        "endLine": 152,
+        "endChar": 6
+      },
+      "revId": "4c4722d82af77d526f3fa97c2354fb7c5357abaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6501b638_ef147d1e",
+        "filename": "common/ec_features.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1260470
+      },
+      "writtenOn": "2021-11-17T22:11:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "206f908b_d18e3ca8",
       "range": {
         "startLine": 150,
         "startChar": 0,
