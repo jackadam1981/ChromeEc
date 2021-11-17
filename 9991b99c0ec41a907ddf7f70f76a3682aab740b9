@@ -22,6 +22,30 @@
       },
       "revId": "9991b99c0ec41a907ddf7f70f76a3682aab740b9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "64cf13cc_0e2eeb99",
+        "filename": "zephyr/emul/emul_ln9310.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2021-11-17T18:14:44Z",
+      "side": 1,
+      "message": "I think we should force CONFIG_ASSERT to be enabled here then. I don\u0027t see a reason why we wouldn\u0027t?",
+      "parentUuid": "90db4466_5174c170",
+      "range": {
+        "startLine": 282,
+        "startChar": 2,
+        "endLine": 282,
+        "endChar": 10
+      },
+      "revId": "9991b99c0ec41a907ddf7f70f76a3682aab740b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
