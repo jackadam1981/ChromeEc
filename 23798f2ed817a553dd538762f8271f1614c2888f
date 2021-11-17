@@ -16,6 +16,41 @@
       "message": "Hi volteer EC folks. I\u0027d like to land this S4 enablement patch for volteer and have it percolate naturally into the firmware branches for release. This is just a heads up so you can keep an eye out for any strange FAFT failures that might show up as new FW with this change is being qualified (though I don\u0027t expect any).",
       "revId": "23798f2ed817a553dd538762f8271f1614c2888f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c522d97_794c15e1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-11-17T17:40:28Z",
+      "side": 1,
+      "message": "\u003e I\u0027d like to land this S4 enablement patch for volteer and have it percolate naturally into the firmware branches for release.\n\nCCing SIEs.",
+      "parentUuid": "1e5bcb73_7eb5eadb",
+      "revId": "23798f2ed817a553dd538762f8271f1614c2888f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce64121c_8e8f6579",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-11-17T17:40:28Z",
+      "side": 1,
+      "message": "CCing SIEs re: have it percolate naturally into the firmware branches for release\"",
+      "revId": "23798f2ed817a553dd538762f8271f1614c2888f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
