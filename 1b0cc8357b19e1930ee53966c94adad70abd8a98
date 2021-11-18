@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0dd8457_414e670d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2021-11-18T20:27:51Z",
+      "side": 1,
+      "message": "b",
+      "revId": "1b0cc8357b19e1930ee53966c94adad70abd8a98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "88830130_cd967bfb",
@@ -67,6 +84,24 @@
       "side": 1,
       "message": "Could you explain a bit more?\n\nHere is where I grabbed the driver requirement: https://crrev.com/c/722104/5..7/driver/ppc/sn5s330.c#b101\n\nBut maybe this code is inappropriate and should be removed? The register map section of the spec states that the PP2_FET should be enabled when the device is being initialized from a dead battery.\n\nPerhaps we should make a P3 bug to remove this bit of code?",
       "parentUuid": "ba370cbf_0770cf5d",
+      "revId": "1b0cc8357b19e1930ee53966c94adad70abd8a98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21398cae_01b598c0",
+        "filename": "zephyr/test/drivers/src/ppc_sn5s330.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2021-11-18T20:27:51Z",
+      "side": 1,
+      "message": "Gerrit actually merged this CL, not sure why the UI says it didn\u0027t. It\u0027s even documented in the CL of the gerrit UI issue.",
+      "parentUuid": "3299f6d4_872737a4",
       "revId": "1b0cc8357b19e1930ee53966c94adad70abd8a98",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
