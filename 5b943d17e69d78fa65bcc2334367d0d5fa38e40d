@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a98f9f47_65ed44f1",
+        "filename": "zephyr/emul/emul_tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 457,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2021-11-18T17:31:19Z",
+      "side": 1,
+      "message": "Do we expect to ever hit this case? If not, maybe it should just be an `ASSERT(false)` to abort the test?",
+      "range": {
+        "startLine": 457,
+        "startChar": 2,
+        "endLine": 457,
+        "endChar": 8
+      },
+      "revId": "5b943d17e69d78fa65bcc2334367d0d5fa38e40d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
