@@ -51,6 +51,7 @@ test-list-y=\
        mutex \
        panic \
        panic_data \
+       panic_data_print \
        pingpong \
        printf \
        queue \
