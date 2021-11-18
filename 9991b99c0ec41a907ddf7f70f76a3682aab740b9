@@ -70,6 +70,30 @@
       },
       "revId": "9991b99c0ec41a907ddf7f70f76a3682aab740b9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "800fd32b_6b072e62",
+        "filename": "zephyr/emul/emul_ln9310.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-11-18T04:14:26Z",
+      "side": 1,
+      "message": "Sure, moved conversation above.",
+      "parentUuid": "ea5a4c70_f2e7f18a",
+      "range": {
+        "startLine": 282,
+        "startChar": 2,
+        "endLine": 282,
+        "endChar": 10
+      },
+      "revId": "9991b99c0ec41a907ddf7f70f76a3682aab740b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
