@@ -253,6 +253,7 @@ newton_fit-y=newton_fit.o
 otp_key-y=otp_key.o
 panic-y=panic.o
 panic_data-y=panic_data.o
+panic_data_print-y=panic_data_print.o
 pingpong-y=pingpong.o
 power_button-y=power_button.o
 powerdemo-y=powerdemo.o

@@ -47,6 +47,7 @@ test-list-y = \
        mutex_recursive \
        panic \
        panic_data \
+       panic_data_print \
        pingpong \
        printf \
        queue \
