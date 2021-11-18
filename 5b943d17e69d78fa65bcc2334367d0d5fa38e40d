@@ -46,6 +46,30 @@
       },
       "revId": "5b943d17e69d78fa65bcc2334367d0d5fa38e40d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0fa47b5b_b3d79d21",
+        "filename": "zephyr/emul/emul_tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 457,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2021-11-18T18:17:48Z",
+      "side": 1,
+      "message": "Replaced with __ASSERT. However I am not able to test if it for 100% eliminate uninitialized warning, since I cannot reproduce it even before this change. (Maybe CI use different compilation flags?)",
+      "parentUuid": "3f22ce96_6a31e942",
+      "range": {
+        "startLine": 457,
+        "startChar": 2,
+        "endLine": 457,
+        "endChar": 8
+      },
+      "revId": "5b943d17e69d78fa65bcc2334367d0d5fa38e40d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
