@@ -16,6 +16,29 @@
       "message": "I verify mockup unit pass with this CL.\nPlease help to review it and run CQ if no concern for it.",
       "revId": "b8cb75cc14536dc55f8fe8a40a76ec508d8e28e8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6cbdc484_155e5446",
+        "filename": "board/taeko/sensors.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-11-18T22:37:03Z",
+      "side": 1,
+      "message": "Is this comment still relevant? i.e. the calibration is done here, right?",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 74
+      },
+      "revId": "b8cb75cc14536dc55f8fe8a40a76ec508d8e28e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
