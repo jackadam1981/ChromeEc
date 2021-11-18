@@ -101,10 +101,21 @@ enum sensor_alt_id {
 #endif
 
 /*
- * Performs probing of alternative sensors marked with "runtime-probe" property
- * in device tree. If an alternative sensor is detected, the function replaces
- * a default one in the motion_sensors array.
+ * Performs probing of an alternate sensor.
+ * @param alt_idx Index in motion_sensors_alt of the sensor to be probed.
+ *		  It should be gained wiht SENSOR_ID,
+ *		  e.g. with SENSOR_ID(DT_NODELABEL(label)).
+ * @return EC_SUCCESS if the probe was successful, non-zero otherwise.
  */
-void motion_sense_probe_sensors(void);
+int motion_sense_probe(enum sensor_alt_id alt_idx);
+
+/*
+ * Replaces a default motion sensor with an alternate one pointed by alt_idx.
+ * @param alt_idx Index in motion_sensors_alt of the sensor to be used.
+ *		  It should be gained wiht SENSOR_ID,
+ *		  e.g. with SENSOR_ID(DT_NODELABEL(label)).
+ * @return EC_SUCCESS if the replacement was successful, non-zero otherwise.
+ */
+int motion_sense_replace_alt(enum sensor_alt_id alt_idx);
 
 #endif /* __CROS_EC_MOTIONSENSE_SENSORS_H */
