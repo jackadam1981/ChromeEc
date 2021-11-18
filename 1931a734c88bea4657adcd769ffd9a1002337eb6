@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77ab541a_b8911d2f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2021-11-18T16:32:27Z",
+      "side": 1,
+      "message": "nit: would prefer a \"zmake testall\" to confirm the other boards weren\u0027t somehow broken by this, but that should also be caught by CQ.",
+      "revId": "1931a734c88bea4657adcd769ffd9a1002337eb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "06e59cb3_82645ae8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2021-11-18T16:32:27Z",
+      "side": 1,
+      "message": "I\u0027m not as familiar with the process of moving entire boards from ec to zephyr so placing myself as CC and adding jbettis as reviewer.",
+      "revId": "1931a734c88bea4657adcd769ffd9a1002337eb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
