@@ -104,6 +104,24 @@
       "parentUuid": "3299f6d4_872737a4",
       "revId": "1b0cc8357b19e1930ee53966c94adad70abd8a98",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d8b49847_cb5b2a1b",
+        "filename": "zephyr/test/drivers/src/ppc_sn5s330.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-11-18T21:05:57Z",
+      "side": 1,
+      "message": "\u003e Could you explain a bit more?\n\nThe test scenario is changing the (apparent?) value of one register and expecting a write to a different register, but it\u0027s not obvious unless you\u0027re looking at the driver code why we would expect that write. Looking at the datasheet, I would expect the opposite. At least for me, it\u0027s slightly harder to follow, because the setup and the check are done not by changing the state of the PPC emulator but by intercepting I2C transactions.\n\nI think this test would read more naturally and be more maintainable if it used the state of the PPC emulator as an input and checked the final state of the emulator against requirements. With this approach, you would set the initial value of INIT_STATUS_REG4 and check the final value of FUNC_SET3. (This would also make it easier to check that the driver writes DB_BOOT to clear it, which does appear to be a requirement. I don\u0027t think the test checks for that right now.)\n\n\u003e Perhaps we should make a P3 bug to remove this bit of code?\n\nIt seems redundant, but I\u0027m not particularly excited to remove it. If you test against the final state of the emulator (requirements), then removing that piece of code shouldn\u0027t change the result of the test. That seems like an appropriate state of affairs to me, since removing that piece of code shouldn\u0027t change behavior in the real world.\n\n\u003e Gerrit actually merged this CL, not sure why the UI says it didn\u0027t. It\u0027s even documented in the CL of the gerrit UI issue.\n\nI\u0027m not sure which CL you are referring to. The CL that we are currently discussing does not appear to have been submitted to me. The CL that you linked to above shows as abandoned.",
+      "parentUuid": "21398cae_01b598c0",
+      "revId": "1b0cc8357b19e1930ee53966c94adad70abd8a98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
