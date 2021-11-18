@@ -33,6 +33,24 @@
       "message": "Does this work if you include \"util.h\" instead?\nYou can test locally by running \"zmake configure -b hayato\"",
       "revId": "20950340c413c83c17447a3e6a6251aafec24921",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a4b7c12_12b90db0",
+        "filename": "power/mt8192.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1260470
+      },
+      "writtenOn": "2021-11-18T00:44:14Z",
+      "side": 1,
+      "message": "util.h does seem to also compile when running make BOARD\u003dhayato, though so did including assert.h.\n\nThe zmake command produces seemingly unrelated error output:\n\nFAILED: CMakeFiles/app.dir/mnt/host/source/src/platform/ec/zephyr/shim/src/i2c.c.obj\n/mnt/host/source/src/platform/ec/zephyr/shim/src/i2c.c: In function \u0027chip_i2c_set_freq\u0027:\n/mnt/host/source/src/platform/ec/zephyr/shim/src/i2c.c:170:15: error: implicit declaration of function \u0027i2c_get_config\u0027 [-Werror\u003dimplicit-function-declaration]\n  170 |         ret \u003d i2c_get_config(i2c_get_device_for_port(port), \u0026dev_config);\n      |               ^~~~~~~~~~~~~~\ncc1: all warnings being treated as errors\n\n\nAlternatively, trying to run the zephyr build the way CQ+1 did it results in a different unrelated error:\n\n$ zephyr/firmware_builder.py --metrics /tmp/zephyr2 build\n\nERROR: [/mnt/host/source/src/platform/ec/build/zephyr/volteer:ro]/mnt/host/source/src/platform/ec/zephyr/drivers/cros_flash/cros_flash_npcx.c:627:27: note: in expansion of macro \u0027DEVICE_DT_GET\u0027\nERROR: [/mnt/host/source/src/platform/ec/build/zephyr/volteer:ro]  627 |         data-\u003eflash_dev \u003d DEVICE_DT_GET(FLASH_DEV);\nERROR: [/mnt/host/source/src/platform/ec/build/zephyr/volteer:ro]      |                           ^~~~~~~~~~~~~\nERROR: [/mnt/host/source/src/platform/ec/build/zephyr/volteer:ro]/mnt/host/source/src/third_party/zephyr/main/v2.7/include/device.h:81:39: error: \u0027__device_dts_ord_DT_N_NODELABEL_spi_fiu0_ORD\u0027 undeclared (first use in this function)\nERROR: [/mnt/host/source/src/platform/ec/build/zephyr/volteer:ro]   81 | #define DEVICE_NAME_GET(name) _CONCAT(__device_, name)\n\nI\u0027ll upload the util.h change and we\u0027ll see what CQ+1 does, since whatever\u0027s happening in my local build is confusing.",
+      "parentUuid": "574f57e3_9ae27f35",
+      "revId": "20950340c413c83c17447a3e6a6251aafec24921",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
