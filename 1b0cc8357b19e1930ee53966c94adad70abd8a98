@@ -122,6 +122,24 @@
       "parentUuid": "21398cae_01b598c0",
       "revId": "1b0cc8357b19e1930ee53966c94adad70abd8a98",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b76a1d7_07b1fb5f",
+        "filename": "zephyr/test/drivers/src/ppc_sn5s330.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2021-11-18T23:33:44Z",
+      "side": 1,
+      "message": "\u003e The test scenario is changing the (apparent?) value of one register and expecting a write to a different register, but it\u0027s not obvious unless you\u0027re looking at the driver code why we would expect that write. Looking at the datasheet, I would expect the opposite. At least for me, it\u0027s slightly harder to follow, because the setup and the check are done not by changing the state of the PPC emulator but by intercepting I2C transactions.\n\nI\u0027d agree with you, but since the true behavior of the chip seems to be setting that bit, I may have to emulate that behavior later. Maybe I also need to make this unit test more explicit that we are verifying the driver forces that bit to be set regardless of expected behavior of the device (which may be a wrong requirement) during dead battery boot. But I\u0027m happy to remove the interception until it\u0027s absolutely necessary. Can you confirm I should do that?\n\n\n\u003e It seems redundant, but I\u0027m not particularly excited to remove it. If you test against the final state of the emulator (requirements), then removing that piece of code shouldn\u0027t change the result of the test. That seems like an appropriate state of affairs to me, since removing that piece of code shouldn\u0027t change behavior in the real world.\n\nI now think that regardless if we remove this code we should make a tracking bug for removing this seeming redundant code. It\u0027s obviously not high priority, but it does seem like something we\u0027d want tracked. Do agree? If so, I can make it and insert the todo.\n\n\u003e I\u0027m not sure which CL you are referring to. The CL that we are currently discussing does not appear to have been submitted to me. The CL that you linked to above shows as abandoned.\n\nApologies: I should\u0027ve linked to http://b/67663166#comment3 this is the CL I grabbed from actual git commit. I can\u0027t seem to find an alternative CL that was merged by the UI.",
+      "parentUuid": "d8b49847_cb5b2a1b",
+      "revId": "1b0cc8357b19e1930ee53966c94adad70abd8a98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
