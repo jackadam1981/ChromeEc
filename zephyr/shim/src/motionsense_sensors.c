@@ -409,37 +409,46 @@ DECLARE_HOOK(HOOK_INIT, sensor_enable_irqs, HOOK_PRIO_DEFAULT);
 			     DT_NODE_HAS_PROP(id, alternate_indicator)), \
 		    (CHECK_AND_REPLACE_ALT_MOTION_SENSOR(id)), ())
 
-#define PROBE_SENSOR(id)						\
-{									\
-	int res;							\
-									\
-	LOG_INF("Probing \"%s\" chip %d type %d loc %d",		\
-		motion_sensors_alt[SENSOR_ID(id)].name,			\
-		motion_sensors_alt[SENSOR_ID(id)].chip,			\
-		motion_sensors_alt[SENSOR_ID(id)].type,			\
-		motion_sensors_alt[SENSOR_ID(id)].location);		\
-									\
-	__ASSERT(motion_sensors_alt[SENSOR_ID(id)].drv->probe != NULL,	\
-		"No probing function for alt sensor: %d", SENSOR_ID(id)); \
-	res = motion_sensors_alt[SENSOR_ID(id)].drv->probe(		\
-			&motion_sensors_alt[SENSOR_ID(id)]);		\
-	LOG_INF("%sfound\n", (res != EC_SUCCESS ? "not " : ""));	\
-									\
-	if (res == EC_SUCCESS) {					\
-		REPLACE_ALT_MOTION_SENSOR(id,				\
-					DT_PHANDLE(id, alternate_for));	\
-	}								\
+#if DT_NODE_EXISTS(SENSOR_ALT_NODE)
+
+#define REPLACE_ALT_CASE_GENERATE(alt_id)                                     \
+	case SENSOR_ID(alt_id):                                               \
+		REPLACE_ALT_MOTION_SENSOR(alt_id,                             \
+					  DT_PHANDLE(alt_id, alternate_for)); \
+		break;
+
+#define REPLACE_ALT_CASE_CHECK(alt_id)                       \
+	COND_CODE_1(DT_NODE_HAS_PROP(alt_id, alternate_for), \
+		    (REPLACE_ALT_CASE_GENERATE(alt_id)), ())
+
+int motion_sense_relace_alt(int alt_idx)
+{
+	switch (alt_idx) {
+		DT_FOREACH_CHILD(SENSOR_ALT_NODE, REPLACE_ALT_CASE_CHECK)
+	default:
+		LOG_ERR("Invalid alt_idx: %d\n", alt_idx);
+		return -EINVAL;
+	}
+	return 0;
 }
 
-#define PROBE_IF_NEEDED(id)						\
-	COND_CODE_1(DT_PROP(id, runtime_probe),				\
-		(PROBE_SENSOR(id)),					\
-		())
-
-#if DT_NODE_EXISTS(SENSOR_ALT_NODE)
-void motion_sense_probe_sensors(void)
+int motion_sense_probe(int alt_idx)
 {
-	DT_FOREACH_CHILD(SENSOR_ALT_NODE, PROBE_IF_NEEDED);
+	int res;
+
+	LOG_INF("Probing \"%s\" chip %d type %d loc %d",
+		motion_sensors_alt[alt_idx].name,
+		motion_sensors_alt[alt_idx].chip,
+		motion_sensors_alt[alt_idx].type,
+		motion_sensors_alt[alt_idx].location);
+
+	__ASSERT(motion_sensors_alt[alt_idx].drv->probe != NULL,
+		 "No probing function for alt sensor: %d", alt_idx);
+	res = motion_sensors_alt[alt_idx].drv->probe(
+		&motion_sensors_alt[alt_idx]);
+	LOG_INF("%sfound\n", (res != EC_SUCCESS ? "not " : ""));
+
+	return res;
 }
 
 static void motion_sensors_init_alt(void)
