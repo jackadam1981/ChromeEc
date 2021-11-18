@@ -21,7 +21,6 @@
 			i2c-port = <&i2c2_0>;
 			remote-port = <0>;
 			enum-name = "I2C_PORT_BATTERY";
-			label = "BATTERY";
 		};
 	};
 
