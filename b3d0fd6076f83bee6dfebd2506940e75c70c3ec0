@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "03e54311_797f55f1",
+        "filename": "board/kano/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1384576
+      },
+      "writtenOn": "2021-11-18T00:30:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "892798bf_6095b5c4",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 30
+      },
+      "revId": "b3d0fd6076f83bee6dfebd2506940e75c70c3ec0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "330720b0_1da6e123",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-11-17T23:48:36Z",
       "side": 1,
       "message": "nit: KANO",
+      "range": {
+        "startLine": 6,
+        "startChar": 16,
+        "endLine": 6,
+        "endChar": 20
+      },
+      "revId": "b3d0fd6076f83bee6dfebd2506940e75c70c3ec0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9bbb2318_b43a5132",
+        "filename": "board/kano/fw_config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1384576
+      },
+      "writtenOn": "2021-11-18T00:30:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "330720b0_1da6e123",
       "range": {
         "startLine": 6,
         "startChar": 16,
