@@ -7,17 +7,19 @@ properties:
   i2c-port:
     type: phandle
     required: true
+    description: |
+      Reference to the I2C bus nodelabel mapped to the enum-name property.
   remote-port:
     type: int
     required: false
-    description:
+    description: |
       A port number used by remote components like Kernel via the I2C_PASSTHRU
-      Host Command
+      Host Command.
   enum-name:
     type: string
     required: true
-    description:
-      Enum values used in the source code to refer to the i2c port
+    description: |
+      Enum values used in the source code to refer to the i2c port.
     enum:
     - I2C_PORT_ACCEL
     - I2C_PORT_BATTERY
@@ -52,11 +54,11 @@ properties:
   label:
     required: true
     type: string
-    description:
-      Human readable string describing the device (used as device_get_binding()
-      argument).
+    description: |
+      Human readable string describing the net name of the I2C bus. This string
+      does not need to match the enum-name property.
   dynamic-speed:
     type: boolean
     required: false
-    description:
+    description: |
       Enables run-time speed configuration.
