@@ -46,6 +46,30 @@
       },
       "revId": "ed01d387644a46f78a691c1876ab8a491a518987",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "55c3c452_aa98c54c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-11-18T23:13:57Z",
+      "side": 1,
+      "message": "Okay, after thinking it over I\u0027ve apparently talked myself into extending the DPM so the DP module can directly decide whether it finds the HPD relevant.",
+      "parentUuid": "71b4049a_f0ebddcb",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 62
+      },
+      "revId": "ed01d387644a46f78a691c1876ab8a491a518987",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
