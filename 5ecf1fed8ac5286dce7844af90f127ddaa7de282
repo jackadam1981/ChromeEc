@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4cf6c4f2_c71e5733",
+        "filename": "board/nipperkin/board.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-11-18T14:55:44Z",
+      "side": 1,
+      "message": "We should probably just move CONFIG_TEMP_SENSOR_TMP112 out of baseboard.h so each variant can configure temp sensors separately. I can do that in a follow on CL.",
+      "revId": "5ecf1fed8ac5286dce7844af90f127ddaa7de282",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
