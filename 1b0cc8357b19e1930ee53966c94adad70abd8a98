@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88830130_cd967bfb",
+        "filename": "zephyr/test/drivers/src/ppc_sn5s330.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-11-18T19:46:55Z",
+      "side": 1,
+      "message": "Nit: I think we would typically define structs, enums, etc. above the functions and file-scope variables.",
+      "revId": "1b0cc8357b19e1930ee53966c94adad70abd8a98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba370cbf_0770cf5d",
+        "filename": "zephyr/test/drivers/src/ppc_sn5s330.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-11-18T19:46:55Z",
+      "side": 1,
+      "message": "This is a kind of indirect flow, so some more explanation might be warranted. I don\u0027t understand the purpose of the driver behavior, which makes it appear extra indirect.",
+      "revId": "1b0cc8357b19e1930ee53966c94adad70abd8a98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
