@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4da0554f_39cb5287",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-11-18T08:01:28Z",
+      "side": 1,
+      "message": "what\u0027s the reason for this change?\nis there a pull-up missing or something?",
+      "range": {
+        "startLine": 11,
+        "startChar": 4,
+        "endLine": 11,
+        "endChar": 8
+      },
+      "revId": "48d8e2a528d26d491d2a3c289a358276569446f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0524a205_ff417304",
+        "filename": "board/brask/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-11-18T08:01:28Z",
+      "side": 1,
+      "message": "should this be renamed in the schematics if the signal\nneeds to be drive push-pull?",
+      "range": {
+        "startLine": 131,
+        "startChar": 21,
+        "endLine": 131,
+        "endChar": 24
+      },
+      "revId": "48d8e2a528d26d491d2a3c289a358276569446f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
