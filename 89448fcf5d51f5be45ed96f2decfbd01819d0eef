@@ -103,6 +103,24 @@
       "parentUuid": "f45d8808_eb181670",
       "revId": "89448fcf5d51f5be45ed96f2decfbd01819d0eef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "262a656f_c63674c4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1477218
+      },
+      "writtenOn": "2021-11-18T05:04:04Z",
+      "side": 1,
+      "message": "Verified on Taeko.\nIt\u0027s same as brya that\u0027s single master and single slave. So, eSPI alert pin is option and eSPI_IO1 can be used to signal Alert event.",
+      "parentUuid": "a76b6e2d_0e294f7c",
+      "revId": "89448fcf5d51f5be45ed96f2decfbd01819d0eef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
