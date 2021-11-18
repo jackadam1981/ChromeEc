@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56f2857f_0354cee7",
+        "filename": "zephyr/emul/emul_tcpci.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 396,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-11-18T16:07:21Z",
+      "side": 1,
+      "message": "ERROR: [/tmp/zbuild-g_u3uj48-test-drivers:singleimage]/builds/zephyr-ec/ec/zephyr/emul/emul_tcpci.c: In function â€˜tcpci_emul_partner_msg_statusâ€™:\nERROR: [/tmp/zbuild-g_u3uj48-test-drivers:singleimage]/builds/zephyr-ec/ec/zephyr/emul/emul_tcpci.c:458:2: error: â€˜tx_status_alertâ€™ may be used uninitialized in this function [-Werror\u003dmaybe-uninitialized]\nERROR: [/tmp/zbuild-g_u3uj48-test-drivers:singleimage]  458 |  tcpci_emul_set_reg(emul, TCPC_REG_ALERT, alert | tx_status_alert);\nERROR: [/tmp/zbuild-g_u3uj48-test-drivers:singleimage]      |  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\nERROR: [/tmp/zbuild-g_u3uj48-test-drivers:singleimage]cc1: all warnings being treated as errors",
+      "range": {
+        "startLine": 396,
+        "startChar": 1,
+        "endLine": 396,
+        "endChar": 26
+      },
+      "revId": "de4a9ec26356948c6b8a7fe0de9817c939ebcbd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
