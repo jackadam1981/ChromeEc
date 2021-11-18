@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "37fd40a3_07608290",
+        "filename": "driver/build.mk",
+        "patchSetId": 4
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-11-18T14:44:02Z",
+      "side": 1,
+      "message": "common-$(CONFIG_TEMP_SENSOR_PCT2075)+\u003dmath_util.o in common/build.mk is also needed for the milli kelvin conversions.",
+      "revId": "e3a82e992428ebde3ddcd48991845f4fb94c2fbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1cf1b796_fe64b3a8",
+        "filename": "driver/temp_sensor/pct2075.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-11-18T14:44:02Z",
+      "side": 1,
+      "message": "nit: RETURN_ERROR would work here.",
+      "revId": "e3a82e992428ebde3ddcd48991845f4fb94c2fbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "149b48ac_21be2981",
+        "filename": "driver/temp_sensor/pct2075.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-11-18T14:44:02Z",
+      "side": 1,
+      "message": "No pct2075_init?",
+      "revId": "e3a82e992428ebde3ddcd48991845f4fb94c2fbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f8f1500_5d115893",
+        "filename": "driver/temp_sensor/pct2075.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-11-18T14:44:02Z",
+      "side": 1,
+      "message": "nit: spacing",
+      "revId": "e3a82e992428ebde3ddcd48991845f4fb94c2fbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fddb226c_b9d3ee0a",
+        "filename": "include/config.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 3910,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-11-18T14:44:02Z",
+      "side": 1,
+      "message": "Hmmm, CONFIG_TEMP_SENSOR_TMP112 is missing from this list.",
+      "revId": "e3a82e992428ebde3ddcd48991845f4fb94c2fbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
