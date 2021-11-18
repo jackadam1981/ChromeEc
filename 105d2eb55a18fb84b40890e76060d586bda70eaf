@@ -16,6 +16,24 @@
       "message": "hmm... do you need this file?\ncould you double check with the vendor? i believe\nthe mp2964 should be pre-programmed correctly these days.\nso, unless you have a some really old boards with the\noriginal mp2964 programming, it\u0027s not needed and\ncould actually be wrong at some point in the future\nif there\u0027s an update to the\nmp2964 pre-programming.",
       "revId": "105d2eb55a18fb84b40890e76060d586bda70eaf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3418177_143363fc",
+        "filename": "board/kano/tune_mp2964.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1384576
+      },
+      "writtenOn": "2021-11-18T11:08:29Z",
+      "side": 1,
+      "message": "We will check this with vendor and remove in another CL if necessary.",
+      "parentUuid": "b4b42671_1ee3a39c",
+      "revId": "105d2eb55a18fb84b40890e76060d586bda70eaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
