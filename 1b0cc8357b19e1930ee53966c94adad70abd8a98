@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "41ceff34_07e75f11",
+        "filename": "zephyr/test/drivers/src/ppc_sn5s330.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2021-11-18T20:23:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "88830130_cd967bfb",
+      "revId": "1b0cc8357b19e1930ee53966c94adad70abd8a98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ba370cbf_0770cf5d",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-11-18T19:46:55Z",
       "side": 1,
       "message": "This is a kind of indirect flow, so some more explanation might be warranted. I don\u0027t understand the purpose of the driver behavior, which makes it appear extra indirect.",
+      "revId": "1b0cc8357b19e1930ee53966c94adad70abd8a98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3299f6d4_872737a4",
+        "filename": "zephyr/test/drivers/src/ppc_sn5s330.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2021-11-18T20:23:26Z",
+      "side": 1,
+      "message": "Could you explain a bit more?\n\nHere is where I grabbed the driver requirement: https://crrev.com/c/722104/5..7/driver/ppc/sn5s330.c#b101\n\nBut maybe this code is inappropriate and should be removed? The register map section of the spec states that the PP2_FET should be enabled when the device is being initialized from a dead battery.\n\nPerhaps we should make a P3 bug to remove this bit of code?",
+      "parentUuid": "ba370cbf_0770cf5d",
       "revId": "1b0cc8357b19e1930ee53966c94adad70abd8a98",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
