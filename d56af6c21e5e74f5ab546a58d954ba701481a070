@@ -51,6 +51,24 @@
       "parentUuid": "2a4e9970_c589ceff",
       "revId": "d56af6c21e5e74f5ab546a58d954ba701481a070",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8286970f_2c87fe63",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2021-11-18T09:04:24Z",
+      "side": 1,
+      "message": "Should we ignore the zephyr \"tcpc low power mode\" test on PS8815? Because now we always return EC_SUCCESS in ps8xxx_enter_low_power_mode.",
+      "parentUuid": "353f53ee_dd58c72d",
+      "revId": "d56af6c21e5e74f5ab546a58d954ba701481a070",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
