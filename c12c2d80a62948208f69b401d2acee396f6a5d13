@@ -307,6 +307,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc6b976c_eec0bffc",
+        "filename": "board/kano/sensors.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-11-18T07:09:52Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "8fc6ce09_a5eade96",
+      "range": {
+        "startLine": 262,
+        "startChar": 2,
+        "endLine": 262,
+        "endChar": 23
+      },
+      "revId": "c12c2d80a62948208f69b401d2acee396f6a5d13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "11771fb1_bb48c586",
