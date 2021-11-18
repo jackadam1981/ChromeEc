@@ -70,6 +70,30 @@
       },
       "revId": "5b943d17e69d78fa65bcc2334367d0d5fa38e40d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9edb187c_6ff3358f",
+        "filename": "zephyr/emul/emul_tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 457,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2021-11-18T18:24:15Z",
+      "side": 1,
+      "message": "I can confirm the CI does use different compilation flags and unfortunately, clang doesn\u0027t implement the -Wmaybe-uninitalized check. I\u0027m not sure how you\u0027d go about testing this.",
+      "parentUuid": "0fa47b5b_b3d79d21",
+      "range": {
+        "startLine": 457,
+        "startChar": 2,
+        "endLine": 457,
+        "endChar": 8
+      },
+      "revId": "5b943d17e69d78fa65bcc2334367d0d5fa38e40d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
