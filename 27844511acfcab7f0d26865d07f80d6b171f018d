@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "084269e1_b8015070",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-11-18T22:25:44Z",
+      "side": 1,
+      "message": "This is nice. Thank you,",
+      "revId": "27844511acfcab7f0d26865d07f80d6b171f018d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81c52d85_9f84f671",
+        "filename": "test/panic.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-11-18T22:25:44Z",
+      "side": 1,
+      "message": "nit: it would be more convincing if we append some magic prefix (e.g. ecec0000, ecec0001, ...).",
+      "range": {
+        "startLine": 42,
+        "startChar": 26,
+        "endLine": 42,
+        "endChar": 27
+      },
+      "revId": "27844511acfcab7f0d26865d07f80d6b171f018d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
