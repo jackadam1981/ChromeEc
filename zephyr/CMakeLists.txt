@@ -29,6 +29,8 @@ if(DEFINED ZMAKE_INCLUDE_DIR)
   zephyr_include_directories("${ZMAKE_INCLUDE_DIR}")
 endif()
 
+set(ZEPHYR_PROJECT "${ZEPHYR_PROJECT}")
+
 if(DEFINED CONFIG_PLATFORM_EC)
   # Add CHROMIUM_EC definition, which is used by ec_commands.h to
   # determine that the header is being compiled for the EC instead of

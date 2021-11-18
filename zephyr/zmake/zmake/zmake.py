@@ -327,6 +327,10 @@ class Zmake:
                 cmake_defs={"ALLOW_WARNINGS": "ON"}
             )
 
+        base_config |= zmake.build_config.BuildConfig(
+            cmake_defs={"ZEPHYR_PROJECT": project.config.project_name.upper()}
+        )
+
         if not build_dir.exists():
             build_dir = build_dir.mkdir()
         if not generated_include_dir.exists():
