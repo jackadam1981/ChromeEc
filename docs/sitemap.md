@@ -59,10 +59,11 @@
 
 ## Zephyr
 
-*   [Initialization Order](./zephyr_init.md)
-*   [Proof-of-Concept-Device Bringup](./zephyr_poc_device_bringup.md)
-*   [Shimming](./zephyr_shim.md)
-*   [Porting EC unit tests to Ztest](./ztest.md)
+*   [Building Zephyr OS](./zephyr/zephyr_build.md)
+*   [Initialization Order](./zephyr/zephyr_init.md)
+*   [Proof-of-Concept-Device Bringup](./zephyr/zephyr_poc_device_bringup.md)
+*   [Shimming](./zephyr/zephyr_shim.md)
+*   [Porting EC unit tests to Ztest](./zephyr/ztest.md)
 
 ## Miscellaneous
 
