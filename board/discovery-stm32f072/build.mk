@@ -14,3 +14,4 @@ board-y=board.o
 
 test-list-y=\
 	panic \
+	panic_data_print \
