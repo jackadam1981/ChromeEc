@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "77a47238_68e35c33",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-11-18T08:25:40Z",
+      "side": 1,
+      "message": "i think this is worth writing a bug for.",
+      "parentUuid": "cbda6d74_14a65148",
+      "range": {
+        "startLine": 11,
+        "startChar": 4,
+        "endLine": 11,
+        "endChar": 8
+      },
+      "revId": "48d8e2a528d26d491d2a3c289a358276569446f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0524a205_ff417304",
         "filename": "board/brask/gpio.inc",
         "patchSetId": 2
