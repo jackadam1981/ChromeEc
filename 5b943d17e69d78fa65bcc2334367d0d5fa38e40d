@@ -94,6 +94,30 @@
       },
       "revId": "5b943d17e69d78fa65bcc2334367d0d5fa38e40d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc731e7f_7a378c04",
+        "filename": "zephyr/emul/emul_tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 457,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2021-11-18T18:36:48Z",
+      "side": 1,
+      "message": "Oh, the -Wmaybe-uninitalized issue. Yeah you can (and should) assert but you also need to keep the `return;` so the compiler realizes execution stops there. I had this issue in a previous CL (https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3262105/7/driver/accelgyro_bmi160.c#299). Thanks for jogging my memory.",
+      "parentUuid": "9edb187c_6ff3358f",
+      "range": {
+        "startLine": 457,
+        "startChar": 2,
+        "endLine": 457,
+        "endChar": 8
+      },
+      "revId": "5b943d17e69d78fa65bcc2334367d0d5fa38e40d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
