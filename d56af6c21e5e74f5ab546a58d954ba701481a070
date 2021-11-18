@@ -16,6 +16,23 @@
       "message": "yup, definitely what parade is recommending for this chip.",
       "revId": "d56af6c21e5e74f5ab546a58d954ba701481a070",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a4e9970_c589ceff",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-11-18T08:19:55Z",
+      "side": 1,
+      "message": "oh joy, those failures are real:\n\n\nDEBUG: [test /tmp/zbuild-zdbq8n98-test-drivers/build-singleimage/zephyr/zephyr.elf]\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\nDEBUG: [test /tmp/zbuild-zdbq8n98-test-drivers/build-singleimage/zephyr/zephyr.elf]START - test_ps8xxx_tcpci_low_power_mode\nDEBUG: [test /tmp/zbuild-zdbq8n98-test-drivers/build-singleimage/zephyr/zephyr.elf]    Assertion failed at CMAKE_SOURCE_DIR/src/tcpci_test_common.c:915: test_tcpci_low_power_mode: EC_ERROR_INVAL not equal to drv-\u003eenter_low_power_mode(port)\nDEBUG: [test /tmp/zbuild-zdbq8n98-test-drivers/build-singleimage/zephyr/zephyr.elf] FAIL - test_ps8xxx_tcpci_low_power_mode in 0.0 seconds\nDEBUG: [test /tmp/zbuild-zdbq8n98-test-drivers/build-singleimage/zephyr/zephyr.elf]\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\nDEBUG: [test /tmp/zbuild-zdbq8n98-test-drivers/build-singleimage/zephyr/zephyr.elf]START - test_ps8xxx_tcpci_set_bist_mode\nDEBUG: [test /tmp/zbuild-zdbq8n98-test-drivers/build-singleimage/zephyr/zephyr.elf] PASS - test_ps8xxx_tcpci_set_bist_mode in 0.0 seconds\nDEBUG: [test /tmp/zbuild-zdbq8n98-test-drivers/build-singleimage/zephyr/zephyr.elf]\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\nERROR: Execution failed (return code\u003d1): /tmp/zbuild-zdbq8n98-test-drivers/build-singleimage/zephyr/zephyr.elf\nTraceback (most recent call last):\n  File \"/mnt/host/source/src/platform/ec/zephyr/zmake/zmake/multiproc.py\", line 294, in _run_fn\n    result \u003d func()\n  File \"/mnt/host/source/src/platform/ec/zephyr/zmake/zmake/zmake.py\", line 582, in \u003clambda\u003e\n    test_after_configure\u003dis_test,\n  File \"/mnt/host/source/src/platform/ec/zephyr/zmake/zmake/zmake.py\", line 390, in _configure\n    rv \u003d self.test(build_dir\u003dbuild_dir)\n  File \"/mnt/host/source/src/platform/ec/zephyr/zmake/zmake/zmake.py\", line 561, in test\n    raise OSError(get_process_failure_msg(proc))\nOSError: Execution failed (return code\u003d1): /tmp/zbuild-zdbq8n98-test-drivers/build-singleimage/zephyr/zephyr.elf\n\nDEBUG: [test /tmp/zbuild-zdbq8n98-test-drivers/build-singleimage/zephyr/zephyr.elf]Test suite ps8815 failed.\nDEBUG: [test /tmp/zbuild-zdbq8n98-test-drivers/build-singleimage/zephyr/zephyr.elf]\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\nDEBUG: [test /tmp/zbuild-zdbq8n98-test-drivers/build-singleimage/zephyr/zephyr.elf]PROJECT EXECUTION FAILED",
+      "revId": "d56af6c21e5e74f5ab546a58d954ba701481a070",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
