@@ -38,6 +38,7 @@ test-list-y=\
        mpu \
        mutex \
        panic \
+       panic_data_print \
        pingpong \
        printf \
        queue \
