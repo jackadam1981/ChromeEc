@@ -51,6 +51,24 @@
       "parentUuid": "574f57e3_9ae27f35",
       "revId": "20950340c413c83c17447a3e6a6251aafec24921",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1018e000_b206b121",
+        "filename": "power/mt8192.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1260470
+      },
+      "writtenOn": "2021-11-18T16:52:59Z",
+      "side": 1,
+      "message": "Looks like util.h worked.",
+      "parentUuid": "8a4b7c12_12b90db0",
+      "revId": "20950340c413c83c17447a3e6a6251aafec24921",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
