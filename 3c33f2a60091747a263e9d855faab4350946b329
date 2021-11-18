@@ -22,6 +22,30 @@
       },
       "revId": "3c33f2a60091747a263e9d855faab4350946b329",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d12054c0_7d28c8db",
+        "filename": ".gitlab-ci.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-11-18T05:38:39Z",
+      "side": 1,
+      "message": "I considered that, but I\u0027m not sure it\u0027s worth the effort. Things under the zephyr/drivers/ directory were always really meant to just be a faster way of getting code in than upstream. Nothing should really be there, even `cros_cbi`. I\u0027m OK going either way on that, let me know.",
+      "parentUuid": "336cfef5_1510fd55",
+      "range": {
+        "startLine": 183,
+        "startChar": 102,
+        "endLine": 183,
+        "endChar": 120
+      },
+      "revId": "3c33f2a60091747a263e9d855faab4350946b329",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
