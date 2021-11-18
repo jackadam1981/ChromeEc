@@ -22,6 +22,30 @@
       },
       "revId": "08473fd9166c68fbfd1706cc3b47fc694791fd8e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6c34c51_bf55ecfc",
+        "filename": "common/peripheral_charger.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 504,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2021-11-18T01:48:26Z",
+      "side": 1,
+      "message": "OK, I plan to copy the CL:2324989 to the x86.",
+      "parentUuid": "e8456560_bfa03a7e",
+      "range": {
+        "startLine": 498,
+        "startChar": 0,
+        "endLine": 504,
+        "endChar": 6
+      },
+      "revId": "08473fd9166c68fbfd1706cc3b47fc694791fd8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
