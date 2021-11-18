@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "049934d7_6124a618",
+        "filename": "board/quackingstick/usbc_config.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1293891
+      },
+      "writtenOn": "2021-11-18T03:26:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6a37e94f_cd12470e",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 13
+      },
+      "revId": "6055c9fb8e37603bb45bb317a1866b4b1dea8ef2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d13fb7d3_9b7c90d9",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3c34fab_85062d3d",
+        "filename": "board/quackingstick/usbc_config.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1293891
+      },
+      "writtenOn": "2021-11-18T03:26:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d13fb7d3_9b7c90d9",
+      "range": {
+        "startLine": 33,
+        "startChar": 20,
+        "endLine": 33,
+        "endChar": 21
+      },
+      "revId": "6055c9fb8e37603bb45bb317a1866b4b1dea8ef2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cbf222a6_33ded84e",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-11-17T17:37:17Z",
       "side": 1,
       "message": "The charger_profile_override() is called every shortly, every 100ms~500ms. The temperature won\u0027t change that fast. I think you can only check the 2 conjunctive thresholds. But looping to search the correct range is fine too.",
+      "range": {
+        "startLine": 57,
+        "startChar": 3,
+        "endLine": 57,
+        "endChar": 41
+      },
+      "revId": "6055c9fb8e37603bb45bb317a1866b4b1dea8ef2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c71171c_9b6fed07",
+        "filename": "board/quackingstick/usbc_config.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1293891
+      },
+      "writtenOn": "2021-11-18T03:26:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cbf222a6_33ded84e",
       "range": {
         "startLine": 57,
         "startChar": 3,
