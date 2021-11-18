@@ -39,6 +39,52 @@
       },
       "revId": "27844511acfcab7f0d26865d07f80d6b171f018d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd69f159_c003d61a",
+        "filename": "test/panic.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-11-18T23:11:43Z",
+      "side": 1,
+      "message": "Actually, this doesn\u0027t test exactly how exception is handled. We need to trigger a real panic so that the core push regs to the stack, switch context, etc.\n\nI think you can do \u0027bkpt\u0027.",
+      "range": {
+        "startLine": 60,
+        "startChar": 11,
+        "endLine": 60,
+        "endChar": 26
+      },
+      "revId": "27844511acfcab7f0d26865d07f80d6b171f018d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "37a9cbbf_ba3cc629",
+        "filename": "test/panic.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-11-18T23:11:43Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 84,
+        "startChar": 12,
+        "endLine": 84,
+        "endChar": 27
+      },
+      "revId": "27844511acfcab7f0d26865d07f80d6b171f018d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
