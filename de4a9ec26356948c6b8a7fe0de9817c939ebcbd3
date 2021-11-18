@@ -22,6 +22,30 @@
       },
       "revId": "de4a9ec26356948c6b8a7fe0de9817c939ebcbd3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e66b869c_84079438",
+        "filename": "zephyr/emul/emul_tcpci.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 396,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2021-11-18T16:11:18Z",
+      "side": 1,
+      "message": "I missed case when wrong status argument is passed. It should be fixed by https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3290722",
+      "parentUuid": "56f2857f_0354cee7",
+      "range": {
+        "startLine": 396,
+        "startChar": 1,
+        "endLine": 396,
+        "endChar": 26
+      },
+      "revId": "de4a9ec26356948c6b8a7fe0de9817c939ebcbd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
