@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "76cb41e6_4742d9b4",
+        "filename": "board/reef/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1477788
+      },
+      "writtenOn": "2021-11-18T18:29:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "92d9403a_b205dcd7",
+      "revId": "617167d22e6337d08773523db0052f1616e7ae7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "44d15a10_53940dc7",
@@ -37,6 +55,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "1e320198_6f2a5bf4",
+        "filename": "board/reef_mchp/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1477788
+      },
+      "writtenOn": "2021-11-18T18:29:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "44d15a10_53940dc7",
+      "revId": "617167d22e6337d08773523db0052f1616e7ae7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "20c7ef4d_6cb3b739",
         "filename": "chip/npcx/shi_chip.h",
         "patchSetId": 2
@@ -48,6 +84,24 @@
       "writtenOn": "2021-10-19T17:10:24Z",
       "side": 1,
       "message": "Out of scope, but I think the include guard in this file has a non-standard name, and it\u0027s weird to me that the declarations here are gated by the config check.",
+      "revId": "617167d22e6337d08773523db0052f1616e7ae7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f43fb7a1_e74068a4",
+        "filename": "chip/npcx/shi_chip.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1477788
+      },
+      "writtenOn": "2021-11-18T18:29:09Z",
+      "side": 1,
+      "message": "Yea, it\u0027s unusual and the config ifdef was redundant. Removed and changed the guard.",
+      "parentUuid": "20c7ef4d_6cb3b739",
       "revId": "617167d22e6337d08773523db0052f1616e7ae7d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
