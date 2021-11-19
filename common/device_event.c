@@ -17,8 +17,8 @@
 #define CPUTS(outstr) cputs(CC_EVENTS, outstr)
 #define CPRINTS(format, args...) cprints(CC_EVENTS, format, ## args)
 
-static uint32_t device_current_events;
-static uint32_t device_enabled_events;
+static atomic_t device_current_events;
+static atomic_t device_enabled_events;
 
 uint32_t device_get_current_events(void)
 {

@@ -11,6 +11,8 @@
 #include <stdint.h>
 #include <stddef.h>
 
+#include "atomic.h"
+
 #define UART_ERROR		-1
 #define UART_BUSY		-2
 #ifdef CHIP_VARIANT_ISH5P4
@@ -354,7 +356,7 @@ struct uart_ctx {
 	uint32_t id;
 	uint32_t base;
 	uint32_t addr_interval;
-	uint32_t uart_state;
+	atomic_t uart_state;
 	uint32_t is_open;
 	uint32_t baud_rate;
 	uint32_t input_freq;

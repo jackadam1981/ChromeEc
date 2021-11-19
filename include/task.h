@@ -13,6 +13,9 @@
 #include <stdbool.h>
 #include "task_id.h"
 
+/* Re-declare here as atomic.h has dependency on this header for some cores */
+typedef long atomic_t;
+
 /* Task event bitmasks */
 /* Tasks may use the bits in TASK_EVENT_CUSTOM_BIT for their own events */
 #define TASK_EVENT_CUSTOM_BIT(x) BUILD_CHECK_INLINE(BIT(x), BIT(x) & 0x0ffff)
@@ -187,7 +190,7 @@ static inline bool in_deferred_context(void)
 /**
  * Return a pointer to the bitmap of events of the task.
  */
-uint32_t *task_get_event_bitmap(task_id_t tskid);
+atomic_t *task_get_event_bitmap(task_id_t tskid);
 
 /**
  * Wait for the next event.
@@ -384,7 +387,7 @@ typedef struct k_mutex mutex_t;
 #else
 struct mutex {
 	uint32_t lock;
-	uint32_t waiters;
+	atomic_t waiters;
 };
 
 typedef struct mutex mutex_t;

@@ -12,7 +12,7 @@
 #include "cpu.h"
 #include "task.h"
 
-typedef int atomic_t;
+typedef long atomic_t;
 typedef atomic_t atomic_val_t;
 
 static inline atomic_val_t atomic_clear_bits(atomic_t *addr, atomic_val_t bits)

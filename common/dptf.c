@@ -43,7 +43,7 @@ static void dptf_init(void)
 DECLARE_HOOK(HOOK_INIT, dptf_init, HOOK_PRIO_DEFAULT);
 
 /* Keep track of which triggered sensor thresholds the AP has seen */
-static uint32_t dptf_seen;
+static atomic_t dptf_seen;
 
 int dptf_query_next_sensor_event(void)
 {
@@ -196,7 +196,7 @@ static int command_dptftemp(int argc, char **argv)
 		ccprintf("    %s\n", temp_sensors[id].name);
 	}
 
-	ccprintf("AP seen mask: 0x%08x\n", dptf_seen);
+	ccprintf("AP seen mask: 0x%08lx\n", dptf_seen);
 	return EC_SUCCESS;
 }
 DECLARE_CONSOLE_COMMAND(dptftemp, command_dptftemp,

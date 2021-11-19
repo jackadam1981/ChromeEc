@@ -7,6 +7,7 @@
 
 #include "csr.h"
 #include "system.h"
+#include "task.h"
 #include "uart.h"
 #include "uart_regs.h"
 #include "util.h"

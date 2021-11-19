@@ -26,7 +26,7 @@
 
 void pp3300_a_pgood_high(void)
 {
-	atomic_or(&pp3300_a_pgood, 1);
+	atomic_or((atomic_t *)&pp3300_a_pgood, 1);
 
 	/* Disable this interrupt while it's asserted. */
 	npcx_adc_thresh_int_enable(NPCX_ADC_THRESH1, 0);
@@ -42,7 +42,7 @@ void pp3300_a_pgood_high(void)
 
 void pp3300_a_pgood_low(void)
 {
-	atomic_clear_bits(&pp3300_a_pgood, 1);
+	atomic_clear_bits((atomic_t *)&pp3300_a_pgood, 1);
 
 	/* Disable this interrupt while it's asserted. */
 	npcx_adc_thresh_int_enable(NPCX_ADC_THRESH2, 0);

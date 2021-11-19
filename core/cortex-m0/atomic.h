@@ -10,7 +10,7 @@
 
 #include "common.h"
 
-typedef int atomic_t;
+typedef long atomic_t;
 typedef atomic_t atomic_val_t;
 
 /**
