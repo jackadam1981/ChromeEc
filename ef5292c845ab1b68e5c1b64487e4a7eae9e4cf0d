@@ -16,6 +16,24 @@
       "message": "Put the icelake changes into their own CL.  This could be grouped with the ADL changes.\n\nShould these changes be made as an ancestor to the changes introducing the S4 state.",
       "revId": "ef5292c845ab1b68e5c1b64487e4a7eae9e4cf0d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3db64f1_126dc675",
+        "filename": "include/power/icelake.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1260470
+      },
+      "writtenOn": "2021-11-19T17:27:46Z",
+      "side": 1,
+      "message": "I\u0027ll wait to hear from you on the other CL regarding the first part.\n\nRe: ancestor: It should be ok for these to come after the S4 state introduction. With only the S4 state patch and not this one, the SLP_S4 and SLP_S5 lines start out merged via this bit in intel_x86.h:\n\n#ifdef CONFIG_HOSTCMD_ESPI_VW_SLP_S5\n...\n#else\n#define SLP_S5_SIGNAL_L SLP_S4_SIGNAL_L\n#endif\n\nSo the state machines observes SLP_S4 and SLP_S5 change at the same time, effectively causing us to always slide right through the S4 state. I tested this on my volteer system and it seemed to work.",
+      "parentUuid": "9a34feba_3c2e45be",
+      "revId": "ef5292c845ab1b68e5c1b64487e4a7eae9e4cf0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
