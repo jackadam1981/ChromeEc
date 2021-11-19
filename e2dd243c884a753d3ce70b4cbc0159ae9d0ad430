@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "643a7ab7_a9826cfa",
+        "filename": "driver/usb_mux/tusb1064.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-11-19T20:40:03Z",
+      "side": 1,
+      "message": "nit: could make this unsigned.",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 3
+      },
+      "revId": "e2dd243c884a753d3ce70b4cbc0159ae9d0ad430",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76287a95_20624ecd",
+        "filename": "driver/usb_mux/tusb1064.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-11-19T20:40:03Z",
+      "side": 1,
+      "message": "Perhaps it would be good to take the DP lane as a parameter and then just set that lane accordingly. The gains don\u0027t have to necessarily be symmetrical do they?",
+      "revId": "e2dd243c884a753d3ce70b4cbc0159ae9d0ad430",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
