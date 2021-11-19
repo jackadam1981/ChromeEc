@@ -16,6 +16,24 @@
       "message": "No temp sensor on version 1?",
       "revId": "a7bf7db17790f96cde28b0f7db3869dabd5b81d4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9bc4efde_95cc596c",
+        "filename": "board/nipperkin/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1294793
+      },
+      "writtenOn": "2021-11-19T05:16:53Z",
+      "side": 1,
+      "message": "Yes, no temp sensors on version 1.",
+      "parentUuid": "17284860_c99c490e",
+      "revId": "a7bf7db17790f96cde28b0f7db3869dabd5b81d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
