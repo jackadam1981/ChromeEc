@@ -23,15 +23,17 @@
 #include <string.h>
 
 #include "battery.h"
-#include "battery_common.h"
 #include "battery_smart.h"
 #include "charge_manager.h"
 #include "charge_state.h"
 #include "console.h"
+#include "chipset.h"
 #include "ec_commands.h"
 #include "extpower.h"
 #include "hooks.h"
 #include "power_status.h"
+#include "throttle_ap.h"
+#include "timer.h"
 #include "usb_common.h"
 #include "usb_pd.h"
 
@@ -45,6 +47,13 @@
 #define DBPT_SYS_RESISTANCE_ADDR 0x5C
 #define DBPT_MIN_SYS_VOLTAGE_ADDR 0x5D
 
+/*
+ * TODO: Fill up with actual threshold values of
+ * batt_max_peak_power and batt_sus_peak_power
+ */
+#define MAX_PEAK_THRESHOLD_W 5
+#define SUS_PEAK_THRESHOLD_W 5
+
 /* True if successfully able to program SysResistance and MinSysVoltage */
 static bool dbpt_available;
 
@@ -57,6 +66,15 @@ static int batt_1C_derated;
 /* Outputs from DBPT algorithm */
 static int batt_max_peak_power;
 static int batt_sus_peak_power;
+
+/* PD state change sequence number */
+static int pd_state_sequence;
+
+/* PROCHOT action based on PD state change sequence number */
+static int prochot_action = PROCHOT_DEASSERT_OK;
+
+/* pd_state_sequence is 8 bit number */
+#define PD_STATE_SEQUENCE_MAX 15
 
 /***************************************************************
  * Get updated DBPT outputs every second.
@@ -80,6 +98,20 @@ static void update_dbpt(void)
 		batt_max_peak_power = (-(int16_t)batt_max_peak_power / 100);
 		batt_sus_peak_power = (-(int16_t)batt_sus_peak_power / 100);
 	}
+
+	/* Assert interrupt to AP when batt_max_peak_power or
+	 * batt_sus_peak_power reaches threshold
+	 */
+	if (batt_max_peak_power >= MAX_PEAK_THRESHOLD_W ||
+		batt_sus_peak_power >= SUS_PEAK_THRESHOLD_W)
+		pd_send_host_event(PD_EVENT_POWER_CHANGE);
+
+	/*
+	 * Write DBPT outputs to memory mapped region to be accessed by
+	 * kernel through ACPI tables
+	 */
+	*host_get_memmap(EC_MEMMAP_BATT_PMAX) = batt_max_peak_power;
+	*host_get_memmap(EC_MEMMAP_BATT_PBSS) = batt_sus_peak_power;
 }
 #ifdef CONFIG_BATTERY_SUPPORTS_DBPT_V2PLUS
 DECLARE_HOOK(HOOK_SECOND, update_dbpt, HOOK_PRIO_DEFAULT);
@@ -158,6 +190,42 @@ DECLARE_CONSOLE_COMMAND(dumppower, dump_power_status, NULL,
 			"Dump power status");
 
 /***************************************************************
+ * Deassert PROCHOT when PBOK response is received
+ */
+static void deassert_prochot(void)
+{
+	if (prochot_action == PROCHOT_DEASSERT_OK)
+		throttle_ap(THROTTLE_OFF, THROTTLE_HARD,
+			THROTTLE_SRC_BAT_DISCHG_CURRENT);
+}
+DECLARE_DEFERRED(deassert_prochot);
+
+#ifdef CONFIG_CHARGE_MANAGER
+/***************************************************************
+ * Increment Power delivery status change sequence number.
+ * Whenever USB PD connects or disconnects, power delivery
+ * sequence number is incremented to notify Intel DTT. DTT can
+ * adjust power limits and sends PBOK with the corresponding
+ * sequence number to EC. This is to synchronize the operation
+ * between EC and DTT.
+ */
+void increment_pd_seq(void)
+{
+	int chg_port;
+	/* Check if the charger port has been disconnected */
+	chg_port = charge_manager_get_active_charge_port();
+	if (pd_is_disconnected(chg_port)) {
+		/*
+		 * pd_state_sequence is 8 bit number, wrapping it
+		 * around if it overflows
+		 */
+		pd_state_sequence = pd_state_sequence == PD_STATE_SEQUENCE_MAX
+			? 0 : pd_state_sequence + 1;
+	}
+}
+#endif
+
+/***************************************************************
  * Determine how the board is being powered.
  */
 static void update_power_source(void)
@@ -166,20 +234,32 @@ static void update_power_source(void)
 	int batt_soc;
 	bool on_battery;
 
-	batt_soc = get_battery_soc();
+	batt_soc = usb_get_battery_soc();
 
 	/* Determine new power source */
 	on_battery = get_latest_power_source();
 
 	/*
-	 * Inform the AP when power sources change, or if the battery
-	 * SoC is less than or equal to BATTERY_LEVEL_LOW.
+	 * Inform the AP and assert PROCHOT when power sources change,
+	 * or if the battey SoC is less than or equal to BATTERY_LEVEL_LOW.
 	 */
 	if ((old_power_source != current_power_source) ||
-		(on_battery && batt_soc <= BATTERY_LEVEL_LOW))
+		(on_battery && batt_soc <= BATTERY_LEVEL_LOW)) {
+
+	#ifdef CONFIG_CHARGE_MANAGER
+		increment_pd_seq();
+	#endif
+
 		pd_send_host_event(PD_EVENT_POWER_CHANGE);
+		throttle_ap(THROTTLE_ON, THROTTLE_HARD,
+				THROTTLE_SRC_BAT_DISCHG_CURRENT);
+		hook_call_deferred(&deassert_prochot_data, 2 * SECOND);
+	}
 }
 DECLARE_HOOK(HOOK_BATTERY_SOC_CHANGE, update_power_source, HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_USB_PD_DISCONNECT, update_power_source, HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_USB_PD_CONNECT, update_power_source, HOOK_PRIO_DEFAULT);
+
 #ifdef CONFIG_EXTPOWER
 DECLARE_HOOK(HOOK_AC_CHANGE, update_power_source, HOOK_PRIO_DEFAULT);
 #endif
@@ -227,7 +307,7 @@ static void power_status_init(void)
 DECLARE_HOOK(HOOK_INIT, power_status_init, HOOK_PRIO_LAST);
 
 /***************************************************************
- * Host command to retrieve power info v1
+ * Host command to retrieve power info
  */
 static enum ec_status host_command_power_info(
 	struct host_cmd_handler_args *args)
@@ -235,7 +315,7 @@ static enum ec_status host_command_power_info(
 	const unsigned int ac_power = charge_manager_get_power_limit_uw() /
 		1000000;
 	struct ec_response_power_info_v1 *r = args->response;
-	const int batt_soc = get_battery_soc();
+	const int batt_soc = usb_get_battery_soc();
 	int dbpt_level = 0;
 
 	if (IS_ENABLED(CONFIG_BATTERY_SUPPORTS_DBPT_V2PLUS) && dbpt_available)
@@ -278,3 +358,31 @@ static enum ec_status host_command_power_info(
 DECLARE_HOST_COMMAND(EC_CMD_POWER_INFO,
 		host_command_power_info,
 		EC_VER_MASK(1));
+
+/***************************************************************
+ * Host command for Power Boss OK
+ */
+static enum ec_status host_command_power_boss_ok(
+		struct host_cmd_handler_args *args)
+{
+	const struct ec_params_power_boss_ok *p = args->params;
+	struct ec_response_power_boss_ok *r = args->response;
+
+	/*
+	 * The reason to have a power delivery state change sequence
+	 * number is to synchronize the operation between EC and Intel
+	 * DTT. Power delivery state could change more often than DTT can
+	 * handle in time. Using this sequence number is to ensure
+	 * that the PROCHOT that EC cleared is the one that DTT has processed
+	 */
+	if (pd_state_sequence != p->pd_sequence)
+		prochot_action = PROCHOT_DEASSERT_NOT_OK;
+
+	r->prochot_action = prochot_action;
+
+	args->response_size = sizeof(*r);
+
+	return EC_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_POWER_BOSS_OK, host_command_power_boss_ok,
+			EC_VER_MASK(0));

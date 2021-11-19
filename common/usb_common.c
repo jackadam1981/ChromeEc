@@ -15,6 +15,7 @@
 #include "common.h"
 #include "console.h"
 #include "ec_commands.h"
+#include "extpower.h"
 #include "hooks.h"
 #include "mkbp_event.h"
 #include "stdbool.h"
@@ -176,6 +177,31 @@ int usb_get_battery_soc(void)
 #else
 	return 0;
 #endif
+}
+
+bool get_latest_power_source(void)
+{
+	enum system_power_source current_power_source = POWER_SOURCE_UNKNOWN;
+	const bool batt_pres = battery_is_present() == BP_YES;
+	const int ext_pres = extpower_is_present();
+	bool power_source;
+
+	/* Determine new power source */
+	if (ext_pres && batt_pres) {
+		current_power_source = POWER_SOURCE_AC_BATTERY;
+	} else if (ext_pres) {
+		current_power_source = POWER_SOURCE_AC;
+	} else if (batt_pres) {
+		current_power_source = POWER_SOURCE_BATTERY;
+	} else {
+		CPRINTS("Power glitch encountered, no power source!");
+		current_power_source = POWER_SOURCE_UNKNOWN;
+	}
+
+	power_source = (current_power_source == POWER_SOURCE_BATTERY ||
+			current_power_source == POWER_SOURCE_AC_BATTERY);
+
+	return power_source;
 }
 
 #if defined(CONFIG_USB_PD_PREFER_MV) && defined(PD_PREFER_LOW_VOLTAGE) + \

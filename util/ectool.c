@@ -6603,11 +6603,30 @@ int cmd_panic_info(int argc, char *argv[])
 	return parse_panic_info((char *)(ec_inbuf), rv);
 }
 
+void print_power_src(int flags)
+{
+	printf("  Flags       0x%02x\n", flags);
+	switch (flags) {
+	case POWER_SOURCE_BATTERY:
+		printf("Battery");
+		break;
+	case POWER_SOURCE_AC:
+		printf("AC");
+		break;
+	case POWER_SOURCE_AC_BATTERY:
+		printf("AC + Battery");
+		break;
+	default:
+		printf("Unknown power source");
+	}
+	printf("\n");
+}
 
 int cmd_power_info(int argc, char *argv[])
 {
 	struct ec_response_power_info_v1 r;
 	int rv;
+	int val;
 
 	rv = ec_command(EC_CMD_POWER_INFO, 1, NULL, 0, &r, sizeof(r));
 	if (rv < 0)
@@ -6629,9 +6648,11 @@ int cmd_power_info(int argc, char *argv[])
 		break;
 	}
 
+	printf("PD sequence number: 0x%1x\n", r.pd_sequence);
 	printf("Battery state-of-charge: %d%%\n", r.battery_soc);
 	printf("Max AC power: %d Watts\n", r.ac_adapter_100pct);
 	printf("Battery 1Cd rate: %d\n", r.battery_1cd);
+	printf("RoP Worst: %d Watts\n", r.rop_worst);
 	printf("RoP Avg: %d Watts\n", r.rop_avg);
 	printf("RoP Peak: %d Watts\n", r.rop_peak);
 	printf("Battery DBPT support level: %d\n",
@@ -6640,6 +6661,24 @@ int cmd_power_info(int argc, char *argv[])
 	       r.intel.batt_dbpt_max_peak_power);
 	printf("Battery DBPT Sus Peak Power: %d Watts\n",
 	       r.intel.batt_dbpt_sus_peak_power);
+
+	/* Read memmap values */
+	printf("\n\nReading memory map values\n");
+	val = read_mapped_mem8(EC_MEMMAP_POWER_SRC);
+	print_power_src(val);
+
+	val = read_mapped_mem8(EC_MEMMAP_ARTG);
+	printf("Adapter rating: %d Watts\n", val);
+
+	val = read_mapped_mem8(EC_MEMMAP_PROP);
+	printf("Worst case Rest Of Platform power: %d Watts\n", val);
+
+	val = read_mapped_mem8(EC_MEMMAP_BATT_PMAX);
+	printf("Max platform power supported by battery: %d Watts\n", val);
+
+	val = read_mapped_mem8(EC_MEMMAP_BATT_PBSS);
+	printf("Max sustained power for battery: %d Watts\n", val);
+
 	return 0;
 }
 

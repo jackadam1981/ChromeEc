@@ -21,6 +21,8 @@ struct board_power_config {
 	const int soc_avg_eff;
 	/* Efficiency of SOC VRs at peak power */
 	const int soc_peak_eff;
+	/* Worst case RoP power */
+	const int rop_worst;
 	/* Average RoP power */
 	const int rop_avg;
 	/* Peak RoP power */
@@ -29,6 +31,8 @@ struct board_power_config {
 	const int sys_resistance;
 	/* DBPT v2 - in mV */
 	const int min_sys_voltage;
+	/* Adapter rating - in W */
+	const int adapter_rating;
 };
 
 /* Expected to be provided by the board */
