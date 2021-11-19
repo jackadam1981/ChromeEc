@@ -63,7 +63,23 @@ struct tcpci_emul_data {
 	/** Reference to Alert# GPIO emulator. */
 	const struct device *alert_gpio_port;
 	gpio_pin_t alert_gpio_pin;
+	int state_count;
 };
+
+int tcpci_emul_get_state_count(const struct emul *emul)
+{
+	struct tcpci_emul_data *data = emul->data;
+
+	return data->state_count;
+}
+
+void tcpci_emul_inc_state(const struct emul *emul, const char *label)
+{
+	struct tcpci_emul_data *data = emul->data;
+
+	data->state_count++;
+	LOG_WRN("state %d %s", data->state_count, label);
+}
 
 /**
  * @brief Returns number of bytes in specific register
@@ -207,6 +223,8 @@ static int tcpci_emul_alert_changed(const struct emul *emul)
 	struct tcpci_emul_data *data = emul->data;
 	int rc;
 	bool alert_is_active = tcpci_emul_check_int(emul);
+
+	tcpci_emul_inc_state(emul, "alert");
 
 	/** Trigger GPIO. */
 	if (data->alert_gpio_port != NULL) {
@@ -1062,6 +1080,7 @@ static int tcpci_emul_handle_transmit(const struct emul *emul)
 {
 	struct tcpci_emul_data *data = emul->data;
 
+	tcpci_emul_inc_state(emul, "xmit");
 	data->tx_msg->cnt = data->tx_msg->idx;
 	data->tx_msg->type = TCPC_REG_TRANSMIT_TYPE(data->write_data);
 	data->tx_msg->idx = 0;
@@ -1144,6 +1163,8 @@ static int tcpci_emul_handle_write(struct i2c_emul *i2c_emul, int reg,
 
 	emul = i2c_emul->parent;
 	data = TCPCI_DATA_FROM_I2C_EMUL(i2c_emul);
+
+	tcpci_emul_inc_state(emul, "write");
 
 	LOG_DBG("TCPCI 0x%x: write reg 0x%x val 0x%x", i2c_emul->addr, reg,
 		data->write_data);

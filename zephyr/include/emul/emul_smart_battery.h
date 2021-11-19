@@ -186,6 +186,8 @@ int sbat_emul_get_block_data(struct i2c_emul *emul, int cmd, uint8_t **blk,
 void sbat_emul_set_response(struct i2c_emul *emul, int cmd, uint8_t *buf,
 			    int len, bool fail);
 
+uint16_t sbat_emul_read_status(struct i2c_emul *emul);
+
 /**
  * @}
  */

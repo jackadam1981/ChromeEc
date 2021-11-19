@@ -108,22 +108,26 @@ static void test_attach_compliant_charger(void)
 	tcpci_emul_connect_partner(tcpci_emul, /*src=*/true, /*cc1=*/true,
 				   TYPEC_CC_VOLT_RD, true);
 
-	k_sleep(K_SECONDS(5));
-#if 0
 	/* Wait for PD negotiation. */
 	/* TODO: This function should wait until PD negotiation reaches a stable
 	 * state. Alternatively, we could have the handle_transmit function
 	 * above signal a condition or semaphore when it receives a message
 	 * notifying it of the final state.
 	 */
-	tcpci_emul_wait_for_stable(tcpci_emul);
+// 	tcpci_emul_wait_for_stable(tcpci_emul);
+	int state, last = 0;
+
+	while (state = tcpci_emul_get_state_count(tcpci_emul), state != last) {
+		k_yield();
+		printf("state %d\n", state);
+		last = state;
+	}
 
 	/* Verify battery charging. */
 	battery_status = sbat_emul_read_status(i2c_emul);
 	zassert_equal(battery_status & STATUS_DISCHARGING, 0,
-		"Battery is discharging: %d", battery_status);
+		"Battery is discharging: %x", battery_status);
 	/* TODO: Also check voltage, current, etc. */
-#endif
 }
 
 void test_suite_integration_usb(void)

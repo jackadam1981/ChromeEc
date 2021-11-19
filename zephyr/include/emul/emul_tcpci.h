@@ -311,6 +311,8 @@ int tcpci_emul_disconnect_partner(const struct emul *emul);
 void tcpci_emul_partner_msg_status(const struct emul *emul,
 				   enum tcpci_emul_tx_status status);
 
+int tcpci_emul_get_state_count(const struct emul *emul);
+
 /**
  * @}
  */
