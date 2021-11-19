@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "292d8948_341a0373",
+        "filename": "driver/build.mk",
+        "patchSetId": 4
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1294793
+      },
+      "writtenOn": "2021-11-19T02:08:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "37fd40a3_07608290",
+      "revId": "e3a82e992428ebde3ddcd48991845f4fb94c2fbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "1cf1b796_fe64b3a8",
         "filename": "driver/temp_sensor/pct2075.c",
         "patchSetId": 4
@@ -31,6 +49,24 @@
       "writtenOn": "2021-11-18T14:44:02Z",
       "side": 1,
       "message": "nit: RETURN_ERROR would work here.",
+      "revId": "e3a82e992428ebde3ddcd48991845f4fb94c2fbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "74bf5f6f_fcd4dc94",
+        "filename": "driver/temp_sensor/pct2075.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1294793
+      },
+      "writtenOn": "2021-11-19T02:08:54Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "1cf1b796_fe64b3a8",
       "revId": "e3a82e992428ebde3ddcd48991845f4fb94c2fbf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -54,6 +90,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "607ce0dc_4ad2798f",
+        "filename": "driver/temp_sensor/pct2075.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1294793
+      },
+      "writtenOn": "2021-11-19T02:08:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "149b48ac_21be2981",
+      "revId": "e3a82e992428ebde3ddcd48991845f4fb94c2fbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "1f8f1500_5d115893",
         "filename": "driver/temp_sensor/pct2075.h",
         "patchSetId": 4
@@ -71,6 +125,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "9547e90e_292d0a9b",
+        "filename": "driver/temp_sensor/pct2075.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1294793
+      },
+      "writtenOn": "2021-11-19T02:08:54Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "1f8f1500_5d115893",
+      "revId": "e3a82e992428ebde3ddcd48991845f4fb94c2fbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "fddb226c_b9d3ee0a",
         "filename": "include/config.h",
         "patchSetId": 4
@@ -82,6 +154,24 @@
       "writtenOn": "2021-11-18T14:44:02Z",
       "side": 1,
       "message": "Hmmm, CONFIG_TEMP_SENSOR_TMP112 is missing from this list.",
+      "revId": "e3a82e992428ebde3ddcd48991845f4fb94c2fbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "97c5cc0b_a5bdb049",
+        "filename": "include/config.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 3910,
+      "author": {
+        "id": 1294793
+      },
+      "writtenOn": "2021-11-19T02:08:54Z",
+      "side": 1,
+      "message": "Fix in another patch.",
+      "parentUuid": "fddb226c_b9d3ee0a",
       "revId": "e3a82e992428ebde3ddcd48991845f4fb94c2fbf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
