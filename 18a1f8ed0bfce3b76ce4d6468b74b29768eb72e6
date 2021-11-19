@@ -33,6 +33,24 @@
       "message": "can we add the ps8751 as well to match the real driver?",
       "revId": "18a1f8ed0bfce3b76ce4d6468b74b29768eb72e6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb83fcae_c8bb61f4",
+        "filename": "zephyr/test/drivers/src/ps8xxx.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 914,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2021-11-19T00:11:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "34ab7006_297bd0bf",
+      "revId": "18a1f8ed0bfce3b76ce4d6468b74b29768eb72e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
