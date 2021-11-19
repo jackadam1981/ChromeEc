@@ -34,6 +34,24 @@
       "parentUuid": "0cc7440f_cb68df89",
       "revId": "59a42b5c631594326f65fc7a23dcecbed5c1ac3e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e89b031_73ca4e29",
+        "filename": "include/power/alderlake_slg4bd44540.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-11-19T21:00:30Z",
+      "side": 1,
+      "message": "I would prefer separate CLs for watching SLP_S5 in the ADL/ICL power sequencing and for enabling S4 residency on the board specific code.\n\nAny potential revert would only be on the platform files to disable CONFIG_HOSTCMD_ESPI_VW_SLP_S5 and CONFIG_POWER_S4_RESIDENCY.\n\nAlso, is this a valid combination?\n    CONFIG_HOSTCMD_ESPI_VW_SLP_S5\u003dy\n    CONFIG_POWER_S4_RESIDENCY\u003dn\n\nThe S4 residency feature flag explicitly disallows this:\n    CONFIG_HOSTCMD_ESPI_VW_SLP_S5\u003dn\n    CONFIG_POWER_S4_RESIDENCY\u003dy",
+      "parentUuid": "2c79d9b1_609aa54f",
+      "revId": "59a42b5c631594326f65fc7a23dcecbed5c1ac3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
