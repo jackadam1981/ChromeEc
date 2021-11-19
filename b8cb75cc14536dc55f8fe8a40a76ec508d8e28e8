@@ -39,6 +39,30 @@
       },
       "revId": "b8cb75cc14536dc55f8fe8a40a76ec508d8e28e8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "41d28a2c_29ec3765",
+        "filename": "board/taeko/sensors.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1477218
+      },
+      "writtenOn": "2021-11-19T09:11:15Z",
+      "side": 1,
+      "message": "Yes, it\u0027s done, so I delete \"TODO\".\n\nI left comment including CL number to help our LCFC member to know history if they read here.",
+      "parentUuid": "6cbdc484_155e5446",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 74
+      },
+      "revId": "b8cb75cc14536dc55f8fe8a40a76ec508d8e28e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
