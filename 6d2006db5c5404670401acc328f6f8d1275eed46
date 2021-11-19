@@ -87,6 +87,30 @@
       },
       "revId": "6d2006db5c5404670401acc328f6f8d1275eed46",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a290bd8_f90382c4",
+        "filename": "zephyr/shim/src/espi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 565,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-11-19T04:43:30Z",
+      "side": 1,
+      "message": "It dates back to before the upstream of https://github.com/zephyrproject-rtos/zephyr/pull/37194. The SOC specific code can be removed now (if not already).",
+      "parentUuid": "a73634bd_a3584d52",
+      "range": {
+        "startLine": 565,
+        "startChar": 0,
+        "endLine": 565,
+        "endChar": 25
+      },
+      "revId": "6d2006db5c5404670401acc328f6f8d1275eed46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
