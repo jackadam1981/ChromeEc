@@ -108,6 +108,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "c8cb8b7c_178d8912",
+        "filename": "driver/temp_sensor/pct2075.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-11-19T04:30:24Z",
+      "side": 1,
+      "message": "I\u0027m fine with this, or totally removing pct2075_init. I just didn\u0027t like tpct2075_init being declared with no definition or reference.",
+      "parentUuid": "607ce0dc_4ad2798f",
+      "revId": "e3a82e992428ebde3ddcd48991845f4fb94c2fbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "1f8f1500_5d115893",
         "filename": "driver/temp_sensor/pct2075.h",
         "patchSetId": 4
