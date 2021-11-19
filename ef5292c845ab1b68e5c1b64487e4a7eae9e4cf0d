@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a34feba_3c2e45be",
+        "filename": "include/power/icelake.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-11-19T16:31:46Z",
+      "side": 1,
+      "message": "Put the icelake changes into their own CL.  This could be grouped with the ADL changes.\n\nShould these changes be made as an ancestor to the changes introducing the S4 state.",
+      "revId": "ef5292c845ab1b68e5c1b64487e4a7eae9e4cf0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
