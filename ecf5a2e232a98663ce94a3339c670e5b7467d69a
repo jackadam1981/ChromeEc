@@ -16,6 +16,109 @@
       "message": "Running this with zmake -l DEBUG -j 1 configure --test zephyr/test/drivers outputs\n\n```\nDEBUG: [test /mnt/host/source/src/platform/ec/build/zephyr/test-drivers/build-singleimage/zephyr/zephyr.elf]START - test_attach_compliant_charger\nDEBUG: [test /mnt/host/source/src/platform/ec/build/zephyr/test-drivers/build-singleimage/zephyr/zephyr.elf]START handle_control_change state \u003d 0\nDEBUG: [test /mnt/host/source/src/platform/ec/build/zephyr/test-drivers/build-singleimage/zephyr/zephyr.elf]END handle_control_change state \u003d 0\nDEBUG: [test /mnt/host/source/src/platform/ec/build/zephyr/test-drivers/build-singleimage/zephyr/zephyr.elf]START handle_control_change state \u003d 0\nDEBUG: [test /mnt/host/source/src/platform/ec/build/zephyr/test-drivers/build-singleimage/zephyr/zephyr.elf]END handle_control_change state \u003d 0\nDEBUG: [test /mnt/host/source/src/platform/ec/build/zephyr/test-drivers/build-singleimage/zephyr/zephyr.elf] PASS - test_attach_compliant_charger in 5.10 seconds\n```\n\nNext step is to send some PD messages when those handle_control_change calls are made like usb_tcpmv2_compliance_common.c proc_pd_e1 does. I.e. On the first call set power detected register, and on second call send a PD message of some type.",
       "revId": "ecf5a2e232a98663ce94a3339c670e5b7467d69a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5fbe284e_511c5855",
+        "filename": "zephyr/emul/emul_tcpci.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 449,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-11-19T22:57:26Z",
+      "side": 1,
+      "message": "Put on separate lines. Same below",
+      "range": {
+        "startLine": 449,
+        "startChar": 15,
+        "endLine": 449,
+        "endChar": 28
+      },
+      "revId": "ecf5a2e232a98663ce94a3339c670e5b7467d69a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c498fb6_d5bdbf2d",
+        "filename": "zephyr/emul/emul_tcpci.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 461,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-11-19T22:57:26Z",
+      "side": 1,
+      "message": "comment style\n\n/* TODO: ....\n * ...\n */",
+      "range": {
+        "startLine": 461,
+        "startChar": 40,
+        "endLine": 461,
+        "endChar": 69
+      },
+      "revId": "ecf5a2e232a98663ce94a3339c670e5b7467d69a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b511ff86_d12f374b",
+        "filename": "zephyr/include/emul/emul_tcpci.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-11-19T22:57:26Z",
+      "side": 1,
+      "message": "now is a good time",
+      "range": {
+        "startLine": 302,
+        "startChar": 4,
+        "endLine": 302,
+        "endChar": 8
+      },
+      "revId": "ecf5a2e232a98663ce94a3339c670e5b7467d69a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "127cf01c_728afe38",
+        "filename": "zephyr/test/drivers/src/integration_usb.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-11-19T22:57:26Z",
+      "side": 1,
+      "message": "outdent",
+      "revId": "ecf5a2e232a98663ce94a3339c670e5b7467d69a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ab36d65_55de8e2b",
+        "filename": "zephyr/test/drivers/src/integration_usb.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-11-19T22:57:26Z",
+      "side": 1,
+      "message": "indentation wrong",
+      "revId": "ecf5a2e232a98663ce94a3339c670e5b7467d69a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
