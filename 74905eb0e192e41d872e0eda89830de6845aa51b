@@ -16,6 +16,24 @@
       "message": "If I understand correctly, extracting these functions will be useful to e.g. probe one multi-sensor (accel+gyro) and then replace both of them, right?\nI wonder if the enum wouldn\u0027t be more suitable for this, instead of index. This would be more independent of the order of device tree nodes.",
       "revId": "74905eb0e192e41d872e0eda89830de6845aa51b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1100db9_c3272ba2",
+        "filename": "zephyr/shim/include/motionsense_sensors.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2021-11-19T09:33:31Z",
+      "side": 1,
+      "message": "That is one of the cases, but I see more uses, mainly when there are more than one potential alternate sensor.\n\nAs I described, the index should be gained with SENSOR_ID so the enum is used, but you are right that the argument of the functions should be the enum as well.",
+      "parentUuid": "df46f43d_e730c0df",
+      "revId": "74905eb0e192e41d872e0eda89830de6845aa51b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
