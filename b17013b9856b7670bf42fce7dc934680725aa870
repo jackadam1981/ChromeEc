@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "67c3f4b8_ae717f19",
+        "filename": "board/felwinter/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-11-19T08:20:23Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "f956f0ae_186ac3b2",
+      "revId": "b17013b9856b7670bf42fce7dc934680725aa870",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b9bcbb80_d48bac27",
@@ -67,6 +85,24 @@
       "side": 1,
       "message": "It is reserved because this pin connect to ps8815(TCPC) on SKU2.",
       "parentUuid": "b9bcbb80_d48bac27",
+      "revId": "b17013b9856b7670bf42fce7dc934680725aa870",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f04f9f6_0faf0c1d",
+        "filename": "board/felwinter/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-11-19T08:20:23Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ec05e83b_f5eb8406",
       "revId": "b17013b9856b7670bf42fce7dc934680725aa870",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
