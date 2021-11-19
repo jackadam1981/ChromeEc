@@ -165,6 +165,30 @@
       },
       "revId": "48d8e2a528d26d491d2a3c289a358276569446f6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "99a43414_d3c29272",
+        "filename": "board/brask/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-11-19T02:02:27Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "682de725_f6680e71",
+      "range": {
+        "startLine": 131,
+        "startChar": 21,
+        "endLine": 131,
+        "endChar": 24
+      },
+      "revId": "48d8e2a528d26d491d2a3c289a358276569446f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
