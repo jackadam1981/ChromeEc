@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f956f0ae_186ac3b2",
+        "filename": "board/felwinter/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1395690
+      },
+      "writtenOn": "2021-11-19T05:53:31Z",
+      "side": 1,
+      "message": "It is reserved because this pin connect to sm5360(PPC) and ps8815(TCPC) on SKU2.",
+      "parentUuid": "7dc2f31d_4901459a",
+      "revId": "b17013b9856b7670bf42fce7dc934680725aa870",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b9bcbb80_d48bac27",
         "filename": "board/felwinter/gpio.inc",
         "patchSetId": 2
@@ -31,6 +49,24 @@
       "writtenOn": "2021-11-19T02:10:07Z",
       "side": 1,
       "message": "should this be removed or redefined if you\u0027re actually\ncontrolling RST through the IO expander?",
+      "revId": "b17013b9856b7670bf42fce7dc934680725aa870",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec05e83b_f5eb8406",
+        "filename": "board/felwinter/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1395690
+      },
+      "writtenOn": "2021-11-19T05:53:31Z",
+      "side": 1,
+      "message": "It is reserved because this pin connect to ps8815(TCPC) on SKU2.",
+      "parentUuid": "b9bcbb80_d48bac27",
       "revId": "b17013b9856b7670bf42fce7dc934680725aa870",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
