@@ -14,7 +14,6 @@ zephyr_library_sources(
   "src/board_id.c"
   "src/hibernate.c"
   "src/usbc_config.c"
-  "src/regulator.c"
   "src/usb_pd_policy.c")
 
 if(DEFINED CONFIG_BOARD_KRABBY)
