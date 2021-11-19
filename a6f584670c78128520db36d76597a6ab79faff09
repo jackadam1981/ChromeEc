@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce2c07a3_87cfb9af",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-11-19T16:21:27Z",
+      "side": 1,
+      "message": "Tanu - Vijay is OOO.  Can you designate someone from Intel to review these changes?",
+      "revId": "a6f584670c78128520db36d76597a6ab79faff09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "697f586c_00d31aa5",
+        "filename": "zephyr/Kconfig.espi",
+        "patchSetId": 8
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-11-19T16:21:27Z",
+      "side": 1,
+      "message": "Nit - line length.",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 0
+      },
+      "revId": "a6f584670c78128520db36d76597a6ab79faff09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
