@@ -16,6 +16,24 @@
       "message": "Move the alderlake_slg4bd44540.c/.h changes into a separate CL for a cleaner commit history.",
       "revId": "59a42b5c631594326f65fc7a23dcecbed5c1ac3e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c79d9b1_609aa54f",
+        "filename": "include/power/alderlake_slg4bd44540.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1260470
+      },
+      "writtenOn": "2021-11-19T17:17:43Z",
+      "side": 1,
+      "message": "I\u0027m ok to do this, but are you sure you want it? This already represents a fairly tidy change that enables S4 residency (by watching SLP_S5) on Brya. I can see the rationale that there are technically two things happening in here (watching SLP_S5, and advertising S4 residency to the AP). But the two pieces essentially depend on each other, and if something were to happen it\u0027s nice to have a single thing to revert.",
+      "parentUuid": "0cc7440f_cb68df89",
+      "revId": "59a42b5c631594326f65fc7a23dcecbed5c1ac3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
