@@ -52,6 +52,24 @@
       "parentUuid": "2c79d9b1_609aa54f",
       "revId": "59a42b5c631594326f65fc7a23dcecbed5c1ac3e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7b64451_bbaf57d0",
+        "filename": "include/power/alderlake_slg4bd44540.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1260470
+      },
+      "writtenOn": "2021-11-19T22:17:55Z",
+      "side": 1,
+      "message": "Ok, I\u0027ll split them out. \n\nVW_SLP_S5\u003dn, S4_RESIDENCY\u003dn is explicitly disallowed because it is saying \"advertise S4 to the AP\", but we know from configs that the EC has no way to differentiate SLP_S4/SLP_S5, so transitions through S4 would always slide to their next state. In other words, we\u0027d be advertising something to the AP that we know we cannot do. (Note: If a GPIO_PCH_SLP_S5_L existed, aka a real line from the AP to EC for SLP_S5, we _would_ have to allow this combination, since S4 residency would be possible via the real SLP_S5 line).\n\nVW_SLP_S5\u003dy, S4_RESIDENCY\u003dn is technically a valid combination, it says \"wire up interrupts and report changes on VW_SLP_S5, but don\u0027t advertise to the AP that we can camp in S4\". It\u0027s not a particularly useful combination, but it isn\u0027t broken either. Maybe you\u0027d use it as a last-minute escape hatch if you wanted to stop the AP from trying to go to S4, but you didn\u0027t want to touch anything else.",
+      "parentUuid": "0e89b031_73ca4e29",
+      "revId": "59a42b5c631594326f65fc7a23dcecbed5c1ac3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
