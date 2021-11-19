@@ -16,6 +16,57 @@
       "message": "moving out of hibernate mode by lid_open\n     and connecting charger to usb port\n\nAre these two test cases? in that case, we should say “by lid_open and by connecting”\nis lid_open a command? or just human action? if human action, why ”_”?",
       "revId": "82ecfa0936055eab997d257a1e4ab339e745505e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3c3de77_38a0552d",
+        "filename": "zephyr/boards/arm/brya/brya.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-11-19T16:39:05Z",
+      "side": 1,
+      "message": "Nit - add a comment indicating the net name.\n\n\u0026psl_in1 {\n    /* LID_OPEN_OD */",
+      "revId": "82ecfa0936055eab997d257a1e4ab339e745505e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca6693c0_3ac3733f",
+        "filename": "zephyr/boards/arm/brya/brya.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-11-19T16:39:05Z",
+      "side": 1,
+      "message": "Add /* ACOK_EC_OD */",
+      "revId": "82ecfa0936055eab997d257a1e4ab339e745505e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab17f22e_03107806",
+        "filename": "zephyr/boards/arm/brya/brya.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-11-19T16:39:05Z",
+      "side": 1,
+      "message": "Add /* GSC_EC_PWR_BTN_ODL */",
+      "revId": "82ecfa0936055eab997d257a1e4ab339e745505e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
