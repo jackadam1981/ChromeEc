@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d35f564_406c6b6e",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 401,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2021-11-19T01:20:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b3cc7bda_7888681f",
+      "range": {
+        "startLine": 393,
+        "startChar": 0,
+        "endLine": 401,
+        "endChar": 6
+      },
+      "revId": "3b6435215c1e893494416e094ace508530cd77fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bc4198fc_c044ca52",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-11-18T21:54:42Z",
       "side": 1,
       "message": "This can be:\n\n\t\thook_notify(HOOK_CHIPSET_SUSPEND);\n#ifdef CONFIG_CHIPSET_RESUME_INIT_HOOK\n\t\thook_notify(HOOK_CHIPSET_SUSPEND_COMPLETE);\n#endif\n\nThanks,",
+      "range": {
+        "startLine": 422,
+        "startChar": 0,
+        "endLine": 430,
+        "endChar": 6
+      },
+      "revId": "3b6435215c1e893494416e094ace508530cd77fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ddd51827_02f386fe",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 430,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2021-11-19T01:20:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bc4198fc_c044ca52",
       "range": {
         "startLine": 422,
         "startChar": 0,
