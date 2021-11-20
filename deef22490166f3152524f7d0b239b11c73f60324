@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0def3be_78d9e985",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 17
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2021-11-20T00:40:02Z",
+      "side": 1,
+      "message": "This is not required now. with latest code, its working now.",
+      "parentUuid": "ae5de599_a47f6d4f",
+      "revId": "deef22490166f3152524f7d0b239b11c73f60324",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4965d65e_3c6f1171",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-11-03T16:47:31Z",
       "side": 1,
       "message": "Please add the test details.",
+      "revId": "deef22490166f3152524f7d0b239b11c73f60324",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b7de31c_52066fe9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 17
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2021-11-20T00:40:02Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "4965d65e_3c6f1171",
       "revId": "deef22490166f3152524f7d0b239b11c73f60324",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -54,6 +90,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "64d9481c_579145c7",
+        "filename": "board/brya/usbc_config.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2021-11-20T00:40:02Z",
+      "side": 1,
+      "message": "In Zephyr, This will be configured from prj.conf. but #define will still be required for legacy EC, that is the reason to moved inside #ifndef CONFIG_ZEPHYR",
+      "parentUuid": "79621938_e7665c30",
+      "revId": "deef22490166f3152524f7d0b239b11c73f60324",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "65de0f32_fd109f20",
         "filename": "board/brya/usbc_config.h",
         "patchSetId": 17
@@ -65,6 +119,24 @@
       "writtenOn": "2021-11-03T16:47:31Z",
       "side": 1,
       "message": "Please add brief description for this change.",
+      "revId": "deef22490166f3152524f7d0b239b11c73f60324",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c141a7c_c060d994",
+        "filename": "board/brya/usbc_config.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2021-11-20T00:40:02Z",
+      "side": 1,
+      "message": "Waiting for IOEX code, after that, this will move to bb_retimer.dts",
+      "parentUuid": "65de0f32_fd109f20",
       "revId": "deef22490166f3152524f7d0b239b11c73f60324",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -88,6 +160,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2c5fd19c_9eef41c0",
+        "filename": "include/console_channel.inc",
+        "patchSetId": 17
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2021-11-20T00:40:02Z",
+      "side": 1,
+      "message": "No, Its not required now.",
+      "parentUuid": "c911fbaa_add0f72d",
+      "revId": "deef22490166f3152524f7d0b239b11c73f60324",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7502eb1b_be93ca70",
         "filename": "zephyr/projects/brya/brya/gpio.dts",
         "patchSetId": 17
@@ -99,6 +189,24 @@
       "writtenOn": "2021-11-03T16:47:31Z",
       "side": 1,
       "message": "nit: Please remove extra lines.",
+      "revId": "deef22490166f3152524f7d0b239b11c73f60324",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e74ccc3a_358404f3",
+        "filename": "zephyr/projects/brya/brya/gpio.dts",
+        "patchSetId": 17
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2021-11-20T00:40:02Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "7502eb1b_be93ca70",
       "revId": "deef22490166f3152524f7d0b239b11c73f60324",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
