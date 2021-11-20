@@ -98,7 +98,7 @@
 			enum-name = "GPIO_PCH_SLP_S0_L";
 			label = "SLP_S0_L";
 		};
-		slp_s3_l {
+		slps3: slp_s3_l {
 			gpios = <&gpioa 5 GPIO_INPUT>;
 			enum-name = "GPIO_PCH_SLP_S3_L";
 			label = "SLP_S3_L";
