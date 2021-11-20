@@ -1,0 +1,16 @@
+# Copyright (c) 2021 Intel Corporation
+# SPDX-License-Identifier: Apache-2.0
+
+menu "AP Power Management"
+
+config X86_NON_DSX_POWER_SEQ
+	bool "x86 Non Deep Sx power sequencing"
+	default n
+	help
+	  This option enables Non Deep Sleep Well power sequencing for
+	  Intel x86 chips.
+
+module = AP_PWRSEQ
+module-str = ap_pwrseq
+source "subsys/logging/Kconfig.template.log_config"
+endmenu
