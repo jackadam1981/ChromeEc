@@ -22,6 +22,30 @@
       },
       "revId": "0f0b4df8da565043af85bfe4ec0a55b7664fa216",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b36492d4_18e4693e",
+        "filename": "zephyr/shim/src/console.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-11-22T19:08:19Z",
+      "side": 1,
+      "message": "Yup, they won\u0027t do anything unless we actually have the kconfig enabled too, so we\u0027re OK here: https://github.com/zephyrproject-rtos/zephyr/pull/38384/files#diff-ada658f52221d7e6c6143eaa3be265c83de76dec8e4df770395ffe9c7c259d31R1216",
+      "parentUuid": "d4234d3b_2c0a6db0",
+      "range": {
+        "startLine": 114,
+        "startChar": 1,
+        "endLine": 114,
+        "endChar": 35
+      },
+      "revId": "0f0b4df8da565043af85bfe4ec0a55b7664fa216",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
