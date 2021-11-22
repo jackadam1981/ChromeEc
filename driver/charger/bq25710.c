@@ -143,14 +143,14 @@ static enum ec_error_list bq25710_set_option(int chgnum, int option);
 
 static inline int iin_dpm_reg_to_current(int reg)
 {
-	return (reg + 1) * BQ257X0_IIN_DPM_CURRENT_STEP_MA /
+	return reg * BQ257X0_IIN_DPM_CURRENT_STEP_MA /
 		INPUT_RESISTOR_RATIO;
 }
 
 static inline int iin_host_current_to_reg(int current)
 {
 	return (current * INPUT_RESISTOR_RATIO /
-		BQ257X0_IIN_HOST_CURRENT_STEP_MA) - 1;
+		BQ257X0_IIN_HOST_CURRENT_STEP_MA);
 }
 
 static inline enum ec_error_list raw_read16(int chgnum, int offset, int *value)
