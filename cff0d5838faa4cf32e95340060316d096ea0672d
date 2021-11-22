@@ -70,6 +70,24 @@
       "parentUuid": "7c373692_89151d9d",
       "revId": "cff0d5838faa4cf32e95340060316d096ea0672d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ab26235_af520e8f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2021-11-22T21:14:00Z",
+      "side": 1,
+      "message": "Hi Caveh,\nI dont think giving a wrong manufacturer name to forcefuly call - board_get_default_battery_type() would be a good idea.\nDo you have any other thoughts on implementation?",
+      "parentUuid": "c68abd1f_c5ac2f2a",
+      "revId": "cff0d5838faa4cf32e95340060316d096ea0672d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
