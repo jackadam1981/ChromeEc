@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b012c083_41d060f5",
+        "filename": "zephyr/emul/emul_tcpci.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 462,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-11-22T22:35:26Z",
+      "side": 1,
+      "message": "drop trailing space",
+      "range": {
+        "startLine": 462,
+        "startChar": 13,
+        "endLine": 462,
+        "endChar": 14
+      },
+      "revId": "adc8f405779592ab7b1caab2b7228c3da71bf7ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
