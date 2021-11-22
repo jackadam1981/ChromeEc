@@ -84,39 +84,40 @@
 			gpios = <&gpiob 0 GPIO_ODR_HIGH>;
 			enum-name = "GPIO_EC_INT_L";
 		};
-		pg_ec_dsw_pwrok {
+
+		dswpwrokin: pg_ec_dsw_pwrok {
 			gpios = <&gpioc 7 GPIO_INPUT>;
 			enum-name = "GPIO_PG_EC_DSW_PWROK";
 		};
-		en_s5_rails {
+		enpp5p0: en_s5_rails {
 			gpios = <&gpiob 6 GPIO_OUT_LOW>;
 			enum-name = "GPIO_EN_S5_RAILS";
 		};
-		sys_rst_odl {
+		sysreset: sys_rst_odl {
 			gpios = <&gpioc 5 GPIO_ODR_HIGH>;
 			enum-name = "GPIO_SYS_RESET_L";
 		};
-		pg_ec_rsmrst_odl {
+		rsmrstin: pg_ec_rsmrst_odl {
 			gpios = <&gpioe 2 GPIO_INPUT>;
 			enum-name = "GPIO_PG_EC_RSMRST_ODL";
 		};
-		ec_pch_rsmrst_odl {
+		rsmrstout: ec_pch_rsmrst_odl {
 			gpios = <&gpioa 6 GPIO_OUT_LOW>;
 			enum-name = "GPIO_PCH_RSMRST_L";
 		};
-		pg_ec_all_sys_pwrgd {
+		allsyspwrgd: pg_ec_all_sys_pwrgd {
 			gpios = <&gpiof 4 GPIO_INPUT>;
 			enum-name = "GPIO_PG_EC_ALL_SYS_PWRGD";
 		};
-		slp_s0_l {
+		slps0: slp_s0_l {
 			gpios = <&gpiod 5 GPIO_INPUT>;
 			enum-name = "GPIO_PCH_SLP_S0_L";
 		};
-		slp_s3_l {
+		slps3: slp_s3_l {
 			gpios = <&gpioa 5 GPIO_INPUT>;
 			enum-name = "GPIO_PCH_SLP_S3_L";
 		};
-		vccst_pwrgd_od {
+		vccstpwrgd: vccst_pwrgd_od {
 			gpios = <&gpioa 4 GPIO_ODR_LOW>;
 			enum-name = "GPIO_VCCST_PWRGD_OD";
 		};
@@ -124,23 +125,23 @@
 			gpios = <&gpio6 3 GPIO_ODR_HIGH>;
 			enum-name = "GPIO_CPU_PROCHOT";
 		};
-		ec_pch_pwr_btn_odl {
+		pchpwrbtn: ec_pch_pwr_btn_odl {
 			gpios = <&gpioc 1 GPIO_ODR_HIGH>;
 			enum-name = "GPIO_PCH_PWRBTN_L";
 		};
-		slp_sus_l {
+		slpsus: slp_sus_l {
 			gpios = <&gpiof 1 GPIO_INPUT>;
 			enum-name = "GPIO_SLP_SUS_L";
 		};
-		pch_pwrok {
+		pchpwrok: pch_pwrok {
 			gpios = <&gpio7 2 GPIO_OUT_LOW>;
 			enum-name = "GPIO_PCH_PWROK";
 		};
-		ec_pch_sys_pwrok {
+		syspwrok: ec_pch_sys_pwrok {
 			gpios = <&gpio3 7 GPIO_OUT_LOW>;
 			enum-name = "GPIO_EC_PCH_SYS_PWROK";
 		};
-		imvp9_vrrdy_od {
+		imvp9vrrdy: imvp9_vrrdy_od {
 			gpios = <&gpio4 3 GPIO_INPUT>;
 			enum-name = "GPIO_IMVP9_VRRDY_OD";
 		};
@@ -164,6 +165,16 @@
 			gpios = <&gpio9 7 GPIO_INPUT_PULL_UP>;
 			enum-name = "GPIO_VOLUME_UP_L";
 		};
+	};
+
+	dswpwrokin {
+		status = "okay";
+	};
+	enpp5p0 {
+		status = "okay";
+	};
+	syspwrok {
+		status = "okay";
 	};
 
 	hibernate-wake-pins {
