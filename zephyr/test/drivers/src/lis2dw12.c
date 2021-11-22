@@ -97,6 +97,34 @@ static void test_lis2dw12_init__fail_set_bdu(void)
 		      "expected at least one soft reset");
 }
 
+static void test_lis2dw12_set_power_mode(void)
+{
+	const struct emul *emul = emul_get_binding(EMUL_LABEL);
+	struct motion_sensor_t *ms = &motion_sensors[LIS2DW12_SENSOR_ID];
+	int rv;
+
+	/* Part 1: happy path */
+	rv = lis2dw12_set_power_mode(ms, LIS2DW12_LOW_POWER,
+				     LIS2DW12_LOW_POWER_MODE_2);
+	zassert_equal(rv, EC_SUCCESS, "Expected %d but got %d", EC_SUCCESS, rv);
+
+	/* Part 2: unimplemented modes */
+	rv = lis2dw12_set_power_mode(ms, LIS2DW12_LOW_POWER,
+				     LIS2DW12_LOW_POWER_MODE_1);
+	zassert_equal(rv, EC_ERROR_UNIMPLEMENTED, "Expected %d but got %d",
+		      EC_ERROR_UNIMPLEMENTED, rv);
+
+	/* Part 3: attempt to set mode but cannot modify reg. */
+	i2c_common_emul_set_read_fail_reg(lis2dw12_emul_to_i2c_emul(emul),
+					  LIS2DW12_ACC_MODE_ADDR);
+	rv = lis2dw12_set_power_mode(ms, LIS2DW12_LOW_POWER,
+				     LIS2DW12_LOW_POWER_MODE_2);
+	zassert_equal(rv, EC_ERROR_INVAL, "Expected %d but got %d",
+		      EC_ERROR_INVAL, rv);
+	i2c_common_emul_set_read_fail_reg(lis2dw12_emul_to_i2c_emul(emul),
+					  I2C_COMMON_EMUL_NO_FAIL_REG);
+}
+
 void test_suite_lis2dw12(void)
 {
 	ztest_test_suite(lis2dw12,
@@ -114,6 +142,9 @@ void test_suite_lis2dw12(void)
 				 lis2dw12_setup, unit_test_noop),
 			 ztest_unit_test_setup_teardown(
 				 test_lis2dw12_init__fail_set_bdu,
+				 lis2dw12_setup, unit_test_noop),
+			 ztest_unit_test_setup_teardown(
+				 test_lis2dw12_set_power_mode,
 				 lis2dw12_setup, unit_test_noop));
 	ztest_run_test_suite(lis2dw12);
 }
