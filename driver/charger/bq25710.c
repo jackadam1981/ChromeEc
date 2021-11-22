@@ -146,6 +146,12 @@ static uint32_t bq25710_perf_mode_req;
 static struct mutex bq25710_perf_mode_mutex;
 #endif
 
+/*
+ * 10mOhm sense resistor, there is 50mA offset at code 0.
+ * 5mOhm sense resistor, there is 100mA offset at code 0.
+ */
+#define BQ25710_IIN_DPM_CODE0_OFFSET (50 / INPUT_RESISTOR_RATIO)
+
 /* Charger parameters */
 static const struct charger_info bq25710_charger_info = {
 	.name         = "bq25710",
@@ -165,14 +171,24 @@ static enum ec_error_list bq25710_set_option(int chgnum, int option);
 
 static inline int iin_dpm_reg_to_current(int reg)
 {
-	return (reg + 1) * BQ257X0_IIN_DPM_CURRENT_STEP_MA /
-		INPUT_RESISTOR_RATIO;
+	/*
+	 * When set 00 at 3F register, read 22h back,
+	 * you will see 00, but actually it’s 50mA@10mOhm right now.
+	 * TI don’t have exactly 0A setting for input current limit,
+	 * it set the 50mA@10mOhm offset so that the converter can
+	 * work normally.
+	 */
+	if (reg == 0)
+		return BQ25710_IIN_DPM_CODE0_OFFSET;
+	else
+		return reg * BQ257X0_IIN_DPM_CURRENT_STEP_MA /
+			INPUT_RESISTOR_RATIO;
 }
 
 static inline int iin_host_current_to_reg(int current)
 {
 	return (current * INPUT_RESISTOR_RATIO /
-		BQ257X0_IIN_HOST_CURRENT_STEP_MA) - 1;
+		BQ257X0_IIN_HOST_CURRENT_STEP_MA);
 }
 
 static inline enum ec_error_list raw_read16(int chgnum, int offset, int *value)
