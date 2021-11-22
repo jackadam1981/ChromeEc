@@ -126,7 +126,12 @@ __override void board_set_charge_limit(int port, int supplier, int charge_ma,
 	 * Follow OEM request to limit the input current to
 	 * 97% negotiated limit.
 	 */
-	charge_ma = charge_ma * 97 / 100;
+	if ((max_ma == 3250) && chipset_in_state(CHIPSET_STATE_ANY_OFF))
+		charge_ma = 3150;
+	else if (!chipset_in_state(CHIPSET_STATE_ANY_OFF))
+		charge_ma = 3000;
+	else
+		charge_ma = charge_ma * 90 / 100;
 
 	charge_set_input_current_limit(MAX(charge_ma,
 					CONFIG_CHARGER_INPUT_CURRENT),
