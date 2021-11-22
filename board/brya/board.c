@@ -20,6 +20,7 @@
 #include "hooks.h"
 #include "lid_switch.h"
 #include "power_button.h"
+#include "power_status.h"
 #include "power.h"
 #include "registers.h"
 #include "switch.h"
@@ -32,6 +33,16 @@
 /* Console output macros */
 #define CPRINTF(format, args...) cprintf(CC_CHARGER, format, ## args)
 #define CPRINTS(format, args...) cprints(CC_CHARGER, format, ## args)
+
+static const struct board_power_config board_config = {
+	.rop_worst = 0x50,
+	.adapter_rating = 0x80,
+};
+
+const struct board_power_config *board_get_power_config(void)
+{
+	return &board_config;
+}
 
 __override void board_cbi_init(void)
 {

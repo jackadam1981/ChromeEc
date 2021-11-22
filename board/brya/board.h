@@ -15,6 +15,10 @@
  */
 #undef CONFIG_KEYBOARD_VIVALDI
 
+/* Power status enable */
+#define CONFIG_POWER_STATUS
+#define CONFIG_BATTERY_SUPPORTS_DBPT_V2PLUS
+
 /* Baseboard features */
 #include "baseboard.h"
 
@@ -100,6 +104,8 @@
 
 #define CONFIG_USBC_PPC_SYV682X
 #define CONFIG_USBC_PPC_NX20P3483
+
+#define CONFIG_BOARD_VERSION
 
 /* TODO: b/177608416 - measure and check these values on brya */
 #define PD_POWER_SUPPLY_TURN_ON_DELAY	30000 /* us */
