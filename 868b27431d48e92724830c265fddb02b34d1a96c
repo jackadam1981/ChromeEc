@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7baee91e_8b48a21b",
+        "filename": "core/riscv-rv32i/atomic_t.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-11-22T14:55:18Z",
+      "side": 1,
+      "message": "The header is the exact same for all cores, so it shouldn\u0027t be duplicated between them all",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 30
+      },
+      "revId": "868b27431d48e92724830c265fddb02b34d1a96c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67fd7231_ff4cb248",
+        "filename": "include/task.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-11-22T14:55:18Z",
+      "side": 1,
+      "message": "Can we provide the header for zephyr too?",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 6
+      },
+      "revId": "868b27431d48e92724830c265fddb02b34d1a96c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
