@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cfb93b4a_e9e05000",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-11-22T18:57:41Z",
+      "side": 1,
+      "message": "Does compare_build.sh show any changes in the output binary with this change?",
+      "revId": "868b27431d48e92724830c265fddb02b34d1a96c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7baee91e_8b48a21b",
         "filename": "core/riscv-rv32i/atomic_t.h",
         "patchSetId": 1
