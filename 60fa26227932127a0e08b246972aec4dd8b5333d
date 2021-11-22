@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a54a1312_c5f99308",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-11-22T23:14:31Z",
+      "side": 1,
+      "message": "@keith, do you have a better idea than adding yet another *_RUNTIME_CONFIG?\n",
+      "revId": "60fa26227932127a0e08b246972aec4dd8b5333d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ee8ef99_24508741",
+        "filename": "util/config_allowed.txt",
+        "patchSetId": 13
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-11-22T23:14:31Z",
+      "side": 1,
+      "message": "could you implement this as a kconfig option on the zephyr\nside instead?",
+      "revId": "60fa26227932127a0e08b246972aec4dd8b5333d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
