@@ -16,6 +16,29 @@
       "message": "At long last, I think I have identified the cause of occasional crashes on STM32L5xx.  This chip belongs to the Cortex-M33 architecture, which apparently uses additional possible values for EXC_RETURN beyond what M0 and M4 did.",
       "revId": "0c1c4fe538fd2ecd231c53ecd7858fadacadd6cc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92a2c623_ae37b504",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 392,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-11-22T22:50:25Z",
+      "side": 1,
+      "message": "Cortex-m and m0 define the values explicitly (i.e. 0xfffffff1, 9, d). So, I think we need to handle m33 separately. WDYT?\n\nhttps://developer.arm.com/documentation/dui0646/c/the-cortex-m7-processor/exception-model/exception-entry-and-return?lang\u003den\n\nhttps://developer.arm.com/documentation/dui0497/a/the-cortex-m0-processor/exception-model/exception-entry-and-return?lang\u003den\n\nhttps://developer.arm.com/documentation/100235/0100/The-Cortex-M33-Processor/Exception-model/Exception-entry-and-return?lang\u003den",
+      "range": {
+        "startLine": 392,
+        "startChar": 62,
+        "endLine": 392,
+        "endChar": 65
+      },
+      "revId": "0c1c4fe538fd2ecd231c53ecd7858fadacadd6cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
