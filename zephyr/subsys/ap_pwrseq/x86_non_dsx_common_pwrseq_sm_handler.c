@@ -63,6 +63,16 @@ void power_signal_interrupt(void)
 	/* TODO: Add handling */
 }
 
+void throttle_ap_prochot_input_interrupt(void)
+{
+	/* TODO: Add handling */
+}
+
+void power_signal_interrupt(void)
+{
+	/* TODO: Add handling */
+}
+
 static int check_power_rails_enabled(void)
 {
 	int out = 1;
