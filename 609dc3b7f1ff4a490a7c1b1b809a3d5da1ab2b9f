@@ -1,0 +1,107 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13026240_320cd151",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2021-11-22T20:46:14Z",
+      "side": 1,
+      "message": "I think we should be a bit more explicit in the motivation here. Such as why are we having to mock this function in order to test it instead of making calls to its caller.\n\nI recently re-reviewed https://chromium.googlesource.com/chromiumos/docs/+/main/contributing.md#commit-messages again after a drive-by comment on my commit messages.\n\nSpecifically applicable here is that commit messages should have some short motivation followed by the action, if short enough can just be a single line.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 13
+      },
+      "revId": "609dc3b7f1ff4a490a7c1b1b809a3d5da1ab2b9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "401438cd_cbfb70ee",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2021-11-22T20:46:14Z",
+      "side": 1,
+      "message": "We should run host tests too.",
+      "revId": "609dc3b7f1ff4a490a7c1b1b809a3d5da1ab2b9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e5f3782_3ed645bb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2021-11-22T20:46:14Z",
+      "side": 1,
+      "message": "nit: personal preference for me would be to separate this as 2 CLs, one test and another making it testable as they\u0027re two different motivation/action pairs.",
+      "revId": "609dc3b7f1ff4a490a7c1b1b809a3d5da1ab2b9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b60374cc_aff37573",
+        "filename": "driver/accel_lis2dw12.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2021-11-22T20:46:14Z",
+      "side": 1,
+      "message": "Why are we using extern for the function declaration here? I think we can remove it and it\u0027ll work the same.",
+      "range": {
+        "startLine": 210,
+        "startChar": 0,
+        "endLine": 210,
+        "endChar": 6
+      },
+      "revId": "609dc3b7f1ff4a490a7c1b1b809a3d5da1ab2b9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d050c83f_b01cd03f",
+        "filename": "zephyr/test/drivers/src/lis2dw12.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2021-11-22T20:46:14Z",
+      "side": 1,
+      "message": "should be in a teardown or after function.",
+      "range": {
+        "startLine": 124,
+        "startChar": 0,
+        "endLine": 125,
+        "endChar": 36
+      },
+      "revId": "609dc3b7f1ff4a490a7c1b1b809a3d5da1ab2b9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
