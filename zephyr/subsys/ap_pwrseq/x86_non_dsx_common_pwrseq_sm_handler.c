@@ -77,6 +77,16 @@ void gpio_set_lvl(const char *net_name, int val)
 	}
 }
 
+void throttle_ap_prochot_input_interrupt(void)
+{
+	/* TODO: Add handling */
+}
+
+void power_signal_interrupt(void)
+{
+	/* TODO: Add handling */
+}
+
 static int check_power_rails_enabled(void)
 {
 	int out = 1;
