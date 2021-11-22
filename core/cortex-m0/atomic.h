@@ -9,9 +9,7 @@
 #define __CROS_EC_ATOMIC_H
 
 #include "common.h"
-
-typedef int atomic_t;
-typedef atomic_t atomic_val_t;
+#include "atomic_t.h"
 
 /**
  * Implements atomic arithmetic operations on 32-bit integers.

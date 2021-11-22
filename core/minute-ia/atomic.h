@@ -10,9 +10,7 @@
 
 #include "common.h"
 #include "util.h"
-
-typedef int atomic_t;
-typedef atomic_t atomic_val_t;
+#include "atomic_t.h"
 
 static inline int bool_compare_and_swap_u32(uint32_t *var, uint32_t old_value,
 		uint32_t new_value)

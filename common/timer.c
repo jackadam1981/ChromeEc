@@ -37,7 +37,7 @@ int32_t k_usleep(int32_t);
 STATIC_IF_NOT(CONFIG_HWTIMER_64BIT) uint32_t clksrc_high;
 
 /* Bitmap of currently running timers */
-static uint32_t timer_running;
+static atomic_t timer_running;
 
 /* Deadlines of all timers */
 static timestamp_t timer_deadline[TASK_ID_COUNT];
