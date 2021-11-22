@@ -39,6 +39,30 @@
       },
       "revId": "0c1c4fe538fd2ecd231c53ecd7858fadacadd6cc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "839b03f2_03f19062",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 392,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2021-11-22T23:04:12Z",
+      "side": 1,
+      "message": "The M33 documentation describes among other things the meaning of these bits of the EXC_RETURN value:\nBit 4: 1: Floating point state not saved, 0: Floating point state saved\nBit 3: 1: Thread mode, 0: Handler mode\nBit 2: 1: Process stack pointer, 0: Main stack pointer\n\nIf you look closely at the three values defined in M0 documentation and six values defined in M7 documentation, you can see that the explanation of each of those values match exactly what you would get from the interpretation of bit 2, 3, and 4 in the way described in the M33 documentation.  So the code will handle the six values the same before and after my change.\n\nI believe it is likely that Cortex designers had the meanings of the bits worked out already in M0, but chose not to document the individual bit initially.\n\nSince this CL changes the behavior of our code only for cases that were left \"Reserved\" in M0 and M1, and I explain just above why I believe that even the \"new\" interpretation is what Cortex designers had in mind from the very beginning, I believe that we should apply this code change to all Cortex-M variants.",
+      "parentUuid": "92a2c623_ae37b504",
+      "range": {
+        "startLine": 392,
+        "startChar": 62,
+        "endLine": 392,
+        "endChar": 65
+      },
+      "revId": "0c1c4fe538fd2ecd231c53ecd7858fadacadd6cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
