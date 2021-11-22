@@ -143,6 +143,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1acd1d31_388522a2",
+        "filename": "power/power_status.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-11-22T17:35:54Z",
+      "side": 1,
+      "message": "Any comment on this?",
+      "parentUuid": "fa4e1a8a_c0d5e0bb",
+      "range": {
+        "startLine": 166,
+        "startChar": 12,
+        "endLine": 166,
+        "endChar": 31
+      },
+      "revId": "9485679ea467399b0e83de7500032266f887e621",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3ab3e01d_0c4b49aa",
         "filename": "power/power_status.c",
         "patchSetId": 1
