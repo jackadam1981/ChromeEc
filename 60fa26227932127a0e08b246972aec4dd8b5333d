@@ -33,6 +33,24 @@
       "message": "could you implement this as a kconfig option on the zephyr\nside instead?",
       "revId": "60fa26227932127a0e08b246972aec4dd8b5333d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09f1de4f_06673369",
+        "filename": "util/config_allowed.txt",
+        "patchSetId": 13
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-11-22T23:48:25Z",
+      "side": 1,
+      "message": "Zephyr has switched over to devicetree model for all batteries, with a shared driver used by all boards.\n\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/788b7337/zephyr/shim/src/battery.c#\n\nExample implementation:\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/788b7337/zephyr/projects/trogdor/lazor/battery.dts#\n\nI\u0027m reluctant to add run-time support to the Zephyr battery driver if it can be avoided.",
+      "parentUuid": "9ee8ef99_24508741",
+      "revId": "60fa26227932127a0e08b246972aec4dd8b5333d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
