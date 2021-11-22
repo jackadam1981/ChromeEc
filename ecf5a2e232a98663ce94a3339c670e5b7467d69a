@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5d78219_34895c81",
+        "filename": "zephyr/emul/emul_tcpci.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 449,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-11-22T19:10:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5fbe284e_511c5855",
+      "range": {
+        "startLine": 449,
+        "startChar": 15,
+        "endLine": 449,
+        "endChar": 28
+      },
+      "revId": "ecf5a2e232a98663ce94a3339c670e5b7467d69a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8c498fb6_d5bdbf2d",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-11-19T22:57:26Z",
       "side": 1,
       "message": "comment style\n\n/* TODO: ....\n * ...\n */",
+      "range": {
+        "startLine": 461,
+        "startChar": 40,
+        "endLine": 461,
+        "endChar": 69
+      },
+      "revId": "ecf5a2e232a98663ce94a3339c670e5b7467d69a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e12af5f0_3e4da4c7",
+        "filename": "zephyr/emul/emul_tcpci.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 461,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-11-22T19:10:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8c498fb6_d5bdbf2d",
       "range": {
         "startLine": 461,
         "startChar": 40,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e34e5809_2585bae8",
+        "filename": "zephyr/include/emul/emul_tcpci.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-11-22T19:10:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b511ff86_d12f374b",
+      "range": {
+        "startLine": 302,
+        "startChar": 4,
+        "endLine": 302,
+        "endChar": 8
+      },
+      "revId": "ecf5a2e232a98663ce94a3339c670e5b7467d69a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "127cf01c_728afe38",
@@ -104,6 +176,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4b43139_092483bc",
+        "filename": "zephyr/test/drivers/src/integration_usb.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-11-22T19:10:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "127cf01c_728afe38",
+      "revId": "ecf5a2e232a98663ce94a3339c670e5b7467d69a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9ab36d65_55de8e2b",
@@ -117,6 +207,24 @@
       "writtenOn": "2021-11-19T22:57:26Z",
       "side": 1,
       "message": "indentation wrong",
+      "revId": "ecf5a2e232a98663ce94a3339c670e5b7467d69a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f4022ba3_de2c55cb",
+        "filename": "zephyr/test/drivers/src/integration_usb.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-11-22T19:10:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ab36d65_55de8e2b",
       "revId": "ecf5a2e232a98663ce94a3339c670e5b7467d69a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
