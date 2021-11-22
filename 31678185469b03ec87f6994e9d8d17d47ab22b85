@@ -1,0 +1,418 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb2b5749_7a507041",
+        "filename": "zephyr/emul/emul_syv682x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-11-22T16:21:07Z",
+      "side": 1,
+      "message": "!alert instead?",
+      "range": {
+        "startLine": 61,
+        "startChar": 25,
+        "endLine": 61,
+        "endChar": 38
+      },
+      "revId": "31678185469b03ec87f6994e9d8d17d47ab22b85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4491ab75_9fa55c2f",
+        "filename": "zephyr/test/drivers/src/ppc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-11-22T16:21:07Z",
+      "side": 1,
+      "message": "is there a define or should there be if it does not exist to make 0 more meaningful?",
+      "range": {
+        "startLine": 54,
+        "startChar": 56,
+        "endLine": 54,
+        "endChar": 57
+      },
+      "revId": "31678185469b03ec87f6994e9d8d17d47ab22b85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c486d86_7b948f3c",
+        "filename": "zephyr/test/drivers/src/ppc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-11-22T16:21:07Z",
+      "side": 1,
+      "message": "is there a define or should there be if it does not exist to make 0 more meaningful?",
+      "range": {
+        "startLine": 65,
+        "startChar": 34,
+        "endLine": 65,
+        "endChar": 38
+      },
+      "revId": "31678185469b03ec87f6994e9d8d17d47ab22b85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31ddf277_9821419e",
+        "filename": "zephyr/test/drivers/src/ppc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-11-22T16:21:07Z",
+      "side": 1,
+      "message": "is there a define or should there be if it does not exist to make 0 more meaningful?",
+      "range": {
+        "startLine": 81,
+        "startChar": 54,
+        "endLine": 81,
+        "endChar": 55
+      },
+      "revId": "31678185469b03ec87f6994e9d8d17d47ab22b85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d1ea134_1d7942b2",
+        "filename": "zephyr/test/drivers/src/ppc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-11-22T16:21:07Z",
+      "side": 1,
+      "message": "is there a define or should there be if it does not exist to make 0 more meaningful?",
+      "range": {
+        "startLine": 86,
+        "startChar": 34,
+        "endLine": 86,
+        "endChar": 38
+      },
+      "revId": "31678185469b03ec87f6994e9d8d17d47ab22b85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f47f9ed_be2f1823",
+        "filename": "zephyr/test/drivers/src/ppc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-11-22T16:21:07Z",
+      "side": 1,
+      "message": "is there a define or should there be if it does not exist to make 0 more meaningful?",
+      "range": {
+        "startLine": 91,
+        "startChar": 54,
+        "endLine": 91,
+        "endChar": 55
+      },
+      "revId": "31678185469b03ec87f6994e9d8d17d47ab22b85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8cb84f67_fbc21ddf",
+        "filename": "zephyr/test/drivers/src/ppc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-11-22T16:21:07Z",
+      "side": 1,
+      "message": "is there a define or should there be if it does not exist to make 0 more meaningful?",
+      "range": {
+        "startLine": 96,
+        "startChar": 34,
+        "endLine": 96,
+        "endChar": 38
+      },
+      "revId": "31678185469b03ec87f6994e9d8d17d47ab22b85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4023357b_4c9ce2cc",
+        "filename": "zephyr/test/drivers/src/ppc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-11-22T16:21:07Z",
+      "side": 1,
+      "message": "is there a define or should there be if it does not exist to make 0 more meaningful?",
+      "range": {
+        "startLine": 105,
+        "startChar": 56,
+        "endLine": 105,
+        "endChar": 57
+      },
+      "revId": "31678185469b03ec87f6994e9d8d17d47ab22b85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f90a88c5_068e4d3c",
+        "filename": "zephyr/test/drivers/src/ppc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-11-22T16:21:07Z",
+      "side": 1,
+      "message": "is there a define or should there be if it does not exist to make 0 more meaningful?",
+      "range": {
+        "startLine": 112,
+        "startChar": 56,
+        "endLine": 112,
+        "endChar": 57
+      },
+      "revId": "31678185469b03ec87f6994e9d8d17d47ab22b85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92e3c059_1d65c5e6",
+        "filename": "zephyr/test/drivers/src/ppc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-11-22T16:21:07Z",
+      "side": 1,
+      "message": "is there a define or should there be if it does not exist to make 0 more meaningful?",
+      "range": {
+        "startLine": 119,
+        "startChar": 56,
+        "endLine": 119,
+        "endChar": 57
+      },
+      "revId": "31678185469b03ec87f6994e9d8d17d47ab22b85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e654d42c_8e7371cc",
+        "filename": "zephyr/test/drivers/src/ppc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-11-22T16:21:07Z",
+      "side": 1,
+      "message": "is there a define or should there be if it does not exist to make 0 more meaningful?",
+      "range": {
+        "startLine": 127,
+        "startChar": 34,
+        "endLine": 127,
+        "endChar": 38
+      },
+      "revId": "31678185469b03ec87f6994e9d8d17d47ab22b85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5f8d8f8_7af7bea8",
+        "filename": "zephyr/test/drivers/src/ppc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-11-22T16:21:07Z",
+      "side": 1,
+      "message": "is there a define or should there be if it does not exist to make 0 more meaningful?",
+      "range": {
+        "startLine": 134,
+        "startChar": 34,
+        "endLine": 134,
+        "endChar": 35
+      },
+      "revId": "31678185469b03ec87f6994e9d8d17d47ab22b85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd315172_4ddfaee4",
+        "filename": "zephyr/test/drivers/src/ppc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-11-22T16:21:07Z",
+      "side": 1,
+      "message": "is there a define or should there be if it does not exist to make 0 more meaningful?",
+      "range": {
+        "startLine": 162,
+        "startChar": 34,
+        "endLine": 162,
+        "endChar": 38
+      },
+      "revId": "31678185469b03ec87f6994e9d8d17d47ab22b85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83f34b9f_5a24c26a",
+        "filename": "zephyr/test/drivers/src/ppc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-11-22T16:21:07Z",
+      "side": 1,
+      "message": "is there a define or should there be if it does not exist to make 0 more meaningful?",
+      "range": {
+        "startLine": 171,
+        "startChar": 34,
+        "endLine": 171,
+        "endChar": 35
+      },
+      "revId": "31678185469b03ec87f6994e9d8d17d47ab22b85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29a95caf_60158b54",
+        "filename": "zephyr/test/drivers/src/ppc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-11-22T16:21:07Z",
+      "side": 1,
+      "message": "is there a define or should there be if it does not exist to make 0 more meaningful?",
+      "range": {
+        "startLine": 188,
+        "startChar": 34,
+        "endLine": 188,
+        "endChar": 38
+      },
+      "revId": "31678185469b03ec87f6994e9d8d17d47ab22b85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6bc4e599_5f52b4bd",
+        "filename": "zephyr/test/drivers/src/ppc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-11-22T16:21:07Z",
+      "side": 1,
+      "message": "is there a define or should there be if it does not exist to make 0 more meaningful?",
+      "range": {
+        "startLine": 241,
+        "startChar": 54,
+        "endLine": 241,
+        "endChar": 55
+      },
+      "revId": "31678185469b03ec87f6994e9d8d17d47ab22b85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58ee2ab1_3544d068",
+        "filename": "zephyr/test/drivers/src/ppc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-11-22T16:21:07Z",
+      "side": 1,
+      "message": "is there a define or should there be if it does not exist to make 0 more meaningful?",
+      "range": {
+        "startLine": 246,
+        "startChar": 34,
+        "endLine": 246,
+        "endChar": 38
+      },
+      "revId": "31678185469b03ec87f6994e9d8d17d47ab22b85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b8f9a28e_8fa728ee",
+        "filename": "zephyr/test/drivers/src/stubs.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-11-22T16:21:07Z",
+      "side": 1,
+      "message": "is there a define or should there be if it does not exist to make 1 more meaningful?",
+      "range": {
+        "startLine": 314,
+        "startChar": 20,
+        "endLine": 314,
+        "endChar": 21
+      },
+      "revId": "31678185469b03ec87f6994e9d8d17d47ab22b85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
