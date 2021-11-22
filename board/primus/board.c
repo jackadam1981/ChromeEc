@@ -8,6 +8,7 @@
 #include "charge_ramp.h"
 #include "charger.h"
 #include "common.h"
+#include "charge_manager.h"
 #include "charge_state_v2.h"
 #include "compile_time_macros.h"
 #include "console.h"
@@ -119,16 +120,42 @@ static void keyboard_init(void)
 }
 DECLARE_HOOK(HOOK_INIT, keyboard_init, HOOK_PRIO_DEFAULT);
 
-__override void board_set_charge_limit(int port, int supplier, int charge_ma,
-			    int max_ma, int charge_mv)
+__overridable void board_set_charge_limit(int port, int supplier, int charge_ma,
+					  int max_ma, int charge_mv)
 {
-	/*
-	 * Follow OEM request to limit the input current to
-	 * 97% negotiated limit.
-	 */
-	charge_ma = charge_ma * 97 / 100;
-
-	charge_set_input_current_limit(MAX(charge_ma,
-					CONFIG_CHARGER_INPUT_CURRENT),
-					charge_mv);
+	return;
 }
+
+static void get_chg_watt(void)
+{
+	int adapter_current_ma;
+	int adapter_current_mv;
+	/* Get adapter wattage */
+	adapter_current_mv = charge_manager_get_charger_voltage();
+	adapter_current_ma = charge_manager_get_charger_current();
+	if (adapter_current_ma == 3250)
+		adapter_current_ma = 3150;
+	else
+		adapter_current_ma = adapter_current_ma * 97 / 100;
+	charge_set_input_current_limit(MAX(adapter_current_ma,
+					CONFIG_CHARGER_INPUT_CURRENT),
+					adapter_current_mv);
+}
+DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN_COMPLETE, get_chg_watt, HOOK_PRIO_DEFAULT);
+
+static void get_chg_watt1(void)
+{
+	int adapter_current_ma;
+	int adapter_current_mv;
+	/* Get adapter wattage */
+	adapter_current_mv = charge_manager_get_charger_voltage();
+	adapter_current_ma = charge_manager_get_charger_current();
+	if (adapter_current_ma == 3250)
+		adapter_current_ma = 3000;
+	else
+		adapter_current_ma = adapter_current_ma * 97 / 100;
+	charge_set_input_current_limit(MAX(adapter_current_ma,
+					CONFIG_CHARGER_INPUT_CURRENT),
+					adapter_current_mv);
+}
+DECLARE_HOOK(HOOK_CHIPSET_RESUME, get_chg_watt1, HOOK_PRIO_DEFAULT);
