@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7cac3355_3b7fd0a9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 18
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-11-22T22:00:58Z",
+      "side": 1,
+      "message": "Looks like https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3295572 should fix the zephyr test issues for the rest of the stack.  In the meantime, I believe volteer should be able to enable this task before that fix goes in, but we\u0027ll double check with the CQ+1",
+      "revId": "3ef2c4f7ced7f619f17955024256aebfe09efc5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
