@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bbc15bf0_f1d7b586",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2021-11-22T22:16:00Z",
+      "side": 1,
+      "message": "At long last, I think I have identified the cause of occasional crashes on STM32L5xx.  This chip belongs to the Cortex-M33 architecture, which apparently uses additional possible values for EXC_RETURN beyond what M0 and M4 did.",
+      "revId": "0c1c4fe538fd2ecd231c53ecd7858fadacadd6cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
