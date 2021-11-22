@@ -134,11 +134,11 @@
 			gpios = <&gpioc 7 GPIO_INPUT>;
 			enum-name = "GPIO_PG_EC_DSW_PWROK";
 		};
-		en_s5_rails {
+		gpio_en_pp5000_s5: en_s5_rails {
 			gpios = <&gpiob 6 GPIO_OUT_LOW>;
 			enum-name = "GPIO_EN_S5_RAILS";
 		};
-		sys_rst_odl {
+		gpio_sys_rst_odl: sys_rst_odl {
 			gpios = <&gpioc 5 GPIO_ODR_HIGH>;
 			enum-name = "GPIO_SYS_RESET_L";
 		};
@@ -146,7 +146,7 @@
 			gpios = <&gpioe 2 GPIO_INPUT>;
 			enum-name = "GPIO_PG_EC_RSMRST_ODL";
 		};
-		ec_pch_rsmrst_odl {
+		gpio_ec_pch_rsmrst_odl: ec_pch_rsmrst_odl {
 			gpios = <&gpioa 6 GPIO_OUT_LOW>;
 			enum-name = "GPIO_PCH_RSMRST_L";
 		};
@@ -162,7 +162,7 @@
 			gpios = <&gpioa 5 GPIO_INPUT>;
 			enum-name = "GPIO_PCH_SLP_S3_L";
 		};
-		vccst_pwrgd_od {
+		gpio_vccst_pwrgd_od: vccst_pwrgd_od {
 			gpios = <&gpioa 4 GPIO_ODR_LOW>;
 			enum-name = "GPIO_VCCST_PWRGD_OD";
 		};
@@ -170,7 +170,7 @@
 			gpios = <&gpio6 3 GPIO_ODR_HIGH>;
 			enum-name = "GPIO_CPU_PROCHOT";
 		};
-		ec_pch_pwr_btn_odl {
+		gpio_ec_pch_pwr_btn_odl: ec_pch_pwr_btn_odl {
 			gpios = <&gpioc 1 GPIO_ODR_HIGH>;
 			enum-name = "GPIO_PCH_PWRBTN_L";
 		};
@@ -178,15 +178,15 @@
 			gpios = <&gpiof 1 GPIO_INPUT>;
 			enum-name = "GPIO_SLP_SUS_L";
 		};
-		pch_pwrok {
+		gpio_ec_soc_pch_pwrok_od: pch_pwrok {
 			gpios = <&gpio7 2 GPIO_OUT_LOW>;
 			enum-name = "GPIO_PCH_PWROK";
 		};
-		ec_pch_sys_pwrok {
+		gpio_ec_soc_sys_pwrok: ec_pch_sys_pwrok {
 			gpios = <&gpio3 7 GPIO_OUT_LOW>;
 			enum-name = "GPIO_EC_PCH_SYS_PWROK";
 		};
-		imvp9_vrrdy_od {
+		gpio_imvp9_vrrdy_od: imvp9_vrrdy_od {
 			gpios = <&gpio4 3 GPIO_INPUT>;
 			enum-name = "GPIO_IMVP9_VRRDY_OD";
 		};
@@ -274,6 +274,16 @@
 		usb_c2_rt_int_odl: usb_c2_rt_int_odl {
 			gpios = <&gpio4 1 GPIO_INPUT>;
 		};
+	};
+
+	gpio_pg_ec_dsw_pwrok {
+		status = "okay";
+	};
+	gpio_en_pp5000_s5 {
+		status = "okay";
+	};
+	gpio_ec_soc_sys_pwrok {
+		status = "okay";
 	};
 
 	hibernate-wake-pins {
