@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "154f9baa_6db13b36",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-11-22T18:41:50Z",
+      "side": 1,
+      "message": "USB mux driver changes look good, and I confirmed that cherry-picking this onto my CLs allows the usb_mux test to pass",
+      "revId": "1bf62ed85324743fe042fc56f5ddb10b5ee417de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
