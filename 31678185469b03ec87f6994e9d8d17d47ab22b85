@@ -917,6 +917,30 @@
       },
       "revId": "31678185469b03ec87f6994e9d8d17d47ab22b85",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "89564800_e21dec39",
+        "filename": "zephyr/test/drivers/src/stubs.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-11-22T17:52:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b8d11911_b03d44f3",
+      "range": {
+        "startLine": 314,
+        "startChar": 20,
+        "endLine": 314,
+        "endChar": 21
+      },
+      "revId": "31678185469b03ec87f6994e9d8d17d47ab22b85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
