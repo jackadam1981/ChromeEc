@@ -106,6 +106,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f55ad42_cb4e9a18",
+        "filename": "board/brya/usbc_config.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2021-11-22T17:04:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "64d9481c_579145c7",
+      "revId": "deef22490166f3152524f7d0b239b11c73f60324",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "65de0f32_fd109f20",
@@ -141,6 +159,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f29e0f73_9b923722",
+        "filename": "board/brya/usbc_config.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2021-11-22T17:04:30Z",
+      "side": 1,
+      "message": "moved to bb_retimer.dts",
+      "parentUuid": "0c141a7c_c060d994",
+      "revId": "deef22490166f3152524f7d0b239b11c73f60324",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c911fbaa_add0f72d",
@@ -172,6 +208,24 @@
       "side": 1,
       "message": "No, Its not required now.",
       "parentUuid": "c911fbaa_add0f72d",
+      "revId": "deef22490166f3152524f7d0b239b11c73f60324",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca7570c8_dc4b811d",
+        "filename": "include/console_channel.inc",
+        "patchSetId": 17
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2021-11-22T17:04:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2c5fd19c_9eef41c0",
       "revId": "deef22490166f3152524f7d0b239b11c73f60324",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
