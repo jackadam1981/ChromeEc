@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4fa3e14e_c67b2261",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 4345,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2021-11-22T20:26:35Z",
+      "side": 0,
+      "message": "This is already undefined in line 274, so I think it\u0027s ok to remove this here.",
+      "range": {
+        "startLine": 4345,
+        "startChar": 0,
+        "endLine": 4345,
+        "endChar": 28
+      },
+      "revId": "df2aa2c2d3c251e50ba6a7fc2c5f71dff9a4c326",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
