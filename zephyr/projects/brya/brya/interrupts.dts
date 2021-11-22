@@ -52,36 +52,6 @@
 			flags = <GPIO_INT_EDGE_FALLING>;
 			handler = "lsm6dso_interrupt";
 		};
-		int_slp_s0: slp_s0 {
-			irq-pin = <&gpio_slp_s0_l>;
-			flags = <GPIO_INT_EDGE_BOTH>;
-			handler = "power_signal_interrupt";
-		};
-		int_slp_s3: slp_s3 {
-			irq-pin = <&gpio_slp_s3_l>;
-			flags = <GPIO_INT_EDGE_BOTH>;
-			handler = "power_signal_interrupt";
-		};
-		int_slp_sus: slp_sus {
-			irq-pin = <&gpio_slp_sus_l>;
-			flags = <GPIO_INT_EDGE_BOTH>;
-			handler = "power_signal_interrupt";
-		};
-		int_pg_dsw_pwrok: pg_dsw_pwrok {
-			irq-pin = <&gpio_pg_ec_dsw_pwrok>;
-			flags = <GPIO_INT_EDGE_BOTH>;
-			handler = "power_signal_interrupt";
-		};
-		int_pg_rsmrst_odl: pg_rsmrst_odl {
-			irq-pin = <&gpio_pg_ec_rsmrst_odl>;
-			flags = <GPIO_INT_EDGE_BOTH>;
-			handler = "power_signal_interrupt";
-		};
-		int_pg_all_sys_pwrgd: pg_all_sys_pwrgd {
-			irq-pin = <&gpio_pg_ec_all_sys_pwrgd>;
-			flags = <GPIO_INT_EDGE_BOTH>;
-			handler = "power_signal_interrupt";
-		};
 		int_als_rgb: als_rgb {
 			irq-pin = <&gpio_ec_als_rgb_int_l>;
 			flags = <GPIO_INT_EDGE_FALLING>;
