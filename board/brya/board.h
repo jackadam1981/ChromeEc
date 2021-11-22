@@ -15,6 +15,10 @@
  */
 #undef CONFIG_KEYBOARD_VIVALDI
 
+/* Power status enable */
+#define CONFIG_POWER_STATUS
+#define CONFIG_BATTERY_SUPPORTS_DBPT_V2PLUS
+
 /* Baseboard features */
 #include "baseboard.h"
 
@@ -203,7 +207,6 @@
 
 /* Charger defines */
 #define CONFIG_CHARGER_BQ25720
-#define CONFIG_CHARGER_BQ25720_VSYS_TH2_CUSTOM
 #define CONFIG_CHARGER_BQ25720_VSYS_TH2_DV	70
 #define CONFIG_CHARGE_RAMP_SW
 #define CONFIG_CHARGER_BQ25710_SENSE_RESISTOR		10
