@@ -72,6 +72,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6527b34e_53173f68",
+        "filename": "baseboard/intelrvp/adlrvp.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 534,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2021-11-22T21:22:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fc36296d_b29801e6",
+      "revId": "f57e372effec02f379eb7e4906ab75f27860bb6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "60b93237_2506d0cf",
@@ -102,6 +120,30 @@
       "writtenOn": "2021-10-12T00:43:28Z",
       "side": 1,
       "message": "nit: please remove.",
+      "range": {
+        "startLine": 629,
+        "startChar": 0,
+        "endLine": 629,
+        "endChar": 2
+      },
+      "revId": "f57e372effec02f379eb7e4906ab75f27860bb6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f673f73_f9f5efe5",
+        "filename": "include/i2c.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 629,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2021-11-22T21:22:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c87bbe40_5373f222",
       "range": {
         "startLine": 629,
         "startChar": 0,
