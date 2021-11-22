@@ -15,6 +15,9 @@
 #include "stdbool.h"
 #include "util.h"
 
+/* Just define this for test */
+#define	ITE_EC_TEMP_CONST	65535
+
 #define CPRINTS(format, args...) cprints(CC_PWM, format, ## args)
 
 #define LED_OFF EC_LED_COLOR_COUNT
