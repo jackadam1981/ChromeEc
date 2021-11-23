@@ -63,6 +63,30 @@
       },
       "revId": "4c5855c6f03348b9327a1d76911216a5705526c9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cfb9d371_d8f4238b",
+        "filename": "util/bcmp.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2021-11-23T17:24:46Z",
+      "side": 1,
+      "message": "It\u0027s because there\u0027s three EC repos in TOT: main, ish, and cr50_stab. I can ask on the bug if there\u0027s a way to get rid of main and ish and remove the -cr50_stab suffix in platform/cr50",
+      "parentUuid": "86022613_87455659",
+      "range": {
+        "startLine": 57,
+        "startChar": 14,
+        "endLine": 57,
+        "endChar": 39
+      },
+      "revId": "4c5855c6f03348b9327a1d76911216a5705526c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
