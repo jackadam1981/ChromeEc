@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab2fa7ab_254d525f",
+        "filename": "util/validate_includes.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-11-23T22:27:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5b758d9d_73288616",
+      "range": {
+        "startLine": 42,
+        "startChar": 38,
+        "endLine": 44,
+        "endChar": 9
+      },
+      "revId": "b603e430597e8c7774c34e4988f5c78c36fae6b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2532d5b8_0ac065c9",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-11-23T20:21:21Z",
       "side": 1,
       "message": "I\u0027d append here that the definition that include groups provide is explicitly that duplicate header filenames cannot exist within the same include group, unless otherwise allowed in the temporary burndown list.",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 25
+      },
+      "revId": "b603e430597e8c7774c34e4988f5c78c36fae6b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "adfb5e23_5889a299",
+        "filename": "util/validate_includes.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-11-23T22:27:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2532d5b8_0ac065c9",
       "range": {
         "startLine": 42,
         "startChar": 0,
