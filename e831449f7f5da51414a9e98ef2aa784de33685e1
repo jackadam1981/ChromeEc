@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8055c8e9_145f8bfb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-11-23T17:28:57Z",
+      "side": 1,
+      "message": "LGTM with one typo to fix.",
+      "revId": "e831449f7f5da51414a9e98ef2aa784de33685e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb947988_f3afafc9",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 5
+      },
+      "lineNbr": 1139,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-11-23T17:28:57Z",
+      "side": 1,
+      "message": "Extra \"_\"",
+      "range": {
+        "startLine": 1139,
+        "startChar": 18,
+        "endLine": 1139,
+        "endChar": 20
+      },
+      "revId": "e831449f7f5da51414a9e98ef2aa784de33685e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
