@@ -111,6 +111,30 @@
       },
       "revId": "4c5855c6f03348b9327a1d76911216a5705526c9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "59a61397_16a7fa30",
+        "filename": "util/bcmp.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-11-23T17:37:08Z",
+      "side": 1,
+      "message": "for the current branch it just takes the current state of the tpm directory, so the branch name does not matter.\n\nI still don\u0027t get it, maybe we should discuss outside of gerrit: how is the builder going to be building releases of the new pvt and mp branches? Doesn\u0027t he builder checkout a complete chroot for the branch? Will the repo manifest for the new branches include different names for ec and tpm2 trees?",
+      "parentUuid": "b43de230_f30ae5ba",
+      "range": {
+        "startLine": 57,
+        "startChar": 14,
+        "endLine": 57,
+        "endChar": 39
+      },
+      "revId": "4c5855c6f03348b9327a1d76911216a5705526c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
