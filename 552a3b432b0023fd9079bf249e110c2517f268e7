@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d3ecfa8_a6e1e47a",
+        "filename": "zephyr/projects/corsola/kingler/gpio.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-11-23T17:50:10Z",
+      "side": 0,
+      "message": "Was this file supposed to move from corsola/kinger/gpio.dts to corsola/gpio_kingler.dts?  BUILD.py references gpio_kinger.dts",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 3
+      },
+      "revId": "552a3b432b0023fd9079bf249e110c2517f268e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

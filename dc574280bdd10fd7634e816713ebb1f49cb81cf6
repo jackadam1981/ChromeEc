@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "24476923_e1d0e508",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-11-23T17:50:10Z",
+      "side": 1,
+      "message": "\"testall\"",
+      "range": {
+        "startLine": 13,
+        "startChar": 11,
+        "endLine": 13,
+        "endChar": 19
+      },
+      "revId": "dc574280bdd10fd7634e816713ebb1f49cb81cf6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be6e95f7_65b5ee13",
+        "filename": "zephyr/projects/corsola/BUILD.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-11-23T17:50:10Z",
+      "side": 1,
+      "message": "Move all ADC support to separate CL.",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 33
+      },
+      "revId": "dc574280bdd10fd7634e816713ebb1f49cb81cf6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "883762e8_8214ecb4",
+        "filename": "zephyr/projects/corsola/adc_kingler.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-11-23T17:50:10Z",
+      "side": 1,
+      "message": "Add the ADC support to kingler as a separate CL.",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 63
+      },
+      "revId": "dc574280bdd10fd7634e816713ebb1f49cb81cf6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16b74fd0_aea3f98c",
+        "filename": "zephyr/projects/corsola/prj_kingler.conf",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-11-23T17:50:10Z",
+      "side": 1,
+      "message": "Please move any changes not needed to compile to a separate CL.",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 62
+      },
+      "revId": "dc574280bdd10fd7634e816713ebb1f49cb81cf6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db0562e5_4c959791",
+        "filename": "zephyr/projects/corsola/pwm_kingler.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-11-23T17:50:10Z",
+      "side": 1,
+      "message": "Move PWM support to a separate CL.  You also need to enabled Kconfig options for PWM:\n\n# PWM\nCONFIG_PWM\u003dy\nCONFIG_PWM_SHELL\u003dn\nCONFIG_PLATFORM_EC_PWM\u003dy\n\n# LED\nCONFIG_PLATFORM_EC_LED_COMMON\u003dy\nCONFIG_PLATFORM_EC_LED_PWM\u003dy",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 63
+      },
+      "revId": "dc574280bdd10fd7634e816713ebb1f49cb81cf6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
