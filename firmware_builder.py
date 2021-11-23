@@ -161,6 +161,20 @@ def test(opts):
                        cwd=os.path.dirname(__file__),
                        check=True)
 
+    # Validate includes paths have unique file names.
+    subprocess.run(
+        ['util/validate_includes.py'],
+        cwd=os.path.dirname(__file__),
+        check=True,
+    )
+
+    pytest_targets = ['util/test_validate_includes.py']
+    subprocess.run(
+        ['pytest', *pytest_targets],
+        cwd=os.path.dirname(__file__),
+        check=True,
+    )
+
 
 def main(args):
     """Builds, bundles, or tests all of the EC targets.
