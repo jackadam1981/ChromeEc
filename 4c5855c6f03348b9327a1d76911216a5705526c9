@@ -39,6 +39,30 @@
       },
       "revId": "4c5855c6f03348b9327a1d76911216a5705526c9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86022613_87455659",
+        "filename": "util/bcmp.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-11-23T17:10:52Z",
+      "side": 1,
+      "message": "why are branch names different for cr50 and tpm2? I think this is what need to be fixed - branch names have been the same so far.",
+      "parentUuid": "62894151_4f1d742b",
+      "range": {
+        "startLine": 57,
+        "startChar": 14,
+        "endLine": 57,
+        "endChar": 39
+      },
+      "revId": "4c5855c6f03348b9327a1d76911216a5705526c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
