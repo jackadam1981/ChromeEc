@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "657b2c5f_1c5d064d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2021-11-23T15:12:16Z",
+      "side": 1,
+      "message": "Yes, it does. The reason behind that we change a variable type from unsigned(uint32_t) to signed(atomic_t -\u003eint) for many cases. It creates differences in assembler code. I tried to analyze all files, what changes are introduced. I was focused on cortex-m.\n\nThe first type of difference is created when we compare the atomic, e.g. in mkbp_fifo.c\n```\n\tfor (i \u003d 0; i \u003c fifo_entries; i++) {\n```\nchanges from\n```\nbhi.n\t44 \u003cmkbp_fifo_clear_keyboard+0x44\u003e\n```\nto\n```\nbgt.n\t44 \u003cmkbp_fifo_clear_keyboard+0x44\u003e\n```\ncomparison for signed and unsigned.\n\nBitwise operations create another difference. I\u0027m aware that operations like ^, ~, |, and \u0026 shouldn\u0027t depend on signed/unsigned type, only \u003e\u003e and \u003c\u003c are the problem. However, e.g. I checked the task.c file for every core and it is different for each of them.\n\nThe line that makes the difference is:\n```\nchar is_ready \u003d (tasks_ready \u0026 (1\u003c\u003ci)) ? \u0027R\u0027 : \u0027 \u0027;\n```\nthe asm code is changed from:\n```\n\t\tchar is_ready \u003d (tasks_ready \u0026 (1\u003c\u003ci)) ? \u0027R\u0027 : \u0027 \u0027;\n  20:\tf8d8 2004 \tldr.w\tr2, [r8, #4]\n\t\tint stackused \u003d tasks_init[i].stack_size;\n  24:\t8938      \tldrh\tr0, [r7, #8]\n\t\t     sp \u003c (uint32_t *)tasks[i].sp \u0026\u0026 *sp \u003d\u003d STACK_UNUSED_VALUE;\n  26:\tf8d4 e000 \tldr.w\tlr, [r4]\n\t\tchar is_ready \u003d (tasks_ready \u0026 (1\u003c\u003ci)) ? \u0027R\u0027 : \u0027 \u0027;\n  2a:\t2301      \tmovs\tr3, #1\n  2c:\t40ab      \tlsls\tr3, r5\n  2e:\t4213      \ttst\tr3, r2\n  30:\t6922      \tldr\tr2, [r4, #16]\n  32:\tbf14      \tite\tne\n  34:\t2352      \tmovne\tr3, #82\t; 0x52\n  36:\t2320      \tmoveq\tr3, #32\n```\nto\n```\n\t\tchar is_ready \u003d (tasks_ready \u0026 (1\u003c\u003ci)) ? \u0027R\u0027 : \u0027 \u0027;\n  20:\tf8d8 3004 \tldr.w\tr3, [r8, #4]\n\t\tint stackused \u003d tasks_init[i].stack_size;\n  24:\t8938      \tldrh\tr0, [r7, #8]\n\t\t     sp \u003c (uint32_t *)tasks[i].sp \u0026\u0026 *sp \u003d\u003d STACK_UNUSED_VALUE;\n  26:\tf8d4 e000 \tldr.w\tlr, [r4]\n  2a:\t6922      \tldr\tr2, [r4, #16]\n\t\tchar is_ready \u003d (tasks_ready \u0026 (1\u003c\u003ci)) ? \u0027R\u0027 : \u0027 \u0027;\n  2c:\t412b      \tasrs\tr3, r5\n  2e:\tf013 0f01 \ttst.w\tr3, #1\n  32:\tbf14      \tite\tne\n  34:\t2352      \tmovne\tr3, #82\t; 0x52\n  36:\t2320      \tmoveq\tr3, #32\n```\nI still need to analyze those cases.",
+      "parentUuid": "cfb93b4a_e9e05000",
+      "revId": "868b27431d48e92724830c265fddb02b34d1a96c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7baee91e_8b48a21b",
         "filename": "core/riscv-rv32i/atomic_t.h",
         "patchSetId": 1
@@ -31,6 +49,30 @@
       "writtenOn": "2021-11-22T14:55:18Z",
       "side": 1,
       "message": "The header is the exact same for all cores, so it shouldn\u0027t be duplicated between them all",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 30
+      },
+      "revId": "868b27431d48e92724830c265fddb02b34d1a96c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd6d59cc_39d5d086",
+        "filename": "core/riscv-rv32i/atomic_t.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2021-11-23T15:12:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7baee91e_8b48a21b",
       "range": {
         "startLine": 8,
         "startChar": 0,
@@ -54,6 +96,30 @@
       "writtenOn": "2021-11-22T14:55:18Z",
       "side": 1,
       "message": "Can we provide the header for zephyr too?",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 6
+      },
+      "revId": "868b27431d48e92724830c265fddb02b34d1a96c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d29a78db_e7bce6bb",
+        "filename": "include/task.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2021-11-23T15:12:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "67fd7231_ff4cb248",
       "range": {
         "startLine": 15,
         "startChar": 0,
