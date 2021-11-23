@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07f61579_121177f2",
+        "filename": "zephyr/projects/corsola/Kconfig",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2021-11-23T09:02:16Z",
+      "side": 1,
+      "message": "Any reason to make these configurable?\nI thought both Krabby and Kingler need these feature.",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 10
+      },
+      "revId": "3133813ca8eaa601217270ec352d22bf50aa54e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66a97489_59a00175",
+        "filename": "zephyr/projects/corsola/include/gpio_map.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2021-11-23T09:02:16Z",
+      "side": 1,
+      "message": "Any reason to use a parameter list here?\n\n(same question for LID_ACCEL_INT too)",
+      "range": {
+        "startLine": 19,
+        "startChar": 20,
+        "endLine": 19,
+        "endChar": 24
+      },
+      "revId": "3133813ca8eaa601217270ec352d22bf50aa54e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
