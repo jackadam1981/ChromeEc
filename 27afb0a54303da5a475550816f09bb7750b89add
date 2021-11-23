@@ -355,6 +355,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "3fd56f4f_5c30501a",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 7131,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-11-23T00:32:59Z",
+      "side": 1,
+      "message": "Added a TODO to resolve the spec ambiguity.",
+      "parentUuid": "1c895d83_cb843c52",
+      "revId": "27afb0a54303da5a475550816f09bb7750b89add",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "750d0701_975be85b",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 6
@@ -472,6 +490,24 @@
       "side": 1,
       "message": "Yup.  I\u0027ll CC Benson on the review first in case I\u0027m missing something obvious",
       "parentUuid": "adff60ea_d626ecd0",
+      "revId": "27afb0a54303da5a475550816f09bb7750b89add",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "659a369f_2e9d9fca",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 7152,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-11-23T00:32:59Z",
+      "side": 1,
+      "message": "Added a TODO to figure out what the spec means.",
+      "parentUuid": "5f65f926_321895f6",
       "revId": "27afb0a54303da5a475550816f09bb7750b89add",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -666,6 +702,24 @@
       "side": 1,
       "message": "Is Godzilla Creek sending a message before we can send Data_Reset_Complete?  I\u0027d only expect discard if we tried sending Data_Reset_Complete and a message came in before we could do this.\n\nWell, if you want to get involved in some PD WG ECRs, I wouldn\u0027t object :)",
       "parentUuid": "43660f64_6229c4ec",
+      "revId": "27afb0a54303da5a475550816f09bb7750b89add",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "80bb0711_b2404c25",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 7179,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-11-23T00:32:59Z",
+      "side": 1,
+      "message": "Error recovery: Done; doesn\u0027t seem to be triggered by Godzilla Creek.\n\nECRs: I will start organizing my gripes.",
+      "parentUuid": "13bd72c4_64a9a111",
       "revId": "27afb0a54303da5a475550816f09bb7750b89add",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
