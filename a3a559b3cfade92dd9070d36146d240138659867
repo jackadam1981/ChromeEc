@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "433a6b45_dd9afcfb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-11-23T16:48:54Z",
+      "side": 1,
+      "message": "Can you modify a board to test mechanism in a separate CL?  Even if  the CL is marked test only, it\u0027s helpful to see an example use case.",
+      "revId": "a3a559b3cfade92dd9070d36146d240138659867",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8301ac1c_a9d4fb71",
+        "filename": "zephyr/shim/include/motionsense_sensors.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-11-23T16:48:54Z",
+      "side": 1,
+      "message": "We should settle on a single convention for these functions/macros, across motionsense, USB-C, etc.\n\nI like the model passing in the nodelabel like  PPC_ENABLE_ALTERNATE(nodelabel), and letting the shim driver handle the necessary devicetree to enumeration conversion.\n\nSo maybe just a couple wrapper macros:\n\nMOTIONSENSE_ENABLE_ALTERNATE(nodelabel)  // Unconditionally swap\nMOTIONSENSE_PROBE_AND_ENABLE_ALTERNATE(nodelabel) // swap if probe pass\n\nThe macros can call motion_sense_probe() and motion_sense_enable_alt() as needed.",
+      "range": {
+        "startLine": 107,
+        "startChar": 16,
+        "endLine": 107,
+        "endChar": 46
+      },
+      "revId": "a3a559b3cfade92dd9070d36146d240138659867",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e268b780_7c834253",
+        "filename": "zephyr/shim/include/motionsense_sensors.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-11-23T16:48:54Z",
+      "side": 1,
+      "message": "I like \"enable_alt\" as the action here instead of replace to match the PPC driver.  \"replace_alt\" makes it sound like you are replacing the alternate sensor, instead of replacing the primary sensor with an alternate.",
+      "range": {
+        "startLine": 119,
+        "startChar": 17,
+        "endLine": 119,
+        "endChar": 24
+      },
+      "revId": "a3a559b3cfade92dd9070d36146d240138659867",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
