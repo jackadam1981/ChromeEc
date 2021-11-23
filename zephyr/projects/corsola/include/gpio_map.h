@@ -9,6 +9,8 @@
 #include <devicetree.h>
 #include <gpio_signal.h>
 
+#define GPIO_BATT_PRES_ODL		NAMED_GPIO(ec_batt_pres_odl)
+
 #define GPIO_ENTERING_RW		GPIO_UNIMPLEMENTED
 
 /* TODO: support CONFIG_WP_ACTIVE_HIGH for zephyr */
@@ -90,20 +92,26 @@ static inline void motion_interrupt(enum gpio_signal signal)
  * #define EC_CROS_GPIO_INTERRUPTS \
  *   GPIO_INT(NAMED_GPIO(h1_ec_pwr_btn_odl), GPIO_INT_EDGE_BOTH, button_print)
  */
-#define EC_CROS_GPIO_INTERRUPTS                                                \
-	GPIO_INT(GPIO_POWER_BUTTON_L, GPIO_INT_EDGE_BOTH,                      \
-		 power_button_interrupt)                                       \
-	GPIO_INT(GPIO_LID_OPEN, GPIO_INT_EDGE_BOTH, lid_interrupt)             \
-	WARM_RST_REQ_INT()                                                     \
-	GMR_TABLET_INT()                                                       \
-	GPIO_INT(GPIO_BASE_IMU_INT_L, GPIO_INT_EDGE_FALLING, motion_interrupt) \
-	LID_ACCEL_INT(GPIO_LID_ACCEL_INT_L, GPIO_INT_EDGE_FALLING)             \
-	GPIO_INT(GPIO_VOLUME_DOWN_L, GPIO_INT_EDGE_BOTH, button_interrupt)     \
-	GPIO_INT(GPIO_VOLUME_UP_L, GPIO_INT_EDGE_BOTH, button_interrupt)       \
-	USBA_INT()                                                             \
-	GPIO_INT(GPIO_AC_PRESENT, GPIO_INT_EDGE_BOTH, extpower_interrupt)      \
-	GPIO_INT(GPIO_WP, GPIO_INT_EDGE_BOTH, switch_interrupt)                \
-	AP_SPI_INT(GPIO_INT_EDGE_FALLING)                                      \
+#define EC_CROS_GPIO_INTERRUPTS						\
+	GPIO_INT(GPIO_POWER_BUTTON_L,					\
+		 GPIO_INT_EDGE_BOTH, power_button_interrupt)		\
+	GPIO_INT(GPIO_LID_OPEN,						\
+		 GPIO_INT_EDGE_BOTH, lid_interrupt)			\
+	WARM_RST_REQ_INT()						\
+	GMR_TABLET_INT()						\
+	GPIO_INT(GPIO_BASE_IMU_INT_L,					\
+		 GPIO_INT_EDGE_FALLING, motion_interrupt)		\
+	LID_ACCEL_INT(GPIO_LID_ACCEL_INT_L, GPIO_INT_EDGE_FALLING)	\
+	GPIO_INT(GPIO_VOLUME_DOWN_L,					\
+		 GPIO_INT_EDGE_BOTH, button_interrupt)			\
+	GPIO_INT(GPIO_VOLUME_UP_L,					\
+		 GPIO_INT_EDGE_BOTH, button_interrupt)			\
+	USBA_INT()							\
+	GPIO_INT(GPIO_AC_PRESENT,					\
+		 GPIO_INT_EDGE_BOTH, extpower_interrupt)		\
+	GPIO_INT(GPIO_WP,						\
+		 GPIO_INT_EDGE_BOTH, switch_interrupt)			\
+	AP_SPI_INT(GPIO_INT_EDGE_FALLING)				\
 	X_EC_GPIO2_INT()
 
 #endif /* __ZEPHYR_GPIO_MAP_H */
