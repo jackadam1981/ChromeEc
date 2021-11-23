@@ -1,0 +1,285 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb793e6d_294a8f88",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-11-23T15:33:06Z",
+      "side": 1,
+      "message": "Thanks for sending this!",
+      "revId": "0b1fc1e121f55694c081a50cbcb40379648d93cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a642870_c662f4f4",
+        "filename": "driver/tcpm/nct38xx.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-11-23T15:33:06Z",
+      "side": 1,
+      "message": "Blank line required after declarations\n\n(checkpatch should have warned you of this when uploading. be sure to use repo upload to upload your changes)",
+      "revId": "0b1fc1e121f55694c081a50cbcb40379648d93cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b9a15ed5_b83a4e24",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 3
+      },
+      "lineNbr": 757,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-11-23T15:33:06Z",
+      "side": 1,
+      "message": "Anything more descriptive that can be written here?",
+      "range": {
+        "startLine": 757,
+        "startChar": 3,
+        "endLine": 757,
+        "endChar": 55
+      },
+      "revId": "0b1fc1e121f55694c081a50cbcb40379648d93cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d2d38fd_f698742e",
+        "filename": "zephyr/dts/bindings/tcpc/named-tcpc-ports.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-11-23T15:33:06Z",
+      "side": 1,
+      "message": "Use standard license header:\n\n  # Copyright 2021 The Chromium OS Authors. All rights reserved.\n  # Use of this source code is governed by a BSD-style license that can be\n  # found in the LICENSE file.",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 2,
+        "endChar": 37
+      },
+      "revId": "0b1fc1e121f55694c081a50cbcb40379648d93cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e819768f_7c77ec39",
+        "filename": "zephyr/dts/bindings/tcpc/named-tcpc-ports.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-11-23T15:33:06Z",
+      "side": 1,
+      "message": "Write something that better describes this:\n\n  List of TCPC ports automatically converted to identifiers available to EC code using an enum created by the shim layer in tcpc.h.",
+      "range": {
+        "startLine": 4,
+        "startChar": 30,
+        "endLine": 4,
+        "endChar": 41
+      },
+      "revId": "0b1fc1e121f55694c081a50cbcb40379648d93cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee855912_8f1127f3",
+        "filename": "zephyr/dts/bindings/tcpc/named-tcpc-ports.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-11-23T15:33:06Z",
+      "side": 1,
+      "message": "cros-ec,tcpc-ports",
+      "range": {
+        "startLine": 6,
+        "startChar": 13,
+        "endLine": 6,
+        "endChar": 29
+      },
+      "revId": "0b1fc1e121f55694c081a50cbcb40379648d93cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a7ecdd2_b3dc9783",
+        "filename": "zephyr/dts/bindings/tcpc/named-tcpc-ports.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-11-23T15:33:06Z",
+      "side": 1,
+      "message": "Again, needs a better description",
+      "range": {
+        "startLine": 9,
+        "startChar": 15,
+        "endLine": 9,
+        "endChar": 42
+      },
+      "revId": "0b1fc1e121f55694c081a50cbcb40379648d93cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67369d84_7a90d217",
+        "filename": "zephyr/dts/bindings/tcpc/named-tcpc-ports.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-11-23T15:33:06Z",
+      "side": 1,
+      "message": "remove extra spaces",
+      "revId": "0b1fc1e121f55694c081a50cbcb40379648d93cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7fb086a_99804155",
+        "filename": "zephyr/shim/include/tcpc.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-11-23T15:33:06Z",
+      "side": 1,
+      "message": "look up by compatible string using DT_INST and related macros",
+      "range": {
+        "startLine": 12,
+        "startChar": 19,
+        "endLine": 12,
+        "endChar": 26
+      },
+      "revId": "0b1fc1e121f55694c081a50cbcb40379648d93cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f63151b9_b2eedf40",
+        "filename": "zephyr/shim/include/tcpc.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-11-23T15:33:06Z",
+      "side": 1,
+      "message": "Add a trailing comma after TCPC_PORT_COUNT",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 16
+      },
+      "revId": "0b1fc1e121f55694c081a50cbcb40379648d93cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "854299d7_94d2f47a",
+        "filename": "zephyr/shim/include/tcpc.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-11-23T15:33:06Z",
+      "side": 1,
+      "message": "Needs kerneldoc",
+      "range": {
+        "startLine": 24,
+        "startChar": 21,
+        "endLine": 24,
+        "endChar": 46
+      },
+      "revId": "0b1fc1e121f55694c081a50cbcb40379648d93cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3bc7915f_3bfcc7c1",
+        "filename": "zephyr/shim/src/tcpc.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-11-23T15:33:06Z",
+      "side": 1,
+      "message": "use DT_INST to look up by compatible string",
+      "range": {
+        "startLine": 11,
+        "startChar": 20,
+        "endLine": 11,
+        "endChar": 27
+      },
+      "revId": "0b1fc1e121f55694c081a50cbcb40379648d93cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cbd4cfe8_1d88ff93",
+        "filename": "zephyr/shim/src/tcpc.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-11-23T15:33:06Z",
+      "side": 1,
+      "message": "Describe further what the long term plan actually is",
+      "range": {
+        "startLine": 19,
+        "startChar": 3,
+        "endLine": 19,
+        "endChar": 12
+      },
+      "revId": "0b1fc1e121f55694c081a50cbcb40379648d93cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
