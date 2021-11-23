@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "90a4ff75_1d54ec00",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-11-23T03:33:10Z",
+      "side": 1,
+      "message": "Interesting, I ran shellcheck in the chroot and it did not report any of the problems the gerrit version reported :P, fixed and re-tested.\n\n\nAlso, this script does not look into thirdparty/cryptoc which is still used by prepvt and mp branches it looks like.",
+      "revId": "4c5855c6f03348b9327a1d76911216a5705526c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
