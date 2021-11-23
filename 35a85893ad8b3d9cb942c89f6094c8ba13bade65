@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5867b7de_447223b4",
+        "filename": "zephyr/shim/src/motionsense_sensors.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 399,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-11-23T16:51:16Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "838aa3aa_65f5451f",
+      "range": {
+        "startLine": 399,
+        "startChar": 0,
+        "endLine": 399,
+        "endChar": 58
+      },
+      "revId": "35a85893ad8b3d9cb942c89f6094c8ba13bade65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "da30620f_ca6b88aa",
@@ -109,6 +133,30 @@
       "side": 1,
       "message": "I think having each shim driver provide routines/macros to replace a single device is the most flexible.  This matches what you added for PPC chips.",
       "parentUuid": "9aee0306_09193da8",
+      "range": {
+        "startLine": 440,
+        "startChar": 0,
+        "endLine": 443,
+        "endChar": 1
+      },
+      "revId": "35a85893ad8b3d9cb942c89f6094c8ba13bade65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e5b72246_e809fc8e",
+        "filename": "zephyr/shim/src/motionsense_sensors.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 443,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-11-23T16:51:16Z",
+      "side": 1,
+      "message": "I see the next CL implements this.",
+      "parentUuid": "0bd0998a_bf7a0c3a",
       "range": {
         "startLine": 440,
         "startChar": 0,
