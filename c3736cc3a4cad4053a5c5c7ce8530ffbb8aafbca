@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fbea4107_4c4215e9",
+        "filename": "common/led_common.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-11-23T15:16:59Z",
+      "side": 1,
+      "message": "Drop ifndef",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 31
+      },
+      "revId": "c3736cc3a4cad4053a5c5c7ce8530ffbb8aafbca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63ca17e8_92964819",
+        "filename": "common/led_common.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-11-23T15:16:59Z",
+      "side": 1,
+      "message": "if (IS_ENABLED(CONFIG_LED_ONOFF_STATES))\n         board_led_auto_control();",
+      "range": {
+        "startLine": 84,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 31
+      },
+      "revId": "c3736cc3a4cad4053a5c5c7ce8530ffbb8aafbca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "607c7514_6b5f0224",
+        "filename": "include/led_common.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-11-23T15:16:59Z",
+      "side": 1,
+      "message": "Drop ifndef",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 81,
+        "endChar": 31
+      },
+      "revId": "c3736cc3a4cad4053a5c5c7ce8530ffbb8aafbca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
