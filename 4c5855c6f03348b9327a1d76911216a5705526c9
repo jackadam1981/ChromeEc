@@ -87,6 +87,30 @@
       },
       "revId": "4c5855c6f03348b9327a1d76911216a5705526c9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b43de230_f30ae5ba",
+        "filename": "util/bcmp.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2021-11-23T17:26:35Z",
+      "side": 1,
+      "message": "Actually ToT doesn\u0027t use the branch name in the tpm2 and platform/cr50 directories either. tpm2. cros/cr50_stab doesn\u0027t exist in third_party/tpm2.\n\nIt\u0027s why the script can\u0027t be used to compare to cros/cr50_stab.",
+      "parentUuid": "cfb9d371_d8f4238b",
+      "range": {
+        "startLine": 57,
+        "startChar": 14,
+        "endLine": 57,
+        "endChar": 39
+      },
+      "revId": "4c5855c6f03348b9327a1d76911216a5705526c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
