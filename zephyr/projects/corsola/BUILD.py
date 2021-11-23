@@ -35,3 +35,17 @@ register_corsola_project(
     ],
     extra_kconfig_files=[here / "prj_krabby.conf"],
 )
+
+register_corsola_project(
+    project_name="kingler",
+    chip="npcx9",
+    extra_dts_overlays=[
+        here / "adc_kingler.dts",
+        here / "battery_kingler.dts",
+        here / "gpio_kingler.dts",
+        here / "i2c_kingler.dts",
+        here / "pwm_kingler.dts",
+        here / "pwm_led_kingler.dts",
+    ],
+    extra_kconfig_files=[here / "prj_kingler.conf"],
+)
