@@ -1,0 +1,210 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "36fd2b35_50bf5208",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-11-23T15:54:55Z",
+      "side": 1,
+      "message": "I think this CL would be significantly easier to review and also safer to land if it were split up a bit (imagine you introduce a breakage: would be nice if only a little bit got reverted, right?)\n\nSuggesting this:\n\n1. Introduce atomic_t.h\n2. Refactor sleep_mask to atomic_t\n3. Refactor task event bitmap to atomic_t\n4. Refactor USB-C/TCPC/DP stuff to atomic_t\n5. Any other remaining things. Possibly group into CLs by affected chip/core where possible.",
+      "revId": "9e5200fc608d8e3f609d1ff503a097df39f60125",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ab2d7b4_727bd4d7",
+        "filename": "core/cortex-m/atomic.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-11-23T15:54:55Z",
+      "side": 1,
+      "message": "includes should be alphasorted",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 21
+      },
+      "revId": "9e5200fc608d8e3f609d1ff503a097df39f60125",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b40867b4_2b117204",
+        "filename": "core/cortex-m0/atomic.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-11-23T15:54:55Z",
+      "side": 1,
+      "message": "alphasort",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 21
+      },
+      "revId": "9e5200fc608d8e3f609d1ff503a097df39f60125",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b09e6b44_9237a694",
+        "filename": "core/host/atomic.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-11-23T15:54:55Z",
+      "side": 1,
+      "message": "alphasort",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 21
+      },
+      "revId": "9e5200fc608d8e3f609d1ff503a097df39f60125",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b58ef6ad_8b05586c",
+        "filename": "core/minute-ia/atomic.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-11-23T15:54:55Z",
+      "side": 1,
+      "message": "alphasort",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 21
+      },
+      "revId": "9e5200fc608d8e3f609d1ff503a097df39f60125",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb6c8250_bc39f4ac",
+        "filename": "core/nds32/atomic.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-11-23T15:54:55Z",
+      "side": 1,
+      "message": "alphasort",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 21
+      },
+      "revId": "9e5200fc608d8e3f609d1ff503a097df39f60125",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5bb5e6cf_48c028b6",
+        "filename": "core/riscv-rv32i/atomic.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-11-23T15:54:55Z",
+      "side": 1,
+      "message": "alphasort",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 21
+      },
+      "revId": "9e5200fc608d8e3f609d1ff503a097df39f60125",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "64bf65e7_327888fa",
+        "filename": "include/atomic_t.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-11-23T15:54:55Z",
+      "side": 1,
+      "message": "\"/* Below definitions are required to align with zephyr typedefs */\"\n\nAnd you can #include the header from zephyr to assert that too.",
+      "revId": "9e5200fc608d8e3f609d1ff503a097df39f60125",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9bcbb1d2_37049a28",
+        "filename": "include/task.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-11-23T15:54:55Z",
+      "side": 1,
+      "message": "alphasort",
+      "revId": "9e5200fc608d8e3f609d1ff503a097df39f60125",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3273f8c1_7689df6a",
+        "filename": "zephyr/shim/include/atomic_t.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-11-23T15:54:55Z",
+      "side": 1,
+      "message": "The names of the files in zephyr/shim/include/ need to be unique from the names of the files in include/.",
+      "revId": "9e5200fc608d8e3f609d1ff503a097df39f60125",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
