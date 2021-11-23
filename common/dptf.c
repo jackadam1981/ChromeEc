@@ -43,7 +43,7 @@ static void dptf_init(void)
 DECLARE_HOOK(HOOK_INIT, dptf_init, HOOK_PRIO_DEFAULT);
 
 /* Keep track of which triggered sensor thresholds the AP has seen */
-static uint32_t dptf_seen;
+static atomic_t dptf_seen;
 
 int dptf_query_next_sensor_event(void)
 {

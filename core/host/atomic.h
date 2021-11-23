@@ -9,9 +9,7 @@
 #define __CROS_EC_ATOMIC_H
 
 #include "common.h"
-
-typedef int atomic_t;
-typedef atomic_t atomic_val_t;
+#include "atomic_t.h"
 
 static inline atomic_val_t atomic_clear_bits(atomic_t *addr, atomic_val_t bits)
 {

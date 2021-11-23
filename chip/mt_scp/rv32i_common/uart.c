@@ -10,6 +10,7 @@
 #include "uart.h"
 #include "uart_regs.h"
 #include "util.h"
+#include "task.h"
 
 /*
  * UARTN == 0, SCP UART0

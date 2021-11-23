@@ -10,6 +10,8 @@
 
 #include <stdbool.h>
 
+#include "atomic.h"
+
 /*
  * List of all timers that will be managed by usb_pd_timer
  */
@@ -313,14 +315,14 @@ void pd_timer_dump(int port);
 
 /* PD timers have three possible states: Active, Inactive and Disabled */
 /* exported: timer_active indicates if a timer is currently active */
-extern uint32_t timer_active[MAX_PD_PORTS][TIMER_FIELD_NUM_UINT32S];
+extern atomic_t timer_active[MAX_PD_PORTS][TIMER_FIELD_NUM_UINT32S];
 /* exported: timer_disabled indicates if a timer is currently disabled */
-extern uint32_t timer_disabled[MAX_PD_PORTS][TIMER_FIELD_NUM_UINT32S];
+extern atomic_t timer_disabled[MAX_PD_PORTS][TIMER_FIELD_NUM_UINT32S];
 
 /* exported: do not call directly, only for the defined macros */
 extern void pd_timer_atomic_op(
 		atomic_val_t (*op)(atomic_t*, atomic_val_t),
-		uint32_t *const timer_field, const uint64_t mask);
+		atomic_t *const timer_field, const uint64_t mask);
 
 /* exported: set/clear/check the current timer_active for a timer */
 #define PD_SET_ACTIVE(p, m)	pd_timer_atomic_op(		\
