@@ -414,11 +414,11 @@ __overridable enum critical_shutdown board_system_is_idle(
 		return CRITICAL_SHUTDOWN_CUTOFF;
 	} else if (remain < sdzone.stayup) {
 		CPRINTS("SDC Stay-up");
-		return CRITICAL_SHUTDOWN_IGNORE;
+		return CRITICAL_SHUTDOWN_HIBERNATE;
 	}
 
 	CPRINTS("SDC Safe");
-	return CRITICAL_SHUTDOWN_HIBERNATE;
+	return CRITICAL_SHUTDOWN_IGNORE;
 }
 #else
 /* Default implementation for battery-less systems */
