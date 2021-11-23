@@ -16,6 +16,29 @@
       "message": "Interesting, I ran shellcheck in the chroot and it did not report any of the problems the gerrit version reported :P, fixed and re-tested.\n\n\nAlso, this script does not look into thirdparty/cryptoc which is still used by prepvt and mp branches it looks like.",
       "revId": "4c5855c6f03348b9327a1d76911216a5705526c9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62894151_4f1d742b",
+        "filename": "util/bcmp.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2021-11-23T17:06:56Z",
+      "side": 1,
+      "message": "I think I figured out the issue with  firmware-cr50-stab-14294.B\n\nIn firmware-cr50-stab-14294.B the tpm branch is firmware-cr50-stab-14294.B and the cr50 branch is firmware-cr50-stab-14294.B-cr50_stab, so using the same compare_to branch name doesn\u0027t work with the new branch. There\u0027s a different tpm branch name and ec branch name.\n\nCould you modify bcmp to use a tpm2 compare_to and a ec compare_to?",
+      "range": {
+        "startLine": 57,
+        "startChar": 14,
+        "endLine": 57,
+        "endChar": 39
+      },
+      "revId": "4c5855c6f03348b9327a1d76911216a5705526c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
