@@ -1,0 +1,9 @@
+<<<<<<< HEAD   (6da843 baklava: Undefine ODM VID/PID config option)
+=======
+# Fingerprint Sensor
+
+# Don't inherit owners from elsewhere in the manifest
+set noparent
+
+include chromiumos/platform2:/biod/OWNERS
+>>>>>>> BRANCH (0349a5 honeybuns: Add board level USB_PD_CONNECT hooks)
