@@ -4,9 +4,10 @@
 
 description: ISL923X Charger emulator
 
-compatible: "cros,isl923x_emul"
+compatible: "cros,isl923x-emul"
 
 include: base.yaml
 properties:
    reg:
      required: true
+   battery:
