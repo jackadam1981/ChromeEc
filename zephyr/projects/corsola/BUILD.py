@@ -41,6 +41,7 @@ register_corsola_project(
     chip="npcx9",
     extra_dts_overlays=[
         here / "battery_kingler.dts",
+        here / "gpio_kingler.dts",
     ],
     extra_kconfig_files=[here / "prj_kingler.conf"],
 )
