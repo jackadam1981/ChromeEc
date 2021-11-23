@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "57f933b2_9130b32e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1384633
+      },
+      "writtenOn": "2021-11-23T12:28:22Z",
+      "side": 1,
+      "message": "We have submitted these EC patches along with Coreboot patches after our internal testing on brya system. This is ready for review.",
+      "revId": "3f26f8a6d2349dd45bbd9caec1f2904a8d2e2bf6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "97579008_e132e849",
@@ -31,6 +48,30 @@
       "writtenOn": "2021-11-22T17:35:54Z",
       "side": 1,
       "message": "What do you think about moving these to battery_smart.h?",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 38
+      },
+      "revId": "3f26f8a6d2349dd45bbd9caec1f2904a8d2e2bf6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff440726_de428edb",
+        "filename": "power/power_status.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1384633
+      },
+      "writtenOn": "2021-11-23T12:28:22Z",
+      "side": 1,
+      "message": "Yes, I\u0027ll move this.",
+      "parentUuid": "97579008_e132e849",
       "range": {
         "startLine": 42,
         "startChar": 0,
