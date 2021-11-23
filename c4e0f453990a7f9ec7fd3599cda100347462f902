@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "33a7751e_e670f679",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2021-11-23T17:11:25Z",
+      "side": 1,
+      "message": "I had made a mistake when introducing the symbolic names EXC_RETURN_MODE_THREAD / EXC_RETURN_MODE_HANDLER.  It quickly became apparent when I tried the stress test this morning, and I have fixed it now.  Please re-approve.",
+      "revId": "c4e0f453990a7f9ec7fd3599cda100347462f902",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
