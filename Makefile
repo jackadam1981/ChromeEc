@@ -269,6 +269,7 @@ ifneq ($(BASEDIR),$(BDIR))
 include $(BDIR)/build.mk
 endif
 include chip/$(CHIP)/build.mk
+include core/build.mk
 include core/$(CORE)/build.mk
 include common/build.mk
 include driver/build.mk
