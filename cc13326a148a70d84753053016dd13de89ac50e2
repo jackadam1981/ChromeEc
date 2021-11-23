@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "080dd27d_87a9ea9f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-11-23T23:44:01Z",
+      "side": 1,
+      "message": "The include directories are searched in the order in which they are specified with the \"-I\" flag (left to right), so in that sense there is an ordering: https://gcc.gnu.org/onlinedocs/gcc/Directory-Options.html",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 62
+      },
+      "revId": "cc13326a148a70d84753053016dd13de89ac50e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
