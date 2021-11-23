@@ -39,6 +39,24 @@
       "message": "Perhaps it would be good to take the DP lane as a parameter and then just set that lane accordingly. The gains don\u0027t have to necessarily be symmetrical do they?",
       "revId": "e2dd243c884a753d3ce70b4cbc0159ae9d0ad430",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4862816d_6e5526b7",
+        "filename": "driver/usb_mux/tusb1064.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-11-23T01:05:36Z",
+      "side": 1,
+      "message": "They don\u0027t need to be symmetrical, but I think it\u0027s unlikely they would be different. The PS8822 which is used for the same mux, only has 1 setting for the same purpose, so this would be similar to that.",
+      "parentUuid": "76287a95_20624ecd",
+      "revId": "e2dd243c884a753d3ce70b4cbc0159ae9d0ad430",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
