@@ -116,6 +116,72 @@ static void test_dead_battery_boot_force_pp2_fets_set(void)
 	zassert_false(sn5s330_drv.is_sourcing_vbus(SN5S330_PORT), NULL);
 }
 
+static void test_enter_low_power_mode(void)
+{
+	const struct emul *emul = EMUL;
+
+	uint8_t func_set2_actual;
+	uint8_t func_set2_actual_masked;
+	uint8_t func_set2_test_mask = SN5S330_SBU_EN;
+	uint8_t func_set2_expect_val = ~SN5S330_SBU_EN & func_set2_test_mask;
+
+	uint8_t func_set3_actual;
+	uint8_t func_set3_actual_masked;
+	uint8_t func_set3_test_mask = SN5S330_PP1_EN | SN5S330_PP2_EN;
+	uint8_t func_set3_expect_val = ~SN5S330_PP1_EN & ~SN5S330_PP2_EN &
+				       func_set3_test_mask;
+
+	uint8_t func_set4_actual;
+	uint8_t func_set4_actual_masked;
+	uint8_t func_set4_test_mask = SN5S330_CC_EN | SN5S330_VCONN_EN;
+	uint8_t func_set4_expect_val = SN5S330_CC_EN & ~SN5S330_VCONN_EN &
+				       func_set4_test_mask;
+
+	uint8_t func_set9_actual;
+	uint8_t func_set9_actual_masked;
+	uint8_t func_set9_test_mask = SN5S330_FORCE_OVP_EN_SBU |
+				      SN5S330_PWR_OVR_VBUS | SN5S330_OVP_EN_CC |
+				      SN5S330_FORCE_ON_VBUS_OVP |
+				      SN5S330_FORCE_ON_VBUS_UVP;
+	uint8_t func_set9_expect_val =
+		~SN5S330_FORCE_OVP_EN_SBU & ~SN5S330_PWR_OVR_VBUS &
+		SN5S330_OVP_EN_CC & ~SN5S330_FORCE_ON_VBUS_OVP &
+		~SN5S330_FORCE_ON_VBUS_UVP & func_set9_test_mask;
+
+	/*
+	 * Requirements were extracted from TI's recommended changes for octopus
+	 * to lower power use during hibernate as well as the follow up changes
+	 * we made to allow the device to wake up from hibernate.
+	 */
+
+	zassert_ok(sn5s330_drv.init(SN5S330_PORT), NULL);
+	zassert_ok(sn5s330_drv.enter_low_power_mode(SN5S330_PORT), NULL);
+
+	sn5s330_emul_peek_reg(emul, SN5S330_FUNC_SET3, &func_set3_actual);
+	func_set3_actual_masked = func_set3_actual & func_set3_test_mask;
+	zassert_equal(func_set3_actual_masked, func_set3_expect_val,
+		      "found: 0x%x, expected: 0x%x", func_set3_actual_masked,
+		      func_set3_expect_val);
+
+	sn5s330_emul_peek_reg(emul, SN5S330_FUNC_SET4, &func_set4_actual);
+	func_set4_actual_masked = func_set4_actual & func_set4_test_mask;
+	zassert_equal(func_set4_actual_masked, func_set4_expect_val,
+		      "found: 0x%x, expected: 0x%x", func_set4_actual_masked,
+		      func_set4_expect_val);
+
+	sn5s330_emul_peek_reg(emul, SN5S330_FUNC_SET2, &func_set2_actual);
+	func_set2_actual_masked = func_set2_actual & func_set2_test_mask;
+	zassert_equal(func_set2_actual_masked, func_set2_expect_val,
+		      "found: 0x%x, expected: 0x%x", func_set2_actual_masked,
+		      func_set2_expect_val);
+
+	sn5s330_emul_peek_reg(emul, SN5S330_FUNC_SET9, &func_set9_actual);
+	func_set9_actual_masked = func_set9_actual & func_set9_test_mask;
+	zassert_equal(func_set9_actual_masked, func_set9_expect_val,
+		      "found: 0x%x, expected: 0x%x", func_set9_actual_masked,
+		      func_set9_expect_val);
+}
+
 static void reset_sn5s330_state(void)
 {
 	struct i2c_emul *i2c_emul = sn5s330_emul_to_i2c_emul(EMUL);
@@ -127,12 +193,16 @@ static void reset_sn5s330_state(void)
 
 void test_suite_ppc_sn5s330(void)
 {
-	ztest_test_suite(ppc_sn5s330,
-			 ztest_unit_test_setup_teardown(
-				 test_dead_battery_boot_force_pp2_fets_set,
-				 reset_sn5s330_state, reset_sn5s330_state),
-			 ztest_unit_test_setup_teardown(
-				 test_fail_once_func_set1, reset_sn5s330_state,
-				 reset_sn5s330_state));
+	ztest_test_suite(
+		ppc_sn5s330,
+		ztest_unit_test_setup_teardown(test_enter_low_power_mode,
+					       reset_sn5s330_state,
+					       reset_sn5s330_state),
+		ztest_unit_test_setup_teardown(
+			test_dead_battery_boot_force_pp2_fets_set,
+			reset_sn5s330_state, reset_sn5s330_state),
+		ztest_unit_test_setup_teardown(test_fail_once_func_set1,
+					       reset_sn5s330_state,
+					       reset_sn5s330_state));
 	ztest_run_test_suite(ppc_sn5s330);
 }
