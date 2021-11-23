@@ -57,6 +57,64 @@
       "parentUuid": "76287a95_20624ecd",
       "revId": "e2dd243c884a753d3ce70b4cbc0159ae9d0ad430",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba244b47_ad8c2289",
+        "filename": "driver/usb_mux/tusb1064.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-11-23T20:47:01Z",
+      "side": 1,
+      "message": "I think this is a reasonable starting point that can be changed as needed later",
+      "parentUuid": "4862816d_6e5526b7",
+      "revId": "e2dd243c884a753d3ce70b4cbc0159ae9d0ad430",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "669c9a83_fa531998",
+        "filename": "driver/usb_mux/tusb1064.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-11-23T20:47:01Z",
+      "side": 1,
+      "message": "nit: clear",
+      "range": {
+        "startLine": 98,
+        "startChar": 4,
+        "endLine": 98,
+        "endChar": 8
+      },
+      "revId": "e2dd243c884a753d3ce70b4cbc0159ae9d0ad430",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8e6b65a_7322368b",
+        "filename": "driver/usb_mux/tusb1064.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-11-23T20:47:01Z",
+      "side": 1,
+      "message": "nit: TUSB1064_DP_EQ_RX_ value.  You don\u0027t have to turn it into an enum or anything, but the comment should reflect the defines being used",
+      "revId": "e2dd243c884a753d3ce70b4cbc0159ae9d0ad430",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
