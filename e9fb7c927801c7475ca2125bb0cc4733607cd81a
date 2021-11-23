@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa0391d0_13018002",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-11-23T03:12:00Z",
+      "side": 1,
+      "message": "The problem was that tpm2 .o files are now placed in build/cr50/RW, before they were in their own directory in build/cr50. I modified the script to include both cr50 and tpm2 trees in the comparison.\n\nLooks like tpm2 tree does not yet have the cros/firmware-cr50-stab-14294.B-cr50_stab branch, not sure how this is supposed to work, doesn\u0027t the builder check out the entire repo for the same branch? ",
+      "revId": "e9fb7c927801c7475ca2125bb0cc4733607cd81a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
