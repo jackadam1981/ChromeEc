@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "d8d1625a_84bf73f6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-11-23T17:25:50Z",
+      "side": 1,
+      "message": "Can you move this under the \"named-usbc-ports\" instead.\n\nSee https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/projects/herobrine/herobrine_npcx9/usbc.dts?q\u003dusbc.dts\u0026ss\u003dchromiumos%2Fchromiumos%2Fcodesearch",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 0
+      },
+      "revId": "0b1fc1e121f55694c081a50cbcb40379648d93cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "fb793e6d_294a8f88",
@@ -14,6 +37,23 @@
       "writtenOn": "2021-11-23T15:33:06Z",
       "side": 1,
       "message": "Thanks for sending this!",
+      "revId": "0b1fc1e121f55694c081a50cbcb40379648d93cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "545af3dc_15a1a066",
+        "filename": "driver/tcpm/nct38xx.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-11-23T17:25:50Z",
+      "side": 1,
+      "message": "Can this file get submitted as it\u0027s on CL after CL:3297249 lands?",
       "revId": "0b1fc1e121f55694c081a50cbcb40379648d93cd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -249,6 +289,30 @@
       "writtenOn": "2021-11-23T15:33:06Z",
       "side": 1,
       "message": "use DT_INST to look up by compatible string",
+      "range": {
+        "startLine": 11,
+        "startChar": 20,
+        "endLine": 11,
+        "endChar": 27
+      },
+      "revId": "0b1fc1e121f55694c081a50cbcb40379648d93cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "50d398af_a11106ea",
+        "filename": "zephyr/shim/src/tcpc.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-11-23T17:25:50Z",
+      "side": 1,
+      "message": "This should be moved under the named-usbc-ports.  See the PPC shim driver for an example:\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/shim/src/ppc.c;l\u003d19?q\u003dppc.c\u0026sq\u003d\u0026ss\u003dchromiumos%2Fchromiumos%2Fcodesearch",
+      "parentUuid": "3bc7915f_3bfcc7c1",
       "range": {
         "startLine": 11,
         "startChar": 20,
