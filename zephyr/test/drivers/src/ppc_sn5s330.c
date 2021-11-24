@@ -182,6 +182,40 @@ static void test_enter_low_power_mode(void)
 		      func_set9_expect_val);
 }
 
+static void test_vbus_source_sink_enable(void)
+{
+	const struct emul *emul = EMUL;
+
+	uint8_t func_set3_actual;
+	uint8_t func_set3_actual_masked;
+	uint8_t func_set3_test_mask = SN5S330_PP1_EN | SN5S330_PP2_EN;
+	uint8_t func_set3_expect_enable_val = func_set3_test_mask;
+	uint8_t func_set3_expect_disable_val = ~func_set3_expect_enable_val &
+					       func_set3_test_mask;
+
+	zassert_ok(sn5s330_drv.init(SN5S330_PORT), NULL);
+
+	/* Test Enable */
+	zassert_ok(sn5s330_drv.vbus_source_enable(SN5S330_PORT, true), NULL);
+	zassert_ok(sn5s330_drv.vbus_sink_enable(SN5S330_PORT, true), NULL);
+
+	sn5s330_emul_peek_reg(emul, SN5S330_FUNC_SET3, &func_set3_actual);
+	func_set3_actual_masked = func_set3_actual & func_set3_test_mask;
+	zassert_equal(func_set3_actual_masked, func_set3_expect_enable_val,
+		      "found: 0x%x, expected: 0x%x", func_set3_actual_masked,
+		      func_set3_expect_enable_val);
+
+	/* Test Disable */
+	zassert_ok(sn5s330_drv.vbus_source_enable(SN5S330_PORT, false), NULL);
+	zassert_ok(sn5s330_drv.vbus_sink_enable(SN5S330_PORT, false), NULL);
+
+	sn5s330_emul_peek_reg(emul, SN5S330_FUNC_SET3, &func_set3_actual);
+	func_set3_actual_masked = func_set3_actual & func_set3_test_mask;
+	zassert_equal(func_set3_actual_masked, func_set3_expect_disable_val,
+		      "found: 0x%x, expected: 0x%x", func_set3_actual_masked,
+		      func_set3_expect_disable_val);
+}
+
 static void reset_sn5s330_state(void)
 {
 	struct i2c_emul *i2c_emul = sn5s330_emul_to_i2c_emul(EMUL);
@@ -195,6 +229,9 @@ void test_suite_ppc_sn5s330(void)
 {
 	ztest_test_suite(
 		ppc_sn5s330,
+		ztest_unit_test_setup_teardown(test_vbus_source_sink_enable,
+					       reset_sn5s330_state,
+					       reset_sn5s330_state),
 		ztest_unit_test_setup_teardown(test_enter_low_power_mode,
 					       reset_sn5s330_state,
 					       reset_sn5s330_state),
