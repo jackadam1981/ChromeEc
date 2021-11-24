@@ -97,6 +97,7 @@ static int mt6360_enable_bc12_detection(int en)
 {
 	int rv;
 
+	CPRINTS("\x1b[1;31m%s(%d)\x1b[m", __func__, en);
 	if (en) {
 #ifdef CONFIG_MT6360_BC12_GPIO
 		gpio_set_level(GPIO_BC12_DET_EN, 1);
@@ -166,7 +167,10 @@ static void mt6360_usb_charger_task(const int port)
 
 		/* vbus change, start bc12 detection */
 		if (evt & USB_CHG_EVENT_VBUS) {
-			if (pd_snk_is_vbus_provided(port))
+			bool is_non_pd_sink = !pd_capable(port) &&
+					pd_snk_is_vbus_provided(port);
+
+			if (is_non_pd_sink)
 				mt6360_enable_bc12_detection(1);
 			else
 				mt6360_update_charge_manager(
