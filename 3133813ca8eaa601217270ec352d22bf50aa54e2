@@ -93,6 +93,30 @@
       },
       "revId": "3133813ca8eaa601217270ec352d22bf50aa54e2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "819f8cc7_0f1bfaa4",
+        "filename": "zephyr/projects/corsola/include/gpio_map.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-11-24T02:06:18Z",
+      "side": 1,
+      "message": "Please ignore the above comment.",
+      "parentUuid": "929d2ab7_55bebb95",
+      "range": {
+        "startLine": 19,
+        "startChar": 20,
+        "endLine": 19,
+        "endChar": 24
+      },
+      "revId": "3133813ca8eaa601217270ec352d22bf50aa54e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
