@@ -37,7 +37,7 @@ static void pp3300_a_pgood_low(void)
 
 static void pp3300_a_pgood_high(void)
 {
-	atomic_or(&pp3300_a_pgood, 1);
+	atomic_or((atomic_t *)&pp3300_a_pgood, 1);
 
 	/* Disable high interrupt while asserted */
 	vcmp_enable(VCMP_SNS_PP3300_HIGH, 0);
