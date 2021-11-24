@@ -176,6 +176,8 @@ static enum cr50_comm_err verify_hash(void)
 	const uint8_t *hash;
 	int rv;
 
+	return CR50_COMM_ERR_UNDEFINED_CMD;
+
 	/* Wake up Cr50 beforehand in case it's asleep. */
 	board_enable_packet_mode(true);
 	CPRINTS("Ping Cr50");
