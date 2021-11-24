@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6be1464f_bbb8db44",
+        "filename": "zephyr/test/drivers/src/ppc_sn5s330.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-11-24T21:45:04Z",
+      "side": 1,
+      "message": "Can the comment just directly explain what the test is testing? From what I can see, you\u0027re doing one operation and then checking 4 registers against expected values that don\u0027t have any explanation. Without being familiar with this Octopus bug, I don\u0027t have any way of evaluating whether those checks make sense. I can read the bug if I have to, but ideally, the test would be self explanatory. Many readers won\u0027t be able to access the bug.\n\n(If it is absolutely necessary to refer to the bug to understand this test, then the code should should refer to the bug directly as b/111006203#comment35.)",
+      "range": {
+        "startLine": 152,
+        "startChar": 0,
+        "endLine": 154,
+        "endChar": 58
+      },
+      "revId": "5d03f843a4852d1322ae30ee64293fc06687739c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

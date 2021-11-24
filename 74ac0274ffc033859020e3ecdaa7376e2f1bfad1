@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "779760ce_a87c23b9",
+        "filename": "zephyr/test/drivers/src/ppc_sn5s330.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-11-24T21:45:04Z",
+      "side": 1,
+      "message": "Without an explanation of what the test is trying to verify, it\u0027s hard for me to assign semantic meaning to any of these values. That being the case, if the expected value is that all the relevant bits are cleared, I think it would be easier if I didn\u0027t have to do the math in my head.",
+      "parentUuid": "3dc8431e_39b9d199",
+      "revId": "74ac0274ffc033859020e3ecdaa7376e2f1bfad1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "810f87b2_67e7f252",
         "filename": "zephyr/test/drivers/src/ppc_sn5s330.c",
         "patchSetId": 2
@@ -73,6 +91,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5defee76_aca12551",
+        "filename": "zephyr/test/drivers/src/ppc_sn5s330.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-11-24T21:45:04Z",
+      "side": 1,
+      "message": "Is there a reason you\u0027re using them in this specific order?",
+      "parentUuid": "51378f4a_85514c6d",
+      "revId": "74ac0274ffc033859020e3ecdaa7376e2f1bfad1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5547683d_a81c3d72",
         "filename": "zephyr/test/drivers/src/ppc_sn5s330.c",
         "patchSetId": 2
@@ -102,6 +138,24 @@
       "side": 1,
       "message": "\u003e IIRC, zassert_equal already prints out the values that weren\u0027t equal (albeit in decimal).\n\nYou\u0027re right it does, I must\u0027ve missed that in the log earlier.\n\n\u003e IMO, this test would be easier to follow with most of the arguments as inline bit field values instead of variables declared at the top. Reading it straight through, I have to understand the register values without context. Then, the check of each register is boilerplate.\n\nI\u0027m a bit confused. Could you give an example? I\u0027ve never used struct bit fields before so here is a snippet of implementing part of what I understand.\n\n```\n\tstruct func_set3_reg {\n\t\tbool pp1_en : 1;\n\t\tbool pp2_en : 1;\n\t};\n\tstruct func_set3_reg func_set3_expected \u003d {\n\t\t.pp1_en \u003d false,\n\t\t.pp2_en \u003d false,\n\t};\n```\n\n\nThen for checking it\u0027d be something like a helper function for checking the fields in the structs?\n\nThe compiler gets upset at me if I just cast them, so I can\u0027t just directly compare them it seems.\n\n```\nverify_equal_fields(\u0026expected, \u0026actual);\n```\n\nleaving unresolved for comment",
       "parentUuid": "5547683d_a81c3d72",
+      "revId": "74ac0274ffc033859020e3ecdaa7376e2f1bfad1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a1d1d23_566dce03",
+        "filename": "zephyr/test/drivers/src/ppc_sn5s330.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-11-24T21:45:04Z",
+      "side": 1,
+      "message": "I didn\u0027t mean convert your register values to structs. I just meant that the asserts would be clearer if they directly referenced the values that you\u0027re trying to verify, i.e.\n zassert_equal(func_set9_actual_mask, SN5S330_OVP_EN_CC, ...)\n \ninstead of\n zassert_equal(func_set9_actual_mask, func_set9_expect_val)",
+      "parentUuid": "27a46506_ca687d4b",
       "revId": "74ac0274ffc033859020e3ecdaa7376e2f1bfad1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
