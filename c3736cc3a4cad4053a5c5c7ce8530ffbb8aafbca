@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ccdb5f34_f00a8a65",
+        "filename": "common/led_common.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1293891
+      },
+      "writtenOn": "2021-11-24T01:23:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fbea4107_4c4215e9",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 31
+      },
+      "revId": "c3736cc3a4cad4053a5c5c7ce8530ffbb8aafbca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "63ca17e8_92964819",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d5d0197_690de796",
+        "filename": "common/led_common.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1293891
+      },
+      "writtenOn": "2021-11-24T01:23:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "63ca17e8_92964819",
+      "range": {
+        "startLine": 84,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 31
+      },
+      "revId": "c3736cc3a4cad4053a5c5c7ce8530ffbb8aafbca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "607c7514_6b5f0224",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-11-23T15:16:59Z",
       "side": 1,
       "message": "Drop ifndef",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 81,
+        "endChar": 31
+      },
+      "revId": "c3736cc3a4cad4053a5c5c7ce8530ffbb8aafbca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "263e3324_6a83a718",
+        "filename": "include/led_common.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1293891
+      },
+      "writtenOn": "2021-11-24T01:23:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "607c7514_6b5f0224",
       "range": {
         "startLine": 81,
         "startChar": 0,
