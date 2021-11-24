@@ -1,0 +1,182 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba54c60f_7f6efb22",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2021-11-24T14:19:29Z",
+      "side": 1,
+      "message": "I think this is shaping up nicely and I made a few suggestions.",
+      "revId": "42e145371a1fbc9eca7336f8dc8808e8d914a0e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d58d278_a62b9630",
+        "filename": "zephyr/subsys/usbc/tc/snk.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2021-11-24T14:19:29Z",
+      "side": 1,
+      "message": "This include and most of the others won\u0027t be needed.",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 27
+      },
+      "revId": "42e145371a1fbc9eca7336f8dc8808e8d914a0e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "24b8d89d_2b5e4659",
+        "filename": "zephyr/subsys/usbc/tc/snk.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2021-11-24T14:19:29Z",
+      "side": 1,
+      "message": "We don\u0027t have PD for now so we can remove this flag",
+      "range": {
+        "startLine": 86,
+        "startChar": 8,
+        "endLine": 86,
+        "endChar": 37
+      },
+      "revId": "42e145371a1fbc9eca7336f8dc8808e8d914a0e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e29bf50f_3ddcf4af",
+        "filename": "zephyr/subsys/usbc/tc/snk.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2021-11-24T14:19:29Z",
+      "side": 1,
+      "message": "This should be removed from the base implementation.",
+      "range": {
+        "startLine": 118,
+        "startChar": 1,
+        "endLine": 125,
+        "endChar": 50
+      },
+      "revId": "42e145371a1fbc9eca7336f8dc8808e8d914a0e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39612e0d_512b1b02",
+        "filename": "zephyr/subsys/usbc/tc/snk.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2021-11-24T14:19:29Z",
+      "side": 1,
+      "message": "I don\u0027t think we need this since Zephyr has a logging system.",
+      "range": {
+        "startLine": 134,
+        "startChar": 2,
+        "endLine": 139,
+        "endChar": 6
+      },
+      "revId": "42e145371a1fbc9eca7336f8dc8808e8d914a0e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe345d16_3a24f542",
+        "filename": "zephyr/subsys/usbc/tc/snk.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2021-11-24T14:19:29Z",
+      "side": 1,
+      "message": "The macros should be preceded with CONFIG_",
+      "range": {
+        "startLine": 152,
+        "startChar": 7,
+        "endLine": 152,
+        "endChar": 26
+      },
+      "revId": "42e145371a1fbc9eca7336f8dc8808e8d914a0e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "43a048b3_20dda88e",
+        "filename": "zephyr/subsys/usbc/tc/snk.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2021-11-24T14:19:29Z",
+      "side": 1,
+      "message": "Remove all PD related stuff",
+      "range": {
+        "startLine": 243,
+        "startChar": 1,
+        "endLine": 243,
+        "endChar": 30
+      },
+      "revId": "42e145371a1fbc9eca7336f8dc8808e8d914a0e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d28f2ee_29d3a731",
+        "filename": "zephyr/subsys/usbc/tc/snk.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1338,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2021-11-24T14:19:29Z",
+      "side": 1,
+      "message": "You can remove all the hooks",
+      "range": {
+        "startLine": 1338,
+        "startChar": 12,
+        "endLine": 1338,
+        "endChar": 29
+      },
+      "revId": "42e145371a1fbc9eca7336f8dc8808e8d914a0e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
