@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "860e53fb_c1c035f0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-11-24T16:23:01Z",
+      "side": 1,
+      "message": "seg faults",
+      "revId": "0a87f8d751cd0adbc52030867b2b1e5eed266ee1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d167ba4_fab95d48",
+        "filename": "zephyr/emul/emul_isl923x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 378,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-11-24T16:23:01Z",
+      "side": 1,
+      "message": "I suppose at some point we could add an API for the battery emulator, if we have several of them, so this is done by a common function",
+      "range": {
+        "startLine": 378,
+        "startChar": 0,
+        "endLine": 378,
+        "endChar": 1
+      },
+      "revId": "0a87f8d751cd0adbc52030867b2b1e5eed266ee1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
