@@ -18,6 +18,7 @@
 #include "shared_mem.h"
 #include "stddef.h"
 #include "stdint.h"
+#include "system.h"
 #include "timer.h"
 #include "tpm_registers.h"
 #include "usb_spi.h"
@@ -496,7 +497,7 @@ static int verify_keyblock(const struct kb_container *kbc,
 /* Clear validate_ap_ro_boot state. */
 void ap_ro_device_reset(void)
 {
-	if (apro_result == AP_RO_NOT_RUN)
+	if (apro_result == AP_RO_NOT_RUN || ec_rst_override())
 		return;
 	CPRINTS("%s: clear apro result", __func__);
 	apro_result = AP_RO_NOT_RUN;
@@ -1365,6 +1366,40 @@ static enum ap_ro_check_result validate_and_cache_ap_ro_v2_from_flash(void)
 	return ROV_NOT_FOUND;
 }
 
+/*
+ * A hook used to keep the EC in reset, no matter what keys the user presses,
+ * the only way out is the Cr50 reboot, most likely through power cycle by
+ * battery cutoff.
+ *
+ * Cr50 console over SuzyQ would still be available in case the user has the
+ * cable and wants to see what happens with the system. The easiest way to see
+ * the system is in this state to run the 'flog' command and examine the flash
+ * log.
+ */
+static void keep_ec_in_reset(void);
+
+DECLARE_DEFERRED(keep_ec_in_reset);
+
+static void keep_ec_in_reset(void)
+{
+	disable_sleep(SLEEP_MASK_AP_RO_VERIFICATION);
+	assert_ec_rst();
+	hook_call_deferred(&keep_ec_in_reset_data, 100 * MSEC);
+}
+
+static void release_ec_reset_override(void)
+{
+	hook_call_deferred(&keep_ec_in_reset_data, -1);
+	deassert_ec_rst();
+	enable_sleep(SLEEP_MASK_AP_RO_VERIFICATION);
+}
+
+int ec_rst_override(void)
+{
+	return apro_result == AP_RO_FAIL;
+}
+
+
 static uint8_t do_ap_ro_check(void)
 {
 	enum ap_ro_check_result rv;
@@ -1425,14 +1460,17 @@ static uint8_t do_ap_ro_check(void)
 		 * Both explicit failure to verify OR any error if cached
 		 * descriptor was found should block the booting.
 		 */
-		if ((rv == ROV_FAILED) || check_is_required())
+		if ((rv == ROV_FAILED) || check_is_required()) {
+			keep_ec_in_reset();
 			return EC_ERROR_CRC;
+		}
 		return EC_ERROR_UNIMPLEMENTED;
 	}
 
 	apro_result = AP_RO_PASS;
 	ap_ro_add_flash_event(APROF_CHECK_SUCCEEDED);
 	CPRINTS("AP RO verification SUCCEEDED!");
+	release_ec_reset_override();
 
 	return EC_SUCCESS;
 }
@@ -1527,9 +1565,14 @@ static int ap_ro_info_cmd(int argc, char **argv)
 		return EC_ERROR_PARAM_COUNT;
 #ifdef CR50_DEV
 	if (argc == max_args) {
-		if (strcasecmp(argv[1], "erase"))
+		if (!strcasecmp(argv[1], "release_reset")) {
+			apro_result = AP_RO_NOT_RUN;
+			release_ec_reset_override();
+		} else if (!strcasecmp(argv[1], "erase")) {
+			ap_ro_erase_hash();
+		} else {
 			return EC_ERROR_PARAM1;
-		ap_ro_erase_hash();
+		}
 	}
 #endif
 	rv = ap_ro_check_unsupported(false);
@@ -1555,7 +1598,8 @@ static int ap_ro_info_cmd(int argc, char **argv)
 }
 DECLARE_SAFE_CONSOLE_COMMAND(ap_ro_info, ap_ro_info_cmd,
 #ifdef CR50_DEV
-			     "[erase]", "Display or erase AP RO check space"
+			     "[erase|release_reset]",
+			     "Display or erase AP RO check space"
 #else
 			     "", "Display AP RO check space"
 #endif
