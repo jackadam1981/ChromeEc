@@ -22,6 +22,30 @@
       },
       "revId": "adc8f405779592ab7b1caab2b7228c3da71bf7ca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "424cfe64_b935c77f",
+        "filename": "zephyr/emul/emul_tcpci.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 462,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-11-24T18:26:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b012c083_41d060f5",
+      "range": {
+        "startLine": 462,
+        "startChar": 13,
+        "endLine": 462,
+        "endChar": 14
+      },
+      "revId": "adc8f405779592ab7b1caab2b7228c3da71bf7ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
