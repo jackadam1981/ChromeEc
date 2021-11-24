@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5dca4340_b6ebf0b4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-11-24T23:02:22Z",
+      "side": 1,
+      "message": "LGTM. Take or leave nits.",
+      "revId": "c9701f86c5daf2110f0778e00ec3087e4a6955ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5cc93951_3991bce2",
+        "filename": "zephyr/test/drivers/src/ppc_sn5s330.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-11-24T23:02:22Z",
+      "side": 1,
+      "message": "Nit, here and for functional setting 2: You could just do\n zassert_equal(func_set3_reg \u0026 (SN5S330_PP1_EN | SN5S330_PP2_EN), 0, ...);\n\nor\n zassert_false(func_set3_reg \u0026 (SN5S330_PP1_EN | SN5S330_PP2_EN), ...);",
+      "revId": "c9701f86c5daf2110f0778e00ec3087e4a6955ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17ab1178_00456210",
+        "filename": "zephyr/test/drivers/src/ppc_sn5s330.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-11-24T23:02:22Z",
+      "side": 1,
+      "message": "Nit, here and for functional setting 9: You could do the individual bits with zassert_true/false without \u003d\u003d/!\u003d. For register 9, you could also do one call to\n zassert_equal(reg \u0026 CLEAR_MASK, 0, ...);\n\nfor the bits that are supposed to be cleared and one to zassert_not_equal or zassrt_true for the bit that is supposed to be cleared. I leave it to you which is the most direct/readable.",
+      "revId": "c9701f86c5daf2110f0778e00ec3087e4a6955ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70243b38_50517221",
+        "filename": "zephyr/test/drivers/src/ppc_sn5s330.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-11-24T23:02:22Z",
+      "side": 1,
+      "message": "Isn\u0027t this just the \"SBU FET\"?",
+      "range": {
+        "startLine": 149,
+        "startChar": 18,
+        "endLine": 149,
+        "endChar": 21
+      },
+      "revId": "c9701f86c5daf2110f0778e00ec3087e4a6955ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
