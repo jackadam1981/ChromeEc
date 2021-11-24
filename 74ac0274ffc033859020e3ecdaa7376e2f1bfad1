@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de682fcc_6278fe76",
+        "filename": "zephyr/test/drivers/src/ppc_sn5s330.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-11-24T18:49:22Z",
+      "side": 1,
+      "message": "Wouldn\u0027t this just be 0? Similar question for other registers.",
+      "revId": "74ac0274ffc033859020e3ecdaa7376e2f1bfad1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "810f87b2_67e7f252",
+        "filename": "zephyr/test/drivers/src/ppc_sn5s330.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-11-24T18:49:22Z",
+      "side": 1,
+      "message": "Nit: Can you put the registers in name order?",
+      "revId": "74ac0274ffc033859020e3ecdaa7376e2f1bfad1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5547683d_a81c3d72",
+        "filename": "zephyr/test/drivers/src/ppc_sn5s330.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-11-24T18:49:22Z",
+      "side": 1,
+      "message": "IMO, this test would be easier to follow with most of the arguments as inline bit field values instead of variables declared at the top. Reading it straight through, I have to understand the register values without context. Then, the check of each register is boilerplate.\n\nThe expect_val variables make it easier to construct the error message for the value check, but unless the person witnessing that error is intimately familiar with this part, I don\u0027t think the hex value vs hex value error message is going to speed up debugging that much. IIRC, zassert_equal already prints out the values that weren\u0027t equal (albeit in decimal).",
+      "revId": "74ac0274ffc033859020e3ecdaa7376e2f1bfad1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

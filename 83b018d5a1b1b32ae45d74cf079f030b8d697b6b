@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "18fd2bb5_85ea90aa",
+        "filename": "zephyr/test/drivers/src/ppc_sn5s330.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-11-24T18:49:22Z",
+      "side": 1,
+      "message": "Whoa. I\u0027m not reading all that! Summarize it in one code comment. :)",
+      "parentUuid": "f73cc894_54b1c25c",
+      "revId": "83b018d5a1b1b32ae45d74cf079f030b8d697b6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c75411ae_1da55a5c",
         "filename": "zephyr/test/drivers/src/ppc_sn5s330.c",
         "patchSetId": 1
@@ -31,6 +49,30 @@
       "writtenOn": "2021-11-23T21:31:48Z",
       "side": 1,
       "message": "New test.\n\n192 through 201 is a clang-format change that didn\u0027t get applied earlier.",
+      "range": {
+        "startLine": 192,
+        "startChar": 33,
+        "endLine": 192,
+        "endChar": 59
+      },
+      "revId": "83b018d5a1b1b32ae45d74cf079f030b8d697b6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d5209ee_1045d8dd",
+        "filename": "zephyr/test/drivers/src/ppc_sn5s330.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-11-24T18:49:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c75411ae_1da55a5c",
       "range": {
         "startLine": 192,
         "startChar": 33,
