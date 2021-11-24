@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb682aee_964f9ef5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2021-11-24T14:07:22Z",
+      "side": 1,
+      "message": "Yes, you are completely right. My first thought was that it would be an easy change. I\u0027m splitting the commit as much as possible, analyzing changed asm code, and describing it in commit messages. It takes some time, but as you said, it will be easier to debug/revert any commit in case of regression.",
+      "parentUuid": "36fd2b35_50bf5208",
+      "revId": "9e5200fc608d8e3f609d1ff503a097df39f60125",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3ab2d7b4_727bd4d7",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-11-23T15:54:55Z",
       "side": 1,
       "message": "includes should be alphasorted",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 21
+      },
+      "revId": "9e5200fc608d8e3f609d1ff503a097df39f60125",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "241e27d0_c056a3b3",
+        "filename": "core/cortex-m/atomic.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2021-11-24T14:07:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3ab2d7b4_727bd4d7",
       "range": {
         "startLine": 11,
         "startChar": 0,
@@ -64,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2d9206a_7e895a43",
+        "filename": "core/cortex-m0/atomic.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2021-11-24T14:07:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b40867b4_2b117204",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 21
+      },
+      "revId": "9e5200fc608d8e3f609d1ff503a097df39f60125",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b09e6b44_9237a694",
@@ -77,6 +143,30 @@
       "writtenOn": "2021-11-23T15:54:55Z",
       "side": 1,
       "message": "alphasort",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 21
+      },
+      "revId": "9e5200fc608d8e3f609d1ff503a097df39f60125",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b4f43a6_469b4ca9",
+        "filename": "core/host/atomic.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2021-11-24T14:07:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b09e6b44_9237a694",
       "range": {
         "startLine": 10,
         "startChar": 0,
@@ -110,6 +200,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4d4d169_61c862f9",
+        "filename": "core/minute-ia/atomic.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2021-11-24T14:07:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b58ef6ad_8b05586c",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 21
+      },
+      "revId": "9e5200fc608d8e3f609d1ff503a097df39f60125",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fb6c8250_bc39f4ac",
@@ -123,6 +237,30 @@
       "writtenOn": "2021-11-23T15:54:55Z",
       "side": 1,
       "message": "alphasort",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 21
+      },
+      "revId": "9e5200fc608d8e3f609d1ff503a097df39f60125",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5865d87_34b8f027",
+        "filename": "core/nds32/atomic.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2021-11-24T14:07:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fb6c8250_bc39f4ac",
       "range": {
         "startLine": 13,
         "startChar": 0,
@@ -156,6 +294,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1dd35fa1_a7490a74",
+        "filename": "core/riscv-rv32i/atomic.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2021-11-24T14:07:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5bb5e6cf_48c028b6",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 21
+      },
+      "revId": "9e5200fc608d8e3f609d1ff503a097df39f60125",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "64bf65e7_327888fa",
@@ -169,6 +331,24 @@
       "writtenOn": "2021-11-23T15:54:55Z",
       "side": 1,
       "message": "\"/* Below definitions are required to align with zephyr typedefs */\"\n\nAnd you can #include the header from zephyr to assert that too.",
+      "revId": "9e5200fc608d8e3f609d1ff503a097df39f60125",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "251d91c9_c741b038",
+        "filename": "include/atomic_t.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2021-11-24T14:07:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "64bf65e7_327888fa",
       "revId": "9e5200fc608d8e3f609d1ff503a097df39f60125",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -190,6 +370,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1863c9ea_a32a759d",
+        "filename": "include/task.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2021-11-24T14:07:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9bcbb1d2_37049a28",
+      "revId": "9e5200fc608d8e3f609d1ff503a097df39f60125",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3273f8c1_7689df6a",
@@ -203,6 +401,24 @@
       "writtenOn": "2021-11-23T15:54:55Z",
       "side": 1,
       "message": "The names of the files in zephyr/shim/include/ need to be unique from the names of the files in include/.",
+      "revId": "9e5200fc608d8e3f609d1ff503a097df39f60125",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f5cb78c6_2bdbbc96",
+        "filename": "zephyr/shim/include/atomic_t.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2021-11-24T14:07:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3273f8c1_7689df6a",
       "revId": "9e5200fc608d8e3f609d1ff503a097df39f60125",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

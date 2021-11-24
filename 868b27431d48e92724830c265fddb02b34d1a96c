@@ -54,6 +54,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bad5b248_ac8acb33",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2021-11-24T14:07:22Z",
+      "side": 1,
+      "message": "As I described to Jack, I\u0027m splitting the change into smaller commits. Then I analyze changes in asm one by one with descriptions in commit messages.",
+      "parentUuid": "e251c298_d2c0884b",
+      "revId": "868b27431d48e92724830c265fddb02b34d1a96c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7baee91e_8b48a21b",
