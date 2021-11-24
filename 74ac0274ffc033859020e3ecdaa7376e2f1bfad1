@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3dc8431e_39b9d199",
+        "filename": "zephyr/test/drivers/src/ppc_sn5s330.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2021-11-24T21:07:55Z",
+      "side": 1,
+      "message": "Absolutely, and I almost wrote that, but I figured this might be more explicit? I don\u0027t feel strongly either way if you\u0027d like me to change this to 0. Leaving unresolved for comment.",
+      "parentUuid": "de682fcc_6278fe76",
+      "revId": "74ac0274ffc033859020e3ecdaa7376e2f1bfad1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "810f87b2_67e7f252",
         "filename": "zephyr/test/drivers/src/ppc_sn5s330.c",
         "patchSetId": 2
@@ -31,6 +49,24 @@
       "writtenOn": "2021-11-24T18:49:22Z",
       "side": 1,
       "message": "Nit: Can you put the registers in name order?",
+      "revId": "74ac0274ffc033859020e3ecdaa7376e2f1bfad1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "51378f4a_85514c6d",
+        "filename": "zephyr/test/drivers/src/ppc_sn5s330.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2021-11-24T21:07:55Z",
+      "side": 1,
+      "message": "Sure. I had them in use order previously.",
+      "parentUuid": "810f87b2_67e7f252",
       "revId": "74ac0274ffc033859020e3ecdaa7376e2f1bfad1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -48,6 +84,24 @@
       "writtenOn": "2021-11-24T18:49:22Z",
       "side": 1,
       "message": "IMO, this test would be easier to follow with most of the arguments as inline bit field values instead of variables declared at the top. Reading it straight through, I have to understand the register values without context. Then, the check of each register is boilerplate.\n\nThe expect_val variables make it easier to construct the error message for the value check, but unless the person witnessing that error is intimately familiar with this part, I don\u0027t think the hex value vs hex value error message is going to speed up debugging that much. IIRC, zassert_equal already prints out the values that weren\u0027t equal (albeit in decimal).",
+      "revId": "74ac0274ffc033859020e3ecdaa7376e2f1bfad1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27a46506_ca687d4b",
+        "filename": "zephyr/test/drivers/src/ppc_sn5s330.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2021-11-24T21:07:55Z",
+      "side": 1,
+      "message": "\u003e IIRC, zassert_equal already prints out the values that weren\u0027t equal (albeit in decimal).\n\nYou\u0027re right it does, I must\u0027ve missed that in the log earlier.\n\n\u003e IMO, this test would be easier to follow with most of the arguments as inline bit field values instead of variables declared at the top. Reading it straight through, I have to understand the register values without context. Then, the check of each register is boilerplate.\n\nI\u0027m a bit confused. Could you give an example? I\u0027ve never used struct bit fields before so here is a snippet of implementing part of what I understand.\n\n```\n\tstruct func_set3_reg {\n\t\tbool pp1_en : 1;\n\t\tbool pp2_en : 1;\n\t};\n\tstruct func_set3_reg func_set3_expected \u003d {\n\t\t.pp1_en \u003d false,\n\t\t.pp2_en \u003d false,\n\t};\n```\n\n\nThen for checking it\u0027d be something like a helper function for checking the fields in the structs?\n\nThe compiler gets upset at me if I just cast them, so I can\u0027t just directly compare them it seems.\n\n```\nverify_equal_fields(\u0026expected, \u0026actual);\n```\n\nleaving unresolved for comment",
+      "parentUuid": "5547683d_a81c3d72",
       "revId": "74ac0274ffc033859020e3ecdaa7376e2f1bfad1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
