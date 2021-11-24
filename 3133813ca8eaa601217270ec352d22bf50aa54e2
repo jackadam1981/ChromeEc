@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3df92964_8b1240b2",
+        "filename": "zephyr/projects/corsola/Kconfig",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-11-24T07:38:17Z",
+      "side": 1,
+      "message": "Copied the comment from above:\n\nI use this flags to coditionally build some of the files because kingler cannot be built with thoses files yet.",
+      "parentUuid": "e98364b7_421fe6ef",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 10
+      },
+      "revId": "3133813ca8eaa601217270ec352d22bf50aa54e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "66a97489_59a00175",
         "filename": "zephyr/projects/corsola/include/gpio_map.h",
         "patchSetId": 2
