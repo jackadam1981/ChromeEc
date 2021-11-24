@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bffb5600_30d6e486",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-11-24T07:35:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "24476923_e1d0e508",
+      "range": {
+        "startLine": 13,
+        "startChar": 11,
+        "endLine": 13,
+        "endChar": 19
+      },
+      "revId": "dc574280bdd10fd7634e816713ebb1f49cb81cf6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "be6e95f7_65b5ee13",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-11-23T17:50:10Z",
       "side": 1,
       "message": "Move all ADC support to separate CL.",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 33
+      },
+      "revId": "dc574280bdd10fd7634e816713ebb1f49cb81cf6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1d02839_44ce22dc",
+        "filename": "zephyr/projects/corsola/BUILD.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-11-24T07:35:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "be6e95f7_65b5ee13",
       "range": {
         "startLine": 43,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e90c6bc_d38a9f2f",
+        "filename": "zephyr/projects/corsola/adc_kingler.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-11-24T07:35:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "883762e8_8214ecb4",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 63
+      },
+      "revId": "dc574280bdd10fd7634e816713ebb1f49cb81cf6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "16b74fd0_aea3f98c",
@@ -93,6 +165,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a1a5f7d3_be363a97",
+        "filename": "zephyr/projects/corsola/prj_kingler.conf",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-11-24T07:35:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "16b74fd0_aea3f98c",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 62
+      },
+      "revId": "dc574280bdd10fd7634e816713ebb1f49cb81cf6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "db0562e5_4c959791",
@@ -106,6 +202,30 @@
       "writtenOn": "2021-11-23T17:50:10Z",
       "side": 1,
       "message": "Move PWM support to a separate CL.  You also need to enabled Kconfig options for PWM:\n\n# PWM\nCONFIG_PWM\u003dy\nCONFIG_PWM_SHELL\u003dn\nCONFIG_PLATFORM_EC_PWM\u003dy\n\n# LED\nCONFIG_PLATFORM_EC_LED_COMMON\u003dy\nCONFIG_PLATFORM_EC_LED_PWM\u003dy",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 63
+      },
+      "revId": "dc574280bdd10fd7634e816713ebb1f49cb81cf6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "342af0df_803bd69f",
+        "filename": "zephyr/projects/corsola/pwm_kingler.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-11-24T07:35:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "db0562e5_4c959791",
       "range": {
         "startLine": 1,
         "startChar": 0,

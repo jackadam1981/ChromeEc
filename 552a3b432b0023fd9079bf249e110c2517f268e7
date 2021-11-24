@@ -22,6 +22,30 @@
       },
       "revId": "552a3b432b0023fd9079bf249e110c2517f268e7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5c49e23_d1c64f20",
+        "filename": "zephyr/projects/corsola/kingler/gpio.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-11-24T07:35:45Z",
+      "side": 0,
+      "message": "This file was copied from other project, and I have a new CL for gpio_kingler.dts at https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3297626/2.",
+      "parentUuid": "6d3ecfa8_a6e1e47a",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 3
+      },
+      "revId": "552a3b432b0023fd9079bf249e110c2517f268e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
