@@ -22,6 +22,30 @@
       },
       "revId": "5d03f843a4852d1322ae30ee64293fc06687739c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9aa9ad2d_e945ebea",
+        "filename": "zephyr/test/drivers/src/ppc_sn5s330.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2021-11-24T22:29:47Z",
+      "side": 1,
+      "message": "Done, added specific steps and more high level description for each verify poriton.",
+      "parentUuid": "6be1464f_bbb8db44",
+      "range": {
+        "startLine": 152,
+        "startChar": 0,
+        "endLine": 154,
+        "endChar": 58
+      },
+      "revId": "5d03f843a4852d1322ae30ee64293fc06687739c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

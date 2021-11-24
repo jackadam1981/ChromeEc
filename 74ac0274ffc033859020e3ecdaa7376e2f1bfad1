@@ -56,6 +56,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "89b9fa0f_9fc3df55",
+        "filename": "zephyr/test/drivers/src/ppc_sn5s330.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2021-11-24T22:29:47Z",
+      "side": 1,
+      "message": "I think this comment thread is no longer applicable given the changes. But leaving unresolved for comment.",
+      "parentUuid": "779760ce_a87c23b9",
+      "revId": "74ac0274ffc033859020e3ecdaa7376e2f1bfad1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "810f87b2_67e7f252",
         "filename": "zephyr/test/drivers/src/ppc_sn5s330.c",
         "patchSetId": 2
@@ -109,6 +127,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ffff918c_13b386e4",
+        "filename": "zephyr/test/drivers/src/ppc_sn5s330.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2021-11-24T22:29:47Z",
+      "side": 1,
+      "message": "The use is just the order of changes mentioned by TI, although they mention 1,2,3 can be permuted in any way. So register values are just verified in the order of mention from http://b/111006203#comment35",
+      "parentUuid": "5defee76_aca12551",
+      "revId": "74ac0274ffc033859020e3ecdaa7376e2f1bfad1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5547683d_a81c3d72",
         "filename": "zephyr/test/drivers/src/ppc_sn5s330.c",
         "patchSetId": 2
@@ -156,6 +192,24 @@
       "side": 1,
       "message": "I didn\u0027t mean convert your register values to structs. I just meant that the asserts would be clearer if they directly referenced the values that you\u0027re trying to verify, i.e.\n zassert_equal(func_set9_actual_mask, SN5S330_OVP_EN_CC, ...)\n \ninstead of\n zassert_equal(func_set9_actual_mask, func_set9_expect_val)",
       "parentUuid": "27a46506_ca687d4b",
+      "revId": "74ac0274ffc033859020e3ecdaa7376e2f1bfad1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4e018eb_3c5228b1",
+        "filename": "zephyr/test/drivers/src/ppc_sn5s330.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2021-11-24T22:29:47Z",
+      "side": 1,
+      "message": "Ahh I understand better now, thanks.\n\nI think the test looks a lot better now, thank you!",
+      "parentUuid": "7a1d1d23_566dce03",
       "revId": "74ac0274ffc033859020e3ecdaa7376e2f1bfad1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
