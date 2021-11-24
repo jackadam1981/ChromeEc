@@ -43,6 +43,7 @@ register_corsola_project(
         here / "adc_kingler.dts",
         here / "battery_kingler.dts",
         here / "gpio_kingler.dts",
+        here / "i2c_kingler.dts",
     ],
     extra_kconfig_files=[here / "prj_kingler.conf"],
 )
