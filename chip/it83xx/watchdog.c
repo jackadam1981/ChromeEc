@@ -78,6 +78,11 @@ void watchdog_warning_irq(void)
 		watchdog_set_warning_timer(ITE83XX_WATCHDOG_CRITICAL_MS, 0);
 }
 
+/*
+ * Add the test comments
+ * Watchdog Reload Function
+ *
+ */
 void watchdog_reload(void)
 {
 	/* Reset warning timer. */

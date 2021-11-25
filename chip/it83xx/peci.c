@@ -74,6 +74,8 @@ static void peci_reset(void)
  * @param  peci transaction data
  *
  * @return zero if successful, non-zero if error
+ *
+ * comment for test
  */
 int peci_transaction(struct peci_data *peci)
 {
