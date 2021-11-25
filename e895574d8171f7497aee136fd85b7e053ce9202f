@@ -22,6 +22,30 @@
       },
       "revId": "e895574d8171f7497aee136fd85b7e053ce9202f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0fa5ce69_03073e07",
+        "filename": "zephyr/projects/corsola/prj_kingler.conf",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-11-25T08:19:11Z",
+      "side": 1,
+      "message": "Done. But it seems still unable to recognize prj_kingler.conf is moving from kingler/prj.conf.",
+      "parentUuid": "a0c94d5d_087e23ca",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 62
+      },
+      "revId": "e895574d8171f7497aee136fd85b7e053ce9202f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
