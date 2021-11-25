@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b592c570_3ee946c9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2021-11-25T13:14:08Z",
+      "side": 1,
+      "message": "As I described. We should avoid mixing signed/unsigned types around shit operations(espesially right shift) e.g. I haven\u0027t changed the type of timer_disabled:\n```\n#define PD_CHK_DISABLED(p, m)\t((timer_disabled[p][0] \u0026 ((m) \u003e\u003e 32)) | \\\n\t\t\t\t (timer_disabled[p][1] \u0026 (m)))\n\nbool pd_timer_is_disabled(int port, enum pd_task_timer timer)\n{\n\tuint64_t mask \u003d bitmask_uint64(timer);\n\n\treturn PD_CHK_DISABLED(port, mask);\n}\n```\nThe asm code would be changed in this case.\n",
+      "revId": "d79d86b78d338fb45594f6e2dbe69c7123e4e5f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
