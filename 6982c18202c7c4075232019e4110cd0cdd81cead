@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0aaa8484_7511bd9e",
+        "filename": "zephyr/test/drivers/src/power_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2021-11-25T15:18:47Z",
+      "side": 1,
+      "message": "nit: drop the empty line",
+      "revId": "6982c18202c7c4075232019e4110cd0cdd81cead",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5feb3561_4ba04312",
+        "filename": "zephyr/test/drivers/src/power_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2021-11-25T15:18:47Z",
+      "side": 1,
+      "message": "can you rename to delay_ms? (so that it\u0027s clear that it\u0027s in milliseconds)",
+      "range": {
+        "startLine": 248,
+        "startChar": 5,
+        "endLine": 248,
+        "endChar": 10
+      },
+      "revId": "6982c18202c7c4075232019e4110cd0cdd81cead",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e6cf946_1e9e2f34",
+        "filename": "zephyr/test/drivers/src/power_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2021-11-25T15:18:47Z",
+      "side": 1,
+      "message": "So this is related to the `msleep(100);` in `power/common.c` right?\n\nHow about moving that \"100\" in a #define in `power.h` so that we can reference it in both `common.c` and the test? That way we can avoid having two correlated magic numbers in test and code.",
+      "range": {
+        "startLine": 271,
+        "startChar": 18,
+        "endLine": 271,
+        "endChar": 20
+      },
+      "revId": "6982c18202c7c4075232019e4110cd0cdd81cead",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
