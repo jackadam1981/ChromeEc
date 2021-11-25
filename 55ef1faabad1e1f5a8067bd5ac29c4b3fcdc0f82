@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62073860_8a9b6328",
+        "filename": "zephyr/test/drivers/src/power_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2021-11-25T15:02:08Z",
+      "side": 1,
+      "message": "should this be a #define outside of the individual tests?",
+      "range": {
+        "startLine": 98,
+        "startChar": 1,
+        "endLine": 100,
+        "endChar": 31
+      },
+      "revId": "55ef1faabad1e1f5a8067bd5ac29c4b3fcdc0f82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2aebb7d_b8e04e66",
+        "filename": "zephyr/test/drivers/src/power_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2021-11-25T15:02:08Z",
+      "side": 1,
+      "message": "Since this is reused, how about moving the struct declaration outside?",
+      "range": {
+        "startLine": 101,
+        "startChar": 0,
+        "endLine": 106,
+        "endChar": 0
+      },
+      "revId": "55ef1faabad1e1f5a8067bd5ac29c4b3fcdc0f82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e908664_53b677f0",
+        "filename": "zephyr/test/drivers/src/power_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2021-11-25T15:02:08Z",
+      "side": 1,
+      "message": "Not too convinced on this approach, seems a bit brittle as it assumes that the mask is a contiguous sequence of LSb 1s. A more robust approach would be to find the MSb offset and use that to make a mask that covers all the lower bits, but then I\u0027m wondering if we are not overthinking the whole thing.\n\nHow would you feel about only testing some specific mask? Say CHIPSET_STATE_ANY_OFF and CHIPSET_STATE_ANY_SUSPEND.",
+      "range": {
+        "startLine": 156,
+        "startChar": 7,
+        "endLine": 156,
+        "endChar": 48
+      },
+      "revId": "55ef1faabad1e1f5a8067bd5ac29c4b3fcdc0f82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
