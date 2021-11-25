@@ -273,6 +273,7 @@ int ocpc_config_secondary_charger(int *desired_input_current,
 	int i, step, loc;
 	bool icl_reached = false;
 	static timestamp_t precharge_exit;
+	static struct charge_state_data *curr;
 
 	/*
 	 * There's nothing to do if we're not using this charger.  Should
@@ -376,7 +377,7 @@ int ocpc_config_secondary_charger(int *desired_input_current,
 	}
 
 	/* Set our current target accordingly. */
-	if (batt.desired_voltage) {
+	if (batt.desired_voltage && curr->ac) {
 		if (((batt.voltage < batt_info->voltage_min) ||
 		    ((batt.voltage < batt_info->voltage_normal) &&
 		    (current_ma <= batt_info->precharge_current))) &&
