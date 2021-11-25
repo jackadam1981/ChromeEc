@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "8cf50a0b_04e65a0f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1394446
+      },
+      "writtenOn": "2021-11-25T09:10:23Z",
+      "side": 1,
+      "message": "Done. I only added device binding for NCT38XX alert and didn\u0027t add tcpc_config.",
+      "parentUuid": "d8d1625a_84bf73f6",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 0
+      },
+      "revId": "0b1fc1e121f55694c081a50cbcb40379648d93cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "fb793e6d_294a8f88",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 3
@@ -58,6 +82,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "87199abe_4814b897",
+        "filename": "driver/tcpm/nct38xx.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1394446
+      },
+      "writtenOn": "2021-11-25T09:10:23Z",
+      "side": 1,
+      "message": "CL:3297249 can work alone. This CL used to connect the Cros NCT38XX alret \u0026 Zephyr NCT38XX device ise handler.",
+      "parentUuid": "545af3dc_15a1a066",
+      "revId": "0b1fc1e121f55694c081a50cbcb40379648d93cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3a642870_c662f4f4",
@@ -75,6 +117,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "30786f65_e2523d85",
+        "filename": "driver/tcpm/nct38xx.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1394446
+      },
+      "writtenOn": "2021-11-25T09:10:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3a642870_c662f4f4",
+      "revId": "0b1fc1e121f55694c081a50cbcb40379648d93cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b9a15ed5_b83a4e24",
@@ -88,6 +148,30 @@
       "writtenOn": "2021-11-23T15:33:06Z",
       "side": 1,
       "message": "Anything more descriptive that can be written here?",
+      "range": {
+        "startLine": 757,
+        "startChar": 3,
+        "endLine": 757,
+        "endChar": 55
+      },
+      "revId": "0b1fc1e121f55694c081a50cbcb40379648d93cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "296b7e88_3f6673a9",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 3
+      },
+      "lineNbr": 757,
+      "author": {
+        "id": 1394446
+      },
+      "writtenOn": "2021-11-25T09:10:23Z",
+      "side": 1,
+      "message": "This change to use another exist config.",
+      "parentUuid": "b9a15ed5_b83a4e24",
       "range": {
         "startLine": 757,
         "startChar": 3,
@@ -121,6 +205,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "98e2d472_aefbdecc",
+        "filename": "zephyr/dts/bindings/tcpc/named-tcpc-ports.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1394446
+      },
+      "writtenOn": "2021-11-25T09:10:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4d2d38fd_f698742e",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 2,
+        "endChar": 37
+      },
+      "revId": "0b1fc1e121f55694c081a50cbcb40379648d93cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e819768f_7c77ec39",
@@ -134,6 +242,30 @@
       "writtenOn": "2021-11-23T15:33:06Z",
       "side": 1,
       "message": "Write something that better describes this:\n\n  List of TCPC ports automatically converted to identifiers available to EC code using an enum created by the shim layer in tcpc.h.",
+      "range": {
+        "startLine": 4,
+        "startChar": 30,
+        "endLine": 4,
+        "endChar": 41
+      },
+      "revId": "0b1fc1e121f55694c081a50cbcb40379648d93cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9ff76d6_d9bbdbea",
+        "filename": "zephyr/dts/bindings/tcpc/named-tcpc-ports.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1394446
+      },
+      "writtenOn": "2021-11-25T09:10:23Z",
+      "side": 1,
+      "message": "It seems like shim ppc don\u0027t use enum name to init the config structure. I change to use another binding file which more close pcc shim.",
+      "parentUuid": "e819768f_7c77ec39",
       "range": {
         "startLine": 4,
         "startChar": 30,
@@ -167,6 +299,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "25b2458f_0339b8e2",
+        "filename": "zephyr/dts/bindings/tcpc/named-tcpc-ports.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1394446
+      },
+      "writtenOn": "2021-11-25T09:10:23Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ee855912_8f1127f3",
+      "range": {
+        "startLine": 6,
+        "startChar": 13,
+        "endLine": 6,
+        "endChar": 29
+      },
+      "revId": "0b1fc1e121f55694c081a50cbcb40379648d93cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2a7ecdd2_b3dc9783",
@@ -180,6 +336,30 @@
       "writtenOn": "2021-11-23T15:33:06Z",
       "side": 1,
       "message": "Again, needs a better description",
+      "range": {
+        "startLine": 9,
+        "startChar": 15,
+        "endLine": 9,
+        "endChar": 42
+      },
+      "revId": "0b1fc1e121f55694c081a50cbcb40379648d93cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "56966fd2_6e394d73",
+        "filename": "zephyr/dts/bindings/tcpc/named-tcpc-ports.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1394446
+      },
+      "writtenOn": "2021-11-25T09:10:23Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "2a7ecdd2_b3dc9783",
       "range": {
         "startLine": 9,
         "startChar": 15,
@@ -207,6 +387,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ded7e6fe_487a3d5e",
+        "filename": "zephyr/dts/bindings/tcpc/named-tcpc-ports.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1394446
+      },
+      "writtenOn": "2021-11-25T09:10:23Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "67369d84_7a90d217",
+      "revId": "0b1fc1e121f55694c081a50cbcb40379648d93cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d7fb086a_99804155",
@@ -220,6 +418,30 @@
       "writtenOn": "2021-11-23T15:33:06Z",
       "side": 1,
       "message": "look up by compatible string using DT_INST and related macros",
+      "range": {
+        "startLine": 12,
+        "startChar": 19,
+        "endLine": 12,
+        "endChar": 26
+      },
+      "revId": "0b1fc1e121f55694c081a50cbcb40379648d93cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "99b79cff_1b295b95",
+        "filename": "zephyr/shim/include/tcpc.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1394446
+      },
+      "writtenOn": "2021-11-25T09:10:23Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d7fb086a_99804155",
       "range": {
         "startLine": 12,
         "startChar": 19,
@@ -253,6 +475,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4461f4da_a5413955",
+        "filename": "zephyr/shim/include/tcpc.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1394446
+      },
+      "writtenOn": "2021-11-25T09:10:23Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "f63151b9_b2eedf40",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 16
+      },
+      "revId": "0b1fc1e121f55694c081a50cbcb40379648d93cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "854299d7_94d2f47a",
@@ -266,6 +512,30 @@
       "writtenOn": "2021-11-23T15:33:06Z",
       "side": 1,
       "message": "Needs kerneldoc",
+      "range": {
+        "startLine": 24,
+        "startChar": 21,
+        "endLine": 24,
+        "endChar": 46
+      },
+      "revId": "0b1fc1e121f55694c081a50cbcb40379648d93cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc4e8ae0_bdb034c1",
+        "filename": "zephyr/shim/include/tcpc.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1394446
+      },
+      "writtenOn": "2021-11-25T09:10:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "854299d7_94d2f47a",
       "range": {
         "startLine": 24,
         "startChar": 21,
@@ -323,6 +593,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "87def42c_1a01df5d",
+        "filename": "zephyr/shim/src/tcpc.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1394446
+      },
+      "writtenOn": "2021-11-25T09:10:23Z",
+      "side": 1,
+      "message": "Done. I moved it under the named-usbc-ports. Please review this CL again. Thanks.",
+      "parentUuid": "50d398af_a11106ea",
+      "range": {
+        "startLine": 11,
+        "startChar": 20,
+        "endLine": 11,
+        "endChar": 27
+      },
+      "revId": "0b1fc1e121f55694c081a50cbcb40379648d93cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cbd4cfe8_1d88ff93",
@@ -336,6 +630,30 @@
       "writtenOn": "2021-11-23T15:33:06Z",
       "side": 1,
       "message": "Describe further what the long term plan actually is",
+      "range": {
+        "startLine": 19,
+        "startChar": 3,
+        "endLine": 19,
+        "endChar": 12
+      },
+      "revId": "0b1fc1e121f55694c081a50cbcb40379648d93cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ea5f1f6_532aabda",
+        "filename": "zephyr/shim/src/tcpc.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1394446
+      },
+      "writtenOn": "2021-11-25T09:10:23Z",
+      "side": 1,
+      "message": "I rewrote the comment.",
+      "parentUuid": "cbd4cfe8_1d88ff93",
       "range": {
         "startLine": 19,
         "startChar": 3,
