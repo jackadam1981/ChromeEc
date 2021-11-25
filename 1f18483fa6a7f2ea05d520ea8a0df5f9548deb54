@@ -22,6 +22,30 @@
       },
       "revId": "1f18483fa6a7f2ea05d520ea8a0df5f9548deb54",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f59771d4_baa39c4e",
+        "filename": "power/power_status.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 390,
+      "author": {
+        "id": 1384633
+      },
+      "writtenOn": "2021-11-25T12:06:27Z",
+      "side": 1,
+      "message": "This was debug print. Removed it now. Thanks for review.",
+      "parentUuid": "fc64b24d_a1da931e",
+      "range": {
+        "startLine": 381,
+        "startChar": 0,
+        "endLine": 390,
+        "endChar": 1
+      },
+      "revId": "1f18483fa6a7f2ea05d520ea8a0df5f9548deb54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
