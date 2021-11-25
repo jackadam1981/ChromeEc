@@ -381,6 +381,9 @@ int ocpc_config_secondary_charger(int *desired_input_current,
 		    ((batt.voltage < batt_info->voltage_normal) &&
 		    (current_ma <= batt_info->precharge_current))) &&
 		    (ph != PHASE_PRECHARGE)) {
+			#if defined(CONFIG_CHARGER_RAA489000) && \
+			defined(CONFIG_OCPC)
+			#else
 			/*
 			 * If the charger IC doesn't support the linear charge
 			 * feature, proceed to the CC phase.
@@ -393,6 +396,7 @@ int ocpc_config_secondary_charger(int *desired_input_current,
 				ph = PHASE_PRECHARGE;
 				i_ma = current_ma;
 			}
+			#endif
 		} else if (batt.voltage < batt.desired_voltage) {
 			if ((ph == PHASE_PRECHARGE) &&
 			    (current_ma >
