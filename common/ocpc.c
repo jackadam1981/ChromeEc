@@ -381,17 +381,21 @@ int ocpc_config_secondary_charger(int *desired_input_current,
 		    ((batt.voltage < batt_info->voltage_normal) &&
 		    (current_ma <= batt_info->precharge_current))) &&
 		    (ph != PHASE_PRECHARGE)) {
+			if (!IS_ENABLED(CONFIG_CHARGER_RAA489000) ||
+			    !IS_ENABLED(CONFIG_OCPC)) {
 			/*
-			 * If the charger IC doesn't support the linear charge
-			 * feature, proceed to the CC phase.
+			 * If the charger IC doesn't support the linear
+			 * charge feature, proceed to the CC phase.
 			 */
-			result = ocpc_precharge_enable(true);
-			if (result == EC_ERROR_UNIMPLEMENTED) {
-				ph = PHASE_CC;
-			} else if (result == EC_SUCCESS) {
-				CPRINTS("OCPC: Enabling linear precharge");
-				ph = PHASE_PRECHARGE;
-				i_ma = current_ma;
+				result = ocpc_precharge_enable(true);
+				if (result == EC_ERROR_UNIMPLEMENTED) {
+					ph = PHASE_CC;
+				} else if (result == EC_SUCCESS) {
+					CPRINTS("OCPC: Enabling linear
+					    precharge");
+					ph = PHASE_PRECHARGE;
+					i_ma = current_ma;
+				}
 			}
 		} else if (batt.voltage < batt.desired_voltage) {
 			if ((ph == PHASE_PRECHARGE) &&
