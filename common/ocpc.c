@@ -379,7 +379,8 @@ int ocpc_config_secondary_charger(int *desired_input_current,
 	if (batt.desired_voltage) {
 		if (((batt.voltage < batt_info->voltage_min) ||
 		    ((batt.voltage < batt_info->voltage_normal) &&
-		    (current_ma <= batt_info->precharge_current))) &&
+		    (current_ma <= batt_info->precharge_current) &&
+		    (!IS_ENABLED(CONFIG_CHARGER_RAA489000)))) &&
 		    (ph != PHASE_PRECHARGE)) {
 			/*
 			 * If the charger IC doesn't support the linear charge
