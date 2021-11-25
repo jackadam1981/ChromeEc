@@ -446,6 +446,30 @@
       },
       "revId": "9485679ea467399b0e83de7500032266f887e621",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd5bad48_5b0b85f0",
+        "filename": "power/power_status.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1384633
+      },
+      "writtenOn": "2021-11-25T11:59:08Z",
+      "side": 1,
+      "message": "I checked in \"board/brya/board.h\" file but in that CONFIG_USB_POWER_DELIVERY is not added. \nIn .config its enabled as follows,\n    build/brya/.config:CONFIG_USB_POWER_DELIVERY\u003dy\nSo, added here.",
+      "parentUuid": "5f61c9a1_7c40aeb2",
+      "range": {
+        "startLine": 284,
+        "startChar": 1,
+        "endLine": 284,
+        "endChar": 6
+      },
+      "revId": "9485679ea467399b0e83de7500032266f887e621",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
