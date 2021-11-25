@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b95a8bea_591125a4",
+        "filename": "zephyr/test/drivers/src/power_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2021-11-25T15:40:26Z",
+      "side": 1,
+      "message": "nit: should probably be called GPIO_ACOK_OD_NODE (DT_PATH is described as: \"Get a node identifier for a devicetree path\", so path is the argument, not the output). I see that we used this pattern a fair a bit in the code base unfortunately, I\u0027d say let\u0027s name this right here, we\u0027ll eventually get through the others once we\u0027ll get to the point of using the native gpio stuff.",
+      "range": {
+        "startLine": 29,
+        "startChar": 8,
+        "endLine": 29,
+        "endChar": 25
+      },
+      "revId": "fc6534d6fe9473ec6110528fbf4462ddec7d8c45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3fc5d74_17607bdc",
+        "filename": "zephyr/test/drivers/src/power_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2021-11-25T15:40:26Z",
+      "side": 1,
+      "message": "Should this be GPIO_ACOK_OD_PIN?",
+      "range": {
+        "startLine": 30,
+        "startChar": 8,
+        "endLine": 30,
+        "endChar": 25
+      },
+      "revId": "fc6534d6fe9473ec6110528fbf4462ddec7d8c45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
