@@ -118,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9bf3638b_582831c9",
+        "filename": "power/power_status.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1384633
+      },
+      "writtenOn": "2021-11-25T11:39:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d475579c_ebd8dac4",
+      "range": {
+        "startLine": 117,
+        "startChar": 1,
+        "endLine": 117,
+        "endChar": 53
+      },
+      "revId": "9485679ea467399b0e83de7500032266f887e621",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fa4e1a8a_c0d5e0bb",
@@ -390,6 +414,30 @@
       "writtenOn": "2021-11-12T23:37:31Z",
       "side": 1,
       "message": "IS_ENABLED?",
+      "range": {
+        "startLine": 284,
+        "startChar": 1,
+        "endLine": 284,
+        "endChar": 6
+      },
+      "revId": "9485679ea467399b0e83de7500032266f887e621",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f61c9a1_7c40aeb2",
+        "filename": "power/power_status.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1384633
+      },
+      "writtenOn": "2021-11-25T11:39:25Z",
+      "side": 1,
+      "message": "Sorry I didn\u0027t get your comment. Please, elaborate. Thanks.",
+      "parentUuid": "5f4a140c_cc5ff097",
       "range": {
         "startLine": 284,
         "startChar": 1,
