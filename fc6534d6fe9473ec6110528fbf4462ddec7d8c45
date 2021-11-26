@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3b735b1_bc139a43",
+        "filename": "zephyr/test/drivers/src/power_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2021-11-26T12:53:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b95a8bea_591125a4",
+      "range": {
+        "startLine": 29,
+        "startChar": 8,
+        "endLine": 29,
+        "endChar": 25
+      },
+      "revId": "fc6534d6fe9473ec6110528fbf4462ddec7d8c45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d3fc5d74_17607bdc",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-11-25T15:40:26Z",
       "side": 1,
       "message": "Should this be GPIO_ACOK_OD_PIN?",
+      "range": {
+        "startLine": 30,
+        "startChar": 8,
+        "endLine": 30,
+        "endChar": 25
+      },
+      "revId": "fc6534d6fe9473ec6110528fbf4462ddec7d8c45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5fb18c56_50460f97",
+        "filename": "zephyr/test/drivers/src/power_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2021-11-26T12:53:43Z",
+      "side": 1,
+      "message": "Yes, it is. Changed it.",
+      "parentUuid": "d3fc5d74_17607bdc",
       "range": {
         "startLine": 30,
         "startChar": 8,
