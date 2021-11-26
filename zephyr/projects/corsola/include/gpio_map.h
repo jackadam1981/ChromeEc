@@ -43,7 +43,7 @@
 	#define TCPC_C1_INT()
 	#define PPC_C0_INT()
 	#define BC12_C0_INT()
-#elif defined(CONFIG_SOC_NPCX9M3F)
+#elif defined(CONFIG_SOC_NPCX9M3F) || defined(CONFIG_SOC_NPCX9M6F)
 	/* The interrupt is configured by dts */
 	#define AP_SPI_INT()
 	#define TCPC_C0_INT()       GPIO_INT(GPIO_USB_C0_TCPC_INT_ODL,         \
