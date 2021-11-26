@@ -19,11 +19,6 @@
  *
  * @return board version in the range 0 to 14 inclusive
  */
-int board_get_version(void);
-
-void ppc_interrupt(enum gpio_signal signal);
-void bc12_interrupt(enum gpio_signal signal);
-void x_ec_interrupt(enum gpio_signal signal);
 
 #endif /* !__ASSEMBLER__ */
 #endif /* __CROS_EC_BASEBOARD_COMMON_H */
