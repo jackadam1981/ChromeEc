@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eebe4f09_76ec588b",
+        "filename": "zephyr/test/drivers/src/power_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2021-11-26T12:53:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0aaa8484_7511bd9e",
+      "revId": "6982c18202c7c4075232019e4110cd0cdd81cead",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5feb3561_4ba04312",
@@ -41,6 +59,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "48f46e9d_65f030f1",
+        "filename": "zephyr/test/drivers/src/power_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2021-11-26T12:53:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5feb3561_4ba04312",
+      "range": {
+        "startLine": 248,
+        "startChar": 5,
+        "endLine": 248,
+        "endChar": 10
+      },
+      "revId": "6982c18202c7c4075232019e4110cd0cdd81cead",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5e6cf946_1e9e2f34",
@@ -54,6 +96,30 @@
       "writtenOn": "2021-11-25T15:18:47Z",
       "side": 1,
       "message": "So this is related to the `msleep(100);` in `power/common.c` right?\n\nHow about moving that \"100\" in a #define in `power.h` so that we can reference it in both `common.c` and the test? That way we can avoid having two correlated magic numbers in test and code.",
+      "range": {
+        "startLine": 271,
+        "startChar": 18,
+        "endLine": 271,
+        "endChar": 20
+      },
+      "revId": "6982c18202c7c4075232019e4110cd0cdd81cead",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7828cd1d_5879e172",
+        "filename": "zephyr/test/drivers/src/power_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2021-11-26T12:53:13Z",
+      "side": 1,
+      "message": "50 ms was chosen arbitrary as \"some time before delay end\" to check if G3 state wasn\u0027t left too soon. I have modified slightly this part of code and added comment. Please check if it is OK now.",
+      "parentUuid": "5e6cf946_1e9e2f34",
       "range": {
         "startLine": 271,
         "startChar": 18,
