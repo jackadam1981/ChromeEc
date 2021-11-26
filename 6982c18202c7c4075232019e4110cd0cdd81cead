@@ -128,6 +128,30 @@
       },
       "revId": "6982c18202c7c4075232019e4110cd0cdd81cead",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "03721e59_7863a08d",
+        "filename": "zephyr/test/drivers/src/power_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2021-11-26T15:42:08Z",
+      "side": 1,
+      "message": "Yeah cool with that",
+      "parentUuid": "7828cd1d_5879e172",
+      "range": {
+        "startLine": 271,
+        "startChar": 18,
+        "endLine": 271,
+        "endChar": 20
+      },
+      "revId": "6982c18202c7c4075232019e4110cd0cdd81cead",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
