@@ -93,6 +93,12 @@ static int check_power_rails_enabled(void)
 	return out;
 }
 
+void update_power_signal_cb(const struct device *gpiodev, struct gpio_callback *cb,
+               uint32_t pin)
+{
+	LOG_ERR("*************************gpio int %d\n", pin);
+}
+
 static void pwrseq_gpio_init(void)
 {
 	struct gpio_config *gpio;
@@ -102,8 +108,8 @@ static void pwrseq_gpio_init(void)
 		gpio = &power_seq_gpios[i];
 
 		LOG_DBG("Configuring GPIO: net_name=%s, port_name=%s, \
-			pin=0x%x, flag=0x%x", gpio->net_name, gpio->port_name,
-			gpio->pin, gpio->flags);
+			pin=0x%x, flag=0x%x port %p", gpio->net_name, gpio->port_name,
+			gpio->pin, gpio->flags, gpio->port);
 		/* Get GPIO binding */
 		if (!device_is_ready(gpio->port)) {
 			LOG_DBG("gpio device not ready error\n");
@@ -127,7 +133,25 @@ static void pwrseq_gpio_init(void)
 			pin=0x%x, flag=0x%x", ret, gpio->net_name,
 			gpio->port_name,
 			gpio->pin, gpio->flags);
+
+	for (i = 0; i < power_seq_int_gpios_count; i++) {
+		/* Configure interrupt */
+		gpio_init_callback(&power_seq_int_gpios[i].gpio_cb,
+			update_power_signal_cb,
+			BIT(power_seq_int_gpios[i].pin));
+		ret = gpio_add_callback(power_seq_int_gpios[i].gpio_dev,
+			&power_seq_int_gpios[i].gpio_cb);
+
+		if (!ret) {
+			gpio_pin_interrupt_configure(power_seq_int_gpios[i].gpio_dev,
+				power_seq_int_gpios[i].pin,
+				power_seq_int_gpios[i].int_flags);
+		} else {
+                        LOG_ERR("Failed GPIO interrupt callback i=%d ret=%d", i, ret);
+		}
+	}
 }
+
 /* This should be the current state */
 /* There should be the new state stored in new_state */
 enum power_states_ndsx pwr_sm_get_state(void)
