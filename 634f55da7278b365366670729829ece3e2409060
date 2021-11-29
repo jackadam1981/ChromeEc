@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69798848_6462ed35",
+        "filename": "common/ocpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 386,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-11-29T21:04:44Z",
+      "side": 1,
+      "message": "Does \n\n  if (!IS_ENABLED(CONFIG_CHARGER_RAA489000) || !IS_ENABLED(CONFIG_OCPC)) {\n    result \u003d ocpc_precharge_enable(true);\n    ...\n  }\n  \nnot work?",
+      "range": {
+        "startLine": 384,
+        "startChar": 0,
+        "endLine": 386,
+        "endChar": 8
+      },
+      "revId": "634f55da7278b365366670729829ece3e2409060",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
