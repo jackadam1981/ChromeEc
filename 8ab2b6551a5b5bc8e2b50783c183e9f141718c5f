@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8cedc68_05651749",
+        "filename": "power/common.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 417,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-11-29T20:52:20Z",
+      "side": 1,
+      "message": "Hi Tomasz, \n\nThis is working as intended. When the battery is low, we want to make sure the EC won\u0027t sleep so that it can catch the moment the battery goes below the threshold under which cutoff is needed. If we let the EC hibernate (as suggested by this CL), the battery will be drained extra deeply, which the SDC tries to prevent.",
+      "range": {
+        "startLine": 417,
+        "startChar": 9,
+        "endLine": 417,
+        "endChar": 36
+      },
+      "revId": "8ab2b6551a5b5bc8e2b50783c183e9f141718c5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
