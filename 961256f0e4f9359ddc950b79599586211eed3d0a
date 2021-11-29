@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d3ecbe9_c7215573",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2021-11-29T17:32:25Z",
+      "side": 1,
+      "message": "Just FYI, this change will probably have effects on minimum brightness (how dim it will go at 5%) and brightness in general (default brightness will probably change (in terms of power and nits), therefore so will will power load test). Make sure you\u0027re ok with that.",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 5
+      },
+      "revId": "961256f0e4f9359ddc950b79599586211eed3d0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "d808ff38_d95df708",
@@ -14,6 +37,23 @@
       "writtenOn": "2021-11-29T16:52:29Z",
       "side": 1,
       "message": "I\u0027d like to give amstan@ a chance to look into it.",
+      "revId": "961256f0e4f9359ddc950b79599586211eed3d0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ed4fbf0_ad168ca1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2021-11-29T17:32:25Z",
+      "side": 1,
+      "message": "Cool!",
       "revId": "961256f0e4f9359ddc950b79599586211eed3d0a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
