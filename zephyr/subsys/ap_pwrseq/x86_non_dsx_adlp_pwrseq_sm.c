@@ -8,6 +8,58 @@
 
 LOG_MODULE_DECLARE(ap_pwrseq, 4);
 
+/* Power signals list */
+const struct power_signal_info power_signal_list[] = {
+	{
+		.net_name = GPIO_NET_NAME(PCH_EC_SLP_S0_L),
+		.pos = X86_SLP_S0_DEASSERTED,
+		.flags = POWER_SIGNAL_ACTIVE_HIGH,
+			//???POWER_SIGNAL_DISABLE_AT_BOOT,
+		.name = "SLP_S0_DEASSERTED",
+	},
+	{
+		.net_name = GPIO_NET_NAME(PCH_EC_SLP_SUS_L),
+		.pos = X86_SLP_SUS_DEASSERTED,
+		.flags = POWER_SIGNAL_ACTIVE_HIGH,
+		.name = "SLP_SUS_DEASSERTED",
+	},
+	{
+		.net_name = GPIO_NET_NAME(VR_PG_EC_RSMRST_ODL),
+		.pos = X86_RSMRST_L_PGOOD,
+		.flags = POWER_SIGNAL_ACTIVE_HIGH,
+		.name = "RSMRST_L_PGOOD",
+	},
+	{
+		.net_name = GPIO_NET_NAME(VR_EC_DSW_PWROK),
+		.pos = X86_DSW_PWROK,
+		.flags = POWER_SIGNAL_ACTIVE_HIGH,
+		.name = "DSW_DPWROK",
+	},
+	{
+		.net_name = GPIO_NET_NAME(VR_EC_ALL_SYS_PWRGD),
+		.pos = X86_ALL_SYS_PGOOD,
+		.flags = POWER_SIGNAL_ACTIVE_HIGH,
+		.name = "ALL_SYS_PWRGD",
+	},
+};
+const int power_signal_gpio_count = ARRAY_SIZE(power_signal_list);
+
+const struct power_signal_vw_info power_signal_vw_list[] = {
+	{
+		.vw_signal = ESPI_VWIRE_SIGNAL_SLP_S3,
+		.pos = X86_SLP_S3_DEASSERTED,
+		.flags = POWER_SIGNAL_ACTIVE_HIGH,
+		.name = "SLP_S3_DEASSERTED",
+	},
+	{
+		.vw_signal = ESPI_VWIRE_SIGNAL_SLP_S4,
+		.pos = X86_SLP_S4_DEASSERTED,
+		.flags = POWER_SIGNAL_ACTIVE_HIGH,
+		.name = "SLP_S4_DEASSERTED",
+	},
+};
+const int power_signal_vw_count = ARRAY_SIZE(power_signal_vw_list);
+
 void ap_off()
 {
 	/* TODO: This could be added as g3action handler */
