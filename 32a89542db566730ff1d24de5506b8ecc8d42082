@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ed0ea15_4ff1bbfb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2021-11-29T17:52:38Z",
+      "side": 1,
+      "message": "Going to let somebody more familiar with Zephyr Kconfig take a look at this. It isn\u0027t super clear to me how this config option is going to be used. Wouldn\u0027t it make more sense to have a config option for each of the possible measurement approaches and enable those board-by-board?",
+      "revId": "32a89542db566730ff1d24de5506b8ecc8d42082",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
