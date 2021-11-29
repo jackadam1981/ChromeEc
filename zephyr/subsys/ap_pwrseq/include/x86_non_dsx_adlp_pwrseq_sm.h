@@ -81,4 +81,36 @@ struct gpio_config power_seq_gpios[] = {
 };
 
 const int power_seq_gpios_count = ARRAY_SIZE(power_seq_gpios);
+
+struct gpio_interrupt_config power_seq_intr_gpios[] = {
+	{
+		POWER_SEQ_INTR_GPIO(PCH_EC_SLP_S0_L),
+		/* Disable interrupt at boot up */
+		.disable_at_boot = true,
+	},
+	{
+		POWER_SEQ_INTR_GPIO(PCH_EC_SLP_SUS_L),
+		.disable_at_boot = false,
+	},
+	{
+		POWER_SEQ_INTR_GPIO(VR_PG_EC_RSMRST_ODL),
+		.disable_at_boot = false,
+	},
+#if POWER_SEQ_GPIO_PRESENT(VR_EC_DSW_PWROK)
+	{
+		POWER_SEQ_INTR_GPIO(VR_EC_DSW_PWROK),
+		.disable_at_boot = false,
+	},
+#endif
+	{
+		POWER_SEQ_INTR_GPIO(PCH_EC_SLP_S3_L),
+		.disable_at_boot = false,
+	},
+	{
+		POWER_SEQ_INTR_GPIO(VR_EC_ALL_SYS_PWRGD),
+		.disable_at_boot = false,
+	},
+};
+const int power_seq_intr_gpios_count = ARRAY_SIZE(power_seq_intr_gpios);
+
 #endif /* __X86_NON_DSX_ADLP_H__ */
