@@ -16,6 +16,24 @@
       "message": "It looks like the ITE build fails because DEVICE_DEFINE as used by cros_flash_it8xxx2.c makes the device private so it can\u0027t be retrieved directly with DEVICE_DT_GET. I could either have flash.c continue to use device_get_binding() and retrieve the underlying device at runtime, or modify the ITE flash driver to make the device public.\n\nUsing device_get_binding() seems a little safer because its implementation checks that a device is correctly initialized before use, but then we retain the layer of indirection at runtime. Any opinion on which would be better?",
       "revId": "afa7e8ca54fa2433a93faf454962abe98da79f5a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b40db5de_c02e3dda",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-11-29T23:20:43Z",
+      "side": 1,
+      "message": "I think the chosen node is the right approach here.  You should change the ITE flash driver to use DEVICE_DT_DEFINE or DEVICE_DT_INST_DEFINE so that the device is declared with extern visibility.\n\nAdding a device_is_ready() call in flash_dev_init() will maintain the runtime checks.",
+      "parentUuid": "072973a5_30c78ca9",
+      "revId": "afa7e8ca54fa2433a93faf454962abe98da79f5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
