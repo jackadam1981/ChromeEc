@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da399e73_2f63933b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-11-29T20:30:53Z",
+      "side": 1,
+      "message": "I\u0027m confused by this implementation - this handle is passed to nct38xx_gpio_alert_handler().  Should this be a pointer to a nuvoton,nct38xx-gpio or nuvoton,nct38xx-gpio-alert instead?",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 33
+      },
+      "revId": "05d719c072378a0aeda446513d443a981f758115",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
