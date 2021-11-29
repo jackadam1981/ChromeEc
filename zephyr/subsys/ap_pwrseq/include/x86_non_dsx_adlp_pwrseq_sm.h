@@ -23,6 +23,21 @@
 extern void gpio_set_lvl(const char *net_name, int val);
 extern int gpio_get_lvl(const char *net_name);
 
+/* Power signals list */
+enum power_signal {
+	X86_SLP_S0_DEASSERTED,
+#if 0
+	X86_SLP_S3_DEASSERTED,
+	X86_SLP_S4_DEASSERTED,
+#endif
+	X86_SLP_SUS_DEASSERTED,
+	X86_RSMRST_L_PGOOD,
+	X86_DSW_PWROK,
+	X86_ALL_SYS_PGOOD,
+	/* Number of X86 signals */
+	POWER_SIGNAL_COUNT
+};
+
 /* Power sequencing GPIOs */
 /* TODO:- Add more config to add alderlake specific variants
  * without power sequencer chips
@@ -82,4 +97,49 @@ struct gpio_config power_seq_gpios[] = {
 };
 
 const int power_seq_gpios_count = ARRAY_SIZE(power_seq_gpios);
+
+#define ADL_INT_GPIO_DEV(node) \
+	DEVICE_DT_GET(DT_GPIO_CTLR_BY_IDX(DT_NODELABEL(node), gpios, 0))
+struct gpio_interrupt_config power_seq_int_gpios[] = {
+	{
+		//.net_name = GPIO_NET_NAME(PCH_EC_SLP_SUS_L),
+		.gpio_dev = ADL_INT_GPIO_DEV(PCH_EC_SLP_SUS_L),
+		.int_flags = GPIO_INT_EDGE_BOTH,
+		.sig_enum = X86_SLP_SUS_DEASSERTED,
+	},
+
+	{
+		//.net_name = GPIO_NET_NAME(PCH_EC_SLP_S0_L),
+		.gpio_dev = ADL_INT_GPIO_DEV(PCH_EC_SLP_S0_L),
+		/* POWER_SIGNAL_DISABLE_AT_BOOT */
+		.int_flags = GPIO_INT_EDGE_BOTH,
+		.sig_enum = X86_SLP_S0_DEASSERTED,
+	},
+
+	{
+		//.net_name = GPIO_NET_NAME(VR_PG_EC_RSMRST_ODL),
+		.gpio_dev = ADL_INT_GPIO_DEV(VR_PG_EC_RSMRST_ODL),
+		.int_flags = GPIO_INT_EDGE_BOTH,
+		.sig_enum = X86_RSMRST_L_PGOOD,
+	},
+
+	{
+		//.net_name = GPIO_NET_NAME(VR_EC_ALL_SYS_PWRGD),
+		.gpio_dev = ADL_INT_GPIO_DEV(VR_EC_ALL_SYS_PWRGD),
+		.int_flags = GPIO_INT_EDGE_BOTH,
+		.sig_enum = X86_ALL_SYS_PGOOD,
+	},
+
+#if POWER_SEQ_GPIO_PRESENT(VR_EC_DSW_PWROK)
+	{
+		//.net_name = GPIO_NET_NAME(VR_EC_DSW_PWROK),
+		.gpio_dev = ADL_INT_GPIO_DEV(VR_EC_DSW_PWROK),
+		.int_flags = GPIO_INT_EDGE_BOTH,
+		.sig_enum = X86_DSW_PWROK,
+	},
+#endif
+};
+
+const int power_seq_int_gpios_count = ARRAY_SIZE(power_seq_int_gpios);
+
 #endif /* __X86_NON_DSX_ADLP_H__ */

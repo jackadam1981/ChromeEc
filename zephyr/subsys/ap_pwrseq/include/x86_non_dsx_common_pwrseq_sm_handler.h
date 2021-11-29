@@ -29,6 +29,19 @@ struct gpio_config {
 	const struct device *port;
 };
 
+struct gpio_interrupt_config {
+	/* GPIO net name */
+	//const char *net_name;
+	/* GPIO interrupt flags */
+	const gpio_flags_t int_flags;
+	/* Device structure for the driver instance */
+	const struct device *gpio_dev;
+	/* GPIO callback */
+	struct gpio_callback gpio_cb;
+	/* Signal number */
+	uint8_t sig_enum;
+};
+
 /* Power sequencing GPIOs */
 
 #define PCH_EC_SLP_SUS_L	slpsus
@@ -161,6 +174,7 @@ enum chipset_shutdown_reason {
 };
 
 extern const int power_seq_gpios_count;
+extern const int power_seq_int_gpios_count;
 
 /* Delay in ms for pass through signals */
 #define POWER_EC_PCH_DSW_PWROK_DELAY_MS	100
@@ -169,6 +183,34 @@ extern const int power_seq_gpios_count;
 #define POWER_EC_VR_EN_VCCIN_DELAY_MS	5
 #define POWER_EC_PCH_PM_PWRBTN_DELAY_MS	200
 
+
+/*
+ * Power signal flags:
+ *
+ * +-----------------+------------------------------------+
+ * |     Bit #       |           Description              |
+ * +------------------------------------------------------+
+ * |       0         |      Active level (low/high)       |
+ * +------------------------------------------------------+
+ * |       1         |    Signal interrupt state at boot  |
+ * +------------------------------------------------------+
+ * |     2 : 32      |            Reserved                |
+ * +-----------------+------------------------------------+
+ */
+
+#define POWER_SIGNAL_ACTIVE_STATE BIT(0)
+#define POWER_SIGNAL_ACTIVE_LOW   (0 << 0)
+#define POWER_SIGNAL_ACTIVE_HIGH  BIT(0)
+
+//???#define POWER_SIGNAL_INTR_STATE	BIT(1)
+//???#define POWER_SIGNAL_DISABLE_AT_BOOT	BIT(1)
+
+/* Information on an power signal */
+struct power_signal_info {
+	const char *net_name;   /* GPIO net name of signal */
+	uint32_t flags;		/* See POWER_SIGNAL_* macros */
+	const char *name;
+};
 void espi_bus_reset(void);
 
 /*
@@ -180,6 +222,7 @@ void espi_bus_reset(void);
 void pwrseq_thread(void *p1, void *p2, void *p3);
 
 extern struct gpio_config power_seq_gpios[];
+extern struct gpio_interrupt_config power_seq_int_gpios[];
 extern enum power_states_ndsx chipset_pwr_sm_run(
 				enum power_states_ndsx curr_state);
 extern void chipset_force_shutdown(enum chipset_shutdown_reason reason);

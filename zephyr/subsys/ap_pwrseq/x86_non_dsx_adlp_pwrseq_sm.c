@@ -7,6 +7,56 @@
 
 LOG_MODULE_DECLARE(ap_pwrseq, 4);
 
+/* Power signals list. Must match order of enum power_signal. */
+const struct power_signal_info power_signal_list[] = {
+	[X86_SLP_S0_DEASSERTED] = {
+		.net_name = GPIO_NET_NAME(PCH_EC_SLP_S0_L),
+		//.gpio = GPIO_PCH_SLP_S0_L,
+		.flags = POWER_SIGNAL_ACTIVE_HIGH,
+			//???POWER_SIGNAL_DISABLE_AT_BOOT,
+		.name = "SLP_S0_DEASSERTED",
+	},
+#if 0 /* TODO */
+	[X86_SLP_S3_DEASSERTED] = {
+		.net_name = GPIO_NET_NAME(
+		//.gpio = SLP_S3_SIGNAL_L,
+		.flags = POWER_SIGNAL_ACTIVE_HIGH,
+		.name = "SLP_S3_DEASSERTED",
+	},
+	[X86_SLP_S4_DEASSERTED] = {
+		.net_name = GPIO_NET_NAME(
+		//.gpio = (enum gpio_signal)SLP_S4_SIGNAL_L,
+		.flags = POWER_SIGNAL_ACTIVE_HIGH,
+		.name = "SLP_S4_DEASSERTED",
+	},
+#endif
+	[X86_SLP_SUS_DEASSERTED] = {
+		.net_name = GPIO_NET_NAME(PCH_EC_SLP_SUS_L),
+		//.gpio = GPIO_SLP_SUS_L,
+		.flags = POWER_SIGNAL_ACTIVE_HIGH,
+		.name = "SLP_SUS_DEASSERTED",
+	},
+	[X86_RSMRST_L_PGOOD] = {
+		.net_name = GPIO_NET_NAME(VR_PG_EC_RSMRST_ODL),
+		//.gpio = GPIO_PG_EC_RSMRST_ODL,
+		.flags = POWER_SIGNAL_ACTIVE_HIGH,
+		.name = "RSMRST_L_PGOOD",
+	},
+	[X86_DSW_PWROK] = {
+		.net_name = GPIO_NET_NAME(VR_EC_DSW_PWROK),
+		//.gpio = GPIO_PG_EC_DSW_PWROK,
+		.flags = POWER_SIGNAL_ACTIVE_HIGH,
+		.name = "DSW_DPWROK",
+	},
+	[X86_ALL_SYS_PGOOD] = {
+		.net_name = GPIO_NET_NAME(VR_EC_ALL_SYS_PWRGD),
+		//.gpio = GPIO_PG_EC_ALL_SYS_PWRGD,
+		.flags = POWER_SIGNAL_ACTIVE_HIGH,
+		.name = "ALL_SYS_PWRGD",
+	},
+};
+BUILD_ASSERT(ARRAY_SIZE(power_signal_list) == POWER_SIGNAL_COUNT);
+
 void ap_off(void)
 {
 	/* TODO: This could be added as g3action handler */
