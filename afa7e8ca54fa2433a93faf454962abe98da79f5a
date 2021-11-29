@@ -34,6 +34,24 @@
       "parentUuid": "072973a5_30c78ca9",
       "revId": "afa7e8ca54fa2433a93faf454962abe98da79f5a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d5d96fa_b13186a0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2021-11-29T23:53:37Z",
+      "side": 1,
+      "message": "SG; I wasn\u0027t sure if there was a reason the ITE flash driver used DEVICE_DEFINE rather than an alternative. device_is_ready() is a good call.",
+      "parentUuid": "b40db5de_c02e3dda",
+      "revId": "afa7e8ca54fa2433a93faf454962abe98da79f5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
