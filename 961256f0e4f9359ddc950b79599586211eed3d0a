@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d808ff38_d95df708",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-11-29T16:52:29Z",
+      "side": 1,
+      "message": "I\u0027d like to give amstan@ a chance to look into it.",
+      "revId": "961256f0e4f9359ddc950b79599586211eed3d0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a233390_2c5e7474",
+        "filename": "board/pazquel/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-11-29T16:52:29Z",
+      "side": 1,
+      "message": "Please remove this line.",
+      "range": {
+        "startLine": 197,
+        "startChar": 1,
+        "endLine": 197,
+        "endChar": 48
+      },
+      "revId": "961256f0e4f9359ddc950b79599586211eed3d0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
