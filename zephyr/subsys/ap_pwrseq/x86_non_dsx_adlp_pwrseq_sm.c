@@ -8,13 +8,70 @@
 
 LOG_MODULE_DECLARE(ap_pwrseq, 4);
 
+/* Power signals list */
+const struct power_signal_info power_signal_list[] = {
+	{
+		.net_name = GPIO_NET_NAME(PCH_EC_SLP_S0_L),
+		.power_sig = X86_SLP_S0,
+		.flags = POWER_SIGNAL_ACTIVE_HIGH,
+		.name = "SLP_S0_DEASSERTED",
+	},
+	{
+		.net_name = GPIO_NET_NAME(PCH_EC_SLP_SUS_L),
+		.power_sig = X86_SLP_SUS,
+		.flags = POWER_SIGNAL_ACTIVE_HIGH,
+		.name = "SLP_SUS_DEASSERTED",
+	},
+	{
+		.net_name = GPIO_NET_NAME(VR_PG_EC_RSMRST_ODL),
+		.power_sig = X86_RSMRST_L_PGOOD,
+		.flags = POWER_SIGNAL_ACTIVE_HIGH,
+		.name = "RSMRST_L_PGOOD",
+	},
+	{
+		.net_name = GPIO_NET_NAME(VR_EC_DSW_PWROK),
+		.power_sig = X86_DSW_PWROK,
+		.flags = POWER_SIGNAL_ACTIVE_HIGH,
+		.name = "DSW_DPWROK",
+	},
+	{
+		.net_name = GPIO_NET_NAME(PCH_EC_SLP_S3_L),
+		.power_sig = X86_SLP_S3,
+		.flags = POWER_SIGNAL_ACTIVE_HIGH,
+		.name = "SLP_S3_DEASSERTED",
+	},
+	{
+		.net_name = GPIO_NET_NAME(VR_EC_ALL_SYS_PWRGD),
+		.power_sig = X86_ALL_SYS_PGOOD,
+		.flags = POWER_SIGNAL_ACTIVE_HIGH,
+		.name = "ALL_SYS_PWRGD",
+	},
+};
+const int power_signal_gpio_count = ARRAY_SIZE(power_signal_list);
+
+const struct power_signal_vw_info power_signal_vw_list[] = {
+	{
+		.vw_signal = ESPI_VWIRE_SIGNAL_SLP_S4,
+		.power_sig = X86_SLP_S4,
+		.flags = POWER_SIGNAL_ACTIVE_HIGH,
+		.name = "SLP_S4_DEASSERTED",
+	},
+	{
+		.vw_signal = ESPI_VWIRE_SIGNAL_SLP_S5,
+		.power_sig = X86_SLP_S5,
+		.flags = POWER_SIGNAL_ACTIVE_HIGH,
+		.name = "SLP_S5_DEASSERTED",
+	},
+};
+const int power_signal_vw_count = ARRAY_SIZE(power_signal_vw_list);
+
 void ap_off()
 {
 	/* TODO: This could be added as g3action handler */
         gpio_set_lvl(GPIO_NET_NAME(VCCST_PWRGD_OD), 0);
         gpio_set_lvl(GPIO_NET_NAME(PCH_PWROK), 0);
         gpio_set_lvl(GPIO_NET_NAME(EC_PCH_SYS_PWROK), 0);
-	pwr_sm_set_state(SYS_POWER_STATE_G3);
+	//pwr_sm_set_state(SYS_POWER_STATE_G3);
 }
 
 /* Handle ALL_SYS_PWRGD signal
@@ -24,7 +81,7 @@ int all_sys_pwrgd_handler()
 {
 	int sys_pg;
 	int vccst_pg;
-	int retry = 0;
+	//int retry = 0;
 
 	/* TODO: Add condition for no power sequencer */
 	sys_pg = gpio_get_lvl(GPIO_NET_NAME(VR_EC_ALL_SYS_PWRGD));
@@ -32,11 +89,14 @@ int all_sys_pwrgd_handler()
 	// Todo: Remove workaround for the retry
 	// without this change the system hits G3 as it detects
 	// ALL_SYS_PWRGD as 0 and then 1 as a glitch
+
+#if 0
 	while (sys_pg != 1 || retry < 2) {
 		sys_pg = gpio_get_lvl(GPIO_NET_NAME(VR_EC_ALL_SYS_PWRGD));
 		k_msleep(10);
 		retry++;
 	}
+#endif
 
 	if(sys_pg == 0)
 	{
@@ -117,6 +177,7 @@ void generate_sys_pwrok_handler(int delay)
 			return;
 		}
 		gpio_set_lvl(GPIO_NET_NAME(EC_PCH_SYS_PWROK), 1);
+		LOG_DBG("Set PCH_SYS_PWROK ****** \n");
 		/* PCH will now release PLT_RST */
 	}
 }
@@ -249,7 +310,7 @@ static int powerinfo_handler(const struct shell *shell, size_t argc, char **argv
 #endif
 enum power_states_ndsx chipset_pwr_sm_run(enum power_states_ndsx curr_state)
 {
-/* Add chipset specific state handling if any */
+	/* Add chipset specific state handling if any */
 	switch(curr_state)
 	{
 		case SYS_POWER_STATE_G3S5:

@@ -22,9 +22,11 @@ static void espi_vw_handler(struct espi_event *event)
 			vw_get_level(event->evt_details));
 
 	switch (event->evt_details) {
-	case ESPI_VWIRE_SIGNAL_SLP_S3:
+	//case ESPI_VWIRE_SIGNAL_SLP_S3:
 	case ESPI_VWIRE_SIGNAL_SLP_S4:
-		  // k_thread_resume(&pwrseq_thread_id);
+	case ESPI_VWIRE_SIGNAL_SLP_S5:
+		power_update_signals();
+		// k_thread_resume(&pwrseq_thread_id);
 		break;
 	default:
 		break;
