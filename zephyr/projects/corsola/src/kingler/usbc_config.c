@@ -1,0 +1,292 @@
+/* Copyright 2021 The Chromium OS Authors. All rights reserved.
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+/* Kingler board-specific USB-C configuration */
+
+#include "charger.h"
+#include "console.h"
+#include "driver/bc12/pi3usb9201_public.h"
+#include "driver/charger/isl923x_public.h"
+#include "driver/ppc/nx20p348x.h"
+#include "driver/ppc/rt1718s.h"
+#include "driver/tcpm/anx7447.h"
+#include "driver/tcpm/rt1718s.h"
+#include "hooks.h"
+#include "timer.h"
+#include "usb_charge.h"
+#include "usb_mux.h"
+#include "usb_pd_tcpm.h"
+#include "usbc_ppc.h"
+
+#include "baseboard_usbc_config.h"
+#include "variant_db_detection.h"
+
+#define CPRINTS(format, args...) cprints(CC_USBPD, format, ## args)
+#define CPRINTF(format, args...) cprintf(CC_USBPD, format, ## args)
+
+struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_MAX_COUNT] = {
+
+	[USBC_PORT_C0] = {
+		.bus_type = EC_BUS_TYPE_I2C,
+		.i2c_info = {
+			.port = I2C_PORT_USB_C0,
+			.addr_flags = AN7447_TCPC0_I2C_ADDR_FLAGS,
+		},
+		.drv = &anx7447_tcpm_drv,
+		/* Alert is active-low, push-pull */
+		.flags = 0,
+	},
+	[USBC_PORT_C1] = {
+		.bus_type = EC_BUS_TYPE_I2C,
+		.i2c_info = {
+			.port = I2C_PORT_USB_C1,
+			.addr_flags = RT1718S_I2C_ADDR2_FLAGS,
+		},
+		.drv = &rt1718s_tcpm_drv,
+	}
+};
+
+#if 0
+static int kingler_c1_ppc_init(int port)
+{
+}
+
+static int kingler_c1_ppc_is_sourcing_vbus(int port)
+{
+	return 0;
+}
+/*
+ * Kingler C1 PPC driver.
+ * There are two PPC at C!: CC/SBU protected by RT1718S, and VBUS protected by
+ * NX20P348X
+ */
+const struct ppc_drv kingler_c1_ppc_drv {
+	.init = &kingler_c1_ppc_init,
+	.is_sourcing_vbus = &kingler_c1_ppc_is_sourcing_vbus,
+};
+#endif
+
+struct ppc_config_t ppc_chips[CONFIG_USB_PD_PORT_MAX_COUNT] = {
+	[USBC_PORT_C0] = {
+		.i2c_port = I2C_PORT_USB_C0,
+		.i2c_addr_flags = NX20P3483_ADDR2_FLAGS,
+		.drv = &nx20p348x_drv
+	},
+	[USBC_PORT_C1] = {
+		.i2c_port = I2C_PORT_USB_C1,
+		.i2c_addr_flags = RT1718S_I2C_ADDR2_FLAGS,
+		.drv = &rt1718s_ppc_drv,
+	}
+};
+unsigned int ppc_cnt = ARRAY_SIZE(ppc_chips);
+
+const struct charger_config_t chg_chips[] = {
+	{
+		.i2c_port = I2C_PORT_CHARGER,
+		.i2c_addr_flags = ISL923X_ADDR_FLAGS,
+		.drv = &isl923x_drv,
+	}
+};
+
+struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {};
+
+struct bc12_config bc12_ports[CONFIG_USB_PD_PORT_MAX_COUNT] = {
+	[USBC_PORT_C0] = {
+		.drv = &pi3usb9201_drv,
+	},
+	[USBC_PORT_C1] = {
+		.drv = &rt1718s_bc12_drv,
+	}
+};
+
+const struct pi3usb9201_config_t
+		pi3usb9201_bc12_chips[CONFIG_USB_PD_PORT_MAX_COUNT] = {
+	[USBC_PORT_C0] = {
+		.i2c_port = I2C_PORT_USB_C0,
+		.i2c_addr_flags = PI3USB9201_I2C_ADDR_3_FLAGS,
+	},
+	[USBC_PORT_C1] = { /* unused */ }
+};
+
+void board_tcpc_init(void)
+{
+	/* Only reset TCPC if not sysjump */
+	if (!system_jumped_late()) {
+		/* TODO(crosbug.com/p/61098): How long do we need to wait? */
+		board_reset_pd_mcu();
+	}
+
+	/* Enable PPC interrupts */
+	gpio_enable_interrupt(GPIO_USB_C0_TCPC_INT_ODL);
+	if (corsola_get_db_type() == CORSOLA_DB_TYPEC)
+		gpio_enable_interrupt(GPIO_USB_C1_PPC_INT_ODL);
+
+	/* Enable TCPC interrupts */
+	gpio_enable_interrupt(GPIO_USB_C0_TCPC_INT_ODL);
+	if (corsola_get_db_type() == CORSOLA_DB_TYPEC)
+		gpio_enable_interrupt(GPIO_USB_C1_TCPC_INT_ODL);
+
+
+	/* Enable BC1.2 interrupts. */
+	gpio_enable_interrupt(GPIO_USB_C0_BC12_INT_ODL);
+
+	/*
+	 * Initialize HPD to low; after sysjump SOC needs to see
+	 * HPD pulse to enable video path
+	 * TODO: do we need this?
+	 */
+	for (int port = 0; port < CONFIG_USB_PD_PORT_MAX_COUNT; ++port)
+		usb_mux_hpd_update(port, USB_PD_MUX_HPD_LVL_DEASSERTED |
+					 USB_PD_MUX_HPD_IRQ_DEASSERTED);
+}
+DECLARE_HOOK(HOOK_INIT, board_tcpc_init, HOOK_PRIO_INIT_I2C + 1);
+
+__override int board_rt1718s_init(int port)
+{
+	static bool gpio_initialized;
+
+	if (!system_jumped_late() && !gpio_initialized) {
+		/* set GPIO 1~3 as push pull, as output, output low. */
+		rt1718s_gpio_set_flags(port, RT1718S_GPIO1, GPIO_OUT_LOW);
+		rt1718s_gpio_set_flags(port, RT1718S_GPIO2, GPIO_OUT_LOW);
+		rt1718s_gpio_set_flags(port, RT1718S_GPIO3, GPIO_OUT_LOW);
+		gpio_initialized = true;
+	}
+
+	/* gpio 1/2 output high when receiving frx signal */
+	RETURN_ERROR(rt1718s_update_bits8(port, RT1718S_GPIO1_VBUS_CTRL,
+			RT1718S_GPIO1_VBUS_CTRL_FRS_RX_VBUS, 0xFF));
+	RETURN_ERROR(rt1718s_update_bits8(port, RT1718S_GPIO2_VBUS_CTRL,
+			RT1718S_GPIO2_VBUS_CTRL_FRS_RX_VBUS, 0xFF));
+
+	/* Turn on SBU switch */
+	RETURN_ERROR(rt1718s_update_bits8(port, RT1718S_RT2_SBU_CTRL_01,
+				RT1718S_RT2_SBU_CTRL_01_SBU_VIEN |
+				RT1718S_RT2_SBU_CTRL_01_SBU2_SWEN |
+				RT1718S_RT2_SBU_CTRL_01_SBU1_SWEN,
+				0xFF));
+	/* Trigger GPIO 1/2 change when FRS signal received */
+	RETURN_ERROR(rt1718s_update_bits8(port, RT1718S_FRS_CTRL3,
+			RT1718S_FRS_CTRL3_FRS_RX_WAIT_GPIO2 |
+			RT1718S_FRS_CTRL3_FRS_RX_WAIT_GPIO1,
+			RT1718S_FRS_CTRL3_FRS_RX_WAIT_GPIO2 |
+			RT1718S_FRS_CTRL3_FRS_RX_WAIT_GPIO1));
+	/* Set FRS signal detect time to 46.875us */
+	RETURN_ERROR(rt1718s_update_bits8(port, RT1718S_FRS_CTRL1,
+			RT1718S_FRS_CTRL1_FRSWAPRX_MASK,
+			0xFF));
+
+	return EC_SUCCESS;
+}
+
+void board_reset_pd_mcu(void)
+{
+	/* Assert reset */
+	gpio_set_level(GPIO_USB_C0_TCPC_RST, 1);
+	msleep(1);
+	gpio_set_level(GPIO_USB_C0_TCPC_RST, 0);
+	/* After TEST_R release, anx7447/3447 needs 2ms to finish eFuse
+	 * loading.
+	 */
+	msleep(2);
+}
+
+/* Used by Vbus discharge common code with CONFIG_USB_PD_DISCHARGE */
+int board_vbus_source_enabled(int port)
+{
+	return tcpm_get_src_ctrl(port);
+}
+
+/* Used by USB charger task with CONFIG_USB_PD_5V_EN_CUSTOM */
+int board_is_sourcing_vbus(int port)
+{
+	return board_vbus_source_enabled(port);
+}
+
+int board_set_active_charge_port(int port)
+{
+	int i;
+	bool is_valid_port =
+		(port >= 0 && port < board_get_usb_pd_port_count());
+
+	if (!is_valid_port && port != CHARGE_PORT_NONE)
+		return EC_ERROR_INVAL;
+
+	if (port == CHARGE_PORT_NONE) {
+		CPRINTS("Disabling all charger ports");
+
+		/* Disable all ports. */
+		for (i = 0; i < ppc_cnt; i++) {
+			/*
+			 * Do not return early if one fails otherwise we can
+			 * get into a boot loop assertion failure.
+			 */
+			if (ppc_vbus_sink_enable(i, 0))
+				CPRINTS("Disabling C%d as sink failed.", i);
+		}
+
+		return EC_SUCCESS;
+	}
+
+	/* Check if the port is sourcing VBUS. */
+	if (ppc_is_sourcing_vbus(port)) {
+		CPRINTS("Skip enable C%d", port);
+		return EC_ERROR_INVAL;
+	}
+
+	CPRINTS("New charge port: C%d", port);
+
+	/*
+	 * Turn off the other ports' sink path FETs, before enabling the
+	 * requested charge port.
+	 */
+	for (i = 0; i < ppc_cnt; i++) {
+		if (i == port)
+			continue;
+
+		if (ppc_vbus_sink_enable(i, 0))
+			CPRINTS("C%d: sink path disable failed.", i);
+	}
+
+	/* Enable requested charge port. */
+	if (ppc_vbus_sink_enable(port, 1)) {
+		CPRINTS("C%d: sink path enable failed.", port);
+		return EC_ERROR_UNKNOWN;
+	}
+
+	return EC_SUCCESS;
+}
+
+void pd_power_supply_reset(int port)
+{
+}
+
+uint16_t tcpc_get_alert_status(void)
+{
+	uint16_t status = 0;
+
+	if (!gpio_get_level(GPIO_USB_C0_TCPC_INT_ODL)) {
+		if (!gpio_get_level(GPIO_USB_C0_TCPC_RST))
+			status |= PD_STATUS_TCPC_ALERT_0;
+	}
+
+	if (!gpio_get_level(GPIO_USB_C1_TCPC_INT_ODL))
+		return status |= PD_STATUS_TCPC_ALERT_1;
+	return status;
+}
+
+int pd_set_power_supply_ready(int port)
+{
+	return EC_SUCCESS;
+}
+
+int pd_check_vconn_swap(int port)
+{
+	return EC_SUCCESS;
+}
+
+void ppc_interrupt(enum gpio_signal signal)
+{
+}
