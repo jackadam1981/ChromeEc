@@ -41,9 +41,25 @@
 	#define AP_SPI_INT()        GPIO_INT(GPIO_SPI0_CS,                     \
 					     GPIO_INT_EDGE_BOTH,               \
 					     spi_event)
+	#define TCPC_C0_INT()
+	#define TCPC_C1_INT()
+	#define PPC_C0_INT()
+	#define BC12_C0_INT()
 #elif defined(CONFIG_SOC_NPCX9M3F)
 	/* The interrupt is configured by dts */
 	#define AP_SPI_INT()
+	#define TCPC_C0_INT()       GPIO_INT(GPIO_USB_C0_TCPC_INT_ODL,         \
+					     GPIO_INT_EDGE_FALLING,            \
+					     tcpc_alert_event)
+	#define TCPC_C1_INT()       GPIO_INT(GPIO_USB_C1_TCPC_INT_ODL,         \
+					     GPIO_INT_EDGE_FALLING,            \
+					     tcpc_alert_event)
+	#define PPC_C0_INT()        GPIO_INT(GPIO_USB_C0_PPC_INT_ODL,          \
+					     GPIO_INT_EDGE_FALLING,            \
+					     ppc_interrupt)
+	#define BC12_C0_INT()       GPIO_INT(GPIO_USB_C0_BC12_INT_ODL,         \
+					     GPIO_INT_EDGE_FALLING,            \
+					     bc12_interrupt)
 #endif
 
 #ifdef CONFIG_PLATFORM_EC_TABLET_MODE
@@ -130,6 +146,12 @@
 #define GMR_TABLET_MODE_GPIO_L GPIO_TABLET_MODE_L
 #endif
 
+#ifdef CONFIG_PLATFORM_EC_USB_PD_TCPM_RT1718S
+#define GPIO_EN_USB_C1_SINK         RT1718S_GPIO1
+#define GPIO_EN_USB_C1_SOURCE       RT1718S_GPIO2
+#define GPIO_EN_USB_C1_FRS          RT1718S_GPIO3
+#endif
+
 /* TODO: remove after icm426xx driver added */
 static inline void motion_interrupt(enum gpio_signal signal)
 {
@@ -167,6 +189,10 @@ static inline void motion_interrupt(enum gpio_signal signal)
 	EXTPWR_INT()							\
 	SWITCH_INT()							\
 	AP_SPI_INT()							\
+	TCPC_C0_INT()							\
+	TCPC_C1_INT()							\
+	PPC_C0_INT()							\
+	BC12_C0_INT()							\
 	X_EC_GPIO2_INT()
 
 #endif /* __ZEPHYR_GPIO_MAP_H */
