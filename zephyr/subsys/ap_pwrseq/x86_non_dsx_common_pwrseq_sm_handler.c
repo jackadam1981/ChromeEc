@@ -18,6 +18,10 @@ static K_KERNEL_STACK_DEFINE(pwrseq_thread_stack, 1024);
 static struct k_thread pwrseq_thread_data;
 k_tid_t pwrseq_thread_id; /* TODO: This may not be needed */
 
+static uint32_t in_signals;   /* Current input signal states (IN_PGOOD_*) */
+static uint32_t in_want;      /* Input signal state we're waiting for */
+static uint32_t in_debug = 0xff;     /* Signal values which print debug output */
+
 /**
  * @brief power_state names for debug
  */
@@ -37,6 +41,33 @@ const char pwrsm_dbg[][25] = {
 	[SYS_POWER_STATE_S0S3] = "STATE_S0S3",
 };
 
+#if 0 //?Use power signal directly?
+enum sys_sleep_state {
+	SYS_SLEEP_S3,
+	SYS_SLEEP_S4,
+	SYS_SLEEP_S5,
+#ifdef CONFIG_POWER_S0IX
+	SYS_SLEEP_S0IX,
+#endif
+};
+static const int sleep_sig[] = {
+	[SYS_SLEEP_S3] = SLP_S3_SIGNAL_L,
+	[SYS_SLEEP_S4] = SLP_S4_SIGNAL_L,
+	[SYS_SLEEP_S5] = SLP_S5_SIGNAL_L,
+#ifdef CONFIG_POWER_S0IX
+	[SYS_SLEEP_S0IX] = GPIO_PCH_SLP_S0_L,
+#endif
+};
+#endif
+
+/*
+ * Default timeout in us; if we've been waiting this long for an input
+ * transition, just jump to the next state.
+ */
+#define DEFAULT_TIMEOUT_MS 1000
+/* TODO: configurable? Timeout for dropping back from S5 to G3 in seconds */
+//static int s5_timeout_s = 10;
+
 /* On power-on start boot up sequence */
 static enum power_states_ndsx power_state;
 
@@ -52,6 +83,37 @@ const struct gpio_config *get_gpio_config_from_net_name(const char *net_name)
 	}
 
 	LOG_ERR("Failed to find GPIO %s", net_name);
+	return NULL;
+}
+
+static const char *get_power_signal_net_name(enum power_signal signal)
+{
+	int i;
+
+	for (i = 0; i < power_signal_gpio_count; i++) {
+		if (signal == power_signal_list[i].power_sig)
+			return power_signal_list[i].net_name;
+	}
+	return NULL;
+}
+
+static const struct gpio_interrupt_config *get_intr_config_from_power_signal(
+	enum power_signal signal)
+{
+	const struct gpio_interrupt_config *intr;
+	const char *net_name;
+	int i;
+
+	net_name = get_power_signal_net_name(signal);
+
+	if (net_name) {
+		for (i = 0; i < power_seq_intr_gpios_count; i++) {
+			intr = &power_seq_intr_gpios[i];
+			if (!strcmp(intr->net_name, net_name))
+				return intr;
+		}
+	}
+
 	return NULL;
 }
 
@@ -93,6 +155,165 @@ static int check_power_rails_enabled(void)
 	return out;
 }
 
+int power_signal_disable_interrupt(enum power_signal signal)
+{
+	const struct gpio_interrupt_config *intr;
+
+	intr = get_intr_config_from_power_signal(signal);
+
+	if (intr) {
+		return gpio_pin_interrupt_configure(intr->config->port,
+						    intr->config->pin,
+						    GPIO_INT_DISABLE);
+	}
+	return -EINVAL;
+}
+
+int power_signal_enable_interrupt(enum power_signal signal)
+{
+	const struct gpio_interrupt_config *intr;
+
+	intr = get_intr_config_from_power_signal(signal);
+	LOG_ERR("name=%s name=%s pin=%d", intr->net_name, intr->config->net_name, intr->config->pin);
+	if (intr) {
+		return gpio_pin_interrupt_configure(intr->config->port,
+						    intr->config->pin,
+						    intr->intr_flags);
+	}
+	return -EINVAL;
+}
+
+int power_wait_mask_signals_timeout(uint32_t want, uint32_t mask, int timeout)
+{
+	int time_left = timeout;
+	in_want = want;
+
+	if (!mask)
+		return 0;
+
+	while (time_left--) {
+		if ((in_signals & mask) != in_want) {
+			k_msleep(1);
+		} else {
+			return 0;
+		}
+	}
+	power_update_signals();//? why
+	return -ETIMEDOUT;
+}
+
+int power_wait_signals_timeout(uint32_t want, int timeout)
+{
+	return power_wait_mask_signals_timeout(want, want, timeout);
+}
+
+int power_wait_signals(uint32_t want)
+{
+	int ret = power_wait_signals_timeout(want, DEFAULT_TIMEOUT_MS);
+	if (ret == -ETIMEDOUT)
+		LOG_INF("power timeout on input; wanted 0x%04x, got 0x%04x",
+			want, in_signals & want);
+	return ret;
+}
+
+__weak int power_signal_get_level(enum power_signal signal)
+{
+	const struct power_signal_info *s = power_signal_list;
+	const struct power_signal_vw_info *vw = power_signal_vw_list;
+	int i;
+
+	for (i = 0; i < power_signal_vw_count; i++, vw++) {
+		if (signal == vw->power_sig)
+			return vw_get_level(vw->vw_signal);
+	}
+
+	for (i = 0; i < power_signal_gpio_count; i++, s++) {
+		if (signal == s->power_sig)
+			return gpio_get_lvl(s->net_name);
+	}
+
+	return 0;
+}
+
+int power_signal_is_asserted(const struct power_signal_info *s)
+{
+	return gpio_get_lvl(s->net_name) ==
+		!!(s->flags & POWER_SIGNAL_ACTIVE_STATE);
+}
+
+int power_signal_vw_is_asserted(const struct power_signal_vw_info *vw)
+{
+	return vw_get_level(vw->vw_signal) ==
+		!!(vw->flags & POWER_SIGNAL_ACTIVE_STATE);
+}
+
+/**
+ * Update input signals mask
+ */
+void power_update_signals(void)
+{
+	uint32_t inew = 0;
+	const struct power_signal_info *s = power_signal_list;
+	const struct power_signal_vw_info *vw = power_signal_vw_list;
+	int i;
+
+	for (i = 0; i < power_signal_gpio_count; i++, s++) {
+		if (power_signal_is_asserted(s))
+			inew |= BIT(s->power_sig);
+	}
+
+	for (i = 0; i < power_signal_vw_count; i++, vw++) {
+		if (power_signal_vw_is_asserted(vw))
+			inew |= BIT(vw->power_sig);
+	}
+
+	if ((in_signals & in_debug) != (inew & in_debug))
+		LOG_INF("power in 0x%04x", inew);
+	LOG_ERR("------update: 0x%04x->0x%04x", in_signals, inew);
+	in_signals = inew;
+}
+
+uint32_t power_get_signals(void)
+{
+	return in_signals;
+}
+
+int power_has_signals(uint32_t want)
+{
+	if ((in_signals & want) == want)
+		return 1;
+	LOG_DBG("power lost input; wanted 0x%04x, got 0x%04x",
+		want, in_signals & want);
+	return 0;
+}
+
+void power_signal_cb(const struct device *gpiodev, struct gpio_callback *cb,
+               uint32_t pin)
+{
+	int i;
+	const struct gpio_interrupt_config *intr_config = NULL;
+	for (i = 0; i < power_seq_intr_gpios_count; i++) {
+		if (gpiodev == power_seq_intr_gpios[i].config->port &&
+			pin == BIT(power_seq_intr_gpios[i].config->pin)) {
+			/* TODO: Monitor interrupt storm */
+			intr_config = &power_seq_intr_gpios[i];
+			break;
+		}
+	}
+
+	if (!intr_config) {
+		LOG_ERR("gpio int, can't find dev %p (pin %d)\n",
+			gpiodev, pin);
+		return;
+	} else {
+		LOG_ERR("intr %d: gpio %s(%d)", i,
+			intr_config->config->net_name,
+			gpio_get_lvl(intr_config->config->net_name)
+			);
+	}
+	power_update_signals();
+}
+
 static void pwrseq_gpio_init(void)
 {
 	struct gpio_config *gpio;
@@ -127,6 +348,44 @@ static void pwrseq_gpio_init(void)
 			"port_name=%s, pin=0x%x, flag=0x%x",
 			ret, gpio->net_name, gpio->port_name,
 			gpio->pin, gpio->flags);
+
+	for (i = 0; i < power_seq_intr_gpios_count; i++) {
+		int ret;
+		const struct gpio_config *config;
+
+		config = get_gpio_config_from_net_name(
+				power_seq_intr_gpios[i].net_name);
+		if (config == NULL) {
+			LOG_ERR("Can't find GPIO %s device config",
+				power_seq_intr_gpios[i].net_name);
+			break;
+		}
+
+		power_seq_intr_gpios[i].config = config;
+
+		/* Configure interrupt */
+		gpio_init_callback(&power_seq_intr_gpios[i].intr_cb,
+					power_signal_cb,
+					BIT(config->pin));
+		ret = gpio_add_callback(power_seq_intr_gpios[i].config->port,
+			&power_seq_intr_gpios[i].intr_cb);
+
+		if (!ret) {
+			if (power_seq_intr_gpios[i].disable_at_boot) {
+				gpio_pin_interrupt_configure(
+						config->port,
+						config->pin,
+						GPIO_INT_DISABLE);
+			} else {
+				gpio_pin_interrupt_configure(
+					config->port,
+					config->pin,
+					power_seq_intr_gpios[i].intr_flags);
+			}
+		} else {
+                        LOG_ERR("Failed GPIO interrupt callback i=%d ret=%d", i, ret);
+		}
+	}
 }
 
 enum power_states_ndsx pwr_sm_get_state(void)
@@ -151,7 +410,12 @@ int check_rsmrst_ok(void)
 
 int check_pch_out_of_suspend(void)
 {
-	return gpio_get_lvl(GPIO_NET_NAME(PCH_EC_SLP_SUS_L));
+	int ret;
+	ret = power_wait_signals_timeout(
+		IN_PCH_SLP_SUS_DEASSERTED, IN_PCH_SLP_SUS_WAIT_TIME_MS);
+	if (ret == 0)
+		return 1;
+	return 0; /* timeout */
 }
 
 void pwr_signal_pass_thru_handler(const char *in_signal,
@@ -166,8 +430,6 @@ void pwr_signal_pass_thru_handler(const char *in_signal,
 		gpio_set_lvl(out_signal, in_sig_val);
 	}
 }
-
-
 
 /* Handling RSMRST signal is mostly common across x86 chipsets */
 __attribute__((weak)) void rsmrst_pass_thru_handler(void)
@@ -191,60 +453,142 @@ static int common_pwr_sm_run(int state)
 		break;
 
 	case SYS_POWER_STATE_G3S5:
-		/* TODO: Check if we are good to move to S5*/
-		if (check_pch_out_of_suspend())
+		/* Wait DSW_PWROK and SLP_SUS_L */
+		/* DSW_PWROK */
+		if (power_wait_signals(IN_PGOOD_ALL_CORE))
+			break;
+
+		if (check_pch_out_of_suspend()) {
+			/* Start timer to monitor S5 inactive timeout */
+			/*k_timer_start(&s5_inactive_timer,
+				K_SECONDS(s5_timeout_s), K_NO_WAIT);*/
 			state = SYS_POWER_STATE_S5;
+		} else
+			state = SYS_POWER_STATE_S5G3;
 		break;
 
 	case SYS_POWER_STATE_S5:
+		/* You are in S5 make sure you have no more signal lost */
 		/* If A-rails are stable move to higher state */
-		if (check_power_rails_enabled() && check_rsmrst_ok()) {
+		if (check_power_rails_enabled() && check_rsmrst_ok() &&
+			power_has_signals(IN_PCH_SLP_SUS_DEASSERTED)) {
+			int ret;
+
 			/* rsmrst is intact */
 			rsmrst_pass_thru_handler();
-			state =  SYS_POWER_STATE_S5S4;
+
+			ret = power_wait_signals(IN_PCH_SLP_S5_DEASSERTED);
+			if (ret == 0) {
+				state = SYS_POWER_STATE_S5S4;
+			} else
+				state = SYS_POWER_STATE_S5G3;
 		} else
 			state = SYS_POWER_STATE_S5G3;
 		break;
 
 	case SYS_POWER_STATE_S5G3:
 		chipset_force_shutdown(CHIPSET_SHUTDOWN_G3);
-		break;
-
+		return SYS_POWER_STATE_G3;
 
 	case SYS_POWER_STATE_S5S4:
 		/* Check if the PCH has come out of suspend state */
 		if (check_rsmrst_ok()) {
 			LOG_DBG("RSMRST is ok");
 			state = SYS_POWER_STATE_S4;
+		} else {
+			LOG_DBG("RSMRST is not ok");
+			state = SYS_POWER_STATE_S5;
 		}
-
-		LOG_DBG("RSMRST is not ok");
-		state = SYS_POWER_STATE_S5;
 		break;
 
 	case SYS_POWER_STATE_S4:
+		if (power_signal_get_level(X86_SLP_S5) == 0)
+			state = SYS_POWER_STATE_S4S5;
+		else if (power_signal_get_level(X86_SLP_S4) == 1)
+			state = SYS_POWER_STATE_S4S3;
+		break;
+
+	case SYS_POWER_STATE_S4S3:
+		if (!power_has_signals(IN_PGOOD_ALL_CORE)) {
+			/* Required rail went away */
+			chipset_force_shutdown(CHIPSET_SHUTDOWN_POWERFAIL);
+			state = SYS_POWER_STATE_S5G3;
+			break;
+		}
+		/* Call hooks now that rails are up */
+		//hook_notify(HOOK_CHIPSET_STARTUP);
+
+		/* TODO: S0ix
+		 * Clearing the S0ix flag on the path to S0
+		 * to handle any reset conditions.
+		 */
 		state = SYS_POWER_STATE_S3;
 		break;
 
 	case SYS_POWER_STATE_S3:
 		/* AP is out of suspend to RAM */
-		if (vw_get_level(ESPI_VWIRE_SIGNAL_SLP_S3))
+		if (!power_has_signals(IN_PGOOD_ALL_CORE)) {
+			/* Required rail went away, go straight to S5 */
+			chipset_force_shutdown(CHIPSET_SHUTDOWN_POWERFAIL);
+			state = SYS_POWER_STATE_S4S5;
+		} else if (power_signal_get_level(X86_SLP_S3) == 1)
 			state = SYS_POWER_STATE_S3S0;
+		else if (power_signal_get_level(X86_SLP_S4) == 0)
+			state = SYS_POWER_STATE_S3S4;
 		break;
 
 	case SYS_POWER_STATE_S3S0:
+		if (!power_has_signals(IN_PGOOD_ALL_CORE)) {
+			chipset_force_shutdown(CHIPSET_SHUTDOWN_POWERFAIL);
+			state = SYS_POWER_STATE_S4S5;
+			break;
+		}
+
 		/* All the power rails must be stable */
+		//if (power_wait_signals(BIT(X86_ALL_SYS_PGOOD)))
+		//	break;
+		//return SYS_POWER_STATE_S0;
 		if (gpio_get_lvl(GPIO_NET_NAME(VR_EC_ALL_SYS_PWRGD)))
 			state = SYS_POWER_STATE_S0;
 		break;
 
 	case SYS_POWER_STATE_S0:
-		/* Stay in S0 */
+		if (!power_has_signals(IN_PGOOD_ALL_CORE)) {
+			chipset_force_shutdown(CHIPSET_SHUTDOWN_POWERFAIL);
+			state = SYS_POWER_STATE_S0S3;
+		} else if (power_signal_get_level(X86_SLP_S3) == 0) {
+			/* Power down to next state */
+			state = SYS_POWER_STATE_S0S3;
+		}
+		/* TODO: S0ix */
+
 		break;
 
 	case SYS_POWER_STATE_S4S5:
+#if 0
+		/* Call hooks before we remove power rails */
+		hook_notify(HOOK_CHIPSET_SHUTDOWN);
+		/* Disable wireless */
+		wireless_set_state(WIRELESS_OFF);
+		/* Call hooks after we remove power rails */
+		hook_notify(HOOK_CHIPSET_SHUTDOWN_COMPLETE);
+		/* Always enter into S5 state. The S5 state is required to
+		 * correctly handle global resets which have a bit of delay
+		 * while the SLP_Sx_L signals are asserted then deasserted.
+		 */
+		power_s5_up = 0;
+#endif
+		state = SYS_POWER_STATE_S5;
+		break;
+
 	case SYS_POWER_STATE_S3S4:
+		state = SYS_POWER_STATE_S4;
+		break;
+
 	case SYS_POWER_STATE_S0S3:
+		/* Call hooks before we remove power rails */
+		//hook_notify(HOOK_CHIPSET_SUSPEND);
+		state = SYS_POWER_STATE_S3;
 		break;
 
 	default:
@@ -272,10 +616,18 @@ static int powerinfo_handler(const struct shell *shell, size_t argc,
 							char **argv)
 {
 	int state;
+	const struct power_signal_vw_info *vw = power_signal_vw_list;
+	int i;
 
 	state = pwr_sm_get_state();
 	shell_fprintf(shell, SHELL_INFO, "Power state = %d (%s)\n",
 					state, pwrsm_dbg[state]);
+
+	for (i = 0; i < power_signal_vw_count; i++, vw++) {
+		shell_fprintf(shell, SHELL_INFO, "%s: %d \n",
+			vw->name, vw_get_level(vw->vw_signal));
+	}
+
 	return 0;
 }
 
@@ -308,11 +660,30 @@ SHELL_CMD_REGISTER(apreset, NULL, NULL, apreset_handler);
 void pwrseq_loop_thread(void *p1, void *p2, void *p3)
 {
 	int32_t t_wait_ms = 10;
+	uint32_t this_in_signals;
+	static uint32_t last_in_signals;
+	static enum power_states_ndsx last_state;
 	enum power_states_ndsx curr_state, new_state;
 
 	LOG_DBG("Running pwrseq state machine %d", power_state);
 	while (1) {
 		curr_state = pwr_sm_get_state();
+
+		/*
+		 * In order to prevent repeated console spam, only print the
+		 * current power state if something has actually changed.  It's
+		 * possible that one of the power signals goes away briefly and
+		 * comes back by the time we update our in_signals.
+		 */
+		this_in_signals = in_signals;
+		if (this_in_signals != last_in_signals || curr_state != last_state) {
+			LOG_INF("power state %d = %s, in 0x%04x",
+				curr_state, pwrsm_dbg[curr_state],
+				this_in_signals);
+			last_in_signals = this_in_signals;
+			last_state = curr_state;
+		}
+
 		/* Run chipset specific state machine */
 		new_state = chipset_pwr_sm_run(curr_state);
 
