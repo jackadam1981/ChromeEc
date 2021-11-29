@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3b4bf3b_7ca51c41",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1502,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-11-29T19:43:24Z",
+      "side": 1,
+      "message": "this function should become void now.",
+      "range": {
+        "startLine": 1502,
+        "startChar": 0,
+        "endLine": 1502,
+        "endChar": 3
+      },
+      "revId": "b85d826eae7b8c1cd6c1515022d0a587b7540ade",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4772032_86fd1e97",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1570,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-11-29T19:43:24Z",
+      "side": 1,
+      "message": "I am not sure this is necessary: it is easy to reboot the Cr50 if it is compiled with CR50_DEV,",
+      "range": {
+        "startLine": 1568,
+        "startChar": 0,
+        "endLine": 1570,
+        "endChar": 31
+      },
+      "revId": "b85d826eae7b8c1cd6c1515022d0a587b7540ade",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
