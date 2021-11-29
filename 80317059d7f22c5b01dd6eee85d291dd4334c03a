@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ade9d3ab_f577ae9b",
+        "filename": "zephyr/projects/corsola/src/krabby/usbc_config.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2021-11-29T02:25:40Z",
+      "side": 1,
+      "message": "is the empty line intended?",
+      "revId": "80317059d7f22c5b01dd6eee85d291dd4334c03a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "992345b3_a8540e73",
+        "filename": "zephyr/projects/corsola/src/usbc_config.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2021-11-29T02:25:40Z",
+      "side": 1,
+      "message": "same here",
+      "revId": "80317059d7f22c5b01dd6eee85d291dd4334c03a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb0dcb5f_4d4702f4",
+        "filename": "zephyr/projects/corsola/src/usbc_config.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2021-11-29T02:25:40Z",
+      "side": 1,
+      "message": "is_valid_port \u003d (port \u003e\u003d 0 \u0026\u0026 port \u003c board_get_usb_pd_port_count());\n\nand put the db type check in board_get_usb_pd_port_count",
+      "revId": "80317059d7f22c5b01dd6eee85d291dd4334c03a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
