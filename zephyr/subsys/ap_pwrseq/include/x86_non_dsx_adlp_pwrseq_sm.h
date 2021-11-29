@@ -23,6 +23,21 @@
 extern void gpio_set_lvl(const char *net_name, int val);
 extern int gpio_get_lvl(const char *net_name);
 
+/* Power signals list */
+enum power_signal {
+	X86_SLP_S0_DEASSERTED,
+#if 0
+	X86_SLP_S3_DEASSERTED,
+	X86_SLP_S4_DEASSERTED,
+#endif
+	X86_SLP_SUS_DEASSERTED,
+	X86_RSMRST_L_PGOOD,
+	X86_DSW_PWROK,
+	X86_ALL_SYS_PGOOD,
+	/* Number of X86 signals */
+	POWER_SIGNAL_COUNT
+};
+
 /* Power sequencing GPIOs */
 /* TODO:- Add more config to add alderlake specific variants
  * without power sequencer chips
@@ -82,4 +97,34 @@ struct gpio_config power_seq_gpios[] = {
 };
 
 const int power_seq_gpios_count = ARRAY_SIZE(power_seq_gpios);
+
+#define ADL_INT_GPIO_DEV(node) \
+       DEVICE_DT_GET(DT_GPIO_CTLR_BY_IDX(DT_NODELABEL(node), gpios, 0))
+struct gpio_interrupt_config power_seq_intr_gpios[] = {
+	{
+		POWER_SEQ_INTR_GPIO(PCH_EC_SLP_S0_L),
+		/* Disable interrupt at boot up */
+		.disable_at_boot = true,
+	},
+	{
+		POWER_SEQ_INTR_GPIO(PCH_EC_SLP_SUS_L),
+		.disable_at_boot = false,
+	},
+	{
+		POWER_SEQ_INTR_GPIO(VR_PG_EC_RSMRST_ODL),
+		.disable_at_boot = false,
+	},
+#if POWER_SEQ_GPIO_PRESENT(VR_EC_DSW_PWROK)
+	{
+		POWER_SEQ_INTR_GPIO(VR_EC_DSW_PWROK),
+		.disable_at_boot = false,
+	},
+#endif
+	{
+		POWER_SEQ_INTR_GPIO(VR_EC_ALL_SYS_PWRGD),
+		.disable_at_boot = false,
+	},
+};
+const int power_seq_intr_gpios_count = ARRAY_SIZE(power_seq_intr_gpios);
+
 #endif /* __X86_NON_DSX_ADLP_H__ */

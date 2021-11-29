@@ -55,6 +55,22 @@ const struct gpio_config *get_gpio_config_from_net_name(const char *net_name)
 	return NULL;
 }
 
+#if 0
+int get_gpio_config_index_from_dev(const struct device *dev, int *index)
+{
+	int i;
+
+	LOG_ERR("----dev %p", dev);
+	for (i = 0; i < power_seq_gpios_count; i++) {
+		if (dev == power_seq_gpios[i].port) {
+			*index = i;
+			return 0;
+		}
+	}
+
+	return ENODEV;
+}
+#endif
 int gpio_get_lvl(const char *net_name)
 {
 	const struct gpio_config *gpio =
@@ -93,6 +109,27 @@ static int check_power_rails_enabled(void)
 	return out;
 }
 
+void power_signal_cb(const struct device *gpiodev, struct gpio_callback *cb,
+               uint32_t pin)
+{
+	int i;
+	const struct gpio_interrupt_config *intr_config = NULL;
+	LOG_ERR("***********gpio int dev(%p),pin(%d)\n", gpiodev, pin);
+	for (i = 0; i < power_seq_intr_gpios_count; i++) {
+		if (gpiodev == power_seq_intr_gpios[i].config->port &&
+			pin == BIT(power_seq_intr_gpios[i].config->pin)) {
+			intr_config = &power_seq_intr_gpios[i];
+			break;
+		}
+	}
+
+	if (!intr_config)
+		LOG_ERR("*****************gpio int, can't find pin(%d)\n", pin);
+	else
+		LOG_ERR("%d**intr: gpio %s", i,
+			intr_config->config->net_name);
+}
+
 static void pwrseq_gpio_init(void)
 {
 	struct gpio_config *gpio;
@@ -101,9 +138,9 @@ static void pwrseq_gpio_init(void)
 	for (i = 0; i < power_seq_gpios_count; i++) {
 		gpio = &power_seq_gpios[i];
 
-		LOG_DBG("Configuring GPIO: net_name=%s, port_name=%s, \
-			pin=0x%x, flag=0x%x", gpio->net_name, gpio->port_name,
-			gpio->pin, gpio->flags);
+		LOG_DBG("Configuring GPIO: i=%d net_name=%s, port_name=%s, \
+			pin=0x%x, flag=0x%x port %p", i, gpio->net_name, gpio->port_name,
+			gpio->pin, gpio->flags, gpio->port);
 		/* Get GPIO binding */
 		if (!device_is_ready(gpio->port)) {
 			LOG_DBG("gpio device not ready error\n");
@@ -127,7 +164,57 @@ static void pwrseq_gpio_init(void)
 			pin=0x%x, flag=0x%x", ret, gpio->net_name,
 			gpio->port_name,
 			gpio->pin, gpio->flags);
+
+	for (i = 0; i < power_seq_intr_gpios_count; i++) {
+		int ret;
+		const struct gpio_config *config;
+
+		config = get_gpio_config_from_net_name(
+				power_seq_intr_gpios[i].net_name);
+		if (config == NULL) {
+			LOG_ERR("Can't find GPIO %s device config",
+				power_seq_intr_gpios[i].net_name);
+			break;
+		}
+
+		power_seq_intr_gpios[i].config = config;
+
+
+		LOG_ERR("GPIO i=%d name=%s(%s) port %s pin=%d dev %p", i,
+				power_seq_intr_gpios[i].net_name,
+				power_seq_intr_gpios[i].config->net_name,
+				power_seq_intr_gpios[i].config->port_name,
+				power_seq_intr_gpios[i].config->pin,
+				power_seq_intr_gpios[i].config->port);
+
+		/* Configure interrupt */
+		gpio_init_callback(&power_seq_intr_gpios[i].intr_cb,
+					power_signal_cb,
+					BIT(config->pin));
+		ret = gpio_add_callback(power_seq_intr_gpios[i].config->port,
+			&power_seq_intr_gpios[i].intr_cb);
+
+		if (!ret) {
+			LOG_ERR("GPIO interrupt callback OK i=%d config->pin=%d \
+				config->port_name %s,port %p ",
+				i,
+				config->pin,
+				config->port_name,
+				config->port);
+			gpio_pin_interrupt_configure(config->port,
+				config->pin,
+				power_seq_intr_gpios[i].intr_flags);
+		} else {
+                        LOG_ERR("Failed GPIO interrupt callback i=%d ret=%d", i, ret);
+		}
+	}
+
+	        LOG_DBG("gpio count %d; interrupt count %d",
+                power_seq_gpios_count,
+                power_seq_intr_gpios_count);
+
 }
+
 /* This should be the current state */
 /* There should be the new state stored in new_state */
 enum power_states_ndsx pwr_sm_get_state(void)
@@ -311,10 +398,28 @@ static int powerinfo_handler(const struct shell *shell, size_t argc,
 							char **argv)
 {
 	int state;
+	int i;
 
 	state = pwr_sm_get_state();
 	shell_fprintf(shell, SHELL_INFO, "Power state = %d (%s)\n", state,
 							pwrsm_dbg[state]);
+	for (i=0; i < 12; i++) {
+		shell_fprintf(shell, SHELL_INFO, "GPIO i=%d name=%s (port %s, pin=%d) dev=%p\n",
+		i,
+		power_seq_gpios[i].net_name,
+		power_seq_gpios[i].port_name,
+		power_seq_gpios[i].pin,
+		power_seq_gpios[i].port);
+	}
+	for (i=0; i < 5; i++) {
+                shell_fprintf(shell, SHELL_INFO, "INTR i=%d name=%s dev=%p (port %s pin %d\n",
+			i,
+			power_seq_intr_gpios[i].config->net_name,
+			power_seq_intr_gpios[i].config->port,
+			power_seq_intr_gpios[i].config->port_name,
+			power_seq_intr_gpios[i].config->pin);
+        }
+
 	return 0;
 }
 
