@@ -55,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f3953c0c_bc4f1de4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-11-30T21:50:54Z",
+      "side": 1,
+      "message": "I would keep both bugs and you can include both http://b/172020576 and the current bug in the commit message. Also, it will be easier to review if you can break up the changes into smaller chunks, rather than everything at once (go/smallcls). At the very least, I could see one commit that migrates flash_fp_mcu as written now and another that adds the new functionality that you added here.\n\nLastly, if you\u0027re going to sign up for the Python migration, I would be ok with reviewing and landing this change in the meantime if it\u0027s blocking something. If it\u0027s not urgent or blocking anything, then the best use of time would be to focus on the Python version.",
+      "parentUuid": "6d880898_721616e5",
+      "revId": "8a1d593b9b08eb4a987f4845a3d5a693c68a0b75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "62f836d5_1022782b",
         "filename": "util/flash_fp_mcu",
         "patchSetId": 2
