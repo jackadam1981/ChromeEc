@@ -16,6 +16,69 @@
       "message": "I hate to block this since you\u0027ve already spent time on it, but we\u0027re trying to move flash_fp_mcu to python: http://b/172020576. See https://crrev.com/c/3060744. Any chance you\u0027d be able to implement this in python instead of shell?",
       "revId": "8a1d593b9b08eb4a987f4845a3d5a693c68a0b75",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea669814_a4a08213",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2021-11-30T18:47:14Z",
+      "side": 1,
+      "message": "This is going to take some time to review.",
+      "revId": "8a1d593b9b08eb4a987f4845a3d5a693c68a0b75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62f836d5_1022782b",
+        "filename": "util/flash_fp_mcu",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2021-11-30T18:47:14Z",
+      "side": 1,
+      "message": "keep the then on the same line, or save the formatting changes for a different CL.",
+      "range": {
+        "startLine": 102,
+        "startChar": 6,
+        "endLine": 102,
+        "endChar": 10
+      },
+      "revId": "8a1d593b9b08eb4a987f4845a3d5a693c68a0b75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a6a9de9_8572bc5b",
+        "filename": "util/flash_fp_mcu",
+        "patchSetId": 2
+      },
+      "lineNbr": 848,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2021-11-30T18:47:14Z",
+      "side": 1,
+      "message": "We really need to pass this data via ACPI at some point.",
+      "range": {
+        "startLine": 848,
+        "startChar": 23,
+        "endLine": 848,
+        "endChar": 40
+      },
+      "revId": "8a1d593b9b08eb4a987f4845a3d5a693c68a0b75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
