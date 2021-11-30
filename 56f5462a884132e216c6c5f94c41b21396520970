@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "086d7fa0_3c4c5ba8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-11-30T18:56:22Z",
+      "side": 1,
+      "message": "Code looks good, though I\u0027m not sure if we need bugs on the dooly code?  It seems off but I\u0027m not sure how much it matters",
+      "revId": "56f5462a884132e216c6c5f94c41b21396520970",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ed5668e_32c71412",
+        "filename": "board/dooly/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 554,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-11-30T18:56:22Z",
+      "side": 1,
+      "message": "On the one hand, this matches the previous code, but on the other this seems wrong, doesn\u0027t it?",
+      "revId": "56f5462a884132e216c6c5f94c41b21396520970",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f104a46e_9642e727",
+        "filename": "board/dooly/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 568,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-11-30T18:56:22Z",
+      "side": 1,
+      "message": "Same here?",
+      "revId": "56f5462a884132e216c6c5f94c41b21396520970",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
