@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b56ff409_5d1256e7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-11-30T16:38:41Z",
+      "side": 1,
+      "message": "I hate to block this since you\u0027ve already spent time on it, but we\u0027re trying to move flash_fp_mcu to python: http://b/172020576. See https://crrev.com/c/3060744. Any chance you\u0027d be able to implement this in python instead of shell?",
+      "revId": "8a1d593b9b08eb4a987f4845a3d5a693c68a0b75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
