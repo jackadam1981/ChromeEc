@@ -16,6 +16,29 @@
       "message": "Going to let somebody more familiar with Zephyr Kconfig take a look at this. It isn\u0027t super clear to me how this config option is going to be used. Wouldn\u0027t it make more sense to have a config option for each of the possible measurement approaches and enable those board-by-board?",
       "revId": "32a89542db566730ff1d24de5506b8ecc8d42082",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c58b9507_ea7207dc",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 2
+      },
+      "lineNbr": 402,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-11-30T00:12:10Z",
+      "side": 1,
+      "message": "This requires that the board C code declares board_get_vbus_voltage().  Please add that information to the help description.",
+      "range": {
+        "startLine": 401,
+        "startChar": 0,
+        "endLine": 402,
+        "endChar": 13
+      },
+      "revId": "32a89542db566730ff1d24de5506b8ecc8d42082",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
