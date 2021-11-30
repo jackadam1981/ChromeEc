@@ -10,6 +10,12 @@ menuconfig PLATFORM_EC_TEMP_SENSOR
 
 if PLATFORM_EC_TEMP_SENSOR
 
+config PLATFORM_EC_TEMP_SENSOR_POWER
+	bool "Temperature sensor power"
+	help
+	  Temperature sensor gpio ...........
+	  Must define gpio
+
 config PLATFORM_EC_DPTF
 	bool "Dynamic Platform and Thermal Framework"
 	default y if PLATFORM_EC_ACPI
