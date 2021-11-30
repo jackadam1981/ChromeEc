@@ -16,6 +16,24 @@
       "message": "I had set it to info because the binary size output comes out at INFO, and Keith had said he found that output useful.",
       "revId": "136abfb6d5f0d79ecfbde9ffed4a1f3fbe7f288a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "00b3f0fe_06f0090d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-11-30T20:32:52Z",
+      "side": 1,
+      "message": "Good point, I changed this to just drop the log level of the 3 log lines in question from info to debug.",
+      "parentUuid": "7ec022b7_8d5e5a4e",
+      "revId": "136abfb6d5f0d79ecfbde9ffed4a1f3fbe7f288a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
