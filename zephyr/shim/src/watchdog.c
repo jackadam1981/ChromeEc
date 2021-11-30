@@ -26,7 +26,7 @@ int watchdog_init(void)
 	const struct device *wdt;
 	struct wdt_timeout_cfg wdt_config;
 
-	wdt = DEVICE_DT_GET(DT_NODELABEL(twd0));
+	wdt = DEVICE_DT_GET(DT_CHOSEN(cros_ec_watchdog));
 	if (!device_is_ready(wdt)) {
 		LOG_ERR("Error: device %s is not ready", wdt->name);
 		return -1;
@@ -69,7 +69,7 @@ void watchdog_reload(void)
 {
 	const struct device *wdt;
 
-	wdt = DEVICE_DT_GET(DT_NODELABEL(twd0));
+	wdt = DEVICE_DT_GET(DT_CHOSEN(cros_ec_watchdog));
 	if (!device_is_ready(wdt))
 		LOG_ERR("Error: device %s is not ready", wdt->name);
 
