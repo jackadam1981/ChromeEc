@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "aec23d7a_5ad14301",
+        "filename": "common/usbc/dp_alt_mode.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2021-11-30T09:35:20Z",
+      "side": 1,
+      "message": "I didn\u0027t want to do it this way, because DP_CHK_FLAG may be used with shifting as a flag, but since it is used only once with hardcoded flag(DP_FLAG_RETRY), we can use atomit_t.",
+      "parentUuid": "6e591c4b_1a5891cf",
+      "range": {
+        "startLine": 61,
+        "startChar": 7,
+        "endLine": 61,
+        "endChar": 15
+      },
+      "revId": "1b0277bb448d366d55a347d0aebde6c28f453294",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "334e9156_4d8d02b4",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-11-29T20:59:01Z",
       "side": 1,
       "message": "Add a comment indicating why timer_active/timer_disabled fields are left as uint32_t instead of atomic_t",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 61
+      },
+      "revId": "1b0277bb448d366d55a347d0aebde6c28f453294",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "26f64083_114d82f9",
+        "filename": "common/usbc/usb_pd_timer.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2021-11-30T09:35:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "334e9156_4d8d02b4",
       "range": {
         "startLine": 49,
         "startChar": 0,
