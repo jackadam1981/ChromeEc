@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "95795f59_9c2dde10",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-11-30T22:26:56Z",
+      "side": 1,
+      "message": "Thanks!  Following the code, I think it\u0027ll mostly be an issue if we try to unwedge the port.  That\u0027s the main use of the SDA line directly as a GPIO",
+      "parentUuid": "bd8d8662_01456d35",
+      "revId": "56f5462a884132e216c6c5f94c41b21396520970",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2ed5668e_32c71412",
