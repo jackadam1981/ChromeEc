@@ -60,6 +60,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "fbb9a733_08a76a33",
+        "filename": "util/flash_fp_mcu",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1528447
+      },
+      "writtenOn": "2021-11-30T20:07:25Z",
+      "side": 1,
+      "message": "Done.\nKept only the changes relevant to this issue",
+      "parentUuid": "62f836d5_1022782b",
+      "range": {
+        "startLine": 102,
+        "startChar": 6,
+        "endLine": 102,
+        "endChar": 10
+      },
+      "revId": "8a1d593b9b08eb4a987f4845a3d5a693c68a0b75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "1a6a9de9_8572bc5b",
         "filename": "util/flash_fp_mcu",
         "patchSetId": 2
