@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c3899170_40d86696",
+        "filename": "zephyr/projects/corsola/src/krabby/usbc_config.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-11-30T06:36:00Z",
+      "side": 1,
+      "message": "yes, to separate the local includes from the cros-ec\u0027s.",
+      "parentUuid": "ade9d3ab_f577ae9b",
+      "revId": "80317059d7f22c5b01dd6eee85d291dd4334c03a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "992345b3_a8540e73",
         "filename": "zephyr/projects/corsola/src/usbc_config.c",
         "patchSetId": 2
@@ -37,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7d61c46f_6f5cb55a",
+        "filename": "zephyr/projects/corsola/src/usbc_config.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-11-30T06:36:00Z",
+      "side": 1,
+      "message": "ditto.",
+      "parentUuid": "992345b3_a8540e73",
+      "revId": "80317059d7f22c5b01dd6eee85d291dd4334c03a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cb0dcb5f_4d4702f4",
         "filename": "zephyr/projects/corsola/src/usbc_config.c",
         "patchSetId": 2
@@ -48,6 +84,24 @@
       "writtenOn": "2021-11-29T02:25:40Z",
       "side": 1,
       "message": "is_valid_port \u003d (port \u003e\u003d 0 \u0026\u0026 port \u003c board_get_usb_pd_port_count());\n\nand put the db type check in board_get_usb_pd_port_count",
+      "revId": "80317059d7f22c5b01dd6eee85d291dd4334c03a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b324fb2_55929221",
+        "filename": "zephyr/projects/corsola/src/usbc_config.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-11-30T06:36:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cb0dcb5f_4d4702f4",
       "revId": "80317059d7f22c5b01dd6eee85d291dd4334c03a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
