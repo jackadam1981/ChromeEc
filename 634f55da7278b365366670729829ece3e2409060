@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac862915_7c29bcb7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-11-30T22:43:45Z",
+      "side": 1,
+      "message": "That says the discharge current loop is disabled when the charge current is 0. If you look at `raa489000_enable_linear_charge()` when linear charging is disabled, we set the charge current to be 0.\n\nTherefore, what\u0027s the issue? Is your concern while precharge is occcuring? If so, that\u0027s a known limitation with the part.",
+      "parentUuid": "31eaa1fd_cfaf91f7",
+      "revId": "634f55da7278b365366670729829ece3e2409060",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "69798848_6462ed35",
