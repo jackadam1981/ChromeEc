@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ccacd616_8535d201",
+        "filename": "board/quackingstick/usbc_config.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-11-30T00:12:19Z",
+      "side": 1,
+      "message": "You now change the definitions. Please also change this variable names, like `high`, `low`. And move the `low` first, and then `high`.",
+      "range": {
+        "startLine": 27,
+        "startChar": 5,
+        "endLine": 27,
+        "endChar": 7
+      },
+      "revId": "8d2bce095c6796009cf1870ec3878a5c7040bb70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
