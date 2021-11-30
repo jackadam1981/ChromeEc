@@ -22,6 +22,30 @@
       },
       "revId": "2ec3a9414377d9fcd6e0ada16e42e1040602a531",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "789bfed5_36dfafec",
+        "filename": "zephyr/test/drivers/src/power_common.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2021-11-30T10:47:43Z",
+      "side": 1,
+      "message": "Renamed *_in_state variables and added `transition_to` and `transition_from` local variables. Please check new version.",
+      "parentUuid": "6a41126e_7d62c976",
+      "range": {
+        "startLine": 112,
+        "startChar": 0,
+        "endLine": 114,
+        "endChar": 0
+      },
+      "revId": "2ec3a9414377d9fcd6e0ada16e42e1040602a531",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
