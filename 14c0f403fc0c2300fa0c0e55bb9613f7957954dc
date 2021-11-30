@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e256d16b_9bfebcc3",
+        "filename": "driver/tcpm/nct38xx.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-11-30T20:45:10Z",
+      "side": 1,
+      "message": "Can you add a BUILD_ASSERT:\n\n#if CONFIG_ZEPHYR \u0026\u0026 CONFIG_IO_EXPANDER_NCT38XX\n#error CONFIG_IO_EXPANDER_NCT38XX cannot be used with Zephyr.\n#error Enable native Zephyr driver CONFIG_GPIO_NCT38XX instead.\n#endif\n\nIt\u0027s unlikely someone will add CONFIG_IO_EXPANDER_NCT38XX to the Zephyr shim, but this check also makes it clear that you must use the upstream GPIO driver.",
+      "revId": "14c0f403fc0c2300fa0c0e55bb9613f7957954dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ed62321_95125eab",
+        "filename": "driver/tcpm/nct38xx.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-11-30T20:45:10Z",
+      "side": 1,
+      "message": "Can you add a device_is_ready() check somewhere?  We don\u0027t want this on every interrupt, but it would be good to validate the nct38xx-gpio driver has been initialized.",
+      "range": {
+        "startLine": 257,
+        "startChar": 22,
+        "endLine": 257,
+        "endChar": 25
+      },
+      "revId": "14c0f403fc0c2300fa0c0e55bb9613f7957954dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
