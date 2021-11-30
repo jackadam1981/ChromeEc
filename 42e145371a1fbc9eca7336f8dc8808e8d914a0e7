@@ -208,6 +208,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4d9986e2_5c72cf96",
+        "filename": "zephyr/subsys/usbc/tc/snk.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-11-30T17:08:56Z",
+      "side": 1,
+      "message": "This was added in cros to allow DEBUG_LABELS to be included or not. I am not sure I can get the same functionality using just the existing Zephyr Logging.  I adjusted all of the debug to use LOG_",
+      "parentUuid": "f2989c0a_2ec1bfbb",
+      "range": {
+        "startLine": 134,
+        "startChar": 2,
+        "endLine": 139,
+        "endChar": 6
+      },
+      "revId": "42e145371a1fbc9eca7336f8dc8808e8d914a0e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fe345d16_3a24f542",
         "filename": "zephyr/subsys/usbc/tc/snk.c",
         "patchSetId": 1
@@ -243,6 +267,30 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "fe345d16_3a24f542",
+      "range": {
+        "startLine": 152,
+        "startChar": 7,
+        "endLine": 152,
+        "endChar": 26
+      },
+      "revId": "42e145371a1fbc9eca7336f8dc8808e8d914a0e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4756edd7_adacd35e",
+        "filename": "zephyr/subsys/usbc/tc/snk.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-11-30T17:08:56Z",
+      "side": 1,
+      "message": "I am not sure CONFIG_ makes sense. This is not an external developer defined CONFIG_.  It is a local define to indicate if LABELS should be included or not for ROM space savings.",
+      "parentUuid": "c525bff5_6bc77323",
       "range": {
         "startLine": 152,
         "startChar": 7,
