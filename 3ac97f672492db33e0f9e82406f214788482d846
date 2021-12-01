@@ -100,6 +100,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad0dea0d_abaac4a2",
+        "filename": "zephyr/boards/riscv/it8xxx2_evb/it8xxx2_evb.dts",
+        "patchSetId": 9
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-12-01T15:14:22Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b9119299_01a76dff",
+      "range": {
+        "startLine": 209,
+        "startChar": 31,
+        "endLine": 209,
+        "endChar": 50
+      },
+      "revId": "3ac97f672492db33e0f9e82406f214788482d846",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e2d7013d_23527645",
@@ -137,6 +161,30 @@
       "side": 1,
       "message": "Yes, pwm output 324Hz isn\u0027t enough to turn on the fan, and we use 324Hz to test pwm maximum output in EC power saving mode.",
       "parentUuid": "e2d7013d_23527645",
+      "range": {
+        "startLine": 199,
+        "startChar": 0,
+        "endLine": 212,
+        "endChar": 0
+      },
+      "revId": "3ac97f672492db33e0f9e82406f214788482d846",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b9262f7_a357f6d8",
+        "filename": "zephyr/boards/riscv/it8xxx2_evb/it8xxx2_evb.dts",
+        "patchSetId": 9
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-12-01T15:14:22Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c78de32b_5e08400b",
       "range": {
         "startLine": 199,
         "startChar": 0,
