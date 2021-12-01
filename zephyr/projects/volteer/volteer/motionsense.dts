@@ -247,6 +247,41 @@
 		};
 	};
 
+	/*
+	 * List of alternative motion sensors that creates
+	 * motion_sensors_alt array.
+	 */
+	motionsense-sensor-alt {
+		alt_lid_accel: lid-accel {
+			compatible = "cros-ec,bma255";
+			status = "okay";
+
+			label = "Alt Lid Accel";
+			active-mask = "SENSOR_ACTIVE_S0_S3";
+			location = "MOTIONSENSE_LOC_LID";
+			mutex = <&mutex_bma255>;
+			port = <&i2c_sensor>;
+			rot-standard-ref = <&lid_rot_ref>;
+			default-range = <2>;
+			drv-data = <&bma255_data>;
+			i2c-spi-addr-flags = "BMA2x2_I2C_ADDR1_FLAGS";
+			alternate-for = <&lid_accel>;
+			alternate-ssfc-indicator = <&lid_sensor_bma255>;
+			configs {
+				compatible =
+					"cros-ec,motionsense-sensor-config";
+				ec-s0 {
+					label = "SENSOR_CONFIG_EC_S0";
+					odr = <(10000 | ROUND_UP_FLAG)>;
+				};
+				ec-s3 {
+					label = "SENSOR_CONFIG_EC_S3";
+					odr = <(10000 | ROUND_UP_FLAG)>;
+				};
+			};
+		};
+	};
+
 	motionsense-sensor-info {
 		compatible = "cros-ec,motionsense-sensor-info";
 

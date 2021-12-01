@@ -153,10 +153,10 @@
 	 * motion_sensors_alt array.
 	 */
 	motionsense-sensor-alt {
-		alt_lid_accel {
+		alt_lid_accel: alt_lid_accel {
 			compatible = "cros-ec,kx022";
 			status = "okay";
-			label = "Lid Accel";
+			label = "KX022 Lid Accel";
 			active-mask = "SENSOR_ACTIVE_S0_S3_S5";
 			location = "MOTIONSENSE_LOC_LID";
 			mutex = <&lid_mutex>;
