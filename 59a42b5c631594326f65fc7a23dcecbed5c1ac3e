@@ -70,6 +70,24 @@
       "parentUuid": "0e89b031_73ca4e29",
       "revId": "59a42b5c631594326f65fc7a23dcecbed5c1ac3e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f05275ec_9b38131e",
+        "filename": "include/power/alderlake_slg4bd44540.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1260470
+      },
+      "writtenOn": "2021-12-01T17:57:08Z",
+      "side": 1,
+      "message": "Something I realized while making this change: there\u0027s a little extra weirdness to splitting them this way. If I take just the alderlake_slg...c/.h changes, I\u0027ll be adding this hunk in alderlake.c:\n\n\t[X86_SLP_S5_DEASSERTED] \u003d {\n\t\t.gpio \u003d SLP_S5_SIGNAL_L,\n\t\t.flags \u003d POWER_SIGNAL_ACTIVE_HIGH,\n\t\t.name \u003d \"SLP_S5_DEASSERTED\",\n\t},\n\t\nBut without also flipping on CONFIG_HOSTCMD_ESPI_VW_SLP_S5, SLP_S5_SIGNAL_L is defined to SLP_S4_SIGNAL_L (via the defaulting in intel_x86.h), which is already in this list. So we\u0027ll be adding the same GPIO twice under two different power signal names, and ignoring the changes reported for the new power signal name. I justed tested it on volteer and it seems to works fine, despite being a little odd. But I\u0027ll add a Cq-Depend to tie them together as an indicator (though not strictly a requirement).",
+      "parentUuid": "d7b64451_bbaf57d0",
+      "revId": "59a42b5c631594326f65fc7a23dcecbed5c1ac3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
