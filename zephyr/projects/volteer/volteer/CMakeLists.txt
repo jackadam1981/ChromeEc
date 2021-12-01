@@ -41,3 +41,5 @@ zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_CBI_EEPROM
   "${PLATFORM_EC_BOARD}/cbi.c")
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_USBC
   "${PLATFORM_EC_BOARD}/usbc_config.c")
+
+zephyr_library_sources("src/alt_dev.c")
