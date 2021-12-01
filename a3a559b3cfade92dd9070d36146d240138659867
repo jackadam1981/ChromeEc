@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a673d8d7_365ce1d5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2021-12-01T13:46:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "433a6b45_dd9afcfb",
+      "revId": "a3a559b3cfade92dd9070d36146d240138659867",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8301ac1c_a9d4fb71",
@@ -41,6 +59,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d95713c_27aee96d",
+        "filename": "zephyr/shim/include/motionsense_sensors.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2021-12-01T13:46:34Z",
+      "side": 1,
+      "message": "Sure, I agree.",
+      "parentUuid": "8301ac1c_a9d4fb71",
+      "range": {
+        "startLine": 107,
+        "startChar": 16,
+        "endLine": 107,
+        "endChar": 46
+      },
+      "revId": "a3a559b3cfade92dd9070d36146d240138659867",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e268b780_7c834253",
@@ -54,6 +96,30 @@
       "writtenOn": "2021-11-23T16:48:54Z",
       "side": 1,
       "message": "I like \"enable_alt\" as the action here instead of replace to match the PPC driver.  \"replace_alt\" makes it sound like you are replacing the alternate sensor, instead of replacing the primary sensor with an alternate.",
+      "range": {
+        "startLine": 119,
+        "startChar": 17,
+        "endLine": 119,
+        "endChar": 24
+      },
+      "revId": "a3a559b3cfade92dd9070d36146d240138659867",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe680399_4501d2e6",
+        "filename": "zephyr/shim/include/motionsense_sensors.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2021-12-01T13:46:34Z",
+      "side": 1,
+      "message": "Ok, thanks for the explanation.",
+      "parentUuid": "e268b780_7c834253",
       "range": {
         "startLine": 119,
         "startChar": 17,
