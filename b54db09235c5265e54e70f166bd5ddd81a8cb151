@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92e9969f_ce8fb133",
+        "filename": "zephyr/test/drivers/src/main.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-12-01T16:12:01Z",
+      "side": 1,
+      "message": "Can this be it\u0027s own test suite instead of mixed into the drivers suite?",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 27
+      },
+      "revId": "b54db09235c5265e54e70f166bd5ddd81a8cb151",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
