@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "50e051cb_d8a01bee",
+        "filename": "zephyr/test/drivers/overlay.dts",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-12-01T23:17:04Z",
+      "side": 1,
+      "message": "Missing \";\".  May be the cause of the build error.",
+      "range": {
+        "startLine": 13,
+        "startChar": 1,
+        "endLine": 13,
+        "endChar": 2
+      },
+      "revId": "3e71ffdd7f09efc78631bc47a1e876cedaa1ffaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
