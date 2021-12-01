@@ -16,6 +16,24 @@
       "message": "So STATE_CHARGING_FULL_CHARGE \u003d BLUE, but PWM_CH_LED_FULL \u003d AMBER? I think we should fix this mapping in baseboard.h and dewatt/board.h first.",
       "revId": "05d938a00688e70a6712748e0231f16097ae667e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9f5fa98_b524d17e",
+        "filename": "board/dewatt/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1293891
+      },
+      "writtenOn": "2021-12-01T03:00:58Z",
+      "side": 1,
+      "message": "Yes. I check the schematic of the Dewatt daughter board. EC_PWM_LED_CHRG_L is connected to the blue LED, and EC_PWM_LED_FULL_L is connected to the Orange LED.",
+      "parentUuid": "4fb606da_8ca54f6d",
+      "revId": "05d938a00688e70a6712748e0231f16097ae667e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
