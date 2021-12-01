@@ -73,6 +73,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "89b72fe6_6ec75a0f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1339295
+      },
+      "writtenOn": "2021-12-01T23:00:17Z",
+      "side": 1,
+      "message": "Hi Tom, \n\nFor this CL: Can we review and land this. I believe that this is needed because AMD ACPI entries change and this makes it very important that we read GPIO base in runtime. I think we should do the same in python script. \nLanding this now will help. I assume that python porting and migration will take some time.  \n\nFor Python porting: Ofer has kindly accepted the challenge. Will assign that bug to him",
+      "parentUuid": "f3953c0c_bc4f1de4",
+      "revId": "8a1d593b9b08eb4a987f4845a3d5a693c68a0b75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "62f836d5_1022782b",
         "filename": "util/flash_fp_mcu",
         "patchSetId": 2
