@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a530c4db_f39bfdbc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2021-12-01T23:53:28Z",
+      "side": 1,
+      "message": "This function is only ever called with fixed args that don\u0027t work all the cases we need, so it is necessary to do this. I can explain this in the commit message",
+      "parentUuid": "13026240_320cd151",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 13
+      },
+      "revId": "609dc3b7f1ff4a490a7c1b1b809a3d5da1ab2b9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "401438cd_cbfb70ee",
@@ -58,6 +82,42 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "909ad962_968a310c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2021-12-01T23:53:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "401438cd_cbfb70ee",
+      "revId": "609dc3b7f1ff4a490a7c1b1b809a3d5da1ab2b9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f7e0c94_e7d761e3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2021-12-01T23:53:28Z",
+      "side": 1,
+      "message": "I think everything here is sufficiently related to the purpose of testing a particular function.",
+      "parentUuid": "6e5f3782_3ed645bb",
+      "revId": "609dc3b7f1ff4a490a7c1b1b809a3d5da1ab2b9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b60374cc_aff37573",
@@ -81,6 +141,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "88989886_9f76384e",
+        "filename": "driver/accel_lis2dw12.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2021-12-01T23:53:28Z",
+      "side": 1,
+      "message": "It isn\u0027t, I think this is a copy paste glitch",
+      "parentUuid": "b60374cc_aff37573",
+      "range": {
+        "startLine": 210,
+        "startChar": 0,
+        "endLine": 210,
+        "endChar": 6
+      },
+      "revId": "609dc3b7f1ff4a490a7c1b1b809a3d5da1ab2b9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d050c83f_b01cd03f",
@@ -94,6 +178,30 @@
       "writtenOn": "2021-11-22T20:46:14Z",
       "side": 1,
       "message": "should be in a teardown or after function.",
+      "range": {
+        "startLine": 124,
+        "startChar": 0,
+        "endLine": 125,
+        "endChar": 36
+      },
+      "revId": "609dc3b7f1ff4a490a7c1b1b809a3d5da1ab2b9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "df29d0a0_79a177e7",
+        "filename": "zephyr/test/drivers/src/lis2dw12.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2021-12-01T23:53:28Z",
+      "side": 1,
+      "message": "The setup function already takes care of resetting the emulator settings, so I\u0027ll just run the same function on teardown and take this line out.",
+      "parentUuid": "d050c83f_b01cd03f",
       "range": {
         "startLine": 124,
         "startChar": 0,
