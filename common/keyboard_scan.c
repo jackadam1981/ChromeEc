@@ -364,6 +364,16 @@ void set_vol_up_key(uint8_t row, uint8_t col)
 	}
 }
 
+
+#define KEYBOARD_COL_KEY_D	2 /* KSO */
+#define KEYBOARD_ROW_KEY_D	4 /* KSI */
+
+#define KEYBOARD_MASK_KEY_D	(1 << (KEYBOARD_ROW_KEY_D))
+
+__overridable void event_alt_volumeup_d(void)
+{
+}
+
 /**
  * Check special runtime key combinations.
  *
@@ -411,6 +421,11 @@ static int check_runtime_keys(const uint8_t *state)
 		/* H = hibernate */
 		CPRINTS("KB hibernate");
 		system_enter_hibernate(0, 0);
+		return 1;
+	} else if (state[KEYBOARD_COL_KEY_D] == KEYBOARD_MASK_KEY_D) {
+		/* D = debug */
+		CPRINTS("KB debug");
+		event_alt_volumeup_d();
 		return 1;
 	}
 

@@ -4,6 +4,7 @@
  */
 
 /* Chronicler board-specific configuration */
+#include "battery_smart.h"
 #include "button.h"
 #include "common.h"
 #include "accelgyro.h"
@@ -309,4 +310,42 @@ const int keyboard_factory_scan_pins[][2] = {
 
 const int keyboard_factory_scan_pins_used =
 			ARRAY_SIZE(keyboard_factory_scan_pins);
+
+static int debug;
+
+void event_alt_volumeup_d(void)
+{
+	CPRINTS("%s", __func__);
+
+	if(++debug & 0x1)
+		CPRINTS("factory debug enable");
+	else
+		CPRINTS("factory debug desable");
+	return;
+}
+
+static void battery_operation_status_check(void)
+{
+	int rv, cmd, reg;
+	uint8_t data[6];
+
+	if(!(debug & 0x1))
+		return;
+
+	/* Get the lowest 16bits of the OperationStatus() data */
+	rv = sb_read_mfgacc(PARAM_OPERATION_STATUS,
+			SB_ALT_MANUFACTURER_ACCESS, data, sizeof(data));
+
+	reg = data[2] | data[3] << 8;
+	cmd = data[0] | data[1] << 8;
+
+	if (rv)
+		CPRINTS("Battery OperationStatus(0x%02x) read fail!", PARAM_OPERATION_STATUS);
+	else
+		CPRINTS("Battery OperationStatus(0x%02x) lowest 16bits: 0x%04x ", cmd, reg);
+
+	return;
+}
+DECLARE_HOOK(HOOK_SECOND, battery_operation_status_check, HOOK_PRIO_DEFAULT);
+
 #endif
