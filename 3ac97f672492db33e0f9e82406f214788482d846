@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8998eceb_e3dd1a99",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2021-12-01T04:06:33Z",
+      "side": 1,
+      "message": "Ok, moved pwm dts changes to another CL.",
+      "parentUuid": "de3699eb_3cecee51",
+      "revId": "3ac97f672492db33e0f9e82406f214788482d846",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b19599a8_309ad5a2",
@@ -60,6 +78,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b9119299_01a76dff",
+        "filename": "zephyr/boards/riscv/it8xxx2_evb/it8xxx2_evb.dts",
+        "patchSetId": 9
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2021-12-01T04:06:33Z",
+      "side": 1,
+      "message": "Yes, I want the pwm channel settings same with cros_ec/main: it8xxx2_evb and third_party/upstream: it8xxx2_evb.\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/main/board/it8xxx2_evb/board.c#19\nAnd this is convenient to check pwm or fan channel waveform in the same pin.",
+      "parentUuid": "b19599a8_309ad5a2",
+      "range": {
+        "startLine": 209,
+        "startChar": 31,
+        "endLine": 209,
+        "endChar": 50
+      },
+      "revId": "3ac97f672492db33e0f9e82406f214788482d846",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e2d7013d_23527645",
         "filename": "zephyr/boards/riscv/it8xxx2_evb/it8xxx2_evb.dts",
         "patchSetId": 9
@@ -71,6 +113,30 @@
       "writtenOn": "2021-11-30T15:31:50Z",
       "side": 1,
       "message": "You swapped the order of the PWMs in this node but left the frequency as it was previously. Is that what you meant to do?",
+      "range": {
+        "startLine": 199,
+        "startChar": 0,
+        "endLine": 212,
+        "endChar": 0
+      },
+      "revId": "3ac97f672492db33e0f9e82406f214788482d846",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c78de32b_5e08400b",
+        "filename": "zephyr/boards/riscv/it8xxx2_evb/it8xxx2_evb.dts",
+        "patchSetId": 9
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2021-12-01T04:06:33Z",
+      "side": 1,
+      "message": "Yes, pwm output 324Hz isn\u0027t enough to turn on the fan, and we use 324Hz to test pwm maximum output in EC power saving mode.",
+      "parentUuid": "e2d7013d_23527645",
       "range": {
         "startLine": 199,
         "startChar": 0,
