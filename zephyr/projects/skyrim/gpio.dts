@@ -15,12 +15,12 @@
 			gpios = <&gpiob 1 GPIO_OUT_LOW>;
 			label = "EC_GSC_PACKET_MODE";
 		};
-		mech_pwr_btn_odl {
+		gpio_mech_pwr_btn_odl: mech_pwr_btn_odl {
 			gpios = <&gpiod 2 GPIO_INPUT>;
 			label = "MECH_PWR_BTN_ODL";
 			enum-name = "GPIO_POWER_BUTTON_L";
 		};
-		ec_pwr_btn_odl {
+		gpio_ec_pwr_btn_odl: ec_pwr_btn_odl {
 			gpios = <&gpio0 1 GPIO_INPUT>;
 			label = "EC_PWR_BTN_ODL";
 			enum-name = "GPIO_EC_PWR_BTN_ODL";
@@ -50,7 +50,7 @@
 			label = "PG_PCORE_S0_R_OD";
 			enum-name = "GPIO_S0_PGOOD";
 		};
-		acok_od {
+		gpio_acok_od: acok_od {
 			gpios = <&gpio0 0 GPIO_INPUT>;
 			label = "ACOK_OD";
 			enum-name = "GPIO_AC_PRESENT";
@@ -199,7 +199,7 @@
 			gpios = <&gpioa 2 (GPIO_INPUT | GPIO_PULL_DOWN)>;
 			label = "3AXIS_INT_L";
 		};
-		lid_open {
+		gpio_lid_open: lid_open {
 			gpios = <&gpio0 2 GPIO_INPUT>;
 			label = "LID_OPEN";
 			enum-name = "GPIO_LID_OPEN";
@@ -346,4 +346,34 @@
 			label = "EC_PWM7";
 		};
 	};
+
+	hibernate-wake-pins {
+		compatible = "cros-ec,hibernate-wake-pins";
+		wakeup-pins = <
+			&gpio_acok_od
+			&gpio_ec_pwr_btn_odl
+			&gpio_lid_open
+		>;
+	};
+
+	vsby-psl-in-list {
+		/* PSL_IN2/3/4 are used to wake */
+		psl-in-pads = <&psl_in2 &psl_in3 &psl_in4>;
+	};
+};
+
+/* PSL input pads*/
+&psl_in2 {
+	/* ACOK_OD */
+	flag = <NPCX_PSL_RISING_EDGE>;
+};
+
+&psl_in3 {
+	/* EC_PWR_BTN_ODL */
+	flag = <NPCX_PSL_FALLING_EDGE>;
+};
+
+&psl_in4 {
+	/* LID_OPEN */
+	flag = <NPCX_PSL_RISING_EDGE>;
 };
