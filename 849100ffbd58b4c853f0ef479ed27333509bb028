@@ -1,0 +1,124 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9ac5850_dcb96b86",
+        "filename": "zephyr/test/drivers/src/usb_mux.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2021-12-01T17:58:08Z",
+      "side": 1,
+      "message": "Just an FYI: You can use the variadic `FAKE_VALUE_FUNC` and not need to specify arg counts.",
+      "revId": "849100ffbd58b4c853f0ef479ed27333509bb028",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ac22449_c52d8333",
+        "filename": "zephyr/test/drivers/src/usb_mux.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2021-12-01T17:58:08Z",
+      "side": 1,
+      "message": "Should this be an __ASSERT() (or otherwise raise an error)? If so, ditto for all the other custom fakes",
+      "range": {
+        "startLine": 67,
+        "startChar": 5,
+        "endLine": 67,
+        "endChar": 21
+      },
+      "revId": "849100ffbd58b4c853f0ef479ed27333509bb028",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa17561e_a63ae717",
+        "filename": "zephyr/test/drivers/src/usb_mux.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2021-12-01T17:58:08Z",
+      "side": 1,
+      "message": "Instead of this conditional, I\u0027d just assert that (proxy_get_mux_state_seq_idx \u003c NUM_OF_PROXY) before accessing the array and always increment afterwards. This way you get a clear failure if somebody calls this function too many times and/or forgets reset with set_proxy_get_mux_state_seq().",
+      "revId": "849100ffbd58b4c853f0ef479ed27333509bb028",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1922c7fa_19f1c21f",
+        "filename": "zephyr/test/drivers/src/usb_mux.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2021-12-01T17:58:08Z",
+      "side": 1,
+      "message": "Clever",
+      "revId": "849100ffbd58b4c853f0ef479ed27333509bb028",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f100bb8_f0519586",
+        "filename": "zephyr/test/drivers/src/usb_mux.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2021-12-01T17:58:08Z",
+      "side": 1,
+      "message": "Why isn\u0027t this \u0026proxy_chain_0?",
+      "range": {
+        "startLine": 354,
+        "startChar": 17,
+        "endLine": 354,
+        "endChar": 41
+      },
+      "revId": "849100ffbd58b4c853f0ef479ed27333509bb028",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e47028b_365e9818",
+        "filename": "zephyr/test/drivers/src/usb_mux.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 880,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2021-12-01T17:58:08Z",
+      "side": 1,
+      "message": "Not your fault but could you fix this typo while we\u0027re here?",
+      "range": {
+        "startLine": 880,
+        "startChar": 22,
+        "endLine": 880,
+        "endChar": 43
+      },
+      "revId": "849100ffbd58b4c853f0ef479ed27333509bb028",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
