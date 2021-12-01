@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d768ffe_8bca61ac",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1260470
+      },
+      "writtenOn": "2021-12-01T17:58:59Z",
+      "side": 1,
+      "message": "Fixed the zephyr Kconfig dependency that was causing the zephyr pre-CQ build error.",
+      "revId": "708abdc2b43725624466f3cec5510d83f3eb86d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
