@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba4fd16e_62de5709",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1477218
+      },
+      "writtenOn": "2021-12-01T02:35:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4aaf85a1_4d9d4f87",
+      "range": {
+        "startLine": 9,
+        "startChar": 31,
+        "endLine": 9,
+        "endChar": 39
+      },
+      "revId": "0cd3281c7333e1cb2b59b3d1f6f126fbc0733fed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "03e6096b_d53ac334",
@@ -37,6 +61,24 @@
       "writtenOn": "2021-12-01T01:07:54Z",
       "side": 1,
       "message": "Is this comment still relevant?",
+      "revId": "0cd3281c7333e1cb2b59b3d1f6f126fbc0733fed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "588551f6_80b10253",
+        "filename": "board/taeko/sensors.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1477218
+      },
+      "writtenOn": "2021-12-01T02:35:04Z",
+      "side": 1,
+      "message": "I modify it as latest patch.",
+      "parentUuid": "03e6096b_d53ac334",
       "revId": "0cd3281c7333e1cb2b59b3d1f6f126fbc0733fed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
