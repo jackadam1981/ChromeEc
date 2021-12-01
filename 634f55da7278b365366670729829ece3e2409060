@@ -54,6 +54,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e89b3fb_eafbb88d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2021-12-01T02:01:15Z",
+      "side": 1,
+      "message": "in ocpc phase\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/firmware-dedede-13606.B-master/common/ocpc.c#388\nwill issue primary charger precharge current 256ma first.",
+      "parentUuid": "ac862915_7c29bcb7",
+      "revId": "634f55da7278b365366670729829ece3e2409060",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "69798848_6462ed35",
