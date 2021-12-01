@@ -5,6 +5,7 @@
 
 #include <zephyr.h>
 #include <pm/pm.h>
+#include <pm/policy.h>
 #include <soc.h>
 
 #include "console.h"
@@ -15,11 +16,17 @@ static const struct pm_state_info pm_min_residency[] =
 	PM_STATE_INFO_DT_ITEMS_LIST(DT_NODELABEL(cpu0));
 
 /* CROS PM policy handler */
-struct pm_state_info pm_policy_next_state(int32_t ticks)
+struct pm_state_info pm_policy_next_state(uint8_t cpu, int32_t ticks)
 {
+	ARG_UNUSED(cpu);
+
 	/* Deep sleep is allowed and console is not in use. */
 	if (DEEP_SLEEP_ALLOWED != 0 && !npcx_power_console_is_in_use()) {
 		for (int i = ARRAY_SIZE(pm_min_residency) - 1; i >= 0; i--) {
+			if (!pm_constraint_get(pm_min_residency[i].state)) {
+				continue;
+			}
+
 			/* Find suitable power state by residency time */
 			if (ticks == K_TICKS_FOREVER ||
 			    ticks >= k_us_to_ticks_ceil32(
