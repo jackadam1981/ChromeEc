@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2184389a_74ec3d0c",
+        "filename": "driver/tcpm/nct38xx.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1394446
+      },
+      "writtenOn": "2021-12-01T05:24:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e256d16b_9bfebcc3",
+      "revId": "14c0f403fc0c2300fa0c0e55bb9613f7957954dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3ed62321_95125eab",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-11-30T20:45:10Z",
       "side": 1,
       "message": "Can you add a device_is_ready() check somewhere?  We don\u0027t want this on every interrupt, but it would be good to validate the nct38xx-gpio driver has been initialized.",
+      "range": {
+        "startLine": 257,
+        "startChar": 22,
+        "endLine": 257,
+        "endChar": 25
+      },
+      "revId": "14c0f403fc0c2300fa0c0e55bb9613f7957954dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5588b627_c9db1560",
+        "filename": "driver/tcpm/nct38xx.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1394446
+      },
+      "writtenOn": "2021-12-01T05:24:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3ed62321_95125eab",
       "range": {
         "startLine": 257,
         "startChar": 22,
