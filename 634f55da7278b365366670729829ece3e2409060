@@ -72,6 +72,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7af4ff99_cdbccfd7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-12-01T17:29:25Z",
+      "side": 1,
+      "message": "Yes, but once precharge is complete it\u0027s set to 0mA. https://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/firmware-dedede-13606.B-master/common/ocpc.c#420",
+      "parentUuid": "4e89b3fb_eafbb88d",
+      "revId": "634f55da7278b365366670729829ece3e2409060",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "69798848_6462ed35",
