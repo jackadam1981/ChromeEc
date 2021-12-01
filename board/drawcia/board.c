@@ -135,14 +135,37 @@ static void usb_c1_interrupt(enum gpio_signal s)
 	hook_call_deferred(&check_c1_line_data, INT_RECHECK_US);
 }
 
+static void board_enable_hdmi_hpd(int enable)
+{
+	enum fw_config_db db = get_cbi_fw_config_db();
+
+	if (db == DB_1A_HDMI || db == DB_LTE_HDMI || db == DB_1A_HDMI_LTE) {
+		if (!enable)
+			gpio_set_level(GPIO_EC_AP_USB_C1_HDMI_HPD, enable);
+		else {
+			enable = gpio_get_level(GPIO_VOLUP_BTN_ODL_HDMI_HPD);
+			gpio_set_level(GPIO_EC_AP_USB_C1_HDMI_HPD, enable);
+		}
+	}
+}
+
 static void button_sub_hdmi_hpd_interrupt(enum gpio_signal s)
 {
 	enum fw_config_db db = get_cbi_fw_config_db();
 	int hdmi_hpd = gpio_get_level(GPIO_VOLUP_BTN_ODL_HDMI_HPD);
 
-	if (db == DB_1A_HDMI || db == DB_LTE_HDMI || db == DB_1A_HDMI_LTE)
-		gpio_set_level(GPIO_EC_AP_USB_C1_HDMI_HPD, hdmi_hpd);
-	else
+	if (db == DB_1A_HDMI || db == DB_LTE_HDMI || db == DB_1A_HDMI_LTE) {
+		/*
+		 * Since PP5000_HDMI is enabled by EN_PP5000_U,
+		 * VOLUP_BTN_ODL_HDMI_HPD will be asserted when system is in
+		 * power state S5 and HDMI is plugged in. However, we sould
+		 * not report this to CPU through EC_AP_USB_C1_HDMI_HPD in
+		 * such scenario, or there might be leakage current on CPU
+		 * side, which might lead to unabling to power on system.
+		 */
+		if (power_get_state() != POWER_S5)
+			gpio_set_level(GPIO_EC_AP_USB_C1_HDMI_HPD, hdmi_hpd);
+	} else
 		button_interrupt(s);
 }
 
@@ -417,6 +440,9 @@ void board_init(void)
 	if (!gpio_get_level(GPIO_PEN_DET_ODL))
 		gpio_set_level(GPIO_EN_PP5000_PEN, 1);
 
+	/* Make sure HDMI_HPD signal can be reported to CPU at sysjump */
+	board_enable_hdmi_hpd(1);
+
 	/* Charger on the MB will be outputting PROCHOT_ODL and OD CHG_DET */
 	sm5803_configure_gpio0(CHARGER_PRIMARY, GPIO0_MODE_PROCHOT, 1);
 	sm5803_configure_chg_det_od(CHARGER_PRIMARY, 1);
@@ -438,6 +464,9 @@ static void board_resume(void)
 	sm5803_disable_low_power_mode(CHARGER_PRIMARY);
 	if (board_get_charger_chip_count() > 1)
 		sm5803_disable_low_power_mode(CHARGER_SECONDARY);
+
+	/* Make sure HDMI_HPD signal can be reported to CPU when sys resume */
+	board_enable_hdmi_hpd(1);
 }
 DECLARE_HOOK(HOOK_CHIPSET_RESUME, board_resume, HOOK_PRIO_DEFAULT);
 
@@ -448,6 +477,13 @@ static void board_suspend(void)
 		sm5803_enable_low_power_mode(CHARGER_SECONDARY);
 }
 DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, board_suspend, HOOK_PRIO_DEFAULT);
+
+static void board_shutdown(void)
+{
+	/* Disable reporting HDMI_HPD to CPU at shutdown */
+	board_enable_hdmi_hpd(0);
+}
+DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, board_shutdown, HOOK_PRIO_DEFAULT);
 
 void board_hibernate(void)
 {
