@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3df9e646_fa16297e",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 2
+      },
+      "lineNbr": 847,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-12-01T16:49:56Z",
+      "side": 1,
+      "message": "I would think that a board with the part would enable both configs. Should these configs select each other or one of them select the other?",
+      "revId": "ea3ed4d937f9e4c1d3a4a44c213fa7a55e7856a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
