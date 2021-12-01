@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6912b2f8_9a318c52",
+        "filename": "driver/tcpm/nct38xx.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-12-01T16:36:36Z",
+      "side": 1,
+      "message": "This function usually returns EC_ERROR values, so this should probably be something appropriate from that enum (ex. EC_ERROR_BUSY?  EC_ERROR_NOT_POWERED?)",
+      "revId": "4baa5926587ab68ea401a1052b7a9f7ec250d1c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
