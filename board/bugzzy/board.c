@@ -834,6 +834,7 @@ static void panel_power_change_deferred(void)
 		i2c_write8(I2C_PORT_LCD, I2C_ADDR_ISL98607_FLAGS,
 				ISL98607_REG_VP_OUT, ISL98607_VP_OUT_5P5);
 	}
+	signal = 0;
 	gpio_set_level(GPIO_TSP_TA, signal & extpower_is_present());
 }
 DECLARE_DEFERRED(panel_power_change_deferred);
@@ -887,6 +888,8 @@ void lcd_reset_change_interrupt(enum gpio_signal signal)
 static void handle_tsp_ta(void)
 {
 	int signal = gpio_get_level(GPIO_EN_PP1800_PANEL_S0);
+
+	signal = 0;
 
 	gpio_set_level(GPIO_TSP_TA, signal & extpower_is_present());
 }
