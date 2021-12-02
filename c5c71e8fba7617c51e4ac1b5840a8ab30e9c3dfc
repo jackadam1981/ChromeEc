@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1d63891_d63a50b0",
+        "filename": "zephyr/shim/include/motionsense_sensors.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2021-12-02T12:29:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "333a799d_0996b7f3",
+      "range": {
+        "startLine": 122,
+        "startChar": 48,
+        "endLine": 122,
+        "endChar": 51
+      },
+      "revId": "c5c71e8fba7617c51e4ac1b5840a8ab30e9c3dfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7a411995_d1c67b56",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "27a025ea_b258dee1",
+        "filename": "zephyr/shim/include/motionsense_sensors.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2021-12-02T12:29:49Z",
+      "side": 1,
+      "message": "Yes, I did it for consistency, but letting the board code call the motion_sensors_check_ssfc function is fine for me as well.",
+      "parentUuid": "7a411995_d1c67b56",
+      "range": {
+        "startLine": 144,
+        "startChar": 8,
+        "endLine": 144,
+        "endChar": 41
+      },
+      "revId": "c5c71e8fba7617c51e4ac1b5840a8ab30e9c3dfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "052b3b5b_a33711b1",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-12-02T00:37:22Z",
       "side": 1,
       "message": "This should be CROS_CBI_LABEL.",
+      "range": {
+        "startLine": 459,
+        "startChar": 48,
+        "endLine": 459,
+        "endChar": 56
+      },
+      "revId": "c5c71e8fba7617c51e4ac1b5840a8ab30e9c3dfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "196b3dce_bc2cb014",
+        "filename": "zephyr/shim/src/motionsense_sensors.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 459,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2021-12-02T12:29:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "052b3b5b_a33711b1",
       "range": {
         "startLine": 459,
         "startChar": 48,
