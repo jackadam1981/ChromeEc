@@ -22,6 +22,30 @@
       },
       "revId": "6baace2f7caae9f27825fa9a958fc29732f41908",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad670db0_1194eb44",
+        "filename": "chip/stm32/usart_rx_interrupt-stm32l.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2021-12-02T19:15:00Z",
+      "side": 1,
+      "message": "The datasheet also shows that the register is write-only, not mentioning what values you will get in any of the bits that are not reserved, if you do read it.  I am afraid that I could be accidentally clearing other bits in the register by reading and writing as you suggest.\n\nI do not see how it makes sense to ask programmers to \"keep at reset value\" in a write-only register.  I suspect that the authors of the reference manual have been copy-pasting too vigilantly from R/W registers.\n\nI have been trying to find some reference code by ST themselves, to see how they access the USART_ICR register, but I have not found any on the public internet.  Maybe a need an account on st.com to be able to download their reference code.",
+      "parentUuid": "4565fa43_926cc3fb",
+      "range": {
+        "startLine": 38,
+        "startChar": 36,
+        "endLine": 38,
+        "endChar": 37
+      },
+      "revId": "6baace2f7caae9f27825fa9a958fc29732f41908",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
