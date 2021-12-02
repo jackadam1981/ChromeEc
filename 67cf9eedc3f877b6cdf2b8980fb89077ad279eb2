@@ -16,6 +16,46 @@
       "message": "PTAL\n\nFor the GPIOs, we need to add all the rest, but I wanted to at least get the ones needed to build in.\n\nWe are considering writing a conversion tool that takes the pinmap spreadsheet and generates the DTS from it, so that these transposition errors don\u0027t happen.\n",
       "revId": "67cf9eedc3f877b6cdf2b8980fb89077ad279eb2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3845db50_ce910601",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-12-02T23:58:05Z",
+      "side": 1,
+      "message": "One minor change left, otherwise LGTM.",
+      "revId": "67cf9eedc3f877b6cdf2b8980fb89077ad279eb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0fca5e7a_61d89e8a",
+        "filename": "zephyr/projects/nissa/gpio_nivviks.dts",
+        "patchSetId": 4
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-12-02T23:58:05Z",
+      "side": 1,
+      "message": "You can also add ACOK as a wakesource.",
+      "range": {
+        "startLine": 123,
+        "startChar": 0,
+        "endLine": 123,
+        "endChar": 17
+      },
+      "revId": "67cf9eedc3f877b6cdf2b8980fb89077ad279eb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

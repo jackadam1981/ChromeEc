@@ -177,6 +177,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6711b3f_7ee65769",
+        "filename": "zephyr/projects/nissa/gpio_nivviks.dts",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-12-02T23:58:05Z",
+      "side": 1,
+      "message": "Your understanding is correct.  enum-name matches the code accessible name.  Label is just documentation, it may not be stored in the image.\n\nThis will eventually get reworked so that GPIOs are associated directly with the driver that needs it.",
+      "parentUuid": "0329ca5d_e22a9646",
+      "range": {
+        "startLine": 47,
+        "startChar": 12,
+        "endLine": 47,
+        "endChar": 27
+      },
+      "revId": "d09a6f1331e5be8c1bf7f3b03bdd4f6d136383fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a23b3a17_8d36e26e",
