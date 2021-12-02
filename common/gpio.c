@@ -74,6 +74,10 @@ static int gpio_config_pins(enum module_id id, uint32_t port, uint32_t pin_mask,
 				gpio_set_flags_by_mask(
 					af->port, (af->mask & pin_mask),
 					enable ? af->flags : GPIO_INPUT);
+			if (id == MODULE_I2C) {
+			  //STM32_GPIO_OTYPER(af->port) |= af->mask;
+			  gpio_set_flags_by_mask(af->port, af->mask, GPIO_OPEN_DRAIN);
+			}
 			gpio_set_alternate_function(af->port,
 				    (af->mask & pin_mask),
 				    enable ? af->func : GPIO_ALT_FUNC_NONE);

@@ -3,6 +3,8 @@
  * found in the LICENSE file.
  */
 
+#include "timer.h"
+
 #include "common.h"
 #include "link_defs.h"
 #include "registers.h"
@@ -100,6 +102,8 @@ static void usb_spi_setup_transfer(struct usb_spi_config const *config,
 {
 	/* Reset any status code. */
 	config->state->status_code = USB_SPI_SUCCESS;
+
+	ccprintf("usb_spi_setup_transfer(%d, %d)\n", write_count, read_count);
 
 	/* Reset the write and read counts. */
 	config->state->spi_write_ctx.transfer_size = write_count;
@@ -393,6 +397,7 @@ void usb_spi_deferred(struct usb_spi_config const *config)
 	if (config->state->mode == USB_SPI_MODE_START_SPI) {
 		uint16_t status_code;
 		int read_count = config->state->spi_read_ctx.transfer_size;
+		ccprintf("wcount=%d, rcount=%d\n", config->state->spi_write_ctx.transfer_size, config->state->spi_read_ctx.transfer_size);
 #ifndef CONFIG_SPI_HALFDUPLEX
 		/*
 		 * Handle the full duplex mode on supported platforms.
@@ -592,13 +597,15 @@ int usb_spi_interface(struct usb_spi_config const *config,
 
 	if (setup.bmRequestType != (USB_DIR_OUT |
 				    USB_TYPE_VENDOR |
-				    USB_RECIP_INTERFACE))
+				    USB_RECIP_INTERFACE)) {
 		return 1;
+	}
 
 	if (setup.wValue  != 0 ||
 	    setup.wIndex  != config->interface ||
-	    setup.wLength != 0)
+	    setup.wLength != 0) {
 		return 1;
+	}
 
 	switch (setup.bRequest) {
 	case USB_SPI_REQ_ENABLE:
