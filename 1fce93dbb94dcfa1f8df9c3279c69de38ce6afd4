@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "acd9ca0d_83b8b8fe",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1260470
+      },
+      "writtenOn": "2021-12-02T01:16:51Z",
+      "side": 1,
+      "message": "Thank you Keith for the review!\n\nVolteer EC owners: this should all be fine, but be on the lookout for any unusual FAFT failures in FW requal results. I\u0027m around and available to look at anything that might crop up. If you need to back this out, depending on the nature of the hypothetical bug, backing out just this change may be sufficient.",
+      "revId": "1fce93dbb94dcfa1f8df9c3279c69de38ce6afd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
