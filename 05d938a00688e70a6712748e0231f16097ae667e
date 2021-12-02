@@ -34,6 +34,24 @@
       "parentUuid": "4fb606da_8ca54f6d",
       "revId": "05d938a00688e70a6712748e0231f16097ae667e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e59ad2f0_b4622d1c",
+        "filename": "board/dewatt/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-12-02T00:31:52Z",
+      "side": 1,
+      "message": "Hmm, that seems like a SMT mistake. Can this be fixed in the next iteration?",
+      "parentUuid": "d9f5fa98_b524d17e",
+      "revId": "05d938a00688e70a6712748e0231f16097ae667e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
