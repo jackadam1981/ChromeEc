@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "400b8aba_0233d118",
+        "filename": "chip/stm32/usb_spi.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 374,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2021-12-02T19:04:26Z",
+      "side": 1,
+      "message": "Yes, as the protocol uses 16-bit fields for the count of bytes to transfer, it would not make sense to configure this buffer to be larger than 64kB.",
+      "parentUuid": "1c882daa_d3680647",
+      "revId": "f7889b96e8ca53e424fc27f347a8aab71c42ea73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "98f69c22_2386aab1",
@@ -55,6 +73,30 @@
       "side": 1,
       "message": "Should there be a default defined either in this file, or as a new config option that is defined by default and can be undef\u0027d/redefined in a board.h file if necessary. Similar to what we do for VID/PID?",
       "parentUuid": "98f69c22_2386aab1",
+      "range": {
+        "startLine": 527,
+        "startChar": 24,
+        "endLine": 527,
+        "endChar": 40
+      },
+      "revId": "f7889b96e8ca53e424fc27f347a8aab71c42ea73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f6efed1_db97b0f9",
+        "filename": "chip/stm32/usb_spi.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 527,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2021-12-02T19:04:26Z",
+      "side": 1,
+      "message": "There is a similar define, USB_STR_I2C_NAME, which is assumed to exist in common/usb_i2c.c, meaning that whatever boards enable CONFIG_USB_I2C must make sure that they define a USB_STR_I2C_NAME (which is typically done as an enum label, not a preprocessor define.)\n\nhttps://source.corp.google.com/search?q\u003dUSB_STR_I2C_NAME%20f:platform%2Fec%2Fboard\n\nI had in mind that I would make it such that USB_STR_SPI_NAME was treated the same way.  Doing so would require me to make modifications to board.h of the following boards:\nbland, c2d2, discovery-stm32f072, don, eel, hammer, magnemite, masterball, moonball, servo_micro, staff, star, wand, whiskers, zed\n\nI think it makes sense to advertise the USB interfaces as \"SPI\", rather than having one out of several interfaces which has no name, while the others do.  But if for some of the above devices, we really do not want to modify the USB signature in any way, I could instead edit their board.h to declare USB_STR_SPI_NAME \u003d 0.  Then there would be no change to existing boards, while going forward, it would not be easy to \"miss\" thinking about the name of the SPI interface.\n\nDo you feel it is risky to assign the label \"SPI\" to the endpoints for all of the 15 boards above in ToT?  I lean towards making the change, so that any future copy-paste from an existing board file will get the desired code.",
+      "parentUuid": "55394245_dcefd899",
       "range": {
         "startLine": 527,
         "startChar": 24,
