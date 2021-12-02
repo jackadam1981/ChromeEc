@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "da134bca_b349caca",
+        "filename": "zephyr/boards/arm/nissa/board.cmake",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2021-12-02T00:19:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "38f7a5ce_e7d6446d",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 62
+      },
+      "revId": "f843fed27ef3de2250ce2e28f399fc876edfda69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aa147ef3_a42919ee",
@@ -54,6 +78,24 @@
       "writtenOn": "2021-12-01T18:46:53Z",
       "side": 1,
       "message": "Move to a parent CL.",
+      "revId": "f843fed27ef3de2250ce2e28f399fc876edfda69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb2ae8d2_f2e35819",
+        "filename": "zephyr/dts/bindings/adc/named-adc.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2021-12-02T00:19:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aa147ef3_a42919ee",
       "revId": "f843fed27ef3de2250ce2e28f399fc876edfda69",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -75,6 +117,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6aec3816_76121c92",
+        "filename": "zephyr/dts/bindings/i2c/cros-ec-i2c-port-base.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2021-12-02T00:19:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2d05978f_d2095ad6",
+      "revId": "f843fed27ef3de2250ce2e28f399fc876edfda69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d7766d1f_380fff7e",
@@ -92,6 +152,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "337000ac_a516de84",
+        "filename": "zephyr/dts/bindings/temp/cros_ec_temp_sensor.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2021-12-02T00:19:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d7766d1f_380fff7e",
+      "revId": "f843fed27ef3de2250ce2e28f399fc876edfda69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9e3e67de_8c940dda",
@@ -105,6 +183,30 @@
       "writtenOn": "2021-12-01T18:46:53Z",
       "side": 1,
       "message": "This file should be moved to zephyr/projects/nissa/BUILD.py\n\nThe common nissa/BUILD.py then supports multiple variants by calling \"register_project()\" multiple times.",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 62
+      },
+      "revId": "f843fed27ef3de2250ce2e28f399fc876edfda69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "54e54c21_acd9c093",
+        "filename": "zephyr/projects/nissa/nivviks/BUILD.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2021-12-02T00:19:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9e3e67de_8c940dda",
       "range": {
         "startLine": 1,
         "startChar": 0,
@@ -138,6 +240,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b660dd5e_257f1307",
+        "filename": "zephyr/projects/nissa/nivviks/BUILD.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2021-12-02T00:19:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4fabf2e8_dc6c5b9b",
+      "range": {
+        "startLine": 7,
+        "startChar": 18,
+        "endLine": 7,
+        "endChar": 23
+      },
+      "revId": "f843fed27ef3de2250ce2e28f399fc876edfda69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2eb9307f_fad08bd5",
@@ -151,6 +277,30 @@
       "writtenOn": "2021-12-01T18:46:53Z",
       "side": 1,
       "message": "Move this up a directory.  See the \"corsola\" project for the design pattern of supporting multiple variants within a project.",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 62
+      },
+      "revId": "f843fed27ef3de2250ce2e28f399fc876edfda69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f9df7c8_ff90f30c",
+        "filename": "zephyr/projects/nissa/nivviks/CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2021-12-02T00:19:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2eb9307f_fad08bd5",
       "range": {
         "startLine": 1,
         "startChar": 0,
