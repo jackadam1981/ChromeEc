@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f045542f_74e2246e",
+        "filename": "common/battery_fuel_gauge.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-12-02T23:44:34Z",
+      "side": 1,
+      "message": "I like the idea verifying the battery manufacturer and device name in the NO_AUTO_DETECT path.  However, this code as is will increment past the board selected index, potentially matching to another battery in the list.\n\nI think it\u0027s clearer if you explicitly check only the index returned by board_get_default_battery_type().\n\nSomething like:\n\n#if defined(CONFIG_BATTERY_TYPE_NO_AUTO_DETECT)\n    battery_type \u003d board_get_default_battery_type();\n    fuel_gauge \u003d \u0026board_battery_info[battery_type].fuel_gauge;\n    if (strcasecmp(manuf_name, fuel_gauge-\u003emanuf_name))\n        /* manufacturer mismatch */\n        battery_type \u003d BATTERY_TYPE_COUNT;\n    if (strncasecmp(device_name, fuel_gauge-\u003edevice_name,len))\n        /* device mismatch\n\tbattery_type \u003d BATTERY_TYPE_COUNT\n#else\n    /* Loop through board_battery_info[] */\n#endif",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 38
+      },
+      "revId": "39e8520d639f8a542f2a170a302305f6b9358c48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0660232b_e4d84e81",
         "filename": "util/config_allowed.txt",
         "patchSetId": 14
@@ -14,6 +37,30 @@
       "writtenOn": "2021-12-02T06:25:13Z",
       "side": 1,
       "message": "Hi Caveh/Kieth,\nDoes this config needs to be added anywhere else, to be included in zephyr as KConfig?",
+      "range": {
+        "startLine": 106,
+        "startChar": 0,
+        "endLine": 106,
+        "endChar": 34
+      },
+      "revId": "39e8520d639f8a542f2a170a302305f6b9358c48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "867dcbc7_bfbd2ad6",
+        "filename": "util/config_allowed.txt",
+        "patchSetId": 14
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-12-02T23:44:34Z",
+      "side": 1,
+      "message": "Yes, create a new Kconfig option in zephyr/Kconfig.battery.\n\nFollow the instructions from here:\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/zephyr/zephyr_shim.md#configuration",
+      "parentUuid": "0660232b_e4d84e81",
       "range": {
         "startLine": 106,
         "startChar": 0,
