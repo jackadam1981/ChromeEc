@@ -1,0 +1,77 @@
+/* Copyright 2021 The Chromium OS Authors. All rights reserved.
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+/ {
+	named-gpios {
+		compatible = "named-gpios";
+
+		wp_l {
+			gpios = <&gpioa 6 GPIO_INPUT>;
+			enum-name = "GPIO_WP_L";
+			label = "EC_WP_OD";
+		};
+		ec_entering_rw {
+			gpios = <&gpiog 0 GPIO_INPUT>;
+			enum-name = "GPIO_ENTERING_RW";
+			label = "EC_ENTERING_RW";
+		};
+		kb_bl {
+			gpios = <&gpioj 3 GPIO_OUTPUT_LOW>;
+			enum-name = "GPIO_ENABLE_BACKLIGHT";
+			label = "EN_KB_BL";
+		};
+		h1_ec_pwr_btn_odl {
+			gpios = <&gpioe 2 GPIO_INPUT>;
+			enum-name = "GPIO_POWER_BUTTON_L";
+			label = "H1_EC_PWR_BTN_ODL";
+		};
+		lid_open {
+			gpios = <&gpiof 3 GPIO_INPUT>;
+			enum-name = "GPIO_LID_OPEN";
+			label = "lid_open";
+		};
+		ec_ac_mkbp_int_l {
+			gpios = <&gpiol 5 GPIO_ODR_HIGH>;
+			enum-name = "GPIO_EC_INT_L";
+			label = "EC_AP_MKBP_INT_L";
+		};
+	};
+
+	named-i2c-ports {
+		compatible = "named-i2c-ports";
+
+		eeprom {
+			i2c-port = <&i2c0>;
+			enum-name = "I2C_PORT_EEPROM";
+			label = "EEPROM";
+		};
+		i2c_sensor: sensor {
+			i2c-port = <&i2c2>;
+			enum-name = "I2C_PORT_SENSOR";
+			label = "SENSOR";
+		};
+	};
+	named-pwms {
+		compatible = "named-pwms";
+	};
+
+};
+
+&i2c0 {
+	/* I2C_PORT_EEPROM */
+	status = "okay";
+	clock-frequency = <I2C_BITRATE_FAST>;
+};
+
+&i2c1 {
+	/* I2C_PORT_SENSOR */
+	status = "okay";
+	clock-frequency = <I2C_BITRATE_STANDARD>;
+};
+
+&pwm0 {
+	status = "okay";
+	prescaler-cx = <PWM_PRESCALER_C4>;
+};
