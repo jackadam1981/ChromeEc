@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "333a799d_0996b7f3",
+        "filename": "zephyr/shim/include/motionsense_sensors.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-12-02T00:37:22Z",
+      "side": 1,
+      "message": "DTS",
+      "range": {
+        "startLine": 122,
+        "startChar": 48,
+        "endLine": 122,
+        "endChar": 51
+      },
+      "revId": "c5c71e8fba7617c51e4ac1b5840a8ab30e9c3dfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a411995_d1c67b56",
+        "filename": "zephyr/shim/include/motionsense_sensors.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-12-02T00:37:22Z",
+      "side": 1,
+      "message": "Is your thinking here is to always have macros for replacing alternates for consistency?  Because the usage is different (no nodelabel parameter), I think it would be fine to have boards call the function directly.",
+      "range": {
+        "startLine": 144,
+        "startChar": 8,
+        "endLine": 144,
+        "endChar": 41
+      },
+      "revId": "c5c71e8fba7617c51e4ac1b5840a8ab30e9c3dfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "052b3b5b_a33711b1",
+        "filename": "zephyr/shim/src/motionsense_sensors.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 459,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-12-02T00:37:22Z",
+      "side": 1,
+      "message": "This should be CROS_CBI_LABEL.",
+      "range": {
+        "startLine": 459,
+        "startChar": 48,
+        "endLine": 459,
+        "endChar": 56
+      },
+      "revId": "c5c71e8fba7617c51e4ac1b5840a8ab30e9c3dfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
