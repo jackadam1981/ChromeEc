@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3cfec2d_3963ea3e",
+        "filename": "zephyr/projects/skyrim/gpio.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 357,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2021-12-02T08:28:11Z",
+      "side": 1,
+      "message": "In Zephyr, we don\u0027t need this DT node when the system uses the PSL hibernate mode.\nDefining this mode only when you use non-PSL hibernate mode.\nsee:\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/main/zephyr/drivers/cros_system/cros_system_npcx.c#486",
+      "range": {
+        "startLine": 350,
+        "startChar": 0,
+        "endLine": 357,
+        "endChar": 3
+      },
+      "revId": "8c89d13bb29119e039ee2cdfcf7ccf631e792931",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1bb7098f_5282f46b",
+        "filename": "zephyr/projects/skyrim/gpio.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 361,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2021-12-02T08:28:11Z",
+      "side": 1,
+      "message": "Here should be \"psl-in-pads \u003d \u003c\u0026psl_in1 \u0026psl_in2 \u0026psl_in4\u003e;\"\naccording to the setting in ECOS.",
+      "revId": "8c89d13bb29119e039ee2cdfcf7ccf631e792931",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5600a628_12bde1fa",
+        "filename": "zephyr/projects/skyrim/gpio.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 371,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2021-12-02T08:28:11Z",
+      "side": 1,
+      "message": "It should be \"\u0026psl_in1\" according to the setting in ECOS.",
+      "range": {
+        "startLine": 371,
+        "startChar": 0,
+        "endLine": 371,
+        "endChar": 9
+      },
+      "revId": "8c89d13bb29119e039ee2cdfcf7ccf631e792931",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
