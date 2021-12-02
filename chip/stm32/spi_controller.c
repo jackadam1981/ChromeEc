@@ -19,6 +19,7 @@
 
 #if defined(CHIP_VARIANT_STM32F373)  || \
 	defined(CHIP_FAMILY_STM32L4) || \
+	defined(CHIP_FAMILY_STM32L5) || \
 	defined(CHIP_VARIANT_STM32F76X)
 #define HAS_SPI3
 #else
@@ -43,7 +44,9 @@ static uint8_t dma_req[ARRAY_SIZE(SPI_REGS)] = {
 	/* SPI1 */ 1,
 #endif
 	/* SPI2 */ 1,
+#ifdef HAS_SPI3
 	/* SPI3 */ 3,
+#endif
 };
 #endif
 
@@ -153,7 +156,7 @@ static int spi_controller_initialize(const struct spi_device_t *spi_device)
 	int port = spi_device->port;
 
 	stm32_spi_regs_t *spi = SPI_REGS[port];
-
+	ccprintf("spi_master_initialize(%d, %08x)\n", port, (unsigned)(void*)spi);
 	/*
 	 * Set SPI controller, baud rate, and software peripheral control.
 	 * */
@@ -207,6 +210,9 @@ static int spi_controller_initialize(const struct spi_device_t *spi_device)
 	dma_select_channel(dma_tx_option[port].channel, dma_req[port]);
 	dma_select_channel(dma_rx_option[port].channel, dma_req[port]);
 #endif
+	ccprintf("dma_tx_option[%d].channel = %d vs. %d, periph = %08x\n", port, dma_tx_option[port].channel, STM32_DMAC_SPI2_TX, (int)dma_tx_option[port].periph);
+	dma_select_channel(dma_tx_option[port].channel, 14);
+	dma_select_channel(dma_rx_option[port].channel, 13);
 	/*
 	 * Configure 8-bit datasize, set FRXTH, enable DMA,
 	 * and set data size (applies to STM32F0 only).
@@ -218,7 +224,7 @@ static int spi_controller_initialize(const struct spi_device_t *spi_device)
 	 * STM32F0:
 	 * https://www.st.com/resource/en/reference_manual/dm00031936.pdf#page=803
 	 */
-	spi->cr2 = STM32_SPI_CR2_TXDMAEN | STM32_SPI_CR2_RXDMAEN |
+	spi->cr2 = /*STM32_SPI_CR2_TXDMAEN | STM32_SPI_CR2_RXDMAEN | */
 			STM32_SPI_CR2_FRXTH | STM32_SPI_CR2_DATASIZE(8);
 
 #ifdef CONFIG_SPI_HALFDUPLEX
@@ -226,10 +232,12 @@ static int spi_controller_initialize(const struct spi_device_t *spi_device)
 #endif
 
 	/* Drive Chip Select high before turning on SPI module */
-	gpio_set_level(spi_device->gpio_cs, 1);
+	gpio_set_level(spi_device->gpio_cs, 0);
 
 	/* Enable SPI hardware module. This will actively drive the CLK pin */
 	spi->cr1 |= STM32_SPI_CR1_SPE;
+
+	ccprintf("  cr1: %04x, cr2: %04x\n", spi->cr1, spi->cr2);
 
 	/* Set flag */
 	spi_enabled[port] = 1;
@@ -288,6 +296,11 @@ static int spi_dma_start(int port, const uint8_t *txdata,
 		txdma = dma_get_channel(dma_tx_option[port].channel);
 		dma_prepare_tx(&dma_tx_option[port], len, txdata);
 		dma_go(txdma);
+	{
+		stm32_dma_regs_t *dma = STM32_DMA_REGS(dma_tx_option[port].channel);
+		stm32_dma_chan_t *res = &dma->chan[dma_tx_option[port].channel % STM32_DMAC_PER_CTLR];
+		ccprintf("  isr: %08x dma_channel[%d]: CCR=%04x, CNDTR=%04x\n", dma->isr, dma_tx_option[port].channel, res->ccr, res->cndtr);
+	}
 	}
 
 	return EC_SUCCESS;
@@ -346,9 +359,10 @@ int spi_transaction_async(const struct spi_device_t *spi_device,
 	char *buf = NULL;
 
 	/* We should not ever be called when disabled, but fail early if so. */
-	if (!spi_enabled[port])
+	if (!spi_enabled[port]) {
 		return EC_ERROR_BUSY;
-
+	}
+#if 0
 #ifndef CONFIG_SPI_HALFDUPLEX
 	if (rxlen == SPI_READBACK_ALL) {
 		buf = rxdata;
@@ -359,9 +373,48 @@ int spi_transaction_async(const struct spi_device_t *spi_device,
 			return rv;
 	}
 #endif
-
+#endif
 	/* Drive SS low */
 	gpio_set_level(spi_device->gpio_cs, 0);
+
+	//ccprintf("spi_transaction_async(0x%08x, %d, 0x%08x, %d)\n",
+	//	 (int)txdata, txlen,
+	//	 (int)rxdata, rxlen);
+	{
+		if (txlen) {
+			for (int i = 0; i < 4; i++) {
+				(void)spi->dr;
+			}
+
+			for (int i = 0; i < txlen; i++) {
+				uint8_t v;
+				STM32_GPIO_BSRR(STM32_GPIOE_BASE) |= 0x00000100;
+				while (!(spi->sr & 0x02))
+					;
+				STM32_GPIO_BSRR(STM32_GPIOE_BASE) |= 0x00000200;
+				spi->dr = txdata[i];
+				STM32_GPIO_BSRR(STM32_GPIOE_BASE) |= 0x01000000;
+				while (!(spi->sr & 0x01))
+					;
+				STM32_GPIO_BSRR(STM32_GPIOE_BASE) |= 0x02000000;
+				v = spi->dr;
+				//if (i < 32)
+				//	ccprintf("b: %02x\n", v);
+				if (rxlen == SPI_READBACK_ALL)
+					rxdata[i] = v;
+			}
+		}
+		if (rxlen && rxlen != SPI_READBACK_ALL) {
+			for (int i = 0; i < rxlen; i++) {
+				spi->dr = 0xFF;
+				while (!(spi->sr & 0x01))
+					;
+				rxdata[i] = spi->dr;
+			}
+		}
+		return 0;
+	}
+
 
 	spi_clear_rx_fifo(spi);
 
@@ -401,7 +454,18 @@ err_free:
 
 int spi_transaction_flush(const struct spi_device_t *spi_device)
 {
+	int rv = 0;
+#if 0
+	/*int rv = 0;
+	{
+		int port = spi_device->port;
+
+		stm32_spi_regs_t *spi = SPI_REGS[port];
+		spi->dr = 0x55;
+		}*/
+
 	int rv = spi_dma_wait(spi_device->port);
+#endif
 
 	/* Drive SS high */
 	gpio_set_level(spi_device->gpio_cs, 1);
@@ -420,10 +484,12 @@ int spi_transaction(const struct spi_device_t *spi_device,
 {
 	int rv;
 	int port = spi_device->port;
+	//ccprintf("spi_transaction(%d) !\n", spi_device->port);
 
 	mutex_lock(spi_mutex + port);
 	rv = spi_transaction_async(spi_device, txdata, txlen, rxdata, rxlen);
 	rv |= spi_transaction_flush(spi_device);
+	//ccprintf("DMA_ISR(3) = %02x\n", STM32_DMA_GET_ISR(3));
 	mutex_unlock(spi_mutex + port);
 
 	return rv;

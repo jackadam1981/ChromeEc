@@ -66,6 +66,8 @@ static int dma_get_irq(enum dma_channel channel)
 stm32_dma_chan_t *dma_get_channel(enum dma_channel channel)
 {
 	stm32_dma_regs_t *dma = STM32_DMA_REGS(channel);
+	//stm32_dma_chan_t *res = &dma->chan[channel % STM32_DMAC_PER_CTLR];
+	//ccprintf("dma_get_channel(%d) = 0x%08x: CCR=%04x, CNDTR=%04x, CPAR=%04x, CMAR=%04x\n", channel, (int)res, res->ccr, res->cndtr, res->cpar, res->cmar);
 
 	return &dma->chan[channel % STM32_DMAC_PER_CTLR];
 }
@@ -78,7 +80,8 @@ void dma_select_channel(enum dma_channel channel, uint8_t req)
 	 * by peripherals. The correct 'req' number for a given peripheral is
 	 * given in ST doc RM0440.
 	 */
-	STM32_DMAMUX_CxCR(channel) = req;
+	ccprintf("dma_select_channel(%d, %d)\n", channel, req);
+	STM32_DMAMUX_CxCR(channel) = req | 0x0200;
 }
 #elif defined(STM32_DMA_CSELR)
 void dma_select_channel(enum dma_channel channel, unsigned char stream)
@@ -146,6 +149,7 @@ static void prepare_channel(enum dma_channel channel, unsigned int count,
 
 void dma_go(stm32_dma_chan_t *chan)
 {
+	ccprintf("dma_go(0x%08x)\n", (int)chan);
 	/* Flush data in write buffer so that DMA can get the latest data */
 	asm volatile("dsb;");
 
@@ -173,6 +177,11 @@ void dma_start_rx(const struct dma_option *option, unsigned int count,
 	prepare_channel(option->channel, count, option->periph, memory,
 			STM32_DMA_CCR_MINC | option->flags);
 	dma_go(chan);
+	{
+		stm32_dma_regs_t *dma = STM32_DMA_REGS(option->channel);
+		stm32_dma_chan_t *res = &dma->chan[option->channel % STM32_DMAC_PER_CTLR];
+		ccprintf("  isr: %08x dma_channel[%d]: CCR=%04x, CNDTR=%04x\n", dma->isr, option->channel, res->ccr, res->cndtr);
+	}
 }
 
 int dma_bytes_done(stm32_dma_chan_t *chan, int orig_count)
@@ -275,12 +284,26 @@ int dma_wait(enum dma_channel channel)
 	const uint32_t mask = STM32_DMA_ISR_TCIF(channel);
 	timestamp_t deadline;
 
+	ccprintf("dma_wait(%d) mask=%02x\n", channel, mask);
+	{
+		stm32_dma_regs_t *dma = STM32_DMA_REGS(channel);
+		stm32_dma_chan_t *res = &dma->chan[channel % STM32_DMAC_PER_CTLR];
+		ccprintf("  isr: %08x dma_channel[%d]: CCR=%04x, CNDTR=%04x\n", dma->isr, channel, res->ccr, res->cndtr);
+	}
+
 	deadline.val = get_time().val + DMA_TRANSFER_TIMEOUT_US;
 	while ((dma->isr & mask) != mask) {
-		if (deadline.val <= get_time().val)
+		if (deadline.val <= get_time().val) {
+			ccprintf("DMA TIMEOUT!\n");
 			return EC_ERROR_TIMEOUT;
+		}
 
-		udelay(DMA_POLLING_INTERVAL_US);
+		udelay(10000 + DMA_POLLING_INTERVAL_US);
+		{
+			stm32_dma_regs_t *dma = STM32_DMA_REGS(channel);
+			stm32_dma_chan_t *res = &dma->chan[channel % STM32_DMAC_PER_CTLR];
+			ccprintf("  isr: %08x dma_channel[%d]: CCR=%04x, CNDTR=%04x\n", dma->isr, channel, res->ccr, res->cndtr);
+		}
 	}
 	return EC_SUCCESS;
 }
@@ -396,7 +419,7 @@ DECLARE_DMA_IRQ(7);
 DECLARE_DMA_IRQ(9);
 DECLARE_DMA_IRQ(10);
 #endif
-#ifdef CHIP_FAMILY_STM32L4
+#if defined(CHIP_FAMILY_STM32L4) || defined(CHIP_FAMILY_STM32L5)
 DECLARE_DMA_IRQ(9);
 DECLARE_DMA_IRQ(10);
 DECLARE_DMA_IRQ(11);
