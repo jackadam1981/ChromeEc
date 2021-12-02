@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f42e442b_315c5fc3",
+        "filename": "board/brya/usbc_config.c",
+        "patchSetId": 31
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2021-12-02T22:04:19Z",
+      "side": 1,
+      "message": "nit. Add comment to endif.",
+      "revId": "16909a445c783a079565f5c878b8684ddd4218ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3787f49_13a5cc33",
+        "filename": "zephyr/projects/brya/brya/gpio.dts",
+        "patchSetId": 31
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2021-12-02T22:04:19Z",
+      "side": 1,
+      "message": "This signal is defined as part of power sequencing in line #84. Please remove.",
+      "revId": "16909a445c783a079565f5c878b8684ddd4218ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b63b69d2_2a806691",
+        "filename": "zephyr/projects/brya/brya/include/gpio_map.h",
+        "patchSetId": 31
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2021-12-02T22:04:19Z",
+      "side": 1,
+      "message": "nit: Please add comment for endif",
+      "revId": "16909a445c783a079565f5c878b8684ddd4218ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6bd877b5_dbf26621",
+        "filename": "zephyr/projects/brya/brya/prj.conf",
+        "patchSetId": 31
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2021-12-02T22:04:19Z",
+      "side": 1,
+      "message": "nit: extra lines",
+      "revId": "16909a445c783a079565f5c878b8684ddd4218ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
