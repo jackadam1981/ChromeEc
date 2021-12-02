@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ade85c93_ae88a17f",
+        "filename": "zephyr/projects/nissa/BUILD.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2021-12-02T20:50:04Z",
+      "side": 1,
+      "message": "The corsola example was inconsistent here :-)",
+      "parentUuid": "f0e5843b_734bd83f",
+      "range": {
+        "startLine": 27,
+        "startChar": 5,
+        "endLine": 27,
+        "endChar": 12
+      },
+      "revId": "d09a6f1331e5be8c1bf7f3b03bdd4f6d136383fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d2ecd82b_fe872839",
@@ -41,6 +65,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "110dfc73_995b455e",
+        "filename": "zephyr/projects/nissa/BUILD.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2021-12-02T20:50:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d2ecd82b_fe872839",
+      "revId": "d09a6f1331e5be8c1bf7f3b03bdd4f6d136383fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ebdde303_23952465",
@@ -54,6 +96,30 @@
       "writtenOn": "2021-12-02T18:38:40Z",
       "side": 1,
       "message": "This is on GPIOA1 according schematics from Nov 8.",
+      "range": {
+        "startLine": 23,
+        "startChar": 12,
+        "endLine": 23,
+        "endChar": 31
+      },
+      "revId": "d09a6f1331e5be8c1bf7f3b03bdd4f6d136383fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "98a07603_f1a5c1b0",
+        "filename": "zephyr/projects/nissa/gpio_nivviks.dts",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2021-12-02T20:50:04Z",
+      "side": 1,
+      "message": "Done - good catch (need to do a complete audit of all the GPIOs)",
+      "parentUuid": "ebdde303_23952465",
       "range": {
         "startLine": 23,
         "startChar": 12,
@@ -87,6 +153,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0329ca5d_e22a9646",
+        "filename": "zephyr/projects/nissa/gpio_nivviks.dts",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2021-12-02T20:50:04Z",
+      "side": 1,
+      "message": "Done - it wasn\u0027t clear to me what the relationship between\nlabel and enum-name is. So label is just documentation?\nAnd enum-name is what gets setup as a #define and name that is code accessible (and presumable needs to be standardised across common code).",
+      "parentUuid": "452c0e3e_418e4b4d",
+      "range": {
+        "startLine": 47,
+        "startChar": 12,
+        "endLine": 47,
+        "endChar": 27
+      },
+      "revId": "d09a6f1331e5be8c1bf7f3b03bdd4f6d136383fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a23b3a17_8d36e26e",
@@ -100,6 +190,30 @@
       "writtenOn": "2021-12-02T18:38:40Z",
       "side": 1,
       "message": "RSMRST_PWRGD_L",
+      "range": {
+        "startLine": 57,
+        "startChar": 12,
+        "endLine": 57,
+        "endChar": 28
+      },
+      "revId": "d09a6f1331e5be8c1bf7f3b03bdd4f6d136383fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "40e0084a_8cb6ee0e",
+        "filename": "zephyr/projects/nissa/gpio_nivviks.dts",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2021-12-02T20:50:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a23b3a17_8d36e26e",
       "range": {
         "startLine": 57,
         "startChar": 12,
@@ -133,6 +247,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d11b8a60_978c34ce",
+        "filename": "zephyr/projects/nissa/gpio_nivviks.dts",
+        "patchSetId": 3
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2021-12-02T20:50:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "18c4aaaf_1317df2c",
+      "range": {
+        "startLine": 62,
+        "startChar": 12,
+        "endLine": 62,
+        "endChar": 29
+      },
+      "revId": "d09a6f1331e5be8c1bf7f3b03bdd4f6d136383fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e69aab94_3f13e1c5",
@@ -146,6 +284,30 @@
       "writtenOn": "2021-12-02T18:38:40Z",
       "side": 1,
       "message": "ALL_SYS_PWRGD",
+      "range": {
+        "startLine": 67,
+        "startChar": 12,
+        "endLine": 67,
+        "endChar": 31
+      },
+      "revId": "d09a6f1331e5be8c1bf7f3b03bdd4f6d136383fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4fddd7d6_294bcd48",
+        "filename": "zephyr/projects/nissa/gpio_nivviks.dts",
+        "patchSetId": 3
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2021-12-02T20:50:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e69aab94_3f13e1c5",
       "range": {
         "startLine": 67,
         "startChar": 12,
@@ -179,6 +341,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dee73d7b_e6fa462e",
+        "filename": "zephyr/projects/nissa/gpio_nivviks.dts",
+        "patchSetId": 3
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2021-12-02T20:50:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2a03a537_76f7795b",
+      "range": {
+        "startLine": 72,
+        "startChar": 12,
+        "endLine": 72,
+        "endChar": 29
+      },
+      "revId": "d09a6f1331e5be8c1bf7f3b03bdd4f6d136383fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "16756880_595a1ee5",
@@ -192,6 +378,30 @@
       "writtenOn": "2021-12-02T18:38:40Z",
       "side": 1,
       "message": "EC_SOC_VCCST_PWRGD_OD",
+      "range": {
+        "startLine": 87,
+        "startChar": 12,
+        "endLine": 87,
+        "endChar": 26
+      },
+      "revId": "d09a6f1331e5be8c1bf7f3b03bdd4f6d136383fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "856b087d_034a8c0f",
+        "filename": "zephyr/projects/nissa/gpio_nivviks.dts",
+        "patchSetId": 3
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2021-12-02T20:50:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "16756880_595a1ee5",
       "range": {
         "startLine": 87,
         "startChar": 12,
@@ -225,6 +435,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ccd1017a_4e4a7878",
+        "filename": "zephyr/projects/nissa/gpio_nivviks.dts",
+        "patchSetId": 3
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2021-12-02T20:50:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5877e688_1896bf7a",
+      "range": {
+        "startLine": 97,
+        "startChar": 12,
+        "endLine": 97,
+        "endChar": 30
+      },
+      "revId": "d09a6f1331e5be8c1bf7f3b03bdd4f6d136383fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ef754be0_9f2c7948",
@@ -238,6 +472,30 @@
       "writtenOn": "2021-12-02T18:38:40Z",
       "side": 1,
       "message": "EC_SOC_SYS_PWROK",
+      "range": {
+        "startLine": 107,
+        "startChar": 12,
+        "endLine": 107,
+        "endChar": 21
+      },
+      "revId": "d09a6f1331e5be8c1bf7f3b03bdd4f6d136383fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7aeb564_8bda0fba",
+        "filename": "zephyr/projects/nissa/gpio_nivviks.dts",
+        "patchSetId": 3
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2021-12-02T20:50:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ef754be0_9f2c7948",
       "range": {
         "startLine": 107,
         "startChar": 12,
@@ -271,6 +529,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c554d6b_9a9658d5",
+        "filename": "zephyr/projects/nissa/gpio_nivviks.dts",
+        "patchSetId": 3
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2021-12-02T20:50:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5b839d78_55a0e8ed",
+      "range": {
+        "startLine": 110,
+        "startChar": 21,
+        "endLine": 110,
+        "endChar": 33
+      },
+      "revId": "d09a6f1331e5be8c1bf7f3b03bdd4f6d136383fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6ae8c593_8660166b",
@@ -294,6 +576,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "39935ff9_3d09f0d5",
+        "filename": "zephyr/projects/nissa/gpio_nivviks.dts",
+        "patchSetId": 3
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2021-12-02T20:50:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6ae8c593_8660166b",
+      "range": {
+        "startLine": 112,
+        "startChar": 12,
+        "endLine": 112,
+        "endChar": 28
+      },
+      "revId": "d09a6f1331e5be8c1bf7f3b03bdd4f6d136383fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a6fe365f_3e260fa6",
@@ -307,6 +613,30 @@
       "writtenOn": "2021-12-02T18:38:40Z",
       "side": 1,
       "message": "OD signal.",
+      "range": {
+        "startLine": 115,
+        "startChar": 21,
+        "endLine": 115,
+        "endChar": 34
+      },
+      "revId": "d09a6f1331e5be8c1bf7f3b03bdd4f6d136383fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0eaf7f4_7bad3fd0",
+        "filename": "zephyr/projects/nissa/gpio_nivviks.dts",
+        "patchSetId": 3
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2021-12-02T20:50:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a6fe365f_3e260fa6",
       "range": {
         "startLine": 115,
         "startChar": 21,
@@ -364,6 +694,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f4f62eb_5f95f3a3",
+        "filename": "zephyr/projects/nissa/i2c_nivviks.dts",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2021-12-02T20:50:04Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9c835fe7_c9241596",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 20
+      },
+      "revId": "d09a6f1331e5be8c1bf7f3b03bdd4f6d136383fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "402b9fa6_b7293e50",
@@ -381,6 +735,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9508467_09a7aa1e",
+        "filename": "zephyr/projects/nissa/i2c_nivviks.dts",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2021-12-02T20:50:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "402b9fa6_b7293e50",
+      "revId": "d09a6f1331e5be8c1bf7f3b03bdd4f6d136383fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2fb9e172_68d51d89",
@@ -394,6 +766,30 @@
       "writtenOn": "2021-12-02T18:38:40Z",
       "side": 1,
       "message": "Delete for now.",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 0
+      },
+      "revId": "d09a6f1331e5be8c1bf7f3b03bdd4f6d136383fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "50ed2ef1_3f22022a",
+        "filename": "zephyr/projects/nissa/i2c_nivviks.dts",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2021-12-02T20:50:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2fb9e172_68d51d89",
       "range": {
         "startLine": 36,
         "startChar": 0,
@@ -427,6 +823,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "28026ad3_b2b96f4e",
+        "filename": "zephyr/projects/nissa/i2c_nivviks.dts",
+        "patchSetId": 3
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2021-12-02T20:50:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "39ee44d6_0baecd43",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 0
+      },
+      "revId": "d09a6f1331e5be8c1bf7f3b03bdd4f6d136383fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "21dda76d_a1e35000",
@@ -444,6 +864,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f83cb01d_ad929998",
+        "filename": "zephyr/projects/nissa/i2c_nivviks.dts",
+        "patchSetId": 3
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2021-12-02T20:50:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "21dda76d_a1e35000",
+      "revId": "d09a6f1331e5be8c1bf7f3b03bdd4f6d136383fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "66d147cf_a1ed309a",
@@ -457,6 +895,24 @@
       "writtenOn": "2021-12-02T18:38:40Z",
       "side": 1,
       "message": "label \u003d \"I2C_SENSOR\";",
+      "revId": "d09a6f1331e5be8c1bf7f3b03bdd4f6d136383fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "76042815_f453d7ab",
+        "filename": "zephyr/projects/nissa/i2c_nivviks.dts",
+        "patchSetId": 3
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2021-12-02T20:50:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "66d147cf_a1ed309a",
       "revId": "d09a6f1331e5be8c1bf7f3b03bdd4f6d136383fd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -484,6 +940,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c98982dd_e69912dc",
+        "filename": "zephyr/projects/nissa/i2c_nivviks.dts",
+        "patchSetId": 3
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2021-12-02T20:50:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eaad8826_29c98b2b",
+      "range": {
+        "startLine": 68,
+        "startChar": 20,
+        "endLine": 68,
+        "endChar": 41
+      },
+      "revId": "d09a6f1331e5be8c1bf7f3b03bdd4f6d136383fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5385c2c9_b6033536",
@@ -497,6 +977,24 @@
       "writtenOn": "2021-12-02T18:38:40Z",
       "side": 1,
       "message": "label \u003d \"I2C_USB_C0\";",
+      "revId": "d09a6f1331e5be8c1bf7f3b03bdd4f6d136383fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0cdd23a_afde3b3f",
+        "filename": "zephyr/projects/nissa/i2c_nivviks.dts",
+        "patchSetId": 3
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2021-12-02T20:50:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5385c2c9_b6033536",
       "revId": "d09a6f1331e5be8c1bf7f3b03bdd4f6d136383fd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -524,6 +1022,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3ccef9d_524ecf91",
+        "filename": "zephyr/projects/nissa/i2c_nivviks.dts",
+        "patchSetId": 3
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2021-12-02T20:50:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f6ede664_96a80d9f",
+      "range": {
+        "startLine": 84,
+        "startChar": 1,
+        "endLine": 84,
+        "endChar": 7
+      },
+      "revId": "d09a6f1331e5be8c1bf7f3b03bdd4f6d136383fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b014a93a_d55844e4",
@@ -537,6 +1059,24 @@
       "writtenOn": "2021-12-02T18:38:40Z",
       "side": 1,
       "message": "label \u003d \"I2C_SUB_USB_C1\";",
+      "revId": "d09a6f1331e5be8c1bf7f3b03bdd4f6d136383fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2195252d_960cb34d",
+        "filename": "zephyr/projects/nissa/i2c_nivviks.dts",
+        "patchSetId": 3
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2021-12-02T20:50:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b014a93a_d55844e4",
       "revId": "d09a6f1331e5be8c1bf7f3b03bdd4f6d136383fd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -564,6 +1104,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "873b998d_29692e61",
+        "filename": "zephyr/projects/nissa/i2c_nivviks.dts",
+        "patchSetId": 3
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2021-12-02T20:50:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "37cf3ae1_558baefc",
+      "range": {
+        "startLine": 86,
+        "startChar": 20,
+        "endLine": 86,
+        "endChar": 40
+      },
+      "revId": "d09a6f1331e5be8c1bf7f3b03bdd4f6d136383fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a90b9e34_fe377716",
@@ -581,6 +1145,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f35bef2_ef1bbc24",
+        "filename": "zephyr/projects/nissa/i2c_nivviks.dts",
+        "patchSetId": 3
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2021-12-02T20:50:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a90b9e34_fe377716",
+      "revId": "d09a6f1331e5be8c1bf7f3b03bdd4f6d136383fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1964e6ea_bac9ef3e",
@@ -594,6 +1176,30 @@
       "writtenOn": "2021-12-02T18:38:40Z",
       "side": 1,
       "message": "I2C_BITRATE_STANDARD - battery fuel gauges are limited to 100 kHz.",
+      "range": {
+        "startLine": 95,
+        "startChar": 20,
+        "endLine": 95,
+        "endChar": 36
+      },
+      "revId": "d09a6f1331e5be8c1bf7f3b03bdd4f6d136383fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d80b0a0d_7ff1df5b",
+        "filename": "zephyr/projects/nissa/i2c_nivviks.dts",
+        "patchSetId": 3
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2021-12-02T20:50:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1964e6ea_bac9ef3e",
       "range": {
         "startLine": 95,
         "startChar": 20,
@@ -627,6 +1233,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2aab8a7f_c373adf0",
+        "filename": "zephyr/projects/nissa/i2c_nivviks.dts",
+        "patchSetId": 3
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2021-12-02T20:50:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "decc5c87_a4de5990",
+      "range": {
+        "startLine": 106,
+        "startChar": 0,
+        "endLine": 121,
+        "endChar": 0
+      },
+      "revId": "d09a6f1331e5be8c1bf7f3b03bdd4f6d136383fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e3f96455_83dfbac1",
@@ -644,6 +1274,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c54aab46_e2db5378",
+        "filename": "zephyr/projects/nissa/include/gpio_map.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2021-12-02T20:50:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e3f96455_83dfbac1",
+      "revId": "d09a6f1331e5be8c1bf7f3b03bdd4f6d136383fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "13047528_eb15d33b",
@@ -657,6 +1305,30 @@
       "writtenOn": "2021-12-02T18:38:40Z",
       "side": 1,
       "message": "Move to a separate CL. In this CL add\nCONFIG_PLATFORM_EC_ADC\u003dn",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 21
+      },
+      "revId": "d09a6f1331e5be8c1bf7f3b03bdd4f6d136383fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "173b070a_9678e348",
+        "filename": "zephyr/projects/nissa/prj_nivviks.conf",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2021-12-02T20:50:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "13047528_eb15d33b",
       "range": {
         "startLine": 38,
         "startChar": 0,
