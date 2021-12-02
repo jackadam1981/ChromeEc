@@ -22,6 +22,30 @@
       },
       "revId": "fd03f6a72106f5e4f1769aa460cf470a8f0eadab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "071d173b_6e55e32a",
+        "filename": "zephyr/test/system/test_system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2021-12-02T23:53:35Z",
+      "side": 1,
+      "message": "This is test setup, not a test- the test expects the contents of bbram to be that of mock_data. But I can put it in the test that expects the data.",
+      "parentUuid": "fe382747_9a8cf8af",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 0
+      },
+      "revId": "fd03f6a72106f5e4f1769aa460cf470a8f0eadab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
