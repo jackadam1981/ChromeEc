@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "025dde4c_3eb5247d",
+        "filename": "zephyr/projects/brya/brya/prj.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2021-12-02T19:26:40Z",
+      "side": 1,
+      "message": "This is unrelated to the patch but this is negating the line 20. Since we need the backlight it should be removed.",
+      "revId": "c0a4f713c7b2c627560e31312f20f9c1e189e8cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb347d6b_7b30ab49",
+        "filename": "zephyr/shim/include/zephyr_adc.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2021-12-02T19:26:40Z",
+      "side": 1,
+      "message": "Please follow adding comment for describing the endif clause like line 43.",
+      "revId": "c0a4f713c7b2c627560e31312f20f9c1e189e8cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
