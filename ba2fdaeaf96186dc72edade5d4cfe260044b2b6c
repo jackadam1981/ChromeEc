@@ -34,6 +34,47 @@
       "parentUuid": "b93f0cc5_68789097",
       "revId": "ba2fdaeaf96186dc72edade5d4cfe260044b2b6c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "45b338be_a906392b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-12-02T18:49:48Z",
+      "side": 1,
+      "message": "It\u0027s been too long for me to remember fully why this was implemented like this, but I\u0027m pretty certain it\u0027s related to this from the data sheet:\n\n9.6.6.1 Input Current Registers\nTo set the maximum input current limit, write a 16-bit IIN_HOST register command (REG0x3F()) using the data\n\nformat listed in Table 9-31 and Table 9-32. When using a 10-mΩ sense resistor, the charger provides an input-\ncurrent limit range of 50 mA to 6400 mA, with 50-mA resolution. The default current limit is 3.25 A. Due to the\n\nUSB current setting requirement, the register setting specifies the maximum current instead of the typical\ncurrent. Upon adapter removal, the input current limit is reset to the default value of 3.25 A. With code 0, the\ninput current limit is 50 mA.",
+      "parentUuid": "11e47127_b0c71626",
+      "revId": "ba2fdaeaf96186dc72edade5d4cfe260044b2b6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23bd3c2e_f98a0697",
+        "filename": "driver/charger/bq25710.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-12-02T18:49:48Z",
+      "side": 1,
+      "message": "how is the 50 mA offset handled with this change?\n\nFrom the data sheet 9.6.6.1:\nWith code 0, the input current limit is 50 mA.\n\nI may have been wrong in my interpretation of the spec, but we could always confirm this formulas with TI.",
+      "range": {
+        "startLine": 146,
+        "startChar": 1,
+        "endLine": 146,
+        "endChar": 47
+      },
+      "revId": "ba2fdaeaf96186dc72edade5d4cfe260044b2b6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
