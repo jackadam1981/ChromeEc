@@ -128,7 +128,7 @@ void update_dynamic_battery_info(void)
 		*memmap_volt = curr->batt.voltage;
 
 	if (!(curr->batt.flags & BATT_FLAG_BAD_CURRENT))
-		*memmap_rate = ABS(curr->batt.current);
+		*memmap_rate = curr->batt.current;
 
 	if (!(curr->batt.flags & BATT_FLAG_BAD_REMAINING_CAPACITY)) {
 		/*
