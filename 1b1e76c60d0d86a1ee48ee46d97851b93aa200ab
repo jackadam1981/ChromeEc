@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92c5dbf8_f1e0e0bc",
+        "filename": "zephyr/shim/src/keyboard_raw.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-12-02T23:10:38Z",
+      "side": 1,
+      "message": "How about making this a BUILD_ASSERT at the top of the file and then deleting all the LOG_ERR() paths?\n\nThis file is only compiled if CONFIG_PLATFORM_EC_KEYBOARD\u003dy, so no sense allowing this to compile if the required node isn\u0027t present.",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 34
+      },
+      "revId": "1b1e76c60d0d86a1ee48ee46d97851b93aa200ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
