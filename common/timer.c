@@ -146,8 +146,9 @@ int timer_arm(timestamp_t event, task_id_t tskid)
 
 	/* Modify the next event if needed */
 	if ((event.le.hi < now.le.hi) ||
-	    ((event.le.hi == now.le.hi) && (event.le.lo <= next_deadline)))
+	    ((event.le.hi == now.le.hi) && (event.le.lo <= next_deadline))) {
 		task_trigger_irq(timer_irq);
+	}
 
 	return EC_SUCCESS;
 }
