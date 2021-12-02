@@ -342,6 +342,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9c835fe7_c9241596",
+        "filename": "zephyr/projects/nissa/i2c_nivviks.dts",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-12-02T18:43:59Z",
+      "side": 1,
+      "message": "The CL:3300664 that removes the label property hasn\u0027t yet landed, so this is field is still required. So if your CL lands first, I\u0027ll update the nivviks board.",
+      "parentUuid": "7b3d89a4_a1b564ff",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 20
+      },
+      "revId": "d09a6f1331e5be8c1bf7f3b03bdd4f6d136383fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "402b9fa6_b7293e50",
         "filename": "zephyr/projects/nissa/i2c_nivviks.dts",
         "patchSetId": 3
