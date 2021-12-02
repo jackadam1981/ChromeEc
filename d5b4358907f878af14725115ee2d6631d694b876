@@ -16,6 +16,23 @@
       "message": "This CL fixes the EC Boot loop",
       "revId": "d5b4358907f878af14725115ee2d6631d694b876",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "13a06b84_dd2b8559",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-12-02T16:49:17Z",
+      "side": 1,
+      "message": "+Nuvoton, what was the reason to use a different flag for saving to BBRAM? Looks like the original code just saved the EC_RESET_FLAG_INITIAL_PWR to BBRAM and other flags were ignored.",
+      "revId": "d5b4358907f878af14725115ee2d6631d694b876",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
