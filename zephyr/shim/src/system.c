@@ -237,7 +237,6 @@ void system_reset(int flags)
 
 static int check_reset_cause(void)
 {
-	uint32_t chip_flags = 0; /* used to write back to the BBRAM */
 	uint32_t system_flags = chip_read_reset_flags(); /* system reset flag */
 	int chip_reset_cause = 0; /* chip-level reset cause */
 
@@ -262,7 +261,6 @@ static int check_reset_cause(void)
 		if (IS_ENABLED(CONFIG_BOARD_RESET_AFTER_POWER_ON) &&
 		    ((system_flags & EC_RESET_FLAG_HIBERNATE) == 0)) {
 			system_flags |= EC_RESET_FLAG_INITIAL_PWR;
-			chip_flags |= EC_RESET_FLAG_INITIAL_PWR;
 		}
 		break;
 
@@ -314,7 +312,7 @@ static int check_reset_cause(void)
 	}
 
 	/* Clear & set the reset flags for the following reset. */
-	chip_save_reset_flags(chip_flags);
+	chip_save_reset_flags(system_flags);
 
 	/* Set the system reset flags. */
 	system_set_reset_flags(system_flags);
