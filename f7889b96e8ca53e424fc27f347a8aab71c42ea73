@@ -39,6 +39,30 @@
       },
       "revId": "f7889b96e8ca53e424fc27f347a8aab71c42ea73",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55394245_dcefd899",
+        "filename": "chip/stm32/usb_spi.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 527,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-12-02T18:34:36Z",
+      "side": 1,
+      "message": "Should there be a default defined either in this file, or as a new config option that is defined by default and can be undef\u0027d/redefined in a board.h file if necessary. Similar to what we do for VID/PID?",
+      "parentUuid": "98f69c22_2386aab1",
+      "range": {
+        "startLine": 527,
+        "startChar": 24,
+        "endLine": 527,
+        "endChar": 40
+      },
+      "revId": "f7889b96e8ca53e424fc27f347a8aab71c42ea73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
