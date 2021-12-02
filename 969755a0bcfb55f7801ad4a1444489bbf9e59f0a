@@ -22,6 +22,30 @@
       },
       "revId": "969755a0bcfb55f7801ad4a1444489bbf9e59f0a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "403a7fd8_2aaedf7c",
+        "filename": "zephyr/shim/src/motionsense_sensors.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 433,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2021-12-02T12:26:53Z",
+      "side": 1,
+      "message": "Yes, you are right. The first idea was to use a function, but once we decided to use the macros, the function is not needed.",
+      "parentUuid": "cfbb8971_61ae7c45",
+      "range": {
+        "startLine": 424,
+        "startChar": 0,
+        "endLine": 433,
+        "endChar": 1
+      },
+      "revId": "969755a0bcfb55f7801ad4a1444489bbf9e59f0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
