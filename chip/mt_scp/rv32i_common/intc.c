@@ -319,8 +319,10 @@ int chip_get_ec_int(void)
 	unsigned int group, sta;
 	int word;
 
-	if (!SCP_CORE0_INTC_IRQ_OUT)
+	if (!SCP_CORE0_INTC_IRQ_OUT) {
+		ccprints("ERROR: SCP_CORE0_INTC_IRQ_OUT=0");
 		goto error;
+	}
 
 	group = read_csr(CSR_VIC_MICAUSE);
 
@@ -331,6 +333,7 @@ int chip_get_ec_int(void)
 			return ec_int;
 		}
 	}
+	ccprints("ERROR: no handler");
 
 error:
 	/* unreachable, SCP crashes and dumps registers after returning */
