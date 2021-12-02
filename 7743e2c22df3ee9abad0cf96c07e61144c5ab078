@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "04a1190a_a1681d0f",
+        "filename": "zephyr/dts/bindings/battery/smp,l20m3pg2.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-12-02T04:31:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "57b4b357_9839a382",
+      "range": {
+        "startLine": 45,
+        "startChar": 15,
+        "endLine": 45,
+        "endChar": 17
+      },
+      "revId": "7743e2c22df3ee9abad0cf96c07e61144c5ab078",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "262a8e2e_666fcabc",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a80f3a0e_2beb2a08",
+        "filename": "zephyr/dts/bindings/battery/smp,l20m3pg2.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-12-02T04:31:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "262a8e2e_666fcabc",
+      "range": {
+        "startLine": 49,
+        "startChar": 15,
+        "endLine": 49,
+        "endChar": 17
+      },
+      "revId": "7743e2c22df3ee9abad0cf96c07e61144c5ab078",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b938a241_1a60fc22",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-12-02T04:05:16Z",
       "side": 1,
       "message": "Probably okay as they are, however I found these parameters are different from what ODM set in https://crrev.com/c/2342955 for the same pack.",
+      "range": {
+        "startLine": 50,
+        "startChar": 1,
+        "endLine": 53,
+        "endChar": 17
+      },
+      "revId": "7743e2c22df3ee9abad0cf96c07e61144c5ab078",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00c85e54_262995dc",
+        "filename": "zephyr/dts/bindings/battery/smp,l20m3pg2.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-12-02T04:31:02Z",
+      "side": 1,
+      "message": "https://b.corp.google.com/issues/163110890#comment4: The datasheet specifies -20~60, I don\u0027t know whey they have -40~73.",
+      "parentUuid": "b938a241_1a60fc22",
       "range": {
         "startLine": 50,
         "startChar": 1,
