@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe382747_9a8cf8af",
+        "filename": "zephyr/test/system/test_system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-12-02T23:10:16Z",
+      "side": 1,
+      "message": "Create a separate test for this instead of adding directly to test_main().",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 0
+      },
+      "revId": "fd03f6a72106f5e4f1769aa460cf470a8f0eadab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
