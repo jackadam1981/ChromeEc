@@ -22,6 +22,30 @@
       },
       "revId": "3e71ffdd7f09efc78631bc47a1e876cedaa1ffaf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4136d64f_25e47ecc",
+        "filename": "zephyr/test/drivers/overlay.dts",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2021-12-02T03:31:38Z",
+      "side": 1,
+      "message": "It was, I was just putting together a few more of the same change for other subsystems before pushing all of them at once.",
+      "parentUuid": "50e051cb_d8a01bee",
+      "range": {
+        "startLine": 13,
+        "startChar": 1,
+        "endLine": 13,
+        "endChar": 2
+      },
+      "revId": "3e71ffdd7f09efc78631bc47a1e876cedaa1ffaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
