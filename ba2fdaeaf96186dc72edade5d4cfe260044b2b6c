@@ -16,6 +16,24 @@
       "message": "i wonder whether the original implementation was due to\nmisinterpreting the datasheet or some other reason\nthat\u0027s not obvious.\n",
       "revId": "ba2fdaeaf96186dc72edade5d4cfe260044b2b6c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11e47127_b0c71626",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2021-12-02T06:47:57Z",
+      "side": 1,
+      "message": "Can Google help to review this CL? Because we have to modify input current depends on system state on following CL.",
+      "parentUuid": "b93f0cc5_68789097",
+      "revId": "ba2fdaeaf96186dc72edade5d4cfe260044b2b6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
