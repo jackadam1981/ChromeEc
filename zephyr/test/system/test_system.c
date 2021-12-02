@@ -8,7 +8,6 @@
 #include <logging/log.h>
 #include <ztest.h>
 
-#include "bbram.h"
 #include "system.h"
 
 LOG_MODULE_REGISTER(test);
@@ -20,28 +19,6 @@ LOG_MODULE_REGISTER(test);
 
 static char mock_data[64] =
 	"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@";
-
-static int mock_bbram_read(const struct device *unused, size_t offset,
-			   size_t size, uint8_t *data)
-{
-	if (offset < 0 || offset + size >= ARRAY_SIZE(mock_data))
-		return -1;
-	memcpy(data, mock_data + offset, size);
-	return EC_SUCCESS;
-}
-
-static const struct bbram_driver_api bbram_api = {
-	.read = mock_bbram_read,
-};
-
-static const struct device bbram_dev_instance = {
-	.name = "TEST_BBRAM_DEV",
-	.config = NULL,
-	.api = &bbram_api,
-	.data = NULL,
-};
-
-const struct device *bbram_dev = &bbram_dev_instance;
 
 static void test_bbram_get(void)
 {
@@ -71,6 +48,13 @@ static void test_bbram_get(void)
 
 void test_main(void)
 {
+	int rc;
+	const struct device *bbram_dev =
+		DEVICE_DT_GET(DT_CHOSEN(cros_ec_bbram));
+
+	rc = bbram_write(bbram_dev, 0, ARRAY_SIZE(mock_data), mock_data);
+	zassert_equal(rc, 0, NULL);
+
 	ztest_test_suite(system, ztest_unit_test(test_bbram_get));
 	ztest_run_test_suite(system);
 }
