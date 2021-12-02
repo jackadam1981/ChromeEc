@@ -16,6 +16,24 @@
       "message": "Add a helper macro to match other cros-ec drivers.",
       "revId": "3b79cb9cea91a4b513b69ba50b805376db32af03",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2093d1d4_178be9f6",
+        "filename": "zephyr/shim/src/watchdog.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2021-12-02T23:54:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "189effb1_a50ed664",
+      "revId": "3b79cb9cea91a4b513b69ba50b805376db32af03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
