@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26ec3686_bda93e67",
+        "filename": "zephyr/test/drivers/src/lis2dw12.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-12-02T00:19:18Z",
+      "side": 1,
+      "message": "static",
+      "range": {
+        "startLine": 156,
+        "startChar": 0,
+        "endLine": 156,
+        "endChar": 4
+      },
+      "revId": "a445ab4ec3d0e111f73b3fb4e0380acfef2ff6fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44392c6d_e3502e18",
+        "filename": "zephyr/test/drivers/src/lis2dw12.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-12-02T00:19:18Z",
+      "side": 1,
+      "message": "Cast is not required since RHS is a void *",
+      "range": {
+        "startLine": 161,
+        "startChar": 35,
+        "endLine": 161,
+        "endChar": 60
+      },
+      "revId": "a445ab4ec3d0e111f73b3fb4e0380acfef2ff6fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d64ba43e_4e35f0d7",
+        "filename": "zephyr/test/drivers/src/lis2dw12.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-12-02T00:19:18Z",
+      "side": 1,
+      "message": "static const",
+      "range": {
+        "startLine": 182,
+        "startChar": 1,
+        "endLine": 182,
+        "endChar": 7
+      },
+      "revId": "a445ab4ec3d0e111f73b3fb4e0380acfef2ff6fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "36514e2b_80f0847d",
+        "filename": "zephyr/test/drivers/src/lis2dw12.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-12-02T00:19:18Z",
+      "side": 1,
+      "message": "enum { ROUND_DOWN, ROUND_UP }",
+      "range": {
+        "startLine": 184,
+        "startChar": 2,
+        "endLine": 184,
+        "endChar": 5
+      },
+      "revId": "a445ab4ec3d0e111f73b3fb4e0380acfef2ff6fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "42798d21_b190b9d9",
+        "filename": "zephyr/test/drivers/src/lis2dw12.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-12-02T00:19:18Z",
+      "side": 1,
+      "message": "blank line required after declaration",
+      "range": {
+        "startLine": 208,
+        "startChar": 2,
+        "endLine": 208,
+        "endChar": 3
+      },
+      "revId": "a445ab4ec3d0e111f73b3fb4e0380acfef2ff6fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
