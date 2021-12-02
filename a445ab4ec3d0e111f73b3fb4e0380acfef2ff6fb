@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a2f98de_17de55e2",
+        "filename": "zephyr/test/drivers/src/lis2dw12.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2021-12-02T17:39:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "26ec3686_bda93e67",
+      "range": {
+        "startLine": 156,
+        "startChar": 0,
+        "endLine": 156,
+        "endChar": 4
+      },
+      "revId": "a445ab4ec3d0e111f73b3fb4e0380acfef2ff6fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "44392c6d_e3502e18",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2816f578_7c3be65d",
+        "filename": "zephyr/test/drivers/src/lis2dw12.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2021-12-02T17:39:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "44392c6d_e3502e18",
+      "range": {
+        "startLine": 161,
+        "startChar": 35,
+        "endLine": 161,
+        "endChar": 60
+      },
+      "revId": "a445ab4ec3d0e111f73b3fb4e0380acfef2ff6fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d64ba43e_4e35f0d7",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-12-02T00:19:18Z",
       "side": 1,
       "message": "static const",
+      "range": {
+        "startLine": 182,
+        "startChar": 1,
+        "endLine": 182,
+        "endChar": 7
+      },
+      "revId": "a445ab4ec3d0e111f73b3fb4e0380acfef2ff6fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "62572fb9_18c8be76",
+        "filename": "zephyr/test/drivers/src/lis2dw12.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2021-12-02T17:39:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d64ba43e_4e35f0d7",
       "range": {
         "startLine": 182,
         "startChar": 1,
@@ -95,6 +167,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d3e6f432_b11b435d",
+        "filename": "zephyr/test/drivers/src/lis2dw12.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2021-12-02T17:39:56Z",
+      "side": 1,
+      "message": "Just for the test file or should I add it to the real driver\u0027s header?",
+      "parentUuid": "36514e2b_80f0847d",
+      "range": {
+        "startLine": 184,
+        "startChar": 2,
+        "endLine": 184,
+        "endChar": 5
+      },
+      "revId": "a445ab4ec3d0e111f73b3fb4e0380acfef2ff6fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "42798d21_b190b9d9",
         "filename": "zephyr/test/drivers/src/lis2dw12.c",
         "patchSetId": 2
@@ -106,6 +202,30 @@
       "writtenOn": "2021-12-02T00:19:18Z",
       "side": 1,
       "message": "blank line required after declaration",
+      "range": {
+        "startLine": 208,
+        "startChar": 2,
+        "endLine": 208,
+        "endChar": 3
+      },
+      "revId": "a445ab4ec3d0e111f73b3fb4e0380acfef2ff6fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0aa46f6e_25070228",
+        "filename": "zephyr/test/drivers/src/lis2dw12.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2021-12-02T17:39:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "42798d21_b190b9d9",
       "range": {
         "startLine": 208,
         "startChar": 2,
