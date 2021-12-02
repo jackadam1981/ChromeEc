@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67dd3c1d_3acff564",
+        "filename": "zephyr/test/drivers/src/ppc_sn5s330.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-12-02T16:55:59Z",
+      "side": 1,
+      "message": "I believe you need to return after ztest_test_skip().  Also, you need compile out the rest of the test when !CONFIG_USBC_PPC_SBU because sn5s330_drv.set_sbu isn\u0027t valid.\n\nProbably best to do the following:\n\n#ifdef CONFIG_USBC_PPC_SBU\nstatic void test_sn5s330_set_sbu(void)\n{\n    /* Normal test */\n}\n#else\nstatic void test_sn5s330_set_sbu(void)\n{\n    ztest_test_skip();\n}\n#endif",
+      "range": {
+        "startLine": 252,
+        "startChar": 0,
+        "endLine": 255,
+        "endChar": 0
+      },
+      "revId": "0337b255930996d73fb2f70915bb9afdf96e8378",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
