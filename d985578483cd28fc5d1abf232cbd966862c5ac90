@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e60c001_f3afd22b",
+        "filename": "zephyr/boards/arm/madoo/Kconfig.board",
+        "patchSetId": 8
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2021-12-02T21:58:27Z",
+      "side": 1,
+      "message": "nit: Do you want to remove the comment with reference to brya?",
+      "revId": "d985578483cd28fc5d1abf232cbd966862c5ac90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a040bdc4_627d1a49",
+        "filename": "zephyr/projects/dedede/madoo/gpio.dts",
+        "patchSetId": 8
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2021-12-02T21:58:27Z",
+      "side": 1,
+      "message": "should this be H1_EC_PWR_BTN_ODL since its used in the schematics?",
+      "revId": "d985578483cd28fc5d1abf232cbd966862c5ac90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bef75332_19766f0c",
+        "filename": "zephyr/projects/dedede/madoo/gpio.dts",
+        "patchSetId": 8
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2021-12-02T21:58:27Z",
+      "side": 1,
+      "message": "should be EC_WP_OD?",
+      "revId": "d985578483cd28fc5d1abf232cbd966862c5ac90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
