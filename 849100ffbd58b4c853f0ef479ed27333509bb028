@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b8014ae_46b13349",
+        "filename": "zephyr/test/drivers/src/usb_mux.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2021-12-02T11:57:31Z",
+      "side": 1,
+      "message": "Good to know this.",
+      "parentUuid": "c9ac5850_dcb96b86",
+      "revId": "849100ffbd58b4c853f0ef479ed27333509bb028",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6ac22449_c52d8333",
@@ -41,6 +59,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f7e53377_eaeb0a92",
+        "filename": "zephyr/test/drivers/src/usb_mux.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2021-12-02T11:57:31Z",
+      "side": 1,
+      "message": "Yes, it make no sens to call this function for different usb_mux than proxy. I used zassert_* here, to not fail all tests, just this one.",
+      "parentUuid": "6ac22449_c52d8333",
+      "range": {
+        "startLine": 67,
+        "startChar": 5,
+        "endLine": 67,
+        "endChar": 21
+      },
+      "revId": "849100ffbd58b4c853f0ef479ed27333509bb028",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fa17561e_a63ae717",
@@ -54,6 +96,24 @@
       "writtenOn": "2021-12-01T17:58:08Z",
       "side": 1,
       "message": "Instead of this conditional, I\u0027d just assert that (proxy_get_mux_state_seq_idx \u003c NUM_OF_PROXY) before accessing the array and always increment afterwards. This way you get a clear failure if somebody calls this function too many times and/or forgets reset with set_proxy_get_mux_state_seq().",
+      "revId": "849100ffbd58b4c853f0ef479ed27333509bb028",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f85df35e_59f7c276",
+        "filename": "zephyr/test/drivers/src/usb_mux.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2021-12-02T11:57:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa17561e_a63ae717",
       "revId": "849100ffbd58b4c853f0ef479ed27333509bb028",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -100,6 +160,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d313980f_086e487c",
+        "filename": "zephyr/test/drivers/src/usb_mux.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2021-12-02T11:57:31Z",
+      "side": 1,
+      "message": "proxy_chain_0 is copied to usb_muxes[USBC_PORT_C1] in setup_usb_mux_proxy_chain(). It is done that way, because in test we apply proxy to first mux in usb_muxes chain and it needs to be at specific address in memory. For rest muxes it is simpler, because we just need to change next_mux pointer.",
+      "parentUuid": "1f100bb8_f0519586",
+      "range": {
+        "startLine": 354,
+        "startChar": 17,
+        "endLine": 354,
+        "endChar": 41
+      },
+      "revId": "849100ffbd58b4c853f0ef479ed27333509bb028",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1e47028b_365e9818",
         "filename": "zephyr/test/drivers/src/usb_mux.c",
         "patchSetId": 1
@@ -111,6 +195,30 @@
       "writtenOn": "2021-12-01T17:58:08Z",
       "side": 1,
       "message": "Not your fault but could you fix this typo while we\u0027re here?",
+      "range": {
+        "startLine": 880,
+        "startChar": 22,
+        "endLine": 880,
+        "endChar": 43
+      },
+      "revId": "849100ffbd58b4c853f0ef479ed27333509bb028",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5863d2ae_2f1b7951",
+        "filename": "zephyr/test/drivers/src/usb_mux.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 880,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2021-12-02T11:57:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1e47028b_365e9818",
       "range": {
         "startLine": 880,
         "startChar": 22,
