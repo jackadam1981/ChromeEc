@@ -70,6 +70,24 @@
       "parentUuid": "e59ad2f0_b4622d1c",
       "revId": "05d938a00688e70a6712748e0231f16097ae667e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "34171eaa_e8d6f7de",
+        "filename": "board/dewatt/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1293891
+      },
+      "writtenOn": "2021-12-02T08:31:15Z",
+      "side": 1,
+      "message": "Can we use the following 2 changes to let LED behavior work on all stage DUT?\nCL:3312516 : Modify LED color and LED behavior definition\nCL:3312918 : fix LED behavior for Ver1 board",
+      "parentUuid": "1d947198_b04356bd",
+      "revId": "05d938a00688e70a6712748e0231f16097ae667e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
