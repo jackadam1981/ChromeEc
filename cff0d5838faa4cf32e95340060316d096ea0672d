@@ -124,6 +124,24 @@
       "parentUuid": "6be43b47_a2617a4c",
       "revId": "cff0d5838faa4cf32e95340060316d096ea0672d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c701c7d_d42b1dc2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2021-12-02T06:25:13Z",
+      "side": 1,
+      "message": "Hi Keith,\nAdded this suggested option. Based on the new config, index for board info is decided now in the latest patch. But, i think battery_manufacturer_name() neednot be skipped still. Based on the index, let the hardcoded board information be compared to ensure that expected battery is what is connected.",
+      "parentUuid": "1c5aa948_9268efe0",
+      "revId": "cff0d5838faa4cf32e95340060316d096ea0672d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
