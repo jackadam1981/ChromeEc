@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a020103a_8787de3e",
+        "filename": "zephyr/projects/skyrim/gpio.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 357,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-12-02T22:54:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f3cfec2d_3963ea3e",
+      "range": {
+        "startLine": 350,
+        "startChar": 0,
+        "endLine": 357,
+        "endChar": 3
+      },
+      "revId": "8c89d13bb29119e039ee2cdfcf7ccf631e792931",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1bb7098f_5282f46b",
@@ -41,6 +65,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a1968a39_0ad1eebe",
+        "filename": "zephyr/projects/skyrim/gpio.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 361,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-12-02T22:54:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1bb7098f_5282f46b",
+      "revId": "8c89d13bb29119e039ee2cdfcf7ccf631e792931",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5600a628_12bde1fa",
@@ -54,6 +96,30 @@
       "writtenOn": "2021-12-02T08:28:11Z",
       "side": 1,
       "message": "It should be \"\u0026psl_in1\" according to the setting in ECOS.",
+      "range": {
+        "startLine": 371,
+        "startChar": 0,
+        "endLine": 371,
+        "endChar": 9
+      },
+      "revId": "8c89d13bb29119e039ee2cdfcf7ccf631e792931",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "22147e3a_b8aa8943",
+        "filename": "zephyr/projects/skyrim/gpio.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 371,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-12-02T22:54:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5600a628_12bde1fa",
       "range": {
         "startLine": 371,
         "startChar": 0,
