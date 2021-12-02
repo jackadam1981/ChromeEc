@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ead7b8f_0fcc7452",
+        "filename": "board/dewatt/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-12-02T18:13:27Z",
+      "side": 1,
+      "message": "This will happen after PWM init. It should probably happen before, i.e. HOOK_PRIO_INIT_PWM-1.",
+      "revId": "478db2badc6dd80b5e398eeb89863bc8ffe6fe17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
