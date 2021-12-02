@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57b4b357_9839a382",
+        "filename": "zephyr/dts/bindings/battery/smp,l20m3pg2.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1251537
+      },
+      "writtenOn": "2021-12-02T04:05:16Z",
+      "side": 1,
+      "message": "Should we use 45 degC based on \"Upper limited charging temperature\" in the pack ds, in order to comply with GB 31241-2014 (China\u0027s safety standards for Li-ion batteries)?",
+      "range": {
+        "startLine": 45,
+        "startChar": 15,
+        "endLine": 45,
+        "endChar": 17
+      },
+      "revId": "7743e2c22df3ee9abad0cf96c07e61144c5ab078",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "262a8e2e_666fcabc",
+        "filename": "zephyr/dts/bindings/battery/smp,l20m3pg2.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1251537
+      },
+      "writtenOn": "2021-12-02T04:05:16Z",
+      "side": 1,
+      "message": "45 degC for the same reason?",
+      "range": {
+        "startLine": 49,
+        "startChar": 15,
+        "endLine": 49,
+        "endChar": 17
+      },
+      "revId": "7743e2c22df3ee9abad0cf96c07e61144c5ab078",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b938a241_1a60fc22",
+        "filename": "zephyr/dts/bindings/battery/smp,l20m3pg2.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1251537
+      },
+      "writtenOn": "2021-12-02T04:05:16Z",
+      "side": 1,
+      "message": "Probably okay as they are, however I found these parameters are different from what ODM set in https://crrev.com/c/2342955 for the same pack.",
+      "range": {
+        "startLine": 50,
+        "startChar": 1,
+        "endLine": 53,
+        "endChar": 17
+      },
+      "revId": "7743e2c22df3ee9abad0cf96c07e61144c5ab078",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
