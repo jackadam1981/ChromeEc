@@ -22,6 +22,30 @@
       },
       "revId": "1b1e76c60d0d86a1ee48ee46d97851b93aa200ab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4e09a34_034dcd74",
+        "filename": "zephyr/shim/src/keyboard_raw.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2021-12-03T00:44:29Z",
+      "side": 1,
+      "message": "The unguarded reference to cros_kb_raw_dev in the init function would have failed to build anyway, but adding a BUILD_ASSERT as well will help debug errors.",
+      "parentUuid": "92c5dbf8_f1e0e0bc",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 34
+      },
+      "revId": "1b1e76c60d0d86a1ee48ee46d97851b93aa200ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
