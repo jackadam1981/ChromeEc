@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d51663d4_83b8e3b7",
+        "filename": "zephyr/shim/chip/npcx/power_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2021-12-03T02:34:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "18012ab5_85582e1f",
+      "range": {
+        "startLine": 15,
+        "startChar": 34,
+        "endLine": 15,
+        "endChar": 50
+      },
+      "revId": "f0097ab439b26550f11fa96a661d370d24d7f1ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "92bd260d_a4f1d72b",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-12-02T23:21:33Z",
       "side": 1,
       "message": "Should npcx_power_console_is_in_use() also get converted to call pm_constraint_set()?\n\nThis would require a separate upstream PR.",
+      "range": {
+        "startLine": 24,
+        "startChar": 33,
+        "endLine": 24,
+        "endChar": 61
+      },
+      "revId": "f0097ab439b26550f11fa96a661d370d24d7f1ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9b964e5_e3f65974",
+        "filename": "zephyr/shim/chip/npcx/power_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2021-12-03T02:34:58Z",
+      "side": 1,
+      "message": "Yes, we agree that if we apply pm_constraint_set/release also to UART Rx, npcx_power_console_is_in_use() can be removed.\nWe will prepare an upstream PR to achieve it.",
+      "parentUuid": "92bd260d_a4f1d72b",
       "range": {
         "startLine": 24,
         "startChar": 33,
