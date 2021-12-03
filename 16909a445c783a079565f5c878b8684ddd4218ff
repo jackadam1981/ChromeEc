@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d24ea4ae_d4fc616a",
+        "filename": "board/brya/usbc_config.c",
+        "patchSetId": 31
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2021-12-03T19:17:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f42e442b_315c5fc3",
+      "revId": "16909a445c783a079565f5c878b8684ddd4218ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b3787f49_13a5cc33",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-12-02T22:04:19Z",
       "side": 1,
       "message": "This signal is defined as part of power sequencing in line #84. Please remove.",
+      "revId": "16909a445c783a079565f5c878b8684ddd4218ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a7bb239_908cd7be",
+        "filename": "zephyr/projects/brya/brya/gpio.dts",
+        "patchSetId": 31
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2021-12-03T19:17:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b3787f49_13a5cc33",
       "revId": "16909a445c783a079565f5c878b8684ddd4218ff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -52,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "691f725f_f9668d38",
+        "filename": "zephyr/projects/brya/brya/include/gpio_map.h",
+        "patchSetId": 31
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2021-12-03T19:17:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b63b69d2_2a806691",
+      "revId": "16909a445c783a079565f5c878b8684ddd4218ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6bd877b5_dbf26621",
@@ -65,6 +119,24 @@
       "writtenOn": "2021-12-02T22:04:19Z",
       "side": 1,
       "message": "nit: extra lines",
+      "revId": "16909a445c783a079565f5c878b8684ddd4218ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8c233c0_94ae4308",
+        "filename": "zephyr/projects/brya/brya/prj.conf",
+        "patchSetId": 31
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2021-12-03T19:17:33Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "6bd877b5_dbf26621",
       "revId": "16909a445c783a079565f5c878b8684ddd4218ff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
