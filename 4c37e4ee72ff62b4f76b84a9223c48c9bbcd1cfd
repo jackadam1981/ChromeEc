@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "788e6d40_13b21fa2",
+        "filename": "zephyr/subsys/usbc/tc/snk.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1811,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-12-03T23:29:10Z",
+      "side": 0,
+      "message": "Do we still need Vconn for version one, or are we making it an add-on later?  It\u0027s definitely a candidate for optional in the first CL, since there are a couple of types of devices that aren\u0027t required to use it (basically, anything only using USB 2.0 or no USB)",
+      "revId": "4c37e4ee72ff62b4f76b84a9223c48c9bbcd1cfd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

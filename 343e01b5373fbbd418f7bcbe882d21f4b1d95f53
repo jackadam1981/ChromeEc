@@ -1,0 +1,300 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "29b3aff2_fbbb677f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-12-03T23:29:10Z",
+      "side": 1,
+      "message": "I\u0027m about halfway through and figured I\u0027d post my comments so far.  Overall, I\u0027m super psyched about this effort though",
+      "revId": "343e01b5373fbbd418f7bcbe882d21f4b1d95f53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d180fac4_d5f73a8d",
+        "filename": "zephyr/subsys/usbc/tc/snk.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-12-03T23:29:10Z",
+      "side": 1,
+      "message": "I think this is the right call.  I\u0027d smushed DebugAccessory.SNK into Attached.SNK a while back when we were really starved for space, but this will be much more clear to new readers.",
+      "revId": "343e01b5373fbbd418f7bcbe882d21f4b1d95f53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ca103d2_5ae4f6d5",
+        "filename": "zephyr/subsys/usbc/tc/snk.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-12-03T23:29:10Z",
+      "side": 1,
+      "message": "I think we lost the macro somewhere in the mass deletion.  I\u0027d assume we need one to check attached.snk or its debug counterpart",
+      "range": {
+        "startLine": 86,
+        "startChar": 8,
+        "endLine": 86,
+        "endChar": 23
+      },
+      "revId": "343e01b5373fbbd418f7bcbe882d21f4b1d95f53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ae91b08_ee52de7e",
+        "filename": "zephyr/subsys/usbc/tc/snk.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-12-03T23:29:10Z",
+      "side": 1,
+      "message": "Remove PRL references for now?",
+      "revId": "343e01b5373fbbd418f7bcbe882d21f4b1d95f53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0cb9292d_efe20fd5",
+        "filename": "zephyr/subsys/usbc/tc/snk.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-12-03T23:29:10Z",
+      "side": 1,
+      "message": "Are we uploading our usb_mux driver?  Or will we have a zephyr-y interface to do this with? \n\nMuxes could be a CL on top of the basic TC layer, though they are mentioned in the spec states so it could make sense to have them from the get-go",
+      "revId": "343e01b5373fbbd418f7bcbe882d21f4b1d95f53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74475f6d_5a4a013a",
+        "filename": "zephyr/subsys/usbc/tc/snk.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-12-03T23:29:10Z",
+      "side": 1,
+      "message": "I guess same questions here?  We can probably leave out OCP for a first round since that\u0027s something that happens sourcing.  Not as sure for the PPCs... are we sending our PPC drivers upstream as well?",
+      "revId": "343e01b5373fbbd418f7bcbe882d21f4b1d95f53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "42130bab_84298bf0",
+        "filename": "zephyr/subsys/usbc/tc/snk.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-12-03T23:29:10Z",
+      "side": 1,
+      "message": "BC1.2 in scope or out of scope for the first TC?",
+      "revId": "343e01b5373fbbd418f7bcbe882d21f4b1d95f53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c77514ea_3a4790fd",
+        "filename": "zephyr/subsys/usbc/tc/snk.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-12-03T23:29:10Z",
+      "side": 1,
+      "message": "Rp functions only needed for sourcing?",
+      "revId": "343e01b5373fbbd418f7bcbe882d21f4b1d95f53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6c7bf0b_be87d3be",
+        "filename": "zephyr/subsys/usbc/tc/snk.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-12-03T23:29:10Z",
+      "side": 1,
+      "message": "I\u0027m guessing we\u0027ll need a zephyr-y way to check this condition?",
+      "range": {
+        "startLine": 289,
+        "startChar": 16,
+        "endLine": 289,
+        "endChar": 34
+      },
+      "revId": "343e01b5373fbbd418f7bcbe882d21f4b1d95f53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "59e89a4c_a83568c9",
+        "filename": "zephyr/subsys/usbc/tc/snk.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 385,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-12-03T23:29:10Z",
+      "side": 1,
+      "message": "Should we make a first state something like a board-overridable default function?  We have our beloved ChromeOS way of deciding this, but I\u0027m betting consumers would prefer to determine this directly without our policy interfering.",
+      "revId": "343e01b5373fbbd418f7bcbe882d21f4b1d95f53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6824a1fd_c6fb197d",
+        "filename": "zephyr/subsys/usbc/tc/snk.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 487,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-12-03T23:29:10Z",
+      "side": 1,
+      "message": "This one I\u0027m not as sure of off the top of my head... does it have a purpose outside our LPM tracking?",
+      "revId": "343e01b5373fbbd418f7bcbe882d21f4b1d95f53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18dc5b07_93187ee7",
+        "filename": "zephyr/subsys/usbc/tc/snk.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 489,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-12-03T23:29:10Z",
+      "side": 1,
+      "message": "Not needed until we\u0027re in PD territory :)",
+      "revId": "343e01b5373fbbd418f7bcbe882d21f4b1d95f53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5996f411_0ad3f396",
+        "filename": "zephyr/subsys/usbc/tc/snk.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 529,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-12-03T23:29:10Z",
+      "side": 1,
+      "message": "This brings my biggest question: what\u0027s the zephyr-y way of doing interactions like this?  Would they have a set of overridable functions?  Or a struct with function pointers to call for this stuff?  \n\nBasically, I\u0027m trying to understand how we can integrate what\u0027s usually a board-level logic here.  I\u0027d really like to take this as an opportunity to clean up our APIs which have sprouted off in a few directions over the years.  I\u0027d be really happy to hear your thoughts for our API definitions here since it\u0027s one of the weaker parts of our current implementation.",
+      "revId": "343e01b5373fbbd418f7bcbe882d21f4b1d95f53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5250fc59_bcac3adc",
+        "filename": "zephyr/subsys/usbc/tc/snk.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 565,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-12-03T23:29:10Z",
+      "side": 1,
+      "message": "I\u0027m guessing if we still need this, we\u0027d need to definitely change how it works?",
+      "revId": "343e01b5373fbbd418f7bcbe882d21f4b1d95f53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd9ab1a0_6469d94a",
+        "filename": "zephyr/subsys/usbc/tc/snk.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 631,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-12-03T23:29:10Z",
+      "side": 1,
+      "message": "What\u0027s the reasoning on making all the states overridable?",
+      "range": {
+        "startLine": 631,
+        "startChar": 0,
+        "endLine": 631,
+        "endChar": 13
+      },
+      "revId": "343e01b5373fbbd418f7bcbe882d21f4b1d95f53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d70f5ae_05d8f822",
+        "filename": "zephyr/subsys/usbc/tc/snk.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 673,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-12-03T23:29:10Z",
+      "side": 1,
+      "message": "Do we have to give up our beloved timer framework?  Or is this just temporary?",
+      "range": {
+        "startLine": 673,
+        "startChar": 1,
+        "endLine": 673,
+        "endChar": 14
+      },
+      "revId": "343e01b5373fbbd418f7bcbe882d21f4b1d95f53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
