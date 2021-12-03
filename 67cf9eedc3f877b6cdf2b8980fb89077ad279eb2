@@ -56,6 +56,30 @@
       },
       "revId": "67cf9eedc3f877b6cdf2b8980fb89077ad279eb2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8fea38a4_b8f9a401",
+        "filename": "zephyr/projects/nissa/gpio_nivviks.dts",
+        "patchSetId": 4
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2021-12-03T00:01:41Z",
+      "side": 1,
+      "message": "OK Will do that in a separate CL once I sort out all the GPIOs.",
+      "parentUuid": "0fca5e7a_61d89e8a",
+      "range": {
+        "startLine": 123,
+        "startChar": 0,
+        "endLine": 123,
+        "endChar": 17
+      },
+      "revId": "67cf9eedc3f877b6cdf2b8980fb89077ad279eb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
