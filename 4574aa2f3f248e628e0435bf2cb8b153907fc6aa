@@ -1,0 +1,107 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35775151_83246ee4",
+        "filename": "driver/ppc/ktu1125.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-12-03T23:53:02Z",
+      "side": 1,
+      "message": "Perhaps use ppc_err_prints instead.",
+      "range": {
+        "startLine": 247,
+        "startChar": 2,
+        "endLine": 247,
+        "endChar": 12
+      },
+      "revId": "4574aa2f3f248e628e0435bf2cb8b153907fc6aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fca1e82e_fd230111",
+        "filename": "driver/ppc/ktu1125.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-12-03T23:53:02Z",
+      "side": 1,
+      "message": "Same for here.",
+      "range": {
+        "startLine": 255,
+        "startChar": 2,
+        "endLine": 255,
+        "endChar": 12
+      },
+      "revId": "4574aa2f3f248e628e0435bf2cb8b153907fc6aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "37c8453e_87404b0e",
+        "filename": "driver/ppc/ktu1125.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-12-03T23:53:02Z",
+      "side": 1,
+      "message": "And here.",
+      "range": {
+        "startLine": 262,
+        "startChar": 2,
+        "endLine": 262,
+        "endChar": 12
+      },
+      "revId": "4574aa2f3f248e628e0435bf2cb8b153907fc6aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c65f6878_c80f99e5",
+        "filename": "driver/ppc/ktu1125.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 516,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-12-03T23:53:02Z",
+      "side": 1,
+      "message": "nit: nothing on the first line of multi-line comments.",
+      "revId": "4574aa2f3f248e628e0435bf2cb8b153907fc6aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01414033_cdbda831",
+        "filename": "include/config.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 4873,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-12-03T23:53:02Z",
+      "side": 1,
+      "message": "nit: Keep in alphabetical order.",
+      "revId": "4574aa2f3f248e628e0435bf2cb8b153907fc6aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
