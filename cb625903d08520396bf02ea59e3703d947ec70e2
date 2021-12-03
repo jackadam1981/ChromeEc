@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "723b3b1d_8b3592b8",
+        "filename": "zephyr/emul/emul_lis2dw12.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2021-12-03T20:04:35Z",
+      "side": 1,
+      "message": "The ODR bits live at positions 7:4 in the register, hence a shift of 4 to pull them out. I can change this to\n\n(reg \u0026 LIS2DW12_ACC_ODR_MASK) \u003e\u003e __builtin_ctz(LIS2DW12_ACC_ODR_MASK)\n\nwhich should derive the 4 based on the number of trailing zero bits in the mask. (and repeat for MODE bits below)",
+      "parentUuid": "325fb7ef_c26ac9e4",
+      "range": {
+        "startLine": 132,
+        "startChar": 41,
+        "endLine": 132,
+        "endChar": 42
+      },
+      "revId": "cb625903d08520396bf02ea59e3703d947ec70e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "01b75655_763f9809",
         "filename": "zephyr/include/emul/emul_lis2dw12.h",
         "patchSetId": 1
@@ -37,6 +61,30 @@
       "writtenOn": "2021-12-03T05:59:25Z",
       "side": 1,
       "message": "nit: here and below. Add a blank line before @param",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 18
+      },
+      "revId": "cb625903d08520396bf02ea59e3703d947ec70e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f7e7ee5e_50ff8cb3",
+        "filename": "zephyr/include/emul/emul_lis2dw12.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2021-12-03T20:04:35Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "01b75655_763f9809",
       "range": {
         "startLine": 49,
         "startChar": 0,
