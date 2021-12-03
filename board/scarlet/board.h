@@ -9,7 +9,9 @@
 #define __CROS_EC_BOARD_H
 
 /* Free up flash space */
+#undef CONFIG_CONSOLE_CMDHELP
 #define CONFIG_DEBUG_ASSERT_BRIEF
+#define CONFIG_LTO
 #define CONFIG_USB_PD_DEBUG_LEVEL 0
 
 /* Optional modules */
