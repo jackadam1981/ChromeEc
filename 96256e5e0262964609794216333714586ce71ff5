@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f3c4636_21240a4c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-12-03T17:40:30Z",
+      "side": 1,
+      "message": "One change requested that I think will improve readability.",
+      "revId": "96256e5e0262964609794216333714586ce71ff5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ba18a65_7cc101e3",
+        "filename": "zephyr/shim/include/motionsense_sensors.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-12-03T17:40:30Z",
+      "side": 1,
+      "message": "Both users of this macro call with the same arguments, so a helper macro could make sense.\n\n#define REPLACE_MOTION_SENSOR(new_id, old_id) \\\n\tmotion_sensors[SENSOR_ID(old_id)] \u003d      \\\n\t\tmotion_sensors_alt[SENSOR_ID(new_id)];\n\n#define ENABLE_ALT_MOTION_SENSOR(nodelabel) \\\n\tREPLACE_MOTION_SENSOR(DT_NODELABEL(nodelabel), \\\n\t\t\t      DT_PHANDLE(DT_NODELABEL(nodelabel), \\\n\t\t\t\t         alternate_for));",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 0
+      },
+      "revId": "96256e5e0262964609794216333714586ce71ff5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
