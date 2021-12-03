@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8ebc58d2_12cdd87f",
+        "filename": "common/battery_fuel_gauge.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2021-12-03T18:30:31Z",
+      "side": 1,
+      "message": "Agree that, this 2nd method can remove the config dependency.\nBut, if adding a dependency for extra flag , say - BATTERY_TYPE_COUNT, we will need the relevant changes under other board files, forcing it to return BATTERY_TYPE_COUNT.\nNow, with this Config(CONFIG_BATTERY_TYPE_NO_AUTO_DETECT)  option introduced , we are safe to check only the relevant index parameter info just for the boards where this config is enabled. In the preceding CL:3220899, based on board id, correct index is returned for either 3S or 2S.",
+      "parentUuid": "9dfb815d_6559378f",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 38
+      },
+      "revId": "39e8520d639f8a542f2a170a302305f6b9358c48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0660232b_e4d84e81",
         "filename": "util/config_allowed.txt",
         "patchSetId": 14
