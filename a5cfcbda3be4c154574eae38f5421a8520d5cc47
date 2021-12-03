@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7b4bfb8_eb5b8771",
+        "filename": "zephyr/test/system/test_system.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-12-03T06:08:03Z",
+      "side": 1,
+      "message": "Should be `zassert_ok(rc, NULL)` not sure how we missed that below.",
+      "range": {
+        "startLine": 32,
+        "startChar": 1,
+        "endLine": 32,
+        "endChar": 14
+      },
+      "revId": "a5cfcbda3be4c154574eae38f5421a8520d5cc47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
