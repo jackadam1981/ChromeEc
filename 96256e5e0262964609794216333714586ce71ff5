@@ -39,6 +39,30 @@
       },
       "revId": "96256e5e0262964609794216333714586ce71ff5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46ea2165_beb3a4c0",
+        "filename": "zephyr/shim/include/motionsense_sensors.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-12-03T18:29:04Z",
+      "side": 1,
+      "message": "I see ENABLE_ALT_MOTION_SENSOR is used by the next CL, but all users still call DT_PHANDLE(\u003cid\u003e, alternate_for) on the 2nd parameter.\n\nSo maybe:\n\n#define ENABLE_ALT_MOTION_SENSOR(node_id) \\\n\tREPLACE_MOTION_SENSOR(node_id, \\\n\t\t\t      DT_PHANDLE(node_id, alternate_for));",
+      "parentUuid": "0ba18a65_7cc101e3",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 0
+      },
+      "revId": "96256e5e0262964609794216333714586ce71ff5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
