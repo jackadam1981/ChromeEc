@@ -144,6 +144,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5aa90a30_f07e9aeb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-12-03T19:44:26Z",
+      "side": 1,
+      "message": "That\u0027s the crux of the issue. When the primary charger IC is regulating the BFET in linear mode, this value is also the reverse mode discharge current limit. As far as I\u0027m aware, there\u0027s nothing we can do about that. Yen-Mo can correct me if I\u0027m mistaken.\n\nUntil the battery requests a current greater than that of the precharge limit, we are subject to that. Once it does, we must wait 3 seconds before disabling linear mode. This is because some batteries change their charge requests rapidly and it causes cycling of exiting and entering precharge. In essence, it acts as a debounce.\n\nI know it\u0027s unfortunate, but that\u0027s just how the part works.\n\nThe issue will also exist (and for a longer duration) if this is occuring and battery is extremely discharged.",
+      "parentUuid": "2840ae98_7db6d378",
+      "revId": "634f55da7278b365366670729829ece3e2409060",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "69798848_6462ed35",
