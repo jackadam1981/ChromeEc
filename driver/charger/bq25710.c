@@ -58,6 +58,10 @@
 #define CONFIG_CHARGER_BQ25710_PKPWR_TOVLD_DEG 0
 #endif
 
+#ifndef CONFIG_CHARGER_BQ25710_IL_AVG_CUSTOM
+#define CONFIG_CHARGER_BQ25710_IL_AVG BQ257X0_CHARGE_OPTION_3_IL_AVG__10A
+#endif
+
 /*
  * Helper macros
  */
@@ -435,7 +439,8 @@ static int bq257x0_init_charge_option_3(int chgnum)
 	if (rv)
 		return rv;
 
-	reg = SET_CO3_BY_NAME(IL_AVG, 10A, reg);
+	if (IS_ENABLED(CONFIG_CHARGER_BQ25710_IL_AVG_CUSTOM))
+		reg = SET_CO3(IL_AVG, CONFIG_CHARGER_BQ25710_IL_AVG, reg);
 
 	return raw_write16(chgnum, BQ25710_REG_CHARGE_OPTION_3, reg);
 }
