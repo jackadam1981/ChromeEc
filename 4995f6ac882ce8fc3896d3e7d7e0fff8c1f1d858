@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e92f0f57_4938edae",
+        "filename": "board/vell/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1477788
+      },
+      "writtenOn": "2021-12-03T18:23:47Z",
+      "side": 1,
+      "message": "Right, sorry. Done",
+      "parentUuid": "21205306_5b5bd134",
+      "revId": "4995f6ac882ce8fc3896d3e7d7e0fff8c1f1d858",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "16532990_7cd0513d",
@@ -41,6 +59,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f33f2a47_da5ba1ef",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 4056,
+      "author": {
+        "id": 1477788
+      },
+      "writtenOn": "2021-12-03T18:23:47Z",
+      "side": 1,
+      "message": "I wasn\u0027t sure if it will sound like \"you have to write a #define\", but it\u0027s probably better than my version. Done",
+      "parentUuid": "16532990_7cd0513d",
+      "range": {
+        "startLine": 4056,
+        "startChar": 33,
+        "endLine": 4056,
+        "endChar": 54
+      },
+      "revId": "4995f6ac882ce8fc3896d3e7d7e0fff8c1f1d858",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3cb42e1e_f66010bd",
@@ -54,6 +96,30 @@
       "writtenOn": "2021-12-03T16:47:17Z",
       "side": 1,
       "message": "Is this a placeholder? Can you describe it better?",
+      "range": {
+        "startLine": 16,
+        "startChar": 3,
+        "endLine": 17,
+        "endChar": 19
+      },
+      "revId": "4995f6ac882ce8fc3896d3e7d7e0fff8c1f1d858",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a576d230_0c0da330",
+        "filename": "zephyr/Kconfig.temperature",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1477788
+      },
+      "writtenOn": "2021-12-03T18:23:47Z",
+      "side": 1,
+      "message": "Ouch... yes, that was a placeholder. Thank you very much.",
+      "parentUuid": "3cb42e1e_f66010bd",
       "range": {
         "startLine": 16,
         "startChar": 3,
