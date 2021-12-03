@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1fe9557b_1bcb8419",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-12-03T17:06:25Z",
+      "side": 1,
+      "message": "You also need to create the named-temp-sensors node and add the thermistors to actually get temperature values.  But this can be done as a separate CL.\n\n",
+      "revId": "812e1323879681a0e9372ccb780a83dd97e0c63c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
