@@ -227,3 +227,5 @@ driver-$(CONFIG_MP2964)+=mp2964.o
 # SOC Interface
 driver-$(CONFIG_AMD_SB_RMI)+=sb_rmi.o
 driver-$(CONFIG_AMD_STT)+=amd_stt.o
+
+driver-$(CONFIG_RGB_MATRIX)+=rgb_matrix.o
