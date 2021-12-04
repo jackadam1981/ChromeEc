@@ -181,3 +181,20 @@ config PLATFORM_EC_KBLIGHT_ENABLE_PIN
 	  disable pin.  This pin must be defined as GPIO_EN_KEYBOARD_BACKLIGHT.
 
 endif # PLATFORM_EC_KEYBOARD
+
+
+menuconfig PLATFORM_EC_RGB_KEYBOARD
+	bool "RGB keyboard support"
+	select HAS_TASK_RGBKBD
+	help
+	  Enable RGB keyboard backlight control. This consists of a RGB matrix
+	  control task. Note this feature does not include key scanning.
+
+if PLATFORM_EC_RGB_KEYBOARD
+
+config PLATFORM_EC_LED_DRIVER_IS31FL3743B
+	bool "Driver for IS31FL3743B LED controller"
+	help
+	  Enable driver for IS31FL3743B LED controller.
+
+endif # PLATFORM_EC_RGB_KEYBOARD
