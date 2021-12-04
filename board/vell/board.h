@@ -171,6 +171,14 @@
 /* Keyboard features */
 #define CONFIG_KEYBOARD_REFRESH_ROW3
 
+/* For RGB keyboard control */
+#define CONFIG_RGB_KEYBOARD
+#define GPIO_RGBKBD_SDB_L	GPIO_SDB_L
+#define GPIO_RGBKBD_POWER	GPIO_L_POWER
+#define SPI_RGB0_DEVICE_ID	0
+#define SPI_RGB1_DEVICE_ID	1
+#define CONFIG_LED_DRIVER_IS31FL3743B
+
 /*
  * Older boards have a different ADC assignment.
  */
