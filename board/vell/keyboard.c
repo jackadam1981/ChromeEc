@@ -5,7 +5,11 @@
 
 #include "common.h"
 #include "ec_commands.h"
+#include "gpio.h"
+#include "hooks.h"
 #include "keyboard_scan.h"
+#include "rgb_keyboard.h"
+#include "spi.h"
 #include "timer.h"
 
 /* Keyboard scan setting */
@@ -44,9 +48,39 @@ static const struct ec_response_keybd_config keybd1 = {
 	.capabilities = KEYBD_CAP_SCRNLOCK_KEY,
 };
 
+extern struct rgbkbd_drv is31fl3743b_drv;
+
+struct rgbkbd rgbkbds[] = {
+	[0] = {
+		.cfg = &(const struct rgbkbd_cfg) {
+			.drv = &is31fl3743b_drv,
+			.col_len = 11,
+			.row_len = 6,
+			.spi = SPI_RGB0_DEVICE_ID,
+		},
+	},
+	[1] = {
+		.cfg = &(const struct rgbkbd_cfg) {
+			.drv = &is31fl3743b_drv,
+			.col_len = 11,
+			.row_len = 6,
+			.spi = SPI_RGB1_DEVICE_ID,
+		},
+	},
+};
+const uint8_t rgbkbd_count = ARRAY_SIZE(rgbkbds);
+
 __override const struct ec_response_keybd_config *
 board_vivaldi_keybd_config(void)
 {
 	return &keybd1;
-
 }
+
+void board_rgb_keyboard_init(void)
+{
+	/* Enable SPI for RGB matrix. */
+	gpio_config_module(MODULE_SPI_CONTROLLER, 1);
+	spi_enable(&spi_devices[SPI_RGB0_DEVICE_ID], 1);
+	spi_enable(&spi_devices[SPI_RGB1_DEVICE_ID], 1);
+}
+DECLARE_HOOK(HOOK_INIT, board_rgb_keyboard_init, HOOK_PRIO_INIT_SPI - 1);
