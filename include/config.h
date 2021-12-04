@@ -3087,6 +3087,8 @@
 #undef CONFIG_LED_DRIVER_LP5562  /* LP5562, on I2C interface */
 #undef CONFIG_LED_DRIVER_MP3385   /* MPS MP3385, on I2C */
 #undef CONFIG_LED_DRIVER_OZ554   /* O2Micro OZ554, on I2C */
+#undef CONFIG_LED_DRIVER_IS31FL3743B /* Lumissil IS31FL3743B on SPI */
+#undef CONFIG_LED_DRIVER_AW20198     /* Awinic AW20198 on I2C */
 
 /* Offset in flash where little firmware will live. */
 #undef CONFIG_LFW_OFFSET
@@ -3601,6 +3603,11 @@
  * This implies CONFIG_KEYBOARD_BACKLIGHT.
  */
 #undef CONFIG_PWM_KBLIGHT
+
+/*
+ * RGB Keyboard
+ */
+#undef CONFIG_RGB_KEYBOARD
 
 /* Support Real-Time Clock (RTC) */
 #undef CONFIG_RTC

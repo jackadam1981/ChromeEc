@@ -1,0 +1,235 @@
+/* Copyright 2021 The Chromium OS Authors. All rights reserved.
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+#include "atomic.h"
+#include "board.h"
+#include "common.h"
+#include "console.h"
+#include "ec_commands.h"
+#include "gpio.h"
+#include "hooks.h"
+#include "registers.h"
+#include "rgb_keyboard.h"
+#include "task.h"
+#include "timer.h"
+#include "util.h"
+
+#undef DEBUG
+
+/* Console output macros */
+#define CPUTS(outstr) cputs(CC_RGBKBD, outstr)
+#define CPRINTF(fmt, args...) cprintf(CC_RGBKBD, "RGBKBD: " fmt, ##args)
+#define CPRINTS(fmt, args...) cprints(CC_RGBKBD, "RGBKBD: " fmt, ##args)
+
+static int rgbkbd_set_color_single(struct rgb_s color, int x, int y)
+{
+	struct rgbkbd *ctx = &rgbkbds[0];
+	uint8_t gid = 0;
+	uint8_t col = 0;
+	uint8_t offset;
+
+	/* Search the grid where x belongs to. */
+	while (col + ctx->cfg->col_len <= x) {
+		gid++;
+		if (gid >= rgbkbd_count)
+			return EC_ERROR_OVERFLOW;
+		col += ctx->cfg->col_len;
+		ctx++;
+	}
+
+	offset = ctx->cfg->row_len * (x - col) + y;
+	ctx->buf[offset] = color;
+
+	CPRINTS("gid=%u offset=%u", gid, offset);
+	return ctx->cfg->drv->set_color(ctx, offset, &ctx->buf[offset], 1);
+}
+
+static uint8_t rgbkbd_get_grid_size(const struct rgbkbd *ctx)
+{
+	return ctx->cfg->col_len * ctx->cfg->row_len;
+}
+
+static void rgbkbd_sync(void)
+{
+	struct rgbkbd *ctx;
+	uint8_t len;
+	int i;
+
+	for (i = 0; i < rgbkbd_count; i++) {
+		ctx = &rgbkbds[i];
+		len = rgbkbd_get_grid_size(ctx);
+		ctx->cfg->drv->set_color(ctx, 0, ctx->buf, len);
+	}
+}
+
+static int demo = 1;
+
+static void rgbkbd_demo(int pattern)
+{
+	struct rgbkbd *ctx = &rgbkbds[0];
+	static struct rgb_s color;
+	const int step = 32;
+	uint8_t len;
+	int i, g;
+
+	for (g = rgbkbd_count - 1; g >= 0; g--) {
+		ctx = &rgbkbds[g];
+		len = rgbkbd_get_grid_size(ctx);
+		for (i = len - 1; i > 0; i--)
+			ctx->buf[i] = ctx->buf[i - 1];
+		if (g > 0) {
+			/* Copy the last dot of the g-1 grid to the 1st. */
+			len = rgbkbd_get_grid_size(&rgbkbds[g - 1]);
+			ctx->buf[0] = rgbkbds[g - 1].buf[len - 1];
+		}
+	}
+
+	/* Create a new color by shifting R by <step>. */
+	color.r += step;
+	if (color.r == 0) {
+		color.g += step;
+		if (color.g == 0)
+			color.b += step;
+	}
+
+	/* Finally, insert a new color to (0, 0). */
+	ctx->buf[0] = color;
+
+	rgbkbd_sync();
+}
+
+void rgbkbd_task(void *u)
+{
+	uint32_t event;
+	int i, rv;
+
+#ifdef GPIO_RGBKBD_POWER
+	/* Power on the RGB keyboard module. */
+	gpio_set_level(GPIO_RGBKBD_POWER, 1);
+	msleep(10);
+#endif
+
+	for (i = 0; i < rgbkbd_count; i++) {
+		struct rgbkbd *ctx = &rgbkbds[i];
+		rv = ctx->cfg->drv->init(ctx);
+		if (rv)
+			CPRINTS("Failed to init GRID%d (%d)", i, rv);
+		rv = ctx->cfg->drv->set_gcc(ctx, 0x80);
+		rv |= ctx->cfg->drv->set_scale(ctx, 0, 0x80,
+					       rgbkbd_get_grid_size(ctx));
+		if (rv)
+			CPRINTS("Failed to set GCC or scale (%d)", rv);
+	}
+
+	while (1) {
+		event = task_wait_event(100 * MSEC);
+		if (IS_ENABLED(DEBUG))
+			CPRINTS("event=0x%08x", event);
+		if (demo)
+			rgbkbd_demo(demo);
+	}
+}
+
+static int cc_rgbk(int argc, char **argv)
+{
+	struct rgbkbd *ctx;
+	char *end, *comma;
+	struct rgb_s color;
+	int gcc, x, y, val;
+	int i, j, rv = EC_SUCCESS;
+
+	if (5 < argc)
+		return EC_ERROR_PARAM_COUNT;
+
+	if (argc < 2) {
+		ccprintf("Start demo\n");
+		demo = 1;
+		return EC_SUCCESS;
+	}
+
+	comma = strstr(argv[1], ",");
+	if (comma && strlen(comma) > 1) {
+		/* Usage 2 */
+		/* Found ',' and more string after that. Split it into two. */
+		*comma = '\0';
+		x = strtoi(argv[1], &end, 0);
+		if (*end || x >= rgbkbd_hsize)
+			return EC_ERROR_PARAM1;
+		y = strtoi(comma + 1, &end, 0);
+		if (*end || y >= rgbkbd_vsize)
+			return EC_ERROR_PARAM1;
+	} else if (!strcasecmp(argv[1], "all")) {
+		/* Usage 3 */
+		x = -1;
+		y = -1;
+	} else {
+		/* Usage 1 */
+		if (argc != 2)
+			return EC_ERROR_PARAM_COUNT;
+		gcc = strtoi(argv[1], &end, 0);
+		if (*end || gcc < 0 || gcc > UINT8_MAX)
+			return EC_ERROR_PARAM1;
+		demo = 0;
+		for (i = 0; i < rgbkbd_count; i++) {
+			ctx = &rgbkbds[i];
+			ctx->cfg->drv->set_gcc(ctx, gcc);
+		}
+		return EC_SUCCESS;
+	}
+
+	if (argc != 5)
+		return EC_ERROR_PARAM_COUNT;
+
+	val = strtoi(argv[2], &end, 0);
+	if (*end || val < 0 || val > UINT8_MAX)
+		return EC_ERROR_PARAM2;
+	color.r = val;
+	val = strtoi(argv[3], &end, 0);
+	if (*end || val < 0 || val > UINT8_MAX)
+		return EC_ERROR_PARAM3;
+	color.g = val;
+	val = strtoi(argv[4], &end, 0);
+	if (*end || val < 0 || val > UINT8_MAX)
+		return EC_ERROR_PARAM4;
+	color.b = val;
+
+	demo = 0;
+	if (y < 0 && x < 0) {
+		/* Usage 3 */
+		for (i = 0; i < rgbkbd_count; i++) {
+			ctx = &rgbkbds[i];
+			for (j = 0; j < rgbkbd_get_grid_size(ctx); j++)
+				ctx->buf[j] = color;
+		}
+		rgbkbd_sync();
+	} else if (y < 0) {
+		/* Usage 2: Set all LEDs on column x. */
+		ccprintf("Set column %d to 0x%02x%02x%02x\n",
+			 x, color.r, color.g, color.b);
+		for (i = 0; i < rgbkbd_vsize; i++)
+			rv = rgbkbd_set_color_single(color, x, i);
+	} else if (x < 0) {
+		/* Usage 2: Set all LEDs on row y. */
+		ccprintf("Set row %d to 0x%02x%02x%02x\n",
+			 y, color.r, color.g, color.b);
+		for (i = 0; i < rgbkbd_hsize; i++)
+			rv = rgbkbd_set_color_single(color, i, y);
+	} else {
+		/* Usage 2 */
+		ccprintf("Set (%d,%d) to 0x%02x%02x%02x\n",
+			 x, y, color.r, color.g, color.b);
+		rv = rgbkbd_set_color_single(color, x, y);
+	}
+
+	return rv;
+}
+DECLARE_CONSOLE_COMMAND(rgbk, cc_rgbk,
+			"\n"
+			"1. rgbk <global-brightness>\n"
+			"2. rgbk <col,row> <r-bright> <g-bright> <b-bright>\n"
+			"3. rgbk all <r-bright> <g-bright> <b-bright>\n"
+			"4. rgbk\n",
+			"Set color of RGB keyboard"
+			);
