@@ -3087,6 +3087,7 @@
 #undef CONFIG_LED_DRIVER_LP5562  /* LP5562, on I2C interface */
 #undef CONFIG_LED_DRIVER_MP3385   /* MPS MP3385, on I2C */
 #undef CONFIG_LED_DRIVER_OZ554   /* O2Micro OZ554, on I2C */
+#undef CONFIG_LED_DRIVER_IS31FL3743B /* Lumissil IS31FL3743B on SPI */
 
 /* Offset in flash where little firmware will live. */
 #undef CONFIG_LFW_OFFSET
@@ -3607,6 +3608,16 @@
  * keyboard backlight.
  */
 #undef CONFIG_KBLIGHT_ENABLE_PIN
+
+/*
+ * RGB Keyboard
+ */
+#undef CONFIG_RGB_KEYBOARD
+
+/*
+ * Specify demo for RGB keyboard to run on reset. 0=Off.
+ */
+#define CONFIG_RGBKBD_DEMO 0
 
 /* Support Real-Time Clock (RTC) */
 #undef CONFIG_RTC
