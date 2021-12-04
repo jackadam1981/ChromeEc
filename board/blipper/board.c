@@ -454,6 +454,8 @@ void board_init(void)
 		gpio_set_flags(GPIO_BASE_SIXAXIS_INT_L,
 				GPIO_INPUT | GPIO_PULL_DOWN);
 
+		button_disable_gpio(BUTTON_VOLUME_UP);
+		button_disable_gpio(BUTTON_VOLUME_UP);
 		gpio_set_flags(GPIO_VOLDN_BTN_ODL,
 				GPIO_INPUT | GPIO_PULL_DOWN);
 
