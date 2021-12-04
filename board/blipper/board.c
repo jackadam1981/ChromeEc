@@ -453,12 +453,6 @@ void board_init(void)
 		 */
 		gpio_set_flags(GPIO_BASE_SIXAXIS_INT_L,
 				GPIO_INPUT | GPIO_PULL_DOWN);
-
-		gpio_set_flags(GPIO_VOLDN_BTN_ODL,
-				GPIO_INPUT | GPIO_PULL_DOWN);
-
-		gpio_set_flags(GPIO_VOLUP_BTN_ODL,
-				GPIO_INPUT | GPIO_PULL_DOWN);
 	} else {
 		if (get_cbi_ssfc_base_sensor() == SSFC_SENSOR_ICM42607) {
 			motion_sensors[BASE_ACCEL] = icm42607_base_accel;
