@@ -189,3 +189,38 @@ config PLATFORM_EC_KBLIGHT_ENABLE_PIN
 	  disable pin.  This pin must be defined as GPIO_EN_KEYBOARD_BACKLIGHT.
 
 endif # PLATFORM_EC_KEYBOARD
+
+
+menuconfig PLATFORM_EC_RGB_KEYBOARD
+	bool "RGB keyboard support"
+	select HAS_TASK_RGBKBD
+	help
+	  Enable RGB keyboard backlight control. This consists of a RGB matrix
+	  control task. Note this feature does not include key scanning.
+
+if PLATFORM_EC_RGB_KEYBOARD
+
+config PLATFORM_EC_RGB_KEYBOARD_DEBUG
+	bool "RGB Keyboard Debug"
+	default n
+	help
+	  Enable debug messages from a RGB keyboard task.
+
+config PLATFORM_EC_RGBKBD_DEMO
+	int "RGBKBD demo to run on reset"
+	default 0
+	help
+	  Sets the demo of RGB keyboard to run on reset. If this is 0 then no
+	  demo will be played.
+
+config PLATFORM_EC_LED_DRIVER_IS31FL3743B
+	bool "Driver for IS31FL3743B LED controller"
+	help
+	  Enable driver for IS31FL3743B LED controller.
+
+config PLATFORM_EC_LED_DRIVER_AW20198
+	bool "Driver for AW20198 LED controller"
+	help
+	  Enable driver for AW20198 LED controller.
+
+endif # PLATFORM_EC_RGB_KEYBOARD
