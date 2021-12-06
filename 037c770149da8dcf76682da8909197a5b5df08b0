@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13758405_87931701",
+        "filename": "common/usbc/usb_retimer_fw_update.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-12-06T21:42:17Z",
+      "side": 1,
+      "message": "What is the semantic difference between this and cur_port?",
+      "revId": "037c770149da8dcf76682da8909197a5b5df08b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19a3b4ac_016371a7",
+        "filename": "common/usbc/usb_retimer_fw_update.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-12-06T21:42:17Z",
+      "side": 1,
+      "message": "This might be out of scope, but I don\u0027t really know. I don\u0027t see that access to last_result (via this function and usb_retimer_fw_update_get_result) is explicitly synchronized. Maybe it is effectively synchronized by thread priority.\n\nIf there is a race window between writing to last_result and reading it, it seems like this CL potentially makes the window longer. How does the reader of last_result know that the value applies to the most recently executed operation?\n\nIf this is a real issue, you might be able to avoid it by moving the wait loop into usb_retime_fw_update_get_result, which is called by a host command. It could block until the value of last_result is meaningful, assuming that wouldn\u0027t be too terribly long for the AP.",
+      "range": {
+        "startLine": 111,
+        "startChar": 1,
+        "endLine": 111,
+        "endChar": 12
+      },
+      "revId": "037c770149da8dcf76682da8909197a5b5df08b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
