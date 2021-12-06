@@ -16,6 +16,24 @@
       "message": "The default values and other permissible values for these configs are macros and enums from header files that I don\u0027t know how to access in Kconfig. How do we typically translate something like this? Should I make them choice fieldds?",
       "revId": "e81aaaedaab92fea5411f0c117767c6859a573ff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "197e3902_a64d18d1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-12-06T23:57:13Z",
+      "side": 1,
+      "message": "Wrong CL. Ignore this comment.",
+      "parentUuid": "6d22db82_6c421934",
+      "revId": "e81aaaedaab92fea5411f0c117767c6859a573ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
