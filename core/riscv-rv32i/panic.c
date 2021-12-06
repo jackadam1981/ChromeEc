@@ -9,6 +9,8 @@
 #include "task.h"
 #include "util.h"
 
+#include "scp_watchdog.h"
+
 #ifdef CONFIG_DEBUG_EXCEPTIONS
 /**
  * bit[3-0] @ mcause, general exception type information.
@@ -133,6 +135,8 @@ static void print_panic_information(uint32_t *regs, uint32_t mcause,
 		panic_printf("Exception type: %s\n", exc_type[(mcause & 0xf)]);
 	}
 #endif
+
+	reenable_watchdog();
 }
 
 void report_panic(uint32_t *regs)

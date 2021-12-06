@@ -25,6 +25,13 @@ void disable_watchdog(void)
 	SCP_CORE0_WDT_IRQ |= BIT(0);
 }
 
+void reenable_watchdog(void)
+{
+	if ((SCP_CORE0_WDT_CFG & WDT_EN) == 0) {
+		enable_watchdog();
+	}
+}
+
 void enable_watchdog(void)
 {
 	const uint32_t timeout = WDT_PERIOD(CONFIG_WATCHDOG_PERIOD_MS);
