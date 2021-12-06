@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f4ace8e_c56bbea9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-12-06T05:31:31Z",
+      "side": 1,
+      "message": "While we are dealing with Redrix LEDs: we saw a few complains about Power Botton LED flashing while in sleep mode. It is described as \"annoying\" - can you please fix? bug number 208841175 \nAlso, FYI, on Brya reference we reduced the max PWM to 50% to reduce power and make it less \"annoying\".",
+      "revId": "f793572487f27cb9756a68011c2450fe23716248",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
