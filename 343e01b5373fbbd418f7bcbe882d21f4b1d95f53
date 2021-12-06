@@ -623,6 +623,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e12bd06e_aef60a62",
+        "filename": "zephyr/subsys/usbc/tc/snk.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 565,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-12-06T21:06:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8e9046a7_33a2ab41",
+      "revId": "343e01b5373fbbd418f7bcbe882d21f4b1d95f53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dd9ab1a0_6469d94a",
@@ -708,6 +726,30 @@
       "side": 1,
       "message": "At first I thought this was the right thing to do but making the board level specific code require duplication of all of this spec code seems unreasonable.\n\nIf the different ports have to do different functionality beyond normal state code that is spec defined, that code tends to require a specific location for the code to work properly. Adding a lot of function pointers would be a reasonable way to do this and not use override.  Seems like it could get ugly real fast.  It would have to be adjustable to possibly be different for the different ports in case some ports have different capabilities or need special handling.",
       "parentUuid": "8eaa9093_83c7e271",
+      "range": {
+        "startLine": 631,
+        "startChar": 0,
+        "endLine": 631,
+        "endChar": 13
+      },
+      "revId": "343e01b5373fbbd418f7bcbe882d21f4b1d95f53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a109cce_cdd85fec",
+        "filename": "zephyr/subsys/usbc/tc/snk.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 631,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-12-06T21:06:44Z",
+      "side": 1,
+      "message": "After a conversation with Diana, it was decided to leave the state machine as documented in the spec and when we need to expand this for a variation that this would be the best time to start deciding the right way to add those changes.",
+      "parentUuid": "a1787b30_896ad743",
       "range": {
         "startLine": 631,
         "startChar": 0,
