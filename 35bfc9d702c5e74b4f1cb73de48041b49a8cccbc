@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e540d027_d3889092",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 2
+      },
+      "lineNbr": 904,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-12-06T23:59:41Z",
+      "side": 1,
+      "message": "The default values and other permissible values for these configs are macros and enums from header files that I don\u0027t know how to access in Kconfig. How do we typically translate something like this? Should I make them choice fields?",
+      "revId": "35bfc9d702c5e74b4f1cb73de48041b49a8cccbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
