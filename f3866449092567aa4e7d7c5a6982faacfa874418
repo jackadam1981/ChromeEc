@@ -22,6 +22,30 @@
       },
       "revId": "f3866449092567aa4e7d7c5a6982faacfa874418",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a0b7e53_da1c4672",
+        "filename": "zephyr/projects/nissa/prj_nivviks.conf",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2021-12-06T22:59:44Z",
+      "side": 1,
+      "message": "Likely not - this was a first run at the config, and there are some gaps.\nI will have a couple of follow-up CLs.",
+      "parentUuid": "d60057bb_8880cd36",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 30
+      },
+      "revId": "f3866449092567aa4e7d7c5a6982faacfa874418",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
