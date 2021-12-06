@@ -70,6 +70,24 @@
       "parentUuid": "81563884_039191bf",
       "revId": "4c37e4ee72ff62b4f76b84a9223c48c9bbcd1cfd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4399d171_3fe1d8ee",
+        "filename": "zephyr/subsys/usbc/tc/snk.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1811,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-12-06T17:40:29Z",
+      "side": 0,
+      "message": "Leaving this out and removed MUX",
+      "parentUuid": "d8ebe395_b584b42d",
+      "revId": "4c37e4ee72ff62b4f76b84a9223c48c9bbcd1cfd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
