@@ -11,7 +11,6 @@
 #include "common.h"
 #include "compile_time_macros.h"
 #include "console.h"
-#include "driver/charger/bq25710.h"
 #include "gpio.h"
 #include "gpio_signal.h"
 #include "hooks.h"
@@ -125,17 +124,6 @@ enum battery_present battery_hw_present(void)
 	/* The GPIO is low when the battery is physically present */
 	return gpio_get_level(batt_pres) ? BP_NO : BP_YES;
 }
-
-static void board_init(void)
-{
-	/* The PPVAR_SYS must same as battery voltage(3 cells * 4.4V) */
-	if (extpower_is_present() && battery_hw_present()) {
-		bq25710_set_min_system_voltage(CHARGER_SOLO, 9200);
-	} else {
-		bq25710_set_min_system_voltage(CHARGER_SOLO, 13200);
-	}
-}
-DECLARE_HOOK(HOOK_SECOND, board_init, HOOK_PRIO_DEFAULT);
 
 __overridable void board_ps8xxx_tcpc_init(int port)
 {
