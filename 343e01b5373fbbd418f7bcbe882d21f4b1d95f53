@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0eb2a1d6_5ce92fc4",
+        "filename": "zephyr/subsys/usbc/tc/snk.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-12-06T16:59:58Z",
+      "side": 1,
+      "message": "I did the same thing with the FRS path. The code is shared in a function with only the required differences in the main functions. All of these were also allowed to be overridden so changes can be made at the base of either or the main function that does the majority of the work.",
+      "parentUuid": "d180fac4_d5f73a8d",
+      "revId": "343e01b5373fbbd418f7bcbe882d21f4b1d95f53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0ca103d2_5ae4f6d5",
@@ -58,6 +76,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4f9b55b_b52e18b3",
+        "filename": "zephyr/subsys/usbc/tc/snk.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-12-06T16:59:58Z",
+      "side": 1,
+      "message": "IS_ATTACHED_SNK will live next to IS_ATTACHED_SRC in usb_tc_sm.h. It has been redefined to \n\n/* Determine if the TypeC State Machine is in an ATTACHED_SNK state */\n#if (INCLUDE_USB_TC_DBGACC_OPTION)\n#define IS_ATTACHED_SNK(port)\t\t\t\t\t\t\\\n\t((get_state_tc(port) \u003d\u003d TC_ATTACHED_SNK) ||\t\t\t\\\n\t (get_state_tc(port) \u003d\u003d TC_DEBUG_ACCESSORY_SNK))\n#else\n#define IS_ATTACHED_SNK(port)\t\t\t\t\t\t\\\n\t(get_state_tc(port) \u003d\u003d TC_ATTACHED_SNK)\n#endif /* INCLUDE_USB_TC_DBGACC_OPTION */",
+      "parentUuid": "0ca103d2_5ae4f6d5",
+      "range": {
+        "startLine": 86,
+        "startChar": 8,
+        "endLine": 86,
+        "endChar": 23
+      },
+      "revId": "343e01b5373fbbd418f7bcbe882d21f4b1d95f53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0ae91b08_ee52de7e",
@@ -71,6 +113,24 @@
       "writtenOn": "2021-12-03T23:29:10Z",
       "side": 1,
       "message": "Remove PRL references for now?",
+      "revId": "343e01b5373fbbd418f7bcbe882d21f4b1d95f53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc3e358f_83615dd7",
+        "filename": "zephyr/subsys/usbc/tc/snk.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-12-06T16:59:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0ae91b08_ee52de7e",
       "revId": "343e01b5373fbbd418f7bcbe882d21f4b1d95f53",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -106,6 +166,24 @@
       "side": 1,
       "message": "What do you think about converting our usb_mux driver into a zephyr driver and enable it in the state machine if the usb_mux device is detected in the devicetree. But this probably should be done in a separate CL.",
       "parentUuid": "0cb9292d_efe20fd5",
+      "revId": "343e01b5373fbbd418f7bcbe882d21f4b1d95f53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "acec5cd9_049281b4",
+        "filename": "zephyr/subsys/usbc/tc/snk.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-12-06T16:59:58Z",
+      "side": 1,
+      "message": "I definitely think usb_mux should be its own driver.  I didn\u0027t know if it was best to remove the calls as a guide of where to place them or if just removing this and finding the location from the DRP driver to know where to place them...\n\nI will remove them and when the driver interface is known will add a CL to include those calls.",
+      "parentUuid": "0afb2988_3869ab4a",
       "revId": "343e01b5373fbbd418f7bcbe882d21f4b1d95f53",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -147,6 +225,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "84c416dd_f5a07e7c",
+        "filename": "zephyr/subsys/usbc/tc/snk.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-12-06T16:59:58Z",
+      "side": 1,
+      "message": "OCP removed. PPC should be a driver as well, should I remove that code until the driver is ready and add back in with a different CL?",
+      "parentUuid": "26be1161_c5885450",
+      "revId": "343e01b5373fbbd418f7bcbe882d21f4b1d95f53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "42130bab_84298bf0",
         "filename": "zephyr/subsys/usbc/tc/snk.c",
         "patchSetId": 7
@@ -180,6 +276,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5dd1a053_8bbfda6b",
+        "filename": "zephyr/subsys/usbc/tc/snk.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-12-06T16:59:58Z",
+      "side": 1,
+      "message": "BC1.2 removed",
+      "parentUuid": "b34e342b_fd37f093",
+      "revId": "343e01b5373fbbd418f7bcbe882d21f4b1d95f53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c77514ea_3a4790fd",
@@ -197,6 +311,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "004dcac2_42a17c96",
+        "filename": "zephyr/subsys/usbc/tc/snk.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-12-06T16:59:58Z",
+      "side": 1,
+      "message": "removed",
+      "parentUuid": "c77514ea_3a4790fd",
+      "revId": "343e01b5373fbbd418f7bcbe882d21f4b1d95f53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c6c7bf0b_be87d3be",
@@ -210,6 +342,30 @@
       "writtenOn": "2021-12-03T23:29:10Z",
       "side": 1,
       "message": "I\u0027m guessing we\u0027ll need a zephyr-y way to check this condition?",
+      "range": {
+        "startLine": 289,
+        "startChar": 16,
+        "endLine": 289,
+        "endChar": 34
+      },
+      "revId": "343e01b5373fbbd418f7bcbe882d21f4b1d95f53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "43771a6d_e9794373",
+        "filename": "zephyr/subsys/usbc/tc/snk.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-12-06T16:59:58Z",
+      "side": 1,
+      "message": "I agree. Sam do you happen to know the mechanism for mapping to the port?",
+      "parentUuid": "c6c7bf0b_be87d3be",
       "range": {
         "startLine": 289,
         "startChar": 16,
@@ -257,6 +413,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c2cb4f91_2474fc93",
+        "filename": "zephyr/subsys/usbc/tc/snk.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 385,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-12-06T16:59:58Z",
+      "side": 1,
+      "message": "If this can be different based on the port, then maybe this too belongs in DeviceTree. Thoughts on that?",
+      "parentUuid": "6673ccff_13ece22d",
+      "revId": "343e01b5373fbbd418f7bcbe882d21f4b1d95f53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6824a1fd_c6fb197d",
         "filename": "zephyr/subsys/usbc/tc/snk.c",
         "patchSetId": 7
@@ -290,6 +464,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "373579d2_d94eebb8",
+        "filename": "zephyr/subsys/usbc/tc/snk.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 487,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-12-06T16:59:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2145533b_8b1dfe2d",
+      "revId": "343e01b5373fbbd418f7bcbe882d21f4b1d95f53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "18dc5b07_93187ee7",
@@ -303,6 +495,24 @@
       "writtenOn": "2021-12-03T23:29:10Z",
       "side": 1,
       "message": "Not needed until we\u0027re in PD territory :)",
+      "revId": "343e01b5373fbbd418f7bcbe882d21f4b1d95f53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f534acb_588aa03f",
+        "filename": "zephyr/subsys/usbc/tc/snk.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 489,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-12-06T16:59:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "18dc5b07_93187ee7",
       "revId": "343e01b5373fbbd418f7bcbe882d21f4b1d95f53",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -361,6 +571,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8e9046a7_33a2ab41",
+        "filename": "zephyr/subsys/usbc/tc/snk.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 565,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-12-06T16:59:58Z",
+      "side": 1,
+      "message": "I removed this with the PD_EVENT_TCPC_RESET code.",
+      "parentUuid": "5250fc59_bcac3adc",
+      "revId": "343e01b5373fbbd418f7bcbe882d21f4b1d95f53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "dd9ab1a0_6469d94a",
         "filename": "zephyr/subsys/usbc/tc/snk.c",
         "patchSetId": 7
@@ -384,6 +612,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "31ad61b8_bbe5aae0",
+        "filename": "zephyr/subsys/usbc/tc/snk.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 631,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-12-06T16:59:58Z",
+      "side": 1,
+      "message": "I didn\u0027t know if we would be having a struct with call backs that could be modified or not. We tend to make things like that const.  Doing this would allow an implementer to change any of the _entry, _run and _exit functions to do what they want instead of our base mechanism.",
+      "parentUuid": "dd9ab1a0_6469d94a",
+      "range": {
+        "startLine": 631,
+        "startChar": 0,
+        "endLine": 631,
+        "endChar": 13
+      },
+      "revId": "343e01b5373fbbd418f7bcbe882d21f4b1d95f53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6d70f5ae_05d8f822",
         "filename": "zephyr/subsys/usbc/tc/snk.c",
         "patchSetId": 7
@@ -395,6 +647,30 @@
       "writtenOn": "2021-12-03T23:29:10Z",
       "side": 1,
       "message": "Do we have to give up our beloved timer framework?  Or is this just temporary?",
+      "range": {
+        "startLine": 673,
+        "startChar": 1,
+        "endLine": 673,
+        "endChar": 14
+      },
+      "revId": "343e01b5373fbbd418f7bcbe882d21f4b1d95f53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b0238edf_dd73bc13",
+        "filename": "zephyr/subsys/usbc/tc/snk.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 673,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-12-06T16:59:58Z",
+      "side": 1,
+      "message": "Zephyr had their own way of doing virtual timers... so seemed appropriate to swap over to using what is already in the zephyr system",
+      "parentUuid": "6d70f5ae_05d8f822",
       "range": {
         "startLine": 673,
         "startChar": 1,
