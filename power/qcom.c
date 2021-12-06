@@ -222,12 +222,14 @@ void chipset_ap_rst_interrupt(enum gpio_signal signal)
 {
 #ifdef CONFIG_CHIPSET_RESET_HOOK
 	int delay;
+	int ap_rst_level = gpio_get_level(GPIO_AP_RST_L);
 
+	gpio_set_level(GPIO_EC_AP_RST_L, ap_rst_level);
 	/*
 	 * Only care the raising edge and AP in S0/S3. The single raising edge
 	 * of AP power-on during S5S3 is ignored.
 	 */
-	if (gpio_get_level(GPIO_AP_RST_L) &&
+	if (ap_rst_level &&
 	    chipset_in_state(CHIPSET_STATE_ON | CHIPSET_STATE_SUSPEND)) {
 		ap_rst_transitions++;
 		if (ap_rst_transitions >= EXPECTED_AP_RST_TRANSITIONS) {
@@ -284,6 +286,7 @@ void chipset_warm_reset_interrupt(enum gpio_signal signal)
 				       GPIO_SEL_1P8V | GPIO_OUT_HIGH);
 			gpio_set_flags(GPIO_AP_RST_L, GPIO_INT_BOTH |
 				       GPIO_SEL_1P8V | GPIO_OUT_LOW);
+			gpio_set_level(GPIO_EC_AP_RST_L, 0);
 		}
 		/* Ignore the else clause, the pull-up rail drops. */
 	} else {
@@ -625,6 +628,7 @@ static void power_off(void)
 		 * switchcap off.
 		 */
 		power_signal_disable_interrupt(GPIO_AP_RST_L);
+		gpio_set_level(GPIO_EC_AP_RST_L, 0);
 	}
 
 	/* Check the switchcap status */

@@ -50,6 +50,8 @@ GPIO_INT(ACCEL_GYRO_INT_L,  PIN(A, 0), GPIO_INT_FALLING, motion_interrupt)  /* A
  */
 GPIO_INT(DA9313_GPIO0,      PIN(E, 2), GPIO_INT_FALLING, ln9310_interrupt)
 
+GPIO(EC_AP_RST_L,           PIN(3, 7), GPIO_OUT_HIGH)  /* EC pass AP_RST_L to H1 */
+
 /*
  * EC_RST_ODL used to be a wake source from PSL mode. However, we disabled
  * the PSL mode. This GPIO does nothing now. Simply set it an INPUT.
@@ -144,7 +146,6 @@ UNUSED(PIN(C, 0))
 UNUSED(PIN(A, 7))
 UNUSED(PIN(8, 3))
 UNUSED(PIN(8, 1))
-UNUSED(PIN(3, 7))
 UNUSED(PIN(7, 6))
 UNUSED(PIN(3, 4))
 UNUSED(PIN(C, 5))
