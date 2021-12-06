@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23786915_bae0b393",
+        "filename": "driver/ioexpander/ioexpander_nct38xx.c",
+        "patchSetId": 33
+      },
+      "lineNbr": 479,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-12-06T19:12:55Z",
+      "side": 1,
+      "message": "It is the change for the IO expander, not related to Brya. Separate it to another CL.",
+      "range": {
+        "startLine": 462,
+        "startChar": 0,
+        "endLine": 479,
+        "endChar": 6
+      },
+      "revId": "875793922d875ee7abf9d63092a38fe5091f4f41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2602df9_9ce0629e",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 33
+      },
+      "lineNbr": 408,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-12-06T19:12:55Z",
+      "side": 1,
+      "message": "This adds the Kconfig, not related to Brya. Make it a separate CL.",
+      "range": {
+        "startLine": 404,
+        "startChar": 0,
+        "endLine": 408,
+        "endChar": 41
+      },
+      "revId": "875793922d875ee7abf9d63092a38fe5091f4f41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6bf58fab_51a89fc5",
+        "filename": "zephyr/boards/arm/brya/brya.dts",
+        "patchSetId": 33
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-12-06T19:12:55Z",
+      "side": 1,
+      "message": "Move the sensor change to another CL. This CL only focuses on the battery and the charger.",
+      "range": {
+        "startLine": 194,
+        "startChar": 0,
+        "endLine": 214,
+        "endChar": 3
+      },
+      "revId": "875793922d875ee7abf9d63092a38fe5091f4f41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ae7493a_af64cf74",
+        "filename": "zephyr/projects/brya/brya/gpio.dts",
+        "patchSetId": 33
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-12-06T19:12:55Z",
+      "side": 1,
+      "message": "Nit: Add a space after *, like:\n  /*\n   * EC code ...",
+      "range": {
+        "startLine": 345,
+        "startChar": 2,
+        "endLine": 345,
+        "endChar": 3
+      },
+      "revId": "875793922d875ee7abf9d63092a38fe5091f4f41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63e7d03f_2907caea",
+        "filename": "zephyr/projects/brya/brya/prj.conf",
+        "patchSetId": 33
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-12-06T19:12:55Z",
+      "side": 1,
+      "message": "This CL also enables the USB PD. Better to separate them. I understand the USB PD is probably difficult to split. You may do it together but mention it in the CL description.",
+      "range": {
+        "startLine": 85,
+        "startChar": 0,
+        "endLine": 116,
+        "endChar": 41
+      },
+      "revId": "875793922d875ee7abf9d63092a38fe5091f4f41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
