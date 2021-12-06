@@ -10,6 +10,9 @@
 
 #include "baseboard.h"
 
+#define CONFIG_TASK_PROFILING
+#define CONFIG_IRQ_COUNT 200
+
 /*
  * RW only, no flash
  * +-------------------- 0x0
