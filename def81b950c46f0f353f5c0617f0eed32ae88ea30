@@ -22,6 +22,30 @@
       },
       "revId": "def81b950c46f0f353f5c0617f0eed32ae88ea30",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e01310f_e3a0415f",
+        "filename": "driver/charger/bq25710.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1477218
+      },
+      "writtenOn": "2021-12-06T10:26:14Z",
+      "side": 1,
+      "message": "I create CL:3315766 to correct it.",
+      "parentUuid": "895578d3_4d285c14",
+      "range": {
+        "startLine": 63,
+        "startChar": 46,
+        "endLine": 64,
+        "endChar": 44
+      },
+      "revId": "def81b950c46f0f353f5c0617f0eed32ae88ea30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
