@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d60057bb_8880cd36",
+        "filename": "zephyr/projects/nissa/prj_nivviks.conf",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-12-06T16:55:04Z",
+      "side": 1,
+      "message": "There are no named-temp-sensors in the dts. Is it correct to enable CONFIG_PLATFORM_EC_TEMP_SENSOR?",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 30
+      },
+      "revId": "f3866449092567aa4e7d7c5a6982faacfa874418",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
