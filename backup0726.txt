@@ -1,0 +1,126 @@
+diff --git a/baseboard/brya/battery_presence.c b/baseboard/brya/battery_presence.c
+index 94c9926820..ad7af6d187 100644
+--- a/baseboard/brya/battery_presence.c
++++ b/baseboard/brya/battery_presence.c
+@@ -11,9 +11,20 @@
+ #include "battery.h"
+ #include "battery_smart.h"
+ #include "common.h"
++#include "console.h"
++
++#define CPRINTS(format, args...) cprints(CC_CHARGER, format, ## args)
+ 
+ static enum battery_present batt_pres_prev = BP_NOT_SURE;
+ 
++static bool battery_init(void)
++{
++	int batt_status;
++
++	return battery_status(&batt_status) ? 0 :
++		!!(batt_status & STATUS_INITIALIZED);
++}
++
+ __overridable bool board_battery_is_initialized(void)
+ {
+ 	int batt_status;
+@@ -29,9 +40,11 @@ static enum battery_present battery_check_present_status(void)
+ {
+ 	enum battery_present batt_pres;
+ 
+-	if (battery_is_cut_off())
++	CPRINTS("WILL TSAI ... battery_check_present_status0");
++	if (battery_is_cut_off() || !battery_init())
+ 		return BP_NO;
+ 
++	CPRINTS("WILL TSAI ... battery_check_present_status1");
+ 	/* Get the physical hardware status */
+ 	batt_pres = battery_hw_present();
+ 
+@@ -42,6 +55,7 @@ static enum battery_present battery_check_present_status(void)
+ 	if (batt_pres == BP_NO)
+ 		return BP_NO;
+ 
++	CPRINTS("WILL TSAI ... battery_check_present_status2");
+ 	/*
+ 	 * If the battery is present now and was present last time we checked,
+ 	 * return early.
+@@ -49,6 +63,7 @@ static enum battery_present battery_check_present_status(void)
+ 	if ((batt_pres == BP_YES) && (batt_pres == batt_pres_prev))
+ 		return BP_YES;
+ 
++	CPRINTS("WILL TSAI ... battery_check_present_status3");
+ 	/*
+ 	 * Check battery initialization. If the battery is not initialized,
+ 	 * then return BP_NOT_SURE. Battery could be in ship
+@@ -59,6 +74,7 @@ static enum battery_present battery_check_present_status(void)
+ 	if (!board_battery_is_initialized())
+ 		return BP_NOT_SURE;
+ 
++	CPRINTS("WILL TSAI ... BRYA return BP_YES");
+ 	return BP_YES;
+ }
+ 
+diff --git a/board/gimble/battery.c b/board/gimble/battery.c
+index 235503a6f1..eacac637be 100644
+--- a/board/gimble/battery.c
++++ b/board/gimble/battery.c
+@@ -7,8 +7,12 @@
+ 
+ #include "battery_fuel_gauge.h"
+ #include "common.h"
++#include "console.h"
+ #include "compile_time_macros.h"
++#include "battery_smart.h"
++#include "util.h"
+ 
++#define CPRINTS(format, args...) cprints(CC_CHARGER, format, ## args)
+ /*
+  * Battery info for all Brya battery types. Note that the fields
+  * start_charging_min/max and charging_min/max are not used for the charger.
+@@ -92,3 +96,15 @@ const struct board_batt_params board_battery_info[] = {
+ BUILD_ASSERT(ARRAY_SIZE(board_battery_info) == BATTERY_TYPE_COUNT);
+ 
+ const enum battery_type DEFAULT_BATTERY_TYPE = BATTERY_SIMPLO_HIGHPOWER;
++
++__override bool board_battery_is_initialized(void)
++{
++  bool batt_initialization_state;
++  int batt_status;
++
++  CPRINTS("WILL TSAI... ininin batt_initialization_state");
++  batt_initialization_state = (battery_status(&batt_status) ? false :
++    !!(batt_status & STATUS_INITIALIZED));
++	CPRINTS("WILL TSAI... batt_initialization_state=%d", (int)batt_initialization_state);
++  return batt_initialization_state;
++}
+\ No newline at end of file
+diff --git a/common/battery_fuel_gauge.c b/common/battery_fuel_gauge.c
+index 528713d68f..483c97ba43 100644
+--- a/common/battery_fuel_gauge.c
++++ b/common/battery_fuel_gauge.c
+@@ -178,6 +178,7 @@ static enum ec_error_list battery_get_fet_status_regval(int *regval)
+ 	int rv;
+ 	uint8_t data[6];
+ 	int type = get_battery_type();
++	CPRINTS("WILL TSAI... data[6]=%u", (unsigned int)data);
+ 
+ 	/* If battery type is not known, can't check CHG/DCHG FETs */
+ 	if (type == BATTERY_TYPE_COUNT) {
+@@ -192,6 +193,7 @@ static enum ec_error_list battery_get_fet_status_regval(int *regval)
+ 				    sizeof(data));
+ 		/* Get the lowest 16bits of the OperationStatus() data */
+ 		*regval = data[2] | data[3] << 8;
++		CPRINTS("WILL TSAI... regval=%d", *regval);
+ 	} else
+ 		rv = sb_read(board_battery_info[type].fuel_gauge.fet.reg_addr,
+ 			     regval);
+@@ -257,6 +259,9 @@ enum battery_disconnect_state battery_get_disconnect_state(void)
+ 			reg,
+ 			board_battery_info[type].fuel_gauge.fet.reg_mask,
+ 			board_battery_info[type].fuel_gauge.fet.disconnect_val);
++		CPRINTS("WILL TSAI CHECK1");
++		CPRINTS("WILL TSAI... type=%d, reg=%d", type, reg);
++		CPRINTS("WILL TSAI... aaa=%d", (reg & board_battery_info[type].fuel_gauge.fet.reg_mask));
+ 		return BATTERY_DISCONNECTED;
+ 	}
+ 

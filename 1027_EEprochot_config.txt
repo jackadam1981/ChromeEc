@@ -1,0 +1,134 @@
+diff --git a/baseboard/brya/baseboard.h b/baseboard/brya/baseboard.h
+index dbee995546..736736a28b 100644
+--- a/baseboard/brya/baseboard.h
++++ b/baseboard/brya/baseboard.h
+@@ -148,10 +148,10 @@
+ #define PROCHOT_ADAPTER_WATT_RATIO 97
+ #define PROCHOT_ASSERTION_BATTERY_RATIO 95
+ #define PROCHOT_DEASSERTION_BATTERY_RATIO 85
+-#define PROCHOT_ASSERTION_PD_RATIO 105
++#define PROCHOT_ASSERTION_PD_RATIO 104
+ #define PROCHOT_DEASSERTION_PD_BATTERY_RATIO 95
+-#define PROCHOT_ASSERTION_ADAPTER_RATIO 105
+-#define PROCHOT_DEASSERTION_ADAPTER_RATIO 90
++#define PROCHOT_ASSERTION_ADAPTER_RATIO 102
++#define PROCHOT_DEASSERTION_ADAPTER_RATIO 95
+ #define PROCHOT_DEASSERTION_ADAPTER_BATT_RATIO 90
+ 
+ /* Enable I2C Support */
+diff --git a/baseboard/brya/prochot.c b/baseboard/brya/prochot.c
+index 2995bdaddf..fb2dc1d5ff 100644
+--- a/baseboard/brya/prochot.c
++++ b/baseboard/brya/prochot.c
+@@ -45,6 +45,7 @@ static int cal_sys_watt(void)
+ 	IDPM = V_iadpt / CONFIG_CHARGER_SENSE_RESISTOR_AC;
+ 
+ 	adapter_voltage_v = charge_manager_get_charger_voltage() / 1000;
++	ccprints("will tsai adapter_voltage_v = %d", adapter_voltage_v);
+ 
+ 	W_adpt = IDPM * adapter_voltage_v / PROCHOT_ADAPTER_WATT_RATIO * 100;
+ 
+@@ -145,8 +146,10 @@ static void assert_prochot(void)
+ 	/* If any battery flag is set and no AC, skip this cycle and hope
+ 	 * the next cycle succeeds
+ 	 */
+-	if (get_batt_parameter() && !extpower_is_present())
++	if (get_batt_parameter() && !extpower_is_present()) {
++		ccprints("will tsai in get_batt_parameter");
+ 		return;
++	}
+ 
+ 	/* When battery is discharging, the battery current will be negative */
+ 	if (batt_params.battery_continuous_discharge_mw < 0) {
+@@ -157,6 +160,7 @@ static void assert_prochot(void)
+ 		total_W = adpt_mw;
+ 	}
+ 	total_W /= 1000;
++	ccprints("will tsai total4 = %d", total_W);
+ 
+ 	/* Get adapter wattage */
+ 	adapter_wattage = get_chg_watt();
+@@ -174,12 +178,16 @@ static void assert_prochot(void)
+ 		if (!battery_hw_present()) {
+ 			gpio_set_level(GPIO_EC_PROCHOT_ODL, 1);
+ 		} else {
++			ccprints("will tsai no AC");
+ 			batt_params.battery_continuous_discharge_mw =
+ 			ABS(batt_params.battery_continuous_discharge_mw);
+ 			if ((batt_params.battery_continuous_discharge_mw /
+ 			 1000) > BATT_MAX_CONTINUE_DISCHARGE_WATT *
+-			 PROCHOT_ASSERTION_BATTERY_RATIO / 100)
++			 PROCHOT_ASSERTION_BATTERY_RATIO / 100) {
++				ccprints("WILL TSAI value1 = %d", BATT_MAX_CONTINUE_DISCHARGE_WATT *
++			 PROCHOT_ASSERTION_BATTERY_RATIO / 100);
+ 				gpio_set_level(GPIO_EC_PROCHOT_ODL, 0);
++			 }
+ 			else if ((batt_params.battery_continuous_discharge_mw
+ 			 / 1000) < BATT_MAX_CONTINUE_DISCHARGE_WATT *
+ 			 PROCHOT_DEASSERTION_BATTERY_RATIO / 100)
+@@ -188,21 +196,30 @@ static void assert_prochot(void)
+ 		return;
+ 	}
+ 
++	//ccprints("will tsai adapter_wattage=%d", adapter_wattage);
+ 	if (adapter_wattage >= ADT_RATING_W) {
+ 		/* if adapter >= 60W */
+ 		/* if no battery or battery < 10% */
+ 		if (!battery_hw_present() ||
+ 		batt_params.state_of_charge <= 10) {
+ 			if (total_W > ADT_RATING_W *
+-			PROCHOT_ASSERTION_PD_RATIO / 100)
++			PROCHOT_ASSERTION_PD_RATIO / 100) {
++				ccprints("will tsai value2 = %d", ADT_RATING_W *
++			PROCHOT_ASSERTION_PD_RATIO / 100);
+ 				gpio_set_level(GPIO_EC_PROCHOT_ODL, 0);
+-			else if (total_W <= ADT_RATING_W)
++			}
++			else if (total_W < 57) {
++				ccprints("will tsai deassert2");
+ 				gpio_set_level(GPIO_EC_PROCHOT_ODL, 1);
++			}
+ 		} else {
+ 			/* AC + battery */
+ 			if (total_W > (ADT_RATING_W +
+-			BATT_MAX_CONTINUE_DISCHARGE_WATT))
++			BATT_MAX_CONTINUE_DISCHARGE_WATT)) {
++				ccprints("will tsai value3 = %d", (ADT_RATING_W +
++			BATT_MAX_CONTINUE_DISCHARGE_WATT));
+ 				gpio_set_level(GPIO_EC_PROCHOT_ODL, 0);
++			}
+ 			else if (total_W < (ADT_RATING_W +
+ 			BATT_MAX_CONTINUE_DISCHARGE_WATT) *
+ 			PROCHOT_DEASSERTION_PD_BATTERY_RATIO / 100)
+@@ -211,19 +228,27 @@ static void assert_prochot(void)
+ 	} else {
+ 		/* if adapter < 60W */
+ 		/* if no battery or battery < 10% */
++		
+ 		if (!battery_hw_present() ||
+ 		batt_params.state_of_charge <= 10) {
+ 			if (total_W > (adapter_wattage *
+-			PROCHOT_ASSERTION_ADAPTER_RATIO / 100))
++			PROCHOT_ASSERTION_ADAPTER_RATIO / 100)) {
++				
++				ccprints("will tsai value4 = %d", (adapter_wattage *
++				PROCHOT_ASSERTION_ADAPTER_RATIO / 100));
+ 				gpio_set_level(GPIO_EC_PROCHOT_ODL, 0);
+-			else if (total_W <= (adapter_wattage *
+-			PROCHOT_DEASSERTION_ADAPTER_RATIO / 100))
++			}
++			else if (total_W <= 40)
+ 				gpio_set_level(GPIO_EC_PROCHOT_ODL, 1);
+ 		} else {
+ 			/* AC + battery */
+ 			if (total_W > (adapter_wattage +
+-				BATT_MAX_CONTINUE_DISCHARGE_WATT))
++				BATT_MAX_CONTINUE_DISCHARGE_WATT)) {
++				ccprints("will tsai total_W = %d",total_W);
++				ccprints("will tsai value5 = %d", (adapter_wattage +
++				BATT_MAX_CONTINUE_DISCHARGE_WATT));
+ 				gpio_set_level(GPIO_EC_PROCHOT_ODL, 0);
++				}
+ 			else if (total_W < (adapter_wattage +
+ 				(BATT_MAX_CONTINUE_DISCHARGE_WATT *
+ 				PROCHOT_DEASSERTION_ADAPTER_BATT_RATIO / 100)))
