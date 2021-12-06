@@ -335,6 +335,18 @@ static void test_ppc_syv682x_dev_is_connected(void)
 			"Could not connect device as source");
 }
 
+static void test_ppc_syv682x_vbus_sink_disable(void)
+{
+	/*
+	 * If VBUS source is already enabled, disabling VBUS sink should
+	 * trivially succeed.
+	 */
+	zassert_ok(ppc_vbus_source_enable(syv682x_port, true),
+			"VBUS enable failed");
+	zassert_ok(ppc_vbus_sink_enable(syv682x_port, false),
+			"Sink disable failed");
+}
+
 static void test_ppc_syv682x(void)
 {
 	zassert_ok(ppc_init(syv682x_port), "PPC init failed");
@@ -345,6 +357,7 @@ static void test_ppc_syv682x(void)
 	test_ppc_syv682x_source_current_limit();
 	test_ppc_syv682x_write_busy();
 	test_ppc_syv682x_dev_is_connected();
+	test_ppc_syv682x_vbus_sink_disable();
 }
 
 void test_suite_ppc(void)
