@@ -50,6 +50,24 @@
       "message": "I assigned the linked bug to Nuvoton to get their review on this change.",
       "revId": "d5b4358907f878af14725115ee2d6631d694b876",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a49b4a55_2cf0e93e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1394446
+      },
+      "writtenOn": "2021-12-06T06:25:13Z",
+      "side": 1,
+      "message": "The original code clears the bbram reset flags:\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/chip/npcx/system.c;l\u003d386\nIf config CONFIG_BOARD_RESET_AFTER_POWER_ON, it will set EC_RESET_FLAG_INITIAL_PWR.\nIt does not intend to write the reset flags back to BBRAM at check_reset_cause().",
+      "parentUuid": "13a06b84_dd2b8559",
+      "revId": "d5b4358907f878af14725115ee2d6631d694b876",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
