@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "895578d3_4d285c14",
+        "filename": "driver/charger/bq25710.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1477218
+      },
+      "writtenOn": "2021-12-06T05:49:56Z",
+      "side": 1,
+      "message": "Hi Caveh,\n\nFrom BQ25720\u0027s datasheet,its steps size is 100mv, not 256mv.\n256mv is BQ25710\u0027s definition.\n\nDo you need us to correct it?",
+      "range": {
+        "startLine": 63,
+        "startChar": 46,
+        "endLine": 64,
+        "endChar": 44
+      },
+      "revId": "def81b950c46f0f353f5c0617f0eed32ae88ea30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
