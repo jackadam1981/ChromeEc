@@ -68,6 +68,23 @@
       "parentUuid": "13a06b84_dd2b8559",
       "revId": "d5b4358907f878af14725115ee2d6631d694b876",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0437bce1_e40c266d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1394446
+      },
+      "writtenOn": "2021-12-06T09:53:15Z",
+      "side": 1,
+      "message": "Hi Sam,\nThe Cros FW doesn\u0027t save the flag again at check_reset_cause(). So if this CL can fix the issue, the Cros FW also will encounter this issue, am I right? Could I know the timing that EC doesn\u0027t have the flag?",
+      "revId": "d5b4358907f878af14725115ee2d6631d694b876",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
