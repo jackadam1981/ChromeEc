@@ -21,8 +21,20 @@
 #define CPRINTS(format, args...) cprints(CC_USBPD, format, ## args)
 
 /* Used to fake VBUS presence since no GPIO is available to read VBUS */
-static int vbus_present;
+STATIC_IF(SECTION_IS_RO)
+	int vbus_present;
 
+/* Define here for GPIO linking in RW, but only run contents in RO */
+void button_event(enum gpio_signal signal)
+{
+#ifdef SECTION_IS_RO
+	vbus_present = !vbus_present;
+	CPRINTS("VBUS %d", vbus_present);
+#endif
+}
+
+/* All TCPC drivers and related PD functions defined only in RO */
+#ifdef SECTION_IS_RO
 
 #if defined(CONFIG_USB_PD_TCPM_MUX) && defined(CONFIG_USB_PD_TCPM_ANX7447)
 const struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
@@ -101,12 +113,6 @@ __override void typec_set_input_current_limit(int port, uint32_t max_ma,
 	CPRINTS("TYPEC current limit port %d max %d mA %d mV",
 		port, max_ma, supply_voltage);
 	gpio_set_level(GPIO_LED_R, !!max_ma);
-}
-
-void button_event(enum gpio_signal signal)
-{
-	vbus_present = !vbus_present;
-	CPRINTS("VBUS %d", vbus_present);
 }
 
 static int command_vbus_toggle(int argc, char **argv)
@@ -287,3 +293,5 @@ __override void svdm_exit_dp_mode(int port)
 #endif
 }
 #endif /* CONFIG_USB_PD_ALT_MODE_DFP */
+
+#endif /* SECTION_IS_RO */

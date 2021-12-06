@@ -15,6 +15,62 @@
 #undef CONFIG_UART_CONSOLE
 #define CONFIG_UART_CONSOLE 2
 
+/*
+ * Flash layout: we redefine the sections offsets and sizes as we will use
+ * RO/RW regions of different sizes.
+ *
+ * RO will contain all the useful code (PD task, TCPC drivers), while RW will be
+ * a minimal image with only console enabled.
+ */
+#undef _IMAGE_SIZE
+#undef CONFIG_ROLLBACK_OFF
+#undef CONFIG_ROLLBACK_SIZE
+#undef CONFIG_FLASH_PSTATE
+#undef CONFIG_FW_PSTATE_SIZE
+#undef CONFIG_FW_PSTATE_OFF
+#undef CONFIG_SHAREDLIB_SIZE
+#undef CONFIG_RO_MEM_OFF
+#undef CONFIG_RO_STORAGE_OFF
+#undef CONFIG_RO_SIZE
+#undef CONFIG_RW_MEM_OFF
+#undef CONFIG_RW_STORAGE_OFF
+#undef CONFIG_RW_SIZE
+#undef CONFIG_EC_PROTECTED_STORAGE_OFF
+#undef CONFIG_EC_PROTECTED_STORAGE_SIZE
+#undef CONFIG_EC_WRITABLE_STORAGE_OFF
+#undef CONFIG_EC_WRITABLE_STORAGE_SIZE
+#undef CONFIG_WP_STORAGE_OFF
+#undef CONFIG_WP_STORAGE_SIZE
+
+#define CONFIG_FLASH_PSTATE
+/* Do not use a dedicated PSTATE bank */
+#undef CONFIG_FLASH_PSTATE_BANK
+
+#define CONFIG_SHAREDLIB_SIZE	0
+#define CONFIG_RO_MEM_OFF	0
+#define CONFIG_RO_STORAGE_OFF	0
+#define CONFIG_RO_SIZE		(100*1024)
+
+#define CONFIG_RW_MEM_OFF	(CONFIG_RO_SIZE + CONFIG_RO_MEM_OFF)
+#define CONFIG_RW_STORAGE_OFF	0
+#define CONFIG_RW_SIZE		(CONFIG_FLASH_SIZE_BYTES - \
+				 (CONFIG_RW_MEM_OFF - CONFIG_RO_MEM_OFF))
+
+#define CONFIG_EC_PROTECTED_STORAGE_OFF		CONFIG_RO_MEM_OFF
+#define CONFIG_EC_PROTECTED_STORAGE_SIZE	CONFIG_RO_SIZE
+#define CONFIG_EC_WRITABLE_STORAGE_OFF		CONFIG_RW_MEM_OFF
+#define CONFIG_EC_WRITABLE_STORAGE_SIZE		CONFIG_RW_SIZE
+
+#define CONFIG_WP_STORAGE_OFF		CONFIG_EC_PROTECTED_STORAGE_OFF
+#define CONFIG_WP_STORAGE_SIZE		CONFIG_EC_PROTECTED_STORAGE_SIZE
+
+/* Common RO/RW defines */
+#undef CONFIG_WATCHDOG_HELP
+#undef CONFIG_LID_SWITCH
+
+/* All TCPC and PD features only exist for RO */
+#ifdef SECTION_IS_RO
+
 /* Optional features */
 #define CONFIG_HW_CRC
 #define CONFIG_I2C
@@ -73,8 +129,7 @@
 #define USB_EP_CONSOLE 1
 #define USB_EP_COUNT   2
 
-#undef CONFIG_WATCHDOG_HELP
-#undef CONFIG_LID_SWITCH
+#endif /* SECTION_IS_RO */
 
 /*
  * Allow dangerous commands all the time, since we don't have a write protect
