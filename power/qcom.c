@@ -658,8 +658,8 @@ static int power_on(void)
 #endif /* defined(CONFIG_POWER_PP5000_CONTROL) */
 
 	ret = set_system_power(1);
-	if (ret != EC_SUCCESS)
-		return ret;
+	/*if (ret != EC_SUCCESS)
+		return ret;*/
 
 	/* Enable signal interrupts */
 	power_signal_enable_interrupt(GPIO_AP_RST_L);
