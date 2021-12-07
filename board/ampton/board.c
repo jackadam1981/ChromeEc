@@ -309,6 +309,23 @@ static int board_with_sensor_bma253(void)
 	return sku_id == 3 || sku_id == 4;
 }
 
+<<<<<<< HEAD   (caf383 driver: add ICM-42607 driver support)
+=======
+static int board_with_sensor_icm42607(void)
+{
+	/* SKU ID 3 and 4 of Ampton with BMA253 */
+	return sku_id == 57;
+}
+
+void motion_interrupt(enum gpio_signal signal)
+{
+	if (board_with_sensor_icm42607())
+		icm42607_interrupt(signal);
+	else
+		bmi160_interrupt(signal);
+}
+
+>>>>>>> CHANGE (ff4dd7 AmptonE: Add motion sensor interrupt process)
 static void board_update_sensor_config_from_sku(void)
 {
 	if (board_is_convertible()) {
