@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5ca11cd3_68800ade",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2021-12-07T22:21:56Z",
+      "side": 1,
+      "message": "These changes are exposing shim interface which are implemented on https://github.com/zephyrproject-rtos/zephyr/pull/40904.",
+      "parentUuid": "852d0009_1a2c8d98",
+      "revId": "34473041a1e85c78bf6886ac5e68c78da8dadb95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1c994e26_98848ffe",
         "filename": "include/adc.h",
         "patchSetId": 2
@@ -31,6 +49,24 @@
       "writtenOn": "2021-12-07T19:21:03Z",
       "side": 1,
       "message": "No need to #ifdef stuff without linkage like function declarations.",
+      "revId": "34473041a1e85c78bf6886ac5e68c78da8dadb95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7deca79d_24400ff4",
+        "filename": "include/adc.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2021-12-07T22:21:56Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "1c994e26_98848ffe",
       "revId": "34473041a1e85c78bf6886ac5e68c78da8dadb95",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -48,6 +84,30 @@
       "writtenOn": "2021-12-07T19:21:03Z",
       "side": 1,
       "message": "Nit: Consistently capitalize ADC.",
+      "range": {
+        "startLine": 78,
+        "startChar": 14,
+        "endLine": 78,
+        "endChar": 17
+      },
+      "revId": "34473041a1e85c78bf6886ac5e68c78da8dadb95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9252d2c_09b239e7",
+        "filename": "include/adc.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2021-12-07T22:21:56Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "969c01b4_ade09716",
       "range": {
         "startLine": 78,
         "startChar": 14,
@@ -81,6 +141,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a945c96_26cf2499",
+        "filename": "include/adc.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2021-12-07T22:21:56Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "81c45203_e8c6ad03",
+      "range": {
+        "startLine": 78,
+        "startChar": 3,
+        "endLine": 79,
+        "endChar": 37
+      },
+      "revId": "34473041a1e85c78bf6886ac5e68c78da8dadb95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c9c32ed7_8ffdf7fb",
@@ -98,6 +182,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0bac5cce_c276d96d",
+        "filename": "include/adc.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2021-12-07T22:21:56Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c9c32ed7_8ffdf7fb",
+      "revId": "34473041a1e85c78bf6886ac5e68c78da8dadb95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a46ea537_3570ac3a",
@@ -111,6 +213,24 @@
       "writtenOn": "2021-12-07T19:21:03Z",
       "side": 1,
       "message": "Typically, we would have one function to enable/disable that looked something like\n int adc_enable_threshold_interrupt(const int threshold_id, bool enable)",
+      "revId": "34473041a1e85c78bf6886ac5e68c78da8dadb95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3afb23e4_83ec85cf",
+        "filename": "include/adc.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2021-12-07T22:21:56Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a46ea537_3570ac3a",
       "revId": "34473041a1e85c78bf6886ac5e68c78da8dadb95",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -134,6 +254,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c3de7a38_e3d14d5b",
+        "filename": "zephyr/shim/src/adc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2021-12-07T22:21:56Z",
+      "side": 1,
+      "message": "This is declared as part of PR: https://github.com/zephyrproject-rtos/zephyr/pull/40904\nI will come up with another way to have config for specific chip.",
+      "parentUuid": "2d650bf3_b1d03e3c",
+      "revId": "34473041a1e85c78bf6886ac5e68c78da8dadb95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4074b01a_39656c79",
         "filename": "zephyr/shim/src/adc.c",
         "patchSetId": 2
@@ -145,6 +283,24 @@
       "writtenOn": "2021-12-07T19:21:03Z",
       "side": 1,
       "message": "Are these functions defined in another CL?",
+      "revId": "34473041a1e85c78bf6886ac5e68c78da8dadb95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "def4c1b7_778e8338",
+        "filename": "zephyr/shim/src/adc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2021-12-07T22:21:56Z",
+      "side": 1,
+      "message": "Please see: https://github.com/zephyrproject-rtos/zephyr/pull/40904",
+      "parentUuid": "4074b01a_39656c79",
       "revId": "34473041a1e85c78bf6886ac5e68c78da8dadb95",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
