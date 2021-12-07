@@ -7,8 +7,10 @@
 #define __CROS_EC_POWER_MT8186_H_
 
 enum power_signal {
-	PMIC_PWR_GOOD,
-	AP_IN_S3_L,
+	AP_IN_RST,
+	AP_IN_S3,
+	AP_WDT_ASSERTED,
+	AP_WARM_RST_REQ,
 	POWER_SIGNAL_COUNT,
 };
 
