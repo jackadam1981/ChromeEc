@@ -363,7 +363,20 @@ void rt1718s_vendor_defined_alert(int port)
 		if (rv)
 			return;
 
-		if ((int1 & RT1718S_RT_INT1_INT_RX_FRS)) {
+		if (int1 & RT1718S_RT_INT1_INT_VBUS_FRS_LOW) {
+			rv = rt1718s_update_bits8(port, RT1718S_FRS_CTRL2,
+					     RT1718S_FRS_CTRL2_VBUS_FRS_EN,
+					     0);
+			if (rv)
+				return;
+		}
+
+		if (int1 & RT1718S_RT_INT1_INT_RX_FRS) {
+			rv = rt1718s_update_bits8(port, RT1718S_FRS_CTRL2,
+					     RT1718S_FRS_CTRL2_RX_FRS_EN,
+					     0);
+			if (rv)
+				return;
 			pd_got_frs_signal(port);
 
 			tcpc_write16(port, TCPC_REG_ALERT,

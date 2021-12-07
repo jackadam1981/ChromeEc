@@ -176,7 +176,8 @@ static int rt1718s_init(int port)
 	if (IS_ENABLED(CONFIG_USB_PD_FRS_PPC))
 		/* Set Rx frs unmasked */
 		RETURN_ERROR(update_bits(port, RT1718S_RT_MASK1,
-					RT1718S_RT_MASK1_M_RX_FRS,
+					RT1718S_RT_MASK1_M_RX_FRS |
+					RT1718S_RT_MASK1_M_VBUS_FRS_LOW,
 					0xFF));
 
 	return EC_SUCCESS;
@@ -192,22 +193,17 @@ static int rt1718s_set_polarity(int port, int polarity)
 #ifdef CONFIG_USB_PD_FRS_PPC
 static int rt1718s_set_frs_enable(int port, int enable)
 {
-	/*
-	 * Use write instead of update to save 2 i2c read.
-	 * Assume other bits are at their reset value.
-	 */
-	int frs_ctrl2 = 0x10, vbus_ctrl_en = 0x3F;
-
 	if (enable) {
-		frs_ctrl2 |= RT1718S_FRS_CTRL2_RX_FRS_EN;
-		frs_ctrl2 |= RT1718S_FRS_CTRL2_VBUS_FRS_EN;
-
-		vbus_ctrl_en |= RT1718S_VBUS_CTRL_EN_GPIO2_VBUS_PATH_EN;
-		vbus_ctrl_en |= RT1718S_VBUS_CTRL_EN_GPIO1_VBUS_PATH_EN;
+		RETURN_ERROR(update_bits(port, RT1718S_FRS_CTRL2,
+					 RT1718S_FRS_CTRL2_RX_FRS_EN |
+					 RT1718S_FRS_CTRL2_VBUS_FRS_EN,
+					 0xFF));
 	}
 
-	RETURN_ERROR(write_reg(port, RT1718S_FRS_CTRL2, frs_ctrl2));
-	RETURN_ERROR(write_reg(port, RT1718S_VBUS_CTRL_EN, vbus_ctrl_en));
+	RETURN_ERROR(update_bits(port, RT1718S_VBUS_CTRL_EN,
+				 RT1718S_VBUS_CTRL_EN_GPIO2_VBUS_PATH_EN |
+				 RT1718S_VBUS_CTRL_EN_GPIO1_VBUS_PATH_EN,
+				 enable ? 0xFF : 0));
 	return EC_SUCCESS;
 }
 #endif
