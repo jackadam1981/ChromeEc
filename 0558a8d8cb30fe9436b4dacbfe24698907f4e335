@@ -49,6 +49,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8c854820_55735591",
+        "filename": "baseboard/nissa/baseboard.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-12-07T23:23:03Z",
+      "side": 1,
+      "message": "I see the upstream PR does extend the common ADC API.  But my point stands regarding configuring these items from the device tree.",
+      "parentUuid": "8283e719_190891aa",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 0
+      },
+      "revId": "0558a8d8cb30fe9436b4dacbfe24698907f4e335",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2314c14a_a66e2ad6",
         "filename": "baseboard/nissa/baseboard.c",
         "patchSetId": 1
