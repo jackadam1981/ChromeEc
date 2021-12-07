@@ -21,6 +21,7 @@
  *  - Pressing and releaseing pwron within that 8s is ignored
  */
 
+#include "assert.h"
 #include "battery.h"
 #include "chipset.h"
 #include "common.h"
@@ -44,8 +45,9 @@
 #define CPRINTS(format, args...) cprints(CC_CHIPSET, format, ##args)
 
 /* Input state flags */
-#define IN_SUSPEND_ASSERTED POWER_SIGNAL_MASK(AP_IN_S3_L)
-#define IN_PGOOD_PMIC POWER_SIGNAL_MASK(PMIC_PWR_GOOD)
+#define IN_SUSPEND_ASSERTED POWER_SIGNAL_MASK(AP_IN_S3)
+/* TODO(): fix AP_IN_RST naming */
+#define IN_PGOOD_PMIC POWER_SIGNAL_MASK(AP_IN_RST)
 
 /* Rails required for S3 and S0 */
 #define IN_PGOOD_S0 (IN_PGOOD_PMIC)
@@ -72,8 +74,8 @@
 #ifndef CONFIG_ZEPHYR
 /* power signal list.  Must match order of enum power_signal. */
 const struct power_signal_info power_signal_list[] = {
-	{GPIO_AP_EC_SYSRST_ODL, POWER_SIGNAL_ACTIVE_HIGH, "PMIC_PWR_GOOD"},
-	{GPIO_AP_IN_SLEEP_L, POWER_SIGNAL_ACTIVE_LOW, "AP_IN_S3_L"},
+	{GPIO_AP_EC_SYSRST_ODL, POWER_SIGNAL_ACTIVE_HIGH, "AP_IN_RST"},
+	{GPIO_AP_IN_SLEEP_L, POWER_SIGNAL_ACTIVE_LOW, "AP_IN_S3"},
 };
 BUILD_ASSERT(ARRAY_SIZE(power_signal_list) == POWER_SIGNAL_COUNT);
 #endif /* CONFIG_ZEPHYR */
@@ -261,7 +263,9 @@ enum power_state power_handle_state(enum power_state state)
 		return POWER_S5;
 
 	case POWER_S3:
-		if (!power_has_signals(IN_PGOOD_S3) || forcing_shutdown)
+		if (power_wait_mask_signals_timeout(IN_PGOOD_S3, IN_PGOOD_S0,
+						    20 * MSEC) ||
+		    forcing_shutdown)
 			return POWER_S3S5;
 		else if (!(power_get_signals() & IN_SUSPEND_ASSERTED))
 			return POWER_S3S0;
@@ -297,24 +301,11 @@ enum power_state power_handle_state(enum power_state state)
 			GPIO_SET_LEVEL(GPIO_EC_PMIC_EN_ODL, 1);
 		}
 
-		/*
-		 * Wait for PMIC to bring up rails. Retry if it fails
-		 * (it may take 2 attempts on restart after we use
-		 * force reset).
-		 */
-		if (power_wait_signals_timeout(IN_PGOOD_PMIC,
-					       PMIC_EN_TIMEOUT)) {
-			if (s5s3_retry) {
-				s5s3_retry = 0;
-				return POWER_S5S3;
-			}
-			/* Give up, go back to G3. */
-			return POWER_S5G3;
-		}
+		GPIO_SET_LEVEL(GPIO_SYS_RST_ODL, 1);
 
+		msleep(500);
 		/* Call hooks now that rails are up */
 		hook_notify(HOOK_CHIPSET_STARTUP);
-
 		/*
 		 * Clearing the sleep failure detection tracking on the path
 		 * to S0 to handle any reset conditions.
@@ -378,6 +369,7 @@ enum power_state power_handle_state(enum power_state state)
 		if (!(power_get_signals() & IN_PGOOD_PMIC))
 			ap_shutdown = 1;
 
+		GPIO_SET_LEVEL(GPIO_SYS_RST_ODL, 0);
 		/* Call hooks before we remove power rails */
 		hook_notify(HOOK_CHIPSET_SHUTDOWN);
 		hook_notify(HOOK_CHIPSET_SHUTDOWN_COMPLETE);
@@ -395,6 +387,9 @@ enum power_state power_handle_state(enum power_state state)
 			return POWER_S5;
 
 		return POWER_G3;
+	default:
+		CPRINTS("Unexpected power state %d", state);
+		break;
 	}
 
 	return state;
