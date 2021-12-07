@@ -10,6 +10,7 @@
 #include "extpower.h"
 #include "driver/accel_bma2x2.h"
 #include "driver/accelgyro_bmi_common.h"
+#include "driver/temp_sensor/thermistor.h"
 #include "gpio.h"
 #include "hooks.h"
 #include "keyboard_scan.h"
@@ -23,6 +24,7 @@
 #include "switch.h"
 #include "tablet_mode.h"
 #include "task.h"
+#include "temp_sensor.h"
 #include "usbc_config.h"
 #include "usbc_ppc.h"
 
@@ -124,6 +126,13 @@ const struct adc_t adc_channels[] = {
 		NPCX_ADC_CH3,
 		ADC_MAX_VOLT * 124000 * 2 / (ADC_READ_MAX + 1),
 		2,
+		0
+	},
+	[ADC_CHG_TEMP] = {
+		"CHG_TEMP",
+		NPCX_ADC_CH6,
+		ADC_MAX_VOLT,
+		ADC_READ_MAX + 1,
 		0
 	},
 };
@@ -264,3 +273,37 @@ struct motion_sensor_t motion_sensors[] = {
 	},
 };
 const unsigned int motion_sensor_count = ARRAY_SIZE(motion_sensors);
+
+const struct temp_sensor_t temp_sensors[] = {
+	[TEMP_SENSOR_CHG] = {
+		.name = "Charger",
+		.type = TEMP_SENSOR_TYPE_BOARD,
+		.read = get_temp_3v3_30k9_47k_4050b,
+		.idx = ADC_CHG_TEMP,
+	},
+};
+BUILD_ASSERT(ARRAY_SIZE(temp_sensors) == TEMP_SENSOR_COUNT);
+
+const struct temp_chg_struct temp_chg_table[] = {
+	[LEVEL_0] = {
+		.lo_thre = 0,
+		.hi_thre = 50,
+		.chg_curr = DEFAULT_CHG_CURRENT,
+	},
+	[LEVEL_1] = {
+		.lo_thre = 48,
+		.hi_thre = 53,
+		.chg_curr = 1500,
+	},
+	[LEVEL_2] = {
+		.lo_thre = 51,
+		.hi_thre = 56,
+		.chg_curr = 1000,
+	},
+	[LEVEL_3] = {
+		.lo_thre = 54,
+		.hi_thre = 100,
+		.chg_curr = 800,
+	},
+};
+BUILD_ASSERT(ARRAY_SIZE(temp_chg_table) == CHG_LEVEL_COUNT);
