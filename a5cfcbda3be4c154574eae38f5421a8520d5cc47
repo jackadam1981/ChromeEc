@@ -22,6 +22,30 @@
       },
       "revId": "a5cfcbda3be4c154574eae38f5421a8520d5cc47",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1437787f_0d97669d",
+        "filename": "zephyr/test/system/test_system.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2021-12-07T23:09:32Z",
+      "side": 1,
+      "message": "Changed all of them to use zassert_ok.",
+      "parentUuid": "b7b4bfb8_eb5b8771",
+      "range": {
+        "startLine": 32,
+        "startChar": 1,
+        "endLine": 32,
+        "endChar": 14
+      },
+      "revId": "a5cfcbda3be4c154574eae38f5421a8520d5cc47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
