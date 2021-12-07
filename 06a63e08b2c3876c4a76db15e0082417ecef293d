@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ebece40_f2f65422",
+        "filename": "common/battery_fuel_gauge.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2021-12-07T02:19:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d9b75edc_b9e78cdf",
+      "range": {
+        "startLine": 25,
+        "startChar": 7,
+        "endLine": 25,
+        "endChar": 10
+      },
+      "revId": "06a63e08b2c3876c4a76db15e0082417ecef293d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b9ca46e1_5521979c",
@@ -37,6 +61,24 @@
       "writtenOn": "2021-12-03T18:54:37Z",
       "side": 1,
       "message": "Check that that (index \u003c BATTERY_TYPE_COUNT) before this statement.",
+      "revId": "06a63e08b2c3876c4a76db15e0082417ecef293d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b0ff79f0_a7e3677a",
+        "filename": "common/battery_fuel_gauge.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2021-12-07T02:19:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b9ca46e1_5521979c",
       "revId": "06a63e08b2c3876c4a76db15e0082417ecef293d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
