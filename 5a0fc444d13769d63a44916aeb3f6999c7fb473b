@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9192d2c_e02bce6b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2021-12-07T02:34:00Z",
+      "side": 1,
+      "message": "Have updated the changes for other cores. Cannot make task_print_list() as a common function, as there is core based dependency on variables - tasks_init[], tasks[] ,task_names[]",
+      "parentUuid": "7cc34877_521d408e",
+      "revId": "5a0fc444d13769d63a44916aeb3f6999c7fb473b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "28680d46_6bb43de3",
