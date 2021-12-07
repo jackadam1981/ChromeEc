@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e53deb6_7f6d589e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2021-12-07T01:01:45Z",
+      "side": 1,
+      "message": "it8xxx2_evb build failed because the keyboard device was referred to by a DT fragment that didn\u0027t always have the node for it, so moved the keyboard node into it8xxx2.dtsi since it appears there\u0027s only one configuration that gets used.",
+      "revId": "0eed28701bbe0f2152a2f01d7c157af8135ba05a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
