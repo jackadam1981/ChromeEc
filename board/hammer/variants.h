@@ -17,6 +17,13 @@
 #define CONFIG_USB_PID 0x5022
 #elif defined(BOARD_BLAND)
 #define CONFIG_USB_PID 0x5056
+<<<<<<< HEAD   (f91a70 quackingstick: support thermal charge policy)
+=======
+#elif defined(BOARD_DON)
+#define CONFIG_USB_PID 0x5050
+#elif defined(BOARD_DUCK)
+#define CONFIG_USB_PID 0x505b
+>>>>>>> CHANGE (601284 duck: initial commit)
 #elif defined(BOARD_EEL)
 #define CONFIG_USB_PID 0x5057
 #elif defined(BOARD_MAGNEMITE)
@@ -60,6 +67,28 @@
 #define CONFIG_USB_HID_TOUCHPAD_PHYSICAL_MAX_X 839 /* tenth of mm */
 #define CONFIG_USB_HID_TOUCHPAD_PHYSICAL_MAX_Y 457 /* tenth of mm */
 #define CONFIG_TOUCHPAD_VIRTUAL_SIZE (64*1024)
+<<<<<<< HEAD   (f91a70 quackingstick: support thermal charge policy)
+=======
+#elif defined(BOARD_DON)
+#define HAS_I2C_TOUCHPAD
+#define CONFIG_USB_HID_TOUCHPAD_LOGICAL_MAX_X 2925
+#define CONFIG_USB_HID_TOUCHPAD_LOGICAL_MAX_Y 1440
+#define CONFIG_USB_HID_TOUCHPAD_LOGICAL_MAX_PRESSURE 511
+#define CONFIG_USB_HID_TOUCHPAD_PHYSICAL_MAX_X 929 /* tenth of mm */
+#define CONFIG_USB_HID_TOUCHPAD_PHYSICAL_MAX_Y 457 /* tenth of mm */
+#define CONFIG_TOUCHPAD_VIRTUAL_SIZE (56*1024)
+#elif defined(BOARD_DUCK)
+#define CONFIG_USB_HID_KEYBOARD_VIVALDI
+#define CONFIG_USB_HID_KB_NUM_TOP_ROW_KEYS 10
+/* b/208588161: update correct parameters */
+#define HAS_I2C_TOUCHPAD
+#define CONFIG_USB_HID_TOUCHPAD_LOGICAL_MAX_X 3282
+#define CONFIG_USB_HID_TOUCHPAD_LOGICAL_MAX_Y 1793
+#define CONFIG_USB_HID_TOUCHPAD_LOGICAL_MAX_PRESSURE 511
+#define CONFIG_USB_HID_TOUCHPAD_PHYSICAL_MAX_X 1042 /* tenth of mm */
+#define CONFIG_USB_HID_TOUCHPAD_PHYSICAL_MAX_Y 569 /* tenth of mm */
+#define CONFIG_TOUCHPAD_VIRTUAL_SIZE (64*1024)
+>>>>>>> CHANGE (601284 duck: initial commit)
 #elif defined(BOARD_EEL)
 #define CONFIG_USB_HID_KEYBOARD_VIVALDI
 #define CONFIG_USB_HID_KB_NUM_TOP_ROW_KEYS 10
