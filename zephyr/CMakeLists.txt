@@ -273,7 +273,7 @@ zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_PORT80
                                                 "${PLATFORM_EC}/common/port80.c")
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_POWER_BUTTON
                                                 "${PLATFORM_EC}/common/power_button.c")
-zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_POWERSEQ
+zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_POWER_COMMON
                                                 "${PLATFORM_EC}/power/common.c")
 zephyr_library_sources_ifdef(CONFIG_CHIPSET_ALDERLAKE_SLG4BD44540
                                                 "${PLATFORM_EC}/power/alderlake_slg4bd44540.c")
