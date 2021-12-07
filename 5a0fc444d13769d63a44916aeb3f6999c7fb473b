@@ -75,6 +75,30 @@
       },
       "revId": "5a0fc444d13769d63a44916aeb3f6999c7fb473b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "782e830e_fe282ca0",
+        "filename": "core/nds32/task.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 674,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2021-12-07T02:34:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "28680d46_6bb43de3",
+      "range": {
+        "startLine": 674,
+        "startChar": 38,
+        "endLine": 674,
+        "endChar": 42
+      },
+      "revId": "5a0fc444d13769d63a44916aeb3f6999c7fb473b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
