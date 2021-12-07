@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4addc428_7e10060d",
+        "filename": "common/battery_fuel_gauge.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-12-07T16:18:14Z",
+      "side": 1,
+      "message": "Nit -\n\nChange this to guard clause with an early exit.  It will reduce the nesting:\n\nif (index \u003e\u003d BATTERY_TYPE_COUNT)\n    return false;\n    \n/* remainder of function */",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 34
+      },
+      "revId": "2963640ad4b9de70fae582304312bce7494de9c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd04eec1_223a595e",
+        "filename": "common/battery_fuel_gauge.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-12-07T16:18:14Z",
+      "side": 1,
+      "message": "return true;",
+      "range": {
+        "startLine": 56,
+        "startChar": 2,
+        "endLine": 56,
+        "endChar": 11
+      },
+      "revId": "2963640ad4b9de70fae582304312bce7494de9c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
