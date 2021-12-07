@@ -33,9 +33,7 @@
  * address, mask, and disconnect value need to be provided.
  */
 const struct board_batt_params board_battery_info[] = {
-		/* C21N2018 Battery Information
-		 * TODO(b:196506846):Need to be verified on the Proto
-		 */
+	/* C21N2018 Battery Information*/
 	 [BATTERY_C21N2018] = {
 		.fuel_gauge = {
 			.manuf_name = "AS3GXXD3KA",
@@ -65,10 +63,8 @@ const struct board_batt_params board_battery_info[] = {
 			.discharging_max_c      = 60,
 		},
 	},
-		/* C21N2018 second Battery Information
-		 * TODO(b:208724532):Setup 2nd source battery parameter
-		 */
-	[BATTERY_C21N2018_2nd] = {
+	/* C21N2018 second Battery Information*/
+	[BATTERY_C21N2018_2ND] = {
 		.fuel_gauge = {
 			.manuf_name = "AS3FXXD3KA",
 			.device_name = "C110160",

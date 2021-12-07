@@ -103,7 +103,7 @@ enum temp_sensor_id {
 
 enum battery_type {
 	BATTERY_C21N2018,
-	BATTERY_C21N2018_2nd,
+	BATTERY_C21N2018_2ND,
 	BATTERY_TYPE_COUNT,
 };
 
