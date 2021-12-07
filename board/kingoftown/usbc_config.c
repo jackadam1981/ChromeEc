@@ -6,6 +6,8 @@
 /* Kingoftown board-specific USB-C configuration */
 
 #include "bc12/pi3usb9201_public.h"
+#include "charger.h"
+#include "charger/isl923x_public.h"
 #include "charge_manager.h"
 #include "charge_state.h"
 #include "common.h"
@@ -16,15 +18,90 @@
 #include "system.h"
 #include "tcpm/ps8xxx_public.h"
 #include "tcpm/tcpci.h"
+#include "temp_sensor.h"
 #include "timer.h"
 #include "usb_pd.h"
 #include "usbc_config.h"
 #include "usb_mux.h"
 #include "usbc_ocp.h"
 #include "usbc_ppc.h"
+#include "util.h"
 
 #define CPRINTS(format, args...) cprints(CC_USBCHARGE, format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_USBCHARGE, format, ## args)
+
+const struct charger_config_t chg_chips[] = {
+	{
+		.i2c_port = I2C_PORT_CHARGER,
+		.i2c_addr_flags = ISL923X_ADDR_FLAGS,
+		.drv = &isl923x_drv,
+	},
+};
+
+int charger_profile_override(struct charge_state_data *curr)
+{
+	int usb_mv;
+	int port;
+	int prev_chg_curr;
+	int chg_temp;
+	static int chg_lvl;
+
+	if (curr->state != ST_CHARGE)
+		return 0;
+
+	/* Lower the max requested voltage to 5V when battery is full. */
+	if (chipset_in_state(CHIPSET_STATE_ANY_OFF) &&
+	    !(curr->batt.flags & BATT_FLAG_BAD_STATUS) &&
+	    !(curr->batt.flags & BATT_FLAG_WANT_CHARGE) &&
+	    (curr->batt.status & STATUS_FULLY_CHARGED))
+		usb_mv = 5000;
+	else
+		usb_mv = PD_MAX_VOLTAGE_MV;
+
+	if (pd_get_max_voltage() != usb_mv) {
+		CPRINTS("VBUS limited to %dmV", usb_mv);
+		for (port = 0; port < CONFIG_USB_PD_PORT_MAX_COUNT; port++)
+			pd_set_external_voltage_limit(port, usb_mv);
+	}
+
+	/* Control charge current based on temp_chg_table. */
+	if (chipset_in_state(CHIPSET_STATE_ON)) {
+		temp_sensor_read(TEMP_SENSOR_CHG, &chg_temp);
+		chg_temp = K_TO_C(chg_temp);
+
+		if (chg_temp <= temp_chg_table[chg_lvl].lo_thre &&
+		    chg_lvl > 0)
+			chg_lvl--;
+		else if (chg_temp >= temp_chg_table[chg_lvl].hi_thre &&
+		         chg_lvl < CHG_LEVEL_COUNT - 1)
+			chg_lvl++;
+
+		prev_chg_curr = curr->requested_current;
+		if (temp_chg_table[chg_lvl].chg_curr !=
+		    DEFAULT_CHG_CURRENT)
+			curr->requested_current = MIN(curr->requested_current,
+			      temp_chg_table[chg_lvl].chg_curr);
+
+		if(curr->requested_current != prev_chg_curr)
+			CPRINTS("Override charge current to %dmA since \
+			         temp_chg_lvl switch to LEVEL_%d",
+			         curr->requested_current, chg_lvl);
+	}
+
+	return 0;
+}
+
+enum ec_status charger_profile_override_get_param(uint32_t param,
+						  uint32_t *value)
+{
+	return EC_RES_INVALID_PARAM;
+}
+
+enum ec_status charger_profile_override_set_param(uint32_t param,
+						  uint32_t value)
+{
+	return EC_RES_INVALID_PARAM;
+}
 
 /* GPIO Interrupt Handlers */
 void tcpc_alert_event(enum gpio_signal signal)
