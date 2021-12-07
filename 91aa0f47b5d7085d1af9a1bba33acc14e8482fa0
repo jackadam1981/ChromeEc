@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de210aaa_8a4c5771",
+        "filename": "common/ioexpander.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-12-07T17:13:07Z",
+      "side": 1,
+      "message": "I think a better approach is to provide a pair of routines:\n\nint ioex_get_port_count(void);\nvoid ioex_set_port_count(int count);\n\nioex_get_port_count() returns CONFIG_IO_EXPANDER_PORT_COUNT by default, unless ioex_set_port_count() has been called.\n\nThen the board code is responsible for calling ioex_set_port_count() if the port count should be adjusted.\n\nThe \"board_xxx()\" pattern isn\u0027t very portable to Zephyr.",
+      "range": {
+        "startLine": 218,
+        "startChar": 0,
+        "endLine": 218,
+        "endChar": 49
+      },
+      "revId": "91aa0f47b5d7085d1af9a1bba33acc14e8482fa0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
