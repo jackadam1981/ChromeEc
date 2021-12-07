@@ -127,7 +127,7 @@
 #define REG_TO_CHARGING_CURRENT(REG) ((REG) / CHARGING_RESISTOR_RATIO)
 #define CHARGING_CURRENT_TO_REG(CUR) ((CUR) * CHARGING_RESISTOR_RATIO)
 #define VMIN_AP_VSYS_TH2_TO_REG(DV) ((DV) - 32)
-
+#define PC0_VSYS_TH1_TO_REG(DV) ((DV) - 32)
 /*
  * ILIM2_VTH definition
  * Trigger when the current is above this threshold:
@@ -368,7 +368,7 @@ static int bq257x0_init_charge_option_1(int chgnum)
 static int bq257x0_init_prochot_option_0(int chgnum)
 {
 	int reg;
-	int ilim2_vth;
+	int tmp_th;
 	int rv;
 
 	rv = raw_read16(chgnum, BQ25710_REG_PROCHOT_OPTION_0, &reg);
@@ -376,9 +376,15 @@ static int bq257x0_init_prochot_option_0(int chgnum)
 	if (rv)
 		return rv;
 
-	ilim2_vth = ILIM2_VTH_PCT_TO_REG(CONFIG_CHARGER_BQ257X0_ILIM2_VTH_PCT);
-	reg = SET_BQ_FIELD(BQ257X0, PROCHOT_OPTION_0, ILIM2_VTH, ilim2_vth,
+	tmp_th = ILIM2_VTH_PCT_TO_REG(CONFIG_CHARGER_BQ257X0_ILIM2_VTH_PCT);
+	reg = SET_BQ_FIELD(BQ257X0, PROCHOT_OPTION_0, ILIM2_VTH, tmp_th,
 			   reg);
+
+#ifdef CONFIG_CHARGER_BQ25720_VSYS_TH1_CUSTOM
+	tmp_th = PC0_VSYS_TH1_TO_REG(CONFIG_CHARGER_BQ25720_VSYS_TH1);
+	reg = SET_BQ_FIELD(BQ25720, PROCHOT_OPTION_0, VSYS_TH1, tmp_th,
+			   reg);
+#endif
 
 	return raw_write16(chgnum, BQ25710_REG_PROCHOT_OPTION_0, reg);
 }
