@@ -58,6 +58,11 @@
 #define CONFIG_CHARGER_BQ25710_PKPWR_TOVLD_DEG 0
 #endif
 
+#ifndef CONFIG_CHARGER_BQ257X0_ILIM2_VTH_CUSTOM
+/* Reduce ILIM from default of 150% to 105% */
+#define CONFIG_CHARGER_BQ257X0_ILIM2_VTH_PCT 105
+#endif
+
 /*
  * Helper macros
  */
@@ -118,6 +123,28 @@
 #define REG_TO_CHARGING_CURRENT(REG) ((REG) / CHARGING_RESISTOR_RATIO)
 #define CHARGING_CURRENT_TO_REG(CUR) ((CUR) * CHARGING_RESISTOR_RATIO)
 #define VMIN_AP_VSYS_TH2_TO_REG(DV) ((DV) - 32)
+
+/*
+ * ILIM2_VTH definition
+ * Trigger when the current is above this threshold:
+ * 00001b - 11001b: 110% - 230%, step 5%
+ * 11010b - 11110b: 250% - 450%, step 50%
+ * 11111b: Out of Range (Ignored)
+ * Default 150%, or 01001
+ *
+ * The below formula separate several portions.
+ * PCT (percentage) < 110, adopt 105%, set it as 0
+ * 110 <= PCT < 235, step size is 5%, (PCT - 105) / 5
+ *   Ex. PCT=234, ilim2_vth = (234 - 105) / 5 = 25 = 11001b
+ * 235 <= PCT < 500, step size is 50%, (PCT - 200) / 50 + 25
+ *   Ex. PCT = 235 ~ 249, ilim2_vth = (249 - 200) / 50 + 25 = 25
+ *       PCT = 250 ~ 499, ilim2_vth = (499 - 200) / 50 + 25 = 30 = 11110b
+ * Others: 31 = 11111b
+ */
+#define ILIM2_VTH_PCT_TO_REG(PCT) ((PCT < 110) ? (0) : \
+				(PCT < 235) ? ((PCT - 105) / 5) : \
+				(PCT < 500) ? ((PCT - 200) / 50 + 25) : \
+				(31))
 
 /* Console output macros */
 #define CPRINTF(format, args...) cprintf(CC_CHARGER, format, ## args)
@@ -334,6 +361,24 @@ static int bq257x0_init_charge_option_1(int chgnum)
 	return raw_write16(chgnum, BQ25710_REG_CHARGE_OPTION_1, reg);
 }
 
+static int bq257x0_init_prochot_option_0(int chgnum)
+{
+	int reg;
+	int ilim2_vth;
+	int rv;
+
+	rv = raw_read16(chgnum, BQ25710_REG_PROCHOT_OPTION_0, &reg);
+
+	if (rv)
+		return rv;
+
+	ilim2_vth = ILIM2_VTH_PCT_TO_REG(CONFIG_CHARGER_BQ257X0_ILIM2_VTH_PCT);
+	reg = SET_BQ_FIELD(BQ257X0, PROCHOT_OPTION_0, ILIM2_VTH, ilim2_vth,
+			   reg);
+
+	return raw_write16(chgnum, BQ25710_REG_PROCHOT_OPTION_0, reg);
+}
+
 static int bq257x0_init_prochot_option_1(int chgnum)
 {
 	int rv;
@@ -548,14 +593,9 @@ static void bq25710_init(int chgnum)
 
 	bq257x0_init_charge_option_1(chgnum);
 
-	bq257x0_init_prochot_option_1(chgnum);
+	bq257x0_init_prochot_option_0(chgnum);
 
-	/* Reduce ILIM from default of 150% to 105% */
-	if (!raw_read16(chgnum, BQ25710_REG_PROCHOT_OPTION_0, &reg)) {
-		reg = SET_BQ_FIELD(BQ257X0, PROCHOT_OPTION_0, ILIM2_VTH, 0,
-				   reg);
-		raw_write16(chgnum, BQ25710_REG_PROCHOT_OPTION_0, reg);
-	}
+	bq257x0_init_prochot_option_1(chgnum);
 
 	bq257x0_init_charge_option_2(chgnum);
 
