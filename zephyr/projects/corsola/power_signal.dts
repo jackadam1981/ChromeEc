@@ -1,0 +1,18 @@
+/* Copyright 2021 The Chromium OS Authors. All rights reserved.
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+/ {
+	power_signal_list: power-signal-list {
+		compatible = "mt8186,power-signal-list";
+		ap_in_s3_l {
+			power-enum-name = "AP_IN_S3_L";
+			power-gpio-pin = <&ap_in_sleep_l>;
+		};
+		pmic_pwr_good {
+			power-enum-name = "PMIC_PWR_GOOD";
+			power-gpio-pin = <&ap_sysrst_odl_r>;
+		};
+	};
+};
