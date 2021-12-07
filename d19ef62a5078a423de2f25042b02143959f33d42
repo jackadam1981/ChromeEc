@@ -16,6 +16,24 @@
       "message": "try to explore if we can remove these from CONFIG_TASK_LIST at runtime as board_pre_task_i2c_peripheral_init() is done before task starts and we dont have to initialize them",
       "revId": "d19ef62a5078a423de2f25042b02143959f33d42",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b869cb6_82573db2",
+        "filename": "baseboard/intelrvp/adlrvp.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 399,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2021-12-07T02:44:46Z",
+      "side": 1,
+      "message": "Couldnot find a way to remove tasks at run time from CONFIG_TASK_LIST.\nTried limiting the TASK_ID_COUNT based on board id at board_pre_task_i2c_peripheral_init(), but pd interrupt task will get missed, as tasks are in the sequential order. In hook task, eventhough all tasks will get started initially, pd tasks \u0026 pd intr tasks are initialized based on the number of typec ports. This disabling of unwanted tasks will ensure that taskinfo when printed will list as disbled tasks,instead of enabled ones.",
+      "parentUuid": "88c2edf3_4cbc95a2",
+      "revId": "d19ef62a5078a423de2f25042b02143959f33d42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
