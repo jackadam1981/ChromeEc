@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "899358d4_92005f44",
+        "filename": "common/usbc/usb_retimer_fw_update.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-12-07T16:21:15Z",
+      "side": 1,
+      "message": "Since cur_port appears to represent the same thing, I\u0027d prefer to just reuse cur_port here. If we need another variable, I\u0027d like it to be declared at the top with the other static globals.",
+      "parentUuid": "153e1c54_62f5a5d2",
+      "revId": "037c770149da8dcf76682da8909197a5b5df08b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "19a3b4ac_016371a7",
         "filename": "common/usbc/usb_retimer_fw_update.c",
         "patchSetId": 1
@@ -97,6 +115,30 @@
       "side": 1,
       "message": "1. Yes, usb_retimer_fw_update_get_result() runs in the ACPI interrupt context. This is why last_result is used here to avoid blocking call. \nAP/CB does one ACPI_WRITE to request an operation, and multiple ACPI_READ (up to 10 times, 25ms/read )to check for desired result. \n\"hook_call_deferred(\u0026last_result_mux_get_data, 20 * MSEC); \" introduced a 20ms, I think it should be OK because AP/CB will read result again if last_result is not a valid value.\n\n2. cur_port is the port going to be suspended and resumed. It is the same as active_port since AP/CB promise they operate on ports sequentially between suspend and resume. One time there should be one port is doing those operations.",
       "parentUuid": "9e70b788_f0f7c4cc",
+      "range": {
+        "startLine": 111,
+        "startChar": 1,
+        "endLine": 111,
+        "endChar": 12
+      },
+      "revId": "037c770149da8dcf76682da8909197a5b5df08b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ddf46922_452e704a",
+        "filename": "common/usbc/usb_retimer_fw_update.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-12-07T16:21:15Z",
+      "side": 1,
+      "message": "I think I have heard Jett say that on our EC platforms, int reads and writes are functionally atomic. If that\u0027s true, and if the reads of last_read always take place in interrupt context, and if the value of last_read will be explicitly invalid before the mux op completes, I guess there is not a race here.",
+      "parentUuid": "e4c82c8a_18dd5478",
       "range": {
         "startLine": 111,
         "startChar": 1,
