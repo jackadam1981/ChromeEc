@@ -7,6 +7,7 @@
 #include <devicetree.h>
 #include <emul.h>
 #include <ztest.h>
+#include <fff.h>
 
 #include "driver/ppc/sn5s330.h"
 #include "driver/ppc/sn5s330_public.h"
@@ -18,6 +19,8 @@
 #define SN5S330_PORT 0
 #define EMUL emul_get_binding(DT_LABEL(DT_NODELABEL(sn5s330_emul)))
 #define FUNC_SET1_ILIMPP1_MSK 0x1F
+
+FAKE_VOID_FUNC(sn5s330_emul_interrupt_set_stub);
 
 /*
  * TODO(b/203364783): Exclude other threads from interacting with the emulator
@@ -269,6 +272,27 @@ static void test_sn5s330_set_sbu(void)
 }
 #endif /* CONFIG_USBC_PPC_SBU */
 
+
+static void test_sn5s330_disabled_vbus_low_interrupt(void)
+{
+	const struct emul *emul = EMUL;
+
+	zassert_ok(sn5s330_drv.init(SN5S330_PORT), NULL);
+
+	sn5s330_emul_lower_vbus_below_minV(emul);
+	zassert_equal(sn5s330_emul_interrupt_set_stub_fake.call_count, 0, NULL);
+}
+
+static void test_sn5s330_vbus_overcurrent(void)
+{
+	const struct emul *emul = EMUL;
+
+	zassert_ok(sn5s330_drv.init(SN5S330_PORT), NULL);
+
+	sn5s330_emul_make_vbus_overcurrent(emul);
+	zassert_true(sn5s330_emul_interrupt_set_stub_fake.call_count > 0, NULL);
+}
+
 static void reset_sn5s330_state(void)
 {
 	struct i2c_emul *i2c_emul = sn5s330_emul_to_i2c_emul(EMUL);
@@ -276,12 +300,19 @@ static void reset_sn5s330_state(void)
 	i2c_common_emul_set_write_func(i2c_emul, NULL, NULL);
 	i2c_common_emul_set_read_func(i2c_emul, NULL, NULL);
 	sn5s330_emul_reset(EMUL);
+	RESET_FAKE(sn5s330_emul_interrupt_set_stub);
 }
 
 void test_suite_ppc_sn5s330(void)
 {
 	ztest_test_suite(
 		ppc_sn5s330,
+		ztest_unit_test_setup_teardown(test_sn5s330_vbus_overcurrent,
+					       reset_sn5s330_state,
+					       reset_sn5s330_state),
+		ztest_unit_test_setup_teardown(
+			test_sn5s330_disabled_vbus_low_interrupt,
+			reset_sn5s330_state, reset_sn5s330_state),
 		ztest_unit_test_setup_teardown(test_sn5s330_set_sbu,
 					       reset_sn5s330_state,
 					       reset_sn5s330_state),

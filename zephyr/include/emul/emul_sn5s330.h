@@ -34,4 +34,18 @@ void sn5s330_emul_peek_reg(const struct emul *emul, uint32_t reg,
  */
 void sn5s330_emul_reset(const struct emul *emul);
 
+/**
+ * @brief Emulate vbus voltage is below min 0.6V.
+ *
+ * @param emul the sn5s330 chip emulator.
+ */
+void sn5s330_emul_lower_vbus_below_minV(const struct emul *emul);
+
+/**
+ * @brief Emulate vbus overcurrent.
+ *
+ * @param emul the sn5s330 chip emulator.
+ */
+void sn5s330_emul_make_vbus_overcurrent(const struct emul *emul);
+
 #endif /* ZEPHYR_INCLUDE_EMUL_EMUL_SN5S330_H_ */

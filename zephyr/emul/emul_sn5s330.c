@@ -100,6 +100,11 @@ struct sn5s330_emul_cfg {
 	const struct i2c_common_emul_cfg common;
 };
 
+test_mockable_static void sn5s330_emul_interrupt_set_stub(void)
+{
+	/* Stub to be used by fff fakes during test */
+}
+
 struct i2c_emul *sn5s330_emul_to_i2c_emul(const struct emul *emul)
 {
 	struct sn5s330_emul_data *data = emul->data;
@@ -193,6 +198,7 @@ static void sn5s330_emul_set_INT_pin(struct i2c_emul *emul, bool val)
 
 static void sn5s330_emul_assert_interupt(struct i2c_emul *emul)
 {
+	sn5s330_emul_interrupt_set_stub();
 	sn5s330_emul_set_INT_pin(emul, false);
 }
 
@@ -252,6 +258,20 @@ static int sn5s330_emul_write_byte(struct i2c_emul *emul, int reg, uint8_t val,
 		__ASSERT(false, "cannot assert and deassert /INT pin");
 
 	return 0;
+}
+
+void sn5s330_emul_lower_vbus_below_minV(const struct emul *emul)
+{
+	struct sn5s330_emul_data *data = emul->data;
+	struct i2c_emul *i2c_emul = &data->common.emul;
+
+	data->int_status_reg4 |= SN5S330_VSAFE0V_STAT;
+
+	/* driver disabled this interrupt trigger */
+	if (data->int_status_reg4 & SN5S330_VSAFE0V_MASK)
+		return;
+
+	sn5s330_emul_assert_interupt(i2c_emul);
 }
 
 void sn5s330_emul_reset(const struct emul *emul)
