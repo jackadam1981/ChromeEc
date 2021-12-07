@@ -121,6 +121,24 @@
       "parentUuid": "56aa890b_3f647d33",
       "revId": "d5b4358907f878af14725115ee2d6631d694b876",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "391c310b_fac9dc51",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1394446
+      },
+      "writtenOn": "2021-12-07T05:40:05Z",
+      "side": 1,
+      "message": "Cros herobrine has the CONFIG_BOARD_RESET_AFTER_POWER_ON config. Zephyr herobrine doesn\u0027t enable this. Can you enable CONFIG_PLATFORM_EC_BOARD_RESET_AFTER_POWER_ON \u0026 check the reset banner again?",
+      "parentUuid": "f4f2c609_58bed07d",
+      "revId": "d5b4358907f878af14725115ee2d6631d694b876",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
