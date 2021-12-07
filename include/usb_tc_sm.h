@@ -181,6 +181,16 @@ void tc_request_power_swap(int port);
 void tc_pr_swap_complete(int port, bool success);
 
 /**
+ * The Type-C state machine set/clear the SLEEP_MASK_USB_PD mask.
+ * If the port partner had a previous pd connection, we set the
+ * SLEEP_MASK_USB_PD mask, then EC can't go to sleep mode;
+ * otherwise EC can go to sleep mode.
+ *
+ * @param port USB_C port number
+ */
+__override_proto void tc_set_pd_sleep_mask(int port);
+
+/**
  * Instructs the Attached.SNK to stop drawing power. This function is called
  * from the Policy Engine and only has effect if the current Type-C state
  * Attached.SNK.
