@@ -103,6 +103,24 @@
       "parentUuid": "0437bce1_e40c266d",
       "revId": "d5b4358907f878af14725115ee2d6631d694b876",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4f2c609_58bed07d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2021-12-07T03:50:14Z",
+      "side": 1,
+      "message": "With a dead battery.\n\nBoot Cros FW:\n\n[Reset cause: reset-pin]\n...\n# some print messages\n...\n--- UART initialized after reboot ---\n[Reset cause: power-on hibernate wake-pin]\n...\n# now battery starts to charge\n\n\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\n\nBoot Zephyr FW:\n\n[Reset cause: reset-pin]\n...\n# some print messages\n...\n--- UART initialized after reboot ---\n[Reset cause: reset-pin]\n\n# and the loop continues\n\n\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\n\nWith Zephyr, the EC_RESET_FLAG_POWER_ON flag is never getting set.\n\nLooking at drivers/cros_system/cros_system_npcx.c\n\n/* check reset cause */\n        if (IS_BIT_SET(inst_twd-\u003eT0CSR, NPCX_T0CSR_WDRST_STS)) {\n                data-\u003ereset \u003d WATCHDOG_RST;\n                inst_twd-\u003eT0CSR |\u003d BIT(NPCX_T0CSR_WDRST_STS);\n        } else if (IS_BIT_SET(inst_scfg-\u003eRSTCTL, NPCX_RSTCTL_DBGRST_STS)) {\n                data-\u003ereset \u003d DEBUG_RST;\n                inst_scfg-\u003eRSTCTL |\u003d BIT(NPCX_RSTCTL_DBGRST_STS);\n        } else if (IS_BIT_SET(inst_scfg-\u003eRSTCTL, NPCX_RSTCTL_VCC1_RST_STS)) {\n                data-\u003ereset \u003d VCC1_RST_PIN;\n        } else {\n                data-\u003ereset \u003d POWERUP;\n        }\n        \nPOWERUP is never getting set.",
+      "parentUuid": "56aa890b_3f647d33",
+      "revId": "d5b4358907f878af14725115ee2d6631d694b876",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
