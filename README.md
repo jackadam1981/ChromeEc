@@ -638,3 +638,4 @@ cheese_v1.1.1755-4da9520
 ```
 
 [Firmware Write Protection]: ./docs/write_protection.md
+
