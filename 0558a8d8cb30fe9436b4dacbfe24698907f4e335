@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80ca1320_08666e42",
+        "filename": "baseboard/nissa/baseboard.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-12-07T22:49:50Z",
+      "side": 1,
+      "message": "This file should live under the zephyr project area.\n\nI suggest zephyr/projects/nissa/power_signals.c",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 63
+      },
+      "revId": "0558a8d8cb30fe9436b4dacbfe24698907f4e335",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8283e719_190891aa",
+        "filename": "baseboard/nissa/baseboard.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-12-07T22:49:50Z",
+      "side": 1,
+      "message": "These parameters should come from the device tree.\n\nYou could potentially extend the named-adc-channels to capture these threshold values.\n\nAlso, what about ITE ECs?   Should the you extend the Zephyr ADC driver API instead of just adding this to Nuvoton?",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 0
+      },
+      "revId": "0558a8d8cb30fe9436b4dacbfe24698907f4e335",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2314c14a_a66e2ad6",
+        "filename": "baseboard/nissa/baseboard.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-12-07T22:49:50Z",
+      "side": 1,
+      "message": "Use atomic_t type.",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 3
+      },
+      "revId": "0558a8d8cb30fe9436b4dacbfe24698907f4e335",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a91c3077_4ef4553d",
+        "filename": "baseboard/nissa/baseboard.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-12-07T22:49:50Z",
+      "side": 1,
+      "message": "Drop \"baseboard_\" prefix through this file.",
+      "range": {
+        "startLine": 33,
+        "startChar": 12,
+        "endLine": 33,
+        "endChar": 43
+      },
+      "revId": "0558a8d8cb30fe9436b4dacbfe24698907f4e335",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c1799f4_cc77dd09",
+        "filename": "baseboard/nissa/baseboard.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-12-07T22:49:50Z",
+      "side": 1,
+      "message": "BIT(0)",
+      "range": {
+        "startLine": 50,
+        "startChar": 28,
+        "endLine": 50,
+        "endChar": 29
+      },
+      "revId": "0558a8d8cb30fe9436b4dacbfe24698907f4e335",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "25c3397d_d8356429",
+        "filename": "baseboard/nissa/baseboard.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-12-07T22:49:50Z",
+      "side": 1,
+      "message": "Please open a bug and reference the bug number here.",
+      "range": {
+        "startLine": 64,
+        "startChar": 3,
+        "endLine": 64,
+        "endChar": 7
+      },
+      "revId": "0558a8d8cb30fe9436b4dacbfe24698907f4e335",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c83df3d_a55b4c44",
+        "filename": "baseboard/nissa/baseboard.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-12-07T22:49:50Z",
+      "side": 1,
+      "message": "BIT(0)",
+      "range": {
+        "startLine": 70,
+        "startChar": 36,
+        "endLine": 70,
+        "endChar": 38
+      },
+      "revId": "0558a8d8cb30fe9436b4dacbfe24698907f4e335",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0682313_846aa9a3",
+        "filename": "zephyr/projects/nissa/prj_nivviks.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-12-07T22:49:50Z",
+      "side": 1,
+      "message": "This has a dependency on your upstream PR https://github.com/zephyrproject-rtos/zephyr/pull/40904.\n\nSo this CL chain cannot be merged until the upstream PR goes through some review.",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 26
+      },
+      "revId": "0558a8d8cb30fe9436b4dacbfe24698907f4e335",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
