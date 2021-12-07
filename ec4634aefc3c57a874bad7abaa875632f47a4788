@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a21224f7_ffe08592",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-12-07T22:00:16Z",
+      "side": 1,
+      "message": "I didn\u0027t realize the gpio.inc levels weren\u0027t applied in RW. This CL is to fix boards that have RO locked and will only update RW.",
+      "revId": "ec4634aefc3c57a874bad7abaa875632f47a4788",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
