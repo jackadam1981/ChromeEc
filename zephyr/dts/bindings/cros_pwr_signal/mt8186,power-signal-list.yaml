@@ -8,11 +8,13 @@ include: power-signal-list.yaml
 
 properties:
   power-signals-required:
-    default: 2
+    default: 4
 
 child-binding:
   properties:
     power-enum-name:
       enum:
-        - AP_IN_S3_L
-        - PMIC_PWR_GOOD
+        - AP_IN_RST
+        - AP_IN_S3
+        - AP_WDT_ASSERTED
+        - AP_WARM_RST_REQ
