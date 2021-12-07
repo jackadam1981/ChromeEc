@@ -189,11 +189,6 @@ test_mockable __keep int main(void)
 	lpc_init_mask();
 #endif
 	if (IS_ENABLED(CONFIG_I2C_CONTROLLER)) {
-		/*
-		 * Some devices (like the I2C keyboards, CBI) need I2C access
-		 * pretty early, so let's initialize the controller now.
-		 */
-		i2c_init();
 
 		if (IS_ENABLED(CONFIG_I2C_BITBANG)) {
 			/*
@@ -205,6 +200,12 @@ test_mockable __keep int main(void)
 			/* Board level pre-task I2C peripheral initialization */
 			board_pre_task_i2c_peripheral_init();
 		}
+
+		/*
+		 * Some devices (like the I2C keyboards, CBI) need I2C access
+		 * pretty early, so let's initialize the controller now.
+		 */
+		i2c_init();
 	}
 
 
