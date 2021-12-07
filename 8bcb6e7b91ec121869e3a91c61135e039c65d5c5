@@ -22,6 +22,30 @@
       },
       "revId": "8bcb6e7b91ec121869e3a91c61135e039c65d5c5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c158ab3_b0bae94a",
+        "filename": "zephyr/projects/herobrine/herobrine_npcx9/prj.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-12-07T23:19:34Z",
+      "side": 1,
+      "message": "The double-reset problem only happens when using H1. D2 fixes this problem in some way. Moving forward to D2, this config doesn\u0027t need be enabled.",
+      "parentUuid": "8d3cbb03_2291bb0d",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 45
+      },
+      "revId": "8bcb6e7b91ec121869e3a91c61135e039c65d5c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
