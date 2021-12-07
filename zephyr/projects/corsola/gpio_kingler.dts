@@ -39,8 +39,9 @@
 			label = "AP_EC_WDTRST_L";
 			enum-name = "GPIO_AP_EC_WDTRST_L";
 		};
-		ap_in_sleep_l {
-			gpios = <&gpio5 4 (GPIO_INPUT | GPIO_VOLTAGE_1P8)>;
+		ap_in_sleep_l: ap_in_sleep_l {
+			gpios = <&gpio5 4 (GPIO_INPUT | GPIO_VOLTAGE_1P8 |
+				GPIO_ACTIVE_LOW)>;
 			label = "AP_IN_SLEEP_L";
 			enum-name = "GPIO_AP_IN_SLEEP_L";
 		};
@@ -178,8 +179,9 @@
 			label = "X_EC_GPIO2";
 			enum-name = "GPIO_X_EC_GPIO2";
 		};
-		ap_sysrst_odl_r {
-			gpios = <&gpioa 1 (GPIO_INPUT | GPIO_VOLTAGE_1P8)>;
+		ap_sysrst_odl_r: ap_sysrst_odl_r {
+			gpios = <&gpioa 1 (GPIO_INPUT | GPIO_VOLTAGE_1P8 |
+			GPIO_ACTIVE_HIGH)>;
 			label = "AP_EC_SYSRST_ODL_R";
 			enum-name = "GPIO_AP_EC_SYSRST_ODL";
 		};
@@ -264,7 +266,7 @@
 			enum-name = "GPIO_EC_AP_DP_HPD_ODL";
 		};
 		ec_pmic_en_odl {
-			gpios = <&gpio7 4 (GPIO_ODR_LOW | GPIO_VOLTAGE_1P8)>;
+			gpios = <&gpio7 4 (GPIO_ODR_HIGH | GPIO_VOLTAGE_1P8)>;
 			label = "EC_PMIC_EN_ODL";
 			enum-name = "GPIO_EC_PMIC_EN_ODL";
 		};
@@ -284,4 +286,17 @@
 			enum-name = "GPIO_CCD_MODE_ODL";
 		};
 	};
+
+	power_signal_list: power-signal-list {
+		compatible = "mt8186,power-signal-list";
+		ap_in_s3_l {
+			power-enum-name = "AP_IN_S3_L";
+			power-gpio-pin = <&ap_in_sleep_l>;
+		};
+		pmic_pwr_good {
+			power-enum-name = "PMIC_PWR_GOOD";
+			power-gpio-pin = <&ap_sysrst_odl_r>;
+		};
+	};
+
 };
