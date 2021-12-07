@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ea05bd5_df6599a4",
+        "filename": "zephyr/shim/chip/it8xxx2/power_policy.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-12-07T19:43:11Z",
+      "side": 1,
+      "message": "nit: is there a reason for looping backward, if yes maybe a comment would be useful for the reader.",
+      "range": {
+        "startLine": 48,
+        "startChar": 2,
+        "endLine": 48,
+        "endChar": 54
+      },
+      "revId": "56416757d37faac0a59ea67b006ebcc98a53db0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
