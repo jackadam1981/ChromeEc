@@ -3,6 +3,9 @@
  * found in the LICENSE file.
  */
 
+#ifndef TEST_DRIVERS_MOCKS_H_
+#define TEST_DRIVERS_MOCKS_H_
+
 #include <fff.h>
 
 /*
@@ -78,3 +81,5 @@
 DECLARE_FAKE_VALUE_FUNC(const void *, init_rom_map, const void *, int);
 DECLARE_FAKE_VOID_FUNC(init_rom_unmap, const void *, int);
 DECLARE_FAKE_VALUE_FUNC(int, init_rom_copy, int, int, int);
+
+#endif /* TEST_DRIVERS_MOCKS_H_ */
