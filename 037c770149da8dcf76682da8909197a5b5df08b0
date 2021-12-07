@@ -81,6 +81,30 @@
       },
       "revId": "037c770149da8dcf76682da8909197a5b5df08b0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e4c82c8a_18dd5478",
+        "filename": "common/usbc/usb_retimer_fw_update.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2021-12-07T00:08:55Z",
+      "side": 1,
+      "message": "1. Yes, usb_retimer_fw_update_get_result() runs in the ACPI interrupt context. This is why last_result is used here to avoid blocking call. \nAP/CB does one ACPI_WRITE to request an operation, and multiple ACPI_READ (up to 10 times, 25ms/read )to check for desired result. \n\"hook_call_deferred(\u0026last_result_mux_get_data, 20 * MSEC); \" introduced a 20ms, I think it should be OK because AP/CB will read result again if last_result is not a valid value.\n\n2. cur_port is the port going to be suspended and resumed. It is the same as active_port since AP/CB promise they operate on ports sequentially between suspend and resume. One time there should be one port is doing those operations.",
+      "parentUuid": "9e70b788_f0f7c4cc",
+      "range": {
+        "startLine": 111,
+        "startChar": 1,
+        "endLine": 111,
+        "endChar": 12
+      },
+      "revId": "037c770149da8dcf76682da8909197a5b5df08b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
