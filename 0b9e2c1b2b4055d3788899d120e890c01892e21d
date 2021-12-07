@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca6fe34e_1791b5b2",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 1661,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-12-07T16:51:59Z",
+      "side": 1,
+      "message": "I suggest changing this to:\n\nint charge_manager_port_count(void)\n{\n\treturn (board_get_usb_pd_port_count() +\n\t\t\tCONFIG_DEDICATED_CHARGE_PORT_COUNT);\n}\n\nCONFIG_DEDICATED_CHARGE_PORT_COUNT is always defined, so no need for the guard.\n\nYou should update all run-time references of CHARGE_PORT_COUNT to charge_manager_port_count().",
+      "range": {
+        "startLine": 1652,
+        "startChar": 0,
+        "endLine": 1661,
+        "endChar": 1
+      },
+      "revId": "0b9e2c1b2b4055d3788899d120e890c01892e21d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
