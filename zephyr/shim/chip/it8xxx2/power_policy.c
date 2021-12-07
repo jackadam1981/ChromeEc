@@ -14,6 +14,7 @@
 static const struct pm_state_info pm_states[] =
 	PM_STATE_INFO_LIST_FROM_DT_CPU(DT_NODELABEL(cpu0));
 
+#if 0
 #define CONSOLE_IN_USE_ON_BOOT_TIME (5 * SECOND)
 #define CONSOLE_IN_USE_TIMEOUT_SEC (5 * SECOND)
 
@@ -37,6 +38,7 @@ static int clock_allow_low_power_idle(void)
 
 	return 1;
 }
+#endif
 
 /* CROS PM policy handler */
 struct pm_state_info pm_policy_next_state(uint8_t cpu, int32_t ticks)
@@ -44,7 +46,7 @@ struct pm_state_info pm_policy_next_state(uint8_t cpu, int32_t ticks)
 	ARG_UNUSED(cpu);
 
 	/* Deep sleep is allowed and an interval of five seconds. */
-	if (DEEP_SLEEP_ALLOWED && clock_allow_low_power_idle()) {
+	if (DEEP_SLEEP_ALLOWED /*&& clock_allow_low_power_idle()*/) {
 		/*
 		 * If there are multiple power states, iterating backward
 		 * is needed to take priority into account.
@@ -69,7 +71,7 @@ static int power_policy_init(const struct device *arg)
 {
 	ARG_UNUSED(arg);
 
-	console_expire_time.val = get_time().val + CONSOLE_IN_USE_ON_BOOT_TIME;
+	//console_expire_time.val = get_time().val + CONSOLE_IN_USE_ON_BOOT_TIME;
 
 	return 0;
 }
