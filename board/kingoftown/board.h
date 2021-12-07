@@ -59,6 +59,11 @@
 #define CONFIG_GMR_TABLET_MODE
 #define GMR_TABLET_MODE_GPIO_L GPIO_TABLET_MODE_L
 
+/* Thermistors */
+#define CONFIG_TEMP_SENSOR
+#define CONFIG_THERMISTOR
+#define CONFIG_STEINHART_HART_3V3_30K9_47K_4050B
+
 /* GPIO alias */
 #define GPIO_AC_PRESENT GPIO_ACOK_OD
 #define GPIO_WP_L GPIO_EC_WP_ODL
@@ -74,6 +79,7 @@ enum adc_channel {
 	ADC_VBUS,
 	ADC_AMON_BMON,
 	ADC_PSYS,
+	ADC_CHG_TEMP,
 	ADC_CH_COUNT
 };
 
@@ -83,6 +89,12 @@ enum sensor_id {
 	BASE_ACCEL,
 	BASE_GYRO,
 	SENSOR_COUNT,
+};
+
+/* Temperature sensors */
+enum temp_sensor_id {
+	TEMP_SENSOR_CHG = 0,
+	TEMP_SENSOR_COUNT,
 };
 
 enum pwm_channel {
@@ -99,6 +111,26 @@ enum battery_type {
 	BATTERY_ATL,
 	BATTERY_TYPE_COUNT,
 };
+
+#define DEFAULT_CHG_CURRENT 4300
+/* Temperature charging level */
+enum temp_chg_lvl {
+	LEVEL_0 = 0,
+	LEVEL_1,
+	LEVEL_2,
+	LEVEL_3,
+	CHG_LEVEL_COUNT,
+};
+
+/* Temperature charging struct */
+struct temp_chg_struct {
+	int lo_thre;
+	int hi_thre;
+	int chg_curr;
+};
+
+/* Forward declaration of temperature charging table */
+extern const struct temp_chg_struct temp_chg_table[];
 
 /* Reset all TCPCs. */
 void board_reset_pd_mcu(void);
