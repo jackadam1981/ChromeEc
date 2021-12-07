@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54cd9e32_52cd9700",
+        "filename": "zephyr/boards/riscv/it8xxx2/it8xxx2.dts",
+        "patchSetId": 6
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-12-07T23:16:06Z",
+      "side": 1,
+      "message": "This seems unrelated to the KB change. Move to a separate CL?",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 0
+      },
+      "revId": "4c53dd5e5a972036e3d9bc3b06b7c93e656957c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
