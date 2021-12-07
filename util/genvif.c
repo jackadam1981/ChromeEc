@@ -3015,7 +3015,10 @@ static void init_vif_component_usb_type_c_fields(
 	{
 		int rp = CONFIG_USB_PD_PULLUP;
 
-		#if defined(CONFIG_USB_PD_MAX_SINGLE_SOURCE_CURRENT)
+		#if defined(CONFIG_USB_PD_3A_PORTS) && \
+				CONFIG_USB_PD_3A_PORTS > 0
+			rp = TYPEC_RP_3A0;
+		#elif defined(CONFIG_USB_PD_MAX_SINGLE_SOURCE_CURRENT)
 			rp = CONFIG_USB_PD_MAX_SINGLE_SOURCE_CURRENT;
 		#endif
 
