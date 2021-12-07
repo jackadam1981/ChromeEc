@@ -22,6 +22,30 @@
       },
       "revId": "0b9e2c1b2b4055d3788899d120e890c01892e21d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1151d202_7ca77fbf",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 1661,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-12-07T17:13:46Z",
+      "side": 1,
+      "message": "Suggest using \"charge_manager_get_port_count()\" as the API.",
+      "parentUuid": "ca6fe34e_1791b5b2",
+      "range": {
+        "startLine": 1652,
+        "startChar": 0,
+        "endLine": 1661,
+        "endChar": 1
+      },
+      "revId": "0b9e2c1b2b4055d3788899d120e890c01892e21d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
