@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "68c65eca_d50501d5",
+        "filename": "board/kakadu/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 549,
+      "author": {
+        "id": 1449895
+      },
+      "writtenOn": "2021-12-07T12:14:43Z",
+      "side": 1,
+      "message": "Hi Ting,\n\nthanks for your help,\n\nthe abnormal bits of RT946X_REG_CHGCTRL2 are bit5 and bit6 according to the https://partnerissuetracker.corp.google.com/issues/207456334#comment14",
+      "range": {
+        "startLine": 549,
+        "startChar": 6,
+        "endLine": 549,
+        "endChar": 13
+      },
+      "revId": "fd2448718d4fd1e9d05015b35c5a4227b48e324d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
