@@ -28,6 +28,11 @@
 
 		brightness-range = <0 0 0 0 100 100>;
 
+		color-charge-near-full  = "EC_LED_COLOR_WHITE";
+		color-soc-on            = "EC_LED_COLOR_WHITE";
+		color-soc-suspend       = "EC_LED_COLOR_WHITE";
+		color-low-batt          = "EC_LED_COLOR_AMBER";
+
 		#address-cells = <1>;
 		#size-cells = <0>;
 
