@@ -21,6 +21,7 @@
  *  - Pressing and releaseing pwron within that 8s is ignored
  */
 
+#include "assert.h"
 #include "battery.h"
 #include "chipset.h"
 #include "common.h"
@@ -249,7 +250,7 @@ enum power_state power_handle_state(enum power_state state)
 		 * no harm, but to prevent misunderstanding in the console, we
 		 * check EC_PMIC_EN_ODL before set.
 		 */
-		if (gpio_get_level(GPIO_EC_PMIC_EN_ODL)) {
+		if (!gpio_get_level(GPIO_SYS_RST_ODL)) {
 			CPRINTS("Forcing shutdown with long press.");
 			GPIO_SET_LEVEL(GPIO_EC_PMIC_EN_ODL, 0);
 		}
@@ -297,24 +298,11 @@ enum power_state power_handle_state(enum power_state state)
 			GPIO_SET_LEVEL(GPIO_EC_PMIC_EN_ODL, 1);
 		}
 
-		/*
-		 * Wait for PMIC to bring up rails. Retry if it fails
-		 * (it may take 2 attempts on restart after we use
-		 * force reset).
-		 */
-		if (power_wait_signals_timeout(IN_PGOOD_PMIC,
-					       PMIC_EN_TIMEOUT)) {
-			if (s5s3_retry) {
-				s5s3_retry = 0;
-				return POWER_S5S3;
-			}
-			/* Give up, go back to G3. */
-			return POWER_S5G3;
-		}
+		GPIO_SET_LEVEL(GPIO_SYS_RST_ODL, 1);
 
+		msleep(500);
 		/* Call hooks now that rails are up */
 		hook_notify(HOOK_CHIPSET_STARTUP);
-
 		/*
 		 * Clearing the sleep failure detection tracking on the path
 		 * to S0 to handle any reset conditions.
@@ -378,6 +366,7 @@ enum power_state power_handle_state(enum power_state state)
 		if (!(power_get_signals() & IN_PGOOD_PMIC))
 			ap_shutdown = 1;
 
+		GPIO_SET_LEVEL(GPIO_SYS_RST_ODL, 0);
 		/* Call hooks before we remove power rails */
 		hook_notify(HOOK_CHIPSET_SHUTDOWN);
 		hook_notify(HOOK_CHIPSET_SHUTDOWN_COMPLETE);
@@ -395,6 +384,9 @@ enum power_state power_handle_state(enum power_state state)
 			return POWER_S5;
 
 		return POWER_G3;
+	default:
+		CPRINTS("Unexpected power state %d", state);
+		break;
 	}
 
 	return state;
