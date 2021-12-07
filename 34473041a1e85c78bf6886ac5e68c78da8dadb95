@@ -1,0 +1,152 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "852d0009_1a2c8d98",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-12-07T19:21:03Z",
+      "side": 1,
+      "message": "Moving other Google reviewers to CC. See https://chromium.googlesource.com/chromiumos/docs/+/HEAD/firmware_code_reviews.md.\n\nI\u0027m not clear on the rationale for this CL or what it is supposed to accomplish. It declares functions that aren\u0027t implemented and creates a shim layer for functions that aren\u0027t referenced in ECOS. Is there a CL before this one that didn\u0027t get uploaded?",
+      "revId": "34473041a1e85c78bf6886ac5e68c78da8dadb95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c994e26_98848ffe",
+        "filename": "include/adc.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-12-07T19:21:03Z",
+      "side": 1,
+      "message": "No need to #ifdef stuff without linkage like function declarations.",
+      "revId": "34473041a1e85c78bf6886ac5e68c78da8dadb95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "969c01b4_ade09716",
+        "filename": "include/adc.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-12-07T19:21:03Z",
+      "side": 1,
+      "message": "Nit: Consistently capitalize ADC.",
+      "range": {
+        "startLine": 78,
+        "startChar": 14,
+        "endLine": 78,
+        "endChar": 17
+      },
+      "revId": "34473041a1e85c78bf6886ac5e68c78da8dadb95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81c45203_e8c6ad03",
+        "filename": "include/adc.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-12-07T19:21:03Z",
+      "side": 1,
+      "message": "I think there is probably a clearer way of describing this. What is being configured if interrupts are not being enabled or disabled? What does \"continuously working\" mean? Are interrupts already supposed to be enabled when this function is called?",
+      "range": {
+        "startLine": 78,
+        "startChar": 3,
+        "endLine": 79,
+        "endChar": 37
+      },
+      "revId": "34473041a1e85c78bf6886ac5e68c78da8dadb95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9c32ed7_8ffdf7fb",
+        "filename": "include/adc.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-12-07T19:21:03Z",
+      "side": 1,
+      "message": "Line over 80 columns.\n\nAre you uploading CLs via `repo upload` to run pre-upload checks?",
+      "revId": "34473041a1e85c78bf6886ac5e68c78da8dadb95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a46ea537_3570ac3a",
+        "filename": "include/adc.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-12-07T19:21:03Z",
+      "side": 1,
+      "message": "Typically, we would have one function to enable/disable that looked something like\n int adc_enable_threshold_interrupt(const int threshold_id, bool enable)",
+      "revId": "34473041a1e85c78bf6886ac5e68c78da8dadb95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d650bf3_b1d03e3c",
+        "filename": "zephyr/shim/src/adc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-12-07T19:21:03Z",
+      "side": 1,
+      "message": "Where is the declaration for this config item? All config items should have a default definition (or be undefined by default) in config.h.",
+      "revId": "34473041a1e85c78bf6886ac5e68c78da8dadb95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4074b01a_39656c79",
+        "filename": "zephyr/shim/src/adc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-12-07T19:21:03Z",
+      "side": 1,
+      "message": "Are these functions defined in another CL?",
+      "revId": "34473041a1e85c78bf6886ac5e68c78da8dadb95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
