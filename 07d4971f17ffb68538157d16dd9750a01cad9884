@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40dc4ea6_e13e3f02",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1129,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-12-07T21:35:07Z",
+      "side": 1,
+      "message": "Because you\u0027ve set a default value, \"#ifdef CONFIG_PLATFORM_EC_USBC_PPC_SYV682X_HV_ILIM\" will always evaluate as true.\n\nSo you can delete the guard here and just keep line 1130.",
+      "range": {
+        "startLine": 1128,
+        "startChar": 0,
+        "endLine": 1129,
+        "endChar": 50
+      },
+      "revId": "07d4971f17ffb68538157d16dd9750a01cad9884",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
