@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c77e92b_c7a08b9f",
+        "filename": "zephyr/test/drivers/src/ppc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-12-07T00:07:46Z",
+      "side": 1,
+      "message": "indent should align with (\n\nyou can run clang-format to automatically fix this",
+      "range": {
+        "startLine": 349,
+        "startChar": 2,
+        "endLine": 349,
+        "endChar": 3
+      },
+      "revId": "da94bfa7872760fbdc27a32c23cff77db52d92fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76af665a_6790aa0f",
+        "filename": "zephyr/test/drivers/src/ppc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 351,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-12-07T00:07:46Z",
+      "side": 1,
+      "message": "same with all of these",
+      "range": {
+        "startLine": 351,
+        "startChar": 2,
+        "endLine": 351,
+        "endChar": 3
+      },
+      "revId": "da94bfa7872760fbdc27a32c23cff77db52d92fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
