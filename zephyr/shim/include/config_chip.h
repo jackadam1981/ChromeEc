@@ -592,6 +592,34 @@
 #define CONFIG_LED_PWM_COUNT DT_PROP_LEN(DT_INST(0, cros_ec_pwm_leds), leds)
 #endif
 
+#if DT_NODE_EXISTS(DT_PATH(cros_pwmleds)) && \
+	DT_NODE_HAS_PROP(DT_PATH(cros_pwmleds), color_charge_near_full)
+#undef CONFIG_LED_PWM_NEAR_FULL_COLOR
+#define CONFIG_LED_PWM_NEAR_FULL_COLOR \
+	DT_STRING_UPPER_TOKEN(DT_PATH(cros_pwmleds), color_charge_near_full)
+#endif
+
+#if DT_NODE_EXISTS(DT_PATH(cros_pwmleds)) && \
+	DT_NODE_HAS_PROP(DT_PATH(cros_pwmleds), color_soc_on)
+#undef CONFIG_LED_PWM_SOC_ON_COLOR
+#define CONFIG_LED_PWM_SOC_ON_COLOR \
+	DT_STRING_UPPER_TOKEN(DT_PATH(cros_pwmleds), color_soc_on)
+#endif
+
+#if DT_NODE_EXISTS(DT_PATH(cros_pwmleds)) && \
+	DT_NODE_HAS_PROP(DT_PATH(cros_pwmleds), color_soc_suspend)
+#undef CONFIG_LED_PWM_SOC_SUSPEND_COLOR
+#define CONFIG_LED_PWM_SOC_SUSPEND_COLOR \
+	DT_STRING_UPPER_TOKEN(DT_PATH(cros_pwmleds), color_soc_suspend)
+#endif
+
+#if DT_NODE_EXISTS(DT_PATH(cros_pwmleds)) && \
+	DT_NODE_HAS_PROP(DT_PATH(cros_pwmleds), color_low_batt)
+#undef CONFIG_LED_PWM_LOW_BATT_COLOR
+#define CONFIG_LED_PWM_LOW_BATT_COLOR \
+	DT_STRING_UPPER_TOKEN(DT_PATH(cros_pwmleds), color_low_batt)
+#endif
+
 #undef CONFIG_CMD_LEDTEST
 #ifdef CONFIG_PLATFORM_EC_CONSOLE_CMD_LEDTEST
 #define CONFIG_CMD_LEDTEST
