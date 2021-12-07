@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c4448893_a5e27465",
+        "filename": "zephyr/test/drivers/src/ppc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-12-07T22:33:30Z",
+      "side": 1,
+      "message": "Good idea \u003d)",
+      "parentUuid": "570f9417_e447c905",
+      "range": {
+        "startLine": 349,
+        "startChar": 2,
+        "endLine": 349,
+        "endChar": 3
+      },
+      "revId": "da94bfa7872760fbdc27a32c23cff77db52d92fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "76af665a_6790aa0f",
         "filename": "zephyr/test/drivers/src/ppc.c",
         "patchSetId": 2
