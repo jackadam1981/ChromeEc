@@ -46,6 +46,30 @@
       },
       "revId": "6baace2f7caae9f27825fa9a958fc29732f41908",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "444db7f6_c75a9253",
+        "filename": "chip/stm32/usart_rx_interrupt-stm32l.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2021-12-07T17:01:15Z",
+      "side": 1,
+      "message": "Daisuke initiated an email thread with ST engineers, who eventually found this line of code from a reference library of theirs: \n\n#define __HAL_UART_CLEAR_FLAG(__HANDLE__, __FLAG__) ((__HANDLE__)-\u003eInstance-\u003eICR \u003d (__FLAG__))\n\nThey write zeros to all the bits they do not want to affect, consistent with the common \"write 1 to clear\" semantic.  This supports my suspicion that the datasheet writers erroneously copied standard text appropriate for reserved bits of read/write registers to the description of reserved bits of this write-only register.\n \nI would like to propose going forward with this CL as is, as the logic is consistent with that of the above ST reference library.",
+      "parentUuid": "ad670db0_1194eb44",
+      "range": {
+        "startLine": 38,
+        "startChar": 36,
+        "endLine": 38,
+        "endChar": 37
+      },
+      "revId": "6baace2f7caae9f27825fa9a958fc29732f41908",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
