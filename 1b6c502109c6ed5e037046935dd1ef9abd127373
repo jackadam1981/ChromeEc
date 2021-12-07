@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "690fdb39_76c49111",
+        "filename": "baseboard/intelrvp/adlrvp.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-12-07T16:40:39Z",
+      "side": 1,
+      "message": "Nit - move adjacent to setting of CONFIG_USB_PD_PORT_MAX_COUNT.",
+      "range": {
+        "startLine": 164,
+        "startChar": 0,
+        "endLine": 167,
+        "endChar": 0
+      },
+      "revId": "1b6c502109c6ed5e037046935dd1ef9abd127373",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
