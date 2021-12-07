@@ -54,6 +54,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "89073114_4d83d641",
+        "filename": "common/usbc/usb_retimer_fw_update.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-12-07T17:15:41Z",
+      "side": 1,
+      "message": "Update to use cur_port",
+      "parentUuid": "899358d4_92005f44",
+      "revId": "037c770149da8dcf76682da8909197a5b5df08b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "19a3b4ac_016371a7",
@@ -139,6 +157,30 @@
       "side": 1,
       "message": "I think I have heard Jett say that on our EC platforms, int reads and writes are functionally atomic. If that\u0027s true, and if the reads of last_read always take place in interrupt context, and if the value of last_read will be explicitly invalid before the mux op completes, I guess there is not a race here.",
       "parentUuid": "e4c82c8a_18dd5478",
+      "range": {
+        "startLine": 111,
+        "startChar": 1,
+        "endLine": 111,
+        "endChar": 12
+      },
+      "revId": "037c770149da8dcf76682da8909197a5b5df08b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e4ed365_635d5543",
+        "filename": "common/usbc/usb_retimer_fw_update.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-12-07T17:15:41Z",
+      "side": 1,
+      "message": "I believe the synchronization should be alright.\n\nLi, want to double check the new setting/checking for cur_port should be correct?",
+      "parentUuid": "ddf46922_452e704a",
       "range": {
         "startLine": 111,
         "startChar": 1,
