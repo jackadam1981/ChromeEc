@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd9671c7_2258045d",
+        "filename": "zephyr/projects/drawcia_riscv/gpio.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-12-07T22:01:14Z",
+      "side": 1,
+      "message": "GPIO_OUTPUT_LOW",
+      "range": {
+        "startLine": 16,
+        "startChar": 21,
+        "endLine": 16,
+        "endChar": 31
+      },
+      "revId": "bc71d76e93fd5ab1cead29c4c9b7b9debc696352",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bbaa6543_46009b26",
+        "filename": "zephyr/projects/drawcia_riscv/gpio.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-12-07T22:01:14Z",
+      "side": 1,
+      "message": "GPIO_ENABLE_BACKLIGHT is used for the panel backlight, not the keyboard backlight.   Use GPIO_EN_KEYBOARD_BACKLIGHT instead.",
+      "range": {
+        "startLine": 22,
+        "startChar": 16,
+        "endLine": 22,
+        "endChar": 37
+      },
+      "revId": "bc71d76e93fd5ab1cead29c4c9b7b9debc696352",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e6d799d_260a638e",
+        "filename": "zephyr/projects/drawcia_riscv/gpio.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-12-07T22:01:14Z",
+      "side": 1,
+      "message": "Delete - CL that deletes the label property from named-i2c-ports has landed.",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 20
+      },
+      "revId": "bc71d76e93fd5ab1cead29c4c9b7b9debc696352",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "854f4e61_6673d566",
+        "filename": "zephyr/projects/drawcia_riscv/gpio.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-12-07T22:01:14Z",
+      "side": 1,
+      "message": "Delete.",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 20
+      },
+      "revId": "bc71d76e93fd5ab1cead29c4c9b7b9debc696352",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
