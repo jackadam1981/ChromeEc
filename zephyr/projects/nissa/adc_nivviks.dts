@@ -17,6 +17,12 @@
 			enum-name = "ADC_TEMP_SENSOR_2";
 			channel = <1>;
 		};
+
+		adc_pp3300_regulator: pp3300_regulator {
+			label = "ADC_VSENSE_PP3300_S5";
+			enum-name = "ADC_VSENSE_PP3300";
+			channel = <6>;
+		};
 	};
 
 };
