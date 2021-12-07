@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f4c0645_df942a32",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-12-07T16:50:18Z",
+      "side": 1,
+      "message": "If you\u0027re interested in working on genvif improvements and compliance testing, I\u0027d be very happy to talk to you about them.  There are a few items I\u0027m not certain we\u0027re getting right in the current implementation",
+      "revId": "bc7b3b9a6ee959fba0888e46730b236c0b2c8974",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d985fe84_5185e2d8",
+        "filename": "util/genvif.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 3020,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-12-07T16:50:18Z",
+      "side": 1,
+      "message": "Does this pass when running on a compliance tester?  I would need to spend more time with the VIF spec, but does this represent our initial Rp value, or the one we may offer if a port meets our criteria to receive 3A?",
+      "revId": "bc7b3b9a6ee959fba0888e46730b236c0b2c8974",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
