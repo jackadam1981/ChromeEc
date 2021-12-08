@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0517ffaf_eb8d11c6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2021-12-08T18:26:32Z",
+      "side": 1,
+      "message": "LGTM, but I\u0027d like another pair of eyes.",
+      "revId": "31eb05bcbe5cfa3144643c458473998e6f2e6dfd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e126268_3e153156",
+        "filename": "zephyr/include/emul/emul_common_tcpci_partner.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2021-12-08T18:26:32Z",
+      "side": 1,
+      "message": "In future CLs, I\u0027d try to call out new fields in cases like this to make the review a bit easier.",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 22
+      },
+      "revId": "31eb05bcbe5cfa3144643c458473998e6f2e6dfd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
