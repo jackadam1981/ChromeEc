@@ -18,16 +18,20 @@ test_mockable int chg_ramp_allowed(int port, int supplier)
 		return 0;
 
 	switch (supplier) {
-	/* Use ramping for USB-C DTS suppliers (debug accessory eg suzy-q). */
+	/*
+	 * Use ramping for USB-C DTS suppliers (debug accessory eg suzy-q).
+	 * The suzy-q simply passes through the VBUS. The power supplier behind
+	 * may be a SDP/CDP which requires ramping.
+	 */
 	case CHARGE_SUPPLIER_TYPEC_DTS:
 		return 1;
 	/*
-	 * Use HW ramping for USB-C chargers. Don't use SW ramping since the
-	 * slow ramp causes issues with auto power on (b/169634979).
+	 * Don't regulate the input voltage for USB-C chargers. It is
+	 * unnecessary. Check go/charge_ramp_typec for detail.
 	 */
 	case CHARGE_SUPPLIER_PD:
 	case CHARGE_SUPPLIER_TYPEC:
-		return IS_ENABLED(CONFIG_CHARGE_RAMP_HW);
+		return 0;
 	/* default: fall through */
 	}
 
