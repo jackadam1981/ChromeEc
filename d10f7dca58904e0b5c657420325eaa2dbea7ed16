@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65ea5bf5_fb50c61c",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 362,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-12-08T23:35:34Z",
+      "side": 1,
+      "message": "I think this path can be changed to #error.  All boards need to define the flash, and even the tests have flash defined.",
+      "range": {
+        "startLine": 362,
+        "startChar": 0,
+        "endLine": 362,
+        "endChar": 38
+      },
+      "revId": "d10f7dca58904e0b5c657420325eaa2dbea7ed16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7f048dc_751cd6ce",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 371,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-12-08T23:35:34Z",
+      "side": 1,
+      "message": "The unit tests don\u0027t provide the zephyr,sram node, so this can change to:\n\n#elif defined CONFIG_ZTEST\n#define CONFIG_RAM_BASE 0x0\n#define CONFIG_DATA_RAM_SIZE 0x0\n#else\n#error \"Chosen node zephyr,sram not defined\"\n#endif",
+      "range": {
+        "startLine": 368,
+        "startChar": 0,
+        "endLine": 371,
+        "endChar": 6
+      },
+      "revId": "d10f7dca58904e0b5c657420325eaa2dbea7ed16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
