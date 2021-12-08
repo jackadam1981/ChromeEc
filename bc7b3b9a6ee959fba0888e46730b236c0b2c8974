@@ -33,6 +33,24 @@
       "message": "Does this pass when running on a compliance tester?  I would need to spend more time with the VIF spec, but does this represent our initial Rp value, or the one we may offer if a port meets our criteria to receive 3A?",
       "revId": "bc7b3b9a6ee959fba0888e46730b236c0b2c8974",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe7291b0_04aec937",
+        "filename": "util/genvif.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 3020,
+      "author": {
+        "id": 1407014
+      },
+      "writtenOn": "2021-12-08T06:43:37Z",
+      "side": 1,
+      "message": "1. Not tested. We will run CTS on project Tomato with RP_Value\u003d 3A, b/208908998 (WIP)\n2. Defintion of RP_Value from VIF spec:  Indicates what Rp value a source port presents upon connect. In curremt TCPM/TCPC, we expose 1.5A Rp first then change to 3A Rp if allowed. But I\u0027m still not sure we should select 1.5A or 3A for RP_Value.",
+      "parentUuid": "d985fe84_5185e2d8",
+      "revId": "bc7b3b9a6ee959fba0888e46730b236c0b2c8974",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
