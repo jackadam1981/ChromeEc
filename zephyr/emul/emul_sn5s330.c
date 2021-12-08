@@ -11,6 +11,8 @@
 #include <emul.h>
 #include <errno.h>
 #include <sys/__assert.h>
+#include <devicetree/gpio.h>
+#include <drivers/gpio/gpio_emul.h>
 
 #include "driver/ppc/sn5s330.h"
 #include "driver/ppc/sn5s330_public.h"
@@ -28,6 +30,10 @@ LOG_MODULE_REGISTER(sn5s330_emul, CONFIG_SN5S330_EMUL_LOG_LEVEL);
 struct sn5s330_emul_data {
 	/** Common I2C data */
 	struct i2c_common_emul_data common;
+	/** int_gpio port */
+	const struct device *gpio_int_port;
+	/** int_gpio pin */
+	gpio_pin_t gpio_int_pin;
 	/** Emulated FUNC_SET1 register */
 	uint8_t func_set1_reg;
 	/** Emulated FUNC_SET2 register */
@@ -178,6 +184,23 @@ void sn5s330_emul_peek_reg(const struct emul *emul, uint32_t reg, uint8_t *val)
 	*val = *data_reg;
 }
 
+static void sn5s330_emul_set_INT_pin(struct i2c_emul *emul, bool val)
+{
+	struct sn5s330_emul_data *data = SN5S330_DATA_FROM_I2C_EMUL(emul);
+	int res = gpio_emul_input_set(data->gpio_int_port, data->gpio_int_pin, val);
+	__ASSERT_NO_MSG(res == 0);
+}
+
+static void sn5s330_emul_assert_interupt(struct i2c_emul *emul)
+{
+	sn5s330_emul_set_INT_pin(emul, false);
+}
+
+static void sn5s330_emul_deassert_interupt(struct i2c_emul *emul)
+{
+	sn5s330_emul_set_INT_pin(emul, true);
+}
+
 static int sn5s330_emul_read_byte(struct i2c_emul *emul, int reg, uint8_t *val,
 				  int bytes)
 {
@@ -195,11 +218,17 @@ static int sn5s330_emul_write_byte(struct i2c_emul *emul, int reg, uint8_t val,
 {
 	struct sn5s330_emul_data *data = SN5S330_DATA_FROM_I2C_EMUL(emul);
 	uint8_t *reg_to_write;
+	bool assert_int = false;
+	bool deassert_int = false;
 
 	__ASSERT(bytes == 1, "bytes 0x%x != 0x1 on reg 0x%x", bytes, reg);
 
 	/* Specially check for read-only reg */
 	switch (reg) {
+	case SN5S330_INT_TRIP_FALL_REG1:
+		if (val != 0)
+			deassert_int = true;
+		break;
 	case SN5S330_INT_STATUS_REG1:
 		/* fallthrough */
 	case SN5S330_INT_STATUS_REG2:
@@ -215,6 +244,13 @@ static int sn5s330_emul_write_byte(struct i2c_emul *emul, int reg, uint8_t val,
 		*reg_to_write = val;
 	}
 
+	if (assert_int)
+		sn5s330_emul_assert_interupt(emul);
+	if (deassert_int)
+		sn5s330_emul_deassert_interupt(emul);
+	if (assert_int && deassert_int)
+		__ASSERT(false, "cannot assert and deassert /INT pin");
+
 	return 0;
 }
 
@@ -222,10 +258,16 @@ void sn5s330_emul_reset(const struct emul *emul)
 {
 	struct sn5s330_emul_data *data = emul->data;
 	struct i2c_common_emul_data common = data->common;
+	const struct device *gpio_int_port =data->gpio_int_port;
+	gpio_pin_t gpio_int_pin =data->gpio_int_pin;
+
+	sn5s330_emul_deassert_interupt(&data->common.emul);
 
 	/* Only Reset the sn5s330 Register Data */
 	memset(data, 0, sizeof(struct sn5s330_emul_data));
 	data->common = common;
+	data->gpio_int_port = gpio_int_port;
+	data->gpio_int_pin = gpio_int_pin;
 }
 
 static int emul_sn5s330_init(const struct emul *emul,
@@ -233,6 +275,8 @@ static int emul_sn5s330_init(const struct emul *emul,
 {
 	const struct sn5s330_emul_cfg *cfg = emul->cfg;
 	struct sn5s330_emul_data *data = emul->data;
+
+	sn5s330_emul_deassert_interupt(&data->common.emul);
 
 	data->common.emul.api = &i2c_common_emul_api;
 	data->common.emul.addr = cfg->common.addr;
@@ -244,12 +288,20 @@ static int emul_sn5s330_init(const struct emul *emul,
 	return i2c_emul_register(parent, emul->dev_label, &data->common.emul);
 }
 
+#define SN5S330_GET_GPIO_INT_PORT(n) \
+	DEVICE_DT_GET(DT_GPIO_CTLR(DT_INST_PROP(n, int_gpio), gpios))
+
+#define SN5S330_GET_GPIO_INT_PIN(n) \
+	DT_GPIO_PIN(DT_INST_PROP(n, int_gpio), gpios)
+
 #define INIT_SN5S330(n)                                                        \
 	static struct sn5s330_emul_data sn5s330_emul_data_##n = {              \
 		.common = {                                                    \
 			.write_byte = sn5s330_emul_write_byte,                 \
 			.read_byte = sn5s330_emul_read_byte,                   \
 		},                                                             \
+		.gpio_int_port = SN5S330_GET_GPIO_INT_PORT(n),		       \
+		.gpio_int_pin = SN5S330_GET_GPIO_INT_PIN(n),		       \
 	};                                                                     \
 	static struct sn5s330_emul_cfg sn5s330_emul_cfg_##n = {                \
 		.common = {                                                    \

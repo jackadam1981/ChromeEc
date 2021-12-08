@@ -414,6 +414,9 @@ void ppc_alert(enum gpio_signal signal)
 	case GPIO_USB_C1_PPC_INT_ODL:
 		syv682x_interrupt(USBC_PORT_C1);
 		break;
+	case GPIO_USB_C0_PPC_INT_ODL:
+		ppc_chips[USBC_PORT_C0].drv->interrupt(USBC_PORT_C0);
+		break;
 	default:
 		return;
 	}
@@ -443,5 +446,6 @@ static void usbc_interrupt_init(void)
 
 	/* Enable PPC interrupts. */
 	gpio_enable_interrupt(GPIO_USB_C1_PPC_INT_ODL);
+	gpio_enable_interrupt(GPIO_USB_C0_PPC_INT_ODL);
 }
 DECLARE_HOOK(HOOK_INIT, usbc_interrupt_init, HOOK_PRIO_INIT_I2C + 1);
