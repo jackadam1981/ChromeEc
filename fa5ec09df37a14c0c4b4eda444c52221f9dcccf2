@@ -20,6 +20,40 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5ac7e482_2621a281",
+        "filename": "board/magolor/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 880,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-12-08T23:00:24Z",
+      "side": 1,
+      "message": "Should this be calling the deferred function so it takes the chipset state into account?",
+      "revId": "fa5ec09df37a14c0c4b4eda444c52221f9dcccf2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84cfd741_7465ba4e",
+        "filename": "board/magolor/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 883,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-12-08T23:00:24Z",
+      "side": 1,
+      "message": "Already an input in gpio.inc?",
+      "revId": "fa5ec09df37a14c0c4b4eda444c52221f9dcccf2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cf9922fe_2e85162e",
         "filename": "board/magolor/gpio.inc",
         "patchSetId": 1
