@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "830c9d15_e396ac6d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1346692
+      },
+      "writtenOn": "2021-12-08T15:32:12Z",
+      "side": 1,
+      "message": "Please also vote for the \"Verified\" field, if it\u0027s tested. thanks! ",
+      "revId": "fa5ec09df37a14c0c4b4eda444c52221f9dcccf2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf9922fe_2e85162e",
+        "filename": "board/magolor/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1346692
+      },
+      "writtenOn": "2021-12-08T15:32:12Z",
+      "side": 1,
+      "message": "nit: please follow the same indentation, thanks!",
+      "range": {
+        "startLine": 40,
+        "startChar": 21,
+        "endLine": 40,
+        "endChar": 25
+      },
+      "revId": "fa5ec09df37a14c0c4b4eda444c52221f9dcccf2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
