@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cddda9ae_fcae2a91",
+        "filename": "driver/ppc/ktu1125.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 387,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-12-08T01:19:10Z",
+      "side": 1,
+      "message": "I would reach out to the vendor about this. Do they even have a low power mode? I don\u0027t anticipate this API being used. If they don\u0027t, I\u0027d just drop this.",
+      "range": {
+        "startLine": 365,
+        "startChar": 0,
+        "endLine": 387,
+        "endChar": 1
+      },
+      "revId": "c0b367e6586f0375f7bd64b50f8619a7f463cd9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e38f60c6_03d068b6",
+        "filename": "driver/ppc/ktu1125.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 397,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-12-08T01:19:10Z",
+      "side": 1,
+      "message": "Is this polarity? I don\u0027t think we should be clear the polarity when we turn VCONN off.",
+      "range": {
+        "startLine": 396,
+        "startChar": 5,
+        "endLine": 397,
+        "endChar": 23
+      },
+      "revId": "c0b367e6586f0375f7bd64b50f8619a7f463cd9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4219691b_98db6dea",
+        "filename": "driver/ppc/ktu1125.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 497,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-12-08T01:19:10Z",
+      "side": 1,
+      "message": "Perhaps in a follow up commit we can rework this to take a cause as a parameter. I think it\u0027d be good to log that it was a VBUS overcurrent vs. VCONN overcurrent.",
+      "range": {
+        "startLine": 497,
+        "startChar": 3,
+        "endLine": 497,
+        "endChar": 24
+      },
+      "revId": "c0b367e6586f0375f7bd64b50f8619a7f463cd9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
