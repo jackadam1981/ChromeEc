@@ -239,7 +239,7 @@
 			enum-name = "GPIO_HDMI_PRSNT_ODL";
 		};
 		en_pp5000_z2 {
-			gpios = <&gpio3 4 GPIO_OUT_LOW>;
+			gpios = <&gpio3 4 GPIO_OUT_HIGH>;
 			label = "EN_PP5000_Z2";
 			enum-name = "GPIO_EN_PP5000_Z2";
 		};
