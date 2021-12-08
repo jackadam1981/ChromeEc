@@ -16,6 +16,24 @@
       "message": "Curious what this delay is for. Do we also need it after the other calls to syv682x_emul_set_condition() below?",
       "revId": "231afc8d0595a18543df692834a7832cd71cfcb3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6844e0b4_3639a1d8",
+        "filename": "zephyr/test/drivers/src/ppc.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-12-08T23:01:10Z",
+      "side": 1,
+      "message": "This was the idiom when I didn\u0027t have real interrupts and needed to yield to let the deferred interrupt run. I don\u0027t _think_ I need it anymore.",
+      "parentUuid": "30ebef5f_37182857",
+      "revId": "231afc8d0595a18543df692834a7832cd71cfcb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
