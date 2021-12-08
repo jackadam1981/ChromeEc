@@ -10,8 +10,8 @@
 #include <ztest.h>
 #include <ztest_assert.h>
 
+#include "emul/emul_common_i2c.h"
 #include "emul/emul_syv682x.h"
-
 #include "stubs.h"
 #include "syv682x.h"
 #include "timer.h"
@@ -492,6 +492,72 @@ static void test_ppc_syv682x_ppc_dump(void)
 	zassert_ok(drv->reg_dump(syv682x_port), "ppc_dump command failed");
 }
 
+static void test_ppc_syv682x_i2c_error(void)
+{
+	/* Verify that various operations fail in response to I2C errors. */
+	struct i2c_emul *emul = syv682x_emul_get(SYV682X_ORD);
+	const struct ppc_drv *drv = ppc_chips[syv682x_port].drv;
+
+	/* Failed STATUS read */
+	i2c_common_emul_set_read_fail_reg(emul, SYV682X_STATUS_REG);
+	zassert_not_equal(ppc_vbus_source_enable(syv682x_port, true),
+			EC_SUCCESS, "STATUS read error, but init succeeded");
+	i2c_common_emul_set_read_fail_reg(emul, I2C_COMMON_EMUL_NO_FAIL_REG);
+
+	/* Failed CONTROL_1 read */
+	i2c_common_emul_set_read_fail_reg(emul, SYV682X_CONTROL_1_REG);
+	zassert_not_equal(ppc_init(syv682x_port), EC_SUCCESS,
+			"CONTROL_1 read error, but init succeeded");
+	zassert_not_equal(ppc_vbus_source_enable(syv682x_port, true),
+			EC_SUCCESS, "CONTROL_1 read error, but VBUS source "
+			"enable succeeded");
+	zassert_not_equal(ppc_vbus_sink_enable(syv682x_port, true),
+			EC_SUCCESS, "CONTROL_1 read error, but VBUS sink "
+			"enable succeeded");
+	zassert_not_equal(ppc_set_vbus_source_current_limit(syv682x_port,
+				TYPEC_RP_USB),
+			EC_SUCCESS, "CONTROL_1 read error, but set current "
+			"limit succeeded");
+	zassert_not_equal(drv->reg_dump(syv682x_port), EC_SUCCESS,
+			"CONTROL_1 read error, but ppc_dump succeeded");
+	i2c_common_emul_set_read_fail_reg(emul, I2C_COMMON_EMUL_NO_FAIL_REG);
+
+	/* Failed CONTROL_1 write */
+	i2c_common_emul_set_write_fail_reg(emul, SYV682X_CONTROL_1_REG);
+	zassert_not_equal(ppc_init(syv682x_port), EC_SUCCESS,
+			"CONTROL_1 write error, but init succeeded");
+	zassert_not_equal(ppc_vbus_source_enable(syv682x_port, true),
+			EC_SUCCESS, "CONTROL_1 write error, but VBUS source "
+			"enable succeeded");
+	i2c_common_emul_set_write_fail_reg(emul, I2C_COMMON_EMUL_NO_FAIL_REG);
+
+	/* Failed CONTROL_2 read */
+	i2c_common_emul_set_read_fail_reg(emul, SYV682X_CONTROL_2_REG);
+	zassert_not_equal(ppc_discharge_vbus(syv682x_port, true), EC_SUCCESS,
+			"CONTROL_2 read error, but VBUS discharge succeeded");
+	i2c_common_emul_set_read_fail_reg(emul, I2C_COMMON_EMUL_NO_FAIL_REG);
+
+	/* Failed CONTROL_2 write */
+	i2c_common_emul_set_write_fail_reg(emul, SYV682X_CONTROL_2_REG);
+	zassert_not_equal(ppc_init(syv682x_port), EC_SUCCESS,
+			"CONTROL_2 write error, but init succeeded");
+	i2c_common_emul_set_write_fail_reg(emul, I2C_COMMON_EMUL_NO_FAIL_REG);
+
+	/* Failed CONTROL_4 read */
+	i2c_common_emul_set_read_fail_reg(emul, SYV682X_CONTROL_4_REG);
+	zassert_not_equal(ppc_set_vconn(syv682x_port, true), EC_SUCCESS,
+			"CONTROL_2 read error, but VCONN set succeeded");
+	i2c_common_emul_set_read_fail_reg(emul, I2C_COMMON_EMUL_NO_FAIL_REG);
+
+	/* Failed CONTROL_4 write */
+	i2c_common_emul_set_write_fail_reg(emul, SYV682X_CONTROL_4_REG);
+	zassert_not_equal(ppc_init(syv682x_port), EC_SUCCESS,
+			"CONTROL_4 write error, but init succeeded");
+	zassert_not_equal(ppc_set_vconn(syv682x_port, true), EC_SUCCESS,
+			"CONTROL_4 write error, but VCONN set succeeded");
+	i2c_common_emul_set_write_fail_reg(emul, I2C_COMMON_EMUL_NO_FAIL_REG);
+}
+
 static void test_ppc_syv682x(void)
 {
 	test_ppc_syv682x_init();
@@ -503,6 +569,7 @@ static void test_ppc_syv682x(void)
 	test_ppc_syv682x_dev_is_connected();
 	test_ppc_syv682x_vbus_sink_enable();
 	test_ppc_syv682x_ppc_dump();
+	test_ppc_syv682x_i2c_error();
 }
 
 void test_suite_ppc(void)
