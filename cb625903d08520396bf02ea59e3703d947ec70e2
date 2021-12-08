@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f7dfb554_222bf766",
+        "filename": "zephyr/emul/emul_lis2dw12.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-12-08T04:30:47Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "723b3b1d_8b3592b8",
+      "range": {
+        "startLine": 132,
+        "startChar": 41,
+        "endLine": 132,
+        "endChar": 42
+      },
+      "revId": "cb625903d08520396bf02ea59e3703d947ec70e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "01b75655_763f9809",
