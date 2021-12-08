@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "04df17b4_a00db448",
+        "filename": "zephyr/shim/chip/it8xxx2/power_policy.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-12-08T18:47:36Z",
+      "side": 1,
+      "message": "Can you move this logic into the uart_ite_it8xxx2.c?  Nuvoton already added  CONFIG_UART_CONSOLE_INPUT_EXPIRED and the use the pm_constraint() hooks to prevent entering deep sleep.\n\nThis can be done as a follow up change.\nhttps://github.com/zephyrproject-rtos/zephyr/pull/40947",
+      "range": {
+        "startLine": 30,
+        "startChar": 11,
+        "endLine": 30,
+        "endChar": 37
+      },
+      "revId": "56416757d37faac0a59ea67b006ebcc98a53db0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6ea05bd5_df6599a4",
         "filename": "zephyr/shim/chip/it8xxx2/power_policy.c",
         "patchSetId": 4
