@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "61579c3a_dcedaa8a",
+        "filename": "board/ampton/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1242905
+      },
+      "writtenOn": "2021-12-08T01:21:10Z",
+      "side": 1,
+      "message": "The battery will use on c204, the \u0027BATTERY_C214\u0027 is used on both c204 and c214.",
+      "parentUuid": "69ea072e_eb0b0437",
+      "range": {
+        "startLine": 119,
+        "startChar": 2,
+        "endLine": 119,
+        "endChar": 21
+      },
+      "revId": "8626787f1d4665567b647a8871b8838be6a32f25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b7467eda_a59dbbc6",
@@ -54,6 +78,24 @@
       "writtenOn": "2021-12-07T22:49:46Z",
       "side": 1,
       "message": "Any charging_max_c needed?",
+      "revId": "8626787f1d4665567b647a8871b8838be6a32f25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d09db3d6_96c25286",
+        "filename": "board/ampton/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1242905
+      },
+      "writtenOn": "2021-12-08T01:21:10Z",
+      "side": 1,
+      "message": "No, we don\u0027t need.",
+      "parentUuid": "b7467eda_a59dbbc6",
       "revId": "8626787f1d4665567b647a8871b8838be6a32f25",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
