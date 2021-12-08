@@ -51,6 +51,24 @@
       "parentUuid": "d985fe84_5185e2d8",
       "revId": "bc7b3b9a6ee959fba0888e46730b236c0b2c8974",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a25c4567_29a368fb",
+        "filename": "util/genvif.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 3020,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-12-08T17:09:50Z",
+      "side": 1,
+      "message": "We should select 1.5 A if the VIF spec says this is the value on connect.  \n\nDue to a CCD detection issue with the cr50, we never present Rp 3.0 A on first connection because that may cause monitors to be mis-detected as debug accessories (and then fail to function).  We also usually have less 3.0 A ports than total USB-C ports, so we\u0027d like to be discerning about whether the port partner meets the qualifications to get that increased current.",
+      "parentUuid": "fe7291b0_04aec937",
+      "revId": "bc7b3b9a6ee959fba0888e46730b236c0b2c8974",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
