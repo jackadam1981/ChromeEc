@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee90d507_43de52f4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-12-08T23:16:04Z",
+      "side": 1,
+      "message": "I\u0027ll plan to do another full passthrough of this review tomorrow or Friday",
+      "revId": "da13eb1bcb12db4013ae35fd40e29355f931fb9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "861e4b51_0d96b0f4",
+        "filename": "zephyr/subsys/usbc/tc/usb_tc_sm.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-12-08T23:16:04Z",
+      "side": 1,
+      "message": "Leave out for now?",
+      "revId": "da13eb1bcb12db4013ae35fd40e29355f931fb9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
