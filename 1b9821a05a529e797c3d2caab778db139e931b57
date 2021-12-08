@@ -46,6 +46,30 @@
       },
       "revId": "1b9821a05a529e797c3d2caab778db139e931b57",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "016a94b9_acbbbe83",
+        "filename": "zephyr/dts/bindings/led/cros-ec,pwm-leds.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-12-08T23:08:32Z",
+      "side": 1,
+      "message": "Note that Kconfig doesn\u0027t have direct support for enums.  I can see 2 possible approaches:\n\nCreate an \"int\" type Kconfig, and use the help text to describe the colors.  Similar to this: https://github.com/zephyrproject-rtos/zephyr/blob/91d4b7766ceee7fabb5caa026ba181c47286e28b/subsys/mgmt/updatehub/Kconfig#L99\n\nCreate a choice type in Kconfig.\n\nchoice CHARGE_NEAR_FULL_COLOR\n    prompt \"Charging near full LED color\"\n    default CHARGE_NEAR_FULL_COLOR_AMBER\n    \nconfig CHARGE_NEAR_FULL_COLOR_AMBER\n    bool \"amber\"\n    \nconfig CHARGE_NEAR_FULL_COLOR_GREEN\n    bool \"green\"\nendchoice\n\nconfig PLATFORM_EC_CHARGE_NEAR_FULL_COLOR\n    int\n    default 1 if CHARGE_NEAR_FULL_COLOR_GREEN\n    default 5 if CHARGE_NEAR_FULL_COLOR_AMBER\n    \nThe platform would then add\n\nchoice CHARGE_NEAR_FULL_COLOR\n    default CHARGE_NEAR_FULL_COLOR_GREEN\n    \nconfig_chip.h would use (regardless of approach):\n#define CONFIG_LED_PWM_NEAR_FULL_COLOR \\\n    CONFIG_PLATFORM_EC_CHARGE_NEAR_FULL_COLOR",
+      "parentUuid": "451020f2_86ea66e2",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 25
+      },
+      "revId": "1b9821a05a529e797c3d2caab778db139e931b57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
