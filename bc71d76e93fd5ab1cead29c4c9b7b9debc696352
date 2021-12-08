@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9edbc553_2825ffbf",
+        "filename": "zephyr/projects/drawcia_riscv/gpio.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2021-12-08T01:53:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dd9671c7_2258045d",
+      "range": {
+        "startLine": 16,
+        "startChar": 21,
+        "endLine": 16,
+        "endChar": 31
+      },
+      "revId": "bc71d76e93fd5ab1cead29c4c9b7b9debc696352",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bbaa6543_46009b26",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-12-07T22:01:14Z",
       "side": 1,
       "message": "GPIO_ENABLE_BACKLIGHT is used for the panel backlight, not the keyboard backlight.   Use GPIO_EN_KEYBOARD_BACKLIGHT instead.",
+      "range": {
+        "startLine": 22,
+        "startChar": 16,
+        "endLine": 22,
+        "endChar": 37
+      },
+      "revId": "bc71d76e93fd5ab1cead29c4c9b7b9debc696352",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b86c2a2_d4cd5467",
+        "filename": "zephyr/projects/drawcia_riscv/gpio.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2021-12-08T01:53:16Z",
+      "side": 1,
+      "message": "I had to mess around with the LID config to avoid getting an undefined GPIO_ENABLE_BACKLIGHT in backlight_lid.c.\nI suspect some nasty mixed up dependecies with lids and backlight code.",
+      "parentUuid": "bbaa6543_46009b26",
       "range": {
         "startLine": 22,
         "startChar": 16,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb0dda7b_d0a363c1",
+        "filename": "zephyr/projects/drawcia_riscv/gpio.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2021-12-08T01:53:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8e6d799d_260a638e",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 20
+      },
+      "revId": "bc71d76e93fd5ab1cead29c4c9b7b9debc696352",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "854f4e61_6673d566",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-12-07T22:01:14Z",
       "side": 1,
       "message": "Delete.",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 20
+      },
+      "revId": "bc71d76e93fd5ab1cead29c4c9b7b9debc696352",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e02896f1_76876414",
+        "filename": "zephyr/projects/drawcia_riscv/gpio.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2021-12-08T01:53:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "854f4e61_6673d566",
       "range": {
         "startLine": 53,
         "startChar": 0,
