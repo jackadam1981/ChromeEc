@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb178ec6_10dc7bfd",
+        "filename": "baseboard/nissa/baseboard.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2021-12-08T00:19:39Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "80ca1320_08666e42",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 63
+      },
+      "revId": "0558a8d8cb30fe9436b4dacbfe24698907f4e335",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8283e719_190891aa",
@@ -71,6 +95,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b44be749_18c0523a",
+        "filename": "baseboard/nissa/baseboard.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2021-12-08T00:19:39Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "8c854820_55735591",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 0
+      },
+      "revId": "0558a8d8cb30fe9436b4dacbfe24698907f4e335",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2314c14a_a66e2ad6",
@@ -84,6 +132,30 @@
       "writtenOn": "2021-12-07T22:49:50Z",
       "side": 1,
       "message": "Use atomic_t type.",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 3
+      },
+      "revId": "0558a8d8cb30fe9436b4dacbfe24698907f4e335",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "029f9fd5_35c2c8d1",
+        "filename": "baseboard/nissa/baseboard.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2021-12-08T00:19:39Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "2314c14a_a66e2ad6",
       "range": {
         "startLine": 24,
         "startChar": 0,
@@ -117,6 +189,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "155370ed_4c515825",
+        "filename": "baseboard/nissa/baseboard.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2021-12-08T00:19:39Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a91c3077_4ef4553d",
+      "range": {
+        "startLine": 33,
+        "startChar": 12,
+        "endLine": 33,
+        "endChar": 43
+      },
+      "revId": "0558a8d8cb30fe9436b4dacbfe24698907f4e335",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9c1799f4_cc77dd09",
@@ -130,6 +226,30 @@
       "writtenOn": "2021-12-07T22:49:50Z",
       "side": 1,
       "message": "BIT(0)",
+      "range": {
+        "startLine": 50,
+        "startChar": 28,
+        "endLine": 50,
+        "endChar": 29
+      },
+      "revId": "0558a8d8cb30fe9436b4dacbfe24698907f4e335",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b506a9ad_8fdcbf80",
+        "filename": "baseboard/nissa/baseboard.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2021-12-08T00:19:39Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9c1799f4_cc77dd09",
       "range": {
         "startLine": 50,
         "startChar": 28,
@@ -163,6 +283,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6229aa8c_d4a584d5",
+        "filename": "baseboard/nissa/baseboard.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2021-12-08T00:19:39Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "25c3397d_d8356429",
+      "range": {
+        "startLine": 64,
+        "startChar": 3,
+        "endLine": 64,
+        "endChar": 7
+      },
+      "revId": "0558a8d8cb30fe9436b4dacbfe24698907f4e335",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7c83df3d_a55b4c44",
@@ -186,6 +330,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a511093b_ccd279d0",
+        "filename": "baseboard/nissa/baseboard.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2021-12-08T00:19:39Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "7c83df3d_a55b4c44",
+      "range": {
+        "startLine": 70,
+        "startChar": 36,
+        "endLine": 70,
+        "endChar": 38
+      },
+      "revId": "0558a8d8cb30fe9436b4dacbfe24698907f4e335",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e0682313_846aa9a3",
@@ -199,6 +367,30 @@
       "writtenOn": "2021-12-07T22:49:50Z",
       "side": 1,
       "message": "This has a dependency on your upstream PR https://github.com/zephyrproject-rtos/zephyr/pull/40904.\n\nSo this CL chain cannot be merged until the upstream PR goes through some review.",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 26
+      },
+      "revId": "0558a8d8cb30fe9436b4dacbfe24698907f4e335",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "254d79ed_a1839bfe",
+        "filename": "zephyr/projects/nissa/prj_nivviks.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2021-12-08T00:19:39Z",
+      "side": 1,
+      "message": "Correct, same way we need to have these changes merged: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3272086\nI will set dependency on next CL.",
+      "parentUuid": "e0682313_846aa9a3",
       "range": {
         "startLine": 64,
         "startChar": 0,
