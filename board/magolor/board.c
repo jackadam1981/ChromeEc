@@ -874,6 +874,15 @@ void board_init(void)
 		GPIO_INPUT | GPIO_PULL_DOWN);
 	}
 
+	if (get_cbi_fw_config_stylus() == STYLUS_PRESENT) {
+		gpio_enable_interrupt(GPIO_PEN_DET_ODL);
+		/* Make sure pen detection is triggered or not at sysjump */
+		if (!gpio_get_level(GPIO_PEN_DET_ODL))
+			gpio_set_level(GPIO_EN_PP5000_PEN, 1);
+		} else {
+			gpio_set_flags(GPIO_PEN_DET_ODL, GPIO_INPUT);
+	}
+
 	/* Turn on 5V if the system is on, otherwise turn it off. */
 	on = chipset_in_state(CHIPSET_STATE_ON | CHIPSET_STATE_ANY_SUSPEND |
 			      CHIPSET_STATE_SOFT_OFF);
@@ -906,6 +915,37 @@ void motion_interrupt(enum gpio_signal signal)
 		bmi160_interrupt(signal);
 #endif
 }
+
+/**
+ * Handle debounced pen input changing state.
+ */
+static void pendetect_deferred(void)
+{
+	int pen_charge_enable = !gpio_get_level(GPIO_PEN_DET_ODL) &&
+	    !chipset_in_state(CHIPSET_STATE_ANY_OFF);
+
+	if (pen_charge_enable)
+		gpio_set_level(GPIO_EN_PP5000_PEN, 1);
+	else
+		gpio_set_level(GPIO_EN_PP5000_PEN, 0);
+
+	CPRINTS("Pen charge %sable", pen_charge_enable ? "en" : "dis");
+}
+DECLARE_DEFERRED(pendetect_deferred);
+
+void pen_detect_interrupt(enum gpio_signal signal)
+{
+	/* pen input debounce time */
+	hook_call_deferred(&pendetect_deferred_data, (100 * MSEC));
+}
+
+static void pen_charge_check(void)
+{
+	if (get_cbi_fw_config_stylus() == STYLUS_PRESENT)
+		hook_call_deferred(&pendetect_deferred_data, (100 * MSEC));
+}
+DECLARE_HOOK(HOOK_CHIPSET_STARTUP, pen_charge_check, HOOK_PRIO_LAST);
+DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, pen_charge_check, HOOK_PRIO_LAST);
 
 __override void ocpc_get_pid_constants(int *kp, int *kp_div,
 				       int *ki, int *ki_div,
