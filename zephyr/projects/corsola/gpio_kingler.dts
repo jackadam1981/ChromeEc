@@ -100,7 +100,7 @@
 			label = "EC_I2C_BATT_SDA";
 		};
 		ec_pen_chg_dis_odl {
-			gpios = <&gpioe 4 GPIO_ODR_LOW>;
+			gpios = <&gpioe 4 GPIO_INPUT>;
 			label = "EC_PEN_CHG_DIS_ODL";
 			enum-name = "GPIO_EC_PEN_CHG_DIS_ODL";
 		};
@@ -239,7 +239,7 @@
 			enum-name = "GPIO_HDMI_PRSNT_ODL";
 		};
 		en_pp5000_z2 {
-			gpios = <&gpio3 4 GPIO_OUT_LOW>;
+			gpios = <&gpio3 4 GPIO_OUT_HIGH>;
 			label = "EN_PP5000_Z2";
 			enum-name = "GPIO_EN_PP5000_Z2";
 		};
