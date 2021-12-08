@@ -22,6 +22,30 @@
       },
       "revId": "56416757d37faac0a59ea67b006ebcc98a53db0c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c57d352_b7430102",
+        "filename": "zephyr/shim/chip/it8xxx2/power_policy.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2021-12-08T07:34:14Z",
+      "side": 1,
+      "message": "This is a reference to policy_residency.c. But the chip of it8xxx2 has only one power state, which can be looping forward.\nIf there are multiple states or sub-states, priority should be considered.",
+      "parentUuid": "6ea05bd5_df6599a4",
+      "range": {
+        "startLine": 48,
+        "startChar": 2,
+        "endLine": 48,
+        "endChar": 54
+      },
+      "revId": "56416757d37faac0a59ea67b006ebcc98a53db0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
