@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30ebef5f_37182857",
+        "filename": "zephyr/test/drivers/src/ppc.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2021-12-08T18:17:38Z",
+      "side": 1,
+      "message": "Curious what this delay is for. Do we also need it after the other calls to syv682x_emul_set_condition() below?",
+      "revId": "231afc8d0595a18543df692834a7832cd71cfcb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
