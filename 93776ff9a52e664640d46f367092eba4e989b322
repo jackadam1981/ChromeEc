@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc439675_9d5f4d1e",
+        "filename": "zephyr/shim/chip/it8xxx2/power_policy.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-12-08T22:50:46Z",
+      "side": 1,
+      "message": "Change this to PM_STATE_INFO_LIST_FROM_DT_CPU due to a name change from upstream Zephyr.  That will fix the compile failure.",
+      "range": {
+        "startLine": 15,
+        "startChar": 1,
+        "endLine": 15,
+        "endChar": 28
+      },
+      "revId": "93776ff9a52e664640d46f367092eba4e989b322",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
