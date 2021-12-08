@@ -275,20 +275,20 @@ struct ec_thermal_config thermal_params[TEMP_SENSOR_COUNT] = {
 	},
 	[TEMP_SENSOR_CHARGER] = {
 		.temp_host = {
-			[EC_TEMP_THRESH_HIGH] = C_TO_K(100),
-			[EC_TEMP_THRESH_HALT] = C_TO_K(105),
+			[EC_TEMP_THRESH_HIGH] = C_TO_K(74),
+			[EC_TEMP_THRESH_HALT] = C_TO_K(77),
 		},
 		.temp_host_release = {
-			[EC_TEMP_THRESH_HIGH] = C_TO_K(80),
+			[EC_TEMP_THRESH_HIGH] = C_TO_K(68),
 		},
 	},
 	[TEMP_SENSOR_MEMORY] = {
 		.temp_host = {
-			[EC_TEMP_THRESH_HIGH] = C_TO_K(100),
-			[EC_TEMP_THRESH_HALT] = C_TO_K(105),
+			[EC_TEMP_THRESH_HIGH] = C_TO_K(76),
+			[EC_TEMP_THRESH_HALT] = C_TO_K(79),
 		},
 		.temp_host_release = {
-			[EC_TEMP_THRESH_HIGH] = C_TO_K(80),
+			[EC_TEMP_THRESH_HIGH] = C_TO_K(70),
 		},
 	},
 	[TEMP_SENSOR_CPU] = {

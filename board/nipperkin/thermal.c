@@ -38,45 +38,45 @@ struct fan_step {
 static const struct fan_step fan_step_table[] = {
 	{
 		/* level 0 */
-		.on = {-1, 0, 49, -1, -1, -1},
-		.off = {-1, 99, 99, -1, -1, -1},
+		.on = {51, 0, 49, -1, -1, -1},
+		.off = {99, 99, 99, -1, -1, -1},
 		.rpm = {0},
 	},
 	{
 		/* level 1 */
-		.on = {-1, 0, 50, -1, -1, -1},
-		.off = {-1, 99, 48, -1, -1, -1},
+		.on = {52, 0, 50, -1, -1, -1},
+		.off = {50, 99, 48, -1, -1, -1},
 		.rpm = {3000},
 	},
 	{
 		/* level 2 */
-		.on = {-1, 0, 51, -1, -1, -1},
-		.off = {-1, 99, 49, -1, -1, -1},
-		.rpm = {3200},
+		.on = {53, 0, 51, -1, -1, -1},
+		.off = {51, 99, 49, -1, -1, -1},
+		.rpm = {3400},
 	},
 	{
 		/* level 3 */
-		.on = {-1, 0, 52, -1, -1, -1},
-		.off = {-1, 99, 50, -1, -1, -1},
-		.rpm = {3600},
+		.on = {54, 0, 52, -1, -1, -1},
+		.off = {52, 99, 50, -1, -1, -1},
+		.rpm = {3800},
 	},
 	{
 		/* level 4 */
-		.on = {-1, 50, 54, -1, -1, -1},
-		.off = {-1, 47, 51, -1, -1, -1},
-		.rpm = {3900},
+		.on = {56, 50, 54, -1, -1, -1},
+		.off = {53, 47, 51, -1, -1, -1},
+		.rpm = {4100},
 	},
 	{
 		/* level 5 */
-		.on = {-1, 52, 56, -1, -1, -1},
-		.off = {-1, 49, 53, -1, -1, -1},
-		.rpm = {4200},
+		.on = {57, 52, 56, -1, -1, -1},
+		.off = {55, 49, 53, -1, -1, -1},
+		.rpm = {4400},
 	},
 	{
 		/* level 6 */
-		.on = {-1, 100, 100, -1, -1, -1},
-		.off = {-1, 51, 55, -1, -1, -1},
-		.rpm = {4600},
+		.on = {100, 100, 100, -1, -1, -1},
+		.off = {56, 51, 55, -1, -1, -1},
+		.rpm = {4900},
 	},
 };
 
@@ -100,23 +100,30 @@ int fan_table_to_rpm(int fan, int *temp)
 	 *  3. invariant path. (return the current RPM)
 	 */
 	if (temp[TEMP_SENSOR_CHARGER] < prev_tmp[TEMP_SENSOR_CHARGER] ||
-	    temp[TEMP_SENSOR_MEMORY] < prev_tmp[TEMP_SENSOR_MEMORY]) {
+		temp[TEMP_SENSOR_MEMORY] < prev_tmp[TEMP_SENSOR_MEMORY] ||
+		temp[TEMP_SENSOR_SOC] < prev_tmp[TEMP_SENSOR_SOC]) {
 		for (i = current_level; i > 0; i--) {
 			if (temp[TEMP_SENSOR_CHARGER] <
 				fan_step_table[i].off[TEMP_SENSOR_CHARGER] &&
-			    temp[TEMP_SENSOR_MEMORY] <
-				fan_step_table[i].off[TEMP_SENSOR_MEMORY]) {
+				temp[TEMP_SENSOR_MEMORY] <
+				fan_step_table[i].off[TEMP_SENSOR_MEMORY] &&
+				temp[TEMP_SENSOR_SOC] <
+				fan_step_table[i].off[TEMP_SENSOR_SOC]) {
 				current_level = i - 1;
 			} else
 				break;
 		}
 	} else if (temp[TEMP_SENSOR_CHARGER] > prev_tmp[TEMP_SENSOR_CHARGER] ||
-		   temp[TEMP_SENSOR_MEMORY] > prev_tmp[TEMP_SENSOR_MEMORY]) {
+			temp[TEMP_SENSOR_MEMORY]
+				> prev_tmp[TEMP_SENSOR_MEMORY] ||
+			temp[TEMP_SENSOR_SOC] > prev_tmp[TEMP_SENSOR_SOC]) {
 		for (i = current_level; i < NUM_FAN_LEVELS; i++) {
 			if ((temp[TEMP_SENSOR_CHARGER] >
 				fan_step_table[i].on[TEMP_SENSOR_CHARGER] &&
-			    temp[TEMP_SENSOR_MEMORY] >
-				fan_step_table[i].on[TEMP_SENSOR_MEMORY])) {
+				temp[TEMP_SENSOR_MEMORY] >
+				fan_step_table[i].on[TEMP_SENSOR_MEMORY]) ||
+				temp[TEMP_SENSOR_SOC] >
+				fan_step_table[i].on[TEMP_SENSOR_SOC]) {
 				current_level = i + 1;
 			} else
 				break;
