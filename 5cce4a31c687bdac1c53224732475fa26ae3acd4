@@ -22,6 +22,30 @@
       },
       "revId": "5cce4a31c687bdac1c53224732475fa26ae3acd4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba6aa9cb_4aec2b8a",
+        "filename": "zephyr/projects/asurada/hayato/gpio.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2021-12-08T07:35:41Z",
+      "side": 0,
+      "message": "The uart1_rx has been configured as wakeup source pin in uart driver(uart_ite_it8xxx2.c) initialization.",
+      "parentUuid": "7dd3483d_434e288f",
+      "range": {
+        "startLine": 352,
+        "startChar": 3,
+        "endLine": 352,
+        "endChar": 25
+      },
+      "revId": "5cce4a31c687bdac1c53224732475fa26ae3acd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
