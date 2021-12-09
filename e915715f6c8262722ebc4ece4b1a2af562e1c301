@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca4870a5_6ef64c2d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2021-12-09T18:34:34Z",
+      "side": 1,
+      "message": "Is the platform/cr50 firmware_builder.py used? We got the builder to build cr50 by adding the chromeos-cr50-dev dependency to chromeos-ec, and chromeos-cr50-dev doesn\u0027t use this firmware_builder.py.\n\nIs it possible only the platform/ec firmware_builder.py is used?",
+      "revId": "e915715f6c8262722ebc4ece4b1a2af562e1c301",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
