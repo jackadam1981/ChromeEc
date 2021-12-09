@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f0fa0b2_1b93f752",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-12-09T22:41:19Z",
+      "side": 1,
+      "message": "See my comments on b:194163586.\nThis CL chain is adding code complexity and potentially code bloat to support a single use case on a non customer platform.  Let\u0027s move the discussion to that bug.",
+      "revId": "48780845c538ea1bf116a53e8cc58928719a1460",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
