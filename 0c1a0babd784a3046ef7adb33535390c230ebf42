@@ -1,0 +1,158 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70c03f42_41544780",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-12-09T18:47:00Z",
+      "side": 1,
+      "message": "I suppose you mean \"test.\" This will also fix your line over 80 columns.",
+      "range": {
+        "startLine": 10,
+        "startChar": 66,
+        "endLine": 10,
+        "endChar": 72
+      },
+      "revId": "0c1a0babd784a3046ef7adb33535390c230ebf42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a873b31_f29be66e",
+        "filename": "zephyr/dts/bindings/emul/cros,sn5s330.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-12-09T18:47:00Z",
+      "side": 1,
+      "message": "Nit: receives?",
+      "range": {
+        "startLine": 15,
+        "startChar": 33,
+        "endLine": 15,
+        "endChar": 41
+      },
+      "revId": "0c1a0babd784a3046ef7adb33535390c230ebf42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9cbb987_9cc2296b",
+        "filename": "zephyr/emul/emul_sn5s330.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-12-09T18:47:00Z",
+      "side": 1,
+      "message": "Use snake case",
+      "range": {
+        "startLine": 192,
+        "startChar": 12,
+        "endLine": 192,
+        "endChar": 36
+      },
+      "revId": "0c1a0babd784a3046ef7adb33535390c230ebf42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b7f0abc_9b8bf179",
+        "filename": "zephyr/emul/emul_sn5s330.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-12-09T18:47:00Z",
+      "side": 1,
+      "message": "Although this matches a literal reading of the datasheet, it sounds pretty weird. The driver code seems to imply that you need to clear all the edge registers for the interrupt condition to clear, which would be more typical. Maybe ask Aseda what this does in real life. Doesn\u0027t need to change in this CL.",
+      "revId": "0c1a0babd784a3046ef7adb33535390c230ebf42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c7629a6_f75ab066",
+        "filename": "zephyr/emul/emul_sn5s330.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-12-09T18:47:00Z",
+      "side": 1,
+      "message": "I find this to be a weird idiom. The more stuff you add, the more stuff you will need to explicitly reinitialize here that should not change during a device reset.\n\nWhat if the registers were in their own named structure inside of data, so you could just memset that? (Out of scope for this review, but the datasheet shows not all of the fields being 0 out of reset.)",
+      "revId": "0c1a0babd784a3046ef7adb33535390c230ebf42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5fbf7964_22a3dcf0",
+        "filename": "zephyr/emul/emul_sn5s330.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-12-09T18:47:00Z",
+      "side": 1,
+      "message": "Nit: Stylistically, I don\u0027t see a need to line up all the \\s in column 80. It just makes the lines tedious to edit later. But unless you\u0027re going to move all of them to a more convenient position, you should keep the pattern consistent.",
+      "revId": "0c1a0babd784a3046ef7adb33535390c230ebf42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b414dbb_45e294e0",
+        "filename": "zephyr/test/drivers/include/gpio_map.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-12-09T18:47:00Z",
+      "side": 1,
+      "message": "Sort the PPC interrupts by port number. I don\u0027t have an opinion on whether the PPC stuff should be grouped together as it is now, or whether the devices for each port should be grouped together.",
+      "revId": "0c1a0babd784a3046ef7adb33535390c230ebf42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9fe2b87c_49897e28",
+        "filename": "zephyr/test/drivers/src/stubs.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 417,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-12-09T18:47:00Z",
+      "side": 1,
+      "message": "Put this stuff in ascending port order.",
+      "revId": "0c1a0babd784a3046ef7adb33535390c230ebf42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
