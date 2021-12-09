@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2c77719_34ba3bdb",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-12-09T22:24:00Z",
+      "side": 1,
+      "message": "Change this to #elif defined(CONFIG_ARCH_POSIX), which should handle both the native_posix application build, and all the unit tests (which are also POSIX).",
+      "range": {
+        "startLine": 368,
+        "startChar": 0,
+        "endLine": 368,
+        "endChar": 27
+      },
+      "revId": "8174211d9faf6d5fa34f601fefb7e28c15c00d5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
