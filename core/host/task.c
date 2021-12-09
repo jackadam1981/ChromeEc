@@ -311,7 +311,7 @@ void task_print_list(void)
 	ccputs("Name         Events\n");
 
 	for (i = 0; i < TASK_ID_COUNT; i++) {
-		ccprintf("%4d %-16s %08x\n", i, task_names[i], tasks[i].event);
+		ccprintf("%4d %-16s %08lx\n", i, task_names[i], tasks[i].event);
 		cflush();
 	}
 }
