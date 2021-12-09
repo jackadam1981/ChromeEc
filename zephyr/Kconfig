@@ -549,6 +549,11 @@ config PLATFORM_EC_LOW_POWER_IDLE
 	  enabled when the Zephyr power management options are enabled with the
 	  PM option.
 
+config PLATFORM_EC_POWER_COMMON
+	bool "Compile common code for AP power state machine"
+	help
+	  Compile common code for AP power state machine.
+
 config PLATFORM_EC_MKBP_EVENT
     bool "MKBP event"
     help
