@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "be2c10dd_9758bb89",
+        "filename": "driver/ppc/ktu1125.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-12-09T18:10:58Z",
+      "side": 1,
+      "message": "KTU1125 doesn\u0027t support it, but from what I see vSafe0V detection is part of TCPC (Parade\u0027s PS8815 has is). Are you sure it should be part of PPC?",
+      "parentUuid": "6e674500_04643172",
+      "range": {
+        "startLine": 270,
+        "startChar": 11,
+        "endLine": 270,
+        "endChar": 34
+      },
+      "revId": "c0b367e6586f0375f7bd64b50f8619a7f463cd9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cddda9ae_fcae2a91",
         "filename": "driver/ppc/ktu1125.c",
         "patchSetId": 5
@@ -54,6 +78,30 @@
       "writtenOn": "2021-12-08T01:19:10Z",
       "side": 1,
       "message": "I would reach out to the vendor about this. Do they even have a low power mode? I don\u0027t anticipate this API being used. If they don\u0027t, I\u0027d just drop this.",
+      "range": {
+        "startLine": 365,
+        "startChar": 0,
+        "endLine": 387,
+        "endChar": 1
+      },
+      "revId": "c0b367e6586f0375f7bd64b50f8619a7f463cd9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10e093da_e604e117",
+        "filename": "driver/ppc/ktu1125.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 387,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-12-09T18:10:58Z",
+      "side": 1,
+      "message": "You\u0027re absolutely right, they don\u0027t have low power mode. My assumption is that disabling the FETs would save power, and other PPCs disable FETs explicitly too. Why do you think this API will not be used?",
+      "parentUuid": "cddda9ae_fcae2a91",
       "range": {
         "startLine": 365,
         "startChar": 0,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2fba3ee_d98dabc0",
+        "filename": "driver/ppc/ktu1125.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 397,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-12-09T18:10:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e38f60c6_03d068b6",
+      "range": {
+        "startLine": 396,
+        "startChar": 5,
+        "endLine": 397,
+        "endChar": 23
+      },
+      "revId": "c0b367e6586f0375f7bd64b50f8619a7f463cd9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4219691b_98db6dea",
@@ -100,6 +172,30 @@
       "writtenOn": "2021-12-08T01:19:10Z",
       "side": 1,
       "message": "Perhaps in a follow up commit we can rework this to take a cause as a parameter. I think it\u0027d be good to log that it was a VBUS overcurrent vs. VCONN overcurrent.",
+      "range": {
+        "startLine": 497,
+        "startChar": 3,
+        "endLine": 497,
+        "endChar": 24
+      },
+      "revId": "c0b367e6586f0375f7bd64b50f8619a7f463cd9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1f65ba2_df7ded97",
+        "filename": "driver/ppc/ktu1125.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 497,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-12-09T18:10:58Z",
+      "side": 1,
+      "message": "Ack for future b/209989254",
+      "parentUuid": "4219691b_98db6dea",
       "range": {
         "startLine": 497,
         "startChar": 3,
