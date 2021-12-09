@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3aa3bc7_6c52b0ba",
+        "filename": "zephyr/shim/chip/it8xxx2/power_policy.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2021-12-09T02:55:31Z",
+      "side": 1,
+      "message": "OK, this will create another PR.",
+      "parentUuid": "04df17b4_a00db448",
+      "range": {
+        "startLine": 30,
+        "startChar": 11,
+        "endLine": 30,
+        "endChar": 37
+      },
+      "revId": "56416757d37faac0a59ea67b006ebcc98a53db0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6ea05bd5_df6599a4",
@@ -85,6 +109,30 @@
       "side": 1,
       "message": "You should indicate iterating backward to take priority into account. There is only one entry in the array, so it does not matter, but others that abscond code and paste it into their driver would be better informed by adding the comment line.",
       "parentUuid": "5c57d352_b7430102",
+      "range": {
+        "startLine": 48,
+        "startChar": 2,
+        "endLine": 48,
+        "endChar": 54
+      },
+      "revId": "56416757d37faac0a59ea67b006ebcc98a53db0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c211fbc0_9bb9014e",
+        "filename": "zephyr/shim/chip/it8xxx2/power_policy.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2021-12-09T02:55:31Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "03820f46_27f50b08",
       "range": {
         "startLine": 48,
         "startChar": 2,
