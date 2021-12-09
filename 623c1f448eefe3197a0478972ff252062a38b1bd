@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "078b70ef_13af3fa1",
+        "filename": "zephyr/test/drivers/include/gpio_map.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2021-12-09T17:39:59Z",
+      "side": 1,
+      "message": "Only added line. The other changes are from a clang-format.",
+      "range": {
+        "startLine": 29,
+        "startChar": 1,
+        "endLine": 29,
+        "endChar": 70
+      },
+      "revId": "623c1f448eefe3197a0478972ff252062a38b1bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
