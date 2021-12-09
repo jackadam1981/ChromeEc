@@ -959,3 +959,13 @@ __override void lid_angle_peripheral_enable(int enable)
 			keyboard_scan_enable(0, KB_SCAN_DISABLE_LID_ANGLE);
 	}
 }
+
+__override void raa489000_set_tcpc_parameter_1(int port)
+{
+	int rv;
+
+	rv = tcpc_write16(port, RAA489000_TCPC_PARAMETER_1,
+					RAA489000_TCPCFILTER_480US);
+	if (rv)
+		CPRINTS("RAA489000(%d): Failed to set tcpc filter time", port);
+}
