@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0125c9ad_40a51444",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1267126
+      },
+      "writtenOn": "2021-12-09T18:39:35Z",
+      "side": 1,
+      "message": "Now the script fails like this\n\n```\n2021-12-09T06:39:45.737938Z [06:39:45.737] flash_fp_mcu output:\n/usr/local/bin/flash_fp_mcu\nGetting platform name from /etc/lsb-release.\nPlatform name is strongbad (strongbad).\nUsing config for strongbad.\nCannot find GPIO chip: gpiochip392\n```\n\nuh oh!",
+      "revId": "edaeb40e16a8bc50a2049cca774b89082ff8fc0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
