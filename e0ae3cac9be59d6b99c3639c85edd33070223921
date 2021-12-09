@@ -16,6 +16,24 @@
       "message": "Why rv check is needed? Either way you just return the rv.",
       "revId": "e0ae3cac9be59d6b99c3639c85edd33070223921",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a19110c7_6cc77bcb",
+        "filename": "driver/ioexpander/ioexpander_nct38xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 475,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2021-12-09T22:46:38Z",
+      "side": 1,
+      "message": "You are right. its unnecessary check. removing this.",
+      "parentUuid": "96b26cc2_49e9362a",
+      "revId": "e0ae3cac9be59d6b99c3639c85edd33070223921",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
