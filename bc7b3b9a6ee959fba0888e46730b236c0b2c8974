@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f13bf10_b0dcb14b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-12-09T17:08:06Z",
+      "side": 1,
+      "message": "There\u0027s an open bug with blocking items here: b/172293518\n\nPlus I believe there\u0027s already a new VIF format we could update to support (v3.17)",
+      "parentUuid": "e370e1c0_65ab894d",
+      "revId": "bc7b3b9a6ee959fba0888e46730b236c0b2c8974",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d985fe84_5185e2d8",
