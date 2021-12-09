@@ -9,7 +9,7 @@
 #define __CROS_EC_ATOMIC_T_H
 
 #ifndef CONFIG_ZEPHYR
-typedef int atomic_t;
+typedef long atomic_t;
 typedef atomic_t atomic_val_t;
 #else
 #include <sys/atomic.h>
