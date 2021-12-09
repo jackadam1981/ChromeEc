@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "255a78f8_c6c79c38",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 1
+      },
+      "lineNbr": 553,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-12-09T21:40:03Z",
+      "side": 1,
+      "message": "Remove prompt text to convert this is to a helper symbol only.  \n.",
+      "range": {
+        "startLine": 553,
+        "startChar": 7,
+        "endLine": 553,
+        "endChar": 53
+      },
+      "revId": "0ae45494a123799f6e0045265c6444105105228c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f3945ec_0358b384",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 1
+      },
+      "lineNbr": 554,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-12-09T21:40:03Z",
+      "side": 1,
+      "message": "Add a default setting to match the HAS_TASK_CHIPSET setting:\n\n    depends on PLATFORM_EC_POWERSEQ",
+      "revId": "0ae45494a123799f6e0045265c6444105105228c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
