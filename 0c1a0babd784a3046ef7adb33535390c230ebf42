@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7fc51d2c_1666150d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2021-12-09T20:08:51Z",
+      "side": 1,
+      "message": "Oh I meant the dispatch to the driver interrupt handler. But I realize that just saying \"interrupt dispatch\" communicates this already. Thanks!",
+      "parentUuid": "70c03f42_41544780",
+      "range": {
+        "startLine": 10,
+        "startChar": 66,
+        "endLine": 10,
+        "endChar": 72
+      },
+      "revId": "0c1a0babd784a3046ef7adb33535390c230ebf42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9a873b31_f29be66e",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "af3e76f0_da16f59c",
+        "filename": "zephyr/dts/bindings/emul/cros,sn5s330.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2021-12-09T20:08:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a873b31_f29be66e",
+      "range": {
+        "startLine": 15,
+        "startChar": 33,
+        "endLine": 15,
+        "endChar": 41
+      },
+      "revId": "0c1a0babd784a3046ef7adb33535390c230ebf42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c9cbb987_9cc2296b",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-12-09T18:47:00Z",
       "side": 1,
       "message": "Use snake case",
+      "range": {
+        "startLine": 192,
+        "startChar": 12,
+        "endLine": 192,
+        "endChar": 36
+      },
+      "revId": "0c1a0babd784a3046ef7adb33535390c230ebf42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd49ab27_d1bf35cd",
+        "filename": "zephyr/emul/emul_sn5s330.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2021-12-09T20:08:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c9cbb987_9cc2296b",
       "range": {
         "startLine": 192,
         "startChar": 12,
@@ -106,6 +178,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b39ae9ee_344e1982",
+        "filename": "zephyr/emul/emul_sn5s330.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2021-12-09T20:08:51Z",
+      "side": 1,
+      "message": "\u003e I find this to be a weird idiom. The more stuff you add, the more stuff you will need to explicitly reinitialize here that should not change during a device reset.\n\nI don\u0027t see it likely there will be too many fields here that will need to be separately reset; besides the registers mentioned which will end up being structured similarly I think.\n\n\u003e (Out of scope for this review, but the datasheet shows not all of the fields being 0 out of reset.) I was aware of this but I just now realized there is no explicit todo in here for this.\n\nLeaving unresolved for comment.",
+      "parentUuid": "6c7629a6_f75ab066",
+      "revId": "0c1a0babd784a3046ef7adb33535390c230ebf42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5fbf7964_22a3dcf0",
         "filename": "zephyr/emul/emul_sn5s330.c",
         "patchSetId": 3
@@ -117,6 +207,24 @@
       "writtenOn": "2021-12-09T18:47:00Z",
       "side": 1,
       "message": "Nit: Stylistically, I don\u0027t see a need to line up all the \\s in column 80. It just makes the lines tedious to edit later. But unless you\u0027re going to move all of them to a more convenient position, you should keep the pattern consistent.",
+      "revId": "0c1a0babd784a3046ef7adb33535390c230ebf42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d358980b_eb46305c",
+        "filename": "zephyr/emul/emul_sn5s330.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2021-12-09T20:08:51Z",
+      "side": 1,
+      "message": "I should figure out the write things to put in .clang-format to make this automagic.",
+      "parentUuid": "5fbf7964_22a3dcf0",
       "revId": "0c1a0babd784a3046ef7adb33535390c230ebf42",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -138,6 +246,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "671d5734_f71d4840",
+        "filename": "zephyr/test/drivers/include/gpio_map.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2021-12-09T20:08:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1b414dbb_45e294e0",
+      "revId": "0c1a0babd784a3046ef7adb33535390c230ebf42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9fe2b87c_49897e28",
@@ -151,6 +277,24 @@
       "writtenOn": "2021-12-09T18:47:00Z",
       "side": 1,
       "message": "Put this stuff in ascending port order.",
+      "revId": "0c1a0babd784a3046ef7adb33535390c230ebf42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b11b45f8_d9da4112",
+        "filename": "zephyr/test/drivers/src/stubs.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 417,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2021-12-09T20:08:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9fe2b87c_49897e28",
       "revId": "0c1a0babd784a3046ef7adb33535390c230ebf42",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
