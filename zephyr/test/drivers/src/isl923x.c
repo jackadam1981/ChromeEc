@@ -673,6 +673,36 @@ static void test_init(void)
 	system_jumped_late_mock.ret_val = false;
 }
 
+static void test_isl923x_is_acok(void)
+{
+	const struct emul *isl923x_emul = ISL923X_EMUL;
+	struct i2c_emul *i2c_emul = isl923x_emul_get_i2c_emul(isl923x_emul);
+	enum ec_error_list rv;
+	bool acok;
+
+	/* Part 1: invalid charger number */
+	rv = raa489000_is_acok(board_get_charger_chip_count() + 1, &acok);
+	zassert_equal(EC_ERROR_INVAL, rv, "Expected %d but got %d",
+		      EC_ERROR_INVAL, rv);
+
+	/* Part 2: error accessing register */
+	i2c_common_emul_set_read_fail_reg(i2c_emul, ISL9238_REG_INFO2);
+
+	rv = raa489000_is_acok(CHARGER_NUM, &acok);
+	zassert_equal(EC_ERROR_INVAL, rv, "Expected %d but got %d",
+		      EC_ERROR_INVAL, rv);
+
+	i2c_common_emul_set_read_fail_reg(i2c_emul,
+					  I2C_COMMON_EMUL_NO_FAIL_REG);
+
+	/* Part 3: successful path */
+	raa489000_emul_set_acok_pin(isl923x_emul, 1);
+
+	rv = raa489000_is_acok(CHARGER_NUM, &acok);
+	zassert_equal(EC_SUCCESS, rv, "Expected %d but got %d", EC_SUCCESS, rv);
+	zassert_true(acok, "AC OK is false");
+}
+
 void test_suite_isl923x(void)
 {
 	ztest_test_suite(isl923x,
@@ -691,6 +721,7 @@ void test_suite_isl923x(void)
 			 ztest_unit_test(test_comparator_inversion),
 			 ztest_unit_test(test_discharge_on_ac),
 			 ztest_unit_test(test_get_vbus_voltage),
-			 ztest_unit_test(test_init));
+			 ztest_unit_test(test_init),
+			 ztest_unit_test(test_isl923x_is_acok));
 	ztest_run_test_suite(isl923x);
 }
