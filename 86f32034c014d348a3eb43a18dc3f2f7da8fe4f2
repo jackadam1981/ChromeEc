@@ -16,6 +16,29 @@
       "message": "verified by the follows steps:\n1. i2cxfer w 0 0x34 0x11 0x38 \u0026\u0026 i2cxfer w 0 0x34 0x12 0x7b\n2. i2cxfer r 0 0x34 0x11(return 0x38) \u0026\u0026 i2cxfer r 0 0x34 0x12(return 0x7b)\n3. the device can not charge\n4. the device can charge after reboot with the CL, check the bugged bits were cleared",
       "revId": "86f32034c014d348a3eb43a18dc3f2f7da8fe4f2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17240c47_7ce110ab",
+        "filename": "board/kakadu/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 540,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-12-09T05:17:35Z",
+      "side": 1,
+      "message": "should we do this in mt6370 driver instead?",
+      "range": {
+        "startLine": 540,
+        "startChar": 12,
+        "endLine": 540,
+        "endChar": 26
+      },
+      "revId": "86f32034c014d348a3eb43a18dc3f2f7da8fe4f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
