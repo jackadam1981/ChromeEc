@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e15aa9f1_974f8ab3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1346692
+      },
+      "writtenOn": "2021-12-09T04:28:27Z",
+      "side": 1,
+      "message": "Build error:\nchromeos-ec-0.0.1-r5365: \u001b[01m\u001b[Kboard/ampton/battery.c:131:6:\u001b[m\u001b[K \u001b[01;31m\u001b[Kerror: \u001b[m\u001b[K\u0027\u001b[01m\u001b[Kconst struct fet_info\u001b[m\u001b[K\u0027 has no member named \u0027\u001b[01m\u001b[Kcfet_mask\u001b[m\u001b[K\u0027; did you mean \u0027\u001b[01m\u001b[Kreg_mask\u001b[m\u001b[K\u0027?\nchromeos-ec-0.0.1-r5365:      .\u001b[01;31m\u001b[Kcfet_mask\u001b[m\u001b[K \u003d 0x0004,\nchromeos-ec-0.0.1-r5365:       \u001b[01;31m\u001b[K^~~~~~~~~\u001b[m\u001b[K\nchromeos-ec-0.0.1-r5365:       \u001b[32m\u001b[Kreg_mask\u001b[m\u001b[K\nchromeos-ec-0.0.1-r5365: \u001b[01m\u001b[Kboard/ampton/battery.c:131:18:\u001b[m\u001b[K \u001b[01;31m\u001b[Kerror: \u001b[m\u001b[Kexcess elements in struct initializer [\u001b[01;31m\u001b[K-Werror\u001b[m\u001b[K]\nchromeos-ec-0.0.1-r5365:      .cfet_mask \u003d \u001b[01;31m\u001b[K0x0004\u001b[m\u001b[K,\nchromeos-ec-0.0.1-r5365:                   \u001b[01;31m\u001b[K^~~~~~\u001b[m\u001b[K\nchromeos-ec-0.0.1-r5365: \u001b[01m\u001b[Kboard/ampton/battery.c:131:18:\u001b[m\u001b[K \u001b[01;36m\u001b[Knote: \u001b[m\u001b[K(near initialization for \u0027\u001b[01m\u001b[Kboard_battery_info[3].fuel_gauge.fet\u001b[m\u001b[K\u0027)\nchromeos-ec-0.0.1-r5365: \u001b[01m\u001b[Kboard/ampton/battery.c:132:6:\u001b[m\u001b[K \u001b[01;31m\u001b[Kerror: \u001b[m\u001b[K\u0027\u001b[01m\u001b[Kconst struct fet_info\u001b[m\u001b[K\u0027 has no member named \u0027\u001b[01m\u001b[Kcfet_off_val\u001b[m\u001b[K\u0027\nchromeos-ec-0.0.1-r5365:      .\u001b[01;31m\u001b[Kcfet_off_val\u001b[m\u001b[K \u003d 0x0004\nchromeos-ec-0.0.1-r5365:       \u001b[01;31m\u001b[K^~~~~~~~~~~~\u001b[m\u001b[K\nchromeos-ec-0.0.1-r5365: \u001b[01m\u001b[Kboard/ampton/battery.c:132:21:\u001b[m\u001b[K \u001b[01;31m\u001b[Kerror: \u001b[m\u001b[Kexcess elements in struct initializer [\u001b[01;31m\u001b[K-Werror\u001b[m\u001b[K]\nchromeos-ec-0.0.1-r5365:      .cfet_off_val \u003d \u001b[01;31m\u001b[K0x0004\u001b[m\u001b[K\nchromeos-ec-0.0.1-r5365:                      \u001b[01;31m\u001b[K^~~~~~\u001b[m\u001b[K\nchromeos-ec-0.0.1-r5365: \u001b[01m\u001b[Kboard/ampton/battery.c:132:21:\u001b[m\u001b[K \u001b[01;36m\u001b[Knote: \u001b[m\u001b[K(near initialization for \u0027\u001b[01m\u001b[Kboard_battery_info[3].fuel_gauge.fet\u001b[m\u001b[K\u0027)\nchromeos-ec-0.0.1-r5365: \u001b[01m\u001b[Kcc1:\u001b[m\u001b[K \u001b[01;31m\u001b[Kerror: \u001b[m\u001b[Kunrecognized command line option \u0027\u001b[01m\u001b[K-Wno-address-of-packed-member\u001b[m\u001b[K\u0027 [\u001b[01;31m\u001b[K-Werror\u001b[m\u001b[K]\nchromeos-ec-0.0.1-r5365: cc1: all warnings being treated as errors",
+      "revId": "d949b113016d8d8ff213c16c60138a17c8bb4268",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
