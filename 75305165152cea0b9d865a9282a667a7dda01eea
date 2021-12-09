@@ -33,6 +33,23 @@
       "message": "Could you try \"emerge-trogdor chromeos-zephyr\" too? Some errors happens when building the Zephyr images.",
       "revId": "75305165152cea0b9d865a9282a667a7dda01eea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3924407a_354cfa84",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1525237
+      },
+      "writtenOn": "2021-12-09T00:38:43Z",
+      "side": 1,
+      "message": "Hi Sue,\ncq status looks fine from other CL.\nI think you may verify locally by below command :\n(chroot) sr/platform/ec/ \"zmake -D testall\"",
+      "revId": "75305165152cea0b9d865a9282a667a7dda01eea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
