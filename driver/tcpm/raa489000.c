@@ -55,6 +55,11 @@ int raa489000_set_output_current(int port, enum tcpc_rp_value rp)
 				regval);
 }
 
+__overridable void raa489000_set_tcpc_parameter_1(int port)
+{
+	/* Default setting tcpcfilter is 400us */
+}
+
 int raa489000_init(int port)
 {
 	int rv;
@@ -224,6 +229,9 @@ int raa489000_init(int port)
 	rv = tcpc_write16(port, RAA489000_TCPC_SETTING1, regval);
 	if (rv)
 		CPRINTS("c%d: failed to set TCPCIv1.0 mode", port);
+
+	/* Setting tcpc filter time */
+	raa489000_set_tcpc_parameter_1(port);
 
 	/*
 	 * Set Vbus OCP UV here, PD tasks will set target current
