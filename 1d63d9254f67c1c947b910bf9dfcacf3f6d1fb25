@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "207e4127_fc26c30c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-12-09T23:51:35Z",
+      "side": 1,
+      "message": "Nuvoton added this driver to zephyr upstream. https://github.com/zephyrproject-rtos/zephyr/blob/main/drivers/gpio/gpio_nct38xx_port.c.\n\nThe get_port() routine is currently only used by the servo_v4 code, so I don\u0027t think this is needed.\n\nIf you have a use case for ioex_get_port(), then we should update the shim driver.\n\nMichal indicated that there was an issue with adding this to the shim however:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3262097/5..7/zephyr/shim/src/ioex.c#b208",
+      "revId": "1d63d9254f67c1c947b910bf9dfcacf3f6d1fb25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
