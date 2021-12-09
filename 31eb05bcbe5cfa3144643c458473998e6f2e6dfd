@@ -18,6 +18,92 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "d555f171_7fba906d",
+        "filename": "zephyr/emul/CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-12-09T23:24:49Z",
+      "side": 1,
+      "message": "As follow up CL, I suggest moving all the TCPC related emulator files into a sub-directory.",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 0
+      },
+      "revId": "31eb05bcbe5cfa3144643c458473998e6f2e6dfd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4633b1e_6516206c",
+        "filename": "zephyr/emul/Kconfig.tcpci",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-12-09T23:24:49Z",
+      "side": 1,
+      "message": "Delete the prompt text.  \"select\" statements should only be used with helper configs.  Update the help text to indicate this option is selected automatically and cannot be enabled/disabled by the user.",
+      "range": {
+        "startLine": 25,
+        "startChar": 6,
+        "endLine": 25,
+        "endChar": 54
+      },
+      "revId": "31eb05bcbe5cfa3144643c458473998e6f2e6dfd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1b0324e_e4c9fc56",
+        "filename": "zephyr/emul/Kconfig.tcpci",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-12-09T23:24:49Z",
+      "side": 1,
+      "message": "I find this name confusing.  See b:210039678",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 19
+      },
+      "revId": "31eb05bcbe5cfa3144643c458473998e6f2e6dfd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c4e708c_aa540150",
+        "filename": "zephyr/emul/emul_common_tcpci_partner.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-12-09T23:24:49Z",
+      "side": 1,
+      "message": "See b:210039678, maybe name this file emul_tcpci_partner_common.c instead?",
+      "revId": "31eb05bcbe5cfa3144643c458473998e6f2e6dfd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "7e126268_3e153156",
@@ -31,6 +117,30 @@
       "writtenOn": "2021-12-08T18:26:32Z",
       "side": 1,
       "message": "In future CLs, I\u0027d try to call out new fields in cases like this to make the review a bit easier.",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 22
+      },
+      "revId": "31eb05bcbe5cfa3144643c458473998e6f2e6dfd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "756df794_9f353c87",
+        "filename": "zephyr/include/emul/emul_common_tcpci_partner.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-12-09T23:24:49Z",
+      "side": 1,
+      "message": "+1, to adding these fields in a separate CL.",
+      "parentUuid": "7e126268_3e153156",
       "range": {
         "startLine": 40,
         "startChar": 0,
