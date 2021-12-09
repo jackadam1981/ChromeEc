@@ -22,6 +22,30 @@
       },
       "revId": "91aa0f47b5d7085d1af9a1bba33acc14e8482fa0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "575b74af_837c3b2e",
+        "filename": "common/ioexpander.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-12-09T22:44:43Z",
+      "side": 1,
+      "message": "Let\u0027s discuss the overall approach on the bug.  See\nhttp://issuetracker.google.com/194163586#comment4",
+      "parentUuid": "de210aaa_8a4c5771",
+      "range": {
+        "startLine": 218,
+        "startChar": 0,
+        "endLine": 218,
+        "endChar": 49
+      },
+      "revId": "91aa0f47b5d7085d1af9a1bba33acc14e8482fa0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
