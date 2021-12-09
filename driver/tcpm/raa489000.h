@@ -18,6 +18,7 @@
 
 /* Vendor registers */
 #define RAA489000_TCPC_SETTING1			0x80
+#define RAA489000_TCPC_PARAMETER_1		0x82
 #define RAA489000_VBUS_VOLTAGE_TARGET		0x90
 #define RAA489000_VBUS_CURRENT_TARGET		0x92
 #define RAA489000_VBUS_OCP_UV_THRESHOLD		0x94
@@ -28,6 +29,10 @@
 /* TCPC_SETTING_1 */
 #define RAA489000_TCPCV1_0_EN		BIT(0)
 #define RAA489000_TCPC_PWR_CNTRL	BIT(4)
+
+/* TCPC_PARAMETER_1 */
+#define RAA489000_TCPCFILTER_400US		0x190
+#define RAA489000_TCPCFILTER_480US		0x1E0
 
 /* VBUS_CURRENT_TARGET */
 #define RAA489000_VBUS_CURRENT_TARGET_3A	0x66 /* 3.0A + iOvershoot */
@@ -80,6 +85,7 @@
  * @return	Zero if the current limit set was successful, non-zero otherwise
  */
 int raa489000_set_output_current(int port, enum tcpc_rp_value rp);
+__override_proto void raa489000_set_tcpc_parameter_1(int port);
 
 extern const struct tcpm_drv raa489000_tcpm_drv;
 
