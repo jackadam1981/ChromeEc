@@ -168,45 +168,47 @@ BUILD_ASSERT(ARRAY_SIZE(temp_sensors) == TEMP_SENSOR_COUNT);
 /*
  * TODO(b/202062363): Remove when clang is fixed.
  */
-#define THERMAL_A \
+#define THERMAL_Memory \
 	{ \
 		.temp_host = { \
 			[EC_TEMP_THRESH_WARN] = 0, \
-			[EC_TEMP_THRESH_HIGH] = C_TO_K(70), \
-			[EC_TEMP_THRESH_HALT] = C_TO_K(85), \
+			[EC_TEMP_THRESH_HIGH] = C_TO_K(85), \
+			[EC_TEMP_THRESH_HALT] = C_TO_K(95), \
 		}, \
 		.temp_host_release = { \
 			[EC_TEMP_THRESH_WARN] = 0, \
-			[EC_TEMP_THRESH_HIGH] = C_TO_K(65), \
+			[EC_TEMP_THRESH_HIGH] = C_TO_K(70), \
 			[EC_TEMP_THRESH_HALT] = 0, \
 		}, \
 	}
-__maybe_unused static const struct ec_thermal_config thermal_a = THERMAL_A;
+__maybe_unused static const struct ec_thermal_config thermal_memory =
+	THERMAL_MEMORY;
 
 /*
  * TODO(b/202062363): Remove when clang is fixed.
  */
-#define THERMAL_B \
+#define THERMAL_Charger \
 	{ \
 		.temp_host = { \
 			[EC_TEMP_THRESH_WARN] = 0, \
-			[EC_TEMP_THRESH_HIGH] = C_TO_K(73), \
+			[EC_TEMP_THRESH_HIGH] = C_TO_K(80), \
 			[EC_TEMP_THRESH_HALT] = C_TO_K(85), \
 		}, \
 		.temp_host_release = { \
 			[EC_TEMP_THRESH_WARN] = 0, \
-			[EC_TEMP_THRESH_HIGH] = C_TO_K(65), \
+			[EC_TEMP_THRESH_HIGH] = C_TO_K(55), \
 			[EC_TEMP_THRESH_HALT] = 0, \
 		}, \
 	}
-__maybe_unused static const struct ec_thermal_config thermal_b = THERMAL_B;
+__maybe_unused static const struct ec_thermal_config thermal_charger =
+	THERMAL_CHARGER;
 
 struct ec_thermal_config thermal_params[TEMP_SENSOR_COUNT];
 
 static void setup_thermal(void)
 {
-	thermal_params[TEMP_SENSOR_1] = thermal_a;
-	thermal_params[TEMP_SENSOR_2] = thermal_b;
+	thermal_params[TEMP_SENSOR_1] = thermal_MEMORY;
+	thermal_params[TEMP_SENSOR_2] = thermal_CHARGER;
 }
 
 void board_hibernate(void)
