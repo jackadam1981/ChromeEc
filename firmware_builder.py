@@ -12,6 +12,7 @@ gets invoked by chromite/api/controller/firmware.py.
 import argparse
 import multiprocessing
 import os
+import re
 import subprocess
 import sys
 
@@ -150,6 +151,25 @@ def test(opts):
                    cwd=os.path.dirname(__file__),
                    check=True)
 
+def gcc_version_ok():
+    """Verifies that the installed arm-eabi-gcc is of version 11.2.0"""
+    try:
+        cmd = ['/opt/coreboot-sdk/bin/arm-eabi-gcc', '--version']
+        rv = subprocess.run(cmd, stdout=subprocess.PIPE,
+                            stderr=subprocess.PIPE, check=True)
+        vers = rv.stdout.decode('utf-8').splitlines()[0]
+        return re.match(r'^arm-eabi-gcc .* 11.2.0$', vers) is not None
+    except (FileNotFoundError, subprocess.CalledProcessError):
+        return False
+
+def enforce_gcc_version():
+    """Checks installed arm-eabi-gcc version and updates it if necessary"""
+    if gcc_version_ok():
+        return True
+
+    cmd = ['sudo', 'emerge', 'coreboot-sdk']
+    subprocess.run(cmd, check=True)
+    return gcc_version_ok()
 
 def main(args):
     """Builds, bundles, or tests all of the EC targets.
@@ -164,6 +184,9 @@ def main(args):
 
     # Run selected sub command function
     try:
+        # First lLet's make sure the required gcc version is available.
+        if not enforce_gcc_version():
+            return 1
         opts.func(opts)
     except subprocess.CalledProcessError:
         return 1
