@@ -39,6 +39,30 @@
       },
       "revId": "86f32034c014d348a3eb43a18dc3f2f7da8fe4f2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd22c3a2_019c7f6c",
+        "filename": "board/kakadu/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 540,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2021-12-09T05:49:15Z",
+      "side": 1,
+      "message": "Since we didn\u0027t see this happen on Kodama, I think no",
+      "parentUuid": "17240c47_7ce110ab",
+      "range": {
+        "startLine": 540,
+        "startChar": 12,
+        "endLine": 540,
+        "endChar": 26
+      },
+      "revId": "86f32034c014d348a3eb43a18dc3f2f7da8fe4f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
