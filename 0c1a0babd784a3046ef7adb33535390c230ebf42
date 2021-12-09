@@ -196,6 +196,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ffeed15d_8fd9b820",
+        "filename": "zephyr/emul/emul_sn5s330.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2021-12-09T20:10:12Z",
+      "side": 1,
+      "message": "I accidentally included my response in the 2nd block quote.",
+      "parentUuid": "b39ae9ee_344e1982",
+      "revId": "0c1a0babd784a3046ef7adb33535390c230ebf42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5fbf7964_22a3dcf0",
         "filename": "zephyr/emul/emul_sn5s330.c",
         "patchSetId": 3
