@@ -212,6 +212,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6919b44_ae506ef9",
+        "filename": "zephyr/emul/emul_sn5s330.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-12-10T18:02:54Z",
+      "side": 1,
+      "message": "\u003e I don\u0027t see it likely there will be too many fields here that will need to be separately reset; besides the registers mentioned which will end up being structured similarly I think.\n\nThere are 3 fields now. More would be worse, but I think what throws me here is that this reset function is touching things whose values don\u0027t need to change and will never need to change. If it were particularly tedious or slow to only reset the registers, that would make sense. But in this case, it seems like refactoring struct sn5s330_emul_data would make this function more explicit, shorter, and faster.\n\nThat would be a considerable delta, though, so it\u0027s probably best to leave it as is in this CL. I will take up my case in another forum. 😊",
+      "parentUuid": "ffeed15d_8fd9b820",
+      "revId": "0c1a0babd784a3046ef7adb33535390c230ebf42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5fbf7964_22a3dcf0",
