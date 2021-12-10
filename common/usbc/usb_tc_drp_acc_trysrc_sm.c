@@ -852,8 +852,10 @@ void tc_pd_connection(int port, int en)
 
 		TC_SET_FLAG(port, TC_FLAGS_PARTNER_PD_CAPABLE);
 		/* If a PD device is attached then disable deep sleep */
-		if (IS_ENABLED(CONFIG_LOW_POWER_IDLE))
+		if (IS_ENABLED(CONFIG_LOW_POWER_IDLE)) {
+			ccprints("p%d set capable", port);
 			tc_set_pd_sleep_mask(port, en);
+		}
 
 		/*
 		 * Update the mux state, only when the PD capable flag
@@ -866,8 +868,10 @@ void tc_pd_connection(int port, int en)
 	} else {
 		TC_CLR_FLAG(port, TC_FLAGS_PARTNER_PD_CAPABLE);
 		/* If a PD device isn't attached then enable deep sleep */
-		if (IS_ENABLED(CONFIG_LOW_POWER_IDLE))
+		if (IS_ENABLED(CONFIG_LOW_POWER_IDLE)) {
+			ccprints("p%d clear capable", port);
 			tc_set_pd_sleep_mask(port, en);
+		}
 	}
 }
 
