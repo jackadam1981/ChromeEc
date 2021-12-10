@@ -822,6 +822,8 @@ __override void tc_set_pd_sleep_mask(int port)
 		disable_sleep(SLEEP_MASK_USB_PD);
 	else
 		enable_sleep(SLEEP_MASK_USB_PD);
+
+	ccprints("p%d prevent_deep_sleep = %d", port, prevent_deep_sleep);
 }
 
 static void it83xx_tcpm_hook_connect(void)
@@ -859,6 +861,7 @@ static void it83xx_tcpm_hook_connect(void)
 #endif
 	/* Enable PD PHY Tx and Rx module since type-c has connected. */
 	USBPD_ENABLE_BMC_PHY(port);
+	ccprints("p%d hook connect En BMC", port);
 	/*
 	 * After we're in attached.[SRC, SNK] states and before we receive
 	 * [GoodCRC of SRC_CAP, SRC_CAP] this period time, if EC goes to
@@ -903,6 +906,7 @@ static void it83xx_tcpm_hook_disconnect(void)
 	if (IS_ENABLED(CONFIG_USB_PD_DECODE_SOP))
 		sop_prime_en[port] = 0;
 	USBPD_DISABLE_BMC_PHY(port);
+	ccprints("p%d hook disconnect Dis BMC", port);
 	/*
 	 * Since PD BMC PHY is off, then EC can go to deep doze mode and
 	 * turn off pd clock.

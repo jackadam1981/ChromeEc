@@ -839,9 +839,10 @@ void tc_pd_connection(int port, int en)
 
 		TC_SET_FLAG(port, TC_FLAGS_PARTNER_PD_CAPABLE);
 		/* If a PD device is attached then disable deep sleep */
-		if (IS_ENABLED(CONFIG_USB_PD_TCPC_ON_CHIP))
+		if (IS_ENABLED(CONFIG_USB_PD_TCPC_ON_CHIP)) {
+			ccprints("p%d set capable", port);
 			tc_set_pd_sleep_mask(port);
-		else if (IS_ENABLED(CONFIG_LOW_POWER_IDLE))
+		} else if (IS_ENABLED(CONFIG_LOW_POWER_IDLE))
 			disable_sleep(SLEEP_MASK_USB_PD);
 
 		/*
@@ -855,9 +856,10 @@ void tc_pd_connection(int port, int en)
 	} else {
 		TC_CLR_FLAG(port, TC_FLAGS_PARTNER_PD_CAPABLE);
 		/* If a PD device isn't attached then enable deep sleep */
-		if (IS_ENABLED(CONFIG_USB_PD_TCPC_ON_CHIP))
+		if (IS_ENABLED(CONFIG_USB_PD_TCPC_ON_CHIP)) {
+			ccprints("p%d clear capable", port);
 			tc_set_pd_sleep_mask(port);
-		else if (IS_ENABLED(CONFIG_LOW_POWER_IDLE)) {
+		} else if (IS_ENABLED(CONFIG_LOW_POWER_IDLE)) {
 			int i;
 
 			/* If all ports are not connected, allow the sleep */
@@ -868,7 +870,6 @@ void tc_pd_connection(int port, int en)
 			if (i == board_get_usb_pd_port_count())
 				enable_sleep(SLEEP_MASK_USB_PD);
 		}
-
 	}
 }
 
