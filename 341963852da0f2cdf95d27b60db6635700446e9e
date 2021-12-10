@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "af73dae2_a2086ac0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1293891
+      },
+      "writtenOn": "2021-12-10T06:48:10Z",
+      "side": 1,
+      "message": "After modify usbc_config.c path to PLATFORM_EC_BOARD in CMakeLists.txt, \"zmake -D testall\" doesn\u0027t show error message now. \"emerge-trogdor chromeos-zephyr\" also pass. Thank you!!",
+      "revId": "341963852da0f2cdf95d27b60db6635700446e9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
