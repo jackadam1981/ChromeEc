@@ -234,6 +234,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "631029c2_f4ac7675",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2021-12-10T10:00:56Z",
+      "side": 1,
+      "message": "I dump charge request, it will show -1 ma.\nat ocpc_config_secondary_charger entry by charge request.\nhow about append AC status in this moment.",
+      "parentUuid": "15f08815_cb556884",
+      "revId": "634f55da7278b365366670729829ece3e2409060",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "69798848_6462ed35",
