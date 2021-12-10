@@ -17,12 +17,14 @@ LOG_MODULE_REGISTER(syv682x);
 #include <stdint.h>
 #include <string.h>
 
+#include "emul/emul_common_i2c.h"
 #include "emul/emul_syv682x.h"
 
 #define EMUL_REG_COUNT (SYV682X_CONTROL_4_REG + 1)
 #define EMUL_REG_IS_VALID(reg) (reg >= 0 && reg < EMUL_REG_COUNT)
 
 struct syv682x_emul_data {
+	struct i2c_common_emul_data common;
 	/** I2C emulator detail */
 	struct i2c_emul emul;
 	/** Smart battery device being emulated */
@@ -56,6 +58,7 @@ struct syv682x_emul_cfg {
 	uint16_t addr;
 	/** Pointer to runtime data */
 	struct syv682x_emul_data *data;
+	struct i2c_common_emul_cfg common;
 };
 
 /* Asserts or deasserts the interrupt signal to the EC. */
@@ -163,6 +166,7 @@ int syv682x_emul_get_reg(struct i2c_emul *emul, int reg, uint8_t *val)
  *
  * @return 0 on success, -EIO on general input / output error
  */
+#if 0
 static int syv682x_emul_transfer(struct i2c_emul *emul, struct i2c_msg *msgs,
 			      int num_msgs, int addr)
 {
@@ -258,12 +262,89 @@ static int syv682x_emul_transfer(struct i2c_emul *emul, struct i2c_msg *msgs,
 		return -EIO;
 	}
 }
+#endif
 
+static int syv682x_emul_read_byte(struct i2c_emul *emul, int reg, uint8_t *val,
+		int bytes)
+{
+	struct syv682x_emul_data *data =
+		CONTAINER_OF(emul, struct syv682x_emul_data, emul);
+
+	__ASSERT(bytes == 1,
+			"SYV682x: Reading %i bytes from 1-byte register 0x%x",
+			bytes, reg);
+	if (!EMUL_REG_IS_VALID(reg))
+		return -EIO;
+
+	*val = data->reg[reg];
+
+	switch (reg) {
+	/*
+	 * STATUS and the interrupt bits of CONTROL_4 are clear-on-read (if the
+	 * underlying condition has cleared).
+	 */
+	case SYV682X_STATUS_REG:
+		syv682x_emul_set_reg(emul, reg, data->status_cond);
+		break;
+	case SYV682X_CONTROL_3_REG:
+		/* Update CONTROL_3[BUSY] based on the busy count. */
+		if (data->busy_read_count > 0) {
+			if (--data->busy_read_count == 0)
+				data->reg[reg] &= ~SYV682X_BUSY;
+		}
+		break;
+	case SYV682X_CONTROL_4_REG:
+		syv682x_emul_set_reg(emul, reg,
+				(*val & ~SYV682X_CONTROL_4_INT_MASK) |
+				data->control_4_cond);
+		break;
+	default:
+		break;
+	}
+
+	return 0;
+}
+
+static int syv682x_emul_write_byte(struct i2c_emul *emul, int reg, uint8_t val,
+				   int bytes)
+{
+	struct syv682x_emul_data *data =
+		CONTAINER_OF(emul, struct syv682x_emul_data, emul);
+
+	__ASSERT(bytes == 1,
+			"SYV682x: Writing %i bytes to 1-byte register 0x%x",
+			bytes, reg);
+	if (!EMUL_REG_IS_VALID(reg))
+		return -EIO;
+
+	switch (reg) {
+	case SYV682X_CONTROL_1_REG:
+		/*
+		 * If OVP or TSD is active, the power path stays
+		 * disabled.
+		 */
+		if (data->status_cond & (SYV682X_STATUS_TSD |
+					SYV682X_STATUS_OVP))
+			val |= SYV682X_CONTROL_1_PWR_ENB;
+		break;
+	case SYV682X_CONTROL_4_REG:
+		/* Interrupt bits are read-only. */
+		val &= ~SYV682X_CONTROL_4_INT_MASK;
+		break;
+	default:
+		break;
+	}
+
+	data->reg[reg] = val;
+	return 0;
+}
 /* Device instantiation */
 
+#if 0
 static struct i2c_emul_api syv682x_emul_api = {
 	.transfer = syv682x_emul_transfer,
 };
+#endif
 
 /**
  * @brief Set up a new SYV682x emulator
@@ -283,11 +364,12 @@ static int syv682x_emul_init(const struct emul *emul,
 	struct syv682x_emul_data *data = cfg->data;
 	int ret;
 
-	data->emul.api = &syv682x_emul_api;
+	data->emul.api = &i2c_common_emul_api;
 	data->emul.addr = cfg->addr;
 	data->i2c = parent;
 	data->cfg = cfg;
 	memset(data->reg, 0, sizeof(data->reg));
+	i2c_common_emul_init(&data->common);
 
 	ret = i2c_emul_register(parent, emul->dev_label, &data->emul);
 	if (ret)
@@ -305,6 +387,10 @@ static int syv682x_emul_init(const struct emul *emul,
 
 #define SYV682X_EMUL(n)                                                        \
 	static struct syv682x_emul_data syv682x_emul_data_##n = {              \
+		.common = { \
+			.write_byte = syv682x_emul_write_byte, \
+			.read_byte = syv682x_emul_read_byte, \
+		}, \
 		.frs_en_gpio_port = DEVICE_DT_GET(DT_GPIO_CTLR(                \
 					DT_INST_PROP(n, frs_en_gpio), gpios)), \
 		.frs_en_gpio_pin = DT_GPIO_PIN(                                \
@@ -318,6 +404,11 @@ static int syv682x_emul_init(const struct emul *emul,
 		.i2c_label = DT_INST_BUS_LABEL(n),                             \
 		.data = &syv682x_emul_data_##n,                                \
 		.addr = DT_INST_REG_ADDR(n),                                   \
+		.common = { \
+			.i2c_label = DT_INST_BUS_LABEL(n), \
+			.dev_label = DT_INST_LABEL(n), \
+			.addr = DT_INST_REG_ADDR(n), \
+		}, \
 	};                                                                     \
 	EMUL_DEFINE(syv682x_emul_init, DT_DRV_INST(n), &syv682x_emul_cfg_##n,  \
 		    &syv682x_emul_data_##n)
