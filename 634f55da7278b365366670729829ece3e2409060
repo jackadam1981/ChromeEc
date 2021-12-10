@@ -252,6 +252,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "990f4e36_a13b0950",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-12-10T18:13:39Z",
+      "side": 1,
+      "message": "Did that work for you? I would have expected this function to only be called if AC is present. However, a charge request of -1mA isn\u0027t really valid. An alternative check could be to add that current_ma \u003e\u003d 0mA.",
+      "parentUuid": "631029c2_f4ac7675",
+      "revId": "634f55da7278b365366670729829ece3e2409060",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "69798848_6462ed35",
