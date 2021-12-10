@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9a40d766_152a649e",
+        "filename": "common/battery_fuel_gauge.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2021-12-10T19:21:51Z",
+      "side": 1,
+      "message": "if we give guard clause in before  declarations, it results in build error - \nerror: ISO C90 forbids mixed declarations and code [-Werror\u003ddeclaration-after-statement].\nHence, given guard after declarations in patchset 19.",
+      "parentUuid": "4addc428_7e10060d",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 34
+      },
+      "revId": "2963640ad4b9de70fae582304312bce7494de9c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cd04eec1_223a595e",
         "filename": "common/battery_fuel_gauge.c",
         "patchSetId": 18
@@ -37,6 +61,30 @@
       "writtenOn": "2021-12-07T16:18:14Z",
       "side": 1,
       "message": "return true;",
+      "range": {
+        "startLine": 56,
+        "startChar": 2,
+        "endLine": 56,
+        "endChar": 11
+      },
+      "revId": "2963640ad4b9de70fae582304312bce7494de9c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6cf595bb_9681f995",
+        "filename": "common/battery_fuel_gauge.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2021-12-10T19:21:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cd04eec1_223a595e",
       "range": {
         "startLine": 56,
         "startChar": 2,
