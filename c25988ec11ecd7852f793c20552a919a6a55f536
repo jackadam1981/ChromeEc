@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0b6cea4_95133bc5",
+        "filename": "zephyr/test/drivers/src/isl923x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 685,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-12-10T18:37:30Z",
+      "side": 1,
+      "message": "I think zassert_equal might print out what it expected and what it got already at high enough debug levels. In any case, I think a more useful error message would describe what was supposed to happen at a higher level, e.g., \"Invalid charger chip, but AC OK succeeded.\"",
+      "revId": "c25988ec11ecd7852f793c20552a919a6a55f536",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6aa198d7_2846f0a1",
+        "filename": "zephyr/test/drivers/src/isl923x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 703,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-12-10T18:37:30Z",
+      "side": 1,
+      "message": "This wouldn\u0027t directly increase coverage, but do you want to test the case where AC is not OK (pin deasserted)?",
+      "revId": "c25988ec11ecd7852f793c20552a919a6a55f536",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
