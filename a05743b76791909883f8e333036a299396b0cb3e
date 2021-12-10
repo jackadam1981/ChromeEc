@@ -22,6 +22,30 @@
       },
       "revId": "a05743b76791909883f8e333036a299396b0cb3e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53ed4066_722ed101",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 1668,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2021-12-10T19:27:25Z",
+      "side": 1,
+      "message": "RVPs in general has only 1 extra barrel jack, which is indicated by CONFIG_DEDICATED_CHARGE_PORT_COUNT .But, DEDICATED_CHARGE_PORT indicates the port number indexed for that barrel jack. For ex, IF an RVP has 2 typec ports, then , as typec port1 index is P0 , and typec c port2 is P1, the dedicated charge port index is P2, which is equivalent to the total number of of typec ports(basically last index after typec ports).\nfor example, With this thought, already in baseboard/intelrvp/adlrvp.h:64:#define DEDICATED_CHARGE_PORT CONFIG_USB_PD_PORT_MAX_COUNT\n\nSo in next CL, adlrvp_usbc_ports variable is what is returned. I have corrected the comment in next CL, as it was misleading i guess. :)",
+      "parentUuid": "ffbd2c51_33485128",
+      "range": {
+        "startLine": 1668,
+        "startChar": 0,
+        "endLine": 1668,
+        "endChar": 30
+      },
+      "revId": "a05743b76791909883f8e333036a299396b0cb3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
