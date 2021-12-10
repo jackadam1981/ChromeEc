@@ -11,8 +11,13 @@
 #include "ec_tasks.h"
 #include "emul/emul_smart_battery.h"
 #include "emul/tcpc/emul_tcpci.h"
+#include "emul/tcpc/emul_tcpci_partner_snk.h"
 #include "emul/tcpc/emul_tcpci_partner_src.h"
 #include "tcpm/tcpci.h"
+#include "hooks.h"
+#include "stubs.h"
+
+#include "battery.h"
 
 #define TCPCI_EMUL_LABEL DT_NODELABEL(tcpci_emul)
 #define BATTERY_ORD DT_DEP_ORD(DT_NODELABEL(battery))
@@ -91,11 +96,49 @@ static void test_attach_compliant_charger(void)
 	/* TODO: Also check voltage, current, etc. */
 }
 
+static void test_attach_sink(void)
+{
+	const struct emul *tcpci_emul =
+		emul_get_binding(DT_LABEL(TCPCI_EMUL_LABEL));
+	struct tcpci_snk_emul_data my_sink;
+	struct sbat_emul_bat_data *bat;
+	struct i2c_emul *emul;
+
+	emul = sbat_emul_get_ptr(BATTERY_ORD);
+	bat = sbat_emul_get_bat_data(emul);
+
+	/*
+	 * Make sure that battery is in safe zone in good condition to
+	 * not trigger hibernate in charge_state_v2.c
+	 */
+//	bat->cap = response.dzone.stayup + 5;
+	bat->volt = battery_get_info()->voltage_normal;
+
+	force_power_state(true, POWER_S0);
+
+	/* Set TCPM to DRP */
+	hook_notify(HOOK_CHIPSET_RESUME);
+	k_sleep(K_SECONDS(2));
+
+	/* Attach emulated sink */
+	tcpci_snk_emul_init(&my_sink);
+	zassert_ok(tcpci_snk_emul_connect_to_tcpci(&my_sink, tcpci_emul),
+		   NULL);
+
+	/* Wait for current ramp. */
+	k_sleep(K_SECONDS(10));
+
+	/* Verify battery charging. */
+}
+
 void test_suite_integration_usb(void)
 {
 	ztest_test_suite(integration_usb,
 			 ztest_user_unit_test_setup_teardown(
 				 test_attach_compliant_charger, init_tcpm,
+				 remove_emulated_devices),
+			 ztest_user_unit_test_setup_teardown(
+				 test_attach_sink, init_tcpm,
 				 remove_emulated_devices));
 	ztest_run_test_suite(integration_usb);
 }

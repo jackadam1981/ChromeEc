@@ -465,6 +465,9 @@ int tcpci_emul_disconnect_partner(const struct emul *emul)
 	 * and then set VBUS present = 0 and vSafe0V = 1 after appropriate
 	 * delays.
 	 */
+	tcpci_emul_set_reg(emul, TCPC_REG_POWER_STATUS, 0x08);
+		//		   TCPC_REG_POWER_STATUS_VBUS_PRES |
+		//		   TCPC_REG_POWER_STATUS_VBUS_DET);
 	return 0;
 }
 
