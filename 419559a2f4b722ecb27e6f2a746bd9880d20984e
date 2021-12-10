@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb868db4_010289dc",
+        "filename": "zephyr/subsys/usbc/tc/snk.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 2377,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-12-10T22:05:16Z",
+      "side": 0,
+      "message": "Do we still need the None check?  The time in the spec is tPDDebounce which sounds like it\u0027s for PD, but one phrasing is specifically: \"A Sink shall transition to Unattached.SNK when the state of both the CC1 and CC2 pins is\nSNK.Open for at least tPDDebounce.\" \n\nThen there\u0027s a repeat of nearly the same statement for DRPs but with Unattached.SRC which I think we\u0027re safe ignoring for now",
+      "revId": "419559a2f4b722ecb27e6f2a746bd9880d20984e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
