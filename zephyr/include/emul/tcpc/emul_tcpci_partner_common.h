@@ -27,6 +27,9 @@
  * in generic way using optional delay.
  */
 
+/** Length of PDO, RDO and BIST request object in SOP message in bytes */
+#define TCPCI_MSG_DO_LEN	4
+
 /** Common data for TCPCI partner device emulators */
 struct tcpci_partner_data {
 	/** Work used to send message with delay */

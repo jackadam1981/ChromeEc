@@ -39,6 +39,9 @@
  * - call @ref tcpci_emul_set_rev to set revision of emulated TCPCI
  */
 
+/** Length of header in SOP message in bytes  */
+#define TCPCI_MSG_HEADER_LEN	2
+
 /** SOP message structure */
 struct tcpci_emul_msg {
 	/** Pointer to buffer for header and message */
