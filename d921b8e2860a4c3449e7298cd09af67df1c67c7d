@@ -22,6 +22,30 @@
       },
       "revId": "d921b8e2860a4c3449e7298cd09af67df1c67c7d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "acef5fe8_47335a04",
+        "filename": "baseboard/intelrvp/adlrvp.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 554,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2021-12-10T19:27:47Z",
+      "side": 1,
+      "message": "corrected the comment for better clarity. Explained in previous CL.",
+      "parentUuid": "91f581f9_b8736460",
+      "range": {
+        "startLine": 554,
+        "startChar": 0,
+        "endLine": 554,
+        "endChar": 26
+      },
+      "revId": "d921b8e2860a4c3449e7298cd09af67df1c67c7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
