@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a882a10e_af5740e4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2021-12-10T21:45:21Z",
+      "side": 1,
+      "message": "Yes.. correct. its a typo err of \u0027not\u0027 .I will correct the message.",
+      "parentUuid": "1d817aa3_62331674",
+      "revId": "834267f3e67bafdfd614a7d5601c183ccee89676",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bb1ec65d_a0f24029",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-12-09T22:15:39Z",
       "side": 1,
       "message": "Nit: please make the message more informative. Same applies to the function name. 2. Btw why don\u0027t we have this check and don\u0027t even enable the unwanted tasks instead of disabling them after tasks are enabled.\n3. What if they are 3 USB-C ports and not 2. Then you will end up runnin *_C2 and *_C3?\n\nI think there may be a better way to handle this scenario. I don\u0027t think we need to make this function board specific. It can be generic for all platforms.",
+      "revId": "834267f3e67bafdfd614a7d5601c183ccee89676",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc785922_ce3812c1",
+        "filename": "baseboard/intelrvp/adlrvp.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 443,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2021-12-10T21:45:21Z",
+      "side": 1,
+      "message": "Hi Tanu,\nHere, as We will have single ec.tasklist, i tried controlling the TASK_ID_COUNT at run time. But, as the task ids are written in sequential order , removal of tasks for C2 \u0026 C3 based on number is resulting in removal of INT tasks of C1/C0 as well.\nSo, basically , couldnt find a way to limit the tasks at run time.\nAlso, under hook_task() all the tasks listed under ec.tasklist is getting enbled.\nBut, the number of usb pd ports taken at run time is limiting the pd_task to run only the required tasks. similary the interrupt pd tasks are also runnin based on number of pd ports. so we dont see C2/C3 getting into run  mode, eventhough they are initialized \u0026 enabled and so wont cause any trouble.\nThe real reason for adding this disable task is just that , task info command will list all tasks, as all tasks are initialized  \u0026 are in enbaled state.\nSo, thought it would be good, if we can disable the unwanted one and list the state as disabled , if any one looking through taskinfo command.",
+      "parentUuid": "bb1ec65d_a0f24029",
       "revId": "834267f3e67bafdfd614a7d5601c183ccee89676",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
