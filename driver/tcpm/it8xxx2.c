@@ -887,6 +887,15 @@ static void it8xxx2_tcpm_hook_connect(void)
 {
 	int port = TASK_ID_TO_PD_PORT(task_get_current());
 
+	/*
+	 * If it isn't ITE active port, then return.
+	 *
+	 * NOTE: We assume the order of use pd port: 0 -> 1.
+	 *       If 1 -> 0, then port1 HOOK function never works.
+	 */
+	if (port > (CONFIG_USB_PD_ITE_ACTIVE_PORT_COUNT - 1))
+		return;
+
 #ifdef CONFIG_USB_PD_TCPMV2
 	/*
 	 * There are five cases that hook_connect() be called by TCPMv2:
@@ -924,6 +933,15 @@ DECLARE_HOOK(HOOK_USB_PD_CONNECT, it8xxx2_tcpm_hook_connect, HOOK_PRIO_DEFAULT);
 static void it8xxx2_tcpm_hook_disconnect(void)
 {
 	int port = TASK_ID_TO_PD_PORT(task_get_current());
+
+	/*
+	 * If it isn't ITE active port, then return.
+	 *
+	 * NOTE: We assume the order of use pd port: 0 -> 1.
+	 *       If 1 -> 0, then port1 HOOK function never works.
+	 */
+	if (port > (CONFIG_USB_PD_ITE_ACTIVE_PORT_COUNT - 1))
+		return;
 
 	if (IS_ENABLED(IT83XX_INTC_PLUG_IN_OUT_SUPPORT))
 		/*
