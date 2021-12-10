@@ -51,7 +51,11 @@ ifdef CTS_MODULE
 # CTS builds need different directories per board per suite.
 out?=build/$(BOARD)/cts_$(CTS_MODULE)
 else
+ifdef CRYPTO_TEST
+out?=build/$(BOARD)_ct
+else
 out?=build/$(BOARD)
+endif
 endif
 
 # File containing configuration information
