@@ -167,6 +167,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d3573458_cc3bd960",
+        "filename": "include/adc.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-12-10T21:07:14Z",
+      "side": 1,
+      "message": "We don\u0027t want to extend the shim API like this.  See my comments on the next CL.  I think if you move the ADC threshold parameters into the device tree, you probably don\u0027t need any board specific code to setup the ADC thresholds.\n\nIf the board code does need to update the ADC threshold at runtime (not at initialization time), then the board code should be looking up the device pointer for the ADC driver, and calling into the Zephyr ADC APIs directly.",
+      "range": {
+        "startLine": 85,
+        "startChar": 4,
+        "endLine": 85,
+        "endChar": 34
+      },
+      "revId": "34473041a1e85c78bf6886ac5e68c78da8dadb95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c9c32ed7_8ffdf7fb",
         "filename": "include/adc.h",
         "patchSetId": 2
