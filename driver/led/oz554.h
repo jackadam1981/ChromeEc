@@ -30,6 +30,6 @@ int oz554_set_config(int offset, int data);
 #define OZ554_POWER_BACKLIGHT_DELAY SECOND
 #endif
 
-void backlight_enable_interrupt(enum gpio_signal signal);
+void oz554_interrupt(enum gpio_signal signal);
 
 #endif

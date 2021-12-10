@@ -98,7 +98,7 @@ static void backlight_enable_deferred(void)
 }
 DECLARE_DEFERRED(backlight_enable_deferred);
 
-void backlight_enable_interrupt(enum gpio_signal signal)
+void oz554_interrupt(enum gpio_signal signal)
 {
 	/*
 	 * 1. Spec says backlight should be turned on after 500ms
