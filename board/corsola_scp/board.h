@@ -35,7 +35,7 @@
  * | 8KB D-CACHE
  * +-------------------- 0x40000
  */
-#define ICACHE_BASE 0x3E000
+#define ICACHE_BASE 0x3FF00
 #define CONFIG_ROM_BASE 0x0
 #define CONFIG_RAM_BASE 0x2C000
 #define CONFIG_ROM_SIZE (CONFIG_RAM_BASE - CONFIG_ROM_BASE)
@@ -67,9 +67,9 @@
 #define IPI_VDEC_VP9 3
 #define IPI_VENC_H264 4
 #define IPI_VENC_VP8 5
-#define IPI_MDP_INIT 6
-#define IPI_MDP_DEINIT 7
-#define IPI_MDP_FRAME 8
+#define SCP_IPI_MDP_INIT 6
+#define SCP_IPI_MDP_DEINIT 7
+#define SCP_IPI_MDP_FRAME 8
 #define IPI_DIP 9
 #define IPI_ISP_CMD 10
 #define IPI_ISP_FRAME 11

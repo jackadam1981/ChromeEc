@@ -10,17 +10,23 @@
 #include "registers.h"
 #include "task.h"
 #include "util.h"
+#include "link_defs.h"
 
 #define CPRINTF(format, args...) cprintf(CC_IPI, format, ##args)
 #define CPRINTS(format, args...) cprints(CC_IPI, format, ##args)
 
-/* Forwad declaration. */
-static struct consumer const event_mdp_consumer;
-static void event_mdp_written(struct consumer const *consumer, size_t count);
+#define DRAM_BSS __SECTION(dram.bss)
+#define DRAM_DATA __SECTION(dram.data)
+#define DRAM_RODATA __SECTION(dram.rodata)
+#define DRAM_TEXT __SECTION(dram.text)
 
-static struct queue const event_mdp_queue = QUEUE_DIRECT(4,
+/* Forwad declaration. */
+DRAM_RODATA static struct consumer const event_mdp_consumer;
+DRAM_TEXT static void event_mdp_written(struct consumer const *consumer, size_t count);
+
+DRAM_RODATA static struct queue const event_mdp_queue = QUEUE_DIRECT(4,
 	struct mdp_msg_service, null_producer, event_mdp_consumer);
-static struct consumer const event_mdp_consumer = {
+DRAM_RODATA static struct consumer const event_mdp_consumer = {
 	.queue = &event_mdp_queue,
 	.ops = &((struct consumer_ops const) {
 		.written = event_mdp_written,
@@ -28,7 +34,7 @@ static struct consumer const event_mdp_consumer = {
 };
 
 /* Stub functions only provided by private overlays. */
-#ifndef HAVE_PRIVATE_MT8186
+#ifndef HAVE_PRIVATE_MT_SCP
 void mdp_common_init(void) {}
 void mdp_ipi_task_handler(void *pvParameters) {}
 #endif
@@ -52,9 +58,9 @@ static void mdp_ipi_handler(int id, void *data, unsigned int len)
 	if (!queue_add_unit(&event_mdp_queue, &cmd))
 		CPRINTS("Could not send mdp id: %d to the queue.", id);
 }
-DECLARE_IPI(IPI_MDP_INIT, mdp_ipi_handler, 0);
-DECLARE_IPI(IPI_MDP_FRAME, mdp_ipi_handler, 0);
-DECLARE_IPI(IPI_MDP_DEINIT, mdp_ipi_handler, 0);
+DECLARE_IPI(SCP_IPI_MDP_INIT, mdp_ipi_handler, 0);
+DECLARE_IPI(SCP_IPI_MDP_FRAME, mdp_ipi_handler, 0);
+DECLARE_IPI(SCP_IPI_MDP_DEINIT, mdp_ipi_handler, 0);
 
 /* This function renames from mdp_service_entry. */
 void mdp_service_task(void *u)
