@@ -16,6 +16,29 @@
       "message": "PTAL",
       "revId": "cd13f217a275729a5f574563a4c44bdebfcef187",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4de0dfb5_5481dc66",
+        "filename": "chip/stm32/uart.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-12-11T17:41:09Z",
+      "side": 1,
+      "message": "nit: I think it\u0027s cleaner and scalable to have this near #define STM32_USART_ICR instead of repeating it by every use.",
+      "range": {
+        "startLine": 179,
+        "startChar": 0,
+        "endLine": 185,
+        "endChar": 5
+      },
+      "revId": "cd13f217a275729a5f574563a4c44bdebfcef187",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
