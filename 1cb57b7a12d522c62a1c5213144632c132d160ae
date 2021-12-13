@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dbe01f9f_b99a181f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-12-13T22:44:19Z",
+      "side": 1,
+      "message": "Can you think of a way to write unit tests? It\u0027s probably hard to write tests for everything, but even if we can have tests for some functions, it would be helpful: https://chromium.googlesource.com/chromiumos/docs/+/HEAD/styleguide/python.md#unit-tests",
+      "revId": "1cb57b7a12d522c62a1c5213144632c132d160ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99bed4ed_b896c31a",
+        "filename": "util/fptool.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-12-13T22:44:19Z",
+      "side": 1,
+      "message": "Can you use the \"logging\" module: https://chromium.googlesource.com/chromiumos/docs/+/HEAD/styleguide/python.md#logging-formatting ?\n\nExample: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/test/run_device_tests.py;l\u003d454-459;drc\u003d2de3d51b0a32c9f26dea0dd3d430f1f7f9adab41",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 42
+      },
+      "revId": "1cb57b7a12d522c62a1c5213144632c132d160ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
