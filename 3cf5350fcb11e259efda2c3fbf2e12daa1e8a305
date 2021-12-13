@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a063443_dc620000",
+        "filename": "board/brya/generated-gpio.inc",
+        "patchSetId": 11
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-12-13T16:07:56Z",
+      "side": 1,
+      "message": "change it in hook function that is used for USB4 DB\ngpio_set_flags**()",
+      "range": {
+        "startLine": 77,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 61
+      },
+      "revId": "3cf5350fcb11e259efda2c3fbf2e12daa1e8a305",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad1fab5a_2b959246",
+        "filename": "board/brya/usbc_config.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 589,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-12-13T16:07:56Z",
+      "side": 1,
+      "message": "need extra function?",
+      "range": {
+        "startLine": 589,
+        "startChar": 5,
+        "endLine": 589,
+        "endChar": 38
+      },
+      "revId": "3cf5350fcb11e259efda2c3fbf2e12daa1e8a305",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
