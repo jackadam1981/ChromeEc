@@ -30,6 +30,6 @@ static void check_alternate_devices(void)
 {
 	/* Configure the PPC driver */
 	if (board_has_syv_ppc())
-		PPC_ENABLE_ALTERNATE(ppc_port0_syv);
+		; /* PPC_ENABLE_ALTERNATE(ppc_port0_syv); */
 }
 DECLARE_HOOK(HOOK_INIT, check_alternate_devices, HOOK_PRIO_DEFAULT);

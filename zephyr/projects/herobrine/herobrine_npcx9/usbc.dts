@@ -18,10 +18,10 @@
 				i2c-addr-flags = "PI3USB9201_I2C_ADDR_3_FLAGS";
 			};
 			ppc_port0: ppc {
-				compatible = "ti,sn5s330";
+				compatible = "silergy,syv682x";
 				status = "okay";
 				port = <&i2c_tcpc0>;
-				i2c-addr-flags = "SN5S330_ADDR0_FLAGS";
+				i2c-addr-flags = "SYV682X_ADDR1_FLAGS";
 			};
 		};
 
@@ -32,23 +32,14 @@
 				status = "okay";
 				irq = <&gpio_usb_c1_bc12_int_l>;
 				port = <&i2c_eeprom>;
-				i2c-addr-flags = "PI3USB9201_I2C_ADDR_3_FLAGS";
+				i2c-addr-flags = "PI3USB9201_I2C_ADDR_2_FLAGS";
 			};
 			ppc {
-				compatible = "ti,sn5s330";
+				compatible = "silergy,syv682x";
 				status = "okay";
 				port = <&i2c_tcpc1>;
-				i2c-addr-flags = "SN5S330_ADDR0_FLAGS";
+				i2c-addr-flags = "SYV682X_ADDR1_FLAGS";
 			};
-		};
-	};
-	usbc-alt-chips {
-		ppc_port0_syv: ppc-port0 {
-			compatible = "silergy,syv682x";
-			status = "okay";
-			port = <&i2c_tcpc0>;
-			i2c-addr-flags = "SYV682X_ADDR1_FLAGS";
-			alternate-for = <&ppc_port0>;
 		};
 	};
 };

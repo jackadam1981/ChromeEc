@@ -3,7 +3,7 @@
  * found in the LICENSE file.
  */
 
-#include "driver/accel_bma2x2_public.h"
+#include "driver/accel_bma422.h"
 
 /*
  * CREATE_SENSOR_DATA which is defined in motionsense_sensors.c is
@@ -39,6 +39,6 @@ CREATE_SENSOR_DATA(cros_ec_drvdata_bma255, CREATE_SENSOR_DATA_BMA255)
  * Create a motion_sensor_t entry for each BMA255
  * instance(compatible = "cros-ec,bma255") in device tree.
  */
-CREATE_MOTION_SENSOR(cros_ec_bma255, MOTIONSENSE_CHIP_BMA255,	\
-	MOTIONSENSE_TYPE_ACCEL, bma2x2_accel_drv,		\
-	BMA255_ACCEL_MIN_FREQ, BMA255_ACCEL_MAX_FREQ)
+CREATE_MOTION_SENSOR(cros_ec_bma255, MOTIONSENSE_CHIP_BMA422,  \
+       MOTIONSENSE_TYPE_ACCEL, bma4_accel_drv,         \
+       BMA4_ACCEL_MIN_FREQ, BMA4_ACCEL_MAX_FREQ)
