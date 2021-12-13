@@ -76,6 +76,24 @@
       "parentUuid": "8e497ee5_b0b90797",
       "revId": "d7456c1c8b28e59b6a0e5861c5e821edb90ffa8e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2368c3b1_c050f398",
+        "filename": "zephyr/include/emul/emul_tcpci_partner_src.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-12-13T21:09:57Z",
+      "side": 1,
+      "message": "Keeping the commit history is preferred.  So create a change that moves the files only (plus the minimum changes needed to build), and a 2nd CL that does all the function renaming.",
+      "parentUuid": "2ee1102c_da994928",
+      "revId": "d7456c1c8b28e59b6a0e5861c5e821edb90ffa8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
