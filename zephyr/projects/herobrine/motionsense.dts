@@ -38,8 +38,8 @@
 	motionsense-rotation-ref {
 		compatible = "cros-ec,motionsense-rotation-ref";
 		lid_rot_ref: lid-rotation-ref {
-			mat33 = <0 1 0
-				 (-1) 0 0
+			mat33 = <(-1) 0 0
+				 0 (-1) 0
 				 0 0 1>;
 		};
 
@@ -89,7 +89,7 @@
 			rot-standard-ref = <&lid_rot_ref>;
 			default-range = <2>;
 			drv-data = <&bma255_data>;
-			i2c-spi-addr-flags = "BMA2x2_I2C_ADDR1_FLAGS";
+			i2c-spi-addr-flags = "BMA4_I2C_ADDR_PRIMARY";
 			configs {
 				compatible =
 					"cros-ec,motionsense-sensor-config";
