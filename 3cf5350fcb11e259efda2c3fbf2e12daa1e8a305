@@ -93,6 +93,30 @@
       },
       "revId": "3cf5350fcb11e259efda2c3fbf2e12daa1e8a305",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9306da1e_f3673f08",
+        "filename": "board/brya/usbc_config.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 589,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-12-13T23:59:24Z",
+      "side": 1,
+      "message": "how about declaring hook function here itself?",
+      "parentUuid": "133e6069_efa0d72f",
+      "range": {
+        "startLine": 589,
+        "startChar": 5,
+        "endLine": 589,
+        "endChar": 38
+      },
+      "revId": "3cf5350fcb11e259efda2c3fbf2e12daa1e8a305",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

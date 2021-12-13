@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "efec2313_42a153ee",
+        "filename": "board/brya/usbc_config.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 453,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-12-13T23:59:24Z",
+      "side": 1,
+      "message": "nit: braces not needed.\n\nnit: how about moving this inside the db_update_usb4_config_from_config() so that will be part of board config rather than tcpc config",
+      "range": {
+        "startLine": 453,
+        "startChar": 41,
+        "endLine": 453,
+        "endChar": 42
+      },
+      "revId": "84490de40290420178f7c5b3cf8c4744c2d9c0e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
