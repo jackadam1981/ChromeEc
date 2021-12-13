@@ -58,6 +58,24 @@
       "parentUuid": "06f95f89_9a8e905b",
       "revId": "d7456c1c8b28e59b6a0e5861c5e821edb90ffa8e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ee1102c_da994928",
+        "filename": "zephyr/include/emul/emul_tcpci_partner_src.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2021-12-13T14:51:13Z",
+      "side": 1,
+      "message": "Unfortunately git doesn\u0027t recognize rename here even with \"git mv\". It is because there are too many lines changed between emul_charger.h and emul_tcpci_partner_src.h.\n\nI can create separate commit with minimal changes required to move files and apply this commit with renames to function names etc. on top. Or I can leave it as it is now. Which option is preferred?",
+      "parentUuid": "8e497ee5_b0b90797",
+      "revId": "d7456c1c8b28e59b6a0e5861c5e821edb90ffa8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
