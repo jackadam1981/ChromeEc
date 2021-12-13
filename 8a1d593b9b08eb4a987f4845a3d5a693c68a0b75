@@ -91,6 +91,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f4f12f5b_3896bcfb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-12-13T23:09:21Z",
+      "side": 1,
+      "message": "If we need this before the python change lands, I can review the code.\n\nI do want to make sure that this works on all platforms before we land it though. It looks like it was tested on some of the platforms, but not all (TEST line). I think it would be sufficient to run the fingerprint autotest tests (\"suite:fingerprint\") since those end up running flash_fp_mcu underneath. There are some details on how to do this in http://shortn/_WZgEXQItTQ",
+      "parentUuid": "89b72fe6_6ec75a0f",
+      "revId": "8a1d593b9b08eb4a987f4845a3d5a693c68a0b75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "62f836d5_1022782b",
         "filename": "util/flash_fp_mcu",
         "patchSetId": 2
