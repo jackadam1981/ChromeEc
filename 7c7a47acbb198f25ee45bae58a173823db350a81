@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0c5a5b5_6843aa40",
+        "filename": "zephyr/subsys/usbc/tc/snk.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-12-13T20:24:44Z",
+      "side": 1,
+      "message": "I think it is like any other C implementation... but I also think this is a good chance to fix the problems of not specifying the correct types and will make the ints that should be bools to be bool.",
+      "parentUuid": "a3a36003_58ce8030",
+      "range": {
+        "startLine": 84,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 3
+      },
+      "revId": "7c7a47acbb198f25ee45bae58a173823db350a81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "38e27b65_c141d978",
@@ -37,6 +61,24 @@
       "writtenOn": "2021-12-10T22:05:16Z",
       "side": 1,
       "message": "What level do we want this API to be?  We definitely want it from the PE during PD power swaps.  Would it be possible a board consumer would want to use it too, or should we just leave it as an intra-PD task API?",
+      "revId": "7c7a47acbb198f25ee45bae58a173823db350a81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "513ce758_ab582741",
+        "filename": "zephyr/subsys/usbc/tc/snk.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-12-13T20:24:44Z",
+      "side": 1,
+      "message": "I am not sure. I don\u0027t think this is needed without PD, so plan to remove this function and the flag.",
+      "parentUuid": "38e27b65_c141d978",
       "revId": "7c7a47acbb198f25ee45bae58a173823db350a81",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -58,6 +100,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6b2f5ed_456bcb40",
+        "filename": "zephyr/subsys/usbc/tc/snk.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-12-13T20:24:44Z",
+      "side": 1,
+      "message": "Removed",
+      "parentUuid": "b14b1254_75bff8fd",
+      "revId": "7c7a47acbb198f25ee45bae58a173823db350a81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "378789fe_f6589b55",
@@ -71,6 +131,24 @@
       "writtenOn": "2021-12-10T22:05:16Z",
       "side": 1,
       "message": "Looks like we\u0027re leaving this in for the CC update mostly since we aren\u0027t sourcing... is it being initialized to something innocuous somewhere?  Or should we put some harmless value into the update_cc function directly?",
+      "revId": "7c7a47acbb198f25ee45bae58a173823db350a81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0764073_8b6d0d91",
+        "filename": "zephyr/subsys/usbc/tc/snk.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-12-13T20:24:44Z",
+      "side": 1,
+      "message": "I think making this as non-PD as possible is a good idea. I will remove the get and in update_cc will change the value to be TYPEC_RP_USB",
+      "parentUuid": "378789fe_f6589b55",
       "revId": "7c7a47acbb198f25ee45bae58a173823db350a81",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -94,6 +172,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "773e5312_ca61a5a6",
+        "filename": "zephyr/subsys/usbc/tc/snk.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-12-13T20:24:44Z",
+      "side": 1,
+      "message": "Yea this needs to change. I was waiting to see how the charge_manager was going to be implemented before making any of these changes.",
+      "parentUuid": "5413c178_0de95d13",
+      "revId": "7c7a47acbb198f25ee45bae58a173823db350a81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "834fdcf9_0f98fb1d",
         "filename": "zephyr/subsys/usbc/tc/snk.c",
         "patchSetId": 12
@@ -105,6 +201,24 @@
       "writtenOn": "2021-12-10T22:05:16Z",
       "side": 1,
       "message": "Does zephyr use TEST_BUILD?",
+      "revId": "7c7a47acbb198f25ee45bae58a173823db350a81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dcfaf717_8ea10165",
+        "filename": "zephyr/subsys/usbc/tc/snk.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-12-13T20:24:44Z",
+      "side": 1,
+      "message": "I do not know if TEST_BUILD or some other mechanism is used for testing. Keith?",
+      "parentUuid": "834fdcf9_0f98fb1d",
       "revId": "7c7a47acbb198f25ee45bae58a173823db350a81",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -126,6 +240,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d9c3618_557c77d1",
+        "filename": "zephyr/subsys/usbc/tc/snk.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-12-13T20:24:44Z",
+      "side": 1,
+      "message": "condition removed.",
+      "parentUuid": "7a633dea_0d003cd2",
+      "revId": "7c7a47acbb198f25ee45bae58a173823db350a81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "de623e34_71823660",
@@ -143,6 +275,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c9fd9ec_4d556341",
+        "filename": "zephyr/subsys/usbc/tc/snk.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-12-13T20:24:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "de623e34_71823660",
+      "revId": "7c7a47acbb198f25ee45bae58a173823db350a81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "39f2ed05_a609cd4c",
@@ -156,6 +306,24 @@
       "writtenOn": "2021-12-10T22:05:16Z",
       "side": 1,
       "message": "Unused?",
+      "revId": "7c7a47acbb198f25ee45bae58a173823db350a81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d816c12_41a110c5",
+        "filename": "zephyr/subsys/usbc/tc/snk.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 415,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-12-13T20:24:44Z",
+      "side": 1,
+      "message": "removed 😊",
+      "parentUuid": "39f2ed05_a609cd4c",
       "revId": "7c7a47acbb198f25ee45bae58a173823db350a81",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -183,6 +351,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "48a4a5ad_5571e006",
+        "filename": "zephyr/subsys/usbc/tc/snk.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 452,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-12-13T20:24:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "78dc5693_089f9dfa",
+      "range": {
+        "startLine": 452,
+        "startChar": 16,
+        "endLine": 452,
+        "endChar": 36
+      },
+      "revId": "7c7a47acbb198f25ee45bae58a173823db350a81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "428d59b7_b87df9d7",
@@ -196,6 +388,24 @@
       "writtenOn": "2021-12-10T22:05:16Z",
       "side": 1,
       "message": "No longer used?",
+      "revId": "7c7a47acbb198f25ee45bae58a173823db350a81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "25bc9118_33f6d537",
+        "filename": "zephyr/subsys/usbc/tc/snk.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 586,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-12-13T20:24:44Z",
+      "side": 1,
+      "message": "removed all references to prev_data_role",
+      "parentUuid": "428d59b7_b87df9d7",
       "revId": "7c7a47acbb198f25ee45bae58a173823db350a81",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -217,6 +427,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6c0850d_3053aa26",
+        "filename": "zephyr/subsys/usbc/tc/snk.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 595,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-12-13T20:24:44Z",
+      "side": 1,
+      "message": "Removed the call and the comment",
+      "parentUuid": "dcf8dfa6_d6439c7b",
+      "revId": "7c7a47acbb198f25ee45bae58a173823db350a81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9254fef5_d0ca9ba9",
@@ -230,6 +458,24 @@
       "writtenOn": "2021-12-10T22:05:16Z",
       "side": 1,
       "message": "nit: comment can be left out for now",
+      "revId": "7c7a47acbb198f25ee45bae58a173823db350a81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "49c97604_47300f39",
+        "filename": "zephyr/subsys/usbc/tc/snk.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 610,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-12-13T20:24:44Z",
+      "side": 1,
+      "message": "DRP portion of the comment has been removed.",
+      "parentUuid": "9254fef5_d0ca9ba9",
       "revId": "7c7a47acbb198f25ee45bae58a173823db350a81",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -251,6 +497,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "04cebfda_d438e7ea",
+        "filename": "zephyr/subsys/usbc/tc/snk.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 672,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-12-13T20:24:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9927fe58_8ad5ec31",
+      "revId": "7c7a47acbb198f25ee45bae58a173823db350a81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4ab1d6cd_2bba1060",
@@ -264,6 +528,30 @@
       "writtenOn": "2021-12-10T22:05:16Z",
       "side": 1,
       "message": "Ah, maybe name like \"shared entry\" or something?  It took me a while to realize this is a function being called by both entries",
+      "range": {
+        "startLine": 702,
+        "startChar": 12,
+        "endLine": 702,
+        "endChar": 53
+      },
+      "revId": "7c7a47acbb198f25ee45bae58a173823db350a81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2799e401_40b5da9d",
+        "filename": "zephyr/subsys/usbc/tc/snk.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 702,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-12-13T20:24:44Z",
+      "side": 1,
+      "message": "added _shared_ for all of the shared states",
+      "parentUuid": "4ab1d6cd_2bba1060",
       "range": {
         "startLine": 702,
         "startChar": 12,
@@ -297,6 +585,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "efc0c002_7e24ee44",
+        "filename": "zephyr/subsys/usbc/tc/snk.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 743,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-12-13T20:24:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a41129af_793203c1",
+      "range": {
+        "startLine": 743,
+        "startChar": 48,
+        "endLine": 743,
+        "endChar": 57
+      },
+      "revId": "7c7a47acbb198f25ee45bae58a173823db350a81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "173314dd_1420cc57",
@@ -310,6 +622,24 @@
       "writtenOn": "2021-12-10T22:05:16Z",
       "side": 1,
       "message": "Should we probably note why we don\u0027t actually set Rd in our Rd entry?  I want to say it was ADD ordering issues?",
+      "revId": "7c7a47acbb198f25ee45bae58a173823db350a81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e82ba9b_9ad93be7",
+        "filename": "zephyr/subsys/usbc/tc/snk.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 829,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-12-13T20:24:44Z",
+      "side": 1,
+      "message": "I believe in the DRP case this was added because there were multiple entries that could start the CC_RD entry.  I don\u0027t think it is as much of a problem in SNK only because the entry points are more defined.",
+      "parentUuid": "173314dd_1420cc57",
       "revId": "7c7a47acbb198f25ee45bae58a173823db350a81",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -331,6 +661,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "be02e489_5e885b70",
+        "filename": "zephyr/subsys/usbc/tc/snk.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 894,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-12-13T20:24:44Z",
+      "side": 1,
+      "message": "removed",
+      "parentUuid": "04b2f2b5_52965142",
+      "revId": "7c7a47acbb198f25ee45bae58a173823db350a81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fe1566f6_684f9fdc",
@@ -344,6 +692,24 @@
       "writtenOn": "2021-12-10T22:05:16Z",
       "side": 1,
       "message": "Do we remember why it is we prefer the Attached states to not have a parent?",
+      "revId": "7c7a47acbb198f25ee45bae58a173823db350a81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc825564_7442ea25",
+        "filename": "zephyr/subsys/usbc/tc/snk.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 959,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-12-13T20:24:44Z",
+      "side": 1,
+      "message": "I don\u0027t think we need a parent in ATTACH_WAIT.SNK either. This has more to do with entry from open to RD.  This should always happen in this state machine through unattached.snk",
+      "parentUuid": "fe1566f6_684f9fdc",
       "revId": "7c7a47acbb198f25ee45bae58a173823db350a81",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

@@ -254,6 +254,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5516481_002e4641",
+        "filename": "zephyr/subsys/usbc/tc/snk.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-12-13T20:24:44Z",
+      "side": 1,
+      "message": "no objections for some time... closing this",
+      "parentUuid": "1c7660c9_efa490c2",
+      "range": {
+        "startLine": 134,
+        "startChar": 2,
+        "endLine": 139,
+        "endChar": 6
+      },
+      "revId": "42e145371a1fbc9eca7336f8dc8808e8d914a0e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fe345d16_3a24f542",
