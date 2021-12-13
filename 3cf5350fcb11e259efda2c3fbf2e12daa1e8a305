@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "25439951_21371d57",
+        "filename": "board/brya/generated-gpio.inc",
+        "patchSetId": 11
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2021-12-13T23:52:37Z",
+      "side": 1,
+      "message": "Added.",
+      "parentUuid": "0a063443_dc620000",
+      "range": {
+        "startLine": 77,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 61
+      },
+      "revId": "3cf5350fcb11e259efda2c3fbf2e12daa1e8a305",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ad1fab5a_2b959246",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-12-13T16:07:56Z",
       "side": 1,
       "message": "need extra function?",
+      "range": {
+        "startLine": 589,
+        "startChar": 5,
+        "endLine": 589,
+        "endChar": 38
+      },
+      "revId": "3cf5350fcb11e259efda2c3fbf2e12daa1e8a305",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "133e6069_efa0d72f",
+        "filename": "board/brya/usbc_config.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 589,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2021-12-13T23:52:37Z",
+      "side": 1,
+      "message": "The config are not accessible here. So a function is added.\nHere is the same:\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/refs/changes/04/3180804/2/board/felwinter/usbc_config.c#404",
+      "parentUuid": "ad1fab5a_2b959246",
       "range": {
         "startLine": 589,
         "startChar": 5,

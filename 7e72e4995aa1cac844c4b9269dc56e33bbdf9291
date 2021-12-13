@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e79d240_f7d14393",
+        "filename": "board/brya/usbc_config.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2021-12-13T23:52:37Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "f19e663a_657d16f4",
+      "range": {
+        "startLine": 145,
+        "startChar": 0,
+        "endLine": 146,
+        "endChar": 55
+      },
+      "revId": "7e72e4995aa1cac844c4b9269dc56e33bbdf9291",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5dea3aba_95c56fdc",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-11-30T05:39:46Z",
       "side": 1,
       "message": "how about declaring this on top, before all function definitions are given?",
+      "range": {
+        "startLine": 263,
+        "startChar": 0,
+        "endLine": 264,
+        "endChar": 58
+      },
+      "revId": "7e72e4995aa1cac844c4b9269dc56e33bbdf9291",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd9b2233_6764c774",
+        "filename": "board/brya/usbc_config.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2021-12-13T23:52:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5dea3aba_95c56fdc",
       "range": {
         "startLine": 263,
         "startChar": 0,
