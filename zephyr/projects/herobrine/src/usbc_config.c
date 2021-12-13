@@ -5,6 +5,7 @@
 
 /* Herobrine board-specific USB-C configuration */
 
+#include "adc.h"
 #include "charger.h"
 #include "charger/isl923x_public.h"
 #include "charge_manager.h"
@@ -308,3 +309,13 @@ uint16_t tcpc_get_alert_status(void)
 
 	return status;
 }
+
+#ifdef CONFIG_USB_PD_VBUS_MEASURE_ADC_EACH_PORT
+enum adc_channel board_get_vbus_adc(int port)
+{
+	/* Currently there is no option to select Joint ADC in zephyr config
+	 * Hence using this workaround. TODO: Fix zephyr Kconfig.usbc.
+	 */
+	return ADC_VBUS;
+}
+#endif /* CONFIG_USB_PD_VBUS_MEASURE_ADC_EACH_PORT */
