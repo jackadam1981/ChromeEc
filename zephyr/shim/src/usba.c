@@ -14,6 +14,7 @@ BUILD_ASSERT(DT_NUM_INST_STATUS_OKAY(DT_DRV_COMPAT) > 0,
 		"No compatible USBA Port Enable instance found");
 
 const int usb_port_enable[] = {
+	GPIO_EN_USB_A_5V,
 	DT_FOREACH_CHILD(DT_PATH(usba_port_enable_list), GPIO_SIGNAL_WITH_COMMA)
 };
 
