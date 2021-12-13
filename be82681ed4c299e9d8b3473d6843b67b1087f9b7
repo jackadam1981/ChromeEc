@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3920954_2834c872",
+        "filename": "zephyr/projects/nissa/pwm_nivviks.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2021-12-13T13:29:37Z",
+      "side": 1,
+      "message": "worth using something more descriptive for the usage here, think these would be led1_red, led2_green, led3_blue. Makes it easier to read the \"pwms\" node where you reference these.",
+      "range": {
+        "startLine": 16,
+        "startChar": 2,
+        "endLine": 16,
+        "endChar": 6
+      },
+      "revId": "be82681ed4c299e9d8b3473d6843b67b1087f9b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc605e04_50c9fcf5",
+        "filename": "zephyr/projects/nissa/pwm_nivviks.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2021-12-13T13:29:37Z",
+      "side": 1,
+      "message": "Wondering if we should not match the net name in the schematics on the label as well... asked in the chat, we did not do it for the other boards but maybe we should.",
+      "range": {
+        "startLine": 18,
+        "startChar": 12,
+        "endLine": 18,
+        "endChar": 16
+      },
+      "revId": "be82681ed4c299e9d8b3473d6843b67b1087f9b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
