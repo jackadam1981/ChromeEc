@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9e89ba0_3d5620e9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-12-13T17:14:04Z",
+      "side": 1,
+      "message": "typo: request",
+      "range": {
+        "startLine": 10,
+        "startChar": 28,
+        "endLine": 10,
+        "endChar": 36
+      },
+      "revId": "e4d5f70d57a4f9c95835d4f69d5403ed499915b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0394ce56_e2b4d405",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-12-13T17:14:04Z",
+      "side": 1,
+      "message": "It would be better to reword this. Something along the lines of \"Ensure that the desired charge current is valid an at least 0mA. Otherwise, this may cause us to set an incorrect precharge current.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 53
+      },
+      "revId": "e4d5f70d57a4f9c95835d4f69d5403ed499915b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f4462090_4ed4ae60",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-12-13T17:14:04Z",
+      "side": 1,
+      "message": "Did this end up working for you?",
+      "revId": "e4d5f70d57a4f9c95835d4f69d5403ed499915b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
