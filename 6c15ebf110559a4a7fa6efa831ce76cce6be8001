@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a143e40_649cff75",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-12-13T18:46:09Z",
+      "side": 1,
+      "message": "Minor nit, but LGTM",
+      "revId": "6c15ebf110559a4a7fa6efa831ce76cce6be8001",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ceb77fb_a3a7da28",
+        "filename": "zephyr/emul/emul_sn5s330.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-12-13T18:46:09Z",
+      "side": 1,
+      "message": "nit: I believe that our guide says no uppercase in function names (replace V with v or _volts)",
+      "range": {
+        "startLine": 293,
+        "startChar": 5,
+        "endLine": 293,
+        "endChar": 39
+      },
+      "revId": "6c15ebf110559a4a7fa6efa831ce76cce6be8001",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
