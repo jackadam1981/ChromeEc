@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ddbe216_dfc92227",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 405,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-12-13T23:33:35Z",
+      "side": 1,
+      "message": "Initialize to false? Otherwise this may be unset for the check in 423 if the fifo were empty on the first read for whatever reason",
+      "revId": "3451a13d855918806eea4b1a8f47e5c8c8abedac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
