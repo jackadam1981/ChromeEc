@@ -1,0 +1,52 @@
+/* Copyright 2021 The Chromium OS Authors. All rights reserved.
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+/ {
+	named-pwms {
+		compatible = "named-pwms";
+
+		kblight: pwm_kb_bl {
+			pwms = <&pwm6 0 0>;
+			label = "KBLIGHT";
+			frequency = <10000>;
+		};
+
+		led1: pwm_led1_odl {
+			pwms = <&pwm2 0 0>;
+			label = "LED1";
+			frequency = <324>;
+		};
+		led2: pwm_led2_odl {
+			pwms = <&pwm0 0 0>;
+			label = "LED2";
+			frequency = <324>;
+		};
+		led3: pwm_led3_odl {
+			pwms = <&pwm1 0 0>;
+			label = "LED3";
+			frequency = <324>;
+		};
+	};
+};
+
+/* kblight */
+&pwm6 {
+	status = "okay";
+};
+
+/* LED1 */
+&pwm2 {
+	status = "okay";
+};
+
+/* LED2 */
+&pwm0 {
+	status = "okay";
+};
+
+/* LED3 */
+&pwm1 {
+	status = "okay";
+};
