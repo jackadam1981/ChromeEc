@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b139795_b93bd004",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-12-13T23:44:36Z",
+      "side": 1,
+      "message": "Just nits.",
+      "revId": "96dc68f0aebf0bd016fd65d4d39b41782e408aad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "73933504_e66884cd",
+        "filename": "zephyr/test/drivers/src/isl923x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 866,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-12-13T23:44:36Z",
+      "side": 1,
+      "message": "Nit: prefer to leave the first line empty for the multi-line comments, like\n    /*\n     * We have ...\n     * ...\n     */",
+      "range": {
+        "startLine": 866,
+        "startChar": 1,
+        "endLine": 866,
+        "endChar": 4
+      },
+      "revId": "96dc68f0aebf0bd016fd65d4d39b41782e408aad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
