@@ -1743,8 +1743,10 @@ void charger_task(void *u)
 
 		/* If we *know* there's no battery, wait for one to appear. */
 		if (curr.batt.is_present == BP_NO) {
+			/*
 			if (!curr.ac)
 				CPRINTS("running with no battery and no AC");
+				*/
 			set_charge_state(ST_IDLE);
 			curr.batt_is_charging = 0;
 			battery_was_removed = 1;
@@ -1949,7 +1951,7 @@ wait_for_it:
 		/* How long to sleep? */
 		if (problems_exist)
 			/* If there are errors, don't wait very long. */
-			sleep_usec = CHARGE_POLL_PERIOD_SHORT;
+			sleep_usec = CHARGE_POLL_PERIOD_VERY_LONG;
 		else if (sleep_usec <= 0) {
 			/* default values depend on the state */
 			if (!curr.ac &&

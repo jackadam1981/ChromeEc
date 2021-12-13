@@ -1793,7 +1793,9 @@ int system_can_boot_ap(void)
 	/* For fixed AC system */
 	return 1;
 #endif
-
+	/* For fixed AC system */
+	CPRINTS("Booting fixed ac system (%d %%, %d mW)", soc, pow);
+	return 1;
 	CPRINTS("Not enough power to boot (%d %%, %d mW)", soc, pow);
 	return 0;
 }
