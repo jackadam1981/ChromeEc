@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2985003_abd2303f",
+        "filename": "board/vell/gpio.inc",
+        "patchSetId": 6
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-12-13T20:23:07Z",
+      "side": 0,
+      "message": "Please move all unused pins to the \"Unused Pins\" section below. UNUSED() macro allows to save power on those pins, especially in S0ix",
+      "revId": "d9de0cf0fd8e45538ca1e62b4383f51a55fcb27b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
