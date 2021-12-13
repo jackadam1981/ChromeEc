@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c1c8e59_b8c70455",
+        "filename": "board/primus/board.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-12-13T20:18:33Z",
+      "side": 1,
+      "message": "nit: nothing on the first line of multi-line comment",
+      "revId": "b659a61aa30f4700afd5834af9c43146b6c4f63b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62948fc5_e61d0d15",
+        "filename": "board/primus/board.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-12-13T20:18:33Z",
+      "side": 1,
+      "message": "This is pretty much constant. Would be easier to read if you `#define PD_MAX_SUSPEND_CURRENT_MA 3000` and use it here.",
+      "range": {
+        "startLine": 151,
+        "startChar": 23,
+        "endLine": 151,
+        "endChar": 53
+      },
+      "revId": "b659a61aa30f4700afd5834af9c43146b6c4f63b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
