@@ -75,6 +75,7 @@ static bool board_has_syv_ppc(void)
 			board_version = 0;
 		}
 	}
+	CPRINTS("Board Revision %u", board_version);
 
 	return (board_version >= 1);
 }
@@ -147,7 +148,7 @@ const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 		.bus_type = EC_BUS_TYPE_I2C,
 		.i2c_info = {
 			.port = I2C_PORT_TCPC0,
-			.addr_flags = PS8751_I2C_ADDR1_FLAGS,
+			.addr_flags = PS8751_I2C_ADDR2_FLAGS,
 		},
 		.drv = &ps8xxx_tcpm_drv,
 	},
@@ -155,7 +156,7 @@ const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 		.bus_type = EC_BUS_TYPE_I2C,
 		.i2c_info = {
 			.port = I2C_PORT_TCPC1,
-			.addr_flags = PS8751_I2C_ADDR1_FLAGS,
+			.addr_flags = PS8751_I2C_ADDR2_FLAGS,
 		},
 		.drv = &ps8xxx_tcpm_drv,
 	},
@@ -193,7 +194,7 @@ static void board_init_usbc(void)
 
 	/* Configure the PPC driver */
 	if (board_has_syv_ppc())
-		PPC_ENABLE_ALTERNATE(ppc_port0_syv);
+		;/*PPC_ENABLE_ALTERNATE(ppc_port0_syv);*/
 }
 DECLARE_HOOK(HOOK_INIT, board_init_usbc, HOOK_PRIO_DEFAULT);
 

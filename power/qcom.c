@@ -388,7 +388,12 @@ static int wait_switchcap_power_good(int enable)
  */
 static int is_system_powered(void)
 {
+#ifdef CONFIG_CHIPSET_SC7180
 	return board_is_switchcap_enabled();
+#else
+	return !board_is_switchcap_enabled();
+#endif
+
 }
 
 /**
@@ -451,7 +456,12 @@ static int wait_pmic_pwron(int enable, unsigned int timeout)
  */
 static void set_system_power_no_check(int enable)
 {
+#ifdef CONFIG_CHIPSET_SC7180
 	board_set_switchcap_power(enable);
+#else
+	board_set_switchcap_power(!enable);
+#endif
+
 }
 
 /**
@@ -641,6 +651,7 @@ static void power_off(void)
  */
 static int power_is_enough(void)
 {
+	return 1;
 	timestamp_t poll_deadline;
 
 	/* If powered by adapter only, wait a while for PD negoiation. */
