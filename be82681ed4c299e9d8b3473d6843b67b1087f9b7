@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "942c6b71_431f8f75",
+        "filename": "zephyr/projects/nissa/pwm_nivviks.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2021-12-13T14:28:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c3920954_2834c872",
+      "range": {
+        "startLine": 16,
+        "startChar": 2,
+        "endLine": 16,
+        "endChar": 6
+      },
+      "revId": "be82681ed4c299e9d8b3473d6843b67b1087f9b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bc605e04_50c9fcf5",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-12-13T13:29:37Z",
       "side": 1,
       "message": "Wondering if we should not match the net name in the schematics on the label as well... asked in the chat, we did not do it for the other boards but maybe we should.",
+      "range": {
+        "startLine": 18,
+        "startChar": 12,
+        "endLine": 18,
+        "endChar": 16
+      },
+      "revId": "be82681ed4c299e9d8b3473d6843b67b1087f9b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "defa9b18_97ba607d",
+        "filename": "zephyr/projects/nissa/pwm_nivviks.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2021-12-13T14:28:33Z",
+      "side": 1,
+      "message": "It\u0027s not entirely clear to me what the relationship is with the \u0027label\u0027 property as opposed to the the DTS label.\nIn any case, they likely should be the same, IIRC.\nAlso, I presume some more code is needed to bind this config to some kind of real LED processing (which from looking at other boards, seems to be non-standard and board specific, so remains to be done).",
+      "parentUuid": "bc605e04_50c9fcf5",
       "range": {
         "startLine": 18,
         "startChar": 12,
