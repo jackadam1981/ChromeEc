@@ -18,4 +18,5 @@ properties:
       - "BMA2x2_I2C_ADDR2_FLAGS"
       - "BMA2x2_I2C_ADDR3_FLAGS"
       - "BMA2x2_I2C_ADDR4_FLAGS"
+      - "BMA4_I2C_ADDR_PRIMARY"
     default: "BMA2x2_I2C_ADDR1_FLAGS"
