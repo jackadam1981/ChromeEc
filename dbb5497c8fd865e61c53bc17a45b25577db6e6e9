@@ -16,6 +16,24 @@
       "message": "Is it worth noting why this timestamp update is no longer necessary?  Is it okay if the new while loop goes several times and we have a lot of samples under the same timestamp?",
       "revId": "dbb5497c8fd865e61c53bc17a45b25577db6e6e9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e20bb3f_8aeca68f",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 457,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-12-14T00:59:03Z",
+      "side": 0,
+      "message": "Yes, that\u0027s fine. motion_sense_fifo will spread the timestamp.\nIt is however critical that motion_sense_fifo_commit_data() is called only once for a given timestamp. In a previous patch, I left it in the loop and the timestamps were incorrect.",
+      "parentUuid": "2588a820_6a3982e3",
+      "revId": "dbb5497c8fd865e61c53bc17a45b25577db6e6e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
