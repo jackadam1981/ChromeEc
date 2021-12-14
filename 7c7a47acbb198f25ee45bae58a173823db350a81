@@ -225,6 +225,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d308e0f2_e47e0dac",
+        "filename": "zephyr/subsys/usbc/tc/snk.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-12-14T23:31:52Z",
+      "side": 1,
+      "message": "I think CONFIG_ZTEST is the correct flag to check.",
+      "parentUuid": "dcfaf717_8ea10165",
+      "revId": "7c7a47acbb198f25ee45bae58a173823db350a81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7a633dea_0d003cd2",
         "filename": "zephyr/subsys/usbc/tc/snk.c",
         "patchSetId": 12

@@ -1,0 +1,182 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc463ca9_99fb0baa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 15
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-12-14T23:31:52Z",
+      "side": 1,
+      "message": "My review isn\u0027t complete, but wanted to publish my draft comments.",
+      "revId": "add9873428ac5055c6857ffaa4a590ae25ca9771",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "076b4a91_bee77bbd",
+        "filename": "zephyr/subsys/usbc/tc/snk.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-12-14T23:31:52Z",
+      "side": 1,
+      "message": "We should explore allocating this structure based on the devicetree.    \n\nOne potential model to follow could be the subsys/net.  Network drivers install using NET_DEVICE_INIT(), instead of DEVICE_INIT(), which handles allocating the private structures for the driver, and allocating a \"struct net_if\" in the subsystem.\n\nThe net_if also supports referencing the network interface by \"struct net_if *iface\" or by an index.  This also seems like a good model to follow.",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 64
+      },
+      "revId": "add9873428ac5055c6857ffaa4a590ae25ca9771",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7808631_b609178f",
+        "filename": "zephyr/subsys/usbc/tc/snk.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-12-14T23:31:52Z",
+      "side": 1,
+      "message": "For the internal functions, I\u0027d like to see the first parameter be a pointer to \"struct usb_tc_port_info *\" instead of an index.  For the externally visible, these can probably start off as an index.",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 0
+      },
+      "revId": "add9873428ac5055c6857ffaa4a590ae25ca9771",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd481474_a69d65d8",
+        "filename": "zephyr/subsys/usbc/tc/snk.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-12-14T23:31:52Z",
+      "side": 1,
+      "message": "This construct isn\u0027t part of zephyr at the moment.  So probably change to __unused for now.",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 14
+      },
+      "revId": "add9873428ac5055c6857ffaa4a590ae25ca9771",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7235e60_becc3fd5",
+        "filename": "zephyr/subsys/usbc/tc/snk.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-12-14T23:31:52Z",
+      "side": 1,
+      "message": "This links to the cros-ec tcpm driver correct?  Are you planning to update this to link to zephyr-tcpcd driver Sam is working on?\n\nSam\u0027s spec uses the device pointer \"const device *\" as the first argument to all APIs.",
+      "range": {
+        "startLine": 171,
+        "startChar": 6,
+        "endLine": 171,
+        "endChar": 26
+      },
+      "revId": "add9873428ac5055c6857ffaa4a590ae25ca9771",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8eb42041_dbe91f6e",
+        "filename": "zephyr/subsys/usbc/tc/usb_tc_sm.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-12-14T23:31:52Z",
+      "side": 1,
+      "message": "Can you add an example devicetree as part of this CL?  It would help to understand these macros.",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 22
+      },
+      "revId": "add9873428ac5055c6857ffaa4a590ae25ca9771",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e1ad603_e59fe98c",
+        "filename": "zephyr/subsys/usbc/tc/usb_tc_sm.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-12-14T23:31:52Z",
+      "side": 1,
+      "message": "Note - all devicetree nodelabels, compatible strings, node-paths, etc, convert all dashes and other special characters to underscores.  So this should be usbc_subsystem_statemachine_port_list",
+      "range": {
+        "startLine": 44,
+        "startChar": 4,
+        "endLine": 44,
+        "endChar": 41
+      },
+      "revId": "add9873428ac5055c6857ffaa4a590ae25ca9771",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b571939_197d9909",
+        "filename": "zephyr/subsys/usbc/tc/usb_tc_sm.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-12-14T23:31:52Z",
+      "side": 1,
+      "message": "Try to keep the module portion of the name first.  Zephyr is moving to \u003cmodule\u003e_\u003caction\u003e_\u003cnoun\u003e pattern.\n\nSo \"USB_TC_INCLUDE_DBGACC\".  This macro is intended to effectively return a bool I think, so maybe \"USB_TC_INCLUDES_DBGACC\" or \"USB_TC_HAS_DBCACC\".",
+      "range": {
+        "startLine": 93,
+        "startChar": 3,
+        "endLine": 93,
+        "endChar": 31
+      },
+      "revId": "add9873428ac5055c6857ffaa4a590ae25ca9771",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
