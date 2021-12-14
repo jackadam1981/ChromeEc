@@ -114,6 +114,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "617564f2_d96f8008",
+        "filename": "driver/ppc/ktu1125.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 387,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-12-14T23:38:37Z",
+      "side": 1,
+      "message": "I\u0027ve verified that there is no low power mode. Removing this function.",
+      "parentUuid": "10e093da_e604e117",
+      "range": {
+        "startLine": 365,
+        "startChar": 0,
+        "endLine": 387,
+        "endChar": 1
+      },
+      "revId": "c0b367e6586f0375f7bd64b50f8619a7f463cd9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e38f60c6_03d068b6",
         "filename": "driver/ppc/ktu1125.c",
         "patchSetId": 5
