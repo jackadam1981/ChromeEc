@@ -6,9 +6,11 @@
 /* Intel ADLRVP board-specific common configuration */
 
 #include "charger.h"
+#include "battery.h"
 #include "bq25710.h"
 #include "common.h"
 #include "driver/retimer/bb_retimer_public.h"
+#include "extpower.h"
 #include "hooks.h"
 #include "ioexpander.h"
 #include "isl9241.h"
@@ -325,6 +327,22 @@ static void enable_h1_irq(void)
 	gpio_enable_interrupt(GPIO_CCD_MODE_ODL);
 }
 DECLARE_HOOK(HOOK_INIT, enable_h1_irq, HOOK_PRIO_LAST);
+
+static void set_charger_vsys_voltage(void)
+{
+	if (!strncasecmp(chg_chips[0].drv->get_info(0)->name, "bq25710", 7)) {
+		/* The PPVAR_SYS must same as battery voltage */
+		if (extpower_is_present() && battery_is_present()) {
+			bq25710_set_min_system_voltage(0,
+				battery_get_info()->voltage_min);
+		} else {
+			bq25710_set_min_system_voltage(0,
+				battery_get_info()->voltage_max);
+		}
+	}
+}
+DECLARE_HOOK(HOOK_BATTERY_SOC_CHANGE, set_charger_vsys_voltage,
+		HOOK_PRIO_DEFAULT);
 
 static void configure_charger(void)
 {
