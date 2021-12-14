@@ -39,6 +39,30 @@
       },
       "revId": "cd13f217a275729a5f574563a4c44bdebfcef187",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d94130c_30455c1e",
+        "filename": "chip/stm32/uart.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2021-12-14T00:50:49Z",
+      "side": 1,
+      "message": "That is a good point.  However, there are six files (for different series of STM32) that each declare STM32_USART_ICR.  I may revisit if I take on the SPI ICR register, which is used many more times.",
+      "parentUuid": "4de0dfb5_5481dc66",
+      "range": {
+        "startLine": 179,
+        "startChar": 0,
+        "endLine": 185,
+        "endChar": 5
+      },
+      "revId": "cd13f217a275729a5f574563a4c44bdebfcef187",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
