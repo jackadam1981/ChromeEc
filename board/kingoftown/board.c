@@ -7,9 +7,12 @@
 
 #include "adc_chip.h"
 #include "button.h"
+#include "charge_manager.h"
+#include "charge_state.h"
 #include "extpower.h"
 #include "driver/accel_bma2x2.h"
 #include "driver/accelgyro_bmi_common.h"
+#include "driver/charger/isl923x.h"
 #include "gpio.h"
 #include "hooks.h"
 #include "keyboard_scan.h"
@@ -30,6 +33,9 @@
 #define CPRINTF(format, args...) cprintf(CC_USBCHARGE, format, ## args)
 
 #include "gpio_list.h"
+
+static void board_battery_soc_change(void);
+static void board_ac_change(void);
 
 /* Keyboard scan setting */
 __override struct keyboard_scan_config keyscan_config = {
@@ -119,6 +125,8 @@ static void board_init(void)
 
 	/* Set the backlight duty cycle to 0. AP will override it later. */
 	pwm_set_duty(PWM_CH_DISPLIGHT, 0);
+
+	board_battery_soc_change();
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
@@ -143,6 +151,34 @@ static void board_chipset_resume(void)
 		pwm_enable(PWM_CH_DISPLIGHT, 1);
 }
 DECLARE_HOOK(HOOK_CHIPSET_RESUME, board_chipset_resume, HOOK_PRIO_DEFAULT);
+
+static void board_battery_soc_change(void)
+{
+	if (battery_is_present() == BP_NO) {
+		isl923x_set_ac_prochot(0, 2560 /* mA */);
+		ccprints("!!! %s set ac prochot to 2560mA !!!", __func__);
+	} else
+		board_ac_change();
+}
+DECLARE_HOOK(HOOK_BATTERY_SOC_CHANGE, board_battery_soc_change, HOOK_PRIO_DEFAULT);
+
+static void board_ac_change(void)
+{
+	int ac_present = gpio_get_level(GPIO_AC_PRESENT);
+	int charger_mw = charge_manager_get_power_limit_uw() / 1000;
+
+	if (!ac_present || (ac_present && charge_get_percent() < 4)) {
+		isl923x_set_ac_prochot(0, 2560 /* mA */);
+		ccprints("!!! %s set ac prochot to 2560mA !!!", __func__);
+	} else if (charger_mw <= 65000) {
+		isl923x_set_ac_prochot(0, 3328 /* mA */);
+		ccprints("!!! %s set ac prochot to 3328mA !!!", __func__);
+	} else {
+		isl923x_set_ac_prochot(0, 5120 /* mA */);
+		ccprints("!!! %s set ac prochot to 5120mA !!!", __func__);
+	}
+}
+DECLARE_HOOK(HOOK_AC_CHANGE, board_ac_change, HOOK_PRIO_DEFAULT);
 
 /* Mutexes */
 static struct mutex g_base_mutex;

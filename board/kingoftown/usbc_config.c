@@ -297,6 +297,12 @@ void board_set_charge_limit(int port, int supplier, int charge_ma,
 	    charge_get_percent() < CONFIG_CHARGER_MIN_BAT_PCT_FOR_POWER_ON) {
 		CPRINTS("Using max ilim %d", max_ma);
 		charge_ma = max_ma;
+		ccprints("!!! %s current to %dmA !!!", __func__, charge_ma);
+	}
+
+	if (battery_is_present() == BP_NO) {
+		charge_ma = 6000;
+		ccprints("!!! %s current to %dmA !!!", __func__, charge_ma);
 	}
 
 	charge_set_input_current_limit(MAX(charge_ma,
