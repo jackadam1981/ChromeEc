@@ -22,6 +22,30 @@
       },
       "revId": "c31e0261948fb3f0c387a8c9b08c17fb39120513",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "078471fe_3efbe9eb",
+        "filename": "common/main.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-12-14T19:07:16Z",
+      "side": 1,
+      "message": "on RVP, we can still keep all the I2C initialized even if unused. As per the MECC spec, EC will just keep the lines empty if not used.\nAs Daisuke suggested, upon init we can remove the alternate functions and keep the lines as input based on board ID.",
+      "parentUuid": "a6a09fb4_2f5ba003",
+      "range": {
+        "startLine": 208,
+        "startChar": 2,
+        "endLine": 208,
+        "endChar": 13
+      },
+      "revId": "c31e0261948fb3f0c387a8c9b08c17fb39120513",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
