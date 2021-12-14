@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e116b957_43e31c6d",
+        "filename": "zephyr/test/drivers/src/isl923x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 955,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-12-14T18:40:14Z",
+      "side": 1,
+      "message": "Non-blocking question about the MOCK_ASSERT_I2C_READ/WRITE.  Does specifying the call number explicitly potentially make it easy to break this test?  For instance, if raa489000_hibernate() is changed to write to an additional register before, writing reg_control3, the test will fail.\n\nHowever, the important thing to capture is that reg_control3 was written after reading reg_control3, and that the ENABLE_ADC bit got cleared.  The absolute call number doesn\u0027t seem as relevant as checking for a relative call number.",
+      "range": {
+        "startLine": 954,
+        "startChar": 0,
+        "endLine": 955,
+        "endChar": 26
+      },
+      "revId": "3e943d8a50857f6ca989802dc33340f939461544",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
