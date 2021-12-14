@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6a09fb4_2f5ba003",
+        "filename": "common/main.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-12-14T16:57:26Z",
+      "side": 1,
+      "message": "Hi Poornima,\n\nI\u0027m not sure if this is a right generic solution yet. enable_i2c_raw_mode and board_pre_task_i2c_peripheral_init may also need to run board specific code.\n\nHave you thought of initializing i2c separately in a HOOK_INIT callback? Maybe your board can set i2c_ports_used to the number which is common to all variants. Then, a HOOK_INIT callback can change it to a board specific value. You may need to add i2c_init_port(int port) to allow a board to init a specific port.\n\nWDYT?",
+      "range": {
+        "startLine": 208,
+        "startChar": 2,
+        "endLine": 208,
+        "endChar": 13
+      },
+      "revId": "c31e0261948fb3f0c387a8c9b08c17fb39120513",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
