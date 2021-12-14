@@ -160,6 +160,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1aade979_c514acd9",
+        "filename": "driver/ppc/ktu1125.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 387,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-12-14T23:57:54Z",
+      "side": 1,
+      "message": "This API wouldn\u0027t be used if the board was designed correctly. When entering our lowest power state, these parts should be completely powered down such that plugging in a charger will wake the system up. If they\u0027re still up, they would need i2c to control the FETs, which wouldn\u0027t work if the EC was off. Also, if there was nothing in the port the part should be in this state regardless.",
+      "parentUuid": "4340aef1_a81d7a8c",
+      "range": {
+        "startLine": 365,
+        "startChar": 0,
+        "endLine": 387,
+        "endChar": 1
+      },
+      "revId": "c0b367e6586f0375f7bd64b50f8619a7f463cd9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e38f60c6_03d068b6",
