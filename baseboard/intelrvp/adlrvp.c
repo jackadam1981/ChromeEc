@@ -6,6 +6,7 @@
 /* Intel ADLRVP board-specific common configuration */
 
 #include "charger.h"
+#include "battery.h"
 #include "bq25710.h"
 #include "common.h"
 #include "driver/retimer/bb_retimer_public.h"
@@ -334,6 +335,10 @@ static void configure_charger(void)
 		/* charger chip BQ25720 support */
 		chg_chips[0].i2c_addr_flags = BQ25710_SMBUS_ADDR1_FLAGS;
 		chg_chips[0].drv = &bq25710_drv;
+		/* Default REG value is 6.6V for 2S. Threshold used for */
+		/* PROCHOT trigger when no battery is connected to the RVP */
+		if (battery_is_present() != BP_YES)
+			bq25710_set_min_system_voltage(0, 8400);
 		break;
 
 	/* Add additional board SKUs */
