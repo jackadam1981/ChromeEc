@@ -69,6 +69,24 @@
       "parentUuid": "bc7263f0_4fd02ea8",
       "revId": "cdb3e8a99b9344ed3baf85be9628d76f47648cc4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7774de14_be8b4b1d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-12-14T05:32:04Z",
+      "side": 1,
+      "message": "OK, thanks for clarification on the bug. EC thinks that CBI WP is enabled because it probes the global WP GPIO. This change is indeed required.",
+      "parentUuid": "7161e7da_547f0171",
+      "revId": "cdb3e8a99b9344ed3baf85be9628d76f47648cc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
