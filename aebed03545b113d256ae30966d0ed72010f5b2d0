@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ceeaa496_07df1469",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 540,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-12-14T17:42:17Z",
+      "side": 1,
+      "message": "Why don\u0027t you just do:\n\n  return (tskid \u003c TASK_ID_COUNT) ? (tasks_enabled \u0026 BIT(tskid)) : false\n\n?\n\nAlso, I think we should move this to common/task_common.c (NEW).",
+      "range": {
+        "startLine": 533,
+        "startChar": 0,
+        "endLine": 540,
+        "endChar": 14
+      },
+      "revId": "aebed03545b113d256ae30966d0ed72010f5b2d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "546d30e0_5a60ff0e",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 981,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-12-14T17:42:17Z",
+      "side": 1,
+      "message": "Can you paste a sample output to the CL description?",
+      "range": {
+        "startLine": 979,
+        "startChar": 0,
+        "endLine": 981,
+        "endChar": 58
+      },
+      "revId": "aebed03545b113d256ae30966d0ed72010f5b2d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "250a128e_2df55deb",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 984,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-12-14T17:42:17Z",
+      "side": 1,
+      "message": "Hi Poornima,\n\nDo you think you can first move task_print_list to common/task_common.c (NEW) by a separate CL?",
+      "range": {
+        "startLine": 960,
+        "startChar": 0,
+        "endLine": 984,
+        "endChar": 1
+      },
+      "revId": "aebed03545b113d256ae30966d0ed72010f5b2d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
