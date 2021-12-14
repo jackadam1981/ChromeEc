@@ -16,6 +16,24 @@
       "message": "Look like this is failing a cros-ec unit test: test/usb_pd_timer",
       "revId": "418bd5613bbf0fd9d54389711c445044c2dace71",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d2908a2_04fd6e86",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2021-12-14T07:34:29Z",
+      "side": 1,
+      "message": "Yes, that\u0027s true. That\u0027s why I\u0027ve updated CL:3330201. The issue is that EC codebase assumes that atomic_t is 4-byte wide e.g. `pd_timer_atomic_op` function, so I didn\u0027t change the atomic_t type for host.",
+      "parentUuid": "bf64bfd0_3d466ac6",
+      "revId": "418bd5613bbf0fd9d54389711c445044c2dace71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
