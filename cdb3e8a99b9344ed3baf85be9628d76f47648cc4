@@ -33,6 +33,24 @@
       "message": "After discussed with Boris, doesn\u0027t seem like this CL is useful?",
       "revId": "cdb3e8a99b9344ed3baf85be9628d76f47648cc4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc7263f0_4fd02ea8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1508123
+      },
+      "writtenOn": "2021-12-14T02:51:46Z",
+      "side": 1,
+      "message": "Whether it should be or not, WP is enabled on Taeko EVT. See b/208703602. So I would like to turn on this config so that we can fix the CBI values.",
+      "parentUuid": "9ecf613b_7a8cfad7",
+      "revId": "cdb3e8a99b9344ed3baf85be9628d76f47648cc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
