@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35b18721_09c75381",
+        "filename": "baseboard/intelrvp/adlrvp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-12-14T18:02:11Z",
+      "side": 1,
+      "message": "typically it is battery min voltage battery_get_info()-\u003evoltage_min,\nit should be same either battery present or not",
+      "revId": "6489f71d0856c2ee0b2caa4e7e2df3fea3360770",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
