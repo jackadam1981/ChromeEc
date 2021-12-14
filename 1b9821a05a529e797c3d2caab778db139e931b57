@@ -70,6 +70,30 @@
       },
       "revId": "1b9821a05a529e797c3d2caab778db139e931b57",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7129fe1c_69081722",
+        "filename": "zephyr/dts/bindings/led/cros-ec,pwm-leds.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2021-12-14T22:54:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "016a94b9_acbbbe83",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 25
+      },
+      "revId": "1b9821a05a529e797c3d2caab778db139e931b57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
