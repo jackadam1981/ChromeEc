@@ -34,6 +34,24 @@
       "parentUuid": "7ddbe216_dfc92227",
       "revId": "3451a13d855918806eea4b1a8f47e5c8c8abedac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a7eb76a_3ebfaf19",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 405,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-12-14T08:51:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2b59394b_b43ff675",
+      "revId": "3451a13d855918806eea4b1a8f47e5c8c8abedac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
