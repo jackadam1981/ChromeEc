@@ -16,6 +16,23 @@
       "message": "Ready to review, thanks~",
       "revId": "f642ca68aae9f1584e984b142f3eec25cb1bc4c6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f28f72e_92df2ed1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-12-14T20:54:57Z",
+      "side": 1,
+      "message": "Any reason why it\u0027s now decoupled from CONFIG_LOW_POWER_IDLE?",
+      "revId": "f642ca68aae9f1584e984b142f3eec25cb1bc4c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
