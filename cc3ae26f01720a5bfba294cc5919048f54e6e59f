@@ -16,6 +16,24 @@
       "message": "nit: looks like there are two more options added in the code\ncharge color\ncharge error color",
       "revId": "cc3ae26f01720a5bfba294cc5919048f54e6e59f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aad03b62_a93a9ad6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2021-12-14T23:58:15Z",
+      "side": 1,
+      "message": "No, its not new options, its already there in common code \"include/config.h\"\n\n/*\n * Here are some recommended color settings by default, but a board can change\n * the colors to one of \"enum ec_led_colors\" as they see fit.\n */\n#define CONFIG_LED_PWM_CHARGE_COLOR EC_LED_COLOR_AMBER\n#define CONFIG_LED_PWM_NEAR_FULL_COLOR EC_LED_COLOR_GREEN\n#define CONFIG_LED_PWM_CHARGE_ERROR_COLOR EC_LED_COLOR_RED\n#define CONFIG_LED_PWM_SOC_ON_COLOR EC_LED_COLOR_GREEN\n#define CONFIG_LED_PWM_SOC_SUSPEND_COLOR EC_LED_COLOR_GREEN\n#define CONFIG_LED_PWM_LOW_BATT_COLOR EC_LED_COLOR_AMBER\n\n/*\n\nI added all options in zephyr conf, so that if any platform wants to override, they can.\n\nIn brya we are overriding only 4:\n#define CONFIG_LED_PWM_NEAR_FULL_COLOR EC_LED_COLOR_WHITE\n#define CONFIG_LED_PWM_SOC_ON_COLOR EC_LED_COLOR_WHITE\n#define CONFIG_LED_PWM_SOC_SUSPEND_COLOR EC_LED_COLOR_WHITE\n#define CONFIG_LED_PWM_LOW_BATT_COLOR EC_LED_COLOR_AMBER\n\nIn zepyr we are overriding this in CL: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3322174",
+      "parentUuid": "152b9906_5cb94233",
+      "revId": "cc3ae26f01720a5bfba294cc5919048f54e6e59f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
