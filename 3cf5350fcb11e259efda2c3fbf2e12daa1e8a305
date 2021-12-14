@@ -117,6 +117,30 @@
       },
       "revId": "3cf5350fcb11e259efda2c3fbf2e12daa1e8a305",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "091e14c6_fba0b753",
+        "filename": "board/brya/usbc_config.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 589,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2021-12-14T00:19:45Z",
+      "side": 1,
+      "message": "how is this priority?",
+      "parentUuid": "9306da1e_f3673f08",
+      "range": {
+        "startLine": 589,
+        "startChar": 5,
+        "endLine": 589,
+        "endChar": 38
+      },
+      "revId": "3cf5350fcb11e259efda2c3fbf2e12daa1e8a305",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
