@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b3e523e_72dacb04",
+        "filename": "board/primus/board.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2021-12-14T00:42:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1c1c8e59_b8c70455",
+      "revId": "b659a61aa30f4700afd5834af9c43146b6c4f63b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "62948fc5_e61d0d15",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-12-13T20:18:33Z",
       "side": 1,
       "message": "This is pretty much constant. Would be easier to read if you `#define PD_MAX_SUSPEND_CURRENT_MA 3000` and use it here.",
+      "range": {
+        "startLine": 151,
+        "startChar": 23,
+        "endLine": 151,
+        "endChar": 53
+      },
+      "revId": "b659a61aa30f4700afd5834af9c43146b6c4f63b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "774e65b2_2a9b8c41",
+        "filename": "board/primus/board.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2021-12-14T00:42:40Z",
+      "side": 1,
+      "message": "Sorry, I didn\u0027t get it. The adapter_current_ma will be get from adapter.",
+      "parentUuid": "62948fc5_e61d0d15",
       "range": {
         "startLine": 151,
         "startChar": 23,
