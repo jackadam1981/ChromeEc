@@ -105,6 +105,30 @@
       },
       "revId": "f7889b96e8ca53e424fc27f347a8aab71c42ea73",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd2055ca_a32c8240",
+        "filename": "chip/stm32/usb_spi.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 527,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2021-12-14T18:43:16Z",
+      "side": 1,
+      "message": "It turns out, when accounting for symlinks, that only four board.h files define CONFIG_USB_SPI.  I have added an USB_STR_SPI_NAME enum value, and string \"SPI\" to each of those four as part of this CL.  That way SPI USB interfaces are treated equivalent to I2C USB interfaces, and we have consistent code to copy/paste going forward.\n\nI have run ```make build``` for each of the affected boards.",
+      "parentUuid": "6f6efed1_db97b0f9",
+      "range": {
+        "startLine": 527,
+        "startChar": 24,
+        "endLine": 527,
+        "endChar": 40
+      },
+      "revId": "f7889b96e8ca53e424fc27f347a8aab71c42ea73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
