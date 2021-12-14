@@ -34,6 +34,24 @@
       "parentUuid": "207e4127_fc26c30c",
       "revId": "1d63d9254f67c1c947b910bf9dfcacf3f6d1fb25",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e47d320c_ee1419c3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-12-14T22:24:52Z",
+      "side": 1,
+      "message": "You should use the upstream driver:\nCONFIG_CONFIG_GPIO_NCT38XX\u003dy\nCONFIG_GPIO_NCT38XX_INTERRUPT\u003dy\n\nin place of the cros-ec driver:\nCONFIG_PLATFORM_EC_IOEX_NCT38XX",
+      "parentUuid": "69c90adc_870b532d",
+      "revId": "1d63d9254f67c1c947b910bf9dfcacf3f6d1fb25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
