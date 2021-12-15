@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ce6cb74_124f1185",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2021-12-15T23:27:07Z",
+      "side": 1,
+      "message": "I\u0027m adding Yuval as a reviewer to check if I\u0027m being too nit-picky.",
+      "revId": "265198bab59eb826edd2ef65383007aace43796f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "08df99b4_0d20ac84",
+        "filename": "zephyr/test/drivers/src/isl923x.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 796,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2021-12-15T23:27:07Z",
+      "side": 1,
+      "message": "According to the above BUILD_ASSERTS, isn\u0027t this charger not supported? Can we include a comment on why we\u0027re testing this? I feel like I\u0027m missing some context.\n\nShouldn\u0027t we be using isl9238c_hibernate() instead?",
+      "range": {
+        "startLine": 796,
+        "startChar": 1,
+        "endLine": 796,
+        "endChar": 20
+      },
+      "revId": "265198bab59eb826edd2ef65383007aace43796f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a131e21_a7d012e2",
+        "filename": "zephyr/test/drivers/src/isl923x.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 798,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2021-12-15T23:27:07Z",
+      "side": 1,
+      "message": "Can we describe as comments in a bit higher level language related to the chip spec what we\u0027re actually testing? Like what changing these register values does according to the spec or driver requirements?",
+      "revId": "265198bab59eb826edd2ef65383007aace43796f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
