@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df042282_b87e1698",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2021-12-15T18:15:36Z",
+      "side": 1,
+      "message": "Need to remove below as well ?\n-board/tglrvp_ish$\n-board/tglrvpu_ite_tcpmv1 ",
+      "revId": "1546bfbbf6a3802b40789548034da314a8364d4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d03afb95_875827ce",
+        "filename": "baseboard/intelrvp/baseboard.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2021-12-15T18:15:36Z",
+      "side": 1,
+      "message": "is this still required, as no intel rvp currently has BC12 support?",
+      "range": {
+        "startLine": 89,
+        "startChar": 0,
+        "endLine": 92,
+        "endChar": 6
+      },
+      "revId": "1546bfbbf6a3802b40789548034da314a8364d4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
