@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bdf976cd_47e1a391",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-12-15T18:15:19Z",
+      "side": 1,
+      "message": "Looks good once the other interrupt clear is removed that Fanli pointed out",
+      "revId": "f0bbc8ac85395855a04cd116a8bbf7ecc0f9cf4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4451d402_a0fb6fdf",
