@@ -33,6 +33,24 @@
       "message": "Any reason why it\u0027s now decoupled from CONFIG_LOW_POWER_IDLE?",
       "revId": "f642ca68aae9f1584e984b142f3eec25cb1bc4c6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ccb001bb_9e782b80",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2021-12-15T05:34:02Z",
+      "side": 1,
+      "message": "Add the CONFIG_LOW_POWER_IDLE config back.",
+      "parentUuid": "2f28f72e_92df2ed1",
+      "revId": "f642ca68aae9f1584e984b142f3eec25cb1bc4c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
