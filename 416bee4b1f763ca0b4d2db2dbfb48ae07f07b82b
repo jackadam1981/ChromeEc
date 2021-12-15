@@ -45,6 +45,29 @@
       },
       "revId": "416bee4b1f763ca0b4d2db2dbfb48ae07f07b82b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5672fba_adcb454a",
+        "filename": "zephyr/Kconfig.battery",
+        "patchSetId": 19
+      },
+      "lineNbr": 742,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-12-15T20:17:40Z",
+      "side": 1,
+      "message": "\"Enable this option when the battery type cannot be distinguished based only the manufacturer and device name. Your board code must implement the function board_get_default_battery_type(), which returns an index from the board_battery_info table of the correct battery.\"",
+      "range": {
+        "startLine": 738,
+        "startChar": 0,
+        "endLine": 742,
+        "endChar": 0
+      },
+      "revId": "416bee4b1f763ca0b4d2db2dbfb48ae07f07b82b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
