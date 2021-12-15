@@ -5,6 +5,7 @@
 
 #include "common.h"
 #include "anx7447.h"
+#include "anx7406.h"
 #include "console.h"
 #include "gpio.h"
 #include "hooks.h"
@@ -16,6 +17,7 @@
 #include "usb_mux.h"
 #include "usb_pd.h"
 #include "usb_pd_pdo.h"
+#include "tcpm/tcpci.h"
 
 #define CPRINTF(format, args...) cprintf(CC_USBPD, format, ## args)
 #define CPRINTS(format, args...) cprints(CC_USBPD, format, ## args)
@@ -24,14 +26,24 @@
 static int vbus_present;
 
 
-#if defined(CONFIG_USB_PD_TCPM_MUX) && defined(CONFIG_USB_PD_TCPM_ANX7447)
+#ifdef CONFIG_USB_PD_TCPM_MUX
+#ifdef CONFIG_USB_PD_TCPM_ANX7447
 const struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 	{
 		.usb_port = 0,
 		.driver    = &anx7447_usb_mux_driver,
 	},
 };
-#endif
+#endif /* CONFIG_USB_PD_TCPM_ANX7447 */
+#ifdef CONFIG_USB_PD_MUX_ANX7443
+const struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
+	{
+		.usb_port = 0,
+		.driver    = &anx7443_usb_mux_driver,
+	},
+};
+#endif /* CONFIG_USB_PD_MUX_ANX7443 */
+#endif /* CONFIG_USB_PD_TCPM_MUX */
 
 #ifdef CONFIG_USB_PD_TCPM_ANX7447
 int pd_set_power_supply_ready(int port)
@@ -63,18 +75,42 @@ void pd_power_supply_reset(int port)
 #else
 int pd_set_power_supply_ready(int port)
 {
+	int rv;
+
+	CPRINTS("Power supply enter/%d", port);
+	rv = tcpc_update8(port, TCPC_REG_TCPC_CTRL,
+			  TCPC_REG_TCPC_CTRL_DEBUG_ACC_CONTROL, MASK_SET);
+
+	/* Disable charging. */
+	rv = tcpc_write(port, TCPC_REG_COMMAND, TCPC_REG_COMMAND_SNK_CTRL_LOW);
+	if (rv)
+		return rv;
+
+	/* Provide Vbus. */
+	rv = tcpc_write(port, TCPC_REG_COMMAND, TCPC_REG_COMMAND_SRC_CTRL_HIGH);
+	if (rv)
+		return rv;
+
 	/* Turn on the "up" LED when we output VBUS */
 	gpio_set_level(GPIO_LED_U, 1);
-	CPRINTS("Power supply ready/%d", port);
+
+	CPRINTS("Power supply ready/%d, VBUS out enable", port);
 	return EC_SUCCESS; /* we are ready */
 }
 
 void pd_power_supply_reset(int port)
 {
+	CPRINTS("Supply reset enter/%d", port);
+	/* Disable VBUS */
+	tcpc_write(port, TCPC_REG_COMMAND, TCPC_REG_COMMAND_SRC_CTRL_LOW);
+
+	/* Enable charging. */
+	tcpc_write(port, TCPC_REG_COMMAND, TCPC_REG_COMMAND_SNK_CTRL_HIGH);
+
 	/* Turn off the "up" LED when we shutdown VBUS */
 	gpio_set_level(GPIO_LED_U, 0);
 	/* Disable VBUS */
-	CPRINTS("Disable VBUS", port);
+	CPRINTS("Disable VBUS/%d, VBUS in enable", port);
 }
 #endif /* CONFIG_USB_PD_TCPM_ANX7447 */
 
@@ -193,12 +229,12 @@ __override int svdm_dp_config(int port, uint32_t *payload)
 {
 	int opos = pd_alt_mode(port, TCPCI_MSG_SOP, USB_SID_DISPLAYPORT);
 	int pin_mode = pd_dfp_dp_get_pin_mode(port, dp_status[port]);
+#ifdef CONFIG_USB_PD_TCPM_MUX
 	bool unused;
-#if defined(CONFIG_USB_PD_TCPM_MUX) && defined(CONFIG_USB_PD_TCPM_ANX7447)
 	const struct usb_mux *mux = &usb_muxes[port];
 #endif
 
-#ifdef CONFIG_USB_PD_TCPM_ANX7447
+#ifdef CONFIG_USB_PD_TCPM_MUX
 	mux_state_t mux_state = USB_PD_MUX_NONE;
 	if (polarity_rm_dts(pd_get_polarity(port)))
 		mux_state |= USB_PD_MUX_POLARITY_INVERTED;
@@ -208,7 +244,7 @@ __override int svdm_dp_config(int port, uint32_t *payload)
 	if (!pin_mode)
 		return 0;
 
-#if defined(CONFIG_USB_PD_TCPM_MUX) && defined(CONFIG_USB_PD_TCPM_ANX7447)
+#if defined(CONFIG_USB_PD_MUX_ANX7443) || defined(CONFIG_USB_PD_TCPM_ANX7447)
 	switch (pin_mode) {
 	case MODE_DP_PIN_A:
 	case MODE_DP_PIN_C:
@@ -243,27 +279,38 @@ __override int svdm_dp_config(int port, uint32_t *payload)
 
 __override void svdm_dp_post_config(int port)
 {
+#if defined(CONFIG_USB_PD_TCPM_MUX)
 	bool unused;
 	const struct usb_mux *mux = &usb_muxes[port];
+#endif
 
 	dp_flags[port] |= DP_FLAGS_DP_ON;
 	if (!(dp_flags[port] & DP_FLAGS_HPD_HI_PENDING))
 		return;
 
+#if defined(CONFIG_USB_PD_TCPM_MUX)
 	/* Note: Usage is deprecated, use usb_mux_hpd_update instead */
 	if (IS_ENABLED(CONFIG_USB_PD_TCPM_ANX7447))
 		anx7447_tcpc_update_hpd_status(mux, USB_PD_MUX_HPD_LVL |
 					       USB_PD_MUX_HPD_IRQ_DEASSERTED,
 					       &unused);
+
+	if (IS_ENABLED(CONFIG_USB_PD_TCPM_ANX7406))
+		anx7406_update_hpd_status(mux, USB_PD_MUX_HPD_LVL |
+					  USB_PD_MUX_HPD_IRQ_DEASSERTED);
+#endif
 }
 
 __override int svdm_dp_attention(int port, uint32_t *payload)
 {
+#ifdef CONFIG_USB_PD_TCPM_MUX
 #ifdef CONFIG_USB_PD_TCPM_ANX7447
+	bool unused;
+#endif
 	int lvl = PD_VDO_DPSTS_HPD_LVL(payload[1]);
 	int irq = PD_VDO_DPSTS_HPD_IRQ(payload[1]);
 	const struct usb_mux *mux = &usb_muxes[port];
-	bool unused;
+	//bool unused;
 
 	mux_state_t mux_state = (lvl ? USB_PD_MUX_HPD_LVL :
 				 USB_PD_MUX_HPD_LVL_DEASSERTED) |
@@ -272,8 +319,15 @@ __override int svdm_dp_attention(int port, uint32_t *payload)
 
 	/* Note: Usage is deprecated, use usb_mux_hpd_update instead */
 	CPRINTS("Attention: 0x%x", payload[1]);
+#ifdef CONFIG_USB_PD_TCPM_ANX7447
 	anx7447_tcpc_update_hpd_status(mux, mux_state, &unused);
-#endif
+#endif /* CONFIG_USB_PD_TCPM_ANX7447 */
+
+#ifdef CONFIG_USB_PD_TCPM_ANX7406
+	anx7406_update_hpd_status(mux, mux_state);
+#endif /* CONFIG_USB_PD_TCPM_ANX7406 */
+
+#endif /* CONFIG_USB_PD_TCPM_MUX */
 	dp_status[port] = payload[1];
 
 	/* ack */
@@ -284,6 +338,10 @@ __override void svdm_exit_dp_mode(int port)
 {
 #ifdef CONFIG_USB_PD_TCPM_ANX7447
 	anx7447_tcpc_clear_hpd_status(port);
+#endif
+
+#ifdef CONFIG_USB_PD_TCPM_ANX7406
+	anx7406_hpd_reset(port);
 #endif
 }
 #endif /* CONFIG_USB_PD_ALT_MODE_DFP */
