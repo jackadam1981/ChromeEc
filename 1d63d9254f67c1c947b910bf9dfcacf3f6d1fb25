@@ -52,6 +52,24 @@
       "parentUuid": "69c90adc_870b532d",
       "revId": "1d63d9254f67c1c947b910bf9dfcacf3f6d1fb25",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5fa55188_a56f2842",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2021-12-15T20:59:30Z",
+      "side": 1,
+      "message": "Is this right dts configuration for up streamed driver:\n*********************************************************\n\u0026i2c3_0 {\n\tstatus \u003d \"okay\";\n\n\tnct3808_0_P1:nct3808_0_P1@70 {\n\t\t#address-cells \u003d \u003c1\u003e;\n\t\t#size-cells \u003d \u003c0\u003e;\n\t\tcompatible \u003d \"nuvoton,nct38xx-gpio\";\n\t\treg \u003d \u003c0x70\u003e;\n\t\tlabel \u003d \"NCT3808_0_P1\";\n\n\t\tioex_port0:gpio@0 {\n\t\t\tcompatible \u003d \"nuvoton,nct38xx-gpio-port\";\n\t\t\treg \u003d \u003c0x0\u003e;\n\t\t\tlabel \u003d \"NCT3808_0_P1_GPIO0\";\n\t\t\tgpio-controller;\n\t\t\t#gpio-cells \u003d \u003c2\u003e;\n\t\t\tngpios \u003d \u003c8\u003e;\n\t\t\tpin_mask \u003d \u003c0xdc\u003e;\n\t\t\tpinmux_mask \u003d \u003c0xff\u003e;\n\t\t};\n\t};\n\n\tnct3808_0_P2:nct3808_0_P2@74 { \n\t\t#address-cells \u003d \u003c1\u003e;\n\t\t#size-cells \u003d \u003c0\u003e;\n\t\tcompatible \u003d \"nuvoton,nct38xx-gpio\";\n\t\treg \u003d \u003c0x74\u003e;\n\t\tlabel \u003d \"NCT3808_0_P2\";\n\n\t\tioex_port1:gpio@0 {\n\t\t\tcompatible \u003d \"nuvoton,nct38xx-gpio-port\";\n\t\t\treg \u003d \u003c0x0\u003e;\n\t\t\tlabel \u003d \"NCT3808_0_P2_GPIO0\";\n\t\t\tgpio-controller;\n\t\t\t#gpio-cells \u003d \u003c2\u003e;\n\t\t\tngpios \u003d \u003c8\u003e;\n\t\t\tpin_mask \u003d \u003c0xdc\u003e;\n\t\t\tpinmux_mask \u003d \u003c0xff\u003e;\n\t\t};\n\t};\n\t\n\tnct3808_alert_1 {\n\t\tcompatible \u003d \"nuvoton,nct38xx-gpio-alert\";\n\t\tirq-gpios \u003d \u003c\u0026gpioe 0 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)\u003e;\n\t\tnct38xx-dev \u003d \u003c\u0026nct3808_0_P1 \u0026nct3808_0_P2\u003e;\n\t\tlabel \u003d \"NCT3808_ALERT_0\";\n\t};\n};\n*********************************************************\n\nFew doubts:\n\n1. if we disable CONFIG_PLATFORM_EC_IOEX_NCT38XX, shim/src/ioex_drv.c file is not being compiled, This file has code to generate ioex_config[] data structure.\n\n2. legacy EC code has dependency on shim api\u0027s ioex_init etc, which interns need data structure ioex_config[] to be populated. whichout ioex_config[], there will be compilation error.\n\n3. Legacy EC code and dependency\u0027s on Board ID, for different board ID , EC has different ioex pin configuration, how to handle that in cros_ec and up streamed ioex driver?\n\n4. It seems lot of changes are required in legacy usb_config.c file if we want to use up streamed ioex driver. usb_config.c has functions like bb_retimer_power_enable, board_tcpc_init which are suppose to use shimmed api\u0027s like ioex_int, ioex_set_level, ioex_get_level,ioex_set_flags,ioex_get_flags, which requires ioex_config[] data structure. with current shimmed code its not happening. \n\ndo we need to change legacy ec implementation to use native ioex nct38xx driver ?",
+      "parentUuid": "e47d320c_ee1419c3",
+      "revId": "1d63d9254f67c1c947b910bf9dfcacf3f6d1fb25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
