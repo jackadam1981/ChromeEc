@@ -319,10 +319,12 @@ int chip_get_ec_int(void)
 	unsigned int group, sta;
 	int word;
 
-	if (!SCP_CORE0_INTC_IRQ_OUT)
-		goto error;
-
 	group = read_csr(CSR_VIC_MICAUSE);
+
+	if (!SCP_CORE0_INTC_IRQ_OUT) {
+		ec_int = group;
+		goto error;
+	}
 
 	for (word = SCP_INTC_GRP_LEN - 1; word >= 0; --word) {
 		sta = SCP_CORE0_INTC_IRQ_GRP_STA(group, word);
