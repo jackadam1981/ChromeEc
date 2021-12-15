@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "71fd4682_b799fdc4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2021-12-15T03:00:27Z",
+      "side": 1,
+      "message": "Yes, looks like the only pull on that pin is a pulldown so we need a push-pull output in order to ever drive it high.",
+      "revId": "04d6db0a733ea66cb7f09e54c0833adb9f5836c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
