@@ -38,6 +38,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "34aa09d8_8a4325a0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2021-12-15T21:21:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aad03b62_a93a9ad6",
+      "revId": "cc3ae26f01720a5bfba294cc5919048f54e6e59f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "5c36360a_37f1e3f5",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 5
@@ -76,6 +94,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3de0efe_0d64dbff",
+        "filename": "zephyr/Kconfig.led",
+        "patchSetId": 5
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2021-12-15T21:21:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "10e4c827_c7210863",
+      "range": {
+        "startLine": 48,
+        "startChar": 6,
+        "endLine": 48,
+        "endChar": 24
+      },
+      "revId": "cc3ae26f01720a5bfba294cc5919048f54e6e59f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "99f1ca8d_09d804a0",
@@ -89,6 +131,30 @@
       "writtenOn": "2021-12-15T18:55:55Z",
       "side": 1,
       "message": "Charging error LED color",
+      "range": {
+        "startLine": 63,
+        "startChar": 6,
+        "endLine": 63,
+        "endChar": 24
+      },
+      "revId": "cc3ae26f01720a5bfba294cc5919048f54e6e59f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "41eee4b3_646c3d5d",
+        "filename": "zephyr/Kconfig.led",
+        "patchSetId": 5
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2021-12-15T21:21:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "99f1ca8d_09d804a0",
       "range": {
         "startLine": 63,
         "startChar": 6,
@@ -122,6 +188,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec1c9aec_71ef468e",
+        "filename": "zephyr/Kconfig.led",
+        "patchSetId": 5
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2021-12-15T21:21:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "674eb9c1_fcf5ff2b",
+      "range": {
+        "startLine": 78,
+        "startChar": 6,
+        "endLine": 78,
+        "endChar": 24
+      },
+      "revId": "cc3ae26f01720a5bfba294cc5919048f54e6e59f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a13af7c9_c9de5575",
@@ -135,6 +225,30 @@
       "writtenOn": "2021-12-15T18:55:55Z",
       "side": 1,
       "message": "AP powered on LED color",
+      "range": {
+        "startLine": 93,
+        "startChar": 6,
+        "endLine": 93,
+        "endChar": 24
+      },
+      "revId": "cc3ae26f01720a5bfba294cc5919048f54e6e59f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef1f3081_4c644a8b",
+        "filename": "zephyr/Kconfig.led",
+        "patchSetId": 5
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2021-12-15T21:21:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a13af7c9_c9de5575",
       "range": {
         "startLine": 93,
         "startChar": 6,
@@ -168,6 +282,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "62b21c0b_507ea35c",
+        "filename": "zephyr/Kconfig.led",
+        "patchSetId": 5
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2021-12-15T21:21:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "30331b7f_b52e9824",
+      "range": {
+        "startLine": 108,
+        "startChar": 6,
+        "endLine": 108,
+        "endChar": 24
+      },
+      "revId": "cc3ae26f01720a5bfba294cc5919048f54e6e59f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "979370eb_29f7d4c1",
@@ -181,6 +319,30 @@
       "writtenOn": "2021-12-15T18:55:55Z",
       "side": 1,
       "message": "Low battery LED color",
+      "range": {
+        "startLine": 123,
+        "startChar": 6,
+        "endLine": 123,
+        "endChar": 24
+      },
+      "revId": "cc3ae26f01720a5bfba294cc5919048f54e6e59f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c85bb199_e2abd516",
+        "filename": "zephyr/Kconfig.led",
+        "patchSetId": 5
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2021-12-15T21:21:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "979370eb_29f7d4c1",
       "range": {
         "startLine": 123,
         "startChar": 6,
