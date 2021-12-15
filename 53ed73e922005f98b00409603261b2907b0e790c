@@ -22,6 +22,30 @@
       },
       "revId": "53ed73e922005f98b00409603261b2907b0e790c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15efb2c1_b4c63f2f",
+        "filename": "zephyr/projects/skyrim/adc.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-12-15T16:29:53Z",
+      "side": 1,
+      "message": "Is this a recent convention?  I was trying to follow the brya.dts and volteer.dts for these and both use a lot of underscores",
+      "parentUuid": "94efd871_8bca07b4",
+      "range": {
+        "startLine": 40,
+        "startChar": 2,
+        "endLine": 40,
+        "endChar": 20
+      },
+      "revId": "53ed73e922005f98b00409603261b2907b0e790c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
