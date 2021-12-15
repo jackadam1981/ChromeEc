@@ -5,6 +5,7 @@
 
 #include "adc.h"
 #include "temp_sensor.h"
+#include "temp_sensor/sb_tsi.h"
 #include "temp_sensor/temp_sensor.h"
 #include "temp_sensor/thermistor.h"
 #include "temp_sensor/tmp112.h"
@@ -72,8 +73,29 @@ const struct tmp112_sensor_t tmp112_sensors[TMP112_COUNT] = {
 	DT_FOREACH_STATUS_OKAY(cros_ec_temp_sensor_tmp112, DEFINE_TMP112_DATA)
 };
 
+#if DT_HAS_COMPAT_STATUS_OKAY(cros_ec_temp_sensor_sb_tsi)
+static int sb_tsi_get_temp(const struct temp_sensor_t *sensor, int *temp_ptr)
+{
+	return sb_tsi_get_val(sensor->idx, temp_ptr);
+}
+
+#if DT_NUM_INST_STATUS_OKAY(cros_ec_temp_sensor_sb_tsi) > 1
+#error "Unsupported number of SB TSI sensors"
+#endif
+
+#endif /* cros_ec_temp_sensor_sb_tsi */
+
+#define TEMP_SB_TSI(node_id)                  \
+	[ZSHIM_TEMP_SENSOR_ID(node_id)] = {   \
+		.name = DT_LABEL(node_id),    \
+		.read = sb_tsi_get_temp,      \
+		.idx = 0,                     \
+		.type = TEMP_SENSOR_TYPE_CPU, \
+	},
+
 const struct temp_sensor_t temp_sensors[] = {
 	DT_FOREACH_STATUS_OKAY(cros_ec_temp_sensor_thermistor, TEMP_THERMISTOR)
 	DT_FOREACH_STATUS_OKAY(cros_ec_temp_sensor_tmp112, TEMP_TMP112)
+	DT_FOREACH_STATUS_OKAY(cros_ec_temp_sensor_sb_tsi, TEMP_SB_TSI)
 };
 #endif /* named_temp_sensors */
