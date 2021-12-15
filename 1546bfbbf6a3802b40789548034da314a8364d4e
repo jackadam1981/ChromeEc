@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2b079db1_43734294",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-12-15T19:03:36Z",
+      "side": 1,
+      "message": "tglrvp_ish  - is owned by ISH team\ntglrvpu_ite_tcpmv1  - its removed",
+      "parentUuid": "df042282_b87e1698",
+      "revId": "1546bfbbf6a3802b40789548034da314a8364d4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d03afb95_875827ce",
         "filename": "baseboard/intelrvp/baseboard.h",
         "patchSetId": 3
@@ -31,6 +49,30 @@
       "writtenOn": "2021-12-15T18:15:36Z",
       "side": 1,
       "message": "is this still required, as no intel rvp currently has BC12 support?",
+      "range": {
+        "startLine": 89,
+        "startChar": 0,
+        "endLine": 92,
+        "endChar": 6
+      },
+      "revId": "1546bfbbf6a3802b40789548034da314a8364d4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "83d171ec_cce64950",
+        "filename": "baseboard/intelrvp/baseboard.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-12-15T19:03:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d03afb95_875827ce",
       "range": {
         "startLine": 89,
         "startChar": 0,
