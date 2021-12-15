@@ -190,6 +190,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c46c493b_19a9e977",
+        "filename": "include/adc.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2021-12-15T02:53:50Z",
+      "side": 1,
+      "message": "Uploaded threshold config to device tree binding.\nTODO: include code that will configure threshold irq based on these parameters during initialization.",
+      "parentUuid": "d3573458_cc3bd960",
+      "range": {
+        "startLine": 85,
+        "startChar": 4,
+        "endLine": 85,
+        "endChar": 34
+      },
+      "revId": "34473041a1e85c78bf6886ac5e68c78da8dadb95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c9c32ed7_8ffdf7fb",
         "filename": "include/adc.h",
         "patchSetId": 2
