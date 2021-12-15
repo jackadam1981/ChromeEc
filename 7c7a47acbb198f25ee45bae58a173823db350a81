@@ -682,6 +682,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "41a948b1_03500952",
+        "filename": "zephyr/subsys/usbc/tc/snk.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 829,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-12-15T19:50:50Z",
+      "side": 1,
+      "message": "I am sure the ordering for ADD has a lot to do with this. I may not need CC_RD.  Let me ponder a bit.",
+      "parentUuid": "8e82ba9b_9ad93be7",
+      "revId": "7c7a47acbb198f25ee45bae58a173823db350a81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "04b2f2b5_52965142",
         "filename": "zephyr/subsys/usbc/tc/snk.c",
         "patchSetId": 12
