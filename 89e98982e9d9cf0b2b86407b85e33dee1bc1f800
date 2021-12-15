@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0da9334b_efb2b7c1",
+        "filename": "include/usb_tc_sm.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-12-15T19:40:58Z",
+      "side": 1,
+      "message": "The naming suggests that we should have a parameter to set or clear the sleep mask. Right now, I\u0027m not sure what action is taken (besides skipping it for ITE).",
+      "range": {
+        "startLine": 191,
+        "startChar": 22,
+        "endLine": 191,
+        "endChar": 42
+      },
+      "revId": "89e98982e9d9cf0b2b86407b85e33dee1bc1f800",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
