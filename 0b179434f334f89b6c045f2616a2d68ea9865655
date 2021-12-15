@@ -1,0 +1,153 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58409702_d75fa2ab",
+        "filename": "zephyr/test/drivers/src/isl923x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2021-12-15T17:45:13Z",
+      "side": 1,
+      "message": "nit/unimportant: I think fff.h gets included by test_mocks.h.",
+      "revId": "0b179434f334f89b6c045f2616a2d68ea9865655",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ffdd10a_2a84b356",
+        "filename": "zephyr/test/drivers/src/isl923x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 790,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2021-12-15T17:45:13Z",
+      "side": 1,
+      "message": "Is there a particular reason why we\u0027re using \"__\" instead of \"_\" ?",
+      "range": {
+        "startLine": 790,
+        "startChar": 34,
+        "endLine": 790,
+        "endChar": 36
+      },
+      "revId": "0b179434f334f89b6c045f2616a2d68ea9865655",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "161290f6_a6d82ce2",
+        "filename": "zephyr/test/drivers/src/isl923x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 799,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2021-12-15T17:45:13Z",
+      "side": 1,
+      "message": "It looks like we\u0027re reading the actual value as the expected value here and then testing intercepted calls to make sure it hits the expected value. We should compare an expected value to an actual that comes from the emulator register peeking.",
+      "range": {
+        "startLine": 798,
+        "startChar": 0,
+        "endLine": 799,
+        "endChar": 56
+      },
+      "revId": "0b179434f334f89b6c045f2616a2d68ea9865655",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38cb6af8_0d155c7d",
+        "filename": "zephyr/test/drivers/src/isl923x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 802,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2021-12-15T17:45:13Z",
+      "side": 1,
+      "message": "I think it\u0027s more readable to have separate zassert calls on each bit here.",
+      "range": {
+        "startLine": 801,
+        "startChar": 0,
+        "endLine": 802,
+        "endChar": 37
+      },
+      "revId": "0b179434f334f89b6c045f2616a2d68ea9865655",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce435c40_ce52ca18",
+        "filename": "zephyr/test/drivers/src/isl923x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 804,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2021-12-15T17:45:13Z",
+      "side": 1,
+      "message": "Is there a final state of the driver or emulator we can test instead of counting the mocked i2c reads? I think should only be mocking i2c reads when we\u0027re doing something specific instead of verify each read happened to a particular register.",
+      "range": {
+        "startLine": 804,
+        "startChar": 1,
+        "endLine": 804,
+        "endChar": 21
+      },
+      "revId": "0b179434f334f89b6c045f2616a2d68ea9865655",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb45e740_ddf3aa99",
+        "filename": "zephyr/test/drivers/src/isl923x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 808,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2021-12-15T17:45:13Z",
+      "side": 1,
+      "message": "Instead of verifying each intercepted write, can we verify the state of the emulator instead?",
+      "revId": "0b179434f334f89b6c045f2616a2d68ea9865655",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "382103e9_46b76f0d",
+        "filename": "zephyr/test/drivers/src/isl923x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 856,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2021-12-15T17:45:13Z",
+      "side": 1,
+      "message": "Was this from a clang-format?",
+      "range": {
+        "startLine": 854,
+        "startChar": 0,
+        "endLine": 856,
+        "endChar": 66
+      },
+      "revId": "0b179434f334f89b6c045f2616a2d68ea9865655",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
