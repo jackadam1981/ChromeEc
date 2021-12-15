@@ -11,5 +11,6 @@
 
 void watchdog_disable(void);
 void watchdog_enable(void);
+int watchdog_is_enabled(void);
 
 #endif /* __SCP_WATCHDOG_H */
