@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd6f7f4b_ae794554",
+        "filename": "test/tpm_test/acvpecdsa.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-12-15T20:34:47Z",
+      "side": 1,
+      "message": "this comment seems to be incomplete and out of place?",
+      "range": {
+        "startLine": 43,
+        "startChar": 1,
+        "endLine": 66,
+        "endChar": 0
+      },
+      "revId": "e578811aa57a8e608519fad0b6925d6395391793",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f716a383_7b7e7fee",
+        "filename": "test/tpm_test/acvpecdsa.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-12-15T20:34:47Z",
+      "side": 1,
+      "message": "isn\u0027t this supposed to be an explicit parameter\nbyteorder\u003d\u0027big\u0027",
+      "range": {
+        "startLine": 70,
+        "startChar": 30,
+        "endLine": 70,
+        "endChar": 36
+      },
+      "revId": "e578811aa57a8e608519fad0b6925d6395391793",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "98d98a11_3407efee",
+        "filename": "test/tpm_test/acvpecdsa.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-12-15T20:34:47Z",
+      "side": 1,
+      "message": "please run Python modules through \u0027cros lint \u003cfile.py\u003e\u0027",
+      "range": {
+        "startLine": 113,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 81
+      },
+      "revId": "e578811aa57a8e608519fad0b6925d6395391793",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57efed95_4f80df81",
+        "filename": "test/tpm_test/acvptest.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-12-15T20:34:47Z",
+      "side": 1,
+      "message": "is this different from `class TPM` in tpmtest.py? Is there a chance to import tpmtest.py and use it?",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 10
+      },
+      "revId": "e578811aa57a8e608519fad0b6925d6395391793",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
