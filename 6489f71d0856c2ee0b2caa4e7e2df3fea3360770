@@ -16,6 +16,24 @@
       "message": "typically it is battery min voltage battery_get_info()-\u003evoltage_min,\nit should be same either battery present or not",
       "revId": "6489f71d0856c2ee0b2caa4e7e2df3fea3360770",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae93fdc1_0209f117",
+        "filename": "baseboard/intelrvp/adlrvp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2021-12-15T15:15:03Z",
+      "side": 1,
+      "message": "In ADLP Brya/Gimble, Same charger chip i.e BQ25720 is used as in ADL-N.\nVsys min REG is set to PPVAR_SYS in Gimble i.e\n     set to 9.2 V if battery is present.\n     set to 13.2 V if battery is not present.\nhttps://partnerissuetracker.corp.google.com/issues/196184163\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3099295/\n\nSimilar implementation is adapted in RVP too.\nOn boot, Vsys min REG value is set to 6.6v for 2S config by the charger chip if battery presence is detected. Hence Vsys min is initialized only when RVP boots with no battery connected.\n\nWith this change PROCHOT assertion is not seen in RVP.",
+      "parentUuid": "35b18721_09c75381",
+      "revId": "6489f71d0856c2ee0b2caa4e7e2df3fea3360770",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
