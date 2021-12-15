@@ -16,6 +16,29 @@
       "message": "Please revisit.",
       "revId": "5bef2d0f72eeb51df9df154658a5d193eb0c17f7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86b7d81a_d5ec83f7",
+        "filename": "include/atomic_t.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-12-15T21:12:11Z",
+      "side": 1,
+      "message": "For my understanding, what breaks in this case? Looks like you could also write it as:\n\n #ifdef TEST_BUILD\n typedef int atomic_t;\n #else\n typedef long atomic_t;\n #endif\n #ifdef TEST_BUILD\n\n typedef atomic_t atomic_val_t;",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 5
+      },
+      "revId": "5bef2d0f72eeb51df9df154658a5d193eb0c17f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
