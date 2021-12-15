@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94efd871_8bca07b4",
+        "filename": "zephyr/projects/skyrim/adc.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-12-15T00:49:49Z",
+      "side": 1,
+      "message": "dts property names should use - instead of underscore",
+      "range": {
+        "startLine": 40,
+        "startChar": 2,
+        "endLine": 40,
+        "endChar": 20
+      },
+      "revId": "53ed73e922005f98b00409603261b2907b0e790c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
