@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "18ee17e2_4e4a26e4",
+        "filename": "zephyr/subsys/usbc/tc/snk.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-12-15T19:48:53Z",
+      "side": 1,
+      "message": "I agree and will convert this over as soon as possible.",
+      "parentUuid": "076b4a91_bee77bbd",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 64
+      },
+      "revId": "add9873428ac5055c6857ffaa4a590ae25ca9771",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d7808631_b609178f",
         "filename": "zephyr/subsys/usbc/tc/snk.c",
         "patchSetId": 15
@@ -54,6 +78,30 @@
       "writtenOn": "2021-12-14T23:31:52Z",
       "side": 1,
       "message": "For the internal functions, I\u0027d like to see the first parameter be a pointer to \"struct usb_tc_port_info *\" instead of an index.  For the externally visible, these can probably start off as an index.",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 0
+      },
+      "revId": "add9873428ac5055c6857ffaa4a590ae25ca9771",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "40612ff9_5e2cad32",
+        "filename": "zephyr/subsys/usbc/tc/snk.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-12-15T19:48:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d7808631_b609178f",
       "range": {
         "startLine": 27,
         "startChar": 0,
@@ -77,6 +125,30 @@
       "writtenOn": "2021-12-14T23:31:52Z",
       "side": 1,
       "message": "This construct isn\u0027t part of zephyr at the moment.  So probably change to __unused for now.",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 14
+      },
+      "revId": "add9873428ac5055c6857ffaa4a590ae25ca9771",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "81531e7d_5a4d4b4d",
+        "filename": "zephyr/subsys/usbc/tc/snk.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-12-15T19:48:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dd481474_a69d65d8",
       "range": {
         "startLine": 39,
         "startChar": 0,
@@ -112,6 +184,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c9189f45_6f4166bc",
+        "filename": "zephyr/subsys/usbc/tc/snk.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-12-15T19:48:53Z",
+      "side": 1,
+      "message": "I have not gone through Sam\u0027s code yet. I just received the URL today.",
+      "parentUuid": "d7235e60_becc3fd5",
+      "range": {
+        "startLine": 171,
+        "startChar": 6,
+        "endLine": 171,
+        "endChar": 26
+      },
+      "revId": "add9873428ac5055c6857ffaa4a590ae25ca9771",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8eb42041_dbe91f6e",
         "filename": "zephyr/subsys/usbc/tc/usb_tc_sm.h",
         "patchSetId": 15
@@ -123,6 +219,30 @@
       "writtenOn": "2021-12-14T23:31:52Z",
       "side": 1,
       "message": "Can you add an example devicetree as part of this CL?  It would help to understand these macros.",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 22
+      },
+      "revId": "add9873428ac5055c6857ffaa4a590ae25ca9771",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd8561f3_24f3f3d6",
+        "filename": "zephyr/subsys/usbc/tc/usb_tc_sm.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-12-15T19:48:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8eb42041_dbe91f6e",
       "range": {
         "startLine": 39,
         "startChar": 0,
@@ -156,6 +276,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b0691bb2_6a32386e",
+        "filename": "zephyr/subsys/usbc/tc/usb_tc_sm.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-12-15T19:48:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8e1ad603_e59fe98c",
+      "range": {
+        "startLine": 44,
+        "startChar": 4,
+        "endLine": 44,
+        "endChar": 41
+      },
+      "revId": "add9873428ac5055c6857ffaa4a590ae25ca9771",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0b571939_197d9909",
@@ -169,6 +313,30 @@
       "writtenOn": "2021-12-14T23:31:52Z",
       "side": 1,
       "message": "Try to keep the module portion of the name first.  Zephyr is moving to \u003cmodule\u003e_\u003caction\u003e_\u003cnoun\u003e pattern.\n\nSo \"USB_TC_INCLUDE_DBGACC\".  This macro is intended to effectively return a bool I think, so maybe \"USB_TC_INCLUDES_DBGACC\" or \"USB_TC_HAS_DBCACC\".",
+      "range": {
+        "startLine": 93,
+        "startChar": 3,
+        "endLine": 93,
+        "endChar": 31
+      },
+      "revId": "add9873428ac5055c6857ffaa4a590ae25ca9771",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f5da6f1c_13098a88",
+        "filename": "zephyr/subsys/usbc/tc/usb_tc_sm.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-12-15T19:48:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0b571939_197d9909",
       "range": {
         "startLine": 93,
         "startChar": 3,
