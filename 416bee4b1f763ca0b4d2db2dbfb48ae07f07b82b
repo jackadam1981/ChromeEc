@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf419a4a_b46c64cc",
+        "filename": "include/config.h",
+        "patchSetId": 19
+      },
+      "lineNbr": 482,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-12-15T20:08:07Z",
+      "side": 1,
+      "message": "detected",
+      "range": {
+        "startLine": 482,
+        "startChar": 59,
+        "endLine": 482,
+        "endChar": 66
+      },
+      "revId": "416bee4b1f763ca0b4d2db2dbfb48ae07f07b82b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2ca6e1b_92735079",
+        "filename": "zephyr/Kconfig.battery",
+        "patchSetId": 19
+      },
+      "lineNbr": 736,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-12-15T20:08:07Z",
+      "side": 1,
+      "message": "Disable battery auto detection",
+      "range": {
+        "startLine": 736,
+        "startChar": 7,
+        "endLine": 736,
+        "endChar": 60
+      },
+      "revId": "416bee4b1f763ca0b4d2db2dbfb48ae07f07b82b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
