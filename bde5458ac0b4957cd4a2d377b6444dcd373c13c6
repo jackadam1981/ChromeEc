@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "129867da_699288fa",
+        "filename": "zephyr/dts/bindings/temp/cros_ec_temp_sensor_tmp112.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-12-15T21:58:24Z",
+      "side": 1,
+      "message": "You don\u0027t need an actual enum-name here because the tmp112 driver just uses the idx field passed to it.\n\nI think a better approach is to create an int field here called \"index\".  This will be easier to document than an enum name.\n\nIdeally, Zephyr would provide a macros to retrieve the auto-assigned \"instance number\", but this doesn\u0027t exist.",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 0
+      },
+      "revId": "bde5458ac0b4957cd4a2d377b6444dcd373c13c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1b597e7_654fbc6d",
+        "filename": "zephyr/shim/include/temp_sensor/temp_sensor.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-12-15T21:58:24Z",
+      "side": 1,
+      "message": "If you switch \"tmp112-name\" to \"index\", then this becomes DT_PROP(node_id, index)\n\nBonus - the compile will fail if you duplicate the index number in your tree.",
+      "range": {
+        "startLine": 27,
+        "startChar": 40,
+        "endLine": 28,
+        "endChar": 25
+      },
+      "revId": "bde5458ac0b4957cd4a2d377b6444dcd373c13c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
