@@ -1,0 +1,97 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d88fc55d_be04d94d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-12-15T00:54:39Z",
+      "side": 1,
+      "message": "\u003e \"definiton\" is a possible misspelling of \"definition\".\n\nPlease fix.",
+      "parentUuid": "1d378e2a_7d270dce",
+      "range": {
+        "startLine": 9,
+        "startChar": 43,
+        "endLine": 9,
+        "endChar": 52
+      },
+      "revId": "81a22af523bb1d92ac155b53610b32d223053711",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93ec8cac_82857439",
+        "filename": "zephyr/shim/include/temp_sensor/temp_sensor.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-12-15T00:54:39Z",
+      "side": 1,
+      "message": "should be cros_ec_temp_sensor_tmp112? not named-temp-sensors?",
+      "range": {
+        "startLine": 32,
+        "startChar": 19,
+        "endLine": 32,
+        "endChar": 47
+      },
+      "revId": "81a22af523bb1d92ac155b53610b32d223053711",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "68794e05_9fa5bf38",
+        "filename": "zephyr/shim/include/temp_sensor/temp_sensor.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-12-15T00:54:39Z",
+      "side": 1,
+      "message": "add trailing comma",
+      "range": {
+        "startLine": 36,
+        "startChar": 1,
+        "endLine": 36,
+        "endChar": 13
+      },
+      "revId": "81a22af523bb1d92ac155b53610b32d223053711",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0e73894_9cf4f8f0",
+        "filename": "zephyr/shim/src/temp_sensors.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-12-15T00:54:39Z",
+      "side": 1,
+      "message": "can you use clang-format to do this?\n\nit will be consistent with what\u0027s above",
+      "range": {
+        "startLine": 64,
+        "startChar": 28,
+        "endLine": 64,
+        "endChar": 33
+      },
+      "revId": "81a22af523bb1d92ac155b53610b32d223053711",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
