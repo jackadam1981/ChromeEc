@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "539cad9f_e76da363",
+        "filename": "zephyr/test/drivers/src/isl923x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2021-12-15T22:36:09Z",
+      "side": 1,
+      "message": "It is good practice to include what you need explicitly, rather than relying on something else including it.",
+      "parentUuid": "58409702_d75fa2ab",
+      "revId": "0b179434f334f89b6c045f2616a2d68ea9865655",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4ffdd10a_2a84b356",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-12-15T17:45:13Z",
       "side": 1,
       "message": "Is there a particular reason why we\u0027re using \"__\" instead of \"_\" ?",
+      "range": {
+        "startLine": 790,
+        "startChar": 34,
+        "endLine": 790,
+        "endChar": 36
+      },
+      "revId": "0b179434f334f89b6c045f2616a2d68ea9865655",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "01a70ed7_e878365c",
+        "filename": "zephyr/test/drivers/src/isl923x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 790,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2021-12-15T22:36:09Z",
+      "side": 1,
+      "message": "It clarifies that happy path belongs to a collection of tests for the hibernate function.",
+      "parentUuid": "4ffdd10a_2a84b356",
       "range": {
         "startLine": 790,
         "startChar": 34,
@@ -64,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "74f5dca5_93fe77be",
+        "filename": "zephyr/test/drivers/src/isl923x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 799,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2021-12-15T22:36:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "161290f6_a6d82ce2",
+      "range": {
+        "startLine": 798,
+        "startChar": 0,
+        "endLine": 799,
+        "endChar": 56
+      },
+      "revId": "0b179434f334f89b6c045f2616a2d68ea9865655",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "38cb6af8_0d155c7d",
@@ -77,6 +143,30 @@
       "writtenOn": "2021-12-15T17:45:13Z",
       "side": 1,
       "message": "I think it\u0027s more readable to have separate zassert calls on each bit here.",
+      "range": {
+        "startLine": 801,
+        "startChar": 0,
+        "endLine": 802,
+        "endChar": 37
+      },
+      "revId": "0b179434f334f89b6c045f2616a2d68ea9865655",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b82fd31c_1e4905e3",
+        "filename": "zephyr/test/drivers/src/isl923x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 802,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2021-12-15T22:36:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "38cb6af8_0d155c7d",
       "range": {
         "startLine": 801,
         "startChar": 0,
@@ -110,6 +200,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "36cf2cd4_25469de0",
+        "filename": "zephyr/test/drivers/src/isl923x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 804,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2021-12-15T22:36:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ce435c40_ce52ca18",
+      "range": {
+        "startLine": 804,
+        "startChar": 1,
+        "endLine": 804,
+        "endChar": 21
+      },
+      "revId": "0b179434f334f89b6c045f2616a2d68ea9865655",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eb45e740_ddf3aa99",
@@ -127,6 +241,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "45cc2e52_0a71356b",
+        "filename": "zephyr/test/drivers/src/isl923x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 808,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2021-12-15T22:36:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eb45e740_ddf3aa99",
+      "revId": "0b179434f334f89b6c045f2616a2d68ea9865655",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "382103e9_46b76f0d",
@@ -140,6 +272,30 @@
       "writtenOn": "2021-12-15T17:45:13Z",
       "side": 1,
       "message": "Was this from a clang-format?",
+      "range": {
+        "startLine": 854,
+        "startChar": 0,
+        "endLine": 856,
+        "endChar": 66
+      },
+      "revId": "0b179434f334f89b6c045f2616a2d68ea9865655",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e4502d9_0fc2442a",
+        "filename": "zephyr/test/drivers/src/isl923x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 856,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2021-12-15T22:36:09Z",
+      "side": 1,
+      "message": "Yes",
+      "parentUuid": "382103e9_46b76f0d",
       "range": {
         "startLine": 854,
         "startChar": 0,
