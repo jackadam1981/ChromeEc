@@ -33,6 +33,46 @@
       "message": "Abe gave this a +2 that somehow got removed by Gerrit. Abe is on PTO until Dec. 20, so could someone review this please?",
       "revId": "7a9c1f3b6d08761f2eb069bdadec7e6355393b19",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ccfb078e_1e6495ad",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-12-15T18:12:43Z",
+      "side": 1,
+      "message": "Carried over Abe\u0027s +2.",
+      "revId": "7a9c1f3b6d08761f2eb069bdadec7e6355393b19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2c8fe90_aea62d62",
+        "filename": "zephyr/test/drivers/src/stubs.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 418,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-12-15T18:12:43Z",
+      "side": 1,
+      "message": "Why the port-1 not call the ppc_chips[USBC_PORT_C1].drv-\u003einterrupt(USBC_PORT_C1)?",
+      "range": {
+        "startLine": 418,
+        "startChar": 2,
+        "endLine": 418,
+        "endChar": 34
+      },
+      "revId": "7a9c1f3b6d08761f2eb069bdadec7e6355393b19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
