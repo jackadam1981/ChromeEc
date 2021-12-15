@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "97ab24f6_e7982ceb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-12-15T21:26:26Z",
+      "side": 1,
+      "message": "This is a large CL, so it\u0027s hard to review all at once. Can you split it into smaller CLs that add a chunk of functionality at a time? See go/smallcls.\n\nFor example, you could create a CL that focuses on specific functionality:\n\n* CL that adds logging logic and exit code logic\n* get_platform_name / get_platform_base_name logic\n* get_default_fw logic\n* gpio logic: read_gpio_ranges, read_gpiochips, get_gpio*, etc\n* config logic: config_hatch, etc\n* flash_fp_mcu_stm32 logic",
+      "revId": "a1914af63193413084f434a1aa7ca87554be3e6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
