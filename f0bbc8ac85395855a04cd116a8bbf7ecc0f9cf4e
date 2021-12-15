@@ -33,6 +33,24 @@
       "message": "This line which clears SBRMI::SoftwareInterrupt to zero can be removed also.\n\nFew more background,\nSMU expects no one can clear SBRMI::SoftwareInterrupt except itself.\nThe silicon design also guaranteed this. i.e. even the bit is clear from SMBus interface layer, the pending interrupt (if not get serviced) still latched internal.\nAs thus, software can remove all code to clear register 0x40 but the one (line 103 of your code) to ensure there\u0027s a 0 to 1 change to trigger the current service call.",
       "revId": "f0bbc8ac85395855a04cd116a8bbf7ecc0f9cf4e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ebbaa83_08db54a9",
+        "filename": "driver/sb_rmi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-12-15T20:00:29Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "4451d402_a0fb6fdf",
+      "revId": "f0bbc8ac85395855a04cd116a8bbf7ecc0f9cf4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
