@@ -1,0 +1,25 @@
+# Copyright 2022 The Chromium OS Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+description: GPIO LED pins parent node
+
+compatible: "cros-ec,gpio-led-pins"
+
+child-binding:
+    description: Array LED GPIO Pin nodes
+    properties:
+        led-color:
+            type: string
+            required: true
+            enum:
+                - LED_OFF
+                - LED_RED
+                - LED_GREEN
+                - LED_BLUE
+                - LED_YELLOW
+                - LED_WHITE
+                - LED_AMBER
+        led-gpios:
+            type: phandle-array
+            required: false
