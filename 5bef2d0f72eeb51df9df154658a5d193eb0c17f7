@@ -39,6 +39,30 @@
       },
       "revId": "5bef2d0f72eeb51df9df154658a5d193eb0c17f7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4deb7df7_14296d9d",
+        "filename": "include/atomic_t.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2021-12-16T11:12:33Z",
+      "side": 1,
+      "message": "EC codebase assumes that atomic_t is 4-bytes wide, for the host build it is not the case, e.g. \n```\ntest_mockable_static void pd_timer_atomic_op(\n\t\tatomic_val_t (*op)(atomic_t*, atomic_val_t),\n\t\tatomic_t *const timer_field, const uint64_t mask_val)\n{\n\tatomic_t *atomic_timer_field;\n\tunion mask64_t {\n\t\tstruct {\n#if (__BYTE_ORDER__  \u003d\u003d __ORDER_LITTLE_ENDIAN__)\n\t\t\tuint32_t lo;\n\t\t\tuint32_t hi;\n#elif (__BYTE_ORDER__ \u003d\u003d __ORDER_BIG_ENDIAN__)\n\t\t\tuint32_t hi;\n\t\t\tuint32_t lo;\n#endif\n\t\t};\n\t\tuint64_t val;\n\t} mask;\n\n\t/*\n\t * High-order mask bits correspond to field [0]. Low-order mask bits\n\t * correspond to field [1].\n\t */\n\tmask.val \u003d mask_val;\n\tif (mask.hi) {\n\t\tatomic_timer_field \u003d timer_field;\n\t\t(void)op(atomic_timer_field, mask.hi);\n\t}\n\tif (mask.lo) {\n\t\tatomic_timer_field \u003d timer_field + 1;\n\t\t(void)op(atomic_timer_field, mask.lo);\n\t}\n}\n```\n`pd_timer_atomic_op` is called with `timer_field` as a pointer to uint32_t. The idea of the function is to store 64-bits mast on 2 uint32_t variables, while with atomic_t(long) 8-bytes wide we write 16-bytes.",
+      "parentUuid": "86b7d81a_d5ec83f7",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 5
+      },
+      "revId": "5bef2d0f72eeb51df9df154658a5d193eb0c17f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
