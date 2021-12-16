@@ -42,7 +42,7 @@
 #undef  CONFIG_CHARGER_SINGLE_CHIP
 #undef CONFIG_USB_PD_TCPC_LPM_EXIT_DEBOUNCE
 #define CONFIG_USB_PD_TCPC_LPM_EXIT_DEBOUNCE (100 * MSEC)
-
+#define CONFIG_CHARGER_PROFILE_OVERRIDE
 /*
  * GPIO for C1 interrupts, for baseboard use
  *
@@ -69,6 +69,11 @@
 /* PWM */
 #define CONFIG_PWM
 #define NPCX7_PWM1_SEL    1  /* GPIO C2 is used as PWM1. */
+
+/* Temp sensor */
+#define CONFIG_TEMP_SENSOR
+#define CONFIG_THERMISTOR
+#define CONFIG_STEINHART_HART_3V3_51K1_47K_4050B
 
 /* USB */
 #define CONFIG_BC12_DETECT_PI3USB9201
@@ -163,6 +168,12 @@ enum adc_channel {
 	ADC_SUB_ANALOG,	       /* ADC2 */
 	ADC_VSNS_PP3300_A,     /* ADC9 */
 	ADC_CH_COUNT
+};
+
+enum temp_sensor_id {
+	TEMP_SENSOR_1,
+	TEMP_SENSOR_2,
+	TEMP_SENSOR_COUNT
 };
 
 enum sensor_id {
