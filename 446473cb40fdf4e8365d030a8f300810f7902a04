@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e45491d1_b9bbb3f3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2021-12-16T21:40:34Z",
+      "side": 1,
+      "message": "Keith, I tried to compile this CL, It\u0027s compiling successfully, but still ioex_config is a problem.\n\nIn CL \"zephyr/projects/herobrine/herobrine_npcx9/src/alt_dev_replacement.c\" is calling ioex_get_name() function. here ioex_get_name is not directly using ioex_config[] instead this function is calling another function \"ioex_get_signal_info()\" which interns using ioex_config[].. It seems like linker is not catching this error or we may see this at run time. But if you call another ioex function like ioex_init which is using ioex_config[] directly, you will see undefined reference to ioex_config during linking.\n\n\nI did small experiment with this CL and started seeing linker error for herobrine_npcx9 platform as well.\n\nhere is patch if you want to recreate: \n---------------------------------------------\ndiff --git a/zephyr/shim/src/ioex.c b/zephyr/shim/src/ioex.c\nindex e01f959b6..c33314d8e 100644\n--- a/zephyr/shim/src/ioex.c\n+++ b/zephyr/shim/src/ioex.c\n@@ -344,6 +344,11 @@ SYS_INIT(ioex_init_default, POST_KERNEL, CONFIG_PLATFORM_EC_IOEX_INIT_PRIORITY);\n const char *ioex_get_name(enum ioex_signal signal)\n {\n        const struct ioex_gpio_config *g \u003d ioex_get_signal_info(signal);\n+       if (IOEX_IS_CROS_DRV(g) \u0026\u0026\n+            !(ioex_config[g-\u003ecros_drv_index].flags \u0026 IOEX_FLAGS_INITIALIZED)) {\n+                LOG_ERR(\"ioex %s disabled\", g-\u003ename);\n+                return NULL;\n+        }\n \n        if (g \u003d\u003d NULL)\n                return NULL;\n------------------------------------------------------------\nHere is tried to use ioex_config[] directly inside ioex_get_name() and i see linker error during build for herobrine_npcx9.",
+      "revId": "446473cb40fdf4e8365d030a8f300810f7902a04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
