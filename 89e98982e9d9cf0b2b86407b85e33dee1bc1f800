@@ -22,6 +22,30 @@
       },
       "revId": "89e98982e9d9cf0b2b86407b85e33dee1bc1f800",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87c67f62_91161c93",
+        "filename": "include/usb_tc_sm.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2021-12-16T05:04:36Z",
+      "side": 1,
+      "message": "Ack, I modify the description and name.",
+      "parentUuid": "0da9334b_efb2b7c1",
+      "range": {
+        "startLine": 191,
+        "startChar": 22,
+        "endLine": 191,
+        "endChar": 42
+      },
+      "revId": "89e98982e9d9cf0b2b86407b85e33dee1bc1f800",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
