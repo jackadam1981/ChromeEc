@@ -20,6 +20,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8af1c3f4_5b12be5e",
+        "filename": "zephyr/test/drivers/include/test_mocks.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-12-16T05:29:23Z",
+      "side": 1,
+      "message": "Why `\u003c` instead of `\u003d\u003d`?",
+      "range": {
+        "startLine": 86,
+        "startChar": 26,
+        "endLine": 86,
+        "endChar": 27
+      },
+      "revId": "265198bab59eb826edd2ef65383007aace43796f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "08df99b4_0d20ac84",
         "filename": "zephyr/test/drivers/src/isl923x.c",
         "patchSetId": 5
@@ -31,6 +54,30 @@
       "writtenOn": "2021-12-15T23:27:07Z",
       "side": 1,
       "message": "According to the above BUILD_ASSERTS, isn\u0027t this charger not supported? Can we include a comment on why we\u0027re testing this? I feel like I\u0027m missing some context.\n\nShouldn\u0027t we be using isl9238c_hibernate() instead?",
+      "range": {
+        "startLine": 796,
+        "startChar": 1,
+        "endLine": 796,
+        "endChar": 20
+      },
+      "revId": "265198bab59eb826edd2ef65383007aace43796f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9210f29a_b2e22ea2",
+        "filename": "zephyr/test/drivers/src/isl923x.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 796,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-12-16T05:29:23Z",
+      "side": 1,
+      "message": "That\u0027s actually the name of the function in isl923x_public.h, probably a really old copy/paste error.",
+      "parentUuid": "08df99b4_0d20ac84",
       "range": {
         "startLine": 796,
         "startChar": 1,
