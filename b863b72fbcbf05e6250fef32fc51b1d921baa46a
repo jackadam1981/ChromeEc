@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40971127_dd76c87f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-12-16T19:00:40Z",
+      "side": 1,
+      "message": "When deleting boards, we need to run additional tests to ensure no OS builds break.  Add the following line before the Change-Id statement:\n\n    Cq-Include-Trybots: luci.chromeos.cq:cq-orchestrator",
+      "revId": "b863b72fbcbf05e6250fef32fc51b1d921baa46a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
