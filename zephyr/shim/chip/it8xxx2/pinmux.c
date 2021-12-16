@@ -70,16 +70,29 @@ static int it8xxx2_pinmux_init_latr(const struct device *dev)
 		pinmux_pin_set(portf, 7, IT8XXX2_PINMUX_FUNC_1);
 	}
 #endif
-#if DT_NODE_HAS_STATUS(DT_NODELABEL(i2c3), okay) && \
-	DT_NODE_HAS_STATUS(DT_NODELABEL(pinmuxh), okay)
-	{
+
+#if DT_NODE_HAS_STATUS(DT_NODELABEL(i2c3), okay)
+	/*
+	 * SMBUS3 has two groups of gpioh and gpiof that can be selected,
+	 * and distinguished by gpio_dev in dtsi.
+	 */
+	if (DEVICE_DT_GET(DT_PHANDLE(DT_NODELABEL(i2c3), gpio_dev)) ==
+	    DEVICE_DT_GET(DT_NODELABEL(gpioh))) {
 		const struct device *porth =
-				DEVICE_DT_GET(DT_NODELABEL(pinmuxh));
+			DEVICE_DT_GET(DT_NODELABEL(pinmuxh));
 
 		/* I2C3 CLK */
 		pinmux_pin_set(porth, 1, IT8XXX2_PINMUX_FUNC_3);
 		/* I2C3 DAT */
 		pinmux_pin_set(porth, 2, IT8XXX2_PINMUX_FUNC_3);
+	} else {
+		const struct device *portf =
+			DEVICE_DT_GET(DT_NODELABEL(pinmuxf));
+
+		/* I2C3 CLK */
+		pinmux_pin_set(portf, 2, IT8XXX2_PINMUX_FUNC_4);
+		/* I2C3 DAT */
+		pinmux_pin_set(portf, 3, IT8XXX2_PINMUX_FUNC_4);
 	}
 #endif
 #if DT_NODE_HAS_STATUS(DT_NODELABEL(i2c4), okay) && \
