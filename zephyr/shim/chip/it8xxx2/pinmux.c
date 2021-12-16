@@ -82,6 +82,18 @@ static int it8xxx2_pinmux_init_latr(const struct device *dev)
 		pinmux_pin_set(porth, 2, IT8XXX2_PINMUX_FUNC_3);
 	}
 #endif
+#if DT_NODE_HAS_STATUS(DT_NODELABEL(i2c3_1), okay) && \
+	DT_NODE_HAS_STATUS(DT_NODELABEL(pinmuxf), okay)
+	{
+		const struct device *portf =
+				DEVICE_DT_GET(DT_NODELABEL(pinmuxf));
+
+		/* I2C3_1 CLK */
+		pinmux_pin_set(portf, 2, IT8XXX2_PINMUX_FUNC_4);
+		/* I2C3_1 DAT */
+		pinmux_pin_set(portf, 3, IT8XXX2_PINMUX_FUNC_4);
+	}
+#endif
 #if DT_NODE_HAS_STATUS(DT_NODELABEL(i2c4), okay) && \
 	DT_NODE_HAS_STATUS(DT_NODELABEL(pinmuxe), okay)
 	{
