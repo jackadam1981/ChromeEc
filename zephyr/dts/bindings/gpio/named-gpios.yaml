@@ -12,4 +12,5 @@ child-binding:
        "#gpio-cells":
           type: int
           required: false
-          const: 0
+    gpio-cells:
+      - value
