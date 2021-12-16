@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9a43cc0f_3ffc2574",
+        "filename": "baseboard/intelrvp/adlrvp.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-12-16T22:16:22Z",
+      "side": 1,
+      "message": "on a second though: how about we make BATT_PRESENT signal as interrupt and add ISR to handle this case?\n\nalso we have to call this function at init",
+      "revId": "6ec5d14c8f98599613e6ba2a62e95fdb9200ab00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "207e0b32_8dd9adf7",
         "filename": "baseboard/intelrvp/adlrvp.c",
         "patchSetId": 3
