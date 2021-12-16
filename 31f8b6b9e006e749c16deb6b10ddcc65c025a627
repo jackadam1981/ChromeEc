@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed9b6826_1e72878b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-12-16T18:09:49Z",
+      "side": 1,
+      "message": "Intel and Google should discuss and agree upon on API design for this.  Peter has started a design doc for this capability.",
+      "revId": "31f8b6b9e006e749c16deb6b10ddcc65c025a627",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc716b7e_9460546c",
+        "filename": "zephyr/dts/bindings/adc/cros-adc-threshold.yaml",
+        "patchSetId": 6
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-12-16T18:09:49Z",
+      "side": 1,
+      "message": "I can\u0027t find any existing Zephyr drivers that add callback directly into the devicetree.\n\nThe required actions taken by the callback are likely board specific, so it makes more sense to have the board code register the callback at runtime.",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 49
+      },
+      "revId": "31f8b6b9e006e749c16deb6b10ddcc65c025a627",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
