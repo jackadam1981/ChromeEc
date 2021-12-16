@@ -355,6 +355,12 @@ const char *ioex_get_name(enum ioex_signal signal)
 {
 	const struct ioex_gpio_config *g = ioex_get_signal_info(signal);
 
+	if (IOEX_IS_CROS_DRV(g) &&
+	    !(ioex_config[g->cros_drv_index].flags & IOEX_FLAGS_INITIALIZED)) {
+		LOG_ERR("ioex %s disabled", g->name);
+		return NULL;
+	}
+
 	if (g == NULL)
 		return NULL;
 

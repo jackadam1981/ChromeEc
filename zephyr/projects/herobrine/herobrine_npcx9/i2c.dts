@@ -60,7 +60,14 @@
 		};
 	};
 
-
+	named-ioexes {
+		compatible = "named-ioexes";
+		fake0 {
+			gpios = <&ioex_port0 0 GPIO_OUT_LOW>;
+			enum-name = "IOEX_BOARD_ID_DET0";
+			label = "IOEX_FAKE0";
+		};
+	};
 };
 
 &i2c0_0 {
@@ -72,6 +79,24 @@
 		compatible = "intersil,isl9238";
 		reg = <0x09>;
 		label = "ISL9238_CHARGER";
+	};
+
+	nct3808_0_P1:nct3808_0_P1@70 {
+		#address-cells = <1>;
+		#size-cells = <0>;
+		compatible = "nuvoton,nct38xx-gpio";
+		reg = <0x70>;
+		label = "NCT3808_0_P1";
+		ioex_port0:gpio@0 {
+			compatible = "nuvoton,nct38xx-gpio-port";
+			reg = <0x0>;
+			label = "NCT3808_0_P1_GPIO0";
+			gpio-controller;
+			#gpio-cells = <2>;
+			ngpios = <8>;
+			pin_mask = <0xdc>;
+			pinmux_mask = <0xff>;
+		};
 	};
 };
 
