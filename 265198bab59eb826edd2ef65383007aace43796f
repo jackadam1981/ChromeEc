@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d62c0ff3_a505316b",
+        "filename": "zephyr/test/drivers/include/test_mocks.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2021-12-16T17:47:24Z",
+      "side": 1,
+      "message": "This makes sure we\u0027re not stepping over the bounds of the argument history arrays",
+      "parentUuid": "8af1c3f4_5b12be5e",
+      "range": {
+        "startLine": 86,
+        "startChar": 26,
+        "endLine": 86,
+        "endChar": 27
+      },
+      "revId": "265198bab59eb826edd2ef65383007aace43796f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "08df99b4_0d20ac84",
@@ -101,6 +125,24 @@
       "writtenOn": "2021-12-15T23:27:07Z",
       "side": 1,
       "message": "Can we describe as comments in a bit higher level language related to the chip spec what we\u0027re actually testing? Like what changing these register values does according to the spec or driver requirements?",
+      "revId": "265198bab59eb826edd2ef65383007aace43796f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "910a3c8a_ac606e3a",
+        "filename": "zephyr/test/drivers/src/isl923x.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 798,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2021-12-16T17:47:24Z",
+      "side": 1,
+      "message": "I think that\u0027s something that should have been documented in the driver itself, but isn\u0027t and any great detail. I can\u0027t really comment on what\u0027s happening beyond manipulating these specific bits.",
+      "parentUuid": "0a131e21_a7d012e2",
       "revId": "265198bab59eb826edd2ef65383007aace43796f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
