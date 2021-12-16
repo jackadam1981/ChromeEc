@@ -123,7 +123,10 @@
 
 /* USB interface indexes (use define rather than enum to expand them) */
 #ifdef SECTION_IS_RW
-#define USB_IFACE_UPDATE	1
+#define CONFIG_HOST_INTERFACE_USB
+#undef  CONFIG_HOSTCMD_EVENTS
+#define USB_IFACE_UPDATE	0
+#define USB_IFACE_HOSTCMD	1
 #define USB_IFACE_COUNT		2
 #else  /* !SECTION_IS_RW */
 #define USB_IFACE_UPDATE	0
@@ -133,7 +136,8 @@
 /* USB endpoint indexes (use define rather than enum to expand them) */
 #define USB_EP_CONTROL		0
 #define USB_EP_UPDATE		1
-#define USB_EP_COUNT		2
+#define USB_EP_HOSTCMD		2
+#define USB_EP_COUNT		3
 
 /* Optional features */
 #define CONFIG_BOARD_PRE_INIT
@@ -222,8 +226,8 @@ enum usb_strings {
 	USB_STR_PRODUCT,
 	USB_STR_SERIALNO,
 	USB_STR_VERSION,
-	USB_STR_I2C_NAME,
 	USB_STR_UPDATE_NAME,
+	USB_STR_HOSTCMD_NAME,
 	USB_STR_COUNT
 };
 

@@ -101,7 +101,8 @@ extern "C" {
 					 */
 /* Protocol version 3 */
 #define EC_LPC_ADDR_HOST_PACKET  0x800  /* Offset of version 3 packet */
-#define EC_LPC_HOST_PACKET_SIZE  0x100  /* Max size of version 3 packet */
+#define EC_LPC_HOST_PACKET_SIZE  0x100  /* Max size of version 3 LPC packet */
+#define EC_USB_HOST_PACKET_SIZE  0x200  /* Max size of version 3 USB packet */
 
 /*
  * The actual block is 0x800-0x8ff, but some BIOSes think it's 0x880-0x8ff
