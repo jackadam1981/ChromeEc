@@ -81,6 +81,30 @@
       },
       "revId": "b659a61aa30f4700afd5834af9c43146b6c4f63b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c0d4030f_3f12e133",
+        "filename": "board/primus/board.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-12-16T19:10:11Z",
+      "side": 1,
+      "message": "The code enters this \"if\" statement only if \n```adapter_current_ma \u003d\u003d PD_MAX_CURRENT_MA```\nso the the value of  ` adapter_current_ma * 93 / 100` will always be constant (roughly 3000). This is exactly what i\u0027m talking about - not easy to understand it from the code. So I\u0027m proposing to just use a define, e.g. \n```\n#define PD_MAX_SUSPEND_CURRENT_MA 3000\n\n...\n\nif ((adapter_current_ma \u003d\u003d PD_MAX_CURRENT_MA) \u0026\u0026\n\t\tchipset_in_or_transitioning_to_state(CHIPSET_STATE_SUSPEND))\n\t\tadapter_current_ma \u003d PD_MAX_SUSPEND_CURRENT_MA;\nelse\n...\n```",
+      "parentUuid": "774e65b2_2a9b8c41",
+      "range": {
+        "startLine": 151,
+        "startChar": 23,
+        "endLine": 151,
+        "endChar": 53
+      },
+      "revId": "b659a61aa30f4700afd5834af9c43146b6c4f63b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
