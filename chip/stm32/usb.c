@@ -1011,3 +1011,21 @@ DECLARE_CONSOLE_COMMAND(macaddr, command_macaddr,
 	"Read and write MAC address");
 
 #endif  /* CONFIG_MAC_ADDR */
+
+/**
+ * Get protocol information
+ */
+enum ec_status usb_get_protocol_info(struct host_cmd_handler_args *args)
+{
+	struct ec_response_get_protocol_info *r = args->response;
+
+	memset(r, 0, sizeof(*r));
+	r->protocol_versions |= BIT(3);
+	r->max_request_packet_size = 64; /* USB_MAX_REQUEST_SIZE */
+	r->max_response_packet_size = 64; /* USB_MAX_RESPONSE_SIZE */
+	r->flags = EC_PROTOCOL_INFO_IN_PROGRESS_SUPPORTED;
+
+	args->response_size = sizeof(*r);
+
+	return EC_RES_SUCCESS;
+}

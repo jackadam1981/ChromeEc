@@ -12,6 +12,8 @@
 #ifndef __CROS_EC_USB_API_H
 #define __CROS_EC_USB_API_H
 
+#include "host_command.h"
+
 /*
  * Initialize the USB peripheral, enabling its clock and configuring the DP/DN
  * GPIOs correctly.  This function is called via an init hook (unless the board
@@ -81,5 +83,7 @@ static inline void usb_wake(void) {}
 
 /* Board-specific USB wake, for side-band wake, called by usb_wake above. */
 void board_usb_wake(void);
+
+enum ec_status usb_get_protocol_info(struct host_cmd_handler_args *args);
 
 #endif /* __CROS_EC_USB_API_H */
