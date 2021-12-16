@@ -70,6 +70,24 @@
       "parentUuid": "e47d320c_ee1419c3",
       "revId": "1d63d9254f67c1c947b910bf9dfcacf3f6d1fb25",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "59cb703e_9f36e34d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-12-16T00:53:17Z",
+      "side": 1,
+      "message": "Here is an example CL that compiles in the upstream NCT38xx driver.  I verified that the output ELF file includes both the ioex.c shim driver, and the upstream gpio_nct38xx.c driver.\n\nhttps://crrev.com/c/3343668\n\nNote that the ioex_drv.c file is used create Zephyr GPIO driver instance, based on an existing IO expander driver in the legacy cros-ec code.",
+      "parentUuid": "5fa55188_a56f2842",
+      "revId": "1d63d9254f67c1c947b910bf9dfcacf3f6d1fb25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
