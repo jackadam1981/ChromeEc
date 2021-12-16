@@ -1,0 +1,205 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19e49c89_676e17c8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-12-16T17:46:31Z",
+      "side": 1,
+      "message": "Overall looks good, I put a few notes here and there. There is one question though: Are you planning to use fixed amount of sensors on Taniks? Or Dynamic?\n\nStarting Dry run",
+      "revId": "403ef8ffe2ac82d7a79fc6df063ed84f76d9cb9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71eaea2b_908b743a",
+        "filename": "board/taniks/board.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-12-16T17:46:31Z",
+      "side": 1,
+      "message": "not needed, since you removed imvp9.1 config",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 21
+      },
+      "revId": "403ef8ffe2ac82d7a79fc6df063ed84f76d9cb9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15e81960_e90a9545",
+        "filename": "board/taniks/board.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-12-16T17:46:31Z",
+      "side": 1,
+      "message": "The b/ and comment is relevant for taeko, you might want to update for taniks",
+      "range": {
+        "startLine": 38,
+        "startChar": 19,
+        "endLine": 38,
+        "endChar": 30
+      },
+      "revId": "403ef8ffe2ac82d7a79fc6df063ed84f76d9cb9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bffadc58_b399246f",
+        "filename": "board/taniks/fans.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-12-16T17:46:31Z",
+      "side": 1,
+      "message": "Same here, please create a separate bug for Taniks fan update",
+      "range": {
+        "startLine": 34,
+        "startChar": 8,
+        "endLine": 34,
+        "endChar": 19
+      },
+      "revId": "403ef8ffe2ac82d7a79fc6df063ed84f76d9cb9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ca38614_98faab76",
+        "filename": "board/taniks/fans.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-12-16T17:46:31Z",
+      "side": 1,
+      "message": "and here",
+      "range": {
+        "startLine": 55,
+        "startChar": 8,
+        "endLine": 55,
+        "endChar": 19
+      },
+      "revId": "403ef8ffe2ac82d7a79fc6df063ed84f76d9cb9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d2db769e_7b3f6e93",
+        "filename": "board/taniks/fw_config.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-12-16T17:46:31Z",
+      "side": 1,
+      "message": "Is that true for Taniks?\n```\nEarly boards doesn\u0027t have correct FW_CONFIG\n```",
+      "range": {
+        "startLine": 36,
+        "startChar": 1,
+        "endLine": 47,
+        "endChar": 2
+      },
+      "revId": "403ef8ffe2ac82d7a79fc6df063ed84f76d9cb9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4e564f1_e48cc59d",
+        "filename": "board/taniks/fw_config.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-12-16T17:46:31Z",
+      "side": 1,
+      "message": "Same, Taniks FW config will probably be different from Taeko",
+      "range": {
+        "startLine": 39,
+        "startChar": 5,
+        "endLine": 40,
+        "endChar": 16
+      },
+      "revId": "403ef8ffe2ac82d7a79fc6df063ed84f76d9cb9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78ed36fe_36b41947",
+        "filename": "board/taniks/i2c.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-12-16T17:46:31Z",
+      "side": 1,
+      "message": "Maybe not now, but this should be 1000 in some future",
+      "range": {
+        "startLine": 41,
+        "startChar": 10,
+        "endLine": 41,
+        "endChar": 13
+      },
+      "revId": "403ef8ffe2ac82d7a79fc6df063ed84f76d9cb9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ade7e4c5_ef9b78a9",
+        "filename": "board/taniks/sensors.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-12-16T17:46:31Z",
+      "side": 1,
+      "message": "This logic is true for taeko, I bet it is not applicable for taniks",
+      "range": {
+        "startLine": 248,
+        "startChar": 1,
+        "endLine": 253,
+        "endChar": 9
+      },
+      "revId": "403ef8ffe2ac82d7a79fc6df063ed84f76d9cb9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
