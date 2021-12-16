@@ -6,6 +6,7 @@
 #include "usbc/ppc.h"
 #include "hooks.h"
 #include "cros_board_info.h"
+#include "ioexpander.h"
 
 LOG_MODULE_REGISTER(alt_dev_replacement);
 
@@ -28,8 +29,12 @@ static bool board_has_syv_ppc(void)
 
 static void check_alternate_devices(void)
 {
+	const char *name;
+
 	/* Configure the PPC driver */
 	if (board_has_syv_ppc())
 		PPC_ENABLE_ALTERNATE(ppc_port0_syv);
+
+	name = ioex_get_name(0);
 }
 DECLARE_HOOK(HOOK_INIT, check_alternate_devices, HOOK_PRIO_DEFAULT);
