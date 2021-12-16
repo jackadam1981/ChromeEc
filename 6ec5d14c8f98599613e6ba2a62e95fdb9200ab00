@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "207e0b32_8dd9adf7",
+        "filename": "baseboard/intelrvp/adlrvp.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-12-16T17:39:47Z",
+      "side": 1,
+      "message": "i think below logic would be consistent \n\tswitch (ADL_RVP_BOARD_ID(board_get_version())) {\n\tcase ADLN_LP5_ERB_SKU_BOARD_ID:\n\tcase ADLN_LP5_RVP_SKU_BOARD_ID:",
+      "range": {
+        "startLine": 333,
+        "startChar": 0,
+        "endLine": 333,
+        "endChar": 71
+      },
+      "revId": "6ec5d14c8f98599613e6ba2a62e95fdb9200ab00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28d5d2e8_cce77c92",
+        "filename": "baseboard/intelrvp/adlrvp.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-12-16T17:39:47Z",
+      "side": 1,
+      "message": "pls add some comments about the logic",
+      "revId": "6ec5d14c8f98599613e6ba2a62e95fdb9200ab00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
