@@ -63,6 +63,30 @@
       },
       "revId": "5bef2d0f72eeb51df9df154658a5d193eb0c17f7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad9ea2cd_3d4b2338",
+        "filename": "include/atomic_t.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-12-16T21:36:56Z",
+      "side": 1,
+      "message": "For the host build, can we use C11 atomics: https://en.cppreference.com/w/c/atomic?",
+      "parentUuid": "4deb7df7_14296d9d",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 5
+      },
+      "revId": "5bef2d0f72eeb51df9df154658a5d193eb0c17f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
