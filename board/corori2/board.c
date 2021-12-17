@@ -104,7 +104,7 @@ static void check_c1_line(void)
 	 * If line is still being held low, see if there's more to process from
 	 * one of the chips.
 	 */
-	if (!gpio_get_level(GPIO_SUB_C1_INT_EN_RAILS_ODL)) {
+	if (!gpio_get_level(GPIO_SUB_USB_C1_INT_ODL)) {
 		notify_c1_chips();
 		hook_call_deferred(&check_c1_line_data, INT_RECHECK_US);
 	}
@@ -123,11 +123,10 @@ static void sub_usb_c1_interrupt(enum gpio_signal s)
 
 }
 
-static void sub_hdmi_hpd_interrupt(enum gpio_signal s)
+static void c0_ccsbu_ovp_interrupt(enum gpio_signal s)
 {
-	int hdmi_hpd_odl = gpio_get_level(GPIO_EC_I2C_SUB_C1_SDA_HDMI_HPD_ODL);
-
-	gpio_set_level(GPIO_EC_AP_USB_C1_HDMI_HPD, !hdmi_hpd_odl);
+	cprints(CC_USBPD, "C0: CC OVP, SBU OVP, or thermal event");
+	pd_handle_cc_overvoltage(0);
 }
 
 #include "gpio_list.h"
@@ -144,13 +143,6 @@ const struct adc_t adc_channels[] = {
 	[ADC_TEMP_SENSOR_2] = {
 		.name = "TEMP_SENSOR2",
 		.input_ch = NPCX_ADC_CH1,
-		.factor_mul = ADC_MAX_VOLT,
-		.factor_div = ADC_READ_MAX + 1,
-		.shift = 0,
-	},
-	[ADC_SUB_ANALOG] = {
-		.name = "SUB_ANALOG",
-		.input_ch = NPCX_ADC_CH2,
 		.factor_mul = ADC_MAX_VOLT,
 		.factor_div = ADC_READ_MAX + 1,
 		.shift = 0,
@@ -228,39 +220,8 @@ void board_init(void)
 {
 	int on;
 
-	/* Enable C0 interrupt and check if it needs processing */
 	gpio_enable_interrupt(GPIO_USB_C0_INT_ODL);
 	check_c0_line();
-
-	if (get_cbi_fw_config_db() == DB_1A_HDMI) {
-		/* Disable i2c on HDMI pins */
-		gpio_config_pin(MODULE_I2C,
-				GPIO_EC_I2C_SUB_C1_SDA_HDMI_HPD_ODL, 0);
-		gpio_config_pin(MODULE_I2C,
-				GPIO_EC_I2C_SUB_C1_SCL_HDMI_EN_ODL, 0);
-
-		/* Set HDMI and sub-rail enables to output */
-		gpio_set_flags(GPIO_EC_I2C_SUB_C1_SCL_HDMI_EN_ODL,
-			       chipset_in_state(CHIPSET_STATE_ON) ?
-						GPIO_ODR_LOW : GPIO_ODR_HIGH);
-		gpio_set_flags(GPIO_SUB_C1_INT_EN_RAILS_ODL,   GPIO_ODR_HIGH);
-
-		/* Select HDMI option */
-		gpio_set_level(GPIO_HDMI_SEL_L, 0);
-
-		/* Enable interrupt for passing through HPD */
-		gpio_enable_interrupt(GPIO_EC_I2C_SUB_C1_SDA_HDMI_HPD_ODL);
-	} else {
-		/* Set SDA as an input */
-		gpio_set_flags(GPIO_EC_I2C_SUB_C1_SDA_HDMI_HPD_ODL,
-			       GPIO_INPUT);
-
-		/* Enable C1 interrupt and check if it needs processing */
-		gpio_enable_interrupt(GPIO_SUB_C1_INT_EN_RAILS_ODL);
-		check_c1_line();
-	}
-	/* Enable gpio interrupt for base accelgyro sensor */
-	gpio_enable_interrupt(GPIO_BASE_SIXAXIS_INT_L);
 
 	/* Turn on 5V if the system is on, otherwise turn it off. */
 	on = chipset_in_state(CHIPSET_STATE_ON | CHIPSET_STATE_ANY_SUSPEND |
@@ -269,23 +230,9 @@ void board_init(void)
 
 	/* Initialize THERMAL */
 	setup_thermal();
+
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
-
-/* Enable HDMI any time the SoC is on */
-static void hdmi_enable(void)
-{
-	if (get_cbi_fw_config_db() == DB_1A_HDMI)
-		gpio_set_level(GPIO_EC_I2C_SUB_C1_SCL_HDMI_EN_ODL, 0);
-}
-DECLARE_HOOK(HOOK_CHIPSET_STARTUP, hdmi_enable, HOOK_PRIO_DEFAULT);
-
-static void hdmi_disable(void)
-{
-	if (get_cbi_fw_config_db() == DB_1A_HDMI)
-		gpio_set_level(GPIO_EC_I2C_SUB_C1_SCL_HDMI_EN_ODL, 1);
-}
-DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, hdmi_disable, HOOK_PRIO_DEFAULT);
 
 void board_hibernate(void)
 {
@@ -358,7 +305,7 @@ __override void board_power_5v_enable(int enable)
 	set_5v_gpio(!!enable);
 
 	if (get_cbi_fw_config_db() == DB_1A_HDMI) {
-		gpio_set_level(GPIO_SUB_C1_INT_EN_RAILS_ODL, !enable);
+		gpio_set_level(GPIO_SUB_USB_C1_INT_ODL, !enable);
 	} else {
 		if (isl923x_set_comparator_inversion(1, !!enable))
 			CPRINTS("Failed to %sable sub rails!", enable ?
@@ -704,7 +651,7 @@ uint16_t tcpc_get_alert_status(void)
 	}
 
 	if (board_get_usb_pd_port_count() > 1 &&
-				!gpio_get_level(GPIO_SUB_C1_INT_EN_RAILS_ODL)) {
+				!gpio_get_level(GPIO_SUB_USB_C1_INT_ODL)) {
 		if (!tcpc_read16(1, TCPC_REG_ALERT, &regval)) {
 			/* TCPCI spec Rev 1.0 says to ignore bits 14:12. */
 			if (!(tcpc_config[1].flags & TCPC_FLAGS_TCPCI_REV2_0))
