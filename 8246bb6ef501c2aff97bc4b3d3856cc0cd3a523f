@@ -52,6 +52,24 @@
       "parentUuid": "56f4c338_da343210",
       "revId": "8246bb6ef501c2aff97bc4b3d3856cc0cd3a523f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8e36811_3bc11c87",
+        "filename": "board/taniks/charger.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1477218
+      },
+      "writtenOn": "2021-12-17T10:45:13Z",
+      "side": 0,
+      "message": "Please ignore kano. kano use ISL solution, not TI solution.",
+      "parentUuid": "63ecbc9e_f413bfec",
+      "revId": "8246bb6ef501c2aff97bc4b3d3856cc0cd3a523f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
