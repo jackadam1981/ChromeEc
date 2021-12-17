@@ -16,6 +16,52 @@
       "message": "This CL is required when PR:40947 (https://github.com/zephyrproject-rtos/zephyr/pull/40947) is merged and cherry-picked because the npcx_power_console_is_in_use function is removed from this PR.",
       "revId": "acfdcc6d5df4e3d3de3d1baeb1a78133867b58ca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66debb5c_84e9ab66",
+        "filename": "zephyr/shim/chip/npcx/power_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-12-17T17:57:18Z",
+      "side": 1,
+      "message": "comment text needs updated or just deleted",
+      "range": {
+        "startLine": 23,
+        "startChar": 25,
+        "endLine": 23,
+        "endChar": 51
+      },
+      "revId": "acfdcc6d5df4e3d3de3d1baeb1a78133867b58ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d2e329d_82fd843d",
+        "filename": "zephyr/shim/chip/npcx/power_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-12-17T17:57:18Z",
+      "side": 1,
+      "message": "can you remove the \" !\u003d 0\" while you\u0027re here too?",
+      "range": {
+        "startLine": 24,
+        "startChar": 23,
+        "endLine": 24,
+        "endChar": 28
+      },
+      "revId": "acfdcc6d5df4e3d3de3d1baeb1a78133867b58ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
