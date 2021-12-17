@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c3d7985b_d2f3f595",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1520957
+      },
+      "writtenOn": "2021-12-17T10:32:12Z",
+      "side": 1,
+      "message": "I will remove all sensors through next CL because this is chrome share",
+      "parentUuid": "19e49c89_676e17c8",
+      "revId": "403ef8ffe2ac82d7a79fc6df063ed84f76d9cb9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "71eaea2b_908b743a",
         "filename": "board/taniks/board.h",
         "patchSetId": 5
@@ -31,6 +49,30 @@
       "writtenOn": "2021-12-16T17:46:31Z",
       "side": 1,
       "message": "not needed, since you removed imvp9.1 config",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 21
+      },
+      "revId": "403ef8ffe2ac82d7a79fc6df063ed84f76d9cb9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5ee8361_10e75c01",
+        "filename": "board/taniks/board.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1520957
+      },
+      "writtenOn": "2021-12-17T10:32:12Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "71eaea2b_908b743a",
       "range": {
         "startLine": 29,
         "startChar": 0,
@@ -66,6 +108,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "26206292_fc256ee9",
+        "filename": "board/taniks/board.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1520957
+      },
+      "writtenOn": "2021-12-17T10:32:12Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "15e81960_e90a9545",
+      "range": {
+        "startLine": 38,
+        "startChar": 19,
+        "endLine": 38,
+        "endChar": 30
+      },
+      "revId": "403ef8ffe2ac82d7a79fc6df063ed84f76d9cb9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bffadc58_b399246f",
         "filename": "board/taniks/fans.c",
         "patchSetId": 5
@@ -77,6 +143,30 @@
       "writtenOn": "2021-12-16T17:46:31Z",
       "side": 1,
       "message": "Same here, please create a separate bug for Taniks fan update",
+      "range": {
+        "startLine": 34,
+        "startChar": 8,
+        "endLine": 34,
+        "endChar": 19
+      },
+      "revId": "403ef8ffe2ac82d7a79fc6df063ed84f76d9cb9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17573bdd_b2ca759c",
+        "filename": "board/taniks/fans.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1520957
+      },
+      "writtenOn": "2021-12-17T10:32:12Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "bffadc58_b399246f",
       "range": {
         "startLine": 34,
         "startChar": 8,
@@ -112,6 +202,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "95b8bbb9_10fa626f",
+        "filename": "board/taniks/fans.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1520957
+      },
+      "writtenOn": "2021-12-17T10:32:12Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "9ca38614_98faab76",
+      "range": {
+        "startLine": 55,
+        "startChar": 8,
+        "endLine": 55,
+        "endChar": 19
+      },
+      "revId": "403ef8ffe2ac82d7a79fc6df063ed84f76d9cb9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d2db769e_7b3f6e93",
         "filename": "board/taniks/fw_config.c",
         "patchSetId": 5
@@ -123,6 +237,30 @@
       "writtenOn": "2021-12-16T17:46:31Z",
       "side": 1,
       "message": "Is that true for Taniks?\n```\nEarly boards doesn\u0027t have correct FW_CONFIG\n```",
+      "range": {
+        "startLine": 36,
+        "startChar": 1,
+        "endLine": 47,
+        "endChar": 2
+      },
+      "revId": "403ef8ffe2ac82d7a79fc6df063ed84f76d9cb9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "33616f8e_fa08f814",
+        "filename": "board/taniks/fw_config.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1520957
+      },
+      "writtenOn": "2021-12-17T10:32:12Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "d2db769e_7b3f6e93",
       "range": {
         "startLine": 36,
         "startChar": 1,
@@ -158,6 +296,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0edf0391_9eb70488",
+        "filename": "board/taniks/fw_config.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1520957
+      },
+      "writtenOn": "2021-12-17T10:32:12Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "a4e564f1_e48cc59d",
+      "range": {
+        "startLine": 39,
+        "startChar": 5,
+        "endLine": 40,
+        "endChar": 16
+      },
+      "revId": "403ef8ffe2ac82d7a79fc6df063ed84f76d9cb9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "78ed36fe_36b41947",
         "filename": "board/taniks/i2c.c",
         "patchSetId": 5
@@ -181,6 +343,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "93f8cf38_89e72282",
+        "filename": "board/taniks/i2c.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1520957
+      },
+      "writtenOn": "2021-12-17T10:32:12Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "78ed36fe_36b41947",
+      "range": {
+        "startLine": 41,
+        "startChar": 10,
+        "endLine": 41,
+        "endChar": 13
+      },
+      "revId": "403ef8ffe2ac82d7a79fc6df063ed84f76d9cb9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ade7e4c5_ef9b78a9",
         "filename": "board/taniks/sensors.c",
         "patchSetId": 5
@@ -192,6 +378,30 @@
       "writtenOn": "2021-12-16T17:46:31Z",
       "side": 1,
       "message": "This logic is true for taeko, I bet it is not applicable for taniks",
+      "range": {
+        "startLine": 248,
+        "startChar": 1,
+        "endLine": 253,
+        "endChar": 9
+      },
+      "revId": "403ef8ffe2ac82d7a79fc6df063ed84f76d9cb9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5314980_40abdb7e",
+        "filename": "board/taniks/sensors.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1520957
+      },
+      "writtenOn": "2021-12-17T10:32:12Z",
+      "side": 1,
+      "message": "This is the initial EC code, I will modify it through next CL",
+      "parentUuid": "ade7e4c5_ef9b78a9",
       "range": {
         "startLine": 248,
         "startChar": 1,
