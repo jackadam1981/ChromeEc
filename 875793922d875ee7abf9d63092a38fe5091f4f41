@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9548b162_c2028c98",
+        "filename": "driver/ioexpander/ioexpander_nct38xx.c",
+        "patchSetId": 33
+      },
+      "lineNbr": 479,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2021-12-17T22:45:46Z",
+      "side": 1,
+      "message": "Ack.\nSeparate CL for this change:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3328941",
+      "parentUuid": "23786915_bae0b393",
+      "range": {
+        "startLine": 462,
+        "startChar": 0,
+        "endLine": 479,
+        "endChar": 6
+      },
+      "revId": "875793922d875ee7abf9d63092a38fe5091f4f41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a2602df9_9ce0629e",
@@ -70,6 +94,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3a796f9_0b5ed63b",
+        "filename": "zephyr/boards/arm/brya/brya.dts",
+        "patchSetId": 33
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2021-12-17T22:45:46Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "6bf58fab_51a89fc5",
+      "range": {
+        "startLine": 194,
+        "startChar": 0,
+        "endLine": 214,
+        "endChar": 3
+      },
+      "revId": "875793922d875ee7abf9d63092a38fe5091f4f41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8ae7493a_af64cf74",
@@ -93,6 +141,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa2526e7_d24fcaff",
+        "filename": "zephyr/projects/brya/brya/gpio.dts",
+        "patchSetId": 33
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2021-12-17T22:45:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8ae7493a_af64cf74",
+      "range": {
+        "startLine": 345,
+        "startChar": 2,
+        "endLine": 345,
+        "endChar": 3
+      },
+      "revId": "875793922d875ee7abf9d63092a38fe5091f4f41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "63e7d03f_2907caea",
@@ -106,6 +178,30 @@
       "writtenOn": "2021-12-06T19:12:55Z",
       "side": 1,
       "message": "This CL also enables the USB PD. Better to separate them. I understand the USB PD is probably difficult to split. You may do it together but mention it in the CL description.",
+      "range": {
+        "startLine": 85,
+        "startChar": 0,
+        "endLine": 116,
+        "endChar": 41
+      },
+      "revId": "875793922d875ee7abf9d63092a38fe5091f4f41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "097ca99a_210b20ed",
+        "filename": "zephyr/projects/brya/brya/prj.conf",
+        "patchSetId": 33
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2021-12-17T22:45:46Z",
+      "side": 1,
+      "message": "You are right. Its hard to separate.. Updating Commit message.",
+      "parentUuid": "63e7d03f_2907caea",
       "range": {
         "startLine": 85,
         "startChar": 0,
