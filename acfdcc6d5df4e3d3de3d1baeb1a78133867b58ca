@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "78608a2c_327ec5e2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2021-12-17T09:10:12Z",
+      "side": 1,
+      "message": "This CL is required when PR:40947 (https://github.com/zephyrproject-rtos/zephyr/pull/40947) is merged and cherry-picked because the npcx_power_console_is_in_use function is removed from this PR.",
+      "revId": "acfdcc6d5df4e3d3de3d1baeb1a78133867b58ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
