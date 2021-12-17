@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a3196a6_45465a5d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-12-17T16:12:29Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c3d7985b_d2f3f595",
+      "revId": "403ef8ffe2ac82d7a79fc6df063ed84f76d9cb9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "71eaea2b_908b743a",
@@ -73,6 +91,30 @@
       "side": 1,
       "message": "done",
       "parentUuid": "71eaea2b_908b743a",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 21
+      },
+      "revId": "403ef8ffe2ac82d7a79fc6df063ed84f76d9cb9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed91e687_a2d0915f",
+        "filename": "board/taniks/board.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-12-17T16:12:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a5ee8361_10e75c01",
       "range": {
         "startLine": 29,
         "startChar": 0,
@@ -130,6 +172,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3bb2fe11_22033360",
+        "filename": "board/taniks/board.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-12-17T16:12:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "26206292_fc256ee9",
+      "range": {
+        "startLine": 38,
+        "startChar": 19,
+        "endLine": 38,
+        "endChar": 30
+      },
+      "revId": "403ef8ffe2ac82d7a79fc6df063ed84f76d9cb9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bffadc58_b399246f",
@@ -167,6 +233,30 @@
       "side": 1,
       "message": "done",
       "parentUuid": "bffadc58_b399246f",
+      "range": {
+        "startLine": 34,
+        "startChar": 8,
+        "endLine": 34,
+        "endChar": 19
+      },
+      "revId": "403ef8ffe2ac82d7a79fc6df063ed84f76d9cb9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "721e32e9_5f17a461",
+        "filename": "board/taniks/fans.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-12-17T16:12:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "17573bdd_b2ca759c",
       "range": {
         "startLine": 34,
         "startChar": 8,
@@ -224,6 +314,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9b7f259_26b6886b",
+        "filename": "board/taniks/fans.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-12-17T16:12:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "95b8bbb9_10fa626f",
+      "range": {
+        "startLine": 55,
+        "startChar": 8,
+        "endLine": 55,
+        "endChar": 19
+      },
+      "revId": "403ef8ffe2ac82d7a79fc6df063ed84f76d9cb9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d2db769e_7b3f6e93",
@@ -261,6 +375,30 @@
       "side": 1,
       "message": "done",
       "parentUuid": "d2db769e_7b3f6e93",
+      "range": {
+        "startLine": 36,
+        "startChar": 1,
+        "endLine": 47,
+        "endChar": 2
+      },
+      "revId": "403ef8ffe2ac82d7a79fc6df063ed84f76d9cb9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c96881b4_a830dbba",
+        "filename": "board/taniks/fw_config.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-12-17T16:12:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "33616f8e_fa08f814",
       "range": {
         "startLine": 36,
         "startChar": 1,
@@ -318,6 +456,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "83a1bec7_eb1e5ed3",
+        "filename": "board/taniks/fw_config.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-12-17T16:12:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0edf0391_9eb70488",
+      "range": {
+        "startLine": 39,
+        "startChar": 5,
+        "endLine": 40,
+        "endChar": 16
+      },
+      "revId": "403ef8ffe2ac82d7a79fc6df063ed84f76d9cb9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "78ed36fe_36b41947",
@@ -365,6 +527,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c69d4227_a863cef2",
+        "filename": "board/taniks/i2c.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-12-17T16:12:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "93f8cf38_89e72282",
+      "range": {
+        "startLine": 41,
+        "startChar": 10,
+        "endLine": 41,
+        "endChar": 13
+      },
+      "revId": "403ef8ffe2ac82d7a79fc6df063ed84f76d9cb9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ade7e4c5_ef9b78a9",
@@ -402,6 +588,30 @@
       "side": 1,
       "message": "This is the initial EC code, I will modify it through next CL",
       "parentUuid": "ade7e4c5_ef9b78a9",
+      "range": {
+        "startLine": 248,
+        "startChar": 1,
+        "endLine": 253,
+        "endChar": 9
+      },
+      "revId": "403ef8ffe2ac82d7a79fc6df063ed84f76d9cb9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3da8e886_6b2f5646",
+        "filename": "board/taniks/sensors.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-12-17T16:12:29Z",
+      "side": 1,
+      "message": "Thanks",
+      "parentUuid": "c5314980_40abdb7e",
       "range": {
         "startLine": 248,
         "startChar": 1,
