@@ -49,10 +49,10 @@
  * Note this line might already have its pull up disabled for HDMI DBs, but
  * it should be fine to set again before z-state.
  */
-#define GPIO_USB_C1_INT_ODL GPIO_SUB_C1_INT_EN_RAILS_ODL
+#define GPIO_USB_C1_INT_ODL GPIO_SUB_USB_C1_INT_ODL
 
 /* Keyboard */
-#define CONFIG_PWM_KBLIGHT
+#define CONFIG_KEYBOARD_KEYPAD
 
 /* LED */
 #define CONFIG_LED_PWM
@@ -67,7 +67,6 @@
 #define CONFIG_LED_PWM_LOW_BATT_COLOR EC_LED_COLOR_AMBER
 
 /* PWM */
-#define CONFIG_PWM
 #define NPCX7_PWM1_SEL    1  /* GPIO C2 is used as PWM1. */
 
 /* Temp sensor */
@@ -118,14 +117,6 @@
 
 #define I2C_ADDR_EEPROM_FLAGS 0x50 /* 7b address */
 
-/*
- * I2C pin names for baseboard
- *
- * Note: these lines will be set as i2c on start-up, but this should be
- * okay since they're ODL.
- */
-#define GPIO_EC_I2C_SUB_USB_C1_SCL GPIO_EC_I2C_SUB_C1_SCL_HDMI_EN_ODL
-#define GPIO_EC_I2C_SUB_USB_C1_SDA GPIO_EC_I2C_SUB_C1_SDA_HDMI_HPD_ODL
 
 /* Sensors */
 #define CONFIG_CMD_ACCELS
@@ -153,6 +144,11 @@
 #define CONFIG_TABLET_MODE_SWITCH
 #define CONFIG_GMR_TABLET_MODE
 
+/* Volume Button feature */
+#define CONFIG_VOLUME_BUTTONS
+#define GPIO_VOLUME_UP_L GPIO_VOLUP_BTN_ODL
+#define GPIO_VOLUME_DOWN_L GPIO_VOLDN_BTN_ODL
+
 #ifndef __ASSEMBLER__
 
 #include "gpio_signal.h"
@@ -167,7 +163,6 @@ enum chg_id {
 enum adc_channel {
 	ADC_TEMP_SENSOR_1,     /* ADC0 */
 	ADC_TEMP_SENSOR_2,     /* ADC1 */
-	ADC_SUB_ANALOG,	       /* ADC2 */
 	ADC_VSNS_PP3300_A,     /* ADC9 */
 	ADC_CH_COUNT
 };
@@ -183,13 +178,6 @@ enum sensor_id {
 	BASE_ACCEL,
 	BASE_GYRO,
 	SENSOR_COUNT
-};
-
-enum pwm_channel {
-	PWM_CH_KBLIGHT,
-	PWM_CH_LED1_AMBER,
-	PWM_CH_LED2_WHITE,
-	PWM_CH_COUNT,
 };
 
 /* List of possible batteries */
