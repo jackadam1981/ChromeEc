@@ -34,6 +34,24 @@
       "parentUuid": "b4ebb0b1_1f2f87f2",
       "revId": "8246bb6ef501c2aff97bc4b3d3856cc0cd3a523f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "63ecbc9e_f413bfec",
+        "filename": "board/taniks/charger.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1477218
+      },
+      "writtenOn": "2021-12-17T10:41:02Z",
+      "side": 0,
+      "message": "Hi Boris,\n\nWe found a weird thing that charger.c is not symbolic link as b:210383970\u0027s comment#4.\n\nvell and kano also have same conditions.\n\nI\u0027m not sure who can help to support and check if it\u0027s normal or not.",
+      "parentUuid": "56f4c338_da343210",
+      "revId": "8246bb6ef501c2aff97bc4b3d3856cc0cd3a523f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
