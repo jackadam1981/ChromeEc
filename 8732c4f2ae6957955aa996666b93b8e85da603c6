@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a10795f0_3369f561",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2021-12-17T01:23:15Z",
+      "side": 1,
+      "message": "In case Intel folks can\u0027t see at the moment, I was seeing dedede build failures:\n\nchromeos-ec-0.0.2-r11502:  * Building EC for jslrvp_ite into /build/dedede/tmp/portage/chromeos-base/chromeos-ec-0.0.2-r11502/work/build_jslrvp_ite with touchpad_fw\u003d/build/dedede/firmware/jslrvp_ite/touchpad.bin bootblock\u003d\nchromeos-ec-0.0.2-r11502:  * pwd: /build/dedede/tmp/portage/chromeos-base/chromeos-ec-0.0.2-r11502/work/chromeos-ec-0.0.2/platform/ec\nchromeos-ec-0.0.2-r11502: make -j32 clean \nchromeos-ec-0.0.2-r11502: Makefile:25: *** unable to locate BOARD jslrvp_ite.  Stop.\nchromeos-ec-0.0.2-r11502:  * ERROR: chromeos-base/chromeos-ec-0.0.2-r11502::chromiumos failed (compile phase):\nchromeos-ec-0.0.2-r11502:  *   emake failed\n\n\n---\n\nNB: I scheduled my own CQ run for dedede:\n\nbb add -json -cl https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3344725 chromeos/cq/dedede-cq\n\n--\u003e https://ci.chromium.org/ui/p/chromeos/builders/cq/dedede-cq/b8827639551799341841/overview",
+      "revId": "8732c4f2ae6957955aa996666b93b8e85da603c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
