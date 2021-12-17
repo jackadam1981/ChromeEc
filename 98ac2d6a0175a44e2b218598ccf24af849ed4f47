@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0663d833_e0bdc6bc",
+        "filename": "baseboard/intelrvp/adlrvp.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 529,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-12-17T23:47:53Z",
+      "side": 1,
+      "message": "to simplify how about we do this?\n\nconfigure_ioex_port()\n{\n  switch (board_id)\n    xyz_sku:\n       ioex_config[PORTx].flags \u003d IOEX_FLAGS_DEFAULT_INIT_DISABLED;\n}",
+      "revId": "98ac2d6a0175a44e2b218598ccf24af849ed4f47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
