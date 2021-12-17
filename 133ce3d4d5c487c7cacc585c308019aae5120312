@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e960cd6d_eea0dc61",
+        "filename": "board/brya/usbc_config.c",
+        "patchSetId": 38
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2021-12-17T23:07:02Z",
+      "side": 1,
+      "message": "Keith, we have different ioex pin configuration for board ID 1 and 2 in brya legacy EC.\n*****************\n/* Board ID 1 IO expander configuration */\n\nIOEX(ID_1_USB_C0_RT_RST_ODL, EXPIN(IOEX_ID_1_C0_NCT38XX, 0, 2), GPIO_ODR_LOW)\n/* GPIO03_P1 to PU */\nIOEX(ID_1_USB_C0_FRS_EN,     EXPIN(IOEX_ID_1_C0_NCT38XX, 0, 4), GPIO_LOW)\nIOEX(ID_1_USB_C0_OC_ODL,     EXPIN(IOEX_ID_1_C0_NCT38XX, 0, 6), GPIO_ODR_HIGH)\n/* GPIO07_P1 to PU */\n\nIOEX(ID_1_USB_C2_RT_RST_ODL, EXPIN(IOEX_ID_1_C2_NCT38XX, 0, 2), GPIO_ODR_LOW)\n/* GPIO03_P2 to PU */\nIOEX(ID_1_USB_C2_FRS_EN,     EXPIN(IOEX_ID_1_C2_NCT38XX, 0, 4), GPIO_LOW)\nIOEX(ID_1_USB_C1_OC_ODL,     EXPIN(IOEX_ID_1_C2_NCT38XX, 0, 6), GPIO_ODR_HIGH)\nIOEX(ID_1_USB_C2_OC_ODL,     EXPIN(IOEX_ID_1_C2_NCT38XX, 0, 7), GPIO_ODR_HIGH)\n\n/* Board ID 2 IO expander configuration */\n\n/* GPIO02_P2 to PU */\n/* GPIO03_P2 to PU */\nIOEX(USB_C0_OC_ODL,          EXPIN(IOEX_C0_NCT38XX, 0, 4), GPIO_ODR_HIGH)\nIOEX(USB_C0_FRS_EN,          EXPIN(IOEX_C0_NCT38XX, 0, 6), GPIO_LOW)\nIOEX(USB_C0_RT_RST_ODL,      EXPIN(IOEX_C0_NCT38XX, 0, 7), GPIO_ODR_LOW)\n\nIOEX(USB_C2_RT_RST_ODL,      EXPIN(IOEX_C2_NCT38XX, 0, 2), GPIO_ODR_LOW)\nIOEX(USB_C1_OC_ODL,          EXPIN(IOEX_C2_NCT38XX, 0, 3), GPIO_ODR_HIGH)\nIOEX(USB_C2_OC_ODL,          EXPIN(IOEX_C2_NCT38XX, 0, 4), GPIO_ODR_HIGH)\nIOEX(USB_C2_FRS_EN,          EXPIN(IOEX_C2_NCT38XX, 0, 6), GPIO_LOW)\n/* GPIO07_P2 to PU */\n***************************************\n\n\nHow we are planning to handle this in Zephyr? In legacy EC we are controlling this by conditional initialization of ioex driver\n\n---------------------\n\tif (get_board_id() \u003d\u003d 1) {\n\t\tioex_init(IOEX_ID_1_C0_NCT38XX);\n\t\tioex_init(IOEX_ID_1_C2_NCT38XX);\n\t} else {\n\t\tioex_init(IOEX_C0_NCT38XX);\n\t\tioex_init(IOEX_C2_NCT38XX);\n\t}\n------------------------\n\nIn zephyr if we add ID_1 related usb signals then there will be conflict in ioex signal initialization..",
+      "revId": "133ce3d4d5c487c7cacc585c308019aae5120312",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
