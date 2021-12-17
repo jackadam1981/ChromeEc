@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d75fff9_96e17221",
+        "filename": "include/config.h",
+        "patchSetId": 19
+      },
+      "lineNbr": 482,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2021-12-17T23:27:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bf419a4a_b46c64cc",
+      "range": {
+        "startLine": 482,
+        "startChar": 59,
+        "endLine": 482,
+        "endChar": 66
+      },
+      "revId": "416bee4b1f763ca0b4d2db2dbfb48ae07f07b82b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f2ca6e1b_92735079",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f079cb31_478c19b4",
+        "filename": "zephyr/Kconfig.battery",
+        "patchSetId": 19
+      },
+      "lineNbr": 736,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2021-12-17T23:27:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f2ca6e1b_92735079",
+      "range": {
+        "startLine": 736,
+        "startChar": 7,
+        "endLine": 736,
+        "endChar": 60
+      },
+      "revId": "416bee4b1f763ca0b4d2db2dbfb48ae07f07b82b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d5672fba_adcb454a",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-12-15T20:17:40Z",
       "side": 1,
       "message": "\"Enable this option when the battery type cannot be distinguished based only the manufacturer and device name. Your board code must implement the function board_get_default_battery_type(), which returns an index from the board_battery_info table of the correct battery.\"",
+      "range": {
+        "startLine": 738,
+        "startChar": 0,
+        "endLine": 742,
+        "endChar": 0
+      },
+      "revId": "416bee4b1f763ca0b4d2db2dbfb48ae07f07b82b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a09d9292_6b5cb273",
+        "filename": "zephyr/Kconfig.battery",
+        "patchSetId": 19
+      },
+      "lineNbr": 742,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2021-12-17T23:27:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d5672fba_adcb454a",
       "range": {
         "startLine": 738,
         "startChar": 0,
