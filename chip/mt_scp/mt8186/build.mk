@@ -12,6 +12,7 @@ chip-y+=$(CHIP_VARIANT)/gpio.o
 chip-y+=$(CHIP_VARIANT)/memmap.o
 chip-y+=$(CHIP_VARIANT)/system.o
 chip-y+=$(CHIP_VARIANT)/uart.o
+chip-y+=$(CHIP_VARIANT)/video.o
 
 # Optional chip modules
 chip-$(CONFIG_AUDIO_CODEC_WOV)+=$(CHIP_VARIANT)/audio_codec_wov.o
