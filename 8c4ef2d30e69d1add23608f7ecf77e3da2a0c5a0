@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef62ad21_ade39bb8",
+        "filename": "driver/led/mp3385.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2021-12-18T02:25:09Z",
+      "side": 1,
+      "message": "The comments seem to indicate this register is read only, so perhaps\nit shouldn\u0027t be included in this table (unless there is some side-effect\nwhen it is written, and if there is, please document it here).",
+      "range": {
+        "startLine": 53,
+        "startChar": 11,
+        "endLine": 53,
+        "endChar": 19
+      },
+      "revId": "8c4ef2d30e69d1add23608f7ecf77e3da2a0c5a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b279c60_8da2cdeb",
+        "filename": "driver/led/mp3385.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2021-12-18T02:25:09Z",
+      "side": 1,
+      "message": "To make the logic a bit clearer here, maybe instead of the break,\nwrite the data here and return EC_SUCCESS.\nThe size check after the loop won\u0027t be required since the only\nway the loop ends is if the offset isn\u0027t found.",
+      "revId": "8c4ef2d30e69d1add23608f7ecf77e3da2a0c5a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
