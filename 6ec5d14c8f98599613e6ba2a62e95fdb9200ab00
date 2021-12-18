@@ -54,6 +54,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4b18dcd_d9a85fed",
+        "filename": "baseboard/intelrvp/adlrvp.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-12-18T00:16:20Z",
+      "side": 1,
+      "message": "looked at the code again, I think we can call this function from below scenarios \n\n1. from configure_charger()\n2. DECLARE_HOOK(HOOK_AC_CHANGE, **\n3. defrred_function from BATT_PRESET ISR",
+      "parentUuid": "3405716d_cca27603",
+      "revId": "6ec5d14c8f98599613e6ba2a62e95fdb9200ab00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "207e0b32_8dd9adf7",
