@@ -10,7 +10,210 @@ import os
 import shutil
 import subprocess
 import sys
+import glob
+import re
+import datetime
+import stat
+import time
+import logging
 
+# Exit codes
+class ExitCode:
+    EXIT_ARGUMENT = 3
+    EXIT_CONFIG = 4
+    EXIT_PRECONDITION = 5
+    EXIT_RUNTIME = 6
+
+def readline(file_name: str):
+    try:
+        with open(file_name, 'r') as fd:
+            return fd.readline().rstrip()
+    except OSError:
+        logging.warning(f"--------------- Error reading from {file_name}")
+        logging.warning(f"\t\tOSError: {sys.exc_info()[1].strerror}")
+        return ""
+
+def writeline(file_name: str, data: str):
+    try:
+        with open(file_name, 'w') as fd:
+            fd.write(data + '\n')
+    except OSError:
+        logging.warning(f"--------------- Error writing: {data} to {file_name}")
+        logging.warning(f"\t\tOSError: {sys.exc_info()[1].strerror}")
+
+def run_system_cmd(cmd, show_output=False):
+    sys.stdout.flush()
+    sys.stderr.flush()
+    if show_output:
+        cmd = cmd.split()
+        system_cmd = subprocess.run(cmd)
+        return system_cmd.returncode
+
+    system_cmd = subprocess.Popen(cmd,
+            stdout = subprocess.PIPE,
+            stderr = subprocess.PIPE,
+            shell = True,
+            universal_newlines = True)
+    stdout, stderr = system_cmd.communicate()
+    return system_cmd.returncode, stdout, stderr
+
+def klog(msg):
+    writeline("/dev/kmsg", "fptool: " + msg)
+
+def assert_wp_is_disabled():
+    rc, wp_enabled, stderr = run_system_cmd("crossystem wpsw_cur")
+
+    if rc != 0:
+        logging.error("Failed to get hardware write protect status")
+        sys.exit(ExitCode.EXIT_PRECONDITION)
+
+    if wp_enabled != '0':
+        logging.error("Please make sure hardware write protect is disabled.")
+        logging.error("See https://www.chromium.org/chromium-os/"
+            "firmware-porting-guide/firmware-ec-write-protection")
+        sys.exit(ExitCode.EXIT_PRECONDITION)
+
+def get_devid(dev_type, dev_str):
+    devs = glob.glob(f"/sys/bus/{dev_type}/devices/*")
+    for dev in devs:
+        modalias = readline(dev + "/modalias")
+        # For most devices modalias is "of:NcrfpTCgoogle,cros-ec-< spi | uart>"
+        if modalias and modalias.split(',')[-1] == dev_str:
+            return os.path.basename(dev)
+        # For strongbad and herobrine, the modalias is: "spi:cros-ec-spi"
+        # TODO(b/179533783): Fix this script to look for non-ACPI modalias
+        if modalias and modalias.split(':')[-1] == dev_str:
+            return os.path.basename(dev)
+    else:
+        return ""
+
+# Get the spiid for the fingerprint sensor based on the modalias
+# string: https://crbug.com/955117
+def get_spiid():
+    return get_devid("spi", "cros-ec-spi")
+
+# Get the uartid for the fingerprint sensor based on the modalias
+def get_uartid():
+    return get_devid("serial", "cros-ec-uart")
+
+# Find the UART device associated with the device ID
+# e.g. Zork
+#       Device ID: serial0-0
+#       Device association:
+#         /sys/bus/platform/drivers/dw-apb-uart/AMD0020:01/serial0/serial0-0/
+#       Device Name: AMD0020:01
+def get_uart_dev_name(deviceid: str) -> str:
+    path = "/sys/bus/platform/drivers/dw-apb-uart/"
+    dirs = glob.glob(f"{path}*/*/{deviceid}/" )
+    if not dirs:
+        logging.warning(f"Failed to locate device for: {deviceid}")
+        return ""
+    if len(dirs) > 1:
+        logging.warning(f"Device for {deviceid} is ambiguous")
+        return ""
+
+    return os.path.basename(os.path.dirname(os.path.dirname(dirs[0][:-1])))
+
+# Get the underlying board (reference design) that we're running on (not the
+# FPMCU or sensor).
+# This may be an extended platform name, like nami-kernelnext, hatch-arc-r,
+# or hatch-borealis.
+def get_platform_name():
+    # We used to use "cros_config /identity platform-name", but that is specific
+    # to mosys and does not actually provide the board name in all cases.
+    # cros_config intentionally does not provide a way to get the board
+    # name: b/156650654.
+
+    # If there was a way to get the board name from cros_config, it's possible
+    # that it could fail in the following cases:
+    #
+    # 1) We're running on a non-unibuild device (the only one with FP is
+    #    nocturne)
+    # 2) We're running on a proto device during bringup and the cros_config
+    #    settings haven't yet been setup.
+    #
+    # In all cases we can fall back to /etc/lsb-release. It's not recommended
+    # to do this, but we don't have any other options in this case.
+
+    # lsbval should not be used by anything except get_platform_name.
+    # See https://crbug.com/98462.
+    def lsbval(key):
+        try:
+            with open("/etc/lsb-release", 'r') as fp:
+                for line in fp.readlines():
+                    line=line.rstrip();
+                    keyval = line.split('=')
+                    if key == keyval[0]:
+                        return keyval[1]
+                else:
+                    logging.warning(f"Failed to find {key} in /etc/lsb-release")
+        except OSError:
+            logging.warning(f"--------------- Error reading /etc/lsb-release")
+            logging.warning(f"\t\tOSError: {sys.exc_info()[1].strerror}")
+
+    logging.info("Getting platform name from /etc/lsb-release.")
+    return lsbval("CHROMEOS_RELEASE_BOARD")
+
+# Given a full platform name, extract the base platform.
+#
+# Tests are also run on modified images, like hatch-arc-r, hatch-borealis, or
+# hatch-kernelnext. These devices still have fingerprint and are expected to
+# pass tests. The full platform name reflects these modifications and might
+# be needed to apply an alternative configuration (kernelnext). Other modified
+# tests (arc-r) just need to default to the base platform config, which is
+# identified by this function.
+# See b/186697064.
+#
+# Examples:
+# * platform_base_name "hatch-kernelnext" --> "hatch"
+# * platform_base_name "hatch-arc-r"      --> "hatch"
+# * platform_base_name "hatch-borealis"   --> "hatch"
+# * platform_base_name "hatch"            --> "hatch"
+#
+def get_platform_base_name(platform_name: str):
+    return platform_name.split('-')[0]
+
+def get_default_fw():
+    rc, board, stderr = run_system_cmd("cros_config /fingerprint board")
+    if rc != 0:
+        logging.warning("Failed to identify fingerprint board name")
+    # If cros_config returns "", that is okay assuming there is only
+    # one firmware file on disk.
+    if not board:
+        board = ""
+    fws = glob.glob("/opt/google/biod/fw/" + board + "*.bin")
+    if len(fws) == 0:
+        logging.error("Failed to identify the default fingerprint fw name")
+        sys.exit(ExitCode.EXIT_CONFIG)
+    if len(fws) != 1:
+        logging.error("Multiple fingerprint fw names")
+        sys.exit(ExitCode.EXIT_CONFIG)
+    return fws[0]
+
+# Find processes that have the named file, active or deleted, open.
+#
+# Deleted files are important because unbinding/rebinding cros-ec
+# with biod/timberslide running will result in the processes holding open
+# a deleted version of the files. Issues can arise if the process continue
+# to interact with the deleted files (e.g. kernel panic) while the raw driver
+# is being used in flash_fp_mcu. The lsof and fuser tools can't seem to
+# identify usages of the deleted named file directly, without listing all
+# files. This takes a large amount of time on Chromebooks, thus we need this
+# custom search routine.
+#
+def proc_open_files(pattern):
+    pids = []
+    rc, ls_l, stderr = run_system_cmd("ls -l /proc/*/fd/* 2>/dev/null | grep "
+            + "\"" + pattern + "\"")
+    ls_l = ls_l.split("\n")
+    for ls in ls_l:
+        if ls:
+            sp = ls.rstrip().split()
+            pid = "PID "+ sp[8].split('/')[2] + " -> " + sp[10]
+            if len(sp) > 11:
+                pid += " " + sp[11]
+            pids.append(pid)
+    return pids
 
 def cmd_flash(args: argparse.Namespace) -> int:
     """
@@ -20,37 +223,61 @@ def cmd_flash(args: argparse.Namespace) -> int:
     disabled.
     """
 
-    if not shutil.which('flash_fp_mcu'):
-        print('Error - The flash_fp_mcu utility does not exist.')
-        return 1
+def flash_init(parser: argparse.ArgumentParser) -> argparse.ArgumentParser:
+    flash_parser = parser.add_parser('flash', help=cmd_flash.__doc__)
+    group = flash_parser.add_mutually_exclusive_group()
+    group.add_argument("-r", "--read", action='store_true')
+    group.add_argument("--noread", action='store_true',
+            help="Read instead of write (Default: False)")
+    group = flash_parser.add_mutually_exclusive_group()
+    group.add_argument("-U", "--remove_flash_read_protect", action='store_true',
+            default=True)
+    group.add_argument("--noremove_flash_read_protect", action='store_true',
+            help="Remove flash read protection while performing command "
+            "(Default: True)")
+    group = flash_parser.add_mutually_exclusive_group()
+    group.add_argument("-u", "--remove_flash_write_protect",
+            action='store_true', default=True)
+    group.add_argument("--noremove_flash_write_protect", action='store_true',
+            help="Remove flash read protection while "
+            "performing command (Default: True)")
+    flash_parser.add_argument("-R", "--retries", type=int, default=4,
+            help="Specify number of retries (default: %(default)s)")
+    flash_parser.add_argument("-B", "--baudrate", type=int, default=115200,
+            help="Specify UART baudrate (default: %(default)s)")
+    group = flash_parser.add_mutually_exclusive_group()
+    group.add_argument("-H", "--hello", action='store_true')
+    group.add_argument("--nohello", action='store_true',
+            help="Only ping the bootloader (Default: %(default)s)")
+    group = flash_parser.add_mutually_exclusive_group()
+    group.add_argument("-s", "--services", default=True, action='store_true')
+    group.add_argument("--noservices", action='store_true',
+            help="Stop and restart conflicting fingerprint services "
+            "(Default: True)")
+    flash_parser.add_argument("binary", type=str, nargs='?',
+            help="Flash binary [ec.bin]")
+    flash_parser.set_defaults(func=cmd_flash, connect_retries=6)
+    log_level_choices = ['DEBUG', 'INFO', 'WARNING', 'ERROR', 'CRITICAL']
+    flash_parser.add_argument(
+        '--log_level', '-l',
+        choices=log_level_choices,
+        default='INFO'
+    )
+    return flash_parser
 
-    cmd = ['flash_fp_mcu']
-    if args.image:
-        if not os.path.isfile(args.image):
-            print(f'Error - image {args.image} is not a file.')
-            return 1
-        cmd.append(args.image)
-
-    print(f'Running {" ".join(cmd)}.')
-    sys.stdout.flush()
-    p = subprocess.run(cmd)
-    return p.returncode
-
-
-def main(argv: list) -> int:
+def main() -> int:
+    # print out canonical path to differentiate between /usr/local/bin and
+    # /usr/bin installs
+    run_system_cmd(f"readlink -f {sys.argv[0]}", show_output=True)
     parser = argparse.ArgumentParser(description=__doc__)
     subparsers = parser.add_subparsers(dest='subcommand', title='subcommands')
     # This method of setting required is more compatible with older python.
     subparsers.required = True
 
-    # Parser for "flash" subcommand.
-    parser_decrypt = subparsers.add_parser('flash', help=cmd_flash.__doc__)
-    parser_decrypt.add_argument(
-        'image', nargs='?', help='Path to the firmware image')
-    parser_decrypt.set_defaults(func=cmd_flash)
-    opts = parser.parse_args(argv)
+    parser_decrypt = flash_init(subparsers)
+    opts = parser.parse_args()
+
     return opts.func(opts)
 
-
 if __name__ == '__main__':
-    sys.exit(main(sys.argv[1:]))
+    sys.exit(main())
