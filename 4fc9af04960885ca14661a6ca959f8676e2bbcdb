@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df8af7af_05e05797",
+        "filename": "zephyr/subsys/usbc/tc/snk.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-12-20T23:55:25Z",
+      "side": 1,
+      "message": "false",
+      "range": {
+        "startLine": 111,
+        "startChar": 32,
+        "endLine": 111,
+        "endChar": 33
+      },
+      "revId": "4fc9af04960885ca14661a6ca959f8676e2bbcdb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e052f123_0f5728b1",
+        "filename": "zephyr/subsys/usbc/tc/usb_tc_sm.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-12-20T23:55:25Z",
+      "side": 1,
+      "message": "Comment seems unrelated to the code below?",
+      "range": {
+        "startLine": 89,
+        "startChar": 0,
+        "endLine": 92,
+        "endChar": 0
+      },
+      "revId": "4fc9af04960885ca14661a6ca959f8676e2bbcdb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c09c7214_28ee891a",
+        "filename": "zephyr/subsys/usbc/tc/usb_tc_sm.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-12-20T23:55:25Z",
+      "side": 1,
+      "message": "Extra ()?",
+      "range": {
+        "startLine": 99,
+        "startChar": 0,
+        "endLine": 99,
+        "endChar": 11
+      },
+      "revId": "4fc9af04960885ca14661a6ca959f8676e2bbcdb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ddce7880_14c5ac00",
+        "filename": "zephyr/subsys/usbc/tc/usb_tc_sm.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-12-20T23:55:25Z",
+      "side": 1,
+      "message": "This might be cleaner with a helper macro\n\n#define USBC_SM_IS_TYPE(node, type) \\\n    UTIL_AND(DT_NODE_HAS_PROP(node, usbc_type),\n             DT_NODE(node, usbc_type) \u003d\u003d type)\n             \n#define USBC_SINK_ENUM_PRESENT_ENTRY(cid)\n    USBC_SM_IS_TYPE(cid, USBC_SNK) || USBC_SM_IS_TYPE(cid, USBC_SNK_DBGACC)",
+      "range": {
+        "startLine": 101,
+        "startChar": 0,
+        "endLine": 104,
+        "endChar": 0
+      },
+      "revId": "4fc9af04960885ca14661a6ca959f8676e2bbcdb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e0b5889_f51e109b",
+        "filename": "zephyr/subsys/usbc/tc/usb_tc_sm.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-12-20T23:55:25Z",
+      "side": 1,
+      "message": "Note convert all property names to underscores with macros.\n\nDT_NODE_HAS_PROP(cid, usbc_type)",
+      "range": {
+        "startLine": 129,
+        "startChar": 0,
+        "endLine": 132,
+        "endChar": 0
+      },
+      "revId": "4fc9af04960885ca14661a6ca959f8676e2bbcdb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
