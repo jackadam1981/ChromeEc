@@ -72,6 +72,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d84286cf_5150e774",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 1669,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-12-20T21:33:42Z",
+      "side": 1,
+      "message": "What about other callers that check DEDICATED_CHARGE_PORT?  These should also get updated.",
+      "range": {
+        "startLine": 1669,
+        "startChar": 25,
+        "endLine": 1669,
+        "endChar": 46
+      },
+      "revId": "d641f18df769d4835729659b2a45fc609a81a4c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3226b68_882ac9bd",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 1673,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-12-20T21:33:42Z",
+      "side": 1,
+      "message": "This returns 0 (a valid port number) when (CONFIG_DEDICATED_CHARGE_PORT_COUNT\u003d0).  You need to return an error for this case (and all callers need to verify the return).\n\nProbably better better to create \n   bool charge_manager_is_dedicated_charge_port(int port)",
+      "range": {
+        "startLine": 1673,
+        "startChar": 0,
+        "endLine": 1673,
+        "endChar": 10
+      },
+      "revId": "d641f18df769d4835729659b2a45fc609a81a4c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fc46ca3e_7e8cb037",
         "filename": "common/charge_manager.c",
         "patchSetId": 13
