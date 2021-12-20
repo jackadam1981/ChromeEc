@@ -16,6 +16,40 @@
       "message": "Thanks Diana. will check it with MBR cable.",
       "revId": "4537399f8be409c80274ab557c986e53afe3bc0b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "64f9c3b3_bc8894bf",
+        "filename": "common/usbc/tbt_alt_mode.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-12-20T19:06:53Z",
+      "side": 1,
+      "message": "This check no longer seems specific to LDR cables?",
+      "revId": "4537399f8be409c80274ab557c986e53afe3bc0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ebca9bf_ccaf4464",
+        "filename": "common/usbc/tbt_alt_mode.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-12-20T19:06:53Z",
+      "side": 1,
+      "message": "There\u0027s an asymmetry here that I think is making it harder for me to grok this (tbt_active_cable_exit but no tbt_active_cable_enter). It looks like this moves the check for the TBT active/passive bit distinguishing an LDR cable from a normal active cable from the enter flow to the exit flow. But if the flows are supposed to mirror each other, shouldn\u0027t the check be the same in the enter flow as in the exit flow?",
+      "revId": "4537399f8be409c80274ab557c986e53afe3bc0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
