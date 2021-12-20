@@ -216,17 +216,40 @@ static void tbt_retry_enter_mode(int port)
 	TBT_SET_FLAG(port, TBT_FLAG_RETRY_DONE);
 }
 
-/* Send Exit Mode to SOP''(if supported), or SOP' */
-static void tbt_active_cable_exit_mode(int port)
+/* Does this port require SOP' mode entry and exit? */
+static bool tbt_sop_prime_needed(int port)
+{
+	union tbt_mode_resp_cable cable_mode_resp;
+
+	/*
+	 * We require SOP' entry when the cable is active, or when it's a LRD
+	 * cable (passive in DiscoverIdentity, active in TBT mode)
+	 */
+	cable_mode_resp.raw_value =
+				pd_get_tbt_mode_vdo(port, TCPCI_MSG_SOP_PRIME);
+	if (get_usb_pd_cable_type(port) == IDH_PTYPE_ACABLE ||
+		    cable_mode_resp.tbt_active_passive == TBT_CABLE_ACTIVE)
+		return true;
+
+	return false;
+}
+
+/* Does this port require SOP'' mode entry and exit? */
+static bool tbt_sop_prime_prime_needed(int port)
 {
 	const struct pd_discovery *disc;
 
+	/*
+	 * We require SOP'' entry and exit when we have an active cable with
+	 * SOP'' support reported.
+	 */
 	disc = pd_get_am_discovery(port, TCPCI_MSG_SOP_PRIME);
 
-	if (disc->identity.product_t1.a_rev20.sop_p_p)
-		tbt_state[port] = TBT_EXIT_SOP_PRIME_PRIME;
-	else
-		tbt_state[port] = TBT_EXIT_SOP_PRIME;
+	if (disc->identity.idh.product_type == IDH_PTYPE_ACABLE
+			&& disc->identity.product_t1.a_rev20.sop_p_p)
+		return true;
+
+	return false;
 }
 
 bool tbt_cable_entry_required_for_usb4(int port)
@@ -263,24 +286,17 @@ bool tbt_cable_entry_required_for_usb4(int port)
 void intel_vdm_acked(int port, enum tcpci_msg_type type, int vdo_count,
 		uint32_t *vdm)
 {
-	const struct pd_discovery *disc;
 	const uint8_t vdm_cmd = PD_VDO_CMD(vdm[0]);
 	int opos_sop, opos_sop_prime;
-	union tbt_mode_resp_cable cable_mode_resp;
 
 	if (!tbt_response_valid(port, type, "ACK", vdm_cmd))
 		return;
 
-	disc = pd_get_am_discovery(port, TCPCI_MSG_SOP_PRIME);
-
 	switch (tbt_state[port]) {
 	case TBT_ENTER_SOP_PRIME:
 		tbt_prints("enter mode SOP'", port);
-		cable_mode_resp.raw_value =
-				pd_get_tbt_mode_vdo(port, TCPCI_MSG_SOP_PRIME);
-		/* For LRD cables, Enter mode SOP' -> Enter mode SOP */
-		if (disc->identity.product_t1.a_rev20.sop_p_p &&
-		    cable_mode_resp.tbt_active_passive != TBT_CABLE_ACTIVE) {
+		/* Active cables with SOP'' require one more step before SOP */
+		if (tbt_sop_prime_prime_needed(port)) {
 			tbt_state[port] = TBT_ENTER_SOP_PRIME_PRIME;
 		} else {
 			TBT_SET_FLAG(port, TBT_FLAG_CABLE_ENTRY_DONE);
@@ -308,8 +324,12 @@ void intel_vdm_acked(int port, enum tcpci_msg_type type, int vdo_count,
 		if (opos_sop > 0)
 			pd_dfp_exit_mode(port, TCPCI_MSG_SOP, USB_VID_INTEL,
 					 opos_sop);
-		if (get_usb_pd_cable_type(port) == IDH_PTYPE_ACABLE) {
-			tbt_active_cable_exit_mode(port);
+
+		if (tbt_sop_prime_needed(port)) {
+			if (tbt_sop_prime_prime_needed(port))
+				tbt_state[port] = TBT_EXIT_SOP_PRIME_PRIME;
+			else
+				tbt_state[port] = TBT_EXIT_SOP_PRIME;
 		} else {
 			set_usb_mux_with_current_data_role(port);
 			if (TBT_CHK_FLAG(port, TBT_FLAG_RETRY_DONE))
@@ -378,9 +398,13 @@ void intel_vdm_naked(int port, enum tcpci_msg_type type, uint8_t vdm_cmd)
 	case TBT_EXIT_SOP:
 		/* Exit SOP got NAK'ed */
 		tbt_prints("exit mode SOP failed", port);
-		if (get_usb_pd_cable_type(port) == IDH_PTYPE_ACABLE)
-			tbt_active_cable_exit_mode(port);
-		else {
+
+		if (tbt_sop_prime_needed(port)) {
+			if (tbt_sop_prime_prime_needed(port))
+				tbt_state[port] = TBT_EXIT_SOP_PRIME_PRIME;
+			else
+				tbt_state[port] = TBT_EXIT_SOP_PRIME;
+		} else {
 			set_usb_mux_with_current_data_role(port);
 			if (TBT_CHK_FLAG(port, TBT_FLAG_RETRY_DONE))
 				/* Retried enter mode, still failed, give up */
@@ -443,7 +467,6 @@ enum dpm_msg_setup_status tbt_setup_next_vdm(int port, int *vdo_count,
 {
 	struct svdm_amode_data *modep;
 	int vdo_count_ret = 0;
-	union tbt_mode_resp_cable cable_mode_resp;
 
 	*tx_type = TCPCI_MSG_SOP;
 
@@ -467,12 +490,8 @@ enum dpm_msg_setup_status tbt_setup_next_vdm(int port, int *vdo_count,
 		 */
 		usb_mux_set_safe_mode(port);
 
-		cable_mode_resp.raw_value =
-			pd_get_tbt_mode_vdo(port, TCPCI_MSG_SOP_PRIME);
-
 		/* Active cable and LRD cables send Enter Mode SOP' first */
-		if (get_usb_pd_cable_type(port) == IDH_PTYPE_ACABLE ||
-		    cable_mode_resp.tbt_active_passive == TBT_CABLE_ACTIVE) {
+		if (tbt_sop_prime_needed(port)) {
 			tbt_state[port] = TBT_ENTER_SOP_PRIME;
 		} else {
 			/* Passive cable send Enter Mode SOP */
