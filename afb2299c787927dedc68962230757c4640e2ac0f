@@ -1,0 +1,234 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1875cdf7_297b39cd",
+        "filename": "common/battery_fuel_gauge.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-12-20T19:23:01Z",
+      "side": 1,
+      "message": "This line has a trailing space.  Please run pre-submit checks ~/chromiumos/src/repohooks/pre-upload.py, or by using \"repo upload\".",
+      "range": {
+        "startLine": 97,
+        "startChar": 0,
+        "endLine": 97,
+        "endChar": 42
+      },
+      "revId": "afb2299c787927dedc68962230757c4640e2ac0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3fab494_c8116d13",
+        "filename": "common/battery_fuel_gauge.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-12-20T19:23:01Z",
+      "side": 1,
+      "message": "fixed_battery_type",
+      "range": {
+        "startLine": 98,
+        "startChar": 11,
+        "endLine": 98,
+        "endChar": 19
+      },
+      "revId": "afb2299c787927dedc68962230757c4640e2ac0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53e96367_4393504a",
+        "filename": "common/battery_fuel_gauge.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-12-20T19:23:01Z",
+      "side": 1,
+      "message": "Create a preprocessor macro for this value.  Maybe BATTERY_TYPE_UNINITIALIZED",
+      "range": {
+        "startLine": 98,
+        "startChar": 22,
+        "endLine": 98,
+        "endChar": 24
+      },
+      "revId": "afb2299c787927dedc68962230757c4640e2ac0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ac122f0_5f6fd9bc",
+        "filename": "common/battery_fuel_gauge.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-12-20T19:23:01Z",
+      "side": 1,
+      "message": "Make this a static routine.  A more descriptive name is battery_get_fixed_battery_type().",
+      "range": {
+        "startLine": 103,
+        "startChar": 0,
+        "endLine": 103,
+        "endChar": 40
+      },
+      "revId": "afb2299c787927dedc68962230757c4640e2ac0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6c0f613_03d533e5",
+        "filename": "common/battery_fuel_gauge.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-12-20T19:23:01Z",
+      "side": 1,
+      "message": "No space before ).  Run the pre-submit checks.",
+      "range": {
+        "startLine": 105,
+        "startChar": 19,
+        "endLine": 105,
+        "endChar": 20
+      },
+      "revId": "afb2299c787927dedc68962230757c4640e2ac0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "727b9329_9322a602",
+        "filename": "include/battery_fuel_gauge.h",
+        "patchSetId": 20
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-12-20T19:23:01Z",
+      "side": 1,
+      "message": "This is unused outside of battery_fuel_guage.c when CONFIG_BATTERY_TYPE_NO_AUTO_DETECT\u003dy, so it can be deleted.  This also shouldn\u0027t duplicate the board_get_default_battery_type() name.",
+      "range": {
+        "startLine": 87,
+        "startChar": 4,
+        "endLine": 87,
+        "endChar": 34
+      },
+      "revId": "afb2299c787927dedc68962230757c4640e2ac0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "990cde16_0a3b1ae2",
+        "filename": "include/battery_fuel_gauge.h",
+        "patchSetId": 20
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-12-20T19:23:01Z",
+      "side": 1,
+      "message": "Set the battery type, when auto-detection cannot be used.",
+      "range": {
+        "startLine": 90,
+        "startChar": 3,
+        "endLine": 90,
+        "endChar": 45
+      },
+      "revId": "afb2299c787927dedc68962230757c4640e2ac0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8966891d_6ac6c7fe",
+        "filename": "include/battery_fuel_gauge.h",
+        "patchSetId": 20
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-12-20T19:23:01Z",
+      "side": 1,
+      "message": "battery_set_fixed_battery_type()",
+      "range": {
+        "startLine": 94,
+        "startChar": 5,
+        "endLine": 94,
+        "endChar": 21
+      },
+      "revId": "afb2299c787927dedc68962230757c4640e2ac0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6486b7f8_f3009429",
+        "filename": "zephyr/Kconfig.battery",
+        "patchSetId": 20
+      },
+      "lineNbr": 720,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-12-20T19:23:01Z",
+      "side": 1,
+      "message": "Trailing spaces.",
+      "range": {
+        "startLine": 720,
+        "startChar": 0,
+        "endLine": 720,
+        "endChar": 6
+      },
+      "revId": "afb2299c787927dedc68962230757c4640e2ac0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8d0a576_29bc037e",
+        "filename": "zephyr/Kconfig.battery",
+        "patchSetId": 20
+      },
+      "lineNbr": 742,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-12-20T19:23:01Z",
+      "side": 1,
+      "message": "This comment is not longer accurate for the latest patchset.  Now, the board code must call battery_set_fixed_battery_type() during the board initialization code.",
+      "range": {
+        "startLine": 739,
+        "startChar": 51,
+        "endLine": 742,
+        "endChar": 11
+      },
+      "revId": "afb2299c787927dedc68962230757c4640e2ac0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
