@@ -223,7 +223,8 @@ static void tbt_active_cable_exit_mode(int port)
 
 	disc = pd_get_am_discovery(port, TCPCI_MSG_SOP_PRIME);
 
-	if (disc->identity.product_t1.a_rev20.sop_p_p)
+	if (disc->identity.idh.product_type == IDH_PTYPE_ACABLE
+			&& disc->identity.product_t1.a_rev20.sop_p_p)
 		tbt_state[port] = TBT_EXIT_SOP_PRIME_PRIME;
 	else
 		tbt_state[port] = TBT_EXIT_SOP_PRIME;
@@ -280,7 +281,7 @@ void intel_vdm_acked(int port, enum tcpci_msg_type type, int vdo_count,
 				pd_get_tbt_mode_vdo(port, TCPCI_MSG_SOP_PRIME);
 		/* For LRD cables, Enter mode SOP' -> Enter mode SOP */
 		if (disc->identity.product_t1.a_rev20.sop_p_p &&
-		    cable_mode_resp.tbt_active_passive != TBT_CABLE_ACTIVE) {
+		    disc->identity.idh.product_type == IDH_PTYPE_ACABLE) {
 			tbt_state[port] = TBT_ENTER_SOP_PRIME_PRIME;
 		} else {
 			TBT_SET_FLAG(port, TBT_FLAG_CABLE_ENTRY_DONE);
@@ -304,11 +305,16 @@ void intel_vdm_acked(int port, enum tcpci_msg_type type, int vdo_count,
 		tbt_prints("exit mode SOP", port);
 		opos_sop = pd_alt_mode(port, TCPCI_MSG_SOP, USB_VID_INTEL);
 
+		cable_mode_resp.raw_value =
+				pd_get_tbt_mode_vdo(port, TCPCI_MSG_SOP_PRIME);
 		/* Clear Thunderbolt related signals */
 		if (opos_sop > 0)
 			pd_dfp_exit_mode(port, TCPCI_MSG_SOP, USB_VID_INTEL,
 					 opos_sop);
-		if (get_usb_pd_cable_type(port) == IDH_PTYPE_ACABLE) {
+
+		/* Active cable and LRD cables send Exit to the cable */
+		if (get_usb_pd_cable_type(port) == IDH_PTYPE_ACABLE ||
+		    cable_mode_resp.tbt_active_passive == TBT_CABLE_ACTIVE) {
 			tbt_active_cable_exit_mode(port);
 		} else {
 			set_usb_mux_with_current_data_role(port);
@@ -360,6 +366,8 @@ void intel_vdm_acked(int port, enum tcpci_msg_type type, int vdo_count,
 
 void intel_vdm_naked(int port, enum tcpci_msg_type type, uint8_t vdm_cmd)
 {
+	union tbt_mode_resp_cable cable_mode_resp;
+
 	if (!tbt_response_valid(port, type, "NAK", vdm_cmd))
 		return;
 
@@ -378,9 +386,14 @@ void intel_vdm_naked(int port, enum tcpci_msg_type type, uint8_t vdm_cmd)
 	case TBT_EXIT_SOP:
 		/* Exit SOP got NAK'ed */
 		tbt_prints("exit mode SOP failed", port);
-		if (get_usb_pd_cable_type(port) == IDH_PTYPE_ACABLE)
+
+		cable_mode_resp.raw_value =
+				pd_get_tbt_mode_vdo(port, TCPCI_MSG_SOP_PRIME);
+		/* Active cable and LRD cables send Exit to the cable */
+		if (get_usb_pd_cable_type(port) == IDH_PTYPE_ACABLE ||
+		    cable_mode_resp.tbt_active_passive == TBT_CABLE_ACTIVE) {
 			tbt_active_cable_exit_mode(port);
-		else {
+		} else {
 			set_usb_mux_with_current_data_role(port);
 			if (TBT_CHK_FLAG(port, TBT_FLAG_RETRY_DONE))
 				/* Retried enter mode, still failed, give up */
