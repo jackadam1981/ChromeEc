@@ -1,0 +1,220 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a39284cd_1726841b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-12-20T18:34:59Z",
+      "side": 1,
+      "message": "The CL as is looks like it copies a fair amount of code from the source partner emulation. I don\u0027t love that now, and at some point, we\u0027re going to want DRP partners. I think it would make sense to add the new code in this CL to the existing partner implementation and allow it to be configured as either a source or a sink. But if that\u0027s harder than it looks, I\u0027m OK with the current structure for now.",
+      "revId": "57de95b038ca9db52b9d44e83b481eb31f103731",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3600350f_a623489d",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-12-20T18:34:59Z",
+      "side": 1,
+      "message": "I guess this is out of scope, but this list of macros mixes together fields from the source PDO (suspend) and sink PDO (higher capability, FRS). They share the current and voltage fields, but it would be nice if it was otherwise clear which fields belonged to which PDOs.",
+      "revId": "57de95b038ca9db52b9d44e83b481eb31f103731",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e5679c3e_e057669c",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-12-20T18:34:59Z",
+      "side": 1,
+      "message": "Nit: Align BIT(28) with other lines.",
+      "revId": "57de95b038ca9db52b9d44e83b481eb31f103731",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a797125d_bb281a9f",
+        "filename": "zephyr/emul/tcpc/emul_tcpci_partner_snk.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-12-20T18:34:59Z",
+      "side": 1,
+      "message": "Alphabetize",
+      "revId": "57de95b038ca9db52b9d44e83b481eb31f103731",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "410f1378_89252984",
+        "filename": "zephyr/emul/tcpc/emul_tcpci_partner_snk.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-12-20T18:34:59Z",
+      "side": 1,
+      "message": "What if the source PDO advertises a higher fixed capability?",
+      "revId": "57de95b038ca9db52b9d44e83b481eb31f103731",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "258cdaa4_0c0c849a",
+        "filename": "zephyr/emul/tcpc/emul_tcpci_partner_snk.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-12-20T18:34:59Z",
+      "side": 1,
+      "message": "What about mismatch?",
+      "revId": "57de95b038ca9db52b9d44e83b481eb31f103731",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d2992d33_596302a4",
+        "filename": "zephyr/emul/tcpc/emul_tcpci_partner_snk.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-12-20T18:34:59Z",
+      "side": 1,
+      "message": "Nit: Does this line need to be broken?",
+      "revId": "57de95b038ca9db52b9d44e83b481eb31f103731",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80491b24_a5c05a2c",
+        "filename": "zephyr/emul/tcpc/emul_tcpci_partner_snk.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-12-20T18:34:59Z",
+      "side": 1,
+      "message": "You might want a generic function that just takes a header and a body (data object) array and handles the allocation copying and endianness transparently. It looks like you already substantially have this for the capabilities messages.",
+      "revId": "57de95b038ca9db52b9d44e83b481eb31f103731",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dcb13014_2f0addc7",
+        "filename": "zephyr/emul/tcpc/emul_tcpci_partner_snk.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 338,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-12-20T18:34:59Z",
+      "side": 1,
+      "message": "I would think that other stuff needs to happen in response to a hard reset, which basically disconnects and reconnects the partner. A soft reset just resets the message ID, but the recipient also needs to respond with Accept.",
+      "revId": "57de95b038ca9db52b9d44e83b481eb31f103731",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69a9383e_ba37c7ee",
+        "filename": "zephyr/emul/tcpc/emul_tcpci_partner_snk.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 363,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-12-20T18:34:59Z",
+      "side": 1,
+      "message": "I don\u0027t know if this comes up in your test yet, but if you want to generically handle messages you haven\u0027t implemented yet, the appropriate response response message is typically PD_CTRL_NOT_SUPPORTED.",
+      "revId": "57de95b038ca9db52b9d44e83b481eb31f103731",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9851601f_05b0493d",
+        "filename": "zephyr/emul/tcpc/emul_tcpci_partner_snk.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 425,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-12-20T18:34:59Z",
+      "side": 1,
+      "message": "I\u0027m assuming this stands for Error Code. Since we\u0027re working on the Embedded Controller firmware, it might be clearer to choose a different abbreviation. In our codebase, \"rv\" or \"ret\" are fairly common.",
+      "range": {
+        "startLine": 425,
+        "startChar": 5,
+        "endLine": 425,
+        "endChar": 7
+      },
+      "revId": "57de95b038ca9db52b9d44e83b481eb31f103731",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "028cfb0f_347223fb",
+        "filename": "zephyr/include/emul/tcpc/emul_tcpci_partner_snk.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-12-20T18:34:59Z",
+      "side": 1,
+      "message": "Spelling",
+      "range": {
+        "startLine": 53,
+        "startChar": 21,
+        "endLine": 53,
+        "endChar": 28
+      },
+      "revId": "57de95b038ca9db52b9d44e83b481eb31f103731",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
