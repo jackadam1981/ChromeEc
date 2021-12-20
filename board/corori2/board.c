@@ -28,6 +28,7 @@
 #include "gpio.h"
 #include "hooks.h"
 #include "i2c.h"
+#include "keyboard_8042.h"
 #include "keyboard_scan.h"
 #include "lid_switch.h"
 #include "motion_sense.h"
@@ -48,6 +49,31 @@
 #define CPRINTF(format, args...) cprintf(CC_USBCHARGE, format, ## args)
 
 #define INT_RECHECK_US 5000
+
+static const struct ec_response_keybd_config corori_keybd = {
+	/* Default Chromeos keyboard config */
+	.num_top_row_keys = 10,
+	.action_keys = {
+		TK_BACK,		/* T1 */
+		TK_FORWARD,		/* T2 */
+		TK_REFRESH,		/* T3 */
+		TK_FULLSCREEN,		/* T4 */
+		TK_OVERVIEW,		/* T5 */
+		TK_BRIGHTNESS_DOWN,	/* T6 */
+		TK_BRIGHTNESS_UP,	/* T7 */
+		TK_VOL_MUTE,		/* T8 */
+		TK_VOL_DOWN,		/* T9 */
+		TK_VOL_UP,		/* T10 */
+	},
+	/* No function keys, no numeric keypad, no screenlock key */
+
+};
+
+__override const struct ec_response_keybd_config
+*board_vivaldi_keybd_config(void)
+{
+	return &corori_keybd;
+}
 
 /* C0 interrupt line shared by BC 1.2 and charger */
 static void check_c0_line(void);
