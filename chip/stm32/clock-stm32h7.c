@@ -478,6 +478,13 @@ void __idle(void)
 
 		if (DEEP_SLEEP_ALLOWED &&
 		    next_delay > LPTIM_PERIOD_US + STOP_MODE_LATENCY) {
+			/*
+			 * Sleep time MUST be smaller than watchdog period.
+			 * Otherwise watchdog will wake us from deep sleep
+			 * which is not what we want.
+			 */
+			ASSERT(next_delay < CONFIG_WATCHDOG_PERIOD_MS * MSEC);
+
 			/* deep-sleep in STOP mode */
 			idle_dsleep_cnt++;
 
