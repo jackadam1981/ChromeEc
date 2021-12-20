@@ -16,6 +16,23 @@
       "message": "Stopping CQ so we can do another patchset to catch the HDMI case as well",
       "revId": "087cfd729826d1b7a7e97eea7290d533df86bedb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "da5681fa_26242fc1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-12-20T18:46:53Z",
+      "side": 1,
+      "message": "Submitting, Rob will follow up with a general save/restore GPIO API to cover more cases",
+      "revId": "087cfd729826d1b7a7e97eea7290d533df86bedb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
