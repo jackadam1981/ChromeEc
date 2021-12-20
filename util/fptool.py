@@ -10,7 +10,109 @@ import os
 import shutil
 import subprocess
 import sys
+import glob
+import re
+import datetime
+import stat
+import time
+import logging
 
+# Exit codes
+class ExitCode:
+    EXIT_ARGUMENT = 3
+    EXIT_CONFIG = 4
+    EXIT_PRECONDITION = 5
+    EXIT_RUNTIME = 6
+
+def readline(file_name: str):
+    try:
+        with open(file_name, 'r') as fd:
+            return fd.readline().rstrip()
+    except OSError:
+        logging.warning(f"--------------- Error reading from {file_name}")
+        logging.warning(f"\t\tOSError: {sys.exc_info()[1].strerror}")
+        return ""
+
+def writeline(file_name: str, data: str):
+    try:
+        with open(file_name, 'w') as fd:
+            fd.write(data + '\n')
+    except OSError:
+        logging.warning(f"--------------- Error writing: {data} to {file_name}")
+        logging.warning(f"\t\tOSError: {sys.exc_info()[1].strerror}")
+
+def run_system_cmd(cmd, show_output=False):
+    sys.stdout.flush()
+    sys.stderr.flush()
+    if show_output:
+        cmd = cmd.split()
+        system_cmd = subprocess.run(cmd)
+        return system_cmd.returncode
+
+    system_cmd = subprocess.Popen(cmd,
+            stdout = subprocess.PIPE,
+            stderr = subprocess.PIPE,
+            shell = True,
+            universal_newlines = True)
+    stdout, stderr = system_cmd.communicate()
+    return system_cmd.returncode, stdout, stderr
+
+def klog(msg):
+    writeline("/dev/kmsg", "fptool: " + msg)
+
+def assert_wp_is_disabled():
+    rc, wp_enabled, stderr = run_system_cmd("crossystem wpsw_cur")
+
+    if rc != 0:
+        logging.error("Failed to get hardware write protect status")
+        sys.exit(ExitCode.EXIT_PRECONDITION)
+
+    if wp_enabled != '0':
+        logging.error("Please make sure hardware write protect is disabled.")
+        logging.error("See https://www.chromium.org/chromium-os/"
+            "firmware-porting-guide/firmware-ec-write-protection")
+        sys.exit(ExitCode.EXIT_PRECONDITION)
+
+def get_devid(dev_type, dev_str):
+    devs = glob.glob(f"/sys/bus/{dev_type}/devices/*")
+    for dev in devs:
+        modalias = readline(dev + "/modalias")
+        # For most devices modalias is "of:NcrfpTCgoogle,cros-ec-< spi | uart>"
+        if modalias and modalias.split(',')[-1] == dev_str:
+            return os.path.basename(dev)
+        # For strongbad and herobrine, the modalias is: "spi:cros-ec-spi"
+        # TODO(b/179533783): Fix this script to look for non-ACPI modalias
+        if modalias and modalias.split(':')[-1] == dev_str:
+            return os.path.basename(dev)
+    else:
+        return ""
+
+# Get the spiid for the fingerprint sensor based on the modalias
+# string: https://crbug.com/955117
+def get_spiid():
+    return get_devid("spi", "cros-ec-spi")
+
+# Get the uartid for the fingerprint sensor based on the modalias
+def get_uartid():
+    return get_devid("serial", "cros-ec-uart")
+
+# Find the UART device associated with the device ID
+# e.g. Zork
+#       Device ID: serial0-0
+#       Device association:
+#         /sys/bus/platform/drivers/dw-apb-uart/AMD0020:01/serial0/serial0-0/
+#       Device Name: AMD0020:01
+def get_uart_dev_name(deviceid: str) -> str:
+    path = "/sys/bus/platform/drivers/dw-apb-uart/"
+    dirs = glob.glob(f"{path}*/*/{deviceid}/" )
+    if not dirs:
+        logging.warning(f"Failed to locate device for: {deviceid}")
+        return ""
+    if len(dirs) > 1:
+        logging.warning(f"Device for {deviceid} is ambiguous")
+        return ""
+
+    return os.path.basename(os.path.dirname(os.path.dirname(dirs[0][:-1])))
 
 def cmd_flash(args: argparse.Namespace) -> int:
     """
@@ -20,37 +122,61 @@ def cmd_flash(args: argparse.Namespace) -> int:
     disabled.
     """
 
-    if not shutil.which('flash_fp_mcu'):
-        print('Error - The flash_fp_mcu utility does not exist.')
-        return 1
+def flash_init(parser: argparse.ArgumentParser) -> argparse.ArgumentParser:
+    flash_parser = parser.add_parser('flash', help=cmd_flash.__doc__)
+    group = flash_parser.add_mutually_exclusive_group()
+    group.add_argument("-r", "--read", action='store_true')
+    group.add_argument("--noread", action='store_true',
+            help="Read instead of write (Default: False)")
+    group = flash_parser.add_mutually_exclusive_group()
+    group.add_argument("-U", "--remove_flash_read_protect", action='store_true',
+            default=True)
+    group.add_argument("--noremove_flash_read_protect", action='store_true',
+            help="Remove flash read protection while performing command "
+            "(Default: True)")
+    group = flash_parser.add_mutually_exclusive_group()
+    group.add_argument("-u", "--remove_flash_write_protect",
+            action='store_true', default=True)
+    group.add_argument("--noremove_flash_write_protect", action='store_true',
+            help="Remove flash read protection while "
+            "performing command (Default: True)")
+    flash_parser.add_argument("-R", "--retries", type=int, default=4,
+            help="Specify number of retries (default: %(default)s)")
+    flash_parser.add_argument("-B", "--baudrate", type=int, default=115200,
+            help="Specify UART baudrate (default: %(default)s)")
+    group = flash_parser.add_mutually_exclusive_group()
+    group.add_argument("-H", "--hello", action='store_true')
+    group.add_argument("--nohello", action='store_true',
+            help="Only ping the bootloader (Default: %(default)s)")
+    group = flash_parser.add_mutually_exclusive_group()
+    group.add_argument("-s", "--services", default=True, action='store_true')
+    group.add_argument("--noservices", action='store_true',
+            help="Stop and restart conflicting fingerprint services "
+            "(Default: True)")
+    flash_parser.add_argument("binary", type=str, nargs='?',
+            help="Flash binary [ec.bin]")
+    flash_parser.set_defaults(func=cmd_flash, connect_retries=6)
+    log_level_choices = ['DEBUG', 'INFO', 'WARNING', 'ERROR', 'CRITICAL']
+    flash_parser.add_argument(
+        '--log_level', '-l',
+        choices=log_level_choices,
+        default='INFO'
+    )
+    return flash_parser
 
-    cmd = ['flash_fp_mcu']
-    if args.image:
-        if not os.path.isfile(args.image):
-            print(f'Error - image {args.image} is not a file.')
-            return 1
-        cmd.append(args.image)
-
-    print(f'Running {" ".join(cmd)}.')
-    sys.stdout.flush()
-    p = subprocess.run(cmd)
-    return p.returncode
-
-
-def main(argv: list) -> int:
+def main() -> int:
+    # print out canonical path to differentiate between /usr/local/bin and
+    # /usr/bin installs
+    run_system_cmd(f"readlink -f {sys.argv[0]}", show_output=True)
     parser = argparse.ArgumentParser(description=__doc__)
     subparsers = parser.add_subparsers(dest='subcommand', title='subcommands')
     # This method of setting required is more compatible with older python.
     subparsers.required = True
 
-    # Parser for "flash" subcommand.
-    parser_decrypt = subparsers.add_parser('flash', help=cmd_flash.__doc__)
-    parser_decrypt.add_argument(
-        'image', nargs='?', help='Path to the firmware image')
-    parser_decrypt.set_defaults(func=cmd_flash)
-    opts = parser.parse_args(argv)
+    parser_decrypt = flash_init(subparsers)
+    opts = parser.parse_args()
+
     return opts.func(opts)
 
-
 if __name__ == '__main__':
-    sys.exit(main(sys.argv[1:]))
+    sys.exit(main())
