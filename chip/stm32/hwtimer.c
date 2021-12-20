@@ -209,8 +209,21 @@ uint32_t __hw_clock_source_read(void)
 
 void __hw_clock_source_set(uint32_t ts)
 {
+	/* Stop counting (LSB first, then MSB) */
+	STM32_TIM_CR1(TIM_CLOCK_LSB) &= ~1;
+	STM32_TIM_CR1(TIM_CLOCK_MSB) &= ~1;
+
+	/* Set new walue to counters */
 	STM32_TIM_CNT(TIM_CLOCK_MSB) = ts >> 16;
 	STM32_TIM_CNT(TIM_CLOCK_LSB) = ts & 0xffff;
+
+	/* Clear status */
+	STM32_TIM_SR(TIM_CLOCK_MSB) = 0;
+	STM32_TIM_SR(TIM_CLOCK_LSB) = 0;
+
+	/* Start counting (MSB first, then LSB) */
+	STM32_TIM_CR1(TIM_CLOCK_MSB) |= 1;
+	STM32_TIM_CR1(TIM_CLOCK_LSB) |= 1;
 }
 
 static void __hw_clock_source_irq(void)
