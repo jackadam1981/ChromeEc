@@ -109,6 +109,11 @@ config PLATFORM_EC_STM_MEMS_COMMON
 	  this common framework.  It cannot be set otherwise, even in
 	  prj.conf.
 
+config PLATFORM_EC_ALS_CM32183
+	bool "CM32183 Ambient Light Senseor Driver"
+	help
+	  The driver supports CM32183 which provides ambient light sensing.
+
 rsource "Kconfig.accelgyro_bmi"
 rsource "Kconfig.accelgyro_icm"
 
