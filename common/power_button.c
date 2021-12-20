@@ -170,6 +170,14 @@ static void power_button_change_deferred(void)
 	/* Call hooks */
 	hook_notify(HOOK_POWER_BUTTON_CHANGE);
 
+	/*
+	 * IMVP9 dirty hack - skip the host event.
+	 * This will power on most of the system, including PP3300_S5 needed
+	 * for MP2964, but will NOT power on the CPU (PP1800_S5)
+	 */
+	return;
+
+
 	/* Notify host if power button has been pressed */
 	if (new_pressed)
 		host_set_single_event(EC_HOST_EVENT_POWER_BUTTON);
