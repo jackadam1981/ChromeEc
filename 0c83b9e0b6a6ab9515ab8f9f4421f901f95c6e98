@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6470918_89b8947a",
+        "filename": "driver/led/mp3385.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1294793
+      },
+      "writtenOn": "2021-12-20T02:34:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7e4017f0_0235d5a9",
+      "range": {
+        "startLine": 39,
+        "startChar": 4,
+        "endLine": 39,
+        "endChar": 12
+      },
+      "revId": "0c83b9e0b6a6ab9515ab8f9f4421f901f95c6e98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3bc77a5e_e92cd606",
@@ -37,6 +61,24 @@
       "writtenOn": "2021-12-20T02:26:52Z",
       "side": 1,
       "message": "I would remove the comments here for register 3 (or\nuse something like:\n/* Register 3: RO - ignored */",
+      "revId": "0c83b9e0b6a6ab9515ab8f9f4421f901f95c6e98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3776d2d9_8172139f",
+        "filename": "driver/led/mp3385.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1294793
+      },
+      "writtenOn": "2021-12-20T02:34:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3bc77a5e_e92cd606",
       "revId": "0c83b9e0b6a6ab9515ab8f9f4421f901f95c6e98",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
