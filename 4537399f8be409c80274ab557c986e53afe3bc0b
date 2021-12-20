@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "57bfb372_ea066c1e",
+        "filename": "common/usbc/tbt_alt_mode.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-12-20T21:31:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "64f9c3b3_bc8894bf",
+      "revId": "4537399f8be409c80274ab557c986e53afe3bc0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9ebca9bf_ccaf4464",
@@ -48,6 +66,24 @@
       "writtenOn": "2021-12-20T19:06:53Z",
       "side": 1,
       "message": "There\u0027s an asymmetry here that I think is making it harder for me to grok this (tbt_active_cable_exit but no tbt_active_cable_enter). It looks like this moves the check for the TBT active/passive bit distinguishing an LDR cable from a normal active cable from the enter flow to the exit flow. But if the flows are supposed to mirror each other, shouldn\u0027t the check be the same in the enter flow as in the exit flow?",
+      "revId": "4537399f8be409c80274ab557c986e53afe3bc0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dce51ff4_491a99a8",
+        "filename": "common/usbc/tbt_alt_mode.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-12-20T21:31:03Z",
+      "side": 1,
+      "message": "I think there are two questions the code asks: do we need to send SOP\u0027 and do we need to send SOP\u0027\u0027?  We could make helper functions for each to clarify. I changed this if statement because it bothered me that it was checking an active VDO field without confirming that the VDO should be interpreted as active.\n\nFor enter, we\u0027ve got this check in tbt_setup_next_vdm() to start with: \n\t\t/* Active cable and LRD cables send Enter Mode SOP\u0027 first */\n\t\tif (get_usb_pd_cable_type(port) \u003d\u003d IDH_PTYPE_ACABLE ||\n\t\t    cable_mode_resp.tbt_active_passive \u003d\u003d TBT_CABLE_ACTIVE) {\n\t\t\ttbt_state[port] \u003d TBT_ENTER_SOP_PRIME;\n\t\t\t\nWhich is how we ended up sending SOP\u0027 enter but no SOP\u0027 exit.  \n\nI\u0027ll refactor and you can see how it improves grokability.",
+      "parentUuid": "9ebca9bf_ccaf4464",
       "revId": "4537399f8be409c80274ab557c986e53afe3bc0b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
