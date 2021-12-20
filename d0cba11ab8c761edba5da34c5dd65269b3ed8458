@@ -1,0 +1,242 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b039d5bf_d2928a47",
+        "filename": "zephyr/subsys/ap_pwrseq/include/x86_non_dsx_common_pwrseq_sm_handler.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2021-12-20T22:53:01Z",
+      "side": 1,
+      "message": "nit: Add this in alphabetic order?",
+      "revId": "d0cba11ab8c761edba5da34c5dd65269b3ed8458",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c4385be_da49b334",
+        "filename": "zephyr/subsys/ap_pwrseq/include/x86_non_dsx_common_pwrseq_sm_handler.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2021-12-20T22:53:01Z",
+      "side": 1,
+      "message": "Should this be read from the device tree?",
+      "revId": "d0cba11ab8c761edba5da34c5dd65269b3ed8458",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "576b0617_8cd03093",
+        "filename": "zephyr/subsys/ap_pwrseq/include/x86_non_dsx_common_pwrseq_sm_handler.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2021-12-20T22:53:01Z",
+      "side": 1,
+      "message": "How is this being used, since this 0 there is no need of \u003c\u003c.",
+      "revId": "d0cba11ab8c761edba5da34c5dd65269b3ed8458",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e87f8286_cfe2b63f",
+        "filename": "zephyr/subsys/ap_pwrseq/include/x86_non_dsx_common_pwrseq_sm_handler.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2021-12-20T22:53:01Z",
+      "side": 1,
+      "message": "Note: Could be overridden by .dts",
+      "revId": "d0cba11ab8c761edba5da34c5dd65269b3ed8458",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "96b32d08_eafdcbd3",
+        "filename": "zephyr/subsys/ap_pwrseq/include/x86_non_dsx_common_pwrseq_sm_handler.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2021-12-20T22:53:01Z",
+      "side": 1,
+      "message": "nit: extra line can be removed",
+      "revId": "d0cba11ab8c761edba5da34c5dd65269b3ed8458",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7939eac6_65fc6ff8",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2021-12-20T22:53:01Z",
+      "side": 1,
+      "message": "nit: Modify to if(!net_name) return NULL;\n here for readability.",
+      "revId": "d0cba11ab8c761edba5da34c5dd65269b3ed8458",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83e0f7fa_2b6602d0",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2021-12-20T22:53:01Z",
+      "side": 1,
+      "message": "nit: since single statement, can remove braces.",
+      "revId": "d0cba11ab8c761edba5da34c5dd65269b3ed8458",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd27aed4_c89e5b75",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2021-12-20T22:53:01Z",
+      "side": 1,
+      "message": "nit: since single statement, can remove braces.",
+      "revId": "d0cba11ab8c761edba5da34c5dd65269b3ed8458",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "41645b7e_df8a6796",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2021-12-20T22:53:01Z",
+      "side": 1,
+      "message": "nit: since single statement, can remove braces.",
+      "revId": "d0cba11ab8c761edba5da34c5dd65269b3ed8458",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "abe10b4d_8a24bee3",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2021-12-20T22:53:01Z",
+      "side": 1,
+      "message": "Replace with __attribute__((weak))",
+      "revId": "d0cba11ab8c761edba5da34c5dd65269b3ed8458",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9920e6ad_0de77116",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2021-12-20T22:53:01Z",
+      "side": 1,
+      "message": "This function may be called in several places, so need to take care of race conditions for the shared variable.",
+      "revId": "d0cba11ab8c761edba5da34c5dd65269b3ed8458",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f8676cb_d0b57776",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2021-12-20T22:53:01Z",
+      "side": 1,
+      "message": "What is the scope of this function?",
+      "revId": "d0cba11ab8c761edba5da34c5dd65269b3ed8458",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3bac14f5_23aee868",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2021-12-20T22:53:01Z",
+      "side": 1,
+      "message": "ret is already declared in line 327.",
+      "revId": "d0cba11ab8c761edba5da34c5dd65269b3ed8458",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a641cfb3_8ce79fee",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 392,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2021-12-20T22:53:01Z",
+      "side": 1,
+      "message": "nit: remove braces around single statements.",
+      "revId": "d0cba11ab8c761edba5da34c5dd65269b3ed8458",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
