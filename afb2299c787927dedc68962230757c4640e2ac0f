@@ -118,6 +118,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4cd3eeb4_7c3971ce",
+        "filename": "common/battery_fuel_gauge.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-12-20T19:24:53Z",
+      "side": 1,
+      "message": "Probably good to add warning printf that the board code failed to set the battery type when CONFIG_BATTERY_TYPE_NO_AUTO_DETECT is enabled.",
+      "range": {
+        "startLine": 106,
+        "startChar": 0,
+        "endLine": 106,
+        "endChar": 34
+      },
+      "revId": "afb2299c787927dedc68962230757c4640e2ac0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "727b9329_9322a602",
         "filename": "include/battery_fuel_gauge.h",
         "patchSetId": 20
