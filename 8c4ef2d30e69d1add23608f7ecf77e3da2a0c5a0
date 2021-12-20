@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4bcf800e_423b0787",
+        "filename": "driver/led/mp3385.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1294793
+      },
+      "writtenOn": "2021-12-20T02:12:39Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ef62ad21_ade39bb8",
+      "range": {
+        "startLine": 53,
+        "startChar": 11,
+        "endLine": 53,
+        "endChar": 19
+      },
+      "revId": "8c4ef2d30e69d1add23608f7ecf77e3da2a0c5a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4b279c60_8da2cdeb",
@@ -37,6 +61,24 @@
       "writtenOn": "2021-12-18T02:25:09Z",
       "side": 1,
       "message": "To make the logic a bit clearer here, maybe instead of the break,\nwrite the data here and return EC_SUCCESS.\nThe size check after the loop won\u0027t be required since the only\nway the loop ends is if the offset isn\u0027t found.",
+      "revId": "8c4ef2d30e69d1add23608f7ecf77e3da2a0c5a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1fe48ed_0e8fdfb8",
+        "filename": "driver/led/mp3385.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1294793
+      },
+      "writtenOn": "2021-12-20T02:12:39Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "4b279c60_8da2cdeb",
       "revId": "8c4ef2d30e69d1add23608f7ecf77e3da2a0c5a0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
