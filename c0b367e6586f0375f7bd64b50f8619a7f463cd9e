@@ -65,6 +65,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f49b45a8_46d03c98",
+        "filename": "driver/ppc/ktu1125.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-12-20T21:14:18Z",
+      "side": 1,
+      "message": "vSafe0V detection not supported",
+      "parentUuid": "be2c10dd_9758bb89",
+      "range": {
+        "startLine": 270,
+        "startChar": 11,
+        "endLine": 270,
+        "endChar": 34
+      },
+      "revId": "c0b367e6586f0375f7bd64b50f8619a7f463cd9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cddda9ae_fcae2a91",
