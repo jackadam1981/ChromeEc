@@ -33,6 +33,23 @@
       "message": "Does this also need to be merged to main branch?",
       "revId": "133a44ac2cb59d44da41f027f1f90b9637b0fe23",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aaa58db7_06edc4dd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1273086
+      },
+      "writtenOn": "2021-12-21T20:01:13Z",
+      "side": 1,
+      "message": "This appears to be a straight cherry-pick.\nIn the future, if you cherry-pick from the UI or using git with Gerrit\u0027s download tab, it will show up as a cherry-pick of the approved change.  Makes for a simpler approval.",
+      "revId": "133a44ac2cb59d44da41f027f1f90b9637b0fe23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
