@@ -16,6 +16,24 @@
       "message": "Both sensors are using the same i2c address?",
       "revId": "dc41fe8ea8ab725ed7d2cd64c20fba6aa51f49f0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "86c5416a_c3618a16",
+        "filename": "board/dewatt/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1293891
+      },
+      "writtenOn": "2021-12-21T01:26:16Z",
+      "side": 1,
+      "message": "Sorry! I forgot to modify it. The addresses are 0x48 (PCT2075_I2C_ADDR_FLAGS0) and 0x4F (PCT2075_I2C_ADDR_FLAGS7). Thanks!!",
+      "parentUuid": "93103138_59979dba",
+      "revId": "dc41fe8ea8ab725ed7d2cd64c20fba6aa51f49f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
