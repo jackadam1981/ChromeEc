@@ -71,6 +71,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b60707a_636e7d79",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-12-21T18:18:20Z",
+      "side": 1,
+      "message": "I would definitely not add redundant macros. It looks like changing the existing macros would actually touch kernel code, so that\u0027s way out of scope here. I\u0027ll withdraw my request.",
+      "parentUuid": "bbc65879_97fe7e93",
+      "revId": "57de95b038ca9db52b9d44e83b481eb31f103731",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e5679c3e_e057669c",
@@ -141,6 +159,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "65d176de_4172a554",
+        "filename": "zephyr/emul/tcpc/emul_tcpci_partner_snk.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-12-21T18:18:20Z",
+      "side": 1,
+      "message": "I think you\u0027re probably aware of this, but the most common scenario in real life would be to plug in a charger (fixed or variable source PDO) to a mobile device (battery SNK PDO). In those cases, you would need to extract fields for comparison purposes differently for each PDO. But this is fine for now if it helps us write the tests we want.",
+      "revId": "57de95b038ca9db52b9d44e83b481eb31f103731",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "410f1378_89252984",
@@ -178,6 +213,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "eb0fa298_ffce9672",
+        "filename": "zephyr/emul/tcpc/emul_tcpci_partner_snk.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-12-21T18:18:20Z",
+      "side": 1,
+      "message": "But it looks like this code will set mismatch even if a higher capability fixed PDO that would have satisfied the full requirement was ultimately selected. It seems like mismatch should only be set in the case above where the sink PDO current is higher than the source PDO current.",
+      "parentUuid": "885f8017_f13ead26",
+      "revId": "57de95b038ca9db52b9d44e83b481eb31f103731",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "258cdaa4_0c0c849a",
         "filename": "zephyr/emul/tcpc/emul_tcpci_partner_snk.c",
         "patchSetId": 4
@@ -207,6 +260,24 @@
       "side": 1,
       "message": "As I understand PD specification 6.4.2.3, mismatch should be set if source cannot provide enough power/current or it requires different voltage.",
       "parentUuid": "258cdaa4_0c0c849a",
+      "revId": "57de95b038ca9db52b9d44e83b481eb31f103731",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "617c268d_1ecfba10",
+        "filename": "zephyr/emul/tcpc/emul_tcpci_partner_snk.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-12-21T18:18:20Z",
+      "side": 1,
+      "message": "I think I must have misread this. I\u0027m not 100% sure what I was thinking at the time. But after rereading spec section 6.4.1.3.3, I think you are doing basically the right thing here. PDO_BATT_MAX_POWER should probably be called something like PDO_BATT_OP_POWER, but that\u0027s out of scope here.\n\nI think you should probably also return mismatch if the min voltage of the sink PDO is greater than the max voltage of the source PDO.",
+      "parentUuid": "60115a6b_fd155342",
       "revId": "57de95b038ca9db52b9d44e83b481eb31f103731",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -281,6 +352,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f7bcb8b0_dad52877",
+        "filename": "zephyr/emul/tcpc/emul_tcpci_partner_snk.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-12-21T18:18:20Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "15040114_6e6c4dc3",
+      "revId": "57de95b038ca9db52b9d44e83b481eb31f103731",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dcb13014_2f0addc7",
@@ -316,6 +405,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b2600f7b_3ae953cd",
+        "filename": "zephyr/emul/tcpc/emul_tcpci_partner_snk.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 338,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-12-21T18:18:20Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "74596a53_5fd8b42f",
+      "revId": "57de95b038ca9db52b9d44e83b481eb31f103731",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "69a9383e_ba37c7ee",
@@ -347,6 +454,24 @@
       "side": 1,
       "message": "\"not supported\" message type is introduced in PD rev 3.0, while this emulator is based on rev 2.0, where reject message is used when message is not supported (except VDM messages which should be ignored if not supported).",
       "parentUuid": "69a9383e_ba37c7ee",
+      "revId": "57de95b038ca9db52b9d44e83b481eb31f103731",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd8697e5_c6d16e26",
+        "filename": "zephyr/emul/tcpc/emul_tcpci_partner_snk.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 363,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-12-21T18:18:20Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "1e17aa37_5babb80e",
       "revId": "57de95b038ca9db52b9d44e83b481eb31f103731",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
