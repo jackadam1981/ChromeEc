@@ -24,6 +24,7 @@
 #include "gpio_signal.h"
 #include "hooks.h"
 #include "ioexpander.h"
+#include "isl9241.h"
 #include "system.h"
 #include "task.h"
 #include "task_id.h"
@@ -445,3 +446,9 @@ __override bool board_is_dts_port(int port)
 {
 	return port == USBC_PORT_C0;
 }
+
+static void set_ac_prochot(void)
+{
+	isl9241_set_ac_prochot(CHARGER_SOLO, 5000);
+}
+DECLARE_HOOK(HOOK_INIT, set_ac_prochot, HOOK_PRIO_DEFAULT);
