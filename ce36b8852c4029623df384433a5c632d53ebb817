@@ -70,6 +70,24 @@
       "parentUuid": "0ec2927f_5d20b551",
       "revId": "ce36b8852c4029623df384433a5c632d53ebb817",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "984d1f2c_55110b76",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2021-12-21T01:07:50Z",
+      "side": 1,
+      "message": "So corsola is the pattern we\u0027re following here, and I would much prefer not to deviate too much from that pattern until we are more confident about the best approach to sharing config.\nThe question does arise about how much to make common - keeping them completely separate at this stage does remove any ambiguity or possibility of impacting the other board when making changes to a board.\nSo at this stage let\u0027s keep them separate, and when we have final configs for both we can properly consider what should be common (e.g I don\u0027t think any of the bringup options like this one should be common anyway).",
+      "parentUuid": "0be14ac8_2a27d7ec",
+      "revId": "ce36b8852c4029623df384433a5c632d53ebb817",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
