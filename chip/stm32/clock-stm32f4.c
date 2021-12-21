@@ -443,6 +443,13 @@ static int dsleep_recovery_margin_us = 1000000;
  */
 #define SET_RTC_MATCH_DELAY 120 /* us */
 
+/*
+ * Reading interrupt clear-pending register gives us information if interrupt
+ * is pending.
+ */
+#define IRQ_TIM(n) CONCAT2(STM32_IRQ_TIM, n)
+#define TIMER_INTERRUPT_PENDING (CPU_NVIC_UNPEND(IRQ_TIM(TIM_CLOCK32) / 32) & \
+	(1 << (IRQ_TIM(TIM_CLOCK32) % 32)))
 
 void low_power_init(void)
 {
@@ -456,16 +463,60 @@ void clock_refresh_console_in_use(void)
 
 void __idle(void)
 {
-	timestamp_t t0;
+	timestamp_t ts_intr_enabled, t0;
 	uint32_t rtc_diff;
 	int next_delay, margin_us;
 	struct rtc_time_reg rtc0, rtc1;
 
 	while (1) {
+		/*
+		 * Get current timestamp with interrupts enabled.
+		 * If timer overflow occurs before disabling interrupts then
+		 * it will be properly handled (event timestamp set to correct
+		 * value in next "epoch") and correct timestamp will be returned
+		 */
+		ts_intr_enabled = get_time();
+
 		asm volatile("cpsid i");
 
+		/*
+		 * Get event timestamp.
+		 * After disabling interrupts, event timestamp is frozen,
+		 * because process_timers(), responsible for updating that
+		 * value, can't be called. There is a risk that timer overflow
+		 * occurred after interrupts were disabled and obtained event
+		 * timestamp points to previous "epoch". We will check that
+		 * later.
+		 */
+		next_delay = __hw_clock_event_get();
+
+		/*
+		 * Get timestamp with interrupts disabled.
+		 * This value is used as a base to calculate timestamp after
+		 * wake from deep sleep. In combination with next_delay it gives
+		 * information how long the CPU can sleep. It is also used to
+		 * determine if overflow occurred after interrupts were
+		 * disabled.
+		 */
 		t0 = get_time();
-		next_delay = __hw_clock_event_get() - t0.le.lo;
+
+		/*
+		 * Repeat idle enter procedure when overflow occurred between
+		 * disabling interrupts and obtaining t0 value or when timer
+		 * interrupt is pending (to cover rare overflow cases which
+		 * can't be found by comparision). To work properly, this code
+		 * assumes that timer interrupt is enabled in NVIC and interrupt
+		 * is generated on timer overflow.
+		 */
+		if (TIMER_INTERRUPT_PENDING || (t0.val < ts_intr_enabled.val)) {
+			/* Enable interrupts to handle detected overflow */
+			asm volatile("cpsie i");
+
+			/* Repeat idle enter procedure */
+			continue;
+		}
+
+		next_delay -= t0.le.lo;
 
 		if (DEEP_SLEEP_ALLOWED &&
 		    (next_delay > (STOP_MODE_LATENCY + PLL_LOCK_LATENCY +
