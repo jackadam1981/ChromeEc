@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "37ea260c_5874cc57",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2021-12-21T21:23:38Z",
+      "side": 1,
+      "message": "Hi, this is for dropping the node labels no named gpio and pwm. Do you think we have to maintain the current names? Can do that by upstreaming a change to get the uppercase version, but I\u0027m thinking it would be nice to use the actual (lowercase) node name if possible so that one could git grep for its definition and it would match directly.\n\nThe name is used in the host command and the HC api, but part of it is already case insensitive. Thinking we could try the change and dropping the label on volteer, if nothing breaks I\u0027ll clean up all the platforms.",
+      "revId": "49ec0de53278d3282bd3dd5e83bb1f7dc5b228fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
