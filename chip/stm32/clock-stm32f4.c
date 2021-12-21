@@ -431,6 +431,7 @@ void rtc_set(uint32_t sec)
 static int idle_sleep_cnt;
 static int idle_dsleep_cnt;
 static uint64_t idle_dsleep_time_us;
+static int idle_sleep_prevented_cnt;
 static int dsleep_recovery_margin_us = 1000000;
 
 /* STOP_MODE_LATENCY: delay to wake up from STOP mode with main regulator off */
@@ -464,8 +465,53 @@ void __idle(void)
 	while (1) {
 		asm volatile("cpsid i");
 
+		/*
+		 * Get timestamp with interrupts disabled.
+		 * This value is used as a base to calculate timestamp after
+		 * wake from deep sleep. In combination with next_delay it gives
+		 * information how long the CPU can sleep. The timestamp can
+		 * point to the previous "epoch" when timer overflowed after
+		 * interrupts were disabled, since clksrc_high (which keeps
+		 * higher 32 bits of the timestamp) will not be updated.
+		 */
 		t0 = get_time();
+
+		/*
+		 * Get time to next event.
+		 * After disabling interrupts, event timestamp
+		 * (__hw_clock_event_get()) is frozen, because
+		 * process_timers(), responsible for updating the
+		 * next event value with __hw_clock_event_set(),
+		 * can't be called. There is a risk that timer overflow
+		 * occurred after interrupts were disabled and obtained
+		 * event timestamp points to previous "epoch". We will
+		 * check that later.
+		 */
 		next_delay = __hw_clock_event_get() - t0.le.lo;
+
+		/*
+		 * Enable interrupts and repeat idle enter procedure when
+		 * any interrupt is pending.
+		 * In case of pending timer interrupt, we enable interrupts
+		 * to handle overflow occurred after disabling interrupts.
+		 * To work properly, this code assumes that timer interrupt
+		 * is enabled in NVIC and interrupt is generated on timer
+		 * overflow.
+		 *
+		 * Another reason for repeating idle enter procedure is that
+		 * executing WFI instruction when interrupt is pending, makes
+		 * WFI to be no-op, so we can easily avoid unnecessary work
+		 * especially when deep sleep is allowed.
+		 */
+		if (task_is_any_irq_pending()) {
+			idle_sleep_prevented_cnt++;
+
+			/* Enable interrupts to handle event. */
+			interrupt_enable();
+
+			/* Repeat idle enter procedure. */
+			continue;
+		}
 
 		if (DEEP_SLEEP_ALLOWED &&
 		    (next_delay > (STOP_MODE_LATENCY + PLL_LOCK_LATENCY +
@@ -550,6 +596,8 @@ static int command_idle_stats(int argc, char **argv)
 	ccprintf("Num idle calls that deep-sleep:      %d\n", idle_dsleep_cnt);
 	ccprintf("Time spent in deep-sleep:            %.6llds\n",
 			idle_dsleep_time_us);
+	ccprintf("Num of prevented sleep:              %d\n",
+			idle_sleep_prevented_cnt);
 	ccprintf("Total time on:                       %.6llds\n", ts.val);
 	ccprintf("Deep-sleep closest to wake deadline: %dus\n",
 			dsleep_recovery_margin_us);
