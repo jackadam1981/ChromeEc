@@ -16,6 +16,24 @@
       "message": "Hi Ting, I have confirmed the local firmware build worked.\nCould you help confirm it? ",
       "revId": "d46862a9c216ef2446d058d8f6b7fc54182720fc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "845916d1_7c6dba44",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2021-12-21T06:18:20Z",
+      "side": 1,
+      "message": "The failure is in vboot_reference and crosutils.. not this CL\u0027s fault.\nI\u0027ll ask infra team\u0027s help on this.\n\nvboot_reference-1.0-r1729: 18:33:35 \u003e\u003e\u003e Unpacking source...\nvboot_reference-1.0-r1729:  * ACCESS DENIED:  open_wr:      /mnt/host/source/src/platform/vboot_reference/.git/index.lock\nvboot_reference-1.0-r1729:  * Using local source dir(s): /mnt/host/source/src/platform/vboot_reference\nvboot_reference-1.0-r1729:  * path: /mnt/host/source/src/platform/vboot_reference\nvboot_reference-1.0-r1729:  * destdir: /var/tmp/portage/chromeos-base/vboot_reference-1.0-r1729/work/vboot_reference-1.0",
+      "parentUuid": "31611d35_2ed1c98b",
+      "revId": "d46862a9c216ef2446d058d8f6b7fc54182720fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
