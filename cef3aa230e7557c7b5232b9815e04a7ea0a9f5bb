@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a751f6b5_6faff7f2",
+        "filename": "common/usbc/tbt_alt_mode.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-12-21T18:27:08Z",
+      "side": 1,
+      "message": "Nit: an",
+      "range": {
+        "startLine": 225,
+        "startChar": 65,
+        "endLine": 225,
+        "endChar": 66
+      },
+      "revId": "cef3aa230e7557c7b5232b9815e04a7ea0a9f5bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef3c6d0d_720106fc",
+        "filename": "common/usbc/tbt_alt_mode.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-12-21T18:27:08Z",
+      "side": 1,
+      "message": "So TBT mode VDO \"active\" doesn\u0027t require SOP\u0027\u0027 enter/exit?",
+      "revId": "cef3aa230e7557c7b5232b9815e04a7ea0a9f5bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
