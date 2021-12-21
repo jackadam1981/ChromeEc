@@ -195,6 +195,30 @@
       },
       "revId": "ba2fdaeaf96186dc72edade5d4cfe260044b2b6c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad5e5812_bf23d0e2",
+        "filename": "driver/charger/bq25710.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2021-12-21T06:43:36Z",
+      "side": 1,
+      "message": "Copy the feedback here.\nWe don’t have exactly 0A setting for input current limit, we set the 50ma offset so that the converter can work normally. When you set 00 at 3F register, you read 22h back, you will see 00, but actually it’s 50ma right now.",
+      "parentUuid": "7b338b3c_0db2c8a0",
+      "range": {
+        "startLine": 146,
+        "startChar": 1,
+        "endLine": 146,
+        "endChar": 47
+      },
+      "revId": "ba2fdaeaf96186dc72edade5d4cfe260044b2b6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
