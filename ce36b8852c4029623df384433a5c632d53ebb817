@@ -52,6 +52,24 @@
       "parentUuid": "10ccc8da_80b82431",
       "revId": "ce36b8852c4029623df384433a5c632d53ebb817",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0be14ac8_2a27d7ec",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2021-12-21T00:55:10Z",
+      "side": 1,
+      "message": "While it may be easier right now to have one file, I think it\u0027ll be worse in the long run when a nereid config file appears, because then every change to config needs to remember to update both, even if somebody is only working on one board (or specifically call out that it applies to that one board): it would be very difficult to tell if a given change is correct or not, whereas having the shared configuration makes intent obvious.",
+      "parentUuid": "0ec2927f_5d20b551",
+      "revId": "ce36b8852c4029623df384433a5c632d53ebb817",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
