@@ -16,6 +16,23 @@
       "message": "LGTM, differ to Aseda to approve. thanks. ",
       "revId": "5da9b5c0d918e8006a33003571ad7b0093205c69",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1008bbe1_4f1a234b",
+        "filename": "board/bugzzy/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-12-21T15:57:22Z",
+      "side": 1,
+      "message": "So is the goal here to always delay setting a new color by one HOOK_TICK cycle (about 200ms)?  Something like an LED debounce time? If so, please provide comments to that effect to explain what\u0027s going on to future readers",
+      "revId": "5da9b5c0d918e8006a33003571ad7b0093205c69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
