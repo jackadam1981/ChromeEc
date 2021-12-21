@@ -56,6 +56,46 @@
       "message": "]",
       "revId": "49ec0de53278d3282bd3dd5e83bb1f7dc5b228fd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6852a9aa_3aea2be1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-12-21T23:43:03Z",
+      "side": 1,
+      "message": "BTW - I like this direction.",
+      "revId": "49ec0de53278d3282bd3dd5e83bb1f7dc5b228fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "095c22f0_c717aa89",
+        "filename": "zephyr/shim/src/gpio.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-12-21T23:43:03Z",
+      "side": 1,
+      "message": "How about using DEVICE_DT_NAME() here instead? This would allow someone to use the label property to override the display name if they wanted.",
+      "range": {
+        "startLine": 38,
+        "startChar": 12,
+        "endLine": 38,
+        "endChar": 29
+      },
+      "revId": "49ec0de53278d3282bd3dd5e83bb1f7dc5b228fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
