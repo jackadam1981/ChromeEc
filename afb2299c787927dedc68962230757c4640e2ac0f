@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6efd3a5_6ee47355",
+        "filename": "common/battery_fuel_gauge.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2021-12-21T22:35:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1875cdf7_297b39cd",
+      "range": {
+        "startLine": 97,
+        "startChar": 0,
+        "endLine": 97,
+        "endChar": 42
+      },
+      "revId": "afb2299c787927dedc68962230757c4640e2ac0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a3fab494_c8116d13",
@@ -70,6 +94,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec0b596c_50ebe6f4",
+        "filename": "common/battery_fuel_gauge.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2021-12-21T22:35:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a3fab494_c8116d13",
+      "range": {
+        "startLine": 98,
+        "startChar": 11,
+        "endLine": 98,
+        "endChar": 19
+      },
+      "revId": "afb2299c787927dedc68962230757c4640e2ac0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2c6205a_ec58e61e",
+        "filename": "common/battery_fuel_gauge.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2021-12-21T22:35:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "53e96367_4393504a",
+      "range": {
+        "startLine": 98,
+        "startChar": 22,
+        "endLine": 98,
+        "endChar": 24
+      },
+      "revId": "afb2299c787927dedc68962230757c4640e2ac0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2ac122f0_5f6fd9bc",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-12-20T19:23:01Z",
       "side": 1,
       "message": "Make this a static routine.  A more descriptive name is battery_get_fixed_battery_type().",
+      "range": {
+        "startLine": 103,
+        "startChar": 0,
+        "endLine": 103,
+        "endChar": 40
+      },
+      "revId": "afb2299c787927dedc68962230757c4640e2ac0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c90e82a_b1be9476",
+        "filename": "common/battery_fuel_gauge.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2021-12-21T22:35:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2ac122f0_5f6fd9bc",
       "range": {
         "startLine": 103,
         "startChar": 0,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8cfb47a8_414d28df",
+        "filename": "common/battery_fuel_gauge.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2021-12-21T22:35:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b6c0f613_03d533e5",
+      "range": {
+        "startLine": 105,
+        "startChar": 19,
+        "endLine": 105,
+        "endChar": 20
+      },
+      "revId": "afb2299c787927dedc68962230757c4640e2ac0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4cd3eeb4_7c3971ce",
@@ -129,6 +249,30 @@
       "writtenOn": "2021-12-20T19:24:53Z",
       "side": 1,
       "message": "Probably good to add warning printf that the board code failed to set the battery type when CONFIG_BATTERY_TYPE_NO_AUTO_DETECT is enabled.",
+      "range": {
+        "startLine": 106,
+        "startChar": 0,
+        "endLine": 106,
+        "endChar": 34
+      },
+      "revId": "afb2299c787927dedc68962230757c4640e2ac0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "15b16b59_017b3217",
+        "filename": "common/battery_fuel_gauge.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2021-12-21T22:35:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4cd3eeb4_7c3971ce",
       "range": {
         "startLine": 106,
         "startChar": 0,
@@ -162,6 +306,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6cc66d2b_84516c74",
+        "filename": "include/battery_fuel_gauge.h",
+        "patchSetId": 20
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2021-12-21T22:35:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "727b9329_9322a602",
+      "range": {
+        "startLine": 87,
+        "startChar": 4,
+        "endLine": 87,
+        "endChar": 34
+      },
+      "revId": "afb2299c787927dedc68962230757c4640e2ac0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "990cde16_0a3b1ae2",
@@ -175,6 +343,30 @@
       "writtenOn": "2021-12-20T19:23:01Z",
       "side": 1,
       "message": "Set the battery type, when auto-detection cannot be used.",
+      "range": {
+        "startLine": 90,
+        "startChar": 3,
+        "endLine": 90,
+        "endChar": 45
+      },
+      "revId": "afb2299c787927dedc68962230757c4640e2ac0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "288d73fe_e16058ae",
+        "filename": "include/battery_fuel_gauge.h",
+        "patchSetId": 20
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2021-12-21T22:35:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "990cde16_0a3b1ae2",
       "range": {
         "startLine": 90,
         "startChar": 3,
@@ -208,6 +400,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "655578c4_322b8d4c",
+        "filename": "include/battery_fuel_gauge.h",
+        "patchSetId": 20
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2021-12-21T22:35:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8966891d_6ac6c7fe",
+      "range": {
+        "startLine": 94,
+        "startChar": 5,
+        "endLine": 94,
+        "endChar": 21
+      },
+      "revId": "afb2299c787927dedc68962230757c4640e2ac0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6486b7f8_f3009429",
@@ -231,6 +447,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "98102c47_680319da",
+        "filename": "zephyr/Kconfig.battery",
+        "patchSetId": 20
+      },
+      "lineNbr": 720,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2021-12-21T22:35:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6486b7f8_f3009429",
+      "range": {
+        "startLine": 720,
+        "startChar": 0,
+        "endLine": 720,
+        "endChar": 6
+      },
+      "revId": "afb2299c787927dedc68962230757c4640e2ac0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f8d0a576_29bc037e",
@@ -244,6 +484,30 @@
       "writtenOn": "2021-12-20T19:23:01Z",
       "side": 1,
       "message": "This comment is not longer accurate for the latest patchset.  Now, the board code must call battery_set_fixed_battery_type() during the board initialization code.",
+      "range": {
+        "startLine": 739,
+        "startChar": 51,
+        "endLine": 742,
+        "endChar": 11
+      },
+      "revId": "afb2299c787927dedc68962230757c4640e2ac0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a51ad4ae_d281de90",
+        "filename": "zephyr/Kconfig.battery",
+        "patchSetId": 20
+      },
+      "lineNbr": 742,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2021-12-21T22:35:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f8d0a576_29bc037e",
       "range": {
         "startLine": 739,
         "startChar": 51,
