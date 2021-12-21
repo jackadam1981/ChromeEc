@@ -34,6 +34,24 @@
       "parentUuid": "fa993d35_6e68f81f",
       "revId": "ce36b8852c4029623df384433a5c632d53ebb817",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ec2927f_5d20b551",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2021-12-21T00:27:00Z",
+      "side": 1,
+      "message": "Understand, and originally I did have config in this file, but it got a bit confusing to have it spread over 2 files, and also the other boards such as corsola keep this file empty (and that was the example I was suggested to follow).\nIt sounds good to put a comment in prj.conf indicating that no config should be present and to use the board specific config.",
+      "parentUuid": "10ccc8da_80b82431",
+      "revId": "ce36b8852c4029623df384433a5c632d53ebb817",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
