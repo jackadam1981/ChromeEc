@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4b07d013_6fd5e75c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2021-12-21T16:01:45Z",
+      "side": 1,
+      "message": "I would prefer to keep it as it is and do refactoring later. I think it would not only extend current partner code by sink part, but also it would require changes in source part.",
+      "parentUuid": "a39284cd_1726841b",
+      "revId": "57de95b038ca9db52b9d44e83b481eb31f103731",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3600350f_a623489d",
         "filename": "include/usb_pd.h",
         "patchSetId": 4
@@ -31,6 +49,24 @@
       "writtenOn": "2021-12-20T18:34:59Z",
       "side": 1,
       "message": "I guess this is out of scope, but this list of macros mixes together fields from the source PDO (suspend) and sink PDO (higher capability, FRS). They share the current and voltage fields, but it would be nice if it was otherwise clear which fields belonged to which PDOs.",
+      "revId": "57de95b038ca9db52b9d44e83b481eb31f103731",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bbc65879_97fe7e93",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2021-12-21T16:01:45Z",
+      "side": 1,
+      "message": "What do you suggest? Adding PDO_FIXED_SNK/SRC_* prefix to all fields which are specific to sink/source or adding macros like this:\n#define PDO_FIXED_SNK_DUAL_ROLE PDO_FIXED_DUAL_ROLE\n#define PDO_FIXED_SRC_DUAL_ROLE PDO_FIXED_DUAL_ROLE",
+      "parentUuid": "3600350f_a623489d",
       "revId": "57de95b038ca9db52b9d44e83b481eb31f103731",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -52,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd807fbe_637f88cb",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2021-12-21T16:01:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e5679c3e_e057669c",
+      "revId": "57de95b038ca9db52b9d44e83b481eb31f103731",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a797125d_bb281a9f",
@@ -65,6 +119,24 @@
       "writtenOn": "2021-12-20T18:34:59Z",
       "side": 1,
       "message": "Alphabetize",
+      "revId": "57de95b038ca9db52b9d44e83b481eb31f103731",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9fd5c82_a98e51dc",
+        "filename": "zephyr/emul/tcpc/emul_tcpci_partner_snk.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2021-12-21T16:01:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a797125d_bb281a9f",
       "revId": "57de95b038ca9db52b9d44e83b481eb31f103731",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -88,6 +160,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "885f8017_f13ead26",
+        "filename": "zephyr/emul/tcpc/emul_tcpci_partner_snk.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2021-12-21T16:01:45Z",
+      "side": 1,
+      "message": "This is to catch situation, when any other source PDO is not satisfying, then vSafe5V is selected. If sink has higher capability bit set it means that it cannot provide all functionalities with 5V voltage. So if sink selects 5V PDO and has higher capability it means that it couldn\u0027t find other (satisfying) PDO in source capabilities.",
+      "parentUuid": "410f1378_89252984",
+      "revId": "57de95b038ca9db52b9d44e83b481eb31f103731",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "258cdaa4_0c0c849a",
         "filename": "zephyr/emul/tcpc/emul_tcpci_partner_snk.c",
         "patchSetId": 4
@@ -105,6 +195,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "60115a6b_fd155342",
+        "filename": "zephyr/emul/tcpc/emul_tcpci_partner_snk.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2021-12-21T16:01:45Z",
+      "side": 1,
+      "message": "As I understand PD specification 6.4.2.3, mismatch should be set if source cannot provide enough power/current or it requires different voltage.",
+      "parentUuid": "258cdaa4_0c0c849a",
+      "revId": "57de95b038ca9db52b9d44e83b481eb31f103731",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d2992d33_596302a4",
         "filename": "zephyr/emul/tcpc/emul_tcpci_partner_snk.c",
         "patchSetId": 4
@@ -116,6 +224,24 @@
       "writtenOn": "2021-12-20T18:34:59Z",
       "side": 1,
       "message": "Nit: Does this line need to be broken?",
+      "revId": "57de95b038ca9db52b9d44e83b481eb31f103731",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d6dd9cd_1715894d",
+        "filename": "zephyr/emul/tcpc/emul_tcpci_partner_snk.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2021-12-21T16:01:45Z",
+      "side": 1,
+      "message": "When this is single line, then \u0027}\u0027 is 82nd character.",
+      "parentUuid": "d2992d33_596302a4",
       "revId": "57de95b038ca9db52b9d44e83b481eb31f103731",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -139,6 +265,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "15040114_6e6c4dc3",
+        "filename": "zephyr/emul/tcpc/emul_tcpci_partner_snk.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2021-12-21T16:01:45Z",
+      "side": 1,
+      "message": "I am planing to refactor tcpci_partner_send_msg, to add header just before sending message. I want to add extra features for sending delayed messages (e.g. clearing all pending message which will be used on hard reset).",
+      "parentUuid": "80491b24_a5c05a2c",
+      "revId": "57de95b038ca9db52b9d44e83b481eb31f103731",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "dcb13014_2f0addc7",
         "filename": "zephyr/emul/tcpc/emul_tcpci_partner_snk.c",
         "patchSetId": 4
@@ -156,6 +300,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "74596a53_5fd8b42f",
+        "filename": "zephyr/emul/tcpc/emul_tcpci_partner_snk.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 338,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2021-12-21T16:01:45Z",
+      "side": 1,
+      "message": "Probably hard reset should reset any state that partner emulator has saved (e.g. if PD negotiation finished with success), but this sink emulator is very simple and doesn\u0027t have any state right now.",
+      "parentUuid": "dcb13014_2f0addc7",
+      "revId": "57de95b038ca9db52b9d44e83b481eb31f103731",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "69a9383e_ba37c7ee",
         "filename": "zephyr/emul/tcpc/emul_tcpci_partner_snk.c",
         "patchSetId": 4
@@ -167,6 +329,24 @@
       "writtenOn": "2021-12-20T18:34:59Z",
       "side": 1,
       "message": "I don\u0027t know if this comes up in your test yet, but if you want to generically handle messages you haven\u0027t implemented yet, the appropriate response response message is typically PD_CTRL_NOT_SUPPORTED.",
+      "revId": "57de95b038ca9db52b9d44e83b481eb31f103731",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e17aa37_5babb80e",
+        "filename": "zephyr/emul/tcpc/emul_tcpci_partner_snk.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 363,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2021-12-21T16:01:45Z",
+      "side": 1,
+      "message": "\"not supported\" message type is introduced in PD rev 3.0, while this emulator is based on rev 2.0, where reject message is used when message is not supported (except VDM messages which should be ignored if not supported).",
+      "parentUuid": "69a9383e_ba37c7ee",
       "revId": "57de95b038ca9db52b9d44e83b481eb31f103731",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -194,6 +374,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "429d997e_fa17c8b0",
+        "filename": "zephyr/emul/tcpc/emul_tcpci_partner_snk.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 425,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2021-12-21T16:01:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9851601f_05b0493d",
+      "range": {
+        "startLine": 425,
+        "startChar": 5,
+        "endLine": 425,
+        "endChar": 7
+      },
+      "revId": "57de95b038ca9db52b9d44e83b481eb31f103731",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "028cfb0f_347223fb",
@@ -207,6 +411,30 @@
       "writtenOn": "2021-12-20T18:34:59Z",
       "side": 1,
       "message": "Spelling",
+      "range": {
+        "startLine": 53,
+        "startChar": 21,
+        "endLine": 53,
+        "endChar": 28
+      },
+      "revId": "57de95b038ca9db52b9d44e83b481eb31f103731",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0634bb44_b3d2b64d",
+        "filename": "zephyr/include/emul/tcpc/emul_tcpci_partner_snk.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2021-12-21T16:01:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "028cfb0f_347223fb",
       "range": {
         "startLine": 53,
         "startChar": 21,
