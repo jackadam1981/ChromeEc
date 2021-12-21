@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d910f3a_1cb0e4f6",
+        "filename": "include/driver/ppc/syv682x_public.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-12-21T20:55:54Z",
+      "side": 1,
+      "message": "this symbol is also listed in\nzephyr/dts/bindings/usbc/silergy,syv682x.yaml\n\nthat should be kept in sync.",
+      "range": {
+        "startLine": 15,
+        "startChar": 8,
+        "endLine": 15,
+        "endChar": 27
+      },
+      "revId": "dfb42dec4e958651096c5dfb8bb2071fbdabb835",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
