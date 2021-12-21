@@ -454,6 +454,11 @@ void clock_refresh_console_in_use(void)
 {
 }
 
+static bool timer_interrupt_pending(void)
+{
+	return task_is_irq_pending(IRQ_TIM(TIM_CLOCK32));
+}
+
 void __idle(void)
 {
 	timestamp_t t0;
@@ -464,8 +469,38 @@ void __idle(void)
 	while (1) {
 		asm volatile("cpsid i");
 
+		/*
+		 * Get timestamp with interrupts disabled.
+		 * This value is used as a base to calculate timestamp after
+		 * wake from deep sleep. In combination with next_delay it gives
+		 * information how long the CPU can sleep.
+		 */
 		t0 = get_time();
+
+		/*
+		 * Get time to next event.
+		 * After disabling interrupts, event timestamp is frozen,
+		 * because process_timers(), responsible for updating that
+		 * value, can't be called. There is a risk that timer overflow
+		 * occurred after interrupts were disabled and obtained event
+		 * timestamp points to previous "epoch". We will check that
+		 * later.
+		 */
 		next_delay = __hw_clock_event_get() - t0.le.lo;
+
+		/*
+		 * Repeat idle enter procedure when timer interrupt is pending
+		 * (eg. overflow occurred after disabling interrupts). To work
+		 * properly, this code assumes that timer interrupt is enabled
+		 * in NVIC and interrupt is generated on timer overflow.
+		 */
+		if (timer_interrupt_pending()) {
+			/* Enable interrupts to handle detected overflow. */
+			interrupt_enable();
+
+			/* Repeat idle enter procedure. */
+			continue;
+		}
 
 		if (DEEP_SLEEP_ALLOWED &&
 		    (next_delay > (STOP_MODE_LATENCY + PLL_LOCK_LATENCY +
