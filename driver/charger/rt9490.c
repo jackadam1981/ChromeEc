@@ -605,6 +605,36 @@ static enum ec_error_list rt9490_enable_linear_charge(int chgnum, bool enable)
 	return EC_ERROR_UNIMPLEMENTED;
 }
 
+#ifdef CONFIG_CMD_CHARGER_DUMP
+static void dump_range(int chgnum, int from, int to) {
+	for (int reg = from; reg <= to; ++reg) {
+		int val = 0;
+
+		if (!rt9490_read8(chgnum, reg, &val))
+			CPRINTS("    0x%02x: 0x%02x", reg, val);
+		else
+			CPRINTS("    0x%02x: (error)", reg);
+	}
+}
+
+static void rt9490_dump_registers(int chgnum)
+{
+	uint16_t ts, tdie;
+
+	CPRINTS("CHG_STATUS:");
+	dump_range(chgnum, RT9490_REG_CHG_STATUS0, RT9490_REG_CHG_STATUS4);
+	CPRINTS("FAULT_STATUS:");
+	dump_range(chgnum, RT9490_REG_FAULT_STATUS0, RT9490_REG_FAULT_STATUS1);
+	CPRINTS("IRQ FLAG:");
+	dump_range(chgnum, RT9490_REG_CHG_IRQ_FLAG0, RT9490_REG_CHG_IRQ_FLAG5);
+
+	rt9490_read16(chgnum, RT9490_REG_TS_ADC, &ts);
+	CPRINTS("TS_ADC: %d.%d%%", ts / 10, ts % 10);
+	rt9490_read16(chgnum, RT9490_REG_TDIE_ADC, &tdie);
+	CPRINTS("TDIE_ADC: %d deg C", tdie);
+}
+#endif
+
 const struct charger_drv rt9490_drv = {
 	.init = &rt9490_init,
 	.post_init = &rt9490_post_init,
@@ -640,5 +670,8 @@ const struct charger_drv rt9490_drv = {
 	.set_vsys_compensation = &rt9490_set_vsys_compensation,
 	.is_icl_reached = &rt9490_is_icl_reached,
 	.enable_linear_charge = &rt9490_enable_linear_charge,
+#ifdef CONFIG_CMD_CHARGER_DUMP
+	.dump_registers = &rt9490_dump_registers,
+#endif
 };
 
