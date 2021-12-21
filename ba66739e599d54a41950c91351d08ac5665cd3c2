@@ -16,6 +16,23 @@
       "message": "Drawcia_riscv build fail",
       "revId": "ba66739e599d54a41950c91351d08ac5665cd3c2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6979125_a7caceea",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2021-12-21T10:32:54Z",
+      "side": 1,
+      "message": "+Andrew\n\nJust figured out that you are doing similar thing in CL:3316164.\n\nWhat do you think about the config items in this CL?\nIf you think the config is already well organized, I can abandon this CL.",
+      "revId": "ba66739e599d54a41950c91351d08ac5665cd3c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
