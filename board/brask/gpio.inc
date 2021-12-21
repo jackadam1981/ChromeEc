@@ -106,7 +106,7 @@ GPIO(EC_I2C_USB_C1_TCPC_SDA,         PIN(F, 2), GPIO_INPUT)
 
 /* USBA */
 GPIO(EN_PP5000_USBA,                 PIN(D, 7), GPIO_OUT_LOW)
-GPIO(USB_A0_OC_ODL,                  PIN(3, 1), GPIO_INPUT)
+GPIO(USB_A0_OC_ODL,                  PIN(3, 1), GPIO_INPUT | GPIO_PULL_UP)
 GPIO(USB_A1_OC_ODL,                  PIN(3, 0), GPIO_INPUT | GPIO_PULL_UP)
 GPIO(USB_A2_OC_ODL,                  PIN(2, 7), GPIO_INPUT | GPIO_PULL_UP)
 GPIO(USB_A3_OC_ODL,                  PIN(2, 6), GPIO_INPUT | GPIO_PULL_UP)
@@ -118,6 +118,7 @@ GPIO(USB_A_LOW_PWR0_OD,              PIN(1, 5), GPIO_INPUT | GPIO_PULL_DOWN)
 GPIO(USB_A_LOW_PWR1_OD,              PIN(1, 4), GPIO_INPUT | GPIO_PULL_DOWN)
 GPIO(USB_A_LOW_PWR2_OD,              PIN(1, 1), GPIO_INPUT | GPIO_PULL_DOWN)
 GPIO(USB_A_LOW_PWR3_OD,              PIN(1, 0), GPIO_INPUT | GPIO_PULL_DOWN)
+GPIO(USB_A_OC_SOC_L,                 PIN(8, 0), GPIO_OUT_HIGH)
 
 /* LED */
 /* TODO(b/197471359): LED implementation */
@@ -179,4 +180,3 @@ UNUSED(PIN(1, 2))       /* KSO07/GPO12/JEN# */
 UNUSED(PIN(0, 6))       /* KSO11/GPIO06/P80_CLK */
 UNUSED(PIN(0, 5))       /* KSO12/GPIO05 */
 UNUSED(PIN(0, 4))       /* KSO13/GPIO04 */
-UNUSED(PIN(8, 0))       /* GPIO80/PWM3 */
