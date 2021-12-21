@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1cf6659b_edd1e8f3",
+        "filename": "zephyr/projects/nissa/nivviks_generated.dts",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-12-21T17:14:02Z",
+      "side": 1,
+      "message": "What do you think about creating separate files for each module?  e.g. nivviks_adc_generated.dts, nivviks_i2c_generated.dts.\n\nHow is the input spreadsheet generated?  Is this something partners can do?   If partners won\u0027t be able to auto-generate these files, splitting the file will be easier to maintain for variant boards.",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 21
+      },
+      "revId": "69394d8ad2647f445953cc383511512598fccda6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28dcd143_5235f382",
+        "filename": "zephyr/projects/nissa/nivviks_generated.dts",
+        "patchSetId": 4
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-12-21T17:14:02Z",
+      "side": 1,
+      "message": "Can you update the auto-generation code to add a label property to the I2C buses?  The label property is used as the 1st argument for the \"i2c\" shell command, so it\u0027s better to override this with the netname.\n\nNote that the label must start with \"I2C_\" to work correctly with the shell command.",
+      "range": {
+        "startLine": 332,
+        "startChar": 0,
+        "endLine": 332,
+        "endChar": 9
+      },
+      "revId": "69394d8ad2647f445953cc383511512598fccda6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f9979a8_7cd9dd1a",
+        "filename": "zephyr/projects/nissa/nivviks_generated.dts",
+        "patchSetId": 4
+      },
+      "lineNbr": 373,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-12-21T17:14:02Z",
+      "side": 1,
+      "message": "Need to add the \"clock-bus\" property.  LEDs need to use \"NPCX_CLOCK_BUS_LFCLK\" to properly function in deep sleep.  If this can\u0027t b edetermined by the auto-generate tool, then add this to the nivviks_overlay.dts.",
+      "range": {
+        "startLine": 373,
+        "startChar": 0,
+        "endLine": 373,
+        "endChar": 17
+      },
+      "revId": "69394d8ad2647f445953cc383511512598fccda6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa62f03e_bfacf39b",
+        "filename": "zephyr/projects/nissa/nivviks_overlay.dts",
+        "patchSetId": 4
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-12-21T17:14:02Z",
+      "side": 1,
+      "message": "Don\u0027t use C++ style comments.",
+      "range": {
+        "startLine": 86,
+        "startChar": 0,
+        "endLine": 86,
+        "endChar": 18
+      },
+      "revId": "69394d8ad2647f445953cc383511512598fccda6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
