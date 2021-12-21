@@ -626,6 +626,36 @@ void board_set_charge_limit(int port, int supplier, int charge_ma,
 				       charge_mv);
 }
 
+/**
+ * Handle debounced pen input changing state.
+ */
+static void pen_input_deferred(void)
+{
+	int pen_charge_enable = !gpio_get_level(GPIO_PEN_DET_ODL) &&
+			!chipset_in_state(CHIPSET_STATE_ANY_OFF);
+
+	if (pen_charge_enable)
+		gpio_set_level(GPIO_EN_PP3300_PEN, 1);
+	else
+		gpio_set_level(GPIO_EN_PP3300_PEN, 0);
+
+	CPRINTS("Pen charge %sable", pen_charge_enable ? "en" : "dis");
+}
+DECLARE_DEFERRED(pen_input_deferred);
+
+void pen_input_interrupt(enum gpio_signal signal)
+{
+	/* pen input debounce time */
+	hook_call_deferred(&pen_input_deferred_data, (100 * MSEC));
+}
+
+static void pen_charge_check(void)
+{
+	hook_call_deferred(&pen_input_deferred_data, (100 * MSEC));
+}
+DECLARE_HOOK(HOOK_CHIPSET_STARTUP, pen_charge_check, HOOK_PRIO_LAST);
+DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, pen_charge_check, HOOK_PRIO_LAST);
+
 uint16_t tcpc_get_alert_status(void)
 {
 	uint16_t status = 0;
