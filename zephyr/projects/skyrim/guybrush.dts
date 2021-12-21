@@ -5,6 +5,124 @@
 
 / {
 	named-gpios {
-		/* Guybrush-specific GPIO customizations can be made here */
+		/* Guybrush-specific GPIO customizations */
+		ec_wp_l {
+			gpios = <&gpio5 0 GPIO_INPUT>;
+			label = "EC_WP_L";
+			enum-name = "GPIO_WP_L";
+		};
+		ec_pwr_btn_odl {
+			gpios = <&gpio0 1 GPIO_INPUT>;
+			label = "EC_PWR_BTN_ODL";
+			enum-name = "GPIO_EC_PWR_BTN_ODL";
+		};
+		slp_s3_s0i3_l {
+			gpios = <&gpio7 4 GPIO_INPUT>;
+			label = "SLP_S3_S0I3_L";
+			enum-name = "GPIO_PCH_SLP_S0_L";
+		};
+		ec_pcore_int_odl {
+			gpios = <&gpiof 0 (GPIO_INPUT | GPIO_PULL_UP)>;
+			label = "EC_PCORE_INT_ODL";
+			enum-name = "GPIO_EC_PCORE_INT_ODL";
+		};
+		pg_groupc_s0_od {
+			gpios = <&gpioa 3 GPIO_INPUT>;
+			label = "PG_GROUPC_S0_OD";
+			enum-name = "GPIO_PG_GROUPC_S0_OD";
+		};
+		pg_lpddr4x_s3_od {
+			gpios = <&gpio9 5 GPIO_INPUT>;
+			label = "PG_LPDDR4X_S3_OD";
+			enum-name = "GPIO_PG_LPDDR4X_S3_OD";
+		};
+		ec_soc_pwr_good {
+			gpios = <&gpiod 3 GPIO_OUT_LOW>;
+			label = "EC_SOC_PWR_GOOD";
+			enum-name = "GPIO_PCH_SYS_PWROK";
+		};
+		ec_entering_rw {
+			gpios = <&gpio6 6 GPIO_OUT_LOW>;
+			label = "EC_ENTERING_RW";
+			enum-name = "GPIO_ENTERING_RW";
+		};
+		ec_clr_cmos {
+			gpios = <&gpioa 1 GPIO_OUT_LOW>;
+			label = "EC_CLR_CMOS";
+		};
+		ec_mem_event {
+			gpios = <&gpioa 5 GPIO_OUT_LOW>;
+			label = "EC_MEM_EVENT";
+		};
+		ec_soc_pwr_btn_l {
+			gpios = <&gpio6 3 GPIO_OUT_HIGH>;
+			label = "EC_SOC_PWR_BTN_L";
+			enum-name = "GPIO_PCH_PWRBTN_L";
+		};
+		ec_soc_int_l {
+			gpios = <&gpio8 3 GPIO_OUT_HIGH>;
+			label = "EC_SOC_INT_L";
+		};
+		soc_thermtrip_odl {
+			gpios = <&gpioe 5 GPIO_INPUT>;
+			label = "SOC_THERMTRIP_ODL";
+		};
+		usb_c0_c1_fault_odl {
+			gpios = <&gpio7 3 GPIO_ODR_HIGH>;
+			label = "USB_C0_C1_FAULT_ODL";
+			enum-name = "GPIO_USB_C0_C1_FAULT_ODL";
+		};
+		3axis_int_l {
+			gpios = <&gpioa 2 (GPIO_INPUT | GPIO_PULL_DOWN)>;
+			label = "3AXIS_INT_L";
+		};
+		voldn_btn_odl {
+			gpios = <&gpioa 7 (GPIO_INPUT | GPIO_PULL_UP)>;
+			label = "VOLDN_BTN_ODL";
+			enum-name = "GPIO_VOLUME_DOWN_L";
+		};
+		volup_btn_odl {
+			gpios = <&gpio9 3 (GPIO_INPUT | GPIO_PULL_UP)>;
+			label = "VOLUP_BTN_ODL";
+			enum-name = "GPIO_VOLUME_UP_L";
+		};
+		ec_ps2_clk {
+			gpios = <&gpio6 7 (GPIO_INPUT | GPIO_PULL_UP)>;
+			label = "EC_PS2_CLK";
+		};
+		ec_ps2_dat {
+			gpios = <&gpio7 0 (GPIO_INPUT | GPIO_PULL_UP)>;
+			label = "EC_PS2_DAT";
+		};
+		ec_ps2_rst {
+			gpios = <&gpio6 2 (GPIO_INPUT | GPIO_PULL_UP)>;
+			label = "EC_PS2_RST";
+		};
+		ec_gpiob0 {
+			gpios = <&gpiob 0 (GPIO_INPUT | GPIO_PULL_UP)>;
+			label = "EC_GPIOB0";
+		};
+		ec_gpio81 {
+			gpios = <&gpio8 1 (GPIO_INPUT | GPIO_PULL_UP)>;
+			label = "EC_GPIO81";
+		};
+		ec_psl_gpo {
+			gpios = <&gpiod 7 (GPIO_INPUT | GPIO_PULL_UP)>;
+			label = "EC_PSL_GPO";
+		};
+		ec_pwm7 {
+			gpios = <&gpio6 0 (GPIO_INPUT | GPIO_PULL_UP)>;
+			label = "EC_PWM7";
+		};
+	};
+
+	named-adc-channels {
+		compatible = "named-adc-channels";
+
+		adc_temp_soc: temp-soc {
+			label = "SOC";
+			enum-name = "ADC_TEMP_SENSOR_SOC";
+			channel = <0>;
+		};
 	};
 };
