@@ -20,6 +20,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fe07f423_a79d4719",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2021-12-21T00:50:51Z",
+      "side": 1,
+      "message": "Since this isn\u0027t shimming an existing ECOS API, I don\u0027t think any of this code needs to exist. Setting up devices should be the task of each driver that actually implements the threshold interrupt support, and individual comparators should either be configured in a board\u0027s device tree or in board-specific code because there is no \"boilerplate\" cros-ec threshold comparator configuration that happens.",
+      "revId": "31f8b6b9e006e749c16deb6b10ddcc65c025a627",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fc716b7e_9460546c",
         "filename": "zephyr/dts/bindings/adc/cros-adc-threshold.yaml",
         "patchSetId": 6
