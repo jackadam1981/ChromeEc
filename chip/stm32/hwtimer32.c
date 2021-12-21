@@ -30,7 +30,8 @@ void __hw_clock_event_set(uint32_t deadline)
 
 uint32_t __hw_clock_event_get(void)
 {
-	return STM32_TIM32_CCR1(TIM_CLOCK32);
+	return (STM32_TIM_DIER(TIM_CLOCK32) & 2) ?
+	    STM32_TIM32_CCR1(TIM_CLOCK32) : UINT32_MAX;
 }
 
 void __hw_clock_event_clear(void)
