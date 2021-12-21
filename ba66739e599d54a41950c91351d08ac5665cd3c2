@@ -33,6 +33,24 @@
       "message": "+Andrew\n\nJust figured out that you are doing similar thing in CL:3316164.\n\nWhat do you think about the config items in this CL?\nIf you think the config is already well organized, I can abandon this CL.",
       "revId": "ba66739e599d54a41950c91351d08ac5665cd3c2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab2f1f0a_29cbc99e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2021-12-21T12:57:22Z",
+      "side": 1,
+      "message": "In the CL you mention (which is now merged), I wanted to move the portions that were clearly very project specific out of the core config and DTS, mostly the DTS items, and items that were causing an issue with the drawcia_riscv configs.\nIn terms of what items should be in the core (i.e board/riscv/it8xxx2_defconfig), I am not sure where it is best to draw the line.\nSome of the items that you have moved out I would likely have left in the default config (such as serial console, watchdog etc.), since I can\u0027t imagine there would be project configs that would not have these.\nSome other items such as the shell options definitely do belong in the project configs.\nSo I don\u0027t really have a strong opinion about many of these items, except that I think anything that is clearly optional should be moved out to the project configs, and anything that will always be enabled should go in the default config.\nI would ask that if you move anything out of the default config, feel free to add it to the drawcia_riscv config so that at least that stays overall the same.\n\nBTW if it wasn\u0027t clear already, drawcia_riscv is a non-production test project that we don\u0027t expect will live beyond a few months.",
+      "parentUuid": "d6979125_a7caceea",
+      "revId": "ba66739e599d54a41950c91351d08ac5665cd3c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
