@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4878d0ff_70c1fc7c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-12-21T19:42:14Z",
+      "side": 1,
+      "message": "Didn\u0027t resolve in which way?  Did we not send the Enter/Exit SOP\u0027 messages correctly, or did we send them but it didn\u0027t help? Could you update the bug?",
+      "parentUuid": "7d5cbb71_f6cf726d",
+      "revId": "cef3aa230e7557c7b5232b9815e04a7ea0a9f5bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a751f6b5_6faff7f2",
