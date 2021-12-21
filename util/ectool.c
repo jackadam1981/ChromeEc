@@ -81,6 +81,8 @@ const char help_str[] =
 	"      Cut off battery output power\n"
 	"  batteryparam\n"
 	"      Read or write board-specific battery parameter\n"
+	"  batteryparamgetstring\n"
+	"      Read string of board-speific battery parameter\n"
 	"  boardversion\n"
 	"      Prints the board version\n"
 	"  button [vup|vdown|rec] <Delay-ms>\n"
@@ -8017,6 +8019,50 @@ cmd_battery_vendor_param_usage:
 	return -1;
 }
 
+int cmd_battery_param_get_string(int argc, char *argv[])
+{
+	int i, rv;
+	struct ec_params_battery_vendor_param p;
+	struct ec_response_battery_vendor_param r;
+	int read_len;
+	unsigned int start_reg;
+	char *e;
+
+	p.mode = BATTERY_VENDOR_PARAM_MODE_GET;
+
+	if(argc != 3) {
+		fprintf(stderr,
+			"Usage:\t %s read_len start_reg\n",
+			argv[0]);
+		return -1;
+	}
+
+	read_len = strtol(argv[1], &e, 0);
+	if (e && *e) {
+		fprintf(stderr, "Bad read_len.\n");
+		return -1;
+	}
+
+	start_reg = strtol(argv[2], &e, 0) & 0x7f;
+	if (e && *e) {
+		fprintf(stderr, "Bad start_reg.\n");
+		return -1;
+	}
+
+	for (i = 0; i < read_len; i++) {
+		p.param = start_reg + i;
+		rv = ec_command(EC_CMD_BATTERY_VENDOR_PARAM, 0, &p,
+				sizeof(p), &r, sizeof(r));
+		if(rv < 0)
+			return rv;
+
+		printf("%c", r.value);
+	}
+	printf("\n");
+
+	return 0;
+}
+
 int cmd_board_version(int argc, char *argv[])
 {
 	struct ec_response_board_version response;
@@ -10476,6 +10522,7 @@ const struct command commands[] = {
 	{"battery", cmd_battery},
 	{"batterycutoff", cmd_battery_cut_off},
 	{"batteryparam", cmd_battery_vendor_param},
+	{"batteryparamgetstring", cmd_battery_param_get_string},
 	{"boardversion", cmd_board_version},
 	{"button", cmd_button},
 	{"cbi", cmd_cbi},
