@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b691dddd_1288fc99",
+        "filename": "zephyr/include/emul/tcpc/emul_tcpci.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-12-21T19:31:27Z",
+      "side": 1,
+      "message": "This value isn\u0027t specific to these emulators or even TCPCI. If we need it broadly, it should probably be in usb_pd.h. If it\u0027s just a convenience for these emulators, then it should probably be in the emulator .c files.\n\nSame thing for the number of bytes in a data object in the other header file.",
+      "revId": "9fafcff2bf891edec0d6f6481903d1a523c09205",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
