@@ -16,6 +16,95 @@
       "message": "Patchset1 is a copy from the ti50 tree, patchset2 - local edits.",
       "revId": "fc7c100be22e5f8d440309b5f2891cbedfbee481",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "065a4d8b_2ea22caa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-12-22T01:57:19Z",
+      "side": 1,
+      "message": "oh, good Tricium comments on shell nits and typos",
+      "revId": "fc7c100be22e5f8d440309b5f2891cbedfbee481",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00fdbc99_5d0b3030",
+        "filename": "docs/gsc_without_servod.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-12-22T01:57:19Z",
+      "side": 1,
+      "message": "\u003e \"controling\" is a possible misspelling of \"controlling\".\n\nPlease fix.",
+      "parentUuid": "e65480c0_f8bfa0ff",
+      "range": {
+        "startLine": 3,
+        "startChar": 50,
+        "endLine": 3,
+        "endChar": 60
+      },
+      "revId": "fc7c100be22e5f8d440309b5f2891cbedfbee481",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9434bad9_dec33b28",
+        "filename": "docs/gsc_without_servod.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-12-22T01:57:19Z",
+      "side": 1,
+      "message": "\u003e \"desciribes\" is a possible misspelling of \"describes\".\n\nPlease fix.",
+      "parentUuid": "18df320a_1596070f",
+      "range": {
+        "startLine": 3,
+        "startChar": 14,
+        "endLine": 3,
+        "endChar": 24
+      },
+      "revId": "fc7c100be22e5f8d440309b5f2891cbedfbee481",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed6dab2c_bfdb8a5a",
+        "filename": "docs/gsc_without_servod.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-12-22T01:57:19Z",
+      "side": 1,
+      "message": "\u003e \"firmare\" is a possible misspelling of \"firmware\".\n\nPlease fix.",
+      "parentUuid": "94954ae6_1cba9c42",
+      "range": {
+        "startLine": 140,
+        "startChar": 26,
+        "endLine": 140,
+        "endChar": 33
+      },
+      "revId": "fc7c100be22e5f8d440309b5f2891cbedfbee481",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
