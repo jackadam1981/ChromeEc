@@ -10,6 +10,7 @@
 
 #include "accelgyro.h"
 #include "accelgyro_bmi323.h"
+#include "accelgyro_bmi320.h"
 #include "accelgyro_bmi_common.h"
 #include "console.h"
 #include "hwtimer.h"
@@ -26,6 +27,11 @@
 #define CPUTS(outstr) cputs(CC_ACCEL, outstr)
 #define CPRINTF(format, args...) cprintf(CC_ACCEL, format, ## args)
 #define CPRINTS(format, args...) cprints(CC_ACCEL, format, ## args)
+
+#if DT_NODE_EXISTS(DT_ALIAS(bmi3xx_int))
+#define CONFIG_ACCELGYRO_BMI3XX_INT_EVENT	\
+	TASK_EVENT_MOTION_SENSOR_INTERRUPT(SENSOR_ID(DT_ALIAS(bmi3xx_int)))
+#endif
 
 /* Sensor definition */
 STATIC_IF(CONFIG_BMI_ORIENTATION_SENSOR) void irq_set_orientation(
@@ -1193,10 +1199,10 @@ static int init(struct motion_sensor_t *s)
 
 	/* Read chip id */
 	RETURN_ERROR(bmi3_read_n(s, BMI3_REG_CHIP_ID, reg_data, 4));
-
-	if (reg_data[2] != BMI323_CHIP_ID)
+	if (reg_data[2] != BMI323_CHIP_ID &&
+	    reg_data[2] != BMI320_CHIP_ID)
 		return EC_ERROR_HW_INTERNAL;
-
+	CPRINTF("---chip ID = %x", reg_data[2]);
 	if (s->type == MOTIONSENSE_TYPE_ACCEL) {
 		/* Reset bmi3 device */
 		reg_data[0] = (uint8_t)(BMI3_CMD_SOFT_RESET
