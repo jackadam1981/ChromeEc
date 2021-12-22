@@ -139,6 +139,24 @@
       "parentUuid": "b5c97779_072e7d0f",
       "revId": "8ad1438f1b8399ec67950c50dba7c91428b6bf47",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4580b7cc_71d2c032",
+        "filename": "zephyr/projects/nissa/nivviks_generated.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-12-22T20:29:43Z",
+      "side": 1,
+      "message": "The \"#gpio-cells\" property is considered a constant, so it should be part of the generated output, instead of requiring the user to add to the overlay.\n\nIt\u0027s unfortunate that we\u0027re not able to set the default to 0 in the named-gpios.yaml file, but this convention isn\u0027t supported by the DT compiler.",
+      "parentUuid": "a6ddb965_088d43fe",
+      "revId": "8ad1438f1b8399ec67950c50dba7c91428b6bf47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
