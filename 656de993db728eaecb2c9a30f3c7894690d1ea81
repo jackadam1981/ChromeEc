@@ -16,6 +16,24 @@
       "message": "Why was this change made?",
       "revId": "656de993db728eaecb2c9a30f3c7894690d1ea81",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "376cea57_c5ccb8e2",
+        "filename": "zephyr/drivers/cros_kb_raw/Kconfig",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-12-22T18:31:26Z",
+      "side": 1,
+      "message": "This is a cleanup because menuconfig isn\u0027t required here.\n\nmenuconfig is used when you have sub-options that should be nested under the main option.  Sub-options are identified by having a dependency on the main option (either with \"depends\" or using if \u003cOPTION\u003e).\n\nThere are no options that depend on CROS_KB_RAW_ITE, so \"config\" can be used.",
+      "parentUuid": "1372c160_646cb179",
+      "revId": "656de993db728eaecb2c9a30f3c7894690d1ea81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
