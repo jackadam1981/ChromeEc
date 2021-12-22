@@ -48,6 +48,9 @@
  */
 #define MIN_BATTERY_FOR_PD_UPGRADE_MAH 100 /* mAH */
 
+/* When number of usb pd port count is not initialized */
+#define PORT_COUNT_UNINITIALIZED -1
+
 #if defined(CONFIG_CMD_PD) && defined(CONFIG_CMD_PD_FLASH)
 int hex8tou32(char *str, uint32_t *val)
 {
@@ -346,6 +349,39 @@ int pd_check_requested_voltage(uint32_t rdo, const int port)
 	/* Accept the requested voltage */
 	return EC_SUCCESS;
 }
+
+#ifdef CONFIG_USB_PD_COUNT_RUNTIME
+/* Variable to determine the number of typec ports at run time */
+static int usb_pd_port_count = PORT_COUNT_UNINITIALIZED;
+
+/*
+ * Function to get the count of type c ports at runtime.
+ */
+uint8_t usb_pd_get_port_count(void)
+{
+	if (usb_pd_port_count == PORT_COUNT_UNINITIALIZED)
+		usb_pd_port_count = CONFIG_USB_PD_PORT_MAX_COUNT;
+
+	return usb_pd_port_count;
+}
+
+/*
+ * Function to set number of usb_pd_ports
+ */
+void usb_pd_set_port_count(int count)
+{
+	if (count <= CONFIG_USB_PD_PORT_MAX_COUNT)
+		usb_pd_port_count = count;
+}
+#else
+/*
+ * Function to get the count of type c ports.
+ */
+uint8_t usb_pd_get_port_count(void)
+{
+	return CONFIG_USB_PD_PORT_MAX_COUNT;
+}
+#endif /* CONFIG_USB_PD_COUNT_RUNTIME */
 
 __overridable uint8_t board_get_usb_pd_port_count(void)
 {
