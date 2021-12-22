@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "510b1682_13b103eb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-12-22T21:39:09Z",
+      "side": 1,
+      "message": "this change fits better into board/vell/charger.c.\n",
+      "revId": "088d925fbd2ecaf8eb70092acaa27d7ee8b0c2c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b275baa4_7809a3a3",
+        "filename": "board/vell/usbc_config.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 452,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-12-22T21:39:09Z",
+      "side": 1,
+      "message": "PD_MAX_CURRENT_MA?",
+      "range": {
+        "startLine": 452,
+        "startChar": 38,
+        "endLine": 452,
+        "endChar": 42
+      },
+      "revId": "088d925fbd2ecaf8eb70092acaa27d7ee8b0c2c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
