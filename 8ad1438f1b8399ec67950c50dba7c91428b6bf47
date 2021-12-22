@@ -67,6 +67,24 @@
       "message": "So no manual edits should be made to this file, and\nwith chromium:3343698, the name should be fixed anyway.\nI am not sure why you need the gpio-cells property here?",
       "revId": "8ad1438f1b8399ec67950c50dba7c91428b6bf47",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d7b19a6_269343df",
+        "filename": "zephyr/projects/nissa/nivviks_generated.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2021-12-22T00:45:15Z",
+      "side": 1,
+      "message": "Because wp-gpios on the EEPROM refers to it, a -cells property is required by the DT compiler. It will always be zero (because these nodes refer to a specific pin), so the generator could simply always set it this way.",
+      "parentUuid": "ec7672be_8e62ba09",
+      "revId": "8ad1438f1b8399ec67950c50dba7c91428b6bf47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
