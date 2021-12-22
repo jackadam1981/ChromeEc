@@ -3584,6 +3584,8 @@ static void tc_try_wait_snk_entry(const int port)
 	print_current_state(port);
 
 	tc_enable_pd(port, 0);
+	tc_pd_connection(port, 0);
+
 	tc[port].cc_state = PD_CC_UNSET;
 	pd_timer_enable(port, TC_TIMER_TRY_WAIT_DEBOUNCE, PD_T_CC_DEBOUNCE);
 
