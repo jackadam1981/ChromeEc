@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "045933d0_701f93b6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-12-22T21:05:06Z",
+      "side": 1,
+      "message": "You also need to update config_chip.h to bind the Kconfig option to the legacy cros-ec CONFIG option.\n\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/a10d6f2d/docs/zephyr/zephyr_shim.md#step_by_step-guide-to-adding-a-kconfig",
+      "revId": "2916d80a5346c67de0e9fba6bd57f719cfbdff0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e32625fa_626e660f",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 3
+      },
+      "lineNbr": 404,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-12-22T21:05:06Z",
+      "side": 1,
+      "message": "You have this config nested as part of the \u0027choice \"Measuring VBUS voltage\", which is not what you intended. Move this after the USB_PD_ALT_MODE options that start at line 539.",
+      "range": {
+        "startLine": 404,
+        "startChar": 0,
+        "endLine": 404,
+        "endChar": 47
+      },
+      "revId": "2916d80a5346c67de0e9fba6bd57f719cfbdff0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2fdd070_9a315601",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 3
+      },
+      "lineNbr": 409,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-12-22T21:05:06Z",
+      "side": 1,
+      "message": "Use the help text from config.h here.",
+      "range": {
+        "startLine": 407,
+        "startChar": 0,
+        "endLine": 409,
+        "endChar": 0
+      },
+      "revId": "2916d80a5346c67de0e9fba6bd57f719cfbdff0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
