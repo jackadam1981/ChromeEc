@@ -128,6 +128,8 @@ zephyr_library_sources_ifdef(CONFIG_HAS_TASK_POWERBTN
                                                 "${PLATFORM_EC}/common/power_button_x86.c")
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_ACCEL_BMA255
                                                 "${PLATFORM_EC}/driver/accel_bma2x2.c")
+zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_ACCEL_BMA4XX
+                                                "${PLATFORM_EC}/driver/accel_bma4xx.c")
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_ACCEL_KX022
                                                 "${PLATFORM_EC}/driver/accel_kionix.c")
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_ACCEL_LIS2DW12
@@ -136,6 +138,8 @@ zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_ACCELGYRO_BMI
                                                 "${PLATFORM_EC}/driver/accelgyro_bmi_common.c")
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_ACCELGYRO_BMI160
                                                 "${PLATFORM_EC}/driver/accelgyro_bmi160.c")
+zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_ACCELGYRO_BMI3XX
+                                                "${PLATFORM_EC}/driver/accelgyro_bmi3xx.c")
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_ACCELGYRO_BMI260
                                                 "${PLATFORM_EC}/driver/accelgyro_bmi260.c")
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_ACCELGYRO_ICM
