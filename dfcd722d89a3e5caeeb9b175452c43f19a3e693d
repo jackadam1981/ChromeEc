@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b4455d3f_e1cc15d4",
+        "filename": "zephyr/projects/skyrim/i2c.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-12-22T19:07:58Z",
+      "side": 1,
+      "message": "Ugh - this is node is misleading.  I couldn\u0027t find the compatible field \"atmel,24c64\" referenced anywhere in the code.  Turns out only the reg property is actually used from the node, and the code finds the node by it\u0027s name.\n\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/a10d6f2d/zephyr/shim/include/config_chip.h#1641\n\nI filed b:211779766 to fix this.",
+      "range": {
+        "startLine": 110,
+        "startChar": 16,
+        "endLine": 110,
+        "endChar": 27
+      },
+      "revId": "dfcd722d89a3e5caeeb9b175452c43f19a3e693d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
