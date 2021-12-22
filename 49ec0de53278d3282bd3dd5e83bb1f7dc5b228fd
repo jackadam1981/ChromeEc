@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "edf2ae99_92e97a63",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2021-12-22T16:55:30Z",
+      "side": 1,
+      "message": "The Zephyr shell should be fine, it\u0027s just passing the argument to find_signal_by_name, which is case insensitive, so you can use either as first argument to \"gpioget\" and \"gpioset\". The output of \"gpioget\" would change though and I see these two bits of code parsing it:\n\nhttps://chromium.googlesource.com/chromiumos/third_party/labpack/+/refs/heads/main/server/site_tests/firmware_ECUsbPorts/firmware_ECUsbPorts.py#84\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast-tests/+/refs/heads/main/src/chromiumos/tast/remote/bundles/cros/firmware/ec_usb_ports.go#159\n\nI can make those two regexp match case insensitive.\n\nFound some other references to cr50 and c2d2 code around the repository but I guess those are out of scope for now.",
+      "parentUuid": "378910db_9723380a",
+      "range": {
+        "startLine": 20,
+        "startChar": 53,
+        "endLine": 20,
+        "endChar": 62
+      },
+      "revId": "49ec0de53278d3282bd3dd5e83bb1f7dc5b228fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "37ea260c_5874cc57",
@@ -112,6 +136,30 @@
       "writtenOn": "2021-12-21T23:43:03Z",
       "side": 1,
       "message": "How about using DEVICE_DT_NAME() here instead? This would allow someone to use the label property to override the display name if they wanted.",
+      "range": {
+        "startLine": 38,
+        "startChar": 12,
+        "endLine": 38,
+        "endChar": 29
+      },
+      "revId": "49ec0de53278d3282bd3dd5e83bb1f7dc5b228fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "947a652f_d4f0ef64",
+        "filename": "zephyr/shim/src/gpio.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2021-12-22T16:55:30Z",
+      "side": 1,
+      "message": "I was thinking about aiming at removing the label property entirely from the binding. Do you think we may need an override? Ultimately we should be able to get the correct enum from a devicetree phandle. Another thing is that if we use DT_NODE_FULL_NAME, it would instantly change to all the boards without having to touch the individual gpio.dts files. Thinking it may be easier to find if something breaks, and then it\u0027s a small patch to revert.\n\nWhat do you think?",
+      "parentUuid": "095c22f0_c717aa89",
       "range": {
         "startLine": 38,
         "startChar": 12,
