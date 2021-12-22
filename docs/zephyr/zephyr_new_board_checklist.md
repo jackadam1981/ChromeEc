@@ -63,3 +63,4 @@ EC Feature                                                                  | Ne
 [Configure Motion Sensors (TODO)](./zephyr_template.md)                     | no
 [Configure BC1.2 Charger Detector (TODO)](./zephyr_template.md)             | no
 [Configure Battery (TODO)](./zephyr_template.md)                            | no
+[Configure ADC](./zephyr_adc.md)                                            | no
