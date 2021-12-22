@@ -1,0 +1,124 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6971b1f9_962a5ce3",
+        "filename": "zephyr/projects/skyrim/gpio.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-12-22T22:31:37Z",
+      "side": 1,
+      "message": "Add the copyright header.",
+      "revId": "39c922809040fae65083b12113091e8c07128129",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b3a907f_f5e77ff9",
+        "filename": "zephyr/projects/skyrim/gpio.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-12-22T22:31:37Z",
+      "side": 1,
+      "message": "Add a comment - common GPIOs shared by all boards.  Although we should consider whether we want to split the GPIOs across multiple files.",
+      "range": {
+        "startLine": 2,
+        "startChar": 0,
+        "endLine": 2,
+        "endChar": 14
+      },
+      "revId": "39c922809040fae65083b12113091e8c07128129",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "241bcc46_6aa57eef",
+        "filename": "zephyr/projects/skyrim/gpio.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-12-22T22:31:37Z",
+      "side": 1,
+      "message": "You need to enable the low voltage pins for I2C buses 3, 6, and 7.\t\n\nFor instance:\ndef-lvol-io-list {\n\t\tcompatible \u003d \"nuvoton,npcx-lvolctrl-def\";\n\t\tlvol-io-pads \u003d \u003c\u0026lvol_iob4 \u0026lvol_iob5\u003e; /* I2C_SDA0 \u0026 SCL0 */\n\t};\n\nFormat is \"lvol_io\u003cgpio-group\u003e\u003cgpio-pin\u003e\".",
+      "revId": "39c922809040fae65083b12113091e8c07128129",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1ae1cba_3a1b8f97",
+        "filename": "zephyr/projects/skyrim/power_signals.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-12-22T22:31:37Z",
+      "side": 1,
+      "message": "I think it would be clearer if created helper functions to set to the EN_PWR_S0. EN_PWR_PCORE, PWR_GOOD signals.\n\nSomething like:\nstatic void set_soc_pwr_pgood(void)\n{\n    \tgpio_set_level(GPIO_EC_SOC_PWR_GOOD,\n\t\t\t\tgpio_get_level(GPIO_EN_PWR_PCORE_S0_R) \u0026\u0026\n\t\t\t\tgpio_get_level(GPIO_PG_LPDDR5_S0_OD));\n}\n\nstatic void set_en_pwr_pcore(void)\n{\n\tgpio_set_level(GPIO_EN_PWR_PCORE_S0_R,\n\t\t\tgpio_get_level(GPIO_PG_LPDDR5_S3_OD) \u0026\u0026\n\t\t\tgpio_get_level(GPIO_PG_GROUPC_S0_OD) \u0026\u0026\n\t\t\tgpio_get_level(GPIO_EN_PWR_S0_R));\n\n    set_soc_pwr_pgood();\n}\n\nstatic void set_en_pwr_s0(void)\n{\n\tgpio_set_level(GPIO_EN_PWR_S0_R,\n\t\t       gpio_get_level(GPIO_PCH_SLP_S3_L) \u0026\u0026\n\t\t       gpio_get_level(GPIO_S5_PGOOD));\n    set_en_pwr_pcore();\n}\n\nvoid baseboard_en_pwr_s0_isr(signal)\n{\n    set_en_pwr_s0();\n    \n    power_signal_interrupt(signal);\n}",
+      "range": {
+        "startLine": 74,
+        "startChar": 5,
+        "endLine": 74,
+        "endChar": 32
+      },
+      "revId": "39c922809040fae65083b12113091e8c07128129",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76a3543d_9146d5c3",
+        "filename": "zephyr/projects/skyrim/skyrim.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-12-22T22:31:37Z",
+      "side": 1,
+      "message": "Keep the comment that this section defines the Skyrim specific GPIOs.",
+      "revId": "39c922809040fae65083b12113091e8c07128129",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f99f98ab_b1acba09",
+        "filename": "zephyr/projects/skyrim/skyrim.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-12-22T22:31:37Z",
+      "side": 1,
+      "message": "Fabio is working on changes to deprecate the label property and use the nodepath name with the gpioget/gpioset commands.  Set the nodepath name to match the net-name.\n\nSo this would be \"usb_fault_odl\".",
+      "range": {
+        "startLine": 9,
+        "startChar": 2,
+        "endLine": 9,
+        "endChar": 18
+      },
+      "revId": "39c922809040fae65083b12113091e8c07128129",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
