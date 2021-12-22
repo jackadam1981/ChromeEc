@@ -85,6 +85,24 @@
       "parentUuid": "ec7672be_8e62ba09",
       "revId": "8ad1438f1b8399ec67950c50dba7c91428b6bf47",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf867ce1_439f3c95",
+        "filename": "zephyr/projects/nissa/nivviks_generated.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2021-12-22T01:42:33Z",
+      "side": 1,
+      "message": "It may be cleaner to put this in the overlay file e.g:\n\n\u0026gpio_ec_wp_odl {\n        #gpio-cells \u003d \u003c0\u003e;\n};\n\nThis generates the same DTS.",
+      "parentUuid": "9d7b19a6_269343df",
+      "revId": "8ad1438f1b8399ec67950c50dba7c91428b6bf47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
