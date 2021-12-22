@@ -301,4 +301,5 @@ void ppc_interrupt(enum gpio_signal signal)
 
 void bc12_interrupt(enum gpio_signal signal)
 {
+	task_set_event(TASK_ID_USB_CHG_P0, USB_CHG_EVENT_BC12);
 }
