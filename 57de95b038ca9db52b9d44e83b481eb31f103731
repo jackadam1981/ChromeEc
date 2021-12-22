@@ -194,6 +194,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "657e83e7_a346e4ab",
+        "filename": "zephyr/emul/tcpc/emul_tcpci_partner_snk.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-12-22T19:34:00Z",
+      "side": 1,
+      "message": "After rereading, I believe you are right.",
+      "parentUuid": "cf9cda87_b96a2a29",
+      "revId": "57de95b038ca9db52b9d44e83b481eb31f103731",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "410f1378_89252984",
@@ -267,6 +285,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "059ce159_b936416b",
+        "filename": "zephyr/emul/tcpc/emul_tcpci_partner_snk.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-12-22T19:34:00Z",
+      "side": 1,
+      "message": "You\u0027re right. Can you add a comment here anyway noting that this if statement will only be true for the vSafe5V sink PDO?",
+      "parentUuid": "568b711d_5580c016",
+      "revId": "57de95b038ca9db52b9d44e83b481eb31f103731",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "258cdaa4_0c0c849a",
         "filename": "zephyr/emul/tcpc/emul_tcpci_partner_snk.c",
         "patchSetId": 4
@@ -332,6 +368,24 @@
       "side": 1,
       "message": "Voltage mismatch is already checked in tcpci_snk_emul_are_pdos_complementary(), so tcpci_snk_emul_handle_source_cap() call tcpci_snk_emul_create_rdo() only for snk_pdo and src_pdo with matching voltage.",
       "parentUuid": "617c268d_1ecfba10",
+      "revId": "57de95b038ca9db52b9d44e83b481eb31f103731",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "551f0e2e_d88388b2",
+        "filename": "zephyr/emul/tcpc/emul_tcpci_partner_snk.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-12-22T19:34:00Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "25832e43_00e3da1a",
       "revId": "57de95b038ca9db52b9d44e83b481eb31f103731",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
