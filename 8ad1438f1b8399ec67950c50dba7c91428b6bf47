@@ -121,6 +121,24 @@
       "parentUuid": "bf867ce1_439f3c95",
       "revId": "8ad1438f1b8399ec67950c50dba7c91428b6bf47",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6ddb965_088d43fe",
+        "filename": "zephyr/projects/nissa/nivviks_generated.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2021-12-22T02:14:05Z",
+      "side": 1,
+      "message": "Happy to add that into the generator, though I\u0027d like to hear from Keith if there are some implications to doing this.",
+      "parentUuid": "b5c97779_072e7d0f",
+      "revId": "8ad1438f1b8399ec67950c50dba7c91428b6bf47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
