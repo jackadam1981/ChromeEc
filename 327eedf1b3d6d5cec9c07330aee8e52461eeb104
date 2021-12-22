@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7016e39_262f434e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2021-12-22T11:40:13Z",
+      "side": 1,
+      "message": "Hi!\n\nThis patch was created to fix some bugs around deep sleep in IDLE task (now only on STM32F4 which is used on bloonchipper).\n\nThe problem is that the Fingerprint MCU is rebooted by watchdog during long period of inactivity when Chromebook is suspended and deep sleep is allowed. I don\u0027t have information where device reboots, because watchdog trace are not collected (probably because device is sleeping or interrupts are disabled).\n\n",
+      "revId": "327eedf1b3d6d5cec9c07330aee8e52461eeb104",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
