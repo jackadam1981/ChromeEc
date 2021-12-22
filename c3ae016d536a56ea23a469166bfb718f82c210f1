@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1144110f_72ec265f",
+        "filename": "zephyr/include/emul/tcpc/emul_tcpci_partner_common.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-12-22T19:43:38Z",
+      "side": 1,
+      "message": "Nit: IMO, the caller doesn\u0027t have a great response other than quitting if any of these error conditions happen, so, optionally, you could just comment that it will return a negative value on failure and not add comments for each failure mode of each function you call inside the implementation.",
+      "revId": "c3ae016d536a56ea23a469166bfb718f82c210f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
