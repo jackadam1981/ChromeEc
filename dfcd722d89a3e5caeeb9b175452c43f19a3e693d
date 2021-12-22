@@ -22,6 +22,30 @@
       },
       "revId": "dfcd722d89a3e5caeeb9b175452c43f19a3e693d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "680cd6aa_5a414c04",
+        "filename": "zephyr/projects/skyrim/i2c.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-12-22T19:20:25Z",
+      "side": 1,
+      "message": "What should I put there?  I\u0027d found this by searching our EEPROM part number in the zephyr codebase (M24C64)",
+      "parentUuid": "b4455d3f_e1cc15d4",
+      "range": {
+        "startLine": 110,
+        "startChar": 16,
+        "endLine": 110,
+        "endChar": 27
+      },
+      "revId": "dfcd722d89a3e5caeeb9b175452c43f19a3e693d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
