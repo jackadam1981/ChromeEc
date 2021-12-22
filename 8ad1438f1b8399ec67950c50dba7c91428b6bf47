@@ -103,6 +103,24 @@
       "parentUuid": "9d7b19a6_269343df",
       "revId": "8ad1438f1b8399ec67950c50dba7c91428b6bf47",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5c97779_072e7d0f",
+        "filename": "zephyr/projects/nissa/nivviks_generated.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2021-12-22T02:03:23Z",
+      "side": 1,
+      "message": "Given it would never be any other value for any GPIO, I think putting it in the overlay would be messier since we\u0027d have to do that for every GPIO that gets referred to in that way.\n\nIt\u0027s certainly an option, but I\u0027d prefer to generate an extra line per GPIO than have to manually write a few lines per each that is used.",
+      "parentUuid": "bf867ce1_439f3c95",
+      "revId": "8ad1438f1b8399ec67950c50dba7c91428b6bf47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
