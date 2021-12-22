@@ -34,7 +34,9 @@ struct tcpci_partner_data {
 	/** Pointer to connected TCPCI emulator */
 	const struct emul *tcpci_emul;
 	/** Queue for delayed messages */
-	struct k_fifo to_send;
+	sys_slist_t to_send;
+	/** Mutex for to_send queue */
+	struct k_mutex to_send_mutex;
 	/** Next SOP message id */
 	int msg_id;
 	/** Power role (used in message header) */
@@ -47,8 +49,8 @@ struct tcpci_partner_data {
 
 /** Structure of message used by TCPCI partner emulator */
 struct tcpci_partner_msg {
-	/** Reserved for k_fifo_* usage */
-	void *fifo_reserved;
+	/** Reserved for sys_slist_* usage */
+	sys_snode_t node;
 	/** TCPCI emulator message */
 	struct tcpci_emul_msg msg;
 	/** Time when message should be sent if message is delayed */
@@ -95,7 +97,8 @@ void tcpci_partner_set_header(struct tcpci_partner_data *data,
 			      struct tcpci_partner_msg *msg);
 
 /**
- * @brief Send message to TCPCI emulator or schedule message
+ * @brief Send message to TCPCI emulator or schedule message. On error message
+ *        is freed.
  *
  * @param data Pointer to TCPCI partner emulator
  * @param msg Pointer to message to send
@@ -103,6 +106,8 @@ void tcpci_partner_set_header(struct tcpci_partner_data *data,
  *
  * @return 0 on success
  * @return -EINVAL on TCPCI emulator add RX message error
+ * @return -EBUSY on fail to get mutex for delayed messages queue
+ * @return -EAGAIN on fail to get mutex for delayed messages queue
  */
 int tcpci_partner_send_msg(struct tcpci_partner_data *data,
 			   struct tcpci_partner_msg *msg, uint64_t delay);
@@ -117,6 +122,8 @@ int tcpci_partner_send_msg(struct tcpci_partner_data *data,
  * @return 0 on success
  * @return -ENOMEM when there is no free memory for message
  * @return -EINVAL on TCPCI emulator add RX message error
+ * @return -EBUSY on fail to get mutex for delayed messages queue
+ * @return -EAGAIN on fail to get mutex for delayed messages queue
  */
 int tcpci_partner_send_control_msg(struct tcpci_partner_data *data,
 				   enum pd_ctrl_msg_type type,
@@ -135,11 +142,24 @@ int tcpci_partner_send_control_msg(struct tcpci_partner_data *data,
  * @return 0 on success
  * @return -ENOMEM when there is no free memory for message
  * @return -EINVAL on TCPCI emulator add RX message error
+ * @return -EBUSY on fail to get mutex for delayed messages queue
+ * @return -EAGAIN on fail to get mutex for delayed messages queue
  */
 int tcpci_partner_send_data_msg(struct tcpci_partner_data *data,
 				enum pd_data_msg_type type,
 				uint32_t *data_obj, int data_obj_num,
 				uint64_t delay);
+
+/**
+ * @brief Remove all messages that are in delayed message queue
+ *
+ * @param data Pointer to TCPCI partner emulator
+ *
+ * @return 0 on success
+ * @return -EBUSY on fail to get mutex for delayed messages queue
+ * @return -EAGAIN on fail to get mutex for delayed messages queue
+ */
+int tcpci_partner_clear_msg_queue(struct tcpci_partner_data *data);
 
 /**
  * @}
