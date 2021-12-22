@@ -311,6 +311,14 @@ config PLATFORM_EC_USB_PD_PORT_MAX_COUNT
 	  source_enabled[] so that plenty of ports are supported without this
 	  configuration option?
 
+config PLATFORM_EC_USB_PD_PORT_COUNT_RUNTIME
+	bool "USB PD port count runtime control"
+	help
+	  Enable runtime adjustment of the number of USB PD ports. Board code
+	  can call usb_pd_set_port_count() to modify the number of available
+	  USB PD ports based on the hardware configuration information
+	  determined at runtime.
+
 config PLATFORM_EC_CONSOLE_CMD_MFALLOW
 	bool "Console command: mfallow"
 	default y

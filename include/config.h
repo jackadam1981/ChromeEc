@@ -4538,6 +4538,9 @@
 /* Number of USB PD ports */
 #undef CONFIG_USB_PD_PORT_MAX_COUNT
 
+/* Retrieve number of USB PD ports at run time */
+#undef CONFIG_USB_PD_COUNT_RUNTIME
+
 /*
  * Number of ITE USB PD active ports
  * NOTE: The active port usage should follow the order of ITE TCPC port index.
