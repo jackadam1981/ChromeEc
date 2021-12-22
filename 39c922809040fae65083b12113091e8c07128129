@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a44803e_59c82ef3",
+        "filename": "zephyr/projects/skyrim/gpio.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-12-22T23:10:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6971b1f9_962a5ce3",
+      "revId": "39c922809040fae65083b12113091e8c07128129",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8b3a907f_f5e77ff9",
@@ -41,6 +59,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b19fb95_f6fcef09",
+        "filename": "zephyr/projects/skyrim/gpio.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-12-22T23:10:53Z",
+      "side": 1,
+      "message": "Comment added.  We could consider splitting GPIOs by function (power sequence GPIOs, USB-C ones, etc.).",
+      "parentUuid": "8b3a907f_f5e77ff9",
+      "range": {
+        "startLine": 2,
+        "startChar": 0,
+        "endLine": 2,
+        "endChar": 14
+      },
+      "revId": "39c922809040fae65083b12113091e8c07128129",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "241bcc46_6aa57eef",
@@ -54,6 +96,24 @@
       "writtenOn": "2021-12-22T22:31:37Z",
       "side": 1,
       "message": "You need to enable the low voltage pins for I2C buses 3, 6, and 7.\t\n\nFor instance:\ndef-lvol-io-list {\n\t\tcompatible \u003d \"nuvoton,npcx-lvolctrl-def\";\n\t\tlvol-io-pads \u003d \u003c\u0026lvol_iob4 \u0026lvol_iob5\u003e; /* I2C_SDA0 \u0026 SCL0 */\n\t};\n\nFormat is \"lvol_io\u003cgpio-group\u003e\u003cgpio-pin\u003e\".",
+      "revId": "39c922809040fae65083b12113091e8c07128129",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f43c9af_04a4c92c",
+        "filename": "zephyr/projects/skyrim/gpio.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-12-22T23:10:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "241bcc46_6aa57eef",
       "revId": "39c922809040fae65083b12113091e8c07128129",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -83,6 +143,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5acd8f14_4352da40",
+        "filename": "zephyr/projects/skyrim/power_signals.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-12-22T23:10:53Z",
+      "side": 1,
+      "message": "Would all the interrupts go to the same update function then?  Not all of these have power signals tied to them for power_signal_interrupt(), and they affect variable numbers of ANDs (ex. GPIO_PG_LPDDR5_S0_OD just ties to one, GPIO_PG_LPDDR5_S3_OD ties to two, GPIO_S5_PGOOD affects just about everything always)",
+      "parentUuid": "c1ae1cba_3a1b8f97",
+      "range": {
+        "startLine": 74,
+        "startChar": 5,
+        "endLine": 74,
+        "endChar": 32
+      },
+      "revId": "39c922809040fae65083b12113091e8c07128129",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "76a3543d_9146d5c3",
         "filename": "zephyr/projects/skyrim/skyrim.dts",
         "patchSetId": 2
@@ -94,6 +178,24 @@
       "writtenOn": "2021-12-22T22:31:37Z",
       "side": 1,
       "message": "Keep the comment that this section defines the Skyrim specific GPIOs.",
+      "revId": "39c922809040fae65083b12113091e8c07128129",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8434d3c2_264a13c9",
+        "filename": "zephyr/projects/skyrim/skyrim.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-12-22T23:10:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "76a3543d_9146d5c3",
       "revId": "39c922809040fae65083b12113091e8c07128129",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -111,6 +213,30 @@
       "writtenOn": "2021-12-22T22:31:37Z",
       "side": 1,
       "message": "Fabio is working on changes to deprecate the label property and use the nodepath name with the gpioget/gpioset commands.  Set the nodepath name to match the net-name.\n\nSo this would be \"usb_fault_odl\".",
+      "range": {
+        "startLine": 9,
+        "startChar": 2,
+        "endLine": 9,
+        "endChar": 18
+      },
+      "revId": "39c922809040fae65083b12113091e8c07128129",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fbafc287_bee583c0",
+        "filename": "zephyr/projects/skyrim/skyrim.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-12-22T23:10:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f99f98ab_b1acba09",
       "range": {
         "startLine": 9,
         "startChar": 2,
