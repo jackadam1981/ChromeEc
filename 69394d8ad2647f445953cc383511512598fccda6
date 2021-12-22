@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c0a145c6_52687fb2",
+        "filename": "zephyr/projects/nissa/nivviks_generated.dts",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2021-12-22T01:27:01Z",
+      "side": 1,
+      "message": "I can add an option to pinmap (I copied you on the CL - Eizan is reviewing it, as he knows enough Go to help out) so that it can either generate a single file, or create one for each type.\nI imagine the options would be something like:\n... --output\u003dnivviks_generated.dts --nosingle ..\n\nand it would generate adc_nivviks_generated.dts etc.\n\nNaming is always hard. Given that there may be multiple projects in the same directory, the number of files may grow to be awkward. I like the separation between the different types, but it seems unnecessary to split them up like that for a generated file - the older EC-OS always kept them in the same file, not that is saying much.\n\nHaving the option is good, so that the project can decide for themselves.\nFor nivviks, I think I have a slight preference for keeping them in the same file, but don\u0027t feel that strong about it.\n\nFor the spreadsheet, Louis created it using some source spreadsheets that the vendors provided, and then added a lot more stuff to it for his own value to track things - we only look at a few columns, so a simple spreadsheet can be created and used for partners. Longer term, we do need to figure a more automated way of doing this. The utility is written so that we can extend the kind of input source data easily.",
+      "parentUuid": "1cf6659b_edd1e8f3",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 21
+      },
+      "revId": "69394d8ad2647f445953cc383511512598fccda6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "28dcd143_5235f382",
         "filename": "zephyr/projects/nissa/nivviks_generated.dts",
         "patchSetId": 4
@@ -37,6 +61,30 @@
       "writtenOn": "2021-12-21T17:14:02Z",
       "side": 1,
       "message": "Can you update the auto-generation code to add a label property to the I2C buses?  The label property is used as the 1st argument for the \"i2c\" shell command, so it\u0027s better to override this with the netname.\n\nNote that the label must start with \"I2C_\" to work correctly with the shell command.",
+      "range": {
+        "startLine": 332,
+        "startChar": 0,
+        "endLine": 332,
+        "endChar": 9
+      },
+      "revId": "69394d8ad2647f445953cc383511512598fccda6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d53ab8c_dd6eda68",
+        "filename": "zephyr/projects/nissa/nivviks_generated.dts",
+        "patchSetId": 4
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2021-12-22T01:27:01Z",
+      "side": 1,
+      "message": "OK, though if possible I will add this in a separate CL.\nFor the moment I will add them manually in the overlay file.",
+      "parentUuid": "28dcd143_5235f382",
       "range": {
         "startLine": 332,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "84db070e_ece10059",
+        "filename": "zephyr/projects/nissa/nivviks_generated.dts",
+        "patchSetId": 4
+      },
+      "lineNbr": 373,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2021-12-22T01:27:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7f9979a8_7cd9dd1a",
+      "range": {
+        "startLine": 373,
+        "startChar": 0,
+        "endLine": 373,
+        "endChar": 17
+      },
+      "revId": "69394d8ad2647f445953cc383511512598fccda6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fa62f03e_bfacf39b",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-12-21T17:14:02Z",
       "side": 1,
       "message": "Don\u0027t use C++ style comments.",
+      "range": {
+        "startLine": 86,
+        "startChar": 0,
+        "endLine": 86,
+        "endChar": 18
+      },
+      "revId": "69394d8ad2647f445953cc383511512598fccda6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c0092993_0f107b6f",
+        "filename": "zephyr/projects/nissa/nivviks_overlay.dts",
+        "patchSetId": 4
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2021-12-22T01:27:01Z",
+      "side": 1,
+      "message": "Ah, good to know.",
+      "parentUuid": "fa62f03e_bfacf39b",
       "range": {
         "startLine": 86,
         "startChar": 0,
