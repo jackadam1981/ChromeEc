@@ -268,9 +268,10 @@ static int syv682x_emul_read_byte(struct i2c_emul *emul, int reg, uint8_t *val,
 		int bytes)
 {
 	struct syv682x_emul_data *data =
-		CONTAINER_OF(emul, struct syv682x_emul_data, emul);
+		CONTAINER_OF(CONTAINER_OF(emul, struct i2c_common_emul_data, emul),
+					     struct syv682x_emul_data, common);
 
-	__ASSERT(bytes == 1,
+	__ASSERT(bytes == 0,
 			"SYV682x: Reading %i bytes from 1-byte register 0x%x",
 			bytes, reg);
 	if (!EMUL_REG_IS_VALID(reg))
@@ -284,7 +285,7 @@ static int syv682x_emul_read_byte(struct i2c_emul *emul, int reg, uint8_t *val,
 	 * underlying condition has cleared).
 	 */
 	case SYV682X_STATUS_REG:
-		syv682x_emul_set_reg(emul, reg, data->status_cond);
+		data->reg[reg] = data->status_cond;
 		break;
 	case SYV682X_CONTROL_3_REG:
 		/* Update CONTROL_3[BUSY] based on the busy count. */
@@ -294,6 +295,9 @@ static int syv682x_emul_read_byte(struct i2c_emul *emul, int reg, uint8_t *val,
 		}
 		break;
 	case SYV682X_CONTROL_4_REG:
+		data->reg[SYV682X_CONTROL_4_REG] =
+			(*val & ~SYV682X_CONTROL_4_INT_MASK) |
+			data->control_4_cond;
 		syv682x_emul_set_reg(emul, reg,
 				(*val & ~SYV682X_CONTROL_4_INT_MASK) |
 				data->control_4_cond);
@@ -309,7 +313,8 @@ static int syv682x_emul_write_byte(struct i2c_emul *emul, int reg, uint8_t val,
 				   int bytes)
 {
 	struct syv682x_emul_data *data =
-		CONTAINER_OF(emul, struct syv682x_emul_data, emul);
+		CONTAINER_OF(CONTAINER_OF(emul, struct i2c_common_emul_data, emul),
+					     struct syv682x_emul_data, common);
 
 	__ASSERT(bytes == 1,
 			"SYV682x: Writing %i bytes to 1-byte register 0x%x",
@@ -365,13 +370,18 @@ static int syv682x_emul_init(const struct emul *emul,
 	int ret;
 
 	data->emul.api = &i2c_common_emul_api;
+	data->common.emul.api = &i2c_common_emul_api;
 	data->emul.addr = cfg->addr;
+	data->common.emul.addr = cfg->common.addr;
+	data->common.emul.parent = emul;
+	data->common.i2c = parent;
+	data->common.cfg = &cfg->common;
 	data->i2c = parent;
 	data->cfg = cfg;
 	memset(data->reg, 0, sizeof(data->reg));
 	i2c_common_emul_init(&data->common);
 
-	ret = i2c_emul_register(parent, emul->dev_label, &data->emul);
+	ret = i2c_emul_register(parent, emul->dev_label, &data->common.emul);
 	if (ret)
 		return ret;
 
@@ -390,6 +400,8 @@ static int syv682x_emul_init(const struct emul *emul,
 		.common = { \
 			.write_byte = syv682x_emul_write_byte, \
 			.read_byte = syv682x_emul_read_byte, \
+			.read_func = NULL, \
+			.write_func = NULL, \
 		}, \
 		.frs_en_gpio_port = DEVICE_DT_GET(DT_GPIO_CTLR(                \
 					DT_INST_PROP(n, frs_en_gpio), gpios)), \
