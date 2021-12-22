@@ -177,6 +177,78 @@
       },
       "revId": "fc7c100be22e5f8d440309b5f2891cbedfbee481",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0dd7714c_7acb895c",
+        "filename": "util/brescue.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-12-22T02:18:27Z",
+      "side": 1,
+      "message": "\u003e info: Double quote to prevent globbing and word splitting.\n\u003e \n\u003e https://github.com/koalaman/shellcheck/wiki/SC2086\n\nnit: maybe worth double-quoting",
+      "parentUuid": "1906daad_562b02c1",
+      "range": {
+        "startLine": 19,
+        "startChar": 35,
+        "endLine": 19,
+        "endChar": 37
+      },
+      "revId": "fc7c100be22e5f8d440309b5f2891cbedfbee481",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8973551_18adbf54",
+        "filename": "util/brescue.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-12-22T02:18:27Z",
+      "side": 1,
+      "message": "\u003e warning: Declare and assign separately to avoid masking return values.\n\u003e \n\u003e https://github.com/koalaman/shellcheck/wiki/SC2155\n\nNot sure if worth fixing",
+      "parentUuid": "101e519d_1d7e7d9a",
+      "range": {
+        "startLine": 53,
+        "startChar": 8,
+        "endLine": 53,
+        "endChar": 12
+      },
+      "revId": "fc7c100be22e5f8d440309b5f2891cbedfbee481",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b6973d7_26421c8f",
+        "filename": "util/brescue.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-12-22T02:18:27Z",
+      "side": 1,
+      "message": "\u003e style: Use -n instead of ! -z.\n\u003e \n\u003e https://github.com/koalaman/shellcheck/wiki/SC2236\n\nnit: this might be worth fixing.",
+      "parentUuid": "f69d00d7_69bfd729",
+      "range": {
+        "startLine": 76,
+        "startChar": 6,
+        "endLine": 76,
+        "endChar": 7
+      },
+      "revId": "fc7c100be22e5f8d440309b5f2891cbedfbee481",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
