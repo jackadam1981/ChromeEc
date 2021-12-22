@@ -19,6 +19,9 @@
 /* PD Host command timeout */
 #define PD_HOST_COMMAND_TIMEOUT_US SECOND
 
+/* When number of usb pd port count is not initialized */
+#define PORT_COUNT_UNINITIALIZED -1
+
 /*
  * Define PD_PORT_TO_TASK_ID() and TASK_ID_TO_PD_PORT() macros to
  * go between PD port number and task ID. Assume that TASK_ID_PD_C0 is the
@@ -3065,6 +3068,15 @@ __overridable void board_frs_handler(int port);
  * @return MODE_DP_PIN_[A-E] if used else 0
  */
 __override_proto uint8_t get_dp_pin_mode(int port);
+
+#if defined(CONFIG_USB_PD_COUNT_RUNTIME)
+/**
+ * Set the number of usb pd ports for specific boards
+ *
+ * @param number of port count to set
+ */
+void usb_pd_set_port_count(int count);
+#endif /* CONFIG_USB_PD_COUNT_RUNTIME */
 
 /**
  * Get the number of usb pd ports
