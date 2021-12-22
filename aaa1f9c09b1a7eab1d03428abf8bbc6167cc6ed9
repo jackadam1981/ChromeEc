@@ -1,0 +1,141 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eaf3e5e0_dfe6ff2a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1381813
+      },
+      "writtenOn": "2021-12-22T06:05:40Z",
+      "side": 1,
+      "message": "Sorry for taking so long. This is quite good already but I had some thoughts that I figured were worth considering. Given that this is already functional and useful I\u0027d lean on not worrying too much if any of my comments take nontrivial work to address.\n\nI wonder what Peter (CC\u0027d already) also thinks.",
+      "revId": "aaa1f9c09b1a7eab1d03428abf8bbc6167cc6ed9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd4d66af_71ae41fe",
+        "filename": "util/pinmap/README.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1381813
+      },
+      "writtenOn": "2021-12-22T06:05:40Z",
+      "side": 1,
+      "message": "maybe suggest the reader of this document have a look at testdata/data.csv for an example?",
+      "revId": "aaa1f9c09b1a7eab1d03428abf8bbc6167cc6ed9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e86e4458_c5191cd6",
+        "filename": "util/pinmap/pm/chip.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1381813
+      },
+      "writtenOn": "2021-12-22T06:05:40Z",
+      "side": 1,
+      "message": "nit: I personally would prefer that you more clearly define what these functions are supposed to take as input and what their output is instead of documenting it in each of the files in chips/. Though this isn\u0027t a big deal.",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 1
+      },
+      "revId": "aaa1f9c09b1a7eab1d03428abf8bbc6167cc6ed9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "384bdb3a_3a8cf340",
+        "filename": "util/pinmap/pm/generate.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1381813
+      },
+      "writtenOn": "2021-12-22T06:05:40Z",
+      "side": 1,
+      "message": "nit: the date is funny. I wonder if it\u0027s worth checking the year at runtime instead. Not that important I guess, but worth considering.",
+      "range": {
+        "startLine": 14,
+        "startChar": 29,
+        "endLine": 14,
+        "endChar": 33
+      },
+      "revId": "aaa1f9c09b1a7eab1d03428abf8bbc6167cc6ed9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df09754f_6b50d7c3",
+        "filename": "util/pinmap/pm/generate.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1381813
+      },
+      "writtenOn": "2021-12-22T06:05:40Z",
+      "side": 1,
+      "message": "Is it a good idea to continue when you get funny input instead of stopping and asking the user to correct things? Might end up causing head scratching down the line.",
+      "revId": "aaa1f9c09b1a7eab1d03428abf8bbc6167cc6ed9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0e79799_e3939f4e",
+        "filename": "util/pinmap/pm/generate_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1381813
+      },
+      "writtenOn": "2021-12-22T06:05:40Z",
+      "side": 1,
+      "message": "just a thought, I suppose at some point instead of comparing this textually it\u0027ll be checked by parsing and comparing trees / expectations?",
+      "revId": "aaa1f9c09b1a7eab1d03428abf8bbc6167cc6ed9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f78c2d3_52fa3ff0",
+        "filename": "util/pinmap/pm/reader.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1381813
+      },
+      "writtenOn": "2021-12-22T06:05:40Z",
+      "side": 1,
+      "message": "I guess you\u0027re planning on having other readers in the near future? CSV seems like the main case right now. I see that you mention it in the todos in the readme, but if that\u0027s not 100% likely then maybe it\u0027s better to not have this indirection. Not that important.",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 23
+      },
+      "revId": "aaa1f9c09b1a7eab1d03428abf8bbc6167cc6ed9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
