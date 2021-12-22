@@ -75,6 +75,14 @@
 	#define LID_ACCEL_INT()
 #endif
 
+#ifdef CONFIG_PLATFORM_EC_ACCELGYRO_BMI3XX
+	#define BASE_ACCEL_INT()    GPIO_INT(GPIO_BASE_IMU_INT_L,              \
+					     GPIO_INT_EDGE_FALLING,            \
+					     bmi3xx_interrupt)
+#else
+	#define BASE_ACCEL_INT()
+#endif
+
 #ifdef CONFIG_PLATFORM_EC_EXTPOWER_GPIO
 	#define EXTPWR_INT()        GPIO_INT(GPIO_AC_PRESENT,                  \
 					     GPIO_INT_EDGE_BOTH,               \
@@ -119,10 +127,11 @@
 #define GMR_TABLET_MODE_GPIO_L GPIO_TABLET_MODE_L
 #endif
 
-/* TODO: remove after icm426xx driver added */
-static inline void motion_interrupt(enum gpio_signal signal)
-{
-}
+#ifdef CONFIG_PLATFORM_EC_USB_PD_TCPM_RT1718S
+#define GPIO_EN_USB_C1_SINK         RT1718S_GPIO1
+#define GPIO_EN_USB_C1_SOURCE       RT1718S_GPIO2
+#define GPIO_EN_USB_C1_FRS          RT1718S_GPIO3
+#endif
 
 /*
  * Set EC_CROS_GPIO_INTERRUPTS to a space-separated list of GPIO_INT items.
@@ -146,9 +155,8 @@ static inline void motion_interrupt(enum gpio_signal signal)
 	LID_SWITCH_INT()						\
 	WARM_RST_REQ_INT()						\
 	GMR_TABLET_INT()						\
-	GPIO_INT(GPIO_BASE_IMU_INT_L,					\
-		 GPIO_INT_EDGE_FALLING, motion_interrupt)		\
 	LID_ACCEL_INT()							\
+	BASE_ACCEL_INT()						\
 	USBA_INT()							\
 	EXTPWR_INT()							\
 	SWITCH_INT()							\
