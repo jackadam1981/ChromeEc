@@ -22,6 +22,30 @@
       },
       "revId": "dfb42dec4e958651096c5dfb8bb2071fbdabb835",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86092f32_b18341ba",
+        "filename": "include/driver/ppc/syv682x_public.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2021-12-22T00:55:49Z",
+      "side": 1,
+      "message": "OK, will update zephyr/dts/bindings/usbc/silergy,syv682x.yaml as well.",
+      "parentUuid": "2d910f3a_1cb0e4f6",
+      "range": {
+        "startLine": 15,
+        "startChar": 8,
+        "endLine": 15,
+        "endChar": 27
+      },
+      "revId": "dfb42dec4e958651096c5dfb8bb2071fbdabb835",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
