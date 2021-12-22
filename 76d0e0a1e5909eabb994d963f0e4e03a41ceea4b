@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8fa3079_91fce293",
+        "filename": "board/gimble/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-12-22T22:02:41Z",
+      "side": 1,
+      "message": "is this done?",
+      "range": {
+        "startLine": 22,
+        "startChar": 5,
+        "endLine": 22,
+        "endChar": 9
+      },
+      "revId": "76d0e0a1e5909eabb994d963f0e4e03a41ceea4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7263e0ba_1e6f44e1",
+        "filename": "board/gimble/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-12-22T22:02:41Z",
+      "side": 1,
+      "message": "done?",
+      "range": {
+        "startLine": 42,
+        "startChar": 5,
+        "endLine": 42,
+        "endChar": 9
+      },
+      "revId": "76d0e0a1e5909eabb994d963f0e4e03a41ceea4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3470a4c9_64c2eb99",
+        "filename": "board/gimble/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-12-22T22:02:41Z",
+      "side": 1,
+      "message": "this is the ps8815, right?\nplease add\n.flags \u003d I2C_PORT_FLAG_DYNAMIC_SPEED,\n\nalso add:\n\n/* I2C control host command */\n#define CONFIG_HOSTCMD_I2C_CONTROL\n\nand optionally:\n\n/* I2C speed console command */\n#define CONFIG_CMD_I2C_SPEED\n\nto board.h. see\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3181511\n\nyou\u0027ll need this for ps8815 firmware update.",
+      "range": {
+        "startLine": 45,
+        "startChar": 13,
+        "endLine": 45,
+        "endChar": 17
+      },
+      "revId": "76d0e0a1e5909eabb994d963f0e4e03a41ceea4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
