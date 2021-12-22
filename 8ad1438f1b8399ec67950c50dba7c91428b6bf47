@@ -16,6 +16,57 @@
       "message": "I\u0027ve modified the generated GPIO DT fragment here to illustrate what needs to be possible; seems like the generator needs to be able to support this.",
       "revId": "8ad1438f1b8399ec67950c50dba7c91428b6bf47",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "76e3bcc7_a09477b6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2021-12-22T00:39:42Z",
+      "side": 1,
+      "message": "So it would be best that this go in after chromium:3343698, where the generated\nfile includes the i2c stuff as well.",
+      "revId": "8ad1438f1b8399ec67950c50dba7c91428b6bf47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a42c7245_8233a1b6",
+        "filename": "zephyr/projects/nissa/i2c_nivviks.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2021-12-22T00:39:42Z",
+      "side": 1,
+      "message": "So after chromium:3343698, this should go into the overlay file.",
+      "revId": "8ad1438f1b8399ec67950c50dba7c91428b6bf47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec7672be_8e62ba09",
+        "filename": "zephyr/projects/nissa/nivviks_generated.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2021-12-22T00:39:42Z",
+      "side": 1,
+      "message": "So no manual edits should be made to this file, and\nwith chromium:3343698, the name should be fixed anyway.\nI am not sure why you need the gpio-cells property here?",
+      "revId": "8ad1438f1b8399ec67950c50dba7c91428b6bf47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
