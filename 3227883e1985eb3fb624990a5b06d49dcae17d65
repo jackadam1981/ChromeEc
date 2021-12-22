@@ -16,6 +16,52 @@
       "message": "Hope we can merge this patch before holiday.",
       "revId": "3227883e1985eb3fb624990a5b06d49dcae17d65",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "870ef9ef_5d173803",
+        "filename": "board/vell/board.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-12-22T20:49:24Z",
+      "side": 1,
+      "message": "does this need to change to C0_C1 and add C2_C3\nfor the two BB chips?\n\ni\u0027m looking at the november 23, 2021 schematics.\ndid these I2C buses get merged?",
+      "range": {
+        "startLine": 157,
+        "startChar": 8,
+        "endLine": 157,
+        "endChar": 24
+      },
+      "revId": "3227883e1985eb3fb624990a5b06d49dcae17d65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8357ffff_a6fdce59",
+        "filename": "board/vell/i2c.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-12-22T20:49:24Z",
+      "side": 1,
+      "message": "i see you reduced the other I2C buses to 400.\nif you have not verified these buses at 1000,\nit\u0027s better to reduce all to 400 until\nthey are tuned for 1000.",
+      "range": {
+        "startLine": 25,
+        "startChar": 10,
+        "endLine": 25,
+        "endChar": 14
+      },
+      "revId": "3227883e1985eb3fb624990a5b06d49dcae17d65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
