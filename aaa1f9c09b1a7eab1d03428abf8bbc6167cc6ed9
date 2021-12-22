@@ -52,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bdaec2ff_c63651be",
+        "filename": "util/pinmap/README.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2021-12-22T06:40:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dd4d66af_71ae41fe",
+      "revId": "aaa1f9c09b1a7eab1d03428abf8bbc6167cc6ed9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e86e4458_c5191cd6",
@@ -65,6 +83,30 @@
       "writtenOn": "2021-12-22T06:05:40Z",
       "side": 1,
       "message": "nit: I personally would prefer that you more clearly define what these functions are supposed to take as input and what their output is instead of documenting it in each of the files in chips/. Though this isn\u0027t a big deal.",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 1
+      },
+      "revId": "aaa1f9c09b1a7eab1d03428abf8bbc6167cc6ed9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eed75d44_df188797",
+        "filename": "util/pinmap/pm/chip.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2021-12-22T06:40:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e86e4458_c5191cd6",
       "range": {
         "startLine": 10,
         "startChar": 0,
@@ -98,6 +140,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae89728f_fc67b03d",
+        "filename": "util/pinmap/pm/generate.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2021-12-22T06:40:28Z",
+      "side": 1,
+      "message": "I\u0027ve put in a TODO with a bug.",
+      "parentUuid": "384bdb3a_3a8cf340",
+      "range": {
+        "startLine": 14,
+        "startChar": 29,
+        "endLine": 14,
+        "endChar": 33
+      },
+      "revId": "aaa1f9c09b1a7eab1d03428abf8bbc6167cc6ed9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "df09754f_6b50d7c3",
@@ -111,6 +177,24 @@
       "writtenOn": "2021-12-22T06:05:40Z",
       "side": 1,
       "message": "Is it a good idea to continue when you get funny input instead of stopping and asking the user to correct things? Might end up causing head scratching down the line.",
+      "revId": "aaa1f9c09b1a7eab1d03428abf8bbc6167cc6ed9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "42809282_1765500a",
+        "filename": "util/pinmap/pm/generate.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2021-12-22T06:40:28Z",
+      "side": 1,
+      "message": "This can be WAI since some boards have optional pins e.g for nereid an extra temp sensor is included.\nIt can be hard to distinguish between something intended and something broken.\nMaybe I should have a flag indicating whether something missing causes an error.",
+      "parentUuid": "df09754f_6b50d7c3",
       "revId": "aaa1f9c09b1a7eab1d03428abf8bbc6167cc6ed9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -132,6 +216,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "265053c0_ef36d416",
+        "filename": "util/pinmap/pm/generate_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2021-12-22T06:40:28Z",
+      "side": 1,
+      "message": "Yes, potentially we can parse the DTS and do a comparison.\nThis would require adding the necessary device tree parsing libraries, which may some effort.\nI\u0027ll put in a note.",
+      "parentUuid": "d0e79799_e3939f4e",
+      "revId": "aaa1f9c09b1a7eab1d03428abf8bbc6167cc6ed9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1f78c2d3_52fa3ff0",
@@ -145,6 +247,30 @@
       "writtenOn": "2021-12-22T06:05:40Z",
       "side": 1,
       "message": "I guess you\u0027re planning on having other readers in the near future? CSV seems like the main case right now. I see that you mention it in the todos in the readme, but if that\u0027s not 100% likely then maybe it\u0027s better to not have this indirection. Not that important.",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 23
+      },
+      "revId": "aaa1f9c09b1a7eab1d03428abf8bbc6167cc6ed9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4eac086f_4eaf230c",
+        "filename": "util/pinmap/pm/reader.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2021-12-22T06:40:28Z",
+      "side": 1,
+      "message": "Yes, we definitely want to support reading directly from arbitrage (go/cros-arbitrage) in the future.\nThe CSV and spreadsheet option is really something initial until we figure\nout that we can extract all the data we need from arbitrage - which we know we\ncan\u0027t at the moment).",
+      "parentUuid": "1f78c2d3_52fa3ff0",
       "range": {
         "startLine": 18,
         "startChar": 0,
