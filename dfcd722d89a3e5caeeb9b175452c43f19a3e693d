@@ -46,6 +46,30 @@
       },
       "revId": "dfcd722d89a3e5caeeb9b175452c43f19a3e693d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e6d90bc_082b05f7",
+        "filename": "zephyr/projects/skyrim/i2c.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-12-22T20:19:11Z",
+      "side": 1,
+      "message": "The M24C64 is actually an ST Micro part.  But the device is likely compatible with the \"atmel,at24\" driver.",
+      "parentUuid": "680cd6aa_5a414c04",
+      "range": {
+        "startLine": 110,
+        "startChar": 16,
+        "endLine": 110,
+        "endChar": 27
+      },
+      "revId": "dfcd722d89a3e5caeeb9b175452c43f19a3e693d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
