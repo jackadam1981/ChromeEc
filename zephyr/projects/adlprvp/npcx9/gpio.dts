@@ -1,0 +1,58 @@
+/* Copyright 2021 The Chromium OS Authors. All rights reserved.
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+/ {
+	named-gpios {
+		compatible = "named-gpios";
+
+		ec_flash_wp_odl {
+			gpios = <&gpio9 4 (GPIO_INPUT | GPIO_PULL_UP)>;
+			enum-name = "GPIO_WP_L";
+			label = "EC_FLASH_WP_ODL";
+		};
+		gpio_bc_acok: bc_acok {
+			gpios = <&gpioc 6 GPIO_INPUT>;
+			enum-name = "GPIO_AC_PRESENT";
+			label = "BC_ACOK";
+		};
+		gpio_pwr_btn_odl: pwr_btn_odl {
+			gpios = <&gpio0 0 GPIO_INPUT>;
+			enum-name = "GPIO_POWER_BUTTON_L";
+			label = "MECH_PWR_BTN_ODL";
+		};
+		gpio_smc_lid: smc_lid {
+			gpios = <&gpio0 1 GPIO_INPUT>;
+			enum-name = "GPIO_LID_OPEN";
+			label = "SMC_LID";
+		};
+		ec_entering_rw {
+			gpios = <&gpiod 4 GPIO_OUT_LOW>;
+			enum-name = "GPIO_ENTERING_RW";
+			label = "EC_ENTERING_RW";
+		};
+		pm_rsmrst_n {
+			gpios = <&gpioa 6 GPIO_INPUT>;
+			enum-name = "GPIO_PCH_RSMRST_L";
+			label = "PM_RSMRST_N";
+		};
+		rsmrst_pwrgd {
+			gpios = <&gpioa 6 GPIO_OUT_LOW>;
+			enum-name = "GPIO_PG_EC_RSMRST_ODL";
+			label = "RSMRST_PWRGD";
+		};
+		smc_wake_sci_n_mecc {
+			gpios = <&gpioa 6 GPIO_OUT_LOW>;
+			enum-name = "GPIO_EC_PCH_WAKE_ODL";
+			label = "SMC_WAKE_SCI_N_MECC";
+		};
+	};
+
+	hibernate-wake-pins {
+		compatible = "cros-ec,hibernate-wake-pins";
+		wakeup-pins = <
+			&gpio_pwr_btn_odl
+		>;
+	};
+};
