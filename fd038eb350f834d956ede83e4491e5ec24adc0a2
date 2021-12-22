@@ -71,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9fb104f_d69956b2",
+        "filename": "board/taeko/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1461738
+      },
+      "writtenOn": "2021-12-22T01:32:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a4667dbb_16d3c7ec",
+      "range": {
+        "startLine": 62,
+        "startChar": 3,
+        "endLine": 62,
+        "endChar": 39
+      },
+      "revId": "fd038eb350f834d956ede83e4491e5ec24adc0a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d46e09e8_d7ae3fe3",
