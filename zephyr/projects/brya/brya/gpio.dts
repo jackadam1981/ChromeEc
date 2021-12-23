@@ -19,6 +19,12 @@
 			label = "GSC_EC_PWR_BTN_ODL";
 		};
 
+		gpio_ec_wp_l: ec_wp_l {
+			#gpio-cells = <0>;
+			gpios = <&gpioa 1 GPIO_INPUT>;
+			enum-name = "GPIO_EC_WP_L";
+			label = "EC_WP_L";
+		};
 		wp_l {
 			gpios = <&gpioa 1 GPIO_INPUT>;
 			enum-name = "GPIO_WP_L";
@@ -35,6 +41,30 @@
 			gpios = <&gpioc 4 GPIO_OUT_LOW>;
 			enum-name = "GPIO_EC_CHG_LED_B_C1";
 			label = "EC_CHG_LED_B_C1";
+		};
+
+		gpio_ec_accel_int_l: ec_accel_int_l {
+			gpios = <&gpio8 1 GPIO_INPUT>;
+			enum-name = "GPIO_EC_ACCEL_INT";
+			label = "EC_ACCEL_INT_R_L";
+		};
+
+		gpio_ec_imu_int_l: gpio_ec_imu_int_l {
+			gpios = <&gpio5 6 GPIO_INPUT>;
+			enum-name = "GPIO_EC_IMU_INT_L";
+			label = "EC_IMU_INT_R_L";
+		};
+
+		gpio_ec_als_rgb_int_l: gpio_ec_als_rgb_int_l {
+			gpios = <&gpiod 4 GPIO_INPUT>;
+			enum-name = "GPIO_EC_ALS_RGB_INT_L";
+			label = "EC_ALS_RGB_INT_R_L";
+		};
+
+		tablet_mode_l {
+			gpios = <&gpio9 5 GPIO_INPUT>;
+			enum-name = "GPIO_TABLET_MODE_L";
+			label = "TABLET_MODE_L";
 		};
 
 		packet_mode_en {
