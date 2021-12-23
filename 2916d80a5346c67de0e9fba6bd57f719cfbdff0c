@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb3a4901_d6690642",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 3
+      },
+      "lineNbr": 404,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2021-12-23T22:28:48Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e32625fa_626e660f",
+      "range": {
+        "startLine": 404,
+        "startChar": 0,
+        "endLine": 404,
+        "endChar": 47
+      },
+      "revId": "2916d80a5346c67de0e9fba6bd57f719cfbdff0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f2fdd070_9a315601",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-12-22T21:05:06Z",
       "side": 1,
       "message": "Use the help text from config.h here.",
+      "range": {
+        "startLine": 407,
+        "startChar": 0,
+        "endLine": 409,
+        "endChar": 0
+      },
+      "revId": "2916d80a5346c67de0e9fba6bd57f719cfbdff0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e35b15af_0a050658",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 3
+      },
+      "lineNbr": 409,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2021-12-23T22:28:48Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "f2fdd070_9a315601",
       "range": {
         "startLine": 407,
         "startChar": 0,
