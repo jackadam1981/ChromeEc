@@ -16,6 +16,23 @@
       "message": "I hope you tested it on a real hardware, right?",
       "revId": "c01f22969641c4deff0bc7b64c894f198db0180d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b722e50_8248390c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-12-23T21:47:16Z",
+      "side": 1,
+      "message": "you\u0027ll also need to enable\n\n/* I2C control host command */\n#define CONFIG_HOSTCMD_I2C_CONTROL\n\n\nin board.h so that ps8815 firmware update can work.\nexample\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3181511\n\nyou can also add\n\n/* I2C speed console command */\n#define CONFIG_CMD_I2C_SPEED\n\nbut that\u0027s only required for manual testing, etc.\n",
+      "revId": "c01f22969641c4deff0bc7b64c894f198db0180d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
