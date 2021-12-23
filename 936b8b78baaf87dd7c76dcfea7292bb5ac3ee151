@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f254e9a0_3948539b",
+        "filename": "zephyr/projects/skyrim/gpio.dts",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-12-23T18:35:19Z",
+      "side": 1,
+      "message": "Fabio\u0027s change to use the nodepath for GPIO names is scheduled to merge.  So you can delete all the label properties.",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 26
+      },
+      "revId": "936b8b78baaf87dd7c76dcfea7292bb5ac3ee151",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7a0fc13f_353396ca",
         "filename": "zephyr/projects/skyrim/gpio.dts",
         "patchSetId": 4
