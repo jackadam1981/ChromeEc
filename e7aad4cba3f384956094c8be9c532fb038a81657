@@ -16,6 +16,24 @@
       "message": "ec_int becomes ambiguous after the patch.\n\nIt was for recording the int number;  after the patch, it could somehow contain the group number.",
       "revId": "e7aad4cba3f384956094c8be9c532fb038a81657",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "472352f5_5945bdf8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1470933
+      },
+      "writtenOn": "2021-12-23T08:38:39Z",
+      "side": 1,
+      "message": "Understand. My original intend is trying to let ec_int useful for this exception. otherwise, it is only a record of last successful handled irq.\n\nmaybe save group number in a static variable and dump it when encounter this exception?",
+      "parentUuid": "4c9ae06a_21d761b9",
+      "revId": "e7aad4cba3f384956094c8be9c532fb038a81657",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
