@@ -22,6 +22,30 @@
       },
       "revId": "c1ab924b4d8520bfab5526d99261e2e1cf003da2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02d2d0a3_a1776afe",
+        "filename": "driver/accelgyro_icm42607.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-12-23T19:02:43Z",
+      "side": 1,
+      "message": "This is following the existing pattern of other motionsense driver interrupts. b:194424288 is tracking the effort to cleanup or eliminate the sensor specific interrupt handlers.",
+      "parentUuid": "aa455301_c506178d",
+      "range": {
+        "startLine": 42,
+        "startChar": 8,
+        "endLine": 42,
+        "endChar": 43
+      },
+      "revId": "c1ab924b4d8520bfab5526d99261e2e1cf003da2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
