@@ -13,6 +13,9 @@
 
 #define PCH_EC_SLP_SUS_L	slpsus
 #define PCH_EC_SLP_S0_L		slps0
+#define PCH_EC_SLP_S3_L		slps3
+#define PCH_EC_SLP_S4_L		slps4
+#define PCH_EC_SLP_S5_L		slps5
 
 /* DSW_PWROK is indication to PCH that 3P3V is stable */
 #define VR_EC_DSW_PWROK		dswpwrokin

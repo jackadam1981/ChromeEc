@@ -159,6 +159,7 @@ static int check_power_rails_enabled()
 #if POWER_SEQ_GPIO_PRESENT(VR_EC_DSW_PWROK)
 	out &= gpio_get_lvl(GPIO_NET_NAME(VR_EC_DSW_PWROK));
 #endif
+	LOG_ERR("\nPower rails enabled: %d", out);
 	return out;
 }
 
@@ -205,7 +206,7 @@ int power_wait_mask_signals_timeout(uint32_t want, uint32_t mask, int timeout)
 			return 0;
 		}
 	}
-	power_update_signals();//? why
+//	power_update_signals();//? why
 	return -ETIMEDOUT;
 }
 
@@ -289,6 +290,7 @@ int power_has_signals(uint32_t want)
 {
 	if ((in_signals & want) == want)
 		return 1;
+
 	LOG_DBG("power lost input; wanted 0x%04x, got 0x%04x",
 		want, in_signals & want);
 	return 0;
@@ -410,8 +412,12 @@ void pwr_sm_set_state(enum power_states_ndsx new_state)
 /* Check RSMRST is fine to move from S5 to higher state */
 int check_rsmrst_ok()
 {
+	int rsmrst_state = 0;
 	/* TODO: Check if this is still intact*/
-	return gpio_get_lvl(GPIO_NET_NAME(VR_PG_EC_RSMRST_ODL));
+	rsmrst_state = gpio_get_lvl(GPIO_NET_NAME(VR_PG_EC_RSMRST_ODL));
+
+	LOG_ERR("\nRsmrst state: %d", rsmrst_state);
+	return rsmrst_state;
 }
 
 int check_pch_out_of_suspend()
@@ -521,18 +527,18 @@ static int common_pwr_sm_run(int state)
 		/* If A-rails are stable move to higher state */
 		if (check_power_rails_enabled() && check_rsmrst_ok() &&
 			power_has_signals(IN_PCH_SLP_SUS_DEASSERTED)) {
-			int ret;
+			//int ret;
 
 			/* rsmrst is intact */
 			rsmrst_pass_thru_handler();
 
-			ret = power_wait_signals(IN_PCH_SLP_S5_DEASSERTED);
-			if (ret == 0) {
+			//ret = power_wait_signals(IN_PCH_SLP_S5_DEASSERTED);
+			//if (ret == 0) {
 				return SYS_POWER_STATE_S5S4;
-			} else {
+			//} else {
 				/*if (k_timer_status_get(&s5_inactive_timer) > 0)*/
-					return SYS_POWER_STATE_S5G3;
-			}
+			//	return SYS_POWER_STATE_S5G3;
+		//	}
 		} else {
 			return SYS_POWER_STATE_S5G3;
 		}
@@ -556,13 +562,13 @@ static int common_pwr_sm_run(int state)
 		break;
 
 	case SYS_POWER_STATE_S4:
-		if (power_signal_get_level(X86_SLP_S5) == 0) {
+		//if (power_signal_get_level(X86_SLP_S5) == 0) {
 			/* Power down to next state */
-			return SYS_POWER_STATE_S4S5;
-		} else if (power_signal_get_level(X86_SLP_S4) == 1) {
+		//	return SYS_POWER_STATE_S4S5;
+		//} else if (power_signal_get_level(X86_SLP_S4) == 1) {
 			/* Power up to the next level */
 			return SYS_POWER_STATE_S4S3;
-		}
+		//}
 		break;
 
 		//return SYS_POWER_STATE_S3;
@@ -667,6 +673,21 @@ void espi_bus_reset(void)
 }
 
 /* Console commands */
+
+static int powerup_handler(const struct shell *shell, size_t argc, char **argv)
+{
+	int state;
+
+	state = pwr_sm_get_state();
+
+	shell_fprintf(shell, SHELL_INFO, "Power state = %d (%s), in 0x%x \n",
+		state, pwrsm_dbg[state], in_signals);
+	shell_fprintf(shell, SHELL_INFO, "Move to G3S5\n");
+	pwr_sm_set_state(SYS_POWER_STATE_G3S5);
+	return 0;
+}
+
+SHELL_CMD_REGISTER(powerup,NULL,NULL,powerup_handler);
 
 static int powerinfo_handler(const struct shell *shell, size_t argc, char **argv)
 {

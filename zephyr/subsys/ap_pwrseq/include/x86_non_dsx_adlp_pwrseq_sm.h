@@ -31,6 +31,9 @@ struct gpio_config power_seq_gpios[] = {
 		POWER_SEQ_GPIO(PCH_EC_SLP_S0_L),
 	},
 	{
+		POWER_SEQ_GPIO(PCH_EC_SLP_S3_L),
+	},
+	{
 		POWER_SEQ_GPIO(VR_PG_EC_RSMRST_ODL),
 	},
 	{

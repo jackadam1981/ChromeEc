@@ -82,7 +82,7 @@ int all_sys_pwrgd_handler()
 {
 	int sys_pg;
 	int vccst_pg;
-	//int retry = 0;
+	int retry = 0;
 
 	/* TODO: Add condition for no power sequencer */
 	sys_pg = gpio_get_lvl(GPIO_NET_NAME(VR_EC_ALL_SYS_PWRGD));
@@ -91,13 +91,11 @@ int all_sys_pwrgd_handler()
 	// without this change the system hits G3 as it detects
 	// ALL_SYS_PWRGD as 0 and then 1 as a glitch
 
-#if 0
 	while (sys_pg != 1 || retry < 2) {
 		sys_pg = gpio_get_lvl(GPIO_NET_NAME(VR_EC_ALL_SYS_PWRGD));
 		k_msleep(10);
 		retry++;
 	}
-#endif
 	
 	if(sys_pg == 0)
 	{
