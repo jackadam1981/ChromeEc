@@ -70,6 +70,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e7233f7f_95f5bbcc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1477218
+      },
+      "writtenOn": "2021-12-23T09:44:05Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "476ab440_313d1e91",
+      "revId": "aa051114c8c1ac89ff0e3e447f6bfa35b8150c2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "334f6027_6b9e0fee",
@@ -83,6 +101,30 @@
       "writtenOn": "2021-12-23T00:28:28Z",
       "side": 1,
       "message": "this should ideally be the chip default/PoR value when no customization\nhas been specified, but i see this is going to be an\nexception since we always override this field.\n\nplease use BQ257X0_PROCHOT_OPTION_0_ILIM2_VTH__1P05\n\nalso add #defines to bq257x0_regs.h:\nBQ257X0_PROCHOT_OPTION_0_ILIM2_VTH__1P05 0\nBQ257X0_PROCHOT_OPTION_0_ILIM2_VTH__1P40 7\nBQ257X0_PROCHOT_OPTION_0_ILIM2_VTH__1P50 9",
+      "range": {
+        "startLine": 63,
+        "startChar": 45,
+        "endLine": 63,
+        "endChar": 48
+      },
+      "revId": "aa051114c8c1ac89ff0e3e447f6bfa35b8150c2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "68ccc26c_3f9ae334",
+        "filename": "driver/charger/bq25710.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1477218
+      },
+      "writtenOn": "2021-12-23T09:44:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "334f6027_6b9e0fee",
       "range": {
         "startLine": 63,
         "startChar": 45,
@@ -116,6 +158,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "57f904b0_1ae2dcb3",
+        "filename": "driver/charger/bq25710.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1477218
+      },
+      "writtenOn": "2021-12-23T09:44:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4491015e_b2482630",
+      "range": {
+        "startLine": 144,
+        "startChar": 8,
+        "endLine": 144,
+        "endChar": 28
+      },
+      "revId": "aa051114c8c1ac89ff0e3e447f6bfa35b8150c2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bba9f587_a8636089",
@@ -129,6 +195,30 @@
       "writtenOn": "2021-12-23T00:28:28Z",
       "side": 1,
       "message": "BQ257X0_PROCHOT_OPTION_0_ILIM2_VTH_PCT",
+      "range": {
+        "startLine": 376,
+        "startChar": 58,
+        "endLine": 376,
+        "endChar": 67
+      },
+      "revId": "aa051114c8c1ac89ff0e3e447f6bfa35b8150c2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7eb02588_c761d1f4",
+        "filename": "driver/charger/bq25710.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 376,
+      "author": {
+        "id": 1477218
+      },
+      "writtenOn": "2021-12-23T09:44:05Z",
+      "side": 1,
+      "message": "Should we use CONFIG_CHARGER_BQ257X0_ILIM2_VTH_PCT?",
+      "parentUuid": "bba9f587_a8636089",
       "range": {
         "startLine": 376,
         "startChar": 58,
