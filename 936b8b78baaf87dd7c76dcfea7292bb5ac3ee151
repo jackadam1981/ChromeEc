@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a0fc13f_353396ca",
+        "filename": "zephyr/projects/skyrim/gpio.dts",
+        "patchSetId": 4
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-12-23T18:32:22Z",
+      "side": 1,
+      "message": "I think this will have to move to the skyrm.dts overlay, because you also need to include the sensor interrupts in the low voltage list.",
+      "range": {
+        "startLine": 248,
+        "startChar": 0,
+        "endLine": 254,
+        "endChar": 0
+      },
+      "revId": "936b8b78baaf87dd7c76dcfea7292bb5ac3ee151",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "910f2587_53f7b0ad",
+        "filename": "zephyr/projects/skyrim/skyrim.dts",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-12-23T18:32:22Z",
+      "side": 1,
+      "message": "Should this get set low by default?  The board provides a pull-down, but I\u0027m not sure what the default GPIO state is when you configure an output.",
+      "range": {
+        "startLine": 15,
+        "startChar": 21,
+        "endLine": 15,
+        "endChar": 32
+      },
+      "revId": "936b8b78baaf87dd7c76dcfea7292bb5ac3ee151",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "118b341e_fece6bd2",
+        "filename": "zephyr/projects/skyrim/skyrim.dts",
+        "patchSetId": 4
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-12-23T18:32:22Z",
+      "side": 1,
+      "message": "I don\u0027t think this signal is open-drain.  The pull-up is on the other side of a diode, and guybrush cros-ec does not set ODR.",
+      "range": {
+        "startLine": 42,
+        "startChar": 21,
+        "endLine": 42,
+        "endChar": 34
+      },
+      "revId": "936b8b78baaf87dd7c76dcfea7292bb5ac3ee151",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c95217e3_29dc83a7",
+        "filename": "zephyr/projects/skyrim/skyrim.dts",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-12-23T18:32:22Z",
+      "side": 1,
+      "message": "pcore_ocp_r_l",
+      "range": {
+        "startLine": 52,
+        "startChar": 2,
+        "endLine": 52,
+        "endChar": 13
+      },
+      "revId": "936b8b78baaf87dd7c76dcfea7292bb5ac3ee151",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1cd038d3_91701382",
+        "filename": "zephyr/projects/skyrim/skyrim.dts",
+        "patchSetId": 4
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-12-23T18:32:22Z",
+      "side": 1,
+      "message": "Need to enable low-voltage pin.",
+      "range": {
+        "startLine": 74,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 0
+      },
+      "revId": "936b8b78baaf87dd7c76dcfea7292bb5ac3ee151",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2773919f_bffa93c0",
+        "filename": "zephyr/projects/skyrim/skyrim.dts",
+        "patchSetId": 4
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-12-23T18:32:22Z",
+      "side": 1,
+      "message": "Pullup/down is only valid on input pins.",
+      "range": {
+        "startLine": 79,
+        "startChar": 38,
+        "endLine": 79,
+        "endChar": 50
+      },
+      "revId": "936b8b78baaf87dd7c76dcfea7292bb5ac3ee151",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

@@ -167,6 +167,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "69a1a2dd_5dceddce",
+        "filename": "zephyr/projects/skyrim/power_signals.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-12-23T18:32:22Z",
+      "side": 1,
+      "message": "At first I was thinking you would retain the same separate interrupts you have now, but I think the code will be easier to follow with a signal shared interrupt.\n\nvoid baseboard_power_signal_interrupt(signal)\n{\n    set_en_pwr_s0();\n    set_en_pwr_pcore();\n    set_soc_pwr_pgood();\n    \n    power_signal_interrupt(signal);\n}\n\nYou then don\u0027t need any nested calls - e.g. set_en_pwr_s0() would not call set_en_pwr_pcore().\n\npower_signal_interrupt() will ignore any signal not part of power_signal_list[].  If you enable CONFIG_BRINGUP, the power signal logging will actually pick up these extra GPIOs in the log - but will be skipped by power_update_signals().\n\nOne downside is that this potentially incurs extra gpio read/writes over separate interrupts.",
+      "parentUuid": "5acd8f14_4352da40",
+      "range": {
+        "startLine": 74,
+        "startChar": 5,
+        "endLine": 74,
+        "endChar": 32
+      },
+      "revId": "39c922809040fae65083b12113091e8c07128129",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "76a3543d_9146d5c3",
         "filename": "zephyr/projects/skyrim/skyrim.dts",
         "patchSetId": 2
