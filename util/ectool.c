@@ -8022,13 +8022,22 @@ cmd_battery_vendor_param_usage:
 int cmd_battery_param_get_string(int argc, char *argv[])
 {
 	int i, rv;
-	struct ec_params_battery_vendor_param p;
-	struct ec_response_battery_vendor_param r;
 	int read_len;
 	unsigned int start_reg;
 	char *e;
-
-	p.mode = BATTERY_VENDOR_PARAM_MODE_GET;
+	enum {
+		CMD_0,
+		CMD_1,
+		CMD_2,
+		CMD_COUNT,
+	};
+	const int argc_prime = 3;
+	char *argv_prime[] = {
+		[CMD_0] = "batteryparam",
+		[CMD_1] = "get",
+		[CMD_2] = "0x0", //default value
+	};
+	char temp[5]; //temporary string space for sprintf
 
 	if(argc != 3) {
 		fprintf(stderr,
@@ -8050,15 +8059,14 @@ int cmd_battery_param_get_string(int argc, char *argv[])
 	}
 
 	for (i = 0; i < read_len; i++) {
-		p.param = start_reg + i;
-		rv = ec_command(EC_CMD_BATTERY_VENDOR_PARAM, 0, &p,
-				sizeof(p), &r, sizeof(r));
+		sprintf(temp, "0x%x", start_reg + i);
+		argv_prime[CMD_2] = temp;
+		printf("ectool %s %s %s\n", argv_prime[CMD_0],
+			argv_prime[CMD_1], argv_prime[CMD_2]);
+		rv = cmd_battery_vendor_param(argc_prime, argv_prime);
 		if (rv < 0)
 			return rv;
-
-		printf("%c", r.value);
 	}
-	printf("\n");
 
 	return 0;
 }
