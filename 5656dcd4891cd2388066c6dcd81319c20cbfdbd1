@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9277f6e5_960bad8a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-12-23T19:16:18Z",
+      "side": 1,
+      "message": "I\u0027ll note that the arbitrage tool has something similar for AP gpios with the export-coreboot-gpio subcommand.  The arbitrage source is written in GO so this can probably be easily added into that tool.",
+      "revId": "5656dcd4891cd2388066c6dcd81319c20cbfdbd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
