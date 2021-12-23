@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "375247c4_d70518bd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1470933
+      },
+      "writtenOn": "2021-12-23T09:41:39Z",
+      "side": 1,
+      "message": "this one, BUG\u003db:202754468",
+      "parentUuid": "d0de97c5_e1c3dd6e",
+      "range": {
+        "startLine": 10,
+        "startChar": 9,
+        "endLine": 10,
+        "endChar": 70
+      },
+      "revId": "cc2c3d4991634647d670d72edcfd6fc98d599c8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "400db37d_55f309ff",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -181,6 +205,30 @@
       "side": 1,
       "message": "Do you mean: we could/should enlarge the WDT timeout when in S3?",
       "parentUuid": "f297f9f6_61dbca66",
+      "range": {
+        "startLine": 11,
+        "startChar": 20,
+        "endLine": 11,
+        "endChar": 47
+      },
+      "revId": "cc2c3d4991634647d670d72edcfd6fc98d599c8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "64c7400e_4e40b10f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1470933
+      },
+      "writtenOn": "2021-12-23T09:41:39Z",
+      "side": 1,
+      "message": "Yes, the SCP core is running at 32KHz. It\u0027s extremely slow compared to normal 280MHz.",
+      "parentUuid": "74adf474_7214db5f",
       "range": {
         "startLine": 11,
         "startChar": 20,
