@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b0ea3fda_ac1ccfe3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2021-12-23T03:11:39Z",
+      "side": 1,
+      "message": "Rebased, now it only touches the overlay and config.",
+      "parentUuid": "8ce0d40d_7ffc5567",
+      "revId": "8ad1438f1b8399ec67950c50dba7c91428b6bf47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a42c7245_8233a1b6",
@@ -48,6 +66,24 @@
       "writtenOn": "2021-12-22T00:39:42Z",
       "side": 1,
       "message": "So after chromium:3343698, this should go into the overlay file.",
+      "revId": "8ad1438f1b8399ec67950c50dba7c91428b6bf47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d107b40e_0259e25a",
+        "filename": "zephyr/projects/nissa/i2c_nivviks.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2021-12-23T03:11:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a42c7245_8233a1b6",
       "revId": "8ad1438f1b8399ec67950c50dba7c91428b6bf47",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -155,6 +191,24 @@
       "side": 1,
       "message": "The \"#gpio-cells\" property is considered a constant, so it should be part of the generated output, instead of requiring the user to add to the overlay.\n\nIt\u0027s unfortunate that we\u0027re not able to set the default to 0 in the named-gpios.yaml file, but this convention isn\u0027t supported by the DT compiler.",
       "parentUuid": "a6ddb965_088d43fe",
+      "revId": "8ad1438f1b8399ec67950c50dba7c91428b6bf47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "01f6c95e_e43796f1",
+        "filename": "zephyr/projects/nissa/nivviks_generated.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2021-12-23T03:11:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4580b7cc_71d2c032",
       "revId": "8ad1438f1b8399ec67950c50dba7c91428b6bf47",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
