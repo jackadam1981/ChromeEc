@@ -98,6 +98,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "e7aa6677_1f96d8b3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2021-12-23T18:53:00Z",
+      "side": 1,
+      "message": "Done!",
+      "parentUuid": "f9571df6_03975f8f",
+      "range": {
+        "startLine": 20,
+        "startChar": 53,
+        "endLine": 20,
+        "endChar": 62
+      },
+      "revId": "49ec0de53278d3282bd3dd5e83bb1f7dc5b228fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "37ea260c_5874cc57",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -208,6 +232,30 @@
       "side": 1,
       "message": "Upstream I only see the tests using DT_NODE_FULL_NAME() and there looks to be a single user of DEVICE_DT_NAME() in the i2c.h API.\n\nI don\u0027t think you can actually eliminate the label property, since it is part of base.yaml.\n\nThere\u0027s probably no use case for overriding the node-full-name with a label.  So I\u0027m OK with DT_NODE_FULL_NAME().",
       "parentUuid": "947a652f_d4f0ef64",
+      "range": {
+        "startLine": 38,
+        "startChar": 12,
+        "endLine": 38,
+        "endChar": 29
+      },
+      "revId": "49ec0de53278d3282bd3dd5e83bb1f7dc5b228fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4744754_ed3fa625",
+        "filename": "zephyr/shim/src/gpio.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2021-12-23T18:53:00Z",
+      "side": 1,
+      "message": "I think we can drop it, named-gpio does not extend base.yaml, but even if it did, these nodes are defined in the child-node which does not imply label. Either way we can revisit this fairly easily.",
+      "parentUuid": "4b334325_c5554469",
       "range": {
         "startLine": 38,
         "startChar": 12,
