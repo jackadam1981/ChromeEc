@@ -9,6 +9,10 @@
 #include "task.h"
 #include "util.h"
 
+#ifdef CHIP_VARIANT_MT8195
+#include "scp_watchdog.h"
+#endif
+
 #ifdef CONFIG_DEBUG_EXCEPTIONS
 /**
  * bit[3-0] @ mcause, general exception type information.
@@ -131,6 +135,12 @@ static void print_panic_information(uint32_t *regs, uint32_t mcause,
 #endif
 	} else {
 		panic_printf("Exception type: %s\n", exc_type[(mcause & 0xf)]);
+	}
+#endif
+
+#ifdef CHIP_VARIANT_MT8195
+	if (!watchdog_is_enabled()) {
+		watchdog_enable();
 	}
 #endif
 }
