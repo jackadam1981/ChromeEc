@@ -72,6 +72,12 @@ config PLATFORM_EC_ACCELGYRO_BMI260
 	  Unit (IMU) consisting of a 16-bit tri-axial gyroscope and a 16-bit
 	  tri-axial accelerometer.
 
+config PLATFORM_EC_ACCELGYRO_LSM6DSO
+	bool "LSM6DSO Accelgyrometer Driver"
+	help
+	  The driver supports STM's which is an Inertial Measurement Unit (IMU)
+	  consisting of a 3D digital accelerometer and a 3D digitalgyroscope.
+
 config PLATFORM_EC_ACCELGYRO_BMI3XX
 	bool "BMI3XX Accelgyrometer Driver"
 	select PLATFORM_EC_ACCELGYRO_BMI
