@@ -10,4 +10,5 @@ zephyr_include_directories(include)
 
 if(DEFINED CONFIG_BOARD_NIVVIKS)
 	project(nivviks)
+	zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_USBC "src/usbc_config.c")
 endif()
