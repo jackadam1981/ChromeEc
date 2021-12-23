@@ -58,6 +58,30 @@
 		kblight: pwm_kb_bl {
 		};
 	};
+
+	usbc {
+		port0 {
+			bc12 {
+				compatible = "pericom,pi3usb9201";
+				port = <&i2c_ec_i2c_usb_c0>;
+				/*
+				 * BC1.2 interrupt is shared with TCPC, so
+				 * IRQ is not specified here and handled by
+				 * usb_c0_interrupt.
+				 */
+			};
+		};
+		/*
+		 * TODO(b:211693800): port1 may not be present on some
+		 * sub-boards.
+		 */
+		port1 {
+			bc12 {
+				compatible = "pericom,pi3usb9201";
+				port = <&i2c_ec_i2c_usb_c1>;
+			};
+		};
+	};
 };
 
 &thermistor_3V3_51K1_47K_4050B {
