@@ -16,6 +16,29 @@
       "message": "Hi YH and Boris,\n\nCaveh seem to be on holiday.\nCould you help to review it?",
       "revId": "83d55804079359f8f354b921363bc82ba79d1e8c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "96e0accc_1a7dcb8b",
+        "filename": "board/taeko/board.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-12-23T00:28:43Z",
+      "side": 1,
+      "message": "BQ257X0_PROCHOT_OPTION_0_ILIM2_VTH__1P40",
+      "range": {
+        "startLine": 189,
+        "startChar": 45,
+        "endLine": 189,
+        "endChar": 48
+      },
+      "revId": "83d55804079359f8f354b921363bc82ba79d1e8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
