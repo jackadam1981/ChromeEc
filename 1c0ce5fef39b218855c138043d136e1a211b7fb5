@@ -22,6 +22,30 @@
       },
       "revId": "1c0ce5fef39b218855c138043d136e1a211b7fb5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "351fa5e3_6d3507b4",
+        "filename": "board/vell/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2021-12-23T02:04:54Z",
+      "side": 1,
+      "message": "Not used. Howere look like there is a compile issue if I remove this. I created a bug to how can we to fix it.",
+      "parentUuid": "4fa06069_2d0e2367",
+      "range": {
+        "startLine": 64,
+        "startChar": 8,
+        "endLine": 64,
+        "endChar": 33
+      },
+      "revId": "1c0ce5fef39b218855c138043d136e1a211b7fb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
