@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d0de97c5_e1c3dd6e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2021-12-23T09:25:34Z",
+      "side": 1,
+      "message": "Is it an observed issue or some just-in-case patch?",
+      "parentUuid": "15b59d40_389c8152",
+      "range": {
+        "startLine": 10,
+        "startChar": 9,
+        "endLine": 10,
+        "endChar": 70
+      },
+      "revId": "cc2c3d4991634647d670d72edcfd6fc98d599c8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "400db37d_55f309ff",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -133,6 +157,30 @@
       "side": 1,
       "message": "We still can keep WDT running when choosing 32K clock for S3 SCP.\nAlthough the WDT timeout should be extended when SCP core is extremely slow.",
       "parentUuid": "9f90b20a_0844c9fb",
+      "range": {
+        "startLine": 11,
+        "startChar": 20,
+        "endLine": 11,
+        "endChar": 47
+      },
+      "revId": "cc2c3d4991634647d670d72edcfd6fc98d599c8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74adf474_7214db5f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2021-12-23T09:25:34Z",
+      "side": 1,
+      "message": "Do you mean: we could/should enlarge the WDT timeout when in S3?",
+      "parentUuid": "f297f9f6_61dbca66",
       "range": {
         "startLine": 11,
         "startChar": 20,
