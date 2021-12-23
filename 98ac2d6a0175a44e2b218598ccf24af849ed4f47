@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "02de42e2_236201e0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-12-23T01:28:16Z",
+      "side": 1,
+      "message": "while",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 4
+      },
+      "revId": "98ac2d6a0175a44e2b218598ccf24af849ed4f47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0663d833_e0bdc6bc",
         "filename": "baseboard/intelrvp/adlrvp.c",
         "patchSetId": 7
