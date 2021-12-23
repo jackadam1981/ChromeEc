@@ -630,6 +630,8 @@ static int init(struct motion_sensor_t *s)
 	if (ret != EC_SUCCESS)
 		return EC_ERROR_UNKNOWN;
 
+	CPRINTS("SENSOR accelgyro_lsm6dsm WHO_AM_I value: 0x%x", tmp);
+
 	if (tmp != LSM6DS3_WHO_AM_I && tmp != LSM6DSM_WHO_AM_I) {
 		/* Unrecognized sensor */
 		CPRINTS("Unknown WHO_AM_I value: 0x%x", tmp);
