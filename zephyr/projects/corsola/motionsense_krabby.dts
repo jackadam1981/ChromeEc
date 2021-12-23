@@ -13,7 +13,7 @@
 		 * by alias. Using the alias, each driver creates
 		 * its own <>_INT_EVENT.
 		 */
-		icm426xx-int = &base_accel;
+		icm42607-int = &base_accel;
 		lis2dw12-int = &lid_accel;
 	};
 
@@ -30,8 +30,8 @@
 			label = "LID_MUTEX";
 		};
 
-		base_mutex: icm426xx-mutex {
-			label = "ICM426XX_MUTEX";
+		base_mutex: icm42607-mutex {
+			label = "ICM42607_MUTEX";
 		};
 	};
 
@@ -61,8 +61,8 @@
 	 * "struct als_drv_data_t" in accelgyro.h
 	 */
 	motionsense-sensor-data {
-		icm426xx_data: icm426xx-drv-data {
-			compatible = "cros-ec,drvdata-icm426xx";
+		icm42607_data: icm42607-drv-data {
+			compatible = "cros-ec,drvdata-icm42607";
 			status = "okay";
 		};
 
@@ -88,7 +88,7 @@
 			mutex = <&lid_mutex>;
 			port = <&i2c_sensor>;
 			rot-standard-ref = <&lid_rot_ref>;
-			default-range = <2>;
+			default-range = <4>;
 			drv-data = <&lis2dw12_data>;
 			configs {
 				compatible =
@@ -105,7 +105,7 @@
 		};
 
 		base_accel: base-accel {
-			compatible = "cros-ec,icm426xx-accel";
+			compatible = "cros-ec,icm42607-accel";
 			status = "okay";
 
 			label = "Base Accel";
@@ -114,7 +114,8 @@
 			mutex = <&base_mutex>;
 			port = <&i2c_sensor>;
 			rot-standard-ref = <&base_rot_ref>;
-			drv-data = <&icm426xx_data>;
+			default-range = <4>;
+			drv-data = <&icm42607_data>;
 			configs {
 				compatible =
 					"cros-ec,motionsense-sensor-config";
@@ -129,8 +130,8 @@
 			};
 		};
 
-		base-gyro {
-			compatible = "cros-ec,bmi160-gyro";
+		base_gyro: base-gyro {
+			compatible = "cros-ec,icm42607-gyro";
 			status = "okay";
 
 			label = "Base Gyro";
@@ -139,7 +140,7 @@
 			mutex = <&base_mutex>;
 			port = <&i2c_sensor>;
 			rot-standard-ref = <&base_rot_ref>;
-			drv-data = <&icm426xx_data>;
+			drv-data = <&icm42607_data>;
 		};
 	};
 

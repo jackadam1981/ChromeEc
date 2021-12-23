@@ -25,7 +25,7 @@
 			enum-name = "I2C_PORT_CHARGER";
 		};
 		i2c_sensor: sensor {
-			i2c-port = <&i2c3>;
+			i2c-port = <&i2c3_1>;
 			enum-name = "I2C_PORT_SENSOR";
 		};
 		ppc0 {
@@ -74,7 +74,7 @@
 	clock-frequency = <I2C_BITRATE_FAST>;
 };
 
-&i2c3 {
+&i2c3_1 {
 	/* EC_I2C_SENSOR */
 	status = "okay";
 	clock-frequency = <I2C_BITRATE_FAST>;
