@@ -88,6 +88,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2971b419_3868928c",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2021-12-23T08:00:55Z",
+      "side": 1,
+      "message": "Suggest to make these atomic variable.",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 0
+      },
+      "revId": "d0cba11ab8c761edba5da34c5dd65269b3ed8458",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7939eac6_65fc6ff8",
         "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
         "patchSetId": 11
@@ -235,6 +258,29 @@
       "writtenOn": "2021-12-20T22:53:01Z",
       "side": 1,
       "message": "nit: remove braces around single statements.",
+      "revId": "d0cba11ab8c761edba5da34c5dd65269b3ed8458",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85bc8245_deee195e",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 529,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2021-12-23T08:00:55Z",
+      "side": 1,
+      "message": "This signal is not defined in brya which causes it to stop at S5 in bootup sequence. There should be a guard to check if this is defined in the .dts",
+      "range": {
+        "startLine": 529,
+        "startChar": 28,
+        "endLine": 529,
+        "endChar": 52
+      },
       "revId": "d0cba11ab8c761edba5da34c5dd65269b3ed8458",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
