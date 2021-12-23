@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f0f4be4f_6b7a3528",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2021-12-23T09:12:38Z",
+      "side": 1,
+      "message": "Need more investigation, SCP shouldn\u0027t have any load in S3.",
+      "range": {
+        "startLine": 10,
+        "startChar": 9,
+        "endLine": 10,
+        "endChar": 70
+      },
+      "revId": "cc2c3d4991634647d670d72edcfd6fc98d599c8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "400db37d_55f309ff",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -38,6 +61,30 @@
       "side": 1,
       "message": "SCP will not reset when IPI timeout. \nAP keeps print these message without reset SCP.\n\nERR kernel: [17675.129902] mtk-scp 10500000.scp: scp_ipi_send: IPI timeout!\nERR kernel: [17675.129908] cros-ec-rpmsg 10500000.scp.cros-ec-rpmsg.13.-1: rpmsg send failed\n\nsee logs in b:202754468.",
       "parentUuid": "400db37d_55f309ff",
+      "range": {
+        "startLine": 11,
+        "startChar": 20,
+        "endLine": 11,
+        "endChar": 47
+      },
+      "revId": "cc2c3d4991634647d670d72edcfd6fc98d599c8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f90b20a_0844c9fb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2021-12-23T09:12:38Z",
+      "side": 1,
+      "message": "I see.\n\nPut chip variant code in core/riscv-rv32i/panic.c is not a good idea in general.  I was thinking if we have better alternatives.\n\nIf we can enable WDT back during S3...",
+      "parentUuid": "aee6f5a8_39c2ac7f",
       "range": {
         "startLine": 11,
         "startChar": 20,
