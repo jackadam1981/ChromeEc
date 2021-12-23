@@ -34,6 +34,24 @@
       "parentUuid": "4c9ae06a_21d761b9",
       "revId": "e7aad4cba3f384956094c8be9c532fb038a81657",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2c9a6c9_82fa3d0e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2021-12-23T09:05:59Z",
+      "side": 1,
+      "message": "I was thinking: if you really need a debug dump, dumb CSRs is useful than others.\n\nE.g.:\nCSR_VIC_MICAUSE\nCSR_VIC_MIPEND_G0\n\nThis CL https://crrev.com/c/2167115/9/chip/mt8192_scp/intc.c is quite old, but some idea inside.\n\n\nOtherwise, we have some encoded data in TP (see https://crrev.com/c/2638998).  I guess you could encode the ec_int to make it obviously a group number.\n\nE.g.: you have 4 bytes to put ec_int (https://crrev.com/c/2638998/6/core/riscv-rv32i/init.S#349).  Makes the first bit to \"1\" or whatever magic number to indicate the following bits is a group number.",
+      "parentUuid": "472352f5_5945bdf8",
+      "revId": "e7aad4cba3f384956094c8be9c532fb038a81657",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
