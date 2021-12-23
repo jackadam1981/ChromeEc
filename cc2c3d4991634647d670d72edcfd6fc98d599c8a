@@ -22,6 +22,30 @@
       },
       "revId": "cc2c3d4991634647d670d72edcfd6fc98d599c8a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aee6f5a8_39c2ac7f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1470933
+      },
+      "writtenOn": "2021-12-23T08:35:24Z",
+      "side": 1,
+      "message": "SCP will not reset when IPI timeout. \nAP keeps print these message without reset SCP.\n\nERR kernel: [17675.129902] mtk-scp 10500000.scp: scp_ipi_send: IPI timeout!\nERR kernel: [17675.129908] cros-ec-rpmsg 10500000.scp.cros-ec-rpmsg.13.-1: rpmsg send failed\n\nsee logs in b:202754468.",
+      "parentUuid": "400db37d_55f309ff",
+      "range": {
+        "startLine": 11,
+        "startChar": 20,
+        "endLine": 11,
+        "endChar": 47
+      },
+      "revId": "cc2c3d4991634647d670d72edcfd6fc98d599c8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
