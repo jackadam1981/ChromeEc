@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d03a64b_4691ffa1",
+        "filename": "board/brya/fw_config.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-12-23T01:23:44Z",
+      "side": 1,
+      "message": "please update src/project/brya/brya/config.star\nbefore assigning values here.",
+      "range": {
+        "startLine": 20,
+        "startChar": 1,
+        "endLine": 20,
+        "endChar": 11
+      },
+      "revId": "a7804641069fcfb279b2c4ac086f37669abf2de7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01229095_fb76f008",
+        "filename": "board/brya/usbc_config.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-12-23T01:23:44Z",
+      "side": 1,
+      "message": "USB4",
+      "range": {
+        "startLine": 102,
+        "startChar": 3,
+        "endLine": 102,
+        "endChar": 8
+      },
+      "revId": "a7804641069fcfb279b2c4ac086f37669abf2de7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8df02375_36ee687f",
+        "filename": "board/brya/usbc_config.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 601,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-12-23T01:23:44Z",
+      "side": 1,
+      "message": "this should be called from config_usb_db_type() instead.",
+      "range": {
+        "startLine": 601,
+        "startChar": 24,
+        "endLine": 601,
+        "endChar": 45
+      },
+      "revId": "a7804641069fcfb279b2c4ac086f37669abf2de7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
