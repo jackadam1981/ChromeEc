@@ -137,6 +137,15 @@
 	#define BASE_IMU_INT()
 #endif
 
+#define RT9490_INT() IF_ENABLED(CONFIG_PLATFORM_EC_CHARGER_RT9490,             \
+				(GPIO_INT(GPIO_USB_C1_BC12_CHARGER_INT_ODL,    \
+					  GPIO_INT_EDGE_FALLING,               \
+					  bc12_interrupt)))
+#define RT1739_INT() IF_ENABLED(CONFIG_PLATFORM_EC_USBC_PPC_RT1739,            \
+				(GPIO_INT(GPIO_USB_C0_PPC_BC12_INT_ODL,        \
+					  GPIO_INT_EDGE_FALLING,               \
+					  bc12_interrupt)))
+
 /*
  * Set EC_CROS_GPIO_INTERRUPTS to a space-separated list of GPIO_INT items.
  *
@@ -168,6 +177,8 @@
 	EXTPWR_INT()							\
 	SWITCH_INT()							\
 	AP_SPI_INT()							\
-	X_EC_GPIO2_INT()
+	X_EC_GPIO2_INT()						\
+	RT9490_INT()							\
+	RT1739_INT()
 
 #endif /* __ZEPHYR_GPIO_MAP_H */
