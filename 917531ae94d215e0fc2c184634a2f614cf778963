@@ -16,6 +16,24 @@
       "message": "please also add the corresponding zephyr Kconfig.",
       "revId": "917531ae94d215e0fc2c184634a2f614cf778963",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f7060ce_9018e30f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1477218
+      },
+      "writtenOn": "2021-12-24T01:04:34Z",
+      "side": 1,
+      "message": "zephyr! really?!\nI haven\u0027t started working on it. 😐\nCould you give me some hint or document for reference that I can make sure my patch can work on zephyr once I complete corresponding zephyr Kconfig? Ex. how to build zephyr ec? is same command to build ec, ex. make -j BOARD\u003dboardname?",
+      "parentUuid": "b88fdc7c_87a91f67",
+      "revId": "917531ae94d215e0fc2c184634a2f614cf778963",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
