@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "97a724f5_0acd10de",
+        "filename": "board/taeko/board.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1477218
+      },
+      "writtenOn": "2021-12-24T01:56:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b025f9a0_b635c21b",
+      "range": {
+        "startLine": 178,
+        "startChar": 27,
+        "endLine": 178,
+        "endChar": 28
+      },
+      "revId": "6e0593dfb93b630d0f3449aeb46a470c7f485a6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a6142ee7_05ca06a8",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a5aaeac_ec31aa4b",
+        "filename": "board/taeko/board.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1477218
+      },
+      "writtenOn": "2021-12-24T01:56:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a6142ee7_05ca06a8",
+      "range": {
+        "startLine": 185,
+        "startChar": 27,
+        "endLine": 185,
+        "endChar": 28
+      },
+      "revId": "6e0593dfb93b630d0f3449aeb46a470c7f485a6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c02aa5b0_6dac446e",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-12-23T21:26:54Z",
       "side": 1,
       "message": "BQ25720_CHARGE_OPTION_4_VSYS_UVP__5P6\n\n(needs to be added to bq257x0_regs.h, but should be\nin a separate patch that\u0027s not board specific)",
+      "range": {
+        "startLine": 197,
+        "startChar": 40,
+        "endLine": 197,
+        "endChar": 44
+      },
+      "revId": "6e0593dfb93b630d0f3449aeb46a470c7f485a6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b7b37ac_80a3c5ba",
+        "filename": "board/taeko/board.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1477218
+      },
+      "writtenOn": "2021-12-24T01:56:02Z",
+      "side": 1,
+      "message": "\u003e BQ25720_CHARGE_OPTION_4_VSYS_UVP__5P6\n\u003e \n\u003e (needs to be added to bq257x0_regs.h, but should be\n\u003e in a separate patch that\u0027s not board specific)\nDone.\nI create CL:3354780 to add it and re-base this change.",
+      "parentUuid": "c02aa5b0_6dac446e",
       "range": {
         "startLine": 197,
         "startChar": 40,
