@@ -34,6 +34,24 @@
       "parentUuid": "b88fdc7c_87a91f67",
       "revId": "917531ae94d215e0fc2c184634a2f614cf778963",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6b372d9_9de23e49",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-12-24T02:26:29Z",
+      "side": 1,
+      "message": "see:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3283416\n\nfor how i set up a similar change.\n\nthen, from your chroot:\n\ncd ~/trunk/src/platform/ec\n\nzmake configure -B ~/build-volteer/ zephyr/projects/volteer/volteer\nzmake build ~/build-volteer/\n\ncd ~/build-volteer/build-ro\nninja menuconfig\n\nyou can navigate around in menuconfig to check that your setting\nlooks right and examine the resulting config file.",
+      "parentUuid": "6f7060ce_9018e30f",
+      "revId": "917531ae94d215e0fc2c184634a2f614cf778963",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
