@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6df54702_b7e30642",
+        "filename": "zephyr/Kconfig.battery",
+        "patchSetId": 14
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-12-24T22:14:15Z",
+      "side": 1,
+      "message": "remove \"in percentage\" since that\u0027s confusing.\nthis is an encoding of the percentage value,\nnot the actual ratio.\n\nyou have the encoding table in the next comment section,\nso i think the raw value is OK.\n\nsee PLATFORM_EC_CHARGER_BQ25720_IDCHG_DEG2 for a similar case.",
+      "range": {
+        "startLine": 380,
+        "startChar": 21,
+        "endLine": 380,
+        "endChar": 35
+      },
+      "revId": "36809694cc777a6908ea20217fec31e7a6f932fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "504b01f9_bd3f9c02",
+        "filename": "zephyr/Kconfig.battery",
+        "patchSetId": 14
+      },
+      "lineNbr": 382,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-12-24T22:14:15Z",
+      "side": 1,
+      "message": "chip default is 9",
+      "range": {
+        "startLine": 382,
+        "startChar": 9,
+        "endLine": 382,
+        "endChar": 10
+      },
+      "revId": "36809694cc777a6908ea20217fec31e7a6f932fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
