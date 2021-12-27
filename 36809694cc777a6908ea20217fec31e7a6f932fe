@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "de142579_d6e74bef",
+        "filename": "zephyr/Kconfig.battery",
+        "patchSetId": 14
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1477218
+      },
+      "writtenOn": "2021-12-27T06:46:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6df54702_b7e30642",
+      "range": {
+        "startLine": 380,
+        "startChar": 21,
+        "endLine": 380,
+        "endChar": 35
+      },
+      "revId": "36809694cc777a6908ea20217fec31e7a6f932fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "504b01f9_bd3f9c02",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-12-24T22:14:15Z",
       "side": 1,
       "message": "chip default is 9",
+      "range": {
+        "startLine": 382,
+        "startChar": 9,
+        "endLine": 382,
+        "endChar": 10
+      },
+      "revId": "36809694cc777a6908ea20217fec31e7a6f932fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a4581061_33a8917e",
+        "filename": "zephyr/Kconfig.battery",
+        "patchSetId": 14
+      },
+      "lineNbr": 382,
+      "author": {
+        "id": 1477218
+      },
+      "writtenOn": "2021-12-27T06:46:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "504b01f9_bd3f9c02",
       "range": {
         "startLine": 382,
         "startChar": 9,

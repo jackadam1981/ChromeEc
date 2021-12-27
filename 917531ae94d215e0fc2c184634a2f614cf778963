@@ -88,6 +88,24 @@
       "parentUuid": "dee70933_0ac2e097",
       "revId": "917531ae94d215e0fc2c184634a2f614cf778963",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e630e041_f4f0c3b4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1477218
+      },
+      "writtenOn": "2021-12-27T06:46:02Z",
+      "side": 1,
+      "message": "Hi Caveh,\nPlease refer comment#21 of b:210073795.\nTI feedback \"00000b and 00001b should be the same as 110%\".\nWe propose to define range as 1~30 (31 is out of range).",
+      "parentUuid": "0c0b1c4e_8bf89b21",
+      "revId": "917531ae94d215e0fc2c184634a2f614cf778963",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
