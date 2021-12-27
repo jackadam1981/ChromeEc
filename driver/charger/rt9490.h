@@ -164,6 +164,9 @@ struct rt9490_init_setting {
 #define RT9490_JEITA_WARM_MASK			0x02
 #define RT9490_JEITA_HOT_MASK			0x01
 
+/* CHG_IRQ_FLAG1 */
+#define RT9490_BC12_DONE_FLAG			0x01
+
 /* SAFETY TMR CTRL */
 #define RT9490_EN_TMR_MASK				0x38
 #define RT9490_EN_FASTCHG_TMR_MASK		0x08
@@ -197,6 +200,10 @@ struct rt9490_init_setting {
 #define RT9490_BC12_DONE_STAT_MASK		0x01
 #define RT9490_BC12_DONE_STAT_SHIFT		0
 
+#define RT9490_SDP				0x1
+#define RT9490_CDP				0x2
+#define RT9490_DCP				0x3
+
 /* CHG FAULT0 */
 #define RT9490_VBAT_OVP_STAT_MASK		0x20
 
@@ -228,5 +235,8 @@ struct rt9490_init_setting {
 #define RT9490_PE20_VOLT_STEP			500
 
 extern const struct charger_drv rt9490_drv;
+extern const struct bc12_drv rt9490_bc12_drv;
+
+void rt9490_interrupt(int port);
 
 #endif /* __CROS_EC_RT9490_H */
