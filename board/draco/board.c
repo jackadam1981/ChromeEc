@@ -92,7 +92,6 @@ static void board_id_1_reclaim_adc(void)
 	 * in HOOK_PRIO_INIT_ADC, so we simply need to set the pin back
 	 * to GPIO34.
 	 */
-	gpio_set_flags(GPIO_ID_1_USB_C0_C2_TCPC_RST_ODL, GPIO_ODR_HIGH);
 	gpio_set_alternate_function(GPIO_PORT_3, BIT(4), GPIO_ALT_FUNC_NONE);
 
 	/*
