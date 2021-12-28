@@ -9,6 +9,7 @@
 #include "common.h"
 #include "system.h"
 #include "usb_charge.h"
+#include "usb_pd.h"
 #include "util.h"
 
 test_mockable int chg_ramp_allowed(int port, int supplier)
@@ -26,21 +27,26 @@ test_mockable int chg_ramp_allowed(int port, int supplier)
 	case CHARGE_SUPPLIER_TYPEC_DTS:
 		return 1;
 	/*
-	 * Don't regulate the input voltage for USB-C chargers. It is
-	 * unnecessary as the USB-C compliant adapters should never trigger it
-	 * active.
+	 * Allow HW ramping for USB-C chargers when vbus present (at least
+	 * vSafe5V min).
 	 *
 	 * The USB-C spec defines their load curves should not be below
 	 * 4.75V @0A and 4V @3A. We can't define the voltage regulation value
-	 * higher than 4V since it limits the current reaching its max 3A. If
-	 * we define the voltage regulation value lower than 4V, their load
-	 * curves will never be below the voltage regulation line.
+	 * higher than 4V when vbus not present (less than vSafe5V) since it
+	 * limits the current reaching its max 3A. If we define the voltage
+	 * regulation value lower than 4V when vbus not present, their load
+	 * curves will never be below the voltage regulation line. When vbus
+	 * present (above 4.75V), enable HW ramping to avoid vbus voltage drop
+	 * below vSafe5V min.
 	 *
 	 * Check go/charge_ramp_typec for detail.
 	 */
 	case CHARGE_SUPPLIER_PD:
 	case CHARGE_SUPPLIER_TYPEC:
-		return 0;
+		if (pd_check_vbus_level(port, VBUS_PRESENT))
+			return IS_ENABLED(CONFIG_CHARGE_RAMP_HW);
+		else
+			return 0;
 	/* default: fall through */
 	}
 
