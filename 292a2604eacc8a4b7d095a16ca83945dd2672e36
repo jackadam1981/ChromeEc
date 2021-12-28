@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "537293de_0ed8196f",
+        "filename": "driver/charger/bq257x0_regs.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-12-28T21:53:05Z",
+      "side": 1,
+      "message": "nit: we probably don\u0027t need this entry.\nif anyone tries to set this field to \"NA\", maybe\nthe code should just not compile 😊",
+      "revId": "292a2604eacc8a4b7d095a16ca83945dd2672e36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
