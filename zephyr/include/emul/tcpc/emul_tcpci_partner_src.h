@@ -27,14 +27,20 @@
  * source capabilities constructed from given PDOs.
  */
 
-/** Structure describing source device emulator */
+/** Structure describing source device emulator data */
 struct tcpci_src_emul_data {
+	/** Power data objects returned in source capabilities message */
+	uint32_t pdo[PDO_MAX_OBJECTS];
+};
+
+/** Structure describing standalone source device emulator */
+struct tcpci_src_emul {
 	/** Common TCPCI partner data */
 	struct tcpci_partner_data common_data;
 	/** Operations used by TCPCI emulator */
 	struct tcpci_emul_partner_ops ops;
-	/** Power data objects returned in source capabilities message */
-	uint32_t pdo[PDO_MAX_OBJECTS];
+	/** Source emulator data */
+	struct tcpci_src_emul_data data;
 };
 
 /** Return values of @ref tcpci_src_emul_check_pdos function */
@@ -57,7 +63,15 @@ enum check_pdos_res {
  *
  * @param data Pointer to USB-C source device emulator
  */
-void tcpci_src_emul_init(struct tcpci_src_emul_data *data);
+void tcpci_src_emul_init(struct tcpci_src_emul *emul);
+
+/**
+ * @brief Initialise USB-C source device data structure. Single PDO 5V@3A is
+ *        created with fixed unconstrained flag.
+ *
+ * @param data Pointer to USB-C source device emulator
+ */
+void tcpci_src_emul_init_data(struct tcpci_src_emul_data *data);
 
 /**
  * @brief Connect emulated device to TCPCI
@@ -69,6 +83,8 @@ void tcpci_src_emul_init(struct tcpci_src_emul_data *data);
  * @return negative on TCPCI connect error or send source capabilities error
  */
 int tcpci_src_emul_connect_to_tcpci(struct tcpci_src_emul_data *data,
+				    struct tcpci_partner_data *common_data,
+				    const struct tcpci_emul_partner_ops *ops,
 				    const struct emul *tcpci_emul);
 
 /**
@@ -98,6 +114,27 @@ int tcpci_src_emul_connect_to_tcpci(struct tcpci_src_emul_data *data,
  *         after zero PDO
  */
 enum check_pdos_res tcpci_src_emul_check_pdos(struct tcpci_src_emul_data *data);
+
+/**
+ * @brief Send capability message constructed from source device emulator PDOs
+ *
+ * @param data Pointer to USB-C source device emulator
+ * @param common_data Pointer to common TCPCI partner data
+ * @param delay Optional delay
+ *
+ * @return 0 on success
+ * @return -ENOMEM when there is no free memory for message
+ * @return -EINVAL on TCPCI emulator add RX message error
+ */
+int tcpci_src_emul_send_capability_msg(struct tcpci_src_emul_data *data,
+				       struct tcpci_partner_data *common_data,
+				       uint64_t delay);
+
+/** Check description in emul_tcpci_partner_src.h */
+enum tcpci_partner_handler_res tcpci_src_emul_handle_sop_msg(
+	struct tcpci_src_emul_data *data,
+	struct tcpci_partner_data *common_data,
+	const struct tcpci_emul_msg *msg);
 
 /**
  * @}
