@@ -45,7 +45,7 @@ static int cros_kb_raw_ite_enable_interrupt(const struct device *dev,
 	const struct cros_kb_raw_ite_config *config = dev->config;
 
 	if (enable) {
-		ECREG(IT8XXX2_WUC_WUESR3) = 0xFF;
+		IT8XXX2_WUC_WUESR3 = 0xFF;
 		ite_intc_isr_clear(config->irq);
 		irq_enable(config->irq);
 	} else {
@@ -112,7 +112,7 @@ static void cros_kb_raw_ite_ksi_isr(const struct device *dev)
 	 * ite_intc_irq_handler(), after interrupt was fired.
 	 */
 	/* W/C wakeup interrupt status for KSI[0-7] */
-	ECREG(IT8XXX2_WUC_WUESR3) = 0xFF;
+	IT8XXX2_WUC_WUESR3 = 0xFF;
 
 	/* Wake-up keyboard scan task */
 	task_wake(TASK_ID_KEYSCAN);
@@ -159,12 +159,12 @@ static int cros_kb_raw_ite_init(const struct device *dev)
 	/* restore interrupts */
 	irq_unlock(key);
 	/* Select falling-edge triggered of wakeup interrupt for KSI[0-7] */
-	ECREG(IT8XXX2_WUC_WUEMR3) = 0xFF;
+	IT8XXX2_WUC_WUEMR3 = 0xFF;
 	/* W/C wakeup interrupt status for KSI[0-7] */
-	ECREG(IT8XXX2_WUC_WUESR3) = 0xFF;
+	IT8XXX2_WUC_WUESR3 = 0xFF;
 	ite_intc_isr_clear(config->irq);
 	/* Enable wakeup interrupt for KSI[0-7] */
-	ECREG(IT8XXX2_WUC_WUENR3) = 0xFF;
+	IT8XXX2_WUC_WUENR3 = 0xFF;
 
 	IRQ_CONNECT(DT_INST_IRQN(0), 0, cros_kb_raw_ite_ksi_isr, NULL, 0);
 
