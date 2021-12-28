@@ -209,7 +209,11 @@ enum pd_rx_errors {
 #else
 #define PD_T_SENDER_RESPONSE        (24*MSEC) /* between 24ms and 30ms */
 #endif
+#ifndef CONFIG_USB_PD_T_PS_TRANSITION_MAX_ALLOWED
 #define PD_T_PS_TRANSITION         (500*MSEC) /* between 450ms and 550ms */
+#else
+#define PD_T_PS_TRANSITION	   (550*MSEC) /* between 450ms and 550ms */
+#endif
 #define PD_T_PS_SOURCE_ON          (480*MSEC) /* between 390ms and 480ms */
 #define PD_T_PS_SOURCE_OFF         (835*MSEC) /* between 750ms and 920ms */
 #define PD_T_PS_HARD_RESET          (25*MSEC) /* between 25ms and 35ms */
