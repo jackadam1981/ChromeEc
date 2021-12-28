@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f63b0074_937ccb37",
+        "filename": "board/cr50/u2f.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 414,
+      "author": {
+        "id": 1520327
+      },
+      "writtenOn": "2021-12-28T10:01:32Z",
+      "side": 1,
+      "message": "Here, we changed to return bool, where 1 represents success.",
+      "range": {
+        "startLine": 414,
+        "startChar": 0,
+        "endLine": 414,
+        "endChar": 6
+      },
+      "revId": "4b109d0b957a66bb9e6726f54db22d55452999b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
