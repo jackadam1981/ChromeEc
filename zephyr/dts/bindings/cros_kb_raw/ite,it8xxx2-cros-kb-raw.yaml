@@ -1,0 +1,21 @@
+# Copyright 2022 Google LLC
+# SPDX-License-Identifier: Apache-2.0
+
+description: ITE, it8xxx2-cros-kb-raw node
+
+compatible: "ite,it8xxx2-cros-kb-raw"
+
+include: cros-kb-raw-controller.yaml
+
+properties:
+    reg:
+      required: true
+
+    interrupts:
+      required: true
+
+    wucctrl-0:
+      type: phandles
+      description: |
+        Pin configurations for the state. Content is specific to the
+        selected pin controller interface implementation.
