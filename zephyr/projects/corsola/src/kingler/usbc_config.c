@@ -13,6 +13,7 @@
 #include "driver/ppc/rt1718s.h"
 #include "driver/tcpm/anx7447.h"
 #include "driver/tcpm/rt1718s.h"
+#include "driver/usb_mux/ps8743.h"
 #include "hooks.h"
 #include "timer.h"
 #include "usb_charge.h"
@@ -71,7 +72,46 @@ const struct charger_config_t chg_chips[] = {
 	}
 };
 
-struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {};
+/* USB Mux */
+
+/* USB Mux C1 : board_init of PS8743 */
+static int ps8743_tune_mux(const struct usb_mux *me)
+{
+	ps8743_tune_usb_eq(me,
+			PS8743_USB_EQ_TX_3_6_DB,
+			PS8743_USB_EQ_RX_16_0_DB);
+
+	return EC_SUCCESS;
+}
+
+const struct usb_mux usbc0_virtual_mux = {
+	.usb_port = USBC_PORT_C0,
+	.driver = &virtual_usb_mux_driver,
+	.hpd_update = &virtual_hpd_update,
+};
+
+const struct usb_mux usbc1_virtual_mux = {
+	.usb_port = USBC_PORT_C1,
+	.driver = &virtual_usb_mux_driver,
+	.hpd_update = &virtual_hpd_update,
+};
+
+struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
+	[USBC_PORT_C0] = {
+		.usb_port = USBC_PORT_C0,
+		.driver = &anx7447_usb_mux_driver,
+		.hpd_update = &anx7447_tcpc_update_hpd_status,
+		.next_mux = &usbc0_virtual_mux,
+	},
+	[USBC_PORT_C1] = {
+		.usb_port = USBC_PORT_C1,
+		.i2c_port = I2C_PORT_USB_C1,
+		.i2c_addr_flags = PS8743_I2C_ADDR0_FLAG,
+		.driver = &ps8743_usb_mux_driver,
+		.next_mux = &usbc1_virtual_mux,
+		.board_init = &ps8743_tune_mux,
+	},
+};
 
 struct bc12_config bc12_ports[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 	[USBC_PORT_C0] = {
