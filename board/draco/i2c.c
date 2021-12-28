@@ -22,35 +22,27 @@ const struct i2c_port_t i2c_ports[] = {
 	},
 	{
 		/* I2C1 */
-		.name = "tcpc0,2",
-		.port = I2C_PORT_USB_C0_C2_TCPC,
+		.name = "tcpc0",
+		.port = I2C_PORT_USB_C0_TCPC,
 		.kbps = 1000,
-		.scl = GPIO_EC_I2C_USB_C0_C2_TCPC_SCL,
-		.sda = GPIO_EC_I2C_USB_C0_C2_TCPC_SDA,
+		.scl = GPIO_EC_I2C_USB_C0_SCL,
+		.sda = GPIO_EC_I2C_USB_C0_SDA,
 	},
 	{
 		/* I2C2 */
-		.name = "ppc0,2",
-		.port = I2C_PORT_USB_C0_C2_PPC,
+		.name = "ppc0",
+		.port = I2C_PORT_USB_C0_PPC,
 		.kbps = 1000,
-		.scl = GPIO_EC_I2C_USB_C0_C2_PPC_BC_SCL,
-		.sda = GPIO_EC_I2C_USB_C0_C2_PPC_BC_SDA,
-	},
-	{
-		/* I2C3 */
-		.name = "retimer0,2",
-		.port = I2C_PORT_USB_C0_C2_MUX,
-		.kbps = 1000,
-		.scl = GPIO_EC_I2C_USB_C0_C2_RT_SCL,
-		.sda = GPIO_EC_I2C_USB_C0_C2_RT_SDA,
+		.scl = GPIO_EC_I2C_USB_C0_SCL,
+		.sda = GPIO_EC_I2C_USB_C0_SDA,
 	},
 	{
 		/* I2C4 C1 TCPC */
 		.name = "tcpc1",
 		.port = I2C_PORT_USB_C1_TCPC,
 		.kbps = 1000,
-		.scl = GPIO_EC_I2C_USB_C1_TCPC_SCL,
-		.sda = GPIO_EC_I2C_USB_C1_TCPC_SDA,
+		.scl = GPIO_EC_I2C_USB_C1_SCL,
+		.sda = GPIO_EC_I2C_USB_C1_SDA,
 		.flags = I2C_PORT_FLAG_DYNAMIC_SPEED,
 	},
 	{
@@ -60,15 +52,6 @@ const struct i2c_port_t i2c_ports[] = {
 		.kbps = 100,
 		.scl = GPIO_EC_I2C_BAT_SCL,
 		.sda = GPIO_EC_I2C_BAT_SDA,
-	},
-	{
-		/* I2C6 */
-		.name = "ppc1",
-		.port = I2C_PORT_USB_C1_PPC,
-		.kbps = 1000,
-		.scl = GPIO_EC_I2C_USB_C1_MIX_SCL,
-		.sda = GPIO_EC_I2C_USB_C1_MIX_SDA,
-		.flags = I2C_PORT_FLAG_DYNAMIC_SPEED,
 	},
 	{
 		/* I2C7 */

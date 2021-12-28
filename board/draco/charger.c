@@ -4,7 +4,6 @@
  */
 
 #include "common.h"
-
 #include "charge_manager.h"
 #include "charge_state_v2.h"
 #include "charger.h"
