@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b06d6900_b85750ed",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2021-12-28T18:55:05Z",
+      "side": 1,
+      "message": "When creating the STM32L5xx register declaration header file, I copied from the existing L4xx, modifying the sections that I found necessary.\n\nI have discovered that I failed to see that L5xx has two additional gpio banks on top of the ones declared to be enabled by default for L4xx, this CL adds banks F and G to the set that gets enabled in gpio_enable_clocks().",
+      "revId": "9eab1af7582a0c1cd376e9ab9333e1fb4aface64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
