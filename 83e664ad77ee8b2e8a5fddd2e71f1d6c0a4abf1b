@@ -16,6 +16,24 @@
       "message": "It still fails even if we re-base it.\nDo we have any missing?",
       "revId": "83e664ad77ee8b2e8a5fddd2e71f1d6c0a4abf1b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3fee9f57_52dcdd25",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-12-28T21:23:11Z",
+      "side": 1,
+      "message": "Looks like applying git patch (with .patch file) doesn\u0027t work because the `apply` command in CQ uses `--3way` argument. \nCan you please split this change into two? The first is to remove the file and the second is to add the symlink. I think that would be much faster than trying to resolve the CQ now during the holiday season..\nSorry for the inconvenience.",
+      "parentUuid": "cdafe192_fcd9e443",
+      "revId": "83e664ad77ee8b2e8a5fddd2e71f1d6c0a4abf1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
