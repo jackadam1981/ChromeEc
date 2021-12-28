@@ -147,6 +147,11 @@
 			enum-name = "GPIO_EC_PROCHOT_IN_L";
 			label = "EC_PROCHOT_IN_L";
 		};
+		gpio_en_pp5000_fan: en_pp5000_fan {
+			gpios = <&gpio6 1 GPIO_OUT_HIGH>;
+			enum-name = "GPIO_EN_PP5000_FAN";
+			label = "EN_PP5000_FAN";
+		};
 	};
 
 	hibernate-wake-pins {

@@ -6,6 +6,7 @@ register_npcx_project(
     project_name="brya",
     zephyr_board="brya",
     dts_overlays=[
+        "fan.dts",
         "gpio.dts",
         "pwm.dts",
         "pwm_leds.dts",
