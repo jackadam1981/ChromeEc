@@ -1,0 +1,45 @@
+ # Copyright 2021 The Chromium OS Authors. All rights reserved.
+ # Use of this source code is governed by a BSD-style license that can be
+ # found in the LICENSE file.
+
+description: Common fields for AP power sequence
+
+compatible: "ap-pwrseq"
+
+properties:
+    dsw-pwrok-delay:
+      type: int
+      required: false 
+      default: 100
+      description: |
+        Delay to to set VCCST_PWRGD high after PG_EC_ALL_SYS_PWRGD
+        is asserted, in milliseconds.
+
+    rsmrst-delay:
+      type: int
+      required: false
+      default: 10
+      description: |
+          Delay to set RSMRST, in milliseconds.
+
+    sys-pwrok-delay:
+      type: int
+      required: false
+      default: 50
+      description: |
+          Delay from PG_EC_ALL_SYS_PWRGD high to set EC_PCH_SYS_PWROK high,
+          in milliseconds.
+
+    vccin-delay:
+      type: int
+      required: false
+      default: 5
+      description: |
+          VCCIN in milliseconds.
+
+    pm-pwrbtn-delay:
+      type: int
+      required: false
+      default: 200
+      description: |
+          Power button delay, in milliseconds.
