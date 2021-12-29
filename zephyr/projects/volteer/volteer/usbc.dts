@@ -1,6 +1,11 @@
 / {
 	usbc {
 		port0: usbc-port0 {
+			ppc {
+				compatible = "ti,sn5s330";
+				port = <&i2c_usb_c0>;
+				i2c-addr-flags = "SN5S330_ADDR0_FLAGS";
+			}
 			bc12 {
 				compatible = "pericom,pi3usb9201";
 				port = <&i2c_usb_c0>;
