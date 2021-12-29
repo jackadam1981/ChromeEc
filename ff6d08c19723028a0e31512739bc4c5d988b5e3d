@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11cba976_07d52f81",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-12-29T01:49:32Z",
+      "side": 1,
+      "message": "@chlin, are there any other reset timings we need to consider?\nin particular, chip power-on to reset de-assertion? i didn\u0027t\nsee a constraint in the datasheet, so hoping 1ms is OK.\n",
+      "revId": "ff6d08c19723028a0e31512739bc4c5d988b5e3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2c6fcda_d6756b1c",
+        "filename": "board/vell/usbc_config.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-12-29T01:49:32Z",
+      "side": 1,
+      "message": "3808?",
+      "range": {
+        "startLine": 319,
+        "startChar": 8,
+        "endLine": 319,
+        "endChar": 12
+      },
+      "revId": "ff6d08c19723028a0e31512739bc4c5d988b5e3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
