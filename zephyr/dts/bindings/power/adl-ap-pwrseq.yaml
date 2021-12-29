@@ -1,0 +1,38 @@
+# Copyright 2021 The Chromium OS Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+description: Alderlake fields for power sequence
+
+compatible: "adl-ap-pwrseq"
+
+properties:
+    pwrseq-gpios-required:
+        description:
+            Number of gpios in power sequence
+        type: int
+
+child-binding:
+    description: Power Sequence GPIO List child node
+    properties:
+        dbg-label:
+            type: string
+            required: true
+            description: Label of power signal used in debug messages
+
+        power-gpio-pin:
+            type: phandle
+            required: true
+            description: phandle to associated GPIO
+
+        power-signal-enum:
+            type: string
+            required: true
+            description: Enumeration values for power-signal-list
+
+        flags:
+            type: int
+            required: true
+            description: bit 0 represents active in high or low state,
+              bit [0] = 1 active high
+              bit [0] = 0 active low

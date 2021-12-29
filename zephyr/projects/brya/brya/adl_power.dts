@@ -1,0 +1,48 @@
+/* Copyright 2021 The Chromium OS Authors. All rights reserved.
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+/ {
+	pwrseq_gpio_list: power-gpio-list {
+		compatible = "adl-ap-pwrseq";
+		pwrseq-gpios-required = <6>;
+
+		pwrseq_slp_sus {
+			dbg-label = "SLP_SUS_DEASSERTED";
+			power-gpio-pin = <&slpsus>;
+			power-signal-enum = "X86_SLP_SUS_DEASSERTED";
+			flags = <0x1>;
+		};
+		pwrseq_slp_s0 {
+			dbg-label = "SLP_S0_DEASSERTED";
+			power-gpio-pin = <&slps0>;
+			power-signal-enum = "X86_SLP_S0_DEASSERTED";
+			flags = <0x1>;
+		};
+		pwrseq_slp_s3 {
+			dbg-label = "SLP_S3_DEASSERTED";
+			power-gpio-pin = <&slps3>;
+			power-signal-enum = "X86_SLP_S3_DEASSERTED";
+			flags = <0x1>;
+		};
+		pwrseq_rsmrst {
+			dbg-label = "RSMRST_L_PGOOD";
+			power-gpio-pin = <&rsmrstin>;
+			power-signal-enum = "X86_RSMRST_L_PGOOD";
+			flags = <0x1>;
+		};
+		pwrseq_dsw_pwrok {
+			dbg-label = "DSW_DPWROK";
+			power-gpio-pin = <&dswpwrokin>;
+			power-signal-enum = "X86_DSW_PWROK";
+			flags = <0x1>;
+		};
+		pwrseq_all_sys_pwrgd {
+			dbg-label = "ALL_SYS_PWRGD";
+			power-gpio-pin = <&allsyspwrgd>;
+			power-signal-enum = "X86_ALL_SYS_PGOOD";
+			flags = <0x1>;
+		};
+	};
+};

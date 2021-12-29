@@ -9,6 +9,7 @@ register_npcx_project(
         "battery.dts",
         "cbi_eeprom.dts",
         "common_power.dts",
+        "adl_power.dts",
         "fan.dts",
         "gpio.dts",
         "motionsense.dts",
