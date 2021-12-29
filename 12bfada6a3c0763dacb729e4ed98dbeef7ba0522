@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4973eb74_48ca1794",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1447356
+      },
+      "writtenOn": "2021-12-29T03:30:40Z",
+      "side": 1,
+      "message": "Hi Daisuke,\n\nPer chat, We have verified passed with this issue for boot up power sequence since the MB design has been modified to ADC pin.\nThis issue tracker is to track the Proto Build CLs and can bring up successfully.\nhttps://partnerissuetracker.corp.google.com/issues/210072105\n\nThanks, \nSS",
+      "revId": "12bfada6a3c0763dacb729e4ed98dbeef7ba0522",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
