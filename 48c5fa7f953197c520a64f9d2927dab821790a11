@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3e432bd_efa58c29",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000497
+      },
+      "writtenOn": "2021-12-29T01:52:41Z",
+      "side": 1,
+      "message": "The flash log should be enough to keep track of the AP RO verification state, but some users wanted an explicit vendor command for this, I think log could be enough if we could convince the end users to use it.",
+      "revId": "48c5fa7f953197c520a64f9d2927dab821790a11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
