@@ -16,6 +16,46 @@
       "message": "I thought that if we still have to rerun FIPS test due to G2F issues, it is worth to address TRNG stalls we started to observe.",
       "revId": "ee69df68becc13f00d60a7d2e50d73dda4192ab6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c32fa24_51495863",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-12-29T19:59:41Z",
+      "side": 1,
+      "message": "lgtm, but need review for rng -\u003e mod part from somebody who understands crypto better than me - see CIL.",
+      "revId": "ee69df68becc13f00d60a7d2e50d73dda4192ab6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04bfb8cf_8024c6ad",
+        "filename": "board/cr50/dcrypto/bn.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1250,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-12-29T19:59:41Z",
+      "side": 1,
+      "message": "let\u0027s double check it is ok",
+      "range": {
+        "startLine": 1240,
+        "startChar": 4,
+        "endLine": 1250,
+        "endChar": 0
+      },
+      "revId": "ee69df68becc13f00d60a7d2e50d73dda4192ab6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
