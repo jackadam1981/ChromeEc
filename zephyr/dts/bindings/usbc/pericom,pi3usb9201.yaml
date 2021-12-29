@@ -11,7 +11,7 @@ properties:
 
   irq:
     type: phandles
-    required: true
+    required: false
     description: |
         GPIO interrupt from BC1.2
 
