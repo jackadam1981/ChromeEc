@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "41f1d26e_61d4339d",
+        "filename": "board/redrix/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-12-29T21:36:34Z",
+      "side": 1,
+      "message": "KSO12/GPIO05\n\nbut this change seems strange. did you mean\nUNUSED(PIN(8, 2))    /* KSO14/GPIO82 */",
+      "range": {
+        "startLine": 136,
+        "startChar": 27,
+        "endLine": 136,
+        "endChar": 39
+      },
+      "revId": "25e4c5eb3f5f8b7d20cff0d813229699b4dc0d02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
