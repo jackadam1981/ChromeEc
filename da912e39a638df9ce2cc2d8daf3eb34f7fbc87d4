@@ -50,6 +50,24 @@
       "message": "is it still needed? should either be rebased or abandoned. ",
       "revId": "da912e39a638df9ce2cc2d8daf3eb34f7fbc87d4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e95ae6fa_9f56b425",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1520327
+      },
+      "writtenOn": "2021-12-29T02:18:43Z",
+      "side": 1,
+      "message": "This should be abandoned, we want to enforce auth time secret for fingerprint also.",
+      "parentUuid": "38ef8be2_57c5fca8",
+      "revId": "da912e39a638df9ce2cc2d8daf3eb34f7fbc87d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
