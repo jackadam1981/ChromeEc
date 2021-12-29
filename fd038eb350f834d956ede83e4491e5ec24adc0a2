@@ -97,6 +97,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6e5b2dd3_5adc1e42",
+        "filename": "board/taeko/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-12-29T21:54:00Z",
+      "side": 1,
+      "message": "please enable I2C_PORT_FLAG_DYNAMIC_SPEED\nto support the TCPC firmware update case.\nsince you\u0027re increasing the speed to 1000,\nthe updater has to lower it to 400 during\nthe update procedure.",
+      "parentUuid": "c9fb104f_d69956b2",
+      "range": {
+        "startLine": 62,
+        "startChar": 3,
+        "endLine": 62,
+        "endChar": 39
+      },
+      "revId": "fd038eb350f834d956ede83e4491e5ec24adc0a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d46e09e8_d7ae3fe3",
         "filename": "board/taeko/i2c.c",
         "patchSetId": 1

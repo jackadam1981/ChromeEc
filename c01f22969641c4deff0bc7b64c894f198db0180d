@@ -104,6 +104,24 @@
       "parentUuid": "1e500fbb_2a4e3e9c",
       "revId": "c01f22969641c4deff0bc7b64c894f198db0180d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "59dff57b_c266a854",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-12-29T21:54:00Z",
+      "side": 1,
+      "message": "the ps8815 firmware updater is implemented in depthcharge.\nas long as you have CONFIG_HOSTCMD_I2C_CONTROL enabled,\nthe updater can lower the speed to 400 to do the firmware\nupdate, then set it back to 1000 (or whatever it was before).",
+      "parentUuid": "ce878dfa_5a93c573",
+      "revId": "c01f22969641c4deff0bc7b64c894f198db0180d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
