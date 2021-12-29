@@ -6,6 +6,7 @@
 #ifndef __NDSX_ESPI_H__
 #define __NDSX_ESPI_H__
 
+extern k_tid_t pwrseq_thread_id;
 /**
  * @brief Configure eSPI channels for Non Deep Sleep well platforms
  */
