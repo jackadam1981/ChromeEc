@@ -6,6 +6,7 @@
 #ifndef __X86_COMMON_H__
 #define __X86_COMMON_H__
 
+#include <devicetree.h>
 #include <drivers/espi.h>
 #include <drivers/gpio.h>
 
@@ -170,4 +171,37 @@ struct power_seq_context {
 	/* Indicate should exit G3 power state or not */
 	int want_g3_exit;
 };
+
+#define POWER_SIGNAL_GPIO_LIST_NODE                            \
+	DT_NODELABEL(pwrseq_gpio_list)
+
+#define GEN_POWER_SIGNAL_GPIO_ENTRY_NET_NAME(cid)              \
+	DT_PROP(                                               \
+		DT_PROP(cid, power_gpio_pin),                  \
+		enum_name                                      \
+	)
+
+#define GEN_POWER_SIGNAL_GPIO_ENTRY_SIG(cid)                   \
+	DT_STRING_UPPER_TOKEN(cid, power_signal_enum)
+
+#define GEN_POWER_SIGNAL_GPIO_ENTRY_FLAGS(cid)                 \
+	DT_PROP(cid, flags)
+
+#define GEN_POWER_SIGNAL_GPIO_ENTRY_DBG_LABEL(cid)             \
+	DT_PROP(cid, dbg_label)
+
+#define GEN_POWER_SIGNAL_GPIO_ENTRY(cid)                       \
+{                                                              \
+	.net_name = GEN_POWER_SIGNAL_GPIO_ENTRY_NET_NAME(cid), \
+	.power_sig = GEN_POWER_SIGNAL_GPIO_ENTRY_SIG(cid),     \
+	.flags = GEN_POWER_SIGNAL_GPIO_ENTRY_FLAGS(cid),       \
+	.name = GEN_POWER_SIGNAL_GPIO_ENTRY_DBG_LABEL(cid)     \
+}
+
+#define GEN_POWER_SIGNAL_GPIO_ENTRY_COMMA(cid)                 \
+	GEN_POWER_SIGNAL_GPIO_ENTRY(cid),
+
+#define GEN_POWER_SIGNAL_GPIO_ENTRY_SIG_COMMA(cid)             \
+	GEN_POWER_SIGNAL_GPIO_ENTRY_SIG(cid),
+
 #endif /* __X86_COMMON_H__ */
