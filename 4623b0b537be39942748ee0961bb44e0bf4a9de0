@@ -22,6 +22,30 @@
       },
       "revId": "4623b0b537be39942748ee0961bb44e0bf4a9de0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4fc6f44a_9bdd2ea2",
+        "filename": "zephyr/Kconfig.battery",
+        "patchSetId": 1
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2021-12-29T02:25:05Z",
+      "side": 1,
+      "message": "Fixed.",
+      "parentUuid": "c63f0fef_664dcfdd",
+      "range": {
+        "startLine": 216,
+        "startChar": 38,
+        "endLine": 216,
+        "endChar": 46
+      },
+      "revId": "4623b0b537be39942748ee0961bb44e0bf4a9de0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
