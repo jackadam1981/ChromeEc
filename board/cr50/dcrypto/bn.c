@@ -1233,14 +1233,24 @@ static int bn_probable_prime(const struct LITE_BIGNUM *p)
 			return 0;
 
 		for (i = A.dmax - 1; i >= 0; i--) {
-			while (BN_DIGIT(&A, i) > BN_DIGIT(p, i)) {
-				uint64_t rnd = fips_trng_rand32();
+			uint32_t digit_a = BN_DIGIT(&A, i);
+			uint32_t digit_p = BN_DIGIT(p, i);
 
-				if (!rand_valid(rnd))
-					return 0;
-				BN_DIGIT(&A, i) = (uint32_t)rnd;
+			if (digit_a > digit_p) {
+				if (digit_p <= 1)
+					digit_a &= digit_p;
+				else
+					/**
+					 * A is not a key, so we don't care much
+					 * about bias introduced by modular for
+					 * a witness. RSA is not part of FIPS
+					 * certification.
+					 */
+					digit_a %= digit_p;
+
+				BN_DIGIT(&A, i) = digit_a;
 			}
-			if (BN_DIGIT(&A, i) < BN_DIGIT(p, i))
+			if (digit_a < digit_p)
 				break;
 		}
 
