@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67e43f5b_443d04bd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2021-12-29T06:37:16Z",
+      "side": 1,
+      "message": "This still doesn\u0027t compile, but there are only a few missing symbols now that I don\u0027t think will be difficult to fix.",
+      "revId": "6323e0635ffdd135bf5238906468076099fadd57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff484df5_76cf1433",
+        "filename": "zephyr/projects/nissa/nivviks_generated.dts",
+        "patchSetId": 8
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2021-12-29T06:37:16Z",
+      "side": 1,
+      "message": "We should make the dts generator do this, but it\u0027s a little tricky since the meaning of this pin varies depending on which sub-board is present. We could put this GPIO definition in the overlay file as a quick fix and figure out the real solution in b/212490923.",
+      "revId": "6323e0635ffdd135bf5238906468076099fadd57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
