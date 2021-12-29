@@ -16,6 +16,24 @@
       "message": "Could you do a `zmake testall` with this change?",
       "revId": "ceab1312b1df58f9370d0a14bb604773a241dd0b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b3036d5_a8f8a4cd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2021-12-29T00:45:10Z",
+      "side": 1,
+      "message": "Verified with testall.",
+      "parentUuid": "689190b1_5b8b97fe",
+      "revId": "ceab1312b1df58f9370d0a14bb604773a241dd0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
