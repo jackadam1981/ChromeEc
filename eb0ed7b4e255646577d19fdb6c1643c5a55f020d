@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8919da22_699b8514",
+        "filename": "test/tpm_test/u2f_test.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1520327
+      },
+      "writtenOn": "2021-12-29T08:57:13Z",
+      "side": 1,
+      "message": "We want to check whether response is all zero here, otherwise we don\u0027t know whether get cert failed (it returns all zero when failed https://source.corp.google.com/chromeos_public/src/platform/cr50/board/cr50/tpm2/virtual_nvmem.c;l\u003d295;rcl\u003d69825c3b1d57dd1c46723c8f69a80e24d70136e6).",
+      "revId": "eb0ed7b4e255646577d19fdb6c1643c5a55f020d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
