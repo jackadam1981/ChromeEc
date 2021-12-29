@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "02c48473_a09e5412",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2021-12-29T10:01:03Z",
+      "side": 1,
+      "message": "Board ID should be 1 for this case. b/212512485",
+      "parentUuid": "732d1435_0544ffa6",
+      "range": {
+        "startLine": 9,
+        "startChar": 5,
+        "endLine": 9,
+        "endChar": 12
+      },
+      "revId": "75c6dc94738a753f30249ec77f9022a57761cfcc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "dc49a9b0_22129e87",
