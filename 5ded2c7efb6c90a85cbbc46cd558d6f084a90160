@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "184d37e8_f47881d6",
+        "filename": "driver/charger/bq25710.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-12-29T22:33:49Z",
+      "side": 1,
+      "message": "can we set this to\n(50 / INPUT_RESISTOR_RATIO)\nlike in the rest of the code?\n\nhmm... now that i look at the driver, i think it\u0027ll\nbreak if we ever were to use a 5 mOhm sense resistor.\nINPUT_RESISTOR_RATIO always evaluates to 0.\n\nfiled b/212618911.\n\nthe bq25710 supports 10 or 20 mOhm.\nthe bq25720 supports 10 or  5 mOhm,\nso we need to fix the code handle integer\ntruncation in both cases.",
+      "range": {
+        "startLine": 140,
+        "startChar": 8,
+        "endLine": 140,
+        "endChar": 36
+      },
+      "revId": "5ded2c7efb6c90a85cbbc46cd558d6f084a90160",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
