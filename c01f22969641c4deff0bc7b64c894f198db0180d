@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "42dcefb5_8424f364",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1461738
+      },
+      "writtenOn": "2021-12-29T09:46:24Z",
+      "side": 1,
+      "message": "Yes.",
+      "parentUuid": "ca27db6d_9cfe34fe",
+      "revId": "c01f22969641c4deff0bc7b64c894f198db0180d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2b722e50_8248390c",
@@ -48,6 +66,42 @@
       "writtenOn": "2021-12-23T21:48:17Z",
       "side": 1,
       "message": "want to make sure we don\u0027t miss the ps8815 firmware update support",
+      "revId": "c01f22969641c4deff0bc7b64c894f198db0180d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c73f972d_407fa8ec",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1461738
+      },
+      "writtenOn": "2021-12-29T09:46:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2b722e50_8248390c",
+      "revId": "c01f22969641c4deff0bc7b64c894f198db0180d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce878dfa_5a93c573",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1461738
+      },
+      "writtenOn": "2021-12-29T09:46:24Z",
+      "side": 1,
+      "message": "Discussion with Parade, they told to me that can\u0027t update firmware with the 1M I2C speed.  \nhttps://partnerissuetracker.corp.google.com/issues/200280341#comment5\nShould I need to commit this change?",
+      "parentUuid": "1e500fbb_2a4e3e9c",
       "revId": "c01f22969641c4deff0bc7b64c894f198db0180d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
