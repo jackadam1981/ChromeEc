@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "efb42a5a_dd8119b7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1249354
+      },
+      "writtenOn": "2021-12-29T15:33:37Z",
+      "side": 1,
+      "message": "I\u0027m not sure what nct38xx_reset_notify does , but anyhow a single port reset time is ~1.5ms , and a Dual-port reset time is ~3ms. By the way when the chip gets out of reset it will assert (pull low) the ALERT# pin, so this is also something you can check.",
+      "parentUuid": "8686d5af_22c69af7",
+      "revId": "ff6d08c19723028a0e31512739bc4c5d988b5e3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f2c6fcda_d6756b1c",
         "filename": "board/vell/usbc_config.c",
         "patchSetId": 2
