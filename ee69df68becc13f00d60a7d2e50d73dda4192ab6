@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "85b72207_8e6e929a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-12-29T19:44:15Z",
+      "side": 1,
+      "message": "I thought that if we still have to rerun FIPS test due to G2F issues, it is worth to address TRNG stalls we started to observe.",
+      "revId": "ee69df68becc13f00d60a7d2e50d73dda4192ab6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
