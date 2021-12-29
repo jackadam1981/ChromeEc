@@ -15,6 +15,7 @@ static const struct device *espi_dev;
 static struct espi_callback espi_bus_cb;
 static struct espi_callback espi_chan_cb;
 static struct espi_callback espi_vw_cb;
+extern k_tid_t pwrseq_thread_id;
 
 static void espi_vw_handler(struct espi_event *event)
 {
@@ -22,11 +23,12 @@ static void espi_vw_handler(struct espi_event *event)
 			vw_get_level(event->evt_details));
 
 	switch (event->evt_details) {
-	//case ESPI_VWIRE_SIGNAL_SLP_S3:
+	case ESPI_VWIRE_SIGNAL_SLP_S3:
 	case ESPI_VWIRE_SIGNAL_SLP_S4:
 	case ESPI_VWIRE_SIGNAL_SLP_S5:
 		power_update_signals();
-		// k_thread_resume(&pwrseq_thread_id);
+		LOG_INF("resume thread from espi\n");
+		k_thread_resume(pwrseq_thread_id);
 		break;
 	default:
 		break;

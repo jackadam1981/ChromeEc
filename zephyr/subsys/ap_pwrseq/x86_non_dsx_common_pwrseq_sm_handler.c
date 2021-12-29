@@ -17,7 +17,7 @@
 LOG_MODULE_REGISTER(ap_pwrseq, 4);
 static K_KERNEL_STACK_DEFINE(pwrseq_thread_stack, 1024);
 static struct k_thread pwrseq_thread_data;
-k_tid_t pwrseq_thread_id; /* TODO: This may not be needed */
+k_tid_t pwrseq_thread_id;
 
 static uint32_t in_signals;   /* Current input signal states (IN_PGOOD_*) */
 static uint32_t in_want;      /* Input signal state we're waiting for */
@@ -281,6 +281,9 @@ void power_update_signals(void)
 		LOG_INF("power in 0x%04x", inew);
 	LOG_ERR("------update: 0x%04x->0x%04x", in_signals, inew);
 	in_signals = inew;
+
+	LOG_INF("resume thread\n");
+	k_thread_resume(pwrseq_thread_id);
 }
 
 uint32_t power_get_signals(void)
@@ -757,6 +760,10 @@ void pwrseq_loop_thread(void *p1, void *p2, void *p3)
 
 		if(curr_state != new_state)
 			pwr_sm_set_state(new_state);
+		else if (curr_state == SYS_POWER_STATE_S0 && curr_state == new_state) {
+			LOG_INF("suspend thread \n");
+			k_thread_suspend(pwrseq_thread_id); /* In powerup state */
+		}
 
 		k_msleep(t_wait_ms);
 	}
