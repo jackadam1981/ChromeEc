@@ -68,6 +68,12 @@ static struct lsm6dso_data lsm6dso_data;
 static struct lsm6dsm_data lsm6dsm_data = LSM6DSM_DATA;
 
 /* Matrix to rotate lid and base sensor into standard reference frame */
+static const mat33_fp_t lid_standard_ref_id_1 = {
+	{ FLOAT_TO_FP(-1), 0, 0},
+	{ 0, FLOAT_TO_FP(1), 0},
+	{ 0, 0, FLOAT_TO_FP(-1)}
+};
+/* Matrix to rotate lid and base sensor into standard reference frame */
 static const mat33_fp_t lid_standard_ref = {
 	{ 0, FLOAT_TO_FP(1), 0},
 	{ FLOAT_TO_FP(-1), 0, 0},
@@ -307,6 +313,12 @@ static void baseboard_sensors_init(void)
 		if (get_board_id() > 0) {
 			motion_sensors[BASE_ACCEL] = lsm6dsm_base_accel;
 			motion_sensors[BASE_GYRO] = lsm6dsm_base_gyro;
+		}
+
+		if (get_board_id() == 2) {
+			/*Need to change matrix for board ID == 2*/
+			motion_sensors[LID_ACCEL].rot_standard_ref =
+							&lid_standard_ref_id_1;
 		}
 
 		/* Enable gpio interrupt for base accelgyro sensor */
