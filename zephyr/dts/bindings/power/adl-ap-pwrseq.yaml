@@ -1,0 +1,26 @@
+# Copyright 2021 The Chromium OS Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+description: Alderlake fields for power sequence
+
+compatible: "adl-ap-pwrseq"
+
+properties:
+    pwrseq-gpios-required:
+        description:
+            Number of gpios in power sequence
+        type: int
+
+child-binding:
+    description: Power Sequence GPIO List child node
+    properties:
+        net-name:
+            type: string
+            required: true
+            description: lable property
+
+        power-gpio-pin:
+            type: phandle
+            required: true
+            description: phandle to associated GPIO

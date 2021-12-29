@@ -74,13 +74,24 @@
 #define POWER_SEQ_INTR_GPIO(node) \
 	.net_name = GPIO_NET_NAME(node), \
 	.intr_flags = GPIO_INT_EDGE_BOTH
-
+#if 0
 /* Delay in ms for pass through signals */
 #define POWER_EC_PCH_DSW_PWROK_DELAY_MS	100
 #define POWER_EC_PCH_RSMRST_DELAY_MS	10
 #define POWER_EC_PCH_SYS_PWROK_DELAY_MS	50
 #define POWER_EC_VR_EN_VCCIN_DELAY_MS	5
 #define POWER_EC_PCH_PM_PWRBTN_DELAY_MS	200
+#endif
+
+
+#define DT_DRV_COMPAT ap_pwrseq
+#if DT_NODE_EXISTS(DT_INST(0, ap_pwrseq))
+#define POWER_EC_PCH_DSW_PWROK_DELAY_MS	DT_INST_PROP(0, dsw_pwrok_delay)
+#define POWER_EC_PCH_RSMRST_DELAY_MS	DT_INST_PROP(0, rsmrst_delay)
+#define POWER_EC_PCH_SYS_PWROK_DELAY_MS	DT_INST_PROP(0, sys_pwrok_delay)
+#define POWER_EC_VR_EN_VCCIN_DELAY_MS	DT_INST_PROP(0, vccin_delay)
+#define POWER_EC_PCH_PM_PWRBTN_DELAY_MS	DT_INST_PROP(0, pm_pwrbtn_delay)
+#endif
 
 /*
  * Power signal flags:

@@ -160,6 +160,24 @@
 		status = "okay";
 	};
 
+	pwrseq_gpio_list: power-gpio-list {
+		compatible = "adl-ap-pwrseq";
+		pwrseq-gpios-required = <3>;
+
+		pwrseq_slp_sus {
+			net-name = "SLP_SUS_L";
+			power-gpio-pin = <&slpsus>;
+		};
+		pwrseq_slp_s0 {
+			net-name = "SLP_S0_L";
+			power-gpio-pin = <&slps0>;
+		};
+		pwrseq_slp_s3 {
+			net-name = "SLP_S3_L";
+			power-gpio-pin = <&slps3>;
+		};
+	};
+
 	hibernate-wake-pins {
 		compatible = "cros-ec,hibernate-wake-pins";
 		wakeup-pins = <
