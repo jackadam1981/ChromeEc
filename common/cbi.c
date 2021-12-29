@@ -159,8 +159,8 @@ static int cbi_read(void)
 	int i;
 	int rv;
 
-	if (cbi_get_cache_status() == CBI_CACHE_STATUS_SYNCED)
-		return EC_SUCCESS;
+	//if (cbi_get_cache_status() == CBI_CACHE_STATUS_SYNCED)
+	//	return EC_SUCCESS;
 
 	for (i = 0; i < 2; i++) {
 		rv = do_cbi_read();
