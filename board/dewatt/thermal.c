@@ -20,9 +20,9 @@ const struct fan_conf fan_conf_0 = {
 	.enable_gpio = -1,
 };
 const struct fan_rpm fan_rpm_0 = {
-	.rpm_min = 1000,
-	.rpm_start = 1000,
-	.rpm_max = 6500,
+	.rpm_min = 3000,
+	.rpm_start = 3000,
+	.rpm_max = 6000,
 };
 const struct fan_t fans[] = {
 	[FAN_CH_0] = {
@@ -31,3 +31,62 @@ const struct fan_t fans[] = {
 	},
 };
 BUILD_ASSERT(ARRAY_SIZE(fans) == FAN_CH_COUNT);
+
+struct fan_step {
+	int on;
+	int off;
+	int rpm;
+};
+
+static const struct fan_step fan_table[] = {
+	{.on =  0, .off =  1, .rpm = 0},
+	{.on =  6, .off =  2, .rpm = 3000},
+	{.on = 28, .off = 15, .rpm = 3300},
+	{.on = 34, .off = 26, .rpm = 3700},
+	{.on = 39, .off = 32, .rpm = 4000},
+	{.on = 45, .off = 38, .rpm = 4300},
+	{.on = 51, .off = 43, .rpm = 4700},
+	{.on = 74, .off = 62, .rpm = 5400},
+};
+#define NUM_FAN_LEVELS ARRAY_SIZE(fan_table)
+
+int fan_percent_to_rpm(int fan, int pct)
+{
+	static int current_level;
+	static int previous_pct;
+	int i;
+
+	/*
+	 * Compare the pct and previous pct, we have the three paths :
+	 *  1. decreasing path. (check the off point)
+	 *  2. increasing path. (check the on point)
+	 *  3. invariant path. (return the current RPM)
+	 */
+	if (pct < previous_pct) {
+		for (i = current_level; i >= 0; i--) {
+			if (pct <= fan_table[i].off)
+				current_level = i - 1;
+			else
+				break;
+		}
+	} else if (pct > previous_pct) {
+		for (i = current_level + 1; i < NUM_FAN_LEVELS; i++) {
+			if (pct >= fan_table[i].on)
+				current_level = i;
+			else
+				break;
+		}
+	}
+
+	if (current_level < 0)
+		current_level = 0;
+
+	previous_pct = pct;
+
+	if (fan_table[current_level].rpm !=
+		fan_get_rpm_target(FAN_CH(fan)))
+		cprints(CC_THERMAL, "Setting fan RPM to %d",
+			fan_table[current_level].rpm);
+
+	return fan_table[current_level].rpm;
+}
