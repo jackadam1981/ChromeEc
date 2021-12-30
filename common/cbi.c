@@ -159,8 +159,12 @@ static int cbi_read(void)
 	int i;
 	int rv;
 
+	CPRINTS(" --> CBI Debug: %s",__func__);
+	/*
 	if (cbi_get_cache_status() == CBI_CACHE_STATUS_SYNCED)
 		return EC_SUCCESS;
+	*/
+	CPRINTS(" --> CBI cbi_read dump: %02x %02x %02x",cbi[0] ,cbi[1],cbi[2]);
 
 	for (i = 0; i < 2; i++) {
 		rv = do_cbi_read();
@@ -184,13 +188,20 @@ int cbi_get_board_info(enum cbi_data_tag tag, uint8_t *buf, uint8_t *size)
 {
 	const struct cbi_data *d;
 
+
+	CPRINTS(" --> CBI Debug: %s",__func__);
+
 	if (cbi_read())
 		return EC_ERROR_UNKNOWN;
 
 	d = cbi_find_tag(cbi, tag);
 	if (!d)
+	{
+		CPRINTS(" --> CBI Debug: tag not found");
 		/* Not found */
 		return EC_ERROR_UNKNOWN;
+	}
+
 	if (*size < d->size)
 		/* Insufficient buffer size */
 		return EC_ERROR_INVAL;
@@ -219,6 +230,7 @@ int cbi_set_board_info(enum cbi_data_tag tag, const uint8_t *buf, uint8_t size)
 {
 	struct cbi_data *d;
 
+	CPRINTS(" --> CBI Debug: %s",__func__);
 	d = cbi_find_tag(cbi, tag);
 
 	/* If we found the entry, but the size doesn't match, delete it */
@@ -316,6 +328,10 @@ static enum ec_status hc_cbi_get(struct host_cmd_handler_args *args)
 	const struct __ec_align4 ec_params_get_cbi *p = args->params;
 	uint8_t size = MIN(args->response_max, UINT8_MAX);
 
+	CPRINTS(" --> CBI Debug: %s",__func__);
+
+	CPRINTS(" --> CBI hc_cbi_get dump: %02x %02x %02x",cbi[0] ,cbi[1],cbi[2]);
+
 	if (p->flag & CBI_GET_RELOAD)
 		cbi_invalidate_cache();
 
@@ -332,6 +348,7 @@ DECLARE_HOST_COMMAND(EC_CMD_GET_CROS_BOARD_INFO,
 static enum ec_status common_cbi_set(const struct __ec_align4
 							ec_params_set_cbi * p)
 {
+	CPRINTS(" --> CBI Debug: %s",__func__);
 	/*
 	 * If we ultimately cannot write to the flash, then fail early unless
 	 * we are explicitly trying to write to the in-memory CBI only
@@ -387,6 +404,7 @@ static enum ec_status hc_cbi_set(struct host_cmd_handler_args *args)
 {
 	const struct __ec_align4 ec_params_set_cbi * p = args->params;
 
+	CPRINTS(" --> CBI Debug: %s",__func__);
 	/* Given data size exceeds the packet size. */
 	if (args->params_size < sizeof(*p) + p->size)
 		return EC_RES_INVALID_PARAM;
