@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9482ffaa_4c8acddf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-12-30T06:01:02Z",
+      "side": 1,
+      "message": "Minor nits, but LGTM",
+      "revId": "9a94f26d8a12b615bcaff81d4bfcb3584fe603cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f83aaf8_a34cdb44",
+        "filename": "docs/zephyr/zephyr_i2c.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-12-30T06:01:02Z",
+      "side": 1,
+      "message": "Can we post a link about I2C communication. I know that when I first started on the team it took me a while to realize exactly what I2C was and how it worked.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 47
+      },
+      "revId": "9a94f26d8a12b615bcaff81d4bfcb3584fe603cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78eefbbf_b990a140",
+        "filename": "docs/zephyr/zephyr_i2c.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-12-30T06:01:02Z",
+      "side": 1,
+      "message": "Add \"via `CONFIG_I2C_SHELL`\". While it\u0027s default is `y` it\u0027s possible that some vendors might want to turn it off for space savings when not building a debug image.",
+      "range": {
+        "startLine": 152,
+        "startChar": 42,
+        "endLine": 152,
+        "endChar": 55
+      },
+      "revId": "9a94f26d8a12b615bcaff81d4bfcb3584fe603cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b9518e1_3bb35192",
+        "filename": "docs/zephyr/zephyr_i2c.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-12-30T06:01:02Z",
+      "side": 1,
+      "message": "Add a link to https://source.chromium.org/chromium/chromiumos/third_party/zephyr/+/HEAD:drivers/i2c/i2c_shell.c;l\u003d245;drc\u003d0138cf014156045cadf13c84eb50a1323b9ba32e maybe?",
+      "range": {
+        "startLine": 153,
+        "startChar": 14,
+        "endLine": 153,
+        "endChar": 25
+      },
+      "revId": "9a94f26d8a12b615bcaff81d4bfcb3584fe603cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
