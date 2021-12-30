@@ -38,6 +38,8 @@
 #define GMR_TABLET_MODE_INT(gpio, edge)
 #endif
 
+#define GPIO_EC_BATT_PRES_ODL GPIO_BATT_PRES_ODL
+#define GPIO_ID_1_EC_KB_BL_EN	GPIO_EC_BATT_PRES_ODL
 /*
  * Set EC_CROS_GPIO_INTERRUPTS to a space-separated list of GPIO_INT items.
  *
@@ -72,6 +74,8 @@
 		 power_button_interrupt)                                  \
 	GPIO_INT(GPIO_WP_L, GPIO_INT_EDGE_BOTH, switch_interrupt)         \
 	GPIO_INT(GPIO_AC_PRESENT, GPIO_INT_EDGE_BOTH, extpower_interrupt) \
+	GPIO_INT(GPIO_VOLUME_DOWN_L, GPIO_INT_EDGE_BOTH, button_interrupt)\
+	GPIO_INT(GPIO_VOLUME_UP_L, GPIO_INT_EDGE_BOTH, button_interrupt)  \
 	LIS2DW12_INT(GPIO_EC_ACCEL_INT, GPIO_INT_EDGE_FALLING)           \
 	LSM6DSO_INT(GPIO_EC_IMU_INT_L, GPIO_INT_EDGE_FALLING)             \
 	POWER_SIGNAL_INT(GPIO_PCH_SLP_S0_L, GPIO_INT_EDGE_BOTH)           \
