@@ -245,11 +245,25 @@ int cbi_set_board_info(enum cbi_data_tag tag, const uint8_t *buf, uint8_t size)
 
 int cbi_write(void)
 {
+	int rest = CBI_IMAGE_SIZE;
+	uint8_t *p = cbi;
+	int reset = 8;
+
 	if (cbi_config.drv->is_protected()) {
 		CPRINTS("Failed to write due to WP");
 		return EC_ERROR_ACCESS_DENIED;
 	}
 
+	while (rest > 0) {
+		ccprintf("0x%x ", *p);
+		p++;
+		rest--;
+		reset--;
+		if (reset == 0) {
+			reset = 8;
+			ccprintf("\n");
+		}
+	}
 	return cbi_config.drv->store(cbi);
 }
 
