@@ -466,7 +466,7 @@ void __idle(void)
 	timestamp_t ts_intr_enabled, t0;
 	uint32_t rtc_diff;
 	int next_delay, margin_us;
-	struct rtc_time_reg rtc0, rtc1;
+	struct rtc_time_reg rtc0, rtc1, rtc_sleep;
 
 	while (1) {
 		/*
@@ -498,6 +498,7 @@ void __idle(void)
 		 * determine if overflow occurred after interrupts were
 		 * disabled.
 		 */
+		rtc_read(&rtc0);
 		t0 = get_time();
 
 		/*
@@ -541,7 +542,7 @@ void __idle(void)
 
 			set_rtc_alarm(0, next_delay - STOP_MODE_LATENCY
 						    - PLL_LOCK_LATENCY,
-				      &rtc0, 0);
+				      &rtc_sleep, 0);
 
 			/* Switch to HSI */
 			clock_switch_osc(OSC_HSI);
@@ -569,7 +570,7 @@ void __idle(void)
 			force_time(t0);
 
 			/* Record time spent in deep sleep. */
-			idle_dsleep_time_us += rtc_diff;
+			idle_dsleep_time_us += get_rtc_diff(&rtc_sleep, &rtc1);
 
 			/* Calculate how close we were to missing deadline */
 			margin_us = next_delay - rtc_diff;
