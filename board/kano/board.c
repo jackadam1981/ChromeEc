@@ -23,6 +23,8 @@
 #include "tablet_mode.h"
 #include "throttle_ap.h"
 #include "usbc_config.h"
+#include "power/intel_x86.h"
+#include "chipset.h"
 
 #include "gpio_list.h" /* Must come after other header files. */
 
@@ -99,3 +101,32 @@ enum battery_present battery_hw_present(void)
 	/* The GPIO is low when the battery is physically present */
 	return gpio_get_level(batt_pres) ? BP_NO : BP_YES;
 }
+
+
+static void cbi_monitor(void)
+{
+	int i;
+	uint32_t val;
+	uint8_t  val_8;
+
+	val = (*((uint32_t *)(0x200c39b0)));
+
+	ccprintf("0x200c39b0 is 0x%08x\n", val);
+
+	if (val != 0 && val != 0x07494243 && !chipset_in_state(CHIPSET_STATE_ANY_OFF))
+	{
+		chipset_force_g3();
+		ccprintf("0x200c39b0 is changed! chipset_force_g3 \n");
+		ccprintf("CBI Dump:\n");
+		for(i=0;i<64;i++)
+		{
+			if((i % 8) == 0)
+				ccprintf("\n");
+			val_8 = (*((uint8_t *)(0x200c39b0 + i)));
+			ccprintf("%02x ", val_8);
+
+		}
+		ccprintf("\n");
+	}
+}
+DECLARE_HOOK(HOOK_TICK, cbi_monitor, HOOK_PRIO_DEFAULT);

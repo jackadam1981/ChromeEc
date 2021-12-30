@@ -160,10 +160,10 @@ static int cbi_read(void)
 	int rv;
 
 	CPRINTS(" --> CBI Debug: %s",__func__);
-	/*
+
 	if (cbi_get_cache_status() == CBI_CACHE_STATUS_SYNCED)
 		return EC_SUCCESS;
-	*/
+
 	CPRINTS(" --> CBI cbi_read dump: %02x %02x %02x",cbi[0] ,cbi[1],cbi[2]);
 
 	for (i = 0; i < 2; i++) {
