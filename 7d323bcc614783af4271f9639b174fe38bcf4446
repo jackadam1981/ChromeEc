@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65948fed_5eff8dff",
+        "filename": "board/draco/gpio.inc",
+        "patchSetId": 5
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-12-30T23:06:27Z",
+      "side": 0,
+      "message": "Please move all GPIOs to \"UNUSED\" section (below) instead of just deleting them",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 104
+      },
+      "revId": "7d323bcc614783af4271f9639b174fe38bcf4446",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
