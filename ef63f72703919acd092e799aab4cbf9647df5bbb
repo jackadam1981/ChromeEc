@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "83c522e9_7501149b",
+        "filename": "zephyr/projects/nissa/src/usbc.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2021-12-30T04:23:35Z",
+      "side": 1,
+      "message": "PPC code gets pulled in as a prerequisite for the rest of the TCPC support, so it wouldn\u0027t make sense to disable this without turning off everything else in this file as well- especially given PLATFORM_EC_USB_PD_PPC (power path control by TCPC) is implied with the RAA489000.",
+      "parentUuid": "1bef6bae_60dc4987",
+      "revId": "ef63f72703919acd092e799aab4cbf9647df5bbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c82950a5_9944dc3e",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-12-30T03:03:24Z",
       "side": 1,
       "message": "Are the interrupts enabled via the macro in gpio_map.h?\nOr are they separately enabled(as here)?",
+      "revId": "ef63f72703919acd092e799aab4cbf9647df5bbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d580f608_3416e837",
+        "filename": "zephyr/projects/nissa/src/usbc.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2021-12-30T04:23:35Z",
+      "side": 1,
+      "message": "This is required in addition to defining the pin with an interrupt handler. Documentation on this function says \"Normally called by the module which handles the interrupt, once it\u0027s ready to start processing interrupts.\"\n\nI suppose it\u0027s the equivalent of IRQ_CONNECT/irq_enable with Zephyr.",
+      "parentUuid": "c82950a5_9944dc3e",
       "revId": "ef63f72703919acd092e799aab4cbf9647df5bbb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
