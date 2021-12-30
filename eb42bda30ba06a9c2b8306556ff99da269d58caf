@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b0a1152_ba7b13e5",
+        "filename": "zephyr/projects/brya/brya/cbi_eeprom.dts",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2021-12-30T23:19:13Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "03e63017_1afa0668",
+      "range": {
+        "startLine": 7,
+        "startChar": 1,
+        "endLine": 7,
+        "endChar": 11
+      },
+      "revId": "eb42bda30ba06a9c2b8306556ff99da269d58caf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7f496df1_67a1bf47",
@@ -41,6 +65,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bef5051d_dfe28128",
+        "filename": "zephyr/projects/brya/brya/cbi_eeprom.dts",
+        "patchSetId": 4
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2021-12-30T23:19:13Z",
+      "side": 1,
+      "message": "Other platform also had additional new line, copied from there :) \n\nThanks for pointing this... deleted new line.",
+      "parentUuid": "7f496df1_67a1bf47",
+      "revId": "eb42bda30ba06a9c2b8306556ff99da269d58caf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "038c9c8f_88df1624",
@@ -54,6 +96,30 @@
       "writtenOn": "2021-12-27T21:52:57Z",
       "side": 1,
       "message": "2021, may be you can make 2022 😊",
+      "range": {
+        "startLine": 2,
+        "startChar": 17,
+        "endLine": 2,
+        "endChar": 22
+      },
+      "revId": "eb42bda30ba06a9c2b8306556ff99da269d58caf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "166280c1_9c423e7a",
+        "filename": "zephyr/projects/brya/brya/motionsense.dts",
+        "patchSetId": 4
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2021-12-30T23:19:13Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "038c9c8f_88df1624",
       "range": {
         "startLine": 2,
         "startChar": 17,
