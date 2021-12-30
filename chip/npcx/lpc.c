@@ -39,7 +39,8 @@
 #define PMC_ACPI     PM_CHAN_1
 #define PMC_HOST_CMD PM_CHAN_2
 
-#define PORT80_MAX_BUF_SIZE    16
+/* Internal FIFO is 16 entries, but it can be filled while we read */
+#define PORT80_MAX_BUF_SIZE    32
 static uint16_t port80_buf[PORT80_MAX_BUF_SIZE];
 
 static struct	host_packet lpc_packet;
@@ -584,7 +585,8 @@ static void lpc_port80_interrupt(void)
 	uint32_t code = 0;
 
 	/* buffer Port80 data to the local buffer if FIFO is not empty */
-	while (IS_BIT_SET(NPCX_DP80STS, NPCX_DP80STS_FNE))
+	while (IS_BIT_SET(NPCX_DP80STS, NPCX_DP80STS_FNE) &&
+		   (count < PORT80_MAX_BUF_SIZE))
 		port80_buf[count++] = NPCX_DP80BUF;
 
 	for (i = 0; i < count; i++) {
