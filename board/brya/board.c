@@ -5,6 +5,7 @@
 
 #include "battery.h"
 #include "button.h"
+#include "cbi.h"
 #include "charge_ramp.h"
 #include "charger.h"
 #include "common.h"
@@ -27,16 +28,20 @@
 #include "throttle_ap.h"
 #include "usbc_config.h"
 
+#ifndef CONFIG_ZEPHYR
 #include "gpio_list.h" /* Must come after other header files. */
+#endif /* !CONFIG_ZEPHYR */
 
 /* Console output macros */
 #define CPRINTF(format, args...) cprintf(CC_CHARGER, format, ## args)
 #define CPRINTS(format, args...) cprints(CC_CHARGER, format, ## args)
 
+#ifndef CONFIG_ZEPHYR
 __override void board_cbi_init(void)
 {
 	config_usb_db_type();
 }
+#endif
 
 /* Called on AP S3 -> S0 transition */
 static void board_chipset_resume(void)
@@ -76,6 +81,7 @@ static void set_board_id_1_gpios(void)
 }
 DECLARE_HOOK(HOOK_INIT, set_board_id_1_gpios, HOOK_PRIO_FIRST);
 
+#ifndef CONFIG_ZEPHYR
 /*
  * Reclaim GPIO pins on board ID 1 that are used as ADC inputs on
  * current boards. ALT function group MODULE_ADC pins are set in
@@ -106,3 +112,4 @@ static void board_id_1_reclaim_adc(void)
 	gpio_set_alternate_function(GPIO_PORT_E, BIT(1), GPIO_ALT_FUNC_NONE);
 }
 DECLARE_HOOK(HOOK_INIT, board_id_1_reclaim_adc, HOOK_PRIO_INIT_ADC + 1);
+#endif /* !CONFIG_ZEPHYR */
