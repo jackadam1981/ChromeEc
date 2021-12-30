@@ -18,6 +18,7 @@
 #include "driver/temp_sensor/sb_tsi.h"
 #include "driver/temp_sensor/pct2075.h"
 #include "extpower.h"
+#include "fan.h"
 #include "gpio.h"
 #include "hooks.h"
 #include "keyboard_scan.h"
@@ -222,6 +223,25 @@ const struct pct2075_sensor_t pct2075_sensors[] = {
 	{ I2C_PORT_SENSOR, PCT2075_I2C_ADDR_FLAGS7 },
 };
 BUILD_ASSERT(ARRAY_SIZE(pct2075_sensors) == PCT2075_COUNT);
+
+const struct fan_conf fan_conf_0 = {
+	.flags = FAN_USE_RPM_MODE,
+	.ch = MFT_CH_0,	/* Use MFT id to control fan */
+	.pgood_gpio = GPIO_S0_PGOOD,
+	.enable_gpio = -1,
+};
+const struct fan_rpm fan_rpm_0 = {
+	.rpm_min = 1000,
+	.rpm_start = 1000,
+	.rpm_max = 6500,
+};
+const struct fan_t fans[] = {
+	[FAN_CH_0] = {
+		.conf = &fan_conf_0,
+		.rpm = &fan_rpm_0,
+	},
+};
+BUILD_ASSERT(ARRAY_SIZE(fans) == FAN_CH_COUNT);
 
 const struct temp_sensor_t temp_sensors[] = {
 	[TEMP_SENSOR_SOC] = {
