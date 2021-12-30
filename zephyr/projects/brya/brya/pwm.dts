@@ -27,7 +27,7 @@
 			pwms = <&pwm7 0 PWM_POLARITY_INVERTED>;
 			frequency = <4800>;
 		};
-		kblight {
+		kblight: kblight {
 			pwms = <&pwm3 0 0>;
 			frequency = <2400>;
 		};
