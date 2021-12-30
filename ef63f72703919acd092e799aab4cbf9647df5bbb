@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1bef6bae_60dc4987",
+        "filename": "zephyr/projects/nissa/src/usbc.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2021-12-30T03:03:24Z",
+      "side": 1,
+      "message": "Are these referenced anywhere?\nIf so, maybe the references should be conditional upon\na config item.",
+      "revId": "ef63f72703919acd092e799aab4cbf9647df5bbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c82950a5_9944dc3e",
+        "filename": "zephyr/projects/nissa/src/usbc.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2021-12-30T03:03:24Z",
+      "side": 1,
+      "message": "Are the interrupts enabled via the macro in gpio_map.h?\nOr are they separately enabled(as here)?",
+      "revId": "ef63f72703919acd092e799aab4cbf9647df5bbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
