@@ -585,7 +585,11 @@ static void lpc_port80_interrupt(void)
 
 	/* buffer Port80 data to the local buffer if FIFO is not empty */
 	while (IS_BIT_SET(NPCX_DP80STS, NPCX_DP80STS_FNE))
+	{
+		cprints(CC_LPC, "count: %d", (int)count);
 		port80_buf[count++] = NPCX_DP80BUF;
+	}
+
 
 	for (i = 0; i < count; i++) {
 		uint8_t offset;
