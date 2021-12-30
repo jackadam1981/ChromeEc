@@ -32,6 +32,7 @@
 		};
 		battery {
 			i2c-port = <&i2c5_0>;
+			remote-port = <5>;
 			enum-name = "I2C_PORT_BATTERY";
 		};
 		eeprom {
@@ -41,6 +42,9 @@
 		charger {
 			i2c-port = <&i2c7_0>;
 			enum-name = "I2C_PORT_CHARGER";
+		virtual-battery {
+			i2c-port = <&i2c5_0>;
+			enum-name = "I2C_PORT_VIRTUAL_BATTERY";
 		};
 	};
 
