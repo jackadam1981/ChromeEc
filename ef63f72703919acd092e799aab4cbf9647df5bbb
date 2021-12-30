@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b8b1e74b_5751033a",
+        "filename": "zephyr/projects/nissa/src/usbc.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2021-12-30T05:08:54Z",
+      "side": 1,
+      "message": "hmmm.. it\u0027s just ugly to have code that is pulled in, but not used, and\nwe have to play silly games with the config to disable it.\nThe dependencies need to be properly sorted out, but I understand that\u0027s a big job.",
+      "parentUuid": "83c522e9_7501149b",
+      "revId": "ef63f72703919acd092e799aab4cbf9647df5bbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c82950a5_9944dc3e",
