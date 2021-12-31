@@ -13,6 +13,7 @@
 #include "host_command.h"
 #include "printf.h"
 #include "util.h"
+#include "math_util.h"
 
 #define CPRINTF(format, args...) cprintf(CC_CHARGER, format, ## args)
 #define CPRINTS(format, args...) cprints(CC_CHARGER, format, ## args)
@@ -68,7 +69,7 @@ static void battery_update(enum battery_index i)
 	batt_str[EC_MEMMAP_TEXT_MAX - 1] = 0;
 
 	*memmap_volt = battery_dynamic[i].actual_voltage;
-	*memmap_rate = battery_dynamic[i].actual_current;
+	*memmap_rate = ABS(battery_dynamic[i].actual_current);
 	*memmap_cap = battery_dynamic[i].remaining_capacity;
 	*memmap_lfcc = battery_dynamic[i].full_capacity;
 	*memmap_flags = battery_dynamic[i].flags;
