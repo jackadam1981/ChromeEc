@@ -41,6 +41,8 @@ properties:
       - GPIO_EC_CHG_LED_W_C1
       - GPIO_EC_CHG_LED_Y_C0
       - GPIO_EC_CHG_LED_Y_C1
+      - GPIO_EC_BAT_LED_R
+      - GPIO_EC_BAT_LED_G
       - GPIO_EC_DPBRDG_HPD_ODL
       - GPIO_EC_I2C0_SENSOR_SCL
       - GPIO_EC_I2C0_SENSOR_SDA
