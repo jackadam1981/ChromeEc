@@ -532,7 +532,7 @@ static int common_pwr_sm_run(int state)
 			return SYS_POWER_STATE_G3;
 		}
 		/* Call hooks now that rails are up */
-		/* TODO: hook_notify(HOOK_CHIPSET_STARTUP); */
+		hook_notify(HOOK_CHIPSET_STARTUP);
 
 		/* TODO: S0ix
 		 * Clearing the S0ix flag on the path to S0
@@ -559,8 +559,11 @@ static int common_pwr_sm_run(int state)
 		}
 
 		/* All the power rails must be stable */
-		if (gpio_get_lvl(GPIO_NET_NAME(VR_EC_ALL_SYS_PWRGD)))
+		if (gpio_get_lvl(GPIO_NET_NAME(VR_EC_ALL_SYS_PWRGD))) {
+			/* Call hooks now that rails are up */
+			hook_notify(HOOK_CHIPSET_RESUME);
 			return SYS_POWER_STATE_S0;
+		}
 		break;
 
 	case SYS_POWER_STATE_S0:
@@ -574,13 +577,15 @@ static int common_pwr_sm_run(int state)
 		break;
 
 	case SYS_POWER_STATE_S4S5:
-		/* TODO */
 		/* Call hooks before we remove power rails */
-		/* hook_notify(HOOK_CHIPSET_SHUTDOWN); */
-		/* Disable wireless */
-		/* wireless_set_state(WIRELESS_OFF); */
+		hook_notify(HOOK_CHIPSET_SHUTDOWN);
+#if 0
+		/* TODO : Disable wireless */
+		wireless_set_state(WIRELESS_OFF);
+#endif
 		/* Call hooks after we remove power rails */
-		/* hook_notify(HOOK_CHIPSET_SHUTDOWN_COMPLETE); */
+		hook_notify(HOOK_CHIPSET_SHUTDOWN_COMPLETE);
+
 		/* Always enter into S5 state. The S5 state is required to
 		 * correctly handle global resets which have a bit of delay
 		 * while the SLP_Sx_L signals are asserted then deasserted.
@@ -593,6 +598,7 @@ static int common_pwr_sm_run(int state)
 
 	case SYS_POWER_STATE_S0S3:
 		/* Call hooks before we remove power rails */
+		hook_notify(HOOK_CHIPSET_SUSPEND);
 		/* TODO: hook_notify(HOOK_CHIPSET_SUSPEND); */
 		return SYS_POWER_STATE_S3;
 
@@ -747,9 +753,13 @@ void pwrseq_loop_thread(void *p1, void *p2, void *p3)
 		if (curr_state == new_state)
 			new_state = common_pwr_sm_run(curr_state);
 
-		if (curr_state != new_state)
+		if (curr_state != new_state) {
 			pwr_sm_set_state(new_state);
 
+			/* Call hooks before we enter G3 */
+			if (new_state == SYS_POWER_STATE_G3)
+				hook_notify(HOOK_CHIPSET_HARD_OFF);
+		}
 		k_msleep(t_wait_ms);
 	}
 }
