@@ -27,7 +27,7 @@ test_mockable int chg_ramp_allowed(int port, int supplier)
 	 */
 	case CHARGE_SUPPLIER_PD:
 	case CHARGE_SUPPLIER_TYPEC:
-		return IS_ENABLED(CONFIG_CHARGE_RAMP_HW);
+		return IS_ENABLED(CONFIG_CHARGE_RAMP_HW) && !IS_ENABLED(BOARD_KINGOFTOWN);
 	/* default: fall through */
 	}
 
