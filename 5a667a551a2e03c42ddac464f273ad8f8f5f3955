@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "939ba0e9_82c83d13",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2022-01-03T11:10:49Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "65c80e0e_66b74f64",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 35
+      },
+      "revId": "5a667a551a2e03c42ddac464f273ad8f8f5f3955",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "5070b4e3_a81e526e",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 4
@@ -54,6 +78,30 @@
       "writtenOn": "2021-12-22T18:43:37Z",
       "side": 1,
       "message": "how about declaring this itself as deferred function so that we can avoid handle_batt_interrupt()",
+      "range": {
+        "startLine": 151,
+        "startChar": 1,
+        "endLine": 151,
+        "endChar": 27
+      },
+      "revId": "5a667a551a2e03c42ddac464f273ad8f8f5f3955",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f80d4a9e_f2099ddc",
+        "filename": "board/adlrvpp_ite/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2022-01-03T11:10:49Z",
+      "side": 1,
+      "message": "Done the change.\nNeed to DECLARE_DEFERRED(handle_batt_interrupt); in the same file where hook_call_deferred(\u0026handle_batt_interrupt_data, 0); is implemented.",
+      "parentUuid": "fdfcdcaf_67d8055f",
       "range": {
         "startLine": 151,
         "startChar": 1,
