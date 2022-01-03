@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6b37cb3_3a854245",
+        "filename": "board/felwinter/board.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2022-01-03T04:18:15Z",
+      "side": 1,
+      "message": "Could this be moved to the HOOK_CHIPSET_STARTUP?",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 14
+      },
+      "revId": "f86df33fc43b4ca98eaf1d2c2e505d44360b282f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83242bfb_d7db3c29",
+        "filename": "board/felwinter/board.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2022-01-03T04:18:15Z",
+      "side": 1,
+      "message": "Maybe can use !chipset_in_state(CHIPSET_STATE_ANY_OFF) ?",
+      "range": {
+        "startLine": 138,
+        "startChar": 22,
+        "endLine": 138,
+        "endChar": 63
+      },
+      "revId": "f86df33fc43b4ca98eaf1d2c2e505d44360b282f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
