@@ -71,13 +71,6 @@
 #define POWER_SEQ_GPIO_PRESENT(node) \
 	DT_NODE_HAS_STATUS(DT_NODELABEL(node), okay)
 
-/* Delay in ms for pass through signals */
-#define POWER_EC_PCH_DSW_PWROK_DELAY_MS	100
-#define POWER_EC_PCH_RSMRST_DELAY_MS	10
-#define POWER_EC_PCH_SYS_PWROK_DELAY_MS	50
-#define POWER_EC_VR_EN_VCCIN_DELAY_MS	5
-#define POWER_EC_PCH_PM_PWRBTN_DELAY_MS	200
-
 void espi_bus_reset(void);
 
 /*
@@ -94,6 +87,7 @@ extern enum power_states_ndsx chipset_pwr_sm_run(
 				enum power_states_ndsx curr_state);
 extern void chipset_force_shutdown(enum chipset_shutdown_reason reason);
 extern void chipset_reset(enum chipset_shutdown_reason reason);
+extern void init_chipset_pwr_seq_state(void);
 extern void all_sig_pass_thru_handler(void);
 extern void common_rsmrst_pass_thru_handler(void);
 extern void pwr_sm_set_state(enum power_states_ndsx new_state);

@@ -7,6 +7,8 @@
 
 LOG_MODULE_DECLARE(ap_pwrseq, 4);
 
+static struct chipset_pwrseq_config chip_cfg;
+
 void ap_off(void)
 {
 	/* TODO: This could be added as g3action handler */
@@ -48,7 +50,7 @@ int all_sys_pwrgd_handler(void)
 
 	vccst_pg = gpio_get_lvl(GPIO_NET_NAME(VCCST_PWRGD_OD));
 	if (vccst_pg == 0) {
-		k_msleep(VCCST_PWRGD_DELAY_MS);
+		k_msleep(chip_cfg.vccst_pwrgd_delay_ms);
 		gpio_set_lvl(GPIO_NET_NAME(VCCST_PWRGD_OD), 1);
 	}
 	return 0;
@@ -63,7 +65,7 @@ int all_sys_pwrgd_handler(void)
 
 static int wait_for_vrrdy(void)
 {
-	int timeout_ms = VRRDY_TIMEOUT_MS;
+	int timeout_ms = chip_cfg.vrrdy_timeout_ms;
 	int vrrdy;
 
 	for (; timeout_ms > 0; --timeout_ms) {
@@ -89,7 +91,7 @@ int generate_pch_pwrok_handler(void)
 			ap_off();
 			return -1;
 		}
-		k_msleep(PCH_PWROK_DELAY_MS);
+		k_msleep(chip_cfg.pch_pwrok_delay_ms);
 		gpio_set_lvl(GPIO_NET_NAME(PCH_PWROK), 1);
 		LOG_DBG("Set PCH_PWROK\n");
 	}
@@ -152,7 +154,7 @@ void s0_action_handler(void)
 	 * configurable as it is variable with platform
 	 */
 	/* Send SYS_PWROK->SoC if conditions met */
-	generate_sys_pwrok_handler(SYS_PWROK_DELAY_MS);
+	generate_sys_pwrok_handler(chip_cfg.sys_pwrok_delay_ms);
 
 }
 
@@ -167,7 +169,7 @@ void intel_x86_sys_reset_delay(void)
 	 * Debounce time for SYS_RESET_L is 16 ms. Wait twice that period
 	 * to be safe.
 	 */
-	k_msleep(32);
+	k_msleep(chip_cfg.sys_reset_delay_ms);
 }
 
 void chipset_reset(enum chipset_shutdown_reason reason)
@@ -238,6 +240,19 @@ void g3s5_action_handler(void)
 	enable_power_rail(GPIO_NET_NAME(EC_VR_EN_PP5000_A), 1);
 }
 
+
+void init_chipset_pwr_seq_state(void)
+{
+	/* Read from device tree */
+	/* Override any common cfg values here */
+	chip_cfg.pch_pwrok_delay_ms = 2;
+	chip_cfg.sys_pwrok_delay_ms = 45;
+
+	chip_cfg.vccst_pwrgd_delay_ms = 2;
+	chip_cfg.vrrdy_timeout_ms = 50;
+	chip_cfg.sys_reset_delay_ms = 32;
+}
+
 enum power_states_ndsx chipset_pwr_sm_run(enum power_states_ndsx curr_state)
 {
 /* Add chipset specific state handling if any */
@@ -255,4 +270,3 @@ enum power_states_ndsx chipset_pwr_sm_run(enum power_states_ndsx curr_state)
 	}
 	return curr_state;
 }
-

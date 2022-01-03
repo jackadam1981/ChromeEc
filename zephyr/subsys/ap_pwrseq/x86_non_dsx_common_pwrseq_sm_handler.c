@@ -14,9 +14,12 @@
 #include <shell/shell.h>
 
 LOG_MODULE_REGISTER(ap_pwrseq, 4);
+
 static K_KERNEL_STACK_DEFINE(pwrseq_thread_stack, 1024);
 static struct k_thread pwrseq_thread_data;
 k_tid_t pwrseq_thread_id; /* TODO: This may not be needed */
+struct power_seq_context pwrseq_ctx;
+struct common_pwrseq_config com_cfg;
 
 /**
  * @brief power_state names for debug
@@ -37,8 +40,6 @@ const char pwrsm_dbg[][25] = {
 	[SYS_POWER_STATE_S0S3] = "STATE_S0S3",
 };
 
-/* On power-on start boot up sequence */
-static enum power_states_ndsx power_state;
 
 const struct gpio_config *get_gpio_config_from_net_name(const char *net_name)
 {
@@ -101,7 +102,7 @@ static void pwrseq_gpio_init(void)
 	for (i = 0; i < power_seq_gpios_count; i++) {
 		gpio = &power_seq_gpios[i];
 
-		LOG_DBG("Configuring GPIO: net_name=%s, port_name=%s"
+		LOG_DBG("Configuring GPIO: net_name=%s, port_name=%s "
 			"pin=0x%x, flag=0x%x",
 			gpio->net_name, gpio->port_name,
 			gpio->pin, gpio->flags);
@@ -123,7 +124,7 @@ static void pwrseq_gpio_init(void)
 	if (!ret)
 		LOG_INF("Configuring GPIO complete");
 	else
-		LOG_ERR("Configure GPIO fail, err=%d: net_name=%s"
+		LOG_ERR("Configure GPIO fail, err=%d: net_name=%s "
 			"port_name=%s, pin=0x%x, flag=0x%x",
 			ret, gpio->net_name, gpio->port_name,
 			gpio->pin, gpio->flags);
@@ -131,15 +132,15 @@ static void pwrseq_gpio_init(void)
 
 enum power_states_ndsx pwr_sm_get_state(void)
 {
-	return power_state;
+	return pwrseq_ctx.power_state;
 }
 
 void pwr_sm_set_state(enum power_states_ndsx new_state)
 {
 	/* Add locking mechanism if multiple thread can update it */
-	LOG_DBG("Power state: %s --> %s\n", pwrsm_dbg[power_state],
+	LOG_DBG("Power state: %s --> %s\n", pwrsm_dbg[pwrseq_ctx.power_state],
 					pwrsm_dbg[new_state]);
-	power_state = new_state;
+	pwrseq_ctx.power_state = new_state;
 }
 
 /* Check RSMRST is fine to move from S5 to higher state */
@@ -176,7 +177,7 @@ __attribute__((weak)) void rsmrst_pass_thru_handler(void)
 	/* TODO: Add additional conditions for RSMRST handling */
 	pwr_signal_pass_thru_handler(GPIO_NET_NAME(VR_PG_EC_RSMRST_ODL),
 			GPIO_NET_NAME(EC_PCH_RSMRST_L),
-			POWER_EC_PCH_RSMRST_DELAY_MS);
+			com_cfg.pch_rsmrst_delay_ms);
 }
 
 
@@ -261,7 +262,7 @@ void espi_bus_reset(void)
 		LOG_INF("Toggle PM PWRBTN");
 
 		gpio_set_lvl(GPIO_NET_NAME(EC_PCH_PWR_BTN_ODL), 0);
-		k_msleep(POWER_EC_PCH_PM_PWRBTN_DELAY_MS);
+		k_msleep(com_cfg.pch_pm_pwrbtn_delay_ms);
 		gpio_set_lvl(GPIO_NET_NAME(EC_PCH_PWR_BTN_ODL), 1);
 	}
 }
@@ -310,7 +311,6 @@ void pwrseq_loop_thread(void *p1, void *p2, void *p3)
 	int32_t t_wait_ms = 10;
 	enum power_states_ndsx curr_state, new_state;
 
-	LOG_DBG("Running pwrseq state machine %d", power_state);
 	while (1) {
 		curr_state = pwr_sm_get_state();
 		/* Run chipset specific state machine */
@@ -347,6 +347,14 @@ static inline void create_pwrseq_thread(void)
 
 void init_pwr_seq_state(void)
 {
+	/* TODO: Read from device tree */
+
+	com_cfg.pch_rsmrst_delay_ms = 10;
+	com_cfg.pch_pm_pwrbtn_delay_ms = 200;
+
+	/* Delay value can be ovverriden by chipset */
+	init_chipset_pwr_seq_state();
+
 	pwr_sm_set_state(SYS_POWER_STATE_G3S5);
 }
 

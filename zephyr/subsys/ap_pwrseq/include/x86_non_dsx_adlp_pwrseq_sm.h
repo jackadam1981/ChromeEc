@@ -10,14 +10,19 @@
 #include <x86_common_pwrseq.h>
 #include <x86_non_dsx_common_pwrseq_sm_handler.h>
 
-/* TODO: These delays can be configured from .dts */
-#define SYS_PWROK_DELAY_MS 45
-#define PCH_PWROK_DELAY_MS 2
-#define VRRDY_TIMEOUT_MS 50
-#define VCCST_PWRGD_DELAY_MS 2
+extern struct power_seq_context pwrseq_ctx;
 
 extern void gpio_set_lvl(const char *net_name, int val);
 extern int gpio_get_lvl(const char *net_name);
+extern struct common_pwrseq_config com_cfg;
+
+struct chipset_pwrseq_config {
+	int pch_pwrok_delay_ms;
+	int sys_pwrok_delay_ms;
+	int sys_reset_delay_ms;
+	int vccst_pwrgd_delay_ms;
+	int vrrdy_timeout_ms;
+};
 
 /* Power sequencing GPIOs */
 struct gpio_config power_seq_gpios[] = {
