@@ -34,6 +34,24 @@
       "parentUuid": "18a89c28_e97926d8",
       "revId": "361493ac7e4393f7fd297b1be2ea3a86fc4444a9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8fb8690f_35363722",
+        "filename": "board/draco/gpio.inc",
+        "patchSetId": 4
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1294793
+      },
+      "writtenOn": "2022-01-03T02:07:55Z",
+      "side": 0,
+      "message": "Update GPIOE1 set to ALT as ADC function.",
+      "parentUuid": "e2555de8_438f380c",
+      "revId": "361493ac7e4393f7fd297b1be2ea3a86fc4444a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
