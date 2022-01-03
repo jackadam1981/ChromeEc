@@ -72,7 +72,7 @@ int pd_set_power_supply_ready(int port)
 	return EC_SUCCESS;
 }
 
-int board_vbus_source_enabled(int port)
+__overridable int board_vbus_source_enabled(int port)
 {
 	return ppc_is_sourcing_vbus(port);
 }
