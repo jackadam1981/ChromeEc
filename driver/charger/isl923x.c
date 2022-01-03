@@ -9,6 +9,8 @@
 #include "battery.h"
 #include "battery_smart.h"
 #include "charger.h"
+#include "charge_manager.h"
+#include "charge_ramp.h"
 #include "compile_time_macros.h"
 #include "console.h"
 #include "common.h"
@@ -543,6 +545,17 @@ static void isl923x_init(int chgnum)
 			if (raw_write16(chgnum, ISL923X_REG_CONTROL0, reg))
 				goto init_fail;
 		} else {
+			if(IS_ENABLED(CONFIG_CHARGER_ISL9238) &&
+			   battery_is_present() == BP_NO) {
+				if (raw_read16(chgnum, ISL923X_REG_CONTROL0, &reg))
+					goto init_fail;
+
+				/* Disable voltage regulation loop to disable charge ramp */
+				reg |= ISL923X_C0_DISABLE_VREG;
+
+				if (raw_write16(chgnum, ISL923X_REG_CONTROL0, reg))
+					goto init_fail;
+			}
 			/*
 			 * For the ISL9238, set the input voltage regulation to
 			 * 4.439V.  Note, the voltage is set in 341.3 mV steps.
@@ -1248,6 +1261,19 @@ static enum ec_error_list raa489000_set_vsys_compensation(int chgnum,
 	return EC_ERROR_UNIMPLEMENTED;
 }
 #endif /* CONFIG_CHARGER_RAA489000 && CONFIG_OCPC */
+
+#ifdef CONFIG_CHARGER_ISL9238
+static void isl923x_battery_soc_change(void)
+{
+	if (battery_is_present() == BP_YES)
+		charger_set_hw_ramp(chg_ramp_allowed(
+					        charge_manager_get_active_charge_port(),
+					        charge_manager_get_supplier()));
+	else
+		charger_set_hw_ramp(0);
+}
+DECLARE_HOOK(HOOK_BATTERY_SOC_CHANGE, isl923x_battery_soc_change, HOOK_PRIO_DEFAULT);
+#endif
 
 const struct charger_drv isl923x_drv = {
 	.init = &isl923x_init,

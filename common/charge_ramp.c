@@ -6,6 +6,7 @@
 /* Charge input current limit ramp module for Chrome EC */
 
 #include "charge_manager.h"
+#include "charge_state.h"
 #include "common.h"
 #include "system.h"
 #include "usb_charge.h"
@@ -27,7 +28,11 @@ test_mockable int chg_ramp_allowed(int port, int supplier)
 	 */
 	case CHARGE_SUPPLIER_PD:
 	case CHARGE_SUPPLIER_TYPEC:
+#ifdef CONFIG_CHARGER_ISL9238
+		return IS_ENABLED(CONFIG_CHARGE_RAMP_HW) && (battery_is_present() == BP_YES);
+#else
 		return IS_ENABLED(CONFIG_CHARGE_RAMP_HW);
+#endif
 	/* default: fall through */
 	}
 
