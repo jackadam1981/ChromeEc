@@ -72,6 +72,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f7c8916c_ec964342",
+        "filename": "board/gimble/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1477740
+      },
+      "writtenOn": "2022-01-03T09:58:54Z",
+      "side": 1,
+      "message": "the test results have been updated on bug.\nAccording to the results, the waveforms \ncan meet the I2C spec.",
+      "parentUuid": "1f60f847_190b5485",
+      "range": {
+        "startLine": 22,
+        "startChar": 5,
+        "endLine": 22,
+        "endChar": 9
+      },
+      "revId": "76d0e0a1e5909eabb994d963f0e4e03a41ceea4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7263e0ba_1e6f44e1",
