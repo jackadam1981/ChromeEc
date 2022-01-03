@@ -76,6 +76,11 @@
 #define PD_MAX_CURRENT_MA	3000
 #define PD_MAX_VOLTAGE_MV	20000
 
+/* Dedicated barreljack charger port */
+#undef  CONFIG_DEDICATED_CHARGE_PORT_COUNT
+#define CONFIG_DEDICATED_CHARGE_PORT_COUNT 1
+#define DEDICATED_CHARGE_PORT 2
+
 /*
  * Macros for GPIO signals used in common code that don't match the
  * schematic names. Signal names in gpio.inc match the schematic and are
@@ -205,6 +210,14 @@ enum usba_port {
 	USBA_PORT_A1,
 	USBA_PORT_COUNT
 };
+
+enum charge_port {
+	CHARGE_PORT_TYPEC0,
+	CHARGE_PORT_TYPEC1,
+	CHARGE_PORT_BARRELJACK,
+};
+
+extern void adp_connect_interrupt(enum gpio_signal signal);
 
 #endif /* !__ASSEMBLER__ */
 
