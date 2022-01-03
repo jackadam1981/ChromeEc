@@ -48,3 +48,10 @@ static void board_chipset_suspend(void)
 	gpio_set_level(GPIO_EC_KB_BL_EN_L, 1);
 }
 DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, board_chipset_suspend, HOOK_PRIO_DEFAULT);
+
+static void board_init(void)
+{
+	gpio_set_level(GPIO_EN_PPVAR_BJ_ADP, 1);
+	gpio_enable_interrupt(GPIO_BJ_ADP_PRESENT_L);
+}
+DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
