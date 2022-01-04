@@ -3032,8 +3032,13 @@ static int get_thermal_fan_percent(int temp)
 	rv = ec_command(EC_CMD_THERMAL_GET_THRESHOLD, 1, &p, sizeof(p),
 			&r, sizeof(r));
 
-	if (rv <= 0 || r.temp_fan_max == r.temp_fan_off)
+	if (rv <= 0)
 		return -1;
+	/* fan_max and fan_off are equal when fan is off/0.
+	 * Returning 0 to avoid ioctl error.
+	 */
+	if (r.temp_fan_max == r.temp_fan_off)
+		return 0;
 	if (temp < r.temp_fan_off)
 		return 0;
 	if (temp > r.temp_fan_max)
