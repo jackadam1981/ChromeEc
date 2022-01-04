@@ -16,6 +16,24 @@
       "message": "sure Sam will do that.\nright now, my servos I reworked them with NXP GPIO expanders.\nhaving them on the board does that matter? or we can ignore that behavior?",
       "revId": "ecde060240717acd2d0623d3a9316b353d465596",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a2cc55ee_420a42f6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2022-01-04T22:42:16Z",
+      "side": 1,
+      "message": "I think it should be okay. And this is probably a good test for the NXP GPIO expanders too.",
+      "parentUuid": "a7c3bd2d_04694eae",
+      "revId": "ecde060240717acd2d0623d3a9316b353d465596",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
