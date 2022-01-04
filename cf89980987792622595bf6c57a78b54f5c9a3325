@@ -1,0 +1,112 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b4463f97_ccf69fd7",
+        "filename": "zephyr/drivers/cros_cbi/cros_cbi_common.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-01-04T19:17:35Z",
+      "side": 1,
+      "message": "Are clients expected to include the SSFC and FW_CONFIG headers? If so, should these functions be declared in those places?",
+      "revId": "cf89980987792622595bf6c57a78b54f5c9a3325",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7dddaf26_71ac9d27",
+        "filename": "zephyr/drivers/cros_cbi/cros_cbi_fw_config.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-01-04T19:17:35Z",
+      "side": 1,
+      "message": "I think an even stronger argument for not putting them in the header file would be that they don\u0027t need to be part of the API, and some of them are pretty obscure without context. 😊",
+      "revId": "cf89980987792622595bf6c57a78b54f5c9a3325",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5fd6a514_a10b4c36",
+        "filename": "zephyr/drivers/cros_cbi/cros_cbi_ssfc.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-01-04T19:17:35Z",
+      "side": 1,
+      "message": "Does this need to come before log.h? If not, alphabetize it into the local includes block.",
+      "revId": "cf89980987792622595bf6c57a78b54f5c9a3325",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "946a6084_a7e2480d",
+        "filename": "zephyr/drivers/cros_cbi/cros_cbi_ssfc.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-01-04T19:17:35Z",
+      "side": 1,
+      "message": "This seems redundant now that there\u0027s a separate SSFC file.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 50
+      },
+      "revId": "cf89980987792622595bf6c57a78b54f5c9a3325",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18862410_b5e6de57",
+        "filename": "zephyr/dts/bindings/cbi/named-cbi-fw-config-value.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-01-04T19:17:35Z",
+      "side": 1,
+      "message": "It looks like devicetree has some native enumeration support:\nhttps://docs.zephyrproject.org/latest/guides/dts/bindings.html#enum-values\nhttps://docs.zephyrproject.org/latest/reference/devicetree/api.html#c.DT_ENUM_IDX\n\nIs that usable for this purpose?",
+      "revId": "cf89980987792622595bf6c57a78b54f5c9a3325",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f2d5e58_3a778b4d",
+        "filename": "zephyr/include/drivers/cros_cbi.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-01-04T19:17:35Z",
+      "side": 1,
+      "message": "Is it expected that baseboard code will have a translation layer that translates to the enum type appropriate for the requested field?",
+      "revId": "cf89980987792622595bf6c57a78b54f5c9a3325",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
