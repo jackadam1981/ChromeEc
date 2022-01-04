@@ -22,6 +22,30 @@
       },
       "revId": "949c348f7544de1577d69c664df891bf55587bba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2e2a835_1e11df78",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1527153
+      },
+      "writtenOn": "2022-01-04T18:48:22Z",
+      "side": 1,
+      "message": "Here is the comparison output with and without the fix,\n\nWithout Fix:\n------------\n--sensor name -------- temperature -------- fan speed --\nioctl -1, errno 22 (Invalid argument), EC result 255 (\u003cunknown\u003e)\nDDR and SOC           318 K (\u003d 45 C)          -1%\nioctl -1, errno 22 (Invalid argument), EC result 255 (\u003cunknown\u003e)\nFan                   303 K (\u003d 30 C)          -1%\nioctl -1, errno 22 (Invalid argument), EC result 255 (\u003cunknown\u003e)\nCharger               313 K (\u003d 40 C)          -1%\n\nWith Fix:\n---------\n--sensor name -------- temperature -------- fan speed --\nDDR and SOC           311 K (\u003d 38 C)          20%\nFan                   300 K (\u003d 27 C)           0%\nCharger               308 K (\u003d 35 C)           0%\n\n\nBecause the sensor_num was invalid, rv \u003c\u003d 0 resulted true because,\nthermal.c has this check,\nif (p-\u003esensor_num \u003e\u003d TEMP_SENSOR_COUNT)\n\t\treturn EC_RES_INVALID_PARAM;\n\nthermal.c used to return -1 (resulting in ioctl error). Now since the sensor number is valid, even in case fan_off and fan_max are equal(and zero), it would just print -1 in print message (as below) but doesn\u0027t throw error,\n--sensor name -------- temperature -------- fan speed --\nDDR and SOC           318 K (\u003d 45 C)          -1%\nFan                   303 K (\u003d 30 C)          -1%\nCharger               313 K (\u003d 40 C)          -1%",
+      "parentUuid": "d1b2ef03_ea662963",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 49
+      },
+      "revId": "949c348f7544de1577d69c664df891bf55587bba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
