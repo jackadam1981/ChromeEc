@@ -137,6 +137,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0f33feaa_29b2235d",
+        "filename": "zephyr/drivers/cros_cbi/cros_cbi_ssfc.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-01-04T22:22:20Z",
+      "side": 1,
+      "message": "I actually just meant the comments that say this is the SSFC part.",
+      "parentUuid": "138eb274_9bf67a86",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 50
+      },
+      "revId": "cf89980987792622595bf6c57a78b54f5c9a3325",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "18862410_b5e6de57",
         "filename": "zephyr/dts/bindings/cbi/named-cbi-fw-config-value.yaml",
         "patchSetId": 3
@@ -166,6 +190,24 @@
       "side": 1,
       "message": "There\u0027s still some discussion going on in the design doc about how best to represent names.\nI\u0027ll look at whether we can use the DTS enum support somehow.\nI would like to get a working implementation in so that we can add the sub-board for Nissa, so can revisit this if necessary.",
       "parentUuid": "18862410_b5e6de57",
+      "revId": "cf89980987792622595bf6c57a78b54f5c9a3325",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aae81687_df882ffb",
+        "filename": "zephyr/dts/bindings/cbi/named-cbi-fw-config-value.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-01-04T22:22:20Z",
+      "side": 1,
+      "message": "Ack.",
+      "parentUuid": "e3d44e4c_17fbac67",
       "revId": "cf89980987792622595bf6c57a78b54f5c9a3325",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },

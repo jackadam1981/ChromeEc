@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1c704b8_7c1dd3f8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-01-04T22:22:20Z",
+      "side": 1,
+      "message": "Seems workable. As discussed in some other comments, I think there are probably ways to better separate the FW_CONFIG and SSFC stuff and to make the bindings less verbose. But if this needs to merge to tell whether it even works, I\u0027m OK with leaving some TODOs in.",
+      "revId": "683f1360540511a5545abe79947a5546678ab47f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
