@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "4f657181_ad6a0c63",
+        "filename": "zephyr/drivers/cros_cbi/cros_cbi_common.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-01-04T20:46:06Z",
+      "side": 1,
+      "message": "No, there should be no need to include these.\nThe client api should be entirely covered by include/drivers/cros_cbi.h\n\nThe separation here is to allow each CBI function (SSFC, FW_CONFIG) to have some cleaner separation to avoid too much intermingling (because there are so many macros).\nThere is some more opportunity to disentangle the dependencies a little more, but I didn\u0027t want to mess too much with the SSFC stuff (which I confess I\u0027m still trying to work out completely).",
+      "parentUuid": "b4463f97_ccf69fd7",
+      "revId": "cf89980987792622595bf6c57a78b54f5c9a3325",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "7dddaf26_71ac9d27",
         "filename": "zephyr/drivers/cros_cbi/cros_cbi_fw_config.c",
         "patchSetId": 3
@@ -52,6 +70,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f91cdb69_05e6a06e",
+        "filename": "zephyr/drivers/cros_cbi/cros_cbi_ssfc.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-01-04T20:46:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5fd6a514_a10b4c36",
+      "revId": "cf89980987792622595bf6c57a78b54f5c9a3325",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "946a6084_a7e2480d",
@@ -65,6 +101,30 @@
       "writtenOn": "2022-01-04T19:17:35Z",
       "side": 1,
       "message": "This seems redundant now that there\u0027s a separate SSFC file.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 50
+      },
+      "revId": "cf89980987792622595bf6c57a78b54f5c9a3325",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "138eb274_9bf67a86",
+        "filename": "zephyr/drivers/cros_cbi/cros_cbi_ssfc.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-01-04T20:46:06Z",
+      "side": 1,
+      "message": "Yes, there\u0027s a good chance I can move much of the SSFC macro into the .c file.\nI\u0027ll likely do that in a separate refactor.",
+      "parentUuid": "946a6084_a7e2480d",
       "range": {
         "startLine": 9,
         "startChar": 0,
@@ -92,6 +152,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3d44e4c_17fbac67",
+        "filename": "zephyr/dts/bindings/cbi/named-cbi-fw-config-value.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-01-04T20:46:06Z",
+      "side": 1,
+      "message": "There\u0027s still some discussion going on in the design doc about how best to represent names.\nI\u0027ll look at whether we can use the DTS enum support somehow.\nI would like to get a working implementation in so that we can add the sub-board for Nissa, so can revisit this if necessary.",
+      "parentUuid": "18862410_b5e6de57",
+      "revId": "cf89980987792622595bf6c57a78b54f5c9a3325",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0f2d5e58_3a778b4d",
@@ -105,6 +183,24 @@
       "writtenOn": "2022-01-04T19:17:35Z",
       "side": 1,
       "message": "Is it expected that baseboard code will have a translation layer that translates to the enum type appropriate for the requested field?",
+      "revId": "cf89980987792622595bf6c57a78b54f5c9a3325",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb6cdce6_547007d3",
+        "filename": "zephyr/include/drivers/cros_cbi.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-01-04T20:46:06Z",
+      "side": 1,
+      "message": "It doesn\u0027t appear in this change, but the intent is to generate enums for each\nof the field values - I\u0027ve not quite resolved the best way of doing that, but",
+      "parentUuid": "0f2d5e58_3a778b4d",
       "revId": "cf89980987792622595bf6c57a78b54f5c9a3325",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
