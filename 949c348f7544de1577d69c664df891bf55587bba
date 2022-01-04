@@ -46,6 +46,30 @@
       },
       "revId": "949c348f7544de1577d69c664df891bf55587bba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "65645b99_e3b49169",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1527153
+      },
+      "writtenOn": "2022-01-04T18:53:37Z",
+      "side": 1,
+      "message": "0 was because, I had received the following values (Eg: charger sensor),\ntemp_fan_off: 308\ntemp_fan_max: 338\ntemp: 301\n\nFor the above case,\nif (temp \u003c r.temp_fan_off)\n\t\treturn 0;",
+      "parentUuid": "c2e2a835_1e11df78",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 49
+      },
+      "revId": "949c348f7544de1577d69c664df891bf55587bba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
