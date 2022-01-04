@@ -617,6 +617,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7215fa12_7cd82663",
+        "filename": "zephyr/subsys/usbc/tc/snk.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 385,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2022-01-04T21:18:51Z",
+      "side": 1,
+      "message": "Changed this to be an override but will adjust to be the mechanism Sam wants to use instead once I understand what that is",
+      "parentUuid": "60a42778_62443485",
+      "revId": "343e01b5373fbbd418f7bcbe882d21f4b1d95f53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6824a1fd_c6fb197d",
         "filename": "zephyr/subsys/usbc/tc/snk.c",
         "patchSetId": 7

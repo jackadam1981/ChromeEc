@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b56910a1_621df0b3",
+        "filename": "zephyr/subsys/usbc/tc/snk.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2022-01-04T21:18:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "df8af7af_05e05797",
+      "range": {
+        "startLine": 111,
+        "startChar": 32,
+        "endLine": 111,
+        "endChar": 33
+      },
+      "revId": "4fc9af04960885ca14661a6ca959f8676e2bbcdb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e052f123_0f5728b1",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-12-20T23:55:25Z",
       "side": 1,
       "message": "Comment seems unrelated to the code below?",
+      "range": {
+        "startLine": 89,
+        "startChar": 0,
+        "endLine": 92,
+        "endChar": 0
+      },
+      "revId": "4fc9af04960885ca14661a6ca959f8676e2bbcdb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "db8d9ada_92366265",
+        "filename": "zephyr/subsys/usbc/tc/usb_tc_sm.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2022-01-04T21:18:51Z",
+      "side": 1,
+      "message": "Should have been \"if (USB_TC_INCLUDES_SNK_STATE_MACHINE)\" but missed it on my rename... I will remove this example of usage.",
+      "parentUuid": "e052f123_0f5728b1",
       "range": {
         "startLine": 89,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "625c2a74_97832bf3",
+        "filename": "zephyr/subsys/usbc/tc/usb_tc_sm.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2022-01-04T21:18:51Z",
+      "side": 1,
+      "message": "As it is written looks correct to me.\n\n    ( has_usbc_type \u0026\u0026 ( (usbc_type \u003d\u003d USBC_SNK) || (usbc_type \u003d\u003d USBC_SNK_DBGACC) ) ) ||",
+      "parentUuid": "c09c7214_28ee891a",
+      "range": {
+        "startLine": 99,
+        "startChar": 0,
+        "endLine": 99,
+        "endChar": 11
+      },
+      "revId": "4fc9af04960885ca14661a6ca959f8676e2bbcdb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ddce7880_14c5ac00",
@@ -93,6 +165,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a1e42ed1_e46f70e0",
+        "filename": "zephyr/subsys/usbc/tc/usb_tc_sm.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2022-01-04T21:18:51Z",
+      "side": 1,
+      "message": "I was avoiding the redundant check for has prop but will add this helper to make it more clear.",
+      "parentUuid": "ddce7880_14c5ac00",
+      "range": {
+        "startLine": 101,
+        "startChar": 0,
+        "endLine": 104,
+        "endChar": 0
+      },
+      "revId": "4fc9af04960885ca14661a6ca959f8676e2bbcdb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8e0b5889_f51e109b",
@@ -106,6 +202,30 @@
       "writtenOn": "2021-12-20T23:55:25Z",
       "side": 1,
       "message": "Note convert all property names to underscores with macros.\n\nDT_NODE_HAS_PROP(cid, usbc_type)",
+      "range": {
+        "startLine": 129,
+        "startChar": 0,
+        "endLine": 132,
+        "endChar": 0
+      },
+      "revId": "4fc9af04960885ca14661a6ca959f8676e2bbcdb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cba75e9a_af4fb339",
+        "filename": "zephyr/subsys/usbc/tc/usb_tc_sm.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2022-01-04T21:18:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8e0b5889_f51e109b",
       "range": {
         "startLine": 129,
         "startChar": 0,
