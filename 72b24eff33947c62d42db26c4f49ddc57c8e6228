@@ -16,6 +16,188 @@
       "message": "Note - please use \"zephyr-reviewers\" which load balances the review workload.  This will auto-assign a reviewer from the Google Zephyr team.",
       "revId": "72b24eff33947c62d42db26c4f49ddc57c8e6228",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c30d3d3_b2fa66c1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-01-04T16:21:35Z",
+      "side": 1,
+      "message": "I don\u0027t have a lot of background on Brya, so made some comments and putting back on the zephyr-reviewers queue for another pair of eyes.",
+      "revId": "72b24eff33947c62d42db26c4f49ddc57c8e6228",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df033c83_de598c0c",
+        "filename": "board/brya/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-01-04T16:21:35Z",
+      "side": 1,
+      "message": "Similar to zephyr/projects/brya/brya/CMakeLists.txt: these changes seem like they belong in their own CL are not specific to enabling the keyboard on brya.",
+      "revId": "72b24eff33947c62d42db26c4f49ddc57c8e6228",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4f8bf03_836ee3d0",
+        "filename": "board/brya/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-01-04T16:21:35Z",
+      "side": 1,
+      "message": "See above",
+      "revId": "72b24eff33947c62d42db26c4f49ddc57c8e6228",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d778c55d_8462d60a",
+        "filename": "board/brya/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-01-04T16:21:35Z",
+      "side": 1,
+      "message": "See above",
+      "revId": "72b24eff33947c62d42db26c4f49ddc57c8e6228",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5499f06_b78a388b",
+        "filename": "board/brya/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-01-04T16:21:35Z",
+      "side": 1,
+      "message": "See above",
+      "revId": "72b24eff33947c62d42db26c4f49ddc57c8e6228",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb21722f_82704c0d",
+        "filename": "board/brya/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-01-04T16:21:35Z",
+      "side": 1,
+      "message": "See above",
+      "revId": "72b24eff33947c62d42db26c4f49ddc57c8e6228",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f73ec4e0_ae0ef232",
+        "filename": "board/brya/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-01-04T16:21:35Z",
+      "side": 1,
+      "message": "See above",
+      "revId": "72b24eff33947c62d42db26c4f49ddc57c8e6228",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ee0d511_4ffb9b87",
+        "filename": "zephyr/projects/brya/brya/CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-01-04T16:21:35Z",
+      "side": 1,
+      "message": "This change seems necessary to enable keyboard, but I think belongs in its own CL.",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 46
+      },
+      "revId": "72b24eff33947c62d42db26c4f49ddc57c8e6228",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "433955cc_5eceb589",
+        "filename": "zephyr/projects/brya/brya/CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-01-04T16:21:35Z",
+      "side": 1,
+      "message": "See above.",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 33
+      },
+      "revId": "72b24eff33947c62d42db26c4f49ddc57c8e6228",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab718c89_e0a45f43",
+        "filename": "zephyr/projects/brya/brya/gpio.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-01-04T16:21:35Z",
+      "side": 1,
+      "message": "Remove extra newline",
+      "revId": "72b24eff33947c62d42db26c4f49ddc57c8e6228",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
