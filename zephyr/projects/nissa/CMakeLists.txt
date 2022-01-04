@@ -8,6 +8,10 @@ find_package(Zephyr REQUIRED HINTS $ENV{ZEPHYR_BASE})
 
 zephyr_include_directories(include)
 
+zephyr_library_sources(
+	"src/board_config.c"
+)
+
 if(DEFINED CONFIG_BOARD_NIVVIKS)
 	project(nivviks)
 	zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_USBC "src/usbc.c")
