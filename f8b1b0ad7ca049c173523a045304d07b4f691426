@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "453b0dba_6d046243",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 509,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2022-01-04T23:55:08Z",
+      "side": 1,
+      "message": "Since the chipset_force_shutdown happens here, there will be yet another if state jumps to S5G3. Should be G3 instead?",
+      "revId": "f8b1b0ad7ca049c173523a045304d07b4f691426",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
