@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6053c929_c6628bd7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 48
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2022-01-04T09:19:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "12df5a38_97aaa7b3",
+      "revId": "b3c138cd200a0c756885d704339f50c77bed2e98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ef5e052f_96af56fc",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-01-04T06:28:53Z",
       "side": 1,
       "message": "This is not a PGOOD signal now. Maybe use some other naming? e.g. `IN_AP_RST`?",
+      "range": {
+        "startLine": 50,
+        "startChar": 8,
+        "endLine": 50,
+        "endChar": 21
+      },
+      "revId": "b3c138cd200a0c756885d704339f50c77bed2e98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "708f62fc_b6454ef9",
+        "filename": "power/mt8186.c",
+        "patchSetId": 48
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2022-01-04T09:19:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ef5e052f_96af56fc",
       "range": {
         "startLine": 50,
         "startChar": 8,
@@ -64,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f4b6cd9_84c92c23",
+        "filename": "power/mt8186.c",
+        "patchSetId": 48
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2022-01-04T09:19:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "07b3f5e9_4903e46b",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 0
+      },
+      "revId": "b3c138cd200a0c756885d704339f50c77bed2e98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0abaa1e9_b2dc9b1c",
@@ -77,6 +143,24 @@
       "writtenOn": "2022-01-04T06:28:53Z",
       "side": 1,
       "message": "You should also enable AP WDT interrupt.",
+      "revId": "b3c138cd200a0c756885d704339f50c77bed2e98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b81b8bf_04bc8411",
+        "filename": "power/mt8186.c",
+        "patchSetId": 48
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2022-01-04T09:19:12Z",
+      "side": 1,
+      "message": "Done. (it\u0027s not used though)",
+      "parentUuid": "0abaa1e9_b2dc9b1c",
       "revId": "b3c138cd200a0c756885d704339f50c77bed2e98",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -104,6 +188,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "be0df094_0b8a8aea",
+        "filename": "power/mt8186.c",
+        "patchSetId": 48
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2022-01-04T09:19:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7f6b84b0_3e60f922",
+      "range": {
+        "startLine": 222,
+        "startChar": 9,
+        "endLine": 222,
+        "endChar": 22
+      },
+      "revId": "b3c138cd200a0c756885d704339f50c77bed2e98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "97308a5c_6b4233eb",
@@ -117,6 +225,24 @@
       "writtenOn": "2022-01-04T06:28:53Z",
       "side": 1,
       "message": "Let\u0027s split this chance into another one.",
+      "revId": "b3c138cd200a0c756885d704339f50c77bed2e98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9046f557_e16aad90",
+        "filename": "zephyr/projects/corsola/BUILD.py",
+        "patchSetId": 48
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2022-01-04T09:19:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "97308a5c_6b4233eb",
       "revId": "b3c138cd200a0c756885d704339f50c77bed2e98",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -138,6 +264,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1bf9ce86_dc5ecc06",
+        "filename": "zephyr/projects/corsola/include/gpio_map.h",
+        "patchSetId": 48
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2022-01-04T09:19:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c95db9b0_de143092",
+      "revId": "b3c138cd200a0c756885d704339f50c77bed2e98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "df9f7785_0b23ff61",
@@ -151,6 +295,24 @@
       "writtenOn": "2022-01-04T06:28:53Z",
       "side": 1,
       "message": "Let\u0027s split this change into another one.",
+      "revId": "b3c138cd200a0c756885d704339f50c77bed2e98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2878e94f_bb2cdc7b",
+        "filename": "zephyr/projects/corsola/power_signal.dts",
+        "patchSetId": 48
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2022-01-04T09:19:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "df9f7785_0b23ff61",
       "revId": "b3c138cd200a0c756885d704339f50c77bed2e98",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
