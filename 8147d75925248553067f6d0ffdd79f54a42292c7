@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c39c3ec4_6070d8d0",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 4
+      },
+      "lineNbr": 544,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-01-04T15:25:44Z",
+      "side": 1,
+      "message": "\"requires AP to enter alternate modes\"",
+      "range": {
+        "startLine": 544,
+        "startChar": 26,
+        "endLine": 544,
+        "endChar": 51
+      },
+      "revId": "8147d75925248553067f6d0ffdd79f54a42292c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8626e1a1_0ba8b9e9",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 4
+      },
+      "lineNbr": 545,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-01-04T15:25:44Z",
+      "side": 1,
+      "message": "Add: depends PLATFORM_EC_USB_PD_ALT_MODE",
+      "revId": "8147d75925248553067f6d0ffdd79f54a42292c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
