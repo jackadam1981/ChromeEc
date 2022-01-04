@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3df46562_d17277e4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-01-04T17:08:55Z",
+      "side": 1,
+      "message": "sgtm (but I suggest doing so in a separate CL.)",
+      "parentUuid": "77ab9cb0_a8493cd7",
+      "revId": "59440bda8a5c1988625ad5cf2c43ffd8ba880427",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "39f605a3_aa205851",
         "filename": "chip/npcx/lpc.c",
         "patchSetId": 2
