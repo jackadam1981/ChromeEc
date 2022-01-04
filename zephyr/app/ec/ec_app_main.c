@@ -20,12 +20,20 @@
 #include "zephyr_espi_shim.h"
 #include "ec_app_main.h"
 
+/* MCHP */
+extern void system_jump_to_booter(void);
+
 /* For testing purposes this is not named main. See main_shim.c for the real
  * main() function.
  */
 void ec_app_main(void)
 {
 	system_common_pre_init();
+
+#if 0
+	/* MCHP test */
+	system_jump_to_booter();
+#endif
 
 	/*
 	 * Initialize reset logs. This needs to be done before any updates of

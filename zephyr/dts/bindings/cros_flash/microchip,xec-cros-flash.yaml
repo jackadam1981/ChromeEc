@@ -1,0 +1,8 @@
+# Copyright 2021 Microchip Technology Inc.
+# SPDX-License-Identifier: Apache-2.0
+
+description: Microchip, XEC-cros-flash node
+
+compatible: "microchip,xec-cros-flash"
+
+include: cros-flash-controller.yaml

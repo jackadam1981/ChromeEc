@@ -1,0 +1,17 @@
+# Copyright 2021 Microchip Technology Inc.
+# SPDX-License-Identifier: Apache-2.0
+
+description: Microchip, XEC Real time clock (RTC) node
+
+compatible: "microchip,xec-cros-rtc"
+
+include: base.yaml
+
+properties:
+    reg:
+      required: true
+
+    label:
+      required: true
+
+
