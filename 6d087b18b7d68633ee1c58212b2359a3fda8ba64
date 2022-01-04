@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7f5e95e_e543c347",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2022-01-04T15:51:49Z",
+      "side": 1,
+      "message": "+2 with comment change",
+      "revId": "6d087b18b7d68633ee1c58212b2359a3fda8ba64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd3722ba_dc9e6f70",
+        "filename": "zephyr/shim/chip/it8xxx2/power_policy.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2022-01-04T15:51:49Z",
+      "side": 1,
+      "message": "is this comment still applicable?",
+      "range": {
+        "startLine": 21,
+        "startChar": 26,
+        "endLine": 21,
+        "endChar": 57
+      },
+      "revId": "6d087b18b7d68633ee1c58212b2359a3fda8ba64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
