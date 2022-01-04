@@ -16,6 +16,24 @@
       "message": "these devices are disabled by default so no need to write it here",
       "revId": "2abaf73f9302172ed49a044ff787b676ad4471e7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f43f31f_b3401f98",
+        "filename": "zephyr/projects/corsola/i2c_kingler.dts",
+        "patchSetId": 37
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2022-01-04T08:14:22Z",
+      "side": 1,
+      "message": "Done. It was enabled in the cros-ec layer.",
+      "parentUuid": "32528516_0a3c36f2",
+      "revId": "2abaf73f9302172ed49a044ff787b676ad4471e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
