@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4fa7d93a_79855aa1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2022-01-04T18:28:27Z",
+      "side": 1,
+      "message": "Yes, that is what I did initially (see patchset #1) but then decided to move to a separate CL. The question here is about the size. From one hand we don\u0027t want to miss port80 messages, but from the other hand we want to avoid spending too much time inside the interrupt context dumping the FIFO. EC has more important tasks to do during boot.",
+      "parentUuid": "3df46562_d17277e4",
+      "revId": "59440bda8a5c1988625ad5cf2c43ffd8ba880427",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "39f605a3_aa205851",
@@ -49,6 +67,30 @@
       "writtenOn": "2021-12-31T05:38:53Z",
       "side": 1,
       "message": "nit: This works but ARRAY_SIZE(port80_buf) is slightly more robust and easier to verify.",
+      "range": {
+        "startLine": 588,
+        "startChar": 14,
+        "endLine": 588,
+        "endChar": 33
+      },
+      "revId": "59440bda8a5c1988625ad5cf2c43ffd8ba880427",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4afc927_df839a7b",
+        "filename": "chip/npcx/lpc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 588,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2022-01-04T18:28:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "39f605a3_aa205851",
       "range": {
         "startLine": 588,
         "startChar": 14,
