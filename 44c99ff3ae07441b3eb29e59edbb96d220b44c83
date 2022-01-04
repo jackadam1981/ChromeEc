@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2f72275_9bef756b",
+        "filename": "util/ectool.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 3028,
+      "author": {
+        "id": 1527153
+      },
+      "writtenOn": "2022-01-04T09:28:45Z",
+      "side": 1,
+      "message": "updated sensor_num",
+      "parentUuid": "1aa69a20_b4f34065",
+      "range": {
+        "startLine": 3028,
+        "startChar": 1,
+        "endLine": 3028,
+        "endChar": 45
+      },
+      "revId": "44c99ff3ae07441b3eb29e59edbb96d220b44c83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c2cfd5e9_7f3a17d5",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-01-03T18:56:09Z",
       "side": 1,
       "message": "Can you elaborate on this? I don\u0027t think EC or host does/can set temp_fan_off equal to temp_fan_max dynamically. They\u0027re equal (and zero) only if the fan isn\u0027t bound to a sensor.\n\nSo, I think we should still take max \u003d\u003d off as an error except they\u0027re both zero.",
+      "range": {
+        "startLine": 3037,
+        "startChar": 0,
+        "endLine": 3038,
+        "endChar": 37
+      },
+      "revId": "44c99ff3ae07441b3eb29e59edbb96d220b44c83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4fab1045_68689387",
+        "filename": "util/ectool.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 3038,
+      "author": {
+        "id": 1527153
+      },
+      "writtenOn": "2022-01-04T09:28:45Z",
+      "side": 1,
+      "message": "Yes Dai, \ni do agree with your point here. I was in seeing the values of fan_max and fan_off being 0 and that\u0027s being the snesor_num was invalid or random. So this was working only when the sensor number and the random number was matched.",
+      "parentUuid": "c2cfd5e9_7f3a17d5",
       "range": {
         "startLine": 3037,
         "startChar": 0,
