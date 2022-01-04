@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "682b5fa4_ef1570de",
+        "filename": "zephyr/projects/corsola/adc_kingler.dts",
+        "patchSetId": 34
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2022-01-04T08:14:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a107f108_208bc97b",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "a734bf2ae20210bf719fa3b64203bb8ca8f6739e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2d148003_123d089d",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-01-04T07:46:14Z",
       "side": 1,
       "message": "remove the extra space before text (also in almost all lines in this file)",
+      "range": {
+        "startLine": 7,
+        "startChar": 1,
+        "endLine": 7,
+        "endChar": 2
+      },
+      "revId": "a734bf2ae20210bf719fa3b64203bb8ca8f6739e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba55f792_718c59a0",
+        "filename": "zephyr/projects/corsola/adc_kingler.dts",
+        "patchSetId": 34
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2022-01-04T08:14:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2d148003_123d089d",
       "range": {
         "startLine": 7,
         "startChar": 1,
