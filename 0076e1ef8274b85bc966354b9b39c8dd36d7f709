@@ -70,6 +70,24 @@
       "parentUuid": "a30ac908_748fad46",
       "revId": "0076e1ef8274b85bc966354b9b39c8dd36d7f709",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8bc3920d_c814cc97",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-01-04T21:57:16Z",
+      "side": 1,
+      "message": "also, add a Cq-Depend on the CL that introduces the charger_bq25720.c symlink.\n\nhopefully, that won\u0027t get us back to the original state of the CQ choking on\nthis change.",
+      "parentUuid": "eae0c992_7e41fca7",
+      "revId": "0076e1ef8274b85bc966354b9b39c8dd36d7f709",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
