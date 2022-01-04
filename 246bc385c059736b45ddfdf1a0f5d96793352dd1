@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1302570_7c654365",
+        "filename": "docs/zephyr/zephyr_adc.md",
+        "patchSetId": 6
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-01-04T19:31:12Z",
+      "side": 1,
+      "message": "It would be helpful to note that the single ADC devicetree node supports multiple ADC channels.",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 7
+      },
+      "revId": "246bc385c059736b45ddfdf1a0f5d96793352dd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5054c25_a3fdbb49",
+        "filename": "docs/zephyr/zephyr_adc.md",
+        "patchSetId": 6
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-01-04T19:31:12Z",
+      "side": 1,
+      "message": "the Zephyr ADC driver\u0027s channel_id.",
+      "range": {
+        "startLine": 59,
+        "startChar": 16,
+        "endLine": 59,
+        "endChar": 32
+      },
+      "revId": "246bc385c059736b45ddfdf1a0f5d96793352dd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71e5bc7b_b51af9fc",
+        "filename": "docs/zephyr/zephyr_adc.md",
+        "patchSetId": 6
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-01-04T19:31:12Z",
+      "side": 1,
+      "message": "I filed b:213210342 to replace this property with \"io-channels\".",
+      "range": {
+        "startLine": 66,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 16
+      },
+      "revId": "246bc385c059736b45ddfdf1a0f5d96793352dd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
