@@ -34,6 +34,24 @@
       "parentUuid": "47e11af3_20dcbdf7",
       "revId": "0076e1ef8274b85bc966354b9b39c8dd36d7f709",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a30ac908_748fad46",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1513493
+      },
+      "writtenOn": "2022-01-04T18:19:32Z",
+      "side": 1,
+      "message": "I think you might need to do this in this CL as well\n`I remove charger.c first then I will add charger_bq25720.c through\nanother CL`",
+      "parentUuid": "b7d6709a_5a46077b",
+      "revId": "0076e1ef8274b85bc966354b9b39c8dd36d7f709",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
