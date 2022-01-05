@@ -95,6 +95,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "11062dc4_b87b3013",
+        "filename": "zephyr/projects/skyrim/gpio.dts",
+        "patchSetId": 4
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-01-05T19:04:27Z",
+      "side": 1,
+      "message": "Arbitrage has a \"VOLTAGE_DOMAINS\" column, but this column is blank for skyrim (shrug).",
+      "parentUuid": "eee255ed_3c370c1c",
+      "range": {
+        "startLine": 248,
+        "startChar": 0,
+        "endLine": 254,
+        "endChar": 0
+      },
+      "revId": "936b8b78baaf87dd7c76dcfea7292bb5ac3ee151",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "910f2587_53f7b0ad",
@@ -273,6 +297,30 @@
       "side": 1,
       "message": "After checking with the EEs, this is low-voltage by virtue of the VSPI domain being 1.8V",
       "parentUuid": "1cd038d3_91701382",
+      "range": {
+        "startLine": 74,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 0
+      },
+      "revId": "936b8b78baaf87dd7c76dcfea7292bb5ac3ee151",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f849b493_5be6f0cd",
+        "filename": "zephyr/projects/skyrim/skyrim.dts",
+        "patchSetId": 4
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-01-05T19:04:27Z",
+      "side": 1,
+      "message": "Ack.  Didn\u0027t realize NPCX9 controlled the VSPI domain with an external pin.",
+      "parentUuid": "561b19d6_94822efc",
       "range": {
         "startLine": 74,
         "startChar": 0,

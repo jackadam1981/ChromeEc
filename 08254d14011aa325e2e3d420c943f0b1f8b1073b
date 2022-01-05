@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "732b1661_b3e4dcf7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-01-05T19:04:27Z",
+      "side": 1,
+      "message": "One fix needed for ACOK_OD",
+      "revId": "08254d14011aa325e2e3d420c943f0b1f8b1073b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5aefe3f_bdd6ec96",
+        "filename": "zephyr/projects/skyrim/skyrim.dts",
+        "patchSetId": 7
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-01-05T19:04:27Z",
+      "side": 1,
+      "message": "ACOK_OD connects to a 3.3V pull-up.  The 1.8V pull-up is DNS and on the other side of a diode.",
+      "range": {
+        "startLine": 101,
+        "startChar": 5,
+        "endLine": 101,
+        "endChar": 12
+      },
+      "revId": "08254d14011aa325e2e3d420c943f0b1f8b1073b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
