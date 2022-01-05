@@ -179,7 +179,7 @@ static bool tcpci_emul_check_int(const struct emul *emul)
 		return true;
 	}
 
-	if (alert & alert_mask & TCPC_REG_POWER_STATUS &&
+	if (alert & alert_mask & TCPC_REG_ALERT_POWER_STATUS &&
 	    data->reg[TCPC_REG_POWER_STATUS] &
 	    data->reg[TCPC_REG_POWER_STATUS_MASK]) {
 		return true;
@@ -381,6 +381,7 @@ int tcpci_emul_connect_partner(const struct emul *emul,
 			       enum tcpc_cc_polarity polarity)
 {
 	uint16_t cc_status, alert, role_ctrl, power_status;
+	struct tcpci_emul_data *data = emul->data;
 	enum tcpc_cc_voltage_status cc1_v, cc2_v;
 	enum tcpc_cc_pull cc1_r, cc2_r;
 
@@ -433,6 +434,8 @@ int tcpci_emul_connect_partner(const struct emul *emul,
 			tcpci_emul_set_reg(emul, TCPC_REG_POWER_STATUS,
 					   TCPC_REG_POWER_STATUS_VBUS_PRES |
 					   power_status);
+			data->reg[TCPC_REG_ALERT] |=
+				TCPC_REG_ALERT_POWER_STATUS;
 		}
 	}
 
@@ -475,8 +478,11 @@ int tcpci_emul_disconnect_partner(const struct emul *emul)
 
 	/* Clear VBUS present in case if source partner is disconnected */
 	tcpci_emul_get_reg(emul, TCPC_REG_POWER_STATUS, &power_status);
-	tcpci_emul_set_reg(emul, TCPC_REG_POWER_STATUS,
-			   power_status & ~TCPC_REG_POWER_STATUS_VBUS_PRES);
+	if (power_status & TCPC_REG_POWER_STATUS_VBUS_PRES) {
+		power_status &= ~TCPC_REG_POWER_STATUS_VBUS_PRES;
+		tcpci_emul_set_reg(emul, TCPC_REG_POWER_STATUS, power_status);
+		data->reg[TCPC_REG_ALERT] |= TCPC_REG_ALERT_RX_STATUS;
+	}
 
 	return 0;
 }
