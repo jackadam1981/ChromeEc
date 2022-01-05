@@ -273,22 +273,21 @@ void board_tcpc_init(void)
 
 	/* Enable board usbc interrupts */
 	board_enable_usbc_interrupts();
+
+	/*
+	 * Set usb pd port count.
+	 * CONFIG_USB_PD_PORT_MAX_COUNT must be defined to account for C0, C1,
+	 * and C2, but TCPMv2 only knows about C0 and C1, as C2 is a type-c only
+	 * port that is managed directly by the PS8803 TCPC.
+	 * */
+	usb_pd_set_port_count(CONFIG_USB_PD_PORT_MAX_COUNT-1);
+
 }
 DECLARE_HOOK(HOOK_INIT, board_tcpc_init, HOOK_PRIO_INIT_I2C + 2);
 
 enum pd_dual_role_states board_tc_get_initial_drp_mode(int port)
 {
 	return pd_dual_role_init[port];
-}
-
-__override uint8_t board_get_usb_pd_port_count(void)
-{
-	/*
-	 * CONFIG_USB_PD_PORT_MAX_COUNT must be defined to account for C0, C1,
-	 * and C2, but TCPMv2 only knows about C0 and C1, as C2 is a type-c only
-	 * port that is managed directly by the PS8803 TCPC.
-	 */
-	return CONFIG_USB_PD_PORT_MAX_COUNT - 1;
 }
 
 int ppc_get_alert_status(int port)

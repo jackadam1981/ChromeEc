@@ -365,6 +365,18 @@ struct motion_sensor_t motion_sensors[] = {
 
 unsigned int motion_sensor_count = ARRAY_SIZE(motion_sensors);
 
+static void set_usb_pd_port_count(enum fw_config_db db)
+{
+	if (db == DB_1A_HDMI || db == DB_NONE || db == DB_LTE_HDMI
+			|| db == DB_1A_HDMI_LTE)
+		usb_pd_set_port_count(CONFIG_USB_PD_PORT_MAX_COUNT - 1);
+	else if (db == DB_1C || db == DB_1C_LTE || db == DB_1C_1A
+			|| db == DB_1C_1A_LTE)
+		usb_pd_set_port_count(CONFIG_USB_PD_PORT_MAX_COUNT);
+	else
+	ccprints("Unhandled DB configuration: %d", db);
+}
+
 void board_init(void)
 {
 	int on;
@@ -426,6 +438,9 @@ void board_init(void)
 	on = chipset_in_state(CHIPSET_STATE_ON | CHIPSET_STATE_ANY_SUSPEND |
 			      CHIPSET_STATE_SOFT_OFF);
 	board_power_5v_enable(on);
+
+	/* set the usb pd port count based on db */
+	set_usb_pd_port_count(db);
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
@@ -483,21 +498,6 @@ __override void board_power_5v_enable(int enable)
 			CPRINTUSB("Failed to %sable sub rails!", enable ?
 								  "en" : "dis");
 	}
-}
-
-__override uint8_t board_get_usb_pd_port_count(void)
-{
-	enum fw_config_db db = get_cbi_fw_config_db();
-
-	if (db == DB_1A_HDMI || db == DB_NONE || db == DB_LTE_HDMI
-			|| db == DB_1A_HDMI_LTE)
-		return CONFIG_USB_PD_PORT_MAX_COUNT - 1;
-	else if (db == DB_1C || db == DB_1C_LTE || db == DB_1C_1A
-			|| db == DB_1C_1A_LTE)
-		return CONFIG_USB_PD_PORT_MAX_COUNT;
-
-	ccprints("Unhandled DB configuration: %d", db);
-	return 0;
 }
 
 __override uint8_t board_get_charger_chip_count(void)

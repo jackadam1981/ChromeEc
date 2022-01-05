@@ -354,7 +354,7 @@ static int usb_pd_port_count = PORT_COUNT_UNINITIALIZED;
 /*
  * Function to get the count of type c ports at runtime.
  */
-uint8_t board_get_usb_pd_port_count(void)
+uint8_t usb_pd_get_port_count(void)
 {
 	if (usb_pd_port_count == PORT_COUNT_UNINITIALIZED) {
 		usb_pd_port_count = CONFIG_USB_PD_PORT_MAX_COUNT;
@@ -377,23 +377,16 @@ void usb_pd_set_port_count(int count)
  */
 uint8_t usb_pd_get_port_count(void)
 {
-	return (board_get_usb_pd_port_count());
-}
-#endif /* CONFIG_USB_PD_COUNT_RUNTIME */
-
-__overridable uint8_t board_get_usb_pd_port_count(void)
-{
 	return CONFIG_USB_PD_PORT_MAX_COUNT;
 }
-
+#endif /* CONFIG_USB_PD_COUNT_RUNTIME */
 
 __overridable bool board_is_usb_pd_port_present(int port)
 {
 	/*
 	 * Use usb_pd_get_port_count() instead of checking
-	 * CONFIG_USB_PD_PORT_MAX_COUNT directly here for legacy boards
-	 * that implement board_get_usb_pd_port_count() but do not
-	 * implement board_is_usb_pd_port_present().
+	 * CONFIG_USB_PD_PORT_MAX_COUNT, as few boards may
+	 * have port count fixed at run time.
 	 */
 
 	return (port >= 0) && (port < usb_pd_get_port_count());

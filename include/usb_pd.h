@@ -3084,14 +3084,6 @@ void usb_pd_set_port_count(int count);
 uint8_t usb_pd_get_port_count(void);
 
 /**
- * Get board specific usb pd port count
- *
- * @return <= CONFIG_USB_PD_PORT_MAX_COUNT if configured in board file,
- *         else return CONFIG_USB_PD_PORT_MAX_COUNT
- */
-__override_proto uint8_t board_get_usb_pd_port_count(void);
-
-/**
  * Return true if specified PD port is present. This is similar to
  * checking CONFIG_USB_PD_PORT_MAX_COUNT but handles sparse numbering.
  *
