@@ -33,6 +33,93 @@
       "message": "Are these being cherry-picked from main?\n\nCan you run with \"cherry-pick -x\" so it has the \"(cherry picked from commit ...)\" text? It helps for review, thanks!",
       "revId": "ddf1b33b5f6571f4eab5f5417ec172fedc6ed4cd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9403f1a_45ab0959",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-01-05T18:42:36Z",
+      "side": 1,
+      "message": "Nevermind ... just noticed this was sent to main.",
+      "parentUuid": "56b2e847_28ac9139",
+      "revId": "ddf1b33b5f6571f4eab5f5417ec172fedc6ed4cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a813d17b_beffd337",
+        "filename": "board/quackingstick/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 638,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-01-05T18:42:36Z",
+      "side": 1,
+      "message": "use bool, int as bool usage is discouraged",
+      "range": {
+        "startLine": 638,
+        "startChar": 1,
+        "endLine": 638,
+        "endChar": 4
+      },
+      "revId": "ddf1b33b5f6571f4eab5f5417ec172fedc6ed4cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e59d11d_2b66a8a8",
+        "filename": "board/quackingstick/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 644,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-01-05T18:42:36Z",
+      "side": 1,
+      "message": "gpio_set_level(GPIO_PEN_PWR_EN, pen_charge_enable)",
+      "range": {
+        "startLine": 641,
+        "startChar": 0,
+        "endLine": 644,
+        "endChar": 37
+      },
+      "revId": "ddf1b33b5f6571f4eab5f5417ec172fedc6ed4cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e603983_ea6d3ce2",
+        "filename": "board/quackingstick/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-01-05T18:42:36Z",
+      "side": 1,
+      "message": "nit, please align indentation",
+      "range": {
+        "startLine": 42,
+        "startChar": 28,
+        "endLine": 42,
+        "endChar": 31
+      },
+      "revId": "ddf1b33b5f6571f4eab5f5417ec172fedc6ed4cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
