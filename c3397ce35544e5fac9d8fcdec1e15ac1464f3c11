@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5600ff1_7748636f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-01-05T20:36:52Z",
+      "side": 1,
+      "message": "Hi Martin -\n\nI\u0027m excited to see the mchip support landed.  However, please split this up into smaller CLs.  I suggest the following:\n1. Separate CL for each cros_* driver.  (e.g. cros_flash, cros_kb_raw, cros_rtc, cros_syste are all separate CLs).  These CLs should not contain any EVB board changes.\n2. For the EVB board, the first CL should be the minimum required to compile and generate UART output.  Add the other functional blocks one at a time (I2C, ADC, sensors, eSPI, flash, etc).\n\nIdeally each CL compiles on it\u0027s own so that the changes can merge as they get approved .   Where this isn\u0027t possible, you need to add a \"Cq-Depend\" to ensure changes are merged together.\n\nhttps://chromium.googlesource.com/chromiumos/docs/+/HEAD/contributing.md#cq-depend\n",
+      "revId": "c3397ce35544e5fac9d8fcdec1e15ac1464f3c11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
