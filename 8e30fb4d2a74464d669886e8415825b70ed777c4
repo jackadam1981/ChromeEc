@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c451768_77812f5a",
+        "filename": "zephyr/boards/arm/brya/brya.dts",
+        "patchSetId": 7
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-01-05T19:10:30Z",
+      "side": 1,
+      "message": "I also didn\u0027t find any ref. Deleting this",
+      "parentUuid": "2a206528_a5d892fa",
+      "range": {
+        "startLine": 153,
+        "startChar": 0,
+        "endLine": 174,
+        "endChar": 0
+      },
+      "revId": "8e30fb4d2a74464d669886e8415825b70ed777c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "90d54220_ee5c2bcc",
@@ -37,6 +61,24 @@
       "writtenOn": "2022-01-05T00:53:23Z",
       "side": 1,
       "message": "None of these sensors are enabled in cros-ec build or in the prj.conf for the Zephyr build.\n\nThis can be deleted.",
+      "revId": "8e30fb4d2a74464d669886e8415825b70ed777c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4508fbee_02d360f9",
+        "filename": "zephyr/projects/brya/brya/cbi_eeprom.dts",
+        "patchSetId": 7
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-01-05T19:10:30Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "90d54220_ee5c2bcc",
       "revId": "8e30fb4d2a74464d669886e8415825b70ed777c4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
