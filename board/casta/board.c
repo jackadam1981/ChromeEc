@@ -142,6 +142,13 @@ void i2c_end_xfer_notify(const int port, const uint16_t slave_addr_flags)
 
 	battery_last_i2c_time = get_time();
 }
+static void set_usb_pd_port_count(void)
+{
+	if (sku_id == 2)
+		usb_pd_set_port_count(CONFIG_USB_PD_PORT_MAX_COUNT-1);
+	else
+		usb_pd_set_port_count(CONFIG_USB_PD_PORT_MAX_COUNT);
+}
 
 /* Read CBI from i2c eeprom and initialize variables for board variants */
 static void cbi_init(void)
@@ -152,6 +159,9 @@ static void cbi_init(void)
 		return;
 	sku_id = val;
 	CPRINTS("SKU: %d", sku_id);
+
+	/* set usb pd port count based on sku id */
+	set_usb_pd_port_count();
 }
 DECLARE_HOOK(HOOK_INIT, cbi_init, HOOK_PRIO_INIT_I2C);
 
@@ -186,11 +196,4 @@ void board_overcurrent_event(int port, int is_overcurrented)
 
 	/* Note that the level is inverted because the pin is active low. */
 	gpio_set_level(GPIO_USB_C_OC, !is_overcurrented);
-}
-
-__override uint8_t board_get_usb_pd_port_count(void)
-{
-	if (sku_id == 2)
-		return CONFIG_USB_PD_PORT_MAX_COUNT - 1;
-	return CONFIG_USB_PD_PORT_MAX_COUNT;
 }

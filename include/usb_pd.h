@@ -3080,15 +3080,15 @@ void usb_pd_set_port_count(int count);
  *
  * @return number of usb pd ports
  */
-uint8_t usb_pd_get_port_count(void);
 
-/**
- * Get board specific usb pd port count
- *
- * @return <= CONFIG_USB_PD_PORT_MAX_COUNT if configured in board file,
- *         else return CONFIG_USB_PD_PORT_MAX_COUNT
- */
-__override_proto uint8_t board_get_usb_pd_port_count(void);
+#ifndef CONFIG_USB_PD_COUNT_RUNTIME
+static inline uint8_t usb_pd_get_port_count(void)
+{
+	return CONFIG_USB_PD_PORT_MAX_COUNT;
+}
+#else
+uint8_t usb_pd_get_port_count(void);
+#endif
 
 /**
  * Return true if specified PD port is present. This is similar to
