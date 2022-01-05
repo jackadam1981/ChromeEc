@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1da52a8f_2975db50",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 5
+      },
+      "lineNbr": 546,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-01-05T18:24:32Z",
+      "side": 1,
+      "message": "This should be \"depends on PLATFORM_EC_USB_PD_ALT_MODE\" to fix the build error.",
+      "range": {
+        "startLine": 546,
+        "startChar": 1,
+        "endLine": 546,
+        "endChar": 36
+      },
+      "revId": "92185eb5d28bbd2c3d9bec48be5004315dda7210",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
