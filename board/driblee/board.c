@@ -255,11 +255,6 @@ __override void board_power_5v_enable(int enable)
 	set_5v_gpio(!!enable);
 }
 
-__override uint8_t board_get_usb_pd_port_count(void)
-{
-	return CONFIG_USB_PD_PORT_MAX_COUNT;
-}
-
 __override uint8_t board_get_charger_chip_count(void)
 {
 	return CHARGER_NUM;

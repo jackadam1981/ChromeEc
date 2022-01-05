@@ -250,6 +250,10 @@ void board_init(void)
 
 		/* Enable interrupt for passing through HPD */
 		gpio_enable_interrupt(GPIO_EC_I2C_SUB_C1_SDA_HDMI_HPD_ODL);
+
+		/* correct the usb pd port count */
+		usb_pd_set_port_count(CONFIG_USB_PD_PORT_MAX_COUNT-1);
+
 	} else {
 		/* Set SDA as an input */
 		gpio_set_flags(GPIO_EC_I2C_SUB_C1_SDA_HDMI_HPD_ODL,
@@ -258,6 +262,9 @@ void board_init(void)
 		/* Enable C1 interrupt and check if it needs processing */
 		gpio_enable_interrupt(GPIO_SUB_C1_INT_EN_RAILS_ODL);
 		check_c1_line();
+
+		/* correct the usb pd port count */
+		usb_pd_set_port_count(CONFIG_USB_PD_PORT_MAX_COUNT);
 	}
 	/* Enable gpio interrupt for base accelgyro sensor */
 	gpio_enable_interrupt(GPIO_BASE_SIXAXIS_INT_L);
@@ -365,14 +372,6 @@ __override void board_power_5v_enable(int enable)
 								"en" : "dis");
 	}
 
-}
-
-__override uint8_t board_get_usb_pd_port_count(void)
-{
-	if (get_cbi_fw_config_db() == DB_1A_HDMI)
-		return CONFIG_USB_PD_PORT_MAX_COUNT - 1;
-	else
-		return CONFIG_USB_PD_PORT_MAX_COUNT;
 }
 
 __override uint8_t board_get_charger_chip_count(void)

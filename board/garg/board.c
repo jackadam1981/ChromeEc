@@ -305,6 +305,15 @@ void sensor_interrupt(enum gpio_signal signal)
 	}
 }
 
+static void set_usb_pd_port_count(void)
+{
+/* HDMI SKU has one USB PD port */
+	if (sku_id == 9 || sku_id == 19 || sku_id == 50 || sku_id == 52)
+		usb_pd_set_port_count(CONFIG_USB_PD_PORT_MAX_COUNT-1);
+	else
+		usb_pd_set_port_count(CONFIG_USB_PD_PORT_MAX_COUNT);
+}
+
 /* Read CBI from i2c eeprom and initialize variables for board variants */
 static void cbi_init(void)
 {
@@ -316,6 +325,8 @@ static void cbi_init(void)
 	CPRINTSUSB("SKU: %d", sku_id);
 
 	board_update_sensor_config_from_sku();
+
+	set_usb_pd_port_count();
 }
 DECLARE_HOOK(HOOK_INIT, cbi_init, HOOK_PRIO_INIT_I2C + 1);
 
@@ -355,12 +366,4 @@ void board_overcurrent_event(int port, int is_overcurrented)
 
 	/* Note that the level is inverted because the pin is active low. */
 	gpio_set_level(GPIO_USB_C_OC, !is_overcurrented);
-}
-
-__override uint8_t board_get_usb_pd_port_count(void)
-{
-	/* HDMI SKU has one USB PD port */
-	if (sku_id == 9 || sku_id == 19 || sku_id == 50 || sku_id == 52)
-		return CONFIG_USB_PD_PORT_MAX_COUNT - 1;
-	return CONFIG_USB_PD_PORT_MAX_COUNT;
 }

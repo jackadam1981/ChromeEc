@@ -68,6 +68,9 @@
 #undef CONFIG_BC12_MAX14637_DELAY_FROM_OFF_TO_ON_MS
 #define CONFIG_BC12_MAX14637_DELAY_FROM_OFF_TO_ON_MS 100
 
+/* set usb pd port count at runtime */
+#define CONFIG_USB_PD_COUNT_RUNTIME
+
 #ifndef __ASSEMBLER__
 
 #include "gpio_signal.h"
