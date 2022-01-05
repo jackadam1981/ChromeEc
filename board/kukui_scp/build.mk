@@ -6,7 +6,7 @@
 # Board specific files build
 #
 CHIP:=mt_scp
-CHIP_VARIANT:=mt8183
+CHIP_VARIANT:=mt8186
 
 board-y=board.o
 board-$(HAS_TASK_VDEC_SERVICE)+=vdec.o
