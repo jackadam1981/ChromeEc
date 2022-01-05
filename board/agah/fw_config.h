@@ -3,15 +3,15 @@
  * found in the LICENSE file.
  */
 
-#ifndef __BOARD_DRACO_FW_CONFIG_H_
-#define __BOARD_DRACO_FW_CONFIG_H_
+#ifndef __BOARD_AGAH_FW_CONFIG_H_
+#define __BOARD_AGAH_FW_CONFIG_H_
 
 #include <stdint.h>
 
 /****************************************************************************
- * CBI FW_CONFIG layout for Draco board.
+ * CBI FW_CONFIG layout for Agah board.
  *
- * Source of truth is the project/brya/draco/config.star configuration file.
+ * Source of truth is the project/brya/agah/config.star configuration file.
  */
 
 enum ec_cfg_keyboard_backlight_type {
@@ -19,7 +19,7 @@ enum ec_cfg_keyboard_backlight_type {
 	KEYBOARD_BACKLIGHT_ENABLED = 1
 };
 
-union draco_cbi_fw_config {
+union agah_cbi_fw_config {
 	struct {
 		enum ec_cfg_keyboard_backlight_type	kb_bl : 1;
 		uint32_t				audio : 3;
@@ -33,6 +33,6 @@ union draco_cbi_fw_config {
  *
  * @return the FW_CONFIG for the board.
  */
-union draco_cbi_fw_config get_fw_config(void);
+union agah_cbi_fw_config get_fw_config(void);
 
-#endif /* __BOARD_DRACO_FW_CONFIG_H_ */
+#endif /* __BOARD_AGAH_FW_CONFIG_H_ */
