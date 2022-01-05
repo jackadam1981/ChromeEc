@@ -307,6 +307,12 @@ static void board_tcpc_init(void)
 	gpio_enable_interrupt(GPIO_USB_C0_BC12_INT_ODL);
 	if (board_detect_ps8815_db())
 		gpio_enable_interrupt(GPIO_USB_C1_BC12_INT_ODL);
+
+	/* set usb_pd_port count based on the db */
+	if (board_detect_ps8815_db())
+		usb_pd_set_port_count(CONFIG_USB_PD_PORT_MAX_COUNT);
+	else
+		usb_pd_set_port_count(CONFIG_USB_PD_PORT_MAX_COUNT-1);
 }
 DECLARE_HOOK(HOOK_INIT, board_tcpc_init, HOOK_PRIO_INIT_CHIPSET);
 
@@ -379,14 +385,4 @@ void ppc_interrupt(enum gpio_signal signal)
 __override bool board_is_dts_port(int port)
 {
 	return port == USBC_PORT_C0;
-}
-
-__override uint8_t board_get_usb_pd_port_count(void)
-{
-	CPRINTSUSB("%s is called by task_id:%d",  __func__, task_get_current());
-
-	if (board_detect_ps8815_db())
-		return CONFIG_USB_PD_PORT_MAX_COUNT;
-
-	return CONFIG_USB_PD_PORT_MAX_COUNT - 1;
 }

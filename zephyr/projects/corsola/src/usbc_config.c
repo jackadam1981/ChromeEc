@@ -48,19 +48,15 @@ static void board_tcpc_init(void)
 	gpio_enable_interrupt(GPIO_X_EC_GPIO2);
 
 	/* If this is not a Type-C subboard, disable the task. */
-	if (corsola_get_db_type() != CORSOLA_DB_TYPEC)
+	if (corsola_get_db_type() != CORSOLA_DB_TYPEC) {
 		task_disable_task(TASK_ID_PD_C1);
+		usb_pd_set_port_count(CONFIG_USB_PD_PORT_MAX_COUNT-1);
+	} else {
+		usb_pd_set_port_count(CONFIG_USB_PD_PORT_MAX_COUNT);
+	}
 }
 /* Must be done after I2C and subboard */
 DECLARE_HOOK(HOOK_INIT, board_tcpc_init, HOOK_PRIO_INIT_I2C + 1);
-
-__override uint8_t board_get_usb_pd_port_count(void)
-{
-	if (corsola_get_db_type() == CORSOLA_DB_TYPEC)
-		return CONFIG_USB_PD_PORT_MAX_COUNT;
-	else
-		return CONFIG_USB_PD_PORT_MAX_COUNT - 1;
-}
 
 /* USB-A */
 const int usb_port_enable[] = {
