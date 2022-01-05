@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "beedec57_f08b367a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-01-05T03:54:47Z",
+      "side": 1,
+      "message": "nit: could mention that sinking must always be re-enabled during the hard reset process, and due to timing differences we may not always go through the charge port of None in this sequence",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 45
+      },
+      "revId": "05f3cc33b40a97e2b8e9fab9ad70feb5876e0667",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
