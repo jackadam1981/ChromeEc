@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2af989d_9ef746eb",
+        "filename": "zephyr/projects/brya/brya/motionsense.dts",
+        "patchSetId": 7
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2022-01-05T00:02:23Z",
+      "side": 1,
+      "message": "Not sure if this matters much, but these are called lid and base mutexes in the original sensors.c file rather than by the part number.",
+      "revId": "8e30fb4d2a74464d669886e8415825b70ed777c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "79de36f0_4e3ba898",
+        "filename": "zephyr/projects/brya/brya/motionsense.dts",
+        "patchSetId": 7
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2022-01-05T00:02:23Z",
+      "side": 1,
+      "message": "Do we need to specify min_ max_frequency and a driver here (and for the others below)? Or are these implied somehow?",
+      "revId": "8e30fb4d2a74464d669886e8415825b70ed777c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
