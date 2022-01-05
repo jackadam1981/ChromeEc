@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b4e2e88_7ef5aeba",
+        "filename": "zephyr/projects/skyrim/gpio.dts",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-01-05T03:43:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f254e9a0_3948539b",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 26
+      },
+      "revId": "936b8b78baaf87dd7c76dcfea7292bb5ac3ee151",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7a0fc13f_353396ca",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-12-23T18:32:22Z",
       "side": 1,
       "message": "I think this will have to move to the skyrm.dts overlay, because you also need to include the sensor interrupts in the low voltage list.",
+      "range": {
+        "startLine": 248,
+        "startChar": 0,
+        "endLine": 254,
+        "endChar": 0
+      },
+      "revId": "936b8b78baaf87dd7c76dcfea7292bb5ac3ee151",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eee255ed_3c370c1c",
+        "filename": "zephyr/projects/skyrim/gpio.dts",
+        "patchSetId": 4
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-01-05T03:43:53Z",
+      "side": 1,
+      "message": "Done.  Good call, I hadn\u0027t noticed how many of the SoC pins had moved to 1.8 V in Skyrim.  Did you notice it perusing the schematic, or was there a special arbitrage command you used to find it?",
+      "parentUuid": "7a0fc13f_353396ca",
       "range": {
         "startLine": 248,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "36129d48_f5f1821e",
+        "filename": "zephyr/projects/skyrim/skyrim.dts",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-01-05T03:43:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "910f2587_53f7b0ad",
+      "range": {
+        "startLine": 15,
+        "startChar": 21,
+        "endLine": 15,
+        "endChar": 32
+      },
+      "revId": "936b8b78baaf87dd7c76dcfea7292bb5ac3ee151",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "118b341e_fece6bd2",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-12-23T18:32:22Z",
       "side": 1,
       "message": "I don\u0027t think this signal is open-drain.  The pull-up is on the other side of a diode, and guybrush cros-ec does not set ODR.",
+      "range": {
+        "startLine": 42,
+        "startChar": 21,
+        "endLine": 42,
+        "endChar": 34
+      },
+      "revId": "936b8b78baaf87dd7c76dcfea7292bb5ac3ee151",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f399a0d_fd5c40a4",
+        "filename": "zephyr/projects/skyrim/skyrim.dts",
+        "patchSetId": 4
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-01-05T03:43:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "118b341e_fece6bd2",
       "range": {
         "startLine": 42,
         "startChar": 21,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b4f1325_96e3b201",
+        "filename": "zephyr/projects/skyrim/skyrim.dts",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-01-05T03:43:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c95217e3_29dc83a7",
+      "range": {
+        "startLine": 52,
+        "startChar": 2,
+        "endLine": 52,
+        "endChar": 13
+      },
+      "revId": "936b8b78baaf87dd7c76dcfea7292bb5ac3ee151",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1cd038d3_91701382",
@@ -139,6 +259,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "561b19d6_94822efc",
+        "filename": "zephyr/projects/skyrim/skyrim.dts",
+        "patchSetId": 4
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-01-05T03:43:53Z",
+      "side": 1,
+      "message": "After checking with the EEs, this is low-voltage by virtue of the VSPI domain being 1.8V",
+      "parentUuid": "1cd038d3_91701382",
+      "range": {
+        "startLine": 74,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 0
+      },
+      "revId": "936b8b78baaf87dd7c76dcfea7292bb5ac3ee151",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2773919f_bffa93c0",
@@ -152,6 +296,30 @@
       "writtenOn": "2021-12-23T18:32:22Z",
       "side": 1,
       "message": "Pullup/down is only valid on input pins.",
+      "range": {
+        "startLine": 79,
+        "startChar": 38,
+        "endLine": 79,
+        "endChar": 50
+      },
+      "revId": "936b8b78baaf87dd7c76dcfea7292bb5ac3ee151",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d02c43bf_c20c9a0a",
+        "filename": "zephyr/projects/skyrim/skyrim.dts",
+        "patchSetId": 4
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-01-05T03:43:53Z",
+      "side": 1,
+      "message": "Talked to the EEs, and the pull up shouldn\u0027t be needed here since the signal is push-pull",
+      "parentUuid": "2773919f_bffa93c0",
       "range": {
         "startLine": 79,
         "startChar": 38,

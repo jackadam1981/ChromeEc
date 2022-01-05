@@ -189,6 +189,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c8c30e2_5ff989d3",
+        "filename": "zephyr/projects/skyrim/power_signals.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-01-05T03:43:53Z",
+      "side": 1,
+      "message": "The EEs indicated that a few of these signals need the speediest possible response time, so I think I\u0027ll leave the interrupt handlers as separate for now.",
+      "parentUuid": "69a1a2dd_5dceddce",
+      "range": {
+        "startLine": 74,
+        "startChar": 5,
+        "endLine": 74,
+        "endChar": 32
+      },
+      "revId": "39c922809040fae65083b12113091e8c07128129",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "76a3543d_9146d5c3",
