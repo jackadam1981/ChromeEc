@@ -720,15 +720,11 @@ static enum ec_status hc_usb_pd_mux_info(struct host_cmd_handler_args *args)
 	const struct ec_params_usb_pd_mux_info *p = args->params;
 	struct ec_response_usb_pd_mux_info *r = args->response;
 	int port = p->port;
-	mux_state_t mux_state;
 
 	if (port >= board_get_usb_pd_port_count())
 		return EC_RES_INVALID_PARAM;
 
-	if (configure_mux(port, USB_MUX_GET_MODE, &mux_state))
-		return EC_RES_ERROR;
-
-	r->flags = mux_state;
+	r->flags = usb_mux_get(port);
 
 	/* Clear HPD IRQ event since we're about to inform host of it. */
 	if (IS_ENABLED(CONFIG_USB_MUX_VIRTUAL) &&
