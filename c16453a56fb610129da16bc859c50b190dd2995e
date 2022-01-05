@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a3c2505_33338cff",
+        "filename": "power/mt8186.c",
+        "patchSetId": 57
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2022-01-05T09:18:26Z",
+      "side": 1,
+      "message": "Done, changed to active low.",
+      "parentUuid": "72b862f1_ed2036fc",
+      "range": {
+        "startLine": 52,
+        "startChar": 19,
+        "endLine": 52,
+        "endChar": 28
+      },
+      "revId": "c16453a56fb610129da16bc859c50b190dd2995e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "565fb994_1f534a82",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5043d955_c3c24582",
+        "filename": "power/mt8186.c",
+        "patchSetId": 57
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2022-01-05T09:18:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "565fb994_1f534a82",
+      "range": {
+        "startLine": 70,
+        "startChar": 3,
+        "endLine": 70,
+        "endChar": 62
+      },
+      "revId": "c16453a56fb610129da16bc859c50b190dd2995e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7d2c9ca6_1079ec13",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-01-05T01:33:24Z",
       "side": 1,
       "message": "This needs to be changed (and also the following IN_AP_RST usage) if we use the reverse narrative (IN_AP_RST).",
+      "range": {
+        "startLine": 170,
+        "startChar": 6,
+        "endLine": 170,
+        "endChar": 52
+      },
+      "revId": "c16453a56fb610129da16bc859c50b190dd2995e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1845e219_6018ef56",
+        "filename": "power/mt8186.c",
+        "patchSetId": 57
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2022-01-05T09:18:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7d2c9ca6_1079ec13",
       "range": {
         "startLine": 170,
         "startChar": 6,
