@@ -160,11 +160,18 @@ void bc12_interrupt(enum gpio_signal signal)
 
 static void board_sub_bc12_init(void)
 {
-	if (board_get_sub_board() == SUB_BOARD_TYPEC)
+	if (board_get_sub_board() == SUB_BOARD_TYPEC) {
 		gpio_enable_interrupt(GPIO_USB_C1_BC12_INT_L);
-	else
+
+		/* For Type-C subboard, set the maximum usb pd port count */
+		usb_pd_set_port_count(CONFIG_USB_PD_PORT_MAX_COUNT);
+	} else {
 		/* If this is not a Type-C subboard, disable the task. */
 		task_disable_task(TASK_ID_USB_CHG_P1);
+
+		/* For non Type-C subboard, set the correct usb pd port count */
+		usb_pd_set_port_count(CONFIG_USB_PD_PORT_MAX_COUNT-1);
+	}
 }
 /* Must be done after I2C and subboard */
 DECLARE_HOOK(HOOK_INIT, board_sub_bc12_init, HOOK_PRIO_INIT_I2C + 1);
@@ -174,14 +181,6 @@ void ppc_interrupt(enum gpio_signal signal)
 	if (signal == GPIO_USB_C0_PPC_INT_ODL)
 		/* C0: PPC interrupt */
 		syv682x_interrupt(0);
-}
-
-__override uint8_t board_get_usb_pd_port_count(void)
-{
-	if (board_get_sub_board() == SUB_BOARD_TYPEC)
-		return CONFIG_USB_PD_PORT_MAX_COUNT;
-	else
-		return CONFIG_USB_PD_PORT_MAX_COUNT - 1;
 }
 
 /* USB-A */
