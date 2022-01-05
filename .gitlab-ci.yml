@@ -300,3 +300,4 @@ twister_coverage:
     paths:
       - build/zephyr_codecov/fixed.info
     expire_in: 1 week
+  coverage: '/lines\.*: \d+\.\d+%/'
