@@ -16,6 +16,24 @@
       "message": "I2C_PORT_FLAG_DYNAMIC_SPEED not needed on this port.\nthis won\u0027t harm anything, but\nit\u0027s really only needed on the ps8815 port for firmware update.",
       "revId": "9dd06b4e58790a96a1386e758822ae7f4a12f381",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9924ef1a_e234086d",
+        "filename": "board/taeko/i2c.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1461738
+      },
+      "writtenOn": "2022-01-05T02:12:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dd484936_6dfe21d8",
+      "revId": "9dd06b4e58790a96a1386e758822ae7f4a12f381",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
