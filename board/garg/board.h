@@ -60,6 +60,8 @@
 #define CONFIG_STEINHART_HART_3V3_13K7_47K_4050B
 #define CONFIG_STEINHART_HART_3V3_51K1_47K_4050B
 
+#define CONFIG_USB_PD_COUNT_RUNTIME
+
 #ifndef __ASSEMBLER__
 
 /* support factory keyboard test */
