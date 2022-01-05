@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7df8ed3_3431b4bd",
+        "filename": "zephyr/emul/tcpc/emul_tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 438,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2022-01-05T18:29:31Z",
+      "side": 1,
+      "message": "shouldn\u0027t this be a side effect of setting the TCPC_REG_POWER_STATUS register in tcpci_emul_set_reg? That would guarantee changes to this register cause the alert to set properly.",
+      "range": {
+        "startLine": 437,
+        "startChar": 0,
+        "endLine": 438,
+        "endChar": 32
+      },
+      "revId": "5776a54fa27916002af8c8fc79e6122c54382c49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea070b5e_4103ec81",
+        "filename": "zephyr/emul/tcpc/emul_tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 485,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2022-01-05T18:29:31Z",
+      "side": 1,
+      "message": "another possible side effect inside tcpci_emul_set_reg?",
+      "range": {
+        "startLine": 481,
+        "startChar": 0,
+        "endLine": 485,
+        "endChar": 2
+      },
+      "revId": "5776a54fa27916002af8c8fc79e6122c54382c49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
