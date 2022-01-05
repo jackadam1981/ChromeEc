@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0537d87a_bd69854f",
+        "filename": "common/timer.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-01-05T17:07:39Z",
+      "side": 1,
+      "message": "Can you file a bug for this? Using this style:\n\n FIXME(b/1234)",
+      "range": {
+        "startLine": 233,
+        "startChar": 5,
+        "endLine": 233,
+        "endChar": 18
+      },
+      "revId": "e0311aa69bc4265a6aa67c2bb4007a37df8c0d86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
