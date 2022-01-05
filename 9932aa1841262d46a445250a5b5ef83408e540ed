@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ffde090_5a80f97c",
+        "filename": "board/storo/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 502,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-01-05T03:56:14Z",
+      "side": 1,
+      "message": "So what are old_port and port when this happens?  Can we also skip the discharge_on_ac call if old_port \u003d\u003d port?",
+      "revId": "9932aa1841262d46a445250a5b5ef83408e540ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
