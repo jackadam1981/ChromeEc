@@ -76,6 +76,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8cb1269f_ce552fd1",
+        "filename": "zephyr/projects/brya/brya/motionsense.dts",
+        "patchSetId": 7
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2022-01-05T17:11:14Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "28edf2b4_66ea01e4",
+      "revId": "8e30fb4d2a74464d669886e8415825b70ed777c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "79de36f0_4e3ba898",
@@ -107,6 +125,24 @@
       "side": 1,
       "message": "The min/max frequency is fixed based on the driver and is set by the C glue code for each driver.\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/shim/src/motionsense_driver/lis2dw12-drvinfo.inc;drc\u003d4df10f7b2b0e67d1c36bb69285436ec0d5e3fdfd;l\u003d42",
       "parentUuid": "79de36f0_4e3ba898",
+      "revId": "8e30fb4d2a74464d669886e8415825b70ed777c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e9cfb5f_f55ac08a",
+        "filename": "zephyr/projects/brya/brya/motionsense.dts",
+        "patchSetId": 7
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2022-01-05T17:11:14Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "51028eb3_9d643c95",
       "revId": "8e30fb4d2a74464d669886e8415825b70ed777c4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
