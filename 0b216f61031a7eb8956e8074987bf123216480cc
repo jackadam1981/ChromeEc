@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "eaa488e1_3203cc91",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1381813
+      },
+      "writtenOn": "2022-01-05T22:52:50Z",
+      "side": 1,
+      "message": "Maybe mention why interupt pins aren\u0027t necessary? I\u0027m assuming it\u0027s because they aren\u0027t actually used anywhere or something.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 43
+      },
+      "revId": "0b216f61031a7eb8956e8074987bf123216480cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f15d5c4e_2c2f1bdf",
         "filename": "util/pinmap/pm/generate_test.go",
         "patchSetId": 2
@@ -14,6 +37,24 @@
       "writtenOn": "2022-01-05T22:47:44Z",
       "side": 1,
       "message": "I am wondering why didn\u0027t you add a test for InputPD pins?",
+      "revId": "0b216f61031a7eb8956e8074987bf123216480cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c61b6098_b73d88ed",
+        "filename": "util/pinmap/pm/generate_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1381813
+      },
+      "writtenOn": "2022-01-05T22:52:50Z",
+      "side": 1,
+      "message": "Otherwise this change seems fine to me.",
+      "parentUuid": "f15d5c4e_2c2f1bdf",
       "revId": "0b216f61031a7eb8956e8074987bf123216480cc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
