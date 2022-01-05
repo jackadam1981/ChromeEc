@@ -22,6 +22,29 @@
       },
       "revId": "d6b12ca3b2476097b319adfc3c6666afb5bcc26c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18a0b20c_3ec00920",
+        "filename": "driver/charger/bq25710.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2022-01-05T21:56:22Z",
+      "side": 1,
+      "message": "That was A/(B/C)  which is not equal to A/B/C. This part should be A*C/B or\n```\n#define REG_TO_CHARGING_CURRENT(REG) ((REG) * \\\n\tDEFAULT_SENSE_RESISTOR / CONFIG_CHARGER_BQ25710_SENSE_RESISTOR)\n```\n\ncorrect?",
+      "range": {
+        "startLine": 126,
+        "startChar": 0,
+        "endLine": 127,
+        "endChar": 64
+      },
+      "revId": "d6b12ca3b2476097b319adfc3c6666afb5bcc26c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
