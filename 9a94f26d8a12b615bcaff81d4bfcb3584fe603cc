@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "82f625df_83dad9ae",
+        "filename": "docs/zephyr/zephyr_i2c.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-01-05T22:24:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9f83aaf8_a34cdb44",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 47
+      },
+      "revId": "9a94f26d8a12b615bcaff81d4bfcb3584fe603cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "78eefbbf_b990a140",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-12-30T06:01:02Z",
       "side": 1,
       "message": "Add \"via `CONFIG_I2C_SHELL`\". While it\u0027s default is `y` it\u0027s possible that some vendors might want to turn it off for space savings when not building a debug image.",
+      "range": {
+        "startLine": 152,
+        "startChar": 42,
+        "endLine": 152,
+        "endChar": 55
+      },
+      "revId": "9a94f26d8a12b615bcaff81d4bfcb3584fe603cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "07b0a0b9_1617462e",
+        "filename": "docs/zephyr/zephyr_i2c.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-01-05T22:24:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "78eefbbf_b990a140",
       "range": {
         "startLine": 152,
         "startChar": 42,
