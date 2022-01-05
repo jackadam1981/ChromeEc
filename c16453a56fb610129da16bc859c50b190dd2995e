@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72b862f1_ed2036fc",
+        "filename": "power/mt8186.c",
+        "patchSetId": 57
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2022-01-05T01:33:24Z",
+      "side": 1,
+      "message": "~IN_AP_RST? or use the naming in the comment of line 70.",
+      "range": {
+        "startLine": 52,
+        "startChar": 19,
+        "endLine": 52,
+        "endChar": 28
+      },
+      "revId": "c16453a56fb610129da16bc859c50b190dd2995e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "565fb994_1f534a82",
+        "filename": "power/mt8186.c",
+        "patchSetId": 57
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2022-01-05T01:33:24Z",
+      "side": 1,
+      "message": "If you want this pin a high acitve, then the power signal should be renamed as AP_IN_RST_DEASSERTED, and this might be the lightest change for this power signal considering the following AP_IN_RST usage.",
+      "range": {
+        "startLine": 70,
+        "startChar": 3,
+        "endLine": 70,
+        "endChar": 62
+      },
+      "revId": "c16453a56fb610129da16bc859c50b190dd2995e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d2c9ca6_1079ec13",
+        "filename": "power/mt8186.c",
+        "patchSetId": 57
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2022-01-05T01:33:24Z",
+      "side": 1,
+      "message": "This needs to be changed (and also the following IN_AP_RST usage) if we use the reverse narrative (IN_AP_RST).",
+      "range": {
+        "startLine": 170,
+        "startChar": 6,
+        "endLine": 170,
+        "endChar": 52
+      },
+      "revId": "c16453a56fb610129da16bc859c50b190dd2995e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
