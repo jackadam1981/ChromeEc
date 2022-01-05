@@ -52,6 +52,7 @@ func TestGenerate(t *testing.T) {
 		Gpio: []*pm.Pin{
 			&pm.Pin{pm.Input, "C3", "EC_IN_1", "ENUM_IN_1"},
 			&pm.Pin{pm.Output, "D4", "EC_OUT_2", "ENUM_OUT_2"},
+			&pm.Pin{pm.InputPU, "G7", "EC_IN_3", "ENUM_IN_3"},
 		},
 		Pwm: []*pm.Pin{
 			&pm.Pin{pm.PWM, "E5", "EC_LED_1", "ENUM_LED_1"},
@@ -92,6 +93,11 @@ func TestGenerate(t *testing.T) {
 			#gpio-cells = <0>;
 			gpios = <&gpio C3 GPIO_INPUT>;
 			enum-name = "ENUM_IN_1";
+		};
+		gpio_ec_in_3: ec_in_3 {
+			#gpio-cells = <0>;
+			gpios = <&gpio G7 GPIO_INPUT_PULL_UP>;
+			enum-name = "ENUM_IN_3";
 		};
 		gpio_ec_out_2: ec_out_2 {
 			#gpio-cells = <0>;
