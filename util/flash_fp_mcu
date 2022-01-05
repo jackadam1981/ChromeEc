@@ -768,6 +768,31 @@ main() {
     "${filename}"
   ret=$?
 
+  # Anomaly-detector lives in minijail with /dev/cros_fp binded. This script
+  # unbinds cros-ec driver and rebinds it again after flashing is finished.
+  # The problem is that after rebind, /dev/cros_fp is not exactly the same file
+  # (eg. inode is changed) but binding is still connected with deleted file.
+  # Surprisingly, we can still work on binding (open, stat, read, write, ioctl
+  # works perfectly), but it can't be used to create another binding (the mount
+  # syscall returns ENOENT, probably because old /dev/cros_fp file is marked as
+  # unlinked). So when anomaly-detector calls crash-reporter, it will always
+  # crash while entering minijail.
+  #
+  # Following steps will reproduce the problem:
+  # echo "hello" >> a
+  # touch b c
+  # mount --bind a b
+  # cat b (prints "hello")
+  # rm a
+  # cat b (still prints "hello")
+  # mount --bind b c (mount: /tmp/c: mount(2) system call failed: No such file
+  # or directory.)
+  #
+  # Restarting is needed to create new /dev/cros_fp binding after rebinding
+  # driver.
+  echo "# Restarting anomaly detector"
+  restart anomaly-detector
+
   if [[ "${FLAGS_services}" -eq "${FLAGS_TRUE}" ]]; then
     echo "# Restarting biod and timberslide"
     start timberslide LOG_PATH=/sys/kernel/debug/cros_fp/console_log
