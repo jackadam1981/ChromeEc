@@ -3,6 +3,46 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2a206528_a5d892fa",
+        "filename": "zephyr/boards/arm/brya/brya.dts",
+        "patchSetId": 7
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-01-05T00:53:23Z",
+      "side": 1,
+      "message": "Is SSFC used on brya?  I don\u0027t find any references to SSFC in the cros-ec build for brya.",
+      "range": {
+        "startLine": 153,
+        "startChar": 0,
+        "endLine": 174,
+        "endChar": 0
+      },
+      "revId": "8e30fb4d2a74464d669886e8415825b70ed777c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90d54220_ee5c2bcc",
+        "filename": "zephyr/projects/brya/brya/cbi_eeprom.dts",
+        "patchSetId": 7
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-01-05T00:53:23Z",
+      "side": 1,
+      "message": "None of these sensors are enabled in cros-ec build or in the prj.conf for the Zephyr build.\n\nThis can be deleted.",
+      "revId": "8e30fb4d2a74464d669886e8415825b70ed777c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f2af989d_9ef746eb",
         "filename": "zephyr/projects/brya/brya/motionsense.dts",
         "patchSetId": 7
@@ -20,6 +60,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "28edf2b4_66ea01e4",
+        "filename": "zephyr/projects/brya/brya/motionsense.dts",
+        "patchSetId": 7
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-01-05T00:53:23Z",
+      "side": 1,
+      "message": "+1, it\u0027s clearer when the mutex is named after the function instead of the part number.",
+      "parentUuid": "f2af989d_9ef746eb",
+      "revId": "8e30fb4d2a74464d669886e8415825b70ed777c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "79de36f0_4e3ba898",
         "filename": "zephyr/projects/brya/brya/motionsense.dts",
         "patchSetId": 7
@@ -31,6 +89,24 @@
       "writtenOn": "2022-01-05T00:02:23Z",
       "side": 1,
       "message": "Do we need to specify min_ max_frequency and a driver here (and for the others below)? Or are these implied somehow?",
+      "revId": "8e30fb4d2a74464d669886e8415825b70ed777c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "51028eb3_9d643c95",
+        "filename": "zephyr/projects/brya/brya/motionsense.dts",
+        "patchSetId": 7
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-01-05T00:53:23Z",
+      "side": 1,
+      "message": "The min/max frequency is fixed based on the driver and is set by the C glue code for each driver.\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/shim/src/motionsense_driver/lis2dw12-drvinfo.inc;drc\u003d4df10f7b2b0e67d1c36bb69285436ec0d5e3fdfd;l\u003d42",
+      "parentUuid": "79de36f0_4e3ba898",
       "revId": "8e30fb4d2a74464d669886e8415825b70ed777c4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
