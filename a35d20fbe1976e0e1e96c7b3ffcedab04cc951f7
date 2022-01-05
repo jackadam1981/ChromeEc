@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5ee7373_0e1d297f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-01-05T23:28:41Z",
+      "side": 1,
+      "message": "Where would the source of truth for your SSFC definitions be for reference in the review? ",
+      "revId": "a35d20fbe1976e0e1e96c7b3ffcedab04cc951f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "516fafac_b6da5b0d",
+        "filename": "board/magolor/cbi_ssfc.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-01-05T23:28:41Z",
+      "side": 1,
+      "message": "nit: What would you think about adding a BUILD_ASSERT to ensure the union is always the same size as a uint32_t?",
+      "revId": "a35d20fbe1976e0e1e96c7b3ffcedab04cc951f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
