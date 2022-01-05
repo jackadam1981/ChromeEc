@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "164ad3e9_63ca6c9e",
+        "filename": "zephyr/projects/corsola/gpio_kingler.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2022-01-05T02:04:05Z",
+      "side": 1,
+      "message": "This CL needs to be rebased, and drop \u0027label\u0027 entry. It\u0027s removed from the ToT now.",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 32
+      },
+      "revId": "d7a3d64110ea82a2a8b8627d4aaf2dde5bfbe996",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ab56918d_edcaef95",
         "filename": "zephyr/projects/corsola/gpio_krabby.dts",
         "patchSetId": 2
