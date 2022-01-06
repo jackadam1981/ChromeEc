@@ -6,7 +6,7 @@
 
 register_raw_project(
     project_name="it8xxx2_evb",
-    zephyr_board="it81302bx",
+    zephyr_board="it81202bx",
     dts_overlays=[
         "adc.dts",
         "fan.dts",
