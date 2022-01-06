@@ -54,6 +54,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "46e06a6c_4e1aa686",
+        "filename": "board/brya/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-01-06T18:16:41Z",
+      "side": 1,
+      "message": "Its hard to break this CL, we can only separate changes in prj.conf, rest of other changes are required together to compile successfully.\n\nWe can only separate prj.conf changes from this CL, Please suggest if we need to break this further.",
+      "parentUuid": "df033c83_de598c0c",
+      "revId": "72b24eff33947c62d42db26c4f49ddc57c8e6228",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d4f8bf03_836ee3d0",
         "filename": "board/brya/board.c",
         "patchSetId": 1
