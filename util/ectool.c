@@ -3273,7 +3273,9 @@ int cmd_thermal_get_threshold_v1(int argc, char *argv[])
 	int i;
 
 	printf("sensor  warn  high  halt   fan_off fan_max   name\n");
-	for (i = 0; i < 99; i++) {	/* number of sensors is unknown */
+	for (i = 0;
+	     i < EC_TEMP_SENSOR_ENTRIES + EC_TEMP_SENSOR_B_ENTRIES;
+	     i++) {
 
 		/* ask for one */
 		p.sensor_num = i;
