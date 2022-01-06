@@ -115,12 +115,21 @@ static int cros_system_it8xxx2_get_reset_cause(const struct device *dev)
 	return UNKNOWN_RST;
 }
 
+#define KSCAN_IT8XXX2_REG_BASE \
+	((struct kscan_it8xxx2_regs *)DT_REG_ADDR(DT_NODELABEL(cros_kb_raw)))
+
 static int cros_system_it8xxx2_init(const struct device *dev)
 {
 	struct gctrl_it8xxx2_regs *const gctrl_base = GCTRL_IT8XXX2_REG_BASE;
 
 	/* System triggers a soft reset by default (command: reboot). */
 	gctrl_base->GCTRL_ETWDUARTCR &= ~IT8XXX2_GCTRL_ETWD_HW_RST_EN;
+
+	struct kscan_it8xxx2_regs *const kscan_base = KSCAN_IT8XXX2_REG_BASE;
+
+	kscan_base->KBS_KSOCTRL = (IT8XXX2_KBS_KSOPU | IT8XXX2_KBS_KSOOD);
+	/* bit2, 1 enables the internal pull-up of the KSI[7:0] pins. */
+	kscan_base->KBS_KSICTRL = IT8XXX2_KBS_KSIPU;
 
 	return 0;
 }

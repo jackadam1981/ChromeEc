@@ -7,12 +7,15 @@
 #include "host_command.h"
 
 #include <zephyr/kernel.h>
+#include <zephyr/pm/policy.h>
+#include <soc_common.h>
 
 /** A stub main to call the real ec app main function. LCOV_EXCL_START */
 int main(void)
 {
 	ec_app_main();
-
+	//chip_block_idle();
+	//pm_policy_state_lock_get(PM_STATE_STANDBY, PM_ALL_SUBSTATES);
 	if (IS_ENABLED(CONFIG_TASK_HOSTCMD_THREAD_MAIN)) {
 		host_command_main();
 	} else if (IS_ENABLED(CONFIG_THREAD_MONITOR)) {

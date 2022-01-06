@@ -6,10 +6,10 @@
 #include <ite/it8xxx2-pinctrl-map.dtsi>
 
 &shi0 {
-	status = "okay";
+
 	pinctrl-0 = <&shi_mosi_gpm0_default &shi_miso_gpm1_default
 		     &shi_clk_gpm4_default &shi_cs_gpm5_default>;
 	pinctrl-names = "default";
 	/* unused but needed by dt binding */
-	cs-gpios = <&gpiom 5 GPIO_VOLTAGE_1P8>;
+	cs-gpios = <&gpiom 5 GPIO_INPUT_PULL_DOWN>;
 };
