@@ -280,6 +280,11 @@ static void board_detect_motionsensor(void)
 		 * we don't use INT1. Keep this pin as input w/o enable
 		 * interrupt.
 		 */
+		if (get_board_id() >= 2) {
+			/*Need to change matrix when board ID >= 2*/
+			bma422_lid_accel.rot_standard_ref =
+					&lid_standard_ref_for_new_DB;
+		}
 		return;
 	}
 
