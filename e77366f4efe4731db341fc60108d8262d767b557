@@ -16,6 +16,24 @@
       "message": "I think we ought to do a zmake testall here too. But I\u0027m deferring to someone with more background on building zephyr for the various boards.",
       "revId": "e77366f4efe4731db341fc60108d8262d767b557",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e736c02b_a1f385e6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-01-06T21:07:52Z",
+      "side": 1,
+      "message": "\"zmake testall\" is run by firmware-zephyr-cq, so it\u0027s not strictly necessary to run locally.",
+      "parentUuid": "151daa22_236ebd1f",
+      "revId": "e77366f4efe4731db341fc60108d8262d767b557",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
