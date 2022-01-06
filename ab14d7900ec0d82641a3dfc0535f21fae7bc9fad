@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "3c1a1012_fa1bbfab",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2022-01-06T11:55:05Z",
+      "side": 1,
+      "message": "No. We checked it, and disabling support for %l if long is 4 bytes wide is intentional.",
+      "parentUuid": "f2369886_2c9938d6",
+      "range": {
+        "startLine": 10,
+        "startChar": 23,
+        "endLine": 11,
+        "endChar": 31
+      },
+      "revId": "ab14d7900ec0d82641a3dfc0535f21fae7bc9fad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "47e546fd_6fe31b6f",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
