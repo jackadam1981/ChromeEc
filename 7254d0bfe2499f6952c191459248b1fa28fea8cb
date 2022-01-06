@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9327b75_50905a34",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-01-06T21:49:41Z",
+      "side": 1,
+      "message": "we believe this issue was exposed because\n\nhttps://chromium-review.googlesource.com/c/chromiumos/overlays/chromiumos-overlay/+/3330443/\n\nsignificantly accelerates how quickly the AP can write to this port.",
+      "revId": "7254d0bfe2499f6952c191459248b1fa28fea8cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e545e603_458abc99",
