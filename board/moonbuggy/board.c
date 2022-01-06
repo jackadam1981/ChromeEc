@@ -106,6 +106,42 @@ static void port_ocp_interrupt(enum gpio_signal signal)
 	hook_call_deferred(&update_5v_usage_data, 0);
 }
 
+/**
+ * Handle debounced ADS 5v handler.
+ */
+static void ads_5v_deferred(void)
+{
+	int ads_5v_enable = !gpio_get_level(GPIO_ADS_5VS_V2_ADP_PRESENT_L);
+
+	if (ads_5v_enable)
+		gpio_set_level(GPIO_EC_AC_JACK_CHARGER_EC_L, 1);
+}
+DECLARE_DEFERRED(ads_5v_deferred);
+
+void ads_5v_interrupt(enum gpio_signal signal)
+{
+	/* ADS 5v control time*/
+	hook_call_deferred(&ads_5v_deferred_data, (5 * MSEC));
+}
+
+/**
+ * Handle debounced ADS 12v handler.
+ */
+static void ads_12v_deferred(void)
+{
+	int ads_12v_enable = !gpio_get_level(GPIO_BJ_ADP_PRESENT_L);
+
+	if (ads_12v_enable)
+		gpio_set_level(GPIO_EC_AC_JACK_CHARGER_EC_L, 0);
+}
+DECLARE_DEFERRED(ads_12v_deferred);
+
+void ads_12v_interrupt(enum gpio_signal signal)
+{
+	/* ADS 12v control time */
+	hook_call_deferred(&ads_12v_deferred_data, (5 * MSEC));
+}
+
 /******************************************************************************/
 
 #include "gpio_list.h" /* Must come after other header files. */
