@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c92745a_3b604114",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2022-01-06T07:35:40Z",
+      "side": 1,
+      "message": "restored the original behavior (return EC_RES_ERROR when configure_mux failed) to pass unit test.\n\nplease review again, thanks.",
+      "revId": "f9c38cf48066a43c379bc489599c35621e3f4dca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
