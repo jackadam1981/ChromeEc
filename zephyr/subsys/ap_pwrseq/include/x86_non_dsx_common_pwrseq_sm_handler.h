@@ -116,6 +116,19 @@
 extern const struct power_signal_info power_signal_list[];
 extern const struct power_signal_vw_info power_signal_vw_list[];
 
+enum critical_shutdown {
+	CRITICAL_SHUTDOWN_IGNORE,
+	CRITICAL_SHUTDOWN_HIBERNATE,
+	CRITICAL_SHUTDOWN_CUTOFF,
+};
+
+struct smart_discharge_zone {
+	/* When the capacity (mAh) goes below this, EC cuts off the battery. */
+	int cutoff;
+	/* When the capacity (mAh) is below this, EC stays up. */
+	int stayup;
+};
+
 void espi_bus_reset(void);
 
 /*

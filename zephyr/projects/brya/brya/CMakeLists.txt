@@ -8,3 +8,4 @@ find_package(Zephyr REQUIRED HINTS $ENV{ZEPHYR_BASE})
 project(brya)
 
 zephyr_include_directories(include)
+zephyr_include_directories(include "${PLATFORM_EC}/zephyr/include")
