@@ -16,6 +16,24 @@
       "message": "I think it would be best to split this up into separate CLs.  I don\u0027t like overloading the meaning of board_get_usb_pd_port_count().\n\n1. Add a function usb_pd_get_port_count().  Replace all callers to board_get_usb_pd_port_count() with usb_pd_get_port_count().\n    uint8_t usb_pd_get_port_count(void)\n    {\n        board_get_usb_pd_port_count();\n    }\n\n2. Add CONFIG_USB_PD_COUNT_RUNTIME and usb_pd_set_port_count()\n    static uint8_t usb_pd_port_count \u003d CONFIG_USB_PD_PORT_MAX_COUNT;\n    uint8_t usb_pd_get_port_count(void)\n    {\n        if (CONFIG_USB_PD_COUNT_RUNTIME)\n            return usb_pd_port_count;\n        else\n            board_get_usb_pd_port_count();\n    }\n    void usb_pd_set_port_count(uint8_t count)\n        usb_pd_port_count \u003d count;\n\n3. Follow on cleanup - remove board_get_usb_pd_port_count(), converting all instances to CONFIG_USB_PD_COUNT_RUNTIME\u003dy and a call to usb_pd_set_port_count() during HOOK_INIT.  This allows for a inline constant when runtime change of the PD port count is not used.\n    #ifndef CONFIG_USB_PD_COUNT_RUNTIME\n    static inline uint8_t usb_pd_get_port_count(void)\n        return CONFIG_USB_PD_COUNT_RUNTIME;\n   \nThere is also board_is_usb_pd_port_present(), which doesn\u0027t appear to have any __override implementations - there is only the default __overridable implementation.",
       "revId": "9a339a7b17847e62e89887fb64b2b6ee107b67fc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00dde6da_c36a38db",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1443462
+      },
+      "writtenOn": "2022-01-06T14:18:04Z",
+      "side": 1,
+      "message": "Splitted into the following CLS:\n1) CL:3216894 -\u003e  Add usb_pd_get_port_count(). Replace board_get_usb_pd_port_count() in all callers. Also, Replace occurance of CONFIG_USB_PD_PORT_MAX_COUNT for the boards that may use runtime functionality. \n2)CL:3367724 -\u003e Add run time Config and set functionality \n3)CL:3367725 -\u003e Remove board_get_usb_pd_port_count() and add config along with set functionality for run tme feature.\n4)CL:3369846 -\u003e remove overridable function - board_is_usb_pd_port_present() and rename it as a common generic function.\n5)CL: 3220900 -\u003e adl specific changes for run time retrieval of usb pd count.",
+      "parentUuid": "495bd5c9_fd094ebc",
+      "revId": "9a339a7b17847e62e89887fb64b2b6ee107b67fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
