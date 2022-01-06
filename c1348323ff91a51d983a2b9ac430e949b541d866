@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "afe35eb5_7f299b59",
+        "filename": "common/usb_common.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 363,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-01-06T23:22:19Z",
+      "side": 1,
+      "message": "Nit - extra line.",
+      "range": {
+        "startLine": 363,
+        "startChar": 0,
+        "endLine": 363,
+        "endChar": 0
+      },
+      "revId": "c1348323ff91a51d983a2b9ac430e949b541d866",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c107713_27640084",
+        "filename": "common/usbc/usb_retimer_fw_update.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-01-06T23:22:19Z",
+      "side": 1,
+      "message": "ASSERT is a runtime check.  I believe you can change this to usb_pd_get_port_count() and then you can eliminate the check at line 187.",
+      "range": {
+        "startLine": 182,
+        "startChar": 28,
+        "endLine": 182,
+        "endChar": 56
+      },
+      "revId": "c1348323ff91a51d983a2b9ac430e949b541d866",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "252f31d5_f896445b",
+        "filename": "driver/bc12/max14637.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-01-06T23:22:19Z",
+      "side": 1,
+      "message": "Same here - use usb_pd_get_port_count() inside the ASSERT.",
+      "range": {
+        "startLine": 182,
+        "startChar": 28,
+        "endLine": 182,
+        "endChar": 56
+      },
+      "revId": "c1348323ff91a51d983a2b9ac430e949b541d866",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54160cf4_3340656e",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-01-06T23:22:19Z",
+      "side": 1,
+      "message": "Use usb_pd_get_port_count() inside the ASSERT.",
+      "range": {
+        "startLine": 296,
+        "startChar": 15,
+        "endLine": 296,
+        "endChar": 43
+      },
+      "revId": "c1348323ff91a51d983a2b9ac430e949b541d866",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3243924e_7c6a0689",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 516,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-01-06T23:22:19Z",
+      "side": 1,
+      "message": "Use usb_pd_get_port_count() inside the ASSERT.",
+      "range": {
+        "startLine": 516,
+        "startChar": 15,
+        "endLine": 516,
+        "endChar": 43
+      },
+      "revId": "c1348323ff91a51d983a2b9ac430e949b541d866",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a35f743_95e6b024",
+        "filename": "include/config.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 4533,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-01-06T23:22:19Z",
+      "side": 1,
+      "message": "This isn\u0027t used by this CL.  Was this meant for one of the follow-on CLs?",
+      "range": {
+        "startLine": 4533,
+        "startChar": 0,
+        "endLine": 4533,
+        "endChar": 34
+      },
+      "revId": "c1348323ff91a51d983a2b9ac430e949b541d866",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
