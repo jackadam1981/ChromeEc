@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fcba0c20_b744a207",
+        "filename": "common/timer.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-01-06T17:13:55Z",
+      "side": 1,
+      "message": "int as bool usage is discouraged, please use a bool",
+      "range": {
+        "startLine": 255,
+        "startChar": 1,
+        "endLine": 255,
+        "endChar": 4
+      },
+      "revId": "cce53e09070594930549d804fcf7da956bbd9aa5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b4052361_af019a04",
+        "filename": "common/timer.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-01-06T17:13:55Z",
+      "side": 1,
+      "message": "If the system supports a 64-bit hw timer, we don\u0027t need to disable interrupts, as there\u0027s no rollover logic.",
+      "range": {
+        "startLine": 265,
+        "startChar": 16,
+        "endLine": 265,
+        "endChar": 36
+      },
+      "revId": "cce53e09070594930549d804fcf7da956bbd9aa5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
