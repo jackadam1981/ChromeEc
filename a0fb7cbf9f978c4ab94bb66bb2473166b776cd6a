@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7edd6cb4_21589bf2",
+        "filename": "util/ectool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 3286,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-01-06T23:10:39Z",
+      "side": 1,
+      "message": "This should catch the sensor ID overflow:\n\n\tif (p-\u003esensor_num \u003e\u003d TEMP_SENSOR_COUNT)\n\t\treturn EC_RES_INVALID_PARAM;\n\nCan you first investigate why thermal_command_get_threshold not returning EC_RES_INVALID_PARAM?",
+      "range": {
+        "startLine": 3286,
+        "startChar": 2,
+        "endLine": 3286,
+        "endChar": 14
+      },
+      "revId": "a0fb7cbf9f978c4ab94bb66bb2473166b776cd6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
