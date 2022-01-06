@@ -36,6 +36,11 @@
 /* Maximum flash size (16 MB, conservative) */
 #define MAX_FLASH_SIZE 0x1000000
 
+/* Maximum temperature sensor count
+ * EC_TEMP_SENSOR_ENTRIES + EC_TEMP_SENSOR_B_ENTRIES
+ */
+#define MAX_TEMP_SENSOR_ENTRIES 24
+
 /*
  * Calculate the expected response for a hello ec command.
  */
@@ -3273,7 +3278,7 @@ int cmd_thermal_get_threshold_v1(int argc, char *argv[])
 	int i;
 
 	printf("sensor  warn  high  halt   fan_off fan_max   name\n");
-	for (i = 0; i < 99; i++) {	/* number of sensors is unknown */
+	for (i = 0; i < MAX_TEMP_SENSOR_ENTRIES; i++) {
 
 		/* ask for one */
 		p.sensor_num = i;
