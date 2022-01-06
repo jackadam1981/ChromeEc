@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1fa07b44_6ad1befa",
+        "filename": "common/usbc/usb_pe_servov_sm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 660,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2022-01-06T19:25:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a49c2b4e_b2d8d505",
+      "range": {
+        "startLine": 660,
+        "startChar": 8,
+        "endLine": 660,
+        "endChar": 33
+      },
+      "revId": "e78eadd8d276a95d51edec17a45ae9908c3ae402",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bb792312_458d8635",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-01-06T19:12:35Z",
       "side": 1,
       "message": "can you use !IS_ENABLED?",
+      "range": {
+        "startLine": 393,
+        "startChar": 8,
+        "endLine": 393,
+        "endChar": 33
+      },
+      "revId": "e78eadd8d276a95d51edec17a45ae9908c3ae402",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9a0bbc7_a8a5c4e2",
+        "filename": "common/usbc/usb_prl_servov_sm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 393,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2022-01-06T19:25:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bb792312_458d8635",
       "range": {
         "startLine": 393,
         "startChar": 8,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f765191_30e2ce75",
+        "filename": "common/usbc/usb_tc_servov_sm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 2178,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2022-01-06T19:25:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3fde2c45_bcd94a79",
+      "range": {
+        "startLine": 2178,
+        "startChar": 8,
+        "endLine": 2178,
+        "endChar": 33
+      },
+      "revId": "e78eadd8d276a95d51edec17a45ae9908c3ae402",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "90ea5b26_1afb294c",
@@ -93,6 +165,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4bdf3377_21f06341",
+        "filename": "common/usbc/usbc_task.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2022-01-06T19:25:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "90ea5b26_1afb294c",
+      "range": {
+        "startLine": 107,
+        "startChar": 8,
+        "endLine": 107,
+        "endChar": 25
+      },
+      "revId": "e78eadd8d276a95d51edec17a45ae9908c3ae402",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "646a7b90_7f8e316e",
@@ -106,6 +202,30 @@
       "writtenOn": "2022-01-06T19:12:35Z",
       "side": 1,
       "message": "can you use !IS_ENABLED?",
+      "range": {
+        "startLine": 124,
+        "startChar": 8,
+        "endLine": 124,
+        "endChar": 25
+      },
+      "revId": "e78eadd8d276a95d51edec17a45ae9908c3ae402",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "886bcae4_82d376cc",
+        "filename": "common/usbc/usbc_task.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2022-01-06T19:25:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "646a7b90_7f8e316e",
       "range": {
         "startLine": 124,
         "startChar": 8,
