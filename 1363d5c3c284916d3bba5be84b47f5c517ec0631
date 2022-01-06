@@ -22,6 +22,30 @@
       },
       "revId": "1363d5c3c284916d3bba5be84b47f5c517ec0631",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a5f500f_f1f75f2d",
+        "filename": "util/ectool.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1527153
+      },
+      "writtenOn": "2022-01-06T14:05:25Z",
+      "side": 1,
+      "message": "Sure, agree with your suggestion. But as I understand Caveh was more specific to not to use non-host constants \"EC_\". So, the below would be okay I guess,\n\n#define TEMP_SENSOR_ENTRIES 16\n#define TEMP_SENSOR_B_ENTRIES 8\n#define MAX_TEMP_SENSOR_ENTRIES (TEMP_SENSOR_ENTRIES + TEMP_SENSOR_B_ENTRIES)\n\nHowever, I would wait for more reviews on this before I push the change.",
+      "parentUuid": "414cd7e0_06ba11a3",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 0
+      },
+      "revId": "1363d5c3c284916d3bba5be84b47f5c517ec0631",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
