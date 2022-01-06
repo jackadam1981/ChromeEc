@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e82e213_ebb4b3bf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-01-06T06:24:28Z",
+      "side": 1,
+      "message": "do you have a bug for tracking your ectool/temp sensor changes?",
+      "revId": "5a8ec2b9ce9f85d525a348d9889cfb8d9db69fa1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "71832c99_c24ff9dc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-01-06T06:24:28Z",
+      "side": 1,
+      "message": "do you ",
+      "revId": "5a8ec2b9ce9f85d525a348d9889cfb8d9db69fa1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3236008c_8960334a",
+        "filename": "util/ectool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 3278,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-01-06T06:24:28Z",
+      "side": 1,
+      "message": "i\u0027m not familiar with this scheme. are the temp sensor\nreadings normally memory mapped?",
+      "range": {
+        "startLine": 3278,
+        "startChar": 6,
+        "endLine": 3278,
+        "endChar": 29
+      },
+      "revId": "5a8ec2b9ce9f85d525a348d9889cfb8d9db69fa1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
