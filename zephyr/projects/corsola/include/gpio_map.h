@@ -183,7 +183,7 @@ static inline void motion_interrupt(enum gpio_signal signal)
 	AP_EC_WDTRST_INT()						\
 	GMR_TABLET_INT()						\
 	GPIO_INT(GPIO_BASE_IMU_INT_L,					\
-		 GPIO_INT_EDGE_FALLING, motion_interrupt)		\
+		 GPIO_INT_EDGE_FALLING, bmi3xx_interrupt)		\
 	LID_ACCEL_INT()							\
 	USBA_INT()							\
 	EXTPWR_INT()							\
