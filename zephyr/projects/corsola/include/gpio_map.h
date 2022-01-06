@@ -142,6 +142,14 @@
 	#define USBA_INT()
 #endif
 
+#ifdef CONFIG_PLATOFRM_EC_ACCELLGYRO_BMI3XX
+	#define BASE_IMU_INT()      GPIO_INT(GPIO_BASE_IMU_INT_L,              \
+					     GPIO_INT_EDGE_FALLING,            \
+					     bmi3xx_interrupt)
+#else
+	#define BASE_IMU_INT()
+#endif
+
 #ifdef CONFIG_PLATFORM_EC_GMR_TABLET_MODE
 #define GMR_TABLET_MODE_GPIO_L GPIO_TABLET_MODE_L
 #endif
@@ -182,8 +190,7 @@ static inline void motion_interrupt(enum gpio_signal signal)
 	AP_IN_RST_INT()							\
 	AP_EC_WDTRST_INT()						\
 	GMR_TABLET_INT()						\
-	GPIO_INT(GPIO_BASE_IMU_INT_L,					\
-		 GPIO_INT_EDGE_FALLING, motion_interrupt)		\
+	BASE_IMU_INT()							\
 	LID_ACCEL_INT()							\
 	USBA_INT()							\
 	EXTPWR_INT()							\
