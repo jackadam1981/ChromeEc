@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "25ce0e07_34152826",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-01-06T01:52:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eaa488e1_3203cc91",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 43
+      },
+      "revId": "0b216f61031a7eb8956e8074987bf123216480cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f15d5c4e_2c2f1bdf",
@@ -55,6 +79,24 @@
       "side": 1,
       "message": "Otherwise this change seems fine to me.",
       "parentUuid": "f15d5c4e_2c2f1bdf",
+      "revId": "0b216f61031a7eb8956e8074987bf123216480cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8bd58aa7_9d19c00f",
+        "filename": "util/pinmap/pm/generate_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-01-06T01:52:41Z",
+      "side": 1,
+      "message": "No particular reason, just thought 1 would be representative, but you are right that to get maximum coverage, it should also test pull down.\nAdded.",
+      "parentUuid": "c61b6098_b73d88ed",
       "revId": "0b216f61031a7eb8956e8074987bf123216480cc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
