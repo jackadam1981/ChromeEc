@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b72918ba_4bb79bfc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2022-01-06T00:45:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "37c18535_c25d3a44",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 3
+      },
+      "revId": "d6b12ca3b2476097b319adfc3c6666afb5bcc26c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "18a0b20c_3ec00920",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a76b5354_a117e4e4",
+        "filename": "driver/charger/bq25710.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2022-01-06T00:45:50Z",
+      "side": 1,
+      "message": "Got it, thanks.",
+      "parentUuid": "18a0b20c_3ec00920",
+      "range": {
+        "startLine": 126,
+        "startChar": 0,
+        "endLine": 127,
+        "endChar": 64
+      },
+      "revId": "d6b12ca3b2476097b319adfc3c6666afb5bcc26c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "473fc737_f393744e",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-01-05T23:53:23Z",
       "side": 1,
       "message": "for example, replace:\n\n50 / CONFIG_CHARGER_BQ25710_SENSE_RESISTOR_AC / DEFAULT_SENSE_RESISTOR\n\nwith:\n\n50 * DEFAULT_SENSE_RESISTOR / CONFIG_CHARGER_BQ25710_SENSE_RESISTOR_AC\n\nwhen the board configures this to 10, this evaluates to 50 as expected.\n\nwhen the board configures this to 5 (bq25720 option), this evaluates to 100 as expected.\n\nwhen the board configures this to 20 (bq25710 option), this evaluates to 25, which i *think* is expected. the bq25710 datasheet does not mention\nthis explicitly as an example, but since both chips use\n\nV \u003d 1 + 40 x IDPM x RAC\n\nas the equation, i think that\u0027s correct.",
+      "range": {
+        "startLine": 168,
+        "startChar": 23,
+        "endLine": 169,
+        "endChar": 24
+      },
+      "revId": "d6b12ca3b2476097b319adfc3c6666afb5bcc26c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "46809c07_7a2727ef",
+        "filename": "driver/charger/bq25710.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2022-01-06T00:45:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "473fc737_f393744e",
       "range": {
         "startLine": 168,
         "startChar": 23,
