@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "414cd7e0_06ba11a3",
+        "filename": "util/ectool.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2022-01-06T08:55:41Z",
+      "side": 1,
+      "message": "It will be more clearer if you define as below, if each type of sensors\u0027 numbers are known seperately.\n#define EC_TEMP_SENSOR_ENTRIES \u003cnum1\u003e\n#define EC_TEMP_SENSOR_B_ENTRIES \u003cnum2\u003e\n#define MAX_TEMP_SENSOR_ENTRIES (EC_TEMP_SENSOR_ENTRIES + EC_TEMP_SENSOR_B_ENTRIES)",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 0
+      },
+      "revId": "1363d5c3c284916d3bba5be84b47f5c517ec0631",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
