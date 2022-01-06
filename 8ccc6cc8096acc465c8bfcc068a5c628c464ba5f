@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "45a140c6_3854919f",
+        "filename": "board/dewatt/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-01-06T16:48:26Z",
+      "side": 1,
+      "message": "On the one hand, it doesn\u0027t seem like this precisely lines up with the actual HPD for port 1.  But on the other, reading the datasheet it seems like this mostly serves to kick the PS8818 out of idle mode so I think this works well enough.",
+      "revId": "8ccc6cc8096acc465c8bfcc068a5c628c464ba5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
