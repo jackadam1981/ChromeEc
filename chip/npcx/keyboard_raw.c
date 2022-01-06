@@ -138,6 +138,7 @@ test_mockable int keyboard_raw_read_rows(void)
 	return (~NPCX_KBSIN) & KB_ROW_MASK;
 }
 
+#if !defined(CONFIG_KEYBOARD_SCAN_ANTIGHOST_ADC)
 /**
  * Enable or disable keyboard interrupts.
  */
@@ -161,6 +162,16 @@ static void keyboard_raw_interrupt(void)
 	task_wake(TASK_ID_KEYSCAN);
 }
 DECLARE_IRQ(NPCX_IRQ_KSI_WKINTC_1, keyboard_raw_interrupt, 5);
+#else
+/*
+ * TODO: This function should be implemented here or in another appropriate
+ * file for the ADC anti-ghost kbscan application.
+ */
+void keyboard_raw_enable_interrupt(int enable)
+{
+	return;
+}
+#endif
 
 int keyboard_raw_is_input_low(int port, int id)
 {
