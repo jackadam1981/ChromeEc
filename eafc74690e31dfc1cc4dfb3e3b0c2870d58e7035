@@ -33,6 +33,24 @@
       "message": "Can this walk off the end of the chg_curr_table?  Ex. if prev_tmp was 70, we\u0027d be on the final entry.  Then if chg_temp_c were 71, we\u0027d hit this first condition as true and attempt to use the final entry+1, which isn\u0027t a valid table entry?",
       "revId": "eafc74690e31dfc1cc4dfb3e3b0c2870d58e7035",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e67b337a_fc77ead9",
+        "filename": "board/nipperkin/thermal.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1294793
+      },
+      "writtenOn": "2022-01-06T02:19:18Z",
+      "side": 1,
+      "message": "Below code will always limit current_level to last step when chg_temp_c over 69.\nelse if (current_level \u003e\u003d NUM_CHG_CURRENT_LEVELS)\n   current_level \u003d NUM_CHG_CURRENT_LEVELS - 1;",
+      "parentUuid": "5fd77454_4df762a9",
+      "revId": "eafc74690e31dfc1cc4dfb3e3b0c2870d58e7035",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
