@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a49c2b4e_b2d8d505",
+        "filename": "common/usbc/usb_pe_servov_sm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 660,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2022-01-06T19:12:35Z",
+      "side": 1,
+      "message": "can you use !IS_ENABLED?",
+      "range": {
+        "startLine": 660,
+        "startChar": 8,
+        "endLine": 660,
+        "endChar": 33
+      },
+      "revId": "e78eadd8d276a95d51edec17a45ae9908c3ae402",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb792312_458d8635",
+        "filename": "common/usbc/usb_prl_servov_sm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 393,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2022-01-06T19:12:35Z",
+      "side": 1,
+      "message": "can you use !IS_ENABLED?",
+      "range": {
+        "startLine": 393,
+        "startChar": 8,
+        "endLine": 393,
+        "endChar": 33
+      },
+      "revId": "e78eadd8d276a95d51edec17a45ae9908c3ae402",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3fde2c45_bcd94a79",
+        "filename": "common/usbc/usb_tc_servov_sm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 2178,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2022-01-06T19:12:35Z",
+      "side": 1,
+      "message": "can you use !IS_ENABLED?",
+      "range": {
+        "startLine": 2178,
+        "startChar": 8,
+        "endLine": 2178,
+        "endChar": 33
+      },
+      "revId": "e78eadd8d276a95d51edec17a45ae9908c3ae402",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90ea5b26_1afb294c",
+        "filename": "common/usbc/usbc_task.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2022-01-06T19:12:35Z",
+      "side": 1,
+      "message": "can you use !IS_ENABLED?",
+      "range": {
+        "startLine": 107,
+        "startChar": 8,
+        "endLine": 107,
+        "endChar": 25
+      },
+      "revId": "e78eadd8d276a95d51edec17a45ae9908c3ae402",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "646a7b90_7f8e316e",
+        "filename": "common/usbc/usbc_task.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2022-01-06T19:12:35Z",
+      "side": 1,
+      "message": "can you use !IS_ENABLED?",
+      "range": {
+        "startLine": 124,
+        "startChar": 8,
+        "endLine": 124,
+        "endChar": 25
+      },
+      "revId": "e78eadd8d276a95d51edec17a45ae9908c3ae402",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
