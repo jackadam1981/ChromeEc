@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63c9a67e_93328b95",
+        "filename": "common/usb_common.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 357,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-01-06T23:35:06Z",
+      "side": 1,
+      "message": "This should be usb_pd_get_port_count() correct?  As is I expect this causes linker errors when CONFIG_USB_PD_COUNT_RUNTIME\u003dy because usb_pd_set_port_count() is not defined.",
+      "range": {
+        "startLine": 357,
+        "startChar": 8,
+        "endLine": 357,
+        "endChar": 35
+      },
+      "revId": "d7cb5183c9ca6cbb1c5b6c95e69ed3c4524ed67c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7bdc4e21_77cb096d",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-01-06T23:35:06Z",
+      "side": 1,
+      "message": "Move to usb_common.c.  This isn\u0027t needed by any callers.",
+      "range": {
+        "startLine": 23,
+        "startChar": 8,
+        "endLine": 23,
+        "endChar": 32
+      },
+      "revId": "d7cb5183c9ca6cbb1c5b6c95e69ed3c4524ed67c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb6ea26c_2aa7c557",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 2
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-01-06T23:35:06Z",
+      "side": 1,
+      "message": "USB PD port count runtime control",
+      "range": {
+        "startLine": 315,
+        "startChar": 7,
+        "endLine": 315,
+        "endChar": 50
+      },
+      "revId": "d7cb5183c9ca6cbb1c5b6c95e69ed3c4524ed67c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5840cd7_42d51f39",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 2
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-01-06T23:35:06Z",
+      "side": 1,
+      "message": "\"Enable runtime adjustment of the number of USB PD ports. Board code can call usb_pd_set_port_count() to modify the number of available USB PD ports based on the hardware configuration information determined at runtime.\"",
+      "range": {
+        "startLine": 317,
+        "startChar": 0,
+        "endLine": 319,
+        "endChar": 0
+      },
+      "revId": "d7cb5183c9ca6cbb1c5b6c95e69ed3c4524ed67c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
