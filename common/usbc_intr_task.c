@@ -157,7 +157,7 @@ void pd_shared_alert_task(void *p)
 	for (port = 0; port < usb_pd_get_port_count(); ++port) {
 		if ((sources_mask & BIT(port)) == 0)
 			continue;
-		if (!board_is_usb_pd_port_present(port))
+		if (!is_usb_pd_port_present(port))
 			continue;
 
 		port_mask = PD_STATUS_TCPC_ALERT_0 << port;
