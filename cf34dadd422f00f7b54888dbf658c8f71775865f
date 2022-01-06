@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "33ed9777_91e56112",
+        "filename": "power/mt8186.c",
+        "patchSetId": 58
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2022-01-06T07:50:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "96646c1f_7e918f75",
+      "range": {
+        "startLine": 192,
+        "startChar": 6,
+        "endLine": 192,
+        "endChar": 28
+      },
+      "revId": "cf34dadd422f00f7b54888dbf658c8f71775865f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bcba4375_64a61399",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-01-06T05:27:41Z",
       "side": 1,
       "message": "The naming is a little confused, as this is actually checking the power signal status. How about using power_get_signal_state() instead?",
+      "range": {
+        "startLine": 231,
+        "startChar": 31,
+        "endLine": 231,
+        "endChar": 51
+      },
+      "revId": "cf34dadd422f00f7b54888dbf658c8f71775865f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8995903e_09ec8e89",
+        "filename": "power/mt8186.c",
+        "patchSetId": 58
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2022-01-06T07:50:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bcba4375_64a61399",
       "range": {
         "startLine": 231,
         "startChar": 31,
