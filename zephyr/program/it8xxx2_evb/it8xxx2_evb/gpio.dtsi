@@ -30,14 +30,14 @@
 			enum-name = "GPIO_PCH_RSMRST_L";
 		};
 		sys_reset_l {
-			gpios = <&gpiob 6 GPIO_OUTPUT_HIGH>;
+			gpios = <&gpiob 6 GPIO_INPUT_PULL_DOWN>;
 			enum-name = "GPIO_SYS_RESET_L";
 		};
 		gpio_ec_pch_wake_odl: pch_wake_l {
-			gpios = <&gpiob 7 GPIO_OUTPUT_HIGH>;
+			gpios = <&gpiob 7 GPIO_INPUT_PULL_DOWN>;
 		};
 		spi0_cs: spi0_cs {
-			gpios = <&gpiom 5 (GPIO_INPUT | GPIO_VOLTAGE_1P8)>;
+			gpios = <&gpiom 5 GPIO_INPUT_PULL_DOWN>;
 		};
 		/* unimplemented GPIOs */
 		entering-rw {
@@ -55,6 +55,23 @@
 		compatible = "unused-gpios";
 
 		unused-gpios =
+
+			<&gpiob 3 GPIO_INPUT_PULL_DOWN>,
+			<&gpiob 4 GPIO_INPUT_PULL_DOWN>,
+			<&gpioc 1 GPIO_INPUT_PULL_DOWN>,
+			<&gpioc 2 GPIO_INPUT_PULL_DOWN>,
+			<&gpiof 6 GPIO_INPUT_PULL_DOWN>,
+			<&gpiof 7 GPIO_INPUT_PULL_DOWN>,
+			<&gpioe 0 GPIO_INPUT_PULL_DOWN>,
+			<&gpioe 7 GPIO_INPUT_PULL_DOWN>,
+
+			<&gpioa 0 GPIO_INPUT_PULL_DOWN>,
+			<&gpioa 7 GPIO_INPUT_PULL_DOWN>,
+			<&gpiog 3 GPIO_INPUT_PULL_DOWN>,
+			<&gpiog 4 GPIO_INPUT_PULL_DOWN>,
+			<&gpiog 5 GPIO_INPUT_PULL_DOWN>,
+			<&gpiog 7 GPIO_INPUT_PULL_DOWN>,
+
 			/* gpioa1 */
 			<&gpioa 1 GPIO_INPUT_PULL_DOWN>,
 			/* gpioa2 */
@@ -65,6 +82,8 @@
 			<&gpioa 4 GPIO_INPUT_PULL_DOWN>,
 			/* gpioa5 */
 			<&gpioa 5 GPIO_INPUT_PULL_DOWN>,
+			/* gpioa6 */
+			<&gpioa 6 GPIO_INPUT_PULL_DOWN>,
 
 			/* gpiob2 */
 			<&gpiob 2 GPIO_INPUT_PULL_DOWN>,
@@ -73,8 +92,12 @@
 
 			/* gpioc0 */
 			<&gpioc 0 GPIO_INPUT_PULL_DOWN>,
+			/* gpioc3 */
+			<&gpioc 3 GPIO_INPUT_PULL_DOWN>,
 			/* gpioc4 */
 			<&gpioc 4 GPIO_INPUT_PULL_DOWN>,
+			/* gpioc5 */
+			<&gpioc 5 GPIO_INPUT_PULL_DOWN>,
 			/* gpioc6 */
 			<&gpioc 6 GPIO_INPUT_PULL_DOWN>,
 			/* gpioc7 */
@@ -92,6 +115,8 @@
 			<&gpiod 4 GPIO_INPUT_PULL_DOWN>,
 			/* gpiod5 */
 			<&gpiod 5 GPIO_INPUT_PULL_DOWN>,
+			/* gpiod6 */
+			<&gpiod 6 GPIO_INPUT_PULL_DOWN>,
 			/* gpiod7 */
 			<&gpiod 7 GPIO_INPUT_PULL_DOWN>,
 
@@ -115,13 +140,21 @@
 			/* gpiof5 */
 			<&gpiof 5 GPIO_INPUT_PULL_DOWN>,
 
+			/* gpiog0 */
+			<&gpiog 0 GPIO_INPUT_PULL_DOWN>,
 			/* gpiog1 */
 			<&gpiog 1 GPIO_INPUT_PULL_DOWN>,
+			/* gpiog2 */
+			<&gpiog 2 GPIO_INPUT_PULL_DOWN>,
 			/* gpiog6 */
 			<&gpiog 6 GPIO_INPUT_PULL_UP>,
 
 			/* gpioh0 */
 			<&gpioh 0 GPIO_INPUT_PULL_DOWN>,
+			/* gpioh1 */
+			<&gpioh 1 GPIO_INPUT_PULL_DOWN>,
+			/* gpioh2 */
+			<&gpioh 2 GPIO_INPUT_PULL_DOWN>,
 			/* gpioh3 */
 			<&gpioh 3 GPIO_INPUT_PULL_DOWN>,
 			/* gpioh4 */
@@ -130,7 +163,18 @@
 			<&gpioh 5 GPIO_INPUT_PULL_DOWN>,
 			/* gpioh6 */
 			<&gpioh 6 GPIO_INPUT_PULL_DOWN>,
+			<&gpioh 7 GPIO_INPUT_PULL_DOWN>,
 
+			/* gpioi0 */
+			<&gpioi 0 GPIO_INPUT_PULL_DOWN>,
+			/* gpioi1 */
+			<&gpioi 1 GPIO_INPUT_PULL_DOWN>,
+			/* gpioi2 */
+			<&gpioi 2 GPIO_INPUT_PULL_DOWN>,
+			/* gpioi3 */
+			<&gpioi 3 GPIO_INPUT_PULL_DOWN>,
+			/* gpioi5 */
+			<&gpioi 5 GPIO_INPUT_PULL_DOWN>,
 			/* gpioi6 */
 			<&gpioi 6 GPIO_INPUT_PULL_DOWN>,
 			/* gpioi7 */
@@ -149,9 +193,9 @@
 			/* gpioj5 */
 			<&gpioj 5 GPIO_INPUT_PULL_DOWN>,
 			/* gpioj6 */
-			<&gpioj 6 GPIO_OUTPUT_LOW>,
+			<&gpioj 6 GPIO_INPUT_PULL_DOWN>,
 			/* gpioj7 */
-			<&gpioj 7 GPIO_OUTPUT_LOW>,
+			<&gpioj 7 GPIO_INPUT_PULL_DOWN>,
 
 			/* gpiom0 */
 			<&gpiom 0 GPIO_INPUT_PULL_DOWN>,
