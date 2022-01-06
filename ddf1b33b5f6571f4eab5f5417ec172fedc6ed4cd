@@ -76,6 +76,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4bc30e98_9dc42faa",
+        "filename": "board/quackingstick/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 638,
+      "author": {
+        "id": 1293891
+      },
+      "writtenOn": "2022-01-06T03:08:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a813d17b_beffd337",
+      "range": {
+        "startLine": 638,
+        "startChar": 1,
+        "endLine": 638,
+        "endChar": 4
+      },
+      "revId": "ddf1b33b5f6571f4eab5f5417ec172fedc6ed4cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5e59d11d_2b66a8a8",
@@ -99,6 +123,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a941ea1_ccd588e8",
+        "filename": "board/quackingstick/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 644,
+      "author": {
+        "id": 1293891
+      },
+      "writtenOn": "2022-01-06T03:08:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5e59d11d_2b66a8a8",
+      "range": {
+        "startLine": 641,
+        "startChar": 0,
+        "endLine": 644,
+        "endChar": 37
+      },
+      "revId": "ddf1b33b5f6571f4eab5f5417ec172fedc6ed4cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1e603983_ea6d3ce2",
@@ -112,6 +160,30 @@
       "writtenOn": "2022-01-05T18:42:36Z",
       "side": 1,
       "message": "nit, please align indentation",
+      "range": {
+        "startLine": 42,
+        "startChar": 28,
+        "endLine": 42,
+        "endChar": 31
+      },
+      "revId": "ddf1b33b5f6571f4eab5f5417ec172fedc6ed4cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe0a9ad6_1bc78128",
+        "filename": "board/quackingstick/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1293891
+      },
+      "writtenOn": "2022-01-06T03:08:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1e603983_ea6d3ce2",
       "range": {
         "startLine": 42,
         "startChar": 28,
