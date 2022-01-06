@@ -34,6 +34,24 @@
       "parentUuid": "357e8ad5_27420077",
       "revId": "7ac63770e99147f20444f487d8a270fbbd660542",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e6c91be3_8ebbf79b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1527153
+      },
+      "writtenOn": "2022-01-06T07:37:10Z",
+      "side": 1,
+      "message": "As I though of correcting the ioctl error related to thermal get, without this constant sensor entry the condition would loop to the magic number 99.\nSo brought down this to the const which already existed.",
+      "parentUuid": "2bf1a74d_66496b9f",
+      "revId": "7ac63770e99147f20444f487d8a270fbbd660542",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
