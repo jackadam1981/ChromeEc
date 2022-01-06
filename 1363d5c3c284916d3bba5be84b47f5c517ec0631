@@ -46,6 +46,47 @@
       },
       "revId": "1363d5c3c284916d3bba5be84b47f5c517ec0631",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "670aa8c9_0b8949f1",
+        "filename": "util/ectool.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-01-06T23:18:04Z",
+      "side": 1,
+      "message": "We can define a macro like this (though not necessary) but it should go to ec_commands.h.",
+      "parentUuid": "7a5f500f_f1f75f2d",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 0
+      },
+      "revId": "1363d5c3c284916d3bba5be84b47f5c517ec0631",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a503632e_6d738e8f",
+        "filename": "util/ectool.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 3288,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-01-06T23:18:04Z",
+      "side": 1,
+      "message": "This change isn\u0027t needed because we break here when the EC returns EC_RES_INVALID_PARAM for an invalid id:\n\nthermal_command_get_threshold(struct host_cmd_handler_args *args)\n{\n\tconst struct ec_params_thermal_get_threshold_v1 *p \u003d args-\u003eparams;\n\tstruct ec_thermal_config *r \u003d args-\u003eresponse;\n\n\tif (p-\u003esensor_num \u003e\u003d TEMP_SENSOR_COUNT)\n\t\treturn EC_RES_INVALID_PARAM;\n\n\t*r \u003d thermal_params[p-\u003esensor_num];\n\targs-\u003eresponse_size \u003d sizeof(*r);\n\treturn EC_RES_SUCCESS;\n}\n\nAm I missing something?",
+      "revId": "1363d5c3c284916d3bba5be84b47f5c517ec0631",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
