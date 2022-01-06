@@ -47,6 +47,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c773ae8a_bd5d777c",
+        "filename": "common/battery_fuel_gauge.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1443462
+      },
+      "writtenOn": "2022-01-06T14:02:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "93be6267_a28198f4",
+      "range": {
+        "startLine": 72,
+        "startChar": 11,
+        "endLine": 72,
+        "endChar": 24
+      },
+      "revId": "95c6ca62af6c552a662f6491b56a3fa31f07e947",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5a23035_d25cd106",
+        "filename": "common/battery_fuel_gauge.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1443462
+      },
+      "writtenOn": "2022-01-06T14:02:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "66fdf650_6b1513b0",
+      "range": {
+        "startLine": 72,
+        "startChar": 58,
+        "endLine": 72,
+        "endChar": 59
+      },
+      "revId": "95c6ca62af6c552a662f6491b56a3fa31f07e947",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f7924c63_aa485eab",
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dceb5af3_8728a713",
+        "filename": "common/battery_fuel_gauge.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1443462
+      },
+      "writtenOn": "2022-01-06T14:02:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f7924c63_aa485eab",
+      "range": {
+        "startLine": 88,
+        "startChar": 1,
+        "endLine": 88,
+        "endChar": 6
+      },
+      "revId": "95c6ca62af6c552a662f6491b56a3fa31f07e947",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "69f52beb_83e45a53",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-12-22T20:52:52Z",
       "side": 1,
       "message": "Convert to if(IS_ENABLED(CONFIG_BATTERY_TYPE_NO_AUTO_DETECT))",
+      "range": {
+        "startLine": 108,
+        "startChar": 0,
+        "endLine": 108,
+        "endChar": 47
+      },
+      "revId": "95c6ca62af6c552a662f6491b56a3fa31f07e947",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "64c51e4a_b90396a5",
+        "filename": "common/battery_fuel_gauge.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1443462
+      },
+      "writtenOn": "2022-01-06T14:02:35Z",
+      "side": 1,
+      "message": "If we change this to IS_ENABLED() , for boards where CONFIG_BATTERY_TYPE_NO_AUTO_DETECT is not defined, it throws compilation errors for battery_get_fixed_battery_type() as implicit declaration,as it is defined under config- CONFIG_BATTERY_TYPE_NO_AUTO_DETECT.",
+      "parentUuid": "69f52beb_83e45a53",
       "range": {
         "startLine": 108,
         "startChar": 0,
