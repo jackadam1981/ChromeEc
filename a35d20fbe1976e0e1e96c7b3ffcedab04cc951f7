@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1916e00_cb96bad3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2022-01-06T10:11:07Z",
+      "side": 1,
+      "message": "https://docs.google.com/spreadsheets/d/1v5Up6OtXzTDm4RGtG5v1v0ozQicxXWtonma78pM_zJQ/edit?resourcekey\u003d0-J89F7DKGvDLgHMAxye6B2w#gid\u003d884822746",
+      "parentUuid": "a5ee7373_0e1d297f",
+      "revId": "a35d20fbe1976e0e1e96c7b3ffcedab04cc951f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "516fafac_b6da5b0d",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-01-05T23:28:41Z",
       "side": 1,
       "message": "nit: What would you think about adding a BUILD_ASSERT to ensure the union is always the same size as a uint32_t?",
+      "revId": "a35d20fbe1976e0e1e96c7b3ffcedab04cc951f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "19569956_5e3aae7c",
+        "filename": "board/magolor/cbi_ssfc.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2022-01-06T10:11:07Z",
+      "side": 1,
+      "message": "it define as \nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/a35d20fbe1976e0e1e96c7b3ffcedab04cc951f7/board/magolor/cbi_ssfc.c#16\n\nisn\u0027t it ?",
+      "parentUuid": "516fafac_b6da5b0d",
       "revId": "a35d20fbe1976e0e1e96c7b3ffcedab04cc951f7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
