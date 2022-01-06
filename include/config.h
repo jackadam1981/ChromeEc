@@ -3000,6 +3000,14 @@
 #undef CONFIG_KEYBOARD_STRICT_DEBOUNCE
 
 /*
+ * Normally, the keyboard scan function selects/mux KSIs for the keyscan inputs.
+ * For the Chrombook which requires better antighost capability
+ * (ex. the gaming Chromebook), select the ADC pins instead of KSIs for keyscan
+ * inputs.
+ */
+#undef CONFIG_KEYBOARD_SCAN_ANTIGHOST_ADC
+
+/*
  * Enable the 8042 AUX port. This is typically used for PS/2 mouse devices.
  * You will need to implement send_aux_data_to_device and lpc_aux_put_char.
  */
