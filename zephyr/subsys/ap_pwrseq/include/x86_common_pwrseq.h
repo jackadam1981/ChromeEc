@@ -150,6 +150,9 @@ struct common_pwrseq_config {
 struct power_seq_context {
 	/* On power-on start boot up sequence */
 	enum power_states_ndsx power_state;
+	int want_g3_exit;
+	int hibernate_delay;
+	uint64_t last_shutdown_time; /* Record when state enters G3 */
 };
 
 #endif

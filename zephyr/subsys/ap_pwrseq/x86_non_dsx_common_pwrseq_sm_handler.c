@@ -4,14 +4,20 @@
  */
 
 #include <device.h>
+#include <drivers/cros_system.h>
 #include <devicetree/gpio.h>
 #include <drivers/espi.h>
 #include <x86_non_dsx_espi.h>
 #include <x86_non_dsx_common_pwrseq_sm_handler.h>
 #include <zephyr.h>
 #include <string.h>
+#include <kernel.h>
 #include <logging/log.h>
 #include <shell/shell.h>
+#include <string.h>
+#include <x86_non_dsx_common_pwrseq_sm_handler.h>
+#include <x86_non_dsx_espi.h>
+#include <zephyr.h>
 
 LOG_MODULE_REGISTER(ap_pwrseq, 4);
 
@@ -122,6 +128,76 @@ void gpio_set_lvl(const char *net_name, int val)
 			LOG_ERR("Failed to set GPIO %s", net_name);
 	}
 }
+
+/* Services start */
+
+void chipset_set_hard_off_state(int enable)
+{
+	/* TODO: This could be accessed by multiple tasks
+	 * at this point it is power button task
+	 */
+	pwrseq_ctx.want_g3_exit = enable;
+}
+
+/*
+ * Smart discharge system
+ *
+ * EC controls how the system discharges differently depending on the remaining
+ * capacity and the expected hours to zero.
+ *
+ * 0          X1                X2                                   full
+ * |----------|-------------------|------------------------------------|
+ *    cutoff        stay-up                       safe
+ *
+ * EC cuts off the battery at X1 mAh and hibernates the system at X2 mAh. X1 and
+ * X2 are derived from the cutoff and hibernation discharge rate, respectively.
+ *
+ * TODO: Learn discharge rates dynamically.
+ *
+ * TODO: Save sdzone in non-volatile memory and restore it when waking up from
+ * cutoff or hibernation.
+ */
+//static struct smart_discharge_zone sdzone;
+
+__attribute__((weak)) int check_board_system_is_idle_action(
+		uint64_t last_shutdown_time, uint64_t *target, uint64_t now)
+{
+	//int remain;
+
+	if (now < *target)
+		return CRITICAL_SHUTDOWN_IGNORE;
+
+/*	if (battery_remaining_capacity(&remain)) {
+		CPRINTS("SDC Failed to get remaining capacity");
+		return CRITICAL_SHUTDOWN_HIBERNATE;
+	}
+
+	if (remain < sdzone.cutoff) {
+		CPRINTS("SDC Cutoff");
+		return CRITICAL_SHUTDOWN_CUTOFF;
+	} else if (remain < sdzone.stayup) {
+		CPRINTS("SDC Stay-up");
+		return CRITICAL_SHUTDOWN_IGNORE;
+	}
+
+	CPRINTS("SDC Safe");
+*/
+	return CRITICAL_SHUTDOWN_HIBERNATE;
+}
+
+void espi_bus_reset(void)
+{
+	/* If SOC is up toggle the PM_PWRBTN pin */
+	if (gpio_get_lvl(GPIO_NET_NAME(PCH_EC_SLP_SUS_L))) {
+		LOG_INF("Toggle PM PWRBTN");
+
+		gpio_set_lvl(GPIO_NET_NAME(EC_PCH_PWR_BTN_ODL), 0);
+		k_msleep(com_cfg.pch_pm_pwrbtn_delay_ms);
+		gpio_set_lvl(GPIO_NET_NAME(EC_PCH_PWR_BTN_ODL), 1);
+	}
+}
+
+/* Services end */
 
 static int check_power_rails_enabled(void)
 {
@@ -420,11 +496,63 @@ __attribute__((weak)) void rsmrst_pass_thru_handler(void)
 			com_cfg.pch_rsmrst_delay_ms);
 }
 
+static void hibernate(uint32_t seconds, uint32_t microseconds)
+{
+	const struct device *sys_dev = device_get_binding("CROS_SYSTEM");
+	int err;
+
+	err = cros_system_hibernate(sys_dev, seconds, microseconds);
+	if (err < 0) {
+		LOG_ERR("hibernate failed %d", err);
+		return;
+	}
+
+	/* should never reach this point */
+	while (1)
+		continue;
+
+}
+
 static int common_pwr_sm_run(int state)
 {
 	switch (state) {
 	case SYS_POWER_STATE_G3:
 		/* Nothing to do */
+		if (pwrseq_ctx.want_g3_exit) {
+			chipset_set_hard_off_state(0);
+			return SYS_POWER_STATE_G3S5;
+		}
+
+		/* If hibernate */
+		if (IS_ENABLED(CONFIG_PLATFORM_EC_HIBERNATE_PSL)) {
+			uint64_t target, now, wait;
+			/* TODO: if (extpower_is_present()) { } */
+			now = k_uptime_get();
+			target = pwrseq_ctx.last_shutdown_time +
+			(uint64_t)(pwrseq_ctx.hibernate_delay * 1000);
+
+			LOG_DBG("Check if hibernate needed ...");
+			switch (check_board_system_is_idle_action(
+					pwrseq_ctx.last_shutdown_time,
+				     &target, now)) {
+			case CRITICAL_SHUTDOWN_HIBERNATE:
+				LOG_DBG("Hibernate due to G3 idle...");
+				hibernate(0, 0);
+				break;
+			if (IS_ENABLED(CONFIG_BATTERY_CUT_OFF)) {
+			case CRITICAL_SHUTDOWN_CUTOFF:
+				LOG_DBG("Cutoff due to G3 idle");
+				/* TODO: board_cut_off_battery(); */
+				break;
+			}
+			case CRITICAL_SHUTDOWN_IGNORE:
+			default:
+				break;
+			}
+			// todo: Replace TASK_MAX_WAIT_US
+			wait = MIN(target - now, 0x7fffffff);
+			k_busy_wait(wait);
+		} /* If hibernate ends */
 		break;
 
 	case SYS_POWER_STATE_G3S5:
@@ -574,18 +702,6 @@ static int common_pwr_sm_run(int state)
 	return state;
 }
 
-void espi_bus_reset(void)
-{
-	/* If SOC is up toggle the PM_PWRBTN pin */
-	if (gpio_get_lvl(GPIO_NET_NAME(PCH_EC_SLP_SUS_L))) {
-		LOG_INF("Toggle PM PWRBTN");
-
-		gpio_set_lvl(GPIO_NET_NAME(EC_PCH_PWR_BTN_ODL), 0);
-		k_msleep(com_cfg.pch_pm_pwrbtn_delay_ms);
-		gpio_set_lvl(GPIO_NET_NAME(EC_PCH_PWR_BTN_ODL), 1);
-	}
-}
-
 /* Console commands */
 
 static int powerinfo_handler(const struct shell *shell, size_t argc,
@@ -626,6 +742,34 @@ static int apreset_handler(const struct shell *shell, size_t argc,
 }
 
 SHELL_CMD_REGISTER(apreset, NULL, NULL, apreset_handler);
+
+static int command_hibernation_delay(const struct shell *shell, size_t argc,
+							char **argv)
+{
+/*
+ * char *e;
+	uint32_t time_g3 = ((uint32_t)(get_time().val - pwrseq_ctx.last_shutdown_time))
+				/ SECOND;
+
+	if (argc >= 2) {
+		uint32_t s = strtoi(argv[1], &e, 0);
+		if (*e)
+			return EC_ERROR_PARAM1;
+
+		pwrseq_ctx.hibernate_delay = s;
+	}
+
+	ccprintf("Hibernation delay: %d s\n", pwrseq_ctx.hibernate_delay);
+	if (state == POWER_G3 && !extpower_is_present()) {
+		ccprintf("Time G3: %d s\n", time_g3);
+		ccprintf("Time left: %d s\n", pwrseq_ctx.hibernate_delay - time_g3);
+	}
+*/
+	pwrseq_ctx.hibernate_delay = 10;
+	return 0;
+}
+
+SHELL_CMD_REGISTER(hibdelay, NULL, NULL, command_hibernation_delay);
 
 /* End of console commands */
 
@@ -697,6 +841,7 @@ void init_pwr_seq_state(void)
 	/* Delay value can be ovverriden by chipset */
 	init_chipset_pwr_seq_state();
 
+	chipset_set_hard_off_state(0);
 	pwr_sm_set_state(SYS_POWER_STATE_G3S5);
 }
 
