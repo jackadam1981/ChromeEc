@@ -31,7 +31,7 @@ BUILD_ASSERT(ARRAY_SIZE(chg_chips) == CHARGER_NUM);
 
 int board_set_active_charge_port(int port)
 {
-	int is_valid_port = board_is_usb_pd_port_present(port);
+	int is_valid_port = is_usb_pd_port_present(port);
 	int i;
 
 	if (port == CHARGE_PORT_NONE) {

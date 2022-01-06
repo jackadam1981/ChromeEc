@@ -3093,7 +3093,7 @@ uint8_t usb_pd_get_port_count(void);
  *
  * @return true if port is present.
  */
-__override_proto bool board_is_usb_pd_port_present(int port);
+bool is_usb_pd_port_present(int port);
 
 /**
  * Return true if specified PD port is DTS (Debug and Test System

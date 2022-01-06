@@ -380,7 +380,7 @@ uint8_t usb_pd_get_port_count(void)
 }
 #endif /* CONFIG_USB_PD_COUNT_RUNTIME */
 
-__overridable bool board_is_usb_pd_port_present(int port)
+bool is_usb_pd_port_present(int port)
 {
 	/*
 	 * Use usb_pd_get_port_count() instead of checking

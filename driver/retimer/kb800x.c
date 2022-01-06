@@ -487,7 +487,7 @@ static int console_command_kb800x_xfer(int argc, char **argv)
 
 	/* Get port number */
 	port = strtoi(argv[1], &e, 0);
-	if (*e || !board_is_usb_pd_port_present(port))
+	if (*e || !is_usb_pd_port_present(port))
 		return EC_ERROR_PARAM1;
 
 	mux = &usb_muxes[port];
