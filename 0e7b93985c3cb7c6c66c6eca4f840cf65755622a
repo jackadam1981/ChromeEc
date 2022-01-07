@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "34a4853d_f3dcec11",
+        "filename": "board/nipperkin/thermal.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2022-01-07T17:58:03Z",
+      "side": 1,
+      "message": "Return an error code here?",
+      "revId": "0e7b93985c3cb7c6c66c6eca4f840cf65755622a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48f4fda5_32f93513",
+        "filename": "board/nipperkin/thermal.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2022-01-07T17:58:03Z",
+      "side": 1,
+      "message": "nit: could be collapsed with above condition.",
+      "revId": "0e7b93985c3cb7c6c66c6eca4f840cf65755622a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06226bf4_74aa1120",
+        "filename": "board/nipperkin/thermal.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2022-01-07T17:58:03Z",
+      "side": 1,
+      "message": "nit: -\u003d 1",
+      "revId": "0e7b93985c3cb7c6c66c6eca4f840cf65755622a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

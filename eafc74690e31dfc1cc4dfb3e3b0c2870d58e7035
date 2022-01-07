@@ -51,6 +51,24 @@
       "parentUuid": "5fd77454_4df762a9",
       "revId": "eafc74690e31dfc1cc4dfb3e3b0c2870d58e7035",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a082287a_90f2f827",
+        "filename": "board/nipperkin/thermal.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2022-01-07T17:58:03Z",
+      "side": 1,
+      "message": "It\u0027d be safer long term to just check here, i.e. current_level \u003c NUM_CHG_CURRENT_LEVELS-1 \u0026\u0026 ...",
+      "parentUuid": "e67b337a_fc77ead9",
+      "revId": "eafc74690e31dfc1cc4dfb3e3b0c2870d58e7035",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
