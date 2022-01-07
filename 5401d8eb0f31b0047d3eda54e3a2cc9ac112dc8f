@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4721e2d6_a8e6e31c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2022-01-07T06:55:59Z",
+      "side": 1,
+      "message": "mt8186 scp looks similar to mt8183 scp. There are changes on UART numbering, clock hardware design, and SRAM. So let\u0027s try to reuse 8183\u0027s code base this way:\n - rename chip/mt_scp/mt8183 to chip/mt_scp/mt818x\n - rename chip/mt_scp/mt818x/clock.c clock_mt8183.c\n - 8186\u0027s clock.c will be clock_mt8186.c\n - symlink board/corsola_scp to board/kukui_scp\n - use macro BOARD_CORSOLA_SCP to conditionally define SRAM size in board.h\n - amend build.mk and update_scp script\n \n After above change, this CL should be in a reviewable shape.",
+      "revId": "5401d8eb0f31b0047d3eda54e3a2cc9ac112dc8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
