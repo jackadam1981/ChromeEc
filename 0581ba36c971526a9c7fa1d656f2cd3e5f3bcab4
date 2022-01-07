@@ -1,6 +1,46 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "4be191f5_98976970",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2022-01-07T09:22:40Z",
+      "side": 1,
+      "message": "Can add below?\nBUG\u003db:212509565\nBRANCH\u003dnone\nTEST\u003d1. Verify DP Alt mode.\n2. Verify PD charging.",
+      "revId": "0581ba36c971526a9c7fa1d656f2cd3e5f3bcab4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "308190a5_4fa9b893",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2022-01-07T09:22:40Z",
+      "side": 1,
+      "message": "Duplicate",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 44
+      },
+      "revId": "0581ba36c971526a9c7fa1d656f2cd3e5f3bcab4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "cc00d4c5_bf848d34",
@@ -14,6 +54,29 @@
       "writtenOn": "2022-01-07T07:35:25Z",
       "side": 1,
       "message": "Hi all, please help to review anx7406 TCPM driver, so far, it works on TCPMv1, for TCPMv2 PD3.0 still under test.\nThanks,\nXin",
+      "revId": "0581ba36c971526a9c7fa1d656f2cd3e5f3bcab4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8239dce5_ed89fe5e",
+        "filename": "driver/tcpm/anx7406.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2022-01-07T09:22:40Z",
+      "side": 1,
+      "message": "2022?",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
       "revId": "0581ba36c971526a9c7fa1d656f2cd3e5f3bcab4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
