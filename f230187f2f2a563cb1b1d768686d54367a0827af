@@ -22,6 +22,30 @@
       },
       "revId": "f230187f2f2a563cb1b1d768686d54367a0827af",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "72ca1331_24f0a065",
+        "filename": "chip/lm4/clock.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 498,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-01-07T22:03:12Z",
+      "side": 1,
+      "message": "lol at the comment...\n\nwould have been caught by a reviewer if the functions were used instead of inline asm :P",
+      "parentUuid": "9c4cd6b8_c2b5afff",
+      "range": {
+        "startLine": 497,
+        "startChar": 1,
+        "endLine": 498,
+        "endChar": 21
+      },
+      "revId": "f230187f2f2a563cb1b1d768686d54367a0827af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
