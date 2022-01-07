@@ -1,0 +1,211 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4284c2c2_b62e9b8d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-01-07T23:16:51Z",
+      "side": 1,
+      "message": "interrupt",
+      "range": {
+        "startLine": 16,
+        "startChar": 51,
+        "endLine": 16,
+        "endChar": 60
+      },
+      "revId": "4e8ccc5a890284e550d070914db9a28776162346",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "004c013d_6cacde0f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-01-07T23:16:51Z",
+      "side": 1,
+      "message": "Its",
+      "range": {
+        "startLine": 24,
+        "startChar": 9,
+        "endLine": 24,
+        "endChar": 13
+      },
+      "revId": "4e8ccc5a890284e550d070914db9a28776162346",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58c10e17_9bfbdb84",
+        "filename": "chip/stm32/clock-stm32f4.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 450,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-01-07T23:16:51Z",
+      "side": 1,
+      "message": "Looks like this is also defined in hwtimer32.c. Can we put it in a common location? chip/stm32/registers.h?",
+      "range": {
+        "startLine": 450,
+        "startChar": 0,
+        "endLine": 450,
+        "endChar": 44
+      },
+      "revId": "4e8ccc5a890284e550d070914db9a28776162346",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1db830d_ffae3463",
+        "filename": "chip/stm32/clock-stm32f4.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 452,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-01-07T23:16:51Z",
+      "side": 1,
+      "message": "This seems related to the \"task*_irq\" functions. Seems like we should add a \"task_is_irq_pending\" function in task.c.",
+      "range": {
+        "startLine": 451,
+        "startChar": 33,
+        "endLine": 452,
+        "endChar": 35
+      },
+      "revId": "4e8ccc5a890284e550d070914db9a28776162346",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d2f223db_a3cbcc59",
+        "filename": "chip/stm32/clock-stm32f4.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 452,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-01-07T23:16:51Z",
+      "side": 1,
+      "message": "Can you make this a function for readability? e.g.,\n\n bool timer_interrupt_pending()",
+      "range": {
+        "startLine": 451,
+        "startChar": 0,
+        "endLine": 452,
+        "endChar": 36
+      },
+      "revId": "4e8ccc5a890284e550d070914db9a28776162346",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "203461b3_79bfac1f",
+        "filename": "chip/stm32/clock-stm32f4.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 476,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-01-07T23:16:51Z",
+      "side": 1,
+      "message": "nit: Add period",
+      "range": {
+        "startLine": 476,
+        "startChar": 58,
+        "endLine": 476,
+        "endChar": 66
+      },
+      "revId": "4e8ccc5a890284e550d070914db9a28776162346",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "843c09b9_d6b951d0",
+        "filename": "chip/stm32/clock-stm32f4.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 507,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-01-07T23:16:51Z",
+      "side": 1,
+      "message": "Is it sufficient to check only TIMER_INTERRUPT_PENDING? i.e., are there any cases where the interrupt would not be set, but comparison would indicate overflow occurred?",
+      "range": {
+        "startLine": 506,
+        "startChar": 27,
+        "endLine": 507,
+        "endChar": 34
+      },
+      "revId": "4e8ccc5a890284e550d070914db9a28776162346",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c98acf78_9335a2d7",
+        "filename": "chip/stm32/clock-stm32f4.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 513,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-01-07T23:16:51Z",
+      "side": 1,
+      "message": "Let\u0027s use the interrupt_disable() function: https://crrev.com/c/3373621",
+      "range": {
+        "startLine": 513,
+        "startChar": 3,
+        "endLine": 513,
+        "endChar": 27
+      },
+      "revId": "4e8ccc5a890284e550d070914db9a28776162346",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c31dee2_9f28708e",
+        "filename": "chip/stm32/clock-stm32f4.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 519,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-01-07T23:16:51Z",
+      "side": 1,
+      "message": "Does the logic still work the same if we change this line to \n\n next_delay \u003d __hw_clock_event_get() - t0.le.lo;\n \nand remove the \"next_delay\" above?",
+      "range": {
+        "startLine": 519,
+        "startChar": 2,
+        "endLine": 519,
+        "endChar": 25
+      },
+      "revId": "4e8ccc5a890284e550d070914db9a28776162346",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
