@@ -31,6 +31,14 @@
 			gpios = <&gpio0 2 GPIO_INPUT>;
 			enum-name = "GPIO_USB_C1_PD_INT_ODL";
 		};
+
+		gpio_pg_pp1050_proc: pg_pp1050_proc {
+			enum-name = "GPIO_PG_PP1050_PROC";
+		};
+		gpio_pg_ec_dsw_pwrok: pg_ec_dsw_pwrok {
+			gpios = <&gpio3 4 GPIO_INPUT>;
+			enum-name = "GPIO_PG_EC_DSW_PWROK";
+		};
 	};
 
 	named-temp-sensors {

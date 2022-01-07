@@ -82,7 +82,7 @@
 		gpio_ec_soc_dsw_pwrok: ec_soc_dsw_pwrok {
 			#gpio-cells = <0>;
 			gpios = <&gpio6 1 GPIO_OUTPUT>;
-			enum-name = "GPIO_PG_EC_DSW_PWROK";
+			enum-name = "GPIO_PCH_DSW_PWROK";
 		};
 		gpio_ec_soc_hdmi_hpd: ec_soc_hdmi_hpd {
 			#gpio-cells = <0>;
