@@ -22,6 +22,30 @@
       },
       "revId": "a0fb7cbf9f978c4ab94bb66bb2473166b776cd6a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e6110b89_42358b53",
+        "filename": "util/ectool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 3286,
+      "author": {
+        "id": 1527153
+      },
+      "writtenOn": "2022-01-07T04:13:56Z",
+      "side": 1,
+      "message": "Hi Dai,\n\nIt returns INVALID PARAM resulting in the \"ioctl error\" even in success case as invalid sensor_num is queried as part of for loop. To avoid or overcome this ioctl error this change is made.\n\nsensor  warn  high  halt   fan_off fan_max   name\n  0        0   358    363    308     333     DDR and SOC\n  1        0   358    363    308     333     Ambient\n  2        0   378    393    308     338     Charger\n  3        0   403    403    308     333     WWAN\nioctl -1, errno 22 (Invalid argument), EC result 255 (\u003cunknown\u003e)\n(all temps in degrees Kelvin)",
+      "parentUuid": "7edd6cb4_21589bf2",
+      "range": {
+        "startLine": 3286,
+        "startChar": 2,
+        "endLine": 3286,
+        "endChar": 14
+      },
+      "revId": "a0fb7cbf9f978c4ab94bb66bb2473166b776cd6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
