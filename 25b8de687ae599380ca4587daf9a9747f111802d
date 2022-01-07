@@ -16,6 +16,24 @@
       "message": "How will this impact power consumption?",
       "revId": "25b8de687ae599380ca4587daf9a9747f111802d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4e9753b_d8efa770",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-01-07T01:00:53Z",
+      "side": 1,
+      "message": "this is the right question to ask, but better asked \u0026 answered in the\noriginal bug/patch rather than this cherry pick.\n\nof course, the original patch was suggested by parade to fix\n(work around?) a problem, so that trumps a minimal difference\nin power consumption. granted, i do not believe anyone has confirmed\nthe power impact.",
+      "parentUuid": "fe2abe8b_ff511dbd",
+      "revId": "25b8de687ae599380ca4587daf9a9747f111802d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
