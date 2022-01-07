@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e157501b_44862a4e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-01-07T00:11:54Z",
+      "side": 1,
+      "message": "looking back at the commit message that introduced this function\nas well as the comments in the code, the intent is to support\ncases where ports are not numbered in a contiguous sequence.\npreviously, the \"optional\" port had to be the highest numbered\nport which makes the port number shuffling awkward when one\nor more ports are not populated.\nthis can happen when one or more USB daughter boards are missing\nfrom the \"regular\" configuration.\n\nbrya is one of these devices. the DB is C1 while the permanent\nports are known as C0 and C2. if anything, we should be providing\nthe override to support the case where the USB DB is not populated.\n",
+      "revId": "a3596c03acff18bba257ce112dadd81e3850a105",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "af5942c2_633d623b",
