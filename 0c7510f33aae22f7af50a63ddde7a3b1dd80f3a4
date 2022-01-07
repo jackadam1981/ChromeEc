@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae74011f_d188c884",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2022-01-07T03:20:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7ed712d7_9a667c02",
+      "revId": "0c7510f33aae22f7af50a63ddde7a3b1dd80f3a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ba21fd84_aa399c1b",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-01-06T06:14:58Z",
       "side": 1,
       "message": "do you have a bug for the keyboard setup (maybe b/194337804 is OK).\nalternatively, you should have a tracking bug for bringing\nup the firmware on vell.",
+      "range": {
+        "startLine": 11,
+        "startChar": 4,
+        "endLine": 11,
+        "endChar": 8
+      },
+      "revId": "0c7510f33aae22f7af50a63ddde7a3b1dd80f3a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f9ef98c_6fb7fcda",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2022-01-07T03:20:49Z",
+      "side": 1,
+      "message": "I added b/203664745.",
+      "parentUuid": "ba21fd84_aa399c1b",
       "range": {
         "startLine": 11,
         "startChar": 4,
