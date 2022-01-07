@@ -16,6 +16,24 @@
       "message": "Oh, also, per our earlier conversation we should probably update this to v7.60b",
       "revId": "e296efb28b16278fd3a94ab79f5a2f6a36abdc03",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "26da5f47_39d724d7",
+        "filename": "docs/fingerprint/fingerprint-debugging.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-01-07T16:52:32Z",
+      "side": 0,
+      "message": "Let\u0027s do that in a separate CL once we update the jlink ebuild to that version",
+      "parentUuid": "549c7d02_4f5a3901",
+      "revId": "e296efb28b16278fd3a94ab79f5a2f6a36abdc03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

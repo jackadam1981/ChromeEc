@@ -33,6 +33,24 @@
       "message": "My only concern is that when I ran this command I initially missed the note about needing to download the tgz file and move it to /var/cache/distfiles. It\u0027s not critical but it might be worth including that note (pasted below) or at least a summary.\n\nFetch instructions for dev-embedded/jlink-6.94a:\n * Segger requires you to accept their license agreement before downloading.\n * Download https://www.segger.com/downloads/jlink/JLink_Linux_V694a_x86_64.tgz\n * with your browser and place it in DISTDIR (usually /var/cache/distfiles/)\n * Running stacked hooks for post_pkg_nofetch\n *    distdir ...\n * On Chromium OS, DISTDIR is /var/cache/distfiles/ inside the chroot\n * and ~/chromiumos/.cache/distfiles/ outside the chroot.",
       "revId": "e3c9f99921966a405ac52f0d4a4bbbef40c73c8f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d5a5e83_af8bc60b",
+        "filename": "docs/fingerprint/fingerprint-debugging.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-01-07T16:52:32Z",
+      "side": 1,
+      "message": "Added a note",
+      "parentUuid": "a8b8afd4_b5a99688",
+      "revId": "e3c9f99921966a405ac52f0d4a4bbbef40c73c8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
