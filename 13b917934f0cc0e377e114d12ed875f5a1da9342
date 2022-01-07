@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32d81c66_4b7a780e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-01-07T19:45:32Z",
+      "side": 1,
+      "message": "pls add actual test results. Changes in reference boards are carried over to follow on boards. It will be easy to reference from  here for those boards.",
+      "revId": "13b917934f0cc0e377e114d12ed875f5a1da9342",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "610521e1_c9aae58e",
+        "filename": "zephyr/projects/brya/brya/kblight_hooks.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-01-07T19:45:32Z",
+      "side": 1,
+      "message": "nit: how about keeping it in a separate function and call it from both hook function with true \u0026 false?\nstatic inline void kbd_backlite_enable(bool enable)\n{\n}",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 40
+      },
+      "revId": "13b917934f0cc0e377e114d12ed875f5a1da9342",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
