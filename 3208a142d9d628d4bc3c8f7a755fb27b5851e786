@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7fa2f84e_7ccc21b9",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 633,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2022-01-07T16:49:42Z",
+      "side": 1,
+      "message": "nit: might be worth printing this in the else case of below so you don\u0027t have two prints in the error scenario",
+      "range": {
+        "startLine": 633,
+        "startChar": 0,
+        "endLine": 633,
+        "endChar": 63
+      },
+      "revId": "3208a142d9d628d4bc3c8f7a755fb27b5851e786",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
