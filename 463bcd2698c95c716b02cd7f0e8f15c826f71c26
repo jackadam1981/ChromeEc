@@ -3,6 +3,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6d4d0e8f_dc9691e0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-01-07T22:12:20Z",
+      "side": 1,
+      "message": "nit: get_time",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 8
+      },
+      "revId": "463bcd2698c95c716b02cd7f0e8f15c826f71c26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8c3f16a_3e548e57",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-01-07T22:12:20Z",
+      "side": 1,
+      "message": "I was a little confused by this, but I think I understand it now. If the following description is the same as what you meant, I think it\u0027s a little clearer:\n\n get_time() checks to see if clksrc_high was modified after calling __hw_clock_source_read():\n \n ts.le.hi \u003d clksrc_high;\n ts.le.lo \u003d __hw_clock_source_read();\n if (ts.le.hi !\u003d clksrc_high) {\n   ts.le.hi \u003d clksrc_high;\n   ts.le.lo \u003d __hw_clock_source_read();\n }\n \n Even though clksrc_high is not volatile, this works as-is because there is a call to a function outside the file (__hw_clock_source_read) between the first clksrc_high read and the second read in the if statement. The compiler doesn\u0027t know what the function outside the file does, so it assumes that clksrc_high could be updated. However, if the code was changed so that it didn\u0027t have the external call between the first clksrc_high read and the second, the compiler could optimize the code and assume that clksrc_high was not changed, which would eliminate the second read (and never execute the code in the if statement).",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 39
+      },
+      "revId": "463bcd2698c95c716b02cd7f0e8f15c826f71c26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4e25e431_ff227706",
         "filename": "/COMMIT_MSG",
         "patchSetId": 3
@@ -37,6 +83,30 @@
       "writtenOn": "2022-01-06T17:15:31Z",
       "side": 1,
       "message": "TODO",
+      "range": {
+        "startLine": 233,
+        "startChar": 5,
+        "endLine": 233,
+        "endChar": 10
+      },
+      "revId": "463bcd2698c95c716b02cd7f0e8f15c826f71c26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fbda03df_654999af",
+        "filename": "common/timer.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-01-07T22:12:20Z",
+      "side": 1,
+      "message": "Sorry Patryk, I told you FIXME, but TODO is more standard at Google: https://google.github.io/styleguide/cppguide.html#TODO_Comments. Thanks for filing the bug for the associated TODO.",
+      "parentUuid": "95a07493_dbf6244f",
       "range": {
         "startLine": 233,
         "startChar": 5,
