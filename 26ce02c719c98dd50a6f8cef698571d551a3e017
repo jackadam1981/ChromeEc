@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f615abb_3a0ba512",
+        "filename": "board/moonbuggy/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-01-07T17:28:37Z",
+      "side": 1,
+      "message": "I believe the purpose of this change is to enable the charger if either 5V or 12v are present.\n\nI think this is clearer if written as:\n\nint ads_5v_present \u003d gpio_get_level(GPIO_ADS_5V_ADP_PRESENT);\nif (ads_5v_present)\n    gpio_set_level(GPIO_EC_AC_JACK_CHARGER_EC_L, 0);\nelse\n    gpio_set_level(GPIO_EC_AC_JACK_CHARGER_EC_L, 1);",
+      "range": {
+        "startLine": 114,
+        "startChar": 0,
+        "endLine": 120,
+        "endChar": 0
+      },
+      "revId": "26ce02c719c98dd50a6f8cef698571d551a3e017",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95913416_92944e0b",
+        "filename": "board/moonbuggy/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-01-07T17:28:37Z",
+      "side": 1,
+      "message": "Similar change here:\n\nint ads_12v_present \u003d !gpio_get_level(GPIO_BJ_ADP_PRESENT_L);\nif (ads_12v_present)\n    gpio_set_level(GPIO_EC_AC_JACK_CHARGER_EC_L, 0);\nelse\n    gpio_set_level(GPIO_EC_AC_JACK_CHARGER_EC_L, 1);",
+      "range": {
+        "startLine": 134,
+        "startChar": 0,
+        "endLine": 140,
+        "endChar": 0
+      },
+      "revId": "26ce02c719c98dd50a6f8cef698571d551a3e017",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5842edc_3cd8ae84",
+        "filename": "board/moonbuggy/gpio.inc",
+        "patchSetId": 4
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-01-07T17:28:37Z",
+      "side": 1,
+      "message": "Note - you need to enable an interrupt on this pin if you want this signal to wake the EC from sleep/deep-sleep.",
+      "range": {
+        "startLine": 109,
+        "startChar": 0,
+        "endLine": 109,
+        "endChar": 74
+      },
+      "revId": "26ce02c719c98dd50a6f8cef698571d551a3e017",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
