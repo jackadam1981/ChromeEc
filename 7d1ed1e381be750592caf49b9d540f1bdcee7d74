@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2bf2521f_e4759296",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-01-07T22:43:14Z",
+      "side": 1,
+      "message": "nit: Let\u0027s add a little bit more detail for those not familiar with how clksrc_high works. Something like this (feel free to change if not accurate):\n\n Whenever a timer interrupt occurs, the status register is checked for overflow and the overflow status is passed to process_timers(), which increments clksrc_high. When setting the clock to a new time, we don\u0027t want the previous overflow state to trigger this process.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 50
+      },
+      "revId": "7d1ed1e381be750592caf49b9d540f1bdcee7d74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d9aae6e_ab6aa794",
+        "filename": "chip/stm32/hwtimer32.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-01-07T22:43:14Z",
+      "side": 1,
+      "message": "We should probably do this for hwtimer.c too, right? (new CL is fine)",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 33
+      },
+      "revId": "7d1ed1e381be750592caf49b9d540f1bdcee7d74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
