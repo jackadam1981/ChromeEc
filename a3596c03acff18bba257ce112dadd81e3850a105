@@ -56,6 +56,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "178ff469_c5fb1be1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-01-07T22:16:55Z",
+      "side": 1,
+      "message": "i tried to go through the port numbering of all the brya variants,\nbut was unable to come up with a conclusive answer. there are some\nstrange configs, but some of that is due to support still being WIP.\n\nit does not look like a shipping device would have a non-contiguous\nport numbering scheme \"as shipped\", but during MLB power-on or\nengineering testing, it would happen - at least on devices\nthat support \u003e 2 ports using a DB.\n\nfelwinter is a bit weird in that they named their ports C2, C1\non the schematics but numerically mapped them to 0, 1 in the code.\ni don\u0027t recall if they plan to address this inconsistency.",
+      "parentUuid": "0030e6f7_4e79d3d3",
+      "revId": "a3596c03acff18bba257ce112dadd81e3850a105",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "af5942c2_633d623b",
         "filename": "include/usb_pd.h",
         "patchSetId": 1
