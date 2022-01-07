@@ -1,0 +1,23 @@
+# Copyright 2022 The Chromium OS Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+menu "AP Power Management"
+config X86_NON_DSX_POWER_SEQ
+	bool "x86 Non Deep Sx power sequencing"
+	default n
+	help
+	  This option enables Non Deep Sleep Well power sequencing for
+	  Intel x86 chips.
+
+config X86_NON_DSX_POWER_SEQ_ADL
+	bool "x86 Non Deep Sx power sequencing on ADL"
+	depends on X86_NON_DSX_POWER_SEQ && AP_X86_INTEL_ADL
+	default n
+	help
+	  This adds support for Intel ADL chipset.
+
+module = AP_PWRSEQ
+module-str = ap_pwrseq
+source "subsys/logging/Kconfig.template.log_config"
+endmenu
