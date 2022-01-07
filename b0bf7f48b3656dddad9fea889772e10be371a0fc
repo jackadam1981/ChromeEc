@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "24100505_7f750697",
+        "filename": "driver/charger/bq25710.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2022-01-07T00:47:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fd43168e_5fea7c8b",
+      "range": {
+        "startLine": 150,
+        "startChar": 1,
+        "endLine": 150,
+        "endChar": 73
+      },
+      "revId": "b0bf7f48b3656dddad9fea889772e10be371a0fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "39a3f458_b47c5ac8",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-01-06T07:25:15Z",
       "side": 1,
       "message": "how about using REG_TO_CHARGING_CURRENT(x) for these\nand where it makes sense in the rest of this file?",
+      "range": {
+        "startLine": 158,
+        "startChar": 2,
+        "endLine": 169,
+        "endChar": 43
+      },
+      "revId": "b0bf7f48b3656dddad9fea889772e10be371a0fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0648c30f_a602c8ad",
+        "filename": "driver/charger/bq25710.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2022-01-07T00:47:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "39a3f458_b47c5ac8",
       "range": {
         "startLine": 158,
         "startChar": 2,
