@@ -20,6 +20,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a578503c_23e73c97",
+        "filename": "zephyr/projects/brya/brya/kblight_hooks.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-01-07T20:44:43Z",
+      "side": 1,
+      "message": "deferring to other reviewers, but I don\u0027t think we\u0027re using the get_board_id() function in zephyr boards in favor of using DT_MACROS.\n\nThis is more of a question for zephyr-reviews.",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 25
+      },
+      "revId": "13b917934f0cc0e377e114d12ed875f5a1da9342",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "610521e1_c9aae58e",
         "filename": "zephyr/projects/brya/brya/kblight_hooks.c",
         "patchSetId": 2
