@@ -72,6 +72,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ea93179f_d9eb7abd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-01-07T22:18:32Z",
+      "side": 1,
+      "message": "Based on the commit description I wondered if the code would be exactly the same and could be verified with util/compare_build.sh. Looks like it\u0027s not. However, you could compare the disassembly. e.g.,\n\n arm-none-eabi-objdump -d /path/to/build/bloonchipper/RW/ec.RW.elf\n \nI didn\u0027t look at it closely, but looks like the only difference is an extra LDR in get_time. Probably from this line in the if statement now that clksrc_high is volatile:\n\n ts.le.hi \u003d clksrc_high;\n\nIf you can confirm that and include the analysis of the assembly in the commit description that\u0027s probably sufficient.",
+      "parentUuid": "4e25e431_ff227706",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 21
+      },
+      "revId": "463bcd2698c95c716b02cd7f0e8f15c826f71c26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "95a07493_dbf6244f",
         "filename": "common/timer.c",
         "patchSetId": 3
