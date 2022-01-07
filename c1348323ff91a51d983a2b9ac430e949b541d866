@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b5ff2a55_3dcfe36f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2022-01-07T19:06:19Z",
+      "side": 1,
+      "message": "Hi Caveh,\nOk.Agree that it is difficult to validate on all platforms. To be on safer side, Let me then, not make any changes for board specific files for the usage of  config - CONFIG_USB_PD_PORT_MAX_COUNT. Let me change the references for - CONFIG_USB_PD_PORT_MAX_COUNT only in the common files as in patchset11. May be i will better have a seperate CL for this config replacement itself. Then, further on we can see , if port validity check is required in those files in any case.",
+      "parentUuid": "7f2934ef_9694df9d",
+      "revId": "c1348323ff91a51d983a2b9ac430e949b541d866",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "afe35eb5_7f299b59",
         "filename": "common/usb_common.c",
         "patchSetId": 13
@@ -31,6 +49,30 @@
       "writtenOn": "2022-01-06T23:22:19Z",
       "side": 1,
       "message": "Nit - extra line.",
+      "range": {
+        "startLine": 363,
+        "startChar": 0,
+        "endLine": 363,
+        "endChar": 0
+      },
+      "revId": "c1348323ff91a51d983a2b9ac430e949b541d866",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7bb8e73a_3ef7fb99",
+        "filename": "common/usb_common.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 363,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2022-01-07T19:06:19Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "afe35eb5_7f299b59",
       "range": {
         "startLine": 363,
         "startChar": 0,
@@ -54,6 +96,30 @@
       "writtenOn": "2022-01-06T23:22:19Z",
       "side": 1,
       "message": "ASSERT is a runtime check.  I believe you can change this to usb_pd_get_port_count() and then you can eliminate the check at line 187.",
+      "range": {
+        "startLine": 182,
+        "startChar": 28,
+        "endLine": 182,
+        "endChar": 56
+      },
+      "revId": "c1348323ff91a51d983a2b9ac430e949b541d866",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "36ebe3ec_d6464f86",
+        "filename": "common/usbc/usb_retimer_fw_update.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2022-01-07T19:06:19Z",
+      "side": 1,
+      "message": "Hi Keith,\nI had tried replacing this , in file common/usbc_intr_task.c, in line , where originally, it had the existance of condition check after ASSERT().\nThere is no compilation error but at run time, it resulted in software panic with assertion failure. For this reason, i thought of following similar condition check as in common/usbc_intr_task.c after assertion check(line 97-102) for all similar assert check conditions.",
+      "parentUuid": "0c107713_27640084",
       "range": {
         "startLine": 182,
         "startChar": 28,
@@ -146,6 +212,30 @@
       "writtenOn": "2022-01-06T23:22:19Z",
       "side": 1,
       "message": "This isn\u0027t used by this CL.  Was this meant for one of the follow-on CLs?",
+      "range": {
+        "startLine": 4533,
+        "startChar": 0,
+        "endLine": 4533,
+        "endChar": 34
+      },
+      "revId": "c1348323ff91a51d983a2b9ac430e949b541d866",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0c84026_02eb4d30",
+        "filename": "include/config.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 4533,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2022-01-07T19:06:19Z",
+      "side": 1,
+      "message": "Ack. Got this by mistake in this, while splitting CLs. :)",
+      "parentUuid": "5a35f743_95e6b024",
       "range": {
         "startLine": 4533,
         "startChar": 0,
