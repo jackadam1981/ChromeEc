@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5bc36d82_27058403",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1527153
+      },
+      "writtenOn": "2022-01-07T18:14:51Z",
+      "side": 1,
+      "message": "Thankyou Dai. Updated accordingly.",
+      "parentUuid": "b2642d97_5c2aa9d0",
+      "revId": "b5a70a92f4ad65c4418d913421618ab9402644a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "776763a3_296bd9e2",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-01-07T16:36:16Z",
       "side": 1,
       "message": "Can you fix this, too?",
+      "range": {
+        "startLine": 3080,
+        "startChar": 12,
+        "endLine": 3080,
+        "endChar": 61
+      },
+      "revId": "b5a70a92f4ad65c4418d913421618ab9402644a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "12d1b287_d90cd4f5",
+        "filename": "util/ectool.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 3080,
+      "author": {
+        "id": 1527153
+      },
+      "writtenOn": "2022-01-07T18:14:51Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "776763a3_296bd9e2",
       "range": {
         "startLine": 3080,
         "startChar": 12,
@@ -64,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c72f493_af30eba1",
+        "filename": "util/ectool.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 3110,
+      "author": {
+        "id": 1527153
+      },
+      "writtenOn": "2022-01-07T18:14:51Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "78bf8bfd_e7204277",
+      "range": {
+        "startLine": 3110,
+        "startChar": 11,
+        "endLine": 3110,
+        "endChar": 60
+      },
+      "revId": "b5a70a92f4ad65c4418d913421618ab9402644a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a796005a_b051a178",
@@ -77,6 +143,30 @@
       "writtenOn": "2022-01-07T16:36:16Z",
       "side": 1,
       "message": "and this.",
+      "range": {
+        "startLine": 3153,
+        "startChar": 14,
+        "endLine": 3153,
+        "endChar": 63
+      },
+      "revId": "b5a70a92f4ad65c4418d913421618ab9402644a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c353d780_cc1e40bc",
+        "filename": "util/ectool.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 3153,
+      "author": {
+        "id": 1527153
+      },
+      "writtenOn": "2022-01-07T18:14:51Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a796005a_b051a178",
       "range": {
         "startLine": 3153,
         "startChar": 14,
