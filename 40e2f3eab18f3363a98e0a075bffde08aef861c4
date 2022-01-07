@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5837e5ce_334a70fe",
+        "filename": "board/drawcia/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 384,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2022-01-07T22:28:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "771f8d65_39892aad",
+      "range": {
+        "startLine": 384,
+        "startChar": 12,
+        "endLine": 384,
+        "endChar": 33
+      },
+      "revId": "40e2f3eab18f3363a98e0a075bffde08aef861c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ea677f28_5e27edf7",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-01-06T23:46:22Z",
       "side": 1,
       "message": "Nit change name to \"drawcia_set_usb_pd_port_count\".  This name is easy to confuse with the public API name.",
+      "range": {
+        "startLine": 369,
+        "startChar": 12,
+        "endLine": 369,
+        "endChar": 33
+      },
+      "revId": "40e2f3eab18f3363a98e0a075bffde08aef861c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e2ea785_f7670897",
+        "filename": "board/drawcia_riscv/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2022-01-07T22:28:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ea677f28_5e27edf7",
       "range": {
         "startLine": 369,
         "startChar": 12,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "03717dfd_eb502e2c",
+        "filename": "board/garg/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2022-01-07T22:28:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b1002874_246710aa",
+      "range": {
+        "startLine": 308,
+        "startChar": 12,
+        "endLine": 308,
+        "endChar": 33
+      },
+      "revId": "40e2f3eab18f3363a98e0a075bffde08aef861c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e4cc7b3d_9898d189",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-01-06T23:46:22Z",
       "side": 1,
       "message": "haboki_set_usb_pd_port_count()",
+      "range": {
+        "startLine": 368,
+        "startChar": 12,
+        "endLine": 368,
+        "endChar": 33
+      },
+      "revId": "40e2f3eab18f3363a98e0a075bffde08aef861c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c58589bb_773fcbcb",
+        "filename": "board/haboki/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2022-01-07T22:28:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e4cc7b3d_9898d189",
       "range": {
         "startLine": 368,
         "startChar": 12,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d3a0132_1c20c877",
+        "filename": "board/kracko/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 405,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2022-01-07T22:28:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0c966a52_e9bb30ec",
+      "range": {
+        "startLine": 405,
+        "startChar": 12,
+        "endLine": 405,
+        "endChar": 33
+      },
+      "revId": "40e2f3eab18f3363a98e0a075bffde08aef861c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cbf5d331_c3111c60",
@@ -139,6 +259,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c97e5d7_11b5c6cc",
+        "filename": "board/lantis/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 392,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2022-01-07T22:28:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cbf5d331_c3111c60",
+      "range": {
+        "startLine": 392,
+        "startChar": 12,
+        "endLine": 392,
+        "endChar": 32
+      },
+      "revId": "40e2f3eab18f3363a98e0a075bffde08aef861c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ced6e796_91b56244",
@@ -152,6 +296,30 @@
       "writtenOn": "2022-01-06T23:46:22Z",
       "side": 1,
       "message": "In the header file, change this to\n\n#ifndef CONFIG_USB_PD_COUNT_RUNTIME\nstatic inline uint8_t usb_pd_get_port_count(void)\n    return CONFIG_USB_PD_PORT_MAX_COUNT;\n#else\nuint8_t usb_pd_get_port_count(void);\n#endif",
+      "range": {
+        "startLine": 377,
+        "startChar": 8,
+        "endLine": 377,
+        "endChar": 29
+      },
+      "revId": "40e2f3eab18f3363a98e0a075bffde08aef861c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b43a6472_95ac5314",
+        "filename": "common/usb_common.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 377,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2022-01-07T22:28:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ced6e796_91b56244",
       "range": {
         "startLine": 377,
         "startChar": 8,
