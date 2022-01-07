@@ -154,7 +154,7 @@ void pd_shared_alert_task(void *p)
 
 	CPRINTS("%s: port mask 0x%02x", __func__, sources_mask);
 
-	for (port = 0; port < CONFIG_USB_PD_PORT_MAX_COUNT; ++port) {
+	for (port = 0; port < usb_pd_get_port_count(); ++port) {
 		if ((sources_mask & BIT(port)) == 0)
 			continue;
 		if (!board_is_usb_pd_port_present(port))
@@ -194,7 +194,7 @@ void pd_shared_alert_task(void *p)
 			have_alerts = tcpc_get_alert_status();
 			have_alerts &= want_alerts;
 
-			for (port = 0; port < CONFIG_USB_PD_PORT_MAX_COUNT;
+			for (port = 0; port < usb_pd_get_port_count();
 			     ++port) {
 				port_mask = PD_STATUS_TCPC_ALERT_0 << port;
 				if ((have_alerts & port_mask) == 0) {
