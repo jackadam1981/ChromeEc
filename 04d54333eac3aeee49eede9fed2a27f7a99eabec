@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "268f263b_fc5fd682",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-01-07T07:28:31Z",
+      "side": 1,
+      "message": "do you also have to support the case where there\nis no battery - i.e. A/C only?\n\nmaybe treat the no-battery or not communicating\ncase same as over-current?",
+      "range": {
+        "startLine": 7,
+        "startChar": 34,
+        "endLine": 7,
+        "endChar": 41
+      },
+      "revId": "04d54333eac3aeee49eede9fed2a27f7a99eabec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "33c5fdf1_bbc8e76c",
+        "filename": "board/redrix/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-01-07T07:28:31Z",
+      "side": 1,
+      "message": "please add a #define for this",
+      "range": {
+        "startLine": 91,
+        "startChar": 27,
+        "endLine": 91,
+        "endChar": 31
+      },
+      "revId": "04d54333eac3aeee49eede9fed2a27f7a99eabec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b08ffb4e_b98536a6",
+        "filename": "board/redrix/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-01-07T07:28:31Z",
+      "side": 1,
+      "message": "please check BATT_FLAG_BAD_CURRENT in .flags before\nusing value.",
+      "revId": "04d54333eac3aeee49eede9fed2a27f7a99eabec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
