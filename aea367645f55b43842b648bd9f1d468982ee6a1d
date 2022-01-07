@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c049491c_0af13a49",
+        "filename": "zephyr/include/emul/tcpc/emul_tcpci_partner_snk.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-01-07T17:07:08Z",
+      "side": 1,
+      "message": "Would it make sense to take a struct tcpci_snk_emul* here, so the function would have access to all 3 of these items? Similar question at other places in this CL?",
+      "range": {
+        "startLine": 77,
+        "startChar": 36,
+        "endLine": 79,
+        "endChar": 49
+      },
+      "revId": "aea367645f55b43842b648bd9f1d468982ee6a1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7bfd251_73555013",
+        "filename": "zephyr/include/emul/tcpc/emul_tcpci_partner_snk.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-01-07T17:07:08Z",
+      "side": 1,
+      "message": "Nit: Reject, and PS_RDY",
+      "range": {
+        "startLine": 84,
+        "startChar": 50,
+        "endLine": 84,
+        "endChar": 67
+      },
+      "revId": "aea367645f55b43842b648bd9f1d468982ee6a1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf70cf51_b4d4e7da",
+        "filename": "zephyr/include/emul/tcpc/emul_tcpci_partner_snk.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-01-07T17:07:08Z",
+      "side": 1,
+      "message": "Does this need to be public, or should it always be called from transmit_op?",
+      "revId": "aea367645f55b43842b648bd9f1d468982ee6a1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
