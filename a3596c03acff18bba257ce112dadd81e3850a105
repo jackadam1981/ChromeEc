@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0030e6f7_4e79d3d3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-01-07T17:34:13Z",
+      "side": 1,
+      "message": "Caveh -\nFor Brya, is there a use case for a shipping device that won\u0027t have contiguous ports?  Or is this something only needed by developers for testing?\n\nIf non-contiguous ports is needed.  It would be better to create an API pair usb_pd_disable_port() and usb_pd_enable_port().  Then usb_common.c could store a static mask of the enabled ports.",
+      "parentUuid": "0009eae6_6d992f99",
+      "revId": "a3596c03acff18bba257ce112dadd81e3850a105",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "af5942c2_633d623b",
         "filename": "include/usb_pd.h",
         "patchSetId": 1
