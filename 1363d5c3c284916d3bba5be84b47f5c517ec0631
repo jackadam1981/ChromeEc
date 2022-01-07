@@ -120,6 +120,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4003528a_4d0287a8",
+        "filename": "util/ectool.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1527153
+      },
+      "writtenOn": "2022-01-07T08:28:52Z",
+      "side": 1,
+      "message": "ACK. Done with the changes as suggested.",
+      "parentUuid": "6cb02ad8_5cc41581",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 0
+      },
+      "revId": "1363d5c3c284916d3bba5be84b47f5c517ec0631",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a503632e_6d738e8f",
