@@ -98,6 +98,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6cb02ad8_5cc41581",
+        "filename": "util/ectool.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-01-07T04:54:39Z",
+      "side": 1,
+      "message": "ec_commands.h already has EC_TEMP_SENSOR_ENTRIES and EC_TEMP_SENSOR_B_ENTRIES. So, I think you just need to add the last one.",
+      "parentUuid": "938e33ae_1d3f2c24",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 0
+      },
+      "revId": "1363d5c3c284916d3bba5be84b47f5c517ec0631",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a503632e_6d738e8f",
         "filename": "util/ectool.c",
         "patchSetId": 6
