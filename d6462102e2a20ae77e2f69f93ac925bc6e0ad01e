@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1709f5d0_d793880a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-01-07T23:47:36Z",
+      "side": 1,
+      "message": "I think something like this is a little clearer (assuming I understand the change correctly):\n\n Before this change, the timestamp (t0) and current time from the RTC (rtc0) were not called close together, so some time could have elapsed between them. This would result in the calculation of rtc_diff be a little smaller than it should be: \n \n  rtc_diff \u003d get_rtc_diff(\u0026rtc0, \u0026rtc1);\n  \n  \nI\u0027m not sure how this affects idle_dsleep_time_us though. Before this change, the calculation would be equivalent to:\n\n idle_dsleep_time_us +\u003d get_rtc_diff(\u0026rtc0, \u0026rtc1);\n \nAnd after this change the calculation is:\n\n idle_dsleep_time_us +\u003d get_rtc_diff(\u0026rtc_sleep, \u0026rtc1);\n \nIt looks like rtc_sleep in the new calculation is the same as the rtc0 in the old calculation since set_rtc_alarm used to use rtc0 and now it uses rtc_sleep. That means the two calculations are equivalent?",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 8
+      },
+      "revId": "d6462102e2a20ae77e2f69f93ac925bc6e0ad01e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
