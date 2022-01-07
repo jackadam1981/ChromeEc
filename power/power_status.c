@@ -384,3 +384,18 @@ static enum ec_status host_command_power_boss_ok(
 }
 DECLARE_HOST_COMMAND(EC_CMD_POWER_BOSS_OK, host_command_power_boss_ok,
 						EC_VER_MASK(0));
+
+/***************************************************************
+ * Host command to retrieve battery info
+ */
+static enum ec_status host_command_battery_info(
+				struct host_cmd_handler_args *args)
+{
+	const struct ec_battery_info_v1 *p = args->params;
+
+	CPRINTF(" battery info get value with v1 uvth:%d\n", p->uvth_value);
+
+	return EC_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_BATTERY_INFO, host_command_battery_info,
+						EC_VER_MASK(1));
