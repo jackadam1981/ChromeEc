@@ -36,5 +36,7 @@ elseif(DEFINED CONFIG_BOARD_KINGLER)
 	zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_USBC
 				     "src/kingler/usbc_config.c")
 	zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_I2C "src/kingler/i2c.c")
+	zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_LED_COMMON
+				     "src/kingler/led.c")
 endif()
 
