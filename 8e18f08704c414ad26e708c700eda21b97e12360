@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09f03f87_91d18b42",
+        "filename": "chip/stm32/clock-stm32f4.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 478,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-01-07T21:46:05Z",
+      "side": 1,
+      "message": "It\u0027s possible that this ASSERT would not fire and we could still be woken up by the watchdog if we\u0027re already part way through the watchdog period, right? In any case, it\u0027s definitely wrong if the delay is more than the watchdog period, so this looks like a good addition.",
+      "range": {
+        "startLine": 478,
+        "startChar": 23,
+        "endLine": 478,
+        "endChar": 55
+      },
+      "revId": "8e18f08704c414ad26e708c700eda21b97e12360",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
