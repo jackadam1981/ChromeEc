@@ -74,6 +74,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0be4402a_e7dd61ce",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-01-07T22:28:26Z",
+      "side": 1,
+      "message": "if we need to move away from overridable functions to support zephyr,\nwe need to identify that and track it as an independent effort. it\nwill have significant tree-wide impact and changes the board support\nprogramming model that developers need to consider.\n\ni think it\u0027s OK to use BUG\u003dnone for trivial, obvious changes.\nwhat we\u0027re talking about here goes far beyond trivial or obvious.",
+      "parentUuid": "178ff469_c5fb1be1",
+      "revId": "a3596c03acff18bba257ce112dadd81e3850a105",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "af5942c2_633d623b",
         "filename": "include/usb_pd.h",
         "patchSetId": 1
