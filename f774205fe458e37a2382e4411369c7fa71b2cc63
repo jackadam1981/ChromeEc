@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc7fed8d_1d63c272",
+        "filename": "zephyr/projects/brya/brya/gpio.dts",
+        "patchSetId": 6
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-01-07T20:36:03Z",
+      "side": 1,
+      "message": "Ideally, this should be part of its own CL, but I defer to the other reviewers here.",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 4
+      },
+      "revId": "f774205fe458e37a2382e4411369c7fa71b2cc63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c9d8f45_c6971c2e",
+        "filename": "zephyr/projects/brya/brya/gpio.dts",
+        "patchSetId": 6
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-01-07T20:36:03Z",
+      "side": 1,
+      "message": "Use GPIO_INPUT_PULL_UP instead.",
+      "range": {
+        "startLine": 144,
+        "startChar": 21,
+        "endLine": 144,
+        "endChar": 48
+      },
+      "revId": "f774205fe458e37a2382e4411369c7fa71b2cc63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "315a6f72_62754d55",
+        "filename": "zephyr/projects/brya/brya/gpio.dts",
+        "patchSetId": 6
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-01-07T20:36:03Z",
+      "side": 1,
+      "message": "See above.",
+      "range": {
+        "startLine": 148,
+        "startChar": 21,
+        "endLine": 148,
+        "endChar": 48
+      },
+      "revId": "f774205fe458e37a2382e4411369c7fa71b2cc63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35eeaea5_b2c63430",
+        "filename": "zephyr/projects/brya/brya/include/gpio_map.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-01-07T20:36:03Z",
+      "side": 1,
+      "message": "Again, in an ideal world I\u0027d prefer this line to be part of a CL adding ec_batt_pres_odl node; but I defer to the other reviewers here.",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 48
+      },
+      "revId": "f774205fe458e37a2382e4411369c7fa71b2cc63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
