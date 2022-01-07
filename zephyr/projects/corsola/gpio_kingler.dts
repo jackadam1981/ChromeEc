@@ -231,6 +231,14 @@
 			gpios = <&gpioe 5 GPIO_INPUT>;
 			enum-name = "GPIO_CCD_MODE_ODL";
 		};
+		ec_led1_odl {
+			gpios = <&gpioc 3 GPIO_ODR_HIGH>;
+			enum-name = "GPIO_EC_BAT_LED_R_C0";
+		};
+		ec_led2_odl {
+			gpios = <&gpioc 2 GPIO_ODR_HIGH>;
+			enum-name = "GPIO_EC_BAT_LED_G_C0";
+		};
 	};
 
 	def-lvol-io-list {
