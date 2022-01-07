@@ -51,6 +51,24 @@
       "message": "Friendly ping.",
       "revId": "f155dbc0162696415698b6943e2c1569ac3e2cd1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b771bbed_d0a3293e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-01-07T07:30:15Z",
+      "side": 1,
+      "message": "please implement boris\u0027s suggestion and add a #define for the \"10\" on lines 172, 185.",
+      "parentUuid": "f760e41f_71db2049",
+      "revId": "f155dbc0162696415698b6943e2c1569ac3e2cd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
