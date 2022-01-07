@@ -26,6 +26,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f4acfe5f_e186fc38",
+        "filename": "zephyr/projects/brya/brya/gpio.dts",
+        "patchSetId": 6
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-01-07T22:01:33Z",
+      "side": 1,
+      "message": "unrelated style changes need done in a separate CL",
+      "revId": "f774205fe458e37a2382e4411369c7fa71b2cc63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9c9d8f45_c6971c2e",
         "filename": "zephyr/projects/brya/brya/gpio.dts",
         "patchSetId": 6
