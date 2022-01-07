@@ -385,7 +385,7 @@ uint8_t usb_pd_get_port_count(void)
 
 __overridable uint8_t board_get_usb_pd_port_count(void)
 {
-	return CONFIG_USB_PD_PORT_MAX_COUNT;
+	return usb_pd_get_port_count();
 }
 
 __overridable bool board_is_usb_pd_port_present(int port)

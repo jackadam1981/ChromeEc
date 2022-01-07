@@ -641,7 +641,7 @@ static void pd_update_pd_comm(void)
 	 * hook to enable PD comm when the battery level is enough.
 	 */
 	if (pd_disabled_on_init && pd_is_battery_capable()) {
-		for (i = 0; i < CONFIG_USB_PD_PORT_MAX_COUNT; i++)
+		for (i = 0; i < usb_pd_get_port_count(); i++)
 			pd_comm_enable(i, 1);
 		pd_disabled_on_init = 0;
 	}
@@ -1551,7 +1551,7 @@ void tc_state_init(int port)
 	if (IS_ENABLED(TEST_BUILD)) {
 		int i;
 
-		for (i = 0; i < CONFIG_USB_PD_PORT_MAX_COUNT; ++i) {
+		for (i = 0; i < usb_pd_get_port_count(); ++i) {
 			memset(&tc[i], 0, sizeof(tc[i]));
 			drp_state[i] = CONFIG_USB_PD_INITIAL_DRP_STATE;
 		}
@@ -1769,7 +1769,7 @@ void tc_event_check(int port, int evt)
 		 */
 		if (evt & PD_EVENT_SYSJUMP) {
 			for (i = 0; i <
-				CONFIG_USB_PD_PORT_MAX_COUNT; i++)
+				usb_pd_get_port_count(); i++)
 				dpm_set_mode_exit_request(i);
 			notify_sysjump_ready();
 		}
@@ -3943,7 +3943,7 @@ static void pd_chipset_resume(void)
 {
 	int i;
 
-	for (i = 0; i < CONFIG_USB_PD_PORT_MAX_COUNT; i++) {
+	for (i = 0; i < usb_pd_get_port_count(); i++) {
 		if(IS_ENABLED(CONFIG_USB_PE_SM))
 			pd_resume_check_pr_swap_needed(i);
 
@@ -3961,7 +3961,7 @@ static void pd_chipset_suspend(void)
 {
 	int i;
 
-	for (i = 0; i < CONFIG_USB_PD_PORT_MAX_COUNT; i++) {
+	for (i = 0; i < usb_pd_get_port_count(); i++) {
 		pd_set_dual_role_and_event(i,
 					   pd_get_drp_state_in_suspend(),
 					   PD_EVENT_UPDATE_DUAL_ROLE
@@ -4009,7 +4009,7 @@ static void pd_chipset_startup(void)
 {
 	int i;
 
-	for (i = 0; i < CONFIG_USB_PD_PORT_MAX_COUNT; i++) {
+	for (i = 0; i < usb_pd_get_port_count(); i++) {
 		TC_SET_FLAG(i, TC_FLAGS_UPDATE_USB_MUX);
 		pd_set_dual_role_and_event(i,
 					   pd_get_drp_state_in_suspend(),
@@ -4033,7 +4033,7 @@ static void pd_chipset_shutdown(void)
 {
 	int i;
 
-	for (i = 0; i < CONFIG_USB_PD_PORT_MAX_COUNT; i++) {
+	for (i = 0; i < usb_pd_get_port_count(); i++) {
 		TC_SET_FLAG(i, TC_FLAGS_UPDATE_USB_MUX);
 		pd_set_dual_role_and_event(i,
 					   PD_DRP_FORCE_SINK,
@@ -4049,7 +4049,7 @@ static void pd_set_power_change(void)
 {
 	int i;
 
-	for (i = 0; i < CONFIG_USB_PD_PORT_MAX_COUNT; i++) {
+	for (i = 0; i < usb_pd_get_port_count(); i++) {
 		task_set_event(PD_PORT_TO_TASK_ID(i),
 			       PD_EVENT_POWER_STATE_CHANGE);
 	}

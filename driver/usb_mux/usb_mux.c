@@ -120,7 +120,7 @@ static int init_mux_mutex(const struct device *dev)
 	int port;
 
 	ARG_UNUSED(dev);
-	for (port = 0; port < CONFIG_USB_PD_PORT_MAX_COUNT; port++) {
+	for (port = 0; port < usb_pd_get_port_count(); port++) {
 		k_mutex_init(&mux_lock[port]);
 
 		if (IS_ENABLED(HAS_TASK_USB_MUX))
@@ -165,7 +165,7 @@ static void init_queue_structs(void)
 {
 	int i;
 
-	for (i = 0; i < CONFIG_USB_PD_PORT_MAX_COUNT; i++) {
+	for (i = 0; i < usb_pd_get_port_count(); i++) {
 		mux_queue[i].state = &queue_states[i];
 		mux_queue[i].policy = &queue_policy_null;
 		mux_queue[i].buffer_units = MUX_QUEUE_DEPTH;
@@ -621,7 +621,7 @@ int usb_mux_retimer_fw_update_port_info(void)
 	int port_info = 0;
 	const struct usb_mux *mux_ptr;
 
-	for (i = 0; i < CONFIG_USB_PD_PORT_MAX_COUNT; i++) {
+	for (i = 0; i < usb_pd_get_port_count(); i++) {
 		mux_ptr = &usb_muxes[i];
 		while (mux_ptr) {
 			if (mux_ptr->driver &&

@@ -229,7 +229,7 @@ static void bc12_chipset_startup(void)
 	 * event. If a legacy charger is connected to the port, then VBUS will
 	 * not drop even during the USB PD hard reset.
 	 */
-	for (port = 0; port < CONFIG_USB_PD_PORT_MAX_COUNT; port++)
+	for (port = 0; port < usb_pd_get_port_count(); port++)
 		task_set_event(USB_CHG_PORT_TO_TASK_ID(port),
 			       USB_CHG_EVENT_VBUS);
 }
