@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7f2934ef_9694df9d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-01-07T00:53:25Z",
+      "side": 1,
+      "message": "i\u0027m concerned that this is a surprisingly large patch stack\naffecting many shipping devices to support a test platform.\n\nit\u0027s hard to gain confidence and validate such changes.\n\nfor supporting a variable number of USB ports, i suggest\nlooking into implementing board_is_usb_pd_port_present for the RVP\nand auditing the common code to make sure any place that iterates over\nCONFIG_USB_PD_PORT_MAX_COUNT checks whether the particular port exists\nand skips over it when appropriate.\n",
+      "revId": "c1348323ff91a51d983a2b9ac430e949b541d866",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "afe35eb5_7f299b59",
         "filename": "common/usb_common.c",
         "patchSetId": 13
