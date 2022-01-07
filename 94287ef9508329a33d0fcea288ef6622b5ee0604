@@ -16,6 +16,23 @@
       "message": "Please rename the board as adlrvpp_npcx9",
       "revId": "94287ef9508329a33d0fcea288ef6622b5ee0604",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c862329a_6dceb98d",
+        "filename": "zephyr/projects/adlprvp/prj.conf",
+        "patchSetId": 2
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2022-01-07T19:21:21Z",
+      "side": 1,
+      "message": "project_name\u003d\"adlprvp\" in BUILD.py\nexcept project name as \"adlrvp\", which configurations are specifically related with ADL or even any Intel RVP, or please add them into.",
+      "revId": "94287ef9508329a33d0fcea288ef6622b5ee0604",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
