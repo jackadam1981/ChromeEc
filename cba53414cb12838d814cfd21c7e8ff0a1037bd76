@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b12e300f_5525e0ba",
+        "filename": "baseboard/intelrvp/adlrvp.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-01-07T08:00:48Z",
+      "side": 1,
+      "message": "so, when the system runs on battery only, it\u0027ll PROCHOT when\nVSYS drops below the battery\u0027s max voltage?",
+      "range": {
+        "startLine": 344,
+        "startChar": 3,
+        "endLine": 345,
+        "endChar": 36
+      },
+      "revId": "cba53414cb12838d814cfd21c7e8ff0a1037bd76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c57ede0d_9fb6b748",
+        "filename": "board/adlrvpp_ite/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-01-07T08:00:48Z",
+      "side": 1,
+      "message": "strange to have to enable the interrupt explicitly.\ni wonder if moving the corresponding GPIO_INT(...) declaration\nin gpio.inc to the top of the file will take care of this.",
+      "range": {
+        "startLine": 144,
+        "startChar": 1,
+        "endLine": 144,
+        "endChar": 51
+      },
+      "revId": "cba53414cb12838d814cfd21c7e8ff0a1037bd76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31e17817_7ef661f4",
+        "filename": "board/adlrvpp_ite/gpio.inc",
+        "patchSetId": 6
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-01-07T08:00:48Z",
+      "side": 1,
+      "message": "correct me if i\u0027m mis-remembering: don\u0027t GPIO_INT declarations\nneed to be at the top of this file to work correctly?",
+      "revId": "cba53414cb12838d814cfd21c7e8ff0a1037bd76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
