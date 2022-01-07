@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b2120f4_faf4fcd6",
+        "filename": "zephyr/projects/corsola/cbi_eeprom_kingler.dts",
+        "patchSetId": 18
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2022-01-07T05:57:50Z",
+      "side": 1,
+      "message": "can we define a more general label name and make this sharable by all corsola devices?\n\nI was thinking something like:\n\n\u0026i2c_cbi {\n  cbi_eeprom: eeprom@50 {\n    ...\n    wp-gpios \u003d \u003c\u0026gpio_wp_cbi\u003e\n  }\n}",
+      "revId": "30868c887d16619704df08b18f58dd0ad4031360",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
