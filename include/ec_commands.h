@@ -4731,6 +4731,18 @@ struct ec_params_dedicated_charger_limit {
 } __ec_align2;
 
 /*****************************************************************************/
+/*
+ * Get battery info.
+ *
+ * Note: v0 of this command is deprecated
+ */
+#define EC_CMD_BATTERY_INFO 0x00A5
+
+struct ec_battery_info_v1 {
+	uint32_t uvth_value;
+} __ec_align1;
+
+/*****************************************************************************/
 /* Hibernate/Deep Sleep Commands */
 
 /* Set the delay before going into hibernation. */
