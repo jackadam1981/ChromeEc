@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0009eae6_6d992f99",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2022-01-07T08:33:15Z",
+      "side": 1,
+      "message": "Hi Caveh,\nCurrently, there doesn\u0027t seem to be any overridable implementation available for this function . Also, based on short\u0027s comment( refer CL:3216894 \u0026 the corresponding cross bug b:194163586 ) , most likely we will have to move away from overridable implementations to support for zephyr. \nAlso, in the case of brya, i didnot see any overridable implementatin of board_get_usb_pd_port_count() as well, which means it always returns default CONFIG_USB_PD_PORT_MAX_COUNT in this function.\nAnyways, as my real intention is cros bug:194163586 and as this CL is not directly related to it, i can abandon this and we can revisit this later as well, when we remove all overridable implementations one by one for  future zephyr migration. Kindly suggest, if i shud abandon this CL or take it up now(as there is no overridable implementation available for this routine currently, i dont really  see  any trouble  for  these boards as of now. May be specifically for brya, we may need to also check if(!specific port \u0026\u0026 !specific_db_present), and then only proceed to check for port validity  ?).  Please suggest.\n\nThanks,",
+      "parentUuid": "e157501b_44862a4e",
+      "revId": "a3596c03acff18bba257ce112dadd81e3850a105",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "af5942c2_633d623b",
         "filename": "include/usb_pd.h",
         "patchSetId": 1
