@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9f44ec6_5a9f74e0",
+        "filename": "board/taeko/sensors.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1461738
+      },
+      "writtenOn": "2022-01-07T01:42:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a1cc6c7d_faaf55ab",
+      "range": {
+        "startLine": 71,
+        "startChar": 24,
+        "endLine": 71,
+        "endChar": 51
+      },
+      "revId": "334799b2833a6d82f192c95b45e214df042e11a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ecda3ff3_03fc2be9",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-01-06T21:25:51Z",
       "side": 1,
       "message": "nit: space after /* and before */",
+      "range": {
+        "startLine": 284,
+        "startChar": 3,
+        "endLine": 284,
+        "endChar": 47
+      },
+      "revId": "334799b2833a6d82f192c95b45e214df042e11a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d84006d0_da3d40a2",
+        "filename": "board/taeko/sensors.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1461738
+      },
+      "writtenOn": "2022-01-07T01:42:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ecda3ff3_03fc2be9",
       "range": {
         "startLine": 284,
         "startChar": 3,
