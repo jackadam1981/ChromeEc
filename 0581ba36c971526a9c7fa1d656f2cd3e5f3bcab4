@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2fc43449_a6f3ac69",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1291180
+      },
+      "writtenOn": "2022-01-07T09:28:54Z",
+      "side": 1,
+      "message": "OK",
+      "parentUuid": "4be191f5_98976970",
+      "revId": "0581ba36c971526a9c7fa1d656f2cd3e5f3bcab4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "308190a5_4fa9b893",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -31,6 +49,30 @@
       "writtenOn": "2022-01-07T09:22:40Z",
       "side": 1,
       "message": "Duplicate",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 44
+      },
+      "revId": "0581ba36c971526a9c7fa1d656f2cd3e5f3bcab4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "777f713e_2ffb0c80",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1291180
+      },
+      "writtenOn": "2022-01-07T09:28:54Z",
+      "side": 1,
+      "message": "I\u0027ll remove it.",
+      "parentUuid": "308190a5_4fa9b893",
       "range": {
         "startLine": 14,
         "startChar": 0,
@@ -58,6 +100,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5eb6c1a9_53210ad7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1291180
+      },
+      "writtenOn": "2022-01-07T09:28:54Z",
+      "side": 1,
+      "message": "Hi Devin, OK, I\u0027ll fix it.\nThanks,\nXin",
+      "revId": "0581ba36c971526a9c7fa1d656f2cd3e5f3bcab4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8239dce5_ed89fe5e",
@@ -71,6 +130,30 @@
       "writtenOn": "2022-01-07T09:22:40Z",
       "side": 1,
       "message": "2022?",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "0581ba36c971526a9c7fa1d656f2cd3e5f3bcab4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e3ddfa3_395fd780",
+        "filename": "driver/tcpm/anx7406.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1291180
+      },
+      "writtenOn": "2022-01-07T09:28:54Z",
+      "side": 1,
+      "message": "OK, I\u0027ll change to 2022.",
+      "parentUuid": "8239dce5_ed89fe5e",
       "range": {
         "startLine": 1,
         "startChar": 13,
