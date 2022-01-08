@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e1f4b31_66259cb5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-01-08T02:12:25Z",
+      "side": 1,
+      "message": "So the is a workaround for a missing define for systems with multiple chargers.\nNo zephyr system has been built with multiple chargers yet, so this wasn\u0027t\nseen before.\n\nThe generic problem is that some common code (common/charger.c) assumed that the board specific\nboard.h would be included to allow board specific defines to be set.\nI am not sure exactly what the policy should be here (presumably the\ncommon code should be fixed, but not sure if that just opens up more problems).\n",
+      "revId": "d616e53b94062eb94784ae3b2d0bfbbf610644b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
