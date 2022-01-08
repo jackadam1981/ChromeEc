@@ -27,10 +27,16 @@ struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 		/* RAA489000 implements TCPCI 2.0 */
 		.flags = TCPC_FLAGS_TCPCI_REV2_0,
 	},
-	/*
-	 * TODO(b:212490923) port 1 is present on sub-boards 1 and 2 with same
-	 * configuration as port 0 but on I2C_PORT_USB_C1_TCPC.
-	 */
+	{ /* sub-board */
+		.bus_type = EC_BUS_TYPE_I2C,
+		.i2c_info = {
+			.port = I2C_PORT_USB_C1_TCPC,
+			.addr_flags = RAA489000_TCPC0_I2C_FLAGS,
+		},
+		.drv = &raa489000_tcpm_drv,
+		/* RAA489000 implements TCPCI 2.0 */
+		.flags = TCPC_FLAGS_TCPCI_REV2_0,
+	},
 };
 
 struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
@@ -39,16 +45,17 @@ struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 		.driver = &virtual_usb_mux_driver,
 		.hpd_update = &virtual_hpd_update,
 	},
-	/*
-	 * TODO(b:212490923) port 1 is present on sub-boards 1 and 2 with same
-	 * configuration.
-	 */
+	{ /* sub-board */
+		.usb_port = 1,
+		.driver = &virtual_usb_mux_driver,
+		.hpd_update = &virtual_hpd_update,
+	},
 };
 
 __override uint8_t board_get_usb_pd_port_count(void)
 {
 	/* TODO(b:212490923) enable port 1 if present (by returning 2). */
-	return 1;
+	return 2;
 }
 
 void board_set_charge_limit(int port, int supplier, int charge_ma,

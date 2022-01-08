@@ -14,12 +14,13 @@ const struct charger_config_t chg_chips[] = {
 		.i2c_addr_flags = ISL923X_ADDR_FLAGS,
 		.drv = &isl923x_drv,
 	},
-	/*
-	 * TODO(b:212490923) port 1 is present on sub-boards 1 and 2 with same
-	 * configuration as port 0 but on I2C_PORT_USB_C1_TCPC.
-	 */
+	/* Sub-board */
+	{
+		.i2c_port = I2C_PORT_USB_C1_TCPC,
+		.i2c_addr_flags = ISL923X_ADDR_FLAGS,
+		.drv = &isl923x_drv,
+	},
 };
-const unsigned int chg_cnt = ARRAY_SIZE(chg_chips);
 
 int extpower_is_present(void)
 {
@@ -34,4 +35,13 @@ int extpower_is_present(void)
 	}
 
 	return 0;
+}
+
+/*
+ * Count of chargers depends on daughter board presence.
+ * TODO(b:212490923): Adjust count when sub-board not present.
+ */
+__override uint8_t board_get_charger_chip_count(void)
+{
+	return ARRAY_SIZE(chg_chips);
 }
