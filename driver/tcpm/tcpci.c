@@ -1629,6 +1629,13 @@ static const struct tcpc_reg_dump_map tcpc_regs[] = {
 		.name = "BCD_DEV",
 		.size = 2,
 	},
+#if 1 /* ps8815 firmware version number */
+	{
+		.addr = 0x82,
+		.name = "FW_REV",
+		.size = 1,
+	},
+#endif
 	{
 		.addr = TCPC_REG_TC_REV,
 		.name = "TC_REV",
