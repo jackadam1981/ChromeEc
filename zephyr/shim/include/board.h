@@ -33,4 +33,17 @@
 #include "motionsense_sensors_defs.h"
 #endif
 
+/*
+ * If there are multiple chargers, the default number of
+ * chargers (CHARGER_NUM) does not get defined, which causes
+ * board_get_charger_chip_count in common/charger.c to fail.
+ * In the legacy system, this is instead defined in the board.h
+ * board specific header.  For zephyr, there is no such board specific
+ * header, so to work around this, if there are multiple chargers, assume
+ * there are 2.
+ */
+#ifdef CONFIG_PLATFORM_EC_CHARGER_MULTIPLE
+#define CHARGER_NUM 2
+#endif
+
 #endif  /* __BOARD_H */
