@@ -186,6 +186,7 @@ struct tcpc_config_t tcpc_config[] = {
 			.addr_flags = DT_REG_ADDR(DT_NODELABEL(tcpci_emul)),
 		},
 		.drv = &tcpci_tcpm_drv,
+		.flags = TCPC_FLAGS_TCPCI_REV2_0,
 	},
 	[USBC_PORT_C1] = {
 		.bus_type = EC_BUS_TYPE_I2C,
