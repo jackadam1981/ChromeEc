@@ -16,6 +16,40 @@
       "message": "So the is a workaround for a missing define for systems with multiple chargers.\nNo zephyr system has been built with multiple chargers yet, so this wasn\u0027t\nseen before.\n\nThe generic problem is that some common code (common/charger.c) assumed that the board specific\nboard.h would be included to allow board specific defines to be set.\nI am not sure exactly what the policy should be here (presumably the\ncommon code should be fixed, but not sure if that just opens up more problems).\n",
       "revId": "d616e53b94062eb94784ae3b2d0bfbbf610644b8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c12b3d81_9db9f6b4",
+        "filename": "zephyr/Kconfig.battery",
+        "patchSetId": 1
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-01-09T23:41:13Z",
+      "side": 1,
+      "message": "Is it possible to make this a dependency, or is that problematic because it creates a circular dependency?",
+      "revId": "d616e53b94062eb94784ae3b2d0bfbbf610644b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6ab4e0e_c4db8ab9",
+        "filename": "zephyr/shim/include/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-01-09T23:41:13Z",
+      "side": 1,
+      "message": "Would it be safer to default this to 1? The Nivviks example that builds on this doesn\u0027t always have two chargers.",
+      "revId": "d616e53b94062eb94784ae3b2d0bfbbf610644b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
