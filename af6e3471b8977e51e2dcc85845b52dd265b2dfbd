@@ -16,6 +16,24 @@
       "message": "woo hoo, great to see this deleted\n\nWe need to clean this up in ebuild first I think: cs/chromeos_public/src/third_party/chromiumos-overlay/eclass/cros-ec-board.eclass?l\u003d77\n\nshould probably say \"host\" instead of \"bds\"",
       "revId": "af6e3471b8977e51e2dcc85845b52dd265b2dfbd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e40681f3_7f0a6f3b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-01-09T22:14:53Z",
+      "side": 1,
+      "message": "I\u0027ll hold my +2 till ebuild is cleaned.",
+      "parentUuid": "49b8d23c_fa5f213b",
+      "revId": "af6e3471b8977e51e2dcc85845b52dd265b2dfbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
