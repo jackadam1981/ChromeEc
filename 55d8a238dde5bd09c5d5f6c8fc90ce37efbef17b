@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca2402c0_2db23602",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-01-10T20:40:28Z",
+      "side": 1,
+      "message": "can we put this 32 bit value on a 4-byte aligned \"address\"?",
+      "range": {
+        "startLine": 161,
+        "startChar": 35,
+        "endLine": 161,
+        "endChar": 71
+      },
+      "revId": "55d8a238dde5bd09c5d5f6c8fc90ce37efbef17b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "540d6038_fb65437d",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-01-10T20:40:28Z",
+      "side": 1,
+      "message": "what sort of precision is desired here?\nwould mW make more sense here?",
+      "range": {
+        "startLine": 161,
+        "startChar": 59,
+        "endLine": 161,
+        "endChar": 60
+      },
+      "revId": "55d8a238dde5bd09c5d5f6c8fc90ce37efbef17b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6463162_5698ef6f",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-01-10T20:40:28Z",
+      "side": 1,
+      "message": "Unused",
+      "range": {
+        "startLine": 164,
+        "startChar": 3,
+        "endLine": 164,
+        "endChar": 10
+      },
+      "revId": "55d8a238dde5bd09c5d5f6c8fc90ce37efbef17b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
