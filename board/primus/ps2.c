@@ -6,9 +6,26 @@
 #include "hooks.h"
 #include "keyboard_8042.h"
 #include "ps2_chip.h"
+#include "console.h"
+#include "i8042_protocol.h"
+
+/* Console output macros */
+#define CPRINTF(format, args...) cprintf(CC_CHARGER, format, ## args)
+#define CPRINTS(format, args...) cprints(CC_CHARGER, format, ## args)
 
 void send_aux_data_to_device(uint8_t data)
 {
+	if (data == I8042_CMD_RESET_DIS) {
+		CPRINTS("[SC] data == I8042_CMD_RESET_DIS");
+		gpio_set_flags(GPIO_EC_PS2_SCL_TPAD, GPIO_ODR_LOW);
+		gpio_set_flags(GPIO_EC_PS2_SDA_TPAD, GPIO_ODR_LOW);
+		gpio_set_alternate_function(GPIO_PORT_6, BIT(2), GPIO_ALT_FUNC_NONE);
+		gpio_set_alternate_function(GPIO_PORT_6, BIT(3), GPIO_ALT_FUNC_NONE);
+	} else if(data == I8042_CMD_GETID) {
+		CPRINTS("[SC] data == I8042_CMD_GETID");
+		gpio_set_alternate_function(GPIO_PORT_6, BIT(2), GPIO_ALT_FUNC_1);
+		gpio_set_alternate_function(GPIO_PORT_6, BIT(3), GPIO_ALT_FUNC_1);
+	}
 	ps2_transmit_byte(NPCX_PS2_CH1, data);
 }
 
