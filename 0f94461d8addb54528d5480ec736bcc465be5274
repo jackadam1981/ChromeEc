@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70336122_48bc568d",
+        "filename": "board/moonbuggy/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-01-10T18:09:34Z",
+      "side": 1,
+      "message": "Please add a comment describing the required behavior:\n\n/*\n * Reverse current protection:\n * When the board asserts +5Vs_V2_ADP_PRESENT_L active low, the EC needs\n * to turn off the jack charger by setting EN_AC_JACK_CHARGER_EC_L high.\n *\n * When the board asserts BJ_ADP_PRESENT_L active low, the EC needs to\n * enable the jack charger by setting EN_AC_JACK_CHARGER_EC_L low.\n */",
+      "range": {
+        "startLine": 109,
+        "startChar": 0,
+        "endLine": 109,
+        "endChar": 3
+      },
+      "revId": "0f94461d8addb54528d5480ec736bcc465be5274",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

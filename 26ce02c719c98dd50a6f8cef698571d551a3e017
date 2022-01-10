@@ -425,6 +425,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a0479157_b36a5ee7",
+        "filename": "board/moonbuggy/gpio.inc",
+        "patchSetId": 4
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-01-10T18:09:34Z",
+      "side": 1,
+      "message": "I don\u0027t understand.  The schematic from 2021-12-21 shows this signal connected to GPIOC7 (pin B9) of the NPXC7.  Your latest patchset still has this configured on GPIO03 (pin D9), which only connects to a test point.\n\nIs there a newer schematic than 2021-12-21?",
+      "parentUuid": "e9fd55ee_e9c798c3",
+      "range": {
+        "startLine": 106,
+        "startChar": 31,
+        "endLine": 106,
+        "endChar": 40
+      },
+      "revId": "26ce02c719c98dd50a6f8cef698571d551a3e017",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f5842edc_3cd8ae84",
