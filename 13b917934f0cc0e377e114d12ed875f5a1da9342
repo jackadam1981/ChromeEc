@@ -61,6 +61,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "84cf2ffe_e5baa653",
+        "filename": "zephyr/projects/brya/brya/kblight_hooks.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-01-10T17:23:02Z",
+      "side": 1,
+      "message": "get_board_id() is fine in this case.  The board ID is determined at runtime (via CBI or GPIO strapping depending on the board), so there isn\u0027t devicetree macro that can be used for this purpose.",
+      "parentUuid": "a578503c_23e73c97",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 25
+      },
+      "revId": "13b917934f0cc0e377e114d12ed875f5a1da9342",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "610521e1_c9aae58e",
         "filename": "zephyr/projects/brya/brya/kblight_hooks.c",
         "patchSetId": 2
