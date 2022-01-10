@@ -11,6 +11,7 @@
 #include <shell/shell.h>
 #include <string.h>
 #include <x86_common_pwrseq.h>
+#include <x86_non_dsx_espi.h>
 #include <zephyr.h>
 #include <zephyr/types.h>
 
