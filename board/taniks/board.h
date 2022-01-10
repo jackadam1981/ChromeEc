@@ -15,6 +15,8 @@
  */
 #define CONFIG_KEYBOARD_VIVALDI
 
+#define CONFIG_KEYBOARD_SCAN_ANTIGHOST_ADC
+
 /* Baseboard features */
 #include "baseboard.h"
 
