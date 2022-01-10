@@ -1,6 +1,46 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "12f46142_851cb545",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-01-10T20:39:01Z",
+      "side": 1,
+      "message": "You also need to update zephyr_new_board_checklist.md to remove the TODO label for ADC and a link to this doc.",
+      "revId": "246bc385c059736b45ddfdf1a0f5d96793352dd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b75d38c_86f0a0d4",
+        "filename": "docs/zephyr/zephyr_adc.md",
+        "patchSetId": 6
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-01-10T20:39:01Z",
+      "side": 1,
+      "message": "Add link to the EC terms definition. ../ec_terms.md#adc",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 3
+      },
+      "revId": "246bc385c059736b45ddfdf1a0f5d96793352dd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d1302570_7c654365",
