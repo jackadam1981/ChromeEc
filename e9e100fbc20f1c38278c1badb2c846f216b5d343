@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "14bec57c_b6591f40",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-01-10T20:53:13Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b886c0ea_d86f64e2",
+      "range": {
+        "startLine": 13,
+        "startChar": 32,
+        "endLine": 13,
+        "endChar": 33
+      },
+      "revId": "e9e100fbc20f1c38278c1badb2c846f216b5d343",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6bbf4506_8ff239d9",
@@ -37,6 +61,24 @@
       "writtenOn": "2022-01-10T20:28:28Z",
       "side": 1,
       "message": "nit: add new line",
+      "revId": "e9e100fbc20f1c38278c1badb2c846f216b5d343",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc69edad_7ffebd11",
+        "filename": "zephyr/projects/brya/brya/gpio.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-01-10T20:53:13Z",
+      "side": 1,
+      "message": "New line is not required.. cleanup is required in this file. There are only few places where newline is being used, rest of the file is not using newline for named gpio\u0027s, initially I cleaned up extra new line in same CL but there was review comments to handle cleanup in different CL. I will create separate CL for cleanup.",
+      "parentUuid": "6bbf4506_8ff239d9",
       "revId": "e9e100fbc20f1c38278c1badb2c846f216b5d343",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
