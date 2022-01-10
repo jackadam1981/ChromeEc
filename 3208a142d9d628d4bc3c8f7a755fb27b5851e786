@@ -22,6 +22,30 @@
       },
       "revId": "3208a142d9d628d4bc3c8f7a755fb27b5851e786",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "617f56eb_68a2a7fe",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 633,
+      "author": {
+        "id": 1354861
+      },
+      "writtenOn": "2022-01-10T02:26:14Z",
+      "side": 1,
+      "message": "Resolved.",
+      "parentUuid": "7fa2f84e_7ccc21b9",
+      "range": {
+        "startLine": 633,
+        "startChar": 0,
+        "endLine": 633,
+        "endChar": 63
+      },
+      "revId": "3208a142d9d628d4bc3c8f7a755fb27b5851e786",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
