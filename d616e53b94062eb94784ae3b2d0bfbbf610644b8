@@ -86,6 +86,24 @@
       "parentUuid": "b6ab4e0e_c4db8ab9",
       "revId": "d616e53b94062eb94784ae3b2d0bfbbf610644b8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e5228be4_15a92149",
+        "filename": "zephyr/shim/include/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-01-10T03:39:27Z",
+      "side": 1,
+      "message": "Perhaps the safest option is to set it to 0 even, to ensure there isn\u0027t any OOB access to the chargers array if somebody forgets to implement an override. But it does seem best to make the common code fail to build if the implementation isn\u0027t provided by the board.",
+      "parentUuid": "481154a8_84e80e18",
+      "revId": "d616e53b94062eb94784ae3b2d0bfbbf610644b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
