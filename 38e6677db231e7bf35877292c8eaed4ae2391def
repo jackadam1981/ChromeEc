@@ -1,0 +1,342 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9204d823_fab4fdfb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 21
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2022-01-10T20:33:57Z",
+      "side": 1,
+      "message": "I\u0027ve made some comments. Overall this is looking good. I\u0027ll cherry-pick this CL into the usbc subsystem CL and test on a real device.",
+      "revId": "38e6677db231e7bf35877292c8eaed4ae2391def",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d37276f9_5d840cce",
+        "filename": "zephyr/subsys/usbc/tc/snk.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2022-01-10T20:33:57Z",
+      "side": 1,
+      "message": "This is not needed. The struct usbc_tc_port_t struct will be added to the main usbc_stack\u0027s device object in usbc_stack.c\n\nstruct usbc_port_data {\n...\n    struct usbc_tc_port_t tc;\n....\n};\n\nSee https://chromium-review.googlesource.com/c/chromiumos/third_party/zephyr/+/3374914/2/subsys/usbc/usbc_stack.c#29",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 62
+      },
+      "revId": "38e6677db231e7bf35877292c8eaed4ae2391def",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d381f09_a0c08b0f",
+        "filename": "zephyr/subsys/usbc/tc/snk.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2022-01-10T20:33:57Z",
+      "side": 1,
+      "message": "I\u0027ll have the usbc_stack.c init function call this. The parameter should be changed to \"const struct usbc_port_config *const config, struct usbc_port_data *const data\"",
+      "revId": "38e6677db231e7bf35877292c8eaed4ae2391def",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9f9547f_0888e1e9",
+        "filename": "zephyr/subsys/usbc/tc/snk.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2022-01-10T20:33:57Z",
+      "side": 1,
+      "message": "I think this can be removed.",
+      "range": {
+        "startLine": 219,
+        "startChar": 1,
+        "endLine": 228,
+        "endChar": 2
+      },
+      "revId": "38e6677db231e7bf35877292c8eaed4ae2391def",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67f204b1_78bf5b6f",
+        "filename": "zephyr/subsys/usbc/tc/snk.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2022-01-10T20:33:57Z",
+      "side": 1,
+      "message": "I\u0027ll add this to the usbc_stack function callbacks",
+      "revId": "38e6677db231e7bf35877292c8eaed4ae2391def",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "053fbfe9_5d4017dd",
+        "filename": "zephyr/subsys/usbc/tc/snk.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2022-01-10T20:33:57Z",
+      "side": 1,
+      "message": "I think this can be removed.",
+      "range": {
+        "startLine": 245,
+        "startChar": 7,
+        "endLine": 248,
+        "endChar": 6
+      },
+      "revId": "38e6677db231e7bf35877292c8eaed4ae2391def",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57865940_f233b071",
+        "filename": "zephyr/subsys/usbc/tc/snk.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2022-01-10T20:33:57Z",
+      "side": 1,
+      "message": "We can remove this. I\u0027ll add a callback to the usbc_stack.",
+      "range": {
+        "startLine": 289,
+        "startChar": 1,
+        "endLine": 292,
+        "endChar": 0
+      },
+      "revId": "38e6677db231e7bf35877292c8eaed4ae2391def",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0a42f7e_e78b5132",
+        "filename": "zephyr/subsys/usbc/tc/snk.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2022-01-10T20:33:57Z",
+      "side": 1,
+      "message": "remove this. I\u0027ll add a callback to the usbc_stack subsystem.",
+      "range": {
+        "startLine": 333,
+        "startChar": 2,
+        "endLine": 341,
+        "endChar": 3
+      },
+      "revId": "38e6677db231e7bf35877292c8eaed4ae2391def",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff921c84_664257bc",
+        "filename": "zephyr/subsys/usbc/tc/snk.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 515,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2022-01-10T20:33:57Z",
+      "side": 1,
+      "message": "remove this. I\u0027ll add a callback",
+      "range": {
+        "startLine": 514,
+        "startChar": 1,
+        "endLine": 515,
+        "endChar": 61
+      },
+      "revId": "38e6677db231e7bf35877292c8eaed4ae2391def",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a0a376b_0d3f916a",
+        "filename": "zephyr/subsys/usbc/tc/snk.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 751,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2022-01-10T20:33:57Z",
+      "side": 1,
+      "message": "Use the TCPC function.\nhttps://chromium-review.googlesource.com/c/chromiumos/third_party/zephyr/+/3340244/11/include/drivers/usbc/usbc_tcpc.h#585",
+      "range": {
+        "startLine": 749,
+        "startChar": 5,
+        "endLine": 751,
+        "endChar": 4
+      },
+      "revId": "38e6677db231e7bf35877292c8eaed4ae2391def",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "51f56e6c_bd15ead8",
+        "filename": "zephyr/subsys/usbc/tc/snk.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 866,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2022-01-10T20:33:57Z",
+      "side": 1,
+      "message": "change to const struct usbc_port_config *const config, struct usbc_port_data *const data",
+      "range": {
+        "startLine": 866,
+        "startChar": 12,
+        "endLine": 866,
+        "endChar": 29
+      },
+      "revId": "38e6677db231e7bf35877292c8eaed4ae2391def",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f1ccf41_f0ca1233",
+        "filename": "zephyr/subsys/usbc/tc/snk.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 868,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2022-01-10T20:33:57Z",
+      "side": 1,
+      "message": "change to data-\u003etc;",
+      "revId": "38e6677db231e7bf35877292c8eaed4ae2391def",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cafe335f_35ac0118",
+        "filename": "zephyr/subsys/usbc/tc/usbc_tc_dt.h",
+        "patchSetId": 21
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2022-01-10T20:33:57Z",
+      "side": 1,
+      "message": "These files shouldn\u0027t access the device tree. The usbc_stack.c will access and populated the structures that are used by TypeC state machine.\n\nThese macros seems useful and will be incorporated into the usbc_stack.c file.",
+      "revId": "38e6677db231e7bf35877292c8eaed4ae2391def",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1bd16aa8_cd669001",
+        "filename": "zephyr/subsys/usbc/tc/usbc_tc_sm.h",
+        "patchSetId": 21
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2022-01-10T20:33:57Z",
+      "side": 1,
+      "message": "not needed. We\u0027ll used the per port threads that are created in usbc_stack.c",
+      "range": {
+        "startLine": 58,
+        "startChar": 1,
+        "endLine": 58,
+        "endChar": 13
+      },
+      "revId": "38e6677db231e7bf35877292c8eaed4ae2391def",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f976b2e3_b17bc54f",
+        "filename": "zephyr/subsys/usbc/tc/usbc_tc_sm.h",
+        "patchSetId": 21
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2022-01-10T20:33:57Z",
+      "side": 1,
+      "message": "Do we need this? Maybe used for debug information.",
+      "range": {
+        "startLine": 64,
+        "startChar": 1,
+        "endLine": 64,
+        "endChar": 10
+      },
+      "revId": "38e6677db231e7bf35877292c8eaed4ae2391def",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09e6ce66_6fdc2baf",
+        "filename": "zephyr/subsys/usbc/tc/usbc_tc_sm.h",
+        "patchSetId": 21
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2022-01-10T20:33:57Z",
+      "side": 1,
+      "message": "I have this defined in the usbc_port_data structure but maybe it\u0027s better to restrict access to it by keeping tcpc_dev here. I\u0027ll remove it from usbc_port_data structure in usbc_stack.c",
+      "range": {
+        "startLine": 67,
+        "startChar": 1,
+        "endLine": 68,
+        "endChar": 31
+      },
+      "revId": "38e6677db231e7bf35877292c8eaed4ae2391def",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

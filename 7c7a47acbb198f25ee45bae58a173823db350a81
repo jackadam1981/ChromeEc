@@ -190,6 +190,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ae5f9f2a_3ff99b43",
+        "filename": "zephyr/subsys/usbc/tc/snk.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2022-01-10T20:33:57Z",
+      "side": 1,
+      "message": "For this init sink, I think we should remove charge manager.",
+      "parentUuid": "773e5312_ca61a5a6",
+      "revId": "7c7a47acbb198f25ee45bae58a173823db350a81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "834fdcf9_0f98fb1d",
         "filename": "zephyr/subsys/usbc/tc/snk.c",
         "patchSetId": 12
