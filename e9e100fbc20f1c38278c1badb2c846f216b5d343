@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b886c0ea_d86f64e2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-01-10T20:28:28Z",
+      "side": 1,
+      "message": "nit: pls try add explicit info\n\u003cGPIO\u003e\nis 0 - when battery connected\nis 1 - when battery not connected",
+      "range": {
+        "startLine": 13,
+        "startChar": 32,
+        "endLine": 13,
+        "endChar": 33
+      },
+      "revId": "e9e100fbc20f1c38278c1badb2c846f216b5d343",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6bbf4506_8ff239d9",
+        "filename": "zephyr/projects/brya/brya/gpio.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-01-10T20:28:28Z",
+      "side": 1,
+      "message": "nit: add new line",
+      "revId": "e9e100fbc20f1c38278c1badb2c846f216b5d343",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
