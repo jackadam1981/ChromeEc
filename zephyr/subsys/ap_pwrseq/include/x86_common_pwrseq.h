@@ -23,6 +23,49 @@ struct gpio_config {
 	const struct device *port;
 };
 
+struct gpio_interrupt_config {
+	/* GPIO net name */
+	const char *net_name;
+	/* GPIO configuration */
+	const struct gpio_config *config;
+	/* GPIO callback */
+	struct gpio_callback intr_cb;
+	/* GPIO interrupt flags */
+	const gpio_flags_t intr_flags;
+	/* Disable at boot up */
+	const bool disable_at_boot;
+};
+
+/* Power signals list */
+enum power_signal {
+	X86_SLP_S0,
+	X86_SLP_S3,
+	X86_SLP_S4,
+	X86_SLP_S5,
+	X86_SLP_SUS,
+	X86_RSMRST_L_PGOOD,
+	X86_DSW_PWROK,
+	X86_ALL_SYS_PGOOD,
+	/* X86 signals count, GPIO and VW */
+	POWER_SIGNAL_COUNT
+};
+
+/* Information of a GPIO power signal */
+struct power_signal_info {
+	const char *net_name;   /* GPIO net name of signal */
+	enum power_signal power_sig;        /* Power signal*/
+	uint32_t flags;		/* See POWER_SIGNAL_* macros */
+	const char *name;
+};
+
+/* Information of a virtual wire power signal */
+struct power_signal_vw_info {
+	enum espi_vwire_signal vw_signal; /* ESPI VW signal */
+	enum power_signal power_sig;      /* Power signal */
+	uint32_t flags;	        /* See POWER_SIGNAL_* macros */
+	const char *name;
+};
+
 /**
  * @brief System power states for Non Deep Sleep Well
  * EC is an always on device in a Non Deep Sx system except when EC
