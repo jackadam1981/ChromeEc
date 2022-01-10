@@ -16,6 +16,9 @@
  */
 #define CONFIG_KEYBOARD_VIVALDI
 #undef CONFIG_VOLUME_BUTTONS
+#define NPCX_SELECT_KSI_TO_GPIO
+#define CONFIG_KEYBOARD_SCAN_ANTIGHOST_ADC
+
 /* Baseboard features */
 #include "baseboard.h"
 
