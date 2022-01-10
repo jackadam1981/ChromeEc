@@ -16,6 +16,46 @@
       "message": "Please take another look - I had to slightly adjust a couple of the project configs because of the config rearrangement.",
       "revId": "346c36c2129e05402da7a063bf591848b1ea50c2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63554d9e_a616ac41",
+        "filename": "zephyr/Kconfig.battery",
+        "patchSetId": 6
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-01-10T21:03:26Z",
+      "side": 1,
+      "message": "It\u0027s better practice to assign a label to choices.\n\nchoice PLATFORM_EC_CHARGER_TYPE\n...\nendchoice\n\n\nThis allows the board overlay to change the default like this:\n\nchoice PLATFORM_EC_CHARGER_TYPE\n    default PLATFORM_EC_OCPC\nendchoice\n\nThe override simply modifies the default parameter, and doesn\u0027t replicate the prompt or help text.",
+      "range": {
+        "startLine": 122,
+        "startChar": 0,
+        "endLine": 122,
+        "endChar": 44
+      },
+      "revId": "346c36c2129e05402da7a063bf591848b1ea50c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e153952e_a13ac9e0",
+        "filename": "zephyr/Kconfig.battery",
+        "patchSetId": 6
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-01-10T21:03:26Z",
+      "side": 1,
+      "message": "Extra line",
+      "revId": "346c36c2129e05402da7a063bf591848b1ea50c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
