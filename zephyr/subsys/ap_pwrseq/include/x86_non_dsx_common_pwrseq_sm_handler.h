@@ -57,6 +57,8 @@ void pwrseq_thread(void *p1, void *p2, void *p3);
 
 extern enum power_states_ndsx chipset_pwr_sm_run(
 				enum power_states_ndsx curr_state);
+extern void chipset_force_shutdown(enum chipset_shutdown_reason reason);
+extern void chipset_reset(enum chipset_shutdown_reason reason);
 extern void init_chipset_pwr_seq_state(void);
 extern void all_sig_pass_thru_handler(void);
 extern void common_rsmrst_pass_thru_handler(void);
