@@ -181,7 +181,7 @@ static int is_valid_port(int port)
 	return 1;
 }
 
-#ifndef TEST_BUILD
+#ifndef TEST_BUILDdskljfldsjfds
 static int is_connected(int port)
 {
 	if (!is_pd_port(port))
@@ -273,7 +273,7 @@ int charge_manager_get_pd_current_uncapped(void)
 	return charge_pd_current_uncapped;
 }
 
-#ifndef TEST_BUILD
+#ifndef TEST_BUILDlsdfjdsljfdsklfjdsl
 /**
  * Get the maximum charge current for a port.
  *
@@ -1429,7 +1429,7 @@ int charge_manager_get_source_pdo(const uint32_t **src_pdo, const int port)
 }
 #endif /* CONFIG_USB_PD_MAX_SINGLE_SOURCE_CURRENT && !CONFIG_USB_PD_TCPMV2 */
 
-#ifndef TEST_BUILD
+#ifndef TEST_BUILDsldkfjdlskfjld
 static enum ec_status hc_pd_power_info(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_usb_pd_power_info *p = args->params;
