@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "76788281_82e1c1f9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-01-10T18:17:21Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b24977f0_a97ef01f",
+      "revId": "13b917934f0cc0e377e114d12ed875f5a1da9342",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a578503c_23e73c97",
@@ -107,6 +125,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7eea10da_3c972aec",
+        "filename": "zephyr/projects/brya/brya/kblight_hooks.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-01-10T18:17:21Z",
+      "side": 1,
+      "message": "keeping get_board_id() function to determine board id",
+      "parentUuid": "84cf2ffe_e5baa653",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 25
+      },
+      "revId": "13b917934f0cc0e377e114d12ed875f5a1da9342",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "610521e1_c9aae58e",
@@ -120,6 +162,30 @@
       "writtenOn": "2022-01-07T19:45:32Z",
       "side": 1,
       "message": "nit: how about keeping it in a separate function and call it from both hook function with true \u0026 false?\nstatic inline void kbd_backlite_enable(bool enable)\n{\n}",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 40
+      },
+      "revId": "13b917934f0cc0e377e114d12ed875f5a1da9342",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e18b263_b7ba56f0",
+        "filename": "zephyr/projects/brya/brya/kblight_hooks.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-01-10T18:17:21Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "610521e1_c9aae58e",
       "range": {
         "startLine": 15,
         "startChar": 0,
