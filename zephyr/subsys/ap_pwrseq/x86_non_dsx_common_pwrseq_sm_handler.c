@@ -206,7 +206,11 @@ static int common_pwr_sm_run(int state)
 			rsmrst_pass_thru_handler();
 			return SYS_POWER_STATE_S5S4;
 		}
-		break;
+		return SYS_POWER_STATE_S5G3;
+
+	case SYS_POWER_STATE_S5G3:
+		chipset_force_shutdown(CHIPSET_SHUTDOWN_G3);
+		return SYS_POWER_STATE_G3;
 
 	case SYS_POWER_STATE_S5S4:
 		/* Check if the PCH has come out of suspend state */
@@ -214,7 +218,8 @@ static int common_pwr_sm_run(int state)
 			LOG_DBG("RSMRST is ok");
 			return SYS_POWER_STATE_S4;
 		}
-		break;
+		LOG_DBG("RSMRST is not ok");
+		return SYS_POWER_STATE_S5;
 
 	case SYS_POWER_STATE_S4:
 		return SYS_POWER_STATE_S3;
@@ -238,7 +243,6 @@ static int common_pwr_sm_run(int state)
 	case SYS_POWER_STATE_S4S5:
 	case SYS_POWER_STATE_S3S4:
 	case SYS_POWER_STATE_S0S3:
-	case SYS_POWER_STATE_S5G3:
 		break;
 
 	default:
@@ -247,6 +251,57 @@ static int common_pwr_sm_run(int state)
 
 	return state;
 }
+/* Console commands */
+
+static int powerinfo_handler(const struct shell *shell, size_t argc,
+							char **argv)
+{
+	int state;
+
+	state = pwr_sm_get_state();
+	shell_fprintf(shell, SHELL_INFO, "Power state = %d (%s)\n",
+					state, pwrsm_dbg[state]);
+	return 0;
+}
+
+SHELL_CMD_REGISTER(powerinfo, NULL, NULL, powerinfo_handler);
+
+static int apshutdown_handler(const struct shell *shell, size_t argc,
+							char **argv)
+{
+	if (pwr_sm_get_state() != SYS_POWER_STATE_G3) {
+		chipset_force_shutdown(CHIPSET_SHUTDOWN_CONSOLE_CMD);
+		LOG_INF("Shutdown activated\n");
+		pwr_sm_set_state(SYS_POWER_STATE_G3);
+	}
+
+	return 0;
+}
+
+SHELL_CMD_REGISTER(apshutdown, NULL, NULL, apshutdown_handler);
+
+static int apreset_handler(const struct shell *shell, size_t argc,
+							char **argv)
+{
+	LOG_DBG("Issuing AP reset\n");
+	chipset_reset(CHIPSET_SHUTDOWN_CONSOLE_CMD);
+
+	return 0;
+}
+
+SHELL_CMD_REGISTER(apreset, NULL, NULL, apreset_handler);
+
+static int powerup_handler(const struct shell *shell, size_t argc,
+							char **argv)
+{
+	LOG_DBG("Powering up AP...\n");
+	pwr_sm_set_state(SYS_POWER_STATE_G3S5);
+	return 0;
+}
+
+SHELL_CMD_REGISTER(powerup, NULL, NULL, powerup_handler);
+
+/* End of console commands */
 
 void pwrseq_loop_thread(void *p1, void *p2, void *p3)
 {
