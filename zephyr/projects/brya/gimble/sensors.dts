@@ -1,0 +1,35 @@
+/* Copyright 2021 The Chromium OS Authors. All rights reserved.
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+/ {
+	named-adc-channels {
+		compatible = "named-adc-channels";
+
+		adc_ddr_soc: ddr_soc {
+			label = "TEMP_SENSOR_1_DDR_SOC";
+			enum-name = "ADC_TEMP_SENSOR_1_DDR_SOC";
+			channel = <0>;
+		};
+		adc_ambient: ambient {
+			label = "TEMP_SENSOR_2_FAN";
+			enum-name = "ADC_TEMP_SENSOR_2_AMBIENT";
+			channel = <1>;
+		};
+		adc_charger: charger {
+			label = "TEMP_SENSOR_3_CHARGER";
+			enum-name = "ADC_TEMP_SENSOR_3_CHARGER";
+			channel = <6>;
+		};
+		adc_iadpt: wwan {
+			label = "CHARGER_IADPT";
+			enum-name = "ADC_IADPT";
+			channel = <3>;
+		};
+	};
+};
+
+&adc0 {
+	status = "okay";
+};

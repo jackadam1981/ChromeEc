@@ -35,6 +35,7 @@ properties:
       - TEMP_SENSOR_2_AMBIENT
       - TEMP_SENSOR_3_CHARGER
       - TEMP_SENSOR_4_WWAN
+      - TEMP_SENSOR_2_FAN
 
     temp_fan_off:
       type: int
