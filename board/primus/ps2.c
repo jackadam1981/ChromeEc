@@ -4,11 +4,31 @@
  */
 
 #include "hooks.h"
+#include "i8042_protocol.h"
 #include "keyboard_8042.h"
 #include "ps2_chip.h"
-
+#include "timer.h"
 void send_aux_data_to_device(uint8_t data)
 {
+	if (data == I8042_CMD_RESET_DIS) {
+		/*
+		 * EC will receive I8042_CMD_RESET_DIS when warm reboot,
+		 * set GPIO62/ GPIO63 back to GPIO and pull low.
+		 */
+		gpio_config_pin(MODULE_PS2, GPIO_EC_PS2_SCL_TPAD, 0);
+		gpio_config_pin(MODULE_PS2, GPIO_EC_PS2_SDA_TPAD, 0);
+		
+		gpio_set_flags(GPIO_EC_PS2_SCL_TPAD, GPIO_ODR_LOW);
+		gpio_set_flags(GPIO_EC_PS2_SDA_TPAD, GPIO_ODR_LOW);
+
+	} else if (data == I8042_CMD_GETID) {
+		/*
+		 * In normal boot, when we get I8042_CMD_GETID command,
+		 * enable the PS2 module.
+		 */
+		gpio_config_pin(MODULE_PS2, GPIO_EC_PS2_SCL_TPAD, 1);
+		gpio_config_pin(MODULE_PS2, GPIO_EC_PS2_SDA_TPAD, 1);
+	}
 	ps2_transmit_byte(NPCX_PS2_CH1, data);
 }
 
