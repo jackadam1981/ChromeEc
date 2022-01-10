@@ -6,6 +6,7 @@
 #include <device.h>
 #include <devicetree/gpio.h>
 #include <drivers/espi.h>
+#include <x86_non_dsx_espi.h>
 #include <x86_non_dsx_common_pwrseq_sm_handler.h>
 #include <zephyr.h>
 #include <string.h>
@@ -306,6 +307,8 @@ static int pwrseq_init()
 	/* Configure gpio from device tree */
 	pwrseq_gpio_init();
 	LOG_DBG("Done gpio init");
+	/* Register espi handler */
+	ndsx_espi_configure();
 	/* TODO: Define initial state of power sequence */
 	LOG_DBG("Init pwr seq state");
 	init_pwr_seq_state();
