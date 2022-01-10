@@ -45,6 +45,23 @@
       },
       "revId": "255f77afc31f97f9d4810f5bb406c1090753507e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2190b763_43a7d490",
+        "filename": "zephyr/shim/include/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-01-10T19:19:16Z",
+      "side": 1,
+      "message": "Can it be defined to something like CONFIG_USB_PD_PORT_MAX_COUNT to avoid an override?",
+      "revId": "255f77afc31f97f9d4810f5bb406c1090753507e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
