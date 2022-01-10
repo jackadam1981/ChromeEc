@@ -63,16 +63,6 @@ void power_signal_interrupt(void)
 	/* TODO: Add handling */
 }
 
-void throttle_ap_prochot_input_interrupt(void)
-{
-	/* TODO: Add handling */
-}
-
-void power_signal_interrupt(void)
-{
-	/* TODO: Add handling */
-}
-
 static int check_power_rails_enabled(void)
 {
 	int out = 1;
@@ -279,6 +269,8 @@ static int pwrseq_init()
 	/* Configure gpio from device tree */
 	pwrseq_gpio_init();
 	LOG_DBG("Done gpio init");
+	/* Register espi handler */
+	ndsx_espi_configure();
 	/* TODO: Define initial state of power sequence */
 	LOG_DBG("Init pwr seq state");
 	init_pwr_seq_state();
