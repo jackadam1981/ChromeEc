@@ -21,8 +21,16 @@ static void espi_vw_handler(struct espi_event *event)
 			vw_get_level(event->evt_details));
 
 	switch (event->evt_details) {
+#ifdef CONFIG_PLATFORM_EC_ESPI_VW_SLP_S3
 	case ESPI_VWIRE_SIGNAL_SLP_S3:
+#endif
+#ifdef CONFIG_PLATFORM_EC_ESPI_VW_SLP_S4
 	case ESPI_VWIRE_SIGNAL_SLP_S4:
+#endif
+#ifdef CONFIG_PLATFORM_EC_ESPI_VW_SLP_S5
+	case ESPI_VWIRE_SIGNAL_SLP_S5:
+#endif
+		power_update_signals();
 		break;
 	default:
 		break;

@@ -6,8 +6,8 @@
 #ifndef __X86_NON_DSX_COMMON_H__
 #define __X86_NON_DSX_COMMON_H__
 
-#include <zephyr/types.h>
 #include <x86_common_pwrseq.h>
+#include <zephyr/types.h>
 
 /* Power sequencing GPIOs */
 
@@ -69,6 +69,42 @@
 #define POWER_SEQ_GPIO_PRESENT(node) \
 	DT_NODE_HAS_STATUS(DT_NODELABEL(node), okay)
 
+/* GPIO interrupt */
+#define POWER_SEQ_INTR_GPIO(node) \
+	.net_name = GPIO_NET_NAME(node), \
+	.intr_flags = GPIO_INT_EDGE_BOTH
+
+#define POWER_SIGNAL_ACTIVE_STATE BIT(0)
+#define POWER_SIGNAL_ACTIVE_LOW   0
+#define POWER_SIGNAL_ACTIVE_HIGH  BIT(0)
+
+/* Convert enum power_signal to a mask for signal functions */
+#define POWER_SIGNAL_MASK(signal) (1 << (signal))
+
+/* Input state flags. */
+#define IN_PCH_SLP_S0_DEASSERTED  POWER_SIGNAL_MASK(X86_SLP_S0_DEASSERTED)
+#define IN_PCH_SLP_S3_DEASSERTED  POWER_SIGNAL_MASK(X86_SLP_S3_DEASSERTED)
+#define IN_PCH_SLP_S4_DEASSERTED  POWER_SIGNAL_MASK(X86_SLP_S4_DEASSERTED)
+#define IN_PCH_SLP_S5_DEASSERTED  POWER_SIGNAL_MASK(X86_SLP_S5_DEASSERTED)
+#define IN_PCH_SLP_SUS_DEASSERTED POWER_SIGNAL_MASK(X86_SLP_SUS_DEASSERTED)
+#define IN_ALL_PM_SLP_DEASSERTED (IN_PCH_SLP_S3 | \
+				  IN_PCH_SLP_S4 | \
+				  IN_PCH_SLP_SUS)
+#define IN_PGOOD_ALL_CORE POWER_SIGNAL_MASK(X86_DSW_PWROK)
+#define IN_ALL_S0 (IN_PGOOD_ALL_CORE | IN_ALL_PM_SLP_DEASSERTED)
+#define CHIPSET_G3S5_POWERUP_SIGNAL IN_PCH_SLP_SUS_DEASSERTED
+
+/* The wait time is ~150 msec, allow for safety margin. */
+#define IN_PCH_SLP_SUS_WAIT_TIME_MS 250
+
+/*
+ * Each board must provide its signal list and a corresponding enum
+ * power_signal.
+ */
+/* TODO: Add runtime flag */
+extern const struct power_signal_gpio_info power_signal_gpio_list[];
+extern const struct power_signal_vw_info power_signal_vw_list[];
+
 /*
  * @brief Create power sequencing thread
  *
@@ -76,9 +112,14 @@
  * TODO: Add details about inputs
  */
 void pwrseq_thread(void *p1, void *p2, void *p3);
+void power_update_signals(void);
 
 extern struct gpio_config power_seq_gpios[];
+extern struct gpio_interrupt_config power_seq_intr_gpios[];
 extern const int power_seq_gpios_count;
+extern const int power_seq_intr_gpios_count;
+extern const int power_signal_gpio_count;
+extern const int power_signal_vw_count;
 extern enum power_states_ndsx chipset_pwr_sm_run(
 				enum power_states_ndsx curr_state);
 extern void chipset_force_shutdown(enum chipset_shutdown_reason reason);
