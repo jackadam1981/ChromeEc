@@ -518,6 +518,30 @@
       },
       "revId": "9485679ea467399b0e83de7500032266f887e621",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa689805_4e31a0a8",
+        "filename": "power/power_status.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1384633
+      },
+      "writtenOn": "2022-01-10T13:44:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f873c971_55b3f7ca",
+      "range": {
+        "startLine": 284,
+        "startChar": 1,
+        "endLine": 284,
+        "endChar": 6
+      },
+      "revId": "9485679ea467399b0e83de7500032266f887e621",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
