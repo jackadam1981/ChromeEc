@@ -46,6 +46,30 @@
       },
       "revId": "6f2817e8a8b42cbbeffa175f3a2f6009d495538e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7ae9c29_3f69d1f2",
+        "filename": "zephyr/projects/brya/brya/kblight_hooks.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-01-10T18:41:03Z",
+      "side": 1,
+      "message": "if compilation warning , pls  typecast to int\nits safe to use bool its 1 or 0",
+      "parentUuid": "6e17680b_e25f8df1",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 37
+      },
+      "revId": "6f2817e8a8b42cbbeffa175f3a2f6009d495538e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
