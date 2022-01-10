@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "dcb5c424_2c435e93",
+        "filename": "common/usbc/usbc_task.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2022-01-10T21:25:01Z",
+      "side": 1,
+      "message": "Each timer uses 64-bits and this was unnecessarily eating up STM32 RAM. So to get the stack to fit, I wrote a simple timer mechanism.",
+      "parentUuid": "8d4782a7_1e717ecc",
+      "revId": "d052d4b0c319bf17800a5b6df344aa9cbc70bc50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "05494520_3c5be1be",
         "filename": "include/config.h",
         "patchSetId": 10
@@ -48,6 +66,30 @@
       "writtenOn": "2022-01-10T21:01:41Z",
       "side": 1,
       "message": "Nit: Does the \"V\" just stand for version? What about just CONFIG_USB_SERVO?",
+      "range": {
+        "startLine": 4326,
+        "startChar": 7,
+        "endLine": 4326,
+        "endChar": 24
+      },
+      "revId": "d052d4b0c319bf17800a5b6df344aa9cbc70bc50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18fb4902_785b599d",
+        "filename": "include/config.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 4326,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2022-01-10T21:25:01Z",
+      "side": 1,
+      "message": "I agree. I\u0027ll change to CONFIG_USB_SERVO",
+      "parentUuid": "05494520_3c5be1be",
       "range": {
         "startLine": 4326,
         "startChar": 7,
