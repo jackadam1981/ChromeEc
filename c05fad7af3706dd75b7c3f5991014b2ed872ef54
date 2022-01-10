@@ -22,6 +22,30 @@
       },
       "revId": "c05fad7af3706dd75b7c3f5991014b2ed872ef54",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c40ffe6d_e6d75882",
+        "filename": "common/i2c_controller.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1852,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-01-10T18:59:19Z",
+      "side": 1,
+      "message": "Yes. The auto-way of cherry-pick doesn\u0027t know the rename. I manually cherry-picked it to the branch and uploaded it as the latest patchset.",
+      "parentUuid": "8b759495_9bfe80fe",
+      "range": {
+        "startLine": 1852,
+        "startChar": 0,
+        "endLine": 1852,
+        "endChar": 76
+      },
+      "revId": "c05fad7af3706dd75b7c3f5991014b2ed872ef54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
