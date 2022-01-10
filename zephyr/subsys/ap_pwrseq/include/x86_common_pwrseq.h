@@ -23,6 +23,49 @@ struct gpio_config {
 	const struct device *port;
 };
 
+struct gpio_interrupt_config {
+	/* GPIO net name */
+	const char *net_name;
+	/* GPIO configuration */
+	const struct gpio_config *config;
+	/* GPIO callback */
+	struct gpio_callback intr_cb;
+	/* GPIO interrupt flags */
+	const gpio_flags_t intr_flags;
+	/* Disable at boot up */
+	const bool disable_at_boot;
+};
+
+/* Power signals list */
+enum power_signal {
+	X86_SLP_S0_DEASSERTED,
+	X86_SLP_S3_DEASSERTED,
+	X86_SLP_S4_DEASSERTED,
+	X86_SLP_S5_DEASSERTED,
+	X86_SLP_SUS_DEASSERTED,
+	X86_RSMRST_L_PGOOD,
+	X86_DSW_PWROK,
+	X86_ALL_SYS_PGOOD,
+	/* X86 signals count, GPIO and VW */
+	POWER_SIGNAL_COUNT
+};
+
+/* Information of a GPIO power signal */
+struct power_signal_gpio_info {
+	const char *net_name;   /* GPIO net name of signal */
+	enum power_signal power_sig;        /* Power signal*/
+	uint32_t flags;		/* See POWER_SIGNAL_* macros */
+	const char *name;
+};
+
+/* Information of a virtual wire power signal */
+struct power_signal_vw_info {
+	enum espi_vwire_signal vw_signal; /* ESPI VW signal */
+	enum power_signal power_sig;      /* Power signal */
+	uint32_t flags;	        /* See POWER_SIGNAL_* macros */
+	const char *name;
+};
+
 /**
  * @brief System power states for Non Deep Sleep Well
  * EC is an always on device in a Non Deep Sx system except when EC
@@ -102,12 +145,29 @@ struct common_pwrseq_config {
 	int pch_pm_pwrbtn_delay_ms;
 	int pch_rsmrst_delay_ms;
 	int vr_en_vccin_delay_ms;
+	/* Default timeout to wait for power signal */
+	int wait_signal_timeout_ms;
 };
 
 /* This encapsulates the attributes of the state machine */
 struct power_seq_context {
 	/* On power-on start boot up sequence */
 	enum power_states_ndsx power_state;
+
+	/*
+	 * Current input power signal states. Each bit represents an input
+	 * power signal that is defined by enum power_signal in same order.
+	 * 1 - signal state is asserted.
+	 * 0 - signal state is de-asserted.
+	 */
+	uint32_t in_signals;
+	/* Input signal state we're waiting for */
+	uint32_t in_want;
+	/* Signal values which print debug output */
+	uint32_t in_debug;
+
+	/* S5 inactive time in seconds before power state change */
+	int s5_timeout_s;
 };
 
 #endif /* __X86_COMMON_H__ */
