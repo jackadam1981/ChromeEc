@@ -240,6 +240,64 @@ void intel_x86_sys_reset_delay(void)
 	k_msleep(chip_cfg.sys_reset_delay_ms);
 }
 
+void chipset_reset(enum chipset_shutdown_reason reason)
+{
+	/*
+	 * Irrespective of cold_reset value, always toggle SYS_RESET_L to
+	 * perform a chipset reset. RCIN# which was used earlier to trigger
+	 * a warm reset is known to not work in certain cases where the CPU
+	 * is in a bad state (crbug.com/721853).
+	 *
+	 * The EC cannot control warm vs cold reset of the chipset using
+	 * SYS_RESET_L; it's more of a request.
+	 */
+	LOG_DBG("%s: %d", __func__, reason);
+
+	/*
+	 * Toggling SYS_RESET_L will not have any impact when it's already
+	 * low (i,e. Chipset is in reset state).
+	 */
+	if (gpio_get_lvl(GPIO_NET_NAME(SYS_RESET_L)) == 0) {
+		LOG_DBG("Chipset is in reset state");
+		return;
+	}
+
+	gpio_set_lvl(GPIO_NET_NAME(SYS_RESET_L), 0);
+	intel_x86_sys_reset_delay();
+	gpio_set_lvl(GPIO_NET_NAME(SYS_RESET_L), 1);
+}
+
+void chipset_force_shutdown(enum chipset_shutdown_reason reason)
+{
+	int timeout_ms = 50;
+
+	/* TODO: below
+	 * report_ap_reset(reason);
+	 */
+
+	/* Turn off RMSRST_L  to meet tPCH12 */
+	gpio_set_lvl(GPIO_NET_NAME(EC_PCH_RSMRST_L), 0);
+
+	/* Turn off S5 rails */
+	gpio_set_lvl(GPIO_NET_NAME(EC_VR_EN_PP5000_A), 0);
+
+	/*
+	 * TODO(b/179519791): Replace this wait with
+	 * power_wait_signals_timeout()
+	 */
+	/* Now wait for DSW_PWROK and  RSMRST_ODL to go away. */
+	while (intel_x86_get_pg_ec_dsw_pwrok() &&
+			gpio_get_lvl(GPIO_NET_NAME(VR_PG_EC_RSMRST_ODL)) &&
+			(timeout_ms > 0)) {
+		k_msleep(1);
+		timeout_ms--;
+	};
+
+	if (!timeout_ms)
+		LOG_DBG("DSW_PWROK or RSMRST_ODL didn't go low!  Assuming G3.");
+}
+
+
 void enable_power_rail(const char *net_name, int enable)
 {
 	gpio_set_lvl(net_name, enable);
