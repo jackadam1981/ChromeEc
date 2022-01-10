@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "872055e1_280e2d0b",
+        "filename": "zephyr/Kconfig.battery",
+        "patchSetId": 1
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-01-10T01:20:54Z",
+      "side": 1,
+      "message": "I originally made it a \u0027SELECT\u0027, which forces it on, unfortunately this only works for bool configs (sets it to \u0027y\u0027).\nAnd yes, if I make it a \u0027depends on\u0027, it fails with a circular dependency.",
+      "parentUuid": "c12b3d81_9db9f6b4",
+      "revId": "d616e53b94062eb94784ae3b2d0bfbbf610644b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b6ab4e0e_c4db8ab9",
@@ -48,6 +66,24 @@
       "writtenOn": "2022-01-09T23:41:13Z",
       "side": 1,
       "message": "Would it be safer to default this to 1? The Nivviks example that builds on this doesn\u0027t always have two chargers.",
+      "revId": "d616e53b94062eb94784ae3b2d0bfbbf610644b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "481154a8_84e80e18",
+        "filename": "zephyr/shim/include/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-01-10T01:20:54Z",
+      "side": 1,
+      "message": "This is a tricky one, because the only time this is required is when there are multiple chargers, but it\u0027s referenced in an overridable function board_get_charger_chip_count, and if the board level function is used, the common function is not used (but this #define still needs to be defined so that the unused function still compiles).\nSo I thought setting it to 2 would be most sensible, but maybe setting it to 1 is the safest approach (and assume it will be overridden).\nIn any case, it would be better to refactor the common code so that it doesn\u0027t even depend on this #define, but that\u0027s a bit outside the scope of this change.",
+      "parentUuid": "b6ab4e0e_c4db8ab9",
       "revId": "d616e53b94062eb94784ae3b2d0bfbbf610644b8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
