@@ -25,6 +25,11 @@
 
 #define SPI(id) (&(spi_devices[id]))
 
+/*
+ * The frame consists of multiple grids. Grids are horizontally adjacent.
+ * That is, the row count is fixed and the col count is multiplied by the number
+ * of grids.
+ */
 #define GRID_ROW	6
 #define GRID_COL	11
 #define GRID_SIZE	(GRID_ROW * GRID_COL)
@@ -179,11 +184,35 @@ static int rgb_get_pd_pu(uint8_t spi, uint8_t *value)
 	return spi_transaction(SPI(spi), buf, sizeof(*msg), value, 1);
 }
 
+static int demo = 1;
+
+static void rgb_demo(int pattern)
+{
+	struct rgb_s color = {};
+	const int step = 32;
+	int i;
+
+	rgb_set_color(0, 0, grid[0], GRID_SIZE);
+	rgb_set_color(1, 0, grid[1], GRID_SIZE);
+	color.r += step;
+	if (color.r == 0) {
+		color.g += step;
+		if (color.g == 0)
+			color.b += step;
+	}
+
+	for (i = 1; i < GRID_SIZE; i++)
+		grid[1][GRID_SIZE - i] = grid[1][GRID_SIZE - i - 1];
+	grid[1][0] = grid[0][GRID_SIZE - 1];
+	for (i = 1; i < GRID_SIZE; i++)
+		grid[0][GRID_SIZE - i] = grid[0][GRID_SIZE - i - 1];
+	grid[0][0] = color;
+}
+
 void rgb_matrix_task(void *u)
 {
 	uint32_t event;
 	uint8_t val;
-	struct rgb_s color = {};
 	int rv;
 
 	gpio_set_level(GPIO_RGB_MATRIX_POWER, 1);
@@ -215,25 +244,118 @@ void rgb_matrix_task(void *u)
 	gpio_set_level(GPIO_RGB_MATRIX_SDB_L, 1);
 
 	while (1) {
-		int i;
-		const int step = 32;
 
 		event = task_wait_event(100 * MSEC);
-		CPRINTS("event=0x%08x", event);
-		rgb_set_color(0, 0, grid[0], GRID_SIZE);
-		rgb_set_color(1, 0, grid[1], GRID_SIZE);
-		color.r += step;
-		if (color.r == 0) {
-			color.g += step;
-			if (color.g == 0)
-				color.b += step;
-		}
-
-		for (i = 1; i < GRID_SIZE; i++)
-			grid[1][GRID_SIZE-i] = grid[1][GRID_SIZE-i-1];
-		grid[1][0] = grid[0][GRID_SIZE-1];
-		for (i = 1; i < GRID_SIZE; i++)
-			grid[0][GRID_SIZE-i] = grid[0][GRID_SIZE-i-1];
-		grid[0][0] = color;
+		if (IS_ENABLED(DEBUG))
+			CPRINTS("event=0x%08x", event);
+		if (demo)
+			rgb_demo(demo);
 	}
 }
+
+static void rgb_set_color_single(struct rgb_s color, int row, int col)
+{
+	int ch = col / GRID_COL; /* COL11 belongs to CH1. */
+	int offset = row + (col - ch * GRID_COL) * GRID_ROW;
+	grid[ch][offset] = color;
+	rgb_set_color(ch, offset, &grid[ch][offset], 1);
+}
+
+static int cc_rgbk(int argc, char **argv)
+{
+	char *end, *comma;
+	struct rgb_s color;
+	int gcc, col, row, val;
+	int i;
+
+	if (5 < argc)
+		return EC_ERROR_PARAM_COUNT;
+
+	if (argc < 2) {
+		ccprintf("Start demo\n");
+		demo = 1;
+		return EC_SUCCESS;
+	}
+
+	comma = strstr(argv[1], ",");
+	if (comma && strlen(comma) > 1) {
+		/* Usage 2 */
+		/* Found ',' and more string after that. Split it into two. */
+		*comma = '\0';
+		col = strtoi(argv[1], &end, 0);
+		if (*end || col >= GRID_COL * 2)
+			return EC_ERROR_PARAM1;
+		row = strtoi(comma + 1, &end, 0);
+		if (*end || row >= GRID_ROW)
+			return EC_ERROR_PARAM1;
+	} else if (!strcasecmp(argv[1], "all")) {
+		/* Usage 3 */
+		col = -1;
+		row = -1;
+	} else {
+		/* Usage 1 */
+		if (argc != 2)
+			return EC_ERROR_PARAM_COUNT;
+		gcc = strtoi(argv[1], &end, 0);
+		if (*end || gcc < 0 || gcc > UINT8_MAX)
+			return EC_ERROR_PARAM1;
+		demo = 0;
+		rgb_set_gcc(0, gcc);
+		rgb_set_gcc(1, gcc);
+		return EC_SUCCESS;
+	}
+
+	if (argc != 5)
+		return EC_ERROR_PARAM_COUNT;
+
+	val = strtoi(argv[2], &end, 0);
+	if (*end || val < 0 || val > UINT8_MAX)
+		return EC_ERROR_PARAM2;
+	color.r = val;
+	val = strtoi(argv[3], &end, 0);
+	if (*end || val < 0 || val > UINT8_MAX)
+		return EC_ERROR_PARAM3;
+	color.g = val;
+	val = strtoi(argv[4], &end, 0);
+	if (*end || val < 0 || val > UINT8_MAX)
+		return EC_ERROR_PARAM4;
+	color.b = val;
+
+	demo = 0;
+	if (row < 0 && col < 0) {
+		/* Usage 3 */
+		for (i = 0; i < GRID_SIZE; i++) {
+			grid[0][i] = color;
+			grid[1][i] = color;
+		}
+		rgb_set_color(0, 0, grid[0], GRID_SIZE);
+		rgb_set_color(1, 0, grid[1], GRID_SIZE);
+	} else if (row < 0) {
+		/* Usage 2: all rows */
+		ccprintf("Set column %d to 0x%02x%02x%02x\n", col,
+			 color.r, color.g, color.b);
+		for (i = 0; i < GRID_ROW; i++)
+			rgb_set_color_single(color, i, col);
+	} else if (col < 0) {
+		/* Usage 2: all cols */
+		ccprintf("Set row %d to 0x%02x%02x%02x\n", row,
+			 color.r, color.g, color.b);
+		for (i = 0; i < GRID_COL * 2; i++)
+			rgb_set_color_single(color, row, i);
+	} else {
+		/* Usage 2 */
+		ccprintf("Set (%d,%d) to 0x%02x%02x%02x\n", col, row,
+			 color.r, color.g, color.b);
+		rgb_set_color_single(color, row, col);
+	}
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(rgbk, cc_rgbk,
+			"\n"
+			"1. rgbk <global-brightness>\n"
+			"2. rgbk <col,row> <r-bright> <g-bright> <b-bright>\n"
+			"3. rgbk all <r-bright> <g-bright> <b-bright>\n"
+			"4. rgbk\n",
+			"Set color of RGB keyboard"
+			);
