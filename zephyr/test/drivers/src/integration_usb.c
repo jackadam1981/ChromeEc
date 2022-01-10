@@ -120,6 +120,14 @@ static void test_attach_pd_charger(void)
 	struct ec_response_typec_status typec_response;
 	struct host_cmd_handler_args typec_args =  BUILD_HOST_COMMAND(
 			EC_CMD_TYPEC_STATUS, 0, typec_response, typec_params);
+#if 0
+	struct ec_params_usb_pd_power_info power_info_params;
+	struct ec_response_usb_pd_power_info power_info_response;
+	struct host_cmd_handler_args power_info_args =  BUILD_HOST_COMMAND(
+			EC_CMD_USB_PD_POWER_INFO, 0, power_info_response,
+			power_info_params);
+	struct usb_chg_measures *meas;
+#endif
 
 	/*
 	 * TODO(b/209907297): Implement the steps of the test beyond USB default
@@ -188,6 +196,22 @@ static void test_attach_pd_charger(void)
 	zassert_equal(typec_response.power_role, PD_ROLE_SINK,
 			"Charger attached, but TCPM power role is %d",
 			typec_response.power_role);
+
+#if 0
+	power_info_params.port = 0;
+	zassert_ok(host_command_process(&power_info_args),
+			"Failed to get PD power info");
+	zassert_equal(power_info_response.role, PD_ROLE_SINK,
+			"Type-C status reports sink, but PD reports role %d",
+			power_info_response.role);
+	zassert_equal(power_info_response.type, USB_CHG_TYPE_PD,
+			"PD charger attached, but reported type %d",
+			power_info_response.type);
+	meas = &power_info_response.meas;
+	zassert_equal(meas->voltage_max, 5000,
+			"Charging at 5V, but PD reports %dmV",
+			meas->voltage_max);
+#endif
 
 	/*
 	 * 3. Wait for SenderResponseTimeout. Expect TCPM to send Request.
