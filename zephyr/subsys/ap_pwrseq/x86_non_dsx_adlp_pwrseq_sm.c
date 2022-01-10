@@ -72,6 +72,97 @@ struct gpio_config power_seq_gpios[] = {
 
 const int power_seq_gpios_count = ARRAY_SIZE(power_seq_gpios);
 
+struct gpio_interrupt_config power_seq_intr_gpios[] = {
+	{
+		POWER_SEQ_INTR_GPIO(PCH_EC_SLP_S0_L),
+		/* Disable interrupt at boot up */
+		.disable_at_boot = true,
+	},
+	{
+		POWER_SEQ_INTR_GPIO(PCH_EC_SLP_SUS_L),
+		.disable_at_boot = false,
+	},
+	{
+		POWER_SEQ_INTR_GPIO(VR_PG_EC_RSMRST_ODL),
+		.disable_at_boot = false,
+	},
+#if POWER_SEQ_GPIO_PRESENT(VR_EC_DSW_PWROK)
+	{
+		POWER_SEQ_INTR_GPIO(VR_EC_DSW_PWROK),
+		.disable_at_boot = false,
+	},
+#endif
+	{
+		POWER_SEQ_INTR_GPIO(PCH_EC_SLP_S3_L),
+		.disable_at_boot = false,
+	},
+	{
+		POWER_SEQ_INTR_GPIO(VR_EC_ALL_SYS_PWRGD),
+		.disable_at_boot = false,
+	},
+};
+
+const int power_seq_intr_gpios_count = ARRAY_SIZE(power_seq_intr_gpios);
+
+/* Power signals list */
+const struct power_signal_gpio_info power_signal_gpio_list[] = {
+	{
+		.net_name = GPIO_NET_NAME(PCH_EC_SLP_S0_L),
+		.power_sig = X86_SLP_S0_DEASSERTED,
+		.flags = POWER_SIGNAL_ACTIVE_HIGH,
+		.name = "SLP_S0_DEASSERTED",
+	},
+	{
+		.net_name = GPIO_NET_NAME(PCH_EC_SLP_SUS_L),
+		.power_sig = X86_SLP_SUS_DEASSERTED,
+		.flags = POWER_SIGNAL_ACTIVE_HIGH,
+		.name = "SLP_SUS_DEASSERTED",
+	},
+	{
+		.net_name = GPIO_NET_NAME(VR_PG_EC_RSMRST_ODL),
+		.power_sig = X86_RSMRST_L_PGOOD,
+		.flags = POWER_SIGNAL_ACTIVE_HIGH,
+		.name = "RSMRST_L_PGOOD",
+	},
+	{
+		.net_name = GPIO_NET_NAME(VR_EC_DSW_PWROK),
+		.power_sig = X86_DSW_PWROK,
+		.flags = POWER_SIGNAL_ACTIVE_HIGH,
+		.name = "DSW_DPWROK",
+	},
+	{
+		.net_name = GPIO_NET_NAME(PCH_EC_SLP_S3_L),
+		.power_sig = X86_SLP_S3_DEASSERTED,
+		.flags = POWER_SIGNAL_ACTIVE_HIGH,
+		.name = "SLP_S3_DEASSERTED",
+	},
+	{
+		.net_name = GPIO_NET_NAME(VR_EC_ALL_SYS_PWRGD),
+		.power_sig = X86_ALL_SYS_PGOOD,
+		.flags = POWER_SIGNAL_ACTIVE_HIGH,
+		.name = "ALL_SYS_PWRGD",
+	},
+};
+
+const int power_signal_gpio_count = ARRAY_SIZE(power_signal_gpio_list);
+
+const struct power_signal_vw_info power_signal_vw_list[] = {
+	{
+		.vw_signal = ESPI_VWIRE_SIGNAL_SLP_S4,
+		.power_sig = X86_SLP_S4_DEASSERTED,
+		.flags = POWER_SIGNAL_ACTIVE_HIGH,
+		.name = "SLP_S4_DEASSERTED",
+	},
+	{
+		.vw_signal = ESPI_VWIRE_SIGNAL_SLP_S5,
+		.power_sig = X86_SLP_S5_DEASSERTED,
+		.flags = POWER_SIGNAL_ACTIVE_HIGH,
+		.name = "SLP_S5_DEASSERTED",
+	},
+};
+
+const int power_signal_vw_count = ARRAY_SIZE(power_signal_vw_list);
+
 void ap_off(void)
 {
 	/* TODO: This could be added as g3action handler */
@@ -93,20 +184,9 @@ int all_sys_pwrgd_handler(void)
 {
 	int sys_pg;
 	int vccst_pg;
-	int retry = 0;
 
 	/* TODO: Add condition for no power sequencer */
 	sys_pg = intel_x86_get_pg_ec_all_sys_pwrgd();
-
-	/* Todo: Remove workaround for the retry
-	 * without this change the system hits G3 as it detects
-	 * ALL_SYS_PWRGD as 0 and then 1 as a glitch
-	 */
-	while (sys_pg != 1 || retry < 2) {
-		sys_pg = intel_x86_get_pg_ec_all_sys_pwrgd();
-		k_msleep(10);
-		retry++;
-	}
 
 	if (sys_pg == 0) {
 		LOG_ERR("PG_EC_ALL_SYS_PWRGD not ok\n");
@@ -322,7 +402,7 @@ void init_chipset_pwr_seq_state(void)
 
 enum power_states_ndsx chipset_pwr_sm_run(enum power_states_ndsx curr_state)
 {
-/* Add chipset specific state handling if any */
+	/* Add chipset specific state handling if any */
 	switch (curr_state) {
 	case SYS_POWER_STATE_G3S5:
 		g3s5_action_handler();
