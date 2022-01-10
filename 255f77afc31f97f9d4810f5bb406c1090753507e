@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "473a6f1c_62888c49",
+        "filename": "zephyr/Kconfig.battery",
+        "patchSetId": 3
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-01-10T17:47:45Z",
+      "side": 1,
+      "message": "I suggest creating choice selection to select between OCPC and single charger chip.\n\nchoice PLATFORM_EC_CHARGER_TYPE\n\nconfig PLATFORM_EC_CHARGER_SINGLE_CHIP\n    bool \"The board has only one charger chip\"\n    \nconfig PLATFORM_EC_OCPC\n    bool \"Board has multiple chargers\"\nendchoice\n\nOur convention has also been to name Kconfigs to match the CONFIG_ name using this replacement pattern.\n\n   s/CONFIG_/CONFIG_PLATFORM_EC_/",
+      "range": {
+        "startLine": 223,
+        "startChar": 7,
+        "endLine": 223,
+        "endChar": 35
+      },
+      "revId": "255f77afc31f97f9d4810f5bb406c1090753507e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "36b0ccdc_ea17a6b2",
+        "filename": "zephyr/Kconfig.battery",
+        "patchSetId": 3
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-01-10T17:47:45Z",
+      "side": 1,
+      "message": "Suggest wrapping this with if PLATFORM_EC_OCPC instead of the depends.  I think this will hide this option from menuconfig if PLATFORM_EC_OCPC is not selected.",
+      "range": {
+        "startLine": 234,
+        "startChar": 7,
+        "endLine": 234,
+        "endChar": 42
+      },
+      "revId": "255f77afc31f97f9d4810f5bb406c1090753507e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
