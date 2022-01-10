@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4d24dff7_37698e8f",
+        "filename": "baseboard/intelrvp/adlrvp.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2022-01-10T13:28:40Z",
+      "side": 1,
+      "message": "yes.\nsame implementation as CL:3099295 followed.",
+      "parentUuid": "b12e300f_5525e0ba",
+      "range": {
+        "startLine": 344,
+        "startChar": 3,
+        "endLine": 345,
+        "endChar": 36
+      },
+      "revId": "cba53414cb12838d814cfd21c7e8ff0a1037bd76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c57ede0d_9fb6b748",
         "filename": "board/adlrvpp_ite/board.c",
         "patchSetId": 6
@@ -37,6 +61,30 @@
       "writtenOn": "2022-01-07T08:00:48Z",
       "side": 1,
       "message": "strange to have to enable the interrupt explicitly.\ni wonder if moving the corresponding GPIO_INT(...) declaration\nin gpio.inc to the top of the file will take care of this.",
+      "range": {
+        "startLine": 144,
+        "startChar": 1,
+        "endLine": 144,
+        "endChar": 51
+      },
+      "revId": "cba53414cb12838d814cfd21c7e8ff0a1037bd76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "041775d1_2d60c261",
+        "filename": "board/adlrvpp_ite/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2022-01-10T13:28:40Z",
+      "side": 1,
+      "message": "I will test this and update. Thanks.",
+      "parentUuid": "c57ede0d_9fb6b748",
       "range": {
         "startLine": 144,
         "startChar": 1,
