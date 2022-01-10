@@ -22,6 +22,30 @@
       },
       "revId": "8e18f08704c414ad26e708c700eda21b97e12360",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4051edd_7a96ddd8",
+        "filename": "chip/stm32/clock-stm32f4.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 478,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2022-01-10T13:22:11Z",
+      "side": 1,
+      "message": "It was meant to catch situations when next_delay is definitely wrong.\n\nI think I can save timestamp of last watchdog reload in watchdog_reload() function and add some function to stm32/watchdog.c which will tell when watchdog is expected to trigger (reload timestamp + CONFIG_WATCHDOG_PERIOD_MS). Actually, in most cases, watchdog will trigger later, because reload value is calculated for fastest LSI clock (56kHz).",
+      "parentUuid": "09f03f87_91d18b42",
+      "range": {
+        "startLine": 478,
+        "startChar": 23,
+        "endLine": 478,
+        "endChar": 55
+      },
+      "revId": "8e18f08704c414ad26e708c700eda21b97e12360",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
