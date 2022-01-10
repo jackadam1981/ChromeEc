@@ -16,6 +16,24 @@
       "message": "nit: Is this not defined by default? I thought it was default-on in config.h",
       "revId": "9cdaa9142e19ebfc732f84d90f7ddbbf6456dfbb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "46b1b0df_1a8f0fcb",
+        "filename": "board/beadrix/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1483835
+      },
+      "writtenOn": "2022-01-10T08:53:53Z",
+      "side": 1,
+      "message": "You\u0027re right! I don\u0027t need to define it in the beadrix board.",
+      "parentUuid": "16826050_e6ca6af0",
+      "revId": "9cdaa9142e19ebfc732f84d90f7ddbbf6456dfbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
