@@ -22,6 +22,30 @@
       },
       "revId": "6f2817e8a8b42cbbeffa175f3a2f6009d495538e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e17680b_e25f8df1",
+        "filename": "zephyr/projects/brya/brya/kblight_hooks.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-01-10T18:32:58Z",
+      "side": 1,
+      "message": "\"enable\" is of type bool which is 1 byte in size and gpio_set_level() is expecting value of type \"int\" though is 0 or 1 but data type is \"int\", I wanted to avoid compilation warning and run time problem due to endianness if machine architecture change. \n\nIs it safe to pass same bool type to gpio_set_level () ?",
+      "parentUuid": "1f233a32_d61dbe4b",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 37
+      },
+      "revId": "6f2817e8a8b42cbbeffa175f3a2f6009d495538e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
