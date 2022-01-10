@@ -82,6 +82,7 @@ static void clear_new_power_requests(void)
 		new_power_request[i] = 0;
 }
 
+#if 1
 static void pd_set_role(int port, int role)
 {
 	power_role[port] = role;
@@ -99,6 +100,7 @@ void pd_request_power_swap(int port)
 	else
 		power_role[port] = PD_ROLE_SINK;
 }
+#endif
 
 static void wait_for_charge_manager_refresh(void)
 {
