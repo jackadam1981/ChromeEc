@@ -129,11 +129,12 @@ ZTEST(integration_usb, test_attach_pd_charger)
 	struct ec_response_typec_status typec_response;
 	struct host_cmd_handler_args typec_args =  BUILD_HOST_COMMAND(
 			EC_CMD_TYPEC_STATUS, 0, typec_response, typec_params);
-
-	/*
-	 * TODO(b/209907297): Implement the steps of the test beyond USB default
-	 * charging.
-	 */
+	struct ec_params_usb_pd_power_info power_info_params;
+	struct ec_response_usb_pd_power_info power_info_response;
+	struct host_cmd_handler_args power_info_args =  BUILD_HOST_COMMAND(
+			EC_CMD_USB_PD_POWER_INFO, 0, power_info_response,
+			power_info_params);
+	struct usb_chg_measures *meas;
 
 	/* Attach emulated charger. Send Source Capabilities that offer 20V. Set
 	 * the charger input voltage to ~18V (the highest voltage it supports).
@@ -146,7 +147,12 @@ ZTEST(integration_usb, test_attach_pd_charger)
 						   &my_charger.common_data,
 						   &my_charger.ops, tcpci_emul),
 		   NULL);
-	isl923x_emul_set_adc_vbus(charger_emul, 0x3f);
+	/* This corresponds to 20.352V according to the scheme used by
+	 * isl923x_get_vbus_voltage, which is slightly different than that
+	 * described in the ISL9238 datasheet.
+	 * TODO(b/216497851): Specify this in natural units.
+	 */
+	isl923x_emul_set_adc_vbus(charger_emul, 0x3500);
 
 	/* Wait for PD negotiation and current ramp.
 	 * TODO(b/213906889): Check message timing and contents.
@@ -167,10 +173,7 @@ ZTEST(integration_usb, test_attach_pd_charger)
 	 * the PD charging and current, but they should be positive if the
 	 * battery is charging.
 	 */
-	/*
-	 * TODO(b/213908743): Also check the corresponding PD state and
-	 * encapsulate this for use in other tests.
-	 */
+	/* TODO(b/213908743): Encapsulate this for use in other tests. */
 	charge_params.chgnum = 0;
 	charge_params.cmd = CHARGE_STATE_CMD_GET_STATE;
 	zassert_ok(host_command_process(&args), "Failed to get charge state");
@@ -198,24 +201,32 @@ ZTEST(integration_usb, test_attach_pd_charger)
 			"Charger attached, but TCPM power role is %d",
 			typec_response.power_role);
 
-	/*
-	 * 3. Wait for SenderResponseTimeout. Expect TCPM to send Request.
-	 * We could verify that the Request references the expected PDO, but
-	 * the voltage/current/PDO checks at the end of the test should all be
-	 * wrong if the requested PDO was wrong here.
-	 */
-
-	/*
-	 * 4. Send Accept and PS_RDY from partner with appropriate delay between
-	 * them. Emulate supplying VBUS at the requested voltage/current before
-	 * PS_RDY.
-	 */
-
-	/*
-	 * 5. Check the charging voltage and current. Cross-check the PD state,
-	 * the battery/charger state, and the active PDO as reported by the PD
-	 * state.
-	 */
+	power_info_params.port = 0;
+	zassert_ok(host_command_process(&power_info_args),
+			"Failed to get PD power info");
+	zassert_equal(power_info_response.role, USB_PD_PORT_POWER_SINK,
+			"Type-C status reports sink, but PD reports role %d",
+			power_info_response.role);
+	zassert_equal(power_info_response.type, USB_CHG_TYPE_PD,
+			"PD charger attached, but reported type %d",
+			power_info_response.type);
+	/* The measurements in this response are denoted in mV, mA, and mW. */
+	meas = &power_info_response.meas;
+	zassert_equal(meas->voltage_max, 20000,
+			"Charging at VBUS max 20V, but PD reports %dmV",
+			meas->voltage_max);
+	zassert_within(meas->voltage_now, 20000, 1000,
+			"Actually charging at VBUS 20V, but PD reports %dmV",
+			meas->voltage_now);
+	zassert_equal(meas->current_max, 3000,
+			"Charging at VBUS max 3A, but PD reports %dmA",
+			meas->current_max);
+	zassert_true(meas->current_lim >= 3000,
+			"Charging at VBUS max 3A, but PD current limit %dmA",
+			meas->current_lim);
+	zassert_equal(power_info_response.max_power, 3000 * 20000,
+			"Charging up to 60W, PD max power %dmW",
+			power_info_response.max_power);
 }
 
 ZTEST(integration_usb, test_attach_sink)
