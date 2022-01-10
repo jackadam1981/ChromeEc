@@ -1,0 +1,95 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f8bbcd5_18709a11",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2022-01-10T14:49:29Z",
+      "side": 1,
+      "message": "Please do more through testing. e.g. verify prochot deasserts when battery charge is sufficient.",
+      "revId": "9f8adfcfe8367ce3ada3b65be7b62858b1114e7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "24e502fb_23857f50",
+        "filename": "board/nipperkin/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 491,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2022-01-10T14:49:29Z",
+      "side": 1,
+      "message": "Please replace numbers with defined constants.",
+      "revId": "9f8adfcfe8367ce3ada3b65be7b62858b1114e7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "943563ee_1ce585e2",
+        "filename": "board/nipperkin/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 498,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2022-01-10T14:49:29Z",
+      "side": 1,
+      "message": "CONFIG_CHARGER_MIN_BAT_PCT_FOR_POWER_ON ?",
+      "range": {
+        "startLine": 498,
+        "startChar": 14,
+        "endLine": 498,
+        "endChar": 15
+      },
+      "revId": "9f8adfcfe8367ce3ada3b65be7b62858b1114e7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bce8cc94_a33e48a1",
+        "filename": "board/nipperkin/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 500,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2022-01-10T14:49:29Z",
+      "side": 1,
+      "message": "Seems ac_limit_backup is being used to determine state. It would be better to create an explicit state machine.",
+      "revId": "9f8adfcfe8367ce3ada3b65be7b62858b1114e7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1a92206_c766d322",
+        "filename": "board/nipperkin/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 506,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2022-01-10T14:49:29Z",
+      "side": 1,
+      "message": "This logic is difficult to read. Please use local variables to simplify.",
+      "revId": "9f8adfcfe8367ce3ada3b65be7b62858b1114e7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
