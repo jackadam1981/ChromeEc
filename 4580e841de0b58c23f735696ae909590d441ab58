@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38a9e133_c348e70c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-01-10T19:38:55Z",
+      "side": 1,
+      "message": "please use separate patches for introducing the new driver and\nupdating a board. add Cq-Depend if needed to make sure the\npatches commit in the correct order.",
+      "revId": "4580e841de0b58c23f735696ae909590d441ab58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
