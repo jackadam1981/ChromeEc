@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c925dbe_a03fbf41",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-01-10T21:01:41Z",
+      "side": 1,
+      "message": "First pass. Haven\u0027t looked at the servov state machine yet.",
+      "revId": "d052d4b0c319bf17800a5b6df344aa9cbc70bc50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d4782a7_1e717ecc",
+        "filename": "common/usbc/usbc_task.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-01-10T21:01:41Z",
+      "side": 1,
+      "message": "Do you elaborate somewhere on why the Servo doesn\u0027t use the timer facilities? Or on how usb_tc_snk_sm.c uses timers in general? The design seems different than how we usually access timers on the EC.",
+      "revId": "d052d4b0c319bf17800a5b6df344aa9cbc70bc50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05494520_3c5be1be",
+        "filename": "include/config.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 4326,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-01-10T21:01:41Z",
+      "side": 1,
+      "message": "Nit: Does the \"V\" just stand for version? What about just CONFIG_USB_SERVO?",
+      "range": {
+        "startLine": 4326,
+        "startChar": 7,
+        "endLine": 4326,
+        "endChar": 24
+      },
+      "revId": "d052d4b0c319bf17800a5b6df344aa9cbc70bc50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
