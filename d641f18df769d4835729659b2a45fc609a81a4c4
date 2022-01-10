@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "da95a508_e474f9c2",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2022-01-10T21:07:09Z",
+      "side": 1,
+      "message": "port \u003e\u003d charge_manager_get_port_count())  is still required to check upper limit.\nAgree with condition - if (port \u003e\u003d board_get_usb_pd_port_count() \u0026\u0026\n        port !\u003d get_dedicated_charge_port())",
+      "parentUuid": "a8dada0a_224d0f7c",
+      "range": {
+        "startLine": 174,
+        "startChar": 0,
+        "endLine": 181,
+        "endChar": 0
+      },
+      "revId": "d641f18df769d4835729659b2a45fc609a81a4c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "848e47b9_ce39e9c7",
         "filename": "common/charge_manager.c",
         "patchSetId": 13
@@ -37,6 +61,30 @@
       "writtenOn": "2021-12-20T21:20:57Z",
       "side": 1,
       "message": "Why not initialize to DEDICATED_CHARGE_PORT?",
+      "range": {
+        "startLine": 1660,
+        "startChar": 0,
+        "endLine": 1660,
+        "endChar": 37
+      },
+      "revId": "d641f18df769d4835729659b2a45fc609a81a4c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa54cb5c_18a303cc",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 1660,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2022-01-10T21:07:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "848e47b9_ce39e9c7",
       "range": {
         "startLine": 1660,
         "startChar": 0,
@@ -60,6 +108,30 @@
       "writtenOn": "2021-12-20T21:20:57Z",
       "side": 1,
       "message": "charge_manager_get_dedicated_charge_port()",
+      "range": {
+        "startLine": 1665,
+        "startChar": 4,
+        "endLine": 1665,
+        "endChar": 29
+      },
+      "revId": "d641f18df769d4835729659b2a45fc609a81a4c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4fd7a6b5_d4ac3b13",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 1665,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2022-01-10T21:07:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a83d50be_c39c67f5",
       "range": {
         "startLine": 1665,
         "startChar": 4,
@@ -95,6 +167,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "03d6f6c3_715bb494",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 1669,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2022-01-10T21:07:09Z",
+      "side": 1,
+      "message": "Currently , other callers seems to be only some board specific files of kukui,brask, puff, dooly, fizz, ambassador,katsu etc which doesnt seem to have run time change in no: of USB PD PORTS. Hence retaining DEDICATED_CHARGE_PORT in them seems fine. Only common code change seems under this file.",
+      "parentUuid": "d84286cf_5150e774",
+      "range": {
+        "startLine": 1669,
+        "startChar": 25,
+        "endLine": 1669,
+        "endChar": 46
+      },
+      "revId": "d641f18df769d4835729659b2a45fc609a81a4c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d3226b68_882ac9bd",
         "filename": "common/charge_manager.c",
         "patchSetId": 13
@@ -118,6 +214,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7c61e080_340b744e",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 1673,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2022-01-10T21:07:09Z",
+      "side": 1,
+      "message": "is_valid_port() already handles the validity of port.\nmay be returning -1 would be the right approach here. Also, for boards where CONFIG_DEDICATED_CHARGE_PORT_COUNT  is not defined, dedicated port cnt we can retain as -1.",
+      "parentUuid": "d3226b68_882ac9bd",
+      "range": {
+        "startLine": 1673,
+        "startChar": 0,
+        "endLine": 1673,
+        "endChar": 10
+      },
+      "revId": "d641f18df769d4835729659b2a45fc609a81a4c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fc46ca3e_7e8cb037",
         "filename": "common/charge_manager.c",
         "patchSetId": 13
@@ -129,6 +249,54 @@
       "writtenOn": "2021-12-20T21:20:57Z",
       "side": 1,
       "message": "charge_manager_set_dedicated_charge_port()",
+      "range": {
+        "startLine": 1680,
+        "startChar": 5,
+        "endLine": 1680,
+        "endChar": 30
+      },
+      "revId": "d641f18df769d4835729659b2a45fc609a81a4c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d33b1484_a8723065",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 1680,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2022-01-10T21:07:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fc46ca3e_7e8cb037",
+      "range": {
+        "startLine": 1680,
+        "startChar": 5,
+        "endLine": 1680,
+        "endChar": 30
+      },
+      "revId": "d641f18df769d4835729659b2a45fc609a81a4c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "236a153b_5f32af9f",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 1680,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2022-01-10T21:07:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fc46ca3e_7e8cb037",
       "range": {
         "startLine": 1680,
         "startChar": 5,
