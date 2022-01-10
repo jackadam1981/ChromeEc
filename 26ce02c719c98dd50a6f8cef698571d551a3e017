@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7798486d_8a688fd8",
+        "filename": "board/moonbuggy/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2022-01-10T07:15:16Z",
+      "side": 1,
+      "message": "pin name to GPIO_ADS_5VS_V2_ADP_PRESENT_L, done",
+      "parentUuid": "30e25468_6bce0b4c",
+      "range": {
+        "startLine": 112,
+        "startChar": 0,
+        "endLine": 112,
+        "endChar": 33
+      },
+      "revId": "26ce02c719c98dd50a6f8cef698571d551a3e017",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0f615abb_3a0ba512",
@@ -108,6 +132,30 @@
       "writtenOn": "2022-01-07T19:13:22Z",
       "side": 1,
       "message": "Based on Reverse Current Protection doc, this function should only set EN_AC_JACK_CHARGER_EC_L low when BJ_ADP_PRESENT_L asserts low.\n\n  int ads_12v_present \u003d !gpio_get_level(GPIO_BJ_ADP_PRESENT_L);\n\n  if (ads_12v_present)\n\tgpio_set_level(GPIO_EC_AC_JACK_CHARGER_EC_L, 0);",
+      "range": {
+        "startLine": 132,
+        "startChar": 0,
+        "endLine": 132,
+        "endChar": 34
+      },
+      "revId": "26ce02c719c98dd50a6f8cef698571d551a3e017",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac716999_4ab87ee4",
+        "filename": "board/moonbuggy/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2022-01-10T07:15:16Z",
+      "side": 1,
+      "message": "update it, done",
+      "parentUuid": "9471004f_253d7b33",
       "range": {
         "startLine": 132,
         "startChar": 0,
