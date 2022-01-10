@@ -212,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "79b90106_d605254f",
+        "filename": "board/moonbuggy/gpio.inc",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2022-01-10T07:09:20Z",
+      "side": 1,
+      "message": "update it.",
+      "parentUuid": "5ffb2b76_deec264d",
+      "range": {
+        "startLine": 48,
+        "startChar": 44,
+        "endLine": 48,
+        "endChar": 57
+      },
+      "revId": "26ce02c719c98dd50a6f8cef698571d551a3e017",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8f7ae96b_f3932b43",
@@ -281,6 +305,78 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "76ab5228_a2ef7ea3",
+        "filename": "board/moonbuggy/gpio.inc",
+        "patchSetId": 4
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2022-01-10T07:09:20Z",
+      "side": 1,
+      "message": "update it , thanks.",
+      "parentUuid": "8f7ae96b_f3932b43",
+      "range": {
+        "startLine": 106,
+        "startChar": 43,
+        "endLine": 106,
+        "endChar": 56
+      },
+      "revId": "26ce02c719c98dd50a6f8cef698571d551a3e017",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9fd55ee_e9c798c3",
+        "filename": "board/moonbuggy/gpio.inc",
+        "patchSetId": 4
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2022-01-10T07:09:20Z",
+      "side": 1,
+      "message": "C7, EE define it is reserved R911*. it should locat C7.",
+      "parentUuid": "2a68bd2d_1691ea84",
+      "range": {
+        "startLine": 106,
+        "startChar": 31,
+        "endLine": 106,
+        "endChar": 40
+      },
+      "revId": "26ce02c719c98dd50a6f8cef698571d551a3e017",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1048f317_e05b08c0",
+        "filename": "board/moonbuggy/gpio.inc",
+        "patchSetId": 4
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2022-01-10T07:09:20Z",
+      "side": 1,
+      "message": "done update.",
+      "parentUuid": "5ace8d34_a588ba56",
+      "range": {
+        "startLine": 106,
+        "startChar": 0,
+        "endLine": 106,
+        "endChar": 8
+      },
+      "revId": "26ce02c719c98dd50a6f8cef698571d551a3e017",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f5842edc_3cd8ae84",
@@ -294,6 +390,30 @@
       "writtenOn": "2022-01-07T17:28:37Z",
       "side": 1,
       "message": "Note - you need to enable an interrupt on this pin if you want this signal to wake the EC from sleep/deep-sleep.",
+      "range": {
+        "startLine": 109,
+        "startChar": 0,
+        "endLine": 109,
+        "endChar": 74
+      },
+      "revId": "26ce02c719c98dd50a6f8cef698571d551a3e017",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "213afb9b_0b95a459",
+        "filename": "board/moonbuggy/gpio.inc",
+        "patchSetId": 4
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2022-01-10T07:09:20Z",
+      "side": 1,
+      "message": "For EE the only reserved setting.",
+      "parentUuid": "f5842edc_3cd8ae84",
       "range": {
         "startLine": 109,
         "startChar": 0,
