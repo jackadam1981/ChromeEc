@@ -78,6 +78,8 @@ GPIO(USB_C1_FRS_EN,                  PIN(9, 4), GPIO_OUT_LOW)
 GPIO(FAN_ID,                         PIN(4, 1), GPIO_INPUT)
 GPIO(USB_C0_OC_ODL,                  PIN(5, 6), GPIO_ODR_HIGH)
 GPIO(USB_C1_OC_ODL,                  PIN(B, 4), GPIO_ODR_HIGH)
+GPIO(EC_PS2_SCL_TPAD,                PIN(6, 2), GPIO_ODR_LOW)
+GPIO(EC_PS2_SDA_TPAD,                PIN(6, 3), GPIO_ODR_LOW)
 
 /* UART alternate functions */
 ALTERNATE(PIN_MASK(6, 0x30), 0, MODULE_UART, 0)              /* GPIO64/CR_SIN1, GPO65/CR_SOUT1/FLPRG1_L */
