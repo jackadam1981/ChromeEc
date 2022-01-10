@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "de297930_a7c08bd1",
+        "filename": "zephyr/projects/brya/brya/gpio.dts",
+        "patchSetId": 6
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-01-10T20:22:29Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "fc7fed8d_1d63c272",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 4
+      },
+      "revId": "f774205fe458e37a2382e4411369c7fa71b2cc63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f4acfe5f_e186fc38",
@@ -41,6 +65,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a955b2cf_34f742a6",
+        "filename": "zephyr/projects/brya/brya/gpio.dts",
+        "patchSetId": 6
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-01-10T20:22:29Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "f4acfe5f_e186fc38",
+      "revId": "f774205fe458e37a2382e4411369c7fa71b2cc63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9c9d8f45_c6971c2e",
@@ -54,6 +96,30 @@
       "writtenOn": "2022-01-07T20:36:03Z",
       "side": 1,
       "message": "Use GPIO_INPUT_PULL_UP instead.",
+      "range": {
+        "startLine": 144,
+        "startChar": 21,
+        "endLine": 144,
+        "endChar": 48
+      },
+      "revId": "f774205fe458e37a2382e4411369c7fa71b2cc63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8e466b0_d59817d2",
+        "filename": "zephyr/projects/brya/brya/gpio.dts",
+        "patchSetId": 6
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-01-10T20:22:29Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9c9d8f45_c6971c2e",
       "range": {
         "startLine": 144,
         "startChar": 21,
@@ -87,6 +153,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fafa624b_23e9b846",
+        "filename": "zephyr/projects/brya/brya/gpio.dts",
+        "patchSetId": 6
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-01-10T20:22:29Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "315a6f72_62754d55",
+      "range": {
+        "startLine": 148,
+        "startChar": 21,
+        "endLine": 148,
+        "endChar": 48
+      },
+      "revId": "f774205fe458e37a2382e4411369c7fa71b2cc63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "35eeaea5_b2c63430",
@@ -100,6 +190,30 @@
       "writtenOn": "2022-01-07T20:36:03Z",
       "side": 1,
       "message": "Again, in an ideal world I\u0027d prefer this line to be part of a CL adding ec_batt_pres_odl node; but I defer to the other reviewers here.",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 48
+      },
+      "revId": "f774205fe458e37a2382e4411369c7fa71b2cc63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "070a3c02_5b08163c",
+        "filename": "zephyr/projects/brya/brya/include/gpio_map.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-01-10T20:22:29Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "35eeaea5_b2c63430",
       "range": {
         "startLine": 41,
         "startChar": 0,
