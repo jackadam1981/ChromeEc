@@ -69,6 +69,34 @@ enum power_states_ndsx {
 	SYS_POWER_STATE_S0S3,
 };
 
+/*
+ * AP hard shutdowns are logged on the same path as resets.
+ */
+enum chipset_shutdown_reason {
+	CHIPSET_SHUTDOWN_BEGIN = BIT(15),
+	CHIPSET_SHUTDOWN_POWERFAIL = CHIPSET_SHUTDOWN_BEGIN,
+	/* Forcing a shutdown as part of EC initialization */
+	CHIPSET_SHUTDOWN_INIT,
+	/* Custom reason on a per-board basis. */
+	CHIPSET_SHUTDOWN_BOARD_CUSTOM,
+	/* This is a reason to inhibit startup, not cause shut down. */
+	CHIPSET_SHUTDOWN_BATTERY_INHIBIT,
+	/* A power_wait_signal is being asserted */
+	CHIPSET_SHUTDOWN_WAIT,
+	/* Critical battery level. */
+	CHIPSET_SHUTDOWN_BATTERY_CRIT,
+	/* Because you told me to. */
+	CHIPSET_SHUTDOWN_CONSOLE_CMD,
+	/* Forcing a shutdown to effect entry to G3. */
+	CHIPSET_SHUTDOWN_G3,
+	/* Force shutdown due to over-temperature. */
+	CHIPSET_SHUTDOWN_THERMAL,
+	/* Force a chipset shutdown from the power button through EC */
+	CHIPSET_SHUTDOWN_BUTTON,
+
+	CHIPSET_SHUTDOWN_COUNT,
+};
+
 /* Common device tree configurable attributes */
 struct common_pwrseq_config {
 	int pch_dsw_pwrok_delay_ms;
