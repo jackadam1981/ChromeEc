@@ -22,6 +22,30 @@
       },
       "revId": "f2a4000c170247a8c9db8446a5c6ab22075e8c4b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b515be63_8c564242",
+        "filename": "board/kano/sensors.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1384576
+      },
+      "writtenOn": "2022-01-11T01:03:55Z",
+      "side": 1,
+      "message": "Yes, I get output from command \u0027temps\u0027 in ec console, \nyou can see the CPU will not shutdown in 55°.\n\n22-01-11 09:02:03.023 \u003e temps\ntemps\n22-01-11 09:02:09.181   DDR and SOC           328 K (\u003d 55 C)\n22-01-11 09:02:09.184   FAN                   332 K (\u003d 59 C)           52%\n22-01-11 09:02:09.191   CHARGER               317 K (\u003d 44 C)\n22-01-11 09:02:09.194 \u003e powerinfo\npowerinfo\n22-01-11 09:02:12.967 power state 4 \u003d S0, in 0x00ff",
+      "parentUuid": "4bbc48ec_84edfc95",
+      "range": {
+        "startLine": 320,
+        "startChar": 27,
+        "endLine": 320,
+        "endChar": 28
+      },
+      "revId": "f2a4000c170247a8c9db8446a5c6ab22075e8c4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
