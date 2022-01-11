@@ -168,6 +168,8 @@ struct power_seq_context {
 
 	/* S5 inactive time in seconds before power state change */
 	int s5_timeout_s;
+	/* Indicate should exit G3 power state or not */
+	int want_g3_exit;
 };
 
 #endif /* __X86_COMMON_H__ */

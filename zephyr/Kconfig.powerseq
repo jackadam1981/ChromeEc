@@ -202,3 +202,14 @@ config PLATFORM_EC_CONSOLE_CMD_S5_TIMEOUT
 	  testing.
 
 endif # PLATFORM_EC_POWERSEQ
+
+menuconfig PLATFORM_EC_ZEPHYR_POWERSEQ
+	bool "Enable zephyr native power sequencing code"
+	depends on AP_X86_INTEL
+	select HAS_TASK_POWERBTN
+	help
+	  Enable zephyr native power sequencing code. This handles
+	  powering the chipset on and off.
+
+	  Enabling this automatically enables HAS_TASK_POWERBTN since this task
+	  is required to handle power button pressed/released by user.
