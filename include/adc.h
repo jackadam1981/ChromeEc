@@ -42,6 +42,8 @@ extern struct adc_t adc_channels[];
  */
 int adc_read_channel(enum adc_channel ch);
 
+void adc_init(void);
+
 /**
  * Enable ADC watchdog. Note that interrupts might come in repeatedly very
  * quickly when ADC output goes out of the accepted range.

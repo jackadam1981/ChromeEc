@@ -39,6 +39,10 @@ enum npcx_adc_conversion_mode {
 /* Global variables */
 static volatile task_id_t task_waiting;
 
+#ifdef CONFIG_KEYBOARD_SCAN_ANTIGHOST_ADC
+static bool adc_done = false;
+#endif
+
 struct mutex adc_lock;
 
 /**
@@ -77,7 +81,12 @@ static int start_single_and_wait(enum npcx_adc_input_channel input_ch
 {
 	int event;
 
+#ifdef CONFIG_KEYBOARD_SCAN_ANTIGHOST_ADC
+	if (task_start_called())
+		task_waiting = task_get_current();
+#else
 	task_waiting = task_get_current();
+#endif
 
 	/* Stop ADC conversion first */
 	SET_BIT(NPCX_ADCCNF, NPCX_ADCCNF_STOP);
@@ -101,13 +110,33 @@ static int start_single_and_wait(enum npcx_adc_input_channel input_ch
 	/* Start conversion */
 	SET_BIT(NPCX_ADCCNF, NPCX_ADCCNF_START);
 
+#ifdef CONFIG_KEYBOARD_SCAN_ANTIGHOST_ADC
+	if (!task_start_called()) {
+
+		/* Wait for the ADC interrupt to set the flag */
+		while (adc_done == false) {
+			CPRINTS("**Waiting for interrupt***");
+		}
+
+		adc_done = false;
+
+		return 1;
+	} else {
+		/* Wait for interrupt */
+		event = task_wait_event_mask(TASK_EVENT_ADC_DONE, timeout);
+
+		task_waiting = TASK_ID_INVALID;
+
+		return (event == TASK_EVENT_ADC_DONE);
+	}
+#else
 	/* Wait for interrupt */
 	event = task_wait_event_mask(TASK_EVENT_ADC_DONE, timeout);
 
 	task_waiting = TASK_ID_INVALID;
 
 	return (event == TASK_EVENT_ADC_DONE);
-
+#endif
 }
 
 static uint16_t repetitive_enabled;
@@ -338,6 +367,12 @@ static void adc_interrupt(void)
 		/* Wake up the task which was waiting for the interrupt */
 		if (task_waiting != TASK_ID_INVALID)
 			task_set_event(task_waiting, TASK_EVENT_ADC_DONE);
+
+#ifdef CONFIG_KEYBOARD_SCAN_ANTIGHOST_ADC
+		if (!task_start_called()) {
+			adc_done = true;
+		}
+#endif
 	}
 
 	for (i = NPCX_THRCTS_THR1_STS; i < NPCX_ADC_THRESH_CNT; i++) {
@@ -362,7 +397,7 @@ DECLARE_IRQ(NPCX_IRQ_ADC, adc_interrupt, 4);
  * @param none
  * @return none
  */
-static void adc_init(void)
+void adc_init(void)
 {
 	/* Configure pins from GPIOs to ADCs */
 	gpio_config_module(MODULE_ADC, 1);
@@ -387,4 +422,6 @@ static void adc_init(void)
 	/* Enable IRQs */
 	task_enable_irq(NPCX_IRQ_ADC);
 }
+#ifndef CONFIG_KEYBOARD_SCAN_ANTIGHOST_ADC
 DECLARE_HOOK(HOOK_INIT, adc_init, HOOK_PRIO_INIT_ADC);
+#endif

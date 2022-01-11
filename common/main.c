@@ -5,6 +5,7 @@
  * Main routine for Chrome EC
  */
 
+#include "adc.h"
 #include "board_config.h"
 #include "button.h"
 #include "chipset.h"
@@ -207,6 +208,9 @@ test_mockable __keep int main(void)
 		}
 	}
 
+#ifdef CONFIG_KEYBOARD_SCAN_ANTIGHOST_ADC
+	adc_init();
+#endif
 
 #ifdef HAS_TASK_KEYSCAN
 	keyboard_scan_init();
