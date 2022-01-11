@@ -70,6 +70,30 @@
       },
       "revId": "f22a9721d8f4188072479dfa84140ea7c522ea0e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "158f3ac4_c3cf0a2f",
+        "filename": "board/quackingstick/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 424,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-01-11T01:05:53Z",
+      "side": 0,
+      "message": "Do all hardware revisions use PS8805?",
+      "parentUuid": "eedee5a0_7c0602ba",
+      "range": {
+        "startLine": 422,
+        "startChar": 0,
+        "endLine": 424,
+        "endChar": 27
+      },
+      "revId": "f22a9721d8f4188072479dfa84140ea7c522ea0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
