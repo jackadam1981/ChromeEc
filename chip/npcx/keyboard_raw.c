@@ -6,12 +6,17 @@
 /* Functions needed by keyboard scanner module for Chrome EC */
 
 #include "common.h"
+#include "console.h"
 #include "keyboard_raw.h"
 #include "keyboard_scan.h"
 #include "clock.h"
 #include "gpio.h"
 #include "registers.h"
 #include "task.h"
+
+/* Console output macros */
+#define CPRINTF(format, args...) cprintf(CC_SYSTEM, format, ## args)
+#define CPRINTS(format, args...) cprints(CC_SYSTEM, format, ## args)
 
 /**
  * Initialize the raw keyboard interface.
@@ -56,6 +61,7 @@ void keyboard_raw_init(void)
 	 * masked off, so this won't trigger interrupts yet.
 	 */
 
+#if !defined(CONFIG_KEYBOARD_SCAN_ANTIGHOST_ADC)
 	/* Clear pending input sources used by scanner */
 	NPCX_WKPCL(MIWU_TABLE_WKKEY, MIWU_GROUP_WKKEY) = 0xFF;
 
@@ -64,6 +70,7 @@ void keyboard_raw_init(void)
 
 	/* Select high to low transition (falling edge) */
 	NPCX_WKEDG(MIWU_TABLE_WKKEY, MIWU_GROUP_WKKEY) =  0xFF;
+#endif
 
 	/* Enable interrupt of WK KBS */
 	keyboard_raw_enable_interrupt(1);
@@ -72,11 +79,26 @@ void keyboard_raw_init(void)
 /**
  * Finish initialization after task scheduling has started.
  */
+#if !defined(CONFIG_KEYBOARD_SCAN_ANTIGHOST_ADC)
 void keyboard_raw_task_start(void)
 {
 	/* Enable MIWU to trigger KBS interrupt */
 	task_enable_irq(NPCX_IRQ_KSI_WKINTC_1);
 }
+#else
+void keyboard_raw_task_start(void)
+{
+	/* Enable interrupts for keyboard matrix inputs */
+	gpio_enable_interrupt(GPIO_KSI_00);
+	gpio_enable_interrupt(GPIO_KSI_01);
+	gpio_enable_interrupt(GPIO_KSI_02);
+	gpio_enable_interrupt(GPIO_KSI_03);
+	gpio_enable_interrupt(GPIO_KSI_04);
+	gpio_enable_interrupt(GPIO_KSI_05);
+	gpio_enable_interrupt(GPIO_KSI_06);
+	gpio_enable_interrupt(GPIO_KSI_07);
+}
+#endif
 
 /**
  * Drive the specified column low.
@@ -128,6 +150,7 @@ test_mockable void keyboard_raw_drive_column(int col)
 	NPCX_KBSOUT1 = ((mask >> 16) & 0x03);
 }
 
+#if !defined(CONFIG_KEYBOARD_SCAN_ANTIGHOST_ADC)
 /**
  * Read raw row state.
  * Bits are 1 if signal is present, 0 if not present.
@@ -161,6 +184,39 @@ static void keyboard_raw_interrupt(void)
 	task_wake(TASK_ID_KEYSCAN);
 }
 DECLARE_IRQ(NPCX_IRQ_KSI_WKINTC_1, keyboard_raw_interrupt, 5);
+
+#else
+void keyboard_raw_enable_interrupt(int enable)
+{
+	if (enable) {
+		gpio_enable_interrupt(GPIO_KSI_00);
+		gpio_enable_interrupt(GPIO_KSI_01);
+		gpio_enable_interrupt(GPIO_KSI_02);
+		gpio_enable_interrupt(GPIO_KSI_03);
+		gpio_enable_interrupt(GPIO_KSI_04);
+		gpio_enable_interrupt(GPIO_KSI_05);
+		gpio_enable_interrupt(GPIO_KSI_06);
+		gpio_enable_interrupt(GPIO_KSI_07);
+	} else {
+		gpio_disable_interrupt(GPIO_KSI_00);
+		gpio_disable_interrupt(GPIO_KSI_01);
+		gpio_disable_interrupt(GPIO_KSI_02);
+		gpio_disable_interrupt(GPIO_KSI_03);
+		gpio_disable_interrupt(GPIO_KSI_04);
+		gpio_disable_interrupt(GPIO_KSI_05);
+		gpio_disable_interrupt(GPIO_KSI_06);
+		gpio_disable_interrupt(GPIO_KSI_07);
+	}
+}
+
+void keyboard_raw_gpio_interrupt(enum gpio_signal signal)
+{
+	CPRINTS("*** Interrupted by key press, waking Keyscan task ***");
+
+	/* Wake the scan task */
+	task_wake(TASK_ID_KEYSCAN);
+}
+#endif
 
 int keyboard_raw_is_input_low(int port, int id)
 {
