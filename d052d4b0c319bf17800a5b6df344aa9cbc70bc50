@@ -71,6 +71,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b0a7c5e_b1ffc3c9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2022-01-11T20:24:29Z",
+      "side": 1,
+      "message": "I generally agree with you but resources on the servoV4.1 and a typical chromebook are vastly different and would require many #ifdefs or IS_ENABLES be added to the TCPMv2 stack and could start looking much like the TCPMv1.\n\nOnce the ServoV4.1 USBC Stack stabilizes, it\u0027s unlikely to need changing because the hardware won\u0027t change. Unlike TCPMv2 for chromebooks that\u0027s getting constant updates because of newer hardware.\n\nAlso, I look at the servoV4.1 as being closer to CTVPD devices than a chromebooks and the CTVPD has its own tc and pe implementations. But we could probably keep PRL common to all implementation.",
+      "parentUuid": "7538915d_6091ca76",
+      "revId": "d052d4b0c319bf17800a5b6df344aa9cbc70bc50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8d4782a7_1e717ecc",
