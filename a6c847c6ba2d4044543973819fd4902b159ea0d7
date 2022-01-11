@@ -16,6 +16,24 @@
       "message": "I was getting I2C errors during the test when it tried to read RX_BUF_FRAME_TYPE using the TCPCI 1.0 method. I avoided them by switching to 2.0. It might be that the emulator has some unexpected 2.0 assumptions re: this register. This seemed like the quickest fix for now and doesn\u0027t seem to break anything else.",
       "revId": "a6c847c6ba2d4044543973819fd4902b159ea0d7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c43aa21_450d3190",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2022-01-11T16:30:33Z",
+      "side": 1,
+      "message": "Did you try setting tcpci_emul_set_rev() to revision 1.0? TCPCI emulator change behavior depending on state of TCPC_REG_PD_INT_REV register.",
+      "parentUuid": "706f0480_933c9cf9",
+      "revId": "a6c847c6ba2d4044543973819fd4902b159ea0d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
