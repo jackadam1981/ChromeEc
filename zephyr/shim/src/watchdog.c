@@ -46,6 +46,7 @@ int watchdog_init(void)
 	 * Set the Warning timer as CONFIG_AUX_TIMER_PERIOD_MS.
 	 * Then the watchdog reset time = CONFIG_WATCHDOG_PERIOD_MS.
 	 */
+	printk("CROS_EC WDT init\n");
 	wdt_config.window.min = 0U;
 	wdt_config.window.max = CONFIG_AUX_TIMER_PERIOD_MS;
 	wdt_config.callback = wdt_warning_handler;
@@ -69,14 +70,50 @@ int watchdog_init(void)
 		return err;
 	}
 
+	wdt_disable(wdt);
+
 	return EC_SUCCESS;
 }
+
+int watchdog_reinit(void)
+{
+	int err;
+	struct wdt_timeout_cfg wdt_config;
+
+	/* Reset SoC when watchdog timer expires. */
+	wdt_config.flags = WDT_FLAG_RESET_SOC;
+
+	/*
+	 * Set the Warning timer as CONFIG_AUX_TIMER_PERIOD_MS.
+	 * Then the watchdog reset time = CONFIG_WATCHDOG_PERIOD_MS.
+	 */
+	printk("CROS_EC WDT reinit\n");
+	wdt_config.window.min = 0U;
+	wdt_config.window.max = CONFIG_AUX_TIMER_PERIOD_MS;
+	wdt_config.callback = wdt_warning_handler;
+
+	err = wdt_install_timeout(wdt, &wdt_config);
+
+	if (err < 0) {
+		printk("Watchdog install error");
+		return err;
+	}
+
+	err = wdt_setup(wdt, 0);
+	if (err < 0) {
+		printk("Watchdog setup error");
+		return err;
+	}
+
+	return EC_SUCCESS;
+}
+
 
 void watchdog_reload(void)
 {
 	if (!device_is_ready(wdt))
 		LOG_ERR("Error: device %s is not ready", wdt->name);
 
-	wdt_feed(wdt, 0);
+	wdt_feed(wdt, 0);//
 }
 DECLARE_HOOK(HOOK_TICK, watchdog_reload, HOOK_PRIO_DEFAULT);
