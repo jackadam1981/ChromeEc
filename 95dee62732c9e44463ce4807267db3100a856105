@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6fbdea2a_d7da61a4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-01-11T00:00:29Z",
+      "side": 1,
+      "message": "Love it.  One documentation fix",
+      "revId": "95dee62732c9e44463ce4807267db3100a856105",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9795b97c_4e265237",
+        "filename": "include/ioexpander.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-01-11T00:00:29Z",
+      "side": 1,
+      "message": "It\u0027s the number of ints in the array rather than bytes, right?",
+      "range": {
+        "startLine": 187,
+        "startChar": 45,
+        "endLine": 187,
+        "endChar": 50
+      },
+      "revId": "95dee62732c9e44463ce4807267db3100a856105",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
