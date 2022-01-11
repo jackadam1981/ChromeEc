@@ -47,6 +47,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e542446_c79671cb",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1384633
+      },
+      "writtenOn": "2022-01-11T16:02:24Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ca2402c0_2db23602",
+      "range": {
+        "startLine": 161,
+        "startChar": 35,
+        "endLine": 161,
+        "endChar": 71
+      },
+      "revId": "55d8a238dde5bd09c5d5f6c8fc90ce37efbef17b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d6463162_5698ef6f",
@@ -70,6 +94,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2cee25dd_74b877fe",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1384633
+      },
+      "writtenOn": "2022-01-11T16:02:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d6463162_5698ef6f",
+      "range": {
+        "startLine": 164,
+        "startChar": 3,
+        "endLine": 164,
+        "endChar": 10
+      },
+      "revId": "55d8a238dde5bd09c5d5f6c8fc90ce37efbef17b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ffb57f72_53893579",
@@ -83,6 +131,30 @@
       "writtenOn": "2022-01-11T00:29:29Z",
       "side": 1,
       "message": "If we\u0027re adding new fields, we need to uprev the struct version.",
+      "range": {
+        "startLine": 4468,
+        "startChar": 29,
+        "endLine": 4468,
+        "endChar": 32
+      },
+      "revId": "55d8a238dde5bd09c5d5f6c8fc90ce37efbef17b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "84814ed8_d1531c7c",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 4468,
+      "author": {
+        "id": 1384633
+      },
+      "writtenOn": "2022-01-11T16:02:24Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ffb57f72_53893579",
       "range": {
         "startLine": 4468,
         "startChar": 29,
