@@ -224,6 +224,7 @@ int adc_read_channel(enum adc_channel ch)
 
 	mutex_unlock(&adc_lock);
 
+	CPRINTF("ADC CH: %d, value %d\n", adc->input_ch, value);
 	return value;
 }
 
