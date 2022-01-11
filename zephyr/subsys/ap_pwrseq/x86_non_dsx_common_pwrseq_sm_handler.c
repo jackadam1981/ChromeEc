@@ -319,6 +319,28 @@ uint32_t pwrseq_get_debug_signals(void)
 	return pwrseq_ctx.in_debug;
 }
 
+void chipset_set_exit_hard_off_flag(int enable)
+{
+	/* TODO: This could be accessed by multiple tasks
+	 * at this point it is power button task
+	 */
+	pwrseq_ctx.want_g3_exit = enable;
+}
+
+void chipset_exit_hard_off(void)
+{
+	/*
+	 * If not in the soft-off state, hard-off state, or headed there,
+	 * nothing to do.
+	 */
+	if (pwrseq_ctx.power_state != SYS_POWER_STATE_G3 &&
+	    pwrseq_ctx.power_state != SYS_POWER_STATE_S5G3 &&
+	    pwrseq_ctx.power_state != SYS_POWER_STATE_S5)
+		return;
+
+	chipset_set_exit_hard_off_flag(1);
+}
+
 void apshutdown(void)
 {
 	if (pwr_sm_get_state() != SYS_POWER_STATE_G3) {
@@ -370,7 +392,11 @@ static int common_pwr_sm_run(int state)
 {
 	switch (state) {
 	case SYS_POWER_STATE_G3:
-		/* Nothing to do */
+		if (pwrseq_ctx.want_g3_exit) {
+			chipset_set_exit_hard_off_flag(0);
+			return SYS_POWER_STATE_G3S5;
+		}
+
 		break;
 
 	case SYS_POWER_STATE_G3S5:
@@ -580,6 +606,7 @@ static inline void create_pwrseq_thread(void)
 void init_pwr_seq_state(void)
 {
 	init_chipset_pwr_seq_state();
+	chipset_set_exit_hard_off_flag(0);
 
 	pwr_sm_set_state(SYS_POWER_STATE_G3S5);
 }
