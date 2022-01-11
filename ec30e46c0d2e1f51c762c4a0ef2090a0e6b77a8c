@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c17b3b6d_f12e6747",
+        "filename": "zephyr/projects/brya/brya/kblight_hooks.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-01-11T02:26:19Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "f8dc3061_c4d1c47b",
+      "range": {
+        "startLine": 10,
+        "startChar": 41,
+        "endLine": 10,
+        "endChar": 43
+      },
+      "revId": "ec30e46c0d2e1f51c762c4a0ef2090a0e6b77a8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f8485734_5e539e8a",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-01-11T02:20:07Z",
       "side": 1,
       "message": "backlight",
+      "range": {
+        "startLine": 11,
+        "startChar": 27,
+        "endLine": 11,
+        "endChar": 31
+      },
+      "revId": "ec30e46c0d2e1f51c762c4a0ef2090a0e6b77a8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ddbbc1d8_8dcf9f76",
+        "filename": "zephyr/projects/brya/brya/kblight_hooks.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-01-11T02:26:19Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "f8485734_5e539e8a",
       "range": {
         "startLine": 11,
         "startChar": 27,
