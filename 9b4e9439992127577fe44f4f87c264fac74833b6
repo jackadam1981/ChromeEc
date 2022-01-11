@@ -22,6 +22,30 @@
       },
       "revId": "9b4e9439992127577fe44f4f87c264fac74833b6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "04349d1e_64e6b9b0",
+        "filename": "zephyr/projects/brya/brya/kblight_hooks.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-01-11T03:45:17Z",
+      "side": 1,
+      "message": "Ack.\n\nI didn\u0027t see any compilation error without including stdbool.h. It might be getting resolved from somewhere from already included headers.\n\nIts better to add this explicitly in the source file.",
+      "parentUuid": "2399a97c_bfc9fe1b",
+      "range": {
+        "startLine": 11,
+        "startChar": 40,
+        "endLine": 11,
+        "endChar": 44
+      },
+      "revId": "9b4e9439992127577fe44f4f87c264fac74833b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
