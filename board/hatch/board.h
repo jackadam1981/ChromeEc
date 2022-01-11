@@ -33,7 +33,7 @@
 #define CONFIG_FANS 1
 #undef CONFIG_FAN_INIT_SPEED
 #define CONFIG_FAN_INIT_SPEED 50
-#define CONFIG_TEMP_SENSOR_POWER_GPIO GPIO_EN_A_RAILS
+#define CONFIG_TEMP_SENSOR_POWER
 #define CONFIG_THERMISTOR
 #define CONFIG_THROTTLE_AP
 #define CONFIG_STEINHART_HART_3V3_51K1_47K_4050B
@@ -52,6 +52,7 @@
  * then redefined here to so it's more clear which signal is being used for
  * which purpose.
  */
+<<<<<<< HEAD   (8c53b8 battery: Set EC_BATT_FLAG_INVALID_DATA correctly)
 #define GPIO_PCH_RSMRST_L GPIO_EC_PCH_RSMRST_L
 #define GPIO_PCH_SLP_S0_L GPIO_SLP_S0_L
 #define GPIO_CPU_PROCHOT GPIO_EC_PROCHOT_ODL
@@ -59,6 +60,18 @@
 #define GPIO_RSMRST_L_PGOOD GPIO_PG_EC_RSMRST_L
 #define GPIO_PCH_SLP_S3_L GPIO_SLP_S3_L
 #define GPIO_PCH_SLP_S4_L GPIO_SLP_S4_L
+=======
+#define GPIO_PCH_RSMRST_L	GPIO_EC_PCH_RSMRST_L
+#define GPIO_PCH_SLP_S0_L	GPIO_SLP_S0_L
+#define GPIO_CPU_PROCHOT	GPIO_EC_PROCHOT_ODL
+#define GPIO_AC_PRESENT		GPIO_ACOK_OD
+#define GPIO_PG_EC_RSMRST_ODL	GPIO_PG_EC_RSMRST_L
+#define GPIO_PCH_SYS_PWROK	GPIO_EC_PCH_SYS_PWROK
+#define GPIO_PCH_SLP_S3_L	GPIO_SLP_S3_L
+#define GPIO_PCH_SLP_S4_L	GPIO_SLP_S4_L
+#define GPIO_TEMP_SENSOR_POWER	GPIO_EN_A_RAILS
+#define GPIO_EN_PP5000		GPIO_EN_PP5000_A
+>>>>>>> CHANGE (eb25e8 Merge remote-tracking branch cros/main into firmware-dedede-)
 
 #ifndef __ASSEMBLER__
 

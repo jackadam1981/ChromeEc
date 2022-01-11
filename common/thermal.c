@@ -49,6 +49,15 @@ BUILD_ASSERT(EC_TEMP_THRESH_COUNT == 3);
 /* Keep track of which thresholds have triggered */
 static cond_t cond_hot[EC_TEMP_THRESH_COUNT];
 
+<<<<<<< HEAD   (8c53b8 battery: Set EC_BATT_FLAG_INVALID_DATA correctly)
+=======
+/* thermal sensor read delay */
+#if defined(CONFIG_TEMP_SENSOR_POWER) && \
+	defined(CONFIG_TEMP_SENSOR_FIRST_READ_DELAY_MS)
+static int first_read_delay = CONFIG_TEMP_SENSOR_FIRST_READ_DELAY_MS;
+#endif
+
+>>>>>>> CHANGE (eb25e8 Merge remote-tracking branch cros/main into firmware-dedede-)
 static void thermal_control(void)
 {
 	int i, j, t, rv, f;
@@ -56,8 +65,29 @@ static void thermal_control(void)
 	int count_under[EC_TEMP_THRESH_COUNT];
 	int num_valid_limits[EC_TEMP_THRESH_COUNT];
 	int num_sensors_read;
+<<<<<<< HEAD   (8c53b8 battery: Set EC_BATT_FLAG_INVALID_DATA correctly)
 	int fmax;
 	int temp_fan_configured;
+=======
+#ifdef CONFIG_FANS
+#ifndef CONFIG_CUSTOM_FAN_CONTROL
+	int f = 0;
+	int fmax = 0;
+	int temp_fan_configured = 0;
+#else
+	int temp[TEMP_SENSOR_COUNT];
+#endif
+#endif
+
+	/* add delay to ensure thermal sensor is ready when EC boot */
+#if defined(CONFIG_TEMP_SENSOR_POWER) && \
+	defined(CONFIG_TEMP_SENSOR_FIRST_READ_DELAY_MS)
+	if (first_read_delay != 0) {
+		msleep(first_read_delay);
+		first_read_delay = 0;
+	}
+#endif
+>>>>>>> CHANGE (eb25e8 Merge remote-tracking branch cros/main into firmware-dedede-)
 
 	/* Get ready to count things */
 	memset(count_over, 0, sizeof(count_over));

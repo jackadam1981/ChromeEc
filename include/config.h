@@ -315,6 +315,11 @@
 #undef CONFIG_BATTERY
 
 /*
+ * Config to indicate the battery type that cannot be auto detected.
+ */
+#undef CONFIG_BATTERY_TYPE_NO_AUTO_DETECT
+
+/*
  * Compile battery-specific code.
  *
  * Note that some boards have their own unique battery constants / functions.
@@ -3122,10 +3127,11 @@
 
 /*
  * If defined, active-high GPIO which indicates temperature sensor chips are
- * powered.  If not defined, temperature sensors are assumed to be always
+ * powered. The GPIO pin must be defined as GPIO_TEMP_SENSOR_POWER.
+ * If not defined, temperature sensors are assumed to be always
  * powered.
  */
-#undef CONFIG_TEMP_SENSOR_POWER_GPIO
+#undef CONFIG_TEMP_SENSOR_POWER
 
 /* Compile common code for throttling the CPU based on the temp sensors */
 #undef CONFIG_THROTTLE_AP

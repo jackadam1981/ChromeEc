@@ -273,12 +273,224 @@ uint32_t dp_status[CONFIG_USB_PD_PORT_COUNT];
 
 __overridable void svdm_safe_dp_mode(int port)
 {
+<<<<<<< HEAD   (8c53b8 battery: Set EC_BATT_FLAG_INVALID_DATA correctly)
 	/* make DP interface safe until configure */
 	dp_flags[port] = 0;
 	dp_status[port] = 0;
 	usb_mux_set(port,
 #ifdef CONFIG_USB_MUX_VIRTUAL
 		TYPEC_MUX_SAFE,
+=======
+	return false;
+}
+
+/* VDM utility functions */
+static void pd_usb_billboard_deferred(void)
+{
+	if (IS_ENABLED(CONFIG_USB_PD_ALT_MODE) &&
+		!IS_ENABLED(CONFIG_USB_PD_ALT_MODE_DFP) &&
+		!IS_ENABLED(CONFIG_USB_PD_SIMPLE_DFP) &&
+		IS_ENABLED(CONFIG_USB_BOS)) {
+		/*
+		 * TODO(tbroch)
+		 * 1. Will we have multiple type-C port UFPs
+		 * 2. Will there be other modes applicable to DFPs besides DP
+		 */
+		if (!pd_alt_mode(0, TCPCI_MSG_SOP, USB_SID_DISPLAYPORT))
+			usb_connect();
+	}
+}
+DECLARE_DEFERRED(pd_usb_billboard_deferred);
+
+#ifdef CONFIG_USB_PD_DISCHARGE
+static void gpio_discharge_vbus(int port, int enable)
+{
+#ifdef CONFIG_USB_PD_DISCHARGE_GPIO
+	enum gpio_signal dischg_gpio[] = {
+		GPIO_USB_C0_DISCHARGE,
+#if CONFIG_USB_PD_PORT_MAX_COUNT > 1
+		GPIO_USB_C1_DISCHARGE,
+#endif
+#if CONFIG_USB_PD_PORT_MAX_COUNT > 2
+		GPIO_USB_C2_DISCHARGE,
+#endif
+	};
+	BUILD_ASSERT(ARRAY_SIZE(dischg_gpio) == CONFIG_USB_PD_PORT_MAX_COUNT);
+
+	gpio_set_level(dischg_gpio[port], enable);
+#endif /* CONFIG_USB_PD_DISCHARGE_GPIO */
+}
+
+void pd_set_vbus_discharge(int port, int enable)
+{
+	static mutex_t discharge_lock[CONFIG_USB_PD_PORT_MAX_COUNT];
+#ifdef CONFIG_ZEPHYR
+	static bool inited[CONFIG_USB_PD_PORT_MAX_COUNT];
+
+	if (!inited[port]) {
+		(void)k_mutex_init(&discharge_lock[port]);
+		inited[port] = true;
+	}
+#endif
+	if (port >= board_get_usb_pd_port_count())
+		return;
+
+	mutex_lock(&discharge_lock[port]);
+	enable &= !board_vbus_source_enabled(port);
+
+	if (get_usb_pd_discharge() == USB_PD_DISCHARGE_GPIO) {
+		gpio_discharge_vbus(port, enable);
+	} else if (get_usb_pd_discharge() == USB_PD_DISCHARGE_TCPC) {
+#ifdef CONFIG_USB_PD_DISCHARGE_TCPC
+		tcpc_discharge_vbus(port, enable);
+#endif
+	} else if (get_usb_pd_discharge() == USB_PD_DISCHARGE_PPC) {
+#ifdef CONFIG_USB_PD_DISCHARGE_PPC
+		ppc_discharge_vbus(port, enable);
+#endif
+	}
+
+	mutex_unlock(&discharge_lock[port]);
+}
+#endif /* CONFIG_USB_PD_DISCHARGE */
+
+#ifdef CONFIG_USB_PD_TCPM_TCPCI
+static atomic_t pd_ports_to_resume;
+static void resume_pd_port(void)
+{
+	uint32_t port;
+	uint32_t suspended_ports = atomic_clear(&pd_ports_to_resume);
+
+	while (suspended_ports) {
+		port = __builtin_ctz(suspended_ports);
+		suspended_ports &= ~BIT(port);
+		pd_set_suspend(port, 0);
+	}
+}
+DECLARE_DEFERRED(resume_pd_port);
+
+void pd_deferred_resume(int port)
+{
+	atomic_or(&pd_ports_to_resume, 1 << port);
+	hook_call_deferred(&resume_pd_port_data, 5 * SECOND);
+}
+#endif /* CONFIG_USB_PD_TCPM_TCPCI */
+
+__overridable int pd_snk_is_vbus_provided(int port)
+{
+	return EC_SUCCESS;
+}
+
+/*
+ * Check the specified Vbus level
+ *
+ * Note that boards may override this function if they have a method outside the
+ * TCPCI driver to verify vSafe0V.
+ */
+__overridable bool pd_check_vbus_level(int port, enum vbus_level level)
+{
+	if (IS_ENABLED(CONFIG_USB_PD_VBUS_DETECT_TCPC) &&
+		(get_usb_pd_vbus_detect() == USB_PD_VBUS_DETECT_TCPC)) {
+		return tcpm_check_vbus_level(port, level);
+	}
+	else if (level == VBUS_PRESENT)
+		return pd_snk_is_vbus_provided(port);
+	else
+		return !pd_snk_is_vbus_provided(port);
+}
+
+int pd_is_vbus_present(int port)
+{
+	return pd_check_vbus_level(port, VBUS_PRESENT);
+}
+
+#ifdef CONFIG_USB_PD_FRS
+__overridable int board_pd_set_frs_enable(int port, int enable)
+{
+	return EC_SUCCESS;
+}
+
+int pd_set_frs_enable(int port, int enable)
+{
+	int rv = EC_SUCCESS;
+
+	if (IS_ENABLED(CONFIG_USB_PD_FRS_PPC))
+		rv = ppc_set_frs_enable(port, enable);
+	if (rv == EC_SUCCESS && IS_ENABLED(CONFIG_USB_PD_FRS_TCPC))
+		rv = tcpm_set_frs_enable(port, enable);
+	if (rv == EC_SUCCESS)
+		rv = board_pd_set_frs_enable(port, enable);
+	return rv;
+}
+#endif /* defined(CONFIG_USB_PD_FRS) */
+
+#ifdef CONFIG_CMD_TCPC_DUMP
+/*
+ * Dump TCPC registers.
+ */
+void tcpc_dump_registers(int port, const struct tcpc_reg_dump_map *reg,
+			  int count)
+{
+	int i, val;
+
+	for (i = 0; i < count; i++, reg++) {
+		switch (reg->size) {
+		case 1:
+			tcpc_read(port, reg->addr, &val);
+			ccprintf("  %-30s(0x%02x) =   0x%02x\n",
+				reg->name, reg->addr, (uint8_t)val);
+			break;
+		case 2:
+			tcpc_read16(port, reg->addr, &val);
+			ccprintf("  %-30s(0x%02x) = 0x%04x\n",
+				reg->name, reg->addr, (uint16_t)val);
+			break;
+		}
+		cflush();
+	}
+
+}
+
+static int command_tcpc_dump(int argc, char **argv)
+{
+	int port;
+
+	if (argc < 2)
+		return EC_ERROR_PARAM_COUNT;
+
+	port = atoi(argv[1]);
+	if ((port < 0) || (port >= board_get_usb_pd_port_count())) {
+		CPRINTS("%s(%d) Invalid port!", __func__, port);
+		return EC_ERROR_INVAL;
+	}
+	/* Dump TCPC registers. */
+	tcpm_dump_registers(port);
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(tcpci_dump, command_tcpc_dump, "<Type-C port>",
+			"dump the TCPC regs");
+#endif /* defined(CONFIG_CMD_TCPC_DUMP) */
+
+void pd_srccaps_dump(int port)
+{
+	int i;
+	const uint32_t *const srccaps = pd_get_src_caps(port);
+
+	for (i = 0; i < pd_get_src_cap_cnt(port); ++i) {
+		uint32_t max_ma, max_mv, min_mv;
+
+#ifdef CONFIG_CMD_PD_SRCCAPS_REDUCED_SIZE
+		pd_extract_pdo_power(srccaps[i], &max_ma, &max_mv, &min_mv);
+
+		if ((srccaps[i] & PDO_TYPE_MASK) == PDO_TYPE_AUGMENTED) {
+			if (IS_ENABLED(CONFIG_USB_PD_REV30))
+				ccprintf("%d: %dmV-%dmV/%dmA\n", i, min_mv,
+					 max_mv, max_ma);
+		} else {
+			ccprintf("%d: %dmV/%dmA\n", i, max_mv, max_ma);
+		}
+>>>>>>> CHANGE (eb25e8 Merge remote-tracking branch cros/main into firmware-dedede-)
 #else
 		TYPEC_MUX_NONE,
 #endif

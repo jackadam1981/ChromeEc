@@ -22,6 +22,7 @@
 /* Sense resistor configurations and macros */
 #define DEFAULT_SENSE_RESISTOR 10
 
+<<<<<<< HEAD   (8c53b8 battery: Set EC_BATT_FLAG_INVALID_DATA correctly)
 #define INPUT_RESISTOR_RATIO \
 	((CONFIG_CHARGER_SENSE_RESISTOR_AC) / DEFAULT_SENSE_RESISTOR)
 #define REG_TO_INPUT_CURRENT(REG) ((REG + 1) * 50 / INPUT_RESISTOR_RATIO)
@@ -31,15 +32,44 @@
 	((CONFIG_CHARGER_SENSE_RESISTOR) / DEFAULT_SENSE_RESISTOR)
 #define REG_TO_CHARGING_CURRENT(REG) ((REG) / CHARGING_RESISTOR_RATIO)
 #define CHARGING_CURRENT_TO_REG(CUR) ((CUR) * CHARGING_RESISTOR_RATIO)
+=======
+#define REG_TO_CHARGING_CURRENT(REG) ((REG) * \
+	DEFAULT_SENSE_RESISTOR / CONFIG_CHARGER_BQ25710_SENSE_RESISTOR)
+#define REG_TO_CHARGING_CURRENT_AC(REG) ((REG) * \
+	DEFAULT_SENSE_RESISTOR / CONFIG_CHARGER_BQ25710_SENSE_RESISTOR_AC)
+#define CHARGING_CURRENT_TO_REG(CUR) ((CUR) * \
+	CONFIG_CHARGER_BQ25710_SENSE_RESISTOR / DEFAULT_SENSE_RESISTOR)
+#define VMIN_AP_VSYS_TH2_TO_REG(DV) ((DV) - 32)
+>>>>>>> CHANGE (eb25e8 Merge remote-tracking branch cros/main into firmware-dedede-)
 
 /* Console output macros */
 #define CPRINTF(format, args...) cprintf(CC_CHARGER, format, ## args)
 
+<<<<<<< HEAD   (8c53b8 battery: Set EC_BATT_FLAG_INVALID_DATA correctly)
+=======
+#ifdef CONFIG_CHARGER_BQ25710_IDCHG_LIMIT_MA
+/*
+ * If this config option is defined, then the bq25710 needs to remain in
+ * performance mode when the AP is in S0. Performance mode is active whenever AC
+ * power is connected or when the EN_LWPWR bit in ChargeOption0 is clear.
+ */
+static uint32_t bq25710_perf_mode_req;
+static struct mutex bq25710_perf_mode_mutex;
+#endif
+
+/*
+ * 10mOhm sense resistor, there is 50mA offset at code 0.
+ * 5mOhm sense resistor, there is 100mA offset at code 0.
+ */
+#define BQ25710_IIN_DPM_CODE0_OFFSET REG_TO_CHARGING_CURRENT(50)
+
+>>>>>>> CHANGE (eb25e8 Merge remote-tracking branch cros/main into firmware-dedede-)
 /* Charger parameters */
 static const struct charger_info bq25710_charger_info = {
 	.name         = "bq25710",
 	.voltage_max  = 19200,
 	.voltage_min  = 1024,
+<<<<<<< HEAD   (8c53b8 battery: Set EC_BATT_FLAG_INVALID_DATA correctly)
 	.voltage_step = 16,
 	.current_max  = 8128 / CHARGING_RESISTOR_RATIO,
 	.current_min  = 64 / CHARGING_RESISTOR_RATIO,
@@ -47,17 +77,46 @@ static const struct charger_info bq25710_charger_info = {
 	.input_current_max  = 6400 / INPUT_RESISTOR_RATIO,
 	.input_current_min  = 50 / INPUT_RESISTOR_RATIO,
 	.input_current_step = 50 / INPUT_RESISTOR_RATIO,
+=======
+	.voltage_step = 8,
+	.current_max  = REG_TO_CHARGING_CURRENT(8128),
+	.current_min  = REG_TO_CHARGING_CURRENT(64),
+	.current_step = REG_TO_CHARGING_CURRENT(64),
+	.input_current_max  = REG_TO_CHARGING_CURRENT_AC(6400),
+	.input_current_min  = REG_TO_CHARGING_CURRENT_AC(50),
+	.input_current_step = REG_TO_CHARGING_CURRENT_AC(50),
+>>>>>>> CHANGE (eb25e8 Merge remote-tracking branch cros/main into firmware-dedede-)
 };
 
 static inline int raw_read16(int offset, int *value)
 {
+<<<<<<< HEAD   (8c53b8 battery: Set EC_BATT_FLAG_INVALID_DATA correctly)
 	return i2c_read16(I2C_PORT_CHARGER, BQ25710_SMBUS_ADDR1, offset, value);
+=======
+	/*
+	 * When set 00 at 3F register, read 22h back,
+	 * you will see 00, but actually it’s 50mA@10mOhm right now.
+	 * TI don’t have exactly 0A setting for input current limit,
+	 * it set the 50mA@10mOhm offset so that the converter can
+	 * work normally.
+	 */
+	if (reg == 0)
+		return BQ25710_IIN_DPM_CODE0_OFFSET;
+	else
+		return REG_TO_CHARGING_CURRENT_AC(reg *
+			BQ257X0_IIN_DPM_CURRENT_STEP_MA);
+>>>>>>> CHANGE (eb25e8 Merge remote-tracking branch cros/main into firmware-dedede-)
 }
 
 static inline int raw_write16(int offset, int value)
 {
+<<<<<<< HEAD   (8c53b8 battery: Set EC_BATT_FLAG_INVALID_DATA correctly)
 	return i2c_write16(I2C_PORT_CHARGER, BQ25710_SMBUS_ADDR1, offset,
 			   value);
+=======
+	return (REG_TO_CHARGING_CURRENT_AC(current) /
+		BQ257X0_IIN_HOST_CURRENT_STEP_MA);
+>>>>>>> CHANGE (eb25e8 Merge remote-tracking branch cros/main into firmware-dedede-)
 }
 
 #ifdef CONFIG_CHARGE_RAMP_HW

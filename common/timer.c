@@ -17,8 +17,13 @@
 
 #define TIMER_SYSJUMP_TAG 0x4d54  /* "TM" */
 
+<<<<<<< HEAD   (8c53b8 battery: Set EC_BATT_FLAG_INVALID_DATA correctly)
 /* High word of the 64-bit timestamp counter  */
 static volatile uint32_t clksrc_high;
+=======
+/* High 32-bits of the 64-bit timestamp counter. */
+STATIC_IF_NOT(CONFIG_HWTIMER_64BIT) volatile uint32_t clksrc_high;
+>>>>>>> CHANGE (eb25e8 Merge remote-tracking branch cros/main into firmware-dedede-)
 
 /* Bitmap of currently running timers */
 static uint32_t timer_running;
@@ -180,6 +185,18 @@ timestamp_t get_time(void)
 	if (ts.le.hi != clksrc_high) {
 		ts.le.hi = clksrc_high;
 		ts.le.lo = __hw_clock_source_read();
+<<<<<<< HEAD   (8c53b8 battery: Set EC_BATT_FLAG_INVALID_DATA correctly)
+=======
+		/*
+		 * TODO(b/213342294) If statement below doesn't catch overflows
+		 * when interrupts are disabled or currently processed interrupt
+		 * has higher priority.
+		 */
+		if (ts.le.hi != clksrc_high) {
+			ts.le.hi = clksrc_high;
+			ts.le.lo = __hw_clock_source_read();
+		}
+>>>>>>> CHANGE (eb25e8 Merge remote-tracking branch cros/main into firmware-dedede-)
 	}
 	return ts;
 }
@@ -192,8 +209,34 @@ clock_t clock(void)
 
 void force_time(timestamp_t ts)
 {
+<<<<<<< HEAD   (8c53b8 battery: Set EC_BATT_FLAG_INVALID_DATA correctly)
 	clksrc_high = ts.le.hi;
 	__hw_clock_source_set(ts.le.lo);
+=======
+	if (IS_ENABLED(CONFIG_HWTIMER_64BIT)) {
+		__hw_clock_source_set64(ts.val);
+	} else {
+		/* Save current interrupt state */
+		bool interrupt_enabled = is_interrupt_enabled();
+
+		/*
+		 * Updating timer shouldn't be interrupted (eg. when counter
+		 * overflows) because it could lead to some unintended
+		 * consequences. Please note that this function can be called
+		 * with disabled or enabled interrupts so we need to restore
+		 * the original state later.
+		 */
+		interrupt_disable();
+
+		clksrc_high = ts.le.hi;
+		__hw_clock_source_set(ts.le.lo);
+
+		/* Restore original interrupt state */
+		if (interrupt_enabled)
+			interrupt_enable();
+	}
+
+>>>>>>> CHANGE (eb25e8 Merge remote-tracking branch cros/main into firmware-dedede-)
 	/* some timers might be already expired : process them */
 	task_trigger_irq(timer_irq);
 }

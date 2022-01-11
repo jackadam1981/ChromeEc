@@ -63,6 +63,38 @@ int thermistor_linear_interpolate(uint16_t mv,
 	return t_low + num_steps;
 }
 
+<<<<<<< HEAD   (8c53b8 battery: Set EC_BATT_FLAG_INVALID_DATA correctly)
+=======
+#if defined(CONFIG_STEINHART_HART_3V3_51K1_47K_4050B) || \
+	defined(CONFIG_STEINHART_HART_3V3_13K7_47K_4050B) || \
+	defined(CONFIG_STEINHART_HART_6V0_51K1_47K_4050B) || \
+	defined(CONFIG_STEINHART_HART_3V0_22K6_47K_4050B) || \
+	defined(CONFIG_STEINHART_HART_3V3_30K9_47K_4050B) || \
+	defined(CONFIG_ZEPHYR)
+int thermistor_get_temperature(int idx_adc, int *temp_ptr,
+			       const struct thermistor_info *info)
+{
+	int mv;
+
+#ifdef CONFIG_TEMP_SENSOR_POWER
+	/*
+	 * If the power rail for the thermistor circuit is not enabled, then
+	 * need to ignore any ADC measurments.
+	 */
+	if (!gpio_get_level(GPIO_TEMP_SENSOR_POWER))
+		return EC_ERROR_NOT_POWERED;
+#endif /* CONFIG_TEMP_SENSOR_POWER */
+	mv = adc_read_channel(idx_adc);
+	if (mv < 0)
+		return EC_ERROR_UNKNOWN;
+
+	*temp_ptr = thermistor_linear_interpolate(mv, info);
+	*temp_ptr = C_TO_K(*temp_ptr);
+	return EC_SUCCESS;
+}
+#endif
+
+>>>>>>> CHANGE (eb25e8 Merge remote-tracking branch cros/main into firmware-dedede-)
 #ifdef CONFIG_STEINHART_HART_3V3_51K1_47K_4050B
 /*
  * Data derived from Steinhart-Hart equation in a resistor divider circuit with

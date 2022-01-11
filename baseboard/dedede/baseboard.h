@@ -186,6 +186,14 @@
 #define CONFIG_USBC_VCONN
 #define CONFIG_USBC_VCONN_SWAP
 
+<<<<<<< HEAD   (8c53b8 battery: Set EC_BATT_FLAG_INVALID_DATA correctly)
+=======
+/* Temp Sensor */
+#define CONFIG_TEMP_SENSOR_POWER
+#define GPIO_TEMP_SENSOR_POWER  GPIO_EN_PP3300_A
+#define CONFIG_TEMP_SENSOR_FIRST_READ_DELAY_MS 500
+
+>>>>>>> CHANGE (eb25e8 Merge remote-tracking branch cros/main into firmware-dedede-)
 /* USB PD */
 #define CONFIG_USB_PD_ALT_MODE
 #define CONFIG_USB_PD_ALT_MODE_DFP

@@ -2096,11 +2096,18 @@ int cmd_temperature(int argc, char *argv[])
 	}
 
 	if (strcmp(argv[1], "all") == 0) {
+<<<<<<< HEAD   (8c53b8 battery: Set EC_BATT_FLAG_INVALID_DATA correctly)
 		for (id = 0;
 		     id < EC_TEMP_SENSOR_ENTRIES + EC_TEMP_SENSOR_B_ENTRIES;
 		     id++) {
 			rv = read_mapped_temperature(id);
 			switch (rv) {
+=======
+		fprintf(stdout, header);
+		for (id = 0; id < EC_MAX_TEMP_SENSOR_ENTRIES; id++) {
+			mtemp = read_mapped_temperature(id);
+			switch (mtemp) {
+>>>>>>> CHANGE (eb25e8 Merge remote-tracking branch cros/main into firmware-dedede-)
 			case EC_TEMP_SENSOR_NOT_PRESENT:
 				break;
 			case EC_TEMP_SENSOR_ERROR:
@@ -2128,7 +2135,7 @@ int cmd_temperature(int argc, char *argv[])
 	}
 
 	if (id < 0 ||
-	    id >= EC_TEMP_SENSOR_ENTRIES + EC_TEMP_SENSOR_B_ENTRIES) {
+	    id >= EC_MAX_TEMP_SENSOR_ENTRIES) {
 		printf("Sensor ID invalid.\n");
 		return -1;
 	}
@@ -2169,9 +2176,7 @@ int cmd_temp_sensor_info(int argc, char *argv[])
 	}
 
 	if (strcmp(argv[1], "all") == 0) {
-		for (p.id = 0;
-		     p.id < EC_TEMP_SENSOR_ENTRIES + EC_TEMP_SENSOR_B_ENTRIES;
-		     p.id++) {
+		for (p.id = 0; p.id < EC_MAX_TEMP_SENSOR_ENTRIES; p.id++) {
 			if (read_mapped_temperature(p.id) ==
 			    EC_TEMP_SENSOR_NOT_PRESENT)
 				continue;
@@ -2293,7 +2298,7 @@ int cmd_thermal_get_threshold_v1(int argc, char *argv[])
 	int i;
 
 	printf("sensor  warn  high  halt   fan_off fan_max   name\n");
-	for (i = 0; i < 99; i++) {	/* number of sensors is unknown */
+	for (i = 0; i < EC_MAX_TEMP_SENSOR_ENTRIES; i++) {
 
 		/* ask for one */
 		p.sensor_num = i;
