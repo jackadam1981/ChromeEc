@@ -20,6 +20,7 @@
 #include "driver/als_tcs3400.h"
 #include "fw_config.h"
 #include "hooks.h"
+#include "keyboard_raw.h"
 #include "lid_switch.h"
 #include "power_button.h"
 #include "power.h"

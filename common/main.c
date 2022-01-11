@@ -207,9 +207,11 @@ test_mockable __keep int main(void)
 		}
 	}
 
-
 #ifdef HAS_TASK_KEYSCAN
+	ccprintf("*** Starting KB Scan Init ***\n");
+	cflush();
 	keyboard_scan_init();
+	ccprintf("*** KB Scan Init done ***\n");
 #endif
 #if defined(CONFIG_DEDICATED_RECOVERY_BUTTON) || defined(CONFIG_VOLUME_BUTTONS)
 	button_init();
