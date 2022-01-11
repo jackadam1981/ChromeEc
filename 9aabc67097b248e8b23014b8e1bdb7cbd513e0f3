@@ -1,0 +1,159 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a3df0b9_51018b54",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 4456,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-01-11T23:05:08Z",
+      "side": 1,
+      "message": "You probably want to add a prefix to avoid name collision since this file is exported to foreign projects.",
+      "range": {
+        "startLine": 4456,
+        "startChar": 5,
+        "endLine": 4456,
+        "endChar": 24
+      },
+      "revId": "9aabc67097b248e8b23014b8e1bdb7cbd513e0f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca73005d_c1601f76",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 4466,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-01-11T23:05:08Z",
+      "side": 1,
+      "message": "You probably want to add \u0027POWER_SOURCE_MAX UINT8_MAX\u0027 to make sure this won\u0027t be extended beyond the type used in struct ec_response_power_info_v1.",
+      "revId": "9aabc67097b248e8b23014b8e1bdb7cbd513e0f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c8e7e65c_bc419299",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 4469,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-01-11T23:05:08Z",
+      "side": 1,
+      "message": "What do you think about extending EC_CMD_BATTERY_GET_STATIC and EC_CMD_BATTERY_GET_DYNAMIC? Can you please comment on why it\u0027s better to introduce a new command?\n\nWhich of these fields are static and which ones are dynamic?",
+      "range": {
+        "startLine": 4469,
+        "startChar": 7,
+        "endLine": 4469,
+        "endChar": 32
+      },
+      "revId": "9aabc67097b248e8b23014b8e1bdb7cbd513e0f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9993e9b2_6ff5e492",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 4472,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-01-11T23:05:08Z",
+      "side": 1,
+      "message": "What is this?",
+      "range": {
+        "startLine": 4472,
+        "startChar": 4,
+        "endLine": 4472,
+        "endChar": 47
+      },
+      "revId": "9aabc67097b248e8b23014b8e1bdb7cbd513e0f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a282430_76fe3c38",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 4478,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-01-11T23:05:08Z",
+      "side": 1,
+      "message": "What is this?",
+      "range": {
+        "startLine": 4478,
+        "startChar": 4,
+        "endLine": 4478,
+        "endChar": 26
+      },
+      "revId": "9aabc67097b248e8b23014b8e1bdb7cbd513e0f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9f74374_40b5ec96",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 4482,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-01-11T23:05:08Z",
+      "side": 1,
+      "message": "What is this?",
+      "range": {
+        "startLine": 4482,
+        "startChar": 4,
+        "endLine": 4482,
+        "endChar": 26
+      },
+      "revId": "9aabc67097b248e8b23014b8e1bdb7cbd513e0f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11abc107_f7bd5fea",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 4514,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-01-11T23:05:08Z",
+      "side": 1,
+      "message": "You can\u0027t pass a pointer to the host.",
+      "range": {
+        "startLine": 4514,
+        "startChar": 33,
+        "endLine": 4514,
+        "endChar": 34
+      },
+      "revId": "9aabc67097b248e8b23014b8e1bdb7cbd513e0f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
