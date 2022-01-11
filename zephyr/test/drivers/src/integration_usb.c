@@ -12,9 +12,13 @@
 #include "ec_tasks.h"
 #include "emul/emul_smart_battery.h"
 #include "emul/tcpc/emul_tcpci.h"
+#include "emul/tcpc/emul_tcpci_partner_snk.h"
 #include "emul/tcpc/emul_tcpci_partner_src.h"
 #include "host_command.h"
+#include "stubs.h"
 #include "tcpm/tcpci.h"
+#include "test/usb_pe.h"
+#include "utils.h"
 
 #define TCPCI_EMUL_LABEL DT_NODELABEL(tcpci_emul)
 #define BATTERY_ORD DT_DEP_ORD(DT_NODELABEL(battery))
@@ -174,6 +178,51 @@ static void test_attach_pd_charger(void)
 	 */
 }
 
+/* Test if second message in sequence may overwrite first message */
+static void test_attach_sink_with_extra_msg(void)
+{
+	const struct emul *tcpci_emul =
+		emul_get_binding(DT_LABEL(TCPCI_EMUL_LABEL));
+	struct tcpci_snk_emul_data my_sink;
+	uint32_t data = 0;
+
+	/* Set chipset to ON, this will set TCPM to DRP */
+	test_set_chipset_to_s0();
+
+	/* TODO: Check why need to give time TCPM to spin */
+	k_sleep(K_SECONDS(1));
+
+	/* Attach emulated sink */
+	tcpci_snk_emul_init(&my_sink);
+	zassert_ok(tcpci_snk_emul_connect_to_tcpci(&my_sink, tcpci_emul),
+		   NULL);
+
+	/*
+	 * Send extra unexpected data message.
+	 * Without fix for b/xxxxxx header of this message is overwrite by
+	 * Request (expected PD message), but data is used as payload of
+	 * Request. This leads to not sending soft reset and fail in
+	 * checking requested voltage in PE_SRC_Negotiate_Capability state.
+	 */
+	tcpci_partner_send_data_msg(&my_sink.common_data,
+				    PD_DATA_SINK_CAP,
+				    &data, 1, 0);
+
+	/* Wait for PD negotiation */
+	k_sleep(K_SECONDS(10));
+
+	/*
+	 * TCPM should trigger soft reset to establish PD contract, because of
+	 * unexpected message.
+	 */
+
+	/*
+	 * Test that SRC ready is achieved
+	 * TODO: Change it to examining EC_CMD_TYPEC_STATUS
+	 */
+	zassert_equal(PE_SRC_READY, get_state_pe(USBC_PORT_C0), NULL);
+}
+
 void test_suite_integration_usb(void)
 {
 	ztest_test_suite(integration_usb,
@@ -182,6 +231,9 @@ void test_suite_integration_usb(void)
 				 remove_emulated_devices),
 			 ztest_user_unit_test_setup_teardown(
 				 test_attach_pd_charger, init_tcpm,
+				 remove_emulated_devices),
+			 ztest_user_unit_test_setup_teardown(
+				 test_attach_sink_with_extra_msg, init_tcpm,
 				 remove_emulated_devices));
 	ztest_run_test_suite(integration_usb);
 }
