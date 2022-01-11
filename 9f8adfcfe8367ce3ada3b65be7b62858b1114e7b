@@ -37,6 +37,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ea7fcf25_b4563b23",
+        "filename": "board/nipperkin/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 493,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-01-11T16:14:14Z",
+      "side": 1,
+      "message": "Shouldn\u0027t the limit match the limit our source is offering?  Otherwise we could overcurrent our source",
+      "range": {
+        "startLine": 493,
+        "startChar": 5,
+        "endLine": 493,
+        "endChar": 55
+      },
+      "revId": "9f8adfcfe8367ce3ada3b65be7b62858b1114e7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53a64942_3c9a2eca",
+        "filename": "board/nipperkin/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 494,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-01-11T16:14:14Z",
+      "side": 1,
+      "message": "charger_set_input_current_limit() would be the typical API here, correct?",
+      "range": {
+        "startLine": 494,
+        "startChar": 20,
+        "endLine": 494,
+        "endChar": 43
+      },
+      "revId": "9f8adfcfe8367ce3ada3b65be7b62858b1114e7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "943563ee_1ce585e2",
         "filename": "board/nipperkin/board.c",
         "patchSetId": 4
@@ -53,6 +99,29 @@
         "startChar": 14,
         "endLine": 498,
         "endChar": 15
+      },
+      "revId": "9f8adfcfe8367ce3ada3b65be7b62858b1114e7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b7bc83a_092d267c",
+        "filename": "board/nipperkin/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 499,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-01-11T16:14:14Z",
+      "side": 1,
+      "message": "Would this be when the battery is disconnected as well?",
+      "range": {
+        "startLine": 499,
+        "startChar": 6,
+        "endLine": 499,
+        "endChar": 33
       },
       "revId": "9f8adfcfe8367ce3ada3b65be7b62858b1114e7b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
@@ -77,6 +146,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "03104f9d_59a804bf",
+        "filename": "board/nipperkin/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 500,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-01-11T16:14:14Z",
+      "side": 1,
+      "message": "Agreed, a state machine could make a lot of sense here",
+      "parentUuid": "bce8cc94_a33e48a1",
+      "revId": "9f8adfcfe8367ce3ada3b65be7b62858b1114e7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e1a92206_c766d322",
         "filename": "board/nipperkin/board.c",
         "patchSetId": 4
@@ -88,6 +175,29 @@
       "writtenOn": "2022-01-10T14:49:29Z",
       "side": 1,
       "message": "This logic is difficult to read. Please use local variables to simplify.",
+      "revId": "9f8adfcfe8367ce3ada3b65be7b62858b1114e7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d014d22_0710fe82",
+        "filename": "board/nipperkin/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 533,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-01-11T16:14:14Z",
+      "side": 1,
+      "message": "Does one of these hooks end up getting called during a typical init process?  Ex. if you boot a board with no battery and just AC, do we see HOOK_AC_CHANGE?",
+      "range": {
+        "startLine": 531,
+        "startChar": 0,
+        "endLine": 533,
+        "endChar": 23
+      },
       "revId": "9f8adfcfe8367ce3ada3b65be7b62858b1114e7b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
