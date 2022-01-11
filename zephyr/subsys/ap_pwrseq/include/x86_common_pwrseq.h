@@ -151,6 +151,7 @@ struct common_pwrseq_config {
 struct power_seq_context {
 	/* On power-on start boot up sequence */
 	enum power_states_ndsx power_state;
+	int want_g3_exit;
 };
 
 #endif /* __X86_COMMON_H__ */
