@@ -10,6 +10,12 @@
 #include <gpio_signal.h>
 
 /*
+ * These signals change their function according to the
+ * type of sub-board connected. Alias the names to the existing GPIOs.
+ */
+#define GPIO_EN_SUB_RAILS_ODL	GPIO_USB_C1_PD_INT_ODL
+
+/*
  * Set EC_CROS_GPIO_INTERRUPTS to a space-separated list of GPIO_INT items.
  *
  * Each GPIO_INT requires three parameters:
