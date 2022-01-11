@@ -182,7 +182,11 @@ static int common_pwr_sm_run(int state)
 {
 	switch (state) {
 	case SYS_POWER_STATE_G3:
-		/* Nothing to do */
+		if (pwrseq_ctx.want_g3_exit) {
+			chipset_set_exit_hard_off_flag(0);
+			return SYS_POWER_STATE_G3S5;
+		}
+
 		break;
 
 	case SYS_POWER_STATE_G3S5:
@@ -285,6 +289,7 @@ static inline void create_pwrseq_thread(void)
 void init_pwr_seq_state(void)
 {
 	init_chipset_pwr_seq_state();
+	chipset_set_exit_hard_off_flag(0);
 
 	pwr_sm_set_state(SYS_POWER_STATE_G3S5);
 }
