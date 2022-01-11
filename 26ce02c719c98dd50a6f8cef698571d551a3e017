@@ -473,6 +473,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4444866d_265631d1",
+        "filename": "board/moonbuggy/gpio.inc",
+        "patchSetId": 4
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2022-01-11T02:40:08Z",
+      "side": 1,
+      "message": "yes, you are right",
+      "parentUuid": "f22d8d8e_eb290f71",
+      "range": {
+        "startLine": 106,
+        "startChar": 31,
+        "endLine": 106,
+        "endChar": 40
+      },
+      "revId": "26ce02c719c98dd50a6f8cef698571d551a3e017",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f5842edc_3cd8ae84",
