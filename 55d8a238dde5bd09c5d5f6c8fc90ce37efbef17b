@@ -68,6 +68,29 @@
       },
       "revId": "55d8a238dde5bd09c5d5f6c8fc90ce37efbef17b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ffb57f72_53893579",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 4468,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-01-11T00:29:29Z",
+      "side": 1,
+      "message": "If we\u0027re adding new fields, we need to uprev the struct version.",
+      "range": {
+        "startLine": 4468,
+        "startChar": 29,
+        "endLine": 4468,
+        "endChar": 32
+      },
+      "revId": "55d8a238dde5bd09c5d5f6c8fc90ce37efbef17b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
