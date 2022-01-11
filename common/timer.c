@@ -351,6 +351,7 @@ static int command_wait(int argc, char **argv)
 	 *
 	 * Reloading before waiting also allows for testing watchdog.
 	 */
+	watchdog_reinit();//
 	watchdog_reload();
 
 	/*
