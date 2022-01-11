@@ -5,6 +5,7 @@
 
 /* Keyboard scanner module for Chrome EC */
 
+#include "adc.h"
 #include "chipset.h"
 #include "clock.h"
 #include "common.h"
@@ -194,6 +195,31 @@ static void ensure_keyboard_scanned(int old_polls)
 		usleep(keyscan_config.scan_period_us);
 }
 
+#ifdef CONFIG_KEYBOARD_SCAN_ANTIGHOST_ADC
+/**
+ * Read KSI adc rows
+ *
+ * Read each adc channel and look for voltage crossing threshold level
+ */
+static int keyboard_read_adc_rows(void)
+{
+	uint8_t kb_row = 0;
+
+	/* Read each adc channel to build row byte */
+	for (int i = 0; i < KEYBOARD_ROWS; i++) {
+		//CPRINTF("*** Reading row %d ***\n", i);
+		if (adc_read_channel(ADC_KSI_00 + i) > TH_VT) {
+			//CPRINTF("*** Key pressed for row %x ***\n\n", i);
+			kb_row |= (1 << i);
+		}
+	}
+
+	CPRINTF("*** KB_ROW = 0x%X ***\n\n", kb_row);
+	return kb_row;
+}
+#endif
+
+
 /**
  * Simulate a keypress.
  *
@@ -266,13 +292,30 @@ static int read_matrix(uint8_t *state)
 		udelay(keyscan_config.output_settle_us);
 
 		/* Read the row state */
+		CPRINTF("*** Column = 0x%X ***\n\n", c);
+#ifdef CONFIG_KEYBOARD_SCAN_ANTIGHOST_ADC
+		state[c] = keyboard_read_adc_rows();
+
+		/* Account for the refresh key */
+		if (c == 2) {
+			if(!gpio_get_level(GPIO_RFR_KEY))
+				state[c] |= (1 << 3);
+			else
+				state[c] &= ~(1 << 3);
+		}
+
+		CPRINTF("\n\n");
+		cflush();
+#else
 		state[c] = keyboard_raw_read_rows();
+#endif
 
 		/* Use simulated keyscan sequence instead if testing active */
 		if (IS_ENABLED(CONFIG_KEYBOARD_TEST))
 			state[c] = keyscan_seq_get_scan(c, state[c]);
 	}
 
+#if !defined(CONFIG_KEYBOARD_SCAN_ANTIGHOST_ADC)
 	/* 2. Detect transitional ghost */
 	for (c = 0; c < keyboard_cols; c++) {
 		int c2;
@@ -296,6 +339,7 @@ static int read_matrix(uint8_t *state)
 			}
 		}
 	}
+#endif
 
 	/* 3. Fix result */
 	for (c = 0; c < keyboard_cols; c++) {
@@ -429,6 +473,7 @@ static int check_runtime_keys(const uint8_t *state)
  *
  * @return 1 if ghosting detected, else 0.
  */
+#if !defined(CONFIG_KEYBOARD_SCAN_ANTIGHOST_ADC)
 static int has_ghosting(const uint8_t *state)
 {
 	int c, c2;
@@ -454,6 +499,7 @@ static int has_ghosting(const uint8_t *state)
 
 	return 0;
 }
+#endif
 
 /* Inform keyboard module if scanning is enabled */
 static void key_state_changed(int row, int col, uint8_t state)
@@ -488,9 +534,11 @@ static int check_keys_changed(uint8_t *state)
 	/* Read the raw key state */
 	any_pressed = read_matrix(new_state);
 
+#if !defined(CONFIG_KEYBOARD_SCAN_ANTIGHOST_ADC)
 	/* Ignore if so many keys are pressed that we're ghosting. */
 	if (has_ghosting(new_state))
 		return any_pressed;
+#endif
 
 	/* Check for changes between previous scan and this one */
 	for (c = 0; c < keyboard_cols; c++) {
@@ -512,6 +560,7 @@ static int check_keys_changed(uint8_t *state)
 				/* Debounced but no difference. */
 				continue;
 			any_change = 1;
+			CPRINTF("*** Key State Changed: Column = 0x%X Row = 0x%X State = 0x%X***\n\n", c, i, new_state[c]);
 			key_state_changed(i, c, new_state[c]);
 			/*
 			 * This makes state[c] == new_state[c] for row i.
@@ -532,6 +581,7 @@ static int check_keys_changed(uint8_t *state)
 
 			if (!IS_ENABLED(CONFIG_KEYBOARD_STRICT_DEBOUNCE)) {
 				any_change = 1;
+				CPRINTF("*** Key State Changed 2: Column = 0x%X Row = 0x%X State = 0x%X***\n\n", c, i, new_state[c]);
 				key_state_changed(i, c, new_state[c]);
 			}
 		}
@@ -716,13 +766,17 @@ void keyboard_scan_init(void)
 		board_keyboard_row_refresh());
 
 	/* Configure GPIO */
+	CPRINTS("*** Starting KB Raw init ***");
 	keyboard_raw_init();
+	CPRINTS("*** KB Raw init done ***");
 
 	/* Tri-state the columns */
 	keyboard_raw_drive_column(KEYBOARD_COLUMN_NONE);
 
+#if !defined(CONFIG_KEYBOARD_SCAN_ANTIGHOST_ADC)
 	/* Initialize raw state */
 	read_matrix(debounced_state);
+#endif
 
 #ifdef CONFIG_KEYBOARD_LANGUAGE_ID
 	/* Check keyboard ID state */
@@ -767,8 +821,18 @@ void keyboard_scan_task(void *u)
 	int wait_time;
 	uint32_t local_disable_scanning = 0;
 
+#ifdef CONFIG_KEYBOARD_SCAN_ANTIGHOST_ADC
+	/* Tri-state the columns */
+	keyboard_raw_drive_column(KEYBOARD_COLUMN_NONE);
+
+	CPRINTS("*** KB read debounced state matrix ***");
+	read_matrix(debounced_state);
+#endif
+
 	print_state(debounced_state, "init state");
 
+	CPRINTS("*** KB raw task start ***");
+	cflush();
 	keyboard_raw_task_start();
 
 	/* Set initial clock frequency-based minimum delay between scans */
@@ -778,11 +842,13 @@ void keyboard_scan_task(void *u)
 		/* Enable all outputs */
 		CPRINTS5("KB wait");
 
+//		CPRINTS("*** KB raw Enable interrupt ***");
 		keyboard_raw_enable_interrupt(1);
 
 		/* Wait for scanning enabled and key pressed. */
 		while (1) {
 			uint32_t new_disable_scanning;
+			CPRINTS("*** KB Enter Task ***");
 
 			/* Read it once to get consistent glimpse */
 			new_disable_scanning = disable_scanning_mask;
@@ -817,11 +883,19 @@ void keyboard_scan_task(void *u)
 			 * user pressing a key and enable_interrupt()
 			 * starting to pay attention to edges.
 			 */
+#if !defined(CONFIG_KEYBOARD_SCAN_ANTIGHOST_ADC)
 			if (!local_disable_scanning &&
 			    (keyboard_raw_read_rows() || force_poll))
 				break;
-			else
+#else
+			if (!local_disable_scanning &&
+			    (keyboard_read_adc_rows() || force_poll || gpio_get_level(GPIO_RFR_KEY)))
+				break;
+#endif
+			else {
+				CPRINTS("** KB Task Sleep **");
 				task_wait_event(-1);
+			}
 		}
 
 		/* We're about to poll, so any existing forces are fulfilled */
@@ -836,6 +910,7 @@ void keyboard_scan_task(void *u)
 		while (keyboard_scan_is_enabled()) {
 			start = get_time();
 
+			CPRINTF("*** Enter polling mode ***\n");
 			/* Check for keys down */
 			if (check_keys_changed(debounced_state)) {
 				poll_deadline.val = start.val
@@ -855,7 +930,10 @@ void keyboard_scan_task(void *u)
 			if (wait_time < post_scan_clock_us)
 				wait_time = post_scan_clock_us;
 
+			CPRINTF("*** wait time = %d ***\n", wait_time);
+
 			usleep(wait_time);
+			CPRINTF("*** Back from wait ***\n");
 		}
 	}
 }
