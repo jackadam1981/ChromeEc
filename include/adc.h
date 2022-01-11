@@ -27,6 +27,8 @@ extern const struct adc_t adc_channels[];
 extern struct adc_t adc_channels[];
 #endif
 
+void adc_init(void);
+
 /*
  * Boards which use the ADC interface must provide enum adc_channel in the
  * board.h file.  See chip/$CHIP/adc_chip.h for additional chip-specific

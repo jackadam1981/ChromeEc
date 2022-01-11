@@ -362,7 +362,7 @@ DECLARE_IRQ(NPCX_IRQ_ADC, adc_interrupt, 4);
  * @param none
  * @return none
  */
-static void adc_init(void)
+void adc_init(void)
 {
 	/* Configure pins from GPIOs to ADCs */
 	gpio_config_module(MODULE_ADC, 1);
@@ -387,4 +387,6 @@ static void adc_init(void)
 	/* Enable IRQs */
 	task_enable_irq(NPCX_IRQ_ADC);
 }
+#if !defined(CONFIG_KEYBOARD_SCAN_ANTIGHOST_ADC)
 DECLARE_HOOK(HOOK_INIT, adc_init, HOOK_PRIO_INIT_ADC);
+#endif

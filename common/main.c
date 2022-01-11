@@ -5,6 +5,7 @@
  * Main routine for Chrome EC
  */
 
+#include "adc.h"
 #include "board_config.h"
 #include "button.h"
 #include "chipset.h"
@@ -208,8 +209,17 @@ test_mockable __keep int main(void)
 	}
 
 
+#ifdef CONFIG_KEYBOARD_SCAN_ANTIGHOST_ADC
+	ccprintf("*** Starting ADC Init ***\n");
+	adc_init();
+	ccprintf("*** ADC Init done ***\n");
+#endif
+
 #ifdef HAS_TASK_KEYSCAN
+	ccprintf("*** Starting KB Scan Init ***\n");
+	cflush();
 	keyboard_scan_init();
+	ccprintf("*** KB Scan Init done ***\n");
 #endif
 #if defined(CONFIG_DEDICATED_RECOVERY_BUTTON) || defined(CONFIG_VOLUME_BUTTONS)
 	button_init();
