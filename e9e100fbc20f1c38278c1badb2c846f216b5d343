@@ -81,6 +81,29 @@
       "parentUuid": "6bbf4506_8ff239d9",
       "revId": "e9e100fbc20f1c38278c1badb2c846f216b5d343",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "449b2d83_9588c9d5",
+        "filename": "zephyr/projects/brya/brya/include/gpio_map.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-01-11T23:53:11Z",
+      "side": 1,
+      "message": "This is used by the battery_hw_present() function implemented in board/brya/battery.c.\n\nIn a separate CL, you should enable the battery Kconfigs, and move the brya implementation battery_hw_present() into a separate file.",
+      "range": {
+        "startLine": 67,
+        "startChar": 8,
+        "endLine": 67,
+        "endChar": 29
+      },
+      "revId": "e9e100fbc20f1c38278c1badb2c846f216b5d343",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
