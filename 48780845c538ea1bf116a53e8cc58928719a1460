@@ -16,6 +16,24 @@
       "message": "See my comments on b:194163586.\nThis CL chain is adding code complexity and potentially code bloat to support a single use case on a non customer platform.  Let\u0027s move the discussion to that bug.",
       "revId": "48780845c538ea1bf116a53e8cc58928719a1460",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "92af8106_04d87865",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2022-01-11T21:31:17Z",
+      "side": 1,
+      "message": "Updated the CL with get \u0026 set implementatons.",
+      "parentUuid": "8f0fa0b2_1b93f752",
+      "revId": "48780845c538ea1bf116a53e8cc58928719a1460",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
