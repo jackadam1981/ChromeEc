@@ -1,0 +1,389 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07f12349_4fe2c1cb",
+        "filename": "docs/zephyr/zephyr_gpio.md",
+        "patchSetId": 12
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-01-11T00:40:05Z",
+      "side": 1,
+      "message": "\"on the platform\".\n\nGPIOs for I/O expanders are specified in the same fashion.",
+      "range": {
+        "startLine": 7,
+        "startChar": 46,
+        "endLine": 7,
+        "endChar": 56
+      },
+      "revId": "43727e2d749ddf830ccb042b3269de6d9de2a858",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13f7e94c_509b0608",
+        "filename": "docs/zephyr/zephyr_gpio.md",
+        "patchSetId": 12
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-01-11T00:40:05Z",
+      "side": 1,
+      "message": "Add link to ../ec_terms.md#gpio",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 4
+      },
+      "revId": "43727e2d749ddf830ccb042b3269de6d9de2a858",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20ae62bd_c84b0420",
+        "filename": "docs/zephyr/zephyr_gpio.md",
+        "patchSetId": 12
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-01-11T00:40:05Z",
+      "side": 1,
+      "message": "You should also document the Zephyr config CONFIG_GPIO.  Without this, no GPIO support is included.",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 7
+      },
+      "revId": "43727e2d749ddf830ccb042b3269de6d9de2a858",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7983d37c_4bc9a583",
+        "filename": "docs/zephyr/zephyr_gpio.md",
+        "patchSetId": 12
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-01-11T00:40:05Z",
+      "side": 1,
+      "message": "Document the full Kconfig name, e.g. include the \"CONFIG_\" prefix.",
+      "range": {
+        "startLine": 14,
+        "startChar": 1,
+        "endLine": 14,
+        "endChar": 31
+      },
+      "revId": "43727e2d749ddf830ccb042b3269de6d9de2a858",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9bffdd6_d0288c08",
+        "filename": "docs/zephyr/zephyr_gpio.md",
+        "patchSetId": 12
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-01-11T00:40:05Z",
+      "side": 1,
+      "message": "Reword to remove passive voice:\n\nConfigure the GPIO module by declaring all GPIOs in the devicetree node with `compatible` property `named-gpios`.  The GPIO module automatically initializes all GPIOs from this node. The C source code accesses GPIOs using the specified `enum-name` property.",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 0
+      },
+      "revId": "43727e2d749ddf830ccb042b3269de6d9de2a858",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "569b7b06_470c4d36",
+        "filename": "docs/zephyr/zephyr_gpio.md",
+        "patchSetId": 12
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-01-11T00:40:05Z",
+      "side": 1,
+      "message": "port (X), pin number (Y)",
+      "range": {
+        "startLine": 29,
+        "startChar": 39,
+        "endLine": 29,
+        "endChar": 55
+      },
+      "revId": "43727e2d749ddf830ccb042b3269de6d9de2a858",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "877a1355_31d94816",
+        "filename": "docs/zephyr/zephyr_gpio.md",
+        "patchSetId": 12
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-01-11T00:40:05Z",
+      "side": 1,
+      "message": "Reword to remove passive voice:\n\nThe file [gpio-enum-name.yaml] defines the list of valid `enum-name` values.",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 73
+      },
+      "revId": "43727e2d749ddf830ccb042b3269de6d9de2a858",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c6987c5_9e7752e6",
+        "filename": "docs/zephyr/zephyr_gpio.md",
+        "patchSetId": 12
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-01-11T00:40:05Z",
+      "side": 1,
+      "message": "delete",
+      "range": {
+        "startLine": 34,
+        "startChar": 24,
+        "endLine": 34,
+        "endChar": 42
+      },
+      "revId": "43727e2d749ddf830ccb042b3269de6d9de2a858",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c964ae16_854ab2c8",
+        "filename": "docs/zephyr/zephyr_gpio.md",
+        "patchSetId": 12
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-01-11T00:40:05Z",
+      "side": 1,
+      "message": "from",
+      "range": {
+        "startLine": 34,
+        "startChar": 70,
+        "endLine": 34,
+        "endChar": 74
+      },
+      "revId": "43727e2d749ddf830ccb042b3269de6d9de2a858",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e0fd9b8_f7c05e16",
+        "filename": "docs/zephyr/zephyr_gpio.md",
+        "patchSetId": 12
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-01-11T00:40:05Z",
+      "side": 1,
+      "message": "same net name",
+      "range": {
+        "startLine": 35,
+        "startChar": 42,
+        "endLine": 35,
+        "endChar": 46
+      },
+      "revId": "43727e2d749ddf830ccb042b3269de6d9de2a858",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5309d2b4_5d99d676",
+        "filename": "docs/zephyr/zephyr_gpio.md",
+        "patchSetId": 12
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-01-11T00:40:05Z",
+      "side": 1,
+      "message": "I\u0027m adding a section to the Zephyr overview that will hopefully add clarity to the difference between node-name and node-label.",
+      "range": {
+        "startLine": 35,
+        "startChar": 22,
+        "endLine": 35,
+        "endChar": 31
+      },
+      "revId": "43727e2d749ddf830ccb042b3269de6d9de2a858",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd5db445_78cf459e",
+        "filename": "docs/zephyr/zephyr_gpio.md",
+        "patchSetId": 12
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-01-11T00:40:05Z",
+      "side": 1,
+      "message": "the GPIO signal properties",
+      "range": {
+        "startLine": 52,
+        "startChar": 49,
+        "endLine": 52,
+        "endChar": 76
+      },
+      "revId": "43727e2d749ddf830ccb042b3269de6d9de2a858",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "087f7348_d22ed925",
+        "filename": "docs/zephyr/zephyr_gpio.md",
+        "patchSetId": 12
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-01-11T00:40:05Z",
+      "side": 1,
+      "message": "Unused GPIOs should be listed separately in an `unused-gpio` node.  EC chip specific code initializes all the unused GPIOs for optimum power consumption.",
+      "range": {
+        "startLine": 61,
+        "startChar": 0,
+        "endLine": 63,
+        "endChar": 0
+      },
+      "revId": "43727e2d749ddf830ccb042b3269de6d9de2a858",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2aa0cc0f_a3f73405",
+        "filename": "docs/zephyr/zephyr_gpio.md",
+        "patchSetId": 12
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-01-11T00:40:05Z",
+      "side": 1,
+      "message": "Add a section here to describe low-voltage pins. For Nuvoton this is done with the \"lvol-io-pads\" property of the nuvoton,npcx-lvolctrl-def node.\n\nFor ITE, the flags bit GPIO_VOLTAGE_1P8 sets pins as low voltage.",
+      "revId": "43727e2d749ddf830ccb042b3269de6d9de2a858",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f1a42bf_5bc433c8",
+        "filename": "docs/zephyr/zephyr_gpio.md",
+        "patchSetId": 12
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-01-11T00:40:05Z",
+      "side": 1,
+      "message": "Break this up into 2 sentences.\n\nSet or get the GPIO value in the C source code directy using the `enum-name` property `GPIO_ENTERING_RW`.\n\n```\n    gpio_set_level(GPIO_ENTERING_RW, 0);\n    val \u003d gpio_get_level(GPIO_ENTERING_RW);\n```\n\nUse the node label to reference the GPIO in other devicetree nodes:",
+      "range": {
+        "startLine": 149,
+        "startChar": 0,
+        "endLine": 149,
+        "endChar": 162
+      },
+      "revId": "43727e2d749ddf830ccb042b3269de6d9de2a858",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c95886f6_e7fd6f9d",
+        "filename": "docs/zephyr/zephyr_gpio.md",
+        "patchSetId": 12
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-01-11T00:40:05Z",
+      "side": 1,
+      "message": "Link the the zephyr github source here instead.",
+      "range": {
+        "startLine": 164,
+        "startChar": 27,
+        "endLine": 164,
+        "endChar": 154
+      },
+      "revId": "43727e2d749ddf830ccb042b3269de6d9de2a858",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11bc39bc_fce8e548",
+        "filename": "docs/zephyr/zephyr_gpio.md",
+        "patchSetId": 12
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-01-11T00:40:05Z",
+      "side": 1,
+      "message": "Link to Zephyr github source and to the line number starting the GPIO interrupt configuration flags.",
+      "range": {
+        "startLine": 166,
+        "startChar": 0,
+        "endLine": 166,
+        "endChar": 138
+      },
+      "revId": "43727e2d749ddf830ccb042b3269de6d9de2a858",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
