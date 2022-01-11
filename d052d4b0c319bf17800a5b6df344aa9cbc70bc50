@@ -53,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7538915d_6091ca76",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-01-11T18:58:01Z",
+      "side": 1,
+      "message": "I\u0027d strongly prefer we share these as much as possible to avoid double-maintenance.  That, plus it\u0027s not massively inspiring while we upstream our stack if we can\u0027t at least use our stack for all our own tools.  \n\nDouble maintenance on the PRL might not be too bad because it\u0027s relatively stable, but in the PE and TC it could definitely become a pain.",
+      "parentUuid": "e81d5a5d_2970f5cd",
+      "revId": "d052d4b0c319bf17800a5b6df344aa9cbc70bc50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8d4782a7_1e717ecc",
