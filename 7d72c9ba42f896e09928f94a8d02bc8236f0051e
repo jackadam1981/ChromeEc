@@ -16,6 +16,24 @@
       "message": "Does everyone agree that the current WIP includes the portions of the original DRP driver that are needed?  I will squash the two commits into one so it is easier to read the actual SNK subsystem module once this has been concluded.",
       "revId": "7d72c9ba42f896e09928f94a8d02bc8236f0051e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "432cc433_e0739ed5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 20
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2022-01-11T19:25:33Z",
+      "side": 1,
+      "message": "Sam suggests that I leave the old DRP code in place for now and when this becomes a PR and combined with his code we will drop the DRP code from this commit chain",
+      "parentUuid": "bf9cf4b2_51ae503c",
+      "revId": "7d72c9ba42f896e09928f94a8d02bc8236f0051e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

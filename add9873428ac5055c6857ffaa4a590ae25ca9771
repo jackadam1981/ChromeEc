@@ -65,6 +65,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "49e58980_ef06d604",
+        "filename": "zephyr/subsys/usbc/tc/snk.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2022-01-11T19:25:33Z",
+      "side": 1,
+      "message": "removed. this is going to live in the usbc_stack code",
+      "parentUuid": "18ee17e2_4e4a26e4",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 64
+      },
+      "revId": "add9873428ac5055c6857ffaa4a590ae25ca9771",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d7808631_b609178f",
@@ -196,6 +220,30 @@
       "side": 1,
       "message": "I have not gone through Sam\u0027s code yet. I just received the URL today.",
       "parentUuid": "d7235e60_becc3fd5",
+      "range": {
+        "startLine": 171,
+        "startChar": 6,
+        "endLine": 171,
+        "endChar": 26
+      },
+      "revId": "add9873428ac5055c6857ffaa4a590ae25ca9771",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7250435d_2a90144e",
+        "filename": "zephyr/subsys/usbc/tc/snk.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2022-01-11T19:25:33Z",
+      "side": 1,
+      "message": "I am working with Sam to sync our pieces of this code",
+      "parentUuid": "c9189f45_6f4166bc",
       "range": {
         "startLine": 171,
         "startChar": 6,

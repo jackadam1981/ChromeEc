@@ -206,6 +206,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1eef9e9f_37be3a87",
+        "filename": "zephyr/subsys/usbc/tc/snk.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2022-01-11T19:25:33Z",
+      "side": 1,
+      "message": "removing all references to charge manager code for this initial sink implementation.",
+      "parentUuid": "ae5f9f2a_3ff99b43",
+      "revId": "7c7a47acbb198f25ee45bae58a173823db350a81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "834fdcf9_0f98fb1d",
