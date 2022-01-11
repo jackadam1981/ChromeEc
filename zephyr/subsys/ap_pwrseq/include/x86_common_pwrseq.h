@@ -89,6 +89,8 @@ struct pwrseq_context {
 	uint32_t in_want;
 	/* Signal values which print debug output */
 	uint32_t in_debug;
+	/* Indicate should exit G3 power state or not */
+	int want_g3_exit;
 };
 
 /* Information of a GPIO power signal */
