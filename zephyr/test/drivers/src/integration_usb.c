@@ -249,6 +249,54 @@ static void test_attach_drp(void)
 	zassert_equal(PE_SNK_READY, get_state_pe(USBC_PORT_C0), NULL);
 }
 
+static void test_attach_sink_with_extra_msg(void)
+{
+	const struct emul *tcpci_emul =
+		emul_get_binding(DT_LABEL(TCPCI_EMUL_LABEL));
+	struct tcpci_snk_emul my_sink;
+	uint32_t data = 0;
+
+	k_sleep(K_SECONDS(1));
+	/* Set chipset to ON, this will set TCPM to DRP */
+	test_set_chipset_to_s0();
+
+	/* TODO(b/214401892): Check why need to give time TCPM to spin */
+	k_sleep(K_SECONDS(1));
+
+	/* Attach emulated sink */
+	tcpci_snk_emul_init(&my_sink);
+	zassert_ok(tcpci_snk_emul_connect_to_tcpci(&my_sink.data,
+						   &my_sink.common_data,
+						   &my_sink.ops, tcpci_emul),
+		   NULL);
+
+	/*
+	 * Send extra unexpected data message.
+	 * Without fix for b/214230277 header of this message is overwrite by
+	 * Request (expected PD message), but data is used as payload of
+	 * Request. This leads to not sending soft reset and fail in
+	 * checking requested voltage in PE_SRC_Negotiate_Capability state.
+	 */
+	tcpci_partner_send_data_msg(&my_sink.common_data, PD_DATA_SINK_CAP,
+				    &data, 1 /* = PDO num */, 0 /* = delay */);
+
+	/* Wait for PD negotiation */
+	k_sleep(K_SECONDS(10));
+
+	/*
+	 * TCPM should trigger soft reset to establish PD contract, because of
+	 * unexpected message.
+	 */
+
+	/* Test if partner believe that PD negotiation is completed */
+	zassert_true(my_sink.data.pd_completed, NULL);
+	/*
+	 * Test that SRC ready is achieved
+	 * TODO: Change it to examining EC_CMD_TYPEC_STATUS
+	 */
+	zassert_equal(PE_SRC_READY, get_state_pe(USBC_PORT_C0), NULL);
+}
+
 void test_suite_integration_usb(void)
 {
 	ztest_test_suite(integration_usb,
@@ -263,6 +311,9 @@ void test_suite_integration_usb(void)
 				 remove_emulated_devices),
 			 ztest_user_unit_test_setup_teardown(
 				 test_attach_drp, init_tcpm,
+				 remove_emulated_devices),
+			 ztest_user_unit_test_setup_teardown(
+				 test_attach_sink_with_extra_msg, init_tcpm,
 				 remove_emulated_devices));
 	ztest_run_test_suite(integration_usb);
 }
