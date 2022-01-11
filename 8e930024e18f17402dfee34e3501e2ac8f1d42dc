@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d2969670_7d8b9b7f",
+        "filename": "docs/reducing_ec_image_size.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-01-11T23:59:35Z",
+      "side": 1,
+      "message": "Adding \"-l INFO\" is no longer required.  The default output now always shows the flash and SRAM usage.\n\n$ zmake configure -b volteer\nClearing old build directory /mnt/host/source/src/platform/ec/build/zephyr/volteer\nToolchain \u003czmake.toolchains.CorebootSdkToolchain object at 0x7f2da710d0b8\u003e selected by probe function.\nBuilding volteer in /mnt/host/source/src/platform/ec/build/zephyr/volteer.\nConfiguring volteer:ro.\nConfiguring volteer:rw.\nBuilding /mnt/host/source/src/platform/ec/build/zephyr/volteer:ro: /usr/bin/ninja -C /mnt/host/source/src/platform/ec/build/zephyr/volteer/build-ro\nMemory region         Used Size  Region Size  %age Used\n           FLASH:      234708 B       512 KB     44.77%\n            SRAM:       52776 B        62 KB     83.13%\n        IDT_LIST:          0 GB         2 KB      0.00%\nBuilding /mnt/host/source/src/platform/ec/build/zephyr/volteer:rw: /usr/bin/ninja -C /mnt/host/source/src/platform/ec/build/zephyr/volteer/build-rw\nMemory region         Used Size  Region Size  %age Used\n           FLASH:      234708 B       512 KB     44.77%\n            SRAM:       52776 B        62 KB     83.13%\n        IDT_LIST:          0 GB         2 KB      0.00%",
+      "range": {
+        "startLine": 93,
+        "startChar": 8,
+        "endLine": 93,
+        "endChar": 16
+      },
+      "revId": "8e930024e18f17402dfee34e3501e2ac8f1d42dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
