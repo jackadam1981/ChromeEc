@@ -249,6 +249,78 @@ static void test_attach_drp(void)
 	zassert_equal(PE_SNK_READY, get_state_pe(USBC_PORT_C0), NULL);
 }
 
+/*
+ * Test that when device is deattached at the same time as SOP message is
+ * received from it, the message is not handled when different device is
+ * attached.
+ */
+static void test_deattach_on_msg_recv(void)
+{
+	const struct emul *tcpci_emul =
+		emul_get_binding(DT_LABEL(TCPCI_EMUL_LABEL));
+	struct tcpci_snk_emul snk1;
+	struct tcpci_snk_emul snk2;
+
+	k_sleep(K_SECONDS(1));
+	/* Set chipset to ON, this will set TCPM to DRP */
+	test_set_chipset_to_s0();
+
+	/* TODO(b/214401892): Check why need to give time TCPM to spin */
+	k_sleep(K_SECONDS(1));
+
+	/* Init partner emulators */
+	tcpci_snk_emul_init(&snk1);
+	tcpci_snk_emul_init(&snk2);
+
+	/* Attach snk1 */
+	zassert_ok(tcpci_snk_emul_connect_to_tcpci(&snk1.data,
+						   &snk1.common_data,
+						   &snk1.ops, tcpci_emul),
+		   NULL);
+
+	/* Wait for PD negotiation */
+	k_sleep(K_SECONDS(10));
+
+	/* Test if partner believe that PD negotiation is completed */
+	zassert_true(snk1.data.pd_completed, NULL);
+
+	/*
+	 * Send two messages just before disconnect. This makes sure that
+	 * at least one message is left not handled in TCPCI messages buffer
+	 * (cached_messages)
+	 */
+	tcpci_partner_send_control_msg(&snk1.common_data,
+				       PD_CTRL_REJECT, 0);
+	tcpci_partner_send_control_msg(&snk1.common_data,
+				       PD_CTRL_REJECT, 0);
+	/* Disconnect snk1 */
+	zassert_ok(tcpci_emul_disconnect_partner(tcpci_emul), NULL);
+	/* Wait for PD disconnect */
+	k_sleep(K_SECONDS(5));
+
+	/* Attach snk2 */
+	zassert_ok(tcpci_snk_emul_connect_to_tcpci(&snk2.data,
+						   &snk2.common_data,
+						   &snk2.ops, tcpci_emul),
+		   NULL);
+
+	/* Wait for PD negotiation */
+	k_sleep(K_SECONDS(10));
+
+	/*
+	 * Message from snk1 shouldn't be readed from buffer.
+	 * TODO: Add real check for that
+	 */
+
+	/* Test if partner believe that PD negotiation is completed */
+	zassert_true(snk2.data.pd_completed, NULL);
+	/*
+	 * Test that SRC ready is achieved with snk2
+	 * TODO: Change it to examining EC_CMD_TYPEC_STATUS
+	 */
+	zassert_equal(PE_SRC_READY, get_state_pe(USBC_PORT_C0), NULL);
+}
+
 void test_suite_integration_usb(void)
 {
 	ztest_test_suite(integration_usb,
@@ -263,6 +335,9 @@ void test_suite_integration_usb(void)
 				 remove_emulated_devices),
 			 ztest_user_unit_test_setup_teardown(
 				 test_attach_drp, init_tcpm,
+				 remove_emulated_devices),
+			 ztest_user_unit_test_setup_teardown(
+				 test_deattach_on_msg_recv, init_tcpm,
 				 remove_emulated_devices));
 	ztest_run_test_suite(integration_usb);
 }
