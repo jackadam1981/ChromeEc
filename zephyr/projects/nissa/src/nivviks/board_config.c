@@ -5,7 +5,7 @@
 
 /* Nivviks sub-board hardware configuration */
 
-#include "gpio.h"
+#include "gpios.h"
 #include "hooks.h"
 #include "sub_board.h"
 
@@ -15,12 +15,31 @@ static void nivviks_subboard_init(void)
 
 	if (sb != NISSA_SB_C_A && sb != NISSA_SB_HDMI_A) {
 		/* Turn off unused USB A1 GPIOs */
+		gpio_pin_configure_dt(&gpio_sub_usb_a1_ilimit_sdp,
+				      GPIO_DISCONNECTED);
+		gpio_pin_configure_dt(&gpio_en_sub_usb_a1_vbus,
+				      GPIO_DISCONNECTED);
 	}
-	if (sb == NISSA_SB_C_A || sb == NISSA_SB_C_LTE) {
+	if (sb == NISSA_SB_C_A || sb == NISSA_SB_C_LTE)
 		/* Enable type-C port 1 */
-	}
+		gpio_pin_configure_dt(&gpio_usb_c1_int_odl,
+				      GPIO_INPUT | GPIO_PULL_UP);
 	if (sb == NISSA_SB_HDMI_A) {
+		/* Disable I2C_PORT_USB_C1_TCPC */
+		/* TODO(b:212490923): Use pinctrl to switch from I2C */
 		/* Enable HDMI GPIOs */
+		gpio_pin_configure_dt(&gpio_en_sub_rails_odl,
+				      GPIO_OUTPUT |
+				      GPIO_OPEN_DRAIN |
+				      GPIO_OUTPUT_INIT_HIGH);
+		gpio_pin_configure_dt(&gpio_hdmi_en_sub_odl,
+				      GPIO_OUTPUT |
+				      GPIO_OPEN_DRAIN |
+				      GPIO_OUTPUT_INIT_HIGH);
+		/* Configure the interrupt separately */
+		gpio_pin_configure_dt(&gpio_hpd_sub_odl,
+				      GPIO_INPUT |
+				      GPIO_PULL_UP);
 	}
 }
 /*

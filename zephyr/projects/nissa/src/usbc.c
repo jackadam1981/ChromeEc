@@ -10,6 +10,8 @@
 #include "usbc_ppc.h"
 #include "driver/tcpm/tcpci.h"
 #include "driver/tcpm/raa489000.h"
+
+#include "gpios.h"
 #include "sub_board.h"
 
 #define CPRINTS(format, args...) cprints(CC_USBCHARGE, format, ## args)
@@ -160,7 +162,7 @@ uint16_t tcpc_get_alert_status(void)
 	 * Therefore, go out and actually read the alert registers to report the
 	 * alert status.
 	 */
-	if (!gpio_get_level(GPIO_USB_C0_PD_INT_ODL)) {
+	if (!gpio_pin_get_dt(&gpio_usb_c0_int_odl)) {
 		if (!tcpc_read16(0, TCPC_REG_ALERT, &regval)) {
 			/* The TCPCI Rev 1.0 spec says to ignore bits 14:12. */
 			if (!(tcpc_config[0].flags & TCPC_FLAGS_TCPCI_REV2_0))
@@ -172,7 +174,7 @@ uint16_t tcpc_get_alert_status(void)
 	}
 
 	/* TODO(b:212490923) ignore C1 interrupts if port is not present. */
-	if (!gpio_get_level(GPIO_USB_C1_PD_INT_ODL)) {
+	if (!gpio_pin_get_dt(&gpio_usb_c1_int_odl)) {
 		if (!tcpc_read16(1, TCPC_REG_ALERT, &regval)) {
 			/* TCPCI spec Rev 1.0 says to ignore bits 14:12. */
 			if (!(tcpc_config[1].flags & TCPC_FLAGS_TCPCI_REV2_0))
@@ -259,20 +261,22 @@ static void usbc_interrupt_trigger(int port)
 }
 
 #define USBC_INT_POLL_DATA(port) poll_c ## port ## _int_data
-#define USBC_INT_POLL(port)						  \
-	static void poll_c ## port ## _int (void)			  \
-	{								  \
-		if (!gpio_get_level(GPIO_USB_C ## port ## _PD_INT_ODL)) { \
-			usbc_interrupt_trigger(port);			  \
-			hook_call_deferred(&USBC_INT_POLL_DATA(port),	  \
-					   USBC_INT_POLL_DELAY_US);	  \
-		}							  \
+#define USBC_INT_POLL(port)						    \
+	static void poll_c ## port ## _int (void)			    \
+	{								    \
+		if (!gpio_pin_get_dt(&gpio_usb_c ## port ## _int_odl)) { \
+			usbc_interrupt_trigger(port);			    \
+			hook_call_deferred(&USBC_INT_POLL_DATA(port),	    \
+					   USBC_INT_POLL_DELAY_US);	    \
+		}							    \
 	}
 
 USBC_INT_POLL(0)
 USBC_INT_POLL(1)
 
-void usb_c0_interrupt(enum gpio_signal gpio)
+void usb_c0_interrupt(const struct device *port,
+		      struct gpio_callback *cb,
+		      gpio_port_pins_t pins)
 {
 	/*
 	 * We've just been called from a falling edge, so there's definitely
@@ -285,17 +289,43 @@ void usb_c0_interrupt(enum gpio_signal gpio)
 	hook_call_deferred(&USBC_INT_POLL_DATA(0), USBC_INT_POLL_DELAY_US);
 }
 
-void usb_c1_interrupt(enum gpio_signal gpio)
+void usb_c1_interrupt(const struct device *port,
+		      struct gpio_callback *cb,
+		      gpio_port_pins_t pins)
 {
 	hook_call_deferred(&USBC_INT_POLL_DATA(1), -1);
 	usbc_interrupt_trigger(1);
 	hook_call_deferred(&USBC_INT_POLL_DATA(1), USBC_INT_POLL_DELAY_US);
 }
 
+/*
+ * Set up one USB port's interrupt handling.
+ */
+static void usbc_init_interrupt(const struct gpio_dt_spec *gpio,
+				struct gpio_callback *cb_data,
+				gpio_callback_handler_t cb)
+{
+	gpio_pin_configure_dt(gpio, GPIO_INPUT);
+	gpio_init_callback(cb_data, cb, BIT(gpio->pin));
+	gpio_add_callback(gpio->port, cb_data);
+	gpio_pin_interrupt_configure_dt(gpio, GPIO_INT_EDGE_FALLING);
+}
+
 static void usbc_init(void)
 {
-	gpio_enable_interrupt(GPIO_USB_C0_PD_INT_ODL);
-	if (board_get_usb_pd_port_count() == 2)
-		gpio_enable_interrupt(GPIO_USB_C1_PD_INT_ODL);
+	static struct gpio_callback c0_callback;
+	static struct gpio_callback c1_callback;
+
+	usbc_init_interrupt(&gpio_usb_c1_int_odl,
+			    &c0_callback,
+			    usb_c0_interrupt);
+	hook_call_deferred(&USBC_INT_POLL_DATA(0), USBC_INT_POLL_DELAY_US);
+	if (board_get_usb_pd_port_count() == 2) {
+		usbc_init_interrupt(&gpio_usb_c1_int_odl,
+				    &c1_callback,
+				    usb_c1_interrupt);
+		hook_call_deferred(&USBC_INT_POLL_DATA(0),
+				   USBC_INT_POLL_DELAY_US);
+	}
 }
 DECLARE_HOOK(HOOK_INIT, usbc_init, HOOK_PRIO_DEFAULT);
