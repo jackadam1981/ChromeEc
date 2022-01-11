@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e81d5a5d_2970f5cd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2022-01-11T17:13:43Z",
+      "side": 1,
+      "message": "To get the state machines to fit on the ServoV4p1, I changed the way timers work, ripped out Chromebooks related code that\u0027s unnecessary for ServoV4p1. Originally, I added config flags to comment out that code but things began to look very messy.",
+      "parentUuid": "0ee520cc_b6c2b77d",
+      "revId": "d052d4b0c319bf17800a5b6df344aa9cbc70bc50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8d4782a7_1e717ecc",
