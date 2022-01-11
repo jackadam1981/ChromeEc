@@ -57,6 +57,30 @@
       },
       "revId": "298c760c3bc05520320a5b1fe273767b61920c81",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35c335b3_b12d7f4c",
+        "filename": "common/charge_ramp.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1444467
+      },
+      "writtenOn": "2022-01-11T02:37:11Z",
+      "side": 1,
+      "message": "Hi Aseda and Wai-Hong,\n\nI have filed a bug tracker on b:213937755 for more discusssion about the issue.\n\nThanks!",
+      "parentUuid": "d9d6b996_5f81357f",
+      "range": {
+        "startLine": 44,
+        "startChar": 2,
+        "endLine": 44,
+        "endChar": 46
+      },
+      "revId": "298c760c3bc05520320a5b1fe273767b61920c81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
