@@ -1,5 +1,5 @@
 # Embedded Controller (EC)
-
+# ec decoder public tot
 [TOC]
 
 ## Introduction
