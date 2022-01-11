@@ -5,6 +5,7 @@
 
 /* Keyboard scanner module for Chrome EC */
 
+#include "adc.h"
 #include "chipset.h"
 #include "clock.h"
 #include "common.h"
@@ -194,6 +195,37 @@ static void ensure_keyboard_scanned(int old_polls)
 		usleep(keyscan_config.scan_period_us);
 }
 
+#ifdef CONFIG_KEYBOARD_SCAN_ANTIGHOST_ADC
+/**
+ * Read KSI adc rows
+ *
+ * Read each adc channel and look for voltage crossing threshold level
+ */
+static int keyboard_read_adc_rows(void)
+{
+	uint8_t kb_row = 0;
+
+	/* Read each adc channel to build row byte */
+	for (int i = 0; i < KEYBOARD_ROWS; i++) {
+		//CPRINTF("*** Reading row %d ***\n", i);
+		if (adc_read_channel(ADC_KSI_00 + i) > TH_VT) {
+			//CPRINTF("*** Key pressed for row %x ***\n\n", i);
+			kb_row |= (1 << i);
+		}
+	}
+
+	return kb_row;
+}
+
+/**
+ * Check for Esc key pressed
+ *
+ * ADC KSI scanning is time consuming. During boot key scan, we want
+ * to read the entire matrix only if the ESC key is pressed
+ **/
+#endif
+
+
 /**
  * Simulate a keypress.
  *
@@ -266,13 +298,26 @@ static int read_matrix(uint8_t *state)
 		udelay(keyscan_config.output_settle_us);
 
 		/* Read the row state */
+#ifdef CONFIG_KEYBOARD_SCAN_ANTIGHOST_ADC
+		state[c] = keyboard_read_adc_rows();
+
+		/* Account for the refresh key */
+		if (c == 2) {
+			if(!gpio_get_level(GPIO_RFR_KEY))
+				state[c] |= (1 << 3);
+			else
+				state[c] &= ~(1 << 3);
+		}
+#else
 		state[c] = keyboard_raw_read_rows();
+#endif
 
 		/* Use simulated keyscan sequence instead if testing active */
 		if (IS_ENABLED(CONFIG_KEYBOARD_TEST))
 			state[c] = keyscan_seq_get_scan(c, state[c]);
 	}
 
+#if !defined(CONFIG_KEYBOARD_SCAN_ANTIGHOST_ADC)
 	/* 2. Detect transitional ghost */
 	for (c = 0; c < keyboard_cols; c++) {
 		int c2;
@@ -296,6 +341,7 @@ static int read_matrix(uint8_t *state)
 			}
 		}
 	}
+#endif
 
 	/* 3. Fix result */
 	for (c = 0; c < keyboard_cols; c++) {
@@ -429,6 +475,7 @@ static int check_runtime_keys(const uint8_t *state)
  *
  * @return 1 if ghosting detected, else 0.
  */
+#if !defined(CONFIG_KEYBOARD_SCAN_ANTIGHOST_ADC)
 static int has_ghosting(const uint8_t *state)
 {
 	int c, c2;
@@ -454,6 +501,7 @@ static int has_ghosting(const uint8_t *state)
 
 	return 0;
 }
+#endif
 
 /* Inform keyboard module if scanning is enabled */
 static void key_state_changed(int row, int col, uint8_t state)
@@ -488,9 +536,11 @@ static int check_keys_changed(uint8_t *state)
 	/* Read the raw key state */
 	any_pressed = read_matrix(new_state);
 
+#if !defined(CONFIG_KEYBOARD_SCAN_ANTIGHOST_ADC)
 	/* Ignore if so many keys are pressed that we're ghosting. */
 	if (has_ghosting(new_state))
 		return any_pressed;
+#endif
 
 	/* Check for changes between previous scan and this one */
 	for (c = 0; c < keyboard_cols; c++) {
@@ -512,6 +562,7 @@ static int check_keys_changed(uint8_t *state)
 				/* Debounced but no difference. */
 				continue;
 			any_change = 1;
+
 			key_state_changed(i, c, new_state[c]);
 			/*
 			 * This makes state[c] == new_state[c] for row i.
@@ -532,6 +583,7 @@ static int check_keys_changed(uint8_t *state)
 
 			if (!IS_ENABLED(CONFIG_KEYBOARD_STRICT_DEBOUNCE)) {
 				any_change = 1;
+				CPRINTF("*** Key State Changed 2: Column = 0x%X Row = 0x%X State = 0x%X***\n\n", c, i, new_state[c]);
 				key_state_changed(i, c, new_state[c]);
 			}
 		}
@@ -645,6 +697,32 @@ static uint32_t check_key_list(const uint8_t *state)
 	return boot_key_mask;
 }
 
+#ifdef CONFIG_KEYBOARD_SCAN_ANTIGHOST_ADC
+static void check_adc_boot_keys(uint8_t* state)
+{
+	uint8_t kb_row = 0;
+
+	/* Select column, then wait a bit for it to settle */
+	keyboard_raw_drive_column(KEYBOARD_COL_ESC);
+	udelay(keyscan_config.output_settle_us);
+
+	/* Read the row state */
+	CPRINTF("*** Column = 0x%X ***\n\n", KEYBOARD_COL_ESC);
+
+	if (adc_read_channel(ADC_KSI_00 + KEYBOARD_COL_ESC) > TH_VT)
+		kb_row |= 1 << KEYBOARD_ROW_ESC;
+	state[KEYBOARD_COL_ESC] = kb_row;
+
+	/* Read refresh key */
+	if(!gpio_get_level(GPIO_RFR_KEY))
+		state[KEYBOARD_COL_REFRESH] |= (1 << 3);
+	else
+		state[KEYBOARD_COL_REFRESH] &= ~(1 << 3);
+
+	keyboard_raw_drive_column(KEYBOARD_COLUMN_NONE);
+}
+#endif
+
 /**
  * Check what boot key is down, if any.
  *
@@ -722,7 +800,11 @@ void keyboard_scan_init(void)
 	keyboard_raw_drive_column(KEYBOARD_COLUMN_NONE);
 
 	/* Initialize raw state */
+#ifndef CONFIG_KEYBOARD_SCAN_ANTIGHOST_ADC
 	read_matrix(debounced_state);
+#else
+	check_adc_boot_keys(debounced_state);
+#endif
 
 #ifdef CONFIG_KEYBOARD_LANGUAGE_ID
 	/* Check keyboard ID state */
@@ -737,8 +819,9 @@ void keyboard_scan_init(void)
 	 * If any key other than Esc or Left_Shift was pressed, do not trigger
 	 * recovery.
 	 */
-	if (boot_key_value & ~(BOOT_KEY_ESC | BOOT_KEY_LEFT_SHIFT))
+	if (boot_key_value & ~(BOOT_KEY_ESC | BOOT_KEY_LEFT_SHIFT)) {
 		return;
+	}
 
 #ifdef CONFIG_HOSTCMD_EVENTS
 	if (boot_key_value & BOOT_KEY_ESC) {
@@ -817,11 +900,18 @@ void keyboard_scan_task(void *u)
 			 * user pressing a key and enable_interrupt()
 			 * starting to pay attention to edges.
 			 */
+#if !defined(CONFIG_KEYBOARD_SCAN_ANTIGHOST_ADC)
 			if (!local_disable_scanning &&
 			    (keyboard_raw_read_rows() || force_poll))
 				break;
-			else
+#else
+			if (!local_disable_scanning &&
+			    (keyboard_read_adc_rows() || force_poll || !gpio_get_level(GPIO_RFR_KEY)))
+				break;
+#endif
+			else {
 				task_wait_event(-1);
+			}
 		}
 
 		/* We're about to poll, so any existing forces are fulfilled */
