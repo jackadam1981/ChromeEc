@@ -123,6 +123,25 @@ void gpio_set_lvl(const char *net_name, int val)
 	}
 }
 
+/* Services start */
+void chipset_set_hard_off_state(int enable)
+{
+	/* TODO: This could be accessed by multiple tasks
+	 * at this point it is power button task
+	 */
+	pwrseq_ctx.want_g3_exit = enable;
+}
+
+void chipset_exit_hard_off(void)
+{
+	if (pwrseq_ctx.power_state != SYS_POWER_STATE_G3 &&
+	    pwrseq_ctx.power_state != SYS_POWER_STATE_S5G3 &&
+	    pwrseq_ctx.power_state != SYS_POWER_STATE_S5)
+		return;
+
+	chipset_set_hard_off_state(1);
+}
+
 static int check_power_rails_enabled(void)
 {
 	int out = 1;
@@ -428,7 +447,11 @@ static int common_pwr_sm_run(int state)
 {
 	switch (state) {
 	case SYS_POWER_STATE_G3:
-		/* Nothing to do */
+		if (pwrseq_ctx.want_g3_exit) {
+			chipset_set_hard_off_state(0);
+			return SYS_POWER_STATE_G3S5;
+		}
+
 		break;
 
 	case SYS_POWER_STATE_G3S5:
@@ -683,6 +706,7 @@ void init_pwr_seq_state(void)
 	/* Delay value can be ovverriden by chipset */
 	init_chipset_pwr_seq_state();
 
+	chipset_set_hard_off_state(0);
 	pwr_sm_set_state(SYS_POWER_STATE_G3S5);
 }
 

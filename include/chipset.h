@@ -131,7 +131,12 @@ static inline int chipset_in_or_transitioning_to_state(int state_mask)
 	return state_mask & CHIPSET_STATE_ANY_OFF;
 }
 
+#if defined(CONFIG_ZEPHYR) && defined (CONFIG_X86_NON_DSX_POWER_SEQ)
+void chipset_exit_hard_off(void);
+#else
 static inline void chipset_exit_hard_off(void) { }
+#endif
+
 static inline void chipset_throttle_cpu(int throttle) { }
 static inline void chipset_force_shutdown(enum chipset_shutdown_reason reason)
 {
@@ -148,6 +153,7 @@ static inline void chipset_power_good_interrupt(enum gpio_signal signal) { }
 static inline void chipset_watchdog_interrupt(enum gpio_signal signal) { }
 
 static inline void init_reset_log(void) { }
+
 
 #endif /* !HAS_TASK_CHIPSET */
 
