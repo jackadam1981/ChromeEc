@@ -42,6 +42,11 @@ const char pwrsm_dbg[][25] = {
 	[SYS_POWER_STATE_S4S5] = "STATE_S4S5",
 	[SYS_POWER_STATE_S3S4] = "STATE_S3S4",
 	[SYS_POWER_STATE_S0S3] = "STATE_S0S3",
+#ifdef CONFIG_PLATFORM_EC_POWERSEQ_S0IX
+	[SYS_POWER_STATE_S0ix] = "STATE_S0ix",
+	[SYS_POWER_STATE_S0ixS0] = "STATE_S0ixS0",
+	[SYS_POWER_STATE_S0S0ix] = "STATE_S0S0ix",
+#endif
 };
 
 /*
@@ -295,6 +300,147 @@ void power_signal_cb(const struct device *gpiodev, struct gpio_callback *cb,
 	power_update_signals();
 }
 
+#ifdef CONFIG_PLATFORM_EC_POWERSEQ_S0IX
+/*
+ * Backup copies of SCI and SMI mask to preserve across S0ix suspend/resume
+ * cycle. If the host uses S0ix, BIOS is not involved during suspend and resume
+ * operations and hence SCI/SMI masks are programmed only once during boot-up.
+ *
+ * These backup variables are set whenever host expresses its interest to
+ * enter S0ix and then lpc_host_event_mask for SCI and SMI are cleared. When
+ * host resumes from S0ix, masks from backup variables are copied over to
+ * lpc_host_event_mask for SCI and SMI.
+ */
+static host_event_t backup_sci_mask;
+static host_event_t backup_smi_mask;
+/*
+ * Clear host event masks for SMI and SCI when host is entering S0ix. This is
+ * done to prevent any SCI/SMI interrupts when the host is in suspend. Since
+ * BIOS is not involved in the suspend path, EC needs to take care of clearing
+ * these masks.
+ */
+static void lpc_s0ix_suspend_clear_masks(void)
+{
+	backup_sci_mask = lpc_get_host_event_mask(LPC_HOST_EVENT_SCI);
+	backup_smi_mask = lpc_get_host_event_mask(LPC_HOST_EVENT_SMI);
+	lpc_set_host_event_mask(LPC_HOST_EVENT_SCI, 0);
+	lpc_set_host_event_mask(LPC_HOST_EVENT_SMI, 0);
+}
+
+/*
+ * Restore host event masks for SMI and SCI when host exits S0ix. This is done
+ * because BIOS is not involved in the resume path and so EC needs to restore
+ * the masks from backup variables.
+ */
+static void lpc_s0ix_resume_restore_masks(void)
+{
+	/*
+	 * No need to restore SCI/SMI masks if both backup_sci_mask and
+	 * backup_smi_mask are zero. This indicates that there was a failure to
+	 * enter S0ix(SLP_S0# assertion) and hence SCI/SMI masks were never
+	 * backed up.
+	 */
+	if (!backup_sci_mask && !backup_smi_mask)
+		return;
+	lpc_set_host_event_mask(LPC_HOST_EVENT_SCI, backup_sci_mask);
+	lpc_set_host_event_mask(LPC_HOST_EVENT_SMI, backup_smi_mask);
+	backup_sci_mask = backup_smi_mask = 0;
+}
+
+static void lpc_s0ix_hang_detected(void)
+{
+	/*
+	 * Wake up the AP so they don't just chill in a non-suspended state and
+	 * burn power. Overload a vaguely related event bit since event bits are
+	 * at a premium. If the system never entered S0ix, then manually set the
+	 * wake mask to pretend it did, so that the hang detect event wakes the
+	 * system.
+	 */
+	if (pwr_sm_get_state() == SYS_POWER_STATE_S0) {
+		host_event_t sleep_wake_mask;
+		get_lazy_wake_mask(POWER_S0ix, &sleep_wake_mask);
+		lpc_set_host_event_mask(LPC_HOST_EVENT_WAKE, sleep_wake_mask);
+	}
+	LOG_INF("Warning: Detected sleep hang! Waking host up!");
+	host_set_single_event(EC_HOST_EVENT_HANG_DETECT);
+}
+
+static void handle_chipset_suspend(void)
+{
+	/* Clear masks before any hooks are run for suspend. */
+	lpc_s0ix_suspend_clear_masks();
+}
+DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, handle_chipset_suspend, HOOK_PRIO_FIRST);
+
+static void handle_chipset_reset(void)
+{
+	if (chipset_in_state(CHIPSET_STATE_STANDBY)) {
+		LOG_DBG("chipset reset: exit s0ix");
+		power_reset_host_sleep_state();
+		/* TODO: Resume power sequence thread */
+	}
+}
+DECLARE_HOOK(HOOK_CHIPSET_RESET, handle_chipset_reset, HOOK_PRIO_FIRST);
+
+void power_reset_host_sleep_state(void)
+{
+	power_set_host_sleep_state(HOST_SLEEP_EVENT_DEFAULT_RESET);
+	sleep_reset_tracking();
+	power_chipset_handle_host_sleep_event(HOST_SLEEP_EVENT_DEFAULT_RESET,
+					      NULL);
+}
+#endif /* CONFIG_PLATFORM_EC_POWERSEQ_S0IX */
+
+#ifdef CONFIG_PLATFORM_EC_POWERSEQ_HOST_SLEEP
+
+__overridable void power_board_handle_host_sleep_event(
+		enum host_sleep_event state)
+{
+	/* Default weak implementation -- no action required. */
+}
+
+__override void power_chipset_handle_host_sleep_event(
+		enum host_sleep_event state,
+		struct host_sleep_event_context *ctx)
+{
+	power_board_handle_host_sleep_event(state);
+
+#ifdef CONFIG_PLATFORM_EC_POWERSEQ_S0IX
+	if (state == HOST_SLEEP_EVENT_S0IX_SUSPEND) {
+		/*
+		 * Indicate to power state machine that a new host event for
+		 * s0ix/s3 suspend has been received and so chipset suspend
+		 * notification needs to be sent to listeners.
+		 */
+		sleep_set_notify(SLEEP_NOTIFY_SUSPEND);
+
+		sleep_start_suspend(ctx, lpc_s0ix_hang_detected);
+		power_signal_enable_interrupt(X86_SLP_S0);
+	} else if (state == HOST_SLEEP_EVENT_S0IX_RESUME) {
+		/*
+		 * Wake up chipset task and indicate to power state machine that
+		 * listeners need to be notified of chipset resume.
+		 */
+		sleep_set_notify(SLEEP_NOTIFY_RESUME);
+		/* TODO: resume power sequence thread */
+		lpc_s0ix_resume_restore_masks();
+		power_signal_disable_interrupt(X86_SLP_S0);
+		sleep_complete_resume(ctx);
+		/*
+		 * If the sleep signal timed out and never transitioned, then
+		 * the wake mask was modified to its suspend state (S0ix), so
+		 * that the event wakes the system. Explicitly restore the wake
+		 * mask to its S0 state now.
+		 */
+		power_update_wake_mask();
+	} else if (state == HOST_SLEEP_EVENT_DEFAULT_RESET) {
+		power_signal_disable_interrupt(X86_SLP_S0);
+	}
+#endif /* CONFIG_PLATFORM_EC_POWERSEQ_S0IX */
+
+}
+#endif /* CONFIG_PLATFORM_EC_POWERSEQ_HOST_SLEEP */
+
 static void pwrseq_gpio_init(void)
 {
 	struct gpio_config *gpio;
@@ -432,6 +578,8 @@ static int common_pwr_sm_run(int state)
 		break;
 
 	case SYS_POWER_STATE_G3S5:
+		/* Wait DSW_PWROK and SLP_SUS_L */
+		/* DSW_PWROK */
 		if (power_wait_signals(IN_PGOOD_ALL_CORE))
 			break;
 		/*
@@ -501,13 +649,17 @@ static int common_pwr_sm_run(int state)
 			chipset_force_shutdown(CHIPSET_SHUTDOWN_POWERFAIL);
 			return SYS_POWER_STATE_G3;
 		}
-		/* Call hooks now that rails are up */
-		/* TODO: hook_notify(HOOK_CHIPSET_STARTUP); */
 
-		/* TODO: S0ix
+		/* Call hooks now that rails are up */
+		hook_notify(HOOK_CHIPSET_STARTUP);
+
+#ifdef CONFIG_PLATFORM_EC_POWERSEQ_S0IX
+		/*
 		 * Clearing the S0ix flag on the path to S0
 		 * to handle any reset conditions.
 		 */
+		power_reset_host_sleep_state();
+#endif
 		return SYS_POWER_STATE_S3;
 
 	case SYS_POWER_STATE_S3:
@@ -533,6 +685,54 @@ static int common_pwr_sm_run(int state)
 			return SYS_POWER_STATE_S0;
 		break;
 
+#ifdef CONFIG_PLATFORM_EC_POWERSEQ_S0IX
+	case SYS_POWER_STATE_S0ix:
+		/* System in S0 only if SLP_S0 and SLP_S3 are de-asserted */
+		if ((power_signal_get_level(X86_SLP_S0) == 1) &&
+			(power_signal_get_level(X86_SLP_S3) == 1)) {
+			return SYS_POWER_STATE_S0ixS0;
+		else if (!power_has_signals(IN_PGOOD_ALL_CORE)) {
+			return SYS_POWER_STATE_S0;
+		}
+
+		break;
+
+	case POWER_S0S0ix:
+		/*
+		 * Call hooks only if we haven't notified listeners of S0ix
+		 * suspend.
+		 */
+		sleep_notify_transition(SLEEP_NOTIFY_SUSPEND,
+					HOOK_CHIPSET_SUSPEND);
+		sleep_suspend_transition();
+
+		/*
+		 * Enable idle task deep sleep. Allow the low power idle task
+		 * to go into deep sleep in S0ix.
+		 */
+		enable_sleep(SLEEP_MASK_AP_RUN);
+
+#ifdef CONFIG_PLATFORM_EC_CHIPSET_RESUME_INIT_HOOK 
+		hook_notify(HOOK_CHIPSET_SUSPEND_COMPLETE);
+#endif
+
+		return SYS_POWER_STATE_S0ix;
+
+	case SYS_POWER_STATE_S0ixS0:
+		/*
+		 * Disable idle task deep sleep. This means that the low
+		 * power idle task will not go into deep sleep while in S0.
+		 */
+		disable_sleep(SLEEP_MASK_AP_RUN);
+
+#ifdef CONFIG_PLATFORM_EC_CHIPSET_RESUME_INIT_HOOK
+		hook_notify(HOOK_CHIPSET_RESUME_INIT);
+#endif
+
+		sleep_resume_transition();
+		return SYS_POWER_STATE_S0;
+#endif /* CONFIG_PLATFORM_EC_POWERSEQ_S0IX */
+
 	case SYS_POWER_STATE_S0:
 		if (!power_has_signals(IN_PGOOD_ALL_CORE)) {
 			chipset_force_shutdown(CHIPSET_SHUTDOWN_POWERFAIL);
@@ -540,8 +740,23 @@ static int common_pwr_sm_run(int state)
 		} else if (power_signal_get_level(X86_SLP_S3) == 0) {
 			/* Power down to next state */
 			return SYS_POWER_STATE_S0S3;
+#ifdef CONFIG_PLATFORM_EC_POWERSEQ_S0IX
+		/*
+		 * SLP_S0 may assert in system idle scenario without a kernel
+		 * freeze call. This may cause interrupt storm since there is
+		 * no freeze/unfreeze of threads/process in the idle scenario.
+		 * Ignore the SLP_S0 assertions in idle scenario by checking
+		 * the host sleep state.
+		 */
+		} else if (power_get_host_sleep_state()
+					== HOST_SLEEP_EVENT_S0IX_SUSPEND &&
+				power_signal_get_level(X86_SLP_S0) == 0) {
+			return SYS_POWER_STATE_S0S0ix;
+		} else {
+			sleep_notify_transition(SLEEP_NOTIFY_RESUME,
+						HOOK_CHIPSET_RESUME);
+#endif /* CONFIG_PLATFORM_EC_POWERSEQ_S0IX */
 		}
-		/* TODO: S0ix */
 
 		break;
 
@@ -566,7 +781,26 @@ static int common_pwr_sm_run(int state)
 
 	case SYS_POWER_STATE_S0S3:
 		/* Call hooks before we remove power rails */
-		/* TODO: hook_notify(HOOK_CHIPSET_SUSPEND); */
+		hook_notify(HOOK_CHIPSET_SUSPEND);
+#ifdef CONFIG_CHIPSET_RESUME_INIT_HOOK
+		/* Call hooks after chipset suspend */
+		hook_notify(HOOK_CHIPSET_SUSPEND_COMPLETE);
+#endif
+
+		/* Suspend wireless */
+		wireless_set_state(WIRELESS_SUSPEND);
+
+		/*
+		 * Enable idle task deep sleep. Allow the low power idle task
+		 * to go into deep sleep in S3 or lower.
+		 */
+		enable_sleep(SLEEP_MASK_AP_RUN);
+
+#ifdef CONFIG_PLATFORM_EC_POWERSEQ_S0IX
+		/* Re-initialize S0ix flag */
+		power_reset_host_sleep_state();
+#endif
+
 		return SYS_POWER_STATE_S3;
 
 	default:
@@ -575,6 +809,7 @@ static int common_pwr_sm_run(int state)
 
 	return state;
 }
+
 /* Console commands */
 
 static int powerinfo_handler(const struct shell *shell, size_t argc,
@@ -751,7 +986,17 @@ int chipset_in_state(int state_mask)
 	case SYS_POWER_STATE_S0:
 		need_mask = CHIPSET_STATE_ON;
 		break;
+#ifdef CONFIG_PLATFORM_EC_POWERSEQ_S0IX
+	case SYS_POWER_STATE_S0ixS0:
+	case SYS_POWER_STATE_S0S0ix:
+		need_mask = CHIPSET_STATE_ON | CHIPSET_STATE_STANDBY;
+		break;
+	case POWER_S0ix:
+		need_mask = CHIPSET_STATE_STANDBY;
+		break;
+#endif
 	}
+
 	/* Return non-zero if all needed bits are present */
 	return (state_mask & need_mask) == need_mask;
 }
@@ -773,10 +1018,19 @@ int chipset_in_or_transitioning_to_state(int state_mask)
 	case SYS_POWER_STATE_S4S3:
 	case SYS_POWER_STATE_S0S3:
 		return state_mask & CHIPSET_STATE_SUSPEND;
+#ifdef CONFIG_PLATFORM_EC_POWERSEQ_S0IX
+	case SYS_POWER_STATE_S0ix:
+	case SYS_POWER_STATE_S0S0ix:
+		return state_mask & CHIPSET_STATE_STANDBY;
+#endif
 	case SYS_POWER_STATE_S0:
 	case SYS_POWER_STATE_S3S0:
+#ifdef CONFIG_PLATFORM_EC_POWERSEQ_S0IX
+	case POWER_S0ixS0:
+#endif
 		return state_mask & CHIPSET_STATE_ON;
 	}
+
 	/* Unknown power state; return false. */
 	return 0;
 }
