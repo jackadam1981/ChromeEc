@@ -16,6 +16,47 @@
       "message": "We just recently reverted this to what it is now. I need more explanation as to why you wish to enable HW ramping? You shouldn\u0027t need to ramp Type-C suppliers.",
       "revId": "298c760c3bc05520320a5b1fe273767b61920c81",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "402795fc_17eee2d0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-01-11T00:33:33Z",
+      "side": 1,
+      "message": "+1. Please file a bug to discuss the problem.",
+      "parentUuid": "90485926_b818f5e5",
+      "revId": "298c760c3bc05520320a5b1fe273767b61920c81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9d6b996_5f81357f",
+        "filename": "common/charge_ramp.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-01-11T00:33:33Z",
+      "side": 1,
+      "message": "This function can\u0027t guarantee the VBUS is above 4.75V. It depends on the hardware design. How can you know the threshold is 4.75V?",
+      "range": {
+        "startLine": 44,
+        "startChar": 2,
+        "endLine": 44,
+        "endChar": 46
+      },
+      "revId": "298c760c3bc05520320a5b1fe273767b61920c81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
