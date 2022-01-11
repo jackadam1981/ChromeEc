@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b7ffbd7_b1fc334f",
+        "filename": "driver/als_cm32183.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2022-01-11T20:35:55Z",
+      "side": 1,
+      "message": "Please add a separate variable \"lux\" instead of reusing \"data\" to make it more readable",
+      "range": {
+        "startLine": 33,
+        "startChar": 1,
+        "endLine": 33,
+        "endChar": 5
+      },
+      "revId": "84f0110be033cbcd4859ae70c3d27d804fb00e48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ba2fde6_66e9fa5c",
+        "filename": "driver/als_cm32183.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2022-01-11T20:35:55Z",
+      "side": 1,
+      "message": "No offset needed here? Like on line 34: `data +\u003d drv_data-\u003eoffset;`",
+      "range": {
+        "startLine": 95,
+        "startChar": 1,
+        "endLine": 98,
+        "endChar": 25
+      },
+      "revId": "84f0110be033cbcd4859ae70c3d27d804fb00e48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d08be614_0a95dae7",
+        "filename": "driver/als_cm32183.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2022-01-11T20:35:55Z",
+      "side": 1,
+      "message": "Please #define this",
+      "range": {
+        "startLine": 117,
+        "startChar": 25,
+        "endLine": 117,
+        "endChar": 31
+      },
+      "revId": "84f0110be033cbcd4859ae70c3d27d804fb00e48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54d521a7_d2348ce2",
+        "filename": "driver/als_cm32183.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2022-01-11T20:35:55Z",
+      "side": 1,
+      "message": "return sensor_init_done(s);",
+      "range": {
+        "startLine": 127,
+        "startChar": 1,
+        "endLine": 127,
+        "endChar": 19
+      },
+      "revId": "84f0110be033cbcd4859ae70c3d27d804fb00e48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12707898_db07d3e6",
+        "filename": "driver/als_cm32183.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2022-01-11T20:35:55Z",
+      "side": 1,
+      "message": "windows",
+      "range": {
+        "startLine": 50,
+        "startChar": 54,
+        "endLine": 50,
+        "endChar": 61
+      },
+      "revId": "84f0110be033cbcd4859ae70c3d27d804fb00e48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a56764f_c04d1561",
+        "filename": "driver/als_cm32183.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2022-01-11T20:35:55Z",
+      "side": 1,
+      "message": "sensor",
+      "range": {
+        "startLine": 83,
+        "startChar": 32,
+        "endLine": 83,
+        "endChar": 38
+      },
+      "revId": "84f0110be033cbcd4859ae70c3d27d804fb00e48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
