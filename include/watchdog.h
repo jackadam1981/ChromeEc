@@ -20,6 +20,7 @@
  */
 int watchdog_init(void);
 
+int watchdog_reinit(void);
 /**
  * Display a trace with information about an expired watchdog timer
  *
