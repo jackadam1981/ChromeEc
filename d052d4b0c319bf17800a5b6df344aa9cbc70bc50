@@ -91,6 +91,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2aa0a089_00e69a2c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-01-11T23:47:50Z",
+      "side": 1,
+      "message": "Re: resources, is that even with the space freed up by removing RW?\n\nWhat parts of the stack in this CL are Servo-specific from a functional point of view?",
+      "parentUuid": "5b0a7c5e_b1ffc3c9",
+      "revId": "d052d4b0c319bf17800a5b6df344aa9cbc70bc50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8d4782a7_1e717ecc",
         "filename": "common/usbc/usbc_task.c",
         "patchSetId": 10
