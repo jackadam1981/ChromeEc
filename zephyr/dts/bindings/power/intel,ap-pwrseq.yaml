@@ -111,6 +111,12 @@ properties:
       description: |
         Output from EC to enable 5V rail.
 
+    en-pp3300-s5-gpios:
+      type: phandle-array
+      required: false
+      description: |
+        Output from EC to enable 3.3V rail.
+
     pg-ec-rsmrst-odl-gpios:
       type: phandle-array
       required: true
