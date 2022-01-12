@@ -25,6 +25,11 @@
 			enum-name = "ADC_TEMP_SENSOR_2";
 			io-channels = <&adc0 1>;
 		};
+		adc_vsense_pp1050_proc: vsense_pp1050_proc {
+			label = "EC_VSENSE_PP1050_PROC";
+			enum-name = "ADC_PP1P05";
+			io-channels = <&adc0 4>;
+		};
 	};
 
 	named-gpios {
@@ -80,7 +85,7 @@
 			gpios = <&gpio7 2 GPIO_ODR_HIGH>;
 		};
 		gpio_ec_soc_pwr_btn_odl: ec_soc_pwr_btn_odl {
-			gpios = <&gpioc 1 GPIO_ODR_LOW>;
+			gpios = <&gpioc 1 GPIO_ODR_HIGH>;
 			enum-name = "GPIO_PCH_PWRBTN_L";
 		};
 		gpio_ec_soc_rsmrst_l: ec_soc_rsmrst_l {

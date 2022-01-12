@@ -1,0 +1,29 @@
+/* Copyright 2022 The Chromium OS Authors. All rights reserved.
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+/ {
+	common-pwrseq {
+		compatible = "intel,ap-pwrseq";
+
+		sys-pwrok-delay = <10>;
+		all-sys-pwrgd-timeout = <20>;
+
+		en-pp5000-s5-gpios = <&gpio4 0 0>;
+		en-pp3300-s5-gpios = <&gpiob 6 0>;
+		pg-ec-rsmrst-odl-gpios = <&gpio9 4 0>;
+		ec-pch-rsmrst-odl-gpios = <&gpioa 6 0>;
+		slp-s0-l-gpios = <&gpio9 7 0>;
+		slp-s3-l-gpios = <&gpioa 5 0>;
+		pg-ec-all-sys-pwrgd-gpios = <&gpioa 7 0>;
+		slp-sus-l-gpios = <&gpio6 2 0>;
+		ec-soc-dsw-pwrok-gpios = <&gpio6 1 0>;
+
+		vccst-pwrgd-od-gpios = <&gpioa 4 0>;
+		imvp9-vrrdy-od-gpios = <&gpio4 3 0>;
+		pch-pwrok-gpios = <&gpio7 2 0>;
+		ec-pch-sys-pwrok-gpios = <&gpio3 7 0>;
+		sys-rst-l-gpios = <&gpioc 5 0>;
+	};
+};
