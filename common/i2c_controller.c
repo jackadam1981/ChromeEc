@@ -48,6 +48,9 @@
 #define I2C_BITBANG_PORT_COUNT 0
 #endif
 
+/* When number of i2c port count is not initialized */
+#define PORT_COUNT_UNINITIALIZED -1
+
 #ifdef CONFIG_ZEPHYR
 /* I2C_PORT_COUNT is bigger than the real count of used I2C devices, so
  * use a special define for that to save RAM.
@@ -2080,3 +2083,26 @@ DECLARE_CONSOLE_COMMAND(i2ctest, command_i2ctest,
 			"i2ctest count|udelay|dev",
 			"I2C stress test");
 #endif /* CONFIG_CMD_I2C_STRESS_TEST */
+
+#ifdef CONFIG_I2C_PORT_COUNT_RUNTIME
+static int i2c_port_count = PORT_COUNT_UNINITIALIZED;
+
+int i2c_get_port_count(void)
+{
+	if (i2c_port_count == PORT_COUNT_UNINITIALIZED)
+		i2c_port_count = i2c_ports_used;
+	return i2c_port_count;
+}
+
+void i2c_set_port_count(int count)
+{
+	/* Maximum i2c port count used is limited by variable-i2c_ports_used */
+	if (count < i2c_ports_used)
+		i2c_port_count = count;
+}
+#else
+int i2c_get_port_count(void)
+{
+	return i2c_ports_used;
+}
+#endif /* CONFIG_I2C_PORT_COUNT_RUNTIME */
