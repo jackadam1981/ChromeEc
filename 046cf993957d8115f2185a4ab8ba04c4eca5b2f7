@@ -22,6 +22,30 @@
       },
       "revId": "046cf993957d8115f2185a4ab8ba04c4eca5b2f7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0da8f66_c123e0b4",
+        "filename": "zephyr/shim/src/ioex.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-01-12T19:35:07Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "5f6dca55_3b1d4a2e",
+      "range": {
+        "startLine": 277,
+        "startChar": 0,
+        "endLine": 277,
+        "endChar": 39
+      },
+      "revId": "046cf993957d8115f2185a4ab8ba04c4eca5b2f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
