@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "499457e6_d5847b31",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-01-12T20:55:43Z",
+      "side": 1,
+      "message": "maybe this is useful for historical context,\nbut reviving a bug for a previous generation device\nthat was closed 2 years as obsolete/won\u0027t fix is\njust confusing in this review. active bugs/feature\nrequests need to capture the relevant information.",
+      "range": {
+        "startLine": 14,
+        "startChar": 6,
+        "endLine": 14,
+        "endChar": 15
+      },
+      "revId": "e92c0832c03b47dd372ed09f619fcc46b8a01a13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "03bee2e7_45f134eb",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 4456,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-01-12T20:55:43Z",
+      "side": 1,
+      "message": "this should probably be version locked with ec_response_power_info_v1\ninstead of redefining established encoding.",
+      "range": {
+        "startLine": 4456,
+        "startChar": 5,
+        "endLine": 4456,
+        "endChar": 27
+      },
+      "revId": "e92c0832c03b47dd372ed09f619fcc46b8a01a13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "895f29b8_56a78bf3",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 4470,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-01-12T20:55:43Z",
+      "side": 1,
+      "message": "the scope of these changes call for a rev bump at\na minimum. i can\u0027t tell if these changes are\nenhancing DPTF or are intended to support DBPT.\nit may make more sense to add a host command for DBPT\ninstead of trying to morph the existing messaging to\nsupport a new service that is far beyond the scope of\nthe original implementation.",
+      "range": {
+        "startLine": 4470,
+        "startChar": 7,
+        "endLine": 4470,
+        "endChar": 32
+      },
+      "revId": "e92c0832c03b47dd372ed09f619fcc46b8a01a13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
