@@ -137,6 +137,52 @@
       },
       "revId": "865e50c43d191a4aad6937dcfae48dc7af3396f6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1eccc60d_04f27972",
+        "filename": "zephyr/subsys/ap_pwrseq/include/x86_non_dsx_adlp_pwrseq_sm.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2022-01-12T03:23:56Z",
+      "side": 1,
+      "message": "Should this definition be in a .c file?",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 34
+      },
+      "revId": "865e50c43d191a4aad6937dcfae48dc7af3396f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4252dee9_8801e3a8",
+        "filename": "zephyr/subsys/ap_pwrseq/include/x86_non_dsx_adlp_pwrseq_sm.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2022-01-12T03:23:56Z",
+      "side": 1,
+      "message": "Same as above, should this definition be in a .c file?",
+      "range": {
+        "startLine": 88,
+        "startChar": 10,
+        "endLine": 88,
+        "endChar": 31
+      },
+      "revId": "865e50c43d191a4aad6937dcfae48dc7af3396f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
