@@ -132,6 +132,11 @@ void pwr_sm_set_state(enum power_states_ndsx new_state)
 	pwrseq_ctx.power_state = new_state;
 }
 
+void chipset_request_exit_hardoff(bool should_exit)
+{
+	pwrseq_ctx.want_g3_exit = should_exit;
+}
+
 void apshutdown(void)
 {
 	if (pwr_sm_get_state() != SYS_POWER_STATE_G3) {
