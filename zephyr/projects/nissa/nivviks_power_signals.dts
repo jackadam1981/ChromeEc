@@ -1,0 +1,210 @@
+/* Copyright 2022 The Chromium OS Authors. All rights reserved.
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+/ {
+	chosen {
+		intel-ap-pwrseq,espi = &espi0;
+	};
+
+	common-pwrseq {
+		compatible = "intel,ap-pwrseq";
+
+		sys-pwrok-delay = <10>;
+		all-sys-pwrgd-timeout = <20>;
+	};
+
+	pwr-en-pp5000-s5 {
+		compatible = "intel,ap-pwrseq-gpio";
+		dbg-label = "pwr-en-pp5000-s5";
+		enum-name = "PWR_EN_PP5000_A";
+		gpios = <&gpio4 0 0>;
+		output;
+	};
+	pwr-en-pp3300-s5 {
+		compatible = "intel,ap-pwrseq-gpio";
+		dbg-label = "pwr-en-pp3300-s5";
+		enum-name = "PWR_EN_PP3300_A";
+		gpios = <&gpiob 6 0>;
+		output;
+	};
+	pwr-pg-ec-rsmrst-odl {
+		compatible = "intel,ap-pwrseq-gpio";
+		dbg-label = "pwr-pg-ec-rsmrst-odl";
+		enum-name = "PWR_RSMRST";
+		gpios = <&gpio9 4 (GPIO_ACTIVE_LOW|GPIO_PULL_UP)>;
+		interrupt-flags = <GPIO_INT_EDGE_BOTH>;
+	};
+	pwr-ec-pch-rsmrst-odl {
+		compatible = "intel,ap-pwrseq-gpio";
+		dbg-label = "pwr-ec-pch-rsmrst-odl";
+		enum-name = "PWR_EC_PCH_RSMRST";
+		gpios = <&gpioa 6 (GPIO_ACTIVE_LOW)>;
+		output;
+	};
+	pwr-slp-s0-l {
+		compatible = "intel,ap-pwrseq-gpio";
+		dbg-label = "pwr-slp-s0-l";
+		enum-name = "PWR_SLP_S0";
+		gpios = <&gpio9 7 GPIO_ACTIVE_LOW>;
+		interrupt-flags = <GPIO_INT_EDGE_BOTH>;
+	};
+	pwr-slp-s3-l {
+		compatible = "intel,ap-pwrseq-gpio";
+		dbg-label = "pwr-slp-s3-l";
+		enum-name = "PWR_SLP_S3";
+		gpios = <&gpioa 5 GPIO_ACTIVE_LOW>;
+		interrupt-flags = <GPIO_INT_EDGE_BOTH>;
+	};
+	pwr-slp-sus-l {
+		compatible = "intel,ap-pwrseq-gpio";
+		dbg-label = "pwr-slp-sus-l";
+		enum-name = "PWR_SLP_SUS";
+		gpios = <&gpio6 2 GPIO_ACTIVE_LOW>;
+		interrupt-flags = <GPIO_INT_EDGE_BOTH>;
+	};
+	pwr-ec-soc-dsw-pwrok {
+		compatible = "intel,ap-pwrseq-gpio";
+		dbg-label = "pwr-ec-soc-dsw-pwro";
+		enum-name = "PWR_EC_SOC_DSW_PWROK";
+		gpios = <&gpio6 1 0>;
+		output;
+	};
+	pwr-vccst-pwrgd-od {
+		compatible = "intel,ap-pwrseq-gpio";
+		dbg-label = "pwr-vccst-pwrgd-od";
+		enum-name = "PWR_VCCST_PWRGD";
+		gpios = <&gpioa 4 (GPIO_ACTIVE_LOW|GPIO_OPEN_DRAIN)>;
+		output;
+	};
+	pwr-imvp9-vrrdy-od {
+		compatible = "intel,ap-pwrseq-gpio";
+		dbg-label = "pwr-imvp9-vrrdy-od";
+		enum-name = "PWR_IMVP9_VRRDY";
+		gpios = <&gpio4 3 0>;
+	};
+	pwr-pch-pwrok {
+		compatible = "intel,ap-pwrseq-gpio";
+		dbg-label = "pwr-pch-pwrok";
+		enum-name = "PWR_PCH_PWROK";
+		gpios = <&gpio7 2 (GPIO_ACTIVE_LOW|GPIO_OPEN_DRAIN)>;
+		output;
+	};
+	pwr-ec-pch-sys-pwrok {
+		compatible = "intel,ap-pwrseq-gpio";
+		dbg-label = "pwr-ec-pch-sys-pwrok";
+		enum-name = "PWR_EC_PCH_SYS_PWROK";
+		gpios = <&gpio3 7 0>;
+		output;
+	};
+	pwr-sys-rst-l {
+		compatible = "intel,ap-pwrseq-gpio";
+		dbg-label = "pwr-sys-rst-l";
+		enum-name = "PWR_SYS_RST";
+		gpios = <&gpioc 5 (GPIO_ACTIVE_LOW|GPIO_OPEN_DRAIN)>;
+		output;
+	};
+	pwr-slp-s4 {
+		compatible = "intel,ap-pwrseq-vw";
+		dbg-label = "SLP_S4";
+		enum-name = "PWR_SLP_S4";
+		virtual-wire = "ESPI_VWIRE_SIGNAL_SLP_S4";
+	};
+	pwr-slp-s5 {
+		compatible = "intel,ap-pwrseq-vw";
+		dbg-label = "SLP_S5";
+		enum-name = "PWR_SLP_S5";
+		virtual-wire = "ESPI_VWIRE_SIGNAL_SLP_S5";
+	};
+	pwr-all-sys-pwrgd {
+		compatible = "intel,ap-pwrseq-external";
+		dbg-label = "ALL_SYS_PWRGD";
+		enum-name = "PWR_ALL_SYS_PWRGD";
+	};
+	pwr-adc-pp3300 {
+		compatible = "intel,ap-pwrseq-adc";
+		dbg-label = "PP3300_PROC";
+		enum-name = "PWR_DSW_PWROK";
+		trigger-high = <&cmp_pp3300_s5_high>;
+		trigger-low = <&cmp_pp3300_s5_low>;
+	};
+	pwr-adc-pp1p05 {
+		compatible = "intel,ap-pwrseq-adc";
+		dbg-label = "PP1P05_PROC";
+		enum-name = "PWR_PG_PP1P05";
+		trigger-high = <&cmp_pp1p05_high>;
+		trigger-low = <&cmp_pp1p05_low>;
+	};
+
+	adc-cmp {
+		cmp_pp3300_s5_high: pp3300_high {
+			compatible = "nuvoton,adc-cmp";
+			io-channels = <&adc0 6>;
+			comparison = "ADC_CMP_NPCX_GREATER";
+			threshold-mv = <2640>;
+		};
+		cmp_pp3300_s5_low: pp3300_low {
+			compatible = "nuvoton,adc-cmp";
+			io-channels = <&adc0 6>;
+			comparison = "ADC_CMP_NPCX_LESS_OR_EQUAL";
+			threshold-mv = <500>;
+		};
+		cmp_pp1p05_high: pp1p05_high {
+			compatible = "nuvoton,adc-cmp";
+			io-channels = <&adc0 4>;
+			comparison = "ADC_CMP_NPCX_GREATER";
+			threshold-mv = <945>;
+		};
+		cmp_pp1p05_low: pp1p05_low {
+			compatible = "nuvoton,adc-cmp";
+			io-channels = <&adc0 4>;
+			comparison = "ADC_CMP_NPCX_LESS_OR_EQUAL";
+			threshold-mv = <250>;
+		};
+	};
+};
+
+/*
+ * Because the power signals directly reference the GPIOs,
+ * the correspinding named-gpios need to have no-auto-init set.
+ */
+&gpio_ec_soc_dsw_pwrok {
+	no-auto-init;
+};
+&gpio_ec_soc_pch_pwrok_od {
+	no-auto-init;
+};
+&gpio_ec_soc_rsmrst_l {
+	no-auto-init;
+};
+&gpio_ec_soc_sys_pwrok {
+	no-auto-init;
+};
+&gpio_ec_soc_vccst_pwrgd_od {
+	no-auto-init;
+};
+&gpio_en_pp3300_s5 {
+	no-auto-init;
+};
+&gpio_en_pp5000_s5 {
+	no-auto-init;
+};
+&gpio_imvp91_vrrdy_od {
+	no-auto-init;
+};
+&gpio_rsmrst_pwrgd_l {
+	no-auto-init;
+};
+&gpio_slp_s0_l {
+	no-auto-init;
+};
+&gpio_slp_s3_l {
+	no-auto-init;
+};
+&gpio_slp_sus_l {
+	no-auto-init;
+};
+&gpio_sys_rst_odl {
+	no-auto-init;
+};
