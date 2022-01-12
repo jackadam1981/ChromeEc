@@ -31,6 +31,7 @@ if(DEFINED CONFIG_BOARD_KRABBY)
 				     "src/krabby/usbc_config.c")
 elseif(DEFINED CONFIG_BOARD_KINGLER)
 	project(kingler)
+	zephyr_library_sources("src/kingler/hooks.c")
 	zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_USBC
 				     "src/kingler/usb_pd_policy.c")
 	zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_USBC
