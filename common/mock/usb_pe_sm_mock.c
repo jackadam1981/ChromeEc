@@ -67,6 +67,11 @@ void pe_message_received(int port)
 	mock_pe_port[port].mock_pe_message_received = 1;
 }
 
+int pe_ready_for_message(int port)
+{
+	return !mock_pe_port[port].mock_pe_message_received;
+}
+
 void pe_message_sent(int port)
 {
 	mock_pe_port[port].mock_pe_message_sent = 1;

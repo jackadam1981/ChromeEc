@@ -2159,6 +2159,10 @@ static void prl_rx_wait_for_phy_message(const int port, int evt)
 	    RCH_CHK_FLAG(port, PRL_FLAGS_MSG_RECEIVED))
 		return;
 
+	/* Process new message only when previous was consumed */
+	if (!pe_ready_for_message(port))
+		return;
+
 	/* If we don't have any message, just stop processing now. */
 	if (!tcpm_has_pending_message(port) ||
 	    tcpm_dequeue_message(port, pdmsg[port].rx_chk_buf, &header))

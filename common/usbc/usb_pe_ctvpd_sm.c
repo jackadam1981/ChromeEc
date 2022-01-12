@@ -94,6 +94,11 @@ void pe_message_received(int port)
 	task_wake(PD_PORT_TO_TASK_ID(port));
 }
 
+int pe_ready_for_message(int port)
+{
+	return !(pe[port].flags & PE_FLAGS_MSG_RECEIVED);
+}
+
 /**
  * NOTE:
  *	The Charge-Through Vconn Powered Device's Policy Engine is very
