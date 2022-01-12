@@ -9,7 +9,6 @@
 
 /* INTERRUPT GPIOs: */
 GPIO_INT(ACOK_OD,                        PIN(0, 0), GPIO_INT_BOTH | GPIO_HIB_WAKE_HIGH, extpower_interrupt)
-GPIO_INT(EC_ALS_RGB_INT_R_L,             PIN(D, 4), GPIO_INT_FALLING, tcs3400_interrupt)
 GPIO_INT(EC_PROCHOT_IN_L,                PIN(F, 0), GPIO_INT_BOTH, throttle_ap_prochot_input_interrupt)
 GPIO_INT(EC_WP_ODL,                      PIN(A, 1), GPIO_INT_BOTH, switch_interrupt)
 GPIO_INT(GSC_EC_PWR_BTN_ODL,             PIN(0, 1), GPIO_INT_BOTH | GPIO_HIB_WAKE_LOW, power_button_interrupt)
@@ -128,6 +127,7 @@ UNUSED(PIN(F, 4))       /* GPIOF4/I2C5_SDA1 */
 UNUSED(PIN(F, 5))       /* GPIOF5/I2C5_SCL1 */
 UNUSED(PIN(8, 6))       /* GPO86/TXD/CR_SOUT2 */
 UNUSED(PIN(9, 7))       /* GPIO97 */
+UNUSED(PIN(D, 4))       /* GPIOD4 */
 
 /* Pre-configured PSL balls:  J8  K6 */
 
