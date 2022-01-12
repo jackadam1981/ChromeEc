@@ -8,6 +8,7 @@ zephyr_library_sources(gpio.c)
 zephyr_library_sources(gpio_id.c)
 zephyr_library_sources(gpio_int.c)
 zephyr_library_sources(power.c)
+zephyr_library_sources(chipset.c)
 
 if (DEFINED CONFIG_ARCH_POSIX)
   zephyr_library_sources(ztest_system.c)
