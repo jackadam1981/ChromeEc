@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "430aa25b_1f041b20",
+        "filename": "zephyr/subsys/ap_pwrseq/include/x86_non_dsx_adlp_pwrseq_sm.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2022-01-12T22:37:30Z",
+      "side": 1,
+      "message": "Could this be moved to .c file?",
+      "range": {
+        "startLine": 89,
+        "startChar": 0,
+        "endLine": 120,
+        "endChar": 0
+      },
+      "revId": "128a49d227632bb8e33510e24a48339a1e835b00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "46305a02_330ce1c2",
         "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_adlp_pwrseq_sm.c",
         "patchSetId": 2
