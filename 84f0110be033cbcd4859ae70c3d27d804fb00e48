@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2db4c951_465aa31a",
+        "filename": "driver/als_cm32183.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1506077
+      },
+      "writtenOn": "2022-01-12T10:15:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7b7ffbd7_b1fc334f",
+      "range": {
+        "startLine": 33,
+        "startChar": 1,
+        "endLine": 33,
+        "endChar": 5
+      },
+      "revId": "84f0110be033cbcd4859ae70c3d27d804fb00e48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1ba2fde6_66e9fa5c",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-01-11T20:35:55Z",
       "side": 1,
       "message": "No offset needed here? Like on line 34: `data +\u003d drv_data-\u003eoffset;`",
+      "range": {
+        "startLine": 95,
+        "startChar": 1,
+        "endLine": 98,
+        "endChar": 25
+      },
+      "revId": "84f0110be033cbcd4859ae70c3d27d804fb00e48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a68ef08_13d3a522",
+        "filename": "driver/als_cm32183.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1506077
+      },
+      "writtenOn": "2022-01-12T10:15:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1ba2fde6_66e9fa5c",
       "range": {
         "startLine": 95,
         "startChar": 1,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6db1c187_5bb67d32",
+        "filename": "driver/als_cm32183.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1506077
+      },
+      "writtenOn": "2022-01-12T10:15:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d08be614_0a95dae7",
+      "range": {
+        "startLine": 117,
+        "startChar": 25,
+        "endLine": 117,
+        "endChar": 31
+      },
+      "revId": "84f0110be033cbcd4859ae70c3d27d804fb00e48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "54d521a7_d2348ce2",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-01-11T20:35:55Z",
       "side": 1,
       "message": "return sensor_init_done(s);",
+      "range": {
+        "startLine": 127,
+        "startChar": 1,
+        "endLine": 127,
+        "endChar": 19
+      },
+      "revId": "84f0110be033cbcd4859ae70c3d27d804fb00e48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "59959ad5_baecbfaf",
+        "filename": "driver/als_cm32183.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1506077
+      },
+      "writtenOn": "2022-01-12T10:15:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "54d521a7_d2348ce2",
       "range": {
         "startLine": 127,
         "startChar": 1,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "58e0b92e_01844057",
+        "filename": "driver/als_cm32183.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1506077
+      },
+      "writtenOn": "2022-01-12T10:15:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "12707898_db07d3e6",
+      "range": {
+        "startLine": 50,
+        "startChar": 54,
+        "endLine": 50,
+        "endChar": 61
+      },
+      "revId": "84f0110be033cbcd4859ae70c3d27d804fb00e48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6a56764f_c04d1561",
@@ -129,6 +249,30 @@
       "writtenOn": "2022-01-11T20:35:55Z",
       "side": 1,
       "message": "sensor",
+      "range": {
+        "startLine": 83,
+        "startChar": 32,
+        "endLine": 83,
+        "endChar": 38
+      },
+      "revId": "84f0110be033cbcd4859ae70c3d27d804fb00e48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f721a1a_d6931d02",
+        "filename": "driver/als_cm32183.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1506077
+      },
+      "writtenOn": "2022-01-12T10:15:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6a56764f_c04d1561",
       "range": {
         "startLine": 83,
         "startChar": 32,
