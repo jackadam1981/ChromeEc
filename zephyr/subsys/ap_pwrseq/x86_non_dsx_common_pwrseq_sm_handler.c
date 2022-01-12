@@ -768,3 +768,76 @@ static int pwrseq_init()
 }
 
 SYS_INIT(pwrseq_init, APPLICATION, CONFIG_APPLICATION_INIT_PRIORITY);
+
+/*****************************************************************************/
+/* Chipset interface */
+int chipset_in_state(int state_mask)
+{
+	int need_mask = 0;
+	/*
+	 * TODO(crosbug.com/p/23773): what to do about state transitions?  If
+	 * the caller wants HARD_OFF|SOFT_OFF and we're in G3S5, we could still
+	 * return non-zero.
+	 */
+	switch (pwr_sm_get_state()) {
+	case SYS_POWER_STATE_G3:
+		need_mask = CHIPSET_STATE_HARD_OFF;
+		break;
+	case SYS_POWER_STATE_G3S5:
+	case SYS_POWER_STATE_S5G3:
+		/*
+		 * In between hard and soft off states.  Match only if caller
+		 * will accept both.
+		 */
+		need_mask = CHIPSET_STATE_HARD_OFF | CHIPSET_STATE_SOFT_OFF;
+		break;
+	case SYS_POWER_STATE_S5:
+		need_mask = CHIPSET_STATE_SOFT_OFF;
+		break;
+	case SYS_POWER_STATE_S5S4:
+	case SYS_POWER_STATE_S4S5:
+		need_mask = CHIPSET_STATE_SOFT_OFF | CHIPSET_STATE_SUSPEND;
+		break;
+	case SYS_POWER_STATE_S4:
+	case SYS_POWER_STATE_S4S3:
+	case SYS_POWER_STATE_S3S4:
+	case SYS_POWER_STATE_S3:
+		need_mask = CHIPSET_STATE_SUSPEND;
+		break;
+	case SYS_POWER_STATE_S3S0:
+	case SYS_POWER_STATE_S0S3:
+		need_mask = CHIPSET_STATE_SUSPEND | CHIPSET_STATE_ON;
+		break;
+	case SYS_POWER_STATE_S0:
+		need_mask = CHIPSET_STATE_ON;
+		break;
+	}
+	/* Return non-zero if all needed bits are present */
+	return (state_mask & need_mask) == need_mask;
+}
+
+int chipset_in_or_transitioning_to_state(int state_mask)
+{
+	switch (pwr_sm_get_state()) {
+	case SYS_POWER_STATE_G3:
+	case SYS_POWER_STATE_S5G3:
+		return state_mask & CHIPSET_STATE_HARD_OFF;
+	case SYS_POWER_STATE_S5:
+	case SYS_POWER_STATE_G3S5:
+	case SYS_POWER_STATE_S4S5:
+		return state_mask & CHIPSET_STATE_SOFT_OFF;
+	case SYS_POWER_STATE_S3:
+	case SYS_POWER_STATE_S4:
+	case SYS_POWER_STATE_S3S4:
+	case SYS_POWER_STATE_S5S4:
+	case SYS_POWER_STATE_S4S3:
+	case SYS_POWER_STATE_S0S3:
+		return state_mask & CHIPSET_STATE_SUSPEND;
+	case SYS_POWER_STATE_S0:
+	case SYS_POWER_STATE_S3S0:
+		return state_mask & CHIPSET_STATE_ON;
+	}
+	/* Unknown power state; return false. */
+	return 0;
+}
+
