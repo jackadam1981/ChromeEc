@@ -6,11 +6,13 @@
 #ifndef __CROS_EC_COMPILER_H
 #define __CROS_EC_COMPILER_H
 
+#if 0
 /*
  * See https://gcc.gnu.org/onlinedocs/cpp/Common-Predefined-Macros.html
  */
 #define GCC_VERSION \
 	(__GNUC__ * 10000 + __GNUC_MINOR__ * 100 + __GNUC_PATCHLEVEL__)
+#endif
 
 /*
  * The EC codebase assumes that typeof() is available but it is not in Zephyr.
