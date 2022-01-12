@@ -16,6 +16,24 @@
       "message": "So I understand why you introduced it, from the comment but what does this signify? Especially given that there\u0027s \"none\" and various other options, this is a bit confusing. The state, whatever it is, apparently went unnoticed by the author of the commit you refer to.\n\nDoes this happen when PD is not available by hardware? Or when the state of the connection is still unknown?\n\nIf there\u0027s a catchy way of naming it (...DETECT_NA for not available, ..DETECT_INDET for indeterminate, ...), maybe rename this accordingly - otherwise a comment that states what this one is about and under which conditions it happens would go a long way to ensure that we still know the purpose in 5 years.",
       "revId": "1e654f990d94c5522bc75d3fbd368d8a279e2284",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "674fd5d5_1c58523a",
+        "filename": "include/usb_pd_flags.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1520718
+      },
+      "writtenOn": "2022-01-12T14:43:47Z",
+      "side": 1,
+      "message": "Thanks for comment, indeed I described it not clearly.\n\nAll these configs \"CONFIG_USB_PD_VBUS_DETECT_*\" has comment \"Exactly one of these should be defined for all boards that run the PD state machine.\", but as I believe it is not always always preserved - like in servo FW. So we can not say \"okey if none of other CONFIGs is present in my implementation I have CONFIG_USB_PD_VBUS_DETECT_NONE\", because it should be directly defined.\n\nI renamed it to _DETECT_INDET, as it tells as more about this situation. I also updated commit log a little",
+      "parentUuid": "89059165_880999e3",
+      "revId": "1e654f990d94c5522bc75d3fbd368d8a279e2284",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
