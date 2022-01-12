@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0218a29e_39f375d4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2022-01-12T02:59:08Z",
+      "side": 1,
+      "message": "This case is for battery mode only.",
+      "parentUuid": "268f263b_fc5fd682",
+      "range": {
+        "startLine": 7,
+        "startChar": 34,
+        "endLine": 7,
+        "endChar": 41
+      },
+      "revId": "04d54333eac3aeee49eede9fed2a27f7a99eabec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "33c5fdf1_bbc8e76c",
@@ -60,6 +84,48 @@
       "writtenOn": "2022-01-07T07:28:31Z",
       "side": 1,
       "message": "please check BATT_FLAG_BAD_CURRENT in .flags before\nusing value.",
+      "revId": "04d54333eac3aeee49eede9fed2a27f7a99eabec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "53ea380b_f1720ee4",
+        "filename": "board/redrix/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2022-01-12T02:59:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b08ffb4e_b98536a6",
+      "revId": "04d54333eac3aeee49eede9fed2a27f7a99eabec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c135d0c_d86e49b7",
+        "filename": "board/redrix/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2022-01-12T02:59:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "33c5fdf1_bbc8e76c",
+      "range": {
+        "startLine": 91,
+        "startChar": 27,
+        "endLine": 91,
+        "endChar": 31
+      },
       "revId": "04d54333eac3aeee49eede9fed2a27f7a99eabec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
