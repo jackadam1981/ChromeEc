@@ -31,9 +31,11 @@ struct gpio_config power_seq_gpios[] = {
 	{
 		POWER_SEQ_GPIO(VR_PG_EC_RSMRST_ODL),
 	},
+#if POWER_SEQ_GPIO_PRESENT(VR_EC_ALL_SYS_PWRGD)
 	{
 		POWER_SEQ_GPIO(VR_EC_ALL_SYS_PWRGD),
 	},
+#endif
 #if POWER_SEQ_GPIO_PRESENT(VR_EC_DSW_PWROK)
 	{
 		POWER_SEQ_GPIO(VR_EC_DSW_PWROK),
@@ -58,6 +60,11 @@ struct gpio_config power_seq_gpios[] = {
 #if POWER_SEQ_GPIO_PRESENT(EC_VR_EN_PP5000_A)
 	{
 		POWER_SEQ_GPIO(EC_VR_EN_PP5000_A),
+	},
+#endif
+#if POWER_SEQ_GPIO_PRESENT(EC_VR_EN_PP3300_A)
+	{
+		POWER_SEQ_GPIO(EC_VR_EN_PP3300_A),
 	},
 #endif
 #if POWER_SEQ_GPIO_PRESENT(IMVP9_VRRDY_OD)
@@ -104,10 +111,12 @@ struct gpio_interrupt_config power_seq_intr_gpios[] = {
 		POWER_SEQ_INTR_GPIO(PCH_EC_SLP_S3_L),
 		.disable_at_boot = false,
 	},
+#if POWER_SEQ_GPIO_PRESENT(VR_EC_ALL_SYS_PWRGD)
 	{
 		POWER_SEQ_INTR_GPIO(VR_EC_ALL_SYS_PWRGD),
 		.disable_at_boot = false,
 	},
+#endif
 };
 
 const int power_seq_intr_gpios_count = ARRAY_SIZE(power_seq_intr_gpios);
@@ -144,12 +153,14 @@ const struct power_signal_gpio_info power_signal_gpio_list[] = {
 		.flags = POWER_SIGNAL_ACTIVE_HIGH,
 		.name = "SLP_S3_DEASSERTED",
 	},
+#if POWER_SEQ_GPIO_PRESENT(VR_EC_ALL_SYS_PWRGD)
 	{
 		.net_name = GPIO_NET_NAME(VR_EC_ALL_SYS_PWRGD),
 		.power_sig = X86_ALL_SYS_PGOOD,
 		.flags = POWER_SIGNAL_ACTIVE_HIGH,
 		.name = "ALL_SYS_PWRGD",
 	},
+#endif
 };
 
 const int power_signal_gpio_count = ARRAY_SIZE(power_signal_gpio_list);
@@ -182,7 +193,11 @@ void ap_off(void)
 /* This should be overridden if there is no power sequencer chip */
 __attribute__((weak)) int intel_x86_get_pg_ec_all_sys_pwrgd(void)
 {
+#if POWER_SEQ_GPIO_PRESENT(VR_EC_ALL_SYS_PWRGD)
 	return gpio_get_lvl(GPIO_NET_NAME(VR_EC_ALL_SYS_PWRGD));
+#else
+	return 0;
+#endif
 }
 
 /* Handle ALL_SYS_PWRGD signal
