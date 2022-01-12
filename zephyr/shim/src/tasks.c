@@ -9,6 +9,7 @@
 #include <shell/shell.h>
 
 #include "common.h"
+#include "console.h"
 #include "timer.h"
 #include "task.h"
 
@@ -285,6 +286,8 @@ void set_test_runner_tid(void)
 
 void start_ec_tasks(void)
 {
+	int priority;
+
 	/* Initialize all EC tasks, which does not include the sysworkq entry */
 	for (size_t i = 0; i < TASK_ID_COUNT; ++i) {
 		struct task_ctx_dyn *const ctx_dyn = &shimmed_tasks_dyn[i];
@@ -293,6 +296,8 @@ void start_ec_tasks(void)
 
 		k_timer_init(&ctx_dyn->timer, timer_expire, NULL);
 
+		priority = K_PRIO_PREEMPT(TASK_ID_COUNT - i - 1);
+
 #ifdef TEST_BUILD
 		/* Do not create thread for test runner; it will be set later */
 		if (i == TASK_ID_TEST_RUNNER) {
@@ -300,6 +305,20 @@ void start_ec_tasks(void)
 			continue;
 		}
 #endif
+
+#if defined CONFIG_SHELL && !defined TEST_BUILD
+		/*
+		 * The console is run on the built-in Zephyr shell thread.
+		 * We need to set the priority to be below the PD tasks
+		 * but higher than most threads so that the FAFT tests work
+		 * correctly.
+		 */
+		if (i == TASK_ID_CONSOLE) {
+			uart_shell_set_priority(priority);
+			continue;
+		}
+#endif
+
 		/*
 		 * TODO(b/172361873): Add K_FP_REGS for FPU tasks. See
 		 * comment in config.h for CONFIG_TASK_LIST for existing flags
@@ -313,7 +332,7 @@ void start_ec_tasks(void)
 			(void *)ctx_static,
 			ctx_dyn,
 			NULL,
-			K_PRIO_PREEMPT(TASK_ID_COUNT - i - 1),
+			priority,
 			0,
 			K_NO_WAIT);
 	}
