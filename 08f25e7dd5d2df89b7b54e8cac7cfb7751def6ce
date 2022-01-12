@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2dc3a0d3_33be5c64",
+        "filename": "zephyr/projects/corsola/CMakeLists.txt",
+        "patchSetId": 6
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2022-01-12T08:39:23Z",
+      "side": 1,
+      "message": "Sort zephyr_library_sources_ifdef by alphabatic order.",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 29
+      },
+      "revId": "08f25e7dd5d2df89b7b54e8cac7cfb7751def6ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "196ab032_401be75f",
+        "filename": "zephyr/projects/corsola/prj_kingler.conf",
+        "patchSetId": 6
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2022-01-12T08:39:23Z",
+      "side": 1,
+      "message": "Actually, LEDs are drived by PWM modules. Could you use the PWM instead?",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 0
+      },
+      "revId": "08f25e7dd5d2df89b7b54e8cac7cfb7751def6ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
