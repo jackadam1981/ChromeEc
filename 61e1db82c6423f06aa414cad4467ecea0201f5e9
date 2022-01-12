@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc05b323_fb2e454f",
+        "filename": "zephyr/projects/corsola/CMakeLists.txt",
+        "patchSetId": 6
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2022-01-12T07:44:36Z",
+      "side": 1,
+      "message": "sort `zephyr_library_sources_ifdef` by alphabatic order",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 0
+      },
+      "revId": "61e1db82c6423f06aa414cad4467ecea0201f5e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ff640ae_c1d35bb1",
+        "filename": "zephyr/projects/corsola/prj_kingler.conf",
+        "patchSetId": 6
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2022-01-12T07:44:36Z",
+      "side": 1,
+      "message": "sort the config in alphabatic order.",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 0
+      },
+      "revId": "61e1db82c6423f06aa414cad4467ecea0201f5e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
