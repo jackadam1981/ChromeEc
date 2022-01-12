@@ -5,6 +5,7 @@
 /* STM32F072-discovery board based USB PD evaluation configuration */
 
 #include "common.h"
+#include "anx7406.h"
 #include "anx7447.h"
 #include "ec_version.h"
 #include "gpio.h"
@@ -64,14 +65,25 @@ const struct i2c_port_t i2c_ports[] = {
 const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
 
 const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_MAX_COUNT] = {
+#ifdef CONFIG_USB_PD_TCPM_ANX7447
 	{
 		.bus_type = EC_BUS_TYPE_I2C,
 		.i2c_info = {
 			.port = I2C_PORT_TCPC,
-			.addr_flags = AN7447_TCPC3_I2C_ADDR_FLAGS,
+			.addr_flags = AN7447_TCPC2_I2C_ADDR_FLAGS,
 		},
 		.drv = &anx7447_tcpm_drv,
 	},
+#elif defined(CONFIG_USB_PD_TCPM_ANX7406)
+	{
+		.bus_type = EC_BUS_TYPE_I2C,
+		.i2c_info = {
+			.port = I2C_PORT_TCPC,
+			.addr_flags = ANX7406_TCPC0_I2C_ADDR_FLAGS,
+		},
+		.drv = &anx7406_tcpm_drv,
+	},
+#endif
 };
 
 uint16_t tcpc_get_alert_status(void)
