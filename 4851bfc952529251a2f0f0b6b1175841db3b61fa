@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eff02a74_3b380d7d",
+        "filename": "zephyr/CMakeLists.txt",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2022-01-12T08:38:07Z",
+      "side": 1,
+      "message": "Can you separate driver porting and kingler config enablement to different patches?",
+      "revId": "4851bfc952529251a2f0f0b6b1175841db3b61fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1133f9ad_2f2b7144",
+        "filename": "zephyr/projects/corsola/prj_kingler.conf",
+        "patchSetId": 3
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2022-01-12T08:38:07Z",
+      "side": 1,
+      "message": "sort config by alphabatic order.",
+      "range": {
+        "startLine": 91,
+        "startChar": 0,
+        "endLine": 99,
+        "endChar": 0
+      },
+      "revId": "4851bfc952529251a2f0f0b6b1175841db3b61fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
