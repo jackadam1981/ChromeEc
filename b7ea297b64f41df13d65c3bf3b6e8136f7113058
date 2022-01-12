@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90c58940_4c3f8218",
+        "filename": "zephyr/shim/include/charger_enum.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-01-12T00:25:16Z",
+      "side": 1,
+      "message": "I see the metaknight variant sets CONFIG_USB_PD_PORT_MAX_COUNT\u003d1 and does not define CHARGER_SECONDARY.\n\nSo how about guarding CHARGER_SECONDARY with\n#if (CONFIG_PLATFORM_EC_USB_PD_PORT_MAX_COUNT \u003e 2)",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 19
+      },
+      "revId": "b7ea297b64f41df13d65c3bf3b6e8136f7113058",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
