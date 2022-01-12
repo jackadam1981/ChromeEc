@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ae66d35_2cf9c5a7",
+        "filename": "zephyr/projects/corsola/include/gpio_map.h",
+        "patchSetId": 33
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2022-01-12T01:52:51Z",
+      "side": 1,
+      "message": "You might want to drop this and replace it with icm42607\u0027s interrupt.",
+      "range": {
+        "startLine": 132,
+        "startChar": 0,
+        "endLine": 132,
+        "endChar": 46
+      },
+      "revId": "ddd8133e46617be65bccd81b9801fac6149a19e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
