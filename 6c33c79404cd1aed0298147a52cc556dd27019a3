@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "016c0c67_191ed7a4",
+        "filename": "zephyr/dts/bindings/gpio/gpio-enum-name.yaml",
+        "patchSetId": 4
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-01-12T23:10:05Z",
+      "side": 1,
+      "message": "is it part of common code or Brya specific?\nIf common name can be GPIO_EC_BATT_PRES_ODL",
+      "range": {
+        "startLine": 126,
+        "startChar": 8,
+        "endLine": 126,
+        "endChar": 34
+      },
+      "revId": "6c33c79404cd1aed0298147a52cc556dd27019a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
