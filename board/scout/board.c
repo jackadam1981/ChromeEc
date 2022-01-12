@@ -565,6 +565,13 @@ void board_enable_s0_rails(int enable)
 	gpio_set_level(GPIO_EN_LOAD_SWITCH, enable);
 }
 
+__override void board_enable_s0ix_rails(int enable)
+{
+	/* Turn off TPU power to reduce power consumption */
+	gpio_set_level(GPIO_PP3300_TPU_A_EN, !enable);
+	gpio_set_level(GPIO_EC_U17_EN, !enable);
+}
+
 int ec_config_get_usb4_present(void)
 {
 	return !(fw_config & EC_CFG_NO_USB4_MASK);
