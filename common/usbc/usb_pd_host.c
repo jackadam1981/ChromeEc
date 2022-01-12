@@ -15,8 +15,8 @@
 #include "usb_pd_tcpm.h"
 #include "util.h"
 
-#define CPRINTF(format, args...) cprintf(CC_USBPD, format, ## args)
-#define CPRINTS(format, args...) cprints(CC_USBPD, format, ## args)
+#define CPRINTF(format, args...) ccprintf(format, ## args)
+#define CPRINTS(format, args...) ccprints(format, ## args)
 
 /* Retrieve all discovery results for the given port and transmit type */
 static enum ec_status hc_typec_discovery(struct host_cmd_handler_args *args)
