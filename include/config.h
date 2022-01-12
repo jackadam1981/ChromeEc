@@ -2622,6 +2622,12 @@
  */
 #undef CONFIG_I2C_CONTROLLER
 
+/*
+ * When CONFIG_I2C_PORT_COUNT_RUNTIME is enabled, corresponding
+ * board can set & get the i2c port count at run time.
+ **/
+#undef CONFIG_I2C_PORT_COUNT_RUNTIME
+
 /* EC uses an I2C peripheral interface */
 #undef CONFIG_I2C_PERIPHERAL
 
