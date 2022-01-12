@@ -68,6 +68,15 @@ void pe_report_discard(int port);
 void pe_message_received(int port);
 
 /**
+ * Called by the Protocol Layer to check if the Policy Engine
+ * consumed last message.
+ *
+ * @param port USB-C port number
+ * @return 1 if policy engine state machine is ready for next message, else 0
+ */
+int pe_ready_for_message(int port);
+
+/**
  * Informs the Policy Engine that a hard reset was received.
  *
  * @param port USB-C port number

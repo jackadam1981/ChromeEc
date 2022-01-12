@@ -875,6 +875,14 @@ void pe_message_received(int port)
 	task_wake(PD_PORT_TO_TASK_ID(port));
 }
 
+int pe_ready_for_message(int port)
+{
+	/* This should only be called from the PD task */
+	assert(port == TASK_ID_TO_PD_PORT(task_get_current()));
+
+	return !PE_CHK_FLAG(port, PE_FLAGS_MSG_RECEIVED);
+}
+
 void pe_hard_reset_sent(int port)
 {
 	/* This should only be called from the PD task */
@@ -2378,8 +2386,6 @@ static void pe_src_send_capabilities_run(int port)
 	 */
 	if ((msg_check & PE_MSG_SENT) &&
 	    PE_CHK_FLAG(port, PE_FLAGS_MSG_RECEIVED)) {
-		PE_CLR_FLAG(port, PE_FLAGS_MSG_RECEIVED);
-
 		/*
 		 * Request Message Received?
 		 */
@@ -2414,6 +2420,7 @@ static void pe_src_send_capabilities_run(int port)
 		 */
 		pe_send_soft_reset(port,
 				   PD_HEADER_GET_SOP(rx_emsg[port].header));
+		PE_CLR_FLAG(port, PE_FLAGS_MSG_RECEIVED);
 		return;
 	}
 
@@ -2509,6 +2516,8 @@ static void pe_src_negotiate_capability_entry(int port)
 		pe[port].requested_idx = RDO_POS(payload);
 		set_state_pe(port, PE_SRC_TRANSITION_SUPPLY);
 	}
+
+	PE_CLR_FLAG(port, PE_FLAGS_MSG_RECEIVED);
 }
 
 /**
@@ -2667,8 +2676,6 @@ static void pe_src_ready_run(int port)
 		uint8_t ext = PD_HEADER_EXT(rx_emsg[port].header);
 		uint32_t *payload = (uint32_t *)rx_emsg[port].buf;
 
-		PE_CLR_FLAG(port, PE_FLAGS_MSG_RECEIVED);
-
 		/* Extended Message Requests */
 		if (ext > 0) {
 			switch (type) {
@@ -2682,6 +2689,7 @@ static void pe_src_ready_run(int port)
 #endif /* CONFIG_USB_PD_EXTENDED_MESSAGES && CONFIG_BATTERY */
 			default:
 				extended_message_not_supported(port, payload);
+				PE_CLR_FLAG(port, PE_FLAGS_MSG_RECEIVED);
 			}
 			return;
 		}
@@ -2692,6 +2700,7 @@ static void pe_src_ready_run(int port)
 				set_state_pe(port, PE_SRC_NEGOTIATE_CAPABILITY);
 				return;
 			case PD_DATA_SINK_CAP:
+				PE_CLR_FLAG(port, PE_FLAGS_MSG_RECEIVED);
 				break;
 			case PD_DATA_VENDOR_DEF:
 				if (PD_HEADER_TYPE(rx_emsg[port].header) ==
@@ -2709,11 +2718,14 @@ static void pe_src_ready_run(int port)
 				return;
 			default:
 				set_state_pe(port, PE_SEND_NOT_SUPPORTED);
+				PE_CLR_FLAG(port, PE_FLAGS_MSG_RECEIVED);
 				return;
 			}
 		}
 		/* Control Message Requests */
 		else {
+			/* No need to access any more data from rx_emsg */
+			PE_CLR_FLAG(port, PE_FLAGS_MSG_RECEIVED);
 			switch (type) {
 			case PD_CTRL_GOOD_CRC:
 				break;
@@ -3140,8 +3152,6 @@ static void pe_snk_wait_for_capabilities_run(int port)
 	 *  1) A Source_Capabilities Message is received.
 	 */
 	if (PE_CHK_FLAG(port, PE_FLAGS_MSG_RECEIVED)) {
-		PE_CLR_FLAG(port, PE_FLAGS_MSG_RECEIVED);
-
 		type = PD_HEADER_TYPE(rx_emsg[port].header);
 		cnt = PD_HEADER_CNT(rx_emsg[port].header);
 		ext = PD_HEADER_EXT(rx_emsg[port].header);
@@ -3150,6 +3160,8 @@ static void pe_snk_wait_for_capabilities_run(int port)
 			set_state_pe(port, PE_SNK_EVALUATE_CAPABILITY);
 			return;
 		}
+
+		PE_CLR_FLAG(port, PE_FLAGS_MSG_RECEIVED);
 	}
 
 	/* When the SinkWaitCapTimer times out, perform a Hard Reset. */
@@ -3206,6 +3218,7 @@ static void pe_snk_evaluate_capability_entry(int port)
 	/* Device Policy Response Received */
 	set_state_pe(port, PE_SNK_SELECT_CAPABILITY);
 
+	PE_CLR_FLAG(port, PE_FLAGS_MSG_RECEIVED);
 #ifdef HAS_TASK_DPS
 	/* Wake DPS task to evaluate the SrcCaps */
 	task_wake(TASK_ID_DPS);
@@ -3260,10 +3273,14 @@ static void pe_snk_select_capability_run(int port)
 
 	if ((msg_check & PE_MSG_SENT) &&
 	    PE_CHK_FLAG(port, PE_FLAGS_MSG_RECEIVED)) {
-		PE_CLR_FLAG(port, PE_FLAGS_MSG_RECEIVED);
 		type = PD_HEADER_TYPE(rx_emsg[port].header);
 		cnt = PD_HEADER_CNT(rx_emsg[port].header);
 		sop = PD_HEADER_GET_SOP(rx_emsg[port].header);
+		/*
+		 * Handle only control messages. Everything moved to local
+		 * variables.
+		 */
+		PE_CLR_FLAG(port, PE_FLAGS_MSG_RECEIVED);
 
 		/*
 		 * Transition to the PE_SNK_Transition_Sink state when:
@@ -3373,8 +3390,6 @@ static void pe_snk_transition_sink_run(int port)
 	 */
 
 	if (PE_CHK_FLAG(port, PE_FLAGS_MSG_RECEIVED)) {
-		PE_CLR_FLAG(port, PE_FLAGS_MSG_RECEIVED);
-
 		/*
 		 * PS_RDY message received
 		 */
@@ -3413,6 +3428,8 @@ static void pe_snk_transition_sink_run(int port)
 			 */
 			set_state_pe(port, PE_SNK_HARD_RESET);
 		}
+		PE_CLR_FLAG(port, PE_FLAGS_MSG_RECEIVED);
+
 		return;
 	}
 
@@ -3489,8 +3506,6 @@ static void pe_snk_ready_run(int port)
 		uint8_t ext = PD_HEADER_EXT(rx_emsg[port].header);
 		uint32_t *payload = (uint32_t *)rx_emsg[port].buf;
 
-		PE_CLR_FLAG(port, PE_FLAGS_MSG_RECEIVED);
-
 		/* Extended Message Request */
 		if (ext > 0) {
 			switch (type) {
@@ -3504,6 +3519,7 @@ static void pe_snk_ready_run(int port)
 #endif /* CONFIG_USB_PD_EXTENDED_MESSAGES && CONFIG_BATTERY */
 			default:
 				extended_message_not_supported(port, payload);
+				PE_CLR_FLAG(port, PE_FLAGS_MSG_RECEIVED);
 			}
 			return;
 		}
@@ -3530,11 +3546,14 @@ static void pe_snk_ready_run(int port)
 				break;
 			default:
 				set_state_pe(port, PE_SEND_NOT_SUPPORTED);
+				PE_CLR_FLAG(port, PE_FLAGS_MSG_RECEIVED);
 			}
 			return;
 		}
 		/* Control Messages */
 		else {
+			/* No need to access any more data from rx_emsg */
+			PE_CLR_FLAG(port, PE_FLAGS_MSG_RECEIVED);
 			switch (type) {
 			case PD_CTRL_GOOD_CRC:
 				/* Do nothing */
@@ -3868,11 +3887,11 @@ static void pe_send_soft_reset_run(int port)
 	 */
 	if (msg_check == PE_MSG_SENT &&
 	    PE_CHK_FLAG(port, PE_FLAGS_MSG_RECEIVED)) {
-		PE_CLR_FLAG(port, PE_FLAGS_MSG_RECEIVED);
-
 		type = PD_HEADER_TYPE(rx_emsg[port].header);
 		cnt = PD_HEADER_CNT(rx_emsg[port].header);
 		ext = PD_HEADER_EXT(rx_emsg[port].header);
+		/* Everything moved to local variables */
+		PE_CLR_FLAG(port, PE_FLAGS_MSG_RECEIVED);
 
 		if ((ext == 0) && (cnt == 0) && (type == PD_CTRL_ACCEPT)) {
 			if (pe[port].power_role == PD_ROLE_SINK)
@@ -4031,8 +4050,11 @@ static void pe_give_battery_cap_entry(int port)
 	uint8_t *payload = rx_emsg[port].buf;
 	uint16_t *msg = (uint16_t *)tx_emsg[port].buf;
 
-	if (!IS_ENABLED(CONFIG_BATTERY))
+	if (!IS_ENABLED(CONFIG_BATTERY)) {
+		PE_CLR_FLAG(port, PE_FLAGS_MSG_RECEIVED);
 		return;
+	}
+
 	print_current_state(port);
 
 	/* Set VID */
@@ -4148,6 +4170,8 @@ static void pe_give_battery_cap_entry(int port)
 	tx_emsg[port].len = 9;
 
 	send_ext_data_msg(port, TCPCI_MSG_SOP, PD_EXT_BATTERY_CAP);
+
+	PE_CLR_FLAG(port, PE_FLAGS_MSG_RECEIVED);
 }
 
 static void pe_give_battery_cap_run(int port)
@@ -4166,8 +4190,11 @@ static void pe_give_battery_status_entry(int port)
 	uint8_t *payload = rx_emsg[port].buf;
 	uint32_t *msg = (uint32_t *)tx_emsg[port].buf;
 
-	if (!IS_ENABLED(CONFIG_BATTERY))
+	if (!IS_ENABLED(CONFIG_BATTERY)) {
+		PE_CLR_FLAG(port, PE_FLAGS_MSG_RECEIVED);
 		return;
+	}
+
 	print_current_state(port);
 
 	if (battery_is_present()) {
@@ -4239,6 +4266,8 @@ static void pe_give_battery_status_entry(int port)
 	tx_emsg[port].len = 4;
 
 	send_data_msg(port, TCPCI_MSG_SOP, PD_DATA_BATTERY_STATUS);
+
+	PE_CLR_FLAG(port, PE_FLAGS_MSG_RECEIVED);
 }
 
 static void pe_give_battery_status_run(int port)
@@ -4391,11 +4420,11 @@ static void pe_drs_send_swap_run(int port)
 	 */
 	if ((msg_check & PE_MSG_SENT) &&
 	    PE_CHK_FLAG(port, PE_FLAGS_MSG_RECEIVED)) {
-		PE_CLR_FLAG(port, PE_FLAGS_MSG_RECEIVED);
-
 		type = PD_HEADER_TYPE(rx_emsg[port].header);
 		cnt = PD_HEADER_CNT(rx_emsg[port].header);
 		ext = PD_HEADER_EXT(rx_emsg[port].header);
+		/* Everything moved to local variables */
+		PE_CLR_FLAG(port, PE_FLAGS_MSG_RECEIVED);
 
 		if ((ext == 0) && (cnt == 0)) {
 			if (type == PD_CTRL_ACCEPT) {
@@ -4557,7 +4586,7 @@ static void pe_prs_src_snk_wait_source_on_run(int port)
 		int type = PD_HEADER_TYPE(rx_emsg[port].header);
 		int cnt = PD_HEADER_CNT(rx_emsg[port].header);
 		int ext = PD_HEADER_EXT(rx_emsg[port].header);
-
+		/* Everything moved to local variables */
 		PE_CLR_FLAG(port, PE_FLAGS_MSG_RECEIVED);
 
 		if ((ext == 0) && (cnt == 0) && (type == PD_CTRL_PS_RDY)) {
@@ -4633,11 +4662,11 @@ static void pe_prs_src_snk_send_swap_run(int port)
 	 */
 	if ((msg_check & PE_MSG_SENT) &&
 	    PE_CHK_FLAG(port, PE_FLAGS_MSG_RECEIVED)) {
-		PE_CLR_FLAG(port, PE_FLAGS_MSG_RECEIVED);
-
 		type = PD_HEADER_TYPE(rx_emsg[port].header);
 		cnt = PD_HEADER_CNT(rx_emsg[port].header);
 		ext = PD_HEADER_EXT(rx_emsg[port].header);
+		/* Everything moved to local variables */
+		PE_CLR_FLAG(port, PE_FLAGS_MSG_RECEIVED);
 
 		if ((ext == 0) && (cnt == 0)) {
 			if (type == PD_CTRL_ACCEPT) {
@@ -4777,11 +4806,11 @@ static void pe_prs_snk_src_transition_to_off_run(int port)
 	 *   1) An PS_RDY Message is received.
 	 */
 	else if (PE_CHK_FLAG(port, PE_FLAGS_MSG_RECEIVED)) {
-		PE_CLR_FLAG(port, PE_FLAGS_MSG_RECEIVED);
-
 		type = PD_HEADER_TYPE(rx_emsg[port].header);
 		cnt = PD_HEADER_CNT(rx_emsg[port].header);
 		ext = PD_HEADER_EXT(rx_emsg[port].header);
+		/* Everything moved to local variables */
+		PE_CLR_FLAG(port, PE_FLAGS_MSG_RECEIVED);
 
 		if ((ext == 0) && (cnt == 0) && (type == PD_CTRL_PS_RDY)) {
 			/*
@@ -4951,11 +4980,11 @@ static void pe_prs_snk_src_send_swap_run(int port)
 	 */
 	if ((msg_check & PE_MSG_SENT) &&
 	    PE_CHK_FLAG(port, PE_FLAGS_MSG_RECEIVED)) {
-		PE_CLR_FLAG(port, PE_FLAGS_MSG_RECEIVED);
-
 		type = PD_HEADER_TYPE(rx_emsg[port].header);
 		cnt = PD_HEADER_CNT(rx_emsg[port].header);
 		ext = PD_HEADER_EXT(rx_emsg[port].header);
+		/* Everything moved to local variables */
+		PE_CLR_FLAG(port, PE_FLAGS_MSG_RECEIVED);
 
 		if ((ext == 0) && (cnt == 0)) {
 			if (type == PD_CTRL_ACCEPT) {
@@ -5089,6 +5118,7 @@ static void pe_bist_tx_entry(int port)
 	/* If VBUS is not at vSafe5V, then don't enter BIST test mode */
 	if (vbus_mv != PD_V_SAFE5V_NOM) {
 		pe_set_ready_state(port);
+		PE_CLR_FLAG(port, PE_FLAGS_MSG_RECEIVED);
 		return;
 	}
 
@@ -5118,8 +5148,11 @@ static void pe_bist_tx_entry(int port)
 	} else {
 		/* Ignore unsupported BIST messages. */
 		pe_set_ready_state(port);
+		PE_CLR_FLAG(port, PE_FLAGS_MSG_RECEIVED);
 		return;
 	}
+
+	PE_CLR_FLAG(port, PE_FLAGS_MSG_RECEIVED);
 }
 
 static void pe_bist_tx_run(int port)
@@ -5221,6 +5254,8 @@ static void pe_handle_custom_vdm_request_entry(int port)
 			pe_set_ready_state(port);
 		}
 	}
+
+	PE_CLR_FLAG(port, PE_FLAGS_MSG_RECEIVED);
 }
 
 static void pe_handle_custom_vdm_request_run(int port)
@@ -5253,7 +5288,6 @@ static enum vdm_response_result parse_vdm_response_common(int port)
 
 	if (!PE_CHK_REPLY(port))
 		return VDM_RESULT_WAITING;
-	PE_CLR_FLAG(port, PE_FLAGS_MSG_RECEIVED);
 
 	payload = (uint32_t *)rx_emsg[port].buf;
 	sop = PD_HEADER_GET_SOP(rx_emsg[port].header);
@@ -5286,7 +5320,6 @@ static enum vdm_response_result parse_vdm_response_common(int port)
 			 * Unexpected VDM REQ received. Let Src.Ready or
 			 * Snk.Ready handle it.
 			 */
-			PE_SET_FLAG(port, PE_FLAGS_MSG_RECEIVED);
 			return VDM_RESULT_NO_ACTION;
 		}
 
@@ -5307,7 +5340,6 @@ static enum vdm_response_result parse_vdm_response_common(int port)
 	}
 
 	/* Unexpected Message Received. Src.Ready or Snk.Ready can handle it. */
-	PE_SET_FLAG(port, PE_FLAGS_MSG_RECEIVED);
 	return VDM_RESULT_NO_ACTION;
 }
 
@@ -5477,6 +5509,7 @@ static void pe_vdm_identity_request_cbl_run(int port)
 			 * reset using the SOP* of the incoming message.
 			 */
 			pe_send_soft_reset(port, sop);
+			PE_CLR_FLAG(port, PE_FLAGS_MSG_RECEIVED);
 			return;
 		}
 		break;
@@ -5494,10 +5527,12 @@ static void pe_vdm_identity_request_cbl_run(int port)
 		if (prl_get_rev(port, TCPCI_MSG_SOP) != PD_REV20)
 			prl_set_rev(port, sop,
 					PD_HEADER_REV(rx_emsg[port].header));
+		PE_CLR_FLAG(port, PE_FLAGS_MSG_RECEIVED);
 		break;
 	case VDM_RESULT_NAK:
 		/* PE_INIT_PORT_VDM_IDENTITY_NAKed embedded here */
 		pd_set_identity_discovery(port, pe[port].tx_type, PD_DISC_FAIL);
+		PE_CLR_FLAG(port, PE_FLAGS_MSG_RECEIVED);
 		break;
 	}
 
@@ -5623,11 +5658,13 @@ static void pe_init_port_vdm_identity_request_run(int port)
 		/* PE_INIT_PORT_VDM_Identity_ACKed embedded here */
 		dfp_consume_identity(port, sop, cnt, payload);
 
+		PE_CLR_FLAG(port, PE_FLAGS_MSG_RECEIVED);
 		break;
 		}
 	case VDM_RESULT_NAK:
 		/* PE_INIT_PORT_VDM_IDENTITY_NAKed embedded here */
 		pd_set_identity_discovery(port, pe[port].tx_type, PD_DISC_FAIL);
+		PE_CLR_FLAG(port, PE_FLAGS_MSG_RECEIVED);
 		break;
 	}
 
@@ -5717,11 +5754,13 @@ static void pe_init_vdm_svids_request_run(int port)
 
 		/* PE_INIT_VDM_SVIDs_ACKed embedded here */
 		dfp_consume_svids(port, sop, cnt, payload);
+		PE_CLR_FLAG(port, PE_FLAGS_MSG_RECEIVED);
 		break;
 		}
 	case VDM_RESULT_NAK:
 		/* PE_INIT_VDM_SVIDs_NAKed embedded here */
 		pd_set_svids_discovery(port, pe[port].tx_type, PD_DISC_FAIL);
+		PE_CLR_FLAG(port, PE_FLAGS_MSG_RECEIVED);
 		break;
 	}
 
@@ -5840,12 +5879,14 @@ static void pe_init_vdm_modes_request_run(int port)
 			dfp_consume_modes(port, sop, cnt, payload);
 			break;
 		}
+		PE_CLR_FLAG(port, PE_FLAGS_MSG_RECEIVED);
 		}
 		/* Fall Through */
 	case VDM_RESULT_NAK:
 		/* PE_INIT_VDM_Modes_NAKed embedded here */
 		pd_set_modes_discovery(port, pe[port].tx_type, requested_svid,
 				PD_DISC_FAIL);
+		PE_CLR_FLAG(port, PE_FLAGS_MSG_RECEIVED);
 		break;
 	}
 
@@ -5969,6 +6010,7 @@ static void pe_vdm_request_dpm_run(int port)
 				vdm_cmd == CMD_DP_CONFIG) {
 			PE_SET_FLAG(port, PE_FLAGS_VDM_SETUP_DONE);
 		}
+		PE_CLR_FLAG(port, PE_FLAGS_MSG_RECEIVED);
 		break;
 		}
 	case VDM_RESULT_NAK:
@@ -5986,6 +6028,7 @@ static void pe_vdm_request_dpm_run(int port)
 		dpm_vdm_naked(port, pe[port].tx_type,
 				PD_VDO_VID(pe[port].vdm_data[0]),
 				PD_VDO_CMD(pe[port].vdm_data[0]));
+		PE_CLR_FLAG(port, PE_FLAGS_MSG_RECEIVED);
 		break;
 	}
 
@@ -6030,6 +6073,7 @@ static void pe_vdm_response_entry(int port)
 			vdo_cmd);
 
 		pe_set_ready_state(port);
+		PE_CLR_FLAG(port, PE_FLAGS_MSG_RECEIVED);
 		return;
 	}
 
@@ -6096,6 +6140,7 @@ static void pe_vdm_response_entry(int port)
 		 */
 		dfp_consume_attention(port, rx_payload);
 		pe_set_ready_state(port);
+		PE_CLR_FLAG(port, PE_FLAGS_MSG_RECEIVED);
 		return;
 #endif
 	default:
@@ -6151,6 +6196,7 @@ static void pe_vdm_response_entry(int port)
 	/* Send response message. Note len is in bytes, not VDO objects */
 	tx_emsg[port].len = (vdo_len * sizeof(uint32_t));
 	send_data_msg(port, TCPCI_MSG_SOP, PD_DATA_VENDOR_DEF);
+	PE_CLR_FLAG(port, PE_FLAGS_MSG_RECEIVED);
 }
 
 static void pe_vdm_response_run(int port)
@@ -6258,7 +6304,7 @@ static void pe_enter_usb_run(int port)
 		int cnt = PD_HEADER_CNT(rx_emsg[port].header);
 		int type = PD_HEADER_TYPE(rx_emsg[port].header);
 		int sop = PD_HEADER_GET_SOP(rx_emsg[port].header);
-
+		/* Everything moved to local variables */
 		PE_CLR_FLAG(port, PE_FLAGS_MSG_RECEIVED);
 
 		/* Only look at control messages */
@@ -6386,14 +6432,14 @@ static void pe_vcs_send_swap_run(int port)
 
 	if ((msg_check & PE_MSG_SENT) &&
 	    PE_CHK_FLAG(port, PE_FLAGS_MSG_RECEIVED)) {
-		PE_CLR_FLAG(port, PE_FLAGS_MSG_RECEIVED);
-
 		/* Increment once message has successfully sent */
 		pe[port].vconn_swap_counter++;
 
 		type = PD_HEADER_TYPE(rx_emsg[port].header);
 		cnt = PD_HEADER_CNT(rx_emsg[port].header);
 		sop = PD_HEADER_GET_SOP(rx_emsg[port].header);
+		/* Everything moved to local variables */
+		PE_CLR_FLAG(port, PE_FLAGS_MSG_RECEIVED);
 
 		/* Only look at control messages */
 		if (cnt == 0) {
@@ -6752,7 +6798,6 @@ static void pe_vcs_cbl_send_soft_reset_run(int port)
 	/* Got ACCEPT or REJECT from Cable Plug */
 	if ((msg_check & PE_MSG_SENT) &&
 				PE_CHK_FLAG(port, PE_FLAGS_MSG_RECEIVED)) {
-		PE_CLR_FLAG(port, PE_FLAGS_MSG_RECEIVED);
 		cable_soft_reset_complete = true;
 
 		/*
@@ -6765,6 +6810,7 @@ static void pe_vcs_cbl_send_soft_reset_run(int port)
 		if (prl_get_rev(port, TCPCI_MSG_SOP) != PD_REV20)
 			prl_set_rev(port, TCPCI_MSG_SOP_PRIME,
 					PD_HEADER_REV(rx_emsg[port].header));
+		PE_CLR_FLAG(port, PE_FLAGS_MSG_RECEIVED);
 	}
 
 	/* No GoodCRC received, cable is not present */
@@ -6837,8 +6883,6 @@ static void pe_dr_get_sink_cap_run(int port)
 	 */
 	if ((msg_check & PE_MSG_SENT) &&
 	    PE_CHK_FLAG(port, PE_FLAGS_MSG_RECEIVED)) {
-		PE_CLR_FLAG(port, PE_FLAGS_MSG_RECEIVED);
-
 		type = PD_HEADER_TYPE(rx_emsg[port].header);
 		cnt = PD_HEADER_CNT(rx_emsg[port].header);
 		ext = PD_HEADER_EXT(rx_emsg[port].header);
@@ -6855,16 +6899,19 @@ static void pe_dr_get_sink_cap_run(int port)
 
 				dpm_evaluate_sink_fixed_pdo(port, payload[0]);
 				pe_set_ready_state(port);
+				PE_CLR_FLAG(port, PE_FLAGS_MSG_RECEIVED);
 				return;
 			} else if (cnt == 0 && (type == PD_CTRL_REJECT ||
 				   type == PD_CTRL_NOT_SUPPORTED)) {
 				pe_set_ready_state(port);
+				PE_CLR_FLAG(port, PE_FLAGS_MSG_RECEIVED);
 				return;
 			}
 			/* Unexpected messages fall through to soft reset */
 		}
 
 		pe_send_soft_reset(port, sop);
+		PE_CLR_FLAG(port, PE_FLAGS_MSG_RECEIVED);
 		return;
 	}
 
@@ -6944,8 +6991,6 @@ static void pe_dr_src_get_source_cap_run(int port)
 	 */
 	if ((msg_check & PE_MSG_SENT) &&
 	    PE_CHK_FLAG(port, PE_FLAGS_MSG_RECEIVED)) {
-		PE_CLR_FLAG(port, PE_FLAGS_MSG_RECEIVED);
-
 		type = PD_HEADER_TYPE(rx_emsg[port].header);
 		cnt = PD_HEADER_CNT(rx_emsg[port].header);
 		ext = PD_HEADER_EXT(rx_emsg[port].header);
@@ -6987,10 +7032,13 @@ static void pe_dr_src_get_source_cap_run(int port)
 				pd_set_src_caps(port, -1, NULL);
 				set_state_pe(port, PE_SEND_SOFT_RESET);
 			}
+
+			PE_CLR_FLAG(port, PE_FLAGS_MSG_RECEIVED);
 			return;
 		} else {
 			pd_set_src_caps(port, -1, NULL);
 			set_state_pe(port, PE_SEND_SOFT_RESET);
+			PE_CLR_FLAG(port, PE_FLAGS_MSG_RECEIVED);
 			return;
 		}
 	}
@@ -7044,7 +7092,7 @@ static void pe_ddr_send_data_reset_run(int port)
 	 */
 	if (PE_CHK_FLAG(port, PE_FLAGS_MSG_RECEIVED)) {
 		const uint32_t hdr = rx_emsg[port].header;
-
+		/* Everything moved to local variables */
 		PE_CLR_FLAG(port, PE_FLAGS_MSG_RECEIVED);
 
 		if (PD_HEADER_GET_SOP(hdr) == TCPCI_MSG_SOP &&
@@ -7103,7 +7151,7 @@ static void pe_ddr_wait_for_vconn_off_run(int port)
 {
 	if (PE_CHK_FLAG(port, PE_FLAGS_MSG_RECEIVED)) {
 		const uint32_t hdr = rx_emsg[port].header;
-
+		/* Everything moved to local variables */
 		PE_CLR_FLAG(port, PE_FLAGS_MSG_RECEIVED);
 
 		if (PD_HEADER_GET_SOP(hdr) == TCPCI_MSG_SOP &&
