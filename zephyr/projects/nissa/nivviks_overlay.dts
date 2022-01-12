@@ -68,6 +68,32 @@
 			flags = <GPIO_INT_EDGE_BOTH>;
 			handler = "throttle_ap_prochot_input_interrupt";
 		};
+
+		int_slp_s0: slp_s0 {
+			irq-pin = <&gpio_slp_s0_l>;
+			flags = <GPIO_INT_EDGE_BOTH>;
+			handler = "power_signal_interrupt";
+		};
+		int_slp_s3: slp_s3 {
+			irq-pin = <&gpio_slp_s3_l>;
+			flags = <GPIO_INT_EDGE_BOTH>;
+			handler = "power_signal_interrupt";
+		};
+		int_slp_sus: slp_sus {
+			irq-pin = <&gpio_slp_sus_l>;
+			flags = <GPIO_INT_EDGE_BOTH>;
+			handler = "power_signal_interrupt";
+		};
+		int_pg_rsmrst_odl: pg_rsmrst_odl {
+			irq-pin = <&gpio_rsmrst_pwrgd_l>;
+			flags = <GPIO_INT_EDGE_BOTH>;
+			handler = "power_signal_interrupt";
+		};
+		int_pg_all_sys_pwrgd: pg_all_sys_pwrgd {
+			irq-pin = <&gpio_all_sys_pwrgd>;
+			flags = <GPIO_INT_EDGE_BOTH>;
+			handler = "power_signal_interrupt";
+		};
 	};
 
 	named-gpios {
@@ -148,6 +174,33 @@
 		compatible = "named-pwms";
 
 		kblight: pwm_kb_bl {
+		};
+	};
+
+	adc-cmp {
+		cmp_pp3300_s5_high: pp3300_high {
+			compatible = "nuvoton,adc-cmp";
+			io-channels = <&adc0 6>;
+			comparison = "ADC_CMP_NPCX_GREATER";
+			threshold-mv = <2640>;
+		};
+		cmp_pp3300_s5_low: pp3300_low {
+			compatible = "nuvoton,adc-cmp";
+			io-channels = <&adc0 6>;
+			comparison = "ADC_CMP_NPCX_LESS_OR_EQUAL";
+			threshold-mv = <500>;
+		};
+		cmp_pp1p05_high: pp1p05_high {
+			compatible = "nuvoton,adc-cmp";
+			io-channels = <&adc0 4>;
+			comparison = "ADC_CMP_NPCX_GREATER";
+			threshold-mv = <945>;
+		};
+		cmp_pp1p05_low: pp1p05_low {
+			compatible = "nuvoton,adc-cmp";
+			io-channels = <&adc0 4>;
+			comparison = "ADC_CMP_NPCX_LESS_OR_EQUAL";
+			threshold-mv = <250>;
 		};
 	};
 
