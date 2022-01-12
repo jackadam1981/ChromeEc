@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "31b73b94_d2696e4c",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 4456,
+      "author": {
+        "id": 1384633
+      },
+      "writtenOn": "2022-01-12T17:21:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a3df0b9_51018b54",
+      "range": {
+        "startLine": 4456,
+        "startChar": 5,
+        "endLine": 4456,
+        "endChar": 24
+      },
+      "revId": "9aabc67097b248e8b23014b8e1bdb7cbd513e0f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ca73005d_c1601f76",
@@ -37,6 +61,24 @@
       "writtenOn": "2022-01-11T23:05:08Z",
       "side": 1,
       "message": "You probably want to add \u0027POWER_SOURCE_MAX UINT8_MAX\u0027 to make sure this won\u0027t be extended beyond the type used in struct ec_response_power_info_v1.",
+      "revId": "9aabc67097b248e8b23014b8e1bdb7cbd513e0f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8feecc20_13c2de8d",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 4466,
+      "author": {
+        "id": 1384633
+      },
+      "writtenOn": "2022-01-12T17:21:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ca73005d_c1601f76",
       "revId": "9aabc67097b248e8b23014b8e1bdb7cbd513e0f3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -64,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "110ed2bb_3484218a",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 4469,
+      "author": {
+        "id": 1384633
+      },
+      "writtenOn": "2022-01-12T17:21:23Z",
+      "side": 1,
+      "message": "We are planning to use this power_info for thermal management (DPTF) policy to control power. So, these implemented under this single item.",
+      "parentUuid": "c8e7e65c_bc419299",
+      "range": {
+        "startLine": 4469,
+        "startChar": 7,
+        "endLine": 4469,
+        "endChar": 32
+      },
+      "revId": "9aabc67097b248e8b23014b8e1bdb7cbd513e0f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9993e9b2_6ff5e492",
@@ -77,6 +143,30 @@
       "writtenOn": "2022-01-11T23:05:08Z",
       "side": 1,
       "message": "What is this?",
+      "range": {
+        "startLine": 4472,
+        "startChar": 4,
+        "endLine": 4472,
+        "endChar": 47
+      },
+      "revId": "9aabc67097b248e8b23014b8e1bdb7cbd513e0f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd30d34f_a0e3bcc9",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 4472,
+      "author": {
+        "id": 1384633
+      },
+      "writtenOn": "2022-01-12T17:21:23Z",
+      "side": 1,
+      "message": "This is for the power delivery state change sequence number.",
+      "parentUuid": "9993e9b2_6ff5e492",
       "range": {
         "startLine": 4472,
         "startChar": 4,
@@ -112,6 +202,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f1e634da_282c4987",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 4478,
+      "author": {
+        "id": 1384633
+      },
+      "writtenOn": "2022-01-12T17:21:23Z",
+      "side": 1,
+      "message": "Sorry but this was earlier existing code, I didn\u0027t touch this parameter. So, at this stage, I\u0027m not sure for what purpose it\u0027s being used.",
+      "parentUuid": "1a282430_76fe3c38",
+      "range": {
+        "startLine": 4478,
+        "startChar": 4,
+        "endLine": 4478,
+        "endChar": 26
+      },
+      "revId": "9aabc67097b248e8b23014b8e1bdb7cbd513e0f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c9f74374_40b5ec96",
         "filename": "include/ec_commands.h",
         "patchSetId": 5
@@ -123,6 +237,30 @@
       "writtenOn": "2022-01-11T23:05:08Z",
       "side": 1,
       "message": "What is this?",
+      "range": {
+        "startLine": 4482,
+        "startChar": 4,
+        "endLine": 4482,
+        "endChar": 26
+      },
+      "revId": "9aabc67097b248e8b23014b8e1bdb7cbd513e0f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc34f9a2_c656bea9",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 4482,
+      "author": {
+        "id": 1384633
+      },
+      "writtenOn": "2022-01-12T17:21:23Z",
+      "side": 1,
+      "message": "This is being used to report worst case rest of platform power.",
+      "parentUuid": "c9f74374_40b5ec96",
       "range": {
         "startLine": 4482,
         "startChar": 4,
@@ -146,6 +284,30 @@
       "writtenOn": "2022-01-11T23:05:08Z",
       "side": 1,
       "message": "You can\u0027t pass a pointer to the host.",
+      "range": {
+        "startLine": 4514,
+        "startChar": 33,
+        "endLine": 4514,
+        "endChar": 34
+      },
+      "revId": "9aabc67097b248e8b23014b8e1bdb7cbd513e0f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aaeed072_74aaf50a",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 4514,
+      "author": {
+        "id": 1384633
+      },
+      "writtenOn": "2022-01-12T17:21:23Z",
+      "side": 1,
+      "message": "submitted patch set 6 updating this.",
+      "parentUuid": "11abc107_f7bd5fea",
       "range": {
         "startLine": 4514,
         "startChar": 33,
