@@ -55,6 +55,9 @@ typedef uint8_t task_id_t;
 	COND_CODE_1(HAS_TASK_HOSTCMD,                                     \
 		     (CROS_EC_TASK(HOSTCMD, host_command_task, 0,         \
 				   CONFIG_TASK_HOSTCMD_STACK_SIZE)), ())  \
+	/* Placeholder to set the shell task priority */                  \
+	COND_CODE_1(CONFIG_SHELL,                                         \
+		      (CROS_EC_TASK(CONSOLE, console_task_nop, 0, 0)), ())\
 	COND_CODE_1(HAS_TASK_KEYPROTO,                                    \
 		     (CROS_EC_TASK(KEYPROTO, keyboard_protocol_task, 0,   \
 				   CONFIG_TASK_KEYPROTO_STACK_SIZE)), ()) \
