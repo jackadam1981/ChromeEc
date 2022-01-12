@@ -10,6 +10,7 @@
 #include "console.h"
 #include "hooks.h"
 #include "i2c.h"
+#include "task.h"
 #include "util.h"
 
 #define CPRINTS(format, args...) cprints(CC_CHARGER, format, ## args)
@@ -195,10 +196,14 @@ int board_cut_off_battery(void)
 {
 	int rv;
 	int type = get_battery_type();
+	int lock_count;
 
 	/* If battery type is unknown can't send ship mode command */
 	if (type == BATTERY_TYPE_COUNT)
 		return EC_RES_ERROR;
+
+	/* Lock the irq to prevent prememption */
+	lock_count = irq_lock();
 
 	if (board_battery_info[type].fuel_gauge.ship_mode.wb_support)
 		rv = cut_off_battery_block_write(
@@ -206,6 +211,14 @@ int board_cut_off_battery(void)
 	else
 		rv = cut_off_battery_sb_write(
 			  &board_battery_info[type].fuel_gauge.ship_mode);
+
+	/*
+	 * lock the battery i2c port in case the i2c traffic from other devices
+	 * waking up the battery after battery in shipping mode and before the
+	 * system fully off.
+	 */
+	i2c_lock(I2C_PORT_BATTERY, 1);
+	irq_unlock(lock_count);
 
 	return rv ? EC_RES_ERROR : EC_RES_SUCCESS;
 }
