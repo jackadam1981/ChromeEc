@@ -153,6 +153,18 @@
 	def-lvol-io-list {
 		compatible = "nuvoton,npcx-lvolctrl-def";
 	};
+
+	named-batteries {
+		compatible = "named-batteries";
+
+		lgc {
+			enum-name = "lgc_l17l3pb0";
+		};
+
+		powertech {
+			enum-name = "powertech_batgqa05l22";
+		};
+	};
 };
 
 &uart1 {
