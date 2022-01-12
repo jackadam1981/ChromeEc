@@ -34,6 +34,24 @@
       "parentUuid": "8f0fa0b2_1b93f752",
       "revId": "48780845c538ea1bf116a53e8cc58928719a1460",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3e6430e_ae83ba0d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2022-01-12T07:19:35Z",
+      "side": 1,
+      "message": "Have further split this into below 3:\n1) CL:3216898 \nIntroduce a get function.\nReplace all i2c_ports_used with this get functions.\n2) CL:3382600\nAdd run time config - CONFIG_I2C_PORT_COUNT_RUNTIME \u0026 add the corresponding get \u0026 set functions. \n3) CL:3220907\nMake adl specific change to support run time implementation",
+      "parentUuid": "92af8106_04d87865",
+      "revId": "48780845c538ea1bf116a53e8cc58928719a1460",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
