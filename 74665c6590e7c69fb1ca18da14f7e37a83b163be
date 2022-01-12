@@ -100,6 +100,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8a3fd26d_58247627",
+        "filename": "chip/mt_scp/mt818x/clock_mt8186.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2022-01-12T05:27:34Z",
+      "side": 1,
+      "message": "remove this line",
+      "range": {
+        "startLine": 124,
+        "startChar": 2,
+        "endLine": 124,
+        "endChar": 11
+      },
+      "revId": "74665c6590e7c69fb1ca18da14f7e37a83b163be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "43f6c5bc_dae43058",
         "filename": "chip/mt_scp/mt818x/clock_mt8186.c",
         "patchSetId": 3
@@ -116,6 +139,29 @@
         "startChar": 0,
         "endLine": 240,
         "endChar": 4
+      },
+      "revId": "74665c6590e7c69fb1ca18da14f7e37a83b163be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "febbff2b_28dfbd2c",
+        "filename": "chip/mt_scp/mt818x/clock_mt8186.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2022-01-12T05:27:34Z",
+      "side": 1,
+      "message": "remove this condition",
+      "range": {
+        "startLine": 259,
+        "startChar": 0,
+        "endLine": 259,
+        "endChar": 5
       },
       "revId": "74665c6590e7c69fb1ca18da14f7e37a83b163be",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
