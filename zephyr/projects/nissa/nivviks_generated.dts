@@ -15,6 +15,11 @@
 			enum-name = "ADC_PP3300_S5";
 			io-channels = <&adc0 6>;
 		};
+		adc_ec_vsense_pp1050_proc: ec_vsense_pp1050_proc {
+			label = "EC_VSENSE_PP1050_PROC";
+			enum-name = "ADC_PP1P05";
+			io-channels = <&adc0 4>;
+		};
 		adc_temp_sensor_1: temp_sensor_1 {
 			label = "TEMP_SENSOR_1";
 			enum-name = "ADC_TEMP_SENSOR_1";
@@ -35,7 +40,7 @@
 			gpios = <&gpio5 0 GPIO_INPUT>;
 			enum-name = "GPIO_LID_ACCEL_INT_L";
 		};
-		gpio_all_sys_pwrgd: all_sys_pwrgd {
+		allsyspwrgd: all_sys_pwrgd {
 			#gpio-cells = <0>;
 			gpios = <&gpioa 7 GPIO_INPUT>;
 			enum-name = "GPIO_PG_EC_ALL_SYS_PWRGD";
@@ -80,7 +85,7 @@
 			gpios = <&gpiof 1 GPIO_INPUT>;
 			enum-name = "GPIO_CPU_PROCHOT";
 		};
-		gpio_ec_soc_dsw_pwrok: ec_soc_dsw_pwrok {
+		dswpwrokout: ec_soc_dsw_pwrok {
 			#gpio-cells = <0>;
 			gpios = <&gpio6 1 GPIO_OUTPUT>;
 			enum-name = "GPIO_PG_EC_DSW_PWROK";
@@ -95,17 +100,17 @@
 			gpios = <&gpiob 0 GPIO_ODR_LOW>;
 			enum-name = "GPIO_EC_INT_L";
 		};
-		gpio_ec_soc_pch_pwrok_od: ec_soc_pch_pwrok_od {
+		pchpwrok: ec_soc_pch_pwrok_od {
 			#gpio-cells = <0>;
-			gpios = <&gpio7 2 GPIO_ODR_HIGH>;
+			gpios = <&gpio7 2 GPIO_ODR_LOW>;
 			enum-name = "GPIO_PCH_PWROK";
 		};
-		gpio_ec_soc_pwr_btn_odl: ec_soc_pwr_btn_odl {
+		pchpwrbtn: ec_soc_pwr_btn_odl {
 			#gpio-cells = <0>;
-			gpios = <&gpioc 1 GPIO_ODR_LOW>;
+			gpios = <&gpioc 1 GPIO_ODR_HIGH>;
 			enum-name = "GPIO_PCH_PWRBTN_L";
 		};
-		gpio_ec_soc_rsmrst_l: ec_soc_rsmrst_l {
+		rsmrstout: ec_soc_rsmrst_l {
 			#gpio-cells = <0>;
 			gpios = <&gpioa 6 GPIO_OUTPUT>;
 			enum-name = "GPIO_PCH_RSMRST_L";
@@ -115,14 +120,14 @@
 			gpios = <&gpio7 6 GPIO_OUTPUT>;
 			enum-name = "GPIO_PCH_RTCRST";
 		};
-		gpio_ec_soc_sys_pwrok: ec_soc_sys_pwrok {
+		syspwrok: ec_soc_sys_pwrok {
 			#gpio-cells = <0>;
 			gpios = <&gpio3 7 GPIO_OUTPUT>;
 			enum-name = "GPIO_PCH_SYS_PWROK";
 		};
-		gpio_ec_soc_vccst_pwrgd_od: ec_soc_vccst_pwrgd_od {
+		vccstpwrgd: ec_soc_vccst_pwrgd_od {
 			#gpio-cells = <0>;
-			gpios = <&gpioa 4 GPIO_ODR_HIGH>;
+			gpios = <&gpioa 4 GPIO_ODR_LOW>;
 			enum-name = "GPIO_VCCST_PWRGD_OD";
 		};
 		gpio_ec_soc_wake_odl: ec_soc_wake_odl {
@@ -140,7 +145,7 @@
 			gpios = <&gpioa 0 GPIO_OUTPUT>;
 			enum-name = "GPIO_EN_KEYBOARD_BACKLIGHT";
 		};
-		gpio_en_pp3300_s5: en_pp3300_s5 {
+		enpp3p3: en_pp3300_s5 {
 			#gpio-cells = <0>;
 			gpios = <&gpiob 6 GPIO_OUTPUT>;
 			enum-name = "GPIO_EN_PP3300_A";
@@ -150,7 +155,7 @@
 			gpios = <&gpioe 2 GPIO_OUTPUT>;
 			enum-name = "GPIO_EN_PP5000_PEN_X";
 		};
-		gpio_en_pp5000_s5: en_pp5000_s5 {
+		enpp5p0: en_pp5000_s5 {
 			#gpio-cells = <0>;
 			gpios = <&gpio4 0 GPIO_OUTPUT>;
 			enum-name = "GPIO_EN_PP5000";
@@ -185,7 +190,7 @@
 			gpios = <&gpio5 6 GPIO_INPUT>;
 			enum-name = "GPIO_EC_IMU_INT_L";
 		};
-		gpio_imvp91_vrrdy_od: imvp91_vrrdy_od {
+		imvp9vrrdy: imvp91_vrrdy_od {
 			#gpio-cells = <0>;
 			gpios = <&gpio4 3 GPIO_INPUT>;
 			enum-name = "GPIO_IMVP9_VRRDY_OD";
@@ -215,27 +220,27 @@
 			gpios = <&gpio4 2 GPIO_INPUT>;
 			enum-name = "GPIO_PG_PP5000_A_ODL";
 		};
-		gpio_rsmrst_pwrgd_l: rsmrst_pwrgd_l {
+		rsmrstin: rsmrst_pwrgd_l {
 			#gpio-cells = <0>;
 			gpios = <&gpio9 4 GPIO_INPUT_PULL_UP>;
 			enum-name = "GPIO_PG_EC_RSMRST_ODL";
 		};
-		gpio_slp_s0_l: slp_s0_l {
+		slps0: slp_s0_l {
 			#gpio-cells = <0>;
 			gpios = <&gpio9 7 GPIO_INPUT>;
 			enum-name = "GPIO_PCH_SLP_S0_L";
 		};
-		gpio_slp_s3_l: slp_s3_l {
+		slps3: slp_s3_l {
 			#gpio-cells = <0>;
 			gpios = <&gpioa 5 GPIO_INPUT>;
 			enum-name = "GPIO_PCH_SLP_S3_L";
 		};
-		gpio_slp_s4_l: slp_s4_l {
+		slps4: slp_s4_l {
 			#gpio-cells = <0>;
 			gpios = <&gpio7 0 GPIO_INPUT>;
 			enum-name = "GPIO_PCH_SLP_S4_L";
 		};
-		gpio_slp_sus_l: slp_sus_l {
+		slpsus: slp_sus_l {
 			#gpio-cells = <0>;
 			gpios = <&gpio6 2 GPIO_INPUT>;
 			enum-name = "GPIO_SLP_SUS_L";
@@ -245,9 +250,9 @@
 			gpios = <&gpiod 5 GPIO_OUTPUT>;
 			enum-name = "GPIO_SUB_USB_A1_ILIMIT_SDP";
 		};
-		gpio_sys_rst_odl: sys_rst_odl {
+		sysreset: sys_rst_odl {
 			#gpio-cells = <0>;
-			gpios = <&gpioc 5 GPIO_ODR_LOW>;
+			gpios = <&gpioc 5 GPIO_ODR_HIGH>;
 			enum-name = "GPIO_SYS_RESET_L";
 		};
 		gpio_tablet_mode_l: tablet_mode_l {
@@ -285,6 +290,18 @@
 			gpios = <&gpioa 2 GPIO_INPUT_PULL_UP>;
 			enum-name = "GPIO_VOLUME_UP_L";
 		};
+		dswpwrokin: ec_vsense_pp3300_s5 {
+			#gpio-cells = <0>;
+			gpios = <&gpio3 4 GPIO_INPUT_PULL_UP>;
+			enum-name = "GPIO_EC_VSENSE_PP3300_S5";
+		};
+	};
+
+	gpio_pg_pp1050_proc {
+		status = "disabled";
+	};
+	dswpwrokin {
+		status = "disabled";
 	};
 
 	named-i2c-ports {
