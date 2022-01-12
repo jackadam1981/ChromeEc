@@ -90,7 +90,7 @@ builds of zephyr-ec boards.
 Changing the logging level to INFO, displays the flash and SRAM usage of board.
 
 ```
-$ zmake -l INFO configure -b volteer
+$ zmake configure -b volteer
 INFO: Clearing old build directory /mnt/host/source/src/platform/ec/build/zephyr/projects/volteer/volteer
     ...
 INFO: [volteer:ro]Memory region         Used Size  Region Size  %age Used
