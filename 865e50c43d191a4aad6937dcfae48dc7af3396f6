@@ -398,6 +398,30 @@
       },
       "revId": "865e50c43d191a4aad6937dcfae48dc7af3396f6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81de9717_ce70d0fe",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2022-01-12T22:17:46Z",
+      "side": 1,
+      "message": "Sure, perhaps we could add this change in the power monitoring logic CL:3381051",
+      "parentUuid": "516ed103_0a659dda",
+      "range": {
+        "startLine": 91,
+        "startChar": 1,
+        "endLine": 91,
+        "endChar": 52
+      },
+      "revId": "865e50c43d191a4aad6937dcfae48dc7af3396f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
