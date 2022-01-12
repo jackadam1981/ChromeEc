@@ -50,6 +50,7 @@ void chipset_force_shutdown(enum pwrseq_chipset_shutdown_reason reason,
 void chipset_reset(enum pwrseq_chipset_shutdown_reason reason);
 void common_rsmrst_pass_thru_handler(void);
 void init_chipset_pwr_seq_state(void);
+void chipset_request_exit_hardoff(bool should_exit);
 enum power_states_ndsx pwr_sm_get_state(void);
 void apshutdown(void);
 
