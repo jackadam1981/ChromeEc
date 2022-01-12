@@ -109,6 +109,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0b5ce06e_249e2940",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2022-01-12T01:53:46Z",
+      "side": 1,
+      "message": "Even with the uneven RO/RW split, building TCPMv2 for servoV4p1 exceeded the available flash. The TCPMv2 code has changed since the last time I built it for servoV4p1 and it no longer builds without errors. But I did see the following:\n\nbuild/servo_v4p1/RO/ec.RO.elf section `.bss\u0027 will not fit in region `IRAM\u0027\nNot enough space for shared memory.\nregion `IRAM\u0027 overflowed by 2088 byte\n\nNote that the ServoV4p1 uses the stm32f072 that has 16K Ram and 128K flash.\n\nThis is the build output with this CL:\n\n *** 12468 bytes in flash and 1028 bytes in RAM still available on servo_v4p1 RO\n *** 1724 bytes in flash and 7392 bytes in RAM still available on servo_v4p1 RW\n \n \nFrom what I can remember, I stripped out the following:\nTimer Code, flag_bit_names, cable probing, Charge Through States, LowPower stuff, Super States for RD and RP, TrySrc and TrySnk.\nFor PE, TCPMv2 has 69 non-PD3.0 states and I reduced that to 17.",
+      "parentUuid": "2aa0a089_00e69a2c",
+      "revId": "d052d4b0c319bf17800a5b6df344aa9cbc70bc50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8d4782a7_1e717ecc",
         "filename": "common/usbc/usbc_task.c",
         "patchSetId": 10
