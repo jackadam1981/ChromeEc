@@ -28,10 +28,11 @@
 #define VR_PG_EC_RSMRST_ODL	rsmrstin
 #define EC_PCH_RSMRST_L		rsmrstout
 
-/* Signal represents the power good for all the rest
+/* Signals represent the power good for all the rest
  * of platform voltage rails.
  */
-#define VR_EC_ALL_SYS_PWRGD	allsyspwrgd
+#define VR_EC_ALL_SYS_PWRGD	allsyspwrgdin
+#define EC_OUT_ALL_SYS_PWRGD	allsyspwrgdout
 
 #define PCH_PWROK		pchpwrok
 /* SYS_PWROK is a generic power good input to the PCH is driven
