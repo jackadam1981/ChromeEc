@@ -68,6 +68,75 @@
       },
       "revId": "e92c0832c03b47dd372ed09f619fcc46b8a01a13",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "711e7467_9e907868",
+        "filename": "include/power_status.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-01-12T21:24:25Z",
+      "side": 1,
+      "message": "please mention the unit where missing.",
+      "range": {
+        "startLine": 12,
+        "startChar": 15,
+        "endLine": 12,
+        "endChar": 21
+      },
+      "revId": "e92c0832c03b47dd372ed09f619fcc46b8a01a13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6407f127_76b52152",
+        "filename": "include/power_status.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-01-12T21:24:25Z",
+      "side": 1,
+      "message": "const doesn\u0027t make sense for these struct members.",
+      "range": {
+        "startLine": 13,
+        "startChar": 1,
+        "endLine": 13,
+        "endChar": 6
+      },
+      "revId": "e92c0832c03b47dd372ed09f619fcc46b8a01a13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65570ed1_2cb3d32b",
+        "filename": "include/power_status.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-01-12T21:24:25Z",
+      "side": 1,
+      "message": "is this the charger sense resistor?",
+      "range": {
+        "startLine": 31,
+        "startChar": 11,
+        "endLine": 31,
+        "endChar": 25
+      },
+      "revId": "e92c0832c03b47dd372ed09f619fcc46b8a01a13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
