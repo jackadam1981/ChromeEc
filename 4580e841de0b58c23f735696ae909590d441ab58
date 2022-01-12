@@ -20,6 +20,41 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "98416612_49aa8007",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1291180
+      },
+      "writtenOn": "2022-01-12T02:24:48Z",
+      "side": 1,
+      "message": "OK, I’ll try to do that.",
+      "parentUuid": "38a9e133_c348e70c",
+      "revId": "4580e841de0b58c23f735696ae909590d441ab58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e6363b3e_93b4669d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1291180
+      },
+      "writtenOn": "2022-01-12T02:24:48Z",
+      "side": 1,
+      "message": "Hi Caveh jalali, I\u0027m working on it.\nThanks,\nXin",
+      "revId": "4580e841de0b58c23f735696ae909590d441ab58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b85c063a_4fff7ec4",
         "filename": "driver/tcpm/anx7406.c",
         "patchSetId": 2
@@ -31,6 +66,30 @@
       "writtenOn": "2022-01-10T20:02:24Z",
       "side": 1,
       "message": "if the anx7443 is a separate chip, can we put its\ndriver in a separate file?",
+      "range": {
+        "startLine": 564,
+        "startChar": 11,
+        "endLine": 564,
+        "endChar": 28
+      },
+      "revId": "4580e841de0b58c23f735696ae909590d441ab58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54c24f5f_cbfeefcf",
+        "filename": "driver/tcpm/anx7406.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 564,
+      "author": {
+        "id": 1291180
+      },
+      "writtenOn": "2022-01-12T02:24:48Z",
+      "side": 1,
+      "message": "Yes, it is a separate chip. I\u0027ll put it in a separate file.",
+      "parentUuid": "b85c063a_4fff7ec4",
       "range": {
         "startLine": 564,
         "startChar": 11,
