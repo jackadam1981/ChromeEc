@@ -52,7 +52,13 @@ static int test_memmove(void)
 		 */
 		int expected_speedup = 3;
 
-		if (IS_ENABLED(CHIP_FAMILY_STM32H7))
+		/*
+		 * Expect about 2.37x speed gain on STM32H7 and STM32F4 due
+		 * to GCC 11 memcopy, memmove and memset improvements.
+		 * Use smaller value because it fluctuates.
+		 */
+		if (IS_ENABLED(CHIP_FAMILY_STM32H7) ||
+		    IS_ENABLED(CHIP_FAMILY_STM32F4))
 			expected_speedup = 2;
 
 		TEST_ASSERT((t1.val - t0.val) >
@@ -102,13 +108,25 @@ static int test_memcpy(void)
 	TEST_ASSERT_ARRAY_EQ(buf + dest_offset, buf, len);
 
 	/* Expected about 4x speed gain. Use 3x because it fluctuates */
-#ifndef EMU_BUILD
-	/*
-	 * The speed gain is too unpredictable on host, especially on
-	 * buildbots. Skip it if we are running in the emulator.
-	 */
-	TEST_ASSERT((t1.val-t0.val) > (unsigned)(t3.val-t2.val) * 3);
-#endif
+	if (!IS_ENABLED(EMU_BUILD)) {
+		/*
+		 * The speed gain is too unpredictable on host, especially on
+		 * buildbots. Skip it if we are running in the emulator.
+		 */
+		int expected_speedup = 3;
+
+		/*
+		 * Expect about 2.37x speed gain on STM32H7 and STM32F4 due
+		 * to GCC 11 memcopy, memmove and memset improvements.
+		 * Use smaller value because it fluctuates.
+		 */
+		if (IS_ENABLED(CHIP_FAMILY_STM32H7) ||
+		    IS_ENABLED(CHIP_FAMILY_STM32F4))
+			expected_speedup = 2;
+
+		TEST_ASSERT((t1.val-t0.val) >
+			(unsigned int)(t3.val-t2.val) * expected_speedup);
+	}
 
 	memcpy(buf + dest_offset + 1, buf + 1, len - 1);
 	TEST_ASSERT_ARRAY_EQ(buf + dest_offset + 1, buf + 1, len - 1);
@@ -174,9 +192,18 @@ static int test_memset(void)
 		 */
 		int expected_speedup = 3;
 
-		if (IS_ENABLED(CHIP_FAMILY_STM32F4) ||
-		    IS_ENABLED(CHIP_FAMILY_STM32H7))
+		if (IS_ENABLED(CHIP_FAMILY_STM32F4))
 			expected_speedup = 2;
+
+		/*
+		 * Expect about 1.75x - 2.35x speed gain on STM32H7 due to GCC11
+		 * memcopy, memmove and memset improvements. Factor depends on
+		 * how the compiler places the code. If dumb_memset() loop is
+		 * aligned to 8 bytes, then speedup is 1.75x, otherwise it is
+		 * 2.35x.
+		 */
+		if (IS_ENABLED(CHIP_FAMILY_STM32H7))
+			expected_speedup = 1;
 
 		TEST_ASSERT((t1.val - t0.val) >
 			    (unsigned int)(t3.val - t2.val) * expected_speedup);
