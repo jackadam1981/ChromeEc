@@ -16,6 +16,7 @@
 #include "hooks.h"
 #include "host_command.h"
 #include "math_util.h"
+#include "task.h"
 #include "timer.h"
 #include "usb_pd.h"
 #include "util.h"
@@ -302,6 +303,15 @@ int battery_is_cut_off(void)
 static void pending_cutoff_deferred(void)
 {
 	int rv;
+	int key;
+
+	/*
+	 * Lock the irq until the battery_cutoff_state is updated to prevent
+	 * preemption.
+	 * This is to prevent from waking the battery up after cut-off from the
+	 * other devices on the same i2c port.
+	 */
+	key = irq_lock();
 
 	rv = board_cut_off_battery();
 
@@ -312,6 +322,9 @@ static void pending_cutoff_deferred(void)
 		CUTOFFPRINTS("failed!");
 		battery_cutoff_state = BATTERY_CUTOFF_STATE_NORMAL;
 	}
+
+	/* battery_cutoff_state is updated, unlcok the IRQ */
+	irq_unlock(key);
 }
 DECLARE_DEFERRED(pending_cutoff_deferred);
 
