@@ -489,6 +489,7 @@ static void spi_hash_pp_done(void)
 		return;
 	}
 
+	CPRINTS("%s: set %d", __func__, spi_hash_device);
 	/* Clear previous enable if needed */
 	if (spi_hash_device != USB_SPI_DISABLE)
 		disable_ec_ap_spi(0);
