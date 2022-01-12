@@ -33,6 +33,24 @@
       "message": "I would move this test before setting fail on PS8805_REG_GPIO_CONTROL read to make sure that ps8805_gpio_set_level() fail because of invalid signal, not fail in i2c.",
       "revId": "93295424723634f3910e0849ca8617daf5ae3fcc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a92b0e37_c4869559",
+        "filename": "zephyr/test/drivers/src/ps8xxx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 756,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2022-01-12T18:24:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d4c2d281_6686bab4",
+      "revId": "93295424723634f3910e0849ca8617daf5ae3fcc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
