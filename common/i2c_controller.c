@@ -233,6 +233,13 @@ int i2c_xfer_unlocked(const int port,
 		return EC_ERROR_INVAL;
 	}
 
+#ifdef CONFIG_BATTERY_CUT_OFF
+	if (port == I2C_PORT_BATTERY && battery_is_cut_off()) {
+		CPUTS("Battery is cut-off, block accessing the i2c port!");
+		return EC_ERROR_ACCESS_DENIED;
+	}
+#endif
+
 	for (i = 0; i <= CONFIG_I2C_NACK_RETRY_COUNT; i++) {
 #ifdef CONFIG_ZEPHYR
 		struct i2c_msg msg[2];
