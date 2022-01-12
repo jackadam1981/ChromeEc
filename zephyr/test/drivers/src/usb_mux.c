@@ -20,6 +20,8 @@
 #include "i2c.h"
 #include "stubs.h"
 #include "task.h"
+#include "tcpm/ps8xxx_public.h"
+#include "tcpm/tcpci.h"
 #include "usb_prl_sm.h"
 #include "usb_tc_sm.h"
 
@@ -698,6 +700,13 @@ void test_usb_mux_hpd_update(void)
 	CHECK_PROXY_FAKE_CALL_CNT(proxy_init, 0);
 	CHECK_PROXY_FAKE_CALL_CNT_MUX_STATE(proxy_hpd_update, NUM_OF_PROXY,
 					    exp_mode);
+
+	usb_muxes[USBC_PORT_C1].usb_port = 1;
+	usb_muxes[USBC_PORT_C1].driver = &tcpci_tcpm_usb_mux_driver;
+	usb_muxes[USBC_PORT_C1].hpd_update = &ps8xxx_tcpc_update_hpd_status;
+
+	exp_mode = virt_mode | USB_PD_MUX_HPD_LVL | USB_PD_MUX_HPD_IRQ;
+	usb_mux_hpd_update(USBC_PORT_C1, exp_mode);
 }
 
 void test_usb_mux_fw_update_port_info(void)
