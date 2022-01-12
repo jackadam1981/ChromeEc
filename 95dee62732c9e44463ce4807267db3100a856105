@@ -39,6 +39,30 @@
       },
       "revId": "95dee62732c9e44463ce4807267db3100a856105",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f91ee1e2_e719af4e",
+        "filename": "include/ioexpander.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2022-01-12T13:22:54Z",
+      "side": 1,
+      "message": "Yep, great catch. An earlier iteration of this function was using bytes. I also changed the name to state_len to hopefully make it more clear.",
+      "parentUuid": "9795b97c_4e265237",
+      "range": {
+        "startLine": 187,
+        "startChar": 45,
+        "endLine": 187,
+        "endChar": 50
+      },
+      "revId": "95dee62732c9e44463ce4807267db3100a856105",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
