@@ -16,6 +16,24 @@
       "message": "I don\u0027t understand the purpose of this line. We\u0027re waking ourselves up?",
       "revId": "8d0e125be868e82b67d1e37a73b90581384d2ef9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3481697_7e3fa7db",
+        "filename": "power/common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 685,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-01-12T21:37:59Z",
+      "side": 1,
+      "message": "Yup! Look above at power_common_state(). There are several places where it calls task_wait_event() which will hang forever if there isn\u0027t a wake event pending.",
+      "parentUuid": "63d6ebd5_2b5699ba",
+      "revId": "8d0e125be868e82b67d1e37a73b90581384d2ef9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
