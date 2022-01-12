@@ -99,6 +99,12 @@ properties:
       description: |
         VR/Circuit input to EC 3.3V power good signal.
 
+    ec-soc-dsw-pwrok-gpios:
+      type: phandle-array
+      required: false
+      description: |
+        VR/Circuit output from EC 3.3V power good signal.
+
     ec-pch-rsmrst-odl-gpios:
       type: phandle-array
       required: true
@@ -110,6 +116,12 @@ properties:
       required: false
       description: |
         Output from EC to enable 5V rail.
+
+    en-pp3300-s5-gpios:
+      type: phandle-array
+      required: false
+      description: |
+        Output from EC to enable 3.3V rail.
 
     pg-ec-rsmrst-odl-gpios:
       type: phandle-array
@@ -123,6 +135,12 @@ properties:
       required: true
       description: |
         SLP_S3 signal input to EC for S3 sleep control from SoC.
+
+    slp-s0-l-gpios:
+      type: phandle-array
+      required: true
+      description: |
+        SLP_S0 signal input to EC for S0 sleep control from SoC.
 
     pg-ec-all-sys-pwrgd-gpios:
       type: phandle-array

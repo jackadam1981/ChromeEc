@@ -1,0 +1,63 @@
+/* Copyright 2022 The Chromium OS Authors. All rights reserved.
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+/ {
+	chosen {
+		intel-ap-pwrseq,espi = &espi0;
+	};
+
+	pwrseq_signals_list: pwrseq-signals-list {
+		compatible = "intel,ap-pwrseq-signal-list";
+		pwrseq-signals-required = <8>;
+
+		pwrseq_slp_s0 {
+			dbg-label = "SLP_S0_DEASSERTED";
+			pwrseq-gpio-int-node = <&int_slp_s0>;
+			pwrseq-signal-enum = "X86_SLP_S0_DEASSERTED";
+			flags = <0x3>;
+		};
+		pwrseq_slp_s3 {
+			dbg-label = "SLP_S3_DEASSERTED";
+			pwrseq-gpio-int-node = <&int_slp_s3>;
+			pwrseq-signal-enum = "X86_SLP_S3_DEASSERTED";
+			flags = <0x1>;
+		};
+		pwrseq_slp_s4 {
+			dbg-label = "SLP_S4_DEASSERTED";
+			pwrseq-vw-enum = "ESPI_VWIRE_SIGNAL_SLP_S4";
+			pwrseq-signal-enum = "X86_SLP_S4_DEASSERTED";
+			flags = <0x1>;
+		};
+		pwrseq_slp_s5 {
+			dbg-label = "SLP_S5_DEASSERTED";
+			pwrseq-vw-enum = "ESPI_VWIRE_SIGNAL_SLP_S5";
+			pwrseq-signal-enum = "X86_SLP_S5_DEASSERTED";
+			flags = <0x1>;
+		};
+		pwrseq_slp_sus {
+			dbg-label = "SLP_SUS_DEASSERTED";
+			pwrseq-gpio-int-node = <&int_slp_sus>;
+			pwrseq-signal-enum = "X86_SLP_SUS_DEASSERTED";
+			flags = <0x1>;
+		};
+		pwrseq_rsmrst {
+			dbg-label = "RSMRST_L_PGOOD";
+			pwrseq-gpio-int-node = <&int_pg_all_sys_pwrgd>;
+			pwrseq-signal-enum = "X86_RSMRST_L_PGOOD";
+			flags = <0x1>;
+		};
+		pwrseq_dsw_pwrok {
+			dbg-label = "DSW_DPWROK";
+			pwrseq-signal-enum = "X86_DSW_PWROK";
+			flags = <0x1>;
+		};
+		pwrseq_all_sys_pwrgd {
+			dbg-label = "ALL_SYS_PWRGD";
+			pwrseq-gpio-int-node = <&int_pg_all_sys_pwrgd>;
+			pwrseq-signal-enum = "X86_ALL_SYS_PGOOD";
+			flags = <0x1>;
+		};
+	};
+};
