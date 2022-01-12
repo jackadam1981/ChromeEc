@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6946cf0f_4d6e3725",
+        "filename": "zephyr/subsys/ap_pwrseq/include/x86_non_dsx_adlp_pwrseq_sm.h",
+        "patchSetId": 26
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2022-01-12T21:29:14Z",
+      "side": 1,
+      "message": "Same as https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3377810/4/zephyr/subsys/ap_pwrseq/include/x86_non_dsx_adlp_pwrseq_sm.h#28\n\nShould this be on source file instead?",
+      "range": {
+        "startLine": 90,
+        "startChar": 7,
+        "endLine": 90,
+        "endChar": 28
+      },
+      "revId": "393493720503870dafc09ae2a94e97491701a221",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "668534b0_35edba0b",
         "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
         "patchSetId": 26
