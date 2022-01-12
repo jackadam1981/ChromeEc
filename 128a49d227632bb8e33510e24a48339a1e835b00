@@ -1,0 +1,124 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46305a02_330ce1c2",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_adlp_pwrseq_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2022-01-12T22:36:44Z",
+      "side": 1,
+      "message": "This could be removed if its not an issue anymore without espi_bus_reset.",
+      "revId": "128a49d227632bb8e33510e24a48339a1e835b00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef596e00_f951ab3a",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2022-01-12T22:36:44Z",
+      "side": 1,
+      "message": "Could you please move it to the power_seq_context structure?",
+      "revId": "128a49d227632bb8e33510e24a48339a1e835b00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07bcadce_b6e33ecf",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2022-01-12T22:36:44Z",
+      "side": 1,
+      "message": "Could you please move it to the common_pwrseq_config  structure?",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 31
+      },
+      "revId": "128a49d227632bb8e33510e24a48339a1e835b00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4495b65_929f0828",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2022-01-12T22:36:44Z",
+      "side": 1,
+      "message": "Could you please move it to the power_seq_context structure?",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 29
+      },
+      "revId": "128a49d227632bb8e33510e24a48339a1e835b00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15cba918_3447fb3d",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 588,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2022-01-12T22:36:44Z",
+      "side": 1,
+      "message": "nit: extra line.",
+      "revId": "128a49d227632bb8e33510e24a48339a1e835b00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a514e710_64fbb7b0",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_espi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2022-01-12T22:36:44Z",
+      "side": 1,
+      "message": "Should this be also added, since it is common across platform. Then depending on whether it is virtual in the platform or not power_update_signals can take necessary action.",
+      "range": {
+        "startLine": 24,
+        "startChar": 1,
+        "endLine": 24,
+        "endChar": 32
+      },
+      "revId": "128a49d227632bb8e33510e24a48339a1e835b00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
