@@ -183,6 +183,29 @@
       },
       "revId": "865e50c43d191a4aad6937dcfae48dc7af3396f6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "516ed103_0a659dda",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2022-01-12T17:47:29Z",
+      "side": 1,
+      "message": "I would consider this a power signal more than a power rail.\nI think it would be better to get EV_EC_DSW_PWROK using overridable function power_signal_get_level.",
+      "range": {
+        "startLine": 91,
+        "startChar": 1,
+        "endLine": 91,
+        "endChar": 52
+      },
+      "revId": "865e50c43d191a4aad6937dcfae48dc7af3396f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
