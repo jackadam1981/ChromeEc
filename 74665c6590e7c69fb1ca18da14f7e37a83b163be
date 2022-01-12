@@ -16,6 +16,92 @@
       "message": "Merge mt8183 and and mt8186 into mt818x",
       "revId": "74665c6590e7c69fb1ca18da14f7e37a83b163be",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e6c793d8_c3ca0081",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2022-01-12T05:18:23Z",
+      "side": 1,
+      "message": "See comments below. And keep common/main.c file mode.",
+      "revId": "74665c6590e7c69fb1ca18da14f7e37a83b163be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fae5bf80_3e5f21aa",
+        "filename": "board/kukui_scp/build.mk",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2022-01-12T05:18:23Z",
+      "side": 1,
+      "message": "ifeq ($BOARD, corsola_scp)\nCHIP_VARIANT:\u003dmt8186\nelse\nCHIP_VARIANT:\u003dmt8183\nfi",
+      "range": {
+        "startLine": 9,
+        "startChar": 14,
+        "endLine": 9,
+        "endChar": 20
+      },
+      "revId": "74665c6590e7c69fb1ca18da14f7e37a83b163be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9c619e3_e0d57a3c",
+        "filename": "chip/mt_scp/mt818x/clock_mt8186.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2022-01-12T05:18:23Z",
+      "side": 1,
+      "message": "2022",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "74665c6590e7c69fb1ca18da14f7e37a83b163be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "43f6c5bc_dae43058",
+        "filename": "chip/mt_scp/mt818x/clock_mt8186.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2022-01-12T05:18:23Z",
+      "side": 1,
+      "message": "remove",
+      "range": {
+        "startLine": 222,
+        "startChar": 0,
+        "endLine": 240,
+        "endChar": 4
+      },
+      "revId": "74665c6590e7c69fb1ca18da14f7e37a83b163be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
