@@ -177,6 +177,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5de78aa0_c0394c2f",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 4472,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-01-12T18:39:54Z",
+      "side": 1,
+      "message": "Hmm... that\u0027s what the comment says. Can you please elaborate?",
+      "parentUuid": "dd30d34f_a0e3bcc9",
+      "range": {
+        "startLine": 4472,
+        "startChar": 4,
+        "endLine": 4472,
+        "endChar": 47
+      },
+      "revId": "9aabc67097b248e8b23014b8e1bdb7cbd513e0f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1a282430_76fe3c38",
@@ -214,6 +238,30 @@
       "side": 1,
       "message": "Sorry but this was earlier existing code, I didn\u0027t touch this parameter. So, at this stage, I\u0027m not sure for what purpose it\u0027s being used.",
       "parentUuid": "1a282430_76fe3c38",
+      "range": {
+        "startLine": 4478,
+        "startChar": 4,
+        "endLine": 4478,
+        "endChar": 26
+      },
+      "revId": "9aabc67097b248e8b23014b8e1bdb7cbd513e0f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "965fd38b_fea613a3",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 4478,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-01-12T18:39:54Z",
+      "side": 1,
+      "message": "Hi Sumeet,\n\nCan you please list the items needed for DPTF and explanation of each item? I want to go over the list and evaluate the approaches. It\u0027s better not to repeatedly transfer static data.\n\n\u003e So, these implemented under this single item.\n\nSplitting a command into small ones is a valid option. We want to group data returned by each command logically (so that each command can be utilized for multiple purposes). If we create a new command every time we have a new application (e.g. DPTF), we will end up lots of fat commands with overlaps.\n\nI think the overhead of sending 2 ~ 3 commands is negligible.",
+      "parentUuid": "f1e634da_282c4987",
       "range": {
         "startLine": 4478,
         "startChar": 4,
