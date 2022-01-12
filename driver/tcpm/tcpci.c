@@ -1217,10 +1217,10 @@ void tcpci_tcpc_alert(int port)
 	 * completion events. This will send an event to the PD tasks
 	 * immediately
 	 */
-	if (alert & TCPC_REG_ALERT_TX_COMPLETE)
+	/*if (alert & TCPC_REG_ALERT_TX_COMPLETE)
 		pd_transmit_complete(port, alert & TCPC_REG_ALERT_TX_SUCCESS ?
 					   TCPC_TX_COMPLETE_SUCCESS :
-					   TCPC_TX_COMPLETE_FAILED);
+					   TCPC_TX_COMPLETE_FAILED);*/
 
 	/* Pull all RX messages from TCPC into EC memory */
 	failed_attempts = 0;
@@ -1257,6 +1257,11 @@ void tcpci_tcpc_alert(int port)
 			return;
 		}
 	}
+
+	if (alert & TCPC_REG_ALERT_TX_COMPLETE)
+		pd_transmit_complete(port, alert & TCPC_REG_ALERT_TX_SUCCESS ?
+					   TCPC_TX_COMPLETE_SUCCESS :
+					   TCPC_TX_COMPLETE_FAILED);
 
 	/*
 	 * Clear all pending alert bits. Ext first because ALERT.AlertExtended

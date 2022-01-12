@@ -650,7 +650,7 @@ DECLARE_HOOK(HOOK_BATTERY_SOC_CHANGE, pd_update_pd_comm, HOOK_PRIO_DEFAULT);
 
 static bool pd_comm_allowed_by_policy(void)
 {
-	if (system_is_in_rw())
+	if (!system_is_in_rw())
 		return true;
 
 	if (vboot_allow_usb_pd())

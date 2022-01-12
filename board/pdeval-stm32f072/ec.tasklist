@@ -7,7 +7,7 @@
  * See CONFIG_TASK_LIST in config.h for details.
  */
 #define CONFIG_TASK_LIST \
-	TASK_ALWAYS(HOOKS,   hook_task,    NULL, TASK_STACK_SIZE) \
-	TASK_ALWAYS(PDCMD, pd_command_task,NULL, TASK_STACK_SIZE) \
-	TASK_ALWAYS(CONSOLE, console_task, NULL, TASK_STACK_SIZE) \
-	TASK_ALWAYS(PD_C0, pd_task, NULL, LARGER_TASK_STACK_SIZE)
+	TASK_ALWAYS(HOOKS,   hook_task,    NULL, 540) \
+	TASK_ALWAYS_RO(PDCMD, pd_command_task,NULL, 1000) \
+	TASK_ALWAYS(CONSOLE, console_task, NULL, 1000) \
+	TASK_ALWAYS_RO(PD_C0, pd_task, NULL, 1000)
