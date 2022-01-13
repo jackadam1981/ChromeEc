@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cbc4f7de_d13a30ce",
+        "filename": "zephyr/dts/bindings/battery/lgc,l17l3pb0.yaml",
+        "patchSetId": 6
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-01-13T01:29:52Z",
+      "side": 1,
+      "message": "\"with 5 tenth % \" error margin\n\npls change in both the files",
+      "range": {
+        "startLine": 34,
+        "startChar": 42,
+        "endLine": 34,
+        "endChar": 46
+      },
+      "revId": "4ed23f9d89ac37d8e17c8c67893f168c18170b03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
