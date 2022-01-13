@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "72af7c0c_551dfe20",
+        "filename": "docs/goma.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-01-13T20:19:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e03b5133_8e2252c9",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 39
+      },
+      "revId": "08cf3f87cfa6bc786cbb34bbc715a009ad842e88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bbc7d323_7d7f52ed",
@@ -37,6 +61,24 @@
       "writtenOn": "2022-01-13T19:34:53Z",
       "side": 1,
       "message": "nit: Should probably be a TODO for each tracking?",
+      "revId": "08cf3f87cfa6bc786cbb34bbc715a009ad842e88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d72361a_4681014f",
+        "filename": "docs/goma.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-01-13T20:19:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bbc7d323_7d7f52ed",
       "revId": "08cf3f87cfa6bc786cbb34bbc715a009ad842e88",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
