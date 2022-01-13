@@ -45,6 +45,30 @@
       },
       "revId": "08f25e7dd5d2df89b7b54e8cac7cfb7751def6ce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f5aaba97_ae7621a0",
+        "filename": "zephyr/projects/corsola/prj_kingler.conf",
+        "patchSetId": 6
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1449895
+      },
+      "writtenOn": "2022-01-13T06:52:18Z",
+      "side": 1,
+      "message": "I try to enable PWM modules to control LEDs, but this change will break some host CMD, I can not find the root cause yet.",
+      "parentUuid": "196ab032_401be75f",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 0
+      },
+      "revId": "08f25e7dd5d2df89b7b54e8cac7cfb7751def6ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
