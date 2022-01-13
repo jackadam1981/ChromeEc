@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b0fd75d6_07475f7e",
+        "filename": "zephyr/dts/bindings/battery/lgc,l17l3pb0.yaml",
+        "patchSetId": 7
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-01-13T21:16:41Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "89d14a79_0107c8c1",
+      "range": {
+        "startLine": 6,
+        "startChar": 17,
+        "endLine": 6,
+        "endChar": 25
+      },
+      "revId": "3a38b250451bf6f48156579e33509d9d4c6f9d77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0eeb4d38_55c548a1",
@@ -71,6 +95,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9d1010e_de087f2d",
+        "filename": "zephyr/dts/bindings/battery/lgc,l17l3pb0.yaml",
+        "patchSetId": 7
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-01-13T21:16:41Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "93f43458_e7d4f15e",
+      "range": {
+        "startLine": 20,
+        "startChar": 3,
+        "endLine": 20,
+        "endChar": 21
+      },
+      "revId": "3a38b250451bf6f48156579e33509d9d4c6f9d77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7aba7356_c8d5042c",
@@ -84,6 +132,30 @@
       "writtenOn": "2022-01-13T19:42:52Z",
       "side": 1,
       "message": "fet_reg_mask \u003d 0x2000\nfet_disconnect_val \u003d 0x2000\nfet_cfet_mask \u003d 0x4000\nfet_cfet_off_val \u003d 0x4000",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 0
+      },
+      "revId": "3a38b250451bf6f48156579e33509d9d4c6f9d77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b01bebf0_465681c7",
+        "filename": "zephyr/dts/bindings/battery/lgc,l17l3pb0.yaml",
+        "patchSetId": 7
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-01-13T21:16:41Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "7aba7356_c8d5042c",
       "range": {
         "startLine": 28,
         "startChar": 0,

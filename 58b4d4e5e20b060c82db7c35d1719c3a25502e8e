@@ -166,6 +166,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e484c6b8_5f1c33f8",
+        "filename": "zephyr/dts/bindings/battery/lgc,l17l3pb0.yaml",
+        "patchSetId": 5
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-01-13T21:16:41Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "2d15de24_a8a4621b",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 27
+      },
+      "revId": "58b4d4e5e20b060c82db7c35d1719c3a25502e8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "73ed2a8a_c4f316d4",
@@ -179,6 +203,24 @@
       "writtenOn": "2022-01-13T18:16:47Z",
       "side": 1,
       "message": "This file is only used when the board defines it\u0027s own board_battery_info[] array.  This is not used when the devicetree sets up the battery.  So you don\u0027t need to update this file.",
+      "revId": "58b4d4e5e20b060c82db7c35d1719c3a25502e8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e5a712ad_62f1ef2c",
+        "filename": "zephyr/dts/bindings/battery/named-batteries.yaml",
+        "patchSetId": 5
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-01-13T21:16:41Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "73ed2a8a_c4f316d4",
       "revId": "58b4d4e5e20b060c82db7c35d1719c3a25502e8e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -206,6 +248,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4453fd11_f4a43d90",
+        "filename": "zephyr/dts/bindings/battery/powertech,batgqa05l22.yaml",
+        "patchSetId": 5
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-01-13T21:16:41Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "52a0e367_47d9300e",
+      "range": {
+        "startLine": 20,
+        "startChar": 3,
+        "endLine": 20,
+        "endChar": 21
+      },
+      "revId": "58b4d4e5e20b060c82db7c35d1719c3a25502e8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b6b07154_7fc4dd9e",
@@ -219,6 +285,24 @@
       "writtenOn": "2022-01-13T18:16:47Z",
       "side": 1,
       "message": "Add these properties:\nfet_cfet_mask: 0x4000\nfet_cfet_off_val: 0x4000",
+      "revId": "58b4d4e5e20b060c82db7c35d1719c3a25502e8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "56a5efd6_91fc4b1c",
+        "filename": "zephyr/dts/bindings/battery/powertech,batgqa05l22.yaml",
+        "patchSetId": 5
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-01-13T21:16:41Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b6b07154_7fc4dd9e",
       "revId": "58b4d4e5e20b060c82db7c35d1719c3a25502e8e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
