@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "569b846d_0d974255",
+        "filename": "board/primus/ps2.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2022-01-13T00:15:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "69ab1f7e_ef143547",
+      "range": {
+        "startLine": 20,
+        "startChar": 2,
+        "endLine": 23,
+        "endChar": 31
+      },
+      "revId": "ec887344c302147962d91858a2c74c7c017d797e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "261bd192_eeb54dfa",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-01-13T00:10:40Z",
       "side": 1,
       "message": "same here:\n```\ngpio_set_alternate_function(GPIO_PORT_6,\n\tBIT(2) | BIT(3), GPIO_ALT_FUNC_1);\n\t```",
+      "range": {
+        "startLine": 29,
+        "startChar": 2,
+        "endLine": 32,
+        "endChar": 28
+      },
+      "revId": "ec887344c302147962d91858a2c74c7c017d797e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad2a77d0_95d57d2f",
+        "filename": "board/primus/ps2.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2022-01-13T00:15:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "261bd192_eeb54dfa",
       "range": {
         "startLine": 29,
         "startChar": 2,
