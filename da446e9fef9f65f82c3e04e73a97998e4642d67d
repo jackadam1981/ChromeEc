@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "11d032b6_668a7bad",
+        "filename": "zephyr/projects/brya/brya/battery_present.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-01-13T00:45:13Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d475bfa8_43fd0c81",
+      "revId": "da446e9fef9f65f82c3e04e73a97998e4642d67d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "13ee6af9_6fad7176",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-01-12T22:44:02Z",
       "side": 1,
       "message": "nit: extra line",
+      "revId": "da446e9fef9f65f82c3e04e73a97998e4642d67d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7bb2563f_14f7e672",
+        "filename": "zephyr/projects/brya/brya/battery_present.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-01-13T00:45:13Z",
+      "side": 1,
+      "message": "This line is not there in C file.. It seems like gerrit tool is showing one additional line at the end of each file",
+      "parentUuid": "13ee6af9_6fad7176",
       "revId": "da446e9fef9f65f82c3e04e73a97998e4642d67d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

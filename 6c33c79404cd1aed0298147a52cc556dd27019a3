@@ -22,6 +22,30 @@
       },
       "revId": "6c33c79404cd1aed0298147a52cc556dd27019a3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bfa08249_68590a8f",
+        "filename": "zephyr/dts/bindings/gpio/gpio-enum-name.yaml",
+        "patchSetId": 4
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-01-13T00:45:13Z",
+      "side": 1,
+      "message": "This is GPIO signal specific to brya Board ID \u003d1.\nThere separate gpio configuration for  board id 1 and 2\n\nec_batt_pres_odl {\n      gpios \u003d \u003c\u0026gpioa 3 GPIO_INPUT\u003e;\n      enum-name \u003d \"GPIO_BATT_PRES_ODL\";\n};\nid_1_ec_batt_pres_odl {\n      gpios \u003d \u003c\u0026gpioe 1 GPIO_INPUT\u003e;\n      enum-name \u003d \"GPIO_ID_1_EC_BATT_PRES_ODL\";\n};",
+      "parentUuid": "016c0c67_191ed7a4",
+      "range": {
+        "startLine": 126,
+        "startChar": 8,
+        "endLine": 126,
+        "endChar": 34
+      },
+      "revId": "6c33c79404cd1aed0298147a52cc556dd27019a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
