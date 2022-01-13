@@ -16,6 +16,108 @@
       "message": "LGTM, Differ to Aseda to approve. Thanks! ",
       "revId": "adae5ccb043415ab30a887b51979fa7137c57fa6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75e986aa_3a32ada4",
+        "filename": "board/beadrix/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-01-13T21:40:52Z",
+      "side": 1,
+      "message": "I\u0027m not sure I follow, wasn\u0027t this the name of the interrupt signal enabled earlier?",
+      "revId": "adae5ccb043415ab30a887b51979fa7137c57fa6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd5a5d70_650c685b",
+        "filename": "board/beadrix/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 402,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-01-13T21:40:52Z",
+      "side": 1,
+      "message": "Not used for the RAA configuration?",
+      "revId": "adae5ccb043415ab30a887b51979fa7137c57fa6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ebefbc80_363e41cb",
+        "filename": "board/beadrix/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 443,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-01-13T21:40:52Z",
+      "side": 1,
+      "message": "Probably start these at the waddledoo values since they\u0027re mostly tied to the charger",
+      "revId": "adae5ccb043415ab30a887b51979fa7137c57fa6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "119fb1e5_30c2ffc9",
+        "filename": "board/beadrix/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-01-13T21:40:52Z",
+      "side": 1,
+      "message": "I notice these differ from the waddledoo values.  Were they tested and found to be different?",
+      "revId": "adae5ccb043415ab30a887b51979fa7137c57fa6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1b26286_9a7ca808",
+        "filename": "board/beadrix/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-01-13T21:40:52Z",
+      "side": 1,
+      "message": "Defined by default in config.h?",
+      "revId": "adae5ccb043415ab30a887b51979fa7137c57fa6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93bc1489_a2e529bd",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 513,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-01-13T21:40:52Z",
+      "side": 1,
+      "message": "Would you mind splitting this driver change into its own CL with an explanation for this new code?  And explaining why this can be hardcoded rather than a search through anx7447_i2c_addrs_flags[] like the TCPC init uses?",
+      "revId": "adae5ccb043415ab30a887b51979fa7137c57fa6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
