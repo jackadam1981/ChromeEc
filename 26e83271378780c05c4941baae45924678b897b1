@@ -33,6 +33,29 @@
       "message": "I wasn\u0027t sure of the best place to put the \u0027gpio_enable\u0027 declaration.\nI thought it should go with the other gpio function declarations.\n",
       "revId": "26e83271378780c05c4941baae45924678b897b1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2160bcc5_def77c94",
+        "filename": "include/gpio.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-01-13T23:12:48Z",
+      "side": 1,
+      "message": "I\u0027d like a more concrete example of the use case.\n\nWe should avoid extending/changing the legacy cros-ec interface.  Can the new code just call gpio_pin_configure() in the Zephyr API directly?\n\nIf this is done by a driver or board code during some init, I don\u0027t know that it\u0027s worth tracking whether gpio_pin_configure() has already been called.  If there are possible side effects to calling gpio_pin_configure() twice, then we should enhance the upstream GPIO API to add a gpio_pin_get_config().  This function would return an error if the pin has not been configured.",
+      "range": {
+        "startLine": 340,
+        "startChar": 0,
+        "endLine": 342,
+        "endChar": 0
+      },
+      "revId": "26e83271378780c05c4941baae45924678b897b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
