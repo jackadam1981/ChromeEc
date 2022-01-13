@@ -16,6 +16,24 @@
       "message": "please put the blank line back",
       "revId": "fc8eec9fb495b31710af4aa26b08a6a207816324",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ab4b76b_4ee06200",
+        "filename": "board/volmar/gpio.inc",
+        "patchSetId": 4
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1384576
+      },
+      "writtenOn": "2022-01-13T01:50:05Z",
+      "side": 1,
+      "message": "This gpio will reuse in next cl, let\u0027s fix in that cl.\nThanks!",
+      "parentUuid": "a2e75e2e_18df1135",
+      "revId": "fc8eec9fb495b31710af4aa26b08a6a207816324",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
