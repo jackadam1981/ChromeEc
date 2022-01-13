@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3c93c62_c8c6f4a1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-01-13T03:52:48Z",
+      "side": 1,
+      "message": "So the hack here is to use the ordinal number from the device tree to create\nan enum for the GPIOs without enum-names.\n",
+      "revId": "f584364bf3914da98d3e170708ffde61d7101426",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
