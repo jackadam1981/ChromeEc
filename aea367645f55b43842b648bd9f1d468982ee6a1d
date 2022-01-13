@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c189a2bf_7d709467",
+        "filename": "zephyr/include/emul/tcpc/emul_tcpci_partner_snk.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-01-13T21:16:49Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "07a2af2d_0a618a0f",
+      "range": {
+        "startLine": 77,
+        "startChar": 36,
+        "endLine": 79,
+        "endChar": 49
+      },
+      "revId": "aea367645f55b43842b648bd9f1d468982ee6a1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c7bfd251_73555013",
@@ -126,6 +150,24 @@
       "side": 1,
       "message": "I split handling to *_transmit_op which is private and *_handle_sop_msg which is public. I did it to allow creating partner emulator which reuse sink/source specific code. Example of it is in next patch (crrev.com/c/3358579) where I crated DRP emulator which use both sink and source and add PR_SWP handling on top of that. I imagine that someone who wants to emulate an obscure USB-C device may use tcpci_snk_emul_data and embed it in obscure_dev_emul.",
       "parentUuid": "cf70cf51_b4d4e7da",
+      "revId": "aea367645f55b43842b648bd9f1d468982ee6a1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf74eb17_c782c793",
+        "filename": "zephyr/include/emul/tcpc/emul_tcpci_partner_snk.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-01-13T21:16:49Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "3c763b72_3b0c91c1",
       "revId": "aea367645f55b43842b648bd9f1d468982ee6a1d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
