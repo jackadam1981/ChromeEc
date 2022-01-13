@@ -33,6 +33,23 @@
       "message": "History from CL:3361061.",
       "revId": "6626d891d2636fc169bc656e1502bd2c79a134b0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a981b1e_42b0a212",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2022-01-13T01:24:22Z",
+      "side": 1,
+      "message": "Could you add #undef CONFIG_USB_PD_TCPM_ANX7406 to config.h?\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/include/config.h;l\u003d4665?q\u003dCONFIG_USB_PD_TCPM_ANX7447\u0026ss\u003dchromiumos%2Fchromiumos%2Fcodesearch:src%2Fplatform%2Fec%2F\u0026start\u003d21",
+      "revId": "6626d891d2636fc169bc656e1502bd2c79a134b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
