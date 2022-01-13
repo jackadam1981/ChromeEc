@@ -11,19 +11,41 @@
 #include <devicetree.h>
 #include <toolchain.h>
 
-#define GPIO_SIGNAL(id) DT_STRING_UPPER_TOKEN(id, enum_name)
-#define GPIO_SIGNAL_WITH_COMMA(id) \
-	COND_CODE_1(DT_NODE_HAS_PROP(id, enum_name), (GPIO_SIGNAL(id), ), ())
+#define GPIO_SIGNAL_ENUM(id) DT_STRING_UPPER_TOKEN(id, enum_name)
+#define GPIO_SIGNAL_NODE(name) DT_CAT(GPIO_ORD_, name)
+/*
+ * A macro to create a name for all GPIOs.
+ * If an enum-name exists, use that, otherwise create a name
+ * from the ordinal.
+ */
+#define GPIO_SIGNAL_ALL(id)				\
+	COND_CODE_1(DT_NODE_HAS_PROP(id, enum_name),	\
+		(GPIO_SIGNAL_ENUM(id)),			\
+		(GPIO_SIGNAL_NODE(id ## _ORD)))
+#define GPIO_SIGNAL_ALL_WITH_COMMA(id) \
+	GPIO_SIGNAL_ALL(id),
 enum gpio_signal {
 	GPIO_UNIMPLEMENTED = -1,
 #if DT_NODE_EXISTS(DT_PATH(named_gpios))
-	DT_FOREACH_CHILD(DT_PATH(named_gpios), GPIO_SIGNAL_WITH_COMMA)
+	DT_FOREACH_CHILD(DT_PATH(named_gpios), GPIO_SIGNAL_ALL_WITH_COMMA)
 #endif
 	GPIO_COUNT,
 	GPIO_LIMIT = 0x0FFF,
 };
-#undef GPIO_SIGNAL_WITH_COMMA
+#undef GPIO_SIGNAL_ALL_WITH_COMMA
+#undef GPIO_SIGNAL_ALL
+#undef GPIO_SIGNAL_NODE
+#undef GPIO_SIGNAL_ENUM
+
 BUILD_ASSERT(GPIO_COUNT < GPIO_LIMIT);
+
+/*
+ * A version of GPIO_SIGNAL that ignores GPIOs without enum-name
+ */
+#define GPIO_SIGNAL(id)					\
+	COND_CODE_1(DT_NODE_HAS_PROP(id, enum_name),	\
+		(DT_STRING_UPPER_TOKEN(id, enum_name)), \
+		())
 
 /** @brief Converts a node identifier under named gpios to enum
  *
