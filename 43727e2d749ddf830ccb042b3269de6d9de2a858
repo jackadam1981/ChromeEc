@@ -47,6 +47,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "43fbbeb9_18551199",
+        "filename": "docs/zephyr/zephyr_gpio.md",
+        "patchSetId": 12
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-01-13T15:44:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "13f7e94c_509b0608",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 4
+      },
+      "revId": "43727e2d749ddf830ccb042b3269de6d9de2a858",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9458338_72b33813",
+        "filename": "docs/zephyr/zephyr_gpio.md",
+        "patchSetId": 12
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-01-13T15:44:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "07f12349_4fe2c1cb",
+      "range": {
+        "startLine": 7,
+        "startChar": 46,
+        "endLine": 7,
+        "endChar": 56
+      },
+      "revId": "43727e2d749ddf830ccb042b3269de6d9de2a858",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "20ae62bd_c84b0420",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-01-11T00:40:05Z",
       "side": 1,
       "message": "You should also document the Zephyr config CONFIG_GPIO.  Without this, no GPIO support is included.",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 7
+      },
+      "revId": "43727e2d749ddf830ccb042b3269de6d9de2a858",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bed655f0_7884fc4e",
+        "filename": "docs/zephyr/zephyr_gpio.md",
+        "patchSetId": 12
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-01-13T15:44:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "20ae62bd_c84b0420",
       "range": {
         "startLine": 12,
         "startChar": 0,
@@ -93,6 +165,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b736dbd4_2f1a2801",
+        "filename": "docs/zephyr/zephyr_gpio.md",
+        "patchSetId": 12
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-01-13T15:44:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7983d37c_4bc9a583",
+      "range": {
+        "startLine": 14,
+        "startChar": 1,
+        "endLine": 14,
+        "endChar": 31
+      },
+      "revId": "43727e2d749ddf830ccb042b3269de6d9de2a858",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c9bffdd6_d0288c08",
@@ -106,6 +202,30 @@
       "writtenOn": "2022-01-11T00:40:05Z",
       "side": 1,
       "message": "Reword to remove passive voice:\n\nConfigure the GPIO module by declaring all GPIOs in the devicetree node with `compatible` property `named-gpios`.  The GPIO module automatically initializes all GPIOs from this node. The C source code accesses GPIOs using the specified `enum-name` property.",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 0
+      },
+      "revId": "43727e2d749ddf830ccb042b3269de6d9de2a858",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec41ffcc_afbf18ff",
+        "filename": "docs/zephyr/zephyr_gpio.md",
+        "patchSetId": 12
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-01-13T15:44:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c9bffdd6_d0288c08",
       "range": {
         "startLine": 20,
         "startChar": 0,
@@ -139,6 +259,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d97af58b_5c1180f1",
+        "filename": "docs/zephyr/zephyr_gpio.md",
+        "patchSetId": 12
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-01-13T15:44:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "569b7b06_470c4d36",
+      "range": {
+        "startLine": 29,
+        "startChar": 39,
+        "endLine": 29,
+        "endChar": 55
+      },
+      "revId": "43727e2d749ddf830ccb042b3269de6d9de2a858",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "877a1355_31d94816",
@@ -152,6 +296,30 @@
       "writtenOn": "2022-01-11T00:40:05Z",
       "side": 1,
       "message": "Reword to remove passive voice:\n\nThe file [gpio-enum-name.yaml] defines the list of valid `enum-name` values.",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 73
+      },
+      "revId": "43727e2d749ddf830ccb042b3269de6d9de2a858",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a2f084d7_4f2ba4b0",
+        "filename": "docs/zephyr/zephyr_gpio.md",
+        "patchSetId": 12
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-01-13T15:44:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "877a1355_31d94816",
       "range": {
         "startLine": 32,
         "startChar": 0,
@@ -208,6 +376,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd628e11_8dd083c1",
+        "filename": "docs/zephyr/zephyr_gpio.md",
+        "patchSetId": 12
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-01-13T15:44:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c964ae16_854ab2c8",
+      "range": {
+        "startLine": 34,
+        "startChar": 70,
+        "endLine": 34,
+        "endChar": 74
+      },
+      "revId": "43727e2d749ddf830ccb042b3269de6d9de2a858",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "94ef423f_0e855490",
+        "filename": "docs/zephyr/zephyr_gpio.md",
+        "patchSetId": 12
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-01-13T15:44:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9c6987c5_9e7752e6",
+      "range": {
+        "startLine": 34,
+        "startChar": 24,
+        "endLine": 34,
+        "endChar": 42
+      },
+      "revId": "43727e2d749ddf830ccb042b3269de6d9de2a858",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7e0fd9b8_f7c05e16",
@@ -254,6 +470,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca9b514b_ada8990d",
+        "filename": "docs/zephyr/zephyr_gpio.md",
+        "patchSetId": 12
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-01-13T15:44:53Z",
+      "side": 1,
+      "message": "Thanks, had to reference to the example you put in the meetings notes myself few times. May be worth linking to it from the various docs.",
+      "parentUuid": "5309d2b4_5d99d676",
+      "range": {
+        "startLine": 35,
+        "startChar": 22,
+        "endLine": 35,
+        "endChar": 31
+      },
+      "revId": "43727e2d749ddf830ccb042b3269de6d9de2a858",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b464437a_d2d009cf",
+        "filename": "docs/zephyr/zephyr_gpio.md",
+        "patchSetId": 12
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-01-13T15:44:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7e0fd9b8_f7c05e16",
+      "range": {
+        "startLine": 35,
+        "startChar": 42,
+        "endLine": 35,
+        "endChar": 46
+      },
+      "revId": "43727e2d749ddf830ccb042b3269de6d9de2a858",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bd5db445_78cf459e",
@@ -267,6 +531,30 @@
       "writtenOn": "2022-01-11T00:40:05Z",
       "side": 1,
       "message": "the GPIO signal properties",
+      "range": {
+        "startLine": 52,
+        "startChar": 49,
+        "endLine": 52,
+        "endChar": 76
+      },
+      "revId": "43727e2d749ddf830ccb042b3269de6d9de2a858",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4dc78e9c_4491cfcf",
+        "filename": "docs/zephyr/zephyr_gpio.md",
+        "patchSetId": 12
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-01-13T15:44:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bd5db445_78cf459e",
       "range": {
         "startLine": 52,
         "startChar": 49,
@@ -300,6 +588,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1dd82640_7427d85f",
+        "filename": "docs/zephyr/zephyr_gpio.md",
+        "patchSetId": 12
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-01-13T15:44:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "087f7348_d22ed925",
+      "range": {
+        "startLine": 61,
+        "startChar": 0,
+        "endLine": 63,
+        "endChar": 0
+      },
+      "revId": "43727e2d749ddf830ccb042b3269de6d9de2a858",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2aa0cc0f_a3f73405",
@@ -317,6 +629,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "06017a05_ab0712fe",
+        "filename": "docs/zephyr/zephyr_gpio.md",
+        "patchSetId": 12
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-01-13T15:44:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2aa0cc0f_a3f73405",
+      "revId": "43727e2d749ddf830ccb042b3269de6d9de2a858",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8f1a42bf_5bc433c8",
@@ -330,6 +660,30 @@
       "writtenOn": "2022-01-11T00:40:05Z",
       "side": 1,
       "message": "Break this up into 2 sentences.\n\nSet or get the GPIO value in the C source code directy using the `enum-name` property `GPIO_ENTERING_RW`.\n\n```\n    gpio_set_level(GPIO_ENTERING_RW, 0);\n    val \u003d gpio_get_level(GPIO_ENTERING_RW);\n```\n\nUse the node label to reference the GPIO in other devicetree nodes:",
+      "range": {
+        "startLine": 149,
+        "startChar": 0,
+        "endLine": 149,
+        "endChar": 162
+      },
+      "revId": "43727e2d749ddf830ccb042b3269de6d9de2a858",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d631b67_c7819ee1",
+        "filename": "docs/zephyr/zephyr_gpio.md",
+        "patchSetId": 12
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-01-13T15:44:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8f1a42bf_5bc433c8",
       "range": {
         "startLine": 149,
         "startChar": 0,
@@ -363,6 +717,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7429cf15_e4743b9f",
+        "filename": "docs/zephyr/zephyr_gpio.md",
+        "patchSetId": 12
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-01-13T15:44:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c95886f6_e7fd6f9d",
+      "range": {
+        "startLine": 164,
+        "startChar": 27,
+        "endLine": 164,
+        "endChar": 154
+      },
+      "revId": "43727e2d749ddf830ccb042b3269de6d9de2a858",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "11bc39bc_fce8e548",
@@ -376,6 +754,30 @@
       "writtenOn": "2022-01-11T00:40:05Z",
       "side": 1,
       "message": "Link to Zephyr github source and to the line number starting the GPIO interrupt configuration flags.",
+      "range": {
+        "startLine": 166,
+        "startChar": 0,
+        "endLine": 166,
+        "endChar": 138
+      },
+      "revId": "43727e2d749ddf830ccb042b3269de6d9de2a858",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c00b8b6e_47d7674f",
+        "filename": "docs/zephyr/zephyr_gpio.md",
+        "patchSetId": 12
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-01-13T15:44:53Z",
+      "side": 1,
+      "message": "Hey how about linking to the GPIO API reference instead? https://docs.zephyrproject.org/latest/reference/peripherals/gpio.html?highlight\u003dgpio_int_disable#api-reference I\u0027m a bit undecided cause the page mixes the code and dt-binding definitions.",
+      "parentUuid": "11bc39bc_fce8e548",
       "range": {
         "startLine": 166,
         "startChar": 0,
