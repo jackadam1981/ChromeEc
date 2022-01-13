@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ff36c50_a8d8c2ca",
+        "filename": "chip/npcx/gpio-npcx9.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-01-13T07:04:11Z",
+      "side": 1,
+      "message": "i\u0027d suggest adding a new #define in npcx/config_chip.h\nfor enabling (or disabling if you prefer) KSI interrupts.\n\nset this new define based on\n!defined(HAS_TASK_KEYSCAN) || defined(CONFIG_KEYBOARD_SCAN_ANTIGHOST_ADC)\nor whatever it turns out to be when the impact of the antighost\nfeature is fully understood.\n\nthink of it as enabling a feature in the npcx chip support code\nfor using ADC pins instead of KSI. i\u0027m not convinced it needs to\nbe called antighost at this level and literally liking it to\nthe presence of a task with a special name is also not helpful\nhere.",
+      "range": {
+        "startLine": 37,
+        "startChar": 4,
+        "endLine": 37,
+        "endChar": 77
+      },
+      "revId": "e8b21116793949c10eb9a9e8f16604c2e3072745",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4549bc5b_d8fe4ef4",
+        "filename": "chip/npcx/keyboard_raw.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-01-13T07:04:11Z",
+      "side": 1,
+      "message": "check same #define suggested in comment for\nchip/npcx/gpio-npcx9.c.",
+      "range": {
+        "startLine": 141,
+        "startChar": 5,
+        "endLine": 141,
+        "endChar": 48
+      },
+      "revId": "e8b21116793949c10eb9a9e8f16604c2e3072745",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e242cc9_c275a0dc",
+        "filename": "chip/npcx/keyboard_raw.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-01-13T07:04:11Z",
+      "side": 1,
+      "message": "inclined to leave this unimplemented. we\u0027ll need to document that if\nKSI_ADC (or whatever we call it) is enabled, then the board\nis going to need to provide an implementation or alternatively\nsome sort of data structure that provides the actual ADC pins\nused on the board.\n\ni\u0027m looking at chromium:3379239 and wondering how much of that\nshould really be added to npcx/keyboard_raw.c vs. a board\nspecific file.",
+      "range": {
+        "startLine": 167,
+        "startChar": 3,
+        "endLine": 167,
+        "endChar": 7
+      },
+      "revId": "e8b21116793949c10eb9a9e8f16604c2e3072745",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
