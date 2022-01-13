@@ -38,8 +38,6 @@ CORE:=cortex-m
 CFLAGS_CPU+=-march=armv7-m -mcpu=cortex-m3
 endif
 
-# Select between 16-bit and 32-bit timer for clock source
-TIMER_TYPE=$(if $(CONFIG_STM_HWTIMER32),32,)
 DMA_TYPE=$(if $(CHIP_FAMILY_STM32F4)$(CHIP_FAMILY_STM32H7),-stm32f4,)
 SPI_TYPE=$(if $(CHIP_FAMILY_STM32H7),-stm32h7,)
 
@@ -52,7 +50,7 @@ endif
 chip-$(CONFIG_SPI)+=spi.o
 chip-$(CONFIG_SPI_CONTROLLER)+=spi_master$(SPI_TYPE).o
 chip-$(CONFIG_COMMON_GPIO)+=gpio.o gpio-$(CHIP_FAMILY).o
-chip-$(CONFIG_COMMON_TIMER)+=hwtimer$(TIMER_TYPE).o
+chip-$(CONFIG_COMMON_TIMER)+=hwtimer32.o
 chip-$(CONFIG_I2C)+=i2c-$(CHIP_FAMILY).o
 chip-$(CONFIG_ITE_FLASH_SUPPORT)+=i2c_ite_flash_support.o
 chip-$(CONFIG_STREAM_USART)+=usart.o usart-$(CHIP_FAMILY).o
