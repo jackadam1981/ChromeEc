@@ -22,6 +22,30 @@
       },
       "revId": "8b77208d3ff90363d7818c2af918a530995f5ef5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a577423_f8b88d18",
+        "filename": "chip/stm32/clock-stm32h7.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 486,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2022-01-13T15:19:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3eb53c13_476d86ba",
+      "range": {
+        "startLine": 486,
+        "startChar": 3,
+        "endLine": 486,
+        "endChar": 57
+      },
+      "revId": "8b77208d3ff90363d7818c2af918a530995f5ef5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
