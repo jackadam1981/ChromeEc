@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd6510ae_c11593ce",
+        "filename": "include/usb_pd_flags.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2022-01-13T17:18:13Z",
+      "side": 1,
+      "message": "nit: Suggest using \"UNKNOWN\" to better match rest of the code base.",
+      "range": {
+        "startLine": 18,
+        "startChar": 20,
+        "endLine": 18,
+        "endChar": 25
+      },
+      "revId": "1e879c764aaea63eb41d75a0ed2e003da768ecac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
