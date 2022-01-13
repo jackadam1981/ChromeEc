@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "79975a78_acddc531",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-01-13T23:33:42Z",
+      "side": 1,
+      "message": "In any case, the experience shows that the need to add the \u0027--early\u0027 command line option is setup dependent (I run rescue few times a day, and it succeeds every single time). I woud suggest making \u0027--eraly\u0027 a command line parameter of brescue.sh passed to rescue",
+      "revId": "0da5acda7c89cecaf1e24ada680aeca078f660fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "de6ee051_255f72ce",
