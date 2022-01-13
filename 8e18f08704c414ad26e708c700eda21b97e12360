@@ -70,6 +70,30 @@
       },
       "revId": "8e18f08704c414ad26e708c700eda21b97e12360",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "deb2857b_5ea3695f",
+        "filename": "chip/stm32/clock-stm32f4.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 478,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2022-01-13T15:20:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d7d1a34e_4d2581a0",
+      "range": {
+        "startLine": 478,
+        "startChar": 23,
+        "endLine": 478,
+        "endChar": 55
+      },
+      "revId": "8e18f08704c414ad26e708c700eda21b97e12360",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
