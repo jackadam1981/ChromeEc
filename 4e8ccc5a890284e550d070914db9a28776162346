@@ -332,6 +332,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ef64d95c_399a9acd",
+        "filename": "chip/stm32/clock-stm32f4.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 507,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-01-13T22:36:55Z",
+      "side": 1,
+      "message": "\u003e I have another idea: how about repeating if any of the interrupts is pending? WFI instruction behaves like no-op when interrupt is pending, so enabling interrupts and repeating idle loop sounds good for me.\n\nSo the idea is that instead of doing a bunch of work and calling \"wfi\", which would be a no-op, we would abort earlier. It sounds like it would work, but we should make sure we don\u0027t accidentally break the idle mode. You could check the idle stats to make sure we actually still sleep and/or measure the power consumption to verify we are still going into lower power mode: https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint.md#Power",
+      "parentUuid": "514761d1_e99440d6",
+      "range": {
+        "startLine": 506,
+        "startChar": 27,
+        "endLine": 507,
+        "endChar": 34
+      },
+      "revId": "4e8ccc5a890284e550d070914db9a28776162346",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c98acf78_9335a2d7",
         "filename": "chip/stm32/clock-stm32f4.c",
         "patchSetId": 4
