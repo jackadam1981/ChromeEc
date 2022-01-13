@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a1215b9_2f9b77a1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1294793
+      },
+      "writtenOn": "2022-01-13T05:22:16Z",
+      "side": 1,
+      "message": "Will ask our power engineer to do these tests.",
+      "parentUuid": "8c6c34b9_c148e263",
+      "revId": "9f8adfcfe8367ce3ada3b65be7b62858b1114e7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "0f8bbcd5_18709a11",
@@ -52,6 +70,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "571c68c1_3cfea549",
+        "filename": "board/nipperkin/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 491,
+      "author": {
+        "id": 1294793
+      },
+      "writtenOn": "2022-01-13T05:22:16Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "24e502fb_23857f50",
+      "revId": "9f8adfcfe8367ce3ada3b65be7b62858b1114e7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ea7fcf25_b4563b23",
@@ -77,6 +113,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cb262a56_df0d8a93",
+        "filename": "board/nipperkin/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 493,
+      "author": {
+        "id": 1294793
+      },
+      "writtenOn": "2022-01-13T05:22:16Z",
+      "side": 1,
+      "message": "Will ask our power engineer to reply this question.",
+      "parentUuid": "ea7fcf25_b4563b23",
+      "range": {
+        "startLine": 493,
+        "startChar": 5,
+        "endLine": 493,
+        "endChar": 55
+      },
+      "revId": "9f8adfcfe8367ce3ada3b65be7b62858b1114e7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "53a64942_3c9a2eca",
         "filename": "board/nipperkin/board.c",
         "patchSetId": 4
@@ -88,6 +148,30 @@
       "writtenOn": "2022-01-11T16:14:14Z",
       "side": 1,
       "message": "charger_set_input_current_limit() would be the typical API here, correct?",
+      "range": {
+        "startLine": 494,
+        "startChar": 20,
+        "endLine": 494,
+        "endChar": 43
+      },
+      "revId": "9f8adfcfe8367ce3ada3b65be7b62858b1114e7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c750925_6186f5f9",
+        "filename": "board/nipperkin/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 494,
+      "author": {
+        "id": 1294793
+      },
+      "writtenOn": "2022-01-13T05:22:16Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "53a64942_3c9a2eca",
       "range": {
         "startLine": 494,
         "startChar": 20,
@@ -123,6 +207,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "096f9161_90a93528",
+        "filename": "board/nipperkin/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 498,
+      "author": {
+        "id": 1294793
+      },
+      "writtenOn": "2022-01-13T05:22:16Z",
+      "side": 1,
+      "message": "CONFIG_CHARGER_MIN_BAT_PCT_FOR_POWER_ON is 2",
+      "parentUuid": "943563ee_1ce585e2",
+      "range": {
+        "startLine": 498,
+        "startChar": 14,
+        "endLine": 498,
+        "endChar": 15
+      },
+      "revId": "9f8adfcfe8367ce3ada3b65be7b62858b1114e7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8b7bc83a_092d267c",
         "filename": "board/nipperkin/board.c",
         "patchSetId": 4
@@ -134,6 +242,30 @@
       "writtenOn": "2022-01-11T16:14:14Z",
       "side": 1,
       "message": "Would this be when the battery is disconnected as well?",
+      "range": {
+        "startLine": 499,
+        "startChar": 6,
+        "endLine": 499,
+        "endChar": 33
+      },
+      "revId": "9f8adfcfe8367ce3ada3b65be7b62858b1114e7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1cbe7ad8_f6a795cd",
+        "filename": "board/nipperkin/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 499,
+      "author": {
+        "id": 1294793
+      },
+      "writtenOn": "2022-01-13T05:22:16Z",
+      "side": 1,
+      "message": "Move this state upward, treat as AC only.",
+      "parentUuid": "8b7bc83a_092d267c",
       "range": {
         "startLine": 499,
         "startChar": 6,
@@ -179,6 +311,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e700b64b_21bd3e69",
+        "filename": "board/nipperkin/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 500,
+      "author": {
+        "id": 1294793
+      },
+      "writtenOn": "2022-01-13T05:22:16Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "03104f9d_59a804bf",
+      "revId": "9f8adfcfe8367ce3ada3b65be7b62858b1114e7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e1a92206_c766d322",
@@ -196,6 +346,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "406803c4_ad61d497",
+        "filename": "board/nipperkin/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 506,
+      "author": {
+        "id": 1294793
+      },
+      "writtenOn": "2022-01-13T05:22:16Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e1a92206_c766d322",
+      "revId": "9f8adfcfe8367ce3ada3b65be7b62858b1114e7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5d014d22_0710fe82",
@@ -209,6 +377,30 @@
       "writtenOn": "2022-01-11T16:14:14Z",
       "side": 1,
       "message": "Does one of these hooks end up getting called during a typical init process?  Ex. if you boot a board with no battery and just AC, do we see HOOK_AC_CHANGE?",
+      "range": {
+        "startLine": 531,
+        "startChar": 0,
+        "endLine": 533,
+        "endChar": 23
+      },
+      "revId": "9f8adfcfe8367ce3ada3b65be7b62858b1114e7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0826e29a_4baf1a29",
+        "filename": "board/nipperkin/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 533,
+      "author": {
+        "id": 1294793
+      },
+      "writtenOn": "2022-01-13T05:22:16Z",
+      "side": 1,
+      "message": "I plug in AC and remove battery from connector, \nthen reboot EC, use cmd: chgstate in console can get 6000mA from input_current.",
+      "parentUuid": "5d014d22_0710fe82",
       "range": {
         "startLine": 531,
         "startChar": 0,
