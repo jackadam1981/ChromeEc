@@ -47,6 +47,18 @@ static const struct gpio_config configs[] = {
 #endif
 };
 
+
+#define GPIO_INACTIVE(id) DT_PROP(id, inactive),
+/*
+ * Separate array to minimise size.
+ */
+static const bool gpio_inactive[] = {
+#if DT_NODE_EXISTS(DT_PATH(named_gpios))
+	DT_FOREACH_CHILD(DT_PATH(named_gpios), GPIO_INACTIVE)
+#endif
+};
+
+
 /* Maps platform/ec gpio callback information */
 struct gpio_signal_callback {
 	/* The platform/ec gpio_signal */
@@ -331,40 +343,39 @@ int gpio_get_default_flags(enum gpio_signal signal)
 static int init_gpios(const struct device *unused)
 {
 	gpio_flags_t flags;
-	struct jump_data *jdata;
-	bool is_sys_jumped;
+	int rv;
+	struct jump_data *jdata = get_jump_data();
+	bool is_sys_jumped = (jdata && jdata->magic == JUMP_DATA_MAGIC);
 
 	ARG_UNUSED(unused);
 
-	jdata = get_jump_data();
+	/* Loop through all GPIOs with status "okay" to set
+	 * initial configuration.
+	 */
 
-	if (jdata && jdata->magic == JUMP_DATA_MAGIC)
-		is_sys_jumped = true;
-	else
-		is_sys_jumped = false;
-
-	/* Loop through all GPIOs in device tree to set initial configuration */
 	for (size_t i = 0; i < ARRAY_SIZE(configs); ++i) {
-		int rv;
+		if (!gpio_inactive[i]) {
+			if (!device_is_ready(configs[i].dev))
+				LOG_ERR("Not found (%s)", configs[i].name);
 
-		if (!device_is_ready(configs[i].dev))
-			LOG_ERR("Not found (%s)", configs[i].name);
+			/*
+			 * The configs[i].init_flags variable is read-only,
+			 * so the following assignment is needed because the
+			 * flags need adjusting on a warm reboot.
+			 */
+			flags = configs[i].init_flags;
 
-		/*
-		 * The configs[i].init_flags variable is read-only, so the
-		 * following assignment is needed because the flags need
-		 * adjusting on a warm reboot.
-		 */
-		flags = configs[i].init_flags;
+			if (is_sys_jumped) {
+				flags &=
+					~(GPIO_OUTPUT_INIT_LOW |
+					GPIO_OUTPUT_INIT_HIGH);
+			}
 
-		if (is_sys_jumped) {
-			flags &=
-				~(GPIO_OUTPUT_INIT_LOW | GPIO_OUTPUT_INIT_HIGH);
-		}
-
-		rv = gpio_pin_configure(configs[i].dev, configs[i].pin, flags);
-		if (rv < 0) {
-			LOG_ERR("Config failed %s (%d)", configs[i].name, rv);
+			rv = gpio_pin_configure(configs[i].dev,
+						configs[i].pin, flags);
+			if (rv < 0)
+				LOG_ERR("Config failed %s (%d)",
+					configs[i].name, rv);
 		}
 	}
 
