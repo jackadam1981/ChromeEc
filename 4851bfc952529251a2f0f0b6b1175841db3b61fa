@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "11d3debd_9bd5f834",
+        "filename": "zephyr/CMakeLists.txt",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1449895
+      },
+      "writtenOn": "2022-01-13T06:54:44Z",
+      "side": 1,
+      "message": "another CL: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3384127",
+      "parentUuid": "eff02a74_3b380d7d",
+      "revId": "4851bfc952529251a2f0f0b6b1175841db3b61fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1133f9ad_2f2b7144",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-01-12T08:38:07Z",
       "side": 1,
       "message": "sort config by alphabatic order.",
+      "range": {
+        "startLine": 91,
+        "startChar": 0,
+        "endLine": 99,
+        "endChar": 0
+      },
+      "revId": "4851bfc952529251a2f0f0b6b1175841db3b61fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "41e0b894_49cf3cdf",
+        "filename": "zephyr/projects/corsola/prj_kingler.conf",
+        "patchSetId": 3
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1449895
+      },
+      "writtenOn": "2022-01-13T06:54:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1133f9ad_2f2b7144",
       "range": {
         "startLine": 91,
         "startChar": 0,
