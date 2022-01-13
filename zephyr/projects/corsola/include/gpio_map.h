@@ -44,6 +44,7 @@
 	#define TCPC_C0_INT()
 	#define TCPC_C1_INT()
 	#define PPC_C0_INT()
+	#define BC12_C0_INT()
 #elif defined(CONFIG_SOC_NPCX9M3F)
 	/* The interrupt is configured by dts */
 	#define AP_SPI_INT()
@@ -56,6 +57,9 @@
 	#define PPC_C0_INT()        GPIO_INT(GPIO_USB_C0_PPC_INT_ODL,          \
 					     GPIO_INT_EDGE_FALLING,            \
 					     ppc_interrupt)
+	#define BC12_C0_INT()       GPIO_INT(GPIO_USB_C0_BC12_INT_ODL,         \
+					     GPIO_INT_EDGE_FALLING,            \
+					     bc12_interrupt)
 #endif
 
 #ifdef CONFIG_PLATFORM_EC_TABLET_MODE
@@ -187,6 +191,7 @@ static inline void motion_interrupt(enum gpio_signal signal)
 	TCPC_C0_INT()							\
 	TCPC_C1_INT()							\
 	PPC_C0_INT()							\
+	BC12_C0_INT()							\
 	X_EC_GPIO2_INT()
 
 #endif /* __ZEPHYR_GPIO_MAP_H */
