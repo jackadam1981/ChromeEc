@@ -268,12 +268,10 @@
 		gpio_vccin_aux_vid0: vccin_aux_vid0 {
 			#gpio-cells = <0>;
 			gpios = <&gpio9 2 GPIO_INPUT>;
-			enum-name = "GPIO_VCCIN_AUX_VID0";
 		};
 		gpio_vccin_aux_vid1: vccin_aux_vid1 {
 			#gpio-cells = <0>;
 			gpios = <&gpioe 3 GPIO_INPUT>;
-			enum-name = "GPIO_VCCIN_AUX_VID1";
 		};
 		gpio_voldn_btn_odl: voldn_btn_odl {
 			#gpio-cells = <0>;
