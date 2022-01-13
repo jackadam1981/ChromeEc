@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b30634a6_2edbd5e1",
+        "filename": "chip/stm32/hwtimer.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-01-13T18:55:12Z",
+      "side": 1,
+      "message": "The intent was to clear the overflow, is there any chance that we\u0027re inadvertently clearing some other status that may be important (break, trigger, etc)?",
+      "range": {
+        "startLine": 221,
+        "startChar": 0,
+        "endLine": 222,
+        "endChar": 33
+      },
+      "revId": "8d454e4a4faed927743a6db7f6ff1b3a333cc97e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
