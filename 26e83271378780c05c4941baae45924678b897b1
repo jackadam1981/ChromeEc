@@ -56,6 +56,30 @@
       },
       "revId": "26e83271378780c05c4941baae45924678b897b1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14bfde5d_a7d2c345",
+        "filename": "include/gpio.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-01-13T23:44:02Z",
+      "side": 1,
+      "message": "I kind-of agree - an example is in chromium:3379788 specifically the code enabling GPIOs depending on the sub-board.\n\nSo with the code in this CL, you could use GPIO_SIGNAL(DT_NODELABEL(gpio_sub_alt_1)) to get the enum gpio_signal name and use the legacy API, instead of the way the code does it in the other CL (which is entirely using the Zephyr API).\nThe main difference I see is that when using the Zephyr API, you need to know the GPIO flags to use (such as PULL_UP etc.) though I see now that the initial flags are actually saved in the dt_gpio_spec, so clearly I need to OR those in.\n\nSo in which case, we can actually avoid creating the config for these GPIOs.\nBut then gpioget won\u0027t work for them, so perhaps we need to keep the config\ngenerated for gpioget.\n\nThe use case I am planning for is when a GPIO is defined, but should not be configured until code tells it to.\nSo the code in init_gpios needs to know whether to configure the GPIO or not.\nThe easy way is just leave that node out of the list, but then gpioget\ndoesn\u0027t work.\n\nAn ugly thing to do is just configure it and then have the code do it again, but hardware wise this seems bad form and could have nasty consequences.\n\nSo one option here is to keep the check for whether it is disabled or not (and according configure it or not), and simply drop the gpio_enable function and always use the Zephy API for those GPIOs (and let gpioget still do its thing).",
+      "parentUuid": "2160bcc5_def77c94",
+      "range": {
+        "startLine": 340,
+        "startChar": 0,
+        "endLine": 342,
+        "endChar": 0
+      },
+      "revId": "26e83271378780c05c4941baae45924678b897b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
