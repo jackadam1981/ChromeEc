@@ -47,6 +47,18 @@ static const struct gpio_config configs[] = {
 #endif
 };
 
+
+#define GPIO_OKAY(id) DT_NODE_HAS_STATUS(id, okay),
+/*
+ * Separate array to minimise size.
+ */
+static const bool gpio_status_okay[] = {
+#if DT_NODE_EXISTS(DT_PATH(named_gpios))
+	DT_FOREACH_CHILD(DT_PATH(named_gpios), GPIO_OKAY)
+#endif
+};
+
+
 /* Maps platform/ec gpio callback information */
 struct gpio_signal_callback {
 	/* The platform/ec gpio_signal */
@@ -328,44 +340,56 @@ int gpio_get_default_flags(enum gpio_signal signal)
 	return convert_from_zephyr_flags(configs[signal].init_flags);
 }
 
-static int init_gpios(const struct device *unused)
+static void gpio_enable_internal(enum gpio_signal signal,
+				 bool is_sys_jumped)
 {
 	gpio_flags_t flags;
-	struct jump_data *jdata;
-	bool is_sys_jumped;
+	int rv;
+
+	if (!gpio_is_implemented(signal))
+		return;
+
+	if (!device_is_ready(configs[signal].dev))
+		LOG_ERR("Not found (%s)", configs[signal].name);
+
+	/*
+	 * The configs[signal].init_flags variable is read-only, so the
+	 * following assignment is needed because the flags need
+	 * adjusting on a warm reboot.
+	 */
+	flags = configs[signal].init_flags;
+
+	if (is_sys_jumped) {
+		flags &=
+			~(GPIO_OUTPUT_INIT_LOW | GPIO_OUTPUT_INIT_HIGH);
+	}
+
+	rv = gpio_pin_configure(configs[signal].dev,
+				configs[signal].pin, flags);
+	if (rv < 0)
+		LOG_ERR("Config failed %s (%d)", configs[signal].name, rv);
+}
+
+static bool get_jumped_status(void)
+{
+	struct jump_data *jdata = get_jump_data();
+
+	return (jdata && jdata->magic == JUMP_DATA_MAGIC);
+}
+
+static int init_gpios(const struct device *unused)
+{
+	bool is_sys_jumped = get_jumped_status();
 
 	ARG_UNUSED(unused);
 
-	jdata = get_jump_data();
+	/* Loop through all GPIOs with status "okay" to set
+	 * initial configuration.
+	 */
 
-	if (jdata && jdata->magic == JUMP_DATA_MAGIC)
-		is_sys_jumped = true;
-	else
-		is_sys_jumped = false;
-
-	/* Loop through all GPIOs in device tree to set initial configuration */
 	for (size_t i = 0; i < ARRAY_SIZE(configs); ++i) {
-		int rv;
-
-		if (!device_is_ready(configs[i].dev))
-			LOG_ERR("Not found (%s)", configs[i].name);
-
-		/*
-		 * The configs[i].init_flags variable is read-only, so the
-		 * following assignment is needed because the flags need
-		 * adjusting on a warm reboot.
-		 */
-		flags = configs[i].init_flags;
-
-		if (is_sys_jumped) {
-			flags &=
-				~(GPIO_OUTPUT_INIT_LOW | GPIO_OUTPUT_INIT_HIGH);
-		}
-
-		rv = gpio_pin_configure(configs[i].dev, configs[i].pin, flags);
-		if (rv < 0) {
-			LOG_ERR("Config failed %s (%d)", configs[i].name, rv);
-		}
+		if (gpio_status_okay[i])
+			gpio_enable_internal(i, is_sys_jumped);
 	}
 
 	/*
@@ -449,6 +473,16 @@ int gpio_disable_interrupt(enum gpio_signal signal)
 	}
 
 	return rv;
+}
+
+void gpio_enable(enum gpio_signal signal)
+{
+	/*
+	 * Only allow the GPIO to be enabled if it was
+	 * disabled in the configuration.
+	 */
+	if (!gpio_status_okay[signal])
+		gpio_enable_internal(signal, get_jumped_status());
 }
 
 void gpio_reset(enum gpio_signal signal)

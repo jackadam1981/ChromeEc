@@ -329,6 +329,22 @@ int gpio_or_ioex_get_level(int signal, int *value);
  */
 void gpio_reset(enum gpio_signal signal);
 
+#ifdef CONFIG_ZEPHYR
+/**
+ * Enable the GPIO by setting the initial state.
+ *
+ * This initializes the GPIO using the default flags, as if the
+ * GPIO had been initialised at start-up.
+ * This may be used if the GPIO has not been enabled at the
+ * start, but is enabled at some later point.
+ * This allows code to delay initialising the GPIO depending
+ * on whether the use changes dynamically.
+ *
+ * @param signal	Signal to reset
+ */
+void gpio_enable(enum gpio_signal signal);
+#endif
+
 /**
  * Enable interrupts for the signal.
  *
