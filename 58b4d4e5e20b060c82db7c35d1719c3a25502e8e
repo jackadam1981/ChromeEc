@@ -144,6 +144,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2d15de24_a8a4621b",
+        "filename": "zephyr/dts/bindings/battery/lgc,l17l3pb0.yaml",
+        "patchSetId": 5
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-01-13T19:42:52Z",
+      "side": 1,
+      "message": "That is helpful.  Looks like the Volteer battery was updated on CL:1955106.\n\nThe battery device name is actually \"AC17A8M\".\n\nThe specification can be found on b:145786003.\n\nI confirmed the device name on a Volteer board.",
+      "parentUuid": "4773c94e_d9c57ce2",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 27
+      },
+      "revId": "58b4d4e5e20b060c82db7c35d1719c3a25502e8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "73ed2a8a_c4f316d4",
         "filename": "zephyr/dts/bindings/battery/named-batteries.yaml",
         "patchSetId": 5
