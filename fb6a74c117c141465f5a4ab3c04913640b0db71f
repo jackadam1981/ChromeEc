@@ -22,6 +22,30 @@
       },
       "revId": "fb6a74c117c141465f5a4ab3c04913640b0db71f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f159558c_41427993",
+        "filename": "chip/stm32/hwtimer.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2022-01-13T17:01:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "72e12862_35a46226",
+      "range": {
+        "startLine": 216,
+        "startChar": 12,
+        "endLine": 216,
+        "endChar": 17
+      },
+      "revId": "fb6a74c117c141465f5a4ab3c04913640b0db71f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
