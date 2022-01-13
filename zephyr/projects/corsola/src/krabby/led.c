@@ -3,11 +3,13 @@
  * found in the LICENSE file.
  */
 
+#include "chipset.h"
 #include "ec_commands.h"
 #include "gpio.h"
+#include "hooks.h"
 #include "led_common.h"
 #include "led_onoff_states.h"
-#include "chipset.h"
+#include "pwm.h"
 
 __override const int led_charge_lvl_1 = 5;
 __override const int led_charge_lvl_2 = 95;
@@ -89,3 +91,12 @@ __override enum led_states board_led_get_state(enum led_states desired_state)
 	}
 	return desired_state;
 }
+
+#define ENABLE_PWM(id) pwm_enable(PWM_CHANNEL(id), 1); \
+		       pwm_set_duty(PWM_CHANNEL(id), 5);
+
+void board_led_init(void)
+{
+	DT_FOREACH_CHILD(DT_PATH(named_pwms), ENABLE_PWM);
+}
+DECLARE_HOOK(HOOK_INIT, board_led_init, HOOK_PRIO_DEFAULT);
