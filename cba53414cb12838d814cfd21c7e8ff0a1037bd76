@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "158ee183_f5743df2",
+        "filename": "baseboard/intelrvp/adlrvp.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2022-01-13T05:58:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4d24dff7_37698e8f",
+      "range": {
+        "startLine": 344,
+        "startChar": 3,
+        "endLine": 345,
+        "endChar": 36
+      },
+      "revId": "cba53414cb12838d814cfd21c7e8ff0a1037bd76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c57ede0d_9fb6b748",
@@ -95,6 +119,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "36646bba_2fa8a820",
+        "filename": "board/adlrvpp_ite/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2022-01-13T05:58:48Z",
+      "side": 1,
+      "message": "moving the declaration to the top of the file is not helping, battery interrupts not seen.",
+      "parentUuid": "041775d1_2d60c261",
+      "range": {
+        "startLine": 144,
+        "startChar": 1,
+        "endLine": 144,
+        "endChar": 51
+      },
+      "revId": "cba53414cb12838d814cfd21c7e8ff0a1037bd76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "31e17817_7ef661f4",
@@ -108,6 +156,24 @@
       "writtenOn": "2022-01-07T08:00:48Z",
       "side": 1,
       "message": "correct me if i\u0027m mis-remembering: don\u0027t GPIO_INT declarations\nneed to be at the top of this file to work correctly?",
+      "revId": "cba53414cb12838d814cfd21c7e8ff0a1037bd76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1281a770_a5e7f019",
+        "filename": "board/adlrvpp_ite/gpio.inc",
+        "patchSetId": 6
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2022-01-13T05:58:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "31e17817_7ef661f4",
       "revId": "cba53414cb12838d814cfd21c7e8ff0a1037bd76",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
