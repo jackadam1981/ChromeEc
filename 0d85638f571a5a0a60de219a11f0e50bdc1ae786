@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "852354fe_5e94e555",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-01-13T19:17:29Z",
+      "side": 1,
+      "message": "I just had a quick question on the WD behavior.",
+      "revId": "0d85638f571a5a0a60de219a11f0e50bdc1ae786",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56fe9320_43f400f1",
+        "filename": "chip/stm32/clock-stm32h7.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 486,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-01-13T19:17:29Z",
+      "side": 1,
+      "message": "Sorry for the late reply (still trying to get a grip on things!). As noted here, if the sleep occurs midway through the WD cycle then the WD may still time out. Is there any reason not to service the WD before going to sleep or otherwise sync the WD and timer?",
+      "range": {
+        "startLine": 484,
+        "startChar": 33,
+        "endLine": 486,
+        "endChar": 26
+      },
+      "revId": "0d85638f571a5a0a60de219a11f0e50bdc1ae786",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
