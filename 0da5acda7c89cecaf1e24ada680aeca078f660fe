@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ebbd9dc2_f58be638",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-01-13T23:30:32Z",
+      "side": 1,
+      "message": "the TEST\u003d clause should include more details of the test and its result.\n\nWhich device did you rescue? Did rescue succeed?",
+      "revId": "0da5acda7c89cecaf1e24ada680aeca078f660fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "de6ee051_255f72ce",
         "filename": "util/brescue.sh",
         "patchSetId": 2
@@ -38,6 +55,30 @@
       "side": 1,
       "message": "When it\u0027s not set, the cmd line just has an extra space which doesn\u0027t cause any issues, the initial parsing pass in the script eats up the quotes.  We\u0027re seeing high failure rates (probably ~80% or higher) if just using -v option.  Using --early -v or -X -v reduces failure rates enough so that flashing can succeed with high probability within a few retries.  The proper fix would be to figure out exactly what\u0027s going on but using --early -v seems to be good enough for now.",
       "parentUuid": "de6ee051_255f72ce",
+      "range": {
+        "startLine": 124,
+        "startChar": 48,
+        "endLine": 124,
+        "endChar": 59
+      },
+      "revId": "0da5acda7c89cecaf1e24ada680aeca078f660fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00782ed2_688c36c1",
+        "filename": "util/brescue.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-01-13T23:30:32Z",
+      "side": 1,
+      "message": "can you add a test running this script to update Cr50?",
+      "parentUuid": "04f8b107_fc860e43",
       "range": {
         "startLine": 124,
         "startChar": 48,
