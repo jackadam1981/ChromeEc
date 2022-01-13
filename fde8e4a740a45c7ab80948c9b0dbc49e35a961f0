@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "89a9cd9d_70e18341",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1354861
+      },
+      "writtenOn": "2022-01-13T05:54:34Z",
+      "side": 1,
+      "message": "When I verify it. I need to cherry-pick some CL before building.\nDo I need to cherry-pick these CL for building? Or the build machine does not need these?\n\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2959919\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2698188\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2606228",
+      "revId": "fde8e4a740a45c7ab80948c9b0dbc49e35a961f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
