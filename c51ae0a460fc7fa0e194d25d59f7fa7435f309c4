@@ -22,6 +22,30 @@
       },
       "revId": "c51ae0a460fc7fa0e194d25d59f7fa7435f309c4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb50f100_17099396",
+        "filename": "board/primus/ps2.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2022-01-13T10:47:57Z",
+      "side": 1,
+      "message": "In gpio_config_pin, it will check `if (af-\u003emodule_id !\u003d id)`, since we didn\u0027t define MODULE_PS2 in gpio.inc, it will never go to `gpio_set_alternate_function` and PS2 function will not be enabled.\n\nWe cannot define MODULE_PS2 in gpio.inc because we don\u0027t want PS2 be initialized before PLTRST#.\n\nSo I think we need to use gpio_set_alternate_function directly.",
+      "parentUuid": "33ece9e8_dedebf73",
+      "range": {
+        "startLine": 27,
+        "startChar": 2,
+        "endLine": 27,
+        "endChar": 29
+      },
+      "revId": "c51ae0a460fc7fa0e194d25d59f7fa7435f309c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
