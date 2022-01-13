@@ -16,6 +16,24 @@
       "message": "you\u0027ll want volmar bug IDs for these TODOs.\nyou don\u0027t need to go through all of them now,\nbut this one is relevant to this patch.",
       "revId": "01d5921f9d72417b507f763a9f62b7a8bbcd1937",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c370105b_2528d02f",
+        "filename": "board/volmar/usbc_config.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1384576
+      },
+      "writtenOn": "2022-01-13T08:38:29Z",
+      "side": 1,
+      "message": "Ok, I will update bug IDs in another patch.",
+      "parentUuid": "dea02a2a_43d5b0d8",
+      "revId": "01d5921f9d72417b507f763a9f62b7a8bbcd1937",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
