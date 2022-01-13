@@ -199,6 +199,9 @@ static void enable_ec_spi(void)
 
 static void enable_ap_spi(uint8_t custom_reset)
 {
+	int count = 0;
+	int flash_sel = 0;
+
 	/* Select AP flash */
 	gpio_set_level(GPIO_AP_FLASH_SELECT, 1);
 	gpio_set_level(GPIO_EC_FLASH_SELECT, 0);
@@ -211,6 +214,22 @@ static void enable_ap_spi(uint8_t custom_reset)
 	 */
 	if (!custom_reset)
 		assert_ec_rst();
+	while (count < 500) {
+		static const char wheel[] = { '|', '/', '-', '\\' };
+
+		flash_sel = gpio_get_level(GPIO_AP_FLASH_SELECT);
+		if (flash_sel)
+			break;
+		if (!(count & 0x7f))
+			ccprintf("%c%c%c%c", 8, 8, 8,
+				 wheel[(count >> 7) % sizeof(wheel)]);
+		count++;
+		msleep(1);
+	}
+	if (flash_sel)
+		CPRINTS("AP_FLASH_SEL asserted after %dms", count);
+	else
+		CPRINTS("Unable to assert AP FLASH SEL after %dms", count);
 }
 
 /**
