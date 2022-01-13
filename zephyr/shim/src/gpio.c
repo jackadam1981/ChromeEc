@@ -30,17 +30,13 @@ struct gpio_config {
 	gpio_flags_t init_flags;
 };
 
-#define GPIO_CONFIG(id)                                                      \
-	COND_CODE_1(                                                         \
-		DT_NODE_HAS_PROP(id, enum_name),                             \
-		(                                                            \
-			{                                                    \
-				.name = DT_NODE_FULL_NAME(id),               \
-				.dev = DEVICE_DT_GET(DT_PHANDLE(id, gpios)), \
-				.pin = DT_GPIO_PIN(id, gpios),               \
-				.init_flags = DT_GPIO_FLAGS(id, gpios),      \
-			}, ),                                                \
-		())
+#define GPIO_CONFIG(id)                                              \
+	{                                                    \
+		.name = DT_NODE_FULL_NAME(id),               \
+		.dev = DEVICE_DT_GET(DT_PHANDLE(id, gpios)), \
+		.pin = DT_GPIO_PIN(id, gpios),               \
+		.init_flags = DT_GPIO_FLAGS(id, gpios),      \
+	},
 static const struct gpio_config configs[] = {
 #if DT_NODE_EXISTS(DT_PATH(named_gpios))
 	DT_FOREACH_CHILD(DT_PATH(named_gpios), GPIO_CONFIG)
