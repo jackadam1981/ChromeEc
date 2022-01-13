@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a401c9d3_dbf0dea7",
+        "filename": "chip/stm32/clock-stm32f4.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 477,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-01-13T23:52:49Z",
+      "side": 1,
+      "message": "I would add a comment that about how this timestamp can also point to the previous \"epoch\", since clksrc_high will not have been updated if the timer overflowed between disabling interrupts and calling this.",
+      "range": {
+        "startLine": 477,
+        "startChar": 43,
+        "endLine": 477,
+        "endChar": 44
+      },
+      "revId": "4b8343179db0e8657229c7474013b9b70e344d8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad6dfe63_312624c0",
+        "filename": "chip/stm32/clock-stm32f4.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 483,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-01-13T23:52:49Z",
+      "side": 1,
+      "message": "event timestamp (__hw_clock_event_get())",
+      "range": {
+        "startLine": 483,
+        "startChar": 33,
+        "endLine": 483,
+        "endChar": 48
+      },
+      "revId": "4b8343179db0e8657229c7474013b9b70e344d8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54da23db_ae0427d8",
+        "filename": "chip/stm32/clock-stm32f4.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 485,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-01-13T23:52:49Z",
+      "side": 1,
+      "message": "updating the next event value with __hw_clock_event_set()",
+      "range": {
+        "startLine": 484,
+        "startChar": 47,
+        "endLine": 485,
+        "endChar": 10
+      },
+      "revId": "4b8343179db0e8657229c7474013b9b70e344d8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b9edbc6_8e9d2c43",
+        "filename": "chip/stm32/clock-stm32f4.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 489,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-01-13T23:52:49Z",
+      "side": 1,
+      "message": "Is \"event timestamp\" referring to the __hw_clock_event_get() value?\n\nI want to make sure that I understand how the timer code is supposed to work. It looks like process_timers() handles scheduling future interrupts by calling __hw_event_clock_set with the next pending deadline.\n\n__hw_event_clock_set() then sets the \"capture and control\" register (STM32_TIM32_CCR1) so that it will generate an interrupt when this future deadline is hit: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/chip/stm32/hwtimer32.c;l\u003d23-28;drc\u003d604f168378ac5e896a23403c4e78d18da62baaba.\n\nIt looks like the TIM_CLOCK32 timer is configured to count up and trigger interrupt on overflow: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/chip/stm32/hwtimer32.c;l\u003d221-225;drc\u003d604f168378ac5e896a23403c4e78d18da62baaba.\n\nSo the way I\u0027m picturing this is that TIM_CLOCK32 is always running (periodically overflowing \u003d\u003e generating interrupt which increments clksrc_high). The value in STM32_TIM32_CCR1 does not change by itself (only when process_timer calls __hw_clock_event_set after the deadline triggers the match interrupt). \n\nI think this is exactly what you\u0027re describing here, so I\u0027m adding some comments on the lines that I think could be a little clearer.",
+      "range": {
+        "startLine": 481,
+        "startChar": 0,
+        "endLine": 489,
+        "endChar": 5
+      },
+      "revId": "4b8343179db0e8657229c7474013b9b70e344d8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba0f9fac_dabf6359",
+        "filename": "chip/stm32/clock-stm32f4.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 498,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-01-13T23:52:49Z",
+      "side": 1,
+      "message": "Can you verify my logic here? There are effectively three cases where timer overflow could have occurred after disabling interrupts and reaching here:\n\n1) before \"t0 \u003d get_time()\"\n2) between \"t0 \u003d get_time()\" and \"next_delay \u003d ...\"\n3) after \"next_delay \u003d ...\" and before this check\n\nCase (1), the timestamp \"t0\" could be referring to previous \"epoch\" since clksrc_high was not updated.\n\nCase (2), __hw_clock_event_get() refers to previous \"epoch\" since the *match interrupt* (not overflow interrupt) should have triggered an update to its value.\n\nCase (3) we don\u0027t care about, but no way to avoid.",
+      "range": {
+        "startLine": 498,
+        "startChar": 2,
+        "endLine": 498,
+        "endChar": 34
+      },
+      "revId": "4b8343179db0e8657229c7474013b9b70e344d8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
