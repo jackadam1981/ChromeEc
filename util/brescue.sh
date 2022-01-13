@@ -18,8 +18,7 @@
 
 TMPD="$(mktemp -d "/tmp/$(basename "$0").XXXXX")"
 
-RESCUE=
-for r in rescue cr50-rescue; do
+for r in ${RESCUE} rescue cr50-rescue; do
   if type "${r}" > /dev/null 2>&1; then
     RESCUE="${r}"
     break
@@ -88,12 +87,14 @@ case "$(stat -c '%s' "${source}")" in
     count=233472
     chip_extension=''
     addr=0x44000
+    early=''
     ;;
   (1048576)
     skip=$(rw_offset "${source}")
     count=$(( 1048576/2 - "${skip}" ))
     chip_extension='--dauntless'
     addr="$(printf '0x%x' $(( 0x80000 + "${skip}" )))"
+    early='--early'
     ;;
   (*)
     echo "Unrecognized input file" >&2
@@ -118,4 +119,6 @@ if ! objcopy -I binary -O ihex --change-addresses "${addr}" \
 fi
 echo "converted to ${dest_hex}, waiting for target reset"
 
-"${RESCUE}"  "${chip_extension}" -d "${device}" -v -i "${dest_hex}"
+echo "${RESCUE}"  "${chip_extension}" -d "${device}" "${early}" -v -i \
+  "${dest_hex}"
+"${RESCUE}"  "${chip_extension}" -d "${device}" "${early}" -v -i "${dest_hex}"
