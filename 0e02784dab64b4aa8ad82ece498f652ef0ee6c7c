@@ -3,6 +3,92 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4c3bb6f2_31a83de2",
+        "filename": "docs/zephyr/thermistor_schematic.png",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-01-13T18:13:15Z",
+      "side": 1,
+      "message": "Nit: Can you remove the text \"TEMP \u003d 100C\" in the lower left corner?",
+      "revId": "0e02784dab64b4aa8ad82ece498f652ef0ee6c7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb2c9ec4_a0d3cb66",
+        "filename": "docs/zephyr/zephyr_temperature_sensor.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-01-13T18:13:15Z",
+      "side": 1,
+      "message": "Looks like the list items can\u0027t be rendered correctly. Not sure if it is just the gitiles problem. Check:\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/refs/changes/16/3384016/1/docs/zephyr/zephyr_temperature_sensor.md",
+      "range": {
+        "startLine": 27,
+        "startChar": 134,
+        "endLine": 27,
+        "endChar": 136
+      },
+      "revId": "0e02784dab64b4aa8ad82ece498f652ef0ee6c7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc6d32db_a6172cbb",
+        "filename": "docs/zephyr/zephyr_temperature_sensor.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-01-13T18:13:15Z",
+      "side": 1,
+      "message": "Remove this extra space. It breaks the link rendering.",
+      "range": {
+        "startLine": 66,
+        "startChar": 67,
+        "endLine": 66,
+        "endChar": 68
+      },
+      "revId": "0e02784dab64b4aa8ad82ece498f652ef0ee6c7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "efb89139_84ae40b3",
+        "filename": "docs/zephyr/zephyr_temperature_sensor.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-01-13T18:13:15Z",
+      "side": 1,
+      "message": "Add a period.",
+      "range": {
+        "startLine": 160,
+        "startChar": 9,
+        "endLine": 160,
+        "endChar": 10
+      },
+      "revId": "0e02784dab64b4aa8ad82ece498f652ef0ee6c7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bb4426a0_bc66ca7b",
         "filename": "docs/zephyr/zephyr_temperature_sensor.md",
         "patchSetId": 1
