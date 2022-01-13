@@ -22,6 +22,30 @@
       },
       "revId": "923f93a1d93fc1a529140d8b8735391fe3d1d19e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c87e7ccb_d9dc1438",
+        "filename": "board/primus/ps2.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2022-01-13T02:36:09Z",
+      "side": 1,
+      "message": "Yes, Although the driver still can switch the pin to I2C function with GPIO_ALT_FUNC_1, it will show a warning message if you enable GPIO debug.\nSo please use GPIO_ALT_FUNC_DEFAULT instead.\n\nAlternatively, you can also use the gpio_config_pin() function to switch the pin between GPIO and I2C. With this function, you don\u0027t need to \"hardcode\" the port/pin number here.\nFor example, \n/* Set these two pins to GPIO */\ngpio_config_pin(MODULE_I2C, GPIO_EC_PS2_SCL_TPAD, 0);\ngpio_config_pin(MODULE_I2C, GPIO_EC_PS2_SDA_TPAD, 0);\n/* Restore these two pins to I2C function */\ngpio_config_pin(MODULE_I2C, GPIO_EC_PS2_SCL_TPAD, 1);\ngpio_config_pin(MODULE_I2C, GPIO_EC_PS2_SDA_TPAD, 1);",
+      "parentUuid": "76954e16_68e20bfa",
+      "range": {
+        "startLine": 28,
+        "startChar": 20,
+        "endLine": 28,
+        "endChar": 35
+      },
+      "revId": "923f93a1d93fc1a529140d8b8735391fe3d1d19e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
