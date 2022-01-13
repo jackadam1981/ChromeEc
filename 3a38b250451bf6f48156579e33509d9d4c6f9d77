@@ -49,6 +49,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "93f43458_e7d4f15e",
+        "filename": "zephyr/dts/bindings/battery/lgc,l17l3pb0.yaml",
+        "patchSetId": 7
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-01-13T19:43:42Z",
+      "side": 1,
+      "message": "My comment had a typo, fuel gauge is BQQ40Z55",
+      "parentUuid": "0eeb4d38_55c548a1",
+      "range": {
+        "startLine": 20,
+        "startChar": 3,
+        "endLine": 20,
+        "endChar": 21
+      },
+      "revId": "3a38b250451bf6f48156579e33509d9d4c6f9d77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7aba7356_c8d5042c",
         "filename": "zephyr/dts/bindings/battery/lgc,l17l3pb0.yaml",
         "patchSetId": 7
