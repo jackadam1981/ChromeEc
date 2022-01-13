@@ -97,6 +97,86 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "46fb39d0_70264e1a",
+        "filename": "zephyr/dts/bindings/battery/lgc,l17l3pb0.yaml",
+        "patchSetId": 5
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-01-13T18:16:47Z",
+      "side": 1,
+      "message": "Caveh - is the battery actually used on Brya?\n\nI see these values are copied from verbatim from the brya/battery.c file. However, the values (voltage_max, voltage_nominal, and ship mode regs) don\u0027t match the datasheets I\u0027m able to locate.\n\nThe boten battery configuration does match the datasheets I\u0027ve found.\n\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/aabd986c/board/boten/battery.c#63",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 27
+      },
+      "revId": "58b4d4e5e20b060c82db7c35d1719c3a25502e8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "73ed2a8a_c4f316d4",
+        "filename": "zephyr/dts/bindings/battery/named-batteries.yaml",
+        "patchSetId": 5
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-01-13T18:16:47Z",
+      "side": 1,
+      "message": "This file is only used when the board defines it\u0027s own board_battery_info[] array.  This is not used when the devicetree sets up the battery.  So you don\u0027t need to update this file.",
+      "revId": "58b4d4e5e20b060c82db7c35d1719c3a25502e8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52a0e367_47d9300e",
+        "filename": "zephyr/dts/bindings/battery/powertech,batgqa05l22.yaml",
+        "patchSetId": 5
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-01-13T18:16:47Z",
+      "side": 1,
+      "message": "Add a comment: TI BQ4050 Fuel Gauge",
+      "range": {
+        "startLine": 20,
+        "startChar": 3,
+        "endLine": 20,
+        "endChar": 21
+      },
+      "revId": "58b4d4e5e20b060c82db7c35d1719c3a25502e8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6b07154_7fc4dd9e",
+        "filename": "zephyr/dts/bindings/battery/powertech,batgqa05l22.yaml",
+        "patchSetId": 5
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-01-13T18:16:47Z",
+      "side": 1,
+      "message": "Add these properties:\nfet_cfet_mask: 0x4000\nfet_cfet_off_val: 0x4000",
+      "revId": "58b4d4e5e20b060c82db7c35d1719c3a25502e8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3758730a_35848584",
         "filename": "zephyr/dts/bindings/battery/powertech,batgqa05l22.yaml",
         "patchSetId": 5
