@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6553cce9_10a619c8",
+        "filename": "chip/npcx/gpio-npcx9.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2022-01-13T10:00:06Z",
+      "side": 1,
+      "message": "I added a new define \"NPCX_SELECT_KSI_TO_GPIO\" in config_chip.h.\nIt is enabled when HAS_TASK_KEYSCAN is undefined for backward compatible.\nA board can override this definition depends on its requirement.\nPlease check patch set 5 to see if it is what you want.",
+      "parentUuid": "7ff36c50_a8d8c2ca",
+      "range": {
+        "startLine": 37,
+        "startChar": 4,
+        "endLine": 37,
+        "endChar": 77
+      },
+      "revId": "e8b21116793949c10eb9a9e8f16604c2e3072745",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4549bc5b_d8fe4ef4",
         "filename": "chip/npcx/keyboard_raw.c",
         "patchSetId": 4
@@ -37,6 +61,30 @@
       "writtenOn": "2022-01-13T07:04:11Z",
       "side": 1,
       "message": "check same #define suggested in comment for\nchip/npcx/gpio-npcx9.c.",
+      "range": {
+        "startLine": 141,
+        "startChar": 5,
+        "endLine": 141,
+        "endChar": 48
+      },
+      "revId": "e8b21116793949c10eb9a9e8f16604c2e3072745",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "52d13810_d10f06e2",
+        "filename": "chip/npcx/keyboard_raw.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2022-01-13T10:00:06Z",
+      "side": 1,
+      "message": "see the comment above.",
+      "parentUuid": "4549bc5b_d8fe4ef4",
       "range": {
         "startLine": 141,
         "startChar": 5,
@@ -60,6 +108,30 @@
       "writtenOn": "2022-01-13T07:04:11Z",
       "side": 1,
       "message": "inclined to leave this unimplemented. we\u0027ll need to document that if\nKSI_ADC (or whatever we call it) is enabled, then the board\nis going to need to provide an implementation or alternatively\nsome sort of data structure that provides the actual ADC pins\nused on the board.\n\ni\u0027m looking at chromium:3379239 and wondering how much of that\nshould really be added to npcx/keyboard_raw.c vs. a board\nspecific file.",
+      "range": {
+        "startLine": 167,
+        "startChar": 3,
+        "endLine": 167,
+        "endChar": 7
+      },
+      "revId": "e8b21116793949c10eb9a9e8f16604c2e3072745",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "404c598b_acc2d757",
+        "filename": "chip/npcx/keyboard_raw.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2022-01-13T10:00:06Z",
+      "side": 1,
+      "message": "This is removed in the patch set 5.",
+      "parentUuid": "4e242cc9_c275a0dc",
       "range": {
         "startLine": 167,
         "startChar": 3,
