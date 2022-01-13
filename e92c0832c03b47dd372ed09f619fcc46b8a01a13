@@ -137,6 +137,29 @@
       },
       "revId": "e92c0832c03b47dd372ed09f619fcc46b8a01a13",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21d9dfc9_ee13e783",
+        "filename": "include/power_status.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-01-13T02:43:07Z",
+      "side": 1,
+      "message": "what is the significance of adapter_rating?\nwe don\u0027t control what is plugged in,\nso it wouldn\u0027t be part of the board property.\n\nis this the max rating that makes sense because the\nsystem would not be able to draw more power?",
+      "range": {
+        "startLine": 35,
+        "startChar": 11,
+        "endLine": 35,
+        "endChar": 25
+      },
+      "revId": "e92c0832c03b47dd372ed09f619fcc46b8a01a13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
