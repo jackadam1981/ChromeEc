@@ -465,7 +465,17 @@ static void board_init(void)
 	 * button is not available.
 	 */
 	if (board_version < 2)
+<<<<<<< HEAD   (f7bbf4 Scout: update fan_rpm)
 		button_disable_gpio(GPIO_EC_RECOVERY_BTN_ODL);
+=======
+		button_disable_gpio(BUTTON_RECOVERY);
+
+	/*
+	 * Early Scout devices does not setup EC_MIC_OE in RO, so it needs
+	 * to be done explicitly instead.
+	 */
+	gpio_set_level(GPIO_EC_MIC_OE, 1);
+>>>>>>> CHANGE (fab4d0 scout: Enable mics on boards without EC_MIC_OE in RO)
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
