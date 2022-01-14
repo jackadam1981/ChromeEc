@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4f9b9d8_d13bf590",
+        "filename": "docs/zephyr/zephyr_gpio.md",
+        "patchSetId": 14
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-01-14T18:16:13Z",
+      "side": 1,
+      "message": "Hmm, the Kconfig API references seem to be broken.\nFor instance this used to work: https://docs.zephyrproject.org/latest/reference/kconfig/CONFIG_GPIO.html\n\nLooks like there is activity on this front https://github.com/zephyrproject-rtos/zephyr/pull/41753, but I guess we need to link to the source for now.",
+      "range": {
+        "startLine": 207,
+        "startChar": 0,
+        "endLine": 207,
+        "endChar": 155
+      },
+      "revId": "863d9cc391bee09c87b9db620a1a8e73bd43ff74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
