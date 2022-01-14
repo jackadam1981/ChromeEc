@@ -1,0 +1,19 @@
+# Copyright 2021 Microchip Technologies Inc.
+# SPDX-License-Identifier: Apache-2.0
+
+description: Microchip, xec-cros-kb-raw node
+
+compatible: "microchip,xec-cros-kb-raw"
+
+include: [cros-kb-raw-controller.yaml, pinctrl-device.yaml]
+
+properties:
+    reg:
+        required: true
+
+    pinctrl-0:
+      required: true
+
+    pinctrl-names:
+      required: true
+
