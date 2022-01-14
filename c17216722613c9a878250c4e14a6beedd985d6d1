@@ -1,0 +1,228 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44c036ed_50859752",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-01-14T21:17:42Z",
+      "side": 1,
+      "message": "Either in the subject or body, please specify that we are adding a skeleton driver due to all the TODOs.",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 39
+      },
+      "revId": "c17216722613c9a878250c4e14a6beedd985d6d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc4551d3_4bebbce2",
+        "filename": "zephyr/drivers/cros_rtc/cros_rtc_xec.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-01-14T21:17:42Z",
+      "side": 1,
+      "message": "Make a bug and reference it like:\n\n/*\n * TODO(b/TicketNumber): Short Description\n */",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 3
+      },
+      "revId": "c17216722613c9a878250c4e14a6beedd985d6d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c54a1168_0db16009",
+        "filename": "zephyr/drivers/cros_rtc/cros_rtc_xec.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-01-14T21:17:42Z",
+      "side": 1,
+      "message": "Make a bug and reference it like:\n\n/*\n * TODO(b/TicketNumber): Short Description\n */",
+      "range": {
+        "startLine": 49,
+        "startChar": 1,
+        "endLine": 49,
+        "endChar": 11
+      },
+      "revId": "c17216722613c9a878250c4e14a6beedd985d6d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f3d773c_e901ba09",
+        "filename": "zephyr/drivers/cros_rtc/cros_rtc_xec.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-01-14T21:17:42Z",
+      "side": 1,
+      "message": "Make a bug and reference it like:\n\n/*\n * TODO(b/TicketNumber): Short Description\n */",
+      "range": {
+        "startLine": 58,
+        "startChar": 1,
+        "endLine": 58,
+        "endChar": 11
+      },
+      "revId": "c17216722613c9a878250c4e14a6beedd985d6d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e6dbb6a_c22212ff",
+        "filename": "zephyr/drivers/cros_rtc/cros_rtc_xec.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-01-14T21:17:42Z",
+      "side": 1,
+      "message": "Make a bug and reference it like:\n\n/*\n * TODO(b/TicketNumber): Short Description\n */",
+      "range": {
+        "startLine": 69,
+        "startChar": 1,
+        "endLine": 69,
+        "endChar": 11
+      },
+      "revId": "c17216722613c9a878250c4e14a6beedd985d6d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27be5606_9c1045bd",
+        "filename": "zephyr/drivers/cros_rtc/cros_rtc_xec.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-01-14T21:17:42Z",
+      "side": 1,
+      "message": "Make a bug and reference it like:\n\n/*\n * TODO(b/TicketNumber): Short Description\n */",
+      "range": {
+        "startLine": 79,
+        "startChar": 1,
+        "endLine": 79,
+        "endChar": 11
+      },
+      "revId": "c17216722613c9a878250c4e14a6beedd985d6d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49551f23_bbb7cd97",
+        "filename": "zephyr/drivers/cros_rtc/cros_rtc_xec.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-01-14T21:17:42Z",
+      "side": 1,
+      "message": "Make a bug and reference it like:\n\n/*\n * TODO(b/TicketNumber): Short Description\n */",
+      "range": {
+        "startLine": 93,
+        "startChar": 1,
+        "endLine": 93,
+        "endChar": 11
+      },
+      "revId": "c17216722613c9a878250c4e14a6beedd985d6d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0cf2eb28_7b0389d6",
+        "filename": "zephyr/drivers/cros_rtc/cros_rtc_xec.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-01-14T21:17:42Z",
+      "side": 1,
+      "message": "Make a bug and reference it like:\n\n/*\n * TODO(b/TicketNumber): Short Description\n */",
+      "range": {
+        "startLine": 101,
+        "startChar": 1,
+        "endLine": 101,
+        "endChar": 11
+      },
+      "revId": "c17216722613c9a878250c4e14a6beedd985d6d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "076f9584_a1a30bd4",
+        "filename": "zephyr/drivers/cros_rtc/cros_rtc_xec.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-01-14T21:17:42Z",
+      "side": 1,
+      "message": "Is there supposed to be a todo here?",
+      "range": {
+        "startLine": 117,
+        "startChar": 1,
+        "endLine": 117,
+        "endChar": 17
+      },
+      "revId": "c17216722613c9a878250c4e14a6beedd985d6d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "947184dc_28512ab1",
+        "filename": "zephyr/dts/bindings/cros_rtc/microchip,xec-cros-rtc.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-01-14T21:17:42Z",
+      "side": 1,
+      "message": "nit: delete extra superfluous newlines.",
+      "revId": "c17216722613c9a878250c4e14a6beedd985d6d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
