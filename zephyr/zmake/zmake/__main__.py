@@ -286,6 +286,12 @@ def get_argparser():
         type=pathlib.Path,
         help="The build directory used during configuration",
     )
+    coverage.add_argument(
+        "--clobber",
+        action="store_true",
+        dest="clobber",
+        help="Delete existing build directories, even if configuration is unchanged",
+    )
 
     generate_readme = sub.add_parser(
         "generate-readme",
