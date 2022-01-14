@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6cabd9fa_aea14f98",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-01-14T05:55:37Z",
+      "side": 1,
+      "message": "Looks like a few different boards call task_disable_task to turn off C1 tasks if not present, though I\u0027m not sure if that\u0027s actually a problem either.",
+      "parentUuid": "fe245a8f_84a338ce",
+      "revId": "d7749405fcd4b19a7e0d5c14861b0c31462a7ec0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "93943f56_dd32224d",
         "filename": "zephyr/projects/nissa/src/charger.c",
         "patchSetId": 2
