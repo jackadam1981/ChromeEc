@@ -33,6 +33,52 @@
       "message": "Need another CR+2",
       "revId": "ca77d448a41c3967b5f8b26fa113da4a0195efca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01e87f5e_7b35016c",
+        "filename": "baseboard/intelrvp/README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2022-01-14T20:13:34Z",
+      "side": 1,
+      "message": "Plz correct to Retimer.",
+      "range": {
+        "startLine": 19,
+        "startChar": 39,
+        "endLine": 19,
+        "endChar": 46
+      },
+      "revId": "ca77d448a41c3967b5f8b26fa113da4a0195efca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d2c824f1_c57d243d",
+        "filename": "baseboard/intelrvp/baseboard.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2022-01-14T20:13:34Z",
+      "side": 1,
+      "message": "This can be removed.",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 18
+      },
+      "revId": "ca77d448a41c3967b5f8b26fa113da4a0195efca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
