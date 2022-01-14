@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d1bccb3_de483579",
+        "filename": "zephyr/zmake/zmake/zmake.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 535,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-01-14T21:19:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "05a9aaba_f402fb94",
+      "range": {
+        "startLine": 534,
+        "startChar": 0,
+        "endLine": 535,
+        "endChar": 49
+      },
+      "revId": "1b33cae4c1ea50ce7b55d927e422763d937e02b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "20c83aa1_39174581",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f290daa_f0a1b73b",
+        "filename": "zephyr/zmake/zmake/zmake.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 682,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-01-14T21:19:18Z",
+      "side": 1,
+      "message": "It was hanging here if I did that. I added a call in the non-hanging caller instead.",
+      "parentUuid": "20c83aa1_39174581",
+      "range": {
+        "startLine": 660,
+        "startChar": 0,
+        "endLine": 682,
+        "endChar": 56
+      },
+      "revId": "1b33cae4c1ea50ce7b55d927e422763d937e02b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "08bbfbee_ada40602",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-01-14T21:04:40Z",
       "side": 1,
       "message": "parameter is unused",
+      "range": {
+        "startLine": 750,
+        "startChar": 32,
+        "endLine": 750,
+        "endChar": 47
+      },
+      "revId": "1b33cae4c1ea50ce7b55d927e422763d937e02b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef6859e3_33f863fc",
+        "filename": "zephyr/zmake/zmake/zmake.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 750,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-01-14T21:19:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "08bbfbee_ada40602",
       "range": {
         "startLine": 750,
         "startChar": 32,
