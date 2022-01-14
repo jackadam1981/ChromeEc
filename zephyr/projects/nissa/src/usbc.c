@@ -24,16 +24,7 @@ struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 		/* RAA489000 implements TCPCI 2.0 */
 		.flags = TCPC_FLAGS_TCPCI_REV2_0,
 	},
-	{ /* sub-board */
-		.bus_type = EC_BUS_TYPE_I2C,
-		.i2c_info = {
-			.port = I2C_PORT_USB_C1_TCPC,
-			.addr_flags = RAA489000_TCPC0_I2C_FLAGS,
-		},
-		.drv = &raa489000_tcpm_drv,
-		/* RAA489000 implements TCPCI 2.0 */
-		.flags = TCPC_FLAGS_TCPCI_REV2_0,
-	},
+	{ /* sub-board, initialized only if present */ },
 };
 
 struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
@@ -42,11 +33,7 @@ struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 		.driver = &virtual_usb_mux_driver,
 		.hpd_update = &virtual_hpd_update,
 	},
-	{ /* sub-board */
-		.usb_port = 1,
-		.driver = &virtual_usb_mux_driver,
-		.hpd_update = &virtual_hpd_update,
-	},
+	{ /* sub-board, initialized only if present */ },
 };
 
 static uint8_t cached_usb_pd_port_count;
@@ -62,7 +49,7 @@ __override uint8_t board_get_usb_pd_port_count(void)
  * Initialise the USB PD port count, which
  * depends on which sub-board is attached.
  */
-static void init_usb_pd_port_count(void)
+static void init_usb_pd_ports(void)
 {
 	switch (nissa_get_sb_type()) {
 	default:
@@ -72,11 +59,29 @@ static void init_usb_pd_port_count(void)
 	case NISSA_SB_C_LTE:
 		cached_usb_pd_port_count = 2;
 	}
+
+	if (cached_usb_pd_port_count == 2) {
+		tcpc_config[1] = (struct tcpc_config_t){
+			.bus_type = EC_BUS_TYPE_I2C,
+			.i2c_info = {
+				.port = I2C_PORT_USB_C1_TCPC,
+				.addr_flags = RAA489000_TCPC0_I2C_FLAGS,
+			},
+			.drv = &raa489000_tcpm_drv,
+			/* RAA489000 implements TCPCI 2.0 */
+			.flags = TCPC_FLAGS_TCPCI_REV2_0,
+		};
+		usb_muxes[1] = (struct usb_mux){
+			.usb_port = 1,
+			.driver = &virtual_usb_mux_driver,
+			.hpd_update = &virtual_hpd_update,
+		};
+	}
 }
 /*
  * Make sure setup is done after EEPROM is readable.
  */
-DECLARE_HOOK(HOOK_INIT, init_usb_pd_port_count, HOOK_PRIO_INIT_I2C + 1);
+DECLARE_HOOK(HOOK_INIT, init_usb_pd_ports, HOOK_PRIO_INIT_I2C + 1);
 
 void board_set_charge_limit(int port, int supplier, int charge_ma,
 			    int max_ma, int charge_mv)
