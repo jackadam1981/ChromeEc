@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e23fdddb_a8cbe7da",
+        "filename": "common/flash_log.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 489,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2022-01-14T17:02:01Z",
+      "side": 1,
+      "message": "This ends up being DEFAULT - 1. Vadim, do you think that\u0027s ok? Was flash log init supposed to happen after something else?",
+      "range": {
+        "startLine": 489,
+        "startChar": 40,
+        "endLine": 489,
+        "endChar": 70
+      },
+      "revId": "fbd7264233439e7ae870eeb578df19a6b9c896ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
