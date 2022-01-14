@@ -49,6 +49,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e348b263_598983ee",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 857,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2022-01-14T20:05:46Z",
+      "side": 1,
+      "message": "The issue is we don\u0027t know the board properties at that point.",
+      "parentUuid": "ade81ac8_64fe96ef",
+      "range": {
+        "startLine": 856,
+        "startChar": 0,
+        "endLine": 857,
+        "endChar": 66
+      },
+      "revId": "fbd7264233439e7ae870eeb578df19a6b9c896ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a7805976_30d31c3b",
         "filename": "board/cr50/board.c",
         "patchSetId": 1
@@ -60,6 +84,30 @@
       "writtenOn": "2022-01-14T19:54:24Z",
       "side": 1,
       "message": "Shouldn\u0027t this still return an error? Not this change\u0027s problem, I\u0027m just curious.",
+      "range": {
+        "startLine": 1567,
+        "startChar": 0,
+        "endLine": 1570,
+        "endChar": 0
+      },
+      "revId": "fbd7264233439e7ae870eeb578df19a6b9c896ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dce901d9_6e470a90",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1570,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2022-01-14T20:05:46Z",
+      "side": 1,
+      "message": "No this is expected on some boards after cr50 reset.",
+      "parentUuid": "a7805976_30d31c3b",
       "range": {
         "startLine": 1567,
         "startChar": 0,
