@@ -94,6 +94,15 @@ rsource "subdir/Kconfig.wibble"
         with open(os.path.join(bad_subdir, 'Kconfig.bad'), 'w') as out:
             out.write('menuconfig PLATFORM_EC_BAD_KCONFIG')
 
+    def test_find_kconfigs(self):
+        """Test KconfigCheck.find_kconfigs()"""
+        checker = kconfig_check.KconfigCheck()
+        with tempfile.TemporaryDirectory() as srctree:
+            self.setup_srctree(srctree)
+            files = checker.find_kconfigs(srctree)
+            fnames = [fname[len(srctree):] for fname in files]
+            self.assertEqual(['/Kconfig', '/subdir/Kconfig.wibble'], fnames)
+
     def test_scan_kconfigs(self):
         """Test KconfigCheck.scan_configs()"""
         checker = kconfig_check.KconfigCheck()
@@ -144,6 +153,31 @@ rsource "subdir/Kconfig.wibble"
         found = re.findall('(CONFIG_.*)', stderr.getvalue())
         self.assertEqual(['CONFIG_NEW_ONE'], found)
 
+    def test_real_kconfig(self):
+        """Same Kconfig should be returned for kconfiglib / adhoc"""
+        if not kconfig_check.USE_KCONFIGLIB:
+            self.skipTest('No kconfiglib available')
+        checker = kconfig_check.KconfigCheck()
+        srcdir = '.'
+        search_paths = ['/home/sglass/cosarm/src/third_party/zephyr/main']
+        kc_version = checker.scan_kconfigs(
+            srcdir, search_paths=search_paths, try_kconfiglib=True)
+        adhoc_version = checker.scan_kconfigs(srcdir, try_kconfiglib=False)
+
+        # List of things missing from the Kconfig
+        missing = sorted(list(set(adhoc_version) - set(kc_version)))
+
+        # The Kconfig is disjoint in some places, e.g. the boards have their
+        # own Kconfig files which are not included from the main Kconfig
+        missing = [item for item in missing
+                   if not item.startswith('BOARD') and
+                   not item.startswith('VARIANT')]
+
+        # Similarly, some other items are defined in files that are not included
+        # in all cases, only for particular values of $(ARCH)
+        self.assertEqual(
+            ['FLASH_LOAD_OFFSET', 'NPCX_HEADER', 'SYS_CLOCK_HW_CYCLES_PER_SEC'],
+            missing)
 
 if __name__ == '__main__':
     unittest.main()

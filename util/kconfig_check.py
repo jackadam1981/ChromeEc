@@ -133,7 +133,8 @@ class KconfigCheck:
         return kconfig_files
 
     @classmethod
-    def scan_kconfigs(cls, srcdir, prefix=''):
+    def scan_kconfigs(cls, srcdir, prefix='', search_paths=None,
+                      try_kconfiglib=True):
         """Scan a source tree for Kconfig options
 
         Args:
@@ -143,9 +144,10 @@ class KconfigCheck:
         Returns:
             List of config and menuconfig options found
         """
-        if USE_KCONFIGLIB:
+        if USE_KCONFIGLIB and try_kconfiglib:
             kconf = kconfiglib.Kconfig(os.path.join(srcdir, 'Kconfig'),
-                                       warn=False)
+                                       warn=False, search_paths=search_paths,
+                                       allow_empty_macros=True)
 
             # There is always a MODULES config, since kconfiglib is designed for
             # linux, but we don't want it
@@ -157,13 +159,13 @@ class KconfigCheck:
         else:
             kconfigs = []
             # Remove the prefix if present
-            expr = re.compile(r'(config|menuconfig) (%s)?([A-Za-z0-9_]*)\n' %
+            expr = re.compile(r'\n(config|menuconfig) (%s)?([A-Za-z0-9_]*)\n' %
                               prefix)
             for fname in cls.find_kconfigs(srcdir):
                 with open(fname) as inf:
                     found = re.findall(expr, inf.read())
                     kconfigs += [name for kctype, _, name in found]
-        return kconfigs
+        return sorted(kconfigs)
 
     def find_new_adhoc_configs(self, configs_file, srcdir, allowed_file,
                                prefix=''):
