@@ -16,6 +16,24 @@
       "message": "Since extcon-usbc-cros-ec is not enabled, the main consumer for USB_MUX host event is absent.\n\nEric do you know if there\u0027s other component that needs the USB_MUX host event?",
       "revId": "d897e50be636f9bbab3b18e15717123f0a2ccb1b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "562905f2_80783cae",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2022-01-14T06:57:00Z",
+      "side": 1,
+      "message": "I added wenst for comment, but AFAIK there no other components that supoort USB MUX controlled by EC.",
+      "parentUuid": "4c8c465a_4babe5de",
+      "revId": "d897e50be636f9bbab3b18e15717123f0a2ccb1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
