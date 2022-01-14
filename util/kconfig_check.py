@@ -60,6 +60,8 @@ a corresponding Kconfig option for Zephyr"""
     parser.add_argument(
         '-D', '--debug', action='store_true',
         help='Enabling debugging (provides a full traceback on error)')
+    parser.add_argument('-I', '--search-path', type=str, action='append',
+                        help='Search paths to look for Kconfigs')
     parser.add_argument('-p', '--prefix', type=str, default='PLATFORM_EC_',
                         help='Prefix to string from Kconfig options')
     parser.add_argument('-s', '--srctree', type=str, default='zephyr/',
@@ -219,8 +221,9 @@ class KconfigCheck:
             List of config and menuconfig options found
         """
         if USE_KCONFIGLIB and try_kconfiglib:
-            kconf = kconfiglib.Kconfig(os.path.join(srcdir, 'Kconfig'),
-                                       warn=False, search_paths=search_paths,
+            os.environ['srctree'] = srcdir
+            kconf = kconfiglib.Kconfig('Kconfig', warn=False,
+                                       search_paths=search_paths,
                                        allow_empty_macros=True)
 
             # There is always a MODULES config, since kconfiglib is designed for
@@ -242,7 +245,7 @@ class KconfigCheck:
         return sorted(kconfigs)
 
     def check_adhoc_configs(self, configs_file, srcdir, allowed_file,
-                            prefix='', use_defines=False):
+                            prefix='', use_defines=False, search_paths=None):
         """Find new and unneeded ad-hoc configs in the configs_file
 
         Args:
@@ -263,14 +266,15 @@ class KconfigCheck:
                     current state of the Kconfig options
         """
         configs = self.read_configs(configs_file, use_defines)
-        kconfigs = self.scan_kconfigs(srcdir, prefix)
+        kconfigs = self.scan_kconfigs(srcdir, prefix, search_paths)
         allowed = self.read_allowed(allowed_file)
         new_adhoc = self.find_new_adhoc(configs, kconfigs, allowed)
         unneeded_adhoc = self.find_unneeded_adhoc(kconfigs, allowed)
         updated_adhoc = self.get_updated_adhoc(unneeded_adhoc, allowed)
         return new_adhoc, unneeded_adhoc, updated_adhoc
 
-    def do_check(self, configs_file, srcdir, allowed_file, prefix, use_defines):
+    def do_check(self, configs_file, srcdir, allowed_file, prefix, use_defines,
+                 search_paths):
         """Find new ad-hoc configs in the configs_file
 
         Args:
@@ -285,7 +289,8 @@ class KconfigCheck:
             Exit code: 0 if OK, 1 if a problem was found
         """
         new_adhoc, unneeded_adhoc, updated_adhoc = self.check_adhoc_configs(
-            configs_file, srcdir, allowed_file, prefix, use_defines)
+            configs_file, srcdir, allowed_file, prefix, use_defines,
+            search_paths)
         if new_adhoc:
             print("""Error:\tThe EC is in the process of migrating to Zephyr.
 \tZephyr uses Kconfig for configuration rather than ad-hoc #defines.
@@ -329,7 +334,7 @@ def main(argv):
     checker = KconfigCheck()
     if args.cmd == 'check':
         return checker.do_check(args.configs, args.srctree, args.allowed,
-                                args.prefix, args.use_defines)
+                                args.prefix, args.use_defines, args.search_path)
     return 2
 
 
