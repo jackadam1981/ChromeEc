@@ -71,6 +71,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3c2dcf72_4c605c01",
+        "filename": "board/beadrix/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 482,
+      "author": {
+        "id": 1314118
+      },
+      "writtenOn": "2022-01-14T01:59:22Z",
+      "side": 1,
+      "message": "Please remove the definition.",
+      "range": {
+        "startLine": 468,
+        "startChar": 0,
+        "endLine": 482,
+        "endChar": 18
+      },
+      "revId": "adae5ccb043415ab30a887b51979fa7137c57fa6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0fb66d6_cd8cf0f4",
+        "filename": "board/beadrix/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1314118
+      },
+      "writtenOn": "2022-01-14T01:59:22Z",
+      "side": 1,
+      "message": "Please remove the definition.",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 30
+      },
+      "revId": "adae5ccb043415ab30a887b51979fa7137c57fa6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "119fb1e5_30c2ffc9",
         "filename": "board/beadrix/board.h",
         "patchSetId": 1
@@ -99,6 +145,75 @@
       "writtenOn": "2022-01-13T21:40:52Z",
       "side": 1,
       "message": "Defined by default in config.h?",
+      "revId": "adae5ccb043415ab30a887b51979fa7137c57fa6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee5400fe_f515fced",
+        "filename": "board/beadrix/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1314118
+      },
+      "writtenOn": "2022-01-14T01:59:22Z",
+      "side": 1,
+      "message": "Please remove the definition.",
+      "range": {
+        "startLine": 133,
+        "startChar": 0,
+        "endLine": 135,
+        "endChar": 17
+      },
+      "revId": "adae5ccb043415ab30a887b51979fa7137c57fa6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "968fb51c_10393de4",
+        "filename": "board/beadrix/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1314118
+      },
+      "writtenOn": "2022-01-14T01:59:22Z",
+      "side": 1,
+      "message": "Please remove the annotation.",
+      "range": {
+        "startLine": 145,
+        "startChar": 88,
+        "endLine": 145,
+        "endChar": 105
+      },
+      "revId": "adae5ccb043415ab30a887b51979fa7137c57fa6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd3a1785_d8410369",
+        "filename": "board/beadrix/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1314118
+      },
+      "writtenOn": "2022-01-14T01:59:22Z",
+      "side": 1,
+      "message": "Please remove the definition.",
+      "range": {
+        "startLine": 145,
+        "startChar": 28,
+        "endLine": 145,
+        "endChar": 55
+      },
       "revId": "adae5ccb043415ab30a887b51979fa7137c57fa6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
