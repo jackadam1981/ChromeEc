@@ -16,6 +16,24 @@
       "message": "nit Fall through",
       "revId": "dc08cbb8a0501567a4df2250233503af9e7fb1ee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee1f754b_d626e841",
+        "filename": "zephyr/emul/tcpc/emul_tcpci_partner_common.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 391,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2022-01-14T14:49:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c0c12150_443960c7",
+      "revId": "dc08cbb8a0501567a4df2250233503af9e7fb1ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
