@@ -143,6 +143,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0acecbfe_25006a29",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 864,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2022-01-14T23:18:22Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "64aa7269_8a11e065",
+      "range": {
+        "startLine": 861,
+        "startChar": 0,
+        "endLine": 864,
+        "endChar": 9
+      },
+      "revId": "478d71d82e4ed2e475bd1426293d706ff1ea45ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0790bb4f_c95eea4a",
@@ -156,6 +180,30 @@
       "writtenOn": "2022-01-14T21:18:41Z",
       "side": 1,
       "message": "this field could be just one byte in size, would need to declare the structure \u0027packed\u0027 to make it work.",
+      "range": {
+        "startLine": 122,
+        "startChar": 0,
+        "endLine": 122,
+        "endChar": 17
+      },
+      "revId": "478d71d82e4ed2e475bd1426293d706ff1ea45ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c012b70_6a2f153d",
+        "filename": "include/flash_log.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2022-01-14T23:18:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0790bb4f_c95eea4a",
       "range": {
         "startLine": 122,
         "startChar": 0,
