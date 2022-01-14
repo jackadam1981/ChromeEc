@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "cd23c2ed_fc1f1bf3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2022-01-14T21:48:27Z",
+      "side": 1,
+      "message": "I only have ti50 andreiboard setup at hand, here are the results:\n\nUsing the new options:\n\nRESCUE\u003d../cr50-utils/software/tools/SPI/rescue EARLY\u003d1 util/brescue.sh ~/trunk/tmp/devboardd/ti50_Unknown_PrePVT_ti50-accessory-nodelocked-ro-premp.bin /dev/serial/by-id/usb-Google_Inc._UltraDebug_GA7ENPUYRO7S9TPU-if02-port0\ncarved out binary /tmp/brescue.sh.bhago/rw.bin mapped to 0x88000\nconverted to /tmp/brescue.sh.bhago/rw.hex, waiting for target reset\n../cr50-utils/software/tools/SPI/rescue --dauntless -d /dev/serial/by-id/usb-Google_Inc._UltraDebug_GA7ENPUYRO7S9TPU-if02-port0 --early -v -i /tmp/brescue.sh.bhago/rw.hex\nflash_start_:  00008000 flash_end_:  00018000\nlow 00088000, high 000fffff\nbase 00088000, size 00078000\n..maxAdr 0x00100000\n..dropped to 0x000f5098\n..skipping from 0x00084000 to 0x00088000\n454 frames\n(waiting for \"Bldr |\")\nRavn4|00100000 7f4bdb+\nHimg \u003d9E387068..5D3C1C72 : 1\nHfss \u003d2206AA41..EFADD936 : 1\nHinf \u003d00CFE4A6..B4FEEEDC : 1\njump @00100400\n\nBldr |(waiting for \"oops?|\")157848 06705e\noops?|0.1.2.3.4....452.453.done!\n\n\nUsing default options:\nutil/brescue.sh ~/trunk/tmp/devboardd/ti50_Unknown_PrePVT_ti50-accessory-nodelocked-ro-premp.bin /dev/serial/by-id/usb-Google_Inc._UltraDebug_GA7ENPUYRO7S9TPU-if02-port0\ncarved out binary /tmp/brescue.sh.oI2o7/rw.bin mapped to 0x88000\nconverted to /tmp/brescue.sh.oI2o7/rw.hex, waiting for target reset\ncr50-rescue --dauntless -d /dev/serial/by-id/usb-Google_Inc._UltraDebug_GA7ENPUYRO7S9TPU-if02-port0  -v -i /tmp/brescue.sh.oI2o7/rw.hex\nflash_start_:  00008000 flash_end_:  00018000\nlow 00088000, high 000fffff\nbase 00088000, size 00078000\n..maxAdr 0x00100000\n..dropped to 0x000f5098\n..skipping from 0x00084000 to 0x00088000\n454 frames\n(waiting for \"Bldr |\")\nRavn4|00100000 7f4bdb+\nHimg \u003d9E387068..5D3C1C72 : 1\nHfss \u003d2206AA41..EFADD936 : 1\nHinf \u003d00CFE4A6..B4FEEEDC : 1\njump @00100400\n\nBldr |(waiting for \"oops?|\")696351 06705e\noops?|\u0027e\u0027 !\u003d \u0027C\u0027\n(waiting for \"Bldr |\")orrupted Board ID: FFFFFFFF(FFFFF\n... \u003creset via opentitantool 3 times to do retry, eventually also works\u003e\njump @00100400\n\nBldr |(waiting for \"oops?|\")695801 06705e\noops?|0.1.2.3.4...452.453.done!",
+      "parentUuid": "ebbd9dc2_f58be638",
+      "revId": "0da5acda7c89cecaf1e24ada680aeca078f660fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "79975a78_acddc531",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
@@ -96,6 +114,30 @@
       "side": 1,
       "message": "can you add a test running this script to update Cr50?",
       "parentUuid": "04f8b107_fc860e43",
+      "range": {
+        "startLine": 124,
+        "startChar": 48,
+        "endLine": 124,
+        "endChar": 59
+      },
+      "revId": "0da5acda7c89cecaf1e24ada680aeca078f660fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f45bfb9c_8d0d696a",
+        "filename": "util/brescue.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2022-01-14T21:48:27Z",
+      "side": 1,
+      "message": "Per discussion on chat, I don\u0027t have a current cr50 servo micro setup, but the empty early variable was tested on ti50 code path and has no effect.",
+      "parentUuid": "00782ed2_688c36c1",
       "range": {
         "startLine": 124,
         "startChar": 48,
