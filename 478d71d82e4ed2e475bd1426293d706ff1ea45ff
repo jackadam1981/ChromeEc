@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "724b2c5c_828b0f17",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-01-14T21:18:41Z",
+      "side": 1,
+      "message": "how would you test this again on the red board when the next change in this stack is applied?",
+      "range": {
+        "startLine": 13,
+        "startChar": 6,
+        "endLine": 15,
+        "endChar": 22
+      },
+      "revId": "478d71d82e4ed2e475bd1426293d706ff1ea45ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa4da7f8_29561be2",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 864,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-01-14T21:18:41Z",
+      "side": 1,
+      "message": "nit to your discretion: doing\n\nif (!bf_flog.events)\n  return;\n  \nfirst would make this easier to uderstand.",
+      "range": {
+        "startLine": 861,
+        "startChar": 0,
+        "endLine": 864,
+        "endChar": 9
+      },
+      "revId": "478d71d82e4ed2e475bd1426293d706ff1ea45ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0790bb4f_c95eea4a",
+        "filename": "include/flash_log.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-01-14T21:18:41Z",
+      "side": 1,
+      "message": "this field could be just one byte in size, would need to declare the structure \u0027packed\u0027 to make it work.",
+      "range": {
+        "startLine": 122,
+        "startChar": 0,
+        "endLine": 122,
+        "endChar": 17
+      },
+      "revId": "478d71d82e4ed2e475bd1426293d706ff1ea45ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
