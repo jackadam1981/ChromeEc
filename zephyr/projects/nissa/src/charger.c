@@ -6,22 +6,30 @@
 #include "battery.h"
 #include "charger.h"
 #include "charger/isl923x_public.h"
+#include "hooks.h"
 #include "usb_pd.h"
 #include "sub_board.h"
 
-const struct charger_config_t chg_chips[] = {
+struct charger_config_t chg_chips[] = {
 	{
 		.i2c_port = I2C_PORT_USB_C0_TCPC,
 		.i2c_addr_flags = ISL923X_ADDR_FLAGS,
 		.drv = &isl923x_drv,
 	},
-	/* Sub-board */
-	{
-		.i2c_port = I2C_PORT_USB_C1_TCPC,
-		.i2c_addr_flags = ISL923X_ADDR_FLAGS,
-		.drv = &isl923x_drv,
-	},
+	{ /* Sub-board, configured only if present. */ },
 };
+
+static void init_sub_board_charger(void)
+{
+	if (board_get_charger_chip_count() == 2) {
+		chg_chips[1] = (struct charger_config_t){
+			.i2c_port = I2C_PORT_USB_C1_TCPC,
+			.i2c_addr_flags = ISL923X_ADDR_FLAGS,
+			.drv = &isl923x_drv,
+		};
+	}
+}
+DECLARE_HOOK(HOOK_INIT, init_sub_board_charger, HOOK_PRIO_INIT_I2C + 1);
 
 int extpower_is_present(void)
 {
