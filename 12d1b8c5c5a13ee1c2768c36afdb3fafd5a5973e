@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8af2c116_bdd37e6d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-01-14T00:17:18Z",
+      "side": 1,
+      "message": "Can you mention the function that disables it?\n\nIs it this? https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/common/timer.c;l\u003d103;drc\u003d4270aa209ef211185efd476b3478238c5ec60082",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 47
+      },
+      "revId": "12d1b8c5c5a13ee1c2768c36afdb3fafd5a5973e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d55916ac_464b89a5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-01-14T00:17:18Z",
+      "side": 1,
+      "message": "By \"overflow\" do you mean it\u0027s 0xffffffff?\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/common/timer.c;l\u003d104;drc\u003d4270aa209ef211185efd476b3478238c5ec60082\n\nIf so, I would specify that value rather than call it overflow.",
+      "range": {
+        "startLine": 15,
+        "startChar": 44,
+        "endLine": 16,
+        "endChar": 17
+      },
+      "revId": "12d1b8c5c5a13ee1c2768c36afdb3fafd5a5973e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13007a0c_1b91b0f0",
+        "filename": "chip/stm32/hwtimer32.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-01-14T00:17:18Z",
+      "side": 1,
+      "message": "nit: I think it\u0027s a little easier to read this way\n\n /* Match interrupt is disabled. */\n if (!(STM32_TIM_DIER(TIM_CLOCK32) \u0026 2))\n   return UINT32_MAX;\n\n return STM32_TIM32_CCR1(TIM_CLOCK32);",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 48
+      },
+      "revId": "12d1b8c5c5a13ee1c2768c36afdb3fafd5a5973e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
