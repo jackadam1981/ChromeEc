@@ -22,6 +22,30 @@
       },
       "revId": "8d454e4a4faed927743a6db7f6ff1b3a333cc97e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff7b3623_4fa81efe",
+        "filename": "chip/stm32/hwtimer.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2022-01-14T12:29:31Z",
+      "side": 1,
+      "message": "Yes, we may clear information that event timestamp was matched, but:\n- Bits other than overflow are unused (__hw_clock_source_irq())\n- After setting timestamp software will trigger timer interrupt using task_trigger_irq() (see force_time() in common/timer.c). process_timers() is called from timer interrupt, so if \"match\" bit was present in status (think: some task timers are expired) process_timers() will handle that correctly.",
+      "parentUuid": "b30634a6_2edbd5e1",
+      "range": {
+        "startLine": 221,
+        "startChar": 0,
+        "endLine": 222,
+        "endChar": 33
+      },
+      "revId": "8d454e4a4faed927743a6db7f6ff1b3a333cc97e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

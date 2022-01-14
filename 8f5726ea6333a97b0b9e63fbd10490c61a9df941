@@ -39,6 +39,30 @@
       },
       "revId": "8f5726ea6333a97b0b9e63fbd10490c61a9df941",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa4f2b50_3f9e1bd3",
+        "filename": "chip/stm32/hwtimer.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2022-01-14T12:29:31Z",
+      "side": 1,
+      "message": "Yeah, assert would be definitely good. Unfortunately, I merged changes in hwtimer32.c do you think, that I should create a change which will add an assert in hwtimer32.c?",
+      "parentUuid": "624bf4b9_093dff22",
+      "range": {
+        "startLine": 212,
+        "startChar": 1,
+        "endLine": 227,
+        "endChar": 0
+      },
+      "revId": "8f5726ea6333a97b0b9e63fbd10490c61a9df941",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
