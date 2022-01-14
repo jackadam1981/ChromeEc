@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1ec3426_8449c9ea",
+        "filename": "zephyr/shim/chip/it8xxx2/pinmux.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-01-14T18:36:32Z",
+      "side": 1,
+      "message": "Please update the other I2C buses to use the same macros in a follow up CL.",
+      "range": {
+        "startLine": 65,
+        "startChar": 2,
+        "endLine": 65,
+        "endChar": 16
+      },
+      "revId": "6495a12b55874ac51f3c38a53cbf2c30afc0d3fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
