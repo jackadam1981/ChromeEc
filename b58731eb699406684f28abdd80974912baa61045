@@ -16,6 +16,23 @@
       "message": "PTAL.",
       "revId": "b58731eb699406684f28abdd80974912baa61045",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d2d031d1_8fa13fee",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-01-14T22:20:12Z",
+      "side": 1,
+      "message": "Naming is hard. \u0027inactive\u0027 is about the best I could come up with.\nAnother option is \u0027disabled\u0027 but I thought that would get confused with status\u003d\"disabled\"",
+      "revId": "b58731eb699406684f28abdd80974912baa61045",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
