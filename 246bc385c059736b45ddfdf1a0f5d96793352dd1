@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "21e8e09f_e9530380",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2022-01-14T07:40:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "12f46142_851cb545",
+      "revId": "246bc385c059736b45ddfdf1a0f5d96793352dd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5b75d38c_86f0a0d4",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-01-10T20:39:01Z",
       "side": 1,
       "message": "Add link to the EC terms definition. ../ec_terms.md#adc",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 3
+      },
+      "revId": "246bc385c059736b45ddfdf1a0f5d96793352dd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "660506e6_82d7d144",
+        "filename": "docs/zephyr/zephyr_adc.md",
+        "patchSetId": 6
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2022-01-14T07:40:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5b75d38c_86f0a0d4",
       "range": {
         "startLine": 7,
         "startChar": 0,
@@ -64,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ea314b5_2fbae24d",
+        "filename": "docs/zephyr/zephyr_adc.md",
+        "patchSetId": 6
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2022-01-14T07:40:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d1302570_7c654365",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 7
+      },
+      "revId": "246bc385c059736b45ddfdf1a0f5d96793352dd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a5054c25_a3fdbb49",
@@ -87,6 +153,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a6d944c_4201c6ce",
+        "filename": "docs/zephyr/zephyr_adc.md",
+        "patchSetId": 6
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2022-01-14T07:40:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a5054c25_a3fdbb49",
+      "range": {
+        "startLine": 59,
+        "startChar": 16,
+        "endLine": 59,
+        "endChar": 32
+      },
+      "revId": "246bc385c059736b45ddfdf1a0f5d96793352dd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "71e5bc7b_b51af9fc",
@@ -100,6 +190,30 @@
       "writtenOn": "2022-01-04T19:31:12Z",
       "side": 1,
       "message": "I filed b:213210342 to replace this property with \"io-channels\".",
+      "range": {
+        "startLine": 66,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 16
+      },
+      "revId": "246bc385c059736b45ddfdf1a0f5d96793352dd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b3166c4_1282776e",
+        "filename": "docs/zephyr/zephyr_adc.md",
+        "patchSetId": 6
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2022-01-14T07:40:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "71e5bc7b_b51af9fc",
       "range": {
         "startLine": 66,
         "startChar": 0,
