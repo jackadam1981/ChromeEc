@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "45b2cbd9_8ac67fa9",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 531,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2022-01-14T00:15:53Z",
+      "side": 1,
+      "message": "Removed this function.",
+      "parentUuid": "f3b74559_9a3155d4",
+      "range": {
+        "startLine": 531,
+        "startChar": 4,
+        "endLine": 531,
+        "endChar": 19
+      },
+      "revId": "aebed03545b113d256ae30966d0ed72010f5b2d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ceeaa496_07df1469",
         "filename": "core/cortex-m/task.c",
         "patchSetId": 6
@@ -73,6 +97,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6d7c04f7_19ccb3c1",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 540,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2022-01-14T00:15:53Z",
+      "side": 1,
+      "message": "Removed this function completely, as i have changed current implementation to enable only the relevant tasks in the beginning itself in task_enable_all().",
+      "parentUuid": "3fd0024e_ec3e642c",
+      "range": {
+        "startLine": 533,
+        "startChar": 0,
+        "endLine": 540,
+        "endChar": 14
+      },
+      "revId": "aebed03545b113d256ae30966d0ed72010f5b2d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "546d30e0_5a60ff0e",
         "filename": "core/cortex-m/task.c",
         "patchSetId": 6
@@ -96,6 +144,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "534ca249_8c59897b",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 981,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2022-01-14T00:15:53Z",
+      "side": 1,
+      "message": "The sample o/p is too large. so i have copied in the cross bug b:194163586.",
+      "parentUuid": "546d30e0_5a60ff0e",
+      "range": {
+        "startLine": 979,
+        "startChar": 0,
+        "endLine": 981,
+        "endChar": 58
+      },
+      "revId": "aebed03545b113d256ae30966d0ed72010f5b2d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "250a128e_2df55deb",
         "filename": "core/cortex-m/task.c",
         "patchSetId": 6
@@ -107,6 +179,30 @@
       "writtenOn": "2021-12-14T17:42:17Z",
       "side": 1,
       "message": "Hi Poornima,\n\nDo you think you can first move task_print_list to common/task_common.c (NEW) by a separate CL?",
+      "range": {
+        "startLine": 960,
+        "startChar": 0,
+        "endLine": 984,
+        "endChar": 1
+      },
+      "revId": "aebed03545b113d256ae30966d0ed72010f5b2d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b72c333e_1316e489",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 984,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2022-01-14T00:15:53Z",
+      "side": 1,
+      "message": "This cannot be moved to common , as task_print_list() in core/minute-ia is slightly diff, with dependency  on CONFIG_FPU . Now, again, even if we assume that CONFIG_FPU is present only in minute-ia and add to common with the assumption that config takes care, function has a dependency on task_names, tasks[], task_init[] etc, which are core dependent.",
+      "parentUuid": "250a128e_2df55deb",
       "range": {
         "startLine": 960,
         "startChar": 0,
