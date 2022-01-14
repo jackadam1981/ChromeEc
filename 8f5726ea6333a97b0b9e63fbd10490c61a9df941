@@ -63,6 +63,30 @@
       },
       "revId": "8f5726ea6333a97b0b9e63fbd10490c61a9df941",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e4278fa1_62460937",
+        "filename": "chip/stm32/hwtimer.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-01-14T23:46:46Z",
+      "side": 1,
+      "message": "Yes, I think it would be good to be consistent.",
+      "parentUuid": "aa4f2b50_3f9e1bd3",
+      "range": {
+        "startLine": 212,
+        "startChar": 1,
+        "endLine": 227,
+        "endChar": 0
+      },
+      "revId": "8f5726ea6333a97b0b9e63fbd10490c61a9df941",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
