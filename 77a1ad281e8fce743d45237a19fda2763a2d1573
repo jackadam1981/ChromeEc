@@ -16,6 +16,40 @@
       "message": "I added an additional comment here - https://b.corp.google.com/issues/205175314#comment3.",
       "revId": "77a1ad281e8fce743d45237a19fda2763a2d1573",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d861403_5faf12aa",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_it8xxx2.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-01-14T19:01:56Z",
+      "side": 1,
+      "message": "Add crec_flash_lock_mapped_storage() here and in erase?",
+      "revId": "77a1ad281e8fce743d45237a19fda2763a2d1573",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f05debcf_7ff49db4",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_npcx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-01-14T19:01:56Z",
+      "side": 1,
+      "message": "Change to use zephyr_flash_controller",
+      "revId": "77a1ad281e8fce743d45237a19fda2763a2d1573",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
