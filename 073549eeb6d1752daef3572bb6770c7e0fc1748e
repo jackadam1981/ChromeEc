@@ -16,6 +16,230 @@
       "message": "LGTM, but since that is a new driver I would like Caveh to review too.",
       "revId": "073549eeb6d1752daef3572bb6770c7e0fc1748e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "79ede458_cb56fac9",
+        "filename": "driver/als_cm32183.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-01-14T00:42:33Z",
+      "side": 1,
+      "message": "is this possible - can offset be negative?",
+      "range": {
+        "startLine": 36,
+        "startChar": 4,
+        "endLine": 36,
+        "endChar": 18
+      },
+      "revId": "073549eeb6d1752daef3572bb6770c7e0fc1748e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3fd4eecb_d54eb634",
+        "filename": "driver/als_cm32183.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-01-14T00:42:33Z",
+      "side": 1,
+      "message": "did you mean to implement this?",
+      "revId": "073549eeb6d1752daef3572bb6770c7e0fc1748e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "314f1189_ef49f61f",
+        "filename": "driver/als_cm32183.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-01-14T00:42:33Z",
+      "side": 1,
+      "message": "this is essentially the code from _read_lux.\nplease use a common implementation.",
+      "range": {
+        "startLine": 93,
+        "startChar": 1,
+        "endLine": 112,
+        "endChar": 28
+      },
+      "revId": "073549eeb6d1752daef3572bb6770c7e0fc1748e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b50ab47e_d7f9f8bb",
+        "filename": "driver/als_cm32183.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-01-14T00:42:33Z",
+      "side": 1,
+      "message": "do you need I2C_FLAG_BIG_ENDIAN here?",
+      "range": {
+        "startLine": 12,
+        "startChar": 26,
+        "endLine": 12,
+        "endChar": 30
+      },
+      "revId": "073549eeb6d1752daef3572bb6770c7e0fc1748e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "442bae3a_714eb0f4",
+        "filename": "driver/als_cm32183.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-01-14T00:42:33Z",
+      "side": 1,
+      "message": "use _100MS or _100_MS, etc.",
+      "range": {
+        "startLine": 45,
+        "startChar": 45,
+        "endLine": 45,
+        "endChar": 52
+      },
+      "revId": "073549eeb6d1752daef3572bb6770c7e0fc1748e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "175767dd_81f9a5e7",
+        "filename": "driver/als_cm32183.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-01-14T00:42:33Z",
+      "side": 1,
+      "message": "?",
+      "range": {
+        "startLine": 70,
+        "startChar": 7,
+        "endLine": 70,
+        "endChar": 12
+      },
+      "revId": "073549eeb6d1752daef3572bb6770c7e0fc1748e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5117ac4_d0c2ba9e",
+        "filename": "driver/als_cm32183.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-01-14T00:42:33Z",
+      "side": 1,
+      "message": "add space",
+      "range": {
+        "startLine": 81,
+        "startChar": 44,
+        "endLine": 81,
+        "endChar": 45
+      },
+      "revId": "073549eeb6d1752daef3572bb6770c7e0fc1748e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9442ba58_ef25e4aa",
+        "filename": "driver/als_cm32183.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-01-14T00:42:33Z",
+      "side": 1,
+      "message": "where is this used?",
+      "range": {
+        "startLine": 101,
+        "startChar": 0,
+        "endLine": 107,
+        "endChar": 0
+      },
+      "revId": "073549eeb6d1752daef3572bb6770c7e0fc1748e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18b2ab0f_496d5158",
+        "filename": "driver/als_cm32183.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-01-14T00:42:33Z",
+      "side": 1,
+      "message": "lux_offset?",
+      "range": {
+        "startLine": 114,
+        "startChar": 9,
+        "endLine": 114,
+        "endChar": 15
+      },
+      "revId": "073549eeb6d1752daef3572bb6770c7e0fc1748e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c97f934b_8aa28281",
+        "filename": "driver/als_cm32183.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-01-14T00:42:33Z",
+      "side": 1,
+      "message": "this can stay private to als_cm32183.c. will this ever be\nneeded outside the driver implementation?",
+      "range": {
+        "startLine": 108,
+        "startChar": 0,
+        "endLine": 115,
+        "endChar": 2
+      },
+      "revId": "073549eeb6d1752daef3572bb6770c7e0fc1748e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
