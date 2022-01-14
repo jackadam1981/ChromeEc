@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "24024cb4_a2831ce7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-01-14T00:02:12Z",
+      "side": 1,
+      "message": "It looks like all the other \"clock-stm*\" files have the same behavior. We should apply this change and the last one to those files. We can still release a single firmware (bloonchipper or dartmonkey) if you want to test the release on one board first.",
+      "revId": "3c0d534716b78ab47b05d17da50cfedf6e714f60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
