@@ -233,6 +233,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2b4aa122_9f7f05ca",
+        "filename": "zephyr/dts/bindings/cros_rtc/microchip,xec-cros-rtc.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2022-01-14T21:42:45Z",
+      "side": 1,
+      "message": "ACK-ed.\n\nlook like:\n~/trunk/src/repohooks/pre-upload.py\nonly capture c\u0026h files.",
+      "parentUuid": "c8e897be_b376b44a",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 2,
+        "endChar": 36
+      },
+      "revId": "c17216722613c9a878250c4e14a6beedd985d6d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "947184dc_28512ab1",
         "filename": "zephyr/dts/bindings/cros_rtc/microchip,xec-cros-rtc.yaml",
         "patchSetId": 2
