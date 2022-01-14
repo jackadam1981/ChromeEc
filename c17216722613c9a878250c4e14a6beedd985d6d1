@@ -257,6 +257,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "505087d8_b0cca3f1",
+        "filename": "zephyr/dts/bindings/cros_rtc/microchip,xec-cros-rtc.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-01-14T21:55:05Z",
+      "side": 1,
+      "message": "Understood. Leaving unresolved for easy tracking",
+      "parentUuid": "2b4aa122_9f7f05ca",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 2,
+        "endChar": 36
+      },
+      "revId": "c17216722613c9a878250c4e14a6beedd985d6d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "947184dc_28512ab1",
         "filename": "zephyr/dts/bindings/cros_rtc/microchip,xec-cros-rtc.yaml",
         "patchSetId": 2
