@@ -140,6 +140,30 @@
       },
       "revId": "1b33cae4c1ea50ce7b55d927e422763d937e02b2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3aebbe0b_9e98ad5c",
+        "filename": "zephyr/zmake/zmake/zmake.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 750,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-01-14T22:06:04Z",
+      "side": 1,
+      "message": "Needs removed from __main__.py as well?",
+      "parentUuid": "ef6859e3_33f863fc",
+      "range": {
+        "startLine": 750,
+        "startChar": 32,
+        "endLine": 750,
+        "endChar": 47
+      },
+      "revId": "1b33cae4c1ea50ce7b55d927e422763d937e02b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
