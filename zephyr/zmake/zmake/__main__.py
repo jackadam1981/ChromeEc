@@ -265,6 +265,13 @@ def get_argparser():
         type=pathlib.Path,
         help="The build directory used during configuration",
     )
+    test.add_argument(
+        "-c",
+        "--coverage",
+        action="store_true",
+        dest="coverage",
+        help="Run lcov after running test to generate coverage info file.",
+    )
 
     testall = sub.add_parser(
         "testall",
@@ -285,6 +292,12 @@ def get_argparser():
         "build_dir",
         type=pathlib.Path,
         help="The build directory used during configuration",
+    )
+    coverage.add_argument(
+        "--clobber",
+        action="store_true",
+        dest="clobber",
+        help="Delete existing build directories, even if configuration is unchanged",
     )
 
     generate_readme = sub.add_parser(
