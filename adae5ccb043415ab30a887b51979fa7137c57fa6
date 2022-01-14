@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1f34ff6_8edb4bdd",
+        "filename": "board/beadrix/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1483835
+      },
+      "writtenOn": "2022-01-14T13:25:37Z",
+      "side": 1,
+      "message": "Hi Diana,\n\nYes, I will remove it as the name of interrupt signal enabled earilier at \nvoid board_init(void)\n{\n\tint on;\n\n\t/* Enable C0 interrupt and check if it needs processing */\n\tgpio_enable_interrupt(GPIO_USB_C0_INT_ODL);\n\n\t/* Enable C1 interrupt and check if it needs processing */\n\tgpio_enable_interrupt(GPIO_USB_C1_INT_V1_ODL);    \u003c\u003d\u003d here",
+      "parentUuid": "75e986aa_3a32ada4",
+      "revId": "adae5ccb043415ab30a887b51979fa7137c57fa6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bd5a5d70_650c685b",
