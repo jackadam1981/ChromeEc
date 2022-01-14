@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0be4aad0_e8975b5e",
+        "filename": "baseboard/intelrvp/README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-01-14T20:19:47Z",
+      "side": 1,
+      "message": "This change seems unrelated ... belongs in a separate CL.",
+      "parentUuid": "01e87f5e_7b35016c",
+      "range": {
+        "startLine": 19,
+        "startChar": 39,
+        "endLine": 19,
+        "endChar": 46
+      },
+      "revId": "ca77d448a41c3967b5f8b26fa113da4a0195efca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d2c824f1_c57d243d",
@@ -71,6 +95,30 @@
       "writtenOn": "2022-01-14T20:13:34Z",
       "side": 1,
       "message": "This can be removed.",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 18
+      },
+      "revId": "ca77d448a41c3967b5f8b26fa113da4a0195efca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a66ce8ea_ff2ccfe0",
+        "filename": "baseboard/intelrvp/baseboard.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-01-14T20:19:47Z",
+      "side": 1,
+      "message": "separate CL...",
+      "parentUuid": "d2c824f1_c57d243d",
       "range": {
         "startLine": 87,
         "startChar": 0,
