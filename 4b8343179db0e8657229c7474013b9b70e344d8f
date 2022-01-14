@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb92474f_f1e0e35e",
+        "filename": "chip/stm32/clock-stm32f4.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 477,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2022-01-14T14:46:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a401c9d3_dbf0dea7",
+      "range": {
+        "startLine": 477,
+        "startChar": 43,
+        "endLine": 477,
+        "endChar": 44
+      },
+      "revId": "4b8343179db0e8657229c7474013b9b70e344d8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ad6dfe63_312624c0",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ec33ea2_b5be28d3",
+        "filename": "chip/stm32/clock-stm32f4.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 483,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2022-01-14T14:46:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ad6dfe63_312624c0",
+      "range": {
+        "startLine": 483,
+        "startChar": 33,
+        "endLine": 483,
+        "endChar": 48
+      },
+      "revId": "4b8343179db0e8657229c7474013b9b70e344d8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "54da23db_ae0427d8",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-01-13T23:52:49Z",
       "side": 1,
       "message": "updating the next event value with __hw_clock_event_set()",
+      "range": {
+        "startLine": 484,
+        "startChar": 47,
+        "endLine": 485,
+        "endChar": 10
+      },
+      "revId": "4b8343179db0e8657229c7474013b9b70e344d8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bbc9f133_38856dea",
+        "filename": "chip/stm32/clock-stm32f4.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 485,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2022-01-14T14:46:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "54da23db_ae0427d8",
       "range": {
         "startLine": 484,
         "startChar": 47,
