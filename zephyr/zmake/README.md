@@ -120,7 +120,7 @@ Chromium OS's meta-build tool for Zephyr
 
 ### zmake coverage
 
-**Usage:** `zmake coverage [-h] build_dir`
+**Usage:** `zmake coverage [-h] build_dir [--clobber]`
 
 #### Positional Arguments
 
@@ -133,6 +133,7 @@ Chromium OS's meta-build tool for Zephyr
 |   |   |
 |---|---|
 | `-h`, `--help` | show this help message and exit |
+| `--clobber` | Delete existing build directories, even if configuration is unchanged |
 
 ### zmake generate-readme
 
