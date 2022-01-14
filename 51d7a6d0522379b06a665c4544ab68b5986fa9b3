@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "74600d59_0ae44faa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-01-14T19:45:18Z",
+      "side": 1,
+      "message": "Note, you also need to update the link in zephyr_new_board_checklist.",
+      "revId": "51d7a6d0522379b06a665c4544ab68b5986fa9b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f38e731c_5ba11856",
+        "filename": "docs/zephyr/zephyr_temperature_sensor.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-01-14T19:45:18Z",
+      "side": 1,
+      "message": "Incomplete sentence? What does the second value reference?  There\u0027s also 4 values in the naming scheme, so I suggest a bulleted list.",
+      "range": {
+        "startLine": 142,
+        "startChar": 0,
+        "endLine": 143,
+        "endChar": 81
+      },
+      "revId": "51d7a6d0522379b06a665c4544ab68b5986fa9b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
