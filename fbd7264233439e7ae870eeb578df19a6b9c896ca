@@ -3,6 +3,75 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0ffba9a3_5e5f5963",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 835,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-01-14T19:54:24Z",
+      "side": 1,
+      "message": "brodprop_payload becomes an array of 5 32 bit words, is thi the intention?\n\nlooks like four bytes would be enough or maybe I misunderstand it. Pleasee define a structure for this entry payload as it is done for other entry types in flash_log.h and comment what the layout is.",
+      "range": {
+        "startLine": 831,
+        "startChar": 1,
+        "endLine": 835,
+        "endChar": 71
+      },
+      "revId": "fbd7264233439e7ae870eeb578df19a6b9c896ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ade81ac8_64fe96ef",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 857,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-01-14T19:54:24Z",
+      "side": 1,
+      "message": "maybe we should not lof the \u0027ambitious\u0027 event in case the board uses closed loop reset? In that case here we\u0027d just check that no events have been logged here.",
+      "range": {
+        "startLine": 856,
+        "startChar": 0,
+        "endLine": 857,
+        "endChar": 66
+      },
+      "revId": "fbd7264233439e7ae870eeb578df19a6b9c896ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7805976_30d31c3b",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1570,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-01-14T19:54:24Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this still return an error? Not this change\u0027s problem, I\u0027m just curious.",
+      "range": {
+        "startLine": 1567,
+        "startChar": 0,
+        "endLine": 1570,
+        "endChar": 0
+      },
+      "revId": "fbd7264233439e7ae870eeb578df19a6b9c896ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e23fdddb_a8cbe7da",
         "filename": "common/flash_log.c",
         "patchSetId": 1
@@ -14,6 +83,30 @@
       "writtenOn": "2022-01-14T17:02:01Z",
       "side": 1,
       "message": "This ends up being DEFAULT - 1. Vadim, do you think that\u0027s ok? Was flash log init supposed to happen after something else?",
+      "range": {
+        "startLine": 489,
+        "startChar": 40,
+        "endLine": 489,
+        "endChar": 70
+      },
+      "revId": "fbd7264233439e7ae870eeb578df19a6b9c896ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f466e5c_1b460b9a",
+        "filename": "common/flash_log.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 489,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-01-14T19:54:24Z",
+      "side": 1,
+      "message": "I don\u0027t see anything essential for logging between CR50 and DEFAULT priorities.",
+      "parentUuid": "e23fdddb_a8cbe7da",
       "range": {
         "startLine": 489,
         "startChar": 40,
