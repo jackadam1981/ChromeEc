@@ -95,6 +95,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "42c5cf51_0308bfe6",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 857,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-01-14T22:04:04Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e348b263_598983ee",
+      "range": {
+        "startLine": 856,
+        "startChar": 0,
+        "endLine": 857,
+        "endChar": 66
+      },
+      "revId": "fbd7264233439e7ae870eeb578df19a6b9c896ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a7805976_30d31c3b",
@@ -132,6 +156,30 @@
       "side": 1,
       "message": "No this is expected on some boards after cr50 reset.",
       "parentUuid": "a7805976_30d31c3b",
+      "range": {
+        "startLine": 1567,
+        "startChar": 0,
+        "endLine": 1570,
+        "endChar": 0
+      },
+      "revId": "fbd7264233439e7ae870eeb578df19a6b9c896ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "26fa011d_7233d77a",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1570,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-01-14T22:04:04Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "dce901d9_6e470a90",
       "range": {
         "startLine": 1567,
         "startChar": 0,
