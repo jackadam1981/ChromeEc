@@ -46,6 +46,30 @@
       },
       "revId": "e45f538a684c8197fbcc9b9212e56296405e29a5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3104f03c_3fba11c0",
+        "filename": "zephyr/test/drivers/src/utils.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2022-01-14T17:21:08Z",
+      "side": 1,
+      "message": "Looks fine to me except for \"chooosen\". Should be \"chosen\".",
+      "parentUuid": "c12abd8a_7cd677dc",
+      "range": {
+        "startLine": 30,
+        "startChar": 12,
+        "endLine": 30,
+        "endChar": 33
+      },
+      "revId": "e45f538a684c8197fbcc9b9212e56296405e29a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
