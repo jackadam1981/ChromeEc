@@ -828,6 +828,39 @@ static void maybe_trigger_ite_sync(void)
 	generate_ite_sync();
 }
 
+/*
+ * Save the logged events, the system reset flags, and the config for the
+ * event in flog.
+ */
+static struct brdprop_payload bp;
+
+/* Each event can be logged once per boot. */
+static void flog_brdprop_event(enum brdprop_ev event, uint8_t config)
+{
+	bp.events |= (1 << event);
+	bp.configs[event] = config;
+}
+
+/*
+ * The flog isn't initialized when board properties are calculated. Save the
+ * information in flog once it's ready.
+ */
+static void process_brdprop_flog(void)
+{
+	/*
+	 * Boards with closed loop reset are going to have ambiguous straps
+	 * after reboot. Don't log those errors. Only log invalid strap errors
+	 * on those boards.
+	 */
+	if (!bp.events ||
+	    (board_uses_closed_loop_reset() &&
+	     bp.events == (1 << BRDPROP_AMBIGUOUS)))
+		return;
+
+	bp.reset_flags = system_get_reset_flags();
+	flash_log_add_event(FE_LOG_BRDPROP, sizeof(bp), &bp);
+}
+
 static void process_board_cfg(void)
 {
 	uint32_t tpm_board_cfg = board_cfg_reg_read();
@@ -874,6 +907,9 @@ static void board_init(void)
 	 */
 	if (system_get_reset_flags() & EC_RESET_FLAG_HIBERNATE)
 		system_decrement_retry_counter();
+
+	process_brdprop_flog();
+
 	configure_board_specific_gpios();
 	init_pmu();
 	reset_wake_logic();
@@ -1519,6 +1555,7 @@ static int get_strap_config(uint8_t *config)
 	 * unused config pins the AP is interfering with.
 	 */
 	if (use_i2c && use_spi) {
+		flog_brdprop_event(BRDPROP_AMBIGUOUS, *config);
 		spi_prop = (GREG32(PMU, LONG_LIFE_SCRATCH1) &
 			    BOARD_PERIPH_CONFIG_SPI);
 		i2c_prop = (GREG32(PMU, LONG_LIFE_SCRATCH1) &
@@ -1544,6 +1581,7 @@ static uint32_t get_properties(void)
 	uint32_t properties;
 
 	if (get_strap_config(&config) != EC_SUCCESS) {
+		flog_brdprop_event(BRDPROP_INVALID, config);
 #ifdef H1_RED_BOARD
 		CPRINTS("Unconditionally enabling SPI and platform reset");
 		return (BOARD_PERIPH_CONFIG_SPI | BOARD_USE_PLT_RESET);
@@ -1586,6 +1624,7 @@ static uint32_t get_properties(void)
 		/* All I2C boards use same default properties. */
 		properties = BOARD_PROPERTIES_DEFAULT;
 	}
+	flog_brdprop_event(BRDPROP_NO_ENTRY, config);
 	CPRINTS("strap_cfg 0x%x has no table entry, prop = 0x%x",
 		config, properties);
 	return properties;
