@@ -16,6 +16,24 @@
       "message": "Wai-Hong - Is there any compatibility with recovery mode that needs to be checked here, or is that handled by the volume up/down keys on the tablet side and does not need any acknowledgement on the detachable base side ?",
       "revId": "85a3bccaa774d42ee8aa325ed531cc369f758ae7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "52ca49de_24b81c95",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-01-14T19:07:45Z",
+      "side": 1,
+      "message": "The hardware wiring to H1 should be changed, for the Esc + Refresh + Power combo. Some manual tests in the fw qual cover these items.",
+      "parentUuid": "fb2d7ae6_352a8de5",
+      "revId": "85a3bccaa774d42ee8aa325ed531cc369f758ae7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
