@@ -93,6 +93,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b897c810_0802c409",
+        "filename": "chip/stm32/clock-stm32f4.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 489,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2022-01-14T13:20:58Z",
+      "side": 1,
+      "message": "\u003e Is \"event timestamp\" referring to the __hw_clock_event_get() value?\nYes\n\n\u003e It looks like process_timers() handles scheduling future interrupts by calling __hw_event_clock_set with the next pending deadline.\nJust one thing (to understand it even better) - if the next pending deadline is after overflow, then it will call __hw_clock_event_clear(). Then after overflow, __hw_clock_event_set() will be called. It has funny consequence: between last \"match\" interrupt from timer and timer overflow, next delay is negative, but it only prevents from entering deep sleep mode for short time (less than HOOK_TICK_INTERVAL every 2^32 microseconds).",
+      "parentUuid": "7b9edbc6_8e9d2c43",
+      "range": {
+        "startLine": 481,
+        "startChar": 0,
+        "endLine": 489,
+        "endChar": 5
+      },
+      "revId": "4b8343179db0e8657229c7474013b9b70e344d8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ba0f9fac_dabf6359",
@@ -106,6 +130,30 @@
       "writtenOn": "2022-01-13T23:52:49Z",
       "side": 1,
       "message": "Can you verify my logic here? There are effectively three cases where timer overflow could have occurred after disabling interrupts and reaching here:\n\n1) before \"t0 \u003d get_time()\"\n2) between \"t0 \u003d get_time()\" and \"next_delay \u003d ...\"\n3) after \"next_delay \u003d ...\" and before this check\n\nCase (1), the timestamp \"t0\" could be referring to previous \"epoch\" since clksrc_high was not updated.\n\nCase (2), __hw_clock_event_get() refers to previous \"epoch\" since the *match interrupt* (not overflow interrupt) should have triggered an update to its value.\n\nCase (3) we don\u0027t care about, but no way to avoid.",
+      "range": {
+        "startLine": 498,
+        "startChar": 2,
+        "endLine": 498,
+        "endChar": 34
+      },
+      "revId": "4b8343179db0e8657229c7474013b9b70e344d8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f87d541_867958e1",
+        "filename": "chip/stm32/clock-stm32f4.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 498,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2022-01-14T13:20:58Z",
+      "side": 1,
+      "message": "\u003e Case (1), the timestamp \"t0\" could be referring to previous \"epoch\" since clksrc_high was not updated.\nYes. Another thing is that t0.le.lo (which comes from __hw_clock_source_read()) is in next \"epoch\", so timestamp t0 is effectively in past. In connection with __hw_clock_event_get() refering to previous \"epoch\" it will result in huge next_delay.\n\n\u003e Case (2), __hw_clock_event_get() refers to previous \"epoch\" since the *match interrupt* (not overflow interrupt) should have triggered an update to its value.\nEvent timestamp refers to previous epoch, because process_timers() knows, that when overflow occurs, it will have an opportunity to set match interrupt (actually every timer interrupt is an opportunity to update match interrupt). It occurs when next deadline is after overflow (match interrupt is disabled and process_timers() is waiting for overflow).\n\n\u003e Case (3) we don\u0027t care about, but no way to avoid.\nYup.",
+      "parentUuid": "ba0f9fac_dabf6359",
       "range": {
         "startLine": 498,
         "startChar": 2,
