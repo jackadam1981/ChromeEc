@@ -69,6 +69,24 @@
       "parentUuid": "bb1ec65d_a0f24029",
       "revId": "834267f3e67bafdfd614a7d5601c183ccee89676",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0b8b519_d4f6472e",
+        "filename": "baseboard/intelrvp/adlrvp.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 443,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2022-01-14T00:19:54Z",
+      "side": 1,
+      "message": "Have changed the implementation to generic, where specific tasks which is not required to be changed are made known in the beginnig and hence, when tasks_enable_all is cald, only the relevant tasks are enabled.",
+      "parentUuid": "fc785922_ce3812c1",
+      "revId": "834267f3e67bafdfd614a7d5601c183ccee89676",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
