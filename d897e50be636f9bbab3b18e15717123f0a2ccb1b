@@ -34,6 +34,24 @@
       "parentUuid": "4c8c465a_4babe5de",
       "revId": "d897e50be636f9bbab3b18e15717123f0a2ccb1b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f344c2b_2b3c83a7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1511663
+      },
+      "writtenOn": "2022-01-14T07:04:56Z",
+      "side": 1,
+      "message": "Based on our offline discussion, the only usage for this was for it6505 driver to be notified of USB extcon changes to trigger HPD. Since this is not the chip used for cherry, we can disable this, assuming we didn\u0027t enable the matching driver on the kernel side.",
+      "parentUuid": "562905f2_80783cae",
+      "revId": "d897e50be636f9bbab3b18e15717123f0a2ccb1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
