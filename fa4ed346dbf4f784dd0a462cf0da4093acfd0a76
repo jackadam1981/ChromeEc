@@ -22,6 +22,30 @@
       },
       "revId": "fa4ed346dbf4f784dd0a462cf0da4093acfd0a76",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "83c7377b_9335daef",
+        "filename": "zephyr/shim/chip/it8xxx2/pinmux.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2022-01-14T07:00:15Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "f7c1ef6a_85db8007",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 0
+      },
+      "revId": "fa4ed346dbf4f784dd0a462cf0da4093acfd0a76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
