@@ -3,7 +3,7 @@
  * found in the LICENSE file.
  */
 
-/* Nivviks sub-board hardware configuration */
+/* Nereid sub-board hardware configuration */
 
 #include <init.h>
 #include <kernel.h>
@@ -38,15 +38,6 @@ __override struct gpio_int_config *
 	case GPIO_LID_OPEN:
 		return GPIO_INTERRUPT(int_lid_open);
 
-	case GPIO_EC_IMU_INT_L:
-		return GPIO_INTERRUPT(int_imu);
-
-	case GPIO_VOLUME_DOWN_L:
-		return GPIO_INTERRUPT(int_vol_down);
-
-	case GPIO_VOLUME_UP_L:
-		return GPIO_INTERRUPT(int_vol_up);
-
 	case GPIO_CPU_PROCHOT:
 		return GPIO_INTERRUPT(int_prochot);
 	}
@@ -63,7 +54,7 @@ void board_interrupt_prochot(void)
 	throttle_ap_prochot_input_interrupt(GPIO_CPU_PROCHOT);
 }
 
-static void nivviks_subboard_init(void)
+static void nereid_subboard_init(void)
 {
 	enum nissa_sub_board_type sb = nissa_get_sb_type();
 
@@ -85,9 +76,6 @@ static void nivviks_subboard_init(void)
 		gpio_pin_configure_dt(&gpio_usb_c1_int_odl,
 				      GPIO_INPUT |
 				      gpio_usb_c1_int_odl.dt_flags);
-	} else {
-		/* Disable the port 1 charger task */
-		task_disable_task(TASK_ID_USB_CHG_P1);
 	}
 	if (sb == NISSA_SB_HDMI_A) {
 		/* Disable I2C_PORT_USB_C1_TCPC */
@@ -106,4 +94,4 @@ static void nivviks_subboard_init(void)
 				      GPIO_INPUT | gpio_hpd_sub_odl.dt_flags);
 	}
 }
-DECLARE_HOOK(HOOK_INIT, nivviks_subboard_init, HOOK_PRIO_FIRST+1);
+DECLARE_HOOK(HOOK_INIT, nereid_subboard_init, HOOK_PRIO_FIRST+1);
