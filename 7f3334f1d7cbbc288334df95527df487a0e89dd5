@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e545404c_06e3a58e",
+        "filename": "zephyr/zmake/zmake/__main__.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-01-15T00:25:25Z",
+      "side": 1,
+      "message": "do we want to expose --coverage to the test subcommand?",
+      "range": {
+        "startLine": 259,
+        "startChar": 4,
+        "endLine": 259,
+        "endChar": 8
+      },
+      "revId": "7f3334f1d7cbbc288334df95527df487a0e89dd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56c7e57a_6e6ed81b",
+        "filename": "zephyr/zmake/zmake/zmake.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 603,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-01-15T00:25:25Z",
+      "side": 1,
+      "message": "recommend passing as keyword arguments due to the increased number of args",
+      "range": {
+        "startLine": 600,
+        "startChar": 0,
+        "endLine": 603,
+        "endChar": 57
+      },
+      "revId": "7f3334f1d7cbbc288334df95527df487a0e89dd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc209618_5a5f8779",
+        "filename": "zephyr/zmake/zmake/zmake.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 767,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-01-15T00:25:25Z",
+      "side": 1,
+      "message": "note that these variables will bind to their values at the time the lambda is executed. since there\u0027s multiple projects we\u0027re looping thru, this could create a bug.\n\nyou probably want to use functools.partial(self._configure, ...) instead of lambda: self._configure(...)",
+      "range": {
+        "startLine": 767,
+        "startChar": 32,
+        "endLine": 767,
+        "endChar": 39
+      },
+      "revId": "7f3334f1d7cbbc288334df95527df487a0e89dd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
