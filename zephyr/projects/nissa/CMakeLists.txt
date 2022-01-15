@@ -8,6 +8,7 @@ find_package(Zephyr REQUIRED HINTS $ENV{ZEPHYR_BASE})
 
 zephyr_include_directories(include)
 zephyr_library_sources("src/common.c")
+zephyr_library_sources("src/common_pwrseq.c")
 
 if(DEFINED CONFIG_BOARD_NIVVIKS)
 	project(nivviks)
