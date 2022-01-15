@@ -307,6 +307,16 @@ void usb_c1_interrupt(enum gpio_signal gpio)
 	hook_call_deferred(&USBC_INT_POLL_DATA(1), USBC_INT_POLL_DELAY_US);
 }
 
+void shim_interrupt_usb_c0(void)
+{
+	usb_c0_interrupt(GPIO_USB_C0_PD_INT_ODL);
+}
+
+void shim_interrupt_usb_c1(void)
+{
+	usb_c1_interrupt(GPIO_USB_C1_PD_INT_ODL);
+}
+
 static void usbc_init(void)
 {
 	gpio_enable_interrupt(GPIO_USB_C0_PD_INT_ODL);
