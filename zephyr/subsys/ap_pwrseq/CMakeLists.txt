@@ -3,5 +3,7 @@
 zephyr_include_directories(include)
 zephyr_sources_ifdef(CONFIG_X86_NON_DSX_POWER_SEQ
 	x86_non_dsx_common_pwrseq_sm_handler.c)
+zephyr_sources_ifdef(CONFIG_X86_NON_DSX_ADL_NO_EXT_PS_CHIP
+	x86_non_dsx_adlp_nonpwrseq_sm.c)
 zephyr_sources_ifdef(CONFIG_X86_NON_DSX_POWER_SEQ   x86_non_dsx_espi.c)
 zephyr_sources_ifdef(CONFIG_X86_NON_DSX_POWER_SEQ   x86_non_dsx_adlp_pwrseq_sm.c)
