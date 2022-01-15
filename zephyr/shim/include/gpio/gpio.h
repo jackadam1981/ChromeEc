@@ -10,6 +10,55 @@
 #include <devicetree.h>
 
 /*
+ * Structure containing the callback block for a GPIO interrupt,
+ * as well as the initial flags and the handler vector.
+ */
+struct gpio_int_config {
+	struct gpio_callback cb;	/* Callback data */
+	void (*handler)(void);		/* Handler to call */
+	gpio_flags_t flags;		/* Flags */
+	const struct device *port;	/* GPIO device */
+	gpio_pin_t pin;			/* GPIO pin */
+};
+/*
+ * Maps node of interrupt node to name of configuration block.
+ */
+#define GPIO_NODE_TO_INTERRUPT(id) DT_CAT(gpio_interrupt_, id)
+
+#define GPIO_INTERRUPT(lbl)	&GPIO_NODE_TO_INTERRUPT(DT_NODELABEL(lbl))
+
+/*
+ * Enable the interrupt.
+ *
+ * Interrupts are not automatically enabled, so
+ * each interrupt will need this call to activate the interrupt.
+ * e.g
+ *   ... // set up device
+ *   gpio_interrupt_enable(GPIO_INTERRUPT(my_node_label));
+ */
+void gpio_interrupt_enable(struct gpio_int_config *zc);
+
+/*
+ * Disable the interrupt.
+ */
+void gpio_interrupt_disable(struct gpio_int_config *zc);
+
+/*
+ * Declare interrupt data structures.
+ */
+#define GPIO_INT_DECLARE(id)	\
+extern struct gpio_int_config GPIO_NODE_TO_INTERRUPT(id);
+
+DT_FOREACH_CHILD(DT_PATH(gpio_interrupts), GPIO_INT_DECLARE)
+
+#undef GPIO_INT_DECLARE
+#undef GPIO_INT_DECLARE_NODE
+
+/*
+ * Legacy interrupt configuration.
+ */
+
+/*
  * Validate interrupt flags are valid for the Zephyr GPIO driver.
  */
 #define IS_GPIO_INTERRUPT_FLAG(flag, mask) ((flag & mask) == mask)
@@ -23,6 +72,13 @@
 	 IS_GPIO_INTERRUPT_FLAG(flag, GPIO_INT_EDGE_TO_ACTIVE) ||   \
 	 IS_GPIO_INTERRUPT_FLAG(flag, GPIO_INT_LEVEL_INACTIVE) ||   \
 	 IS_GPIO_INTERRUPT_FLAG(flag, GPIO_INT_LEVEL_ACTIVE))
+
+/*
+ * Map the gpio signal to an interrupt configuration block.
+ * Allows legacy code to enable and disable interrupts.
+ */
+__override_proto struct gpio_int_config *
+	board_map_gpio_signal_to_interrupt(enum gpio_signal signal);
 
 /* Information about each unused pin in the 'unused-pins' device tree node. */
 struct unused_pin_config {
