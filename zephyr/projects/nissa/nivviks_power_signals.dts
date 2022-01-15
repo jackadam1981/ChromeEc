@@ -1,10 +1,15 @@
-e of this source code is governed by a BSD-style license that can be
+/* Copyright 2022 The Chromium OS Authors. All rights reserved.
+ * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
 
 / {
+	chosen {
+		intel-ap-pwrseq,espi = &espi0;
+	};
+
 	pwrseq_signals_list: pwrseq-signals-list {
-		compatible = "ap-pwrseq-signal-list";
+		compatible = "intel,ap-pwrseq-signal-list";
 		pwrseq-signals-required = <8>;
 
 		pwrseq_slp_s0 {
@@ -46,6 +51,7 @@ e of this source code is governed by a BSD-style license that can be
 		pwrseq_dsw_pwrok {
 			dbg-label = "DSW_DPWROK";
 			pwrseq-signal-enum = "X86_DSW_PWROK";
+			flags = <0x1>;
 		};
 		pwrseq_all_sys_pwrgd {
 			dbg-label = "ALL_SYS_PWRGD";
@@ -54,3 +60,4 @@ e of this source code is governed by a BSD-style license that can be
 			flags = <0x1>;
 		};
 	};
+};

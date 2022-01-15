@@ -7,58 +7,23 @@
 	common-pwrseq {
 		compatible = "intel,ap-pwrseq";
 
-		dsw-pwrok-delay = <10>;
-		pm-pwrbtn-delay = <200>;
-		rsmrst-delay = <10>;
 		sys-pwrok-delay = <10>;
-		pch-pwrok-delay = <2>;
-		vccst-pwrgd-delay = <2>;
-		sys-reset-delay = <32>;
 		all-sys-pwrgd-timeout = <20>;
 
-		en-pp5000-s5-gpios = <&gpio4 0 GPIO_OUTPUT>;
-		en-pp3300-s5-gpios = <&gpiob 6 GPIO_OUTPUT>;
-		pg-ec-rsmrst-odl-gpios = <&gpio9 4 GPIO_INPUT_PULL_UP>;
-		ec-pch-rsmrst-odl-gpios = <&gpioa 6 GPIO_OUT_LOW>;
-		slp-s0-l-gpios = <&gpio9 7 GPIO_INPUT>;
-		slp-s3-l-gpios = <&gpioa 5 GPIO_INPUT>;
-		pg-ec-all-sys-pwrgd-gpios = <&gpioa 7 GPIO_INPUT>;
-		slp-sus-l-gpios = <&gpio6 2 GPIO_INPUT>;
+		en-pp5000-s5-gpios = <&gpio4 0 0>;
+		en-pp3300-s5-gpios = <&gpiob 6 0>;
+		pg-ec-rsmrst-odl-gpios = <&gpio9 4 0>;
+		ec-pch-rsmrst-odl-gpios = <&gpioa 6 0>;
+		slp-s0-l-gpios = <&gpio9 7 0>;
+		slp-s3-l-gpios = <&gpioa 5 0>;
+		pg-ec-all-sys-pwrgd-gpios = <&gpioa 7 0>;
+		slp-sus-l-gpios = <&gpio6 2 0>;
+		ec-soc-dsw-pwrok-gpios = <&gpio6 1 0>;
 
-		vccst-pwrgd-od-gpios = <&gpioa 4 GPIO_ODR_LOW>;
-		imvp9-vrrdy-od-gpios = <&gpio4 3 GPIO_INPUT>;
-		pch-pwrok-gpios = <&gpio7 2 GPIO_ODR_LOW>;
-		ec-pch-sys-pwrok-gpios = <&gpio3 7 GPIO_OUT_LOW>;
-		sys-rst-l-gpios = <&gpioc 5 GPIO_ODR_HIGH>;
+		vccst-pwrgd-od-gpios = <&gpioa 4 0>;
+		imvp9-vrrdy-od-gpios = <&gpio4 3 0>;
+		pch-pwrok-gpios = <&gpio7 2 0>;
+		ec-pch-sys-pwrok-gpios = <&gpio3 7 0>;
+		sys-rst-l-gpios = <&gpioc 5 0>;
 	};
-
-	pwrseq_signals_interrupts: pwrseq-signals-interrupts {
-		compatible = "cros-ec,gpio-interrupts";
-		int_slp_s0: slp_s0 {
-			irq-pin = <&slp-s0-l-gpios>;
-			flags = <GPIO_INT_EDGE_BOTH>;
-			handler = "power_signal_interrupt";
-		};
-		int_slp_s3: slp_s3 {
-			irq-pin = <&slp-s3-l-gpios>;
-			flags = <GPIO_INT_EDGE_BOTH>;
-			handler = "power_signal_interrupt";
-		};
-		int_slp_sus: slp_sus {
-			irq-pin = <&slp-sus-l-gpios>;
-			flags = <GPIO_INT_EDGE_BOTH>;
-			handler = "power_signal_interrupt";
-		};
-		int_pg_rsmrst_odl: pg_rsmrst_odl {
-			irq-pin = <&pg-ec-rsmrst-odl-gpios>;
-			flags = <GPIO_INT_EDGE_BOTH>;
-			handler = "power_signal_interrupt";
-		};
-		int_pg_all_sys_pwrgd: pg_all_sys_pwrgd {
-			irq-pin = <&pg-ec-all-sys-pwrgd-gpios>;
-			flags = <GPIO_INT_EDGE_BOTH>;
-			handler = "power_signal_interrupt";
-		};
-	};
-
 };

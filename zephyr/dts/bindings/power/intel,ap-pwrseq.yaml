@@ -99,6 +99,12 @@ properties:
       description: |
         VR/Circuit input to EC 3.3V power good signal.
 
+    ec-soc-dsw-pwrok-gpios:
+      type: phandle-array
+      required: false
+      description: |
+        VR/Circuit input to EC 3.3V power good signal.
+
     ec-pch-rsmrst-odl-gpios:
       type: phandle-array
       required: true
@@ -125,6 +131,12 @@ properties:
         VCCPRIM rails and other S5 rails.
 
     slp-s3-l-gpios:
+      type: phandle-array
+      required: true
+      description: |
+        SLP_S3 signal input to EC for S3 sleep control from SoC.
+
+    slp-s0-l-gpios:
       type: phandle-array
       required: true
       description: |
