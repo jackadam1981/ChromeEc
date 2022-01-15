@@ -240,6 +240,10 @@ static int wait_for_vrrdy(void)
 	int timeout_ms = chip_cfg.vrrdy_timeout_ms;
 	int vrrdy;
 
+	if (chip_cfg.vrrdy_timeout_ms < 0) {
+		LOG_DBG("Ignoring VRRDY");
+		return -1;
+	}
 	for (; timeout_ms > 0; --timeout_ms) {
 		vrrdy = gpio_get_lvl(GPIO_NET_NAME(IMVP9_VRRDY_OD));
 		if (vrrdy != 0)
@@ -250,7 +254,7 @@ static int wait_for_vrrdy(void)
 }
 
 /* PCH_PWROK to PCH from EC */
-int generate_pch_pwrok_handler(void)
+__attribute__((weak)) int generate_pch_pwrok_handler(void)
 {
 	int pch_pok;
 
