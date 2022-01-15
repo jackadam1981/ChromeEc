@@ -10,6 +10,7 @@
 #include <x86_non_dsx_common_pwrseq_sm_handler.h>
 
 struct chipset_pwrseq_config {
+	int dsw_pwrok_delay_ms;
 	int pch_pwrok_delay_ms;
 	int sys_pwrok_delay_ms;
 	int sys_reset_delay_ms;
