@@ -117,6 +117,10 @@ extern const struct power_signal_vw_info power_signal_vw_list[];
  */
 void pwrseq_thread(void *p1, void *p2, void *p3);
 void power_update_signals(void);
+int power_wait_signals(uint32_t want);
+bool power_has_signals(uint32_t want);
+void enable_power_rail(const char *net_name, int enable);
+int power_signal_is_asserted(enum power_signal signal);
 
 extern struct gpio_config power_seq_gpios[];
 extern struct gpio_interrupt_config power_seq_intr_gpios[];

@@ -15,6 +15,7 @@ extern struct power_seq_context pwrseq_ctx;
 extern void gpio_set_lvl(const char *net_name, int val);
 extern int gpio_get_lvl(const char *net_name);
 extern struct common_pwrseq_config com_cfg;
+extern void dsw_pwrok_pass_thru_handler(void);
 
 struct chipset_pwrseq_config {
 	int dsw_pwrok_delay_ms;
