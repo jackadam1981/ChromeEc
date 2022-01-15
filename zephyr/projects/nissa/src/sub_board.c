@@ -5,8 +5,14 @@
 
 /* Nissa sub-board selection */
 
+#include <device.h>
 #include <drivers/cros_cbi.h>
+#include <drivers/gpio.h>
+
 #include "console.h"
+#include "hooks.h"
+#include "gpio/gpio.h"
+#include "power_button.h"
 #include "sub_board.h"
 
 #define CPRINTS(format, args...) cprints(CC_SYSTEM, format, ## args)
@@ -58,3 +64,18 @@ enum nissa_sub_board_type nissa_get_sb_type(void)
 	}
 	return sb;
 }
+
+/*
+ * Temporary interrupt shims for testing.
+ */
+
+void shim_interrupt_power_button()
+{
+	power_button_interrupt(GPIO_POWER_BUTTON_L);
+}
+
+static void isr_init()
+{
+	gpio_interrupt_enable(GPIO_INTERRUPT(int_power_button));
+}
+DECLARE_HOOK(HOOK_INIT, isr_init, HOOK_PRIO_DEFAULT);
