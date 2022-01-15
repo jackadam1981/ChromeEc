@@ -96,6 +96,33 @@
 		};
 	};
 
+	adc-cmp {
+		cmp_pp3300_s5_high: pp3300_high {
+			compatible = "nuvoton,adc-cmp";
+			io-channels = <&adc0 6>;
+			comparison = "ADC_CMP_NPCX_COMPARISON_GREATER";
+			threshold = <2640>;
+		};
+		cmp_pp3300_s5_low: pp3300_low {
+			compatible = "nuvoton,adc-cmp";
+			io-channels = <&adc0 6>;
+			comparison = "ADC_CMP_NPCX_COMPARISON_LESS_OR_EQUAL";
+			threshold = <250>;
+		};
+		cmp_pp1p05_high: pp1p05_high {
+			compatible = "nuvoton,adc-cmp";
+			io-channels = <&adc0 4>;
+			comparison = "ADC_CMP_NPCX_COMPARISON_GREATER";
+			threshold = <945>;
+		};
+		cmp_pp1p05_low: pp1p05_low {
+			compatible = "nuvoton,adc-cmp";
+			io-channels = <&adc0 4>;
+			comparison = "ADC_CMP_NPCX_COMPARISON_LESS_OR_EQUAL";
+			threshold = <250>;
+		};
+	};
+
 	usbc {
 		port0 {
 			bc12 {

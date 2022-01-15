@@ -250,7 +250,7 @@ static int wait_for_vrrdy(void)
 }
 
 /* PCH_PWROK to PCH from EC */
-int generate_pch_pwrok_handler(void)
+__attribute__((weak)) int generate_pch_pwrok_handler(void)
 {
 	int pch_pok;
 

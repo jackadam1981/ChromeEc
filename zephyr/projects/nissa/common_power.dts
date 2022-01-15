@@ -13,8 +13,7 @@
 		sys-pwrok-delay = <10>;
 		pch-pwrok-delay = <2>;
 		vccst-pwrgd-delay = <2>;
-		vrrdy-timeout = <50>;
 		sys-reset-delay = <32>;
-		all-sys-pwrgd-timeout = <50>;
+		all-sys-pwrgd-timeout = <20>;
 	};
 };
