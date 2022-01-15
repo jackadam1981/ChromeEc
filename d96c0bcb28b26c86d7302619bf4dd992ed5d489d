@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30354267_819e730a",
+        "filename": "chip/stm32/registers.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-01-15T00:05:58Z",
+      "side": 1,
+      "message": "Is this part of the change needed anymore?",
+      "range": {
+        "startLine": 145,
+        "startChar": 0,
+        "endLine": 145,
+        "endChar": 44
+      },
+      "revId": "d96c0bcb28b26c86d7302619bf4dd992ed5d489d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "79bce050_0dbcb6e6",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 559,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-01-15T00:05:58Z",
+      "side": 1,
+      "message": "I\u0027m not sure which one is right, but vecttable makes it look like the max is 254? (I would have guessed 0-255)\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/core/cortex-m/vecttable.c;l\u003d387;drc\u003dc1cc2d919e9f21adc0f992dcac00f6e8b282616d",
+      "range": {
+        "startLine": 559,
+        "startChar": 31,
+        "endLine": 559,
+        "endChar": 34
+      },
+      "revId": "d96c0bcb28b26c86d7302619bf4dd992ed5d489d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
