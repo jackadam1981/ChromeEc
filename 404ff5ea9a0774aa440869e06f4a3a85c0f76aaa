@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9a73cd9_4066d4f6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-01-15T00:49:10Z",
+      "side": 1,
+      "message": "Are we still even in the stage of the game where this thing matters?\n\nI thought we wanted this to keep parity with the legacy EC while we were still bringing up volteer... today it seems like we are just beyond the proof of concept phase and now moving to start splitting away from the legacy EC actually.\n\nBesides this, I\u0027m not sure the makefile is even the right location to call this thing.  I remember the old script would spam buildall with \"Congratulations\" messages that never got read... is that still the case?",
+      "revId": "404ff5ea9a0774aa440869e06f4a3a85c0f76aaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
