@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d04f464_3d22d8f0",
+        "filename": "zephyr/dts/bindings/gpio/named-gpios.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-01-15T00:57:29Z",
+      "side": 1,
+      "message": "None of the names excite me, but I guess \u0027no-auto-init\u0027 is descriptive enough\nto be obvious.",
+      "parentUuid": "ab283ed2_e80f9c53",
+      "range": {
+        "startLine": 16,
+        "startChar": 4,
+        "endLine": 16,
+        "endChar": 12
+      },
+      "revId": "b58731eb699406684f28abdd80974912baa61045",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4c06854a_eea516eb",
@@ -81,6 +105,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c503dc4_615fe624",
+        "filename": "zephyr/shim/src/gpio.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-01-15T00:57:29Z",
+      "side": 1,
+      "message": "It was likely premature optimisation.\nI noticed that bool is a byte, and the alignment of the structure would likely require adding 4 bytes.\nDoesn\u0027t make much difference, I guess, since it is a const structure anyway, and combining makes it cleaner.",
+      "parentUuid": "4c06854a_eea516eb",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 35
+      },
+      "revId": "b58731eb699406684f28abdd80974912baa61045",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6379ee4e_0c64738b",
@@ -94,6 +142,30 @@
       "writtenOn": "2022-01-15T00:11:15Z",
       "side": 1,
       "message": "You can eliminate a nesting level by flipping the logic\nif (gpio_inactive[i])  // or if (gpio_is_inactive())\n    continue;",
+      "range": {
+        "startLine": 356,
+        "startChar": 0,
+        "endLine": 356,
+        "endChar": 26
+      },
+      "revId": "b58731eb699406684f28abdd80974912baa61045",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3e25a8d_65d33566",
+        "filename": "zephyr/shim/src/gpio.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-01-15T00:57:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6379ee4e_0c64738b",
       "range": {
         "startLine": 356,
         "startChar": 0,
