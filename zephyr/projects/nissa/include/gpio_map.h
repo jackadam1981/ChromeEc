@@ -9,6 +9,7 @@
 #include <devicetree.h>
 #include <gpio_signal.h>
 
+#if 0
 /*
  * Set EC_CROS_GPIO_INTERRUPTS to a space-separated list of GPIO_INT items.
  *
@@ -99,4 +100,7 @@
 	AP_PROCHOT_INT(GPIO_EC_PROCHOT_ODL, GPIO_INT_EDGE_BOTH)		\
 	USBC_INT(GPIO_USB_C0_PD_INT_ODL, 0)				\
 	USBC_INT(GPIO_USB_C1_PD_INT_ODL, 1)
+
+#endif
+
 #endif /* __ZEPHYR_GPIO_MAP_H */
