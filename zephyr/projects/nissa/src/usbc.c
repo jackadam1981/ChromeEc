@@ -5,6 +5,7 @@
 
 #include "charge_state_v2.h"
 #include "chipset.h"
+#include "gpio/gpio_int.h"
 #include "hooks.h"
 #include "usb_mux.h"
 #include "driver/tcpm/tcpci.h"
@@ -289,9 +290,7 @@ static void usbc_interrupt_trigger(int port)
 USBC_INT_POLL(0)
 USBC_INT_POLL(1)
 
-void usb_c0_interrupt(const struct device *port,
-		      struct gpio_callback *cb,
-		      gpio_port_pins_t pins)
+void usb_c0_interrupt(void)
 {
 	/*
 	 * We've just been called from a falling edge, so there's definitely
@@ -304,43 +303,17 @@ void usb_c0_interrupt(const struct device *port,
 	hook_call_deferred(&USBC_INT_POLL_DATA(0), USBC_INT_POLL_DELAY_US);
 }
 
-void usb_c1_interrupt(const struct device *port,
-		      struct gpio_callback *cb,
-		      gpio_port_pins_t pins)
+void usb_c1_interrupt(void)
 {
 	hook_call_deferred(&USBC_INT_POLL_DATA(1), -1);
 	usbc_interrupt_trigger(1);
 	hook_call_deferred(&USBC_INT_POLL_DATA(1), USBC_INT_POLL_DELAY_US);
 }
 
-/*
- * Set up one USB port's interrupt handling.
- */
-static void usbc_init_interrupt(int port,
-				const struct gpio_dt_spec *gpio,
-				struct gpio_callback *cb_data,
-				gpio_callback_handler_t cb)
-{
-	int ret;
-
-	gpio_init_callback(cb_data, cb, BIT(gpio->pin));
-	gpio_add_callback(gpio->port, cb_data);
-	ret = gpio_pin_interrupt_configure_dt(gpio, GPIO_INT_EDGE_FALLING);
-	if (ret != 0)
-		CPRINTS("USB init interrupt failed on port %d", port);
-}
-
 static void usbc_init(void)
 {
-	static struct gpio_callback c0_callback;
-	static struct gpio_callback c1_callback;
-
-	usbc_init_interrupt(0, &gpio_usb_c0_int_odl,
-			    &c0_callback,
-			    usb_c0_interrupt);
+	gpio_interrupt_enable(GPIO_INTERRUPT(int_usb_c0));
 	if (board_get_usb_pd_port_count() == 2)
-		usbc_init_interrupt(1, &gpio_usb_c1_int_odl,
-				    &c1_callback,
-				    usb_c1_interrupt);
+		gpio_interrupt_enable(GPIO_INTERRUPT(int_usb_c1));
 }
 DECLARE_HOOK(HOOK_INIT, usbc_init, HOOK_PRIO_DEFAULT);
