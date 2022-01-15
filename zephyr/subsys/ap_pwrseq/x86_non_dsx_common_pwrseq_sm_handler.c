@@ -396,7 +396,7 @@ void init_pwr_seq_state(void)
 }
 
 /* Initialize power sequence system state */
-static int pwrseq_init(void)
+int pwrseq_init(void)
 {
 	LOG_INF("Pwrseq Init");
 
@@ -410,5 +410,3 @@ static int pwrseq_init(void)
 	create_pwrseq_thread();
 	return 0;
 }
-
-SYS_INIT(pwrseq_init, APPLICATION, CONFIG_APPLICATION_INIT_PRIORITY);
