@@ -551,8 +551,12 @@ static int common_pwr_sm_run(int state)
 		}
 
 		/* All the power rails must be stable */
-		if (gpio_get_lvl(GPIO_NET_NAME(VR_EC_ALL_SYS_PWRGD)))
+#if POWER_SEQ_GPIO_PRESENT(VR_EC_ALL_SYS_PWRGD)
+		if (gpio_get_lvl(GPIO_NET_NAME(VR_EC_ALL_SYS_PWRGD))
 			return SYS_POWER_STATE_S0;
+#else
+		return SYS_POWER_STATE_S0;
+#endif
 		break;
 
 	case SYS_POWER_STATE_S0:
