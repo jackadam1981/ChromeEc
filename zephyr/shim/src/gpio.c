@@ -47,6 +47,11 @@ static const struct gpio_config configs[] = {
 #endif
 };
 
+/*
+ * TODO(b:214608987): Once all interrupts have been transitioned to
+ * the new API, the legacy interrupt handling can be removed.
+ */
+
 /* Maps platform/ec gpio callback information */
 struct gpio_signal_callback {
 	/* The platform/ec gpio_signal */
@@ -157,6 +162,79 @@ get_interrupt_from_signal(enum gpio_signal signal)
 
 	LOG_ERR("No interrupt defined for GPIO %s", configs[signal].name);
 	return NULL;
+}
+
+/*
+ * New interrupt handling.
+ * Uses device tree to configure the interrupt handling.
+ */
+
+/*
+ * Create an instance of a gpio_int_config from a DTS node
+ */
+
+#define GPIO_INT_FUNC(name)	extern void name(void)
+
+#define GPIO_INT_CREATE(id, gpio)				\
+GPIO_INT_FUNC(DT_STRING_TOKEN(id, handler));			\
+struct gpio_int_config GPIO_NODE_TO_INTERRUPT(id) =		\
+{								\
+	.handler = DT_STRING_TOKEN(id, handler),		\
+	.flags = DT_PROP(id, flags),				\
+	.port = DEVICE_DT_GET(DT_GPIO_CTLR(gpio, gpios)),	\
+	.pin = DT_GPIO_PIN(gpio, gpios),			\
+};
+
+#define GPIO_INT_DEFN(id) GPIO_INT_CREATE(id, DT_PROP(id, gpio))
+
+DT_FOREACH_CHILD(DT_PATH(gpio_interrupts), GPIO_INT_DEFN)
+
+#undef GPIO_INT_FUNC
+#undef GPIO_INT_CREATE
+#undef GPIO_INT_DEFN
+
+/*
+ * Callback handler.
+ * Call the stored interrupt handler.
+ */
+void gpio_cb_handler(const struct device *dev, struct gpio_callback *cbdata,
+		     uint32_t pins)
+{
+	struct gpio_int_config *conf =
+		CONTAINER_OF(cbdata, struct gpio_int_config, cb);
+	conf->handler();
+}
+
+/*
+ * Enable the interrupt.
+ * Check whether the callback is already installed, and if
+ * not, init and add the callback before enabling the
+ * interrupt.
+ */
+void gpio_interrupt_enable(struct gpio_int_config *conf)
+{
+	gpio_flags_t flags;
+	/*
+	 * Check whether callback has been initialised.
+	 */
+	if (!conf->cb.handler) {
+		/*
+		 * Initialise and add the callback.
+		 */
+		gpio_init_callback(&conf->cb, gpio_cb_handler, BIT(conf->pin));
+		gpio_add_callback(conf->port, &conf->cb);
+	}
+	flags = (conf->flags | GPIO_INT_ENABLE) & ~GPIO_INT_DISABLE;
+	gpio_pin_interrupt_configure(conf->port, conf->pin, flags);
+}
+
+/*
+ * Disable the interrupt by setting the GPIO_INT_DISABLE flag.
+ */
+void gpio_interrupt_disable(struct gpio_int_config *conf)
+{
+	gpio_pin_interrupt_configure(conf->port, conf->pin,
+				     GPIO_INT_DISABLE);
 }
 
 int gpio_is_implemented(enum gpio_signal signal)
@@ -407,11 +485,26 @@ static int init_gpios(const struct device *unused)
 #endif
 SYS_INIT(init_gpios, POST_KERNEL, CONFIG_PLATFORM_EC_GPIO_INIT_PRIORITY);
 
+/*
+ * Default mapping of GPIO signal to interrupt configuration block.
+ */
+__overridable struct gpio_int_config *
+	board_map_gpio_signal_to_interrupt(enum gpio_signal signal)
+{
+	return 0;
+}
+
 int gpio_enable_interrupt(enum gpio_signal signal)
 {
 	int rv;
 	const struct gpio_signal_callback *interrupt;
+	struct gpio_int_config *zc;
 
+	zc = board_map_gpio_signal_to_interrupt(signal);
+	if (zc) {
+		gpio_interrupt_enable(zc);
+		return 0;
+	}
 	interrupt = get_interrupt_from_signal(signal);
 
 	if (!interrupt)
@@ -436,7 +529,13 @@ int gpio_enable_interrupt(enum gpio_signal signal)
 int gpio_disable_interrupt(enum gpio_signal signal)
 {
 	int rv;
+	struct gpio_int_config *zc;
 
+	zc = board_map_gpio_signal_to_interrupt(signal);
+	if (zc) {
+		gpio_interrupt_disable(zc);
+		return 0;
+	}
 	if (!gpio_is_implemented(signal))
 		return -1;
 
