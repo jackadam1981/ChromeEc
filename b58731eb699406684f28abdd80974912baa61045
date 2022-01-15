@@ -33,6 +33,75 @@
       "message": "Naming is hard. \u0027inactive\u0027 is about the best I could come up with.\nAnother option is \u0027disabled\u0027 but I thought that would get confused with status\u003d\"disabled\"",
       "revId": "b58731eb699406684f28abdd80974912baa61045",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab283ed2_e80f9c53",
+        "filename": "zephyr/dts/bindings/gpio/named-gpios.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-01-15T00:11:15Z",
+      "side": 1,
+      "message": "How about \"no-auto-initialize\" or \"no-auto-init\"",
+      "range": {
+        "startLine": 16,
+        "startChar": 4,
+        "endLine": 16,
+        "endChar": 12
+      },
+      "revId": "b58731eb699406684f28abdd80974912baa61045",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c06854a_eea516eb",
+        "filename": "zephyr/shim/src/gpio.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-01-15T00:11:15Z",
+      "side": 1,
+      "message": "This doesn\u0027t save any space.  And in the patchset, configs[] is only filled with children that specify enum-name, but gpio_inactive[] is setup for all children.\n\nIt\u0027s cleaner to just add the bool struct gpio_config.\n\nIf you really want save the space, then your gpio_inactive[] array could store the dev handle of each inactive GPIO.  You can the use a lookup routine to walk the full gpio_inactive[] looking for a match.\n\nThis might not save much code, since you need an extra function.",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 35
+      },
+      "revId": "b58731eb699406684f28abdd80974912baa61045",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6379ee4e_0c64738b",
+        "filename": "zephyr/shim/src/gpio.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-01-15T00:11:15Z",
+      "side": 1,
+      "message": "You can eliminate a nesting level by flipping the logic\nif (gpio_inactive[i])  // or if (gpio_is_inactive())\n    continue;",
+      "range": {
+        "startLine": 356,
+        "startChar": 0,
+        "endLine": 356,
+        "endChar": 26
+      },
+      "revId": "b58731eb699406684f28abdd80974912baa61045",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
