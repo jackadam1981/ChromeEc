@@ -385,15 +385,18 @@ void chipset_force_shutdown(enum chipset_shutdown_reason reason)
 		LOG_DBG("DSW_PWROK or RSMRST_ODL didn't go low!  Assuming G3.");
 }
 
-
 void enable_power_rail(const char *net_name, int enable)
 {
 	gpio_set_lvl(net_name, enable);
 }
 
-void g3s5_action_handler(void)
+__attribute__((weak)) void g3s5_action_handler(void)
 {
 	enable_power_rail(GPIO_NET_NAME(EC_VR_EN_PP5000_A), 1);
+}
+
+__attribute__((weak)) void s3s0_action_handler(void)
+{
 }
 
 void init_chipset_pwr_seq_state(void)
@@ -409,6 +412,9 @@ enum power_states_ndsx chipset_pwr_sm_run(enum power_states_ndsx curr_state)
 		g3s5_action_handler();
 		break;
 	case SYS_POWER_STATE_S5:
+		break;
+	case SYS_POWER_STATE_S3S0:
+		s3s0_action_handler();
 		break;
 	case SYS_POWER_STATE_S0:
 		s0_action_handler();
