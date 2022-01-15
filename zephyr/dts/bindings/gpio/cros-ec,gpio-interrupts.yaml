@@ -1,0 +1,18 @@
+description: GPIO interrupts list
+
+compatible: "cros-ec,gpio-interrupts"
+
+child-binding:
+  description: GPIO Interrupt definition.
+  properties:
+    gpio:
+      type: phandle
+      required: true
+    flags:
+      type: int
+      required: true
+    handler:
+      type: string
+      description:
+        The C function name attached to this interrupt.
+
