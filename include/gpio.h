@@ -271,6 +271,18 @@ int convert_from_zephyr_flags(const gpio_flags_t zephyr);
  */
 gpio_flags_t convert_to_zephyr_flags(int ec_flags);
 
+struct gpio_int_config;
+/**
+ * Map the gpio signal to an interrupt configuration block.
+ * Allows legacy code to enable and disable interrupts using
+ * the existing gpio_signal enum.
+ *
+ * @param signal	GPIO signal enum value
+ * @returns		Pointer to interrupt configuration block.
+ */
+__override_proto struct gpio_int_config *
+	board_map_gpio_signal_to_interrupt(enum gpio_signal signal);
+
 #endif
 
 /**
