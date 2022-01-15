@@ -8,6 +8,7 @@
 LOG_MODULE_DECLARE(ap_pwrseq, 4);
 
 static const struct chipset_pwrseq_config chip_cfg = {
+	.dsw_pwrok_delay_ms = DT_INST_PROP(0, dsw_pwrok_delay),
 	.pch_pwrok_delay_ms = DT_INST_PROP(0, pch_pwrok_delay),
 	.sys_pwrok_delay_ms = DT_INST_PROP(0, sys_pwrok_delay),
 	.vccst_pwrgd_delay_ms = DT_INST_PROP(0, vccst_pwrgd_delay),
@@ -102,18 +103,19 @@ static int wait_for_vrrdy(void)
 }
 
 /* PCH_PWROK to PCH from EC */
-int generate_pch_pwrok_handler(void)
+__attribute__((weak)) int generate_pch_pwrok_handler(
+				const struct chipset_pwrseq_config *chip_cfg)
 {
 	/* Enable PCH_PWROK, gated by VRRDY. */
-	if (gpio_pin_get_dt(&chip_cfg.pch_pwrok) == 0) {
+	if (gpio_pin_get_dt(&chip_cfg->pch_pwrok) == 0) {
 		if (wait_for_vrrdy() == 0) {
 			LOG_DBG("Timed out waiting for VRRDY, "
 				"shutting AP off!");
 			ap_off();
 			return -1;
 		}
-		k_msleep(chip_cfg.pch_pwrok_delay_ms);
-		gpio_pin_set_dt(&chip_cfg.pch_pwrok, 1);
+		k_msleep(chip_cfg->pch_pwrok_delay_ms);
+		gpio_pin_set_dt(&chip_cfg->pch_pwrok, 1);
 		LOG_DBG("Set PCH_PWROK\n");
 	}
 
@@ -160,7 +162,7 @@ void s0_action_handler(const struct common_pwrseq_config *com_cfg)
 	/* TODO: There is possibility of EC not needing to generate
 	 * this as power sequencer may do it
 	 */
-	ret = generate_pch_pwrok_handler();
+	ret = generate_pch_pwrok_handler(&chip_cfg);
 	if (ret) {
 		LOG_DBG("PCH_PWROK handling failed err=%d\n", ret);
 		return;
@@ -220,7 +222,8 @@ void chipset_reset(enum pwrseq_chipset_shutdown_reason reason)
 	gpio_pin_set_dt(&(chip_cfg.sys_rst_l), 1);
 }
 
-void chipset_force_shutdown(enum pwrseq_chipset_shutdown_reason reason,
+ __attribute__((weak)) void chipset_force_shutdown(
+				enum pwrseq_chipset_shutdown_reason reason,
 				const struct common_pwrseq_config *com_cfg)
 {
 	int timeout_ms = 50;
@@ -251,10 +254,20 @@ void chipset_force_shutdown(enum pwrseq_chipset_shutdown_reason reason,
 		LOG_DBG("DSW_PWROK or RSMRST_ODL didn't go low!  Assuming G3.");
 }
 
-
-void g3s5_action_handler(const struct common_pwrseq_config *com_cfg)
+__attribute__((weak)) void g3s5_action_handler(const struct common_pwrseq_config *com_cfg)
 {
 	gpio_pin_set_dt(&com_cfg->enable_pp5000_a, 1);
+}
+
+__attribute__((weak)) void s3s0_action_handler(const struct common_pwrseq_config *com_cfg)
+{
+}
+
+__attribute__((weak)) void s0s3_action_handler(const struct common_pwrseq_config *com_cfg)
+{
+	ARG_UNUSED(com_cfg);
+
+	ap_off();
 }
 
 void init_chipset_pwr_seq_state(void)
@@ -288,6 +301,12 @@ enum power_states_ndsx chipset_pwr_sm_run(enum power_states_ndsx curr_state,
 		g3s5_action_handler(com_cfg);
 		break;
 	case SYS_POWER_STATE_S5:
+		break;
+	case SYS_POWER_STATE_S3S0:
+		s3s0_action_handler(com_cfg);
+		break;
+	case SYS_POWER_STATE_S0S3:
+		s0s3_action_handler(com_cfg);
 		break;
 	case SYS_POWER_STATE_S0:
 		s0_action_handler(com_cfg);
