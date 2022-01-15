@@ -10,6 +10,17 @@ config X86_NON_DSX_POWER_SEQ
 	  This option enables Non Deep Sleep Well power sequencing for
 	  Intel x86 chips.
 
+if X86_NON_DSX_POWER_SEQ
+
+menuconfig X86_NON_DSX_ADL_NO_EXT_PS_CHIP
+	bool "ADL Non Deep Sx with no external power sequencer chip"
+	default n
+	help
+	  This option indicates that there is no external power sequencer
+	  chip present.
+
+endif # X86_NON_DSX_POWER_SEQ
+
 module = AP_PWRSEQ
 module-str = ap_pwrseq
 source "subsys/logging/Kconfig.template.log_config"
