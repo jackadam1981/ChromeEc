@@ -31,7 +31,8 @@
 /* Signal represents the power good for all the rest
  * of platform voltage rails.
  */
-#define VR_EC_ALL_SYS_PWRGD	allsyspwrgd
+#define VR_EC_ALL_SYS_PWRGD	allsyspwrgdin
+#define EC_OUT_ALL_SYS_PWRGD	allsyspwrgdout
 
 #define PCH_PWROK		pchpwrok
 /* SYS_PWROK is a generic power good input to the PCH is driven
@@ -115,7 +116,9 @@ extern const struct power_signal_vw_info power_signal_vw_list[];
  */
 void pwrseq_thread(void *p1, void *p2, void *p3);
 void power_update_signals(void);
-
+int power_wait_signals(uint32_t want);
+int power_has_signals(uint32_t want);
+extern void enable_power_rail(const char *net_name, int enable);
 extern struct gpio_config power_seq_gpios[];
 extern struct gpio_interrupt_config power_seq_intr_gpios[];
 extern const int power_seq_gpios_count;

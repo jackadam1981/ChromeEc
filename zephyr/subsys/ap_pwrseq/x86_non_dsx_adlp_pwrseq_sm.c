@@ -23,9 +23,11 @@ struct gpio_config power_seq_gpios[] = {
 	{
 		POWER_SEQ_GPIO(VR_PG_EC_RSMRST_ODL),
 	},
+#if POWER_SEQ_GPIO_PRESENT(VR_EC_ALL_SYS_PWRGD)
 	{
 		POWER_SEQ_GPIO(VR_EC_ALL_SYS_PWRGD),
 	},
+#endif
 #if POWER_SEQ_GPIO_PRESENT(VR_EC_DSW_PWROK)
 	{
 		POWER_SEQ_GPIO(VR_EC_DSW_PWROK),
@@ -96,10 +98,12 @@ struct gpio_interrupt_config power_seq_intr_gpios[] = {
 		POWER_SEQ_INTR_GPIO(PCH_EC_SLP_S3_L),
 		.disable_at_boot = false,
 	},
+#if POWER_SEQ_GPIO_PRESENT(VR_EC_ALL_SYS_PWRGD)
 	{
 		POWER_SEQ_INTR_GPIO(VR_EC_ALL_SYS_PWRGD),
 		.disable_at_boot = false,
 	},
+#endif
 };
 
 const int power_seq_intr_gpios_count = ARRAY_SIZE(power_seq_intr_gpios);
@@ -136,12 +140,14 @@ const struct power_signal_info power_signal_list[] = {
 		.flags = POWER_SIGNAL_ACTIVE_HIGH,
 		.name = "SLP_S3_DEASSERTED",
 	},
+#if POWER_SEQ_GPIO_PRESENT(VR_EC_ALL_SYS_PWRGD)
 	{
 		.net_name = GPIO_NET_NAME(VR_EC_ALL_SYS_PWRGD),
 		.power_sig = X86_ALL_SYS_PGOOD,
 		.flags = POWER_SIGNAL_ACTIVE_HIGH,
 		.name = "ALL_SYS_PWRGD",
 	},
+#endif
 };
 
 const int power_signal_gpio_count = ARRAY_SIZE(power_signal_list);
@@ -174,7 +180,11 @@ void ap_off(void)
 /* This should be overridden if there is no power sequencer chip */
 __attribute__((weak)) int intel_x86_get_pg_ec_all_sys_pwrgd(void)
 {
+#if POWER_SEQ_GPIO_PRESENT(VR_EC_ALL_SYS_PWRGD)
 	return gpio_get_lvl(GPIO_NET_NAME(VR_EC_ALL_SYS_PWRGD));
+#else
+	return 0;
+#endif
 }
 
 /* Handle ALL_SYS_PWRGD signal
@@ -185,7 +195,6 @@ int all_sys_pwrgd_handler(void)
 	int sys_pg;
 	int vccst_pg;
 
-	/* TODO: Add condition for no power sequencer */
 	sys_pg = intel_x86_get_pg_ec_all_sys_pwrgd();
 
 	if (sys_pg == 0) {
@@ -377,15 +386,30 @@ void chipset_force_shutdown(enum chipset_shutdown_reason reason)
 		LOG_DBG("DSW_PWROK or RSMRST_ODL didn't go low!  Assuming G3.");
 }
 
-
 void enable_power_rail(const char *net_name, int enable)
 {
 	gpio_set_lvl(net_name, enable);
 }
 
-void g3s5_action_handler(void)
+__attribute__((weak)) void g3s5_action_handler(void)
 {
 	enable_power_rail(GPIO_NET_NAME(EC_VR_EN_PP5000_A), 1);
+}
+
+void dsw_pwrok_pass_thru_handler(void)
+{
+	int in_sig_val =  intel_x86_get_pg_ec_dsw_pwrok();
+
+	if (in_sig_val != gpio_get_lvl(GPIO_NET_NAME(EC_PCH_DSW_PWROK))) {
+		if (in_sig_val)
+			k_msleep(10);
+
+		gpio_set_lvl(GPIO_NET_NAME(EC_PCH_DSW_PWROK), in_sig_val);
+	}
+}
+
+__attribute__((weak)) void s3s0_action_handler(void)
+{
 }
 
 void init_chipset_pwr_seq_state(void)
@@ -408,6 +432,9 @@ enum power_states_ndsx chipset_pwr_sm_run(enum power_states_ndsx curr_state)
 		g3s5_action_handler();
 		break;
 	case SYS_POWER_STATE_S5:
+		break;
+	case SYS_POWER_STATE_S3S0:
+		s3s0_action_handler();
 		break;
 	case SYS_POWER_STATE_S0:
 		s0_action_handler();
