@@ -16,6 +16,24 @@
       "message": "Checking my understanding: this pin is configured this way because Nereid has a different configuration? Why can\u0027t it be configured in enum-names?",
       "revId": "d8ee6536985f16de3182bf20d99de65e93bc3aaa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eeadf9d3_cee22e12",
+        "filename": "zephyr/projects/nissa/src/nivviks/board_config.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-01-16T23:30:05Z",
+      "side": 1,
+      "message": "You\u0027re likely right - I think what I did at some point was disable it, and until chromium:3384130 there was an issue with getting it initialised.\nI\u0027ll clean it up once that CL goes in.",
+      "parentUuid": "afc8fcdb_14ecfd9a",
+      "revId": "d8ee6536985f16de3182bf20d99de65e93bc3aaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
