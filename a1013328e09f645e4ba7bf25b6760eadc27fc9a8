@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "db38f009_37fe7f97",
+        "filename": "board/beadrix/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1483835
+      },
+      "writtenOn": "2022-01-16T17:40:32Z",
+      "side": 1,
+      "message": "Thank you. I delete it.",
+      "parentUuid": "89d74891_d613a385",
+      "revId": "a1013328e09f645e4ba7bf25b6760eadc27fc9a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7d3c958b_b314cf3b",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e831dea6_812a1491",
+        "filename": "board/beadrix/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 378,
+      "author": {
+        "id": 1483835
+      },
+      "writtenOn": "2022-01-16T17:40:32Z",
+      "side": 1,
+      "message": "Thank you. I keepp a line between functions here and elsewhere.",
+      "parentUuid": "7d3c958b_b314cf3b",
+      "revId": "a1013328e09f645e4ba7bf25b6760eadc27fc9a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "47f9b527_b410b157",
@@ -48,6 +84,30 @@
       "writtenOn": "2022-01-14T20:44:51Z",
       "side": 1,
       "message": "Can you update the comment to indicate the change? It appears that the BFET changed from the reference?",
+      "range": {
+        "startLine": 34,
+        "startChar": 36,
+        "endLine": 34,
+        "endChar": 38
+      },
+      "revId": "a1013328e09f645e4ba7bf25b6760eadc27fc9a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa02f579_ea35e63e",
+        "filename": "board/beadrix/board.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1483835
+      },
+      "writtenOn": "2022-01-16T17:40:32Z",
+      "side": 1,
+      "message": "Thank you. I will check with battery datasheet. I will modify it soon.",
+      "parentUuid": "47f9b527_b410b157",
       "range": {
         "startLine": 34,
         "startChar": 36,
