@@ -515,6 +515,24 @@
       "parentUuid": "de860f8d_692fac83",
       "revId": "adae5ccb043415ab30a887b51979fa7137c57fa6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e103ddd_d7373827",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 513,
+      "author": {
+        "id": 1483835
+      },
+      "writtenOn": "2022-01-17T07:56:21Z",
+      "side": 1,
+      "message": "task 2 has been done. Based on your advice, I create the other MUX anx7447 driver CL to support Beadrix project.\n\n3392106: USB MUX: Search SPI address through anx7447_i2c_addrs_flags array | https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3392106",
+      "parentUuid": "2bd4a27b_4502e8f2",
+      "revId": "adae5ccb043415ab30a887b51979fa7137c57fa6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
