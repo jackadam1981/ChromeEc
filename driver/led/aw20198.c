@@ -1,0 +1,174 @@
+/* Copyright 2022 The Chromium OS Authors. All rights reserved.
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+#include "common.h"
+#include "console.h"
+#include "gpio.h"
+#include "i2c.h"
+#include "rgb_keyboard.h"
+#include "stddef.h"
+#include "string.h"
+#include "timer.h"
+
+#undef _DEBUG
+
+#define CPRINTF(fmt, args...) cprintf(CC_RGBKBD, "AW20198: " fmt, ##args)
+#define CPRINTS(fmt, args...) cprints(CC_RGBKBD, "AW20198: " fmt, ##args)
+
+/* This depends on AD0 and Ad1. (GRD, GRD) = 0x20. */
+#define AW20198_I2C_ADDR	0x20
+
+#define AW20198_ROW_SIZE	6
+#define AW20198_COL_SIZE	11
+#define AW20198_GRID_SIZE	(AW20198_COL_SIZE * AW20198_ROW_SIZE)
+#define AW20198_BUF_SIZE	(RGB * AW20198_GRID_SIZE)
+
+#define AW20198_PAGE_FUNC	0xC0
+#define AW20198_PAGE_PWM	0xC1
+#define AW20198_PAGE_SCALE	0xC2
+
+#define AW20198_REG_GCR		0x00
+#define AW20198_REG_GCC		0x01
+#define AW20198_REG_RSTN	0x2F
+#define AW20198_REG_MIXCR	0x46
+#define AW20198_REG_PAGE	0xF0
+
+
+__maybe_unused
+static int _get_reg8(struct rgbkbd *ctx, uint8_t addr, uint8_t *value)
+{
+	return i2c_xfer(ctx->cfg->i2c, AW20198_I2C_ADDR,
+			&addr, sizeof(addr), value, sizeof(*value));
+}
+
+static int _set_reg8(struct rgbkbd *ctx, uint8_t addr, uint8_t value)
+{
+	uint8_t buf[2] = {
+		[0] = addr,
+		[1] = value,
+	};
+
+	return i2c_xfer(ctx->cfg->i2c, AW20198_I2C_ADDR,
+			buf, sizeof(buf), NULL, 0);
+}
+
+static int _get_config(struct rgbkbd *ctx, uint8_t addr, uint8_t *value)
+{
+	int rv = _set_reg8(ctx, AW20198_REG_PAGE, AW20198_PAGE_FUNC);
+	if (rv)
+		return rv;
+
+	return _get_reg8(ctx, addr, value);
+}
+
+static int _set_config(struct rgbkbd *ctx, uint8_t addr, uint8_t value)
+{
+	int rv = _set_reg8(ctx, AW20198_REG_PAGE, AW20198_PAGE_FUNC);
+	if (rv)
+		return rv;
+
+	return _set_reg8(ctx, addr, value);
+}
+
+static int _reset(struct rgbkbd *ctx)
+{
+	return _set_config(ctx, AW20198_REG_RSTN, 0xAE);
+}
+
+static int _enable(struct rgbkbd *ctx, bool enable)
+{
+	uint8_t u8;
+	int rv;
+
+	rv = _get_config(ctx, AW20198_REG_GCR, &u8);
+	if (rv)
+		return rv;
+
+	return _set_reg8(ctx, AW20198_REG_GCR, u8 | (enable ? BIT(0) : 0));
+}
+
+static int _set_color(struct rgbkbd *ctx, uint8_t offset, struct rgb_s *color,
+		      uint8_t len)
+{
+	uint8_t buf[sizeof(offset) + AW20198_BUF_SIZE];
+	const int frame_len = len * RGB + sizeof(offset);
+	const int frame_offset = offset * RGB;
+	int i, rv;
+
+	if (frame_offset + frame_len > sizeof(buf))
+		return EC_ERROR_OVERFLOW;
+
+	rv = _set_reg8(ctx, AW20198_REG_PAGE, AW20198_PAGE_PWM);
+	if (rv)
+		return rv;
+
+	buf[0] = offset * RGB;
+	for (i = 0; i < len; i++) {
+		buf[i * RGB +1] = color[i].r;
+		buf[i * RGB +2] = color[i].g;
+		buf[i * RGB +3] = color[i].b;
+	}
+
+	return i2c_xfer(ctx->cfg->i2c, AW20198_I2C_ADDR,
+			buf, frame_len, NULL, 0);
+}
+
+static int _set_scale(struct rgbkbd *ctx, uint8_t offset, uint8_t scale,
+		      uint8_t len)
+{
+	uint8_t buf[sizeof(offset) + AW20198_BUF_SIZE];
+	const int frame_len = len * RGB + sizeof(offset);
+	const int frame_offset = offset * RGB;
+	int rv;
+
+	if (frame_offset + frame_len > sizeof(buf))
+		return EC_ERROR_OVERFLOW;
+
+	rv = _set_reg8(ctx, AW20198_REG_PAGE, AW20198_PAGE_SCALE);
+	if (rv)
+		return rv;
+
+	buf[0] = offset * RGB;
+	memset(&buf[1], scale, len * RGB);
+
+	return i2c_xfer(ctx->cfg->i2c, AW20198_I2C_ADDR,
+			buf, frame_len, NULL, 0);
+}
+
+static int _set_gcc(struct rgbkbd *ctx, uint8_t level)
+{
+	return _set_config(ctx, AW20198_REG_GCC, level);
+}
+
+static int _init(struct rgbkbd *ctx)
+{
+	uint8_t u8;
+	int rv;
+
+	rv = _reset(ctx);
+	msleep(3);
+	rv |= _enable(ctx, true);
+	if (rv) {
+		CPRINTS("Failed to enable or reset (%d)", rv);
+		return rv;
+	}
+
+	/* Read chip ID, assuming page is still 0. */
+	rv = _get_reg8(ctx, AW20198_REG_RSTN, &u8);
+	if (rv)
+		return rv;
+	CPRINTS("ID=0x%02x", u8);
+
+	return rv;
+}
+
+const struct rgbkbd_drv aw20198_drv = {
+	.reset = _reset,
+	.init = _init,
+	.enable = _enable,
+	.set_color = _set_color,
+	.set_scale = _set_scale,
+	.set_gcc = _set_gcc,
+};
