@@ -204,4 +204,9 @@ config PLATFORM_EC_LED_DRIVER_IS31FL3743B
 	help
 	  Enable driver for IS31FL3743B LED controller.
 
+config PLATFORM_EC_LED_DRIVER_AW20198
+	bool "Driver for AW20198 LED controller"
+	help
+	  Enable driver for AW20198 LED controller.
+
 endif # PLATFORM_EC_RGB_KEYBOARD
