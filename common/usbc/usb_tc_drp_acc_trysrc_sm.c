@@ -151,7 +151,11 @@ void print_flag(int port, int set_or_clear, int flag);
  *
  * TODO(b/162347811): TCPMv2: Wait for debounce on Vbus and CC lines
  */
+#ifdef CONFIG_USB_PD_TCPC_LOW_POWER
 #define PD_LPM_EXIT_DEBOUNCE_US CONFIG_USB_PD_TCPC_LPM_EXIT_DEBOUNCE
+#else
+#define PD_LPM_EXIT_DEBOUNCE_US 0
+#endif
 
 /*
  * The TypeC state machine uses this bit to disable/enable PD
@@ -1713,12 +1717,13 @@ static void print_current_state(const int port)
 
 static void handle_device_access(int port)
 {
-	if (IS_ENABLED(CONFIG_USB_PD_TCPC_LOW_POWER) &&
-	    get_state_tc(port) == TC_LOW_POWER_MODE) {
+#if defined(CONFIG_USB_PD_TCPC_LOW_POWER)
+	if (get_state_tc(port) == TC_LOW_POWER_MODE) {
 		tc_start_event_loop(port);
 		pd_timer_enable(port, TC_TIMER_LOW_POWER_TIME,
 				PD_LPM_DEBOUNCE_US);
 	}
+#endif
 }
 
 void tc_event_check(int port, int evt)
