@@ -22,6 +22,30 @@
       },
       "revId": "91b276d85bb32f3f5e1a090da4db9dba6e308897",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b2b1046_fcd7c85c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2022-01-17T03:54:13Z",
+      "side": 1,
+      "message": "Thanks, let me update the commit message. The charge_manager might not be up when the TCPC task starts, so we still have issue interacting with it.",
+      "parentUuid": "3fe327ee_4b3acb95",
+      "range": {
+        "startLine": 15,
+        "startChar": 13,
+        "endLine": 16,
+        "endChar": 12
+      },
+      "revId": "91b276d85bb32f3f5e1a090da4db9dba6e308897",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
