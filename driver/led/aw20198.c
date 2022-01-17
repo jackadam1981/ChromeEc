@@ -4,6 +4,7 @@
  */
 #include <string.h>
 
+#include "aw20198.h"
 #include "common.h"
 #include "console.h"
 #include "gpio.h"
@@ -14,26 +15,6 @@
 
 #define CPRINTF(fmt, args...) cprintf(CC_RGBKBD, "AW20198: " fmt, ##args)
 #define CPRINTS(fmt, args...) cprints(CC_RGBKBD, "AW20198: " fmt, ##args)
-
-/* This depends on AD0 and Ad1. (GRD, GRD) = 0x20. */
-#define AW20198_I2C_ADDR_FLAG	0x20
-
-#define AW20198_ROW_SIZE	6
-#define AW20198_COL_SIZE	11
-#define AW20198_GRID_SIZE	(AW20198_COL_SIZE * AW20198_ROW_SIZE)
-#define AW20198_BUF_SIZE	(SIZE_OF_RGB * AW20198_GRID_SIZE)
-
-#define AW20198_PAGE_FUNC	0xC0
-#define AW20198_PAGE_PWM	0xC1
-#define AW20198_PAGE_SCALE	0xC2
-
-#define AW20198_REG_GCR		0x00
-#define AW20198_REG_GCC		0x01
-#define AW20198_REG_RSTN	0x2F
-#define AW20198_REG_MIXCR	0x46
-#define AW20198_REG_PAGE	0xF0
-
-#define AW20198_RESET_MAGIC	0xAE
 
 static int aw20198_read(struct rgbkbd *ctx, uint8_t addr, uint8_t *value)
 {
