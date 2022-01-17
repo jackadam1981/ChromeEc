@@ -6,6 +6,7 @@
 #include "common.h"
 #include "ec_commands.h"
 #include "keyboard_scan.h"
+#include "rgb_keyboard.h"
 #include "timer.h"
 
 /* Keyboard scan setting */
@@ -40,6 +41,19 @@ static const struct ec_response_keybd_config taniks_kb = {
 	},
 	.capabilities = KEYBD_CAP_SCRNLOCK_KEY,
 };
+
+extern struct rgbkbd_drv aw20198_drv;
+
+struct rgbkbd rgbkbds[] = {
+	[0] = {
+		.cfg = &(const struct rgbkbd_cfg) {
+			.drv = &aw20198_drv,
+			.col_len = 8,
+			.row_len = 5,
+		},
+	},
+};
+const uint8_t rgbkbd_count = ARRAY_SIZE(rgbkbds);
 
 __override const struct ec_response_keybd_config
 *board_vivaldi_keybd_config(void)
