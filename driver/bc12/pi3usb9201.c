@@ -250,6 +250,13 @@ static void pi3usb9201_usb_charger_task(const int port)
 		bc12_supplier[port] = CHARGE_SUPPLIER_NONE;
 
 	/*
+	 * The actual number of ports may be less than the maximum
+	 * configured, so exit this task if it is not required.
+	 */
+	if (port >= board_get_usb_pd_port_count())
+		return;
+
+	/*
 	 * The is no specific initialization required for the pi3usb9201 other
 	 * than enabling the interrupt mask.
 	 */
