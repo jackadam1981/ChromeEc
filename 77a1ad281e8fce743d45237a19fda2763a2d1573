@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "42b10fb5_64ca48cf",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_it8xxx2.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2022-01-17T12:29:25Z",
+      "side": 1,
+      "message": "We use crec_flash_lock_mapped_storage() for chips with external storage, while ITE chips use internal storage. I think it is not necessary to add the call here.",
+      "parentUuid": "9d861403_5faf12aa",
+      "revId": "77a1ad281e8fce743d45237a19fda2763a2d1573",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f05debcf_7ff49db4",
         "filename": "zephyr/drivers/cros_flash/cros_flash_npcx.c",
         "patchSetId": 2
@@ -48,6 +66,24 @@
       "writtenOn": "2022-01-14T19:01:56Z",
       "side": 1,
       "message": "Change to use zephyr_flash_controller",
+      "revId": "77a1ad281e8fce743d45237a19fda2763a2d1573",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "231db613_8dc00d6e",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_npcx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2022-01-17T12:29:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f05debcf_7ff49db4",
       "revId": "77a1ad281e8fce743d45237a19fda2763a2d1573",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
