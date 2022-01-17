@@ -216,6 +216,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "132f5191_61838760",
+        "filename": "board/beadrix/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1483835
+      },
+      "writtenOn": "2022-01-17T05:03:19Z",
+      "side": 1,
+      "message": "Thank you very much! As RAA48900 chip is used as TCPC and Charger as Waddledoo, I modify it refer to Waddledoo.",
+      "parentUuid": "119fb1e5_30c2ffc9",
+      "revId": "adae5ccb043415ab30a887b51979fa7137c57fa6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f1b26286_9a7ca808",
