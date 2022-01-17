@@ -274,6 +274,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "aece5c7a_b587cc56",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 4478,
+      "author": {
+        "id": 1384633
+      },
+      "writtenOn": "2022-01-17T14:42:52Z",
+      "side": 1,
+      "message": "Hi Nojiri,\n\nAs part of bug: 205928013, we are planning to add power participant support for DPTF thermal policy as per doc:541817. For this, we need ACPI methods like (PSRC-Platform Power Source) and ARTG-Adapter Rating) in FW and Kernel. \nFor FW, we have started doing changes in this /platform/ec code base and submitted patches for review here. I have also submitted required changes in Coreboot BIOS as well. \nFor Kernel, we have these ACPI methods support under drivers/acpi/dptf/dptf_power.c \n\nI am cross verifying this functionality on ADL-P based Brya system. \n\nAlso, similar way as per bug: 206057712, we need to add battery participant support for DPTF policy and for these required ACPI methods are PMAX, CTYP and PBSS. \n\nLet me divide this patch as of now only for Power participant and submit minimal changes for review.",
+      "parentUuid": "965fd38b_fea613a3",
+      "range": {
+        "startLine": 4478,
+        "startChar": 4,
+        "endLine": 4478,
+        "endChar": 26
+      },
+      "revId": "9aabc67097b248e8b23014b8e1bdb7cbd513e0f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c9f74374_40b5ec96",
         "filename": "include/ec_commands.h",
         "patchSetId": 5
