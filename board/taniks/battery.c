@@ -42,16 +42,16 @@ const struct board_batt_params board_battery_info[] = {
 				.reg_data = { 0x0000, 0x1000 },
 			},
 			.fet = {
-				.reg_addr = 0x34,
-				.reg_mask = 0x0100,
-				.disconnect_val = 0x0100,
+				.reg_addr = 0x00,
+				.reg_mask = 0x0018,
+				.disconnect_val = 0x0000,
 			}
 		},
 		.batt_info = {
 			.voltage_max		= 8900, /* mV */
-			.voltage_normal		= 7720, /* mV */
+			.voltage_normal		= 7680, /* mV */
 			.voltage_min		= 6000, /* mV */
-			.precharge_current	= 330,	/* mA */
+			.precharge_current	= 464,	/* mA */
 			.start_charging_min_c	= 0,
 			.start_charging_max_c	= 50,
 			.charging_min_c		= 0,
@@ -60,25 +60,52 @@ const struct board_batt_params board_battery_info[] = {
 			.discharging_max_c	= 60,
 		},
 	},
-	[BATTERY_SUNWODA] = {
+	[BATTERY_SMP_71W] = {
 		.fuel_gauge = {
-			.manuf_name = "Sunwoda",
-			.device_name = "L21D4PG4",
+			.manuf_name = "SMP",
+			.device_name = "L21M4PG5",
 			.ship_mode = {
 				.reg_addr = 0x34,
 				.reg_data = { 0x0000, 0x1000 },
 			},
 			.fet = {
-				.reg_addr = 0x34,
-				.reg_mask = 0x0100,
-				.disconnect_val = 0x0100,
+				.reg_addr = 0x00,
+				.reg_mask = 0x0018,
+				.disconnect_val = 0x0000,
 			}
 		},
 		.batt_info = {
 			.voltage_max		= 8900, /* mV */
-			.voltage_normal		= 7720, /* mV */
+			.voltage_normal		= 7680, /* mV */
 			.voltage_min		= 6000, /* mV */
-			.precharge_current	= 330,	/* mA */
+			.precharge_current	= 464,	/* mA */
+			.start_charging_min_c	= 0,
+			.start_charging_max_c	= 50,
+			.charging_min_c		= 0,
+			.charging_max_c		= 60,
+			.discharging_min_c	= -20,
+			.discharging_max_c	= 60,
+		},
+	},
+	[BATTERY_LGC] = {
+		.fuel_gauge = {
+			.manuf_name = "LG",
+			.device_name = "L21L4PG5",
+			.ship_mode = {
+				.reg_addr = 0x34,
+				.reg_data = { 0x0000, 0x1000 },
+			},
+			.fet = {
+				.reg_addr = 0x00,
+				.reg_mask = 0x0018,
+				.disconnect_val = 0x0000,
+			}
+		},
+		.batt_info = {
+			.voltage_max		= 8900, /* mV */
+			.voltage_normal		= 7680, /* mV */
+			.voltage_min		= 6000, /* mV */
+			.precharge_current	= 512,	/* mA */
 			.start_charging_min_c	= 0,
 			.start_charging_max_c	= 50,
 			.charging_min_c		= 0,
