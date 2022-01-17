@@ -87,6 +87,30 @@
       },
       "revId": "8f5726ea6333a97b0b9e63fbd10490c61a9df941",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1778849b_d7b93dad",
+        "filename": "chip/stm32/hwtimer.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2022-01-17T20:20:20Z",
+      "side": 1,
+      "message": "Done. CL is availble at https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3395878",
+      "parentUuid": "e4278fa1_62460937",
+      "range": {
+        "startLine": 212,
+        "startChar": 1,
+        "endLine": 227,
+        "endChar": 0
+      },
+      "revId": "8f5726ea6333a97b0b9e63fbd10490c61a9df941",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

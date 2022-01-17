@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "81d433b9_33217b58",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2022-01-17T20:20:20Z",
+      "side": 1,
+      "message": "Tom, Bobby, I know that you approved this change, but could you look at change in __hw_clock_source_init()? It turned out that it is called with enabled interrupts and it uses __hw_clock_source_is_set().",
+      "revId": "58c8990e828397db72c376673f93444ed7f1c177",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
