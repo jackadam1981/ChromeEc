@@ -157,6 +157,13 @@ static void mt6360_handle_bc12_irq(int port)
 
 static void mt6360_usb_charger_task(const int port)
 {
+	/*
+	 * The actual number of ports may be less than the maximum
+	 * configured, so exit this task if it is not required.
+	 */
+	if (port >= board_get_usb_pd_port_count())
+		return;
+
 	mt6360_clr_bit(MT6360_REG_DPDM_MASK1,
 		       MT6360_REG_DPDM_MASK1_CHGDET_DONEI_M);
 	mt6360_enable_bc12_detection(0);

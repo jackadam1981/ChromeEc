@@ -180,6 +180,14 @@ static void max14637_usb_charger_task(const int port)
 	const struct max14637_config_t * const cfg = &max14637_config[port];
 
 	ASSERT(port >= 0 && port < CONFIG_USB_PD_PORT_MAX_COUNT);
+
+	/*
+	 * The actual number of ports may be less than the maximum
+	 * configured, so exit this task if it is not required.
+	 */
+	if (port >= board_get_usb_pd_port_count())
+		return;
+
 	/*
 	 * Have chip enable active as default state so data switches are closed
 	 * and bc1.2 client side detection is not activated when the port power
