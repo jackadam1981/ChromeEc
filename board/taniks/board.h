@@ -198,6 +198,9 @@
 #define CONFIG_CHARGER_BQ25710_VSYS_MIN_VOLTAGE_CUSTOM
 #define CONFIG_CHARGER_BQ25710_VSYS_MIN_VOLTAGE_MV 6100
 
+/* RGB Keyboard */
+#define GPIO_RGBKBD_SDB_L	GPIO_KBMCU_INT_ODL
+
 #ifndef __ASSEMBLER__
 
 #include "gpio_signal.h"	/* needed by registers.h */
