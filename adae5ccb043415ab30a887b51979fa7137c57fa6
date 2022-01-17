@@ -70,6 +70,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d3f0d67f_3ceca58e",
+        "filename": "board/beadrix/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 402,
+      "author": {
+        "id": 1483835
+      },
+      "writtenOn": "2022-01-17T06:05:39Z",
+      "side": 1,
+      "message": "Thank you! I found that the raa489000_set_output_current() does the same thing, I remove it `charger_set_otg_current_voltage(port, current, 5000);`.\n/* Configure output current in the TCPC because it is controlling Vbus */\nint raa489000_set_output_current(int port, enum tcpc_rp_value rp)\n{\n\tint regval;\n\tint selected_cur \u003d rp \u003d\u003d TYPEC_RP_3A0 ?\n\t\t\t\tRAA489000_VBUS_CURRENT_TARGET_3A :\n\t\t\t\tRAA489000_VBUS_CURRENT_TARGET_1_5A;\n\n\tregval \u003d AC_CURRENT_TO_REG(selected_cur) +\n\t\t\t\tselected_cur % (DEFAULT_R_AC/R_AC);\n\n\treturn tcpc_write16(port, RAA489000_VBUS_CURRENT_TARGET,\n\t\t\t\tregval);\n}",
+      "parentUuid": "bd5a5d70_650c685b",
+      "revId": "adae5ccb043415ab30a887b51979fa7137c57fa6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ebefbc80_363e41cb",
