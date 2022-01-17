@@ -96,9 +96,14 @@ static void switch_init(void)
 }
 DECLARE_HOOK(HOOK_INIT, switch_init, HOOK_PRIO_INIT_SWITCH);
 
-void switch_interrupt(enum gpio_signal signal)
+void switch_interrupt_any(void)
 {
 	hook_call_deferred(&switch_update_data, 0);
+}
+
+void switch_interrupt(enum gpio_signal signal)
+{
+	switch_interrupt_any();
 }
 
 #ifdef CONFIG_CMD_MMAPINFO

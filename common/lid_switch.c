@@ -114,10 +114,14 @@ static void lid_change_deferred(void)
 }
 DECLARE_DEFERRED(lid_change_deferred);
 
-void lid_interrupt(enum gpio_signal signal)
-{
+void lid_interrupt_any(void) {
 	/* Reset lid debounce time */
 	hook_call_deferred(&lid_change_deferred_data, LID_DEBOUNCE_US);
+}
+
+void lid_interrupt(enum gpio_signal signal)
+{
+	lid_interrupt_any();
 }
 
 static int command_lidopen(int argc, char **argv)
