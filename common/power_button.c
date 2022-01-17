@@ -176,7 +176,7 @@ static void power_button_change_deferred(void)
 }
 DECLARE_DEFERRED(power_button_change_deferred);
 
-void power_button_interrupt(enum gpio_signal signal)
+void power_button_interrupt_wrap(void)
 {
 	/*
 	 * If power button is pressed, disable the matrix scan as soon as
@@ -190,6 +190,11 @@ void power_button_interrupt(enum gpio_signal signal)
 	power_button_is_stable = 0;
 	hook_call_deferred(&power_button_change_deferred_data,
 			   power_button.debounce_us);
+}
+
+void power_button_interrupt(enum gpio_signal signal)
+{
+	power_button_interrupt_wrap();
 }
 
 /*****************************************************************************/

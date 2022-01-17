@@ -365,6 +365,39 @@ void button_interrupt(enum gpio_signal signal)
 	}
 }
 
+#if CONFIG_ZEPHYR
+/*
+ * Wrappers for interrupts that do not pass arguments.
+ */
+#ifdef CONFIG_VOLUME_BUTTONS
+
+void button_interrupt_volume_up(void)
+{
+	button_interrupt(GPIO_VOLUME_UP_L);
+}
+
+void button_interrupt_volume_down(void)
+{
+	button_interrupt(GPIO_VOLUME_DOWN_L);
+}
+#endif /* CONFIG_VOLUME_BUTTONS */
+
+#if CONFIG_DEDICATED_RECOVERY_BUTTON
+void button_interrupt_recovery(void)
+{
+	button_interrupt(GPIO_RECOVERY);
+}
+
+#if CONFIG_DEDICATED_RECOVERY_BUTTON_2
+
+void button_interrupt_recovery_2(void)
+{
+	button_interrupt(GPIO_RECOVERY_L_2);
+}
+#endif /* CONFIG_DEDICATED_RECOVERY_BUTTON_2 */
+#endif /* CONFIG_DEDICATED_RECOVERY_BUTTON */
+#endif /* CONFIG_ZEPHYR */
+
 #ifdef CONFIG_SIMULATED_BUTTON
 static int button_present(enum keyboard_button_type type)
 {
