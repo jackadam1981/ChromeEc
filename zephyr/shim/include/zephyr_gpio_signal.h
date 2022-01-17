@@ -71,6 +71,27 @@ BUILD_ASSERT(GPIO_COUNT < GPIO_LIMIT);
 #define NAMED_GPIO_NODELABEL(label, prop) \
 	GPIO_SIGNAL(DT_PHANDLE(DT_NODELABEL(label), prop))
 
+/** @brief Converts a signal to a gpio_dt_spec pointer name.
+ *
+ * Prepend "DT_" to the the gpio_signal name to create a name that
+ * can be used as a pointer to gpio_dt_spec.
+ */
+#define GPIO_DT_NAME(signal) DT_CAT(DT_, signal)
+
+#define GPIO_DT_LABEL(label) GPIO_DT_NAME(GPIO_SIGNAL(DT_NODELABEL(label)))
+/*
+ * Declare the pointers that refer to the gpio_dt_spec entries
+ * for each GPIO.
+ */
+struct gpio_dt_spec;
+
+#define GPIO_DT_PTR_DECL(id) extern const struct gpio_dt_spec * \
+	GPIO_DT_NAME(GPIO_SIGNAL(id));
+
+DT_FOREACH_CHILD(DT_PATH(named_gpios), GPIO_DT_PTR_DECL)
+
+#undef GPIO_DT_PTR_DECL
+
 /*
  * Define enums for IO expanders and signals
  */
