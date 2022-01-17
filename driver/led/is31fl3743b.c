@@ -24,7 +24,7 @@
 
 #define IS31FL3743B_CMD_ID	0b101
 #define IS31FL3743B_PAGE_PWM	0
-#define IS31FL3743B_PAGE_SCLAE	1
+#define IS31FL3743B_PAGE_SCALE	1
 
 #define IS31FL3743B_REG_CONFIG		0x00
 #define IS31FL3743B_REG_GCC		0x01
@@ -79,10 +79,7 @@ static int _set_config(struct rgbkbd *ctx, uint8_t value)
 
 static int _enable(struct rgbkbd *ctx, bool enable)
 {
-	if (enable)
-		gpio_set_level(GPIO_RGBKBD_SDB_L, 0);
-	else
-		gpio_set_level(GPIO_RGBKBD_SDB_L, 1);
+	gpio_set_level(GPIO_RGBKBD_SDB_L, enable ? 1 : 0);
 
 	return EC_SUCCESS;
 }
@@ -123,7 +120,7 @@ static int _set_scale(struct rgbkbd *ctx, uint8_t offset, uint8_t scale,
 
 	msg->cmd.read = 0;
 	msg->cmd.id = IS31FL3743B_CMD_ID;
-	msg->cmd.page = IS31FL3743B_PAGE_SCLAE;
+	msg->cmd.page = IS31FL3743B_PAGE_SCALE;
 
 	if (offset + frame_len > sizeof(buf))
 		return EC_ERROR_OVERFLOW;

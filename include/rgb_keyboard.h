@@ -12,15 +12,15 @@
 
 struct rgbkbd_cfg {
 	/* Driver for LED IC */
-	const struct rgbkbd_drv *drv;
+	const struct rgbkbd_drv * const drv;
 	/* SPI/I2C port (i.e. index of spi_devices[], i2c_ports[]) */
 	union {
-		const uint8_t i2c;
-		const uint8_t spi;
+		uint8_t i2c;
+		uint8_t spi;
 	};
 	/* Grid size */
-	const uint8_t col_len;
-	const uint8_t row_len;
+	uint8_t col_len;
+	uint8_t row_len;
 };
 
 struct rgbkbd {
@@ -35,7 +35,7 @@ struct rgbkbd_drv {
 	int (*reset)(struct rgbkbd *ctx);
 	/* Initialize the charger. */
 	int (*init)(struct rgbkbd *ctx);
-	/* Enable/disable the charger. */
+	/* Enable/disable the charger. Usually disabled means stand-by. */
 	int (*enable)(struct rgbkbd *ctx, bool enable);
 
 	/**
