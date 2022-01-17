@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "48f457f1_daf84edd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2022-01-17T19:04:17Z",
+      "side": 1,
+      "message": "Checked if register and mask for selected clocks matches documentation in __hw_timer_enable_clock() for both discovery and twinkie.",
+      "revId": "e52cd326097ae323af4f805280da3326afadcd0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
