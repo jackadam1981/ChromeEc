@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3fe327ee_4b3acb95",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1251537
+      },
+      "writtenOn": "2022-01-17T02:18:54Z",
+      "side": 1,
+      "message": "JFYI: In fact, to quote nx20p3484\u0027s datasheet \"In dead battery mode, system can read and write I2C register, but NX20P3483 will not\nresponse to the control commands except for DB_EXIT bit\"\n\nI\u0027m not sure whether it\u0027s some part of codes touching control commands prior DB_EXIT which causes problems.\nHowever the description seems to be a bit off.",
+      "range": {
+        "startLine": 15,
+        "startChar": 13,
+        "endLine": 16,
+        "endChar": 12
+      },
+      "revId": "91b276d85bb32f3f5e1a090da4db9dba6e308897",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
