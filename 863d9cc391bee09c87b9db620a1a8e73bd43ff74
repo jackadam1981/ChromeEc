@@ -22,6 +22,30 @@
       },
       "revId": "863d9cc391bee09c87b9db620a1a8e73bd43ff74",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dae683a9_8e6db9f7",
+        "filename": "docs/zephyr/zephyr_gpio.md",
+        "patchSetId": 14
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-01-17T10:29:04Z",
+      "side": 1,
+      "message": "Hey https://docs.zephyrproject.org/latest/reference/kconfig/CONFIG_GPIO.html works for me. Feels like a bit noisy but at least it has expanded all the overrides, I\u0027ll link to it, we can always change it later if it breaks again.",
+      "parentUuid": "a4f9b9d8_d13bf590",
+      "range": {
+        "startLine": 207,
+        "startChar": 0,
+        "endLine": 207,
+        "endChar": 155
+      },
+      "revId": "863d9cc391bee09c87b9db620a1a8e73bd43ff74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

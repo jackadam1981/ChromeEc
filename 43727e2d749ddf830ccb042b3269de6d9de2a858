@@ -810,6 +810,30 @@
       },
       "revId": "43727e2d749ddf830ccb042b3269de6d9de2a858",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "31016521_e87095d3",
+        "filename": "docs/zephyr/zephyr_gpio.md",
+        "patchSetId": 12
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-01-17T10:29:04Z",
+      "side": 1,
+      "message": "Cool I\u0027ll leave it. I\u0027d also expect those URLs less likely to change as code gets refactored around.",
+      "parentUuid": "e1193eaf_87de121d",
+      "range": {
+        "startLine": 166,
+        "startChar": 0,
+        "endLine": 166,
+        "endChar": 138
+      },
+      "revId": "43727e2d749ddf830ccb042b3269de6d9de2a858",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
