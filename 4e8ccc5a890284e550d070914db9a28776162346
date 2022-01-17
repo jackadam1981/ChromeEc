@@ -404,6 +404,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e071f14a_86cbde60",
+        "filename": "chip/stm32/clock-stm32f4.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 507,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2022-01-17T17:14:24Z",
+      "side": 1,
+      "message": "Experiment results: It turned out that when I started enroll session and touched sensor once, FPU interrupt (81) became pending and as a result CPU was not sleeping (it was just looping in idle task). FPU interrupt probably comes from FP library which performs matching.\n\nIt reproduces also on dragonclaw, but private build is needed. Checked what happens without my change: CPU enters sleep/deep sleep properly (WFI doesn\u0027t behave like no-op. I used to think that when any interrupt is pending then WFI will be no-op, but now looks like the interrupt must be pending and enabled in NVIC, but they can be disabled using \"cpsid i\" https://www.keil.com/support/man/docs/armasm/armasm_dom1361289926427.htm).\n\nWhat we can do with that:\n- We can check if there are pending interrupts which are enabled in NVIC (checked it, and the problem doesn\u0027t occur).\n- Same as previous one, but maybe cleaner: We can use VECTPENDING bits or ISRPENDING bit in ICSR register.\n- We can go back to previous version of this CL (which was checking if only timer interrupt is pending)\n- We can clear FPU status register after FP matching library is used and clear pending bit in NVIC\n- We can add handler for FPU events.\n\nWhat we can\u0027t do:\n- We can\u0027t mask FPU exceptions (there is no register which could allow doing that)",
+      "parentUuid": "a2c7e697_c23e4d19",
+      "range": {
+        "startLine": 506,
+        "startChar": 27,
+        "endLine": 507,
+        "endChar": 34
+      },
+      "revId": "4e8ccc5a890284e550d070914db9a28776162346",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c98acf78_9335a2d7",
         "filename": "chip/stm32/clock-stm32f4.c",
         "patchSetId": 4
