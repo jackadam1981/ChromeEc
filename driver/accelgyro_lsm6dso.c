@@ -228,9 +228,9 @@ static int accelgyro_config_fifo(const struct motion_sensor_t *s)
 }
 
 /**
- * lsm6dso_interrupt - interrupt from int1 pin of sensor
+ * lsm6dso_interrupt_wrap - interrupt with no args.
  */
-void lsm6dso_interrupt(enum gpio_signal signal)
+void lsm6dso_interrupt_wrap(void)
 {
 	if (IS_ENABLED(CONFIG_ACCEL_FIFO))
 		last_interrupt_timestamp = __hw_clock_source_read();
@@ -239,7 +239,15 @@ void lsm6dso_interrupt(enum gpio_signal signal)
 }
 
 /**
- * irq_handler - bottom half of the interrupt task sheduled by consumer
+ * lsm6dso_interrupt - interrupt from int1 pin of sensor
+ */
+void lsm6dso_interrupt(enum gpio_signal signal)
+{
+	lsm6dso_interrupt_wrap();
+}
+
+/**
+ * irq_handler - bottom half of the interrupt task scheduled by consumer
  */
 static int irq_handler(struct motion_sensor_t *s, uint32_t *event)
 {
