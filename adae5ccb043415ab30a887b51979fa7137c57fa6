@@ -443,6 +443,24 @@
       "message": "Would you mind splitting this driver change into its own CL with an explanation for this new code?  And explaining why this can be hardcoded rather than a search through anx7447_i2c_addrs_flags[] like the TCPC init uses?",
       "revId": "adae5ccb043415ab30a887b51979fa7137c57fa6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29ec34ce_b201181d",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 513,
+      "author": {
+        "id": 1483835
+      },
+      "writtenOn": "2022-01-17T06:19:07Z",
+      "side": 1,
+      "message": "Thank you very much! I am working on it and will back soon.",
+      "parentUuid": "93bc1489_a2e529bd",
+      "revId": "adae5ccb043415ab30a887b51979fa7137c57fa6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
