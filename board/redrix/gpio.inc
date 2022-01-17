@@ -89,7 +89,6 @@ GPIO(C0_CHARGE_LED_AMBER_L,          PIN(C, 4), GPIO_OUT_HIGH)	/* Amber C0 port 
 GPIO(C0_CHARGE_LED_WHITE_L,          PIN(C, 3), GPIO_OUT_HIGH)	/* White C0 port */
 GPIO(C1_CHARGE_LED_AMBER_L,          PIN(5, 7), GPIO_OUT_HIGH)	/* Amber C1 port */
 GPIO(C1_CHARGE_LED_WHITE_L,          PIN(9, 4), GPIO_OUT_HIGH)	/* White C1 port */
-GPIO(PWR_LED_WHITE_L,                PIN(C, 2), GPIO_OUT_HIGH)	/* Power LED */
 
 /* UART alternate functions */
 ALTERNATE(PIN_MASK(6, 0x30), 0, MODULE_UART, 0)              /* GPIO64/CR_SIN1, GPO65/CR_SOUT1/FLPRG1_L */
@@ -110,6 +109,7 @@ ALTERNATE(PIN_MASK(7, 0x08), 0, MODULE_PWM, 0)               /* GPIO73/TA2 */
 ALTERNATE(PIN_MASK(6, 0x01), 0, MODULE_PWM, 0)               /* GPIO60/PWM7 */
 ALTERNATE(PIN_MASK(8, 0x01), 0, MODULE_PWM, 0)               /* GPIO80/PWM3 */
 ALTERNATE(PIN_MASK(B, 0x80), 0, MODULE_PWM, 0)               /* GPIOB7/PWM5 */
+ALTERNATE(PIN_MASK(C, 0x04), 0, MODULE_PWM, 0)               /* GPIOC2/PWM1/I2C6_SCL0 */
 
 /* ADC alternate functions */
 ALTERNATE(PIN_MASK(3, 0x10), 0, MODULE_ADC, 0)               /* GPIO34/PS2_DAT2/ADC6 */

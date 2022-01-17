@@ -11,6 +11,11 @@
 #include "pwm_chip.h"
 
 const struct pwm_t pwm_channels[] = {
+	[PWM_CH_POWER_LED] = {
+		.channel = 1,
+		.flags = PWM_CONFIG_ACTIVE_LOW | PWM_CONFIG_DSLEEP,
+		.freq = 4800,
+	},
 	[PWM_CH_KBLIGHT] = {
 		.channel = 3,
 		.flags = 0,
@@ -34,3 +39,10 @@ const struct pwm_t pwm_channels[] = {
 	},
 };
 BUILD_ASSERT(ARRAY_SIZE(pwm_channels) == PWM_CH_COUNT);
+
+static void board_pwm_init(void)
+{
+	pwm_enable(PWM_CH_POWER_LED, 1);
+	pwm_set_duty(PWM_CH_POWER_LED, 0);
+}
+DECLARE_HOOK(HOOK_INIT, board_pwm_init, HOOK_PRIO_DEFAULT);

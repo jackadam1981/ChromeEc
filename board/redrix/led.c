@@ -15,7 +15,9 @@
 #include "gpio.h"
 #include "host_command.h"
 #include "led_common.h"
+#include "pwm.h"
 #include "task.h"
+#include "util.h"
 
 #define BAT_LED_ON 0
 #define BAT_LED_OFF 1
@@ -80,10 +82,13 @@ void led_set_color_power(enum led_color color)
 {
 	switch (color) {
 	case LED_OFF:
-		gpio_set_level(GPIO_PWR_LED_WHITE_L, POWER_LED_OFF);
+		pwm_set_duty(PWM_CH_POWER_LED, 0);
 		break;
 	case LED_WHITE:
-		gpio_set_level(GPIO_PWR_LED_WHITE_L, POWER_LED_ON);
+		if (get_board_id() == 1)
+			pwm_set_duty(PWM_CH_POWER_LED, 50);
+		else
+			pwm_set_duty(PWM_CH_POWER_LED, 100);
 		break;
 	default:
 		break;
@@ -92,6 +97,8 @@ void led_set_color_power(enum led_color color)
 
 void led_get_brightness_range(enum ec_led_id led_id, uint8_t *brightness_range)
 {
+	memset(brightness_range, '\0',
+	       sizeof(*brightness_range) * EC_LED_COLOR_COUNT);
 	switch (led_id) {
 	case EC_LED_ID_LEFT_LED:
 		brightness_range[EC_LED_COLOR_WHITE] = 1;
@@ -102,7 +109,7 @@ void led_get_brightness_range(enum ec_led_id led_id, uint8_t *brightness_range)
 		brightness_range[EC_LED_COLOR_AMBER] = 1;
 		break;
 	case EC_LED_ID_POWER_LED:
-		brightness_range[EC_LED_COLOR_WHITE] = 1;
+		brightness_range[EC_LED_COLOR_WHITE] = 100;
 		break;
 	default:
 		break;
@@ -130,9 +137,10 @@ int led_set_brightness(enum ec_led_id led_id, const uint8_t *brightness)
 		break;
 	case EC_LED_ID_POWER_LED:
 		if (brightness[EC_LED_COLOR_WHITE] != 0)
-			led_set_color_power(LED_WHITE);
+			pwm_set_duty(PWM_CH_POWER_LED,
+				brightness[EC_LED_COLOR_WHITE]);
 		else
-			led_set_color_power(LED_OFF);
+			pwm_set_duty(PWM_CH_POWER_LED, 0);
 		break;
 	default:
 		return EC_ERROR_PARAM1;

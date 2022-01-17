@@ -246,7 +246,8 @@ enum battery_type {
 };
 
 enum pwm_channel {
-	PWM_CH_KBLIGHT = 0,		/* PWM3 */
+	PWM_CH_POWER_LED = 0,		/* PWM1 */
+	PWM_CH_KBLIGHT,			/* PWM3 */
 	PWM_CH_FAN,			/* PWM5 */
 	PWM_CH_FAN2,			/* PWM7 */
 	PWM_CH_COUNT
