@@ -116,6 +116,30 @@
       },
       "revId": "a1013328e09f645e4ba7bf25b6760eadc27fc9a8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ea07665_a81e5004",
+        "filename": "board/beadrix/board.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1483835
+      },
+      "writtenOn": "2022-01-17T03:52:54Z",
+      "side": 1,
+      "message": "As Beadrix\u0027s charger chip RAA489000 is refer to Waddledoo, I modify it as Waddledoo setting.",
+      "parentUuid": "aa02f579_ea35e63e",
+      "range": {
+        "startLine": 34,
+        "startChar": 36,
+        "endLine": 34,
+        "endChar": 38
+      },
+      "revId": "a1013328e09f645e4ba7bf25b6760eadc27fc9a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
