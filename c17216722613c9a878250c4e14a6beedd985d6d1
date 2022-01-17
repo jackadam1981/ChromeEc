@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d3f354a3_807a8bd5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2022-01-17T22:57:42Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "44c036ed_50859752",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 39
+      },
+      "revId": "c17216722613c9a878250c4e14a6beedd985d6d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bc4551d3_4bebbce2",
         "filename": "zephyr/drivers/cros_rtc/cros_rtc_xec.c",
         "patchSetId": 2
@@ -37,6 +61,30 @@
       "writtenOn": "2022-01-14T21:17:42Z",
       "side": 1,
       "message": "Make a bug and reference it like:\n\n/*\n * TODO(b/TicketNumber): Short Description\n */",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 3
+      },
+      "revId": "c17216722613c9a878250c4e14a6beedd985d6d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d011ebd6_6fb66528",
+        "filename": "zephyr/drivers/cros_rtc/cros_rtc_xec.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2022-01-17T22:57:42Z",
+      "side": 1,
+      "message": "will remove this comments, Chrome design doesn\u0027t need Week Timer.",
+      "parentUuid": "bc4551d3_4bebbce2",
       "range": {
         "startLine": 38,
         "startChar": 0,
@@ -83,6 +131,30 @@
       "writtenOn": "2022-01-14T21:17:42Z",
       "side": 1,
       "message": "Make a bug and reference it like:\n\n/*\n * TODO(b/TicketNumber): Short Description\n */",
+      "range": {
+        "startLine": 58,
+        "startChar": 1,
+        "endLine": 58,
+        "endChar": 11
+      },
+      "revId": "c17216722613c9a878250c4e14a6beedd985d6d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8a135bb_81df5831",
+        "filename": "zephyr/drivers/cros_rtc/cros_rtc_xec.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2022-01-17T22:57:42Z",
+      "side": 1,
+      "message": "created an issuetracker as a reference:\nhttps://partnerissuetracker.corp.google.com/u/0/issues/214988394\n\nwill update comments",
+      "parentUuid": "5f3d773c_e901ba09",
       "range": {
         "startLine": 58,
         "startChar": 1,
