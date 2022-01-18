@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8c6d5723_3d6e5496",
+        "filename": "chip/stm32/registers.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-01-18T21:52:55Z",
+      "side": 1,
+      "message": "I think it\u0027s a good change (cleaner), but I would put it in a separate CL so that it doesn\u0027t get mixed up with the other changes in this CL. Since the new CL with the IRQ_TIM change will be small and simple we can go ahead and submit it even while this CL undergoes more revisions.",
+      "parentUuid": "b303d61d_96c5a486",
+      "range": {
+        "startLine": 145,
+        "startChar": 0,
+        "endLine": 145,
+        "endChar": 44
+      },
+      "revId": "d96c0bcb28b26c86d7302619bf4dd992ed5d489d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "79bce050_0dbcb6e6",
         "filename": "core/cortex-m/task.c",
         "patchSetId": 12

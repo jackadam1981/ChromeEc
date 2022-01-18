@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf5a66cb_bfcccf9a",
+        "filename": "chip/stm32/clock-stm32f4.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 466,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-01-18T21:52:55Z",
+      "side": 1,
+      "message": "I created a CL a few days back to remove the remaining asm calls to disable interrupts: https://crrev.com/c/3373621. It hasn\u0027t been merged yet, so it\u0027s still showing up here.",
+      "parentUuid": "eecca605_e8127611",
+      "range": {
+        "startLine": 466,
+        "startChar": 2,
+        "endLine": 466,
+        "endChar": 26
+      },
+      "revId": "4291f41e786ddd47e53c1c0bbb152c05597a9e6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3f9526c7_510971fe",
