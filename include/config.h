@@ -1543,6 +1543,7 @@
 #undef  CONFIG_CMD_BUTTON
 #define CONFIG_CMD_CBI
 #undef  CONFIG_CMD_PD_SRCCAPS_REDUCED_SIZE
+#undef  CONFIG_CMD_VBUS
 
 /*
  * HAS_TASK_CHIPSET implies the GSC presence.
