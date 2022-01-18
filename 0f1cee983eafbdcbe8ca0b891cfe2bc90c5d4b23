@@ -16,6 +16,24 @@
       "message": "Nit: might be clearer to early-return so the actual task logic isn\u0027t indented.",
       "revId": "0f1cee983eafbdcbe8ca0b891cfe2bc90c5d4b23",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c0023511_77fc8d70",
+        "filename": "common/usb_charger.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-01-18T01:02:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1ddfbf40_c1dff534",
+      "revId": "0f1cee983eafbdcbe8ca0b891cfe2bc90c5d4b23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
