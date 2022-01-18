@@ -102,6 +102,8 @@ static int tasks_started;
 
 task_id_t task_get_current(void)
 {
+	if (!tasks_started)
+		printk("task_get_current called before tasks started\n");
 	/* Include sysworkq entry in search for the task ID */
 	for (size_t i = 0; i < TASK_ID_COUNT + 1; ++i) {
 		if (shimmed_tasks_dyn[i].zephyr_tid == k_current_get())

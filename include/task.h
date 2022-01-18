@@ -380,8 +380,15 @@ void task_clear_pending_irq(int irq);
 #ifdef CONFIG_ZEPHYR
 typedef struct k_mutex mutex_t;
 
-#define mutex_lock(mtx) (k_mutex_lock(mtx, K_FOREVER))
-#define mutex_unlock(mtx) (k_mutex_unlock(mtx))
+#define mutex_lock(mtx) (in_interrupt_context()  \
+	? printk("ISR lock in %s\n", __func__),   \
+	  k_mutex_lock(mtx, K_FOREVER)		\
+	: k_mutex_lock(mtx, K_FOREVER))
+#define mutex_unlock(mtx) (in_interrupt_context()  \
+	? printk("ISR lock in %s\n", __func__),   \
+	  k_mutex_unlock(mtx)		\
+	: k_mutex_unlock(mtx))
+
 #else
 struct mutex {
 	uint32_t lock;
