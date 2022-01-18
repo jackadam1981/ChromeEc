@@ -145,6 +145,13 @@ void anx7447_tcpc_clear_hpd_status(int port);
 void anx7447_tcpc_update_hpd_status(const struct usb_mux *me,
 				    mux_state_t mux_state,
 				    bool *ack_required);
+/*
+ * Get VBUS voltage through ADC.
+ *
+ * @param port		The given port to measure VBUS
+ * @return		Vbus voltage of the port in mV
+ */
+int anx7447_get_vbus_voltage(int port);
 
 /**
  * Erase OCM flash if it's not empty
