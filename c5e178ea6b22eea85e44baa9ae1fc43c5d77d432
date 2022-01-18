@@ -22,6 +22,23 @@
       },
       "revId": "c5e178ea6b22eea85e44baa9ae1fc43c5d77d432",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a8fd456_1b4b8b01",
+        "filename": "board/taniks/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2022-01-18T23:46:22Z",
+      "side": 1,
+      "message": "You need to add this to properly disable the buttons:\n#undef CONFIG_VOLUME_BUTTONS",
+      "revId": "c5e178ea6b22eea85e44baa9ae1fc43c5d77d432",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
