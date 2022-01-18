@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8dc21e5c_1976f29d",
+        "filename": "zephyr/include/dt-bindings/gpio_defines.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-01-18T22:56:16Z",
+      "side": 1,
+      "message": "Add a TODO to remove these this PR (or an alternative) merges: https://github.com/zephyrproject-rtos/zephyr/pull/39767",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 52
+      },
+      "revId": "4374e00e15266565d00b50c81152d13effb26775",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00bfd236_73854c9d",
+        "filename": "zephyr/shim/include/gpio/gpio_int.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-01-18T22:56:16Z",
+      "side": 1,
+      "message": "Forward reference?  Probably good to note actual definition is in the C file.",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 23
+      },
+      "revId": "4374e00e15266565d00b50c81152d13effb26775",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3dc37f13_a400821d",
+        "filename": "zephyr/shim/src/gpio.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-01-18T22:56:16Z",
+      "side": 1,
+      "message": "Can this be split into a separate file: gpio.c and gpio_int.c?",
+      "revId": "4374e00e15266565d00b50c81152d13effb26775",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0205592d_95b0f6b7",
+        "filename": "zephyr/shim/src/gpio.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-01-18T22:56:16Z",
+      "side": 1,
+      "message": "Run clang_format on this file.",
+      "range": {
+        "startLine": 274,
+        "startChar": 0,
+        "endLine": 281,
+        "endChar": 0
+      },
+      "revId": "4374e00e15266565d00b50c81152d13effb26775",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
