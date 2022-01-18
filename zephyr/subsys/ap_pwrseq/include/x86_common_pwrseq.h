@@ -101,7 +101,6 @@ struct common_pwrseq_config {
 	int pch_dsw_pwrok_delay_ms;
 	int pch_pm_pwrbtn_delay_ms;
 	int pch_rsmrst_delay_ms;
-	int vr_en_vccin_delay_ms;
 };
 
 /* This encapsulates the attributes of the state machine */
@@ -109,5 +108,4 @@ struct power_seq_context {
 	/* On power-on start boot up sequence */
 	enum power_states_ndsx power_state;
 };
-
 #endif /* __X86_COMMON_H__ */

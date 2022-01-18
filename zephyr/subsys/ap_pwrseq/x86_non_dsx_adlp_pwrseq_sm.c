@@ -7,7 +7,14 @@
 
 LOG_MODULE_DECLARE(ap_pwrseq, 4);
 
-static struct chipset_pwrseq_config chip_cfg;
+static const struct chipset_pwrseq_config chip_cfg = {
+	.pch_pwrok_delay_ms = DT_INST_PROP(0, pch_pwrok_delay),
+	.sys_pwrok_delay_ms = DT_INST_PROP(0, sys_pwrok_delay),
+	.vccst_pwrgd_delay_ms = DT_INST_PROP(0, vccst_pwrgd_delay),
+	.vrrdy_timeout_ms = DT_INST_PROP(0, vrrdy_timeout),
+	.sys_reset_delay_ms = DT_INST_PROP(0, sys_reset_delay),
+	.all_sys_pwrgd_timeout = DT_INST_PROP(0, all_sys_pwrgd_timeout),
+};
 
 /* Power sequencing GPIOs */
 struct gpio_config power_seq_gpios[] = {
@@ -96,6 +103,7 @@ int all_sys_pwrgd_handler(void)
 	int retry = 0;
 
 	/* TODO: Add condition for no power sequencer */
+	k_msleep(chip_cfg.all_sys_pwrgd_timeout);
 	sys_pg = intel_x86_get_pg_ec_all_sys_pwrgd();
 
 	/* Todo: Remove workaround for the retry
@@ -310,14 +318,7 @@ void g3s5_action_handler(void)
 
 void init_chipset_pwr_seq_state(void)
 {
-	/* TODO: Read from device tree */
-	/* Override any common cfg values here */
-	chip_cfg.pch_pwrok_delay_ms = 2;
-	chip_cfg.sys_pwrok_delay_ms = 45;
-
-	chip_cfg.vccst_pwrgd_delay_ms = 2;
-	chip_cfg.vrrdy_timeout_ms = 50;
-	chip_cfg.sys_reset_delay_ms = 32;
+	/* Do nothing */
 }
 
 enum power_states_ndsx chipset_pwr_sm_run(enum power_states_ndsx curr_state)

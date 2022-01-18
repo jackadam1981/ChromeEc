@@ -19,7 +19,13 @@ static K_KERNEL_STACK_DEFINE(pwrseq_thread_stack, 1024);
 static struct k_thread pwrseq_thread_data;
 k_tid_t pwrseq_thread_id;
 struct power_seq_context pwrseq_ctx;
-struct common_pwrseq_config com_cfg;
+
+const struct common_pwrseq_config com_cfg = {
+	.pch_dsw_pwrok_delay_ms = DT_INST_PROP(0, dsw_pwrok_delay),
+	.pch_pm_pwrbtn_delay_ms =  DT_INST_PROP(0, pm_pwrbtn_delay),
+	.pch_rsmrst_delay_ms = DT_INST_PROP(0, rsmrst_delay),
+	.wait_signal_timeout_ms = DT_INST_PROP(0, wait_signal_timeout),
+};
 
 /**
  * @brief power_state names for debug
