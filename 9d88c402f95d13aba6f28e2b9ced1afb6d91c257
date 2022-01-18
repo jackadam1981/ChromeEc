@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "974a0990_9415cc31",
+        "filename": "util/config_allowed.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-01-18T19:48:01Z",
+      "side": 1,
+      "message": "CONFIG_PLATFORM_EC_CONSOLE_CMD_ACCEL_SPOOF exists.  I guess this script fails because console command Kconfigs include the \"_CONSOLE_CMD_\" in the name?",
+      "range": {
+        "startLine": 231,
+        "startChar": 0,
+        "endLine": 231,
+        "endChar": 22
+      },
+      "revId": "9d88c402f95d13aba6f28e2b9ced1afb6d91c257",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
