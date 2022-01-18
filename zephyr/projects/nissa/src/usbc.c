@@ -7,6 +7,8 @@
 #include "chipset.h"
 #include "hooks.h"
 #include "usb_mux.h"
+#include "system.h"
+#include "driver/charger/isl923x_public.h"
 #include "driver/tcpm/tcpci.h"
 #include "driver/tcpm/raa489000.h"
 
@@ -50,6 +52,21 @@ struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 		.hpd_update = &virtual_hpd_update,
 	},
 };
+
+/*
+ * Board specific hibernate function.
+ */
+__override void board_hibernate_late(void)
+{
+	raa489000_hibernate(CHARGER_PRIMARY, true);
+	if (board_get_usb_pd_port_count() == 2)
+		raa489000_hibernate(CHARGER_SECONDARY, true);
+
+	gpio_set_level(GPIO_EN_SLP_Z, 1);
+
+	/* should not reach here */
+	__builtin_unreachable();
+}
 
 static uint8_t cached_usb_pd_port_count;
 
