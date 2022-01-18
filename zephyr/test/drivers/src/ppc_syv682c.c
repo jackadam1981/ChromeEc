@@ -6,16 +6,11 @@
 #include <ztest.h>
 
 #include "syv682x.h"
+#include "test_state.h"
 
-static void test_board_is_syv682c(void)
+ZTEST(ppc_syv682c, test_board_is_syv682c)
 {
 	zassert_true(syv682x_board_is_syv682c(0), NULL);
 }
 
-void test_suite_ppc_syv682c(void)
-{
-	ztest_test_suite(
-		ppc_syv682c,
-		ztest_unit_test(test_board_is_syv682c));
-	ztest_run_test_suite(ppc_syv682c);
-}
+ZTEST_SUITE(ppc_syv682c, drivers_predicate_post_main, NULL, NULL, NULL, NULL);
