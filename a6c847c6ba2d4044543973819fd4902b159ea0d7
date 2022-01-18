@@ -34,6 +34,24 @@
       "parentUuid": "706f0480_933c9cf9",
       "revId": "a6c847c6ba2d4044543973819fd4902b159ea0d7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c0c829e_e0241e91",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-01-18T17:59:10Z",
+      "side": 1,
+      "message": "I changed the CL to do this for the PD integration test. I\u0027m not sure which way is better in the long run. Most of the TCPCs we\u0027re working with today are 2.0, so it would make sense for our only test config to be 2.0. OTOH, changing this test to run against 1.0 avoids changing what happens in the other tests. Ideally, we would run all of our PD tests against a 1.0 config and a 2.0 config.\n\nI\u0027m OK with this way for now if you are.",
+      "parentUuid": "5c43aa21_450d3190",
+      "revId": "a6c847c6ba2d4044543973819fd4902b159ea0d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
