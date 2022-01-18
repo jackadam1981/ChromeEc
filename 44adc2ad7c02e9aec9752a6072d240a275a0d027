@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11c3df13_22dd7211",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-01-18T01:11:47Z",
+      "side": 1,
+      "message": "This seems stilted and seems to suggest that it enables support for low power mode rather than making it conditional on the global LPM feature being enabled. \"make low power mode conditional on config\"?",
+      "range": {
+        "startLine": 7,
+        "startChar": 11,
+        "endLine": 7,
+        "endChar": 54
+      },
+      "revId": "44adc2ad7c02e9aec9752a6072d240a275a0d027",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
