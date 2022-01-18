@@ -34,6 +34,24 @@
       "parentUuid": "cf4c0c1d_87c781f9",
       "revId": "a6c45e669ddd92cab8635d59be2df46777d89d79",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "685505db_031e737b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-01-18T23:31:57Z",
+      "side": 1,
+      "message": "It\u0027s possible this was caught up with the bus faults, but we can\ngo back to the default once we have confirmed this is OK.\nI am not quite sure why my setup has this delay happening (the console gets a bit scrambled), but having the longer watchdog means it won\u0027t reboot while this is happening.",
+      "parentUuid": "5f60d5ab_e8d1181f",
+      "revId": "a6c45e669ddd92cab8635d59be2df46777d89d79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
