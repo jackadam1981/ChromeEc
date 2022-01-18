@@ -22,6 +22,30 @@
       },
       "revId": "c72b1cd52defdf26dc64bcbf3d5c8d25e08efa0f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27a748f0_ba7231a2",
+        "filename": "zephyr/dts/bindings/gpio/gpio-enum-name.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-01-18T21:24:02Z",
+      "side": 1,
+      "message": "I am not sure how \u0027near\u0027 the near future is - I think enum-name will be deprecated for all board level code, but there is still a significant amount of common code.\nWhat we will see is the removal of most of the enum-names except for GPIO names that are used in common code (of which this is one).",
+      "parentUuid": "1b1def5c_56156774",
+      "range": {
+        "startLine": 8,
+        "startChar": 8,
+        "endLine": 8,
+        "endChar": 30
+      },
+      "revId": "c72b1cd52defdf26dc64bcbf3d5c8d25e08efa0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
