@@ -16,6 +16,24 @@
       "message": "Uploading a CL here, have passing tests with the host command enabled.",
       "revId": "b2c9a4222eaf2ef2a493d11871de2419786e7052",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9db99462_5ac76346",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-01-18T23:27:05Z",
+      "side": 1,
+      "message": "I\u0027d just upload another CL in its own stack. You shouldn\u0027t have to interact with my stack of WIP CLs, and I don\u0027t think this CL has any unmerged dependencies. You can get a new change ID by amending the commit message to delete the Change-Id line. It will generate a new one.",
+      "parentUuid": "af10bbfe_51d0cb9d",
+      "revId": "b2c9a4222eaf2ef2a493d11871de2419786e7052",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
