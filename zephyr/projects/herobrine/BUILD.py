@@ -15,6 +15,7 @@ def register_variant(
             here / "adc.dts",
             here / "battery.dts",
             here / "gpio.dts",
+            here / "common.dts",
             here / "i2c.dts",
             here / "motionsense.dts",
             here / "pwm.dts",
