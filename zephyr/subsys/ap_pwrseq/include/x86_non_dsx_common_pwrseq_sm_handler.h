@@ -76,6 +76,19 @@
 	.net_name = GPIO_NET_NAME(node), \
 	.intr_flags = GPIO_INT_EDGE_BOTH
 
+#define DT_DRV_COMPAT ap_pwrseq
+
+/*
+ * Power signal flags:
+ *
+ * +-----------------+------------------------------------+
+ * |     Bit #       |           Description              |
+ * +------------------------------------------------------+
+ * |       0         |      Active level (low/high)       |
+ * +------------------------------------------------------+
+ * |     1 : 32      |            Reserved                |
+ * +-----------------+------------------------------------+
+ */
 #define POWER_SIGNAL_ACTIVE_STATE BIT(0)
 #define POWER_SIGNAL_ACTIVE_LOW   0
 #define POWER_SIGNAL_ACTIVE_HIGH  BIT(0)

@@ -144,7 +144,6 @@ struct common_pwrseq_config {
 	int pch_dsw_pwrok_delay_ms;
 	int pch_pm_pwrbtn_delay_ms;
 	int pch_rsmrst_delay_ms;
-	int vr_en_vccin_delay_ms;
 	/* Default timeout to wait for power signal */
 	int wait_signal_timeout_ms;
 };
@@ -169,5 +168,4 @@ struct power_seq_context {
 	/* S5 inactive time in seconds before power state change */
 	int s5_timeout_s;
 };
-
 #endif /* __X86_COMMON_H__ */
