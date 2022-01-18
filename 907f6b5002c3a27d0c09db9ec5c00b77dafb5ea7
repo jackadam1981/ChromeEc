@@ -22,6 +22,30 @@
       },
       "revId": "907f6b5002c3a27d0c09db9ec5c00b77dafb5ea7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d7ae738_193f0e24",
+        "filename": "zephyr/shim/include/zephyr_gpio_signal.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-01-18T00:11:37Z",
+      "side": 1,
+      "message": "That would be an option, but my own view is that if the only reason to include that is to avoid the forward declaration, I think it is cleaner to just use the forward declaration. It\u0027s just more visible this way.",
+      "parentUuid": "b31e186c_0d3cbebc",
+      "range": {
+        "startLine": 86,
+        "startChar": 0,
+        "endLine": 86,
+        "endChar": 20
+      },
+      "revId": "907f6b5002c3a27d0c09db9ec5c00b77dafb5ea7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
