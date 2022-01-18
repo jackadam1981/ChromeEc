@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "96725a80_d2a5e6d0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-01-18T17:20:25Z",
+      "side": 1,
+      "message": "Zephyr GPIO interrupt callbacks do provide arguments - we should be moving to that model.",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 48
+      },
+      "revId": "ab433d1dc45a311e55e0ee0e81f42e2ad6a0bd88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
