@@ -1,0 +1,32 @@
+/* Copyright 2022 The Chromium OS Authors. All rights reserved.
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+/ {
+	model = "ADLRVP_NPCX";
+
+	named-i2c-ports {
+		compatible = "named-i2c-ports";
+
+	};
+
+	named-pwms {
+		compatible = "named-pwms";
+	};
+
+	named-adc-channels {
+		compatible = "named-adc-channels";
+	};
+
+	def-lvol-io-list {
+		compatible = "nuvoton,npcx-lvolctrl-def";
+	};
+};
+
+&spi_fiu0 {
+	int_flash: w25q40@0 {
+		compatible ="jedec,spi-nor";
+		jedec-id = [ef 40 14];
+	};
+};
