@@ -620,6 +620,18 @@ void motion_sense_fifo_reset(void)
 	queue_init(&fifo);
 }
 
+#if defined(CONFIG_ZTEST) && defined(CONFIG_ZTEST_NEW_API)
+#include <ztest.h>
+static void motion_sense_fifo_reset_before(const struct ztest_unit_test *test,
+					    void *data)
+{
+	ARG_UNUSED(test);
+	ARG_UNUSED(data);
+	motion_sense_fifo_reset();
+}
+ZTEST_RULE(motion_sense_fifo_reset, motion_sense_fifo_reset_before, NULL);
+#endif
+
 #ifdef CONFIG_CMD_ACCEL_FIFO
 static int motion_sense_read_fifo(int argc, char **argv)
 {
