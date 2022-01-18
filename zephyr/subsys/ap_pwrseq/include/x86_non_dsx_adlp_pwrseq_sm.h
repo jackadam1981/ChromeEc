@@ -22,6 +22,7 @@ struct chipset_pwrseq_config {
 	int sys_reset_delay_ms;
 	int vccst_pwrgd_delay_ms;
 	int vrrdy_timeout_ms;
+	int all_sys_pwrgd_timeout;
 };
 
 #endif /* __X86_NON_DSX_ADLP_H__ */

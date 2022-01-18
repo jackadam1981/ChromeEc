@@ -144,7 +144,6 @@ struct common_pwrseq_config {
 	int pch_dsw_pwrok_delay_ms;
 	int pch_pm_pwrbtn_delay_ms;
 	int pch_rsmrst_delay_ms;
-	int vr_en_vccin_delay_ms;
 	/* Default timeout to wait for power signal */
 	int wait_signal_timeout_ms;
 };
@@ -171,5 +170,4 @@ struct power_seq_context {
 	/* Indicate should exit G3 power state or not */
 	int want_g3_exit;
 };
-
 #endif /* __X86_COMMON_H__ */
