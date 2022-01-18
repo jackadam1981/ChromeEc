@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f7b004c8_f15c23f8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-01-18T19:58:17Z",
+      "side": 1,
+      "message": "Several things:\n\n1) Is there a bug for this? If not could you create one?\n2) Is there some reason that this is going in here instead of upstream in Zephyr?\n3) I think it would be better to fill out the TODOs before submitting it.",
+      "revId": "90f9ea85c9132192fb4da7039ef23e670a7c2d21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
