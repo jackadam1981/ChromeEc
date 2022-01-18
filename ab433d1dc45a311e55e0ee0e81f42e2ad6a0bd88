@@ -22,6 +22,30 @@
       },
       "revId": "ab433d1dc45a311e55e0ee0e81f42e2ad6a0bd88",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db6a783e_4c3e12b4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-01-18T22:10:48Z",
+      "side": 1,
+      "message": "It\u0027s likely more correct to say that the Zephyr GPIO interrupt handling doesn\u0027t include extra arguments, which is handled in Zephyr by the device config storing whatever private data is necessary for the handler, but none of our code uses the Zephyr device model (yet), so perhaps initially we should add an int argument in the common table and use this as the argument.\nIt should allow a much cleaner binding to the current system.\nLet me try that and see how it looks.",
+      "parentUuid": "96725a80_d2a5e6d0",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 48
+      },
+      "revId": "ab433d1dc45a311e55e0ee0e81f42e2ad6a0bd88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
