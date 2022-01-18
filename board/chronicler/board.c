@@ -4,7 +4,9 @@
  */
 
 /* Chronicler board-specific configuration */
+#include "battery.h"
 #include "button.h"
+#include "charge_state_v2.h"
 #include "common.h"
 #include "accelgyro.h"
 #include "cbi_ec_fw_config.h"
@@ -310,3 +312,71 @@ const int keyboard_factory_scan_pins[][2] = {
 const int keyboard_factory_scan_pins_used =
 			ARRAY_SIZE(keyboard_factory_scan_pins);
 #endif
+
+/******************************************************************************/
+
+/**
+ * Recharging control function
+ * Controls the battery to start charging after self-discharge to 93%.
+ * The battery of chronicler will set desired_current when battery capacity
+ * is under 95%. But for some security reason, chronicler will force the
+ * battery to discharge until 93%, then start charging.
+ */
+
+#define BATTERY_RECHARGING_LEVEL 93
+
+static int charge_allowed = 1;
+
+static void charge_allowed_reset(void)
+{
+	if (extpower_is_present()) {
+		charge_allowed = 1;
+		cprints(CC_CHARGER,
+			"Recharging control: allowed to charging due to AC changed.");
+	}
+}
+DECLARE_HOOK(HOOK_AC_CHANGE, charge_allowed_reset, HOOK_PRIO_DEFAULT);
+
+/* charger profile override */
+int charger_profile_override(struct charge_state_data *curr)
+{
+	/* If battery not present ,Should do nothing. */
+	if (battery_hw_present() != BP_YES)
+		return 0;
+
+	/* Don't override anything if read battery some information fail. */
+	if ((curr->batt.flags & BATT_FLAG_BAD_STATUS) &&
+	    (curr->batt.status & BATT_FLAG_BAD_STATE_OF_CHARGE))
+		return 0;
+
+	/**
+	 * Disable charge_allowed when battery reach FULLY_CHARGED,
+	 * And enable again when AC changed or battery less than or
+	 * equal to BATTERY_RECHARGING_LEVEL.
+	 */
+	if (curr->batt.status & STATUS_FULLY_CHARGED)
+		charge_allowed = 0;
+
+	if (!charge_allowed) {
+		if (curr->batt.state_of_charge > BATTERY_RECHARGING_LEVEL) {
+			curr->requested_current = 0;
+			cprints(CC_CHARGER,
+				"Recharging control: Force battery discharge");
+		} else
+			charge_allowed = 1;
+	}
+
+	return 0;
+}
+
+enum ec_status charger_profile_override_get_param(uint32_t param,
+				uint32_t *value)
+{
+	return EC_RES_INVALID_PARAM;
+}
+
+enum ec_status charger_profile_override_set_param(uint32_t param,
+				uint32_t value)
+{
+	return EC_RES_INVALID_PARAM;
+}
