@@ -407,8 +407,7 @@ static int anx7447_release(int port)
 	return EC_SUCCESS;
 }
 
-#ifdef CONFIG_USB_PD_VBUS_DETECT_TCPC
-static int anx7447_get_vbus_voltage(int port)
+int anx7447_get_vbus_voltage(int port)
 {
 	int vbus_volt = 0;
 
@@ -417,6 +416,7 @@ static int anx7447_get_vbus_voltage(int port)
 	return vbus_volt;
 }
 
+#ifdef CONFIG_USB_PD_VBUS_DETECT_TCPC
 int anx7447_set_power_supply_ready(int port)
 {
 	int count = 0;
