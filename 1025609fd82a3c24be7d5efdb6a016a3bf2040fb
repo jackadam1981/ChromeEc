@@ -16,6 +16,24 @@
       "message": "Ofer: Is this the smaller CL that you referred to in https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3335296/4#message-3800daf7507f63488f226643855ce3e2a4424605?\n\nAre there going to be followup CLs or is this the only one?",
       "revId": "1025609fd82a3c24be7d5efdb6a016a3bf2040fb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "603f7faf_9f0b296b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1528447
+      },
+      "writtenOn": "2022-01-18T23:24:43Z",
+      "side": 1,
+      "message": "Yes this is the same code, devided into small chunks.\n\nIt is the complete work as of now, no more CLs in the pipeline",
+      "parentUuid": "2b05eb88_3fc4b262",
+      "revId": "1025609fd82a3c24be7d5efdb6a016a3bf2040fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
