@@ -19,7 +19,12 @@ static K_KERNEL_STACK_DEFINE(pwrseq_thread_stack, 1024);
 static struct k_thread pwrseq_thread_data;
 k_tid_t pwrseq_thread_id;
 struct power_seq_context pwrseq_ctx;
-struct common_pwrseq_config com_cfg;
+
+struct common_pwrseq_config com_cfg = {
+	.pch_dsw_pwrok_delay_ms = DT_INST_PROP(0, dsw_pwrok_delay),
+	.pch_pm_pwrbtn_delay_ms =  DT_INST_PROP(0, pm_pwrbtn_delay),
+	.pch_rsmrst_delay_ms = DT_INST_PROP(0, rsmrst_delay),
+};
 
 static uint32_t in_signals; /* Current input signal states (IN_PGOOD_*) */
 static uint32_t in_want;    /* Input signal state we're waiting for */
@@ -675,11 +680,6 @@ static inline void create_pwrseq_thread(void)
 
 void init_pwr_seq_state(void)
 {
-	/* TODO: Read from device tree */
-
-	com_cfg.pch_rsmrst_delay_ms = 10;
-	com_cfg.pch_pm_pwrbtn_delay_ms = 200;
-
 	/* Delay value can be ovverriden by chipset */
 	init_chipset_pwr_seq_state();
 
@@ -777,4 +777,3 @@ int chipset_in_or_transitioning_to_state(int state_mask)
 	/* Unknown power state; return false. */
 	return 0;
 }
-

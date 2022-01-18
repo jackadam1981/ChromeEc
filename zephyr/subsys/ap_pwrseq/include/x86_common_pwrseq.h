@@ -144,7 +144,6 @@ struct common_pwrseq_config {
 	int pch_dsw_pwrok_delay_ms;
 	int pch_pm_pwrbtn_delay_ms;
 	int pch_rsmrst_delay_ms;
-	int vr_en_vccin_delay_ms;
 };
 
 /* This encapsulates the attributes of the state machine */
@@ -167,5 +166,4 @@ enum chipset_state_mask {
 	CHIPSET_STATE_ANY_SUSPEND = (CHIPSET_STATE_SUSPEND |
 				     CHIPSET_STATE_STANDBY),
 };
-
 #endif /* __X86_COMMON_H__ */
