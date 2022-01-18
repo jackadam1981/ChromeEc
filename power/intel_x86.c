@@ -107,7 +107,7 @@ static enum power_state power_wait_s5_rtc_reset(void)
 		common_intel_x86_handle_rsmrst(POWER_S5);
 		if (task_wait_event(SECOND*4) == TASK_EVENT_TIMER) {
 			CPRINTS("timeout waiting for S5 exit");
-			chipset_force_g3();
+			//chipset_force_g3();
 
 			/* Assert RTCRST# and retry 5 times */
 			intel_x86_rtc_reset();
