@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf4c0c1d_87c781f9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-01-18T15:28:43Z",
+      "side": 1,
+      "message": "To clarify, the startup delay seems to happen when the battery is removed.\nSo perhaps there is a number of I2C timeouts while the battery is trying\nto be accessed.\n",
+      "revId": "a6c45e669ddd92cab8635d59be2df46777d89d79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
