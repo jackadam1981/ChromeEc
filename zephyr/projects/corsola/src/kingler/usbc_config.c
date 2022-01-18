@@ -340,3 +340,20 @@ void bc12_interrupt(enum gpio_signal signal)
 {
 	task_set_event(TASK_ID_USB_CHG_P0, USB_CHG_EVENT_BC12);
 }
+
+__override int board_get_vbus_voltage(int port)
+{
+	int voltage = 0;
+
+	switch (port) {
+	case USBC_PORT_C0:
+		voltage = anx7447_get_vbus_voltage(port);
+		break;
+	case USBC_PORT_C1:
+		rt1718s_get_adc(port, RT1718S_ADC_VBUS1, &voltage);
+		break;
+	default:
+		return 0;
+	}
+	return voltage;
+}
