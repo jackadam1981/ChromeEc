@@ -5,12 +5,14 @@
 
 #include <cros/thermistor/thermistor.dtsi>
 #include <dt-bindings/gpio_defines.h>
+#include <dt-bindings/interrupt-controller/ite-intc.h>
 #include <freq.h>
 
 / {
 	chosen {
 		cros-ec,adc = &adc0;
 		cros-ec,espi = &espi0;
+		cros-ec,watchdog = &twd0;
 	};
 
 	aliases {
@@ -553,6 +555,23 @@
 	clock: clock {
 		compatible = "cros,clock-control-emul";
 		clock-frequency = <DT_FREQ_M(100)>; /* 100 MHz */
+	};
+
+	intc: interrupt-controller@f03f00 {
+		#interrupt-cells = <2>;
+		compatible = "ite,it8xxx2-intc";
+		interrupt-controller;
+		reg = <0x00f03f00 0x0100>;
+	};
+
+	twd0: watchdog@f01f00 {
+		compatible = "ite,it8xxx2-watchdog";
+		reg = <0x00f01f00 0x0062>;
+		label = "TWD_0";
+		interrupts =
+			<IT8XXX2_IRQ_TIMER1 IRQ_TYPE_EDGE_RISING
+			IT8XXX2_IRQ_TIMER2 IRQ_TYPE_EDGE_RISING>;
+		interrupt-parent = <&intc>;
 	};
 };
 
