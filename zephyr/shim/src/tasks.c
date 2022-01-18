@@ -306,7 +306,7 @@ void start_ec_tasks(void)
 		}
 #endif
 
-#ifdef CONFIG_SHELL
+#if defined CONFIG_SHELL && !defined TEST_BUILD
 		/*
 		 * The console is run on the built-in Zephyr shell thread.
 		 * We need to set the priority to be below the PD tasks
