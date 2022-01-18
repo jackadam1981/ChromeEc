@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62093036_3699c481",
+        "filename": "zephyr/projects/nissa/src/usbc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-01-18T07:42:18Z",
+      "side": 1,
+      "message": "I think it\u0027s quite possible the CPU will reach this, since the propagation time on this GPIO and fall time on the 3.3V regulator could easily be a couple microseconds or more.\n\nI\u0027d prefer to delay a bit (tens of milliseconds?) then assert(FALSE) or something (to cause an obvious error if it fails to shut down), or maybe just return from this function (since it looks like the caller can do some other work that could be useful if we fail to suspend within a reasonable amount of time).",
+      "revId": "1961d1c044a17a8b1eede301632e983332851f2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
