@@ -16,6 +16,24 @@
       "message": "To clarify, the startup delay seems to happen when the battery is removed.\nSo perhaps there is a number of I2C timeouts while the battery is trying\nto be accessed.\n",
       "revId": "a6c45e669ddd92cab8635d59be2df46777d89d79",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f60d5ab_e8d1181f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-01-18T23:29:17Z",
+      "side": 1,
+      "message": "I tried to reproduce on my machine with the battery disconnected and it seemed fine with the default watchdog period. Is it pretty consistently firing on yours?\n\nI\u0027m hesitant to increase the watchdog timeout since more than two seconds seems like a very long time, but maybe it doesn\u0027t matter much since 1.6 seconds is already a pretty long time?",
+      "parentUuid": "cf4c0c1d_87c781f9",
+      "revId": "a6c45e669ddd92cab8635d59be2df46777d89d79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
