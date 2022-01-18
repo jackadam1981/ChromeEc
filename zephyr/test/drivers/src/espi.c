@@ -8,8 +8,9 @@
 
 #include "ec_commands.h"
 #include "host_command.h"
+#include "test_state.h"
 
-static void test_host_command_get_protocol_info(void)
+ZTEST_USER(espi, test_host_command_get_protocol_info)
 {
 	struct ec_response_get_protocol_info response;
 	struct host_cmd_handler_args args =
@@ -27,10 +28,4 @@ static void test_host_command_get_protocol_info(void)
 	zassert_equal(response.flags, 0, NULL);
 }
 
-void test_suite_espi(void)
-{
-	ztest_test_suite(espi,
-			 ztest_user_unit_test(
-				 test_host_command_get_protocol_info));
-	ztest_run_test_suite(espi);
-}
+ZTEST_SUITE(espi, drivers_predicate_post_main, NULL, NULL, NULL, NULL);

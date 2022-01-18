@@ -492,7 +492,7 @@ static void test_ppc_syv682x_ppc_dump(void)
 	zassert_ok(drv->reg_dump(syv682x_port), "ppc_dump command failed");
 }
 
-static void test_ppc_syv682x(void)
+ZTEST_USER(ppc_syv682c, test_ppc_syv682x)
 {
 	test_ppc_syv682x_init();
 	test_ppc_syv682x_vbus_enable();
@@ -503,11 +503,4 @@ static void test_ppc_syv682x(void)
 	test_ppc_syv682x_dev_is_connected();
 	test_ppc_syv682x_vbus_sink_enable();
 	test_ppc_syv682x_ppc_dump();
-}
-
-void test_suite_ppc(void)
-{
-	ztest_test_suite(ppc,
-			 ztest_user_unit_test(test_ppc_syv682x));
-	ztest_run_test_suite(ppc);
 }
