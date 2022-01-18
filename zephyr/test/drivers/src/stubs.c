@@ -452,3 +452,8 @@ static void stubs_interrupt_init(void)
 	gpio_enable_interrupt(GPIO_SWITCHCAP_PG_INT_L);
 }
 DECLARE_HOOK(HOOK_INIT, stubs_interrupt_init, HOOK_PRIO_INIT_I2C + 1);
+
+void sys_arch_reboot(int type)
+{
+	ARG_UNUSED(type);
+}
