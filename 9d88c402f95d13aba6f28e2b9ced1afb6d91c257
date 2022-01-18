@@ -46,6 +46,30 @@
       },
       "revId": "9d88c402f95d13aba6f28e2b9ced1afb6d91c257",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6affa6a1_e5f589d2",
+        "filename": "util/config_allowed.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-01-18T23:55:33Z",
+      "side": 1,
+      "message": "+1.  I do like the naming convention of PLATFORM_EC_CONSOLE_CMD_, so adding another regex match the CMD_XXX to PLATFORM_EC_CONSOLE_CMD_XXX seems easy enough.",
+      "parentUuid": "7a076136_c1db9785",
+      "range": {
+        "startLine": 231,
+        "startChar": 0,
+        "endLine": 231,
+        "endChar": 22
+      },
+      "revId": "9d88c402f95d13aba6f28e2b9ced1afb6d91c257",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
