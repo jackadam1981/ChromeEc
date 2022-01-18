@@ -20,6 +20,7 @@
 #include "tcpm/tcpci.h"
 #include "test/usb_pe.h"
 #include "utils.h"
+#include "test_state.h"
 
 #define TCPCI_EMUL_LABEL DT_NODELABEL(tcpci_emul)
 #define BATTERY_ORD DT_DEP_ORD(DT_NODELABEL(battery))
@@ -27,7 +28,7 @@
 #define GPIO_AC_OK_PATH DT_PATH(named_gpios, acok_od)
 #define GPIO_AC_OK_PIN DT_GPIO_PIN(GPIO_AC_OK_PATH, gpios)
 
-static void init_tcpm(void)
+static void integration_usb_before(void *state)
 {
 	const struct emul *tcpci_emul =
 		emul_get_binding(DT_LABEL(TCPCI_EMUL_LABEL));
@@ -36,6 +37,7 @@ static void init_tcpm(void)
 	const struct device *gpio_dev =
 		DEVICE_DT_GET(DT_GPIO_CTLR(GPIO_AC_OK_PATH, gpios));
 
+	ARG_UNUSED(state);
 	set_test_runner_tid();
 	zassert_ok(tcpci_tcpm_init(0), 0);
 	tcpci_emul_set_rev(tcpci_emul, TCPCI_EMUL_REV1_0_VER1_0);
@@ -51,17 +53,19 @@ static void init_tcpm(void)
 	zassert_ok(gpio_emul_input_set(gpio_dev, GPIO_AC_OK_PIN, 0), NULL);
 }
 
-static void remove_emulated_devices(void)
+static void integration_usb_after(void *state)
 {
 	const struct emul *tcpci_emul =
 		emul_get_binding(DT_LABEL(TCPCI_EMUL_LABEL));
+	ARG_UNUSED(state);
+
 	/* TODO: This function should trigger gpios to signal there is nothing
 	 * attached to the port.
 	 */
 	zassert_ok(tcpci_emul_disconnect_partner(tcpci_emul), NULL);
 }
 
-static void test_attach_compliant_charger(void)
+ZTEST(integration_usb, test_attach_compliant_charger)
 {
 	const struct emul *tcpci_emul =
 		emul_get_binding(DT_LABEL(TCPCI_EMUL_LABEL));
@@ -101,7 +105,7 @@ static void test_attach_compliant_charger(void)
 	/* TODO: Also check voltage, current, etc. */
 }
 
-static void test_attach_pd_charger(void)
+ZTEST(integration_usb, test_attach_pd_charger)
 {
 	const struct emul *tcpci_emul =
 		emul_get_binding(DT_LABEL(TCPCI_EMUL_LABEL));
@@ -208,7 +212,7 @@ static void test_attach_pd_charger(void)
 	 */
 }
 
-static void test_attach_sink(void)
+ZTEST(integration_usb, test_attach_sink)
 {
 	const struct emul *tcpci_emul =
 		emul_get_binding(DT_LABEL(TCPCI_EMUL_LABEL));
@@ -239,7 +243,7 @@ static void test_attach_sink(void)
 	zassert_equal(PE_SRC_READY, get_state_pe(USBC_PORT_C0), NULL);
 }
 
-static void test_attach_drp(void)
+ZTEST(integration_usb, test_attach_drp)
 {
 	const struct emul *tcpci_emul =
 		emul_get_binding(DT_LABEL(TCPCI_EMUL_LABEL));
@@ -270,20 +274,5 @@ static void test_attach_drp(void)
 	zassert_equal(PE_SNK_READY, get_state_pe(USBC_PORT_C0), NULL);
 }
 
-void test_suite_integration_usb(void)
-{
-	ztest_test_suite(integration_usb,
-			 ztest_user_unit_test_setup_teardown(
-				 test_attach_compliant_charger, init_tcpm,
-				 remove_emulated_devices),
-			 ztest_user_unit_test_setup_teardown(
-				 test_attach_pd_charger, init_tcpm,
-				 remove_emulated_devices),
-			 ztest_user_unit_test_setup_teardown(
-				 test_attach_sink, init_tcpm,
-				 remove_emulated_devices),
-			 ztest_user_unit_test_setup_teardown(
-				 test_attach_drp, init_tcpm,
-				 remove_emulated_devices));
-	ztest_run_test_suite(integration_usb);
-}
+ZTEST_SUITE(integration_usb, drivers_predicate_post_main, NULL,
+	    integration_usb_before, integration_usb_after, NULL);
