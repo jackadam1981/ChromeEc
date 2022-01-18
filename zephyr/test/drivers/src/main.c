@@ -32,6 +32,7 @@ extern void test_suite_tcpci(void);
 extern void test_suite_ps8xxx(void);
 extern void test_suite_integration_usb(void);
 extern void test_suite_power_common(void);
+extern void test_suite_watchdog(void);
 
 void test_main(void)
 {
@@ -65,4 +66,5 @@ void test_main(void)
 	test_suite_ps8xxx();
 	test_suite_integration_usb();
 	test_suite_power_common();
+	test_suite_watchdog();
 }
