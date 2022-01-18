@@ -403,16 +403,17 @@ static int anx7447_release(int port)
 	return EC_SUCCESS;
 }
 
-#ifdef CONFIG_USB_PD_VBUS_DETECT_TCPC
 static int anx7447_get_vbus_voltage(int port)
 {
-	int vbus_volt = 0;
+	int vbus_volt;
 
-	tcpc_read16(port, TCPC_REG_VBUS_VOLTAGE, &vbus_volt);
+	if (tcpci_get_vbus_voltage(port, &vbus_volt))
+		return 0;
 
 	return vbus_volt;
 }
 
+#ifdef CONFIG_USB_PD_VBUS_DETECT_TCPC
 int anx7447_set_power_supply_ready(int port)
 {
 	int count = 0;
@@ -839,6 +840,7 @@ const struct tcpm_drv anx7447_tcpm_drv = {
 #ifdef CONFIG_USB_PD_VBUS_DETECT_TCPC
 	.check_vbus_level	= &tcpci_tcpm_check_vbus_level,
 #endif
+	.get_vbus_voltage	= &tcpci_get_vbus_voltage,
 	.select_rp_value	= &tcpci_tcpm_select_rp_value,
 	.set_cc			= &anx7447_set_cc,
 	.set_polarity		= &anx7447_set_polarity,
