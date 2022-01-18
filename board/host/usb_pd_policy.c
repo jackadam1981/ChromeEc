@@ -23,11 +23,13 @@ test_mockable void pd_power_supply_reset(int port)
 	/* Not implemented */
 }
 
+#if !defined(TEST_CHARGE_MANAGER) && !defined(TEST_CHARGE_MANAGER_DRP_CHARGING)
 void pd_set_input_current_limit(int port, uint32_t max_ma,
 				uint32_t supply_voltage)
 {
 	/* Not implemented */
 }
+#endif /* !CONFIG_CHARGE_MANAGER */
 
 test_mockable int pd_snk_is_vbus_provided(int port)
 {
