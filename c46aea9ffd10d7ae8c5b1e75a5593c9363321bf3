@@ -16,6 +16,24 @@
       "message": "Why not put this logic in usb_charger_task() rather than duplicating it in each driver?",
       "revId": "c46aea9ffd10d7ae8c5b1e75a5593c9363321bf3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "94e572dc_0a87ff77",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-01-18T00:34:04Z",
+      "side": 1,
+      "message": "That\u0027s a good point, let me look at that.",
+      "parentUuid": "63fca0e6_c4e1a435",
+      "revId": "c46aea9ffd10d7ae8c5b1e75a5593c9363321bf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
