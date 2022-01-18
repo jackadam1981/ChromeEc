@@ -4,6 +4,7 @@
  */
 
 /* Taniks board configuration */
+#define CONFIG_BUTTONS_RUNTIME_CONFIG
 
 #ifndef __CROS_EC_BOARD_H
 #define __CROS_EC_BOARD_H
