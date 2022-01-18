@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eecca605_e8127611",
+        "filename": "chip/stm32/clock-stm32f4.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 466,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-01-18T18:11:50Z",
+      "side": 1,
+      "message": "Not specifically related to this CL but is there any reason why we don\u0027t use void `interrupt_disable` here instead of an asm call? It struck me as odd because down below, when reenabling interrupts, the  `interrupt_enable` function was used.",
+      "range": {
+        "startLine": 466,
+        "startChar": 2,
+        "endLine": 466,
+        "endChar": 26
+      },
+      "revId": "4291f41e786ddd47e53c1c0bbb152c05597a9e6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f9526c7_510971fe",
+        "filename": "chip/stm32/clock-stm32f4.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 503,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-01-18T18:11:50Z",
+      "side": 1,
+      "message": "Based on your comment above, it seems like this comment may not actually be true. If not then we should remove it.",
+      "range": {
+        "startLine": 503,
+        "startChar": 5,
+        "endLine": 503,
+        "endChar": 20
+      },
+      "revId": "4291f41e786ddd47e53c1c0bbb152c05597a9e6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
