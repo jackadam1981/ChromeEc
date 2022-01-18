@@ -16,6 +16,24 @@
       "message": "It seems with these changes and the others in the chain,\nI am not getting the bus faults like I was. I think some of the stacks\nmay have been overflowing.\n",
       "revId": "2216d70623fdc7ba39f07df11de2a9836c362ff9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ae61db0_29d8f76c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-01-18T23:39:26Z",
+      "side": 1,
+      "message": "I haven\u0027t noticed any crashes without this (only with the task_get_current fix). Enabling CONFIG_STACK_SENTINEL may help determine if stacks are actually overflowing.",
+      "parentUuid": "483646d6_fa8b61c4",
+      "revId": "2216d70623fdc7ba39f07df11de2a9836c362ff9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
