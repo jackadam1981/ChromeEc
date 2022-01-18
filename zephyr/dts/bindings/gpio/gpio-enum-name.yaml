@@ -5,6 +5,7 @@ properties:
     description:
       Enum used in code.
     enum:
+      - GMR_TABLET_MODE_GPIO_L
       - GPIO_ACCEL_GYRO_INT_L
       - GPIO_AC_PRESENT
       - GPIO_ALS_RGB_INT_ODL
