@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1746cefd_8a1fba65",
+        "filename": "zephyr/projects/nissa/src/gpios.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-01-19T16:46:03Z",
+      "side": 0,
+      "message": "See parent CL - you\u0027ve already allocated a gpio_dt_spec for every child in named-gpios.  This is duplicating that.",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 43
+      },
+      "revId": "70157457ee4c6384d8cc44ceb4108a40636a37f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
