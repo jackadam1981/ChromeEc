@@ -22,6 +22,30 @@
       },
       "revId": "0ee21fe265248b2a58ed40f3fdbd864d3d866866",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "caa508bc_89c65b72",
+        "filename": "board/taniks/sensors.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1520957
+      },
+      "writtenOn": "2022-01-19T02:01:22Z",
+      "side": 1,
+      "message": "Hi caveh, we set this pin as pull down is because our EE engineer hopes can measure pull down.",
+      "parentUuid": "fc4dd6f9_13474213",
+      "range": {
+        "startLine": 319,
+        "startChar": 50,
+        "endLine": 319,
+        "endChar": 64
+      },
+      "revId": "0ee21fe265248b2a58ed40f3fdbd864d3d866866",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
