@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b3859b70_9f937f15",
+        "filename": "board/taniks/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1520957
+      },
+      "writtenOn": "2022-01-19T02:01:50Z",
+      "side": 1,
+      "message": "Hi caveh, we set this pin as pull down is because our EE engineer hopes can measure pull down.",
+      "parentUuid": "348f2357_c54d319c",
+      "range": {
+        "startLine": 60,
+        "startChar": 53,
+        "endLine": 60,
+        "endChar": 67
+      },
+      "revId": "c5e178ea6b22eea85e44baa9ae1fc43c5d77d432",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6a8fd456_1b4b8b01",
         "filename": "board/taniks/board.h",
         "patchSetId": 3
