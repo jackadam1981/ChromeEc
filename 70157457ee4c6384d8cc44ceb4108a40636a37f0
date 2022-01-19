@@ -3,6 +3,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "efaf4b38_5238d9ec",
+        "filename": "zephyr/shim/include/zephyr_gpio_signal.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-01-19T16:45:06Z",
+      "side": 1,
+      "message": "This comment block could use some examples.\n\nLooking at the next CL, I initially found it confusing that gpios.h defined gpio_dt_spec entries using lower case, but that board_config.c referenced the GPIO using an upper case label.",
+      "range": {
+        "startLine": 74,
+        "startChar": 0,
+        "endLine": 74,
+        "endChar": 60
+      },
+      "revId": "70157457ee4c6384d8cc44ceb4108a40636a37f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00ed8b51_9c724e63",
+        "filename": "zephyr/shim/include/zephyr_gpio_signal.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-01-19T16:45:06Z",
+      "side": 1,
+      "message": "Can you link this directly to the gpio_dt_spec stored by gpio_config?  As is, the next CL creates a duplicated storage element of gpio_dt_spec.\n\nI think you could then can avoid the nissa/src/gpios.c file completely?",
+      "range": {
+        "startLine": 91,
+        "startChar": 0,
+        "endLine": 91,
+        "endChar": 56
+      },
+      "revId": "70157457ee4c6384d8cc44ceb4108a40636a37f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5761d800_5e18a046",
         "filename": "zephyr/shim/src/gpio.c",
         "patchSetId": 6
@@ -38,6 +84,30 @@
       "side": 1,
       "message": "It\u0027s not quite the same - the RTC one uses 32 bit flags for the struct element, whereas the gpio_dt_spec uses 8 bit flags (and will complain if a larger value is attempted to be assigned to it).\nSo the 32 bit flags are assigned to a separate field (init_flags).\nThere is some duplication, but only in the lower 8 bits.",
       "parentUuid": "5761d800_5e18a046",
+      "range": {
+        "startLine": 40,
+        "startChar": 8,
+        "endLine": 40,
+        "endChar": 19
+      },
+      "revId": "70157457ee4c6384d8cc44ceb4108a40636a37f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85595756_33f80fd2",
+        "filename": "zephyr/shim/src/gpio.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-01-19T16:45:06Z",
+      "side": 1,
+      "message": "If we have 32-bit flags specified in the devicetree, we probably should also store 32-bit flags here.\n\nI think creating a shared macro is better than than the potential memory saving.",
+      "parentUuid": "4cd61364_03aa1b11",
       "range": {
         "startLine": 40,
         "startChar": 8,
