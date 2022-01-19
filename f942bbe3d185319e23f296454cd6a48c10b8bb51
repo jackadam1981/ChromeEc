@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ab8e36e_38dfd7fb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-01-19T21:25:44Z",
+      "side": 1,
+      "message": "Just a question.",
+      "revId": "f942bbe3d185319e23f296454cd6a48c10b8bb51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17e2375b_14e33cae",
+        "filename": "zephyr/test/drivers/src/integration_usb.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-01-19T21:25:44Z",
+      "side": 1,
+      "message": "Does it really sleep 1s? How long does this test run in total?",
+      "range": {
+        "startLine": 259,
+        "startChar": 1,
+        "endLine": 259,
+        "endChar": 23
+      },
+      "revId": "f942bbe3d185319e23f296454cd6a48c10b8bb51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
