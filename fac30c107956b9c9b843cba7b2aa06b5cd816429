@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8946cf2b_3ac90734",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_adlp_nonpwrseq_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2022-01-19T00:46:13Z",
+      "side": 1,
+      "message": "Done by dsw_pwrok_pass_thru_handler",
+      "parentUuid": "44b73c23_268c58ff",
+      "range": {
+        "startLine": 28,
+        "startChar": 1,
+        "endLine": 28,
+        "endChar": 39
+      },
+      "revId": "fac30c107956b9c9b843cba7b2aa06b5cd816429",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cca3d2e0_a8631922",
@@ -61,6 +85,30 @@
       "writtenOn": "2022-01-18T20:32:48Z",
       "side": 1,
       "message": "Change to new GPIO tag.",
+      "range": {
+        "startLine": 45,
+        "startChar": 35,
+        "endLine": 45,
+        "endChar": 54
+      },
+      "revId": "fac30c107956b9c9b843cba7b2aa06b5cd816429",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "baf71050_f15a647c",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_adlp_nonpwrseq_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2022-01-19T00:46:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cca3d2e0_a8631922",
       "range": {
         "startLine": 45,
         "startChar": 35,
