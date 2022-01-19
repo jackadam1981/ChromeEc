@@ -16,6 +16,109 @@
       "message": "use the dts and shim/src/pwm_led.c to control the led, just need to declare the led_set_color_battery in kingler/led.c for updating the led on/off state",
       "revId": "6d6f4e67ab14ccd8b5ce326981c47d41893c468d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0b9da82_a91466fc",
+        "filename": "zephyr/projects/corsola/prj_kingler.conf",
+        "patchSetId": 11
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2022-01-19T02:45:42Z",
+      "side": 1,
+      "message": "CONFIG_PLATFORM_EC_PWM\u003dy\n CONFIG_PWM\u003dy\n CONFIG_PWM_SHELL\u003dn",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 0
+      },
+      "revId": "6d6f4e67ab14ccd8b5ce326981c47d41893c468d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ffcb25ad_335afcc2",
+        "filename": "zephyr/projects/corsola/pwm_kingler.dts",
+        "patchSetId": 11
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2022-01-19T02:45:42Z",
+      "side": 1,
+      "message": "There are 3 PWM LEDs on the schematic, could you add the ec_led3, and mark it as `status \u003d \"disabled\"` if not in used.",
+      "revId": "6d6f4e67ab14ccd8b5ce326981c47d41893c468d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56437a15_21c167c9",
+        "filename": "zephyr/projects/corsola/src/kingler/led.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2022-01-19T02:45:42Z",
+      "side": 1,
+      "message": "sort include header.\n\nIf you are using vim, you can select this block and set command  `:\u0027\u003c,\u0027\u003esort`.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 0
+      },
+      "revId": "6d6f4e67ab14ccd8b5ce326981c47d41893c468d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe2a4fdb_5229523b",
+        "filename": "zephyr/projects/corsola/src/kingler/led.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2022-01-19T02:45:42Z",
+      "side": 1,
+      "message": "Do we have AMBER led? (or it was missing in the dts config?)",
+      "range": {
+        "startLine": 19,
+        "startChar": 33,
+        "endLine": 19,
+        "endChar": 51
+      },
+      "revId": "6d6f4e67ab14ccd8b5ce326981c47d41893c468d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e86a40db_1f30f7af",
+        "filename": "zephyr/projects/corsola/src/kingler/led.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2022-01-19T02:45:42Z",
+      "side": 1,
+      "message": "You might need to initialize PWM duty, e.g.:\n\n  static void pwm_led_duty_init(void)\n  {\n       pwm_set_duty(PWM_..., xxx);\n       ...\n  }\n  DECLARE_HOOK(HOOK_INIT, pwm_led_duty_init, HOOK_PRIO_INIT_PWM + 1);",
+      "revId": "6d6f4e67ab14ccd8b5ce326981c47d41893c468d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
