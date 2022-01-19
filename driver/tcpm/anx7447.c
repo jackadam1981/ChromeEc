@@ -347,8 +347,8 @@ static int anx7447_init(int port)
 		return rv;
 
 	/* Set VBUS_VOLTAGE_ALARM_HI threshold to maximum 0x3FF */
-	rv = tcpc_write(port, ANX7447_REG_TCPC_VBUS_THRESH_L, 0xFF);
-	rv |= tcpc_write(port, ANX7447_REG_TCPC_VBUS_THRESH_H, 0x03);
+	rv = tcpc_write16(port,TCPC_REG_VBUS_VOLTAGE_ALARM_HI_CFG, 0x3FF);
+
 	/* ADC enable, use to monitor VBUS voltage */
 	rv |= tcpc_read(port, ANX7447_REG_ADC_CTRL_1, &reg);
 	if (rv)
