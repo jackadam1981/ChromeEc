@@ -25,6 +25,23 @@ the following sections.
 providing a CLI. They call one of the transport-specific `ec_command`
 implementations in the `util/comm-*.c` files to send and receive from the EC.
 
+#### Stress test
+
+The `ectool` contains stress test that sends a big amount of host commands to
+EC. This allows to check if there won't be any timeouts and communication
+errors while handling this amount of data through selected interface and that
+the EC is able to respond to all of them.
+
+The command to execute the stress test is: `ectool stress`.
+It will log the time elapsed for every iteration of sending 10000 host commands
+with the time that it took to send them.
+
+Example output of stress test is:
+`Update: attempt 10000 round 1 | took 205 seconds`
+
+Killing the process will result in displaying the total runtime and failures
+that happened during it.
+
 ### EC kernel driver
 
 In most cases, `ectool` communicates via the [`cros-ec` Kernel driver], rather
