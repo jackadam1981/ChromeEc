@@ -1331,6 +1331,28 @@ void tcpci_tcpc_alert(int port)
 		task_set_event(PD_PORT_TO_TASK_ID(port), pd_event);
 }
 
+int tcpci_get_vbus_voltage(int port, int *vbus)
+{
+	int error, val;
+	int scale, measure;
+
+	error = tcpc_read16(port, TCPC_REG_VBUS_VOLTAGE, &val);
+	if (error)
+		return error;
+
+	/*
+	 * 00: the measurement is not scaled
+	 * 01: the measurement is divided by 2
+	 * 10: the measurement is divided by 4
+	 * 11: reserved
+	 */
+	scale = (val & TCPC_REG_VBUS_VOLTAGE_SCALE_FACTOR) >> 9;
+	measure = val & TCPC_REG_VBUS_VOLTAGE_MEASUREMENT;
+
+	*vbus = (1 << scale) * measure * TCPC_REG_VBUS_VOLTAGE_LSB;
+	return EC_SUCCESS;
+}
+
 /*
  * This call will wake up the TCPC if it is in low power mode upon accessing the
  * i2c bus (but the pd state machine should put it back into low power mode).
