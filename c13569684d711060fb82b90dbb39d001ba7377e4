@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e5e4cf8_2043aaa7",
+        "filename": "zephyr/drivers/cros_system/cros_system_xec.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-01-19T19:25:50Z",
+      "side": 1,
+      "message": "Should we be labeling this with `__attribute__((__noreturn__))`?",
+      "revId": "c13569684d711060fb82b90dbb39d001ba7377e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
