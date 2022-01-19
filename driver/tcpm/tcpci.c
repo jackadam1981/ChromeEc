@@ -1197,6 +1197,22 @@ void tcpci_tcpc_alert(int port)
 		return;
 	}
 
+       if ((alert & TCPC_REG_ALERT_V_ALARM_HI)) {
+               int reg;
+               CPRINTS("\033[31mAlert port %d\033[m", port);
+               CPRINTS("\033[31m0x10 = 0x%04x\033[m", alert);
+               CPRINTS("\033[31mClearing 0x12 and setting 0x10\033[m");
+               tcpc_write16(port, TCPC_REG_ALERT_MASK, 0);
+               tcpc_write16(port, TCPC_REG_ALERT, 0xFFFF);
+               tcpc_read16(port, TCPC_REG_ALERT_MASK, &reg);
+               CPRINTS("\033[31m0x12 = 0x%04x\033[m", reg);
+               tcpc_read16(port, TCPC_REG_VBUS_VOLTAGE_ALARM_HI_CFG, &reg);
+               CPRINTS("\033[31m0x76 = 0x%04x\033[m", reg);
+               tcpc_read(port, 0xBF, &reg);
+               CPRINTS("\033[31m0xBF = 0x%02x\033[m", reg);
+       }
+
+
 	/* Get Extended Alert register if needed */
 	if (alert & TCPC_REG_ALERT_ALERT_EXT)
 		tcpm_alert_ext_status(port, &alert_ext);
