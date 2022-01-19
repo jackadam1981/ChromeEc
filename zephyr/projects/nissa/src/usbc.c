@@ -134,7 +134,10 @@ int board_set_active_charge_port(int port)
 
 	old_port = charge_manager_get_active_charge_port();
 
-	CPRINTS("New chg p%d", port);
+	if (port == CHARGE_PORT_NONE)
+		CPRINTS("Charger removed");
+	else
+		CPRINTS("New chg p%d", port);
 
 	/* Disable all ports. */
 	if (port == CHARGE_PORT_NONE) {

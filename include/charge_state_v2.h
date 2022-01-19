@@ -158,6 +158,12 @@ void charge_set_active_chg_chip(int idx);
 int charge_get_active_chg_chip(void);
 
 /**
+ * Retrieve which charger IC was the last (or current) active charger IC
+ * performing the charger switching.
+ */
+int charge_get_last_active_chg_chip(void);
+
+/**
  * Set the stable current.
  *
  * @param ma: battery charging current in mA

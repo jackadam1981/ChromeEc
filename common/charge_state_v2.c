@@ -2290,7 +2290,7 @@ int charge_set_input_current_limit(int ma, int mv)
 	__maybe_unused int chgnum = 0;
 
 	if (IS_ENABLED(CONFIG_OCPC))
-		chgnum = charge_get_active_chg_chip();
+		chgnum = charge_get_last_active_chg_chip();
 #ifdef CONFIG_EC_EC_COMM_BATTERY_CLIENT
 	curr.input_voltage = mv;
 #endif
@@ -2373,7 +2373,13 @@ void charge_set_active_chg_chip(int idx)
 	if (idx == curr.ocpc.active_chg_chip)
 		return;
 
-	CPRINTS("Act Chg: %d", idx);
+	if (idx == CHARGE_PORT_NONE) {
+		CPRINTS("No active charger");
+	} else {
+		/* Record the last valid charger */
+		curr.ocpc.last_active_chg_chip = curr.ocpc.active_chg_chip;
+		CPRINTS("Act Chg: %d", idx);
+	}
 	curr.ocpc.active_chg_chip = idx;
 }
 #endif /* CONFIG_OCPC */
@@ -2382,6 +2388,15 @@ int charge_get_active_chg_chip(void)
 {
 #ifdef CONFIG_OCPC
 	return curr.ocpc.active_chg_chip;
+#else
+	return 0;
+#endif
+}
+
+int charge_get_last_active_chg_chip(void)
+{
+#ifdef CONFIG_OCPC
+	return curr.ocpc.last_active_chg_chip;
 #else
 	return 0;
 #endif

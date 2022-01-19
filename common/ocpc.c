@@ -688,6 +688,7 @@ DECLARE_HOOK(HOOK_INIT, ocpc_set_pid_constants, HOOK_PRIO_DEFAULT);
 
 void ocpc_init(struct ocpc_data *ocpc)
 {
+	ocpc->last_active_chg_chip = CHARGE_PORT_NONE;
 	/*
 	 * We can start off assuming that the board resistance is 0 ohms
 	 * and later on, we can update this value if we charge the

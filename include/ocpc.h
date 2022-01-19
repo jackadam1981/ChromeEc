@@ -15,6 +15,7 @@
 struct ocpc_data {
 	/* Index into chg_chips[] table for the charger IC that is switching. */
 	int active_chg_chip;
+	int last_active_chg_chip;	/* last chg_chip that was active */
 
 	int combined_rsys_rbatt_mo; /* System resistance b/w output and Vbatt */
 	int rsys_mo;  /* System resistance b/w output and VSYS node */
