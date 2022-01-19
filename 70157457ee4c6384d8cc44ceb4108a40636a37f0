@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5b339cdd_dd5db977",
+        "filename": "zephyr/shim/include/zephyr_gpio_signal.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-01-19T17:00:05Z",
+      "side": 1,
+      "message": "Yeah, it\u0027s a consequence of using lower case DTS labels and upper case enum-names.\nThere is no way using DTS to make the node label upper case.\nThe upper case reference comes from the upper case enum-name.\nThe way to make the label name upper case is to actually write it upper case\nin the device tree itself.",
+      "parentUuid": "efaf4b38_5238d9ec",
+      "range": {
+        "startLine": 74,
+        "startChar": 0,
+        "endLine": 74,
+        "endChar": 60
+      },
+      "revId": "70157457ee4c6384d8cc44ceb4108a40636a37f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "00ed8b51_9c724e63",
         "filename": "zephyr/shim/include/zephyr_gpio_signal.h",
         "patchSetId": 6
@@ -37,6 +61,30 @@
       "writtenOn": "2022-01-19T16:45:06Z",
       "side": 1,
       "message": "Can you link this directly to the gpio_dt_spec stored by gpio_config?  As is, the next CL creates a duplicated storage element of gpio_dt_spec.\n\nI think you could then can avoid the nissa/src/gpios.c file completely?",
+      "range": {
+        "startLine": 91,
+        "startChar": 0,
+        "endLine": 91,
+        "endChar": 56
+      },
+      "revId": "70157457ee4c6384d8cc44ceb4108a40636a37f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c005a470_2ae3446c",
+        "filename": "zephyr/shim/include/zephyr_gpio_signal.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-01-19T17:00:05Z",
+      "side": 1,
+      "message": "The next CL removes the nissa/src/gpios.c file completely.",
+      "parentUuid": "00ed8b51_9c724e63",
       "range": {
         "startLine": 91,
         "startChar": 0,
@@ -108,6 +156,30 @@
       "side": 1,
       "message": "If we have 32-bit flags specified in the devicetree, we probably should also store 32-bit flags here.\n\nI think creating a shared macro is better than than the potential memory saving.",
       "parentUuid": "4cd61364_03aa1b11",
+      "range": {
+        "startLine": 40,
+        "startChar": 8,
+        "endLine": 40,
+        "endChar": 19
+      },
+      "revId": "70157457ee4c6384d8cc44ceb4108a40636a37f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "677fdb1a_55578466",
+        "filename": "zephyr/shim/src/gpio.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-01-19T17:00:05Z",
+      "side": 1,
+      "message": "I don\u0027t disagree (or, I agree :-) it\u0027s just that the gpio_dt_spec structure uses an 8 bit value for this field, so if we want to use that structure for GPIO access, we need to be able to initialise it correctly.",
+      "parentUuid": "85595756_33f80fd2",
       "range": {
         "startLine": 40,
         "startChar": 8,
