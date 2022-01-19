@@ -428,6 +428,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "211daa29_4fb33940",
+        "filename": "chip/stm32/clock-stm32f4.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 507,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-01-19T00:55:34Z",
+      "side": 1,
+      "message": "\u003e We can go back to previous version of this CL (which was checking if only timer interrupt is pending)\n\nI think this one sounds like a good choice for now, so that we can deploy this fix and see if it fixes the bug. In parallel we should:\n\n* File a bug and assign to FPC to see what calculation they are doing triggers an exception.\n* Create a separate CL that adds a handler for FPU events. This could be useful for debugging. Maybe we have other floating point code in EC that silently triggers exceptions? What happens if you intentionally do a divide by zero (with floating point) with the current code?",
+      "parentUuid": "e071f14a_86cbde60",
+      "range": {
+        "startLine": 506,
+        "startChar": 27,
+        "endLine": 507,
+        "endChar": 34
+      },
+      "revId": "4e8ccc5a890284e550d070914db9a28776162346",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c98acf78_9335a2d7",
         "filename": "chip/stm32/clock-stm32f4.c",
         "patchSetId": 4
