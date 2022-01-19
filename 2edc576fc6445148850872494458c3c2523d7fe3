@@ -16,6 +16,52 @@
       "message": "Hi Caveh, Boris,\nCan you please help with the review. Thank you.",
       "revId": "2edc576fc6445148850872494458c3c2523d7fe3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "929e6fd4_892dd031",
+        "filename": "baseboard/intelrvp/adlrvp.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2022-01-19T23:31:31Z",
+      "side": 1,
+      "message": "nit: CHARGER_SOLO",
+      "range": {
+        "startLine": 342,
+        "startChar": 34,
+        "endLine": 342,
+        "endChar": 35
+      },
+      "revId": "2edc576fc6445148850872494458c3c2523d7fe3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d41eac2a_5472cd4f",
+        "filename": "baseboard/intelrvp/adlrvp.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2022-01-19T23:31:31Z",
+      "side": 1,
+      "message": "what will be the value if battery is NOT present?",
+      "range": {
+        "startLine": 346,
+        "startChar": 4,
+        "endLine": 346,
+        "endChar": 35
+      },
+      "revId": "2edc576fc6445148850872494458c3c2523d7fe3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
