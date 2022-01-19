@@ -34,6 +34,24 @@
       "parentUuid": "5ac13223_43f6ab71",
       "revId": "fad35cf93634972669aa88338bceed40a93e7105",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "568e72e3_a1a45016",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2022-01-19T10:51:26Z",
+      "side": 1,
+      "message": "This is the bug https://b.corp.google.com/issues/35528046\n\nLooks like previously byte memcpy, memmove, memset was used, then it was optimized to copy one word at the time (eg. for memmove CL:186020) speed measurements was added to check if using aligned buffer makes operations faster.\n\nI think we should remove \u0027expected speedup\u0027 from the test and just check if using aligned buffer/advanced memset is faster. There are many factors that can influence speed gains like the compiler, inlining, architecture, cache, CPU and finally how the code is placed - On STM32H7 I found that when the while loop in dumb_memset() is aligned to 8 bytes, then it is much faster, eg.\n\n```\n810c570:    f803 2b01   strb.w r2, [r3], #1\n810c574:    428b        cmp    r3, r1\n810c576:    d1fb        bne.n  810c570\n```\nIs faster than:\n\n```\n810c574:    f803 2b01   strb.w r2, [r3], #1\n810c578:    428b        cmp    r3, r1\n810c57a:    d1fb        bne.n  810c574\n```\nIt was funny to see that adding two nops before while loop in dumb_memset() makes it faster.\n\nI\u0027ve checked, this is not the effect of cache (tried with disabled caches).\n\nDaisuke what do you think about it?",
+      "parentUuid": "6f448efb_11b2a1a4",
+      "revId": "fad35cf93634972669aa88338bceed40a93e7105",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
