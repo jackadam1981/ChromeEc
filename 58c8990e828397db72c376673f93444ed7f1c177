@@ -16,6 +16,23 @@
       "message": "Tom, Bobby, I know that you approved this change, but could you look at change in __hw_clock_source_init()? It turned out that it is called with enabled interrupts and it uses __hw_clock_source_is_set().",
       "revId": "58c8990e828397db72c376673f93444ed7f1c177",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "27aa73fd_49717a23",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2022-01-19T16:21:54Z",
+      "side": 1,
+      "message": "Verified on bloonchipper with the following changes in board.h:\n```\ndiff --git a/board/hatch_fp/board.h b/board/hatch_fp/board.h\nindex 07dd33c4a3..9775d9826b 100644\n--- a/board/hatch_fp/board.h\n+++ b/board/hatch_fp/board.h\n@@ -182,7 +182,7 @@\n  */\n #undef CONFIG_WATCHDOG_PERIOD_MS\n #define CONFIG_WATCHDOG_PERIOD_MS 10000\n-#define CONFIG_WATCHDOG_HELP\n+#undef CONFIG_WATCHDOG_HELP\n \n /*-------------------------------------------------------------------------*\n  * Fingerprint Specific\n@@ -235,7 +235,7 @@\n #define CONFIG_SHA256\n #define CONFIG_SHA256_UNROLLED\n #define CONFIG_SPI\n-#define CONFIG_STM_HWTIMER32\n+#undef CONFIG_STM_HWTIMER32\n #define CONFIG_WP_ACTIVE_HIGH\n #define CONFIG_PANIC_STRIP_GPR\n \n@@ -246,6 +246,8 @@\n #ifndef __ASSEMBLER__\n \n /* Timer selection */\n+#define TIM_CLOCK_MSB 4\n+#define TIM_CLOCK_LSB 3\n #define TIM_CLOCK32 2\n #define TIM_WATCHDOG 9\n\n```",
+      "revId": "58c8990e828397db72c376673f93444ed7f1c177",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
