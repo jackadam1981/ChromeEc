@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "67dc187b_65602492",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1485637
+      },
+      "writtenOn": "2022-01-19T10:22:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1b06fd6b_1dc071c4",
+      "range": {
+        "startLine": 12,
+        "startChar": 7,
+        "endLine": 12,
+        "endChar": 11
+      },
+      "revId": "4438d39da90fcd92113ad874d326f97955fdc8fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d98069c9_53a1209c",
@@ -61,6 +85,30 @@
       "side": 1,
       "message": "ah, just saw the comment in the bug: 51W.",
       "parentUuid": "d98069c9_53a1209c",
+      "range": {
+        "startLine": 236,
+        "startChar": 1,
+        "endLine": 236,
+        "endChar": 12
+      },
+      "revId": "4438d39da90fcd92113ad874d326f97955fdc8fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f136d61_77028ddd",
+        "filename": "board/taniks/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1485637
+      },
+      "writtenOn": "2022-01-19T10:22:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d1ada7a2_1218e5f5",
       "range": {
         "startLine": 236,
         "startChar": 1,
