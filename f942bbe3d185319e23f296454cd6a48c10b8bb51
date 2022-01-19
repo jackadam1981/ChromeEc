@@ -39,6 +39,30 @@
       },
       "revId": "f942bbe3d185319e23f296454cd6a48c10b8bb51",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a0f76cd_5ab7cdb7",
+        "filename": "zephyr/test/drivers/src/integration_usb.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-01-19T21:45:21Z",
+      "side": 1,
+      "message": "No, k_sleeps are emulated in tests. It actually just yields to other threads and rolls the fake clock forward 1s. Any timers that are supposed to run in that 1s also run.",
+      "parentUuid": "17e2375b_14e33cae",
+      "range": {
+        "startLine": 259,
+        "startChar": 1,
+        "endLine": 259,
+        "endChar": 23
+      },
+      "revId": "f942bbe3d185319e23f296454cd6a48c10b8bb51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
