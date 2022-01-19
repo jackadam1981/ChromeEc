@@ -63,6 +63,53 @@
       },
       "revId": "f942bbe3d185319e23f296454cd6a48c10b8bb51",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fca3e2b9_482c9d40",
+        "filename": "zephyr/test/drivers/src/integration_usb.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-01-19T21:56:37Z",
+      "side": 1,
+      "message": "Got it. Thanks for explaining.",
+      "parentUuid": "9a0f76cd_5ab7cdb7",
+      "range": {
+        "startLine": 259,
+        "startChar": 1,
+        "endLine": 259,
+        "endChar": 23
+      },
+      "revId": "f942bbe3d185319e23f296454cd6a48c10b8bb51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e163dba_2639422f",
+        "filename": "zephyr/test/drivers/src/integration_usb.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-01-19T21:56:37Z",
+      "side": 1,
+      "message": "Is there any way to check the soft reset?",
+      "range": {
+        "startLine": 287,
+        "startChar": 16,
+        "endLine": 287,
+        "endChar": 34
+      },
+      "revId": "f942bbe3d185319e23f296454cd6a48c10b8bb51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
