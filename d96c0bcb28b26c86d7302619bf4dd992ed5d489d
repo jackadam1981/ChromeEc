@@ -72,6 +72,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "85a4dc15_ae4f5eef",
+        "filename": "chip/stm32/registers.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2022-01-19T14:34:55Z",
+      "side": 1,
+      "message": "Done https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3398913",
+      "parentUuid": "8c6d5723_3d6e5496",
+      "range": {
+        "startLine": 145,
+        "startChar": 0,
+        "endLine": 145,
+        "endChar": 44
+      },
+      "revId": "d96c0bcb28b26c86d7302619bf4dd992ed5d489d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "79bce050_0dbcb6e6",

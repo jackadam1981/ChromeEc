@@ -476,6 +476,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8fab3f72_a73d1d5b",
+        "filename": "chip/stm32/clock-stm32f4.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 507,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2022-01-19T14:34:55Z",
+      "side": 1,
+      "message": "Finally I restored patch 9 and added power consumption test in commit message.",
+      "parentUuid": "28369e9e_4b8a0049",
+      "range": {
+        "startLine": 506,
+        "startChar": 27,
+        "endLine": 507,
+        "endChar": 34
+      },
+      "revId": "4e8ccc5a890284e550d070914db9a28776162346",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c98acf78_9335a2d7",
         "filename": "chip/stm32/clock-stm32f4.c",
         "patchSetId": 4
