@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "36fb0da7_63bcb2c6",
+        "filename": "zephyr/projects/skyrim/skyrim.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-01-19T21:05:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aca06104_17c7bfba",
+      "range": {
+        "startLine": 111,
+        "startChar": 3,
+        "endLine": 111,
+        "endChar": 9
+      },
+      "revId": "9a2a51e788d954117c2f309ab8dc4a3b9b2c5f8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "990c967c_9b9bd51a",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-01-14T23:57:10Z",
       "side": 1,
       "message": "pct2075",
+      "range": {
+        "startLine": 124,
+        "startChar": 3,
+        "endLine": 124,
+        "endChar": 9
+      },
+      "revId": "9a2a51e788d954117c2f309ab8dc4a3b9b2c5f8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd6afcb9_bc105005",
+        "filename": "zephyr/projects/skyrim/skyrim.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-01-19T21:05:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "990c967c_9b9bd51a",
       "range": {
         "startLine": 124,
         "startChar": 3,
