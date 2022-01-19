@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5761d800_5e18a046",
+        "filename": "zephyr/shim/src/gpio.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-01-19T16:21:52Z",
+      "side": 1,
+      "message": "This is also implemented by one of the RTC drivers.\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/0684c22d/zephyr/drivers/cros_rtc/nxp_rtc_pcf85063a.c#429\n\nCan you move that definition to shim/include/zephyr_gpio_shim.h as a parent CL to this one?",
+      "range": {
+        "startLine": 40,
+        "startChar": 8,
+        "endLine": 40,
+        "endChar": 19
+      },
+      "revId": "70157457ee4c6384d8cc44ceb4108a40636a37f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
