@@ -94,6 +94,30 @@
       },
       "revId": "c72b1cd52defdf26dc64bcbf3d5c8d25e08efa0f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60d2e74e_162ecea2",
+        "filename": "zephyr/dts/bindings/gpio/gpio-enum-name.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2022-01-19T16:57:07Z",
+      "side": 1,
+      "message": "Personally, I would prefer to see the GMR_TABLET_MODE_GPIO_L removed and in the tablet mode code use GPIO_TABLET_MODE_L. All of the extraneous GMR_TABLET_MODE_GPIO_L alias defines can then be deprecated away and the few places that a GPIO define is used that is not GPIO_TABLET_MODE_L (such as GPIO_TABLET_MODE, GPIO_LID_360_L, GPIO_SLATE_MODE_INDICATION and GPIO_EC_SLATEMODE_HALLOUT_SNSR_R) they can provide the alias to GPIO_TABLET_MODE_L.",
+      "parentUuid": "09daaa47_b3e6dae5",
+      "range": {
+        "startLine": 8,
+        "startChar": 8,
+        "endLine": 8,
+        "endChar": 30
+      },
+      "revId": "c72b1cd52defdf26dc64bcbf3d5c8d25e08efa0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
