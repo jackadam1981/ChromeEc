@@ -452,6 +452,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "28369e9e_4b8a0049",
+        "filename": "chip/stm32/clock-stm32f4.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 507,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2022-01-19T13:42:23Z",
+      "side": 1,
+      "message": "\u003e What happens if you intentionally do a divide by zero (with floating point) with the current code?\n\nI used the following code\n```\nstatic int command_test(int argc, char **argv)\n{\n        float zero \u003d 0.0f;\n        float one \u003d 1.0f;\n        float div;\n        asm volatile(\n                \"fdivs %0, %1, %2\"\n                : \"\u003dw\"(div)\n                : \"w\"(one),  \"w\"(zero)\n        );\n\n        return EC_SUCCESS;\n}\nDECLARE_CONSOLE_COMMAND(test, command_test, \"\", \"\");\n```\n\nAfter calling this, FPU interrupt become pending but EC is still running",
+      "parentUuid": "211daa29_4fb33940",
+      "range": {
+        "startLine": 506,
+        "startChar": 27,
+        "endLine": 507,
+        "endChar": 34
+      },
+      "revId": "4e8ccc5a890284e550d070914db9a28776162346",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c98acf78_9335a2d7",
         "filename": "chip/stm32/clock-stm32f4.c",
         "patchSetId": 4
