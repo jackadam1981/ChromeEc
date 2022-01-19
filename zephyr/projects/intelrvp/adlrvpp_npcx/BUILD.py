@@ -7,5 +7,6 @@ register_npcx_project(
     zephyr_board="adlrvpp_npcx",
     dts_overlays=[
         "gpio.dts",
+        "pwm.dts",
         ],
 )
