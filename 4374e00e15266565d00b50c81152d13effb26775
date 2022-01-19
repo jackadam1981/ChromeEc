@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "73bad56f_a486f565",
+        "filename": "zephyr/include/dt-bindings/gpio_defines.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-01-19T01:26:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8dc21e5c_1976f29d",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 52
+      },
+      "revId": "4374e00e15266565d00b50c81152d13effb26775",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "00bfd236_73854c9d",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-01-18T22:56:16Z",
       "side": 1,
       "message": "Forward reference?  Probably good to note actual definition is in the C file.",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 23
+      },
+      "revId": "4374e00e15266565d00b50c81152d13effb26775",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4684bd4_6afc4db2",
+        "filename": "zephyr/shim/include/gpio/gpio_int.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-01-19T01:26:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "00bfd236_73854c9d",
       "range": {
         "startLine": 23,
         "startChar": 0,
@@ -64,6 +112,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "450a3c70_47baf39c",
+        "filename": "zephyr/shim/src/gpio.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-01-19T01:26:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3dc37f13_a400821d",
+      "revId": "4374e00e15266565d00b50c81152d13effb26775",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0205592d_95b0f6b7",
@@ -77,6 +143,30 @@
       "writtenOn": "2022-01-18T22:56:16Z",
       "side": 1,
       "message": "Run clang_format on this file.",
+      "range": {
+        "startLine": 274,
+        "startChar": 0,
+        "endLine": 281,
+        "endChar": 0
+      },
+      "revId": "4374e00e15266565d00b50c81152d13effb26775",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ee8bc25_c525736f",
+        "filename": "zephyr/shim/src/gpio.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-01-19T01:26:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0205592d_95b0f6b7",
       "range": {
         "startLine": 274,
         "startChar": 0,
