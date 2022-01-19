@@ -16,6 +16,46 @@
       "message": "Google Team, This CL needs a rebase, but please review it. This is one of the last pending CL to complete Zephyr enablement on Brya.",
       "revId": "4438ec488b1269d34e920c42fc9e47beccd1b939",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "48b20164_f21cbf8c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 52
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-01-19T21:02:21Z",
+      "side": 1,
+      "message": "It looks better now. Just a minor comment.",
+      "revId": "4438ec488b1269d34e920c42fc9e47beccd1b939",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b6c068d_2fa74863",
+        "filename": "driver/charger/bq25710.c",
+        "patchSetId": 52
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-01-19T21:02:21Z",
+      "side": 1,
+      "message": "It is not related to the brya board. Please separate this change in a standalone CL.",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 32
+      },
+      "revId": "4438ec488b1269d34e920c42fc9e47beccd1b939",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
