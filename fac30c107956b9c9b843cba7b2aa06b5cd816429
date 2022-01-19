@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "18286c36_288eb940",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_adlp_nonpwrseq_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2022-01-19T00:25:12Z",
+      "side": 1,
+      "message": "Please add delay of 10ms",
+      "parentUuid": "44b73c23_268c58ff",
+      "range": {
+        "startLine": 28,
+        "startChar": 1,
+        "endLine": 28,
+        "endChar": 39
+      },
+      "revId": "fac30c107956b9c9b843cba7b2aa06b5cd816429",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cca3d2e0_a8631922",
         "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_adlp_nonpwrseq_sm.c",
         "patchSetId": 2
