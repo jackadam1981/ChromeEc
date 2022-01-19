@@ -52,6 +52,24 @@
       "parentUuid": "1ae61db0_29d8f76c",
       "revId": "2216d70623fdc7ba39f07df11de2a9836c362ff9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "453cbe76_fd383f5d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-01-19T03:53:30Z",
+      "side": 1,
+      "message": "I turned on CONFIG_STACK_SENTINEL and got stack overflow aborts in all three of the updated tasks (which stopped after increasing the sizes to the ones configured here), so I concur after experimenting. I also discovered that `taskinfo` hits an assertion failure when CONFIG_ASSERT is enabled, but directly running `kernel stacks` (which is all taskinfo is doing) works fine.",
+      "parentUuid": "5e9f5e4f_649e13b2",
+      "revId": "2216d70623fdc7ba39f07df11de2a9836c362ff9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
