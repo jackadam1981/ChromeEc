@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "deef07b7_b47f68c0",
+        "filename": "zephyr/projects/corsola/CMakeLists.txt",
+        "patchSetId": 6
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1449895
+      },
+      "writtenOn": "2022-01-19T01:26:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2dc3a0d3_33be5c64",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 29
+      },
+      "revId": "08f25e7dd5d2df89b7b54e8cac7cfb7751def6ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "196ab032_401be75f",
@@ -85,6 +109,30 @@
       "side": 1,
       "message": "Got it. Let me move away this from the kingler-tot. Feel free to stack it back when you feel ready.",
       "parentUuid": "f5aaba97_ae7621a0",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 0
+      },
+      "revId": "08f25e7dd5d2df89b7b54e8cac7cfb7751def6ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7efe4163_df8c9f5b",
+        "filename": "zephyr/projects/corsola/prj_kingler.conf",
+        "patchSetId": 6
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1449895
+      },
+      "writtenOn": "2022-01-19T01:26:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "42290502_09320a28",
       "range": {
         "startLine": 43,
         "startChar": 0,
