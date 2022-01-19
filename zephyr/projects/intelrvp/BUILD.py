@@ -37,6 +37,7 @@ register_intelrvp_project(
     extra_dts_overlays=[
         here / "adlrvp/adlrvp_npcx/adlrvp_npcx.dts",
         here / "adlrvp/adlrvp_npcx/gpio.dts",
+        here / "adlrvp/adlrvp_npcx/pwm.dts",
     ],
     extra_kconfig_files=[here / "adlrvp/adlrvp_npcx/prj.conf"],
 )
