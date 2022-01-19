@@ -34,6 +34,24 @@
       "parentUuid": "2b05eb88_3fc4b262",
       "revId": "1025609fd82a3c24be7d5efdb6a016a3bf2040fb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cee8378f_1b9078c6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-01-19T22:00:13Z",
+      "side": 1,
+      "message": "This is still a single commit though. What I meant from the previous comment about splitting it up is to create a series of CLs, each of which introduce some chunk of functionality (stacking up the CLs: go/small-cls#stacking). Based on skimming the code, it looked like you could have a series of commits, each of which focuses on the following:\n\n* Commit that adds logging logic and exit code logic\n* Commit with get_platform_name / get_platform_base_name logic\n* Commit with get_default_fw logic\n* Commit with gpio logic: read_gpio_ranges, read_gpiochips, get_gpio*, etc\n* Commit with config logic: config_hatch, etc\n* Commit with flash_fp_mcu_stm32 logic\n\nAs an example, here is a chain of commits (CLs) that all are working toward implementing a specific bug fix, but the logic is divided among separate commits, each of which makes progress toward the final goal: \n\nhttps://crrev.com/c/3347653 (click on the CLs in the \"Relation Chain\" to see the individual commits in the \"stack\": https://screenshot.googleplex.com/9GTyHyUraEUk4gs).\n\nLet me know if you\u0027re not sure about what I\u0027m asking for.",
+      "parentUuid": "603f7faf_9f0b296b",
+      "revId": "1025609fd82a3c24be7d5efdb6a016a3bf2040fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
