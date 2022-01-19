@@ -52,6 +52,24 @@
       "parentUuid": "5f60d5ab_e8d1181f",
       "revId": "a6c45e669ddd92cab8635d59be2df46777d89d79",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df58982e_0a145485",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-01-19T04:03:06Z",
+      "side": 1,
+      "message": "My board is running happily with larger stacks but no watchdog change, so can we get that in and revisit whether this still needs to be done after that goes in?",
+      "parentUuid": "685505db_031e737b",
+      "revId": "a6c45e669ddd92cab8635d59be2df46777d89d79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
