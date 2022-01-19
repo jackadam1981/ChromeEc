@@ -70,6 +70,30 @@
       },
       "revId": "c72b1cd52defdf26dc64bcbf3d5c8d25e08efa0f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "09daaa47_b3e6dae5",
+        "filename": "zephyr/dts/bindings/gpio/gpio-enum-name.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-01-19T16:08:14Z",
+      "side": 1,
+      "message": "Yeah, it\u0027s ugly and messy, and a bad choice at the start, but one way or the other the names have to be aliased somewhere - I was trying to avoid having this redfine being the only thing in a file.",
+      "parentUuid": "ba883105_9b1a74fe",
+      "range": {
+        "startLine": 8,
+        "startChar": 8,
+        "endLine": 8,
+        "endChar": 30
+      },
+      "revId": "c72b1cd52defdf26dc64bcbf3d5c8d25e08efa0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
