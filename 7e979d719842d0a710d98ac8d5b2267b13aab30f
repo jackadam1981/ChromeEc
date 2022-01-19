@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "388f45e3_7c8cd5cf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-01-19T05:57:59Z",
+      "side": 1,
+      "message": "For context, see the attached bug.\n\nIt does seem correct to use the last charger (we have 2 type-c ports) for processing rather than CHARGER_PORT_NONE, but I am not familiar with a lot of this code so looking for some guidance.\n",
+      "revId": "7e979d719842d0a710d98ac8d5b2267b13aab30f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
