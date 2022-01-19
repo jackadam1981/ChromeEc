@@ -212,6 +212,30 @@
       },
       "revId": "70157457ee4c6384d8cc44ceb4108a40636a37f0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3473372d_cc1812e9",
+        "filename": "zephyr/shim/src/gpio.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-01-19T17:35:46Z",
+      "side": 1,
+      "message": "I should clarify that gpio_dt_spec is a Zephyr structure that is used heavily in the Zephyr API for GPIO access",
+      "parentUuid": "677fdb1a_55578466",
+      "range": {
+        "startLine": 40,
+        "startChar": 8,
+        "endLine": 40,
+        "endChar": 19
+      },
+      "revId": "70157457ee4c6384d8cc44ceb4108a40636a37f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
