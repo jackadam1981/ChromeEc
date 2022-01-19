@@ -38,3 +38,8 @@ register_variant(
     project_name="herobrine_npcx9",
     extra_kconfig_files=[here / "prj_herobrine_npcx9.conf"]
 )
+
+register_variant(
+    project_name="hoglin",
+    extra_kconfig_files=[here / "prj_hoglin.conf"]
+)
