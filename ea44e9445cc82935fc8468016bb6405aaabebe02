@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c5929946_f9161bef",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-01-19T23:24:21Z",
+      "side": 1,
+      "message": "What happens on boards which aren\u0027t using ANX for Vbus control?  If I remember right, the bug referenced below was for a board which wasn\u0027t using TCPC Vbus control and constantly got Vbus high alarms anytime a charger was inserted into the board",
+      "revId": "ea44e9445cc82935fc8468016bb6405aaabebe02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "225b92b4_3bc2fa1d",
         "filename": "driver/tcpm/anx7447.c",
         "patchSetId": 1
