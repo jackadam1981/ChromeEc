@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "308fd0d3_a48883c4",
+        "filename": "zephyr/projects/corsola/prj_kingler.conf",
+        "patchSetId": 11
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1449895
+      },
+      "writtenOn": "2022-01-19T07:16:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e0b9da82_a91466fc",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 0
+      },
+      "revId": "6d6f4e67ab14ccd8b5ce326981c47d41893c468d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ffcb25ad_335afcc2",
@@ -58,6 +82,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b5c9af6_0db68fac",
+        "filename": "zephyr/projects/corsola/pwm_kingler.dts",
+        "patchSetId": 11
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1449895
+      },
+      "writtenOn": "2022-01-19T07:16:42Z",
+      "side": 1,
+      "message": "add the ec_led3 in the pwm dts, but there is a build error in shim/src/pwm.c-\u003einit_pwms when set the status \u003d \"disabled\".\n\nso I just add the ec_led3 in the pwm dts and set the status \u003d \"okay\", but not use the node in the led dts.\n\nWhat is your suggestion, thanks.",
+      "parentUuid": "ffcb25ad_335afcc2",
+      "revId": "6d6f4e67ab14ccd8b5ce326981c47d41893c468d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "56437a15_21c167c9",
@@ -71,6 +113,30 @@
       "writtenOn": "2022-01-19T02:45:42Z",
       "side": 1,
       "message": "sort include header.\n\nIf you are using vim, you can select this block and set command  `:\u0027\u003c,\u0027\u003esort`.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 0
+      },
+      "revId": "6d6f4e67ab14ccd8b5ce326981c47d41893c468d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a09aeb5_806fc573",
+        "filename": "zephyr/projects/corsola/src/kingler/led.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1449895
+      },
+      "writtenOn": "2022-01-19T07:16:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "56437a15_21c167c9",
       "range": {
         "startLine": 7,
         "startChar": 0,
@@ -104,6 +170,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8cbef152_8c0d500f",
+        "filename": "zephyr/projects/corsola/src/kingler/led.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1449895
+      },
+      "writtenOn": "2022-01-19T07:16:42Z",
+      "side": 1,
+      "message": "We don\u0027t have the AMBER led but there is color-map-amber in led_kingler.dts, the color of amber is 100% brightness of red and 20% brightness of green.\n\nthe color of amber shows normally when manul test",
+      "parentUuid": "fe2a4fdb_5229523b",
+      "range": {
+        "startLine": 19,
+        "startChar": 33,
+        "endLine": 19,
+        "endChar": 51
+      },
+      "revId": "6d6f4e67ab14ccd8b5ce326981c47d41893c468d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e86a40db_1f30f7af",
@@ -117,6 +207,24 @@
       "writtenOn": "2022-01-19T02:45:42Z",
       "side": 1,
       "message": "You might need to initialize PWM duty, e.g.:\n\n  static void pwm_led_duty_init(void)\n  {\n       pwm_set_duty(PWM_..., xxx);\n       ...\n  }\n  DECLARE_HOOK(HOOK_INIT, pwm_led_duty_init, HOOK_PRIO_INIT_PWM + 1);",
+      "revId": "6d6f4e67ab14ccd8b5ce326981c47d41893c468d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c1182e5_bf648945",
+        "filename": "zephyr/projects/corsola/src/kingler/led.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1449895
+      },
+      "writtenOn": "2022-01-19T07:16:42Z",
+      "side": 1,
+      "message": "led_update was declared with HOOK_TICK, the call trace is led_update-\u003eled_update_battery-\u003eled_set_color_battery-\u003eset_pwm_led_color, the set_pwm_led_color will set the duty of the pwm channel.\n\nThe leds work well without these code now,\nso I guess we don\u0027t have to initialize the PWM duty again when HOOK_INIT.\n\nWhat is your suggestion, thanks.",
+      "parentUuid": "e86a40db_1f30f7af",
       "revId": "6d6f4e67ab14ccd8b5ce326981c47d41893c468d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
