@@ -22,6 +22,30 @@
       },
       "revId": "70157457ee4c6384d8cc44ceb4108a40636a37f0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4cd61364_03aa1b11",
+        "filename": "zephyr/shim/src/gpio.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-01-19T16:29:51Z",
+      "side": 1,
+      "message": "It\u0027s not quite the same - the RTC one uses 32 bit flags for the struct element, whereas the gpio_dt_spec uses 8 bit flags (and will complain if a larger value is attempted to be assigned to it).\nSo the 32 bit flags are assigned to a separate field (init_flags).\nThere is some duplication, but only in the lower 8 bits.",
+      "parentUuid": "5761d800_5e18a046",
+      "range": {
+        "startLine": 40,
+        "startChar": 8,
+        "endLine": 40,
+        "endChar": 19
+      },
+      "revId": "70157457ee4c6384d8cc44ceb4108a40636a37f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
