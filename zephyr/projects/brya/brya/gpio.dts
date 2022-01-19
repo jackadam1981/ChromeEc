@@ -11,28 +11,43 @@
 			gpios = <&gpiod 2 GPIO_INPUT>;
 			enum-name = "GPIO_LID_OPEN";
 		};
-
 		gsc_ec_pwr_btn_odl: gsc_ec_pwr_btn_odl {
 			gpios = <&gpio0 1 GPIO_INPUT>;
 			enum-name = "GPIO_POWER_BUTTON_L";
 		};
-
 		gpio_ec_wp_l: ec_wp_odl {
 			#gpio-cells = <0>;
 			gpios = <&gpioa 1 GPIO_INPUT>;
 			enum-name = "GPIO_WP_L";
 		};
-
+		ec_batt_pres_odl {
+			gpios = <&gpioa 3 GPIO_INPUT>;
+			enum-name = "GPIO_BATT_PRES_ODL";
+		};
+		id_1_ec_batt_pres_odl {
+			gpios = <&gpioe 1 GPIO_INPUT>;
+			enum-name = "GPIO_ID_1_EC_BATT_PRES_ODL";
+		};
+		ec_i2c_bat_scl {
+			gpios = <&gpio3 3 GPIO_INPUT>;
+			enum-name = "GPIO_EC_I2C_BAT_SCL";
+		};
+		ec_i2c_bat_sda {
+			gpios = <&gpio3 6 GPIO_INPUT>;
+			enum-name = "GPIO_EC_I2C_BAT_SDA";
+		};
+		ec_kb_bl_en_l {
+			gpios = <&gpio8 6 GPIO_OUT_HIGH>;
+			enum-name = "GPIO_EC_KB_BL_EN_L";
+		};
 		ec_chg_led_y_c1 {
 			gpios = <&gpioc 3 GPIO_OUT_LOW>;
 			enum-name = "GPIO_EC_CHG_LED_Y_C1";
 		};
-
 		ec_chg_led_b_c1 {
 			gpios = <&gpioc 4 GPIO_OUT_LOW>;
 			enum-name = "GPIO_EC_CHG_LED_B_C1";
 		};
-
 		ec_gsc_packet_mode {
 			gpios = <&gpio7 5 GPIO_OUT_LOW>;
 			enum-name = "GPIO_PACKET_MODE_EN";
@@ -140,6 +155,14 @@
 		gpio_en_pp5000_fan: en_pp5000_fan {
 			gpios = <&gpio6 1 GPIO_OUT_HIGH>;
 			enum-name = "GPIO_EN_PP5000_FAN";
+		};
+		ec_voldn_btn_odl {
+			gpios = <&gpio9 3 GPIO_INPUT_PULL_UP>;
+			enum-name = "GPIO_VOLUME_DOWN_L";
+		};
+		ec_volup_btn_odl {
+			gpios = <&gpio9 7 GPIO_INPUT_PULL_UP>;
+			enum-name = "GPIO_VOLUME_UP_L";
 		};
 	};
 

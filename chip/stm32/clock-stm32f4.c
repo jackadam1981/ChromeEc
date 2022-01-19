@@ -462,7 +462,7 @@ void __idle(void)
 	struct rtc_time_reg rtc0, rtc1;
 
 	while (1) {
-		asm volatile("cpsid i");
+		interrupt_disable();
 
 		t0 = get_time();
 		next_delay = __hw_clock_event_get() - t0.le.lo;
@@ -470,6 +470,15 @@ void __idle(void)
 		if (DEEP_SLEEP_ALLOWED &&
 		    (next_delay > (STOP_MODE_LATENCY + PLL_LOCK_LATENCY +
 				   SET_RTC_MATCH_DELAY))) {
+			/*
+			 * Sleep time MUST be smaller than watchdog period.
+			 * Otherwise watchdog will wake us from deep sleep
+			 * which is not what we want. Please note that this
+			 * assert won't fire if we are already part way through
+			 * the watchdog period.
+			 */
+			ASSERT(next_delay < CONFIG_WATCHDOG_PERIOD_MS * MSEC);
+
 			/* Deep-sleep in STOP mode */
 			idle_dsleep_cnt++;
 
@@ -528,7 +537,7 @@ void __idle(void)
 			/* Normal idle : only CPU clock stopped */
 			asm("wfi");
 		}
-		asm volatile("cpsie i");
+		interrupt_enable();
 	}
 }
 

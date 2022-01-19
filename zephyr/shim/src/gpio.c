@@ -28,19 +28,18 @@ struct gpio_config {
 	gpio_pin_t pin;
 	/* From DTS, excludes interrupts flags */
 	gpio_flags_t init_flags;
+	/* From DTS, skips initialisation */
+	bool no_auto_init;
 };
 
-#define GPIO_CONFIG(id)                                                      \
-	COND_CODE_1(                                                         \
-		DT_NODE_HAS_PROP(id, enum_name),                             \
-		(                                                            \
-			{                                                    \
-				.name = DT_NODE_FULL_NAME(id),               \
-				.dev = DEVICE_DT_GET(DT_PHANDLE(id, gpios)), \
-				.pin = DT_GPIO_PIN(id, gpios),               \
-				.init_flags = DT_GPIO_FLAGS(id, gpios),      \
-			}, ),                                                \
-		())
+#define GPIO_CONFIG(id)                                      \
+	{                                                    \
+		.name = DT_NODE_FULL_NAME(id),               \
+		.dev = DEVICE_DT_GET(DT_PHANDLE(id, gpios)), \
+		.pin = DT_GPIO_PIN(id, gpios),               \
+		.init_flags = DT_GPIO_FLAGS(id, gpios),      \
+		.no_auto_init = DT_PROP(id, no_auto_init),   \
+	},
 static const struct gpio_config configs[] = {
 #if DT_NODE_EXISTS(DT_PATH(named_gpios))
 	DT_FOREACH_CHILD(DT_PATH(named_gpios), GPIO_CONFIG)
@@ -331,21 +330,17 @@ int gpio_get_default_flags(enum gpio_signal signal)
 static int init_gpios(const struct device *unused)
 {
 	gpio_flags_t flags;
-	struct jump_data *jdata;
-	bool is_sys_jumped;
+	struct jump_data *jdata = get_jump_data();
+	bool is_sys_jumped = (jdata && jdata->magic == JUMP_DATA_MAGIC);
 
 	ARG_UNUSED(unused);
 
-	jdata = get_jump_data();
-
-	if (jdata && jdata->magic == JUMP_DATA_MAGIC)
-		is_sys_jumped = true;
-	else
-		is_sys_jumped = false;
-
-	/* Loop through all GPIOs in device tree to set initial configuration */
 	for (size_t i = 0; i < ARRAY_SIZE(configs); ++i) {
 		int rv;
+
+		/* Skip GPIOs that have set no-auto-init. */
+		if (configs[i].no_auto_init)
+			continue;
 
 		if (!device_is_ready(configs[i].dev))
 			LOG_ERR("Not found (%s)", configs[i].name);
