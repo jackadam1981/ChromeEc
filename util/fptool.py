@@ -104,6 +104,9 @@ def flash_init(parser: argparse.ArgumentParser) -> argparse.ArgumentParser:
     return flash_parser
 
 def main() -> int:
+    # print out canonical path to differentiate between /usr/local/bin and
+    # /usr/bin installs
+    run_system_cmd(f"readlink -f {sys.argv[0]}", show_output=True)
     parser = argparse.ArgumentParser(description=__doc__)
     subparsers = parser.add_subparsers(dest='subcommand', title='subcommands')
     # This method of setting required is more compatible with older python.
