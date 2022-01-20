@@ -33,18 +33,20 @@ static int forcing_shutdown; /* Forced shutdown in progress? */
 void chipset_force_shutdown(enum chipset_shutdown_reason reason)
 {
 	CPRINTS("%s()", __func__);
-
-	if (!chipset_in_or_transitioning_to_state(CHIPSET_STATE_ANY_OFF)) {
-		forcing_shutdown = 1;
-		power_button_pch_press();
-		report_ap_reset(reason);
+	switch (reason) {
+	case CHIPSET_SHUTDOWN_G3:
+		/* Disable system power ("*_A" rails) in G3. */
+		gpio_set_level(GPIO_EN_PWR_A, 0);
+		break;
+	default:
+		if (!chipset_in_or_transitioning_to_state(
+				CHIPSET_STATE_ANY_OFF)) {
+			forcing_shutdown = 1;
+			power_button_pch_press();
+			report_ap_reset(reason);
+		}
+		break;
 	}
-}
-
-static void chipset_force_g3(void)
-{
-	/* Disable system power ("*_A" rails) in G3. */
-	gpio_set_level(GPIO_EN_PWR_A, 0);
 }
 
 void chipset_handle_espi_reset_assert(void)

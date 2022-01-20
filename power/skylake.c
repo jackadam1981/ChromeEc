@@ -82,7 +82,7 @@ __attribute__((weak)) void chipset_set_pmic_slp_sus_l(int level)
 	gpio_set_level(GPIO_PMIC_SLP_SUS_L, level);
 }
 
-enum power_state chipset_force_g3(void)
+__override enum power_state chipset_force_g3(void)
 {
 	CPRINTS("Forcing fake G3.");
 
