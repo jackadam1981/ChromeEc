@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7ffd6158_02f4e7b1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1291180
+      },
+      "writtenOn": "2022-01-20T02:16:38Z",
+      "side": 1,
+      "message": "The root cause of constantly got vbus high alarms anytime should be anx7447 tcpc driver didn\u0027t set VBUS threshold. The default VBUS threshold is 0, so it always trigger the VBUS alarm.\nThanks,\nXin",
+      "parentUuid": "f048cc03_ad1d227b",
+      "revId": "ea44e9445cc82935fc8468016bb6405aaabebe02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "225b92b4_3bc2fa1d",
         "filename": "driver/tcpm/anx7447.c",
         "patchSetId": 1
