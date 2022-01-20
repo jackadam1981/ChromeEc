@@ -1314,6 +1314,8 @@ function flash_it83xx() {
 				": ${CCD_I2C_CAP}"
 		fi
 
+		dut_control ec_reset:on
+
 		info "Asking CR50 to send the dbgr special waveform to ${CHIP}"
 		sleep 2
 		dut_control_or_die cr50_i2c_ctrl:ite_debugger_mode
