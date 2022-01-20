@@ -18,6 +18,14 @@
 #define CPRINTS(format, args...) cprints(CC_CHIPSET, format, ##args)
 #define CPRINTF(format, args...) cprintf(CC_CHIPSET, format, ##args)
 
+const int sleep_sig[] = {
+	[SYS_SLEEP_S3] = GPIO_PCH_SLP_S3_L,
+	[SYS_SLEEP_S5] = GPIO_PCH_SLP_S5_L,
+#ifdef CONFIG_POWER_S0IX
+	[SYS_SLEEP_S0IX] = GPIO_PCH_SLP_S0_L,
+#endif
+};
+
 #define IN_S5_PGOOD POWER_SIGNAL_MASK(X86_S5_PGOOD)
 
 static int forcing_shutdown; /* Forced shutdown in progress? */
@@ -136,55 +144,6 @@ static void handle_pass_through(enum gpio_signal pin_in,
 
 	CPRINTS("Pass through %s: %d", gpio_get_name(pin_in), in_level);
 }
-
-#ifdef CONFIG_POWER_TRACK_HOST_SLEEP_STATE
-
-__overridable void power_board_handle_host_sleep_event(
-		enum host_sleep_event state)
-{
-	/* Default weak implementation -- no action required. */
-}
-
-__override void power_chipset_handle_host_sleep_event(
-		enum host_sleep_event state,
-		struct host_sleep_event_context *ctx)
-{
-	power_board_handle_host_sleep_event(state);
-
-#ifdef CONFIG_POWER_S0IX
-	if (state == HOST_SLEEP_EVENT_S0IX_SUSPEND) {
-		/*
-		 * Indicate to power state machine that a new host event for
-		 * s0ix/s3 suspend has been received and so chipset suspend
-		 * notification needs to be sent to listeners.
-		 */
-		sleep_set_notify(SLEEP_NOTIFY_SUSPEND);
-
-		sleep_start_suspend(ctx, lpc_s0ix_hang_detected);
-		power_signal_enable_interrupt(GPIO_PCH_SLP_S0_L);
-	} else if (state == HOST_SLEEP_EVENT_S0IX_RESUME) {
-		/*
-		 * Wake up chipset task and indicate to power state machine that
-		 * listeners need to be notified of chipset resume.
-		 */
-		sleep_set_notify(SLEEP_NOTIFY_RESUME);
-		task_wake(TASK_ID_CHIPSET);
-		lpc_s0ix_resume_restore_masks();
-		power_signal_disable_interrupt(GPIO_PCH_SLP_S0_L);
-		sleep_complete_resume(ctx);
-		/*
-		 * If the sleep signal timed out and never transitioned, then
-		 * the wake mask was modified to its suspend state (S0ix), so
-		 * that the event wakes the system. Explicitly restore the wake
-		 * mask to its S0 state now.
-		 */
-		power_update_wake_mask();
-	} else if (state == HOST_SLEEP_EVENT_DEFAULT_RESET) {
-		power_signal_disable_interrupt(GPIO_PCH_SLP_S0_L);
-	}
-#endif /* CONFIG_POWER_S0IX */
-}
-#endif /* CONFIG_POWER_TRACK_HOST_SLEEP_STATE */
 
 enum power_state power_handle_state(enum power_state state)
 {
