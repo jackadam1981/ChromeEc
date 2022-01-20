@@ -57,6 +57,7 @@
 #define GPIO_VOLUME_UP_L		GPIO_VOLUP_BTN_ODL
 #define GPIO_WP_L			GPIO_EC_WP_L
 #define GPIO_PACKET_MODE_EN		GPIO_EC_H1_PACKET_MODE
+#define IN_ALL_S0               GPIO_S0_PGOOD
 
 #ifndef __ASSEMBLER__
 

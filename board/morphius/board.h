@@ -74,8 +74,9 @@
 #define GPIO_TEMP_SENSOR_POWER		GPIO_EN_PWR_A
 #define GPIO_VOLUME_DOWN_L		GPIO_VOLDN_BTN_ODL
 #define GPIO_VOLUME_UP_L		GPIO_VOLUP_BTN_ODL
-#define GPIO_WP_L			GPIO_EC_WP_L
+#define GPIO_WP_L			    GPIO_EC_WP_L
 #define GPIO_PACKET_MODE_EN		GPIO_EC_H1_PACKET_MODE
+#define IN_ALL_S0               GPIO_S0_PGOOD
 
 /* I2C mapping from board specific function*/
 #define I2C_PORT_THERMAL	I2C_PORT_AP_HDMI

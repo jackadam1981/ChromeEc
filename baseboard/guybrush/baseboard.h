@@ -65,6 +65,7 @@
 #define GPIO_SYS_RESET_L	GPIO_EC_SYS_RST_L
 #define SAFE_RESET_VBUS_DELAY_MS 900
 #define SAFE_RESET_VBUS_MV 5000
+#define IN_ALL_S0           GPIO_S0_PGOOD
 /*
  * On power-on, H1 releases the EC from reset but then quickly asserts and
  * releases the reset a second time. This means the EC sees 2 resets:
