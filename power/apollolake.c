@@ -144,17 +144,13 @@ enum power_state power_handle_state(enum power_state state)
 		internal_chipset_shutdown();
 
 		new_state = POWER_S5G3;
-		goto rsmrst_handle;
+	} else {
+		/* If force shutdown is requested, perform that. */
+		if (force_shutdown)
+			internal_chipset_shutdown();
 
+		new_state = common_intel_x86_power_handle_state(state);
 	}
-
-	/* If force shutdown is requested, perform that. */
-	if (force_shutdown)
-		internal_chipset_shutdown();
-
-	new_state = common_intel_x86_power_handle_state(state);
-
-rsmrst_handle:
 
 	/*
 	 * Process RSMRST_L state changes:
