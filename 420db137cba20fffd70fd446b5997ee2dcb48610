@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e466703_df44b077",
+        "filename": "zephyr/zmake/zmake/build_config.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-01-20T22:31:26Z",
+      "side": 1,
+      "message": "Can you add a TODO here that tracks my Buganizer bug? (Eventually, it should probably track the upstream Github bug.) I wouldn\u0027t want us to forget about fixing this properly, and when we do fix it properly, this is the kind of code that would be absolutely baffling to leave in here for posterity.",
+      "revId": "420db137cba20fffd70fd446b5997ee2dcb48610",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c05075f2_7d97862d",
+        "filename": "zephyr/zmake/zmake/build_config.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-01-20T22:31:26Z",
+      "side": 1,
+      "message": "I think you might be missing a word here, but this is ungrammatical. I don\u0027t get exactly what you\u0027re trying to say.",
+      "range": {
+        "startLine": 117,
+        "startChar": 42,
+        "endLine": 118,
+        "endChar": 60
+      },
+      "revId": "420db137cba20fffd70fd446b5997ee2dcb48610",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
