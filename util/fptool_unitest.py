@@ -215,6 +215,10 @@ _GPIOFIND_FP_RST_L = 'gpiochip0 22'
 
 _GPIOFIND_MALFORMED = 'gpiochips0 22'
 
+_GPIOFIND_FPMCU_BOOT0 = 'gpiochip2 10'
+
+_GPIOFIND_EN_FP_RAILS = 'gpiochip0 42'
+
 _GPIOFIND_OUT_OF_SCOPE = 'gpiochip3 10'
 
 
@@ -443,8 +447,10 @@ class GetDefaultFirmwareTest(unittest.TestCase):
 class FPGpiosParseGpioRangesTest(unittest.TestCase):
     """Test the 'gpio-ranges' parser"""
 
-    def test_malformed_range(self):
-        fpgpios = fptool.FPGpios()
+    @mock.patch('fptool.FPGpios._config_gpios')
+    @mock.patch('fptool.FPGpios.Gpio._config_gpio')
+    def test_malformed_range(self, *_unused_mocks):
+        fpgpios = fptool.FPGpios(None, None, None)
         with mock.patch('fptool.FPGpios._read_gpio_ranges') as mock_ranges:
             mock_ranges.return_value = _GPIO_RANGES_MALFORMED
             with self.assertRaises(SystemExit) as exit_trap:
@@ -453,8 +459,10 @@ class FPGpiosParseGpioRangesTest(unittest.TestCase):
             self.assertEqual(exit_trap.exception.code,
                              fptool.ExitCode.EXIT_RUNTIME)
 
-    def test_parsing_gpio_ranges(self):
-        fpgpios = fptool.FPGpios()
+    @mock.patch('fptool.FPGpios._config_gpios')
+    @mock.patch('fptool.FPGpios.Gpio._config_gpio')
+    def test_parsing_gpio_ranges(self, *_unused_mocks):
+        fpgpios = fptool.FPGpios(None, None, None)
         with mock.patch('fptool.FPGpios._read_gpio_ranges') as mock_ranges:
             mock_ranges.return_value = _GPIO_RANGES
             gpio_ranges = fpgpios._parse_gpio_ranges()
@@ -464,50 +472,62 @@ class FPGpiosParseGpioRangesTest(unittest.TestCase):
 class FPGpiosGetGpioByIndexTest(unittest.TestCase):
     """Test access to GPIO link by index"""
 
-    def test_get_gpio_by_index_empty_ranges(self):
-        fpgpios = fptool.FPGpios()
-        gpio = fpgpios.Gpio()
+    @mock.patch('fptool.FPGpios._config_gpios')
+    @mock.patch('fptool.FPGpios.Gpio._config_gpio')
+    def test_get_gpio_by_index_empty_ranges(self, *_unused_mocks):
+        fpgpios = fptool.FPGpios(None, None, None)
+        gpio = fpgpios.Gpio(None, None, None)
         with self.assertRaises(SystemExit) as exit_trap:
             gpio._get_gpio_by_index([], 0)
         assert isinstance(exit_trap.exception, SystemExit)
         self.assertEqual(exit_trap.exception.code, fptool.ExitCode.EXIT_RUNTIME)
 
-    def test_get_gpio_by_index_missing_gpio(self):
-        fpgpios = fptool.FPGpios()
-        gpio = fpgpios.Gpio()
+    @mock.patch('fptool.FPGpios._config_gpios')
+    @mock.patch('fptool.FPGpios.Gpio._config_gpio')
+    def test_get_gpio_by_index_missing_gpio(self, *_unused_mocks):
+        fpgpios = fptool.FPGpios(None, None, None)
+        gpio = fpgpios.Gpio(None, None, None)
         with self.assertRaises(SystemExit) as exit_trap:
             gpio._get_gpio_by_index(_GPIO_RANGES_DICT_LIST, 126)
         assert isinstance(exit_trap.exception, SystemExit)
         self.assertEqual(exit_trap.exception.code, fptool.ExitCode.EXIT_RUNTIME)
 
-    def test_get_gpio_by_index_out_of_range(self):
-        fpgpios = fptool.FPGpios()
-        gpio = fpgpios.Gpio()
+    @mock.patch('fptool.FPGpios._config_gpios')
+    @mock.patch('fptool.FPGpios.Gpio._config_gpio')
+    def test_get_gpio_by_index_out_of_range(self, *_unused_mocks):
+        fpgpios = fptool.FPGpios(None, None, None)
+        gpio = fpgpios.Gpio(None, None, None)
         with self.assertRaises(SystemExit) as exit_trap:
             gpio._get_gpio_by_index(_GPIO_RANGES_DICT_LIST, 179)
         assert isinstance(exit_trap.exception, SystemExit)
         self.assertEqual(exit_trap.exception.code, fptool.ExitCode.EXIT_RUNTIME)
 
-    def test_get_gpio_by_index_negative_index(self):
-        fpgpios = fptool.FPGpios()
-        gpio = fpgpios.Gpio()
+    @mock.patch('fptool.FPGpios._config_gpios')
+    @mock.patch('fptool.FPGpios.Gpio._config_gpio')
+    def test_get_gpio_by_index_negative_index(self, *_unused_mocks):
+        fpgpios = fptool.FPGpios(None, None, None)
+        gpio = fpgpios.Gpio(None, None, None)
         with self.assertRaises(SystemExit) as exit_trap:
             gpio._get_gpio_by_index(_GPIO_RANGES_DICT_LIST, -1)
         assert isinstance(exit_trap.exception, SystemExit)
         self.assertEqual(exit_trap.exception.code, fptool.ExitCode.EXIT_RUNTIME)
 
-    def test_get_gpio_by_index_end_of_range(self):
-        fpgpios = fptool.FPGpios()
-        gpio = fpgpios.Gpio()
+    @mock.patch('fptool.FPGpios._config_gpios')
+    @mock.patch('fptool.FPGpios.Gpio._config_gpio')
+    def test_get_gpio_by_index_end_of_range(self, *_unused_mocks):
+        fpgpios = fptool.FPGpios(None, None, None)
+        gpio = fpgpios.Gpio(None, None, None)
         try:
             with self.assertRaises(SystemExit):
                 link = gpio._get_gpio_by_index(_GPIO_RANGES_DICT_LIST, 125)
         except AssertionError:
             self.assertEqual(link, 314)
 
-    def test_get_gpio_by_index(self):
-        fpgpios = fptool.FPGpios()
-        gpio = fpgpios.Gpio()
+    @mock.patch('fptool.FPGpios._config_gpios')
+    @mock.patch('fptool.FPGpios.Gpio._config_gpio')
+    def test_get_gpio_by_index(self, *_unused_mocks):
+        fpgpios = fptool.FPGpios(None, None, None)
+        gpio = fpgpios.Gpio(None, None, None)
         try:
             with self.assertRaises(SystemExit):
                 link = gpio._get_gpio_by_index(_GPIO_RANGES_DICT_LIST, 120)
@@ -518,40 +538,50 @@ class FPGpiosGetGpioByIndexTest(unittest.TestCase):
 class FPGpiosParseGpioChipsTest(unittest.TestCase):
     """Test the 'gpiochip' parser"""
 
-    def test_no_gpiodetect_command(self):
+    @mock.patch('fptool.FPGpios._config_gpios')
+    @mock.patch('fptool.FPGpios.Gpio._config_gpio')
+    def test_no_gpiodetect_command(self, *_unused_mocks):
         with mock.patch('fptool.FPGpios._gpiodetect') as mock_detect:
             mock_detect.return_value = [1, None]
-            fpgpios = fptool.FPGpios()
+            fpgpios = fptool.FPGpios(None, None, None)
             bases = fpgpios._parse_gpiochips()
             self.assertEqual(bases, {})
 
-    def test_empty_gpiodetect(self):
+    @mock.patch('fptool.FPGpios._config_gpios')
+    @mock.patch('fptool.FPGpios.Gpio._config_gpio')
+    def test_empty_gpiodetect(self, *_unused_mocks):
         with mock.patch('fptool.FPGpios._gpiodetect') as mock_detect:
             mock_detect.return_value = [0, '']
-            fpgpios = fptool.FPGpios()
+            fpgpios = fptool.FPGpios(None, None, None)
             bases = fpgpios._parse_gpiochips()
             self.assertEqual(bases, {})
 
-    def test_malformed_gpiodetect(self):
+    @mock.patch('fptool.FPGpios._config_gpios')
+    @mock.patch('fptool.FPGpios.Gpio._config_gpio')
+    def test_malformed_gpiodetect(self, *_unused_mocks):
         with mock.patch('fptool.FPGpios._gpiodetect') as mock_detect:
             mock_detect.return_value = [0, _GPIO_DETECT_MALFORMED]
-            fpgpios = fptool.FPGpios()
+            fpgpios = fptool.FPGpios(None, None, None)
             with self.assertRaises(SystemExit) as exit_trap:
                 fpgpios._parse_gpiochips()
             assert isinstance(exit_trap.exception, SystemExit)
             self.assertEqual(exit_trap.exception.code,
                              fptool.ExitCode.EXIT_RUNTIME)
 
-    def test_no_gpiochip_files(self):
+    @mock.patch('fptool.FPGpios._config_gpios')
+    @mock.patch('fptool.FPGpios.Gpio._config_gpio')
+    def test_no_gpiochip_files(self, *_unused_mocks):
         with mock.patch('fptool.FPGpios._gpiodetect') as mock_detect:
             mock_detect.return_value = [0, _GPIO_DETECT]
             with mock.patch('glob.glob') as mock_glob:
                 mock_glob.return_value = []
-                fpgpios = fptool.FPGpios()
+                fpgpios = fptool.FPGpios(None, None, None)
                 bases = fpgpios._parse_gpiochips()
                 self.assertEqual(bases, {})
 
-    def test_no_label_or_base(self):
+    @mock.patch('fptool.FPGpios._config_gpios')
+    @mock.patch('fptool.FPGpios.Gpio._config_gpio')
+    def test_no_label_or_base(self, *_unused_mocks):
         with mock.patch('fptool.FPGpios._gpiodetect') as mock_detect:
             mock_detect.return_value = [0, _GPIO_DETECT]
             with mock.patch('glob.glob') as mock_glob:
@@ -559,20 +589,22 @@ class FPGpiosParseGpioChipsTest(unittest.TestCase):
                 with mock.patch('fptool.readline') as mock_readline:
                     mock_readline.return_value = []
                     with self.assertRaises(SystemExit) as exit_trap:
-                        fpgpios = fptool.FPGpios()
+                        fpgpios = fptool.FPGpios(None, None, None)
                         fpgpios._parse_gpiochips()
                     assert isinstance(exit_trap.exception, SystemExit)
                     self.assertEqual(exit_trap.exception.code,
                                      fptool.ExitCode.EXIT_RUNTIME)
 
-    def test_parse_gpiochips(self):
+    @mock.patch('fptool.FPGpios._config_gpios')
+    @mock.patch('fptool.FPGpios.Gpio._config_gpio')
+    def test_parse_gpiochips(self, *_unused_mocks):
         with mock.patch('fptool.FPGpios._gpiodetect') as mock_detect:
             mock_detect.return_value = [0, _GPIO_DETECT]
             with mock.patch('glob.glob') as mock_glob:
                 mock_glob.return_value = _GPIOCHIP_GLOB
                 with mock.patch('fptool.readline') as mock_readline:
                     mock_readline.side_effect = _GPIOCHIP_LABLES_BASES
-                    fpgpios = fptool.FPGpios()
+                    fpgpios = fptool.FPGpios(None, None, None)
                     bases = fpgpios._parse_gpiochips()
                     mock_glob.assert_called_once_with(_GPIOCHIP_GLOB_INPUT)
                     self.assertEqual(mock_readline.call_count, 6)
@@ -582,9 +614,11 @@ class FPGpiosParseGpioChipsTest(unittest.TestCase):
 class FPGpiosGetGpioByNameTest(unittest.TestCase):
     """Test access to GPIO link by name"""
 
-    def test_no_bases(self):
-        fpgpios = fptool.FPGpios()
-        gpio = fpgpios.Gpio()
+    @mock.patch('fptool.FPGpios._config_gpios')
+    @mock.patch('fptool.FPGpios.Gpio._config_gpio')
+    def test_no_bases(self, *_unused_mocks):
+        fpgpios = fptool.FPGpios(None, None, None)
+        gpio = fpgpios.Gpio(None, None, None)
         with mock.patch('fptool.FPGpios.Gpio._gpiofind') as mock_gpiofind:
             mock_gpiofind.return_value = [0, _GPIOFIND_FP_RST_L]
             with self.assertRaises(SystemExit) as exit_trap:
@@ -593,9 +627,11 @@ class FPGpiosGetGpioByNameTest(unittest.TestCase):
             self.assertEqual(exit_trap.exception.code,
                              fptool.ExitCode.EXIT_RUNTIME)
 
-    def test_no_gpiofind(self):
-        fpgpios = fptool.FPGpios()
-        gpio = fpgpios.Gpio()
+    @mock.patch('fptool.FPGpios._config_gpios')
+    @mock.patch('fptool.FPGpios.Gpio._config_gpio')
+    def test_no_gpiofind(self, *_unused_mocks):
+        fpgpios = fptool.FPGpios(None, None, None)
+        gpio = fpgpios.Gpio(None, None, None)
         with mock.patch('fptool.FPGpios.Gpio._gpiofind') as mock_gpiofind:
             mock_gpiofind.return_value = [1, None]
             with self.assertRaises(SystemExit) as exit_trap:
@@ -604,9 +640,11 @@ class FPGpiosGetGpioByNameTest(unittest.TestCase):
             self.assertEqual(exit_trap.exception.code,
                              fptool.ExitCode.EXIT_RUNTIME)
 
-    def test_empty_gpiofind(self):
-        fpgpios = fptool.FPGpios()
-        gpio = fpgpios.Gpio()
+    @mock.patch('fptool.FPGpios._config_gpios')
+    @mock.patch('fptool.FPGpios.Gpio._config_gpio')
+    def test_empty_gpiofind(self, *_unused_mocks):
+        fpgpios = fptool.FPGpios(None, None, None)
+        gpio = fpgpios.Gpio(None, None, None)
         with mock.patch('fptool.FPGpios.Gpio._gpiofind') as mock_gpiofind:
             mock_gpiofind.return_value = [0, '']
             with self.assertRaises(SystemExit) as exit_trap:
@@ -615,9 +653,11 @@ class FPGpiosGetGpioByNameTest(unittest.TestCase):
             self.assertEqual(exit_trap.exception.code,
                              fptool.ExitCode.EXIT_RUNTIME)
 
-    def test_malformed_gpiofind(self):
-        fpgpios = fptool.FPGpios()
-        gpio = fpgpios.Gpio()
+    @mock.patch('fptool.FPGpios._config_gpios')
+    @mock.patch('fptool.FPGpios.Gpio._config_gpio')
+    def test_malformed_gpiofind(self, *_unused_mocks):
+        fpgpios = fptool.FPGpios(None, None, None)
+        gpio = fpgpios.Gpio(None, None, None)
         with mock.patch('fptool.FPGpios.Gpio._gpiofind') as mock_gpiofind:
             mock_gpiofind.return_value = [0, _GPIOFIND_MALFORMED]
             with self.assertRaises(SystemExit) as exit_trap:
@@ -626,9 +666,11 @@ class FPGpiosGetGpioByNameTest(unittest.TestCase):
             self.assertEqual(exit_trap.exception.code,
                              fptool.ExitCode.EXIT_RUNTIME)
 
-    def test_out_of_scope_device(self):
-        fpgpios = fptool.FPGpios()
-        gpio = fpgpios.Gpio()
+    @mock.patch('fptool.FPGpios._config_gpios')
+    @mock.patch('fptool.FPGpios.Gpio._config_gpio')
+    def test_out_of_scope_device(self, *_unused_mocks):
+        fpgpios = fptool.FPGpios(None, None, None)
+        gpio = fpgpios.Gpio(None, None, None)
         with mock.patch('fptool.FPGpios.Gpio._gpiofind') as mock_gpiofind:
             mock_gpiofind.return_value = [0, _GPIOFIND_OUT_OF_SCOPE]
             with self.assertRaises(SystemExit) as exit_trap:
@@ -637,9 +679,11 @@ class FPGpiosGetGpioByNameTest(unittest.TestCase):
             self.assertEqual(exit_trap.exception.code,
                              fptool.ExitCode.EXIT_RUNTIME)
 
-    def test_gpio_does_not_exist(self):
-        fpgpios = fptool.FPGpios()
-        gpio = fpgpios.Gpio()
+    @mock.patch('fptool.FPGpios._config_gpios')
+    @mock.patch('fptool.FPGpios.Gpio._config_gpio')
+    def test_gpio_does_not_exist(self, *_unused_mocks):
+        fpgpios = fptool.FPGpios(None, None, None)
+        gpio = fpgpios.Gpio(None, None, None)
         with mock.patch('fptool.FPGpios.Gpio._gpiofind') as mock_gpiofind:
             mock_gpiofind.return_value = [1, []]
             try:
@@ -650,14 +694,126 @@ class FPGpiosGetGpioByNameTest(unittest.TestCase):
                 mock_gpiofind.assert_called_once_with('FP_RST_L')
                 self.assertEqual(rst_l, fptool.constantValues.UNUSED_GPIO)
 
-    def test_get_gpio_by_name(self):
-        fpgpios = fptool.FPGpios()
-        gpio = fpgpios.Gpio()
+    @mock.patch('fptool.FPGpios._config_gpios')
+    @mock.patch('fptool.FPGpios.Gpio._config_gpio')
+    def test_get_gpio_by_name(self, *_unused_mocks):
+        fpgpios = fptool.FPGpios(None, None, None)
+        gpio = fpgpios.Gpio(None, None, None)
         with mock.patch('fptool.FPGpios.Gpio._gpiofind') as mock_gpiofind:
             mock_gpiofind.return_value = [0, _GPIOFIND_FP_RST_L]
             rst_l = gpio._get_gpio_by_name(_GPIO_BASES, 'FP_RST_L')
             mock_gpiofind.assert_called_once_with('FP_RST_L')
             self.assertEqual(rst_l, 366)
+
+
+class GetGpioClassTest(unittest.TestCase):
+    """Test a single GPIO configuration"""
+
+    @mock.patch('fptool.FPGpios._config_gpios')
+    def test_unused_gpio(self, _unused_mock):
+        fpgpios = fptool.FPGpios(None, None, None)
+        gpio = fpgpios.Gpio(_GPIO_RANGES_DICT_LIST, _GPIO_BASES,
+                            fptool.constantValues.UNUSED_GPIO)
+        self.assertEqual(gpio._gpio, None)
+
+    @mock.patch('fptool.FPGpios._config_gpios')
+    def test_indexed_gpio(self, _unused_mock):
+        fpgpios = fptool.FPGpios(None, None, None)
+        gpio = fpgpios.Gpio(_GPIO_RANGES_DICT_LIST, _GPIO_BASES, 106)
+        self.assertEqual(gpio._gpio, '295')
+
+    @mock.patch('fptool.FPGpios._config_gpios')
+    def test_named_gpio(self, _unused_mock):
+        fpgpios = fptool.FPGpios(_GPIO_RANGES_DICT_LIST, None, None)
+        with mock.patch('fptool.FPGpios.Gpio._get_gpio_by_name') as mock_name:
+            mock_name.return_value = '206'
+            gpio = fpgpios.Gpio(_GPIO_RANGES_DICT_LIST, _GPIO_BASES, 'FP_RST_L')
+            self.assertEqual(gpio._gpio, '206')
+
+
+class ConfigPlatformTest(unittest.TestCase):
+    """Test the platform specific GPIO and transport configuration"""
+
+    def test_unknown_platform(self):
+        config = fptool.ConfigPlatform(None)
+        self.assertEqual(config, None)
+        config = fptool.ConfigPlatform('')
+        self.assertEqual(config, None)
+        config = fptool.ConfigPlatform('unknown')
+        self.assertEqual(config, None)
+
+    @mock.patch('fptool.FPGpios._parse_gpiochips')
+    @mock.patch('fptool.FPGpios._parse_gpio_ranges')
+    def test_index_base_config(self, mock_ranges, mock_chips):
+        mock_chips.return_value = _GPIO_BASES
+        mock_ranges.return_value = _GPIO_RANGES_DICT_LIST
+        config = fptool.ConfigPlatform('zork')
+        self.assertEqual(config._config['TRANSPORT'], 'UART')
+        self.assertEqual(config._config['DEVICE'], '/dev/ttyS1')
+        self.assertEqual(config._config['GPIOS'].n_reset._gpio, '163')
+        self.assertEqual(config._config['GPIOS'].boot_0._gpio, '221')
+        self.assertEqual(config._config['GPIOS'].power_enable._gpio, None)
+
+    @mock.patch('fptool.FPGpios._parse_gpiochips')
+    @mock.patch('fptool.FPGpios._parse_gpio_ranges')
+    def test_nami_prior_to_v_4_4(self, mock_ranges, mock_chips):
+        mock_chips.return_value = {}
+        mock_ranges.return_value = _GPIO_RANGES_DICT_LIST
+        with mock.patch('fptool.release') as mock_release:
+            mock_release.return_value = '4.3.0-12-generic'
+            config = fptool.ConfigPlatform('nami')
+            self.assertEqual(config._config['TRANSPORT'], 'SPI')
+            self.assertEqual(config._config['DEVICE'], '/dev/spidev32765.0')
+            self.assertEqual(config._config['GPIOS'].n_reset._gpio, '209')
+            self.assertEqual(config._config['GPIOS'].boot_0._gpio, '229')
+            self.assertEqual(config._config['GPIOS'].power_enable._gpio, '187')
+
+    @mock.patch('fptool.FPGpios._parse_gpiochips')
+    @mock.patch('fptool.FPGpios._parse_gpio_ranges')
+    def test_nami_after_v_4_4(self, mock_ranges, mock_chips):
+        mock_chips.return_value = {}
+        mock_ranges.return_value = _GPIO_RANGES_DICT_LIST
+        with mock.patch('fptool.release') as mock_release:
+            mock_release.return_value = '4.5.0-25-generic'
+            config = fptool.ConfigPlatform('nami')
+            self.assertEqual(config._config['TRANSPORT'], 'SPI')
+            self.assertEqual(config._config['DEVICE'], '/dev/spidev1.0')
+            self.assertEqual(config._config['GPIOS'].n_reset._gpio, '209')
+            self.assertEqual(config._config['GPIOS'].boot_0._gpio, '229')
+            self.assertEqual(config._config['GPIOS'].power_enable._gpio, '187')
+
+    @mock.patch('fptool.FPGpios._parse_gpiochips')
+    @mock.patch('fptool.FPGpios._parse_gpio_ranges')
+    @mock.patch('fptool.FPGpios.Gpio._gpiofind')
+    def test_name_base_config(self, mock_gpiofind, mock_ranges, mock_chips):
+        mock_chips.return_value = _GPIO_BASES
+        mock_ranges.return_value = _GPIO_RANGES_DICT_LIST
+        mock_gpiofind.side_effect = [[0, _GPIOFIND_FP_RST_L],
+                                     [0, _GPIOFIND_FPMCU_BOOT0],
+                                     [0, _GPIOFIND_EN_FP_RAILS]]
+        config = fptool.ConfigPlatform('herobrine')
+        self.assertEqual(config._config['TRANSPORT'], 'SPI')
+        self.assertEqual(config._config['DEVICE'], '/dev/spidev9.0')
+        self.assertEqual(config._config['GPIOS'].n_reset._gpio, '366')
+        self.assertEqual(config._config['GPIOS'].boot_0._gpio, '162')
+        self.assertEqual(config._config['GPIOS'].power_enable._gpio, '386')
+
+    @mock.patch('fptool.FPGpios._parse_gpiochips')
+    @mock.patch('fptool.FPGpios._parse_gpio_ranges')
+    @mock.patch('fptool.FPGpios.Gpio._gpiofind')
+    def test_strongbad_without_en_fp_rails_gpio(self, mock_gpiofind,
+                                                mock_ranges, mock_chips):
+        mock_chips.return_value = _GPIO_BASES
+        mock_ranges.return_value = _GPIO_RANGES_DICT_LIST
+        mock_gpiofind.side_effect = [[0, _GPIOFIND_FP_RST_L],
+                                     [0, _GPIOFIND_FPMCU_BOOT0],
+                                     [1, None]]
+        config = fptool.ConfigPlatform('strongbad')
+        self.assertEqual(config._config['TRANSPORT'], 'SPI')
+        self.assertEqual(config._config['DEVICE'], '/dev/spidev10.0')
+        self.assertEqual(config._config['GPIOS'].n_reset._gpio, '366')
+        self.assertEqual(config._config['GPIOS'].boot_0._gpio, '162')
+        self.assertEqual(config._config['GPIOS'].power_enable._gpio, None)
 
 
 if __name__ == '__main__':
