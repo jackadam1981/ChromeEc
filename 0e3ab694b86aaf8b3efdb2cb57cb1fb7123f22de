@@ -16,6 +16,29 @@
       "message": "modify for Tarlo",
       "revId": "0e3ab694b86aaf8b3efdb2cb57cb1fb7123f22de",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff01d733_2641c729",
+        "filename": "board/taeko/sensors.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-01-20T02:51:09Z",
+      "side": 1,
+      "message": "unused pins are usually set to PULL_UP.\ndoes this board need PULL_DOWN?",
+      "range": {
+        "startLine": 336,
+        "startChar": 50,
+        "endLine": 336,
+        "endChar": 64
+      },
+      "revId": "0e3ab694b86aaf8b3efdb2cb57cb1fb7123f22de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
