@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e29f751d_271625fd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-01-20T18:05:59Z",
+      "side": 1,
+      "message": "Adding Scott, who has been acting as our PRL owner",
+      "revId": "892aaa0ae9bdab24a268d6faa9ca7c7e6ab4bdb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2530ba47_3cf998f2",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2423,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-01-20T18:05:59Z",
+      "side": 1,
+      "message": "Generally, we make it a best practice to clear flags as soon as they\u0027re used by the stack (ex. to ensure they get cleared in all cases, like for example in the flow for line 2413 versus this location).  \n\nWhy wait to clear the flag?  Is there concern the PRL could be running in the middle of this function? Are we trying to leave it in place when we receive certain messages like the Request data message above?",
+      "revId": "892aaa0ae9bdab24a268d6faa9ca7c7e6ab4bdb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
