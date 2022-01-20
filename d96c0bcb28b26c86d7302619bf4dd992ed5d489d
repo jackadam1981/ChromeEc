@@ -189,6 +189,30 @@
       },
       "revId": "d96c0bcb28b26c86d7302619bf4dd992ed5d489d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "94383444_82645cfb",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 559,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-01-20T22:21:19Z",
+      "side": 1,
+      "message": "Thanks for providing this documentation. This looks like a bug in our EC code. We should change the maximum from 254 to 239: http://b/215593629",
+      "parentUuid": "68473ce2_06ae266b",
+      "range": {
+        "startLine": 559,
+        "startChar": 31,
+        "endLine": 559,
+        "endChar": 34
+      },
+      "revId": "d96c0bcb28b26c86d7302619bf4dd992ed5d489d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
