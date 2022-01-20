@@ -28,7 +28,7 @@ void common_intel_x86_handle_rsmrst(enum power_state state);
  *
  * @return power_state New chipset state.
  */
-enum power_state chipset_force_g3(void);
+__override_proto enum power_state chipset_force_g3(void);
 
 /**
  * Handle power states.
