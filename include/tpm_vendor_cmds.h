@@ -60,7 +60,9 @@ enum vendor_cmd_cc {
 	/* DEPRECATED(33): Manage CCD password phase */
 	VENDOR_CC_CCD = 34,
 	VENDOR_CC_GET_ALERTS_DATA = 35,
+#ifdef CONFIG_CMD_SPIHASH
 	VENDOR_CC_SPI_HASH = 36,
+#endif
 	VENDOR_CC_PINWEAVER = 37,
 	/*
 	 * Check the factory reset settings. If they're all set correctly, do a

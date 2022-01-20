@@ -561,6 +561,82 @@ void disable_ap_spi_hash_shortcut(void)
 	shortcut_active_ = false;
 }
 
+
+int usb_spi_sha256_start(struct sha256_ctx *ctx)
+{
+	if (get_spi_bus_user() != SPI_BUS_USER_HASH) {
+		CPRINTS("%s: not enabled", __func__);
+		return EC_ERROR_BUSY;
+	}
+
+	if (DCRYPTO_hw_sha256_init(ctx) != DCRYPTO_OK)
+		return EC_ERROR_HW_INTERNAL;
+
+	return EC_SUCCESS;
+}
+
+int usb_spi_read_buffer(void *buf, unsigned int offset,  size_t bytes)
+{
+	uint8_t *p = buf;
+
+	while (bytes) {
+		const int this_chunk = MIN(bytes, SPI_HASH_CHUNK_SIZE);
+
+		/* Read the data */
+		if (spi_read_chunk(p, offset, this_chunk) != EC_SUCCESS) {
+			CPRINTS("%s: read error at 0x%x", __func__, offset);
+			return VENDOR_RC_READ_FLASH_FAIL;
+		}
+
+		bytes -= this_chunk;
+		offset += this_chunk;
+		p += this_chunk;
+	}
+	return EC_SUCCESS;
+}
+
+int usb_spi_sha256_update(struct sha256_ctx *ctx, uint32_t offset,
+			  uint32_t size)
+{
+	uint8_t data[SPI_HASH_CHUNK_SIZE];
+
+	while (size) {
+		const int this_chunk = MIN(size, SPI_HASH_CHUNK_SIZE);
+
+		/* Read the data */
+		if (spi_read_chunk(data, offset, this_chunk) != EC_SUCCESS) {
+			CPRINTS("%s: read error at 0x%x", __func__, offset);
+			return VENDOR_RC_READ_FLASH_FAIL;
+		}
+		/* Update hash */
+		SHA256_update(ctx, data, this_chunk);
+
+		/* Kick the watchdog every 128 chunks. */
+		if (((size / SPI_HASH_CHUNK_SIZE) % 128) == 127) {
+			msleep(1);
+			watchdog_reload();
+		}
+
+		size -= this_chunk;
+		offset += this_chunk;
+	}
+	return EC_SUCCESS;
+}
+
+void usb_spi_sha256_final(struct sha256_ctx *ctx, void *digest,
+			  size_t digest_size)
+{
+	size_t copy_size;
+
+	copy_size = MIN(digest_size, SHA256_DIGEST_SIZE);
+	memcpy(digest, SHA256_final(ctx), copy_size);
+
+	if (copy_size < digest_size)
+		memset((uint8_t *)digest + copy_size, 0,
+		       digest_size - copy_size);
+}
+
+#ifdef CONFIG_CMD_SPIHASH
 /* Process vendor subcommand dealing with Physical presence polling. */
 static enum vendor_cmd_rc spihash_pp_poll(void *buf,
 					  size_t input_size,
@@ -669,80 +745,6 @@ static enum vendor_cmd_rc spi_hash_dump(uint8_t *dest, uint32_t offset,
 	}
 
 	return VENDOR_RC_SUCCESS;
-}
-
-int usb_spi_sha256_start(struct sha256_ctx *ctx)
-{
-	if (get_spi_bus_user() != SPI_BUS_USER_HASH) {
-		CPRINTS("%s: not enabled", __func__);
-		return EC_ERROR_BUSY;
-	}
-
-	if (DCRYPTO_hw_sha256_init(ctx) != DCRYPTO_OK)
-		return EC_ERROR_HW_INTERNAL;
-
-	return EC_SUCCESS;
-}
-
-int usb_spi_read_buffer(void *buf, unsigned int offset,  size_t bytes)
-{
-	uint8_t *p = buf;
-
-	while (bytes) {
-		const int this_chunk = MIN(bytes, SPI_HASH_CHUNK_SIZE);
-
-		/* Read the data */
-		if (spi_read_chunk(p, offset, this_chunk) != EC_SUCCESS) {
-			CPRINTS("%s: read error at 0x%x", __func__, offset);
-			return VENDOR_RC_READ_FLASH_FAIL;
-		}
-
-		bytes -= this_chunk;
-		offset += this_chunk;
-		p += this_chunk;
-	}
-	return EC_SUCCESS;
-}
-
-int usb_spi_sha256_update(struct sha256_ctx *ctx, uint32_t offset,
-			  uint32_t size)
-{
-	uint8_t data[SPI_HASH_CHUNK_SIZE];
-
-	while (size) {
-		const int this_chunk = MIN(size, SPI_HASH_CHUNK_SIZE);
-
-		/* Read the data */
-		if (spi_read_chunk(data, offset, this_chunk) != EC_SUCCESS) {
-			CPRINTS("%s: read error at 0x%x", __func__, offset);
-			return VENDOR_RC_READ_FLASH_FAIL;
-		}
-		/* Update hash */
-		SHA256_update(ctx, data, this_chunk);
-
-		/* Kick the watchdog every 128 chunks. */
-		if (((size / SPI_HASH_CHUNK_SIZE) % 128) == 127) {
-			msleep(1);
-			watchdog_reload();
-		}
-
-		size -= this_chunk;
-		offset += this_chunk;
-	}
-	return EC_SUCCESS;
-}
-
-void usb_spi_sha256_final(struct sha256_ctx *ctx, void *digest,
-			  size_t digest_size)
-{
-	size_t copy_size;
-
-	copy_size = MIN(digest_size, SHA256_DIGEST_SIZE);
-	memcpy(digest, SHA256_final(ctx), copy_size);
-
-	if (copy_size < digest_size)
-		memset((uint8_t *)digest + copy_size, 0,
-		       digest_size - copy_size);
 }
 
 static enum vendor_cmd_rc spi_hash_sha256(uint8_t *dest, uint32_t offset,
@@ -904,4 +906,5 @@ static int hash_command_wrapper(int argc, char *argv[])
 DECLARE_SAFE_CONSOLE_COMMAND(spihash, hash_command_wrapper,
 		     "ap | ec [gang] | disable | [dump] <offset> <size>",
 		     "Hash SPI flash via TPM vendor command");
+#endif /* CONFIG_CMD_SPIHASH */
 #endif /* CONFIG_SPI_HASH */

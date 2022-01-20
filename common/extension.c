@@ -45,7 +45,9 @@ uint32_t extension_route_command(struct vendor_cmd_params *p)
 		case VENDOR_CC_GET_BOARD_ID:
 		case VENDOR_CC_GET_BOOT_MODE:
 		case VENDOR_CC_RMA_CHALLENGE_RESPONSE:
+#ifdef CONFIG_CMD_SPIHASH
 		case VENDOR_CC_SPI_HASH:   /* Requires physical presence. */
+#endif
 		case VENDOR_CC_TURN_UPDATE_ON:
 			break;
 		case VENDOR_CC_AP_RO_VALIDATE:

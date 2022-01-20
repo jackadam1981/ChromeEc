@@ -28,6 +28,9 @@
 #undef CONFIG_CMD_SYSJUMP
 #undef CONFIG_CMD_SYSLOCK
 
+/* Add spihash vendor and console commands */
+#define CONFIG_CMD_SPIHASH
+
 #define CONFIG_CUSTOMIZED_RO
 /* TODO: find a way to drop RO build. */
 #define CONFIG_FW_INCLUDE_RO
