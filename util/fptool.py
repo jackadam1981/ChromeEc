@@ -7,6 +7,48 @@
 
 import argparse
 import sys
+import logging
+import subprocess
+
+
+def readline(file_name: str) -> str:
+    try:
+        with open(file_name, 'r') as fd:
+            return fd.readline().rstrip()
+    except OSError:
+        logging.warning('--------------- Error reading from %s', file_name)
+        logging.warning('\t\tOSError: %s', sys.exc_info()[1].strerror)
+        return ''
+
+
+def writeline(file_name: str, data: str):
+    try:
+        with open(file_name, 'w') as fd:
+            fd.write(data + '\n')
+    except OSError:
+        logging.warning('--------------- Error writing: %s to %s', data,
+                        file_name)
+        logging.warning('\t\tOSError: %s', sys.exc_info()[1].strerror)
+
+
+def run_system_cmd(cmd, show_output=False) -> [int, str, str]:
+    sys.stdout.flush()
+    sys.stderr.flush()
+
+    system_cmd = subprocess.Popen(cmd,
+                                  stdout=None if show_output
+                                  else subprocess.PIPE,
+                                  stderr=None if show_output
+                                  else subprocess.PIPE,
+                                  shell=True,
+                                  universal_newlines=True)
+    stdout, stderr = system_cmd.communicate()
+    return system_cmd.returncode, stdout, stderr
+
+
+def klog(msg: str):
+    logging.debug('fptool: %s', msg)
+    writeline('/dev/kmsg', f'fptool: {msg}')
 
 
 def cmd_flash(args: argparse.Namespace):
@@ -64,6 +106,7 @@ def flash_init(parser):
 
 
 def main() -> int:
+    logging.basicConfig(level='INFO')
     parser = argparse.ArgumentParser(description=__doc__)
     subparsers = parser.add_subparsers(dest='subcommand', title='subcommands')
     # This method of setting required is more compatible with older python.
