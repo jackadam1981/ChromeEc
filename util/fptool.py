@@ -10,6 +10,15 @@ import sys
 import logging
 import subprocess
 import os
+import glob
+
+
+class ExitCode:
+    """Exit Codes."""
+    EXIT_ARGUMENT = 3
+    EXIT_CONFIG = 4
+    EXIT_PRECONDITION = 5
+    EXIT_RUNTIME = 6
 
 
 def readline(file_name: str) -> str:
@@ -50,6 +59,99 @@ def run_system_cmd(cmd, show_output=False) -> [int, str, str]:
 def klog(msg: str):
     logging.debug('fptool: %s', msg)
     writeline('/dev/kmsg', f'fptool: {msg}')
+
+
+def assert_wp_is_disabled():
+    """Exit with failure if the device is write protected"""
+    rc, wp_enabled_str, _stderr = run_system_cmd('crossystem wpsw_cur')
+
+    if rc != 0:
+        logging.error('Failed to get hardware write protect status')
+        sys.exit(ExitCode.EXIT_PRECONDITION)
+
+    # wp_enabled_str:
+    #   '0' - Disabled
+    #   '1' - Enabled
+    if int(wp_enabled_str) != 0:
+        logging.error('Please make sure hardware write protect is disabled.')
+        logging.error('See https://www.chromium.org/chromium-os/'
+                      'firmware-porting-guide/firmware-ec-write-protection')
+        sys.exit(ExitCode.EXIT_PRECONDITION)
+
+
+def read_modalias(dev_type: str) -> dict:
+    """Read the modalias files according to the device type"""
+    devs = glob.glob(f'/sys/bus/{dev_type}/devices/*/modalias')
+    modalias_list = {}
+    for dev in devs:
+        modalias = readline(dev)
+        if not modalias:
+            continue
+        modalias_list[os.path.basename(os.path.dirname(dev))] = modalias
+    return modalias_list
+
+
+def get_devid(dev_type: str, dev_str: str) -> str:
+    """Read the modalias list and extract the device ID
+
+    For SPI:
+        cat /sys/bus/spi/devices/spi-PR0001:01/modalias
+            of:NcrfpTCgoogle,cros-ec-spi
+    For UART:
+        cat /sys/bus/serial/devices/serial0-0/modalias
+            of:NcrfpTCgoogle,cros-ec-uart
+    For Strongbad SPI:
+        cat /sys/bus/spi/devices/spi10.0/modalias
+            spi:cros-ec-spi
+    """
+    modalias_list = read_modalias(dev_type)
+    if not modalias_list:
+        return ''
+
+    for dev, modalias in modalias_list.items():
+        # For most devices modalias is 'of:NcrfpTCgoogle,cros-ec-< spi | uart>'
+        if modalias.split(',')[-1] == dev_str:
+            return dev
+        # For strongbad and herobrine, the modalias is: 'spi:cros-ec-spi'
+        # TODO(b/179533783): Fix this script to look for non-ACPI modalias
+        if modalias.split(':')[-1] == dev_str:
+            return dev
+
+    return ''
+
+
+def get_spiid() -> str:
+    """Get the spiid for the fingerprint sensor based on the modalias string.
+
+       see: https://crbug.com/955117
+    """
+    return get_devid('spi', 'cros-ec-spi')
+
+
+def get_uartid() -> str:
+    """Get the uartid for the fingerprint sensor based on the modalias."""
+    return get_devid('serial', 'cros-ec-uart')
+
+
+def get_uart_dev_name(device_id: str) -> str:
+    """Find the UART device associated with the device ID.
+
+    e.g. Zork
+        Device ID: serial0-0
+        Device association:
+            /sys/bus/platform/drivers/dw-apb-uart/AMD0020:01/serial0/serial0-0/
+        Device Name: AMD0020:01
+    """
+    path = '/sys/bus/platform/drivers/dw-apb-uart/'
+    dirs = glob.glob(f'{path}*/*/{device_id}/')
+    if not dirs:
+        logging.warning('Failed to locate device for: %s', device_id)
+        return ''
+    if len(dirs) > 1:
+        logging.warning('Device for %s is ambiguous', device_id)
+        return ''
+
+    return os.path.basename(os.path.dirname(os.path.dirname(dirs[0][:-1])))
 
 
 def cmd_flash(args: argparse.Namespace):
