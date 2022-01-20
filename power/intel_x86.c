@@ -107,15 +107,6 @@ static enum power_state power_wait_s5_rtc_reset(void)
 }
 #endif
 
-void chipset_throttle_cpu(int throttle)
-{
-#ifdef CONFIG_CPU_PROCHOT_ACTIVE_LOW
-	throttle = !throttle;
-#endif /* CONFIG_CPU_PROCHOT_ACTIVE_LOW */
-	if (chipset_in_state(CHIPSET_STATE_ON))
-		gpio_set_level(GPIO_CPU_PROCHOT, throttle);
-}
-
 enum power_state power_chipset_init(void)
 {
 	CPRINTS("%s: power_signal=0x%x", __func__, power_get_signals());

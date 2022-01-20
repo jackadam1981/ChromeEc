@@ -5,7 +5,7 @@
 
 /* AMD x86 power sequencing module for Chrome EC */
 
-#include "common.h"
+
 #include "lid_switch.h"
 #include "power/common_x86.h"
 #include "power/amd_x86.h"
@@ -45,16 +45,6 @@ static void chipset_force_g3(void)
 {
 	/* Disable system power ("*_A" rails) in G3. */
 	gpio_set_level(GPIO_EN_PWR_A, 0);
-}
-
-void chipset_throttle_cpu(int throttle)
-{
-	CPRINTS("%s(%d)", __func__, throttle);
-	if (IS_ENABLED(CONFIG_CPU_PROCHOT_ACTIVE_LOW))
-		throttle = !throttle;
-
-	if (chipset_in_state(CHIPSET_STATE_ON))
-		gpio_set_level(GPIO_CPU_PROCHOT, throttle);
 }
 
 void chipset_handle_espi_reset_assert(void)

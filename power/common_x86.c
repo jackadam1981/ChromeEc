@@ -12,6 +12,17 @@
 #define CPRINTS(format, args...) cprints(CC_CHIPSET, format, ##args)
 #define CPRINTF(format, args...) cprintf(CC_CHIPSET, format, ##args)
 
+void chipset_throttle_cpu(int throttle)
+{
+	CPRINTS("%s(%d)", __func__, throttle);
+
+	if (IS_ENABLED(CONFIG_CPU_PROCHOT_ACTIVE_LOW))
+		throttle = !throttle;
+
+	if (chipset_in_state(CHIPSET_STATE_ON))
+		gpio_set_level(GPIO_CPU_PROCHOT, throttle);
+}
+
 __overridable void x86_sys_reset_delay(void)
 {
 	/*
@@ -142,7 +153,7 @@ void power_reset_host_sleep_state(void)
 	power_set_host_sleep_state(HOST_SLEEP_EVENT_DEFAULT_RESET);
 	sleep_reset_tracking();
 	power_chipset_handle_host_sleep_event(HOST_SLEEP_EVENT_DEFAULT_RESET,
-					      NULL);
+						  NULL);
 }
 
 #endif /* CONFIG_POWER_S0IX */
