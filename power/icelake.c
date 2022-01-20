@@ -149,13 +149,6 @@ void chipset_handle_espi_reset_assert(void)
 	}
 }
 
-enum power_state chipset_force_g3(void)
-{
-	chipset_force_shutdown(CHIPSET_SHUTDOWN_G3);
-
-	return POWER_G3;
-}
-
 static void enable_pp5000_rail(void)
 {
 	if (IS_ENABLED(CONFIG_POWER_PP5000_CONTROL))
