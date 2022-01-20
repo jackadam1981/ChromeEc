@@ -16,6 +16,23 @@
       "message": "Dear All,\n\nFrom Diana advice for initial PD configuration of Beadrix project, I create this CL to support Beadrix.\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3386494/2/driver/tcpm/anx7447.c",
       "revId": "184946219775c0a5043b8571479f223835e63ce5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc96a354_89f76889",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483835
+      },
+      "writtenOn": "2022-01-20T06:31:56Z",
+      "side": 1,
+      "message": "From Henry, \"ChromeOS CL Review Rules and Tips\",\n\"Partners who have CQ+2 permission are welcome and recommended to do CQ+2 in ToT after gaining CR+2 and V+1.\"",
+      "revId": "184946219775c0a5043b8571479f223835e63ce5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
