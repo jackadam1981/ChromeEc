@@ -52,6 +52,24 @@
       "parentUuid": "603f7faf_9f0b296b",
       "revId": "1025609fd82a3c24be7d5efdb6a016a3bf2040fb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a514f7e_b6615d22",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-01-20T22:04:06Z",
+      "side": 1,
+      "message": "We had a chat offline. I missed that Ofer had created 12 patches on this CL. We agreed that Ofer would cherry-pick these into separate commits since Gerrit is intended to operate with each individual change as a separate commit/CL as opposed to new revision (patch) on an existing CL.",
+      "parentUuid": "cee8378f_1b9078c6",
+      "revId": "1025609fd82a3c24be7d5efdb6a016a3bf2040fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
