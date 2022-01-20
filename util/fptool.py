@@ -23,6 +23,130 @@ class ExitCode:
     EXIT_RUNTIME = 6
 
 
+class FPGpios:
+    """Common GPIOs structure to be initiated per platform"""
+
+    class Gpio:
+        """Single GPIO control class"""
+
+        def _get_gpio_by_index(self, ranges: List[dict], idx: int) -> int:
+            """Convert gpio index to its absolute location in the device.
+
+            The absolute location is calculated as follows:
+                Absolute location = gpio index - first index in the range + base
+            """
+            if idx < 0:
+                return -1
+            for g_range in ranges:
+                if idx > g_range['seq_idx']['last']:
+                    continue
+                if idx < g_range['seq_idx']['first']:
+                    continue
+                return (g_range['gpio']['first'] + idx
+                        - g_range['seq_idx']['first'])
+
+            logging.error('GPIO pin index %d does not belong to any supported '
+                          'range', idx)
+            logging.error('Supported ranges:')
+            for g_range in ranges:
+                logging.error('\t%d - %d', g_range['seq_idx']['first'],
+                              g_range['seq_idx']['last'])
+                sys.exit(ExitCode.EXIT_RUNTIME)
+
+    def _read_gpio_ranges(self) -> List[dict]:
+        """Parse the GPIO ranges from "/sys/kernel/debug/pinctrl/*/gpio-ranges"
+
+        Used when gpios are referenced by index
+        The result is a list of dictionaries:
+        ranges:
+            gpio            pin             seq_idx
+            first   last    first   last    first   last
+
+            gpio[first] is the base index for the gpios range
+            pin[first] - pin[last] is the sequential index of the gpio in the
+            range seq_idx[first] - seq_idx[last] is the sequential global index
+                of the gpio
+
+        The list is sorted in ascending order of the base index (gpio[first])
+        """
+        # Ranges example:
+        #   $ cat /sys/kernel/debug/pinctrl/*/gpio-ranges
+        #   GPIO ranges handled:
+        #   0: INT1055:00 GPIOS [344 - 355] PINS [0 - 11]
+        #   15: INT1055:00 GPIOS [359 - 370] PINS [15 - 26]
+        #   GPIO ranges handled:
+        #   0: INT1055:01 GPIOS [288 - 295] PINS [0 - 7]
+        #   15: INT1055:01 GPIOS [303 - 314] PINS [15 - 26]
+        #   30: INT1055:01 GPIOS [318 - 323] PINS [30 - 35]
+        #   45: INT1055:01 GPIOS [333 - 340] PINS [45 - 52]
+        #   GPIO ranges handled:
+        #   0: INTC1055:02 GPIOS [152 - 177] PINS [0 - 25]
+        #   32: INTC1055:02 GPIOS [184 - 199] PINS [26 - 41]
+        #   64: INTC1055:02 GPIOS [216 - 240] PINS [42 - 66]
+        #   96: INTC1055:02 GPIOS [248 - 255] PINS [67 - 74]
+        #   128: INTC1055:02 GPIOS [280 - 303] PINS [75 - 98]
+        #
+        # Extracting the following:
+        #   device name: 'INTC1055:01'
+        #   Range's first and last gpios: gpio: [318, 323]
+        #   Chip's first and last pin associated with the GPIOs range:
+        #       pin: [30, 35]
+        #
+        # As the ranges might be unsorted and not sequential, sort and calculate
+        # the sequential order of the range
+        # Gpio global sequential range: [129, 134]
+        #   This is calculated as follows:
+        #   INTC1055:02 range: seq_idx: [0, 98]
+        #   INTC1055:01 range: seq_idx: [99, 151]
+        #   INTC1055:00 range: seq_idx: [152, 178]
+
+        ranges = []
+        path = glob.glob('/sys/kernel/debug/pinctrl/*/gpio-ranges')
+        for filename in path:
+            try:
+                with open(filename, 'r') as fp:
+                    for line in fp.readlines():
+                        d = {}
+                        s = re.split('[0-9]+: (\\S*) GPIOS \\[([0-9]*) - '
+                                     '([0-9]*)\\] PINS \\[([0-9]*) - '
+                                     '([0-9]*)\\]', line, 1)
+                        if len(s) < 7:
+                            continue
+                        d['device'] = s[1]
+                        d['gpio'] = {}
+                        d['gpio']['first'] = int(s[2])
+                        d['gpio']['last'] = int(s[3])
+                        d['pin'] = {}
+                        d['pin']['first'] = int(s[4])
+                        d['pin']['last'] = int(s[5])
+                        ranges.append(d)
+            except OSError:
+                logging.warning('------------------ Error reading from %s',
+                                filename)
+                logging.warning('\t\tOSError: %s', sys.exc_info()[1].strerror)
+
+        # Sort the range
+        ranges = sorted(ranges, key=lambda x: x['gpio']['first'])
+
+        # Calculate the sequential global index
+        prev = {}
+        for r in ranges:
+            r['seq_idx'] = {}
+            if not prev:
+                start = 0
+            elif r['pin']['first'] <= prev['pin']['last']:
+                # Abnormal case where the PINS range is not sequential
+                start = prev['seq_idx']['last'] + 1
+            else:
+                # Jump to the next range - update the start index
+                start = prev['seq_idx']['first'] - prev['pin']['first']
+            r['seq_idx']['first'] = r['pin']['first'] + start
+            r['seq_idx']['last'] = r['pin']['last'] + start
+            prev = r
+
+        return ranges
+
+
 def readline(file_name: str) -> str:
     try:
         with open(file_name, 'r') as fd:
