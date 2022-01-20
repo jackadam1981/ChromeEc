@@ -62,7 +62,7 @@ if [ -r "${allowed}" ]; then
 		echo >&2 "Removing these CONFIG options from the allowed list:"
 		comm -13 "${tmp}/allowed.tmp4" "${allowed}"
 		mv "${tmp}/allowed.tmp4" "${allowed}"
-	elif [ -s "${tmp}/allowed.tmp5" ]; then
+	elif [[ -s "${tmp}/allowed.tmp5" && -z "${KCONFIG_SKIP_UPDATE}" ]]; then
 		echo >&2 "Congratulations! The following options are now in"
 		echo >&2 "Kconfig:"
 		cat "${tmp}/allowed.tmp5"
