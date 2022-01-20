@@ -57,12 +57,6 @@ static void power_up_inhibited_cb(void)
 DECLARE_HOOK(HOOK_BATTERY_SOC_CHANGE, power_up_inhibited_cb, HOOK_PRIO_DEFAULT);
 #endif
 
-/* Get system sleep state through GPIOs or VWs */
-static inline int chipset_get_sleep_signal(enum sys_sleep_state state)
-{
-	return power_signal_get_level(sleep_sig[state]);
-}
-
 #ifdef CONFIG_BOARD_HAS_RTC_RESET
 static void intel_x86_rtc_reset(void)
 {

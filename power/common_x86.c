@@ -27,6 +27,12 @@
 #define CPRINTS(format, args...) cprints(CC_CHIPSET, format, ##args)
 #define CPRINTF(format, args...) cprintf(CC_CHIPSET, format, ##args)
 
+/* Get system sleep state through GPIOs or VWs */
+static inline int chipset_get_sleep_signal(enum sys_sleep_state state)
+{
+	return power_signal_get_level(sleep_sig[state]);
+}
+
 void chipset_throttle_cpu(int throttle)
 {
 	CPRINTS("%s(%d)", __func__, throttle);
