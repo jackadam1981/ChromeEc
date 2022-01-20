@@ -12,6 +12,42 @@
 #define CPRINTS(format, args...) cprints(CC_CHIPSET, format, ##args)
 #define CPRINTF(format, args...) cprintf(CC_CHIPSET, format, ##args)
 
+__overridable void x86_sys_reset_delay(void)
+{
+	/*
+	 * Debounce time for SYS_RESET_L is 16 ms. Wait twice that period
+	 * to be safe.
+	 */
+	udelay(32 * MSEC);
+}
+
+void chipset_reset(enum chipset_shutdown_reason reason)
+{
+	CPRINTS("%s: %d", __func__, reason);
+
+	/*
+	 * Toggling SYS_RESET_L will not have any impact when it's already
+	 * low (i,e. Chipset is in reset state).
+	 */
+	if (gpio_get_level(GPIO_SYS_RESET_L) == 0) {
+		CPRINTS("Chipset is in reset state");
+		return;
+	}
+
+	if (chipset_in_state(CHIPSET_STATE_ANY_OFF)) {
+		CPRINTS("Can't reset: SOC is off");
+		return;
+	}
+
+	report_ap_reset(reason);
+	/*
+	 * Send a pulse to SYS_RST to trigger a warm reset.
+	 */
+	gpio_set_level(GPIO_SYS_RESET_L, 0);
+	x86_sys_reset_delay();
+	gpio_set_level(GPIO_SYS_RESET_L, 1);
+}
+
 #ifdef CONFIG_POWER_S0IX
 /*
  * Backup copies of SCI and SMI mask to preserve across S0ix suspend/resume

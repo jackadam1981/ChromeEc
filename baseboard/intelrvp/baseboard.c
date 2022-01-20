@@ -149,7 +149,7 @@ int ioexpander_read_intelrvp_version(int *port0, int *port1)
 		PCA9555_CMD_INPUT_PORT_1, port1);
 }
 
-__override void intel_x86_sys_reset_delay(void)
+__override void x86_sys_reset_delay(void)
 {
 	/*
 	 * From MAX6818 Data sheet, Range of 'Debounce Duaration' is

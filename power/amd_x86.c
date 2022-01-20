@@ -1,7 +1,7 @@
 /* Copyright 2017 The Chromium OS Authors. All rights reserved.
- * Use of this source code is governed by a BSD-style license that can be
- * found in the LICENSE file.
- */
+* Use of this source code is governed by a BSD-style license that can be
+* found in the LICENSE file.
+*/
 
 /* AMD x86 power sequencing module for Chrome EC */
 
@@ -37,24 +37,6 @@ static void chipset_force_g3(void)
 {
 	/* Disable system power ("*_A" rails) in G3. */
 	gpio_set_level(GPIO_EN_PWR_A, 0);
-}
-
-void chipset_reset(enum chipset_shutdown_reason reason)
-{
-	CPRINTS("%s: %d", __func__, reason);
-
-	if (chipset_in_state(CHIPSET_STATE_ANY_OFF)) {
-		CPRINTS("Can't reset: SOC is off");
-		return;
-	}
-
-	report_ap_reset(reason);
-	/*
-	 * Send a pulse to SYS_RST to trigger a warm reset.
-	 */
-	gpio_set_level(GPIO_SYS_RESET_L, 0);
-	usleep(32 * MSEC);
-	gpio_set_level(GPIO_SYS_RESET_L, 1);
 }
 
 void chipset_throttle_cpu(int throttle)

@@ -9,10 +9,10 @@
 #ifndef __CROS_EC_INTEL_X86_H
 #define __CROS_EC_INTEL_X86_H
 
+#include "common_x86.h"
 #include "espi.h"
 #include "power.h"
 
-#include "chipset_config.h"
 
 /* GPIO for power signal */
 #ifdef CONFIG_HOSTCMD_ESPI_VW_SLP_S3
@@ -87,14 +87,5 @@ __override_proto int intel_x86_get_pg_ec_dsw_pwrok(void);
  * board doesn't have that GPIO, they may override this function.
  */
 __override_proto int intel_x86_get_pg_ec_all_sys_pwrgd(void);
-
-/**
- * Introduces SYS_RESET_L Debounce time delay
- *
- * The default implementation is to wait for a duration of 32 ms.
- * If board needs a different debounce time delay, they may override
- * this function
- */
-__override_proto void intel_x86_sys_reset_delay(void);
 
 #endif /* __CROS_EC_INTEL_X86_H */
