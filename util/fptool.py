@@ -182,6 +182,33 @@ def read_gpio_ranges() -> list:
     return ranges
 
 
+def read_gpiochips() -> dict:
+    """Parse the base and label of each gpio chip.
+
+    Used when gpios are referenced by name
+    The result is a dictionary of labels (device names) and bases
+    bases
+        device1: base1
+        device2: base2
+    """
+    bases = {}
+    detect = {}
+    rc, stdout, _stderr = run_system_cmd('gpiodetect')
+    if rc != 0 or not stdout:
+        return {}
+    for device in stdout.split('\n'):
+        args = device.split()
+        if not args:
+            break
+        detect[args[1][1:-1]] = args[0]
+    paths = glob.glob('/sys/class/gpio/gpiochip*/')
+    for path in paths:
+        label = readline(path + 'label')
+        base = readline(path + 'base')
+        bases[detect[label]] = base
+    return bases
+
+
 def get_gpio_by_index(ranges: list, idx: int) -> int:
     """Convert gpio index to its absolute location in the device.
 
@@ -204,6 +231,24 @@ def get_gpio_by_index(ranges: list, idx: int) -> int:
         logging.error('\t%d - %d', g_range['idx']['first'],
                       g_range['idx']['last'])
         sys.exit(ExitCode.EXIT_RUNTIME)
+
+
+def get_gpio_by_name(bases: dict, name: str) -> int:
+    """Convert gpio's name to its absolute location in the device.
+
+    Utilizes libgpiod APIs 'gpiofind' and 'gpiodetect'
+    """
+    rc, stdout, _stderr = run_system_cmd('gpiofind ' + name)
+    if not bases or rc != 0:
+        logging.error('Failed to find GPIO %s', name)
+        sys.exit(ExitCode.EXIT_RUNTIME)
+    gpio = stdout.split()
+    # e.g.
+    #   gpiofind FP_RST_L
+    #   gpiochip0 22
+    #
+    # Gpio location is: 22 + bases['gpiochip0']
+    return int(gpio[1]) + int(bases[gpio[0]])
 
 
 def get_platform_name() -> str:
