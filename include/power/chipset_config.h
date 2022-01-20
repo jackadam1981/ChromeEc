@@ -23,4 +23,7 @@
 #include "skylake.h"
 #elif defined(CONFIG_CHIPSET_SC7180) || defined(CONFIG_CHIPSET_SC7280)
 #include "qcom.h"
+#elif defined(CONFIG_CHIPSET_CEZANNE) || defined(CONFIG_CHIPSET_STONEY) || \
+	defined(CONFIG_CHIPSET_AMD)
+#include "amd_x86.h"
 #endif
