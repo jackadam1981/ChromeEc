@@ -60,6 +60,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4b0d2b77_4705c02c",
+        "filename": "zephyr/boards/arm/adlrvpp_npcx/adlrvpp_npcx.dts",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1415203
+      },
+      "writtenOn": "2022-01-20T23:12:21Z",
+      "side": 1,
+      "message": "npcx7 is not supported in Zephyr, right? Only npcx9.",
+      "parentUuid": "789810bf_478a6561",
+      "revId": "323475a75d7fd06a00d4987ef99aedb63cfb60f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4ddaf352_8730a56e",
         "filename": "zephyr/boards/arm/adlrvpp_npcx/adlrvpp_npcx.dts",
         "patchSetId": 3
