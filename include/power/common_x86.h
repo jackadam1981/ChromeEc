@@ -88,4 +88,9 @@ __override_proto enum power_state chipset_force_g3(void);
  */
 __override_proto void x86_sys_reset_delay(void);
 
+/* Get system sleep state through GPIOs or VWs */
+static inline int chipset_get_sleep_signal(enum sys_sleep_state state)
+{
+	return power_signal_get_level(sleep_sig[state]);
+}
 #endif /* __CROS_EC_COMMON_X86_H */
