@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28d1da2c_1ed1aedb",
+        "filename": "driver/tcpm/anx7406.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-01-20T23:02:07Z",
+      "side": 1,
+      "message": "Please change to i2c_peripheral.  We\u0027re using the term \"i2c_peripheral\" for chips which reply on i2c and \"i2c_controller\" for chips which initiate the i2c interactions.",
+      "range": {
+        "startLine": 29,
+        "startChar": 31,
+        "endLine": 29,
+        "endChar": 48
+      },
+      "revId": "c99f57f38a4f420945f68f0d0c9e14f79826d7dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "68c6a79a_d0e6b336",
+        "filename": "driver/tcpm/anx7406.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-01-20T23:02:07Z",
+      "side": 1,
+      "message": "2022 :)",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "c99f57f38a4f420945f68f0d0c9e14f79826d7dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a016aeb_0760119c",
+        "filename": "driver/tcpm/anx7406.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-01-20T23:02:07Z",
+      "side": 1,
+      "message": "Could you point me to a copy of the register definitions/data sheet for this part?  I didn\u0027t see one linked on the bug",
+      "revId": "c99f57f38a4f420945f68f0d0c9e14f79826d7dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
