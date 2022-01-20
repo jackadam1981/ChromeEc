@@ -11,6 +11,7 @@ import logging
 import subprocess
 import os
 import glob
+import re
 
 
 # Exit codes
@@ -124,6 +125,85 @@ def get_uart_dev_name(device_id: str) -> str:
         return ''
 
     return os.path.basename(os.path.dirname(os.path.dirname(dirs[0][:-1])))
+
+
+def read_gpio_ranges() -> list:
+    """Parse the GPIO ranges from "/sys/kernel/debug/pinctrl/*/gpio-ranges"
+
+    Used when gpios are referenced by index
+    The result is a list of dictionaries:
+    ranges:
+        gpio            pin             idx
+        first   last    first   last    first   last
+
+        gpio[first] is the base index for the gpios range
+        pin[first] - pin[last] is the sequential index of the gpio in the range
+        idx[first] - idx[last] is the sequential global index of the gpio
+
+    The list is sorted in ascending order of the base index (gpio[first])
+    """
+    ranges = []
+    path = glob.glob('/sys/kernel/debug/pinctrl/*/gpio-ranges')
+    for filename in path:
+        try:
+            with open(filename, 'r') as fp:
+                # Skip the 'GPIO ranges handled:' line
+                line = fp.readline()
+                for line in fp.readlines():
+                    d = {}
+                    s = line.split(' ')
+                    d['device'] = s[1]
+                    d['gpio'] = {}
+                    d['gpio']['first'] = int(re.sub('[^0-9]', '', s[3]))
+                    d['gpio']['last'] = int(re.sub('[^0-9]', '', s[5]))
+                    d['pin'] = {}
+                    d['pin']['first'] = int(re.sub('[^0-9]', '', s[7]))
+                    d['pin']['last'] = int(re.sub('[^0-9]', '', s[9]))
+                    ranges.append(d)
+        except OSError:
+            logging.warning('------------------ Error reading from %s',
+                            filename)
+            logging.warning('\t\tOSError: %s', sys.exc_info()[1].strerror)
+
+    ranges = sorted(ranges, key=lambda x: x['gpio']['first'])
+    prev = {}
+    for r in ranges:
+        r['idx'] = {}
+        if not prev:
+            start = 0
+        elif r['pin']['first'] <= prev['pin']['last']:
+            start = prev['idx']['last'] + 1
+        else:
+            start = prev['idx']['first'] - prev['pin']['first']
+        r['idx']['first'] = r['pin']['first'] + start
+        r['idx']['last'] = r['pin']['last'] + start
+        prev = r
+
+    return ranges
+
+
+def get_gpio_by_index(ranges: list, idx: int) -> int:
+    """Convert gpio index to its absolute location in the device.
+
+    The absolute location is calculated as follows:
+        Absolute location = gpio index - first index in the range + base
+    """
+    if idx < 0:
+        return -1
+    for g_range in ranges:
+        if idx > g_range['idx']['last']:
+            continue
+        if idx < g_range['idx']['first']:
+            continue
+        return g_range['gpio']['first'] + idx - g_range['idx']['first']
+
+    logging.error('GPIO pin index %d does not belong to any supported range',
+                  idx)
+    logging.error('Supported ranges:')
+    for g_range in ranges:
+        logging.error('\t%d - %d', g_range['idx']['first'],
+                      g_range['idx']['last'])
+        sys.exit(ExitCode.EXIT_RUNTIME)
 
 
 def get_platform_name() -> str:
