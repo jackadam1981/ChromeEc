@@ -11,7 +11,7 @@ import logging
 import subprocess
 import os
 import glob
-from typing import List
+from typing import List, Dict
 import re
 
 
@@ -21,6 +21,16 @@ class ExitCode:
     EXIT_CONFIG = 4
     EXIT_PRECONDITION = 5
     EXIT_RUNTIME = 6
+
+
+def gpiodetect() -> [int, str]:
+    rc, stdout, _stderr = run_system_cmd('gpiodetect')
+    return rc, stdout
+
+
+def gpiofind(name: str) -> [int, str]:
+    rc, stdout, _stderr = run_system_cmd(f'gpiofind {name}')
+    return rc, stdout
 
 
 class FPGpios:
@@ -52,6 +62,29 @@ class FPGpios:
                 logging.error('\t%d - %d', g_range['seq_idx']['first'],
                               g_range['seq_idx']['last'])
                 sys.exit(ExitCode.EXIT_RUNTIME)
+
+        def _get_gpio_by_name(self, bases: dict, name: str) -> int:
+            """Convert gpio's name to its absolute location in the device.
+
+            Utilizes libgpiod APIs 'gpiofind' and 'gpiodetect'
+            """
+            rc, raw_find = gpiofind(name)
+            if not bases or rc != 0:
+                logging.error('Failed to find GPIO %s', name)
+                sys.exit(ExitCode.EXIT_RUNTIME)
+            gpio = raw_find.split()
+            if len(gpio) < 2:
+                logging.error('Error parsing `gpiofind` %s', raw_find)
+                sys.exit(ExitCode.EXIT_RUNTIME)
+            if gpio[0] not in bases:
+                logging.error('Failed to locate %s in `gpiodetect`', gpio[0])
+                sys.exit(ExitCode.EXIT_RUNTIME)
+            # e.g.
+            #   gpiofind FP_RST_L
+            #   gpiochip0 22
+            #
+            # Gpio location is: 22 + bases['gpiochip0']
+            return int(gpio[1]) + int(bases[gpio[0]])
 
     def _read_gpio_ranges(self) -> List[dict]:
         """Parse the GPIO ranges from "/sys/kernel/debug/pinctrl/*/gpio-ranges"
@@ -145,6 +178,67 @@ class FPGpios:
             prev = r
 
         return ranges
+
+    def _parse_gpiochips(self) -> Dict[str, str]:
+        """Parse the base and label of each gpio chip.
+
+        Used when gpios are referenced by name
+        The result is a dictionary of labels (device names) and bases
+        bases
+            device1: base1
+            device2: base2
+        """
+        bases = {}
+        detect = {}
+        rc, raw_detect = gpiodetect()
+        if rc != 0 or not raw_detect:
+            return {}
+        # 'gpiodetect' example:
+        #
+        #  # gpiodetect
+        #    gpiochip0 [INTC1055:00] (27 lines)
+        #    gpiochip1 [INTC1055:01] (53 lines)
+        #    gpiochip2 [INTC1055:02] (99 lines)
+        #
+        # 'label' example:
+        #
+        # # cat /sys/class/gpio/gpiochip*/label
+        # INTC1055:02
+        # INTC1055:01
+        # INTC1055:00
+        #
+        # 'base' example:
+        #
+        # # cat /sys/class/gpio/gpiochip*/label
+        # 152
+        # 288
+        # 344
+        #
+        # These will be parsed to:
+        #
+        #  detect = {
+        #       'INTC1055:00': 'gpiochip0',
+        #       'INTC1055:01': 'gpiochip1',
+        #       'INTC1055:02': 'gpiochip2'
+        #  }
+        #
+        # bases = {
+        #       'gpiochip0': 344
+        #       'gpiochip1': 288
+        #       'gpiochip2': 152
+        # }
+        for device in raw_detect.split('\n'):
+            args = device.split()
+            if not args:
+                break
+            detect[args[1][1:-1]] = args[0]
+        paths = glob.glob('/sys/class/gpio/gpiochip*/')
+        for path in paths:
+            label = readline(path + 'label')
+            base = readline(path + 'base')
+            bases[detect[label]] = base
+
+        return bases
 
 
 def readline(file_name: str) -> str:
