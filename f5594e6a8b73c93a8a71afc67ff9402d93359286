@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de095ba6_8ea56e5d",
+        "filename": "board/nipperkin/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 521,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-01-20T22:46:45Z",
+      "side": 1,
+      "message": "nit: upper limit check isn\u0027t really needed.  EPR from PD is still only going up to 5A, so I\u0027d expect 5120 mA to work for the foreseeable future on all chargers \u003e90 W",
+      "range": {
+        "startLine": 521,
+        "startChar": 9,
+        "endLine": 521,
+        "endChar": 29
+      },
+      "revId": "f5594e6a8b73c93a8a71afc67ff9402d93359286",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e89efe6_4bdfda87",
+        "filename": "board/nipperkin/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 525,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-01-20T22:46:45Z",
+      "side": 1,
+      "message": "Could this just be if charger \u003e 90W -\u003e set 5.12 A, else set 3.328 A?",
+      "revId": "f5594e6a8b73c93a8a71afc67ff9402d93359286",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

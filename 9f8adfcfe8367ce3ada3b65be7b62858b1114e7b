@@ -276,6 +276,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "36c37dc9_7360347b",
+        "filename": "board/nipperkin/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 499,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-01-20T22:46:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1cbe7ad8_f6a795cd",
+      "range": {
+        "startLine": 499,
+        "startChar": 6,
+        "endLine": 499,
+        "endChar": 33
+      },
+      "revId": "9f8adfcfe8367ce3ada3b65be7b62858b1114e7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bce8cc94_a33e48a1",
@@ -401,6 +425,30 @@
       "side": 1,
       "message": "I plug in AC and remove battery from connector, \nthen reboot EC, use cmd: chgstate in console can get 6000mA from input_current.",
       "parentUuid": "5d014d22_0710fe82",
+      "range": {
+        "startLine": 531,
+        "startChar": 0,
+        "endLine": 533,
+        "endChar": 23
+      },
+      "revId": "9f8adfcfe8367ce3ada3b65be7b62858b1114e7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17b1e68f_0feea6c8",
+        "filename": "board/nipperkin/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 533,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-01-20T22:46:45Z",
+      "side": 1,
+      "message": "What if you remove both battery and AC from the board and start it with AC only?  If find that to be a good state to test whether chip inits are working correctly since power is totally removed to begin with so old settings can\u0027t be hanging around in the chip registers",
+      "parentUuid": "0826e29a_4baf1a29",
       "range": {
         "startLine": 531,
         "startChar": 0,
