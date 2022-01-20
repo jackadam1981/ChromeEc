@@ -16,6 +16,24 @@
       "message": "Denis, this looks good and I think it should be merged with the usbc subsystem CL. But the usbc subsystem document is still under review. At the end of the review process, could you take over the usbc subsystem CL, merge this CL with it, and generate the PR? I\u0027ll address the subsystem documentation comments later today.",
       "revId": "446fd0ce922e6453dfd18602c13732100af8d676",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d86aa0e_b35d5d09",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 28
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2022-01-20T05:16:25Z",
+      "side": 1,
+      "message": "Denise, the Zephyr TCPC Driver PR review seems to be going smoothly, so another avenue we could take is that I generate the followup USBC subsystem PR and you start porting Chromeos TCPC drivers to Zephyr. Also, some thought need to go into the mechanism surrounding TCPC firmware update in zephyr.",
+      "parentUuid": "8d1f5094_46ed8ca7",
+      "revId": "446fd0ce922e6453dfd18602c13732100af8d676",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
