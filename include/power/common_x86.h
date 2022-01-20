@@ -23,4 +23,18 @@
 #include "vboot.h"
 #include "wireless.h"
 
+#ifdef CONFIG_POWER_S0IX
+/*
+ * Restore host event masks for SMI and SCI when host exits S0ix. This is done
+ * because BIOS is not involved in the resume path and so EC needs to restore
+ * the masks from backup variables.
+ */
+void lpc_s0ix_resume_restore_masks(void);
+
+/*
+ * Wake up the AP if hang detected entering S0ix
+ */
+void lpc_s0ix_hang_detected(void);
+#endif
+
 #endif /* __CROS_EC_COMMON_X86_H */
