@@ -5,26 +5,18 @@
 
 /* AMD x86 power sequencing module for Chrome EC */
 
-#include "chipset.h"
 #include "common.h"
-#include "console.h"
-#include "ec_commands.h"
-#include "gpio.h"
-#include "hooks.h"
 #include "lid_switch.h"
-#include "lpc.h"
-#include "power.h"
-#include "power_button.h"
-#include "system.h"
+#include "power/common_x86.h"
+#include "power/amd_x86.h"
+#include "registers.h"
 #include "timer.h"
 #include "usb_charge.h"
-#include "util.h"
-#include "wireless.h"
-#include "registers.h"
 
 /* Console output macros */
 #define CPUTS(outstr) cputs(CC_CHIPSET, outstr)
 #define CPRINTS(format, args...) cprints(CC_CHIPSET, format, ##args)
+#define CPRINTF(format, args...) cprintf(CC_CHIPSET, format, ##args)
 
 #define IN_S5_PGOOD POWER_SIGNAL_MASK(X86_S5_PGOOD)
 
