@@ -130,6 +130,10 @@ _GPIOCHIP_LABLES_BASES = ['INTC1055:00', '344', 'INTC1055:01', '288',
 
 _GPIOFIND_FP_RST_L = 'gpiochip0 22'
 
+_GPIOFIND_FPMCU_BOOT0 = 'gpiochip2 98'
+
+_GPIOFIND_FPMCU_SEL = 'gpiochip0 74'
+
 _GPIOFIND_OUT_OF_SCOPE = 'gpiochip3 10'
 
 class AssertWpIsDisabledTest(unittest.TestCase):
@@ -295,118 +299,169 @@ class GetDefaultFirmwareTest(unittest.TestCase):
 class FPGpiosGetGpioByIndexTest(unittest.TestCase):
     """Test access to GPIO link by index"""
 
-    def test_get_gpio_by_index(self):
-        fpgpios = fptool.FPGpios()
-        gpio = fpgpios.Gpio()
-        with self.assertRaises(SystemExit) as exit_trap:
-            gpio._get_gpio_by_index([], 0)
-        assert isinstance(exit_trap.exception, SystemExit)
-        assert exit_trap.exception.code == fptool.ExitCode.EXIT_RUNTIME
+    @mock.patch('fptool.run_system_cmd')
+    def test_get_gpio_by_index(self, mock_sys_cmd):
+        mock_sys_cmd.return_value = [1, None, None]
+        with mock.patch('glob.glob') as mock_glob:
+            mock_glob.return_value = []
+            with self.assertRaises(SystemExit) as exit_trap:
+                fpgpios = fptool.FPGpios(n_reset=57, boot_0=77, power_enable=35)
+            assert isinstance(exit_trap.exception, SystemExit)
+            assert exit_trap.exception.code == fptool.ExitCode.EXIT_RUNTIME
 
         with mock.patch('fptool.FPGpios._read_gpio_ranges') as mock_ranges:
             mock_ranges.return_value = _GPIO_RANGES
-            gpio_ranges = fpgpios._parse_gpio_ranges()
             with self.assertRaises(SystemExit) as exit_trap:
-                gpio._get_gpio_by_index(gpio_ranges, 126)
+                fpgpios = fptool.FPGpios(n_reset=126, boot_0=0, power_enable=0)
             assert isinstance(exit_trap.exception, SystemExit)
             assert exit_trap.exception.code == fptool.ExitCode.EXIT_RUNTIME
 
             with self.assertRaises(SystemExit) as exit_trap:
-                gpio._get_gpio_by_index(gpio_ranges, 179)
+                fpgpios = fptool.FPGpios(n_reset=0, boot_0=179, power_enable=0)
             assert isinstance(exit_trap.exception, SystemExit)
             assert exit_trap.exception.code == fptool.ExitCode.EXIT_RUNTIME
 
-        try:
-            with self.assertRaises(SystemExit) as exit_trap:
-                link = gpio._get_gpio_by_index(gpio_ranges, 125)
-        except AssertionError:
-            assert link == 314
+            try:
+                with self.assertRaises(SystemExit) as exit_trap:
+                    fpgpios = fptool.FPGpios(n_reset=99, boot_0=129,
+                                             power_enable=-1)
+            except AssertionError:
+                assert fpgpios.n_reset._gpio == '288'
+                assert fpgpios.boot_0._gpio == '318'
+                assert not fpgpios.power_enable._gpio
 
-        try:
-            with self.assertRaises(SystemExit) as exit_trap:
-                link = gpio._get_gpio_by_index(gpio_ranges, 120)
-        except AssertionError:
-            assert link == 309
 
 class FPGpiosGetGpioByNameTest(unittest.TestCase):
     """Test access to GPIO link by name"""
 
-    @mock.patch('fptool.run_system_cmd')
-    def test_parse_gpiochips(self, mock_sys_cmd):
-        fpgpios = fptool.FPGpios()
-        mock_sys_cmd.return_value = [1, None, None]
-        gpiodetect = fpgpios._parse_gpiochips()
-        assert not gpiodetect
-
-        mock_sys_cmd.return_value = [0, '', None]
-        gpiodetect = fpgpios._parse_gpiochips()
-        assert not gpiodetect
-
-        mock_sys_cmd.return_value = [0, _GPIO_DETECT, None]
-        with mock.patch('glob.glob') as mock_glob:
-            mock_glob.return_value = []
-            bases = fpgpios._parse_gpiochips()
-            assert not bases
-            mock_glob.assert_called_once_with(_GPIOCHIP_GLOB_INPUT)
-
-        mock_sys_cmd.return_value = [0, _GPIO_DETECT, None]
-        with mock.patch('glob.glob') as mock_glob:
-            mock_glob.return_value = _GPIOCHIP_GLOB
-            with mock.patch('fptool.readline') as mock_readline:
-                mock_readline.side_effect = _GPIOCHIP_LABLES_BASES
-                bases = fpgpios._parse_gpiochips()
-                assert bases is not None
-                mock_glob.assert_called_once_with(_GPIOCHIP_GLOB_INPUT)
-                assert mock_readline.call_count == 6
-                assert bases['gpiochip0'] == '344'
-                assert bases['gpiochip1'] == '288'
-                assert bases['gpiochip2'] == '152'
-
-    @mock.patch('fptool.run_system_cmd')
-    def test_get_gpio_by_name(self, mock_sys_cmd):
-        fpgpios = fptool.FPGpios()
-        gpio = fpgpios.Gpio()
-        mock_sys_cmd.return_value = [1, None, None]
-        with self.assertRaises(SystemExit) as exit_trap:
-            gpio._get_gpio_by_name([], 'FPMCU_BOOT0')
-        assert isinstance(exit_trap.exception, SystemExit)
-        assert exit_trap.exception.code == fptool.ExitCode.EXIT_RUNTIME
-
-        mock_sys_cmd.return_value = [0, None, None]
-        with self.assertRaises(SystemExit) as exit_trap:
-            gpio._get_gpio_by_name([], 'FPMCU_BOOT0')
-        assert isinstance(exit_trap.exception, SystemExit)
-        assert exit_trap.exception.code == fptool.ExitCode.EXIT_RUNTIME
-
-        mock_sys_cmd.return_value = [0, _GPIO_DETECT, None]
-        with mock.patch('glob.glob') as mock_glob:
-            mock_glob.return_value = _GPIOCHIP_GLOB
-            with mock.patch('fptool.readline') as mock_readline:
-                mock_readline.side_effect = _GPIOCHIP_LABLES_BASES
-                bases = fpgpios._parse_gpiochips()
-
-        mock_sys_cmd.reset_mock()
-        mock_sys_cmd.return_value = [1, None, None]
-        with self.assertRaises(SystemExit) as exit_trap:
-            gpio._get_gpio_by_name(bases, 'UNKNOWN_GPIO')
-        mock_sys_cmd.assert_called_once_with('gpiofind UNKNOWN_GPIO')
-        assert isinstance(exit_trap.exception, SystemExit)
-        assert exit_trap.exception.code == fptool.ExitCode.EXIT_RUNTIME
-
-        mock_sys_cmd.return_value = [0, _GPIOFIND_OUT_OF_SCOPE, None]
-        with self.assertRaises(SystemExit) as exit_trap:
-            gpio._get_gpio_by_name(bases, 'OUT_OF_SCOPE')
-        mock_sys_cmd.assert_called_with('gpiofind OUT_OF_SCOPE')
-        assert isinstance(exit_trap.exception, SystemExit)
-        assert exit_trap.exception.code == fptool.ExitCode.EXIT_RUNTIME
-
-        mock_sys_cmd.return_value = [0, _GPIOFIND_FP_RST_L, None]
-        try:
+    @mock.patch('fptool.FPGpios._parse_gpio_ranges')
+    def test_get_gpio_by_name(self, mock_ranges):
+        mock_ranges.return_value = []
+        with mock.patch('fptool.run_system_cmd') as mock_sys_cmd:
+            mock_sys_cmd.return_value = [1, None, None]
             with self.assertRaises(SystemExit) as exit_trap:
-                rst_l = gpio._get_gpio_by_name(bases, 'FP_RST_L')
+                fpgpios = fptool.FPGpios(n_reset='FP_RST_L',
+                                         boot_0='FPMCU_BOOT0',
+                                         power_enable=-1)
+            assert isinstance(exit_trap.exception, SystemExit)
+            assert exit_trap.exception.code == fptool.ExitCode.EXIT_RUNTIME
+
+        with mock.patch('fptool.run_system_cmd') as mock_sys_cmd:
+            mock_sys_cmd.return_value = [0, None, None]
+            with self.assertRaises(SystemExit) as exit_trap:
+                fpgpios = fptool.FPGpios(n_reset='FP_RST_L',
+                                         boot_0='FPMCU_BOOT0',
+                                         power_enable=-1)
+            assert isinstance(exit_trap.exception, SystemExit)
+            assert exit_trap.exception.code == fptool.ExitCode.EXIT_RUNTIME
+
+        with mock.patch('fptool.run_system_cmd') as mock_sys_cmd:
+            mock_sys_cmd.side_effect = [[0, _GPIO_DETECT, None],
+                                        [1, None, None]]
+            with mock.patch('glob.glob') as mock_glob:
+                mock_glob.return_value = _GPIOCHIP_GLOB
+                with mock.patch('fptool.readline') as mock_readline:
+                    mock_readline.side_effect = _GPIOCHIP_LABLES_BASES
+                    with self.assertRaises(SystemExit) as exit_trap:
+                        fpgpios = fptool.FPGpios(n_reset='UNKNOWN_GPIO',
+                                                 boot_0='FPMCU_BOOT0',
+                                                 power_enable=-1)
+                    mock_sys_cmd.assert_called_with('gpiofind UNKNOWN_GPIO')
+                    assert isinstance(exit_trap.exception, SystemExit)
+                    assert (exit_trap.exception.code ==
+                            fptool.ExitCode.EXIT_RUNTIME)
+
+        with mock.patch('fptool.run_system_cmd') as mock_sys_cmd:
+            mock_sys_cmd.side_effect = [[0, _GPIO_DETECT, None],
+                                        [0, _GPIOFIND_OUT_OF_SCOPE, None]]
+            with mock.patch('glob.glob') as mock_glob:
+                mock_glob.return_value = _GPIOCHIP_GLOB
+                with mock.patch('fptool.readline') as mock_readline:
+                    mock_readline.side_effect = _GPIOCHIP_LABLES_BASES
+                    with self.assertRaises(SystemExit) as exit_trap:
+                        fpgpios = fptool.FPGpios(n_reset=-1,
+                                                 boot_0='OUT_OF_SCOPE',
+                                                 power_enable=-1)
+                    mock_sys_cmd.assert_called_with('gpiofind OUT_OF_SCOPE')
+                    assert isinstance(exit_trap.exception, SystemExit)
+                    assert (exit_trap.exception.code
+                            == fptool.ExitCode.EXIT_RUNTIME)
+
+        with mock.patch('fptool.run_system_cmd') as mock_sys_cmd:
+            mock_sys_cmd.side_effect = [[0, _GPIO_DETECT, None],
+                                        [0, _GPIOFIND_FP_RST_L, None],
+                                        [0, _GPIOFIND_FPMCU_BOOT0, None]]
+            with mock.patch('glob.glob') as mock_glob:
+                mock_glob.return_value = _GPIOCHIP_GLOB
+                with mock.patch('fptool.readline') as mock_readline:
+                    mock_readline.side_effect = _GPIOCHIP_LABLES_BASES
+                    try:
+                        with self.assertRaises(SystemExit) as exit_trap:
+                            fpgpios = fptool.FPGpios(n_reset='FP_RST_L',
+                                                     boot_0='FPMCU_BOOT0',
+                                                     power_enable=-1)
+                    except AssertionError:
+                        assert (mock_sys_cmd.mock_calls[1][1][0]
+                                == 'gpiofind FP_RST_L')
+                        assert (mock_sys_cmd.mock_calls[2][1][0]
+                                == 'gpiofind FPMCU_BOOT0')
+                        assert fpgpios.n_reset._gpio == '366'
+                        assert fpgpios.boot_0._gpio == '250'
+                        assert not fpgpios.power_enable._gpio
+
+
+class ConfigPlatformTest(unittest.TestCase):
+    """Test the platform specific GPIO and transport configuration"""
+
+    def test_unknown_platform(self):
+        config = fptool.ConfigPlatform(None)
+        assert not config
+        config = fptool.ConfigPlatform('')
+        assert not config
+        config = fptool.ConfigPlatform('unknown')
+        assert not config
+
+    @mock.patch('fptool.run_system_cmd')
+    @mock.patch('fptool.FPGpios._read_gpio_ranges')
+    @mock.patch('fptool.release')
+    def test_index_base_config(self, mock_release, mock_ranges, mock_sys_cmd):
+        mock_sys_cmd.return_value = [1, None, None]
+        mock_ranges.return_value = _GPIO_RANGES
+        mock_release.return_value = '4.5.0-25-generic'
+        try:
+            with self.assertRaises(SystemExit):
+                config = fptool.ConfigPlatform('nami')
         except AssertionError:
-            mock_sys_cmd.assert_called_with('gpiofind FP_RST_L')
-            assert rst_l == 366
+            assert config._config['TRANSPORT'] == 'SPI'
+            assert config._config['DEVICE'] == '/dev/spidev1.0'
+            assert config._config['GPIOS'].n_reset._gpio == '209'
+            assert config._config['GPIOS'].boot_0._gpio == '229'
+            assert config._config['GPIOS'].power_enable._gpio == '187'
+
+    @mock.patch('fptool.run_system_cmd')
+    @mock.patch('glob.glob')
+    @mock.patch('fptool.readline')
+    @mock.patch('fptool.FPGpios._read_gpio_ranges')
+    @mock.patch('fptool.release')
+    def test_name_base_config(self, mock_release, mock_ranges, mock_readline,
+                              mock_glob, mock_sys_cmd):
+        mock_sys_cmd.side_effect = [[0, _GPIO_DETECT, None],
+                                    [0, _GPIOFIND_FP_RST_L, None],
+                                    [0, _GPIOFIND_FPMCU_BOOT0, None],
+                                    [0, _GPIOFIND_FPMCU_SEL, None]]
+        mock_glob.return_value = _GPIOCHIP_GLOB
+        mock_readline.side_effect = _GPIOCHIP_LABLES_BASES
+        mock_ranges.return_value = _GPIO_RANGES
+        mock_release.return_value = '4.5.0-25-generic'
+        try:
+            with self.assertRaises(SystemExit):
+                config = fptool.ConfigPlatform('strongbad')
+        except AssertionError:
+            assert config._config['TRANSPORT'] == 'SPI'
+            assert config._config['DEVICE'] == '/dev/spidev10.0'
+            assert config._config['GPIOS'].n_reset._gpio == '366'
+            assert config._config['GPIOS'].boot_0._gpio == '250'
+            assert config._config['GPIOS'].power_enable._gpio == '418'
 
 
 if __name__ == '__main__':
