@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d343e692_7e1754af",
+        "filename": "board/adlrvpp_ite/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2022-01-20T18:06:09Z",
+      "side": 1,
+      "message": "Sorry for not paying attention yesterday, but:\nCONFIG_BATTERY_PRESENT_GPIO is GPIO_BAT_DET_EC which is already initialized as interrupt in gpio.inc. Why it has to be enabled here again?",
+      "range": {
+        "startLine": 144,
+        "startChar": 0,
+        "endLine": 144,
+        "endChar": 52
+      },
+      "revId": "ceb93c967b7f360bf7ba7aa664cbf4fbae531e9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
