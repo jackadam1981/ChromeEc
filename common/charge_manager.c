@@ -540,7 +540,7 @@ static void charge_manager_fill_power_info(int port,
 			r->max_power = POWER(available_charge[sup][port]);
 		}
 
-		r->meas.voltage_now = get_vbus_voltage(port, r->role);
+		r->meas.voltage_now = 5000; /* get_vbus_voltage(port, r->role); */
 	}
 }
 #endif /* TEST_BUILD */
