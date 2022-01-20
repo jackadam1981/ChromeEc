@@ -124,6 +124,24 @@
       "parentUuid": "957d7cdd_2b4c9034",
       "revId": "404ff5ea9a0774aa440869e06f4a3a85c0f76aaa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1bfc62ef_6bf65b8d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2022-01-20T16:35:22Z",
+      "side": 1,
+      "message": "This is ready to submit and is no worse than it was before. I will push the Python conversion and then see about adding an env var to buildall to avoid the congrats check.\n\nHaving said that, the congrats check is supposed to result in action. Why are people ignoring it?",
+      "parentUuid": "13791888_f15509b9",
+      "revId": "404ff5ea9a0774aa440869e06f4a3a85c0f76aaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
