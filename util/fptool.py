@@ -10,7 +10,11 @@ import os
 import shutil
 import subprocess
 import sys
-
+import glob
+import re
+import datetime
+import stat
+import time
 
 def cmd_flash(args: argparse.Namespace) -> int:
     """
@@ -20,37 +24,15 @@ def cmd_flash(args: argparse.Namespace) -> int:
     disabled.
     """
 
-    if not shutil.which('flash_fp_mcu'):
-        print('Error - The flash_fp_mcu utility does not exist.')
-        return 1
-
-    cmd = ['flash_fp_mcu']
-    if args.image:
-        if not os.path.isfile(args.image):
-            print(f'Error - image {args.image} is not a file.')
-            return 1
-        cmd.append(args.image)
-
-    print(f'Running {" ".join(cmd)}.')
-    sys.stdout.flush()
-    p = subprocess.run(cmd)
-    return p.returncode
-
-
-def main(argv: list) -> int:
+def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     subparsers = parser.add_subparsers(dest='subcommand', title='subcommands')
     # This method of setting required is more compatible with older python.
     subparsers.required = True
 
-    # Parser for "flash" subcommand.
-    parser_decrypt = subparsers.add_parser('flash', help=cmd_flash.__doc__)
-    parser_decrypt.add_argument(
-        'image', nargs='?', help='Path to the firmware image')
-    parser_decrypt.set_defaults(func=cmd_flash)
-    opts = parser.parse_args(argv)
+    opts = parser.parse_args()
+
     return opts.func(opts)
 
-
 if __name__ == '__main__':
-    sys.exit(main(sys.argv[1:]))
+    sys.exit(main())
