@@ -22,6 +22,30 @@
       },
       "revId": "460d983dca93ad1f88045493f36c774454be1c7a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3cc2397a_52ebe8e3",
+        "filename": "driver/als_cm32183.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1506077
+      },
+      "writtenOn": "2022-01-20T02:36:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dcf71e33_783c5d3f",
+      "range": {
+        "startLine": 111,
+        "startChar": 0,
+        "endLine": 134,
+        "endChar": 1
+      },
+      "revId": "460d983dca93ad1f88045493f36c774454be1c7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
