@@ -93,4 +93,5 @@ static inline int chipset_get_sleep_signal(enum sys_sleep_state state)
 {
 	return power_signal_get_level(sleep_sig[state]);
 }
+
 #endif /* __CROS_EC_COMMON_X86_H */
