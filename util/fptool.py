@@ -10,6 +10,16 @@ import sys
 import logging
 import subprocess
 import os
+import glob
+
+
+# Exit codes
+class ExitCode:
+    """Exit Codes."""
+    EXIT_ARGUMENT = 3
+    EXIT_CONFIG = 4
+    EXIT_PRECONDITION = 5
+    EXIT_RUNTIME = 6
 
 
 def readline(file_name: str) -> str:
@@ -51,6 +61,69 @@ def run_system_cmd(cmd, show_output=False, check=True) -> [int, str, str]:
 
 def klog(msg):
     writeline('/dev/kmsg', 'fptool: ' + msg)
+
+
+def assert_wp_is_disabled():
+    rc, wp_enabled, _stderr = run_system_cmd('crossystem wpsw_cur')
+
+    if rc != 0:
+        logging.error('Failed to get hardware write protect status')
+        sys.exit(ExitCode.EXIT_PRECONDITION)
+
+    if wp_enabled != '0':
+        logging.error('Please make sure hardware write protect is disabled.')
+        logging.error('See https://www.chromium.org/chromium-os/'
+                      'firmware-porting-guide/firmware-ec-write-protection')
+        sys.exit(ExitCode.EXIT_PRECONDITION)
+
+
+def get_devid(dev_type, dev_str) -> str:
+    devs = glob.glob(f'/sys/bus/{dev_type}/devices/*')
+    for dev in devs:
+        modalias = readline(dev + '/modalias')
+        # For most devices modalias is 'of:NcrfpTCgoogle,cros-ec-< spi | uart>'
+        if modalias and modalias.split(',')[-1] == dev_str:
+            return os.path.basename(dev)
+        # For strongbad and herobrine, the modalias is: 'spi:cros-ec-spi'
+        # TODO(b/179533783): Fix this script to look for non-ACPI modalias
+        if modalias and modalias.split(':')[-1] == dev_str:
+            return os.path.basename(dev)
+
+    return ''
+
+
+def get_spiid() -> str:
+    """Get the spiid for the fingerprint sensor based on the modalias string.
+
+       see: https://crbug.com/955117
+    """
+    return get_devid('spi', 'cros-ec-spi')
+
+
+def get_uartid() -> str:
+    """Get the uartid for the fingerprint sensor based on the modalias."""
+    return get_devid('serial', 'cros-ec-uart')
+
+
+def get_uart_dev_name(device_id: str) -> str:
+    """Find the UART device associated with the device ID.
+
+       e.g. Zork
+         Device ID: serial0-0
+         Device association:
+           /sys/bus/platform/drivers/dw-apb-uart/AMD0020:01/serial0/serial0-0/
+         Device Name: AMD0020:01
+    """
+    path = '/sys/bus/platform/drivers/dw-apb-uart/'
+    dirs = glob.glob(f'{path}*/*/{device_id}/')
+    if not dirs:
+        logging.warning('Failed to locate device for: %s', device_id)
+        return ''
+    if len(dirs) > 1:
+        logging.warning('Device for %s is ambiguous', device_id)
+        return ''
+
+    return os.path.basename(os.path.dirname(os.path.dirname(dirs[0][:-1])))
 
 
 def cmd_flash(args: argparse.Namespace):
