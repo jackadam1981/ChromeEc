@@ -219,13 +219,6 @@ void chipset_force_shutdown(enum chipset_shutdown_reason reason)
 
 void chipset_handle_espi_reset_assert(void) {}
 
-enum power_state chipset_force_g3(void)
-{
-	chipset_force_shutdown(CHIPSET_SHUTDOWN_G3);
-
-	return POWER_G3;
-}
-
 /*
  * Wait for a power rail on an analog channel to become good.
  *

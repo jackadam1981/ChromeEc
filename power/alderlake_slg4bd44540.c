@@ -140,7 +140,7 @@ void chipset_handle_espi_reset_assert(void)
 	/* No special handling needed. */
 }
 
-enum power_state chipset_force_g3(void)
+__override enum power_state chipset_force_g3(void)
 {
 	chipset_force_shutdown(CHIPSET_SHUTDOWN_G3);
 
