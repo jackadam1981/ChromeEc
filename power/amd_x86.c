@@ -142,7 +142,7 @@ static void handle_pass_through(enum gpio_signal pin_in,
 		msleep(1);
 
 	if (IS_ENABLED(CONFIG_CHIPSET_X86_RSMRST_DELAY) &&
-	    (pin_out == GPIO_PCH_RSMRST_L) && in_level)
+		(pin_out == GPIO_PCH_RSMRST_L) && in_level)
 		msleep(10);
 
 	gpio_set_level(pin_out, in_level);
@@ -243,7 +243,7 @@ void power_reset_host_sleep_state(void)
 	power_set_host_sleep_state(HOST_SLEEP_EVENT_DEFAULT_RESET);
 	sleep_reset_tracking();
 	power_chipset_handle_host_sleep_event(HOST_SLEEP_EVENT_DEFAULT_RESET,
-					      NULL);
+						  NULL);
 }
 
 #endif /* CONFIG_POWER_S0IX */
@@ -318,9 +318,9 @@ enum power_state power_handle_state(enum power_state state)
 		gpio_set_level(GPIO_EN_PWR_A, 1);
 
 		/*
-		 * Callback to do pre-initialization within the context of
-		 * chipset task.
-		 */
+		* Callback to do pre-initialization within the context of
+		* chipset task.
+		*/
 		if (IS_ENABLED(CONFIG_CHIPSET_HAS_PRE_INIT_CALLBACK))
 			chipset_pre_init_callback();
 
@@ -354,9 +354,9 @@ enum power_state power_handle_state(enum power_state state)
 
 #ifdef CONFIG_POWER_S0IX
 		/*
-		 * Clearing the S0ix flag on the path to S0
-		 * to handle any reset conditions.
-		 */
+		* Clearing the S0ix flag on the path to S0
+		* to handle any reset conditions.
+		*/
 		power_reset_host_sleep_state();
 #endif
 		return POWER_S3;
@@ -389,9 +389,9 @@ enum power_state power_handle_state(enum power_state state)
 		hook_notify(HOOK_CHIPSET_RESUME);
 
 		/*
-		 * Disable idle task deep sleep. This means that the low
-		 * power idle task will not go into deep sleep while in S0.
-		 */
+		* Disable idle task deep sleep. This means that the low
+		* power idle task will not go into deep sleep while in S0.
+		*/
 		disable_sleep(SLEEP_MASK_AP_RUN);
 
 		return POWER_S0;
@@ -403,12 +403,12 @@ enum power_state power_handle_state(enum power_state state)
 		}
 #ifdef CONFIG_POWER_S0IX
 		/*
-		 * SLP_S0 may assert in system idle scenario without a kernel
-		 * freeze call. This may cause interrupt storm since there is
-		 * no freeze/unfreeze of threads/process in the idle scenario.
-		 * Ignore the SLP_S0 assertions in idle scenario by checking
-		 * the host sleep state.
-		 */
+		* SLP_S0 may assert in system idle scenario without a kernel
+		* freeze call. This may cause interrupt storm since there is
+		* no freeze/unfreeze of threads/process in the idle scenario.
+		* Ignore the SLP_S0 assertions in idle scenario by checking
+		* the host sleep state.
+		*/
 		else if (power_get_host_sleep_state()
 					== HOST_SLEEP_EVENT_S0IX_SUSPEND &&
 				gpio_get_level(GPIO_PCH_SLP_S0_L) == 0) {
@@ -421,9 +421,9 @@ enum power_state power_handle_state(enum power_state state)
 		}
 #ifdef CONFIG_POWER_S0IX
 		/*
-		 * Call hooks only if we haven't notified listeners of S0ix
-		 * resume.
-		 */
+		* Call hooks only if we haven't notified listeners of S0ix
+		* resume.
+		*/
 		sleep_notify_transition(SLEEP_NOTIFY_RESUME,
 					HOOK_CHIPSET_RESUME);
 #endif
@@ -437,9 +437,9 @@ enum power_state power_handle_state(enum power_state state)
 		wireless_set_state(WIRELESS_SUSPEND);
 
 		/*
-		 * Enable idle task deep sleep. Allow the low power idle task
-		 * to go into deep sleep in S3 or lower.
-		 */
+		* Enable idle task deep sleep. Allow the low power idle task
+		* to go into deep sleep in S3 or lower.
+		*/
 		enable_sleep(SLEEP_MASK_AP_RUN);
 
 #ifdef CONFIG_POWER_S0IX
@@ -469,7 +469,7 @@ enum power_state power_handle_state(enum power_state state)
 	case POWER_S0ix:
 		/* System in S0 only if SLP_S0 and SLP_S3 are de-asserted */
 		if ((gpio_get_level(GPIO_PCH_SLP_S0_L) == 1) &&
-		    (gpio_get_level(GPIO_PCH_SLP_S3_L) == 1)) {
+			(gpio_get_level(GPIO_PCH_SLP_S3_L) == 1)) {
 			return POWER_S0ixS0;
 		} else if (!power_has_signals(IN_S5_PGOOD)) {
 			/* Lost power, start transition to G3 */
@@ -480,25 +480,25 @@ enum power_state power_handle_state(enum power_state state)
 
 	case POWER_S0S0ix:
 		/*
-		 * Call hooks only if we haven't notified listeners of S0ix
-		 * suspend.
-		 */
+		* Call hooks only if we haven't notified listeners of S0ix
+		* suspend.
+		*/
 		sleep_notify_transition(SLEEP_NOTIFY_SUSPEND,
 					HOOK_CHIPSET_SUSPEND);
 		sleep_suspend_transition();
 
 		/*
-		 * Enable idle task deep sleep. Allow the low power idle task
-		 * to go into deep sleep in S0ix.
-		 */
+		* Enable idle task deep sleep. Allow the low power idle task
+		* to go into deep sleep in S0ix.
+		*/
 		enable_sleep(SLEEP_MASK_AP_RUN);
 		return POWER_S0ix;
 
 	case POWER_S0ixS0:
 		/*
-		 * Disable idle task deep sleep. This means that the low
-		 * power idle task will not go into deep sleep while in S0.
-		 */
+		* Disable idle task deep sleep. This means that the low
+		* power idle task will not go into deep sleep while in S0.
+		*/
 		disable_sleep(SLEEP_MASK_AP_RUN);
 
 		sleep_resume_transition();
