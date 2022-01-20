@@ -9,6 +9,7 @@ import argparse
 import sys
 import logging
 import subprocess
+import os
 
 
 def readline(file_name: str) -> str:
@@ -107,6 +108,9 @@ def flash_init(parser):
 
 def main() -> int:
     logging.basicConfig(level='INFO')
+    # print out canonical path to differentiate between /usr/local/bin and
+    # /usr/bin installs
+    logging.info('Path: %s', os.path.realpath(sys.argv[0]))
     parser = argparse.ArgumentParser(description=__doc__)
     subparsers = parser.add_subparsers(dest='subcommand', title='subcommands')
     # This method of setting required is more compatible with older python.
