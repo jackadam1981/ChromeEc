@@ -14,13 +14,23 @@ import glob
 import re
 
 
-# Exit codes
 class ExitCode:
     """Exit Codes."""
     EXIT_ARGUMENT = 3
     EXIT_CONFIG = 4
     EXIT_PRECONDITION = 5
     EXIT_RUNTIME = 6
+
+
+class FPGpios:
+    """Common GPIO structure to be initiated per platform."""
+    NRST = -1
+    BOOT0 = -1
+    PWREN = -1
+    def __init__(self, NRST, BOOT0, PWREN=-1):
+        self.NRST = NRST
+        self.BOOT0 = BOOT0
+        self.PWREN = PWREN
 
 
 def readline(file_name: str) -> str:
@@ -251,6 +261,20 @@ def get_gpio_by_name(bases: dict, name: str) -> int:
     return int(gpio[1]) + int(bases[gpio[0]])
 
 
+def get_gpio(ranges, bases, gpio) -> int:
+    if isinstance(gpio, int):
+        return get_gpio_by_index(ranges, gpio)
+    return get_gpio_by_name(bases, gpio)
+
+
+def get_gpios(gpios: FPGpios) -> FPGpios:
+    bases = read_gpiochips()
+    ranges = read_gpio_ranges()
+    for key in vars(gpios):
+        vars(gpios)[key] = get_gpio(ranges, bases, vars(gpios)[key])
+    return gpios
+
+
 def get_platform_name() -> str:
     """Get the reference design name.
 
@@ -362,6 +386,110 @@ def cmd_flash(args: argparse.Namespace):
     This requires the Chromebook to be in dev mode with hardware write protect
     disabled.
     """
+
+    class config_platform:
+        """Board specific configuration functions
+
+        Holds the following:
+            Transport, Transport Device, FPGpios
+        """
+        # =====================================================================
+        # Board specific configuration functions
+        # Returns the following:
+        # Transport, Transport Device, FPGpios(NRST, BOOT0, PWREN)
+
+        def config_hatch(self) -> list:
+            # See
+            # third_party/coreboot/src/soc/intel/cannonlake/include/soc/
+            #   gpio_soc_defs.h
+            # for pin name to number mapping.
+            return ['SPI', '/dev/spidev1.1',
+                    get_gpios(FPGpios(NRST=12, BOOT0=22, PWREN=192))]
+
+        def config_herobrine(self) -> list:
+            return ['SPI', '/dev/spidev11.0',
+                    get_gpios(FPGpios(NRST='FP_RST_L', BOOT0='FPMCU_BOOT0',
+                                      PWREN='EN_FP_RAILS'))]
+
+        def config_nami(self) -> list:
+            return ['SPI', '/dev/spidev32765.0',
+                    get_gpios(FPGpios(NRST=57, BOOT0=77, PWREN=35))]
+
+        def config_nami_kernelnext(self) -> list:
+            return ['SPI', '/dev/spidev1.0',
+                    get_gpios(FPGpios(NRST=57, BOOT0=77, PWREN=35))]
+
+        def config_nocturne(self) -> list:
+            return ['SPI', '/dev/spidev32765.0',
+                    get_gpios(FPGpios(NRST=58, BOOT0=56, PWREN=11))]
+
+        def config_nocturne_kernelnext(self) -> list:
+            return ['SPI', '/dev/spidev1.0',
+                    get_gpios(FPGpios(NRST=58, BOOT0=56, PWREN=11))]
+
+        def config_strongbad(self) -> list:
+            return ['SPI', '/dev/spidev10.0',
+                    get_gpios(FPGpios(NRST='FP_RST_L', BOOT0='FPMCU_BOOT0',
+                                      PWREN=-1))]
+
+        def config_volteer(self) -> list:
+            # See kernel/v5.4/drivers/pinctrl/intel/pinctrl-tigerlake.c
+            # for pin name and pin number.
+            # Examine `cat /sys/kernel/debug/pinctrl/INT34C5:00/gpio-ranges`
+            # on a volteer device to determine gpio number from pin number.
+            # For example: GPP_C23 is UART2_CTS which can be queried from EDS
+            # the pin number is 194. From the gpio-ranges, the gpio value is
+            # 408 + (194-171) = 431
+            return ['SPI', '/dev/spidev1.0',
+                    get_gpios(FPGpios(NRST=194, BOOT0=193, PWREN=63))]
+
+        def config_brya(self) -> list:
+            # See kernel/v5.10/drivers/pinctrl/intel/pinctrl-tigerlake.c
+            # for pin name and pin number.
+            # Examine `cat /sys/kernel/debug/pinctrl/INTC1055:00/gpio-ranges`
+            # on a brya device to determine gpio number from pin number.
+            # For example: GPP_D1 is ISH_GP_1 which can be queried from EDS
+            # the pin number is 100 from the pinctrl-tigerlake.c.
+            # From the gpio-ranges, the gpio value is 312 + (100-99) = 313
+            return ['SPI', '/dev/spidev0.0',
+                    get_gpios(FPGpios(NRST=100, BOOT0=99, PWREN=101))]
+
+        def config_brask(self) -> list:
+            # Let's call the config_brya since brask follows the brya HW design
+            return self.config_brya()
+
+        def config_zork(self) -> list:
+            return ['UART', '/dev/ttyS1',
+                    get_gpios(FPGpios(NRST=11, BOOT0=69, PWREN=-1))]
+
+        def config_guybrush(self) -> list:
+            return ['UART', '/dev/ttyS1',
+                    get_gpios(FPGpios(NRST=11, BOOT0=144, PWREN=-1))]
+
+        # =====================================================================
+
+        config_func = {
+            'hatch' :               config_hatch,
+            'herobrine' :           config_herobrine,
+            'nami' :                config_nami,
+            'nami-kernelnext' :     config_nami_kernelnext,
+            'nocturne' :            config_nocturne,
+            'nocturne-kernelnext' : config_nocturne_kernelnext,
+            'strongbad' :           config_strongbad,
+            'volteer' :             config_volteer,
+            'brya' :                config_brya,
+            'brask' :               config_brask,
+            'zork' :                config_zork,
+            'guybrush' :            config_guybrush,
+        }
+
+        def __new__(cls, board: str):
+            if not board in config_platform.config_func:
+                return None
+            return super().__new__(cls)
+
+        def __init__(self, board: str):
+            self.transport, self.device, self.gpios = self.config_func[board]()
 
 
 def flash_init(parser):
