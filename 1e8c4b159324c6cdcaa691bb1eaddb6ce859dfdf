@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ffef62da_21142e92",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-01-20T22:58:17Z",
+      "side": 1,
+      "message": "nit: could be a good time to use RETURN_ERROR()",
+      "revId": "1e8c4b159324c6cdcaa691bb1eaddb6ce859dfdf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "051ff3d5_6a377a36",
+        "filename": "driver/tcpm/anx7447.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-01-20T22:58:17Z",
+      "side": 1,
+      "message": "Would you mind pointing me to the datasheet for this one?  The one I found on drive looks like it must be out of date for these registers",
+      "revId": "1e8c4b159324c6cdcaa691bb1eaddb6ce859dfdf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
