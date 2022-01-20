@@ -414,11 +414,15 @@ static void charge_manager_fill_power_info(int port,
 {
 	enum charge_supplier sup = get_current_supplier(port);
 
+	if (port == 0 && sup != 0) {
+		CPRINTS("\x1b[1;31merror charge_manager_fill_power_info %d %d\x1b[m", port, sup);
+		return;
+	}
 	/* Fill in power role */
 	r->role = get_current_power_role(port, sup);
 
 	/* Is port partner dual-role capable */
-	r->dualrole = (dualrole_capability[port] == CAP_DUALROLE);
+	r->dualrole = (port != CHARGE_PORT_NONE && dualrole_capability[port] == CAP_DUALROLE);
 
 	if (sup == CHARGE_SUPPLIER_NONE ||
 	    r->role == USB_PD_PORT_POWER_SOURCE) {
@@ -540,7 +544,8 @@ static void charge_manager_fill_power_info(int port,
 			r->max_power = POWER(available_charge[sup][port]);
 		}
 
-		r->meas.voltage_now = get_vbus_voltage(port, r->role);
+		r->meas.voltage_now = 15000;
+			/* get_vbus_voltage(port, r->role); */
 	}
 }
 #endif /* TEST_BUILD */
@@ -900,6 +905,7 @@ static void charge_manager_refresh(void)
 	charge_voltage = new_charge_voltage;
 	charge_supplier = new_supplier;
 	charge_port = new_port;
+	CPRINTS("\x1b[1;31mnew charge port: %d %d\x1b[m", charge_port, charge_supplier);
 
 #ifdef CONFIG_USB_PD_LOGGING
 	/*
@@ -1445,7 +1451,7 @@ static enum ec_status hc_pd_power_info(struct host_cmd_handler_args *args)
 	 * contract with ectool users. The invalid ports will have the response
 	 * voltage, current and power parameters set to 0.
 	 */
-	if (port >= CHARGE_PORT_COUNT)
+	if (port >= CHARGE_PORT_COUNT || port < 0)
 		return EC_RES_INVALID_PARAM;
 
 	charge_manager_fill_power_info(port, r);
