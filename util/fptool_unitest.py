@@ -111,6 +111,73 @@ _FIRMWARE_GLOB_INPUT_NO_BOARD = '/opt/google/biod/fw/*.bin'
 
 _FIRMWARE_GLOB_INPUT_BLOONCHIPPER = '/opt/google/biod/fw/bloonchipper*.bin'
 
+_GPIO_RANGES = ['GPIO ranges handled:\n',
+                '0: INT1055:00 GPIOS [344 - 355] PINS [0 - 11]\n',
+                '15: INT1055:00 GPIOS [359 - 370] PINS [15 - 26]\n',
+                'GPIO ranges handled:\n',
+                '0: INT1055:01 GPIOS [288 - 295] PINS [0 - 7]\n',
+                '15: INT1055:01 GPIOS [303 - 314] PINS [15 - 26]\n',
+                '30: INT1055:01 GPIOS [318 - 323] PINS [30 - 35]\n',
+                '45: INT1055:01 GPIOS [333 - 340] PINS [45 - 52]\n',
+                'GPIO ranges handled:\n',
+                '0: INTC1055:02 GPIOS [152 - 177] PINS [0 - 25]\n',
+                '32: INTC1055:02 GPIOS [178 - 193] PINS [26 - 41]\n',
+                '64: INTC1055:02 GPIOS [194 - 218] PINS [42 - 66]\n',
+                '96: INTC1055:02 GPIOS [219 - 226] PINS [67 - 74]\n',
+                '128: INTC1055:02 GPIOS [227 - 250] PINS [75 - 98]\n',
+                ]
+
+_GPIO_RANGES_MALFORMED = ['GPIO ranges handled:\n',
+                          '0: INT1055:00 GPIOS [344 - 355] PINS [0 - 11]\n',
+                          '15: INT1055:00 GPIO [359 - 370] PINS [15 - 26]\n'
+                          ]
+
+_GPIO_RANGES_DICT_LIST = [{'device': 'INTC1055:02',
+                           'gpio': {'first': 152, 'last': 177},
+                           'pin': {'first': 0, 'last': 25},
+                           'seq_idx': {'first': 0, 'last': 25}},
+                          {'device': 'INTC1055:02',
+                           'gpio': {'first': 178, 'last': 193},
+                           'pin': {'first': 26, 'last': 41},
+                           'seq_idx': {'first': 26, 'last': 41}},
+                          {'device': 'INTC1055:02',
+                           'gpio': {'first': 194, 'last': 218},
+                           'pin': {'first': 42, 'last': 66},
+                           'seq_idx': {'first': 42, 'last': 66}},
+                          {'device': 'INTC1055:02',
+                           'gpio': {'first': 219, 'last': 226},
+                           'pin': {'first': 67, 'last': 74},
+                           'seq_idx': {'first': 67, 'last': 74}},
+                          {'device': 'INTC1055:02',
+                           'gpio': {'first': 227, 'last': 250},
+                           'pin': {'first': 75, 'last': 98},
+                           'seq_idx': {'first': 75, 'last': 98}},
+                          {'device': 'INT1055:01',
+                           'gpio': {'first': 288, 'last': 295},
+                           'pin': {'first': 0, 'last': 7},
+                           'seq_idx': {'first': 99, 'last': 106}},
+                          {'device': 'INT1055:01',
+                           'gpio': {'first': 303, 'last': 314},
+                           'pin': {'first': 15, 'last': 26},
+                           'seq_idx': {'first': 114, 'last': 125}},
+                          {'device': 'INT1055:01',
+                           'gpio': {'first': 318, 'last': 323},
+                           'pin': {'first': 30, 'last': 35},
+                           'seq_idx': {'first': 129, 'last': 134}},
+                          {'device': 'INT1055:01',
+                           'gpio': {'first': 333, 'last': 340},
+                           'pin': {'first': 45, 'last': 52},
+                           'seq_idx': {'first': 144, 'last': 151}},
+                          {'device': 'INT1055:00',
+                           'gpio': {'first': 344, 'last': 355},
+                           'pin': {'first': 0, 'last': 11},
+                           'seq_idx': {'first': 152, 'last': 163}},
+                          {'device': 'INT1055:00',
+                           'gpio': {'first': 359, 'last': 370},
+                           'pin': {'first': 15, 'last': 26},
+                           'seq_idx': {'first': 167, 'last': 178}}
+                          ]
+
 
 class AssertWpIsDisabledTest(unittest.TestCase):
     """Test the assert_wp_is_disabled functionality"""
@@ -334,6 +401,70 @@ class GetDefaultFirmwareTest(unittest.TestCase):
                 mock_glob.assert_called_once_with(
                     _FIRMWARE_GLOB_INPUT_NO_BOARD)
                 self.assertEqual(default_firmware, _DEFAULT_FIRMWARE[0])
+
+
+class FPGpiosParseGpioRangesTest(unittest.TestCase):
+    """Test the 'gpio-ranges' parser"""
+
+    def test_malformed_range(self):
+        fpgpios = fptool.FPGpios()
+        with mock.patch('fptool.FPGpios._read_gpio_ranges') as mock_ranges:
+            mock_ranges.return_value = _GPIO_RANGES_MALFORMED
+            with self.assertRaises(SystemExit) as exit_trap:
+                fpgpios._parse_gpio_ranges()
+            self.assertEqual(exit_trap.exception.code,
+                             fptool.ExitCode.EXIT_RUNTIME)
+
+    def test_parsing_gpio_ranges_success(self):
+        fpgpios = fptool.FPGpios()
+        with mock.patch('fptool.FPGpios._read_gpio_ranges') as mock_ranges:
+            mock_ranges.return_value = _GPIO_RANGES
+            gpio_ranges = fpgpios._parse_gpio_ranges()
+            self.assertEqual(gpio_ranges, _GPIO_RANGES_DICT_LIST)
+
+
+class FPGpiosGetGpioByIndexTest(unittest.TestCase):
+    """Test access to GPIO link by index"""
+
+    def test_get_gpio_by_index_empty_ranges(self):
+        fpgpios = fptool.FPGpios()
+        gpio = fpgpios.Gpio()
+        with self.assertRaises(SystemExit) as exit_trap:
+            gpio._get_gpio_by_index([], 0)
+        self.assertEqual(exit_trap.exception.code, fptool.ExitCode.EXIT_RUNTIME)
+
+    def test_get_gpio_by_index_missing_gpio(self):
+        fpgpios = fptool.FPGpios()
+        gpio = fpgpios.Gpio()
+        with self.assertRaises(SystemExit) as exit_trap:
+            gpio._get_gpio_by_index(_GPIO_RANGES_DICT_LIST, 126)
+        self.assertEqual(exit_trap.exception.code, fptool.ExitCode.EXIT_RUNTIME)
+
+    def test_get_gpio_by_index_out_of_range(self):
+        fpgpios = fptool.FPGpios()
+        gpio = fpgpios.Gpio()
+        with self.assertRaises(SystemExit) as exit_trap:
+            gpio._get_gpio_by_index(_GPIO_RANGES_DICT_LIST, 179)
+        self.assertEqual(exit_trap.exception.code, fptool.ExitCode.EXIT_RUNTIME)
+
+    def test_get_gpio_by_index_negative_index(self):
+        fpgpios = fptool.FPGpios()
+        gpio = fpgpios.Gpio()
+        with self.assertRaises(SystemExit) as exit_trap:
+            gpio._get_gpio_by_index(_GPIO_RANGES_DICT_LIST, -1)
+        self.assertEqual(exit_trap.exception.code, fptool.ExitCode.EXIT_RUNTIME)
+
+    def test_get_gpio_by_index_end_of_range_success(self):
+        fpgpios = fptool.FPGpios()
+        gpio = fpgpios.Gpio()
+        link = gpio._get_gpio_by_index(_GPIO_RANGES_DICT_LIST, 125)
+        self.assertEqual(link, 314)
+
+    def test_get_gpio_by_index_success(self):
+        fpgpios = fptool.FPGpios()
+        gpio = fpgpios.Gpio()
+        link = gpio._get_gpio_by_index(_GPIO_RANGES_DICT_LIST, 120)
+        self.assertEqual(link, 309)
 
 
 if __name__ == '__main__':
