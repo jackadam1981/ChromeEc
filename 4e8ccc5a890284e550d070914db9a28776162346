@@ -498,6 +498,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e0bcfd2_0a729484",
+        "filename": "chip/stm32/clock-stm32f4.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 507,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-01-20T23:34:54Z",
+      "side": 1,
+      "message": "Thanks, I created a bug to track handling the FPU exceptions: http://b/215606535\n\nHere\u0027s bug for FPC: http://b/215596231",
+      "parentUuid": "8fab3f72_a73d1d5b",
+      "range": {
+        "startLine": 506,
+        "startChar": 27,
+        "endLine": 507,
+        "endChar": 34
+      },
+      "revId": "4e8ccc5a890284e550d070914db9a28776162346",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c98acf78_9335a2d7",
