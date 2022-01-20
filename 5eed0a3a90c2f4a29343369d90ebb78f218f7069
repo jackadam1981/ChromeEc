@@ -22,6 +22,30 @@
       },
       "revId": "5eed0a3a90c2f4a29343369d90ebb78f218f7069",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "96502d16_a2f72943",
+        "filename": "zephyr/projects/corsola/motionsense_kingler.dts",
+        "patchSetId": 13
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1449895
+      },
+      "writtenOn": "2022-01-20T08:25:27Z",
+      "side": 1,
+      "message": "Yes, we should need this to inform AP.\n\nIf I drop this, the ectool motionsense can not get the lid accel data and the ectool motionsense report the lid_angle is unreliable",
+      "parentUuid": "4eaf76b5_e8c148f7",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 26
+      },
+      "revId": "5eed0a3a90c2f4a29343369d90ebb78f218f7069",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
