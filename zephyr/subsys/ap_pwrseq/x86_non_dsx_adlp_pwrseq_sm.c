@@ -371,7 +371,7 @@ void chipset_reset(enum chipset_shutdown_reason reason)
 	gpio_set_lvl(GPIO_NET_NAME(SYS_RESET_L), 1);
 }
 
-void chipset_force_shutdown(enum chipset_shutdown_reason reason)
+__attribute__((weak)) void chipset_force_shutdown(enum chipset_shutdown_reason reason)
 {
 	int timeout_ms = 50;
 
@@ -415,6 +415,11 @@ __attribute__((weak)) void s3s0_action_handler(void)
 {
 }
 
+__attribute__((weak)) void s0s3_action_handler(void)
+{
+	ap_off();
+}
+
 void init_chipset_pwr_seq_state(void)
 {
 	/* Do nothing */
@@ -431,6 +436,9 @@ enum power_states_ndsx chipset_pwr_sm_run(enum power_states_ndsx curr_state)
 		break;
 	case SYS_POWER_STATE_S3S0:
 		s3s0_action_handler();
+		break;
+	case SYS_POWER_STATE_S0S3:
+		s0s3_action_handler();
 		break;
 	case SYS_POWER_STATE_S0:
 		s0_action_handler();
