@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b0da60d0_86326882",
+        "filename": "chip/npcx/gpio-npcx9.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1485637
+      },
+      "writtenOn": "2022-01-20T07:22:23Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "6553cce9_10a619c8",
+      "range": {
+        "startLine": 37,
+        "startChar": 4,
+        "endLine": 37,
+        "endChar": 77
+      },
+      "revId": "e8b21116793949c10eb9a9e8f16604c2e3072745",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4549bc5b_d8fe4ef4",
@@ -132,6 +156,30 @@
       "side": 1,
       "message": "This is removed in the patch set 5.",
       "parentUuid": "4e242cc9_c275a0dc",
+      "range": {
+        "startLine": 167,
+        "startChar": 3,
+        "endLine": 167,
+        "endChar": 7
+      },
+      "revId": "e8b21116793949c10eb9a9e8f16604c2e3072745",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "094d0252_63be50fa",
+        "filename": "chip/npcx/keyboard_raw.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1485637
+      },
+      "writtenOn": "2022-01-20T07:22:23Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "404c598b_acc2d757",
       "range": {
         "startLine": 167,
         "startChar": 3,
