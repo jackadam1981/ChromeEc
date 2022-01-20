@@ -16,6 +16,52 @@
       "message": "Is the brightness is OK for you?",
       "revId": "5c5b236ba8fe9bf5948c63353a51bf3b71c12bb6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6e4f1d4_65552562",
+        "filename": "board/redrix/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-01-20T02:30:11Z",
+      "side": 1,
+      "message": "isn\u0027t this already zero\u0027d out by the caller in\nled_common.c:led_command_control()?",
+      "range": {
+        "startLine": 100,
+        "startChar": 1,
+        "endLine": 101,
+        "endChar": 56
+      },
+      "revId": "5c5b236ba8fe9bf5948c63353a51bf3b71c12bb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "151e27d0_464e7c98",
+        "filename": "board/redrix/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-01-20T02:30:11Z",
+      "side": 1,
+      "message": "this check is no longer needed.",
+      "range": {
+        "startLine": 139,
+        "startChar": 2,
+        "endLine": 139,
+        "endChar": 42
+      },
+      "revId": "5c5b236ba8fe9bf5948c63353a51bf3b71c12bb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
