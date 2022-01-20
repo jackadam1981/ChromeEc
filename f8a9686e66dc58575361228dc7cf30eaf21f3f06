@@ -16,6 +16,24 @@
       "message": "Thanks for adding this command.\nIs it fine to add \"powerindebug\" console command as part of this patch? This will help debug power sequencing.",
       "revId": "f8a9686e66dc58575361228dc7cf30eaf21f3f06",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1540605a_d2fc3046",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2022-01-20T17:28:28Z",
+      "side": 1,
+      "message": "Thanks for catching that. I think it should come after adding the power signals, i.e. on / after CL: 3381051. Since in_signals are not defined here.",
+      "parentUuid": "30abc823_eb27227a",
+      "revId": "f8a9686e66dc58575361228dc7cf30eaf21f3f06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
