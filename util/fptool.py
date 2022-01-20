@@ -11,7 +11,7 @@ import logging
 import subprocess
 import os
 import glob
-from typing import List
+from typing import List, Dict
 import re
 
 
@@ -99,6 +99,44 @@ class FPGpios:
                 logging.error('\t%d - %d', gpio_range['seq_idx']['first'],
                               gpio_range['seq_idx']['last'])
             sys.exit(ExitCode.EXIT_RUNTIME)
+
+        def _gpiofind(self, name: str) -> [int, str]:
+            rc, stdout, _stderr = run_system_cmd(f'gpiofind {name}')
+            return rc, stdout
+
+        def _get_gpio_by_name(self, bases: dict, name: str,
+                              has_to_exist=True) -> int:
+            """Convert gpio's name to its absolute location in the device.
+
+            Utilizes libgpiod APIs 'gpiofind' and 'gpiodetect'
+            """
+            rc, raw_find = self._gpiofind(name)
+            if not bases or (has_to_exist and rc != 0):
+                logging.error('Failed to find GPIO %s', name)
+                sys.exit(ExitCode.EXIT_RUNTIME)
+            # Devices for which a certain GPIO might not exist
+            #   - return UNUSED_GPIO
+            if rc != 0:
+                return constantValues.UNUSED_GPIO
+            gpio = re.split('gpiochip([0-9]+) ([0-9]+)', raw_find.rstrip(), 1)
+            if len(gpio) != 4 or gpio[0] != '' or gpio[3] != '':
+                logging.error('Error parsing `gpiofind` %s', raw_find)
+                sys.exit(ExitCode.EXIT_RUNTIME)
+            dev_name = f'gpiochip{gpio[1]}'
+            gpio_line = int(gpio[2])
+            if dev_name not in bases:
+                logging.error('Failed to locate %s in `gpiodetect`', dev_name)
+                sys.exit(ExitCode.EXIT_RUNTIME)
+            # e.g.
+            #   gpiofind FP_RST_L
+            #   gpiochip0 22
+            #
+            # Gpio location is: 22 + bases['gpiochip0']
+            return gpio_line + bases[dev_name]
+
+    def _gpiodetect(self) -> [int, str]:
+        rc, stdout, _stderr = run_system_cmd('gpiodetect')
+        return rc, stdout
 
     def _read_gpio_ranges(self) -> List[str]:
         ranges = []
@@ -253,6 +291,80 @@ class FPGpios:
 
         logging.debug('parsed gpio ranges: %s', ranges)
         return ranges
+
+    def _parse_gpiochips(self) -> Dict[str, str]:
+        """Parse the base and label of each gpio chip.
+
+        Used when gpios are referenced by name
+        The result is a dictionary of labels (device names) and bases
+        bases
+            device1: base1
+            device2: base2
+        """
+        bases = {}
+        device_name_dict = {}
+        rc, raw_detect = self._gpiodetect()
+        if rc != 0 or not raw_detect:
+            return {}
+        # 'gpiodetect' example:
+        #
+        #  # gpiodetect
+        #    gpiochip0 [INTC1055:00] (27 lines)
+        #    gpiochip1 [INTC1055:01] (53 lines)
+        #    gpiochip2 [INTC1055:02] (99 lines)
+        #
+        # 'label' example:
+        #
+        # # cat /sys/class/gpio/gpiochip*/label
+        # INTC1055:02
+        # INTC1055:01
+        # INTC1055:00
+        #
+        # 'base' example:
+        #
+        # # cat /sys/class/gpio/gpiochip*/base
+        # 152
+        # 288
+        # 344
+        #
+        # These will be parsed to:
+        #
+        #  device_name_dict = {
+        #       'INTC1055:00': 'gpiochip0',
+        #       'INTC1055:01': 'gpiochip1',
+        #       'INTC1055:02': 'gpiochip2'
+        #  }
+        #
+        # bases = {
+        #       'gpiochip0': 344
+        #       'gpiochip1': 288
+        #       'gpiochip2': 152
+        # }
+        for device in raw_detect.split('\n'):
+            if not device:
+                break
+            args = re.split('gpiochip([0-9]+) \\[(\\S*)\\] \\(([0-9]+) '
+                            'lines\\)', device, 1)
+            if len(args) != 5 or args[0] != '' or args[4] != '':
+                logging.error('Malformed gpiodetect data: %s', device)
+                sys.exit(ExitCode.EXIT_RUNTIME)
+
+            dev_name = args[2]
+            virtual_device_name = f'gpiochip{args[1]}'
+            device_name_dict[dev_name] = virtual_device_name
+        paths = glob.glob('/sys/class/gpio/gpiochip*/')
+        for path in paths:
+            dev_name = readline(path + 'label')
+            if not dev_name:
+                logging.error('%slabel does not exist or is empty', path)
+                sys.exit(ExitCode.EXIT_RUNTIME)
+            base = readline(path + 'base')
+            if not base:
+                logging.error('%sbase does not exist or is empty', path)
+                sys.exit(ExitCode.EXIT_RUNTIME)
+            bases[device_name_dict[dev_name]] = int(base)
+
+        return bases
 
 
 def assert_wp_is_disabled():
