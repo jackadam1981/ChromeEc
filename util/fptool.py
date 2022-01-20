@@ -166,6 +166,32 @@ def read_gpio_ranges():
 
     return ranges
 
+# Parse the base and label of each gpio chip
+# Used when gpios are referenced by name
+#
+# The result is a dictionary of labels (device names) and bases
+# bases
+#       device1: base1
+#       device2: base2
+
+def read_gpiochips():
+    bases = {}
+    detect = {}
+    rc, stdout, stderr = run_system_cmd("gpiodetect");
+    if rc != 0 or not stdout:
+        return {}
+    for device in stdout.split('\n'):
+        args = device.split()
+        if not args:
+            break
+        detect[args[1][1:-1]] = args[0]
+    paths = glob.glob('/sys/class/gpio/gpiochip*/')
+    for path in paths:
+        label = readline(path + "label")
+        base = readline(path + "base")
+        bases[detect[label]] = base
+    return bases
+
 # Convert gpio index to its absolute location in the device
 # The absolute location is calculated as follows:
 #
@@ -191,6 +217,21 @@ def get_gpio_by_index(ranges: list, idx: int) -> int:
         sys.exit(ExitCode.EXIT_RUNTIME)
 
     return gpios
+
+# Convert gpio's name to its absolute location in the device
+# Utilizes libgpiod APIs 'gpiofind' and 'gpiodetect'
+def get_gpio_by_name(bases: dict, name: str) -> int:
+    rc, stdout, stderr = run_system_cmd("gpiofind " + name)
+    if not bases or rc != 0:
+        logging.error(f"Failed to find GPIO {name}")
+        sys.exit(ExitCode.EXIT_RUNTIME)
+    gpio = stdout.split()
+    # e.g.
+    #   gpiofind FP_RST_L
+    #   gpiochip0 22
+    #
+    # Gpio location is: 22 + bases['gpiochip0']
+    return int(gpio[1]) + int(bases[gpio[0]])
 
 # Get the underlying board (reference design) that we're running on (not the
 # FPMCU or sensor).
