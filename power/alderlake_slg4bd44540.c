@@ -140,13 +140,6 @@ void chipset_handle_espi_reset_assert(void)
 	/* No special handling needed. */
 }
 
-enum power_state chipset_force_g3(void)
-{
-	chipset_force_shutdown(CHIPSET_SHUTDOWN_G3);
-
-	return POWER_G3;
-}
-
 static void ap_off(void)
 {
 	GPIO_SET_LEVEL(GPIO_VCCST_PWRGD_OD, 0);
