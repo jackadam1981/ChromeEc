@@ -63,6 +63,30 @@
       },
       "revId": "0e3ab694b86aaf8b3efdb2cb57cb1fb7123f22de",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "22f519b5_7680f1c8",
+        "filename": "board/taeko/sensors.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-01-20T03:31:36Z",
+      "side": 1,
+      "message": "did you mean to remove this? i was checking if it should be\nchanged to GPIO_PULL_UP?",
+      "parentUuid": "e4bdf569_c3b1a0d4",
+      "range": {
+        "startLine": 336,
+        "startChar": 50,
+        "endLine": 336,
+        "endChar": 64
+      },
+      "revId": "0e3ab694b86aaf8b3efdb2cb57cb1fb7123f22de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
