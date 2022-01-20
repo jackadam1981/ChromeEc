@@ -339,6 +339,13 @@ static void force_mkbp_if_events(void)
 
 test_mockable int mkbp_send_event(uint8_t event_type)
 {
+	if(event_type == EC_MKBP_EVENT_SENSOR_FIFO)
+	{
+		CPRINTS("%s: ignore event_type:%d",__func__, event_type);
+		return 1;
+	}
+
+
 	activate_mkbp_with_events(BIT(event_type));
 
 	return 1;
