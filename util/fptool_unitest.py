@@ -97,6 +97,41 @@ _FIRMWARE_GLOB_INPUT_NO_BOARD = '/opt/google/biod/fw/*.bin'
 
 _FIRMWARE_GLOB_INPUT_BLOONCHIPPER = '/opt/google/biod/fw/bloonchipper*.bin'
 
+_GPIO_RANGES = ['GPIO ranges handled:\n',
+                '0: INT1055:00 GPIOS [344 - 355] PINS [0 - 11]\n',
+                '15: INT1055:00 GPIOS [359 - 370] PINS [15 - 26]\n',
+                'GPIO ranges handled:\n',
+                '0: INT1055:01 GPIOS [288 - 295] PINS [0 - 7]\n',
+                '15: INT1055:01 GPIOS [303 - 314] PINS [15 - 26]\n',
+                '30: INT1055:01 GPIOS [318 - 323] PINS [30 - 35]\n',
+                '45: INT1055:01 GPIOS [333 - 340] PINS [45 - 52]\n',
+                'GPIO ranges handled:\n',
+                '0: INTC1055:02 GPIOS [152 - 177] PINS [0 - 25]\n',
+                '32: INTC1055:02 GPIOS [178 - 193] PINS [26 - 41]\n',
+                '64: INTC1055:02 GPIOS [194 - 218] PINS [42 - 66]\n',
+                '96: INTC1055:02 GPIOS [219 - 226] PINS [67 - 74]\n',
+                '128: INTC1055:02 GPIOS [227 - 250] PINS [75 - 98]\n',
+                ]
+
+_GPIO_DETECT = 'gpiochip0 [INTC1055:00] (27 lines)\n' \
+               'gpiochip1 [INTC1055:01] (53 lines)\n' \
+               'gpiochip2 [INTC1055:02] (99 lines)\n'
+
+_GPIOCHIP_GLOB_INPUT = '/sys/class/gpio/gpiochip*/'
+
+_GPIOCHIP_GLOB = ['/sys/class/gpio/gpiochip344/',
+                  '/sys/class/gpio/gpiochip288/',
+                  '/sys/class/gpio/gpiochip152/'
+                  ]
+
+_GPIOCHIP_LABLES_BASES = ['INTC1055:00', '344', 'INTC1055:01', '288',
+                          'INTC1055:02', '152'
+                          ]
+
+_GPIOFIND_FP_RST_L = 'gpiochip0 22'
+
+_GPIOFIND_OUT_OF_SCOPE = 'gpiochip3 10'
+
 class AssertWpIsDisabledTest(unittest.TestCase):
     """Test the assert_wp_is_disabled functionality"""
 
@@ -255,6 +290,43 @@ class GetDefaultFirmwareTest(unittest.TestCase):
                 mock_glob.assert_called_once_with(
                     _FIRMWARE_GLOB_INPUT_BLOONCHIPPER)
                 assert default_firmware == _DEFAULT_FIRMWARE
+
+
+class FPGpiosGetGpioByIndexTest(unittest.TestCase):
+    """Test access to GPIO link by index"""
+
+    def test_get_gpio_by_index(self):
+        fpgpios = fptool.FPGpios()
+        gpio = fpgpios.Gpio()
+        with self.assertRaises(SystemExit) as exit_trap:
+            gpio._get_gpio_by_index([], 0)
+        assert isinstance(exit_trap.exception, SystemExit)
+        assert exit_trap.exception.code == fptool.ExitCode.EXIT_RUNTIME
+
+        with mock.patch('fptool.FPGpios._read_gpio_ranges') as mock_ranges:
+            mock_ranges.return_value = _GPIO_RANGES
+            gpio_ranges = fpgpios._parse_gpio_ranges()
+            with self.assertRaises(SystemExit) as exit_trap:
+                gpio._get_gpio_by_index(gpio_ranges, 126)
+            assert isinstance(exit_trap.exception, SystemExit)
+            assert exit_trap.exception.code == fptool.ExitCode.EXIT_RUNTIME
+
+            with self.assertRaises(SystemExit) as exit_trap:
+                gpio._get_gpio_by_index(gpio_ranges, 179)
+            assert isinstance(exit_trap.exception, SystemExit)
+            assert exit_trap.exception.code == fptool.ExitCode.EXIT_RUNTIME
+
+        try:
+            with self.assertRaises(SystemExit) as exit_trap:
+                link = gpio._get_gpio_by_index(gpio_ranges, 125)
+        except AssertionError:
+            assert link == 314
+
+        try:
+            with self.assertRaises(SystemExit) as exit_trap:
+                link = gpio._get_gpio_by_index(gpio_ranges, 120)
+        except AssertionError:
+            assert link == 309
 
 
 if __name__ == '__main__':
