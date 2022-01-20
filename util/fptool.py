@@ -15,6 +15,43 @@ import re
 import datetime
 import stat
 import time
+import logging
+
+def readline(file_name: str):
+    try:
+        with open(file_name, 'r') as fd:
+            return fd.readline().rstrip()
+    except OSError:
+        logging.warning(f"--------------- Error reading from {file_name}")
+        logging.warning(f"\t\tOSError: {sys.exc_info()[1].strerror}")
+        return ""
+
+def writeline(file_name: str, data: str):
+    try:
+        with open(file_name, 'w') as fd:
+            fd.write(data + '\n')
+    except OSError:
+        logging.warning(f"--------------- Error writing: {data} to {file_name}")
+        logging.warning(f"\t\tOSError: {sys.exc_info()[1].strerror}")
+
+def run_system_cmd(cmd, show_output=False):
+    sys.stdout.flush()
+    sys.stderr.flush()
+    if show_output:
+        cmd = cmd.split()
+        system_cmd = subprocess.run(cmd)
+        return system_cmd.returncode
+
+    system_cmd = subprocess.Popen(cmd,
+            stdout = subprocess.PIPE,
+            stderr = subprocess.PIPE,
+            shell = True,
+            universal_newlines = True)
+    stdout, stderr = system_cmd.communicate()
+    return system_cmd.returncode, stdout, stderr
+
+def klog(msg):
+    writeline("/dev/kmsg", "fptool: " + msg)
 
 def cmd_flash(args: argparse.Namespace) -> int:
     """
