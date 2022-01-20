@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ea5e2f8_a880c6a4",
+        "filename": "baseboard/intelrvp/adlrvp.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2022-01-20T17:55:53Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "929e6fd4_892dd031",
+      "range": {
+        "startLine": 342,
+        "startChar": 34,
+        "endLine": 342,
+        "endChar": 35
+      },
+      "revId": "2edc576fc6445148850872494458c3c2523d7fe3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d41eac2a_5472cd4f",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-01-19T23:31:31Z",
       "side": 1,
       "message": "what will be the value if battery is NOT present?",
+      "range": {
+        "startLine": 346,
+        "startChar": 4,
+        "endLine": 346,
+        "endChar": 35
+      },
+      "revId": "2edc576fc6445148850872494458c3c2523d7fe3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f94d2b7_3ac858e1",
+        "filename": "baseboard/intelrvp/adlrvp.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2022-01-20T17:55:53Z",
+      "side": 1,
+      "message": "The voltage_max is initialized in \"struct board_batt_params board_battery_info[]\" globally, do not depend on the battery hw presence.",
+      "parentUuid": "d41eac2a_5472cd4f",
       "range": {
         "startLine": 346,
         "startChar": 4,
