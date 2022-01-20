@@ -46,6 +46,30 @@
       },
       "revId": "5eed0a3a90c2f4a29343369d90ebb78f218f7069",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e6520cfb_ab44a513",
+        "filename": "zephyr/projects/corsola/motionsense_kingler.dts",
+        "patchSetId": 13
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1449895
+      },
+      "writtenOn": "2022-01-20T08:44:58Z",
+      "side": 1,
+      "message": "sorry, please ignore the last comment.\n\nWe need `accel-force-mode-sensors \u003d \u003c\u0026lid_accel\u003e;` rather than `bma4xx-int \u003d \u0026lid_accel;`",
+      "parentUuid": "96502d16_a2f72943",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 26
+      },
+      "revId": "5eed0a3a90c2f4a29343369d90ebb78f218f7069",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
