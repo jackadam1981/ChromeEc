@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7b69121_ecf7da3e",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2022-01-20T03:04:36Z",
+      "side": 1,
+      "message": "What\u0027s the difference of writing to 0x76 TCPC_REG_VBUS_VOLTAGE_ALARM_HI_CFG and 0xb7 ANX7447_REG_TCPC_VBUS_THRESHOLD?\n\nI tested by writing 0x3ff(25V), 0x320 (20V) to TCPC_REG_VBUS_VOLTAGE_ALARM_HI_CFG and it won\u0027t raise alarms from a 20V input.",
+      "range": {
+        "startLine": 350,
+        "startChar": 25,
+        "endLine": 350,
+        "endChar": 56
+      },
+      "revId": "aa0b6e52344b00682f8f2c01dbe930664f20e3c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
