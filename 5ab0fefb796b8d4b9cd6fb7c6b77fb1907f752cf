@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "21a1e616_e1acea4d",
+        "filename": "driver/als_cm32183.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1506077
+      },
+      "writtenOn": "2022-01-20T10:11:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f55d3ce6_3cc771cb",
+      "range": {
+        "startLine": 149,
+        "startChar": 0,
+        "endLine": 149,
+        "endChar": 1
+      },
+      "revId": "5ab0fefb796b8d4b9cd6fb7c6b77fb1907f752cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "422bc82b_7115e0e1",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa88492a_aeec5b83",
+        "filename": "driver/als_cm32183.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1506077
+      },
+      "writtenOn": "2022-01-20T10:11:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "422bc82b_7115e0e1",
+      "range": {
+        "startLine": 99,
+        "startChar": 50,
+        "endLine": 99,
+        "endChar": 52
+      },
+      "revId": "5ab0fefb796b8d4b9cd6fb7c6b77fb1907f752cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "00a9ab92_e8330444",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-01-20T02:46:49Z",
       "side": 1,
       "message": "does this need to be a public/global function?",
+      "range": {
+        "startLine": 103,
+        "startChar": 0,
+        "endLine": 103,
+        "endChar": 31
+      },
+      "revId": "5ab0fefb796b8d4b9cd6fb7c6b77fb1907f752cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "34cd01d7_55700f0f",
+        "filename": "driver/als_cm32183.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1506077
+      },
+      "writtenOn": "2022-01-20T10:11:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "00a9ab92_e8330444",
       "range": {
         "startLine": 103,
         "startChar": 0,
