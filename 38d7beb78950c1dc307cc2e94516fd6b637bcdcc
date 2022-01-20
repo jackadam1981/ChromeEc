@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "325f8521_ebebc32a",
+        "filename": "zephyr/Kconfig.flash",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-01-20T22:12:21Z",
+      "side": 1,
+      "message": "nit: add these in alphabetical order all files",
+      "revId": "38d7beb78950c1dc307cc2e94516fd6b637bcdcc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd23ef1c_4652dd9d",
+        "filename": "zephyr/Kconfig.header",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-01-20T22:12:21Z",
+      "side": 1,
+      "message": "pls add / change the date only on new files throughout the CL",
+      "range": {
+        "startLine": 1,
+        "startChar": 12,
+        "endLine": 1,
+        "endChar": 16
+      },
+      "revId": "38d7beb78950c1dc307cc2e94516fd6b637bcdcc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ac047c3_0856c98d",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_xec.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-01-20T22:12:21Z",
+      "side": 1,
+      "message": "as Keith suggested better to reuse Nuvoton file or add symbolic link for nuvoton file for time being and then add MCHP changes on that with ifdefs",
+      "revId": "38d7beb78950c1dc307cc2e94516fd6b637bcdcc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7241c9d9_1b42b64b",
+        "filename": "zephyr/dts/bindings/cros_flash/microchip,xec-cros-flash.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-01-20T22:12:21Z",
+      "side": 1,
+      "message": "just curios, why name XEC not MEC?",
+      "revId": "38d7beb78950c1dc307cc2e94516fd6b637bcdcc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
