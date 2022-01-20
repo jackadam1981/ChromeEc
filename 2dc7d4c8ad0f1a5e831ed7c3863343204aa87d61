@@ -16,6 +16,24 @@
       "message": "I just noticed that we had a new module `ChromeOS power delivery notifier device` which consume the EC_EVENT_USB_MUX and EC_EVENT_PD_MCU events.",
       "revId": "2dc7d4c8ad0f1a5e831ed7c3863343204aa87d61",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d3a3b20_a4598d87",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2022-01-20T03:22:48Z",
+      "side": 1,
+      "message": "sad... is this implemented and enabled on Cherry?",
+      "parentUuid": "b49b732c_f78829e9",
+      "revId": "2dc7d4c8ad0f1a5e831ed7c3863343204aa87d61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
