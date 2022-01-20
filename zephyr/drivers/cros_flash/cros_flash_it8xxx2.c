@@ -313,5 +313,5 @@ static int flash_it8xxx2_init(const struct device *dev)
 static struct cros_flash_it8xxx2_data cros_flash_data;
 
 DEVICE_DT_INST_DEFINE(0, flash_it8xxx2_init, NULL, &cros_flash_data, NULL,
-		      PRE_KERNEL_1, CONFIG_KERNEL_INIT_PRIORITY_DEVICE,
+		      PRE_KERNEL_1, CONFIG_CROS_FLASH_IT8XXX2_INIT_PRIORITY,
 		      &cros_flash_it8xxx2_driver_api);
