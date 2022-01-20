@@ -16,6 +16,24 @@
       "message": "Do we need to add other properties which are mentioned in binding file like \"wait-signal-timeout\"?",
       "revId": "ec35ae2621341d5b7bfb2acce2dcfef208acd0b2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bce490c5_a0d72c00",
+        "filename": "zephyr/projects/brya/brya/common_power.dts",
+        "patchSetId": 4
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2022-01-20T17:37:35Z",
+      "side": 1,
+      "message": "wait-signal-timeout has a default value assigned, it need not change here, and mostly should not change with platform. Hence removed out of equation.",
+      "parentUuid": "3c6185f4_4fef97c2",
+      "revId": "ec35ae2621341d5b7bfb2acce2dcfef208acd0b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
