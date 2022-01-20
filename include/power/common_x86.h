@@ -9,6 +9,7 @@
 #define __CROS_EC_COMMON_X86_H
 
 #include "chipset.h"
+#include "chipset_config.h"
 #include "common.h"
 #include "console.h"
 #include "ec_commands.h"
@@ -36,5 +37,14 @@ void lpc_s0ix_resume_restore_masks(void);
  */
 void lpc_s0ix_hang_detected(void);
 #endif
+
+/**
+ * Introduces SYS_RESET_L Debounce time delay
+ *
+ * The default implementation is to wait for a duration of 32 ms.
+ * If a board needs a different debounce time delay, they may override
+ * this function
+ */
+__override_proto void x86_sys_reset_delay(void);
 
 #endif /* __CROS_EC_COMMON_X86_H */
