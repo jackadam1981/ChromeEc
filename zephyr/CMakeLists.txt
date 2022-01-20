@@ -299,12 +299,14 @@ zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_POWERSEQ
 zephyr_library_sources_ifdef(CONFIG_CHIPSET_ALDERLAKE_SLG4BD44540
                                                 "${PLATFORM_EC}/power/alderlake_slg4bd44540.c")
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_POWERSEQ_AMD
+						"${PLATFORM_EC}/power/common_x86.c"
                                                 "${PLATFORM_EC}/power/amd_x86.c")
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_POWERSEQ_COMETLAKE
                                                 "${PLATFORM_EC}/power/cometlake.c")
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_POWERSEQ_ICELAKE
                                                 "${PLATFORM_EC}/power/icelake.c")
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_POWERSEQ_INTEL
+						"${PLATFORM_EC}/power/common_x86.c"
                                                 "${PLATFORM_EC}/power/intel_x86.c")
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_POWERSEQ_HOST_SLEEP
                                                 "${PLATFORM_EC}/power/host_sleep.c")

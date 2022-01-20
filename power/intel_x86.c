@@ -7,24 +7,13 @@
 
 #include "board_config.h"
 #include "charge_state.h"
-#include "chipset.h"
-#include "console.h"
-#include "ec_commands.h"
-#include "gpio.h"
-#include "hooks.h"
-#include "lpc.h"
-#include "power.h"
+#include "power/common_x86.h"
 #include "power/intel_x86.h"
-#include "power_button.h"
-#include "system.h"
-#include "task.h"
-#include "util.h"
-#include "vboot.h"
-#include "wireless.h"
 
 /* Console output macros */
-#define CPRINTS(format, args...) cprints(CC_CHIPSET, format, ## args)
-#define CPRINTF(format, args...) cprintf(CC_CHIPSET, format, ## args)
+#define CPUTS(outstr) cputs(CC_CHIPSET, outstr)
+#define CPRINTS(format, args...) cprints(CC_CHIPSET, format, ##args)
+#define CPRINTF(format, args...) cprintf(CC_CHIPSET, format, ##args)
 
 enum sys_sleep_state {
 	SYS_SLEEP_S3,
