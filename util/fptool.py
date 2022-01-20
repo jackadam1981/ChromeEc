@@ -24,12 +24,55 @@ def cmd_flash(args: argparse.Namespace) -> int:
     disabled.
     """
 
+def flash_init(parser: argparse.ArgumentParser) -> argparse.ArgumentParser:
+    flash_parser = parser.add_parser('flash', help=cmd_flash.__doc__)
+    group = flash_parser.add_mutually_exclusive_group()
+    group.add_argument("-r", "--read", action='store_true')
+    group.add_argument("--noread", action='store_true',
+            help="Read instead of write (Default: False)")
+    group = flash_parser.add_mutually_exclusive_group()
+    group.add_argument("-U", "--remove_flash_read_protect", action='store_true',
+            default=True)
+    group.add_argument("--noremove_flash_read_protect", action='store_true',
+            help="Remove flash read protection while performing command "
+            "(Default: True)")
+    group = flash_parser.add_mutually_exclusive_group()
+    group.add_argument("-u", "--remove_flash_write_protect",
+            action='store_true', default=True)
+    group.add_argument("--noremove_flash_write_protect", action='store_true',
+            help="Remove flash read protection while "
+            "performing command (Default: True)")
+    flash_parser.add_argument("-R", "--retries", type=int, default=4,
+            help="Specify number of retries (default: %(default)s)")
+    flash_parser.add_argument("-B", "--baudrate", type=int, default=115200,
+            help="Specify UART baudrate (default: %(default)s)")
+    group = flash_parser.add_mutually_exclusive_group()
+    group.add_argument("-H", "--hello", action='store_true')
+    group.add_argument("--nohello", action='store_true',
+            help="Only ping the bootloader (Default: %(default)s)")
+    group = flash_parser.add_mutually_exclusive_group()
+    group.add_argument("-s", "--services", default=True, action='store_true')
+    group.add_argument("--noservices", action='store_true',
+            help="Stop and restart conflicting fingerprint services "
+            "(Default: True)")
+    flash_parser.add_argument("binary", type=str, nargs='?',
+            help="Flash binary [ec.bin]")
+    flash_parser.set_defaults(func=cmd_flash, connect_retries=6)
+    log_level_choices = ['DEBUG', 'INFO', 'WARNING', 'ERROR', 'CRITICAL']
+    flash_parser.add_argument(
+        '--log_level', '-l',
+        choices=log_level_choices,
+        default='INFO'
+    )
+    return flash_parser
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     subparsers = parser.add_subparsers(dest='subcommand', title='subcommands')
     # This method of setting required is more compatible with older python.
     subparsers.required = True
 
+    parser_decrypt = flash_init(subparsers)
     opts = parser.parse_args()
 
     return opts.func(opts)
