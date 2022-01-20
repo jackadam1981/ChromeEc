@@ -133,14 +133,15 @@ static inline int chipset_in_or_transitioning_to_state(int state_mask)
 
 #if defined(CONFIG_ZEPHYR) && defined(CONFIG_X86_NON_DSX_POWER_SEQ)
 void chipset_exit_hard_off(void);
+void chipset_force_shutdown(enum chipset_shutdown_reason reason);
 #else
 static inline void chipset_exit_hard_off(void) { }
-#endif
-
-static inline void chipset_throttle_cpu(int throttle) { }
 static inline void chipset_force_shutdown(enum chipset_shutdown_reason reason)
 {
 }
+#endif
+
+static inline void chipset_throttle_cpu(int throttle) { }
 
 static inline void chipset_reset(enum chipset_shutdown_reason reason) { }
 static inline void power_interrupt(enum gpio_signal signal) { }
