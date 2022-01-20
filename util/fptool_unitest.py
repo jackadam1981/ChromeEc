@@ -188,6 +188,35 @@ _GPIO_RANGES_DICT_LIST = [{'device': 'INTC1055:02',
                            'seq_idx': {'first': 167, 'last': 178}}
                           ]
 
+_GPIO_DETECT = 'gpiochip0 [INTC1055:00] (27 lines)\n' \
+               'gpiochip1 [INTC1055:01] (53 lines)\n' \
+               'gpiochip2 [INTC1055:02] (99 lines)\n'
+
+_GPIO_DETECT_MALFORMED = 'gpiochip0 [INTC1055:00] (27 lines)\n' \
+                         'gpiochip1 [INTC1055:01] \n'
+
+_GPIOCHIP_GLOB_INPUT = '/sys/class/gpio/gpiochip*/'
+
+_GPIOCHIP_GLOB = ['/sys/class/gpio/gpiochip344/',
+                  '/sys/class/gpio/gpiochip288/',
+                  '/sys/class/gpio/gpiochip152/'
+                  ]
+
+_GPIOCHIP_LABLES_BASES = ['INTC1055:00', '344', 'INTC1055:01', '288',
+                          'INTC1055:02', '152'
+                          ]
+
+_GPIO_BASES = {'gpiochip0': 344,
+               'gpiochip1': 288,
+               'gpiochip2': 152
+               }
+
+_GPIOFIND_FP_RST_L = 'gpiochip0 22'
+
+_GPIOFIND_MALFORMED = 'gpiochips0 22'
+
+_GPIOFIND_OUT_OF_SCOPE = 'gpiochip3 10'
+
 
 class AssertWpIsDisabledTest(unittest.TestCase):
     """Test the assert_wp_is_disabled functionality"""
@@ -484,6 +513,151 @@ class FPGpiosGetGpioByIndexTest(unittest.TestCase):
                 link = gpio._get_gpio_by_index(_GPIO_RANGES_DICT_LIST, 120)
         except AssertionError:
             self.assertEqual(link, 309)
+
+
+class FPGpiosParseGpioChipsTest(unittest.TestCase):
+    """Test the 'gpiochip' parser"""
+
+    def test_no_gpiodetect_command(self):
+        with mock.patch('fptool.FPGpios._gpiodetect') as mock_detect:
+            mock_detect.return_value = [1, None]
+            fpgpios = fptool.FPGpios()
+            bases = fpgpios._parse_gpiochips()
+            self.assertEqual(bases, {})
+
+    def test_empty_gpiodetect(self):
+        with mock.patch('fptool.FPGpios._gpiodetect') as mock_detect:
+            mock_detect.return_value = [0, '']
+            fpgpios = fptool.FPGpios()
+            bases = fpgpios._parse_gpiochips()
+            self.assertEqual(bases, {})
+
+    def test_malformed_gpiodetect(self):
+        with mock.patch('fptool.FPGpios._gpiodetect') as mock_detect:
+            mock_detect.return_value = [0, _GPIO_DETECT_MALFORMED]
+            fpgpios = fptool.FPGpios()
+            with self.assertRaises(SystemExit) as exit_trap:
+                fpgpios._parse_gpiochips()
+            assert isinstance(exit_trap.exception, SystemExit)
+            self.assertEqual(exit_trap.exception.code,
+                             fptool.ExitCode.EXIT_RUNTIME)
+
+    def test_no_gpiochip_files(self):
+        with mock.patch('fptool.FPGpios._gpiodetect') as mock_detect:
+            mock_detect.return_value = [0, _GPIO_DETECT]
+            with mock.patch('glob.glob') as mock_glob:
+                mock_glob.return_value = []
+                fpgpios = fptool.FPGpios()
+                bases = fpgpios._parse_gpiochips()
+                self.assertEqual(bases, {})
+
+    def test_no_label_or_base(self):
+        with mock.patch('fptool.FPGpios._gpiodetect') as mock_detect:
+            mock_detect.return_value = [0, _GPIO_DETECT]
+            with mock.patch('glob.glob') as mock_glob:
+                mock_glob.return_value = _GPIOCHIP_GLOB
+                with mock.patch('fptool.readline') as mock_readline:
+                    mock_readline.return_value = []
+                    with self.assertRaises(SystemExit) as exit_trap:
+                        fpgpios = fptool.FPGpios()
+                        fpgpios._parse_gpiochips()
+                    assert isinstance(exit_trap.exception, SystemExit)
+                    self.assertEqual(exit_trap.exception.code,
+                                     fptool.ExitCode.EXIT_RUNTIME)
+
+    def test_parse_gpiochips(self):
+        with mock.patch('fptool.FPGpios._gpiodetect') as mock_detect:
+            mock_detect.return_value = [0, _GPIO_DETECT]
+            with mock.patch('glob.glob') as mock_glob:
+                mock_glob.return_value = _GPIOCHIP_GLOB
+                with mock.patch('fptool.readline') as mock_readline:
+                    mock_readline.side_effect = _GPIOCHIP_LABLES_BASES
+                    fpgpios = fptool.FPGpios()
+                    bases = fpgpios._parse_gpiochips()
+                    mock_glob.assert_called_once_with(_GPIOCHIP_GLOB_INPUT)
+                    self.assertEqual(mock_readline.call_count, 6)
+                    self.assertEqual(bases, _GPIO_BASES)
+
+
+class FPGpiosGetGpioByNameTest(unittest.TestCase):
+    """Test access to GPIO link by name"""
+
+    def test_no_bases(self):
+        fpgpios = fptool.FPGpios()
+        gpio = fpgpios.Gpio()
+        with mock.patch('fptool.FPGpios.Gpio._gpiofind') as mock_gpiofind:
+            mock_gpiofind.return_value = [0, _GPIOFIND_FP_RST_L]
+            with self.assertRaises(SystemExit) as exit_trap:
+                gpio._get_gpio_by_name({}, 'FP_RST_L')
+            assert isinstance(exit_trap.exception, SystemExit)
+            self.assertEqual(exit_trap.exception.code,
+                             fptool.ExitCode.EXIT_RUNTIME)
+
+    def test_no_gpiofind(self):
+        fpgpios = fptool.FPGpios()
+        gpio = fpgpios.Gpio()
+        with mock.patch('fptool.FPGpios.Gpio._gpiofind') as mock_gpiofind:
+            mock_gpiofind.return_value = [1, None]
+            with self.assertRaises(SystemExit) as exit_trap:
+                gpio._get_gpio_by_name(_GPIO_BASES, 'FP_RST_L')
+            assert isinstance(exit_trap.exception, SystemExit)
+            self.assertEqual(exit_trap.exception.code,
+                             fptool.ExitCode.EXIT_RUNTIME)
+
+    def test_empty_gpiofind(self):
+        fpgpios = fptool.FPGpios()
+        gpio = fpgpios.Gpio()
+        with mock.patch('fptool.FPGpios.Gpio._gpiofind') as mock_gpiofind:
+            mock_gpiofind.return_value = [0, '']
+            with self.assertRaises(SystemExit) as exit_trap:
+                gpio._get_gpio_by_name(_GPIO_BASES, 'FP_RST_L')
+            assert isinstance(exit_trap.exception, SystemExit)
+            self.assertEqual(exit_trap.exception.code,
+                             fptool.ExitCode.EXIT_RUNTIME)
+
+    def test_malformed_gpiofind(self):
+        fpgpios = fptool.FPGpios()
+        gpio = fpgpios.Gpio()
+        with mock.patch('fptool.FPGpios.Gpio._gpiofind') as mock_gpiofind:
+            mock_gpiofind.return_value = [0, _GPIOFIND_MALFORMED]
+            with self.assertRaises(SystemExit) as exit_trap:
+                gpio._get_gpio_by_name(_GPIO_BASES, 'FP_RST_L')
+            assert isinstance(exit_trap.exception, SystemExit)
+            self.assertEqual(exit_trap.exception.code,
+                             fptool.ExitCode.EXIT_RUNTIME)
+
+    def test_out_of_scope_device(self):
+        fpgpios = fptool.FPGpios()
+        gpio = fpgpios.Gpio()
+        with mock.patch('fptool.FPGpios.Gpio._gpiofind') as mock_gpiofind:
+            mock_gpiofind.return_value = [0, _GPIOFIND_OUT_OF_SCOPE]
+            with self.assertRaises(SystemExit) as exit_trap:
+                gpio._get_gpio_by_name(_GPIO_BASES, 'FP_RST_L')
+            assert isinstance(exit_trap.exception, SystemExit)
+            self.assertEqual(exit_trap.exception.code,
+                             fptool.ExitCode.EXIT_RUNTIME)
+
+    def test_gpio_does_not_exist(self):
+        fpgpios = fptool.FPGpios()
+        gpio = fpgpios.Gpio()
+        with mock.patch('fptool.FPGpios.Gpio._gpiofind') as mock_gpiofind:
+            mock_gpiofind.return_value = [1, []]
+            try:
+                with self.assertRaises(SystemExit):
+                    rst_l = gpio._get_gpio_by_name(_GPIO_BASES, 'FP_RST_L',
+                                                   has_to_exist=False)
+            except AssertionError:
+                mock_gpiofind.assert_called_once_with('FP_RST_L')
+                self.assertEqual(rst_l, fptool.constantValues.UNUSED_GPIO)
+
+    def test_get_gpio_by_name(self):
+        fpgpios = fptool.FPGpios()
+        gpio = fpgpios.Gpio()
+        with mock.patch('fptool.FPGpios.Gpio._gpiofind') as mock_gpiofind:
+            mock_gpiofind.return_value = [0, _GPIOFIND_FP_RST_L]
+            rst_l = gpio._get_gpio_by_name(_GPIO_BASES, 'FP_RST_L')
+            mock_gpiofind.assert_called_once_with('FP_RST_L')
+            self.assertEqual(rst_l, 366)
 
 
 if __name__ == '__main__':
