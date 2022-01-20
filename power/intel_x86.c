@@ -4,27 +4,11 @@
  */
 
 /* Intel X86 chipset power control module for Chrome EC */
+ #include "board_config.h"
+ #include "charge_state.h"
+ #include "power/intel_x86.h"
 
-#include "board_config.h"
-#include "charge_state.h"
-#include "chipset.h"
-#include "console.h"
-#include "ec_commands.h"
-#include "gpio.h"
-#include "hooks.h"
-#include "lpc.h"
-#include "power.h"
-#include "power/intel_x86.h"
-#include "power_button.h"
-#include "system.h"
-#include "task.h"
-#include "util.h"
-#include "vboot.h"
-#include "wireless.h"
-
-/* Console output macros */
-#define CPRINTS(format, args...) cprints(CC_CHIPSET, format, ## args)
-#define CPRINTF(format, args...) cprintf(CC_CHIPSET, format, ## args)
+#include "common_x86.c"
 
 enum sys_sleep_state {
 	SYS_SLEEP_S3,
