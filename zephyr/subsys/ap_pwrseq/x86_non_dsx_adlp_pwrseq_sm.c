@@ -417,6 +417,22 @@ __attribute__((weak)) void s3s0_action_handler(void)
 {
 }
 
+__attribute__((weak)) void s4s5_action_handler(void)
+{
+	gpio_set_lvl(GPIO_NET_NAME(EC_PCH_RSMRST_L), 0);
+	gpio_set_lvl(GPIO_NET_NAME(EC_PCH_DSW_PWROK), 0);
+}
+
+__attribute__((weak)) void s0s3_action_handler(void)
+{
+#if POWER_SEQ_GPIO_PRESENT(EC_OUT_ALL_SYS_PWRGD)
+	gpio_set_lvl(GPIO_NET_NAME(EC_OUT_ALL_SYS_PWRGD), 0);
+#endif
+	gpio_set_lvl(GPIO_NET_NAME(VCCST_PWRGD_OD), 0);
+	gpio_set_lvl(GPIO_NET_NAME(PCH_PWROK), 0);
+	gpio_set_lvl(GPIO_NET_NAME(EC_PCH_SYS_PWROK), 0);
+}
+
 void init_chipset_pwr_seq_state(void)
 {
 	/* TODO: Read from device tree */
@@ -440,6 +456,12 @@ enum power_states_ndsx chipset_pwr_sm_run(enum power_states_ndsx curr_state)
 		break;
 	case SYS_POWER_STATE_S3S0:
 		s3s0_action_handler();
+		break;
+	case SYS_POWER_STATE_S4S5:
+		s4s5_action_handler();
+		break;
+	case SYS_POWER_STATE_S0S3:
+		s0s3_action_handler();
 		break;
 	case SYS_POWER_STATE_S0:
 		s0_action_handler();
