@@ -35,6 +35,15 @@ void s3s0_action_handler(void)
 	gpio_set_lvl(GPIO_NET_NAME(EC_OUT_ALL_SYS_PWRGD), 1);
 }
 
+void s0s3_action_handler(void)
+{
+
+#if POWER_SEQ_GPIO_PRESENT(EC_OUT_ALL_SYS_PWRGD)
+	gpio_set_lvl(GPIO_NET_NAME(EC_OUT_ALL_SYS_PWRGD), 0);
+#endif
+	ap_off();
+}
+
 int intel_x86_get_pg_ec_dsw_pwrok(void)
 {
 	/*
@@ -44,6 +53,30 @@ int intel_x86_get_pg_ec_dsw_pwrok(void)
 	 * value is updated via ADC threshold interrupts.
 	 */
 	return pp3300_a_pgood;
+}
+
+void chipset_force_shutdown(enum chipset_shutdown_reason reason)
+{
+	int timeout_ms = 50;
+
+	gpio_set_lvl(GPIO_NET_NAME(EC_PCH_RSMRST_L), 0);
+	gpio_set_lvl(GPIO_NET_NAME(EC_PCH_DSW_PWROK), 0);
+
+	if (power_wait_signals(IN_PGOOD_ALL_CORE))
+		LOG_DBG("SLP_SUS is not deasserted! Assuming G3");
+
+	gpio_set_lvl(GPIO_NET_NAME(EC_VR_EN_PP5000_A), 0);
+	gpio_set_lvl(GPIO_NET_NAME(EC_VR_EN_PP3300_A), 0);
+
+	while (intel_x86_get_pg_ec_dsw_pwrok() &&
+			gpio_get_lvl(GPIO_NET_NAME(VR_PG_EC_RSMRST_ODL)) &&
+			(timeout_ms > 0)) {
+		k_msleep(1);
+		timeout_ms--;
+	};
+
+	if (!timeout_ms)
+		LOG_DBG("DSW_PWROK or RSMRST_ODL didn't go low!  Assuming G3.");
 }
 
 int intel_x86_get_pg_ec_all_sys_pwrgd(void)
