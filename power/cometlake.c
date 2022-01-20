@@ -115,13 +115,6 @@ void chipset_handle_espi_reset_assert(void)
 	}
 }
 
-enum power_state chipset_force_g3(void)
-{
-	chipset_force_shutdown(CHIPSET_SHUTDOWN_G3);
-
-	return POWER_G3;
-}
-
 /* Default no action, overwrite it in board.c if necessary*/
 __attribute__((weak)) void all_sys_pgood_check_reboot(void)
 {

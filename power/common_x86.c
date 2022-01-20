@@ -59,6 +59,13 @@ void chipset_reset(enum chipset_shutdown_reason reason)
 	gpio_set_level(GPIO_SYS_RESET_L, 1);
 }
 
+__overridable enum power_state chipset_force_g3(void)
+{
+	chipset_force_shutdown(CHIPSET_SHUTDOWN_G3);
+
+	return POWER_G3;
+}
+
 #ifdef CONFIG_POWER_S0IX
 /*
  * Backup copies of SCI and SMI mask to preserve across S0ix suspend/resume

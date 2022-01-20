@@ -73,6 +73,13 @@ void lpc_s0ix_hang_detected(void);
 #endif
 
 /**
+ * Force chipset to G3 state.
+ *
+ * @return power_state New chipset state.
+ */
+__override_proto enum power_state chipset_force_g3(void);
+
+/**
  * Introduces SYS_RESET_L Debounce time delay
  *
  * The default implementation is to wait for a duration of 32 ms.

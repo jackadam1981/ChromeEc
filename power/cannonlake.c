@@ -53,7 +53,7 @@ void chipset_handle_espi_reset_assert(void)
 	}
 }
 
-enum power_state chipset_force_g3(void)
+__override enum power_state chipset_force_g3(void)
 {
 	int timeout = 50;
 	chipset_force_shutdown(CHIPSET_SHUTDOWN_G3);
