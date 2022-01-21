@@ -107,7 +107,7 @@ config PLATFORM_EC_I2C_VIRTUAL_BATTERY_ADDR
 	  This config sets i2c address that will be intercepted by virtual
 	  battery feature. All communication to this port will be cached
 	  to decrease i2c communication traffic.
-	  This should be equal to the address of real battery.
+	  This shnsould be equal to the address of real battery.
 
 menuconfig PLATFORM_EC_CHARGER
 	bool "Charging support"
