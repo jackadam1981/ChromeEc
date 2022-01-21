@@ -84,6 +84,7 @@ class FPGpios:
         """Single GPIO control class"""
 
         _gpio = None
+        _binded = False
 
         def _get_gpio_by_index(self, ranges: List[dict], idx: int) -> int:
             """Convert gpio index to its absolute location in the device.
@@ -143,6 +144,67 @@ class FPGpios:
             if isinstance(gpio, int):
                 return self._get_gpio_by_index(ranges, gpio)
             return self._get_gpio_by_name(bases, gpio)
+
+        def _export(self, export: bool):
+            cmd = 'export' if export else 'unexport'
+            klog(f'Set gpio {self._gpio} to {cmd}')
+            writeline(f'/sys/class/gpio/{cmd}', self._gpio)
+
+        def _direction(self, out: bool):
+            cmd = 'out' if out else 'in'
+            klog(f'Set gpio {self._gpio} direction to {cmd}')
+            writeline(f'/sys/class/gpio/gpio{self._gpio}/direction', cmd)
+
+        def _value_set(self, _set: bool):
+            cmd = '1' if _set else '0'
+            klog(f'Set gpio {self._gpio} to {cmd}')
+            writeline(f'/sys/class/gpio/gpio{self._gpio}/value', cmd)
+
+        def _value_get(self) -> str:
+            klog(f'Get gpio {self._gpio}')
+            return readline(f'/sys/class/gpio/gpio{self._gpio}/value')
+
+        def _bind(self):
+            if not self._binded:
+                self._export(export=True)
+                self._binded = True
+            self._direction(out=True)
+
+        def _precheck(self):
+            if not self._gpio:
+                logging.error('Attemt to access non-existent GPIO')
+                sys.exit(ExitCode.EXIT_RUNTIME)
+
+        def set(self):
+            self._precheck()
+            self._bind()
+            self._value_set(_set=True)
+
+        def clear(self):
+            self._precheck()
+            self._bind()
+            self._value_set(_set=False)
+
+        def verify(self, val: int) -> bool:
+            self._precheck()
+            current_value = self._value_get()
+            if not current_value:
+                logging.error('Error reading gpio %s value', self._gpio)
+                sys.exit(ExitCode.EXIT_RUNTIME)
+            return self._value_get() == str(val)
+
+        def release(self, tri_state: bool):
+            self._precheck()
+            if not self._binded:
+                logging.error('Attemt to unexport an unexported GPIO')
+                sys.exit(ExitCode.EXIT_RUNTIME)
+            if tri_state:
+                self._direction(out=False)
+            self._export(export=False)
+            self._binded = False
+
+        def exists(self):
+            return self._gpio is not None
 
         def __init__(self, ranges: List[dict], bases: dict, gpio):
             _gpio = self._get_gpio(ranges, bases, gpio)
