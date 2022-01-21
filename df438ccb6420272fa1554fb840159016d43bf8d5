@@ -73,6 +73,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "094b951a_46923b07",
+        "filename": "board/host/usb_pd_policy.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-01-21T20:36:44Z",
+      "side": 1,
+      "message": "Sorry I forgot to answer your first question:\n\u003e Is the idea here to avoid conflicting with the common definition in charge_manager?\n\nYes. But given the function is just a stub, I\u0027m considering if it should be removed in favor of just using charge_manager, or just making the symbol weak?",
+      "parentUuid": "ed356e74_5cbbbfcf",
+      "revId": "df438ccb6420272fa1554fb840159016d43bf8d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e7713b24_6a02a913",
         "filename": "common/mock/usb_pe_drp_sm_mock.c",
         "patchSetId": 5
