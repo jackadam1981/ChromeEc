@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bdeeff55_4e352e22",
+        "filename": "zephyr/Kconfig.flash",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2022-01-21T15:35:32Z",
+      "side": 1,
+      "message": "will do",
+      "parentUuid": "325f8521_ebebc32a",
+      "revId": "38d7beb78950c1dc307cc2e94516fd6b637bcdcc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bd23ef1c_4652dd9d",
         "filename": "zephyr/Kconfig.header",
         "patchSetId": 3
@@ -31,6 +49,30 @@
       "writtenOn": "2022-01-20T22:12:21Z",
       "side": 1,
       "message": "pls add / change the date only on new files throughout the CL",
+      "range": {
+        "startLine": 1,
+        "startChar": 12,
+        "endLine": 1,
+        "endChar": 16
+      },
+      "revId": "38d7beb78950c1dc307cc2e94516fd6b637bcdcc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "219907d4_32c8587b",
+        "filename": "zephyr/Kconfig.header",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2022-01-21T15:35:32Z",
+      "side": 1,
+      "message": "will revert back, thanks this clarification.",
+      "parentUuid": "bd23ef1c_4652dd9d",
       "range": {
         "startLine": 1,
         "startChar": 12,
@@ -60,6 +102,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ae07256a_85c8570a",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_xec.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2022-01-21T15:35:32Z",
+      "side": 1,
+      "message": "I didn’t see this suggestion, by this way, it will be difficult to maintain individually in the future.\nKeith has one suggestion to move all common APIs and create a new common file to hold them, please refer to:\nhttps://partnerissuetracker.corp.google.com/issues/214572311\nwhich can be improved in the future.",
+      "parentUuid": "8ac047c3_0856c98d",
+      "revId": "38d7beb78950c1dc307cc2e94516fd6b637bcdcc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7241c9d9_1b42b64b",
         "filename": "zephyr/dts/bindings/cros_flash/microchip,xec-cros-flash.yaml",
         "patchSetId": 3
@@ -71,6 +131,24 @@
       "writtenOn": "2022-01-20T22:12:21Z",
       "side": 1,
       "message": "just curios, why name XEC not MEC?",
+      "revId": "38d7beb78950c1dc307cc2e94516fd6b637bcdcc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f66e4251_14252f0a",
+        "filename": "zephyr/dts/bindings/cros_flash/microchip,xec-cros-flash.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2022-01-21T15:35:32Z",
+      "side": 1,
+      "message": "Per history, Intel Windows team chose the name XEC as MCHP was first vendor to develop Zephyr driver years back, not know why Intel chose XEC instead of MEC.  Best guessing is Intel may have wanted a generic name should they switch EC vendors again. MCHP keeps using it.",
+      "parentUuid": "7241c9d9_1b42b64b",
       "revId": "38d7beb78950c1dc307cc2e94516fd6b637bcdcc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
