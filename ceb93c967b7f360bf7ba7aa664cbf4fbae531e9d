@@ -46,6 +46,30 @@
       },
       "revId": "ceb93c967b7f360bf7ba7aa664cbf4fbae531e9d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "df065968_9fe82c58",
+        "filename": "board/adlrvpp_ite/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-01-21T06:38:23Z",
+      "side": 1,
+      "message": "sounds strange. is there something special about\nthis interrupt source or the ITE board?",
+      "parentUuid": "059c7972_4f5ac841",
+      "range": {
+        "startLine": 144,
+        "startChar": 0,
+        "endLine": 144,
+        "endChar": 52
+      },
+      "revId": "ceb93c967b7f360bf7ba7aa664cbf4fbae531e9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
