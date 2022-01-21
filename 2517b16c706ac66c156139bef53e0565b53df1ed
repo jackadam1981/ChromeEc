@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1f60e41_ff9750a6",
+        "filename": "board/taniks/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2022-01-21T01:23:54Z",
+      "side": 1,
+      "message": "nit: not needed, as it is defined in board.h",
+      "range": {
+        "startLine": 125,
+        "startChar": 0,
+        "endLine": 125,
+        "endChar": 41
+      },
+      "revId": "2517b16c706ac66c156139bef53e0565b53df1ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d765477_493cb109",
+        "filename": "board/taniks/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2022-01-21T01:23:54Z",
+      "side": 1,
+      "message": "implementation?",
+      "range": {
+        "startLine": 127,
+        "startChar": 0,
+        "endLine": 127,
+        "endChar": 1
+      },
+      "revId": "2517b16c706ac66c156139bef53e0565b53df1ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
