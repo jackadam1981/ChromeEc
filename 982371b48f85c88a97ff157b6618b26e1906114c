@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a22a3ab5_03a8eebe",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1520718
+      },
+      "writtenOn": "2022-01-21T13:51:53Z",
+      "side": 1,
+      "message": "CQ failed due to lack of flash space in servo_v4 build. Needed to introduce additional CL to save flash space and keep servo_v4 building at ToT. I will submit this CL when the additional one will be ready to land.",
+      "revId": "982371b48f85c88a97ff157b6618b26e1906114c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
