@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d873331e_78cfb653",
+        "filename": "util/fptool.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-01-21T16:36:55Z",
+      "side": 1,
+      "message": "There should be a native python API for doing this. I think it\u0027s \"os.path.realpath\": https://docs.python.org/3/library/os.path.html#os.path.realpath",
+      "range": {
+        "startLine": 109,
+        "startChar": 4,
+        "endLine": 109,
+        "endChar": 66
+      },
+      "revId": "ff2faebae9bb4f4142858d9ebe16edef27f06ffb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
