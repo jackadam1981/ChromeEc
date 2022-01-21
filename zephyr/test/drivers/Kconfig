@@ -4,5 +4,8 @@
 
 config BUG209907615
 	bool "Enable tests for b:209907615"
+	help
+	  Enables full verification of the src/snk integration test. This config
+	  will be removed before the bug is completed.
 
 source "Kconfig.zephyr"
