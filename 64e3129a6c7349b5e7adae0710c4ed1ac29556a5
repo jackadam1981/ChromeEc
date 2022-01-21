@@ -39,6 +39,29 @@
       },
       "revId": "64e3129a6c7349b5e7adae0710c4ed1ac29556a5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "409d45d3_11a50ee6",
+        "filename": "util/fptool.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-01-21T17:01:27Z",
+      "side": 1,
+      "message": "Type annotation for flash_init may not be correct. My IDE says:\n\n Expected type \u0027ArgumentParser\u0027, got \u0027_SubParsersAction\u0027 instead",
+      "range": {
+        "startLine": 75,
+        "startChar": 32,
+        "endLine": 75,
+        "endChar": 42
+      },
+      "revId": "64e3129a6c7349b5e7adae0710c4ed1ac29556a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
