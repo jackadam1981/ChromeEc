@@ -11,6 +11,8 @@ menuconfig PLATFORM_EC_MOTIONSENSE
       Based on the data, it also does other things like calculating lid angle
       and detect tablet mode.
 
+if PLATFORM_EC_MOTIONSENSE
+
 config PLATFORM_EC_ACCEL_FIFO
     bool "Sensor FIFO"
     help
@@ -70,7 +72,6 @@ config PLATFORM_EC_ACCEL_INTERRUPTS
 
 config PLATFORM_EC_ALS
     bool "Ambient Light Sensor(ALS)"
-    default y if HAS_TASK_ALS
     help
       Enable this to indicate there's at least one or more ALS devices available.
       If PLATFORM_EC_MOTION_FILL_LPC_SENSE_DATA is set, then motion task updates
@@ -187,5 +188,7 @@ config PLATFORM_EC_CONSOLE_CMD_ACCEL_SPOOF
 	    sensor readings.
 
 endif # PLATFORM_EC_ACCEL_SPOOF_MODE
+
+endif # PLATFORM_EC_MOTIONSENSE
 
 rsource "Kconfig.sensor_devices"
