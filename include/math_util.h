@@ -240,4 +240,24 @@ uint64_t bitmask_uint64(int offset);
 #define bitmask_uint64(o) ((uint64_t)1 << (o))
 #endif
 
+#ifdef CONFIG_FPU
+
+bool isnan(float a)
+{
+	uint32_t x = *(uint32_t *)&a;
+
+	/* Exponent must have all bits set and fraction must be non-zero */
+	return ((x & 0x7f800000) == 0x7f800000) && ((x & 0x7fffff) != 0);
+}
+
+bool isinf(float a)
+{
+	uint32_t x = *(uint32_t *)&a;
+
+	/* Exponent must have all bits set and fraction must be zero */
+	return (x & 0x7fffffff) == 0x7f800000;
+}
+
+#endif /* CONFIG_FPU */
+
 #endif /* __CROS_EC_MATH_UTIL_H */
