@@ -70,6 +70,9 @@ enum {
 #define CPU_SCB_DCISW          CPUREG(0xe000ef60)
 #define CPU_SCB_DCCISW         CPUREG(0xe000ef74)
 
+/* Floating Point Unit */
+#define CPU_FPU_FPCAR          CPUREG(0xe000ef38)
+
 /* Bitfield values for EXC_RETURN. */
 #define EXC_RETURN_ES_MASK	BIT(0)
 #define EXC_RETURN_ES_NON_SECURE 0
