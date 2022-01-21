@@ -91,6 +91,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "51cbdec1_c367fd4f",
+        "filename": "board/host/usb_pd_policy.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-01-21T20:57:43Z",
+      "side": 1,
+      "message": "\u003e Honestly that suggests it\u0027s a bug in how we\u0027re compiling those undefined error files in that they should be linked with charge_manager.o\n\nHistorically, we haven\u0027t made a strong distinction between stub functions that go in this file, stuff that goes in an individual test, and stuff that goes in one of our fake files in our test code. The idea with the mocking framework is that the vast majority of the stubs go in our mock implementations and not in those other places. We run into linker errors like this when we try to make the transition, and it can get ugly, sa you\u0027ve seen.\n\nI think what\u0027s happening here is that, prior to your change, each of our tests were either linking charge_manager.o or not linking anything that referenced pd_set_input_current_limit. With this CL, the charge_manager tests link charge_manager.o and reference pd_set_current_limit, which is why you had to do this.\n\nProbably the right solution here is to put this stub in a charge_manager mock (doesn\u0027t currently exist) and have the tests that reference pd_set_input_current_limit either use that mock or link charge_manager, depending on what they\u0027re testing.\n\nFor the time being, I think it would probably work to make this stub test_mockable (weak) as a way of getting around the linker issues. If that does work, save the charge_manager mock for another CL.",
+      "parentUuid": "094b951a_46923b07",
+      "revId": "df438ccb6420272fa1554fb840159016d43bf8d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e7713b24_6a02a913",
         "filename": "common/mock/usb_pe_drp_sm_mock.c",
         "patchSetId": 5
