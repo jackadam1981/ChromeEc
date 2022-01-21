@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3215c6b_a9d5f09d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-01-21T20:45:51Z",
+      "side": 1,
+      "message": "Minor formatting, but LGTM",
+      "revId": "94379efd7464be20b6dab27342eea7ec299ce3c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "326a4029_30e341e0",
+        "filename": "zephyr/test/drivers/src/watchdog.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-01-21T20:45:51Z",
+      "side": 1,
+      "message": "Rerun clang-format, this indentation is incorrect",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 83,
+        "endChar": 0
+      },
+      "revId": "94379efd7464be20b6dab27342eea7ec299ce3c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
