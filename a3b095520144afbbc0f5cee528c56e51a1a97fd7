@@ -1,0 +1,211 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eec5738f_5f832d6b",
+        "filename": "zephyr/dts/bindings/gpio/cros-ec,gpio-interrupts.yaml",
+        "patchSetId": 16
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-01-21T22:40:06Z",
+      "side": 1,
+      "message": "\"int-gpio\" or \"irq-gpio\" is better to make some of the macros easier to read.\n\n\t.port \u003d DEVICE_DT_GET(DT_GPIO_CTLR(gpio, gpios)), \\\n\nbecomes\n\n\t.port \u003d DEVICE_DT_GET(DT_GPIO_CTLR(irq_gpio, gpios)), \\",
+      "range": {
+        "startLine": 7,
+        "startChar": 6,
+        "endLine": 7,
+        "endChar": 10
+      },
+      "revId": "a3b095520144afbbc0f5cee528c56e51a1a97fd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6338952_45f3628e",
+        "filename": "zephyr/shim/include/gpio/gpio.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-01-21T22:40:06Z",
+      "side": 1,
+      "message": "CL:3392111 introduces \"gpio_get_dt_spec()\".   How about landed that first and using that in this CL?",
+      "range": {
+        "startLine": 63,
+        "startChar": 21,
+        "endLine": 63,
+        "endChar": 33
+      },
+      "revId": "a3b095520144afbbc0f5cee528c56e51a1a97fd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "954efd60_b6cdb956",
+        "filename": "zephyr/shim/include/gpio/gpio_int.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-01-21T22:40:06Z",
+      "side": 1,
+      "message": "This seems too generic, how about GPIO_INT_FROM_NODELABEL?",
+      "range": {
+        "startLine": 26,
+        "startChar": 8,
+        "endLine": 26,
+        "endChar": 22
+      },
+      "revId": "a3b095520144afbbc0f5cee528c56e51a1a97fd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7601c05_656935d7",
+        "filename": "zephyr/shim/include/gpio/gpio_int.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-01-21T22:40:06Z",
+      "side": 1,
+      "message": "Why is this public?  Shouldn\u0027t callers always use gpio_enable_interrupt()?",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 55
+      },
+      "revId": "a3b095520144afbbc0f5cee528c56e51a1a97fd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dbf3f3a0_80755412",
+        "filename": "zephyr/shim/include/gpio/gpio_int.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-01-21T22:40:06Z",
+      "side": 1,
+      "message": "This needs a better name.  gpio_interrupt_enable() and gpio_enable_interrupt() are very easy to confuse.\n\nMaybe it makes sense to create a helper macro to simplify the requirements for callers:\n\n#define gpio_interrupt_enable_from_nodelabel(label) \\\n    gpio_enable_dt_interrupt(GPIO_INT_FROM_NODELABEL(label));",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 55
+      },
+      "revId": "a3b095520144afbbc0f5cee528c56e51a1a97fd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40881e7d_575499cb",
+        "filename": "zephyr/shim/src/gpio_int.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-01-21T22:40:06Z",
+      "side": 1,
+      "message": "Can you move the deprecated EC_CROS_GPIO_INTERRUPTS as a separate CL, and then add the cros-ec,gpio-interrupts support?",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 63
+      },
+      "revId": "a3b095520144afbbc0f5cee528c56e51a1a97fd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8db2e8d2_f2eeaff4",
+        "filename": "zephyr/shim/src/gpio_int.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-01-21T22:40:06Z",
+      "side": 1,
+      "message": "Update this comment to indicate that EC_CROS_GPIO_INTERRUPTS is deprecated. New boards should use the \"cros-ec,gpio-interrupts\" node.\n\nYou should also add a BUILD_ASSERT to check that both EC_CROS_GPIO_INTERRUPTS and \"cros-ec,gpio-interrupts\" are not used.",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 80
+      },
+      "revId": "a3b095520144afbbc0f5cee528c56e51a1a97fd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "352b7a87_2e8412d1",
+        "filename": "zephyr/shim/src/gpio_int.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-01-21T22:40:06Z",
+      "side": 1,
+      "message": "Use the compatible flag for lookup instead of relying on the nodepath.\nDT_HAS_COMPAT_STATUS_OKAY(cros_ec_gpio_interrupts).\n\nAlso add a check that DT_NUM_INST_STATUS_OKAY(cros_ec_gpio_interrupts) is only 1.",
+      "range": {
+        "startLine": 173,
+        "startChar": 4,
+        "endLine": 173,
+        "endChar": 44
+      },
+      "revId": "a3b095520144afbbc0f5cee528c56e51a1a97fd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db131be5_7dd4097d",
+        "filename": "zephyr/shim/src/gpio_int.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-01-21T22:40:06Z",
+      "side": 1,
+      "message": "DT_HAS_COMPAT_STATUS_OKAY(cros_ec_gpio_interrupts)",
+      "range": {
+        "startLine": 247,
+        "startChar": 4,
+        "endLine": 247,
+        "endChar": 44
+      },
+      "revId": "a3b095520144afbbc0f5cee528c56e51a1a97fd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
