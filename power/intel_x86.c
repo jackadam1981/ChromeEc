@@ -5,8 +5,6 @@
 
 /* Intel X86 chipset power control module for Chrome EC */
 
-#include "board_config.h"
-#include "charge_state.h"
 #include "power/common_x86.h"
 #include "power/intel_x86.h"
 
@@ -25,38 +23,6 @@ const int sleep_sig[] = {
 };
 
 #ifdef CONFIG_CHARGER
-/* Flag to indicate if power up was inhibited due to low battery SOC level. */
-static int power_up_inhibited;
-
-/*
- * Check if AP power up should be inhibited.
- * 0 = Ok to boot up AP
- * 1 = AP power up is inhibited.
- */
-static int is_power_up_inhibited(void)
-{
-	/* Defaulting to power button not pressed. */
-	const int power_button_pressed = 0;
-
-	return charge_prevent_power_on(power_button_pressed) ||
-		charge_want_shutdown();
-}
-
-static void power_up_inhibited_cb(void)
-{
-	if (!power_up_inhibited)
-		return;
-
-	if (is_power_up_inhibited()) {
-		CPRINTS("power-up still inhibited");
-		return;
-	}
-
-	CPRINTS("Battery SOC ok to boot AP!");
-	power_up_inhibited = 0;
-
-	chipset_exit_hard_off();
-}
 DECLARE_HOOK(HOOK_BATTERY_SOC_CHANGE, power_up_inhibited_cb, HOOK_PRIO_DEFAULT);
 #endif
 
@@ -183,7 +149,7 @@ enum power_state common_intel_x86_power_handle_state(enum power_state state)
 #endif
 
 	case POWER_G3S5:
-		if (intel_x86_wait_power_up_ok() != EC_SUCCESS) {
+		if (x86_wait_power_up_ok() != EC_SUCCESS) {
 			chipset_force_shutdown(
 				CHIPSET_SHUTDOWN_BATTERY_INHIBIT);
 			return POWER_G3;
@@ -389,46 +355,4 @@ void common_intel_x86_handle_rsmrst(enum power_state state)
 {
 	handle_pass_through_with_callbacks(GPIO_PG_EC_RSMRST_ODL,
 		GPIO_PCH_RSMRST_L, &board_before_rsmrst, &board_after_rsmrst);
-}
-
-enum ec_error_list intel_x86_wait_power_up_ok(void)
-{
-#ifdef CONFIG_CHARGER
-	int tries = 0;
-
-	/*
-	 * Allow charger to be initialized for up to defined tries,
-	 * in case we're trying to boot the AP with no battery.
-	 */
-	while ((tries < CHARGER_INITIALIZED_TRIES) &&
-	       is_power_up_inhibited()) {
-		msleep(CHARGER_INITIALIZED_DELAY_MS);
-		tries++;
-	}
-
-	/*
-	 * Return to G3 if battery level is too low. Set
-	 * power_up_inhibited in order to check the eligibility to boot
-	 * AP up after battery SOC changes.
-	 */
-	if (tries == CHARGER_INITIALIZED_TRIES) {
-		CPRINTS("power-up inhibited");
-		power_up_inhibited = 1;
-		return EC_ERROR_TIMEOUT;
-	}
-
-	power_up_inhibited = 0;
-#endif
-
-#if defined(CONFIG_VBOOT_EFS) || defined(CONFIG_VBOOT_EFS2)
-	/*
-	 * We have to test power readiness here (instead of S5->S3)
-	 * because when entering S5, EC enables EC_ROP_SLP_SUS pin
-	 * which causes (short-powered) system to brown out.
-	 */
-	while (!system_can_boot_ap())
-		msleep(200);
-#endif
-
-	return EC_SUCCESS;
 }

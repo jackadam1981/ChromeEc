@@ -74,6 +74,21 @@ void lpc_s0ix_resume_restore_masks(void);
 void lpc_s0ix_hang_detected(void);
 #endif
 
+void power_up_inhibited_cb(void);
+
+/**
+ * Wait for power-up to be allowed based on available power.
+ *
+ * This delays G3->S5 until there is enough power to boot the AP, waiting
+ * first until the charger (if any) is ready, then for there to be sufficient
+ * power.
+ *
+ * In case of error, the caller should not allow power-up past G3.
+ *
+ * @return EC_SUCCESS if OK.
+ */
+enum ec_error_list x86_wait_power_up_ok(void);
+
 /**
  * Provides custom logic for passthrough signals
  *
