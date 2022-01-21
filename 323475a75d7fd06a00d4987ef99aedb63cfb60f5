@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9a0d950_dd8849ee",
+        "filename": "zephyr/boards/arm/adlrvpp_npcx/Kconfig.board",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-01-21T20:32:46Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "22bb4826_65aea0af",
+      "range": {
+        "startLine": 10,
+        "startChar": 7,
+        "endLine": 11,
+        "endChar": 28
+      },
+      "revId": "323475a75d7fd06a00d4987ef99aedb63cfb60f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "789810bf_478a6561",
@@ -76,6 +100,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "332af68b_2e273766",
+        "filename": "zephyr/boards/arm/adlrvpp_npcx/adlrvpp_npcx.dts",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-01-21T20:32:46Z",
+      "side": 1,
+      "message": "It supports. Volteer is npcx7 based.",
+      "parentUuid": "4b0d2b77_4705c02c",
+      "revId": "323475a75d7fd06a00d4987ef99aedb63cfb60f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4ddaf352_8730a56e",
@@ -89,6 +131,30 @@
       "writtenOn": "2022-01-20T20:30:25Z",
       "side": 1,
       "message": "we are not using this",
+      "range": {
+        "startLine": 20,
+        "startChar": 2,
+        "endLine": 20,
+        "endChar": 18
+      },
+      "revId": "323475a75d7fd06a00d4987ef99aedb63cfb60f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6bbb0088_c742e877",
+        "filename": "zephyr/boards/arm/adlrvpp_npcx/adlrvpp_npcx.dts",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-01-21T20:32:46Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "4ddaf352_8730a56e",
       "range": {
         "startLine": 20,
         "startChar": 2,
@@ -122,6 +188,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f265d07a_3421edb1",
+        "filename": "zephyr/projects/intelrvp/adlrvpp_npcx/gpio.dts",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-01-21T20:32:46Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "38ec25c7_09aa2855",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 4
+      },
+      "revId": "323475a75d7fd06a00d4987ef99aedb63cfb60f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6952b054_562b79bd",
@@ -139,6 +229,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "84568cf9_9de71ba4",
+        "filename": "zephyr/projects/intelrvp/adlrvpp_npcx/gpio.dts",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-01-21T20:32:46Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "6952b054_562b79bd",
+      "revId": "323475a75d7fd06a00d4987ef99aedb63cfb60f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "632e0e49_4751c61f",
@@ -152,6 +260,30 @@
       "writtenOn": "2022-01-20T20:30:25Z",
       "side": 1,
       "message": "check if all configs needed",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 34
+      },
+      "revId": "323475a75d7fd06a00d4987ef99aedb63cfb60f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "297fad02_1aeb2776",
+        "filename": "zephyr/projects/intelrvp/adlrvpp_npcx/prj.conf",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-01-21T20:32:46Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "632e0e49_4751c61f",
       "range": {
         "startLine": 13,
         "startChar": 0,
