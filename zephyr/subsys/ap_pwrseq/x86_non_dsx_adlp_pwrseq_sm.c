@@ -8,6 +8,7 @@
 LOG_MODULE_DECLARE(ap_pwrseq, 4);
 
 static const struct chipset_pwrseq_config chip_cfg = {
+	.dsw_pwrok_delay_ms = DT_INST_PROP(0, dsw_pwrok_delay),
 	.pch_pwrok_delay_ms = DT_INST_PROP(0, pch_pwrok_delay),
 	.sys_pwrok_delay_ms = DT_INST_PROP(0, sys_pwrok_delay),
 	.vccst_pwrgd_delay_ms = DT_INST_PROP(0, vccst_pwrgd_delay),
@@ -398,7 +399,7 @@ void dsw_pwrok_pass_thru_handler(void)
 
 	if (in_sig_val != gpio_get_lvl(GPIO_NET_NAME(EC_PCH_DSW_PWROK))) {
 		if (in_sig_val)
-			k_msleep(10);
+			k_msleep(chip_cfg.dsw_pwrok_delay_ms);
 
 		gpio_set_lvl(GPIO_NET_NAME(EC_PCH_DSW_PWROK), in_sig_val);
 	}
