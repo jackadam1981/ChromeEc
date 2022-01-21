@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18174984_2e4d5f96",
+        "filename": "zephyr/shim/chip/it8xxx2/pinmux.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-01-21T18:59:49Z",
+      "side": 1,
+      "message": "Nit - an alternative organization for this structure:\nstruct alt_cfg {\n   const struct device *pinctrls;\n   uint8_t pin;\n   uint8_t alt;\n};\n\nstruct i2c_alts_cfg {\n   struct alt_cfg clk;\n   struct alt_cfg dat;\n};\n\nHowever, I\u0027m okay with your change as is.",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 0
+      },
+      "revId": "6d123cb8bb2df5728b672bdf6a7358b6488b6a03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
