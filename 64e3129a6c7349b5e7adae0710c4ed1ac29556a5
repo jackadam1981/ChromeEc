@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae11f064_35d2e1f9",
+        "filename": "util/fptool.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-01-21T17:00:00Z",
+      "side": 1,
+      "message": "PEP 8: E302 expected 2 blank lines, found 1\n\nhttps://chromium.googlesource.com/chromiumos/docs/+/HEAD/styleguide/python.md#official-style-guide\n\nSee PEP-8",
+      "revId": "64e3129a6c7349b5e7adae0710c4ed1ac29556a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6804e5eb_162d2d2d",
+        "filename": "util/fptool.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-01-21T17:00:00Z",
+      "side": 1,
+      "message": "PEP 8: E128 continuation line under-indented for visual indent\n\nAll of these lines should be aligned as follows:\n\n     group.add_argument(\"--noread\", action\u003d\u0027store_true\u0027,\n                        help\u003d\"Read instead of write (Default: False)\")",
+      "range": {
+        "startLine": 32,
+        "startChar": 12,
+        "endLine": 32,
+        "endChar": 58
+      },
+      "revId": "64e3129a6c7349b5e7adae0710c4ed1ac29556a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
