@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "642b7175_c83e19cc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-01-21T00:16:58Z",
+      "side": 1,
+      "message": "nit:\nSorry for the misunderstanding: I didn\u0027t mean you should copy what I said directly.\n\nI think just stating its a skeleton driver with todos is fine.\n\nSo I\u0027d replace this with \"with\"",
+      "range": {
+        "startLine": 10,
+        "startChar": 22,
+        "endLine": 10,
+        "endChar": 36
+      },
+      "revId": "bbb836140a40d35ab4678074b500fa8aa6e1ab48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3fe596ed_fd642adc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-01-21T00:16:58Z",
+      "side": 1,
+      "message": "Passing off to another zephyr reviewer with more background. LGTM for the most part though. Thank you!",
+      "revId": "bbb836140a40d35ab4678074b500fa8aa6e1ab48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
