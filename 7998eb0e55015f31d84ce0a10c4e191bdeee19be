@@ -22,6 +22,30 @@
       },
       "revId": "7998eb0e55015f31d84ce0a10c4e191bdeee19be",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5bd98dca_340343db",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2022-01-21T16:19:20Z",
+      "side": 1,
+      "message": "Not yet...I was responding to the spam output problem.\n\nWe can update the message to cause a build failure, but will do that in the Python version.\n\nWe can abandon this patch in the meantime if you like?",
+      "parentUuid": "6fc12ffa_b1d1c634",
+      "range": {
+        "startLine": 10,
+        "startChar": 20,
+        "endLine": 10,
+        "endChar": 62
+      },
+      "revId": "7998eb0e55015f31d84ce0a10c4e191bdeee19be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
