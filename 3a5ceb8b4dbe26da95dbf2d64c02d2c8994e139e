@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0af7f268_de4e8487",
+        "filename": "zephyr/drivers/cros_rtc/CMakeLists.txt",
+        "patchSetId": 6
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-01-21T17:19:46Z",
+      "side": 1,
+      "message": "No need to update the copyright date on existing files.",
+      "revId": "3a5ceb8b4dbe26da95dbf2d64c02d2c8994e139e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb7c4b8d_1d6f8815",
+        "filename": "zephyr/drivers/cros_rtc/cros_rtc_xec.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-01-21T17:19:46Z",
+      "side": 1,
+      "message": "I\u0027m unfamiliar with the naming convention used in this directory. What is \"cros\"-specific about these drivers and functions?",
+      "revId": "3a5ceb8b4dbe26da95dbf2d64c02d2c8994e139e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "628daaac_f0dbf482",
+        "filename": "zephyr/drivers/cros_rtc/cros_rtc_xec.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-01-21T17:19:46Z",
+      "side": 1,
+      "message": "Nit: There should be a TODO to generate the cfg and data structures based on the device tree.",
+      "revId": "3a5ceb8b4dbe26da95dbf2d64c02d2c8994e139e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00138828_c6ba9710",
+        "filename": "zephyr/dts/bindings/cros_rtc/microchip,xec-cros-rtc.yaml",
+        "patchSetId": 6
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-01-21T17:19:46Z",
+      "side": 1,
+      "message": "I was under the impression that we were moving away from using a label property in our bindings, e.g. CL:3362469.",
+      "revId": "3a5ceb8b4dbe26da95dbf2d64c02d2c8994e139e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
