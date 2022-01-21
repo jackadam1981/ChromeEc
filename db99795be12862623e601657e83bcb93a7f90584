@@ -16,6 +16,24 @@
       "message": "Somehow, despite rebasing, I have not synced past CL:3398503, and this is failing locally for me. I will try again after lunch. I believe this to actually be no-op change.",
       "revId": "db99795be12862623e601657e83bcb93a7f90584",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd095b25_4273b6a4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-01-21T21:57:49Z",
+      "side": 1,
+      "message": "Well, I played myself. I did my copy-paste before rebasing, and because the target was a new file, I didn\u0027t notice that the contents were different than the old file.",
+      "parentUuid": "8cbc19ca_f8ce40eb",
+      "revId": "db99795be12862623e601657e83bcb93a7f90584",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
