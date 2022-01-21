@@ -33,6 +33,24 @@
       "message": "Generally, we make it a best practice to clear flags as soon as they\u0027re used by the stack (ex. to ensure they get cleared in all cases, like for example in the flow for line 2413 versus this location).  \n\nWhy wait to clear the flag?  Is there concern the PRL could be running in the middle of this function? Are we trying to leave it in place when we receive certain messages like the Request data message above?",
       "revId": "892aaa0ae9bdab24a268d6faa9ca7c7e6ab4bdb0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d29658f_ed78a562",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2423,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2022-01-21T13:25:21Z",
+      "side": 1,
+      "message": "I think that I misunderstood TCPMv2 (e.g. if state machine can go through multiple states during one `pd_task_loop()` iteration). I did more complete analyse of this bug in issue tracker (please check it) and I don\u0027t longer think this patch is correct fix for it.",
+      "parentUuid": "2530ba47_3cf998f2",
+      "revId": "892aaa0ae9bdab24a268d6faa9ca7c7e6ab4bdb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
