@@ -18,6 +18,7 @@
 		bmi160-int = &ms_bmi160_accel;
 		lis2dw12-int = &ms_lis2dw12_accel;
 		tcs3400-int = &tcs3400_clear;
+		cbi-wp = &gpio_wp_l;
 	};
 	named-gpios {
 		compatible = "named-gpios";
@@ -673,8 +674,6 @@
 		pagesize = <8>;
 		address-width = <8>;
 		timeout = <5>;
-		/* gpio_wp_l */
-		wp-gpios = <&gpio0 3 (GPIO_INPUT | GPIO_OUTPUT)>;
 	};
 
 	battery: sb@b {
