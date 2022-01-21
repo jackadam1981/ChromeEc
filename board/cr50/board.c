@@ -882,11 +882,7 @@ DECLARE_DEFERRED(process_board_cfg);
 /* Initialize board. */
 static void board_init(void)
 {
-#if defined(CR50_DEV) || defined(CRYPTO_TEST_SETUP)
 	static enum ccd_state ccd_init_state = CCD_STATE_OPENED;
-#else
-	static enum ccd_state ccd_init_state = CCD_STATE_LOCKED;
-#endif
 	static const struct fips_vtable fips_module_vtable = {
 		.shared_mem_acquire = shared_mem_acquire,
 		.shared_mem_release = shared_mem_release,
@@ -1866,7 +1862,6 @@ static int command_board_properties(int argc, char **argv)
 DECLARE_SAFE_CONSOLE_COMMAND(brdprop, command_board_properties,
 			     NULL, "Display board properties");
 
-#ifdef CONFIG_CMD_ROLLBACK
 static int command_rollback(int argc, char **argv)
 {
 	system_ensure_rollback();
@@ -1878,7 +1873,6 @@ static int command_rollback(int argc, char **argv)
 }
 DECLARE_SAFE_CONSOLE_COMMAND(rollback, command_rollback,
 	"", "Force rollback to escape DEV image.");
-#endif
 
 /*
  * Set long life register bit requesting generating of the ITE SYNC sequence
