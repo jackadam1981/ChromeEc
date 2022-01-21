@@ -34,6 +34,24 @@
       "parentUuid": "98f85775_3cf36e70",
       "revId": "55b427ff2415ad60843061e434bd295c1ad5b92b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3365d286_1a9bec00",
+        "filename": "zephyr/projects/nissa/src/usbc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-01-21T04:59:08Z",
+      "side": 1,
+      "message": "Oh, I see that you just mean the cflush().\nBy this stage all interrupts are disabled, so no console activity will work.",
+      "parentUuid": "d122e63a_d19b31ff",
+      "revId": "55b427ff2415ad60843061e434bd295c1ad5b92b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
