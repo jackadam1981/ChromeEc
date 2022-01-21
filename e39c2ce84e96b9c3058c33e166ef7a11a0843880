@@ -22,6 +22,30 @@
       },
       "revId": "e39c2ce84e96b9c3058c33e166ef7a11a0843880",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f687ba80_353b4427",
+        "filename": "include/config.h",
+        "patchSetId": 20
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 1506077
+      },
+      "writtenOn": "2022-01-21T03:17:48Z",
+      "side": 1,
+      "message": "Add zephyr config in zephyr/shim/include/config_chip.h",
+      "parentUuid": "cc08ff40_fe0426d5",
+      "range": {
+        "startLine": 352,
+        "startChar": 7,
+        "endLine": 352,
+        "endChar": 25
+      },
+      "revId": "e39c2ce84e96b9c3058c33e166ef7a11a0843880",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
