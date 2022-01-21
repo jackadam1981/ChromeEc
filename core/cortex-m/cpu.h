@@ -70,6 +70,22 @@ enum {
 #define CPU_SCB_DCISW          CPUREG(0xe000ef60)
 #define CPU_SCB_DCCISW         CPUREG(0xe000ef74)
 
+/* Floating Point Context Address Register */
+#define CPU_FPU_FPCAR          CPUREG(0xe000ef38)
+
+/*
+ * As defined by Armv7-M Reference Manual B1.5.7 "Context state stacking on
+ * exception entry with the FP extension" the structure of the FPU state is:
+ * s0, s1, ..., s14, s15, fpscr.
+ */
+#define FPU_IDX_REG_FPSCR 16
+#define FPU_FPSCR_IOC (1u << 0) /* Invalid operation */
+#define FPU_FPSCR_DZC (1u << 1) /* Division by zero */
+#define FPU_FPSCR_OFC (1u << 2) /* Overflow */
+#define FPU_FPSCR_UFC (1u << 3) /* Underflow */
+#define FPU_FPSCR_IXC (1u << 4) /* Inexact */
+#define FPU_FPSCR_IDC (1u << 7) /* Input denormal */
+
 /* Bitfield values for EXC_RETURN. */
 #define EXC_RETURN_ES_MASK	BIT(0)
 #define EXC_RETURN_ES_NON_SECURE 0
