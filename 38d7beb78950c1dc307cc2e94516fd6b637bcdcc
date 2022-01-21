@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "de68200a_cc88c79b",
+        "filename": "zephyr/Kconfig.flash",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2022-01-21T22:30:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bdeeff55_4e352e22",
+      "revId": "38d7beb78950c1dc307cc2e94516fd6b637bcdcc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bd23ef1c_4652dd9d",
@@ -83,6 +101,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a498f4c3_fb398179",
+        "filename": "zephyr/Kconfig.header",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2022-01-21T22:30:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "219907d4_32c8587b",
+      "range": {
+        "startLine": 1,
+        "startChar": 12,
+        "endLine": 1,
+        "endChar": 16
+      },
+      "revId": "38d7beb78950c1dc307cc2e94516fd6b637bcdcc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8ac047c3_0856c98d",
@@ -118,6 +160,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "77dc4ca2_56cf1f29",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_xec.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2022-01-21T22:30:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ae07256a_85c8570a",
+      "revId": "38d7beb78950c1dc307cc2e94516fd6b637bcdcc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7241c9d9_1b42b64b",
@@ -149,6 +209,24 @@
       "side": 1,
       "message": "Per history, Intel Windows team chose the name XEC as MCHP was first vendor to develop Zephyr driver years back, not know why Intel chose XEC instead of MEC.  Best guessing is Intel may have wanted a generic name should they switch EC vendors again. MCHP keeps using it.",
       "parentUuid": "7241c9d9_1b42b64b",
+      "revId": "38d7beb78950c1dc307cc2e94516fd6b637bcdcc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d688a899_97de2df6",
+        "filename": "zephyr/dts/bindings/cros_flash/microchip,xec-cros-flash.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2022-01-21T22:30:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f66e4251_14252f0a",
       "revId": "38d7beb78950c1dc307cc2e94516fd6b637bcdcc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
