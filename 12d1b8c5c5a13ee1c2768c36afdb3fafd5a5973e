@@ -47,6 +47,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e568faf6_9ed8af67",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2022-01-21T12:07:46Z",
+      "side": 1,
+      "message": "This patch breaks printing last deadline (aka. timestamp of the nearest event, which you can find using \u0027timerinfo\u0027 command) when watchdog warning is printed. It\u0027s also not important, because it only fixes situation that CPU is not going to deep sleep when we are less than HOOK_TICK_INTERVAL before overflow (next_event variable in __idle() becomes negative).",
+      "revId": "12d1b8c5c5a13ee1c2768c36afdb3fafd5a5973e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "13007a0c_1b91b0f0",
