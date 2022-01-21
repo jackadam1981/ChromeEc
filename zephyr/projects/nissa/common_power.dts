@@ -1,0 +1,20 @@
+/* Copyright 2022 The Chromium OS Authors. All rights reserved.
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+/ {
+	common-pwrseq {
+		compatible = "ap-pwrseq";
+
+		dsw-pwrok-delay = <10>;
+		pm-pwrbtn-delay = <200>;
+		rsmrst-delay = <10>;
+		sys-pwrok-delay = <10>;
+		pch-pwrok-delay = <2>;
+		vccst-pwrgd-delay = <2>;
+		vrrdy-timeout = <50>;
+		sys-reset-delay = <32>;
+		all-sys-pwrgd-timeout = <50>;
+	};
+};
