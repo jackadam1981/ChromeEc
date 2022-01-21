@@ -17,6 +17,7 @@ extern int gpio_get_lvl(const char *net_name);
 extern struct common_pwrseq_config com_cfg;
 
 struct chipset_pwrseq_config {
+	int dsw_pwrok_delay_ms;
 	int pch_pwrok_delay_ms;
 	int sys_pwrok_delay_ms;
 	int sys_reset_delay_ms;
