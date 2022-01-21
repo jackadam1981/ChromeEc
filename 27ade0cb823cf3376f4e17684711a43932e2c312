@@ -16,6 +16,24 @@
       "message": "You can make this part of the actual description so that it can be picked up to generate documentation. It\u0027s not uncommon upstream, for example:\n\nhttps://github.com/zephyrproject-rtos/zephyr/tree/main/dts/bindings/i2c/nordic,nrf-twim.yaml",
       "revId": "27ade0cb823cf3376f4e17684711a43932e2c312",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b183bc3d_2d4451a2",
+        "filename": "zephyr/dts/bindings/gpio/cros-ec,gpio-interrupts.yaml",
+        "patchSetId": 15
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-01-21T13:37:40Z",
+      "side": 1,
+      "message": "Oh, cool.",
+      "parentUuid": "f7870ea0_928d8004",
+      "revId": "27ade0cb823cf3376f4e17684711a43932e2c312",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
