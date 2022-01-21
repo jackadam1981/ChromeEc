@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8693ddd9_43f47a23",
+        "filename": "util/fptool.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-01-21T17:24:35Z",
+      "side": 1,
+      "message": "PEP 8: E302 expected 2 blank lines, found 1",
+      "revId": "426671f5c250a2cc6e32d9c4e271d8892dd27319",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "341cd63e_a6a475e3",
         "filename": "util/fptool.py",
         "patchSetId": 1
@@ -43,6 +60,46 @@
         "endLine": 131,
         "endChar": 23
       },
+      "revId": "426671f5c250a2cc6e32d9c4e271d8892dd27319",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f4f1e4c_e9c65658",
+        "filename": "util/fptool.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-01-21T17:24:35Z",
+      "side": 1,
+      "message": "PEP 8: E251 unexpected spaces around keyword / parameter equals",
+      "range": {
+        "startLine": 153,
+        "startChar": 28,
+        "endLine": 153,
+        "endChar": 40
+      },
+      "revId": "426671f5c250a2cc6e32d9c4e271d8892dd27319",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ac605fe_f6da5e17",
+        "filename": "util/fptool.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-01-21T17:24:35Z",
+      "side": 1,
+      "message": "PEP 8: E302 expected 2 blank lines, found 1",
       "revId": "426671f5c250a2cc6e32d9c4e271d8892dd27319",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
