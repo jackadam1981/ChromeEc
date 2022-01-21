@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "341cd63e_a6a475e3",
+        "filename": "util/fptool.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-01-21T16:48:27Z",
+      "side": 1,
+      "message": "Can you change all the function comments to Python docstring style?\n\nhttps://github.com/google/styleguide/blob/gh-pages/pyguide.md#38-comments-and-docstrings",
+      "range": {
+        "startLine": 117,
+        "startChar": 0,
+        "endLine": 129,
+        "endChar": 71
+      },
+      "revId": "426671f5c250a2cc6e32d9c4e271d8892dd27319",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b58703a2_73753a1a",
+        "filename": "util/fptool.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-01-21T16:48:27Z",
+      "side": 1,
+      "message": "Can you add return types?\n\nhttps://docs.python.org/3/library/typing.html\nhttp://mypy-lang.org/examples.html",
+      "range": {
+        "startLine": 131,
+        "startChar": 22,
+        "endLine": 131,
+        "endChar": 23
+      },
+      "revId": "426671f5c250a2cc6e32d9c4e271d8892dd27319",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
