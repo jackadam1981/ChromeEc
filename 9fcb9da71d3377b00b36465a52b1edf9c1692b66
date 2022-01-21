@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "185d79fa_cee0981f",
+        "filename": "util/fptool.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 523,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-01-21T18:04:17Z",
+      "side": 1,
+      "message": "Let\u0027s not try to match the shell way of doing things exactly here, since it\u0027s hard to read. Part of the motivation for moving to Python is that we can do things in a more elegant and easy to read manner. In this case we want to look up a config function for a given platform name.\n\nOne way to do this is to maintain a map of \"name -\u003e config\" function. You are essentially doing that here with \"locals()[config_func]\", but it would be clearer (and easier to test) if you created a class for the config. Something like this:\n\n  class Config:\n    @staticmethod\n    def get(platform_name: str) -\u003e list:\n        return ...\n        \nFor one example, see https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/test/run_device_tests.py;l\u003d109-185;drc\u003d2de3d51b0a32c9f26dea0dd3d430f1f7f9adab41",
+      "range": {
+        "startLine": 511,
+        "startChar": 4,
+        "endLine": 523,
+        "endChar": 42
+      },
+      "revId": "9fcb9da71d3377b00b36465a52b1edf9c1692b66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
