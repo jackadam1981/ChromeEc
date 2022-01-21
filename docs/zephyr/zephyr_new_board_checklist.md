@@ -57,7 +57,7 @@ EC Feature                                                                  | Ne
 [Configure Charger (TODO)](./zephyr_template.md)                            | yes
 [Configure I2C Buses](./zephyr_i2c.md)                                      | yes
 [Configure GPIO](./zephyr_gpio.md)                                          | yes
-[Configure Batteries (TODO)](./zephyr_template.md)                          | no
+[Configure Batteries](./zephyr_battery.md)                                  | no
 [Configure CrOS Board Information (CBI) (TODO)](./zephyr_template.md)       | no
 [Configure CrOS CBI FW CONFIG](./zephyr_fw_config.md)                       | no
 [Configure Keyboard (TODO)](./zephyr_template.md)                           | no
