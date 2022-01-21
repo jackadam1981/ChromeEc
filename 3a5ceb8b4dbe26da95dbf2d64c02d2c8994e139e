@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "af2ed77f_4b27bb73",
+        "filename": "zephyr/drivers/cros_rtc/CMakeLists.txt",
+        "patchSetId": 6
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2022-01-21T22:42:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d9f20eaa_d9274a6b",
+      "revId": "3a5ceb8b4dbe26da95dbf2d64c02d2c8994e139e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eb7c4b8d_1d6f8815",
@@ -102,6 +120,24 @@
       "side": 1,
       "message": "Ack\nwill add TODO comment too.",
       "parentUuid": "628daaac_f0dbf482",
+      "revId": "3a5ceb8b4dbe26da95dbf2d64c02d2c8994e139e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d6518a0_57e241c6",
+        "filename": "zephyr/drivers/cros_rtc/cros_rtc_xec.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2022-01-21T22:42:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cf0bf154_abbd7f89",
       "revId": "3a5ceb8b4dbe26da95dbf2d64c02d2c8994e139e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
