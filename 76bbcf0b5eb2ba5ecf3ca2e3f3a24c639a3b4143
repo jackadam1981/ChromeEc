@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3cadbead_bfbea38d",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_adlp_pwrseq_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2022-01-21T22:21:08Z",
+      "side": 1,
+      "message": "This throws an error for brya, since its not defined. Need to add check in this macro.",
+      "revId": "76bbcf0b5eb2ba5ecf3ca2e3f3a24c639a3b4143",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
