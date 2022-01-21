@@ -219,7 +219,7 @@ static inline void power_signal_interrupt(enum gpio_signal signal) { }
  *
  * @param signal - The gpio signal that triggered the interrupt.
  */
-void intel_x86_rsmrst_signal_interrupt(enum gpio_signal signal);
+void x86_rsmrst_signal_interrupt(enum gpio_signal signal);
 
 /**
  * pause_in_s5 getter method.
