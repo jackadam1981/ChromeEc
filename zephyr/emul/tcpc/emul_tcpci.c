@@ -254,6 +254,7 @@ static int tcpci_emul_alert_changed(const struct emul *emul)
 }
 
 /** Check description in emul_tcpci.h */
+#include <stdio.h>
 int tcpci_emul_add_rx_msg(const struct emul *emul,
 			  struct tcpci_emul_msg *rx_msg, bool alert)
 {
@@ -262,7 +263,9 @@ int tcpci_emul_add_rx_msg(const struct emul *emul,
 	int rc;
 
 	if (data->rx_msg == NULL) {
+		printf("data->rx_msg == NULL\n");
 		tcpci_emul_get_reg(emul, TCPC_REG_DEV_CAP_2, &dev_cap_2);
+		printf("    dev_cap_2=%u\n", dev_cap_2);
 		if ((!(dev_cap_2 & TCPC_REG_DEV_CAP_2_LONG_MSG) &&
 		       rx_msg->cnt > 31) || rx_msg->cnt > 265) {
 			LOG_ERR("Too long first message (%d)", rx_msg->cnt);
@@ -271,6 +274,7 @@ int tcpci_emul_add_rx_msg(const struct emul *emul,
 
 		data->rx_msg = rx_msg;
 	} else if (data->rx_msg->next == NULL) {
+		printf("data->rx_msg->next == NULL\n");
 		if (rx_msg->cnt > 31) {
 			LOG_ERR("Too long second message (%d)", rx_msg->cnt);
 			return -EINVAL;
@@ -282,6 +286,7 @@ int tcpci_emul_add_rx_msg(const struct emul *emul,
 				TCPC_REG_ALERT_RX_BUF_OVF >> 8;
 		}
 	} else {
+		printf("Cannot setup third_message\n");
 		LOG_ERR("Cannot setup third message");
 		return -EINVAL;
 	}
@@ -295,6 +300,7 @@ int tcpci_emul_add_rx_msg(const struct emul *emul,
 		data->reg[TCPC_REG_ALERT] |= TCPC_REG_ALERT_RX_STATUS;
 
 		rc = tcpci_emul_alert_changed(emul);
+		printf("rc = %d\n", rc);
 		if (rc != 0)
 			return rc;
 	}

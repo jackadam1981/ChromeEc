@@ -21,6 +21,8 @@ LOG_MODULE_REGISTER(ps8xxx_emul, CONFIG_TCPCI_EMUL_LOG_LEVEL);
 
 #include "driver/tcpm/ps8xxx.h"
 
+#include <stdio.h>
+
 #define PS8XXX_REG_MUX_IN_HPD_ASSERTION		MUX_IN_HPD_ASSERTION_REG
 
 /** Run-time data used by the emulator */
@@ -356,10 +358,12 @@ static int ps8xxx_emul_read_byte(struct i2c_emul *i2c_emul, int reg,
 	emul = i2c_emul->parent;
 	data = emul->data;
 
+	printf("ps8xxx_emul_read_byte(reg=%d)\n", reg);
 	tcpci_emul_get_reg(data->tcpci_emul, PS8XXX_REG_I2C_DEBUGGING_ENABLE,
 			   &i2c_dbg_reg);
 	/* There is no need to enable I2C debug on PS8815 */
 	if (data->prod_id != PS8815_PRODUCT_ID && i2c_dbg_reg & 0x1) {
+		printf("ps8xxx_emul_read_byte: 1\n");
 		LOG_ERR("Accessing hidden i2c address without enabling debug");
 		return -EIO;
 	}
@@ -370,6 +374,7 @@ static int ps8xxx_emul_read_byte(struct i2c_emul *i2c_emul, int reg,
 	if (data->prod_id == PS8815_PRODUCT_ID && port == PS8XXX_EMUL_PORT_1 &&
 	    reg == PS8815_P1_REG_HW_REVISION) {
 		if (bytes > 1) {
+			printf("ps8xxx_emul_read_byte: 2\n");
 			LOG_ERR("Reading more than two bytes from HW rev reg");
 			return -EIO;
 		}
@@ -380,6 +385,7 @@ static int ps8xxx_emul_read_byte(struct i2c_emul *i2c_emul, int reg,
 
 	if (bytes != 0) {
 		LOG_ERR("Reading more than one byte at once");
+		printf("ps8xxx_emul_read_byte: 3\n");
 		return -EIO;
 	}
 
@@ -405,9 +411,11 @@ static int ps8xxx_emul_read_byte(struct i2c_emul *i2c_emul, int reg,
 		}
 	case PS8XXX_EMUL_PORT_INVAL:
 		LOG_ERR("Invalid I2C address");
+		printf("ps8xxx_emul_read_byte: 4\n");
 		return -EIO;
 	}
 
+	printf("ps8xxx_emul_read_byte: 5\n");
 	LOG_ERR("Reading from reg 0x%x which is WO or undefined", reg);
 	return -EIO;
 }

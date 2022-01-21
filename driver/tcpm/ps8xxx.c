@@ -181,20 +181,29 @@ static int ps8805_gpio_mask[] = {
 	PS8805_REG_GPIO_2,
 };
 
+#include <stdio.h>
 int ps8805_gpio_set_level(int port, enum ps8805_gpio signal, int level)
 {
 	int rv;
 	int regval;
 	int mask;
 
-	if (signal >= PS8805_GPIO_NUM)
+	printf("ps8805_gpio_set_level\n");
+	if (signal >= PS8805_GPIO_NUM) {
+		printf("1\n");
 		return EC_ERROR_INVAL;
+	}
 
+	printf("    reading port=%d, addr=%d, reg=%d\n",
+	       tcpc_config[port].i2c_info.port, PS8805_VENDOR_DEFINED_I2C_ADDR,
+	       PS8805_REG_GPIO_CONTROL);
 	rv = i2c_read8(tcpc_config[port].i2c_info.port,
-		       PS8805_VENDOR_DEFINED_I2C_ADDR,
-		       PS8805_REG_GPIO_CONTROL, &regval);
-	if (rv)
+		       PS8805_VENDOR_DEFINED_I2C_ADDR, PS8805_REG_GPIO_CONTROL,
+		       &regval);
+	if (rv) {
+		printf("2: %d\n", rv);
 		return rv;
+	}
 
 	mask = ps8805_gpio_mask[signal];
 	if (level)
@@ -202,9 +211,10 @@ int ps8805_gpio_set_level(int port, enum ps8805_gpio signal, int level)
 	else
 		regval &= ~mask;
 
+	printf("3\n");
 	return i2c_write8(tcpc_config[port].i2c_info.port,
-		       PS8805_VENDOR_DEFINED_I2C_ADDR,
-		       PS8805_REG_GPIO_CONTROL, regval);
+			  PS8805_VENDOR_DEFINED_I2C_ADDR,
+			  PS8805_REG_GPIO_CONTROL, regval);
 }
 
 int ps8805_gpio_get_level(int port, enum ps8805_gpio signal, int *level)
@@ -216,8 +226,8 @@ int ps8805_gpio_get_level(int port, enum ps8805_gpio signal, int *level)
 		return EC_ERROR_INVAL;
 
 	rv = i2c_read8(tcpc_config[port].i2c_info.port,
-		       PS8805_VENDOR_DEFINED_I2C_ADDR,
-		       PS8805_REG_GPIO_CONTROL, &regval);
+		       PS8805_VENDOR_DEFINED_I2C_ADDR, PS8805_REG_GPIO_CONTROL,
+		       &regval);
 	if (rv)
 		return rv;
 	*level = !!(regval & ps8805_gpio_mask[signal]);
