@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8cbc19ca_f8ce40eb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-01-21T19:46:16Z",
+      "side": 1,
+      "message": "Somehow, despite rebasing, I have not synced past CL:3398503, and this is failing locally for me. I will try again after lunch. I believe this to actually be no-op change.",
+      "revId": "db99795be12862623e601657e83bcb93a7f90584",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
