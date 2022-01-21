@@ -4,11 +4,16 @@
  */
 
 /* Intel X86 chipset power control module for Chrome EC */
- #include "board_config.h"
  #include "charge_state.h"
+ #include "power/common_x86.h"
  #include "power/intel_x86.h"
 
-static const int sleep_sig[] = {
+/* Console output macros */
+#define CPUTS(outstr) cputs(CC_CHIPSET, outstr)
+#define CPRINTS(format, args...) cprints(CC_CHIPSET, format, ##args)
+#define CPRINTF(format, args...) cprintf(CC_CHIPSET, format, ##args)
+
+const int sleep_sig[] = {
 	[SYS_SLEEP_S3] = SLP_S3_SIGNAL_L,
 	[SYS_SLEEP_S4] = SLP_S4_SIGNAL_L,
 	[SYS_SLEEP_S5] = SLP_S5_SIGNAL_L,
@@ -16,8 +21,6 @@ static const int sleep_sig[] = {
 	[SYS_SLEEP_S0IX] = GPIO_PCH_SLP_S0_L,
 #endif
 };
-
-#include "common_x86.c"
 
 static int power_s5_up;       /* Chipset is sequencing up or down */
 
@@ -382,39 +385,29 @@ __overridable void board_after_rsmrst(int rsmrst)
 {
 }
 
-void common_intel_x86_handle_rsmrst(enum power_state state)
+__override bool is_passthrough_valid(enum gpio_signal pin_in,
+	enum gpio_signal pin_out, int *p_in_level)
 {
-	/*
-	 * Pass through RSMRST asynchronously, as PCH may not react
-	 * immediately to power changes.
-	 */
-	int rsmrst_in = gpio_get_level(GPIO_PG_EC_RSMRST_ODL);
-	int rsmrst_out = gpio_get_level(GPIO_PCH_RSMRST_L);
-
-	/* Nothing to do. */
-	if (rsmrst_in == rsmrst_out)
-		return;
-
-	board_before_rsmrst(rsmrst_in);
-
 #ifdef CONFIG_CHIPSET_APL_GLK
 	/* Only passthrough RSMRST_L de-assertion on power up */
-	if (rsmrst_in && !power_s5_up)
-		return;
+	if (*p_in_level && !power_s5_up)
+		return false;
 #elif defined(CONFIG_CHIPSET_X86_RSMRST_DELAY)
 	/*
 	 * Wait at least 10ms between power signals going high
 	 * and deasserting RSMRST to PCH.
 	 */
-	if (rsmrst_in)
+	if (*p_in_level)
 		msleep(10);
 #endif
 
-	gpio_set_level(GPIO_PCH_RSMRST_L, rsmrst_in);
+	return true;
+}
 
-	CPRINTS("Pass through GPIO_PG_EC_RSMRST_ODL: %d", rsmrst_in);
-
-	board_after_rsmrst(rsmrst_in);
+void common_intel_x86_handle_rsmrst(enum power_state state)
+{
+	handle_pass_through_with_callbacks(GPIO_PG_EC_RSMRST_ODL,
+		GPIO_PCH_RSMRST_L, &board_before_rsmrst, &board_after_rsmrst);
 }
 
 enum ec_error_list intel_x86_wait_power_up_ok(void)

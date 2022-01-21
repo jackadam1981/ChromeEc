@@ -14,21 +14,12 @@
 #include "espi.h"
 #include "power.h"
 
-#include "chipset_config.h"
-
 /**
  * Handle RSMRST signal.
  *
  * @param state Current chipset state.
  */
 void common_intel_x86_handle_rsmrst(enum power_state state);
-
-/**
- * Force chipset to G3 state.
- *
- * @return power_state New chipset state.
- */
-__override_proto enum power_state chipset_force_g3(void);
 
 /**
  * Handle power states.
