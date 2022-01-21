@@ -68,6 +68,15 @@ const struct power_signal_info power_signal_list[] = {
 };
 BUILD_ASSERT(ARRAY_SIZE(power_signal_list) == POWER_SIGNAL_COUNT);
 
+__override bool is_passthrough_valid(enum gpio_signal pin_in,
+	enum gpio_signal pin_out, int *p_in_level)
+{
+	/* Only passthrough RSMRST_L de-assertion on power up */
+	if (*p_in_level && !power_s5_up)
+		return false;
+	return true;
+}
+
 __attribute__((weak)) void chipset_do_shutdown(void)
 {
 	/* Need to implement board specific shutdown */

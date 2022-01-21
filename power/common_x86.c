@@ -12,6 +12,57 @@
 #define CPRINTS(format, args...) cprints(CC_CHIPSET, format, ##args)
 #define CPRINTF(format, args...) cprintf(CC_CHIPSET, format, ##args)
 
+int power_s5_up;       /* Chipset is sequencing up or down */
+
+__overridable bool is_passthrough_valid(enum gpio_signal pin_in,
+	enum gpio_signal pin_out, int *p_in_level)
+{
+#if defined(CONFIG_CHIPSET_X86_RSMRST_DELAY)
+	/*
+	 * Wait at least 10ms between power signals going high
+	 * and deasserting RSMRST to PCH.
+	 */
+	if (*p_in_level)
+		msleep(10);
+#endif
+	return true;
+}
+
+void handle_pass_through_with_callbacks(enum gpio_signal pin_in,
+	enum gpio_signal pin_out,
+	void (*before_write_callback)(int),
+	void (*after_write_callback)(int))
+{
+	/*
+	 * Pass through asynchronously, as SOC may not react
+	 * immediately to power changes.
+	 */
+	int in_level = gpio_get_level(pin_in);
+	int out_level = gpio_get_level(pin_out);
+
+	/* Nothing to do. */
+	if (in_level == out_level)
+		return;
+
+	if (before_write_callback != NULL)
+		before_write_callback(in_level);
+
+	if (!is_passthrough_valid(pin_in, pin_out, &in_level))
+		return;
+
+	gpio_set_level(pin_out, in_level);
+
+	CPRINTS("Pass through %s: %d", gpio_get_name(pin_in), in_level);
+	if (after_write_callback != NULL)
+		after_write_callback(in_level);
+}
+
+void handle_pass_through(enum gpio_signal pin_in,
+		enum gpio_signal pin_out)
+{
+	handle_pass_through_with_callbacks(pin_in, pin_out, NULL, NULL);
+}
+
 void chipset_throttle_cpu(int throttle)
 {
 	CPRINTS("%s(%d)", __func__, throttle);
