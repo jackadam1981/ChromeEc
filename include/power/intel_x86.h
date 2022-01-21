@@ -29,19 +29,6 @@ void common_intel_x86_handle_rsmrst(enum power_state state);
 enum power_state common_intel_x86_power_handle_state(enum power_state state);
 
 /**
- * Wait for power-up to be allowed based on available power.
- *
- * This delays G3->S5 until there is enough power to boot the AP, waiting
- * first until the charger (if any) is ready, then for there to be sufficient
- * power.
- *
- * In case of error, the caller should not allow power-up past G3.
- *
- * @return EC_SUCCESS if OK.
- */
-enum ec_error_list intel_x86_wait_power_up_ok(void);
-
-/**
  * Get the value of PG_EC_DSW_PWROK.
  *
  * The default implementation is just to return the GPIO.  But if a
