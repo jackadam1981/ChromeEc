@@ -10,4 +10,6 @@
 
 #define CHIPSET_G3S5_POWERUP_SIGNAL   POWER_SIGNAL_MASK(X86_S5_PGOOD)
 
+#define IN_ALL_S0               GPIO_S0_PGOOD
+
 #endif /* __CROS_EC_AMD_X86_H_ */
