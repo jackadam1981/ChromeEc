@@ -1,0 +1,130 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8dee0d2f_9b9640f2",
+        "filename": "docs/zephyr/zephyr_motionsense.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-01-21T23:40:41Z",
+      "side": 1,
+      "message": "Looking at the source, this option is a menuconfig, but it doesn\u0027t have any dependencies.\n\nSee https://www.kernel.org/doc/html/latest/kbuild/kconfig-language.html#kconfig-syntax\n\nCan you clean that up as part of this effort?",
+      "range": {
+        "startLine": 14,
+        "startChar": 1,
+        "endLine": 14,
+        "endChar": 31
+      },
+      "revId": "e62f357033663bc476a38e5545032a8a3b15763e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "91341f77_5b9ac6a5",
+        "filename": "docs/zephyr/zephyr_motionsense.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-01-21T23:40:41Z",
+      "side": 1,
+      "message": "This seems like a bug.  Shouldn\u0027t CONFIG_PLATFORM_EC_ALS do a select of HAS_TASK_ALS instead?\n\nThe only legacy board that defines an ALS task is the board/oak/ec.tasklist.  Our Zephyr shimmed tasks doesn\u0027t currently ever define the ALS task.  \n\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/a1ef2483/zephyr/shim/include/shimmed_task_id.h#",
+      "range": {
+        "startLine": 18,
+        "startChar": 51,
+        "endLine": 18,
+        "endChar": 80
+      },
+      "revId": "e62f357033663bc476a38e5545032a8a3b15763e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c5b255d_d631b8c2",
+        "filename": "docs/zephyr/zephyr_motionsense.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-01-21T23:40:41Z",
+      "side": 1,
+      "message": "I suggest creating sub-headings under the Kconfig section to improve the organization this section.",
+      "revId": "e62f357033663bc476a38e5545032a8a3b15763e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e54fd0b6_9d43d1c1",
+        "filename": "docs/zephyr/zephyr_sensor_devices.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-01-21T23:40:41Z",
+      "side": 1,
+      "message": "ICM",
+      "range": {
+        "startLine": 39,
+        "startChar": 47,
+        "endLine": 39,
+        "endChar": 50
+      },
+      "revId": "e62f357033663bc476a38e5545032a8a3b15763e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f98243b_03152489",
+        "filename": "docs/zephyr/zephyr_sensor_devices.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-01-21T23:40:41Z",
+      "side": 1,
+      "message": "ICM",
+      "range": {
+        "startLine": 40,
+        "startChar": 47,
+        "endLine": 40,
+        "endChar": 50
+      },
+      "revId": "e62f357033663bc476a38e5545032a8a3b15763e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1045daab_aea19d53",
+        "filename": "docs/zephyr/zephyr_sensor_devices.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-01-21T23:40:41Z",
+      "side": 1,
+      "message": "Create sub-sections for these groups.",
+      "revId": "e62f357033663bc476a38e5545032a8a3b15763e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
