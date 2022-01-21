@@ -57,7 +57,8 @@ void chipset_handle_espi_reset_assert(void)
 	 * NOTE: S5_PGOOD input is passed through to the RSMRST# output to
 	 * the AP.
 	 */
-	if ((power_get_signals() & IN_S5_PGOOD) && forcing_shutdown) {
+	if ((power_get_signals() & CHIPSET_G3S5_POWERUP_SIGNAL) &&
+		forcing_shutdown) {
 		power_button_pch_release();
 		forcing_shutdown = 0;
 	}
@@ -115,7 +116,7 @@ enum power_state power_handle_state(enum power_state state)
 		if (IS_ENABLED(CONFIG_CHIPSET_HAS_PRE_INIT_CALLBACK))
 			chipset_pre_init_callback();
 
-		if (power_wait_signals(IN_S5_PGOOD)) {
+		if (power_wait_signals(CHIPSET_G3S5_POWERUP_SIGNAL)) {
 			chipset_force_g3();
 			return POWER_G3;
 		}
@@ -125,7 +126,7 @@ enum power_state power_handle_state(enum power_state state)
 		return POWER_S5;
 
 	case POWER_S5:
-		if (!power_has_signals(IN_S5_PGOOD)) {
+		if (!power_has_signals(CHIPSET_G3S5_POWERUP_SIGNAL)) {
 			/* Required rail went away */
 			return POWER_S5G3;
 		} else if (gpio_get_level(GPIO_PCH_SLP_S5_L) == 1) {
@@ -135,7 +136,7 @@ enum power_state power_handle_state(enum power_state state)
 		break;
 
 	case POWER_S5S3:
-		if (!power_has_signals(IN_S5_PGOOD)) {
+		if (!power_has_signals(CHIPSET_G3S5_POWERUP_SIGNAL)) {
 			/* Required rail went away */
 			return POWER_S5G3;
 		}
@@ -153,7 +154,7 @@ enum power_state power_handle_state(enum power_state state)
 		return POWER_S3;
 
 	case POWER_S3:
-		if (!power_has_signals(IN_S5_PGOOD)) {
+		if (!power_has_signals(CHIPSET_G3S5_POWERUP_SIGNAL)) {
 			/* Required rail went away */
 			return POWER_S5G3;
 		} else if (gpio_get_level(GPIO_PCH_SLP_S3_L) == 1) {
@@ -166,7 +167,7 @@ enum power_state power_handle_state(enum power_state state)
 		break;
 
 	case POWER_S3S0:
-		if (!power_has_signals(IN_S5_PGOOD)) {
+		if (!power_has_signals(CHIPSET_G3S5_POWERUP_SIGNAL)) {
 			/* Required rail went away */
 			return POWER_S5G3;
 		}
@@ -188,7 +189,7 @@ enum power_state power_handle_state(enum power_state state)
 		return POWER_S0;
 
 	case POWER_S0:
-		if (!power_has_signals(IN_S5_PGOOD)) {
+		if (!power_has_signals(CHIPSET_G3S5_POWERUP_SIGNAL)) {
 			/* Required rail went away */
 			return POWER_S5G3;
 		}
@@ -262,7 +263,7 @@ enum power_state power_handle_state(enum power_state state)
 		if ((gpio_get_level(GPIO_PCH_SLP_S0_L) == 1) &&
 		    (gpio_get_level(GPIO_PCH_SLP_S3_L) == 1)) {
 			return POWER_S0ixS0;
-		} else if (!power_has_signals(IN_S5_PGOOD)) {
+		} else if (!power_has_signals(CHIPSET_G3S5_POWERUP_SIGNAL)) {
 			/* Lost power, start transition to G3 */
 			return POWER_S0;
 		}
