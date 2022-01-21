@@ -7,7 +7,8 @@
 
 LOG_MODULE_DECLARE(ap_pwrseq, 4);
 
-static const struct chipset_pwrseq_config chip_cfg = {
+const struct chipset_pwrseq_config chip_cfg = {
+	.dsw_pwrok_delay_ms = DT_INST_PROP(0, dsw_pwrok_delay),
 	.pch_pwrok_delay_ms = DT_INST_PROP(0, pch_pwrok_delay),
 	.sys_pwrok_delay_ms = DT_INST_PROP(0, sys_pwrok_delay),
 	.vccst_pwrgd_delay_ms = DT_INST_PROP(0, vccst_pwrgd_delay),
