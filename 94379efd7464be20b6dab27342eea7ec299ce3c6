@@ -39,6 +39,30 @@
       },
       "revId": "94379efd7464be20b6dab27342eea7ec299ce3c6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "22f9b6c5_61ab97fd",
+        "filename": "zephyr/test/drivers/src/watchdog.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2022-01-21T21:05:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "326a4029_30e341e0",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 83,
+        "endChar": 0
+      },
+      "revId": "94379efd7464be20b6dab27342eea7ec299ce3c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
