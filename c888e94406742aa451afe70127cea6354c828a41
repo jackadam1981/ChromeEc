@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "469f8794_3ed0b1dd",
+        "filename": "zephyr/test/drivers/src/main.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2022-01-21T16:17:23Z",
+      "side": 1,
+      "message": "are these tests still applicable at some time? These either need to be removed or a comment with a TODO(b:xxxxxx) needs to be created so this is known as a needs to be fixed.",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 6
+      },
+      "revId": "c888e94406742aa451afe70127cea6354c828a41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
