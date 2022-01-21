@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2c5240fe_4732977c",
+        "filename": "driver/tcpm/anx7406.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1291180
+      },
+      "writtenOn": "2022-01-21T03:26:03Z",
+      "side": 1,
+      "message": "OK, I\u0027ll change to the \"i2c_peripheral\"",
+      "parentUuid": "28d1da2c_1ed1aedb",
+      "range": {
+        "startLine": 29,
+        "startChar": 31,
+        "endLine": 29,
+        "endChar": 48
+      },
+      "revId": "c99f57f38a4f420945f68f0d0c9e14f79826d7dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "68c6a79a_d0e6b336",
         "filename": "driver/tcpm/anx7406.h",
         "patchSetId": 2
@@ -49,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c5ce65ed_cd9f66f6",
+        "filename": "driver/tcpm/anx7406.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1291180
+      },
+      "writtenOn": "2022-01-21T03:26:03Z",
+      "side": 1,
+      "message": "OK",
+      "parentUuid": "68c6a79a_d0e6b336",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "c99f57f38a4f420945f68f0d0c9e14f79826d7dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9a016aeb_0760119c",
         "filename": "driver/tcpm/anx7406.h",
         "patchSetId": 2
@@ -60,6 +108,24 @@
       "writtenOn": "2022-01-20T23:02:07Z",
       "side": 1,
       "message": "Could you point me to a copy of the register definitions/data sheet for this part?  I didn\u0027t see one linked on the bug",
+      "revId": "c99f57f38a4f420945f68f0d0c9e14f79826d7dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1cc18b8_ee6a423f",
+        "filename": "driver/tcpm/anx7406.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1291180
+      },
+      "writtenOn": "2022-01-21T03:26:03Z",
+      "side": 1,
+      "message": "Please refer datasheet chapter 4.4, ANX7406 has 8 address config.",
+      "parentUuid": "9a016aeb_0760119c",
       "revId": "c99f57f38a4f420945f68f0d0c9e14f79826d7dd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
