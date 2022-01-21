@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c6a8baac_82748e9a",
+        "filename": "util/build_allowed.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2022-01-21T18:23:59Z",
+      "side": 1,
+      "message": "If you are OK with the spam, we can drop this CL.\n\nIf you are not, then we need this CL...\n\nI can make it less spammy with the Python stuff",
+      "parentUuid": "1fcf733e_259da2ce",
+      "range": {
+        "startLine": 65,
+        "startChar": 34,
+        "endLine": 65,
+        "endChar": 67
+      },
+      "revId": "f64ecc1e9646a199e1cb080922def9957da9ec67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "24530070_7dc7a00e",
         "filename": "util/build_allowed.sh",
         "patchSetId": 3
