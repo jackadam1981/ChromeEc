@@ -49,6 +49,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "882e0ee2_e7886c08",
+        "filename": "util/fptool.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-01-21T16:57:04Z",
+      "side": 1,
+      "message": "No need for semicolon",
+      "range": {
+        "startLine": 144,
+        "startChar": 38,
+        "endLine": 144,
+        "endChar": 39
+      },
+      "revId": "a803c2d4840efbbfadb4bb94ee800f17c69d6b83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e62ea77_e43879eb",
+        "filename": "util/fptool.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-01-21T16:57:04Z",
+      "side": 1,
+      "message": "space before and after\n\nSee https://chromium.googlesource.com/chromiumos/docs/+/HEAD/styleguide/python.md#official-style-guide (PEP-8)",
+      "range": {
+        "startLine": 144,
+        "startChar": 24,
+        "endLine": 144,
+        "endChar": 25
+      },
+      "revId": "a803c2d4840efbbfadb4bb94ee800f17c69d6b83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "039a5cfc_ac9b8d98",
         "filename": "util/fptool.py",
         "patchSetId": 1
