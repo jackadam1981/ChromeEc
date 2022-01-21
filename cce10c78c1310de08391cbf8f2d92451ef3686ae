@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d2196a2_82dd23aa",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2022-01-21T06:18:41Z",
+      "side": 1,
+      "message": "With gnubby on the dongle.\n\nReplaced this with http://b/209533566#comment8 since the comment has more detailed result.",
+      "parentUuid": "b1513d42_d580307a",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 43
+      },
+      "revId": "cce10c78c1310de08391cbf8f2d92451ef3686ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b99425ac_d12b8be2",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "18deba40_0046fde4",
+        "filename": "driver/usb_mux/anx3443.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2022-01-21T06:18:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b99425ac_d12b8be2",
+      "range": {
+        "startLine": 27,
+        "startChar": 13,
+        "endLine": 27,
+        "endChar": 15
+      },
+      "revId": "cce10c78c1310de08391cbf8f2d92451ef3686ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f7738ea8_edacd92b",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-01-21T05:58:15Z",
       "side": 1,
       "message": "UP?",
+      "range": {
+        "startLine": 28,
+        "startChar": 16,
+        "endLine": 28,
+        "endChar": 19
+      },
+      "revId": "cce10c78c1310de08391cbf8f2d92451ef3686ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4728d054_251958fe",
+        "filename": "driver/usb_mux/anx3443.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2022-01-21T06:18:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f7738ea8_edacd92b",
       "range": {
         "startLine": 28,
         "startChar": 16,
