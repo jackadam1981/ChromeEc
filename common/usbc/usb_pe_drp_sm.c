@@ -321,6 +321,7 @@ enum usb_pe_state {
 	PE_DR_SNK_GIVE_SOURCE_CAP,
 	PE_DR_SRC_GET_SOURCE_CAP,
 
+
 	/* PD3.0 only states below here*/
 #ifdef CONFIG_USB_PD_DATA_RESET_MSG
 	/* DFP Data Reset States */
@@ -336,6 +337,7 @@ enum usb_pe_state {
 	PE_SRC_CHUNK_RECEIVED,
 	PE_SNK_CHUNK_RECEIVED,
 	PE_VCS_FORCE_VCONN,
+	PE_GET_REVISION,
 };
 
 /*
@@ -467,6 +469,7 @@ __maybe_unused static __const_data const char * const pe_state_names[] = {
 	[PE_DDR_WAIT_FOR_VCONN_OFF] = "PE_DDR_Wait_For_VCONN_Off",
 	[PE_DDR_PERFORM_DATA_RESET] = "PE_DDR_Perform_Data_Reset",
 #endif /* CONFIG_USB_PD_DATA_RESET_MSG */
+	[PE_GET_REVISION] = "PE_Get_Revision",
 #endif /* CONFIG_USB_PD_REV30 */
 };
 
@@ -1547,6 +1550,10 @@ static bool common_src_snk_dpm_requests(int port)
 			DPM_REQUEST_SOP_PRIME_SOFT_RESET_SEND);
 		pe[port].tx_type = TCPCI_MSG_SOP_PRIME;
 		set_state_pe(port, PE_VCS_CBL_SEND_SOFT_RESET);
+		return true;
+	} else if (PE_CHK_DPM_REQUEST(port, DPM_REQUEST_GET_REVISION)) {
+		pe_set_dpm_curr_request(port, DPM_REQUEST_GET_REVISION);
+		set_state_pe(port, PE_GET_REVISION);
 		return true;
 	}
 #ifdef CONFIG_USB_PD_DATA_RESET_MSG
@@ -7259,6 +7266,82 @@ static void pe_ddr_perform_data_reset_exit(int port)
 }
 #endif /* CONFIG_USB_PD_DATA_RESET_MSG */
 
+/*
+ * Get_Revision: Message headers return 2-bit values noting which major PD
+ * revision is used. For situations where minor revision neads to be known, a
+ * Get_Revision control message must be sent. The partner should response with a
+ * Revision Message Data Object containing the major revision, minor revision,
+ * major version and minor version.
+ */
+static void pe_get_revision_entry(int port)
+{
+	print_current_state(port);
+
+	/* Send a Get Revision Message */
+	send_ctrl_msg(port, TCPCI_MSG_SOP, PD_CTRL_GET_REVISION);
+	pe_sender_response_msg_entry(port);
+}
+
+static void pe_get_revision_run(int port)
+{
+	int type;
+	int cnt;
+	int ext;
+	enum pe_msg_check msg_check;
+	enum tcpci_msg_type sop;
+
+	/* Check the state of the message sent */
+	msg_check = pe_sender_response_msg_run(port);
+
+	/* Following message flow from pe_dr_get_sink_cap_run */
+	if ((msg_check & PE_MSG_SENT) &&
+	    PE_CHK_FLAG(port, PE_FLAGS_MSG_RECEIVED)) {
+		PE_CLR_FLAG(port, PE_FLAGS_MSG_RECEIVED);
+
+		type = PD_HEADER_TYPE(rx_emsg[port].header);
+		cnt = PD_HEADER_CNT(rx_emsg[port].header);
+		ext = PD_HEADER_EXT(rx_emsg[port].header);
+		sop = PD_HEADER_GET_SOP(rx_emsg[port].header);
+
+		if (ext == 0 && cnt == 1) {
+			if (type == PD_DATA_REVISION) {
+				uint32_t *rmdo = (uint32_t *)rx_emsg[port].buf;
+				uint8_t major_rev = PD_REVISION_MAJOR(*rmdo);
+				uint8_t minor_rev = PD_REVISION_MINOR(*rmdo);
+
+				/* USB PD Rev 1.0, 2.0, 3.0 and 3.1 supported */
+				if (major_rev == 1)
+					prl_set_rev(port, sop, PD_REV10);
+				else if (major_rev == 2)
+					prl_set_rev(port, sop, PD_REV20);
+				else if (major_rev == 3 && minor_rev == 0)
+					prl_set_rev(port, sop, PD_REV30);
+				else if (major_rev == 3 && minor_rev == 1)
+					prl_set_rev(port, sop, PD_REV31);
+
+				pe_set_ready_state(port);
+				return;
+			} else if (type == PD_CTRL_REJECT ||
+				   type == PD_CTRL_NOT_SUPPORTED) {
+				pe_set_ready_state(port);
+				return;
+			}
+		}
+
+		pe_send_soft_reset(port, sop);
+		return;
+	}
+
+	if ((msg_check & PE_MSG_DISCARDED) ||
+	    pd_timer_is_expired(port, PE_TIMER_SENDER_RESPONSE))
+		pe_set_ready_state(port);
+}
+
+static void pe_get_revision_exit(int port)
+{
+	pe_sender_response_msg_exit(port);
+}
+
 const uint32_t * const pd_get_src_caps(int port)
 {
 	return pe[port].src_caps;
@@ -7280,6 +7363,22 @@ uint8_t pd_get_src_cap_cnt(int port)
 		return pe[port].src_cap_cnt;
 
 	return 0;
+}
+
+uint16_t pd_get_revision_int(enum pd_rev_type rev)
+{
+	switch (rev) {
+	case PD_REV10:
+		return 0x1000;
+	case PD_REV20:
+		return 0x2000;
+	case PD_REV30:
+		return 0x3000;
+	case PD_REV31:
+		return 0x3100;
+	default:
+		return 0;
+	}
 }
 
 /* Track access to the PD discovery structures during HC execution */
@@ -7748,6 +7847,11 @@ static __const_data const struct usb_state pe_states[] = {
 		.exit  = pe_ddr_perform_data_reset_exit,
 	},
 #endif /* CONFIG_USB_PD_DATA_RESET_MSG */
+	[PE_GET_REVISION] = {
+		.entry = pe_get_revision_entry,
+		.run   = pe_get_revision_run,
+		.exit  = pe_get_revision_exit,
+	},
 #endif /* CONFIG_USB_PD_REV30 */
 };
 

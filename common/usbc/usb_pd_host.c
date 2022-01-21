@@ -157,14 +157,17 @@ static enum ec_status hc_typec_status(struct host_cmd_handler_args *args)
 
 	r->events = pd_get_events(p->port);
 
+	pd_dpm_request(p->port, DPM_REQUEST_GET_REVISION);
 	r->sop_revision = r->sop_connected ?
-		PD_STATUS_REV_SET_MAJOR(pd_get_rev(p->port, TCPCI_MSG_SOP)) : 0;
+				  pd_get_revision_int(
+					  pd_get_rev(p->port, TCPCI_MSG_SOP)) :
+				  0;
 	r->sop_prime_revision =
 		pd_get_identity_discovery(p->port, TCPCI_MSG_SOP_PRIME) ==
-		PD_DISC_COMPLETE ?
-		PD_STATUS_REV_SET_MAJOR(pd_get_rev(p->port,
-					TCPCI_MSG_SOP_PRIME))
-		: 0;
+				PD_DISC_COMPLETE ?
+			pd_get_revision_int(
+				pd_get_rev(p->port, TCPCI_MSG_SOP_PRIME)) :
+			0;
 
 	r->source_cap_count = pd_get_src_cap_cnt(p->port);
 	memcpy(r->source_cap_pdos, pd_get_src_caps(p->port),

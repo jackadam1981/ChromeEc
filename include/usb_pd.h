@@ -535,6 +535,9 @@ struct partner_active_modes {
 #define PD_VDO_CMD(vdo)  ((vdo) & 0x1f)
 #define PD_VDO_CMDT(vdo) (((vdo) >> 6) & 0x3)
 
+#define PD_REVISION_MAJOR(rev) ((rev >> 28) & 0xf)
+#define PD_REVISION_MINOR(rev) ((rev >> 24) & 0xf)
+
 /*
  * SVDM Identity request -> response
  *
@@ -605,6 +608,7 @@ enum pd_rev_type {
 	PD_REV10,
 	PD_REV20,
 	PD_REV30,
+	PD_REV31,
 };
 
 #ifdef CONFIG_USB_PD_REV30
@@ -1015,6 +1019,7 @@ enum pd_dpm_request {
 	DPM_REQUEST_FRS_DET_ENABLE		= BIT(21),
 	DPM_REQUEST_FRS_DET_DISABLE		= BIT(22),
 	DPM_REQUEST_DATA_RESET                  = BIT(23),
+	DPM_REQUEST_GET_REVISION                = BIT(24),
 };
 
 /**
@@ -1150,7 +1155,11 @@ enum pd_ctrl_msg_type {
 	PD_CTRL_FR_SWAP = 19,
 	PD_CTRL_GET_PPS_STATUS = 20,
 	PD_CTRL_GET_COUNTRY_CODES = 21,
-	/* 22-31 Reserved */
+	PD_CTRL_GET_SINK_CAP_EXTENDED = 22,
+	/* Used for REV 3.1 */
+	PD_CTRL_GET_SOURCE_INFO = 23,
+	PD_CTRL_GET_REVISION = 24,
+	/* 25-31 Reserved */
 };
 
 /* Control message types which always mark the start of an AMS */
@@ -1231,9 +1240,13 @@ enum pd_data_msg_type {
 	PD_DATA_GET_COUNTRY_INFO = 7,
 	/* 8-14 Reserved for REV 3.0 */
 	PD_DATA_ENTER_USB = 8,
+	PD_DATA_EPR_REQUEST = 9,
+	PD_DATA_EPR_MODE = 10,
+	PD_DATA_SOURCE_INFO = 11,
+	PD_DATA_REVISION = 12,
+	/* 13-14 Reserved for REV 3.1 */
 	PD_DATA_VENDOR_DEF = 15,
 };
-
 
 /*
  * Cable plug. See 6.2.1.1.7 Cable Plug. Only applies to SOP' and SOP".
@@ -1365,6 +1378,7 @@ void schedule_deferred_pd_interrupt(int port);
  * @return PD_REV10 for PD Revision 1.0
  *         PD_REV20 for PD Revision 2.0
  *         PD_REV30 for PD Revision 3.0
+ *         PD_REV31 for PD Revision 3.1
  */
 int pd_get_rev(int port, enum tcpci_msg_type type);
 
@@ -1541,6 +1555,12 @@ void pd_set_external_voltage_limit(int port, int mv);
 void pd_set_input_current_limit(int port, uint32_t max_ma,
 				uint32_t supply_voltage);
 
+/**
+ * Translate PD Rev from enum to int in major-minor format.
+ *
+ * @param rev USB PD rev in enum format
+ */
+uint16_t pd_get_revision_int(enum pd_rev_type rev);
 
 /**
  * Update the power contract if it exists.
