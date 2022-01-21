@@ -22,6 +22,30 @@
       },
       "revId": "a9b2b3cc7026c1a2111e62559a7047d189c39e10",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b845d93_d01f706f",
+        "filename": "util/kconfig_check.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2022-01-21T21:49:01Z",
+      "side": 1,
+      "message": "Unfortunately they don\u0027t match. The ad-hoc thing finds things which are not findable from the root Kconfig without setting env vars. Perhaps that is something we should discuss.\n\nI added a test that checks they match to the extent they do.",
+      "parentUuid": "4d726b7a_0d11c6c0",
+      "range": {
+        "startLine": 135,
+        "startChar": 0,
+        "endLine": 166,
+        "endChar": 23
+      },
+      "revId": "a9b2b3cc7026c1a2111e62559a7047d189c39e10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
