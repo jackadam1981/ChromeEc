@@ -6,6 +6,15 @@
 /* Common X86 chipset power control module for Chrome EC */
 
 #include "power/common_x86.h"
+#include "charge_state.h"
+
+#ifndef CHARGER_INITIALIZED_TRIES
+#define CHARGER_INITIALIZED_TRIES 40
+#endif
+
+#ifndef CHARGER_INITIALIZED_DELAY_MS
+#define CHARGER_INITIALIZED_DELAY_MS 100
+#endif
 
 /* Console output macros */
 #define CPUTS(outstr) cputs(CC_CHIPSET, outstr)
@@ -13,6 +22,82 @@
 #define CPRINTF(format, args...) cprintf(CC_CHIPSET, format, ##args)
 
 int power_s5_up;       /* Chipset is sequencing up or down */
+
+#ifdef CONFIG_CHARGER
+/* Flag to indicate if power up was inhibited due to low battery SOC level. */
+static int power_up_inhibited;
+
+/*
+ * Check if AP power up should be inhibited.
+ * 0 = Ok to boot up AP
+ * 1 = AP power up is inhibited.
+ */
+static int is_power_up_inhibited(void)
+{
+	/* Defaulting to power button not pressed. */
+	const int power_button_pressed = 0;
+
+	return charge_prevent_power_on(power_button_pressed) ||
+		charge_want_shutdown();
+}
+
+void power_up_inhibited_cb(void)
+{
+	if (!power_up_inhibited)
+		return;
+
+	if (is_power_up_inhibited()) {
+		CPRINTS("power-up still inhibited");
+		return;
+	}
+
+	CPRINTS("Battery SOC ok to boot AP!");
+	power_up_inhibited = 0;
+
+	chipset_exit_hard_off();
+}
+#endif
+
+enum ec_error_list x86_wait_power_up_ok(void)
+{
+#ifdef CONFIG_CHARGER
+	int tries = 0;
+
+	/*
+	 * Allow charger to be initialized for up to defined tries,
+	 * in case we're trying to boot the AP with no battery.
+	 */
+	while ((tries < CHARGER_INITIALIZED_TRIES) &&
+	       is_power_up_inhibited()) {
+		msleep(CHARGER_INITIALIZED_DELAY_MS);
+		tries++;
+	}
+
+	/*
+	 * Return to G3 if battery level is too low. Set
+	 * power_up_inhibited in order to check the eligibility to boot
+	 * AP up after battery SOC changes.
+	 */
+	if (tries == CHARGER_INITIALIZED_TRIES) {
+		CPRINTS("power-up inhibited");
+		power_up_inhibited = 1;
+		return EC_ERROR_TIMEOUT;
+	}
+
+	power_up_inhibited = 0;
+#endif
+
+	if (IS_ENABLED(CONFIG_VBOOT_EFS) || IS_ENABLED(CONFIG_VBOOT_EFS2)) {
+		/*
+		 * We have to test power readiness here (instead of S5->S3)
+		 * because when entering S5, EC enables EC_ROP_SLP_SUS pin
+		 * which causes (short-powered) system to brown out.
+		 */
+		while (!system_can_boot_ap())
+			msleep(200);
+	}
+	return EC_SUCCESS;
+}
 
 __overridable bool is_passthrough_valid(enum gpio_signal pin_in,
 	enum gpio_signal pin_out, int *p_in_level)
