@@ -485,6 +485,111 @@ def cmd_flash(args: argparse.Namespace) -> int:
 
     # =========================================================================
 
+    logging.basicConfig(level=args.log_level)
+
+    # The "platform name" corresponds to the underlying board (reference design)
+    # that we're running on (not the FPMCU or sensor). At the moment all of the
+    # reference designs use the same GPIOs. If for some reason a design differs
+    # in the future, we will want to add a nested check in the
+    # config_<platform_name> function.
+    # Doing it in this manner allows us to reduce the number of
+    # configurations that we have to maintain (and reduces the amount of testing
+    # if we're only updating a specific config_<platform_name>).
+    args.platform_name = get_platform_name()
+    if not args.platform_name:
+        logging.error("Failed to get platform name")
+        sys.exit(ExitCode.EXIT_CONFIG)
+
+    platform_base_name = get_platform_base_name(args.platform_name)
+    if not platform_base_name:
+        logging.error("Failed to get platform base name")
+        sys.exit(ExitCode.EXIT_CONFIG)
+
+    logging.info(f"Platform name is {args.platform_name} "
+        f"({platform_base_name}).")
+
+    # Replace '-' with '_' as Python does not support '-' in function names
+    config_func = f"config_{'_'.join(args.platform_name.split('-'))}"
+    # Check that the config function exists
+    if config_func in locals():
+        func = locals()[config_func]
+    else:
+        config_func = f"config_{platform_base_name}"
+        logging.info(config_func)
+        if config_func in locals():
+            func = locals()[config_func]
+        else:
+            logging.error(f"No config for platform {args.platform_name}")
+            sys.exit(ExitCode.EXIT_CONFIG)
+
+    if not callable(func):
+        logging.error(f"No config for platform {args.platform_name}")
+        sys.exit(ExitCode.EXIT_CONFIG)
+
+    logging.info(f"Using config for {args.platform_name}.")
+    args.transport, args.device, args.gpios = func()
+
+    # Help the user out with defaults, if no *file* was given.
+    if not args.binary:
+        if args.read:
+            now = datetime.datetime.now(datetime.timezone.utc)
+            tz = now.astimezone().tzinfo
+            now = datetime.datetime.now(tz=tz)
+            date = str(now.strftime('%Y-%m-%dT%H:%M:%S%z'))
+            args.binary = f"/tmp/fpmcu-fw-{date}.bin"
+        else:
+            args.binary = get_default_fw()
+
+    if not args.noservices:
+        logging.info("# Stopping biod and timberslide")
+        run_system_cmd("stop biod", show_output=True)
+        run_system_cmd("stop timberslide "
+            + "LOG_PATH=/sys/kernel/debug/cros_fp/console_log",
+            show_output=True)
+
+    # If cros-ec driver isn't bound on startup, this means the final rebinding
+    # may fail.
+    if (not os.path.exists("/dev/cros_fp") or not
+        stat.S_ISCHR(os.stat("/dev/cros_fp").st_mode)):
+        logging.warning("The cros-ec driver was not bound on startup.")
+
+    if (os.path.exists(args.device) and
+        stat.S_ISCHR(os.stat(args.device).st_mode)):
+        logging.warning(f"The raw driver {args.device} was bound on startup.")
+
+    # Ensure no processes have cros_fp device or debug device open.
+    # This might be biod and/or timberslide.
+    files_open = proc_open_files("/dev/cros_fp\|/sys/kernel/debug/cros_fp/*")
+    if files_open:
+        logging.warning(" Another process has a cros_fp device file open.")
+        logging.warning(f"{os.linesep.join(files_open)}")
+        logging.warning("Try 'stop biod' and")
+        logging.warning("'stop timberslide LOG_PATH=/sys/kernel/debug/cros_fp/"
+            + "console_log'")
+        logging.warning("before running this script.")
+        logging.warning("See b/188985272.")
+
+    # Ensure no processes are using the raw driver. This might be a wedged
+    # stm32mon process spawned by this script.
+    files_open = proc_open_files(args.device)
+    if files_open:
+        logging.warning(f"Another process has {args.device} open.")
+        logging.warning(f"{os.linesep.join(files_open)}")
+        logging.warning(f"Try 'fuser -k {args.device}' before running this "
+            "script.")
+        logging.warning("See b/188985272.")
+
+    #rc = flash_fp_mcu_stm32(args)
+
+    if not args.noservices:
+        logging.info("# Restarting biod and timberslide")
+        run_system_cmd("start timberslide "
+            + "LOG_PATH=/sys/kernel/debug/cros_fp/console_log",
+            show_output=True)
+        run_system_cmd("start biod", show_output=True)
+
+    return rc
+
 def flash_init(parser: argparse.ArgumentParser) -> argparse.ArgumentParser:
     flash_parser = parser.add_parser('flash', help=cmd_flash.__doc__)
     group = flash_parser.add_mutually_exclusive_group()
