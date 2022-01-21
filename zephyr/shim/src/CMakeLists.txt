@@ -57,3 +57,4 @@ zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_BC12_DETECT_PI3USB9201
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_USBC_PPC    ppc.c)
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_USB_PD_TCPM_NCT38XX
                                                             tcpc_nct38xx.c)
+zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_CBI_EEPROM  cbi_eeprom.c)
