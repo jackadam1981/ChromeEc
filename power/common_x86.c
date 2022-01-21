@@ -16,12 +16,43 @@
 #define CHARGER_INITIALIZED_DELAY_MS 100
 #endif
 
+#ifndef GPIO_PG_EC_RSMRST_ODL
+#define GPIO_PG_EC_RSMRST_ODL GPIO_PCH_RSMRST_L
+#endif
+
 /* Console output macros */
 #define CPUTS(outstr) cputs(CC_CHIPSET, outstr)
 #define CPRINTS(format, args...) cprints(CC_CHIPSET, format, ##args)
 #define CPRINTF(format, args...) cprintf(CC_CHIPSET, format, ##args)
 
 int power_s5_up;       /* Chipset is sequencing up or down */
+
+void x86_rsmrst_signal_interrupt(enum gpio_signal signal)
+{
+	int rsmrst_in = gpio_get_level(GPIO_PG_EC_RSMRST_ODL);
+	int rsmrst_out = gpio_get_level(GPIO_PCH_RSMRST_L);
+
+	/*
+	 * This function is called when rsmrst changes state. If rsmrst
+	 * has been asserted (high -> low) then pass this new state to PCH.
+	 */
+	if (!rsmrst_in && (rsmrst_in != rsmrst_out))
+		gpio_set_level(GPIO_PCH_RSMRST_L, rsmrst_in);
+
+	/*
+	 * Call the main power signal interrupt handler to wake up the chipset
+	 * task which handles low->high rsmrst pass through.
+	 */
+	power_signal_interrupt(signal);
+}
+
+__overridable void board_before_rsmrst(int rsmrst)
+{
+}
+
+__overridable void board_after_rsmrst(int rsmrst)
+{
+}
 
 #ifdef CONFIG_CHARGER
 /* Flag to indicate if power up was inhibited due to low battery SOC level. */
