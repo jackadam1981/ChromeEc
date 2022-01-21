@@ -16,6 +16,24 @@
       "message": "Would it make more sense to do this just before actually shutting down in board_hibernate_late? There could be messages emitted by other components that this wouldn\u0027t flush.",
       "revId": "55b427ff2415ad60843061e434bd295c1ad5b92b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d122e63a_d19b31ff",
+        "filename": "zephyr/projects/nissa/src/usbc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-01-21T04:54:36Z",
+      "side": 1,
+      "message": "That was what we had, but with the Zephyr hibernate driver, quite a lot gets shut down before board_hibernate_late gets called, and the console is basically unavailable at that point.",
+      "parentUuid": "98f85775_3cf36e70",
+      "revId": "55b427ff2415ad60843061e434bd295c1ad5b92b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
