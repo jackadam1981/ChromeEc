@@ -252,19 +252,19 @@ def get_gpio_by_name(bases: dict, name: str) -> int:
     if not bases or rc != 0:
         logging.error('Failed to find GPIO %s', name)
         sys.exit(ExitCode.EXIT_RUNTIME)
-    gpio = stdout.split()
+    gpio_str = stdout.split()
     # e.g.
     #   gpiofind FP_RST_L
     #   gpiochip0 22
     #
     # Gpio location is: 22 + bases['gpiochip0']
-    return int(gpio[1]) + int(bases[gpio[0]])
+    return int(gpio_str[1]) + int(bases[gpio_str[0]])
 
 
-def get_gpio(ranges, bases, gpio) -> int:
-    if isinstance(gpio, int):
-        return get_gpio_by_index(ranges, gpio)
-    return get_gpio_by_name(bases, gpio)
+def get_gpio(ranges, bases, ngpio) -> int:
+    if isinstance(ngpio, int):
+        return get_gpio_by_index(ranges, ngpio)
+    return get_gpio_by_name(bases, ngpio)
 
 
 def get_gpios(gpios: FPGpios) -> FPGpios:
@@ -273,6 +273,56 @@ def get_gpios(gpios: FPGpios) -> FPGpios:
     for key in vars(gpios):
         vars(gpios)[key] = get_gpio(ranges, bases, vars(gpios)[key])
     return gpios
+
+
+def gpio(cmd, *args) -> list:
+    """Usage: gpio <unexport|export|in|out|0|1|get> <signal> [signal...]"""
+
+    # ==============================================================
+    # Internal commands
+    def export(cmd: str, signal: int):
+        klog(f'Set gpio {signal} to {cmd}')
+        writeline('/sys/class/gpio/' + cmd, str(signal))
+
+    def direction(cmd: str, signal: int):
+        klog(f'Set gpio {signal} direction to {cmd}')
+        writeline(f'/sys/class/gpio/gpio{signal}/direction', cmd)
+
+    def value_set(cmd: str, signal: int):
+        klog(f'Set gpio {signal} to {cmd}')
+        writeline(f'/sys/class/gpio/gpio{signal}/value', cmd)
+
+    def value_get(_cmd: str, signal: int):
+        klog(f'Get gpio {signal}')
+        return readline(f'/sys/class/gpio/gpio{signal}/value')
+    # ==============================================================
+
+    responses = []
+    cmds = {'export' : export,
+            'unexport' : export,
+            'in' : direction,
+            'out' : direction,
+            '0' : value_set,
+            '1' : value_set,
+            'get' : value_get,
+            }
+    if not cmd in cmds:
+        logging.error('Invalid gpio command: %s', cmd)
+        sys.exit(ExitCode.EXIT_RUNTIME)
+    for signal in args:
+        response = cmds[cmd](cmd, signal)
+        if response:
+            responses.append(response)
+    return responses
+
+
+def warn_gpio(signal: str, expected_value: str, msg: str):
+    value = gpio('get', signal)
+    if not value:
+        logging.error('Error reading gpio %s value', signal)
+        sys.exit(ExitCode.EXIT_RUNTIME)
+    if value[0] != expected_value:
+        logging.warning(msg)
 
 
 def get_platform_name() -> str:
