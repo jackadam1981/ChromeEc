@@ -52,6 +52,24 @@
       "parentUuid": "6f448efb_11b2a1a4",
       "revId": "fad35cf93634972669aa88338bceed40a93e7105",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4374253b_2dcb615c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-01-21T23:30:49Z",
+      "side": 1,
+      "message": "\u003e I think we should remove \u0027expected speedup\u0027 from the test and just check if using aligned buffer/advanced memset is faster.\n\nsgtm.",
+      "parentUuid": "568e72e3_a1a45016",
+      "revId": "fad35cf93634972669aa88338bceed40a93e7105",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
