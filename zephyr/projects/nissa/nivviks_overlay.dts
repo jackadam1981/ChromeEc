@@ -6,6 +6,10 @@
 #include <cros/thermistor/thermistor.dtsi>
 
 / {
+	aliases {
+		cbi-wp = &gpio_ec_wp_odl;
+	};
+
 	batteries {
 		default_battery: lgc {
 			compatible = "lgc,ap18c8k";
@@ -209,8 +213,6 @@
 		pagesize = <16>;
 		address-width = <8>;
 		timeout = <5>;
-		/* gpio_ec_wp_odl */
-		wp-gpios = <&gpioa 1 GPIO_INPUT>;
 	};
 };
 

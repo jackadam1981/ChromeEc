@@ -12,6 +12,7 @@
 		i2c-4 = &i2c4_1;
 		i2c-5 = &i2c5_0;
 		i2c-7 = &i2c7_0;
+		cbi-wp = &gpio_wp;
 	};
 
 	named-i2c-ports {
