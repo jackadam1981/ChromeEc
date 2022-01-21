@@ -125,6 +125,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "683b956f_ce8fc60e",
+        "filename": "board/host/usb_pd_policy.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-01-21T21:10:22Z",
+      "side": 1,
+      "message": "They\u0027re the same thing under the hood. As an incremental fix, I\u0027m OK with either.",
+      "parentUuid": "ee2becde_e1756918",
+      "revId": "df438ccb6420272fa1554fb840159016d43bf8d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e7713b24_6a02a913",
