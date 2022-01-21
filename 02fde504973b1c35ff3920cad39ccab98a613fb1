@@ -16,6 +16,29 @@
       "message": "I\u0027d like to start using this code with Nissa.\nAny mnore thoughts?",
       "revId": "02fde504973b1c35ff3920cad39ccab98a613fb1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "efc75292_2d706df1",
+        "filename": "zephyr/shim/include/zephyr_gpio_signal.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-01-21T20:26:09Z",
+      "side": 1,
+      "message": "Add a comment that using DT_GPIO_\u003cenum\u003e and GPIO_DT_LABEL() resolve at build time.  You must use gpio_get_dt_spec() to convert a legacy \"enum gpio_signal\" to the Zephyr gpio_dt_spec pointer at runtime.",
+      "range": {
+        "startLine": 89,
+        "startChar": 0,
+        "endLine": 90,
+        "endChar": 68
+      },
+      "revId": "02fde504973b1c35ff3920cad39ccab98a613fb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
