@@ -254,6 +254,54 @@ def get_gpios(gpios: FPGpios) -> FPGpios:
         vars(gpios)[key] = get_gpio(ranges, bases, vars(gpios)[key])
     return gpios
 
+# Usage: gpio <unexport|export|in|out|0|1|get> <signal> [signal...]
+def gpio(cmd, *signals) -> list:
+
+    # ==============================================================
+    # Internal commands
+    def export(cmd: str, signal: int):
+        klog(f"Set gpio {signal} to {cmd}")
+        writeline("/sys/class/gpio/" + cmd, str(signal))
+
+    def direction(cmd: str, signal: int):
+        klog(f"Set gpio {signal} direction to {cmd}")
+        writeline(f"/sys/class/gpio/gpio{signal}/direction", cmd)
+
+    def value_set(cmd: str, signal: int):
+        klog(f"Set gpio {signal} to {cmd}")
+        writeline(f"/sys/class/gpio/gpio{signal}/value", cmd)
+
+    def value_get(cmd: str, signal: int):
+        klog(f"Get gpio {signal}")
+        return readline(f"/sys/class/gpio/gpio{signal}/value")
+    # ==============================================================
+
+    responses = []
+    cmds = {"export" : export,
+            "unexport" : export,
+            "in" : direction,
+            "out" : direction,
+            "0" : value_set,
+            "1" : value_set,
+            "get" : value_get,
+            }
+    if not cmd in cmds:
+        logging.error(f"Invalid gpio command: {cmd}")
+        sys.exit(ExitCode.EXIT_RUNTIME)
+    for signal in signals:
+        response = cmds[cmd](cmd, signal)
+        if response:
+            responses.append(response)
+    return responses
+
+def warn_gpio(signal: str, expected_value: str, msg: str):
+    value = gpio("get", signal)
+    if not value:
+        logging.error(f"Error reading gpio {signal} value")
+        sys.exit(ExitCode.EXIT_RUNTIME)
+    if value[0] != expected_value:
+        logging.warning(msg)
+
 # Get the underlying board (reference design) that we're running on (not the
 # FPMCU or sensor).
 # This may be an extended platform name, like nami-kernelnext, hatch-arc-r,
