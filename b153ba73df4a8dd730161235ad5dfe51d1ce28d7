@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2fa388ad_e5e8c928",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2022-01-21T20:55:21Z",
+      "side": 1,
+      "message": "Please add more descriptive header for each commit in this chain. e.g. something like \"power: consolidate x86 - introduce common_x86.c\"",
+      "revId": "b153ba73df4a8dd730161235ad5dfe51d1ce28d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b7a0507d_9d429192",
         "filename": "power/amd_x86.c",
         "patchSetId": 1
