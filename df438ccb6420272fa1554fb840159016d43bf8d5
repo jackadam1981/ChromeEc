@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7713b24_6a02a913",
+        "filename": "common/mock/usb_pe_drp_sm_mock.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-01-21T00:05:32Z",
+      "side": 1,
+      "message": "Should we have two mocks? One for regular charge_manager and another for DRP? They\u0027d essentially be the same function.",
+      "revId": "df438ccb6420272fa1554fb840159016d43bf8d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
