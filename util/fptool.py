@@ -14,6 +14,7 @@ import glob
 import re
 import datetime
 import stat
+import time
 
 
 class ExitCode:
@@ -432,6 +433,188 @@ def proc_open_files(*args) -> list:
     return pids
 
 
+def flash_fp_mcu_stm32(args):
+    """Main flashing routine."""
+    stm32_flags = f'-p --retries {args.connect_retries}'
+    if args.config.transport == 'UART':
+        stm32_flags += f' --baudrate {args.baudrate}'
+        stm32_flags += f' --device {args.config.device}'
+    else:
+        stm32_flags += f' -s {args.config.device}'
+
+    if args.hello:
+        logging.info('# Saying hello over %s', args.config.transport)
+    else:
+        if not args.noremove_flash_write_protect:
+            # Remove Write protect
+            stm32_flags += ' -u'
+        if not args.noremove_flash_read_protect:
+            # Remove Read protect
+            stm32_flags += ' -U'
+        if args.read:
+            # Read from FPMCU to file
+            if os.path.isfile(args.binary):
+                logging.error('Output file already exists: %s', args.binary)
+                sys.exit(ExitCode.EXIT_PRECONDITION)
+            logging.info('# Reading to {args.binary} over %s',
+                         args.config.transport)
+            stm32_flags += f' -r {args.binary}'
+        elif os.path.isfile(args.binary):
+            # Write to FPMCU from file
+            logging.info('# Flashing "%s" over %s', args.binary,
+                         args.config.transport)
+            stm32_flags += f' -e -w {args.binary}'
+        else:
+            logging.error('Invalid image file: %s', args.binary)
+            sys.exit(ExitCode.EXIT_PRECONDITION)
+
+    # Assert that write protect is disabled
+    assert_wp_is_disabled()
+
+    if args.config.transport == 'UART':
+        device_id = get_uartid()
+    else:
+        device_id = get_spiid()
+
+    if not device_id:
+        logging.error('Unable to find FP sensor %s device',
+                      args.config.transport)
+        sys.exit(ExitCode.EXIT_PRECONDITION)
+
+    logging.info('Flashing %s device ID: %s', args.config.transport, device_id)
+
+    # Remove cros_fp if present
+    klog('Unbinding cros-ec driver')
+    if args.config.transport == 'UART':
+        unbind_file = '/sys/bus/serial/drivers/cros-ec-uart/unbind'
+    else:
+        unbind_file = '/sys/bus/spi/drivers/cros-ec-spi/unbind'
+    writeline(unbind_file, device_id)
+
+    # Configure the MCU Boot0 and NRST GPIOs
+    gpio('export', args.config.gpios.BOOT0, args.config.gpios.NRST)
+    gpio('out', args.config.gpios.BOOT0, args.config.gpios.NRST)
+
+    # Reset sequence to enter bootloader mode
+    gpio('1', args.config.gpios.BOOT0)
+    gpio('0', args.config.gpios.NRST)
+    time.sleep(0.001)
+
+    klog('Binding raw driver')
+    if args.config.transport == 'UART':
+        dev_name = get_uart_dev_name(device_id)
+        logging.info('Serial device: %s', dev_name)
+        # load AMDI0020:01 ttyS1
+        writeline('/sys/bus/platform/drivers/dw-apb-uart/unbind', dev_name)
+        writeline('/sys/bus/platform/drivers/dw-apb-uart/bind', dev_name)
+    else:
+        driver_override = f'/sys/bus/spi/devices/{device_id}/driver_override'
+        writeline(driver_override, 'spidev')
+        writeline('/sys/bus/spi/drivers/spidev/bind', device_id)
+
+    # The following sleep is a workaround to mitigate the effects of a
+    # poorly behaved chip select line. See b/145023809.
+    time.sleep(0.5)
+
+    # We do not expect the drivers to change the pin state when binding.
+    # If you receive this warning, the driver needs to be fixed on this board
+    # and this flash attempt will probably fail.
+    warn_gpio(f'{args.config.gpios.BOOT0}', '1',
+              'One of the drivers changed BOOT0 pin state on bind attempt.')
+    warn_gpio(f'{args.config.gpios.NRST}', '0',
+              'One of the drivers changed NRST pin state on bind attempt.')
+
+    if (not os.path.exists(args.config.device)
+            or not stat.S_ISCHR(os.stat(args.config.device).st_mode)):
+        logging.error('Failed to bind raw device driver.')
+        sys.exit(ExitCode.EXIT_RUNTIME)
+
+    cmd = f'stm32mon {stm32_flags}'
+    rc = 0
+    for attempt in range(args.retries):
+        # Reset sequence to enter bootloader mode
+        gpio('0', args.config.gpios.NRST)
+        time.sleep(0.01)
+        # Release reset as the SPI bus is now ready
+        gpio('1', args.config.gpios.NRST)
+
+        # As per section '68: Bootloader timings' from application note below:
+        # https://www.st.com/resource/en/application_note/
+        #   cd00167594-stm32-microcontroller-system-memory-boot-mode-
+        #   stmicroelectronics.pdf
+        # bootloader startup time is 16.63 ms for STM32F74xxx/75xxx
+        # and 53.975 msfor STM32H74xxx/75xxx.
+        # SPI needs 1 us delay for one SPI byte sending.
+        # Keeping some margin, add delay of 100 ms to consider minimum
+        # bootloader
+        # startup time after the reset for stm32 devices.
+        time.sleep(0.1)
+
+        # Print out the actual underlying command we're running and run it
+        logging.info('# %s', cmd)
+        rc, _, _ = run_system_cmd(cmd, show_output=True)
+        if rc == 0:
+            break
+        logging.info('Attempt %d failed.', attempt)
+        time.sleep(1)
+
+    # unload device
+    if args.config.transport != 'UART':
+        klog('Unbinding raw driver')
+        writeline('/sys/bus/spi/drivers/spidev/unbind', device_id)
+
+    # Go back to normal mode
+    gpio('out', args.config.gpios.NRST)
+    gpio('0', args.config.gpios.BOOT0, args.config.gpios.NRST)
+    gpio('1', args.config.gpios.NRST)
+
+    # Give up GPIO control, unless we need to keep these driving as
+    # outputs because they're not open-drain signals.
+    # TODO(b/179839337): Make this the default and properly support
+    # open-drain outputs on other platforms.
+    if args.platform_name != 'strongbad' and args.platform_name != 'herobrine':
+        gpio('in', args.config.gpios.BOOT0, args.config.gpios.NRST)
+
+    gpio('unexport', args.config.gpios.BOOT0, args.config.gpios.NRST)
+
+    # Dartmonkey's RO has a flashprotect logic issue that forces reboot loops
+    # when SW-WP is enabled and HW-WP is disabled. It is avoided if a POR is
+    # detected on boot. We force a POR here to ensure we avoid this reboot loop.
+    # See to b/146428434.
+    if args.config.gpios.PWREN > 0:
+        logging.info('Power cycling the FPMCU.')
+        gpio('export', args.config.gpios.PWREN)
+        gpio('out', args.config.gpios.PWREN)
+        gpio('0', args.config.gpios.PWREN)
+        # Must outlast hardware soft start, which is typically ~3ms.
+        time.sleep(0.5)
+        gpio('1', args.config.gpios.PWREN)
+        # Power enable line is externally pulled down, so leave as output-high.
+        gpio('unexport', args.config.gpios.PWREN)
+
+    # Put back cros_fp driver if transport is SPI
+    if args.config.transport != 'UART':
+        # wait for FP MCU to come back up (including RWSIG delay)
+        time.sleep(2)
+        klog('Binding cros-ec driver')
+        driver_override = f'/sys/bus/spi/devices/{device_id}/driver_override'
+        writeline(driver_override, '')
+        writeline('/sys/bus/spi/drivers/cros-ec-spi/bind', device_id)
+
+    if rc != 0:
+        return ExitCode.EXIT_RUNTIME
+
+    # Inform user to reboot if transport is UART.
+    # Display fw version is transport is SPI
+    if args.config.transport == 'UART':
+        logging.warning('Please reboot this device.')
+    else:
+        # Test it
+        klog('Query version and reset flags')
+        run_system_cmd('ectool --name=cros_fp version', show_output=True)
+        run_system_cmd('ectool --name=cros_fp uptimeinfo', show_output=True)
+
+
 def cmd_flash(args: argparse.Namespace):
     """Flash the entire firmware FPMCU using the built-in bootloader.
 
@@ -590,10 +773,10 @@ def cmd_flash(args: argparse.Namespace):
 
     if not args.noservices:
         logging.info('# Stopping biod and timberslide')
-        run_system_cmd('stop biod', show_output=True)
+        run_system_cmd('stop biod', show_output=True, check=False)
         run_system_cmd('stop timberslide '
                        + 'LOG_PATH=/sys/kernel/debug/cros_fp/console_log',
-                       show_output=True)
+                       show_output=True, check=False)
 
     # If cros-ec driver isn't bound on startup, this means the final rebinding
     # may fail.
@@ -601,9 +784,10 @@ def cmd_flash(args: argparse.Namespace):
             stat.S_ISCHR(os.stat('/dev/cros_fp').st_mode)):
         logging.warning('The cros-ec driver was not bound on startup.')
 
-    if (os.path.exists(args.device) and
-            stat.S_ISCHR(os.stat(args.device).st_mode)):
-        logging.warning('The raw driver %s was bound on startup.', args.device)
+    if (os.path.exists(args.config.device) and
+            stat.S_ISCHR(os.stat(args.config.device).st_mode)):
+        logging.warning('The raw driver %s was bound on startup.',
+                        args.config.device)
 
     # Ensure no processes have cros_fp device or debug device open.
     # This might be biod and/or timberslide.
@@ -619,15 +803,15 @@ def cmd_flash(args: argparse.Namespace):
 
     # Ensure no processes are using the raw driver. This might be a wedged
     # stm32mon process spawned by this script.
-    files_open = proc_open_files(args.device)
+    files_open = proc_open_files(args.config.device)
     if files_open:
-        logging.warning('Another process has %s open.', args.device)
+        logging.warning('Another process has %s open.', args.config.device)
         logging.warning('%s', os.linesep.join(files_open))
         logging.warning('Try "fuser -k %s" before running this script.',
-                        args.device)
+                        args.config.device)
         logging.warning('See b/188985272.')
 
-    # rc = flash_fp_mcu_stm32(args)
+    rc = flash_fp_mcu_stm32(args)
 
     if not args.noservices:
         logging.info('# Restarting biod and timberslide')
@@ -635,6 +819,8 @@ def cmd_flash(args: argparse.Namespace):
                        + 'LOG_PATH=/sys/kernel/debug/cros_fp/console_log',
                        show_output=True)
         run_system_cmd('start biod', show_output=True)
+
+    return rc
 
 
 def flash_init(parser):
