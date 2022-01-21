@@ -134,6 +134,30 @@
       },
       "revId": "f942bbe3d185319e23f296454cd6a48c10b8bb51",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c3daaae_593249be",
+        "filename": "zephyr/test/drivers/src/integration_usb.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-01-21T19:10:26Z",
+      "side": 1,
+      "message": "OK.",
+      "parentUuid": "2c4871b5_1f9868b8",
+      "range": {
+        "startLine": 287,
+        "startChar": 16,
+        "endLine": 287,
+        "endChar": 34
+      },
+      "revId": "f942bbe3d185319e23f296454cd6a48c10b8bb51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
