@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "161b03de_2c6cb5a9",
+        "filename": "board/host/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-01-21T20:22:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "10010a5b_d287e32b",
+      "revId": "df438ccb6420272fa1554fb840159016d43bf8d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dd59cbae_d59ae0fa",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-01-21T17:06:42Z",
       "side": 1,
       "message": "I\u0027d prefer it if this file was test-agnostic. Is the idea here to avoid conflicting with the common definition in charge_manager? I\u0027d probably be OK with something like\n #ifndef CHARGE_MANAGER\n \nI think, though, you could declare this as test_mockable here and get what you want. I don\u0027t know what the most idiomatic way of doing it is.",
+      "revId": "df438ccb6420272fa1554fb840159016d43bf8d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed356e74_5cbbbfcf",
+        "filename": "board/host/usb_pd_policy.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-01-21T20:22:25Z",
+      "side": 1,
+      "message": "So if I make it \"#ifndef CONFIG_CHARGE_MANAGER\" I get several undefined errors like:\nec/common/usb_pd_dual_role.c:368: undefined reference to `pd_set_input_current_limit\u0027\n\nHonestly that suggests it\u0027s a bug in how we\u0027re compiling those undefined error files in that they should be linked with charge_manager.o\n\nI\u0027l explore that path while I await your thoughts on this and other comments.",
+      "parentUuid": "dd59cbae_d59ae0fa",
       "revId": "df438ccb6420272fa1554fb840159016d43bf8d5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -70,6 +106,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab90ecb8_bf26aa17",
+        "filename": "common/mock/usb_pe_drp_sm_mock.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-01-21T20:22:25Z",
+      "side": 1,
+      "message": "I ran into other linker issues, but actually I think I found a better spot in fake_usbc.c right where the getter for the same function is!",
+      "parentUuid": "52a75266_9b4a605d",
+      "revId": "df438ccb6420272fa1554fb840159016d43bf8d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4e056904_8552cf37",
@@ -83,6 +137,24 @@
       "writtenOn": "2022-01-21T17:06:42Z",
       "side": 1,
       "message": "What is this for?",
+      "revId": "df438ccb6420272fa1554fb840159016d43bf8d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "07d08818_f1ca8fc8",
+        "filename": "common/mock/usb_pe_drp_sm_mock.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-01-21T20:22:25Z",
+      "side": 1,
+      "message": "File deleted.\n\nI missed this when copying over other mock template.",
+      "parentUuid": "4e056904_8552cf37",
       "revId": "df438ccb6420272fa1554fb840159016d43bf8d5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -104,6 +176,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d5cfba6_3e610466",
+        "filename": "test/charge_manager_drp_charging.mocklist",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-01-21T20:22:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0b30a5c0_2563f7fa",
+      "revId": "df438ccb6420272fa1554fb840159016d43bf8d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ed23b014_b3445110",
@@ -117,6 +207,24 @@
       "writtenOn": "2022-01-21T17:06:42Z",
       "side": 1,
       "message": "I would move adding a new test into its own CL. That would be more convenient if we want to roll back the new test or the mock changes (not that I think either of those is likely).",
+      "revId": "df438ccb6420272fa1554fb840159016d43bf8d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec5b1800_c299e84d",
+        "filename": "zephyr/test/drivers/src/espi.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-01-21T20:22:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ed23b014_b3445110",
       "revId": "df438ccb6420272fa1554fb840159016d43bf8d5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
