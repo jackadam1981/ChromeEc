@@ -8,6 +8,7 @@
 #ifndef __CROS_EC_COMMON_X86_H
 #define __CROS_EC_COMMON_X86_H
 
+#include "board_config.h"
 #include "chipset.h"
 #include "chipset_config.h"
 #include "common.h"
