@@ -16,6 +16,29 @@
       "message": "I verified this on my device, but I\u0027ll mark this verified once Charlie finishes his tests. Vadim, can you start taking a look at this CL?\n\n",
       "revId": "de568ce0d98091e88ba4453b88041ad3155588ce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "afe4aea2_07dcff62",
+        "filename": "board/cr50/ap_state.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-01-21T22:01:37Z",
+      "side": 1,
+      "message": "why does this variable have to be of the same type as device_state?\n\nCould disable_ds_temp not be a Boolean? Set to false by default and then set to true when vendor command is received?\n\nAnd no need to extend the device_state enum for this one off state.",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 60
+      },
+      "revId": "de568ce0d98091e88ba4453b88041ad3155588ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
