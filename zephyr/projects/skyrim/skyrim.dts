@@ -71,7 +71,7 @@
 			gpios = <&gpio8 1 GPIO_OUT_LOW>;
 			enum-name = "GPIO_EC_CBI_WP";
 		};
-		ec_wp_l {
+		gpio_wp: ec_wp_l {
 			gpios = <&gpiod 7 (GPIO_INPUT | GPIO_ACTIVE_LOW)>;
 			enum-name = "GPIO_WP_L";
 		};

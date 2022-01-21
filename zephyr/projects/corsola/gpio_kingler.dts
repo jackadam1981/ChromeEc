@@ -4,6 +4,10 @@
  */
 
 / {
+	aliases {
+		cbi-wp = &gpio_ec_wp_l;
+	};
+
 	named-gpios {
 		compatible = "named-gpios";
 

@@ -7,6 +7,10 @@
 #include <dt-bindings/wake_mask_event_defines.h>
 
 / {
+	aliases {
+		cbi-wp = &ec_flash_wp_odl;
+	};
+
 	named-gpios {
 		compatible = "named-gpios";
 
