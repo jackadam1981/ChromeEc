@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "024685db_f7ab65d0",
+        "filename": "zephyr/projects/nissa/src/nivviks/board_config.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-01-21T20:37:12Z",
+      "side": 1,
+      "message": "The mix of DT_GPIO_\u003cenum\u003e and the lower case node label is somewhat confusing.\n\nIf GPIO_DT_LABEL(nodelabel) works equivalent to DT_GPIO_\u003cenum\u003e, then maybe we should consistently use GPIO_DT_LABEL().\n\nFrom a code search perspective, a user can more easily find all references to a GPIO by searching on the nodelabel.",
+      "range": {
+        "startLine": 30,
+        "startChar": 24,
+        "endLine": 30,
+        "endChar": 53
+      },
+      "revId": "e9e96c691057e84a3797931371cf346c5ee1591c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7db6395a_669603f4",
+        "filename": "zephyr/projects/nissa/src/nivviks/board_config.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-01-21T20:37:12Z",
+      "side": 1,
+      "message": "I suppose this is a necessary evil at the moment because the gpio_dt_spec doesn\u0027t have all the required flags.",
+      "range": {
+        "startLine": 37,
+        "startChar": 2,
+        "endLine": 37,
+        "endChar": 12
+      },
+      "revId": "e9e96c691057e84a3797931371cf346c5ee1591c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
