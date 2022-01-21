@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1a3f1b3_38472cb4",
+        "filename": "util/fptool.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-01-21T16:46:11Z",
+      "side": 1,
+      "message": "Can you add return types?\n\nhttps://docs.python.org/3/library/typing.html\nhttp://mypy-lang.org/examples.html",
+      "range": {
+        "startLine": 20,
+        "startChar": 28,
+        "endLine": 20,
+        "endChar": 29
+      },
+      "revId": "106d34d4e4541cb785451b19a41b168c5628f8c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b422592_762ab1bc",
+        "filename": "util/fptool.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-01-21T16:46:11Z",
+      "side": 1,
+      "message": "Can you add return types?\n\nhttps://docs.python.org/3/library/typing.html\nhttp://mypy-lang.org/examples.html",
+      "range": {
+        "startLine": 37,
+        "startChar": 42,
+        "endLine": 37,
+        "endChar": 43
+      },
+      "revId": "106d34d4e4541cb785451b19a41b168c5628f8c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
