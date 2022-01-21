@@ -3,6 +3,40 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "10010a5b_d287e32b",
+        "filename": "board/host/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-01-21T17:06:42Z",
+      "side": 1,
+      "message": "I\u0027d prefer this to be test-agnostic. What happens without these ifdefs?",
+      "revId": "df438ccb6420272fa1554fb840159016d43bf8d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd59cbae_d59ae0fa",
+        "filename": "board/host/usb_pd_policy.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-01-21T17:06:42Z",
+      "side": 1,
+      "message": "I\u0027d prefer it if this file was test-agnostic. Is the idea here to avoid conflicting with the common definition in charge_manager? I\u0027d probably be OK with something like\n #ifndef CHARGE_MANAGER\n \nI think, though, you could declare this as test_mockable here and get what you want. I don\u0027t know what the most idiomatic way of doing it is.",
+      "revId": "df438ccb6420272fa1554fb840159016d43bf8d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e7713b24_6a02a913",
         "filename": "common/mock/usb_pe_drp_sm_mock.c",
         "patchSetId": 5
@@ -14,6 +48,75 @@
       "writtenOn": "2022-01-21T00:05:32Z",
       "side": 1,
       "message": "Should we have two mocks? One for regular charge_manager and another for DRP? They\u0027d essentially be the same function.",
+      "revId": "df438ccb6420272fa1554fb840159016d43bf8d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52a75266_9b4a605d",
+        "filename": "common/mock/usb_pe_drp_sm_mock.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-01-21T17:06:42Z",
+      "side": 1,
+      "message": "I\u0027m not sure what you mean. I think this function should go in the existing common/mock/usb_pe_sm_mock.c. Does that answer your question?",
+      "parentUuid": "e7713b24_6a02a913",
+      "revId": "df438ccb6420272fa1554fb840159016d43bf8d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e056904_8552cf37",
+        "filename": "common/mock/usb_pe_drp_sm_mock.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-01-21T17:06:42Z",
+      "side": 1,
+      "message": "What is this for?",
+      "revId": "df438ccb6420272fa1554fb840159016d43bf8d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b30a5c0_2563f7fa",
+        "filename": "test/charge_manager_drp_charging.mocklist",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-01-21T17:06:42Z",
+      "side": 1,
+      "message": "charge_manager and charge_manager_drp_charging are built from the same source file with slightly different configs. It looks like for now, they have the same mocklist. One way to keep it that way would be to make this file a symlink to charge_manager.mocklist.",
+      "revId": "df438ccb6420272fa1554fb840159016d43bf8d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed23b014_b3445110",
+        "filename": "zephyr/test/drivers/src/espi.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-01-21T17:06:42Z",
+      "side": 1,
+      "message": "I would move adding a new test into its own CL. That would be more convenient if we want to roll back the new test or the mock changes (not that I think either of those is likely).",
       "revId": "df438ccb6420272fa1554fb840159016d43bf8d5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
