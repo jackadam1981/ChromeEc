@@ -70,6 +70,24 @@
       "parentUuid": "cee8378f_1b9078c6",
       "revId": "1025609fd82a3c24be7d5efdb6a016a3bf2040fb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "848873e5_70fd7f6e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1528447
+      },
+      "writtenOn": "2022-01-21T02:39:25Z",
+      "side": 1,
+      "message": "Thank you Tom,\nAbandoning this CL.\nIt is replaced by the chain CLs starting with ccrev.com/c/3405631",
+      "parentUuid": "0a514f7e_b6615d22",
+      "revId": "1025609fd82a3c24be7d5efdb6a016a3bf2040fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
