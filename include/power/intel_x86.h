@@ -13,7 +13,6 @@
 #include "espi.h"
 #include "power.h"
 
-
 /**
  * Handle RSMRST signal.
  *

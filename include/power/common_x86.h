@@ -73,12 +73,22 @@ void lpc_s0ix_hang_detected(void);
 #endif
 
 /**
- * Force chipset to G3 state.
+ * Provides custom logic for passthrough signals
  *
- * @return power_state New chipset state.
+ * The default implementation is to return valid.  If a board needs
+ * to perform additional checks or overrides on passthrough signals
+ * they may override this function
  */
-__override_proto enum power_state chipset_force_g3(void);
+__override_proto bool is_passthrough_valid(enum gpio_signal pin_in,
+		enum gpio_signal pin_out, int *p_in_level);
 
+void handle_pass_through(enum gpio_signal pin_in,
+		enum gpio_signal pin_out);
+
+void handle_pass_through_with_callbacks(enum gpio_signal pin_in,
+		enum gpio_signal pin_out,
+		void (*before_write_callback)(int),
+		void (*after_write_callback)(int));
 /**
  * Introduces SYS_RESET_L Debounce time delay
  *
@@ -88,9 +98,17 @@ __override_proto enum power_state chipset_force_g3(void);
  */
 __override_proto void x86_sys_reset_delay(void);
 
+/**
+ * Force chipset to G3 state.
+ *
+ * @return power_state New chipset state.
+ */
+__override_proto enum power_state chipset_force_g3(void);
+
 /* Get system sleep state through GPIOs or VWs */
 static inline int chipset_get_sleep_signal(enum sys_sleep_state state)
 {
 	return power_signal_get_level(sleep_sig[state]);
 }
+
 #endif /* __CROS_EC_COMMON_X86_H */
