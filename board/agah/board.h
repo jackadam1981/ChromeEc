@@ -47,10 +47,12 @@
 /* USB Type A Features */
 #define USB_PORT_COUNT			1
 #define CONFIG_USB_PORT_POWER_DUMB
+#define CONFIG_USBC_RETIMER_PS8811
 
 /* USB Type C and USB PD defines */
 #define CONFIG_USB_PD_TCPM_RT1715
 #undef CONFIG_USB_PD_TCPM_NCT38XX
+#define CONFIG_USBC_RETIMER_PS8818
 
 /* I2C speed console command */
 #define CONFIG_CMD_I2C_SPEED
@@ -195,6 +197,13 @@ enum mft_channel {
 	MFT_CH_0 = 0,
 	MFT_CH_1,
 	MFT_CH_COUNT
+};
+
+/* USB-A ports */
+enum usba_port {
+	USBA_PORT_A0 = 0,
+	USBA_PORT_A1,
+	USBA_PORT_COUNT
 };
 
 /**
