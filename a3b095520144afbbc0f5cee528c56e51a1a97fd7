@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b6f8d40_bb924b9c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 16
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-01-22T05:57:39Z",
+      "side": 1,
+      "message": "I\u0027ve made the changes to another CL, since I somehow messed up when tried\nto separate out the file move.",
+      "revId": "a3b095520144afbbc0f5cee528c56e51a1a97fd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eec5738f_5f832d6b",
@@ -14,6 +31,30 @@
       "writtenOn": "2022-01-21T22:40:06Z",
       "side": 1,
       "message": "\"int-gpio\" or \"irq-gpio\" is better to make some of the macros easier to read.\n\n\t.port \u003d DEVICE_DT_GET(DT_GPIO_CTLR(gpio, gpios)), \\\n\nbecomes\n\n\t.port \u003d DEVICE_DT_GET(DT_GPIO_CTLR(irq_gpio, gpios)), \\",
+      "range": {
+        "startLine": 7,
+        "startChar": 6,
+        "endLine": 7,
+        "endChar": 10
+      },
+      "revId": "a3b095520144afbbc0f5cee528c56e51a1a97fd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa1872f9_b9e300a7",
+        "filename": "zephyr/dts/bindings/gpio/cros-ec,gpio-interrupts.yaml",
+        "patchSetId": 16
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-01-22T05:57:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eec5738f_5f832d6b",
       "range": {
         "startLine": 7,
         "startChar": 6,
@@ -47,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a1b5a68_65f502dd",
+        "filename": "zephyr/shim/include/gpio/gpio.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-01-22T05:57:39Z",
+      "side": 1,
+      "message": "Yes, when that lands, I\u0027ll update this CL.",
+      "parentUuid": "a6338952_45f3628e",
+      "range": {
+        "startLine": 63,
+        "startChar": 21,
+        "endLine": 63,
+        "endChar": 33
+      },
+      "revId": "a3b095520144afbbc0f5cee528c56e51a1a97fd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "954efd60_b6cdb956",
@@ -60,6 +125,30 @@
       "writtenOn": "2022-01-21T22:40:06Z",
       "side": 1,
       "message": "This seems too generic, how about GPIO_INT_FROM_NODELABEL?",
+      "range": {
+        "startLine": 26,
+        "startChar": 8,
+        "endLine": 26,
+        "endChar": 22
+      },
+      "revId": "a3b095520144afbbc0f5cee528c56e51a1a97fd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "60e44130_e5e0f1db",
+        "filename": "zephyr/shim/include/gpio/gpio_int.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-01-22T05:57:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "954efd60_b6cdb956",
       "range": {
         "startLine": 26,
         "startChar": 8,
@@ -116,6 +205,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf19f134_e43862da",
+        "filename": "zephyr/shim/include/gpio/gpio_int.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-01-22T05:57:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dbf3f3a0_80755412",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 55
+      },
+      "revId": "a3b095520144afbbc0f5cee528c56e51a1a97fd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e881526b_dc8397b5",
+        "filename": "zephyr/shim/include/gpio/gpio_int.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-01-22T05:57:39Z",
+      "side": 1,
+      "message": "So that the interrupt can be enabled from the interrupt node label.",
+      "parentUuid": "f7601c05_656935d7",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 55
+      },
+      "revId": "a3b095520144afbbc0f5cee528c56e51a1a97fd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "40881e7d_575499cb",
@@ -129,6 +266,30 @@
       "writtenOn": "2022-01-21T22:40:06Z",
       "side": 1,
       "message": "Can you move the deprecated EC_CROS_GPIO_INTERRUPTS as a separate CL, and then add the cros-ec,gpio-interrupts support?",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 63
+      },
+      "revId": "a3b095520144afbbc0f5cee528c56e51a1a97fd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5446ebce_e9df856e",
+        "filename": "zephyr/shim/src/gpio_int.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-01-22T05:57:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "40881e7d_575499cb",
       "range": {
         "startLine": 1,
         "startChar": 0,
@@ -162,6 +323,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d385048_6caa6184",
+        "filename": "zephyr/shim/src/gpio_int.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-01-22T05:57:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8db2e8d2_f2eeaff4",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 80
+      },
+      "revId": "a3b095520144afbbc0f5cee528c56e51a1a97fd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "352b7a87_2e8412d1",
@@ -185,6 +370,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1ed20d0_a74add6c",
+        "filename": "zephyr/shim/src/gpio_int.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-01-22T05:57:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "352b7a87_2e8412d1",
+      "range": {
+        "startLine": 173,
+        "startChar": 4,
+        "endLine": 173,
+        "endChar": 44
+      },
+      "revId": "a3b095520144afbbc0f5cee528c56e51a1a97fd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "db131be5_7dd4097d",
@@ -198,6 +407,30 @@
       "writtenOn": "2022-01-21T22:40:06Z",
       "side": 1,
       "message": "DT_HAS_COMPAT_STATUS_OKAY(cros_ec_gpio_interrupts)",
+      "range": {
+        "startLine": 247,
+        "startChar": 4,
+        "endLine": 247,
+        "endChar": 44
+      },
+      "revId": "a3b095520144afbbc0f5cee528c56e51a1a97fd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7422275f_67c280b8",
+        "filename": "zephyr/shim/src/gpio_int.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-01-22T05:57:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "db131be5_7dd4097d",
       "range": {
         "startLine": 247,
         "startChar": 4,
