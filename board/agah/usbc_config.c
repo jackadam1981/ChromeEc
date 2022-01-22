@@ -15,6 +15,8 @@
 #include "driver/bc12/pi3usb9201_public.h"
 #include "driver/ppc/syv682x_public.h"
 #include "driver/tcpm/ps8xxx_public.h"
+#include "driver/retimer/ps8811.h"
+#include "driver/retimer/ps8818.h"
 #include "driver/tcpm/rt1715.h"
 #include "driver/tcpm/tcpci.h"
 #include "ec_commands.h"
@@ -123,6 +125,116 @@ const struct pi3usb9201_config_t pi3usb9201_bc12_chips[] = {
 	},
 };
 BUILD_ASSERT(ARRAY_SIZE(pi3usb9201_bc12_chips) == USBC_PORT_COUNT);
+
+int board_ps8818_mux_set(const struct usb_mux *me,
+				    mux_state_t mux_state)
+{
+	int rv = EC_SUCCESS;
+
+	/* USB specific config */
+	if (mux_state & USB_PD_MUX_USB_ENABLED) {
+		/* Boost the USB gain */
+		rv = ps8818_i2c_field_update8(me,
+					PS8818_REG_PAGE1,
+					PS8818_REG1_APTX1EQ_10G_LEVEL,
+					PS8818_EQ_LEVEL_UP_MASK,
+					PS8818_EQ_LEVEL_UP_19DB);
+		if (rv)
+			return rv;
+
+		rv = ps8818_i2c_field_update8(me,
+					PS8818_REG_PAGE1,
+					PS8818_REG1_APTX2EQ_10G_LEVEL,
+					PS8818_EQ_LEVEL_UP_MASK,
+					PS8818_EQ_LEVEL_UP_19DB);
+		if (rv)
+			return rv;
+
+		rv = ps8818_i2c_field_update8(me,
+					PS8818_REG_PAGE1,
+					PS8818_REG1_APTX1EQ_5G_LEVEL,
+					PS8818_EQ_LEVEL_UP_MASK,
+					PS8818_EQ_LEVEL_UP_19DB);
+		if (rv)
+			return rv;
+
+		rv = ps8818_i2c_field_update8(me,
+					PS8818_REG_PAGE1,
+					PS8818_REG1_APTX2EQ_5G_LEVEL,
+					PS8818_EQ_LEVEL_UP_MASK,
+					PS8818_EQ_LEVEL_UP_19DB);
+		if (rv)
+			return rv;
+
+		/* Set the RX input termination */
+		rv = ps8818_i2c_field_update8(me,
+					PS8818_REG_PAGE1,
+					PS8818_REG1_RX_PHY,
+					PS8818_RX_INPUT_TERM_MASK,
+					PS8818_RX_INPUT_TERM_112_OHM);
+		if (rv)
+			return rv;
+	}
+
+	/* DP specific config */
+	if (mux_state & USB_PD_MUX_DP_ENABLED) {
+		/* Boost the DP gain */
+		rv = ps8818_i2c_field_update8(me,
+					PS8818_REG_PAGE1,
+					PS8818_REG1_DPEQ_LEVEL,
+					PS8818_DPEQ_LEVEL_UP_MASK,
+					PS8818_DPEQ_LEVEL_UP_19DB);
+		if (rv)
+			return rv;
+	}
+
+	return rv;
+}
+
+const struct usb_mux usbc1_ps8818 = {
+	.usb_port = USBC_PORT_C1,
+	.i2c_port = I2C_PORT_USB_C1_TCPC,
+	.i2c_addr_flags = PS8818_I2C_ADDR_FLAGS,
+	.driver = &ps8818_usb_retimer_driver,
+	.board_set = &board_ps8818_mux_set,
+};
+
+enum ec_error_list
+board_a1_ps8811_retimer_init(const struct usb_mux *me)
+{
+	return EC_SUCCESS;
+}
+
+static int ps8811_retimer_init(const struct usb_mux *me)
+{
+	int rv;
+	int tries = 2;
+
+	do {
+		int val;
+
+		rv = ps8811_i2c_read(me, PS8811_REG_PAGE1,
+				     PS8811_REG1_USB_BEQ_LEVEL, &val);
+	} while (rv && --tries);
+
+	if (rv) {
+		CPRINTS("A1: PS8811 retimer not detected!");
+		return rv;
+	}
+	CPRINTS("A1: PS8811 retimer detected");
+	rv = board_a1_ps8811_retimer_init(me);
+	if (rv)
+		CPRINTS("A1: Error during PS8811 setup rv:%d", rv);
+	return rv;
+}
+
+const struct usb_mux usba1_ps8811 = {
+	.usb_port = USBA_PORT_A1,
+	.i2c_port = I2C_PORT_USBA1_RT,
+	.i2c_addr_flags = PS8811_I2C_ADDR_FLAGS3,
+	.board_init = &ps8811_retimer_init,
+};
+
 
 #ifdef CONFIG_CHARGE_RAMP_SW
 
