@@ -10,9 +10,15 @@
 
 #include "gpio.h"
 #include "gpio/gpio.h"
+#include "gpio/gpio_int.h"
 #include "cros_version.h"
 
 LOG_MODULE_REGISTER(gpio_int, LOG_LEVEL_ERR);
+
+/*
+ * TODO(b:214608987): Once all interrupts have been transitioned to
+ * the new API, the legacy interrupt handling can be removed.
+ */
 
 /* Maps platform/ec gpio callback information */
 struct gpio_signal_callback {
@@ -25,6 +31,10 @@ struct gpio_signal_callback {
 };
 
 /*
+ * EC_CROS_GPIO_INTERRUPTS is now deprecated, and new boards should
+ * use the "cros-ec,gpio-interrupts" bindings instead.
+ * This will be removed once all boards are converted.
+ *
  * Each zephyr project should define EC_CROS_GPIO_INTERRUPTS in their gpio_map.h
  * file if there are any interrupts that should be registered.  The
  * corresponding handler will be declared here, which will prevent
@@ -32,6 +42,11 @@ struct gpio_signal_callback {
  *
  * EC_CROS_GPIO_INTERRUPTS is a space-separated list of GPIO_INT items.
  */
+
+#if (defined(EC_CROS_GPIO_INTERRUPTS) &&  \
+	DT_HAS_COMPAT_STATUS_OKAY(cros_ec_gpio_interrupts))
+#error "Cannot use both EC_CROS_GPIO_INTERRUPTS and cros_ec_gpio_interrupts"
+#endif
 
 /*
  * Validate interrupt flags are valid for the Zephyr GPIO driver.
@@ -126,48 +141,140 @@ get_interrupt_from_signal(enum gpio_signal signal)
 	return NULL;
 }
 
-int gpio_enable_interrupt(enum gpio_signal signal)
+/*
+ * Zephyr based interrupt handling.
+ */
+
+/*
+ * Structure containing the callback block for a GPIO interrupt,
+ * as well as the initial flags and the handler vector.
+ * Everything except the callback data is const, so potentially
+ * if space were at a premium, this structure could be split
+ * into a RO and RW portion.
+ */
+struct gpio_int_config {
+	struct gpio_callback cb; /* Callback data */
+	void (*handler)(enum gpio_signal); /* Handler to call */
+	enum gpio_signal arg; /* Argument for handler */
+	gpio_flags_t flags; /* Flags */
+	const struct device *port; /* GPIO device */
+	gpio_pin_t pin; /* GPIO pin */
+};
+
+#define DT_IRQ_NODE	DT_COMPAT_GET_ANY_STATUS_OKAY(cros_ec_gpio_interrupts)
+/*
+ * Create an instance of a gpio_int_config from a DTS node
+ */
+
+#define GPIO_INT_FUNC(name) extern void name(enum gpio_signal)
+
+#define GPIO_INT_CREATE(id, irq_gpio)					\
+	GPIO_INT_FUNC(DT_STRING_TOKEN(id, handler));			\
+	struct gpio_int_config GPIO_NODE_TO_INTERRUPT(id) = {		\
+		.handler = DT_STRING_TOKEN(id, handler),		\
+		.arg = GPIO_SIGNAL(irq_gpio),				\
+		.flags = DT_PROP(id, flags),				\
+		.port = DEVICE_DT_GET(DT_GPIO_CTLR(irq_gpio, gpios)),	\
+		.pin = DT_GPIO_PIN(irq_gpio, gpios),			\
+	};
+
+#define GPIO_INT_DEFN(id) GPIO_INT_CREATE(id, DT_PROP(id, irq_gpio))
+
+#if DT_HAS_COMPAT_STATUS_OKAY(cros_ec_gpio_interrupts)
+	DT_FOREACH_CHILD(DT_IRQ_NODE, GPIO_INT_DEFN)
+
+BUILD_ASSERT(DT_NUM_INST_STATUS_OKAY(cros_ec_gpio_interrupts) == 1,
+	"Only one node for cros_ec_gpio_interrupts is allowed");
+#endif
+
+#undef GPIO_INT_FUNC
+#undef GPIO_INT_CREATE
+#undef GPIO_INT_DEFN
+
+/*
+ * Callback handler.
+ * Call the stored interrupt handler.
+ */
+static void gpio_cb_handler(const struct device *dev,
+			    struct gpio_callback *cbdata,
+			    uint32_t pins)
 {
-	int rv;
-	const struct gpio_signal_callback *interrupt;
-
-	interrupt = get_interrupt_from_signal(signal);
-
-	if (!interrupt)
-		return -1;
-
-	/*
-	 * Config interrupt flags (e.g. INT_EDGE_BOTH) & enable interrupt
-	 * together.
-	 */
-	rv = gpio_pin_interrupt_configure(gpio_get_dev(signal),
-					  gpio_get_pin(signal),
-					  (interrupt->flags | GPIO_INT_ENABLE) &
-						  ~GPIO_INT_DISABLE);
-	if (rv < 0) {
-		LOG_ERR("Failed to enable interrupt on %s (%d)",
-			gpio_get_name(signal), rv);
-	}
-
-	return rv;
+	struct gpio_int_config *conf =
+		CONTAINER_OF(cbdata, struct gpio_int_config, cb);
+	conf->handler(conf->arg);
 }
 
-int gpio_disable_interrupt(enum gpio_signal signal)
+/*
+ * Enable the interrupt.
+ * Check whether the callback is already installed, and if
+ * not, init and add the callback before enabling the
+ * interrupt.
+ */
+void gpio_enable_dt_interrupt(struct gpio_int_config *conf)
 {
-	int rv;
-
-	if (!gpio_is_implemented(signal))
-		return -1;
-
-	rv = gpio_pin_interrupt_configure(gpio_get_dev(signal),
-					  gpio_get_pin(signal),
-					  GPIO_INT_DISABLE);
-	if (rv < 0) {
-		LOG_ERR("Failed to disable interrupt on %s (%d)",
-			gpio_get_name(signal), rv);
+	gpio_flags_t flags;
+	/*
+	 * Check whether callback has been initialised.
+	 */
+	if (!conf->cb.handler) {
+		/*
+		 * Initialise and add the callback.
+		 */
+		gpio_init_callback(&conf->cb, gpio_cb_handler, BIT(conf->pin));
+		gpio_add_callback(conf->port, &conf->cb);
 	}
+	flags = (conf->flags | GPIO_INT_ENABLE) & ~GPIO_INT_DISABLE;
+	gpio_pin_interrupt_configure(conf->port, conf->pin, flags);
+}
 
-	return rv;
+/*
+ * Disable the interrupt by setting the GPIO_INT_DISABLE flag.
+ */
+void gpio_disable_dt_interrupt(struct gpio_int_config *conf)
+{
+	gpio_pin_interrupt_configure(conf->port, conf->pin, GPIO_INT_DISABLE);
+}
+
+/*
+ * Create a mapping table from an enum gpio_signal to
+ * a struct gpio_int_config so that legacy code can use
+ * the gpio_signal to enable/disable interrupts
+ */
+
+#define GPIO_SIG_MAP_ENTRY(id, gpio)                                       \
+	COND_CODE_1(DT_NODE_HAS_PROP(irq_gpio, enum_name),                 \
+		    (                                                      \
+			    {                                              \
+				    .signal = DT_STRING_UPPER_TOKEN(       \
+					    irq_gpio, enum_name),          \
+				    .config = &GPIO_NODE_TO_INTERRUPT(id), \
+			    },),                                           \
+		    ())
+
+#define GPIO_SIG_MAP(id) GPIO_SIG_MAP_ENTRY(id, DT_PROP(id, irq_gpio))
+
+static const struct {
+	enum gpio_signal signal;
+	struct gpio_int_config *config;
+} signal_to_int[] = {
+#if DT_HAS_COMPAT_STATUS_OKAY(cros_ec_gpio_interrupts)
+	DT_FOREACH_CHILD(DT_IRQ_NODE, GPIO_SIG_MAP)
+#endif
+};
+
+#undef GPIO_SIG_MAP
+#undef GPIO_SIG_MAP_ENTRY
+
+/*
+ * Mapping of GPIO signal to interrupt configuration block.
+ */
+static struct gpio_int_config *signal_to_interrupt(enum gpio_signal signal)
+{
+	for (int i = 0; i < ARRAY_SIZE(signal_to_int); i++) {
+		if (signal == signal_to_int[i].signal)
+			return signal_to_int[i].config;
+	}
+	return 0;
 }
 
 static int init_gpio_ints(const struct device *unused)
@@ -201,3 +308,61 @@ static int init_gpio_ints(const struct device *unused)
 #error "GPIO interrupts must initialize after the kernel default initialization"
 #endif
 SYS_INIT(init_gpio_ints, POST_KERNEL, CONFIG_PLATFORM_EC_GPIO_INIT_PRIORITY);
+
+int gpio_enable_interrupt(enum gpio_signal signal)
+{
+	int rv;
+	const struct gpio_signal_callback *interrupt;
+
+	struct gpio_int_config *zc;
+
+	zc = signal_to_interrupt(signal);
+	if (zc) {
+		gpio_enable_dt_interrupt(zc);
+		return 0;
+	}
+	interrupt = get_interrupt_from_signal(signal);
+
+	if (!interrupt)
+		return -1;
+
+	/*
+	 * Config interrupt flags (e.g. INT_EDGE_BOTH) & enable interrupt
+	 * together.
+	 */
+	rv = gpio_pin_interrupt_configure(gpio_get_dev(signal),
+					  gpio_get_pin(signal),
+					  (interrupt->flags | GPIO_INT_ENABLE) &
+						  ~GPIO_INT_DISABLE);
+	if (rv < 0) {
+		LOG_ERR("Failed to enable interrupt on %s (%d)",
+			gpio_get_name(signal), rv);
+	}
+
+	return rv;
+}
+
+int gpio_disable_interrupt(enum gpio_signal signal)
+{
+	int rv;
+
+	struct gpio_int_config *zc;
+
+	zc = signal_to_interrupt(signal);
+	if (zc) {
+		gpio_disable_dt_interrupt(zc);
+		return 0;
+	}
+	if (!gpio_is_implemented(signal))
+		return -1;
+
+	rv = gpio_pin_interrupt_configure(gpio_get_dev(signal),
+					  gpio_get_pin(signal),
+					  GPIO_INT_DISABLE);
+	if (rv < 0) {
+		LOG_ERR("Failed to disable interrupt on %s (%d)",
+			gpio_get_name(signal), rv);
+	}
+
+	return rv;
+}
