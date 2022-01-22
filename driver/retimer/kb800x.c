@@ -93,6 +93,8 @@ static int kb800x_assign_tx_to_eb(const struct usb_mux *me,
 	rv = kb800x_read(me, KB800X_REG_TXSEL_FROM_PHY(phy_lane), &regval);
 	if (rv)
 		return rv;
+
+	ccprints("KB8002 assign tx to eb success");
 	return kb800x_write(me, KB800X_REG_TXSEL_FROM_PHY(phy_lane),
 		     regval | field_value);
 }
@@ -135,6 +137,9 @@ static int kb800x_assign_rx_to_eb(const struct usb_mux *me,
 	rv = kb800x_read(me, address, &regval);
 	if (rv)
 		return rv;
+	/*else
+		ccprints("data: 0x%X", regval);*/
+	ccprints("KB8002 assign rx to eb success");
 	return kb800x_write(me, address, regval | field_value);
 }
 
@@ -243,6 +248,7 @@ static int kb800x_xbar_override(const struct usb_mux *me)
 	int rv;
 	int i;
 
+	ccprints("KB8002 assign lane");
 	for (i = KB800X_A0; i < KB800X_PHY_LANE_COUNT; ++i) {
 		rv = kb800x_assign_lane(
 			me, i,
@@ -250,6 +256,8 @@ static int kb800x_xbar_override(const struct usb_mux *me)
 		if (rv)
 			return rv;
 	}
+	if (rv == EC_SUCCESS)
+		ccprints("KB8002 assign lane success");
 	return kb800x_write(me, KB800X_REG_XBAR_OVR,
 				KB800X_XBAR_OVR_EN);
 }
@@ -286,17 +294,20 @@ static int kb800x_bulk_write(const struct usb_mux *me,
 	int i;
 	int rv;
 
+	ccprints("KB8002 bulk write");
 	for (i = 0; i < size; ++i) {
 		rv = kb800x_write(me, addresses[i], values[i]);
 		if (rv != EC_SUCCESS)
 			return rv;
 	}
 
+	ccprints("KB8002 bulk write success");
 	return EC_SUCCESS;
 }
 
 static int kb800x_global_init(const struct usb_mux *me)
 {
+	ccprints("KB8002 global init");
 	return kb800x_bulk_write(me, global_init_addresses, global_init_values,
 				 sizeof(global_init_values));
 }
@@ -305,10 +316,13 @@ static int kb800x_dp_init(const struct usb_mux *me, mux_state_t mux_state)
 {
 	int rv;
 
+	ccprints("KB8002 dp init");
 	rv = kb800x_bulk_write(me, dp_init_addresses, dp_init_values,
 			       sizeof(dp_init_values));
 	if (rv)
 		return rv;
+	else if (rv == EC_SUCCESS)
+		ccprints("KB8002 dp init bulk write success");
 	return kb800x_write(
 		me, KB800X_REG_ORIENTATION,
 		KB800X_ORIENTATION_DP_DFP |
@@ -321,14 +335,19 @@ static int kb800x_usb3_init(const struct usb_mux *me, mux_state_t mux_state)
 {
 	int rv;
 
+	ccprints("KB8002 usb3 init");
 	rv = kb800x_bulk_write(me, usb3_init_addresses, usb3_init_values,
 			       sizeof(usb3_init_values));
 	if (rv)
 		return rv;
-	if (mux_state & USB_PD_MUX_POLARITY_INVERTED)
+	else if (rv == EC_SUCCESS)
+		ccprints("KB8002 usb3 init bulk write success");
+	if (mux_state & USB_PD_MUX_POLARITY_INVERTED) {
+		ccprints("KB8002 usb3 init inverted");
 		/* This will be overwritten in the DPMF case */
 		return kb800x_write(me, KB800X_REG_ORIENTATION,
 				    KB800X_ORIENTATION_POLARITY);
+	}
 	return EC_SUCCESS;
 }
 
@@ -343,10 +362,13 @@ static int kb800x_cio_init(const struct usb_mux *me, mux_state_t mux_state)
 			pd_get_tbt_mode_vdo(me->usb_port, TCPCI_MSG_SOP_PRIME)
 	};
 
+	ccprints("KB8002 cio init");
 	rv = kb800x_bulk_write(me, cio_init_addresses, cio_init_values,
 			       sizeof(cio_init_values));
 	if (rv)
 		return rv;
+	else if (rv == EC_SUCCESS)
+		ccprints("KB8002 cio init bulk write success");
 
 	if (mux_state & USB_PD_MUX_POLARITY_INVERTED)
 		orientation = KB800X_ORIENTATION_CIO_LANE_SWAP |
@@ -365,6 +387,8 @@ static int kb800x_cio_init(const struct usb_mux *me, mux_state_t mux_state)
 				rv = kb800x_write(me, 0x8194, 0x31);
 				if (rv)
 					return rv;
+				else if (rv == EC_SUCCESS)
+					ccprints("KB8002 TBT3-Compatible Link write success");
 				orientation |=
 					KB800X_ORIENTATION_CIO_LEGACY_BIDIR;
 			}
@@ -388,11 +412,15 @@ static int kb800x_set_state(const struct usb_mux *me, mux_state_t mux_state,
 	rv = kb800x_write(me, KB800X_REG_RESET, KB800X_RESET_MASK);
 	if (rv)
 		return rv;
+	else if (rv == EC_SUCCESS)
+		ccprints("KB8002 KB800X_REG_RESET:KB800X_RESET_MASK write success");
 	/* Release memory map reset */
 	rv = kb800x_write(me, KB800X_REG_RESET,
 		     KB800X_RESET_MASK & ~KB800X_RESET_MM);
 	if (rv)
 		return rv;
+	else if (rv == EC_SUCCESS)
+		ccprints("KB8002 KB800X_REG_RESET release mmap write success");
 
 	/* Already in reset, nothing to do */
 	if ((mux_state == USB_PD_MUX_NONE) ||
@@ -402,6 +430,8 @@ static int kb800x_set_state(const struct usb_mux *me, mux_state_t mux_state,
 	rv = kb800x_global_init(me);
 	if (rv)
 		return rv;
+	else if (rv == EC_SUCCESS)
+		ccprints("KB8002 global init success");
 
 	/* CIO mode (USB4/TBT) */
 	if (mux_state &
@@ -409,13 +439,19 @@ static int kb800x_set_state(const struct usb_mux *me, mux_state_t mux_state,
 		rv = kb800x_cio_init(me, mux_state);
 		if (rv)
 			return rv;
+		else if (rv == EC_SUCCESS)
+			ccprints("KB8002 cio init success");
 		rv = kb800x_write(me, KB800X_REG_PROTOCOL, KB800X_PROTOCOL_CIO);
+		if (rv == EC_SUCCESS)
+			ccprints("KB8002 KB800X_REG_PROTOCOL:KB800X_PROTOCOL_CIO write success");
 	} else {
 		/* USB3 enabled (USB3-only or DPMF) */
 		if (mux_state & USB_PD_MUX_USB_ENABLED) {
 			rv = kb800x_usb3_init(me, mux_state);
 			if (rv)
 				return rv;
+			else if (rv == EC_SUCCESS)
+				ccprints("KB8002 usb3 init success");
 			/* USB3-only is the default KB800X_REG_PROTOCOL value */
 		}
 
@@ -424,21 +460,29 @@ static int kb800x_set_state(const struct usb_mux *me, mux_state_t mux_state,
 			rv = kb800x_dp_init(me, mux_state);
 			if (rv)
 				return rv;
+			else if (rv == EC_SUCCESS)
+				ccprints("KB8002 dp init success");
 			if (mux_state & USB_PD_MUX_USB_ENABLED)
 				rv = kb800x_write(me, KB800X_REG_PROTOCOL,
 						  KB800X_PROTOCOL_DPMF);
 			else
 				rv = kb800x_write(me, KB800X_REG_PROTOCOL,
 						  KB800X_PROTOCOL_DP);
+			if (rv == EC_SUCCESS)
+				ccprints("KB8002 KB800X_REG_PROTOCOL:KB800X_PROTOCOL_DPMF/DP write success");
 		}
 	}
 	if (rv)
 		return rv;
+	else if (rv == EC_SUCCESS)
+		ccprints("KB8002 set state success");
 
 #ifdef CONFIG_KB800X_CUSTOM_XBAR
 	rv = kb800x_xbar_override(me);
 	if (rv)
 		return rv;
+	else if (rv == EC_SUCCESS)
+		ccprints("KB8002 xbar override success");
 #endif /* CONFIG_KB800X_CUSTOM_XBAR */
 
 	return kb800x_write(me, KB800X_REG_RESET, 0x00);
@@ -461,6 +505,7 @@ static int kb800x_init(const struct usb_mux *me)
 	if (!gpio_get_level(kb800x_control[me->usb_port].retimer_rst_gpio))
 		return EC_ERROR_NOT_POWERED;
 
+	ccprints("KB8002 init start");
 	return kb800x_set_state(me, USB_PD_MUX_NONE, &unused);
 }
 
