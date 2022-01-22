@@ -167,12 +167,22 @@ static void lpc_generate_smi(void)
 		HOST_EVENT_CPRINTS("smi", smi);
 }
 
+static int sci_cnt = 0;
+
+static void sci_cnt_show(void)
+{
+	ccprints("sci_cnt:%d",sci_cnt);
+}
+DECLARE_HOOK(HOOK_SECOND, sci_cnt_show, HOOK_PRIO_DEFAULT);
+
 /**
  * Generate SCI pulse to the host chipset via LPC0SCI.
  */
 static void lpc_generate_sci(void)
 {
 	host_event_t sci;
+
+	sci_cnt++;
 
 #ifdef CONFIG_SCI_GPIO
 	/* Enforce signal-high for long enough to debounce high */
@@ -448,6 +458,8 @@ static void handle_acpi_write(int is_cmd)
 {
 	uint8_t value, result;
 
+	ccprints("%s", __func__);
+
 	/* Set processing flag before reading command byte */
 	SET_BIT(NPCX_HIPMST(PMC_ACPI), NPCX_HIPMST_F0);
 
@@ -475,6 +487,8 @@ static void handle_acpi_write(int is_cmd)
  */
 static void handle_host_write(int is_cmd)
 {
+	ccprints("%s", __func__);
+
 	/* Set processing flag before reading command byte */
 	SET_BIT(NPCX_HIPMST(PMC_HOST_CMD), NPCX_HIPMST_F0);
 	/*
