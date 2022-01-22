@@ -10,6 +10,7 @@
 #include "common.h"
 #include "compile_time_macros.h"
 #include "console.h"
+#include "driver/retimer/ps8811.h"
 #include "gpio.h"
 #include "gpio_signal.h"
 #include "hooks.h"
@@ -33,6 +34,42 @@ __override void board_cbi_init(void)
 {
 }
 
+enum ec_error_list
+board_a1_ps8811_retimer_init(const struct usb_mux *me)
+{
+	return EC_SUCCESS;
+}
+
+static int ps8811_retimer_init(const struct usb_mux *me)
+{
+	int rv;
+	int tries = 2;
+
+	do {
+		int val;
+
+		rv = ps8811_i2c_read(me, PS8811_REG_PAGE1,
+				     PS8811_REG1_USB_BEQ_LEVEL, &val);
+	} while (rv && --tries);
+
+	if (rv) {
+		CPRINTS("A1: PS8811 retimer not detected!");
+		return rv;
+	}
+	CPRINTS("A1: PS8811 retimer detected");
+	rv = board_a1_ps8811_retimer_init(me);
+	if (rv)
+		CPRINTS("A1: Error during PS8811 setup rv:%d", rv);
+	return rv;
+}
+
+const struct usb_mux usba1_ps8811 = {
+	.usb_port = USBA_PORT_A1,
+	.i2c_port = I2C_PORT_USBA1_RT,
+	.i2c_addr_flags = PS8811_I2C_ADDR_FLAGS0,
+	.board_init = &ps8811_retimer_init,
+};
+
 /* Called on AP S3 -> S0 transition */
 static void board_chipset_resume(void)
 {
@@ -51,8 +88,13 @@ DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, board_chipset_suspend, HOOK_PRIO_DEFAULT);
 
 static void board_init(void)
 {
+	struct usb_mux a1_retimer;
+
 	gpio_enable_interrupt(GPIO_PG_PP3300_S5_OD);
 	gpio_enable_interrupt(GPIO_BJ_ADP_PRESENT_ODL);
+
+	a1_retimer = usba1_ps8811;
+	a1_retimer.board_init(&a1_retimer);
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
