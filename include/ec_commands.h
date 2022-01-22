@@ -6957,6 +6957,7 @@ enum pchg_state {
 #define EC_MKBP_PCHG_WRITE_COMPLETE	BIT(1)
 #define EC_MKBP_PCHG_UPDATE_CLOSED	BIT(2)
 #define EC_MKBP_PCHG_UPDATE_ERROR	BIT(3)
+#define EC_MKBP_PCHG_DEVICE_EVENT	BIT(4)
 
 enum ec_pchg_update_cmd {
 	/* Reset chip to normal mode. */
