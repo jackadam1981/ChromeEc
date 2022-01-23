@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10a469df_bcafac74",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 445,
+      "author": {
+        "id": 1366765
+      },
+      "writtenOn": "2022-01-23T15:28:34Z",
+      "side": 1,
+      "message": "can SLP_SUS check be made outside the \"if\" condition (line 441).? SLP_SUS can be monitored irrespective of the rsmrst \u0026 power_rails state.",
+      "revId": "f02c66c28d9af6843fe47f29935e5d931bdfe2ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
