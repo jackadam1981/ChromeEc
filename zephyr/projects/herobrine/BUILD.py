@@ -9,6 +9,7 @@ register_npcx_project(
         "gpio.dts",
         "battery.dts",
         "i2c.dts",
+        "interrupts.dts",
         "motionsense.dts",
         "switchcap.dts",
         "usbc.dts",
