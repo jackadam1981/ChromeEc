@@ -217,6 +217,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e3ee0b01_3e00ca63",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2022-01-23T18:28:31Z",
+      "side": 1,
+      "message": "I can\u0027t say for sure but the flash space should be enough. My concern is with RAM. From the b:197743801#comment5, 2108 bytes freed might not be enough. This is from my comment in Patchset 10:\n\nbuild/servo_v4p1/RO/ec.RO.elf section `.bss\u0027 will not fit in region `IRAM\u0027\nNot enough space for shared memory.\nregion `IRAM\u0027 overflowed by 2088 byte",
+      "parentUuid": "6918f097_37d79b6e",
+      "revId": "d052d4b0c319bf17800a5b6df344aa9cbc70bc50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "73722b79_d6bd4ac6",
         "filename": "board/servo_v4p1/usb_tc_snk_sm.c",
         "patchSetId": 10
@@ -228,6 +246,24 @@
       "writtenOn": "2022-01-12T16:48:05Z",
       "side": 1,
       "message": "So has servo already been running its own personal sink only TC copy on one port?",
+      "revId": "d052d4b0c319bf17800a5b6df344aa9cbc70bc50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "64e3cedd_a8626ca7",
+        "filename": "board/servo_v4p1/usb_tc_snk_sm.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2022-01-23T18:28:31Z",
+      "side": 1,
+      "message": "Yes, and this was added to servoV4p1 because extending TCPMv1 from 2-ports to 3-ports blew up the memory.",
+      "parentUuid": "73722b79_d6bd4ac6",
       "revId": "d052d4b0c319bf17800a5b6df344aa9cbc70bc50",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
