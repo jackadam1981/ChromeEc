@@ -21,5 +21,9 @@ extern const struct gpio_dt_spec gpio_hdmi_en_sub_odl;
 extern const struct gpio_dt_spec gpio_hpd_sub_odl;
 extern const struct gpio_dt_spec gpio_en_sub_usb_a1_vbus;
 extern const struct gpio_dt_spec gpio_sub_usb_a1_ilimit_sdp;
+#ifdef CONFIG_BOARD_NEREID
+extern const struct gpio_dt_spec gpio_en_usb_c0_cc1_vconn;
+extern const struct gpio_dt_spec gpio_en_usb_c0_cc2_vconn;
+#endif
 
 #endif /* __ZEPHYR_NISSA_GPIOS_H */
