@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "43a7a6bf_01bc862b",
+        "filename": "docs/zephyr/zephyr_motionsense.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-01-24T20:35:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8dee0d2f_9b9640f2",
+      "range": {
+        "startLine": 14,
+        "startChar": 1,
+        "endLine": 14,
+        "endChar": 31
+      },
+      "revId": "e62f357033663bc476a38e5545032a8a3b15763e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "91341f77_5b9ac6a5",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-01-21T23:40:41Z",
       "side": 1,
       "message": "This seems like a bug.  Shouldn\u0027t CONFIG_PLATFORM_EC_ALS do a select of HAS_TASK_ALS instead?\n\nThe only legacy board that defines an ALS task is the board/oak/ec.tasklist.  Our Zephyr shimmed tasks doesn\u0027t currently ever define the ALS task.  \n\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/a1ef2483/zephyr/shim/include/shimmed_task_id.h#",
+      "range": {
+        "startLine": 18,
+        "startChar": 51,
+        "endLine": 18,
+        "endChar": 80
+      },
+      "revId": "e62f357033663bc476a38e5545032a8a3b15763e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "38e0c28a_5653b86a",
+        "filename": "docs/zephyr/zephyr_motionsense.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-01-24T20:35:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "91341f77_5b9ac6a5",
       "range": {
         "startLine": 18,
         "startChar": 51,
@@ -64,6 +112,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7cab59f_0d193244",
+        "filename": "docs/zephyr/zephyr_motionsense.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-01-24T20:35:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7c5b255d_d631b8c2",
+      "revId": "e62f357033663bc476a38e5545032a8a3b15763e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e54fd0b6_9d43d1c1",
@@ -77,6 +143,30 @@
       "writtenOn": "2022-01-21T23:40:41Z",
       "side": 1,
       "message": "ICM",
+      "range": {
+        "startLine": 39,
+        "startChar": 47,
+        "endLine": 39,
+        "endChar": 50
+      },
+      "revId": "e62f357033663bc476a38e5545032a8a3b15763e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fad4182c_f273d85f",
+        "filename": "docs/zephyr/zephyr_sensor_devices.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-01-24T20:35:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e54fd0b6_9d43d1c1",
       "range": {
         "startLine": 39,
         "startChar": 47,
@@ -110,6 +200,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ada00aa2_37e603d2",
+        "filename": "docs/zephyr/zephyr_sensor_devices.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-01-24T20:35:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3f98243b_03152489",
+      "range": {
+        "startLine": 40,
+        "startChar": 47,
+        "endLine": 40,
+        "endChar": 50
+      },
+      "revId": "e62f357033663bc476a38e5545032a8a3b15763e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1045daab_aea19d53",
@@ -123,6 +237,24 @@
       "writtenOn": "2022-01-21T23:40:41Z",
       "side": 1,
       "message": "Create sub-sections for these groups.",
+      "revId": "e62f357033663bc476a38e5545032a8a3b15763e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "71bbca45_12033c9c",
+        "filename": "docs/zephyr/zephyr_sensor_devices.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-01-24T20:35:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1045daab_aea19d53",
       "revId": "e62f357033663bc476a38e5545032a8a3b15763e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
