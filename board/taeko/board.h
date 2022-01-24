@@ -34,6 +34,7 @@
 
 /* Sensors */
 #define	CONFIG_DYNAMIC_MOTION_SENSOR_COUNT
+#define CONFIG_BUTTONS_RUNTIME_CONFIG
 
 
 /* Change Request (b/199529373)
