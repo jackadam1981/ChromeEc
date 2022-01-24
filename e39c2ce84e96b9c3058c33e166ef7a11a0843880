@@ -70,6 +70,30 @@
       },
       "revId": "e39c2ce84e96b9c3058c33e166ef7a11a0843880",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9e616f6_2f7a4334",
+        "filename": "include/config.h",
+        "patchSetId": 20
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-01-24T21:02:55Z",
+      "side": 1,
+      "message": "we still need the Kconfig entry for zephyr.\nplease have a look at similar patches that add a new\nnew config option for reference.",
+      "parentUuid": "f1159374_1ef620bf",
+      "range": {
+        "startLine": 352,
+        "startChar": 7,
+        "endLine": 352,
+        "endChar": 25
+      },
+      "revId": "e39c2ce84e96b9c3058c33e166ef7a11a0843880",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
