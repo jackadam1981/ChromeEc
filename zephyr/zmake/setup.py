@@ -17,7 +17,7 @@ setuptools.setup(
     keywords="chromeos",
     # You can just specify the packages manually here if your project is
     # simple. Or you can use find_packages().
-    packages=["zmake"],
+    packages=["zmake", "genvif"],
     python_requires=">=3.6, <4",
     # List run-time dependencies here.  These will be installed by pip when
     # your project is installed. For an analysis of "install_requires" vs pip's
@@ -33,6 +33,7 @@ setuptools.setup(
     entry_points={
         "console_scripts": [
             "zmake=zmake.__main__:main",
+            "genvif=genvif.__main__:main",
         ],
     },
 )
