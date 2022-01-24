@@ -118,6 +118,7 @@ properties:
       - GPIO_EN_SUB_USB_A1_VBUS
       - GPIO_EN_ULP
       - GPIO_EN_USB_A_5V
+      - GPIO_EN_USB_C0_CC1_VCONN
       - GPIO_HDMI_EN_SUB_ODL
       - GPIO_HDMI_EN_SUB_RAILS_ODL
       - GPIO_HDMI_HPD_SUB_ODL
