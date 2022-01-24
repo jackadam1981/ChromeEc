@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f828f15a_3f60c775",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-01-24T21:56:47Z",
+      "side": 1,
+      "message": "Can we make a unit test for this? It should be possible to override the interrupt handler in the test and use that to track whether it has fired.\n\nAs an example, see https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/test/stm32f_rtc.c;l\u003d19-24;drc\u003d04e6a2380e1cbafb169c7194f0fc58d460193ea6",
+      "range": {
+        "startLine": 24,
+        "startChar": 5,
+        "endLine": 54,
+        "endChar": 57
+      },
+      "revId": "36b7c4a022daad7f83a8f83c9801636d1aa33a78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
