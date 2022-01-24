@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fbf851b3_f79d4abf",
+        "filename": "driver/als_cm32183.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1506077
+      },
+      "writtenOn": "2022-01-24T02:01:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1b9f54f2_ed3580eb",
+      "range": {
+        "startLine": 113,
+        "startChar": 1,
+        "endLine": 114,
+        "endChar": 19
+      },
+      "revId": "5ab0fefb796b8d4b9cd6fb7c6b77fb1907f752cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f55d3ce6_3cc771cb",
