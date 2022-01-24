@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e105f234_7900321f",
+        "filename": "common/peripheral_charger.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-01-24T21:21:36Z",
+      "side": 1,
+      "message": "do we have a style guide for this?\ni prefer to leave the operator at the end of the\nprevious line when splitting.\n\nalso, we already have EC_MKBP_PCHG_EVENT_TO_PORT\nin ec_commands.h. how about adding\nEC_MKBP_PCHG_PORT_TO_EVENT?",
+      "range": {
+        "startLine": 41,
+        "startChar": 1,
+        "endLine": 42,
+        "endChar": 43
+      },
+      "revId": "169a398ead6d2fbc66edaa174c8ff966764e7655",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
