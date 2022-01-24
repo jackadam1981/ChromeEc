@@ -641,6 +641,8 @@ void test_tcpci_alert_rx_message(const struct emul *emul, enum usbc_port port)
 
 	tcpc_config[port].flags = TCPC_FLAGS_TCPCI_REV2_0;
 	tcpci_emul_set_rev(emul, TCPCI_EMUL_REV2_0_VER1_1);
+	tcpci_emul_set_reg(emul, TCPC_REG_DEV_CAP_2,
+			   TCPC_REG_DEV_CAP_2_LONG_MSG);
 
 	for (i = 0; i < 32; i++) {
 		buf1[i] = i + 1;

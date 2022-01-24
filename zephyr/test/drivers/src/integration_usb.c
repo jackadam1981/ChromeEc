@@ -64,6 +64,8 @@ static void integration_usb_after(void *state)
 	 * attached to the port.
 	 */
 	zassert_ok(tcpci_emul_disconnect_partner(tcpci_emul), NULL);
+	/* Give time to actualy disconnect */
+	k_sleep(K_SECONDS(1));
 }
 
 ZTEST(integration_usb, test_attach_compliant_charger)
@@ -106,6 +108,8 @@ ZTEST(integration_usb, test_attach_compliant_charger)
 	/* TODO: Also check voltage, current, etc. */
 }
 
+#define BATTERY_ORD	DT_DEP_ORD(DT_NODELABEL(battery))
+
 ZTEST(integration_usb, test_attach_pd_charger)
 {
 	const struct emul *tcpci_emul =
@@ -125,6 +129,20 @@ ZTEST(integration_usb, test_attach_pd_charger)
 	struct ec_response_typec_status typec_response;
 	struct host_cmd_handler_args typec_args =  BUILD_HOST_COMMAND(
 			EC_CMD_TYPEC_STATUS, 0, typec_response, typec_params);
+
+	/*
+	 * TODO(b/213909940): This seems to resoleve issue, but there is need
+	 * to check why
+	 */
+	struct sbat_emul_bat_data *bat;
+	struct i2c_emul *bat_emul;
+
+	bat_emul = sbat_emul_get_ptr(BATTERY_ORD);
+	bat = sbat_emul_get_bat_data(bat_emul);
+
+	/* Set battery desired charging condition */
+	//bat->desired_charg_cur = 1000;
+	bat->desired_charg_volt = 5000;
 
 	/*
 	 * TODO(b/209907297): Implement the steps of the test beyond USB default
@@ -220,6 +238,9 @@ ZTEST(integration_usb, test_attach_sink)
 		emul_get_binding(DT_LABEL(TCPCI_EMUL_LABEL));
 	struct tcpci_snk_emul my_sink;
 
+	/* TODO: investigate why call in integration_usb_before() is not enough */
+	set_test_runner_tid();
+
 	/* Set chipset to ON, this will set TCPM to DRP */
 	test_set_chipset_to_s0();
 
@@ -250,6 +271,9 @@ ZTEST(integration_usb, test_attach_drp)
 	const struct emul *tcpci_emul =
 		emul_get_binding(DT_LABEL(TCPCI_EMUL_LABEL));
 	struct tcpci_drp_emul my_drp;
+
+	/* TODO: investigate why call in integration_usb_before() is not enough */
+	set_test_runner_tid();
 
 	/* Set chipset to ON, this will set TCPM to DRP */
 	test_set_chipset_to_s0();
