@@ -1,0 +1,8 @@
+# Copyright 2020 Google LLC
+# SPDX-License-Identifier: Apache-2.0
+
+description: cros-ec, cros-kb-raw node
+
+compatible: "cros-ec,cros-kb-raw"
+
+include: cros-kb-raw-controller.yaml
