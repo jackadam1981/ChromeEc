@@ -30,3 +30,7 @@ NISSA_GPIO(gpio_hdmi_en_sub_odl);
 NISSA_GPIO(gpio_hpd_sub_odl);
 NISSA_GPIO(gpio_en_sub_usb_a1_vbus);
 NISSA_GPIO(gpio_sub_usb_a1_ilimit_sdp);
+#ifdef CONFIG_BOARD_NEREID
+NISSA_GPIO(gpio_en_usb_c0_cc1_vconn);
+NISSA_GPIO(gpio_en_usb_c0_cc2_vconn);
+#endif
