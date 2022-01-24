@@ -22,6 +22,30 @@
       },
       "revId": "8502659cc6c51afff9b7606526ca58e2dc900244",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93d26589_c37374df",
+        "filename": "common/usbc/usb_pd_console.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2022-01-24T21:30:58Z",
+      "side": 1,
+      "message": "I was getting the following error:\ncommon/usbc/usb_pd_console.c:194:29: error: static declaration of ‘command_pd’ follows non-static declaration\n  194 | DECLARE_CONSOLE_COMMAND(pd, command_pd,",
+      "parentUuid": "c982cc0e_ceadaea6",
+      "range": {
+        "startLine": 194,
+        "startChar": 0,
+        "endLine": 194,
+        "endChar": 18
+      },
+      "revId": "8502659cc6c51afff9b7606526ca58e2dc900244",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
