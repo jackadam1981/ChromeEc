@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3c25909_b40530c3",
+        "filename": "board/nipperkin/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 521,
+      "author": {
+        "id": 1294793
+      },
+      "writtenOn": "2022-01-24T02:42:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "de095ba6_8ea56e5d",
+      "range": {
+        "startLine": 521,
+        "startChar": 9,
+        "endLine": 521,
+        "endChar": 29
+      },
+      "revId": "f5594e6a8b73c93a8a71afc67ff9402d93359286",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0e89efe6_4bdfda87",
@@ -37,6 +61,24 @@
       "writtenOn": "2022-01-20T22:46:45Z",
       "side": 1,
       "message": "Could this just be if charger \u003e 90W -\u003e set 5.12 A, else set 3.328 A?",
+      "revId": "f5594e6a8b73c93a8a71afc67ff9402d93359286",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a23aabb_bfac425e",
+        "filename": "board/nipperkin/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 525,
+      "author": {
+        "id": 1294793
+      },
+      "writtenOn": "2022-01-24T02:42:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0e89efe6_4bdfda87",
       "revId": "f5594e6a8b73c93a8a71afc67ff9402d93359286",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

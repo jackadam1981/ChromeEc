@@ -457,6 +457,30 @@
       },
       "revId": "9f8adfcfe8367ce3ada3b65be7b62858b1114e7b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66e49a86_751f76be",
+        "filename": "board/nipperkin/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 533,
+      "author": {
+        "id": 1294793
+      },
+      "writtenOn": "2022-01-24T02:42:11Z",
+      "side": 1,
+      "message": "I removed both battery and AC, then plug in AC, use cmd: chgstate in console can get 6000mA from input_current.",
+      "parentUuid": "17b1e68f_0feea6c8",
+      "range": {
+        "startLine": 531,
+        "startChar": 0,
+        "endLine": 533,
+        "endChar": 23
+      },
+      "revId": "9f8adfcfe8367ce3ada3b65be7b62858b1114e7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
