@@ -72,6 +72,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a14d5ab9_606fe673",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_adlp_pwrseq_sm.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2022-01-24T18:02:50Z",
+      "side": 1,
+      "message": "Should this file be renamed to adln and its corresponding header file?",
+      "revId": "a7ff5b4e1d3ffee05f3b261acc1a4f1dc1d7a993",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e1fa1162_005d8f53",
         "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_adlp_pwrseq_sm.c",
         "patchSetId": 10
