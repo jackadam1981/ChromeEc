@@ -46,6 +46,30 @@
       },
       "revId": "fb9b97cec1b23d1bdb6fd7cbd5579d6357636ce7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "92e9bae3_25ce8e3e",
+        "filename": "board/cr50/ap_state.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-01-24T22:24:24Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "76d744c7_29205759",
+      "range": {
+        "startLine": 40,
+        "startChar": 25,
+        "endLine": 40,
+        "endChar": 34
+      },
+      "revId": "fb9b97cec1b23d1bdb6fd7cbd5579d6357636ce7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
