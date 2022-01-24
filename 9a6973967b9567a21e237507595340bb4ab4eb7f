@@ -16,6 +16,23 @@
       "message": "Need to update \"struct gpio_config power_seq_gpios[]\" with EC_VR_EN_PP3300_A GPIO.\nThis throws an runtime error as \"failed to find EC_VR_EN_PP3300_A\"",
       "revId": "9a6973967b9567a21e237507595340bb4ab4eb7f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1a3217f_0f5b1533",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_adlp_nonpwrseq_sm.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2022-01-24T19:03:04Z",
+      "side": 1,
+      "message": "Can we add more prints here to see which one of this is not ok?",
+      "revId": "9a6973967b9567a21e237507595340bb4ab4eb7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
