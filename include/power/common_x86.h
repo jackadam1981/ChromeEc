@@ -14,6 +14,7 @@
 #include "common.h"
 #include "console.h"
 #include "ec_commands.h"
+#include "espi.h"
 #include "gpio.h"
 #include "hooks.h"
 #include "lpc.h"
@@ -60,6 +61,13 @@ enum sys_sleep_state {
 extern int power_s5_up;       /* Chipset is sequencing up or down */
 
 extern const int sleep_sig[];
+extern const int sleep_next_state_up[];
+extern const int sleep_next_transition_up[];
+extern const int sleep_next_state_pf[];
+extern const int sleep_next_state_down[];
+extern const int sleep_next_transition_down[];
+extern const int power_sleep_sig[];
+extern int power_s5_up;       /* Chipset is sequencing up or down */
 
 #ifdef CONFIG_POWER_S0IX
 /*
@@ -123,10 +131,21 @@ __override_proto void x86_sys_reset_delay(void);
  */
 __override_proto enum power_state chipset_force_g3(void);
 
+/**
+ * Handle power states.
+ *
+ * @param state        Current chipset state.
+ * @return power_state New chipset state.
+ */
+enum power_state common_x86_power_handle_state(enum power_state state);
+
 /* Get system sleep state through GPIOs or VWs */
 static inline int chipset_get_sleep_signal(enum sys_sleep_state state)
 {
 	return power_signal_get_level(sleep_sig[state]);
 }
 
+#ifdef CONFIG_BOARD_HAS_RTC_RESET
+__override_proto enum power_state power_wait_rtc_reset(enum power_state state);
+#endif
 #endif /* __CROS_EC_COMMON_X86_H */

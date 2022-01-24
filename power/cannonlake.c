@@ -133,7 +133,7 @@ enum power_state power_handle_state(enum power_state state)
 		break;
 	};
 
-	new_state = common_intel_x86_power_handle_state(state);
+	new_state = common_x86_power_handle_state(state);
 
 	return new_state;
 }

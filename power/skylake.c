@@ -128,7 +128,7 @@ enum power_state power_handle_state(enum power_state state)
 		forcing_shutdown = 0;
 	}
 
-	new_state = common_intel_x86_power_handle_state(state);
+	new_state = common_x86_power_handle_state(state);
 
 	/* Process SLP_SUS_L state changes after a new state is decided. */
 	handle_slp_sus(new_state);

@@ -319,5 +319,5 @@ enum power_state power_handle_state(enum power_state state)
 		break;
 	}
 
-	return common_intel_x86_power_handle_state(state);
+	return common_x86_power_handle_state(state);
 }

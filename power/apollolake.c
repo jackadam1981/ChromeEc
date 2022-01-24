@@ -151,7 +151,7 @@ enum power_state power_handle_state(enum power_state state)
 		if (force_shutdown)
 			internal_chipset_shutdown();
 
-		new_state = common_intel_x86_power_handle_state(state);
+		new_state = common_x86_power_handle_state(state);
 	}
 
 	/*

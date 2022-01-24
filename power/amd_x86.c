@@ -26,6 +26,52 @@ const int sleep_sig[] = {
 #endif
 };
 
+const int sleep_next_state_pf[] = {
+	[POWER_S0]	= POWER_S5S3,
+	[POWER_S3]	= POWER_S3S5,
+	[POWER_S3S0]	= POWER_S3S5,
+	[POWER_S5]	= POWER_S5G3,
+	[POWER_S5S3]	= POWER_S5G3,
+	[POWER_G3S5]	= POWER_G3,
+};
+
+const int sleep_next_state_up[] = {
+#ifdef CONFIG_POWER_S0IX
+	[POWER_S0ix]	= POWER_S0,
+	[POWER_S0ixS0]	= POWER_S0,
+#endif
+	[POWER_S3]	= POWER_S0,
+	[POWER_S3S0]	= POWER_S0,
+	[POWER_S5]	= POWER_S3,
+	[POWER_S5S3]	= POWER_S3,
+	[POWER_G3S5]	= POWER_S5,
+};
+
+const int sleep_next_transition_up[] = {
+#ifdef CONFIG_POWER_S0IX
+	[POWER_S0ix]	= POWER_S0ixS0,
+#endif
+	[POWER_S3]	= POWER_S3S0,
+	[POWER_S5]	= POWER_S5S3,
+};
+
+const int sleep_next_state_down[] = {
+	[POWER_S0]	= POWER_S3,
+#ifdef CONFIG_POWER_S0IX
+	[POWER_S0ix]	= POWER_S3,
+	[POWER_S0S0ix]	= POWER_S0ix,
+#endif
+	[POWER_S0S3]	= POWER_S3,
+	[POWER_S3]	= POWER_S5,
+	[POWER_S3S5]	= POWER_S5,
+	[POWER_G3S5]	= POWER_G3,
+};
+
+const int sleep_next_transition_down[] = {
+	[POWER_S0]	= POWER_S0S3,
+	[POWER_S3]	= POWER_S3S5,
+};
+
 void chipset_force_shutdown(enum chipset_shutdown_reason reason)
 {
 	CPRINTS("%s()", __func__);
@@ -100,204 +146,6 @@ enum power_state power_handle_state(enum power_state state)
 		forcing_shutdown = 0;
 	}
 
-	switch (state) {
-	case POWER_G3:
-		break;
+	return common_x86_power_handle_state(state);
 
-	case POWER_G3S5:
-		/* Exit SOC G3 */
-		/* Enable system power ("*_A" rails) in S5. */
-		gpio_set_level(GPIO_EN_PWR_A, 1);
-
-		/*
-		 * Callback to do pre-initialization within the context of
-		 * chipset task.
-		 */
-		if (IS_ENABLED(CONFIG_CHIPSET_HAS_PRE_INIT_CALLBACK))
-			chipset_pre_init_callback();
-
-		if (power_wait_signals(CHIPSET_G3S5_POWERUP_SIGNAL)) {
-			chipset_force_g3();
-			return POWER_G3;
-		}
-
-		CPRINTS("Exit SOC G3");
-
-		return POWER_S5;
-
-	case POWER_S5:
-		if (!power_has_signals(CHIPSET_G3S5_POWERUP_SIGNAL)) {
-			/* Required rail went away */
-			return POWER_S5G3;
-		} else if (gpio_get_level(GPIO_PCH_SLP_S5_L) == 1) {
-			/* Power up to next state */
-			return POWER_S5S3;
-		}
-		break;
-
-	case POWER_S5S3:
-		if (!power_has_signals(CHIPSET_G3S5_POWERUP_SIGNAL)) {
-			/* Required rail went away */
-			return POWER_S5G3;
-		}
-
-		/* Call hooks now that rails are up */
-		hook_notify(HOOK_CHIPSET_STARTUP);
-
-#ifdef CONFIG_POWER_S0IX
-		/*
-		 * Clearing the S0ix flag on the path to S0
-		 * to handle any reset conditions.
-		 */
-		power_reset_host_sleep_state();
-#endif
-		return POWER_S3;
-
-	case POWER_S3:
-		if (!power_has_signals(CHIPSET_G3S5_POWERUP_SIGNAL)) {
-			/* Required rail went away */
-			return POWER_S5G3;
-		} else if (gpio_get_level(GPIO_PCH_SLP_S3_L) == 1) {
-			/* Power up to next state */
-			return POWER_S3S0;
-		} else if (gpio_get_level(GPIO_PCH_SLP_S5_L) == 0) {
-			/* Power down to next state */
-			return POWER_S3S5;
-		}
-		break;
-
-	case POWER_S3S0:
-		if (!power_has_signals(CHIPSET_G3S5_POWERUP_SIGNAL)) {
-			/* Required rail went away */
-			return POWER_S5G3;
-		}
-
-		/* Enable wireless */
-		wireless_set_state(WIRELESS_ON);
-
-		lpc_s3_resume_clear_masks();
-
-		/* Call hooks now that rails are up */
-		hook_notify(HOOK_CHIPSET_RESUME);
-
-		/*
-		 * Disable idle task deep sleep. This means that the low
-		 * power idle task will not go into deep sleep while in S0.
-		 */
-		disable_sleep(SLEEP_MASK_AP_RUN);
-
-		return POWER_S0;
-
-	case POWER_S0:
-		if (!power_has_signals(CHIPSET_G3S5_POWERUP_SIGNAL)) {
-			/* Required rail went away */
-			return POWER_S5G3;
-		}
-#ifdef CONFIG_POWER_S0IX
-		/*
-		 * SLP_S0 may assert in system idle scenario without a kernel
-		 * freeze call. This may cause interrupt storm since there is
-		 * no freeze/unfreeze of threads/process in the idle scenario.
-		 * Ignore the SLP_S0 assertions in idle scenario by checking
-		 * the host sleep state.
-		 */
-		else if (power_get_host_sleep_state()
-					== HOST_SLEEP_EVENT_S0IX_SUSPEND &&
-				gpio_get_level(GPIO_PCH_SLP_S0_L) == 0) {
-			return POWER_S0S0ix;
-		}
-#endif
-		else if (gpio_get_level(GPIO_PCH_SLP_S3_L) == 0) {
-			/* Power down to next state */
-			return POWER_S0S3;
-		}
-#ifdef CONFIG_POWER_S0IX
-		/*
-		 * Call hooks only if we haven't notified listeners of S0ix
-		 * resume.
-		 */
-		sleep_notify_transition(SLEEP_NOTIFY_RESUME,
-					HOOK_CHIPSET_RESUME);
-#endif
-		break;
-
-	case POWER_S0S3:
-		/* Call hooks before we remove power rails */
-		hook_notify(HOOK_CHIPSET_SUSPEND);
-
-		/* Suspend wireless */
-		wireless_set_state(WIRELESS_SUSPEND);
-
-		/*
-		 * Enable idle task deep sleep. Allow the low power idle task
-		 * to go into deep sleep in S3 or lower.
-		 */
-		enable_sleep(SLEEP_MASK_AP_RUN);
-
-#ifdef CONFIG_POWER_S0IX
-		/* re-init S0ix flag */
-		power_reset_host_sleep_state();
-#endif
-		return POWER_S3;
-
-	case POWER_S3S5:
-		/* Call hooks before we remove power rails */
-		hook_notify(HOOK_CHIPSET_SHUTDOWN);
-
-		/* Disable wireless */
-		wireless_set_state(WIRELESS_OFF);
-
-		/* Call hooks after we remove power rails */
-		hook_notify(HOOK_CHIPSET_SHUTDOWN_COMPLETE);
-
-		return POWER_S5;
-
-	case POWER_S5G3:
-		chipset_force_g3();
-
-		return POWER_G3;
-
-#ifdef CONFIG_POWER_S0IX
-	case POWER_S0ix:
-		/* System in S0 only if SLP_S0 and SLP_S3 are de-asserted */
-		if ((gpio_get_level(GPIO_PCH_SLP_S0_L) == 1) &&
-		    (gpio_get_level(GPIO_PCH_SLP_S3_L) == 1)) {
-			return POWER_S0ixS0;
-		} else if (!power_has_signals(CHIPSET_G3S5_POWERUP_SIGNAL)) {
-			/* Lost power, start transition to G3 */
-			return POWER_S0;
-		}
-
-		break;
-
-	case POWER_S0S0ix:
-		/*
-		 * Call hooks only if we haven't notified listeners of S0ix
-		 * suspend.
-		 */
-		sleep_notify_transition(SLEEP_NOTIFY_SUSPEND,
-					HOOK_CHIPSET_SUSPEND);
-		sleep_suspend_transition();
-
-		/*
-		 * Enable idle task deep sleep. Allow the low power idle task
-		 * to go into deep sleep in S0ix.
-		 */
-		enable_sleep(SLEEP_MASK_AP_RUN);
-		return POWER_S0ix;
-
-	case POWER_S0ixS0:
-		/*
-		 * Disable idle task deep sleep. This means that the low
-		 * power idle task will not go into deep sleep while in S0.
-		 */
-		disable_sleep(SLEEP_MASK_AP_RUN);
-
-		sleep_resume_transition();
-		return POWER_S0;
-#endif /* CONFIG_POWER_S0IX */
-	default:
-		break;
-	}
-	return state;
 }

@@ -8,6 +8,8 @@
 #include "power/common_x86.h"
 #include "power/intel_x86.h"
 
+#include "power.h"
+
 /* Console output macros */
 #define CPUTS(outstr) cputs(CC_CHIPSET, outstr)
 #define CPRINTS(format, args...) cprints(CC_CHIPSET, format, ##args)
@@ -20,6 +22,59 @@ const int sleep_sig[] = {
 #ifdef CONFIG_POWER_S0IX
 	[SYS_SLEEP_S0IX] = GPIO_PCH_SLP_S0_L,
 #endif
+};
+
+const int sleep_next_state_pf[] = {
+	[POWER_S0]	= POWER_S0S3,
+	[POWER_S3]	= POWER_S3S5,
+	[POWER_S3S0]	= POWER_S3S5,
+	[POWER_S5]	= POWER_S5G3,
+	[POWER_S5S3]	= POWER_S5S3,
+	[POWER_G3S5]	= POWER_G3,
+};
+
+const int sleep_next_state_up[] = {
+#ifdef CONFIG_POWER_S0IX
+	[POWER_S0ix]	= POWER_S0,
+	[POWER_S0ixS0]	= POWER_S0,
+#endif
+	[POWER_S3]	= POWER_S0,
+	[POWER_S3S0]	= POWER_S0,
+	[POWER_S4]	= POWER_S3,
+	[POWER_S5]	= POWER_S4,
+	[POWER_S5S3]	= POWER_S3,
+	[POWER_S5S4]	= POWER_S4,
+	[POWER_G3S5]	= POWER_S5,
+};
+
+const int sleep_next_transition_up[] = {
+#ifdef CONFIG_POWER_S0IX
+	[POWER_S0ix]	= POWER_S0ixS0,
+#endif
+	[POWER_S3]	= POWER_S3S0,
+	[POWER_S4]	= POWER_S4S3,
+	[POWER_S5]	= POWER_S5S4,
+};
+
+const int sleep_next_state_down[] = {
+	[POWER_S0]	= POWER_S3,
+#ifdef CONFIG_POWER_S0IX
+	[POWER_S0ix]	= POWER_S3,
+	[POWER_S0S0ix]	= POWER_S0ix,
+#endif
+	[POWER_S0S3]	= POWER_S3,
+	[POWER_S3]	= POWER_S4,
+	[POWER_S3S4]	= POWER_S4,
+	[POWER_S3S5]	= POWER_S5,
+	[POWER_S4]	= POWER_S5,
+	[POWER_S4S5]	= POWER_S5,
+	[POWER_G3S5]	= POWER_G3,
+};
+
+const int sleep_next_transition_down[] = {
+	[POWER_S0]	= POWER_S0S3,
+	[POWER_S3]	= POWER_S3S4,
+	[POWER_S4]	= POWER_S4S5,
 };
 
 #ifdef CONFIG_CHARGER
@@ -63,266 +118,18 @@ static enum power_state power_wait_s5_rtc_reset(void)
 	s5_exit_tries = 0;
 	return POWER_S5S4; /* Power up to next state */
 }
-#endif
 
-enum power_state common_intel_x86_power_handle_state(enum power_state state)
+__overridable enum power_state power_wait_rtc_reset(enum power_state state)
 {
 	switch (state) {
-	case POWER_G3:
-		break;
-
 	case POWER_S5:
-#ifdef CONFIG_BOARD_HAS_RTC_RESET
-		/* Wait for S5 exit and attempt RTC reset if supported */
-		if (power_s5_up)
-			return power_wait_s5_rtc_reset();
-#endif
-
-		if (chipset_get_sleep_signal(SYS_SLEEP_S5) == 1)
-			return POWER_S5S4; /* Power up to next state */
+		return power_wait_s5_rtc_reset();
 		break;
-
-	case POWER_S4:
-		if (chipset_get_sleep_signal(SYS_SLEEP_S5) == 0) {
-			/* Power down to next state */
-			return POWER_S4S5;
-		} else if (chipset_get_sleep_signal(SYS_SLEEP_S4) == 1) {
-			/* Power up to the next level */
-			return POWER_S4S3;
-		}
-
-		break;
-
-	case POWER_S3:
-		if (!power_has_signals(IN_PGOOD_ALL_CORE)) {
-			/* Required rail went away, go straight to S5 */
-			chipset_force_shutdown(CHIPSET_SHUTDOWN_POWERFAIL);
-			return POWER_S3S5;
-		} else if (chipset_get_sleep_signal(SYS_SLEEP_S3) == 1) {
-			/* Power up to next state */
-			return POWER_S3S0;
-		} else if (chipset_get_sleep_signal(SYS_SLEEP_S4) == 0) {
-			/* Power down to the next state */
-			return POWER_S3S4;
-		}
-
-		break;
-
-	case POWER_S0:
-		if (!power_has_signals(IN_PGOOD_ALL_CORE)) {
-			chipset_force_shutdown(CHIPSET_SHUTDOWN_POWERFAIL);
-			return POWER_S0S3;
-		} else if (chipset_get_sleep_signal(SYS_SLEEP_S3) == 0) {
-			/* Power down to next state */
-			return POWER_S0S3;
-#ifdef CONFIG_POWER_S0IX
-		/*
-		 * SLP_S0 may assert in system idle scenario without a kernel
-		 * freeze call. This may cause interrupt storm since there is
-		 * no freeze/unfreeze of threads/process in the idle scenario.
-		 * Ignore the SLP_S0 assertions in idle scenario by checking
-		 * the host sleep state.
-		 */
-		} else if (power_get_host_sleep_state()
-					== HOST_SLEEP_EVENT_S0IX_SUSPEND &&
-				chipset_get_sleep_signal(SYS_SLEEP_S0IX) == 0) {
-			return POWER_S0S0ix;
-		} else {
-			sleep_notify_transition(SLEEP_NOTIFY_RESUME,
-						HOOK_CHIPSET_RESUME);
-#endif
-		}
-
-		break;
-
-#ifdef CONFIG_POWER_S0IX
-	case POWER_S0ix:
-		/* System in S0 only if SLP_S0 and SLP_S3 are de-asserted */
-		if ((chipset_get_sleep_signal(SYS_SLEEP_S0IX) == 1) &&
-		   (chipset_get_sleep_signal(SYS_SLEEP_S3) == 1)) {
-			return POWER_S0ixS0;
-		} else if (!power_has_signals(IN_PGOOD_ALL_CORE)) {
-			return POWER_S0;
-		}
-
-		break;
-#endif
-
-	case POWER_G3S5:
-		if (x86_wait_power_up_ok() != EC_SUCCESS) {
-			chipset_force_shutdown(
-				CHIPSET_SHUTDOWN_BATTERY_INHIBIT);
-			return POWER_G3;
-		}
-#ifdef CONFIG_CHIPSET_HAS_PRE_INIT_CALLBACK
-		/*
-		 * Callback to do pre-initialization within the context of
-		 * chipset task.
-		 */
-		chipset_pre_init_callback();
-#endif
-
-		if (power_wait_signals(CHIPSET_G3S5_POWERUP_SIGNAL)) {
-			chipset_force_shutdown(CHIPSET_SHUTDOWN_WAIT);
-			return POWER_G3;
-		}
-
-		power_s5_up = 1;
-		return POWER_S5;
-
-	case POWER_S5S4:
-		return POWER_S4; /* Power up to next state */
-
-	case POWER_S3S4:
-		return POWER_S4; /* Power down to the next state */
-
-	case POWER_S5S3:
-		/* fallthrough */
-	case POWER_S4S3:
-		if (!power_has_signals(IN_PGOOD_ALL_CORE)) {
-			/* Required rail went away */
-			chipset_force_shutdown(CHIPSET_SHUTDOWN_POWERFAIL);
-			return POWER_S5G3;
-		}
-
-		/* Call hooks now that rails are up */
-		hook_notify(HOOK_CHIPSET_STARTUP);
-
-#ifdef CONFIG_POWER_S0IX
-		/*
-		 * Clearing the S0ix flag on the path to S0
-		 * to handle any reset conditions.
-		 */
-		power_reset_host_sleep_state();
-#endif
-		return POWER_S3;
-
-	case POWER_S3S0:
-		if (!power_has_signals(IN_PGOOD_ALL_CORE)) {
-			/* Required rail went away, go straight back to S5 */
-			chipset_force_shutdown(CHIPSET_SHUTDOWN_POWERFAIL);
-			return POWER_S3S5;
-		}
-
-		/* Enable wireless */
-		wireless_set_state(WIRELESS_ON);
-
-		lpc_s3_resume_clear_masks();
-
-#ifdef CONFIG_CHIPSET_RESUME_INIT_HOOK
-		/* Call hooks prior to chipset resume */
-		hook_notify(HOOK_CHIPSET_RESUME_INIT);
-#endif
-		/* Call hooks now that rails are up */
-		hook_notify(HOOK_CHIPSET_RESUME);
-
-		/*
-		 * Disable idle task deep sleep. This means that the low
-		 * power idle task will not go into deep sleep while in S0.
-		 */
-		disable_sleep(SLEEP_MASK_AP_RUN);
-
-		/*
-		 * Throttle CPU if necessary.  This should only be asserted
-		 * when +VCCP is powered (it is by now).
-		 */
-#ifdef CONFIG_CPU_PROCHOT_ACTIVE_LOW
-		gpio_set_level(GPIO_CPU_PROCHOT, 1);
-#else
-		gpio_set_level(GPIO_CPU_PROCHOT, 0);
-#endif /* CONFIG_CPU_PROCHOT_ACTIVE_LOW */
-
-		return POWER_S0;
-
-	case POWER_S0S3:
-
-		/* Call hooks before we remove power rails */
-		hook_notify(HOOK_CHIPSET_SUSPEND);
-#ifdef CONFIG_CHIPSET_RESUME_INIT_HOOK
-		/* Call hooks after chipset suspend */
-		hook_notify(HOOK_CHIPSET_SUSPEND_COMPLETE);
-#endif
-
-		/* Suspend wireless */
-		wireless_set_state(WIRELESS_SUSPEND);
-
-		/*
-		 * Enable idle task deep sleep. Allow the low power idle task
-		 * to go into deep sleep in S3 or lower.
-		 */
-		enable_sleep(SLEEP_MASK_AP_RUN);
-
-#ifdef CONFIG_POWER_S0IX
-		/* re-init S0ix flag */
-		power_reset_host_sleep_state();
-#endif
-		return POWER_S3;
-
-#ifdef CONFIG_POWER_S0IX
-	case POWER_S0S0ix:
-		/*
-		 * Call hooks only if we haven't notified listeners of S0ix
-		 * suspend.
-		 */
-		sleep_notify_transition(SLEEP_NOTIFY_SUSPEND,
-					HOOK_CHIPSET_SUSPEND);
-		sleep_suspend_transition();
-
-		/*
-		 * Enable idle task deep sleep. Allow the low power idle task
-		 * to go into deep sleep in S0ix.
-		 */
-		enable_sleep(SLEEP_MASK_AP_RUN);
-
-#ifdef CONFIG_CHIPSET_RESUME_INIT_HOOK
-		hook_notify(HOOK_CHIPSET_SUSPEND_COMPLETE);
-#endif
-
-		return POWER_S0ix;
-
-	case POWER_S0ixS0:
-		/*
-		 * Disable idle task deep sleep. This means that the low
-		 * power idle task will not go into deep sleep while in S0.
-		 */
-		disable_sleep(SLEEP_MASK_AP_RUN);
-
-#ifdef CONFIG_CHIPSET_RESUME_INIT_HOOK
-		hook_notify(HOOK_CHIPSET_RESUME_INIT);
-#endif
-
-		sleep_resume_transition();
-		return POWER_S0;
-#endif
-
-	case POWER_S3S5:
-		/* fallthrough */
-	case POWER_S4S5:
-		/* Call hooks before we remove power rails */
-		hook_notify(HOOK_CHIPSET_SHUTDOWN);
-
-		/* Disable wireless */
-		wireless_set_state(WIRELESS_OFF);
-
-		/* Call hooks after we remove power rails */
-		hook_notify(HOOK_CHIPSET_SHUTDOWN_COMPLETE);
-
-		/* Always enter into S5 state. The S5 state is required to
-		 * correctly handle global resets which have a bit of delay
-		 * while the SLP_Sx_L signals are asserted then deasserted.
-		 */
-		power_s5_up = 0;
-		return POWER_S5;
-
-	case POWER_S5G3:
-		return chipset_force_g3();
-
 	default:
-		break;
+		return state;
 	}
-
-	return state;
 }
+#endif
 
 void common_intel_x86_handle_rsmrst(enum power_state state)
 {
