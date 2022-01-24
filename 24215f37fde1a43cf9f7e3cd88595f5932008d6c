@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c25d796b_7b28b266",
+        "filename": "docs/zephyr/zephyr_gpio.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-01-24T12:12:57Z",
+      "side": 1,
+      "message": "How about putting this under a subtitle? Thinking something like \"### Legacy code\" or \"enum-name usage\"",
+      "revId": "24215f37fde1a43cf9f7e3cd88595f5932008d6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "24a328f1_183d4538",
+        "filename": "docs/zephyr/zephyr_gpio.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-01-24T12:12:57Z",
+      "side": 1,
+      "message": "Can you add a link to [include/drivers/gpio.h]?",
+      "range": {
+        "startLine": 163,
+        "startChar": 2,
+        "endLine": 163,
+        "endChar": 7
+      },
+      "revId": "24215f37fde1a43cf9f7e3cd88595f5932008d6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e0e0a3e_dad0dc1c",
+        "filename": "docs/zephyr/zephyr_gpio.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-01-24T12:12:57Z",
+      "side": 1,
+      "message": "nit: drop the blank line",
+      "revId": "24215f37fde1a43cf9f7e3cd88595f5932008d6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "41c26cee_f8856108",
+        "filename": "docs/zephyr/zephyr_gpio.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-01-24T12:12:57Z",
+      "side": 1,
+      "message": "nit: drop the blank line",
+      "revId": "24215f37fde1a43cf9f7e3cd88595f5932008d6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
