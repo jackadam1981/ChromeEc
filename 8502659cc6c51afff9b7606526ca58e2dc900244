@@ -70,6 +70,30 @@
       },
       "revId": "8502659cc6c51afff9b7606526ca58e2dc900244",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "286f7808_1918dc21",
+        "filename": "common/usbc/usb_pd_console.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2022-01-24T21:46:20Z",
+      "side": 1,
+      "message": "The problem is on line include/console.h:250\n\nHere\u0027s the entire error message:\n\ncommon/usbc/usb_pd_console.c:194:29: error: static declaration of ‘command_pd’ follows non-static declaration\n  194 | DECLARE_CONSOLE_COMMAND(pd, command_pd,\n      |                             ^~~~~~~~~~\ninclude/console.h:250:14: note: in definition of macro ‘_DCL_CON_CMD_ALL’\n  250 |  static int (ROUTINE)(int argc, char **argv);   \\\n      |              ^~~~~~~\ncommon/usbc/usb_pd_console.c:194:1: note: in expansion of macro ‘DECLARE_CONSOLE_COMMAND’\n  194 | DECLARE_CONSOLE_COMMAND(pd, command_pd,\n      | ^~~~~~~~~~~~~~~~~~~~~~~\ncommon/usbc/usb_pd_console.c:16:24: note: previous definition of ‘command_pd’ was here\n   16 | test_export_static int command_pd(int argc, char **argv)\n      |                        ^~~~~~~~~~",
+      "parentUuid": "857abc4e_d5917188",
+      "range": {
+        "startLine": 194,
+        "startChar": 0,
+        "endLine": 194,
+        "endChar": 18
+      },
+      "revId": "8502659cc6c51afff9b7606526ca58e2dc900244",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
