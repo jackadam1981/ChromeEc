@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "12ee8316_5e8150a6",
+        "filename": "docs/zephyr/zephy_fw_config.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-01-24T20:55:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "81dba7aa_848127a5",
+      "range": {
+        "startLine": 18,
+        "startChar": 30,
+        "endLine": 18,
+        "endChar": 33
+      },
+      "revId": "c3c169e667de6fccfe42134f4a993f578bece244",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a3bee70b_a74e754a",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-01-24T16:48:04Z",
       "side": 1,
       "message": "What is the point of these sections?",
+      "range": {
+        "startLine": 117,
+        "startChar": 0,
+        "endLine": 123,
+        "endChar": 21
+      },
+      "revId": "c3c169e667de6fccfe42134f4a993f578bece244",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7fe731aa_0f9904ad",
+        "filename": "docs/zephyr/zephy_fw_config.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-01-24T20:55:28Z",
+      "side": 1,
+      "message": "These are from the zephyr_template.md file and I presumed are required sections.",
+      "parentUuid": "a3bee70b_a74e754a",
       "range": {
         "startLine": 117,
         "startChar": 0,
