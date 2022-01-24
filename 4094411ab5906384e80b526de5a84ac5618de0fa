@@ -1,0 +1,153 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "41ef5f51_0865f4f2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-01-24T21:59:41Z",
+      "side": 1,
+      "message": "Thanks for splitting out the refactor.  This was a lot easier to review.",
+      "revId": "4094411ab5906384e80b526de5a84ac5618de0fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb93edf1_97e9c92e",
+        "filename": "zephyr/shim/src/gpio_int.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-01-24T21:59:41Z",
+      "side": 1,
+      "message": "Change to return an int.",
+      "range": {
+        "startLine": 213,
+        "startChar": 0,
+        "endLine": 213,
+        "endChar": 4
+      },
+      "revId": "4094411ab5906384e80b526de5a84ac5618de0fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9dea08d1_6c635140",
+        "filename": "zephyr/shim/src/gpio_int.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-01-24T21:59:41Z",
+      "side": 1,
+      "message": "pass through return value to caller",
+      "range": {
+        "startLine": 227,
+        "startChar": 1,
+        "endLine": 227,
+        "endChar": 29
+      },
+      "revId": "4094411ab5906384e80b526de5a84ac5618de0fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "530cf09d_5cb73be1",
+        "filename": "zephyr/shim/src/gpio_int.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-01-24T21:59:41Z",
+      "side": 1,
+      "message": "same here, pass through return value.",
+      "revId": "4094411ab5906384e80b526de5a84ac5618de0fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "baabb3d2_d00bdfe8",
+        "filename": "zephyr/shim/src/gpio_int.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-01-24T21:59:41Z",
+      "side": 1,
+      "message": "Nit - return NULL.",
+      "range": {
+        "startLine": 277,
+        "startChar": 8,
+        "endLine": 277,
+        "endChar": 9
+      },
+      "revId": "4094411ab5906384e80b526de5a84ac5618de0fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "429e6b7c_deae89f6",
+        "filename": "zephyr/shim/src/gpio_int.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-01-24T21:59:41Z",
+      "side": 1,
+      "message": "return gpio_enable_dt_interrupt(zc);\n\nBTW what is \"zc\" in this context?",
+      "range": {
+        "startLine": 289,
+        "startChar": 2,
+        "endLine": 289,
+        "endChar": 26
+      },
+      "revId": "4094411ab5906384e80b526de5a84ac5618de0fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d66db40_1a80d273",
+        "filename": "zephyr/shim/src/gpio_int.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-01-24T21:59:41Z",
+      "side": 1,
+      "message": "return gpio_disable_dt_interrupt(zc);",
+      "range": {
+        "startLine": 321,
+        "startChar": 0,
+        "endLine": 321,
+        "endChar": 32
+      },
+      "revId": "4094411ab5906384e80b526de5a84ac5618de0fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
