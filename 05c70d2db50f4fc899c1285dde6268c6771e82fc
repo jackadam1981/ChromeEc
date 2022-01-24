@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d402ed40_fcb28ca9",
+        "filename": "board/taeko/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-01-24T20:32:28Z",
+      "side": 1,
+      "message": "not sure what you mean by \"todo\" here. we usually mark something\nas \"todo\" if we need to revisit some code later.\n\nperhaps update comment to one of:\ndevice is a clamshell\napplies only to clamshell devices",
+      "range": {
+        "startLine": 56,
+        "startChar": 20,
+        "endLine": 56,
+        "endChar": 24
+      },
+      "revId": "05c70d2db50f4fc899c1285dde6268c6771e82fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
