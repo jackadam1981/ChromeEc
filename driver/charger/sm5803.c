@@ -396,6 +396,7 @@ static void init_status_retrieve(void)
 }
 DECLARE_HOOK(HOOK_INIT, init_status_retrieve, HOOK_PRIO_FIRST);
 
+#ifdef CONFIG_ZEPHYR
 static void init_mutexes(void)
 {
 	int i;
@@ -406,6 +407,7 @@ static void init_mutexes(void)
 	}
 }
 DECLARE_HOOK(HOOK_INIT, init_mutexes, HOOK_PRIO_FIRST);
+#endif
 
 static void sm5803_init(int chgnum)
 {
