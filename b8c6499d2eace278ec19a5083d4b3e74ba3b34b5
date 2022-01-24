@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d3146fbf_af0aa95c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2022-01-24T14:46:14Z",
+      "side": 1,
+      "message": "Yes, the driver itself is much more extended than the one in CrosEC. Unfortunately, I think it will be hard to reduce. Adding CONFIG_EEPROM_AT2X_NO_WP saves 144bytes(increase 844-\u003e700), but apart from that, I don\u0027t have any ideas(removing the size function, which is not used, saves only 16bytes). I\u0027m preparing the patch with CONFIG_EEPROM_AT2X_NO_WP.",
+      "parentUuid": "081a29f4_479a62f6",
+      "range": {
+        "startLine": 16,
+        "startChar": 39,
+        "endLine": 16,
+        "endChar": 48
+      },
+      "revId": "b8c6499d2eace278ec19a5083d4b3e74ba3b34b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c638bac5_718e1456",
         "filename": "zephyr/shim/src/cbi_eeprom.c",
         "patchSetId": 1
@@ -37,6 +61,30 @@
       "writtenOn": "2022-01-21T23:12:30Z",
       "side": 1,
       "message": "Do have any ideas on how to get this info from the devicetree?  We can easily get rid of CONFIG_WP_ACTIVE_HIGH since this can be set in the device-tree with GPIO_ACTIVE_HIGH/LOW.\n\nBut where do we specify the GPIO?  Maybe we try to extend the upstream driver to indicate the wp-gpios property is read only?",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 6
+      },
+      "revId": "b8c6499d2eace278ec19a5083d4b3e74ba3b34b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b9add553_b2f5a202",
+        "filename": "zephyr/shim/src/cbi_eeprom.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2022-01-24T14:46:14Z",
+      "side": 1,
+      "message": "The WP active low/high is a pure EC thing and it is for the whole system. The AT2x chips always interpret the WP pin as active-low, so IMO it wouldn\u0027t make sense to change the driver.\n\nThe GPIO is specified in the named-gpio node, and we use the enum GPIO_WP/WP_L. I will try to find a better solution for that.",
+      "parentUuid": "c638bac5_718e1456",
       "range": {
         "startLine": 22,
         "startChar": 0,
