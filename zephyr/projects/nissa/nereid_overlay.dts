@@ -6,6 +6,12 @@
 #include <cros/thermistor/thermistor.dtsi>
 
 / {
+	batteries {
+		default_battery: lgc {
+			compatible = "lgc,ap18c8k";
+		};
+	};
+
 	hibernate-wake-pins {
 		compatible = "cros-ec,hibernate-wake-pins";
 		wakeup-pins = <
@@ -45,6 +51,17 @@
 			#gpio-cells = <0>;
 			gpios = <&gpioe 0 GPIO_INPUT>;
 			no-auto-init;
+		};
+		/*
+		 * C0 CC1/CC2 VCONN
+		 */
+		gpio_en_usb_c0_cc1_vconn: en_usb_c0_cc1_vconn {
+			#gpio-cells = <0>;
+			gpios = <&gpioh 6 GPIO_OUTPUT>;
+		};
+		gpio_en_usb_c0_cc2_vconn: en_usb_c0_cc2_vconn {
+			#gpio-cells = <0>;
+			gpios = <&gpioh 4 GPIO_OUTPUT>;
 		};
 	};
 
@@ -105,6 +122,30 @@
 		compatible = "named-pwms";
 
 		kblight: pwm_kb_bl {
+		};
+	};
+
+	usbc {
+		port0 {
+			bc12 {
+				compatible = "pericom,pi3usb9201";
+				port = <&i2c_ec_i2c_usb_c0>;
+				/*
+				 * BC1.2 interrupt is shared with TCPC, so
+				 * IRQ is not specified here and handled by
+				 * usb_c0_interrupt.
+				 */
+			};
+		};
+		/*
+		 * TODO(b:211693800): port1 may not be present on some
+		 * sub-boards.
+		 */
+		port1 {
+			bc12 {
+				compatible = "pericom,pi3usb9201";
+				port = <&i2c_ec_i2c_sub_usb_c1>;
+			};
 		};
 	};
 };
