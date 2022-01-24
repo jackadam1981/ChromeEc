@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c0dea5d_1a1bb1c6",
+        "filename": "board/cr50/ap_state.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-01-24T21:57:33Z",
+      "side": 1,
+      "message": "the idea is that if TPM_RST_L interrupt were processed by now, AP state would be on and this would be an indication that TPM reset just happened?",
+      "range": {
+        "startLine": 40,
+        "startChar": 25,
+        "endLine": 40,
+        "endChar": 34
+      },
+      "revId": "fb9b97cec1b23d1bdb6fd7cbd5579d6357636ce7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

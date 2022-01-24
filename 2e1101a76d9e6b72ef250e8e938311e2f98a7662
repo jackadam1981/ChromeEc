@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "be0431a2_bce23aa6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-01-24T21:57:33Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e82d1606_e4cf51a6",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 32
+      },
+      "revId": "2e1101a76d9e6b72ef250e8e938311e2f98a7662",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1a1a4274_c69b7854",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-01-22T00:24:43Z",
       "side": 1,
       "message": "Do you think I need to do this every pmu wakeup or just when the wake pin triggered resume?",
+      "range": {
+        "startLine": 555,
+        "startChar": 0,
+        "endLine": 555,
+        "endChar": 22
+      },
+      "revId": "2e1101a76d9e6b72ef250e8e938311e2f98a7662",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01697a13_a5c9fa6c",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 555,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-01-24T21:57:33Z",
+      "side": 1,
+      "message": "Do you mean triggered the AP resume? I mean we\u0027re always here after an H1 sllep resume, right?",
+      "parentUuid": "1a1a4274_c69b7854",
       "range": {
         "startLine": 555,
         "startChar": 0,
