@@ -50,8 +50,8 @@ static const struct charger_info sm5803_charger_info = {
 
 static atomic_t irq_pending; /* Bitmask of chips with interrupts pending */
 
-static struct mutex flow1_access_lock[CHARGER_NUM];
-static struct mutex flow2_access_lock[CHARGER_NUM];
+struct k_mutex flow1_access_lock[CHARGER_NUM];
+struct k_mutex flow2_access_lock[CHARGER_NUM];
 
 static int charger_vbus[CHARGER_NUM];
 
@@ -404,7 +404,12 @@ static void sm5803_init(int chgnum)
 	const struct battery_info *batt_info;
 	int pre_term;
 	int cells;
+	int i;
 
+	for (i = 0; i < CHARGER_NUM; i++) {
+		k_mutex_init(&flow1_access_lock[i]);
+		k_mutex_init(&flow2_access_lock[i]);
+	}
 	/*
 	 * If a charger is not currently present, disable switching per OCPC
 	 * requirements
