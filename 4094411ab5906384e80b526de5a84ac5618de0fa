@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d015e4e_e8dc7867",
+        "filename": "zephyr/shim/src/gpio_int.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-01-24T22:19:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bb93edf1_97e9c92e",
+      "range": {
+        "startLine": 213,
+        "startChar": 0,
+        "endLine": 213,
+        "endChar": 4
+      },
+      "revId": "4094411ab5906384e80b526de5a84ac5618de0fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9dea08d1_6c635140",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-01-24T21:59:41Z",
       "side": 1,
       "message": "pass through return value to caller",
+      "range": {
+        "startLine": 227,
+        "startChar": 1,
+        "endLine": 227,
+        "endChar": 29
+      },
+      "revId": "4094411ab5906384e80b526de5a84ac5618de0fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5102cb02_e256181e",
+        "filename": "zephyr/shim/src/gpio_int.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-01-24T22:19:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9dea08d1_6c635140",
       "range": {
         "startLine": 227,
         "startChar": 1,
@@ -81,6 +129,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ecee391_5bccd338",
+        "filename": "zephyr/shim/src/gpio_int.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-01-24T22:19:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "530cf09d_5cb73be1",
+      "revId": "4094411ab5906384e80b526de5a84ac5618de0fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "baabb3d2_d00bdfe8",
@@ -94,6 +160,30 @@
       "writtenOn": "2022-01-24T21:59:41Z",
       "side": 1,
       "message": "Nit - return NULL.",
+      "range": {
+        "startLine": 277,
+        "startChar": 8,
+        "endLine": 277,
+        "endChar": 9
+      },
+      "revId": "4094411ab5906384e80b526de5a84ac5618de0fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8361c991_2590066b",
+        "filename": "zephyr/shim/src/gpio_int.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-01-24T22:19:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "baabb3d2_d00bdfe8",
       "range": {
         "startLine": 277,
         "startChar": 8,
@@ -127,6 +217,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "22caa743_962f8f96",
+        "filename": "zephyr/shim/src/gpio_int.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-01-24T22:19:32Z",
+      "side": 1,
+      "message": "I meant it to mean \u0027Zephyr interrupt config\u0027, but I\u0027ll rename it \u0027ic\u0027.",
+      "parentUuid": "429e6b7c_deae89f6",
+      "range": {
+        "startLine": 289,
+        "startChar": 2,
+        "endLine": 289,
+        "endChar": 26
+      },
+      "revId": "4094411ab5906384e80b526de5a84ac5618de0fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5d66db40_1a80d273",
@@ -140,6 +254,30 @@
       "writtenOn": "2022-01-24T21:59:41Z",
       "side": 1,
       "message": "return gpio_disable_dt_interrupt(zc);",
+      "range": {
+        "startLine": 321,
+        "startChar": 0,
+        "endLine": 321,
+        "endChar": 32
+      },
+      "revId": "4094411ab5906384e80b526de5a84ac5618de0fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a97a525e_ddef7306",
+        "filename": "zephyr/shim/src/gpio_int.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-01-24T22:19:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5d66db40_1a80d273",
       "range": {
         "startLine": 321,
         "startChar": 0,
