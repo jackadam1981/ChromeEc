@@ -10,8 +10,10 @@
 #define __CROS_EC_INTEL_X86_H
 
 #include "common_x86.h"
-#include "espi.h"
 #include "power.h"
+
+#define G3S5_SHUTDOWN_REASON		CHIPSET_SHUTDOWN_WAIT
+#define BATTERY_INHIBIT
 
 /**
  * Handle RSMRST signal.
@@ -19,14 +21,6 @@
  * @param state Current chipset state.
  */
 void common_intel_x86_handle_rsmrst(enum power_state state);
-
-/**
- * Handle power states.
- *
- * @param state        Current chipset state.
- * @return power_state New chipset state.
- */
-enum power_state common_intel_x86_power_handle_state(enum power_state state);
 
 /**
  * Get the value of PG_EC_DSW_PWROK.
@@ -43,5 +37,19 @@ __override_proto int intel_x86_get_pg_ec_dsw_pwrok(void);
  * board doesn't have that GPIO, they may override this function.
  */
 __override_proto int intel_x86_get_pg_ec_all_sys_pwrgd(void);
+
+static inline void handle_power_failure(void)
+{
+	chipset_force_shutdown(CHIPSET_SHUTDOWN_POWERFAIL);
+}
+
+static inline void init_prochot(void)
+{
+#ifdef CONFIG_CPU_PROCHOT_ACTIVE_LOW
+		gpio_set_level(GPIO_CPU_PROCHOT, 1);
+#else
+		gpio_set_level(GPIO_CPU_PROCHOT, 0);
+#endif /* CONFIG_CPU_PROCHOT_ACTIVE_LOW */
+}
 
 #endif /* __CROS_EC_INTEL_X86_H */

@@ -26,7 +26,7 @@
  * duplicating the common code (introducing a little redundancy instead).
  *
  * PP3300 monitoring is analog-only: power_handle_state enforces that it's good
- * before continuing to common_intel_x86_power_handle_state. This means we can't
+ * before continuing to common_x86_power_handle_state. This means we can't
  * detect dropouts on that rail, however.
  *
  * Polling analog inputs as a signal for the common code would require

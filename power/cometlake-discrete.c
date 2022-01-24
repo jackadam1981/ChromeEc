@@ -360,7 +360,7 @@ enum power_state power_handle_state(enum power_state state)
 	 * Power-up steps 3a-3b (S5->S3 via IN_PGOOD_ALL_CORE) plus general
 	 * bookkeeping.
 	 */
-	return common_intel_x86_power_handle_state(state);
+	return common_x86_power_handle_state(state);
 }
 
 #ifdef CONFIG_VBOOT_EFS
