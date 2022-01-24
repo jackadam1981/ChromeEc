@@ -18,6 +18,14 @@
 #include "scp_watchdog.h"
 #include "timer.h"
 
+#ifdef HAS_TASK_SR
+#include "scp_timer.h"
+#include "task.h"
+
+#define TASK_EVENT_SUSPEND TASK_EVENT_CUSTOM_BIT(4)
+#define TASK_EVENT_RESUME TASK_EVENT_CUSTOM_BIT(5)
+#endif
+
 #define CPRINTF(format, args...) cprintf(CC_CLOCK, format, ##args)
 #define CPRINTS(format, args...) cprints(CC_CLOCK, format, ##args)
 
@@ -376,16 +384,91 @@ __override void
 power_chipset_handle_host_sleep_event(enum host_sleep_event state,
 				      struct host_sleep_event_context *ctx)
 {
+#ifdef HAS_TASK_SR
 	if (state == HOST_SLEEP_EVENT_S3_SUSPEND) {
-		CPRINTS("AP suspend");
+		clock_select_clock(SCP_CLK_ULPOSC2_LOW_SPEED);
+		task_set_event(TASK_ID_SR, TASK_EVENT_SUSPEND);
+	} else if (state == HOST_SLEEP_EVENT_S3_RESUME) {
+		task_set_event(TASK_ID_SR, TASK_EVENT_RESUME);
+		clock_select_clock(SCP_CLK_ULPOSC2_HIGH_SPEED);
+	}
+#else
+	if (state == HOST_SLEEP_EVENT_S3_SUSPEND) {
 		watchdog_disable();
 		clock_select_clock(SCP_CLK_SYSTEM);
 	} else if (state == HOST_SLEEP_EVENT_S3_RESUME) {
 		clock_select_clock(SCP_CLK_ULPOSC2_HIGH_SPEED);
 		watchdog_enable();
-		CPRINTS("AP resume");
+	}
+#endif
+}
+
+#ifdef HAS_TASK_SR
+#define CHECK_26M_PERIOD_US 50000
+enum {
+	SR_AWAKE = 0,
+	SR_SLEEPY,
+	SR_ASLEEP,
+	SR_WAKEUP,
+};
+void sr_task(void *u)
+{
+	int state = 0;
+	uint32_t event;
+	uint32_t prev, now;
+
+	while(1) {
+		switch (state) {
+		case SR_AWAKE:
+			event = task_wait_event(-1);
+			/* CPRINTS("state wait S3"); */
+			if (event & TASK_EVENT_SUSPEND) {
+				timer_enable(TIMER_SR);
+				prev = timer_read_raw_sr();
+				state = SR_SLEEPY;
+				/* CPRINTS("state check 26M"); */
+			}
+			break;
+		case SR_SLEEPY:
+			event = task_wait_event(CHECK_26M_PERIOD_US);
+			if (event & TASK_EVENT_RESUME) {
+				/* CPRINTS("state abort"); */
+				timer_disable(TIMER_SR);
+				state = SR_AWAKE;
+			} else if (event & TASK_EVENT_TIMER) {
+				now = timer_read_raw_sr();
+				if (now != prev) {
+					/* 26M is still on */
+					/* CPRINTS("."); */
+					prev = now;
+				} else {
+					/* 26M is off */
+					state = SR_ASLEEP;
+				}
+			}
+			break;
+		case SR_ASLEEP:
+			/* 26M is off */
+			interrupt_disable();
+			watchdog_disable();
+
+			/* change to 26M to stop core at here */
+			clock_select_clock(SCP_CLK_SYSTEM);
+
+			/* 26M is on */
+			state = SR_WAKEUP;
+			break;
+		case SR_WAKEUP:
+			watchdog_enable();
+			interrupt_enable();
+			/* CPRINTS("state 26M on"); */
+			timer_disable(TIMER_SR);
+			state = SR_AWAKE;
+			break;
+		}
 	}
 }
+#endif
 
 void clock_init(void)
 {
