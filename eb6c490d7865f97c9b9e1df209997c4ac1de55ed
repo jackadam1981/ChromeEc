@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06ca0bc4_bfe3fd2d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-01-24T17:53:43Z",
+      "side": 1,
+      "message": "This CL is only adding a stub driver.  Pleas update the commit message to match.",
+      "range": {
+        "startLine": 9,
+        "startChar": 3,
+        "endLine": 9,
+        "endChar": 15
+      },
+      "revId": "eb6c490d7865f97c9b9e1df209997c4ac1de55ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c0dc71ca_7051a711",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-01-24T17:53:43Z",
+      "side": 1,
+      "message": "Note - once zephyr-reviewers has selected a reviewer and you have gotten feedback, please leave review list alone.  You don\u0027t need to add zephyr-reviewers with each patchset.\n\nThe best way to make sure the CL gets reviewed, is to make sure the reviewer is listed in the \"attention set\" - this is the arrow next to the individual\u0027s name.  Normally gerrit will automatically set the attentions set when you upload a new patchset and set the verified flag.\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:docs/firmware_code_reviews.md",
+      "revId": "eb6c490d7865f97c9b9e1df209997c4ac1de55ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b43ac73_2b2cde45",
+        "filename": "zephyr/drivers/cros_kb_raw/CMakeLists.txt",
+        "patchSetId": 5
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-01-24T17:53:43Z",
+      "side": 1,
+      "message": "Fix the license banner.",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 37
+      },
+      "revId": "eb6c490d7865f97c9b9e1df209997c4ac1de55ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b678290_47ad5510",
+        "filename": "zephyr/dts/bindings/cros_kb_raw/microchip,xec-cros-kb-raw.yaml",
+        "patchSetId": 5
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-01-24T17:53:43Z",
+      "side": 1,
+      "message": "Use the Chromium license banner.",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 3,
+        "endChar": 0
+      },
+      "revId": "eb6c490d7865f97c9b9e1df209997c4ac1de55ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
