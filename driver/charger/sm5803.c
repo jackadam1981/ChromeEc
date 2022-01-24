@@ -50,8 +50,8 @@ static const struct charger_info sm5803_charger_info = {
 
 static atomic_t irq_pending; /* Bitmask of chips with interrupts pending */
 
-static struct mutex flow1_access_lock[CHARGER_NUM];
-static struct mutex flow2_access_lock[CHARGER_NUM];
+K_MUTEX_DEFINE(flow1_access_lock);
+K_MUTEX_DEFINE(flow2_access_lock);
 
 static int charger_vbus[CHARGER_NUM];
 
@@ -148,14 +148,14 @@ static enum ec_error_list sm5803_flow1_update(int chgnum, const uint8_t mask,
 	int rv;
 
 	/* Safety checks done, onto the actual register update */
-	mutex_lock(&flow1_access_lock[chgnum]);
+	mutex_lock(&flow1_access_lock);
 
 	rv = i2c_update8(chg_chips[chgnum].i2c_port,
 			 chg_chips[chgnum].i2c_addr_flags,
 			 SM5803_REG_FLOW1,
 			 mask, action);
 
-	mutex_unlock(&flow1_access_lock[chgnum]);
+	mutex_unlock(&flow1_access_lock);
 
 	return rv;
 }
@@ -165,14 +165,14 @@ static enum ec_error_list sm5803_flow2_update(int chgnum, const uint8_t mask,
 {
 	int rv;
 
-	mutex_lock(&flow2_access_lock[chgnum]);
+	mutex_lock(&flow2_access_lock);
 
 	rv = i2c_update8(chg_chips[chgnum].i2c_port,
 			 chg_chips[chgnum].i2c_addr_flags,
 			 SM5803_REG_FLOW2,
 			 mask, action);
 
-	mutex_unlock(&flow2_access_lock[chgnum]);
+	mutex_unlock(&flow2_access_lock);
 
 	return rv;
 }
@@ -1632,12 +1632,12 @@ static enum ec_error_list sm5803_set_option(int chgnum, int option)
 	enum ec_error_list rv;
 	int reg;
 
-	mutex_lock(&flow1_access_lock[chgnum]);
+	mutex_lock(&flow1_access_lock);
 
 	reg = option & 0xFF;
 	rv = chg_write8(chgnum, SM5803_REG_FLOW1, reg);
 
-	mutex_unlock(&flow1_access_lock[chgnum]);
+	mutex_unlock(&flow1_access_lock);
 	if (rv)
 		return rv;
 
