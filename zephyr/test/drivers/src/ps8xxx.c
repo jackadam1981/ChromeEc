@@ -598,6 +598,11 @@ ZTEST(ps8805, test_ps8805_get_chip_info_fix_dev_id)
 	tcpci_emul_set_reg(tcpci_emul, TCPC_REG_PRODUCT_ID, product);
 	tcpci_emul_set_reg(tcpci_emul, PS8XXX_REG_FW_REV, fw_rev);
 
+	/* Set correct power status for this test */
+	tcpci_emul_set_reg(tcpci_emul, TCPC_REG_POWER_STATUS, 0x0);
+	/* Init to allow access to "hidden" I2C ports */
+	zassert_equal(EC_SUCCESS, ps8xxx_tcpm_drv.init(USBC_PORT_C1), NULL);
+
 	/* Set device id which requires fixing */
 	device_id = 0x1;
 	tcpci_emul_set_reg(tcpci_emul, TCPC_REG_BCD_DEV, device_id);
@@ -744,6 +749,7 @@ ZTEST(ps8815, test_ps8815_get_chip_info_fix_dev_id)
 ZTEST(ps8805, test_ps8805_gpio)
 {
 	const struct emul *ps8xxx_emul = emul_get_binding(PS8XXX_EMUL_LABEL);
+	const struct emul *tcpci_emul = ps8xxx_emul_get_tcpci(ps8xxx_emul);
 	struct i2c_emul *gpio_i2c_emul =
 		ps8xxx_emul_get_i2c_emul(ps8xxx_emul, PS8XXX_EMUL_PORT_GPIO);
 	uint8_t exp_ctrl, gpio_ctrl;
@@ -799,6 +805,13 @@ ZTEST(ps8805, test_ps8805_gpio)
 			.level = 1,
 		},
 	};
+
+	/* Set arbitrary FW reg value != 0 for this test */
+	tcpci_emul_set_reg(tcpci_emul, PS8XXX_REG_FW_REV, 0x31);
+	/* Set correct power status for this test */
+	tcpci_emul_set_reg(tcpci_emul, TCPC_REG_POWER_STATUS, 0x0);
+	/* Init to allow access to "hidden" I2C ports */
+	zassert_equal(EC_SUCCESS, ps8xxx_tcpm_drv.init(USBC_PORT_C1), NULL);
 
 	/* Test fail on invalid signal for gpio control reg */
 	zassert_equal(EC_ERROR_INVAL,

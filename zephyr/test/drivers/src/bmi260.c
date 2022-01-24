@@ -134,6 +134,41 @@ static void compare_int3v_f(intv3_t exp_v, intv3_t v, int eps, int line)
 #define compare_int3v_eps(exp_v, v, e) compare_int3v_f(exp_v, v, e, __LINE__)
 #define compare_int3v(exp_v, v) compare_int3v_eps(exp_v, v, V_EPS)
 
+/**
+ * Custom emulator read function which always return INIT OK status in
+ * INTERNAL STATUS register. Used in init test.
+ */
+static int emul_init_ok(struct i2c_emul *emul, int reg, uint8_t *val, int byte,
+			void *data)
+{
+	bmi_emul_set_reg(emul, BMI260_INTERNAL_STATUS, BMI260_INIT_OK);
+
+	return 1;
+}
+
+/** Init BMI260 before test */
+static void bmi_init_emul(void)
+{
+	struct motion_sensor_t *ms_acc;
+	struct motion_sensor_t *ms_gyr;
+	struct i2c_emul *emul;
+
+	emul = bmi_emul_get(BMI_ORD);
+	ms_acc = &motion_sensors[BMI_ACC_SENSOR_ID];
+	ms_gyr = &motion_sensors[BMI_GYR_SENSOR_ID];
+
+	/*
+	 * Init BMI before test. It is needed custom function to set value of
+	 * BMI260_INTERNAL_STATUS register, because init function triggers reset
+	 * which clears value set in this register before test.
+	 */
+	i2c_common_emul_set_read_func(emul, emul_init_ok, NULL);
+	zassert_equal(EC_RES_SUCCESS, ms_acc->drv->init(ms_acc), NULL);
+	zassert_equal(EC_RES_SUCCESS, ms_gyr->drv->init(ms_gyr), NULL);
+	/* Remove custom emulator read function */
+	i2c_common_emul_set_read_func(emul, NULL, NULL);
+}
+
 /** Test get accelerometer offset with and without rotation */
 ZTEST_USER(bmi260, test_bmi_acc_get_offset)
 {
@@ -1386,6 +1421,11 @@ ZTEST_USER(bmi260, test_bmi_acc_perform_calib)
 	emul = bmi_emul_get(BMI_ORD);
 	ms = &motion_sensors[BMI_ACC_SENSOR_ID];
 
+	bmi_init_emul();
+
+	/* Disable rotation */
+	ms->rot_standard_ref = NULL;
+
 	/* Range and rate cannot change after calibration */
 	range = 4;
 	rate = 50000;
@@ -1559,18 +1599,6 @@ ZTEST_USER(bmi260, test_bmi_gyr_perform_calib)
 }
 
 /**
- * Custom emulatro read function which always return INIT OK status in
- * INTERNAL STATUS register. Used in init test.
- */
-static int emul_init_ok(struct i2c_emul *emul, int reg, uint8_t *val, int byte,
-			void *data)
-{
-	bmi_emul_set_reg(emul, BMI260_INTERNAL_STATUS, BMI260_INIT_OK);
-
-	return 1;
-}
-
-/**
  * A custom fake to use with the `init_rom_map` mock that returns the
  * value of `addr`
  */
@@ -1593,18 +1621,7 @@ ZTEST_USER(bmi260, test_bmi_init)
 	RESET_FAKE(init_rom_map);
 	init_rom_map_fake.custom_fake = init_rom_map_addr_passthru;
 
-	/*
-	 * Test successful init. It is needed custom function to set value of
-	 * BMI260_INTERNAL_STATUS register, because init function triggers reset
-	 * which clears value set in this register before test.
-	 */
-	i2c_common_emul_set_read_func(emul, emul_init_ok, NULL);
-	zassert_equal(EC_RES_SUCCESS, ms_acc->drv->init(ms_acc), NULL);
-
-	zassert_equal(EC_RES_SUCCESS, ms_gyr->drv->init(ms_gyr), NULL);
-
-	/* Remove custom emulator read function */
-	i2c_common_emul_set_read_func(emul, NULL, NULL);
+	bmi_init_emul();
 }
 
 /** Data for custom emulator read function used in FIFO test */
@@ -1665,7 +1682,7 @@ static void check_fifo_f(struct motion_sensor_t *ms_acc,
 
 	/* Read FIFO in driver */
 	zassert_equal(EC_SUCCESS, ms_acc->drv->irq_handler(ms_acc, &event),
-		      NULL);
+		      "Falied to read FIFO in irq handler, line %d", line);
 
 	/* Read all data committed to FIFO */
 	while (motion_sense_fifo_read(sizeof(vector), 1, &vector, &size)) {
@@ -1742,6 +1759,8 @@ ZTEST_USER(bmi260, test_bmi_acc_fifo)
 	ms = &motion_sensors[BMI_ACC_SENSOR_ID];
 	ms_gyr = &motion_sensors[BMI_GYR_SENSOR_ID];
 
+	bmi_init_emul();
+
 	/* Need to be set to collect all data in FIFO */
 	ms->oversampling_ratio = 1;
 	ms_gyr->oversampling_ratio = 1;
@@ -1763,13 +1782,14 @@ ZTEST_USER(bmi260, test_bmi_acc_fifo)
 	bmi_emul_set_reg(emul, BMI260_INT_STATUS_0, 0);
 	bmi_emul_set_reg(emul, BMI260_INT_STATUS_1, 0);
 
+	/* Enable sensor FIFO */
+	zassert_equal(EC_SUCCESS, ms->drv->set_data_rate(ms, 50000, 0), NULL);
+
 	/* Trigger irq handler and check results */
 	check_fifo(ms, ms_gyr, NULL, acc_range, gyr_range);
 
 	/* Set custom function for FIFO test */
 	i2c_common_emul_set_read_func(emul, emul_fifo_func, &func_data);
-	/* Enable sensor FIFO */
-	zassert_equal(EC_SUCCESS, ms->drv->set_data_rate(ms, 50000, 0), NULL);
 	/* Set range */
 	zassert_equal(EC_SUCCESS, ms->drv->set_range(ms, acc_range, 0), NULL);
 	zassert_equal(EC_SUCCESS, ms_gyr->drv->set_range(ms_gyr, gyr_range, 0),

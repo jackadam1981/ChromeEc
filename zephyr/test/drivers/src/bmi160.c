@@ -1646,7 +1646,7 @@ static void check_fifo_f(struct motion_sensor_t *ms_acc,
 
 	/* Read FIFO in driver */
 	zassert_equal(EC_SUCCESS, ms_acc->drv->irq_handler(ms_acc, &event),
-		      NULL);
+		      "Falied to read FIFO in irq handler, line %d", line);
 
 	/* Read all data committed to FIFO */
 	while (motion_sense_fifo_read(sizeof(vector), 1, &vector, &size)) {
@@ -1723,6 +1723,10 @@ ZTEST_USER(bmi160, test_bmi_acc_fifo)
 	ms = &motion_sensors[BMI_ACC_SENSOR_ID];
 	ms_gyr = &motion_sensors[BMI_GYR_SENSOR_ID];
 
+	/* init bmi before test */
+	zassert_equal(EC_RES_SUCCESS, ms->drv->init(ms), NULL);
+	zassert_equal(EC_RES_SUCCESS, ms_gyr->drv->init(ms_gyr), NULL);
+
 	/* Need to be set to collect all data in FIFO */
 	ms->oversampling_ratio = 1;
 	ms_gyr->oversampling_ratio = 1;
@@ -1744,13 +1748,14 @@ ZTEST_USER(bmi160, test_bmi_acc_fifo)
 	bmi_emul_set_reg(emul, BMI160_INT_STATUS_0, 0);
 	bmi_emul_set_reg(emul, BMI160_INT_STATUS_1, 0);
 
+	/* Enable sensor FIFO */
+	zassert_equal(EC_SUCCESS, ms->drv->set_data_rate(ms, 50000, 0), NULL);
+
 	/* Trigger irq handler and check results */
 	check_fifo(ms, ms_gyr, NULL, acc_range, gyr_range);
 
 	/* Set custom function for FIFO test */
 	i2c_common_emul_set_read_func(emul, emul_fifo_func, &func_data);
-	/* Enable sensor FIFO */
-	zassert_equal(EC_SUCCESS, ms->drv->set_data_rate(ms, 50000, 0), NULL);
 	/* Set range */
 	zassert_equal(EC_SUCCESS, ms->drv->set_range(ms, acc_range, 0), NULL);
 	zassert_equal(EC_SUCCESS, ms_gyr->drv->set_range(ms_gyr, gyr_range, 0),
