@@ -22,6 +22,30 @@
       },
       "revId": "fb9b97cec1b23d1bdb6fd7cbd5579d6357636ce7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76d744c7_29205759",
+        "filename": "board/cr50/ap_state.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2022-01-24T22:07:07Z",
+      "side": 1,
+      "message": "Yeah gpio_get_level(GPIO_TPM_RST_L) indicates the AP is on. ap_is_on indicates cr50 processed the interrupt.\n\nIf the gpio level indicates the AP is on and the cr50 ap state doesn\u0027t match, that means cr50 missed the interrupt or hasn\u0027t processed it yet.",
+      "parentUuid": "0c0dea5d_1a1bb1c6",
+      "range": {
+        "startLine": 40,
+        "startChar": 25,
+        "endLine": 40,
+        "endChar": 34
+      },
+      "revId": "fb9b97cec1b23d1bdb6fd7cbd5579d6357636ce7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
