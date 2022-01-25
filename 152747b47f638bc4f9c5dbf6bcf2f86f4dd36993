@@ -51,6 +51,24 @@
       "message": "Is this left behind from something, or intentional?",
       "revId": "152747b47f638bc4f9c5dbf6bcf2f86f4dd36993",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a80753c5_e66ff23f",
+        "filename": "zephyr/projects/nissa/prj_nereid.conf",
+        "patchSetId": 7
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-01-25T07:12:06Z",
+      "side": 1,
+      "message": "Decided to split the stack setting into another block.",
+      "parentUuid": "0fafdaf0_5ff62da6",
+      "revId": "152747b47f638bc4f9c5dbf6bcf2f86f4dd36993",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
