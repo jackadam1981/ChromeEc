@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d1c4cd7_40cf7881",
+        "filename": "power/amd_x86.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1531147
+      },
+      "writtenOn": "2022-01-25T23:40:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7259934a_b18efd96",
+      "revId": "1434f0d3e55a451b9c1cd85dfa78b8bc52d1d31b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eb538fd2_7eafb235",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-01-21T20:34:09Z",
       "side": 1,
       "message": "What about s3 and s5 signals? GPIO_PCH_SLP_S3_L GPIO_PCH_SLP_S5_L",
+      "revId": "1434f0d3e55a451b9c1cd85dfa78b8bc52d1d31b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8ca1836_4933c534",
+        "filename": "power/amd_x86.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1531147
+      },
+      "writtenOn": "2022-01-25T23:40:42Z",
+      "side": 1,
+      "message": "Intel also has SYS_SLEEP_S4, but wasn\u0027t applicable from what I could see.  I left the others off initially because they weren\u0027t used, but I will add them for completeness and see if they can be used.",
+      "parentUuid": "eb538fd2_7eafb235",
       "revId": "1434f0d3e55a451b9c1cd85dfa78b8bc52d1d31b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
