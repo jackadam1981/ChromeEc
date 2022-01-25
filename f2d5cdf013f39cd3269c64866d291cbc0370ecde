@@ -16,6 +16,24 @@
       "message": "Isn\u0027t nrf51 currently the only option to develop a bluetooth device?  I think it\u0027s good idea to keep hadoken/nrf51 in ToT unless it\u0027s being a heavy maintenance burden.",
       "revId": "f2d5cdf013f39cd3269c64866d291cbc0370ecde",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87dda7dd_754fbe4a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-01-25T16:29:50Z",
+      "side": 1,
+      "message": "Are there plans to use the legacy cros_ec for a new bluetooth device going forward?\n\nZephyr really seems the way there given the significantly more refined bluetooth stack.",
+      "parentUuid": "a9460cff_7e79d20a",
+      "revId": "f2d5cdf013f39cd3269c64866d291cbc0370ecde",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
