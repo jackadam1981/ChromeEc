@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b51d1722_f9cc64ef",
+        "filename": "chip/mt_scp/mt8195/clock.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2022-01-25T09:07:08Z",
+      "side": 1,
+      "message": "SR_WAKEUP can be merged into SR_ASLEEP. And maybe rename these states to something easier to understand. Like SR_NORMAL, SR_TURNOFF_CLOCK, and SR_IDLE. Or simply use power state names SR_S0, SR_S0S3, and SR_S3.",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 11
+      },
+      "revId": "b21efe6aa0da05a3e3e2334fa44ebbc5e6f77380",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd51bbd3_77cf1cbe",
+        "filename": "chip/mt_scp/mt8195/clock.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 440,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2022-01-25T09:07:08Z",
+      "side": 1,
+      "message": "Do we need to switch back to highspeed clock here?",
+      "range": {
+        "startLine": 440,
+        "startChar": 6,
+        "endLine": 440,
+        "endChar": 17
+      },
+      "revId": "b21efe6aa0da05a3e3e2334fa44ebbc5e6f77380",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
