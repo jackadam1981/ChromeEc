@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87d0127f_525f1244",
+        "filename": "zephyr/projects/nissa/nivviks_overlay.dts",
+        "patchSetId": 31
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-01-25T00:15:32Z",
+      "side": 1,
+      "message": "The existing gpio_map.h defines the power_signal_interrupts.  Do you need that here?",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 18
+      },
+      "revId": "a80c57a7d5add9d6852aa6ab8767dbfab09323f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7839b591_efd4afe7",
+        "filename": "zephyr/projects/nissa/src/nivviks/board_config.c",
+        "patchSetId": 31
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-01-25T00:15:32Z",
+      "side": 1,
+      "message": "I was going to suggest using SYS_INIT here instead, but I believe there is a dependency on CBI, which still uses HOOK_INIT.\nI\u0027m working on a doc for the HOOK upstream plan.  One section will address eliminating HOOK_INIT.",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 81,
+        "endChar": 12
+      },
+      "revId": "a80c57a7d5add9d6852aa6ab8767dbfab09323f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
