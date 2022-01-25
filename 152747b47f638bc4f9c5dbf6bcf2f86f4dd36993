@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c56a61c0_9bdae6a9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-01-25T05:24:37Z",
+      "side": 1,
+      "message": "From the latest update on the bug, looks like we also need to increase PD_STACK_SIZE to around 1536. CHARGER also needs 1280, but it looks like USB_CHG is fine with a small amount (548/1280) as is PD_INT (248/1280).",
+      "revId": "152747b47f638bc4f9c5dbf6bcf2f86f4dd36993",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0fafdaf0_5ff62da6",
         "filename": "zephyr/projects/nissa/prj_nereid.conf",
         "patchSetId": 7
