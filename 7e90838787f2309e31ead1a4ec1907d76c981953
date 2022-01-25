@@ -45,6 +45,54 @@
       },
       "revId": "7e90838787f2309e31ead1a4ec1907d76c981953",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "77e83d72_2ef28741",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-01-25T00:11:21Z",
+      "side": 1,
+      "message": "It\u0027s a bit of a workaround for the fact that having to use the Zephyr mutexes\nrequires the use of the init macro, which doesn\u0027t handle the mutex array.\nUsing just 1 lock is perhaps a little more inefficient, but will not break anything.\nI will add a TODO to move this back to multiple mutexes.",
+      "parentUuid": "557d9987_c67564bc",
+      "range": {
+        "startLine": 53,
+        "startChar": 15,
+        "endLine": 53,
+        "endChar": 32
+      },
+      "revId": "7e90838787f2309e31ead1a4ec1907d76c981953",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6b474e3_5f3fa8c0",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-01-25T00:11:21Z",
+      "side": 1,
+      "message": "The macro has also been defined for ECOS so that it can be used for both.",
+      "parentUuid": "64d176e1_75224688",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 14
+      },
+      "revId": "7e90838787f2309e31ead1a4ec1907d76c981953",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
