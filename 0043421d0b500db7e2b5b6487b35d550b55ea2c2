@@ -22,6 +22,30 @@
       },
       "revId": "0043421d0b500db7e2b5b6487b35d550b55ea2c2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ef5f3f2_484b4644",
+        "filename": "zephyr/projects/nissa/src/usbc.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-01-25T02:46:52Z",
+      "side": 1,
+      "message": "I think I was using the direct name when it had an enum-name,\nbut I agree that consistency is probably better.\nI was trying out different things.\nMy only nit is that the names and macros tend to get quite long.",
+      "parentUuid": "eb441ddd_c23cbaa4",
+      "range": {
+        "startLine": 203,
+        "startChar": 22,
+        "endLine": 203,
+        "endChar": 47
+      },
+      "revId": "0043421d0b500db7e2b5b6487b35d550b55ea2c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
