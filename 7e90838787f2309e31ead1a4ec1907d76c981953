@@ -117,6 +117,30 @@
       },
       "revId": "7e90838787f2309e31ead1a4ec1907d76c981953",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d61b6d2f_e3488012",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-01-25T02:37:33Z",
+      "side": 1,
+      "message": "OK that works.",
+      "parentUuid": "a05f8546_fb9e32eb",
+      "range": {
+        "startLine": 53,
+        "startChar": 15,
+        "endLine": 53,
+        "endChar": 32
+      },
+      "revId": "7e90838787f2309e31ead1a4ec1907d76c981953",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
