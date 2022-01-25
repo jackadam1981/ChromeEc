@@ -166,6 +166,7 @@
 #define CONFIG_CHARGER_SENSE_RESISTOR_AC	20
 
 /* Keyboard features */
+#define CONFIG_KEYBOARD_FACTORY_TEST
 #define CONFIG_KEYBOARD_REFRESH_ROW3
 
 /*
@@ -233,6 +234,11 @@ enum mft_channel {
 	MFT_CH_0 = 0,
 	MFT_CH_COUNT
 };
+
+#ifdef CONFIG_KEYBOARD_FACTORY_TEST
+extern const int keyboard_factory_scan_pins[][2];
+extern const int keyboard_factory_scan_pins_used;
+#endif
 
 #endif /* !__ASSEMBLER__ */
 
