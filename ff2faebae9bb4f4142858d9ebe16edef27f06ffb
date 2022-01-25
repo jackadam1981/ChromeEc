@@ -22,6 +22,30 @@
       },
       "revId": "ff2faebae9bb4f4142858d9ebe16edef27f06ffb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "13d2c84e_c7c65fd6",
+        "filename": "util/fptool.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1528447
+      },
+      "writtenOn": "2022-01-25T01:46:08Z",
+      "side": 1,
+      "message": "Thank you, removed the systenm call and used Python built in API",
+      "parentUuid": "d873331e_78cfb653",
+      "range": {
+        "startLine": 109,
+        "startChar": 4,
+        "endLine": 109,
+        "endChar": 66
+      },
+      "revId": "ff2faebae9bb4f4142858d9ebe16edef27f06ffb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
