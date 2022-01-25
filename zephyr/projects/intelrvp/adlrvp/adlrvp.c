@@ -1,0 +1,36 @@
+/* Copyright 2022 The Chromium OS Authors. All rights reserved.
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+#include "gpio.h"
+#include "hooks.h"
+#include "power/icelake.h"
+
+/******************************************************************************/
+/* PWROK signal configuration */
+/*
+ * On ADLRVP, SYS_PWROK_EC is an output controlled by EC and uses ALL_SYS_PWRGD
+ * as input.
+ */
+const struct intel_x86_pwrok_signal pwrok_signal_assert_list[] = {
+	{
+		.gpio = GPIO_SYS_PWROK_EC,
+		.delay_ms = 3,
+	},
+};
+const int pwrok_signal_assert_count = ARRAY_SIZE(pwrok_signal_assert_list);
+
+const struct intel_x86_pwrok_signal pwrok_signal_deassert_list[] = {
+	{
+		.gpio = GPIO_SYS_PWROK_EC,
+	},
+};
+const int pwrok_signal_deassert_count = ARRAY_SIZE(pwrok_signal_deassert_list);
+
+static void board_init(void)
+{
+	/* Enable SOC SPI */
+	gpio_set_level(GPIO_EC_SPI_OE_MECC, 1);
+}
+DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_LAST);
