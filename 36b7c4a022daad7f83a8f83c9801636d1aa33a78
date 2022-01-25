@@ -45,6 +45,30 @@
       },
       "revId": "36b7c4a022daad7f83a8f83c9801636d1aa33a78",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd787147_be54bd07",
+        "filename": "core/cortex-m/fpu.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2022-01-25T09:43:33Z",
+      "side": 1,
+      "message": "I know but when I use `if (IS_ENABLED(CONFIG_FPU_WARNINGS))` and CONFIG_FPU_WARNINGS is not defined, then compiler compiler will produce errors about missing variables which are referenced under `if (IS_ENABLED(...`\n\nI just don\u0027t want to increase memory footprint much when CONFIG_FPU_WARNINGS is not enabled.",
+      "parentUuid": "14212e41_231ffe6f",
+      "range": {
+        "startLine": 100,
+        "startChar": 0,
+        "endLine": 100,
+        "endChar": 26
+      },
+      "revId": "36b7c4a022daad7f83a8f83c9801636d1aa33a78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
