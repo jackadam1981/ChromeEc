@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "41cc3e21_64967f2f",
+        "filename": "Makefile.rules",
+        "patchSetId": 6
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-01-25T19:52:38Z",
+      "side": 1,
+      "message": "can\u0027t assume this repo is here in the ebuild case",
+      "range": {
+        "startLine": 235,
+        "startChar": 5,
+        "endLine": 235,
+        "endChar": 52
+      },
+      "revId": "6c61ad3bb300a2b2b18887eb98ef0154b216c41d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e293672_a24e529f",
+        "filename": "util/kconfig_check.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-01-25T19:52:38Z",
+      "side": 1,
+      "message": "the latter code works for both 3.6 and 3.7+. I don\u0027t see why you need the if/else here.",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 34
+      },
+      "revId": "6c61ad3bb300a2b2b18887eb98ef0154b216c41d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
