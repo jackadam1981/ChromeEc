@@ -22,6 +22,30 @@
       },
       "revId": "169a398ead6d2fbc66edaa174c8ff966764e7655",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "583b5d09_bc039f34",
+        "filename": "common/peripheral_charger.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-01-25T20:06:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e105f234_7900321f",
+      "range": {
+        "startLine": 41,
+        "startChar": 1,
+        "endLine": 42,
+        "endChar": 43
+      },
+      "revId": "169a398ead6d2fbc66edaa174c8ff966764e7655",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
