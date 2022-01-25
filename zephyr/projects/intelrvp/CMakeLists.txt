@@ -10,6 +10,8 @@ zephyr_include_directories(include)
 
 if(DEFINED CONFIG_BOARD_ADLRVP_NPCX)
 	project(adlrvp_npcx)
+	add_subdirectory(adlrvp)
+
 	zephyr_include_directories(adlrvp/adlrvp_npcx/include)
 
 	zephyr_library_sources("src/intelrvp.c")
