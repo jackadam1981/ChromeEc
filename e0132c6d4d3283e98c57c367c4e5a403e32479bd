@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3af7cb51_835d5c19",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-01-25T18:52:53Z",
+      "side": 1,
+      "message": "you can do what the CQ does yourself:\n\n  cros_mark_as_stable --overlays /mnt/host/source/src/third_party/chromiumos-overlay -p chromeos-base/chromeos-ec commit\n  \nthen do the usual emerge without cros-workon",
+      "range": {
+        "startLine": 15,
+        "startChar": 5,
+        "endLine": 16,
+        "endChar": 16
+      },
+      "revId": "e0132c6d4d3283e98c57c367c4e5a403e32479bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
