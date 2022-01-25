@@ -16,6 +16,24 @@
       "message": "In the docs, I\u0027m seeing gpio-cells only used for GPIO controllers and with positive numbers of cells. Why are these necessary?",
       "revId": "e434b9a5c433e7267536ba9ee979aa22aefd3b98",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a9d07a9_d4798e6f",
+        "filename": "zephyr/projects/trogdor/lazor/gpio.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-01-25T23:26:13Z",
+      "side": 1,
+      "message": "So my understanding is that when you reference one of our named-gpios as a GPIO in any config that expects a GPIO, by default it expects 2 arguments referencing the ping and flags, but our \u0027named-gpios\u0027 appears as a GPIO controller because the GPIO reference is a separate property, and there are no pin \u0026 flag arguments, so #gpio-cells has to be set to 0.\nI don\u0027t know why we can\u0027t set it by default to 0 and have to explicitly set it on every instance of the child.\nI\u0027ll try some experiments - thinking about it,  the nodes under \u0027name-gpios\u0027 perhaps should be thought about as a GPIO controller with a single GPIO, and perhaps the node should inherit the \u0027gpio-controller\u0027 base and preset the #gpio-cells in that.\nI\u0027m still figuring out the ins and outs of this part of device tree.\nOthers may have a better understanding.",
+      "parentUuid": "b836e99f_00004916",
+      "revId": "e434b9a5c433e7267536ba9ee979aa22aefd3b98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
