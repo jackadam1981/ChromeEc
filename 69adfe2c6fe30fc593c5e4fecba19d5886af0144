@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4b70ddf_dc9a6b5d",
+        "filename": "board/banshee/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1262393
+      },
+      "writtenOn": "2022-01-25T08:42:31Z",
+      "side": 1,
+      "message": "Please remove battery setting not used on Banshee.",
+      "range": {
+        "startLine": 37,
+        "startChar": 2,
+        "endLine": 37,
+        "endChar": 20
+      },
+      "revId": "69adfe2c6fe30fc593c5e4fecba19d5886af0144",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f852109_09d0e9fa",
+        "filename": "board/banshee/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1262393
+      },
+      "writtenOn": "2022-01-25T08:42:31Z",
+      "side": 1,
+      "message": "Please remove battery setting not used on Banshee.",
+      "revId": "69adfe2c6fe30fc593c5e4fecba19d5886af0144",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
