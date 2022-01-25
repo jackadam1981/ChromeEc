@@ -34,6 +34,24 @@
       "parentUuid": "941ff1dd_4973c594",
       "revId": "1ade75d0a7f26edf6ad3934116ba13f47216d127",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b592ac51_d6ef49b1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2022-01-25T01:46:29Z",
+      "side": 1,
+      "message": "Hi Caveh,\nAs you mentioned in b:184911180 that you are ready to drop ES1 support, please let me know that if we can remove this download_from_flash bypass.",
+      "parentUuid": "8e8fd5c6_b3705758",
+      "revId": "1ade75d0a7f26edf6ad3934116ba13f47216d127",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
