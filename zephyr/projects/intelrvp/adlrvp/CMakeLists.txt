@@ -2,8 +2,4 @@
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
-CONFIG_AP_X86_INTEL_TGL=y
-
-# Power Sequencing
-CONFIG_PLATFORM_EC_POWERSEQ_SLP_S3_L_OVERRIDE=n
-CONFIG_PLATFORM_EC_POWERSEQ_PP5000_CONTROL=n
+zephyr_library_sources("src/adlrvp.c")
