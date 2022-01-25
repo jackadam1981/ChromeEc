@@ -29,5 +29,6 @@
 	GPIO_INT(GPIO_USB_C1_PPC_INT_ODL, GPIO_INT_EDGE_FALLING, ppc_alert) \
 	GPIO_INT(GPIO_SWITCHCAP_PG_INT_L, GPIO_INT_EDGE_FALLING,            \
 		 ln9310_interrupt)                                          \
+	GPIO_INT(GPIO_TEST, GPIO_INT_EDGE_BOTH, gpio_test_interrupt)
 
 #endif /* __ZEPHYR_GPIO_MAP_H */

@@ -18,6 +18,7 @@ bool drivers_predicate_post_main(const void *state)
 	return !drivers_predicate_pre_main(state);
 }
 
+
 void test_main(void)
 {
 	struct test_state state = {
