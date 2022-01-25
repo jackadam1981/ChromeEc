@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a57bea8_2ebc2c06",
+        "filename": "zephyr/projects/nissa/CMakeLists.txt",
+        "patchSetId": 4
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-01-25T00:45:20Z",
+      "side": 1,
+      "message": "Yes, and I will do this in a separate cleanup CL.",
+      "parentUuid": "99ac7367_9dcb60a9",
+      "revId": "9be405792965c20f97208e4dad72ac18c138b309",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f479aa8e_4302c8ca",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-01-25T00:14:39Z",
       "side": 1,
       "message": "This is a sub-board support bug for Nivviks. Is there one for Nereid? Or remove this if it\u0027s handled already.",
+      "range": {
+        "startLine": 138,
+        "startChar": 5,
+        "endLine": 138,
+        "endChar": 22
+      },
+      "revId": "9be405792965c20f97208e4dad72ac18c138b309",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "23443359_51be1ef0",
+        "filename": "zephyr/projects/nissa/nereid_overlay.dts",
+        "patchSetId": 4
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-01-25T00:45:20Z",
+      "side": 1,
+      "message": "Yes, this interrupt handling needs cleaning up as it is cut\u0027n\u0027paste from nivviks.",
+      "parentUuid": "f479aa8e_4302c8ca",
       "range": {
         "startLine": 138,
         "startChar": 5,
@@ -64,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f9f76f1_01705ff7",
+        "filename": "zephyr/projects/nissa/prj_nereid.conf",
+        "patchSetId": 4
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-01-25T00:45:20Z",
+      "side": 1,
+      "message": "OK, I have a similar bug for nereid.",
+      "parentUuid": "7dd24555_192fa8df",
+      "range": {
+        "startLine": 107,
+        "startChar": 2,
+        "endLine": 107,
+        "endChar": 19
+      },
+      "revId": "9be405792965c20f97208e4dad72ac18c138b309",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a0e5e965_aa1903bf",
@@ -77,6 +143,30 @@
       "writtenOn": "2022-01-25T00:14:39Z",
       "side": 1,
       "message": "Nereid",
+      "range": {
+        "startLine": 43,
+        "startChar": 3,
+        "endLine": 43,
+        "endChar": 10
+      },
+      "revId": "9be405792965c20f97208e4dad72ac18c138b309",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3041a4d_b5c41b9c",
+        "filename": "zephyr/projects/nissa/src/nereid/charger.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-01-25T00:45:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a0e5e965_aa1903bf",
       "range": {
         "startLine": 43,
         "startChar": 3,
@@ -110,6 +200,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ea92fbf_91df695f",
+        "filename": "zephyr/projects/nissa/src/nereid/usbc.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-01-25T00:45:20Z",
+      "side": 1,
+      "message": "Added a TODO.",
+      "parentUuid": "01c4552c_a6bb2cb6",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 74,
+        "endChar": 1
+      },
+      "revId": "9be405792965c20f97208e4dad72ac18c138b309",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f637ed93_29d2740c",
@@ -123,6 +237,24 @@
       "writtenOn": "2022-01-25T00:14:39Z",
       "side": 1,
       "message": "Add a TODO to implement this and the surrounding functions?",
+      "revId": "9be405792965c20f97208e4dad72ac18c138b309",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a94e8f22_22eb888f",
+        "filename": "zephyr/projects/nissa/src/nereid/usbc.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-01-25T00:45:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f637ed93_29d2740c",
       "revId": "9be405792965c20f97208e4dad72ac18c138b309",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -150,6 +282,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7484111d_d6f6e3c4",
+        "filename": "zephyr/projects/nissa/src/nereid/usbc.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-01-25T00:45:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0ad2db79_6ca1d812",
+      "range": {
+        "startLine": 140,
+        "startChar": 11,
+        "endLine": 140,
+        "endChar": 20
+      },
+      "revId": "9be405792965c20f97208e4dad72ac18c138b309",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9afd3a26_a3adc1fa",
@@ -163,6 +319,30 @@
       "writtenOn": "2022-01-25T00:14:39Z",
       "side": 1,
       "message": "I don\u0027t think any of this is true for Nereid, since we use the integrated TCPC- I believe the external interrupt pins are only connected to the BC1.2 chip.",
+      "range": {
+        "startLine": 146,
+        "startChar": 1,
+        "endLine": 152,
+        "endChar": 38
+      },
+      "revId": "9be405792965c20f97208e4dad72ac18c138b309",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8c307ea_e4be50a8",
+        "filename": "zephyr/projects/nissa/src/nereid/usbc.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-01-25T00:45:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9afd3a26_a3adc1fa",
       "range": {
         "startLine": 146,
         "startChar": 1,
