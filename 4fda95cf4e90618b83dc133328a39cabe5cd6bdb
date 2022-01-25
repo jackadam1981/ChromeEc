@@ -16,6 +16,24 @@
       "message": "I am good with the code but have been stopped from adding the \"#gpio-cells \u003d \u003c0\u003e;\" type of line before and will defer to Keith for if this is OK or if there is a way not to have to do this",
       "revId": "4fda95cf4e90618b83dc133328a39cabe5cd6bdb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "af4f8e0a_5c34c114",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-01-25T15:47:01Z",
+      "side": 1,
+      "message": "Uh. OK, I am unfamiliar with the background and context here.\nI can only imagine that eventually we will get rid of \u0027named-gpios\u0027 and just\nreference the GPIOs directly.\nI don\u0027t see any way of avoiding the @gpio-calls \u003d \u003c0\u003e if we reference\na named-gpio child.",
+      "parentUuid": "49f5b27e_7c5b816f",
+      "revId": "4fda95cf4e90618b83dc133328a39cabe5cd6bdb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
