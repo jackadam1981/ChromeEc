@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3983455_c2706dcb",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 6952,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-01-25T20:25:46Z",
+      "side": 1,
+      "message": "the outer parens should not be needed here.",
+      "range": {
+        "startLine": 6952,
+        "startChar": 38,
+        "endLine": 6952,
+        "endChar": 39
+      },
+      "revId": "aad14f6c75a0c4b520842d1d015d8761d32ea204",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
