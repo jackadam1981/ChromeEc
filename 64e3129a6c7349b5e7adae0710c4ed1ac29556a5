@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "da92745c_2bf61d1c",
+        "filename": "util/fptool.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1528447
+      },
+      "writtenOn": "2022-01-25T01:41:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ae11f064_35d2e1f9",
+      "revId": "64e3129a6c7349b5e7adae0710c4ed1ac29556a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6804e5eb_162d2d2d",
@@ -41,6 +59,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "91c1e6ae_4466a11e",
+        "filename": "util/fptool.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1528447
+      },
+      "writtenOn": "2022-01-25T01:41:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6804e5eb_162d2d2d",
+      "range": {
+        "startLine": 32,
+        "startChar": 12,
+        "endLine": 32,
+        "endChar": 58
+      },
+      "revId": "64e3129a6c7349b5e7adae0710c4ed1ac29556a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "409d45d3_11a50ee6",
@@ -54,6 +96,30 @@
       "writtenOn": "2022-01-21T17:01:27Z",
       "side": 1,
       "message": "Type annotation for flash_init may not be correct. My IDE says:\n\n Expected type \u0027ArgumentParser\u0027, got \u0027_SubParsersAction\u0027 instead",
+      "range": {
+        "startLine": 75,
+        "startChar": 32,
+        "endLine": 75,
+        "endChar": 42
+      },
+      "revId": "64e3129a6c7349b5e7adae0710c4ed1ac29556a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "798dca21_64e31371",
+        "filename": "util/fptool.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1528447
+      },
+      "writtenOn": "2022-01-25T01:41:45Z",
+      "side": 1,
+      "message": "\u0027_SubParsersAction\u0027 is a private member.\nRemoved the type annotation",
+      "parentUuid": "409d45d3_11a50ee6",
       "range": {
         "startLine": 75,
         "startChar": 32,
