@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "165725a6_14146765",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1461738
+      },
+      "writtenOn": "2022-01-25T01:09:30Z",
+      "side": 1,
+      "message": "This is the same FW but is another project.",
+      "parentUuid": "7f706698_c182692f",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 5
+      },
+      "revId": "05c70d2db50f4fc899c1285dde6268c6771e82fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d402ed40_fcb28ca9",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-01-24T20:32:28Z",
       "side": 1,
       "message": "not sure what you mean by \"todo\" here. we usually mark something\nas \"todo\" if we need to revisit some code later.\n\nperhaps update comment to one of:\ndevice is a clamshell\napplies only to clamshell devices",
+      "range": {
+        "startLine": 56,
+        "startChar": 20,
+        "endLine": 56,
+        "endChar": 24
+      },
+      "revId": "05c70d2db50f4fc899c1285dde6268c6771e82fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "96f7c5f0_daaf5738",
+        "filename": "board/taeko/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1461738
+      },
+      "writtenOn": "2022-01-25T01:09:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d402ed40_fcb28ca9",
       "range": {
         "startLine": 56,
         "startChar": 20,
