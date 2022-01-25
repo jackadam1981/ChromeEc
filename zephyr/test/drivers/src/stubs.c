@@ -400,3 +400,10 @@ void sys_arch_reboot(int type)
 {
 	ARG_UNUSED(type);
 }
+
+/* GPIO TEST interrupt handler */
+void gpio_test_interrupt(enum gpio_signal signal)
+{
+	ARG_UNUSED(signal);
+	printk("%s called\n", __func__);
+}
