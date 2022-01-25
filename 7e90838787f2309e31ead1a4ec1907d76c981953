@@ -93,6 +93,30 @@
       },
       "revId": "7e90838787f2309e31ead1a4ec1907d76c981953",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a05f8546_fb9e32eb",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-01-25T00:29:20Z",
+      "side": 1,
+      "message": "You could call k_mutex_init(\u0026flow1_access_lock[chgnum]) in the init function instead and declare this as an array of struct k_mutex.",
+      "parentUuid": "77e83d72_2ef28741",
+      "range": {
+        "startLine": 53,
+        "startChar": 15,
+        "endLine": 53,
+        "endChar": 32
+      },
+      "revId": "7e90838787f2309e31ead1a4ec1907d76c981953",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
