@@ -93,6 +93,30 @@
       },
       "revId": "b8c6499d2eace278ec19a5083d4b3e74ba3b34b5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1fb66111_9f3125d8",
+        "filename": "zephyr/shim/src/cbi_eeprom.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-01-25T17:35:42Z",
+      "side": 1,
+      "message": "Even if we want to keep GPIO_WP for now. Now that Andrew\u0027s change https://crrev.com/c/3392111 has merged, you should change this to use gpio_pin_get_dt(GPIO_DT_FROM_NODELABEL(cros_gpio_wp)).\n\nYou\u0027ll need to add GPIO_ACTIVE_LOW flag to the corresponding GPIO node in the device tree.\n\nYou can create an chosen node to pick the correct GPIO.",
+      "parentUuid": "b9add553_b2f5a202",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 6
+      },
+      "revId": "b8c6499d2eace278ec19a5083d4b3e74ba3b34b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

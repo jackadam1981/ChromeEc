@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3d36388_18b870fc",
+        "filename": "zephyr/projects/brya/brya/prj.conf",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-01-25T17:35:42Z",
+      "side": 1,
+      "message": "Does this depend on an upstream change?  If so, this should be added in as  a separate CL after the upstream PR merges.",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 24
+      },
+      "revId": "f9995214663d8191b5084e6f31cf26c6225b38a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
