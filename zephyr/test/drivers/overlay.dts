@@ -133,6 +133,10 @@
 			gpios = <&gpio0 26 (GPIO_INPUT | GPIO_PULL_DOWN)>;
 			enum-name = "GPIO_SWITCHCAP_PG";
 		};
+		gpio_test: test {
+			gpios = <&gpio0 27 (GPIO_INPUT | GPIO_OUTPUT)>;
+			enum-name = "GPIO_TEST";
+		};
 	};
 	named-i2c-ports {
 		compatible = "named-i2c-ports";
@@ -618,7 +622,7 @@
 };
 
 &gpio0 {
-	ngpios = <27>;
+	ngpios = <28>;
 };
 
 &i2c0 {
