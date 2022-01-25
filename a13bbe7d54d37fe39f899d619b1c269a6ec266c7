@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85c68371_da9ec1f1",
+        "filename": "util/kconfig_check.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-01-25T19:47:41Z",
+      "side": 1,
+      "message": "I\u0027m all for simplifying things and just requiring kconfiglib ... the tool is available in the chroot already.",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 78
+      },
+      "revId": "a13bbe7d54d37fe39f899d619b1c269a6ec266c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "33a4aa7b_abe75617",
+        "filename": "util/kconfig_check.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-01-25T19:47:41Z",
+      "side": 1,
+      "message": "comprehension would be cleaner...\n\n  [name for name in kconf.syms if name !\u003d \u0027MODULES\u0027]",
+      "range": {
+        "startLine": 193,
+        "startChar": 23,
+        "endLine": 193,
+        "endChar": 80
+      },
+      "revId": "a13bbe7d54d37fe39f899d619b1c269a6ec266c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1908705e_93ccb5f2",
+        "filename": "util/kconfig_check.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-01-25T19:47:41Z",
+      "side": 1,
+      "message": "too many arguments... better start using keyword arguments for clarity.",
+      "range": {
+        "startLine": 276,
+        "startChar": 43,
+        "endLine": 276,
+        "endChar": 79
+      },
+      "revId": "a13bbe7d54d37fe39f899d619b1c269a6ec266c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1f6354d_e3b79b18",
+        "filename": "util/test_kconfig_check.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-01-25T19:47:41Z",
+      "side": 1,
+      "message": "f-string could be cleaner here",
+      "range": {
+        "startLine": 68,
+        "startChar": 4,
+        "endLine": 68,
+        "endChar": 10
+      },
+      "revId": "a13bbe7d54d37fe39f899d619b1c269a6ec266c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e397cecd_ddf3ae96",
+        "filename": "util/test_kconfig_check.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-01-25T19:47:41Z",
+      "side": 1,
+      "message": "recommend an f-string here too",
+      "range": {
+        "startLine": 93,
+        "startChar": 4,
+        "endLine": 93,
+        "endChar": 12
+      },
+      "revId": "a13bbe7d54d37fe39f899d619b1c269a6ec266c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ddd53cfe_22f059b8",
+        "filename": "util/test_kconfig_check.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-01-25T19:47:41Z",
+      "side": 1,
+      "message": "recommend using pathlib.Path\n\nalso can\u0027t assume the path of the zephyr main repo in the ebuild case",
+      "range": {
+        "startLine": 171,
+        "startChar": 12,
+        "endLine": 171,
+        "endChar": 76
+      },
+      "revId": "a13bbe7d54d37fe39f899d619b1c269a6ec266c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
