@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3eff69b2_0590b3c0",
+        "filename": "zephyr/projects/nissa/nivviks_generated.dts",
+        "patchSetId": 10
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2022-01-25T00:25:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0e114732_bb420eac",
+      "revId": "a7ff5b4e1d3ffee05f3b261acc1a4f1dc1d7a993",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f43bd5ea_d04ec54c",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-01-24T17:56:13Z",
       "side": 1,
       "message": "Should be low",
+      "revId": "a7ff5b4e1d3ffee05f3b261acc1a4f1dc1d7a993",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f2f983b_1115ef4a",
+        "filename": "zephyr/projects/nissa/nivviks_generated.dts",
+        "patchSetId": 10
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2022-01-25T00:25:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f43bd5ea_d04ec54c",
       "revId": "a7ff5b4e1d3ffee05f3b261acc1a4f1dc1d7a993",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -104,6 +140,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e9a3b8a_1de8d606",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_adlp_pwrseq_sm.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2022-01-25T00:25:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e1fa1162_005d8f53",
+      "revId": "a7ff5b4e1d3ffee05f3b261acc1a4f1dc1d7a993",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0b1aab7f_b350e7a5",
@@ -117,6 +171,24 @@
       "writtenOn": "2022-01-24T17:56:13Z",
       "side": 1,
       "message": "Override this function, to make the check for vrrdy optional for ADL-N.",
+      "revId": "a7ff5b4e1d3ffee05f3b261acc1a4f1dc1d7a993",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e199d20_5640427f",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_adlp_pwrseq_sm.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2022-01-25T00:25:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0b1aab7f_b350e7a5",
       "revId": "a7ff5b4e1d3ffee05f3b261acc1a4f1dc1d7a993",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
