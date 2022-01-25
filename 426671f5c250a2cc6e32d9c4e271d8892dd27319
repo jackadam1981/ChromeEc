@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb2f8a03_44cabd75",
+        "filename": "util/fptool.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1528447
+      },
+      "writtenOn": "2022-01-25T02:01:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8693ddd9_43f47a23",
+      "revId": "426671f5c250a2cc6e32d9c4e271d8892dd27319",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "341cd63e_a6a475e3",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-01-21T16:48:27Z",
       "side": 1,
       "message": "Can you change all the function comments to Python docstring style?\n\nhttps://github.com/google/styleguide/blob/gh-pages/pyguide.md#38-comments-and-docstrings",
+      "range": {
+        "startLine": 117,
+        "startChar": 0,
+        "endLine": 129,
+        "endChar": 71
+      },
+      "revId": "426671f5c250a2cc6e32d9c4e271d8892dd27319",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "83ec8dca_edc6eed9",
+        "filename": "util/fptool.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1528447
+      },
+      "writtenOn": "2022-01-25T02:01:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "341cd63e_a6a475e3",
       "range": {
         "startLine": 117,
         "startChar": 0,
@@ -64,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd9f8224_c62fed9e",
+        "filename": "util/fptool.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1528447
+      },
+      "writtenOn": "2022-01-25T02:01:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b58703a2_73753a1a",
+      "range": {
+        "startLine": 131,
+        "startChar": 22,
+        "endLine": 131,
+        "endChar": 23
+      },
+      "revId": "426671f5c250a2cc6e32d9c4e271d8892dd27319",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2f4f1e4c_e9c65658",
@@ -77,6 +143,30 @@
       "writtenOn": "2022-01-21T17:24:35Z",
       "side": 1,
       "message": "PEP 8: E251 unexpected spaces around keyword / parameter equals",
+      "range": {
+        "startLine": 153,
+        "startChar": 28,
+        "endLine": 153,
+        "endChar": 40
+      },
+      "revId": "426671f5c250a2cc6e32d9c4e271d8892dd27319",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4219db9d_c3b196c3",
+        "filename": "util/fptool.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1528447
+      },
+      "writtenOn": "2022-01-25T02:01:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2f4f1e4c_e9c65658",
       "range": {
         "startLine": 153,
         "startChar": 28,
@@ -104,6 +194,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ec204fb_3adb66e9",
+        "filename": "util/fptool.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1528447
+      },
+      "writtenOn": "2022-01-25T02:01:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1ac605fe_f6da5e17",
+      "revId": "426671f5c250a2cc6e32d9c4e271d8892dd27319",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "84cb048d_8f2afb01",
@@ -117,6 +225,30 @@
       "writtenOn": "2022-01-21T16:53:45Z",
       "side": 1,
       "message": "This line is unreachable. Is that expected?",
+      "range": {
+        "startLine": 193,
+        "startChar": 4,
+        "endLine": 193,
+        "endChar": 16
+      },
+      "revId": "426671f5c250a2cc6e32d9c4e271d8892dd27319",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "336bf54c_3d0aa367",
+        "filename": "util/fptool.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1528447
+      },
+      "writtenOn": "2022-01-25T02:01:51Z",
+      "side": 1,
+      "message": "Thank you, yes it is a leftover.\nThank you for catching it",
+      "parentUuid": "84cb048d_8f2afb01",
       "range": {
         "startLine": 193,
         "startChar": 4,
