@@ -16,6 +16,24 @@
       "message": "Looks like some auto fixes were applied. This should be done as a separate commit, probably as the first commit in the chain.",
       "revId": "b153ba73df4a8dd730161235ad5dfe51d1ce28d7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5fefded6_43c5a8ab",
+        "filename": "power/amd_x86.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1531147
+      },
+      "writtenOn": "2022-01-25T23:39:26Z",
+      "side": 0,
+      "message": "Most of the changes are incorrect, reverting and updating text editors rules",
+      "parentUuid": "ad05a72a_aec9e8a1",
+      "revId": "b153ba73df4a8dd730161235ad5dfe51d1ce28d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
