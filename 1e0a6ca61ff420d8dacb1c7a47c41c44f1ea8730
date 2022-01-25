@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a3471dd_249e59fc",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-01-25T02:47:01Z",
+      "side": 1,
+      "message": "These may need to be mutex_t since it looks like that\u0027s the ECOS-compatible type name from task.h.",
+      "range": {
+        "startLine": 53,
+        "startChar": 7,
+        "endLine": 53,
+        "endChar": 14
+      },
+      "revId": "1e0a6ca61ff420d8dacb1c7a47c41c44f1ea8730",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6ebbe59_58d234d3",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 409,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-01-25T02:47:01Z",
+      "side": 1,
+      "message": "Since this gets called for each charger, you only need to initialize flow*_access_lock[chgnum] here.",
+      "revId": "1e0a6ca61ff420d8dacb1c7a47c41c44f1ea8730",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
