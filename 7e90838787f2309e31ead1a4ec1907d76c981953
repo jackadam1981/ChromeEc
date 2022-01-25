@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "557d9987_c67564bc",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-01-25T00:00:48Z",
+      "side": 1,
+      "message": "This switches from one lock per charger to a shared lock for all; that doesn\u0027t seem right?",
+      "range": {
+        "startLine": 53,
+        "startChar": 15,
+        "endLine": 53,
+        "endChar": 32
+      },
+      "revId": "7e90838787f2309e31ead1a4ec1907d76c981953",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "64d176e1_75224688",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-01-25T00:00:48Z",
+      "side": 1,
+      "message": "Isn\u0027t this zephyr-specific? The driver lives in a ECOS directory so I think it still needs to work without Zephyr.",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 14
+      },
+      "revId": "7e90838787f2309e31ead1a4ec1907d76c981953",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
