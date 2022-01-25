@@ -16,6 +16,75 @@
       "message": "resync public repo\ncherry pick this CL\nfix merge conflict\nstatus back to active",
       "revId": "c459c68344e39bf378d888af73e3bb4aa127078c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb6112a9_fde35c0b",
+        "filename": "zephyr/drivers/cros_kb_raw/cros_kb_raw_xec.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-01-25T21:06:44Z",
+      "side": 1,
+      "message": "Follow the upstream convention which discourages these helper macros.",
+      "range": {
+        "startLine": 65,
+        "startChar": 33,
+        "endLine": 65,
+        "endChar": 45
+      },
+      "revId": "c459c68344e39bf378d888af73e3bb4aa127078c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48d70498_a93b3912",
+        "filename": "zephyr/drivers/cros_kb_raw/cros_kb_raw_xec.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-01-25T21:06:44Z",
+      "side": 1,
+      "message": "Nit - change conditional to:\n\nif (col \u003d\u003d NONE)\n   ...\nelse if (col \u003d\u003d ALL)\n   ...\nelse if (IS_ENABLED(COL2_INVERT))\n   ...\nelse\n   inst-\u003eKSO_SEL \u003d col + CONFIG_KEYBOARD_KSO_BASE;",
+      "range": {
+        "startLine": 92,
+        "startChar": 0,
+        "endLine": 94,
+        "endChar": 0
+      },
+      "revId": "c459c68344e39bf378d888af73e3bb4aa127078c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7921e1f_c0a592ed",
+        "filename": "zephyr/drivers/cros_kb_raw/cros_kb_raw_xec.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-01-25T21:06:44Z",
+      "side": 1,
+      "message": "New recommendation from Zephyr upstream is to add a build assert that verifies only one microchip_xec_cros_kb_raw instance is defined.\n\nYou can use DT_NUM_INST_STATUS_OKAY(DT_DRV_COMPAT) \u003d\u003d 1",
+      "range": {
+        "startLine": 148,
+        "startChar": 0,
+        "endLine": 148,
+        "endChar": 21
+      },
+      "revId": "c459c68344e39bf378d888af73e3bb4aa127078c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
