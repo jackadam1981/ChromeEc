@@ -495,6 +495,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ef3a9381_9e03c33b",
+        "filename": "util/fptool.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1528447
+      },
+      "writtenOn": "2022-01-25T18:20:50Z",
+      "side": 1,
+      "message": "According to the comment in the original script:\n\n  # Deleted files are important because unbinding/rebinding cros-ec\n  # with biod/timberslide running will result in the processes holding open\n  # a deleted version of the files. Issues can arise if the process continue\n  # to interact with the deleted files (ex kernel panic) while the raw driver\n  # is being used in flash_fp_mcu. The lsof and fuser tools can\u0027t seem to\n  # identify usages of the deleted named file directly, without listing all\n  # files. This takes a large amount out time on Chromebooks, thus we need this\n  # custom search routine.\n\nIs there a way to confirm that Pythonizing this search will not have the same issue?\n\nThank you",
+      "parentUuid": "0fffecd6_4278e019",
+      "range": {
+        "startLine": 206,
+        "startChar": 23,
+        "endLine": 207,
+        "endChar": 36
+      },
+      "revId": "a803c2d4840efbbfadb4bb94ee800f17c69d6b83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0aa4950b_daddf626",
         "filename": "util/fptool.py",
         "patchSetId": 1
