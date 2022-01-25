@@ -16,6 +16,52 @@
       "message": "Sorry, PTAL, had to rebase to add a fix.",
       "revId": "4027b7f52531c52094cf7cf99cdcc03fbf1a8da3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aaf2e399_90b6f409",
+        "filename": "zephyr/shim/include/zephyr_gpio_signal.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-01-25T00:44:05Z",
+      "side": 1,
+      "message": "How about GPIO_DT_FROM_NODELABEL.  GPIO_DT_LABEL makes me think the macro returns the label of GPIO devicetree node.",
+      "range": {
+        "startLine": 99,
+        "startChar": 8,
+        "endLine": 99,
+        "endChar": 21
+      },
+      "revId": "4027b7f52531c52094cf7cf99cdcc03fbf1a8da3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b63fc428_92ed0ff7",
+        "filename": "zephyr/shim/src/gpio.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 361,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-01-25T00:44:05Z",
+      "side": 1,
+      "message": "Because https://crrev.com/c/3406472 is about to merge.  I think you can eliminate gpio_get_pin() and gpio_get_dev() with this function after rebasing.",
+      "range": {
+        "startLine": 361,
+        "startChar": 27,
+        "endLine": 361,
+        "endChar": 43
+      },
+      "revId": "4027b7f52531c52094cf7cf99cdcc03fbf1a8da3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
