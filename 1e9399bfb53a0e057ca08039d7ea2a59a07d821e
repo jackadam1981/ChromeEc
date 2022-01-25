@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "97a9339f_fbc96072",
+        "filename": "zephyr/shim/core/cortex-m/irq_command.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-01-25T00:54:16Z",
+      "side": 1,
+      "message": "Verify irq \u003c CONFIG_NUM_IRQS before writing to the array.",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 18
+      },
+      "revId": "1e9399bfb53a0e057ca08039d7ea2a59a07d821e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
