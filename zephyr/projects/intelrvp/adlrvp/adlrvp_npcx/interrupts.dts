@@ -21,5 +21,40 @@
 			flags = <GPIO_INT_EDGE_BOTH>;
 			handler = "extpower_interrupt";
 		};
+		int_slp_s0: slp_s0 {
+			irq-gpio = <&pch_slp_s0_n>;
+			flags = <GPIO_INT_EDGE_BOTH>;
+			handler = "power_signal_interrupt";
+		};
+		int_slp_s3: slp_s3 {
+			irq-gpio = <&pm_slp_s3_n>;
+			flags = <GPIO_INT_EDGE_BOTH>;
+			handler = "power_signal_interrupt";
+		};
+		int_slp_s4: slp_s4 {
+			irq-gpio = <&pm_slp_s4_n>;
+			flags = <GPIO_INT_EDGE_BOTH>;
+			handler = "power_signal_interrupt";
+		};
+		int_slp_sus: slp_sus {
+			irq-gpio = <&pm_slp_sus_ec_n>;
+			flags = <GPIO_INT_EDGE_BOTH>;
+			handler = "power_signal_interrupt";
+		};
+		int_pg_dsw_pwrok: pg_dsw_pwrok {
+			irq-gpio = <&vccpdsw_3p3>;
+			flags = <GPIO_INT_EDGE_BOTH>;
+			handler = "power_signal_interrupt";
+		};
+		int_rsmrst_pwrgd: rsmrst_pwrgd {
+			irq-gpio = <&rsmrst_pwrgd>;
+			flags = <GPIO_INT_EDGE_BOTH>;
+			handler = "power_signal_interrupt";
+		};
+		int_all_sys_pwrgd: all_sys_pwrgd {
+			irq-gpio = <&all_sys_pwrgd>;
+			flags = <GPIO_INT_EDGE_BOTH>;
+			handler = "power_signal_interrupt";
+		};
 	};
 };
