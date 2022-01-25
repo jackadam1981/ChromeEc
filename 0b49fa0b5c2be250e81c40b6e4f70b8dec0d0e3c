@@ -1,0 +1,95 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66c31b1d_7b0469ff",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-01-25T05:03:05Z",
+      "side": 1,
+      "message": "try to add what you have tested, easy for other MECC to follow same",
+      "revId": "0b49fa0b5c2be250e81c40b6e4f70b8dec0d0e3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba780d0f_6e9fbeb8",
+        "filename": "zephyr/projects/intelrvp/Kconfig",
+        "patchSetId": 8
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-01-25T05:03:05Z",
+      "side": 1,
+      "message": "nit: fit in 80 chars",
+      "range": {
+        "startLine": 9,
+        "startChar": 62,
+        "endLine": 10,
+        "endChar": 20
+      },
+      "revId": "0b49fa0b5c2be250e81c40b6e4f70b8dec0d0e3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01184568_440a111e",
+        "filename": "zephyr/projects/intelrvp/adlrvp/adlrvp_npcx/adlrvp_npcx.dts",
+        "patchSetId": 8
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-01-25T05:03:05Z",
+      "side": 1,
+      "message": "try enable one module at a time",
+      "revId": "0b49fa0b5c2be250e81c40b6e4f70b8dec0d0e3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "97d761ba_6cb3be6a",
+        "filename": "zephyr/projects/intelrvp/adlrvp/adlrvp_npcx/gpio.dts",
+        "patchSetId": 8
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-01-25T05:03:05Z",
+      "side": 1,
+      "message": "some net names don\u0027t match, and are not consistent\nex:  ec_flash_wp_odl {\ngpio_bc_acok: bc_acok {\nany reason for having \u0027:\u0027 in one vs other",
+      "revId": "0b49fa0b5c2be250e81c40b6e4f70b8dec0d0e3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8fba332_342246bd",
+        "filename": "zephyr/projects/intelrvp/prj.conf",
+        "patchSetId": 8
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-01-25T05:03:05Z",
+      "side": 1,
+      "message": "try enable one module at a time",
+      "revId": "0b49fa0b5c2be250e81c40b6e4f70b8dec0d0e3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
