@@ -115,6 +115,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5de130d9_59f0e248",
+        "filename": "util/fptool.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1528447
+      },
+      "writtenOn": "2022-01-25T01:47:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "46cd0a4c_fea51856",
+      "range": {
+        "startLine": 76,
+        "startChar": 32,
+        "endLine": 76,
+        "endChar": 33
+      },
+      "revId": "79f2a727b7c054cf72dfca252e2673b75e69fbe0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "60619b9c_3ade77e2",
@@ -145,6 +169,30 @@
       "writtenOn": "2022-01-21T16:42:31Z",
       "side": 1,
       "message": "Looks like it returns str, so we can add \"-\u003e str:\" (see http://mypy-lang.org/)",
+      "range": {
+        "startLine": 92,
+        "startChar": 15,
+        "endLine": 92,
+        "endChar": 16
+      },
+      "revId": "79f2a727b7c054cf72dfca252e2673b75e69fbe0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5f14ee9_6aee8f1f",
+        "filename": "util/fptool.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1528447
+      },
+      "writtenOn": "2022-01-25T01:47:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "85af7af4_63ef627c",
       "range": {
         "startLine": 92,
         "startChar": 15,
@@ -195,6 +243,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4bd321a_011037cd",
+        "filename": "util/fptool.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1528447
+      },
+      "writtenOn": "2022-01-25T01:47:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "69505c22_1859453b",
+      "range": {
+        "startLine": 96,
+        "startChar": 16,
+        "endLine": 96,
+        "endChar": 17
+      },
+      "revId": "79f2a727b7c054cf72dfca252e2673b75e69fbe0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "417e2745_fd082112",
@@ -225,6 +297,30 @@
       "writtenOn": "2022-01-21T16:42:31Z",
       "side": 1,
       "message": "Can you change all the function comments to Python docstring style?\n\nhttps://github.com/google/styleguide/blob/gh-pages/pyguide.md#38-comments-and-docstrings",
+      "range": {
+        "startLine": 99,
+        "startChar": 0,
+        "endLine": 104,
+        "endChar": 31
+      },
+      "revId": "79f2a727b7c054cf72dfca252e2673b75e69fbe0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "86a9bbe5_c3684154",
+        "filename": "util/fptool.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1528447
+      },
+      "writtenOn": "2022-01-25T01:47:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "404044f3_7f6efdcc",
       "range": {
         "startLine": 99,
         "startChar": 0,
