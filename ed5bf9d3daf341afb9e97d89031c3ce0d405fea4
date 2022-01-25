@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba726170_7c26741f",
+        "filename": "common/motion_sense_fifo.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 634,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-01-25T17:49:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e60603b0_907809ad",
+      "range": {
+        "startLine": 623,
+        "startChar": 0,
+        "endLine": 634,
+        "endChar": 0
+      },
+      "revId": "ed5bf9d3daf341afb9e97d89031c3ce0d405fea4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cc0f4e6f_baed8f2b",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-01-25T17:25:29Z",
       "side": 1,
       "message": "Nit: EC",
+      "range": {
+        "startLine": 16,
+        "startChar": 3,
+        "endLine": 16,
+        "endChar": 5
+      },
+      "revId": "ed5bf9d3daf341afb9e97d89031c3ce0d405fea4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "282b8e37_e2efc2f2",
+        "filename": "zephyr/Kconfig.tasks",
+        "patchSetId": 6
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-01-25T17:49:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cc0f4e6f_baed8f2b",
       "range": {
         "startLine": 16,
         "startChar": 3,
@@ -64,6 +112,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1cf32fb3_072aac1a",
+        "filename": "zephyr/emul/emul_syv682x.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-01-25T17:49:27Z",
+      "side": 1,
+      "message": "The issue is that there\u0027s no way for tests to keep track of the state of the full EC. Instead we should be resetting to some common state before each test and allowing each test to set up their own scenario.",
+      "parentUuid": "fc1a5362_7f73bb81",
+      "revId": "ed5bf9d3daf341afb9e97d89031c3ce0d405fea4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d81bc18c_fa745ac7",
@@ -77,6 +143,24 @@
       "writtenOn": "2022-01-25T17:25:29Z",
       "side": 1,
       "message": "Is there a scenario where we would want to use the new API but not do this?",
+      "revId": "ed5bf9d3daf341afb9e97d89031c3ce0d405fea4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "365631b0_054e0d13",
+        "filename": "zephyr/test/drivers/prj.conf",
+        "patchSetId": 6
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-01-25T17:49:27Z",
+      "side": 1,
+      "message": "Not sure, if you have a test that doesn\u0027t need/want to call `set_test_runner_tid()` you would leave this out. It\u0027s hard to say with a sample size of 1 right now (though you\u0027re probably correct in assuming that these will likely go hand in hand).",
+      "parentUuid": "d81bc18c_fa745ac7",
       "revId": "ed5bf9d3daf341afb9e97d89031c3ce0d405fea4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -98,6 +182,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b63f0ad3_f4908609",
+        "filename": "zephyr/test/drivers/src/bb_retimer.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-01-25T17:49:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e3a1fb3f_874d51ee",
+      "revId": "ed5bf9d3daf341afb9e97d89031c3ce0d405fea4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3c5d1ea6_6ac8d707",
@@ -111,6 +213,24 @@
       "writtenOn": "2022-01-25T17:25:29Z",
       "side": 1,
       "message": "This should be unnecessary now that the check on line 192 isn\u0027t checking for an exact voltage. (Doing this will also affect any subsequent test that checks the charging state.)",
+      "revId": "ed5bf9d3daf341afb9e97d89031c3ce0d405fea4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "849c77f5_92ee2e3e",
+        "filename": "zephyr/test/drivers/src/integration_usb.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-01-25T17:49:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3c5d1ea6_6ac8d707",
       "revId": "ed5bf9d3daf341afb9e97d89031c3ce0d405fea4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
