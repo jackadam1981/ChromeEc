@@ -6,4 +6,9 @@
 #ifndef __ZEPHYR_GPIO_MAP_H
 #define __ZEPHYR_GPIO_MAP_H
 
+#include "intelrvp.h"
+
+#define GPIO_SYS_RESET_L		GPIO_SYS_RST_ODL
+#define GPIO_SYS_PWROK_EC		GPIO_EC_PCH_SYS_PWROK
+
 #endif /* __ZEPHYR_GPIO_MAP_H */
