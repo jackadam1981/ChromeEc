@@ -39,6 +39,9 @@
 static void baseboard_init(void)
 {
 	gpio_enable_interrupt(GPIO_AP_XHCI_INIT_DONE);
+
+	if (corsola_get_db_type() == CORSOLA_DB_HDMI)
+		gpio_enable_interrupt(GPIO_PS185_EC_DP_HPD);
 }
 DECLARE_HOOK(HOOK_INIT, baseboard_init, HOOK_PRIO_DEFAULT-1);
 
@@ -53,10 +56,7 @@ DECLARE_HOOK(HOOK_INIT, baseboard_tcpc_init, HOOK_PRIO_INIT_I2C + 1);
 
 __override uint8_t board_get_usb_pd_port_count(void)
 {
-	if (corsola_get_db_type() == CORSOLA_DB_TYPEC)
-		return CONFIG_USB_PD_PORT_MAX_COUNT;
-	else
-		return CONFIG_USB_PD_PORT_MAX_COUNT - 1;
+	return CONFIG_USB_PD_PORT_MAX_COUNT;
 }
 
 /* USB-A */
@@ -104,6 +104,7 @@ static void ps185_hdmi_hpd_deferred(void)
 		return;
 
 	debounced_hpd = new_hpd;
+	gpio_set_level_verbose(CC_USBPD, GPIO_DP_AUX_PATH_SEL, 1);
 
 	gpio_set_level(GPIO_EC_AP_DP_HPD_ODL, !debounced_hpd);
 	CPRINTS(debounced_hpd ? "HDMI plug" : "HDMI unplug");
