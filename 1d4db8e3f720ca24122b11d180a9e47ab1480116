@@ -22,6 +22,30 @@
       },
       "revId": "1d4db8e3f720ca24122b11d180a9e47ab1480116",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f97e549_51d6617c",
+        "filename": "zephyr/projects/corsola/include/gpio_map.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-01-25T02:20:48Z",
+      "side": 0,
+      "message": "Move to different CL.",
+      "parentUuid": "d163f645_6d188822",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 56
+      },
+      "revId": "1d4db8e3f720ca24122b11d180a9e47ab1480116",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
