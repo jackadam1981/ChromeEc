@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb441ddd_c23cbaa4",
+        "filename": "zephyr/projects/nissa/src/usbc.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-01-25T02:27:15Z",
+      "side": 1,
+      "message": "Why not GPIO_DT_FROM_NODELABEL(gpio_usb_c10_pd_int_odl)?  Seems better to consistently use one form or the other.",
+      "range": {
+        "startLine": 203,
+        "startChar": 22,
+        "endLine": 203,
+        "endChar": 47
+      },
+      "revId": "0043421d0b500db7e2b5b6487b35d550b55ea2c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
