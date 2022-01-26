@@ -324,6 +324,21 @@ static int rt9490_init_setting(int chgnum)
 			RT9490_VAC_OVP_26V << RT9490_VAC_OVP_SHIFT));
 
 
+#if 1 /* work around for IBUS ADC unstable issue */
+	rv = rt9490_set_bit(chgnum, RT9490_REG_ADC_CHANNEL0, RT9490_VSYS_ADC_DIS);
+	if (rv)
+		return rv;
+
+	rv = rt9490_write8(chgnum, 0xF1, 0x69);
+	rv |= rt9490_write8(chgnum, 0xF2, 0x96);
+	rv |= rt9490_write8(chgnum, 0x52, 0xC4);
+	if (rv)
+		return rv;
+
+	rv = rt9490_clr_bit(chgnum, RT9490_REG_ADC_CHANNEL0, RT9490_VSYS_ADC_DIS);
+	if (rv)
+		return rv;
+#endif
 	/* unmask all interrupts except BC12 */
 	RETURN_ERROR(rt9490_set_bit(chgnum, RT9490_REG_CHG_IRQ_MASK0, 0xFF));
 	RETURN_ERROR(rt9490_set_bit(chgnum, RT9490_REG_CHG_IRQ_MASK1, 0xD6));
