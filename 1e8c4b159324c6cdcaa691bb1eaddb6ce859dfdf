@@ -56,6 +56,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "22a5ed93_ef412890",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 1291180
+      },
+      "writtenOn": "2022-01-26T10:53:19Z",
+      "side": 1,
+      "message": "OK",
+      "parentUuid": "165e3fc9_969217d1",
+      "revId": "1e8c4b159324c6cdcaa691bb1eaddb6ce859dfdf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "051ff3d5_6a377a36",
         "filename": "driver/tcpm/anx7447.h",
         "patchSetId": 3
