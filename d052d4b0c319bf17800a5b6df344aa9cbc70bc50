@@ -305,6 +305,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9762652c_62ffd7a8",
+        "filename": "common/usbc/usbc_task.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-01-26T16:25:28Z",
+      "side": 1,
+      "message": "Already discussed OOB, but leaving it here for posterity: What if we had a low-memory implementation of the existing timer API that would allow the Servo to use more of the existing code?",
+      "parentUuid": "dcb5c424_2c435e93",
+      "revId": "d052d4b0c319bf17800a5b6df344aa9cbc70bc50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "05494520_3c5be1be",
         "filename": "include/config.h",
         "patchSetId": 10
