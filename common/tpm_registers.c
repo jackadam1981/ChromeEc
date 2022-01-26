@@ -21,6 +21,7 @@
 #include "system_chip.h"
 #include "task.h"
 #include "tpm_manufacture.h"
+#include "tpm_nvmem_ops.h"
 #include "tpm_registers.h"
 #include "util.h"
 #include "watchdog.h"
@@ -852,6 +853,8 @@ void tpm_reinstate_nvmem_commits(void)
 
 static void tpm_reset_now(int wipe_first)
 {
+	char orderly_state_copy[TPM_ORDERLY_STATE_SIZE];
+
 	if_stop();
 
 	/* This is more related to TPM task activity than TPM transactions */
@@ -874,6 +877,8 @@ static void tpm_reset_now(int wipe_first)
 	 */
 	nvmem_enable_commits();
 
+	tpm_orderly_state_capture(orderly_state_copy);
+
 	/*
 	 * Clear the TPM library's zero-init data.  Note that the linker script
 	 * includes this file's .bss in the same section, so it will be cleared
@@ -888,6 +893,8 @@ static void tpm_reset_now(int wipe_first)
 
 	/* Re-initialize our registers */
 	tpm_init();
+
+	tpm_orderly_state_restore(orderly_state_copy);
 
 	if (waiting_for_reset != TASK_ID_INVALID) {
 		/* Wake the waiting task, if any */
