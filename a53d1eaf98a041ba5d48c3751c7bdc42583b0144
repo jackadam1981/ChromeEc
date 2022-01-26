@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fb9463de_33262220",
+        "filename": "zephyr/projects/nissa/prj_nivviks.conf",
+        "patchSetId": 15
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-01-26T20:26:34Z",
+      "side": 1,
+      "message": "Add CONFIG_PLATFORM_EC_ZEPHYR_POWERSEQ\u003dy for power button task.",
+      "range": {
+        "startLine": 128,
+        "startChar": 0,
+        "endLine": 128,
+        "endChar": 30
+      },
+      "revId": "a53d1eaf98a041ba5d48c3751c7bdc42583b0144",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "eede39c2_b18ca905",
         "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
         "patchSetId": 15
