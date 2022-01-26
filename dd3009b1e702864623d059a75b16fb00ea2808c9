@@ -16,6 +16,23 @@
       "message": "I ran this with a test CL to force the regular CQ to run to make sure we\u0027re not breaking any packages that might depend on this header file. The dry run passed.",
       "revId": "dd3009b1e702864623d059a75b16fb00ea2808c9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "44f31a8a_811ac84d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2022-01-26T18:13:40Z",
+      "side": 1,
+      "message": "It looks like flashrom is still using ec_current_image?",
+      "revId": "dd3009b1e702864623d059a75b16fb00ea2808c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
