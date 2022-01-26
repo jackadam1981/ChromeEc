@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "165e3fc9_969217d1",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2022-01-26T05:02:18Z",
+      "side": 1,
+      "message": "nit: use\n\n  RETURN_ERROR(tcpc_write16(port, TCPC_REG_VBUS_VOLTAGE_ALARM_HI_CFG, 0x3FF));",
+      "parentUuid": "ad09643e_c05fe29c",
+      "revId": "1e8c4b159324c6cdcaa691bb1eaddb6ce859dfdf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "051ff3d5_6a377a36",
         "filename": "driver/tcpm/anx7447.h",
         "patchSetId": 3
