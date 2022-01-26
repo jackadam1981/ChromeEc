@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c268cd22_3d29bd21",
+        "filename": "common/usb_common.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 385,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-01-26T03:23:52Z",
+      "side": 1,
+      "message": "how about\n\nstatic int usb_pd_port_count \u003d CONFIG_USB_PD_PORT_MAX_COUNT;\n\nint usb_pd_get_port_count(void)\n{\n    return usb_pd_port_count;\n}\n\nadd details when this has to be used etc\n__maybe_unused void usb_pd_set_port_count(int count)\n{\n   usb_pd_port_count \u003d count;\n}\n\nwith this approach we dont need additional config",
+      "range": {
+        "startLine": 352,
+        "startChar": 0,
+        "endLine": 385,
+        "endChar": 0
+      },
+      "revId": "8330d55dde0920988d1b2c902638cccf3d916f38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
