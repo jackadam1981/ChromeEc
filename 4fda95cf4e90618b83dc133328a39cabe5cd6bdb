@@ -52,6 +52,24 @@
       "parentUuid": "af4f8e0a_5c34c114",
       "revId": "4fda95cf4e90618b83dc133328a39cabe5cd6bdb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b64075e_bb207a69",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-01-26T21:55:15Z",
+      "side": 1,
+      "message": "I believe Andrew has found the issue.  Whether gpio-cells is required depended on what type of property referenced the nodelabel.  So the short answer is add gpio-cells iff the DTS compiler complains.",
+      "parentUuid": "0102726b_adc902cb",
+      "revId": "4fda95cf4e90618b83dc133328a39cabe5cd6bdb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
