@@ -268,8 +268,7 @@ static void syv682x_handle_status_interrupt(int port, int regval)
 			atomic_or(&flags[port], SYV682X_FLAGS_SOURCE_ENABLED);
 			atomic_clear_bits(&flags[port],
 					  SYV682X_FLAGS_SINK_ENABLED);
-			if (!IS_ENABLED(CONFIG_USB_PD_FRS_TCPC))
-				pd_got_frs_signal(port);
+			pd_got_frs_signal(port);
 		}
 	}
 
