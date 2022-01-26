@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "11426f62_1ede5e67",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2022-01-26T21:40:44Z",
+      "side": 1,
+      "message": "+2 if my comment is non actionable.",
+      "revId": "f2b9f91e8709e25fcd44d774bb0b1db48a4ec75d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "109e9583_cb5f4afc",
+        "filename": "power/qcom.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1043,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2022-01-26T21:40:44Z",
+      "side": 1,
+      "message": "You might want to add `check_for_warm_reset_event();` in here too if applicable (if those pins aren\u0027t already low), any other other place we spend significant time in.",
+      "revId": "f2b9f91e8709e25fcd44d774bb0b1db48a4ec75d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
