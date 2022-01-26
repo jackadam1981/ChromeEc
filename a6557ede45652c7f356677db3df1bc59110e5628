@@ -16,6 +16,29 @@
       "message": "please add cq-depend here",
       "revId": "a6557ede45652c7f356677db3df1bc59110e5628",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "410e6f90_f0984f3c",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 880,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-01-26T23:12:49Z",
+      "side": 1,
+      "message": "nit: it would make more sense to call this \u0027save\u0027 to match \u0027restore\u0027\n\nSo, this would happen for any reset, orderly or not, is this the intention? Won\u0027t we lose information about unorderly reset in this case?",
+      "range": {
+        "startLine": 880,
+        "startChar": 1,
+        "endLine": 880,
+        "endChar": 24
+      },
+      "revId": "a6557ede45652c7f356677db3df1bc59110e5628",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
