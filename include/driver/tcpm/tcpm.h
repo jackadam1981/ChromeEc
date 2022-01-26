@@ -400,6 +400,23 @@ static inline enum ec_error_list tcpc_set_bist_test_mode(int port, bool enable)
 	return rv;
 }
 
+/*
+ * Returns true if the port controls FRS using the TCPC.
+ */
+static inline int tcpm_tcpc_has_frs_control(int port)
+{
+	if (IS_ENABLED(CONFIG_USB_PD_FRS))
+		return 0;
+
+	if (IS_ENABLED(CONFIG_USB_PD_FRS_TCPC))
+		return 1;
+
+	if (tcpc_config[port].flags & TCPC_FLAGS_CONTROL_FRS)
+		return 1;
+
+	return 0;
+}
+
 #ifdef CONFIG_USB_PD_FRS_TCPC
 static inline int tcpm_set_frs_enable(int port, int enable)
 {
