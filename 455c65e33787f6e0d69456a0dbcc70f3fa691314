@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4919c653_293f57b0",
+        "filename": "docs/zephyr/zephyr_motionsense.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-01-26T05:35:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3790d46a_28e8537b",
+      "range": {
+        "startLine": 30,
+        "startChar": 4,
+        "endLine": 30,
+        "endChar": 35
+      },
+      "revId": "455c65e33787f6e0d69456a0dbcc70f3fa691314",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "52149fe9_f5087b14",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-01-25T17:57:29Z",
       "side": 1,
       "message": "Is it easy to fix b:173507858 so this config can be deleted?",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 62
+      },
+      "revId": "455c65e33787f6e0d69456a0dbcc70f3fa691314",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d23a413_090c0e25",
+        "filename": "docs/zephyr/zephyr_motionsense.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-01-26T05:35:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "52149fe9_f5087b14",
       "range": {
         "startLine": 45,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "87f131ab_b6146875",
+        "filename": "docs/zephyr/zephyr_motionsense.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-01-26T05:35:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3cc533d7_8a17cc3d",
+      "range": {
+        "startLine": 112,
+        "startChar": 144,
+        "endLine": 112,
+        "endChar": 173
+      },
+      "revId": "455c65e33787f6e0d69456a0dbcc70f3fa691314",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "34cceeff_c11ebc50",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-01-25T17:57:29Z",
       "side": 1,
       "message": "I think it\u0027s better to point the choice option directly PLATFORM_EC_ACCELGYRO_BMI_COMM.  Users should be setting the choice option instead the SPI/I2C selection directly:\n\nconfig PLATFORM_EC_ACCELGYRO_BMI_COMM\n    default PLATFORM_EC_ACCELGYRO_BMI_COMM_I2C\n    \nI also wonder if we can auto-select the correct interface using one of the kconfigfunctions https://github.com/zephyrproject-rtos/zephyr/blob/main/scripts/kconfig/kconfigfunctions.py",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 60
+      },
+      "revId": "455c65e33787f6e0d69456a0dbcc70f3fa691314",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad02a680_e13cf745",
+        "filename": "docs/zephyr/zephyr_sensor_devices.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-01-26T05:35:38Z",
+      "side": 1,
+      "message": "I\u0027ve replaced the header to document the _COMM parent choice. Looking at the kconfig functions the most appealing is `dt_compat_on_bus` but because of the approach we ended up with for motionsense, we\u0027re not actually putting the nodes such as `cros-ec,bmi160-accel` on the bus directly. It instead gets placed in the `motionsense-sensor` node. I don\u0027t believe there\u0027s a clean way to do this using the current model.",
+      "parentUuid": "34cceeff_c11ebc50",
       "range": {
         "startLine": 33,
         "startChar": 0,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3490a91_aad75260",
+        "filename": "docs/zephyr/zephyr_sensor_devices.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-01-26T05:35:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bf78b6af_08f5ccbd",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 60
+      },
+      "revId": "455c65e33787f6e0d69456a0dbcc70f3fa691314",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cae7732e_722430c4",
@@ -129,6 +249,30 @@
       "writtenOn": "2022-01-25T17:57:29Z",
       "side": 1,
       "message": "Get rid of backticks from headings to fix TOC.",
+      "range": {
+        "startLine": 46,
+        "startChar": 5,
+        "endLine": 46,
+        "endChar": 41
+      },
+      "revId": "455c65e33787f6e0d69456a0dbcc70f3fa691314",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee83ed6b_6a40a77c",
+        "filename": "docs/zephyr/zephyr_sensor_devices.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-01-26T05:35:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cae7732e_722430c4",
       "range": {
         "startLine": 46,
         "startChar": 5,
@@ -162,6 +306,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "efc4bcc4_81f53f80",
+        "filename": "docs/zephyr/zephyr_sensor_devices.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-01-26T05:35:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "43b50f10_2c6ed10b",
+      "range": {
+        "startLine": 53,
+        "startChar": 61,
+        "endLine": 53,
+        "endChar": 76
+      },
+      "revId": "455c65e33787f6e0d69456a0dbcc70f3fa691314",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6012e839_bd52f878",
@@ -175,6 +343,30 @@
       "writtenOn": "2022-01-25T17:57:29Z",
       "side": 1,
       "message": "Move this into a separate CL.",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 26
+      },
+      "revId": "455c65e33787f6e0d69456a0dbcc70f3fa691314",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ef5c133_3d45d556",
+        "filename": "zephyr/Kconfig.motionsense",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-01-26T05:35:38Z",
+      "side": 1,
+      "message": "This doesn\u0027t actually work, removing it.",
+      "parentUuid": "6012e839_bd52f878",
       "range": {
         "startLine": 14,
         "startChar": 0,
@@ -208,6 +400,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "50defa5b_fbf82dbd",
+        "filename": "zephyr/Kconfig.sensor_devices",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-01-26T05:35:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "56080353_1172d433",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 0
+      },
+      "revId": "455c65e33787f6e0d69456a0dbcc70f3fa691314",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1eff7941_a806efab",
@@ -221,6 +437,30 @@
       "writtenOn": "2022-01-25T17:57:29Z",
       "side": 1,
       "message": "Same here - put into the help section.",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 0
+      },
+      "revId": "455c65e33787f6e0d69456a0dbcc70f3fa691314",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca909b7b_80e3ffa8",
+        "filename": "zephyr/Kconfig.sensor_devices",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-01-26T05:35:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1eff7941_a806efab",
       "range": {
         "startLine": 14,
         "startChar": 0,
