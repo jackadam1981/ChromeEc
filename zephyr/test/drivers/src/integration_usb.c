@@ -24,6 +24,7 @@
 #include "test_state.h"
 
 #define TCPCI_EMUL_LABEL DT_NODELABEL(tcpci_emul)
+#define TCPCI_EMUL_PS8XXX_LABEL DT_NODELABEL(tcpci_ps8xxx_emul)
 #define BATTERY_ORD DT_DEP_ORD(DT_NODELABEL(battery))
 
 #define GPIO_AC_OK_PATH DT_PATH(named_gpios, acok_od)
@@ -288,6 +289,46 @@ ZTEST(integration_usb, test_attach_drp)
 	 * TODO: Change it to examining EC_CMD_TYPEC_STATUS
 	 */
 	zassert_equal(PE_SNK_READY, get_state_pe(USBC_PORT_C0), NULL);
+}
+
+ZTEST(integration_usb, test_unplug_sink_then_source)
+{
+	/* Attach a source and a sink to two different ports. Disconnect the
+	 * sink, and then disconnect the source.
+	 */
+
+	const struct emul *tcpci_port0_emul =
+		emul_get_binding(DT_LABEL(TCPCI_EMUL_LABEL));
+	const struct emul *tcpci_port1_emul =
+		emul_get_binding(DT_LABEL(TCPCI_EMUL_PS8XXX_LABEL));
+	struct tcpci_src_emul my_source;
+	struct tcpci_snk_emul my_sink;
+	const struct device *gpio_dev =
+		DEVICE_DT_GET(DT_GPIO_CTLR(GPIO_AC_OK_PATH, gpios));
+	int ret;
+
+	/* Attach emulated source device. This will send Source Capabilities. */
+	zassert_ok(gpio_emul_input_set(gpio_dev, GPIO_AC_OK_PIN, 1), NULL);
+	tcpci_src_emul_init(&my_source);
+	zassert_ok(tcpci_src_emul_connect_to_tcpci(
+			   &my_source.data, &my_source.common_data,
+			   &my_source.ops, tcpci_port0_emul),
+		   NULL);
+
+	/* Attach emulated sink device. */
+	tcpci_snk_emul_init(&my_sink);
+	zassert_ok(tcpci_snk_emul_connect_to_tcpci(
+			   &my_sink.data, &my_sink.common_data, &my_sink.ops,
+			   tcpci_port1_emul),
+		   NULL);
+
+	/* Wait for PD negotiation */
+	k_sleep(K_SECONDS(10));
+
+	/* Confirm both are attached */
+	ret = get_state_pe(USBC_PORT_C1);
+	zassert_equal(PE_SRC_READY, ret, "Expected %d but got %d", PE_SRC_READY,
+		      ret);
 }
 
 ZTEST_SUITE(integration_usb, drivers_predicate_post_main, NULL,
