@@ -34,6 +34,24 @@
       "parentUuid": "b836e99f_00004916",
       "revId": "e434b9a5c433e7267536ba9ee979aa22aefd3b98",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e139280_29996af9",
+        "filename": "zephyr/projects/trogdor/lazor/gpio.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-01-26T00:54:06Z",
+      "side": 1,
+      "message": "Re: set it by default to 0, I think we could do that with a\n default: 0\n\nproperty of \u0027#gpio-cells\u0027 in platform/ec/zephyr/dts/bindings/gpio/named-gpios.yaml\n\nRe: appears as a GPIO controller, that\u0027s definitely beyond my devicetree understanding, but I\u0027m suspicious that there might be some more idiomatic DTS way to represent the relationship between the name and the GPIO, like an alias.",
+      "parentUuid": "8a9d07a9_d4798e6f",
+      "revId": "e434b9a5c433e7267536ba9ee979aa22aefd3b98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
