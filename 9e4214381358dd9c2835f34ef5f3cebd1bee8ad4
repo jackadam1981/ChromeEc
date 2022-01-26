@@ -16,6 +16,52 @@
       "message": "I believe this superficially completes the high-power charger test.",
       "revId": "9e4214381358dd9c2835f34ef5f3cebd1bee8ad4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6dd82e4b_5bff02fa",
+        "filename": "zephyr/test/drivers/src/integration_usb.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-01-26T23:00:14Z",
+      "side": 1,
+      "message": "Can the EC_CMD_USB_PD_POWER_INFO (as well as other host commands) get broken out into their own functions?   This function is is getting large.  I\u0027m not sure if this would break the ZTEST macro.\n\nThe number of local variables is getting quite large, which makes the code harder to read.  A simpler cleanup would be to initialize power_info_args just before it\u0027s used instead of at the function header.",
+      "range": {
+        "startLine": 132,
+        "startChar": 0,
+        "endLine": 136,
+        "endChar": 22
+      },
+      "revId": "9e4214381358dd9c2835f34ef5f3cebd1bee8ad4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6ac98a0_a9575029",
+        "filename": "zephyr/test/drivers/src/integration_usb.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-01-26T23:00:14Z",
+      "side": 1,
+      "message": "Not - space before this section.  It seems unrelated to EC_CMD_USB_PD_POWER_INFO checks.",
+      "range": {
+        "startLine": 213,
+        "startChar": 0,
+        "endLine": 213,
+        "endChar": 71
+      },
+      "revId": "9e4214381358dd9c2835f34ef5f3cebd1bee8ad4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
