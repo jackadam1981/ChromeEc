@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3fc24a82_f1fcefed",
+        "filename": "docs/zephyr/zephyr_pwm.md",
+        "patchSetId": 18
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-01-26T17:39:39Z",
+      "side": 1,
+      "message": "Could not figure how to escape | here, it seems like the markdown engine takes it as a column delimiter, and if I escape it then it shows escaped in the text.",
+      "range": {
+        "startLine": 71,
+        "startChar": 59,
+        "endLine": 71,
+        "endChar": 61
+      },
+      "revId": "d4186d24c13e62a4516046f625a1e109c14bb60d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11dcb412_53c6704b",
+        "filename": "docs/zephyr/zephyr_pwm.md",
+        "patchSetId": 18
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-01-26T17:39:39Z",
+      "side": 1,
+      "message": "Debating on whether to keep these here or if they should go on a separate file. LED PWM and FAN PWM have enough options and configuration, but these two just needs to be enabled... let me know what you think.",
+      "range": {
+        "startLine": 84,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 21
+      },
+      "revId": "d4186d24c13e62a4516046f625a1e109c14bb60d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
