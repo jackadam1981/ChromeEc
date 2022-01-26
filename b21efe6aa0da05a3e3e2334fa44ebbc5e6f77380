@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4038a3ec_63ed66a8",
+        "filename": "chip/mt_scp/mt8195/clock.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1470933
+      },
+      "writtenOn": "2022-01-26T05:42:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b51d1722_f9cc64ef",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 11
+      },
+      "revId": "b21efe6aa0da05a3e3e2334fa44ebbc5e6f77380",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dd51bbd3_77cf1cbe",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-01-25T09:07:08Z",
       "side": 1,
       "message": "Do we need to switch back to highspeed clock here?",
+      "range": {
+        "startLine": 440,
+        "startChar": 6,
+        "endLine": 440,
+        "endChar": 17
+      },
+      "revId": "b21efe6aa0da05a3e3e2334fa44ebbc5e6f77380",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b07bd77f_e959b08c",
+        "filename": "chip/mt_scp/mt8195/clock.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 440,
+      "author": {
+        "id": 1470933
+      },
+      "writtenOn": "2022-01-26T05:42:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dd51bbd3_77cf1cbe",
       "range": {
         "startLine": 440,
         "startChar": 6,
