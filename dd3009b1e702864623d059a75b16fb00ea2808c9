@@ -33,6 +33,24 @@
       "message": "It looks like flashrom is still using ec_current_image?",
       "revId": "dd3009b1e702864623d059a75b16fb00ea2808c9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a5a452d_f50c63a2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-01-26T18:20:03Z",
+      "side": 1,
+      "message": "I saw that, but I guess they have their own copy of the header since the CQ passed. Let me double-check.",
+      "parentUuid": "44f31a8a_811ac84d",
+      "revId": "dd3009b1e702864623d059a75b16fb00ea2808c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
