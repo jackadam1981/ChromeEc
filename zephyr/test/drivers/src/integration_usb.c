@@ -272,9 +272,81 @@ static void test_attach_drp(void)
 	zassert_equal(PE_SNK_READY, get_state_pe(USBC_PORT_C0), NULL);
 }
 
+static void test_attach_src_sink(void)
+{
+
+	const struct emul *tcpci_emul =
+		emul_get_binding(DT_LABEL(TCPCI_EMUL_LABEL));
+	struct i2c_emul *i2c_emul;
+	uint16_t battery_status;
+	struct tcpci_src_emul my_charger;
+	const struct device *gpio_dev =
+		DEVICE_DT_GET(DT_GPIO_CTLR(GPIO_AC_OK_PATH, gpios));
+
+	/* Set chipset to ON, this will set TCPM to DRP */
+	test_set_chipset_to_s0();
+
+	/* Verify battery not charging. */
+	i2c_emul = sbat_emul_get_ptr(BATTERY_ORD);
+	zassert_ok(sbat_emul_get_word_val(i2c_emul, SB_BATTERY_STATUS,
+					  &battery_status),
+		   NULL);
+	zassert_not_equal(battery_status & STATUS_DISCHARGING, 0,
+			  "Battery is not discharging: %d", battery_status);
+
+	/* TODO? Send host command to verify PD_ROLE_DISCONNECTED. */
+
+	/* Attach emulated charger. */
+	zassert_ok(gpio_emul_input_set(gpio_dev, GPIO_AC_OK_PIN, 1), NULL);
+	tcpci_src_emul_init(&my_charger);
+	zassert_ok(tcpci_src_emul_connect_to_tcpci(&my_charger.data,
+						   &my_charger.common_data,
+						   &my_charger.ops, tcpci_emul),
+		   NULL);
+
+	/* Wait for current ramp. */
+	k_sleep(K_SECONDS(10));
+
+	/* Verify battery charging. */
+	zassert_ok(sbat_emul_get_word_val(i2c_emul, SB_BATTERY_STATUS,
+					  &battery_status),
+		   NULL);
+	zassert_equal(battery_status & STATUS_DISCHARGING, 0,
+		      "Battery is discharging: %d", battery_status);
+	/* TODO: Also check voltage, current, etc. */
+
+	struct tcpci_snk_emul my_sink;
+
+
+	/* TODO(b/214401892): Check why need to give time TCPM to spin */
+	k_sleep(K_SECONDS(1));
+
+	/* Attach emulated sink */
+	tcpci_snk_emul_init(&my_sink);
+	zassert_ok(tcpci_snk_emul_connect_to_tcpci(&my_sink.data,
+						   &my_sink.common_data,
+						   &my_sink.ops, tcpci_emul),
+		   NULL);
+
+	/* Wait for PD negotiation */
+	k_sleep(K_SECONDS(10));
+
+	/* Test if partner believe that PD negotiation is completed */
+	// FIXME zassert_true(my_sink.data.pd_completed, NULL);
+	zassert_true(my_sink.data.pd_completed, NULL);
+	/*
+	 * Test that SRC ready is achieved
+	 * TODO: Change it to examining EC_CMD_TYPEC_STATUS
+	 */
+	// FIXME zassert_equal(PE_SRC_READY, get_state_pe(USBC_PORT_C0), NULL);
+}
+
 void test_suite_integration_usb(void)
 {
 	ztest_test_suite(integration_usb,
+			 ztest_user_unit_test_setup_teardown(
+				 test_attach_src_sink, init_tcpm,
+				 remove_emulated_devices),
 			 ztest_user_unit_test_setup_teardown(
 				 test_attach_compliant_charger, init_tcpm,
 				 remove_emulated_devices),
