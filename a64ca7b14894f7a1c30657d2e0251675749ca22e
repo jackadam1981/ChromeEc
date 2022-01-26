@@ -16,6 +16,24 @@
       "message": "I\u0027m torn on this change, but ultimately I think you\u0027re correct.  We shouldn\u0027t use gpio-cells with named-gpios because it isn\u0027t a GPIO controller.\n\nThis CL should be split by the yaml file instead of a single bulk change.",
       "revId": "a64ca7b14894f7a1c30657d2e0251675749ca22e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1c72c08_ea0cdc19",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-01-26T22:56:52Z",
+      "side": 1,
+      "message": "OK will create a CL for each yaml file.",
+      "parentUuid": "e57cf456_ecbf0345",
+      "revId": "a64ca7b14894f7a1c30657d2e0251675749ca22e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
