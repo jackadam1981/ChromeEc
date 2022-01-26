@@ -16,6 +16,24 @@
       "message": "This looks to be independent of the required boxter change.",
       "revId": "222cc2b24bfef5905430c09b65444cf0de521f3c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "125a9c48_d8b1b7f9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-01-26T00:02:01Z",
+      "side": 1,
+      "message": "The Boster CLs are merged. This CL is ready to CQ.",
+      "parentUuid": "f71300fc_7267ab86",
+      "revId": "222cc2b24bfef5905430c09b65444cf0de521f3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
