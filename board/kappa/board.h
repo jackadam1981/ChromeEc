@@ -96,8 +96,14 @@ enum charge_port {
 };
 
 enum battery_type {
+<<<<<<< HEAD   (0a9a43 Juniper: pull sensor SPI_NSS to low in S5)
 	BATTERY_DANAPACK_HIGHPOWER,
 	BATTERY_DANAPACK_COS,
+=======
+	BATTERY_DYNAPACK_HIGHPOWER,
+	BATTERY_DYNAPACK_COS,
+	BATTERY_LGC,
+>>>>>>> CHANGE (042764 kappa: Add LGC MPPHPPFO021C battery)
 	BATTERY_TYPE_COUNT,
 };
 
