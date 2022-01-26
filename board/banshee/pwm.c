@@ -11,17 +11,17 @@
 #include "pwm_chip.h"
 
 const struct pwm_t pwm_channels[] = {
-	[PWM_CH_LED2] = {
+	[PWM_CH_SIDE_LED_R] = {
 		.channel = 0,
 		.flags = PWM_CONFIG_ACTIVE_LOW | PWM_CONFIG_DSLEEP,
 		.freq = 4800,
 	},
-	[PWM_CH_LED3] = {
+	[PWM_CH_SIDE_LED_G] = {
 		.channel = 1,
 		.flags = PWM_CONFIG_ACTIVE_LOW | PWM_CONFIG_DSLEEP,
 		.freq = 4800,
 	},
-	[PWM_CH_LED1] = {
+	[PWM_CH_SIDE_LED_B] = {
 		.channel = 2,
 		.flags = PWM_CONFIG_ACTIVE_LOW | PWM_CONFIG_DSLEEP,
 		.freq = 4800,
@@ -37,12 +37,22 @@ const struct pwm_t pwm_channels[] = {
 		 */
 		.freq = 2400,
 	},
+	[PWM_CH_LEFT_SIDE] = {
+		.channel = 4,
+		.flags = PWM_CONFIG_OPEN_DRAIN | PWM_CONFIG_DSLEEP,
+		.freq = 1000
+	},
 	[PWM_CH_FAN] = {
 		.channel = 5,
 		.flags = PWM_CONFIG_OPEN_DRAIN | PWM_CONFIG_DSLEEP,
 		.freq = 1000
 	},
-	[PWM_CH_LED4] = {
+	[PWM_CH_RIGHT_SIDE] = {
+		.channel = 6,
+		.flags = PWM_CONFIG_ACTIVE_LOW | PWM_CONFIG_DSLEEP,
+		.freq = 4800,
+	},
+	[PWM_CH_POWER_LED] = {
 		.channel = 7,
 		.flags = PWM_CONFIG_ACTIVE_LOW | PWM_CONFIG_DSLEEP,
 		.freq = 4800,
@@ -56,16 +66,21 @@ static void board_pwm_init(void)
 	 * Turn off all the LEDs.
 	 * Turn on the fan at 100%.
 	 */
-	pwm_enable(PWM_CH_LED1, 1);
-	pwm_set_duty(PWM_CH_LED1, 0);
-	pwm_enable(PWM_CH_LED2, 1);
-	pwm_set_duty(PWM_CH_LED2, 0);
-	pwm_enable(PWM_CH_LED3, 1);
-	pwm_set_duty(PWM_CH_LED3, 0);
-	pwm_enable(PWM_CH_LED4, 1);
-	pwm_set_duty(PWM_CH_LED4, 0);
+	pwm_enable(PWM_CH_SIDE_LED_R, 1);
+	pwm_set_duty(PWM_CH_SIDE_LED_R, 0);
+	pwm_enable(PWM_CH_SIDE_LED_G, 1);
+	pwm_set_duty(PWM_CH_SIDE_LED_G, 0);
+	pwm_enable(PWM_CH_SIDE_LED_B, 1);
+	pwm_set_duty(PWM_CH_SIDE_LED_B, 0);
 
-	pwm_enable(PWM_CH_KBLIGHT, 1);
+	pwm_enable(PWM_CH_LEFT_SIDE, 1);
+	pwm_set_duty(PWM_CH_LEFT_SIDE, 0);
+	pwm_enable(PWM_CH_RIGHT_SIDE, 1);
+	pwm_set_duty(PWM_CH_RIGHT_SIDE, 0);
+	pwm_enable(PWM_CH_RIGHT_SIDE, 1);
+	pwm_set_duty(PWM_CH_POWER_LED, 0);
+	pwm_enable(PWM_CH_POWER_LED, 1);
+
 	pwm_set_duty(PWM_CH_KBLIGHT, 50);
 }
 DECLARE_HOOK(HOOK_INIT, board_pwm_init, HOOK_PRIO_DEFAULT);
