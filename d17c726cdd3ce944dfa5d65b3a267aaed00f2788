@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "89391670_d52caa92",
+        "filename": "zephyr/projects/brya/brya/interrupts.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-01-26T22:48:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e66b9874_7b39500d",
+      "range": {
+        "startLine": 137,
+        "startChar": 12,
+        "endLine": 137,
+        "endChar": 30
+      },
+      "revId": "d17c726cdd3ce944dfa5d65b3a267aaed00f2788",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1d313107_979e4321",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-01-26T22:03:57Z",
       "side": 1,
       "message": "Falling edge.",
+      "range": {
+        "startLine": 142,
+        "startChar": 12,
+        "endLine": 142,
+        "endChar": 30
+      },
+      "revId": "d17c726cdd3ce944dfa5d65b3a267aaed00f2788",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "edd0b3f8_a8f998d7",
+        "filename": "zephyr/projects/brya/brya/interrupts.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-01-26T22:48:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1d313107_979e4321",
       "range": {
         "startLine": 142,
         "startChar": 12,
