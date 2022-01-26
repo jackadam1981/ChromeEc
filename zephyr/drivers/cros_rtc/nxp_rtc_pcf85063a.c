@@ -417,7 +417,7 @@ static int nxp_rtc_pcf85063a_init(const struct device *dev)
 }
 
 #define PCF85063A_INT_GPIOS \
-	DT_PHANDLE_BY_IDX(DT_NODELABEL(pcf85063a), int_gpios, 0)
+	DT_PHANDLE(DT_NODELABEL(pcf85063a), int_pin)
 
 /*
  * dt_flags is a uint8_t type.  However, for platform/ec

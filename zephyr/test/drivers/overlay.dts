@@ -34,8 +34,7 @@
 		 * input, because test_all_tags set it to enable write
 		 * protection.
 		 */
-		gpio_wp_l: wp_l {
-			#gpio-cells = <0>;
+		wp_l {
 			gpios = <&gpio0 3 (GPIO_INPUT | GPIO_OUTPUT)>;
 			enum-name = "GPIO_WP_L";
 		};
@@ -630,7 +629,7 @@
 		pagesize = <8>;
 		address-width = <8>;
 		timeout = <5>;
-		wp-gpios = <&gpio_wp_l>;
+		wp-gpios = <&gpio0 3 (GPIO_INPUT | GPIO_OUTPUT)>;
 	};
 
 	battery: sb@b {
@@ -664,7 +663,7 @@
 		compatible = "cros,sn5s330-emul";
 		reg = <0x40>;
 		label = "SN5S330_EMUL";
-		int_gpio = <&gpio_usb_c0_ppc_int>;
+		int-pin = <&gpio_usb_c0_ppc_int>;
 	};
 
 	accel_bmi260: bmi260@68 {
@@ -683,7 +682,7 @@
 		status = "okay";
 		reg = <0x80>;
 		label = "LN9310";
-		pg_int_gpio = <&gpio_switchcap_pg_int_l>;
+		pg-int-pin = <&gpio_switchcap_pg_int_l>;
 	};
 
 	lis2dw12_emul: lis2dw12@19 {

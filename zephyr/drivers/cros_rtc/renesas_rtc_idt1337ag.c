@@ -446,7 +446,7 @@ static int renesas_rtc_idt1337ag_init(const struct device *dev)
 }
 
 #define IDT1337AG_INT_GPIOS \
-	DT_PHANDLE_BY_IDX(DT_NODELABEL(idt1337ag), int_gpios, 0)
+	DT_PHANDLE(DT_NODELABEL(idt1337ag), int_pin)
 
 /*
  * dt_flags is a uint8_t type.  However, for platform/ec
