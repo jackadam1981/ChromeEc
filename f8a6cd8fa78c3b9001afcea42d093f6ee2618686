@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c33d5f93_515548d1",
+        "filename": "board/agah/ec.tasklist",
+        "patchSetId": 19
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1294793
+      },
+      "writtenOn": "2022-01-26T09:16:09Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "73157903_2d54a7d9",
+      "range": {
+        "startLine": 28,
+        "startChar": 24,
+        "endLine": 28,
+        "endChar": 44
+      },
+      "revId": "f8a6cd8fa78c3b9001afcea42d093f6ee2618686",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "92ccebeb_34f4a506",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b018f58b_0cbc4dc0",
+        "filename": "board/agah/fw_config.h",
+        "patchSetId": 19
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1294793
+      },
+      "writtenOn": "2022-01-26T09:16:09Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "92ccebeb_34f4a506",
+      "range": {
+        "startLine": 14,
+        "startChar": 26,
+        "endLine": 14,
+        "endChar": 55
+      },
+      "revId": "f8a6cd8fa78c3b9001afcea42d093f6ee2618686",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "849109ef_455d4606",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-01-26T07:54:39Z",
       "side": 1,
       "message": "We still need a bug to confirm to the reset time.",
+      "range": {
+        "startLine": 168,
+        "startChar": 1,
+        "endLine": 168,
+        "endChar": 12
+      },
+      "revId": "f8a6cd8fa78c3b9001afcea42d093f6ee2618686",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e5c0f8d4_d63c24b4",
+        "filename": "board/agah/usbc_config.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1294793
+      },
+      "writtenOn": "2022-01-26T09:16:09Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "849109ef_455d4606",
       "range": {
         "startLine": 168,
         "startChar": 1,
