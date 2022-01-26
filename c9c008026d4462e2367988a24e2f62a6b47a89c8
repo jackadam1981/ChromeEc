@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "658f7120_b8cb659f",
+        "filename": "zephyr/projects/herobrine/prj.conf",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-01-26T19:32:13Z",
+      "side": 1,
+      "message": "You don\u0027t need it. The EFS2 config is enabled by default.\n\nActually we didn\u0027t revert it to `n`.",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 0
+      },
+      "revId": "c9c008026d4462e2367988a24e2f62a6b47a89c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
