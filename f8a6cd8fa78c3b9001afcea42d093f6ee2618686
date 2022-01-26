@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "73157903_2d54a7d9",
+        "filename": "board/agah/ec.tasklist",
+        "patchSetId": 19
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2022-01-26T07:54:39Z",
+      "side": 1,
+      "message": "I think we are not share interrupt.",
+      "range": {
+        "startLine": 28,
+        "startChar": 24,
+        "endLine": 28,
+        "endChar": 44
+      },
+      "revId": "f8a6cd8fa78c3b9001afcea42d093f6ee2618686",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92ccebeb_34f4a506",
+        "filename": "board/agah/fw_config.h",
+        "patchSetId": 19
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2022-01-26T07:54:39Z",
+      "side": 1,
+      "message": "Does the link correct?",
+      "range": {
+        "startLine": 14,
+        "startChar": 26,
+        "endLine": 14,
+        "endChar": 55
+      },
+      "revId": "f8a6cd8fa78c3b9001afcea42d093f6ee2618686",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "849109ef_455d4606",
+        "filename": "board/agah/usbc_config.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2022-01-26T07:54:39Z",
+      "side": 1,
+      "message": "We still need a bug to confirm to the reset time.",
+      "range": {
+        "startLine": 168,
+        "startChar": 1,
+        "endLine": 168,
+        "endChar": 12
+      },
+      "revId": "f8a6cd8fa78c3b9001afcea42d093f6ee2618686",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
