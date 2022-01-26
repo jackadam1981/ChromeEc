@@ -729,7 +729,7 @@ int tcpci_tcpm_set_rx_enable(int port, int enable)
 	return tcpc_write(port, TCPC_REG_RX_DETECT, detect_sop_en);
 }
 
-#ifdef CONFIG_USB_PD_FRS_TCPC
+#ifdef CONFIG_USB_PD_FRS
 int tcpci_tcpc_fast_role_swap_enable(int port, int enable)
 {
 	return tcpc_update8(port,
