@@ -65,6 +65,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ce653e1_79c2ac53",
+        "filename": "zephyr/drivers/cros_kb_raw/cros_kb_raw_xec.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2022-01-26T16:45:56Z",
+      "side": 1,
+      "message": "removed HAL_INSTANCE in patch set 9",
+      "parentUuid": "c13a5188_27051f86",
+      "range": {
+        "startLine": 65,
+        "startChar": 33,
+        "endLine": 65,
+        "endChar": 45
+      },
+      "revId": "c459c68344e39bf378d888af73e3bb4aa127078c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "48d70498_a93b3912",
