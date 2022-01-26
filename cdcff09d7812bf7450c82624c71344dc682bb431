@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "941ad6d6_2e298fe6",
+        "filename": "include/driver/tcpm/tcpm.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 409,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-01-26T22:25:25Z",
+      "side": 1,
+      "message": "Create a bug to eliminate this config option?",
+      "range": {
+        "startLine": 409,
+        "startChar": 16,
+        "endLine": 409,
+        "endChar": 38
+      },
+      "revId": "cdcff09d7812bf7450c82624c71344dc682bb431",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d2af3f0a_4a54c6e5",
+        "filename": "include/driver/tcpm/tcpm.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 437,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-01-26T22:25:25Z",
+      "side": 1,
+      "message": "Is this stub routine needed?  The only caller to tcpm_tcpc_has_frs_control() already has a #ifdef CONFIG_USB_PD_FRS guard.",
+      "range": {
+        "startLine": 433,
+        "startChar": 0,
+        "endLine": 437,
+        "endChar": 0
+      },
+      "revId": "cdcff09d7812bf7450c82624c71344dc682bb431",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
