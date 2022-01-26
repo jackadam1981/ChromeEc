@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7169c34c_227ec114",
+        "filename": "docs/zephyr/zephyr_motionsense.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-01-26T22:07:54Z",
+      "side": 1,
+      "message": "Back ticks are still present in the latest patchset.",
+      "parentUuid": "4919c653_293f57b0",
+      "range": {
+        "startLine": 30,
+        "startChar": 4,
+        "endLine": 30,
+        "endChar": 35
+      },
+      "revId": "455c65e33787f6e0d69456a0dbcc70f3fa691314",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "52149fe9_f5087b14",
@@ -179,6 +203,30 @@
       "side": 1,
       "message": "I\u0027ve replaced the header to document the _COMM parent choice. Looking at the kconfig functions the most appealing is `dt_compat_on_bus` but because of the approach we ended up with for motionsense, we\u0027re not actually putting the nodes such as `cros-ec,bmi160-accel` on the bus directly. It instead gets placed in the `motionsense-sensor` node. I don\u0027t believe there\u0027s a clean way to do this using the current model.",
       "parentUuid": "34cceeff_c11ebc50",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 60
+      },
+      "revId": "455c65e33787f6e0d69456a0dbcc70f3fa691314",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f30ed6c_17bc8f34",
+        "filename": "docs/zephyr/zephyr_sensor_devices.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-01-26T22:07:54Z",
+      "side": 1,
+      "message": "This still documents the children selection.  Did you forget to upload the correct pathcset?",
+      "parentUuid": "ad02a680_e13cf745",
       "range": {
         "startLine": 33,
         "startChar": 0,
