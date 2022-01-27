@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e482c7a_fa71247a",
+        "filename": "zephyr/test/drivers/src/integration_usb.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-01-27T19:49:38Z",
+      "side": 1,
+      "message": "We\u0027ve been deliberately avoiding factoring stuff out while we get tests working with the intention of coming back to identify useful test libraries once we have some tests fully functional. But a small prototype never hurt anyone.\n\nI\u0027ll factor out the other host command in a future CL.",
+      "parentUuid": "6dd82e4b_5bff02fa",
+      "range": {
+        "startLine": 132,
+        "startChar": 0,
+        "endLine": 136,
+        "endChar": 22
+      },
+      "revId": "9e4214381358dd9c2835f34ef5f3cebd1bee8ad4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a6ac98a0_a9575029",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-01-26T23:00:14Z",
       "side": 1,
       "message": "Not - space before this section.  It seems unrelated to EC_CMD_USB_PD_POWER_INFO checks.",
+      "range": {
+        "startLine": 213,
+        "startChar": 0,
+        "endLine": 213,
+        "endChar": 71
+      },
+      "revId": "9e4214381358dd9c2835f34ef5f3cebd1bee8ad4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0df0ecea_07784d57",
+        "filename": "zephyr/test/drivers/src/integration_usb.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-01-27T19:49:38Z",
+      "side": 1,
+      "message": "meas is a field in power_info_response.",
+      "parentUuid": "a6ac98a0_a9575029",
       "range": {
         "startLine": 213,
         "startChar": 0,
