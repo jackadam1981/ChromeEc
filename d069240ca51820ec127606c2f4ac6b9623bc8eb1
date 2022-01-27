@@ -22,6 +22,30 @@
       },
       "revId": "d069240ca51820ec127606c2f4ac6b9623bc8eb1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c573d07_18cc3afc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-01-27T22:23:49Z",
+      "side": 1,
+      "message": "I don\u0027t see config.h enforcing mutual exclusivity here, and pd_set_frs_enable() will run however many of the FRS functions are set up, as far as I can tell. \n\nI would say that this could be nice to have on a per-port basis of which chip to use, which I\u0027m guessing may be part of the purpose of this stack?",
+      "parentUuid": "f737592c_c1eb8120",
+      "range": {
+        "startLine": 10,
+        "startChar": 41,
+        "endLine": 11,
+        "endChar": 37
+      },
+      "revId": "d069240ca51820ec127606c2f4ac6b9623bc8eb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
