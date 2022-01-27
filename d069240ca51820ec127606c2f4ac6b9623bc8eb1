@@ -46,6 +46,30 @@
       },
       "revId": "d069240ca51820ec127606c2f4ac6b9623bc8eb1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0446aae_21ac06a5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-01-27T23:28:02Z",
+      "side": 1,
+      "message": "brya has both setups, so it\u0027s no longer a nice-to-have.\nhowever, for a given port, only one of the two schemes applies,\nso, we need the port flag to tell us how to handle it.\n\nthe open question here is whether there could be a valid configuration\nwhere a single port would require\nCONFIG_USB_PD_FRS_PPC and CONFIG_USB_PD_FRS_TCPC.\ni suspect that such a config won\u0027t make sense.\n\nguybrush is the only board that turns on CONFIG_USB_PD_FRS_TCPC\nand it does not use CONFIG_USB_PD_FRS_PPC.",
+      "parentUuid": "7c573d07_18cc3afc",
+      "range": {
+        "startLine": 10,
+        "startChar": 41,
+        "endLine": 11,
+        "endChar": 37
+      },
+      "revId": "d069240ca51820ec127606c2f4ac6b9623bc8eb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
