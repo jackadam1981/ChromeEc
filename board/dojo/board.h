@@ -9,6 +9,8 @@
 
 #include "baseboard.h"
 
+#define CONFIG_I2C_DEBUG
+
 /* Chipset config */
 #define CONFIG_BRINGUP
 
