@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "30ee0bcd_eee23859",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-01-27T05:20:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "af17daed_ebd755d3",
+      "revId": "66f562117ee11763c023cd9d4b1fb420e54bb07a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "157a43e8_8d4d71b2",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-01-26T22:30:31Z",
       "side": 1,
       "message": "Why the dependency on SYSTEM_UNLOCKED?",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 39
+      },
+      "revId": "66f562117ee11763c023cd9d4b1fb420e54bb07a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b726e9a_f0f17433",
+        "filename": "zephyr/Kconfig.keyboard",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-01-27T05:20:18Z",
+      "side": 1,
+      "message": "The debugs will print every character that gets typed on the keyboard",
+      "parentUuid": "157a43e8_8d4d71b2",
       "range": {
         "startLine": 53,
         "startChar": 0,
