@@ -50,6 +50,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "665cfc04_e82b7bb8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-01-27T21:18:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f98f9d6c_b34a899c",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 5
+      },
+      "revId": "a14334b7b833e18d6cf484fdebe140fd7e9ef729",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "32d6ca97_1a61e8f9",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 10
@@ -96,6 +120,24 @@
       "side": 1,
       "message": "It seems, I messed up during rebase.. Adding back was not the intent... somehow i2c CL dependency is broken and same changes became part of this CL.. I am sure i missed something during interactive rebase. \n\nThanks for pointing this out, Cleaning this up.",
       "parentUuid": "1755c1c1_4be855e5",
+      "revId": "a14334b7b833e18d6cf484fdebe140fd7e9ef729",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "318cea33_bd81de97",
+        "filename": "zephyr/projects/intelrvp/adlrvp/adlrvp_npcx/adlrvp_npcx.dts",
+        "patchSetId": 10
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-01-27T21:18:01Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "00670763_13bc7b22",
       "revId": "a14334b7b833e18d6cf484fdebe140fd7e9ef729",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
