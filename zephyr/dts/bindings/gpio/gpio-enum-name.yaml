@@ -85,6 +85,7 @@ properties:
       - GPIO_EC_PWR_BTN_ODL
       - GPIO_EC_PSYS
       - GPIO_EC_RST_ODL
+      - GPIO_EC_SPI_OE_MECC
       - GPIO_EC_SOC_HDMI_HPD
       - GPIO_EC_SOC_PWR_GOOD
       - GPIO_EC_SC_RST
