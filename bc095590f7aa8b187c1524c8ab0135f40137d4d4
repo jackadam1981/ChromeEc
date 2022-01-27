@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0a2a0da_9b32bb04",
+        "filename": "board/kappa/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2022-01-27T02:38:27Z",
+      "side": 1,
+      "message": "You changed at the wrong battery pack.",
+      "range": {
+        "startLine": 57,
+        "startChar": 21,
+        "endLine": 57,
+        "endChar": 25
+      },
+      "revId": "bc095590f7aa8b187c1524c8ab0135f40137d4d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
