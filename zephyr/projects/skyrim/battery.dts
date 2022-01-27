@@ -5,7 +5,10 @@
 
 / {
 	batteries {
-		default_battery: aec_5477109 {
+		default_battery: smp_l20m3pg1 {
+			compatible = "smp,l20m3pg1";
+		};
+		aec_5477109 {
 			compatible = "aec,5477109";
 		};
 	};
