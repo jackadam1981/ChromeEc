@@ -16,6 +16,41 @@
       "message": "Is tiny servo still used for servo_updater? Or for anything else?",
       "revId": "ac7dec9b8eab712e50a1985836edcf780fc3d527",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ffd9e31_80112792",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1165609
+      },
+      "writtenOn": "2022-01-27T18:07:29Z",
+      "side": 1,
+      "message": "I believe `updater` is the last thing using it. we have a fork of the tiny stuff in hdctools for mfg",
+      "parentUuid": "1e1cdc9c_293e4efd",
+      "revId": "ac7dec9b8eab712e50a1985836edcf780fc3d527",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "880b73d2_e41a7e8c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1165609
+      },
+      "writtenOn": "2022-01-27T18:07:29Z",
+      "side": 1,
+      "message": "feel free to submit when fully tested",
+      "revId": "ac7dec9b8eab712e50a1985836edcf780fc3d527",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
