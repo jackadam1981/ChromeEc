@@ -27,5 +27,10 @@
 			gpios = <&gpio0 1 GPIO_INPUT_PULL_UP>;
 			enum-name = "GPIO_LID_OPEN";
 		};
+		gpio_ec_soc_wake_odl: ec_soc_wake_odl {
+			#gpio-cells = <0>;
+			gpios = <&gpioa 4 GPIO_ODR_HIGH>;
+			enum-name = "GPIO_EC_PCH_WAKE_ODL";
+		};
 	};
 };
