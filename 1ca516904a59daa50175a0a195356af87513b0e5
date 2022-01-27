@@ -16,6 +16,24 @@
       "message": "This node already exists in nereid_generated.dts\nSo to keep the source spreadsheet in sync, I will adjust the\nspreadsheet, and you can change this flag in nereid_generated.dts to match.\nIt\u0027s important that the file does not diverge from the generated file.",
       "revId": "1ca516904a59daa50175a0a195356af87513b0e5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f2b38684_e5a9415a",
+        "filename": "zephyr/projects/nissa/nereid_overlay.dts",
+        "patchSetId": 3
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2022-01-27T06:49:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "17f9b54a_ddf825a8",
+      "revId": "1ca516904a59daa50175a0a195356af87513b0e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
