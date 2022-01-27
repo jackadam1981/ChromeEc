@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02429da5_ce643f5b",
+        "filename": "board/agah/board.h",
+        "patchSetId": 20
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-01-27T09:54:16Z",
+      "side": 0,
+      "message": "leave this enabled if you\u0027re using the ps8815.\nit helps recover from some firmware corruption cases.",
+      "range": {
+        "startLine": 55,
+        "startChar": 8,
+        "endLine": 55,
+        "endChar": 43
+      },
+      "revId": "d65141c112134e85329f47ea41e37936c6cd0a1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
