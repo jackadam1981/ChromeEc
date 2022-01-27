@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d09dc8a6_bdec11d7",
+        "filename": "zephyr/test/drivers/src/gpio.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2022-01-27T21:41:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "00940276_b2f11074",
+      "revId": "0e125054d33ec5a971dc875c41d55f0e61c07a8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d8717b00_0bf07067",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-01-27T04:51:33Z",
       "side": 1,
       "message": "nit: zassert_true",
+      "range": {
+        "startLine": 117,
+        "startChar": 1,
+        "endLine": 117,
+        "endChar": 14
+      },
+      "revId": "0e125054d33ec5a971dc875c41d55f0e61c07a8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "396b6d8f_9387a0e7",
+        "filename": "zephyr/test/drivers/src/gpio.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2022-01-27T21:41:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d8717b00_0bf07067",
       "range": {
         "startLine": 117,
         "startChar": 1,
@@ -64,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "006fe2c1_d262c012",
+        "filename": "zephyr/test/drivers/src/gpio.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2022-01-27T21:41:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "67d2b52d_705327ee",
+      "range": {
+        "startLine": 149,
+        "startChar": 1,
+        "endLine": 149,
+        "endChar": 23
+      },
+      "revId": "0e125054d33ec5a971dc875c41d55f0e61c07a8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "394912d6_76da6d85",
@@ -77,6 +143,30 @@
       "writtenOn": "2022-01-27T04:51:33Z",
       "side": 1,
       "message": "If you add a reset rule to reset all the signals you shouldn\u0027t need this. If you don\u0027t, then this should be done in the suite\u0027s after function. If an assert fails in this test you\u0027ll never reach here and the clean-up will never take place.",
+      "range": {
+        "startLine": 151,
+        "startChar": 1,
+        "endLine": 151,
+        "endChar": 15
+      },
+      "revId": "0e125054d33ec5a971dc875c41d55f0e61c07a8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a3339f6_7a7069b8",
+        "filename": "zephyr/test/drivers/src/gpio.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2022-01-27T21:41:09Z",
+      "side": 1,
+      "message": "This was a test case that was causing other tests to fail when manipulating an already defined signal.  Since creating GPIO_TEST signal this is no longer needed.  I can clean this up.",
+      "parentUuid": "394912d6_76da6d85",
       "range": {
         "startLine": 151,
         "startChar": 1,
@@ -110,6 +200,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e595aa5_1f6034f2",
+        "filename": "zephyr/test/drivers/src/gpio.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2022-01-27T21:41:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e1dc594b_df35ce5b",
+      "range": {
+        "startLine": 170,
+        "startChar": 15,
+        "endLine": 170,
+        "endChar": 25
+      },
+      "revId": "0e125054d33ec5a971dc875c41d55f0e61c07a8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "110490bd_f4bb40c1",
@@ -123,6 +237,30 @@
       "writtenOn": "2022-01-27T04:51:33Z",
       "side": 1,
       "message": "Is the set call here expected to fail? Any chance we can verify that nothing changed?",
+      "range": {
+        "startLine": 198,
+        "startChar": 1,
+        "endLine": 198,
+        "endChar": 40
+      },
+      "revId": "0e125054d33ec5a971dc875c41d55f0e61c07a8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "43826af9_30574d7e",
+        "filename": "zephyr/test/drivers/src/gpio.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2022-01-27T21:41:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "110490bd_f4bb40c1",
       "range": {
         "startLine": 198,
         "startChar": 1,
@@ -156,6 +294,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "72e2deef_d7bbc6ed",
+        "filename": "zephyr/test/drivers/src/gpio.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2022-01-27T21:41:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "496bc2b3_07a9132f",
+      "range": {
+        "startLine": 222,
+        "startChar": 0,
+        "endLine": 223,
+        "endChar": 20
+      },
+      "revId": "0e125054d33ec5a971dc875c41d55f0e61c07a8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "17311c81_154851f6",
@@ -169,6 +331,30 @@
       "writtenOn": "2022-01-27T04:51:33Z",
       "side": 1,
       "message": "nit: Here and below, if there\u0027s no details provided in the message you can just use `NULL` for the string.",
+      "range": {
+        "startLine": 239,
+        "startChar": 8,
+        "endLine": 239,
+        "endChar": 26
+      },
+      "revId": "0e125054d33ec5a971dc875c41d55f0e61c07a8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f583287a_21087eb5",
+        "filename": "zephyr/test/drivers/src/gpio.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2022-01-27T21:41:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "17311c81_154851f6",
       "range": {
         "startLine": 239,
         "startChar": 8,
@@ -202,6 +388,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f329475d_bf2cb1f2",
+        "filename": "zephyr/test/drivers/src/gpio.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2022-01-27T21:41:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "19e8967a_52ee9c3f",
+      "range": {
+        "startLine": 244,
+        "startChar": 1,
+        "endLine": 244,
+        "endChar": 14
+      },
+      "revId": "0e125054d33ec5a971dc875c41d55f0e61c07a8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a16b66e5_df39b1e5",
@@ -225,6 +435,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d94cc6c3_caa8c046",
+        "filename": "zephyr/test/drivers/src/gpio.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2022-01-27T21:41:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a16b66e5_df39b1e5",
+      "range": {
+        "startLine": 251,
+        "startChar": 12,
+        "endLine": 251,
+        "endChar": 23
+      },
+      "revId": "0e125054d33ec5a971dc875c41d55f0e61c07a8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3caf64ce_f9c4b664",
@@ -238,6 +472,30 @@
       "writtenOn": "2022-01-27T04:51:33Z",
       "side": 1,
       "message": "These should not be needed. `gpio_after` is a noop and can just be `NULL`. `gpio_before` is already done by the `set_test_runner_tid` test rule at https://source.chromium.org/chromium/chromiumos/platform/ec/+/HEAD:zephyr/shim/src/tasks.c;l\u003d287;drc\u003dd7316924cc1f9b8561b4a22a63a85400efce9b89",
+      "range": {
+        "startLine": 248,
+        "startChar": 0,
+        "endLine": 264,
+        "endChar": 0
+      },
+      "revId": "0e125054d33ec5a971dc875c41d55f0e61c07a8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d45b9ad_42c351ce",
+        "filename": "zephyr/test/drivers/src/gpio.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2022-01-27T21:41:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3caf64ce_f9c4b664",
       "range": {
         "startLine": 248,
         "startChar": 0,
