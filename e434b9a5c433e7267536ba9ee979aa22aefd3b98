@@ -52,6 +52,24 @@
       "parentUuid": "8a9d07a9_d4798e6f",
       "revId": "e434b9a5c433e7267536ba9ee979aa22aefd3b98",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e92c5712_b542903e",
+        "filename": "zephyr/projects/trogdor/lazor/gpio.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-01-27T05:04:25Z",
+      "side": 1,
+      "message": "So we have tried to set the default to 0, but I think we also fall afoul of the\nexpectation that no specifiers are set (e.g pin and flag), so setting the default does not work. DTS also has special treatment of any property ending with \u0027gpio\u0027 that refers to a phandle (the referred node needs to have #gpio-cells set).\n\nPotentially the \u0027name-gpio\u0027 bindings could perhaps inherit some gpio-controller magic so that #gpio-cells is set to 0 by default without having to specify it. I\u0027ve tried a bunch of ways to do this, but haven\u0027t explored this fully (it seems tricky and complicated to do, and I\u0027m not sure this is the best approach).\n\nBeyond that, in spite of whether we name the properties \u0027*gpios\u0027 or not, the actual code that uses these properties will not work if we attempt to use the zephyr standard macros like GPIO_DT_SPEC_GET to treat named-gpios as a GPIO, since this macro cannot resolve the pin and flags (ie DT_GPIO_PIN will work on a named-gpio node).\nSo custom macros have to be used in order to access the GPIO via the named-gpio node anyway, so there\u0027s no benefit to trying to use named-gpio the same as a GPIO.\n\nI have tried to figure out a way where we can set up a name or alias or other macro magic to allow a named-gpio to be used directly as a GPIO, but so far this has proved to be intractable (without some changes on the DTS compiler or processing).\nAnd to be honest, I think the fact that the difference is clear is a good thing, and so the naming needs to reflect that.",
+      "parentUuid": "3e139280_29996af9",
+      "revId": "e434b9a5c433e7267536ba9ee979aa22aefd3b98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
