@@ -33,6 +33,46 @@
       "message": "There\u0027s a couple of odd things I found in the interrupt enabling.\nOnce this CL goes in, it is likely worth going through and checking it.",
       "revId": "a2d8b0aee89d2ad6ec8dfc8b65923c39fa216ef6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b4f4535_3b34ac3d",
+        "filename": "zephyr/projects/corsola/src/kingler/usbc_config.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2022-01-27T07:26:01Z",
+      "side": 1,
+      "message": "Thanks for catching!",
+      "range": {
+        "startLine": 130,
+        "startChar": 0,
+        "endLine": 134,
+        "endChar": 0
+      },
+      "revId": "a2d8b0aee89d2ad6ec8dfc8b65923c39fa216ef6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6956a7d_6bd16d71",
+        "filename": "zephyr/projects/corsola/src/krabby/usbc_config.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2022-01-27T07:26:01Z",
+      "side": 1,
+      "message": "phoenixshen@ might have WIP CLs. I\u0027ll let him comment for this part.",
+      "revId": "a2d8b0aee89d2ad6ec8dfc8b65923c39fa216ef6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
