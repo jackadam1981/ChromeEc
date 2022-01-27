@@ -24,17 +24,17 @@
 		compatible = "cros-ec,gpio-interrupts";
 
 		int_power_button: power_button {
-			irq-gpio = <&gpio_gsc_ec_pwr_btn_odl>;
+			irq-pin = <&gpio_gsc_ec_pwr_btn_odl>;
 			flags = <GPIO_INT_EDGE_BOTH>;
 			handler = "power_button_interrupt";
 		};
 		int_wp_l: wp_l {
-			irq-gpio = <&gpio_ec_wp_odl>;
+			irq-pin = <&gpio_ec_wp_odl>;
 			flags = <GPIO_INT_EDGE_BOTH>;
 			handler = "switch_interrupt";
 		};
 		int_lid_open: lid_open {
-			irq-gpio = <&gpio_lid_open>;
+			irq-pin = <&gpio_lid_open>;
 			flags = <GPIO_INT_EDGE_BOTH>;
 			handler = "lid_interrupt";
 		};
@@ -49,7 +49,7 @@
 			handler = "usb_c1_interrupt";
 		};
 		int_prochot: ap_prochot {
-			irq-gpio = <&gpio_ec_prochot_odl>;
+			irq-pin = <&gpio_ec_prochot_odl>;
 			flags = <GPIO_INT_EDGE_BOTH>;
 			handler = "throttle_ap_prochot_input_interrupt";
 		};
