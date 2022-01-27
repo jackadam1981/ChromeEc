@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "f98f9d6c_b34a899c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-01-27T20:23:58Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "188cd435_fddbffea",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 5
+      },
+      "revId": "a14334b7b833e18d6cf484fdebe140fd7e9ef729",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "32d6ca97_1a61e8f9",
@@ -54,6 +78,24 @@
       "writtenOn": "2022-01-27T20:09:50Z",
       "side": 1,
       "message": "any reason to add these back? patch 9 was better as I2C CL was separate",
+      "revId": "a14334b7b833e18d6cf484fdebe140fd7e9ef729",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00670763_13bc7b22",
+        "filename": "zephyr/projects/intelrvp/adlrvp/adlrvp_npcx/adlrvp_npcx.dts",
+        "patchSetId": 10
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-01-27T20:23:58Z",
+      "side": 1,
+      "message": "It seems, I messed up during rebase.. Adding back was not the intent... somehow i2c CL dependency is broken and same changes became part of this CL.. I am sure i missed something during interactive rebase. \n\nThanks for pointing this out, Cleaning this up.",
+      "parentUuid": "1755c1c1_4be855e5",
       "revId": "a14334b7b833e18d6cf484fdebe140fd7e9ef729",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
