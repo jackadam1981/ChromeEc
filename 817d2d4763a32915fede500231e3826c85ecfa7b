@@ -16,6 +16,24 @@
       "message": "This function is defined in a header file so it may cause linker issues if the file is included multiple times (resulting in multiple definitions of the same function). Should this be a `static inline` function instead?",
       "revId": "817d2d4763a32915fede500231e3826c85ecfa7b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "41697cee_f34e2325",
+        "filename": "include/math_util.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2022-01-27T17:42:13Z",
+      "side": 1,
+      "message": "Good point! Thanks!",
+      "parentUuid": "dbb11f9b_8297b66e",
+      "revId": "817d2d4763a32915fede500231e3826c85ecfa7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
