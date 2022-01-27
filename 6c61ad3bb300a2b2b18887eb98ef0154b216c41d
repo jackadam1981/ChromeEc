@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "118d007b_4c86c699",
+        "filename": "Makefile.rules",
+        "patchSetId": 6
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2022-01-27T17:25:53Z",
+      "side": 1,
+      "message": "Added a fallback in the code to handle this",
+      "parentUuid": "41cc3e21_64967f2f",
+      "range": {
+        "startLine": 235,
+        "startChar": 5,
+        "endLine": 235,
+        "endChar": 52
+      },
+      "revId": "6c61ad3bb300a2b2b18887eb98ef0154b216c41d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2e293672_a24e529f",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-01-25T19:52:38Z",
       "side": 1,
       "message": "the latter code works for both 3.6 and 3.7+. I don\u0027t see why you need the if/else here.",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 34
+      },
+      "revId": "6c61ad3bb300a2b2b18887eb98ef0154b216c41d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3cdcdc3e_eb5e6c97",
+        "filename": "util/kconfig_check.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2022-01-27T17:25:53Z",
+      "side": 1,
+      "message": "Not in my chroot:\n\nTraceback (most recent call last):\n  File \"./util/kconfig_check.py\", line 363, in \u003cmodule\u003e\n    sys.exit(main(sys.argv[1:]))\n  File \"./util/kconfig_check.py\", line 350, in main\n    args \u003d parse_args(argv)\n  File \"./util/kconfig_check.py\", line 75, in parse_args\n    subparsers \u003d parser.add_subparsers(dest\u003d\u0027cmd\u0027, required\u003dTrue)\n  File \"/usr/lib64/python3.6/argparse.py\", line 1707, in add_subparsers\n    action \u003d parsers_class(option_strings\u003d[], **kwargs)\nTypeError: __init__() got an unexpected keyword argument \u0027required\u0027\n\n\npython -V\nPython 3.6.12\n\nIf you look up that in the docs:\n \nhttps://docs.python.org/3/library/argparse.html\n\nyou see:\n\nChanged in version 3.7: New required keyword argument.",
+      "parentUuid": "2e293672_a24e529f",
       "range": {
         "startLine": 70,
         "startChar": 0,
