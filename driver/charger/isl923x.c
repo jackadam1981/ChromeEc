@@ -204,6 +204,11 @@ static int get_amon_bmon(int chgnum, enum isl923x_amon_bmon amon,
 
 	*adc = adc_read_channel(ADC_AMON_BMON);
 
+	RETURN_ERROR(raw_read16(chgnum, ISL923X_REG_CONTROL1, &reg));
+	/* Disable monitor */
+	reg |= ISL923X_C1_DISABLE_MON;
+	RETURN_ERROR(raw_write16(chgnum, ISL923X_REG_CONTROL1, reg));
+
 	return ret;
 }
 #endif
