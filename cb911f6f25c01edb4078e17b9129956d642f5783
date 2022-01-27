@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5304a1b4_89b334a8",
+        "filename": "driver/ppc/rt1739.c",
+        "patchSetId": 57
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2022-01-27T08:04:22Z",
+      "side": 1,
+      "message": "nit: The parenthesis is not needed.",
+      "range": {
+        "startLine": 56,
+        "startChar": 8,
+        "endLine": 56,
+        "endChar": 51
+      },
+      "revId": "cb911f6f25c01edb4078e17b9129956d642f5783",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7eb57612_c9bd9e46",
+        "filename": "driver/ppc/rt1739.c",
+        "patchSetId": 57
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2022-01-27T08:04:22Z",
+      "side": 1,
+      "message": "VBUS_VALID is configured at 0x28 bit6:4, and the default value is 2.6V which is too low for the VBUS present.  I think you could use RT1739_VBUS_PRESENT instead (default to 4.8V).",
+      "range": {
+        "startLine": 127,
+        "startChar": 20,
+        "endLine": 127,
+        "endChar": 37
+      },
+      "revId": "cb911f6f25c01edb4078e17b9129956d642f5783",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "51645983_245b497e",
+        "filename": "driver/ppc/rt1739.c",
+        "patchSetId": 57
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2022-01-27T08:04:22Z",
+      "side": 1,
+      "message": "This bit is set for CC1 and unset for CC2.\n\nWe could have two macros to prevent ambiguity:\n\n  RT1739_VCONN_ORIENT_CC1 and RT1739_VCONN_ORIENT_CC2",
+      "range": {
+        "startLine": 147,
+        "startChar": 5,
+        "endLine": 147,
+        "endChar": 24
+      },
+      "revId": "cb911f6f25c01edb4078e17b9129956d642f5783",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ab52f2d_84f785e2",
+        "filename": "driver/ppc/rt1739.c",
+        "patchSetId": 57
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2022-01-27T08:04:22Z",
+      "side": 1,
+      "message": "How about a macro for this:\n\n  #define RT1718S_SW_RESET BIT(0)",
+      "range": {
+        "startLine": 198,
+        "startChar": 51,
+        "endLine": 198,
+        "endChar": 52
+      },
+      "revId": "cb911f6f25c01edb4078e17b9129956d642f5783",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
