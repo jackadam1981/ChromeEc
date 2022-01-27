@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "348dc09a_68050aa3",
+        "filename": "zephyr/test/drivers/src/gpio.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2022-01-27T23:44:56Z",
+      "side": 1,
+      "message": "Looks like rebasing dropped the fix. Let me fix this",
+      "parentUuid": "d09dc8a6_bdec11d7",
+      "revId": "0e125054d33ec5a971dc875c41d55f0e61c07a8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d8717b00_0bf07067",
