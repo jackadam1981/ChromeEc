@@ -93,6 +93,30 @@
       },
       "revId": "6c61ad3bb300a2b2b18887eb98ef0154b216c41d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3299294d_c30ca110",
+        "filename": "util/kconfig_check.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-01-27T17:29:50Z",
+      "side": 1,
+      "message": "That\u0027s the former code, not the latter.\n\nI meant what\u0027s in the else should work on both 3.6 and 3.7+.",
+      "parentUuid": "3cdcdc3e_eb5e6c97",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 34
+      },
+      "revId": "6c61ad3bb300a2b2b18887eb98ef0154b216c41d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
