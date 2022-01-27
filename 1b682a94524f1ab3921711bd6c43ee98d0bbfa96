@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d3c187c_d81b865e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-01-27T02:14:50Z",
+      "side": 1,
+      "message": "bummer,\ngpio_or_ioex_set_level() is not implemented on the zephyr side.\n",
+      "revId": "1b682a94524f1ab3921711bd6c43ee98d0bbfa96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
