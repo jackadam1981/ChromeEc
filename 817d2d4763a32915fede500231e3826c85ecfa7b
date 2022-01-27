@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dbb11f9b_8297b66e",
+        "filename": "include/math_util.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-01-27T16:55:51Z",
+      "side": 1,
+      "message": "This function is defined in a header file so it may cause linker issues if the file is included multiple times (resulting in multiple definitions of the same function). Should this be a `static inline` function instead?",
+      "revId": "817d2d4763a32915fede500231e3826c85ecfa7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
