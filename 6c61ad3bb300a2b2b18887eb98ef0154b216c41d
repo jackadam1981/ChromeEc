@@ -117,6 +117,30 @@
       },
       "revId": "6c61ad3bb300a2b2b18887eb98ef0154b216c41d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "708ec0d4_279bc4a6",
+        "filename": "util/kconfig_check.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2022-01-27T18:30:15Z",
+      "side": 1,
+      "message": "Oh sure, but the \u0027else\u0027 code is a hack, so we want to drop it at some point. So I think it should be explicit that we have the workaround.",
+      "parentUuid": "3299294d_c30ca110",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 34
+      },
+      "revId": "6c61ad3bb300a2b2b18887eb98ef0154b216c41d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
