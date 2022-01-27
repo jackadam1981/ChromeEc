@@ -70,6 +70,30 @@
       },
       "revId": "d069240ca51820ec127606c2f4ac6b9623bc8eb1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df337b21_3880c469",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-01-27T23:34:49Z",
+      "side": 1,
+      "message": "if there\u0027s a real concern due to ambiguity,\ni can replace the original\nCONFIG_USB_PD_FRS_TCPC check\nwith the tcpm_tcpc_has_frs_control() API\ni\u0027m introducing later in this series.",
+      "parentUuid": "a0446aae_21ac06a5",
+      "range": {
+        "startLine": 10,
+        "startChar": 41,
+        "endLine": 11,
+        "endChar": 37
+      },
+      "revId": "d069240ca51820ec127606c2f4ac6b9623bc8eb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
