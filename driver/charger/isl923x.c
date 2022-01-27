@@ -197,13 +197,24 @@ static int get_amon_bmon(int chgnum, enum isl923x_amon_bmon amon,
 		ret = raw_write16(chgnum, ISL923X_REG_CONTROL1, reg);
 	}
 
-	mutex_unlock(&control1_mutex_isl923x);
-
 	if (ret)
-		return ret;
+		goto err;
 
 	*adc = adc_read_channel(ADC_AMON_BMON);
 
+	ret = raw_read16(chgnum, ISL923X_REG_CONTROL1, &reg);
+	if (ret)
+		goto err;
+
+	/* Disable monitor */
+	reg |= ISL923X_C1_DISABLE_MON;
+
+	ret = raw_write16(chgnum, ISL923X_REG_CONTROL1, reg);
+	if (ret)
+		goto err;
+
+err:
+	mutex_unlock(&control1_mutex_isl923x);
 	return ret;
 }
 #endif
@@ -590,6 +601,17 @@ static void isl923x_init(int chgnum)
 				ISL9237_C1_SWITCH_FREQ_599K))
 			goto init_fail;
 	}
+
+	if (raw_read16(chgnum, ISL923X_REG_CONTROL1, &reg))
+		goto init_fail;
+	/*
+	 * Disable amon/bmon by default. AMON/BMON is automatically on when
+	 * power adapter is plugged in.
+	 */
+	reg |= ISL923X_C1_DISABLE_MON;
+
+	if (raw_write16(chgnum, ISL923X_REG_CONTROL1, reg))
+		goto init_fail;
 
 	if (IS_ENABLED(CONFIG_TRICKLE_CHARGING))
 		if (raw_write16(chgnum, ISL923X_REG_SYS_VOLTAGE_MIN,
