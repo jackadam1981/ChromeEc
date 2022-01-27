@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "188cd435_fddbffea",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-01-27T20:09:50Z",
+      "side": 1,
+      "message": "nit: remove extra TEST\u003d, new line should be good",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 5
+      },
+      "revId": "a14334b7b833e18d6cf484fdebe140fd7e9ef729",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "32d6ca97_1a61e8f9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-01-27T20:09:50Z",
+      "side": 1,
+      "message": "patch set 9 didnt have ",
+      "revId": "a14334b7b833e18d6cf484fdebe140fd7e9ef729",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1755c1c1_4be855e5",
+        "filename": "zephyr/projects/intelrvp/adlrvp/adlrvp_npcx/adlrvp_npcx.dts",
+        "patchSetId": 10
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-01-27T20:09:50Z",
+      "side": 1,
+      "message": "any reason to add these back? patch 9 was better as I2C CL was separate",
+      "revId": "a14334b7b833e18d6cf484fdebe140fd7e9ef729",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
