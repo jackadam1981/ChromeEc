@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d5e155f7_fe5897a5",
+        "filename": "board/agah/board.h",
+        "patchSetId": 20
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1294793
+      },
+      "writtenOn": "2022-01-27T10:35:51Z",
+      "side": 1,
+      "message": "The I2C naming with USBA, but I2C bus connect to USBA1 retimer.",
+      "parentUuid": "c8992dd3_b8629329",
+      "range": {
+        "startLine": 124,
+        "startChar": 17,
+        "endLine": 124,
+        "endChar": 22
+      },
+      "revId": "6577db025b6f11e294b73e7e878b0d1cc9ddfbfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7bde5303_985ced04",
         "filename": "board/agah/i2c.c",
         "patchSetId": 20
@@ -37,6 +61,30 @@
       "writtenOn": "2022-01-27T09:54:16Z",
       "side": 1,
       "message": "you may want to set all of these to 400 instead of 1000\nuntil you\u0027ve verified 1000 works on your board.",
+      "range": {
+        "startLine": 27,
+        "startChar": 10,
+        "endLine": 27,
+        "endChar": 14
+      },
+      "revId": "6577db025b6f11e294b73e7e878b0d1cc9ddfbfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a09deb8d_052ba54a",
+        "filename": "board/agah/i2c.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1294793
+      },
+      "writtenOn": "2022-01-27T10:35:51Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "7bde5303_985ced04",
       "range": {
         "startLine": 27,
         "startChar": 10,
