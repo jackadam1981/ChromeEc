@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0436bb03_03560c72",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-01-27T03:20:05Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "66c31b1d_7b0469ff",
+      "revId": "0b49fa0b5c2be250e81c40b6e4f70b8dec0d0e3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ba780d0f_6e9fbeb8",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-01-25T05:03:05Z",
       "side": 1,
       "message": "nit: fit in 80 chars",
+      "range": {
+        "startLine": 9,
+        "startChar": 62,
+        "endLine": 10,
+        "endChar": 20
+      },
+      "revId": "0b49fa0b5c2be250e81c40b6e4f70b8dec0d0e3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3a5df34_8ab2c6b0",
+        "filename": "zephyr/projects/intelrvp/Kconfig",
+        "patchSetId": 8
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-01-27T03:20:05Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ba780d0f_6e9fbeb8",
       "range": {
         "startLine": 9,
         "startChar": 62,
@@ -58,6 +100,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "593a5afb_d6613201",
+        "filename": "zephyr/projects/intelrvp/adlrvp/adlrvp_npcx/adlrvp_npcx.dts",
+        "patchSetId": 8
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-01-27T03:20:05Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "01184568_440a111e",
+      "revId": "0b49fa0b5c2be250e81c40b6e4f70b8dec0d0e3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "97d761ba_6cb3be6a",
@@ -75,6 +135,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "83f4a3a6_e414982c",
+        "filename": "zephyr/projects/intelrvp/adlrvp/adlrvp_npcx/gpio.dts",
+        "patchSetId": 8
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-01-27T03:20:05Z",
+      "side": 1,
+      "message": "Ack.\n\n\u0027:\u0027 is used if you need to lable a node so that you can use that in somewhere else in your device tree.\ne.g: if you want to use bc_acok gpio pin as wakeup pin from hibernate as below, then we need to label that node and we can use that label to refer same node from somewhere else in device tree.\n\nhibernate-wake-pins {\n\t\tcompatible \u003d \"cros-ec,hibernate-wake-pins\";\n\t\twakeup-pins \u003d \u003c\n\t\t\t\u0026gpio_bc_acok\n\t\t\t\u0026gpio_pwr_btn_odl\n\t\t\t\u0026gpio_smc_lid\n\t\t\u003e;\n\t};",
+      "parentUuid": "97d761ba_6cb3be6a",
+      "revId": "0b49fa0b5c2be250e81c40b6e4f70b8dec0d0e3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f8fba332_342246bd",
@@ -88,6 +166,24 @@
       "writtenOn": "2022-01-25T05:03:05Z",
       "side": 1,
       "message": "try enable one module at a time",
+      "revId": "0b49fa0b5c2be250e81c40b6e4f70b8dec0d0e3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e632dc2_ed9acd3d",
+        "filename": "zephyr/projects/intelrvp/prj.conf",
+        "patchSetId": 8
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-01-27T03:20:05Z",
+      "side": 1,
+      "message": "Ack.\n\nMost of conf are required to build successfully. Will try to break as much as possible and move it to another CL.",
+      "parentUuid": "f8fba332_342246bd",
       "revId": "0b49fa0b5c2be250e81c40b6e4f70b8dec0d0e3c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
