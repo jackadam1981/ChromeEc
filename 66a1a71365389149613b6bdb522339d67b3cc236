@@ -16,6 +16,24 @@
       "message": "CQ fix CL is proposed as https://chromium-review.googlesource.com/c/chromiumos/overlays/chromiumos-overlay/+/3419662",
       "revId": "66a1a71365389149613b6bdb522339d67b3cc236",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "19335e44_14551863",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2022-01-27T16:47:46Z",
+      "side": 1,
+      "message": "Hmm, what I don\u0027t understand is that bds exists and still compiles for us on the branch. I can try to land that, but the host target doesn\u0027t compile. Nevertheless, we can give it a tryt.",
+      "parentUuid": "2d6c1132_d1cffbbc",
+      "revId": "66a1a71365389149613b6bdb522339d67b3cc236",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
