@@ -16,6 +16,24 @@
       "message": "I think there is a missing equality character",
       "revId": "20323c55b8b52747f7c2067f1660223dcd1e7c58",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1d361f1_ee5a1739",
+        "filename": "zephyr/emul/emul_ln9310.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-01-27T05:46:15Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "eaf734e7_cc8f1ba5",
+      "revId": "20323c55b8b52747f7c2067f1660223dcd1e7c58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
