@@ -192,12 +192,14 @@ class NpcxPacker(BinmanPacker):
     # code?
     def _get_max_image_bytes(self, ro, rw):
         ro_size = util.read_kconfig_autoconf_value(
-            ro / "zephyr" / "include" / "generated", "CONFIG_FLASH_SIZE"
+            ro / "zephyr" / "include" / "generated",
+            "CONFIG_PLATFORM_EC_FLASH_SIZE_BYTES",
         )
         rw_size = util.read_kconfig_autoconf_value(
-            ro / "zephyr" / "include" / "generated", "CONFIG_FLASH_SIZE"
+            ro / "zephyr" / "include" / "generated",
+            "CONFIG_PLATFORM_EC_FLASH_SIZE_BYTES",
         )
-        return max(int(ro_size, 0), int(rw_size, 0)) * 1024
+        return max(int(ro_size, 0), int(rw_size, 0))
 
     # This can probably be removed too and just rely on binman to
     # check the sizes... see the comment above.
