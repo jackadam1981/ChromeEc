@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e1dbdc6e_f08f22ad",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2022-01-27T18:35:24Z",
+      "side": 1,
+      "message": "I\u0027ve made the modification to TCPMv2 so that it\u0027s able to work on ServoV4p1. This is a rough cut to get things working. I\u0027ll start testing with Udaya and please comment.",
+      "revId": "57703ce42e0d7def0f278552820b605b7eb140c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
