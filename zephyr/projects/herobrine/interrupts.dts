@@ -107,5 +107,10 @@
 			flags = <GPIO_INT_EDGE_BOTH>;
 			handler = "gmr_tablet_switch_isr";
 		};
+		int_rtc: rtc {
+			irq-pin = <&gpio_rtc_ec_wake_odl>;
+			flags = <GPIO_INT_EDGE_FALLING>;
+			handler = "wake_isr";
+		};
 	};
 };
