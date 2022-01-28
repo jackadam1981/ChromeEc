@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb55e3fa_dbc57bca",
+        "filename": "zephyr/projects/intelrvp/BUILD.py",
+        "patchSetId": 13
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-01-28T16:41:21Z",
+      "side": 1,
+      "message": "nit: could be a bit cleaner...\n\n kconfig_files \u003d [here / \"prj.conf\"]\n if project_name.startswith(\"adlrvp\"):\n     kconfig_files.append(here / \"prj_adlrvp.conf\")\n kconfig_files.extend(extra_kconfig_files)\n \nAlso note that generally as a pattern we try and keep all the .conf files in the same directory now to make it harder to copy/paste an entire directory to setup new projects.",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 49
+      },
+      "revId": "dfbb599979d75956f724377392bc2377c0ed95d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea983f32_87242b49",
+        "filename": "zephyr/projects/intelrvp/BUILD.py",
+        "patchSetId": 13
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-01-28T16:41:21Z",
+      "side": 1,
+      "message": "can be just extra_dts_overlays",
+      "range": {
+        "startLine": 29,
+        "startChar": 21,
+        "endLine": 29,
+        "endChar": 42
+      },
+      "revId": "dfbb599979d75956f724377392bc2377c0ed95d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e7df599_711fa619",
+        "filename": "zephyr/projects/intelrvp/prj.conf",
+        "patchSetId": 13
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-01-28T16:41:21Z",
+      "side": 1,
+      "message": "drop apostrophe",
+      "range": {
+        "startLine": 18,
+        "startChar": 38,
+        "endLine": 18,
+        "endChar": 39
+      },
+      "revId": "dfbb599979d75956f724377392bc2377c0ed95d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
