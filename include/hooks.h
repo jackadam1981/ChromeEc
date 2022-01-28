@@ -47,6 +47,7 @@ enum hook_priority {
 	HOOK_PRIO_POST_PWM = HOOK_PRIO_INIT_PWM + 1,
 	/* SPI inits before modules which might use it (sensors) */
 	HOOK_PRIO_INIT_SPI = HOOK_PRIO_FIRST + 9,
+	HOOK_PRIO_POST_SPI = HOOK_PRIO_INIT_SPI + 1,
 	/* Extpower inits before modules which might use it (battery, LEDs) */
 	HOOK_PRIO_INIT_EXTPOWER = HOOK_PRIO_FIRST + 10,
 	HOOK_PRIO_POST_EXTPOWER = HOOK_PRIO_INIT_EXTPOWER + 1,

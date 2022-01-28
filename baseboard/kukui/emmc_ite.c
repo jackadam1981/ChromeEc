@@ -84,7 +84,7 @@ static void emmc_init_spi(void)
 	/* Enable alternate function */
 	gpio_config_module(MODULE_SPI_FLASH, 1);
 }
-DECLARE_HOOK(HOOK_INIT, emmc_init_spi, HOOK_PRIO_INIT_SPI + 1);
+DECLARE_HOOK(HOOK_INIT, emmc_init_spi, HOOK_PRIO_POST_SPI);
 
 static void emmc_send_data_over_spi(uint8_t *tx, int tx_size, int rst_tx)
 {

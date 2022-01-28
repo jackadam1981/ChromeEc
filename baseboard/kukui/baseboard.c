@@ -192,7 +192,7 @@ static void baseboard_spi_init(void)
 	STM32_GPIO_OSPEEDR(GPIO_B) |= 0xfc000fc0;
 #endif
 }
-DECLARE_HOOK(HOOK_INIT, baseboard_spi_init, HOOK_PRIO_INIT_SPI + 1);
+DECLARE_HOOK(HOOK_INIT, baseboard_spi_init, HOOK_PRIO_POST_SPI);
 
 int board_allow_i2c_passthru(int port)
 {
