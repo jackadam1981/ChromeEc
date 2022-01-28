@@ -187,6 +187,30 @@
       },
       "revId": "eebe3bd96279651aa6d313177705136013a83d62",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66f7a562_ea310fa1",
+        "filename": "zephyr/projects/trogdor/lazor/gpio.dts",
+        "patchSetId": 3
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-01-28T22:50:55Z",
+      "side": 1,
+      "message": "So to separately answer whether it should bind to a GPIO instead of using an interrupt, this is certainly possible, and likely a more correct solution.\n\nSo the code (as it was) was broken because it was assuming it could enable the interrupt for any GPIO (which isn\u0027t true, at least not while calling gpio_enable_interrupt or gpio_enable_dt_interrupt). If these calls are used, you can only enable interrupts if the GPIO has been previously configured as an interrupt source - the old code by being one of the EC_CROS_GPIO_INTERRUPTS, or in the new code by having a node in the gpio-interrupts node.\n\nIt\u0027s likely the correct resolution here that will also fix the underlying problem is to avoid using gpio_enable_dt_interrupt altogether, and instead have the wake setup code use the core Zephyr interrupt API to setup a callback and enable the interrupt. Then I agree the binding should be to a GPIO, not the interrupt.\nI\u0027ll do that.",
+      "parentUuid": "77292f7c_e1bb1b39",
+      "range": {
+        "startLine": 338,
+        "startChar": 0,
+        "endLine": 345,
+        "endChar": 6
+      },
+      "revId": "eebe3bd96279651aa6d313177705136013a83d62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
