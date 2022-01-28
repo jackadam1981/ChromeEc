@@ -745,7 +745,7 @@ static void cbi_init(void)
  * Reading the SKU resistors requires the ADC module. If we are using EEPROM
  * then we also need the I2C module, but that is available before ADC.
  */
-DECLARE_HOOK(HOOK_INIT, cbi_init, HOOK_PRIO_INIT_ADC + 1);
+DECLARE_HOOK(HOOK_INIT, cbi_init, HOOK_PRIO_POST_ADC);
 
 __override uint32_t board_get_sku_id(void)
 {

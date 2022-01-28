@@ -57,6 +57,7 @@ enum hook_priority {
 	HOOK_PRIO_POST_CHARGE_MANAGER = HOOK_PRIO_INIT_CHARGE_MANAGER + 1,
 
 	HOOK_PRIO_INIT_ADC = HOOK_PRIO_DEFAULT,
+	HOOK_PRIO_POST_ADC = HOOK_PRIO_INIT_ADC + 1,
 	HOOK_PRIO_INIT_DAC = HOOK_PRIO_DEFAULT,
 
 	/* Specific values to lump temperature-related hooks together */

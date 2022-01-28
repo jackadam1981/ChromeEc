@@ -368,7 +368,7 @@ static void board_rev_init(void)
 		usb_muxes[0].hpd_update = &virtual_hpd_update;
 	}
 }
-DECLARE_HOOK(HOOK_INIT, board_rev_init, HOOK_PRIO_INIT_ADC + 1);
+DECLARE_HOOK(HOOK_INIT, board_rev_init, HOOK_PRIO_POST_ADC);
 
 void sensor_board_proc_double_tap(void)
 {

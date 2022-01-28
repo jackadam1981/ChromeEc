@@ -308,7 +308,7 @@ static void board_rev_init(void)
 	/* TODO */
 	/* Put initial code here for different EC board reversion */
 }
-DECLARE_HOOK(HOOK_INIT, board_rev_init, HOOK_PRIO_INIT_ADC + 1);
+DECLARE_HOOK(HOOK_INIT, board_rev_init, HOOK_PRIO_POST_ADC);
 
 void sensor_board_proc_double_tap(void)
 {

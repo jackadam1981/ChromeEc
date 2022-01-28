@@ -194,7 +194,7 @@ static void charger_config_complete(void)
 {
 	chg_chips[0].i2c_port = board_get_charger_i2c();
 }
-DECLARE_HOOK(HOOK_INIT, charger_config_complete, HOOK_PRIO_INIT_ADC + 1);
+DECLARE_HOOK(HOOK_INIT, charger_config_complete, HOOK_PRIO_POST_ADC);
 
 uint16_t tcpc_get_alert_status(void)
 {

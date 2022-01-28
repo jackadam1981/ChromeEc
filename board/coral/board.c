@@ -939,7 +939,7 @@ static void sku_id_init(void)
 	}
 }
 /* This can't run until after the ADC module has been initialized */
-DECLARE_HOOK(HOOK_INIT, sku_id_init, HOOK_PRIO_INIT_ADC + 1);
+DECLARE_HOOK(HOOK_INIT, sku_id_init, HOOK_PRIO_POST_ADC);
 
 static void print_form_factor_list(int low, int high)
 {

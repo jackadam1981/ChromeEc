@@ -79,7 +79,7 @@ static void set_up_adc_irqs(void)
 	npcx_adc_thresh_int_enable(NPCX_ADC_THRESH1, 1);
 	npcx_adc_thresh_int_enable(NPCX_ADC_THRESH2, 1);
 }
-DECLARE_HOOK(HOOK_INIT, set_up_adc_irqs, HOOK_PRIO_INIT_ADC+1);
+DECLARE_HOOK(HOOK_INIT, set_up_adc_irqs, HOOK_PRIO_POST_ADC);
 
 static void disable_adc_irqs_deferred(void)
 {

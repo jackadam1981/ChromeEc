@@ -105,4 +105,4 @@ static void board_id_1_reclaim_adc(void)
 	gpio_set_flags(GPIO_ID_1_EC_BATT_PRES_ODL, GPIO_INPUT);
 	gpio_set_alternate_function(GPIO_PORT_E, BIT(1), GPIO_ALT_FUNC_NONE);
 }
-DECLARE_HOOK(HOOK_INIT, board_id_1_reclaim_adc, HOOK_PRIO_INIT_ADC + 1);
+DECLARE_HOOK(HOOK_INIT, board_id_1_reclaim_adc, HOOK_PRIO_POST_ADC);

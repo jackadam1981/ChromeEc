@@ -99,7 +99,7 @@ static void board_version_init(void)
 		version = 0;
 	}
 }
-DECLARE_HOOK(HOOK_INIT, board_version_init, HOOK_PRIO_INIT_ADC + 1);
+DECLARE_HOOK(HOOK_INIT, board_version_init, HOOK_PRIO_POST_ADC);
 
 __override int board_get_version(void)
 {
