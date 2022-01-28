@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6a5ef81a_9836125d",
+        "filename": "zephyr/test/drivers/src/integration_usb.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-01-28T22:17:08Z",
+      "side": 1,
+      "message": "So we need driver specific functions in this integration test? And that matches up with what my previous experiments were.",
+      "parentUuid": "32030eb9_1f666f04",
+      "revId": "ebfad312b18baddb83ea13d8e253ab4f18410d91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8dc104fe_842fa3e1",
         "filename": "zephyr/test/drivers/src/integration_usb.c",
         "patchSetId": 3
@@ -31,6 +49,24 @@
       "writtenOn": "2022-01-28T21:32:35Z",
       "side": 1,
       "message": "where are the tests for the other values on c1?",
+      "revId": "ebfad312b18baddb83ea13d8e253ab4f18410d91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a6e90a6_c573cecb",
+        "filename": "zephyr/test/drivers/src/integration_usb.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 418,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-01-28T22:17:08Z",
+      "side": 1,
+      "message": "How about fo now I\u0027ll add another call to the check_usb_pd_power_info call unless you want me to completely get rid of those calls?\n\nI know we wanted to check every value, but I think starting with the PD role is going to be necessary first and the rest will quickly follow.",
+      "parentUuid": "8dc104fe_842fa3e1",
       "revId": "ebfad312b18baddb83ea13d8e253ab4f18410d91",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
