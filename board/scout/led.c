@@ -197,7 +197,7 @@ static void led_init(void)
 	else if (chipset_in_state(CHIPSET_STATE_ANY_OFF))
 		led_shutdown();
 }
-DECLARE_HOOK(HOOK_INIT, led_init, HOOK_PRIO_INIT_PWM + 1);
+DECLARE_HOOK(HOOK_INIT, led_init, HOOK_PRIO_POST_PWM);
 
 void board_led_auto_control(void)
 {

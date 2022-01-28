@@ -176,5 +176,5 @@ static void pwm_pin_init(void)
 	gpio_config_module(MODULE_PWM, 1);
 }
 /* HOOK_PRIO_INIT_PWM may be used for chip PWM unit init, so use PRIO + 1 */
-DECLARE_HOOK(HOOK_INIT, pwm_pin_init, HOOK_PRIO_INIT_PWM + 1);
+DECLARE_HOOK(HOOK_INIT, pwm_pin_init, HOOK_PRIO_POST_PWM);
 #endif /* CONFIG_ZEPHYR */

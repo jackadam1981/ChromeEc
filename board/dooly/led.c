@@ -187,7 +187,7 @@ static void led_init(void)
 	pwm_enable(PWM_CH_LED_WHITE, 1);
 	pwm_enable(PWM_CH_LED_RED, 1);
 }
-DECLARE_HOOK(HOOK_INIT, led_init, HOOK_PRIO_INIT_PWM + 1);
+DECLARE_HOOK(HOOK_INIT, led_init, HOOK_PRIO_POST_PWM);
 
 void led_alert(int enable)
 {
