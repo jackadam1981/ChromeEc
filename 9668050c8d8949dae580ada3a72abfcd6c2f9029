@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a10c8b79_8a0ce5ab",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-01-28T23:59:48Z",
+      "side": 1,
+      "message": "period at end of sentence",
+      "range": {
+        "startLine": 10,
+        "startChar": 8,
+        "endLine": 10,
+        "endChar": 9
+      },
+      "revId": "9668050c8d8949dae580ada3a72abfcd6c2f9029",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8213224c_ca80bc59",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-01-28T23:59:48Z",
+      "side": 1,
+      "message": "You don\u0027t necessarily need to list out the name of each function that you\u0027re adding. Instead, describe the motivation of this change and what functionality it introduces/fixes: https://chromium.googlesource.com/chromiumos/docs/+/HEAD/contributing.md#commit-messages\n\nThe first part of the message (before this) is doing that fairly well, so you can probably just delete these lines.",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 10
+      },
+      "revId": "9668050c8d8949dae580ada3a72abfcd6c2f9029",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ddefb1a_28b236dc",
+        "filename": "util/fptool.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-01-28T23:59:48Z",
+      "side": 1,
+      "message": "I think it would be clearer (and easier to test) if this were a class. For the \"internal commands\" that we don\u0027t to be used by external users, we can follow the Python convention and prefix the name with a leading `_` (e.g., `def _export`): https://docs.python.org/3/tutorial/classes.html#private-variables",
+      "range": {
+        "startLine": 278,
+        "startChar": 0,
+        "endLine": 278,
+        "endChar": 8
+      },
+      "revId": "9668050c8d8949dae580ada3a72abfcd6c2f9029",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea62617d_70a3329e",
+        "filename": "util/fptool.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-01-28T23:59:48Z",
+      "side": 1,
+      "message": "Can you add doc string for this?",
+      "range": {
+        "startLine": 319,
+        "startChar": 4,
+        "endLine": 319,
+        "endChar": 13
+      },
+      "revId": "9668050c8d8949dae580ada3a72abfcd6c2f9029",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
