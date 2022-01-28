@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "619cd404_4aa9c31d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2022-01-28T15:01:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "804d14e3_1c56d8b5",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 57
+      },
+      "revId": "c5e21a86ffd8c8e29dfb24ba88581c23acdd2f15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "99527a7d_6446b94d",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-01-27T23:41:15Z",
       "side": 1,
       "message": "I think we\u0027re trying to use the BIT() macro for these types:\n\n define FPU_FPSCR_IOC BIT(0)\n ...\n #define FPU_FPSCR_IDC BIT(7) /* Input denormal */",
+      "range": {
+        "startLine": 82,
+        "startChar": 22,
+        "endLine": 82,
+        "endChar": 31
+      },
+      "revId": "c5e21a86ffd8c8e29dfb24ba88581c23acdd2f15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c3a9eaa_5cf96da0",
+        "filename": "core/cortex-m/cpu.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2022-01-28T15:01:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "99527a7d_6446b94d",
       "range": {
         "startLine": 82,
         "startChar": 22,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "08787483_5e02fb04",
+        "filename": "core/cortex-m/fpu.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2022-01-28T15:01:20Z",
+      "side": 1,
+      "message": "Good idea. Compiler optimizes away the strings in fpu_warn() as you described.",
+      "parentUuid": "31b34632_40343411",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 26
+      },
+      "revId": "c5e21a86ffd8c8e29dfb24ba88581c23acdd2f15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "08ed01fc_59b57fcd",
@@ -83,6 +155,24 @@
       "writtenOn": "2022-01-27T23:41:15Z",
       "side": 1,
       "message": "nit: extra newline here",
+      "revId": "c5e21a86ffd8c8e29dfb24ba88581c23acdd2f15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "37ca1606_8a402f25",
+        "filename": "core/cortex-m/fpu.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2022-01-28T15:01:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "08ed01fc_59b57fcd",
       "revId": "c5e21a86ffd8c8e29dfb24ba88581c23acdd2f15",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -110,6 +200,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a4054e4_2a451fbd",
+        "filename": "core/cortex-m/fpu.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2022-01-28T15:01:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3a621194_0d598e1b",
+      "range": {
+        "startLine": 69,
+        "startChar": 21,
+        "endLine": 69,
+        "endChar": 29
+      },
+      "revId": "c5e21a86ffd8c8e29dfb24ba88581c23acdd2f15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "11d8d72c_8e1596ec",
@@ -123,6 +237,30 @@
       "writtenOn": "2022-01-27T23:41:15Z",
       "side": 1,
       "message": "Can you add a constant in cpu.h that defines this with the existing macros?\n\ne.g., \n\n```\n#define FPU_FPSCR_ALL (FPU_FPSCR_IOC | ... )\n```\n\n(not sure what to name it)",
+      "range": {
+        "startLine": 113,
+        "startChar": 34,
+        "endLine": 113,
+        "endChar": 38
+      },
+      "revId": "c5e21a86ffd8c8e29dfb24ba88581c23acdd2f15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3eee1e66_7d1c9e19",
+        "filename": "core/cortex-m/fpu.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2022-01-28T15:01:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "11d8d72c_8e1596ec",
       "range": {
         "startLine": 113,
         "startChar": 34,
@@ -239,6 +377,30 @@
       "writtenOn": "2022-01-27T23:41:15Z",
       "side": 1,
       "message": "Same comment about replacing this with macro.",
+      "range": {
+        "startLine": 29,
+        "startChar": 34,
+        "endLine": 29,
+        "endChar": 38
+      },
+      "revId": "c5e21a86ffd8c8e29dfb24ba88581c23acdd2f15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d565370_ea94ca2b",
+        "filename": "test/cortexm_fpu.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2022-01-28T15:01:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3d4b24d3_8beee1c8",
       "range": {
         "startLine": 29,
         "startChar": 34,
