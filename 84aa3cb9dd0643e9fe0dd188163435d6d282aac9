@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea6d4386_d87ba74a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2022-01-28T06:02:45Z",
+      "side": 1,
+      "message": "Probing of i2c devices is not a good practice: when looking for devices that are not present, the i2c transaction will timeout, increasing the boot time. We try to avoid as much as possible in cros_ec, preferring bit the config eeprom or other storage.",
+      "revId": "84aa3cb9dd0643e9fe0dd188163435d6d282aac9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
