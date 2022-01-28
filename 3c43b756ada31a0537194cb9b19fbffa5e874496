@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7408f0d0_9e537aa0",
+        "filename": "zephyr/projects/intelrvp/BUILD.py",
+        "patchSetId": 11
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-01-28T01:11:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a5b1615f_f460accf",
+      "range": {
+        "startLine": 24,
+        "startChar": 27,
+        "endLine": 24,
+        "endChar": 28
+      },
+      "revId": "3c43b756ada31a0537194cb9b19fbffa5e874496",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8a1aa659_d4fe4da5",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-01-27T23:48:32Z",
       "side": 1,
       "message": "project(...) must immediately follow find_package(). the nme passed to it does not matter so you can use intelrvp",
+      "range": {
+        "startLine": 12,
+        "startChar": 1,
+        "endLine": 12,
+        "endChar": 21
+      },
+      "revId": "3c43b756ada31a0537194cb9b19fbffa5e874496",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bbd60469_c91b2069",
+        "filename": "zephyr/projects/intelrvp/CMakeLists.txt",
+        "patchSetId": 11
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-01-28T01:11:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8a1aa659_d4fe4da5",
       "range": {
         "startLine": 12,
         "startChar": 1,
