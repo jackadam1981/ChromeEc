@@ -34,10 +34,6 @@ struct cros_kb_raw_xec_config {
 	const struct pinctrl_dev_config *pcfg;
 };
 
-/* Driver convenience defines */
-#define KB_RAW_XEC_CONFIG(dev)						\
-	((struct cros_kb_raw_xec_config const *)(dev)->config)
-
 static int kb_raw_xec_init(const struct device *dev)
 {
 	ARG_UNUSED(dev);
@@ -60,8 +56,8 @@ static int cros_kb_raw_xec_enable_interrupt(const struct device *dev,
 
 static int cros_kb_raw_xec_read_row(const struct device *dev)
 {
-	struct kscan_regs *const inst =		\
-		(struct kscan_regs *)(KB_RAW_XEC_CONFIG(dev)->base);
+	struct cros_kb_raw_xec_config const * cfg = dev->config;
+	struct kscan_regs *const inst = (struct kscan_regs *)cfg->base;
 	int val;
 
 	val = inst->KSI_IN;
@@ -73,8 +69,8 @@ static int cros_kb_raw_xec_read_row(const struct device *dev)
 
 static int cros_kb_raw_xec_drive_column(const struct device *dev, int col)
 {
-	struct kscan_regs *const inst =		\
-		(struct kscan_regs *)(KB_RAW_XEC_CONFIG(dev)->base);
+	struct cros_kb_raw_xec_config const * cfg = dev->config;
+	struct kscan_regs *const inst = (struct kscan_regs *)cfg->base;
 
 	/* Drive all lines to high. i.e. Key detection is disabled. */
 	if (col == KEYBOARD_COLUMN_NONE) {
@@ -114,7 +110,7 @@ static void cros_kb_raw_xec_ksi_isr(const struct device *dev)
 /* TODO(b/216111514): need to implement code per kscan hardware */
 static int cros_kb_raw_xec_init(const struct device *dev)
 {
-	struct cros_kb_raw_xec_config const *cfg = KB_RAW_XEC_CONFIG(dev);
+	struct cros_kb_raw_xec_config const * cfg = dev->config;
 
 	/* Use zephyr pinctrl to initialize pins */
 	int ret = pinctrl_apply_state(cfg->pcfg, PINCTRL_STATE_DEFAULT);
@@ -135,7 +131,7 @@ static const struct cros_kb_raw_driver_api cros_kb_raw_xec_driver_api = {
 };
 
 /* instantiate zephyr pinctrl constant info */
-PINCTRL_DT_INST_DEFINE(0)
+PINCTRL_DT_INST_DEFINE(0);
 
 static const struct cros_kb_raw_xec_config cros_kb_raw_cfg = {
 	.base = DT_INST_REG_ADDR(0),
