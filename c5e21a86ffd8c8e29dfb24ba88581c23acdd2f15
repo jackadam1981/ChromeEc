@@ -368,6 +368,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2bf2c6ca_6eb9618a",
+        "filename": "core/cortex-m/fpu.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-01-28T20:53:18Z",
+      "side": 1,
+      "message": "```\nFPCAR register contains address where floating point registers (s0,...,s15, fpscr) are stored. It\u0027s always on stack. In 108 line we are clearing exception flags, but we are operating on the copy of FPSCR register. Modified copy of FPSCR is loaded to the register when we are returning from interrupt.\n```\nI could be misreading this but isn\u0027t CPU_FPU_FPCAR the actual floating point register (not a copy)? So line 96 is making a copy of a value in the FPSCR  register and putting it in `fpu_fpscr`, but then line 108 is performing a read/modify/write on the value of the register itself. Is that right?\n\n\n```\nNo it shouldn\u0027t. FPCAR contains pointer to copy of FPU registers on stack and we are copying that address to fpu_state.\n```\nIt appears that `fpu_state[FPU_IDX_REG_FPSCR]` should get you the value of the FPU register itself (not a copy). What I was suggesting is that since we\u0027re effectively reading the value of `fpu_state[FPU_IDX_REG_FPSCR]` twice (once to copy into `fpu_fpscr` and once in the read/modify/write) then the compiler could decide to optimize that by caching the first read to use later in the read/modify/write without knowing that the value may change. Changing the type of `fpu_state` to be `volatile uint32_t *` would guarantee that the value of `fpu_state[FPU_IDX_REG_FPSCR]` will be explicitly read on both line 96 and line 108. Forgive me if I am misreading this 😊\n\n```\nNot the compiler, but the CPU 😎\n```\nCood catch! 😄",
+      "parentUuid": "2f52e840_444f0c81",
+      "range": {
+        "startLine": 114,
+        "startChar": 1,
+        "endLine": 114,
+        "endChar": 21
+      },
+      "revId": "c5e21a86ffd8c8e29dfb24ba88581c23acdd2f15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bec7fbb4_bca96c9d",
         "filename": "include/math_util.h",
         "patchSetId": 4
