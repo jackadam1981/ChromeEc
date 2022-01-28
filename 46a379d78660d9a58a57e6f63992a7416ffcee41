@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac05bd37_04c80fcd",
+        "filename": "zephyr/test/drivers/src/gpio.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2022-01-28T20:31:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f2d4779d_9df4efca",
+      "range": {
+        "startLine": 298,
+        "startChar": 1,
+        "endLine": 299,
+        "endChar": 60
+      },
+      "revId": "46a379d78660d9a58a57e6f63992a7416ffcee41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "472fc35d_c9a961ba",
@@ -41,6 +65,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "beb80495_446cd19e",
+        "filename": "zephyr/test/drivers/src/main.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2022-01-28T20:31:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "472fc35d_c9a961ba",
+      "revId": "46a379d78660d9a58a57e6f63992a7416ffcee41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fe3c8abb_46b1efeb",
@@ -54,6 +96,24 @@
       "writtenOn": "2022-01-28T18:57:56Z",
       "side": 1,
       "message": "Thoughts about using FFF here and verifying this was called?",
+      "revId": "46a379d78660d9a58a57e6f63992a7416ffcee41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a3c567c_d4e21d20",
+        "filename": "zephyr/test/drivers/src/stubs.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 406,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2022-01-28T20:31:16Z",
+      "side": 1,
+      "message": "FFF may be a bit overkill here since its a function defined within the test framework. We\u0027re not trying to manipulate the behavior of an existing function.  I can add a boolean to confirm its called though.",
+      "parentUuid": "fe3c8abb_46b1efeb",
       "revId": "46a379d78660d9a58a57e6f63992a7416ffcee41",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
