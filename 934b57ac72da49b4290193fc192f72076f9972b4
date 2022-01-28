@@ -16,6 +16,24 @@
       "message": "should we FROMPULL the zephyr change and unify on that copy so we don\u0027t have multiple floating around?",
       "revId": "934b57ac72da49b4290193fc192f72076f9972b4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d169d330_0149931b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2022-01-28T16:47:39Z",
+      "side": 1,
+      "message": "They are actually identical. I am fine with sending it to Zephyr but Zephyr is not actually the upstream for Kconfiglib, nor for platform/ec",
+      "parentUuid": "46cbc570_4cf143e0",
+      "revId": "934b57ac72da49b4290193fc192f72076f9972b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
