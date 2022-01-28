@@ -344,6 +344,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2f52e840_444f0c81",
+        "filename": "core/cortex-m/fpu.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2022-01-28T20:06:48Z",
+      "side": 1,
+      "message": "FPCAR register contains address where floating point registers (s0,...,s15, fpscr) are stored. It\u0027s always on stack. In 108 line we are clearing exception flags, but we are operating on the copy of FPSCR register. Modified copy of FPSCR is loaded to the register when we are returning from interrupt.\n\n\u003e This actually made me wonder if fpu_state should be defined as a volatile\nNo it shouldn\u0027t. FPCAR contains pointer to copy of FPU registers on stack and we are copying that address to fpu_state.\n\n\u003e Without the barrier the compiler could, in theory, reorder\nNot the compiler, but the CPU 😎",
+      "parentUuid": "d3bc470b_97ec8cf0",
+      "range": {
+        "startLine": 114,
+        "startChar": 1,
+        "endLine": 114,
+        "endChar": 21
+      },
+      "revId": "c5e21a86ffd8c8e29dfb24ba88581c23acdd2f15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bec7fbb4_bca96c9d",
         "filename": "include/math_util.h",
         "patchSetId": 4
