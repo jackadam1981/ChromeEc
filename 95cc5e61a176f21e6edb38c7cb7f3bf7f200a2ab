@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3c8e6c5_9bcaa36e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2022-01-28T18:49:57Z",
+      "side": 1,
+      "message": "the ecrst on cr50/ti50 both use pulse as the command line to do this. Can we mirror that instead?\n\n`1h1_reset` reads\n`1h1_reset 1` holds in reset\n`1h1_reset 0` releases reset\n`1h1_reset pulse` asserts and de-asserts reset",
+      "range": {
+        "startLine": 22,
+        "startChar": 3,
+        "endLine": 22,
+        "endChar": 38
+      },
+      "revId": "95cc5e61a176f21e6edb38c7cb7f3bf7f200a2ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
