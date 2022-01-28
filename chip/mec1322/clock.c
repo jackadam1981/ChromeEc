@@ -95,7 +95,7 @@ static void clock_turbo_disable(void)
 		/* Use 12 MHz processor clock for power savings */
 		MEC1322_PCR_PROC_CLK_CTL = 4;
 }
-DECLARE_HOOK(HOOK_INIT, clock_turbo_disable, HOOK_PRIO_INIT_VBOOT_HASH + 1);
+DECLARE_HOOK(HOOK_INIT, clock_turbo_disable, HOOK_PRIO_POST_VBOOT_HASH);
 
 #ifdef CONFIG_LOW_POWER_IDLE
 /**

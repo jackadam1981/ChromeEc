@@ -175,7 +175,7 @@ static void clock_turbo_disable(void)
 }
 DECLARE_HOOK(HOOK_INIT,
 		clock_turbo_disable,
-		HOOK_PRIO_INIT_VBOOT_HASH + 1);
+		HOOK_PRIO_POST_VBOOT_HASH);
 
 /**
  * initialization of Hibernation timer 0
