@@ -779,8 +779,8 @@ static int command_vref_alternate(int argc, char **argv,
 	if (argc > 2)
 		return EC_ERROR_PARAM_COUNT;
 
-	/* Updating the state */
-	if (argc == 2) {
+	if ((argc == 2) && strcasecmp(argv[1], "?")) {
+		/* Updating the state */
 		char *e;
 		const int hold_low = strtoi(argv[1], &e, 0);
 
@@ -840,6 +840,22 @@ DECLARE_CONSOLE_COMMAND(pwr_button, command_pwr_button,
 
 static int command_h1_reset(int argc, char **argv)
 {
+	if (argc == 1) {
+		int c = 2;
+		char *cmd_on[] = {"", "1", ""};
+		char *cmd_off[] = {"", "0", ""};
+
+		command_vref_alternate(c, cmd_on,
+				       GPIO_SPIVREF_RSVD_H1VREF_H1_RST_ODL,
+				       GPIO_EN_SPIVREF_RSVD_H1VREF_H1_RST,
+				       VREF_MON_DIS_H1_RST_HELD, "H1 reset");
+		msleep(100);
+		return command_vref_alternate
+			(c, cmd_off,
+			 GPIO_SPIVREF_RSVD_H1VREF_H1_RST_ODL,
+			 GPIO_EN_SPIVREF_RSVD_H1VREF_H1_RST,
+			 VREF_MON_DIS_H1_RST_HELD, "H1 reset");
+	}
 	return command_vref_alternate(argc, argv,
 				      GPIO_SPIVREF_RSVD_H1VREF_H1_RST_ODL,
 				      GPIO_EN_SPIVREF_RSVD_H1VREF_H1_RST,
