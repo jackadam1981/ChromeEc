@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "32030eb9_1f666f04",
+        "filename": "zephyr/test/drivers/src/integration_usb.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-01-28T21:41:52Z",
+      "side": 1,
+      "message": "This doesn\u0027t fix everything, but these lines should be calling into the TCPC config for the port, e.g.\n zassert_ok(tcpc_config[1].drv-\u003einit(1), NULL);\n \nPort 0 is directly calling the TCPCI init function, which is coincidentally correct. Port 1 should be calling the ps8xxx function.",
+      "revId": "ebfad312b18baddb83ea13d8e253ab4f18410d91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8dc104fe_842fa3e1",
         "filename": "zephyr/test/drivers/src/integration_usb.c",
         "patchSetId": 3
