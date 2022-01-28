@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11368aab_dae98042",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-01-28T22:36:05Z",
+      "side": 1,
+      "message": "You don\u0027t necessarily need to list out the name of each function that you\u0027re adding. Instead, describe the motivation of this change and what functionality it introduces/fixes: https://chromium.googlesource.com/chromiumos/docs/+/HEAD/contributing.md#commit-messages",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 25
+      },
+      "revId": "020f8545fec60ff5659968e6664025f2046a9ff6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4c5a49a_13eeb296",
+        "filename": "util/fptool.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-01-28T22:36:05Z",
+      "side": 1,
+      "message": "This is fairly confusing. Is there a simpler way to organize the data structure or can you create a class to represent it?\n\nMaybe it would help to describe what `gpio`, `pin`, and `idx` are and also provide an example.",
+      "range": {
+        "startLine": 134,
+        "startChar": 0,
+        "endLine": 143,
+        "endChar": 73
+      },
+      "revId": "020f8545fec60ff5659968e6664025f2046a9ff6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fee8b352_50533836",
+        "filename": "util/fptool.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-01-28T22:36:05Z",
+      "side": 1,
+      "message": "nit: call it `_line` since it\u0027s unused",
+      "range": {
+        "startLine": 151,
+        "startChar": 16,
+        "endLine": 151,
+        "endChar": 20
+      },
+      "revId": "020f8545fec60ff5659968e6664025f2046a9ff6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c983f769_a3ffc076",
+        "filename": "util/fptool.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-01-28T22:36:05Z",
+      "side": 1,
+      "message": "I think the code would be a little clearer if you created a regex to match the entire line and extract the variables from the matches. (Then you don\u0027t need to skip the first line either since that line won\u0027t match.)",
+      "range": {
+        "startLine": 155,
+        "startChar": 1,
+        "endLine": 161,
+        "endChar": 70
+      },
+      "revId": "020f8545fec60ff5659968e6664025f2046a9ff6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
