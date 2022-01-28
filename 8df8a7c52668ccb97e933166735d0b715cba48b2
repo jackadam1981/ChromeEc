@@ -97,6 +97,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b769cbc9_575ead1c",
+        "filename": "zephyr/test/drivers/src/integration_usb.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 407,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-01-28T21:07:59Z",
+      "side": 1,
+      "message": "Oof. I need lunch.\n\nThis just checks the response of the PD_INFO host command.",
+      "parentUuid": "a97f7930_5e98f56a",
+      "range": {
+        "startLine": 407,
+        "startChar": 1,
+        "endLine": 407,
+        "endChar": 24
+      },
+      "revId": "8df8a7c52668ccb97e933166735d0b715cba48b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4db1455e_f25edefe",
         "filename": "zephyr/test/drivers/src/integration_usb.c",
         "patchSetId": 2
