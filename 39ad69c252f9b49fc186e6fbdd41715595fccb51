@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7d31fab_7a14837b",
+        "filename": "zephyr/projects/intelrvp/adlrvp/CMakeLists.txt",
+        "patchSetId": 9
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-01-28T16:45:52Z",
+      "side": 1,
+      "message": "I\u0027m not that familiar with conventions here, but I see that lines like this for other boards include PLATFORM_EC_BOARD or PLATFORM_EC_BASEBOARD prefixes. Should there be something like that here?",
+      "revId": "39ad69c252f9b49fc186e6fbdd41715595fccb51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be30378a_0cd3832d",
+        "filename": "zephyr/projects/intelrvp/adlrvp/adlrvp_npcx/include/gpio_map.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-01-28T16:45:52Z",
+      "side": 1,
+      "message": "I\u0027m not sure it matters practically, but this is a local file, so it should be included using quotes.",
+      "revId": "39ad69c252f9b49fc186e6fbdd41715595fccb51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7cc2172b_54826529",
+        "filename": "zephyr/projects/intelrvp/adlrvp/src/adlrvp.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-01-28T16:45:52Z",
+      "side": 1,
+      "message": "If this is only for the purpose of doing a build assert, can\u0027t we just do the build assert here and not create a variable?",
+      "revId": "39ad69c252f9b49fc186e6fbdd41715595fccb51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31a856ca_e19319e6",
+        "filename": "zephyr/projects/intelrvp/include/intelrvp.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-01-28T16:45:52Z",
+      "side": 1,
+      "message": "Looking at other projects, I think we conventionally call this file gpio_map.h.",
+      "revId": "39ad69c252f9b49fc186e6fbdd41715595fccb51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
