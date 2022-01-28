@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "276ea1e8_4ee0c673",
+        "filename": "zephyr/projects/intelrvp/BUILD.py",
+        "patchSetId": 13
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-01-28T20:58:39Z",
+      "side": 1,
+      "message": "Thank for sharing feedback!\n\nInitially we thought of maintaining all conf file in same directory, then we discussed internally and decided to do it in separate directory. Reason being, we are trying to maintain same baseboard and board structure that we have in Legacy EC. \n\"zephyr/projects/intelrvp\" is going to be baseboard for all Reference Platforms (RVP\u0027s), All variants of RVP will go inside \"intelrvp\" directory and it will keep growing for future generations of RVPs. To make it more manageable and simple, we thought of keeping in this way.\n\ndirectory structure with current approach in \"zephyr/projects/\" will looks like: \n\nintelrvp\n       |--adlrvp\n       |       |-adlrvp_npcx\n       |       |-adlrvp_mchp\n       |       |-adlrvp_ite\n       |        \n       |--futureRVP\n       |          |-futureRVP-variant_1\n       |          |-futureRVP-variant-2\n       |          |-..................\n       |          |-futureRVP-variant-N\n       |\n       |................\n       |................\n       |--futureRVP-N\n       |            |-variant 1\n       |            |-variant-2\n       |            |..........\n       |            |-variant-N\n       \n\n@Jack, As content inside \"intelrvp\" directory will keep growing for new coming RVP variants, Should we keep all conf in same directory as you mentioned in comment or we should follow the approach in Current CL to keep conf in respective directories?\nPlease suggest on this and we will change this accordingly.",
+      "parentUuid": "fb55e3fa_dbc57bca",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 49
+      },
+      "revId": "dfbb599979d75956f724377392bc2377c0ed95d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ea983f32_87242b49",
         "filename": "zephyr/projects/intelrvp/BUILD.py",
         "patchSetId": 13
@@ -60,6 +84,30 @@
       "writtenOn": "2022-01-28T16:41:21Z",
       "side": 1,
       "message": "drop apostrophe",
+      "range": {
+        "startLine": 18,
+        "startChar": 38,
+        "endLine": 18,
+        "endChar": 39
+      },
+      "revId": "dfbb599979d75956f724377392bc2377c0ed95d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "016df560_c75a95e3",
+        "filename": "zephyr/projects/intelrvp/prj.conf",
+        "patchSetId": 13
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-01-28T20:58:39Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "3e7df599_711fa619",
       "range": {
         "startLine": 18,
         "startChar": 38,
