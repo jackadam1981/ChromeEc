@@ -422,6 +422,30 @@
       },
       "revId": "865e50c43d191a4aad6937dcfae48dc7af3396f6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c1912ac_6ff465da",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1191034
+      },
+      "writtenOn": "2022-01-28T23:15:03Z",
+      "side": 1,
+      "message": "this is added in later CL, when the generic function is added to get the signal",
+      "parentUuid": "81de9717_ce70d0fe",
+      "range": {
+        "startLine": 91,
+        "startChar": 1,
+        "endLine": 91,
+        "endChar": 52
+      },
+      "revId": "865e50c43d191a4aad6937dcfae48dc7af3396f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
