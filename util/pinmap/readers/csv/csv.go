@@ -92,6 +92,9 @@ func (r *CSVReader) Read(chipName, arg string) (*pm.Pins, error) {
 		case "INPUT":
 			p.PinType = pm.Input
 			pins.Gpio = append(pins.Gpio, p)
+		case "INPUT_L":
+			p.PinType = pm.InputL
+			pins.Gpio = append(pins.Gpio, p)
 		case "INPUT_PU":
 			p.PinType = pm.InputPU
 			pins.Gpio = append(pins.Gpio, p)
