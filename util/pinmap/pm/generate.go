@@ -115,6 +115,11 @@ func gpioConfig(out io.Writer, pin *Pin, chip Chip) {
 		gtype = "GPIO_ODR_LOW"
 	}
 	lc := strings.ToLower(pin.Signal)
+	if len(pin.Enum) > 1 {
+		if pin.Enum[len(pin.Enum)-2:len(pin.Enum)] == "_L" {
+			gtype = fmt.Sprintf("(%s | GPIO_ACTIVE_LOW)", gtype)
+		}
+	}
 	fmt.Fprintf(out, "\t\tgpio_%s: %s {\n", lc, lc)
 	fmt.Fprintf(out, "\t\t\tgpios = <&%s %s>;\n", c, gtype)
 	if len(pin.Enum) > 0 {
