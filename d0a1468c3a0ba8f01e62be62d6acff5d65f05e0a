@@ -1,0 +1,282 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "340786c6_6d2c2155",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-01-28T18:40:49Z",
+      "side": 1,
+      "message": "I like where this is going a lot. A few general comments, which I elaborate on below:\n1. Some of the interface changes look like they could probably be stuffed back inside the existing interface, e.g. is_enabled vs is_disabled or the new init functions vs timer ranges.\n2. I see some PE features that are compiled out that it seems like the Servo might support. Is that just to save memory?\n3. I see what I think is some timer reuse to save timers. Is that what\u0027s going on? Would it be possible to accomplish the same thing by aliasing the mutually exclusive timers inside enum pd_task_timer, so the calling code wouldn\u0027t need to worry about it?",
+      "revId": "d0a1468c3a0ba8f01e62be62d6acff5d65f05e0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6fe760a1_f0523191",
+        "filename": "common/usbc/usb_pd_servo_timer.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-01-28T18:40:49Z",
+      "side": 1,
+      "message": "Would the alternative here be something like this?\n timers[port][timer] \u003d (expires_us / T_LOOP_5MS) | TIMER_ENABLE;\n \nWould that avoid the need for timeouts[port][timer], or is there some other piece here?",
+      "revId": "d0a1468c3a0ba8f01e62be62d6acff5d65f05e0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94b6af8b_61e963b4",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 738,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-01-28T18:40:49Z",
+      "side": 1,
+      "message": "Should we still do this for Servo on the charger side?",
+      "revId": "d0a1468c3a0ba8f01e62be62d6acff5d65f05e0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "515be0a1_24998ad7",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 767,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-01-28T18:40:49Z",
+      "side": 1,
+      "message": "This should probably just go in board code.",
+      "revId": "d0a1468c3a0ba8f01e62be62d6acff5d65f05e0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57ccc53f_74a32540",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 1818,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-01-28T18:40:49Z",
+      "side": 1,
+      "message": "Nit: It seems like this section could be made a little terser.",
+      "revId": "d0a1468c3a0ba8f01e62be62d6acff5d65f05e0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a5d7e73_32387a68",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 2058,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-01-28T18:40:49Z",
+      "side": 1,
+      "message": "Is this to make the Servo a more aggravating port partner to exercise the DUT? :)",
+      "revId": "d0a1468c3a0ba8f01e62be62d6acff5d65f05e0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9fd1a37d_8d4d22e0",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 2657,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-01-28T18:40:49Z",
+      "side": 1,
+      "message": "Is this to avoid the use of PE_TIMER_SRC_TRANSITION?",
+      "revId": "d0a1468c3a0ba8f01e62be62d6acff5d65f05e0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84db5409_a58aa9e5",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 2682,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-01-28T18:40:49Z",
+      "side": 1,
+      "message": "Should the Servo still Hard Reset on protocol error?",
+      "revId": "d0a1468c3a0ba8f01e62be62d6acff5d65f05e0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fdbe749e_950f3c3e",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 1241,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-01-28T18:40:49Z",
+      "side": 1,
+      "message": "What prompts this change?",
+      "revId": "d0a1468c3a0ba8f01e62be62d6acff5d65f05e0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5dcf00c0_54687f15",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 1340,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-01-28T18:40:49Z",
+      "side": 1,
+      "message": "The definition of this function describes ignoring the expiry time. Do we then need to have a separate version of this call for Servo?",
+      "revId": "d0a1468c3a0ba8f01e62be62d6acff5d65f05e0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f61e4ea8_534dd3c9",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 1760,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-01-28T18:40:49Z",
+      "side": 1,
+      "message": "IS_ENABLED? Does TC_LOW_POWER_MODE need to have an _UIMPLEMENTED alias defined to get it to compile even when it doesn\u0027t link?",
+      "revId": "d0a1468c3a0ba8f01e62be62d6acff5d65f05e0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4419e624_21bbba25",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 2152,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-01-28T18:40:49Z",
+      "side": 1,
+      "message": "What\u0027s going on here?",
+      "revId": "d0a1468c3a0ba8f01e62be62d6acff5d65f05e0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee8dd318_16ba7a15",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 2342,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-01-28T18:40:49Z",
+      "side": 1,
+      "message": "Is this reusing TC_TIMER_DRP_SNK to avoid needing a TC_TIMER_NEXT_ROLE_SWAP for Servo? (I\u0027m not familiar with the actual timer needed in this situation.)",
+      "revId": "d0a1468c3a0ba8f01e62be62d6acff5d65f05e0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6caecc86_712314bf",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 2627,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-01-28T18:40:49Z",
+      "side": 1,
+      "message": "Nit: I\u0027ve seen a few checks like this. We might want a debug accessory config flag to make them a little more generic.",
+      "revId": "d0a1468c3a0ba8f01e62be62d6acff5d65f05e0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1768cc52_d448005f",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 2984,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-01-28T18:40:49Z",
+      "side": 1,
+      "message": "Extra space",
+      "range": {
+        "startLine": 2984,
+        "startChar": 5,
+        "endLine": 2984,
+        "endChar": 7
+      },
+      "revId": "d0a1468c3a0ba8f01e62be62d6acff5d65f05e0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ef07ea1_74df67b3",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 3468,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-01-28T18:40:49Z",
+      "side": 1,
+      "message": "Shouldn\u0027t these just get linked out?",
+      "revId": "d0a1468c3a0ba8f01e62be62d6acff5d65f05e0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
