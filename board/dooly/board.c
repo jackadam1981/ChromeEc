@@ -468,7 +468,7 @@ static void adp_state_init(void)
 	/* Report charge state from the barrel jack. */
 	adp_connect_deferred();
 }
-DECLARE_HOOK(HOOK_INIT, adp_state_init, HOOK_PRIO_INIT_CHARGE_MANAGER + 1);
+DECLARE_HOOK(HOOK_INIT, adp_state_init, HOOK_PRIO_POST_CHARGE_MANAGER);
 
 
 #include "gpio_list.h" /* Must come after other header files. */

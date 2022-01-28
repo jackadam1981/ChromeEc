@@ -811,7 +811,7 @@ static void board_charge_manager_init(void)
 	}
 }
 DECLARE_HOOK(HOOK_INIT, board_charge_manager_init,
-	     HOOK_PRIO_INIT_CHARGE_MANAGER + 1);
+	     HOOK_PRIO_POST_CHARGE_MANAGER);
 
 static void board_init(void)
 {
