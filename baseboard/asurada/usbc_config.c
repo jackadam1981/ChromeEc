@@ -97,7 +97,7 @@ static void sub_board_init(void)
 {
 	board_get_sub_board();
 }
-DECLARE_HOOK(HOOK_INIT, sub_board_init, HOOK_PRIO_INIT_I2C - 1);
+DECLARE_HOOK(HOOK_INIT, sub_board_init, HOOK_PRIO_PRE_I2C);
 
 /* Detect subboard */
 static void board_tcpc_init(void)
