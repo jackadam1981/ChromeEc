@@ -222,7 +222,7 @@ static void post_old_board_warning(void)
 	CPRINTS("\n\n\n ***** BOARD ID 0 is not officially supported!!! *****"
 			"\n\n\n");
 }
-DECLARE_HOOK(HOOK_INIT, post_old_board_warning, HOOK_PRIO_INIT_I2C + 1);
+DECLARE_HOOK(HOOK_INIT, post_old_board_warning, HOOK_PRIO_POST_I2C);
 #endif
 
 void board_overcurrent_event(int port, int is_overcurrented)

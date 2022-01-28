@@ -381,7 +381,7 @@ static void board_detect_motionsense(void)
 }
 DECLARE_HOOK(HOOK_CHIPSET_STARTUP, board_detect_motionsense,
 	     HOOK_PRIO_DEFAULT);
-DECLARE_HOOK(HOOK_INIT, board_detect_motionsense, HOOK_PRIO_INIT_I2C + 1);
+DECLARE_HOOK(HOOK_INIT, board_detect_motionsense, HOOK_PRIO_POST_I2C);
 
 /******************************************************************************/
 /* Physical fans. These are logically separate from pwm_channels. */

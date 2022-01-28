@@ -166,7 +166,7 @@ static void sku_id_init(void)
 	sku_id = binary_first_base3_from_bits(bits, ARRAY_SIZE(bits));
 	CPRINTS("SKU ID: %u", sku_id);
 }
-DECLARE_HOOK(HOOK_INIT, sku_id_init, HOOK_PRIO_INIT_I2C + 1);
+DECLARE_HOOK(HOOK_INIT, sku_id_init, HOOK_PRIO_POST_I2C);
 
 __override uint32_t board_get_sku_id(void)
 {

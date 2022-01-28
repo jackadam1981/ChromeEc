@@ -111,7 +111,7 @@ static void board_tcpc_init(void)
 		task_disable_task(TASK_ID_PD_C1);
 }
 /* Must be done after I2C and subboard */
-DECLARE_HOOK(HOOK_INIT, board_tcpc_init, HOOK_PRIO_INIT_I2C + 1);
+DECLARE_HOOK(HOOK_INIT, board_tcpc_init, HOOK_PRIO_POST_I2C);
 
 /* PPC */
 struct ppc_config_t ppc_chips[CONFIG_USB_PD_PORT_MAX_COUNT] = {
@@ -167,7 +167,7 @@ static void board_sub_bc12_init(void)
 		task_disable_task(TASK_ID_USB_CHG_P1);
 }
 /* Must be done after I2C and subboard */
-DECLARE_HOOK(HOOK_INIT, board_sub_bc12_init, HOOK_PRIO_INIT_I2C + 1);
+DECLARE_HOOK(HOOK_INIT, board_sub_bc12_init, HOOK_PRIO_POST_I2C);
 
 void ppc_interrupt(enum gpio_signal signal)
 {

@@ -322,7 +322,7 @@ static void baseboard_sensors_init(void)
 				GPIO_PULL_DOWN);
 	}
 }
-DECLARE_HOOK(HOOK_INIT, baseboard_sensors_init, HOOK_PRIO_INIT_I2C + 1);
+DECLARE_HOOK(HOOK_INIT, baseboard_sensors_init, HOOK_PRIO_POST_I2C);
 
 void motion_interrupt(enum gpio_signal signal)
 {

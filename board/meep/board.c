@@ -298,7 +298,7 @@ static void cbi_init(void)
 	c0_port_ppc = get_ppc_port_config(val, USB_PD_PORT_TCPC_0);
 	c1_port_ppc = get_ppc_port_config(val, USB_PD_PORT_TCPC_1);
 }
-DECLARE_HOOK(HOOK_INIT, cbi_init, HOOK_PRIO_INIT_I2C + 1);
+DECLARE_HOOK(HOOK_INIT, cbi_init, HOOK_PRIO_POST_I2C);
 
 void board_hibernate_late(void)
 {

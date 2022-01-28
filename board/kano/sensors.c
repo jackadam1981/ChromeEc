@@ -269,7 +269,7 @@ static void baseboard_sensors_init(void)
 	/* Enable gpio interrupt for base accelgyro sensor */
 	gpio_enable_interrupt(GPIO_EC_IMU_INT_R_L);
 }
-DECLARE_HOOK(HOOK_INIT, baseboard_sensors_init, HOOK_PRIO_INIT_I2C + 1);
+DECLARE_HOOK(HOOK_INIT, baseboard_sensors_init, HOOK_PRIO_POST_I2C);
 
 void motion_interrupt(enum gpio_signal signal)
 {

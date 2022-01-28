@@ -240,7 +240,7 @@ void baseboard_tcpc_init(void)
 	gpio_enable_interrupt(GPIO_USB_C1_BC12_INT_ODL);
 #endif
 }
-DECLARE_HOOK(HOOK_INIT, baseboard_tcpc_init, HOOK_PRIO_INIT_I2C + 1);
+DECLARE_HOOK(HOOK_INIT, baseboard_tcpc_init, HOOK_PRIO_POST_I2C);
 
 uint16_t tcpc_get_alert_status(void)
 {
@@ -442,7 +442,7 @@ static void cbi_init(void)
 
 	CPRINTS("Board ID: %d", board_id);
 }
-DECLARE_HOOK(HOOK_INIT, cbi_init, HOOK_PRIO_INIT_I2C + 1);
+DECLARE_HOOK(HOOK_INIT, cbi_init, HOOK_PRIO_POST_I2C);
 
 __override enum ec_pd_port_location board_get_pd_port_location(int port)
 {

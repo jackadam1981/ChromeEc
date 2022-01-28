@@ -93,7 +93,7 @@ static void board_sub_bc12_init(void)
 #endif
 }
 /* Must be done after I2C and subboard */
-DECLARE_HOOK(HOOK_INIT, board_sub_bc12_init, HOOK_PRIO_INIT_I2C + 1);
+DECLARE_HOOK(HOOK_INIT, board_sub_bc12_init, HOOK_PRIO_POST_I2C);
 
 static void board_usbc_init(void)
 {
@@ -140,7 +140,7 @@ void board_usb_mux_init(void)
 				   PS8743_USB_HS_THRESH_NEG_10);
 	}
 }
-DECLARE_HOOK(HOOK_INIT, board_usb_mux_init, HOOK_PRIO_INIT_I2C + 1);
+DECLARE_HOOK(HOOK_INIT, board_usb_mux_init, HOOK_PRIO_POST_I2C);
 
 void ppc_interrupt(enum gpio_signal signal)
 {

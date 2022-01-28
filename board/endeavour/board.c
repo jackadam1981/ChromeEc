@@ -362,7 +362,7 @@ static void cbi_init(void)
 		sku = val;
 	CPRINTS("SKU: 0x%08x", sku);
 }
-DECLARE_HOOK(HOOK_INIT, cbi_init, HOOK_PRIO_INIT_I2C + 1);
+DECLARE_HOOK(HOOK_INIT, cbi_init, HOOK_PRIO_POST_I2C);
 
 static void board_init(void)
 {

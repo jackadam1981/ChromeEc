@@ -106,7 +106,7 @@ static void board_tcpc_init(void)
 	gpio_enable_interrupt(GPIO_USB_C1_INT_ODL);
 }
 /* Must be done after I2C */
-DECLARE_HOOK(HOOK_INIT, board_tcpc_init, HOOK_PRIO_INIT_I2C + 1);
+DECLARE_HOOK(HOOK_INIT, board_tcpc_init, HOOK_PRIO_POST_I2C);
 
 void rt1718s_tcpc_interrupt(enum gpio_signal signal)
 {

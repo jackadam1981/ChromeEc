@@ -133,7 +133,7 @@ static void i2c_expander_init(void)
 	i2c_write8(I2C_PORT_MASTER, GPIOX_I2C_ADDR_FLAGS,
 		   GPIOX_DIR_PORT_B, 0xfa);
 }
-DECLARE_HOOK(HOOK_INIT, i2c_expander_init, HOOK_PRIO_INIT_I2C+1);
+DECLARE_HOOK(HOOK_INIT, i2c_expander_init, HOOK_PRIO_POST_I2C);
 
 /* Write to a GPIO register on the tca6416 I2C ioexpander. */
 static void write_ioexpander(int bank, int gpio, int reg, int val)

@@ -557,7 +557,7 @@ static void reconfigure_usbmux(void)
 		usb_muxes[0].next_mux = &usbc0_retimer;
 	}
 }
-DECLARE_HOOK(HOOK_INIT, reconfigure_usbmux, HOOK_PRIO_INIT_I2C+1);
+DECLARE_HOOK(HOOK_INIT, reconfigure_usbmux, HOOK_PRIO_POST_I2C);
 
 uint16_t tcpc_get_alert_status(void)
 {

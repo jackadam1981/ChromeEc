@@ -134,7 +134,7 @@ static void board_tcpc_init(void)
 	gpio_enable_interrupt(GPIO_USB_C0_FAULT_ODL);
 	gpio_enable_interrupt(GPIO_USB_C1_FAULT_ODL);
 }
-DECLARE_HOOK(HOOK_INIT, board_tcpc_init, HOOK_PRIO_INIT_I2C + 1);
+DECLARE_HOOK(HOOK_INIT, board_tcpc_init, HOOK_PRIO_POST_I2C);
 
 void board_reset_pd_mcu(void)
 {

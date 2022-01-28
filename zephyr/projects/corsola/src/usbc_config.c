@@ -52,7 +52,7 @@ static void baseboard_tcpc_init(void)
 		task_disable_task(TASK_ID_PD_C1);
 }
 /* Must be done after I2C and subboard */
-DECLARE_HOOK(HOOK_INIT, baseboard_tcpc_init, HOOK_PRIO_INIT_I2C + 1);
+DECLARE_HOOK(HOOK_INIT, baseboard_tcpc_init, HOOK_PRIO_POST_I2C);
 
 __override uint8_t board_get_usb_pd_port_count(void)
 {

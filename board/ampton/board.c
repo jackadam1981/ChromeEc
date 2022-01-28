@@ -434,7 +434,7 @@ static void cbi_init(void)
 	ccprints("Board version: %d", val);
 	board_customize_usbc_mux(val);
 }
-DECLARE_HOOK(HOOK_INIT, cbi_init, HOOK_PRIO_INIT_I2C + 1);
+DECLARE_HOOK(HOOK_INIT, cbi_init, HOOK_PRIO_POST_I2C);
 
 void board_hibernate_late(void)
 {

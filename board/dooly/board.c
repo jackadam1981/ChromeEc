@@ -730,7 +730,7 @@ static void cbi_init(void)
 			"F/W config: 0x%08x, SSFC: 0x%08x ",
 		board_version, sku_id, fw_config, ssfc);
 }
-DECLARE_HOOK(HOOK_INIT, cbi_init, HOOK_PRIO_INIT_I2C + 1);
+DECLARE_HOOK(HOOK_INIT, cbi_init, HOOK_PRIO_POST_I2C);
 
 static void board_init(void)
 {

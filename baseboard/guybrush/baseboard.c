@@ -205,7 +205,7 @@ static void baseboard_interrupt_init(void)
 	ioex_enable_interrupt(IOEX_USB_C0_SBU_FAULT_ODL);
 	ioex_enable_interrupt(IOEX_USB_C1_SBU_FAULT_ODL);
 }
-DECLARE_HOOK(HOOK_INIT, baseboard_interrupt_init, HOOK_PRIO_INIT_I2C + 1);
+DECLARE_HOOK(HOOK_INIT, baseboard_interrupt_init, HOOK_PRIO_POST_I2C);
 
 struct ppc_config_t ppc_chips[] = {
 	[USBC_PORT_C0] = {

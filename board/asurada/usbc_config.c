@@ -29,4 +29,4 @@ void board_usb_mux_init(void)
 				   PS8743_AUTO_DCI_MODE_FORCE_USB);
 	}
 }
-DECLARE_HOOK(HOOK_INIT, board_usb_mux_init, HOOK_PRIO_INIT_I2C + 1);
+DECLARE_HOOK(HOOK_INIT, board_usb_mux_init, HOOK_PRIO_POST_I2C);

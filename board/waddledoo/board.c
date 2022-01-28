@@ -256,7 +256,7 @@ static void reconfigure_5v_gpio(void)
 		gpio_set_flags(GPIO_VOLUP_BTN_ODL, GPIO_OUT_LOW);
 	}
 }
-DECLARE_HOOK(HOOK_INIT, reconfigure_5v_gpio, HOOK_PRIO_INIT_I2C+1);
+DECLARE_HOOK(HOOK_INIT, reconfigure_5v_gpio, HOOK_PRIO_POST_I2C);
 #endif /* BOARD_WADDLEDOO */
 
 static void set_5v_gpio(int level)

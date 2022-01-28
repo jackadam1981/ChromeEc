@@ -943,7 +943,7 @@ static void bd9995x_battery_charging_profile_settings(int chgnum)
 
 /*
  * Note: opting not to use charger driver init here due to the different
- * priority (other drivers use HOOK_PRIO_INIT_I2C + 1)
+ * priority (other drivers use HOOK_PRIO_POST_I2C)
  */
 static void bd9995x_init(void)
 {

@@ -450,7 +450,7 @@ static void cbi_init(void)
 	CPRINTS("Board Version: %d, SKU ID: 0x%08x, F/W config: 0x%08x",
 		board_version, sku_id, fw_config);
 }
-DECLARE_HOOK(HOOK_INIT, cbi_init, HOOK_PRIO_INIT_I2C + 1);
+DECLARE_HOOK(HOOK_INIT, cbi_init, HOOK_PRIO_POST_I2C);
 
 static void board_sensors_init(void)
 {

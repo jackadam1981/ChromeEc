@@ -933,7 +933,7 @@ static void get_battery_cell(void)
 
 	CPRINTS("Get battery cells: %d", battery_cell);
 }
-DECLARE_HOOK(HOOK_INIT, get_battery_cell, HOOK_PRIO_INIT_I2C+1);
+DECLARE_HOOK(HOOK_INIT, get_battery_cell, HOOK_PRIO_POST_I2C);
 
 enum battery_cell_type board_get_battery_cell_type(void)
 {

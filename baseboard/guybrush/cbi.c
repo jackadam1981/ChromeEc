@@ -93,4 +93,4 @@ static void cbi_init(void)
 	/* Allow the board project to make runtime changes based on CBI data */
 	board_cbi_init();
 }
-DECLARE_HOOK(HOOK_INIT, cbi_init, HOOK_PRIO_INIT_I2C + 1);
+DECLARE_HOOK(HOOK_INIT, cbi_init, HOOK_PRIO_POST_I2C);

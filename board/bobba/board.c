@@ -448,7 +448,7 @@ static void cbi_init(void)
 	board_update_sensor_config_from_sku();
 	board_update_no_keypad_config_from_sku();
 }
-DECLARE_HOOK(HOOK_INIT, cbi_init, HOOK_PRIO_INIT_I2C + 1);
+DECLARE_HOOK(HOOK_INIT, cbi_init, HOOK_PRIO_POST_I2C);
 
 __override uint32_t board_override_feature_flags0(uint32_t flags0)
 {

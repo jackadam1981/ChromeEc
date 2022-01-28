@@ -422,7 +422,7 @@ static void board_chipset_startup(void)
 	/* Normal charge current */
 	sb_quick_charge_mode(SB_QUICK_CHARGE_DISABLE);
 }
-DECLARE_HOOK(HOOK_CHIPSET_STARTUP, board_chipset_startup, HOOK_PRIO_INIT_I2C+1);
+DECLARE_HOOK(HOOK_CHIPSET_STARTUP, board_chipset_startup, HOOK_PRIO_POST_I2C);
 
 /* Called on AP S0 -> S5 transition */
 static void board_chipset_shutdown(void)

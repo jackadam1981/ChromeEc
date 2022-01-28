@@ -246,7 +246,7 @@ static void board_sensors_init(void)
 	/* Enable gpio interrupt for base accelgyro sensor */
 	gpio_enable_interrupt(GPIO_EC_IMU_INT_R_L);
 }
-DECLARE_HOOK(HOOK_INIT, board_sensors_init, HOOK_PRIO_INIT_I2C + 1);
+DECLARE_HOOK(HOOK_INIT, board_sensors_init, HOOK_PRIO_POST_I2C);
 
 /* Temperature sensor configuration */
 const struct temp_sensor_t temp_sensors[] = {

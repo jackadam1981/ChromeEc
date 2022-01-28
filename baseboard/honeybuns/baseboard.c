@@ -256,7 +256,7 @@ static void baseboard_init(void)
  * Power sequencing must run before any other chip init is attempted, so run
  * power sequencing as soon as I2C bus is initialized.
  */
-DECLARE_HOOK(HOOK_INIT, baseboard_init, HOOK_PRIO_INIT_I2C + 1);
+DECLARE_HOOK(HOOK_INIT, baseboard_init, HOOK_PRIO_POST_I2C);
 
 #ifdef SECTION_IS_RW
 static void baseboard_power_on(void)

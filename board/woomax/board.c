@@ -827,7 +827,7 @@ static void keyboard_init(void)
 	keyscan_config.actual_key_mask[13] = 0xff;
 	keyscan_config.actual_key_mask[14] = 0xff;
 }
-DECLARE_HOOK(HOOK_INIT, keyboard_init, HOOK_PRIO_INIT_I2C + 1);
+DECLARE_HOOK(HOOK_INIT, keyboard_init, HOOK_PRIO_POST_I2C);
 
 static void hdmi_hpd_handler(void)
 {

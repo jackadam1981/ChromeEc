@@ -1034,7 +1034,7 @@ static void cbi_init(void)
 
 	setup_fans();
 }
-DECLARE_HOOK(HOOK_INIT, cbi_init, HOOK_PRIO_INIT_I2C + 1);
+DECLARE_HOOK(HOOK_INIT, cbi_init, HOOK_PRIO_POST_I2C);
 
 /* Keyboard scan setting */
 __override struct keyboard_scan_config keyscan_config = {

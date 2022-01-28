@@ -61,7 +61,7 @@ static void init_usb_pd_port_count(void)
 /*
  * Make sure setup is done after EEPROM is readable.
  */
-DECLARE_HOOK(HOOK_INIT, init_usb_pd_port_count, HOOK_PRIO_INIT_I2C + 1);
+DECLARE_HOOK(HOOK_INIT, init_usb_pd_port_count, HOOK_PRIO_POST_I2C);
 
 void board_set_charge_limit(int port, int supplier, int charge_ma,
 			    int max_ma, int charge_mv)

@@ -260,7 +260,7 @@ static void ioex_init_default(void)
 		ioex_init(i);
 	}
 }
-DECLARE_HOOK(HOOK_INIT, ioex_init_default, HOOK_PRIO_INIT_I2C + 1);
+DECLARE_HOOK(HOOK_INIT, ioex_init_default, HOOK_PRIO_POST_I2C);
 
 const char *ioex_get_name(enum ioex_signal signal)
 {

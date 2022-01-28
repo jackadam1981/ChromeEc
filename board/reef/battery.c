@@ -560,7 +560,7 @@ static void board_init_battery_type(void)
 	else
 		CPRINTS("battery not found");
 }
-DECLARE_HOOK(HOOK_INIT, board_init_battery_type, HOOK_PRIO_INIT_I2C + 1);
+DECLARE_HOOK(HOOK_INIT, board_init_battery_type, HOOK_PRIO_POST_I2C);
 
 const struct battery_info *battery_get_info(void)
 {

@@ -249,7 +249,7 @@ static void cbi_init(void)
 	else
 		is_psl_hibernate = 1;
 }
-DECLARE_HOOK(HOOK_INIT, cbi_init, HOOK_PRIO_INIT_I2C + 1);
+DECLARE_HOOK(HOOK_INIT, cbi_init, HOOK_PRIO_POST_I2C);
 
 static void system_psl_type_sel(int psl_no, uint32_t flags)
 {

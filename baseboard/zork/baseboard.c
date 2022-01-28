@@ -196,7 +196,7 @@ static void cbi_init(void)
 	else
 		ccprints("FW Config: not set in cbi");
 }
-DECLARE_HOOK(HOOK_INIT, cbi_init, HOOK_PRIO_INIT_I2C + 1);
+DECLARE_HOOK(HOOK_INIT, cbi_init, HOOK_PRIO_POST_I2C);
 
 /*
  * Returns 1 for boards that are convertible into tablet mode, and zero for
