@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "631c2be8_abf16475",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-01-28T17:28:40Z",
+      "side": 1,
+      "message": "You don\u0027t necessarily need to list out the name of each function that you\u0027re adding. Instead, describe the motivation of this change and what functionality it introduces/fixes: https://chromium.googlesource.com/chromiumos/docs/+/HEAD/contributing.md#commit-messages",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 26
+      },
+      "revId": "539d253cd850cc09cee5ebf8ef216c65a4e856ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
