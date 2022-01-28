@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8861ca68_d6295e75",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 3
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-01-28T17:46:07Z",
+      "side": 1,
+      "message": "This will break non NPCX builds.  Remove the prompt text on the bool so make this a helper option, and add a \"select PLATFORM_EC_FLASH_CROS\" to each of the chip drivers CONFIG_CROS_FLASH_IT8XXX2, CONFIG_CROS_FLASH_NPCX, and CONFIG_CROS_FLASH_MEC",
+      "range": {
+        "startLine": 364,
+        "startChar": 0,
+        "endLine": 364,
+        "endChar": 29
+      },
+      "revId": "fd678bac90d2e191f4c5447fea51dfbe720a8527",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60a32c50_f58a47ef",
+        "filename": "zephyr/drivers/cros_flash/Kconfig",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-01-28T17:46:07Z",
+      "side": 1,
+      "message": "Add a select PLATFORM_EC_CROS_FLASH",
+      "revId": "fd678bac90d2e191f4c5447fea51dfbe720a8527",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7420e1c_f34a1ff5",
+        "filename": "zephyr/zmake/zmake/output_packers.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-01-28T17:46:07Z",
+      "side": 1,
+      "message": "Delete this comment, it no longer applies to the code below.",
+      "range": {
+        "startLine": 190,
+        "startChar": 1,
+        "endLine": 192,
+        "endChar": 11
+      },
+      "revId": "fd678bac90d2e191f4c5447fea51dfbe720a8527",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
