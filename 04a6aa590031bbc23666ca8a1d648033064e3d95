@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7925dfa9_70e9fdfd",
+        "filename": "util/fptool.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-01-28T19:58:10Z",
+      "side": 1,
+      "message": "What\u0027s our policy on exception handling? Should we catch OSError for the case where the path is invalid (or at least verify it is valid before logging)?",
+      "range": {
+        "startLine": 109,
+        "startChar": 37,
+        "endLine": 109,
+        "endChar": 45
+      },
+      "revId": "04a6aa590031bbc23666ca8a1d648033064e3d95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
