@@ -46,6 +46,30 @@
       },
       "revId": "95cc5e61a176f21e6edb38c7cb7f3bf7f200a2ab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52b6314e_bc37b11c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2022-01-28T18:59:11Z",
+      "side": 1,
+      "message": "The ? in the help is saying that the 0 or 1 is optional (thus a read).\n\nI think it is worth staying consistent with other reset command",
+      "parentUuid": "6593b413_a8a12ca9",
+      "range": {
+        "startLine": 22,
+        "startChar": 3,
+        "endLine": 22,
+        "endChar": 38
+      },
+      "revId": "95cc5e61a176f21e6edb38c7cb7f3bf7f200a2ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
