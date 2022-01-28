@@ -16,6 +16,24 @@
       "message": "Probing of i2c devices is not a good practice: when looking for devices that are not present, the i2c transaction will timeout, increasing the boot time. We try to avoid as much as possible in cros_ec, preferring bit the config eeprom or other storage.",
       "revId": "84aa3cb9dd0643e9fe0dd188163435d6d282aac9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2df18362_30129f2f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1477788
+      },
+      "writtenOn": "2022-01-28T11:55:53Z",
+      "side": 1,
+      "message": "I agree with you, but this runtime probing was designed for devices without eeprom. That\u0027s why you had to enable it and specify the sensors to be probed. In other cases, the board id or eeprom were used to determine the chips on board.",
+      "parentUuid": "ea6d4386_d87ba74a",
+      "revId": "84aa3cb9dd0643e9fe0dd188163435d6d282aac9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
