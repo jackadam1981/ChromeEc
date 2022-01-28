@@ -21,7 +21,7 @@ static int anx7443_mux_write(const struct usb_mux *me, int slave,
 #endif
 }
 
-static int anx7443_mux_read(const struct usb_mux *me, int slave, int offset)
+int anx7443_mux_read(const struct usb_mux *me, int slave, int offset)
 {
 	int port = me->usb_port;
 
@@ -110,8 +110,8 @@ static int anx7443_set_retimer(const struct usb_mux *me, int flip, int mux_type)
 		ccprintf("Write CONFIG_MODE register failed\n");
 		return rv;
 	}
-	rv = anx7443_mux_read(me, I2C0_TOP_SLAVE, CONFIG_MODE);
-	ccprintf("Configured CONFIG_MODE = 0x%x\n", rv);
+	//rv = anx7443_mux_read(me, I2C0_TOP_SLAVE, CONFIG_MODE);
+	//ccprintf("Configured CONFIG_MODE = 0x%x\n", rv);
 
 	return 0;
 }

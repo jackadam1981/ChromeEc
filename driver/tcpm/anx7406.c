@@ -263,7 +263,7 @@ int anx7406_m0_read(int port, int slave, int offset)
 		return rv;
 	}
 
-	usleep(2000);
+	usleep(1000);
 
 	/* Read I2C data out */
 	rv = i2c_read8(tcpc_config[port].i2c_info.port,
@@ -327,7 +327,7 @@ static int anx7406_m1_config(int port, int slave, int offset)
 	return rv;
 }
 
-static int anx7406_m1_read(int port, int slave, int offset)
+int anx7406_m1_read(int port, int slave, int offset)
 {
 	int rv, val;
 
@@ -401,8 +401,8 @@ int anx7406_set_aux(int port, int flip)
 		ccprintf("Config CISCO_CTRL_3 register failed\n");
 		return rv;
 	}
-	rv = anx7406_m1_read(port, 0x80, 0x03);
-	ccprintf("configured CISCO_CTRL_3 = 0x%x\n", rv);
+	//rv = anx7406_m1_read(port, 0x80, 0x03);
+	//ccprintf("configured CISCO_CTRL_3 = 0x%x\n", rv);
 
 	/* Disable pull up/down */
 	rv = anx7406_m1_write(port, I2C1_CISCO_SLAVE, I2C1_CISCO_CTRL_1,
