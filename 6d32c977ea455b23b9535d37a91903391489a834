@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd2462c6_c5cbecb4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-01-28T17:27:23Z",
+      "side": 1,
+      "message": "Looks good to me. I documented a rabbit hole that I went down and suggested two possible additional tests but I don\u0027t believe they\u0027re required.",
+      "revId": "6d32c977ea455b23b9535d37a91903391489a834",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc30e38f_47bad2da",
+        "filename": "builtin/math.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-01-28T17:27:23Z",
+      "side": 1,
+      "message": "I was going to comment that this could be optimized to `return (a !\u003d a);` which is only true for nan. However, from a quick glance at the floating point instruction set I believe this would result in a floating point exception which would defeat the purpose. I figured I would add this as a comment to save anyone else the trouble!",
+      "revId": "6d32c977ea455b23b9535d37a91903391489a834",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6b2d7d0_0a5b10bc",
+        "filename": "test/fp.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-01-28T17:27:23Z",
+      "side": 1,
+      "message": "For completeness, should we test for `!isnan(lowest))` too?",
+      "revId": "6d32c977ea455b23b9535d37a91903391489a834",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "525e56e8_fb136f03",
+        "filename": "test/fp.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 363,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-01-28T17:27:23Z",
+      "side": 1,
+      "message": "similar to above, should we check \"lowest\" too?",
+      "revId": "6d32c977ea455b23b9535d37a91903391489a834",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
