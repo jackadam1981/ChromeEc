@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9da3120c_1bbc6b2c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2022-01-28T00:57:28Z",
+      "side": 1,
+      "message": "BRANCH\u003dnone",
+      "range": {
+        "startLine": 12,
+        "startChar": 7,
+        "endLine": 12,
+        "endChar": 11
+      },
+      "revId": "62c256f562d13d5c04f46bbfe5b82b44028d6d2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c63b9a16_fa463bfb",
+        "filename": "board/banshee/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2022-01-28T00:57:28Z",
+      "side": 1,
+      "message": "nit: if you\u0027re touching this file, replace Brya with Banshee",
+      "range": {
+        "startLine": 14,
+        "startChar": 24,
+        "endLine": 14,
+        "endChar": 28
+      },
+      "revId": "62c256f562d13d5c04f46bbfe5b82b44028d6d2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd0f26ec_554ca063",
+        "filename": "board/banshee/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2022-01-28T00:57:28Z",
+      "side": 1,
+      "message": "nit: Good opportunity to replace the name in this file too",
+      "range": {
+        "startLine": 6,
+        "startChar": 3,
+        "endLine": 6,
+        "endChar": 7
+      },
+      "revId": "62c256f562d13d5c04f46bbfe5b82b44028d6d2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
