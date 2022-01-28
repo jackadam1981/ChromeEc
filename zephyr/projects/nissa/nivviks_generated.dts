@@ -73,14 +73,14 @@
 			gpios = <&gpioe 4 GPIO_OUTPUT>;
 		};
 		gpio_ec_soc_int_odl: ec_soc_int_odl {
-			gpios = <&gpio8 0 GPIO_ODR_LOW>;
+			gpios = <&gpio8 0 (GPIO_ODR_LOW | GPIO_ACTIVE_LOW)>;
 			enum-name = "GPIO_EC_INT_L";
 		};
 		gpio_ec_soc_pch_pwrok_od: ec_soc_pch_pwrok_od {
 			gpios = <&gpio7 2 GPIO_ODR_HIGH>;
 		};
 		gpio_ec_soc_pwr_btn_odl: ec_soc_pwr_btn_odl {
-			gpios = <&gpioc 1 GPIO_ODR_LOW>;
+			gpios = <&gpioc 1 (GPIO_ODR_LOW | GPIO_ACTIVE_LOW)>;
 			enum-name = "GPIO_PCH_PWRBTN_L";
 		};
 		gpio_ec_soc_rsmrst_l: ec_soc_rsmrst_l {
@@ -100,7 +100,7 @@
 			enum-name = "GPIO_EC_PCH_WAKE_ODL";
 		};
 		gpio_ec_wp_odl: ec_wp_odl {
-			gpios = <&gpioa 1 GPIO_INPUT>;
+			gpios = <&gpioa 1 (GPIO_INPUT | GPIO_ACTIVE_LOW)>;
 			enum-name = "GPIO_WP_L";
 		};
 		gpio_en_kb_bl: en_kb_bl {
@@ -123,7 +123,7 @@
 			gpios = <&gpio9 1 GPIO_OUTPUT>;
 		};
 		gpio_gsc_ec_pwr_btn_odl: gsc_ec_pwr_btn_odl {
-			gpios = <&gpio0 0 GPIO_INPUT_PULL_UP>;
+			gpios = <&gpio0 0 (GPIO_INPUT_PULL_UP | GPIO_ACTIVE_LOW)>;
 			enum-name = "GPIO_POWER_BUTTON_L";
 		};
 		gpio_hdmi_sel: hdmi_sel {
@@ -173,7 +173,7 @@
 			gpios = <&gpioc 5 GPIO_ODR_HIGH>;
 		};
 		gpio_tablet_mode_l: tablet_mode_l {
-			gpios = <&gpio9 5 GPIO_INPUT>;
+			gpios = <&gpio9 5 (GPIO_INPUT | GPIO_ACTIVE_LOW)>;
 			enum-name = "GPIO_TABLET_MODE_L";
 		};
 		gpio_usb_a0_ilimit_sdp: usb_a0_ilimit_sdp {
@@ -189,11 +189,11 @@
 			gpios = <&gpioe 3 GPIO_INPUT>;
 		};
 		gpio_voldn_btn_odl: voldn_btn_odl {
-			gpios = <&gpio9 3 GPIO_INPUT_PULL_UP>;
+			gpios = <&gpio9 3 (GPIO_INPUT_PULL_UP | GPIO_ACTIVE_LOW)>;
 			enum-name = "GPIO_VOLUME_DOWN_L";
 		};
 		gpio_volup_btn_odl: volup_btn_odl {
-			gpios = <&gpioa 2 GPIO_INPUT_PULL_UP>;
+			gpios = <&gpioa 2 (GPIO_INPUT_PULL_UP | GPIO_ACTIVE_LOW)>;
 			enum-name = "GPIO_VOLUME_UP_L";
 		};
 	};
