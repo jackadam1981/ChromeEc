@@ -39,6 +39,24 @@
       "message": "This will be verbose print for 5 sec.",
       "revId": "a53d1eaf98a041ba5d48c3751c7bdc42583b0144",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f824649_c2b14bb0",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 478,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2022-01-28T06:27:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eede39c2_b18ca905",
+      "revId": "a53d1eaf98a041ba5d48c3751c7bdc42583b0144",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
