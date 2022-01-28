@@ -1,0 +1,92 @@
+/* Copyright 2022 The Chromium OS Authors. All rights reserved.
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+/ {
+	model = "ADLRVP_MCHP";
+
+	named-i2c-ports {
+		compatible = "named-i2c-ports";
+
+		battery {
+			i2c-port = <&i2c_smb_0>;
+			enum-name = "I2C_PORT_BATTERY";
+		};
+		charger {
+			i2c-port = <&i2c_smb_0>;
+			enum-name = "I2C_PORT_CHARGER";
+		};
+		typec_0: typec-0 {
+			i2c-port = <&i2c_smb_1>;
+			enum-name = "I2C_PORT_TYPEC_0";
+		};
+		typec_1: typec-1 {
+			i2c-port = <&i2c_smb_2>;
+			enum-name = "I2C_PORT_TYPEC_1";
+		};
+		typec_2: typec-2 {
+			i2c-port = <&i2c_smb_3>;
+			enum-name = "I2C_PORT_TYPEC_2";
+		};
+		typec_3: typec-3 {
+			i2c-port = <&i2c_smb_4>;
+			enum-name = "I2C_PORT_TYPEC_3";
+		};
+	};
+};
+
+/* TODO b/217436680: remove the flash jedec-id override once the upstream
+ * change lands.
+ */
+&spi0 {
+	int_flash: sst25pf040@0 {
+		compatible ="jedec,spi-nor";
+		jedec-id = [62 06 13];
+	};
+};
+
+/* charger */
+&i2c_smb_0 {
+	status = "okay";
+	clock-frequency = <I2C_BITRATE_STANDARD>;
+	port_sel = <0>;
+	pinctrl-0 = <&pinctrl_i2c_scl0 &pinctrl_i2c_sda0>;
+	pinctrl-names = "default";
+};
+
+/* typec_0 */
+&i2c_smb_1 {
+	status = "okay";
+	clock-frequency = <I2C_BITRATE_FAST>;
+	port_sel = <6>;
+	pinctrl-0 = <&pinctrl_i2c_scl6 &pinctrl_i2c_sda6>;
+	pinctrl-names = "default";
+};
+
+/* typec_1 */
+&i2c_smb_2 {
+	status = "okay";
+	clock-frequency = <I2C_BITRATE_FAST>;
+	port_sel = <7>;
+	pinctrl-0 = <&pinctrl_i2c_scl7 &pinctrl_i2c_sda7>;
+	pinctrl-names = "default";
+};
+
+/* typec_2 */
+&i2c_smb_3 {
+	status = "okay";
+	clock-frequency = <I2C_BITRATE_FAST>;
+	port_sel = <3>;
+	pinctrl-0 = <&pinctrl_i2c_scl3 &pinctrl_i2c_sda3>;
+	pinctrl-names = "default";
+};
+
+/* typec_3 */
+&i2c_smb_4 {
+	status = "okay";
+	clock-frequency = <I2C_BITRATE_FAST>;
+	port_sel = <2>;
+	pinctrl-0 = <&pinctrl_i2c_scl2 &pinctrl_i2c_sda2>;
+	pinctrl-names = "default";
+};
