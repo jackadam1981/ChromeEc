@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a7bb03f5_5f994a86",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2022-01-28T19:15:27Z",
+      "side": 1,
+      "message": "Looks good, couple of comments.",
+      "revId": "38f0e65d9ffddd3eb79cb4b95e6663ef92ae8ee6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "449a18cc_83206a57",
+        "filename": "zephyr/dts/bindings/power/adl-ap-pwrseq.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2022-01-28T19:15:27Z",
+      "side": 1,
+      "message": "update to 2022",
+      "revId": "38f0e65d9ffddd3eb79cb4b95e6663ef92ae8ee6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ac595bf_f1dadf9e",
+        "filename": "zephyr/dts/bindings/power/adl-ap-pwrseq.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2022-01-28T19:15:27Z",
+      "side": 1,
+      "message": "Since we may have multiple .dts for power sequencing, do you want to explain the details of this particular one.",
+      "revId": "38f0e65d9ffddd3eb79cb4b95e6663ef92ae8ee6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "312beef4_bca702ae",
+        "filename": "zephyr/projects/brya/brya/adl_power.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2022-01-28T19:15:27Z",
+      "side": 1,
+      "message": "Update the year to 2022.",
+      "revId": "38f0e65d9ffddd3eb79cb4b95e6663ef92ae8ee6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2cdbdb65_aac4fe49",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_adlp_pwrseq_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2022-01-28T19:15:27Z",
+      "side": 1,
+      "message": "Since you have defined pwrseq-gpios-required in dts do you need the above also?",
+      "revId": "38f0e65d9ffddd3eb79cb4b95e6663ef92ae8ee6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
