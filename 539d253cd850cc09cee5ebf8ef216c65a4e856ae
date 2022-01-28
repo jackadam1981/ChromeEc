@@ -22,6 +22,52 @@
       },
       "revId": "539d253cd850cc09cee5ebf8ef216c65a4e856ae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ff303da_26f9f166",
+        "filename": "util/fptool.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-01-28T18:06:06Z",
+      "side": 1,
+      "message": "It looks like this is only used in the `subprocess.run` case.",
+      "range": {
+        "startLine": 34,
+        "startChar": 43,
+        "endLine": 34,
+        "endChar": 53
+      },
+      "revId": "539d253cd850cc09cee5ebf8ef216c65a4e856ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3be7a20a_1e5ea0cc",
+        "filename": "util/fptool.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-01-28T18:06:06Z",
+      "side": 1,
+      "message": "The idea is when `show_output` is `True`, that you want to print `stderr` and `stdout`, right?\n\nRather than have this separate path, it\u0027s a little cleaner if you re-use what you have below and add a conditional:\n\n     system_cmd \u003d subprocess.Popen(cmd,\n                                  stdout\u003dsubprocess.PIPE,\n                                  stderr\u003dsubprocess.PIPE,\n                                  shell\u003dTrue,\n                                  universal_newlines\u003dTrue)\n    stdout, stderr \u003d system_cmd.communicate()\n    \n    if show_output:\n       # print stderr and stdout\n       \nNote that it will still return `stdout` and `stderr` in that case (as opposed to `None` like you have here), but I think that\u0027s fine.",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 48
+      },
+      "revId": "539d253cd850cc09cee5ebf8ef216c65a4e856ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
