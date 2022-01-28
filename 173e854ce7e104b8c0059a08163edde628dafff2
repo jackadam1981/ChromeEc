@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc4e0dd2_3c819c26",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-01-28T21:42:57Z",
+      "side": 1,
+      "message": "You don\u0027t necessarily need to list out the name of each function that you\u0027re adding. Instead, describe the motivation of this change and what functionality it introduces/fixes: https://chromium.googlesource.com/chromiumos/docs/+/HEAD/contributing.md#commit-messages",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 25
+      },
+      "revId": "173e854ce7e104b8c0059a08163edde628dafff2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23127beb_3aac32df",
+        "filename": "util/fptool.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-01-28T21:42:57Z",
+      "side": 1,
+      "message": "nit: can remove this since you have the python docstring comment",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 12
+      },
+      "revId": "173e854ce7e104b8c0059a08163edde628dafff2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "808a0101_d90d3915",
+        "filename": "util/fptool.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-01-28T21:42:57Z",
+      "side": 1,
+      "message": "nit: Can you add docstring?",
+      "range": {
+        "startLine": 66,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 28
+      },
+      "revId": "173e854ce7e104b8c0059a08163edde628dafff2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d39f16b_d8174525",
+        "filename": "util/fptool.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-01-28T21:42:57Z",
+      "side": 1,
+      "message": "For clarity, let\u0027s call this `wp_enabled_str`",
+      "range": {
+        "startLine": 67,
+        "startChar": 8,
+        "endLine": 67,
+        "endChar": 18
+      },
+      "revId": "173e854ce7e104b8c0059a08163edde628dafff2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89f3b28e_3feab76f",
+        "filename": "util/fptool.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-01-28T21:42:57Z",
+      "side": 1,
+      "message": "Slightly clearer: `if not int(wp_enabled_str)`",
+      "range": {
+        "startLine": 73,
+        "startChar": 4,
+        "endLine": 73,
+        "endChar": 25
+      },
+      "revId": "173e854ce7e104b8c0059a08163edde628dafff2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87f639cc_08d3fc64",
+        "filename": "util/fptool.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-01-28T21:42:57Z",
+      "side": 1,
+      "message": "nit: Can you add docstring?",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 40
+      },
+      "revId": "173e854ce7e104b8c0059a08163edde628dafff2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7601b85_48979472",
+        "filename": "util/fptool.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-01-28T21:42:57Z",
+      "side": 1,
+      "message": "Can you add types for these?\n\nLooks like `str` which would be: `dev_type: str, dev_str: str`",
+      "range": {
+        "startLine": 80,
+        "startChar": 14,
+        "endLine": 80,
+        "endChar": 31
+      },
+      "revId": "173e854ce7e104b8c0059a08163edde628dafff2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "680a2777_415f30c6",
+        "filename": "util/fptool.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-01-28T21:42:57Z",
+      "side": 1,
+      "message": "Slightly easier to read if you check for `modialias` and continue if it\u0027s not valid (then removing the `modalias` check in the `if` statements):\n\n```\n        if not modalias:\n            continue\n            \n        # For most devices modalias is \u0027of:NcrfpTCgoogle,cros-ec-\u003c spi | uart\u003e\u0027\n        if modalias.split(\u0027,\u0027)[-1] \u003d\u003d dev_str:\n            return os.path.basename(dev)\n        # For strongbad and herobrine, the modalias is: \u0027spi:cros-ec-spi\u0027\n        # TODO(b/179533783): Fix this script to look for non-ACPI modalias\n        if modalias.split(\u0027:\u0027)[-1] \u003d\u003d dev_str:\n            return os.path.basename(dev)\n\n```",
+      "range": {
+        "startLine": 84,
+        "startChar": 8,
+        "endLine": 91,
+        "endChar": 0
+      },
+      "revId": "173e854ce7e104b8c0059a08163edde628dafff2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
