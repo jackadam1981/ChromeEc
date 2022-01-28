@@ -22,6 +22,30 @@
       },
       "revId": "d98de623660a85c7f99d9a4f2f516cbdb48944af",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f36e9f9f_07e6e82b",
+        "filename": "zephyr/drivers/cros_kb_raw/cros_kb_raw_xec.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2022-01-28T14:31:08Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "42276231_76dab44a",
+      "range": {
+        "startLine": 38,
+        "startChar": 8,
+        "endLine": 38,
+        "endChar": 25
+      },
+      "revId": "d98de623660a85c7f99d9a4f2f516cbdb48944af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
