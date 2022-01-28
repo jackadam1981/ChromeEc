@@ -75,7 +75,7 @@ static void ina3221_init(void)
 	}
 }
 
-DECLARE_HOOK(HOOK_INIT, ina3221_init, HOOK_PRIO_INIT_EXTPOWER + 1);
+DECLARE_HOOK(HOOK_INIT, ina3221_init, HOOK_PRIO_POST_EXTPOWER);
 
 #ifdef CONFIG_CMD_INA
 static void ina3221_dump(unsigned int unit)
