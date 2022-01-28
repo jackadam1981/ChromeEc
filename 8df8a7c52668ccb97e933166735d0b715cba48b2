@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a51ffc7_dd790bd0",
+        "filename": "zephyr/test/drivers/src/integration_usb.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 402,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-01-28T20:56:53Z",
+      "side": 1,
+      "message": "We should be checking much more than the role. I\u0027m thinking something like:\n\n```\nhost_command_process(...);\n#ifdef dont_test_src_then_snk\nresponse_c0.role \u003d USB_PD_PORT_POWER_SINK;\nresponse_c0.... \u003d ...\n#endif\nzassert_...\n```",
+      "range": {
+        "startLine": 402,
+        "startChar": 27,
+        "endLine": 402,
+        "endChar": 31
+      },
+      "revId": "8df8a7c52668ccb97e933166735d0b715cba48b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cee7f373_7da69dcf",
+        "filename": "zephyr/test/drivers/src/integration_usb.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 407,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-01-28T20:56:53Z",
+      "side": 1,
+      "message": "Lets not do any asserts that aren\u0027t done on the host command",
+      "range": {
+        "startLine": 407,
+        "startChar": 1,
+        "endLine": 407,
+        "endChar": 24
+      },
+      "revId": "8df8a7c52668ccb97e933166735d0b715cba48b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4db1455e_f25edefe",
+        "filename": "zephyr/test/drivers/src/integration_usb.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 415,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-01-28T20:56:53Z",
+      "side": 1,
+      "message": "Lets have the assert here and actually set `response_c1.role \u003d USB_PD_PORT_POWER_SOURCE;` above it in an `if` block",
+      "range": {
+        "startLine": 413,
+        "startChar": 0,
+        "endLine": 415,
+        "endChar": 38
+      },
+      "revId": "8df8a7c52668ccb97e933166735d0b715cba48b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
