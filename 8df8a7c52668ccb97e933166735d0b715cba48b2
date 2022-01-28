@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "19b8c4c9_00d9d092",
+        "filename": "zephyr/test/drivers/src/integration_usb.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 402,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-01-28T21:06:36Z",
+      "side": 1,
+      "message": "Actually I can completely get rid of this because its checked in \"check_usb_pd_power_info()\"",
+      "parentUuid": "7a51ffc7_dd790bd0",
+      "range": {
+        "startLine": 402,
+        "startChar": 27,
+        "endLine": 402,
+        "endChar": 31
+      },
+      "revId": "8df8a7c52668ccb97e933166735d0b715cba48b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cee7f373_7da69dcf",
         "filename": "zephyr/test/drivers/src/integration_usb.c",
         "patchSetId": 2
@@ -37,6 +61,30 @@
       "writtenOn": "2022-01-28T20:56:53Z",
       "side": 1,
       "message": "Lets not do any asserts that aren\u0027t done on the host command",
+      "range": {
+        "startLine": 407,
+        "startChar": 1,
+        "endLine": 407,
+        "endChar": 24
+      },
+      "revId": "8df8a7c52668ccb97e933166735d0b715cba48b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a97f7930_5e98f56a",
+        "filename": "zephyr/test/drivers/src/integration_usb.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 407,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-01-28T21:06:36Z",
+      "side": 1,
+      "message": "This just checking the response of the host command?",
+      "parentUuid": "cee7f373_7da69dcf",
       "range": {
         "startLine": 407,
         "startChar": 1,
