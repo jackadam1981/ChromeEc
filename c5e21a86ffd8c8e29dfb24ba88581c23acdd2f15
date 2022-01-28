@@ -158,6 +158,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d8db78b4_9a6bdca7",
+        "filename": "core/cortex-m/fpu.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2022-01-28T14:48:29Z",
+      "side": 1,
+      "message": "I found this in code examples in PM0214 4.6.7 Enabling and clearing FPU exception interrupts https://www.st.com/resource/en/programming_manual/pm0214-stm32-cortexm4-mcus-and-mpus-programming-manual-stmicroelectronics.pdf. To be honest I don\u0027t know why it is necessary. Should I mention that data memory buffer was used in examples?",
+      "parentUuid": "e17a41c3_5c0386ab",
+      "range": {
+        "startLine": 114,
+        "startChar": 1,
+        "endLine": 114,
+        "endChar": 21
+      },
+      "revId": "c5e21a86ffd8c8e29dfb24ba88581c23acdd2f15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bec7fbb4_bca96c9d",
         "filename": "include/math_util.h",
         "patchSetId": 4
