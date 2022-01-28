@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "529e95c0_93ac37c1",
+        "filename": "zephyr/drivers/cros_system/cros_system_it8xxx2.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-01-28T22:42:00Z",
+      "side": 1,
+      "message": "So I was confused why the NPCX code did a gpio_reset but this code\ndidn\u0027t. It seemed safe and the right thing to ensure the GPIO is set up\ncorrectly as an input, since we were flagging it to be used as an interrupt source, and some code somewhere may have changed it.\nIf you think this is not needed, happy to leave it out.",
+      "parentUuid": "fff46c0f_04b5f242",
+      "range": {
+        "startLine": 226,
+        "startChar": 1,
+        "endLine": 227,
+        "endChar": 21
+      },
+      "revId": "eebe3bd96279651aa6d313177705136013a83d62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4bf48a52_69df948e",
         "filename": "zephyr/drivers/cros_system/cros_system_npcx.c",
         "patchSetId": 3
@@ -37,6 +61,30 @@
       "writtenOn": "2022-01-28T16:53:57Z",
       "side": 1,
       "message": "The previous code does gpio_reset(). It is not reconfiguring it to INPUT.",
+      "range": {
+        "startLine": 187,
+        "startChar": 1,
+        "endLine": 188,
+        "endChar": 21
+      },
+      "revId": "eebe3bd96279651aa6d313177705136013a83d62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17c33560_d87f1417",
+        "filename": "zephyr/drivers/cros_system/cros_system_npcx.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-01-28T22:42:00Z",
+      "side": 1,
+      "message": "In short, it is essentially the same thing, except using the Zephyr API.\nThe flags here are OR\u0027ed with the flags in the spec that is taken from the device tree GPIO flags.\n\nIn long:\nHere we also have an example of where our use of the standard Zephyr GPIO API is a bit of a mismatch.\nThe standard Zephyr gpio API (like this call) uses a struct gpio_dt_spec to hold the details of the GPIO (controller, pin, flags), but the flags are only 8 bits.\nIn our definition of the GPIO in the named-gpio node, we include flags that are outside the 8 bits reserved, and so we need to include these flags in the setup (which as I mentioned the flags in this call are \u0027extra\u0027, and OR\u0027ed in with the 8 bits of flags in the gpio_dt_spec).\nThe idea is that the 8 bits should capture the physical characteristics of the pin, such as voltaqe, pull-up/pull-down etc. Everything else is settable by the code. Such as GPIO_INPUT.\n\nIn our common init, we actually save the complete 32 bits of flags from the named-gpio GPIO definition, and use that to set the initial state of the GPIO.\nI was torn about using gpio_reset, because that is part of the old GPIO API, not part of the Zephyr API.",
+      "parentUuid": "4bf48a52_69df948e",
       "range": {
         "startLine": 187,
         "startChar": 1,
@@ -72,6 +120,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fc654d1b_9247a2e7",
+        "filename": "zephyr/projects/herobrine/gpio.dts",
+        "patchSetId": 3
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-01-28T22:42:00Z",
+      "side": 1,
+      "message": "See other comments.",
+      "parentUuid": "42bee751_d90bf17f",
+      "range": {
+        "startLine": 282,
+        "startChar": 0,
+        "endLine": 289,
+        "endChar": 6
+      },
+      "revId": "eebe3bd96279651aa6d313177705136013a83d62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cc989a4e_9b80b8d3",
         "filename": "zephyr/projects/trogdor/lazor/gpio.dts",
         "patchSetId": 3
@@ -83,6 +155,30 @@
       "writtenOn": "2022-01-28T16:53:57Z",
       "side": 1,
       "message": "This raises a question. The hibernate wake pin doesn\u0027t need to have an interrupt handler. It just wakes the EC up and done. The wake is like a power on and follows a normal boot process. The interrupt handle won\u0027t be triggered. IMO, the wake pins are likely to bind to a GPIO, instead of an interrupt.",
+      "range": {
+        "startLine": 338,
+        "startChar": 0,
+        "endLine": 345,
+        "endChar": 6
+      },
+      "revId": "eebe3bd96279651aa6d313177705136013a83d62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77292f7c_e1bb1b39",
+        "filename": "zephyr/projects/trogdor/lazor/gpio.dts",
+        "patchSetId": 3
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-01-28T22:42:00Z",
+      "side": 1,
+      "message": "So the problem here is that the previous code was broken anyway, and this code\ndoesn\u0027t do anything to fix that (mainly because I didn\u0027t know the internals of how wake was implemented), and the best I thought I could do is put in a TODO to flag the breakage.\n\nThe code was broken because it was calling gpio_enable_interrupt on a GPIO signal that had no corresponding entry in EC_CROS_GPIO_INTERRUPTS. The effect was that the gpio_enable_interrupt was ignored (this is different behaviour in Zephyr from the old EC-OS). And it\u0027s the same thing with gpio_rtc_ec_wake_odl.\nSo in effect this pin was being completely ignored as a wake signal, so I made it obvious.\nFixing this seemed out of the scope of this change.",
+      "parentUuid": "cc989a4e_9b80b8d3",
       "range": {
         "startLine": 338,
         "startChar": 0,
