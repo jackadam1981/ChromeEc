@@ -1475,6 +1475,8 @@ void tc_start_error_recovery(int port)
 	set_state_tc(port, TC_ERROR_RECOVERY);
 }
 
+#include <stdio.h>
+
 static void restart_tc_sm(int port, enum usb_tc_state start_state)
 {
 	int res;
@@ -1483,6 +1485,8 @@ static void restart_tc_sm(int port, enum usb_tc_state start_state)
 	tc[port].flags = 0;
 
 	res = tcpm_init(port);
+
+	printf("got res=0x%x for port=0x%x\n", res, port);
 
 	CPRINTS("C%d: TCPC init %s", port, res ? "failed" : "ready");
 
