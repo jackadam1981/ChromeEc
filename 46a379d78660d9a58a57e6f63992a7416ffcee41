@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2d4779d_9df4efca",
+        "filename": "zephyr/test/drivers/src/gpio.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-01-28T18:57:56Z",
+      "side": 1,
+      "message": "Documentation on this function say `EC_SUCCESS` on success and non-zero on error. I don\u0027t think we should rely on -1 always being the error, can we use `zassert_not_equal(EC_SUCCESS, ...`",
+      "range": {
+        "startLine": 298,
+        "startChar": 1,
+        "endLine": 299,
+        "endChar": 60
+      },
+      "revId": "46a379d78660d9a58a57e6f63992a7416ffcee41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "472fc35d_c9a961ba",
+        "filename": "zephyr/test/drivers/src/main.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-01-28T18:57:56Z",
+      "side": 1,
+      "message": "nit: remove",
+      "revId": "46a379d78660d9a58a57e6f63992a7416ffcee41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe3c8abb_46b1efeb",
+        "filename": "zephyr/test/drivers/src/stubs.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 406,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-01-28T18:57:56Z",
+      "side": 1,
+      "message": "Thoughts about using FFF here and verifying this was called?",
+      "revId": "46a379d78660d9a58a57e6f63992a7416ffcee41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
