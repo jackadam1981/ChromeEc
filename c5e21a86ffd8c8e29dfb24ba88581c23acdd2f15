@@ -320,6 +320,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d3bc470b_97ec8cf0",
+        "filename": "core/cortex-m/fpu.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-01-28T18:01:51Z",
+      "side": 1,
+      "message": "I believe the memory barrier here is to ensure that all the fpu_state register has cleared before moving on. Without the barrier the compiler could, in theory, reorder some later code such that the fpu_state isn\u0027t cleared yet. \n\nThis actually made me wonder if fpu_state should be defined as a volatile. As it is if CPU_FPU_FPCAR is updated between the previous read and here then it may be overwritten.",
+      "parentUuid": "d8db78b4_9a6bdca7",
+      "range": {
+        "startLine": 114,
+        "startChar": 1,
+        "endLine": 114,
+        "endChar": 21
+      },
+      "revId": "c5e21a86ffd8c8e29dfb24ba88581c23acdd2f15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bec7fbb4_bca96c9d",
         "filename": "include/math_util.h",
         "patchSetId": 4
@@ -355,6 +379,30 @@
       "side": 1,
       "message": "Created separate commit https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3423529.",
       "parentUuid": "bec7fbb4_bca96c9d",
+      "range": {
+        "startLine": 244,
+        "startChar": 0,
+        "endLine": 262,
+        "endChar": 23
+      },
+      "revId": "c5e21a86ffd8c8e29dfb24ba88581c23acdd2f15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "02e038e5_a8847448",
+        "filename": "include/math_util.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-01-28T18:01:51Z",
+      "side": 1,
+      "message": "I really like this strategy of breaking into separate CLs, it makes the reviews and context much cleaner!",
+      "parentUuid": "e992fca1_0f19619f",
       "range": {
         "startLine": 244,
         "startChar": 0,
