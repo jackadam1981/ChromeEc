@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9eb3ddf_2fc70500",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-01-28T23:10:35Z",
+      "side": 1,
+      "message": "You don\u0027t necessarily need to list out the name of each function that you\u0027re adding. Instead, describe the motivation of this change and what functionality it introduces/fixes: https://chromium.googlesource.com/chromiumos/docs/+/HEAD/contributing.md#commit-messages",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 24
+      },
+      "revId": "64e87664fc73881ee6b02f82c984f2c75fd3e5bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "796fb991_185c187e",
+        "filename": "util/fptool.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-01-28T23:10:35Z",
+      "side": 1,
+      "message": "Can you specify the types of the keys and values? e.g., `dict[str, str]`",
+      "range": {
+        "startLine": 185,
+        "startChar": 24,
+        "endLine": 185,
+        "endChar": 28
+      },
+      "revId": "64e87664fc73881ee6b02f82c984f2c75fd3e5bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56c176c4_f9245255",
+        "filename": "util/fptool.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-01-28T23:10:35Z",
+      "side": 1,
+      "message": "This method is a good candidate for adding a unit test. Ways to do this would be to add a mock for `run_system_cmd(\u0027gpiodetect\u0027)` or split this into two functions: one that takes the raw output of `gpiodetect` and another that calls `gpiodetect` and that function.\n\nDetails on unit tests: \n\nhttps://chromium.googlesource.com/chromiumos/docs/+/HEAD/styleguide/python.md#unit-tests\n\nExample unit tests:\n\nhttps://chromium.googlesource.com/chromiumos/platform2/+/ec56e579351a5d79e9a4e7318022014e22e02441/chromeos-config/cros_config_host/cros_config_schema_unittest.py\n\nhttps://source.chromium.org/search?q\u003dfile:.*unittest%5C.py\u0026ss\u003dchromiumos\u0026start\u003d1",
+      "range": {
+        "startLine": 185,
+        "startChar": 4,
+        "endLine": 185,
+        "endChar": 18
+      },
+      "revId": "64e87664fc73881ee6b02f82c984f2c75fd3e5bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5de7b95f_923548a8",
+        "filename": "util/fptool.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-01-28T23:10:35Z",
+      "side": 1,
+      "message": "Can you add a comment that illustrates the format of the output from `gpiodetect`? Alternatively you can just reference the unit test since that should have examples.",
+      "range": {
+        "startLine": 197,
+        "startChar": 4,
+        "endLine": 208,
+        "endChar": 35
+      },
+      "revId": "64e87664fc73881ee6b02f82c984f2c75fd3e5bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce2e07b9_f91d60cf",
+        "filename": "util/fptool.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-01-28T23:10:35Z",
+      "side": 1,
+      "message": "Probably good to add a check here that the result has at least two elements since you\u0027re referencing them below.",
+      "range": {
+        "startLine": 245,
+        "startChar": 4,
+        "endLine": 245,
+        "endChar": 25
+      },
+      "revId": "64e87664fc73881ee6b02f82c984f2c75fd3e5bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
