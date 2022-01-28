@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b3512c1_7a2fb2ff",
+        "filename": "zephyr/test/drivers/src/integration_usb.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 416,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-01-28T23:20:19Z",
+      "side": 1,
+      "message": "This patchset fails here with 20V instead of the expected 5V. I initially thought that the 20V PDO was hanging around in the charger between tests. But my_charger is a local variable, so I don\u0027t think it\u0027s that.",
+      "revId": "726684aa3af6e405fa7921413ae03466ddfdb66c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
