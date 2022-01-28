@@ -11,6 +11,7 @@
 
 #include "mat33.h"
 #include "mat44.h"
+#include "math.h"
 #include "math_util.h"
 #include "test_util.h"
 #include "vec3.h"
@@ -320,6 +321,54 @@ static int test_mat44_fp_solve(void)
 	return EC_SUCCESS;
 }
 
+test_static int test_isnan(void)
+{
+	float zero = 0.0f;
+	float denormal = 1.40130e-45f;
+	float highest = 3.40282e38f;
+
+	/* 0.0/0.0 results in NaN */
+	TEST_ASSERT(isnan(zero / zero));
+	TEST_ASSERT(isnan(-zero / zero));
+	TEST_ASSERT(isnan(zero / -zero));
+	TEST_ASSERT(isnan(-zero / -zero));
+
+	/* Make sure denormalized number won't be recognized as NaN */
+	TEST_ASSERT(!isnan(denormal));
+
+	/* Make sure highest number won't be recognized as NaN */
+	TEST_ASSERT(!isnan(highest));
+
+	/* Make sure that 0.0 is not recognized as NaN */
+	TEST_ASSERT(!isnan(zero));
+	TEST_ASSERT(!isnan(-zero));
+
+	return EC_SUCCESS;
+}
+
+test_static int test_isinf(void)
+{
+	float one = 1.0f;
+	float zero = 0.0f;
+	float denormal = 1.40130e-45f;
+	float highest = 3.40282e38f;
+
+	TEST_ASSERT(isinf(one / zero));
+	TEST_ASSERT(isinf(-one / zero));
+
+	/* Make sure denormalized number won't be recognized as infinity */
+	TEST_ASSERT(!isinf(denormal));
+
+	/* Make sure highest number won't be recognized as infinity */
+	TEST_ASSERT(!isinf(highest));
+
+	/* Make sure that 0.0 is not recognized as infinity */
+	TEST_ASSERT(!isinf(zero));
+	TEST_ASSERT(!isinf(-zero));
+
+	return EC_SUCCESS;
+}
+
 void run_test(int argc, char **argv)
 {
 	test_reset();
@@ -335,6 +384,8 @@ void run_test(int argc, char **argv)
 	RUN_TEST(test_mat33_fp_get_eigenbasis);
 	RUN_TEST(test_mat44_fp_decompose_lup);
 	RUN_TEST(test_mat44_fp_solve);
+	RUN_TEST(test_isnan);
+	RUN_TEST(test_isinf);
 
 	test_print_result();
 }
