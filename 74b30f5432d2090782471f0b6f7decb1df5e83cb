@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71ab57e9_23a5646f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-01-28T17:51:22Z",
+      "side": 1,
+      "message": "nit: this should be \"util/fptool.py\" since that is the path to the file",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 14
+      },
+      "revId": "74b30f5432d2090782471f0b6f7decb1df5e83cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fccbf9ba_e431caf1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-01-28T17:51:22Z",
+      "side": 1,
+      "message": "I would phrase this as `This commit is the beginning of the transfer of functionality from the flash_fp_mcu shell script.`",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 14
+      },
+      "revId": "74b30f5432d2090782471f0b6f7decb1df5e83cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fca704f9_acbb0b26",
+        "filename": "util/fptool.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-01-28T17:51:22Z",
+      "side": 1,
+      "message": "For the negative case, it\u0027s clearer if you store it in the same variable, but instead of storing `True`, you store `False`:\n\n```\n\u0027--noread\u0027, dest\u003d\u0027read\u0027, action\u003d\u0027store_false\u0027 \n```\n\nSee https://stackoverflow.com/a/52403318",
+      "range": {
+        "startLine": 24,
+        "startChar": 23,
+        "endLine": 24,
+        "endChar": 54
+      },
+      "revId": "74b30f5432d2090782471f0b6f7decb1df5e83cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4135dc48_18abf8a6",
+        "filename": "util/fptool.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-01-28T17:51:22Z",
+      "side": 1,
+      "message": "Same comment as above",
+      "range": {
+        "startLine": 29,
+        "startChar": 24,
+        "endLine": 29,
+        "endChar": 75
+      },
+      "revId": "74b30f5432d2090782471f0b6f7decb1df5e83cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1f17392_1c5f6574",
+        "filename": "util/fptool.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-01-28T17:51:22Z",
+      "side": 1,
+      "message": "Same comment as above",
+      "range": {
+        "startLine": 35,
+        "startChar": 24,
+        "endLine": 35,
+        "endChar": 76
+      },
+      "revId": "74b30f5432d2090782471f0b6f7decb1df5e83cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86e0086f_401c8f59",
+        "filename": "util/fptool.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-01-28T17:51:22Z",
+      "side": 1,
+      "message": "Same comment as above",
+      "range": {
+        "startLine": 46,
+        "startChar": 24,
+        "endLine": 46,
+        "endChar": 55
+      },
+      "revId": "74b30f5432d2090782471f0b6f7decb1df5e83cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "518d1930_50eb1c8d",
+        "filename": "util/fptool.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-01-28T17:51:22Z",
+      "side": 1,
+      "message": "Same comment as above",
+      "range": {
+        "startLine": 50,
+        "startChar": 24,
+        "endLine": 50,
+        "endChar": 58
+      },
+      "revId": "74b30f5432d2090782471f0b6f7decb1df5e83cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
