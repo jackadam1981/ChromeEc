@@ -1,0 +1,18 @@
+/* Copyright 2022 The Chromium OS Authors. All rights reserved.
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+/ {
+	model = "ADLRVP_MCHP";
+};
+
+/* TODO b/217436680: remove the flash jedec-id override once the upstream
+ * change lands.
+ */
+&spi0 {
+	int_flash: sst25pf040@0 {
+		compatible ="jedec,spi-nor";
+		jedec-id = [62 06 13];
+	};
+};
