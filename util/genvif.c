@@ -27,7 +27,7 @@
 
 #define VIF_APP_VENDOR_VALUE	"Google"
 #define VIF_APP_NAME_VALUE	"EC GENVIF"
-#define VIF_APP_VERSION_VALUE	"3.0.0.10"
+#define VIF_APP_VERSION_VALUE	"3.2.3.0"
 #define VENDOR_NAME_VALUE	"Google"
 
 #define DEFAULT_MISSING_TID	0xFFFF
@@ -155,6 +155,9 @@ const char *vif_component_name[] = {
 	NAME_INIT(Responds_To_Discov_SOP_UFP),
 	NAME_INIT(Responds_To_Discov_SOP_DFP),
 	NAME_INIT(Attempts_Discov_SOP),
+	NAME_INIT(Power_Interruption_Available),
+	NAME_INIT(Data_Reset_Supported),
+	NAME_INIT(Enter_USB_Supported),
 	NAME_INIT(Chunking_Implemented_SOP),
 	NAME_INIT(Unchunked_Extended_Messages_Supported),
 	NAME_INIT(Security_Msgs_Supported_SOP),
@@ -173,6 +176,7 @@ const char *vif_component_name[] = {
 	NAME_INIT(Type_C_Is_Debug_Target_SRC),
 	NAME_INIT(Type_C_Is_Debug_Target_SNK),
 	NAME_INIT(Captive_Cable),
+	NAME_INIT(Captive_Cable_Is_eMarked),
 	NAME_INIT(RP_Value),
 	NAME_INIT(Type_C_Port_On_Hub),
 	NAME_INIT(Type_C_Power_Source),
@@ -219,6 +223,7 @@ const char *vif_component_name[] = {
 
 	[PD_Source_Header] = "",
 	NAME_INIT(PD_Power_As_Source),
+	NAME_INIT(EPR_Supported_As_Src),
 	NAME_INIT(USB_Suspend_May_Be_Cleared),
 	NAME_INIT(Sends_Pings),
 
@@ -237,6 +242,7 @@ const char *vif_component_name[] = {
 
 	[PD_Sink_Header] = "",
 	NAME_INIT(PD_Power_As_Sink),
+	NAME_INIT(EPR_Supported_As_Snk),
 	NAME_INIT(No_USB_Suspend_May_Be_Set),
 	NAME_INIT(GiveBack_May_Be_Set),
 	NAME_INIT(Higher_Capability_Set),
@@ -280,6 +286,7 @@ const char *vif_component_name[] = {
 	NAME_INIT(Cable_FW_Vers),
 	NAME_INIT(Type_C_To_Type_A_B_C),
 	NAME_INIT(Type_C_To_Type_C_Capt_Vdm_V2),
+	NAME_INIT(EPR_Mode_Capable),
 	NAME_INIT(Cable_Latency),
 	NAME_INIT(Cable_Termination_Type),
 	NAME_INIT(VBUS_Through_Cable),
@@ -306,9 +313,7 @@ const char *vif_component_name[] = {
 	NAME_INIT(Cable_SOP_PP_Controller),
 	NAME_INIT(SBU_Supported),
 	NAME_INIT(SBU_Type),
-	NAME_INIT(Active_Cable_Operating_Temp_Support),
 	NAME_INIT(Active_Cable_Max_Operating_Temp),
-	NAME_INIT(Active_Cable_Shutdown_Temp_Support),
 	NAME_INIT(Active_Cable_Shutdown_Temp),
 	NAME_INIT(Active_Cable_U3_CLd_Power),
 	NAME_INIT(Active_Cable_U3_U0_Trans_Mode),
@@ -338,6 +343,7 @@ BUILD_ASSERT(ARRAY_SIZE(vif_component_snk_pdo_name) == Snk_PDO_Indexes);
 
 const char *vif_component_src_pdo_name[] = {
 	NAME_INIT(Src_PDO_Supply_Type),
+	NAME_INIT(Src_PDO_APDO_Type),
 	NAME_INIT(Src_PDO_Peak_Current),
 	NAME_INIT(Src_PDO_Voltage),
 	NAME_INIT(Src_PDO_Max_Current),
@@ -385,10 +391,11 @@ BUILD_ASSERT(ARRAY_SIZE(vif_cable_svid_name) == CableSVID_Indexes);
 
 const char *vif_product_name[] = {
 	[USB4_Product_Header] = "",
-	NAME_INIT(Product_VID),
+	NAME_INIT(USB4_DROM_Vendor_ID),
 	NAME_INIT(USB4_Dock),
 	NAME_INIT(USB4_Num_Internal_Host_Controllers),
 	NAME_INIT(USB4_Num_PCIe_DN_Bridges),
+	NAME_INIT(USB4_Device_HiFi_Bi_TMU_Mode_Required),
 	NAME_INIT(USB4_Audio_Supported),
 	NAME_INIT(USB4_HID_Supported),
 	NAME_INIT(USB4_Printer_Supported),
@@ -740,6 +747,13 @@ static bool is_alt_mode_controller(void)
 {
 	return get_vif_bool(&vif.Component[component_index]
 				.vif_field[Type_C_Is_Alt_Mode_Controller],
+			    IS_ENABLED(CONFIG_USB_PD_ALT_MODE_DFP));
+}
+
+static bool is_alt_mode_adapter(void)
+{
+	return get_vif_bool(&vif.Component[component_index]
+			    .vif_field[Type_C_Is_Alt_Mode_Adapter],
 			    IS_ENABLED(CONFIG_USB_PD_ALT_MODE_DFP));
 }
 
@@ -1218,7 +1232,11 @@ static int vif_output_xml(const char *name, struct vif_t *vif)
 	vif_out_str(vif_file, level,
 		"<?xml version=\"1.0\" encoding=\"utf-8\"?>");
 	vif_out_start(vif_file, level++,
-		"<VIF xmlns=\"http://usb.org/VendorInfoFile.xsd\">");
+		"<VIF "
+		    "xmlns:opt=\"http://usb.org/VendorInfoFileOptionalContent.xsd\" "
+		    "xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" "
+		    "xmlns:vif=\"http://usb.org/VendorInfoFile.xsd\""
+		    ">");
 
 	vif_output_vif_xml(vif_file, vif, level);
 	vif_output_vif_product(vif_file, vif, level);
@@ -1313,18 +1331,6 @@ static void set_override_vif_field(struct vif_field_t *vif_field,
 		ptr = malloc(strlen(tag_value)+1);
 		strcpy(ptr, tag_value);
 		vif_field->tag_value = ptr;
-
-		/*
-		 * If the tag_value was provided and the str_value was
-		 * not and this is a boolean value, then fill in the
-		 * str_value
-		 */
-		if (!str_value || str_value[0] == '\0') {
-			if (streq(tag_value, "true"))
-				str_value = "YES";
-			else if (streq(tag_value, "false"))
-				str_value = "NO";
-		}
 	}
 	if (str_value && str_value[0]) {
 		ptr = malloc(strlen(str_value)+1);
@@ -1382,6 +1388,18 @@ static void ignore_to_end_tag(void)
 			break;
 	}
 }
+
+/*
+ * get_next_tag() consumes the entire element when there
+ * is no nested tag. there is no way to know if the end
+ * tag has been consumed:
+ *
+ * <tag></tag>                       next call returns </end>
+ * </end>
+ *
+ * <tag><nested value=x /></tag>     next call returns <nested>
+ */
+
 static bool get_next_tag(char *name,
 			 char *tag_value,
 			 char *str_value)
@@ -2144,9 +2162,9 @@ __maybe_unused static void set_vif_field_b(struct vif_field_t *vif_field,
 			const bool val)
 {
 	if (val)
-		set_vif_field(vif_field, name, "true", "YES");
+		set_vif_field(vif_field, name, "true", NULL);
 	else
-		set_vif_field(vif_field, name, "false", "NO");
+		set_vif_field(vif_field, name, "false", NULL);
 }
 __maybe_unused static void set_vif_field_stis(struct vif_field_t *vif_field,
 			const char *name,
@@ -2218,6 +2236,7 @@ static void set_vif_field_c(struct vif_field_t *vif_field, const char *comment)
  *	USB4_Dock				booleanFieldType
  *	USB4_Num_Internal_Host_Controllers	numericFieldType
  *	USB4_Num_PCIe_DN_Bridges		numericFieldType
+ *	USB4_Device_HiFi_Bi_TMU_Mode_Required	booleanFieldType
  *
  * vif_Component USB4 Device Class Fallback Support
  *	USB4_Audio_Supported			booleanFieldType
@@ -2616,7 +2635,7 @@ static void init_vif_fields(struct vif_field_t *vif_fields,
 	set_vif_field(&vif_fields[VIF_Specification],
 		vif_name[VIF_Specification],
 		NULL,
-		"3.12");
+		"3.18");
 
 	set_vif_field(&vif_app_fields[Vendor],
 		vif_app_name[Vendor],
@@ -2689,19 +2708,6 @@ static void init_vif_fields(struct vif_field_t *vif_fields,
 		vif_name[Certification_Type],
 		"0",
 		"End Product");
-}
-
-/*********************************************************************
- * Init VIF/Product Fields
- */
-static void init_vif_product_fields(struct vif_field_t *vif_fields)
-{
-	char hex_str[10];
-
-	sprintf(hex_str, "%04X", USB_VID_GOOGLE);
-	set_vif_field_itss(&vif_fields[Product_VID],
-		vif_product_name[Product_VID],
-		USB_VID_GOOGLE, hex_str);
 }
 
 /*********************************************************************
@@ -2863,15 +2869,15 @@ static void init_vif_component_general_pd_fields(
 			NULL);
 		set_vif_field(&vif_fields[PD_Spec_Revision_Minor],
 			vif_component_name[PD_Spec_Revision_Minor],
-			"0",
+			"1",
 			NULL);
 		set_vif_field(&vif_fields[PD_Spec_Version_Major],
 			vif_component_name[PD_Spec_Version_Major],
-			"2",
+			"1",
 			NULL);
 		set_vif_field(&vif_fields[PD_Spec_Version_Minor],
 			vif_component_name[PD_Spec_Version_Minor],
-			"0",
+			"3",
 			NULL);
 
 		set_vif_field(&vif_fields[PD_Specification_Revision],
@@ -3046,6 +3052,19 @@ static void init_vif_component_general_pd_fields(
 		((!IS_ENABLED(CONFIG_USB_PD_SIMPLE_DFP)) ||
 		 (type != SRC)));
 
+	set_vif_field(&vif_fields[Power_Interruption_Available],
+		      vif_component_name[Power_Interruption_Available],
+		      "0",
+		      "No Interruption Possible");
+
+	set_vif_field_b(&vif_fields[Data_Reset_Supported],
+			vif_component_name[Data_Reset_Supported],
+			IS_ENABLED(CONFIG_USB_PD_USB4));
+
+	set_vif_field_b(&vif_fields[Enter_USB_Supported],
+			vif_component_name[Enter_USB_Supported],
+			IS_ENABLED(CONFIG_USB_PD_USB4));
+
 	set_vif_field_b(&vif_fields[Chunking_Implemented_SOP],
 		vif_component_name[Chunking_Implemented_SOP],
 		(IS_ENABLED(CONFIG_USB_PD_REV30) &&
@@ -3110,7 +3129,7 @@ static void init_vif_component_general_pd_fields(
 
 	set_vif_field(&vif_fields[ID_Header_Connector_Type_SOP],
 		vif_component_name[ID_Header_Connector_Type_SOP],
-		"2", "USB Type-C® Receptacle");
+		"2", "USB Type-C\u00ae Receptacle");
 }
 
 /*********************************************************************
@@ -3229,7 +3248,14 @@ static void init_vif_component_usb_type_c_fields(
 		set_vif_field_b(&vif_fields[Type_C_Can_Act_As_Device],
 			vif_component_name[Type_C_Can_Act_As_Device],
 			false);
+		set_vif_field_b(&vif_fields[Type_C_Is_Alt_Mode_Adapter],
+				vif_component_name[Type_C_Is_Alt_Mode_Adapter],
+				false);
 	}
+
+	set_vif_field_b(&vif_fields[Modal_Operation_Supported_SOP],
+			vif_component_name[Modal_Operation_Supported_SOP],
+			is_alt_mode_adapter());
 
 	{
 		int ps = POWER_UFP;
@@ -3329,22 +3355,22 @@ static void init_vif_component_usb_data_ufp_fields(
 		case USB_GEN11:
 			set_vif_field_itss(&vif_fields[Device_Speed],
 				vif_component_name[Device_Speed],
-				USB_GEN11, "USB 3.2 GEN 1x1");
+				USB_GEN11, "USB 3.2 Gen 1x1");
 			break;
 		case USB_GEN21:
 			set_vif_field_itss(&vif_fields[Device_Speed],
 				vif_component_name[Device_Speed],
-				USB_GEN21, "USB 3.2 GEN 2x1");
+				USB_GEN21, "USB 3.2 Gen 2x1");
 			break;
 		case USB_GEN12:
 			set_vif_field_itss(&vif_fields[Device_Speed],
 				vif_component_name[Device_Speed],
-				USB_GEN12, "USB 3.2 GEN 1x2");
+				USB_GEN12, "USB 3.2 Gen 1x2");
 			break;
 		case USB_GEN22:
 			set_vif_field_itss(&vif_fields[Device_Speed],
 				vif_component_name[Device_Speed],
-				USB_GEN22, "USB 3.2 GEN 2x2");
+				USB_GEN22, "USB 3.2 Gen 2x2");
 			break;
 		}
 	}
@@ -3404,22 +3430,22 @@ static void init_vif_component_usb_data_dfp_fields(
 		case USB_GEN11:
 			set_vif_field_itss(&vif_fields[Host_Speed],
 				vif_component_name[Host_Speed],
-				USB_GEN11, "USB 3.2 GEN 1x1");
+				USB_GEN11, "USB 3.2 Gen 1x1");
 			break;
 		case USB_GEN21:
 			set_vif_field_itss(&vif_fields[Host_Speed],
 				vif_component_name[Host_Speed],
-				USB_GEN21, "USB 3.2 GEN 2x1");
+				USB_GEN21, "USB 3.2 Gen 2x1");
 			break;
 		case USB_GEN12:
 			set_vif_field_itss(&vif_fields[Host_Speed],
 				vif_component_name[Host_Speed],
-				USB_GEN12, "USB 3.2 GEN 1x2");
+				USB_GEN12, "USB 3.2 Gen 1x2");
 			break;
 		case USB_GEN22:
 			set_vif_field_itss(&vif_fields[Host_Speed],
 				vif_component_name[Host_Speed],
-				USB_GEN22, "USB 3.2 GEN 2x2");
+				USB_GEN22, "USB 3.2 Gen 2x2");
 			break;
 		}
 
@@ -3456,6 +3482,10 @@ static int init_vif_component_pd_source_fields(
 	if (type == DRP || type == SRC) {
 		int i;
 		char str[40];
+
+		set_vif_field_b(&vif_fields[EPR_Supported_As_Src],
+				vif_component_name[EPR_Supported_As_Src],
+				false);
 
 		/* Source PDOs */
 		for (i = 0; i < src_pdo_cnt; i++) {
@@ -3568,6 +3598,10 @@ static int init_vif_component_pd_sink_fields(
 		return 0;
 
 	set_vif_field_c(&vif_fields[PD_Sink_Header], "PD Sink");
+
+	set_vif_field_b(&vif_fields[EPR_Supported_As_Snk],
+			vif_component_name[EPR_Supported_As_Snk],
+			false);
 
 	/* Sink PDOs */
 	for (i = 0; i < pd_snk_pdo_cnt; i++) {
@@ -3694,17 +3728,17 @@ static void init_vif_component_sop_discovery_fields(
 		can_act_as_device());
 
 	if (does_respond_to_discov_sop_dfp() &&
-	    is_usb4_supported()) {
+	    IS_ENABLED(CONFIG_USB_PD_REV30)) {
 #if defined(CONFIG_USB_PD_PORT_LABEL)
 		set_vif_field_stis(&vif_fields[DFP_VDO_Port_Number],
 			vif_component_name[DFP_VDO_Port_Number],
 			NULL,
 			CONFIG_USB_PD_PORT_LABEL);
 #else
-		set_vif_field_stis(&vif_fields[DFP_VDO_Port_Number],
+		set_vif_field_itss(&vif_fields[DFP_VDO_Port_Number],
 			vif_component_name[DFP_VDO_Port_Number],
-			NULL,
-			component_index);
+			component_index,
+			NULL);
 #endif
 	}
 
@@ -3801,9 +3835,6 @@ static int gen_vif(const char *board,
 			vif->vif_field,
 			vif->vif_app_field,
 			board);
-
-	init_vif_product_fields(
-			vif->Product.vif_field);
 
 	for (component_index = 0;
 	     component_index < max_component_index;
