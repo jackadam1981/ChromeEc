@@ -109,7 +109,7 @@ static void board_usbc_init(void)
 	gpio_enable_dt_interrupt(GPIO_INT_FROM_NODELABEL(int_usb_c0_bc12));
 #endif
 }
-DECLARE_HOOK(HOOK_INIT, board_usbc_init, HOOK_PRIO_DEFAULT-1);
+DECLARE_HOOK(HOOK_INIT, board_usbc_init, HOOK_PRIO_PRE_DEFAULT);
 
 /* TCPC */
 const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_MAX_COUNT] = {

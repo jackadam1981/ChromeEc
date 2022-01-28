@@ -1183,7 +1183,7 @@ static void system_init_check_rtc_wakeup_event(void)
 	}
 }
 DECLARE_HOOK(HOOK_INIT, system_init_check_rtc_wakeup_event,
-	     HOOK_PRIO_DEFAULT - 1);
+	     HOOK_PRIO_PRE_DEFAULT);
 #endif
 
 /*****************************************************************************/

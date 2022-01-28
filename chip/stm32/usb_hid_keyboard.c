@@ -532,7 +532,7 @@ static void hid_keyboard_feature_init(void)
 			feature_report[i] = action_key[key].usage;
 	}
 }
-DECLARE_HOOK(HOOK_INIT, hid_keyboard_feature_init, HOOK_PRIO_DEFAULT - 1);
+DECLARE_HOOK(HOOK_INIT, hid_keyboard_feature_init, HOOK_PRIO_PRE_DEFAULT);
 #endif
 
 static int hid_keyboard_get_report(uint8_t report_id, uint8_t report_type,
@@ -836,5 +836,5 @@ void usb_hid_keyboard_init(void)
 	}
 }
 /* This needs to happen before usb_init (HOOK_PRIO_DEFAULT) */
-DECLARE_HOOK(HOOK_INIT, usb_hid_keyboard_init, HOOK_PRIO_DEFAULT - 1);
+DECLARE_HOOK(HOOK_INIT, usb_hid_keyboard_init, HOOK_PRIO_PRE_DEFAULT);
 #endif

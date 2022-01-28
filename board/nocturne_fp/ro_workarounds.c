@@ -110,6 +110,6 @@ static void board_init_workarounds(void)
 	gpio_enable_interrupt(GPIO_WP);
 }
 /* Run one priority level higher than the main board_init in board.c */
-DECLARE_HOOK(HOOK_INIT, board_init_workarounds, HOOK_PRIO_DEFAULT - 1);
+DECLARE_HOOK(HOOK_INIT, board_init_workarounds, HOOK_PRIO_PRE_DEFAULT);
 
 #endif /* APPLY_RESET_LOOP_FIX && SECTION_IS_RW */
