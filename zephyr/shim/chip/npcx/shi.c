@@ -47,7 +47,7 @@ static void shi_reenable_on_sysjump(void)
 	}
 }
 /* Call hook after chipset sets initial power state */
-DECLARE_HOOK(HOOK_INIT, shi_reenable_on_sysjump, HOOK_PRIO_INIT_CHIPSET + 1);
+DECLARE_HOOK(HOOK_INIT, shi_reenable_on_sysjump, HOOK_PRIO_POST_CHIPSET);
 
 static void shi_disable(void)
 {
