@@ -1,0 +1,133 @@
+/* Copyright 2021 The Chromium OS Authors. All rights reserved.
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+/ {
+	named-gpios {
+		compatible = "named-gpios";
+
+		lid_open: lid_open {
+			gpios = <&gpio_200_236 22 GPIO_INPUT>;
+			enum-name = "GPIO_LID_OPEN";
+		};
+
+		gsc_ec_pwr_btn_odl: power_btn {
+			gpios = <&gpio_100_136 13 GPIO_INPUT>;
+			enum-name = "GPIO_POWER_BUTTON_L";
+		};
+
+		wp_l {
+			gpios = <&gpio_000_036 12 GPIO_INPUT>;
+			enum-name = "GPIO_WP_L";
+		};
+
+		ec_chg_led_y_c1 {
+			gpios = <&gpio_140_176 15 GPIO_OUT_LOW>;
+			enum-name = "GPIO_EC_CHG_LED_Y_C1";
+		};
+
+		ec_chg_led_b_c1 {
+			gpios = <&gpio_140_176 11 GPIO_OUT_LOW>;
+			enum-name = "GPIO_EC_CHG_LED_B_C1";
+		};
+
+		packet_mode_en {
+			gpios = <&gpio_000_036 29 GPIO_OUT_LOW>;
+			enum-name = "GPIO_PACKET_MODE_EN";
+		};
+		acok_od: acok_od {
+			gpios = <&gpio_140_176 14 GPIO_INPUT>;
+			enum-name = "GPIO_AC_PRESENT";
+		};
+		ec_kso_02_inv {
+			gpios = <&gpio_040_076 6 GPIO_OUT_LOW>;
+			enum-name = "GPIO_KBD_KSO2";
+		};
+		pch_wake_odl {
+			gpios = <&gpio_040_076 9 GPIO_ODR_HIGH>;
+			enum-name = "GPIO_EC_PCH_WAKE_ODL";
+		};
+		pch_int_odl {
+			gpios = <&gpio_100_136 23 GPIO_ODR_HIGH>;
+			enum-name = "GPIO_EC_INT_L";
+		};
+		pg_ec_dsw_pwrok {
+			gpios = <&gpio_240_276 4 GPIO_INPUT>;
+			enum-name = "GPIO_PG_EC_DSW_PWROK";
+		};
+		en_s5_rails {
+			gpios = <&gpio_000_036 21 GPIO_OUT_LOW>;
+			enum-name = "GPIO_EN_S5_RAILS";
+		};
+		sys_rst_odl {
+			gpios = <&gpio_040_076 16 GPIO_ODR_HIGH>;
+			enum-name = "GPIO_SYS_RESET_L";
+		};
+		pg_ec_rsmrst_odl {
+			gpios = <&gpio_200_236 17 GPIO_INPUT>;
+			enum-name = "GPIO_PG_EC_RSMRST_ODL";
+		};
+		ec_pch_rsmrst_odl {
+			gpios = <&gpio_040_076 12 GPIO_OUT_LOW>;
+			enum-name = "GPIO_PCH_RSMRST_L";
+		};
+		pg_ec_all_sys_pwrgd {
+			gpios = <&gpio_040_076 15 GPIO_INPUT>;
+			enum-name = "GPIO_PG_EC_ALL_SYS_PWRGD";
+		};
+		slp_s0_l {
+			gpios = <&gpio_240_276 3 GPIO_INPUT>;
+			enum-name = "GPIO_PCH_SLP_S0_L";
+		};
+		slp_s3_l {
+			gpios = <&gpio_140_176 17 GPIO_INPUT>;
+			enum-name = "GPIO_PCH_SLP_S3_L";
+		};
+		vccst_pwrgd_od {
+			gpios = <&gpio_200_236 7 GPIO_ODR_LOW>;
+			enum-name = "GPIO_VCCST_PWRGD_OD";
+		};
+		ec_prochot_odl {
+			gpios = <&gpio_040_076 17 GPIO_ODR_HIGH>;
+			enum-name = "GPIO_CPU_PROCHOT";
+		};
+		ec_pch_pwr_btn_odl {
+			gpios = <&gpio_000_036 14 GPIO_ODR_HIGH>;
+			enum-name = "GPIO_PCH_PWRBTN_L";
+		};
+		slp_sus_l {
+			gpios = <&gpio_200_236 23 GPIO_INPUT>;
+			enum-name = "GPIO_SLP_SUS_L";
+		};
+		pch_pwrok {
+			gpios = <&gpio_240_276 13 GPIO_OUT_LOW>;
+			enum-name = "GPIO_PCH_PWROK";
+		};
+		ec_pch_sys_pwrok {
+			gpios = <&gpio_200_236 2 GPIO_OUT_LOW>;
+			enum-name = "GPIO_EC_PCH_SYS_PWROK";
+		};
+		imvp9_vrrdy_od {
+			gpios = <&gpio_040_076 10 GPIO_INPUT>;
+			enum-name = "GPIO_IMVP9_VRRDY_OD";
+		};
+		ec_edp_bl_en {
+			gpios = <&gpio_000_036 18 GPIO_OUT_HIGH>;
+			enum-name = "GPIO_ENABLE_BACKLIGHT";
+		};
+		ec_prochot_in_l {
+			gpios = <&gpio_000_036 2 GPIO_INPUT>;
+			enum-name = "GPIO_EC_PROCHOT_IN_L";
+		};
+	};
+
+	hibernate-wake-pins {
+		compatible = "cros-ec,hibernate-wake-pins";
+		wakeup-pins = <
+			&acok_od
+			&gsc_ec_pwr_btn_odl
+			&lid_open
+		>;
+	};
+};
