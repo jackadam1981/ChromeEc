@@ -1,0 +1,280 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e33cade6_4b3b46d8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-01-28T22:15:49Z",
+      "side": 1,
+      "message": "You don\u0027t necessarily need to list out the name of each function that you\u0027re adding. Instead, describe the motivation of this change and what functionality it introduces/fixes: https://chromium.googlesource.com/chromiumos/docs/+/HEAD/contributing.md#commit-messages",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 25
+      },
+      "revId": "4ad5d8fadf54fb32ab6864d45e952a3b3d436141",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "59b472b8_228e0f3b",
+        "filename": "util/fptool.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-01-28T22:15:49Z",
+      "side": 1,
+      "message": "Looks like there are some spacing changes here. If you want the spacing changes, please move the change to the commit that introduced this text (I think it was the last commit).",
+      "range": {
+        "startLine": 111,
+        "startChar": 1,
+        "endLine": 115,
+        "endChar": 31
+      },
+      "revId": "4ad5d8fadf54fb32ab6864d45e952a3b3d436141",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7539a8d7_c8188d1a",
+        "filename": "util/fptool.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-01-28T22:15:49Z",
+      "side": 1,
+      "message": "I see that you\u0027re trying to make it only accessible to `get_platform_name()`, but I think it\u0027s fine to move this function to the top level. That will make it easier to add tests.\n\nAlso, there is Python code for parsing the `/etc/lsb-release` here: https://chromium.googlesource.com/chromiumos/docs/+/HEAD/lsb-release.md#python. Probably best to just use that and add a link to it for reference.",
+      "range": {
+        "startLine": 155,
+        "startChar": 3,
+        "endLine": 166,
+        "endChar": 74
+      },
+      "revId": "4ad5d8fadf54fb32ab6864d45e952a3b3d436141",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75064f6a_766f4b5d",
+        "filename": "util/fptool.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-01-28T22:15:49Z",
+      "side": 1,
+      "message": "I think by default this splits every `-`, so wouldn\u0027t work for `hatch-arc-r`. Look at `maxsplit` arg. Also, double-check that it works in the case where there are no `-` (e.g., `hatch`).",
+      "range": {
+        "startLine": 189,
+        "startChar": 25,
+        "endLine": 189,
+        "endChar": 35
+      },
+      "revId": "4ad5d8fadf54fb32ab6864d45e952a3b3d436141",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e183a9c2_df226b1d",
+        "filename": "util/fptool.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-01-28T22:15:49Z",
+      "side": 1,
+      "message": "Better to use readable variable names: https://google.github.io/styleguide/pyguide.html#316-naming\n\n`firmware_file_names` would work here",
+      "range": {
+        "startLine": 200,
+        "startChar": 4,
+        "endLine": 200,
+        "endChar": 7
+      },
+      "revId": "4ad5d8fadf54fb32ab6864d45e952a3b3d436141",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76273719_757b7046",
+        "filename": "util/fptool.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-01-28T22:15:49Z",
+      "side": 1,
+      "message": "Any reason you\u0027re not using the `f-string` format here like you did elsewhere?\n\ne.g., `/opt/google/biod/fw/{board}/*.bin`",
+      "range": {
+        "startLine": 200,
+        "startChar": 20,
+        "endLine": 200,
+        "endChar": 60
+      },
+      "revId": "4ad5d8fadf54fb32ab6864d45e952a3b3d436141",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9cfc1bb7_e3adafea",
+        "filename": "util/fptool.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-01-28T22:15:49Z",
+      "side": 1,
+      "message": "Go ahead and use the full word: `firmware`",
+      "range": {
+        "startLine": 202,
+        "startChar": 66,
+        "endLine": 202,
+        "endChar": 68
+      },
+      "revId": "4ad5d8fadf54fb32ab6864d45e952a3b3d436141",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "231a7440_161772be",
+        "filename": "util/fptool.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-01-28T22:15:49Z",
+      "side": 1,
+      "message": "`firmware`",
+      "range": {
+        "startLine": 205,
+        "startChar": 44,
+        "endLine": 205,
+        "endChar": 46
+      },
+      "revId": "4ad5d8fadf54fb32ab6864d45e952a3b3d436141",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee37849a_113aba7f",
+        "filename": "util/fptool.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-01-28T22:15:49Z",
+      "side": 1,
+      "message": "Can you specify the type contained in the list? I would expect it to be `list[int]` (e.g., `pids \u003d [101, 10, 50]`, but looks like it might be `list[str]` as written.",
+      "range": {
+        "startLine": 210,
+        "startChar": 30,
+        "endLine": 210,
+        "endChar": 34
+      },
+      "revId": "4ad5d8fadf54fb32ab6864d45e952a3b3d436141",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "991c7270_ed615ef2",
+        "filename": "util/fptool.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-01-28T22:15:49Z",
+      "side": 1,
+      "message": "FYI, this may be quite large. If it works, it\u0027s ok with me, but otherwise you may need to iterate.",
+      "range": {
+        "startLine": 223,
+        "startChar": 12,
+        "endLine": 223,
+        "endChar": 37
+      },
+      "revId": "4ad5d8fadf54fb32ab6864d45e952a3b3d436141",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d282cc5_9fa03317",
+        "filename": "util/fptool.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-01-28T22:15:49Z",
+      "side": 1,
+      "message": "Looks like this is not imported.",
+      "range": {
+        "startLine": 228,
+        "startChar": 19,
+        "endLine": 228,
+        "endChar": 21
+      },
+      "revId": "4ad5d8fadf54fb32ab6864d45e952a3b3d436141",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "343f6748_601802ff",
+        "filename": "util/fptool.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-01-28T22:15:49Z",
+      "side": 1,
+      "message": "Can you clarify what these values represent? Generally it\u0027s nice if the code is self-describing (as opposed to just adding comments). One way to do it would be to write it something like this:\n\n```\nnumeric_pid \u003d proc.split(\u0027/\u0027)[2]\nprocess_name \u003d link\npids.append(f\u0027PID {numeric_pid} -\u003e {process_name}\u0027)\n```\n\n(I\u0027m not sure the names are right, since I didn\u0027t check to see what these two values actually mean.)",
+      "range": {
+        "startLine": 229,
+        "startChar": 33,
+        "endLine": 229,
+        "endChar": 46
+      },
+      "revId": "4ad5d8fadf54fb32ab6864d45e952a3b3d436141",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
