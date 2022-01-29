@@ -72,6 +72,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8950bf8_ed6d02ec",
+        "filename": "zephyr/drivers/cros_system/cros_system_it8xxx2.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-01-29T00:59:41Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "253a60fc_07884c08",
+      "range": {
+        "startLine": 226,
+        "startChar": 1,
+        "endLine": 227,
+        "endChar": 21
+      },
+      "revId": "eebe3bd96279651aa6d313177705136013a83d62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4bf48a52_69df948e",
@@ -299,6 +323,30 @@
       "side": 1,
       "message": "Could you file a bug for this broken code you mentioned? This RTC wake source used to be functional and we verified it, per b/193583152.\n\nThe RTC interrupt pin is configured in the RTC driver (shimmed), check http://b/194710429#comment8. Its interrupt handler is also inside the driver. It is not a function in the EC-OS, like most of the other GPIOs. Creating a dummy handler and following the EC-OS way seems duplicated. Will this dummy handler break the handler already registered by the driver?\n\nCC\u0027ed Sam",
       "parentUuid": "1d1b7b30_a932df3b",
+      "range": {
+        "startLine": 338,
+        "startChar": 0,
+        "endLine": 345,
+        "endChar": 6
+      },
+      "revId": "eebe3bd96279651aa6d313177705136013a83d62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "305514aa_4f062378",
+        "filename": "zephyr/projects/trogdor/lazor/gpio.dts",
+        "patchSetId": 3
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-01-29T00:59:41Z",
+      "side": 1,
+      "message": "So I think part of the confusion here is the wrong naming of this pin.\nThe original name I think should be gpio_rts_ec_wake_odl instead of gpio_rtc_ec_wake_odl\nI just copied the name (hey, I\u0027m just following what\u0027s in the config already :-)\n\nThe wrong naming perhaps suggests that this pin is part of the RTC, when it is likely complete unrelated.\nAnd it appears that the RTC interrupt is enabled completely separately via system_set_rtc_alarm.\n\nI can rename the pin so that it matches trogdor. It does look like a typo.\nLooking at ec/board/lazor/gpio.inc, it says \"EC_RST_ODL\".",
+      "parentUuid": "e172e8ce_3b1c4291",
       "range": {
         "startLine": 338,
         "startChar": 0,
