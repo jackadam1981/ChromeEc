@@ -1,0 +1,280 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "afded44f_e2caac1b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-01-29T01:00:40Z",
+      "side": 1,
+      "message": "period at end of sentence",
+      "range": {
+        "startLine": 10,
+        "startChar": 50,
+        "endLine": 10,
+        "endChar": 51
+      },
+      "revId": "6d464280d55b8f9a5b1738783d4e37988dcd3fdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c66aff8c_b84a4992",
+        "filename": "util/fptool.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 438,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-01-29T01:00:40Z",
+      "side": 1,
+      "message": "Slightly more \"Pythonic\" way of doing this is to use a list for the arguments and then join them as a string: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/test/run_device_tests.py;l\u003d214-218;drc\u003d2de3d51b0a32c9f26dea0dd3d430f1f7f9adab41",
+      "range": {
+        "startLine": 438,
+        "startChar": 4,
+        "endLine": 438,
+        "endChar": 56
+      },
+      "revId": "6d464280d55b8f9a5b1738783d4e37988dcd3fdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07ec6a59_a4baf1f5",
+        "filename": "util/fptool.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 448,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-01-29T01:00:40Z",
+      "side": 1,
+      "message": "See note in earlier commit about using a single variable (e.g., `args.remove_flash_write_protect`)",
+      "range": {
+        "startLine": 448,
+        "startChar": 20,
+        "endLine": 448,
+        "endChar": 48
+      },
+      "revId": "6d464280d55b8f9a5b1738783d4e37988dcd3fdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d63ffe6_c2535ce3",
+        "filename": "util/fptool.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 451,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-01-29T01:00:40Z",
+      "side": 1,
+      "message": "See note in earlier commit about using a single variable (e.g., `args.remove_flash_read_protect`)",
+      "range": {
+        "startLine": 451,
+        "startChar": 15,
+        "endLine": 451,
+        "endChar": 47
+      },
+      "revId": "6d464280d55b8f9a5b1738783d4e37988dcd3fdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61276fcf_e8716965",
+        "filename": "util/fptool.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 471,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-01-29T01:00:40Z",
+      "side": 1,
+      "message": "Can remove this comment now. The code is self explanatory due to the function name.",
+      "range": {
+        "startLine": 471,
+        "startChar": 0,
+        "endLine": 471,
+        "endChar": 43
+      },
+      "revId": "6d464280d55b8f9a5b1738783d4e37988dcd3fdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f86d5e5_f08d08ff",
+        "filename": "util/fptool.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 528,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-01-29T01:00:40Z",
+      "side": 1,
+      "message": "This check is used in a few places. I would introduce a helper function for it.\n\ne.g., `character_device_exists(...)`\n\nSince the logic is first used in the last commit, you should add it in that commit (and replace the two instances in that one).",
+      "range": {
+        "startLine": 527,
+        "startChar": 4,
+        "endLine": 528,
+        "endChar": 70
+      },
+      "revId": "6d464280d55b8f9a5b1738783d4e37988dcd3fdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a4080c6_7a29cf84",
+        "filename": "util/fptool.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 544,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-01-29T01:00:40Z",
+      "side": 1,
+      "message": "It\u0027s ok to have long URLs on one line, even if the tools complain. Otherwise it\u0027s hard to copy/paste.",
+      "range": {
+        "startLine": 542,
+        "startChar": 0,
+        "endLine": 544,
+        "endChar": 34
+      },
+      "revId": "6d464280d55b8f9a5b1738783d4e37988dcd3fdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f27b400a_0fc611d8",
+        "filename": "util/fptool.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 546,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-01-29T01:00:40Z",
+      "side": 1,
+      "message": "`ms for`?",
+      "range": {
+        "startLine": 546,
+        "startChar": 21,
+        "endLine": 546,
+        "endChar": 26
+      },
+      "revId": "6d464280d55b8f9a5b1738783d4e37988dcd3fdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eef54f82_af54acd3",
+        "filename": "util/fptool.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 551,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-01-29T01:00:40Z",
+      "side": 1,
+      "message": "Formatting/wrapping seems weird here",
+      "range": {
+        "startLine": 547,
+        "startChar": 0,
+        "endLine": 551,
+        "endChar": 0
+      },
+      "revId": "6d464280d55b8f9a5b1738783d4e37988dcd3fdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "50218c4b_18116124",
+        "filename": "util/fptool.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 779,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-01-29T01:00:40Z",
+      "side": 1,
+      "message": "Is there a reason this is changing in this commit? If not, move this change to the original commit that introduced this code.",
+      "range": {
+        "startLine": 776,
+        "startChar": 0,
+        "endLine": 779,
+        "endChar": 53
+      },
+      "revId": "6d464280d55b8f9a5b1738783d4e37988dcd3fdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d149665b_f02f8245",
+        "filename": "util/fptool.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 790,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-01-29T01:00:40Z",
+      "side": 1,
+      "message": "Is there a reason this is changing in this commit? If not, move this change to the original commit that introduced this code.",
+      "range": {
+        "startLine": 786,
+        "startChar": 0,
+        "endLine": 790,
+        "endChar": 43
+      },
+      "revId": "6d464280d55b8f9a5b1738783d4e37988dcd3fdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20f7b928_aab54f3e",
+        "filename": "util/fptool.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 812,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-01-29T01:00:40Z",
+      "side": 1,
+      "message": "Is there a reason this is changing in this commit? If not, move this change to the original commit that introduced this code.",
+      "range": {
+        "startLine": 810,
+        "startChar": 0,
+        "endLine": 812,
+        "endChar": 43
+      },
+      "revId": "6d464280d55b8f9a5b1738783d4e37988dcd3fdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
