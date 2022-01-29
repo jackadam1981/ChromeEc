@@ -355,6 +355,30 @@
       },
       "revId": "eebe3bd96279651aa6d313177705136013a83d62",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9ff90fa_2676930c",
+        "filename": "zephyr/projects/trogdor/lazor/gpio.dts",
+        "patchSetId": 3
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-01-29T01:06:51Z",
+      "side": 1,
+      "message": "Ah, the plot thickens..\n\nherobrine has a gpio_rtc_ec_wake_odl, and it is set in the wake_pins, but this seems to be configured in the RTC driver, so it should not appear in the wake-pins.\nI can fix that.\n\nAlso, byra has this interesting bit of config in nct3808_alert_1.\nIt sets irq-gpios to GPIO e 0, but this GPIO is in named-gpios as usb_c0_c2_tcpc_int_odl\nOK, lots of brokenness here.",
+      "parentUuid": "305514aa_4f062378",
+      "range": {
+        "startLine": 338,
+        "startChar": 0,
+        "endLine": 345,
+        "endChar": 6
+      },
+      "revId": "eebe3bd96279651aa6d313177705136013a83d62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
