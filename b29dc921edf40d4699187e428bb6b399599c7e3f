@@ -1,0 +1,199 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d2e4a4be_ea911b68",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-01-29T00:39:34Z",
+      "side": 1,
+      "message": "period at end of sentence",
+      "range": {
+        "startLine": 10,
+        "startChar": 50,
+        "endLine": 10,
+        "endChar": 51
+      },
+      "revId": "b29dc921edf40d4699187e428bb6b399599c7e3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e56e91c_11e3f9f1",
+        "filename": "util/fptool.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 546,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-01-29T00:39:34Z",
+      "side": 1,
+      "message": "This looks like it should be part of the commit that introduced the config (i.e., just rename it in that commit).",
+      "range": {
+        "startLine": 538,
+        "startChar": 0,
+        "endLine": 546,
+        "endChar": 13
+      },
+      "revId": "b29dc921edf40d4699187e428bb6b399599c7e3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80f48bff_68d136ef",
+        "filename": "util/fptool.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 548,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-01-29T00:39:34Z",
+      "side": 1,
+      "message": "PEP 8: E303 too many blank lines (2)",
+      "revId": "b29dc921edf40d4699187e428bb6b399599c7e3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16b202b4_f2c994c2",
+        "filename": "util/fptool.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 586,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-01-29T00:39:34Z",
+      "side": 1,
+      "message": "I think you might be able to just use:\n\n```\ndatetime.datetime.now().isoformat()\n```",
+      "range": {
+        "startLine": 583,
+        "startChar": 0,
+        "endLine": 586,
+        "endChar": 59
+      },
+      "revId": "b29dc921edf40d4699187e428bb6b399599c7e3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d863b681_dd8a3481",
+        "filename": "util/fptool.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 590,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-01-29T00:39:34Z",
+      "side": 1,
+      "message": "In the original `flash_fp_mcu`, is there a check for `gpiochip`: https://chromium.googlesource.com/chromiumos/platform/ec/+/b29dc921edf40d4699187e428bb6b399599c7e3f/util/flash_fp_mcu#728.\n\nIs that now done in another place in this script?",
+      "revId": "b29dc921edf40d4699187e428bb6b399599c7e3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb39c7d0_4705d641",
+        "filename": "util/fptool.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 591,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-01-29T00:39:34Z",
+      "side": 1,
+      "message": "See comment in earlier CL where I suggest only using one variable (e.g., `services`) instead of variables for the positive and negative cases.",
+      "range": {
+        "startLine": 591,
+        "startChar": 10,
+        "endLine": 591,
+        "endChar": 26
+      },
+      "revId": "b29dc921edf40d4699187e428bb6b399599c7e3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e01b10cf_e8b7fa2c",
+        "filename": "util/fptool.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 595,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-01-29T00:39:34Z",
+      "side": 1,
+      "message": "I think it will work without the `+`. Can you check?",
+      "range": {
+        "startLine": 595,
+        "startChar": 23,
+        "endLine": 595,
+        "endChar": 25
+      },
+      "revId": "b29dc921edf40d4699187e428bb6b399599c7e3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2eefbcc_d4ba98b4",
+        "filename": "util/fptool.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 610,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-01-29T00:39:34Z",
+      "side": 1,
+      "message": "Let\u0027s pass these as a list of strings.",
+      "range": {
+        "startLine": 610,
+        "startChar": 33,
+        "endLine": 610,
+        "endChar": 77
+      },
+      "revId": "b29dc921edf40d4699187e428bb6b399599c7e3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e590453f_fb8107ee",
+        "filename": "util/fptool.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 635,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-01-29T00:39:34Z",
+      "side": 1,
+      "message": "I think it will work without the `+`. Can you check?",
+      "range": {
+        "startLine": 635,
+        "startChar": 23,
+        "endLine": 635,
+        "endChar": 25
+      },
+      "revId": "b29dc921edf40d4699187e428bb6b399599c7e3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
