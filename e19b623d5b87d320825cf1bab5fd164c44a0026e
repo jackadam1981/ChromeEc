@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c919585_de9ab729",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-01-29T17:43:57Z",
+      "side": 1,
+      "message": "The error doesn\u0027t seem relevant:\n\nERROR: [test-drivers:singleimage]devicetree error: \u0027irq-pin\u0027 is marked as required in \u0027properties:\u0027 in /mnt/host/source/src/platform/ec/zephyr/dts/bindings/gpio/cros-ec,gpio-interrupts.yaml, but does not appear in \u003cNode /gpio-interrupts/test in \u0027/mnt/host/source/src/third_party/zephyr/main/misc/empty_file.c\u0027\u003e\n\nbuildall passes. Trying again.",
+      "revId": "e19b623d5b87d320825cf1bab5fd164c44a0026e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
