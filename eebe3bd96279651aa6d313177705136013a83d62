@@ -427,6 +427,30 @@
       },
       "revId": "eebe3bd96279651aa6d313177705136013a83d62",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b4c3b01d_120e3a91",
+        "filename": "zephyr/projects/trogdor/lazor/gpio.dts",
+        "patchSetId": 3
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-01-29T02:33:46Z",
+      "side": 1,
+      "message": "OK np, I can only look at the code that is already there to try and\nfigure out the best thing to do. The intent of the code seems clear to me,\nthat the EC chip disables all interrupts and only enables interrupts for the pins listed in the wake-pins. If you say that the interrupts do not need to be enabled for these pins, then I am not sure why the code is doing that.\n\nPerhaps Sam was using one of the inputs that were not included in EC_CROS_GPIO_INTERRUPTS, and so was a no-op (see my comments earlier about why).\n\nSo my key goal here is to migrate away from gpio_enable_interrupt to\nthe zephyr API (which we wrap with gpio_enable_dt_interrupt).\n\nSo I hear your concern about converting wake-pins to wake-irq, and I am open to your suggestion about how we do it otherwise - the key problem here is if we just reference the GPIO how does the code in system_npcx_set_wakeup_gpios_before_hibernate know what interrupt flags to set (i.e GPIO_INT_ flags)?",
+      "parentUuid": "b856c80b_a7f32516",
+      "range": {
+        "startLine": 338,
+        "startChar": 0,
+        "endLine": 345,
+        "endChar": 6
+      },
+      "revId": "eebe3bd96279651aa6d313177705136013a83d62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
