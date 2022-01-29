@@ -111,64 +111,23 @@ struct gpio_interrupt_config power_seq_intr_gpios[] = {
 
 const int power_seq_intr_gpios_count = ARRAY_SIZE(power_seq_intr_gpios);
 
-/* Power signals list */
+#if (DT_NODE_EXISTS(POWER_SIGNALS_LIST_NODE))
 const struct power_signal_gpio_info power_signal_gpio_list[] = {
-	{
-		.net_name = GPIO_NET_NAME(PCH_EC_SLP_S0_L),
-		.power_sig = X86_SLP_S0_DEASSERTED,
-		.flags = POWER_SIGNAL_ACTIVE_HIGH,
-		.name = "SLP_S0_DEASSERTED",
-	},
-	{
-		.net_name = GPIO_NET_NAME(PCH_EC_SLP_SUS_L),
-		.power_sig = X86_SLP_SUS_DEASSERTED,
-		.flags = POWER_SIGNAL_ACTIVE_HIGH,
-		.name = "SLP_SUS_DEASSERTED",
-	},
-	{
-		.net_name = GPIO_NET_NAME(VR_PG_EC_RSMRST_ODL),
-		.power_sig = X86_RSMRST_L_PGOOD,
-		.flags = POWER_SIGNAL_ACTIVE_HIGH,
-		.name = "RSMRST_L_PGOOD",
-	},
-	{
-		.net_name = GPIO_NET_NAME(VR_EC_DSW_PWROK),
-		.power_sig = X86_DSW_PWROK,
-		.flags = POWER_SIGNAL_ACTIVE_HIGH,
-		.name = "DSW_DPWROK",
-	},
-	{
-		.net_name = GPIO_NET_NAME(PCH_EC_SLP_S3_L),
-		.power_sig = X86_SLP_S3_DEASSERTED,
-		.flags = POWER_SIGNAL_ACTIVE_HIGH,
-		.name = "SLP_S3_DEASSERTED",
-	},
-	{
-		.net_name = GPIO_NET_NAME(VR_EC_ALL_SYS_PWRGD),
-		.power_sig = X86_ALL_SYS_PGOOD,
-		.flags = POWER_SIGNAL_ACTIVE_HIGH,
-		.name = "ALL_SYS_PWRGD",
-	},
+	DT_FOREACH_CHILD(
+		POWER_SIGNALS_LIST_NODE,
+		GEN_GPIO_POWER_SIGNAL_ENTRY)
 };
 
 const int power_signal_gpio_count = ARRAY_SIZE(power_signal_gpio_list);
 
 const struct power_signal_vw_info power_signal_vw_list[] = {
-	{
-		.vw_signal = ESPI_VWIRE_SIGNAL_SLP_S4,
-		.power_sig = X86_SLP_S4_DEASSERTED,
-		.flags = POWER_SIGNAL_ACTIVE_HIGH,
-		.name = "SLP_S4_DEASSERTED",
-	},
-	{
-		.vw_signal = ESPI_VWIRE_SIGNAL_SLP_S5,
-		.power_sig = X86_SLP_S5_DEASSERTED,
-		.flags = POWER_SIGNAL_ACTIVE_HIGH,
-		.name = "SLP_S5_DEASSERTED",
-	},
+	DT_FOREACH_CHILD(
+		POWER_SIGNALS_LIST_NODE,
+		GEN_VW_POWER_SIGNAL_ENTRY)
 };
 
 const int power_signal_vw_count = ARRAY_SIZE(power_signal_vw_list);
+#endif /* DT_NODE_EXISTS(POWER_SIGNALS_LIST_NODE) */
 
 void ap_off(void)
 {
