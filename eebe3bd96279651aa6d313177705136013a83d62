@@ -403,6 +403,30 @@
       },
       "revId": "eebe3bd96279651aa6d313177705136013a83d62",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b856c80b_a7f32516",
+        "filename": "zephyr/projects/trogdor/lazor/gpio.dts",
+        "patchSetId": 3
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-01-29T02:14:06Z",
+      "side": 1,
+      "message": "The names of this RTC pin and the EC_RST_ODL are similar and easy to be confused 😊\n\nBTW, I still doubt the value of converting the GPIO config to the interrupt config. \n\nThe hibernate wake pin is not necessary to be an interrupt. The interrupt config is a wrapper of the GPIO. This conversion requires creating an extra wrapper even it is not necessary.\n \nThe code uses the `gpio_enable_interrupt(wakeup_pin_list[i]);` and treats the pins like interrupt. This is the only place the `hibernate-wake-pins` dt node is used. I doubt this code is just a no-op. Probably a copy of the legacy code from the EC-OS. As I recall that Sam discovered that modifying  `hibernate-wake-pins` node had no effect. Need to modify the `vsby-psl-in-list` node instead. Likely this `hibernate-wake-pins` and the related code can be totally removed. Just use the upstream driver way. Sam, do you have a bug for it?\n\nPlease give me some time to follow it up.",
+      "parentUuid": "d9b7a991_0ef27277",
+      "range": {
+        "startLine": 338,
+        "startChar": 0,
+        "endLine": 345,
+        "endChar": 6
+      },
+      "revId": "eebe3bd96279651aa6d313177705136013a83d62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
