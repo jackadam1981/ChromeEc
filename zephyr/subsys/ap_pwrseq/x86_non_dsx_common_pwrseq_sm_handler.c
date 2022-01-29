@@ -65,33 +65,14 @@ const struct gpio_config *get_gpio_config_from_net_name(const char *net_name)
 	return NULL;
 }
 
-static const char *get_power_signal_net_name(enum power_signal signal)
+static const struct pwrseq_gpio_int_config *get_intr_config_from_power_signal(
+	enum power_signal signal)
 {
 	int i;
 
 	for (i = 0; i < power_signal_gpio_count; i++) {
 		if (signal == power_signal_gpio_list[i].power_sig)
-			return power_signal_gpio_list[i].net_name;
-	}
-	return NULL;
-}
-
-static const struct gpio_interrupt_config *get_intr_config_from_power_signal(
-	enum power_signal signal)
-{
-	const struct gpio_interrupt_config *intr;
-	const char *net_name;
-	int i;
-
-	net_name = get_power_signal_net_name(signal);
-
-	if (!net_name)
-		return NULL;
-
-	for (i = 0; i < power_seq_intr_gpios_count; i++) {
-		intr = &power_seq_intr_gpios[i];
-		if (!strcmp(intr->net_name, net_name))
-			return intr;
+			return &power_signal_gpio_list[i].int_config;
 	}
 	return NULL;
 }
@@ -163,25 +144,25 @@ static int check_power_rails_enabled(void)
 
 int power_signal_disable_interrupt(enum power_signal signal)
 {
-	const struct gpio_interrupt_config *intr;
+	const struct pwrseq_gpio_int_config *intr;
 
 	intr = get_intr_config_from_power_signal(signal);
 
 	if (intr)
-		return gpio_pin_interrupt_configure(intr->config->port,
-						    intr->config->pin,
+		return gpio_pin_interrupt_configure(intr->port,
+						    intr->pin,
 						    GPIO_INT_DISABLE);
 	return -EINVAL;
 }
 
 int power_signal_enable_interrupt(enum power_signal signal)
 {
-	const struct gpio_interrupt_config *intr;
+	const struct pwrseq_gpio_int_config *intr;
 
 	intr = get_intr_config_from_power_signal(signal);
 	if (intr)
-		return gpio_pin_interrupt_configure(intr->config->port,
-						    intr->config->pin,
+		return gpio_pin_interrupt_configure(intr->port,
+						    intr->pin,
 						    intr->intr_flags);
 	return -EINVAL;
 }
@@ -221,9 +202,9 @@ int power_wait_signals(uint32_t want)
 }
 
 __attribute__((weak)) int power_signal_gpio_is_asserted(
-		const struct power_signal_gpio_info *s)
+	const struct power_signal_gpio_info *s)
 {
-	return gpio_get_lvl(s->net_name) ==
+	return gpio_pin_get(s->int_config.port, s->int_config.pin) ==
 		!!(s->flags & POWER_SIGNAL_ACTIVE_STATE);
 }
 
@@ -298,13 +279,13 @@ void power_signal_interrupt(const struct device *gpiodev,
 			uint32_t pin)
 {
 	int i;
-	const struct gpio_interrupt_config *intr_config = NULL;
+	const struct pwrseq_gpio_int_config *intr_config = NULL;
 
-	for (i = 0; i < power_seq_intr_gpios_count; i++) {
-		if (gpiodev == power_seq_intr_gpios[i].config->port &&
-			pin == BIT(power_seq_intr_gpios[i].config->pin)) {
+	for (i = 0; i < power_signal_gpio_count; i++) {
+		intr_config = &power_signal_gpio_list[i].int_config;
+		if (gpiodev == intr_config->port &&
+				pin == BIT(intr_config->pin)) {
 			/* TODO: Monitor interrupt storm */
-			intr_config = &power_seq_intr_gpios[i];
 			break;
 		}
 	}
@@ -353,41 +334,37 @@ static void pwrseq_gpio_init(void)
 			ret, gpio->net_name, gpio->port_name,
 			gpio->pin, gpio->flags);
 
-	for (i = 0; i < power_seq_intr_gpios_count; i++) {
-		const struct gpio_config *config;
+	/* Initialize GPIO interrupts */
+	for (i = 0; i < power_signal_gpio_count; i++) {
+		struct pwrseq_gpio_int_config *int_config;
 
-		config = get_gpio_config_from_net_name(
-				power_seq_intr_gpios[i].net_name);
-		if (config == NULL) {
-			LOG_ERR("Can't find GPIO %s device config",
-				power_seq_intr_gpios[i].net_name);
-			break;
-		}
-
-		power_seq_intr_gpios[i].config = config;
+		int_config = &power_signal_gpio_list[i].int_config;
 
 		/* Configure interrupt */
-		gpio_init_callback(&power_seq_intr_gpios[i].intr_cb,
+		gpio_init_callback(&int_config->intr_cb,
 					power_signal_interrupt,
-					BIT(config->pin));
-		ret = gpio_add_callback(power_seq_intr_gpios[i].config->port,
-			&power_seq_intr_gpios[i].intr_cb);
+					BIT(int_config->pin));
+
+		ret = gpio_add_callback(int_config->port,
+			&int_config->intr_cb);
 
 		if (!ret) {
-			if (power_seq_intr_gpios[i].disable_at_boot)
+			if (power_signal_gpio_list[i].flags &
+					POWER_SIGNAL_DISABLE_INT_ON_BOOT)
 				gpio_pin_interrupt_configure(
-						config->port,
-						config->pin,
+						int_config->port,
+						int_config->pin,
 						GPIO_INT_DISABLE);
 			else
 				gpio_pin_interrupt_configure(
-					config->port,
-					config->pin,
-					power_seq_intr_gpios[i].intr_flags);
+					int_config->port,
+					int_config->pin,
+					int_config->intr_flags);
 		} else {
 			LOG_ERR("Failed GPIO interrupt callback i=%d ret=%d",
 					i, ret);
 		}
+
 	}
 }
 
@@ -609,10 +586,11 @@ static int powerinfo_handler(const struct shell *shell, size_t argc,
 							char **argv)
 {
 	int state;
-
 	state = pwr_sm_get_state();
+
 	shell_fprintf(shell, SHELL_INFO, "Power state = %d (%s)\n",
 					state, pwrsm_dbg[state]);
+
 	return 0;
 }
 

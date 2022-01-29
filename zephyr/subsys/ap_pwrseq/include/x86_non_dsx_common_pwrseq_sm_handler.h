@@ -69,14 +69,11 @@
 #define POWER_SEQ_GPIO_PRESENT(node) \
 	DT_NODE_HAS_STATUS(DT_NODELABEL(node), okay)
 
-/* GPIO interrupt */
-#define POWER_SEQ_INTR_GPIO(node) \
-	.net_name = GPIO_NET_NAME(node), \
-	.intr_flags = GPIO_INT_EDGE_BOTH
-
 #define DT_DRV_COMPAT ap_pwrseq
 
+/* Power signal GPIO pin flags */
 #define POWER_SIGNAL_ACTIVE_STATE BIT(0)
+#define POWER_SIGNAL_DISABLE_INT_ON_BOOT BIT(1)
 #define POWER_SIGNAL_ACTIVE_LOW   0
 #define POWER_SIGNAL_ACTIVE_HIGH  BIT(0)
 
@@ -103,9 +100,8 @@
  * Each board must provide its signal list and a corresponding enum
  * power_signal.
  */
-/* TODO: Add runtime flag */
-extern const struct power_signal_gpio_info power_signal_gpio_list[];
-extern const struct power_signal_vw_info power_signal_vw_list[];
+extern struct power_signal_gpio_info power_signal_gpio_list[];
+extern struct power_signal_vw_info power_signal_vw_list[];
 
 /*
  * @brief Create power sequencing thread
@@ -117,9 +113,7 @@ void pwrseq_thread(void *p1, void *p2, void *p3);
 void power_update_signals(void);
 
 extern struct gpio_config power_seq_gpios[];
-extern struct gpio_interrupt_config power_seq_intr_gpios[];
 extern const int power_seq_gpios_count;
-extern const int power_seq_intr_gpios_count;
 extern const int power_signal_gpio_count;
 extern const int power_signal_vw_count;
 extern enum power_states_ndsx chipset_pwr_sm_run(
