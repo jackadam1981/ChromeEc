@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "253a60fc_07884c08",
+        "filename": "zephyr/drivers/cros_system/cros_system_it8xxx2.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-01-29T00:31:39Z",
+      "side": 1,
+      "message": "Please file a bug to follow it up.",
+      "parentUuid": "529e95c0_93ac37c1",
+      "range": {
+        "startLine": 226,
+        "startChar": 1,
+        "endLine": 227,
+        "endChar": 21
+      },
+      "revId": "eebe3bd96279651aa6d313177705136013a83d62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4bf48a52_69df948e",
         "filename": "zephyr/drivers/cros_system/cros_system_npcx.c",
         "patchSetId": 3
@@ -85,6 +109,30 @@
       "side": 1,
       "message": "In short, it is essentially the same thing, except using the Zephyr API.\nThe flags here are OR\u0027ed with the flags in the spec that is taken from the device tree GPIO flags.\n\nIn long:\nHere we also have an example of where our use of the standard Zephyr GPIO API is a bit of a mismatch.\nThe standard Zephyr gpio API (like this call) uses a struct gpio_dt_spec to hold the details of the GPIO (controller, pin, flags), but the flags are only 8 bits.\nIn our definition of the GPIO in the named-gpio node, we include flags that are outside the 8 bits reserved, and so we need to include these flags in the setup (which as I mentioned the flags in this call are \u0027extra\u0027, and OR\u0027ed in with the 8 bits of flags in the gpio_dt_spec).\nThe idea is that the 8 bits should capture the physical characteristics of the pin, such as voltaqe, pull-up/pull-down etc. Everything else is settable by the code. Such as GPIO_INPUT.\n\nIn our common init, we actually save the complete 32 bits of flags from the named-gpio GPIO definition, and use that to set the initial state of the GPIO.\nI was torn about using gpio_reset, because that is part of the old GPIO API, not part of the Zephyr API.",
       "parentUuid": "4bf48a52_69df948e",
+      "range": {
+        "startLine": 187,
+        "startChar": 1,
+        "endLine": 188,
+        "endChar": 21
+      },
+      "revId": "eebe3bd96279651aa6d313177705136013a83d62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "079c8c55_91da37d5",
+        "filename": "zephyr/drivers/cros_system/cros_system_npcx.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-01-29T00:31:39Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "17c33560_d87f1417",
       "range": {
         "startLine": 187,
         "startChar": 1,
@@ -227,6 +275,30 @@
       "side": 1,
       "message": "So the problem with trying to get the interrupt setup as a completely\ninternal configuration in the wake setup code is that this code does not know about the interrupt configuration of the pins i.e edge falling/both etc.\nThis is what you get when you use an interrupt node.\nSo my suggestion is that we add an interrupt node for the RTC, so it is properly confgurable as an interrupt, and use a dummy handler.",
       "parentUuid": "66f7a562_ea310fa1",
+      "range": {
+        "startLine": 338,
+        "startChar": 0,
+        "endLine": 345,
+        "endChar": 6
+      },
+      "revId": "eebe3bd96279651aa6d313177705136013a83d62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e172e8ce_3b1c4291",
+        "filename": "zephyr/projects/trogdor/lazor/gpio.dts",
+        "patchSetId": 3
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-01-29T00:31:39Z",
+      "side": 1,
+      "message": "Could you file a bug for this broken code you mentioned? This RTC wake source used to be functional and we verified it, per b/193583152.\n\nThe RTC interrupt pin is configured in the RTC driver (shimmed), check http://b/194710429#comment8. Its interrupt handler is also inside the driver. It is not a function in the EC-OS, like most of the other GPIOs. Creating a dummy handler and following the EC-OS way seems duplicated. Will this dummy handler break the handler already registered by the driver?\n\nCC\u0027ed Sam",
+      "parentUuid": "1d1b7b30_a932df3b",
       "range": {
         "startLine": 338,
         "startChar": 0,
