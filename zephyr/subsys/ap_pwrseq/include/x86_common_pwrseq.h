@@ -6,6 +6,7 @@
 #ifndef __X86_COMMON_H__
 #define __X86_COMMON_H__
 
+#include <devicetree.h>
 #include <drivers/espi.h>
 #include <drivers/gpio.h>
 
@@ -34,36 +35,6 @@ struct gpio_interrupt_config {
 	const gpio_flags_t intr_flags;
 	/* Disable at boot up */
 	const bool disable_at_boot;
-};
-
-/* Power signals list */
-enum power_signal {
-	X86_SLP_S0_DEASSERTED,
-	X86_SLP_S3_DEASSERTED,
-	X86_SLP_S4_DEASSERTED,
-	X86_SLP_S5_DEASSERTED,
-	X86_SLP_SUS_DEASSERTED,
-	X86_RSMRST_L_PGOOD,
-	X86_DSW_PWROK,
-	X86_ALL_SYS_PGOOD,
-	/* X86 signals count, GPIO and VW */
-	POWER_SIGNAL_COUNT
-};
-
-/* Information of a GPIO power signal */
-struct power_signal_gpio_info {
-	const char *net_name;   /* GPIO net name of signal */
-	enum power_signal power_sig;        /* Power signal*/
-	uint32_t flags;		/* See POWER_SIGNAL_* macros */
-	const char *name;
-};
-
-/* Information of a virtual wire power signal */
-struct power_signal_vw_info {
-	enum espi_vwire_signal vw_signal; /* ESPI VW signal */
-	enum power_signal power_sig;      /* Power signal */
-	uint32_t flags;	        /* See POWER_SIGNAL_* macros */
-	const char *name;
 };
 
 /**
@@ -170,4 +141,81 @@ struct power_seq_context {
 	/* Indicate should exit G3 power state or not */
 	int want_g3_exit;
 };
+
+/* Extract power signals information from devicetree */
+#define POWER_SIGNALS_LIST_NODE                                \
+	DT_NODELABEL(pwrseq_signals_list)
+
+#if (DT_NODE_EXISTS(POWER_SIGNALS_LIST_NODE))
+#define GEN_GPIO_POWER_SIGNAL_ENTRY_NET_NAME(id)               \
+	DT_PROP(                                               \
+		DT_PROP(id, pwrseq_gpio_node),                 \
+		enum_name                                      \
+	)
+
+#define GEN_POWER_SIGNAL_ENUM(id)                              \
+	DT_STRING_UPPER_TOKEN(id, pwrseq_signal_enum)
+
+#define GEN_GPIO_POWER_SIGNAL_ENTRY_COMMA(id)                  \
+{                                                              \
+	.net_name = GEN_GPIO_POWER_SIGNAL_ENTRY_NET_NAME(id),  \
+	.power_sig = GEN_POWER_SIGNAL_ENUM(id),                \
+	.flags = DT_PROP(id, flags),                           \
+	.name = DT_PROP(id, dbg_label),                        \
+},
+
+#define GEN_GPIO_POWER_SIGNAL_ENTRY(id)                        \
+	COND_CODE_1(DT_NODE_HAS_PROP(id, pwrseq_gpio_node),    \
+		(GEN_GPIO_POWER_SIGNAL_ENTRY_COMMA(id)), ())
+
+#define GEN_VW_POWER_SIGNAL_ENTRY_VW_ENUM(id)                  \
+	DT_STRING_UPPER_TOKEN(id, pwrseq_vw_enum)
+
+#define GEN_VW_POWER_SIGNAL_ENTRY_COMMA(id)                    \
+{                                                              \
+	.vw_signal = GEN_VW_POWER_SIGNAL_ENTRY_VW_ENUM(id),    \
+	.power_sig = GEN_POWER_SIGNAL_ENUM(id),                \
+	.flags = DT_PROP(id, flags),                           \
+	.name = DT_PROP(id, dbg_label),                        \
+},
+
+#define GEN_VW_POWER_SIGNAL_ENTRY(id)                          \
+	COND_CODE_1(DT_NODE_HAS_PROP(id, pwrseq_vw_enum),      \
+		(GEN_VW_POWER_SIGNAL_ENTRY_COMMA(id)), ())
+
+#define GEN_POWER_SIGNAL_ENUM_COMMA(id)                       \
+	GEN_POWER_SIGNAL_ENUM(id),
+
+enum power_signal {
+	DT_FOREACH_CHILD(
+		POWER_SIGNALS_LIST_NODE,
+		GEN_POWER_SIGNAL_ENUM_COMMA)
+	POWER_SIGNAL_COUNT
+};
+
+/*
+ * Verify the number of required power signals are specified in
+ * the devicetree
+ */
+BUILD_ASSERT(POWER_SIGNAL_COUNT ==
+	DT_PROP(POWER_SIGNALS_LIST_NODE, pwrseq_signals_required));
+
+#endif /* (DT_NODE_EXISTS(POWER_SIGNALS_LIST_NODE)) */
+
+/* Information of a GPIO power signal */
+struct power_signal_gpio_info {
+	const char *net_name;   /* GPIO net name of signal */
+	enum power_signal power_sig;        /* Power signal*/
+	uint32_t flags;		/* See POWER_SIGNAL_* macros */
+	const char *name;
+};
+
+/* Information of a virtual wire power signal */
+struct power_signal_vw_info {
+	enum espi_vwire_signal vw_signal; /* ESPI VW signal */
+	enum power_signal power_sig;      /* Power signal */
+	uint32_t flags;	        /* See POWER_SIGNAL_* macros */
+	const char *name;
+};
+
 #endif /* __X86_COMMON_H__ */
