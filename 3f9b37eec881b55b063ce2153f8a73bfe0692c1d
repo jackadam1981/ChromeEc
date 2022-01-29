@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2766562f_1252c69c",
+        "filename": "zephyr/test/drivers/src/integration_usb.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-01-29T15:24:28Z",
+      "side": 1,
+      "message": "nit the indent is funky here ... should align to (\n\nclang-format can fix it automatically",
+      "range": {
+        "startLine": 219,
+        "startChar": 2,
+        "endLine": 219,
+        "endChar": 3
+      },
+      "revId": "3f9b37eec881b55b063ce2153f8a73bfe0692c1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
