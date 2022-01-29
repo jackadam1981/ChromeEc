@@ -475,6 +475,30 @@
       },
       "revId": "eebe3bd96279651aa6d313177705136013a83d62",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3dd547dd_04666678",
+        "filename": "zephyr/projects/trogdor/lazor/gpio.dts",
+        "patchSetId": 3
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-01-29T06:49:19Z",
+      "side": 1,
+      "message": "I think the RTC driver is called via system_set_rtc_alarm, and the\ndriver handles the RTC interrupt internally.\nAnd yes, eventually all the common interrupt processing will be moved into individual drivers.",
+      "parentUuid": "209de585_619b61d9",
+      "range": {
+        "startLine": 338,
+        "startChar": 0,
+        "endLine": 345,
+        "endChar": 6
+      },
+      "revId": "eebe3bd96279651aa6d313177705136013a83d62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
