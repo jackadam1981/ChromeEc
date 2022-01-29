@@ -10,6 +10,7 @@ register_npcx_project(
         "bb_retimer.dts",
         "cbi_eeprom.dts",
         "common_power.dts",
+        "adl_power.dts",
         "fan.dts",
         "gpio.dts",
         "interrupts.dts",
