@@ -50,6 +50,23 @@
       "message": "It went through the CQ OK yesterday. I will take a look at what has changed",
       "revId": "4978be0791c8035c4dafe46dd3d7def48ff535cc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a667fd1f_36157861",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2022-01-30T00:37:02Z",
+      "side": 1,
+      "message": "Successful tryjob with the revert: https://ci.chromium.org/ui/p/chromeos/builders/general/Try/b8823687449183215393/overview\n\nToT no longer builds, we should probably chump this.",
+      "revId": "4978be0791c8035c4dafe46dd3d7def48ff535cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
