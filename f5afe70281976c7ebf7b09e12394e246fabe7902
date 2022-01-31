@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "111ffa34_e3c8ff7e",
+        "filename": "docs/zephyr/zephyr_pwm.md",
+        "patchSetId": 19
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-01-31T16:34:16Z",
+      "side": 1,
+      "message": "PWM?",
+      "range": {
+        "startLine": 19,
+        "startChar": 68,
+        "endLine": 19,
+        "endChar": 72
+      },
+      "revId": "f5afe70281976c7ebf7b09e12394e246fabe7902",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "419cb305_4bcf6ebd",
+        "filename": "docs/zephyr/zephyr_pwm.md",
+        "patchSetId": 19
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-01-31T16:34:16Z",
+      "side": 1,
+      "message": "Also need to enable the pwm controller node from the SoC.   I see you have this in the example, but it would be good to call out here.\n\nFor Nuvoton, the \"clock-bus\" property needs to be set to the LFCLK for any PWMs that need to be active during low-power modes.  In general board LEDs, especially power/battery LEDs, are used during low-power.",
+      "range": {
+        "startLine": 21,
+        "startChar": 3,
+        "endLine": 21,
+        "endChar": 19
+      },
+      "revId": "f5afe70281976c7ebf7b09e12394e246fabe7902",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce3f0f55_07e2ea14",
+        "filename": "docs/zephyr/zephyr_pwm.md",
+        "patchSetId": 19
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-01-31T16:34:16Z",
+      "side": 1,
+      "message": "Should we follow the GPIO refactoring and not use \"pwms\" for the child property?",
+      "range": {
+        "startLine": 43,
+        "startChar": 2,
+        "endLine": 43,
+        "endChar": 19
+      },
+      "revId": "f5afe70281976c7ebf7b09e12394e246fabe7902",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

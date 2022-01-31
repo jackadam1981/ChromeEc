@@ -45,6 +45,30 @@
       },
       "revId": "d4186d24c13e62a4516046f625a1e109c14bb60d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e0f6076_9e0c1e9e",
+        "filename": "docs/zephyr/zephyr_pwm.md",
+        "patchSetId": 18
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-01-31T16:34:16Z",
+      "side": 1,
+      "message": "I like these documented here, as it provides a full example of how to do this.  I agree FAN and LED PWM belong in a separate doc.",
+      "parentUuid": "11dcb412_53c6704b",
+      "range": {
+        "startLine": 84,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 21
+      },
+      "revId": "d4186d24c13e62a4516046f625a1e109c14bb60d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
