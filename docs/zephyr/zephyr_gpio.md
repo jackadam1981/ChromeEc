@@ -93,6 +93,64 @@ function `gpio_get_dt_spec` (though this is a runtime lookup). E.g:
 The goal is to migrate away from using the legacy API to use the Zephyr API, and
 eventually deprecate the use of the `enum-name` property to generate the GPIO signal enum.
 
+### Run-time configuration of GPIOs
+
+It is common to have different hardware configurations supported within the same
+EC image by using `FW_CONFIG` configuration bits to selectively choose or enable/disable
+hardware options. Previously, GPIOs were aliased via a #define in `gpio_map.h` to a common
+GPIO in `named-gpios`, allowing different names to be used for the same GPIO. At run-time the
+GPIO would be configured according to the usage required.
+
+However this scheme mostly relies on the use of the legacy `enum gpio_signal` to identify the
+GPIO. Given that code is being migrated to the Zephyr API, it is preferred that a separate
+`named-gpio` node be allocated to each use of the GPIO in question, and use the `no-auto-init`
+property to allow the initialisation only when code requires it.
+
+So if a board had 2 GPIOs with different use depending on a board type, the
+configuration would appear:
+
+```
+	gpio_opt1_output_odl: opt1_output_odl {
+                 gpios = <&gpio0 2 GPIO_OUTPUT>;
+                 no-auto-init;
+        };
+	gpio_opt2_input: opt2_input {
+                 gpios = <&gpio0 2 GPIO_INPUT_PULL_UP>;
+                 no-auto-init;
+        };
+```
+
+The board config handling may have:
+
+```
+...
+	if (board_type() == 1) {
+		gpio_pin_configure_dt(GPIO_DT_FROM_NODELABEL(gpio_opt1_output_odl), GPIO_OUTPUT);
+	} else {
+		gpio_pin_configure_dt(GPIO_DT_FROM_NODELABEL(gpio_opt2_input), GPIO_INPUT);
+	}
+```
+
+Alternatively, a DTS alias may be used:
+
+```
+	gpio_opt1_output_odl: opt1_output_odl {
+                 gpios = <&gpio0 2 GPIO_OUTPUT>;
+                 no-auto-init;
+        };
+...
+	aliases {
+		gpio_opt2_input = &gpio_opt1_output_odl;
+	};
+...
+	if (board_type() == 1) {
+		gpio_pin_configure_dt(GPIO_DT_FROM_NODELABEL(gpio_opt1_output_odl), GPIO_OUTPUT);
+	} else {
+		gpio_pin_configure_dt(GPIO_DT_FROM_NODE(DT_ALIAS(gpio_opt2_input)), GPIO_INPUT);
+	}
+
+```
+
 ### Unused GPIOs
 
 Unused GPIOs should be listed separately in an `unused-gpio` node.  EC chip
