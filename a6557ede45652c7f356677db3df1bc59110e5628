@@ -81,6 +81,30 @@
       },
       "revId": "a6557ede45652c7f356677db3df1bc59110e5628",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "baf0c16c_61aee771",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 880,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-01-31T19:52:38Z",
+      "side": 1,
+      "message": "I am a bit uncomfortable with this modification of TPM behavior, it would be much better IMO to preserve only counters in question, which should be simple enough.",
+      "parentUuid": "d9349379_a1b70f48",
+      "range": {
+        "startLine": 880,
+        "startChar": 1,
+        "endLine": 880,
+        "endChar": 24
+      },
+      "revId": "a6557ede45652c7f356677db3df1bc59110e5628",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
