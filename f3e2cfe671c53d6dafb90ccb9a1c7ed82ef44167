@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9876de86_0b4b6366",
+        "filename": "board/cr50/dcrypto/fips.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 450,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2022-01-31T17:27:41Z",
+      "side": 1,
+      "message": "just some 1 bit error, different from the other one.",
+      "parentUuid": "6a05bb06_965dd790",
+      "range": {
+        "startLine": 450,
+        "startChar": 14,
+        "endLine": 450,
+        "endChar": 18
+      },
+      "revId": "f3e2cfe671c53d6dafb90ccb9a1c7ed82ef44167",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "673bb3c2_bcfafe4c",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-01-31T14:39:22Z",
       "side": 1,
       "message": "Are these supposed to be the same?",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 30
+      },
+      "revId": "f3e2cfe671c53d6dafb90ccb9a1c7ed82ef44167",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ddb3f3f_cf7f9341",
+        "filename": "board/cr50/dcrypto/fips.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2022-01-31T17:27:41Z",
+      "side": 1,
+      "message": "thanks! they shouldn\u0027t",
+      "parentUuid": "673bb3c2_bcfafe4c",
       "range": {
         "startLine": 39,
         "startChar": 0,
