@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "423d71e9_ce42d94f",
+        "filename": "board/c2d2/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 782,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-01-31T23:07:25Z",
+      "side": 1,
+      "message": "of course, done.",
+      "parentUuid": "fd3c21f5_33ff5ef2",
+      "range": {
+        "startLine": 782,
+        "startChar": 17,
+        "endLine": 782,
+        "endChar": 44
+      },
+      "revId": "0130bb1aa053e745ddadf3cab838749cbe8cee35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f5a3d7d3_bad897f8",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-01-31T21:57:25Z",
       "side": 1,
       "message": "nit: do you want to check this return for failure too (or not check the cmd_off version for success)?",
+      "range": {
+        "startLine": 848,
+        "startChar": 2,
+        "endLine": 848,
+        "endChar": 24
+      },
+      "revId": "0130bb1aa053e745ddadf3cab838749cbe8cee35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "662575ee_cd514ce8",
+        "filename": "board/c2d2/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 848,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-01-31T23:07:25Z",
+      "side": 1,
+      "message": "good point, done.",
+      "parentUuid": "f5a3d7d3_bad897f8",
       "range": {
         "startLine": 848,
         "startChar": 2,
