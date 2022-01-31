@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "976c48a7_d7384818",
+        "filename": "docs/zephyr/zephyr_ap_ec_comm.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-01-31T16:53:17Z",
+      "side": 1,
+      "message": "The \"CONFIG_PLATFORM_EC_HOST_INTERFACE_TYPE\" choice selects the interface type used to transport the AP/EC messages.",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 0
+      },
+      "revId": "c714b7ab0b68fa9d046b92575d05d268ff818198",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "47d3bd0d_f985e801",
+        "filename": "docs/zephyr/zephyr_ap_ec_comm.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-01-31T16:53:17Z",
+      "side": 1,
+      "message": "Add a link to ec_terms.md#shi",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 3
+      },
+      "revId": "c714b7ab0b68fa9d046b92575d05d268ff818198",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6fa34b1_46311165",
+        "filename": "docs/zephyr/zephyr_ap_ec_comm.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-01-31T16:53:17Z",
+      "side": 1,
+      "message": "\"eSPI\".\n\nAlso add a link to the ec_terms.md#espi",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 4
+      },
+      "revId": "c714b7ab0b68fa9d046b92575d05d268ff818198",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c20246a_6133b14e",
+        "filename": "docs/zephyr/zephyr_ap_ec_comm.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-01-31T16:53:17Z",
+      "side": 1,
+      "message": "Add a link to ec_terms.md#lpc",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 3
+      },
+      "revId": "c714b7ab0b68fa9d046b92575d05d268ff818198",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27dc0ef3_6764def5",
+        "filename": "docs/zephyr/zephyr_ap_ec_comm.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-01-31T16:53:17Z",
+      "side": 1,
+      "message": "Create a link using \n\n    [Device Tree nodes](#device-tree-nodes)",
+      "range": {
+        "startLine": 92,
+        "startChar": 17,
+        "endLine": 92,
+        "endChar": 37
+      },
+      "revId": "c714b7ab0b68fa9d046b92575d05d268ff818198",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "094a7ed8_70c7acfe",
+        "filename": "docs/zephyr/zephyr_ap_ec_comm.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-01-31T16:53:17Z",
+      "side": 1,
+      "message": "Move this doc reference into the Overview section.",
+      "range": {
+        "startLine": 240,
+        "startChar": 0,
+        "endLine": 242,
+        "endChar": 23
+      },
+      "revId": "c714b7ab0b68fa9d046b92575d05d268ff818198",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
