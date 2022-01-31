@@ -50,6 +50,121 @@
       "message": "I learned something 😊",
       "revId": "7a3ee6b0f9d50ce63eebb59afbbca07adb83268f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d602eb1c_22237ab1",
+        "filename": "board/nocturne_fp/board.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-01-31T22:50:16Z",
+      "side": 1,
+      "message": "FYI for fingerprint we\u0027re using a different library on the H7 than the F4: http://b/215596231#comment10",
+      "range": {
+        "startLine": 98,
+        "startChar": 3,
+        "endLine": 100,
+        "endChar": 12
+      },
+      "revId": "7a3ee6b0f9d50ce63eebb59afbbca07adb83268f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "08d0f015_bfb4f824",
+        "filename": "chip/stm32/fpu.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-01-31T22:50:16Z",
+      "side": 1,
+      "message": "Can you mention \"4.6.7 Enabling and clearing FPU exception interrupts\" in https://www.st.com/resource/en/programming_manual/pm0214-stm32-cortexm4-mcus-and-mpus-programming-manual-stmicroelectronics.pdf as a reference?",
+      "range": {
+        "startLine": 22,
+        "startChar": 10,
+        "endLine": 26,
+        "endChar": 34
+      },
+      "revId": "7a3ee6b0f9d50ce63eebb59afbbca07adb83268f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54d8bcbd_53030ad3",
+        "filename": "core/cortex-m/fpu.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-01-31T22:50:16Z",
+      "side": 1,
+      "message": "nit: if this doesn\u0027t prefix with `0x`, it might be worth adding that to make it clear it\u0027s a hex value (e.g., `PC\u003d0x%08x`)",
+      "range": {
+        "startLine": 36,
+        "startChar": 33,
+        "endLine": 36,
+        "endChar": 48
+      },
+      "revId": "7a3ee6b0f9d50ce63eebb59afbbca07adb83268f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d80d0499_529dadde",
+        "filename": "test/cortexm_fpu.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-01-31T22:50:16Z",
+      "side": 1,
+      "message": "I think it should compile without this.",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 17
+      },
+      "revId": "7a3ee6b0f9d50ce63eebb59afbbca07adb83268f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20e700b4_9ae0f22d",
+        "filename": "test/cortexm_fpu.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-01-31T22:50:16Z",
+      "side": 1,
+      "message": "Can you add a test for the \"inexact\" case? Looks like sqrt(2) should trigger it: https://www.gnu.org/software/libc/manual/html_node/FP-Exceptions.html.\n\nhttps://docs.oracle.com/cd/E19957-01/806-3568/ncg_handle.html#249. \"2.0 / 3.0\" might be a better example since it\u0027s easy to visualize.",
+      "range": {
+        "startLine": 140,
+        "startChar": 2,
+        "endLine": 143,
+        "endChar": 47
+      },
+      "revId": "7a3ee6b0f9d50ce63eebb59afbbca07adb83268f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
