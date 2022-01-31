@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a46fd42_ceddb1f1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-01-31T23:39:51Z",
+      "side": 1,
+      "message": "Does the STM32H7 also need the timestamp calculation change? https://crrev.com/c/3359428",
+      "revId": "69ba4754c7e7d396505c7d6913f8f29cd0dd8ab6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
