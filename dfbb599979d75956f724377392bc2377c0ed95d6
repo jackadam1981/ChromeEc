@@ -95,6 +95,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7aea9198_b09dac83",
+        "filename": "zephyr/projects/intelrvp/BUILD.py",
+        "patchSetId": 13
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-01-31T23:39:42Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ea983f32_87242b49",
+      "range": {
+        "startLine": 29,
+        "startChar": 21,
+        "endLine": 29,
+        "endChar": 42
+      },
+      "revId": "dfbb599979d75956f724377392bc2377c0ed95d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8685006f_f66c8718",
@@ -261,6 +285,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fcb5622c_16ac0cd7",
+        "filename": "zephyr/projects/intelrvp/adlrvp/adlrvp_npcx/gpio.dts",
+        "patchSetId": 13
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-01-31T23:39:42Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a485e789_1ec5bab2",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 21
+      },
+      "revId": "dfbb599979d75956f724377392bc2377c0ed95d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cb8f127f_74f0a35e",
@@ -274,6 +322,30 @@
       "writtenOn": "2022-01-31T18:39:58Z",
       "side": 1,
       "message": "Delete these includes.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 24
+      },
+      "revId": "dfbb599979d75956f724377392bc2377c0ed95d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "67c731e7_f4219794",
+        "filename": "zephyr/projects/intelrvp/adlrvp/adlrvp_npcx/include/gpio_map.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-01-31T23:39:42Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "cb8f127f_74f0a35e",
       "range": {
         "startLine": 9,
         "startChar": 0,
