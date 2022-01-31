@@ -392,6 +392,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "470de2aa_9e2f0c68",
+        "filename": "core/cortex-m/fpu.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2022-01-31T10:56:36Z",
+      "side": 1,
+      "message": "PM0214 - https://www.st.com/resource/en/programming_manual/pm0214-stm32-cortexm4-mcus-and-mpus-programming-manual-stmicroelectronics.pdf\n\nARMv7-M Reference Manual - https://developer.arm.com/documentation/ddi0403/ed\n\nFirst of all, what is CPU_FPU_FPCAR:\n```\n#define CPUREG(addr) (*(volatile uint32_t*)(addr)) /* ./core/cortex-m/cpu.h */\n#define CPU_FPU_FPCAR          CPUREG(0xe000ef38) /* ./core/cortex-m/cpu.h */\n```\nCPU_FPU_FPCAR is memory mapped register (with address 0xe000ef38). As we can see from the CPUREG definition, when I use the CPU_FPU_FPCAR I\u0027m operating on a value contained by this register.\n\nFPCAR register is described in PM0214 4.6.3 Floating-point context address register (FPCAR)\n```\nThe FPCAR register holds the location of the unpopulated floating-point register space allocated on an exception stack frame.\n```\nNow we know that value of FPCAR register is a pointer to the beginning of part of exception frame which holds floating point registers.\n\nI know that \"unpopulated\" is a little weird, this is not relevant in our discussion.\n\nNote: Basing on extended exception frame structure (ARMv7-M Reference Manual p. B1-538) we see that floating point registers starts at stack + 32 bytes, but we need to check first if exception frame is on MSP (Main Stack) or PSP (Process Stack).\n\nWhat is FPSCR register? Documentation focuses on describing bits of that register rather than the register itself:\n```\nThe FPSCR register provides all necessary user level control of the floating-point system.\n```\nFor our purpose, we only need to know that this register contains information about the FPU exception, and we need to clear these bits if we want to clear the FPU interrupt.\nSecond important information is that this register IS NOT memory mapped, so we need to use special instruction to read/write register, eg.\n```\nvmrs r2, fpscr\nvmrs fpscr, r2\n```\nNext information is that this register is saved on extended exception stack frame when exception occurs (ARMv7-M Reference Manual p. B1-538). The FPSCR register is also loaded with value from exception frame when exception processing is finished.\n\nIt\u0027s not possible to operate on FPSCR register directly (not mapped in memory), so we are always operating on a copy.\n\n\u003e I could be misreading this but isn\u0027t CPU_FPU_FPCAR the actual floating point register (not a copy)?\nCPU_FPU_FPCAR provides values from FPU unit. It\u0027s not a copy.\n\n\u003e So line 96 is making a copy of a value in the FPSCR  register and putting it in fpu_fpscr , but then line 108 is performing a read/modify/write on the value of the register itself. Is that right?\nfpu_fpscr is a copy of the copy of the FPSCR register 😄 I\u0027m creating this copy just for printing purposes. Line 108 is performing modifications on exception frame.\n\n\u003e the compiler could decide to optimize that by caching the first read to use later in the read/modify/write without knowing that the value may change.\nThe value of FPSCR saved on stack won\u0027t change, so the compiler can perform optimization and this is correct.",
+      "parentUuid": "2bf2c6ca_6eb9618a",
+      "range": {
+        "startLine": 114,
+        "startChar": 1,
+        "endLine": 114,
+        "endChar": 21
+      },
+      "revId": "c5e21a86ffd8c8e29dfb24ba88581c23acdd2f15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bec7fbb4_bca96c9d",
         "filename": "include/math_util.h",
         "patchSetId": 4
