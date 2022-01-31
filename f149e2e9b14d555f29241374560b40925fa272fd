@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cdd4195c_ac41e2c9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-01-31T05:12:53Z",
+      "side": 1,
+      "message": "I went back and forth on keeping the usbc/charger split, but it seems cleaner to have all the common code in one file.",
+      "revId": "f149e2e9b14d555f29241374560b40925fa272fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
