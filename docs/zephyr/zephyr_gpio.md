@@ -18,17 +18,17 @@ Kconfig Option                          | Default | Documentation
 
 ## Devicetree Nodes
 
-Configure the GPIO module by declaring all GPIOs in the devicetree node with
+Configure the GPIO module by declaring all GPIOs as child nodes in the devicetree node with
 `compatible` property `named-gpios`. The GPIO module automatically initializes
 all GPIOs from this node (unless the `no-auto-init` property is present).
 Legacy C source code accesses GPIOs using the specified
 `enum-name` property as an enum name of the GPIO.
+Zephyr based code uses the node label, an alias, or other node reference to identify the GPIO.
 
 Named GPIO properties:
 
 Property | Description | Settings
 :------- | :---------- | :-------
-`#gpio-cells` | Specifier cell count, always `<0>`, required if the node label is used in a `-gpios` property. | `<0>`
 `gpios` | GPIO phandle, identifies the port (X), pin number (Y) and flags. | `<&gpioX Y flags>`
 `enum-name` | An optional name used to define an enum to refer to the GPIO in legacy code. | `GPIO_<NAME>`
 `no-auto-init` | If present, the GPIO **will not** be initialized at start-up. | boolean, default false
@@ -46,18 +46,23 @@ named-gpios {
         compatible = "named-gpios";
 ...
         gpio_en_pp5000_fan: en_pp5000_fan {
-		#gpio-cells = <0>;
                 gpios = <&gpio6 1 GPIO_OUT_LOW>;
                 enum-name = "GPIO_EN_PP5000_FAN";
         };
+        gpio_power_on_odl: power_on {
+                gpios = <&gpio4 4 GPIO_INPUT_PULL_UP>;
+        };
 ...
+	aliases {
+		gpio-power = &gpio_power_on_odl;
+	};
 }
 
 ```
 
 The `flags` cell of the `gpios` property defines the GPIO signal properties,
 valid options are listed in [dt-bindings/gpio_defines.h], which is normally
-included from the main project DTS file.
+included from the main board DTS file.
 
 For platform specific features, other flags may be available in the Zephyr
 [dt-bindings/gpio/gpio.h] file, such as `GPIO_VOLTAGE_1P8`.
@@ -68,19 +73,33 @@ Only GPIOs that require referencing from legacy common code should have an `enum
 The legacy API (e.g `gpio_get_level(enum gpio_signal)`) requires a known name for the enum, which
 is set using the `enum-name` property.
 
+Avoid use of `enum gpio_signal` or the enum signal names in any Zephyr based code.
+
 ### Zephyr GPIO API usage
 
 GPIOs references that are not in legacy common code should use the
 [standard Zephyr API](https://docs.zephyrproject.org/latest/reference/peripherals/gpio.html)
-to access the GPIOs.
-To facilitate this, all GPIOs in `named-gpios` will have prebuilt `struct gpio_dt_spec` blocks
+to access the GPIO.
+
+GPIOs are referenced in the `named-gpios` child nodes using the node label (if one exists), an alias to a node label, or
+indirectly as a node reference via as a phandle in another node.
+
+To facilitate this, all GPIO child nodes in `named-gpios` will have preinitialised `const struct gpio_dt_spec *` pointers
 created that may be used directly in the Zephyr GPIO API calls.
-These blocks are accessed via a macro (`GPIO_DT_LABEL`) using the node label on the GPIO.
+These pointers are accessible via the following macros:
+
+Macro | Argument | Description
+:------- | :---------- | :-------
+`GPIO_DT_FROM_NODELABEL` | nodelabel | Uses a node label to reference the GPIO node.
+`GPIO_DT_FROM_NODE` | node | Uses a node id (referenced as a phandle in another node).
+`GPIO_DT_FROM_ALIAS` | alias | Uses an alias to a label on the GPIO node.
+
 The legacy enum can also be used to retrieve the `gpio_dt_spec` for an GPIO via the
 function `gpio_get_dt_spec` (though this is a runtime lookup). E.g:
 
 ```
-	fan_status = gpio_pin_get_dt(GPIO_DT_LABEL(gpio_en_pp5000_fan));
+	fan_status = gpio_pin_get_dt(GPIO_DT_FROM_NODELABEL(gpio_en_pp5000_fan));
+	power_status = gpio_pin_get_dt(GPIO_DT_FROM_ALIAS(gpio_power));
 ...
 	/*
 	 * Legacy code gave us an enum gpio_signal, get a Zephyr reference
@@ -90,8 +109,70 @@ function `gpio_get_dt_spec` (though this is a runtime lookup). E.g:
 	my_status = gpio_pin_get_dt(my_gpio);
 ```
 
-The goal is to migrate away from using the legacy API to use the Zephyr API, and
-eventually deprecate the use of the `enum-name` property to generate the GPIO signal enum.
+The goal is to migrate away from using the legacy API (using the Zephyr API instead), and
+deprecate the use of the `enum-name` property to generate the GPIO signal enum.
+
+### Run-time configuration of GPIOs
+
+It is common to have different hardware configurations supported within the same
+EC image by using `FW_CONFIG` configuration bits to selectively choose or enable/disable
+hardware options. Previously, GPIOs were aliased via a #define in `gpio_map.h` to a common
+GPIO in `named-gpios`, allowing different names to be used for the same GPIO. At run-time the
+GPIO would be configured according to the usage required.
+
+However this scheme mostly relies on the use of the legacy `enum gpio_signal` to identify the
+GPIO. Given that code is being migrated to the Zephyr API, it is preferred that a separate
+`named-gpio` node be allocated to each use of the GPIO in question, and use the `no-auto-init`
+property to allow the initialisation only when code requires it.
+
+So if a board had 2 GPIOs with different use depending on a board type, the
+configuration would appear:
+
+```
+	gpio_opt1_output_odl: opt1_output_odl {
+                 gpios = <&gpio0 2 GPIO_OUTPUT>;
+                 no-auto-init;
+        };
+	gpio_opt2_input: opt2_input {
+                 gpios = <&gpio0 2 GPIO_INPUT_PULL_UP>;
+                 no-auto-init;
+        };
+```
+
+The board config handling may have:
+
+```
+...
+	if (board_type() == 1) {
+		gpio_pin_configure_dt(GPIO_DT_FROM_NODELABEL(gpio_opt1_output_odl), GPIO_OUTPUT);
+	} else {
+		gpio_pin_configure_dt(GPIO_DT_FROM_NODELABEL(gpio_opt2_input), GPIO_INPUT);
+	}
+```
+
+Alternatively, a DTS alias may be used:
+
+```
+	gpio_alt_pin: alt_pin {
+                 gpios = <&gpio0 2 GPIO_OUTPUT>;
+                 no-auto-init;
+        };
+...
+	aliases {
+		gpio-opt1-output = &gpio_alt_pin;
+		gpio-opt2-input = &gpio_alt_pin;
+	};
+...
+	if (board_type() == 1) {
+		gpio_pin_configure_dt(GPIO_DT_FROM_ALIAS(gpio_opt1_output), GPIO_OUTPUT);
+	} else {
+		gpio_pin_configure_dt(GPIO_DT_FROM_ALIAS(gpio_opt2_input), GPIO_INPUT);
+	}
+
+```
+
+Note that the alias names have a dash instead of an underscore (because the alias name is a *property*, not
+a node name), but the name is converted to lower case with underscores for code access.
 
 ### Unused GPIOs
 
@@ -188,13 +269,37 @@ void power_button_interrupt(enum gpio_signal signal)
 This matches the function signature of the existing legacy interrupt handlers, so no
 shims are required.
 
+Interrupt handlers in Zephyr based code may need to compare the `signal` against
+known GPIOs, if (for instance) there is a common handler for events from multiple GPIOs.
+Rather than using the predefined enums (which require that the GPIO has an `enum-name`
+property), the macro `GPIO_SIGNAL(node_id)` may be used to uniquely identify the signal regardless
+of whether an `enum-name` property is on the GPIO e.g:
+
+```
+void button_input(enum gpio_signal signal)
+{
+	switch(signal) {
+	case GPIO_SIGNAL(DT_NODELABEL(gpio_volume_up)):
+		...
+		break;
+	case GPIO_SIGNAL(DT_NODELABEL(gpio_volume_down)):
+		...
+		break;
+	case GPIO_SIGNAL(DT_NODELABEL(gpio_power_button)):
+		...
+		break;
+	}
+}
+```
+
 Before any interrupt can be received, it must be enabled. Legacy code uses
 the functions `gpio_enable_interrupt(enum signal)` and
-`gpio_disable_interrupt(enum signal)` functions.
+`gpio_disable_interrupt(enum signal)` functions. Avoid using these in
+any Zephyr based code.
 
 Whilst it is possible to use the Zephyr GPIO interrupt API directly,
 for convenience (until the deprecation of the legacy GPIO enum signal names)
-interrupts can be identified via a macro and the label on the interrupt child nodes,
+interrupts can be identified via a macro and the label on the interrupt nodes,
 and these can be used to enable or disable the interrupts:
 
 ```
@@ -202,6 +307,22 @@ and these can be used to enable or disable the interrupts:
 ```
 
 This avoid having to create boiler-plate callbacks as part of the interrupt setup.
+
+For nodes that require a reference to an GPIO interrupt (such as sensor configuration node etc.),
+the node can be referenced directly using `GPIO_INT_FROM_NODE` e.g:
+
+```
+[DTS]
+	sensor-irqs = <
+		&int_imu
+		&int_accel
+		>;
+[code]
+
+#define ENABLE_SENSOR_INTS(i, id) \
+	gpio_enable_dt_interrupt(GPIO_INT_FROM_NODE(DT_PHANDLE_BY_IDX(id, sensor_irqs, i)))
+
+```
 
 ## Threads
 
@@ -284,6 +405,6 @@ project.
 [dt-bindings/gpio/gpio.h]: https://github.com/zephyrproject-rtos/zephyr/blob/main/include/dt-bindings/gpio/gpio.h
 [dt-bindings/gpio_defines.h]: ../../zephyr/include/dt-bindings/gpio_defines.h
 [include/drivers/gpio.h]: https://docs.zephyrproject.org/latest/reference/peripherals/gpio.html?highlight=gpio_int_disable#api-reference
-[gpio_map.h]: ../../zephyr/projects/trogdor/lazor/include/gpio_map.h
 [gpio.dts]: ../../zephyr/projects/volteer/volteer/gpio.dts
+[interrupts.dts]: ../../zephyr/projects/volteer/volteer/interrupts.dts
 [BUILD.py]: ../../zephyr/projects/volteer/volteer/BUILD.py
