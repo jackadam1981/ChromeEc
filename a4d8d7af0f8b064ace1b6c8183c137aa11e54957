@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "114858e5_d217bbe2",
+        "filename": "zephyr/dts/bindings/gpio/ioex-enum-name.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-01-31T18:56:53Z",
+      "side": 1,
+      "message": "Is this used by any common code?  If this is only used by board code, then we\u0027re trying to avoid adding enums.  Instead the board code should use the Zephyr GPIO API directly instead of the shim.\n\nUse gpio_pin_set_dt/gpio_pin_get_dt with the the GPIO_DT_FROM_NODELABEL macro.\n\nNote that those Zephyr calls are aware if the GPIO is active high or low, so they set/get the logical level (not the physical level).\n\nExample here\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/38063669/zephyr/projects/nissa/src/nivviks/usbc.c#157",
+      "range": {
+        "startLine": 80,
+        "startChar": 8,
+        "endLine": 80,
+        "endChar": 32
+      },
+      "revId": "a4d8d7af0f8b064ace1b6c8183c137aa11e54957",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
