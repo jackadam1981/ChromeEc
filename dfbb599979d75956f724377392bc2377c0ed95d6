@@ -97,6 +97,75 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8685006f_f66c8718",
+        "filename": "zephyr/projects/intelrvp/adlrvp/adlrvp_npcx/adlrvp_npcx.dts",
+        "patchSetId": 13
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-01-31T18:39:58Z",
+      "side": 1,
+      "message": "Why are you overriding the SPI flash configuration from upstream?  See:\nhttps://github.com/zephyrproject-rtos/zephyr/blob/main/dts/arm/nuvoton/npcx9m3f.dtsi\nand\n\nhttps://github.com/zephyrproject-rtos/zephyr/blob/main/dts/arm/nuvoton/npcx9m6f.dtsi",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 11
+      },
+      "revId": "dfbb599979d75956f724377392bc2377c0ed95d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a485e789_1ec5bab2",
+        "filename": "zephyr/projects/intelrvp/adlrvp/adlrvp_npcx/gpio.dts",
+        "patchSetId": 13
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-01-31T18:39:58Z",
+      "side": 1,
+      "message": "Note - after rebase the #gpio-cells is no longer needed.",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 21
+      },
+      "revId": "dfbb599979d75956f724377392bc2377c0ed95d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb8f127f_74f0a35e",
+        "filename": "zephyr/projects/intelrvp/adlrvp/adlrvp_npcx/include/gpio_map.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-01-31T18:39:58Z",
+      "side": 1,
+      "message": "Delete these includes.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 24
+      },
+      "revId": "dfbb599979d75956f724377392bc2377c0ed95d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3e7df599_711fa619",
         "filename": "zephyr/projects/intelrvp/prj.conf",
         "patchSetId": 13
