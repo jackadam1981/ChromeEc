@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f99a063a_39fdef55",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-01-31T23:50:20Z",
+      "side": 1,
+      "message": "You can remove this comment. It\u0027s a known bug with the test runner script.",
+      "range": {
+        "startLine": 20,
+        "startChar": 5,
+        "endLine": 22,
+        "endChar": 16
+      },
+      "revId": "9cb71c6541bc9bd99c4f5ae29977f22e73395486",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "340457c7_8dd16862",
+        "filename": "driver/fingerprint/fpc/bep/fpc_private.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-01-31T23:50:20Z",
+      "side": 1,
+      "message": "Let\u0027s split this into two functions: `fpc_get_hwid` and `fpc_check_hwid`.\n\n`fpc_get_hwid` should return the hardware ID, while `fpc_check_hwid` perform the checking logic:\n\n```\n\tif ((id \u003e\u003e 4) !\u003d FP_SENSOR_HWID) {\n\t\tCPRINTS(\"FPC unknown silicon 0x%04x\", id);\n\t\treturn FP_ERROR_BAD_HWID;\n\t}\n\tCPRINTS(FP_SENSOR_NAME \" id 0x%04x\", id);\n```",
+      "range": {
+        "startLine": 117,
+        "startChar": 0,
+        "endLine": 139,
+        "endChar": 1
+      },
+      "revId": "9cb71c6541bc9bd99c4f5ae29977f22e73395486",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01bc0ade_8f30405f",
+        "filename": "driver/fingerprint/fpc/libfp/fpc_private.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-01-31T23:50:20Z",
+      "side": 1,
+      "message": "Same comment about splitting into two functions.",
+      "range": {
+        "startLine": 100,
+        "startChar": 4,
+        "endLine": 100,
+        "endChar": 18
+      },
+      "revId": "9cb71c6541bc9bd99c4f5ae29977f22e73395486",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5be42082_e2d65e74",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-01-31T23:50:20Z",
+      "side": 1,
+      "message": "I think that when you build the test targets (everything prefixed with `test-`), it should set `TEST_BUILD\u003dy`. Does it not work if you remove this change?",
+      "range": {
+        "startLine": 270,
+        "startChar": 0,
+        "endLine": 274,
+        "endChar": 34
+      },
+      "revId": "9cb71c6541bc9bd99c4f5ae29977f22e73395486",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
