@@ -16,6 +16,23 @@
       "message": "Added Simon to tell if it is acceptable to add CONFIG_FPU_WARNIGNS to util/check_allowed.txt.\n\nThe define is only used in core/cortex-m/fpu.c to enable messages about FPU exception. I guess that Zephyr completely ignores core/ and chip/ directories (because it provides support for chips).\n\nIf it is not acceptable, please tell what should I do instead.",
       "revId": "7a3ee6b0f9d50ce63eebb59afbbca07adb83268f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "03244b65_242c8d05",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2022-01-31T15:37:16Z",
+      "side": 1,
+      "message": "I believe so, since this feature is not in the core code and thus has no relevance to Zephyr.",
+      "revId": "7a3ee6b0f9d50ce63eebb59afbbca07adb83268f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
