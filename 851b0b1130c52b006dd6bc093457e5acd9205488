@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a05f4b8_5f7f54cc",
+        "filename": "docs/zephyr/zephyr_gpio.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-02-01T22:50:09Z",
+      "side": 1,
+      "message": "The are a lot of lines exceeding 80 chars.  If you can add hard breaks, that makes it easier to review with default gerrit settings.",
+      "revId": "851b0b1130c52b006dd6bc093457e5acd9205488",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3229a8c_43780b86",
+        "filename": "docs/zephyr/zephyr_gpio.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-02-01T22:50:09Z",
+      "side": 1,
+      "message": "Let\u0027s make this more explicit:\n\nDo not use `enum gpio_signal` or the enum signal names in any Zephyr based code, instead use the native Zephyr GPIO APIs.",
+      "range": {
+        "startLine": 76,
+        "startChar": 0,
+        "endLine": 76,
+        "endChar": 82
+      },
+      "revId": "851b0b1130c52b006dd6bc093457e5acd9205488",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4270985c_fcc0c139",
+        "filename": "docs/zephyr/zephyr_gpio.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-02-01T22:50:09Z",
+      "side": 1,
+      "message": "Keep this in the present tense, delete \"will\".",
+      "range": {
+        "startLine": 87,
+        "startChar": 58,
+        "endLine": 87,
+        "endChar": 62
+      },
+      "revId": "851b0b1130c52b006dd6bc093457e5acd9205488",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "47fceeb3_767d8f08",
+        "filename": "docs/zephyr/zephyr_gpio.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-02-01T22:50:09Z",
+      "side": 1,
+      "message": "Does macro this exist?  If so, It could use an example.",
+      "range": {
+        "startLine": 94,
+        "startChar": 1,
+        "endLine": 94,
+        "endChar": 18
+      },
+      "revId": "851b0b1130c52b006dd6bc093457e5acd9205488",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3aa580ed_18fbcacd",
+        "filename": "docs/zephyr/zephyr_gpio.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-02-01T22:50:09Z",
+      "side": 1,
+      "message": "delete",
+      "range": {
+        "startLine": 123,
+        "startChar": 20,
+        "endLine": 123,
+        "endChar": 26
+      },
+      "revId": "851b0b1130c52b006dd6bc093457e5acd9205488",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "adaa2227_cf583bdc",
+        "filename": "docs/zephyr/zephyr_gpio.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-02-01T22:50:09Z",
+      "side": 1,
+      "message": "Do not use",
+      "range": {
+        "startLine": 297,
+        "startChar": 49,
+        "endLine": 297,
+        "endChar": 60
+      },
+      "revId": "851b0b1130c52b006dd6bc093457e5acd9205488",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
