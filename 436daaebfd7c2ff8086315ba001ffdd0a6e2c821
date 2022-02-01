@@ -33,6 +33,29 @@
       "message": "Hi All, please help to review...",
       "revId": "436daaebfd7c2ff8086315ba001ffdd0a6e2c821",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f0f9280_b8dc4c91",
+        "filename": "chip/mchp/config_flash_layout.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-02-01T17:53:17Z",
+      "side": 1,
+      "message": "nit: newline",
+      "range": {
+        "startLine": 109,
+        "startChar": 2,
+        "endLine": 109,
+        "endChar": 3
+      },
+      "revId": "436daaebfd7c2ff8086315ba001ffdd0a6e2c821",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
