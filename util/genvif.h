@@ -147,6 +147,7 @@ struct vif_Usb4RouterListType_t {
 
 
 enum vif_Component_indexes {
+	Component_Header,			/* comment */
 	Port_Label,				/* nonEmptyString */
 	Connector_Type,				/* numericFieldType */
 	USB4_Supported,				/* booleanFieldType */
@@ -157,11 +158,13 @@ enum vif_Component_indexes {
 	Captive_Cable,				/* booleanFieldType */
 	Port_Battery_Powered,			/* booleanFieldType */
 	BC_1_2_Support,				/* numericFieldType */
+	General_PD_Header,			/* comment */
 	PD_Spec_Revision_Major,			/* numericFieldType */
 	PD_Spec_Revision_Minor,			/* numericFieldType */
 	PD_Spec_Version_Major,			/* numericFieldType */
 	PD_Spec_Version_Minor,			/* numericFieldType */
 	PD_Specification_Revision,		/* numericFieldType */
+	PD_Capabilities_Header,			/* comment */
 	USB_Comms_Capable,			/* booleanFieldType */
 	DR_Swap_To_DFP_Supported,		/* booleanFieldType */
 	DR_Swap_To_UFP_Supported,		/* booleanFieldType */
@@ -188,6 +191,7 @@ enum vif_Component_indexes {
 	Type_C_Implements_Try_SRC,		/* booleanFieldType */
 	Type_C_Implements_Try_SNK,		/* booleanFieldType */
 	RP_Value,				/* numericFieldType */
+	USB_Type_C_Header,			/* comment */
 	Type_C_Supports_VCONN_Powered_Accessory,/* booleanFieldType */
 	Type_C_Is_VCONN_Powered_Accessory,	/* booleanFieldType */
 	Type_C_Is_Debug_Target_SRC,		/* booleanFieldType */
@@ -200,6 +204,7 @@ enum vif_Component_indexes {
 	Type_C_Port_On_Hub,			/* booleanFieldType */
 	Type_C_Supports_Audio_Accessory,	/* booleanFieldType */
 	Type_C_Sources_VCONN,			/* booleanFieldType */
+	USB4_Port_Header,			/* comment */
 	USB4_Lane_0_Adapter,			/* numericFieldType */
 	USB4_Max_Speed,				/* numericFieldType */
 	USB4_DFP_Supported,			/* booleanFieldType */
@@ -219,6 +224,7 @@ enum vif_Component_indexes {
 	Device_Truncates_DP_For_tDHPResponse,	/* booleanFieldType */
 	Device_Gen1x1_tLinkTurnaround,		/* numericFieldType */
 	Device_Gen2x1_tLinkTurnaround,		/* numericFieldType */
+	USB_Host_Header,			/* comment */
 	Host_Supports_USB_Data,			/* booleanFieldType */
 	Host_Speed,				/* numericFieldType */
 	Is_DFP_On_Hub,				/* booleanFieldType */
@@ -229,6 +235,7 @@ enum vif_Component_indexes {
 	Host_Gen2x1_tLinkTurnaround,		/* numericFieldType */
 	Host_Is_Embedded,			/* booleanFieldType */
 	Host_Suspend_Supported,			/* booleanFieldType */
+	PD_Source_Header,			/* comment */
 	PD_Power_As_Source,			/* numericFieldType */
 	USB_Suspend_May_Be_Cleared,		/* booleanFieldType */
 	Sends_Pings,				/* booleanFieldType */
@@ -237,17 +244,20 @@ enum vif_Component_indexes {
 	Num_Src_PDOs,				/* numericFieldType */
 	PD_OC_Protection,			/* booleanFieldType */
 	PD_OCP_Method,				/* numericFieldType */
+	PD_Sink_Header,				/* comment */
 	PD_Power_As_Sink,			/* numericFieldType */
 	No_USB_Suspend_May_Be_Set,		/* booleanFieldType */
 	GiveBack_May_Be_Set,			/* booleanFieldType */
 	Higher_Capability_Set,			/* booleanFieldType */
 	FR_Swap_Reqd_Type_C_Current_As_Initial_Source,/* numericFieldType */
 	Num_Snk_PDOs,				/* numericFieldType */
+	Dual_Role_Header,			/* comment */
 	Accepts_PR_Swap_As_Src,			/* booleanFieldType */
 	Accepts_PR_Swap_As_Snk,			/* booleanFieldType */
 	Requests_PR_Swap_As_Src,		/* booleanFieldType */
 	Requests_PR_Swap_As_Snk,		/* booleanFieldType */
 	FR_Swap_Supported_As_Initial_Sink,	/* booleanFieldType */
+	SOP_Discover_ID_Header,			/* comment */
 	XID_SOP,				/* numericFieldType */
 	Data_Capable_As_USB_Host_SOP,		/* booleanFieldType */
 	Data_Capable_As_USB_Device_SOP,		/* booleanFieldType */
@@ -267,6 +277,7 @@ enum vif_Component_indexes {
 	AMA_VCONN_Reqd,				/* booleanFieldType */
 	AMA_VBUS_Reqd,				/* booleanFieldType */
 	AMA_Superspeed_Support,			/* numericFieldType */
+	BC_1_2_Header,				/* comment */
 	BC_1_2_Charging_Port_Type,		/* numericFieldType */
 	XID,					/* numericFieldType */
 	Data_Capable_As_USB_Host,		/* booleanFieldType */
@@ -323,6 +334,7 @@ enum vif_Component_indexes {
 	VPD_Ground_Impedance,			/* numericFieldType */
 	Repeater_One_Type,			/* numericFieldType */
 	Repeater_Two_Type,			/* numericFieldType */
+	Product_Power_Header,			/* comment */
 	Product_Total_Source_Power_mW,		/* numericFieldType */
 	Port_Source_Power_Type,			/* numericFieldType */
 	Port_Source_Power_Gang,			/* nonEmptyString */
@@ -353,6 +365,7 @@ struct vif_Component_t {
 
 
 enum vif_Product_indexes {
+	USB4_Product_Header,			/* comment */
 	Product_VID,				/* numericFieldType */
 	USB4_Dock,				/* booleanFieldType */
 	USB4_Num_Internal_Host_Controllers,	/* numericFieldType */
