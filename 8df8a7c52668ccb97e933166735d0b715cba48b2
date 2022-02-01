@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "520662c6_56ce52af",
+        "filename": "zephyr/test/drivers/src/integration_usb.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 402,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-02-01T19:41:05Z",
+      "side": 1,
+      "message": "Removed the call based on discussion to keep the current check_usb_pd_power_info() pattern consistent - though we intend on reverting that pattern.",
+      "parentUuid": "19b8c4c9_00d9d092",
+      "range": {
+        "startLine": 402,
+        "startChar": 27,
+        "endLine": 402,
+        "endChar": 31
+      },
+      "revId": "8df8a7c52668ccb97e933166735d0b715cba48b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cee7f373_7da69dcf",
