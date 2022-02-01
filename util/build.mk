@@ -46,9 +46,11 @@ ifeq ($(CONFIG_USB_POWER_DELIVERY),y)
 build-util-bin-y+=genvif
 build-util-art-y+=$(BOARD)_vif.xml
 
-# usb_pd_policy.c can be in baseboard, or board, or both.
+# usb*.c can be in baseboard, or board, or both.
 genvif-pd-srcs=$(sort $(wildcard $(BASEDIR)/usb_pd_pdo.c \
-			board/$(BOARD)/usb_pd_pdo.c))
+			board/$(BOARD)/usb_pd_pdo.c) \
+			$(wildcard $(BASEDIR)/usbc_config.c \
+			board/$(BOARD)/usbc_config.c))
 genvif-pd-objs=$(genvif-pd-srcs:%.c=$(out)/util/%.o)
 genvif-pd-objs += $(out)/common/usb_common.o $(out)/common/usb_pd_pdo.o
 deps-$(CONFIG_USB_POWER_DELIVERY) += $(genvif-pd-objs:%.o=%.o.d)
@@ -60,6 +62,9 @@ $(out)/util/genvif: BUILD_LDFLAGS+=$(genvif-pd-objs) -flto
 STANDALONE_FLAGS=-ffreestanding -fno-builtin -nostdinc \
 			-Ibuiltin/ -D"__keep= " -DVIF_BUILD=$(EMPTY)
 
+$(out)/util/%/usbc_config.o: %/usbc_config.c
+	-@ mkdir -p $(@D)
+	$(call quiet,c_to_vif,BUILDCC)
 $(out)/util/%/usb_pd_policy.o: %/usb_pd_policy.c
 	-@ mkdir -p $(@D)
 	$(call quiet,c_to_vif,BUILDCC)

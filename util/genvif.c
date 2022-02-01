@@ -725,6 +725,27 @@ static bool is_usb4_supported(void)
 			    IS_ENABLED(CONFIG_USB_PD_USB4));
 }
 
+static bool is_component_usb4_capable(void)
+{
+	int port = component_index;
+
+	return is_usb4_supported() && board_is_tbt_usb4_port(port);
+}
+
+static bool is_usb4_tbt3_compatible(void)
+{
+	return get_vif_bool(&vif.Component[component_index]
+				.vif_field[USB4_TBT3_Compatibility_Supported],
+			    IS_ENABLED(CONFIG_USB_PD_TBT_COMPAT_MODE));
+}
+
+static bool is_usb4_pcie_tunneling_supported(void)
+{
+	return get_vif_bool(&vif.Component[component_index]
+				.vif_field[USB4_PCIe_Tunneling_Supported],
+			    IS_ENABLED(CONFIG_USB_PD_PCIE_TUNNELING));
+}
+
 static bool is_usb_pd_supported(void)
 {
 	return get_vif_bool(&vif.Component[component_index]
@@ -2738,7 +2759,7 @@ static void init_vif_component_fields(struct vif_field_t *vif_fields,
 		"2",
 		"Type-C®");
 
-	if (is_usb4_supported()) {
+	if (is_component_usb4_capable()) {
 		int router_index;
 
 		set_vif_field_b(&vif_fields[USB4_Supported],
@@ -3303,6 +3324,42 @@ static void init_vif_component_usb_type_c_fields(
 	set_vif_field_b(&vif_fields[Type_C_Sources_VCONN],
 		vif_component_name[Type_C_Sources_VCONN],
 		IS_ENABLED(CONFIG_USBC_VCONN));
+}
+
+static void init_vif_component_usb4_port_fields(struct vif_field_t *vif_fields)
+{
+	int port;
+	enum tbt_compat_cable_speed s;
+	int vi;
+	const char *vs;
+
+	port = component_index;
+
+	if (!board_is_tbt_usb4_port(port))
+		return;
+
+	set_vif_field_c(&vif_fields[USB4_Port_Header],
+			"USB4\u2122 Port");
+
+	s = board_get_max_tbt_speed(port);
+	if (s == TBT_SS_TBT_GEN3) {
+		vi = 1;
+		vs = "Gen 3 (40Gb)";
+	} else {
+		vi = 0;
+		vs = "Gen2 (20Gb)";
+	}
+	set_vif_field_itss(&vif_fields[USB4_Max_Speed],
+			   vif_component_name[USB4_Max_Speed],
+			   vi, vs);
+
+	set_vif_field_b(&vif_fields[USB4_TBT3_Compatibility_Supported],
+			vif_component_name[USB4_TBT3_Compatibility_Supported],
+			is_usb4_tbt3_compatible());
+
+	set_vif_field_b(&vif_fields[USB4_PCIe_Tunneling_Supported],
+			vif_component_name[USB4_PCIe_Tunneling_Supported],
+			is_usb4_pcie_tunneling_supported());
 }
 
 /*********************************************************************
@@ -3917,6 +3974,9 @@ static int gen_vif(const char *board,
 		init_vif_component_usb_type_c_fields(
 				vif->Component[component_index].vif_field,
 				type);
+
+		init_vif_component_usb4_port_fields(
+			vif->Component[component_index].vif_field);
 
 		init_vif_component_usb_data_ufp_fields(
 				vif->Component[component_index].vif_field);
