@@ -192,7 +192,7 @@
 			enum-name = "GPIO_KBD_KSO2";
 		};
 		ec_espi_rst_l {
-			gpios = <&gpio5 4 GPIO_PULL_UP>;
+			gpios = <&gpio5 4 GPIO_PULL_DOWN>;
 		};
 		6axis_int_l {
 			gpios = <&gpioa 0 GPIO_INPUT_PULL_UP>;
