@@ -95,6 +95,9 @@
 			gpios = <&gpio6 0 GPIO_INPUT>;
 			enum-name = "GPIO_PG_LPDDR5_S0_OD";
 		};
+		ec_espi_rst_l {
+			gpios = <&gpio5 4 GPIO_PULL_DOWN>;
+		};
 	};
 
 	def-lvol-io-list {
