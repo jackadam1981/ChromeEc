@@ -91,6 +91,30 @@
       },
       "revId": "9cb71c6541bc9bd99c4f5ae29977f22e73395486",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3d5f28c_10f5f292",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-02-01T00:12:49Z",
+      "side": 1,
+      "message": "Ok, I see what is happening. We only build the fingerprint sensor code when building the `RW` image (not `RO`), so we need to make sure that `FP_SENSOR_HWID` is only referenced in code built for `RW`. You should be able to do something like this:\n\n```\ndiff --git a/test/fpsensor_hw.c b/test/fpsensor_hw.c\nindex 330ea041bb..d44518e477 100644\n--- a/test/fpsensor_hw.c\n+++ b/test/fpsensor_hw.c\n@@ -7,15 +7,21 @@\n #include \"test_util.h\"\n #include \"fpc_private.h\"\n #include \"board.h\"\n+\n+#ifdef SECTION_IS_RW\n #include \"fpc/fpc_sensor.h\"\n+static const uint32_t fp_sensor_hwid \u003d FP_SENSOR_HWID;\n+#else\n+static const uint32_t fp_sensor_hwid \u003d UINT32_MAX;\n+#endif\n \n /* Hardware-dependent smoke test that makes a SPI transaction with the\n  * fingerprint sensor.\n  */\n test_static int test_fp_check_hwid(void)\n {\n-       TEST_EQ(fpc_check_hwid(), FP_SENSOR_HWID, \"%d\");\n-\n+       if (IS_ENABLED(SECTION_IS_RW))\n+               TEST_EQ(fpc_check_hwid(), fp_sensor_hwid, \"%d\");\n        return EC_SUCCESS;\n }\n \n```",
+      "parentUuid": "5be42082_e2d65e74",
+      "range": {
+        "startLine": 270,
+        "startChar": 0,
+        "endLine": 274,
+        "endChar": 34
+      },
+      "revId": "9cb71c6541bc9bd99c4f5ae29977f22e73395486",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
