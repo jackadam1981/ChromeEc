@@ -462,6 +462,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bac062ca_665c6bbc",
+        "filename": "core/cortex-m/fpu.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2022-02-01T20:20:38Z",
+      "side": 1,
+      "message": "As I mentioned earlier, I can\u0027t find reason for the memory barrier other than it was in PM0214. Removed the barrier.",
+      "parentUuid": "513567dd_d501f623",
+      "range": {
+        "startLine": 114,
+        "startChar": 1,
+        "endLine": 114,
+        "endChar": 21
+      },
+      "revId": "c5e21a86ffd8c8e29dfb24ba88581c23acdd2f15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bec7fbb4_bca96c9d",

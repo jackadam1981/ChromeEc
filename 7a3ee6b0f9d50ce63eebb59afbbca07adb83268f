@@ -75,6 +75,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1f675b3_b4a7432f",
+        "filename": "board/nocturne_fp/board.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2022-02-01T20:20:38Z",
+      "side": 1,
+      "message": "I know it. I added a comment here to warn other developers that enabling CONFIG_CPU_WARNINGS on STM32H7 won\u0027t give expected results.",
+      "parentUuid": "d602eb1c_22237ab1",
+      "range": {
+        "startLine": 98,
+        "startChar": 3,
+        "endLine": 100,
+        "endChar": 12
+      },
+      "revId": "7a3ee6b0f9d50ce63eebb59afbbca07adb83268f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "08d0f015_bfb4f824",
@@ -88,6 +112,30 @@
       "writtenOn": "2022-01-31T22:50:16Z",
       "side": 1,
       "message": "Can you mention \"4.6.7 Enabling and clearing FPU exception interrupts\" in https://www.st.com/resource/en/programming_manual/pm0214-stm32-cortexm4-mcus-and-mpus-programming-manual-stmicroelectronics.pdf as a reference?",
+      "range": {
+        "startLine": 22,
+        "startChar": 10,
+        "endLine": 26,
+        "endChar": 34
+      },
+      "revId": "7a3ee6b0f9d50ce63eebb59afbbca07adb83268f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4bf0af9_3357e9a5",
+        "filename": "chip/stm32/fpu.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2022-02-01T20:20:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "08d0f015_bfb4f824",
       "range": {
         "startLine": 22,
         "startChar": 10,
@@ -121,6 +169,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba960d37_c36af634",
+        "filename": "core/cortex-m/fpu.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2022-02-01T20:20:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "54d8bcbd_53030ad3",
+      "range": {
+        "startLine": 36,
+        "startChar": 33,
+        "endLine": 36,
+        "endChar": 48
+      },
+      "revId": "7a3ee6b0f9d50ce63eebb59afbbca07adb83268f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d80d0499_529dadde",
@@ -144,6 +216,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1dc464ee_ad2d8d89",
+        "filename": "test/cortexm_fpu.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2022-02-01T20:20:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d80d0499_529dadde",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 17
+      },
+      "revId": "7a3ee6b0f9d50ce63eebb59afbbca07adb83268f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "20e700b4_9ae0f22d",
@@ -157,6 +253,30 @@
       "writtenOn": "2022-01-31T22:50:16Z",
       "side": 1,
       "message": "Can you add a test for the \"inexact\" case? Looks like sqrt(2) should trigger it: https://www.gnu.org/software/libc/manual/html_node/FP-Exceptions.html.\n\nhttps://docs.oracle.com/cd/E19957-01/806-3568/ncg_handle.html#249. \"2.0 / 3.0\" might be a better example since it\u0027s easy to visualize.",
+      "range": {
+        "startLine": 140,
+        "startChar": 2,
+        "endLine": 143,
+        "endChar": 47
+      },
+      "revId": "7a3ee6b0f9d50ce63eebb59afbbca07adb83268f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ecbb64d_575e4d4f",
+        "filename": "test/cortexm_fpu.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2022-02-01T20:20:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "20e700b4_9ae0f22d",
       "range": {
         "startLine": 140,
         "startChar": 2,
