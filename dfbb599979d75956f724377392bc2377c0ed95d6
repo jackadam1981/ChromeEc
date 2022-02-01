@@ -288,6 +288,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fcf7affb_24bc8207",
+        "filename": "zephyr/projects/intelrvp/adlrvp/adlrvp_npcx/adlrvp_npcx.dts",
+        "patchSetId": 13
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-02-01T23:00:10Z",
+      "side": 1,
+      "message": "I filed b:217436680 to add support for the NPCX997F part upstream.  For now, please add\n\nTODO b/217436680: remove the flash size override once the upstream change lands.",
+      "parentUuid": "c880a13c_dd62bad1",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 11
+      },
+      "revId": "dfbb599979d75956f724377392bc2377c0ed95d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a485e789_1ec5bab2",
         "filename": "zephyr/projects/intelrvp/adlrvp/adlrvp_npcx/gpio.dts",
         "patchSetId": 13
