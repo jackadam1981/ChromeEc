@@ -4,7 +4,7 @@
 
 description: Common fields for AP power sequence
 
-compatible: "ap-pwrseq"
+compatible: "intel,ap-pwrseq"
 
 properties:
     dsw-pwrok-delay:
@@ -78,3 +78,76 @@ properties:
       default: 1000
       description: |
         Timeout in ms for monitoring power signals.
+
+    pg-ec-dsw-pwroks-gpios:
+      type: phandle-array
+      required: false
+      description: |
+        VR/Circuit to EC 3.3V power good signal.
+
+    ec-pch-rsmrst-odl-gpios:
+      type: phandle-array
+      required: false
+      description: |
+        EC to PCH RSMRST power good signal.
+
+    en-pp5000-s5-gpios:
+      type: phandle-array
+      required: false
+      description: |
+        Enable 5V rail.
+
+    pg-ec-rsmrst-odl-gpios:
+      type: phandle-array
+      required: false
+      description: |
+        VR/Circuit to EC RSMRST power good signal.
+
+
+    slp-s3-l-gpios:
+      type: phandle-array
+      required: false
+      description: |
+        SLP_S3 signal from SoC.
+
+    pg-ec-all-sys-pwrgd-gpios:
+      type: phandle-array
+      required: false
+      description: |
+        VR/Circuit to EC ALL SYS power good signal.
+
+    sys-rst-l-gpios:
+      type: phandle-array
+      required: false
+      description: |
+        VR/Circuit to EC ALL SYS power good signal.
+
+    ec-pch-sys-pwrok-gpios:
+      type: phandle-array
+      required: false
+      description: |
+        VR/Circuit to EC ALL SYS power good signal.
+
+    pch-pwrok-gpios:
+      type: phandle-array
+      required: false
+      description: |
+        VR/Circuit to EC ALL SYS power good signal.
+
+    imvp9-vrrdy-od-gpios:
+      type: phandle-array
+      required: false
+      description: |
+        VR/Circuit to EC ALL SYS power good signal.
+
+    vccst-pwrgd-od-gpios:
+      type: phandle-array
+      required: false
+      description: |
+        VR/Circuit to EC ALL SYS power good signal.
+
+    slp-sus-l-gpios:
+      type: phandle-array
+      required: false
+      description: |
+        SLP_SUS signal from SoC.

@@ -24,7 +24,23 @@ const struct common_pwrseq_config com_cfg = {
 	.pch_dsw_pwrok_delay_ms = DT_INST_PROP(0, dsw_pwrok_delay),
 	.pch_pm_pwrbtn_delay_ms =  DT_INST_PROP(0, pm_pwrbtn_delay),
 	.pch_rsmrst_delay_ms = DT_INST_PROP(0, rsmrst_delay),
-	.wait_signal_timeout_ms = DT_INST_PROP(0, wait_signal_timeout),
+#if POWER_SEQ_GPIO_PRESENT(en_pp5000_s5_gpios)
+	.enable_pp5000_a = POWER_GPIO_DT_SPEC_GET(en_pp5000_s5_gpios),
+#endif
+#if POWER_SEQ_GPIO_PRESENT(en_pp3300_s5_gpios)
+	.enable_pp3300_a = POWER_GPIO_DT_SPEC_GET(en_pp3300_s5_gpios),
+#endif
+	.pg_ec_rsmrst_odl = POWER_GPIO_DT_SPEC_GET(pg_ec_rsmrst_odl_gpios),
+	.ec_pch_rsmrst_odl = POWER_GPIO_DT_SPEC_GET(ec_pch_rsmrst_odl_gpios),
+#if POWER_SEQ_GPIO_PRESENT(pg_ec_dsw_pwroks_gpios)
+	.pg_ec_dsw_pwrok = POWER_GPIO_DT_SPEC_GET(pg_ec_dsw_pwroks_gpios),
+#endif
+#if POWER_SEQ_GPIO_PRESENT(ec_soc_dsw_pwrok_gpios)
+	.ec_soc_dsw_pwrok = POWER_GPIO_DT_SPEC_GET(ec_soc_dsw_pwrok_gpios),
+#endif
+	.slp_s3_l = POWER_GPIO_DT_SPEC_GET(slp_s3_l_gpios),
+	.all_sys_pwrgd = POWER_GPIO_DT_SPEC_GET(pg_ec_all_sys_pwrgd_gpios),
+	.slp_sus_l = POWER_GPIO_DT_SPEC_GET(slp_sus_l_gpios),
 };
 
 /**
@@ -46,43 +62,6 @@ const char pwrsm_dbg[][25] = {
 	[SYS_POWER_STATE_S0S3] = "STATE_S0S3",
 };
 
-const struct gpio_config *get_gpio_config_from_net_name(const char *net_name)
-{
-	const struct gpio_config *gpio;
-	int i;
-
-	for (i = 0; i < power_seq_gpios_count; i++) {
-		gpio = &power_seq_gpios[i];
-		if (!strcmp(gpio->net_name, net_name))
-			return gpio;
-	}
-
-	LOG_ERR("Failed to find GPIO %s", net_name);
-	return NULL;
-}
-
-int gpio_get_lvl(const char *net_name)
-{
-	const struct gpio_config *gpio =
-		get_gpio_config_from_net_name(net_name);
-
-	if (gpio)
-		return gpio_pin_get_raw(gpio->port, gpio->pin);
-
-	return 0;
-}
-
-void gpio_set_lvl(const char *net_name, int val)
-{
-	const struct gpio_config *gpio =
-		get_gpio_config_from_net_name(net_name);
-
-	if (gpio) {
-		if (gpio_pin_set_raw(gpio->port, gpio->pin, val))
-			LOG_ERR("Failed to set GPIO %s", net_name);
-	}
-}
-
 void throttle_ap_prochot_input_interrupt(void)
 {
 	/* TODO: Add handling */
@@ -97,52 +76,45 @@ static int check_power_rails_enabled(void)
 {
 	int out = 1;
 
-#if POWER_SEQ_GPIO_PRESENT(EC_VR_EN_PP3300_A)
-	out &= gpio_get_lvl(GPIO_NET_NAME(EC_VR_EN_PP3300_A));
+#if POWER_SEQ_GPIO_PRESENT(en_pp3300_s5_gpios)
+	out &= gpio_pin_get_dt(&(com_cfg.enable_pp3300_a));
 #endif
-#if POWER_SEQ_GPIO_PRESENT(EC_VR_EN_PP5000_A)
-	out &= gpio_get_lvl(GPIO_NET_NAME(EC_VR_EN_PP5000_A));
+#if POWER_SEQ_GPIO_PRESENT(en_pp5000_s5_gpios)
+	out &= gpio_pin_get_dt(&(com_cfg.enable_pp5000_a));
 #endif
-#if POWER_SEQ_GPIO_PRESENT(VR_EC_DSW_PWROK)
-	out &= gpio_get_lvl(GPIO_NET_NAME(VR_EC_DSW_PWROK));
+#if POWER_SEQ_GPIO_PRESENT(pg_ec_dsw_pwroks_gpios)
+	out &= gpio_pin_get_dt(&(com_cfg.pg_ec_dsw_pwrok));
 #endif
 	return out;
 }
 
 static void pwrseq_gpio_init(void)
 {
-	struct gpio_config *gpio;
-	int i, ret = 0;
+	int ret = 0;
 
-	for (i = 0; i < power_seq_gpios_count; i++) {
-		gpio = &power_seq_gpios[i];
-
-		LOG_INF("Configuring GPIO: net_name=%s, port_name=%s "
-			"pin=0x%x, flag=0x%x",
-			gpio->net_name, gpio->port_name,
-			gpio->pin, gpio->flags);
-		/* Get GPIO binding */
-		if (!device_is_ready(gpio->port)) {
-			LOG_DBG("gpio device not ready error\n");
-			ret = -EINVAL;
-			break;
-		}
-
-		/* Configure the GPIO */
-		ret = gpio_pin_configure(gpio->port, gpio->pin, gpio->flags);
-		if (ret != 0) {
-			LOG_ERR("pin config failure %s", gpio->net_name);
-			break;
-		}
-	}
+	/* Configure the GPIO */
+#if POWER_SEQ_GPIO_PRESENT(en_pp5000_s5_gpios)
+	ret = gpio_pin_configure_dt(&(com_cfg.enable_pp5000_a), GPIO_OUTPUT_LOW);
+#endif
+#if POWER_SEQ_GPIO_PRESENT(en_pp3300_s5_gpios)
+	ret |= gpio_pin_configure_dt(&(com_cfg.enable_pp3300_a), GPIO_OUTPUT_LOW);
+#endif
+	ret |= gpio_pin_configure_dt(&(com_cfg.pg_ec_rsmrst_odl), GPIO_INPUT);
+	ret |= gpio_pin_configure_dt(&(com_cfg.ec_pch_rsmrst_odl), GPIO_OUTPUT_LOW);
+#if POWER_SEQ_GPIO_PRESENT(pg_ec_dsw_pwroks_gpios)
+	ret |= gpio_pin_configure_dt(&(com_cfg.pg_ec_dsw_pwrok), GPIO_INPUT);
+#endif
+#if POWER_SEQ_GPIO_PRESENT(ec_soc_dsw_pwrok_gpios)
+	ret |= gpio_pin_configure_dt(&(com_cfg.ec_soc_dsw_pwrok, GPIO_OUTPUT_LOW);
+#endif
+	ret |= gpio_pin_configure_dt(&(com_cfg.slp_s3_l), GPIO_INPUT);
+	ret |= gpio_pin_configure_dt(&(com_cfg.slp_sus_l), GPIO_INPUT);
+	ret |= gpio_pin_configure_dt(&(com_cfg.all_sys_pwrgd), GPIO_INPUT);
 
 	if (!ret)
 		LOG_INF("Configuring GPIO complete");
 	else
-		LOG_ERR("Configure GPIO fail, err=%d: net_name=%s "
-			"port_name=%s, pin=0x%x, flag=0x%x",
-			ret, gpio->net_name, gpio->port_name,
-			gpio->pin, gpio->flags);
+		LOG_ERR("GPIO configure failed\n");
 }
 
 enum power_states_ndsx pwr_sm_get_state(void)
@@ -162,39 +134,28 @@ void pwr_sm_set_state(enum power_states_ndsx new_state)
 int check_rsmrst_ok(void)
 {
 	/* TODO: Check if this is still intact*/
-	return gpio_get_lvl(GPIO_NET_NAME(VR_PG_EC_RSMRST_ODL));
+	return gpio_pin_get_dt(&(com_cfg.pg_ec_rsmrst_odl));
 }
 
 int check_pch_out_of_suspend(void)
 {
-	return gpio_get_lvl(GPIO_NET_NAME(PCH_EC_SLP_SUS_L));
+	return gpio_pin_get_dt(&(com_cfg.slp_sus_l));
 }
-
-void pwr_signal_pass_thru_handler(const char *in_signal,
-			const char *out_signal, uint32_t delay_ms)
-{
-	int in_sig_val = gpio_get_lvl(in_signal);
-
-	if (in_sig_val != gpio_get_lvl(out_signal)) {
-		if (in_sig_val)
-			k_msleep(delay_ms);
-
-		gpio_set_lvl(out_signal, in_sig_val);
-	}
-}
-
-
 
 /* Handling RSMRST signal is mostly common across x86 chipsets */
 __attribute__((weak)) void rsmrst_pass_thru_handler(void)
 {
 	/* Handle RSMRST passthrough */
 	/* TODO: Add additional conditions for RSMRST handling */
-	pwr_signal_pass_thru_handler(GPIO_NET_NAME(VR_PG_EC_RSMRST_ODL),
-			GPIO_NET_NAME(EC_PCH_RSMRST_L),
-			com_cfg.pch_rsmrst_delay_ms);
-}
+	int in_sig_val = gpio_pin_get_dt(&(com_cfg.pg_ec_rsmrst_odl));
+	int out_sig_val = gpio_pin_get_dt(&(com_cfg.ec_pch_rsmrst_odl));
 
+	if (in_sig_val != out_sig_val) {
+		if (in_sig_val)
+			k_msleep(com_cfg.pch_rsmrst_delay_ms);
+		gpio_pin_set_dt(&(com_cfg.ec_pch_rsmrst_odl), in_sig_val);
+	}
+}
 
 /* TODO:
  * Add power down sequence
@@ -241,13 +202,13 @@ static int common_pwr_sm_run(int state)
 
 	case SYS_POWER_STATE_S3:
 		/* AP is out of suspend to RAM */
-		if (gpio_get_lvl(GPIO_NET_NAME(PCH_EC_SLP_S3_L)))
+		if (gpio_pin_get_dt(&(com_cfg.slp_s3_l)))
 			return SYS_POWER_STATE_S3S0;
 		break;
 
 	case SYS_POWER_STATE_S3S0:
 		/* All the power rails must be stable */
-		if (gpio_get_lvl(GPIO_NET_NAME(VR_EC_ALL_SYS_PWRGD)))
+		if (gpio_pin_get_dt(&(com_cfg.all_sys_pwrgd)))
 			return SYS_POWER_STATE_S0;
 		break;
 
@@ -359,12 +320,6 @@ static inline void create_pwrseq_thread(void)
 
 void init_pwr_seq_state(void)
 {
-	/* TODO: Read from device tree */
-
-	com_cfg.pch_rsmrst_delay_ms = 10;
-	com_cfg.pch_pm_pwrbtn_delay_ms = 200;
-
-	/* Delay value can be ovverriden by chipset */
 	init_chipset_pwr_seq_state();
 
 	pwr_sm_set_state(SYS_POWER_STATE_G3S5);

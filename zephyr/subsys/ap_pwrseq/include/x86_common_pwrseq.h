@@ -96,13 +96,6 @@ enum chipset_shutdown_reason {
 	CHIPSET_SHUTDOWN_COUNT,
 };
 
-/* Common device tree configurable attributes */
-struct common_pwrseq_config {
-	int pch_dsw_pwrok_delay_ms;
-	int pch_pm_pwrbtn_delay_ms;
-	int pch_rsmrst_delay_ms;
-};
-
 /* This encapsulates the attributes of the state machine */
 struct power_seq_context {
 	/* On power-on start boot up sequence */

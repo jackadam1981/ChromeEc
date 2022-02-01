@@ -14,83 +14,25 @@ static const struct chipset_pwrseq_config chip_cfg = {
 	.vrrdy_timeout_ms = DT_INST_PROP(0, vrrdy_timeout),
 	.sys_reset_delay_ms = DT_INST_PROP(0, sys_reset_delay),
 	.all_sys_pwrgd_timeout = DT_INST_PROP(0, all_sys_pwrgd_timeout),
+	.vccst_pwrgd_od = POWER_GPIO_DT_SPEC_GET(vccst_pwrgd_od_gpios),
+	.imvp9_vrrdy_od = POWER_GPIO_DT_SPEC_GET(imvp9_vrrdy_od_gpios),
+	.pch_pwrok = POWER_GPIO_DT_SPEC_GET(pch_pwrok_gpios),
+	.ec_pch_sys_pwrok = POWER_GPIO_DT_SPEC_GET(ec_pch_sys_pwrok_gpios),
+	.sys_rst_l = POWER_GPIO_DT_SPEC_GET(sys_rst_l_gpios),
 };
-
-/* Power sequencing GPIOs */
-struct gpio_config power_seq_gpios[] = {
-	{
-		POWER_SEQ_GPIO(PCH_EC_SLP_SUS_L),
-	},
-	{
-		POWER_SEQ_GPIO(PCH_EC_SLP_S0_L),
-	},
-	{
-		POWER_SEQ_GPIO(PCH_EC_SLP_S3_L),
-	},
-	{
-		POWER_SEQ_GPIO(VR_PG_EC_RSMRST_ODL),
-	},
-	{
-		POWER_SEQ_GPIO(VR_EC_ALL_SYS_PWRGD),
-	},
-#if POWER_SEQ_GPIO_PRESENT(VR_EC_DSW_PWROK)
-	{
-		POWER_SEQ_GPIO(VR_EC_DSW_PWROK),
-	},
-#endif
-	{
-		POWER_SEQ_GPIO(EC_PCH_RSMRST_L),
-	},
-#if POWER_SEQ_GPIO_PRESENT(EC_PCH_DSW_PWROK)
-	{
-		POWER_SEQ_GPIO(EC_PCH_DSW_PWROK),
-	},
-#endif
-#if POWER_SEQ_GPIO_PRESENT(EC_PCH_SYS_PWROK)
-	{
-		POWER_SEQ_GPIO(EC_PCH_SYS_PWROK),
-	},
-#endif
-	{
-		POWER_SEQ_GPIO(EC_PCH_PWR_BTN_ODL),
-	},
-#if POWER_SEQ_GPIO_PRESENT(EC_VR_EN_PP5000_A)
-	{
-		POWER_SEQ_GPIO(EC_VR_EN_PP5000_A),
-	},
-#endif
-#if POWER_SEQ_GPIO_PRESENT(IMVP9_VRRDY_OD)
-	{
-		POWER_SEQ_GPIO(IMVP9_VRRDY_OD),
-	},
-#endif
-#if POWER_SEQ_GPIO_PRESENT(VCCST_PWRGD_OD)
-	{
-		POWER_SEQ_GPIO(VCCST_PWRGD_OD),
-	},
-#endif
-	{
-		POWER_SEQ_GPIO(PCH_PWROK),
-	},
-	{
-		POWER_SEQ_GPIO(SYS_RESET_L),
-	},
-};
-
-const int power_seq_gpios_count = ARRAY_SIZE(power_seq_gpios);
 
 void ap_off(void)
 {
 	/* TODO: This could be added as g3action handler */
-	gpio_set_lvl(GPIO_NET_NAME(VCCST_PWRGD_OD), 0);
-	gpio_set_lvl(GPIO_NET_NAME(PCH_PWROK), 0);
-	gpio_set_lvl(GPIO_NET_NAME(EC_PCH_SYS_PWROK), 0);
+	gpio_pin_set_dt(&(chip_cfg.vccst_pwrgd_od), 0);
+	gpio_pin_set_dt(&(chip_cfg.pch_pwrok), 0);
+	gpio_pin_set_dt(&(chip_cfg.ec_pch_sys_pwrok), 0);
 }
 
 /* This should be overridden if there is no power sequencer chip */
 __attribute__((weak)) int intel_x86_get_pg_ec_all_sys_pwrgd(void)
 {
-	return gpio_get_lvl(GPIO_NET_NAME(VR_EC_ALL_SYS_PWRGD));
+	return (gpio_pin_get_dt(&(com_cfg.all_sys_pwrgd)));
 }
 
 /* Handle ALL_SYS_PWRGD signal
@@ -124,10 +66,10 @@ int all_sys_pwrgd_handler(void)
 
 	/* PG_EC_ALL_SYS_PWRGD is asserted, enable VCCST_PWRGD_OD. */
 
-	vccst_pg = gpio_get_lvl(GPIO_NET_NAME(VCCST_PWRGD_OD));
+	vccst_pg = gpio_pin_get_dt(&(chip_cfg.vccst_pwrgd_od));
 	if (vccst_pg == 0) {
 		k_msleep(chip_cfg.vccst_pwrgd_delay_ms);
-		gpio_set_lvl(GPIO_NET_NAME(VCCST_PWRGD_OD), 1);
+		gpio_pin_set_dt(&(chip_cfg.vccst_pwrgd_od), 1);
 	}
 	return 0;
 }
@@ -145,7 +87,7 @@ static int wait_for_vrrdy(void)
 	int vrrdy;
 
 	for (; timeout_ms > 0; --timeout_ms) {
-		vrrdy = gpio_get_lvl(GPIO_NET_NAME(IMVP9_VRRDY_OD));
+		vrrdy = gpio_pin_get_dt(&(chip_cfg.imvp9_vrrdy_od));
 		if (vrrdy != 0)
 			return 1;
 		k_msleep(1);
@@ -159,7 +101,7 @@ int generate_pch_pwrok_handler(void)
 	int pch_pok;
 
 	/* Enable PCH_PWROK, gated by VRRDY. */
-	pch_pok = gpio_get_lvl(GPIO_NET_NAME(PCH_PWROK));
+	pch_pok = gpio_pin_get_dt(&(chip_cfg.pch_pwrok));
 	if (pch_pok == 0) {
 		if (wait_for_vrrdy() == 0) {
 			LOG_DBG("Timed out waiting for VRRDY, "
@@ -168,7 +110,7 @@ int generate_pch_pwrok_handler(void)
 			return -1;
 		}
 		k_msleep(chip_cfg.pch_pwrok_delay_ms);
-		gpio_set_lvl(GPIO_NET_NAME(PCH_PWROK), 1);
+		gpio_pin_set_dt(&(chip_cfg.pch_pwrok), 1);
 		LOG_DBG("Set PCH_PWROK\n");
 	}
 
@@ -182,7 +124,7 @@ void generate_sys_pwrok_handler(int delay)
 	int sys_pg;
 
 	/* Enable PCH_SYS_PWROK. */
-	sys_pok = gpio_get_lvl(GPIO_NET_NAME(EC_PCH_SYS_PWROK));
+	sys_pok = gpio_pin_get_dt(&(chip_cfg.ec_pch_sys_pwrok));
 	if (sys_pok == 0) {
 		k_msleep(delay);
 		/* Check if we lost power while waiting. */
@@ -193,7 +135,7 @@ void generate_sys_pwrok_handler(int delay)
 			ap_off();
 			return;
 		}
-		gpio_set_lvl(GPIO_NET_NAME(EC_PCH_SYS_PWROK), 1);
+		gpio_pin_set_dt(&(chip_cfg.ec_pch_sys_pwrok), 1);
 		/* PCH will now release PLT_RST */
 	}
 }
@@ -236,7 +178,7 @@ void s0_action_handler(void)
 /* This should be overridden if there is no power sequencer chip */
 __attribute__((weak)) int intel_x86_get_pg_ec_dsw_pwrok(void)
 {
-	return gpio_get_lvl(GPIO_NET_NAME(VR_EC_DSW_PWROK));
+	return gpio_pin_get_dt(&(com_cfg.pg_ec_dsw_pwrok));
 }
 
 void intel_x86_sys_reset_delay(void)
@@ -265,14 +207,14 @@ void chipset_reset(enum chipset_shutdown_reason reason)
 	 * Toggling SYS_RESET_L will not have any impact when it's already
 	 * low (i,e. Chipset is in reset state).
 	 */
-	if (gpio_get_lvl(GPIO_NET_NAME(SYS_RESET_L)) == 0) {
+	if (gpio_pin_get_dt(&(chip_cfg.sys_rst_l)) == 0) {
 		LOG_DBG("Chipset is in reset state");
 		return;
 	}
 
-	gpio_set_lvl(GPIO_NET_NAME(SYS_RESET_L), 0);
+	gpio_pin_set_dt(&(chip_cfg.sys_rst_l), 0);
 	intel_x86_sys_reset_delay();
-	gpio_set_lvl(GPIO_NET_NAME(SYS_RESET_L), 1);
+	gpio_pin_set_dt(&(chip_cfg.sys_rst_l), 1);
 }
 
 void chipset_force_shutdown(enum chipset_shutdown_reason reason)
@@ -284,10 +226,10 @@ void chipset_force_shutdown(enum chipset_shutdown_reason reason)
 	 */
 
 	/* Turn off RMSRST_L  to meet tPCH12 */
-	gpio_set_lvl(GPIO_NET_NAME(EC_PCH_RSMRST_L), 0);
+	gpio_pin_set_dt(&(com_cfg.pg_ec_rsmrst_odl), 0);
 
 	/* Turn off S5 rails */
-	gpio_set_lvl(GPIO_NET_NAME(EC_VR_EN_PP5000_A), 0);
+	gpio_pin_set_dt(&(com_cfg.enable_pp5000_a), 0);
 
 	/*
 	 * TODO(b/179519791): Replace this wait with
@@ -295,7 +237,7 @@ void chipset_force_shutdown(enum chipset_shutdown_reason reason)
 	 */
 	/* Now wait for DSW_PWROK and  RSMRST_ODL to go away. */
 	while (intel_x86_get_pg_ec_dsw_pwrok() &&
-			gpio_get_lvl(GPIO_NET_NAME(VR_PG_EC_RSMRST_ODL)) &&
+			gpio_pin_get_dt(&(com_cfg.pg_ec_rsmrst_odl)) &&
 			(timeout_ms > 0)) {
 		k_msleep(1);
 		timeout_ms--;
@@ -305,20 +247,26 @@ void chipset_force_shutdown(enum chipset_shutdown_reason reason)
 		LOG_DBG("DSW_PWROK or RSMRST_ODL didn't go low!  Assuming G3.");
 }
 
-
-void enable_power_rail(const char *net_name, int enable)
-{
-	gpio_set_lvl(net_name, enable);
-}
-
 void g3s5_action_handler(void)
 {
-	enable_power_rail(GPIO_NET_NAME(EC_VR_EN_PP5000_A), 1);
+	gpio_pin_set_dt(&(com_cfg.enable_pp5000_a), 1);
 }
 
 void init_chipset_pwr_seq_state(void)
 {
-	/* Do nothing */
+	int ret = 0;
+
+	/* Configure gpios specific to the chipset */
+	ret |= gpio_pin_configure_dt(&(chip_cfg.vccst_pwrgd_od), GPIO_OUTPUT_LOW);
+	ret |= gpio_pin_configure_dt(&(chip_cfg.imvp9_vrrdy_od), GPIO_INPUT);
+	ret |= gpio_pin_configure_dt(&(chip_cfg.pch_pwrok), GPIO_OUTPUT_LOW);
+	ret |= gpio_pin_configure_dt(&(chip_cfg.ec_pch_sys_pwrok), GPIO_OUTPUT_LOW);
+	ret |= gpio_pin_configure_dt(&(chip_cfg.sys_rst_l), GPIO_OUTPUT_HIGH);
+
+	if (!ret)
+		LOG_INF("Configuring GPIO complete");
+	else
+		LOG_ERR("GPIO configure failed\n");
 }
 
 enum power_states_ndsx chipset_pwr_sm_run(enum power_states_ndsx curr_state)

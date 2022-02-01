@@ -5,7 +5,7 @@
 
 / {
 	common-pwrseq {
-		compatible = "ap-pwrseq";
+		compatible = "intel,ap-pwrseq";
 
 		pm-pwrbtn-delay = <200>;
 		rsmrst-delay = <10>;
@@ -14,5 +14,18 @@
 		vccst-pwrgd-delay = <2>;
 		vrrdy-timeout = <50>;
 		sys-reset-delay = <32>;
+		en-pp5000-s5-gpios = <&gpiob 6 GPIO_OUT_LOW>;
+		pg-ec-rsmrst-odl-gpios = <&gpioe 2 GPIO_INPUT>;
+		ec-pch-rsmrst-odl-gpios = <&gpioa 6 GPIO_OUT_LOW>;
+		pg-ec-dsw-pwroks-gpios = <&gpioc 7 GPIO_INPUT>;
+		slp-s3-l-gpios = <&gpioa 5 GPIO_INPUT>;
+		pg-ec-all-sys-pwrgd-gpios = <&gpiof 4 GPIO_INPUT>;
+		slp-sus-l-gpios = <&gpiof 1 GPIO_INPUT>;
+
+		vccst-pwrgd-od-gpios = <&gpioa 4 GPIO_ODR_LOW>;
+		imvp9-vrrdy-od-gpios = <&gpio4 3 GPIO_INPUT>;
+		pch-pwrok-gpios = <&gpio7 2 GPIO_OUT_LOW>;
+		ec-pch-sys-pwrok-gpios = <&gpio3 7 GPIO_OUT_LOW>;
+		sys-rst-l-gpios = <&gpioc 5 GPIO_ODR_HIGH>;
 	};
 };

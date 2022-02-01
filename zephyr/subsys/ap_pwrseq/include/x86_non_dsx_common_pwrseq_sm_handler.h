@@ -9,65 +9,43 @@
 #include <zephyr/types.h>
 #include <x86_common_pwrseq.h>
 
-/* Power sequencing GPIOs */
-
-#define PCH_EC_SLP_SUS_L	gpio_slp_sus_l
-#define PCH_EC_SLP_S0_L		gpio_slp_s0_l
-#define PCH_EC_SLP_S3_L		gpio_slp_s3_l
-#define PCH_EC_SLP_S4_L		gpio_slp_s4_l
-#define PCH_EC_SLP_S5_L		gpio_slp_s5_l
-
-/* DSW_PWROK is indication to PCH that 3P3V is stable */
-#define VR_EC_DSW_PWROK		gpio_pg_ec_dsw_pwrok
-#define EC_PCH_DSW_PWROK	gpio_ec_soc_dsw_pwrok
-
-/* RSMRST is used for resetting primary power plane logic
- * When de-asserted, this signal is an indication that the
- * power wells are stable.
- */
-#define VR_PG_EC_RSMRST_ODL	gpio_pg_ec_rsmrst_odl
-#define EC_PCH_RSMRST_L		gpio_ec_pch_rsmrst_odl
-
-/* Signal represents the power good for all the rest
- * of platform voltage rails.
- */
-#define VR_EC_ALL_SYS_PWRGD	gpio_pg_ec_all_sys_pwrgd
-
-#define PCH_PWROK		gpio_ec_soc_pch_pwrok_od
-/* SYS_PWROK is a generic power good input to the PCH is driven
- * and utilized in platform-specific manner
- */
-#define EC_PCH_SYS_PWROK	gpio_ec_soc_sys_pwrok
-
-/* EC to PCH indication system request to sleep / wake */
-#define EC_PCH_PWR_BTN_ODL	gpio_ec_pch_pwr_btn_odl
-
-/* Enable 5V rails */
-#define EC_VR_EN_PP5000_A	gpio_en_pp5000_s5
-/* Enable 3.3V rails */
-#define EC_VR_EN_PP3300_A	gpio_en_pp3300_s5
-
-#define IMVP9_VRRDY_OD		gpio_imvp9_vrrdy_od
-
-/* TODO: Move to chipset */
-#define VCCST_PWRGD_OD		gpio_vccst_pwrgd_od
-
-#define SYS_RESET_L		gpio_sys_rst_odl
-
-/* GPIO net name as in schematics */
-#define GPIO_NET_NAME(node)	DT_PROP(DT_NODELABEL(node), enum_name)
-
-/* GPIO structure assignment */
-#define POWER_SEQ_GPIO(node)	\
-	.net_name = GPIO_NET_NAME(node), \
-	.port_name = DT_GPIO_LABEL(DT_NODELABEL(node), gpios), \
-	.pin = DT_GPIO_PIN(DT_NODELABEL(node), gpios), \
-	.flags = DT_GPIO_FLAGS(DT_NODELABEL(node), gpios), \
-	.port = DEVICE_DT_GET(DT_GPIO_CTLR_BY_IDX(DT_NODELABEL(node), gpios, 0))
-
+#define DT_DRV_COMPAT intel_ap_pwrseq
+#define INTEL_COM_POWER_NODE	DT_INST(0, intel_ap_pwrseq)
 /* Check if the GPIO is present */
-#define POWER_SEQ_GPIO_PRESENT(node) \
-	DT_NODE_HAS_STATUS(DT_NODELABEL(node), okay)
+#define POWER_SEQ_GPIO_PRESENT(pha) \
+	DT_PHA_HAS_CELL(INTEL_COM_POWER_NODE, pha, flags)
+
+/* dt_flags is 8-bits, so need a cast without which the compile will fail */
+#define POWER_GPIO_DT_SPEC_GET(prop)              \
+{                                                          \
+	.port = DEVICE_DT_GET(DT_GPIO_CTLR(DT_DRV_INST(0), prop)),\
+	.pin = DT_GPIO_PIN(DT_DRV_INST(0), prop),                 \
+	.dt_flags = (uint8_t)DT_GPIO_FLAGS(DT_DRV_INST(0), prop), \
+}
+
+/* Common device tree configurable attributes */
+struct common_pwrseq_config {
+	int pch_dsw_pwrok_delay_ms;
+	int pch_pm_pwrbtn_delay_ms;
+	int pch_rsmrst_delay_ms;
+#if POWER_SEQ_GPIO_PRESENT(en_pp5000_s5_gpios)
+	const struct gpio_dt_spec enable_pp5000_a;
+#endif
+#if POWER_SEQ_GPIO_PRESENT(en_pp3300_s5_gpios)
+	const struct gpio_dt_spec enable_pp3300_a;
+#endif
+	const struct gpio_dt_spec pg_ec_rsmrst_odl;
+	const struct gpio_dt_spec ec_pch_rsmrst_odl;
+#if POWER_SEQ_GPIO_PRESENT(pg_ec_dsw_pwroks_gpios)
+	const struct gpio_dt_spec pg_ec_dsw_pwrok;
+#endif
+#if POWER_SEQ_GPIO_PRESENT(ec_soc_dsw_pwrok_gpios)
+	const struct gpio_dt_spec ec_soc_dsw_pwrok;
+#endif
+	const struct gpio_dt_spec slp_s3_l;
+	const struct gpio_dt_spec all_sys_pwrgd;
+	const struct gpio_dt_spec slp_sus_l;
+};
 
 /*
  * @brief Create power sequencing thread

@@ -11,9 +11,6 @@
 #include <x86_non_dsx_common_pwrseq_sm_handler.h>
 
 extern struct power_seq_context pwrseq_ctx;
-
-extern void gpio_set_lvl(const char *net_name, int val);
-extern int gpio_get_lvl(const char *net_name);
 extern struct common_pwrseq_config com_cfg;
 
 struct chipset_pwrseq_config {
@@ -23,5 +20,10 @@ struct chipset_pwrseq_config {
 	int vccst_pwrgd_delay_ms;
 	int vrrdy_timeout_ms;
 	int all_sys_pwrgd_timeout;
+	const struct gpio_dt_spec vccst_pwrgd_od;
+	const struct gpio_dt_spec imvp9_vrrdy_od;
+	const struct gpio_dt_spec pch_pwrok;
+	const struct gpio_dt_spec ec_pch_sys_pwrok;
+	const struct gpio_dt_spec sys_rst_l;
 };
 #endif /* __X86_NON_DSX_ADLP_H__ */
