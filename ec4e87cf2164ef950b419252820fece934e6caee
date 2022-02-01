@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1cc4d9fe_51d8e200",
+        "filename": "board/nipperkin/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 484,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2022-02-01T19:16:00Z",
+      "side": 1,
+      "message": "Could add more context to these values. \ne.g.\nAC_PROCHOT_LIMIT_MA_LOW\nAC_PROCHOT_LIMIT_MA_DEFAULT\nAC_PROCHOT_LIMIT_MA_HIGH",
+      "revId": "ec4e87cf2164ef950b419252820fece934e6caee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00aa740c_6258ac79",
+        "filename": "board/nipperkin/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 511,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2022-02-01T19:16:00Z",
+      "side": 1,
+      "message": "Please use 6000 decimal so the value is more obvious.",
+      "revId": "ec4e87cf2164ef950b419252820fece934e6caee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4edbc5d9_554d3ae8",
+        "filename": "board/nipperkin/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 514,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2022-02-01T19:16:00Z",
+      "side": 1,
+      "message": "This nesting is not needed. Replace with `else if` blocks.",
+      "revId": "ec4e87cf2164ef950b419252820fece934e6caee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
