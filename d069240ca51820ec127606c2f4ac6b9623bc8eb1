@@ -94,6 +94,30 @@
       },
       "revId": "d069240ca51820ec127606c2f4ac6b9623bc8eb1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c08e80ba_b1eaca4b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-02-01T01:02:35Z",
+      "side": 1,
+      "message": "A runtime check for whether this port expects to report FRS from the PPC seems reasonable to call before alerting on the signal.  It looks like this check was started because there was a silicon bug so apparently we wanted to ignore the PPC\u0027s interrupt for that case.\n\nThe alternative would be that if the PPC interrupt enable is sufficiently guarded, you just assume that the interrupt coming in is always worth reporting.",
+      "parentUuid": "df337b21_3880c469",
+      "range": {
+        "startLine": 10,
+        "startChar": 41,
+        "endLine": 11,
+        "endChar": 37
+      },
+      "revId": "d069240ca51820ec127606c2f4ac6b9623bc8eb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
