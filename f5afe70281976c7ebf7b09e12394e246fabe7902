@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6a3252d_b78e6c7c",
+        "filename": "docs/zephyr/zephyr_pwm.md",
+        "patchSetId": 19
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-02-02T16:07:51Z",
+      "side": 1,
+      "message": "Woops, thanks, copy paste...",
+      "parentUuid": "111ffa34_e3c8ff7e",
+      "range": {
+        "startLine": 19,
+        "startChar": 68,
+        "endLine": 19,
+        "endChar": 72
+      },
+      "revId": "f5afe70281976c7ebf7b09e12394e246fabe7902",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "419cb305_4bcf6ebd",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6878b4b0_b832b529",
+        "filename": "docs/zephyr/zephyr_pwm.md",
+        "patchSetId": 19
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-02-02T16:07:51Z",
+      "side": 1,
+      "message": "Oh good point,I added it here and linked to the yaml files. Did not explicitly document NPCX_CLOCK_BUS_LFCLK but I sneaked a comment in the example. Alternative could be documenting explicitly or expanding the yaml binding description.",
+      "parentUuid": "419cb305_4bcf6ebd",
+      "range": {
+        "startLine": 21,
+        "startChar": 3,
+        "endLine": 21,
+        "endChar": 19
+      },
+      "revId": "f5afe70281976c7ebf7b09e12394e246fabe7902",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ce3f0f55_07e2ea14",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-01-31T16:34:16Z",
       "side": 1,
       "message": "Should we follow the GPIO refactoring and not use \"pwms\" for the child property?",
+      "range": {
+        "startLine": 43,
+        "startChar": 2,
+        "endLine": 43,
+        "endChar": 19
+      },
+      "revId": "f5afe70281976c7ebf7b09e12394e246fabe7902",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58252c78_e2c22df6",
+        "filename": "docs/zephyr/zephyr_pwm.md",
+        "patchSetId": 19
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-02-02T16:07:51Z",
+      "side": 1,
+      "message": "I thought about it, but these are currently used in a standard \"pwm-leds\" node (as in: using the standard zephyr binding). There\u0027s not much into it but I\u0027d hate to have an ec copy just to avoid the cells property, and then undo it again once we convert it to the native API. I\u0027d rather spend the time trying to make the const property work this and try to upstream it. Let me know if you feel strongly about it, I\u0027ll poke a bit at the dts script in the meantime.",
+      "parentUuid": "ce3f0f55_07e2ea14",
       "range": {
         "startLine": 43,
         "startChar": 2,
