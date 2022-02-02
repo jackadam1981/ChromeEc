@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc1afc6e_f5d0e630",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2022-02-02T15:50:26Z",
+      "side": 1,
+      "message": "Sure. I\u0027m aware that using the enum-name as a source of truth is not ideal, but I don\u0027t know what the possibilities of editing the spreadsheet are.\n\nThe rule now is to use only Zephyr GPIO API, not the one from the shim. The GPIO_ACTIVE_LOW flag is actually a feature(recommended by Keith) we can use in the case of WP.\n\nI\u0027ll wait for Keith\u0027s opinion.",
+      "parentUuid": "ec6cdecc_3554e167",
+      "revId": "9c16779279144739b34a6c67a87d8b818445e6ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a2c3cbcc_c48529de",
