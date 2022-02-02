@@ -53,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e963db4c_1c05484f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-02-02T22:31:54Z",
+      "side": 1,
+      "message": "The main risk here is that setting ACTIVE_LOW on a signal that is used in common code (such as VOLUME_DOWN_L) is that the common code will read an inverted signal (i.e read 1 instead of 0) unexpectedly.\nSo we need to be selective in which signals to apply it to.\n\nI think a viable solution is to extend the I/O signal type that is set in the spreadsheet to include active-low flagged signals. I\u0027ve shared the spreadsheet, and have extended the signal I/O types to include INPUT_L etc. (these are listed in a separate sheet in the same spreadsheet).\nI would suggest you extend the generator code to incorporate the new I/O types.\n\nIn the spreadsheet, change the I/O signal type for the signals that you want to treat as active low, regenerate the DTS for nivviks and nereid in a separate CL (also saving the new downloaded CSV).\n\nFor any pins that are interrupts, you may have to change the interrupt\nconfiguration, because a falling edge becomes a rising edge, and vice versa.",
+      "parentUuid": "bc1afc6e_f5d0e630",
+      "revId": "9c16779279144739b34a6c67a87d8b818445e6ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a2c3cbcc_c48529de",
