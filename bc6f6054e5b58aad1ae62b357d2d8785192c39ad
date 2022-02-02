@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2aa85c68_7a012b4c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1381813
+      },
+      "writtenOn": "2022-02-02T00:39:36Z",
+      "side": 1,
+      "message": "You know your code is pretty good when the reviewer can only think of minor / inconsequential things :)",
+      "revId": "bc6f6054e5b58aad1ae62b357d2d8785192c39ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b78c5a2_bc9767d2",
+        "filename": "util/dt-gpionames/README.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1381813
+      },
+      "writtenOn": "2022-02-02T00:39:36Z",
+      "side": 1,
+      "message": "nit: an",
+      "range": {
+        "startLine": 30,
+        "startChar": 18,
+        "endLine": 30,
+        "endChar": 21
+      },
+      "revId": "bc6f6054e5b58aad1ae62b357d2d8785192c39ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0cf1311b_b5a019c8",
+        "filename": "util/dt-gpionames/README.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1381813
+      },
+      "writtenOn": "2022-02-02T00:39:36Z",
+      "side": 1,
+      "message": "this section also sort of shows a way to test your changes. maybe worth highlighting that so people can see quickly how to test changes they make. not that important.",
+      "range": {
+        "startLine": 43,
+        "startChar": 3,
+        "endLine": 43,
+        "endChar": 12
+      },
+      "revId": "bc6f6054e5b58aad1ae62b357d2d8785192c39ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b5eb9e0_66fab1a2",
+        "filename": "util/dt-gpionames/dt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1381813
+      },
+      "writtenOn": "2022-02-02T00:39:36Z",
+      "side": 1,
+      "message": "Just a thought, I wonder if you did findNamedGpios first and passed ng into findGpioControllers, would that make it so that setLineNames didn\u0027t have to be a separate phase, like use a function that returns a value when setting gpio.pins inside findGpioControllers.\n\nBut in that case findGpioControllers gets a bit messier. meh.",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 21
+      },
+      "revId": "bc6f6054e5b58aad1ae62b357d2d8785192c39ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4992e60_0f181c91",
+        "filename": "util/dt-gpionames/dt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1381813
+      },
+      "writtenOn": "2022-02-02T00:39:36Z",
+      "side": 1,
+      "message": "I\u0027m wondering what about using a template instead of emitting each line in a new statement? This is no big deal to fix now, but I suppose it makes the code a little fiddlier.",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 29
+      },
+      "revId": "bc6f6054e5b58aad1ae62b357d2d8785192c39ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3787c800_ce2456b4",
+        "filename": "util/dt-gpionames/dt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1381813
+      },
+      "writtenOn": "2022-02-02T00:39:36Z",
+      "side": 1,
+      "message": "I\u0027m wondering if some use of strings.Join() here would be less fiddly, but it doesn\u0027t really matter I don\u0027t think.",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 3
+      },
+      "revId": "bc6f6054e5b58aad1ae62b357d2d8785192c39ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
