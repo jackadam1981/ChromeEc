@@ -178,10 +178,12 @@ static void check_usb_pd_power_info(int port, enum usb_power_roles role,
 	zassert_equal(power_info_response.type, charger_type,
 			"Charger type %d, but PD reports type %d",
 			charger_type, power_info_response.type);
+
 	/* The measurements in this response are denoted in mV, mA, and mW. */
 	zassert_equal(meas->voltage_max, charge_voltage_mv,
 			"Charging at VBUS %dmV, but PD reports %dmV",
 			charge_voltage_mv, meas->voltage_max);
+
 	zassert_within(meas->voltage_now, charge_voltage_mv,
 			charge_voltage_mv / 10,
 			"Actually charging at VBUS %dmV, but PD reports %dmV",
@@ -303,7 +305,7 @@ ZTEST(integration_usb, test_attach_20v_pd_charger)
 			20000, 3000);
 }
 
-ZTEST(integration_usb, test_attach_sink)
+ZTEST(integration_usb_wip, test_attach_sink)
 {
 	const struct emul *tcpci_emul =
 		emul_get_binding(DT_LABEL(TCPCI_EMUL_LABEL));
@@ -332,6 +334,10 @@ ZTEST(integration_usb, test_attach_sink)
 	 * TODO: Change it to examining EC_CMD_TYPEC_STATUS
 	 */
 	zassert_equal(PE_SRC_READY, get_state_pe(USBC_PORT_C0), NULL);
+
+	printf("Running attach snk host cmd\n", NULL);
+	check_usb_pd_power_info(0, USB_PD_PORT_POWER_SOURCE, USB_CHG_TYPE_NONE,
+				5000, 3000);
 }
 
 ZTEST(integration_usb, test_attach_drp)
@@ -372,6 +378,8 @@ ZTEST(integration_usb, test_attach_src_then_snk)
 	const struct emul *tcpci_emul_snk =
 		emul_get_binding(DT_LABEL(TCPCI_EMUL_LABEL2));
 	struct tcpci_src_emul my_charger;
+	const struct emul *charger_emul =
+		emul_get_binding(DT_LABEL(DT_NODELABEL(isl923x_emul)));
 	struct tcpci_snk_emul my_sink;
 	const struct device *gpio_dev =
 		DEVICE_DT_GET(DT_GPIO_CTLR(GPIO_AC_OK_PATH, gpios));
@@ -396,6 +404,11 @@ ZTEST(integration_usb, test_attach_src_then_snk)
 			   &my_charger.data, &my_charger.common_data,
 			   &my_charger.ops, tcpci_emul_src),
 		   NULL);
+	isl923x_emul_set_adc_vbus(charger_emul, 5000);
+
+	/* tcpci_emul_set_reg(tcpci_emul_snk, TCPC_REG_POWER_STATUS, */
+	/* 		   TCPC_REG_POWER_STATUS_VBUS_PRES | */
+	/* 		   TCPC_REG_POWER_STATUS_VBUS_DET); */
 
 	/* Wait for current ramp. */
 	k_sleep(K_SECONDS(10));
@@ -418,25 +431,25 @@ ZTEST(integration_usb, test_attach_src_then_snk)
 	/* Wait for PD negotiation */
 	k_sleep(K_SECONDS(10));
 
-	/* TODO(b/217394181): limit to value faking */
-	if (IS_ENABLED(CONFIG_BUG209907615)) {
-		/* Verify Default 5V and 3A */
-		/* Fails on actual mV reported as it is way past max 5000 */
-		/* TODO(b/217394181): Refactor to direct assert calls */
-		check_usb_pd_power_info(0, USB_PD_PORT_POWER_SINK,
-					USB_CHG_TYPE_PD, 5000, 3000);
-	}
+	/* Verify Default 5V and 3A */
+	/* TODO(b/217394181): Refactor to direct assert calls */
+	check_usb_pd_power_info(0, USB_PD_PORT_POWER_SINK, USB_CHG_TYPE_PD,
+				5000, 3000);
 
 	/* TODO(b/217394181): limit to value faking */
-	if (IS_ENABLED(CONFIG_BUG209907615)) {
+	if (true) {
 		/*
 		 * TODO(b/217394181): Refactor to direct assert calls
 		 * TODO(b/209907615): Confirm measure value requirements
 		 */
-		check_usb_pd_power_info(0, USB_PD_PORT_POWER_SOURCE,
-					USB_CHG_TYPE_PD, 5000, 3000);
+
+
+		/* Is charge type none correct here? */
+		printf("Running 2nd host cmd\n", NULL);
+		check_usb_pd_power_info(1, USB_PD_PORT_POWER_SOURCE,
+					USB_CHG_TYPE_NONE, 5000, 3000);
 	}
 }
 
-ZTEST_SUITE(integration_usb, drivers_predicate_post_main, NULL,
+ZTEST_SUITE(integration_usb_wip, drivers_predicate_post_main, NULL,
 	    integration_usb_before, integration_usb_after, NULL);
