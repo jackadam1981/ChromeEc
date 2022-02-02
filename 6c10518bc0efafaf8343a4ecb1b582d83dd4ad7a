@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac48ba32_d1261f3b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-02-02T16:44:31Z",
+      "side": 1,
+      "message": "patch",
+      "revId": "6c10518bc0efafaf8343a4ecb1b582d83dd4ad7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "33575abb_2cea78ff",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-02-02T16:44:31Z",
+      "side": 1,
+      "message": "nit: move to newline",
+      "range": {
+        "startLine": 108,
+        "startChar": 53,
+        "endLine": 108,
+        "endChar": 54
+      },
+      "revId": "6c10518bc0efafaf8343a4ecb1b582d83dd4ad7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed641f2a_8559a1ff",
+        "filename": "zephyr/Kconfig.powerseq",
+        "patchSetId": 1
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-02-02T16:44:31Z",
+      "side": 1,
+      "message": "wait time before resetting the RTC?",
+      "range": {
+        "startLine": 165,
+        "startChar": 13,
+        "endLine": 165,
+        "endChar": 42
+      },
+      "revId": "6c10518bc0efafaf8343a4ecb1b582d83dd4ad7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35d93e52_f1209bbb",
+        "filename": "zephyr/Kconfig.powerseq",
+        "patchSetId": 1
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-02-02T16:44:31Z",
+      "side": 1,
+      "message": "nit: add tabs instead of spaces",
+      "range": {
+        "startLine": 165,
+        "startChar": 0,
+        "endLine": 165,
+        "endChar": 8
+      },
+      "revId": "6c10518bc0efafaf8343a4ecb1b582d83dd4ad7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c05b93b9_3a0920d8",
+        "filename": "zephyr/Kconfig.powerseq",
+        "patchSetId": 1
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-02-02T16:44:31Z",
+      "side": 1,
+      "message": "add details",
+      "range": {
+        "startLine": 169,
+        "startChar": 9,
+        "endLine": 169,
+        "endChar": 39
+      },
+      "revId": "6c10518bc0efafaf8343a4ecb1b582d83dd4ad7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
