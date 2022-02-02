@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bef8cb38_2226b1a0",
+        "filename": "zephyr/subsys/ap_pwrseq/CMakeLists.txt",
+        "patchSetId": 13
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2022-02-02T19:06:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "562a0208_41c02ba4",
+      "range": {
+        "startLine": 6,
+        "startChar": 21,
+        "endLine": 6,
+        "endChar": 49
+      },
+      "revId": "4d454ca41880690f8ca425e9de1dea1b8e976d64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6ff7b243_551f7b49",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-01-30T02:32:11Z",
       "side": 1,
       "message": "Not used in chipset sm file,can be removed.",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 43
+      },
+      "revId": "4d454ca41880690f8ca425e9de1dea1b8e976d64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c822c517_1e62ecf4",
+        "filename": "zephyr/subsys/ap_pwrseq/include/x86_non_dsx_adlp_pwrseq_sm.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2022-02-02T19:06:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6ff7b243_551f7b49",
       "range": {
         "startLine": 13,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fae1adc5_abec4c80",
+        "filename": "zephyr/subsys/ap_pwrseq/include/x86_non_dsx_adlp_pwrseq_sm.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2022-02-02T19:06:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c809d9db_3b5a0d24",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 43
+      },
+      "revId": "4d454ca41880690f8ca425e9de1dea1b8e976d64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c18ccef5_14767686",
@@ -93,6 +165,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e83352c8_6a59afc0",
+        "filename": "zephyr/subsys/ap_pwrseq/include/x86_non_dsx_common_pwrseq_sm_handler.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2022-02-02T19:06:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c18ccef5_14767686",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 30
+      },
+      "revId": "4d454ca41880690f8ca425e9de1dea1b8e976d64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cd49def5_63aa95d0",
@@ -106,6 +202,30 @@
       "writtenOn": "2022-01-30T02:32:11Z",
       "side": 1,
       "message": "Alphabet order.",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 24
+      },
+      "revId": "4d454ca41880690f8ca425e9de1dea1b8e976d64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "61465bc5_e1d03834",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2022-02-02T19:06:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cd49def5_63aa95d0",
       "range": {
         "startLine": 6,
         "startChar": 0,
