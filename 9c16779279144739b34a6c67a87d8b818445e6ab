@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec6cdecc_3554e167",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-02-02T15:36:43Z",
+      "side": 1,
+      "message": "So rather than using the suffix of the enum-name (which will be mostly going away eventually), perhaps the suffix of the pin name is better.\nI am a little wary of using the actual name. It would be better to have a column\nin the spreadsheet was would indicate active low and active high (and this could be optionally calculate from the pin name itself, keeping the spreadsheet the real source of truth, without the generator making assumptions from the name).\nA missing column would default to what happens now.\n\nHowever, it\u0027s likely the bigger problem is that a lot of code assumes the\npolarity of the pin as absolute rather than relative, and switching this may cause many issues with the existing common code.\n\nI\u0027d definitely like to hear from Keith and the wider team how they think about the GPIO_ACTIVE_LOW flag.",
+      "revId": "9c16779279144739b34a6c67a87d8b818445e6ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2c3cbcc_c48529de",
+        "filename": "util/pinmap/pm/generate.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-02-02T15:36:43Z",
+      "side": 1,
+      "message": "Better to use strings.HasSuffix(pin.Enum, \"_L\")",
+      "revId": "9c16779279144739b34a6c67a87d8b818445e6ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
