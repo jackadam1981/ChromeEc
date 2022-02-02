@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "820fb485_65995d2f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-02-02T00:48:49Z",
+      "side": 1,
+      "message": "You are far too kind about my code...",
+      "revId": "bc6f6054e5b58aad1ae62b357d2d8785192c39ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4b78c5a2_bc9767d2",
@@ -31,6 +48,30 @@
       "writtenOn": "2022-02-02T00:39:36Z",
       "side": 1,
       "message": "nit: an",
+      "range": {
+        "startLine": 30,
+        "startChar": 18,
+        "endLine": 30,
+        "endChar": 21
+      },
+      "revId": "bc6f6054e5b58aad1ae62b357d2d8785192c39ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "41195e1b_7c279bd9",
+        "filename": "util/dt-gpionames/README.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-02-02T00:48:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4b78c5a2_bc9767d2",
       "range": {
         "startLine": 30,
         "startChar": 18,
@@ -66,6 +107,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "ce984c4a_ca00784e",
+        "filename": "util/dt-gpionames/README.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-02-02T00:48:49Z",
+      "side": 1,
+      "message": "Yeah, no tests yet, but this is a bit of a hack of a utility, so\nnot likely to spend too much time on it unless folks start to use\nit in earnest.",
+      "parentUuid": "0cf1311b_b5a019c8",
+      "range": {
+        "startLine": 43,
+        "startChar": 3,
+        "endLine": 43,
+        "endChar": 12
+      },
+      "revId": "bc6f6054e5b58aad1ae62b357d2d8785192c39ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "8b5eb9e0_66fab1a2",
         "filename": "util/dt-gpionames/dt.go",
         "patchSetId": 2
@@ -89,6 +154,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "161e8871_2d321ab4",
+        "filename": "util/dt-gpionames/dt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-02-02T00:48:49Z",
+      "side": 1,
+      "message": "Yes, that\u0027s an option. I did like the way that these were independent\nof each other, which may make testing (in the future) easier.",
+      "parentUuid": "8b5eb9e0_66fab1a2",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 21
+      },
+      "revId": "bc6f6054e5b58aad1ae62b357d2d8785192c39ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "e4992e60_0f181c91",
         "filename": "util/dt-gpionames/dt.go",
         "patchSetId": 2
@@ -100,6 +189,30 @@
       "writtenOn": "2022-02-02T00:39:36Z",
       "side": 1,
       "message": "I\u0027m wondering what about using a template instead of emitting each line in a new statement? This is no big deal to fix now, but I suppose it makes the code a little fiddlier.",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 29
+      },
+      "revId": "bc6f6054e5b58aad1ae62b357d2d8785192c39ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "af9820fd_39eeb284",
+        "filename": "util/dt-gpionames/dt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-02-02T00:48:49Z",
+      "side": 1,
+      "message": "Yes, using a template would make it cleaner. I\u0027ll put in a TODO.",
+      "parentUuid": "e4992e60_0f181c91",
       "range": {
         "startLine": 64,
         "startChar": 0,
