@@ -333,7 +333,9 @@ BUILD_ASSERT(ARRAY_SIZE(vif_component_name) == Component_Indexes);
 
 const char *vif_component_snk_pdo_name[] = {
 	NAME_INIT(Snk_PDO_Supply_Type),
+	NAME_INIT(Snk_PDO_APDO_Type),
 	NAME_INIT(Snk_PDO_Voltage),
+	NAME_INIT(Snk_PDO_PDP_Rating),
 	NAME_INIT(Snk_PDO_Op_Power),
 	NAME_INIT(Snk_PDO_Min_Voltage),
 	NAME_INIT(Snk_PDO_Max_Voltage),
