@@ -119,7 +119,9 @@
  * system shutdown. This WA deselects CONFIG_BOARD_HAS_RTC_RESET to prevent
  * EC from system shutdown.
  */
-/* #define CONFIG_BOARD_HAS_RTC_RESET */
+#define CONFIG_BOARD_HAS_RTC_RESET
+#undef CONFIG_RTCRST_WAIT
+#define CONFIG_RTCRST_WAIT 10
 
 #define CONFIG_CMD_AP_RESET_LOG
 #define CONFIG_HOSTCMD_AP_RESET
