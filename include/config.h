@@ -6700,4 +6700,8 @@
 #define CONFIG_AMD_SB_RMI
 #endif
 
+#if defined(CONFIG_BOARD_HAS_RTC_RESET) && !defined(CONFIG_RTCRST_WAIT)
+#define CONFIG_RTCRST_WAIT 4
+#endif
+
 #endif  /* __CROS_EC_CONFIG_H */

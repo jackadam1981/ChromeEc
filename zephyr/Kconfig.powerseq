@@ -161,6 +161,13 @@ config PLATFORM_EC_POWERSEQ_PP3300_RAIL_FIRST
 
 endif # PLATFORM_EC_POWERSEQ_ICELAKE
 
+config PLATFORM_EC_RTCRST_WAIT
+        int "timerout related to RTC timer"
+	default 4
+	depends on PLATFORM_EC_POWERSEQ_RTC_RESET
+        help
+          Timeout waiting for S4 to S5.
+
 endif # PLATFORM_EC_POWERSEQ_INTEL
 
 config PLATFORM_EC_POWERSEQ_MT8192
