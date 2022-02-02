@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6bf48ea0_2850f960",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-02-02T15:03:01Z",
+      "side": 1,
+      "message": "Closing out an item with a message that I apparently didn\u0027t send back on Jan 16.",
+      "revId": "0d85638f571a5a0a60de219a11f0e50bdc1ae786",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "56fe9320_43f400f1",
@@ -55,6 +72,30 @@
       "side": 1,
       "message": "It would be problematic from the EC design perspective.\n\nIf you look at chip/stm32/watchdog.c you will note that below watchdog_reload() function there is line:\n\n\u003e DECLARE_HOOK(HOOK_TICK, watchdog_reload, HOOK_PRIO_DEFAULT);\n\nWithout going into details, this line is information for HOOK task that watchdog_reload needs to be called on every hook tick. Time between ticks is defined as HOOK_TICK_INTERVAL and for stm32 it is 500ms (chip/stm32/config_chip.h). \n\nLet\u0027s look at the hook task implementation (and skip parts not relevant now, by the way I recommend to study how hook mechanism works, it\u0027s used in entire EC codebase). hook_task() checks if current timestamp is greater or equal to next tick timestamp. If so, it uses hook_notify(HOOK_TICK) to run all functions that are scheduled to run on HOOK_TICK (including our watchdog_reload()).\nAfter functions are called, hook task calculates when the nearest action needs to be taken and calls task_wait_event(next) (\u0027next\u0027 is a timeout).\n\nInterval between hook ticks is constant and there is no way to make hook task to trigger it earlier and reschedule the next tick.\n\nJust calling watchdog_reload(), doesn\u0027t solve the problem (CPU still needs to wake to call hook tick callbacks) and it introduces more potential issues (what if there would be a bug in context switch/hook task, so only idle task is scheduled?)\n\nWe can make watchdog_reload() a deferred function, it\u0027s a bit more complicated but possible. As a result watchdog would be reloaded independently. CPU still needs to wake to call hook tick callbacks. There is also question about rescheduling deferred function, it is possible, but if we do this from idle task, then hook task needs to be run, to apply changes.",
       "parentUuid": "56fe9320_43f400f1",
+      "range": {
+        "startLine": 484,
+        "startChar": 33,
+        "endLine": 486,
+        "endChar": 26
+      },
+      "revId": "0d85638f571a5a0a60de219a11f0e50bdc1ae786",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c349bf4b_cf2c164c",
+        "filename": "chip/stm32/clock-stm32h7.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 486,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-02-02T15:03:01Z",
+      "side": 1,
+      "message": "That makes sense. Thank you for the detailed explanation!",
+      "parentUuid": "c9ad70af_11f23d10",
       "range": {
         "startLine": 484,
         "startChar": 33,
