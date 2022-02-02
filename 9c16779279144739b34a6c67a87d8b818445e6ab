@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f030e92d_fd6f9aff",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-02-02T15:38:37Z",
+      "side": 1,
+      "message": "Keith, definitely interested in your opinion about the use of GPIO_ACTIVE_LOW.",
+      "revId": "9c16779279144739b34a6c67a87d8b818445e6ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a2c3cbcc_c48529de",
@@ -31,6 +48,23 @@
       "writtenOn": "2022-02-02T15:36:43Z",
       "side": 1,
       "message": "Better to use strings.HasSuffix(pin.Enum, \"_L\")",
+      "revId": "9c16779279144739b34a6c67a87d8b818445e6ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "414872bc_ebb2aab4",
+        "filename": "zephyr/projects/nissa/nereid_generated.dts",
+        "patchSetId": 3
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-02-02T15:38:37Z",
+      "side": 1,
+      "message": "Best to make the change to the generator separate to the\nchanges to the project DTS files.",
       "revId": "9c16779279144739b34a6c67a87d8b818445e6ab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
