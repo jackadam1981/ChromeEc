@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "051492ec_9de3f081",
+        "filename": "util/kconfig_check.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 371,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-02-02T06:40:13Z",
+      "side": 1,
+      "message": "use f-strings for consistency with the rest of the code",
+      "range": {
+        "startLine": 371,
+        "startChar": 30,
+        "endLine": 371,
+        "endChar": 42
+      },
+      "revId": "e9d06968a35cacc914a0226691f0913daf765bc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c86dfb4e_37b7242b",
+        "filename": "util/kconfig_check.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-02-02T06:40:13Z",
+      "side": 1,
+      "message": "this giant args list is a repeat of the args to check ... should we instead be passing this to the constructor of kconfig check, or alternatively just passing the args namespace directly?",
+      "range": {
+        "startLine": 386,
+        "startChar": 32,
+        "endLine": 388,
+        "endChar": 71
+      },
+      "revId": "e9d06968a35cacc914a0226691f0913daf765bc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
