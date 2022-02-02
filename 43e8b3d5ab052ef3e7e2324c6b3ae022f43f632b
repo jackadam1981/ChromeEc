@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e4d79a84_15c1d29b",
+        "filename": "zephyr/boards/arm/brya/brya.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-02-02T23:01:19Z",
+      "side": 1,
+      "message": "I\u0027m not sure why the PPC port needs dynamic speed, but I see the cros-ec build enables it.",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 17
+      },
+      "revId": "43e8b3d5ab052ef3e7e2324c6b3ae022f43f632b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
