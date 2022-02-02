@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b358c860_ccd94954",
+        "filename": "zephyr/projects/intelrvp/adlrvp/CMakeLists.txt",
+        "patchSetId": 9
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-02-02T03:31:32Z",
+      "side": 1,
+      "message": "PLATFORM_EC_BOARD  and  PLATFORM_EC_BASEBOARD prefixes are used to include files from ec/board and ec/baseboard  directories. But here I want to include files from the \u0027zephyr/projects/\u0027 directory itself, so don\u0027t need to mention or use those prefixes and absolute path.",
+      "parentUuid": "f7d31fab_7a14837b",
+      "revId": "39ad69c252f9b49fc186e6fbdd41715595fccb51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "be30378a_0cd3832d",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-01-28T16:45:52Z",
       "side": 1,
       "message": "I\u0027m not sure it matters practically, but this is a local file, so it should be included using quotes.",
+      "revId": "39ad69c252f9b49fc186e6fbdd41715595fccb51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "24dc1f20_9d601514",
+        "filename": "zephyr/projects/intelrvp/adlrvp/adlrvp_npcx/include/gpio_map.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-02-02T03:31:32Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "be30378a_0cd3832d",
       "revId": "39ad69c252f9b49fc186e6fbdd41715595fccb51",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -52,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b90a05b_f09937c7",
+        "filename": "zephyr/projects/intelrvp/adlrvp/src/adlrvp.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-02-02T03:31:32Z",
+      "side": 1,
+      "message": "Its not just assertion. these variables are extern defined in include/power/icelake.h and will be used in power/icelake.c\n\nExtern defined in below header file\ninclude/power/icelake.h\n**********************\nextern const struct intel_x86_pwrok_signal pwrok_signal_assert_list[];\nextern const int pwrok_signal_assert_count;\nextern const struct intel_x86_pwrok_signal pwrok_signal_deassert_list[];\nextern const int pwrok_signal_deassert_count;\n****************************\n\nused in below file\npower/icelake.c\n*********************\n/*\n * Pass through the state of the ALL_SYS_PWRGD input to all the PWROK outputs\n * defined by the board.\n */\nstatic void all_sys_pwrgd_pass_thru(void)\n{\n        int all_sys_pwrgd_in \u003d intel_x86_get_pg_ec_all_sys_pwrgd();\n        const struct intel_x86_pwrok_signal *pwrok_signal;\n        int signal_count;\n        int i;\n\n        if (all_sys_pwrgd_in) {\n                pwrok_signal \u003d pwrok_signal_assert_list;\n                signal_count \u003d pwrok_signal_assert_count;\n        } else {\n                pwrok_signal \u003d pwrok_signal_deassert_list;\n                signal_count \u003d pwrok_signal_deassert_count;\n        }\n\n        /*\n         * Loop through all PWROK signals defined by the board and set\n         * to match the current ALL_SYS_PWRGD input.\n         */\n        for (i \u003d 0; i \u003c signal_count; i++, pwrok_signal++) {\n                if (pwrok_signal-\u003edelay_ms \u003e 0)\n                        msleep(pwrok_signal-\u003edelay_ms);\n\n                pwrok_signal_set(pwrok_signal, all_sys_pwrgd_in);\n        }\n}\n\n***********************\n\n\nfor all variant of ADL RVP, \"adlrvp/src/adlrvp.c\" will supply these variables.",
+      "parentUuid": "7cc2172b_54826529",
+      "revId": "39ad69c252f9b49fc186e6fbdd41715595fccb51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "31a856ca_e19319e6",
@@ -65,6 +119,24 @@
       "writtenOn": "2022-01-28T16:45:52Z",
       "side": 1,
       "message": "Looking at other projects, I think we conventionally call this file gpio_map.h.",
+      "revId": "39ad69c252f9b49fc186e6fbdd41715595fccb51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff86772a_9ecc38ca",
+        "filename": "zephyr/projects/intelrvp/include/intelrvp.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-02-02T03:31:32Z",
+      "side": 1,
+      "message": "we have gpio_map.h file for adlrvp_npcx at location: zephyr/projects/intelrvp/adlrvp/adlrvp_npcx/include/gpio_map.h\n\nwe are planning to keep all common stuff applicable for all variant of RVP in this file and project specific gpio_map.h will include this file to get common stuff.\n\nif you will notice \"zephyr/projects/intelrvp/adlrvp/adlrvp_npcx/gpio_map.h\", includes intelrvp.h.",
+      "parentUuid": "31a856ca_e19319e6",
       "revId": "39ad69c252f9b49fc186e6fbdd41715595fccb51",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
