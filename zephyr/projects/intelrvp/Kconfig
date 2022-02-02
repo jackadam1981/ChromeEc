@@ -9,4 +9,11 @@ config BOARD_ADLRVP_NPCX
 	  Build Intel ADLRVP_NPCX reference board. This board has Intel ADL RVP
 	  SoC with NPCX9M3F EC.
 
+config BOARD_ADLRVP_MCHP
+	bool "Intel ADLRVP_MCHP board"
+        depends on SOC_MEC172X_NSZ
+	help
+	  Build Intel ADLRVP_MCHP reference board. This board has Intel ADL RVP
+	  SoC with MEC1727 EC.
+
 source "Kconfig.zephyr"

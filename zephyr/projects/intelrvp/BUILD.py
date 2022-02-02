@@ -38,3 +38,14 @@ register_intelrvp_project(
     ],
     extra_kconfig_files=[here / "adlrvp/adlrvp_npcx/prj.conf"],
 )
+
+register_intelrvp_project(
+    project_name="adlrvp_mchp",
+    chip="mec172x_evb",
+    extra_dts_overlays=[
+        here / "adlrvp/adlrvp_mchp/adlrvp_mchp.dts",
+        here / "adlrvp/adlrvp_mchp/gpio.dts",
+        here / "adlrvp/adlrvp_mchp/interrupts.dts",
+    ],
+    extra_kconfig_files=[here / "adlrvp/adlrvp_mchp/prj.conf"],
+)
