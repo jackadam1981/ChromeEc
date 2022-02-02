@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "325da1e8_5cf12216",
+        "filename": "zephyr/shim/src/ztest_system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-02-02T16:36:32Z",
+      "side": 1,
+      "message": "Yes it is needed to get to G3.",
+      "parentUuid": "eb04a3e9_660f68a9",
+      "range": {
+        "startLine": 68,
+        "startChar": 1,
+        "endLine": 68,
+        "endChar": 29
+      },
+      "revId": "3e005d43000c42fa36985532e8d43e50c3ed4ee8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1868e09b_89e7f082",
@@ -41,6 +65,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dcdfc4aa_f0ef272e",
+        "filename": "zephyr/test/drivers/src/stubs.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-02-02T16:36:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1868e09b_89e7f082",
+      "revId": "3e005d43000c42fa36985532e8d43e50c3ed4ee8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4e2bf262_fd9c13e0",
@@ -54,6 +96,30 @@
       "writtenOn": "2022-02-02T00:58:41Z",
       "side": 1,
       "message": "nit: clang-format to align args",
+      "range": {
+        "startLine": 53,
+        "startChar": 4,
+        "endLine": 53,
+        "endChar": 6
+      },
+      "revId": "3e005d43000c42fa36985532e8d43e50c3ed4ee8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b44bc051_6787b475",
+        "filename": "zephyr/test/drivers/src/utils.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-02-02T16:36:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4e2bf262_fd9c13e0",
       "range": {
         "startLine": 53,
         "startChar": 4,
