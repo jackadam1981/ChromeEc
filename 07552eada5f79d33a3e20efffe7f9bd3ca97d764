@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb8dd797_4b1eccc1",
+        "filename": "zephyr/projects/intelrvp/CMakeLists.txt",
+        "patchSetId": 15
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-02-02T06:32:55Z",
+      "side": 1,
+      "message": "use two spaces for indentation inside of cmakelists",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 1
+      },
+      "revId": "07552eada5f79d33a3e20efffe7f9bd3ca97d764",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6cf8d5fa_2d92ad5c",
+        "filename": "zephyr/projects/intelrvp/Kconfig",
+        "patchSetId": 15
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-02-02T06:32:55Z",
+      "side": 1,
+      "message": "should be a tab",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 7
+      },
+      "revId": "07552eada5f79d33a3e20efffe7f9bd3ca97d764",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "45cd02a0_f8c233dc",
+        "filename": "zephyr/projects/intelrvp/adlrvp/adlrvp_npcx/adlrvp_npcx.dts",
+        "patchSetId": 15
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-02-02T06:32:55Z",
+      "side": 1,
+      "message": "what uses this?",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 2
+      },
+      "revId": "07552eada5f79d33a3e20efffe7f9bd3ca97d764",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81aa7141_d66138f0",
+        "filename": "zephyr/projects/intelrvp/adlrvp/adlrvp_npcx/include/gpio_map.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-02-02T06:32:55Z",
+      "side": 1,
+      "message": "Why does this header need to be specific to adlrvp_npcx?",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 32
+      },
+      "revId": "07552eada5f79d33a3e20efffe7f9bd3ca97d764",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "428c667c_15301644",
+        "filename": "zephyr/projects/intelrvp/prj.conf",
+        "patchSetId": 15
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-02-02T06:32:55Z",
+      "side": 1,
+      "message": "are",
+      "range": {
+        "startLine": 17,
+        "startChar": 13,
+        "endLine": 17,
+        "endChar": 15
+      },
+      "revId": "07552eada5f79d33a3e20efffe7f9bd3ca97d764",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a002950_a2ee409e",
+        "filename": "zephyr/projects/intelrvp/prj.conf",
+        "patchSetId": 15
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-02-02T06:32:55Z",
+      "side": 1,
+      "message": "Drop apostrophe\n\nGrammatically, this expresses possession instead of plurality, like I think you intended.",
+      "range": {
+        "startLine": 18,
+        "startChar": 38,
+        "endLine": 18,
+        "endChar": 39
+      },
+      "revId": "07552eada5f79d33a3e20efffe7f9bd3ca97d764",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
