@@ -34,6 +34,24 @@
       "parentUuid": "1a46fd42_ceddb1f1",
       "revId": "69ba4754c7e7d396505c7d6913f8f29cd0dd8ab6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a7a66e9_2498ab4d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2022-02-02T14:43:56Z",
+      "side": 1,
+      "message": "\u003e I\u0027m checking assembly output and it looks like the code works properly only when LPTIM doesn\u0027t overflow, so there is a field for some improvements.\nI was wrong here. Current implementation properly calculates time elapsed in sleep, even when overflow occurs.\n\n\u003e Now I\u0027m sure that resolution is 125us, so yes, it would be good to apply that change.\nI prepared LPTIM change, and it turned out that LPTIM value near `t0 \u003d get_time()` is always the same as arount `set_lptim_event()`. I was wrong here too, 125us resolution is still not enough to find difference where LPTIM counter is read.",
+      "parentUuid": "5e3f768d_b660aabd",
+      "revId": "69ba4754c7e7d396505c7d6913f8f29cd0dd8ab6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
