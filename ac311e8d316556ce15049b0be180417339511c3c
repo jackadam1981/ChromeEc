@@ -16,6 +16,24 @@
       "message": "This is a bit of a workaround (to set it to GPIO_UNIMPLEMENTED).\nThe only Zephyr code that references this is zephyr/drivers/cros_flash/cros_flash_npcx.c\nIt would be a better solution to convert the use of the gpio_signal to use the Zephyr API, and to then guard the use of this (maybe using DT_NODE_EXISTS) so that just not declaring the GPIO label will work:\n\n#if DT_NODE_EXISTS(DT_NODELABEL(gpio_wp_l))\n ...\n#endif\n\nIt\u0027s not great to have the presence or absence of a GPIO label to change s/w behaviour, better to have a Kconfig option (default y) to flag whether a WP GPIO exists, but anyway...\n\nPlease add a TODO here to indicate that the just\ndefining the GPIO to GPIO_UNIMPLEMENTED is a temporary workaround, and that\na config item needs to added to allow handling if this GPIO doesn\u0027t exist.",
       "revId": "ac311e8d316556ce15049b0be180417339511c3c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3b5bc2b_7661dafb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-02-02T15:20:18Z",
+      "side": 1,
+      "message": "I see this is being removed - my mistake jumping to the conclusion it is being added. Ignore my rant :-)",
+      "parentUuid": "b38cf69b_e864be9f",
+      "revId": "ac311e8d316556ce15049b0be180417339511c3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
