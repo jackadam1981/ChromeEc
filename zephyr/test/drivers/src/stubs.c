@@ -2,7 +2,7 @@
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
-
+#pragma clang optimize off
 #include "battery.h"
 #include "battery_fuel_gauge.h"
 #include "bc12/pi3usb9201_public.h"
@@ -414,4 +414,13 @@ void gpio_test_interrupt(enum gpio_signal signal)
 	ARG_UNUSED(signal);
 	printk("%s called\n", __func__);
 	gpio_test_interrupt_triggered = true;
+}
+
+int clock_get_freq(void)
+{
+	return 16000000;
+}
+
+void system_enter_hibernate(uint32_t seconds, uint32_t microseconds)
+{
 }
