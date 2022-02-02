@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "14203e12_4f03e8bc",
+        "filename": "docs/zephyr/zephyr_gpio.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-02-02T00:29:53Z",
+      "side": 1,
+      "message": "Sorry, still sometimes using a 100 column xterm (left over from Java days).\nI usually rely on the presubmit checks to warn me about 80 columns.",
+      "parentUuid": "0a05f4b8_5f7f54cc",
+      "revId": "851b0b1130c52b006dd6bc093457e5acd9205488",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a3229a8c_43780b86",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-02-01T22:50:09Z",
       "side": 1,
       "message": "Let\u0027s make this more explicit:\n\nDo not use `enum gpio_signal` or the enum signal names in any Zephyr based code, instead use the native Zephyr GPIO APIs.",
+      "range": {
+        "startLine": 76,
+        "startChar": 0,
+        "endLine": 76,
+        "endChar": 82
+      },
+      "revId": "851b0b1130c52b006dd6bc093457e5acd9205488",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "46a8f763_abaefd4a",
+        "filename": "docs/zephyr/zephyr_gpio.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-02-02T00:29:53Z",
+      "side": 1,
+      "message": "Done (native -\u003e standard to avoid COIL warnings)",
+      "parentUuid": "a3229a8c_43780b86",
       "range": {
         "startLine": 76,
         "startChar": 0,
@@ -64,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "490199fa_e5386943",
+        "filename": "docs/zephyr/zephyr_gpio.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-02-02T00:29:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4270985c_fcc0c139",
+      "range": {
+        "startLine": 87,
+        "startChar": 58,
+        "endLine": 87,
+        "endChar": 62
+      },
+      "revId": "851b0b1130c52b006dd6bc093457e5acd9205488",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "47fceeb3_767d8f08",
@@ -77,6 +143,30 @@
       "writtenOn": "2022-02-01T22:50:09Z",
       "side": 1,
       "message": "Does macro this exist?  If so, It could use an example.",
+      "range": {
+        "startLine": 94,
+        "startChar": 1,
+        "endLine": 94,
+        "endChar": 18
+      },
+      "revId": "851b0b1130c52b006dd6bc093457e5acd9205488",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "75ceb81d_589a4806",
+        "filename": "docs/zephyr/zephyr_gpio.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-02-02T00:29:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "47fceeb3_767d8f08",
       "range": {
         "startLine": 94,
         "startChar": 1,
@@ -110,6 +200,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b72aeab7_1114152b",
+        "filename": "docs/zephyr/zephyr_gpio.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-02-02T00:29:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3aa580ed_18fbcacd",
+      "range": {
+        "startLine": 123,
+        "startChar": 20,
+        "endLine": 123,
+        "endChar": 26
+      },
+      "revId": "851b0b1130c52b006dd6bc093457e5acd9205488",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "adaa2227_cf583bdc",
@@ -123,6 +237,30 @@
       "writtenOn": "2022-02-01T22:50:09Z",
       "side": 1,
       "message": "Do not use",
+      "range": {
+        "startLine": 297,
+        "startChar": 49,
+        "endLine": 297,
+        "endChar": 60
+      },
+      "revId": "851b0b1130c52b006dd6bc093457e5acd9205488",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0417c0bb_7d504e78",
+        "filename": "docs/zephyr/zephyr_gpio.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-02-02T00:29:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "adaa2227_cf583bdc",
       "range": {
         "startLine": 297,
         "startChar": 49,
