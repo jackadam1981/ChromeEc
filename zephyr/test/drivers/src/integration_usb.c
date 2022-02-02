@@ -367,6 +367,8 @@ ZTEST(integration_usb, test_attach_src_then_snk)
 	const struct emul *tcpci_emul_snk =
 		emul_get_binding(DT_LABEL(TCPCI_EMUL_LABEL2));
 	struct tcpci_src_emul my_charger;
+	const struct emul *charger_emul =
+		emul_get_binding(DT_LABEL(DT_NODELABEL(isl923x_emul)));
 	struct tcpci_snk_emul my_sink;
 	const struct device *gpio_dev =
 		DEVICE_DT_GET(DT_GPIO_CTLR(GPIO_AC_OK_PATH, gpios));
@@ -391,6 +393,7 @@ ZTEST(integration_usb, test_attach_src_then_snk)
 			   &my_charger.data, &my_charger.common_data,
 			   &my_charger.ops, tcpci_emul_src),
 		   NULL);
+	isl923x_emul_set_adc_vbus(charger_emul, 5000);
 
 	/* Wait for current ramp. */
 	k_sleep(K_SECONDS(10));
@@ -413,14 +416,10 @@ ZTEST(integration_usb, test_attach_src_then_snk)
 	/* Wait for PD negotiation */
 	k_sleep(K_SECONDS(10));
 
-	/* TODO(b/217394181): limit to value faking */
-	if (IS_ENABLED(CONFIG_BUG209907615)) {
-		/* Verify Default 5V and 3A */
-		/* Fails on actual mV reported as it is way past max 5000 */
-		/* TODO(b/217394181): Refactor to direct assert calls */
-		check_usb_pd_power_info(0, USB_PD_PORT_POWER_SINK,
-					USB_CHG_TYPE_PD, 5000, 3000);
-	}
+	/* Verify Default 5V and 3A */
+	/* TODO(b/217394181): Refactor to direct assert calls */
+	check_usb_pd_power_info(0, USB_PD_PORT_POWER_SINK, USB_CHG_TYPE_PD,
+				5000, 3000);
 
 	/* TODO(b/217394181): limit to value faking */
 	if (IS_ENABLED(CONFIG_BUG209907615)) {
@@ -428,7 +427,7 @@ ZTEST(integration_usb, test_attach_src_then_snk)
 		 * TODO(b/217394181): Refactor to direct assert calls
 		 * TODO(b/209907615): Confirm measure value requirements
 		 */
-		check_usb_pd_power_info(0, USB_PD_PORT_POWER_SOURCE,
+		check_usb_pd_power_info(1, USB_PD_PORT_POWER_SOURCE,
 					USB_CHG_TYPE_PD, 5000, 3000);
 	}
 }
