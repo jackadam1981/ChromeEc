@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ff07d67c_aab4b23b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2022-02-02T14:54:56Z",
+      "side": 1,
+      "message": "https://github.com/zephyrproject-rtos/zephyr/pull/42127 reduces the size of the AT2X driver. It doesn\u0027t define a new config. The WP-related code is not included if the wp-gpios property is not defined.",
+      "parentUuid": "d3146fbf_af0aa95c",
+      "range": {
+        "startLine": 16,
+        "startChar": 39,
+        "endLine": 16,
+        "endChar": 48
+      },
+      "revId": "b8c6499d2eace278ec19a5083d4b3e74ba3b34b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c638bac5_718e1456",
         "filename": "zephyr/shim/src/cbi_eeprom.c",
         "patchSetId": 1
