@@ -33,6 +33,29 @@
       "message": "ping. let\u0027s land this as well",
       "revId": "04ebfec6119e87585c9772def625e2ce71e800c3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "396bd82b_5edcd56e",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 854,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-02-02T23:23:35Z",
+      "side": 1,
+      "message": "please add a function comment header, in particular what does \u0027can_preserve...\u0027 mean - allowed to preserve?\n\nnit: the paramter could be bool",
+      "range": {
+        "startLine": 854,
+        "startChar": 0,
+        "endLine": 854,
+        "endChar": 67
+      },
+      "revId": "04ebfec6119e87585c9772def625e2ce71e800c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
