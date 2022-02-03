@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "75695ab4_4f9a197d",
+        "filename": "zephyr/projects/intelrvp/CMakeLists.txt",
+        "patchSetId": 15
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-02-03T01:20:57Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "fb8dd797_4b1eccc1",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 1
+      },
+      "revId": "07552eada5f79d33a3e20efffe7f9bd3ca97d764",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6cf8d5fa_2d92ad5c",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-02-02T06:32:55Z",
       "side": 1,
       "message": "should be a tab",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 7
+      },
+      "revId": "07552eada5f79d33a3e20efffe7f9bd3ca97d764",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc4abd55_54320019",
+        "filename": "zephyr/projects/intelrvp/Kconfig",
+        "patchSetId": 15
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-02-03T01:20:57Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "6cf8d5fa_2d92ad5c",
       "range": {
         "startLine": 7,
         "startChar": 0,
@@ -72,6 +120,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ca7a0ecf_527840df",
+        "filename": "zephyr/projects/intelrvp/adlrvp/adlrvp_npcx/adlrvp_npcx.dts",
+        "patchSetId": 15
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-02-03T01:20:57Z",
+      "side": 1,
+      "message": "Its not being used anywhere in EC. I took reference from volteer and brya. Those platform are setting model name is the reason for overriding model to ADLRVP_NPCX",
+      "parentUuid": "45cd02a0_f8c233dc",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 2
+      },
+      "revId": "07552eada5f79d33a3e20efffe7f9bd3ca97d764",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "81aa7141_d66138f0",
         "filename": "zephyr/projects/intelrvp/adlrvp/adlrvp_npcx/include/gpio_map.h",
         "patchSetId": 15
@@ -83,6 +155,30 @@
       "writtenOn": "2022-02-02T06:32:55Z",
       "side": 1,
       "message": "Why does this header need to be specific to adlrvp_npcx?",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 32
+      },
+      "revId": "07552eada5f79d33a3e20efffe7f9bd3ca97d764",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2460568c_6c39e8a4",
+        "filename": "zephyr/projects/intelrvp/adlrvp/adlrvp_npcx/include/gpio_map.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-02-03T01:20:57Z",
+      "side": 1,
+      "message": "We planned to have project specific gpio_map.h and one common intelrvp.h (common for all intel RVP) gpio_map.h will include common file (intelrvp.h), Zepher EC is already including gpio_map.h in source files. \nIf we will have common gpio_map.h, we will need another project specific header files if need arise and we will need to include that file in source files. To avoid this, we planned to have project specific gpio_map.h which included common intelrvp.h file.\n\nHere is another CL which is including intelrvp.h in side gpio_map.h \nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3418123\n\nIf you have different opinion, please let us know, we can work on this accordingly.",
+      "parentUuid": "81aa7141_d66138f0",
       "range": {
         "startLine": 6,
         "startChar": 0,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e3ebcf6_aa767197",
+        "filename": "zephyr/projects/intelrvp/prj.conf",
+        "patchSetId": 15
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-02-03T01:20:57Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "428c667c_15301644",
+      "range": {
+        "startLine": 17,
+        "startChar": 13,
+        "endLine": 17,
+        "endChar": 15
+      },
+      "revId": "07552eada5f79d33a3e20efffe7f9bd3ca97d764",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9a002950_a2ee409e",
@@ -129,6 +249,30 @@
       "writtenOn": "2022-02-02T06:32:55Z",
       "side": 1,
       "message": "Drop apostrophe\n\nGrammatically, this expresses possession instead of plurality, like I think you intended.",
+      "range": {
+        "startLine": 18,
+        "startChar": 38,
+        "endLine": 18,
+        "endChar": 39
+      },
+      "revId": "07552eada5f79d33a3e20efffe7f9bd3ca97d764",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bac5d243_c9178994",
+        "filename": "zephyr/projects/intelrvp/prj.conf",
+        "patchSetId": 15
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-02-03T01:20:57Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9a002950_a2ee409e",
       "range": {
         "startLine": 18,
         "startChar": 38,
