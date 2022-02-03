@@ -125,6 +125,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c9376184_4f886619",
+        "filename": "zephyr/projects/nissa/nereid_generated.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-02-03T18:23:37Z",
+      "side": 1,
+      "message": "I\u0027ll also note, that chip/npcx/flash.c has already been ported to Zephyr as cros_flash_npcx.c.  So that driver should get updated to use Zephyr APIs.\n\nCreating a small write_protect driver seems like the right approach here.",
+      "parentUuid": "11cec27a_be58126a",
+      "revId": "52a5aad42237416f7132f9474b9b0d0a220401d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a8d4661b_e0b62c8e",
         "filename": "zephyr/projects/nissa/nivviks_generated.dts",
         "patchSetId": 1
