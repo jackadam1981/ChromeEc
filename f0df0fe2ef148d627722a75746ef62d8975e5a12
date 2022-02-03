@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fba8a9d3_f69df5ab",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 15
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1269501
+      },
+      "writtenOn": "2022-02-03T23:58:45Z",
+      "side": 1,
+      "message": "Please see discussion in (internal) b/159123927 .\nThis patch is not effective in certain instances.\n\nMore appropriate WA is in crrev/c/1568825 (and cherrypicks).",
+      "revId": "f0df0fe2ef148d627722a75746ef62d8975e5a12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
