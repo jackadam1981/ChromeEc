@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9cee5343_7e8e9ea6",
+        "filename": "zephyr/firmware_builder.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-02-03T22:46:33Z",
+      "side": 1,
+      "message": "Yes, that is a good idea. See other comment for a crazy idea to make the zmake commands make more sense.",
+      "parentUuid": "8378b5d3_327da12e",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 68
+      },
+      "revId": "68fbb3ba06b0f8229c51bcfbe18e4f85dc5f4b31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e2d30864_91a39f03",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-02-03T22:14:38Z",
       "side": 1,
       "message": "is there a way to avoid rebuilding what we\u0027ve already built during the build phase?",
+      "range": {
+        "startLine": 166,
+        "startChar": 30,
+        "endLine": 166,
+        "endChar": 56
+      },
+      "revId": "68fbb3ba06b0f8229c51bcfbe18e4f85dc5f4b31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "528e15d1_3cf1215f",
+        "filename": "zephyr/firmware_builder.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-02-03T22:46:33Z",
+      "side": 1,
+      "message": "zmake coverage only builds and runs tests.\n\nOk, here is what might be nicer.\n\nMaybe what we need for consistency is:\n\n`configure [-b|--build] [-c|--coverage] [--test]` \u003d Configures cmake and optionally builds or runs test.\n`build [-c|--coverage]` \u003d Runs a configured project, and if not a test, and -c was specified generates the 0-line coverage zephyr.info file.\n`test [-c|--coverage]` \u003d Runs test, and if -c was specified generates lcov zephyr.info file.\n\nand \n\n`configureall [-b|--build] [-c|--coverage] [--test]` \u003d Same as configure but for all projects. If -c, merge zephyr.info files into build/zephyr/all_projects.info\n`buildall [-c|--coverage]` \u003d Same as build but for all projects. If -c, merge zephyr.info files into build/zephyr/all_boards.info\n`testall [-c|--coverage]` \u003d Same as test but for all projects. If -c, merge zephyr.info files into build/zephyr/all_tests.info\n\n`zmake testall` (today) becomes `zmake configureall` --test. `zmake coverage` gets deleted.\n\nOr to be simpler, we could add --all-projects to configure, build, and test.",
+      "parentUuid": "e2d30864_91a39f03",
       "range": {
         "startLine": 166,
         "startChar": 30,
