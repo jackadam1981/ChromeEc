@@ -12,4 +12,5 @@ zephyr_include_directories("${CMAKE_CURRENT_SOURCE_DIR}/include")
 zephyr_include_directories("${PLATFORM_EC}/driver/ppc/")
 
 FILE(GLOB test_sources src/*.c)
-target_sources(app PRIVATE ${test_sources})
+FILE(GLOB test_usbc_sources src/integration/usbc/*.c)
+target_sources(app PRIVATE ${test_sources} ${test_usbc_sources})
