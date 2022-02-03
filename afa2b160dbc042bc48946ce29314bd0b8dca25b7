@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "01362db0_906c5c2e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-02-03T22:30:12Z",
+      "side": 1,
+      "message": "The previously described bug in this code was a false alarm. We have never before this CL supported exiting USB4 mode and entering Thunderbolt, because we have never really supported exiting USB4.",
+      "revId": "afa2b160dbc042bc48946ce29314bd0b8dca25b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
