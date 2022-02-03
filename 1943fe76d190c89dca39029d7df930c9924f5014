@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1ba0633_872d4267",
+        "filename": "zephyr/test/drivers/src/integration/usbc/integration_usb_attach_src_snk.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-02-03T19:13:05Z",
+      "side": 1,
+      "message": "can you put this in a different directory?",
+      "revId": "1943fe76d190c89dca39029d7df930c9924f5014",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8f1158c_3e6aacc8",
+        "filename": "zephyr/test/drivers/src/integration/usbc/integration_usb_attach_src_snk.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-02-03T19:13:05Z",
+      "side": 1,
+      "message": "these can also be static, there\u0027s an API for that in Zephyr DEVICE_DT_GET or something similar",
+      "range": {
+        "startLine": 38,
+        "startChar": 1,
+        "endLine": 43,
+        "endChar": 57
+      },
+      "revId": "1943fe76d190c89dca39029d7df930c9924f5014",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b3610f7_904ebe89",
+        "filename": "zephyr/test/drivers/src/integration/usbc/integration_usb_attach_src_snk.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-02-03T19:13:05Z",
+      "side": 1,
+      "message": "we really shouldn\u0027t be asserting in before. We\u0027ll get false negatives. Can we add (yes, yet another TODO to implement assumptions like \"Assume (JUnit API)\" http://junit.sourceforge.net/javadoc/org/junit/Assume.html in ztest?",
+      "revId": "1943fe76d190c89dca39029d7df930c9924f5014",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
