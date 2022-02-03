@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "953f22db_69315189",
+        "filename": "util/pinmap/readers/csv/csv.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-02-03T12:33:10Z",
+      "side": 1,
+      "message": "I\u0027ve also added:\n\nINPUT_PU_L -\u003e GPIO_INPUT_PULL_UP | GPIO_ACTIVE_LOW\nOUTPUT_L -\u003e GPIO_OUTPUT | GPIO_ACTIVE_LOW\n\nThe notes for each are in the `Signal range values\u0027 Sheet, so for completeness these should be handled as well.\nIt\u0027s a little problematic to figure out OUTPUT_ODL and active low for now.\nMaybe later.",
+      "revId": "c224d36f148908cfe9805106716b23c2442b07b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
