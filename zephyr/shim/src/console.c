@@ -23,6 +23,14 @@
 #include "usb_console.h"
 #include "zephyr_console_shim.h"
 
+#if !defined(CONFIG_SHELL_BACKEND_SERIAL) && \
+	!defined(CONFIG_SHELL_BACKEND_DUMMY)
+#error Must select either SHELL_BACKEND_SERIAL or SHELL_BACKEND_DUMMY
+#endif
+#if defined(CONFIG_SHELL_BACKEND_SERIAL) && defined(CONFIG_SHELL_BACKEND_DUMMY)
+#error Must select only one shell backend
+#endif
+
 LOG_MODULE_REGISTER(shim_console, LOG_LEVEL_ERR);
 
 static const struct device *uart_shell_dev =
