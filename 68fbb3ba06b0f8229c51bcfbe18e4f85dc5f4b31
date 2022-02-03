@@ -117,6 +117,30 @@
       },
       "revId": "68fbb3ba06b0f8229c51bcfbe18e4f85dc5f4b31",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b8a0d3c_20553975",
+        "filename": "zephyr/firmware_builder.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-02-03T23:53:14Z",
+      "side": 1,
+      "message": "No. buildall and testall would skip the configure step.\n\nI agree, this is big. I\u0027ll file a bug, and how about you approve this cl as is.",
+      "parentUuid": "58496f63_1327510c",
+      "range": {
+        "startLine": 166,
+        "startChar": 30,
+        "endLine": 166,
+        "endChar": 56
+      },
+      "revId": "68fbb3ba06b0f8229c51bcfbe18e4f85dc5f4b31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
