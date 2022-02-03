@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c46574f_c40dfe49",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 15
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-02-03T23:53:15Z",
+      "side": 1,
+      "message": "Looking very solid.",
+      "revId": "7f6831bea1cf2f0ecb4f9378619b9032027c6c9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b91585c_b440b818",
+        "filename": "common/usbc/usb_pd_servo_timer.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-02-03T23:53:15Z",
+      "side": 1,
+      "message": "It looks like you could potentially have an implementation of pd_timer_disable very similar to the current implementation, except the start and end of each range would be different. Then you could avoid the conditional use of these functions.",
+      "revId": "7f6831bea1cf2f0ecb4f9378619b9032027c6c9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fbbfd40e_9a902046",
+        "filename": "common/usbc/usb_pd_servo_timer.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-02-03T23:53:15Z",
+      "side": 1,
+      "message": "Nit: Weird line break.",
+      "revId": "7f6831bea1cf2f0ecb4f9378619b9032027c6c9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46b30d1b_3a52da98",
+        "filename": "include/config.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 4439,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-02-03T23:53:15Z",
+      "side": 1,
+      "message": "Document",
+      "revId": "7f6831bea1cf2f0ecb4f9378619b9032027c6c9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e08df4f1_9f626cb3",
+        "filename": "include/usb_pd_timer.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-02-03T23:53:15Z",
+      "side": 1,
+      "message": "Document",
+      "revId": "7f6831bea1cf2f0ecb4f9378619b9032027c6c9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

@@ -70,6 +70,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7cd501f3_eef226af",
+        "filename": "common/usbc/usb_pd_servo_timer.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-02-03T23:53:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b6f593af_5833989b",
+      "revId": "d0a1468c3a0ba8f01e62be62d6acff5d65f05e0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "94b6af8b_61e963b4",
@@ -101,6 +119,24 @@
       "side": 1,
       "message": "I don\u0027t think much would be gained by probing the cable on the charger side.",
       "parentUuid": "94b6af8b_61e963b4",
+      "revId": "d0a1468c3a0ba8f01e62be62d6acff5d65f05e0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "41ed7d2d_c2bd4966",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 738,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-02-03T23:53:15Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "bb2e3dc1_6e7de42a",
       "revId": "d0a1468c3a0ba8f01e62be62d6acff5d65f05e0a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -210,6 +246,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e1320ba_46cbcb0b",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 2058,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-02-03T23:53:15Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "6395b518_0e412fe7",
+      "revId": "d0a1468c3a0ba8f01e62be62d6acff5d65f05e0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9fd1a37d_8d4d22e0",
@@ -311,6 +365,24 @@
       "side": 1,
       "message": "The servo can\u0027t do FRS.",
       "parentUuid": "fdbe749e_950f3c3e",
+      "revId": "d0a1468c3a0ba8f01e62be62d6acff5d65f05e0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ea40e32_6afedf0f",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 1241,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-02-03T23:53:15Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "7f2ddd30_8898779a",
       "revId": "d0a1468c3a0ba8f01e62be62d6acff5d65f05e0a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -550,6 +622,24 @@
       "side": 1,
       "message": "error: implicit declaration of function \u0027tcpm_auto_toggle_supported\u0027 [-Werror\u003dimplicit-function-declaration]\n 3398 |                 tcpm_auto_toggle_supported(port));",
       "parentUuid": "4ef07ea1_74df67b3",
+      "revId": "d0a1468c3a0ba8f01e62be62d6acff5d65f05e0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "afe7e2a7_98176706",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 3468,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-02-03T23:53:15Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "3a367c99_97341cbb",
       "revId": "d0a1468c3a0ba8f01e62be62d6acff5d65f05e0a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
