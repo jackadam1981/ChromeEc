@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff6c7104_fe82787f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-02-03T12:24:36Z",
+      "side": 1,
+      "message": "Keith, please review the notes I have in here and tell us what you think.\n\nThis is the first use in EC code of GPIO_ACTIVE_LOW, and I think we need to proceed carefully.",
+      "revId": "52a5aad42237416f7132f9474b9b0d0a220401d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57e898c4_ac77364d",
+        "filename": "zephyr/projects/nissa/nereid_generated.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-02-03T12:24:36Z",
+      "side": 1,
+      "message": "This enum-name likely should be removed from the spreadsheet, but it\u0027s OK\nto stay in for now - once we remove some of the older unsupported boards,\nI\u0027ll take another run through the enum-names to clean them out again.",
+      "revId": "52a5aad42237416f7132f9474b9b0d0a220401d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e50f2f1b_e163bb63",
+        "filename": "zephyr/projects/nissa/nereid_generated.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-02-03T12:24:36Z",
+      "side": 1,
+      "message": "So the big question I have here is that now code using the legacy API (like in chip/npcx/flash.c) will read this differently from code that reads it using\nthe Zephyr API, so if someone comes along and converts chip/npcx/flash.c to use the Zephyr API, on boards like nivviks and nereid it will read it differently from other boards that do not have GPIO_ACTIVE_LOW set (such as brya, krabby, kingler, herobrine etc.)\nThis is a really tricky and delicate situation. One way of dealing with it is:\n - ensure that *all* platforms that have this pin have the correct flags (GPIO_ACTIVE_LOW if necessary)\n  - avoid the use of GPIO_WP and GPIO_WP_L, and just use GPIO_WP, and have GPIO_ACTIVE_LOW for pins that are active low.\n   - convert chip/npcx/flash.c to use the Zephyr API and get rid of CONFIG_WP_ACTIVE_HIGH.\n   - Document the code and DTS very well.\n\nSo the code as will work until someone converts the legacy API to the Zephyr API, which will likely happen sometime sooner rather than later, and then we hit a landmine (unless some is eagle-eyed enough to see that some boards have GPIO_ACTIVE_LOW set for this pin).\n\nThe big risk here is that someone will inadvertantly set this flag for a GPIO that\u0027s used in common code, and you get inconsistent inputs depending on whether you are using the legacy API as opposed to the Zephyr API.\nIt\u0027s the mixing of the two that is the issue here.\n\nFor safety sake, my suggestion is:\n - if the pin is used in common code, ensure that every declaration and use is consistent and only uses the Zephyr API (as described above).\n - Fine for use with board level references where there pin does not have an enum-name (and so will unlikely be used in common code), and ensure there are comments in the code indicating that the input is considered a logical input, not a physical value.\n \nThe safest approach is not to use this flag on any GPIO with an enum-name that could possibly be used in common code across multiple boards.\n \nI\u0027d definitely like Keith to look over these notes and provide an opinion on how best to proceed.",
+      "revId": "52a5aad42237416f7132f9474b9b0d0a220401d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8d4661b_e0b62c8e",
+        "filename": "zephyr/projects/nissa/nivviks_generated.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-02-03T12:24:36Z",
+      "side": 1,
+      "message": "I\u0027ve been manually changing the copyright date to 2021 on files that\nalready existed.",
+      "range": {
+        "startLine": 1,
+        "startChar": 17,
+        "endLine": 1,
+        "endChar": 18
+      },
+      "revId": "52a5aad42237416f7132f9474b9b0d0a220401d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
