@@ -16,6 +16,92 @@
       "message": "Friendly ping",
       "revId": "c47c7220dbfae9bfad99177fe9faccf3e92045cf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8364d027_6d0ff001",
+        "filename": "chip/stm32/registers-stm32l5.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-02-03T20:06:49Z",
+      "side": 1,
+      "message": "nit: alighnemnt?",
+      "range": {
+        "startLine": 82,
+        "startChar": 25,
+        "endLine": 82,
+        "endChar": 42
+      },
+      "revId": "c47c7220dbfae9bfad99177fe9faccf3e92045cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18aef4fe_85fe3b1b",
+        "filename": "chip/stm32/registers-stm32l5.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-02-03T20:06:49Z",
+      "side": 1,
+      "message": "nit: alignment?",
+      "range": {
+        "startLine": 152,
+        "startChar": 26,
+        "endLine": 152,
+        "endChar": 44
+      },
+      "revId": "c47c7220dbfae9bfad99177fe9faccf3e92045cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab946ad3_e1e69e96",
+        "filename": "chip/stm32/usart-stm32l5.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-02-03T20:06:49Z",
+      "side": 1,
+      "message": "usart3_hw, usart4_hw, and usart5_hw use index \u003d 2. usart_variant_enable will put 3, 4, and 5 in configs[2]. So, we don\u0027t need 5 slots. Is something broken?",
+      "revId": "c47c7220dbfae9bfad99177fe9faccf3e92045cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9035b505_a7b36247",
+        "filename": "chip/stm32/usart-stm32l5.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-02-03T20:06:49Z",
+      "side": 1,
+      "message": "Did you add this to include/config.h?",
+      "range": {
+        "startLine": 152,
+        "startChar": 12,
+        "endLine": 152,
+        "endChar": 32
+      },
+      "revId": "c47c7220dbfae9bfad99177fe9faccf3e92045cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
