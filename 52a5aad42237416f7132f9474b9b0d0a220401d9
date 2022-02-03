@@ -107,6 +107,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "11cec27a_be58126a",
+        "filename": "zephyr/projects/nissa/nereid_generated.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-02-03T18:19:04Z",
+      "side": 1,
+      "message": "I like the idea of requiring that the enum-name is eliminated if the Zephyr API is used.\n\nWith the EEPROM change, GPIO_WP_L is now only used in 2 places in the legacy code: flash.c and switch.c (plus some tests).  \n\nI think doing a minor refactor and creating a common/write_protect.c that provides write_protect_is_asserted().  This can then handle the CONFIG_WP_ACTIVE_HIGH for legacy code.  You can add a Zephyr file under zephyr/shim/src/write_protect.c that only uses Zephyr APIs.",
+      "parentUuid": "f51a1b31_099cf610",
+      "revId": "52a5aad42237416f7132f9474b9b0d0a220401d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a8d4661b_e0b62c8e",
         "filename": "zephyr/projects/nissa/nivviks_generated.dts",
         "patchSetId": 1
