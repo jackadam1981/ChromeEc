@@ -93,6 +93,30 @@
       },
       "revId": "68fbb3ba06b0f8229c51bcfbe18e4f85dc5f4b31",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58496f63_1327510c",
+        "filename": "zephyr/firmware_builder.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-02-03T23:45:11Z",
+      "side": 1,
+      "message": "Yes this does seem like an improvement, but a lot of changes. (can we file a bug?)\n\nSo would \"testall\" mean the same thing as \"configureall --build --test\"?\n\nAnd buildall would mean \"configureall --build\"?",
+      "parentUuid": "528e15d1_3cf1215f",
+      "range": {
+        "startLine": 166,
+        "startChar": 30,
+        "endLine": 166,
+        "endChar": 56
+      },
+      "revId": "68fbb3ba06b0f8229c51bcfbe18e4f85dc5f4b31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
