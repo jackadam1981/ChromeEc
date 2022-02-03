@@ -157,6 +157,24 @@
       "message": "Best to make the change to the generator separate to the\nchanges to the project DTS files.",
       "revId": "9c16779279144739b34a6c67a87d8b818445e6ab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b324f1c_df3f3f44",
+        "filename": "zephyr/projects/nissa/nereid_generated.dts",
+        "patchSetId": 3
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2022-02-03T15:50:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "414872bc_ebb2aab4",
+      "revId": "9c16779279144739b34a6c67a87d8b818445e6ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
