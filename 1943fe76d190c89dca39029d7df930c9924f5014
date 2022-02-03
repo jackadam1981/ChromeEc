@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1972bf90_e9359257",
+        "filename": "zephyr/test/drivers/CMakeLists.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-02-03T20:59:24Z",
+      "side": 1,
+      "message": "Not sure why this didnt work before. I guess I needed clobber",
+      "parentUuid": "6fbe9562_6483efb0",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 64
+      },
+      "revId": "1943fe76d190c89dca39029d7df930c9924f5014",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b1ba0633_872d4267",
@@ -73,6 +97,24 @@
       "side": 1,
       "message": "super nit: No need for the `integration_usb` file name prefix anymore",
       "parentUuid": "cd599b7c_58a0b33f",
+      "revId": "1943fe76d190c89dca39029d7df930c9924f5014",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "48aa949f_a9a2716b",
+        "filename": "zephyr/test/drivers/src/integration/usbc/integration_usb_attach_src_snk.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-02-03T20:59:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8b0ff1c6_9ef3706b",
       "revId": "1943fe76d190c89dca39029d7df930c9924f5014",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -182,6 +224,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b18342fd_7e0c50ac",
+        "filename": "zephyr/test/drivers/src/integration/usbc/integration_usb_attach_src_snk.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-02-03T20:59:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b736f662_df9af825",
+      "range": {
+        "startLine": 140,
+        "startChar": 1,
+        "endLine": 140,
+        "endChar": 45
+      },
+      "revId": "1943fe76d190c89dca39029d7df930c9924f5014",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5b957189_b31feb57",
@@ -195,6 +261,30 @@
       "writtenOn": "2022-02-03T20:44:14Z",
       "side": 1,
       "message": "Is the thinking here to split this into different tests in a follow-up CL?",
+      "range": {
+        "startLine": 157,
+        "startChar": 0,
+        "endLine": 203,
+        "endChar": 44
+      },
+      "revId": "1943fe76d190c89dca39029d7df930c9924f5014",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9027ee8_b1e21c07",
+        "filename": "zephyr/test/drivers/src/integration/usbc/integration_usb_attach_src_snk.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-02-03T20:59:24Z",
+      "side": 1,
+      "message": "We could, but I\u0027m not sure I see the point here. I was going to instead verify different host commands and the snk then src order.\n\nI suppose I could split this up as two ztest_f as verify sink and verify source.\n\nLeaving unresolved for comment.",
+      "parentUuid": "5b957189_b31feb57",
       "range": {
         "startLine": 157,
         "startChar": 0,
