@@ -54,11 +54,6 @@ static void integration_usb_before(void *state)
 
 	ARG_UNUSED(state);
 	zassert_ok(tcpc_config[0].drv->init(0), NULL);
-	/*
-	 * Arbitrary FW ver. The emulator should really be setting this
-	 * during its init.
-	 */
-	tcpci_emul_set_reg(tcpci_emul2, PS8XXX_REG_FW_REV, 0x31);
 	zassert_ok(tcpc_config[1].drv->init(1), NULL);
 	tcpci_emul_set_rev(tcpci_emul, TCPCI_EMUL_REV1_0_VER1_0);
 	pd_set_suspend(0, 0);
