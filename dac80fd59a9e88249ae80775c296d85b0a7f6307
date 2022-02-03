@@ -22,6 +22,30 @@
       },
       "revId": "dac80fd59a9e88249ae80775c296d85b0a7f6307",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cfa1d203_a41b1e9b",
+        "filename": "power/amd_x86.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-02-03T22:28:24Z",
+      "side": 1,
+      "message": "Yup, though I should double check whether I remembered to add this to config.h... \n\nKconfig gives us the power to actually force this off with a \"depends\" type option.  I\u0027ve been using CONFIG_SYSTEM_UNLOCKED for this on a few other options (ex. keyboard debug).  We also have CONFIG_BRINGUP but I feel like that one is less often used.",
+      "parentUuid": "00e12608_548496dd",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 1
+      },
+      "revId": "dac80fd59a9e88249ae80775c296d85b0a7f6307",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
