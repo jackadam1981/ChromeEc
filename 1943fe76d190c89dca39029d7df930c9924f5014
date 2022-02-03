@@ -317,6 +317,30 @@
       },
       "revId": "1943fe76d190c89dca39029d7df930c9924f5014",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ede798e5_c3da4248",
+        "filename": "zephyr/test/drivers/src/integration/usbc/integration_usb_attach_src_snk.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-02-03T22:12:17Z",
+      "side": 1,
+      "message": "Okay, I\u0027l split them up in an immediate follow-up CL then. Added a todo comment just to have written I\u0027ll do that.",
+      "parentUuid": "d2c483ef_68914c25",
+      "range": {
+        "startLine": 157,
+        "startChar": 0,
+        "endLine": 203,
+        "endChar": 44
+      },
+      "revId": "1943fe76d190c89dca39029d7df930c9924f5014",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
