@@ -192,6 +192,30 @@
       },
       "revId": "c47c7220dbfae9bfad99177fe9faccf3e92045cf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17a36655_e7fffe13",
+        "filename": "chip/stm32/usart-stm32l5.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-02-03T23:40:05Z",
+      "side": 1,
+      "message": "Is this done?",
+      "parentUuid": "63a2453b_e27f8e00",
+      "range": {
+        "startLine": 152,
+        "startChar": 12,
+        "endLine": 152,
+        "endChar": 32
+      },
+      "revId": "c47c7220dbfae9bfad99177fe9faccf3e92045cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

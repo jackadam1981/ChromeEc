@@ -16,6 +16,52 @@
       "message": "Ok, I have verified that this CL does not contain more than I intend it to. PTAL.",
       "revId": "13c646ac7d0d8fbca66a74ea3ec913aa5cea4bd7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0af56d13_0f6fde36",
+        "filename": "chip/stm32/registers-stm32l5.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 373,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-02-03T23:40:05Z",
+      "side": 1,
+      "message": "nit: This can be BIT(STM32_PWR_CR2_IOSV_POS).",
+      "range": {
+        "startLine": 373,
+        "startChar": 37,
+        "endLine": 373,
+        "endChar": 70
+      },
+      "revId": "13c646ac7d0d8fbca66a74ea3ec913aa5cea4bd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5494eff6_00731dcb",
+        "filename": "chip/stm32/registers-stm32l5.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 2440,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-02-03T23:40:05Z",
+      "side": 1,
+      "message": "nit: align these?",
+      "range": {
+        "startLine": 2437,
+        "startChar": 0,
+        "endLine": 2440,
+        "endChar": 49
+      },
+      "revId": "13c646ac7d0d8fbca66a74ea3ec913aa5cea4bd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
