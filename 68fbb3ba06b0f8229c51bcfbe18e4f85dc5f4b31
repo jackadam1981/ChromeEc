@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8378b5d3_327da12e",
+        "filename": "zephyr/firmware_builder.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-02-03T22:14:38Z",
+      "side": 1,
+      "message": "I\u0027m actually wondering if we should have `zmake testall --build-only --coverage` as an option.\n\nConcern with this is that we are building sequentially, which will be slow, and really won\u0027t scale as we add more projects.",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 68
+      },
+      "revId": "68fbb3ba06b0f8229c51bcfbe18e4f85dc5f4b31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e2d30864_91a39f03",
+        "filename": "zephyr/firmware_builder.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-02-03T22:14:38Z",
+      "side": 1,
+      "message": "is there a way to avoid rebuilding what we\u0027ve already built during the build phase?",
+      "range": {
+        "startLine": 166,
+        "startChar": 30,
+        "endLine": 166,
+        "endChar": 56
+      },
+      "revId": "68fbb3ba06b0f8229c51bcfbe18e4f85dc5f4b31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
