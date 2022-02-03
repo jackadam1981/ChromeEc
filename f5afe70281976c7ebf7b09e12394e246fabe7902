@@ -140,6 +140,30 @@
       },
       "revId": "f5afe70281976c7ebf7b09e12394e246fabe7902",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae342f84_c731929e",
+        "filename": "docs/zephyr/zephyr_pwm.md",
+        "patchSetId": 19
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-02-03T16:26:49Z",
+      "side": 1,
+      "message": "Alright I looked a bit into having this work with the binding set to const and default. It\u0027s not quite as simple as I hoped for: the main issue is that the devicetree library is split in two: dt and edt. The whole phandle-array validation seems to live in the dt libraries, which is not aware of the bindings at all (where the `const: 0` would live), the edt structures on the other side are bindings aware, they do validation of const and default values, but explicitly discard \"#\" properties so that they don\u0027t end up in devicetree.h. That is, they do validation but not hold them (https://github.com/zephyrproject-rtos/zephyr/blob/main/scripts/dts/python-devicetree/src/devicetree/edtlib.py#L1018-L1019). I could probably work around that, make the phandle-array validation use the edt stuff, keep the \"#\" props in memory and discard them later, but checking the code it seems like this is only used for pwm_leds.\n\nI think it would be a better use of time if I give a shot at converting the shimmed pwm_led driver to use the native PWM APIs instead (which we\u0027ll eventually have to do anyway). That means that we can then point the `pwms` node at the actual pwm device. We\u0027d still have to keep the named-pwm entries for the shell command, but then we could drop the #pwm-cells property.\n\nHow does that sound?",
+      "parentUuid": "58252c78_e2c22df6",
+      "range": {
+        "startLine": 43,
+        "startChar": 2,
+        "endLine": 43,
+        "endChar": 19
+      },
+      "revId": "f5afe70281976c7ebf7b09e12394e246fabe7902",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
