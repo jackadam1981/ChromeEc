@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1bf03dc6_7710eb65",
+        "filename": "zephyr/CMakeLists.txt",
+        "patchSetId": 16
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-02-03T01:06:27Z",
+      "side": 1,
+      "message": "I\u0027d say it\u0027s appropriate to call a subsystem only if it provides a general driver framework- this looks like a single driver to me, so it seems more appropriate to put it under drivers.\n\nA subsystem would have a couple public API functions for other parts of the EC application to control AP power (power it on, off, poll state) that would be implemented by individual drivers.",
+      "parentUuid": "02cf1b43_29af23a7",
+      "revId": "d9178582d3242d155cb8bae1e9d9f08b1df4bdd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a6efab31_cd941412",
         "filename": "zephyr/Kconfig",
         "patchSetId": 16
@@ -270,6 +288,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9d0a5ccb_7e4af213",
+        "filename": "zephyr/subsys/ap_pwrseq/include/x86_non_dsx_common_pwrseq_sm_handler.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-02-03T01:06:27Z",
+      "side": 1,
+      "message": "I agree. The driver should have references to the GPIOs it needs (configured via device tree bindings) and provide the mappings to standard signals as required for the subsystem. We definitely don\u0027t want to be doing string comparisons for every GPIO access.",
+      "parentUuid": "0e68cf15_71021232",
+      "revId": "d9178582d3242d155cb8bae1e9d9f08b1df4bdd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7b332462_bb445b5e",
         "filename": "zephyr/subsys/ap_pwrseq/include/x86_non_dsx_common_pwrseq_sm_handler.h",
         "patchSetId": 16
@@ -298,6 +334,24 @@
       "writtenOn": "2022-02-03T00:40:28Z",
       "side": 1,
       "message": "It may be good to label these with __overridable/__override",
+      "revId": "d9178582d3242d155cb8bae1e9d9f08b1df4bdd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14b16bc1_211bf9f0",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_adlp_nonpwrseq_sm.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-02-03T01:06:27Z",
+      "side": 1,
+      "message": "The Zephyr way to do this would be to allow the API consumer to provide a callback function that may be called. We shouldn\u0027t use weak symbols.",
+      "parentUuid": "c79fa9e2_adc369dc",
       "revId": "d9178582d3242d155cb8bae1e9d9f08b1df4bdd3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
