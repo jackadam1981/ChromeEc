@@ -20,6 +20,57 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "02cf1b43_29af23a7",
+        "filename": "zephyr/CMakeLists.txt",
+        "patchSetId": 16
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-02-03T00:40:28Z",
+      "side": 1,
+      "message": "Arguable whether this should be a driver, or in subsys.\nMaybe others have an opinion.\nIf you treat it as a driver, you do get to use the Zephyr driver model.",
+      "revId": "d9178582d3242d155cb8bae1e9d9f08b1df4bdd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6efab31_cd941412",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 16
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-02-03T00:40:28Z",
+      "side": 1,
+      "message": "If you are going to put this in subsys, use:\n\nrsource \"subsys/Kconfig\"\n\nThen in that file:\n\nrsource \"ap_pwrseq/Kconfig\"\n\nAlso consider putting it under an \u0027intel\u0027 sub-directory.",
+      "revId": "d9178582d3242d155cb8bae1e9d9f08b1df4bdd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "207f5515_321388d8",
+        "filename": "zephyr/projects/brya/brya/prj.conf",
+        "patchSetId": 16
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-02-03T00:40:28Z",
+      "side": 1,
+      "message": "Being a debug log, maybe put this in a separate CL so that it doesn\u0027t\nclutter this CL.",
+      "revId": "d9178582d3242d155cb8bae1e9d9f08b1df4bdd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "556bb493_cac0fc54",
         "filename": "zephyr/subsys/CMakeLists.txt",
         "patchSetId": 16
@@ -77,6 +128,295 @@
         "endLine": 6,
         "endChar": 28
       },
+      "revId": "d9178582d3242d155cb8bae1e9d9f08b1df4bdd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dccd7877_44ec4494",
+        "filename": "zephyr/subsys/ap_pwrseq/include/x86_common_pwrseq.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-02-03T00:40:28Z",
+      "side": 1,
+      "message": "You don\u0027t need this, you can get the GPIO controller via\nport-\u003ename.",
+      "revId": "d9178582d3242d155cb8bae1e9d9f08b1df4bdd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14fa2a18_977d422a",
+        "filename": "zephyr/subsys/ap_pwrseq/include/x86_common_pwrseq.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-02-03T00:40:28Z",
+      "side": 1,
+      "message": "Consider using struct gpio_spec_dt * to hold the entire gpio config.\nIt can be initialised with GPIO_DT_SPEC_GET.",
+      "revId": "d9178582d3242d155cb8bae1e9d9f08b1df4bdd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1021d0cd_dee67b15",
+        "filename": "zephyr/subsys/ap_pwrseq/include/x86_non_dsx_common_pwrseq_sm_handler.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-02-03T00:40:28Z",
+      "side": 1,
+      "message": "Very few, if any, of these pins will have `enum-name\u0027 on them.\nIf you absolutely need to have the net name, you can use\na macro to stringify the GPIO macro name:\n\n.net_name \u003d STRINGIFY(name),c",
+      "revId": "d9178582d3242d155cb8bae1e9d9f08b1df4bdd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eca0c90a_91e768b8",
+        "filename": "zephyr/subsys/ap_pwrseq/include/x86_non_dsx_common_pwrseq_sm_handler.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-02-03T00:40:28Z",
+      "side": 1,
+      "message": "Add an extra parameter \u0027name\u0027, and call \u0027node\u0027 \u0027label\u0027 or \u0027nodelabel\u0027\ninstead to correctly indicate it is a nodelabel rather than a node itself.\nYou nmight need to call it as:\n\nPOWER_SEQ_GPIO(BLAH, STRINGIFY(BLAH));",
+      "revId": "d9178582d3242d155cb8bae1e9d9f08b1df4bdd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12209d0a_7f1f8755",
+        "filename": "zephyr/subsys/ap_pwrseq/include/x86_non_dsx_common_pwrseq_sm_handler.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-02-03T00:40:28Z",
+      "side": 1,
+      "message": "As above, use a name argument to the macro.",
+      "revId": "d9178582d3242d155cb8bae1e9d9f08b1df4bdd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "887b5e9c_1bb391bb",
+        "filename": "zephyr/subsys/ap_pwrseq/include/x86_non_dsx_common_pwrseq_sm_handler.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-02-03T00:40:28Z",
+      "side": 1,
+      "message": "Use GPIO_DT_SPEC_GET instead of separately initializing the members.",
+      "revId": "d9178582d3242d155cb8bae1e9d9f08b1df4bdd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f5be0eb_b991ea0c",
+        "filename": "zephyr/subsys/ap_pwrseq/include/x86_non_dsx_common_pwrseq_sm_handler.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-02-03T00:40:28Z",
+      "side": 1,
+      "message": "strictly speaking, \u0027node\u0027 is a \u0027nodelabel\u0027.",
+      "revId": "d9178582d3242d155cb8bae1e9d9f08b1df4bdd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e68cf15_71021232",
+        "filename": "zephyr/subsys/ap_pwrseq/include/x86_non_dsx_common_pwrseq_sm_handler.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-02-03T00:40:28Z",
+      "side": 1,
+      "message": "So I am not sure about this approach of using a name to find the GPIO\nto act on. It would be better if all the GPIO accesses occurred within the\nprivate subsys or driver code, and this code should access the config\nstructure and use pre-initialised struct gpio_spec_dt pointers to set or get\nGPIO values, and you should be able to use the pointers directly rather than having\nto look up the name.",
+      "revId": "d9178582d3242d155cb8bae1e9d9f08b1df4bdd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b332462_bb445b5e",
+        "filename": "zephyr/subsys/ap_pwrseq/include/x86_non_dsx_common_pwrseq_sm_handler.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-02-03T00:40:28Z",
+      "side": 1,
+      "message": "Consider using the driver model, which allows you to put all the\nRO and RW configuration and data into the driver structure so that there\nare no globals.\nThis would be a better structure to allow testing.",
+      "revId": "d9178582d3242d155cb8bae1e9d9f08b1df4bdd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c79fa9e2_adc369dc",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_adlp_nonpwrseq_sm.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-02-03T00:40:28Z",
+      "side": 1,
+      "message": "It may be good to label these with __overridable/__override",
+      "revId": "d9178582d3242d155cb8bae1e9d9f08b1df4bdd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b212ba81_7a8063f5",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_adlp_pwrseq_sm.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-02-03T00:40:28Z",
+      "side": 1,
+      "message": "Config should be static const.",
+      "revId": "d9178582d3242d155cb8bae1e9d9f08b1df4bdd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f41b484_5b107694",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_adlp_pwrseq_sm.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-02-03T00:40:28Z",
+      "side": 1,
+      "message": "Rather than setting the values directly, consider a driver API that\ncan be called - then this API handler can use the internal config to\nset the appropriate GPIOs.",
+      "revId": "d9178582d3242d155cb8bae1e9d9f08b1df4bdd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f4c78cc_bad896ae",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-02-03T00:40:28Z",
+      "side": 1,
+      "message": "This should be a Kconfig option",
+      "revId": "d9178582d3242d155cb8bae1e9d9f08b1df4bdd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94681487_e89da2c0",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-02-03T00:40:28Z",
+      "side": 1,
+      "message": "For space sake, maybe this should be only initialised if CONFIG_LOG\noption is on (presumably this is only reference in LOG statements).",
+      "revId": "d9178582d3242d155cb8bae1e9d9f08b1df4bdd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26dfe7b6_7ea2dc0f",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-02-03T00:40:28Z",
+      "side": 1,
+      "message": "Please see my earlier comments about not using the net name\nto look up the GPIO - it\u0027s risky here if a signal does not\nhave a name, and no error returns occur for missing signals.",
+      "revId": "d9178582d3242d155cb8bae1e9d9f08b1df4bdd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9935edd9_71ee16ee",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-02-03T00:40:28Z",
+      "side": 1,
+      "message": "Why use the _raw version of the set? This ignores the ACTIVE_LOW\nflag, which is useful to separate out the pin active polarity from the\ncode.",
+      "revId": "d9178582d3242d155cb8bae1e9d9f08b1df4bdd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29bb6c25_a9854db0",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-02-03T00:40:28Z",
+      "side": 1,
+      "message": "So the assumption here is that the internal config captures the \u0027flags\u0027 that\nare set in the named-gpios child nodes.\nThere\u0027s a little bit of a mismatch here with Zephyr, in that struct gpio_dt_spec flags only provide 8 bits, which indicate the physical pin characteristics.\nGPIO_INPUT and GPIO_OUTPUT are set as \u0027extra\u0027 flags in gpio_pin_configure_dt, which\nor\u0027s in the 8 bits of saved flags.\nSo if you *are* using named-gpios, then the GPIOs get initialised anyway, so this is redundant. If you want to make the code independent of named-gpios (which is likely a good thing), then you won\u0027t have all the flags, and you need to explicitly init the GPIO with the extra flags like INPUT/OUTPUT etc.",
       "revId": "d9178582d3242d155cb8bae1e9d9f08b1df4bdd3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
