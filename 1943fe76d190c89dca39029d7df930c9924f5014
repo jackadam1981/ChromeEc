@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6fbe9562_6483efb0",
+        "filename": "zephyr/test/drivers/CMakeLists.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-02-03T20:44:14Z",
+      "side": 1,
+      "message": "Just replace the GLOB with `src/**.c` (note the extra `*`)",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 64
+      },
+      "revId": "1943fe76d190c89dca39029d7df930c9924f5014",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b1ba0633_872d4267",
         "filename": "zephyr/test/drivers/src/integration/usbc/integration_usb_attach_src_snk.c",
         "patchSetId": 2
@@ -32,6 +55,24 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "b1ba0633_872d4267",
+      "revId": "1943fe76d190c89dca39029d7df930c9924f5014",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b0ff1c6_9ef3706b",
+        "filename": "zephyr/test/drivers/src/integration/usbc/integration_usb_attach_src_snk.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-02-03T20:44:14Z",
+      "side": 1,
+      "message": "super nit: No need for the `integration_usb` file name prefix anymore",
+      "parentUuid": "cd599b7c_58a0b33f",
       "revId": "1943fe76d190c89dca39029d7df930c9924f5014",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -114,6 +155,52 @@
       "side": 1,
       "message": "Made a bug with todos.",
       "parentUuid": "9b3610f7_904ebe89",
+      "revId": "1943fe76d190c89dca39029d7df930c9924f5014",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b736f662_df9af825",
+        "filename": "zephyr/test/drivers/src/integration/usbc/integration_usb_attach_src_snk.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-02-03T20:44:14Z",
+      "side": 1,
+      "message": "nit: the suite name already includes the `attach_src_then_snk` bit I think you can just call this `verify_pd_info`",
+      "range": {
+        "startLine": 140,
+        "startChar": 1,
+        "endLine": 140,
+        "endChar": 45
+      },
+      "revId": "1943fe76d190c89dca39029d7df930c9924f5014",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b957189_b31feb57",
+        "filename": "zephyr/test/drivers/src/integration/usbc/integration_usb_attach_src_snk.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-02-03T20:44:14Z",
+      "side": 1,
+      "message": "Is the thinking here to split this into different tests in a follow-up CL?",
+      "range": {
+        "startLine": 157,
+        "startChar": 0,
+        "endLine": 203,
+        "endChar": 44
+      },
       "revId": "1943fe76d190c89dca39029d7df930c9924f5014",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
