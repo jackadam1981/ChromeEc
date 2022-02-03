@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd599b7c_58a0b33f",
+        "filename": "zephyr/test/drivers/src/integration/usbc/integration_usb_attach_src_snk.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-02-03T20:26:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b1ba0633_872d4267",
+      "revId": "1943fe76d190c89dca39029d7df930c9924f5014",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e8f1158c_3e6aacc8",
@@ -41,6 +59,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "646288ed_84d398cf",
+        "filename": "zephyr/test/drivers/src/integration/usbc/integration_usb_attach_src_snk.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-02-03T20:26:58Z",
+      "side": 1,
+      "message": "After discussion on chat:\n\nThis is not possible so made a tracking bug to identify emul structs at compile-time.",
+      "parentUuid": "e8f1158c_3e6aacc8",
+      "range": {
+        "startLine": 38,
+        "startChar": 1,
+        "endLine": 43,
+        "endChar": 57
+      },
+      "revId": "1943fe76d190c89dca39029d7df930c9924f5014",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9b3610f7_904ebe89",
@@ -54,6 +96,24 @@
       "writtenOn": "2022-02-03T19:13:05Z",
       "side": 1,
       "message": "we really shouldn\u0027t be asserting in before. We\u0027ll get false negatives. Can we add (yes, yet another TODO to implement assumptions like \"Assume (JUnit API)\" http://junit.sourceforge.net/javadoc/org/junit/Assume.html in ztest?",
+      "revId": "1943fe76d190c89dca39029d7df930c9924f5014",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "82f40688_7fdfaa2b",
+        "filename": "zephyr/test/drivers/src/integration/usbc/integration_usb_attach_src_snk.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-02-03T20:26:58Z",
+      "side": 1,
+      "message": "Made a bug with todos.",
+      "parentUuid": "9b3610f7_904ebe89",
       "revId": "1943fe76d190c89dca39029d7df930c9924f5014",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
