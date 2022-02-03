@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "feb74844_7ae836ec",
+        "filename": "chip/stm32/i2c-stm32l4.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2022-02-03T22:19:49Z",
+      "side": 1,
+      "message": "No, it most certainly is not.  I must have fumbled when amending this commit.",
+      "parentUuid": "18d1cd32_7950540a",
+      "revId": "4289a91d581688e78899de0537eb3004cd18e78a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e8f9310d_4969a0ab",
@@ -48,6 +66,30 @@
       "writtenOn": "2022-02-03T21:59:28Z",
       "side": 1,
       "message": "You need to match this as well. It would be nice to auto-generate these usart*_hw by a macro so that we won\u0027t need to worry about these indexes.",
+      "range": {
+        "startLine": 164,
+        "startChar": 25,
+        "endLine": 164,
+        "endChar": 26
+      },
+      "revId": "4289a91d581688e78899de0537eb3004cd18e78a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1100a3d9_82f4218c",
+        "filename": "chip/stm32/usart-stm32l5.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2022-02-03T22:19:49Z",
+      "side": 1,
+      "message": "Yes, considering that it seems that the clock enable register is always the same, this could be done with a macro.  (In this and the other STMx files.)\n\nMaybe I will propose a separate refactor for that.",
+      "parentUuid": "e8f9310d_4969a0ab",
       "range": {
         "startLine": 164,
         "startChar": 25,
