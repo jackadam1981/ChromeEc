@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5f391bf_fd4d1255",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-02-03T23:35:08Z",
+      "side": 1,
+      "message": "I don\u0027t think this is the desired behavior; my understanding was that we didn\u0027t want to use the PSL on Nivviks because Nereid lacks an equivalent peripheral, so both were going to use the external Z-state circuit.",
+      "revId": "2add14b4052e5f56ef245aa94ebfd320c841e342",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
