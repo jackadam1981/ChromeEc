@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4bf606fe_ecc74d0f",
+        "filename": "zephyr/subsys/ap_pwrseq/include/x86_common_pwrseq.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-02-03T02:14:32Z",
+      "side": 1,
+      "message": "I think these enums should be shimmed in via ec_comamnds.h so you\nshould just be able to #include that.",
+      "range": {
+        "startLine": 75,
+        "startChar": 5,
+        "endLine": 75,
+        "endChar": 28
+      },
+      "revId": "4bcada33ba2f3409e18ce797761e27043f333f8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd119882_939a62b8",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-02-03T02:14:32Z",
+      "side": 1,
+      "message": "I think it would be better to have all the console\ncommands in a separate file, potentially so that they can\nbe optionally included as part of a Kconfig config option.",
+      "revId": "4bcada33ba2f3409e18ce797761e27043f333f8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
