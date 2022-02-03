@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7bba9600_894cdc4b",
+        "filename": "zephyr/projects/volteer/volteer/cbi_eeprom.dts",
+        "patchSetId": 6
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2022-02-03T16:02:10Z",
+      "side": 1,
+      "message": "It is the same pin, but of course, you are right.",
+      "parentUuid": "d91b2cd9_1998b238",
+      "range": {
+        "startLine": 8,
+        "startChar": 12,
+        "endLine": 8,
+        "endChar": 24
+      },
+      "revId": "4da96466e6249dc5fdce71ee34ecf7b9db56c9ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "22c6f3b8_b5253acf",
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b287871_d4d8660c",
+        "filename": "zephyr/shim/src/cbi_eeprom.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2022-02-03T16:02:10Z",
+      "side": 1,
+      "message": "Thanks",
+      "parentUuid": "22c6f3b8_b5253acf",
+      "range": {
+        "startLine": 36,
+        "startChar": 24,
+        "endLine": 36,
+        "endChar": 57
+      },
+      "revId": "4da96466e6249dc5fdce71ee34ecf7b9db56c9ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4760b202_08e7a898",
@@ -77,6 +125,30 @@
       "writtenOn": "2022-02-03T00:30:42Z",
       "side": 1,
       "message": "Does this need GPIO_ACTIVE_LOW?",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 49
+      },
+      "revId": "4da96466e6249dc5fdce71ee34ecf7b9db56c9ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8420f77c_be180656",
+        "filename": "zephyr/test/drivers/overlay.dts",
+        "patchSetId": 6
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2022-02-03T16:02:10Z",
+      "side": 1,
+      "message": "I moved adding the ACTIVE_LOW flag to a separate CL.",
+      "parentUuid": "4760b202_08e7a898",
       "range": {
         "startLine": 39,
         "startChar": 0,
