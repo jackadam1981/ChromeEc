@@ -148,7 +148,7 @@ static int spi_clear_tx_fifo(stm32_spi_regs_t *spi)
  *
  * - port: which port to initialize.
  */
-static int spi_master_initialize(const struct spi_device_t *spi_device)
+static int spi_controller_initialize(const struct spi_device_t *spi_device)
 {
 	int port = spi_device->port;
 
@@ -239,7 +239,7 @@ static int spi_master_initialize(const struct spi_device_t *spi_device)
 /**
  * Shutdown SPI module
  */
-static int spi_master_shutdown(const struct spi_device_t *spi_device)
+static int spi_controller_shutdown(const struct spi_device_t *spi_device)
 {
 	int rv = EC_SUCCESS;
 	int port = spi_device->port;
@@ -268,9 +268,9 @@ int spi_enable(const struct spi_device_t *spi_device, int enable)
 	if (enable == spi_enabled[spi_device->port])
 		return EC_SUCCESS;
 	if (enable)
-		return spi_master_initialize(spi_device);
+		return spi_controller_initialize(spi_device);
 	else
-		return spi_master_shutdown(spi_device);
+		return spi_controller_shutdown(spi_device);
 }
 
 static int spi_dma_start(int port, const uint8_t *txdata,
