@@ -71,6 +71,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "815dc2ed_466ccd06",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2022-02-03T11:34:00Z",
+      "side": 1,
+      "message": "Thanks for the change.\n\nThe gpio shim layer uses gpio_pin_get_raw function that doesn\u0027t care about ACTIVE_LOW flag. Anyway, I agree that we should do that pin after pin, not all at once. \n\nI\u0027m not sure if the interrupt checks physical or logical state.",
+      "parentUuid": "e963db4c_1c05484f",
+      "revId": "9c16779279144739b34a6c67a87d8b818445e6ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a2c3cbcc_c48529de",
@@ -84,6 +102,24 @@
       "writtenOn": "2022-02-02T15:36:43Z",
       "side": 1,
       "message": "Better to use strings.HasSuffix(pin.Enum, \"_L\")",
+      "revId": "9c16779279144739b34a6c67a87d8b818445e6ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "96545974_15d93b2c",
+        "filename": "util/pinmap/pm/generate.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2022-02-03T11:34:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a2c3cbcc_c48529de",
       "revId": "9c16779279144739b34a6c67a87d8b818445e6ab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
