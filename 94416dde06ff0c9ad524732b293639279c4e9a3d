@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4cdd3c6b_1db277a9",
+        "filename": "chip/stm32/spi_controller.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-02-03T19:54:21Z",
+      "side": 0,
+      "message": "Additional thought required to replace NSS, SSM and similar.\nThe problem is that they are specific to STM32 (or so it seems) and they refer to the STM32 documentation, and replacing it with something else, might be confusing when reading the documentation.",
+      "range": {
+        "startLine": 163,
+        "startChar": 33,
+        "endLine": 163,
+        "endChar": 36
+      },
+      "revId": "94416dde06ff0c9ad524732b293639279c4e9a3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

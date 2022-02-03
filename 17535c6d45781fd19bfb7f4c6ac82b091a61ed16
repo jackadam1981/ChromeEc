@@ -16,6 +16,29 @@
       "message": "Thanks, fixed. could you PTALA? ty!",
       "revId": "17535c6d45781fd19bfb7f4c6ac82b091a61ed16",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e54bd8f2_e2cdca08",
+        "filename": "chip/stm32/spi_controller.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-02-03T19:54:21Z",
+      "side": 1,
+      "message": "I think \"peripheral\" is correct word in the context, but not 100% sure",
+      "range": {
+        "startLine": 158,
+        "startChar": 48,
+        "endLine": 158,
+        "endChar": 58
+      },
+      "revId": "17535c6d45781fd19bfb7f4c6ac82b091a61ed16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
