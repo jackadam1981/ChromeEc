@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c5e3c26_8aa1870c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1365385
+      },
+      "writtenOn": "2022-02-03T21:40:13Z",
+      "side": 1,
+      "message": "Hi Keith,\nNow the changes are very limited and i guess, all boards are also safe. \nHave commented  the details in: https://partnerissuetracker.corp.google.com/issues/194163586",
+      "parentUuid": "59f2122f_e2fb3918",
+      "revId": "8330d55dde0920988d1b2c902638cccf3d916f38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c268cd22_3d29bd21",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-01-26T03:23:52Z",
       "side": 1,
       "message": "how about\n\nstatic int usb_pd_port_count \u003d CONFIG_USB_PD_PORT_MAX_COUNT;\n\nint usb_pd_get_port_count(void)\n{\n    return usb_pd_port_count;\n}\n\nadd details when this has to be used etc\n__maybe_unused void usb_pd_set_port_count(int count)\n{\n   usb_pd_port_count \u003d count;\n}\n\nwith this approach we dont need additional config",
+      "range": {
+        "startLine": 352,
+        "startChar": 0,
+        "endLine": 385,
+        "endChar": 0
+      },
+      "revId": "8330d55dde0920988d1b2c902638cccf3d916f38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a77e13c1_4622a432",
+        "filename": "common/usb_common.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 385,
+      "author": {
+        "id": 1365385
+      },
+      "writtenOn": "2022-02-03T21:40:13Z",
+      "side": 1,
+      "message": "Agree that config usage can be avoided. But better to be on safe side on all boards , lets keep the config for time being for usage only in our required RVP board.\nAlso, in next CL, CONFIG_USB_PD_PORT_MAX_COUNT is getting replaced by usb_pd_get_port_count(). As we are not enabling config for all boards, replacement of CONFIG_USB_PD_PORT_MAX_COUNT becomes safer.\nMay be some time in future, when overridable funct\u0027s dependency is removed, we can remove the config dependency too.",
+      "parentUuid": "c268cd22_3d29bd21",
       "range": {
         "startLine": 352,
         "startChar": 0,
