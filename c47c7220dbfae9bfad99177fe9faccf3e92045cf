@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d420ec46_da0b0840",
+        "filename": "chip/stm32/registers-stm32l5.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2022-02-03T20:20:51Z",
+      "side": 1,
+      "message": "I have instead moved this line to the bottom, together with the comment about LPUART being accessible as \"USART9\".",
+      "parentUuid": "8364d027_6d0ff001",
+      "range": {
+        "startLine": 82,
+        "startChar": 25,
+        "endLine": 82,
+        "endChar": 42
+      },
+      "revId": "c47c7220dbfae9bfad99177fe9faccf3e92045cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "18aef4fe_85fe3b1b",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-02-03T20:06:49Z",
       "side": 1,
       "message": "nit: alignment?",
+      "range": {
+        "startLine": 152,
+        "startChar": 26,
+        "endLine": 152,
+        "endChar": 44
+      },
+      "revId": "c47c7220dbfae9bfad99177fe9faccf3e92045cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d71ca339_9fe1db50",
+        "filename": "chip/stm32/registers-stm32l5.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2022-02-03T20:20:51Z",
+      "side": 1,
+      "message": "I have instead moved this line to the bottom, together with the comment about LPUART being accessible as \"USART9\".",
+      "parentUuid": "18aef4fe_85fe3b1b",
       "range": {
         "startLine": 152,
         "startChar": 26,
@@ -81,6 +129,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b8f025c_2cd1c825",
+        "filename": "chip/stm32/usart-stm32l5.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2022-02-03T20:20:51Z",
+      "side": 1,
+      "message": "I was not aware of that index field.  I have probably not used UART 4 or 5, yet for actual data forwarding, only checked that it compiled with five uarts.\n\nI have updated the index values to be unique, I do want the ability to forward data between USB and each of the five UARTS at the same time.",
+      "parentUuid": "ab946ad3_e1e69e96",
+      "revId": "c47c7220dbfae9bfad99177fe9faccf3e92045cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9035b505_a7b36247",
@@ -94,6 +160,30 @@
       "writtenOn": "2022-02-03T20:06:49Z",
       "side": 1,
       "message": "Did you add this to include/config.h?",
+      "range": {
+        "startLine": 152,
+        "startChar": 12,
+        "endLine": 152,
+        "endChar": 32
+      },
+      "revId": "c47c7220dbfae9bfad99177fe9faccf3e92045cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "63a2453b_e27f8e00",
+        "filename": "chip/stm32/usart-stm32l5.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2022-02-03T20:20:51Z",
+      "side": 1,
+      "message": "Now I have, thanks for pointing this out.",
+      "parentUuid": "9035b505_a7b36247",
       "range": {
         "startLine": 152,
         "startChar": 12,
