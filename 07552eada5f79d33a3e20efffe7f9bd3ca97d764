@@ -144,6 +144,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f45c3fc7_a4080518",
+        "filename": "zephyr/projects/intelrvp/adlrvp/adlrvp_npcx/adlrvp_npcx.dts",
+        "patchSetId": 15
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-02-03T15:25:18Z",
+      "side": 1,
+      "message": "Please remove it.  We shouldn\u0027t be blindly copy-pasting around code that does nothing.",
+      "parentUuid": "ca7a0ecf_527840df",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 2
+      },
+      "revId": "07552eada5f79d33a3e20efffe7f9bd3ca97d764",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "81aa7141_d66138f0",
         "filename": "zephyr/projects/intelrvp/adlrvp/adlrvp_npcx/include/gpio_map.h",
         "patchSetId": 15
@@ -179,6 +203,30 @@
       "side": 1,
       "message": "We planned to have project specific gpio_map.h and one common intelrvp.h (common for all intel RVP) gpio_map.h will include common file (intelrvp.h), Zepher EC is already including gpio_map.h in source files. \nIf we will have common gpio_map.h, we will need another project specific header files if need arise and we will need to include that file in source files. To avoid this, we planned to have project specific gpio_map.h which included common intelrvp.h file.\n\nHere is another CL which is including intelrvp.h in side gpio_map.h \nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3418123\n\nIf you have different opinion, please let us know, we can work on this accordingly.",
       "parentUuid": "81aa7141_d66138f0",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 32
+      },
+      "revId": "07552eada5f79d33a3e20efffe7f9bd3ca97d764",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dade8098_d5431016",
+        "filename": "zephyr/projects/intelrvp/adlrvp/adlrvp_npcx/include/gpio_map.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-02-03T15:25:18Z",
+      "side": 1,
+      "message": "We plan to remove gpio_map.h entirely real soon, don\u0027t plan on making project-specific customizations to that file.",
+      "parentUuid": "2460568c_6c39e8a4",
       "range": {
         "startLine": 6,
         "startChar": 0,
