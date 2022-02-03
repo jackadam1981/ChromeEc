@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "092b1aae_5197bbf1",
+        "filename": "zephyr/shim/src/console.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-02-03T05:03:03Z",
+      "side": 1,
+      "message": "Can we remove the `ifdef` here? I don\u0027t think this will break.",
+      "range": {
+        "startLine": 9,
+        "startChar": 1,
+        "endLine": 11,
+        "endChar": 6
+      },
+      "revId": "c5f10ebee2896a56cb28261f952edbb74dba9079",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4bf7e611_fd305025",
+        "filename": "zephyr/shim/src/console.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-02-03T05:03:03Z",
+      "side": 1,
+      "message": "Can we use `IS_ENABLED(CONFIG_SHELL_BACKEND_SERIAL)`?",
+      "range": {
+        "startLine": 125,
+        "startChar": 0,
+        "endLine": 129,
+        "endChar": 6
+      },
+      "revId": "c5f10ebee2896a56cb28261f952edbb74dba9079",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "acc0792a_943a4ebf",
+        "filename": "zephyr/shim/src/console.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-02-03T05:03:03Z",
+      "side": 1,
+      "message": "Same here, I feel like this should be a check at the start of the file:\n\n```\n#if !defined(CONFIG_SHELL_BACKEND_SERIAL) \u0026\u0026 !defined(CONFIG_SHELL_BACKEND_DUMMY)\n#error Must select either CONFIG_SHELL_BACKEND_SERIAL or CONFIG_SHELL_BACKEND_DUMMY\n#endif\n```\n\nThen here use `if (IS_ENABLED(CONFIG_SHELL_BACKEND_SERIAL))` etc",
+      "range": {
+        "startLine": 219,
+        "startChar": 0,
+        "endLine": 225,
+        "endChar": 6
+      },
+      "revId": "c5f10ebee2896a56cb28261f952edbb74dba9079",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
