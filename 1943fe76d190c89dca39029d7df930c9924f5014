@@ -293,6 +293,30 @@
       },
       "revId": "1943fe76d190c89dca39029d7df930c9924f5014",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d2c483ef_68914c25",
+        "filename": "zephyr/test/drivers/src/integration/usbc/integration_usb_attach_src_snk.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-02-03T21:57:47Z",
+      "side": 1,
+      "message": "the reason is that while it\u0027s all one AP command we\u0027re still testing different things. if foot example line 171 fails AND line 174 you\u0027ll never know about the second assert until you fix the first. also, they might not be related so you might want different bugs.",
+      "parentUuid": "f9027ee8_b1e21c07",
+      "range": {
+        "startLine": 157,
+        "startChar": 0,
+        "endLine": 203,
+        "endChar": 44
+      },
+      "revId": "1943fe76d190c89dca39029d7df930c9924f5014",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
