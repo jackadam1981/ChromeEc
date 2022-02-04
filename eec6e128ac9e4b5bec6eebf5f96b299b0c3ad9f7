@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8fe2cf6f_8b9b55a6",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_attach_src_snk.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2022-02-04T18:58:57Z",
+      "side": 1,
+      "message": "Could we create a helper function to get PD_POWER_INFO?",
+      "revId": "eec6e128ac9e4b5bec6eebf5f96b299b0c3ad9f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
