@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1121bc20_9ef702fa",
+        "filename": "chip/stm32/registers-stm32l5.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 373,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2022-02-04T00:31:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0af56d13_0f6fde36",
+      "range": {
+        "startLine": 373,
+        "startChar": 37,
+        "endLine": 373,
+        "endChar": 70
+      },
+      "revId": "13c646ac7d0d8fbca66a74ea3ec913aa5cea4bd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5494eff6_00731dcb",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-02-03T23:40:05Z",
       "side": 1,
       "message": "nit: align these?",
+      "range": {
+        "startLine": 2437,
+        "startChar": 0,
+        "endLine": 2440,
+        "endChar": 49
+      },
+      "revId": "13c646ac7d0d8fbca66a74ea3ec913aa5cea4bd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e954e312_f2bd6485",
+        "filename": "chip/stm32/registers-stm32l5.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 2440,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2022-02-04T00:31:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5494eff6_00731dcb",
       "range": {
         "startLine": 2437,
         "startChar": 0,

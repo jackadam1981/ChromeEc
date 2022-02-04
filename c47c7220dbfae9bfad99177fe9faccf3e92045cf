@@ -216,6 +216,30 @@
       },
       "revId": "c47c7220dbfae9bfad99177fe9faccf3e92045cf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5fb7cae9_55266de0",
+        "filename": "chip/stm32/usart-stm32l5.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2022-02-04T00:31:30Z",
+      "side": 1,
+      "message": "Sorry, I forgot to add the file after making the modification.",
+      "parentUuid": "17a36655_e7fffe13",
+      "range": {
+        "startLine": 152,
+        "startChar": 12,
+        "endLine": 152,
+        "endChar": 32
+      },
+      "revId": "c47c7220dbfae9bfad99177fe9faccf3e92045cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
