@@ -180,51 +180,21 @@ def get_argparser():
         "configure",
         help="Set up a build directory to be built later by the build subcommand",
     )
-    configure.add_argument("-t", "--toolchain", help="Name of toolchain to use")
-    configure.add_argument(
-        "--bringup",
-        action="store_true",
-        dest="bringup",
-        help="Enable bringup debugging features",
-    )
-    configure.add_argument(
-        "--clobber",
-        action="store_true",
-        dest="clobber",
-        help="Delete existing build directories, even if configuration is unchanged",
-    )
-    configure.add_argument(
-        "--allow-warnings",
-        action="store_true",
-        default=False,
-        help="Do not treat warnings as errors",
-    )
-    configure.add_argument(
-        "-B", "--build-dir", type=pathlib.Path, help="Build directory"
-    )
-    configure.add_argument(
-        "-b",
-        "--build",
-        action="store_true",
-        dest="build_after_configure",
-        help="Run the build after configuration",
-    )
-    configure.add_argument(
-        "--test",
-        action="store_true",
-        dest="test_after_configure",
-        help="Test the .elf file after configuration",
-    )
+    add_common_args(configure)
     configure.add_argument(
         "project_name_or_dir",
         help="Path to the project to build",
     )
-    configure.add_argument(
-        "-c",
-        "--coverage",
-        action="store_true",
-        dest="coverage",
-        help="Enable CONFIG_COVERAGE Kconfig.",
+
+    configureall = sub.add_parser(
+        "configureall",
+        help="Set up build directories for all projects to be built later by "
+        + "the build subcommand",
+    )
+    add_common_args(
+        configureall,
+        coverage_help_suffix=" If building or running tests also, generate a merged"
+        + " coverage report.",
     )
 
     build = sub.add_parser(
@@ -327,6 +297,55 @@ def get_argparser():
     )
 
     return parser, sub
+
+
+def add_common_args(
+    sub_parser: argparse.ArgumentParser, coverage_help_suffix: str = ""
+):
+    """Adds common arguments used by configure-like subcommands."""
+    sub_parser.add_argument("-t", "--toolchain", help="Name of toolchain to use")
+    sub_parser.add_argument(
+        "--bringup",
+        action="store_true",
+        dest="bringup",
+        help="Enable bringup debugging features",
+    )
+    sub_parser.add_argument(
+        "--clobber",
+        action="store_true",
+        dest="clobber",
+        help="Delete existing build directories, even if configuration is "
+        + "unchanged",
+    )
+    sub_parser.add_argument(
+        "--allow-warnings",
+        action="store_true",
+        default=False,
+        help="Do not treat warnings as errors",
+    )
+    sub_parser.add_argument(
+        "-B", "--build-dir", type=pathlib.Path, help="Build directory"
+    )
+    sub_parser.add_argument(
+        "-b",
+        "--build",
+        action="store_true",
+        dest="build_after_configure",
+        help="Run the build after configuration",
+    )
+    sub_parser.add_argument(
+        "--test",
+        action="store_true",
+        dest="test_after_configure",
+        help="Test the .elf file after building",
+    )
+    sub_parser.add_argument(
+        "-c",
+        "--coverage",
+        action="store_true",
+        dest="coverage",
+        help="Enable CONFIG_COVERAGE Kconfig." + coverage_help_suffix,
+    )
 
 
 def main(argv=None):
