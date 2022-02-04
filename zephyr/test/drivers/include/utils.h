@@ -14,4 +14,117 @@ void test_set_chipset_to_s0(void);
 /** @brief Set chipset to G3 state. Call all necessary hooks. */
 void test_set_chipset_to_g3(void);
 
+/*
+ * TODO(b/217755888): Implement ztest assume API upstream
+ */
+
+/**
+ * @brief Assume that this function call won't be reached
+ * @param msg Optional message to print if the assumption fails
+ */
+#define zassume_unreachable(msg, ...) \
+	zassert(0, "Reached unreachable code", msg, ##__VA_ARGS__)
+
+/**
+ * @brief Assume that @a cond is true
+ * @param cond Condition to check
+ * @param msg Optional message to print if the assumption fails
+ */
+#define zassume_true(cond, msg, ...) \
+	zassert(cond, #cond " is false", msg, ##__VA_ARGS__)
+
+/**
+ * @brief Assume that @a cond is false
+ * @param cond Condition to check
+ * @param msg Optional message to print if the assumption fails
+ */
+#define zassume_false(cond, msg, ...) \
+	zassert(!(cond), #cond " is true", msg, ##__VA_ARGS__)
+
+/**
+ * @brief Assume that @a cond is 0 (success)
+ * @param cond Condition to check
+ * @param msg Optional message to print if the assumption fails
+ */
+#define zassume_ok(cond, msg, ...) \
+	zassert(!(cond), #cond " is non-zero", msg, ##__VA_ARGS__)
+
+/**
+ * @brief Assume that @a ptr is NULL
+ * @param ptr Pointer to compare
+ * @param msg Optional message to print if the assumption fails
+ */
+#define zassume_is_null(ptr, msg, ...) \
+	zassert((ptr) == NULL, #ptr " is not NULL", msg, ##__VA_ARGS__)
+
+/**
+ * @brief Assume that @a ptr is not NULL
+ * @param ptr Pointer to compare
+ * @param msg Optional message to print if the assumption fails
+ */
+#define zassume_not_null(ptr, msg, ...) \
+	zassert((ptr) != NULL, #ptr " is NULL", msg, ##__VA_ARGS__)
+
+/**
+ * @brief Assume that @a a equals @a b
+ *
+ * @a a and @a b won't be converted and will be compared directly.
+ *
+ * @param a Value to compare
+ * @param b Value to compare
+ * @param msg Optional message to print if the assumption fails
+ */
+#define zassume_equal(a, b, msg, ...) \
+	zassert((a) == (b), #a " not equal to " #b, msg, ##__VA_ARGS__)
+
+/**
+ * @brief Assume that @a a does not equal @a b
+ *
+ * @a a and @a b won't be converted and will be compared directly.
+ *
+ * @param a Value to compare
+ * @param b Value to compare
+ * @param msg Optional message to print if the assumption fails
+ */
+#define zassume_not_equal(a, b, msg, ...) \
+	zassert((a) != (b), #a " equal to " #b, msg, ##__VA_ARGS__)
+
+/**
+ * @brief Assume that @a a equals @a b
+ *
+ * @a a and @a b will be converted to `void *` before comparing.
+ *
+ * @param a Value to compare
+ * @param b Value to compare
+ * @param msg Optional message to print if the assumption fails
+ */
+#define zassume_equal_ptr(a, b, msg, ...)                                \
+	zassert((void *)(a) == (void *)(b), #a " not equal to " #b, msg, \
+		##__VA_ARGS__)
+
+/**
+ * @brief Assume that @a a is within @a b with delta @a d
+ *
+ * @param a Value to compare
+ * @param b Value to compare
+ * @param d Delta
+ * @param msg Optional message to print if the assumption fails
+ */
+#define zassume_within(a, b, d, msg, ...)                     \
+	zassert(((a) >= ((b) - (d))) && ((a) <= ((b) + (d))), \
+		#a " not within " #b " +/- " #d, msg, ##__VA_ARGS__)
+
+/**
+ * @brief Assume that 2 memory buffers have the same contents
+ *
+ * This macro calls the final memory comparison assumption macro.
+ * Using double expansion allows providing some arguments by macros that
+ * would expand to more than one values (ANSI-C99 defines that all the macro
+ * arguments have to be expanded before macro call).
+ *
+ * @param ... Arguments, see @ref zassume_mem_equal__
+ *            for real arguments accepted.
+ */
+#define zassume_mem_equal(...) zassume_mem_equal__(__VA_ARGS__)
+
 #endif /* ZEPHYR_TEST_DRIVERS_INCLUDE_UTILS_H_ */
