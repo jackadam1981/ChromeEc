@@ -143,6 +143,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3d0eb214_17cdb2e1",
+        "filename": "zephyr/projects/nissa/nereid_generated.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2022-02-04T13:52:34Z",
+      "side": 1,
+      "message": "Great, good idea. I\u0027m working on it.",
+      "parentUuid": "c9376184_4f886619",
+      "revId": "52a5aad42237416f7132f9474b9b0d0a220401d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a8d4661b_e0b62c8e",
         "filename": "zephyr/projects/nissa/nivviks_generated.dts",
         "patchSetId": 1
@@ -154,6 +172,30 @@
       "writtenOn": "2022-02-03T12:24:36Z",
       "side": 1,
       "message": "I\u0027ve been manually changing the copyright date to 2021 on files that\nalready existed.",
+      "range": {
+        "startLine": 1,
+        "startChar": 17,
+        "endLine": 1,
+        "endChar": 18
+      },
+      "revId": "52a5aad42237416f7132f9474b9b0d0a220401d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e46accc7_8815faaa",
+        "filename": "zephyr/projects/nissa/nivviks_generated.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2022-02-04T13:52:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a8d4661b_e0b62c8e",
       "range": {
         "startLine": 1,
         "startChar": 17,
