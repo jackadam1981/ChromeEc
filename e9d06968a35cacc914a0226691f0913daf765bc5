@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6337bc4_ae934b4a",
+        "filename": "util/kconfig_check.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 371,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2022-02-04T22:42:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "051492ec_9de3f081",
+      "range": {
+        "startLine": 371,
+        "startChar": 30,
+        "endLine": 371,
+        "endChar": 42
+      },
+      "revId": "e9d06968a35cacc914a0226691f0913daf765bc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c86dfb4e_37b7242b",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-02-02T06:40:13Z",
       "side": 1,
       "message": "this giant args list is a repeat of the args to check ... should we instead be passing this to the constructor of kconfig check, or alternatively just passing the args namespace directly?",
+      "range": {
+        "startLine": 386,
+        "startChar": 32,
+        "endLine": 388,
+        "endChar": 71
+      },
+      "revId": "e9d06968a35cacc914a0226691f0913daf765bc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b322af13_706bccaf",
+        "filename": "util/kconfig_check.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2022-02-04T22:42:25Z",
+      "side": 1,
+      "message": "I get your point but I do prefer explicit args. It is easier to see what the inputs are.\n\nIf I send them to the constructor, then we will pick them from self in the bowels of the functions.\n\nHow about:\n- pass them individually to the constructor\n- within do_check() and do_build(), pass fewer args therefore to check_adhoc_configs() - i.e. check_adhoc_configs() relies on self.xxx \n- avoiding using self.xxx in any of the other functions; pass args explicitly\n\nIf you like that I can do it in a follow-up",
+      "parentUuid": "c86dfb4e_37b7242b",
       "range": {
         "startLine": 386,
         "startChar": 32,
