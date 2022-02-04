@@ -46,6 +46,30 @@
       },
       "revId": "dac80fd59a9e88249ae80775c296d85b0a7f6307",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "297f7c9a_7fde0da3",
+        "filename": "power/amd_x86.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-02-04T21:15:37Z",
+      "side": 1,
+      "message": "Okay, see what you think of the warnings in the CL below this one.",
+      "parentUuid": "cfa1d203_a41b1e9b",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 1
+      },
+      "revId": "dac80fd59a9e88249ae80775c296d85b0a7f6307",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
