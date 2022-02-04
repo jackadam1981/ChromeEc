@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ea4e0fb_f13d2e68",
+        "filename": "power/amd_x86.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2022-02-04T22:04:00Z",
+      "side": 1,
+      "message": "Do we need to do some additional housekeeping? For example, I\u0027m assuming that `apshutdown` console command doesn\u0027t actually work to get you back into G3. Or is your intended use that you disable the fake first?",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 33
+      },
+      "revId": "be6c38ac213df3237653d802e3ebe73e2fb006cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

@@ -70,6 +70,30 @@
       },
       "revId": "dac80fd59a9e88249ae80775c296d85b0a7f6307",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c99b26dd_494a46b8",
+        "filename": "power/amd_x86.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2022-02-04T22:04:00Z",
+      "side": 1,
+      "message": "Warnings LGTM. Developers will just have to be very cognizant.",
+      "parentUuid": "297f7c9a_7fde0da3",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 1
+      },
+      "revId": "dac80fd59a9e88249ae80775c296d85b0a7f6307",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
