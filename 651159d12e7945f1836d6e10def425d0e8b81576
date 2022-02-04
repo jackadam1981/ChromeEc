@@ -22,6 +22,29 @@
       },
       "revId": "651159d12e7945f1836d6e10def425d0e8b81576",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea8f7669_b76c97e8",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_attach_src_snk.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-02-04T03:18:32Z",
+      "side": 1,
+      "message": "After/teardown functions run in the main testing thread. They should never assume or assert",
+      "range": {
+        "startLine": 147,
+        "startChar": 1,
+        "endLine": 147,
+        "endChar": 11
+      },
+      "revId": "651159d12e7945f1836d6e10def425d0e8b81576",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
