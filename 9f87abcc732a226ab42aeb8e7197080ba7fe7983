@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a0295f33_c9e49418",
+        "filename": "docs/zephyr/zephyr_gpio.md",
+        "patchSetId": 6
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-02-04T00:44:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9dc0795c_ff95de3d",
+      "range": {
+        "startLine": 14,
+        "startChar": 52,
+        "endLine": 15,
+        "endChar": 17
+      },
+      "revId": "9f87abcc732a226ab42aeb8e7197080ba7fe7983",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8aab1467_e2f41561",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-02-03T18:42:16Z",
       "side": 1,
       "message": "This shouldn\u0027t be a nested under named-gpios.",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 3
+      },
+      "revId": "9f87abcc732a226ab42aeb8e7197080ba7fe7983",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "17bf824b_0a0b8e39",
+        "filename": "docs/zephyr/zephyr_gpio.md",
+        "patchSetId": 6
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-02-04T00:44:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8aab1467_e2f41561",
       "range": {
         "startLine": 60,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dced0447_7107f22a",
+        "filename": "docs/zephyr/zephyr_gpio.md",
+        "patchSetId": 6
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-02-04T00:44:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6de229cd_217af28c",
+      "range": {
+        "startLine": 106,
+        "startChar": 25,
+        "endLine": 106,
+        "endChar": 41
+      },
+      "revId": "9f87abcc732a226ab42aeb8e7197080ba7fe7983",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c4c2fde1_2ca841f0",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-02-03T18:42:16Z",
       "side": 1,
       "message": "In this example, would it make more sense to have the flags set to 0, since the flags aren\u0027t used.",
+      "range": {
+        "startLine": 199,
+        "startChar": 19,
+        "endLine": 199,
+        "endChar": 30
+      },
+      "revId": "9f87abcc732a226ab42aeb8e7197080ba7fe7983",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "19c16bc9_22629221",
+        "filename": "docs/zephyr/zephyr_gpio.md",
+        "patchSetId": 6
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-02-04T00:44:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c4c2fde1_2ca841f0",
       "range": {
         "startLine": 199,
         "startChar": 19,
@@ -118,6 +214,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "333ef172_7c73fafc",
+        "filename": "docs/zephyr/zephyr_gpio.md",
+        "patchSetId": 6
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-02-04T00:44:41Z",
+      "side": 1,
+      "message": "It\u0027s really a naming convenience, so that it is clear how the GPIO is being\nused - it\u0027s analogous to the way GPIOs get renamed in gpio_map.h using a #define.\nIt does allow a useful name to be used (that\u0027s what I see one of the main benefits\nof using alias. Let me assign realistic names so that it is more obvious.",
+      "parentUuid": "0ca75646_2d32d743",
+      "range": {
+        "startLine": 204,
+        "startChar": 0,
+        "endLine": 205,
+        "endChar": 33
+      },
+      "revId": "9f87abcc732a226ab42aeb8e7197080ba7fe7983",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "21d6c0a7_46c9e9ab",
         "filename": "docs/zephyr/zephyr_gpio.md",
         "patchSetId": 6
@@ -129,6 +249,30 @@
       "writtenOn": "2022-02-03T18:42:16Z",
       "side": 1,
       "message": "Delete?",
+      "range": {
+        "startLine": 440,
+        "startChar": 0,
+        "endLine": 440,
+        "endChar": 6
+      },
+      "revId": "9f87abcc732a226ab42aeb8e7197080ba7fe7983",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "09a58bf0_a6076965",
+        "filename": "docs/zephyr/zephyr_gpio.md",
+        "patchSetId": 6
+      },
+      "lineNbr": 440,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-02-04T00:44:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "21d6c0a7_46c9e9ab",
       "range": {
         "startLine": 440,
         "startChar": 0,
