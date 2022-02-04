@@ -70,6 +70,30 @@
       },
       "revId": "8088b67a3f9d3b53138c2059a707e108cdc84b34",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f89dde0_f0d53e89",
+        "filename": "OWNERS",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-02-04T20:28:27Z",
+      "side": 1,
+      "message": "Ah, I didn\u0027t see that [documented](https://gerrit.googlesource.com/plugins/find-owners/+/master/src/main/resources/Documentation/syntax.md) as a possibility.",
+      "parentUuid": "5bd59a2c_ae589b02",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 42
+      },
+      "revId": "8088b67a3f9d3b53138c2059a707e108cdc84b34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
