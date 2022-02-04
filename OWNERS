@@ -1,1 +1,17 @@
-*
+# Don't inherit owners from elsewhere in the manifest
+set noparent
+
+# The OWNERS in this file should be kept in sync with biod's OWNERS file, which
+# acts as the source of truth for fingerprint team ownership:
+# http://b/180546850. Unfortunately, using the "include" feature commented out
+# below does not work since Gerrit looks for a matching
+# "firmware-fpmcu-bloonchipper-release" branch in platform2, which does not
+# exist. Instead we have to create a copy.
+#
+# include chromiumos/platform2:/biod/OWNERS
+
+hesling@chromium.org
+jora@google.com
+josienordrum@google.com
+tomhughes@chromium.org
+
