@@ -22,6 +22,30 @@
       },
       "revId": "823f71d3f20d696f9aa0133d2e94adf2677978e0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b3cab01_9d1df810",
+        "filename": "zephyr/test/drivers/CMakeLists.txt",
+        "patchSetId": 5
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-02-04T03:15:11Z",
+      "side": 1,
+      "message": "Ah, sorry, you\u0027re right, moving too much between internal builds and this. You should be able to use `GLOB_RECURSE` instead of `GLOB` though.",
+      "parentUuid": "49755549_ea62167a",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 64
+      },
+      "revId": "823f71d3f20d696f9aa0133d2e94adf2677978e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
