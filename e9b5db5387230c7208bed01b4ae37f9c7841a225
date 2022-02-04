@@ -54,6 +54,46 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "bf8a6c79_60a0b90d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-02-04T22:05:16Z",
+      "side": 1,
+      "message": "There\u0027s a chance that someone could leave a dangling merge and accidentally commit it with this (e.g., they start a manual merge at some point and don\u0027t commit it), but I\u0027m not sure how we\u0027d guard against that.\n\nSee formatting comment.",
+      "revId": "e9b5db5387230c7208bed01b4ae37f9c7841a225",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "79449e88_d367814a",
+        "filename": "util/update_release_branch.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-02-04T22:05:16Z",
+      "side": 1,
+      "message": "PEP 8: E128 continuation line under-indented for visual indent\n\n(see `cros lint util/update_release_branch.py`)\n\nAs a separate commit, we should clean up the remaining lint warnings in the file",
+      "range": {
+        "startLine": 221,
+        "startChar": 4,
+        "endLine": 221,
+        "endChar": 8
+      },
+      "revId": "e9b5db5387230c7208bed01b4ae37f9c7841a225",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "93267ebb_9c80eb35",
         "filename": "util/update_release_branch.py",
         "patchSetId": 1
