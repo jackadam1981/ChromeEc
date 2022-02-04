@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0922d039_e0b6de9d",
+        "filename": "zephyr/Kconfig.powerseq",
+        "patchSetId": 2
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1365385
+      },
+      "writtenOn": "2022-02-04T04:53:15Z",
+      "side": 1,
+      "message": "I think, this has to be like this:\n\nif PLATFORM_EC_POWERSEQ_RTC_RESET\nconfig PLATFORM_EC_S5_EXIT_WAIT\n\tint \"time(in secs) for EC to wait for system to exit from S5\"\n\tdefault 4\n        help\n\t  Timeout value for which EC has to wait for system to exit from S5\n\t  before performing RTC reset and moving the system to G3.\nendif # PLATFORM_EC_POWERSEQ_RTC_RESET \n\nrefer example reference of usage: CONFIG_WATCHDOG_PERIOD_MS\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/zephyr/zephyr_shim.md#configuration",
+      "range": {
+        "startLine": 164,
+        "startChar": 0,
+        "endLine": 171,
+        "endChar": 0
+      },
+      "revId": "76862df29769e53c0df9fc6fe05d1d9e50c167bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "08dd7a82_4cbb0a66",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 813,
+      "author": {
+        "id": 1365385
+      },
+      "writtenOn": "2022-02-04T04:53:15Z",
+      "side": 1,
+      "message": "Correct as CONFIG_PLATFORM_EC_S5_EXIT_WAIT",
+      "range": {
+        "startLine": 813,
+        "startChar": 28,
+        "endLine": 813,
+        "endChar": 56
+      },
+      "revId": "76862df29769e53c0df9fc6fe05d1d9e50c167bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
