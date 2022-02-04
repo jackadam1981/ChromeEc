@@ -57,6 +57,24 @@ Chromium OS's meta-build tool for Zephyr
 | `--test` | Test the .elf file after configuration |
 | `-c`, `--coverage` | Enable CONFIG_COVERAGE Kconfig. |
 
+### zmake configureall
+
+**Usage:** `zmake configureall [-h] [-t TOOLCHAIN] [--bringup] [--clobber] [--allow-warnings] [-B BUILD_DIR] [-b] [--test] [-c]`
+
+#### Optional Arguments
+
+|   |   |
+|---|---|
+| `-h`, `--help` | show this help message and exit |
+| `-t TOOLCHAIN`, `--toolchain TOOLCHAIN` | Name of toolchain to use |
+| `--bringup` | Enable bringup debugging features |
+| `--clobber` | Delete existing build directories, even if configuration is unchanged |
+| `--allow-warnings` | Do not treat warnings as errors |
+| `-B BUILD_DIR`, `--build-dir BUILD_DIR` | Build directory |
+| `-b`, `--build` | Run the build after configuration |
+| `--test` | Test the .elf file after configuration |
+| `-c`, `--coverage` | Enable CONFIG_COVERAGE Kconfig. If building or running tests also, generate a merged coverage report. |
+
 ### zmake build
 
 **Usage:** `zmake build [-h] build_dir [-w]`
