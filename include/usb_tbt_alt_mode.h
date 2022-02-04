@@ -42,6 +42,11 @@ void tbt_exit_mode_request(int port);
 bool tbt_cable_entry_required_for_usb4(int port);
 
 /*
+ * WIP: Export this to let the DP module use it for now
+ */
+bool tbt_sop_prime_needed(int port)
+
+/*
  * Checks whether the mode entry sequence for Thunderbolt alternate mode is
  * done for a port.
  *

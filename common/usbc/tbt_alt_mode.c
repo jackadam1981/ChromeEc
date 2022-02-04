@@ -217,7 +217,7 @@ static void tbt_retry_enter_mode(int port)
 }
 
 /* Does this port require SOP' mode entry and exit? */
-static bool tbt_sop_prime_needed(int port)
+bool tbt_sop_prime_needed(int port)
 {
 	union tbt_mode_resp_cable cable_mode_resp;
 
