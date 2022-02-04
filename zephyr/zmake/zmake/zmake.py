@@ -190,9 +190,44 @@ class Zmake:
             self._checkout = util.locate_cros_checkout()
         return self._checkout.resolve()
 
+    def _resolve_projects(
+        self, project_names, all_projects=False, host_tests_only=False
+    ):
+        """Finds all projects for the specified command line flags.
+
+        Returns a list of projects.
+        """
+        if not all_projects and not host_tests_only and len(project_names) == 0:
+            raise ValueError(
+                "You must specify --all/-a or --host-tests-only or one or more"
+                " project names"
+            )
+        if all_projects and len(project_names) != 0:
+            raise ValueError("You cannot specify both --all/-a and project name")
+        if host_tests_only and len(project_names) != 0:
+            raise ValueError(
+                "You cannot specify both --host-tests-only and project name"
+            )
+        if all_projects and host_tests_only:
+            raise ValueError("You cannot specify both --all/-a and --host-tests-only")
+
+        found_projects = zmake.project.find_projects(self.module_paths["ec"] / "zephyr")
+        if all_projects:
+            projects = found_projects.values()
+        elif host_tests_only:
+            projects = list(filter(lambda p: p.config.is_test, found_projects.values()))
+        else:
+            projects = []
+            for project_name in project_names:
+                try:
+                    projects.append(found_projects[project_name])
+                except KeyError as e:
+                    raise KeyError("No project named {}".format(project_name)) from e
+        return projects
+
     def configure(
         self,
-        project_name_or_dir,
+        project_names,
         build_dir=None,
         toolchain=None,
         build_after_configure=False,
@@ -201,32 +236,57 @@ class Zmake:
         bringup=False,
         coverage=False,
         allow_warnings=False,
+        all_projects=False,
+        host_tests_only=False,
     ):
-        """Locate a project by name or directory and then call _configure."""
-        root_dir = pathlib.Path(project_name_or_dir)
-        if not root_dir.is_dir():
-            root_dir = self.module_paths["ec"] / "zephyr"
-        found_projects = zmake.project.find_projects(root_dir)
-        if len(found_projects) == 1:
-            # Likely passed directory path, wants to build only
-            # project from there.
-            project = next(iter(found_projects.values()))
-        else:
-            try:
-                project = found_projects[project_name_or_dir]
-            except KeyError as e:
-                raise KeyError("No project named {}".format(project_name_or_dir)) from e
-        return self._configure(
-            project=project,
-            build_dir=build_dir,
-            toolchain=toolchain,
-            build_after_configure=build_after_configure,
-            test_after_configure=test_after_configure,
-            clobber=clobber,
-            bringup=bringup,
-            coverage=coverage,
-            allow_warnings=allow_warnings,
+        """Locate and configure the specified projects."""
+        # Resolve build_dir if needed.
+        if not build_dir:
+            build_dir = self.module_paths["ec"] / "build" / "zephyr"
+
+        projects = self._resolve_projects(
+            project_names, all_projects=all_projects, host_tests_only=host_tests_only
         )
+        for project in projects:
+            project_build_dir = pathlib.Path(build_dir) / project.config.project_name
+            self.executor.append(
+                func=functools.partial(
+                    self._configure,
+                    project=project,
+                    build_dir=project_build_dir,
+                    toolchain=toolchain,
+                    build_after_configure=build_after_configure,
+                    test_after_configure=test_after_configure,
+                    clobber=clobber,
+                    bringup=bringup,
+                    coverage=coverage,
+                    allow_warnings=allow_warnings,
+                )
+            )
+            if self._sequential:
+                rv = self.executor.wait()
+                if rv:
+                    return rv
+        rv = self.executor.wait()
+        if rv:
+            return rv
+        if len(projects) > 1 and coverage and test_after_configure:
+            rv = self._merge_lcov_files(
+                projects=list(filter(lambda p: p.config.is_test, projects)),
+                build_dir=build_dir,
+                output_file=build_dir / "all_tests.info",
+            )
+            if rv:
+                return rv
+        if len(projects) > 1 and coverage and build_after_configure:
+            rv = self._merge_lcov_files(
+                projects=list(filter(lambda p: not p.config.is_test, projects)),
+                build_dir=build_dir,
+                output_file=build_dir / "all_builds.info",
+            )
+            if rv:
+                return rv
+        return 0
 
     def _configure(
         self,
@@ -390,7 +450,7 @@ class Zmake:
         (build_dir / "project_name.txt").write_text(project.config.project_name)
         util.update_symlink(project.config.project_dir, build_dir / "project")
 
-        if test_after_configure:
+        if test_after_configure and project.config.is_test:
             return self.test(
                 build_dir=build_dir,
                 coverage=coverage,
@@ -407,6 +467,7 @@ class Zmake:
                 )
             else:
                 return self.build(build_dir=build_dir)
+        return 0
 
     def build(self, build_dir, output_files_out=None, fail_on_warnings=False):
         """Build a pre-configured build directory."""
@@ -761,46 +822,18 @@ class Zmake:
         with self.jobserver.get_job():
             return self._run_lcov(build_dir, lcov_file, initial=True, gcov=gcov)
 
-    def coverage(self, build_dir, clobber=False):
-        """Builds all targets with coverage enabled, and then runs the tests."""
+    def _merge_lcov_files(self, projects, build_dir, output_file):
         all_lcov_files = []
-        root_dir = self.module_paths["ec"] / "zephyr"
-        for project in zmake.project.find_projects(root_dir).values():
-            is_test = project.config.is_test
+        for project in projects:
             project_build_dir = pathlib.Path(build_dir) / project.config.project_name
-            if is_test:
-                # Configure and run the test.
-                all_lcov_files.append(project_build_dir / "output" / "zephyr.info")
-                self.executor.append(
-                    func=functools.partial(
-                        self._configure,
-                        project=project,
-                        build_dir=project_build_dir,
-                        build_after_configure=True,
-                        test_after_configure=is_test,
-                        coverage=True,
-                        clobber=clobber,
-                    )
-                )
-            else:
-                # Don't build non-test projects
-                self.logger.info("Skipping project %s", project.config.project_name)
-            if self._sequential:
-                rv = self.executor.wait()
-                if rv:
-                    return rv
-
-        rv = self.executor.wait()
-        if rv:
-            return rv
-
+            all_lcov_files.append(project_build_dir / "output" / "zephyr.info")
         with self.jobserver.get_job():
             # Merge info files into a single lcov.info
-            self.logger.info("Merging coverage data into %s.", build_dir / "lcov.info")
+            self.logger.info("Merging coverage data into %s.", output_file)
             cmd = [
                 "/usr/bin/lcov",
                 "-o",
-                build_dir / "lcov.info",
+                output_file,
                 "--rc",
                 "lcov_branch_coverage=1",
             ]
@@ -821,7 +854,42 @@ class Zmake:
             )
             if proc.wait():
                 raise OSError(get_process_failure_msg(proc))
+            return 0
 
+    def coverage(self, build_dir, clobber=False):
+        """Builds all targets with coverage enabled, and then runs the tests."""
+        root_dir = self.module_paths["ec"] / "zephyr"
+        projects = list(
+            filter(
+                lambda p: p.config.is_test,
+                zmake.project.find_projects(root_dir).values(),
+            )
+        )
+        for project in projects:
+            project_build_dir = pathlib.Path(build_dir) / project.config.project_name
+            # Configure and run the test.
+            self.executor.append(
+                func=functools.partial(
+                    self._configure,
+                    project=project,
+                    build_dir=project_build_dir,
+                    build_after_configure=True,
+                    test_after_configure=True,
+                    coverage=True,
+                    clobber=clobber,
+                )
+            )
+            if self._sequential:
+                rv = self.executor.wait()
+                if rv:
+                    return rv
+
+        rv = self.executor.wait()
+        if rv:
+            return rv
+
+        self._merge_lcov_files(projects, build_dir, build_dir / "lcov.info")
+        with self.jobserver.get_job():
             # Find the common root dir
             prefixdir = os.path.commonprefix(list(self.module_paths.values()))
 
@@ -839,8 +907,8 @@ class Zmake:
                     prefixdir,
                     "-s",
                     "--branch-coverage",
-                ]
-                + all_lcov_files,
+                    build_dir / "lcov.info",
+                ],
                 stdout=subprocess.PIPE,
                 stderr=subprocess.PIPE,
                 encoding="utf-8",
