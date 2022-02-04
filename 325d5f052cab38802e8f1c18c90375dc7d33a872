@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "18690b65_d99e9066",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-02-04T19:34:59Z",
+      "side": 1,
+      "message": "```\ngit diff 8e7852d2bb..325d5f052cab38802e8f1c18c90375dc7d33a872\n```\nshows that the only differences are the OWNERS files (http://b/217943786)",
+      "revId": "325d5f052cab38802e8f1c18c90375dc7d33a872",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
