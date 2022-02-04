@@ -68,6 +68,42 @@
       "message": "Also should this CONFIG_PLATFORM_EC_HIBERNATE_PSL\u003dy be then removed from .conf?",
       "revId": "2add14b4052e5f56ef245aa94ebfd320c841e342",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a2eaaed3_379c9799",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-02-04T00:19:47Z",
+      "side": 1,
+      "message": "Yes, I think so. Whatever configuration we had for the PSL should be removed.",
+      "parentUuid": "a9d66699_e3f86e9c",
+      "revId": "2add14b4052e5f56ef245aa94ebfd320c841e342",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6cbdf78b_b16ec4c5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-02-04T00:19:47Z",
+      "side": 1,
+      "message": "Yes, because charger interrupts are connected to the Z-sleep logic.",
+      "parentUuid": "124b131a_a144ce01",
+      "revId": "2add14b4052e5f56ef245aa94ebfd320c841e342",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
