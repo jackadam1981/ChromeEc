@@ -10,11 +10,39 @@
 
 #define CONFIG_LTO
 
-/* Free up flash space */
+/* 48 MHz SYSCLK clock frequency */
+#define CPU_CLOCK 48000000
+
+/* This is not actually an EC so disable some features. */
+#undef CONFIG_WATCHDOG_HELP
+#undef CONFIG_LID_SWITCH
+#undef CONFIG_HIBERNATE
+#undef CONFIG_CMD_SCRATCHPAD
+#define CONFIG_FLASH_CROS
+
+/* DFU Firmware Update */
+#define CONFIG_DFU
+#define CONFIG_DFU_BOOTMANAGER_MAX_REBOOT   (10)
+
 #ifdef SECTION_IS_RO
+
+
+#ifndef __ASSEMBLER__
+#include "gpio_signal.h"
+#endif /* !__ASSEMBLER__ */
+
+#undef CONFIG_COMMON_GPIO
+#undef CONFIG_COMMON_PANIC_OUTPUT
+#undef CONFIG_COMMON_RUNTIME
+#undef CONFIG_COMMON_TIMER
+#undef CONFIG_SOFTWARE_PANIC
+#undef CONFIG_SPI_CONTROLLER
+
+#else /* SECTION_IS_RO */
+
+/* Free up flash space */
 #define CONFIG_DEBUG_ASSERT_BRIEF
 #undef CONFIG_USB_PD_TCPMV1_DEBUG
-#endif
 
 /*
  * Board Versions:
@@ -24,8 +52,6 @@
  */
 #define BOARD_VERSION_BLACK 3
 
-/* 48 MHz SYSCLK clock frequency */
-#define CPU_CLOCK 48000000
 
 /* Enable USART1,3,4 and USB streams */
 #define CONFIG_STREAM_USART
@@ -66,7 +92,8 @@
 #define USB_IFACE_USART3_STREAM	3
 #define USB_IFACE_USART4_STREAM	4
 #define USB_IFACE_UPDATE	5
-#define USB_IFACE_COUNT		6
+#define USB_IFACE_DFU		6
+#define USB_IFACE_COUNT		7
 
 /* USB endpoint indexes (use define rather than enum to expand them) */
 #define USB_EP_CONTROL		0
@@ -80,11 +107,6 @@
 
 /* Enable console recasting of GPIO type. */
 #define CONFIG_CMD_GPIO_EXTENDED
-
-/* This is not actually an EC so disable some features. */
-#undef CONFIG_WATCHDOG_HELP
-#undef CONFIG_LID_SWITCH
-#undef CONFIG_HIBERNATE
 
 /* Remove console commands / features for flash / RAM savings */
 #undef CONFIG_USB_PD_HOST_CMD
@@ -104,6 +126,7 @@
 #undef CONFIG_CMD_USART_INFO
 #undef CONFIG_CMD_CHARGE_SUPPLIER_INFO
 #define CONFIG_CMD_PD_SRCCAPS_REDUCED_SIZE
+
 
 /* Enable control of I2C over USB */
 #define CONFIG_USB_I2C
@@ -197,6 +220,7 @@ enum usb_strings {
 	USB_STR_USART3_STREAM_NAME,
 	USB_STR_USART4_STREAM_NAME,
 	USB_STR_UPDATE_NAME,
+	USB_STR_DFU_NAME,
 	USB_STR_COUNT
 };
 
@@ -276,4 +300,5 @@ void ext_hpd_detection_enable(int enable);
  */
 void ccd_enable(int enable);
 #endif /* !__ASSEMBLER__ */
+#endif /* SECTION_IS_RO */
 #endif /* __CROS_EC_BOARD_H */

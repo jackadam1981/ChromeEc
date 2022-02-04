@@ -5400,6 +5400,19 @@
 /* PDU size for fw update over USB (or TPM). */
 #define CONFIG_UPDATE_PDU_SIZE 1024
 
+/* DFU firmware upgrade options */
+/*
+ * Enables DFU based firmware updates on this platform. On STM32's this
+ * is implemented with a boot manager occupying the RO region.
+ */
+#undef CONFIG_DFU
+/*
+ * Defines the maximum number of unexpected reboots before the device
+ * will jump into DFU mode. If the value is defined as 0, this check is
+ * disabled. 
+ */
+#undef DFU_BOOTMANAGER_MAX_REBOOT
+
 /*
  * If defined, charge_get_state returns a special status if battery is
  * discharging and battery is nearly full.

@@ -134,6 +134,8 @@
 
 #define STM32_UNIQUE_ID_BASE        0x1ffff7ac
 
+#define STM32_DFU_BASE              0x1fffC800 /* STM32F070-072 System Memory */
+
 #define STM32_USART1_BASE           0x40013800
 #define STM32_USART2_BASE           0x40004400
 #define STM32_USART3_BASE           0x40004800
