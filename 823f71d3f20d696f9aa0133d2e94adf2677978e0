@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "49755549_ea62167a",
+        "filename": "zephyr/test/drivers/CMakeLists.txt",
+        "patchSetId": 5
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-02-04T01:50:31Z",
+      "side": 1,
+      "message": "Yuval, ** is not actually a thing for cmake according to https://cmake.org/cmake/help/v2.8.11/cmake.html#command:file",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 64
+      },
+      "revId": "823f71d3f20d696f9aa0133d2e94adf2677978e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
