@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0abc900_87f1a484",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2022-02-04T18:52:40Z",
+      "side": 1,
+      "message": "I agree we should use the GPIO_ACTIVE_LOW flag. That is what is it for. Adding _L is an EE convention which should indicate the need for that flag, not that the GPIO should have a _L suffix.\n\nIt will get really confusing otherwise",
+      "revId": "ab99296fb084a818309dd13f5fd3bf0ed1208219",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
