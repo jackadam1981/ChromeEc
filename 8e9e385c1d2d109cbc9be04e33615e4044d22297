@@ -16,6 +16,24 @@
       "message": "what SYSCON configuration is for?\nper our knowledge, this is for npcx hardware feature only, other vendors don\u0027t need this configuration.\nif yes, need to move to adlrvp_xxx prj.conf, let vendor to configure it or not.",
       "revId": "8e9e385c1d2d109cbc9be04e33615e4044d22297",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "34a2f4af_e6d94f81",
+        "filename": "zephyr/projects/intelrvp/prj.conf",
+        "patchSetId": 12
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-02-04T22:40:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ddf13854_4593a719",
+      "revId": "8e9e385c1d2d109cbc9be04e33615e4044d22297",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
