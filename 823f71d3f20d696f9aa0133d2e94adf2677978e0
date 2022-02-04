@@ -117,6 +117,30 @@
       },
       "revId": "823f71d3f20d696f9aa0133d2e94adf2677978e0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d36a84d_846b0f29",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_attach_src_snk.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-02-04T16:31:49Z",
+      "side": 1,
+      "message": "I\u0027d rather not just log, or if we do log make sure it\u0027s screaming at the test-runner.",
+      "parentUuid": "9d85a24b_3b9d00a3",
+      "range": {
+        "startLine": 144,
+        "startChar": 1,
+        "endLine": 144,
+        "endChar": 11
+      },
+      "revId": "823f71d3f20d696f9aa0133d2e94adf2677978e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
