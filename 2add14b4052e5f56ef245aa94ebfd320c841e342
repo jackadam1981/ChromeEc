@@ -51,6 +51,23 @@
       "message": "I see, will abandon this. Then AC_OK (plug in charger) should also work as wakeup as it is a GPIO input? ",
       "revId": "2add14b4052e5f56ef245aa94ebfd320c841e342",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9d66699_e3f86e9c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2022-02-04T00:13:21Z",
+      "side": 1,
+      "message": "Also should this CONFIG_PLATFORM_EC_HIBERNATE_PSL\u003dy be then removed from .conf?",
+      "revId": "2add14b4052e5f56ef245aa94ebfd320c841e342",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
