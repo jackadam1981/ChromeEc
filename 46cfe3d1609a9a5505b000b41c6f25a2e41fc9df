@@ -35,6 +35,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2371dcd6_f08b53ab",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1347380
+      },
+      "writtenOn": "2022-02-04T22:55:57Z",
+      "side": 1,
+      "message": "Thanks, I\u0027ll address the style comments shortly.",
+      "revId": "46cfe3d1609a9a5505b000b41c6f25a2e41fc9df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "29eba97f_7ff5d86a",
@@ -48,6 +65,30 @@
       "writtenOn": "2022-02-04T22:00:32Z",
       "side": 1,
       "message": "Should this be SECTION_IS_RW? Or you can remove the comment.",
+      "range": {
+        "startLine": 14,
+        "startChar": 9,
+        "endLine": 14,
+        "endChar": 22
+      },
+      "revId": "46cfe3d1609a9a5505b000b41c6f25a2e41fc9df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b81849c_261da13b",
+        "filename": "board/servo_v4/ec.tasklist",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1347380
+      },
+      "writtenOn": "2022-02-04T22:55:57Z",
+      "side": 1,
+      "message": "Looks like the most common convention is the following so I\u0027ll change the comments.\n\n#if SECTION_IS_Rx\n...\n#else /* !SECTION_IS_Rx */\n...\n#endif /* SECTION_IS_Rx */",
+      "parentUuid": "29eba97f_7ff5d86a",
       "range": {
         "startLine": 14,
         "startChar": 9,
@@ -163,6 +204,30 @@
       "writtenOn": "2022-02-04T22:00:32Z",
       "side": 1,
       "message": "Should this be added to other STM32 devices with built in DFU bootloaders?",
+      "range": {
+        "startLine": 137,
+        "startChar": 8,
+        "endLine": 137,
+        "endChar": 22
+      },
+      "revId": "46cfe3d1609a9a5505b000b41c6f25a2e41fc9df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c384939_b1a8d569",
+        "filename": "chip/stm32/registers-stm32f0.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1347380
+      },
+      "writtenOn": "2022-02-04T22:55:57Z",
+      "side": 1,
+      "message": "This should be moved into stm32/config-stm32f07x.h where it\u0027ll apply to those processors rather than all STM32F0 processors.",
+      "parentUuid": "61adfb11_965c893a",
       "range": {
         "startLine": 137,
         "startChar": 8,
