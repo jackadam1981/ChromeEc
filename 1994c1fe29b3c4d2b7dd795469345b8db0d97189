@@ -22,6 +22,30 @@
       },
       "revId": "1994c1fe29b3c4d2b7dd795469345b8db0d97189",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "982ca3f6_ee8e877b",
+        "filename": "OWNERS",
+        "patchSetId": 3
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-02-04T20:52:25Z",
+      "side": 1,
+      "message": "I think you\u0027re right. My original interpretation of the [docs](https://gerrit.googlesource.com/plugins/find-owners/+/master/src/main/resources/Documentation/syntax.md) was that if it\u0027s not set, it\u0027s possible for `OWNERS` files in `platform` or `chromiumos` to add `OWNERS`. However, it looks like everything in an `OWNERS` file is local to the repo unless you use `include`.",
+      "parentUuid": "74961e69_ff61d91e",
+      "range": {
+        "startLine": 2,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 0
+      },
+      "revId": "1994c1fe29b3c4d2b7dd795469345b8db0d97189",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
