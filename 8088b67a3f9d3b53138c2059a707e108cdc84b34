@@ -46,6 +46,30 @@
       },
       "revId": "8088b67a3f9d3b53138c2059a707e108cdc84b34",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5bd59a2c_ae589b02",
+        "filename": "OWNERS",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-02-04T20:19:31Z",
+      "side": 1,
+      "message": "You\u0027re missing the `:main:`, which is why the include in the comment does not work.",
+      "parentUuid": "aa8ac7a2_3da395b8",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 42
+      },
+      "revId": "8088b67a3f9d3b53138c2059a707e108cdc84b34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
