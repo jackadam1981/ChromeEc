@@ -16,6 +16,23 @@
       "message": "I plan to use this to verify .configs have changed between two separate commits.",
       "revId": "744fa19f6dbfd5f207544d20ab9dbc9e437edeac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1c3f76e_52fec97b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-02-04T23:32:27Z",
+      "side": 1,
+      "message": "Nice! Run `zmake generate-readme` to update the README.md file and should be good.",
+      "revId": "744fa19f6dbfd5f207544d20ab9dbc9e437edeac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
