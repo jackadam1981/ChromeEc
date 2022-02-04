@@ -166,6 +166,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "291bd334_00d98443",
+        "filename": "zephyr/projects/intelrvp/adlrvp/adlrvp_npcx/adlrvp_npcx.dts",
+        "patchSetId": 15
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-02-04T22:40:20Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "f45c3fc7_a4080518",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 2
+      },
+      "revId": "07552eada5f79d33a3e20efffe7f9bd3ca97d764",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "81aa7141_d66138f0",
@@ -227,6 +251,30 @@
       "side": 1,
       "message": "We plan to remove gpio_map.h entirely real soon, don\u0027t plan on making project-specific customizations to that file.",
       "parentUuid": "2460568c_6c39e8a4",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 32
+      },
+      "revId": "07552eada5f79d33a3e20efffe7f9bd3ca97d764",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5455d8f6_d0c0835f",
+        "filename": "zephyr/projects/intelrvp/adlrvp/adlrvp_npcx/include/gpio_map.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-02-04T22:40:20Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "dade8098_d5431016",
       "range": {
         "startLine": 6,
         "startChar": 0,
