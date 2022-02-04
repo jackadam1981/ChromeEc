@@ -54,6 +54,46 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5530433c_16496b1b",
+        "filename": "board/servo_v4/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2022-02-04T23:04:49Z",
+      "side": 1,
+      "message": "Not building board.c for RO?",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 16
+      },
+      "revId": "46cfe3d1609a9a5505b000b41c6f25a2e41fc9df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "beebd058_673c5307",
+        "filename": "board/servo_v4/ec.irqlist",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2022-02-04T23:04:49Z",
+      "side": 1,
+      "message": "empty file?",
+      "revId": "46cfe3d1609a9a5505b000b41c6f25a2e41fc9df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "29eba97f_7ff5d86a",
         "filename": "board/servo_v4/ec.tasklist",
         "patchSetId": 1
@@ -117,6 +157,52 @@
         "startChar": 2,
         "endLine": 1,
         "endChar": 4
+      },
+      "revId": "46cfe3d1609a9a5505b000b41c6f25a2e41fc9df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1b1fa48_066b6d2d",
+        "filename": "chip/stm32/dfu_bootmanager.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2022-02-04T23:04:49Z",
+      "side": 1,
+      "message": "Please keep in alphabetical order.",
+      "range": {
+        "startLine": 3,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 28
+      },
+      "revId": "46cfe3d1609a9a5505b000b41c6f25a2e41fc9df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae4db4d0_ca5a5d0b",
+        "filename": "chip/stm32/dfu_bootmanager.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2022-02-04T23:04:49Z",
+      "side": 1,
+      "message": "Public function headers belong in the header file.",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 3
       },
       "revId": "46cfe3d1609a9a5505b000b41c6f25a2e41fc9df",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
@@ -193,6 +279,201 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "63f4110e_ee70d99d",
+        "filename": "chip/stm32/dfu_bootmanager.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2022-02-04T23:04:49Z",
+      "side": 1,
+      "message": "got cut off?",
+      "range": {
+        "startLine": 95,
+        "startChar": 34,
+        "endLine": 95,
+        "endChar": 38
+      },
+      "revId": "46cfe3d1609a9a5505b000b41c6f25a2e41fc9df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "393dee66_3d32bcb3",
+        "filename": "chip/stm32/dfu_bootmanager.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2022-02-04T23:04:49Z",
+      "side": 1,
+      "message": "nit: add returns documentation",
+      "range": {
+        "startLine": 106,
+        "startChar": 0,
+        "endLine": 106,
+        "endChar": 2
+      },
+      "revId": "46cfe3d1609a9a5505b000b41c6f25a2e41fc9df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ecb9cb6f_95cea119",
+        "filename": "chip/stm32/dfu_bootmanager.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2022-02-04T23:04:49Z",
+      "side": 1,
+      "message": "nit: \"it to a\"",
+      "range": {
+        "startLine": 115,
+        "startChar": 35,
+        "endLine": 115,
+        "endChar": 39
+      },
+      "revId": "46cfe3d1609a9a5505b000b41c6f25a2e41fc9df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "240122cb_6814b14f",
+        "filename": "chip/stm32/dfu_bootmanager.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2022-02-04T23:04:49Z",
+      "side": 1,
+      "message": "nit: Please use the `IS_ENABLED(...)` macros whenever possible over #ifdef\u0027s.",
+      "revId": "46cfe3d1609a9a5505b000b41c6f25a2e41fc9df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0437bef_9764e907",
+        "filename": "chip/stm32/dfu_bootmanager.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2022-02-04T23:04:49Z",
+      "side": 1,
+      "message": "nit: We use C-style comments, not C++.",
+      "range": {
+        "startLine": 124,
+        "startChar": 2,
+        "endLine": 124,
+        "endChar": 4
+      },
+      "revId": "46cfe3d1609a9a5505b000b41c6f25a2e41fc9df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "392f8bf1_fd00b783",
+        "filename": "chip/stm32/dfu_bootmanager.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2022-02-04T23:04:49Z",
+      "side": 1,
+      "message": "change to \u003ctab\u003e.",
+      "range": {
+        "startLine": 173,
+        "startChar": 0,
+        "endLine": 173,
+        "endChar": 4
+      },
+      "revId": "46cfe3d1609a9a5505b000b41c6f25a2e41fc9df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9bed321e_ba2e1423",
+        "filename": "chip/stm32/dfu_bootmanager.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2022-02-04T23:04:49Z",
+      "side": 1,
+      "message": "here as well",
+      "range": {
+        "startLine": 181,
+        "startChar": 0,
+        "endLine": 181,
+        "endChar": 4
+      },
+      "revId": "46cfe3d1609a9a5505b000b41c6f25a2e41fc9df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "34996b48_8338a3ef",
+        "filename": "chip/stm32/dfu_bootmanager.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2022-02-04T23:04:49Z",
+      "side": 1,
+      "message": "New files require the Chromium copyright header with the current year.",
+      "revId": "46cfe3d1609a9a5505b000b41c6f25a2e41fc9df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9786e11_79542095",
+        "filename": "chip/stm32/dfu_bootmanager.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2022-02-04T23:04:49Z",
+      "side": 1,
+      "message": "This seems to be the wrong comment.",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 3
+      },
+      "revId": "46cfe3d1609a9a5505b000b41c6f25a2e41fc9df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "61adfb11_965c893a",
         "filename": "chip/stm32/registers-stm32f0.h",
         "patchSetId": 1
@@ -233,6 +514,46 @@
         "startChar": 8,
         "endLine": 137,
         "endChar": 22
+      },
+      "revId": "46cfe3d1609a9a5505b000b41c6f25a2e41fc9df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0d852f2_14e10924",
+        "filename": "chip/stm32/usb_dfu.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2022-02-04T23:04:49Z",
+      "side": 1,
+      "message": "Here as well.",
+      "revId": "46cfe3d1609a9a5505b000b41c6f25a2e41fc9df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "45ae99c6_fa77e1c2",
+        "filename": "chip/stm32/usb_dfu.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2022-02-04T23:04:49Z",
+      "side": 1,
+      "message": "Please put these in a header file.",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 0
       },
       "revId": "46cfe3d1609a9a5505b000b41c6f25a2e41fc9df",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
