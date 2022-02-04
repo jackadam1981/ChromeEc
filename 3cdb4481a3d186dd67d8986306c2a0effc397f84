@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e350145_97c9c1ee",
+        "filename": "driver/tcpm/ps8xxx.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 746,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-02-04T16:54:21Z",
+      "side": 1,
+      "message": "For the disable case, should the 0xF4 register bit get cleared after the clearing FRS enable in the POWER_CONTROL register?  Should the enable and disable sequences be symmetrical?\n\nCan you get clarification from Parade on this?",
+      "range": {
+        "startLine": 746,
+        "startChar": 8,
+        "endLine": 746,
+        "endChar": 40
+      },
+      "revId": "3cdb4481a3d186dd67d8986306c2a0effc397f84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3275baf3_84c5d8b6",
+        "filename": "driver/tcpm/ps8xxx.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 841,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-02-04T16:54:21Z",
+      "side": 1,
+      "message": "Please add a comment describing the required sequence.  Assuming we don\u0027t yet have a doc addendum, reference the bug comment that specifies the FRS sequence.",
+      "range": {
+        "startLine": 841,
+        "startChar": 6,
+        "endLine": 841,
+        "endChar": 31
+      },
+      "revId": "3cdb4481a3d186dd67d8986306c2a0effc397f84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
