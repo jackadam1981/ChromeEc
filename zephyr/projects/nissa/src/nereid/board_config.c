@@ -66,6 +66,10 @@ DECLARE_HOOK(HOOK_INIT, nereid_subboard_init, HOOK_PRIO_FIRST+1);
 static void board_init(void)
 {
 	/*
+	 * Enable sensor interrupts
+	 */
+	gpio_enable_dt_interrupt(GPIO_INT_FROM_NODELABEL(int_imu));
+	/*
 	 * Enable USB-C interrupts.
 	 */
 	gpio_enable_dt_interrupt(GPIO_INT_FROM_NODELABEL(int_usb_c0));
