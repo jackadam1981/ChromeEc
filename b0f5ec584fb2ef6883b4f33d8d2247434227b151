@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e6877b9_64f32932",
+        "filename": "Makefile.rules",
+        "patchSetId": 2
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2022-02-04T22:43:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2a423c22_af99257f",
+      "range": {
+        "startLine": 234,
+        "startChar": 18,
+        "endLine": 234,
+        "endChar": 20
+      },
+      "revId": "b0f5ec584fb2ef6883b4f33d8d2247434227b151",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "33d21eb4_d3357b88",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-02-02T06:35:11Z",
       "side": 1,
       "message": "should new options be allowed into this list?",
+      "range": {
+        "startLine": 237,
+        "startChar": 47,
+        "endLine": 237,
+        "endChar": 48
+      },
+      "revId": "b0f5ec584fb2ef6883b4f33d8d2247434227b151",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e731058_4da1b394",
+        "filename": "Makefile.rules",
+        "patchSetId": 2
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2022-02-04T22:43:04Z",
+      "side": 1,
+      "message": "Maybe. I added a comment",
+      "parentUuid": "33d21eb4_d3357b88",
       "range": {
         "startLine": 237,
         "startChar": 47,
