@@ -1,0 +1,182 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b2f2e74_b0d291e9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2022-02-04T22:00:32Z",
+      "side": 1,
+      "message": "I took a quick look and left some comments. I\u0027ll take a more detailed look later. One main question is will you update the servo_updater util to call your code?",
+      "revId": "46cfe3d1609a9a5505b000b41c6f25a2e41fc9df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29eba97f_7ff5d86a",
+        "filename": "board/servo_v4/ec.tasklist",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2022-02-04T22:00:32Z",
+      "side": 1,
+      "message": "Should this be SECTION_IS_RW? Or you can remove the comment.",
+      "range": {
+        "startLine": 14,
+        "startChar": 9,
+        "endLine": 14,
+        "endChar": 22
+      },
+      "revId": "46cfe3d1609a9a5505b000b41c6f25a2e41fc9df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "34efd58c_0f8f92bd",
+        "filename": "chip/stm32/dfu_bootmanager.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2022-02-04T22:00:32Z",
+      "side": 1,
+      "message": "Need comment",
+      "range": {
+        "startLine": 1,
+        "startChar": 2,
+        "endLine": 1,
+        "endChar": 4
+      },
+      "revId": "46cfe3d1609a9a5505b000b41c6f25a2e41fc9df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c28514e_cde2a896",
+        "filename": "chip/stm32/dfu_bootmanager.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2022-02-04T22:00:32Z",
+      "side": 1,
+      "message": "put open brace on next line. Same below",
+      "range": {
+        "startLine": 38,
+        "startChar": 48,
+        "endLine": 38,
+        "endChar": 50
+      },
+      "revId": "46cfe3d1609a9a5505b000b41c6f25a2e41fc9df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eda545a3_0674225c",
+        "filename": "chip/stm32/dfu_bootmanager.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2022-02-04T22:00:32Z",
+      "side": 1,
+      "message": "Add space after local variables. Same below",
+      "range": {
+        "startLine": 40,
+        "startChar": 1,
+        "endLine": 40,
+        "endChar": 13
+      },
+      "revId": "46cfe3d1609a9a5505b000b41c6f25a2e41fc9df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11cf9b79_a0702d48",
+        "filename": "chip/stm32/dfu_bootmanager.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2022-02-04T22:00:32Z",
+      "side": 1,
+      "message": "Remove extra white space",
+      "range": {
+        "startLine": 86,
+        "startChar": 65,
+        "endLine": 86,
+        "endChar": 66
+      },
+      "revId": "46cfe3d1609a9a5505b000b41c6f25a2e41fc9df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61adfb11_965c893a",
+        "filename": "chip/stm32/registers-stm32f0.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2022-02-04T22:00:32Z",
+      "side": 1,
+      "message": "Should this be added to other STM32 devices with built in DFU bootloaders?",
+      "range": {
+        "startLine": 137,
+        "startChar": 8,
+        "endLine": 137,
+        "endChar": 22
+      },
+      "revId": "46cfe3d1609a9a5505b000b41c6f25a2e41fc9df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7841a94_66a25b32",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 5412,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2022-02-04T22:00:32Z",
+      "side": 1,
+      "message": "remove white space",
+      "range": {
+        "startLine": 5412,
+        "startChar": 12,
+        "endLine": 5412,
+        "endChar": 13
+      },
+      "revId": "46cfe3d1609a9a5505b000b41c6f25a2e41fc9df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
