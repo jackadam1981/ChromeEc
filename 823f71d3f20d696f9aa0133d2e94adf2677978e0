@@ -141,6 +141,30 @@
       },
       "revId": "823f71d3f20d696f9aa0133d2e94adf2677978e0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e48fd43a_b2bd193e",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_attach_src_snk.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-02-04T18:01:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6d36a84d_846b0f29",
+      "range": {
+        "startLine": 144,
+        "startChar": 1,
+        "endLine": 144,
+        "endChar": 11
+      },
+      "revId": "823f71d3f20d696f9aa0133d2e94adf2677978e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
