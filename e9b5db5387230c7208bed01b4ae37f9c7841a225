@@ -16,6 +16,23 @@
       "message": "Hi!\n\nI needed to make some changes in update_release_branch.py script when creating merge commits for our release branches. In current shape, the script doesn\u0027t work well when there are merge conflicts (it attempts to create merge, even when there is merge in progress).",
       "revId": "e9b5db5387230c7208bed01b4ae37f9c7841a225",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f96a9dfa_ad630510",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-02-04T21:52:28Z",
+      "side": 1,
+      "message": "CC\u0027ing Aseda since he uses the script as well.",
+      "revId": "e9b5db5387230c7208bed01b4ae37f9c7841a225",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
