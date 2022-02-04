@@ -16,6 +16,24 @@
       "message": "Bobby, for context, the process for this is [documented here](http://go/cros-fingerprint-firmware-branching-and-signing#current-status).\n\nWhen reviewing, I usually [check out the branch for the CL](https://gerrit-review.googlesource.com/Documentation/user-review-ui.html#download) locally and then diff it against the commit from which it was merged. If everything is correct, there should be no differences (since we do a pure merge into the release branch), except for this `OWNERS` change, which was only applied to the release branch: https://crrev.com/c/3155172.\n\nFor example, for this change, I did:\n\n```\ngit diff 8e7852d2bb..84c3602333aeeab99219601af7a29c91c9e26011\n```",
       "revId": "84c3602333aeeab99219601af7a29c91c9e26011",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "26c33de5_08145eec",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2022-02-04T18:45:05Z",
+      "side": 1,
+      "message": "Tom, any idea why OWNERS files were removed in release branches?",
+      "parentUuid": "cf2ebcd8_aa1f791e",
+      "revId": "84c3602333aeeab99219601af7a29c91c9e26011",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
