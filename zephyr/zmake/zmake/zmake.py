@@ -228,6 +228,69 @@ class Zmake:
             allow_warnings=allow_warnings,
         )
 
+    def configureall(self,
+        build_dir=None,
+        toolchain=None,
+        build_after_configure=False,
+        test_after_configure=False,
+        clobber=False,
+        bringup=False,
+        coverage=False,
+        allow_warnings=False,
+    ):
+        """Configure all the valid targets"""
+        # Resolve build_dir if needed.
+        if not build_dir:
+            build_dir = (
+                self.module_paths["ec"]
+                / "build"
+                / "zephyr"
+            )
+
+        projects = zmake.project.find_projects(
+            self.module_paths["ec"] / "zephyr"
+        ).values()
+        for project in projects:
+            project_build_dir = pathlib.Path(build_dir) / project.config.project_name
+            self.executor.append(
+                func=functools.partial(
+                    self._configure,
+                    project=project,
+                    build_dir=project_build_dir,
+                    toolchain=toolchain,
+                    build_after_configure=build_after_configure,
+                    test_after_configure=test_after_configure,
+                    clobber=clobber,
+                    bringup=bringup,
+                    coverage=coverage,
+                    allow_warnings=allow_warnings,
+                )
+            )
+            if self._sequential:
+                rv = self.executor.wait()
+                if rv:
+                    return rv
+        rv = self.executor.wait()
+        if rv:
+            return rv
+        if test_after_configure:
+            rv = self._merge_lcov_files(
+                projects=filter(lambda p: p.config.is_test, projects),
+                build_dir=build_dir,
+                output_file=build_dir / "all_tests.info",
+            )
+            if rv:
+                return rv
+        if build_after_configure:
+            rv = self._merge_lcov_files(
+                projects=filter(lambda p: not p.config.is_test, projects),
+                build_dir=build_dir,
+                output_file=build_dir / "all_boards.info",
+            )
+            if rv:
+                return rv
+        return 0
+
     def _configure(
         self,
         project,
@@ -754,6 +817,11 @@ class Zmake:
 
         with self.jobserver.get_job():
             return self._run_lcov(build_dir, lcov_file, initial=True, gcov=gcov)
+
+    def _merge_lcov_files(self, projects, build_dir, output_file):
+        all_lcov_files = []
+        for project in projects:
+            project_build_dir = pathlib.Path(build_dir) / project.config.project_name
 
     def coverage(self, build_dir, clobber=False):
         """Builds all targets with coverage enabled, and then runs the tests."""

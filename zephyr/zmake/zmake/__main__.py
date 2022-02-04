@@ -227,6 +227,57 @@ def get_argparser():
         help="Enable CONFIG_COVERAGE Kconfig.",
     )
 
+    configureall = sub.add_parser(
+        "configureall",
+        help="Set up build directories for all projects to be built later by the build subcommand",
+    )
+    configureall.add_argument("-t", "--toolchain", help="Name of toolchain to use")
+    configureall.add_argument(
+        "--bringup",
+        action="store_true",
+        dest="bringup",
+        help="Enable bringup debugging features",
+    )
+    configureall.add_argument(
+        "--clobber",
+        action="store_true",
+        dest="clobber",
+        help="Delete existing build directories, even if configuration is unchanged",
+    )
+    configureall.add_argument(
+        "--allow-warnings",
+        action="store_true",
+        default=False,
+        help="Do not treat warnings as errors",
+    )
+    configureall.add_argument(
+        "-B", "--build-dir", type=pathlib.Path, help="Build directory"
+    )
+    configureall.add_argument(
+        "-b",
+        "--build",
+        action="store_true",
+        dest="build_after_configure",
+        help="Run the build after configuration",
+    )
+    configureall.add_argument(
+        "--test",
+        action="store_true",
+        dest="test_after_configure",
+        help="Test the .elf file after configuration",
+    )
+    configureall.add_argument(
+        "project_name_or_dir",
+        help="Path to the project to build",
+    )
+    configureall.add_argument(
+        "-c",
+        "--coverage",
+        action="store_true",
+        dest="coverage",
+        help="Enable CONFIG_COVERAGE Kconfig. If building or running tests also, generate a merged coverage report.",
+    )
+
     build = sub.add_parser(
         "build",
         help="Execute the build from a build directory",
