@@ -164,6 +164,30 @@
       },
       "revId": "f5afe70281976c7ebf7b09e12394e246fabe7902",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fdd4fe00_cef94678",
+        "filename": "docs/zephyr/zephyr_pwm.md",
+        "patchSetId": 19
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-02-04T17:28:49Z",
+      "side": 1,
+      "message": "+1 on moving pwm_led to use the Zephyr APIs.",
+      "parentUuid": "ae342f84_c731929e",
+      "range": {
+        "startLine": 43,
+        "startChar": 2,
+        "endLine": 43,
+        "endChar": 19
+      },
+      "revId": "f5afe70281976c7ebf7b09e12394e246fabe7902",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

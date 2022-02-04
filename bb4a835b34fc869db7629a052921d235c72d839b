@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f732449_6c215b9b",
+        "filename": "docs/zephyr/zephyr_pwm.md",
+        "patchSetId": 20
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-02-04T17:28:49Z",
+      "side": 1,
+      "message": "Can you submit a separate CL to make CONFIG_PLATFORM_EC_PWM default y if CONFIG_PWM?\n\nWe should move towards eliminating any PLATFORM_EC_* option that just duplicates and existing Zephyr Kconfig.  I opened b:217926701 to track this effort.",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 68
+      },
+      "revId": "bb4a835b34fc869db7629a052921d235c72d839b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8fabdce1_5a172b1a",
+        "filename": "docs/zephyr/zephyr_pwm.md",
+        "patchSetId": 20
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-02-04T17:28:49Z",
+      "side": 1,
+      "message": "Include the keyboard backlight PWM in this example above since it is shown in the schematic snippet.",
+      "revId": "bb4a835b34fc869db7629a052921d235c72d839b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
