@@ -75,6 +75,7 @@ void dp_vdm_naked(int port, enum tcpci_msg_type type, uint8_t vdm_cmd);
  * @return		    enum dpm_msg_setup_status
  */
 enum dpm_msg_setup_status dp_setup_next_vdm(int port, int *vdo_count,
-					    uint32_t *vdm);
+					    uint32_t *vdm,
+					    enum tcpci_msg_type *tx_type);
 
 #endif  /* __CROS_EC_USB_DP_ALT_MODE_H */
