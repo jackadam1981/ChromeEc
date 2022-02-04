@@ -1,0 +1,9 @@
+<<<<<<< HEAD   (eecc13 Merge remote-tracking branch cros/main into firmware-fpmcu-d)
+=======
+# Fingerprint Sensor
+
+# Don't inherit owners from elsewhere in the manifest
+set noparent
+
+include chromiumos/platform2:/biod/OWNERS
+>>>>>>> BRANCH (8e7852 zephyr: pinmap: handle a new INPUT_L pin type)
