@@ -34,6 +34,24 @@
       "parentUuid": "8fe2cf6f_8b9b55a6",
       "revId": "eec6e128ac9e4b5bec6eebf5f96b299b0c3ad9f7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "08f45a54_6f910fae",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_attach_src_snk.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2022-02-04T23:20:27Z",
+      "side": 1,
+      "message": "I was  thinking of combining lines 146-152 here for future maintainability. Pass in SNK/SRC_PORT as an arg and return the response.  If anything changes in the future with how host_command_process we can change it in one spot instead of many.",
+      "parentUuid": "622275e0_d7e7dea2",
+      "revId": "eec6e128ac9e4b5bec6eebf5f96b299b0c3ad9f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
