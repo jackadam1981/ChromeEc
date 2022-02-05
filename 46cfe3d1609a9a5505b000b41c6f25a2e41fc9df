@@ -77,6 +77,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0a4520ac_381e9e45",
+        "filename": "board/servo_v4/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1347380
+      },
+      "writtenOn": "2022-02-05T01:02:36Z",
+      "side": 1,
+      "message": "Yup, that\u0027s intentional.",
+      "parentUuid": "5530433c_16496b1b",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 16
+      },
+      "revId": "46cfe3d1609a9a5505b000b41c6f25a2e41fc9df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "beebd058_673c5307",
         "filename": "board/servo_v4/ec.irqlist",
         "patchSetId": 1
@@ -88,6 +112,24 @@
       "writtenOn": "2022-02-04T23:04:49Z",
       "side": 1,
       "message": "empty file?",
+      "revId": "46cfe3d1609a9a5505b000b41c6f25a2e41fc9df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1250d3f3_e88e3baf",
+        "filename": "board/servo_v4/ec.irqlist",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1347380
+      },
+      "writtenOn": "2022-02-05T01:02:36Z",
+      "side": 1,
+      "message": "That\u0027s an annoying hack to avoid making a block preprocessor conditionals worse in task.h. I should add a comment if I keep the hack at least to explain why that\u0027s there.\n\nThe other option is changing the block near the end of task.h to something like this, but if feels like I\u0027m just adding to the the problem of making this set of controls less legible and maintainable.\n\n    #ifndef CONFIG_ZEPHYR\n    #ifdef CONFIG_COMMON_RUNTIME\n    #include \"irq_handler.h\"\n    #else\n    #define IRQ_HANDLER(irqname) CONCAT3(irq_, irqname, _handler)\n    #define IRQ_HANDLER_OPT(irqname) CONCAT3(irq_, irqname, _handler_optional)\n    #define DECLARE_IRQ(irq, routine, priority) DECLARE_IRQ_(irq, routine, priority)\n    #define DECLARE_IRQ_(irq, routine, priority)             \\\n        static void routine(void) __attribute__((used)); \\\n        void IRQ_HANDLER_OPT(irq)(void) __attribute__((alias(#routine)))\n    /* Include ec.irqlist here for compilation dependency */\n    #define ENABLE_IRQ(x)\n    #if !defined(CONFIG_DFU) || defined(SECTION_IS_RW)\n    #include \"ec.irqlist\"\n    #endif /* !defined(CONFIG_DFU) || defined(SECTION_IS_RW) */\n    #endif /* CONFIG_COMMON_RUNTIME */\n    #endif /* !CONFIG_ZEPHYR */",
+      "parentUuid": "beebd058_673c5307",
       "revId": "46cfe3d1609a9a5505b000b41c6f25a2e41fc9df",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -359,6 +401,24 @@
       "writtenOn": "2022-02-04T23:04:49Z",
       "side": 1,
       "message": "nit: Please use the `IS_ENABLED(...)` macros whenever possible over #ifdef\u0027s.",
+      "revId": "46cfe3d1609a9a5505b000b41c6f25a2e41fc9df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c6f2bad_56a49ca9",
+        "filename": "chip/stm32/dfu_bootmanager.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1347380
+      },
+      "writtenOn": "2022-02-05T01:02:36Z",
+      "side": 1,
+      "message": "Yes, that\u0027s a lot nicer looking.",
+      "parentUuid": "240122cb_6814b14f",
       "revId": "46cfe3d1609a9a5505b000b41c6f25a2e41fc9df",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
