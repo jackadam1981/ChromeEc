@@ -22,6 +22,30 @@
       },
       "revId": "be6c38ac213df3237653d802e3ebe73e2fb006cf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d38a0003_14b27351",
+        "filename": "power/amd_x86.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-02-05T00:00:44Z",
+      "side": 1,
+      "message": "I was figuring we\u0027d just disable fake mode to get to G3?  \n\nI\u0027d contemplated integrating fake power further into the code (responding to power button, supporting S0ix, apshutdown), but there didn\u0027t seem to be a strong enough need for those use-cases to support the level of interference they\u0027d have in the modules.",
+      "parentUuid": "9ea4e0fb_f13d2e68",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 33
+      },
+      "revId": "be6c38ac213df3237653d802e3ebe73e2fb006cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
