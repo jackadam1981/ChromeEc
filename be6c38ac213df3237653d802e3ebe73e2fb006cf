@@ -46,6 +46,30 @@
       },
       "revId": "be6c38ac213df3237653d802e3ebe73e2fb006cf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be9f0399_20dbfae4",
+        "filename": "power/amd_x86.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2022-02-05T00:12:27Z",
+      "side": 1,
+      "message": "Okay, just checking your intention. Out of curiousity, what is it that you\u0027d like to verify with the fake power states?",
+      "parentUuid": "d38a0003_14b27351",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 33
+      },
+      "revId": "be6c38ac213df3237653d802e3ebe73e2fb006cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
