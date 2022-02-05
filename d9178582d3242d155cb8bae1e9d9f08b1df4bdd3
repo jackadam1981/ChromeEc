@@ -35,6 +35,42 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a2929bbe_658eeaff",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 16
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2022-02-05T05:59:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dd3b7917_96a3fb79",
+      "revId": "d9178582d3242d155cb8bae1e9d9f08b1df4bdd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d613ba4_18693d96",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 16
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2022-02-05T05:59:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "638b5e42_4d98d514",
+      "revId": "d9178582d3242d155cb8bae1e9d9f08b1df4bdd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "02cf1b43_29af23a7",
@@ -190,6 +226,24 @@
       "side": 1,
       "message": "Sure, will separate out brya from this CL.",
       "parentUuid": "207f5515_321388d8",
+      "revId": "d9178582d3242d155cb8bae1e9d9f08b1df4bdd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "43d2a184_a67f2ae8",
+        "filename": "zephyr/projects/brya/brya/prj.conf",
+        "patchSetId": 16
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2022-02-05T05:59:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4ae1750e_4de23940",
       "revId": "d9178582d3242d155cb8bae1e9d9f08b1df4bdd3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -1020,6 +1074,24 @@
       "side": 1,
       "message": "Ack",
       "parentUuid": "6f4c78cc_bad896ae",
+      "revId": "d9178582d3242d155cb8bae1e9d9f08b1df4bdd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca5033fd_5df3d55c",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2022-02-05T05:59:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "897a150b_bf1f5488",
       "revId": "d9178582d3242d155cb8bae1e9d9f08b1df4bdd3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
