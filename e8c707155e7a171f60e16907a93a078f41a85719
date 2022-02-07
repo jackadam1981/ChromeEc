@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5bde0cf7_a5649b90",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1347380
+      },
+      "writtenOn": "2022-02-07T19:32:52Z",
+      "side": 1,
+      "message": "I\u0027m looking for any suggestions about a problem I\u0027m having. There are some issues with the config checks for CONFIG_COMMON_RUNTIME undefined. The Makefile and build.mk files are operating on the assumption that the CONFIG_COMMON_RUNTIME state as defined or not is the same on both partitions. This is creating problems on the following 2 areas.\n\n    From ec/Makefile:\n    ifneq \"$(CONFIG_COMMON_RUNTIME)\" \"y\"\n        _irq_list:\u003d$(shell $(CPP) $(CPPFLAGS) -P -Ichip/$(CHIP) -I$(BASEDIR) \\\n            -I$(BDIR) -D\"ENABLE_IRQ(x)\u003dEN_IRQ x\" \\\n            -imacros chip/$(CHIP)/registers.h \\\n            - \u003c $(BDIR)/ec.irqlist | grep \"EN_IRQ .*\" | cut -c8-)\n        CPPFLAGS+\u003d$(foreach irq,$(_irq_list),\\\n                -D\"irq_$(irq)_handler_optional\u003dirq_$(irq)_handler\")\n    endif\n    \nThe lack of a file is causing us to attempt to add the ec.irqlist to the project, this generates a warning.\n    \n    From ec/common/build.mk:\n    ifneq ($(CONFIG_COMMON_RUNTIME),)\n    common-$(CONFIG_MALLOC)+\u003dshmalloc.o\n    common-$(call not_cfg,$(CONFIG_MALLOC))+\u003dshared_mem.o\n    endif\n\nThe EC including a common runtime in one project but not the other causes it to build the shared_mem.c file instead of skipping this brach.\n\nThe only other projects with the define CONFIG_COMMON_RUNTIME appear to be zinger and minimuffin which have it disabled on both sides.\n\n\nIdeally the config that controls if a partition is the bootmanager is completely independent of the other partition. I suspect the best approach is to break it off into 2 flags between the RO and RW region although I\u0027m not 100% certain the best approach to deal with these conditionals cleanly.",
+      "revId": "e8c707155e7a171f60e16907a93a078f41a85719",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
