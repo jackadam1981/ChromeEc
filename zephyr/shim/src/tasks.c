@@ -301,6 +301,10 @@ void start_ec_tasks(void)
 
 		k_timer_init(&ctx_dyn->timer, timer_expire, NULL);
 
+#if K_PRIO_PREEMPT(TASK_ID_COUNT - i - 1) >= K_IDLE_PRIO
+#error CONFIG_NUM_PREEMPT_PRIORITIES too small, some tasks would run at idle \
+	priority
+#endif
 		priority = K_PRIO_PREEMPT(TASK_ID_COUNT - i - 1);
 
 #ifdef TEST_BUILD
