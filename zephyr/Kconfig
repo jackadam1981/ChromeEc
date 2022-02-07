@@ -469,7 +469,7 @@ config PLATFORM_EC_I2C
 	help
 	  Enable compilation of the EC i2c module. Once enabled, it will be
 	  possible to make calls using the old platform/ec i2c APIs defined
-	  in include/i2c.h and implemented in common/i2c_master.c. Doing so
+	  in include/i2c.h and implemented in common/i2c_controller.c. Doing so
 	  should make shimming other platform/ec modules which rely on i2c
 	  communication "just work" without requiring any further code changes.
 
