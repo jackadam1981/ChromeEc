@@ -27,3 +27,7 @@
 #define CONFIG_USB_RAM_SIZE        1024
 #define CONFIG_USB_RAM_ACCESS_TYPE uint16_t
 #define CONFIG_USB_RAM_ACCESS_SIZE 2
+
+/* DFU Address */
+/* STM32F070xB, STM32F071xx, STM32F072xx use a common address of 0x1fffC800 */
+#define STM32_DFU_BASE              0x1fffC800
