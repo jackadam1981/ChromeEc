@@ -31,10 +31,10 @@ def build(opts):
     with open(opts.metrics, 'w') as f:
         f.write(json_format.MessageToJson(metrics))
 
-    # Nothing to do, as the test phase actually does the builds.
-    # TODO(b/217788621): Do a build-only here once we can separate build
-    # and test phases on zmake CLI.
-    return 0
+    cmd = ['zmake', '-D', 'build', '-a']
+    if opts.code_coverage:
+        cmd.append('--coverage')
+    return subprocess.run(cmd, cwd=pathlib.Path(__file__).parent).returncode
 
 
 def bundle(opts):
