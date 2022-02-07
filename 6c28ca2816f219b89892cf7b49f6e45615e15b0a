@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1767393e_9a1fe808",
+        "filename": "zephyr/projects/nissa/nereid_motionsense.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-02-07T23:30:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "88727ac1_73abc067",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "6c28ca2816f219b89892cf7b49f6e45615e15b0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c9ac7143_ac073664",
@@ -37,6 +61,24 @@
       "writtenOn": "2022-02-07T03:13:36Z",
       "side": 1,
       "message": "Remove this node (no interrupts generated, so no reference to this node).",
+      "revId": "6c28ca2816f219b89892cf7b49f6e45615e15b0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a5976ac_a4a62886",
+        "filename": "zephyr/projects/nissa/nereid_overlay.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-02-07T23:30:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c9ac7143_ac073664",
       "revId": "6c28ca2816f219b89892cf7b49f6e45615e15b0a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
