@@ -16,6 +16,23 @@
       "message": "This CL has the decency on PR https://github.com/zephyrproject-rtos/zephyr/pull/42516",
       "revId": "f7b350b94cbd8172ca84c0a34c5d3b50280f91af",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0f7e557_deedb9ee",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-02-07T18:32:14Z",
+      "side": 1,
+      "message": "Yuval - please watch for when https://github.com/zephyrproject-rtos/zephyr/pull/42516 lands.  This CL needs to add a Cq-Depend on the downstream CL after the PR merges.",
+      "revId": "f7b350b94cbd8172ca84c0a34c5d3b50280f91af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
