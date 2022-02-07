@@ -8,7 +8,6 @@
 
 #include "cbi.h"
 #include "charger.h"
-#include "charge_ramp.h"
 #include "common.h"
 #include "compile_time_macros.h"
 #include "console.h"
@@ -234,37 +233,6 @@ const struct usb_mux usba1_ps8811 = {
 	.i2c_addr_flags = PS8811_I2C_ADDR_FLAGS3,
 	.board_init = &ps8811_retimer_init,
 };
-
-
-#ifdef CONFIG_CHARGE_RAMP_SW
-
-#define BC12_MIN_VOLTAGE 4400
-
-/**
- * Return true if VBUS is too low
- */
-int board_is_vbus_too_low(int port, enum chg_ramp_vbus_state ramp_state)
-{
-	int voltage;
-
-	if (charger_get_vbus_voltage(port, &voltage))
-		voltage = 0;
-
-	if (voltage == 0) {
-		CPRINTS("%s: must be disconnected", __func__);
-		return 1;
-	}
-
-	if (voltage < BC12_MIN_VOLTAGE) {
-		CPRINTS("%s: port %d: vbus %d lower than %d", __func__,
-			port, voltage, BC12_MIN_VOLTAGE);
-		return 1;
-	}
-
-	return 0;
-}
-
-#endif /* CONFIG_CHARGE_RAMP_SW */
 
 void board_reset_pd_mcu(void)
 {
