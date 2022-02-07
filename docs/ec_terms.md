@@ -232,6 +232,10 @@
     second). Typical use is to provide a debug console to the EC. [RS-232] is
     the protocol standard used by UARTs.
 
+*   **USB-A - Universal Serial Bus Type-A ** {#usba}
+
+    USB Type-A ports act as a USB host and is the original USB connector.
+
 *   **VCONN - Connector Voltage** {#vconn}
 
     See the [USB-C documentation](./usb-c.md#vconn) for more details.
