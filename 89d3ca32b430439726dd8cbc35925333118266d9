@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8392bc13_e275ee2b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1467080
+      },
+      "writtenOn": "2022-02-07T20:25:54Z",
+      "side": 1,
+      "message": "Ack.  I should be able to get that done in the next day or two.",
+      "parentUuid": "3c31a93b_9b80de3f",
+      "revId": "89d3ca32b430439726dd8cbc35925333118266d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8c2f0c8c_24d00a3f",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-02-07T19:21:54Z",
       "side": 1,
       "message": "Declare and assign separately to avoid masking return values.\nSee [SC2155](https://github.com/koalaman/shellcheck/wiki/SC2155).",
+      "range": {
+        "startLine": 216,
+        "startChar": 2,
+        "endLine": 216,
+        "endChar": 28
+      },
+      "revId": "89d3ca32b430439726dd8cbc35925333118266d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6fa23eb_620b0af5",
+        "filename": "util/flash_fp_mcu",
+        "patchSetId": 2
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1467080
+      },
+      "writtenOn": "2022-02-07T20:25:54Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "8c2f0c8c_24d00a3f",
       "range": {
         "startLine": 216,
         "startChar": 2,
