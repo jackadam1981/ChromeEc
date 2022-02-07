@@ -31,10 +31,10 @@ def build(opts):
     with open(opts.metrics, 'w') as f:
         f.write(json_format.MessageToJson(metrics))
 
-    # Nothing to do, as the test phase actually does the builds.
-    # TODO(b/217788621): Do a build-only here once we can separate build
-    # and test phases on zmake CLI.
-    return 0
+    cmd = ['zmake', '-D', 'build', '-a']
+    if opts.code_coverage:
+        cmd.append('--coverage')
+    return subprocess.run(cmd, cwd=pathlib.Path(__file__).parent).returncode
 
 
 def bundle(opts):
@@ -71,27 +71,6 @@ def bundle_coverage(opts):
     bundle_dir = get_bundle_dir(opts)
     zephyr_dir = pathlib.Path(__file__).parent
     platform_ec = zephyr_dir.resolve().parent
-    # Find the zephyr.info for every project and merge them
-    all_lcov_files = [platform_ec / 'build' / 'zephyr-coverage' / 'lcov.info']
-    for project in zmake.project.find_projects(zephyr_dir).values():
-        if not project.config.is_test:
-            build_dir = platform_ec / "build" / "zephyr" / project.config.project_name
-            artifacts_dir = build_dir / 'output'
-            all_lcov_files.append(artifacts_dir / 'zephyr.info')
-    build_dir = platform_ec / "build"
-    print("all_lcov_files = %s" % all_lcov_files)
-    cmd = [
-        "/usr/bin/lcov",
-        "-o",
-        build_dir / "lcov.info",
-        "--rc",
-        "lcov_branch_coverage=1",
-    ]
-    for lcov_file in all_lcov_files:
-        cmd += ["-a", lcov_file]
-    rv = subprocess.run(cmd, cwd=pathlib.Path(__file__).parent).returncode
-    if rv != 0:
-        return rv
     tarball_name = 'coverage.tbz2'
     tarball_path = bundle_dir / tarball_name
     cmd = ['tar', 'cvfj', tarball_path, 'lcov.info']
@@ -114,7 +93,7 @@ def bundle_firmware(opts):
     for project in zmake.project.find_projects(zephyr_dir).values():
         build_dir = platform_ec / "build" / "zephyr" / project.config.project_name
         artifacts_dir = build_dir / 'output'
-        # TODO(kmshelton): Remove once the build command does not rely
+        # TODO(b/217788621): Remove once the build command does not rely
         # on a pre-defined list of targets.
         if not artifacts_dir.is_dir():
             continue
@@ -151,11 +130,38 @@ def test(opts):
 
     if opts.code_coverage:
         platform_ec = zephyr_dir.parent
-        build_dir = platform_ec / 'build/zephyr-coverage'
-        return subprocess.run(
-            ['zmake', '-D', 'coverage', build_dir], cwd=platform_ec).returncode
+        build_dir = platform_ec / "build"
+        rv = subprocess.run(
+            [
+                'zmake',
+                '-D',
+                'test',
+                '-a',
+                '--coverage',
+                '--no-rebuild',
+            ], cwd=platform_ec).returncode
+        if rv:
+            return rv
+        # Merge lcov files here because bundle failures are "infra" failures.
+        all_lcov_files = [
+            build_dir / 'zephyr' / 'all_tests.info',
+            build_dir / 'zephyr' / 'all_builds.info'
+        ]
+        cmd = [
+            "/usr/bin/lcov",
+            "-o",
+            build_dir / "lcov.info",
+            "--rc",
+            "lcov_branch_coverage=1",
+        ]
+        for lcov_file in all_lcov_files:
+            cmd += ["-a", lcov_file]
+        rv = subprocess.run(cmd, cwd=pathlib.Path(__file__).parent).returncode
+        if rv != 0:
+            return rv
+        return 0
     else:
-        return subprocess.run(['zmake', '-D', 'testall'], check=True).returncode
+        return subprocess.run(['zmake', '-D', 'test', '-a', '--no-rebuild'], check=True).returncode
 
 
 def main(args):
