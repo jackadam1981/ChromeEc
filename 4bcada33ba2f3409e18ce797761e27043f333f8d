@@ -57,6 +57,24 @@
       "parentUuid": "bd119882_939a62b8",
       "revId": "4bcada33ba2f3409e18ce797761e27043f333f8d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b2051505_9cd2fee0",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2022-02-07T21:23:17Z",
+      "side": 1,
+      "message": "Some of the static variables/functions are accessed in these console functions, so will need to expose them as extern.",
+      "parentUuid": "561fe9a5_eb4b1293",
+      "revId": "4bcada33ba2f3409e18ce797761e27043f333f8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
