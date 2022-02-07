@@ -5416,6 +5416,16 @@
  * Enables DFU USB Runtime identifier.
  */
 #undef CONFIG_DFU_RUNTIME
+/*
+ * Enables DFU Bootmanager for switching between the DFU mode and application.
+ */
+#undef CONFIG_DFU_BOOTMANAGER
+/*
+ * Enables DFU Bootmanager reboot loop protection. When unexpected reboots
+ * occur, a counter is incremented which will trigger a reboot once it exceeds
+ * the value defined.
+ */
+#undef CONFIG_DFU_BOOTMANAGER_MAX_REBOOT_COUNT
 
 /*
  * If defined, charge_get_state returns a special status if battery is
