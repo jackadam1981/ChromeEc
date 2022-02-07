@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d6af4f0_a50cb5ee",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-02-07T22:31:10Z",
+      "side": 1,
+      "message": "Hi, could you PTAL? ty!",
+      "revId": "5f7a2a92cef0af1ce67dc7f9db69cff17877480b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b8e10c8_37221027",
+        "filename": "util/stm32mon.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 509,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-02-07T22:31:10Z",
+      "side": 1,
+      "message": "defined in the kernel. cannot update it.",
+      "range": {
+        "startLine": 509,
+        "startChar": 15,
+        "endLine": 509,
+        "endChar": 24
+      },
+      "revId": "5f7a2a92cef0af1ce67dc7f9db69cff17877480b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
