@@ -7,26 +7,6 @@
 	named-pwms {
 		compatible = "named-pwms";
 
-		led1: led1 {
-			#pwm-cells = <0>;
-			pwms = <&pwm2 0 PWM_POLARITY_INVERTED>;
-			frequency = <4800>;
-		};
-		led2: led2  {
-			#pwm-cells = <0>;
-			pwms = <&pwm0 0 PWM_POLARITY_INVERTED>;
-			frequency = <4800>;
-		};
-		led3: led3 {
-			#pwm-cells = <0>;
-			pwms = <&pwm1 0 PWM_POLARITY_INVERTED>;
-			frequency = <4800>;
-		};
-		led4: led4 {
-			#pwm-cells = <0>;
-			pwms = <&pwm7 0 PWM_POLARITY_INVERTED>;
-			frequency = <4800>;
-		};
 		kblight: kblight {
 			pwms = <&pwm3 0 0>;
 			frequency = <2400>;
