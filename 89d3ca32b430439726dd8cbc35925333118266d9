@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c31a93b_9b80de3f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-02-07T19:21:54Z",
+      "side": 1,
+      "message": "Looks good, but see one minor comment.\n\nAlso, can you add something similar as a new commit on top of this: https://crrev.com/c/3405642? There are a lot of requested changes to that stack of CLs, so the main thing I\u0027m looking for at this point is that we have a commit for this behavior so that we don\u0027t forget it when we switch over to that script.",
+      "revId": "89d3ca32b430439726dd8cbc35925333118266d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c2f0c8c_24d00a3f",
+        "filename": "util/flash_fp_mcu",
+        "patchSetId": 2
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-02-07T19:21:54Z",
+      "side": 1,
+      "message": "Declare and assign separately to avoid masking return values.\nSee [SC2155](https://github.com/koalaman/shellcheck/wiki/SC2155).",
+      "range": {
+        "startLine": 216,
+        "startChar": 2,
+        "endLine": 216,
+        "endChar": 28
+      },
+      "revId": "89d3ca32b430439726dd8cbc35925333118266d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
