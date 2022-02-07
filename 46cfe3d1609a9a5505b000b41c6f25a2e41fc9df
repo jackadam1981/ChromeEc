@@ -99,6 +99,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "df9502b5_f1dcdc13",
+        "filename": "board/servo_v4/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1347380
+      },
+      "writtenOn": "2022-02-07T19:37:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0a4520ac_381e9e45",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 16
+      },
+      "revId": "46cfe3d1609a9a5505b000b41c6f25a2e41fc9df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "beebd058_673c5307",
@@ -130,6 +154,24 @@
       "side": 1,
       "message": "That\u0027s an annoying hack to avoid making a block preprocessor conditionals worse in task.h. I should add a comment if I keep the hack at least to explain why that\u0027s there.\n\nThe other option is changing the block near the end of task.h to something like this, but if feels like I\u0027m just adding to the the problem of making this set of controls less legible and maintainable.\n\n    #ifndef CONFIG_ZEPHYR\n    #ifdef CONFIG_COMMON_RUNTIME\n    #include \"irq_handler.h\"\n    #else\n    #define IRQ_HANDLER(irqname) CONCAT3(irq_, irqname, _handler)\n    #define IRQ_HANDLER_OPT(irqname) CONCAT3(irq_, irqname, _handler_optional)\n    #define DECLARE_IRQ(irq, routine, priority) DECLARE_IRQ_(irq, routine, priority)\n    #define DECLARE_IRQ_(irq, routine, priority)             \\\n        static void routine(void) __attribute__((used)); \\\n        void IRQ_HANDLER_OPT(irq)(void) __attribute__((alias(#routine)))\n    /* Include ec.irqlist here for compilation dependency */\n    #define ENABLE_IRQ(x)\n    #if !defined(CONFIG_DFU) || defined(SECTION_IS_RW)\n    #include \"ec.irqlist\"\n    #endif /* !defined(CONFIG_DFU) || defined(SECTION_IS_RW) */\n    #endif /* CONFIG_COMMON_RUNTIME */\n    #endif /* !CONFIG_ZEPHYR */",
       "parentUuid": "beebd058_673c5307",
+      "revId": "46cfe3d1609a9a5505b000b41c6f25a2e41fc9df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d7fee288_c44c6cd1",
+        "filename": "board/servo_v4/ec.irqlist",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1347380
+      },
+      "writtenOn": "2022-02-07T19:37:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1250d3f3_e88e3baf",
       "revId": "46cfe3d1609a9a5505b000b41c6f25a2e41fc9df",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -181,6 +223,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d08608a_88e43c73",
+        "filename": "board/servo_v4/ec.tasklist",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1347380
+      },
+      "writtenOn": "2022-02-07T19:37:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0b81849c_261da13b",
+      "range": {
+        "startLine": 14,
+        "startChar": 9,
+        "endLine": 14,
+        "endChar": 22
+      },
+      "revId": "46cfe3d1609a9a5505b000b41c6f25a2e41fc9df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "34efd58c_0f8f92bd",
@@ -194,6 +260,30 @@
       "writtenOn": "2022-02-04T22:00:32Z",
       "side": 1,
       "message": "Need comment",
+      "range": {
+        "startLine": 1,
+        "startChar": 2,
+        "endLine": 1,
+        "endChar": 4
+      },
+      "revId": "46cfe3d1609a9a5505b000b41c6f25a2e41fc9df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4cafe73e_e55ec79a",
+        "filename": "chip/stm32/dfu_bootmanager.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1347380
+      },
+      "writtenOn": "2022-02-07T19:37:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "34efd58c_0f8f92bd",
       "range": {
         "startLine": 1,
         "startChar": 2,
@@ -227,6 +317,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "17b3ee39_84424638",
+        "filename": "chip/stm32/dfu_bootmanager.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1347380
+      },
+      "writtenOn": "2022-02-07T19:37:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d1b1fa48_066b6d2d",
+      "range": {
+        "startLine": 3,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 28
+      },
+      "revId": "46cfe3d1609a9a5505b000b41c6f25a2e41fc9df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ae4db4d0_ca5a5d0b",
@@ -240,6 +354,30 @@
       "writtenOn": "2022-02-04T23:04:49Z",
       "side": 1,
       "message": "Public function headers belong in the header file.",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 3
+      },
+      "revId": "46cfe3d1609a9a5505b000b41c6f25a2e41fc9df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc23a8a6_1f0b77a3",
+        "filename": "chip/stm32/dfu_bootmanager.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1347380
+      },
+      "writtenOn": "2022-02-07T19:37:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ae4db4d0_ca5a5d0b",
       "range": {
         "startLine": 32,
         "startChar": 0,
@@ -273,6 +411,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f134589c_46b7a227",
+        "filename": "chip/stm32/dfu_bootmanager.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1347380
+      },
+      "writtenOn": "2022-02-07T19:37:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8c28514e_cde2a896",
+      "range": {
+        "startLine": 38,
+        "startChar": 48,
+        "endLine": 38,
+        "endChar": 50
+      },
+      "revId": "46cfe3d1609a9a5505b000b41c6f25a2e41fc9df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eda545a3_0674225c",
@@ -286,6 +448,30 @@
       "writtenOn": "2022-02-04T22:00:32Z",
       "side": 1,
       "message": "Add space after local variables. Same below",
+      "range": {
+        "startLine": 40,
+        "startChar": 1,
+        "endLine": 40,
+        "endChar": 13
+      },
+      "revId": "46cfe3d1609a9a5505b000b41c6f25a2e41fc9df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "00c6674a_098fae31",
+        "filename": "chip/stm32/dfu_bootmanager.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1347380
+      },
+      "writtenOn": "2022-02-07T19:37:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eda545a3_0674225c",
       "range": {
         "startLine": 40,
         "startChar": 1,
@@ -319,6 +505,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3d40932_12f7f0db",
+        "filename": "chip/stm32/dfu_bootmanager.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1347380
+      },
+      "writtenOn": "2022-02-07T19:37:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "11cf9b79_a0702d48",
+      "range": {
+        "startLine": 86,
+        "startChar": 65,
+        "endLine": 86,
+        "endChar": 66
+      },
+      "revId": "46cfe3d1609a9a5505b000b41c6f25a2e41fc9df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "63f4110e_ee70d99d",
@@ -332,6 +542,30 @@
       "writtenOn": "2022-02-04T23:04:49Z",
       "side": 1,
       "message": "got cut off?",
+      "range": {
+        "startLine": 95,
+        "startChar": 34,
+        "endLine": 95,
+        "endChar": 38
+      },
+      "revId": "46cfe3d1609a9a5505b000b41c6f25a2e41fc9df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6976b145_8c408539",
+        "filename": "chip/stm32/dfu_bootmanager.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1347380
+      },
+      "writtenOn": "2022-02-07T19:37:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "63f4110e_ee70d99d",
       "range": {
         "startLine": 95,
         "startChar": 34,
@@ -365,6 +599,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bfa4d1a9_013bdb2d",
+        "filename": "chip/stm32/dfu_bootmanager.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1347380
+      },
+      "writtenOn": "2022-02-07T19:37:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "393dee66_3d32bcb3",
+      "range": {
+        "startLine": 106,
+        "startChar": 0,
+        "endLine": 106,
+        "endChar": 2
+      },
+      "revId": "46cfe3d1609a9a5505b000b41c6f25a2e41fc9df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ecb9cb6f_95cea119",
@@ -378,6 +636,30 @@
       "writtenOn": "2022-02-04T23:04:49Z",
       "side": 1,
       "message": "nit: \"it to a\"",
+      "range": {
+        "startLine": 115,
+        "startChar": 35,
+        "endLine": 115,
+        "endChar": 39
+      },
+      "revId": "46cfe3d1609a9a5505b000b41c6f25a2e41fc9df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c3b8edd_6041520f",
+        "filename": "chip/stm32/dfu_bootmanager.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1347380
+      },
+      "writtenOn": "2022-02-07T19:37:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ecb9cb6f_95cea119",
       "range": {
         "startLine": 115,
         "startChar": 35,
@@ -423,6 +705,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "53c9be8e_103787f5",
+        "filename": "chip/stm32/dfu_bootmanager.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1347380
+      },
+      "writtenOn": "2022-02-07T19:37:22Z",
+      "side": 1,
+      "message": "Unfortunately the macro doesn\u0027t work for numeric values.",
+      "parentUuid": "0c6f2bad_56a49ca9",
+      "revId": "46cfe3d1609a9a5505b000b41c6f25a2e41fc9df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e0437bef_9764e907",
@@ -436,6 +736,30 @@
       "writtenOn": "2022-02-04T23:04:49Z",
       "side": 1,
       "message": "nit: We use C-style comments, not C++.",
+      "range": {
+        "startLine": 124,
+        "startChar": 2,
+        "endLine": 124,
+        "endChar": 4
+      },
+      "revId": "46cfe3d1609a9a5505b000b41c6f25a2e41fc9df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8fe0451_c13a1c61",
+        "filename": "chip/stm32/dfu_bootmanager.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1347380
+      },
+      "writtenOn": "2022-02-07T19:37:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e0437bef_9764e907",
       "range": {
         "startLine": 124,
         "startChar": 2,
@@ -469,6 +793,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf72d3d1_113d7004",
+        "filename": "chip/stm32/dfu_bootmanager.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1347380
+      },
+      "writtenOn": "2022-02-07T19:37:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "392f8bf1_fd00b783",
+      "range": {
+        "startLine": 173,
+        "startChar": 0,
+        "endLine": 173,
+        "endChar": 4
+      },
+      "revId": "46cfe3d1609a9a5505b000b41c6f25a2e41fc9df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9bed321e_ba2e1423",
@@ -482,6 +830,30 @@
       "writtenOn": "2022-02-04T23:04:49Z",
       "side": 1,
       "message": "here as well",
+      "range": {
+        "startLine": 181,
+        "startChar": 0,
+        "endLine": 181,
+        "endChar": 4
+      },
+      "revId": "46cfe3d1609a9a5505b000b41c6f25a2e41fc9df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3de0a94e_8cea4773",
+        "filename": "chip/stm32/dfu_bootmanager.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1347380
+      },
+      "writtenOn": "2022-02-07T19:37:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9bed321e_ba2e1423",
       "range": {
         "startLine": 181,
         "startChar": 0,
@@ -509,6 +881,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f01149f_050bae8b",
+        "filename": "chip/stm32/dfu_bootmanager.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1347380
+      },
+      "writtenOn": "2022-02-07T19:37:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "34996b48_8338a3ef",
+      "revId": "46cfe3d1609a9a5505b000b41c6f25a2e41fc9df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e9786e11_79542095",
@@ -522,6 +912,30 @@
       "writtenOn": "2022-02-04T23:04:49Z",
       "side": 1,
       "message": "This seems to be the wrong comment.",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 3
+      },
+      "revId": "46cfe3d1609a9a5505b000b41c6f25a2e41fc9df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8fc74b38_b18494ed",
+        "filename": "chip/stm32/dfu_bootmanager.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1347380
+      },
+      "writtenOn": "2022-02-07T19:37:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e9786e11_79542095",
       "range": {
         "startLine": 11,
         "startChar": 0,
@@ -579,6 +993,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "20025788_45296552",
+        "filename": "chip/stm32/registers-stm32f0.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1347380
+      },
+      "writtenOn": "2022-02-07T19:37:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8c384939_b1a8d569",
+      "range": {
+        "startLine": 137,
+        "startChar": 8,
+        "endLine": 137,
+        "endChar": 22
+      },
+      "revId": "46cfe3d1609a9a5505b000b41c6f25a2e41fc9df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d0d852f2_14e10924",
@@ -592,6 +1030,24 @@
       "writtenOn": "2022-02-04T23:04:49Z",
       "side": 1,
       "message": "Here as well.",
+      "revId": "46cfe3d1609a9a5505b000b41c6f25a2e41fc9df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "18596119_235f7ec5",
+        "filename": "chip/stm32/usb_dfu.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1347380
+      },
+      "writtenOn": "2022-02-07T19:37:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d0d852f2_14e10924",
       "revId": "46cfe3d1609a9a5505b000b41c6f25a2e41fc9df",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -619,6 +1075,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a97599a_a0dae346",
+        "filename": "chip/stm32/usb_dfu.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1347380
+      },
+      "writtenOn": "2022-02-07T19:37:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "45ae99c6_fa77e1c2",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 0
+      },
+      "revId": "46cfe3d1609a9a5505b000b41c6f25a2e41fc9df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f7841a94_66a25b32",
@@ -632,6 +1112,30 @@
       "writtenOn": "2022-02-04T22:00:32Z",
       "side": 1,
       "message": "remove white space",
+      "range": {
+        "startLine": 5412,
+        "startChar": 12,
+        "endLine": 5412,
+        "endChar": 13
+      },
+      "revId": "46cfe3d1609a9a5505b000b41c6f25a2e41fc9df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e8a3656_a08335f8",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 5412,
+      "author": {
+        "id": 1347380
+      },
+      "writtenOn": "2022-02-07T19:37:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f7841a94_66a25b32",
       "range": {
         "startLine": 5412,
         "startChar": 12,
