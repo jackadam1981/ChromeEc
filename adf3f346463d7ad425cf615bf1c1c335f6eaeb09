@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "836721b1_0eaa7c53",
+        "filename": "zephyr/dts/bindings/motionsense/driver/cros-ec,bma4xx.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-02-07T03:35:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1e708116_95ed2bc1",
+      "range": {
+        "startLine": 1,
+        "startChar": 12,
+        "endLine": 1,
+        "endChar": 16
+      },
+      "revId": "adf3f346463d7ad425cf615bf1c1c335f6eaeb09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0bdac1f2_b28354b1",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-02-07T03:17:19Z",
       "side": 1,
       "message": "2022",
+      "range": {
+        "startLine": 1,
+        "startChar": 12,
+        "endLine": 1,
+        "endChar": 16
+      },
+      "revId": "adf3f346463d7ad425cf615bf1c1c335f6eaeb09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd68aeab_442185f1",
+        "filename": "zephyr/dts/bindings/motionsense/drvdata/cros-ec,drvdata-bma4xx.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-02-07T03:35:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0bdac1f2_b28354b1",
       "range": {
         "startLine": 1,
         "startChar": 12,
