@@ -216,7 +216,7 @@ endif
 
 ifneq ($(CONFIG_COMMON_RUNTIME),)
 common-$(CONFIG_MALLOC)+=shmalloc.o
-common-$(call not_cfg,$(CONFIG_MALLOC))+=shared_mem.o
+common-$(call not_cfg,$(CONFIG_MALLOC) $(CONFIG_DFU_BOOTMANAGER))+=shared_mem.o
 endif
 
 ifeq ($(CTS_MODULE),)
