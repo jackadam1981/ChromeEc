@@ -16,6 +16,29 @@
       "message": "Hi, could you PTAL? ty!\n\nNOTE: It seems that the file sensorhub_lsm6dm.c is not being used.\nI added an invalid statement in it and then a did a buildall just to see which boards are using it, and I buildall passed...\nThe header file is being included by some boards.\n\nIn any case, if the file should be removed because nobody is using, probably better to do it in a different CL, and not in a COIL one.\n\n",
       "revId": "677fed80a0df450f50f14d9c96ac9330b76cd4bc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ea5949e_e7204f44",
+        "filename": "driver/accelgyro_lsm6dsm.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2022-02-07T16:38:16Z",
+      "side": 1,
+      "message": "Can change this one too.",
+      "range": {
+        "startLine": 98,
+        "startChar": 3,
+        "endLine": 98,
+        "endChar": 9
+      },
+      "revId": "677fed80a0df450f50f14d9c96ac9330b76cd4bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
