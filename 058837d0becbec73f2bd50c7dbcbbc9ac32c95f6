@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7cf5f863_c9116d1c",
+        "filename": "chip/stm32/dfu_bootmanager.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1347380
+      },
+      "writtenOn": "2022-02-07T22:20:56Z",
+      "side": 1,
+      "message": "As far as I can tell, this procedure will work for every one of those sets once a STM32_DFU_BASE is defined for other chips of interest.\n\nAN2606 lists addresses for each one of these series of Bootloaders and the entrance requirements is described as the same for each. The only difference is the target addresses which are reported on table 155 of that document.\n\nThis is taking the stm32/system.c\u0027s system_pre_init() related to enabling the read and write access to the backup registers and applying it. This will be tested primarily with the STM32F072 and potentially with the STM32F446. I can remove the unused code paths if that\u0027s preferred.",
+      "parentUuid": "473db7de_7c4de6b1",
+      "range": {
+        "startLine": 151,
+        "startChar": 8,
+        "endLine": 152,
+        "endChar": 26
+      },
+      "revId": "058837d0becbec73f2bd50c7dbcbbc9ac32c95f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "40ec6641_2d6244b0",
         "filename": "chip/stm32/dfu_bootmanager.c",
         "patchSetId": 3
@@ -37,6 +61,30 @@
       "writtenOn": "2022-02-07T21:32:48Z",
       "side": 1,
       "message": "How are these stubs used?",
+      "range": {
+        "startLine": 214,
+        "startChar": 2,
+        "endLine": 214,
+        "endChar": 17
+      },
+      "revId": "058837d0becbec73f2bd50c7dbcbbc9ac32c95f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae2a7345_5b771301",
+        "filename": "chip/stm32/dfu_bootmanager.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1347380
+      },
+      "writtenOn": "2022-02-07T22:20:56Z",
+      "side": 1,
+      "message": "exception_panic \u003d Interrupt vector table\ntask_clear_pending_irq \u003d clock-f.c in reset_rtc_alarm\nmutex_lock, mutex_unlock, in_interrupt_context \u003d bkpdata.c in bkpdata_write\n\nsystem_set_reset_flags \u003c- Should be removed now that system_pre_init()\u0027s call is gone.\n\nInterrupts are disabled with no threading during the Boot Manager so task_clear_pending_irq, in_interrupt_context, mutex_lock, mutex_unlock are either constant returns or non-ops.\n\nexception_panic() likely needs to be replaced. The standard panic handlers store variables, print a message, and then issue a reboot but that\u0027s not likely going to be useful in this case. The most likely cause of a fault during this limited operation is the reset vector that the application jumps to and/or it\u0027s vector table are invalid. A system reset won\u0027t allow a recovery by itself unless the CONFIG_DFU_BOOTMANAGER_MAX_REBOOT_COUNT flag is set as well. We likely want it to reset into DFU.",
+      "parentUuid": "40ec6641_2d6244b0",
       "range": {
         "startLine": 214,
         "startChar": 2,
