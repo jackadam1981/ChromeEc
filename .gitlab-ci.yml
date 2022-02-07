@@ -150,14 +150,14 @@ hayato_coverage:
     PROJECT: "hayato"
   <<: *coverage_template
 
-herobrine_npcx9:
+herobrine:
   variables:
-    PROJECT: "herobrine_npcx9"
+    PROJECT: "herobrine"
   <<: *build_template
 
-herobrine_npcx9_coverage:
+herobrine_coverage:
   variables:
-    PROJECT: "herobrine_npcx9"
+    PROJECT: "herobrine"
   <<: *coverage_template
 
 it8xxx2_evb:
