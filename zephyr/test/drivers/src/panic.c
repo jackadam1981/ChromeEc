@@ -1,0 +1,52 @@
+/* Copyright 2022 The Chromium OS Authors. All rights reserved.
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+/**
+ * @file
+ * @brief Unit Tests for panic.
+ */
+
+#include <device.h>
+
+#include <logging/log.h>
+#include <zephyr.h>
+#include <ztest.h>
+
+#include "common.h"
+#include "ec_tasks.h"
+#include "panic.h"
+#include "stubs.h"
+#include "test_state.h"
+
+/**
+ * @brief Test Suite: Verifies panic functionality.
+ */
+ZTEST_SUITE(panic, drivers_predicate_post_main, NULL, NULL, NULL, NULL);
+
+/**
+ * @brief TestPurpose: Verify panic set/get reason.
+ *
+ * @details
+ * Validate panic set/get reason.
+ *
+ * Expected Results
+ *  - Success
+ */
+ZTEST(panic, test_panic_reason)
+{
+	uint32_t reason;
+	uint32_t info;
+	uint8_t exception;
+
+	panic_set_reason(PANIC_SW_WATCHDOG, 0, 0);
+
+	panic_get_reason(&reason, &info, &exception);
+
+	zassert_equal(PANIC_SW_WATCHDOG, reason, NULL);
+	zassert_equal(0, info, NULL);
+	zassert_equal(0, exception, NULL);
+
+	panic_data_print(panic_get_data());
+}
