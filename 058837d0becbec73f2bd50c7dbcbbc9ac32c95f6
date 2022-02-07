@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "473db7de_7c4de6b1",
+        "filename": "chip/stm32/dfu_bootmanager.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2022-02-07T21:32:48Z",
+      "side": 1,
+      "message": "Does your implementation work with STM32H and STM32L series?\n\nfrom config-stm32f07x.h \n\n/* DFU Address */\n/* STM32F070xB, STM32F071xx, STM32F072xx use a common address of 0x1fffC800 */\n#define STM32_DFU_BASE              0x1fffC800",
+      "range": {
+        "startLine": 151,
+        "startChar": 8,
+        "endLine": 152,
+        "endChar": 26
+      },
+      "revId": "058837d0becbec73f2bd50c7dbcbbc9ac32c95f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40ec6641_2d6244b0",
+        "filename": "chip/stm32/dfu_bootmanager.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2022-02-07T21:32:48Z",
+      "side": 1,
+      "message": "How are these stubs used?",
+      "range": {
+        "startLine": 214,
+        "startChar": 2,
+        "endLine": 214,
+        "endChar": 17
+      },
+      "revId": "058837d0becbec73f2bd50c7dbcbbc9ac32c95f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
