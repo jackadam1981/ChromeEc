@@ -9,6 +9,7 @@
 #include "system.h"
 #include "task.h"
 #include "test_util.h"
+#include "write_protect.h"
 
 test_static int check_image_and_hardware_write_protect(void)
 {
@@ -20,11 +21,9 @@ test_static int check_image_and_hardware_write_protect(void)
 	}
 
 #ifdef CONFIG_WP_ALWAYS
-        wp = 1;
-#elif defined(CONFIG_WP_ACTIVE_HIGH)
-        wp = gpio_get_level(GPIO_WP);
+	wp = 1;
 #else
-	wp = !gpio_get_level(GPIO_WP_L);
+	wp = write_protect_is_asserted();
 #endif
 
 	if (!wp) {
