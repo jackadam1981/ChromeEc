@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "34c474e5_cb8a6a28",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-02-07T17:10:21Z",
+      "side": 1,
+      "message": "can we skip this part until the zmake commands handle it better?\n\ndon\u0027t want to add duplicated builds to the CQ",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 1
+      },
+      "revId": "68fbb3ba06b0f8229c51bcfbe18e4f85dc5f4b31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8378b5d3_327da12e",
         "filename": "zephyr/firmware_builder.py",
         "patchSetId": 1
