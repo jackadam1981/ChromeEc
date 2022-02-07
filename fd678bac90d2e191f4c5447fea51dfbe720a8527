@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "03bc0495_a9daad0b",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 3
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2022-02-07T05:19:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8861ca68_d6295e75",
+      "range": {
+        "startLine": 364,
+        "startChar": 0,
+        "endLine": 364,
+        "endChar": 29
+      },
+      "revId": "fd678bac90d2e191f4c5447fea51dfbe720a8527",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "60a32c50_f58a47ef",
@@ -41,6 +65,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9ae68b3_43538e65",
+        "filename": "zephyr/drivers/cros_flash/Kconfig",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2022-02-07T05:19:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "60a32c50_f58a47ef",
+      "revId": "fd678bac90d2e191f4c5447fea51dfbe720a8527",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c7420e1c_f34a1ff5",
@@ -54,6 +96,30 @@
       "writtenOn": "2022-01-28T17:46:07Z",
       "side": 1,
       "message": "Delete this comment, it no longer applies to the code below.",
+      "range": {
+        "startLine": 190,
+        "startChar": 1,
+        "endLine": 192,
+        "endChar": 11
+      },
+      "revId": "fd678bac90d2e191f4c5447fea51dfbe720a8527",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d3edc786_a4ede756",
+        "filename": "zephyr/zmake/zmake/output_packers.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2022-02-07T05:19:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c7420e1c_f34a1ff5",
       "range": {
         "startLine": 190,
         "startChar": 1,
