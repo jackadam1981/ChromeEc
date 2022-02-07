@@ -82,14 +82,17 @@ def bundle_coverage(opts):
     zephyr_dir = pathlib.Path(__file__).parent
     platform_ec = zephyr_dir.resolve().parent
     # Find the zephyr.info for every project and merge them
-    all_lcov_files = [platform_ec / 'build' / 'zephyr-coverage' / 'lcov.info']
+    all_lcov_files = [platform_ec / 'build' / 'zephyr-coverage' / 'all_tests.info']
     for project in zmake.project.find_projects(zephyr_dir).values():
         if not project.config.is_test:
             build_dir = platform_ec / "build" / "zephyr" / project.config.project_name
             artifacts_dir = build_dir / 'output'
+            # TODO(kmshelton): Remove once the build command does not rely
+            # on a pre-defined list of targets.
+            if not artifacts_dir.is_dir():
+                continue
             all_lcov_files.append(artifacts_dir / 'zephyr.info')
     build_dir = platform_ec / "build"
-    print("all_lcov_files = %s" % all_lcov_files)
     cmd = [
         "/usr/bin/lcov",
         "-o",
@@ -163,7 +166,14 @@ def test(opts):
         platform_ec = zephyr_dir.parent
         build_dir = platform_ec / 'build/zephyr-coverage'
         return subprocess.run(
-            ['zmake', '-D', 'coverage', build_dir], cwd=platform_ec).returncode
+            [
+                'zmake',
+                '-D',
+                'configureall',
+                '--build-dir', build_dir,
+                '--test',
+                '--coverage',
+            ], cwd=platform_ec).returncode
     else:
         return subprocess.run(['zmake', '-D', 'testall'], check=True).returncode
 
