@@ -1,0 +1,169 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5994450_321ec997",
+        "filename": "zephyr/dts/bindings/power/ap-pwrseq.yaml",
+        "patchSetId": 19
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-02-07T03:03:55Z",
+      "side": 1,
+      "message": "This file\u0027s name should match the compatible string (intel,ap-pwrseq).",
+      "revId": "cdd8b5c3adcf0f15110ea9ce0d6923bb200ca0ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b07820e9_b9764875",
+        "filename": "zephyr/subsys/ap_pwrseq/include/x86_non_dsx_common_pwrseq_sm_handler.h",
+        "patchSetId": 19
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-02-07T03:03:55Z",
+      "side": 1,
+      "message": "Functions don\u0027t need extern qualifiers.",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 6
+      },
+      "revId": "cdd8b5c3adcf0f15110ea9ce0d6923bb200ca0ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6b7d490_9d6b8516",
+        "filename": "zephyr/subsys/ap_pwrseq/include/x86_non_dsx_common_pwrseq_sm_handler.h",
+        "patchSetId": 19
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-02-07T03:03:55Z",
+      "side": 1,
+      "message": "I don\u0027t think this function should be public, since it updates the current state without actually making any changes- it looks like an internal API.",
+      "revId": "cdd8b5c3adcf0f15110ea9ce0d6923bb200ca0ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a3dacf1_f5bfe3a8",
+        "filename": "zephyr/subsys/ap_pwrseq/include/x86_non_dsx_common_pwrseq_sm_handler.h",
+        "patchSetId": 19
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-02-07T03:03:55Z",
+      "side": 1,
+      "message": "This probably shouldn\u0027t be a global symbol; pass a pointer to a common_pwrseq_config (or possibly even make the common config struct a member of the more specific one and pass that one in) to the functions that need one, and make it static in the file where it\u0027s defined.",
+      "revId": "cdd8b5c3adcf0f15110ea9ce0d6923bb200ca0ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f3897fd_4c127bbb",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_adlp_pwrseq_sm.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-02-07T03:03:55Z",
+      "side": 1,
+      "message": "I think any weak functions should be defined as callbacks, since it\u0027s notionally possible for a given EC to sequence power for multiple APs that might have different configuration: the customization points (these functions) should be tied to fields on the device rather than being global, and if unspecified (NULL) then this default implementation could be called.",
+      "revId": "cdd8b5c3adcf0f15110ea9ce0d6923bb200ca0ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "498dbb31_fedd4263",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-02-07T03:03:55Z",
+      "side": 1,
+      "message": "Do we need this? It doesn\u0027t seem to be used anywhere.",
+      "revId": "cdd8b5c3adcf0f15110ea9ce0d6923bb200ca0ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "59916c66_ca2f3ad2",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-02-07T03:03:55Z",
+      "side": 1,
+      "message": "static",
+      "revId": "cdd8b5c3adcf0f15110ea9ce0d6923bb200ca0ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d57b588_2de89c18",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-02-07T03:03:55Z",
+      "side": 1,
+      "message": "static",
+      "revId": "cdd8b5c3adcf0f15110ea9ce0d6923bb200ca0ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "777e6c68_bffde600",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-02-07T03:03:55Z",
+      "side": 1,
+      "message": "Going along with storing callbacks in the device rather than using weak functions, pass the device down into lower-level functions rather than having them retain references to global state. You\u0027d probably want the k_thread_create call to pass the device down into this thread.",
+      "range": {
+        "startLine": 236,
+        "startChar": 14,
+        "endLine": 236,
+        "endChar": 44
+      },
+      "revId": "cdd8b5c3adcf0f15110ea9ce0d6923bb200ca0ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
