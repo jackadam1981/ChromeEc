@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "937891c7_79b694ac",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1294793
+      },
+      "writtenOn": "2022-02-07T01:54:25Z",
+      "side": 1,
+      "message": "Verified with \n1. AC+DC power on then removed DC .\n2. AC only power on.\n\nBoth condition can get 6000mA from charger\u0027s input_current setting.",
+      "revId": "28af394f4ddb0129228015ed32821a8dce55461a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
