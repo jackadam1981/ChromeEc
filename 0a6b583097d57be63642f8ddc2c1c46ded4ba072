@@ -1,4 +1,21 @@
 {
-  "comments": [],
-  "submitRequirementResults": []
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2d24df6_b1032711",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2022-02-07T23:54:31Z",
+      "side": 1,
+      "message": "Correction, see this CL: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3389663",
+      "revId": "0a6b583097d57be63642f8ddc2c1c46ded4ba072",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
 }
