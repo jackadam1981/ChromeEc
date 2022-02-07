@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e5df6169_0479ad9e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-02-07T17:12:51Z",
+      "side": 1,
+      "message": "One issue of this is that it breaks pwmduty and EC_CMD_PWM_SET_DUTY (see the next patch on the series).\n\nI think we have two options:\n1. break pwmduty and just use the standard pwm_shell command\n2. add hook something into pwm_led_enable and pwm_led_set_duty to update the named-pwm structures (used by pwmduty)\n\nLet me know what you think.",
+      "revId": "2c3f1530e4962cf01742dd8d889de4d360a5f0de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ce0b254_46c1a573",
+        "filename": "zephyr/dts/bindings/led/cros-ec,pwm-leds.yaml",
+        "patchSetId": 4
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-02-07T17:12:51Z",
+      "side": 1,
+      "message": "Note that few zephyr PWM drivers seems to have period_ns as part of the child node definition, and there is a DT_INST_PWMS_PERIOD macro, but nothing upstream is using it. This makes sense to me, guess we can easily change it if upstream takes a strong direction on this.",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 0
+      },
+      "revId": "2c3f1530e4962cf01742dd8d889de4d360a5f0de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
