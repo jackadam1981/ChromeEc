@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c442143_1d656849",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-02-07T03:21:03Z",
+      "side": 1,
+      "message": "I\u0027m still in 2 minds whether it is better to have a lot common or not, but we\u0027ll see how we go.",
+      "revId": "c1ccc62217745a606d685da41d075321078e24e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1ff3315_fae50ba4",
+        "filename": "zephyr/projects/nissa/prj.conf",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-02-07T03:21:03Z",
+      "side": 1,
+      "message": "Maybe remove these, they were left over from a copy\u0027n\u0027paste.",
+      "range": {
+        "startLine": 48,
+        "startChar": 1,
+        "endLine": 48,
+        "endChar": 49
+      },
+      "revId": "c1ccc62217745a606d685da41d075321078e24e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
