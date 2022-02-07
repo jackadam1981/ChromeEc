@@ -135,6 +135,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2060d063_284b6c53",
+        "filename": "zephyr/subsys/ap_pwrseq/include/x86_non_dsx_common_pwrseq_sm_handler.h",
+        "patchSetId": 19
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2022-02-07T18:10:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a3dacf1_f5bfe3a8",
+      "revId": "cdd8b5c3adcf0f15110ea9ce0d6923bb200ca0ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5f3897fd_4c127bbb",
@@ -148,6 +166,24 @@
       "writtenOn": "2022-02-07T03:03:55Z",
       "side": 1,
       "message": "I think any weak functions should be defined as callbacks, since it\u0027s notionally possible for a given EC to sequence power for multiple APs that might have different configuration: the customization points (these functions) should be tied to fields on the device rather than being global, and if unspecified (NULL) then this default implementation could be called.",
+      "revId": "cdd8b5c3adcf0f15110ea9ce0d6923bb200ca0ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ddeb80bb_47c30cdd",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_adlp_pwrseq_sm.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2022-02-07T18:10:33Z",
+      "side": 1,
+      "message": "True, callback would be necessary for multiple clients. Given that we have a single client today (SoC) to power sequence and the given timelines, could we move ahead with the override approach and bring in the callback mechanism with a driver model in the next phase? I have created a partner bug for this b:217952699.",
+      "parentUuid": "5f3897fd_4c127bbb",
       "revId": "cdd8b5c3adcf0f15110ea9ce0d6923bb200ca0ca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -183,6 +219,24 @@
       "side": 1,
       "message": "Ack",
       "parentUuid": "498dbb31_fedd4263",
+      "revId": "cdd8b5c3adcf0f15110ea9ce0d6923bb200ca0ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca14ec9d_2a2a71b0",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2022-02-07T18:10:33Z",
+      "side": 1,
+      "message": "This is used later in series to suspend / resume. I will remove it from this patch set.",
+      "parentUuid": "8b25fe18_efa05a30",
       "revId": "cdd8b5c3adcf0f15110ea9ce0d6923bb200ca0ca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -270,6 +324,30 @@
       "writtenOn": "2022-02-07T03:03:55Z",
       "side": 1,
       "message": "Going along with storing callbacks in the device rather than using weak functions, pass the device down into lower-level functions rather than having them retain references to global state. You\u0027d probably want the k_thread_create call to pass the device down into this thread.",
+      "range": {
+        "startLine": 236,
+        "startChar": 14,
+        "endLine": 236,
+        "endChar": 44
+      },
+      "revId": "cdd8b5c3adcf0f15110ea9ce0d6923bb200ca0ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "66e138ad_d1355556",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2022-02-07T18:10:33Z",
+      "side": 1,
+      "message": "Agreed. Could we bring this in next with b:217952699.",
+      "parentUuid": "777e6c68_bffde600",
       "range": {
         "startLine": 236,
         "startChar": 14,
