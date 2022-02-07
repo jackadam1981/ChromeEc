@@ -16,6 +16,24 @@
       "message": "So rather than using the net name and having to ensure the config has this etc.\nit would be much better to have a DTS binding for all the config you need.\nThis will allow you to set defaults on time values, indicate what properties are optional or not, and separate out the board specific GPIO names from the driver\ncode by using a phandle to reference the named-gpio name.\nThen the config in (say) brya/pwr-seq.dts could look like:\n\n pwr_seq: pwr-seq {\n     compatible \u003d \"intel,ap-pwrseq\";\n     \n     pch-dsw-pwrok-pin \u003d \u003c\u0026gpio_pg_ec_dsw_pwrok\u003e;\n     ...\n     /* override default */\n     pch_pwr_ok_delay_ms \u003d 5;\n     ...\n };\n \n In code:\n      struct pwr_seq_config {\n          const struct gpio_dt_spec pch_dsw_pwrok_gpio;\n          ...\n      };\n      ...\n      const static struct pwr_seq_config config \u003d {\n          .pch_dsw_pwrok_gpio \u003d GPIO_DT_SPEC_GET(\n              DT_PHANDLE(DT_NODELABEL(pwr_seq), pch_dsw_pwrok_pin), gpios),\n          ...\n      };\n You can set up an init macro to do all the boilerplate:\n \n #define PGPIO_INIT(prop) \\\n    GPIO_DT_SPEC_GET( \\\n              DT_PHANDLE(DT_NODELABEL(pwr_seq), prop), gpios)\n              \n     .pch_dsw_pwrok_gpio \u003d PGPIO_INIT(pch_dsw_pwrok_pin),\n     \n Normally you don\u0027t use a node label to reference the config DTS node,\n but instead use DT_DRV_COMPAT and DT_INST(0, prop) or\n DT_COMPAT_GET_ANY_STATUS_OKAY\n \n This is how Zephyr decouples board level configuration from driver code.\n ",
       "revId": "d37178b6d91735d221b1ba6a5a5569758fc8ede1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "20783d27_4e1d22d9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 16
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2022-02-07T21:36:27Z",
+      "side": 1,
+      "message": "Thanks for your comments, Andrew. I have updated the gpio access with gpio_dt_spec in the C code and accordingly here.",
+      "parentUuid": "15c5710f_634dfe7c",
+      "revId": "d37178b6d91735d221b1ba6a5a5569758fc8ede1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
