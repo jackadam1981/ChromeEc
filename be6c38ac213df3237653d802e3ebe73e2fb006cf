@@ -70,6 +70,30 @@
       },
       "revId": "be6c38ac213df3237653d802e3ebe73e2fb006cf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa75cf01_52aef60b",
+        "filename": "power/amd_x86.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-02-07T17:24:52Z",
+      "side": 1,
+      "message": "Stuff that we only enable in S0.  So the EC sourcing-out and reading from the accelerometers mostly.  It\u0027s easier to give someone one command to test than give them a sequence of gpiosets followed by PD commands.",
+      "parentUuid": "be9f0399_20dbfae4",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 33
+      },
+      "revId": "be6c38ac213df3237653d802e3ebe73e2fb006cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
