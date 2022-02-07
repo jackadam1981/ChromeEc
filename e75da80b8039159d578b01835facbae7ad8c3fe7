@@ -16,6 +16,52 @@
       "message": "Ready for review again. Comments have been addressed and many parts moved to the follower CL.",
       "revId": "e75da80b8039159d578b01835facbae7ad8c3fe7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "299a4d31_34230b90",
+        "filename": "chip/stm32/usb_dfu_runtime.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2022-02-07T21:32:34Z",
+      "side": 1,
+      "message": "nit: remove the parenthesis",
+      "range": {
+        "startLine": 15,
+        "startChar": 34,
+        "endLine": 15,
+        "endChar": 40
+      },
+      "revId": "e75da80b8039159d578b01835facbae7ad8c3fe7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f563ecb3_226a9ccd",
+        "filename": "chip/stm32/usb_dfu_runtime.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2022-02-07T21:32:34Z",
+      "side": 1,
+      "message": "BIT(n)",
+      "range": {
+        "startLine": 18,
+        "startChar": 53,
+        "endLine": 18,
+        "endChar": 61
+      },
+      "revId": "e75da80b8039159d578b01835facbae7ad8c3fe7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
