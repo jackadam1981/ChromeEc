@@ -16,6 +16,24 @@
       "message": "Would you be able to get the array pointer instead of index?\n\n```\nfor (const struct gpio_int_config *ptr \u003d gpio_int_data;\n     ptr \u003c gpio_int_data + ARRAY_SIZE(gpio_int_data);\n     ++ptr)\n```",
       "revId": "85c7dec15781fe22f3c079f92572e4753a4c08f8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6a54848_a15b6d1f",
+        "filename": "zephyr/shim/src/gpio_int.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-02-07T23:43:27Z",
+      "side": 1,
+      "message": "This bit of the code isn\u0027t the part that breaks, it is just that if I remove gpio_int_data above, then this has to go also.\n\nSee the actual error at https://gitlab.com/zephyr-ec/ec/-/jobs/2064921309",
+      "parentUuid": "ed9c3690_3886da59",
+      "revId": "85c7dec15781fe22f3c079f92572e4753a4c08f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
