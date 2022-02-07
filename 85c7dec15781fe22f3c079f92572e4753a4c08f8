@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed9c3690_3886da59",
+        "filename": "zephyr/shim/src/gpio_int.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-02-07T23:33:24Z",
+      "side": 1,
+      "message": "Would you be able to get the array pointer instead of index?\n\n```\nfor (const struct gpio_int_config *ptr \u003d gpio_int_data;\n     ptr \u003c gpio_int_data + ARRAY_SIZE(gpio_int_data);\n     ++ptr)\n```",
+      "revId": "85c7dec15781fe22f3c079f92572e4753a4c08f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
