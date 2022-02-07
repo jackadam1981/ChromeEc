@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "13e9b367_c7f0ff3a",
+        "filename": "board/banshee/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1395690
+      },
+      "writtenOn": "2022-02-07T07:11:36Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "81038af5_454a1020",
+      "range": {
+        "startLine": 6,
+        "startChar": 3,
+        "endLine": 6,
+        "endChar": 8
+      },
+      "revId": "1b4edb0844da0cebf80dd6ebe1d5eaf4b2271f06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "88be0e0f_789032c7",
         "filename": "board/banshee/usbc_config.h",
         "patchSetId": 3
@@ -37,6 +61,30 @@
       "writtenOn": "2022-02-07T05:30:39Z",
       "side": 1,
       "message": "Banshee",
+      "range": {
+        "startLine": 6,
+        "startChar": 3,
+        "endLine": 6,
+        "endChar": 8
+      },
+      "revId": "1b4edb0844da0cebf80dd6ebe1d5eaf4b2271f06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "246c9777_ebe460a0",
+        "filename": "board/banshee/usbc_config.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1395690
+      },
+      "writtenOn": "2022-02-07T07:11:36Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "88be0e0f_789032c7",
       "range": {
         "startLine": 6,
         "startChar": 3,
