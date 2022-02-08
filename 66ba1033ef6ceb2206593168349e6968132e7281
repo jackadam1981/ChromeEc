@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "849c9af5_1f44d22a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-02-08T17:34:34Z",
+      "side": 1,
+      "message": "Convert",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 7
+      },
+      "revId": "66ba1033ef6ceb2206593168349e6968132e7281",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f64e5ef_4a439bce",
+        "filename": "zephyr/shim/src/fan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-02-08T17:34:34Z",
+      "side": 1,
+      "message": "How about adding a GPIO device handle to this structure?  This would be redundant with the enable_gpio enum stored in fan_conf. Chromebooks typically only have one fan, so this will consume only 4 bytes of data.",
+      "revId": "66ba1033ef6ceb2206593168349e6968132e7281",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
