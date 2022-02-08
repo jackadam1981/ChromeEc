@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aad1250d_9957d2a0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-02-08T19:24:22Z",
+      "side": 1,
+      "message": "I don\u0027t have enough context to comfortably review this so putting back on the reviewers queue.",
+      "revId": "653401dc910e6e9eec1957c5b18846e71a2dd233",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f690cf84_693718dc",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_npcx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 295,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-02-08T19:24:22Z",
+      "side": 1,
+      "message": "nit: Is this todo specifically for this bug? Can we add an issue number here?",
+      "revId": "653401dc910e6e9eec1957c5b18846e71a2dd233",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
