@@ -88,6 +88,10 @@
     [chromium.org documentation](https://www.chromium.org/for-testers/faft) for
     more details. Replaced [SAFT](#saft).
 
+*   **FRS - Fast Role Swap** {#frs}
+
+    See the [USB-C documentation](./usb-c.md#frs) for more details.
+
 *   **GMR - Giant Magnetoresistance Sensor** {#gmr}
 
     A sensor device that detects a magnetic field. These sensors differ from

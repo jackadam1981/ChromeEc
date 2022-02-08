@@ -97,6 +97,12 @@ Modes in the EC codebase.
     *   Electronically marked cable. A USB-C cable that contains an embedded
         chip in the cable, used to identify the capabilities of the cable.
 
+*   FRS {#frs}
+
+    *   Fast Role Swap is a PD feature that enables a device which is proving
+        power to quickly change its power role to become a power consumer in
+        order to maintain a constant data connection.
+
 *   VBUS {#vbus}
 
     *   The adjustable bus voltage ranging from 5V to 20V.
