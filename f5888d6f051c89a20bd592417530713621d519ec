@@ -1,0 +1,153 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01c32b90_fd0595f5",
+        "filename": "docs/zephyr/zephyr_usba.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-02-08T16:48:51Z",
+      "side": 1,
+      "message": "No need for the table here.  Just have a sentence or two describing where to find the options.\n\nThe file Kconfig.usba describes all the Kconfig options controlling the management of dedicated USB-A ports.",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 0
+      },
+      "revId": "f5888d6f051c89a20bd592417530713621d519ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f92a5c9_0695c4b3",
+        "filename": "docs/zephyr/zephyr_usba.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-02-08T16:48:51Z",
+      "side": 1,
+      "message": "Wrap with triple backticks.\n\nAlso, should Herobrine also set CONFIG_PLATFORM_EC_USB_PORT_POWER_DUMB?",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 37
+      },
+      "revId": "f5888d6f051c89a20bd592417530713621d519ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "792aff43_af2057a7",
+        "filename": "docs/zephyr/zephyr_usba.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-02-08T16:48:51Z",
+      "side": 1,
+      "message": "Wrap code with triple backticks.",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 13
+      },
+      "revId": "f5888d6f051c89a20bd592417530713621d519ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49f91eb7_ac27e4bb",
+        "filename": "docs/zephyr/zephyr_usba.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-02-08T16:48:51Z",
+      "side": 1,
+      "message": "Please open a bug to create a driver to create this array from the devicetree.\n\nThis driver could also include create a callback to replace PLATFORM_EC_USB_PORT_POWER_DUMB_CUSTOM_HOOK.",
+      "range": {
+        "startLine": 57,
+        "startChar": 47,
+        "endLine": 57,
+        "endChar": 68
+      },
+      "revId": "f5888d6f051c89a20bd592417530713621d519ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "124f4e29_17015422",
+        "filename": "zephyr/Kconfig.usba",
+        "patchSetId": 4
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-02-08T16:48:51Z",
+      "side": 1,
+      "message": "Move this into it\u0027s own CL.",
+      "revId": "f5888d6f051c89a20bd592417530713621d519ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "03985fbe_e5bc4d77",
+        "filename": "zephyr/Kconfig.usba",
+        "patchSetId": 4
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-02-08T16:48:51Z",
+      "side": 1,
+      "message": "This file could use a main config option PLATFORM_EC_USBA.  This should be done as a separate CL or a bug opened.\n\nmenuconfig PLATFORM_EC_USBA\n    bool \"USB Type-A support\"\n    help\n       Enable USB Type A ports...\n       \nif PLATFORM_EC_USBA\n\n# existing USB_A options...\n\nchoice PLATFOR_EC_USBA_PORT_POWER_TYPE\n\nconfig PLATFORM_EC_USB_PORT_POWER_DUMB\n\nconfig PLATFORM_EC_USB_PORT_POWER_SMART\nendchoice\n\nendif",
+      "revId": "f5888d6f051c89a20bd592417530713621d519ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5eef9dc4_ccfcddbb",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 4
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-02-08T16:48:51Z",
+      "side": 1,
+      "message": "Put this reference directly into the main zephyr/Kconfig.  USB-A is independent of USB-C",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 22
+      },
+      "revId": "f5888d6f051c89a20bd592417530713621d519ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
