@@ -17,8 +17,6 @@
 
 static enum servo_board_id board_id_val = BOARD_ID_UNSET;
 
-#ifdef SECTION_IS_RO
-
 static int dut_chg_en_state;
 static int bc12_charger;
 
@@ -283,35 +281,3 @@ inline int tca_gpio_dbg_led_k_odl(int en)
 {
 	return ioex_set_level(IOEX_TCA_GPIO_DBG_LED_K_ODL, !en);
 }
-
-#else /* SECTION_IS_RO */
-
-/*
- * Due to lack of flash in RW section, it is not possible to use IOEX subsystem
- * in it. Instead, RO section uses IOEX, and RW implements only required
- * function with raw i2c operation. This function is required by 'version'
- * console command and should work without any special initialization.
- */
-inline int board_id_det(void)
-{
-	if (board_id_val == BOARD_ID_UNSET) {
-		int id;
-		int res;
-
-		/* Cache board ID at init */
-		res = i2c_read8(TCA6416A_PORT,
-				TCA6416A_ADDR,
-				BOARD_ID_DET_PORT,
-				&id);
-		if (res != EC_SUCCESS)
-			return res;
-
-		/* Board ID consists of bits 5, 4, and 3 */
-		board_id_val = (id >> BOARD_ID_DET_OFFSET) & BOARD_ID_DET_MASK;
-	}
-
-	/* Board ID consists of bits 5, 4, and 3 */
-	return board_id_val;
-}
-
-#endif /* SECTION_IS_RO */
