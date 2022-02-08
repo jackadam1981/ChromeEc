@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "27765391_6bd2ac0b",
+        "filename": "zephyr/dts/bindings/gpio/gpio-enum-name.yaml",
+        "patchSetId": 14
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-02-08T22:29:22Z",
+      "side": 1,
+      "message": "Yes, we can use that also. will change and update CL",
+      "parentUuid": "16652634_1daa6388",
+      "range": {
+        "startLine": 116,
+        "startChar": 8,
+        "endLine": 116,
+        "endChar": 25
+      },
+      "revId": "b6137839bd92903f17cc1e1234655f1fcd92eea9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "73367bed_76f2a474",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-02-08T01:04:45Z",
       "side": 1,
       "message": "we need to use Virtual Wire for these on RVP",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 4
+      },
+      "revId": "b6137839bd92903f17cc1e1234655f1fcd92eea9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "573edd31_00d52271",
+        "filename": "zephyr/projects/intelrvp/adlrvp/adlrvp_npcx/interrupts.dts",
+        "patchSetId": 14
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-02-08T22:29:22Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "73367bed_76f2a474",
       "range": {
         "startLine": 29,
         "startChar": 0,
