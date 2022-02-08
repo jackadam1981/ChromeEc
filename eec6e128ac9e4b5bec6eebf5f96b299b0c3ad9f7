@@ -52,6 +52,24 @@
       "parentUuid": "622275e0_d7e7dea2",
       "revId": "eec6e128ac9e4b5bec6eebf5f96b299b0c3ad9f7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "068286ef_9d213de1",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_attach_src_snk.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-02-08T23:06:42Z",
+      "side": 1,
+      "message": "Ahh, I understand you now. How about you make a P3 bug for that and we can move the discussion there? Tbh I don\u0027t see that host command changing that frequently. I\u0027m also not sure if that\u0027d be following the DAMP principles we\u0027re shooting for with these tests.\n\nWe should ask @peress about it on the bug.\n\nResolving but feel free to unresolve if you want to continue discussion here.",
+      "parentUuid": "08f45a54_6f910fae",
+      "revId": "eec6e128ac9e4b5bec6eebf5f96b299b0c3ad9f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
