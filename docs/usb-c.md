@@ -97,6 +97,10 @@ Modes in the EC codebase.
     *   Electronically marked cable. A USB-C cable that contains an embedded
         chip in the cable, used to identify the capabilities of the cable.
 
+*   VBUS {#vbus}
+
+    *   The adjustable bus voltage ranging from 5V to 20V.
+
 *   VCONN {#vconn}
 
     *   Connector Voltage. A dedicated power supply rail for [E-Mark](#emark)

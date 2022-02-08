@@ -242,6 +242,10 @@
 
     USB Type-A ports act as a USB host and is the original USB connector.
 
+*   **VBUS - BUS Voltage** {#vbus}
+
+    See the [USB-C documentation](./usb-c.md#vbus) for more details.
+
 *   **VCONN - Connector Voltage** {#vconn}
 
     See the [USB-C documentation](./usb-c.md#vconn) for more details.
