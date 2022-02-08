@@ -52,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "288317ea_dbf2a6de",
+        "filename": "zephyr/dts/bindings/power/intel,ap-pwrseq.yaml",
+        "patchSetId": 23
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2022-02-08T22:20:10Z",
+      "side": 1,
+      "message": "- That is true I have corrected the fields with required\u003dtrue for the ones that are not checked in the code.\n- Agreed, have added descriptive signal direction.",
+      "parentUuid": "34319770_50262f53",
+      "revId": "729e4e46e41a1b1bcbb2af5b40d4678101a6f7cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bda5dd76_796fd39e",
@@ -86,6 +104,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf3c91ed_64107bbf",
+        "filename": "zephyr/subsys/ap_pwrseq/include/x86_non_dsx_adlp_pwrseq_sm.h",
+        "patchSetId": 23
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2022-02-08T22:20:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1be6a0a3_6e237c1d",
+      "revId": "729e4e46e41a1b1bcbb2af5b40d4678101a6f7cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "131156f7_aef25062",
@@ -99,6 +135,24 @@
       "writtenOn": "2022-02-08T12:54:04Z",
       "side": 1,
       "message": "include guard should be same as filename.",
+      "revId": "729e4e46e41a1b1bcbb2af5b40d4678101a6f7cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "86e8e577_f4d5de0e",
+        "filename": "zephyr/subsys/ap_pwrseq/include/x86_non_dsx_common_pwrseq_sm_handler.h",
+        "patchSetId": 23
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2022-02-08T22:20:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "131156f7_aef25062",
       "revId": "729e4e46e41a1b1bcbb2af5b40d4678101a6f7cd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -120,6 +174,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc987341_52f63fc0",
+        "filename": "zephyr/subsys/ap_pwrseq/include/x86_non_dsx_common_pwrseq_sm_handler.h",
+        "patchSetId": 23
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2022-02-08T22:20:10Z",
+      "side": 1,
+      "message": "So there is an issue using it directly thereby this macro.\nComplains the dt_flags size\n\u003e\u003e unsigned conversion from \u0027int\u0027 to \u0027unsigned char\u0027 changes value from \u0027256\u0027 to \u00270\u0027\n\nSo I need to type cast it to get around this.",
+      "parentUuid": "abea39f6_ddc94377",
+      "revId": "729e4e46e41a1b1bcbb2af5b40d4678101a6f7cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "20337b06_87b25929",
@@ -133,6 +205,24 @@
       "writtenOn": "2022-02-08T12:54:04Z",
       "side": 1,
       "message": "I actually think this loop would be clearer as a while loop\ntesting the input directly:\n\nretry \u003d 0;\nwhile (!intel_x86_get_pg_ec_all_sys_pwrgd(com_cfg)) {\n   if (++retry \u003e 2) {\n       LOG_ERR...\n       return -1;\n   }\n   k_msleep(10);\n}",
+      "revId": "729e4e46e41a1b1bcbb2af5b40d4678101a6f7cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c53901bc_b441e253",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_adlp_pwrseq_sm.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2022-02-08T22:20:10Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "20337b06_87b25929",
       "revId": "729e4e46e41a1b1bcbb2af5b40d4678101a6f7cd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -154,6 +244,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "08235192_e97e6081",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_adlp_pwrseq_sm.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2022-02-08T22:20:10Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "3b0e9437_398f42c3",
+      "revId": "729e4e46e41a1b1bcbb2af5b40d4678101a6f7cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "56b3e554_9ddb6756",
@@ -167,6 +275,24 @@
       "writtenOn": "2022-02-08T12:54:04Z",
       "side": 1,
       "message": "So as a general style, using an temp variable once is sometimes a bit confusing (I was looking for where else it is referenced). It is often better to test the\nresult directly:\n\nif (gpio_pin_get_dt(\u0026chip_cfg.pch_pwrok) \u003d\u003d 0) {\n...",
+      "revId": "729e4e46e41a1b1bcbb2af5b40d4678101a6f7cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8bb5d531_f79eeffa",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_adlp_pwrseq_sm.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2022-02-08T22:20:10Z",
+      "side": 1,
+      "message": "Agreed, will get rid of the extra variable overhead.",
+      "parentUuid": "56b3e554_9ddb6756",
       "revId": "729e4e46e41a1b1bcbb2af5b40d4678101a6f7cd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -188,6 +314,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "72ac7300_7cb1a052",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_adlp_pwrseq_sm.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2022-02-08T22:20:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bed1f4ca_336146db",
+      "revId": "729e4e46e41a1b1bcbb2af5b40d4678101a6f7cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bcf984d6_91aeeb7c",
@@ -201,6 +345,24 @@
       "writtenOn": "2022-02-08T12:54:04Z",
       "side": 1,
       "message": "So you could use GPIO_DT_SPEC_GET_OR and not worry about the conditional\ncompile e.g:\n   .enable_pp5000_a \u003d GPIO_DT_SPEC_GET_OR(DT_DRV_INST(0), en_pp5000_s5_gpios, {0});\n   \n(This could be a macro even).\nA null port in the spec indicates a missing GPIO.",
+      "revId": "729e4e46e41a1b1bcbb2af5b40d4678101a6f7cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e49091e_bbce09b2",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2022-02-08T22:20:10Z",
+      "side": 1,
+      "message": "This is a compact version and would be nice, but the same issue applies here with the compilation of flags for GPIO_DT_SPEC. unsigned char\u0027 changes value from \u0027256\u0027 to \u00270\u0027",
+      "parentUuid": "bcf984d6_91aeeb7c",
       "revId": "729e4e46e41a1b1bcbb2af5b40d4678101a6f7cd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
