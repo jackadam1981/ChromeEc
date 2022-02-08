@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "34af1bae_8470e2fa",
+        "filename": "zephyr/dts/bindings/usbc/parade,ps8xxx.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-02-08T23:22:32Z",
+      "side": 1,
+      "message": "These flags need to be renamed to PS8XXX_. I think the same flags apply to all PS8xxx series, not only PS8751. Maybe a follow-up CL.",
+      "range": {
+        "startLine": 14,
+        "startChar": 16,
+        "endLine": 14,
+        "endChar": 20
+      },
+      "revId": "8ce2bcdd6a4ec6c0ae73723fb95156d99f3fb415",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "881583f2_b9e15c9d",
+        "filename": "zephyr/shim/src/CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-02-08T23:22:32Z",
+      "side": 1,
+      "message": "Add other PS8xxx CONFIGs too. They shares the same driver.",
+      "range": {
+        "startLine": 60,
+        "startChar": 29,
+        "endLine": 60,
+        "endChar": 66
+      },
+      "revId": "8ce2bcdd6a4ec6c0ae73723fb95156d99f3fb415",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
