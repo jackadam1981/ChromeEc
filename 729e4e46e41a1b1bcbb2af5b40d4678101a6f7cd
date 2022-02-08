@@ -16,6 +16,193 @@
       "message": "Seems okay given the extra TODOs.",
       "revId": "729e4e46e41a1b1bcbb2af5b40d4678101a6f7cd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d2ad98a5_85e4a35e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 23
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-02-08T12:54:04Z",
+      "side": 1,
+      "message": "Looks good, some minor nits, shouldn\u0027t block anything.\nCan be cleaned up later.\n",
+      "revId": "729e4e46e41a1b1bcbb2af5b40d4678101a6f7cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "34319770_50262f53",
+        "filename": "zephyr/dts/bindings/power/intel,ap-pwrseq.yaml",
+        "patchSetId": 23
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-02-08T12:54:04Z",
+      "side": 1,
+      "message": "Looking good - couple of minor thoughts:\n - All the fields are optional, which seems unlikely? The value of \u0027required:true\u0027 is that you do not need to check at compile about the existence of a property, DTS will complain if it isn\u0027t there. However, maybe they are all optional.\n  - Would be nice if the description made it clear whether the signals are inputs or outputs (it may be obvious if you are familiar with them all, however...)",
+      "revId": "729e4e46e41a1b1bcbb2af5b40d4678101a6f7cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bda5dd76_796fd39e",
+        "filename": "zephyr/subsys/ap_pwrseq/include/x86_common_pwrseq.h",
+        "patchSetId": 23
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-02-08T12:54:04Z",
+      "side": 1,
+      "message": "__X86_COMMON_PWRSEQ_H__",
+      "revId": "729e4e46e41a1b1bcbb2af5b40d4678101a6f7cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1be6a0a3_6e237c1d",
+        "filename": "zephyr/subsys/ap_pwrseq/include/x86_non_dsx_adlp_pwrseq_sm.h",
+        "patchSetId": 23
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-02-08T12:54:04Z",
+      "side": 1,
+      "message": "include guard should be same name as filename.",
+      "revId": "729e4e46e41a1b1bcbb2af5b40d4678101a6f7cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "131156f7_aef25062",
+        "filename": "zephyr/subsys/ap_pwrseq/include/x86_non_dsx_common_pwrseq_sm_handler.h",
+        "patchSetId": 23
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-02-08T12:54:04Z",
+      "side": 1,
+      "message": "include guard should be same as filename.",
+      "revId": "729e4e46e41a1b1bcbb2af5b40d4678101a6f7cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "abea39f6_ddc94377",
+        "filename": "zephyr/subsys/ap_pwrseq/include/x86_non_dsx_common_pwrseq_sm_handler.h",
+        "patchSetId": 23
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-02-08T12:54:04Z",
+      "side": 1,
+      "message": "So since you these referencing GPIOs directly, you should be able to use\nGPIO_DT_SPEC_GET directly without having to redefine the macro, unless you\nare expecting the GPIO flags to also include flags past the \u0027usual\u0027 Zephyr GPIO flags (like including GPIO_INPUT etc.).\nHowever I see where you are configuring the pins, you are including the\nINPUT/OUTPUT flags, so as far as I can see, it is quite OK to use the standard macro (if you were using a reference to an EC \u0027named-gpio\u0027, this wouldn\u0027t be the case, since that holds a 32 bit value for the flags).",
+      "revId": "729e4e46e41a1b1bcbb2af5b40d4678101a6f7cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20337b06_87b25929",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_adlp_pwrseq_sm.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-02-08T12:54:04Z",
+      "side": 1,
+      "message": "I actually think this loop would be clearer as a while loop\ntesting the input directly:\n\nretry \u003d 0;\nwhile (!intel_x86_get_pg_ec_all_sys_pwrgd(com_cfg)) {\n   if (++retry \u003e 2) {\n       LOG_ERR...\n       return -1;\n   }\n   k_msleep(10);\n}",
+      "revId": "729e4e46e41a1b1bcbb2af5b40d4678101a6f7cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b0e9437_398f42c3",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_adlp_pwrseq_sm.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-02-08T12:54:04Z",
+      "side": 1,
+      "message": "I don\u0027t think you need the inner brackets i.e\n(\u0026chip_cfg.vccst_pwrgd_od)\n\nUnless that is your preferred style.",
+      "revId": "729e4e46e41a1b1bcbb2af5b40d4678101a6f7cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56b3e554_9ddb6756",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_adlp_pwrseq_sm.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-02-08T12:54:04Z",
+      "side": 1,
+      "message": "So as a general style, using an temp variable once is sometimes a bit confusing (I was looking for where else it is referenced). It is often better to test the\nresult directly:\n\nif (gpio_pin_get_dt(\u0026chip_cfg.pch_pwrok) \u003d\u003d 0) {\n...",
+      "revId": "729e4e46e41a1b1bcbb2af5b40d4678101a6f7cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bed1f4ca_336146db",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_adlp_pwrseq_sm.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-02-08T12:54:04Z",
+      "side": 1,
+      "message": "Same as above",
+      "revId": "729e4e46e41a1b1bcbb2af5b40d4678101a6f7cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bcf984d6_91aeeb7c",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-02-08T12:54:04Z",
+      "side": 1,
+      "message": "So you could use GPIO_DT_SPEC_GET_OR and not worry about the conditional\ncompile e.g:\n   .enable_pp5000_a \u003d GPIO_DT_SPEC_GET_OR(DT_DRV_INST(0), en_pp5000_s5_gpios, {0});\n   \n(This could be a macro even).\nA null port in the spec indicates a missing GPIO.",
+      "revId": "729e4e46e41a1b1bcbb2af5b40d4678101a6f7cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
