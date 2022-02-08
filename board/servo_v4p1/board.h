@@ -8,34 +8,7 @@
 #ifndef __CROS_EC_BOARD_H
 #define __CROS_EC_BOARD_H
 
-/* Use Link-Time Optimizations to try to reduce the firmware code size */
-#define CONFIG_LTO
 
-/* 48 MHz SYSCLK clock frequency */
-#define CPU_CLOCK 48000000
-
-/* Servo V4.1 Ports:
- *  CHG - port 0
- *  DUT - port 1
- */
-#define CHG 0
-#define DUT 1
-
-/*
- * IO expanders I2C addresses and ports
- */
-#define TCA6416A_PORT 1
-#define TCA6416A_ADDR 0x21
-#define TCA6424A_PORT 1
-#define TCA6424A_ADDR 0x23
-
-/*
- * Flash layout: we redefine the sections offsets and sizes as we want to
- * include a pstate region, and will use RO/RW regions of different sizes.
- * RO has size 92K and usb_updater along with the majority of code is placed
- *    here.
- * RW has size 40K and usb_updater and other relevant code is placed here.
- */
 #undef _IMAGE_SIZE
 #undef CONFIG_ROLLBACK_OFF
 #undef CONFIG_ROLLBACK_SIZE
@@ -55,7 +28,6 @@
 #undef CONFIG_EC_WRITABLE_STORAGE_SIZE
 #undef CONFIG_WP_STORAGE_OFF
 #undef CONFIG_WP_STORAGE_SIZE
-
 #define CONFIG_RAM_BANK_SIZE CONFIG_RAM_SIZE
 
 
@@ -66,15 +38,89 @@
 
 #define CONFIG_RO_MEM_OFF       0
 #define CONFIG_RO_STORAGE_OFF   0
-#define CONFIG_RO_SIZE          (92*1024)
 
-#define CONFIG_FW_PSTATE_OFF    (CONFIG_RO_MEM_OFF + CONFIG_RO_SIZE)
+#define CONFIG_RW_STORAGE_OFF   0
+
 #define CONFIG_FW_PSTATE_SIZE   CONFIG_FLASH_BANK_SIZE
 
+
+#define CONFIG_EC_PROTECTED_STORAGE_OFF         CONFIG_RO_MEM_OFF
+#define CONFIG_EC_PROTECTED_STORAGE_SIZE        CONFIG_RO_SIZE
+#define CONFIG_EC_WRITABLE_STORAGE_OFF          CONFIG_RW_MEM_OFF
+#define CONFIG_EC_WRITABLE_STORAGE_SIZE         CONFIG_RW_SIZE
+
+#define CONFIG_WP_STORAGE_OFF           CONFIG_EC_PROTECTED_STORAGE_OFF
+#define CONFIG_WP_STORAGE_SIZE          CONFIG_EC_PROTECTED_STORAGE_SIZE
+
+#ifndef MIGRATION
+
+#define CONFIG_RO_SIZE          (4*1024)
+#define CONFIG_RW_SIZE          (CONFIG_FLASH_SIZE_BYTES - CONFIG_RO_SIZE - \
+					CONFIG_FW_PSTATE_SIZE)
+#define CONFIG_RW_MEM_OFF       (CONFIG_RO_MEM_OFF + CONFIG_RO_SIZE)
+#define CONFIG_FW_PSTATE_OFF    (CONFIG_RW_MEM_OFF + CONFIG_FW_PSTATE_SIZE)
+
+#else /* MIGRATION */
+
+#ifdef SECTION_IS_RW
+#define CONFIG_USB_UPDATE
+
+#define CONFIG_RO_SIZE          (92*1024)
+#define CONFIG_RW_SIZE          (CONFIG_FLASH_SIZE_BYTES - CONFIG_RO_SIZE - \
+					CONFIG_FW_PSTATE_SIZE)
+#define CONFIG_FW_PSTATE_OFF    (CONFIG_RO_MEM_OFF + CONFIG_RO_SIZE)
 #define CONFIG_RW_MEM_OFF       (CONFIG_FW_PSTATE_OFF + CONFIG_FW_PSTATE_SIZE)
-#define CONFIG_RW_STORAGE_OFF   0
-#define CONFIG_RW_SIZE          (CONFIG_FLASH_SIZE_BYTES - \
-				(CONFIG_RW_MEM_OFF - CONFIG_RO_MEM_OFF))
+#endif /* SECTION_IS_RW */
+#endif /* MIGRATION */
+
+/* Use Link-Time Optimizations to try to reduce the firmware code size */
+#define CONFIG_LTO
+
+/* 48 MHz SYSCLK clock frequency */
+#define CPU_CLOCK 48000000
+
+/* DFU Firmware Update */
+#define CONFIG_DFU_BOOTMANAGER
+#define CONFIG_DFU_BOOTMANAGER_MAX_REBOOT_COUNT   (10)
+
+
+/* This is not actually an EC so disable some features. */
+#undef CONFIG_WATCHDOG_HELP
+#undef CONFIG_LID_SWITCH
+#undef CONFIG_HIBERNATE
+#undef CONFIG_CMD_SCRATCHPAD
+#define CONFIG_FLASH_CROS
+
+#ifdef SECTION_IS_RO
+
+#ifndef __ASSEMBLER__
+#include "gpio_signal.h"
+#endif /* !__ASSEMBLER__ */
+
+#undef CONFIG_COMMON_GPIO
+#undef CONFIG_COMMON_PANIC_OUTPUT
+#undef CONFIG_COMMON_RUNTIME
+#undef CONFIG_COMMON_TIMER
+#undef CONFIG_SOFTWARE_PANIC
+#undef CONFIG_SPI_CONTROLLER
+#undef CONFIG_SPI_CONTROLLER
+
+#else /* !SECTION_IS_RO */
+
+/* Servo V4.1 Ports:
+ *  CHG - port 0
+ *  DUT - port 1
+ */
+#define CHG 0
+#define DUT 1
+
+/*
+ * IO expanders I2C addresses and ports
+ */
+#define TCA6416A_PORT 1
+#define TCA6416A_ADDR 0x21
+#define TCA6424A_PORT 1
+#define TCA6424A_ADDR 0x23
 
 #define CONFIG_EC_PROTECTED_STORAGE_OFF         CONFIG_RO_MEM_OFF
 #define CONFIG_EC_PROTECTED_STORAGE_SIZE        CONFIG_RO_SIZE
@@ -90,6 +136,9 @@
 #define CONFIG_STREAM_USART4
 #define CONFIG_STREAM_USB
 #define CONFIG_CMD_USART_INFO
+
+/* DFU Firmware Update */
+#define CONFIG_DFU_RUNTIME
 
 /* The UART console is on USART1 (PA9/PA10) */
 #undef CONFIG_UART_CONSOLE
@@ -112,7 +161,6 @@
 #define CONFIG_USB
 #define CONFIG_USB_PID 0x520d
 #define CONFIG_USB_CONSOLE
-#define CONFIG_USB_UPDATE
 #define CONFIG_USB_BCD_DEV 0x0001 /* v 0.01 */
 
 #define CONFIG_USB_PD_IDENTITY_HW_VERS 1
@@ -131,7 +179,8 @@
 #define USB_IFACE_USART3_STREAM	3
 #define USB_IFACE_USART4_STREAM	4
 #define USB_IFACE_UPDATE	5
-#define USB_IFACE_COUNT		6
+#define USB_IFACE_DFU		6
+#define USB_IFACE_COUNT		7
 
 /* USB endpoint indexes (use define rather than enum to expand them) */
 #define USB_EP_CONTROL		0
@@ -147,17 +196,10 @@
 #define CONFIG_CMD_GPIO_EXTENDED
 
 /* Enable I/O expander */
-#ifdef SECTION_IS_RO
 #define CONFIG_IO_EXPANDER
 #define CONFIG_IO_EXPANDER_SUPPORT_GET_PORT
 #define CONFIG_IO_EXPANDER_TCA64XXA
 #define CONFIG_IO_EXPANDER_PORT_COUNT 2
-#endif
-
-/* This is not actually an EC so disable some features. */
-#undef CONFIG_WATCHDOG_HELP
-#undef CONFIG_LID_SWITCH
-#undef CONFIG_HIBERNATE
 
 /* Remove console commands / features for flash / RAM savings */
 #undef CONFIG_USB_PD_HOST_CMD
@@ -192,7 +234,6 @@
 
 #define CONFIG_USB_PD_PORT_MAX_COUNT 2
 
-#ifdef SECTION_IS_RO
 #define CONFIG_USB_HUB_GL3590
 #define CONFIG_INA231
 #define CONFIG_CHARGE_MANAGER
@@ -244,10 +285,6 @@
 
 /* Enable command for managing host hub */
 #define CONFIG_CMD_GL3590
-#else
-#undef CONFIG_CMD_I2C_XFER
-#undef CONFIG_USB_POWER_DELIVERY
-#endif /* SECTION_IS_RO */
 
 /*
  * If task profiling is enabled then the rx falling edge detection interrupts
@@ -282,6 +319,7 @@ enum usb_strings {
 	USB_STR_USART3_STREAM_NAME,
 	USB_STR_USART4_STREAM_NAME,
 	USB_STR_UPDATE_NAME,
+	USB_STR_DFU_NAME,
 	USB_STR_COUNT
 };
 
@@ -369,4 +407,5 @@ void ext_hpd_detection_enable(int enable);
  */
 void ccd_enable(int enable);
 #endif /* !__ASSEMBLER__ */
+#endif /* SECTION_IS_RO */
 #endif /* __CROS_EC_BOARD_H */

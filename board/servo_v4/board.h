@@ -10,11 +10,8 @@
 
 #define CONFIG_LTO
 
-/* Free up flash space */
-#ifdef SECTION_IS_RO
-#define CONFIG_DEBUG_ASSERT_BRIEF
-#undef CONFIG_USB_PD_TCPMV1_DEBUG
-#endif
+/* 48 MHz SYSCLK clock frequency */
+#define CPU_CLOCK 48000000
 
 /*
  * Board Versions:
@@ -24,14 +21,63 @@
  */
 #define BOARD_VERSION_BLACK 3
 
-/* 48 MHz SYSCLK clock frequency */
-#define CPU_CLOCK 48000000
+/* This is not actually an EC so disable some features. */
+#undef CONFIG_WATCHDOG_HELP
+#undef CONFIG_LID_SWITCH
+#undef CONFIG_HIBERNATE
+#undef CONFIG_CMD_SCRATCHPAD
 
+/* Configure the flash */
+#undef _IMAGE_SIZE
+#undef CONFIG_RO_SIZE
+#undef CONFIG_FW_PSTATE_OFF
+#undef CONFIG_RW_MEM_OFF
+#undef CONFIG_RW_SIZE
+
+#define CONFIG_FLASH_PSTATE
+#define CONFIG_FLASH_PSTATE_BANK
+
+#ifdef MIGRATION
+#define CONFIG_RO_SIZE           (62*1024)
+#else /* !MIGRATION */
+#define CONFIG_RO_SIZE           (4*1024)
+#endif /* MIGRATION */
+#define CONFIG_FW_PSTATE_OFF     (CONFIG_RO_MEM_OFF + CONFIG_RO_SIZE)
+#define CONFIG_FW_PSTATE_SIZE    CONFIG_FLASH_BANK_SIZE
+
+#define CONFIG_RW_MEM_OFF        (CONFIG_FW_PSTATE_OFF + CONFIG_FW_PSTATE_SIZE)
+#define CONFIG_RW_SIZE           (CONFIG_FLASH_SIZE_BYTES - CONFIG_RW_MEM_OFF)
+
+/* Free up flash space */
+#ifdef MIGRATION
+/* Migration Firmware has reduced feature sets */
+#define CONFIG_DEBUG_ASSERT_BRIEF
+#undef CONFIG_USB_PD_TCPMV1_DEBUG
+
+#ifdef SECTION_IS_RW
+#define CONFIG_USB_UPDATE
+#endif /* SECTION_IS_RW */
+#endif /* MIGRATION */
+
+#ifdef SECTION_IS_RO
+#define CONFIG_MALLOC
+#define CONFIG_DFU_BOOTMANAGER_MAIN
+#define CONFIG_DFU_BOOTMANAGER_SHARED
+#undef CONFIG_COMMON_RUNTIME
+#undef CONFIG_COMMON_PANIC_OUTPUT
+#undef CONFIG_COMMON_GPIO
+#undef CONFIG_COMMON_TIMER
+#else /* !SECTION_IS_RO */
+#define CONFIG_DFU_RUNTIME
+#define CONFIG_DFU_BOOTMANAGER_SHARED
+#define CONFIG_STREAM_USB
+#define CONFIG_USB
+#define CONFIG_USB_CONSOLE
+#define CONFIG_CHARGE_MANAGER
 /* Enable USART1,3,4 and USB streams */
 #define CONFIG_STREAM_USART
 #define CONFIG_STREAM_USART3
 #define CONFIG_STREAM_USART4
-#define CONFIG_STREAM_USB
 #define CONFIG_CMD_USART_INFO
 
 /* Optional features */
@@ -43,10 +89,7 @@
 #define PVD_THRESHOLD     (1)
 
 /* USB Configuration */
-#define CONFIG_USB
 #define CONFIG_USB_PID 0x501b
-#define CONFIG_USB_CONSOLE
-#define CONFIG_USB_UPDATE
 #define CONFIG_USB_BCD_DEV 0x0001 /* v 0.01 */
 
 #define CONFIG_USB_PD_IDENTITY_HW_VERS 1
@@ -66,7 +109,8 @@
 #define USB_IFACE_USART3_STREAM	3
 #define USB_IFACE_USART4_STREAM	4
 #define USB_IFACE_UPDATE	5
-#define USB_IFACE_COUNT		6
+#define USB_IFACE_DFU		6
+#define USB_IFACE_COUNT		7
 
 /* USB endpoint indexes (use define rather than enum to expand them) */
 #define USB_EP_CONTROL		0
@@ -121,7 +165,6 @@
  */
 #undef CONFIG_TASK_PROFILING
 
-#define CONFIG_CHARGE_MANAGER
 #undef  CONFIG_CHARGE_MANAGER_SAFE_MODE
 #define CONFIG_USB_POWER_DELIVERY
 #define CONFIG_USB_PD_TCPMV1
@@ -176,6 +219,8 @@
  */
 #define CONFIG_SYSTEM_UNLOCKED
 
+#endif /* SECTION_IS_RO */
+
 #ifndef __ASSEMBLER__
 
 /* Timer selection */
@@ -197,6 +242,7 @@ enum usb_strings {
 	USB_STR_USART3_STREAM_NAME,
 	USB_STR_USART4_STREAM_NAME,
 	USB_STR_UPDATE_NAME,
+	USB_STR_DFU_NAME,
 	USB_STR_COUNT
 };
 
