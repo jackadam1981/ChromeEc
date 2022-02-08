@@ -289,6 +289,25 @@ static void flash_uma_lock(const struct device *dev, int enable)
 	all_protected = enable;
 }
 
+/*
+ * If WP# is active and ec doesn't protect the status registers of
+ * internal spi-flash, protect it now.
+ * TODO: Use GPIO_ACTIVE_LOW and node label.
+ */
+static void flash_wp_internal(const struct device *dev)
+{
+	const struct gpio_dt_spec *gp;
+#ifdef CONFIG_WP_ACTIVE_HIGH
+	gp = gpio_get_dt_spec(GPIO_WP);
+	if (gp)
+		flash_protect_int_flash(dev, gpio_pin_get_dt(gp));
+#else
+	gp = gpio_get_dt_spec(GPIO_WP_L);
+	if (gp)
+		flash_protect_int_flash(dev, !gpio_pin_get_dt(gp));
+#endif /* CONFIG_WP_ACTIVE_HIGH */
+}
+
 static int flash_set_status_for_prot(const struct device *dev, int reg1,
 				     int reg2)
 {
@@ -305,15 +324,7 @@ static int flash_set_status_for_prot(const struct device *dev, int reg1,
 		flash_uma_lock(dev, 0);
 	}
 
-	/*
-	 * If WP# is active and ec doesn't protect the status registers of
-	 * internal spi-flash, protect it now before setting them.
-	 */
-#ifdef CONFIG_WP_ACTIVE_HIGH
-	flash_protect_int_flash(dev, gpio_get_level(GPIO_WP));
-#else
-	flash_protect_int_flash(dev, !gpio_get_level(GPIO_WP_L));
-#endif /*_CONFIG_WP_ACTIVE_HIGH_*/
+	flash_wp_internal(dev);
 
 	flash_set_status(dev, reg1, reg2);
 
@@ -331,15 +342,7 @@ static int flash_check_prot_reg(const struct device *dev, unsigned int offset,
 	uint8_t sr1, sr2;
 	int rv = EC_SUCCESS;
 
-	/*
-	 * If WP# is active and ec doesn't protect the status registers of
-	 * internal spi-flash, protect it now.
-	 */
-#ifdef CONFIG_WP_ACTIVE_HIGH
-	flash_protect_int_flash(dev, gpio_get_level(GPIO_WP));
-#else
-	flash_protect_int_flash(dev, !gpio_get_level(GPIO_WP_L));
-#endif /* CONFIG_WP_ACTIVE_HIGH */
+	flash_wp_internal(dev);
 
 	/* Invalid value */
 	if (offset + bytes > CONFIG_FLASH_SIZE_BYTES)
@@ -422,15 +425,7 @@ static int cros_flash_npcx_init(const struct device *dev)
 	 * available. */
 	flash_set_quad_enable(dev, false);
 
-	/*
-	 * Protect status registers of internal spi-flash if WP# is active
-	 * during ec initialization.
-	 */
-#ifdef CONFIG_WP_ACTIVE_HIGH
-	flash_protect_int_flash(dev, gpio_get_level(GPIO_WP));
-#else
-	flash_protect_int_flash(dev, !gpio_get_level(GPIO_WP_L));
-#endif /*CONFIG_WP_ACTIVE_HIGH */
+	flash_wp_internal(dev);
 
 	return 0;
 }
