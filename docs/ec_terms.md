@@ -246,6 +246,10 @@
 
     USB Type-A ports act as a USB host and is the original USB connector.
 
+*   **USB MUX - Universal Serial Bus Multiplexer ** {#usb_mux}
+
+    Allows a two or more USB differential pairs to be switch to a single USB differential pair.
+
 *   **VBUS - BUS Voltage** {#vbus}
 
     See the [USB-C documentation](./usb-c.md#vbus) for more details.
