@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "be72a1b2_8ef894a7",
+        "filename": "util/ectool.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 9827,
+      "author": {
+        "id": 1380689
+      },
+      "writtenOn": "2022-02-08T18:33:51Z",
+      "side": 1,
+      "message": "this is a different command, not an additional argument. NM.",
+      "parentUuid": "09939035_c65bac80",
+      "revId": "998d71957af88ad95f907039fd5a3ad9af8c9334",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7fbac163_da45fc8a",
