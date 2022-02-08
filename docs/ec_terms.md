@@ -181,6 +181,12 @@
     typical application is to control fan speeds or the brightness of a
     backlight.
 
+*   **RETIMER - Retimer ** {#retimer}
+
+    A device that can extract the embedded clock signal from a high-speed
+    protocol, fully recover the data, and retransmit a fresh copy of the data
+    using a clean clock.
+
 *   **SAFT - Semi-Automated Firmware Tests** {#saft}
 
     A suite of tests for firmware, succeeded by [FAFT](#faft). See the
