@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c54fd2b5_55a03710",
+        "filename": "docs/zephyr/zephyr_ap_power.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-02-08T17:05:29Z",
+      "side": 1,
+      "message": "Add link in zephyr_new_board_checklist.md",
+      "revId": "453a2a3d757c255f80fd69e858a925b862ab685a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7589046_b4de19a9",
+        "filename": "zephyr/Kconfig.ap_power",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-02-08T17:05:29Z",
+      "side": 1,
+      "message": "Split into a separate CL.",
+      "revId": "453a2a3d757c255f80fd69e858a925b862ab685a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d67fbb9_b460ec00",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-02-08T17:05:29Z",
+      "side": 1,
+      "message": "Move to zephyr/Kconfig\n\nThese configs don\u0027t depend on USB-C correct?",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 26
+      },
+      "revId": "453a2a3d757c255f80fd69e858a925b862ab685a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
