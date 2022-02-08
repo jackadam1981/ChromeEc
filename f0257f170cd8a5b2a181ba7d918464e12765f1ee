@@ -67,6 +67,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "522f403b_e1b04e81",
+        "filename": "docs/zephyr/zephyr_usbc.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-02-08T00:34:12Z",
+      "side": 1,
+      "message": "Diagram looks good - for some reason, the I2C bus connector to the TCPC got misaligned, but it\u0027s not critical.\n\nI think you should remove the embedded key at the bottom.  Instead include this key as markdown text.  You should then link each item t the respective glossary definition in ec-terms.md or usb-c.md.\n\nAs a separate CL, you could move the common parts of usb-c.md into a separate document called usb-c-primer.md or usb-c-introduction that both the old doc and this new doc link to.",
+      "parentUuid": "d3360101_88104e11",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 116
+      },
+      "revId": "f0257f170cd8a5b2a181ba7d918464e12765f1ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "adcfb2b1_b66d5c23",
         "filename": "docs/zephyr/zephyr_usbc.md",
         "patchSetId": 2
