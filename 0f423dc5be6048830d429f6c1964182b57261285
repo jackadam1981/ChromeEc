@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c924127a_2b40480f",
+        "filename": "zephyr/projects/brya/brya/common_power.dts",
+        "patchSetId": 21
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-02-08T13:24:24Z",
+      "side": 1,
+      "message": "So I would use the defaults to your advantage here, and if the\nvalue is the default, just leave it out so it is obvious which\nvalues are overriding the default (and comment why).",
+      "revId": "0f423dc5be6048830d429f6c1964182b57261285",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "96912227_4eca01ae",
+        "filename": "zephyr/projects/brya/brya/common_power.dts",
+        "patchSetId": 21
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-02-08T13:24:24Z",
+      "side": 1,
+      "message": "So the general approach for Zephyr for GPIO flags is to only include\nthe flags that define the physical pin config (voltage, pull-up/pull-down active-low etc.), and to define the extended flags like GPIO_INPUT and GPIO_OUTPUT in the gpio_pin_configure_dt() call.\nI do note that in your code where you do configure the GPIO, you set these flags,\nso I recommend you only use the flags that will fit into 8 bits, and use the standard macros like GPIO_DT_SPEC_GET.\nThe EC named-gpio bindings do allow setting of all the flags, but this isn\u0027t\nreally standard Zephyr.",
+      "revId": "0f423dc5be6048830d429f6c1964182b57261285",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
