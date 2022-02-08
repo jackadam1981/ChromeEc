@@ -210,6 +210,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a0f5548b_8285ed98",
+        "filename": "zephyr/subsys/ap_pwrseq/include/x86_non_dsx_common_pwrseq_sm_handler.h",
+        "patchSetId": 23
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-02-08T22:43:34Z",
+      "side": 1,
+      "message": "The issue here is the Brya DTS you are using for this input has flags that are larger than the 8 bits, likely GPIO_INPUT and GPIO_OUTPUT. These flags do not need to be set in that DTS declaration, but instead are set when you configure the pin.\nThe Zephyr model by convention limits the DTS GPIO flags to only the flags describing the physical properties of the pin, and in DTS there is no way of declaring an integer as a uint8, so DTS will allow flags that are \u003e 8 bits, so you will get a compilation error if the flags used can\u0027t fit in 8 bits.",
+      "parentUuid": "fc987341_52f63fc0",
+      "revId": "729e4e46e41a1b1bcbb2af5b40d4678101a6f7cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "20337b06_87b25929",
