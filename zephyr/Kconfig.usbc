@@ -15,6 +15,7 @@ menuconfig PLATFORM_EC_USBC
 	  including Display Port, Thunderbolt, and USB4.
 
 rsource "Kconfig.retimer"
+rsource "Kconfig.pd_int_shared"
 
 if PLATFORM_EC_USBC
 
