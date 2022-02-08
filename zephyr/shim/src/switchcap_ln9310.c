@@ -17,7 +17,7 @@
 #define SC_PIN_ENABLE_L_PHANDLE \
 	DT_PHANDLE_BY_IDX(DT_PATH(switchcap), enable_l_pin, 0)
 #define SC_PIN_ENABLE_L \
-	GPIO_SIGNAL(SC_PIN_ENABLE_L_PHANDLE)
+	GPIO_DT_FROM_NODE(SC_PIN_ENABLE_L_PHANDLE)
 
 #define SC_PORT_PHANDLE \
 	DT_PHANDLE(DT_PATH(switchcap), port)
@@ -27,13 +27,13 @@
 
 void board_set_switchcap_power(int enable)
 {
-	gpio_set_level(SC_PIN_ENABLE_L, !enable);
+	gpio_pin_set_dt(SC_PIN_ENABLE_L, !enable);
 	ln9310_software_enable(enable);
 }
 
 int board_is_switchcap_enabled(void)
 {
-	return !gpio_get_level(SC_PIN_ENABLE_L);
+	return !gpio_pin_get_dt(SC_PIN_ENABLE_L);
 }
 
 int board_is_switchcap_power_good(void)
