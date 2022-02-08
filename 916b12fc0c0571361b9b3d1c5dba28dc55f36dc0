@@ -46,6 +46,30 @@
       },
       "revId": "916b12fc0c0571361b9b3d1c5dba28dc55f36dc0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e8d2d34_799ae8f7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2022-02-08T05:39:57Z",
+      "side": 1,
+      "message": "Ack. It sounds like we should fix this at kernel side.",
+      "parentUuid": "ad4f52a6_53b43bc2",
+      "range": {
+        "startLine": 9,
+        "startChar": 54,
+        "endLine": 9,
+        "endChar": 69
+      },
+      "revId": "916b12fc0c0571361b9b3d1c5dba28dc55f36dc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
