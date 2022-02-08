@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "03ca4466_ce146daf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-02-08T14:58:25Z",
+      "side": 1,
+      "message": "Hey thanks for the feedback, while working on this I realized we don\u0027t really need the `enable` functions at all, and that allowed making the support structure `const`, so this should also save some RAM.",
+      "revId": "2c3f1530e4962cf01742dd8d889de4d360a5f0de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a506703d_b49d7c5f",
@@ -31,6 +48,30 @@
       "writtenOn": "2022-02-08T01:12:40Z",
       "side": 1,
       "message": "Did you see the \"pwm-names\" property?\n\nThis would look like:\n\n    pwms \u003d \u003c\u0026pwm1 0 PWM_POLARITY_INVERTED\n         \u0026pwm0 0 PWM_POLARITY_INVERTED\n         \u0026pwm2 0 PWM_POLARITY_INVERTED\u003e;\n    pwm-names \u003d \"red\", \"green\", \"blue;\n    \nYou can than use DT_PWMS_CTLR_BY_NAME(node, \"blue\") in the driver.\n\nYou might be able to move the sidesel LED into this group with this approach.",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 0
+      },
+      "revId": "2c3f1530e4962cf01742dd8d889de4d360a5f0de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c68f6337_0ac17d4f",
+        "filename": "zephyr/dts/bindings/led/cros-ec,pwm-leds.yaml",
+        "patchSetId": 4
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-02-08T14:58:25Z",
+      "side": 1,
+      "message": "Oh good point, have not thought about that, but now that you point it out I realize that the red, green, blue comment is not true, brya for example is using amber and white. I\u0027ll change the description to say that they need to match the mapping instead.",
+      "parentUuid": "a506703d_b49d7c5f",
       "range": {
         "startLine": 24,
         "startChar": 0,
@@ -78,6 +119,30 @@
       "side": 1,
       "message": "For cros-ec, the sidesel LED is run at 1/2 the frequency of the LEDs.  This should be handled by the shim.  Update the comment to note the sidesel runs at 1/2 the frequency in the devicetree.",
       "parentUuid": "5ce0b254_46c1a573",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 0
+      },
+      "revId": "2c3f1530e4962cf01742dd8d889de4d360a5f0de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "907628fd_b00ac2e0",
+        "filename": "zephyr/dts/bindings/led/cros-ec,pwm-leds.yaml",
+        "patchSetId": 4
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-02-08T14:58:25Z",
+      "side": 1,
+      "message": "Hey you are right I missed that out. Did some few changes and sorted that as well.",
+      "parentUuid": "6617a45e_22ac7b28",
       "range": {
         "startLine": 54,
         "startChar": 0,
