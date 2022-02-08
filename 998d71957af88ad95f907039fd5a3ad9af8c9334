@@ -51,6 +51,24 @@
       "message": "What about just checking that `conversion_result` is 0 or 1?",
       "revId": "998d71957af88ad95f907039fd5a3ad9af8c9334",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4c682b9_db2a11c7",
+        "filename": "util/ectool.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 9888,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-02-08T22:08:44Z",
+      "side": 1,
+      "message": "I usually prefer to keep the majority of the bounds-checking in the EC.  That way you could arguably run an out-of-date ectool with a new EC version without issue.",
+      "parentUuid": "7fbac163_da45fc8a",
+      "revId": "998d71957af88ad95f907039fd5a3ad9af8c9334",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
