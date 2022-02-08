@@ -33,6 +33,23 @@
       "message": "Hi Keith,\nCould you help CQ+2 because it seems that only the CL owner has the authority to do it. The owner of this CL has left from Nuvoton.",
       "revId": "7c5ef6a99ace82648a30615dd84d3d1d5e75dcea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2334aba6_042149c8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2022-02-08T03:29:26Z",
+      "side": 1,
+      "message": "\u003e Patch Set 5: Code-Review+2 Commit-Queue+2\n\u003e \n\u003e By voting Code-Review+2 the following files are now code-owner approved by \u003cGERRIT_ACCOUNT_1182824\u003e:\n\u003e * zephyr/Kconfig\n\u003e * zephyr/app/ec/chip/arm/nuvoton_npcx/Kconfig.npcx7\n\u003e * zephyr/app/ec/chip/arm/nuvoton_npcx/Kconfig.npcx9\n\u003e * zephyr/boards/riscv/it8xxx2/it8xxx2_defconfig\n\u003e * zephyr/drivers/cros_flash/Kconfig\n\u003e * zephyr/projects/it8xxx2_evb/prj.conf\n\u003e * zephyr/zmake/zmake/output_packers.py\n\u003e \n\nThanks for the help.",
+      "revId": "7c5ef6a99ace82648a30615dd84d3d1d5e75dcea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
