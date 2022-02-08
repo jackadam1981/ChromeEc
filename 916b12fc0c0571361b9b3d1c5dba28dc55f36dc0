@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a71277e3_de4c7591",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2022-02-08T02:21:16Z",
+      "side": 1,
+      "message": "I am not very clear about this. Why do we need to enable kb backlight if the current_percent is zero? Can you explain to me under what condition this will be broken?",
+      "range": {
+        "startLine": 9,
+        "startChar": 54,
+        "endLine": 9,
+        "endChar": 69
+      },
+      "revId": "916b12fc0c0571361b9b3d1c5dba28dc55f36dc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
