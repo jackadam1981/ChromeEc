@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bf53ce69_ab6f4218",
+        "filename": "chip/stm32/dfu_bootmanager.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1347380
+      },
+      "writtenOn": "2022-02-08T23:30:19Z",
+      "side": 1,
+      "message": "No, that file is imported only on stm32f07x chipsets so a developer can\u0027t accidentally add this to those projects until that value is defined on each chipset they wish to use.",
+      "parentUuid": "5f3edecd_59aee423",
+      "range": {
+        "startLine": 151,
+        "startChar": 8,
+        "endLine": 152,
+        "endChar": 26
+      },
+      "revId": "058837d0becbec73f2bd50c7dbcbbc9ac32c95f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "40ec6641_2d6244b0",
         "filename": "chip/stm32/dfu_bootmanager.c",
         "patchSetId": 3
@@ -133,6 +157,30 @@
       "side": 1,
       "message": "Okay. Could you add some comments reflecting this?",
       "parentUuid": "ae2a7345_5b771301",
+      "range": {
+        "startLine": 214,
+        "startChar": 2,
+        "endLine": 214,
+        "endChar": 17
+      },
+      "revId": "058837d0becbec73f2bd50c7dbcbbc9ac32c95f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5cf8a60c_301d9eea",
+        "filename": "chip/stm32/dfu_bootmanager.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1347380
+      },
+      "writtenOn": "2022-02-08T23:30:19Z",
+      "side": 1,
+      "message": "Ack, I\u0027ll add comments about the stubs and add a TODO and ticket for the fault handler. Some of the quick tests I with a \u0027jump to dfu\u0027 flag written to memory before resetting didn\u0027t recover automatically so I need to identify if anything can be done better.\n\nThis section is updatable and that particular failure mode exists today if a corrupt firmware image is flashed so it hasn\u0027t introduced newer problems.",
+      "parentUuid": "01520d67_12a7c634",
       "range": {
         "startLine": 214,
         "startChar": 2,
