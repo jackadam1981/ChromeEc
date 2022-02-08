@@ -13,7 +13,15 @@ CHIP_VARIANT:=stm32f07x
 # Not enough SRAM: Disable all tests
 test-list-y=
 
-board-y=board.o
+chip-y=bkpdata.o
+
+board-rw=board.o
 board-$(CONFIG_USB_POWER_DELIVERY)+=usb_pd_policy.o usb_pd_pdo.o
 
 all_deps=$(patsubst ro,,$(def_all_deps))
+
+# Passing the parameter MIGRATION to the make file will generate
+# the migration image instead.
+ifdef MIGRATION
+CPPFLAGS+=-DMIGRATION=1
+endif
