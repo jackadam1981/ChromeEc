@@ -22,6 +22,30 @@
       },
       "revId": "916b12fc0c0571361b9b3d1c5dba28dc55f36dc0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad4f52a6_53b43bc2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2022-02-08T05:16:34Z",
+      "side": 1,
+      "message": "A long story..\n\nThis is a kernel driver bug, kernel controls kb backlight by EC_CMD_PWM_SET_DUTY, instead of using the expected command EC_CMD_PWM_SET_KEYBOARD_BACKLIGHT.\n\nEC_CMD_PWM_SET_DUTY handler does not control GPIO_EN_KEYBOARD_BACKLIGHT correctly. \nThe only way to turn on GPIO_EN_KEYBOARD_BACKLIGHT is in HOOK_RESUME and current_percent is not zero. (this is what the commit message trying to say).\n\nIf you are in S0 and toggles kb backlight from off to on, EC_CMD_PWM_SET_DUTY won\u0027t enable GPIO_EN_KEYBOARD_BACKLIGHT for you.",
+      "parentUuid": "a71277e3_de4c7591",
+      "range": {
+        "startLine": 9,
+        "startChar": 54,
+        "endLine": 9,
+        "endChar": 69
+      },
+      "revId": "916b12fc0c0571361b9b3d1c5dba28dc55f36dc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
