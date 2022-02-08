@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "be106635_701f5dc4",
+        "filename": "baseboard/brya/usb_pd_policy.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-02-08T22:09:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "08757119_ab18a49f",
+      "range": {
+        "startLine": 205,
+        "startChar": 9,
+        "endLine": 205,
+        "endChar": 12
+      },
+      "revId": "7e8c6ea1af3626c067728bf25813d8b511eee10c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "34e940cb_2d7aaa9c",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "19cf3e1b_f5e6ed5d",
+        "filename": "baseboard/volteer/usb_pd_policy.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-02-08T22:09:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "34e940cb_2d7aaa9c",
+      "range": {
+        "startLine": 201,
+        "startChar": 9,
+        "endLine": 201,
+        "endChar": 12
+      },
+      "revId": "7e8c6ea1af3626c067728bf25813d8b511eee10c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "369c2d6d_f0dde1f6",
@@ -60,6 +108,24 @@
       "writtenOn": "2022-02-08T16:48:08Z",
       "side": 1,
       "message": "I think I might have missed how this works now with the mux task, but prior to this change, were we sending NAK when the mux ack wasn\u0027t immediate?",
+      "revId": "7e8c6ea1af3626c067728bf25813d8b511eee10c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a889280d_c61c67d7",
+        "filename": "baseboard/volteer/usb_pd_policy.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-02-08T22:09:32Z",
+      "side": 1,
+      "message": "With the mux task, we were sending a nearly immediate ACK since I\u0027d forgotten to add a wait on the mux set completing.  \n\nWithout the mux task, we were sending an ACK at just about tVDMWaitModeEntry max which apparently other Chromebooks were fine with but this dock took to mean we timed out on mode entry.",
+      "parentUuid": "369c2d6d_f0dde1f6",
       "revId": "7e8c6ea1af3626c067728bf25813d8b511eee10c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
