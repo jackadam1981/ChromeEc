@@ -14,6 +14,86 @@
 /* 48 MHz SYSCLK clock frequency */
 #define CPU_CLOCK 48000000
 
+/* This is not actually an EC so disable some features. */
+#undef CONFIG_WATCHDOG_HELP
+#undef CONFIG_LID_SWITCH
+#undef CONFIG_HIBERNATE
+#undef CONFIG_CMD_SCRATCHPAD
+
+/* Configure the flash */
+#undef _IMAGE_SIZE
+#undef CONFIG_RO_SIZE
+#undef CONFIG_FW_PSTATE_OFF
+#undef CONFIG_RW_MEM_OFF
+#undef CONFIG_RW_SIZE
+
+#define CONFIG_FLASH_PSTATE
+#define CONFIG_FLASH_PSTATE_BANK
+
+#define CONFIG_RO_SIZE           (4*1024)
+#ifdef MIGRATION
+#define CONFIG_FW_PSTATE_OFF     (92*1024)
+#else /* !MIGRATION */
+#define CONFIG_FW_PSTATE_OFF     (CONFIG_RO_MEM_OFF + CONFIG_RO_SIZE)
+#endif /* MIGRATION */
+#define CONFIG_FW_PSTATE_SIZE    CONFIG_FLASH_BANK_SIZE
+
+#define CONFIG_RW_MEM_OFF        (CONFIG_FW_PSTATE_OFF + CONFIG_FW_PSTATE_SIZE)
+#define CONFIG_RW_SIZE           (CONFIG_FLASH_SIZE_BYTES - CONFIG_RW_MEM_OFF)
+
+#ifdef SECTION_IS_RO
+/* Configure the Boot Manager. */
+
+#define CONFIG_MALLOC
+#define CONFIG_DFU_BOOTMANAGER_MAIN
+#define CONFIG_DFU_BOOTMANAGER_SHARED
+#undef CONFIG_COMMON_RUNTIME
+#undef CONFIG_COMMON_PANIC_OUTPUT
+#undef CONFIG_COMMON_GPIO
+#undef CONFIG_COMMON_TIMER
+
+#else /* !SECTION_IS_RO */
+/* Configure the Main Application. */
+
+#ifdef MIGRATION
+/* Configurations set only during Migration. */
+#define CONFIG_USB_UPDATE
+
+#else /* !MIGRATION */
+/* Configurations which can not be enabled during Migration due to space. */
+
+#define CONFIG_USB_PD_PORT_MAX_COUNT 2
+
+#define CONFIG_USB_HUB_GL3590
+#define CONFIG_INA231
+#define CONFIG_CHARGE_MANAGER
+#undef  CONFIG_CHARGE_MANAGER_SAFE_MODE
+#define CONFIG_USB_MUX_TUSB1064
+#define CONFIG_USB_POWER_DELIVERY
+#define CONFIG_USB_PD_TCPMV1
+#define CONFIG_CMD_PD
+#define CONFIG_USB_PD_CUSTOM_PDO
+#define CONFIG_USB_PD_DUAL_ROLE
+#define CONFIG_USB_PD_DYNAMIC_SRC_CAP
+#define CONFIG_USB_PD_INTERNAL_COMP
+#define CONFIG_USB_PD_TCPC
+#define CONFIG_USB_PD_TCPM_STUB
+#undef CONFIG_USB_PD_PULLUP
+/* Default pull-up should not be Rp3a0 due to Cr50 */
+#define CONFIG_USB_PD_PULLUP TYPEC_RP_USB
+#define CONFIG_USB_PD_VBUS_MEASURE_NOT_PRESENT
+#define CONFIG_USB_PD_ONLY_FIXED_PDOS
+#define CONFIG_USB_PD_ALT_MODE
+#define CONFIG_USBC_SS_MUX
+#define CONFIG_USBC_SS_MUX_UFP_ONLY
+
+#endif /* MIGRATION */
+/* RW Configurations in both builds. */
+
+/* DFU Firmware Update */
+#define CONFIG_DFU_RUNTIME
+#define CONFIG_DFU_BOOTMANAGER_SHARED
+
 /* Servo V4.1 Ports:
  *  CHG - port 0
  *  DUT - port 1
@@ -29,67 +109,13 @@
 #define TCA6424A_PORT 1
 #define TCA6424A_ADDR 0x23
 
-/*
- * Flash layout: we redefine the sections offsets and sizes as we want to
- * include a pstate region, and will use RO/RW regions of different sizes.
- * RO has size 92K and usb_updater along with the majority of code is placed
- *    here.
- * RW has size 40K and usb_updater and other relevant code is placed here.
- */
-#undef _IMAGE_SIZE
-#undef CONFIG_ROLLBACK_OFF
-#undef CONFIG_ROLLBACK_SIZE
-#undef CONFIG_FLASH_PSTATE
-#undef CONFIG_FW_PSTATE_SIZE
-#undef CONFIG_FW_PSTATE_OFF
-#undef CONFIG_SHAREDLIB_SIZE
-#undef CONFIG_RO_MEM_OFF
-#undef CONFIG_RO_STORAGE_OFF
-#undef CONFIG_RO_SIZE
-#undef CONFIG_RW_MEM_OFF
-#undef CONFIG_RW_STORAGE_OFF
-#undef CONFIG_RW_SIZE
-#undef CONFIG_EC_PROTECTED_STORAGE_OFF
-#undef CONFIG_EC_PROTECTED_STORAGE_SIZE
-#undef CONFIG_EC_WRITABLE_STORAGE_OFF
-#undef CONFIG_EC_WRITABLE_STORAGE_SIZE
-#undef CONFIG_WP_STORAGE_OFF
-#undef CONFIG_WP_STORAGE_SIZE
-
-#define CONFIG_RAM_BANK_SIZE CONFIG_RAM_SIZE
-
-
-#define CONFIG_FLASH_PSTATE
-#define CONFIG_FLASH_PSTATE_BANK
-
-#define CONFIG_SHAREDLIB_SIZE   0
-
-#define CONFIG_RO_MEM_OFF       0
-#define CONFIG_RO_STORAGE_OFF   0
-#define CONFIG_RO_SIZE          (92*1024)
-
-#define CONFIG_FW_PSTATE_OFF    (CONFIG_RO_MEM_OFF + CONFIG_RO_SIZE)
-#define CONFIG_FW_PSTATE_SIZE   CONFIG_FLASH_BANK_SIZE
-
-#define CONFIG_RW_MEM_OFF       (CONFIG_FW_PSTATE_OFF + CONFIG_FW_PSTATE_SIZE)
-#define CONFIG_RW_STORAGE_OFF   0
-#define CONFIG_RW_SIZE          (CONFIG_FLASH_SIZE_BYTES - \
-				(CONFIG_RW_MEM_OFF - CONFIG_RO_MEM_OFF))
-
-#define CONFIG_EC_PROTECTED_STORAGE_OFF         CONFIG_RO_MEM_OFF
-#define CONFIG_EC_PROTECTED_STORAGE_SIZE        CONFIG_RO_SIZE
-#define CONFIG_EC_WRITABLE_STORAGE_OFF          CONFIG_RW_MEM_OFF
-#define CONFIG_EC_WRITABLE_STORAGE_SIZE         CONFIG_RW_SIZE
-
-#define CONFIG_WP_STORAGE_OFF           CONFIG_EC_PROTECTED_STORAGE_OFF
-#define CONFIG_WP_STORAGE_SIZE          CONFIG_EC_PROTECTED_STORAGE_SIZE
-
 /* Enable USART1,3,4 and USB streams */
 #define CONFIG_STREAM_USART
 #define CONFIG_STREAM_USART3
 #define CONFIG_STREAM_USART4
 #define CONFIG_STREAM_USB
 #define CONFIG_CMD_USART_INFO
+
 
 /* The UART console is on USART1 (PA9/PA10) */
 #undef CONFIG_UART_CONSOLE
@@ -112,7 +138,6 @@
 #define CONFIG_USB
 #define CONFIG_USB_PID 0x520d
 #define CONFIG_USB_CONSOLE
-#define CONFIG_USB_UPDATE
 #define CONFIG_USB_BCD_DEV 0x0001 /* v 0.01 */
 
 #define CONFIG_USB_PD_IDENTITY_HW_VERS 1
@@ -126,12 +151,16 @@
 
 /* USB interface indexes (use define rather than enum to expand them) */
 #define USB_IFACE_CONSOLE	0
-#define USB_IFACE_EMPTY		1
+#define USB_IFACE_DFU       1
 #define USB_IFACE_I2C		2
 #define USB_IFACE_USART3_STREAM	3
 #define USB_IFACE_USART4_STREAM	4
-#define USB_IFACE_UPDATE	5
-#define USB_IFACE_COUNT		6
+#ifdef CONFIG_USB_UPDATE
+#define USB_IFACE_UPDATE   5
+#define USB_IFACE_COUNT    6
+#else /* !CONFIG_USB_UPDATE */
+#define USB_IFACE_COUNT    5
+#endif /* CONFIG_USB_UPDATE */
 
 /* USB endpoint indexes (use define rather than enum to expand them) */
 #define USB_EP_CONTROL		0
@@ -140,24 +169,21 @@
 #define USB_EP_I2C		3
 #define USB_EP_USART3_STREAM	4
 #define USB_EP_USART4_STREAM	5
-#define USB_EP_UPDATE		6
-#define USB_EP_COUNT		7
+#ifdef CONFIG_USB_UPDATE
+#define USB_EP_UPDATE      6
+#define USB_EP_COUNT    7
+#else /* !CONFIG_USB_UPDATE */
+#define USB_EP_COUNT    6
+#endif /* CONFIG_USB_UPDATE */
 
 /* Enable console recasting of GPIO type. */
 #define CONFIG_CMD_GPIO_EXTENDED
 
 /* Enable I/O expander */
-#ifdef SECTION_IS_RO
 #define CONFIG_IO_EXPANDER
 #define CONFIG_IO_EXPANDER_SUPPORT_GET_PORT
 #define CONFIG_IO_EXPANDER_TCA64XXA
 #define CONFIG_IO_EXPANDER_PORT_COUNT 2
-#endif
-
-/* This is not actually an EC so disable some features. */
-#undef CONFIG_WATCHDOG_HELP
-#undef CONFIG_LID_SWITCH
-#undef CONFIG_HIBERNATE
 
 /* Remove console commands / features for flash / RAM savings */
 #undef CONFIG_USB_PD_HOST_CMD
@@ -190,32 +216,6 @@
  */
 #undef CONFIG_TASK_PROFILING
 
-#define CONFIG_USB_PD_PORT_MAX_COUNT 2
-
-#ifdef SECTION_IS_RO
-#define CONFIG_USB_HUB_GL3590
-#define CONFIG_INA231
-#define CONFIG_CHARGE_MANAGER
-#undef  CONFIG_CHARGE_MANAGER_SAFE_MODE
-#define CONFIG_USB_MUX_TUSB1064
-#define CONFIG_USB_POWER_DELIVERY
-#define CONFIG_USB_PD_TCPMV1
-#define CONFIG_CMD_PD
-#define CONFIG_USB_PD_CUSTOM_PDO
-#define CONFIG_USB_PD_DUAL_ROLE
-#define CONFIG_USB_PD_DYNAMIC_SRC_CAP
-#define CONFIG_USB_PD_INTERNAL_COMP
-#define CONFIG_USB_PD_TCPC
-#define CONFIG_USB_PD_TCPM_STUB
-#undef CONFIG_USB_PD_PULLUP
-/* Default pull-up should not be Rp3a0 due to Cr50 */
-#define CONFIG_USB_PD_PULLUP TYPEC_RP_USB
-#define CONFIG_USB_PD_VBUS_MEASURE_NOT_PRESENT
-#define CONFIG_USB_PD_ONLY_FIXED_PDOS
-#define CONFIG_USB_PD_ALT_MODE
-#define CONFIG_USBC_SS_MUX
-#define CONFIG_USBC_SS_MUX_UFP_ONLY
-
 /* Don't automatically change roles */
 #undef CONFIG_USB_PD_INITIAL_DRP_STATE
 #define CONFIG_USB_PD_INITIAL_DRP_STATE PD_DRP_FORCE_SINK
@@ -244,10 +244,6 @@
 
 /* Enable command for managing host hub */
 #define CONFIG_CMD_GL3590
-#else
-#undef CONFIG_CMD_I2C_XFER
-#undef CONFIG_USB_POWER_DELIVERY
-#endif /* SECTION_IS_RO */
 
 /*
  * If task profiling is enabled then the rx falling edge detection interrupts
@@ -260,6 +256,8 @@
  * switch.
  */
 #define CONFIG_SYSTEM_UNLOCKED
+
+#endif /* SECTION_IS_RO */
 
 #ifndef __ASSEMBLER__
 
@@ -281,7 +279,10 @@ enum usb_strings {
 	USB_STR_CONSOLE_NAME,
 	USB_STR_USART3_STREAM_NAME,
 	USB_STR_USART4_STREAM_NAME,
+#ifdef CONFIG_USB_UPDATE
 	USB_STR_UPDATE_NAME,
+#endif /* CONFIG_USB_UPDATE */
+	USB_STR_DFU_NAME,
 	USB_STR_COUNT
 };
 

@@ -8,14 +8,6 @@
 #ifndef __CROS_EC_BOARD_H
 #define __CROS_EC_BOARD_H
 
-#define CONFIG_LTO
-
-/* Free up flash space */
-#ifdef SECTION_IS_RO
-#define CONFIG_DEBUG_ASSERT_BRIEF
-#undef CONFIG_USB_PD_TCPMV1_DEBUG
-#endif
-
 /*
  * Board Versions:
  * Versions are designated by the PCB color and consist of red, blue, and
@@ -24,8 +16,67 @@
  */
 #define BOARD_VERSION_BLACK 3
 
+/* Use Link-Time Optimizations to try to reduce the firmware code size */
+#define CONFIG_LTO
+
 /* 48 MHz SYSCLK clock frequency */
 #define CPU_CLOCK 48000000
+
+/* This is not actually an EC so disable some features. */
+#undef CONFIG_WATCHDOG_HELP
+#undef CONFIG_LID_SWITCH
+#undef CONFIG_HIBERNATE
+#undef CONFIG_CMD_SCRATCHPAD
+
+/* Configure the flash */
+#undef _IMAGE_SIZE
+#undef CONFIG_RO_SIZE
+#undef CONFIG_FW_PSTATE_OFF
+#undef CONFIG_RW_MEM_OFF
+#undef CONFIG_RW_SIZE
+
+#define CONFIG_FLASH_PSTATE
+#define CONFIG_FLASH_PSTATE_BANK
+
+#define CONFIG_RO_SIZE           (4*1024)
+#ifdef MIGRATION
+#define CONFIG_FW_PSTATE_OFF     (60*1024)
+#else /* !MIGRATION */
+#define CONFIG_FW_PSTATE_OFF     (CONFIG_RO_MEM_OFF + CONFIG_RO_SIZE)
+#endif /* MIGRATION */
+#define CONFIG_FW_PSTATE_SIZE    CONFIG_FLASH_BANK_SIZE
+
+#define CONFIG_RW_MEM_OFF        (CONFIG_FW_PSTATE_OFF + CONFIG_FW_PSTATE_SIZE)
+#define CONFIG_RW_SIZE           (CONFIG_FLASH_SIZE_BYTES - CONFIG_RW_MEM_OFF)
+
+#ifdef SECTION_IS_RO
+/* Configure the Boot Manager. */
+
+#define CONFIG_MALLOC
+#define CONFIG_DFU_BOOTMANAGER_MAIN
+#define CONFIG_DFU_BOOTMANAGER_SHARED
+#undef CONFIG_COMMON_RUNTIME
+#undef CONFIG_COMMON_PANIC_OUTPUT
+#undef CONFIG_COMMON_GPIO
+#undef CONFIG_COMMON_TIMER
+
+#else /* !SECTION_IS_RO */
+/* Configure the Main Application. */
+
+
+#ifdef MIGRATION
+/* Configurations set only during Migration. */
+#define CONFIG_USB_UPDATE
+
+#else /* !MIGRATION */
+/* Configurations which can not be enabled during Migration due to space. */
+
+#endif /* MIGRATION */
+/* RW Configurations in both builds. */
+
+/* DFU Firmware Update */
+#define CONFIG_DFU_RUNTIME
+#define CONFIG_DFU_BOOTMANAGER_SHARED
 
 /* Enable USART1,3,4 and USB streams */
 #define CONFIG_STREAM_USART
@@ -38,15 +89,17 @@
 #define CONFIG_STM_HWTIMER32
 #define CONFIG_HW_CRC
 #define CONFIG_PVD
-/* See 'Programmable voltage detector characteristics' in the STM32F072x8 Datasheet.
-   PVD Threshold 1 corresponds to a falling voltage threshold of min:2.09V, max:2.27V. */
+/*
+ * See 'Programmable voltage detector characteristics' in the
+ * STM32F072x8 Datasheet. PVD Threshold 1 corresponds to a
+ * falling voltage threshold of min:2.09V, max:2.27V.
+ */
 #define PVD_THRESHOLD     (1)
 
 /* USB Configuration */
 #define CONFIG_USB
 #define CONFIG_USB_PID 0x501b
 #define CONFIG_USB_CONSOLE
-#define CONFIG_USB_UPDATE
 #define CONFIG_USB_BCD_DEV 0x0001 /* v 0.01 */
 
 #define CONFIG_USB_PD_IDENTITY_HW_VERS 1
@@ -59,32 +112,36 @@
 #define CONFIG_MAC_ADDR
 #define DEFAULT_MAC_ADDR "Uninitialized"
 
+
 /* USB interface indexes (use define rather than enum to expand them) */
-#define USB_IFACE_CONSOLE	0
-#define USB_IFACE_EMPTY		1
-#define USB_IFACE_I2C		2
-#define USB_IFACE_USART3_STREAM	3
-#define USB_IFACE_USART4_STREAM	4
-#define USB_IFACE_UPDATE	5
-#define USB_IFACE_COUNT		6
+#define USB_IFACE_CONSOLE  0
+#define USB_IFACE_DFU    1
+#define USB_IFACE_I2C      2
+#define USB_IFACE_USART3_STREAM  3
+#define USB_IFACE_USART4_STREAM  4
+#ifdef CONFIG_USB_UPDATE
+#define USB_IFACE_UPDATE   5
+#define USB_IFACE_COUNT    6
+#else /* !CONFIG_USB_UPDATE */
+#define USB_IFACE_COUNT    5
+#endif /* CONFIG_USB_UPDATE */
 
 /* USB endpoint indexes (use define rather than enum to expand them) */
-#define USB_EP_CONTROL		0
-#define USB_EP_CONSOLE		1
-#define USB_EP_EMPTY		2
-#define USB_EP_I2C		3
-#define USB_EP_USART3_STREAM	4
-#define USB_EP_USART4_STREAM	5
-#define USB_EP_UPDATE		6
-#define USB_EP_COUNT		7
+#define USB_EP_CONTROL     0
+#define USB_EP_CONSOLE     1
+#define USB_EP_EMPTY    2
+#define USB_EP_I2C      3
+#define USB_EP_USART3_STREAM  4
+#define USB_EP_USART4_STREAM  5
+#ifdef CONFIG_USB_UPDATE
+#define USB_EP_UPDATE      6
+#define USB_EP_COUNT    7
+#else /* !CONFIG_USB_UPDATE */
+#define USB_EP_COUNT    6
+#endif /* CONFIG_USB_UPDATE */
 
 /* Enable console recasting of GPIO type. */
 #define CONFIG_CMD_GPIO_EXTENDED
-
-/* This is not actually an EC so disable some features. */
-#undef CONFIG_WATCHDOG_HELP
-#undef CONFIG_LID_SWITCH
-#undef CONFIG_HIBERNATE
 
 /* Remove console commands / features for flash / RAM savings */
 #undef CONFIG_USB_PD_HOST_CMD
@@ -176,6 +233,8 @@
  */
 #define CONFIG_SYSTEM_UNLOCKED
 
+#endif /* SECTION_IS_RO */
+
 #ifndef __ASSEMBLER__
 
 /* Timer selection */
@@ -196,7 +255,10 @@ enum usb_strings {
 	USB_STR_CONSOLE_NAME,
 	USB_STR_USART3_STREAM_NAME,
 	USB_STR_USART4_STREAM_NAME,
+#ifdef CONFIG_USB_UPDATE
 	USB_STR_UPDATE_NAME,
+#endif /* CONFIG_USB_UPDATE */
+	USB_STR_DFU_NAME,
 	USB_STR_COUNT
 };
 
