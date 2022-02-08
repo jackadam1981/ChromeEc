@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dcbe1fb3_ac697a5e",
+        "filename": "zephyr/zmake/README.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-02-08T18:20:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "03c24b6b_3dd324cd",
+      "range": {
+        "startLine": 75,
+        "startChar": 38,
+        "endLine": 75,
+        "endChar": 51
+      },
+      "revId": "f2b6b61d24741e674146a0bd91eeadc4e3c0d163",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7e7f3cb0_a31d0957",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-02-08T17:09:38Z",
       "side": 1,
       "message": "can we make a function to add these arguments instead of copy-pasting?",
+      "range": {
+        "startLine": 235,
+        "startChar": 0,
+        "endLine": 278,
+        "endChar": 5
+      },
+      "revId": "f2b6b61d24741e674146a0bd91eeadc4e3c0d163",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9309f2b_64ada7ba",
+        "filename": "zephyr/zmake/zmake/__main__.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-02-08T18:20:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7e7f3cb0_a31d0957",
       "range": {
         "startLine": 235,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "57ac324f_5909aee2",
+        "filename": "zephyr/zmake/zmake/zmake.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-02-08T18:20:49Z",
+      "side": 1,
+      "message": "Look at the table in the bug. In gitlab and also in the CQ, I really want a \"build\" step that builds all the boards, and a \"test\" step that only runs the tests.  And this is what `zmake coverage` does today.\n\nI\u0027d be fine with having `zmake configureall --build` build all boards and tests, and then `zmake testall` that runs the tests, but doesn\u0027t build anything.\n\nBut this discussion probably should be in the bug, as there you can see the implications of changing any particular logic.",
+      "parentUuid": "173270bf_16f5b516",
+      "range": {
+        "startLine": 252,
+        "startChar": 0,
+        "endLine": 257,
+        "endChar": 24
+      },
+      "revId": "f2b6b61d24741e674146a0bd91eeadc4e3c0d163",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8c8e85f8_2b80ec96",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-02-08T17:09:38Z",
       "side": 1,
       "message": "this should turn into self.configureall(..., build\u003dTrue, test\u003dTrue), right?",
+      "range": {
+        "startLine": 681,
+        "startChar": 0,
+        "endLine": 701,
+        "endChar": 35
+      },
+      "revId": "f2b6b61d24741e674146a0bd91eeadc4e3c0d163",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "39c4b935_28c73697",
+        "filename": "zephyr/zmake/zmake/zmake.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 701,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-02-08T18:20:49Z",
+      "side": 1,
+      "message": "Yes, if we want to preserve existing behavior.\n\nI was just trying to keep this cl to only implementing \"configureall\" because it\u0027s probably not controversial. Whereas, testall seems like a barrel of fishhooks, in that what it currently does doesn\u0027t match the idea of XXXall should do what XXX does but for all applicable projects.",
+      "parentUuid": "8c8e85f8_2b80ec96",
       "range": {
         "startLine": 681,
         "startChar": 0,
