@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "655a43cb_6a12f857",
+        "filename": "zephyr/projects/trogdor/lazor/prj.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2022-02-08T15:27:48Z",
+      "side": 1,
+      "message": "this does not have anything to do with changing the SOC type. Please move this and the shell changes into a chained CL",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 25
+      },
+      "revId": "496b50a60f695dd96f73d80331989132caf7679e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
