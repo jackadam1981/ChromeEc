@@ -51,7 +51,7 @@ class JobClient:
         kwargs["env"].update(self.env())
 
         logger = logging.getLogger(self.__class__.__name__)
-        logger.debug("Running %s", zmake.util.repr_command(*args))
+        logger.debug("Running %s", zmake.util.repr_command(list(*args)))
         return subprocess.Popen(*args, **kwargs)
 
     def run(self, *args, claim_job=True, **kwargs):
