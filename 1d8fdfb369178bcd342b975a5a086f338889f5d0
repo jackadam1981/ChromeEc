@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0dc1d857_a6df4473",
+        "filename": "zephyr/shim/src/tasks.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-02-08T17:18:32Z",
+      "side": 1,
+      "message": "Does the preprocessor support checks against a local variable?\n\nShould this be a run-time assert instead?",
+      "range": {
+        "startLine": 304,
+        "startChar": 0,
+        "endLine": 304,
+        "endChar": 56
+      },
+      "revId": "1d8fdfb369178bcd342b975a5a086f338889f5d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
