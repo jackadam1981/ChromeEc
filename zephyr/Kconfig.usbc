@@ -16,6 +16,7 @@ menuconfig PLATFORM_EC_USBC
 
 rsource "Kconfig.retimer"
 rsource "Kconfig.pd_int_shared"
+rsource "Kconfig.pd_meas_vbus"
 
 if PLATFORM_EC_USBC
 
@@ -96,45 +97,6 @@ menuconfig PLATFORM_EC_USB_POWER_DELIVERY
 	  those devices.
 
 if PLATFORM_EC_USB_POWER_DELIVERY
-
-menuconfig PLATFORM_EC_USB_PD_INT_SHARED
-	bool "USB-C ports share PD interrupts"
-	select HAS_TASK_PD_INT_SHARED
-	help
-	  This enables processing of shared interrupts where multiple ports
-	  share a single IRQ on the EC. Only one shared IRQ is supported,
-	  but any combination of ports can be serviced by that one IRQ.
-
-if PLATFORM_EC_USB_PD_INT_SHARED
-
-config PLATFORM_EC_USB_PD_PORT_0_SHARED
-	bool "Port 0 IRQ is shared"
-	help
-	  Enable handling of port 0 PD interrupts signalled by an IRQ that is
-	  shared by every other port enabled in this section.
-
-config PLATFORM_EC_USB_PD_PORT_1_SHARED
-	bool "Port 1 IRQ is shared"
-	depends on PLATFORM_EC_USB_PD_PORT_MAX_COUNT > 1
-	help
-	  Enable handling of port 1 PD interrupts signalled by an IRQ that is
-	  shared by every other port enabled in this section.
-
-config PLATFORM_EC_USB_PD_PORT_2_SHARED
-	bool "Port 2 IRQ is shared"
-	depends on PLATFORM_EC_USB_PD_PORT_MAX_COUNT > 2
-	help
-	  Enable handling of port 2 PD interrupts signalled by an IRQ that is
-	  shared by every other port enabled in this section.
-
-config PLATFORM_EC_USB_PD_PORT_3_SHARED
-	bool "Port 3 IRQ is shared"
-	depends on PLATFORM_EC_USB_PD_PORT_MAX_COUNT > 3
-	help
-	  Enable handling of port 3 PD interrupts signalled by an IRQ that is
-	  shared by every other port enabled in this section.
-
-endif # PLATFORM_EC_USB_PD_INT_SHARED
 
 config PLATFORM_EC_USB_PD_HOST_CMD
 	bool "Host commands related to USB Power Delivery"
@@ -221,41 +183,6 @@ config PLATFORM_EC_USB_PD_5V_CHARGER_CTRL
 	  Enable this if the charger controls VBUS on a source port.
 	  The function charger_is_sourcing_otg_power is called
 	  to determine if VBUS is enabled on the source port.
-
-choice "Measuring VBUS voltage"
-	prompt "Select how VBUS voltage is measured"
-
-config PLATFORM_EC_USB_PD_VBUS_MEASURE_NOT_PRESENT
-	bool "VBUS voltage cannot be read"
-	help
-	  Enable this if the board does not provide any mechanism for the EC to
-	  read the analog VBUS voltage.
-
-config PLATFORM_EC_USB_PD_VBUS_MEASURE_CHARGER
-	bool "On-board charger supports VBUS measurement"
-	help
-	  Enable this if the VBUS voltage can be read using a charger on the
-	  board.
-
-config PLATFORM_EC_USB_PD_VBUS_MEASURE_TCPC
-	bool "Type-C Port Controller supports VBUS measurement"
-	help
-	  Enable this if the VBUS voltage can be read using the on-board
-	  TCPC.
-
-config PLATFORM_EC_USB_PD_VBUS_MEASURE_ADC_EACH_PORT
-	bool "VBUS on each port is measured using an ADC channel"
-	help
-	  Enable this if there is a separate ADC channel for each USB-C VBUS
-	  voltage.
-
-config PLATFORM_EC_USB_PD_VBUS_MEASURE_BY_BOARD
-	bool "VBUS on each port is measured per board specific"
-	help
-	  Enable this if there are different VBUS measurement approaches on
-	  the board, and also `board_get_vbus_voltage()` has to be implemented.
-
-endchoice  # Measuring VBUS voltage
 
 config PLATFORM_EC_USBC_VCONN
 	bool "Support USB Type-C VCONN"
