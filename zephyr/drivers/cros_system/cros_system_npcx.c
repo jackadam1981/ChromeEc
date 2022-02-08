@@ -502,6 +502,11 @@ static int cros_system_npcx_soc_reset(const struct device *dev)
 	return 0;
 }
 
+#if defined(CONFIG_PLATFORM_EC_HIBERNATE_PSL) && \
+	DT_HAS_COMPAT_STATUS_OKAY(cros_ec_hibernate_wake_pins)
+#error "cros-ec,hibernate-wake-pins cannot be used with HIBERNATE_PSL"
+#endif
+
 static int cros_system_npcx_hibernate(const struct device *dev,
 				      uint32_t seconds, uint32_t microseconds)
 {
