@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "03c24b6b_3dd324cd",
+        "filename": "zephyr/zmake/README.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-02-08T17:09:38Z",
+      "side": 1,
+      "message": "building",
+      "range": {
+        "startLine": 75,
+        "startChar": 38,
+        "endLine": 75,
+        "endChar": 51
+      },
+      "revId": "f2b6b61d24741e674146a0bd91eeadc4e3c0d163",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e7f3cb0_a31d0957",
+        "filename": "zephyr/zmake/zmake/__main__.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-02-08T17:09:38Z",
+      "side": 1,
+      "message": "can we make a function to add these arguments instead of copy-pasting?",
+      "range": {
+        "startLine": 235,
+        "startChar": 0,
+        "endLine": 278,
+        "endChar": 5
+      },
+      "revId": "f2b6b61d24741e674146a0bd91eeadc4e3c0d163",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "173270bf_16f5b516",
+        "filename": "zephyr/zmake/zmake/zmake.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-02-08T17:09:38Z",
+      "side": 1,
+      "message": "So we don\u0027t run configure at all on non-tests if given --test but not --build?\n\nThis seems like an odd and unexpected behavior.\n\nWhat\u0027s the use case, and if it\u0027s required, can we make it a switch, like --tests-only? Or a more general idea would be \"--filter\u003dproject.config.is_test\" to allow filtering to certain projects?",
+      "range": {
+        "startLine": 252,
+        "startChar": 0,
+        "endLine": 257,
+        "endChar": 24
+      },
+      "revId": "f2b6b61d24741e674146a0bd91eeadc4e3c0d163",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c8e85f8_2b80ec96",
+        "filename": "zephyr/zmake/zmake/zmake.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 701,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-02-08T17:09:38Z",
+      "side": 1,
+      "message": "this should turn into self.configureall(..., build\u003dTrue, test\u003dTrue), right?",
+      "range": {
+        "startLine": 681,
+        "startChar": 0,
+        "endLine": 701,
+        "endChar": 35
+      },
+      "revId": "f2b6b61d24741e674146a0bd91eeadc4e3c0d163",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
