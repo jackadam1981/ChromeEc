@@ -40,16 +40,9 @@
 #include "usb-stream.h"
 #include "util.h"
 
-#ifdef SECTION_IS_RO
-#define CROS_EC_SECTION "RO"
-#else
-#define CROS_EC_SECTION "RW"
-#endif
-
 /******************************************************************************
  * GPIO interrupt handlers.
  */
-#ifdef SECTION_IS_RO
 static void vbus0_evt(enum gpio_signal signal)
 {
 	task_wake(TASK_ID_PD_C0);
@@ -64,7 +57,6 @@ static void tca_evt(enum gpio_signal signal)
 {
 	irq_ioexpanders();
 }
-
 /*
  * TUSB1064 set mux board tuning.
  * Adds in board specific gain and DP lane count configuration
@@ -227,7 +219,6 @@ void ext_hpd_detection_enable(int enable)
 		gpio_disable_interrupt(GPIO_DP_HPD);
 	}
 }
-#endif /* SECTION_IS_RO */
 
 #include "gpio_list.h"
 
@@ -357,23 +348,6 @@ USB_STREAM_CONFIG_USART_IFACE(usart4_usb,
 	usart4)
 
 
-/*
- * Define usb interface descriptor for the `EMPTY` usb interface, to satisfy
- * UEFI and kernel requirements (see b/183857501).
- */
-const struct usb_interface_descriptor
-USB_IFACE_DESC(USB_IFACE_EMPTY) = {
-	.bLength            = USB_DT_INTERFACE_SIZE,
-	.bDescriptorType    = USB_DT_INTERFACE,
-	.bInterfaceNumber   = USB_IFACE_EMPTY,
-	.bAlternateSetting  = 0,
-	.bNumEndpoints      = 0,
-	.bInterfaceClass    = USB_CLASS_VENDOR_SPEC,
-	.bInterfaceSubClass = 0,
-	.bInterfaceProtocol = 0,
-	.iInterface         = 0,
-};
-
 /******************************************************************************
  * Define the strings used in our USB descriptors.
  */
@@ -388,7 +362,10 @@ const void *const usb_strings[] = {
 	[USB_STR_CONSOLE_NAME] = USB_STRING_DESC("Servo EC Shell"),
 	[USB_STR_USART3_STREAM_NAME]  = USB_STRING_DESC("DUT UART"),
 	[USB_STR_USART4_STREAM_NAME]  = USB_STRING_DESC("Atmega UART"),
+#ifdef CONFIG_USB_UPDATE
 	[USB_STR_UPDATE_NAME]  = USB_STRING_DESC("Firmware update"),
+#endif /* CONFIG_USB_UPDATE */
+	[USB_STR_DFU_NAME]     = USB_STRING_DESC("DFU"),
 };
 
 BUILD_ASSERT(ARRAY_SIZE(usb_strings) == USB_STR_COUNT);
@@ -423,7 +400,6 @@ int board_get_version(void)
 	return board_id_det();
 }
 
-#ifdef SECTION_IS_RO
 /* Forward declaration */
 static void evaluate_input_power_def(void);
 DECLARE_DEFERRED(evaluate_input_power_def);
@@ -451,7 +427,6 @@ static void evaluate_input_power_def(void)
 	init_uservo_port();
 	init_pathsel();
 }
-#endif
 
 static void board_init(void)
 {
@@ -474,7 +449,6 @@ static void board_init(void)
 	system_set_bbram(SYSTEM_BBRAM_IDX_PD0, 0);
 	system_set_bbram(SYSTEM_BBRAM_IDX_PD1, 0);
 
-#ifdef SECTION_IS_RO
 	init_ioexpanders();
 	CPRINTS("Board ID is %d", board_id_det());
 
@@ -518,13 +492,10 @@ static void board_init(void)
 
 	/* Start SuzyQ detection */
 	start_ccd_meas_sbu_cycle();
-#else /* SECTION_IS_RO */
 	CPRINTS("Board ID is %d", board_id_det());
-#endif /* SECTION_IS_RO */
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
-#ifdef SECTION_IS_RO
 void tick_event(void)
 {
 	static int i = 0;
@@ -560,5 +531,3 @@ struct ioexpander_config_t ioex_config[] = {
 		.flags = IOEX_FLAGS_TCA64XXA_FLAG_VER_TCA6424A
 	}
 };
-
-#endif /* SECTION_IS_RO */
