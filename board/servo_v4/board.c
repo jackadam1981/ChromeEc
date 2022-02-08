@@ -254,23 +254,6 @@ USB_STREAM_CONFIG(usart4_usb,
 	usb_to_usart4,
 	usart4_to_usb)
 
-/*
- * Define usb interface descriptor for the `EMPTY` usb interface, to satisfy
- * UEFI and kernel requirements (see b/183857501).
- */
-const struct usb_interface_descriptor
-USB_IFACE_DESC(USB_IFACE_EMPTY) = {
-	.bLength            = USB_DT_INTERFACE_SIZE,
-	.bDescriptorType    = USB_DT_INTERFACE,
-	.bInterfaceNumber   = USB_IFACE_EMPTY,
-	.bAlternateSetting  = 0,
-	.bNumEndpoints      = 0,
-	.bInterfaceClass    = USB_CLASS_VENDOR_SPEC,
-	.bInterfaceSubClass = 0,
-	.bInterfaceProtocol = 0,
-	.iInterface         = 0,
-};
-
 /******************************************************************************
  * Define the strings used in our USB descriptors.
  */
@@ -285,7 +268,10 @@ const void *const usb_strings[] = {
 	[USB_STR_CONSOLE_NAME] = USB_STRING_DESC("Servo EC Shell"),
 	[USB_STR_USART3_STREAM_NAME]  = USB_STRING_DESC("DUT UART"),
 	[USB_STR_USART4_STREAM_NAME]  = USB_STRING_DESC("Atmega UART"),
+#ifdef CONFIG_USB_UPDATE
 	[USB_STR_UPDATE_NAME]  = USB_STRING_DESC("Firmware update"),
+#endif /* CONFIG_USB_UPDATE */
+	[USB_STR_DFU_NAME]     = USB_STRING_DESC("DFU"),
 };
 
 BUILD_ASSERT(ARRAY_SIZE(usb_strings) == USB_STR_COUNT);

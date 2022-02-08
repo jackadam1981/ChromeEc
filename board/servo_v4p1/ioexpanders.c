@@ -18,7 +18,7 @@
 
 static enum servo_board_id board_id_val = BOARD_ID_UNSET;
 
-#ifdef SECTION_IS_RO
+#ifndef DFU_MIGRATION
 
 static int dut_chg_en_state;
 static int bc12_charger;
@@ -315,4 +315,4 @@ inline int board_id_det(void)
 	return board_id_val;
 }
 
-#endif /* SECTION_IS_RO */
+#endif /* !DFU_MIGRATION */
