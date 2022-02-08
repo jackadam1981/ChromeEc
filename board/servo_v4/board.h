@@ -8,13 +8,72 @@
 #ifndef __CROS_EC_BOARD_H
 #define __CROS_EC_BOARD_H
 
+#ifndef MIGRATION
+
+#undef _IMAGE_SIZE
+#undef CONFIG_RO_SIZE
+#undef CONFIG_FW_PSTATE_OFF
+#undef CONFIG_RW_MEM_OFF
+#undef CONFIG_RW_SIZE
+
+#define CONFIG_RAM_BANK_SIZE CONFIG_RAM_SIZE
+
+
+#define CONFIG_FLASH_PSTATE
+#define CONFIG_FLASH_PSTATE_BANK
+
+#define CONFIG_RO_SIZE				(4*1024)
+#define CONFIG_FW_PSTATE_OFF		(CONFIG_RO_MEM_OFF + CONFIG_RO_SIZE)
+#define CONFIG_FW_PSTATE_SIZE		CONFIG_FLASH_BANK_SIZE
+
+#define CONFIG_RW_MEM_OFF			(CONFIG_FW_PSTATE_OFF + CONFIG_FW_PSTATE_SIZE)
+#define CONFIG_RW_SIZE				(CONFIG_FLASH_SIZE_BYTES - CONFIG_RW_MEM_OFF)
+
+#else /* MIGRATION */
+
+#ifdef SECTION_IS_RW
+#define CONFIG_USB_UPDATE
+#endif /* SECTION_IS_RW */
+#endif /* MIGRATION */
+
 #define CONFIG_LTO
 
-/* Free up flash space */
+/* 48 MHz SYSCLK clock frequency */
+#define CPU_CLOCK 48000000
+
+/* This is not actually an EC so disable some features. */
+#undef CONFIG_WATCHDOG_HELP
+#undef CONFIG_LID_SWITCH
+#undef CONFIG_HIBERNATE
+#undef CONFIG_CMD_SCRATCHPAD
+#define CONFIG_FLASH_CROS
+
+/* DFU Firmware Update */
+#define CONFIG_DFU_BOOTMANAGER
+#define CONFIG_DFU_BOOTMANAGER_MAX_REBOOT_COUNT   (10)
+
 #ifdef SECTION_IS_RO
+
+#ifndef __ASSEMBLER__
+#include "gpio_signal.h"
+#endif /* !__ASSEMBLER__ */
+
+#undef CONFIG_COMMON_GPIO
+#undef CONFIG_COMMON_PANIC_OUTPUT
+#undef CONFIG_COMMON_RUNTIME
+#undef CONFIG_COMMON_TIMER
+#undef CONFIG_SOFTWARE_PANIC
+#undef CONFIG_SPI_CONTROLLER
+#undef CONFIG_SPI_CONTROLLER
+
+#else /* !SECTION_IS_RO */
+
+/* DFU Firmware Update */
+#define CONFIG_DFU_RUNTIME
+
+/* Free up flash space */
 #define CONFIG_DEBUG_ASSERT_BRIEF
 #undef CONFIG_USB_PD_TCPMV1_DEBUG
-#endif
 
 /*
  * Board Versions:
@@ -24,8 +83,6 @@
  */
 #define BOARD_VERSION_BLACK 3
 
-/* 48 MHz SYSCLK clock frequency */
-#define CPU_CLOCK 48000000
 
 /* Enable USART1,3,4 and USB streams */
 #define CONFIG_STREAM_USART
@@ -46,7 +103,6 @@
 #define CONFIG_USB
 #define CONFIG_USB_PID 0x501b
 #define CONFIG_USB_CONSOLE
-#define CONFIG_USB_UPDATE
 #define CONFIG_USB_BCD_DEV 0x0001 /* v 0.01 */
 
 #define CONFIG_USB_PD_IDENTITY_HW_VERS 1
@@ -66,7 +122,8 @@
 #define USB_IFACE_USART3_STREAM	3
 #define USB_IFACE_USART4_STREAM	4
 #define USB_IFACE_UPDATE	5
-#define USB_IFACE_COUNT		6
+#define USB_IFACE_DFU		6
+#define USB_IFACE_COUNT		7
 
 /* USB endpoint indexes (use define rather than enum to expand them) */
 #define USB_EP_CONTROL		0
@@ -80,11 +137,6 @@
 
 /* Enable console recasting of GPIO type. */
 #define CONFIG_CMD_GPIO_EXTENDED
-
-/* This is not actually an EC so disable some features. */
-#undef CONFIG_WATCHDOG_HELP
-#undef CONFIG_LID_SWITCH
-#undef CONFIG_HIBERNATE
 
 /* Remove console commands / features for flash / RAM savings */
 #undef CONFIG_USB_PD_HOST_CMD
@@ -104,6 +156,7 @@
 #undef CONFIG_CMD_USART_INFO
 #undef CONFIG_CMD_CHARGE_SUPPLIER_INFO
 #define CONFIG_CMD_PD_SRCCAPS_REDUCED_SIZE
+
 
 /* Enable control of I2C over USB */
 #define CONFIG_USB_I2C
@@ -197,6 +250,7 @@ enum usb_strings {
 	USB_STR_USART3_STREAM_NAME,
 	USB_STR_USART4_STREAM_NAME,
 	USB_STR_UPDATE_NAME,
+	USB_STR_DFU_NAME,
 	USB_STR_COUNT
 };
 
@@ -276,4 +330,5 @@ void ext_hpd_detection_enable(int enable);
  */
 void ccd_enable(int enable);
 #endif /* !__ASSEMBLER__ */
+#endif /* SECTION_IS_RO */
 #endif /* __CROS_EC_BOARD_H */
