@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4f0e01a_63444ebb",
+        "filename": "board/banshee/board.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1395690
+      },
+      "writtenOn": "2022-02-08T11:11:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8abf8f3e_c7229253",
+      "range": {
+        "startLine": 262,
+        "startChar": 34,
+        "endLine": 262,
+        "endChar": 39
+      },
+      "revId": "0b4c64dc24e9e891f8d93c7330e3a29498517323",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2045a583_de151ee9",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-02-08T03:34:53Z",
       "side": 1,
       "message": "Green and next is blue..",
+      "range": {
+        "startLine": 263,
+        "startChar": 31,
+        "endLine": 263,
+        "endChar": 37
+      },
+      "revId": "0b4c64dc24e9e891f8d93c7330e3a29498517323",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "289e7d00_ae1db0c7",
+        "filename": "board/banshee/board.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1395690
+      },
+      "writtenOn": "2022-02-08T11:11:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2045a583_de151ee9",
       "range": {
         "startLine": 263,
         "startChar": 31,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e5f92ec1_f4d66f02",
+        "filename": "board/banshee/i2c.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1395690
+      },
+      "writtenOn": "2022-02-08T11:11:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9d2873c8_bc3d012d",
+      "range": {
+        "startLine": 27,
+        "startChar": 10,
+        "endLine": 27,
+        "endChar": 14
+      },
+      "revId": "0b4c64dc24e9e891f8d93c7330e3a29498517323",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "32535423_4ff71b0a",
@@ -110,6 +182,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec3032fa_9750ada0",
+        "filename": "board/banshee/usbc_config.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1395690
+      },
+      "writtenOn": "2022-02-08T11:11:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "32535423_4ff71b0a",
+      "range": {
+        "startLine": 115,
+        "startChar": 0,
+        "endLine": 124,
+        "endChar": 40
+      },
+      "revId": "0b4c64dc24e9e891f8d93c7330e3a29498517323",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "99395203_6ffb2616",
@@ -123,6 +219,30 @@
       "writtenOn": "2022-02-08T03:34:53Z",
       "side": 1,
       "message": "same question here - are those 2 chips sitting on the same bus with the same address?",
+      "range": {
+        "startLine": 197,
+        "startChar": 0,
+        "endLine": 201,
+        "endChar": 48
+      },
+      "revId": "0b4c64dc24e9e891f8d93c7330e3a29498517323",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4dc4f3a5_e4c7dadd",
+        "filename": "board/banshee/usbc_config.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1395690
+      },
+      "writtenOn": "2022-02-08T11:11:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "99395203_6ffb2616",
       "range": {
         "startLine": 197,
         "startChar": 0,
