@@ -16,6 +16,24 @@
       "message": "This is actually enabled in shim/src/motionsense_sensors.c\nI will do a CL to remove it from nivviks as well.",
       "revId": "487d63131d665fefaacef505680f2df92e42aa58",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf4f6ee3_ba4ed97b",
+        "filename": "zephyr/projects/nissa/src/nereid/board_config.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-02-08T01:00:35Z",
+      "side": 1,
+      "message": "Removed.",
+      "parentUuid": "2f3d009b_f5068096",
+      "revId": "487d63131d665fefaacef505680f2df92e42aa58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
