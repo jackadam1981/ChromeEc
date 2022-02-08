@@ -22,6 +22,30 @@
       },
       "revId": "1d8fdfb369178bcd342b975a5a086f338889f5d0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "de370e60_ab7f121a",
+        "filename": "zephyr/shim/src/tasks.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-02-08T18:25:10Z",
+      "side": 1,
+      "message": "Oh I suppose not. I meant to remove the - i. I just don\u0027t trust that the run time assertion will actually be caught.",
+      "parentUuid": "0dc1d857_a6df4473",
+      "range": {
+        "startLine": 304,
+        "startChar": 0,
+        "endLine": 304,
+        "endChar": 56
+      },
+      "revId": "1d8fdfb369178bcd342b975a5a086f338889f5d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
