@@ -1,0 +1,118 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "448d063b_45ce4e53",
+        "filename": "zephyr/emul/emul_kb_raw.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-02-08T04:23:13Z",
+      "side": 1,
+      "message": "Should these be a part of the Kconfig for this emulator?",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 0
+      },
+      "revId": "21e50fa9d96b6f59c9ebaab06b461b611d832f0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2fe677a8_79250502",
+        "filename": "zephyr/emul/emul_kb_raw.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-02-08T04:23:13Z",
+      "side": 1,
+      "message": "nit: `ARG_UNUSED(dev);`",
+      "revId": "21e50fa9d96b6f59c9ebaab06b461b611d832f0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1dbc2d9d_31e62806",
+        "filename": "zephyr/emul/emul_kb_raw.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-02-08T04:23:13Z",
+      "side": 1,
+      "message": "nit: `ARG_UNUSED(dev); ARG_UNUSED(enable);`",
+      "revId": "21e50fa9d96b6f59c9ebaab06b461b611d832f0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "836c778c_c1c2dd02",
+        "filename": "zephyr/emul/emul_kb_raw.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-02-08T04:23:13Z",
+      "side": 1,
+      "message": "I\u0027m confused by this API, what does 0 mean? The comment on cros_kb_raw.h says \"bits are 1 if signal is present, 0 if not present\". So is this a bit field?\n\nMy recommendation would be to split this change into 2 and change the API to:\n\n```\nint (read_rows)(const struct device *dev, uint32_t *out);\n```\n\nHave the return value be the status, and the actual value written to out (assuming I\u0027m right about my understanding of what\u0027s going on).",
+      "revId": "21e50fa9d96b6f59c9ebaab06b461b611d832f0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01e4286a_3a9fbf69",
+        "filename": "zephyr/emul/emul_kb_raw.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-02-08T04:23:13Z",
+      "side": 1,
+      "message": "nit: please use the Zephyr style and include `{}` even on 1 line blocks.",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 85,
+        "endChar": 35
+      },
+      "revId": "21e50fa9d96b6f59c9ebaab06b461b611d832f0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9928d9fa_6228e3fa",
+        "filename": "zephyr/include/emul/emul_kb_raw.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-02-08T04:23:13Z",
+      "side": 1,
+      "message": "nit: missing `@return` documentation",
+      "revId": "21e50fa9d96b6f59c9ebaab06b461b611d832f0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
