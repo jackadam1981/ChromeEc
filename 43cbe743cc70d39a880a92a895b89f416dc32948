@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "421abca0_0fd52ab1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-02-08T00:59:18Z",
+      "side": 1,
+      "message": "huh this wasn\u0027t on the pinlist spreadsheet.\nMaybe add a comment on the DTS of the node explaining its use\nand the fact that the EC inits it but does not do anything else with it.\n",
+      "revId": "43cbe743cc70d39a880a92a895b89f416dc32948",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
