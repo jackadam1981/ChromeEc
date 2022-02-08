@@ -286,6 +286,7 @@ const void *const usb_strings[] = {
 	[USB_STR_USART3_STREAM_NAME]  = USB_STRING_DESC("DUT UART"),
 	[USB_STR_USART4_STREAM_NAME]  = USB_STRING_DESC("Atmega UART"),
 	[USB_STR_UPDATE_NAME]  = USB_STRING_DESC("Firmware update"),
+	[USB_STR_DFU_NAME]     = USB_STRING_DESC("DFU"),
 };
 
 BUILD_ASSERT(ARRAY_SIZE(usb_strings) == USB_STR_COUNT);
