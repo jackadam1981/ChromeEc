@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4be08cd8_074609f0",
+        "filename": "zephyr/dts/bindings/led/cros-ec,pwm-leds.yaml",
+        "patchSetId": 6
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-02-09T00:16:23Z",
+      "side": 1,
+      "message": "The order is matched against the array order of the color-map- properties.",
+      "range": {
+        "startLine": 17,
+        "startChar": 62,
+        "endLine": 18,
+        "endChar": 48
+      },
+      "revId": "801d31f8c5093453f02ceaac9cbec9f6e1ab65a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
