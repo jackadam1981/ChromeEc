@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c218f18b_907160d3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483835
+      },
+      "writtenOn": "2022-02-09T07:29:15Z",
+      "side": 1,
+      "message": "Dear Alll,\n\nI fix the MUX automatically search spi address method based on MUX address instead of TCPC address. This CL is tested PASS.\n\nBest Regards,\n\nTeddy",
+      "revId": "e3cef27c46d8eda6b34791a9b63cd380ff02f128",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
