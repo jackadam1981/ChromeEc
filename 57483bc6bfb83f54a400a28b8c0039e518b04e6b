@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c0e40405_1d9d2f8e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-02-09T23:00:05Z",
+      "side": 1,
+      "message": "Normally I would expect some changes in the *generated.dts files, to reflect whatever changes occurred in the spreadsheet and downloaded .csv file.\nWhat I have been doing is submitted these together, to reflect the fact\nthat the source and generated output is consistent, but as long as that is done in one of the other CLs, that should be fine.",
+      "revId": "57483bc6bfb83f54a400a28b8c0039e518b04e6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
