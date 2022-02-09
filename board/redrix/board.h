@@ -190,7 +190,7 @@
  * discharge current limit and what was tested to prevent the AP
  * rebooting with low charge level batteries.
  */
-#define CONFIG_CHARGER_BQ25710_IDCHG_LIMIT_MA	8192
+#define CONFIG_CHARGER_BQ25710_IDCHG_LIMIT_MA	7680
 #define CONFIG_CHARGER_BQ25720_VSYS_TH2_CUSTOM
 #define CONFIG_CHARGER_BQ25720_VSYS_TH2_DV	70
 #define CONFIG_CHARGE_RAMP_HW
