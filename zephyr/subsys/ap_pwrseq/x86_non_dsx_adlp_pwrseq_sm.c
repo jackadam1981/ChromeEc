@@ -24,6 +24,14 @@ static const struct chipset_pwrseq_config chip_cfg = {
 	.sys_rst_l = GPIO_DT_SPEC_GET(DT_DRV_INST(0), sys_rst_l_gpios),
 };
 
+struct power_signal_info power_signal_list[] = {
+#if DT_HAS_COMPAT_STATUS_OKAY(intel_ap_pwrseq_signal_list)
+	DT_FOREACH_CHILD(
+		POWER_SIGNALS_LIST_NODE,
+		GEN_POWER_SIGNAL_INFO_ENTRY)
+#endif
+};
+
 void ap_off(void)
 {
 	/* TODO: This could be added as g3action handler */
@@ -274,7 +282,7 @@ void init_chipset_pwr_seq_state(void)
 enum power_states_ndsx chipset_pwr_sm_run(enum power_states_ndsx curr_state,
 				 const struct common_pwrseq_config *com_cfg)
 {
-/* Add chipset specific state handling if any */
+	/* Add chipset specific state handling if any */
 	switch (curr_state) {
 	case SYS_POWER_STATE_G3S5:
 		g3s5_action_handler(com_cfg);
