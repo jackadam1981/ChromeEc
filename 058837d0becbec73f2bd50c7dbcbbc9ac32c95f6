@@ -189,6 +189,30 @@
       },
       "revId": "058837d0becbec73f2bd50c7dbcbbc9ac32c95f6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1699705a_5d8af1d6",
+        "filename": "chip/stm32/dfu_bootmanager.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1347380
+      },
+      "writtenOn": "2022-02-09T20:21:15Z",
+      "side": 1,
+      "message": "Done. exception_panic() has also been filled in as a proper default handler.",
+      "parentUuid": "5cf8a60c_301d9eea",
+      "range": {
+        "startLine": 214,
+        "startChar": 2,
+        "endLine": 214,
+        "endChar": 17
+      },
+      "revId": "058837d0becbec73f2bd50c7dbcbbc9ac32c95f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
