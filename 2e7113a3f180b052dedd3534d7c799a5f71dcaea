@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec2bbd5a_6fdbbc78",
+        "filename": "driver/ppc/ktu1125.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2022-02-09T17:02:28Z",
+      "side": 1,
+      "message": "Oh whoops, it was the clear path.",
+      "parentUuid": "fea9df33_1a84fd52",
+      "range": {
+        "startLine": 109,
+        "startChar": 5,
+        "endLine": 109,
+        "endChar": 23
+      },
+      "revId": "2e7113a3f180b052dedd3534d7c799a5f71dcaea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4c334993_8ef59636",
@@ -85,6 +109,30 @@
       "side": 1,
       "message": "That\u0027s the \"disable\" case, twong@ requested to clean both bits explicitly on b/207891241#comment21\n\nThis changed enabled CCD detection",
       "parentUuid": "4c334993_8ef59636",
+      "range": {
+        "startLine": 362,
+        "startChar": 5,
+        "endLine": 362,
+        "endChar": 23
+      },
+      "revId": "2e7113a3f180b052dedd3534d7c799a5f71dcaea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fda3d2d5_f5f3e409",
+        "filename": "driver/ppc/ktu1125.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 362,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2022-02-09T17:02:28Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "625158f1_466cd33e",
       "range": {
         "startLine": 362,
         "startChar": 5,
