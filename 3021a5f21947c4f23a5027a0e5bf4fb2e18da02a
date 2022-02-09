@@ -3,6 +3,115 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "87cbb6df_f4509491",
+        "filename": "include/write_protect.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-02-09T00:46:24Z",
+      "side": 1,
+      "message": "Change to bool type if possible.",
+      "range": {
+        "startLine": 14,
+        "startChar": 14,
+        "endLine": 14,
+        "endChar": 17
+      },
+      "revId": "3021a5f21947c4f23a5027a0e5bf4fb2e18da02a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4717dc96_cf24a009",
+        "filename": "include/write_protect.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-02-09T00:46:24Z",
+      "side": 1,
+      "message": "Put the CONFIG_WP_ALWAYS check into this function.",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 1
+      },
+      "revId": "3021a5f21947c4f23a5027a0e5bf4fb2e18da02a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d243e116_1a241729",
+        "filename": "include/write_protect.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-02-09T00:46:24Z",
+      "side": 1,
+      "message": "Add a comment that \"value\" sets the logical level of the GPIO",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 47
+      },
+      "revId": "3021a5f21947c4f23a5027a0e5bf4fb2e18da02a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11b7b2ab_c75ca7c5",
+        "filename": "zephyr/projects/nissa/nissa.csv",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-02-09T00:46:24Z",
+      "side": 1,
+      "message": "Submit this file as a separate CL.",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 131
+      },
+      "revId": "3021a5f21947c4f23a5027a0e5bf4fb2e18da02a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e06b122_593ce668",
+        "filename": "zephyr/shim/include/zephyr_write_protect.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-02-09T00:46:24Z",
+      "side": 1,
+      "message": "Add check of CONFIG_WP_ALWAYS",
+      "revId": "3021a5f21947c4f23a5027a0e5bf4fb2e18da02a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bda691b8_dd9a02dd",
         "filename": "zephyr/shim/include/zephyr_write_protect.h",
         "patchSetId": 1
