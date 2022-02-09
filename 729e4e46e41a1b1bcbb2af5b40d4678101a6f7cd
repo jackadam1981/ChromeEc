@@ -473,6 +473,24 @@
       "parentUuid": "8e49091e_bbce09b2",
       "revId": "729e4e46e41a1b1bcbb2af5b40d4678101a6f7cd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "18111be0_c3c37d6e",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-02-09T23:13:58Z",
+      "side": 1,
+      "message": "Yes, either way is fine, there are pros and cons for each.\nConditional compilation removes it from the code and data completely, but it can litter the codebase and sometimes make it confusing.\nI\u0027m fine the way it is, but if you wanted to clean up the initial config with some macro magic, you could have a PWRSEQ_GPIO_DT_SPEC_GET_OPTIONAL that only set the value if the property is present. The macro would have 2 arguments, one being the name of the struct member, the other the GPIO property.\nMaybe that\u0027s a bit unnecessary though.",
+      "parentUuid": "f9714132_de51f54b",
+      "revId": "729e4e46e41a1b1bcbb2af5b40d4678101a6f7cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
