@@ -6,6 +6,4 @@
 #ifndef __ZEPHYR_GPIO_MAP_H
 #define __ZEPHYR_GPIO_MAP_H
 
-#define GPIO_TEMP_SENSOR_POWER GPIO_PG_EC_DSW_PWROK
-
 #endif /* __ZEPHYR_GPIO_MAP_H */

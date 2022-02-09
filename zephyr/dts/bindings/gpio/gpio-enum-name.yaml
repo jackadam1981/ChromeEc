@@ -115,6 +115,7 @@ properties:
       - GPIO_SYS_RESET_L
       - GPIO_SYS_RST_ODL
       - GPIO_TABLET_MODE_L
+      - GPIO_TEMP_SENSOR_POWER
       - GPIO_TEST
       - GPIO_USB_A0_OC_ODL
       - GPIO_USB_C0_BC12_INT_L
