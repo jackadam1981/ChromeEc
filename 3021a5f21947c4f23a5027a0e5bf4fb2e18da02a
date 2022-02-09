@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c458d1af_f731cc27",
+        "filename": "include/write_protect.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2022-02-09T14:33:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "87cbb6df_f4509491",
+      "range": {
+        "startLine": 14,
+        "startChar": 14,
+        "endLine": 14,
+        "endChar": 17
+      },
+      "revId": "3021a5f21947c4f23a5027a0e5bf4fb2e18da02a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4717dc96_cf24a009",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-02-09T00:46:24Z",
       "side": 1,
       "message": "Put the CONFIG_WP_ALWAYS check into this function.",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 1
+      },
+      "revId": "3021a5f21947c4f23a5027a0e5bf4fb2e18da02a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "007c2ce3_740e88be",
+        "filename": "include/write_protect.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2022-02-09T14:33:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4717dc96_cf24a009",
       "range": {
         "startLine": 15,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "90fb065d_f92ea141",
+        "filename": "include/write_protect.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2022-02-09T14:33:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d243e116_1a241729",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 47
+      },
+      "revId": "3021a5f21947c4f23a5027a0e5bf4fb2e18da02a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "11b7b2ab_c75ca7c5",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-02-09T00:46:24Z",
       "side": 1,
       "message": "Submit this file as a separate CL.",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 131
+      },
+      "revId": "3021a5f21947c4f23a5027a0e5bf4fb2e18da02a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "db2598cb_cbf2c5bb",
+        "filename": "zephyr/projects/nissa/nissa.csv",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2022-02-09T14:33:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "11b7b2ab_c75ca7c5",
       "range": {
         "startLine": 1,
         "startChar": 0,
@@ -110,6 +206,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb863189_6d97630d",
+        "filename": "zephyr/shim/include/zephyr_write_protect.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2022-02-09T14:33:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9e06b122_593ce668",
+      "revId": "3021a5f21947c4f23a5027a0e5bf4fb2e18da02a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bda691b8_dd9a02dd",
@@ -123,6 +237,24 @@
       "writtenOn": "2022-02-09T00:33:31Z",
       "side": 1,
       "message": "Slight nit, prefer if you swap the conditional around.",
+      "revId": "3021a5f21947c4f23a5027a0e5bf4fb2e18da02a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e804f3ce_54c6e65a",
+        "filename": "zephyr/shim/include/zephyr_write_protect.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2022-02-09T14:33:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bda691b8_dd9a02dd",
       "revId": "3021a5f21947c4f23a5027a0e5bf4fb2e18da02a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
