@@ -292,7 +292,7 @@
 
 &i2c0 {
 	status = "okay";
-	clock-frequency = <I2C_BITRATE_STANDARD>;
+	clock-frequency = <I2C_BITRATE_FAST>;
 };
 
 &i2c1 {
@@ -302,12 +302,12 @@
 
 &i2c2 {
 	status = "okay";
-	clock-frequency = <I2C_BITRATE_STANDARD>;
+	clock-frequency = <I2C_BITRATE_FAST>;
 };
 
 &i2c4 {
 	status = "okay";
-	clock-frequency = <I2C_BITRATE_STANDARD>;
+	clock-frequency = <I2C_BITRATE_FAST>;
 };
 
 &uart1 {
