@@ -111,7 +111,7 @@ config PLATFORM_EC_USB_PD_TCPC_VCONN
 	  present. Some TCPC/PPC can't handle 5V on its host-side CC pins, so
           disable this config in those cases.
 
-ksource "Kconfig.tcpm"
+rsource "Kconfig.tcpm"
 
 config PLATFORM_EC_CONSOLE_CMD_PPC_DUMP
 	bool "Console command: ppc_dump"
