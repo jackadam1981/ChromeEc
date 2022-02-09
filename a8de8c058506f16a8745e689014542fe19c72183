@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ed2a1ae_c817bb25",
+        "filename": "zephyr/projects/nissa/common_power.dts",
+        "patchSetId": 16
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2022-02-09T18:50:39Z",
+      "side": 1,
+      "message": "Please remove all the delay configuration which are same as the default values.",
+      "revId": "a8de8c058506f16a8745e689014542fe19c72183",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fdf77d49_f3e7590f",
+        "filename": "zephyr/projects/nissa/common_power.dts",
+        "patchSetId": 16
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2022-02-09T18:50:39Z",
+      "side": 1,
+      "message": "With latest change, flag field is set to 0 from the .dts.",
+      "revId": "a8de8c058506f16a8745e689014542fe19c72183",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
