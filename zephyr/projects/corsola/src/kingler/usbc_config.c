@@ -126,8 +126,6 @@ void board_tcpc_init(void)
 
 	/* Enable PPC interrupts */
 	gpio_enable_interrupt(GPIO_USB_C0_TCPC_INT_ODL);
-	if (corsola_get_db_type() == CORSOLA_DB_TYPEC)
-		gpio_enable_interrupt(GPIO_USB_C1_PPC_INT_ODL);
 
 	/* Enable TCPC interrupts */
 	gpio_enable_interrupt(GPIO_USB_C0_TCPC_INT_ODL);
