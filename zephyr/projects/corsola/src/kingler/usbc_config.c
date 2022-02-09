@@ -134,9 +134,6 @@ void board_tcpc_init(void)
 	 * does look like a typo.
 	 */
 	gpio_enable_dt_interrupt(GPIO_INT_FROM_NODELABEL(int_usb_c0_tcpc));
-	if (corsola_get_db_type() == CORSOLA_DB_TYPEC)
-		gpio_enable_dt_interrupt(
-			GPIO_INT_FROM_NODELABEL(int_x_ec_gpio2));
 
 	/* Enable TCPC interrupts */
 	gpio_enable_dt_interrupt(GPIO_INT_FROM_NODELABEL(int_usb_c0_tcpc));
