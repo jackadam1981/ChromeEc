@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bda691b8_dd9a02dd",
+        "filename": "zephyr/shim/include/zephyr_write_protect.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-02-09T00:33:31Z",
+      "side": 1,
+      "message": "Slight nit, prefer if you swap the conditional around.",
+      "revId": "3021a5f21947c4f23a5027a0e5bf4fb2e18da02a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
