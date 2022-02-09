@@ -20,8 +20,7 @@ Refer to the [named-gpios.yaml] child-binding file for details about gpio proper
 
 ## Board Specific Code
 
-If GPIO pins are used to control the USB Type-A port power, the pins must be added
-to an array named usb_port_enable[].
+none
 
 ## Threads
 
@@ -54,17 +53,10 @@ en_usb_a_5v {
 	enum-name = "GPIO_EN_USB_A_5V";
 };
 ```
-The following code defines the pin name in the usb_port_enable array.
-
-```
-const int usb_port_enable[USB_PORT_COUNT] = {
-        GPIO_EN_USB_A_5V,
-};
-```
 
 The system defines USB_PORT_COUNT as CONFIG_PLATFORM_EC_USB_A_PORT_COUNT
 
-[USBA]: ../ec_terms.md#usba <TODO: ADD THIS EC TERM>
+[USBA]: ../ec_terms.md#usba
 [Kconfig.usba]:
 https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/Kconfig.usba
 [named-gpios.yaml]: ../../zephyr/dts/bindings/gpio/named-gpios.yaml
