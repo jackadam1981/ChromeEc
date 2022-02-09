@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "92b959cf_736f9d4c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-02-09T03:35:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "849c9af5_1f44d22a",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 7
+      },
+      "revId": "66ba1033ef6ceb2206593168349e6968132e7281",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9f64e5ef_4a439bce",
@@ -37,6 +61,24 @@
       "writtenOn": "2022-02-08T17:34:34Z",
       "side": 1,
       "message": "How about adding a GPIO device handle to this structure?  This would be redundant with the enable_gpio enum stored in fan_conf. Chromebooks typically only have one fan, so this will consume only 4 bytes of data.",
+      "revId": "66ba1033ef6ceb2206593168349e6968132e7281",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e060a0b8_8d118760",
+        "filename": "zephyr/shim/src/fan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-02-09T03:35:22Z",
+      "side": 1,
+      "message": "I played around with different ideas here, but it gets a little messy.\nObtaining the ptr at compile time isn\u0027t an option since it is declared\nas a pointer (and a compile time pointer assignment won\u0027t work) in shim/src/gpio.c\nSo we could keep a gpio_dt_spec as a structure and use GPIO_DT_GET_SPEC, but we run into the 32 bit flag vs 8 bit flag issue, so a custom macro would be needed.\nIt would be nice to put this into a const structure.\nAll this to avoid a single gpio_get_dt_spec() call seems a bit excessive.\nIt may be better to do some other cleanup first, before some better options\nbecome available.",
+      "parentUuid": "9f64e5ef_4a439bce",
       "revId": "66ba1033ef6ceb2206593168349e6968132e7281",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
