@@ -4,6 +4,7 @@
  */
 
 #include <shell/shell.h>
+#include <stdlib.h>
 #include <x86_non_dsx_common_pwrseq_sm_handler.h>
 
 LOG_MODULE_DECLARE(ap_pwrseq, 4);
@@ -21,6 +22,63 @@ static int powerinfo_handler(const struct shell *shell, size_t argc,
 }
 
 SHELL_CMD_REGISTER(powerinfo, NULL, NULL, powerinfo_handler);
+
+static const char *get_power_signal_name(enum power_signal signal)
+{
+	const struct power_signal_gpio_info *s = power_signal_gpio_list;
+	const struct power_signal_vw_info *vw = power_signal_vw_list;
+	int i;
+
+	for (i = 0; i < power_signal_vw_count; i++, vw++) {
+		if (signal == vw->power_sig)
+			return vw->name;
+	}
+	for (i = 0; i < power_signal_gpio_count; i++, s++) {
+		if (signal == s->power_sig)
+			return s->name;
+	}
+
+	return "Not listed";
+}
+
+static int powerindebug_handler(const struct shell *shell, size_t argc,
+							char **argv)
+{
+	int i;
+	char *e;
+
+	/* If one arg, set the mask */
+	if (argc == 2) {
+		int m = strtol(argv[1], &e, 0);
+
+		if (*e)
+			return -EINVAL;
+
+		pwrseq_set_debug_signals(m);
+	}
+
+	/* Print the mask */
+	shell_fprintf(shell, SHELL_INFO, "power in:   0x%04x\n",
+						pwrseq_get_input_signals());
+	shell_fprintf(shell, SHELL_INFO, "debug mask: 0x%04x\n",
+						pwrseq_get_debug_signals());
+
+	/* Print the decode */
+	shell_fprintf(shell, SHELL_INFO, "bit meanings:\n");
+	for (i = 0; i < POWER_SIGNAL_COUNT; i++) {
+		int mask = 1 << i;
+
+		shell_fprintf(shell, SHELL_INFO, "  0x%04x %d %s\n",
+			mask, pwrseq_get_input_signals() & mask ? 1 : 0,
+			get_power_signal_name(i));
+	}
+
+	return 0;
+};
+
+SHELL_CMD_REGISTER(powerindebug, NULL,
+	"[mask] Get/set power input debug mask", powerindebug_handler);
+
 
 static int apshutdown_handler(const struct shell *shell, size_t argc,
 							char **argv)
