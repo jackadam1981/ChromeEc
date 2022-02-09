@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c31d4af0_15ca65e9",
+        "filename": "zephyr/projects/brya/brya/prj.conf",
+        "patchSetId": 2
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-02-09T02:04:37Z",
+      "side": 1,
+      "message": "I guess this should be applicable for all NPCX9 series. we should change default stack size in zephyr/Kconfig.stacks for all NPCX9 based platforms.",
+      "range": {
+        "startLine": 202,
+        "startChar": 1,
+        "endLine": 202,
+        "endChar": 34
+      },
+      "revId": "d8e64db8a3f7d7c463280dd082c10970362f2579",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
