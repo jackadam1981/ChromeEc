@@ -34,6 +34,24 @@
       "parentUuid": "258dbe9c_99ea44f6",
       "revId": "fb2bdc9cc2a62b3989d8cbe655c916401a01b761",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3cf5a23b_c55b0af0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2022-02-09T18:53:32Z",
+      "side": 1,
+      "message": "Feel free to CQ+2 for now. But I\u0027m still curious where can I find SCH for sensors to verofy GPIOs. I don\u0027t see any interrupts connected from IMU/Accel sensors to EC which raises a question - how will that work?",
+      "parentUuid": "ad5f24f5_96a603ac",
+      "revId": "fb2bdc9cc2a62b3989d8cbe655c916401a01b761",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
