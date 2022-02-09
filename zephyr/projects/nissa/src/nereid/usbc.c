@@ -58,13 +58,57 @@ void board_pd_vconn_ctrl(int port, enum usbpd_cc_pin cc_pin, int enabled)
 			!!enabled);
 }
 
-/*
- * TODO(b/201000844): Fill in missing functions.
- */
-
 int board_set_active_charge_port(int port)
 {
-	return EC_SUCCESS;
+	int is_real_port = (port >= 0 && port < board_get_usb_pd_port_count());
+	int i;
+	int old_port;
+	int rv;
+
+	if (!is_real_port && port != CHARGE_PORT_NONE)
+		return EC_ERROR_INVAL;
+
+	old_port = charge_manager_get_active_charge_port();
+	CPRINTS("Charge update: p%d -> p%d", old_port, port);
+
+	/* Check if port is sourcing VBUS. */
+	if (port != CHARGE_PORT_NONE && charger_is_sourcing_otg_power(port)) {
+		CPRINTS("Skip enable p%d: already sourcing", port);
+		return EC_ERROR_INVAL;
+	}
+
+	/* Disable sinking on all ports except the desired one */
+	for (i = 0; i < board_get_usb_pd_port_count(); i++) {
+		if (i == port)
+			continue;
+
+		if (sm5803_vbus_sink_enable(i, 0))
+			/*
+			 * Do not early-return because this can fail during
+			 * power-on which would put us into a loop.
+			 */
+			CPRINTS("p%d: sink path disable failed.", i);
+	}
+
+	/* Don't enable anything (stop here) if no ports were requested */
+	if (port == CHARGE_PORT_NONE)
+		return EC_SUCCESS;
+
+	/*
+	 * Stop the charger IC from switching while changing ports.  Otherwise,
+	 * we can overcurrent the adapter we're switching to. (crbug.com/926056)
+	 */
+	if (old_port != CHARGE_PORT_NONE)
+		charger_discharge_on_ac(1);
+
+	/* Enable requested charge port. */
+	if ((rv = sm5803_vbus_sink_enable(port, 1)))
+		CPRINTS("p%d: sink path enable failed.", port);
+
+	/* Allow the charger IC to begin/continue switching. */
+	charger_discharge_on_ac(0);
+
+	return rv;
 }
 
 uint16_t tcpc_get_alert_status(void)
@@ -93,6 +137,10 @@ uint16_t tcpc_get_alert_status(void)
 	return status;
 }
 
+/*
+ * TODO(b/201000844): Fill in missing functions.
+ */
+
 void pd_power_supply_reset(int port)
 {
 	int prev_en;
@@ -120,6 +168,8 @@ int pd_set_power_supply_ready(int port)
 
 void board_reset_pd_mcu(void)
 {
+	// TODO: reset the port 1 TCPC; port 0 handles it through an interrupt
+	// to the drive code.
 }
 
 #define INT_RECHECK_US	5000

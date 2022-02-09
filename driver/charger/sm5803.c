@@ -1584,12 +1584,15 @@ static enum ec_error_list sm5803_get_option(int chgnum, int *option)
 
 	rv = chg_read8(chgnum, SM5803_REG_FLOW1, &reg);
 	control = reg;
+	//CPRINTS("SM5803 read flow1 %#x -> %d", reg, rv);
 
 	rv |= chg_read8(chgnum, SM5803_REG_FLOW2, &reg);
 	control |= reg << 8;
+	//CPRINTS("SM5803 read flow2 %#x -> %d", reg, rv);
 
 	rv |= chg_read8(chgnum, SM5803_REG_FLOW3, &reg);
 	control |= reg << 16;
+	//CPRINTS("SM5803 read flow3 %#x -> %d", reg, rv);
 
 	return rv;
 }
