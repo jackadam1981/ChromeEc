@@ -264,6 +264,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "61829cab_39b90e88",
+        "filename": "zephyr/subsys/ap_pwrseq/include/x86_non_dsx_common_pwrseq_sm_handler.h",
+        "patchSetId": 23
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2022-02-09T18:46:43Z",
+      "side": 1,
+      "message": "Thanks, that will also indicate that the configuration must be done in the .c file. Done now.",
+      "parentUuid": "4d88a1b8_368d9cfa",
+      "revId": "729e4e46e41a1b1bcbb2af5b40d4678101a6f7cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "20337b06_87b25929",
@@ -435,6 +453,24 @@
       "side": 1,
       "message": "This is a compact version and would be nice, but the same issue applies here with the compilation of flags for GPIO_DT_SPEC. unsigned char\u0027 changes value from \u0027256\u0027 to \u00270\u0027",
       "parentUuid": "bcf984d6_91aeeb7c",
+      "revId": "729e4e46e41a1b1bcbb2af5b40d4678101a6f7cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9714132_de51f54b",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2022-02-09T18:46:43Z",
+      "side": 1,
+      "message": "Looking at this again I think this check is better, since it would save few bytes (gpio_dt_spec) for the element, and also in the code otherwise there would be a need to check these specifically for a special case to skip and not fail if the gpio_dt_spec is NULL.",
+      "parentUuid": "8e49091e_bbce09b2",
       "revId": "729e4e46e41a1b1bcbb2af5b40d4678101a6f7cd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
