@@ -16,6 +16,23 @@
       "message": "Somehow this seems to be running an old version of the script without the -i option. I\u0027m just going to try again.\n\nusage: kconfig_check.py [-h] [-a ALLOWED] [-c CONFIGS] [-d] [-D]\n                        [-I SEARCH_PATH] [-p PREFIX] [-s SRCTREE]\n                        {check} ...\nkconfig_check.py: error: argument cmd: invalid choice: \u0027AUDIO_CODEC\u0027 (choose from \u0027check\u0027)",
       "revId": "b84b5aba1787d745feec6245f300db1c8940f6b0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "733a8413_0a7ac7ce",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2022-02-09T00:45:49Z",
+      "side": 1,
+      "message": "Hmmm, not sure why that is different, perhaps the rebase helped. Trying to submit.",
+      "revId": "b84b5aba1787d745feec6245f300db1c8940f6b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
