@@ -471,13 +471,21 @@ __override int board_get_version(void)
 	static int adlrvp_board_id;
 
 	int port0, port1;
-	int fab_id, board_id, bom_id;
+	int fab_id, board_id = -1, bom_id, i;
 
 	/* Board ID is already read */
 	if (adlrvp_board_id)
 		return adlrvp_board_id;
 
-	if (ioexpander_read_intelrvp_version(&port0, &port1))
+	for (i = 0; i < ADL_BOARD_ID_READ_RETRY_CNT; i++) {
+		if (!ioexpander_read_intelrvp_version(&port0, &port1)) {
+			board_id = 0;
+			break;
+		}
+	}
+
+	/* Board ID read failed */
+	if (board_id == -1)
 		return -1;
 	/*
 	 * Port0: bit 0   - BOM ID(2)
