@@ -451,7 +451,8 @@ class Zmake:
 
         build_dir = build_dir.resolve()
         found_projects = zmake.project.find_projects(build_dir / "project")
-        project = found_projects[(build_dir / "project_name.txt").read_text()]
+        project_name = (build_dir / "project_name.txt").read_text()
+        project = found_projects[project_name]
 
         # Compute the version string.
         version_string = zmake.version.get_version_string(
@@ -463,8 +464,10 @@ class Zmake:
         # The version header needs to generated during the build phase
         # instead of configure, as the tree may have changed since
         # configure was run.
+        cros_fwid = zmake.version.get_cros_fwid(project_name)
         zmake.version.write_version_header(
             version_string,
+            cros_fwid,
             build_dir / "include" / "ec_version.h",
         )
 
@@ -709,8 +712,10 @@ class Zmake:
         # The version header needs to generated during the build phase
         # instead of configure, as the tree may have changed since
         # configure was run.
+        cros_fwid = zmake.version.get_cros_fwid(project.config.project_name)
         zmake.version.write_version_header(
             version_string,
+            cros_fwid,
             build_dir / "include" / "ec_version.h",
         )
 
