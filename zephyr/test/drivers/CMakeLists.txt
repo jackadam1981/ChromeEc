@@ -56,3 +56,5 @@ target_sources(app PRIVATE
   src/utils.c
   src/watchdog.c
 )
+
+add_subdirectory(isl923x)
