@@ -7,6 +7,7 @@
 #include <ztest.h>
 #include "ec_app_main.h"
 #include "test_state.h"
+#include "system.h"
 
 bool drivers_predicate_pre_main(const void *state)
 {
@@ -23,6 +24,9 @@ void test_main(void)
 	struct test_state state = {
 		.ec_app_main_run = false,
 	};
+
+	/* Until b/218518083 is fixed. */
+	system_set_reset_flags(EC_RESET_FLAG_AP_OFF);
 
 	/* Run all the suites that depend on main not being called yet */
 	ztest_run_test_suites(&state);
