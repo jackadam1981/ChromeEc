@@ -254,6 +254,34 @@ ZTEST_F(integration_usb_attach_src_then_snk, verify_snk_port_pd_info)
 		      DEFAULT_VBUS_MV * DEFAULT_VBUS_MA, response.max_power);
 }
 
+ZTEST_F(integration_usb_attach_src_then_snk, verify_snk_port_typec_status)
+{
+	struct ec_params_typec_status params = { .port = SNK_PORT };
+	struct ec_response_typec_status response;
+	struct host_cmd_handler_args args =
+		BUILD_HOST_COMMAND(EC_CMD_TYPEC_STATUS, 0, response, params);
+
+	/* Assume */
+	zassume_ok(host_command_process(&args), "Failed to get Type-C state");
+
+	/* Assert */
+	zassert_true(response.pd_enabled, "Charger attached but PD disabled");
+
+	zassert_true(response.dev_connected,
+		     "Charger attached but device disconnected");
+
+	zassert_true(response.sop_connected,
+		     "Charger attached but not SOP capable");
+
+	/* zassert_equal(typec_response.source_cap_count, source_cap_count, */
+	/* 		"Charger has %d source PDOs", */
+	/* 		typec_response.source_cap_count); */
+
+	zassert_equal(response.power_role, PD_ROLE_SINK,
+		      "Charger attached, but TCPM power role is %d",
+		      response.power_role);
+}
+
 ZTEST_F(integration_usb_attach_src_then_snk, verify_src_port_pd_info)
 {
 	struct ec_params_usb_pd_power_info params = { .port = SRC_PORT };
