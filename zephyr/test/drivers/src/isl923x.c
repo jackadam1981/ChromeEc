@@ -193,6 +193,99 @@ ZTEST(isl923x, test_isl923x_set_input_current_limit)
 	}
 }
 
+ZTEST(isl923x, test_isl923x_amonbmon)
+{
+	const struct emul *isl923x_emul = ISL923X_EMUL;
+	struct i2c_emul *i2c_emul = isl923x_emul_get_i2c_emul(isl923x_emul);
+	int current_milli_amps;
+
+	zassert_ok(shell_execute_cmd(get_ec_shell(), "amonbmon a 0"), NULL);
+	zassert_ok(shell_execute_cmd(get_ec_shell(), "amonbmon ac 0"), NULL);
+	zassert_ok(shell_execute_cmd(get_ec_shell(), "amonbmon ad 0"), NULL);
+
+	zassert_ok(shell_execute_cmd(get_ec_shell(), "amonbmon b 0"), NULL);
+	zassert_ok(shell_execute_cmd(get_ec_shell(), "amonbmon bc 0"), NULL);
+	zassert_ok(shell_execute_cmd(get_ec_shell(), "amonbmon bd 0"), NULL);
+
+	zassert_equal(EC_ERROR_PARAM2,
+		      shell_execute_cmd(get_ec_shell(), "amonbmon a x"), NULL);
+
+	isl923x_emul_reset(isl923x_emul);
+
+	zassert_ok(isl923x_drv.get_input_current(CHARGER_NUM,
+						 &current_milli_amps),
+		   NULL);
+
+	/* Attempt fail reads */
+	i2c_common_emul_set_read_fail_reg(i2c_emul, ISL923X_REG_CONTROL1);
+	zassert_equal(EC_ERROR_INVAL,
+		      isl923x_drv.get_input_current(CHARGER_NUM,
+						    &current_milli_amps),
+		      NULL);
+	zassert_equal(EC_ERROR_INVAL,
+		      shell_execute_cmd(get_ec_shell(), "amonbmon a 0"), NULL);
+	i2c_common_emul_set_read_fail_reg(i2c_emul,
+					  I2C_COMMON_EMUL_NO_FAIL_REG);
+
+	i2c_common_emul_set_read_fail_reg(i2c_emul, ISL9238_REG_CONTROL3);
+	zassert_equal(EC_ERROR_INVAL,
+		      isl923x_drv.get_input_current(CHARGER_NUM,
+						    &current_milli_amps),
+		      NULL);
+	i2c_common_emul_set_read_fail_reg(i2c_emul,
+					  I2C_COMMON_EMUL_NO_FAIL_REG);
+
+	/* Attempt fail writes */
+	i2c_common_emul_set_write_fail_reg(i2c_emul, ISL923X_REG_CONTROL1);
+	zassert_equal(EC_ERROR_INVAL,
+		      isl923x_drv.get_input_current(CHARGER_NUM,
+						    &current_milli_amps),
+		      NULL);
+	i2c_common_emul_set_write_fail_reg(i2c_emul,
+					   I2C_COMMON_EMUL_NO_FAIL_REG);
+
+	i2c_common_emul_set_write_fail_reg(i2c_emul, ISL9238_REG_CONTROL3);
+	zassert_equal(EC_ERROR_INVAL,
+		      isl923x_drv.get_input_current(CHARGER_NUM,
+						    &current_milli_amps),
+		      NULL);
+	i2c_common_emul_set_write_fail_reg(i2c_emul,
+					   I2C_COMMON_EMUL_NO_FAIL_REG);
+}
+
+ZTEST(isl923x, test_isl923x_psys)
+{
+	zassert_ok(shell_execute_cmd(get_ec_shell(), "psys"), NULL);
+}
+
+ZTEST(isl923x, test_isl923x_ramp)
+{
+	const struct emul *isl923x_emul = ISL923X_EMUL;
+	struct i2c_emul *i2c_emul = isl923x_emul_get_i2c_emul(isl923x_emul);
+
+	zassert_ok(isl923x_drv.set_hw_ramp(CHARGER_NUM, 1), NULL);
+
+	i2c_common_emul_set_read_fail_reg(i2c_emul, ISL923X_REG_CONTROL0);
+	zassert_equal(EC_ERROR_INVAL, isl923x_drv.set_hw_ramp(CHARGER_NUM, 1),
+		      NULL);
+	i2c_common_emul_set_read_fail_reg(i2c_emul,
+					  I2C_COMMON_EMUL_NO_FAIL_REG);
+
+	zassert_ok(isl923x_drv.ramp_is_stable(CHARGER_NUM), NULL);
+	zassert_true(isl923x_drv.ramp_is_detected(CHARGER_NUM), NULL);
+
+	zassert_ok(isl923x_drv.set_input_current_limit(CHARGER_NUM, 512), NULL);
+	zassert_equal(512, isl923x_drv.ramp_get_current_limit(CHARGER_NUM),
+		      NULL);
+
+	/* Attempt fail read */
+	i2c_common_emul_set_read_fail_reg(i2c_emul,
+					  ISL923X_REG_ADAPTER_CURRENT_LIMIT1);
+	zassert_equal(0, isl923x_drv.ramp_get_current_limit(CHARGER_NUM), NULL);
+	i2c_common_emul_set_read_fail_reg(i2c_emul,
+					  I2C_COMMON_EMUL_NO_FAIL_REG);
+}
+
 ZTEST(isl923x, test_manufacturer_id)
 {
 	const struct emul *isl923x_emul = ISL923X_EMUL;
@@ -615,8 +708,14 @@ ZTEST(isl923x, test_init)
 	zassert_ok(isl923x_drv.get_input_current_limit(CHARGER_NUM,
 						       &input_current),
 		   NULL);
-	zassert_equal(0, input_current,
-		      "Expected input current 0mV but got %dmV", input_current);
+	if (IS_ENABLED(CONFIG_CHARGE_RAMP_HW))
+		zassert_equal(512, input_current,
+			      "Expected input current 512mV but got %dmV",
+			      input_current);
+	else
+		zassert_equal(0, input_current,
+			      "Expected input current 0mV but got %dmV",
+			      input_current);
 
 	/* Test failed CTRL 0 write */
 	isl923x_emul_reset(isl923x_emul);
@@ -627,8 +726,14 @@ ZTEST(isl923x, test_init)
 	zassert_ok(isl923x_drv.get_input_current_limit(CHARGER_NUM,
 						       &input_current),
 		   NULL);
-	zassert_equal(0, input_current,
-		      "Expected input current 0mV but got %dmV", input_current);
+	if (IS_ENABLED(CONFIG_CHARGE_RAMP_HW))
+		zassert_equal(512, input_current,
+			      "Expected input current 512mV but got %dmV",
+			      input_current);
+	else
+		zassert_equal(0, input_current,
+			      "Expected input current 0mV but got %dmV",
+			      input_current);
 
 	/* Test failed CTRL 3 read */
 	isl923x_emul_reset(isl923x_emul);
