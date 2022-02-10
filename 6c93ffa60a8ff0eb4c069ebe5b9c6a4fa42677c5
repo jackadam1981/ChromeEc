@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b678caab_616e35d6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-02-10T18:17:40Z",
+      "side": 1,
+      "message": "Wrong bug link?",
+      "range": {
+        "startLine": 11,
+        "startChar": 3,
+        "endLine": 11,
+        "endChar": 15
+      },
+      "revId": "6c93ffa60a8ff0eb4c069ebe5b9c6a4fa42677c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d7a7b447_22ff84a9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-02-10T18:17:40Z",
+      "side": 1,
+      "message": "I wonder if we could also make either a build-time or run-time warning to set this CONFIG based on what we see coming back from `board_vivaldi_keybd_config()`? ",
+      "revId": "6c93ffa60a8ff0eb4c069ebe5b9c6a4fa42677c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
