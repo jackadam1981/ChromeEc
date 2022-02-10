@@ -33,6 +33,24 @@
       "message": "eric: should I remove this line too?",
       "revId": "9334000e41155ccd2b84f4249bf0bd7acf3675f0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7de29010_986a1c43",
+        "filename": "zephyr/projects/corsola/src/kingler/usbc_config.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2022-02-10T02:05:26Z",
+      "side": 1,
+      "message": "Yes, this line can be dropped.",
+      "parentUuid": "b54d1080_49fb12e7",
+      "revId": "9334000e41155ccd2b84f4249bf0bd7acf3675f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
