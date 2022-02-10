@@ -1,0 +1,35 @@
+# Here you can place files of interest to be included in the commit message for
+# merge commits to firmware-brya-14505.B
+#
+# Brya adopts the same branching strategy as go/dedede-ec-branching-strategy
+# No separate cherry-picks allowed for EC repo in the firmware branch.
+# How to perform a merge:
+# $ cd /path/to/src/platform/ec
+# $ git checkout cros/main
+# $ util/update_release_branch.py --baseboard brya --relevant_paths_file
+#   baseboard/brya/relevant-paths.txt firmware-brya-14505.B-master
+# $ make -j 72 buildall
+# $ repo upload --cbr . --no-verify
+# Assign one of Brya EC engineers as a reviewer
+#
+common/charge_state_v2.c
+common/usbc/usb_sm.c
+common/usbc/*_pd_*
+common/usbc/dp_alt_mode.c
+common/usbc/usb_prl_sm.c
+common/usbc/usb_pe_drp_sm.c
+common/usb_charger.c
+common/usb_common.c
+common/usbc_ocp.c
+driver/bc12/pi3usb9201_public.*
+driver/charger/bq25710.*
+driver/ppc/nx20p348x.*
+driver/ppc/syv682x_public.*
+driver/retimer/bb_retimer_public.*
+driver/tcpm/nct38xx.*
+driver/tcpm/ps8xxx_public.*
+driver/tcpm/tcpci.*
+include/power/alderlake*
+include/intel_x86.h
+power/alderlake*
+power/intel_x86.c
