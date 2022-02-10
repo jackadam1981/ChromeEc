@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e567167_ff00244c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-02-10T23:14:38Z",
+      "side": 1,
+      "message": "if this message is  fully auto-generated, the script should add a note about how it was invoked to generate this patch:\n\nutil/update_release_branch.py --baseboard brya --relevant_paths_file baseboard/brya/relevant-paths.txt firmware-brya-14505.B-main\n\nelse, add it manually.",
+      "revId": "1f68afe461c2db53c57faa27733a78c1b61e807f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
