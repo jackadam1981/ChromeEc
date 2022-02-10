@@ -1,0 +1,257 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dfa322dc_edc23a61",
+        "filename": "docs/zephyr/zephyr_battery.md",
+        "patchSetId": 67
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-02-10T20:14:30Z",
+      "side": 1,
+      "message": "BC1.2 is independent of this battery support.  BC1.2 is the specification for how devices can negotiate power on a USB interface, without using USB power-delivery.  So remove this link.",
+      "range": {
+        "startLine": 7,
+        "startChar": 19,
+        "endLine": 7,
+        "endChar": 33
+      },
+      "revId": "4be1f3b4b1630d24072e35087acb218c9267bbdb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef2f7d4c_ddcf5ee3",
+        "filename": "docs/zephyr/zephyr_battery.md",
+        "patchSetId": 67
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-02-10T20:14:30Z",
+      "side": 1,
+      "message": "Instead of creating a table, just point to the Kconfig.battery file here.\n\nI need to update the template to reflect this change.\n\nSomething like:\n\n\"CONFIG_PLATFORM_EC_BATTERY enables battery support in the EC application.  Refer to the file [Kconfig.battery] for all sub-options controlling battery behavior.\"\n\nAs a separate CL, can you move all the charger configs that are in Kconfig.battery into a separate file?",
+      "range": {
+        "startLine": 11,
+        "startChar": 1,
+        "endLine": 14,
+        "endChar": 0
+      },
+      "revId": "4be1f3b4b1630d24072e35087acb218c9267bbdb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "589f53d9_7d8523f9",
+        "filename": "docs/zephyr/zephyr_battery.md",
+        "patchSetId": 67
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-02-10T20:14:30Z",
+      "side": 1,
+      "message": "Move this section after \"How to enable batteries\".  It is hopefully more common that users can find an existing battery definition.",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 31
+      },
+      "revId": "4be1f3b4b1630d24072e35087acb218c9267bbdb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6b6a80b_58fdb36e",
+        "filename": "docs/zephyr/zephyr_battery.md",
+        "patchSetId": 67
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-02-10T20:14:30Z",
+      "side": 1,
+      "message": "The \"named-batteries\" node is deprecated and shouldn\u0027t be documented here.  \nI opened b:218888909 to delete this node.",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 45
+      },
+      "revId": "4be1f3b4b1630d24072e35087acb218c9267bbdb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04ec1bab_5cc25dca",
+        "filename": "docs/zephyr/zephyr_battery.md",
+        "patchSetId": 67
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-02-10T20:14:30Z",
+      "side": 1,
+      "message": "Add a sentence explaining the \"default_battery\" nodelabel.",
+      "range": {
+        "startLine": 104,
+        "startChar": 0,
+        "endLine": 105,
+        "endChar": 74
+      },
+      "revId": "4be1f3b4b1630d24072e35087acb218c9267bbdb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da34175e_02035d0e",
+        "filename": "docs/zephyr/zephyr_battery.md",
+        "patchSetId": 67
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-02-10T20:14:30Z",
+      "side": 1,
+      "message": "Include the parent named-gpios for context.",
+      "range": {
+        "startLine": 112,
+        "startChar": 0,
+        "endLine": 112,
+        "endChar": 16
+      },
+      "revId": "4be1f3b4b1630d24072e35087acb218c9267bbdb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8ddba9e_9185b6ed",
+        "filename": "docs/zephyr/zephyr_battery.md",
+        "patchSetId": 67
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-02-10T20:14:30Z",
+      "side": 1,
+      "message": "The battery presence GPIO is only used by the board code, so the legacy \"enum-name\" should not be used.\n\nLook at the brya board as an example:\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/4f1a1e2d/zephyr/projects/brya/brya/battery_present.c#\n\nYou can also add a link to zephyr_gpios.md.",
+      "range": {
+        "startLine": 114,
+        "startChar": 0,
+        "endLine": 115,
+        "endChar": 34
+      },
+      "revId": "4be1f3b4b1630d24072e35087acb218c9267bbdb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c8c620a4_373ccdf0",
+        "filename": "docs/zephyr/zephyr_battery.md",
+        "patchSetId": 67
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-02-10T20:14:30Z",
+      "side": 1,
+      "message": "Include the named-i2c-ports parent.",
+      "range": {
+        "startLine": 124,
+        "startChar": 0,
+        "endLine": 124,
+        "endChar": 7
+      },
+      "revId": "4be1f3b4b1630d24072e35087acb218c9267bbdb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1dfef2c1_f4e76fa4",
+        "filename": "docs/zephyr/zephyr_battery.md",
+        "patchSetId": 67
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-02-10T20:14:30Z",
+      "side": 1,
+      "message": "This pattern only applies to Nuvoton.  So better to document as \u003ci2c_phandle\u003e.\n\nIn the text below, you can point the user to zephyr_i2c.md for more details about the I2C bus configuration.",
+      "range": {
+        "startLine": 125,
+        "startChar": 12,
+        "endLine": 125,
+        "endChar": 44
+      },
+      "revId": "4be1f3b4b1630d24072e35087acb218c9267bbdb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1333bf15_88a6f3e0",
+        "filename": "docs/zephyr/zephyr_battery.md",
+        "patchSetId": 67
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-02-10T20:14:30Z",
+      "side": 1,
+      "message": "Label property is no longer used by named-i2c-ports.",
+      "range": {
+        "startLine": 128,
+        "startChar": 0,
+        "endLine": 128,
+        "endChar": 19
+      },
+      "revId": "4be1f3b4b1630d24072e35087acb218c9267bbdb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0ddac8a_71a450f1",
+        "filename": "docs/zephyr/zephyr_battery.md",
+        "patchSetId": 67
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-02-10T20:14:30Z",
+      "side": 1,
+      "message": "If CONFIG_PLATFORM_EC_BATTERY_PRESENT_CUSTOM is used, the board code must define battery_is_present().",
+      "range": {
+        "startLine": 139,
+        "startChar": 0,
+        "endLine": 139,
+        "endChar": 60
+      },
+      "revId": "4be1f3b4b1630d24072e35087acb218c9267bbdb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
