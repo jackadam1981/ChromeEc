@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5811d9b1_93ff9ea9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-02-10T03:38:15Z",
+      "side": 1,
+      "message": "It doesn\u0027t seem enough to just not set the GPIO_OUT_LOW/GPIO_OUT_HIGH bits, it seems gpio_pin_configure_dt will set the output value anyway.\n",
+      "revId": "1a5530c9898b131fb7eeed28979fab1510a9cd4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
