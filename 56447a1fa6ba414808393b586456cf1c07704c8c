@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "70dc305d_2373bcf9",
+        "filename": "zephyr/projects/brya/brya/BUILD.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-02-10T21:55:47Z",
+      "side": 1,
+      "message": "Ack, CL:3451267",
+      "parentUuid": "84e48d44_be2b9ab1",
+      "revId": "56447a1fa6ba414808393b586456cf1c07704c8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d55481c7_75669c53",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-02-09T19:10:01Z",
       "side": 1,
       "message": "Since this depends on the chipset to determine the signals that must be added to the core list, should it be in the chipset specific header?",
+      "revId": "56447a1fa6ba414808393b586456cf1c07704c8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2871a759_f887a74e",
+        "filename": "zephyr/subsys/ap_pwrseq/include/x86_non_dsx_common_pwrseq_sm_handler.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-02-10T21:55:47Z",
+      "side": 1,
+      "message": "Moved out.",
+      "parentUuid": "d55481c7_75669c53",
       "revId": "56447a1fa6ba414808393b586456cf1c07704c8c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -58,6 +94,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8be3832_c3ec916c",
+        "filename": "zephyr/subsys/ap_pwrseq/include/x86_non_dsx_common_pwrseq_sm_handler.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-02-10T21:55:47Z",
+      "side": 1,
+      "message": "Moved out.",
+      "parentUuid": "5eea7dcd_d95518e8",
+      "range": {
+        "startLine": 70,
+        "startChar": 7,
+        "endLine": 70,
+        "endChar": 17
+      },
+      "revId": "56447a1fa6ba414808393b586456cf1c07704c8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9a89b693_d31c96bf",
@@ -71,6 +131,24 @@
       "writtenOn": "2022-02-09T19:10:01Z",
       "side": 1,
       "message": "Since this uses logical level depending on ACTIVE_LOW / HIGH, this check may not be needed?",
+      "revId": "56447a1fa6ba414808393b586456cf1c07704c8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d2e6a4e_15c03776",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-02-10T21:55:47Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9a89b693_d31c96bf",
       "revId": "56447a1fa6ba414808393b586456cf1c07704c8c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
