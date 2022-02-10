@@ -119,6 +119,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "11c96d8a_20faec26",
+        "filename": "zephyr/zmake/zmake/jobserver.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-02-10T18:40:49Z",
+      "side": 1,
+      "message": "I did try that before I mailed this cl.  Removing the * made the output weird, adding list() made pylint be quiet.",
+      "parentUuid": "56154d8b_7994944d",
+      "range": {
+        "startLine": 54,
+        "startChar": 59,
+        "endLine": 54,
+        "endChar": 71
+      },
+      "revId": "79492c3af681a9a08ca2d354e2e146754843eb29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eba6399c_c0195ad8",
