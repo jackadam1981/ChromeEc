@@ -187,6 +187,30 @@
       },
       "revId": "f2b6b61d24741e674146a0bd91eeadc4e3c0d163",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1af127a9_0d487df9",
+        "filename": "zephyr/zmake/zmake/zmake.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 701,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-02-10T00:12:02Z",
+      "side": 1,
+      "message": "it seems to me today\u0027s behavior of testall is \"configureall --test\" (once the funky behavior of \"--test\" witout \"--build\" is fixed).",
+      "parentUuid": "39c4b935_28c73697",
+      "range": {
+        "startLine": 681,
+        "startChar": 0,
+        "endLine": 701,
+        "endChar": 35
+      },
+      "revId": "f2b6b61d24741e674146a0bd91eeadc4e3c0d163",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
