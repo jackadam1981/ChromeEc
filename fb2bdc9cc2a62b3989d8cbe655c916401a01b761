@@ -52,6 +52,24 @@
       "parentUuid": "ad5f24f5_96a603ac",
       "revId": "fb2bdc9cc2a62b3989d8cbe655c916401a01b761",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b8e669a4_a489679e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1262393
+      },
+      "writtenOn": "2022-02-10T02:04:44Z",
+      "side": 1,
+      "message": "Banshee only have clamshell(180) SKU not have covertible(360). So there is no accel sensor connect to EC.",
+      "parentUuid": "3cf5a23b_c55b0af0",
+      "revId": "fb2bdc9cc2a62b3989d8cbe655c916401a01b761",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
