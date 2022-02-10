@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab10dc45_0a1ecf64",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2022-02-10T21:25:45Z",
+      "side": 1,
+      "message": "We are not allowing cherry-picks to EC firmware branch, as the plan is to sync ALL changes from ToT to firmware-brya-14505.B weekly",
+      "revId": "739fd2c4707d44b7f05df1e1fad59c394c161cfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
