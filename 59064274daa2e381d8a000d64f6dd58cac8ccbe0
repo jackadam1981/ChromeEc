@@ -22,6 +22,30 @@
       },
       "revId": "59064274daa2e381d8a000d64f6dd58cac8ccbe0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e257ab8a_e1fa89f2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2022-02-10T17:31:46Z",
+      "side": 1,
+      "message": "Well the request to use kconfiglib has caused countless hours of churn. I should have pushed back...\n\nAnyway, bear in mind that people use the ebuild to build the EC. So if we don\u0027t have it there, how will people find out, until they use CQ?",
+      "parentUuid": "65f22d2c_85dc2aa8",
+      "range": {
+        "startLine": 9,
+        "startChar": 34,
+        "endLine": 10,
+        "endChar": 32
+      },
+      "revId": "59064274daa2e381d8a000d64f6dd58cac8ccbe0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
