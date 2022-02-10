@@ -16,6 +16,24 @@
       "message": "Should we cherry-pick this CL with brya firmware branch?",
       "revId": "a2dbfc3ab2241441d48eb4937691e6aa210cdd2c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a110faba_34739ce0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-02-10T03:48:22Z",
+      "side": 1,
+      "message": "we plan to bulk cherry-pick patches from ToT to the brya firmware\nbranch fairly regularly for some time.\n\nwe\u0027ll need to communicate this and describe the process.",
+      "parentUuid": "e7abaf14_f5617ad1",
+      "revId": "a2dbfc3ab2241441d48eb4937691e6aa210cdd2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
