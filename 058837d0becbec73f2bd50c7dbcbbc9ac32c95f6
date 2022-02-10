@@ -98,6 +98,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9347ca24_e838ede3",
+        "filename": "chip/stm32/dfu_bootmanager.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2022-02-10T19:42:06Z",
+      "side": 1,
+      "message": "Since you have the code for this to work on the H7 and L4 series, should you just add the STM32_DFU_BASE to the H7 and L4 include files?",
+      "parentUuid": "bf53ce69_ab6f4218",
+      "range": {
+        "startLine": 151,
+        "startChar": 8,
+        "endLine": 152,
+        "endChar": 26
+      },
+      "revId": "058837d0becbec73f2bd50c7dbcbbc9ac32c95f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "40ec6641_2d6244b0",
         "filename": "chip/stm32/dfu_bootmanager.c",
         "patchSetId": 3
