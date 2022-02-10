@@ -1675,8 +1675,6 @@ void charger_task(void *u)
 				if (rv == EC_SUCCESS)
 					prev_ac = curr.ac;
 			} else {
-				/* Some things are only meaningful on AC */
-				set_chg_ctrl_mode(CHARGE_CONTROL_NORMAL);
 				battery_seems_dead = 0;
 				prev_ac = curr.ac;
 
