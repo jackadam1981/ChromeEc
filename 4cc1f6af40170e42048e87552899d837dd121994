@@ -22,6 +22,30 @@
       },
       "revId": "4cc1f6af40170e42048e87552899d837dd121994",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b526cc4d_f8bc3e4d",
+        "filename": "zephyr/zmake/zmake/zmake.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 648,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-02-10T18:00:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6bec7655_d47c48c3",
+      "range": {
+        "startLine": 646,
+        "startChar": 0,
+        "endLine": 648,
+        "endChar": 27
+      },
+      "revId": "4cc1f6af40170e42048e87552899d837dd121994",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
