@@ -1,0 +1,90 @@
+/* Copyright 2022 The Chromium OS Authors. All rights reserved.
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+/ {
+	pwrseq_signals_list: pwrseq-signals-list {
+		compatible = "intel,ap-pwrseq-signal-list";
+		status = "okay";
+		pwrseq-signals-required = <8>;
+
+		pwrseq_slp_s0 {
+			dbg-label = "SLP_S0_DEASSERTED";
+			source = <0>;
+			pwrseq-int-gpios = <&gpiod 5 0>;
+			pwrseq-int-flags = <GPIO_INT_EDGE_BOTH>;
+			pwrseq-signal-enum = "X86_SLP_S0_DEASSERTED";
+			flags = <0x3>;
+		};
+		pwrseq_slp_s3 {
+			dbg-label = "SLP_S3_DEASSERTED";
+			source = <0>;
+			pwrseq-int-gpios = <&gpioa 5 0>;
+			pwrseq-int-flags = <GPIO_INT_EDGE_BOTH>;
+			pwrseq-signal-enum = "X86_SLP_S3_DEASSERTED";
+			flags = <0x1>;
+		};
+		pwrseq_slp_s4 {
+			dbg-label = "SLP_S4_DEASSERTED";
+			source = <1>;
+			pwrseq-vw-enum = "ESPI_VWIRE_SIGNAL_SLP_S4";
+			pwrseq-signal-enum = "X86_SLP_S4_DEASSERTED";
+			flags = <0x1>;
+		};
+		pwrseq_slp_s5 {
+			dbg-label = "SLP_S5_DEASSERTED";
+			source = <1>;
+			pwrseq-vw-enum = "ESPI_VWIRE_SIGNAL_SLP_S5";
+			pwrseq-signal-enum = "X86_SLP_S5_DEASSERTED";
+			flags = <0x1>;
+		};
+		pwrseq_slp_sus {
+			dbg-label = "SLP_SUS_DEASSERTED";
+			source = <0>;
+			pwrseq-int-gpios = <&gpiof 1 0>;
+			pwrseq-int-flags = <GPIO_INT_EDGE_BOTH>;
+			pwrseq-signal-enum = "X86_SLP_SUS_DEASSERTED";
+			flags = <0x1>;
+		};
+		pwrseq_rsmrst {
+			dbg-label = "RSMRST_L_PGOOD";
+			source = <0>;
+			pwrseq-int-gpios = <&gpioe 2 0>;
+			pwrseq-int-flags = <GPIO_INT_EDGE_BOTH>;
+			pwrseq-signal-enum = "X86_RSMRST_L_PGOOD";
+			flags = <0x1>;
+		};
+		pwrseq_dsw_pwrok {
+			dbg-label = "DSW_PWROK";
+			source = <0>;
+			pwrseq-int-gpios = <&gpioc 7 0>;
+			pwrseq-int-flags = <GPIO_INT_EDGE_BOTH>;
+			pwrseq-signal-enum = "X86_DSW_PWROK";
+			flags = <0x1>;
+		};
+		pwrseq_all_sys_pwrgd {
+			dbg-label = "ALL_SYS_PWRGD";
+			source = <0>;
+			pwrseq-int-gpios = <&gpiof 4 0>;
+			pwrseq-int-flags = <GPIO_INT_EDGE_BOTH>;
+			pwrseq-signal-enum = "X86_ALL_SYS_PGOOD";
+			flags = <0x1>;
+		};
+	};
+
+	/*
+	 * Generate power signals list in this order
+	 * enum power_signal {
+	 *	X86_SLP_S0_DEASSERTED,
+	 *	X86_SLP_S3_DEASSERTED,
+	 *	X86_SLP_S4_DEASSERTED,
+	 *	X86_SLP_S5_DEASSERTED,
+	 *	X86_SLP_SUS_DEASSERTED,
+	 *	X86_RSMRST_L_PGOOD,
+	 *	X86_DSW_PWROK,
+	 *	X86_ALL_SYS_PGOOD,
+	 *	POWER_SIGNAL_COUNT
+	 * };
+	 */
+};
