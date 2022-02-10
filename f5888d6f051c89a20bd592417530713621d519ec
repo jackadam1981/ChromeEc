@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b8bd041_b7d91a62",
+        "filename": "docs/zephyr/zephyr_usba.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2022-02-10T02:57:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1261bed8_57482231",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 27
+      },
+      "revId": "f5888d6f051c89a20bd592417530713621d519ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "01c32b90_fd0595f5",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-02-08T16:48:51Z",
       "side": 1,
       "message": "No need for the table here.  Just have a sentence or two describing where to find the options.\n\nThe file Kconfig.usba describes all the Kconfig options controlling the management of dedicated USB-A ports.",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 0
+      },
+      "revId": "f5888d6f051c89a20bd592417530713621d519ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d594cdc_bf5cb17a",
+        "filename": "docs/zephyr/zephyr_usba.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2022-02-10T02:57:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "01c32b90_fd0595f5",
       "range": {
         "startLine": 12,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e1ad2af_bfd1f2b9",
+        "filename": "docs/zephyr/zephyr_usba.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2022-02-10T02:57:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8f92a5c9_0695c4b3",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 37
+      },
+      "revId": "f5888d6f051c89a20bd592417530713621d519ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "792aff43_af2057a7",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-02-08T16:48:51Z",
       "side": 1,
       "message": "Wrap code with triple backticks.",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 13
+      },
+      "revId": "f5888d6f051c89a20bd592417530713621d519ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d401ebef_005243b9",
+        "filename": "docs/zephyr/zephyr_usba.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2022-02-10T02:57:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "792aff43_af2057a7",
       "range": {
         "startLine": 52,
         "startChar": 0,
@@ -133,6 +229,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ae741ff_62a0b168",
+        "filename": "zephyr/Kconfig.usba",
+        "patchSetId": 4
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2022-02-10T02:57:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "124f4e29_17015422",
+      "revId": "f5888d6f051c89a20bd592417530713621d519ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "03985fbe_e5bc4d77",
@@ -150,6 +264,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5dd4d9ed_7e65689a",
+        "filename": "zephyr/Kconfig.usba",
+        "patchSetId": 4
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2022-02-10T02:57:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "03985fbe_e5bc4d77",
+      "revId": "f5888d6f051c89a20bd592417530713621d519ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5eef9dc4_ccfcddbb",
@@ -163,6 +295,30 @@
       "writtenOn": "2022-02-08T16:48:51Z",
       "side": 1,
       "message": "Put this reference directly into the main zephyr/Kconfig.  USB-A is independent of USB-C",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 22
+      },
+      "revId": "f5888d6f051c89a20bd592417530713621d519ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb87b79d_4e3fd4c9",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 4
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2022-02-10T02:57:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5eef9dc4_ccfcddbb",
       "range": {
         "startLine": 5,
         "startChar": 0,
