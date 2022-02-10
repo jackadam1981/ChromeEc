@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b24fe4ec_68b129a4",
+        "filename": "zephyr/projects/intelrvp/adlrvp/adlrvp_npcx/gpio.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-02-10T06:47:35Z",
+      "side": 1,
+      "message": "node names should use hyphens, not underscores",
+      "range": {
+        "startLine": 113,
+        "startChar": 20,
+        "endLine": 113,
+        "endChar": 21
+      },
+      "revId": "1fb81c1de914535d4ee0720481f1a6fc9ad3ba11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
