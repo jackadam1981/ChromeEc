@@ -70,6 +70,30 @@
       },
       "revId": "c7636178198a7cceadd6ac21ae03791ac6251323",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e7fddc8_07a739e8",
+        "filename": "zephyr/shim/src/console.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-02-10T18:31:16Z",
+      "side": 1,
+      "message": "How would we do that.  Also, this restriction is specific to this file, not true in Zephyr in general.",
+      "parentUuid": "9c6e7b51_24688296",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 6
+      },
+      "revId": "c7636178198a7cceadd6ac21ae03791ac6251323",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
