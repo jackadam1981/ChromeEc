@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a195eb9_b9a60689",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-02-10T18:30:27Z",
+      "side": 1,
+      "message": "If cros lint is added back to the presubmit, you will have to deal with the errors and warnings every time you submit, so I don\u0027t think we\u0027ll regress.",
+      "parentUuid": "8d9b867c_b3c1a006",
+      "range": {
+        "startLine": 10,
+        "startChar": 10,
+        "endLine": 10,
+        "endChar": 40
+      },
+      "revId": "79492c3af681a9a08ca2d354e2e146754843eb29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "89dd7173_4b3cc7f4",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0e351d4_590e6eba",
+        "filename": "zephyr/zmake/zmake/jobserver.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-02-10T18:30:27Z",
+      "side": 1,
+      "message": "The star is required. Without it, you get this weird output:\n\n```\nRunning \u0027[\u0027\"\u0027\"\u0027/usr/bin/ninja\u0027\"\u0027\"\u0027, \u0027\"\u0027\"\u0027-C\u0027\"\u0027\"\u0027, \u0027\"\u0027\"\u0027/mnt/host/source/src/platform/ec/build/zephyr/posix-ec/build-singleimage\u0027\"\u0027\"\u0027]\u0027\n```\n\nWith star:\n\n```\nRunning /usr/bin/ninja -C /mnt/host/source/src/platform/ec/build/zephyr/drawcia_riscv/build-ro\n```",
+      "parentUuid": "89dd7173_4b3cc7f4",
+      "range": {
+        "startLine": 54,
+        "startChar": 59,
+        "endLine": 54,
+        "endChar": 71
+      },
+      "revId": "79492c3af681a9a08ca2d354e2e146754843eb29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eba6399c_c0195ad8",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-02-10T00:16:37Z",
       "side": 1,
       "message": "can we just drop the alias? it\u0027s only used once",
+      "range": {
+        "startLine": 12,
+        "startChar": 21,
+        "endLine": 12,
+        "endChar": 32
+      },
+      "revId": "79492c3af681a9a08ca2d354e2e146754843eb29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c552a02b_4957c766",
+        "filename": "zephyr/zmake/zmake/project.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-02-10T18:30:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eba6399c_c0195ad8",
       "range": {
         "startLine": 12,
         "startChar": 21,
