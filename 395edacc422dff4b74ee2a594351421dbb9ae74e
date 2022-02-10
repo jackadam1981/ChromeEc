@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "af012e27_9343c048",
+        "filename": "util/config_allowed.txt",
+        "patchSetId": 5
+      },
+      "lineNbr": 544,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2022-02-10T15:16:16Z",
+      "side": 0,
+      "message": "It looks like this is also needed. Capture the error from the tryjob https://ci.chromium.org/ui/p/chromeos/builders/general/Try/b8822640326157413857/overview :\n\nchromeos-ec-0.0.2-r11978: Error:\tThe EC is in the process of migrating to Zephyr.\nchromeos-ec-0.0.2-r11978: \tZephyr uses Kconfig for configuration rather than ad-hoc #defines.\nchromeos-ec-0.0.2-r11978: \tAny new EC CONFIG options must ALSO be added to Zephyr so that new\nchromeos-ec-0.0.2-r11978: \tfunctionality is available in Zephyr also. The following new ad-hoc\nchromeos-ec-0.0.2-r11978: \tCONFIG options were detected:\nchromeos-ec-0.0.2-r11978: \nchromeos-ec-0.0.2-r11978: CONFIG_INA219\nchromeos-ec-0.0.2-r11978: \nchromeos-ec-0.0.2-r11978: Please add these via Kconfig instead. Find a suitable Kconfig\nchromeos-ec-0.0.2-r11978: file in zephyr/ and add a \u0027config\u0027 or \u0027menuconfig\u0027 option.\nchromeos-ec-0.0.2-r11978: Also see details in http://issuetracker.google.com/181253613\nchromeos-ec-0.0.2-r11978: \nchromeos-ec-0.0.2-r11978: To temporarily disable this, use: ALLOW_CONFIG\u003d1 make ...\nchromeos-ec-0.0.2-r11978: \nchromeos-ec-0.0.2-r11978: make[2]: *** [Makefile.rules:271: notice] Error 1\nchromeos-ec-0.0.2-r11978: make[1]: *** [Makefile.rules:274: proj-plankton] Error 2\nchromeos-ec-0.0.2-r11978: make[1]: *** Waiting for unfinished jobs....",
+      "range": {
+        "startLine": 544,
+        "startChar": 0,
+        "endLine": 544,
+        "endChar": 13
+      },
+      "revId": "395edacc422dff4b74ee2a594351421dbb9ae74e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5b14683c_43839253",
         "filename": "util/config_allowed.txt",
         "patchSetId": 5
