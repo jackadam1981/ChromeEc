@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c4e8074_c05cb691",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-02-10T23:52:41Z",
+      "side": 1,
+      "message": "This pattern seems like it does a lot of unnecessarily repetitive scanning of the power signal lists. In addition, the pwrseq-signal-enum field in the DT binding seems like it introduces an unnecessary level of indirection.\n\nI assume any given platform has a well-defined set of power signals (which may be a virtual wire or GPIO), so rather than having separate lists and needing to scan them, could there be a single list in known order that indicates whether each signal is a VW or GPIO and provides the configuration?\n\nI imagine something like:\n\n    const struct power_signal_info {\n      const char *name;\n      bool is_virtual_wire;\n      union {\n        struct power_signal_info_gpio gpio_info;\n        struct power_signal_info_vw vw_info;\n      };\n    } power_signals[] \u003d {\n      /* Get each required power signal by node name in well-defined order;\n         SLP_S5, SLP_S3, ... */\n    }\n\nThen the driver can index into that array according to the known order of the signals, and required signals can be marked as such in the DT binding.",
+      "range": {
+        "startLine": 167,
+        "startChar": 0,
+        "endLine": 174,
+        "endChar": 2
+      },
+      "revId": "524a8d1e50f3a1374a3cd3403b4406552039b80e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
