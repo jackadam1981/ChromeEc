@@ -165,11 +165,11 @@ const struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 		.hpd_update = &ps8xxx_tcpc_update_hpd_status,
 	}
 };
-
+#if 0
 const int usb_port_enable[USB_PORT_COUNT] = {
 	GPIO_EN_USB_A_5V,
 };
-
+#endif
 /* Initialize board USC-C things */
 static void board_init_usbc(void)
 {
