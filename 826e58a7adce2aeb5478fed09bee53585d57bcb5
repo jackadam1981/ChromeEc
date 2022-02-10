@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a9458a7_7a75b1d7",
+        "filename": "common/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-02-10T18:11:34Z",
+      "side": 1,
+      "message": "CONFIG_RAM_SIZE is only defined if CONFIG_PLATFORM_EC_FLASH_CROS in zephyr/shim/include/config_chip.h",
+      "range": {
+        "startLine": 324,
+        "startChar": 0,
+        "endLine": 324,
+        "endChar": 36
+      },
+      "revId": "826e58a7adce2aeb5478fed09bee53585d57bcb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "967f2d4f_380d2a2a",
+        "filename": "common/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 740,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-02-10T18:11:34Z",
+      "side": 1,
+      "message": "CONFIG_EC_PROTECTED_STORAGE_OFF is only defined if CONFIG_PLATFORM_EC_FLASH_CROS in zephyr/shim/include/config_chip.h",
+      "range": {
+        "startLine": 740,
+        "startChar": 0,
+        "endLine": 740,
+        "endChar": 36
+      },
+      "revId": "826e58a7adce2aeb5478fed09bee53585d57bcb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
