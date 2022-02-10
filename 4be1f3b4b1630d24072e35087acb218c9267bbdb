@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "86c1f192_1e20d33c",
+        "filename": "docs/zephyr/zephyr_battery.md",
+        "patchSetId": 67
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-02-10T22:47:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dfa322dc_edc23a61",
+      "range": {
+        "startLine": 7,
+        "startChar": 19,
+        "endLine": 7,
+        "endChar": 33
+      },
+      "revId": "4be1f3b4b1630d24072e35087acb218c9267bbdb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ef2f7d4c_ddcf5ee3",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-02-10T20:14:30Z",
       "side": 1,
       "message": "Instead of creating a table, just point to the Kconfig.battery file here.\n\nI need to update the template to reflect this change.\n\nSomething like:\n\n\"CONFIG_PLATFORM_EC_BATTERY enables battery support in the EC application.  Refer to the file [Kconfig.battery] for all sub-options controlling battery behavior.\"\n\nAs a separate CL, can you move all the charger configs that are in Kconfig.battery into a separate file?",
+      "range": {
+        "startLine": 11,
+        "startChar": 1,
+        "endLine": 14,
+        "endChar": 0
+      },
+      "revId": "4be1f3b4b1630d24072e35087acb218c9267bbdb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f932d83_2e3e7a55",
+        "filename": "docs/zephyr/zephyr_battery.md",
+        "patchSetId": 67
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-02-10T22:47:27Z",
+      "side": 1,
+      "message": "Uploaded a WIP CL https://crrev.com/c/3453231",
+      "parentUuid": "ef2f7d4c_ddcf5ee3",
       "range": {
         "startLine": 11,
         "startChar": 1,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1decdd92_6b78681a",
+        "filename": "docs/zephyr/zephyr_battery.md",
+        "patchSetId": 67
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-02-10T22:47:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "589f53d9_7d8523f9",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 31
+      },
+      "revId": "4be1f3b4b1630d24072e35087acb218c9267bbdb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e6b6a80b_58fdb36e",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-02-10T20:14:30Z",
       "side": 1,
       "message": "The \"named-batteries\" node is deprecated and shouldn\u0027t be documented here.  \nI opened b:218888909 to delete this node.",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 45
+      },
+      "revId": "4be1f3b4b1630d24072e35087acb218c9267bbdb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e6832f5_6d4ce3e3",
+        "filename": "docs/zephyr/zephyr_battery.md",
+        "patchSetId": 67
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-02-10T22:47:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e6b6a80b_58fdb36e",
       "range": {
         "startLine": 48,
         "startChar": 0,
