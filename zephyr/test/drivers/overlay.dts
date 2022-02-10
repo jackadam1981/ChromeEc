@@ -320,6 +320,19 @@
 			enum-name = "ADC_TEMP_SENSOR_FAN";
 			io-channels = <&adc0 3>;
 		};
+		amon_bmon {
+			label = "AMON_BMON";
+			enum-name = "ADC_AMON_BMON";
+			io-channels = <&adc0 4>;
+			mul = <1000>;
+			div = <18>;
+		};
+		psys {
+			label = "PSYS";
+			enum-name = "ADC_PSYS";
+			io-channels = <&adc0 5>;
+			mul = <124000>;
+		};
 	};
 
 	named-temp-sensors {
