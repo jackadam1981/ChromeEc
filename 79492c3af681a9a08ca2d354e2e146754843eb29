@@ -97,6 +97,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "56154d8b_7994944d",
+        "filename": "zephyr/zmake/zmake/jobserver.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-02-10T18:33:27Z",
+      "side": 1,
+      "message": "Meant without list as well...\n\nso `zmake.util.repr_command(args)`",
+      "parentUuid": "d0e351d4_590e6eba",
+      "range": {
+        "startLine": 54,
+        "startChar": 59,
+        "endLine": 54,
+        "endChar": 71
+      },
+      "revId": "79492c3af681a9a08ca2d354e2e146754843eb29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "eba6399c_c0195ad8",
         "filename": "zephyr/zmake/zmake/project.py",
         "patchSetId": 1
