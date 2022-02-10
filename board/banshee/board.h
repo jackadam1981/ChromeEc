@@ -50,6 +50,9 @@
 #define CONFIG_ALS_TCS3400_INT_EVENT \
 	TASK_EVENT_MOTION_SENSOR_INTERRUPT(CLEAR_ALS)
 
+/* CM32183 ALS */
+#define CONFIG_ALS_CM32183
+
 /* Enable sensor fifo, must also define the _SIZE and _THRES */
 #define CONFIG_ACCEL_FIFO
 /* FIFO size is in power of 2. */

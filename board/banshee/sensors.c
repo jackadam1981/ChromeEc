@@ -9,6 +9,7 @@
 #include "driver/accel_lis2dw12.h"
 #include "driver/accelgyro_lsm6dso.h"
 #include "driver/als_tcs3400_public.h"
+#include "driver/als_cm32183.h"
 #include "hooks.h"
 #include "motion_sense.h"
 #include "temp_sensor.h"
@@ -67,8 +68,8 @@ static const mat33_fp_t base_standard_ref = {
 	{ 0, 0, FLOAT_TO_FP(-1)}
 };
 
-/* TCS3400 private data */
-static struct als_drv_data_t g_tcs3400_data = {
+/* CM32183 private data */
+static struct als_drv_data_t g_cm32183_data = {
 	.als_cal.scale = 1,
 	.als_cal.uscale = 0,
 	.als_cal.offset = 0,
@@ -198,17 +199,15 @@ struct motion_sensor_t motion_sensors[] = {
 	[CLEAR_ALS] = {
 		.name = "Clear Light",
 		.active_mask = SENSOR_ACTIVE_S0_S3,
-		.chip = MOTIONSENSE_CHIP_TCS3400,
+		.chip = MOTIONSENSE_CHIP_CM32183,
 		.type = MOTIONSENSE_TYPE_LIGHT,
 		.location = MOTIONSENSE_LOC_CAMERA,
-		.drv = &tcs3400_drv,
-		.drv_data = &g_tcs3400_data,
+		.drv = &cm32183_drv,
+		.drv_data = &g_cm32183_data,
 		.port = I2C_PORT_SENSOR,
-		.i2c_spi_addr_flags = TCS3400_I2C_ADDR_FLAGS,
+		.i2c_spi_addr_flags = CM32183_I2C_ADDR,
 		.rot_standard_ref = NULL,
 		.default_range = 0x10000, /* scale = 1x, uscale = 0 */
-		.min_frequency = TCS3400_LIGHT_MIN_FREQ,
-		.max_frequency = TCS3400_LIGHT_MAX_FREQ,
 		.config = {
 			/* Run ALS sensor in S0 */
 			[SENSOR_CONFIG_EC_S0] = {
