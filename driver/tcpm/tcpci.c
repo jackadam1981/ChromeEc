@@ -518,7 +518,10 @@ int tcpci_tcpm_set_cc(int port, int pull)
 	if (IS_ENABLED(DEBUG_ROLE_CTRL_UPDATES))
 		CPRINTS("C%d: SET_CC pull=%d role=0x%X", port, pull, role);
 
-	return tcpc_write(port, TCPC_REG_ROLE_CTRL, role);
+	tcpc_write(port, TCPC_REG_ROLE_CTRL, role);
+
+	return tcpc_update8(port, TCPC_REG_RX_DETECT,
+			    TCPC_REG_RX_DETECT_SOP_HRST_MASK, MASK_SET);
 }
 
 #ifdef CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE
