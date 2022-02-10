@@ -77,11 +77,20 @@ static inline int tcs3400_i2c_write8(const struct motion_sensor_t *s,
 	return i2c_write8(s->port, s->i2c_spi_addr_flags, reg, data);
 }
 
+#ifdef CONFIG_ALS_TCS3400_EMULATED_IRQ_EVENT
 static void tcs3400_read_deferred(void)
+#else
+void tcs3400_interrupt(enum gpio_signal signal)
+#endif
 {
+	if (IS_ENABLED(CONFIG_ACCEL_FIFO))
+		last_interrupt_timestamp = __hw_clock_source_read();
+
 	task_set_event(TASK_ID_MOTIONSENSE, CONFIG_ALS_TCS3400_INT_EVENT, 0);
 }
+#ifdef CONFIG_ALS_TCS3400_EMULATED_IRQ_EVENT
 DECLARE_DEFERRED(tcs3400_read_deferred);
+#endif
 
 /* convert ATIME register to integration time, in microseconds */
 static int tcs3400_get_integration_time(int atime)
@@ -114,6 +123,7 @@ static int tcs3400_read(const struct motion_sensor_t *s, intv3_t v)
 	if (ret)
 		return ret;
 
+#ifdef CONFIG_ALS_TCS3400_EMULATED_IRQ_EVENT
 	if (IS_ENABLED(CONFIG_ALS_TCS3400_EMULATED_IRQ_EVENT)) {
 		int atime;
 
@@ -122,8 +132,9 @@ static int tcs3400_read(const struct motion_sensor_t *s, intv3_t v)
 			return ret;
 
 		hook_call_deferred(&tcs3400_read_deferred_data,
-				tcs3400_get_integration_time(atime));
+				   tcs3400_get_integration_time(atime));
 	}
+#endif
 
 	/*
 	 * If write succeeded, we've started the read process, but can't
@@ -487,15 +498,6 @@ static int tcs3400_post_events(struct motion_sensor_t *s,
 							   raw_data, status);
 
 	return ret;
-}
-
-void tcs3400_interrupt(enum gpio_signal signal)
-{
-	if (IS_ENABLED(CONFIG_ACCEL_FIFO))
-		last_interrupt_timestamp = __hw_clock_source_read();
-
-	task_set_event(TASK_ID_MOTIONSENSE,
-		       CONFIG_ALS_TCS3400_INT_EVENT, 0);
 }
 
 /*
