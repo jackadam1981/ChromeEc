@@ -22,6 +22,30 @@
       },
       "revId": "395edacc422dff4b74ee2a594351421dbb9ae74e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "98698c80_faf03045",
+        "filename": "util/config_allowed.txt",
+        "patchSetId": 5
+      },
+      "lineNbr": 752,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2022-02-10T14:30:28Z",
+      "side": 0,
+      "message": "Yes:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3451701",
+      "parentUuid": "5b14683c_43839253",
+      "range": {
+        "startLine": 752,
+        "startChar": 0,
+        "endLine": 752,
+        "endChar": 10
+      },
+      "revId": "395edacc422dff4b74ee2a594351421dbb9ae74e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
