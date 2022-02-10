@@ -33,6 +33,24 @@
       "message": "Could you please add powerindebug console command here.",
       "revId": "ca8784d2fa92e5b721ca9f0352c5535b8240aa72",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d3ea223f_4e4ab10f",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 607,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-02-10T21:57:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ecf397c9_b9a26358",
+      "revId": "ca8784d2fa92e5b721ca9f0352c5535b8240aa72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
