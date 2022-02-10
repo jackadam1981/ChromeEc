@@ -11,6 +11,7 @@
 #include "common.h"
 #include "ocpc.h"
 #include "stdbool.h"
+#include "usb_pd_tcpm.h"
 
 /* Charger information
  * voltage unit: mV
@@ -268,6 +269,11 @@ enum ec_error_list charger_discharge_on_ac(int enable);
 
 /* Get the VBUS voltage (mV) from the charger */
 enum ec_error_list charger_get_vbus_voltage(int port, int *voltage);
+
+#ifdef CONFIG_USB_PD_VBUS_DETECT_CHARGER
+/* Check whether the current VBUS voltage is in range of the given level */
+bool charger_check_vbus_level(int port, enum vbus_level level);
+#endif
 
 /* Custom board function to discharge battery when on AC power */
 int board_discharge_on_ac(int enable);

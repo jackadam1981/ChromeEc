@@ -512,6 +512,27 @@ enum ec_error_list charger_get_vbus_voltage(int port, int *voltage)
 	return chg_chips[chgnum].drv->get_vbus_voltage(chgnum, port, voltage);
 }
 
+#ifdef CONFIG_USB_PD_VBUS_DETECT_CHARGER
+bool charger_check_vbus_level(int port, enum vbus_level range)
+{
+	int voltage;
+
+	// TODO handle error?
+	charger_get_vbus_voltage(port, &voltage);
+
+	switch (range) {
+	case VBUS_SAFE0V:
+		return voltage >= 0 && voltage < 800;
+	case VBUS_PRESENT:
+		return voltage >= 4750;	/* at least vSafe5V */
+	case VBUS_REMOVED:
+		return voltage >= 800 && voltage < 3670;
+	}
+	CPRINTS("Unknown vbus_range value: %d", range);
+	return false;
+}
+#endif
+
 enum ec_error_list charger_set_input_current_limit(int chgnum,
 						   int input_current)
 {

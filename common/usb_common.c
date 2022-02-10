@@ -889,8 +889,9 @@ __overridable bool pd_check_vbus_level(int port, enum vbus_level level)
 	if (IS_ENABLED(CONFIG_USB_PD_VBUS_DETECT_TCPC) &&
 		(get_usb_pd_vbus_detect() == USB_PD_VBUS_DETECT_TCPC)) {
 		return tcpm_check_vbus_level(port, level);
-	}
-	else if (level == VBUS_PRESENT)
+	} else if (get_usb_pd_vbus_detect() == USB_PD_VBUS_DETECT_CHARGER) {
+		return charger_check_vbus_level(port, level);
+	} else if (level == VBUS_PRESENT)
 		return pd_snk_is_vbus_provided(port);
 	else
 		return !pd_snk_is_vbus_provided(port);
