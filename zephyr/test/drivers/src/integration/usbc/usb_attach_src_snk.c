@@ -93,8 +93,8 @@ static void integration_usb_attach_snk_then_src_before(void *state)
 	tcpci_emul_set_reg(tcpci_emul_snk, PS8XXX_REG_FW_REV, 0x31);
 	zassume_ok(tcpc_config[SRC_PORT].drv->init(SRC_PORT), NULL);
 	tcpci_emul_set_rev(tcpci_emul_src, TCPCI_EMUL_REV1_0_VER1_0);
-	pd_set_suspend(SNK_PORT, 0);
-	pd_set_suspend(SRC_PORT, 0);
+	pd_set_suspend(SNK_PORT, false);
+	pd_set_suspend(SRC_PORT, false);
 	/* Reset to disconnected state. */
 	zassume_ok(tcpci_emul_disconnect_partner(tcpci_emul_src), NULL);
 	zassume_ok(tcpci_emul_disconnect_partner(tcpci_emul_snk), NULL);
@@ -156,8 +156,8 @@ static void integration_usb_attach_src_then_snk_before(void *state)
 	tcpci_emul_set_reg(tcpci_emul_snk, PS8XXX_REG_FW_REV, 0x31);
 	zassume_ok(tcpc_config[SRC_PORT].drv->init(SRC_PORT), NULL);
 	tcpci_emul_set_rev(tcpci_emul_src, TCPCI_EMUL_REV1_0_VER1_0);
-	pd_set_suspend(SNK_PORT, 0);
-	pd_set_suspend(SRC_PORT, 0);
+	pd_set_suspend(SNK_PORT, false);
+	pd_set_suspend(SRC_PORT, false);
 	/* Reset to disconnected state. */
 	zassume_ok(tcpci_emul_disconnect_partner(tcpci_emul_src), NULL);
 	zassume_ok(tcpci_emul_disconnect_partner(tcpci_emul_snk), NULL);
@@ -252,6 +252,34 @@ ZTEST_F(integration_usb_attach_src_then_snk, verify_snk_port_pd_info)
 	zassert_equal(response.max_power, DEFAULT_VBUS_MV * DEFAULT_VBUS_MA,
 		      "Charging up to %duW, PD max power %duW",
 		      DEFAULT_VBUS_MV * DEFAULT_VBUS_MA, response.max_power);
+}
+
+ZTEST_F(integration_usb_attach_src_then_snk, verify_snk_port_typec_status)
+{
+	struct ec_params_typec_status params = { .port = SNK_PORT };
+	struct ec_response_typec_status response;
+	struct host_cmd_handler_args args =
+		BUILD_HOST_COMMAND(EC_CMD_TYPEC_STATUS, 0, response, params);
+
+	/* Assume */
+	zassume_ok(host_command_process(&args), "Failed to get Type-C state");
+
+	/* Assert */
+	zassert_true(response.pd_enabled, "Charger attached but PD disabled");
+
+	zassert_true(response.dev_connected,
+		     "Charger attached but device disconnected");
+
+	zassert_true(response.sop_connected,
+		     "Charger attached but not SOP capable");
+
+	/* zassert_equal(typec_response.source_cap_count, source_cap_count, */
+	/* 		"Charger has %d source PDOs", */
+	/* 		typec_response.source_cap_count); */
+
+	zassert_equal(response.power_role, PD_ROLE_SINK,
+		      "Charger attached, but TCPM power role is %d",
+		      response.power_role);
 }
 
 ZTEST_F(integration_usb_attach_src_then_snk, verify_src_port_pd_info)
