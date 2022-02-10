@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6cee903_72831131",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1260470
+      },
+      "writtenOn": "2022-02-10T19:18:02Z",
+      "side": 1,
+      "message": "Posting this up here as something to land once the nissa EC is a little further along.\n\nRight now this fails to compile on nivviks because enabling _POWERSEQ tries to use a bunch of GPIOs that don\u0027t seem to be defined. Errors look like this (but lots of them):\n\n/mnt/host/source/src/platform/ec/build/zephyr/nivviks/modules/ec/power/common.c: In function \u0027board_power_5v_enable\u0027:\n/mnt/host/source/src/platform/ec/build/zephyr/nivviks/modules/ec/power/common.c:1093:32: error: \u0027GPIO_EN_PP5000\u0027 undeclared (first use in this function)\n 1093 |                 gpio_set_level(GPIO_EN_PP5000, 1);\n      |                                ^~~~~~~~~~~~~~\n\n\nApparently Intel is still workign on the power sequencing here [1], though I tried grabbing those changes and still dont\u0027 see _POWERSEQ\u003dy in the nissa configs. So I\u0027ll let this chill on Gerrit for a bit.\n\n[1] https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3449792/3",
+      "revId": "89e8bb6199460d03b1d4d80b30d4f1b2ef52854a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
