@@ -15,7 +15,7 @@
 #include "task.h"
 #include "uart.h"
 #include "util.h"
-
+/* FOO */
 /* Console output macros */
 #define CPRINTS(format, args...) cprints(CC_LPC, format, ## args)
 
