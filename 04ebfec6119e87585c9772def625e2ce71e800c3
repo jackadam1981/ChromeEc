@@ -56,6 +56,30 @@
       },
       "revId": "04ebfec6119e87585c9772def625e2ce71e800c3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "21a3b898_0c6dbe8e",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 854,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2022-02-11T20:16:40Z",
+      "side": 1,
+      "message": "header: Done.\nre bool: went with `int` just to stay consistent with wipe_first, which is also a flag.",
+      "parentUuid": "396bd82b_5edcd56e",
+      "range": {
+        "startLine": 854,
+        "startChar": 0,
+        "endLine": 854,
+        "endChar": 67
+      },
+      "revId": "04ebfec6119e87585c9772def625e2ce71e800c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
