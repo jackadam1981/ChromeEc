@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "96bcd997_43c33648",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-02-11T23:33:18Z",
+      "side": 1,
+      "message": "Hi, could you PTAL?\n\nContext:\n - Needed for http://b/205354460\n - Almost clean cherry-pick. For consistency in cpu.h I kept using `1 \u003c\u003c nn` instead of BIT(nn)\n \nTested: compiles Ok.\nAfter all CLs are applied, I did:\n  \u003e crash watchdog\n  ...\n  \u003e panicinfo\n\nAnd I successfully saw:\n  \n  Saved panic data: (NEW)\n\n### WATCHDOG PC\u003d100979a2 / LR\u003d100979a1 / task\u003d10\nr0 :         r1 :         r2 :         r3 :        \nr4 :dead6664 r5 :100979a2 r6 :00000000 r7 :00000000\nr8 :00000000 r9 :00000000 r10:00000000 r11:00000000\nr12:         sp :00000000 lr :         pc :        \n\ncfsr \u003d 0, shcsr \u003d 0, hfsr \u003d 10000028, dfsr \u003d 0, ipsr \u003d 100979a1\n\n\n\n",
+      "revId": "f671f319ac92a2d00c21992a59df063d6dc292dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
