@@ -22,16 +22,16 @@ BUILD_ASSERT(DT_NUM_INST_STATUS_OKAY(named_cbi_ssfc) < 2,
 	     "More than 1 CBI SSFS node");
 #define CBI_SSFC_NODE DT_INST(0, named_cbi_ssfc)
 
-#define CBI_SSFC_INIT_DEFAULT_ID(id, data)                           \
-	do {                                                         \
-		if (DT_PROP(id, default)) {                          \
-			data->cached_ssfc.CBI_SSFC_UNION_ENTRY_NAME( \
-				DT_PARENT(id)) = DT_PROP(id, value); \
-		}                                                    \
+#define CBI_SSFC_INIT_DEFAULT_ID(id, ssfc)                              \
+	do {                                                            \
+		if (DT_PROP(id, default)) {                             \
+			ssfc.CBI_SSFC_UNION_ENTRY_NAME(DT_PARENT(id)) = \
+				DT_PROP(id, value);                     \
+		}                                                       \
 	} while (0);
 
-#define CBI_SSFC_INIT_DEFAULT(inst, data) \
-	CBI_SSFC_INIT_DEFAULT_ID(DT_DRV_INST(inst), data)
+#define CBI_SSFC_INIT_DEFAULT(inst, ssfc) \
+	CBI_SSFC_INIT_DEFAULT_ID(DT_DRV_INST(inst), ssfc)
 
 #define CBI_SSFC_VALUE_ARRAY_ID(id) \
 	[CBI_SSFC_VALUE_ID(id)] = DT_PROP(id, value),
