@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e35e818_c141673e",
+        "filename": "board/nipperkin/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2022-02-11T13:42:08Z",
+      "side": 1,
+      "message": "We are turning HMDI on/off in four different places in this file. Let\u0027s move this functionality to separate functions, e.g. enable_hdmi() disable_hdmi().",
+      "revId": "528b350d527138d64e0e5e65d8cbecd37d282958",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb1283c4_beba0396",
+        "filename": "board/nipperkin/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 483,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2022-02-11T13:42:08Z",
+      "side": 1,
+      "message": "`chipset_in_or_transitioning_to_state(CHIPSET_STATE_ON)` should be moved to the if conditional so all the GPIOs stay off when suspend.",
+      "revId": "528b350d527138d64e0e5e65d8cbecd37d282958",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
