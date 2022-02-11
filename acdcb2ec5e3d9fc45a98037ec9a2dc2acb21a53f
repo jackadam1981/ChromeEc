@@ -1,0 +1,28 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fcfa2f9e_6c606a28",
+        "filename": "zephyr/zmake/run_tests.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-02-11T20:30:16Z",
+      "side": 1,
+      "message": "\u003e warning: Use -print0/-0 or -exec + to allow for non-alphanumeric filenames.\n\u003e \n\u003e https://github.com/koalaman/shellcheck/wiki/SC2038\n\nPlease fix.",
+      "parentUuid": "96eb7ab2_60446c10",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 26
+      },
+      "revId": "acdcb2ec5e3d9fc45a98037ec9a2dc2acb21a53f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
