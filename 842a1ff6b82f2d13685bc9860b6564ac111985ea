@@ -74,6 +74,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "38d7f9d4_a2fd71b3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-02-11T22:13:27Z",
+      "side": 1,
+      "message": "There are two external dependencies that need resolved:\n\n- cs/chromeos_public/src/platform/firmware/pack_firmware.py?l\u003d472\n- We need to guarantee the version is non-decreasing (which I think is a non-issue)",
+      "parentUuid": "3ef819fb_566517b7",
+      "revId": "842a1ff6b82f2d13685bc9860b6564ac111985ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "dfc97113_e163dffa",
         "filename": "zephyr/zmake/tests/test_version.py",
         "patchSetId": 2
