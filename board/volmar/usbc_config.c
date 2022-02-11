@@ -14,7 +14,6 @@
 #include "console.h"
 #include "driver/bc12/pi3usb9201_public.h"
 #include "driver/ppc/syv682x_public.h"
-#include "driver/retimer/bb_retimer_public.h"
 #include "driver/tcpm/ps8xxx_public.h"
 #include "driver/tcpm/rt1715.h"
 #include "driver/tcpm/tcpci.h"
@@ -93,13 +92,6 @@ BUILD_ASSERT(ARRAY_SIZE(ppc_chips) == USBC_PORT_COUNT);
 
 unsigned int ppc_cnt = ARRAY_SIZE(ppc_chips);
 
-/* USBC mux configuration - Alder Lake includes internal mux */
-static const struct usb_mux usbc0_tcss_usb_mux = {
-	.usb_port = USBC_PORT_C0,
-	.driver = &virtual_usb_mux_driver,
-	.hpd_update = &virtual_hpd_update,
-};
-
 /*
  * USB3 DB mux configuration - the top level mux still needs to be set
  * to the virtual_usb_mux_driver so the AP gets notified of mux changes
@@ -114,11 +106,8 @@ static const struct usb_mux usbc1_usb3_db_retimer = {
 const struct usb_mux usb_muxes[] = {
 	[USBC_PORT_C0] = {
 		.usb_port = USBC_PORT_C0,
-		.driver = &bb_usb_retimer,
-		.hpd_update = bb_retimer_hpd_update,
-		.i2c_port = I2C_PORT_USB_C0_C2_MUX,
-		.i2c_addr_flags = USBC_PORT_C0_BB_RETIMER_I2C_ADDR,
-		.next_mux = &usbc0_tcss_usb_mux,
+		.driver = &virtual_usb_mux_driver,
+		.hpd_update = &virtual_hpd_update,
 	},
 	[USBC_PORT_C1] = {
 		/* PS8815 DB */
@@ -299,6 +288,7 @@ void tcpc_alert_event(enum gpio_signal signal)
 {
 	switch (signal) {
 	case GPIO_USB_C0_C2_TCPC_INT_ODL:
+		CPRINTS("TCPC C0 INT");
 		schedule_deferred_pd_interrupt(USBC_PORT_C0);
 		break;
 	case GPIO_USB_C1_TCPC_INT_ODL:
@@ -315,6 +305,7 @@ void bc12_interrupt(enum gpio_signal signal)
 {
 	switch (signal) {
 	case GPIO_USB_C0_BC12_INT_ODL:
+		CPRINTS("BC12 C0 INT");
 		task_set_event(TASK_ID_USB_CHG_P0, USB_CHG_EVENT_BC12);
 		break;
 	case GPIO_USB_C1_BC12_INT_ODL:
@@ -331,6 +322,7 @@ void ppc_interrupt(enum gpio_signal signal)
 {
 	switch (signal) {
 	case GPIO_USB_C0_PPC_INT_ODL:
+		CPRINTS("PPC C0 INT");
 		syv682x_interrupt(USBC_PORT_C0);
 		break;
 	case GPIO_USB_C1_PPC_INT_ODL:
@@ -346,13 +338,6 @@ void ppc_interrupt(enum gpio_signal signal)
 	default:
 		break;
 	}
-}
-
-void retimer_interrupt(enum gpio_signal signal)
-{
-	/*
-	 * TODO(b/179513527): add USB-C support
-	 */
 }
 
 __override bool board_is_dts_port(int port)

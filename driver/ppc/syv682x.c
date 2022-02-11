@@ -393,8 +393,10 @@ static int syv682x_vbus_sink_enable(int port, int enable)
 		/*
 		 * We're currently a source, so nothing more to do
 		 */
-		if (syv682x_is_sourcing_vbus(port))
+		if (syv682x_is_sourcing_vbus(port)) {
+			CPRINTS("PPC C%d in sourcing", port);
 			return EC_SUCCESS;
+		}
 	} else if (sink_ocp_count[port] > OCP_COUNT_LIMIT) {
 		/*
 		 * Don't re-enable the channel until an explicit sink disable
@@ -429,7 +431,13 @@ static int syv682x_vbus_sink_enable(int port, int enable)
 		regval |= SYV682X_CONTROL_1_PWR_ENB;
 	}
 
-	return write_reg(port, SYV682X_CONTROL_1_REG, regval);
+	CPRINTS("PPC write: 0x%X", regval);
+	rv = write_reg(port, SYV682X_CONTROL_1_REG, regval);
+	if (rv == EC_SUCCESS) {
+		rv = read_reg(port, SYV682X_CONTROL_1_REG, &regval);
+		CPRINTS("PPC read: 0x%X", regval);
+	}
+	return rv;
 }
 
 #ifdef CONFIG_USB_PD_VBUS_DETECT_PPC
@@ -583,9 +591,11 @@ static void syv682x_handle_interrupt(int port)
 
 	/* Both interrupt registers are clear on read */
 	read_reg(port, SYV682X_CONTROL_4_REG, &control4);
+	CPRINTS("PPC INT CONTROL4: 0x%X", control4);
 	syv682x_handle_control_4_interrupt(port, control4);
 
 	read_reg(port, SYV682X_STATUS_REG, &status);
+	CPRINTS("PPC INT STATUS: 0x%X", status);
 	syv682x_handle_status_interrupt(port, status);
 
 	/*
