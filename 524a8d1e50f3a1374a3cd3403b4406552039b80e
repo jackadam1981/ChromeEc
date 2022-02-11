@@ -46,6 +46,30 @@
       },
       "revId": "524a8d1e50f3a1374a3cd3403b4406552039b80e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b16cbce4_a2124d68",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-02-11T00:57:34Z",
+      "side": 1,
+      "message": "It is true that for different generations of the device tree, the order may change, and thus any enum order generated from these nodes should not be relied on to be consistent across builds. However, within a single build, these are of course consistent (because they are using the same device tree output for that build).",
+      "parentUuid": "0c023a5c_c8657458",
+      "range": {
+        "startLine": 167,
+        "startChar": 0,
+        "endLine": 174,
+        "endChar": 2
+      },
+      "revId": "524a8d1e50f3a1374a3cd3403b4406552039b80e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
