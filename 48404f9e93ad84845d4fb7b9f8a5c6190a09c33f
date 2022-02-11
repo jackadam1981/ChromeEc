@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b089b58_08e40a75",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 1
+      },
+      "lineNbr": 821,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-02-11T02:47:30Z",
+      "side": 1,
+      "message": "Is this something that will only be an issue during bringup, or is this something that can happen during normal EC firmware update?\nIf the former, guard the config so that it is only available when\nPLATFORM_EC_BRINGUP is true.",
+      "revId": "48404f9e93ad84845d4fb7b9f8a5c6190a09c33f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
