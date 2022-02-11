@@ -72,6 +72,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6a4ea4c_1ec602c2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-02-11T20:24:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1e990d49_6c1f4de9",
+      "range": {
+        "startLine": 10,
+        "startChar": 10,
+        "endLine": 10,
+        "endChar": 40
+      },
+      "revId": "79492c3af681a9a08ca2d354e2e146754843eb29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "89dd7173_4b3cc7f4",
@@ -181,6 +205,30 @@
       "side": 1,
       "message": "Ah, I see the real issue here. The arguments to Popen is being passed as *args, when we probably wanted the function signature to look like this:\n\n```\n    def popen(self, argv, **kwargs):\n```\n\n... then the argv can be passed to repr_command directly\n\n(similarly, change `*args` to `argv` in the call to popen, without the star)",
       "parentUuid": "11c96d8a_20faec26",
+      "range": {
+        "startLine": 54,
+        "startChar": 59,
+        "endLine": 54,
+        "endChar": 71
+      },
+      "revId": "79492c3af681a9a08ca2d354e2e146754843eb29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6663a840_b04c4a17",
+        "filename": "zephyr/zmake/zmake/jobserver.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-02-11T20:24:21Z",
+      "side": 1,
+      "message": "That works.",
+      "parentUuid": "2e925b15_9b50d572",
       "range": {
         "startLine": 54,
         "startChar": 59,
