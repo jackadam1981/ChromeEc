@@ -16,6 +16,24 @@
       "message": "Is this something that will only be an issue during bringup, or is this something that can happen during normal EC firmware update?\nIf the former, guard the config so that it is only available when\nPLATFORM_EC_BRINGUP is true.",
       "revId": "48404f9e93ad84845d4fb7b9f8a5c6190a09c33f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d16bb55_eeb03e7d",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 1
+      },
+      "lineNbr": 821,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-02-11T02:49:59Z",
+      "side": 1,
+      "message": "It could be relevant anytime there isn\u0027t a battery (or the battery is disconnected, such as when somebody wants to deassert the hardware WP) so I don\u0027t think we want to limit this to only \"bringup\" builds.",
+      "parentUuid": "7b089b58_08e40a75",
+      "revId": "48404f9e93ad84845d4fb7b9f8a5c6190a09c33f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
