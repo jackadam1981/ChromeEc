@@ -16,6 +16,24 @@
       "message": "Considering the changes have enabled this on most platforms. I think it\u0027ll be best to separate dfu_bootmanager.c and CONFIG_DFU_BOOTMANAGER into their shared and main components.\n\ndfu_bootmanager.c would split into dfu_bootmanager_main.c and dfu_bootmanager_shared.c with the backup memory operations moved to the shared file.\n\nThe RO region would have CONFIG_DFU_BOOTMANAGER_MAIN since this behavior conflicts with some of the existing ifneq $(CONFIG_COMMON_RUNTIME) evaluations and we likely can\u0027t make assumptions that CONFIG_COMMON_RUNTIME is always enabled in the RW. Both regions would enable the CONFIG_DFU_BOOTMANAGER_SHARED define which has few conflicts by itself assuming there are available backup registers.\n\nAre there any concerns about this change?",
       "revId": "8ada6de848793b35fad2f770ce217bdc6b93211c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f01104e6_aa21e445",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2022-02-11T05:15:59Z",
+      "side": 1,
+      "message": "This seems reasonable to me.",
+      "parentUuid": "b6295cc3_1773ba05",
+      "revId": "8ada6de848793b35fad2f770ce217bdc6b93211c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
