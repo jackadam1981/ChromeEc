@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc8bde22_c9d07f75",
+        "filename": "board/banshee/gpio.inc",
+        "patchSetId": 8
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2022-02-11T17:55:19Z",
+      "side": 0,
+      "message": "please move d4 to the \"unused\" section below",
+      "range": {
+        "startLine": 15,
+        "startChar": 41,
+        "endLine": 15,
+        "endChar": 51
+      },
+      "revId": "95ada813759dcde7157ea6f04a277ea8b4f30f7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
