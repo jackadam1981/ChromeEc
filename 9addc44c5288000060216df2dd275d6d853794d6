@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a98975b2_e4562b52",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-02-11T23:37:41Z",
+      "side": 1,
+      "message": "Updated: (needed to include the other CLs in the CL-train)\n\nContext:\n - Almost clean cherry-pick. Needed to include CORTEX_PANIC_REGISTER_IPSR\u003d1 in order to compile. \n   I chose not to cherry pick the CL that defines CORTEX_PANIC_REGISTER_IPSR since it looks risky to cherry-pick it( https://crrev.com/c/3114645 )\n \nTested: compiles and works Ok.\n\n  \u003e crash watchdog\n  ...\n  \u003e panicinfo\n\nAnd I successfully saw:\n  \n  Saved panic data: (NEW)\n\n### WATCHDOG PC\u003d100979a2 / LR\u003d100979a1 / task\u003d10\nr0 :         r1 :         r2 :         r3 :        \nr4 :dead6664 r5 :100979a2 r6 :00000000 r7 :00000000\nr8 :00000000 r9 :00000000 r10:00000000 r11:00000000\nr12:         sp :00000000 lr :         pc :        \n\ncfsr \u003d 0, shcsr \u003d 0, hfsr \u003d 10000028, dfsr \u003d 0, ipsr \u003d 100979a1\n\n\n\n",
+      "revId": "9addc44c5288000060216df2dd275d6d853794d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
