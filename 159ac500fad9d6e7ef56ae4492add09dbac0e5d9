@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "065ebdd1_0e645bfd",
+        "filename": "zephyr/projects/nissa/prj_nivviks.conf",
+        "patchSetId": 19
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2022-02-11T06:08:02Z",
+      "side": 1,
+      "message": "Also you may need CONFIG_X86_NON_DSX_PWRSEQ_CONSOLE\u003dy for console commands.",
+      "range": {
+        "startLine": 32,
+        "startChar": 1,
+        "endLine": 32,
+        "endChar": 15
+      },
+      "revId": "159ac500fad9d6e7ef56ae4492add09dbac0e5d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "883a2335_9fc5e151",
+        "filename": "zephyr/projects/nissa/prj_nivviks.conf",
+        "patchSetId": 19
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2022-02-11T06:08:02Z",
+      "side": 1,
+      "message": "nit: could be added in alphabetic order for power sequence config.",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 31
+      },
+      "revId": "159ac500fad9d6e7ef56ae4492add09dbac0e5d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a2a2f76_9630fbff",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_adlp_nonpwrseq_sm.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2022-02-11T06:08:02Z",
+      "side": 1,
+      "message": "nit: alphabetic order.",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 23
+      },
+      "revId": "159ac500fad9d6e7ef56ae4492add09dbac0e5d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1cdb352d_eeaa9a56",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_adlp_nonpwrseq_sm.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2022-02-11T06:08:02Z",
+      "side": 1,
+      "message": "nit: Add __override to indicate the nature of the this function and other functions in this file.",
+      "revId": "159ac500fad9d6e7ef56ae4492add09dbac0e5d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
