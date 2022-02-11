@@ -46,6 +46,30 @@
       },
       "revId": "1fb81c1de914535d4ee0720481f1a6fc9ad3ba11",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "242493ce_b70a6cc2",
+        "filename": "zephyr/projects/intelrvp/adlrvp/adlrvp_npcx/gpio.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-02-11T06:02:24Z",
+      "side": 1,
+      "message": "The util/gpios_to_zephyr_dts.c file was only ever intended to give you a starting point for doing the GPIO conversion, not something ready to submit yet... some manual editing is to be expected.\n\n\u003e Are we planing to change all node name to use hyphen  instead of underscore ?\n\nYes, ideally any other cases where underscores were used in a node name should be switched to hyphens.",
+      "parentUuid": "e7f6bf8c_a0918453",
+      "range": {
+        "startLine": 113,
+        "startChar": 20,
+        "endLine": 113,
+        "endChar": 21
+      },
+      "revId": "1fb81c1de914535d4ee0720481f1a6fc9ad3ba11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
