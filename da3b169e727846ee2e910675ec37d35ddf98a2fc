@@ -46,6 +46,30 @@
       },
       "revId": "da3b169e727846ee2e910675ec37d35ddf98a2fc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc88e169_4926aebb",
+        "filename": "driver/charger/isl9241.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2022-02-11T09:46:06Z",
+      "side": 1,
+      "message": "There are a limit from https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/common/charger.c;l\u003d88?q\u003dcurrent_max\u0026ss\u003dchromiumos%2Fchromiumos%2Fcodesearch:src%2Fplatform%2Fec%2F",
+      "parentUuid": "ed4881fc_c71b6e14",
+      "range": {
+        "startLine": 57,
+        "startChar": 2,
+        "endLine": 57,
+        "endChar": 13
+      },
+      "revId": "da3b169e727846ee2e910675ec37d35ddf98a2fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
