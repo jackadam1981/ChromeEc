@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "396ed0f6_3fb3eb88",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-02-11T04:00:21Z",
+      "side": 1,
+      "message": "It would be nice if there was some way of detecting the situation\nand then delaying if necessary. It seems a big hammer to use to always\ndelay. It may be worth asking the TCPMv2 folks about this particular situation.\nSo maybe add a TODO that maybe a more elegant solution should be investigated.\n",
+      "revId": "15f58298f7bb90f76870c4440abad350f570a48b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
