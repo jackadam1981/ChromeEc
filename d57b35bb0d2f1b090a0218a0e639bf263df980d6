@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b75dadf5_59e3497a",
+        "filename": "zephyr/projects/brya/brya/common_power.dts",
+        "patchSetId": 25
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-02-11T02:28:27Z",
+      "side": 1,
+      "message": "For these GPIOs, they have parallel entries in gpio.dts.\nFor these entries, please remove the enum-name and the label on the node,\nand mark them as no-auto-init.\nThis way, we can determine if there is any other reference being made to these GPIOs. It is useful to leave the actual named-gpio node so that gpioget/gpioset can used to check the status.\nAlso, to ensure that the legacy power code is not included.",
+      "revId": "d57b35bb0d2f1b090a0218a0e639bf263df980d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
