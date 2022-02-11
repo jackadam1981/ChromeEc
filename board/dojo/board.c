@@ -165,16 +165,6 @@ struct motion_sensor_t bma422_lid_accel = {
 	},
 };
 
-static void board_update_motion_sensor_config(void)
-{
-	if (system_get_board_version() >= 2) {
-		motion_sensors[LID_ACCEL] = bma422_lid_accel;
-		ccprints("LID ACCEL is BMA422");
-	} else {
-		ccprints("LID ACCEL is KX022");
-	}
-}
-
 /* PWM */
 
 /*
@@ -229,8 +219,6 @@ static void board_init(void)
 	/* Enable motion sensor interrupt */
 	gpio_enable_interrupt(GPIO_BASE_IMU_INT_L);
 	gpio_enable_interrupt(GPIO_LID_ACCEL_INT_L);
-
-	board_update_motion_sensor_config();
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
