@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "03fd445f_d602eafe",
+        "filename": "board/volmar/sensors.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1384576
+      },
+      "writtenOn": "2022-02-11T06:43:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a32dc9d_cfcfe2f8",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 22
+      },
+      "revId": "847cd266c16c4a43d71b4c5863b90c838f6cb9d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "38e3b64e_e027909a",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-02-11T06:39:19Z",
       "side": 1,
       "message": "not needed",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 37
+      },
+      "revId": "847cd266c16c4a43d71b4c5863b90c838f6cb9d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b34722bc_844644e3",
+        "filename": "board/volmar/sensors.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1384576
+      },
+      "writtenOn": "2022-02-11T06:43:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "38e3b64e_e027909a",
       "range": {
         "startLine": 9,
         "startChar": 0,
