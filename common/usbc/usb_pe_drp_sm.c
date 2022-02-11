@@ -7048,64 +7048,72 @@ static void pe_dr_src_get_source_cap_exit(int port)
 }
 
 #ifdef CONFIG_USB_PD_DATA_RESET_MSG
-/*
- * PE_UDR_SEND_DATA_RESET
- */
+/* PE_UDR_Send_Data_Reset */
 static void pe_udr_send_data_reset_entry(int port)
 {
 	print_current_state(port);
-
 	/* Send Data Reset Message */
 	send_ctrl_msg(port, TCPCI_MSG_SOP, PD_CTRL_DATA_RESET);
-	/* Don't start the timer until message sent */
-	pd_timer_disable(port, PE_TIMER_SENDER_RESPONSE);
+	pe_sender_response_msg_entry(port);
 }
 
 static void pe_udr_send_data_reset_run(int port)
 {
-	if (PE_CHK_FLAG(port, PE_FLAGS_TX_COMPLETE) &&
-		pd_timer_is_disabled(port, PE_TIMER_SENDER_RESPONSE)) {
-		PE_CLR_FLAG(port, PE_FLAGS_TX_COMPLETE);
+	enum pe_msg_check msg_check = pe_sender_response_msg_run(port);
 
-		/* Initialize and run the SenderResponseTimer */
-		pd_timer_enable(port, PE_TIMER_SENDER_RESPONSE,
-				PD_T_SENDER_RESPONSE);
-	}
-
-	if (!pd_timer_is_disabled(port, PE_TIMER_SENDER_RESPONSE) &&
-			PE_CHK_FLAG(port, PE_FLAGS_MSG_RECEIVED)) {
-		PE_CLR_FLAG(port, PE_FLAGS_MSG_RECEIVED);
-
-		/* Look for control messages only */
-		if (PD_HEADER_CNT(rx_emsg[port].header) == 0) {
-			/* Accept message received */
-			if (PD_HEADER_TYPE(rx_emsg[port].header) ==
-							PD_CTRL_ACCEPT) {
-				if (tc_is_vconn_src(port)) {
-					set_state_pe(port,
-						PE_UDR_TURN_OFF_VCONN);
-				} else {
-					set_state_pe(port,
-					PE_UDR_WAIT_FOR_DATA_RESET_COMPLETE);
-				}
-			}
-			/* Reject message received of Protocol Error */
-			else if ((PD_HEADER_TYPE(rx_emsg[port].header) ==
-							PD_CTRL_REJECT)) {
-				set_state_pe(port, PE_WAIT_FOR_ERROR_RECOVERY);
-			}
-		}
-	} else if (PE_CHK_FLAG(port, PE_FLAGS_PROTOCOL_ERROR)) {
-		PE_CLR_FLAG(port, PE_FLAGS_PROTOCOL_ERROR);
-		set_state_pe(port, PE_WAIT_FOR_ERROR_RECOVERY);
+	/* Handle Discarded message, return to PE_SNK/SRC_READY */
+	if (msg_check & PE_MSG_DISCARDED) {
+		pe_set_ready_state(port);
+		return;
+	} else if (msg_check == PE_MSG_SEND_PENDING) {
+		/* Wait until message is sent */
+		return;
 	}
 
 	/*
-	 * Transition to ErrorRecovery state when:
-	 *   1) SenderResponseTimer times out.
+	 * Transition to the next Data Reset state after receiving Accept.
+	 * Return to the ready state after receiving Not Supported. After
+	 * receiving Reject or any other message type (Protocol Error),
+	 * transition to Error Recovery.
 	 */
-	if (pd_timer_is_expired(port, PE_TIMER_SENDER_RESPONSE))
+	if (PE_CHK_FLAG(port, PE_FLAGS_MSG_RECEIVED)) {
+		const uint32_t hdr = rx_emsg[port].header;
+
+		PE_CLR_FLAG(port, PE_FLAGS_MSG_RECEIVED);
+
+		if (PD_HEADER_GET_SOP(hdr) == TCPCI_MSG_SOP &&
+				PD_HEADER_CNT(hdr) == 0 &&
+				!PD_HEADER_EXT(hdr) &&
+				PD_HEADER_TYPE(hdr) == PD_CTRL_ACCEPT) {
+			set_state_pe(port, tc_is_vconn_src(port) ?
+					PE_UDR_TURN_OFF_VCONN :
+					PE_UDR_WAIT_FOR_DATA_RESET_COMPLETE);
+			return;
+		} else if (PD_HEADER_GET_SOP(hdr) == TCPCI_MSG_SOP &&
+				PD_HEADER_CNT(hdr) == 0 &&
+				!PD_HEADER_EXT(hdr) &&
+				PD_HEADER_TYPE(hdr) == PD_CTRL_NOT_SUPPORTED) {
+			/* Just pretend it worked. */
+			dpm_data_reset_complete(port);
+			pe_set_ready_state(port);
+			return;
+		}
+
+		/* Otherwise, it's a protocol error. */
+		PE_SET_FLAG(port, PE_FLAGS_PROTOCOL_ERROR);
+	}
+
+	if (pd_timer_is_expired(port, PE_TIMER_SENDER_RESPONSE) ||
+			PE_CHK_FLAG(port, PE_FLAGS_PROTOCOL_ERROR)) {
+		PE_CLR_FLAG(port, PE_FLAGS_PROTOCOL_ERROR);
 		set_state_pe(port, PE_WAIT_FOR_ERROR_RECOVERY);
+		return;
+	}
+}
+
+static void pe_udr_send_data_reset_exit(int port)
+{
+	pe_sender_response_msg_exit(port);
 }
 
 /*
@@ -7975,6 +7983,7 @@ static __const_data const struct usb_state pe_states[] = {
 	[PE_UDR_SEND_DATA_RESET] = {
 		.entry = pe_udr_send_data_reset_entry,
 		.run   = pe_udr_send_data_reset_run,
+		.exit  = pe_udr_send_data_reset_exit,
 	},
 	[PE_UDR_DATA_RESET_RECEIVED] = {
 		.entry = pe_udr_data_reset_received_entry,
