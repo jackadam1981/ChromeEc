@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6cff4499_bcd9e5cd",
+        "filename": "driver/charger/isl9241.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-02-11T02:17:57Z",
+      "side": 1,
+      "message": "i\u0027m confused. aren\u0027t these already scaled in\nisl9241_get_current\nisl9241_set_current\nto account for the sense resistor?\n\ncommon code looks at isl9241_charger_info.*,\nso it should be in the same unit (mA, etc.) for\nall chargers.\n\nare there some code paths in the driver that aren\u0027t\ncompensating for the sense resistor?",
+      "range": {
+        "startLine": 57,
+        "startChar": 2,
+        "endLine": 57,
+        "endChar": 13
+      },
+      "revId": "da3b169e727846ee2e910675ec37d35ddf98a2fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
