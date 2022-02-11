@@ -3,6 +3,233 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "986abd41_77498852",
+        "filename": "zephyr/dts/bindings/power/intel,ap-pwrseq-signal-list.yaml",
+        "patchSetId": 6
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-02-11T13:00:18Z",
+      "side": 1,
+      "message": "Presumably the gpio-interrupts node.\nInitially, you could use this node, though longer term it would be\nbetter to use the standard Zephyr interrupt API.\nThe gpio-interrupts node is a temporary framework until all the drivers and common code get completely migrated to Zephyr, and part of this that for each of these drivers and subsystems will use the Zephyr API directly, and eventually this compatible will go away.\nUsing it will tie this config to using this gpio-interrupt compatible, and since it is not an upstreamed compatible (and may never be, perhaps), it is likely better not to use it.",
+      "revId": "524a8d1e50f3a1374a3cd3403b4406552039b80e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3461e1e2_77d961de",
+        "filename": "zephyr/dts/bindings/power/intel,ap-pwrseq-signal-list.yaml",
+        "patchSetId": 6
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-02-11T13:00:18Z",
+      "side": 1,
+      "message": "So instead of this bit, the GPIO flag GPIO_ACTIVE_LOW or GPIO_ACTIVE_HIGH\nshould be used. Then the code can then treat the GPIO as a logical on or off, regardless of the physical state of the pin.",
+      "revId": "524a8d1e50f3a1374a3cd3403b4406552039b80e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f74f6251_01bbf9b0",
+        "filename": "zephyr/dts/bindings/power/intel,ap-pwrseq-signal-list.yaml",
+        "patchSetId": 6
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-02-11T13:00:18Z",
+      "side": 1,
+      "message": "So this could be a bool, though I am unsure of how it would be best used.\nThe flag could be \u0027enable-at-boot\u0027 or something like that.\nThere is no need to have a \u0027disable at boot\u0027, because interrupts by default\nare not enabled until they are.\nThough I have to ask the question whether there are signals that are not enabled at boot by default, when do they get enabled? Or disabled?",
+      "revId": "524a8d1e50f3a1374a3cd3403b4406552039b80e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "464c67e8_fe0b2d73",
+        "filename": "zephyr/subsys/ap_pwrseq/include/x86_common_pwrseq.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-02-11T13:00:18Z",
+      "side": 1,
+      "message": "Most of this can be initialised directly into a struct gpio_dt_spec\nusing GPIO_DT_GET_SPEC.",
+      "range": {
+        "startLine": 96,
+        "startChar": 7,
+        "endLine": 96,
+        "endChar": 11
+      },
+      "revId": "524a8d1e50f3a1374a3cd3403b4406552039b80e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b2b8c3b_42e5fca3",
+        "filename": "zephyr/subsys/ap_pwrseq/include/x86_common_pwrseq.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-02-11T13:00:18Z",
+      "side": 1,
+      "message": "It is best to divide the structures into a RO config and a RW data structure.\nAll of the fixed config (well, everything except intr_cb) into one structure and make sure it is const,\nand have an array of struct gpio_callback for the RW callback data.",
+      "revId": "524a8d1e50f3a1374a3cd3403b4406552039b80e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31a1f029_a49d88d7",
+        "filename": "zephyr/subsys/ap_pwrseq/include/x86_power_signals.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-02-11T13:00:18Z",
+      "side": 1,
+      "message": "So rather than using a node label, it is better to use something like\nDT_COMPAT_GET_ANY_STATUS_OKAY(intel_ap_pwrseq_signal_list).\nOr use the DT_INST macro.\nAlso put in a check to verify there is only one node defined for this\ncompatible using something like:\n\n#if DT_HAS_COMPAT_STATUS_OKAY(intel_ap_pwrseq_signal_list)\nBUILD_ASSERT(DT_NUM_INST_STATUS_OKAY(intel_ap_pwrseq_signal_list) \u003d\u003d 1,\n             \"Only one node for intel_ap_pwrseq_signal_list is allowed\");\n#endif",
+      "revId": "524a8d1e50f3a1374a3cd3403b4406552039b80e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32e1de1d_6b2ed50e",
+        "filename": "zephyr/subsys/ap_pwrseq/include/x86_power_signals.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-02-11T13:00:18Z",
+      "side": 1,
+      "message": "I would limit the amount of code within the conditional compile to only\nthe code that is affected by this.\ne.g only the enum generating FOREACH, and the BUILD_ASSERT (as separate\nbits of code that are guarded e.g\n\nnum power_signal {\n#if DT_HAS_COMPAT_STATUS_OKAY(intel_ap_pwrseq_signal_list)\n\tDT_FOREACH_CHILD(\n\t\tPOWER_SIGNALS_LIST_NODE,\n\t\tGEN_POWER_SIGNAL_ENUM_COMMA)\n#endif\n\tPOWER_SIGNAL_COUNT\n};\n\nThat way, you don\u0027t need to guard references to the enum type.",
+      "revId": "524a8d1e50f3a1374a3cd3403b4406552039b80e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a0cf968_c33c6d65",
+        "filename": "zephyr/subsys/ap_pwrseq/include/x86_power_signals.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-02-11T13:00:18Z",
+      "side": 1,
+      "message": "So not sure what the \u0027port_name\u0027 is doing here.\nThis refers to the underlying name of the GPIO controller, not the pin,\nand can also be obtained via port-\u003ename, so I think this element is redundant.",
+      "revId": "524a8d1e50f3a1374a3cd3403b4406552039b80e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5646cce_41fc522e",
+        "filename": "zephyr/subsys/ap_pwrseq/include/x86_power_signals.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-02-11T13:00:18Z",
+      "side": 1,
+      "message": "So rather than using the gpio-interrupt node as the source of this data, it\nmay be better to directly use a GPIO reference, and have a property for\nthe interrupt flags eg.\n  pwr-sig-1 {\n    signal-gpios \u003d \u003cgpio3 4 GPIO_ACTIVE_LOW\u003e;\n    int-flags \u003d \u003cGPIO_INT_EDGE_BOTH\u003e;\n    dbg-name \"Power Signal 1\";\n  };\n  \nAnd the code can use GPIO_DT_SPEC_GET as part of the init of the config.",
+      "revId": "524a8d1e50f3a1374a3cd3403b4406552039b80e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "68c975c1_c2b17c6c",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_adlp_pwrseq_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-02-11T13:00:18Z",
+      "side": 1,
+      "message": "I agree with Peter that it may be worth considering how to\ncombine these 2 arrays into a single array, with power signals\nfirst so that the interrupt structures do not need to include the\nvirtual wire signals.\nIt does depend on how much they really have in common, and whether e.g\nyou can put some common data in a base structure.\nIt\u0027s easy to generate the enums so that the power signals come first,\nA lot depends on whether you really want to treat them the same or not.",
+      "revId": "524a8d1e50f3a1374a3cd3403b4406552039b80e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5fa6bf8_2fc6c962",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_console.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-02-11T13:00:18Z",
+      "side": 1,
+      "message": "A good example where a combined array would allow a single lookup\nto a common base value.",
+      "revId": "524a8d1e50f3a1374a3cd3403b4406552039b80e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9241f830_9ec3fdc0",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-02-11T13:00:18Z",
+      "side": 1,
+      "message": "We\u0027ve found it generally easier to use struct gpio_dt_spec\ninstead of passing around a port and pin.",
+      "revId": "524a8d1e50f3a1374a3cd3403b4406552039b80e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b42566b2_150e0f49",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-02-11T13:00:18Z",
+      "side": 1,
+      "message": "Use gpio_get_pin_dt, and assume that the GPIO_ACTIVE_LOW flag will be set\nif the pin is inverted.",
+      "revId": "524a8d1e50f3a1374a3cd3403b4406552039b80e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0c4e8074_c05cb691",
         "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
         "patchSetId": 6
@@ -91,6 +318,63 @@
         "startChar": 0,
         "endLine": 174,
         "endChar": 2
+      },
+      "revId": "524a8d1e50f3a1374a3cd3403b4406552039b80e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a59e8a1_7d39a2ce",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-02-11T13:00:18Z",
+      "side": 1,
+      "message": "There are 2 ways to considerably simplify the mapping of which signal\nsourced the interrupt:\n1)\nUse the CONTAINER_OF() macro to map the callback to the containing structure:\n\n   struct power_signal_gpio_info {\n       enum power_signal signal;\n       ...\n       struct gpio_callback intr_cb;\n       ..\n   };\n   \n   ...\n   [in interrupt]\n   \n        struct power_signal_gpio_info *info;\n        \n        info \u003d CONTAINER_OF(cb, struct power_signal_gpio_info, intr_cb);\n        \n2)\nStore all of the interrupt callback structures in a single array, and use pointer arithmetic to get the index into the array:\n\n    struct gpio_callback intr_callbacks[POWER_SIGNAL_COUNT];\n    \n    ....\n        int power_signal;\n        \n        power_signal \u003d cb - \u0026intr_callbacks[0];\n        pwr_info \u003d \u0026power_signals[power_signal];",
+      "revId": "524a8d1e50f3a1374a3cd3403b4406552039b80e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ea90fd5_f9ea25b8",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-02-11T13:00:18Z",
+      "side": 1,
+      "message": "You shouldn\u0027t need this, because by default interrupts will not be enabled\nat startup.",
+      "revId": "524a8d1e50f3a1374a3cd3403b4406552039b80e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16ac2cf4_f46a2518",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-02-11T13:00:18Z",
+      "side": 1,
+      "message": "Use gpio_pin_interrupt_configure_dt and have the GPIO config\nstored in a struct gpio_dt_spec.",
+      "range": {
+        "startLine": 313,
+        "startChar": 4,
+        "endLine": 313,
+        "endChar": 32
       },
       "revId": "524a8d1e50f3a1374a3cd3403b4406552039b80e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
