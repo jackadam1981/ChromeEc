@@ -263,6 +263,7 @@ include common/build.mk
 include driver/build.mk
 include fuzz/build.mk
 include power/build.mk
+-include private-mt-scp/build.mk
 -include private/build.mk
 -include private-kandou/build.mk
 ifneq ($(PDIR),)
