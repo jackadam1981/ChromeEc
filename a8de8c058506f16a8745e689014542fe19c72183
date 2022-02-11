@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "47732f78_c6c6c011",
+        "filename": "zephyr/projects/nissa/common_power.dts",
+        "patchSetId": 16
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2022-02-11T01:54:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4ed2a1ae_c817bb25",
+      "revId": "a8de8c058506f16a8745e689014542fe19c72183",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fdf77d49_f3e7590f",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-02-09T18:50:39Z",
       "side": 1,
       "message": "With latest change, flag field is set to 0 from the .dts.",
+      "revId": "a8de8c058506f16a8745e689014542fe19c72183",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "179e3b96_729aa67c",
+        "filename": "zephyr/projects/nissa/common_power.dts",
+        "patchSetId": 16
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2022-02-11T01:54:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fdf77d49_f3e7590f",
       "revId": "a8de8c058506f16a8745e689014542fe19c72183",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

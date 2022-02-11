@@ -125,6 +125,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9be71e25_c882257f",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_adlp_pwrseq_sm.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2022-02-11T01:54:13Z",
+      "side": 1,
+      "message": "ACK",
+      "parentUuid": "a14d5ab9_606fe673",
+      "revId": "a7ff5b4e1d3ffee05f3b261acc1a4f1dc1d7a993",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e1fa1162_005d8f53",
         "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_adlp_pwrseq_sm.c",
         "patchSetId": 10
