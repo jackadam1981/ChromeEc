@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b4aa6ab_f773be91",
+        "filename": "zephyr/zmake/zmake/project.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-02-11T05:26:45Z",
+      "side": 1,
+      "message": "I think this should still be \"import zmake.modules\", since __init__.py doesn\u0027t actually import it.\n\n```\nPython 3.6.12 (default, Feb  8 2022, 11:11:17) \n[GCC Chromium OS 14.0_pre437112_p20211208-r7 Clang 14.0.0 (/var/tmp/portage/sys on linux\nType \"help\", \"copyright\", \"credits\" or \"license\" for more information.\n\u003e\u003e\u003e import zmake\n\u003e\u003e\u003e zmake.modules.known_modules\nTraceback (most recent call last):\n  File \"\u003cstdin\u003e\", line 1, in \u003cmodule\u003e\nAttributeError: module \u0027zmake\u0027 has no attribute \u0027modules\u0027\n```\n\n(i.e., this only works since some other module is importing zmake.modules before it\u0027s used)",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 12
+      },
+      "revId": "dc674acdc26726eb79f4d0c1e3f6ebfcf74072c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
