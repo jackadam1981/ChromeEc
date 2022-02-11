@@ -94,6 +94,30 @@
       },
       "revId": "c7636178198a7cceadd6ac21ae03791ac6251323",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f8e23f2b_fd1d80c6",
+        "filename": "zephyr/shim/src/console.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-02-11T05:21:15Z",
+      "side": 1,
+      "message": "since it\u0027s specific to this file seems better here... i agree",
+      "parentUuid": "4e7fddc8_07a739e8",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 6
+      },
+      "revId": "c7636178198a7cceadd6ac21ae03791ac6251323",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
