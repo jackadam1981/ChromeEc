@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e55aabb_74739a6b",
+        "filename": "board/pazquel/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-02-11T19:54:55Z",
+      "side": 1,
+      "message": "Rename it to `val`. `reg` is usually used for the offset, like the `DA9313_REG_PVC_CTRL`.",
+      "range": {
+        "startLine": 364,
+        "startChar": 64,
+        "endLine": 364,
+        "endChar": 67
+      },
+      "revId": "379374578675f5f9476adc2f3e3f0cbae4345693",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3e4a1f8_67556cc3",
+        "filename": "board/pazquel/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-02-11T19:54:55Z",
+      "side": 1,
+      "message": "\"failed\"",
+      "range": {
+        "startLine": 367,
+        "startChar": 28,
+        "endLine": 367,
+        "endChar": 32
+      },
+      "revId": "379374578675f5f9476adc2f3e3f0cbae4345693",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01f67324_2235b639",
+        "filename": "board/pazquel/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 381,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-02-11T19:54:55Z",
+      "side": 1,
+      "message": "\"failed\"",
+      "range": {
+        "startLine": 381,
+        "startChar": 29,
+        "endLine": 381,
+        "endChar": 34
+      },
+      "revId": "379374578675f5f9476adc2f3e3f0cbae4345693",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95e962c0_7dfa0f31",
+        "filename": "board/pazquel/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 418,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-02-11T19:54:55Z",
+      "side": 1,
+      "message": "Move it to a function. It is \u003e80 columns; wrap it.",
+      "range": {
+        "startLine": 418,
+        "startChar": 1,
+        "endLine": 418,
+        "endChar": 96
+      },
+      "revId": "379374578675f5f9476adc2f3e3f0cbae4345693",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00d174b4_e1d77a40",
+        "filename": "board/pazquel/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 425,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-02-11T19:54:55Z",
+      "side": 1,
+      "message": "Move it to a function.",
+      "range": {
+        "startLine": 425,
+        "startChar": 1,
+        "endLine": 425,
+        "endChar": 96
+      },
+      "revId": "379374578675f5f9476adc2f3e3f0cbae4345693",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bda58349_6b9bc0bc",
+        "filename": "board/pazquel/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-02-11T19:54:55Z",
+      "side": 1,
+      "message": "Please follow the naming convention: `DA9313_I2C_ADDR_FLAGS`",
+      "range": {
+        "startLine": 76,
+        "startChar": 8,
+        "endLine": 76,
+        "endChar": 20
+      },
+      "revId": "379374578675f5f9476adc2f3e3f0cbae4345693",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2062b59c_ed2d76d5",
+        "filename": "board/pazquel/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-02-11T19:54:55Z",
+      "side": 1,
+      "message": "Rename it to `DA9313_REG_PVC_CTRL`",
+      "range": {
+        "startLine": 77,
+        "startChar": 8,
+        "endLine": 77,
+        "endChar": 23
+      },
+      "revId": "379374578675f5f9476adc2f3e3f0cbae4345693",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
