@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c3f675e_6b3885e3",
+        "filename": "zephyr/projects/nissa/common_power.dts",
+        "patchSetId": 18
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2022-02-11T16:44:39Z",
+      "side": 1,
+      "message": "This file should be renamed to nivviks_common_power.dts, since nereid resides in the same folder? Or nereid can have overlay to override any settings with its own .dts?",
+      "revId": "68a1ec915903e28d6ebd4579cb7f974f4fa4291b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
