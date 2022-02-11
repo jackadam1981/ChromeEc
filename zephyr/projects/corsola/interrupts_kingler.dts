@@ -36,6 +36,11 @@
 			flags = <GPIO_INT_EDGE_RISING>;
 			handler = "chipset_reset_request_interrupt";
 		};
+		int_wdt_rst: wdt_rst{
+			irq-pin = <&ap_ec_wdtrst_l>;
+			flags = <GPIO_INT_EDGE_FALLING>;
+			handler = "chipset_watchdog_interrupt";
+		};
 		int_ap_in_sleep: ap_in_sleep {
 			irq-pin = <&ap_in_sleep_l>;
 			flags = <GPIO_INT_EDGE_BOTH>;

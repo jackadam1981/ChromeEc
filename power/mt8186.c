@@ -83,6 +83,17 @@ void chipset_reset_request_interrupt(enum gpio_signal signal)
 	hook_call_deferred(&reset_request_interrupt_deferred_data, 0);
 }
 
+static void watchdog_interrupt_deferred(void)
+{
+	chipset_reset(CHIPSET_RESET_AP_WATCHDOG);
+}
+DECLARE_DEFERRED(watchdog_interrupt_deferred);
+
+void chipset_watchdog_interrupt(enum gpio_signal signal)
+{
+	hook_call_deferred(&watchdog_interrupt_deferred_data, 0);
+}
+
 static void release_power_button(void)
 {
 	CPRINTS("release power button after 8 seconds.");
