@@ -22,6 +22,30 @@
       },
       "revId": "1fb81c1de914535d4ee0720481f1a6fc9ad3ba11",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7f6bf8c_a0918453",
+        "filename": "zephyr/projects/intelrvp/adlrvp/adlrvp_npcx/gpio.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-02-11T02:13:56Z",
+      "side": 1,
+      "message": "We used \"util/gpios_to_zephyr_dts.c \" to generate dts file from gpio.inc  and I also checked other .dts(e.g: zephyr/projects/nissa/nivviks_generated.dts) in zephyr project, all are using \u0027_\u0027 in node name.\n\nAre we planing to change all node name to use hyphen  instead of underscore ?",
+      "parentUuid": "b24fe4ec_68b129a4",
+      "range": {
+        "startLine": 113,
+        "startChar": 20,
+        "endLine": 113,
+        "endChar": 21
+      },
+      "revId": "1fb81c1de914535d4ee0720481f1a6fc9ad3ba11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
