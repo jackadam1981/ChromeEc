@@ -390,6 +390,12 @@ static int _process_payload_event(struct pchg *ctx, struct ctn730_msg *res)
 			CPRINTS("Download Mode (%s)",
 				_text_reset_reason(buf[1]));
 			ctx->event = PCHG_EVENT_RESET;
+			/*
+			 * CTN730 can send EVT notifying us it entered download
+			 * mode asynchronously for some reason (e.g. corrupted
+			 * FW).
+			 */
+			ctx->mode = PCHG_MODE_DOWNLOAD;
 		} else {
 			return EC_ERROR_INVAL;
 		}
