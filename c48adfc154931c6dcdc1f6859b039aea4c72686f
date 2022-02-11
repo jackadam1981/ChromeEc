@@ -16,6 +16,24 @@
       "message": "Suggest that default DEMO value define by board level is better. Then it can define by project. And default value set \"RGBKBD_DEMO_OFF\".\nThanks.",
       "revId": "c48adfc154931c6dcdc1f6859b039aea4c72686f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3cdc680d_98d8b485",
+        "filename": "common/rgb_keyboard.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-02-11T19:10:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0190c450_26ef5319",
+      "revId": "c48adfc154931c6dcdc1f6859b039aea4c72686f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
