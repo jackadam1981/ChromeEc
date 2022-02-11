@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb2f17be_64837a75",
+        "filename": "chip/stm32/dfu_bootmanager.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2022-02-11T16:54:22Z",
+      "side": 1,
+      "message": "return crec_flash_is_erased(CONFIG_RW_MEM_OFF, 8);",
+      "range": {
+        "startLine": 105,
+        "startChar": 1,
+        "endLine": 105,
+        "endChar": 56
+      },
+      "revId": "828056d1f0c43d9efce0bf66c39cc440fc3e3f15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
