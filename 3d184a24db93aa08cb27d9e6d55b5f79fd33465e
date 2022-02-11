@@ -46,6 +46,30 @@
       },
       "revId": "3d184a24db93aa08cb27d9e6d55b5f79fd33465e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "72a0c080_26d11d0a",
+        "filename": "include/chipset.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-02-11T04:12:08Z",
+      "side": 1,
+      "message": "Before AP_PWRSEQ provide chipset APIs, we have to use those for power button task.",
+      "parentUuid": "8956cac6_1bd29ba3",
+      "range": {
+        "startLine": 124,
+        "startChar": 0,
+        "endLine": 132,
+        "endChar": 1
+      },
+      "revId": "3d184a24db93aa08cb27d9e6d55b5f79fd33465e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
