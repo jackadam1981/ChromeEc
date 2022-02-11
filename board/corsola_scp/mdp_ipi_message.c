@@ -28,7 +28,7 @@ static struct consumer const event_mdp_consumer = {
 };
 
 /* Stub functions only provided by private overlays. */
-#ifndef HAVE_PRIVATE_MT8186
+#ifndef HAVE_PRIVATE_MT8183
 void mdp_common_init(void) {}
 void mdp_ipi_task_handler(void *pvParameters) {}
 #endif
