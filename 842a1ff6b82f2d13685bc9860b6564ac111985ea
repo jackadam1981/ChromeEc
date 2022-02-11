@@ -204,6 +204,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f0a3dfe6_14b54310",
+        "filename": "zephyr/zmake/zmake/version.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-02-11T06:12:21Z",
+      "side": 1,
+      "message": "Can we just use CHROMEOS_VERSION_STRING, which has all of this already?",
+      "range": {
+        "startLine": 169,
+        "startChar": 0,
+        "endLine": 171,
+        "endChar": 53
+      },
+      "revId": "842a1ff6b82f2d13685bc9860b6564ac111985ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "472bf0cc_13398bfd",
         "filename": "zephyr/zmake/zmake/version.py",
         "patchSetId": 2
@@ -215,6 +238,30 @@
       "writtenOn": "2022-02-11T05:59:18Z",
       "side": 1,
       "message": "this should have an option to disable it (for example reproducible\u003dTrue), as it\u0027ll result in a build which is not reproducible.",
+      "range": {
+        "startLine": 177,
+        "startChar": 25,
+        "endLine": 177,
+        "endChar": 67
+      },
+      "revId": "842a1ff6b82f2d13685bc9860b6564ac111985ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "36f0c2a4_00c55a5e",
+        "filename": "zephyr/zmake/zmake/version.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-02-11T06:12:21Z",
+      "side": 1,
+      "message": "Actually, it looks like we don\u0027t need to duplicate this logic, the chromeos_version.sh script already has it:\n\n```\n  # Official builds must set CHROMEOS_OFFICIAL\u003d1.\n  if [ ${CHROMEOS_OFFICIAL:-0} -ne 1 ]; then\n    # For developer builds, overwrite CHROMEOS_PATCH with a date string\n    # for use by auto-updater.\n    CHROMEOS_PATCH\u003d$(date +%Y_%m_%d_%H%M)\n  fi\n```",
+      "parentUuid": "472bf0cc_13398bfd",
       "range": {
         "startLine": 177,
         "startChar": 25,
