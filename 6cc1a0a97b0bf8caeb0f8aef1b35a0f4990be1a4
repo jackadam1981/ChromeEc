@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d0cde54_2900bc32",
+        "filename": "zephyr/projects/brya/brya/adl_power_signal.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-02-11T02:42:13Z",
+      "side": 1,
+      "message": "So the order shouldn\u0027t be important, since the generation of the enum\ncan be done in the same build, and presumably does not rely on the order.\n\nWhere you have the code to generate the config tables, you can use\ndifferent macros to generate the enum list in a header file, and the config tables in a .c file, and they will be consistent.\nFor example, see zephyr/shim/include/zephyr_gpio_signal.h and zephyr/shim/src/gpio.c\n\nI\u0027m not sure how the interrupt set-up will work here.\nThis appears to be referencing the cros-ec-gpio-interrupts compatible, but because the power sequence code references the GPIOs directly, it may be better to use the standard Zephyr interrupt setup and handling rather than using the gpio-interrupts compatible (which is really a temporary shim until all the drivers have their own Zephyr based interrupt setup and handling.",
+      "revId": "6cc1a0a97b0bf8caeb0f8aef1b35a0f4990be1a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
