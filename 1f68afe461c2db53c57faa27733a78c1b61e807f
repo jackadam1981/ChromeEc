@@ -16,6 +16,24 @@
       "message": "if this message is  fully auto-generated, the script should add a note about how it was invoked to generate this patch:\n\nutil/update_release_branch.py --baseboard brya --relevant_paths_file baseboard/brya/relevant-paths.txt firmware-brya-14505.B-main\n\nelse, add it manually.",
       "revId": "1f68afe461c2db53c57faa27733a78c1b61e807f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b090d6e_5ef07d9b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2022-02-11T00:02:17Z",
+      "side": 1,
+      "message": "It is fully auto-generated. Adding it manually for now.",
+      "parentUuid": "0e567167_ff00244c",
+      "revId": "1f68afe461c2db53c57faa27733a78c1b61e807f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
