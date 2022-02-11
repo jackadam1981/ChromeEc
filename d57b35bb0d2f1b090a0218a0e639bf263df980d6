@@ -16,6 +16,24 @@
       "message": "For these GPIOs, they have parallel entries in gpio.dts.\nFor these entries, please remove the enum-name and the label on the node,\nand mark them as no-auto-init.\nThis way, we can determine if there is any other reference being made to these GPIOs. It is useful to leave the actual named-gpio node so that gpioget/gpioset can used to check the status.\nAlso, to ensure that the legacy power code is not included.",
       "revId": "d57b35bb0d2f1b090a0218a0e639bf263df980d6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "480c77ff_c20beab7",
+        "filename": "zephyr/projects/brya/brya/common_power.dts",
+        "patchSetId": 25
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2022-02-11T20:20:45Z",
+      "side": 1,
+      "message": "Ack. This is a good point. I tested removing this from gpio.dts and also interrupt.dts, there is none but one reference to dsw_pwrok\n\"baseboard/brya/usb_pd_policy.c: In function \u0027pd_check_vconn_swap\u0027\". I will update the rest.",
+      "parentUuid": "b75dadf5_59e3497a",
+      "revId": "d57b35bb0d2f1b090a0218a0e639bf263df980d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
