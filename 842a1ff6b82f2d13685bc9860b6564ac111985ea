@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cd9bd7a6_2db618aa",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-02-11T20:17:40Z",
+      "side": 1,
+      "message": "Should it replace our existing version string then instead of augmenting it?\n\nMy goal here is to not have two things called \"FWID\".",
+      "parentUuid": "8533133c_335a3b07",
+      "revId": "842a1ff6b82f2d13685bc9860b6564ac111985ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "dfc97113_e163dffa",
         "filename": "zephyr/zmake/tests/test_version.py",
         "patchSetId": 2
