@@ -56,6 +56,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3ef819fb_566517b7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2022-02-11T22:08:11Z",
+      "side": 1,
+      "message": "IMO yes. The concern is the long tail of tools and tests that depend on the existing version format. We can pull the band-aide if you think it\u0027s worth it.",
+      "parentUuid": "cd9bd7a6_2db618aa",
+      "revId": "842a1ff6b82f2d13685bc9860b6564ac111985ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "dfc97113_e163dffa",
         "filename": "zephyr/zmake/tests/test_version.py",
         "patchSetId": 2
