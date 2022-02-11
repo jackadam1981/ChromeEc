@@ -50,6 +50,24 @@
       "message": "could you PTAL? ty!",
       "revId": "fac92a80c99c0d74c7afe10108f66fcbc02b0811",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ddefd06f_14ab3898",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-02-11T19:42:44Z",
+      "side": 1,
+      "message": "Have you tried to flash EC only? You can put the DUT into dev mode, disable EC sync in GBB, then flash_ec your ec.bin.",
+      "parentUuid": "f975e36b_c3da2358",
+      "revId": "fac92a80c99c0d74c7afe10108f66fcbc02b0811",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
