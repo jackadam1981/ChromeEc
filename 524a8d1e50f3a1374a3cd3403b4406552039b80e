@@ -22,6 +22,30 @@
       },
       "revId": "524a8d1e50f3a1374a3cd3403b4406552039b80e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c023a5c_c8657458",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-02-11T00:53:43Z",
+      "side": 1,
+      "message": "The power signal can generated from GPIO, VW or ADC(Nivviks).\n\nLegacy EC code does have one power_signal_info list in the same order as \"enum power_signal\" defined. I was thinking to do the same at beginning, to use DT_FOREACH_CHILD() go through power signal list nodes, and generate one info list, also define enum values from it.\n\nI read somewhere in zephyr document (couldn\u0027t find it now), that  DT_FOREACH_CHILD() doesn\u0027t not guarantee to process nodes in the order as they put in the dts file. If this is true, enum value might not same as index to list entry, so I switched to current implementation.\n\nIf DT_FOREACH_CHILD() does process nodes in order as nodes showing in device tree, it would be good that we can use enum as index to directly access power signal info. What information do you have for this DT_FOREACH_CHILD()?",
+      "parentUuid": "0c4e8074_c05cb691",
+      "range": {
+        "startLine": 167,
+        "startChar": 0,
+        "endLine": 174,
+        "endChar": 2
+      },
+      "revId": "524a8d1e50f3a1374a3cd3403b4406552039b80e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
