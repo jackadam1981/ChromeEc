@@ -22,6 +22,30 @@
       },
       "revId": "da3b169e727846ee2e910675ec37d35ddf98a2fc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed4881fc_c71b6e14",
+        "filename": "driver/charger/isl9241.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2022-02-11T02:51:06Z",
+      "side": 1,
+      "message": "This patch is only scaled max/min/step not scale current. sorry for the confuse.\nIt is done on other charger on charger info such as bq257x0.",
+      "parentUuid": "6cff4499_bcd9e5cd",
+      "range": {
+        "startLine": 57,
+        "startChar": 2,
+        "endLine": 57,
+        "endChar": 13
+      },
+      "revId": "da3b169e727846ee2e910675ec37d35ddf98a2fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
