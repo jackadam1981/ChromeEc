@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ebfd1065_9de8ce8b",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1206,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2022-02-12T01:39:47Z",
+      "side": 1,
+      "message": "I don\u0027t know if we want to call board_reboot_ec on ec-efs boards or just call \tec_efs_reset() here.",
+      "range": {
+        "startLine": 1206,
+        "startChar": 0,
+        "endLine": 1206,
+        "endChar": 46
+      },
+      "revId": "ef621e8a6e64e36df5528c4e7036c666b3b3a6f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
