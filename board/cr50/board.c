@@ -983,9 +983,10 @@ static void board_init(void)
 
 	/*
 	 * Enable interrupt handler for RBOX key combo so it can be used to
-	 * store the recovery request.
+	 * store the recovery request and reset ec_efs.
 	 */
-	if (board_uses_closed_source_set1()) {
+	if (board_uses_closed_source_set1() ||
+	    board_has_ec_cr50_comm_support()) {
 		/* Enable interrupt handler for reset button combo */
 		task_enable_irq(GC_IRQNUM_RBOX0_INTR_BUTTON_COMBO0_RDY_INT);
 		GWRITE_FIELD(RBOX, INT_ENABLE, INTR_BUTTON_COMBO0_RDY, 1);
@@ -1197,8 +1198,18 @@ void board_reboot_ec_deferred(int32_t usec_delay)
 static void key_combo0_irq(void)
 {
 	GWRITE_FIELD(RBOX, INT_STATE, INTR_BUTTON_COMBO0_RDY, 1);
-	recovery_button_record();
-	hook_call_deferred(&board_reboot_ec_data, 0);
+
+	/* Recovery_button_record is only used for closed_source_set1 */
+	if (board_uses_closed_source_set1()) {
+		recovery_button_record();
+		hook_call_deferred(&board_reboot_ec_data, 0);
+	}
+
+	if (board_has_ec_cr50_comm_support()) {
+		/* Hardware resets the EC. Clear boot_mode */
+		CPRINTS("Reset boot_mode");
+		ec_efs_reset();
+	}
 	CPRINTS("Recovery Requested");
 }
 DECLARE_IRQ(GC_IRQNUM_RBOX0_INTR_BUTTON_COMBO0_RDY_INT, key_combo0_irq, 0);
