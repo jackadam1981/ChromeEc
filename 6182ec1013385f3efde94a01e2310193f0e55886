@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0478e8b6_1e2f6090",
+        "filename": "zephyr/zmake/zmake/__main__.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-02-12T00:24:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "70d82075_211b0299",
+      "range": {
+        "startLine": 302,
+        "startChar": 4,
+        "endLine": 302,
+        "endChar": 19
+      },
+      "revId": "6182ec1013385f3efde94a01e2310193f0e55886",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7aa4c774_37f46be6",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-02-10T00:12:02Z",
       "side": 1,
       "message": "+ is not required",
+      "range": {
+        "startLine": 318,
+        "startChar": 8,
+        "endLine": 318,
+        "endChar": 10
+      },
+      "revId": "6182ec1013385f3efde94a01e2310193f0e55886",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c8a65c6_061832a1",
+        "filename": "zephyr/zmake/zmake/__main__.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-02-12T00:24:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7aa4c774_37f46be6",
       "range": {
         "startLine": 318,
         "startChar": 8,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "88bc7d34_4837751f",
+        "filename": "zephyr/zmake/zmake/__main__.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-02-12T00:24:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a7c434bc_e2010bed",
+      "range": {
+        "startLine": 347,
+        "startChar": 45,
+        "endLine": 347,
+        "endChar": 69
+      },
+      "revId": "6182ec1013385f3efde94a01e2310193f0e55886",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d1a9e3b8_e67f7f95",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-02-10T00:12:02Z",
       "side": 1,
       "message": "so I really think this should not be an implicit behavior caused by --test without --build... that seems unintuitive to how configure normally behaves",
+      "range": {
+        "startLine": 252,
+        "startChar": 0,
+        "endLine": 258,
+        "endChar": 0
+      },
+      "revId": "6182ec1013385f3efde94a01e2310193f0e55886",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc31440b_eb969f41",
+        "filename": "zephyr/zmake/zmake/zmake.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-02-12T00:24:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d1a9e3b8_e67f7f95",
       "range": {
         "startLine": 252,
         "startChar": 0,

@@ -211,6 +211,30 @@
       },
       "revId": "f2b6b61d24741e674146a0bd91eeadc4e3c0d163",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "555a8086_ef205d65",
+        "filename": "zephyr/zmake/zmake/zmake.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 701,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-02-12T00:24:53Z",
+      "side": 1,
+      "message": "We resolved this in the doc, but this cl only handles configure. The other commands will follow.",
+      "parentUuid": "1af127a9_0d487df9",
+      "range": {
+        "startLine": 681,
+        "startChar": 0,
+        "endLine": 701,
+        "endChar": 35
+      },
+      "revId": "f2b6b61d24741e674146a0bd91eeadc4e3c0d163",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
