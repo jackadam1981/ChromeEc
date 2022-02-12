@@ -22,6 +22,30 @@
       },
       "revId": "7bca7184ac03a33427316a0955fce4f9687acf0e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1eb68b3f_01c498fd",
+        "filename": "zephyr/shim/chip/npcx/system_external_storage.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-02-12T06:18:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "06aaee53_8f66249c",
+      "range": {
+        "startLine": 114,
+        "startChar": 1,
+        "endLine": 116,
+        "endChar": 4
+      },
+      "revId": "7bca7184ac03a33427316a0955fce4f9687acf0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
