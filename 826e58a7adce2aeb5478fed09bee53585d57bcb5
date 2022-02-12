@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "4cda0273_ca68770a",
+        "filename": "common/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-02-12T00:23:31Z",
+      "side": 1,
+      "message": "CONFIG_RAM_SIZE is also used for legacy builds.  This is compiling out get_jump_data() for all legacy builds.\n\nYou shouldn\u0027t use any Kconfig (CONFIG_PLATFORM_EC_*) options within the legacy code.\n\nWhy not just use #ifdef CONFIG_RAM_SIZE as the guard?",
+      "parentUuid": "3a9458a7_7a75b1d7",
+      "range": {
+        "startLine": 324,
+        "startChar": 0,
+        "endLine": 324,
+        "endChar": 36
+      },
+      "revId": "826e58a7adce2aeb5478fed09bee53585d57bcb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "967f2d4f_380d2a2a",
@@ -42,6 +66,76 @@
         "startChar": 0,
         "endLine": 740,
         "endChar": 36
+      },
+      "revId": "826e58a7adce2aeb5478fed09bee53585d57bcb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "37303298_d7af39ee",
+        "filename": "common/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 740,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-02-12T00:23:31Z",
+      "side": 1,
+      "message": "Guard with CONFIG_EC_PROTECTED_STORAGE_OFF directly?",
+      "parentUuid": "967f2d4f_380d2a2a",
+      "range": {
+        "startLine": 740,
+        "startChar": 0,
+        "endLine": 740,
+        "endChar": 36
+      },
+      "revId": "826e58a7adce2aeb5478fed09bee53585d57bcb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e6a59e1_2131ff3d",
+        "filename": "zephyr/shim/src/ztest_system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-02-12T00:23:31Z",
+      "side": 1,
+      "message": "Why the mixed case here?",
+      "range": {
+        "startLine": 60,
+        "startChar": 9,
+        "endLine": 60,
+        "endChar": 16
+      },
+      "revId": "826e58a7adce2aeb5478fed09bee53585d57bcb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63803572_e39706b5",
+        "filename": "zephyr/test/drivers/src/isl923x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 671,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-02-12T00:23:31Z",
+      "side": 1,
+      "message": "Please create a bug.",
+      "range": {
+        "startLine": 671,
+        "startChar": 9,
+        "endLine": 671,
+        "endChar": 16
       },
       "revId": "826e58a7adce2aeb5478fed09bee53585d57bcb5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
