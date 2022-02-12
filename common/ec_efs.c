@@ -127,6 +127,7 @@ static int load_ec_hash_(uint8_t * const ec_hash)
  */
 static void ec_efs_init_(void)
 {
+	CPRINTS("%s: TEST PRINT", __func__);
 	/*
 	 * If it is a wakeup from deep sleep, then recover some core EC-EFS
 	 * context values, including the boot_mode value, from a PWRD_SCRATCH
@@ -185,6 +186,7 @@ DECLARE_VENDOR_COMMAND_P(VENDOR_CC_RESET_EC, vc_reset_ec_);
 
 void ec_efs_reset(void)
 {
+	CPRINTS("TEST: %s", __func__);
 	set_boot_mode_(
 #if CONFIG_EC_EFS2_VERSION == 0
 		EC_EFS_BOOT_MODE_NORMAL
@@ -207,10 +209,12 @@ uint16_t ec_efs_set_boot_mode(const char * const data, const uint8_t size)
 {
 	uint8_t boot_mode;
 
+	CPRINTS("TEST: %s %d", __func__, size);
 	if (size != 1)
 		return CR50_COMM_ERROR_SIZE;
 
 	boot_mode = data[0];
+	CPRINTS("TEST: %s boot_mode %d", __func__, boot_mode);
 
 	switch (boot_mode) {
 #if CONFIG_EC_EFS2_VERSION == 0
@@ -272,6 +276,7 @@ uint16_t ec_efs_set_boot_mode(const char * const data, const uint8_t size)
 		return CR50_COMM_ERROR_BAD_PARAM;
 	}
 
+	CPRINTS("TEST: %s set boot_mode %d", __func__, boot_mode);
 	set_boot_mode_(boot_mode);
 	return CR50_COMM_SUCCESS;
 }
@@ -348,10 +353,8 @@ void ec_efs_print_status(void)
 	ccprintf("boot_mode          : %s\n",
 		 boot_mode_name_[ec_efs_ctx.boot_mode]);
 
-#ifdef CR50_DEV
 	ccprintf("ec_hash_secdata    : %ph\n",
 		 HEX_BUF(ec_efs_ctx.hash, SHA256_DIGEST_SIZE));
-#endif
 }
 
 enum ec_error_list ec_efs_corrupt_hash(void)
