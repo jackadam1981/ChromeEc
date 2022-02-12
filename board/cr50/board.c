@@ -1295,6 +1295,7 @@ static void wait_ec_rst(int level)
 
 void assert_ec_rst(void)
 {
+	CPRINTS("TEST: Assert ecrst");
 	/* Prevent bit bang interrupt storm. */
 	if (uart_bitbang_is_enabled())
 		task_disable_irq(bitbang_config.rx_irq);

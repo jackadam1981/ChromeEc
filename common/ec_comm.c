@@ -246,7 +246,6 @@ int ec_comm_process_packet(uint8_t ch)
 	if (response) {
 		transfer_response_to_ec_(response);
 
-#ifdef CR50_DEV
 		CPRINTS("decoded a packet");
 		CPRINTS("header  : 0x%ph",
 			HEX_BUF((uint8_t *)&ec_comm_ctx.ph,
@@ -256,7 +255,6 @@ int ec_comm_process_packet(uint8_t ch)
 				ec_comm_ctx.ph.size));
 		/* Let's response to EC */
 		CPRINTS("response: 0x%04x", response);
-#endif
 		/*
 		 * If it reaches here, EC comm is either broken or one packet
 		 * was well-processed. Let's turn the phase back to READY_COMM.
