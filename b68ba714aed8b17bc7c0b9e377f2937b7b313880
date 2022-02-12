@@ -33,6 +33,24 @@
       "message": "[Sorry, this turned out to be a long and winding review comment]\n\nSo I\u0027d like to know exactly who calls this, and where from.\nNothing on the Zephyr side calls this - I guess the\ncommon power button code calls this? common/power_button_x86.c by the looks.\nSo this call is part of a wider API guarded by HAS_TASK_CHIPSET\nFrom zephyr/Kconfig.powerseq, it is turned on when PLATFORM_EC_POWERSEQ\nis enabled as a config.\nIs that being enabled? Perhaps not, which is why the need to expose this function separately.\nI see that common/power_button_x86.c has a number of calls to  chipset\nrelated functions. Will they all need to be supported as well?\n\nSo my thought is that it is not good to selectively support only one of the functions for this API - that\u0027s confusing, and causes technical debt.\n\nThe core issue here is that we have some legacy code that uses a legacy API to talk to some chipset specific functions, and we need (I guess) to\nsomehow shim in our code either into this API or create a new one that\nallows the power_button_x86 code to talk to us.\nThe first question I have is whether the rest of the API is important\nto this code - it does seem to invoke or rely on a bunch of functions that\nare no-ops when HAS_TASK_CHIPSET is turned off.\nAnother thing to note is that all our current X86 Zephyr boards (e.g Brya) are defining PLATFORM_EC_POWERSEQ, and so have shimmed in the older legacy code.\nSo the API is fine for that.\n\nSo the big question is what to do about the API exposed by HAS_TASK_CHIPSET?\nOptions:\n 1. Copy the code in power_button_x86.c to Zephyr, and integrate it as part of the power sequence code, with whatever new APIs are needed for it to work.\n 2. Add the necessary support to the Zephyr power seq code to support the legacy\n API fully (may need some tweaks to split HAS_TASK_CHIPSET off).\n 3. Add a new callback to power_button_c86 that is a new API, enabled by an internal config item selected by the new power sequence code. Essentially adding a new API to this code to allow easy integration with the Zephyr code.\n \n1) seems ultimately the right thing, but maybe not a short term goal. It will need to be done eventually - so why not now. But not sure it is a priority yet.\n\n2) This is likely undesirable since the legacy API may not easily fit with the new Zephyr code, though it could be done as part of a shim. It may be a good short term solution.\n\n3) is easy to do, but a lot depends on whether the power_button_x86 code needs more than this single function. This may be the easiest and best short term solution.\n\nIt may be worth talking to Keith Short about this.",
       "revId": "b68ba714aed8b17bc7c0b9e377f2937b7b313880",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f2a572a_78f0f9aa",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-02-12T02:54:33Z",
+      "side": 1,
+      "message": "Yes, eventually we should have native zephyr implementation for power button, option 1 is the goal. To have power button to work, power_button_x86.c needs to be included, it has dependency on a few things, chipset, system, hook, etc. It will takes some time to have all of those in zephyr code.\n\nTo have native power sequencing fully functional, power button is required, so we plan to use legacy EC code for now. Though the chipset related functions should come from zephyr power sequencing code. chipset_exit_hard_off() is implemented in this CL, chipset_in_state() are implemented in CL:3381901, many other places are calling chipset_in_state() too.  we need to have some configuration for those to be used by non-zephyr files. I have issue tracker b:214509787. In this way, option 3 is best for short term solution.",
+      "parentUuid": "b398a030_841b3ba2",
+      "revId": "b68ba714aed8b17bc7c0b9e377f2937b7b313880",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
