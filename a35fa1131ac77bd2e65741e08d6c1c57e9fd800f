@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dea3cb3c_96179d8c",
+        "filename": "board/banshee/board.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1506077
+      },
+      "writtenOn": "2022-02-14T10:10:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2167019b_49b69985",
+      "range": {
+        "startLine": 234,
+        "startChar": 1,
+        "endLine": 234,
+        "endChar": 8
+      },
+      "revId": "a35fa1131ac77bd2e65741e08d6c1c57e9fd800f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6787f4ac_9c10f4e6",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-02-11T17:55:19Z",
       "side": 1,
       "message": "Please create a bug to calibrate once the real hardware arrives",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 53
+      },
+      "revId": "a35fa1131ac77bd2e65741e08d6c1c57e9fd800f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3b7e5d4_2bba9b39",
+        "filename": "board/banshee/sensors.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1506077
+      },
+      "writtenOn": "2022-02-14T10:10:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6787f4ac_9c10f4e6",
       "range": {
         "startLine": 70,
         "startChar": 0,
