@@ -199,17 +199,7 @@ def get_argparser():
         "build",
         help="Execute the build from a build directory",
     )
-    build.add_argument(
-        "build_dir",
-        type=pathlib.Path,
-        help="The build directory used during configuration",
-    )
-    build.add_argument(
-        "-w",
-        "--fail-on-warnings",
-        action="store_true",
-        help="Exit with code 2 if warnings are detected",
-    )
+    add_common_configure_args(build)
 
     list_projects = sub.add_parser(
         "list-projects",
