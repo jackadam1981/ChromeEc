@@ -114,7 +114,6 @@ configure_file(gcov.tmpl.sh ${CMAKE_BINARY_DIR}/gcov.sh)
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC "${PLATFORM_EC}/common/base32.c"
                                                 "${PLATFORM_EC}/common/console_output.c"
                                                 "${PLATFORM_EC}/common/ec_features.c"
-                                                "${PLATFORM_EC}/common/gpio_commands.c"
                                                 "${PLATFORM_EC}/common/peripheral.c"
                                                 "${PLATFORM_EC}/common/printf.c"
                                                 "${PLATFORM_EC}/common/queue.c"
@@ -215,6 +214,9 @@ zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_CBI_GPIO
                                                 "${PLATFORM_EC}/common/cbi_gpio.c")
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_CONSOLE_CMD_MEM
                                                 "${PLATFORM_EC}/common/memory_commands.c")
+if (DEFINED CONFIG_PLATFORM_EC AND NOT DEFINED CONFIG_CONSOLE_CMD_GPIO_ZEPHYR)
+	zephyr_library_sources("${PLATFORM_EC}/common/gpio_commands.c")
+endif()
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_DPTF
                                                 "${PLATFORM_EC}/common/dptf.c")
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_POWERSEQ

@@ -7,6 +7,7 @@
 #include <init.h>
 #include <kernel.h>
 #include <logging/log.h>
+#include <shell/gpio_name.h>
 
 #include "gpio.h"
 #include "gpio/gpio.h"
@@ -23,8 +24,10 @@ LOG_MODULE_REGISTER(gpio_shim, LOG_LEVEL_ERR);
 struct gpio_config {
 	/* Access structure for lookup */
 	struct gpio_dt_spec spec;
+#ifndef CONFIG_CONSOLE_CMD_GPIO_ZEPHYR
 	/* GPIO net name */
 	const char *name;
+#endif
 	/* From DTS, excludes interrupts flags */
 	gpio_flags_t init_flags;
 	/* From DTS, skips initialisation */
@@ -45,10 +48,17 @@ struct gpio_config {
 		.dt_flags = 0xFF & (DT_GPIO_FLAGS(id, gpios)),	\
 	}
 
+/* If using the Zephyr version of GPIO cmds, do not store name. */
+#ifdef CONFIG_CONSOLE_CMD_GPIO_ZEPHYR
+#define GPIO_STORE_NAME(id)
+#else
+#define GPIO_STORE_NAME(id) .name = DT_NODE_FULL_NAME(id),
+#endif
+
 #define GPIO_CONFIG(id)                                      \
 	{                                                    \
 		.spec = OUR_DT_SPEC(id),		     \
-		.name = DT_NODE_FULL_NAME(id),               \
+		GPIO_STORE_NAME(id)			     \
 		.init_flags = DT_GPIO_FLAGS(id, gpios),      \
 		.no_auto_init = DT_PROP(id, no_auto_init),   \
 	},
@@ -92,7 +102,7 @@ int gpio_get_level(enum gpio_signal signal)
 				       configs[signal].spec.pin);
 
 	if (l < 0) {
-		LOG_ERR("Cannot read %s (%d)", configs[signal].name, l);
+		LOG_ERR("Cannot read %s (%d)", gpio_get_name(signal), l);
 		return 0;
 	}
 	return l;
@@ -122,10 +132,23 @@ int gpio_get_ternary(enum gpio_signal signal)
 
 const char *gpio_get_name(enum gpio_signal signal)
 {
+#ifdef CONFIG_CONSOLE_CMD_GPIO_ZEPHYR
+	const char *name;
+
 	if (!gpio_is_implemented(signal))
 		return "UNIMPLEMENTED";
 
+	name = gpio_pin_get_name_dt(&configs[signal].spec);
+
+	if (name == NULL) {
+		return "UNKNOWN";
+	}
+	return name;
+#else
+	if (!gpio_is_implemented(signal))
+		return "UNIMPLEMENTED";
 	return configs[signal].name;
+#endif
 }
 
 void gpio_set_level(enum gpio_signal signal, int value)
@@ -138,7 +161,7 @@ void gpio_set_level(enum gpio_signal signal, int value)
 				  value);
 
 	if (rv < 0) {
-		LOG_ERR("Cannot write %s (%d)", configs[signal].name, rv);
+		LOG_ERR("Cannot write %s (%d)", gpio_get_name(signal), rv);
 	}
 }
 
@@ -286,7 +309,7 @@ static int init_gpios(const struct device *unused)
 			continue;
 
 		if (!device_is_ready(configs[i].spec.port))
-			LOG_ERR("Not found (%s)", configs[i].name);
+			LOG_ERR("Not found (%s)", gpio_get_name(i));
 
 		/*
 		 * The configs[i].init_flags variable is read-only, so the
@@ -310,7 +333,7 @@ static int init_gpios(const struct device *unused)
 
 		rv = gpio_pin_configure_dt(&configs[i].spec, flags);
 		if (rv < 0) {
-			LOG_ERR("Config failed %s (%d)", configs[i].name, rv);
+			LOG_ERR("Config failed %s (%d)", gpio_get_name(i), rv);
 		}
 	}
 

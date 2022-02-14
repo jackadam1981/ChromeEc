@@ -1,0 +1,20 @@
+# Copyright 2022 The Chromium OS Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+config CONSOLE_CMD_GPIO_ZEPHYR
+	bool "Console command: gpioget/gpioset"
+	default n
+	depends on GPIO
+	help
+	  Enable the zephyr based 'gpioget/gpioset' console commands.
+	  This comamnd is used to view and change the current
+	  value of GPIOs in the system.
+
+	  The GPIOs must have name entries in the gpio-line-names
+	  property of the GPIO controllers. Only GPIOs that have
+	  a non-zero length string name will be available for
+	  display and setting.
+
+	  A last-displayed value is kept so that changes can be
+	  easily highlighted.

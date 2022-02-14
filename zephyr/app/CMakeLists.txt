@@ -3,3 +3,4 @@
 # found in the LICENSE file.
 
 add_subdirectory_ifdef(CONFIG_CROS_EC ec)
+add_subdirectory(shell)
