@@ -110,22 +110,23 @@ ALTERNATE(PIN_MASK(0, 0x02), 0, MODULE_PMU, GPIO_INT_BOTH | GPIO_HIB_WAKE_LOW) /
 ALTERNATE(PIN_MASK(D, 0x04), 0, MODULE_PMU, GPIO_INT_BOTH | GPIO_HIB_WAKE_HIGH) /* PSL_IN1_L&GPID2/GPIOD2 */
 
 /* Unused Pins */
-UNUSED(PIN(D, 6))       /* GPOD6/CR_SOUT3/SHDF_ESPI_L */
-UNUSED(PIN(3, 2))       /* GPO32/TRIS_L */
-UNUSED(PIN(3, 5))       /* GPO35/CR_SOUT4/TEST_L */
-UNUSED(PIN(6, 6))       /* GPO66/ARM_L_x86 */
-UNUSED(PIN(8, 6))       /* GPIO86/TXD/CR_SOUT2 */
-UNUSED(PIN(D, 4))       /* GPIOD4/CR_SIN3 */
-UNUSED(PIN(D, 1))       /* GPIOD1/I2C3_SCL0 */
-UNUSED(PIN(D, 0))       /* GPIOD0/I2C3_SDA0 */
-UNUSED(PIN(8, 3))       /* KSO15/GPIO83 */
-UNUSED(PIN(B, 1))       /* KSO17/GPIOB1/CR_SIN4 */
-UNUSED(PIN(4, 1))       /* GPIO41/ADC4 */
-UNUSED(PIN(A, 0))       /* F_CS0_L/GPIOA0 */
-UNUSED(PIN(9, 6))       /* F_DIO1/GPIO96 */
-UNUSED(PIN(7, 0))       /* GPIO70/PS2_DAT0 */
-UNUSED(PIN(8, 1))       /* PECI DATA/GPIO81 */
-UNUSED(PIN(5, 7))       /* GPIO57/SER_IRQ/ESPI_ALERT_L */
+GPIO(GPIO_D6,                 PIN(D, 6), GPIO_INPUT)
+GPIO(GPIO_32,                 PIN(3, 2), GPIO_INPUT)
+GPIO(GPIO_35,                 PIN(3, 5), GPIO_INPUT)
+GPIO(GPIO_66,                 PIN(6, 6), GPIO_INPUT)
+GPIO(GPIO_86,                 PIN(8, 6), GPIO_INPUT)
+GPIO(GPIO_D4,                 PIN(D, 4), GPIO_INPUT)
+GPIO(GPIO_D1,                 PIN(D, 1), GPIO_INPUT)
+GPIO(GPIO_D0,                 PIN(D, 0), GPIO_INPUT)
+GPIO(GPIO_83,                 PIN(8, 3), GPIO_INPUT)
+GPIO(GPIO_B1,                 PIN(B, 1), GPIO_INPUT)
+GPIO(GPIO_41,                 PIN(4, 1), GPIO_INPUT)
+GPIO(GPIO_A0,                 PIN(A, 0), GPIO_INPUT)
+GPIO(GPIO_96,                 PIN(9, 6), GPIO_INPUT)
+GPIO(GPIO_70,                 PIN(7, 0), GPIO_INPUT)
+GPIO(GPIO_81,                 PIN(8, 1), GPIO_INPUT)
+GPIO(GPIO_57,                 PIN(5, 7), GPIO_INPUT)
+
 
 /* Pre-configured PSL balls:  J8  K6 */
 
