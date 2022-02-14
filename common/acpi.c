@@ -27,6 +27,10 @@
 #define CPRINTF(format, args...) cprintf(CC_LPC, format, ## args)
 #define CPRINTS(format, args...) cprints(CC_LPC, format, ## args)
 
+extern int pd_state_sequence;
+extern int prochot_action;
+extern enum ec_system_power_source current_power_source;
+
 /* Last received ACPI command */
 static uint8_t acpi_cmd;
 /* First byte of data after ACPI command */
@@ -295,6 +299,10 @@ int acpi_ap_to_ec(int is_cmd, uint8_t value, uint8_t *resultptr)
 			result = usb_retimer_fw_update_get_result();
 			break;
 #endif
+		case EC_ACPI_MEM_PWR_SRC:
+			result = current_power_source;
+			break;
+
 		default:
 			result = acpi_read(acpi_addr);
 			break;
@@ -397,6 +405,11 @@ int acpi_ap_to_ec(int is_cmd, uint8_t value, uint8_t *resultptr)
 				EC_ACPI_MEM_USB_RETIMER_OP(data));
 			break;
 #endif
+		case EC_ACPI_MEM_PWR_SRC:
+			if (data == pd_state_sequence)
+				prochot_action = PROCHOT_DEASSERT_OK;
+			break;
+
 		default:
 			CPRINTS("ACPI write 0x%02x = 0x%02x (ignored)",
 				acpi_addr, data);

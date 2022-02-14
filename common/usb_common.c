@@ -1090,6 +1090,8 @@ int pd_build_alert_msg(uint32_t *msg, uint32_t *len, enum pd_power_role pr)
 #if defined(HAS_TASK_HOSTCMD) && !defined(TEST_BUILD)
 void pd_send_host_event(int mask)
 {
+	CPRINTS("PTOM-pd_host_mask- %d", mask);
+
 	/* mask must be set */
 	if (!mask)
 		return;

@@ -52,7 +52,10 @@
 static bool dbpt_available;
 
 /* Current system power source */
+#if 0
 static enum ec_system_power_source current_power_source = POWER_SOURCE_UNKNOWN;
+#endif
+enum ec_system_power_source current_power_source = POWER_SOURCE_UNKNOWN;
 
 /* Current derated battery 1C level */
 static int batt_1C_derated;
@@ -62,10 +65,16 @@ static int batt_max_peak_power;
 static int batt_sus_peak_power;
 
 /* PD state change sequence number */
+#if 0
 static int pd_state_sequence;
+#endif
+int pd_state_sequence;
 
 /* PROCHOT action based on PD state change sequence number */
+#if 0
 static int prochot_action = PROCHOT_DEASSERT_OK;
+#endif
+int prochot_action = PROCHOT_DEASSERT_NOT_OK;
 
 /* pd_state_sequence is 8 bit number */
 #define PD_STATE_SEQUENCE_MAX 15
@@ -230,22 +239,30 @@ static void update_power_source(void)
 	/* Determine new power source */
 	on_battery = get_latest_power_source();
 
+	CPRINTS("PTOM_pwr src!");
+
+#if 1
 	/*
 	 * Inform the AP when power sources change, or if the battery
 	 * SoC is less than or equal to BATTERY_LEVEL_LOW.
 	 */
 	if ((old_power_source != current_power_source) ||
 		(on_battery && batt_soc <= BATTERY_LEVEL_LOW)) {
-
+#endif
 		#ifdef CONFIG_CHARGE_MANAGER
 		increment_pd_seq();
 		#endif
 
-		pd_send_host_event(PD_EVENT_POWER_CHANGE);
 		throttle_ap(THROTTLE_ON, THROTTLE_HARD,
 					THROTTLE_SRC_BAT_DISCHG_CURRENT);
+
+		CPRINTS("PTOM_assert done!Nxt send host event!");
+		pd_send_host_event(PD_EVENT_POWER_CHANGE);
+
 		hook_call_deferred(&deassert_prochot_data, 2 * SECOND);
+#if 1
 	}
+#endif
 }
 DECLARE_HOOK(HOOK_BATTERY_SOC_CHANGE, update_power_source, HOOK_PRIO_DEFAULT);
 DECLARE_HOOK(HOOK_USB_PD_DISCONNECT, update_power_source, HOOK_PRIO_DEFAULT);
