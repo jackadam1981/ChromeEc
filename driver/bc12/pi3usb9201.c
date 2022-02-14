@@ -408,3 +408,41 @@ struct bc12_config bc12_ports[CHARGE_PORT_COUNT] = {
 	}
 };
 #endif /* CONFIG_BC12_SINGLE_DRIVER */
+
+static void read_regs(int port)
+{
+	int i;
+	int val;
+
+	/* Dump all readable registers on pi3usb9201. */
+	static const uint8_t regs[] = {
+		PI3USB9201_REG_CTRL_1,
+		PI3USB9201_REG_CTRL_2,
+		PI3USB9201_REG_CLIENT_STS,
+		PI3USB9201_REG_HOST_STS,
+	};
+
+	for (i = 0; i < ARRAY_SIZE(regs); ++i) {
+		if (raw_read8(port, regs[i], &val))
+			continue;
+		ccprintf("PI3USB9201 REG 0x%02x:  0x%04x\n", regs[i], val);
+	}
+}
+
+static int console_pi3usb9201_dump_regs(int argc, char **argv)
+{
+	int port;
+
+	port = atoi(argv[1]);
+
+	if (argc == 1)
+		read_regs(0);
+
+	if (argc == 2)
+		read_regs(port);
+
+	return 0;
+}
+DECLARE_CONSOLE_COMMAND(pi3usb_dump, console_pi3usb9201_dump_regs,
+			NULL,
+			"Dump all pi3usb9201 registers");
