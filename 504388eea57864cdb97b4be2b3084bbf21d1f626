@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1293883a_1d5f8023",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1334,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2022-02-14T04:54:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2c658da1_9c142559",
+      "revId": "504388eea57864cdb97b4be2b3084bbf21d1f626",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f3c6446c_95129afc",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-02-11T21:40:41Z",
       "side": 1,
       "message": "Should we be verifying device capabilities before reading this register?",
+      "revId": "504388eea57864cdb97b4be2b3084bbf21d1f626",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b421783_c05a88f9",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1339,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2022-02-14T04:54:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f3c6446c_95129afc",
       "revId": "504388eea57864cdb97b4be2b3084bbf21d1f626",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
