@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16fdecda_c1025907",
+        "filename": "zephyr/Kconfig.pd_usbc_device_type",
+        "patchSetId": 11
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-02-14T16:07:46Z",
+      "side": 1,
+      "message": "Guard with \n\nif PLATFORM_EC_USBC\nif PLATFORM_EC_USB_POWER_DELIVERY",
+      "revId": "1662c5d936f6fd772511cd8d9a6ce9de98f12efb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5ca60fa_ac1d5ded",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 11
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-02-14T16:07:46Z",
+      "side": 1,
+      "message": "Move to top.",
+      "revId": "1662c5d936f6fd772511cd8d9a6ce9de98f12efb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
