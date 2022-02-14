@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9a084ac_6720f28e",
+        "filename": "zephyr/Kconfig.pd_discharge",
+        "patchSetId": 11
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2022-02-14T21:37:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "983c3bac_d66f4006",
+      "revId": "56d660d8bf8e485e5a0804748c0cfab42599b2f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d0e11dbb_117fb13d",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-02-14T16:05:33Z",
       "side": 1,
       "message": "Move to top of file.",
+      "revId": "56d660d8bf8e485e5a0804748c0cfab42599b2f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba10fe5e_61f900a9",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 11
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2022-02-14T21:37:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d0e11dbb_117fb13d",
       "revId": "56d660d8bf8e485e5a0804748c0cfab42599b2f3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
