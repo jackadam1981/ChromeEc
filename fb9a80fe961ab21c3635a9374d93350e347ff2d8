@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fadc3115_909bec78",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2022-02-14T18:45:34Z",
+      "side": 1,
+      "message": "sorry, where do we clear boot_mode with this patch? I see we now set a combo0 handler in software but it doesn\u0027t seem to do anything but reset EC (which is already done by hw). I\u0027m clearly missing something :)",
+      "revId": "fb9a80fe961ab21c3635a9374d93350e347ff2d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
