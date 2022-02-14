@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a7f02ea_51bc54e1",
+        "filename": "board/pirika/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1477752
+      },
+      "writtenOn": "2022-02-14T07:52:45Z",
+      "side": 1,
+      "message": "Why we need to modify this?  Would it affect Pirika/Pirtte?",
+      "revId": "adf31772a6ff7da11f71c8fa532968e9122dcc7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6dc684f4_5b8c763a",
+        "filename": "board/pirika/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1477752
+      },
+      "writtenOn": "2022-02-14T07:52:45Z",
+      "side": 1,
+      "message": "Should we separate the config for Pirika/Pasara?",
+      "revId": "adf31772a6ff7da11f71c8fa532968e9122dcc7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
