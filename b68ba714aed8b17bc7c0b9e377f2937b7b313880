@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8541528d_2510a8ee",
+        "filename": "include/chipset.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-02-14T23:28:36Z",
+      "side": 1,
+      "message": "As noted in the other file, I think creating a shim will be cleaner in the short term.\n\nThis file can simply have:\n#ifndef CONFIG_ZEPHYR\nstatic inline void chipset_exit_hard_off(void) { }\n#endif\n\nThe shim code should include the CONFIG_AP_PWRSEQ check:\n\nvoid chipset_exit_hard_off(void)\n{\n    if (!IS_ENABLED(CONFIG_AP_PWRSEQ))\n        return;\n    /* Call into Zephyr AP power sequence code */",
+      "parentUuid": "d689745d_45efbb8a",
+      "revId": "b68ba714aed8b17bc7c0b9e377f2937b7b313880",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b398a030_841b3ba2",
         "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
         "patchSetId": 13
@@ -49,6 +67,24 @@
       "side": 1,
       "message": "Yes, eventually we should have native zephyr implementation for power button, option 1 is the goal. To have power button to work, power_button_x86.c needs to be included, it has dependency on a few things, chipset, system, hook, etc. It will takes some time to have all of those in zephyr code.\n\nTo have native power sequencing fully functional, power button is required, so we plan to use legacy EC code for now. Though the chipset related functions should come from zephyr power sequencing code. chipset_exit_hard_off() is implemented in this CL, chipset_in_state() are implemented in CL:3381901, many other places are calling chipset_in_state() too.  we need to have some configuration for those to be used by non-zephyr files. I have issue tracker b:214509787. In this way, option 3 is best for short term solution.",
       "parentUuid": "b398a030_841b3ba2",
+      "revId": "b68ba714aed8b17bc7c0b9e377f2937b7b313880",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "284440ab_5084d489",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-02-14T23:28:36Z",
+      "side": 1,
+      "message": "I think a shim between the legacy EC and the new power sequencing is a good short term approach.\n\nThese two functions: chipset_set_exit_hard_off_flag() and chipset_exit_hard_off() probably don\u0027t belong in this file.  Instead there should be a shared API, and each chipset state machine registers it\u0027s own handler.",
+      "parentUuid": "7f2a572a_78f0f9aa",
       "revId": "b68ba714aed8b17bc7c0b9e377f2937b7b313880",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
