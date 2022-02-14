@@ -11,6 +11,7 @@
 #include <drivers/emul.h>
 #include <errno.h>
 #include <sys/__assert.h>
+#include <ztest.h>
 
 #include "driver/charger/isl923x.h"
 #include "driver/charger/isl923x_public.h"
@@ -129,15 +130,21 @@ struct i2c_emul *isl923x_emul_get_i2c_emul(const struct emul *emulator)
 	return &(data->common.emul);
 }
 
-void isl923x_emul_reset(const struct emul *emulator)
+static void isl923x_emul_reset(struct isl923x_emul_data *data)
 {
-	struct isl923x_emul_data *data = emulator->data;
 	struct i2c_common_emul_data common_backup = data->common;
 	int battery_ord = data->battery_ord;
 
 	memset(data, 0, sizeof(struct isl923x_emul_data));
 	data->common = common_backup;
 	data->battery_ord = battery_ord;
+
+	i2c_common_emul_init(&data->common);
+}
+
+void isl923x_emul_reset_registers(const struct emul *emulator)
+{
+	isl923x_emul_reset(emulator->data);
 }
 
 void isl923x_emul_set_manufacturer_id(const struct emul *emulator,
@@ -425,3 +432,19 @@ static int emul_isl923x_init(const struct emul *emul,
 		    &isl923x_emul_data_##n)
 
 DT_INST_FOREACH_STATUS_OKAY(INIT_ISL923X)
+
+#ifdef CONFIG_ZTEST_NEW_API
+
+#define ISL923X_EMUL_RESET_RULE_AFTER(n) \
+	isl923x_emul_reset(&isl923x_emul_data_##n)
+
+static void emul_isl923x_reset_after(const struct ztest_unit_test *test,
+				     void *data)
+{
+	ARG_UNUSED(test);
+	ARG_UNUSED(data);
+
+	DT_INST_FOREACH_STATUS_OKAY(ISL923X_EMUL_RESET_RULE_AFTER);
+}
+ZTEST_RULE(emul_isl923x_reset, NULL, emul_isl923x_reset_after);
+#endif /* CONFIG_ZTEST_NEW_API */
