@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "26983cc1_ce0edaa0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1520485
+      },
+      "writtenOn": "2022-02-14T07:33:12Z",
+      "side": 1,
+      "message": "Hi,all, ANX7406 will automatically clean RECEIVE_DETECT flag at Rp/Rd switch at PS_SWAP stage, it is match the latest TCPCI spec.\n\nI did a simple test patch for PR_SWAP issue, please help to review the following patch(I cannot push the code for review now):\n\nFrom 97969e80c5c49c76dd6cdbf2901326fd158ab932 Mon Sep 17 00:00:00 2001\nFrom: Xin Ji \u003cxji@analogixsemi.com\u003e\nDate: Thu, 10 Feb 2022 10:55:03 +0800\nSubject: [PATCH] TCPCI: enable RX DETECT after update CC\n\nBased on the latest TCPCI spec: Sink TCPC shall disable PD message\ndelivery when ALERT.VbusSinkDisconnectDetected has been asserted.\n\nWhen TCPM assert Rp on CC at PR_SWAP stage, hardware will automatically\nclear RX DETECT bit, so TCPCI need to set RX DETECT after CC change.\nOtherwise, TCPCI cannot identify the GoodCRC from partner side.\n\nBUG\u003did:215663656\nBRANCH\u003dnone\nTEST\u003dtested on STM32 EVB board\n\nSigned-off-by: Xin Ji \u003cxji@analogixsemi.com\u003e\nChange-Id: If2b961e1f930df92885bac7ac6c62751a39a1b08\n---\n driver/tcpm/tcpci.c | 5 ++++-\n 1 file changed, 4 insertions(+), 1 deletion(-)\n\ndiff --git a/driver/tcpm/tcpci.c b/driver/tcpm/tcpci.c\nindex 359cb04d3..c33275728 100644\n--- a/driver/tcpm/tcpci.c\n+++ b/driver/tcpm/tcpci.c\n@@ -518,7 +518,10 @@ int tcpci_tcpm_set_cc(int port, int pull)\n \tif (IS_ENABLED(DEBUG_ROLE_CTRL_UPDATES))\n \t\tCPRINTS(\"C%d: SET_CC pull\u003d%d role\u003d0x%X\", port, pull, role);\n \n-\treturn tcpc_write(port, TCPC_REG_ROLE_CTRL, role);\n+\ttcpc_write(port, TCPC_REG_ROLE_CTRL, role);\n+\n+\treturn tcpc_update8(port, TCPC_REG_RX_DETECT,\n+\t\t\t    TCPC_REG_RX_DETECT_SOP_HRST_MASK, MASK_SET);\n }\n \n #ifdef CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE\n-- \n2.31.0",
+      "revId": "660cd7c14ea029a0925c79e4deb8444ba0fb4b76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
