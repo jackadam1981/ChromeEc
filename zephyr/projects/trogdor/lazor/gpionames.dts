@@ -1,0 +1,152 @@
+/* Copyright 2022 The Chromium OS Authors. All rights reserved.
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+/ {
+	soc {
+		gpio@40087000 {
+			gpio-line-names =
+				"",
+				"",
+				"pm845_resin_l";
+		};
+		gpio@4008d000 {
+			gpio-line-names =
+				"",
+				"usb_c0_bc12_int_l",
+				"",
+				"brd_id2",
+				"",
+				"",
+				"arm_x86",
+				"en_pp5000_a";
+		};
+		gpio@40093000 {
+			gpio-line-names =
+				"",
+				"",
+				"",
+				"brd_id1",
+				"",
+				"dp_hot_plug_det",
+				"dp_mux_oe_l";
+		};
+		gpio@4009f000 {
+			gpio-line-names =
+				"sku_id0",
+				"usb_c0_pd_rst_l",
+				"ec_volup_btn_odl",
+				"",
+				"warm_reset_l",
+				"usb_c1_pd_int_odl";
+		};
+		gpio@40099000 {
+			gpio-line-names =
+				"",
+				"ap_rst_l",
+				"deprecated_ap_rst_req",
+				"ec_chg_led_y_c1",
+				"ec_chg_led_b_c1",
+				"",
+				"tablet_mode_l",
+				"brd_id0";
+		};
+		gpio@4009b000 {
+			gpio-line-names =
+				"",
+				"usb_a0_oc_odl",
+				"lid_open_ec",
+				"vbob_en",
+				"sku_id2",
+				"switchcap_on",
+				"pmic_kpd_pwr_odl";
+		};
+		gpio@40089000 {
+			gpio-line-names =
+				"usb_c1_swctl_int_odl",
+				"sku_id1",
+				"",
+				"",
+				"",
+				"dp_mux_sel";
+		};
+		gpio@40091000 {
+			gpio-line-names =
+				"",
+				"",
+				"usb_c1_bc12_int_l",
+				"",
+				"",
+				"",
+				"en_usb_a_5v";
+		};
+		gpio@40095000 {
+			gpio-line-names =
+				"accel_gyro_int_l",
+				"ec_wp_odl",
+				"ec_int_l",
+				"",
+				"ps_hold",
+				"",
+				"en_pp3300_a";
+		};
+		gpio@40097000 {
+			gpio-line-names =
+				"",
+				"",
+				"",
+				"",
+				"",
+				"",
+				"ec_bl_disable_l";
+		};
+		gpio@4009d000 {
+			gpio-line-names =
+				"usb_c0_pd_int_odl",
+				"ec_entering_rw",
+				"da9313_gpio0",
+				"ccd_mode_odl",
+				"usb_c1_pd_rst_l",
+				"ec_batt_pres_odl";
+		};
+		gpio@40081000 {
+			gpio-line-names =
+				"acok_od",
+				"ec_pwr_btn_odl",
+				"ec_rst_odl",
+				"usb_c0_swctl_int_odl";
+		};
+		gpio@40083000 {
+			gpio-line-names =
+				"",
+				"",
+				"",
+				"",
+				"",
+				"",
+				"",
+				"ec_kso_02_inv";
+		};
+		gpio@4008b000 {
+			gpio-line-names =
+				"qsip_on",
+				"",
+				"hibernate_l",
+				"ap_ec_spi_cs_l",
+				"power_good",
+				"",
+				"lid_accel_int_l",
+				"ap_suspend";
+		};
+		gpio@4008f000 {
+			gpio-line-names =
+				"ec_voldn_btn_odl",
+				"",
+				"",
+				"",
+				"trackpad_int_gate",
+				"usb_a_cdp_ilim_en";
+		};
+	};
+};
