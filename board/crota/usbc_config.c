@@ -212,18 +212,6 @@ struct ioexpander_config_t ioex_config[] = {
 		.drv = &nct38xx_ioexpander_drv,
 		.flags = IOEX_FLAGS_DEFAULT_INIT_DISABLED,
 	},
-	[IOEX_ID_1_C0_NCT38XX] = {
-		.i2c_host_port = I2C_PORT_USB_C0_C2_TCPC,
-		.i2c_addr_flags = NCT38XX_I2C_ADDR1_1_FLAGS,
-		.drv = &nct38xx_ioexpander_drv,
-		.flags = IOEX_FLAGS_DEFAULT_INIT_DISABLED,
-	},
-	[IOEX_ID_1_C2_NCT38XX] = {
-		.i2c_host_port = I2C_PORT_USB_C0_C2_TCPC,
-		.i2c_addr_flags = NCT38XX_I2C_ADDR2_1_FLAGS,
-		.drv = &nct38xx_ioexpander_drv,
-		.flags = IOEX_FLAGS_DEFAULT_INIT_DISABLED,
-	},
 };
 BUILD_ASSERT(ARRAY_SIZE(ioex_config) == CONFIG_IO_EXPANDER_PORT_COUNT);
 #endif /* !CONFIG_ZEPHYR */
@@ -278,21 +266,9 @@ __override int bb_retimer_power_enable(const struct usb_mux *me, bool enable)
 	enum ioex_signal rst_signal;
 
 	if (me->usb_port == USBC_PORT_C0) {
-/* TODO: explore how to handle board id in zephyr*/
-#ifndef CONFIG_ZEPHYR
-		if (get_board_id() == 1)
-			rst_signal = IOEX_ID_1_USB_C0_RT_RST_ODL;
-		else
-#endif /* !CONFIG_ZEPHYR */
-			rst_signal = IOEX_USB_C0_RT_RST_ODL;
+		rst_signal = IOEX_USB_C0_RT_RST_ODL;
 	} else if (me->usb_port == USBC_PORT_C2) {
-/* TODO: explore how to handle board id in zephyr*/
-#ifndef CONFIG_ZEPHYR
-		if (get_board_id() == 1)
-			rst_signal = IOEX_ID_1_USB_C2_RT_RST_ODL;
-		else
-#endif /* !CONFIG_ZEPHYR */
-			rst_signal = IOEX_USB_C2_RT_RST_ODL;
+		rst_signal = IOEX_USB_C2_RT_RST_ODL;
 	} else {
 		return EC_ERROR_INVAL;
 	}
@@ -340,23 +316,9 @@ void board_reset_pd_mcu(void)
 {
 	enum gpio_signal tcpc_rst;
 
-	if (get_board_id() == 1)
-/* TODO: explore how to handle board id in zephyr*/
-#ifndef CONFIG_ZEPHYR
-		tcpc_rst = GPIO_ID_1_USB_C0_C2_TCPC_RST_ODL;
-	else
-#endif /* !CONFIG_ZEPHYR */
-		tcpc_rst = GPIO_USB_C0_C2_TCPC_RST_ODL;
-
-	/*
-	 * TODO(b/179648104): figure out correct timing
-	 */
+	tcpc_rst = GPIO_USB_C0_C2_TCPC_RST_ODL;
 
 	gpio_set_level(tcpc_rst, 0);
-	if (ec_cfg_usb_db_type() != DB_USB_ABSENT) {
-		gpio_set_level(GPIO_USB_C1_RST_ODL, 0);
-		gpio_set_level(GPIO_USB_C1_RT_RST_R_ODL, 0);
-	}
 
 	/*
 	 * delay for power-on to reset-off and min. assertion time
@@ -365,10 +327,6 @@ void board_reset_pd_mcu(void)
 	msleep(20);
 
 	gpio_set_level(tcpc_rst, 1);
-	if (ec_cfg_usb_db_type() != DB_USB_ABSENT) {
-		gpio_set_level(GPIO_USB_C1_RST_ODL, 1);
-		gpio_set_level(GPIO_USB_C1_RT_RST_R_ODL, 1);
-	}
 
 	/* wait for chips to come up */
 
@@ -406,14 +364,6 @@ static void board_tcpc_init(void)
 	gpio_enable_interrupt(GPIO_USB_C0_BC12_INT_ODL);
 	gpio_enable_interrupt(GPIO_USB_C2_BC12_INT_ODL);
 #endif /* !CONFIG_ZEPHYR */
-
-	if (ec_cfg_usb_db_type() != DB_USB_ABSENT) {
-		gpio_enable_interrupt(GPIO_USB_C1_PPC_INT_ODL);
-		gpio_enable_interrupt(GPIO_USB_C1_TCPC_INT_ODL);
-#ifndef CONFIG_ZEPHYR
-		gpio_enable_interrupt(GPIO_USB_C1_BC12_INT_ODL);
-#endif /* !CONFIG_ZEPHYR */
-	}
 }
 DECLARE_HOOK(HOOK_INIT, board_tcpc_init, HOOK_PRIO_INIT_CHIPSET);
 
@@ -424,10 +374,6 @@ uint16_t tcpc_get_alert_status(void)
 	if (gpio_get_level(GPIO_USB_C0_C2_TCPC_INT_ODL) == 0)
 		status |= PD_STATUS_TCPC_ALERT_0 | PD_STATUS_TCPC_ALERT_2;
 
-	if ((ec_cfg_usb_db_type() != DB_USB_ABSENT) &&
-	    gpio_get_level(GPIO_USB_C1_TCPC_INT_ODL) == 0)
-		status |= PD_STATUS_TCPC_ALERT_1;
-
 	return status;
 }
 
@@ -435,9 +381,6 @@ int ppc_get_alert_status(int port)
 {
 	if (port == USBC_PORT_C0)
 		return gpio_get_level(GPIO_USB_C0_PPC_INT_ODL) == 0;
-	else if ((port == USBC_PORT_C1) &&
-		 (ec_cfg_usb_db_type() != DB_USB_ABSENT))
-		return gpio_get_level(GPIO_USB_C1_PPC_INT_ODL) == 0;
 	else if (port == USBC_PORT_C2)
 		return gpio_get_level(GPIO_USB_C2_PPC_INT_ODL) == 0;
 	return 0;
@@ -449,11 +392,6 @@ void tcpc_alert_event(enum gpio_signal signal)
 	case GPIO_USB_C0_C2_TCPC_INT_ODL:
 		schedule_deferred_pd_interrupt(USBC_PORT_C0);
 		break;
-	case GPIO_USB_C1_TCPC_INT_ODL:
-		if (ec_cfg_usb_db_type() == DB_USB_ABSENT)
-			break;
-		schedule_deferred_pd_interrupt(USBC_PORT_C1);
-		break;
 	default:
 		break;
 	}
@@ -464,11 +402,6 @@ void bc12_interrupt(enum gpio_signal signal)
 	switch (signal) {
 	case GPIO_USB_C0_BC12_INT_ODL:
 		task_set_event(TASK_ID_USB_CHG_P0, USB_CHG_EVENT_BC12);
-		break;
-	case GPIO_USB_C1_BC12_INT_ODL:
-		if (ec_cfg_usb_db_type() == DB_USB_ABSENT)
-			break;
-		task_set_event(TASK_ID_USB_CHG_P1, USB_CHG_EVENT_BC12);
 		break;
 	case GPIO_USB_C2_BC12_INT_ODL:
 		task_set_event(TASK_ID_USB_CHG_P2, USB_CHG_EVENT_BC12);
@@ -483,16 +416,6 @@ void ppc_interrupt(enum gpio_signal signal)
 	switch (signal) {
 	case GPIO_USB_C0_PPC_INT_ODL:
 		syv682x_interrupt(USBC_PORT_C0);
-		break;
-	case GPIO_USB_C1_PPC_INT_ODL:
-		switch (ec_cfg_usb_db_type()) {
-		case DB_USB_ABSENT:
-		case DB_USB_ABSENT2:
-			break;
-		case DB_USB3_PS8815:
-			nx20p348x_interrupt(USBC_PORT_C1);
-			break;
-		}
 		break;
 	case GPIO_USB_C2_PPC_INT_ODL:
 		syv682x_interrupt(USBC_PORT_C2);
