@@ -22,6 +22,30 @@
       },
       "revId": "51b41c2711b2a55537633d0a6aae4f310820c4a6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d677be3_26a194c3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1112825
+      },
+      "writtenOn": "2022-02-14T20:15:36Z",
+      "side": 1,
+      "message": "it\u0027s not needed here, the parent CL has a Cq-Depend and this one depends on the parent.",
+      "parentUuid": "1c1987cf_63bd2ba0",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 52
+      },
+      "revId": "51b41c2711b2a55537633d0a6aae4f310820c4a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
