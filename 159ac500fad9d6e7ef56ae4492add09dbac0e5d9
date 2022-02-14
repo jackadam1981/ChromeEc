@@ -175,6 +175,24 @@
       "parentUuid": "1cdb352d_eeaa9a56",
       "revId": "159ac500fad9d6e7ef56ae4492add09dbac0e5d9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5bb811bd_f9684ed6",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_adlp_nonpwrseq_sm.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2022-02-14T18:17:18Z",
+      "side": 1,
+      "message": "Ack. Perhaps you could add a comment to pronounce the intention.",
+      "parentUuid": "3cd42140_dd4d3c9a",
+      "revId": "159ac500fad9d6e7ef56ae4492add09dbac0e5d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
