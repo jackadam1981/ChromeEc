@@ -16,6 +16,24 @@
       "message": "I made a comment in the other bug (b/219082979#comment4). Does it seem worth fixing that issue and merging both, or deleting the file and aborting both?",
       "revId": "7dcc5e4a547dcb9c782f7b86c9298fab1041658f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c773f3d_bef1ebd4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-02-14T22:33:05Z",
+      "side": 1,
+      "message": "Let\u0027s go ahead and merge this change and then you can create a followup CL to update the page to remove all the non-chroot parts (and `-g minilayout` parts). Basically, make the page as foolproof as possible by sticking to the standard development environment (even if there are shortcuts that you could take as an expert).",
+      "parentUuid": "78d6e1ee_1d4efa2b",
+      "revId": "7dcc5e4a547dcb9c782f7b86c9298fab1041658f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
