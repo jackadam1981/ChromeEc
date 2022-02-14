@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "56098c97_a15add11",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-02-14T17:52:29Z",
+      "side": 1,
+      "message": "Unfortunately for EC, you also need a `BRANCH` and `TEST` line:\n\n```\nBRANCH\u003dnone\nTEST\u003dview in gitiles\n```\n\nI think `repo` should warn about this on upload.\n\nTo make it easier, I have a `gitmessage` set: https://groups.google.com/a/google.com/g/chromeos-chatty-eng/c/KTO7NlE-URs/m/hqRe7-VfAgAJ and https://crbug.com/gerrit/10963",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 15
+      },
+      "revId": "fc7b3d1e8cbd419b5afb7f14e938fb328d009892",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "f8380351_ab7d71fe",
@@ -14,6 +37,41 @@
       "writtenOn": "2022-02-13T07:28:29Z",
       "side": 1,
       "message": "Since it\u0027s externally facing and I\u0027m generally paranoid I just wanted someone to take a quick look at this before pushing.",
+      "revId": "fc7b3d1e8cbd419b5afb7f14e938fb328d009892",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "babb0367_00765845",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-02-14T17:52:29Z",
+      "side": 1,
+      "message": "One clarification to what I was saying earlier. Internal docs are the only ones that don\u0027t require review. External docs still do. I think Gerrit is now configured so it won\u0027t let you do a self-review.",
+      "parentUuid": "f8380351_ab7d71fe",
+      "revId": "fc7b3d1e8cbd419b5afb7f14e938fb328d009892",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ad73955_a07f5630",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-02-14T17:52:29Z",
+      "side": 1,
+      "message": "See comment about commit message.\n\nOn a separate note, I\u0027m inclined to delete this document since I feel it\u0027s a bit misleading. We don\u0027t test the firmware minilayout or track the dependencies, so the steps in this document often don\u0027t work. Even when they do, the result is more of an \"expert\" mode usage; if compiling outside the chroot, you\u0027re using a different toolchain, dependencies, etc, so there may be subtle differences. That\u0027s fine if you know what you\u0027re doing, but this document makes it sound like it\u0027s targeted for newbies that wouldn\u0027t understand those caveats.",
       "revId": "fc7b3d1e8cbd419b5afb7f14e938fb328d009892",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
