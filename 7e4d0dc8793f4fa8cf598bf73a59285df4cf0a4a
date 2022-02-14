@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "331583d0_d2d9c70e",
+        "filename": "zephyr/Kconfig.pd_vbus_detection",
+        "patchSetId": 12
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-02-14T16:05:28Z",
+      "side": 1,
+      "message": "Guard with \n\nif PLATFORM_EC_USBC\nif PLATFORM_EC_USB_POWER_DELIVERY",
+      "revId": "7e4d0dc8793f4fa8cf598bf73a59285df4cf0a4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78efba64_34223619",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 12
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-02-14T16:05:28Z",
+      "side": 1,
+      "message": "Move to top.",
+      "revId": "7e4d0dc8793f4fa8cf598bf73a59285df4cf0a4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
