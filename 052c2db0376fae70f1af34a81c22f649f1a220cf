@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd649e83_915a3284",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1366765
+      },
+      "writtenOn": "2022-02-14T10:26:06Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "34db52e0_812d2702",
+      "revId": "052c2db0376fae70f1af34a81c22f649f1a220cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9133a367_fc7f5aef",
@@ -41,6 +59,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d43e6bef_48e51446",
+        "filename": "baseboard/intelrvp/adlrvp.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 474,
+      "author": {
+        "id": 1366765
+      },
+      "writtenOn": "2022-02-14T10:26:06Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9133a367_fc7f5aef",
+      "range": {
+        "startLine": 474,
+        "startChar": 21,
+        "endLine": 474,
+        "endChar": 22
+      },
+      "revId": "052c2db0376fae70f1af34a81c22f649f1a220cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c2f4b2d7_c594cdb5",
@@ -54,6 +96,30 @@
       "writtenOn": "2022-02-10T17:15:45Z",
       "side": 1,
       "message": "nit: \nif (!ioexpander_read_intelrvp_version(\u0026port0, \u0026port1)) {\n     board_id \u003d 0;\n     break;\n}",
+      "range": {
+        "startLine": 481,
+        "startChar": 0,
+        "endLine": 486,
+        "endChar": 3
+      },
+      "revId": "052c2db0376fae70f1af34a81c22f649f1a220cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "20a7b95b_4c788e20",
+        "filename": "baseboard/intelrvp/adlrvp.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 486,
+      "author": {
+        "id": 1366765
+      },
+      "writtenOn": "2022-02-14T10:26:06Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c2f4b2d7_c594cdb5",
       "range": {
         "startLine": 481,
         "startChar": 0,
