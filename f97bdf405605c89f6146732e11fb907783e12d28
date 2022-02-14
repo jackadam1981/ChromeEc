@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d43ba261_b30843c9",
+        "filename": "zephyr/Kconfig.usb_mux",
+        "patchSetId": 11
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-02-14T16:11:26Z",
+      "side": 1,
+      "message": "Guard with \n\nif PLATFORM_EC_USBC",
+      "revId": "f97bdf405605c89f6146732e11fb907783e12d28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c80852f_f375737a",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 11
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-02-14T16:11:26Z",
+      "side": 1,
+      "message": "Move to top.",
+      "revId": "f97bdf405605c89f6146732e11fb907783e12d28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
