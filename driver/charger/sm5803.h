@@ -329,6 +329,9 @@ enum sm5803_charger_modes {
 #define SM5803_REG_FAST_CONF5		0x3D
 #define SM5803_CONF5_IBAT_EOC_TH	GENMASK(3, 0)
 
+#define SM5803_REG_FAST_CONF6		0x3E
+#define SM5803_CHG_TIMEOUT_DIS		BIT(3)
+
 /* IR drop compensation */
 #define SM5803_REG_IR_COMP1		0x3F
 #define SM5803_IR_COMP_RES_SET_MSB	GENMASK(7, 6)
@@ -401,6 +404,7 @@ int sm5803_is_vbus_present(int chgnum);
 enum ec_error_list sm5803_configure_gpio0(int chgnum,
 					  enum sm5803_gpio0_modes mode, int od);
 enum ec_error_list sm5803_set_gpio0_level(int chgnum, int level);
+enum ec_error_list sm5803_set_timeout_dis(int chgnum, int level);
 enum ec_error_list sm5803_configure_chg_det_od(int chgnum, int enable);
 enum ec_error_list sm5803_get_chg_det(int chgnum, int *chg_det);
 

@@ -18,6 +18,7 @@
 #include "sub_board.h"
 
 LOG_MODULE_DECLARE(nissa, CONFIG_NISSA_LOG_LEVEL);
+#define CPRINTS(format, args...) cprints(CC_CHARGER, format, ## args)
 
 struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 	{
@@ -272,3 +273,16 @@ int pd_snk_is_vbus_provided(int port)
 
 	return chg_det;
 }
+
+static void board_power_5v_enable11(void)
+{
+
+	sm5803_configure_gpio0(CHARGER_PRIMARY, GPIO0_MODE_OUTPUT, 1);
+
+	if (sm5803_set_gpio0_level(CHARGER_PRIMARY, 0))
+		CPRINTS("error1");
+
+	if (sm5803_set_timeout_dis(CHARGER_PRIMARY, 0))
+		CPRINTS("error2");
+}
+DECLARE_HOOK(HOOK_INIT, board_power_5v_enable11, HOOK_PRIO_LAST);

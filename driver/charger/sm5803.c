@@ -232,6 +232,24 @@ enum ec_error_list sm5803_set_gpio0_level(int chgnum, int level)
 	return rv;
 }
 
+enum ec_error_list sm5803_set_timeout_dis(int chgnum, int level)
+{
+	enum ec_error_list rv;
+	int reg;
+
+	rv = chg_read8(CHARGER_PRIMARY, SM5803_REG_FAST_CONF6, &reg);
+	if (rv)
+		return rv;
+
+	if (level)
+		reg |= SM5803_CHG_TIMEOUT_DIS;
+	else
+		reg &= ~SM5803_CHG_TIMEOUT_DIS;
+
+	rv = chg_write8(CHARGER_PRIMARY, SM5803_REG_FAST_CONF6, reg);
+	return rv;
+}
+
 enum ec_error_list sm5803_configure_chg_det_od(int chgnum, int enable)
 {
 	enum ec_error_list rv;
@@ -1679,6 +1697,7 @@ static enum ec_error_list sm5803_set_otg_current_voltage(int chgnum,
 	reg &= ~SM5803_DISCH_CONF5_CLS_LIMIT;
 	reg |= MIN((output_current / SM5803_CLS_CURRENT_STEP),
 						SM5803_DISCH_CONF5_CLS_LIMIT);
+	reg |= BIT(0);
 	rv |= chg_write8(chgnum, SM5803_REG_DISCH_CONF5, reg);
 
 	reg = SM5803_VOLTAGE_TO_REG(output_voltage);
