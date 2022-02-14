@@ -34,6 +34,41 @@
       "parentUuid": "fadc3115_909bec78",
       "revId": "fb9a80fe961ab21c3635a9374d93350e347ff2d8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ec18def_24f538ac",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2022-02-14T19:13:07Z",
+      "side": 1,
+      "message": "+2 assuming we change board_reboot_ec() to ec_efs_reset()",
+      "revId": "fb9a80fe961ab21c3635a9374d93350e347ff2d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "144eaed4_d4bdc9dd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2022-02-14T19:13:07Z",
+      "side": 1,
+      "message": "oh didn\u0027t realize assert_ec_rst() was more that just manipulating the gpios, and didn\u0027t look inside",
+      "parentUuid": "8a35fb20_3ad89821",
+      "revId": "fb9a80fe961ab21c3635a9374d93350e347ff2d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
