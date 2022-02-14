@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48253b0d_0b06322f",
+        "filename": "zephyr/Kconfig.tcpm",
+        "patchSetId": 10
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-02-14T16:16:41Z",
+      "side": 1,
+      "message": "As a follow-on CL, this should be a menuconfig and not a choice selection.  Choice selection is used to pick one and only one sub-option.\n\nAlso add a guard for \n\nif PLATFORM_EC_USBC",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 35
+      },
+      "revId": "99f49e1d888fcf496e34d7452ce588ed59c00254",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94d776f7_cb0ef58b",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 10
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-02-14T16:16:41Z",
+      "side": 1,
+      "message": "Move to top.",
+      "revId": "99f49e1d888fcf496e34d7452ce588ed59c00254",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
