@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5a51331_8376a1ab",
+        "filename": "board/volmar/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-02-14T20:18:21Z",
+      "side": 1,
+      "message": "could you add additional #defines in your board.h to\ngive more meaningful names to these GPIOs.\nsomething like GPIO_LED_BLUE_L, etc.",
+      "range": {
+        "startLine": 45,
+        "startChar": 17,
+        "endLine": 45,
+        "endChar": 29
+      },
+      "revId": "63d9bd960703fa8c3f394ab9fe45fb0a5b81bed1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
