@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3971a0f1_52a6dff0",
+        "filename": "board/nipperkin/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2022-02-14T13:49:51Z",
+      "side": 1,
+      "message": "Why IOEX_EN_PWR_HDMI not part of board_hdmi_on/off?",
+      "revId": "dae3b24312f02b7bcb55a6c11bc2bccc3acdd7df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75270bff_f97653da",
+        "filename": "board/nipperkin/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 488,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2022-02-14T13:49:51Z",
+      "side": 1,
+      "message": "nit: {} can be removed because block is one line.",
+      "revId": "dae3b24312f02b7bcb55a6c11bc2bccc3acdd7df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
