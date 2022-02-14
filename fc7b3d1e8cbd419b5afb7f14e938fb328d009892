@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9001a47_0c07e9a1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-02-14T21:39:10Z",
+      "side": 1,
+      "message": "Ugh, sorry, I was fumbling a bit with the commit process but I though that I ultimately got it resolved. Trying to resolve now (if even just for the sake of experience).",
+      "parentUuid": "56098c97_a15add11",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 15
+      },
+      "revId": "fc7b3d1e8cbd419b5afb7f14e938fb328d009892",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "f8380351_ab7d71fe",
@@ -72,6 +96,24 @@
       "writtenOn": "2022-02-14T17:52:29Z",
       "side": 1,
       "message": "See comment about commit message.\n\nOn a separate note, I\u0027m inclined to delete this document since I feel it\u0027s a bit misleading. We don\u0027t test the firmware minilayout or track the dependencies, so the steps in this document often don\u0027t work. Even when they do, the result is more of an \"expert\" mode usage; if compiling outside the chroot, you\u0027re using a different toolchain, dependencies, etc, so there may be subtle differences. That\u0027s fine if you know what you\u0027re doing, but this document makes it sound like it\u0027s targeted for newbies that wouldn\u0027t understand those caveats.",
+      "revId": "fc7b3d1e8cbd419b5afb7f14e938fb328d009892",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b78fda32_4f61bb94",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-02-14T21:39:10Z",
+      "side": 1,
+      "message": "Yes, I think you\u0027re right and that thought occurred to me shortly after I created this CL and is a good indication that I probably shouldn\u0027t have been submitting at 2:30am!",
+      "parentUuid": "babb0367_00765845",
       "revId": "fc7b3d1e8cbd419b5afb7f14e938fb328d009892",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
