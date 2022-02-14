@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81294043_d8b3b017",
+        "filename": "zephyr/zmake/zmake/__main__.py",
+        "patchSetId": 10
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-02-14T23:29:42Z",
+      "side": 1,
+      "message": "putting these options in a mutually exclusive group will limit to only one of the three being specified: https://docs.python.org/3/library/argparse.html#mutual-exclusion",
+      "range": {
+        "startLine": 331,
+        "startChar": 0,
+        "endLine": 349,
+        "endChar": 5
+      },
+      "revId": "c2d4c346a24159f25557fa16b32b7b414149d090",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7bffc5cf_43faf285",
+        "filename": "zephyr/zmake/zmake/zmake.py",
+        "patchSetId": 10
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-02-14T23:29:42Z",
+      "side": 1,
+      "message": "\"not project_names\"",
+      "range": {
+        "startLine": 200,
+        "startChar": 56,
+        "endLine": 200,
+        "endChar": 79
+      },
+      "revId": "c2d4c346a24159f25557fa16b32b7b414149d090",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d6e19e4_aead79ba",
+        "filename": "zephyr/zmake/zmake/zmake.py",
+        "patchSetId": 10
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-02-14T23:29:42Z",
+      "side": 1,
+      "message": "if you want to simplify all this logic a bit, either rely on mutually exclusive groups in the argparser, or:\n\n```\nif sum(int(bool(c)) for c in (project_names, all_projects, host_tests_only)) !\u003d 1:\n```",
+      "range": {
+        "startLine": 205,
+        "startChar": 0,
+        "endLine": 212,
+        "endChar": 86
+      },
+      "revId": "c2d4c346a24159f25557fa16b32b7b414149d090",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7beff34_5558a3c8",
+        "filename": "zephyr/zmake/zmake/zmake.py",
+        "patchSetId": 10
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-02-14T23:29:42Z",
+      "side": 1,
+      "message": "prefer a list comprehension to `list(filter(...))`:\n\n```\n[p for p in found_projects.values() if p.config.is_test]\n```",
+      "range": {
+        "startLine": 218,
+        "startChar": 22,
+        "endLine": 218,
+        "endChar": 88
+      },
+      "revId": "c2d4c346a24159f25557fa16b32b7b414149d090",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89765dbc_289155b9",
+        "filename": "zephyr/zmake/zmake/zmake.py",
+        "patchSetId": 10
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-02-14T23:29:42Z",
+      "side": 1,
+      "message": "the ebuild at the moment assumes that the build dir is just for a single project, so this will need a cq-depend on a change that fixes that",
+      "range": {
+        "startLine": 251,
+        "startChar": 32,
+        "endLine": 251,
+        "endChar": 85
+      },
+      "revId": "c2d4c346a24159f25557fa16b32b7b414149d090",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
