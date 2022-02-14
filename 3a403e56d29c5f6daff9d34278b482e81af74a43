@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4345cb5d_bd9b4c03",
+        "filename": "zephyr/Kconfig.retimer",
+        "patchSetId": 13
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-02-14T15:56:32Z",
+      "side": 1,
+      "message": "You need to guard the contents of this file with  \"if PLATFORM_EC_USBC\" to match the original dependencies.\n\nSee https://docs.zephyrproject.org/2.6.0/guides/kconfig/tips.html#lack-of-conditional-includes",
+      "revId": "3a403e56d29c5f6daff9d34278b482e81af74a43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "123e2573_26d55cef",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 13
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-02-14T15:56:32Z",
+      "side": 1,
+      "message": "Move to the start of the file.",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 25
+      },
+      "revId": "3a403e56d29c5f6daff9d34278b482e81af74a43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
