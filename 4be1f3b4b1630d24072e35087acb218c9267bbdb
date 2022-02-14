@@ -212,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e783bd06_98255571",
+        "filename": "docs/zephyr/zephyr_battery.md",
+        "patchSetId": 67
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-02-14T23:57:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "04ec1bab_5cc25dca",
+      "range": {
+        "startLine": 104,
+        "startChar": 0,
+        "endLine": 105,
+        "endChar": 74
+      },
+      "revId": "4be1f3b4b1630d24072e35087acb218c9267bbdb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "da34175e_02035d0e",
@@ -225,6 +249,30 @@
       "writtenOn": "2022-02-10T20:14:30Z",
       "side": 1,
       "message": "Include the parent named-gpios for context.",
+      "range": {
+        "startLine": 112,
+        "startChar": 0,
+        "endLine": 112,
+        "endChar": 16
+      },
+      "revId": "4be1f3b4b1630d24072e35087acb218c9267bbdb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c543ef6_52fe60b0",
+        "filename": "docs/zephyr/zephyr_battery.md",
+        "patchSetId": 67
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-02-14T23:57:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da34175e_02035d0e",
       "range": {
         "startLine": 112,
         "startChar": 0,
@@ -258,6 +306,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dcf85faa_3235edcf",
+        "filename": "docs/zephyr/zephyr_battery.md",
+        "patchSetId": 67
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-02-14T23:57:57Z",
+      "side": 1,
+      "message": "Should I mention this legacy use here at all? Keep resolved if not.",
+      "parentUuid": "a8ddba9e_9185b6ed",
+      "range": {
+        "startLine": 114,
+        "startChar": 0,
+        "endLine": 115,
+        "endChar": 34
+      },
+      "revId": "4be1f3b4b1630d24072e35087acb218c9267bbdb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c8c620a4_373ccdf0",
@@ -271,6 +343,30 @@
       "writtenOn": "2022-02-10T20:14:30Z",
       "side": 1,
       "message": "Include the named-i2c-ports parent.",
+      "range": {
+        "startLine": 124,
+        "startChar": 0,
+        "endLine": 124,
+        "endChar": 7
+      },
+      "revId": "4be1f3b4b1630d24072e35087acb218c9267bbdb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb3c59e1_d8b7d0f7",
+        "filename": "docs/zephyr/zephyr_battery.md",
+        "patchSetId": 67
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-02-14T23:57:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c8c620a4_373ccdf0",
       "range": {
         "startLine": 124,
         "startChar": 0,
@@ -304,6 +400,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b814044e_d126e971",
+        "filename": "docs/zephyr/zephyr_battery.md",
+        "patchSetId": 67
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-02-14T23:57:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1dfef2c1_f4e76fa4",
+      "range": {
+        "startLine": 125,
+        "startChar": 12,
+        "endLine": 125,
+        "endChar": 44
+      },
+      "revId": "4be1f3b4b1630d24072e35087acb218c9267bbdb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1333bf15_88a6f3e0",
@@ -327,6 +447,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7730aa1e_74489d7c",
+        "filename": "docs/zephyr/zephyr_battery.md",
+        "patchSetId": 67
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-02-14T23:57:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1333bf15_88a6f3e0",
+      "range": {
+        "startLine": 128,
+        "startChar": 0,
+        "endLine": 128,
+        "endChar": 19
+      },
+      "revId": "4be1f3b4b1630d24072e35087acb218c9267bbdb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e0ddac8a_71a450f1",
@@ -340,6 +484,30 @@
       "writtenOn": "2022-02-10T20:14:30Z",
       "side": 1,
       "message": "If CONFIG_PLATFORM_EC_BATTERY_PRESENT_CUSTOM is used, the board code must define battery_is_present().",
+      "range": {
+        "startLine": 139,
+        "startChar": 0,
+        "endLine": 139,
+        "endChar": 60
+      },
+      "revId": "4be1f3b4b1630d24072e35087acb218c9267bbdb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f70d8ac_ceb700fb",
+        "filename": "docs/zephyr/zephyr_battery.md",
+        "patchSetId": 67
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-02-14T23:57:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e0ddac8a_71a450f1",
       "range": {
         "startLine": 139,
         "startChar": 0,
