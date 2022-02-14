@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bafd95d6_28854c32",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_adlp_nonpwrseq_sm.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2022-02-14T18:48:06Z",
+      "side": 1,
+      "message": "nit: spell check error and suggestion, X86_NON_DSX_ADLP_NONPWRSEQ_FORCE_STHUTDOWN_TO --\u003e X86_NON_DSX_ADLP_NONPWRSEQ_FORCE_SHUTDOWN_TO_MS",
+      "range": {
+        "startLine": 50,
+        "startChar": 18,
+        "endLine": 50,
+        "endChar": 63
+      },
+      "revId": "4026e020c94a6a4282d31b4a746c431a0fce31b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0bdc899b_115e0a8d",
         "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_adlp_pwrseq_sm.c",
         "patchSetId": 21
