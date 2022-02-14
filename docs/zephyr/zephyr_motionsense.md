@@ -136,7 +136,26 @@ Additional information about the task priority can be found in
 
 ## Testing and Debugging
 
-*Provide any tips for testing and debugging the EC feature.*
+Properly debugging the sensor framework generally involves one of the following:
+
+* If the device is a convertible (laptop/tablet) flip the screen over and make
+  sure that screen rotations work.
+* In the EC console test the following commands:
+  * `accelrange id [data [roundup]]` where the `id` is the sensor number. If
+    `data` is not provided, then this command will perform a read and print the
+    range of the motion sensor. Otherwise, it will set the range to the nearest
+    `data` value depending on `roundup` being either `0` or `1`.
+  * `accelres id [data [roundup]]` where the `id` is the sensor number. If
+    `data` is not provided, then this command will perform a read and print the
+    resolution of the motion sensor. Otherwise, it will set the resolution to
+    the nearest `data` value depending on `roundup` being either `0` or `1`.
+  * `accelrate id [data [roundup]]` where the `id` is the sensor number. If
+    `data` is not provided, then this command will perform a read and print the
+    ODR of the motion sensor. Otherwise, it will set the ODR to the nearest
+    `data` value depending on `roundup` being either `0` or `1`.
+  * `accelread id [n]` where the `id` is the sensor number. If `n` is provided,
+    the sensor will be read `n` times. Otherwise, only a single read operation
+    will take place.
 
 ## Example
 
