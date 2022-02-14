@@ -86,6 +86,24 @@
       "message": "One additional question: what if cr50 is in deep sleep at that moment? CONFIG_RBOX_WAKEUP is enabled iirc, so it\u0027ll wake, but will it reset EC EFS tsate in that case?",
       "revId": "fb9a80fe961ab21c3635a9374d93350e347ff2d8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e34939b_35e5adb9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2022-02-14T19:38:04Z",
+      "side": 1,
+      "message": "I don\u0027t think it will work. Daisuke, can you check the behavior?",
+      "parentUuid": "50c141ce_d63f707d",
+      "revId": "fb9a80fe961ab21c3635a9374d93350e347ff2d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
