@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3806d6eb_7b97011f",
+        "filename": "board/nipperkin/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1294793
+      },
+      "writtenOn": "2022-02-14T03:37:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3e35e818_c141673e",
+      "revId": "528b350d527138d64e0e5e65d8cbecd37d282958",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fb1283c4_beba0396",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-02-11T13:42:08Z",
       "side": 1,
       "message": "`chipset_in_or_transitioning_to_state(CHIPSET_STATE_ON)` should be moved to the if conditional so all the GPIOs stay off when suspend.",
+      "revId": "528b350d527138d64e0e5e65d8cbecd37d282958",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce01351c_ba9f58c6",
+        "filename": "board/nipperkin/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 483,
+      "author": {
+        "id": 1294793
+      },
+      "writtenOn": "2022-02-14T03:37:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fb1283c4_beba0396",
       "revId": "528b350d527138d64e0e5e65d8cbecd37d282958",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
