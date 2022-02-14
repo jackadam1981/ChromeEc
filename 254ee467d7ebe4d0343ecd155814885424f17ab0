@@ -22,6 +22,30 @@
       },
       "revId": "254ee467d7ebe4d0343ecd155814885424f17ab0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f753e2e_b6985762",
+        "filename": "zephyr/dts/bindings/gpio/gpio-enum-name.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-02-14T18:31:38Z",
+      "side": 1,
+      "message": "Likely this CL predated that change - removed now.",
+      "parentUuid": "57d05bba_447d5f26",
+      "range": {
+        "startLine": 117,
+        "startChar": 0,
+        "endLine": 118,
+        "endChar": 17
+      },
+      "revId": "254ee467d7ebe4d0343ecd155814885424f17ab0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
