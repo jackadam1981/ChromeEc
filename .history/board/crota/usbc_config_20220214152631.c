@@ -314,23 +314,7 @@ __override int bb_retimer_power_enable(const struct usb_mux *me, bool enable)
 
 void board_reset_pd_mcu(void)
 {
-	enum gpio_signal tcpc_rst;
 
-	tcpc_rst = GPIO_USB_C0_C2_TCPC_RST_ODL;
-
-	gpio_set_level(tcpc_rst, 0);
-
-	/*
-	 * delay for power-on to reset-off and min. assertion time
-	 */
-
-	msleep(20);
-
-	gpio_set_level(tcpc_rst, 1);
-
-	/* wait for chips to come up */
-
-	msleep(50);
 }
 
 static void board_tcpc_init(void)

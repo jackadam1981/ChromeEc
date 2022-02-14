@@ -63,13 +63,16 @@ GPIO(EC_PCH_WAKE_R_ODL,              PIN(C, 0), GPIO_ODR_HIGH)
 GPIO(EC_PROCHOT_ODL,                 PIN(6, 3), GPIO_ODR_HIGH)
 GPIO(EN_PP5000_FAN,                  PIN(6, 1), GPIO_OUT_HIGH)
 GPIO(EN_PP5000_USBA_R,               PIN(D, 7), GPIO_OUT_LOW)
-GPIO(EN_Z1_RAILS,                    PIN(8, 5), GPIO_OUT_HIGH)
 GPIO(EN_S5_RAILS,                    PIN(B, 6), GPIO_OUT_LOW)
 GPIO(IMVP9_VRRDY_OD,                 PIN(4, 3), GPIO_INPUT)
 GPIO(PCH_PWROK,                      PIN(7, 2), GPIO_OUT_LOW)
 GPIO(SYS_RST_ODL,                    PIN(C, 5), GPIO_ODR_HIGH)
 GPIO(USB_C0_C2_TCPC_RST_ODL,         PIN(A, 7), GPIO_ODR_LOW)
 GPIO(VCCST_PWRGD_OD,                 PIN(A, 4), GPIO_ODR_LOW)
+GPIO(TEMP_SENSOR_4,                  PIN(E, 1), GPIO_INPUT)
+GPIO(TEMP_SENSOR_3,                  PIN(3, 4), GPIO_INPUT)
+GPIO(TEMP_SENSOR_2,                  PIN(4, 4), GPIO_INPUT)
+GPIO(TEMP_SENSOR_1,                  PIN(4, 5), GPIO_INPUT)
 
 /* UART alternate functions */
 ALTERNATE(PIN_MASK(6, 0x30), 0, MODULE_UART, 0)              /* GPIO64/CR_SIN1, GPO65/CR_SOUT1/FLPRG1_L */
@@ -134,6 +137,7 @@ UNUSED(PIN(0, 2))       /* GPIO02/PSL_IN4#&GPI02 */
  * KEYBOARD_COL2_INVERTED is defined, this name is required.
  */
 GPIO(EC_KSO_02_INV,               PIN(1, 7), GPIO_OUT_LOW)
+
 
 IOEX(USB_C0_OC_ODL,          EXPIN(IOEX_C0_NCT38XX, 0, 4), GPIO_ODR_HIGH)
 IOEX(USB_C0_FRS_EN,          EXPIN(IOEX_C0_NCT38XX, 0, 6), GPIO_LOW)

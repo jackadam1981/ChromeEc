@@ -1,11 +1,6 @@
-/* -*- mode:c -*-
- *
- * Copyright 2022 The Chromium OS Authors. All rights reserved.
- * Use of this source code is governed by a BSD-style license that can be
- * found in the LICENSE file.
+/*
+ * This file was auto-generated.
  */
-
-#define MODULE_KB		MODULE_KEYBOARD_SCAN
 
 /* INTERRUPT GPIOs: */
 GPIO_INT(ACOK_OD,                        PIN(0, 0), GPIO_INT_BOTH | GPIO_HIB_WAKE_HIGH, extpower_interrupt)
@@ -63,7 +58,6 @@ GPIO(EC_PCH_WAKE_R_ODL,              PIN(C, 0), GPIO_ODR_HIGH)
 GPIO(EC_PROCHOT_ODL,                 PIN(6, 3), GPIO_ODR_HIGH)
 GPIO(EN_PP5000_FAN,                  PIN(6, 1), GPIO_OUT_HIGH)
 GPIO(EN_PP5000_USBA_R,               PIN(D, 7), GPIO_OUT_LOW)
-GPIO(EN_Z1_RAILS,                    PIN(8, 5), GPIO_OUT_HIGH)
 GPIO(EN_S5_RAILS,                    PIN(B, 6), GPIO_OUT_LOW)
 GPIO(IMVP9_VRRDY_OD,                 PIN(4, 3), GPIO_INPUT)
 GPIO(PCH_PWROK,                      PIN(7, 2), GPIO_OUT_LOW)
@@ -81,6 +75,7 @@ ALTERNATE(PIN_MASK(9, 0x07), 0, MODULE_I2C, 0)               /* GPIO92/I2C2_SCL0
 ALTERNATE(PIN_MASK(B, 0x0c), 0, MODULE_I2C, 0)               /* GPIOB3/I2C7_SCL0/DCD_L, GPIOB2/I2C7_SDA0/DSR_L */
 ALTERNATE(PIN_MASK(B, 0x30), 0, MODULE_I2C, GPIO_SEL_1P8V)   /* GPIOB5/I2C0_SCL0, GPIOB4/I2C0_SDA0 */
 ALTERNATE(PIN_MASK(D, 0x03), 0, MODULE_I2C, 0)               /* GPIOD1/I2C3_SCL0, GPIOD0/I2C3_SDA0 */
+ALTERNATE(PIN_MASK(F, 0x0c), 0, MODULE_I2C, 0)               /* GPIOF3/I2C4_SCL1, GPIOF2/I2C4_SDA1 */
 
 /* PWM alternate functions */
 ALTERNATE(PIN_MASK(4, 0x01), 0, MODULE_PWM, 0)               /* GPIO40/TA1 */
@@ -105,6 +100,7 @@ ALTERNATE(PIN_MASK(8, 0x04), 0, MODULE_KB, GPIO_ODR_HIGH)    /* KSO14/GPIO82 */
 /* PMU alternate functions */
 ALTERNATE(PIN_MASK(0, 0x01), 0, MODULE_PMU, GPIO_INT_BOTH | GPIO_HIB_WAKE_HIGH) /* PSL_IN2_L&GPI00/GPIO00 */
 ALTERNATE(PIN_MASK(0, 0x02), 0, MODULE_PMU, GPIO_INT_BOTH | GPIO_HIB_WAKE_LOW) /* GPIO01/PSL_IN3_L&GPI01 */
+ALTERNATE(PIN_MASK(D, 0x04), 0, MODULE_PMU, GPIO_INT_BOTH | GPIO_HIB_WAKE_HIGH) /* PSL_IN1_L&GPID2/GPIOD2 */
 
 /* Unused Pins */
 UNUSED(PIN(D, 6))       /* GPOD6/CR_SOUT3/SHDF_ESPI_L */
@@ -126,21 +122,3 @@ UNUSED(PIN(A, 0))       /* F_CS0#/GPIOA0 */
 UNUSED(PIN(0, 2))       /* GPIO02/PSL_IN4#&GPI02 */
 
 /* Pre-configured PSL balls:  J8  K6 */
-
-
-/*
- * The NPCX keyboard driver does not use named GPIOs to access
- * keyboard scan pins, so we do not list them in *gpio.inc. However, when
- * KEYBOARD_COL2_INVERTED is defined, this name is required.
- */
-GPIO(EC_KSO_02_INV,               PIN(1, 7), GPIO_OUT_LOW)
-
-IOEX(USB_C0_OC_ODL,          EXPIN(IOEX_C0_NCT38XX, 0, 4), GPIO_ODR_HIGH)
-IOEX(USB_C0_FRS_EN,          EXPIN(IOEX_C0_NCT38XX, 0, 6), GPIO_LOW)
-IOEX(USB_C0_RT_RST_ODL,      EXPIN(IOEX_C0_NCT38XX, 0, 7), GPIO_ODR_LOW)
-
-IOEX(USB_C2_RT_RST_ODL,      EXPIN(IOEX_C2_NCT38XX, 0, 2), GPIO_ODR_LOW)
-IOEX(USB_C1_OC_ODL,          EXPIN(IOEX_C2_NCT38XX, 0, 3), GPIO_ODR_HIGH)
-IOEX(USB_C2_OC_ODL,          EXPIN(IOEX_C2_NCT38XX, 0, 4), GPIO_ODR_HIGH)
-IOEX(USB_C2_FRS_EN,          EXPIN(IOEX_C2_NCT38XX, 0, 6), GPIO_LOW)
-

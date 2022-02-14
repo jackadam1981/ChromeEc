@@ -317,20 +317,6 @@ void board_reset_pd_mcu(void)
 	enum gpio_signal tcpc_rst;
 
 	tcpc_rst = GPIO_USB_C0_C2_TCPC_RST_ODL;
-
-	gpio_set_level(tcpc_rst, 0);
-
-	/*
-	 * delay for power-on to reset-off and min. assertion time
-	 */
-
-	msleep(20);
-
-	gpio_set_level(tcpc_rst, 1);
-
-	/* wait for chips to come up */
-
-	msleep(50);
 }
 
 static void board_tcpc_init(void)
@@ -416,6 +402,16 @@ void ppc_interrupt(enum gpio_signal signal)
 	switch (signal) {
 	case GPIO_USB_C0_PPC_INT_ODL:
 		syv682x_interrupt(USBC_PORT_C0);
+		break;
+	case GPIO_USB_C1_PPC_INT_ODL:
+		switch (ec_cfg_usb_db_type()) {
+		case DB_USB_ABSENT:
+		case DB_USB_ABSENT2:
+			break;
+		case DB_USB3_PS8815:
+			nx20p348x_interrupt(USBC_PORT_C1);
+			break;
+		}
 		break;
 	case GPIO_USB_C2_PPC_INT_ODL:
 		syv682x_interrupt(USBC_PORT_C2);

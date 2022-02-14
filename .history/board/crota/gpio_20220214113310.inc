@@ -70,6 +70,10 @@ GPIO(PCH_PWROK,                      PIN(7, 2), GPIO_OUT_LOW)
 GPIO(SYS_RST_ODL,                    PIN(C, 5), GPIO_ODR_HIGH)
 GPIO(USB_C0_C2_TCPC_RST_ODL,         PIN(A, 7), GPIO_ODR_LOW)
 GPIO(VCCST_PWRGD_OD,                 PIN(A, 4), GPIO_ODR_LOW)
+GPIO(TEMP_SENSOR_4,                  PIN(E, 1), GPIO_INPUT)
+GPIO(TEMP_SENSOR_3,                  PIN(3, 4), GPIO_INPUT)
+GPIO(TEMP_SENSOR_2,                  PIN(4, 4), GPIO_INPUT)
+GPIO(TEMP_SENSOR_1,                  PIN(4, 5), GPIO_INPUT)
 
 /* UART alternate functions */
 ALTERNATE(PIN_MASK(6, 0x30), 0, MODULE_UART, 0)              /* GPIO64/CR_SIN1, GPO65/CR_SOUT1/FLPRG1_L */
