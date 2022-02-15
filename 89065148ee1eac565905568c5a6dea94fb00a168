@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "62382ad5_aac16649",
+        "filename": "zephyr/Kconfig.usb_charger",
+        "patchSetId": 10
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-02-15T15:37:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7e9b31d5_983fa48a",
+      "revId": "89065148ee1eac565905568c5a6dea94fb00a168",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5678ef5c_35a5f76d",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-02-14T16:17:20Z",
       "side": 1,
       "message": "Move to top.",
+      "revId": "89065148ee1eac565905568c5a6dea94fb00a168",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ad3c008_1091db8f",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 10
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-02-15T15:37:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5678ef5c_35a5f76d",
       "revId": "89065148ee1eac565905568c5a6dea94fb00a168",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
