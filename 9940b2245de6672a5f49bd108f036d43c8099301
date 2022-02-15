@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ccfe17d3_91d3d5e5",
+        "filename": "zephyr/projects/nissa/prj_nivviks.conf",
+        "patchSetId": 23
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2022-02-15T21:23:24Z",
+      "side": 1,
+      "message": "This CONFIG is intended to add x86_non_dsx_adlp_nonpwrseq_sm.c which contains power sequence signal handlers for platforms where external power sequencer chips are not present, this way EC takes care of ADC signals monitoring. To me GPIO_CONTROL seems too generic. Maybe we could separate this implementation in two CONFIG\u0027s one for GPIO_CONTROL and other for ADC monitoring?",
+      "parentUuid": "17029db3_8016d6fb",
+      "revId": "9940b2245de6672a5f49bd108f036d43c8099301",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "32181ece_1c3fd9f5",
         "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_adlp_nonpwrseq_sm.c",
         "patchSetId": 23
@@ -73,6 +91,30 @@
       "side": 1,
       "message": "Ack",
       "parentUuid": "32181ece_1c3fd9f5",
+      "range": {
+        "startLine": 13,
+        "startChar": 9,
+        "endLine": 13,
+        "endChar": 57
+      },
+      "revId": "9940b2245de6672a5f49bd108f036d43c8099301",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3c024ae_688e043a",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_adlp_nonpwrseq_sm.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2022-02-15T21:23:24Z",
+      "side": 1,
+      "message": "Right, this will not be configurable.",
+      "parentUuid": "c31463c9_2fab221f",
       "range": {
         "startLine": 13,
         "startChar": 9,
