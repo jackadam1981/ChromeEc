@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "48414418_3926b155",
+        "filename": "zephyr/emul/emul_isl923x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2022-02-15T23:27:16Z",
+      "side": 1,
+      "message": "Moved the register implementation to the code coverage CL.",
+      "parentUuid": "37f2f95c_0d651256",
+      "revId": "2a49d9662ef1ac5f4b8b8b8064a37191cf8f8dd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bce15c2e_eb7ab205",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-02-15T22:25:39Z",
       "side": 1,
       "message": "What\u0027s your rationale for gating certain registers with config flags? Personally I think that if this chip supports this register it should be present all the time, or at least provide a more specific error message like an __ASSERT(false, \"Charge ramp HW not configured\") if that register is accessed while that config flag is not set.",
+      "range": {
+        "startLine": 278,
+        "startChar": 0,
+        "endLine": 278,
+        "endChar": 28
+      },
+      "revId": "2a49d9662ef1ac5f4b8b8b8064a37191cf8f8dd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7f614b2_9dcb4d50",
+        "filename": "zephyr/emul/emul_isl923x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2022-02-15T23:27:16Z",
+      "side": 1,
+      "message": "Cleaned this up. This register is only used under this config flag, but is available outside of it.",
+      "parentUuid": "bce15c2e_eb7ab205",
       "range": {
         "startLine": 278,
         "startChar": 0,
