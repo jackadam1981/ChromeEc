@@ -5647,6 +5647,54 @@ struct usb_chg_measures {
 	uint16_t current_lim;
 } __ec_align2;
 
+#ifdef TEST_BUILD
+static inline const char *usb_chg_type_to_string(enum usb_chg_type type)
+{
+	switch (type) {
+	case USB_CHG_TYPE_NONE:
+		return "USB_CHG_TYPE_NONE";
+	case USB_CHG_TYPE_PD:
+		return "USB_CHG_TYPE_PD";
+	case USB_CHG_TYPE_C:
+		return "USB_CHG_TYPE_C";
+	case USB_CHG_TYPE_PROPRIETARY:
+		return "USB_CHG_TYPE_PROPRIETARY";
+	case USB_CHG_TYPE_BC12_DCP:
+		return "USB_CHG_TYPE_BC12_DCP";
+	case USB_CHG_TYPE_BC12_CDP:
+		return "USB_CHG_TYPE_BC12_CDP";
+	case USB_CHG_TYPE_BC12_SDP:
+		return "USB_CHG_TYPE_BC12_SDP";
+	case USB_CHG_TYPE_OTHER:
+		return "USB_CHG_TYPE_OTHER";
+	case USB_CHG_TYPE_VBUS:
+		return "USB_CHG_TYPE_VBUS";
+	case USB_CHG_TYPE_UNKNOWN:
+		return "USB_CHG_TYPE_UNKNOWN";
+	case USB_CHG_TYPE_DEDICATED:
+		return "USB_CHG_TYPE_DEDICATED";
+	default:
+		return NULL;
+	}
+}
+
+static inline const char *usb_power_role_to_string(enum usb_power_roles role)
+{
+	switch (role) {
+	case USB_PD_PORT_POWER_DISCONNECTED:
+		return "USB_PD_PORT_POWER_DISCONNECTED";
+	case USB_PD_PORT_POWER_SOURCE:
+		return "USB_PD_PORT_POWER_SOURCE";
+	case USB_PD_PORT_POWER_SINK:
+		return "USB_PD_PORT_POWER_SINK";
+	case USB_PD_PORT_POWER_SINK_NOT_CHARGING:
+		return "USB_PD_PORT_POWER_SINK_NOT_CHARGING";
+	default:
+		return NULL;
+	}
+}
+#endif
+
 struct ec_response_usb_pd_power_info {
 	uint8_t role;
 	uint8_t type;
