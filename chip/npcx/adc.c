@@ -41,6 +41,10 @@ static volatile task_id_t task_waiting;
 
 struct mutex adc_lock;
 
+#ifdef CONFIG_KEYBOARD_SCAN_ANTIGHOST_ADC
+static bool adc_done;
+#endif
+
 /**
  * Preset ADC operation clock.
  *
@@ -77,7 +81,12 @@ static int start_single_and_wait(enum npcx_adc_input_channel input_ch
 {
 	int event;
 
+#ifdef CONFIG_KEYBOARD_SCAN_ANTIGHOST_ADC
+	if (task_start_called())
+		task_waiting = task_get_current();
+#else
 	task_waiting = task_get_current();
+#endif
 
 	/* Stop ADC conversion first */
 	SET_BIT(NPCX_ADCCNF, NPCX_ADCCNF_STOP);
@@ -101,10 +110,33 @@ static int start_single_and_wait(enum npcx_adc_input_channel input_ch
 	/* Start conversion */
 	SET_BIT(NPCX_ADCCNF, NPCX_ADCCNF_START);
 
+/*
+ * If tasks have started, we can suspend to the task that called us.
+ * If not, we need to busy poll for adc to finish before proceeding
+ */
+#ifdef CONFIG_KEYBOARD_SCAN_ANTIGHOST_ADC
+	if (!task_start_called()) {
+
+		/* Wait for the ADC interrupt to set the flag */
+		do {
+			usleep(10);
+		} while (adc_done == false);
+
+		adc_done = false;
+
+		event = TASK_EVENT_ADC_DONE;
+	} else {
+		/* Wait for interrupt */
+		event = task_wait_event_mask(TASK_EVENT_ADC_DONE, timeout);
+
+		task_waiting = TASK_ID_INVALID;
+	}
+#else
 	/* Wait for interrupt */
 	event = task_wait_event_mask(TASK_EVENT_ADC_DONE, timeout);
 
 	task_waiting = TASK_ID_INVALID;
+#endif
 
 	return (event == TASK_EVENT_ADC_DONE);
 
@@ -338,6 +370,12 @@ static void adc_interrupt(void)
 		/* Wake up the task which was waiting for the interrupt */
 		if (task_waiting != TASK_ID_INVALID)
 			task_set_event(task_waiting, TASK_EVENT_ADC_DONE);
+
+#ifdef CONFIG_KEYBOARD_SCAN_ANTIGHOST_ADC
+		if (!task_start_called()) {
+			adc_done = true;
+		}
+#endif
 	}
 
 	for (i = NPCX_THRCTS_THR1_STS; i < NPCX_ADC_THRESH_CNT; i++) {
@@ -356,13 +394,23 @@ static void adc_interrupt(void)
 }
 DECLARE_IRQ(NPCX_IRQ_ADC, adc_interrupt, 4);
 
+/*
+ * For Antighost keyboard, we need to initialize adc from
+ * main before keyboard_scan_init is called in order to
+ * detect boot keys
+ */
+
 /**
  * ADC initial.
  *
  * @param none
  * @return none
  */
+#ifndef CONFIG_KEYBOARD_SCAN_ANTIGHOST_ADC
 static void adc_init(void)
+#else
+void adc_init(void)
+#endif
 {
 	/* Configure pins from GPIOs to ADCs */
 	gpio_config_module(MODULE_ADC, 1);
@@ -387,4 +435,6 @@ static void adc_init(void)
 	/* Enable IRQs */
 	task_enable_irq(NPCX_IRQ_ADC);
 }
+#ifndef CONFIG_KEYBOARD_SCAN_ANTIGHOST_ADC
 DECLARE_HOOK(HOOK_INIT, adc_init, HOOK_PRIO_INIT_ADC);
+#endif
