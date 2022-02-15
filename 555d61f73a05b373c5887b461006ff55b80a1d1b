@@ -16,6 +16,24 @@
       "message": "This blows up at runtime on nereid:\n\n    $ adc\n    EC_VSENSE_PP1050_PROC \u003d -22 mV\n    \u003cerr\u003e adc_ite_it8xxx2: Invalid selection of channels\n    \u003chang and watchdog reset\u003e\n\nIt looks like the IT8xxx2 DTSI doesn\u0027t even have a definition for ADC13..16.",
       "revId": "555d61f73a05b373c5887b461006ff55b80a1d1b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bae1ca76_12d0b852",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-02-15T04:15:34Z",
+      "side": 1,
+      "message": "The DTSI lacks pinmux bindings for those (which offhand I\u0027m not sure if they\u0027re muxable), but the driver definitely only implements channels 0 through 7. I\u0027ve hacked the pinmap tool to make 0..7,13..16 contiguous as the ECOS driver does but the zephyr driver for this needs to be fixed as well.",
+      "parentUuid": "5533d402_2e3cd261",
+      "revId": "555d61f73a05b373c5887b461006ff55b80a1d1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
