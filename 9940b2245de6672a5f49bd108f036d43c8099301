@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "17029db3_8016d6fb",
+        "filename": "zephyr/projects/nissa/prj_nivviks.conf",
+        "patchSetId": 23
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2022-02-15T19:25:28Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a7ac352f_dde876e0",
+      "revId": "9940b2245de6672a5f49bd108f036d43c8099301",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "32181ece_1c3fd9f5",
@@ -41,6 +59,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c31463c9_2fab221f",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_adlp_nonpwrseq_sm.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2022-02-15T19:25:28Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "32181ece_1c3fd9f5",
+      "range": {
+        "startLine": 13,
+        "startChar": 9,
+        "endLine": 13,
+        "endChar": 57
+      },
+      "revId": "9940b2245de6672a5f49bd108f036d43c8099301",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "347fcf95_d7fa2fc6",
@@ -54,6 +96,24 @@
       "writtenOn": "2022-02-15T10:34:34Z",
       "side": 1,
       "message": "So the \u0027__override\u0027 attribute has been dropped?",
+      "revId": "9940b2245de6672a5f49bd108f036d43c8099301",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af128ef0_d18ff8eb",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_adlp_nonpwrseq_sm.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2022-02-15T19:25:28Z",
+      "side": 1,
+      "message": "__override is defined at ec/include/common.h, this file is not accessible from zephyr/zubsys/ap_pwrseq. I think common.h is part of shim. Should we have a definition of __override and __overridable for zephyr ec build?",
+      "parentUuid": "347fcf95_d7fa2fc6",
       "revId": "9940b2245de6672a5f49bd108f036d43c8099301",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
