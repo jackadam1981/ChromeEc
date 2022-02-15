@@ -116,13 +116,8 @@ static void integration_usb_after(void *state)
  */
 static void check_charge_state(int chgnum, bool attached)
 {
-	struct ec_params_charge_state charge_params = {
-		.chgnum = chgnum, .cmd = CHARGE_STATE_CMD_GET_STATE};
-	struct ec_response_charge_state charge_response;
-	struct host_cmd_handler_args args = BUILD_HOST_COMMAND(
-			EC_CMD_CHARGE_STATE, 0, charge_response, charge_params);
-
-	zassert_ok(host_command_process(&args), "Failed to get charge state");
+	struct ec_response_charge_state charge_response =
+		host_cmd_charge_state(chgnum);
 	zassert_equal(charge_response.get_state.ac, attached,
 			"USB default but AC absent");
 	/* The charging voltage and current are not directly related to the PD
@@ -313,6 +308,108 @@ ZTEST(integration_usb, test_attach_20v_pd_charger)
 	/* TODO(b/217394181): Refactor to direct assert calls */
 	check_usb_pd_power_info(0, USB_PD_PORT_POWER_SINK, USB_CHG_TYPE_PD,
 			20000, 3000);
+}
+
+ZTEST(integration_usb, test_unplug_20v_pd_charger)
+{
+	const struct emul *tcpci_emul =
+		emul_get_binding(DT_LABEL(TCPCI_EMUL_LABEL));
+	const struct emul *charger_emul =
+		emul_get_binding(DT_LABEL(DT_NODELABEL(isl923x_emul)));
+	struct i2c_emul *i2c_emul;
+	uint16_t battery_status;
+	struct tcpci_src_emul my_charger;
+	const struct device *gpio_dev =
+		DEVICE_DT_GET(DT_GPIO_CTLR(GPIO_AC_OK_PATH, gpios));
+
+	/* Attach emulated charger. Send Source Capabilities that offer 20V. Set
+	 * the charger input voltage to ~18V (the highest voltage it supports).
+	 */
+	zassert_ok(gpio_emul_input_set(gpio_dev, GPIO_AC_OK_PIN, 1), NULL);
+	tcpci_src_emul_init(&my_charger);
+	my_charger.data.pdo[1] =
+		PDO_FIXED(20000, 3000, PDO_FIXED_UNCONSTRAINED);
+	zassert_ok(tcpci_src_emul_connect_to_tcpci(&my_charger.data,
+						   &my_charger.common_data,
+						   &my_charger.ops, tcpci_emul),
+		   NULL);
+	isl923x_emul_set_adc_vbus(charger_emul, 20000);
+
+	/* Wait for PD negotiation and current ramp.
+	 * TODO(b/213906889): Check message timing and contents.
+	 */
+	k_sleep(K_SECONDS(10));
+
+	/* Unplug the emulated charger */
+	zassert_ok(tcpci_emul_disconnect_partner(tcpci_emul), NULL);
+
+	/* Wait for charger to realize it was unplugged */
+	k_sleep(K_SECONDS(1));
+
+	/* Reset vbus to 0mV */
+	isl923x_emul_set_adc_vbus(charger_emul, 0);
+
+	/* Verify battery is not charging. */
+	i2c_emul = sbat_emul_get_ptr(BATTERY_ORD);
+	zassert_ok(sbat_emul_get_word_val(i2c_emul, SB_BATTERY_STATUS,
+					  &battery_status),
+		   NULL);
+	zassert_equal(battery_status & STATUS_DISCHARGING, 0,
+		      "Battery is discharging: %d", battery_status);
+
+	/* Check the charging state */
+	struct ec_response_charge_state charge_state = host_cmd_charge_state(0);
+
+	zassert_equal(charge_state.get_state.ac, 1, "ac expected 1, but was %d",
+		      charge_state.get_state.ac);
+	zassert_equal(charge_state.get_state.chg_voltage, 5000,
+		      "Max charge voltage expected 5000mV, but was %dmV",
+		      charge_state.get_state.chg_voltage);
+	zassert_equal(charge_state.get_state.chg_current, 1000,
+		      "Max charge current expected 1000mA, but was %dmA",
+		      charge_state.get_state.chg_current);
+	zassert_equal(charge_state.get_state.chg_input_current, 512,
+		      "Charge input current limit expected 512mA, but was %dmA",
+		      charge_state.get_state.chg_input_current);
+
+	struct ec_response_typec_status typec_status = host_cmd_typec_status(0);
+
+	zassert_false(typec_status.pd_enabled, NULL);
+	zassert_false(typec_status.dev_connected, NULL);
+	zassert_false(typec_status.sop_connected, NULL);
+	zassert_equal(typec_status.source_cap_count, 0,
+		      "Expected 0 source caps, but got %d",
+		      typec_status.source_cap_count);
+	zassert_equal(typec_status.power_role, USB_CHG_TYPE_NONE,
+		      "Expected power role to be USB_CHG_TYPE_NONE, but got %s",
+		      usb_chg_type_to_string(typec_status.power_role));
+
+	struct ec_response_usb_pd_power_info power_info =
+		host_cmd_power_info(0);
+
+	zassert_equal(power_info.role, USB_PD_PORT_POWER_DISCONNECTED,
+		      "Expected power role to be USB_PD_PORT_POWER_DISCONNECTED"
+		      ", but got %s",
+		      usb_power_role_to_string(power_info.role));
+	zassert_equal(power_info.type, USB_CHG_TYPE_NONE,
+		      "Expected charger type to be USB_CHG_TYPE_NONE,"
+		      " but got %s",
+		      usb_chg_type_to_string(power_info.type));
+	zassert_equal(power_info.max_power, 0,
+		      "Expected the maximum power to be 0uW, but got %duW",
+		      power_info.max_power);
+	zassert_equal(power_info.meas.voltage_max, 0,
+		      "Expected maximum voltage of 0mV, but got %dmV",
+		      power_info.meas.voltage_max);
+	zassert_within(power_info.meas.voltage_now, 0, 10,
+		       "Expected present voltage near 0mV, but got %dmV",
+		       power_info.meas.voltage_now);
+	zassert_equal(power_info.meas.current_max, 0,
+		      "Expected maximum current of 0mA, but got %dmA",
+		      power_info.meas.current_max);
+	zassert_true(power_info.meas.current_lim >= 0,
+		     "Expected the PD current limit to be >= 0, but got %dmA",
+		     power_info.meas.current_lim);
 }
 
 ZTEST(integration_usb, test_attach_sink)

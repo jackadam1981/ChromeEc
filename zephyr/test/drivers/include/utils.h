@@ -119,4 +119,52 @@ void test_set_chipset_to_g3(void);
  */
 #define zassume_mem_equal(...) zassert_mem_equal(##__VA_ARGS__)
 
+/**
+ * Make the host command to get the charge state for a given charger number.
+ *
+ * This function assumes a successful host command processing and will make a
+ * call to the zassume_* API. A failure here will abort the calling test.
+ *
+ * @param chgnum The charger number to query.
+ * @return The result of the query.
+ */
+static inline struct ec_response_charge_state host_cmd_charge_state(int chgnum)
+{
+	struct ec_params_charge_state params = {
+		.chgnum = chgnum,
+		.cmd = CHARGE_STATE_CMD_GET_STATE,
+	};
+	struct ec_response_charge_state response;
+	struct host_cmd_handler_args args =
+		BUILD_HOST_COMMAND(EC_CMD_CHARGE_STATE, 0, response, params);
+
+	zassume_ok(host_command_process(&args),
+		   "Failed to get charge state for chgnum %d", chgnum);
+	return response;
+}
+
+static inline struct ec_response_usb_pd_power_info host_cmd_power_info(int port)
+{
+	struct ec_params_usb_pd_power_info params = { .port = port };
+	struct ec_response_usb_pd_power_info response;
+	struct host_cmd_handler_args args = BUILD_HOST_COMMAND(
+		EC_CMD_USB_PD_POWER_INFO, 0, response, params);
+
+	zassume_ok(host_command_process(&args),
+		   "Failed to get power info for port %d", port);
+	return response;
+}
+
+static inline struct ec_response_typec_status host_cmd_typec_status(int port)
+{
+	struct ec_params_typec_status params = { .port = port };
+	struct ec_response_typec_status response;
+	struct host_cmd_handler_args args =
+		BUILD_HOST_COMMAND(EC_CMD_TYPEC_STATUS, 0, response, params);
+
+	zassume_ok(host_command_process(&args),
+		   "Failed to get Type-C state for port %d", port);
+	return response;
+}
+
 #endif /* ZEPHYR_TEST_DRIVERS_INCLUDE_UTILS_H_ */
