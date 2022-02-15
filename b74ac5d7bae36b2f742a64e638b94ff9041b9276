@@ -16,6 +16,24 @@
       "message": "Does this fix the failure for BMI220 validation on b/193489896?",
       "revId": "b74ac5d7bae36b2f742a64e638b94ff9041b9276",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ae56d14_5c0f106b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2022-02-15T05:24:20Z",
+      "side": 1,
+      "message": "Yes. I linked the wrong bug, sorry.",
+      "parentUuid": "ee0c1852_5ee152d7",
+      "revId": "b74ac5d7bae36b2f742a64e638b94ff9041b9276",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
