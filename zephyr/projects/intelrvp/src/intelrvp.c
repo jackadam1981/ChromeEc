@@ -6,6 +6,7 @@
 /* TODO: b/218904113: Convert to using Zephyr GPIOs */
 #include "gpio.h"
 #include "hooks.h"
+#include "intelrvp.h"
 
 static void board_init(void)
 {
