@@ -16,6 +16,23 @@
       "message": "Brask EC update with code modified from Puff is ready to review.",
       "revId": "36e86e969df60d86c310d0e4c2e4472c5b7ea30f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "08ddc888_edc7a28a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-02-15T10:16:09Z",
+      "side": 1,
+      "message": "Looks fine - we spent a lot of effort doing this for Puff, but it was hard to test enough to assure that it was providing a significant benefit.\nIn hindsight we should have put more telemetry in to detect when some\nlevel of throttling occurred, and whether maximum performance was achieved in overcurrent situations.",
+      "revId": "36e86e969df60d86c310d0e4c2e4472c5b7ea30f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
