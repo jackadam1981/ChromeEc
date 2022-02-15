@@ -1,0 +1,20 @@
+# Copyright 2022 The Chromium OS Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+description: Intel RVP Board id
+
+compatible: "intelrvp-board-id"
+
+properties:
+    i2c-port:
+      type: phandle
+      required: true
+      description:
+        I2C port to read intel RVP board ID.
+
+    i2c-addr:
+      type: int
+      required: true
+      description:
+        I2C address to read Intel RVP board ID.
