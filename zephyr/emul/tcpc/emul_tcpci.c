@@ -1007,6 +1007,8 @@ static int tcpci_emul_write_byte(struct i2c_emul *i2c_emul, int reg,
 			LOG_ERR("Register 0x%x defined only for revision 1.0",
 				reg);
 			tcpci_emul_set_i2c_interface_err(emul);
+			printf("returning -EIO at emul_tcpci.c:1010\n");
+			/* DEBUG NOTE: If we just comment this branch out, it fails at similar check it seems. */
 			return -EIO;
 		}
 
