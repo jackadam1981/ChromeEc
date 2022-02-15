@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd794852_c415b65a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2022-02-15T21:57:38Z",
+      "side": 1,
+      "message": "I like it! More warnings like this on the EC is a good thing and will keep us sane during debugging.\n\n+2 after that comment gets resolved.",
+      "revId": "e03a5927e7fb24b79bcb3dd6141a802301d0969e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6780b0a_585623b2",
+        "filename": "power/qcom.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 616,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2022-02-15T21:57:38Z",
+      "side": 1,
+      "message": "This name doesn\u0027t match the argument, but you should probably consider the name a little better. perhaps `shutdown_event_type` since it gets compared to the POWER_OFF_BY_ enums?",
+      "range": {
+        "startLine": 616,
+        "startChar": 10,
+        "endLine": 616,
+        "endChar": 27
+      },
+      "revId": "e03a5927e7fb24b79bcb3dd6141a802301d0969e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
