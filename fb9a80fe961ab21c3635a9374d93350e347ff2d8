@@ -194,6 +194,24 @@
       "parentUuid": "572014e0_fbc4a94f",
       "revId": "fb9a80fe961ab21c3635a9374d93350e347ff2d8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "71ab8fa8_16790c6b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-02-15T19:31:20Z",
+      "side": 1,
+      "message": "\u003e \" combo0 efs rst\" is printed right before ec_efs_reset is called, so cr50 is\n\u003e calling ec_efs_reset which sets the boot mode to EC_EFS_BOOT_MODE_NORMAL\n\nYes. If boot_mode is restored from the scratchpad, there is a transition from NO_BOOT to NORMAL. I\u0027m not seeing it. If that\u0027s because ec_efs_init_ is called after key_combo0_irq, then it\u0027s expected. Otherwise, it\u0027s weird.",
+      "parentUuid": "a991f8dd_dba93687",
+      "revId": "fb9a80fe961ab21c3635a9374d93350e347ff2d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
