@@ -28,7 +28,7 @@
 		adc_temp_sensor_3: temp_sensor_3 {
 			label = "TEMP_SENSOR_3";
 			enum-name = "ADC_TEMP_SENSOR_3";
-			io-channels = <&adc0 13>;
+			io-channels = <&adc0 8>;
 		};
 	};
 

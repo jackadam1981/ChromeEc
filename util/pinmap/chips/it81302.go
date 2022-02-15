@@ -6,6 +6,7 @@ package chips
 
 import (
 	"fmt"
+	"strconv"
 	"strings"
 )
 
@@ -179,8 +180,19 @@ func (c *It81302) Adc(p string) string {
 		// Found the pin, now find the ADC name.
 		for _, ss := range strings.Split(s, "/") {
 			if strings.HasPrefix(ss, "ADC") && len(ss) > 3 {
+				chan_idx, err := strconv.Atoi(ss[3:])
+				if err != nil {
+					break
+				}
+				// Channel names are 0..7, 13..16 but driver
+				// channel assignments lack the discontinuity;
+				// remove it.
+				if chan_idx >= 13 {
+					chan_idx = 8 + chan_idx - 13
+				}
+
 				c.okay = append(c.okay, "adc0")
-				return fmt.Sprintf("%s", ss[3:])
+				return fmt.Sprintf("%d", chan_idx)
 			}
 		}
 		return ""
