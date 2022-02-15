@@ -22,6 +22,30 @@
       },
       "revId": "c9735de59da21655b9aa7514822094acd8b5cca7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c2ac467_6f03f58a",
+        "filename": "zephyr/emul/emul_isl923x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 460,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2022-02-15T21:31:21Z",
+      "side": 1,
+      "message": "I added a call to `i2c_common_emul_init` in the reset function.  The common emul data is part of the is923x struct.  There\u0027s no statically defined common_emul data to reset, they are part of other emulators.",
+      "parentUuid": "f1d3cf5e_9d8bc6dc",
+      "range": {
+        "startLine": 457,
+        "startChar": 0,
+        "endLine": 460,
+        "endChar": 39
+      },
+      "revId": "c9735de59da21655b9aa7514822094acd8b5cca7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
