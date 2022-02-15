@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1d3cf5e_9d8bc6dc",
+        "filename": "zephyr/emul/emul_isl923x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 460,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-02-15T17:16:47Z",
+      "side": 1,
+      "message": "These lines belong in a different rule under `emul_common_i2c.c` (separate CL too)",
+      "range": {
+        "startLine": 457,
+        "startChar": 0,
+        "endLine": 460,
+        "endChar": 39
+      },
+      "revId": "c9735de59da21655b9aa7514822094acd8b5cca7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
