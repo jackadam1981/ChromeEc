@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b44ea18d_ec8e7a2d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-02-15T23:56:52Z",
+      "side": 1,
+      "message": "Shim code depends on the pch_wake_odl name so I changed the CSV name to match and added a comment about the difference from the schematic.",
+      "revId": "a3519c2049d946e9ec9dbe96a432d9b92ca314dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
