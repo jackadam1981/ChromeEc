@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ccc5949_e8fe85e0",
+        "filename": "zephyr/projects/nissa/nereid_generated.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-02-15T03:38:50Z",
+      "side": 1,
+      "message": "Seems better to directly take the tool output to me.",
+      "parentUuid": "42801199_077ae24d",
+      "revId": "213047f8e9def1cb9668dddb635f19c743b20869",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d697e3f8_db55b494",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-02-15T03:36:35Z",
       "side": 1,
       "message": "I don\u0027t think this enum is in the spreadsheet anymore, so you maybe need\nto download the CSV again to get the latest.",
+      "revId": "213047f8e9def1cb9668dddb635f19c743b20869",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "001da1d7_f874201e",
+        "filename": "zephyr/projects/nissa/nereid_generated.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-02-15T03:38:50Z",
+      "side": 1,
+      "message": "I removed it from the sheet since the enumerated names in the DTS binding file don\u0027t include this name.",
+      "parentUuid": "d697e3f8_db55b494",
       "revId": "213047f8e9def1cb9668dddb635f19c743b20869",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
