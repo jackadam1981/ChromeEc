@@ -104,6 +104,24 @@
       "parentUuid": "50c141ce_d63f707d",
       "revId": "fb9a80fe961ab21c3635a9374d93350e347ff2d8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef8260a1_2c6b05c8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2022-02-15T18:05:55Z",
+      "side": 1,
+      "message": "Zork did process the combo0 interrupt on wake from deep sleep, so I think this change is will work.\n\n22-02-15 12:03:23.667 Rdd:       disconnected\n22-02-15 12:03:23.670 KeepAlive: disabled\n22-02-15 12:03:23.671 CCD_MODE:  deasserted\n22-02-15 12:03:23.672 State flags:\n22-02-15 12:03:23.672 CCD ports blocked: (none)\n22-02-15 12:03:23.673 \u003e \n22-02-15 12:03:47.389 \n22-02-15 12:03:47.389 --- UART initialized after reboot ---\n22-02-15 12:03:47.392 [Reset cause: hibernate rbox]\n22-02-15 12:03:47.394 [Image: RW, 0.6.92/cr50_v2.0.3394-8b4a861205 tpm2:v1.9308_26_0.68-bb857c1 2022-02-14 13:20:46 mruthven@mruthven-glaptop2]\n22-02-15 12:03:47.405 [0.003643 Inits done]\n22-02-15 12:03:47.407 [0.004886 power button pressed]\n22-02-15 12:03:47.4 0|[0.005764 init_jittery_clock_locking_optional: run level high, request to enable]\n22-02-15 12:03:47.417 [0.033679 init took 21046]\n22-02-15 12:03:47.421 [0.040817 update_rollback_mask: bailing out at bit 0]\n22-02-15 12:03:47.426 [0.041820 update_rollback_mask: bailing out at bit 0]\n22-02-15 12:03:47.429 [0.044197 combo0 efs rst]",
+      "parentUuid": "1e34939b_35e5adb9",
+      "revId": "fb9a80fe961ab21c3635a9374d93350e347ff2d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
