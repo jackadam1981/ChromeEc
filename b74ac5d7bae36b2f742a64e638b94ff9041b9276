@@ -53,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a88874af_596846c1",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2022-02-15T06:11:23Z",
+      "side": 1,
+      "message": "yes: I wish I could have left the if(, but it won\u0027t compile since tcs3400_read_deferred_data is not define.",
+      "parentUuid": "35ec6e9a_49274e33",
+      "revId": "b74ac5d7bae36b2f742a64e638b94ff9041b9276",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "688f163c_9f09703c",
@@ -66,6 +84,24 @@
       "writtenOn": "2022-02-15T05:56:43Z",
       "side": 1,
       "message": "This function writes ATIME in line 134, any reason to read it back again?",
+      "revId": "b74ac5d7bae36b2f742a64e638b94ff9041b9276",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9098654e_79d4c12e",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2022-02-15T06:11:23Z",
+      "side": 1,
+      "message": "Right, it was in the previous CL, will remove.",
+      "parentUuid": "688f163c_9f09703c",
       "revId": "b74ac5d7bae36b2f742a64e638b94ff9041b9276",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
