@@ -81,6 +81,15 @@
 #define RT1739_VBUS_SAFE0V_EN			BIT(1)
 #define RT1739_VBUS_PRESENT_EN			BIT(0)
 
+#define RT1739_REG_CC_FRS_CTRL1		0x2D
+#define RT1739_FRSINF_CLEAR			BIT(4)
+#define RT1739_FRS_RX_EN			BIT(1)
+#define RT1739_FRS_TX_EN			BIT(0)
+
+#define RT1739_REG_CC_FRS_CTRL2		0x2E
+#define RT1739_FRSINF_TYPE			BIT(1)
+#define RT1739_FRSINF_EN			BIT(0)
+
 #define RT1739_REG_VCONN_CTRL1		0x31
 #define RT1739_VCONN_ORIENT			BIT(1)
 #define RT1739_VCONN_EN				BIT(0)
@@ -112,5 +121,6 @@ extern const struct ppc_drv rt1739_ppc_drv;
 extern const struct bc12_drv rt1739_bc12_drv;
 
 void rt1739_interrupt(int port);
+void rt1739_frs_interrupt(enum gpio_signal signal);
 
 #endif /* defined(__CROS_EC_PPC_RT1739_H) */
