@@ -32,6 +32,8 @@
 #define DEFAULT_VBUS_MV 5000
 #define DEFAULT_VBUS_MA 3000
 
+#define DEFAULT_SINK_SOURCE_CAP_COUNT 1
+
 struct integration_usb_attach_src_then_snk_fixture {
 	/* TODO(b/217737667): Remove driver specific code. */
 	const struct emul *tcpci_generic_emul;
@@ -93,6 +95,10 @@ static void integration_usb_attach_snk_then_src_before(void *state)
 	tcpci_emul_set_reg(tcpci_emul_snk, PS8XXX_REG_FW_REV, 0x31);
 	zassume_ok(tcpc_config[SRC_PORT].drv->init(SRC_PORT), NULL);
 	tcpci_emul_set_rev(tcpci_emul_src, TCPCI_EMUL_REV1_0_VER1_0);
+
+	/* DEBUG NOTE: Adding this makes the PD host cmd tests fail*/
+	/* tcpci_emul_set_rev(tcpci_emul_snk, TCPCI_EMUL_REV1_0_VER1_0); */
+
 	pd_set_suspend(SNK_PORT, 0);
 	pd_set_suspend(SRC_PORT, 0);
 	/* Reset to disconnected state. */
@@ -104,8 +110,9 @@ static void integration_usb_attach_snk_then_src_before(void *state)
 	/* Set chipset to ON, this will set TCPM to DRP */
 	test_set_chipset_to_s0();
 
-	/* TODO(b/214401892): Check why need to give time TCPM to spin */
-	k_sleep(K_SECONDS(1));
+	/* /\* TODO(b/214401892): Check why need to give time TCPM to spin *\/
+	 */
+	/* k_sleep(K_SECONDS(1)); */
 
 	/* Attach emulated sink */
 	tcpci_snk_emul_init(&my_sink);
@@ -114,9 +121,6 @@ static void integration_usb_attach_snk_then_src_before(void *state)
 			   &my_sink.data, &my_sink.common_data, &my_sink.ops,
 			   tcpci_emul_snk),
 		   NULL);
-
-	/* Wait for PD negotiation */
-	k_sleep(K_SECONDS(10));
 
 	/* 2) Attach SOURCE */
 
@@ -128,7 +132,7 @@ static void integration_usb_attach_snk_then_src_before(void *state)
 		   NULL);
 	isl923x_emul_set_adc_vbus(charger_emul, DEFAULT_VBUS_MV);
 
-	/* Wait for current ramp. */
+	/* Wait for PD negotiation */
 	k_sleep(K_SECONDS(10));
 }
 
@@ -252,6 +256,72 @@ ZTEST_F(integration_usb_attach_src_then_snk, verify_snk_port_pd_info)
 	zassert_equal(response.max_power, DEFAULT_VBUS_MV * DEFAULT_VBUS_MA,
 		      "Charging up to %duW, PD max power %duW",
 		      DEFAULT_VBUS_MV * DEFAULT_VBUS_MA, response.max_power);
+}
+
+ZTEST_F(integration_usb_attach_src_then_snk, verify_snk_port_typec_status)
+{
+	struct ec_params_typec_status params = { .port = SNK_PORT };
+	struct ec_response_typec_status response;
+	struct host_cmd_handler_args args =
+		BUILD_HOST_COMMAND(EC_CMD_TYPEC_STATUS, 0, response, params);
+
+	/* Assume */
+	zassume_ok(host_command_process(&args), "Failed to get Type-C state");
+
+	/* Assert */
+	zassert_true(response.pd_enabled, "Source attached but PD disabled");
+
+	zassert_true(response.dev_connected,
+		     "Source attached but device disconnected");
+
+	zassert_true(response.sop_connected,
+		     "Source attached but not SOP capable");
+
+	zassert_equal(response.source_cap_count, DEFAULT_SINK_SOURCE_CAP_COUNT,
+		      "Source has %d source PDOs", response.source_cap_count);
+
+	/* TODO(b/209907615): check if this is the correct assertion */
+	zassert_equal(response.sink_cap_count, 0, "Port has %d sink PDOs",
+		      response.sink_cap_count);
+
+	zassert_equal(response.power_role, PD_ROLE_SINK,
+		      "Source attached, but TCPM power role is %d",
+		      response.power_role);
+}
+
+ZTEST_F(integration_usb_attach_src_then_snk, verify_src_port_typec_status)
+{
+	struct ec_params_typec_status params = { .port = SRC_PORT };
+	struct ec_response_typec_status response;
+	struct host_cmd_handler_args args =
+		BUILD_HOST_COMMAND(EC_CMD_TYPEC_STATUS, 0, response, params);
+
+	printf("pd_capable(%d) == %d\n", params.port, pd_capable(params.port));
+
+	/* Assume */
+	zassume_ok(host_command_process(&args), "Failed to get Type-C state");
+
+	/* Assert */
+	zassert_true(response.pd_enabled, "Sink attached but PD disabled");
+
+	zassert_true(response.dev_connected,
+		     "Sink attached but device disconnected");
+
+	/* FAILS HERE */
+	zassert_true(response.sop_connected,
+		     "Sink attached but not SOP capable");
+
+	/* TODO(b/209907615): check if this is the correct assertion */
+	zassert_equal(response.source_cap_count, 0, "Port has %d source PDOs",
+		      response.source_cap_count);
+
+	/* TODO(b/209907615): check if this is the correct assertion */
+	zassert_equal(response.sink_cap_count, 0, "Port has %d sink PDOs",
+		      response.sink_cap_count);
+
+	zassert_equal(response.power_role, PD_ROLE_SOURCE,
+		      "Sink attached, but TCPM power role is %d",
+		      response.power_role);
 }
 
 ZTEST_F(integration_usb_attach_src_then_snk, verify_src_port_pd_info)
