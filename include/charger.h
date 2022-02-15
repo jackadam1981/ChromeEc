@@ -395,4 +395,9 @@ enum ec_error_list charger_enable_bypass_mode(int chgnum, int enable);
  */
 void print_charger_debug(int chgnum);
 
+/*
+ * Get the value of CONFIG_CHARGER_MIN_BAT_PCT_FOR_POWER_ON
+ */
+int charger_get_min_bat_pct_for_power_on(void);
+
 #endif /* __CROS_EC_CHARGER_H */
