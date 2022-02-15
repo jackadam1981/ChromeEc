@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "492986d5_af7fe44e",
+        "filename": "baseboard/brya/cbi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-02-15T02:45:27Z",
+      "side": 1,
+      "message": "some board (like volteer) use\nDECLARE_HOOK(HOOK_INIT, cbi_ssfc_init, HOOK_PRIO_FIRST);\nin a separate cbi_ssfc.c\n\ni wonder if it\u0027s better to separate ssfc like that.\n\ndo you expect to see any order dependency between\nthe cbi_init and cbi_ssfc_init hooks?",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 13
+      },
+      "revId": "120ad4331e78e26728ceb123a76e08187725f92a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
