@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5472346b_c8b5b64f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-02-15T05:26:58Z",
+      "side": 1,
+      "message": "So here is a first cut at a purely Zephyr gpioget/gpioset.\nCouple of items:\n\n - Naming and placement of files is a little arbitary since I didn\u0027t know where this really belonged.\n - The other CLs in the series shows the application to the test code and also to lazor.\n - The lazor names were generated using the ec/util/dt-gpionames utility.\n - Functionality should be close (enough?) to the existing commands that it could replace it now.",
+      "revId": "c26aa59ebb417d7ffb8473dd1dd5568207780130",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
