@@ -158,6 +158,24 @@
       "parentUuid": "5c4f5e2e_cf00aa81",
       "revId": "fb9a80fe961ab21c3635a9374d93350e347ff2d8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1f42d86_705969f0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2022-02-15T19:26:07Z",
+      "side": 1,
+      "message": "\" combo0 efs rst\" is printed right before ec_efs_reset is called, so cr50 is calling ec_efs_reset which sets the boot mode to EC_EFS_BOOT_MODE_NORMAL",
+      "parentUuid": "572014e0_fbc4a94f",
+      "revId": "fb9a80fe961ab21c3635a9374d93350e347ff2d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
