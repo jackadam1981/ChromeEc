@@ -24,7 +24,8 @@
 	/*
 	 * Keep these GPIOs in pin order.
 	 * If you need to add one, make sure you increase
-	 * ngpios in the gpio0 node further down.
+	 * ngpios in the gpio0 node further down, and
+	 * add the name to the GPIO controller node.
 	 */
 	named-gpios {
 		compatible = "named-gpios";
@@ -681,6 +682,37 @@
 
 &gpio0 {
 	ngpios = <30>;
+	gpio-line-names =
+		"",
+		"entering_rw",
+		"acok_od",
+		"wp_l",
+		"pg_ec_dsw_pwrok",
+		"ec_pch_wake_odl",
+		"usb_c1_ls_en",
+		"usb_c1_rt_rst_odl",
+		"usb_c1_frs_en",
+		"usb_c0_tcpc_int_odl",
+		"usb_c1_tcpc_int_odl",
+		"usb_c0_tcpc_rst_l",
+		"usb_c1_tcpc_rst_l",
+		"usb_c1_ppc_int",
+		"usb_c0_ppc_int",
+		"switchcap_pg_int_l",
+		"ap_rst_l",
+		"ps_hold",
+		"mb_power_good",
+		"ap_suspend",
+		"pmic_kpd_pwr_odl",
+		"pmic_resin_l",
+		"warm_reset_l",
+		"lid_open_ec",
+		"switchcap_on",
+		"ec_pwr_btn_odl",
+		"src_vph_pwr_pg",
+		"test",
+		"ec_batt_pres_odl",
+		"no_init";
 };
 
 &i2c0 {
