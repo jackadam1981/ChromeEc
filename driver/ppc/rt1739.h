@@ -112,5 +112,6 @@ extern const struct ppc_drv rt1739_ppc_drv;
 extern const struct bc12_drv rt1739_bc12_drv;
 
 void rt1739_interrupt(int port);
+void rt1739_frs_interrupt(enum gpio_signal signal);
 
 #endif /* defined(__CROS_EC_PPC_RT1739_H) */

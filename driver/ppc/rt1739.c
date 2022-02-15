@@ -10,6 +10,7 @@
 #include "console.h"
 #include "driver/ppc/rt1739.h"
 #include "driver/tcpm/tcpci.h"
+#include "gpio.h"
 #include "hooks.h"
 #include "usbc_ppc.h"
 #include "util.h"
@@ -226,6 +227,11 @@ static int rt1739_init(int port)
 		(RT1739_LV_SRC_OCP_SEL_3_3A << RT1739_LV_SRC_OCP_SEL_SHIFT) |
 		(RT1739_HV_SINK_OCP_SEL_3_3A << RT1739_HV_SINK_OCP_SEL_SHIFT)));
 
+	if (IS_ENABLED(CONFIG_USB_PD_FRS_PPC)) {
+		update_reg(port, 0x2E, BIT(0) | BIT(1), MASK_SET);
+		gpio_enable_interrupt(ppc_chips[port].frs_en);
+	}
+
 	return EC_SUCCESS;
 }
 
@@ -327,6 +333,17 @@ static void rt1739_usb_charger_task(const int port)
 	}
 }
 
+static int rt1739_set_frs_enable(int port, int enable)
+{
+	/* Reset FRSINF state */
+	RETURN_ERROR(update_reg(port, 0x2D, BIT(4), MASK_SET));
+
+	/* Enable FRS RX detect */
+	RETURN_ERROR(update_reg(port, 0x2D, BIT(1), enable ? MASK_SET : MASK_CLR));
+
+	return EC_SUCCESS;
+}
+
 static atomic_t pending_events;
 
 void rt1739_deferred_interrupt(void)
@@ -360,6 +377,16 @@ void rt1739_interrupt(int port)
 	hook_call_deferred(&rt1739_deferred_interrupt_data, 0);
 }
 
+void rt1739_frs_interrupt(enum gpio_signal signal)
+{
+	for (int port = 0; port < ppc_cnt; ++port) {
+		if (ppc_chips[port].frs_en != signal)
+			continue;
+
+		pd_got_frs_signal(port);
+	}
+}
+
 const struct ppc_drv rt1739_ppc_drv = {
 	.init = &rt1739_init,
 	.is_sourcing_vbus = &rt1739_is_sourcing_vbus,
@@ -378,7 +405,7 @@ const struct ppc_drv rt1739_ppc_drv = {
 	.set_vconn = &rt1739_set_vconn,
 #endif
 #ifdef CONFIG_USB_PD_FRS_PPC
-	/* TODO: not implemented */
+	.set_frs_enable = &rt1739_set_frs_enable,
 #endif
 };
 
