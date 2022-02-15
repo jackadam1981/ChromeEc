@@ -5,6 +5,12 @@
 
 /* Intel ADLRVP board-specific common configuration */
 
+#ifdef CONFIG_ZEPHYR
+#include "adlrvp_zephyr.h"
+#include "common.h"
+#include "gpio.h"
+#include "power/icelake.h"
+#else
 #include "battery_fuel_gauge.h"
 #include "charger.h"
 #include "battery.h"
@@ -25,10 +31,12 @@
 #include "usb_mux.h"
 #include "usbc_ppc.h"
 #include "util.h"
+#endif /* CONFIG_ZEPHYR */
 
 #define CPRINTS(format, args...) cprints(CC_COMMAND, format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_COMMAND, format, ## args)
 
+#ifndef CONFIG_ZEPHYR
 /* TCPC AIC GPIO Configuration */
 const struct tcpc_aic_gpio_config_t tcpc_aic_gpios[] = {
 	[TYPE_C_PORT_0] = {
@@ -441,6 +449,8 @@ static void configure_battery_type(void)
 	/* Set the fixed battery type */
 	battery_set_fixed_battery_type(bat_cell_type);
 }
+#endif /* CONFIG_ZEPHYR */
+
 /******************************************************************************/
 /* PWROK signal configuration */
 /*
@@ -496,6 +506,7 @@ __override int board_get_version(void)
 	return adlrvp_board_id;
 }
 
+#ifndef CONFIG_ZEPHYR
 __override bool board_is_tbt_usb4_port(int port)
 {
 	bool tbt_usb4 = true;
@@ -540,3 +551,4 @@ __override void board_pre_task_i2c_peripheral_init(void)
 	/* Configure board specific retimer & mux */
 	configure_retimer_usbmux();
 }
+#endif /* CONFIG_ZEPHYR */
