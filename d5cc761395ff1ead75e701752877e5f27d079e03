@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "96a0cd89_3e3c0e42",
+        "filename": "board/pazquel/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 1510127
+      },
+      "writtenOn": "2022-02-15T02:57:59Z",
+      "side": 1,
+      "message": "You are right. I removed the reused content.",
+      "parentUuid": "662f8562_78b59a77",
+      "range": {
+        "startLine": 364,
+        "startChar": 0,
+        "endLine": 379,
+        "endChar": 0
+      },
+      "revId": "d5cc761395ff1ead75e701752877e5f27d079e03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "72d6aaff_7021582a",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-02-14T18:49:58Z",
       "side": 1,
       "message": "Nit: remove this extra space.",
+      "range": {
+        "startLine": 387,
+        "startChar": 26,
+        "endLine": 387,
+        "endChar": 27
+      },
+      "revId": "d5cc761395ff1ead75e701752877e5f27d079e03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "88e2e919_2d41292a",
+        "filename": "board/pazquel/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 387,
+      "author": {
+        "id": 1510127
+      },
+      "writtenOn": "2022-02-15T02:57:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "72d6aaff_7021582a",
       "range": {
         "startLine": 387,
         "startChar": 26,
