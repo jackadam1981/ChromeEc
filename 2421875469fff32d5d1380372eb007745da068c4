@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3400bd8d_21118115",
+        "filename": "board/pazquel/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 362,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-02-15T17:37:17Z",
+      "side": 1,
+      "message": "Need forward declaration? Or just move the `da9313_pvc_mode_ctrl()` above?",
+      "range": {
+        "startLine": 362,
+        "startChar": 1,
+        "endLine": 362,
+        "endChar": 21
+      },
+      "revId": "2421875469fff32d5d1380372eb007745da068c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b5e00be_2ec048a5",
+        "filename": "board/pazquel/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 366,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-02-15T17:37:17Z",
+      "side": 1,
+      "message": "If this function is just used in this file, make it `static`.",
+      "range": {
+        "startLine": 366,
+        "startChar": 0,
+        "endLine": 366,
+        "endChar": 4
+      },
+      "revId": "2421875469fff32d5d1380372eb007745da068c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "547608ce_c631f71e",
+        "filename": "board/pazquel/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-02-15T17:37:17Z",
+      "side": 1,
+      "message": "Missing one space",
+      "range": {
+        "startLine": 369,
+        "startChar": 0,
+        "endLine": 369,
+        "endChar": 1
+      },
+      "revId": "2421875469fff32d5d1380372eb007745da068c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c0714914_8e52d1bb",
+        "filename": "board/pazquel/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 371,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-02-15T17:37:17Z",
+      "side": 1,
+      "message": "Missing one space here too",
+      "range": {
+        "startLine": 371,
+        "startChar": 0,
+        "endLine": 371,
+        "endChar": 1
+      },
+      "revId": "2421875469fff32d5d1380372eb007745da068c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
