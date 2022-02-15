@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "812db1fd_3be8d835",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_adlp_nonpwrseq_sm.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2022-02-15T03:06:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bafd95d6_28854c32",
+      "range": {
+        "startLine": 50,
+        "startChar": 18,
+        "endLine": 50,
+        "endChar": 63
+      },
+      "revId": "4026e020c94a6a4282d31b4a746c431a0fce31b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0bdc899b_115e0a8d",
@@ -37,6 +61,24 @@
       "writtenOn": "2022-02-14T18:17:18Z",
       "side": 1,
       "message": "Could you make this change in CL:3390874 : zephyr/subsys/ap_pwrseq/x86_non_dsx_adlp_pwrseq_sm.c#120 since it precedes this CL.",
+      "revId": "4026e020c94a6a4282d31b4a746c431a0fce31b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "193da1ad_ea9d4559",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_adlp_pwrseq_sm.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2022-02-15T03:06:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0bdc899b_115e0a8d",
       "revId": "4026e020c94a6a4282d31b4a746c431a0fce31b2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
