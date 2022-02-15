@@ -5,19 +5,21 @@
 
 /* Intel ADLRVP board-specific common configuration */
 
+#ifdef CONFIG_ZEPHYR
+#include "adlrvp_zephyr.h"
+#include "intelrvp.h"
+#include "pca9555.h"
+#else
 #include "battery_fuel_gauge.h"
 #include "charger.h"
 #include "battery.h"
 #include "bq25710.h"
-#include "common.h"
 #include "driver/retimer/bb_retimer_public.h"
 #include "extpower.h"
-#include "gpio.h"
 #include "hooks.h"
 #include "ioexpander.h"
 #include "isl9241.h"
 #include "pca9675.h"
-#include "power/icelake.h"
 #include "sn5s330.h"
 #include "system.h"
 #include "task.h"
@@ -25,10 +27,20 @@
 #include "usb_mux.h"
 #include "usbc_ppc.h"
 #include "util.h"
+#endif /* CONFIG_ZEPHYR */
+
+#include "common.h"
+#include "gpio.h"
+#include "power/icelake.h"
 
 #define CPRINTS(format, args...) cprints(CC_COMMAND, format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_COMMAND, format, ## args)
 
+/*
+ * Disabled for Zephyr Build to compile successfully.
+ * This will be enabled in another CL: crrev/c/3486204
+ */
+#ifndef CONFIG_ZEPHYR
 /* TCPC AIC GPIO Configuration */
 const struct tcpc_aic_gpio_config_t tcpc_aic_gpios[] = {
 	[TYPE_C_PORT_0] = {
@@ -441,6 +453,8 @@ static void configure_battery_type(void)
 	/* Set the fixed battery type */
 	battery_set_fixed_battery_type(bat_cell_type);
 }
+#endif /* CONFIG_ZEPHYR */
+
 /******************************************************************************/
 /* PWROK signal configuration */
 /*
@@ -471,13 +485,44 @@ __override int board_get_version(void)
 	/* Cache the ADLRVP board ID */
 	static int adlrvp_board_id;
 
+#ifdef CONFIG_ZEPHYR
+	int port, i;
+	int rv = EC_ERROR_UNKNOWN;
+#else
 	int port0, port1;
+#endif /* CONFIG_ZEPHYR */
+
 	int fab_id, board_id, bom_id;
 
 	/* Board ID is already read */
 	if (adlrvp_board_id)
 		return adlrvp_board_id;
 
+#ifdef CONFIG_ZEPHYR
+	for (i = 0; i < RVP_VERSION_READ_RETRY_CNT; i++) {
+		rv = i2c_read16(I2C_PORT_BOARD_ID_GPIO,
+				I2C_ADDR_BOARD_ID_GPIO,
+				PCA9555_CMD_INPUT_PORT_0,
+				&port);
+		if (!rv)
+			break;
+
+		k_msleep(1);
+	}
+
+	/* retrun -1 if failed to read board id */
+	if (rv)
+		return -1;
+	/*
+	 * bit 0     -  BOM ID(2)
+	 * bit 2:1   -  FAB ID(1:0) + 1
+	 * bit 15:14 -  BOM ID(1:0)
+	 * bit 13:8  -  BOARD ID(5:0)
+	 */
+	bom_id = ((port & 0xC000) >> 14) | ((port & 0x0001) << 2);
+	fab_id = ((port & 0x0006) >> 1) + 1;
+	board_id = (port & 0x3F00) >> 8;
+#else
 	if (ioexpander_read_intelrvp_version(&port0, &port1))
 		return -1;
 	/*
@@ -490,12 +535,19 @@ __override int board_get_version(void)
 	fab_id = ((port0 & 0x06) >> 1) + 1;
 	board_id = port1 & 0x3F;
 
+#endif /* CONFIG_ZEPHYR */
+
 	CPRINTS("BID:0x%x, FID:0x%x, BOM:0x%x", board_id, fab_id, bom_id);
 
 	adlrvp_board_id = board_id | (fab_id << 8);
 	return adlrvp_board_id;
 }
 
+/*
+ * Disabled for Zephyr Build to compile successfully.
+ * This will be enabled in another CL: crrev/c/3486204
+ */
+#ifndef CONFIG_ZEPHYR
 __override bool board_is_tbt_usb4_port(int port)
 {
 	bool tbt_usb4 = true;
@@ -540,3 +592,4 @@ __override void board_pre_task_i2c_peripheral_init(void)
 	/* Configure board specific retimer & mux */
 	configure_retimer_usbmux();
 }
+#endif /* CONFIG_ZEPHYR */
