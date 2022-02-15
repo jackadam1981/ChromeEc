@@ -16,6 +16,69 @@
       "message": "So here is a first cut at a purely Zephyr gpioget/gpioset.\nCouple of items:\n\n - Naming and placement of files is a little arbitary since I didn\u0027t know where this really belonged.\n - The other CLs in the series shows the application to the test code and also to lazor.\n - The lazor names were generated using the ec/util/dt-gpionames utility.\n - Functionality should be close (enough?) to the existing commands that it could replace it now.",
       "revId": "c26aa59ebb417d7ffb8473dd1dd5568207780130",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "68c62918_9e12361f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-02-15T15:48:16Z",
+      "side": 1,
+      "message": "I like this approach of finding nodes with the \"gpio-line-names\" property.  But this should be submitted upstream.\n\nThe natural location is drivers/gpio/gpio_shell.c",
+      "revId": "c26aa59ebb417d7ffb8473dd1dd5568207780130",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26f1d72d_b9c85481",
+        "filename": "zephyr/app/shell/Kconfig",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-02-15T15:48:16Z",
+      "side": 1,
+      "message": "This should be GPIO_SHELL to match the upstream convention.",
+      "range": {
+        "startLine": 5,
+        "startChar": 7,
+        "endLine": 5,
+        "endChar": 30
+      },
+      "revId": "c26aa59ebb417d7ffb8473dd1dd5568207780130",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4876c4d7_dd3f9dcf",
+        "filename": "zephyr/app/shell/shell_gpio.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-02-15T15:48:16Z",
+      "side": 1,
+      "message": "This should be organized as a single root command \"gpio\" with two sub commands.",
+      "range": {
+        "startLine": 247,
+        "startChar": 0,
+        "endLine": 249,
+        "endChar": 0
+      },
+      "revId": "c26aa59ebb417d7ffb8473dd1dd5568207780130",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
