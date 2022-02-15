@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2435c19f_33ff2855",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 16
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-02-15T21:33:28Z",
+      "side": 1,
+      "message": "seeing build failure in new cbi_eeprom.c on builder.\nshould we have had a Cq-Depend?\n\n/mnt/host/source/src/platform/ec/zephyr/shim/src/cbi_eeprom.c: In function \u0027cbi_latch_eeprom_wp\u0027:\n/mnt/host/source/src/platform/ec/zephyr/shim/src/cbi_eeprom.c:18:24: error: \u0027GPIO_EC_CBI_WP\u0027 undeclared (first use in this function)\n   18 |         gpio_set_level(GPIO_EC_CBI_WP, 1);\n      |                        ^~~~~~~~~~~~~~\n/mnt/host/source/src/platform/ec/zephyr/shim/src/cbi_eeprom.c:18:24: note: each undeclared identifier is reported only once for each function it appears in\n\nhttps://ci.chromium.org/ui/p/chromeos/builders/cq/firmware-zephyr-cq/b8822135030418326225/overview",
+      "revId": "31ae529b9b5f3923c430c0a3f128621915931f59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
