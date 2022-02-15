@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "51e84799_449e29f8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-02-15T21:31:16Z",
+      "side": 1,
+      "message": "um... build failure seems to be in cbi_eeprom.c, a new file added with\n\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3405040\n",
+      "revId": "7fd07ba4f878dad51824ea2e778a34b1e7c160b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
