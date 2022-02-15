@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e921b6b0_5790dd54",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_adlp_pwrseq_sm.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2022-02-15T03:01:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a589e16_51d0c102",
+      "range": {
+        "startLine": 120,
+        "startChar": 21,
+        "endLine": 120,
+        "endChar": 40
+      },
+      "revId": "95db4a1a6d7a07e84577d43664d9941796d1da92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "37ecb51f_58903a5b",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-02-11T05:57:17Z",
       "side": 1,
       "message": "Should be chip_cfg?",
+      "range": {
+        "startLine": 127,
+        "startChar": 2,
+        "endLine": 128,
+        "endChar": 41
+      },
+      "revId": "95db4a1a6d7a07e84577d43664d9941796d1da92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d1dda86_1b76a3dd",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_adlp_pwrseq_sm.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2022-02-15T03:01:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "37ecb51f_58903a5b",
       "range": {
         "startLine": 127,
         "startChar": 2,
