@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e69df977_7108b7a8",
+        "filename": "docs/zephyr/zephyr_motionsense.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-02-15T22:31:23Z",
+      "side": 1,
+      "message": "Also add a section detailing the `ectool motionsense` command run from the kernel root shell. \"ectool motionsense lid_angle\" is especially helpful in checking the accelerometer rotation matrices.",
+      "revId": "9a5ce0e391c93b14d1e10308fc12f79c85ff065a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
