@@ -34,6 +34,40 @@
       "parentUuid": "ee0c1852_5ee152d7",
       "revId": "b74ac5d7bae36b2f742a64e638b94ff9041b9276",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35ec6e9a_49274e33",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2022-02-15T05:56:43Z",
+      "side": 1,
+      "message": "remove this `if` since there\u0027s already a ifdef outside.",
+      "revId": "b74ac5d7bae36b2f742a64e638b94ff9041b9276",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "688f163c_9f09703c",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2022-02-15T05:56:43Z",
+      "side": 1,
+      "message": "This function writes ATIME in line 134, any reason to read it back again?",
+      "revId": "b74ac5d7bae36b2f742a64e638b94ff9041b9276",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
