@@ -18,3 +18,7 @@ if(DEFINED CONFIG_BOARD_MTLRVP_NPCX)
   add_subdirectory(mtlrvp)
   zephyr_library_sources("src/intelrvp.c")
 endif()
+
+if(DEFINED CONFIG_PLATFORM_EC_IOEX_CROS_DRV)
+	zephyr_include_directories("${PLATFORM_EC}/driver/ioexpander")
+endif()
