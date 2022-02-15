@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "37f2f95c_0d651256",
+        "filename": "zephyr/emul/emul_isl923x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2022-02-15T22:25:39Z",
+      "side": 1,
+      "message": "Is this TODO comment meant to be here? Also, adding support for more registers should probably go in a separate CL since this one about the reset functionality.",
+      "revId": "2a49d9662ef1ac5f4b8b8b8064a37191cf8f8dd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bce15c2e_eb7ab205",
+        "filename": "zephyr/emul/emul_isl923x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2022-02-15T22:25:39Z",
+      "side": 1,
+      "message": "What\u0027s your rationale for gating certain registers with config flags? Personally I think that if this chip supports this register it should be present all the time, or at least provide a more specific error message like an __ASSERT(false, \"Charge ramp HW not configured\") if that register is accessed while that config flag is not set.",
+      "range": {
+        "startLine": 278,
+        "startChar": 0,
+        "endLine": 278,
+        "endChar": 28
+      },
+      "revId": "2a49d9662ef1ac5f4b8b8b8064a37191cf8f8dd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
