@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54b8b854_c25938a7",
+        "filename": "zephyr/projects/nissa/nivviks_common_power.dts",
+        "patchSetId": 20
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-02-15T10:45:54Z",
+      "side": 1,
+      "message": "I think this is a pull-up pin, so the flags should be GPIO_PULL_UP",
+      "revId": "713b799c9999ed8d561e8cec0f986f4f49b055fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "efef2557_cf705f48",
+        "filename": "zephyr/projects/nissa/nivviks_common_power.dts",
+        "patchSetId": 20
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-02-15T10:45:54Z",
+      "side": 1,
+      "message": "I think this is an open-drain pin, so the flags should have GPIO_OPEN_DRAIN\nI\u0027m not sure if the code that configures this adds this flag, but\ngenerally the physical pin flags should be set here.",
+      "revId": "713b799c9999ed8d561e8cec0f986f4f49b055fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "37f362c3_3b9f7209",
+        "filename": "zephyr/projects/nissa/nivviks_common_power.dts",
+        "patchSetId": 20
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-02-15T10:45:54Z",
+      "side": 1,
+      "message": "Open drain pin.",
+      "revId": "713b799c9999ed8d561e8cec0f986f4f49b055fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ee140c5_c111630e",
+        "filename": "zephyr/projects/nissa/nivviks_common_power.dts",
+        "patchSetId": 20
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-02-15T10:45:54Z",
+      "side": 1,
+      "message": "Open drain pin.",
+      "revId": "713b799c9999ed8d561e8cec0f986f4f49b055fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
