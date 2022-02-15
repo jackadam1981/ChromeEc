@@ -22,6 +22,30 @@
       },
       "revId": "120ad4331e78e26728ceb123a76e08187725f92a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd3799cc_a4bc0915",
+        "filename": "baseboard/brya/cbi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2022-02-15T03:11:06Z",
+      "side": 1,
+      "message": "Both they are OK for me. I just follow the board_init_fw_config to create the entry. There are not order dependency between them I think.",
+      "parentUuid": "492986d5_af7fe44e",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 13
+      },
+      "revId": "120ad4331e78e26728ceb123a76e08187725f92a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
