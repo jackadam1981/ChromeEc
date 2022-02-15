@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "4fff27d6_1bff361f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 13
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-02-15T17:14:04Z",
+      "side": 1,
+      "message": "please add unit tests",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 4
+      },
+      "revId": "bcf9296e136cdf50aec00bed7a7bfaefe6c3f639",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "d93cdf7e_cd0931b6",
@@ -14,6 +37,322 @@
       "writtenOn": "2022-02-15T16:25:05Z",
       "side": 1,
       "message": "ping.",
+      "revId": "bcf9296e136cdf50aec00bed7a7bfaefe6c3f639",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57599235_28959439",
+        "filename": "common/rgb_keyboard.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-02-15T17:14:04Z",
+      "side": 1,
+      "message": "2022",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "bcf9296e136cdf50aec00bed7a7bfaefe6c3f639",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8da9e39e_3075a228",
+        "filename": "common/rgb_keyboard.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-02-15T17:14:04Z",
+      "side": 1,
+      "message": "please make this an explicit config option in config.h\n\nCONFIG_RGB_KEYBOARD_DEBUG",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 12
+      },
+      "revId": "bcf9296e136cdf50aec00bed7a7bfaefe6c3f639",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "206eab51_2fb7407b",
+        "filename": "common/rgb_keyboard.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-02-15T17:14:04Z",
+      "side": 1,
+      "message": "Identifiers beginning with underscore are reserved (C Standard, 7.1.3 [ISO/IEC 9899:2011]). Please remove the underscore.",
+      "range": {
+        "startLine": 28,
+        "startChar": 11,
+        "endLine": 28,
+        "endChar": 12
+      },
+      "revId": "bcf9296e136cdf50aec00bed7a7bfaefe6c3f639",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "47de5a12_281a980d",
+        "filename": "common/rgb_keyboard.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-02-15T17:14:04Z",
+      "side": 1,
+      "message": "nit: this would structure well as a for loop",
+      "range": {
+        "startLine": 37,
+        "startChar": 2,
+        "endLine": 37,
+        "endChar": 8
+      },
+      "revId": "bcf9296e136cdf50aec00bed7a7bfaefe6c3f639",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "714961c5_d5e372bf",
+        "filename": "common/rgb_keyboard.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-02-15T17:14:04Z",
+      "side": 1,
+      "message": "braces should be used even when not explicitly required to assist with upstreaming this driver to Zephyr",
+      "range": {
+        "startLine": 38,
+        "startChar": 2,
+        "endLine": 39,
+        "endChar": 28
+      },
+      "revId": "bcf9296e136cdf50aec00bed7a7bfaefe6c3f639",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7d1ae5d_1fe85ea2",
+        "filename": "common/rgb_keyboard.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-02-15T17:14:04Z",
+      "side": 1,
+      "message": "use braces even where not explicitly required",
+      "range": {
+        "startLine": 75,
+        "startChar": 2,
+        "endLine": 75,
+        "endChar": 19
+      },
+      "revId": "bcf9296e136cdf50aec00bed7a7bfaefe6c3f639",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88c7b48d_656b5b85",
+        "filename": "common/rgb_keyboard.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-02-15T17:14:04Z",
+      "side": 1,
+      "message": "this should explicitly be toggled by a config option, as the gpios may be enumerations if defined from gpio.inc or from zephyr devicetree",
+      "range": {
+        "startLine": 156,
+        "startChar": 0,
+        "endLine": 156,
+        "endChar": 24
+      },
+      "revId": "bcf9296e136cdf50aec00bed7a7bfaefe6c3f639",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "003a17ef_b12ae016",
+        "filename": "driver/led/is31fl3743b.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-02-15T17:14:04Z",
+      "side": 1,
+      "message": "should use CONFIG_RGB_KEYBOARD_DEBUG as well",
+      "revId": "bcf9296e136cdf50aec00bed7a7bfaefe6c3f639",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8f7c51b_9d391fd8",
+        "filename": "include/rgb_keyboard.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-02-15T17:14:04Z",
+      "side": 1,
+      "message": "use pointy brackets as it\u0027s a standard library header\n\nshould precede the EC includes separated by an empty line",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 20
+      },
+      "revId": "bcf9296e136cdf50aec00bed7a7bfaefe6c3f639",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a3000ae_f84e50e2",
+        "filename": "include/rgb_keyboard.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-02-15T17:14:04Z",
+      "side": 1,
+      "message": "imo, `sizeof(struct rgb_s)` is far more readable",
+      "range": {
+        "startLine": 10,
+        "startChar": 27,
+        "endLine": 10,
+        "endChar": 42
+      },
+      "revId": "bcf9296e136cdf50aec00bed7a7bfaefe6c3f639",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65bf708d_1949a43b",
+        "filename": "zephyr/Kconfig.keyboard",
+        "patchSetId": 13
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-02-15T17:14:04Z",
+      "side": 1,
+      "message": "also needs added to cmakelists.txt",
+      "range": {
+        "startLine": 186,
+        "startChar": 11,
+        "endLine": 186,
+        "endChar": 35
+      },
+      "revId": "bcf9296e136cdf50aec00bed7a7bfaefe6c3f639",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cce37df7_ba0e42ed",
+        "filename": "zephyr/Kconfig.keyboard",
+        "patchSetId": 13
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-02-15T17:14:04Z",
+      "side": 1,
+      "message": "should this be a choice value?",
+      "range": {
+        "startLine": 199,
+        "startChar": 8,
+        "endLine": 199,
+        "endChar": 32
+      },
+      "revId": "bcf9296e136cdf50aec00bed7a7bfaefe6c3f639",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e67cab93_8ac1db58",
+        "filename": "zephyr/Kconfig.keyboard",
+        "patchSetId": 13
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-02-15T17:14:04Z",
+      "side": 1,
+      "message": "trailing space should be removed",
+      "range": {
+        "startLine": 200,
+        "startChar": 23,
+        "endLine": 200,
+        "endChar": 24
+      },
+      "revId": "bcf9296e136cdf50aec00bed7a7bfaefe6c3f639",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "adce8818_b325b0ff",
+        "filename": "zephyr/Kconfig.keyboard",
+        "patchSetId": 13
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-02-15T17:14:04Z",
+      "side": 1,
+      "message": "line terminator required at end of file",
+      "range": {
+        "startLine": 207,
+        "startChar": 31,
+        "endLine": 207,
+        "endChar": 32
+      },
       "revId": "bcf9296e136cdf50aec00bed7a7bfaefe6c3f639",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
