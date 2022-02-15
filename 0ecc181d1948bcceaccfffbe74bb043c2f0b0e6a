@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a4ed4f5_9936cb5a",
+        "filename": "board/volteer/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-02-15T15:55:59Z",
+      "side": 1,
+      "message": "CONFIG_CMD_IDLE_STATS",
+      "revId": "0ecc181d1948bcceaccfffbe74bb043c2f0b0e6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "139404f2_96448b82",
+        "filename": "board/volteer/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-02-15T15:55:59Z",
+      "side": 1,
+      "message": "Can you add this command to the reducing_ec_image_size.md doc?",
+      "range": {
+        "startLine": 172,
+        "startChar": 7,
+        "endLine": 172,
+        "endChar": 30
+      },
+      "revId": "0ecc181d1948bcceaccfffbe74bb043c2f0b0e6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
