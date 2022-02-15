@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04607144_ffa803fc",
+        "filename": "board/volmar/i2c.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-02-15T19:22:18Z",
+      "side": 0,
+      "message": "this i2c port is going to the ps8815, right?\nDYNAMIC_SPEED is needed for TCPC firmware update.",
+      "revId": "d059ea64ba23dff66392677367cf70c26e20cf6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
