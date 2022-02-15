@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8aab3eb5_0349c589",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-02-15T16:28:14Z",
+      "side": 1,
+      "message": "Thanks for putting this together!  I\u0027d suggest you break it into two stages: one to add the new zephyr battery, the other to use it in our skyrim project",
+      "revId": "afc7e9a063c9de02f405f9183f7a6b7cdf79ec87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "790aa24a_8d10eecf",
+        "filename": "zephyr/dts/bindings/battery/battery-smart.yaml",
+        "patchSetId": 4
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-02-15T16:28:14Z",
+      "side": 1,
+      "message": "Please merge these cleanly",
+      "revId": "afc7e9a063c9de02f405f9183f7a6b7cdf79ec87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29caa09c_bc89a588",
+        "filename": "zephyr/projects/skyrim/battery.dts",
+        "patchSetId": 4
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-02-15T16:28:14Z",
+      "side": 1,
+      "message": "Please keep the old guybrush battery in the DTS file as well.  I imagine it\u0027ll be at least another board phase before we drop the guybrush support totally. \n\nYou should be able to have two batteries in this array, and we\u0027ll pick the right one on boot based on the battery\u0027s manufacturer and device name.",
+      "revId": "afc7e9a063c9de02f405f9183f7a6b7cdf79ec87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
