@@ -74,6 +74,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "74eb98dc_98907c22",
+        "filename": "zephyr/projects/nissa/prj_nivviks.conf",
+        "patchSetId": 23
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2022-02-16T23:05:48Z",
+      "side": 1,
+      "message": "I have been giving further thoughts to this, since all the signals handled in this file are platform dependent, would it be better to have them inside file zephyr/project/nissa/src/common_pwrseq.c? this way we can avoid extra CONFIGS. I have made quick test, just a few changes required, just CMakeFile\u0027s.",
+      "parentUuid": "479caa25_1da9bf23",
+      "revId": "9940b2245de6672a5f49bd108f036d43c8099301",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "32181ece_1c3fd9f5",
         "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_adlp_nonpwrseq_sm.c",
         "patchSetId": 23
