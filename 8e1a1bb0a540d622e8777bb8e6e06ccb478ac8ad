@@ -33,6 +33,24 @@
       "message": "Hi Chen-Tsung,\n\nCould you help to check why CQ keeps failing on building this change since I cannot access to the link?\n\nThanks!",
       "revId": "8e1a1bb0a540d622e8777bb8e6e06ccb478ac8ad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "55a33998_8d2762fc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1381658
+      },
+      "writtenOn": "2022-02-16T15:05:22Z",
+      "side": 1,
+      "message": "Please repo sync the latest code and build dojo ec, then you can reproduce the build failure.\n```\ncommon/keyboard_backlight.c: In function \u0027kblight_enable\u0027:\ncommon/keyboard_backlight.c:61:24: error: \u0027GPIO_EN_KEYBOARD_BACKLIGHT\u0027 undeclared (first use in this function); did you mean \u0027CONFIG_KEYBOARD_BACKLIGHT\u0027?\n   61 |         gpio_set_level(GPIO_EN_KEYBOARD_BACKLIGHT, enable);\n      |                        ^~~~~~~~~~~~~~~~~~~~~~~~~~\n      |                        CONFIG_KEYBOARD_BACKLIGHT\ncommon/keyboard_backlight.c:61:24: note: each undeclared identifier is reported only once for each function it appears in\ncommon/keyboard_backlight.c: In function \u0027kblight_get_enabled\u0027:\ncommon/keyboard_backlight.c:71:29: error: \u0027GPIO_EN_KEYBOARD_BACKLIGHT\u0027 undeclared (first use in this function); did you mean \u0027CONFIG_KEYBOARD_BACKLIGHT\u0027?\n   71 |         if (!gpio_get_level(GPIO_EN_KEYBOARD_BACKLIGHT))\n      |                             ^~~~~~~~~~~~~~~~~~~~~~~~~~\n      |                             CONFIG_KEYBOARD_BACKLIGHT\nmake[2]: *** [Makefile.rules:604: build/dojo/RW/common/keyboard_backlight.o] Error 1\nmake[1]: *** [Makefile.rules:277: proj-dojo] Error 2\n```",
+      "parentUuid": "abe13cc2_b128e5fe",
+      "revId": "8e1a1bb0a540d622e8777bb8e6e06ccb478ac8ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
