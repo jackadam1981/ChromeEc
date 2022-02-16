@@ -16,6 +16,24 @@
       "message": "i don\u0027t really understand this.  cros lint does a lot more than run pylint, and even pylint does a lot more than just what black covers.  pretty sure there\u0027s only a few format related directives you\u0027d need to disable in pylintrc.",
       "revId": "2883a798262703a28f1e707e9ae0aceea884d173",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a1630d3e_a20a07f9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-02-16T16:00:51Z",
+      "side": 1,
+      "message": "Jeremy added a pylintrc file.\n\nI think all that remains is to verify `git ls-files -z | xargs -0 cros lint` passes before this can be resubmitted.",
+      "parentUuid": "a917b2af_9524ee3b",
+      "revId": "2883a798262703a28f1e707e9ae0aceea884d173",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
