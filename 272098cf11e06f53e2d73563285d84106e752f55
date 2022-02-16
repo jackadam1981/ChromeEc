@@ -33,6 +33,24 @@
       "message": "Is there a zephyr version of cflush?",
       "revId": "272098cf11e06f53e2d73563285d84106e752f55",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd6a2859_9b4c6653",
+        "filename": "zephyr/projects/nissa/src/nereid/board_config.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-02-16T03:42:59Z",
+      "side": 1,
+      "message": "log_panic() seems like it would work- it tells log backends to stop buffering (emitting messages synchronously) and flushes all pending messages.",
+      "parentUuid": "9380ee82_89adf086",
+      "revId": "272098cf11e06f53e2d73563285d84106e752f55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
