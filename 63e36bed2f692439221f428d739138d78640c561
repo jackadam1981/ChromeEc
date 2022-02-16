@@ -22,6 +22,30 @@
       },
       "revId": "63e36bed2f692439221f428d739138d78640c561",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e5adfe13_d7f9d7cb",
+        "filename": "board/redrix/cbi_ssfc.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2022-02-16T02:25:14Z",
+      "side": 1,
+      "message": "I am not sure the SSFC should be added in config.star.",
+      "parentUuid": "29ad3fe1_52fa0bb8",
+      "range": {
+        "startLine": 24,
+        "startChar": 6,
+        "endLine": 24,
+        "endChar": 21
+      },
+      "revId": "63e36bed2f692439221f428d739138d78640c561",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
