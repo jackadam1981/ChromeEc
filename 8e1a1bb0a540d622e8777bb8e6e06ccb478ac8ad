@@ -51,6 +51,29 @@
       "parentUuid": "abe13cc2_b128e5fe",
       "revId": "8e1a1bb0a540d622e8777bb8e6e06ccb478ac8ad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52cbbae5_ac275fdb",
+        "filename": "board/dojo/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1381658
+      },
+      "writtenOn": "2022-02-16T15:11:46Z",
+      "side": 1,
+      "message": "Seems we have to define or remove both CONFIG_KBLIGHT_ENABLE_PIN and GPIO_EN_KEYBOARD_BACKLIGHT together.",
+      "range": {
+        "startLine": 39,
+        "startChar": 8,
+        "endLine": 39,
+        "endChar": 33
+      },
+      "revId": "8e1a1bb0a540d622e8777bb8e6e06ccb478ac8ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
