@@ -619,6 +619,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "321af26b_e3e05c8e",
+        "filename": "zephyr/Kconfig.keyboard",
+        "patchSetId": 13
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-02-16T16:51:53Z",
+      "side": 1,
+      "message": "I would say make it a choice now, and if you want to remove the demos later, you can remove the choice then too.",
+      "parentUuid": "7b3ca99e_e1ffe583",
+      "range": {
+        "startLine": 199,
+        "startChar": 8,
+        "endLine": 199,
+        "endChar": 32
+      },
+      "revId": "bcf9296e136cdf50aec00bed7a7bfaefe6c3f639",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e67cab93_8ac1db58",
         "filename": "zephyr/Kconfig.keyboard",
         "patchSetId": 13

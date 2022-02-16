@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "014c2260_ba4da0dd",
+        "filename": "common/rgb_keyboard.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-02-16T16:51:53Z",
+      "side": 1,
+      "message": "this console command could use tests as well",
+      "range": {
+        "startLine": 282,
+        "startChar": 0,
+        "endLine": 282,
+        "endChar": 38
+      },
+      "revId": "6f32994e7b1c50b66f9e98c537149ddd659959ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aada5628_c536ddbd",
+        "filename": "driver/led/is31fl3743b.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-02-16T16:51:53Z",
+      "side": 1,
+      "message": "this driver could use test coverage as well\n\nsee zephyr/tests/drivers for a test framework that uses emulation-based driver tests",
+      "range": {
+        "startLine": 36,
+        "startChar": 7,
+        "endLine": 36,
+        "endChar": 22
+      },
+      "revId": "6f32994e7b1c50b66f9e98c537149ddd659959ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
