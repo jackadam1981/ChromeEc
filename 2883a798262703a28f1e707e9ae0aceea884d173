@@ -52,6 +52,24 @@
       "parentUuid": "a1630d3e_a20a07f9",
       "revId": "2883a798262703a28f1e707e9ae0aceea884d173",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5bc3b49_632e1be4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-02-16T21:08:38Z",
+      "side": 1,
+      "message": "The C files should be solved by the CPPLINT.cfg in this CL.\n\nThe other issues (Python files) should be resolved before submitting.",
+      "parentUuid": "8108cfd3_1abe48e6",
+      "revId": "2883a798262703a28f1e707e9ae0aceea884d173",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
