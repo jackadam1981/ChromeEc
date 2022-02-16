@@ -22,7 +22,8 @@ is not compatible with your EC checkout.
 You can build zephyr with:
 
 ```bash
-emerge-volteer chromeos-zephyr
+setup_board -b brya
+emerge-brya chromeos-zephyr
 ```
 
 For local development you can run zmake directly; see instruction below.
@@ -114,13 +115,13 @@ a rough guide.
 First configure the build with the project you want:
 
 ```bash
-zmake configure -B /tmp/z/vol volteer
+zmake configure -B /tmp/z brya
 ```
 
 Then build with just the target directory:
 
 ```
-zmake build /tmp/z/vol
+zmake build /tmp/z/brya
 ```
 
 The output is in that directory:
