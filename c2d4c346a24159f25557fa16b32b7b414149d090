@@ -234,6 +234,30 @@
       },
       "revId": "c2d4c346a24159f25557fa16b32b7b414149d090",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "33073606_a6f0c33d",
+        "filename": "zephyr/zmake/zmake/zmake.py",
+        "patchSetId": 10
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-02-16T18:35:06Z",
+      "side": 1,
+      "message": "Make sure to add a CQ-Depend onto chromium:3462900 for this CL",
+      "parentUuid": "6b2eb391_48326c5b",
+      "range": {
+        "startLine": 251,
+        "startChar": 32,
+        "endLine": 251,
+        "endChar": 85
+      },
+      "revId": "c2d4c346a24159f25557fa16b32b7b414149d090",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
