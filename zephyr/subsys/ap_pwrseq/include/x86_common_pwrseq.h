@@ -9,6 +9,7 @@
 #include <power_signals.h>
 #include <x86_power_signals.h>
 #include <logging/log.h>
+#include <zephyr_hooks_common.h>
 
 /**
  * @brief System power states for Non Deep Sleep Well
@@ -83,4 +84,5 @@ struct pwrseq_context {
 #endif
 
 };
+
 #endif /* __X86_COMMON_PWRSEQ_H__ */
