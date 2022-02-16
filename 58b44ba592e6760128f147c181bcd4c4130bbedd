@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d4a6f4d_31800286",
+        "filename": "zephyr/projects/nissa/nivviks_generated.dts",
+        "patchSetId": 21
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2022-02-16T01:45:12Z",
+      "side": 1,
+      "message": "Right, I see there is a CL:3463101, we can rebase once it gets merged.",
+      "parentUuid": "c189e3b8_ecf1857a",
+      "revId": "58b44ba592e6760128f147c181bcd4c4130bbedd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0a7a042f_33d741b9",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-02-15T23:44:27Z",
       "side": 1,
       "message": "This is not needed, see CL:3461049",
+      "revId": "58b44ba592e6760128f147c181bcd4c4130bbedd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e22414ca_b4b0e24d",
+        "filename": "zephyr/projects/nissa/nivviks_generated.dts",
+        "patchSetId": 21
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2022-02-16T01:45:12Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0a7a042f_33d741b9",
       "revId": "58b44ba592e6760128f147c181bcd4c4130bbedd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
