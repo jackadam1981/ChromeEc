@@ -10,6 +10,7 @@
 #include <drivers/gpio.h>
 #include <logging/log.h>
 #include <x86_power_signals.h>
+#include <zephyr_hooks_common.h>
 
 /**
  * @brief System power states for Non Deep Sleep Well
@@ -111,5 +112,7 @@ struct power_signal_info {
 		enum espi_vwire_signal vw_signal; /* ESPI VW signal */
 	};
 };
+
+extern void hook_notify(enum hook_type type);
 
 #endif /* __X86_COMMON_PWRSEQ_H__ */
