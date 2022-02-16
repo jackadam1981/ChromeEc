@@ -853,7 +853,7 @@ void system_pre_init(void)
 	 */
 
 	/* Power-down the modules we don't need */
-	NPCX_PWDWN_CTL(NPCX_PMC_PWDWN_1) = 0xF9; /* Skip SDP_PD FIU_PD */
+	NPCX_PWDWN_CTL(NPCX_PMC_PWDWN_1) = 0xFB; /* Skip FIU_PD */
 	NPCX_PWDWN_CTL(NPCX_PMC_PWDWN_2) = 0xFF;
 #if defined(CHIP_FAMILY_NPCX5)
 	NPCX_PWDWN_CTL(NPCX_PMC_PWDWN_3) = 0x0F; /* Skip GDMA */
@@ -888,6 +888,7 @@ void system_pre_init(void)
 #endif
 #if NPCX_FAMILY_VERSION >= NPCX_FAMILY_NPCX9
 	NPCX_PWDWN_CTL(NPCX_PMC_PWDWN_7) = 0xFF;
+	NPCX_PWDWN_CTL(NPCX_PMC_PWDWN_8) = 0x31;
 #endif
 
 	/* Following modules can be powered down automatically in npcx7 */
