@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "744fc569_e97aac3c",
+        "filename": "chip/npcx/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 891,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-02-16T19:23:43Z",
+      "side": 1,
+      "message": "could you add a comment listing the affected module names?\ni see I3C in the datasheets, but what are the 0x30 bits.\n\nit would be helpful to tag the other NPCX_PMC_PWDWN_*\nregisters as well, if practical.",
+      "range": {
+        "startLine": 891,
+        "startChar": 40,
+        "endLine": 891,
+        "endChar": 41
+      },
+      "revId": "d56b399e6292ace8215704a74da3f23ef531b339",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
