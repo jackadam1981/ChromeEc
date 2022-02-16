@@ -69,6 +69,29 @@
       "parentUuid": "0a7a042f_33d741b9",
       "revId": "58b44ba592e6760128f147c181bcd4c4130bbedd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc9a7d81_d85b0e98",
+        "filename": "zephyr/projects/nissa/prj_nivviks.conf",
+        "patchSetId": 21
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2022-02-16T22:12:15Z",
+      "side": 1,
+      "message": "Please add X86_NON_DSX_PWRSEQ_CONSOLE to enable helper console commands.",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 16
+      },
+      "revId": "58b44ba592e6760128f147c181bcd4c4130bbedd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
