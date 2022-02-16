@@ -33,6 +33,24 @@
       "message": "build failure may have been a different patch which has already been reverted.\n\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3446945/",
       "revId": "31ae529b9b5f3923c430c0a3f128621915931f59",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee4b25e9_140d6a67",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 16
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2022-02-16T07:45:30Z",
+      "side": 1,
+      "message": "No, the build failure is not related to this CL. ATM, GPIO_EC_CBI_WP enum is used by the skyrim board https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/projects/skyrim/prj_skyrim.conf;l\u003d9.",
+      "parentUuid": "2435c19f_33ff2855",
+      "revId": "31ae529b9b5f3923c430c0a3f128621915931f59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
