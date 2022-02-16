@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7fcf2113_80c2e46e",
+        "filename": "zephyr/projects/nissa/src/common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-02-16T03:24:17Z",
+      "side": 1,
+      "message": "Even though this is common, it\u0027s small enough that I think it would\nbenefit being next to the board level functions for board_hibernate()\nIt would make it obvious what the hibernate functions do and how they relate\nto each other.",
+      "revId": "272098cf11e06f53e2d73563285d84106e752f55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9380ee82_89adf086",
+        "filename": "zephyr/projects/nissa/src/nereid/board_config.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-02-16T03:24:17Z",
+      "side": 1,
+      "message": "Is there a zephyr version of cflush?",
+      "revId": "272098cf11e06f53e2d73563285d84106e752f55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
