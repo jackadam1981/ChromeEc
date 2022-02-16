@@ -46,6 +46,53 @@
       },
       "revId": "120ad4331e78e26728ceb123a76e08187725f92a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46dc48cf_5e933ef3",
+        "filename": "baseboard/brya/cbi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-02-16T01:45:30Z",
+      "side": 1,
+      "message": "please add the corresponding prototype to baseboard.h",
+      "range": {
+        "startLine": 31,
+        "startChar": 19,
+        "endLine": 31,
+        "endChar": 34
+      },
+      "revId": "120ad4331e78e26728ceb123a76e08187725f92a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "de875a96_ccf9f4df",
+        "filename": "baseboard/brya/cbi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-02-16T01:45:30Z",
+      "side": 1,
+      "message": "ok, had a 2nd look at volteer. i think we\u0027re trying to give\nvariants full control over how to interpret CBI data, so it\nmakes more sense to implement that in the board override code\nthan in baseboard code which is what volteer does.",
+      "parentUuid": "dd3799cc_a4bc0915",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 13
+      },
+      "revId": "120ad4331e78e26728ceb123a76e08187725f92a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
