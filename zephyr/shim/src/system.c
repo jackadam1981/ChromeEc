@@ -7,6 +7,7 @@
 #include <drivers/bbram.h>
 #include <drivers/cros_system.h>
 #include <logging/log.h>
+#include <logging/log_ctrl.h>
 
 #include "common.h"
 #include "console.h"
@@ -135,8 +136,8 @@ void system_hibernate(uint32_t seconds, uint32_t microseconds)
 	const struct device *sys_dev = device_get_binding("CROS_SYSTEM");
 	int err;
 
-	/* Flush console before hibernating */
-	cflush();
+	/* Flush logs and stop buffering: power off is imminent */
+	log_panic();
 
 	if (board_hibernate)
 		board_hibernate();
