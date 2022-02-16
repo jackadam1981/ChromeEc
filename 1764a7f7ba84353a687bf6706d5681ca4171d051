@@ -16,6 +16,24 @@
       "message": "does theses flag need timeout?\n\ne.g. clear is_resetting if the signal state didn\u0027t back to S0 in 10 seconds.",
       "revId": "1764a7f7ba84353a687bf6706d5681ca4171d051",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c04e182_ddd979b4",
+        "filename": "power/mt8186.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2022-02-16T07:58:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7fd2425a_72fd50b2",
+      "revId": "1764a7f7ba84353a687bf6706d5681ca4171d051",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
