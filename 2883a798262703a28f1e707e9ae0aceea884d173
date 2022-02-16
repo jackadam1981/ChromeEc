@@ -34,6 +34,24 @@
       "parentUuid": "a917b2af_9524ee3b",
       "revId": "2883a798262703a28f1e707e9ae0aceea884d173",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8108cfd3_1abe48e6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-02-16T17:20:02Z",
+      "side": 1,
+      "message": "When I run that command, it fails on 111 files.\n\nThe problems fall into:\n\n* In C files\n- C99 // comments are expected by cros lint, but not allowed in platform/ec\n- Tabs are required in platform/ec, but cros lint says use spaces.\n- { on end of line, platform/ec requires { on start of next line.\n- Lots of `Include the directory when naming .h files`. Maybe we should do that, I don\u0027t know.\n- readability/multiline_comment encourages disallowed C99 comments.\n- cros lint suggests using reinterpret_cast\u003c\u003e in a C header\n* In BUILD.py files\n- Undefined variables: here, register_host_project etc. Those should be extra builtins, probably we need a .pylintrc in zephyr/projects\n* Other non-zmake python files\n- There are many problems in the other python files. I don\u0027t know if it would be better to run black on those and use the same .pylintrc as zmake, or just fix them to make pylint happy. Running black seems easier.",
+      "parentUuid": "a1630d3e_a20a07f9",
+      "revId": "2883a798262703a28f1e707e9ae0aceea884d173",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
