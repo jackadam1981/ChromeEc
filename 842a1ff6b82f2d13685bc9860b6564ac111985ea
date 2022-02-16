@@ -92,6 +92,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5b5aa134_fbc08a7f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2022-02-16T17:44:35Z",
+      "side": 1,
+      "message": "How about we land this change and open a bug for deprecating the legacy version?",
+      "parentUuid": "38d7f9d4_a2fd71b3",
+      "revId": "842a1ff6b82f2d13685bc9860b6564ac111985ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "dfc97113_e163dffa",
         "filename": "zephyr/zmake/tests/test_version.py",
         "patchSetId": 2
