@@ -53,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8af9049e_3a31c9a9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-02-16T21:07:54Z",
+      "side": 1,
+      "message": "Because you\u0027re adding new functionality, which is controlled by a Kconfig option, I don\u0027t think submitting a request for comment (RFC) or a full on proposal is needed.\n\nSo yes, submit a pull-request using your own github account. If you don\u0027t have a github account (or don\u0027t want to use your personal account), we were recommending people associate it with their google.com address.",
+      "parentUuid": "a41c6f1a_3a7e720f",
+      "revId": "c26aa59ebb417d7ffb8473dd1dd5568207780130",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "26f1d72d_b9c85481",
@@ -137,6 +155,30 @@
       "side": 1,
       "message": "There is an existing Zephyr shell \u0027gpio\u0027 command with get/set sub-commands, so I guess as part of the upstreaming I\u0027m going to have to figure out how to meld these two commands.\nAt this stage I just wanted to confirm I could replicate the existing\ncommands.",
       "parentUuid": "4876c4d7_dd3f9dcf",
+      "range": {
+        "startLine": 247,
+        "startChar": 0,
+        "endLine": 249,
+        "endChar": 0
+      },
+      "revId": "c26aa59ebb417d7ffb8473dd1dd5568207780130",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd2d48e3_6ef0fdf7",
+        "filename": "zephyr/app/shell/shell_gpio.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-02-16T21:07:54Z",
+      "side": 1,
+      "message": "I mistakenly though there wasn\u0027t an existing \"gpio\" shell command.\n\nHow about extended the gpio shell command with sub-commands \"setname\" and \"getname\"?",
+      "parentUuid": "7368f434_4a20adbd",
       "range": {
         "startLine": 247,
         "startChar": 0,
