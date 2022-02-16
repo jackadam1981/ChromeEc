@@ -176,6 +176,24 @@
       "parentUuid": "347fcf95_d7fa2fc6",
       "revId": "9940b2245de6672a5f49bd108f036d43c8099301",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30186717_8be84600",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_adlp_nonpwrseq_sm.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-02-16T02:55:27Z",
+      "side": 1,
+      "message": "Given we want this to eventually use function pointer callbacks instead of weak symbols, I think it\u0027s okay as-is until we have a better subsystem/driver division that permits registering these functions as callbacks.",
+      "parentUuid": "af128ef0_d18ff8eb",
+      "revId": "9940b2245de6672a5f49bd108f036d43c8099301",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
