@@ -9,6 +9,7 @@
 #include <power_signals.h>
 #include <x86_power_signals.h>
 #include <logging/log.h>
+#include <zephyr_hooks_common.h>
 
 /**
  * @brief System power states for Non Deep Sleep Well
@@ -79,4 +80,5 @@ struct pwrseq_context {
 	/* Indicate should exit G3 power state or not */
 	bool want_g3_exit;
 };
+
 #endif /* __X86_COMMON_PWRSEQ_H__ */

@@ -8,6 +8,7 @@ zephyr_library_sources(
 	signal_vw.c
 	signal_adc.c
 	)
+zephyr_include_directories("${PLATFORM_EC}/zephyr/shim/include")
 zephyr_sources_ifdef(CONFIG_X86_NON_DSX_PWRSEQ
 	x86_non_dsx_common_pwrseq_sm_handler.c)
 zephyr_sources_ifdef(CONFIG_X86_NON_DSX_PWRSEQ_CONSOLE
