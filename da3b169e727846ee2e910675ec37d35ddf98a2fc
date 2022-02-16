@@ -94,6 +94,30 @@
       },
       "revId": "da3b169e727846ee2e910675ec37d35ddf98a2fc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "244b088f_227cdd8f",
+        "filename": "driver/charger/isl9241.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-02-16T04:53:19Z",
+      "side": 1,
+      "message": "got it. what\u0027s confusing here is whether the _I_ values in isl9241.h\nare in mA or encoded register values. could you add a comment in\nisl9261.h for the 6 {INPUT,CHARGE}_I_{MIN,MAX,STEP}. something like:\n\n/*\n * When the default sense resistor value is used, register values\n * represent mA. For other sense resistors values, register\n * values must be scaled accordingly to convert to mA.\n */",
+      "parentUuid": "b915d6a9_18266df4",
+      "range": {
+        "startLine": 57,
+        "startChar": 2,
+        "endLine": 57,
+        "endChar": 13
+      },
+      "revId": "da3b169e727846ee2e910675ec37d35ddf98a2fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
