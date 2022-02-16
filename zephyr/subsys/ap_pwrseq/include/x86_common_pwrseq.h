@@ -10,6 +10,7 @@
 #include <drivers/gpio.h>
 #include <logging/log.h>
 #include <x86_power_signals.h>
+#include <zephyr_hooks_common.h>
 
 /**
  * @brief System power states for Non Deep Sleep Well
@@ -92,4 +93,7 @@ struct pwrseq_context {
 	/* Signal values which print debug output */
 	uint32_t in_debug;
 };
+
+extern void hook_notify(enum hook_type type);
+
 #endif /* __X86_COMMON_PWRSEQ_H__ */
