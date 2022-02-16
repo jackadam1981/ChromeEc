@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e110bc2b_3c5fb98a",
+        "filename": "board/taniks/board.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-02-16T02:26:37Z",
+      "side": 1,
+      "message": "You most likely want to put taniks changes in a separate CL.",
+      "revId": "1382d6ae518a7be7ba553b3ce8642a096be4ada2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b88c56e_4df507b2",
+        "filename": "include/keyboard_scan.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-02-16T02:26:37Z",
+      "side": 1,
+      "message": "How about ksi_threshold_mv?",
+      "range": {
+        "startLine": 37,
+        "startChar": 10,
+        "endLine": 37,
+        "endChar": 28
+      },
+      "revId": "1382d6ae518a7be7ba553b3ce8642a096be4ada2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
