@@ -22,7 +22,8 @@ is not compatible with your EC checkout.
 You can build zephyr with:
 
 ```bash
-emerge-volteer chromeos-zephyr
+setup_board -b brya
+emerge-brya chromeos-zephyr
 ```
 
 For local development you can run zmake directly; see instruction below.
@@ -114,23 +115,23 @@ a rough guide.
 First configure the build with the project(s) you want:
 
 ```bash
-zmake build -B /tmp/z volteer
+zmake build -B /tmp/z brya
 ```
 
 The output is in that directory:
 
-*   `volteer/output/zephyr.bin` - output binary (read-only and read-write packed
+*   `brya/output/zephyr.bin` - output binary (read-only and read-write packed
     together)
-*   `volteer/output/zephyr.ro.elf` - read-only ELF for debugging
-*   `volteer/output/zephyr.rw.elf` - read-write ELF for debugging
+*   `brya/output/zephyr.ro.elf` - read-only ELF for debugging
+*   `brya/output/zephyr.rw.elf` - read-write ELF for debugging
 
 You might also find these files useful (using read-only as an example):
 
-*   `volteer/build-ro/zephyr/.config` - Kconfig options selected
-*   `volteer/build-ro/zephyr/include/generated/devicetree_unfixed.h` - the (large)
+*   `brya/build-ro/zephyr/.config` - Kconfig options selected
+*   `brya/build-ro/zephyr/include/generated/devicetree_unfixed.h` - the (large)
     header file that zephyr uses to provide devicetree information to the C code
-*   `volteer/build-ro/zephyr/zephyr.dts` - devicetree that is used
-*   `volteer/build-ro/zephyr/zephyr.dts` - map of image
+*   `brya/build-ro/zephyr/zephyr.dts` - devicetree that is used
+*   `brya/build-ro/zephyr/zephyr.dts` - map of image
 
 Googlers may be interested in setting up [building with Goma](../goma.md)
 as well.
@@ -140,7 +141,7 @@ as well.
 It should be possible to do this with:
 
 ```bash
-ninja -C /tmp/z/volteer/build-ro menuconfig
+ninja -C /tmp/z/brya/build-ro menuconfig
 ```
 
 However at present this does not work [b/184662866](http://b/184662866).
