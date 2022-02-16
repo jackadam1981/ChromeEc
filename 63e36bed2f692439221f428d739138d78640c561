@@ -81,6 +81,30 @@
       },
       "revId": "63e36bed2f692439221f428d739138d78640c561",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3f8889d_9bc224c8",
+        "filename": "board/redrix/cbi_ssfc.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-02-16T03:20:49Z",
+      "side": 1,
+      "message": "OK, thanks, sounds like SSFC is tracked manually right now.\n\ncould you add a comment in the bug indicating that the\nSSFC is defined in this file? this will be important to\nknow when generating the CBI pre-flash image in the future.",
+      "parentUuid": "e5adfe13_d7f9d7cb",
+      "range": {
+        "startLine": 24,
+        "startChar": 6,
+        "endLine": 24,
+        "endChar": 21
+      },
+      "revId": "63e36bed2f692439221f428d739138d78640c561",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
