@@ -34,6 +34,24 @@
       "parentUuid": "046ef877_47cfeec8",
       "revId": "f0accb6b9c809bb18ca7f9d0c69fdf8527408678",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6b8d0e0_55aaae9a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-02-16T21:53:27Z",
+      "side": 1,
+      "message": "We should submit a PR adding a gpio_pin_get_config() API. This would be the opposite of gpio_pin_configure(). We had to do something similar for I2C.\n\nhttps://github.com/zephyrproject-rtos/zephyr/commit/72486b69712183f4f01572293dfe848c749d70a0\n\nI opened b:219988569 to track.",
+      "parentUuid": "b22f036b_f42d0552",
+      "revId": "f0accb6b9c809bb18ca7f9d0c69fdf8527408678",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
