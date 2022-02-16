@@ -16,6 +16,24 @@
       "message": "While I don\u0027t see any tests for the eeprom so LGTM, I\u0027d want to double check with jbettis.",
       "revId": "62ccb158c5c5afb7d11e583aa2ee98b48530a84c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "61f1555c_bc9e5e6e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-02-16T19:50:32Z",
+      "side": 1,
+      "message": "The key files are third_party/zephyr/main/drivers/eeprom/Kconfig and third_party/zephyr/main/boards/posix/native_posix/Kconfig.defconfig which by default turns this on when native_posix is selected.\nThis was enabled when CONFIG_EEPROM was selected for the drivers unit tests in chromium:3405040",
+      "parentUuid": "2d4c654c_636c2b7c",
+      "revId": "62ccb158c5c5afb7d11e583aa2ee98b48530a84c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
