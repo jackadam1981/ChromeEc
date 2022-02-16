@@ -16,6 +16,24 @@
       "message": "Do we have any guidelines for functions that are not implemented (shimmed) in zephyr? Should it be wrapped with #ifndef Zephyr, or just left unimplemented?",
       "revId": "f0accb6b9c809bb18ca7f9d0c69fdf8527408678",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b22f036b_f42d0552",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-02-16T17:22:59Z",
+      "side": 1,
+      "message": "That\u0027s a good question.  Adding Keith to the CC.  \n\nI\u0027d like for this to be implemented for zephyr use in some layer, since we regularly need this after we reset our TCPCs.  They come up in a dead battery mode which requires a reset when it\u0027s safe to do so, which could be some time after boot depending on how charged the battery is.",
+      "parentUuid": "046ef877_47cfeec8",
+      "revId": "f0accb6b9c809bb18ca7f9d0c69fdf8527408678",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
