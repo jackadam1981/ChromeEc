@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "396b2a65_8f62fe71",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1506077
+      },
+      "writtenOn": "2022-02-16T02:43:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1b0e4921_c4b44642",
+      "revId": "afc7e9a063c9de02f405f9183f7a6b7cdf79ec87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "8aab3eb5_0349c589",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 4
@@ -52,6 +70,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1cd93117_3426e829",
+        "filename": "zephyr/dts/bindings/battery/battery-smart.yaml",
+        "patchSetId": 4
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1506077
+      },
+      "writtenOn": "2022-02-16T02:43:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "790aa24a_8d10eecf",
+      "revId": "afc7e9a063c9de02f405f9183f7a6b7cdf79ec87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "29caa09c_bc89a588",
@@ -65,6 +101,24 @@
       "writtenOn": "2022-02-15T16:28:14Z",
       "side": 1,
       "message": "Please keep the old guybrush battery in the DTS file as well.  I imagine it\u0027ll be at least another board phase before we drop the guybrush support totally. \n\nYou should be able to have two batteries in this array, and we\u0027ll pick the right one on boot based on the battery\u0027s manufacturer and device name.",
+      "revId": "afc7e9a063c9de02f405f9183f7a6b7cdf79ec87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9099af38_2d3f5ba8",
+        "filename": "zephyr/projects/skyrim/battery.dts",
+        "patchSetId": 4
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1506077
+      },
+      "writtenOn": "2022-02-16T02:43:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "29caa09c_bc89a588",
       "revId": "afc7e9a063c9de02f405f9183f7a6b7cdf79ec87",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
