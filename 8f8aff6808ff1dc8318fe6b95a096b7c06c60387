@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "ead0c054_35b7c502",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-02-16T02:14:20Z",
+      "side": 1,
+      "message": "does it make sense to have a device configuration where\nCONFIG_USB_PD_MUX_CTRL_BY_ANX7406 is defined\nbut CONFIG_USB_PD_TCPM_ANX7406_AUX is disabled?",
+      "range": {
+        "startLine": 13,
+        "startChar": 14,
+        "endLine": 13,
+        "endChar": 44
+      },
+      "revId": "8f8aff6808ff1dc8318fe6b95a096b7c06c60387",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "9579c63e_e8b9b941",
@@ -14,6 +37,29 @@
       "writtenOn": "2022-02-14T08:03:03Z",
       "side": 1,
       "message": "Hi all, as Gerrit upgraded, I cannot push code by original account, I\u0027ll update the anx7406 TCPM driver code here, please help to review.\nThanks,\nXin",
+      "revId": "8f8aff6808ff1dc8318fe6b95a096b7c06c60387",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eba2374c_071a2ab2",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 4736,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-02-16T02:14:20Z",
+      "side": 1,
+      "message": "please add the corresponding zepyr Kconfig",
+      "range": {
+        "startLine": 4736,
+        "startChar": 7,
+        "endLine": 4736,
+        "endChar": 34
+      },
       "revId": "8f8aff6808ff1dc8318fe6b95a096b7c06c60387",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
