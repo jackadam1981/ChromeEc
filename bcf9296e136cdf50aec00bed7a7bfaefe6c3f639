@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "17b1b795_94482bb7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 13
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-02-16T02:17:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4fff27d6_1bff361f",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 4
+      },
+      "revId": "bcf9296e136cdf50aec00bed7a7bfaefe6c3f639",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "d93cdf7e_cd0931b6",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 13
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "09dbbc0b_6cbed8cd",
+        "filename": "common/rgb_keyboard.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-02-16T02:17:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "57599235_28959439",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "bcf9296e136cdf50aec00bed7a7bfaefe6c3f639",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8da9e39e_3075a228",
@@ -77,6 +125,30 @@
       "writtenOn": "2022-02-15T17:14:04Z",
       "side": 1,
       "message": "please make this an explicit config option in config.h\n\nCONFIG_RGB_KEYBOARD_DEBUG",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 12
+      },
+      "revId": "bcf9296e136cdf50aec00bed7a7bfaefe6c3f639",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3f7645a_30a2262c",
+        "filename": "common/rgb_keyboard.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-02-16T02:17:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8da9e39e_3075a228",
       "range": {
         "startLine": 19,
         "startChar": 0,
@@ -110,6 +182,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b3caa2e_e0c84daa",
+        "filename": "common/rgb_keyboard.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-02-16T02:17:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "206eab51_2fb7407b",
+      "range": {
+        "startLine": 28,
+        "startChar": 11,
+        "endLine": 28,
+        "endChar": 12
+      },
+      "revId": "bcf9296e136cdf50aec00bed7a7bfaefe6c3f639",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "47de5a12_281a980d",
@@ -123,6 +219,30 @@
       "writtenOn": "2022-02-15T17:14:04Z",
       "side": 1,
       "message": "nit: this would structure well as a for loop",
+      "range": {
+        "startLine": 37,
+        "startChar": 2,
+        "endLine": 37,
+        "endChar": 8
+      },
+      "revId": "bcf9296e136cdf50aec00bed7a7bfaefe6c3f639",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea49e58c_e37ab82e",
+        "filename": "common/rgb_keyboard.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-02-16T02:17:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "47de5a12_281a980d",
       "range": {
         "startLine": 37,
         "startChar": 2,
@@ -156,6 +276,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0dc0a08b_d61a027e",
+        "filename": "common/rgb_keyboard.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-02-16T02:17:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "714961c5_d5e372bf",
+      "range": {
+        "startLine": 38,
+        "startChar": 2,
+        "endLine": 39,
+        "endChar": 28
+      },
+      "revId": "bcf9296e136cdf50aec00bed7a7bfaefe6c3f639",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b7d1ae5d_1fe85ea2",
@@ -169,6 +313,30 @@
       "writtenOn": "2022-02-15T17:14:04Z",
       "side": 1,
       "message": "use braces even where not explicitly required",
+      "range": {
+        "startLine": 75,
+        "startChar": 2,
+        "endLine": 75,
+        "endChar": 19
+      },
+      "revId": "bcf9296e136cdf50aec00bed7a7bfaefe6c3f639",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf482a6b_ad26460d",
+        "filename": "common/rgb_keyboard.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-02-16T02:17:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b7d1ae5d_1fe85ea2",
       "range": {
         "startLine": 75,
         "startChar": 2,
@@ -202,6 +370,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab4a8a0b_93e4b278",
+        "filename": "common/rgb_keyboard.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-02-16T02:17:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "88c7b48d_656b5b85",
+      "range": {
+        "startLine": 156,
+        "startChar": 0,
+        "endLine": 156,
+        "endChar": 24
+      },
+      "revId": "bcf9296e136cdf50aec00bed7a7bfaefe6c3f639",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "003a17ef_b12ae016",
@@ -219,6 +411,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fedd2f16_09fd29b4",
+        "filename": "driver/led/is31fl3743b.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-02-16T02:17:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "003a17ef_b12ae016",
+      "revId": "bcf9296e136cdf50aec00bed7a7bfaefe6c3f639",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a8f7c51b_9d391fd8",
@@ -232,6 +442,30 @@
       "writtenOn": "2022-02-15T17:14:04Z",
       "side": 1,
       "message": "use pointy brackets as it\u0027s a standard library header\n\nshould precede the EC includes separated by an empty line",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 20
+      },
+      "revId": "bcf9296e136cdf50aec00bed7a7bfaefe6c3f639",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "006fcdd8_fd382297",
+        "filename": "include/rgb_keyboard.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-02-16T02:17:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a8f7c51b_9d391fd8",
       "range": {
         "startLine": 8,
         "startChar": 0,
@@ -265,6 +499,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "24242e18_7112b459",
+        "filename": "include/rgb_keyboard.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-02-16T02:17:54Z",
+      "side": 1,
+      "message": "Done. I would like to save some chars and have a wrapper so that we can point it to a different struct in the future.",
+      "parentUuid": "4a3000ae_f84e50e2",
+      "range": {
+        "startLine": 10,
+        "startChar": 27,
+        "endLine": 10,
+        "endChar": 42
+      },
+      "revId": "bcf9296e136cdf50aec00bed7a7bfaefe6c3f639",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "65bf708d_1949a43b",
@@ -278,6 +536,30 @@
       "writtenOn": "2022-02-15T17:14:04Z",
       "side": 1,
       "message": "also needs added to cmakelists.txt",
+      "range": {
+        "startLine": 186,
+        "startChar": 11,
+        "endLine": 186,
+        "endChar": 35
+      },
+      "revId": "bcf9296e136cdf50aec00bed7a7bfaefe6c3f639",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e4d7086_49bc2993",
+        "filename": "zephyr/Kconfig.keyboard",
+        "patchSetId": 13
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-02-16T02:17:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "65bf708d_1949a43b",
       "range": {
         "startLine": 186,
         "startChar": 11,
@@ -311,6 +593,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b3ca99e_e1ffe583",
+        "filename": "zephyr/Kconfig.keyboard",
+        "patchSetId": 13
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-02-16T02:17:54Z",
+      "side": 1,
+      "message": "Doesn\u0027t making it a choice value require each enum value to be defined as CONFIG_*? I thought it would be too much. We may promote it to a choice value once we know demo is useful.",
+      "parentUuid": "cce37df7_ba0e42ed",
+      "range": {
+        "startLine": 199,
+        "startChar": 8,
+        "endLine": 199,
+        "endChar": 32
+      },
+      "revId": "bcf9296e136cdf50aec00bed7a7bfaefe6c3f639",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e67cab93_8ac1db58",
@@ -334,6 +640,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "75720c89_aa815d7d",
+        "filename": "zephyr/Kconfig.keyboard",
+        "patchSetId": 13
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-02-16T02:17:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e67cab93_8ac1db58",
+      "range": {
+        "startLine": 200,
+        "startChar": 23,
+        "endLine": 200,
+        "endChar": 24
+      },
+      "revId": "bcf9296e136cdf50aec00bed7a7bfaefe6c3f639",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "adce8818_b325b0ff",
@@ -347,6 +677,30 @@
       "writtenOn": "2022-02-15T17:14:04Z",
       "side": 1,
       "message": "line terminator required at end of file",
+      "range": {
+        "startLine": 207,
+        "startChar": 31,
+        "endLine": 207,
+        "endChar": 32
+      },
+      "revId": "bcf9296e136cdf50aec00bed7a7bfaefe6c3f639",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "51b05f52_ce54912d",
+        "filename": "zephyr/Kconfig.keyboard",
+        "patchSetId": 13
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-02-16T02:17:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "adce8818_b325b0ff",
       "range": {
         "startLine": 207,
         "startChar": 31,
