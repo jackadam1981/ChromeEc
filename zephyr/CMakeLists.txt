@@ -91,6 +91,7 @@ endif()
 add_subdirectory("app")
 add_subdirectory("drivers")
 add_subdirectory("emul")
+add_subdirectory("subsys")
 
 add_subdirectory_ifdef(CONFIG_PLATFORM_EC "shim")
 # Creates a phony target all.libraries in case you only want to build the
@@ -128,6 +129,8 @@ zephyr_library_sources_ifdef(CONFIG_HAS_TASK_POWERBTN
                                                 "${PLATFORM_EC}/common/power_button_x86.c")
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_ACCEL_BMA255
                                                 "${PLATFORM_EC}/driver/accel_bma2x2.c")
+zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_ACCEL_BMA4XX
+                                                "${PLATFORM_EC}/driver/accel_bma4xx.c")
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_ACCEL_KX022
                                                 "${PLATFORM_EC}/driver/accel_kionix.c")
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_ACCEL_LIS2DW12
@@ -188,6 +191,8 @@ zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_CHARGER_BQ25710
                                                 "${PLATFORM_EC}/driver/charger/bq25710.c")
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_CHARGER_BQ25720
                                                 "${PLATFORM_EC}/driver/charger/bq25710.c")
+zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_CHARGER_RT9490
+                                                "${PLATFORM_EC}/driver/charger/rt9490.c")
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_CHARGER_SM5803
                                                 "${PLATFORM_EC}/driver/charger/sm5803.c")
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_CHARGE_MANAGER
@@ -203,8 +208,7 @@ zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_OCPC
                                                 "${PLATFORM_EC}/common/ocpc.c")
 
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_CBI_EEPROM
-                                                "${PLATFORM_EC}/common/cbi.c"
-                                                "${PLATFORM_EC}/common/cbi_eeprom.c")
+                                                "${PLATFORM_EC}/common/cbi.c")
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_CBI_GPIO
                                                 "${PLATFORM_EC}/common/cbi.c"
                                                 "${PLATFORM_EC}/common/cbi_gpio.c")
@@ -462,6 +466,8 @@ zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_USBC_PPC_KTU1125
                                                 "${PLATFORM_EC}/driver/ppc/ktu1125.c")
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_USBC_PPC_NX20P3483
                                                 "${PLATFORM_EC}/driver/ppc/nx20p348x.c")
+zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_USBC_PPC_RT1739
+                                                "${PLATFORM_EC}/driver/ppc/rt1739.c")
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_USBC_PPC_SN5S330
                                                 "${PLATFORM_EC}/driver/ppc/sn5s330.c")
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_USBC_PPC_SYV682X
