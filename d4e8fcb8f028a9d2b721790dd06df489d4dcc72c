@@ -37,6 +37,41 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cf2bbe67_a2936dfe",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1520485
+      },
+      "writtenOn": "2022-02-16T07:13:02Z",
+      "side": 1,
+      "message": "I don\u0027t know how to do it, use git to do that?",
+      "parentUuid": "e3f5fff7_369aeb1c",
+      "revId": "d4e8fcb8f028a9d2b721790dd06df489d4dcc72c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "06882b00_b1b2fcc1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1520485
+      },
+      "writtenOn": "2022-02-16T07:13:02Z",
+      "side": 1,
+      "message": "Hi caveh jalali, I\u0027ll fix it at next patch. Please help to review https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3459593/1, ANX7406 TCPC will clean RX_DETECT register while switch Rp/Rd at PR_SWAP stage, so need re-write it to enable RECEIVE msg.\nThanks,\nXin",
+      "revId": "d4e8fcb8f028a9d2b721790dd06df489d4dcc72c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b38d4cad_df28fe6c",
         "filename": "driver/build.mk",
         "patchSetId": 1
@@ -48,6 +83,30 @@
       "writtenOn": "2022-02-16T02:12:48Z",
       "side": 1,
       "message": "this might be a good time to put these in numeric order.",
+      "range": {
+        "startLine": 157,
+        "startChar": 0,
+        "endLine": 159,
+        "endChar": 52
+      },
+      "revId": "d4e8fcb8f028a9d2b721790dd06df489d4dcc72c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18273982_02c844f6",
+        "filename": "driver/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1520485
+      },
+      "writtenOn": "2022-02-16T07:13:02Z",
+      "side": 1,
+      "message": "OK, I\u0027ll change it.",
+      "parentUuid": "b38d4cad_df28fe6c",
       "range": {
         "startLine": 157,
         "startChar": 0,
@@ -83,6 +142,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "71797153_8df81752",
+        "filename": "driver/tcpm/anx7406.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1520485
+      },
+      "writtenOn": "2022-02-16T07:13:02Z",
+      "side": 1,
+      "message": "OK",
+      "parentUuid": "dee5a20d_9635d28e",
+      "range": {
+        "startLine": 36,
+        "startChar": 2,
+        "endLine": 36,
+        "endChar": 10
+      },
+      "revId": "d4e8fcb8f028a9d2b721790dd06df489d4dcc72c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0959ed64_27ce3517",
         "filename": "driver/tcpm/anx7406.c",
         "patchSetId": 1
@@ -94,6 +177,30 @@
       "writtenOn": "2022-02-16T02:12:48Z",
       "side": 1,
       "message": "i welcome extensive error checking, but having a custom error message\nfor every failure case is probably not sustainable given the\ntypical flash size budget.",
+      "range": {
+        "startLine": 134,
+        "startChar": 2,
+        "endLine": 134,
+        "endChar": 10
+      },
+      "revId": "d4e8fcb8f028a9d2b721790dd06df489d4dcc72c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a8b05b6_81269cfe",
+        "filename": "driver/tcpm/anx7406.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1520485
+      },
+      "writtenOn": "2022-02-16T07:13:02Z",
+      "side": 1,
+      "message": "OK, I\u0027ll remove it.",
+      "parentUuid": "0959ed64_27ce3517",
       "range": {
         "startLine": 134,
         "startChar": 2,
@@ -129,6 +236,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "133b13eb_8864a6fc",
+        "filename": "driver/tcpm/anx7406.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1520485
+      },
+      "writtenOn": "2022-02-16T07:13:02Z",
+      "side": 1,
+      "message": "OK",
+      "parentUuid": "0ae08b2d_502218cd",
+      "range": {
+        "startLine": 284,
+        "startChar": 8,
+        "endLine": 284,
+        "endChar": 12
+      },
+      "revId": "d4e8fcb8f028a9d2b721790dd06df489d4dcc72c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "98d60ea5_9a02735e",
         "filename": "include/config.h",
         "patchSetId": 1
@@ -140,6 +271,30 @@
       "writtenOn": "2022-02-16T02:12:48Z",
       "side": 1,
       "message": "please add the corresponding zephyr Kconfig",
+      "range": {
+        "startLine": 4682,
+        "startChar": 7,
+        "endLine": 4682,
+        "endChar": 33
+      },
+      "revId": "d4e8fcb8f028a9d2b721790dd06df489d4dcc72c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e2e68b3_a03f4fa7",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 4682,
+      "author": {
+        "id": 1520485
+      },
+      "writtenOn": "2022-02-16T07:13:02Z",
+      "side": 1,
+      "message": "OK",
+      "parentUuid": "98d60ea5_9a02735e",
       "range": {
         "startLine": 4682,
         "startChar": 7,
