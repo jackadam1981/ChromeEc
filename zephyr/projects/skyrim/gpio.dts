@@ -45,11 +45,9 @@
 		};
 		gpio_en_pwr_s0_r: en_pwr_s0_r {
 			gpios = <&gpiof 1 GPIO_OUT_LOW>;
-			enum-name = "GPIO_EN_PWR_S0_R";
 		};
 		gpio_en_pwr_pcore_s0_r: en_pwr_pcore_s0_r {
 			gpios = <&gpioe 1 GPIO_OUT_LOW>;
-			enum-name = "GPIO_EN_PWR_PCORE_S0_R";
 		};
 		ec_sys_rst_l {
 			gpios = <&gpio7 6 GPIO_ODR_HIGH>;
@@ -59,9 +57,8 @@
 			gpios = <&gpioc 5 GPIO_OUT_LOW>;
 			enum-name = "GPIO_PCH_RSMRST_L";
 		};
-		ec_soc_wake_l {
+		gpio_ec_pch_wake_odl: ec_soc_wake_l {
 			gpios = <&gpio0 3 GPIO_OUT_HIGH>;
-			enum-name = "GPIO_EC_PCH_WAKE_ODL";
 		};
 		prochot_odl {
 			gpios = <&gpiod 5 GPIO_ODR_HIGH>;
@@ -177,12 +174,6 @@
 		ec_kso_02_inv {
 			gpios = <&gpio1 7 GPIO_OUT_LOW>;
 			enum-name = "GPIO_KBD_KSO2";
-		};
-		ec_espi_rst_l {
-			gpios = <&gpio5 4 GPIO_PULL_UP>;
-		};
-		6axis_int_l {
-			gpios = <&gpioa 0 GPIO_INPUT_PULL_UP>;
 		};
 		tablet_mode {
 			gpios = <&gpioc 1 GPIO_INPUT>;

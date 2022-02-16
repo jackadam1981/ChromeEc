@@ -54,6 +54,13 @@ static void baseboard_tcpc_init(void)
 /* Must be done after I2C and subboard */
 DECLARE_HOOK(HOOK_INIT, baseboard_tcpc_init, HOOK_PRIO_INIT_I2C + 1);
 
+static void baseboard_x_ec_gpio2_init(void)
+{
+	/* type-c: USB_C1_PPC_INT_ODL / hdmi: PS185_EC_DP_HPD */
+	gpio_enable_dt_interrupt(GPIO_INT_FROM_NODELABEL(int_x_ec_gpio2));
+}
+DECLARE_HOOK(HOOK_INIT, baseboard_x_ec_gpio2_init, HOOK_PRIO_DEFAULT);
+
 __override uint8_t board_get_usb_pd_port_count(void)
 {
 	if (corsola_get_db_type() == CORSOLA_DB_TYPEC)
@@ -136,3 +143,17 @@ void x_ec_interrupt(enum gpio_signal signal)
 	else
 		CPRINTS("Undetected subboard interrupt.");
 }
+
+void board_hdmi_suspend(void)
+{
+	if (corsola_get_db_type() == CORSOLA_DB_HDMI)
+		gpio_pin_set_dt(GPIO_DT_FROM_ALIAS(gpio_ps185_pwrdn_odl), 0);
+}
+DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, board_hdmi_suspend, HOOK_PRIO_DEFAULT);
+
+void board_hdmi_resume(void)
+{
+	if (corsola_get_db_type() == CORSOLA_DB_HDMI)
+		gpio_pin_set_dt(GPIO_DT_FROM_ALIAS(gpio_ps185_pwrdn_odl), 1);
+}
+DECLARE_HOOK(HOOK_CHIPSET_RESUME, board_hdmi_resume, HOOK_PRIO_DEFAULT);
