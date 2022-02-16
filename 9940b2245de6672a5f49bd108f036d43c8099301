@@ -56,6 +56,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "479caa25_1da9bf23",
+        "filename": "zephyr/projects/nissa/prj_nivviks.conf",
+        "patchSetId": 23
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-02-16T01:20:56Z",
+      "side": 1,
+      "message": "That could work. To me, a config item should be more about what it does, rather than what it doesn\u0027t do (or have), hence the suggestion of\nCONFIG_X86_NON_DSX_ADL_GPIO_CONTROL rather than CONFIG_X86_NON_DSX_ADL_NO_EXT_PS_CHIP, which seems unwieldy and perhaps not\nas descriptive as it should be.\nHaving a separate item for ADC monitoring may be the right thing.\nConfig items can proliferate, so it\u0027s always a tricky balance.\nSetting appropriate defaults and dependencies is important, so that folks can have a working minimal default, but can override it for corner cases without having to play the game of figuring out a large number of configs (and how they interact).",
+      "parentUuid": "ccfe17d3_91d3d5e5",
+      "revId": "9940b2245de6672a5f49bd108f036d43c8099301",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "32181ece_1c3fd9f5",
         "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_adlp_nonpwrseq_sm.c",
         "patchSetId": 23
