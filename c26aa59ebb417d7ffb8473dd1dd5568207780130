@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a41c6f1a_3a7e720f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-02-16T02:02:25Z",
+      "side": 1,
+      "message": "Agree - this was just a proof-of-concept.\n\nSo I\u0027d like some more guidance about the upstreaming approach.\nAre there any guideline docs about the best way to do this?\nOr do I just use my github account, and follow the Zephyr instructions?\nDo I need to raise any feature request or anything?",
+      "parentUuid": "68c62918_9e12361f",
+      "revId": "c26aa59ebb417d7ffb8473dd1dd5568207780130",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "26f1d72d_b9c85481",
@@ -58,6 +76,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a51e491_98e0d9a3",
+        "filename": "zephyr/app/shell/Kconfig",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-02-16T02:02:25Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "26f1d72d_b9c85481",
+      "range": {
+        "startLine": 5,
+        "startChar": 7,
+        "endLine": 5,
+        "endChar": 30
+      },
+      "revId": "c26aa59ebb417d7ffb8473dd1dd5568207780130",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4876c4d7_dd3f9dcf",
@@ -71,6 +113,30 @@
       "writtenOn": "2022-02-15T15:48:16Z",
       "side": 1,
       "message": "This should be organized as a single root command \"gpio\" with two sub commands.",
+      "range": {
+        "startLine": 247,
+        "startChar": 0,
+        "endLine": 249,
+        "endChar": 0
+      },
+      "revId": "c26aa59ebb417d7ffb8473dd1dd5568207780130",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7368f434_4a20adbd",
+        "filename": "zephyr/app/shell/shell_gpio.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-02-16T02:02:25Z",
+      "side": 1,
+      "message": "There is an existing Zephyr shell \u0027gpio\u0027 command with get/set sub-commands, so I guess as part of the upstreaming I\u0027m going to have to figure out how to meld these two commands.\nAt this stage I just wanted to confirm I could replicate the existing\ncommands.",
+      "parentUuid": "4876c4d7_dd3f9dcf",
       "range": {
         "startLine": 247,
         "startChar": 0,
