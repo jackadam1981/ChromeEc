@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f70852fb_631c3718",
+        "filename": "zephyr/dts/bindings/power/intel,ap-pwrseq-signal-list.yaml",
+        "patchSetId": 6
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-02-16T08:43:47Z",
+      "side": 1,
+      "message": "Made this point to gpio directly. Not use gpio-interrupt compatible anymore.",
+      "parentUuid": "986abd41_77498852",
+      "revId": "524a8d1e50f3a1374a3cd3403b4406552039b80e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3461e1e2_77d961de",
@@ -109,6 +127,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1d33936_fae641fd",
+        "filename": "zephyr/subsys/ap_pwrseq/include/x86_power_signals.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-02-16T08:43:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "31a1f029_a49d88d7",
+      "revId": "524a8d1e50f3a1374a3cd3403b4406552039b80e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "32e1de1d_6b2ed50e",
@@ -122,6 +158,24 @@
       "writtenOn": "2022-02-11T13:00:18Z",
       "side": 1,
       "message": "I would limit the amount of code within the conditional compile to only\nthe code that is affected by this.\ne.g only the enum generating FOREACH, and the BUILD_ASSERT (as separate\nbits of code that are guarded e.g\n\nnum power_signal {\n#if DT_HAS_COMPAT_STATUS_OKAY(intel_ap_pwrseq_signal_list)\n\tDT_FOREACH_CHILD(\n\t\tPOWER_SIGNALS_LIST_NODE,\n\t\tGEN_POWER_SIGNAL_ENUM_COMMA)\n#endif\n\tPOWER_SIGNAL_COUNT\n};\n\nThat way, you don\u0027t need to guard references to the enum type.",
+      "revId": "524a8d1e50f3a1374a3cd3403b4406552039b80e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "85d6873b_288288c9",
+        "filename": "zephyr/subsys/ap_pwrseq/include/x86_power_signals.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-02-16T08:43:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "32e1de1d_6b2ed50e",
       "revId": "524a8d1e50f3a1374a3cd3403b4406552039b80e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -143,6 +197,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5085706_3f4e92d5",
+        "filename": "zephyr/subsys/ap_pwrseq/include/x86_power_signals.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-02-16T08:43:47Z",
+      "side": 1,
+      "message": "Removed. It was for debug purpose.",
+      "parentUuid": "8a0cf968_c33c6d65",
+      "revId": "524a8d1e50f3a1374a3cd3403b4406552039b80e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a5646cce_41fc522e",
@@ -156,6 +228,24 @@
       "writtenOn": "2022-02-11T13:00:18Z",
       "side": 1,
       "message": "So rather than using the gpio-interrupt node as the source of this data, it\nmay be better to directly use a GPIO reference, and have a property for\nthe interrupt flags eg.\n  pwr-sig-1 {\n    signal-gpios \u003d \u003cgpio3 4 GPIO_ACTIVE_LOW\u003e;\n    int-flags \u003d \u003cGPIO_INT_EDGE_BOTH\u003e;\n    dbg-name \"Power Signal 1\";\n  };\n  \nAnd the code can use GPIO_DT_SPEC_GET as part of the init of the config.",
+      "revId": "524a8d1e50f3a1374a3cd3403b4406552039b80e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ecddb9f_1f702584",
+        "filename": "zephyr/subsys/ap_pwrseq/include/x86_power_signals.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-02-16T08:43:47Z",
+      "side": 1,
+      "message": "Changed to use GPIO reference.",
+      "parentUuid": "a5646cce_41fc522e",
       "revId": "524a8d1e50f3a1374a3cd3403b4406552039b80e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -177,6 +267,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "576b9f04_23fb2fa3",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_adlp_pwrseq_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-02-16T08:43:47Z",
+      "side": 1,
+      "message": "Combined to only one power signal array as suggested.",
+      "parentUuid": "68c975c1_c2b17c6c",
+      "revId": "524a8d1e50f3a1374a3cd3403b4406552039b80e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a5fa6bf8_2fc6c962",
@@ -194,6 +302,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "79f2e698_3e7e659c",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_console.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-02-16T08:43:47Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a5fa6bf8_2fc6c962",
+      "revId": "524a8d1e50f3a1374a3cd3403b4406552039b80e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9241f830_9ec3fdc0",
@@ -207,6 +333,24 @@
       "writtenOn": "2022-02-11T13:00:18Z",
       "side": 1,
       "message": "We\u0027ve found it generally easier to use struct gpio_dt_spec\ninstead of passing around a port and pin.",
+      "revId": "524a8d1e50f3a1374a3cd3403b4406552039b80e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3d3fb41_33712107",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-02-16T08:43:47Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9241f830_9ec3fdc0",
       "revId": "524a8d1e50f3a1374a3cd3403b4406552039b80e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -323,6 +467,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6c6166b_09a8c461",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-02-16T08:43:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "49872c39_3e8d6107",
+      "range": {
+        "startLine": 167,
+        "startChar": 0,
+        "endLine": 174,
+        "endChar": 2
+      },
+      "revId": "524a8d1e50f3a1374a3cd3403b4406552039b80e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cc197add_3275e3f8",
@@ -374,6 +542,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "82e099ab_3e2b7feb",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-02-16T08:43:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2ea90fd5_f9ea25b8",
+      "revId": "524a8d1e50f3a1374a3cd3403b4406552039b80e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "16ac2cf4_f46a2518",
@@ -387,6 +573,30 @@
       "writtenOn": "2022-02-11T13:00:18Z",
       "side": 1,
       "message": "Use gpio_pin_interrupt_configure_dt and have the GPIO config\nstored in a struct gpio_dt_spec.",
+      "range": {
+        "startLine": 313,
+        "startChar": 4,
+        "endLine": 313,
+        "endChar": 32
+      },
+      "revId": "524a8d1e50f3a1374a3cd3403b4406552039b80e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8902cf95_105501da",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-02-16T08:43:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "16ac2cf4_f46a2518",
       "range": {
         "startLine": 313,
         "startChar": 4,
