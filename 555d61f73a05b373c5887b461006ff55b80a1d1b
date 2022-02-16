@@ -34,6 +34,24 @@
       "parentUuid": "5533d402_2e3cd261",
       "revId": "555d61f73a05b373c5887b461006ff55b80a1d1b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "daa6297f_82a6f5e1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-02-16T23:28:56Z",
+      "side": 1,
+      "message": "ITE have provided a driver update in https://crrev.com/c/3401990 that will take some time to make it upstream, but the channel assignments match what I\u0027ve done here. Since we already had a broken ADC on Nereid that wasn\u0027t hurting anything, I think we\u0027re okay to submit this and just recognize that analog support on Nereid is not fixed yet.",
+      "parentUuid": "bae1ca76_12d0b852",
+      "revId": "555d61f73a05b373c5887b461006ff55b80a1d1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
