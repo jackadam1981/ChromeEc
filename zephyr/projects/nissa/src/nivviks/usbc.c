@@ -51,7 +51,6 @@ __override void board_hibernate(void)
 		raa489000_hibernate(CHARGER_SECONDARY, true);
 	raa489000_hibernate(CHARGER_PRIMARY, true);
 	LOG_INF("Charger(s) hibernated");
-	cflush();
 }
 
 __override void board_hibernate_late(void)
