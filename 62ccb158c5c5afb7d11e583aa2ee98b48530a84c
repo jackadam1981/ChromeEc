@@ -34,6 +34,23 @@
       "parentUuid": "2d4c654c_636c2b7c",
       "revId": "62ccb158c5c5afb7d11e583aa2ee98b48530a84c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e271c3d2_fe3d325b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-02-16T19:57:34Z",
+      "side": 1,
+      "message": "I think we\u0027ll want the simulator again someday, so we\u0027ll have to fix the problem with creating the file in the current dir when we get a test written that actually tries to use the eeprom. But for today, this seems like the right fix.",
+      "revId": "62ccb158c5c5afb7d11e583aa2ee98b48530a84c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
