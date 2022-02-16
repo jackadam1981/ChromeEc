@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e36a1c5_5107b6e5",
+        "filename": "baseboard/intelrvp/adlrvp.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 480,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-02-16T00:54:48Z",
+      "side": 1,
+      "message": "would it make more sense to put this retry loop\nin ioexpander_read_intelrvp_version() since every\ncaller will likely need this retry loop?",
+      "range": {
+        "startLine": 480,
+        "startChar": 1,
+        "endLine": 480,
+        "endChar": 4
+      },
+      "revId": "252185325acd39514ed3219e67228da586fb0340",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fcbdeff6_98a9ec7f",
+        "filename": "baseboard/intelrvp/adlrvp.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 485,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-02-16T00:54:48Z",
+      "side": 1,
+      "message": "add a 1 ms sleep to the loop and set ADL_BOARD_ID_READ_RETRY_CNT\nto a reasonable estimate of how long to wait for the chip to power up.",
+      "revId": "252185325acd39514ed3219e67228da586fb0340",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af9c540d_73d0d615",
+        "filename": "baseboard/intelrvp/adlrvp.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 488,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-02-16T00:54:48Z",
+      "side": 1,
+      "message": "how about checking i \u003d\u003d ADL_BOARD_ID_READ_RETRY_CNT\nto detect the timeout?",
+      "range": {
+        "startLine": 488,
+        "startChar": 4,
+        "endLine": 488,
+        "endChar": 20
+      },
+      "revId": "252185325acd39514ed3219e67228da586fb0340",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
