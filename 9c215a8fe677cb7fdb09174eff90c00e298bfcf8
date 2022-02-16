@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f30c884d_05d5ad28",
+        "filename": "zephyr/shim/src/cbi_eeprom.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2022-02-16T07:23:24Z",
+      "side": 1,
+      "message": "Actually, it is not as it should be done. I\u0027ve prepared CL:3455465 to also get rid of GPIO_EC_CBI_WP enum, but please merge this CL and I will rework my CL to fix it.",
+      "revId": "9c215a8fe677cb7fdb09174eff90c00e298bfcf8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
