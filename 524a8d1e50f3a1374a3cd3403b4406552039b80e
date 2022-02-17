@@ -642,6 +642,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a37a3ef8_4554cf93",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-02-17T05:47:38Z",
+      "side": 1,
+      "message": "Since this function handles GPIO interrupts though, I think we actually want to call `gpio_pin_interrupt_configure_dt` during initialization for each pin that we want to interrupt on; no need to hook up IRQs, since the GPIO driver handles that.",
+      "parentUuid": "8269f5d4_f2536db3",
+      "revId": "524a8d1e50f3a1374a3cd3403b4406552039b80e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1a59e8a1_7d39a2ce",
         "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
         "patchSetId": 6
