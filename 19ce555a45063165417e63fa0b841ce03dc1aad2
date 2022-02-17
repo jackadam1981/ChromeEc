@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d82e59f_3fcdce3d",
+        "filename": "chip/npcx/adc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-02-17T20:57:36Z",
+      "side": 1,
+      "message": "Are you using this to avoid calling adc_init twice? DECLARE_HOOK(HOOK_INIT, adc_init, HOOK_PRIO_INIT_ADC); is guarded by #ifndef CONFIG_KEYBOARD_SCAN_ANTIGHOST_ADC. Do you still need it?",
+      "range": {
+        "startLine": 45,
+        "startChar": 12,
+        "endLine": 45,
+        "endChar": 20
+      },
+      "revId": "19ce555a45063165417e63fa0b841ce03dc1aad2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4048d94_755409c4",
+        "filename": "chip/npcx/adc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 411,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-02-17T20:57:36Z",
+      "side": 1,
+      "message": "We don\u0027t need this because we can make adc_init global in both cases.",
+      "range": {
+        "startLine": 409,
+        "startChar": 0,
+        "endLine": 411,
+        "endChar": 5
+      },
+      "revId": "19ce555a45063165417e63fa0b841ce03dc1aad2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6fffeeac_ac75c699",
+        "filename": "include/adc.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-02-17T20:57:36Z",
+      "side": 1,
+      "message": "You don\u0027t need this guard.",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 41
+      },
+      "revId": "19ce555a45063165417e63fa0b841ce03dc1aad2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
