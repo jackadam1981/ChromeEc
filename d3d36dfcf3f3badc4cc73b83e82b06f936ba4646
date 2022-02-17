@@ -20,6 +20,41 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "938b0cd6_86182f44",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-02-17T16:29:43Z",
+      "side": 1,
+      "message": "I think we\u0027ve using \"controller\" and \"peripheral\" whenever it\u0027s i2c related since we went with names like common/i2c_controller.c and common/i2c_peripheral.c",
+      "parentUuid": "58d02fbd_32139493",
+      "revId": "d3d36dfcf3f3badc4cc73b83e82b06f936ba4646",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74f22f95_2d8e6ef4",
+        "filename": "driver/tcpm/anx7406.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-02-17T16:29:43Z",
+      "side": 1,
+      "message": "Consider removing or guarding some of these prints with a DEBUG level which may trigger a lot with docks that frequently send HPD IRQ signals",
+      "revId": "d3d36dfcf3f3badc4cc73b83e82b06f936ba4646",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "eb0f55d3_92ced080",
         "filename": "driver/tcpm/anx7406.c",
         "patchSetId": 2
@@ -37,6 +72,23 @@
         "endLine": 139,
         "endChar": 49
       },
+      "revId": "d3d36dfcf3f3badc4cc73b83e82b06f936ba4646",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "415bdc50_b7d3883d",
+        "filename": "driver/tcpm/anx7406.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-02-17T16:29:43Z",
+      "side": 1,
+      "message": "Usually sink and source control sets are guarded with a check for CONFIG_USB_PD_PPC",
       "revId": "d3d36dfcf3f3badc4cc73b83e82b06f936ba4646",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -83,6 +135,23 @@
         "endLine": 212,
         "endChar": 47
       },
+      "revId": "d3d36dfcf3f3badc4cc73b83e82b06f936ba4646",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c19dd97_8b137afb",
+        "filename": "driver/tcpm/anx7406.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 415,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-02-17T16:29:43Z",
+      "side": 1,
+      "message": "Is DRP required for low power mode? \n\nThis would break how we use low power on Chromebooks in shutdown or suspend, when we only present Rd.  In general, the TCPC driver really shouldn\u0027t be changing its role outside the interfaces for setting role control",
       "revId": "d3d36dfcf3f3badc4cc73b83e82b06f936ba4646",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
