@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef386e62_a4e0be97",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 697,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2022-02-17T19:52:56Z",
+      "side": 1,
+      "message": "This is totally unrelated, but why do we directly set these config options instead of using the imply or select operators in Kconfig?",
+      "revId": "482e6adf57c8c00a41d05d4e7831a85a4e2fcc9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
