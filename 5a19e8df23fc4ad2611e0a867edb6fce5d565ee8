@@ -1,0 +1,205 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "60d59736_7427c7cd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-02-17T17:43:03Z",
+      "side": 1,
+      "message": "Only minor edits needed.",
+      "revId": "5a19e8df23fc4ad2611e0a867edb6fce5d565ee8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e2e51a4b_6459ff73",
+        "filename": "docs/zephyr/zephyr_motionsense.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-02-17T17:43:03Z",
+      "side": 1,
+      "message": "As a follow up CL, this section can be simplified.\n\n1-2 sentences to explain that Kconfig.motionsense configures the operation of the motionsense task, and 1-2 sentences to explain that Kconfig.sensor_devices selects which sensor drives are compiled into the image.\n\nThis will replace all the tables.",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 0
+      },
+      "revId": "5a19e8df23fc4ad2611e0a867edb6fce5d565ee8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09b8730f_fc197811",
+        "filename": "docs/zephyr/zephyr_motionsense.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-02-17T17:43:03Z",
+      "side": 1,
+      "message": "delete",
+      "range": {
+        "startLine": 82,
+        "startChar": 11,
+        "endLine": 82,
+        "endChar": 15
+      },
+      "revId": "5a19e8df23fc4ad2611e0a867edb6fce5d565ee8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0bdbae5_8175bdd9",
+        "filename": "docs/zephyr/zephyr_motionsense.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-02-17T17:43:03Z",
+      "side": 1,
+      "message": "delete",
+      "range": {
+        "startLine": 83,
+        "startChar": 11,
+        "endLine": 83,
+        "endChar": 15
+      },
+      "revId": "5a19e8df23fc4ad2611e0a867edb6fce5d565ee8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7920e54_10d06d67",
+        "filename": "docs/zephyr/zephyr_motionsense.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-02-17T17:43:03Z",
+      "side": 1,
+      "message": "Delete - this is causing a bad link.",
+      "range": {
+        "startLine": 84,
+        "startChar": 141,
+        "endLine": 84,
+        "endChar": 184
+      },
+      "revId": "5a19e8df23fc4ad2611e0a867edb6fce5d565ee8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ecf2476c_550e4345",
+        "filename": "docs/zephyr/zephyr_motionsense.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-02-17T17:43:03Z",
+      "side": 1,
+      "message": "Delete",
+      "range": {
+        "startLine": 91,
+        "startChar": 145,
+        "endLine": 91,
+        "endChar": 188
+      },
+      "revId": "5a19e8df23fc4ad2611e0a867edb6fce5d565ee8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a34d96a_6356458f",
+        "filename": "docs/zephyr/zephyr_motionsense.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-02-17T17:43:03Z",
+      "side": 1,
+      "message": "Delete",
+      "range": {
+        "startLine": 101,
+        "startChar": 156,
+        "endLine": 101,
+        "endChar": 200
+      },
+      "revId": "5a19e8df23fc4ad2611e0a867edb6fce5d565ee8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2673bb3d_3ee23925",
+        "filename": "docs/zephyr/zephyr_motionsense.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-02-17T17:43:03Z",
+      "side": 1,
+      "message": "is",
+      "range": {
+        "startLine": 102,
+        "startChar": 5,
+        "endLine": 102,
+        "endChar": 12
+      },
+      "revId": "5a19e8df23fc4ad2611e0a867edb6fce5d565ee8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "593aba44_5f14f7fa",
+        "filename": "docs/zephyr/zephyr_motionsense.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-02-17T17:43:03Z",
+      "side": 1,
+      "message": "directly queries",
+      "range": {
+        "startLine": 123,
+        "startChar": 76,
+        "endLine": 124,
+        "endChar": 14
+      },
+      "revId": "5a19e8df23fc4ad2611e0a867edb6fce5d565ee8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
