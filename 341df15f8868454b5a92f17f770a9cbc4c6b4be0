@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee1b4c6a_d67a215b",
+        "filename": "docs/zephyr/zephyr_motionsense.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-02-17T17:47:17Z",
+      "side": 1,
+      "message": "Mention these commands require CONFIG_PLATFORM_EC_CONSOLE_CMD_ACCELS",
+      "range": {
+        "startLine": 143,
+        "startChar": 39,
+        "endLine": 143,
+        "endChar": 47
+      },
+      "revId": "341df15f8868454b5a92f17f770a9cbc4c6b4be0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
