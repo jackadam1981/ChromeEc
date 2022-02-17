@@ -22,6 +22,30 @@
       },
       "revId": "f98b739446e4996b17fe5b5cd723c5283549649a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f96f95a_c75f51f9",
+        "filename": "util/genvif.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1626,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-02-17T18:54:52Z",
+      "side": 1,
+      "message": "what\u0027s the actual issue? are we talking compiler or some\nadditional code scanner?\n\nthe original genvif (well, before i touched it) already had the\n(R) unicode character embedded in a string for output.\nit was just there literally instead of specified using \\u.\nnow we also have (TM) specified as \\u. i would much rather\nspecify special characters using \\u than embedding them\nliterally.\n\nso, unicode isn\u0027t a new addition. the reason they are there\nis so that the generated VIF file matches what usb.org\u0027s\nVIF editor generates.",
+      "parentUuid": "cf55ccef_eb62f54b",
+      "range": {
+        "startLine": 1626,
+        "startChar": 8,
+        "endLine": 1626,
+        "endChar": 14
+      },
+      "revId": "f98b739446e4996b17fe5b5cd723c5283549649a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
