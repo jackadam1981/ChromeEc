@@ -55,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0a427554_e90b7392",
+        "filename": "zephyr/dts/bindings/power/intel,ap-pwrseq-signal-list.yaml",
+        "patchSetId": 6
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-02-17T04:52:38Z",
+      "side": 1,
+      "message": "I have changed to use gpio_pin_get_dt() to get level. I will make use the GPIO_ACTIVE_LOW or GPIO_ACTIVE_HIGH to config the gpio so I can get logical level directly. Can I submit separate patch to address this? I need to do thorough test to make sure signals/state transition are working. I will submit an issue tracker regarding this change.",
+      "parentUuid": "3461e1e2_77d961de",
+      "revId": "524a8d1e50f3a1374a3cd3403b4406552039b80e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f74f6251_01bbf9b0",
         "filename": "zephyr/dts/bindings/power/intel,ap-pwrseq-signal-list.yaml",
         "patchSetId": 6
@@ -66,6 +84,24 @@
       "writtenOn": "2022-02-11T13:00:18Z",
       "side": 1,
       "message": "So this could be a bool, though I am unsure of how it would be best used.\nThe flag could be \u0027enable-at-boot\u0027 or something like that.\nThere is no need to have a \u0027disable at boot\u0027, because interrupts by default\nare not enabled until they are.\nThough I have to ask the question whether there are signals that are not enabled at boot by default, when do they get enabled? Or disabled?",
+      "revId": "524a8d1e50f3a1374a3cd3403b4406552039b80e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a6387d5_67174dc5",
+        "filename": "zephyr/dts/bindings/power/intel,ap-pwrseq-signal-list.yaml",
+        "patchSetId": 6
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-02-17T04:52:38Z",
+      "side": 1,
+      "message": "this is S0ix interrupt, it will be enabled/disabled when host sleep event happens.\nI removed this bit and added another property enable-int-on-boot. Also added this to struct power_signal_gpio_config\nstruct power_signal_gpio_config {\n        ...\n        const bool enable_on_boot;     /* Enable interrupt at boot up */\n};",
+      "parentUuid": "f74f6251_01bbf9b0",
       "revId": "524a8d1e50f3a1374a3cd3403b4406552039b80e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -93,6 +129,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "99d00d59_60b82b8b",
+        "filename": "zephyr/subsys/ap_pwrseq/include/x86_common_pwrseq.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-02-17T04:52:38Z",
+      "side": 1,
+      "message": "Removed port/port_name/pin, added \"const struct gpio_dt_spec spec\";",
+      "parentUuid": "464c67e8_fe0b2d73",
+      "range": {
+        "startLine": 96,
+        "startChar": 7,
+        "endLine": 96,
+        "endChar": 11
+      },
+      "revId": "524a8d1e50f3a1374a3cd3403b4406552039b80e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8b2b8c3b_42e5fca3",
@@ -106,6 +166,24 @@
       "writtenOn": "2022-02-11T13:00:18Z",
       "side": 1,
       "message": "It is best to divide the structures into a RO config and a RW data structure.\nAll of the fixed config (well, everything except intr_cb) into one structure and make sure it is const,\nand have an array of struct gpio_callback for the RW callback data.",
+      "revId": "524a8d1e50f3a1374a3cd3403b4406552039b80e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3174fe43_c21fcf46",
+        "filename": "zephyr/subsys/ap_pwrseq/include/x86_common_pwrseq.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-02-17T04:52:38Z",
+      "side": 1,
+      "message": "In the review comment of power_signal_interrupt(), the 2nd way is to create a separate callback gpio_callback array; it works with the idea here together.\nMy thinking is, some signals are from VW, ADC, they don\u0027t have this gpio callback. If I create an array, it needs to have same amount of elements as POWER_SIGNAL_COUNT, then some elements will not be filled/used while the space is still allocated. So I use the CONTAINER_OF() instead. What do you think?",
+      "parentUuid": "8b2b8c3b_42e5fca3",
       "revId": "524a8d1e50f3a1374a3cd3403b4406552039b80e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -372,6 +450,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "95c55dfb_ba247caf",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-02-17T04:52:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b42566b2_150e0f49",
+      "revId": "524a8d1e50f3a1374a3cd3403b4406552039b80e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0c4e8074_c05cb691",
@@ -521,6 +617,24 @@
       "writtenOn": "2022-02-11T13:00:18Z",
       "side": 1,
       "message": "There are 2 ways to considerably simplify the mapping of which signal\nsourced the interrupt:\n1)\nUse the CONTAINER_OF() macro to map the callback to the containing structure:\n\n   struct power_signal_gpio_info {\n       enum power_signal signal;\n       ...\n       struct gpio_callback intr_cb;\n       ..\n   };\n   \n   ...\n   [in interrupt]\n   \n        struct power_signal_gpio_info *info;\n        \n        info \u003d CONTAINER_OF(cb, struct power_signal_gpio_info, intr_cb);\n        \n2)\nStore all of the interrupt callback structures in a single array, and use pointer arithmetic to get the index into the array:\n\n    struct gpio_callback intr_callbacks[POWER_SIGNAL_COUNT];\n    \n    ....\n        int power_signal;\n        \n        power_signal \u003d cb - \u0026intr_callbacks[0];\n        pwr_info \u003d \u0026power_signals[power_signal];",
+      "revId": "524a8d1e50f3a1374a3cd3403b4406552039b80e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa0b6e00_86b83395",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-02-17T04:52:38Z",
+      "side": 1,
+      "message": "I made the change to use CONTAINER_OF().",
+      "parentUuid": "1a59e8a1_7d39a2ce",
       "revId": "524a8d1e50f3a1374a3cd3403b4406552039b80e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
