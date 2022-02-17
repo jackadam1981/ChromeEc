@@ -5,7 +5,7 @@
 import pytest
 
 import zmake.generate_readme as gen_readme
-import zmake.zmake as zm
+from tests.common import zmake_from_dir
 
 
 def test_generate_readme_contents():
@@ -35,8 +35,8 @@ def test_generate_readme_diff(
     if actual_contents is not None:
         readme_file.write_text(actual_contents)
 
-    zmk = zm.Zmake()
-    assert zmk.generate_readme(readme_file, diff=True) == return_code
+    with zmake_from_dir() as zmk:
+        assert zmk.generate_readme(readme_file, diff=True) == return_code
 
 
 @pytest.mark.parametrize("exist", [False, True])
@@ -50,6 +50,6 @@ def test_generate_readme_file(monkeypatch, tmp_path, exist):
     if exist:
         readme_file.write_text("some existing contents\n")
 
-    zmk = zm.Zmake()
-    assert zmk.generate_readme(readme_file) == 0
-    assert readme_file.read_text() == "hello\n"
+    with zmake_from_dir() as zmk:
+        assert zmk.generate_readme(readme_file) == 0
+        assert readme_file.read_text() == "hello\n"
