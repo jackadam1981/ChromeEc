@@ -3,6 +3,75 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0ae4dd4c_69aa130d",
+        "filename": ".gitlab-ci.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-02-17T21:24:52Z",
+      "side": 1,
+      "message": "should we add test-only dependencies to zmake\n\n(using `extras_require` in setup.py?)",
+      "range": {
+        "startLine": 47,
+        "startChar": 43,
+        "endLine": 47,
+        "endChar": 83
+      },
+      "revId": "06188390767fba3bbbc25a64f8a376f490a7c66e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d09db5a_55d92d46",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-02-17T21:24:52Z",
+      "side": 1,
+      "message": "Can you make this a separate CL to the gitlab coverage report? It will make review slightly easier.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 66
+      },
+      "revId": "06188390767fba3bbbc25a64f8a376f490a7c66e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9100e591_7d54d662",
+        "filename": "zephyr/zmake/tests/test_generate_readme.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-02-17T21:24:52Z",
+      "side": 1,
+      "message": "nit that this can use `(tmpname / \"ec\" / \"zephyr\" / \"module.yml\").write_text(\"\")`",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 26
+      },
+      "revId": "06188390767fba3bbbc25a64f8a376f490a7c66e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7cff7f0d_4da64650",
         "filename": "zephyr/zmake/tests/test_generate_readme.py",
         "patchSetId": 1
@@ -14,6 +83,30 @@
       "writtenOn": "2022-02-17T20:41:27Z",
       "side": 1,
       "message": "Seems like this is all the same code - can it go in a common function?",
+      "range": {
+        "startLine": 76,
+        "startChar": 12,
+        "endLine": 76,
+        "endChar": 23
+      },
+      "revId": "06188390767fba3bbbc25a64f8a376f490a7c66e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8195ebcf_6f8f6f4a",
+        "filename": "zephyr/zmake/tests/test_generate_readme.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-02-17T21:24:52Z",
+      "side": 1,
+      "message": "using a pytest fixture would be conventional",
+      "parentUuid": "7cff7f0d_4da64650",
       "range": {
         "startLine": 76,
         "startChar": 12,
@@ -41,6 +134,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "29e1aa87_66fb10a0",
+        "filename": "zephyr/zmake/tests/test_reexec.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-02-17T21:24:52Z",
+      "side": 1,
+      "message": "This is testing a special case that zmake will re-exec in the chroot only.\n\nDoing so isn\u0027t even required outside of the chroot as you can install an editable copy with pip if you desire.",
+      "parentUuid": "606d8abb_503d0aed",
+      "revId": "06188390767fba3bbbc25a64f8a376f490a7c66e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4fe80862_0b4105a2",
@@ -54,6 +165,24 @@
       "writtenOn": "2022-02-17T20:41:27Z",
       "side": 1,
       "message": "Again this seems like common code?",
+      "revId": "06188390767fba3bbbc25a64f8a376f490a7c66e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f714784_76a18dd0",
+        "filename": "zephyr/zmake/tests/test_zmake.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-02-17T21:24:52Z",
+      "side": 1,
+      "message": "pytest fixture would be conventional\n\nhowever these tests are currently passing for me outside of the chroot. do we need to make modifications?",
+      "parentUuid": "4fe80862_0b4105a2",
       "revId": "06188390767fba3bbbc25a64f8a376f490a7c66e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
