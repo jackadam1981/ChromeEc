@@ -33,6 +33,24 @@
       "message": "Thanks for the quick review all! Assuming Aseda approves, is there any further action for this on my side? I\u0027ve never used Gerrit, and cannot tell. 😊\n\nGiven the positive reviews so far, I\u0027ll prep v3 of the Linux patch series and submit it to the `chrome-platform` patchwork Benson set up.",
       "revId": "516f0dc68ecf8a830821959af1ce3d0d15f8db15",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ee32471_45692200",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2022-02-17T01:14:00Z",
+      "side": 1,
+      "message": "\u003e is there any further action for this on my side? I\u0027ve never used Gerrit, and cannot tell. 😊\n\nOnce he approves, you need to mark it as verified (+1), and then submit it to the Commit Queue (CQ+2).\n\nIf you have trouble with permissions doing the above, just ping this CL and one of us will do it for you.",
+      "parentUuid": "0056ba9c_eb64faa9",
+      "revId": "516f0dc68ecf8a830821959af1ce3d0d15f8db15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
