@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a46d3ba7_d2596c63",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-02-17T16:50:49Z",
+      "side": 1,
+      "message": "This has been renamed.",
+      "range": {
+        "startLine": 211,
+        "startChar": 19,
+        "endLine": 211,
+        "endChar": 37
+      },
+      "revId": "dd1f29e4b95b967915510ae866aecf6b967255fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "759ee75c_53b5ba4c",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-02-17T16:50:49Z",
+      "side": 1,
+      "message": "How about:\n\n\t\tstate[c] \u003d keyboard_read_adc_rows();\n#ifdef CONFIG_KEYBOARD_SCAN_ADC\n\t\t/* Account for the refresh key */\n\t\tif (c \u003d\u003d KEYBOARD_COL_REFRESH) {\n\t\t\tif (!gpio_get_level(GPIO_RFR_KEY)) /* Active low */\n\t\t\t\tstate[c] |\u003d BIT(KEYBOARD_ROW_REFRESH);\n\t\t\telse\n\t\t\t\tstate[c] \u0026\u003d ~BIT(KEYBOARD_ROW_REFRESH);\n\t\t}\n#endif\n\nIt looks more like compensation.",
+      "range": {
+        "startLine": 292,
+        "startChar": 0,
+        "endLine": 304,
+        "endChar": 6
+      },
+      "revId": "dd1f29e4b95b967915510ae866aecf6b967255fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b31b7007_371c99b3",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-02-17T16:50:49Z",
+      "side": 1,
+      "message": "Please use if (!IS_ENABLED(CONFIG_KEYBOARD_SCAN_ADC))...",
+      "range": {
+        "startLine": 315,
+        "startChar": 1,
+        "endLine": 315,
+        "endChar": 12
+      },
+      "revId": "dd1f29e4b95b967915510ae866aecf6b967255fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a47979ac_9565b4db",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 534,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-02-17T16:50:49Z",
+      "side": 1,
+      "message": "If you switch this to \u0027if (!IS_ENABLED(CONFIG_KEYBOARD_SCAN_ADC))\u0027, you can remove #ifndef at line 473.",
+      "range": {
+        "startLine": 534,
+        "startChar": 1,
+        "endLine": 534,
+        "endChar": 48
+      },
+      "revId": "dd1f29e4b95b967915510ae866aecf6b967255fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b164b0da_abe7ef62",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 708,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-02-17T16:50:49Z",
+      "side": 1,
+      "message": "This is repeated. Let\u0027s put this in a function.",
+      "range": {
+        "startLine": 705,
+        "startChar": 0,
+        "endLine": 708,
+        "endChar": 60
+      },
+      "revId": "dd1f29e4b95b967915510ae866aecf6b967255fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c8644e51_f3c50c64",
+        "filename": "common/main.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-02-17T16:50:49Z",
+      "side": 1,
+      "message": "Let\u0027s not guard an include file unless it\u0027s necessary.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 41
+      },
+      "revId": "dd1f29e4b95b967915510ae866aecf6b967255fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3954893f_cb04fd55",
+        "filename": "common/main.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-02-17T16:50:49Z",
+      "side": 1,
+      "message": "Can you try if (IS_ENABLED(CONFIG_KEYBOARD_SCAN_ANTIGHOST_ADC))...?",
+      "range": {
+        "startLine": 215,
+        "startChar": 7,
+        "endLine": 215,
+        "endChar": 41
+      },
+      "revId": "dd1f29e4b95b967915510ae866aecf6b967255fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
