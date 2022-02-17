@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "42d113ae_d17aef1c",
+        "filename": "zephyr/dts/bindings/power/intel,ap-pwrseq-signal-list.yaml",
+        "patchSetId": 9
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-02-17T12:44:26Z",
+      "side": 1,
+      "message": "So I don\u0027t think you need this, since by definition the type of signal will be detectable depending on the property set i.e if pwrseq-int-gpios is set, then it is clear it is a GPIO etc.\nThe flag needs to be set in the code tables, but it doesn\u0027t have to appear in the device tree - it also begs the question about what happens if this value does not match the property that is set.\nThe idea is to check for the prop using DT_NODE_HAS_PROP and conditionally build the table entries.\nYou can be also fancy and check separately to ensure there is only one valid property using a separate loop and use a BUILD_ASSERT. Though it is likely easier to just check the size of the signal array against the number of nodes.",
+      "revId": "5d1028c28409cf0e97eefbffa95040104d390312",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5145d4f_562e2d9f",
+        "filename": "zephyr/dts/bindings/power/intel,ap-pwrseq-signal-list.yaml",
+        "patchSetId": 9
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-02-17T12:44:26Z",
+      "side": 1,
+      "message": "see my previous comment about just using a bool for indicating the interrupt should be enabled at start-up (you don\u0027t need the other flags).",
+      "revId": "5d1028c28409cf0e97eefbffa95040104d390312",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a50b941_d475998e",
+        "filename": "zephyr/subsys/ap_pwrseq/include/x86_power_signals.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-02-17T12:44:26Z",
+      "side": 1,
+      "message": "In reference to my comment about not using \u0027source\u0027, this could be\nwritten as\n\n#define GEN_VW_SIGNAL_ENTRY(id) \\\n COND_CODE_1(DT_NODE_HAS_PROP(id, pwrseq_vw_enum), \\\n             ([GEN_POWER_SIGNAL_ENUM(id)] \u003d \\\n                  GEN_VW_POWER_SIGNAL_ENTRY_COMMA(id)), \\\n             ())",
+      "revId": "5d1028c28409cf0e97eefbffa95040104d390312",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "64d1e87f_49aec798",
+        "filename": "zephyr/subsys/ap_pwrseq/include/x86_power_signals.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-02-17T12:44:26Z",
+      "side": 1,
+      "message": "So I\u0027ve generally followed the approach to only put macros in header files that are necessary and used in that header file, and to move macros that are used in .c files into that file. This helps to make it clear how they are used, and avoids having the include files be polluted with unnecessary macros.",
+      "revId": "5d1028c28409cf0e97eefbffa95040104d390312",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0357f79d_3d744185",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_adlp_pwrseq_sm.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-02-17T12:44:26Z",
+      "side": 1,
+      "message": "To generate both types of entries, and to avoid the generating macro to be too complicated, you could use 2 loops and generate the GPIO signals and VW signals separately (using \u0027[enum-entry] \u003d ...\u0027 to ensure they end up in the right place.",
+      "revId": "5d1028c28409cf0e97eefbffa95040104d390312",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

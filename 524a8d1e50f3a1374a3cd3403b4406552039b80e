@@ -71,6 +71,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d854cfa_d77df74c",
+        "filename": "zephyr/dts/bindings/power/intel,ap-pwrseq-signal-list.yaml",
+        "patchSetId": 6
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-02-17T12:44:26Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0a427554_e90b7392",
+      "revId": "524a8d1e50f3a1374a3cd3403b4406552039b80e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f74f6251_01bbf9b0",
@@ -184,6 +202,24 @@
       "side": 1,
       "message": "In the review comment of power_signal_interrupt(), the 2nd way is to create a separate callback gpio_callback array; it works with the idea here together.\nMy thinking is, some signals are from VW, ADC, they don\u0027t have this gpio callback. If I create an array, it needs to have same amount of elements as POWER_SIGNAL_COUNT, then some elements will not be filled/used while the space is still allocated. So I use the CONTAINER_OF() instead. What do you think?",
       "parentUuid": "8b2b8c3b_42e5fca3",
+      "revId": "524a8d1e50f3a1374a3cd3403b4406552039b80e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "384741ad_542ff602",
+        "filename": "zephyr/subsys/ap_pwrseq/include/x86_common_pwrseq.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-02-17T12:44:26Z",
+      "side": 1,
+      "message": "So having any R/W data in this structure will land the entire structure\nin R/W memory, even if it is declared const - I don\u0027t think the compiler will split the structure up for you.\nSo I think splitting intr_cb into a separate array is the best here, and make\nthe config array const.\nSo if we want to get fancy :-) we can determine the number of GPIO interrupts there will be by ordering the enum starting with the GPIOs, followed by VW and ADC.\nThen you can add in extra enums that represent how many GPIO signals there are, and use this to size the intr_cb array. This is how the enum would look after the macro expansion:\n\nenum power_signal {\n power_signal_1, /* 0 */\n power_signal_2, /* 1 */\n power_signal_3, /* 2 */\n /* end of power signals */\n POWER_SIGNAL_GPIO_COUNT, /* 3 */\n _RESET_FOR_VW \u003d POWER_SIGNAL_GPIO_COUNT - 1, /* 2 */\n vw_signal_1, /* 3 */\n vw_signal_2, /* 4 */\n ...\n };\n ...\n \n struct gpio_callback intr_cb[POWER_SIGNAL_GPIO_COUNT];\n\nThat would be the optimum way to ensure space is only allocated for the GPIO interrupts.\nAnd it would be simple to use pointer arithmetic in the interrupt handler to get the power signal index from the callback pointer.",
+      "parentUuid": "3174fe43_c21fcf46",
       "revId": "524a8d1e50f3a1374a3cd3403b4406552039b80e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
