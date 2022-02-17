@@ -22,6 +22,30 @@
       },
       "revId": "d56b399e6292ace8215704a74da3f23ef531b339",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "565ab089_912514bd",
+        "filename": "chip/npcx/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 891,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2022-02-17T06:38:28Z",
+      "side": 1,
+      "message": "Hi Caveh,\nAccording to the datasheet, only bit 0 in PWDWN_8 is used to control the power down of I3C module. bit[1:7] are reserved and need to set to 0x18.\nWe set the power down registers here is trying to power down all the peripheral modules except some modules we need all the time. We comment the modules which are not powered down here (ex: comment /* Skip FIU_PD*/.)\n\nAre you saying we need to list all the module\u0027s power down status (either up or down) on the comment?",
+      "parentUuid": "744fc569_e97aac3c",
+      "range": {
+        "startLine": 891,
+        "startChar": 40,
+        "endLine": 891,
+        "endChar": 41
+      },
+      "revId": "d56b399e6292ace8215704a74da3f23ef531b339",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
