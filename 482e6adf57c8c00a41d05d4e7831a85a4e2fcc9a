@@ -16,6 +16,24 @@
       "message": "This is totally unrelated, but why do we directly set these config options instead of using the imply or select operators in Kconfig?",
       "revId": "482e6adf57c8c00a41d05d4e7831a85a4e2fcc9a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2f23468_4c0c36d4",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 697,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-02-17T20:12:59Z",
+      "side": 1,
+      "message": "It\u0027s for compatibility with the ECOS config entries, this whole file is about translating the Kconfig options to the ECOS ones. For example in this case the Kconfig entry is for PLATFORM_EC_PWM_KBLIGHT, there\u0027s no PWM_KBLIGHT or KEYBOARD_BACKLIGHT in Kconfig. I suppose in some cases we could have created matching Kconfig entries directly but then it would have have a fight with the stuff defined in `include/config.h`.",
+      "parentUuid": "ef386e62_a4e0be97",
+      "revId": "482e6adf57c8c00a41d05d4e7831a85a4e2fcc9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
