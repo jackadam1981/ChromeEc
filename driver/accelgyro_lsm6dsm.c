@@ -757,6 +757,13 @@ static int read_temp(const struct motion_sensor_t *s, int *temp)
 	return EC_SUCCESS;
 }
 
+#ifdef CONFIG_BODY_DETECTION
+int get_rms_noise(const struct motion_sensor_t *s)
+{
+	return EC_ERROR_UNIMPLEMENTED;
+}
+#endif
+
 const struct accelgyro_drv lsm6dsm_drv = {
 	.init = init,
 	.read = read,
@@ -770,4 +777,7 @@ const struct accelgyro_drv lsm6dsm_drv = {
 #ifdef CONFIG_ACCEL_INTERRUPTS
 	.irq_handler = irq_handler,
 #endif /* CONFIG_ACCEL_INTERRUPTS */
+#ifdef CONFIG_BODY_DETECTION
+	.get_rms_noise = get_rms_noise,
+#endif
 };

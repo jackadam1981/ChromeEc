@@ -82,6 +82,8 @@ static uint64_t get_motion_variance(void)
 
 static int calculate_motion_confidence(uint64_t var)
 {
+	CPRINTS("[SC] var_threshold_scaled=%llu", var_threshold_scaled);
+	CPRINTS("[SC] confidence_delta_scaled=%llu", confidence_delta_scaled);
 	if (var < var_threshold_scaled - confidence_delta_scaled)
 		return 0;
 	if (var > var_threshold_scaled + confidence_delta_scaled)
@@ -93,6 +95,8 @@ static int calculate_motion_confidence(uint64_t var)
 /* Change the motion state and commit the change to AP. */
 void body_detect_change_state(enum body_detect_states state, bool spoof)
 {
+	CPRINTS("body_detect changed state to: %s body",
+		motion_state ? "on" : "off");
 	if (IS_ENABLED(CONFIG_ACCEL_SPOOF_MODE) && spoof_enable && !spoof)
 		return;
 	if (IS_ENABLED(CONFIG_GESTURE_HOST_DETECTION)) {
@@ -198,8 +202,8 @@ void body_detect(void)
 	uint64_t motion_var;
 	int motion_confidence;
 
-	if (!body_detect_enable)
-		return;
+	//if (!body_detect_enable)
+	//	return;
 
 	update_motion_variance();
 	if (!history_initialized) {
@@ -209,7 +213,10 @@ void body_detect(void)
 	}
 
 	motion_var = get_motion_variance();
+	CPRINTS("[SC] motion_var=%llu", motion_var);
 	motion_confidence = calculate_motion_confidence(motion_var);
+	CPRINTS("[SC] motion_confidence=%d", motion_confidence);
+	CPRINTS("[SC] motion_state=%d", motion_state);
 	switch (motion_state) {
 	case BODY_DETECTION_OFF_BODY:
 		if (motion_confidence > CONFIG_BODY_DETECTION_ON_BODY_CON)
