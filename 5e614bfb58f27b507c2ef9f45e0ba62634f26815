@@ -16,6 +16,24 @@
       "message": "Which octopus board needs this?  I thought it was just needed for OCPC systems.",
       "revId": "5e614bfb58f27b507c2ef9f45e0ba62634f26815",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e16fc00_7db14dfe",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-02-17T20:30:28Z",
+      "side": 1,
+      "message": "There is no octopus boards using OCPC. Multi-charger support in octopus originates from https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2407620. It was cherry-picked for Casta to support a secondary charger but we could support a 2nd charger differently because Casta is using only one charger (i.e. chg_cnt is always 1).\n\nI cherry-picked this CL to make the following cherry-picks smooth. It\u0027s a benign change. All boards except Foob advanced beyond 11297.222.0, where CL:2407620 was introduced. So, I think we can stay in this route (multi charger support) without worry about inhibiting (future) FW qualification.",
+      "parentUuid": "ea4226ce_db9c9f48",
+      "revId": "5e614bfb58f27b507c2ef9f45e0ba62634f26815",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
