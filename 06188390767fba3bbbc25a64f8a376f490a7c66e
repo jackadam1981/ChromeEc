@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7cff7f0d_4da64650",
+        "filename": "zephyr/zmake/tests/test_generate_readme.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2022-02-17T20:41:27Z",
+      "side": 1,
+      "message": "Seems like this is all the same code - can it go in a common function?",
+      "range": {
+        "startLine": 76,
+        "startChar": 12,
+        "endLine": 76,
+        "endChar": 23
+      },
+      "revId": "06188390767fba3bbbc25a64f8a376f490a7c66e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "606d8abb_503d0aed",
+        "filename": "zephyr/zmake/tests/test_reexec.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2022-02-17T20:41:27Z",
+      "side": 1,
+      "message": "What does this actually test? Can we have a comment?\n\nWhy do we need the fake chroot? Can we not make zmake not need one? It isn\u0027t supposed to!!",
+      "revId": "06188390767fba3bbbc25a64f8a376f490a7c66e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4fe80862_0b4105a2",
+        "filename": "zephyr/zmake/tests/test_zmake.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2022-02-17T20:41:27Z",
+      "side": 1,
+      "message": "Again this seems like common code?",
+      "revId": "06188390767fba3bbbc25a64f8a376f490a7c66e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
