@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e956b56_baf17dde",
+        "filename": ".gitlab-ci.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-02-17T23:49:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0ae4dd4c_69aa130d",
+      "range": {
+        "startLine": 47,
+        "startChar": 43,
+        "endLine": 47,
+        "endChar": 83
+      },
+      "revId": "06188390767fba3bbbc25a64f8a376f490a7c66e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2d09db5a_55d92d46",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "00efdc38_d184ceb8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-02-17T23:49:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2d09db5a_55d92d46",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 66
+      },
+      "revId": "06188390767fba3bbbc25a64f8a376f490a7c66e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9100e591_7d54d662",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-02-17T21:24:52Z",
       "side": 1,
       "message": "nit that this can use `(tmpname / \"ec\" / \"zephyr\" / \"module.yml\").write_text(\"\")`",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 26
+      },
+      "revId": "06188390767fba3bbbc25a64f8a376f490a7c66e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f4324561_f6697dfb",
+        "filename": "zephyr/zmake/tests/test_generate_readme.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-02-17T23:49:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9100e591_7d54d662",
       "range": {
         "startLine": 46,
         "startChar": 0,
@@ -106,6 +178,30 @@
       "writtenOn": "2022-02-17T21:24:52Z",
       "side": 1,
       "message": "using a pytest fixture would be conventional",
+      "parentUuid": "7cff7f0d_4da64650",
+      "range": {
+        "startLine": 76,
+        "startChar": 12,
+        "endLine": 76,
+        "endChar": 23
+      },
+      "revId": "06188390767fba3bbbc25a64f8a376f490a7c66e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a7aa4d5c_7df92d6c",
+        "filename": "zephyr/zmake/tests/test_generate_readme.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-02-17T23:49:12Z",
+      "side": 1,
+      "message": "Moved to common code. I didn\u0027t figure out how to make a fixture that was as flexible as what I already did.",
       "parentUuid": "7cff7f0d_4da64650",
       "range": {
         "startLine": 76,
@@ -183,6 +279,24 @@
       "side": 1,
       "message": "pytest fixture would be conventional\n\nhowever these tests are currently passing for me outside of the chroot. do we need to make modifications?",
       "parentUuid": "4fe80862_0b4105a2",
+      "revId": "06188390767fba3bbbc25a64f8a376f490a7c66e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8987e2f5_68d42ba9",
+        "filename": "zephyr/zmake/tests/test_zmake.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-02-17T23:49:12Z",
+      "side": 1,
+      "message": "You are running code that was checked out in a chroot, even though you haven\u0027t entered the chroot. In gitlab, we don\u0027t even use repo, so the file layout doesn\u0027t match the chroot at all.",
+      "parentUuid": "0f714784_76a18dd0",
       "revId": "06188390767fba3bbbc25a64f8a376f490a7c66e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
