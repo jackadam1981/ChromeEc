@@ -624,6 +624,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8269f5d4_f2536db3",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-02-17T05:39:16Z",
+      "side": 1,
+      "message": "Looking at `irq_connect_dynamic` in `arch/riscv/core/irq_manage.c`:\n\n* irq_p: IRQ number (vector table index, I believe)\n* priority_p: PLIC priority (only relevant for cores that have a PLIC)\n* isr_p: pointer to ISR function\n* isr_param_p: value passed to isr_p as a void* (`void (*isr_p)(void *isr_param_p)`)\n* flags_p: unused on RISC-V, can be 0",
+      "parentUuid": "06b631e5_55b7b75f",
+      "revId": "524a8d1e50f3a1374a3cd3403b4406552039b80e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1a59e8a1_7d39a2ce",
         "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
         "patchSetId": 6
