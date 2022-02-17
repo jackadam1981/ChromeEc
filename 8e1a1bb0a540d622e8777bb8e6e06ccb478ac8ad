@@ -98,6 +98,30 @@
       },
       "revId": "8e1a1bb0a540d622e8777bb8e6e06ccb478ac8ad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1189353_a56a4cb3",
+        "filename": "board/dojo/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-02-17T16:14:13Z",
+      "side": 1,
+      "message": "Yes, I\u0027d suggest removing the CONFIG_KBLIGHT_ENABLE_PIN option if you\u0027d like to only control the backlight enable pin from your board code rather than from the common code.",
+      "parentUuid": "e0403782_8129ccc0",
+      "range": {
+        "startLine": 39,
+        "startChar": 8,
+        "endLine": 39,
+        "endChar": 33
+      },
+      "revId": "8e1a1bb0a540d622e8777bb8e6e06ccb478ac8ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
