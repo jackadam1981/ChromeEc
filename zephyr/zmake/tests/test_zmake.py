@@ -50,13 +50,16 @@ class FakeProject:
         yield "build-ro", zmake.build_config.BuildConfig()
         yield "build-rw", zmake.build_config.BuildConfig()
 
-    def prune_modules(self, paths):
+    def prune_modules(self, _):  # pylint: disable=no-self-use
+        """Fake implementation of prune_modules."""
         return {}  # pathlib.Path('path')]
 
-    def find_dts_overlays(self, module_paths):
+    def find_dts_overlays(self, _):  # pylint: disable=no-self-use
+        """Fake implementation of find_dts_overlays."""
         return zmake.build_config.BuildConfig()
 
-    def get_toolchain(self, module_paths, override=None):
+    def get_toolchain(self, module_paths, override=None):  # pylint: disable=no-self-use
+        """Fake implementation of get_toolchain."""
         return zmake.toolchains.GenericToolchain(
             override or "foo",
             modules=module_paths,
@@ -132,8 +135,8 @@ def do_test_with_log_level(log_level, use_configure=False, fnames=None):
     with zmake_from_dir(jobserver=FakeJobserver(fnames)) as zmk:
         with LogCapture(level=log_level) as cap:
             with tempfile.TemporaryDirectory() as tmpname:
-                with open(os.path.join(tmpname, "VERSION"), "w") as fd:
-                    fd.write(
+                with open(os.path.join(tmpname, "VERSION"), "w") as file:
+                    file.write(
                         """VERSION_MAJOR = 2
 VERSION_MINOR = 5
 PATCHLEVEL = 0
@@ -179,16 +182,16 @@ class TestFilters(unittest.TestCase):
         # TODO: Remove sets and figure out how to check the lines are in the
         # right order.
         expected = {
-            "Building {}:build-ro: /usr/bin/ninja -C {}/build-build-ro".format(
-                tmpname, tmpname
+            "Building {0}:build-ro: /usr/bin/ninja -C {0}/build-build-ro".format(
+                tmpname
             ),
-            "Building {}:build-rw: /usr/bin/ninja -C {}/build-build-rw".format(
-                tmpname, tmpname
+            "Building {0}:build-rw: /usr/bin/ninja -C {0}/build-build-rw".format(
+                tmpname
             ),
         }
         for suffix in ["ro", "rw"]:
-            with open(get_test_filepath("%s_INFO" % suffix)) as f:
-                for line in f:
+            with open(get_test_filepath("%s_INFO" % suffix)) as file:
+                for line in file:
                     expected.add(
                         "[{}:build-{}]{}".format(tmpname, suffix, line.strip())
                     )
@@ -201,18 +204,18 @@ class TestFilters(unittest.TestCase):
         # TODO: Remove sets and figure out how to check the lines are in the
         # right order.
         expected = {
-            "Building {}:build-ro: /usr/bin/ninja -C {}/build-build-ro".format(
-                tmpname, tmpname
+            "Building {0}:build-ro: /usr/bin/ninja -C {0}/build-build-ro".format(
+                tmpname
             ),
-            "Building {}:build-rw: /usr/bin/ninja -C {}/build-build-rw".format(
-                tmpname, tmpname
+            "Building {0}:build-rw: /usr/bin/ninja -C {0}/build-build-rw".format(
+                tmpname
             ),
             "Running cat {}/files/sample_ro.txt".format(OUR_PATH),
             "Running cat {}/files/sample_rw.txt".format(OUR_PATH),
         }
         for suffix in ["ro", "rw"]:
-            with open(get_test_filepath(suffix)) as f:
-                for line in f:
+            with open(get_test_filepath(suffix)) as file:
+                for line in file:
                     expected.add(
                         "[{}:build-{}]{}".format(tmpname, suffix, line.strip())
                     )
@@ -221,16 +224,16 @@ class TestFilters(unittest.TestCase):
 
     def test_filter_devicetree_error(self):
         """Test that devicetree errors appear"""
-        recs, tmpname = do_test_with_log_level(
+        recs, _ = do_test_with_log_level(
             logging.ERROR, True, {re.compile(r".*"): get_test_filepath("err")}
         )
 
         dt_errs = [rec for rec in recs if "adc" in rec]
-        assert "devicetree error: 'adc' is marked as required" in list(dt_errs)[0]
+        self.assertIn("devicetree error: 'adc' is marked as required", list(dt_errs)[0])
 
 
 @pytest.mark.parametrize(
-    ["project_names", "format", "search_dir", "expected_output"],
+    ["project_names", "fmt", "search_dir", "expected_output"],
     [
         (
             ["link", "samus"],
@@ -270,7 +273,7 @@ class TestFilters(unittest.TestCase):
         ),
     ],
 )
-def test_list_projects(project_names, format, search_dir, expected_output, capsys):
+def test_list_projects(project_names, fmt, search_dir, expected_output, capsys):
     """Test listing projects with default directory."""
     fake_projects = {
         name: zmake.project.Project(
@@ -289,7 +292,7 @@ def test_list_projects(project_names, format, search_dir, expected_output, capsy
             autospec=True,
             return_value=fake_projects,
         ):
-            zmk.list_projects(format=format, search_dir=search_dir)
+            zmk.list_projects(format=fmt, search_dir=search_dir)
 
         captured = capsys.readouterr()
         assert captured.out == expected_output
