@@ -72,6 +72,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1d4866e2_7887e9d0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-02-17T03:55:14Z",
+      "side": 1,
+      "message": "i always upload with \"repo upload --cbr .\"\n\nif you\u0027re uploading multiple patches and the checker complains about issues\nin patches that will never be submitted (like some local test code),\nyou can add \"--no-verify\" to skip the checker, but make sure there\nare no issues with the patches intended for review/submission.",
+      "parentUuid": "cf2bbe67_a2936dfe",
+      "revId": "d4e8fcb8f028a9d2b721790dd06df489d4dcc72c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b38d4cad_df28fe6c",
         "filename": "driver/build.mk",
         "patchSetId": 1
