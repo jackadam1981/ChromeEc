@@ -445,3 +445,20 @@ __override const struct ec_response_keybd_config
 {
 	return &main_kb;
 }
+
+void board_set_current_limit(void)
+{
+	const int no_battery_current_limit_override_ma = 6000;
+	/*
+	 * When there is no battery, override charger current limit to
+	 * prevent brownout during boot.
+	 */
+	if (battery_is_present() == BP_NO) {
+		ccprints("No Battery Found - Override Current Limit to %dmA",
+			 no_battery_current_limit_override_ma);
+		charger_set_input_current_limit(
+			CHARGER_SOLO, no_battery_current_limit_override_ma);
+	}
+}
+DECLARE_HOOK(HOOK_BATTERY_SOC_CHANGE, board_set_current_limit,
+	     HOOK_PRIO_INIT_EXTPOWER);
