@@ -2,6 +2,10 @@
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
+"""
+Tests for the generate_readme.py file.
+"""
+
 import pytest
 
 import zmake.generate_readme as gen_readme
@@ -9,6 +13,7 @@ from tests.common import zmake_from_dir
 
 
 def test_generate_readme_contents():
+    """Verify the readme contains at least one known line."""
     readme = gen_readme.generate_readme()
 
     # Look for a string we know should appear in the README.
@@ -26,6 +31,8 @@ def test_generate_readme_contents():
 def test_generate_readme_diff(
     monkeypatch, tmp_path, expected_contents, actual_contents, return_code
 ):
+    """Verify that the diff function can detect different text."""
+
     def generate_readme():
         return expected_contents
 
@@ -41,6 +48,8 @@ def test_generate_readme_diff(
 
 @pytest.mark.parametrize("exist", [False, True])
 def test_generate_readme_file(monkeypatch, tmp_path, exist):
+    """Verify that README.md can be created if it exists already or not."""
+
     def generate_readme():
         return "hello\n"
 
