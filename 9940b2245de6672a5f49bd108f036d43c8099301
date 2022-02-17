@@ -92,6 +92,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c2d860b5_3e86258f",
+        "filename": "zephyr/projects/nissa/prj_nivviks.conf",
+        "patchSetId": 23
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-02-17T23:23:15Z",
+      "side": 1,
+      "message": "This is a possibility - I am unsure what it means by \u0027platform dependent\u0027 here.\nWill these signals truly be handled differently across all platforms?\nI would have imagined that it is specific to ADL-N with discrete GPIOs, which is a specific design scenario, but perhaps common across many platforms.\nWe do want to avoid have just a copy of the same code in every single model of Nissa-based designs.\nIt would be really good to write up some of the details in the original design doc so that we can identify which signals we consider to be common, and which are considered \u0027platform-dependent\u0027.\nSeparate board level files are good for when there is clearly no common way to perform an action or retrieve a value, or to override some mostly common function with something special, but it does create a dependency and cost to ensure that these function needs to be present and correct in all situations.\nAnd if there are many of these, it just becomes a mess with lots of copy-and-pasting, so should be somewhat of a last resort to be used when there are no other options.",
+      "parentUuid": "74eb98dc_98907c22",
+      "revId": "9940b2245de6672a5f49bd108f036d43c8099301",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "32181ece_1c3fd9f5",
         "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_adlp_nonpwrseq_sm.c",
         "patchSetId": 23
