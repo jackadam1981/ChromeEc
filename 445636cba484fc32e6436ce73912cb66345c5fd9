@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f46fcbe_3b79540f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-02-17T19:58:24Z",
+      "side": 1,
+      "message": "I agree it is a good practice. But I recall that an old EC presubmit check discouraged adding braces for single line statements. So this convention is everywhere.",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 39
+      },
+      "revId": "445636cba484fc32e6436ce73912cb66345c5fd9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4aa21802_9819bc35",
+        "filename": "zephyr/shim/src/fan.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-02-17T19:58:24Z",
+      "side": 1,
+      "message": "Return some error message for the `default` case? The original logic is binary, treating the `default` as `FAN_DUTY`, but we don\u0027t need to carry the same logic forward.",
+      "range": {
+        "startLine": 280,
+        "startChar": 0,
+        "endLine": 280,
+        "endChar": 3
+      },
+      "revId": "445636cba484fc32e6436ce73912cb66345c5fd9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
