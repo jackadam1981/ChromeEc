@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf55ccef_eb62f54b",
+        "filename": "util/genvif.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1626,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-02-17T16:49:43Z",
+      "side": 1,
+      "message": "How necessary is the Unicode here?  We\u0027ve been merge-committing to our dedede branch, but its tools don\u0027t support Unicode in C-code.  So we\u0027re trying to figure out the most reasonable route to fix it",
+      "range": {
+        "startLine": 1626,
+        "startChar": 8,
+        "endLine": 1626,
+        "endChar": 14
+      },
+      "revId": "f98b739446e4996b17fe5b5cd723c5283549649a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
