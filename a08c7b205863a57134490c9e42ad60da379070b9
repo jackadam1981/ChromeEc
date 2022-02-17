@@ -16,6 +16,23 @@
       "message": "duplicate sentence",
       "revId": "a08c7b205863a57134490c9e42ad60da379070b9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f60011b_479df193",
+        "filename": "power/mt8186.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2022-02-17T02:56:38Z",
+      "side": 1,
+      "message": "Ah.. one more thing.\n\nWe need to wake CHIPSET_TASK up to update the power state here.",
+      "revId": "a08c7b205863a57134490c9e42ad60da379070b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
