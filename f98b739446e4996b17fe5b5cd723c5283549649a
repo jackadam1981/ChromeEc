@@ -94,6 +94,30 @@
       },
       "revId": "f98b739446e4996b17fe5b5cd723c5283549649a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84354ae6_2cc115a3",
+        "filename": "util/genvif.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1626,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2022-02-17T21:00:56Z",
+      "side": 1,
+      "message": "Yeah, the toolchain branches with the branches. IIRC, pgeorgi@ may have updated the version somewhat recently. But, we\u0027re not using gcc 10.\n\n```\n(cr) (firmware-dedede-13606.B/(4aa33ca...)) aaboagye@li03 ~/trunk/src/scripts $ /usr/bin/gcc -v\nUsing built-in specs.\nCOLLECT_GCC\u003d/usr/bin/gcc.real\nCOLLECT_LTO_WRAPPER\u003d/usr/libexec/gcc/x86_64-pc-linux-gnu/4.9.x/lto-wrapper\nTarget: x86_64-pc-linux-gnu\nConfigured with: /var/tmp/portage/sys-devel/gcc-4.9.2-r271/work/gcc-4.9.2/gcc-4.9/configure --prefix\u003d/usr --bindir\u003d/usr/x86_64-pc-linux-gnu/gcc-bin/4.9.x --datadir\u003d/usr/share/gcc-data/x86_64-pc-linux-gnu/4.9.x --includedir\u003d/usr/lib/gcc/x86_64-pc-linux-gnu/4.9.x/include --with-gxx-include-dir\u003d/usr/lib/gcc/x86_64-pc-linux-gnu/4.9.x/include/g++-v4 --mandir\u003d/usr/share/gcc-data/x86_64-pc-linux-gnu/4.9.x/man --infodir\u003d/usr/share/gcc-data/x86_64-pc-linux-gnu/4.9.x/info --with-python-dir\u003d/share/gcc-data/x86_64-pc-linux-gnu/4.9.x/python --build\u003dx86_64-pc-linux-gnu --host\u003dx86_64-pc-linux-gnu --target\u003dx86_64-pc-linux-gnu --enable-languages\u003dc,c++ --enable-__cxa_atexit --disable-canonical-system-headers --enable-checking\u003drelease --enable-linker-build-id --with-bugurl\u003dhttp://code.google.com/p/chromium-os/issues/entry --with-pkgversion\u003d4.9.2_cos_gg_4.9.2-r271-ac6128e0a17a52f011797f33ac3e7d6273a9368d_4.9.2-r271 --disable-libatomic --enable-multilib --enable-libgomp --disable-libcilkrts --disable-libitm --disable-libmudflap --disable-libquadmath --disable-libssp --disable-libsanitizer --enable-frame-pointer --enable-shared --enable-threads\u003dposix\nThread model: posix\ngcc version 4.9.x 20150123 (prerelease) (4.9.2_cos_gg_4.9.2-r271-ac6128e0a17a52f011797f33ac3e7d6273a9368d_4.9.2-r271) \n```",
+      "parentUuid": "e4972701_084065a3",
+      "range": {
+        "startLine": 1626,
+        "startChar": 8,
+        "endLine": 1626,
+        "endChar": 14
+      },
+      "revId": "f98b739446e4996b17fe5b5cd723c5283549649a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
