@@ -63,6 +63,7 @@ register_corsola_project(
         here / "interrupts_kingler.dts",
         here / "cbi_eeprom.dts",
         here / "gpio_kingler.dts",
+        here / "gpio_luigi.dts",
         here / "motionsense_kingler.dts",
     ],
     extra_kconfig_files=[here / "prj_kingler.conf"],
