@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2ceb638_056ed6d3",
+        "filename": "docs/zephyr/zephyr_ap_power.md",
+        "patchSetId": 21
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2022-02-17T23:54:15Z",
+      "side": 1,
+      "message": "Any ideas how this could be tested and debugged?\n\nMaybe something like, discharge battery to minimum level and verify AP boots. With dead or disconnected battery, connect charger with minimum power and verify AP boots.",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 3
+      },
+      "revId": "cd8435c9cd379aadbe1cc24de6fea0df7607a6a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
