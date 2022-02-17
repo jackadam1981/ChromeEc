@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40a97677_1e8d9c1a",
+        "filename": "zephyr/boards/riscv/it8xxx2/Kconfig.defconfig",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-02-17T11:33:44Z",
+      "side": 1,
+      "message": "So it\u0027s an interesting discussion around what belongs in the ec/zephyr/boards/... configurations as opposed to what appears in ec/zephyr/Kconfig* files.\nLooking forward, I guess the idea is that what is in the boards/ configuration will map roughly to standard configs in zephyr, so I can see that defining the stack sizes for standard tasks like main, idle, workqueue etc. in this config is OK, and have the EC task defaults in ec/zephyr/Kconfig*.\nI actually don\u0027t think the EC task stack sizes like PD, USB_CHG belong here.\nEspecially as new tasks are optionally added, it would be better to have these in a specifically EC location.\nIt would also be cleaner to have separate Kconfig.stacks for each EC CPU type e.g Kconfig.stacks_npcx9 or something like that. Maybe.\nIt\u0027s not obvious to me what the best organisation is, so OK to keep it like this until it gets cleaned up futher.",
+      "revId": "6f9a0714475a9768c005755b06e510c08fa4902a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
