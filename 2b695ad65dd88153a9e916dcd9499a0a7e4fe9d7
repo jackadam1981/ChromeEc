@@ -33,6 +33,24 @@
       "message": "Can you describe the functional changes here and/or factor out the parts of the changes that are practically no-ops?",
       "revId": "2b695ad65dd88153a9e916dcd9499a0a7e4fe9d7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eaa6aea1_8faa0ae3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-02-17T18:54:32Z",
+      "side": 1,
+      "message": "It\u0027ll become more clear with the next CL, but generally it\u0027s to allow the test to:\n1. have more structure\n2. be able to run in a different ordering permutation to make sure it has no dependencies\n3. use the same scenarios to also test the unplug scenario",
+      "parentUuid": "1e1c361f_4afcc33a",
+      "revId": "2b695ad65dd88153a9e916dcd9499a0a7e4fe9d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
