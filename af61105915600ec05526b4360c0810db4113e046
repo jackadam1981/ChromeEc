@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ac68af1_01cfed9d",
+        "filename": "docs/zephyr/zephyr_battery.md",
+        "patchSetId": 79
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-02-17T20:14:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "67754823_8715f012",
+      "range": {
+        "startLine": 55,
+        "startChar": 60,
+        "endLine": 56,
+        "endChar": 29
+      },
+      "revId": "af61105915600ec05526b4360c0810db4113e046",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cb8eea2c_62209686",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-02-17T18:15:27Z",
       "side": 1,
       "message": "Delete - label is no longer supported.",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 29
+      },
+      "revId": "af61105915600ec05526b4360c0810db4113e046",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "48c019b3_81199ee8",
+        "filename": "docs/zephyr/zephyr_battery.md",
+        "patchSetId": 79
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-02-17T20:14:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cb8eea2c_62209686",
       "range": {
         "startLine": 69,
         "startChar": 0,
@@ -64,6 +112,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dbef70ee_f4a529e8",
+        "filename": "docs/zephyr/zephyr_battery.md",
+        "patchSetId": 79
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-02-17T20:14:13Z",
+      "side": 1,
+      "message": "Thank you!",
+      "parentUuid": "dd838dd8_99cedef5",
+      "revId": "af61105915600ec05526b4360c0810db4113e046",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "63aa83a2_31466faa",
@@ -77,6 +143,24 @@
       "writtenOn": "2022-02-17T18:15:27Z",
       "side": 1,
       "message": "Add a note:\nRefer to the vendor\u0027s datasheet to set all the fuel gauge and battery properties required in the `vendor,part.yaml` file.",
+      "revId": "af61105915600ec05526b4360c0810db4113e046",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "218fb36c_82f11f70",
+        "filename": "docs/zephyr/zephyr_battery.md",
+        "patchSetId": 79
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-02-17T20:14:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "63aa83a2_31466faa",
       "revId": "af61105915600ec05526b4360c0810db4113e046",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -104,6 +188,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e2a9f89_a88cb691",
+        "filename": "docs/zephyr/zephyr_battery.md",
+        "patchSetId": 79
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-02-17T20:14:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ddb961af_44691521",
+      "range": {
+        "startLine": 131,
+        "startChar": 0,
+        "endLine": 131,
+        "endChar": 44
+      },
+      "revId": "af61105915600ec05526b4360c0810db4113e046",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "48469969_4a131626",
@@ -117,6 +225,42 @@
       "writtenOn": "2022-02-17T18:15:27Z",
       "side": 1,
       "message": "Add example output:\n\nuart:~$ battery\n  Status:    0x00e0 FULL DCHG INIT\n  Param flags:00000002\n  Temp:      0x0b69 \u003d 292.1 K (19.0 C)\n  V:         0x2ffc \u003d 12284 mV\n  V-desired: 0x0000 \u003d 0 mV\n  I:         0x0000 \u003d 0 mA\n  I-desired: 0x0000 \u003d 0 mA\n  Charging:  Not Allowed\n  Charge:    96 %\n    Display: 98.7 %\n  Manuf:     LGC\n  Device:    AC17A8M\n  Chem:      LION\n  Serial:    0xd3b3\n  V-design:  0x2d1e \u003d 11550 mV\n  Mode:      0x6001\n  Abs charge:73 %\n  Remaining: 3901 mAh\n  Cap-full:  4074 mAh\n    Design:  5360 mAh\n  Time-full: 0h:0\n    Empty:   0h:0\n  full_factor:0.97\n  shutdown_soc:4 %",
+      "revId": "af61105915600ec05526b4360c0810db4113e046",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8e8d880_079e57a0",
+        "filename": "docs/zephyr/zephyr_battery.md",
+        "patchSetId": 79
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-02-17T20:14:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "48469969_4a131626",
+      "revId": "af61105915600ec05526b4360c0810db4113e046",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1320054e_ba622a0f",
+        "filename": "docs/zephyr/zephyr_battery.md",
+        "patchSetId": 79
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-02-17T20:14:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "48469969_4a131626",
       "revId": "af61105915600ec05526b4360c0810db4113e046",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
