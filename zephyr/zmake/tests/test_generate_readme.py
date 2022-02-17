@@ -2,6 +2,10 @@
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
+import os
+import pathlib
+import tempfile
+
 import pytest
 
 import zmake.generate_readme as gen_readme
@@ -35,8 +39,18 @@ def test_generate_readme_diff(
     if actual_contents is not None:
         readme_file.write_text(actual_contents)
 
-    zmk = zm.Zmake()
-    assert zmk.generate_readme(readme_file, diff=True) == return_code
+    with tempfile.TemporaryDirectory() as tmpname:
+        tmpname = pathlib.Path(tmpname)
+        os.mkdir(tmpname / "ec")
+        os.mkdir(tmpname / "ec" / "zephyr")
+        with open(tmpname / "ec" / "zephyr" / "module.yml", "w") as fd:
+            fd.write("hi")
+        zephyr_base = tmpname / "zephyr_base"
+        zmk = zm.Zmake(
+            zephyr_base=zephyr_base,
+            modules_dir=tmpname,
+        )
+        assert zmk.generate_readme(readme_file, diff=True) == return_code
 
 
 @pytest.mark.parametrize("exist", [False, True])
@@ -50,6 +64,16 @@ def test_generate_readme_file(monkeypatch, tmp_path, exist):
     if exist:
         readme_file.write_text("some existing contents\n")
 
-    zmk = zm.Zmake()
-    assert zmk.generate_readme(readme_file) == 0
-    assert readme_file.read_text() == "hello\n"
+    with tempfile.TemporaryDirectory() as tmpname:
+        tmpname = pathlib.Path(tmpname)
+        os.mkdir(tmpname / "ec")
+        os.mkdir(tmpname / "ec" / "zephyr")
+        with open(tmpname / "ec" / "zephyr" / "module.yml", "w") as fd:
+            fd.write("hi")
+        zephyr_base = tmpname / "zephyr_base"
+        zmk = zm.Zmake(
+            zephyr_base=zephyr_base,
+            modules_dir=tmpname,
+        )
+        assert zmk.generate_readme(readme_file) == 0
+        assert readme_file.read_text() == "hello\n"

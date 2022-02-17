@@ -44,7 +44,7 @@ before_script:
   - ln -s "$(pwd)" "${MODULES_DIR}/ec"
   - python3 -V  # Print out python version for debugging
   - python3 -m pip install zephyr/zmake --user
-  - python3 -m pip install pyyaml packaging
+  - python3 -m pip install pyyaml packaging coverage pytest hypothesis testfixtures
   - export BUILD_DIR=build
   - export PATH="$PATH:$HOME/.local/bin"
   - export PYTHONIOENCODING=utf-8
@@ -286,3 +286,17 @@ twister_coverage:
       - build/zephyr_codecov/fixed.info
     expire_in: 1 week
   coverage: '/lines\.*: \d+\.\d+%/'
+
+zmake_coverage:
+  stage: test
+  needs: ["seed_cache"]
+  script:
+    - cd zephyr/zmake
+    - coverage run --source=zmake -m pytest .
+    - coverage report
+    - coverage html
+  artifacts:
+    paths:
+      - zephyr/zmake/htmlcov/*
+    expire_in: 1 week
+  coverage: '/TOTAL\.* \d+%/'

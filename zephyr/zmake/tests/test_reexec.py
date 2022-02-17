@@ -4,7 +4,9 @@
 """Test the zmake re-exec functionality."""
 
 import os
+import pathlib
 import sys
+import tempfile
 import unittest.mock as mock
 
 import pytest
@@ -48,12 +50,18 @@ def test_zmake_does_not_exist(fake_env, mock_execve):
 
 def test_zmake_reexec(fake_env, mock_execve):
     # Nothing else applies?  The re-exec should happen.
-    fake_env["CROS_WORKON_SRCROOT"] = "/mnt/host/source"
-    main.maybe_reexec(["--help"])
-    new_env = dict(fake_env)
-    new_env["PYTHONPATH"] = "/mnt/host/source/src/platform/ec/zephyr/zmake"
-    mock_execve.assert_called_once_with(
-        sys.executable,
-        [sys.executable, "-m", "zmake", "--help"],
-        new_env,
-    )
+    actual_zmake_src_path = pathlib.Path(__file__).parent.parent
+    # Create a fake chroot filesystem
+    with tempfile.TemporaryDirectory() as fake_srcroot:
+        fake_zmake_path = pathlib.Path(fake_srcroot) / "src/platform/ec/zephyr/zmake"
+        os.makedirs(fake_zmake_path.parent)
+        os.symlink(actual_zmake_src_path, fake_zmake_path)
+        fake_env["CROS_WORKON_SRCROOT"] = fake_srcroot
+        main.maybe_reexec(["--help"])
+        new_env = dict(fake_env)
+        new_env["PYTHONPATH"] = str(fake_zmake_path.resolve())
+        mock_execve.assert_called_once_with(
+            sys.executable,
+            [sys.executable, "-m", "zmake", "--help"],
+            new_env,
+        )
