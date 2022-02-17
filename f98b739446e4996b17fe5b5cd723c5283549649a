@@ -70,6 +70,30 @@
       },
       "revId": "f98b739446e4996b17fe5b5cd723c5283549649a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e4972701_084065a3",
+        "filename": "util/genvif.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1626,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-02-17T19:58:45Z",
+      "side": 1,
+      "message": "um... we must have updated the host toolchain in the chroot\nso BUILDCC has different defaults?\nor, did BUILD_CFLAGS change?\n\nwhat are you seeing on your branch for:\n\n(main) [brya] $ /usr/bin/gcc -v\nUsing built-in specs.\nCOLLECT_GCC\u003d/usr/bin/gcc.real\nCOLLECT_LTO_WRAPPER\u003d/usr/libexec/gcc/x86_64-pc-linux-gnu/10.2.0/lto-wrapper\nTarget: x86_64-pc-linux-gnu\nConfigured with: /var/tmp/portage/sys-devel/gcc-10.2.0-r25/work/gcc-10.2.0/configure --prefix\u003d/usr --bindir\u003d/usr/x86_64-pc-linux-gnu/gcc-bin/10.2.0 --datadir\u003d/usr/share/gcc-data/x86_64-pc-linux-gnu/10.2.0 --includedir\u003d/usr/lib/gcc/x86_64-pc-linux-gnu/10.2.0/include --with-gxx-include-dir\u003d/usr/lib/gcc/x86_64-pc-linux-gnu/10.2.0/include/g++-v10 --mandir\u003d/usr/share/gcc-data/x86_64-pc-linux-gnu/10.2.0/man --infodir\u003d/usr/share/gcc-data/x86_64-pc-linux-gnu/10.2.0/info --with-python-dir\u003d/share/gcc-data/x86_64-pc-linux-gnu/10.2.0/python --build\u003dx86_64-pc-linux-gnu --host\u003dx86_64-pc-linux-gnu --target\u003dx86_64-pc-linux-gnu --enable-languages\u003dc,c++ --enable-__cxa_atexit --disable-canonical-system-headers --enable-checking\u003drelease --enable-linker-build-id --with-bugurl\u003dhttps://bugs.chromium.org --disable-libatomic --enable-multilib --enable-libgomp --disable-libcilkrts --disable-libitm --disable-libcc1 --disable-libmudflap --disable-libquadmath --disable-libssp --disable-libsanitizer --enable-frame-pointer --disable-cet --enable-shared --enable-threads\u003dposix \nThread model: posix\nSupported LTO compression algorithms: zlib zstd\ngcc version 10.2.0 (GCC) \n(main) [brya] $ \n\n\n/usr/bin/ccache gcc -I/usr/include/libftdi1 -I/usr/include/libusb-1.0 -DOUTDIR\u003dbuild/brya/ -DCHIP\u003dnpcx -DBOARD_TASKFILE\u003dec.tasklist -DBOARD\u003dbrya -DCORE\u003dcortex-m -DPROJECT\u003dec -DCHIP_VARIANT\u003dnpcx9m3f -DCHIP_FAMILY\u003dNPCX9 -DBOARD_BRYA\u003d -DCHIP_NPCX\u003d -DCORE_CORTEX_M\u003d -DCHIP_VARIANT_NPCX9M3F\u003d -DCHIP_FAMILY_NPCX9\u003d -DFINAL_OUTDIR\u003dbuild/brya -DPROTOBUF_MIN_PROTOC_VERSION\u003d0 -DHAS_BASEBOARD\u003d -DBASEBOARD_BRYA\u003d -Icore/host -Iinclude  -Icore/cortex-m/include  -Iinclude/driver  -Icore/cortex-m  -Ichip/npcx  -Ibaseboard/brya  -Iboard/brya  -Icommon  -Ifuzz  -Ipower  -Itest  -Icts/common  -Icts/  -Ibuild/brya/gen  -Iprivate  -Iprivate-kandou  -Icommon  -Icommon/vboot  -Icommon/usbc  -Icommon/fpsensor  -Icommon/mock  -Idriver  -Idriver/temp_sensor  -Idriver/wpc  -Idriver/usb_mux  -Idriver/bc12  -Idriver/led  -Idriver/charger  -Idriver/fingerprint  -Idriver/fingerprint/fpc  -Idriver/fingerprint/fpc/libfp  -Idriver/fingerprint/fpc/bep  -Idriver/fingerprint/elan  -Idriver/ppc  -Idriver/tcpm  -Idriver/retimer  -Idriver/ioexpander  -Idriver/nfc  -Idriver/battery  -Ibuild/brya  -Ifuzz  -Itest  -Ithird_party  -I.    -DTEST_ec\u003d -DTEST_EC\u003d        -Iinclude/driver  -DSECTION_IS_\u003d -DSECTION\u003d  -O3 -g  -Wall -Wundef -Werror-implicit-function-declaration -Wno-trigraphs -Wno-format-security -Wno-address-of-packed-member -fno-common -fno-strict-aliasing -fno-strict-overflow -Werror -Werror\u003dmaybe-uninitialized -Wstrict-prototypes -Wdeclaration-after-statement -Wno-pointer-sign -DCHROMIUM_EC\u003d util/genvif.c -lftdi1 -lusb-1.0  build/brya/common/usb_common.o build/brya/common/usb_pd_pdo.o -flto -MMD -MF build/brya/util/genvif.d -MT build/brya/util/genvif -o build/brya/util/genvif",
+      "parentUuid": "56a6ec56_b573f8c4",
+      "range": {
+        "startLine": 1626,
+        "startChar": 8,
+        "endLine": 1626,
+        "endChar": 14
+      },
+      "revId": "f98b739446e4996b17fe5b5cd723c5283549649a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
