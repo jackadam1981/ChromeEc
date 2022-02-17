@@ -1,6 +1,52 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "39f71ea8_f216c595",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_attach_src_snk.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-02-17T20:47:54Z",
+      "side": 1,
+      "message": "These don\u0027t need to be pointers, you can just have the structs as a part of the fixture.",
+      "range": {
+        "startLine": 40,
+        "startChar": 1,
+        "endLine": 41,
+        "endChar": 31
+      },
+      "revId": "43da9d4c301b66332e1e431692edebe9bb9ef4e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3683beb_f72eee6a",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_attach_src_snk.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-02-17T20:47:54Z",
+      "side": 1,
+      "message": "Not needed if the type isn\u0027t a pointer above",
+      "range": {
+        "startLine": 49,
+        "startChar": 1,
+        "endLine": 50,
+        "endChar": 31
+      },
+      "revId": "43da9d4c301b66332e1e431692edebe9bb9ef4e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "32fca750_97ea2a85",
