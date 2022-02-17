@@ -22,7 +22,7 @@ import zmake.multiproc as multiproc
 import zmake.output_packers
 import zmake.project
 import zmake.toolchains
-import zmake.zmake as zm
+from tests.common import zmake_from_dir
 
 OUR_PATH = os.path.dirname(os.path.realpath(__file__))
 
@@ -128,40 +128,38 @@ def do_test_with_log_level(log_level, use_configure=False, fnames=None):
             re.compile(r".*build-ro"): get_test_filepath("ro"),
             re.compile(r".*build-rw"): get_test_filepath("rw"),
         }
-    zephyr_base = mock.Mock()
 
-    zmk = zm.Zmake(
-        jobserver=FakeJobserver(fnames),
-        zephyr_base=zephyr_base,
-    )
-
-    with LogCapture(level=log_level) as cap:
-        with tempfile.TemporaryDirectory() as tmpname:
-            with open(os.path.join(tmpname, "VERSION"), "w") as fd:
-                fd.write(
-                    """VERSION_MAJOR = 2
+    with zmake_from_dir(jobserver=FakeJobserver(fnames)) as zmk:
+        with LogCapture(level=log_level) as cap:
+            with tempfile.TemporaryDirectory() as tmpname:
+                with open(os.path.join(tmpname, "VERSION"), "w") as fd:
+                    fd.write(
+                        """VERSION_MAJOR = 2
 VERSION_MINOR = 5
 PATCHLEVEL = 0
 VERSION_TWEAK = 0
 EXTRAVERSION =
 """
-                )
-            (pathlib.Path(tmpname) / "project_name.txt").write_text("fakeproject")
-            zephyr_base.resolve = mock.Mock(return_value=pathlib.Path(tmpname))
-            with patch("zmake.version.get_version_string", return_value="123"):
-                with patch.object(
-                    zmake.project,
-                    "find_projects",
-                    return_value={"fakeproject": FakeProject()},
-                ):
-                    if use_configure:
-                        zmk.configure(
-                            "fakeproject", build_dir=pathlib.Path("build"), clobber=True
-                        )
-                    else:
-                        with patch("zmake.version.write_version_header", autospec=True):
-                            zmk.build(pathlib.Path(tmpname))
-                    multiproc.wait_for_log_end()
+                    )
+                (pathlib.Path(tmpname) / "project_name.txt").write_text("fakeproject")
+                with patch("zmake.version.get_version_string", return_value="123"):
+                    with patch.object(
+                        zmake.project,
+                        "find_projects",
+                        return_value={"fakeproject": FakeProject()},
+                    ):
+                        if use_configure:
+                            zmk.configure(
+                                "fakeproject",
+                                build_dir=pathlib.Path("build"),
+                                clobber=True,
+                            )
+                        else:
+                            with patch(
+                                "zmake.version.write_version_header", autospec=True
+                            ):
+                                zmk.build(pathlib.Path(tmpname))
+                        multiproc.wait_for_log_end()
 
     recs = [rec.getMessage() for rec in cap.records]
     return recs, tmpname
@@ -285,16 +283,16 @@ def test_list_projects(project_names, format, search_dir, expected_output, capsy
         )
         for name in project_names
     }
-    zmk = zm.Zmake()
-    with mock.patch(
-        "zmake.project.find_projects",
-        autospec=True,
-        return_value=fake_projects,
-    ):
-        zmk.list_projects(format=format, search_dir=search_dir)
+    with zmake_from_dir() as zmk:
+        with mock.patch(
+            "zmake.project.find_projects",
+            autospec=True,
+            return_value=fake_projects,
+        ):
+            zmk.list_projects(format=format, search_dir=search_dir)
 
-    captured = capsys.readouterr()
-    assert captured.out == expected_output
+        captured = capsys.readouterr()
+        assert captured.out == expected_output
 
 
 if __name__ == "__main__":
