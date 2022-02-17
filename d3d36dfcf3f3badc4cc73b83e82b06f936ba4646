@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58d02fbd_32139493",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2022-02-17T03:36:06Z",
+      "side": 1,
+      "message": "Please use inclusive language and replace master/slave with primary/secondary when possible.",
+      "revId": "d3d36dfcf3f3badc4cc73b83e82b06f936ba4646",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb0f55d3_92ced080",
+        "filename": "driver/tcpm/anx7406.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2022-02-17T03:36:06Z",
+      "side": 1,
+      "message": "nit: please define 0xFF",
+      "range": {
+        "startLine": 139,
+        "startChar": 45,
+        "endLine": 139,
+        "endChar": 49
+      },
+      "revId": "d3d36dfcf3f3badc4cc73b83e82b06f936ba4646",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3dbb131f_0d3a4dad",
+        "filename": "driver/tcpm/anx7406.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2022-02-17T03:36:06Z",
+      "side": 1,
+      "message": "rv \u003d anx7406_hpd_reset(port);",
+      "range": {
+        "startLine": 191,
+        "startChar": 0,
+        "endLine": 191,
+        "endChar": 25
+      },
+      "revId": "d3d36dfcf3f3badc4cc73b83e82b06f936ba4646",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1056ad16_08d902a6",
+        "filename": "driver/tcpm/anx7406.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2022-02-17T03:36:06Z",
+      "side": 1,
+      "message": "Is polarity ever cleared? I.e.after calling this function one of CC lines is connected to VCONN and will stay like that forever?",
+      "range": {
+        "startLine": 208,
+        "startChar": 0,
+        "endLine": 212,
+        "endChar": 47
+      },
+      "revId": "d3d36dfcf3f3badc4cc73b83e82b06f936ba4646",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
