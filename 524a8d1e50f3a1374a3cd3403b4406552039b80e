@@ -606,6 +606,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "06b631e5_55b7b75f",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-02-17T05:01:49Z",
+      "side": 1,
+      "message": "I\u0027m not sure about this, may I get more details? The document has IRQ_CONNECT(irq_p, priority_p, isr_p, isr_param_p, flags_p), I don\u0027t find informaton about some parameter, like the irq_p, available to power sequencing module. In NPCX driver they use this, but couldn\u0027t take it as an example here.",
+      "parentUuid": "cc197add_3275e3f8",
+      "revId": "524a8d1e50f3a1374a3cd3403b4406552039b80e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1a59e8a1_7d39a2ce",
         "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
         "patchSetId": 6
