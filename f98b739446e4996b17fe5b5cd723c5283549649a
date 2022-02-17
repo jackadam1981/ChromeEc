@@ -46,6 +46,30 @@
       },
       "revId": "f98b739446e4996b17fe5b5cd723c5283549649a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56a6ec56_b573f8c4",
+        "filename": "util/genvif.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1626,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-02-17T18:58:59Z",
+      "side": 1,
+      "message": "This is the output I see on our branch merge (https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3470258): \n\nchromeos-ec-0.0.2-r8678: util/genvif.c: In function \u0027override_vif_product_fields\u0027:\nchromeos-ec-0.0.2-r8678: util/genvif.c:1626:4: error: universal character names are only valid in C++ and C99 [-Werror]\nchromeos-ec-0.0.2-r8678:     \"USB4\\u2122 Product\");\nchromeos-ec-0.0.2-r8678:     ^\nchromeos-ec-0.0.2-r8678:   CC      RW/baseboard/dedede/baseboard.o\nchromeos-ec-0.0.2-r8678: util/genvif.c: In function \u0027init_vif_component_general_pd_fields\u0027:\nchromeos-ec-0.0.2-r8678: util/genvif.c:3110:8: error: universal character names are only valid in C++ and C99 [-Werror]\nchromeos-ec-0.0.2-r8678:    \"2\", \"USB Type-C\\u00ae Receptacle\");\nchromeos-ec-0.0.2-r8678:         ^\nchromeos-ec-0.0.2-r8678: util/genvif.c: In function \u0027init_vif_component_usb4_port_fields\u0027:\nchromeos-ec-0.0.2-r8678: util/genvif.c:3292:4: error: universal character names are only valid in C++ and C99 [-Werror]\nchromeos-ec-0.0.2-r8678:     \"USB4\\u2122 Port\");\nchromeos-ec-0.0.2-r8678:     ^\nchromeos-ec-0.0.2-r8678: util/genvif.c: In function \u0027init_remarks\u0027:\nchromeos-ec-0.0.2-r8678: util/genvif.c:3829:2: error: \u0027for\u0027 loop initial declarations are only allowed in C99 or C11 mode\nchromeos-ec-0.0.2-r8678:   for (int c \u003d 0; c \u003c max_component_index; ++c) {\nchromeos-ec-0.0.2-r8678:   ^\nchromeos-ec-0.0.2-r8678: util/genvif.c:3829:2: note: use option -std\u003dc99, -std\u003dgnu99, -std\u003dc11 or -std\u003dgnu11 to compile your code\nchromeos-ec-0.0.2-r8678: util/genvif.c:3838:5: error: universal character names are only valid in C++ and C99 [-Werror]\nchromeos-ec-0.0.2-r8678:      \"USB Type-C\\u00ae\");",
+      "parentUuid": "0f96f95a_c75f51f9",
+      "range": {
+        "startLine": 1626,
+        "startChar": 8,
+        "endLine": 1626,
+        "endChar": 14
+      },
+      "revId": "f98b739446e4996b17fe5b5cd723c5283549649a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
