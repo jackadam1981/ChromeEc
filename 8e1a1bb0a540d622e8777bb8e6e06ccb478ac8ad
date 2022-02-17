@@ -74,6 +74,30 @@
       },
       "revId": "8e1a1bb0a540d622e8777bb8e6e06ccb478ac8ad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0403782_8129ccc0",
+        "filename": "board/dojo/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1444467
+      },
+      "writtenOn": "2022-02-17T03:36:04Z",
+      "side": 1,
+      "message": "Hi Chen-Tsung,\n\nThanks for you help. It seems that this config was added in CL:3418857.",
+      "parentUuid": "52cbbae5_ac275fdb",
+      "range": {
+        "startLine": 39,
+        "startChar": 8,
+        "endLine": 39,
+        "endChar": 33
+      },
+      "revId": "8e1a1bb0a540d622e8777bb8e6e06ccb478ac8ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
