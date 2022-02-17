@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eaa12cae_e566a91c",
+        "filename": "board/dojo/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1444467
+      },
+      "writtenOn": "2022-02-17T03:34:07Z",
+      "side": 1,
+      "message": "Hi Diana,\n\nIt seems that this will lead to CL:3412627 failed on building. I\u0027not sure if this config is necessary for dojo. Could you help to take a view?\n\nThanks!",
+      "revId": "c590e40132ac94719cf154258881a450f72201e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
