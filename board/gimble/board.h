@@ -24,7 +24,8 @@
 /* Sensors */
 /* BMA253 accelerometer in lid */
 #define CONFIG_ACCEL_BMA255
-
+#define CONFIG_BODY_DETECTION
+#define CONFIG_BODY_DETECTION_SENSOR           BASE_ACCEL
 #define CONFIG_ACCEL_INTERRUPTS
 #define CONFIG_ACCELGYRO_BMI160	/* Base accel/gyro */
 #define CONFIG_ACCELGYRO_BMI160_INT_EVENT \
