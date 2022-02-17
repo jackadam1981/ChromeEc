@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bac1c845_92a68fa7",
+        "filename": "baseboard/intelrvp/adlrvp.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 480,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2022-02-17T15:14:31Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "7e36a1c5_5107b6e5",
+      "range": {
+        "startLine": 480,
+        "startChar": 1,
+        "endLine": 480,
+        "endChar": 4
+      },
+      "revId": "252185325acd39514ed3219e67228da586fb0340",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fcbdeff6_98a9ec7f",
@@ -41,6 +65,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8ae5b90_8e1c0286",
+        "filename": "baseboard/intelrvp/adlrvp.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 485,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2022-02-17T15:14:31Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "fcbdeff6_98a9ec7f",
+      "revId": "252185325acd39514ed3219e67228da586fb0340",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "af9c540d_73d0d615",
@@ -54,6 +96,30 @@
       "writtenOn": "2022-02-16T00:54:48Z",
       "side": 1,
       "message": "how about checking i \u003d\u003d ADL_BOARD_ID_READ_RETRY_CNT\nto detect the timeout?",
+      "range": {
+        "startLine": 488,
+        "startChar": 4,
+        "endLine": 488,
+        "endChar": 20
+      },
+      "revId": "252185325acd39514ed3219e67228da586fb0340",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "792f539c_bcb1a9db",
+        "filename": "baseboard/intelrvp/adlrvp.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 488,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2022-02-17T15:14:31Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "af9c540d_73d0d615",
       "range": {
         "startLine": 488,
         "startChar": 4,
