@@ -68,6 +68,40 @@
       "parentUuid": "eb2161f9_c56f9dba",
       "revId": "b115a4be20358c2b0f0a338e99c6c308e37d87f9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7f3b08c_7ceff7c4",
+        "filename": "zephyr/projects/skyrim/gpio.dts",
+        "patchSetId": 4
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1477788
+      },
+      "writtenOn": "2022-02-18T15:18:00Z",
+      "side": 1,
+      "message": "This should be output",
+      "revId": "b115a4be20358c2b0f0a338e99c6c308e37d87f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0266e9ae_a6721aa1",
+        "filename": "zephyr/projects/skyrim/gpio.dts",
+        "patchSetId": 4
+      },
+      "lineNbr": 404,
+      "author": {
+        "id": 1477788
+      },
+      "writtenOn": "2022-02-18T15:18:00Z",
+      "side": 1,
+      "message": "Looks like this isn\u0027t used, but should it be the same for both chips?",
+      "revId": "b115a4be20358c2b0f0a338e99c6c308e37d87f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
