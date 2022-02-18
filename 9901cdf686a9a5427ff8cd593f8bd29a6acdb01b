@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb75f548_785abaf5",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1513493
+      },
+      "writtenOn": "2022-02-18T20:50:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f63eda0b_59f6cdfc",
+      "range": {
+        "startLine": 324,
+        "startChar": 0,
+        "endLine": 327,
+        "endChar": 3
+      },
+      "revId": "9901cdf686a9a5427ff8cd593f8bd29a6acdb01b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "636a11b0_3d906bcb",
@@ -49,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c55b3029_d54b735d",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 704,
+      "author": {
+        "id": 1513493
+      },
+      "writtenOn": "2022-02-18T20:50:21Z",
+      "side": 1,
+      "message": "Added the support using existing boot_key_list. Modified existing mask_index and mask_value to column and row and generating mask_value in place, to avoid adding additional structure that has absolute row value.",
+      "parentUuid": "636a11b0_3d906bcb",
+      "range": {
+        "startLine": 704,
+        "startChar": 12,
+        "endLine": 704,
+        "endChar": 30
+      },
+      "revId": "9901cdf686a9a5427ff8cd593f8bd29a6acdb01b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5bc36c53_36141ac6",
         "filename": "common/keyboard_scan.c",
         "patchSetId": 7
@@ -60,6 +108,30 @@
       "writtenOn": "2022-02-18T16:49:01Z",
       "side": 1,
       "message": "Why is this called here instead of from check_boot_key? There are some checks (system_jumped_late, !RESET_FLAG_*) boot keys need to pass.",
+      "range": {
+        "startLine": 801,
+        "startChar": 1,
+        "endLine": 801,
+        "endChar": 19
+      },
+      "revId": "9901cdf686a9a5427ff8cd593f8bd29a6acdb01b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd66a921_395267eb",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 801,
+      "author": {
+        "id": 1513493
+      },
+      "writtenOn": "2022-02-18T20:50:21Z",
+      "side": 1,
+      "message": "It is done after this call at line number 819 in the function check_boot_key(debounced_state);\n\nNote here we are registering only the designated boot keys and not reading entire matrix. So the check at line number 694: /* If any other key was pressed, ignore all keys */ is not applicable here.",
+      "parentUuid": "5bc36c53_36141ac6",
       "range": {
         "startLine": 801,
         "startChar": 1,
