@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d2dff75_4bd83006",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1679,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-02-18T20:42:11Z",
+      "side": 0,
+      "message": "This is ok theoretically. Without AC, the EC hibernates. When the EC comes back from hibernation, it doesn\u0027t remember the charge control mode.\n\nSo, instead of making things complicated, why don\u0027t you update the test or document to apply a desired mode on every AC plug?",
+      "range": {
+        "startLine": 1678,
+        "startChar": 0,
+        "endLine": 1679,
+        "endChar": 45
+      },
+      "revId": "900b03ec7ffa5d3f7ca86166d6b0dbc914ed8936",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
