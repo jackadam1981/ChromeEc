@@ -13,8 +13,8 @@
 
 #include "variant_db_detection.h"
 
-#define CPRINTS(format, args...) cprints(CC_SYSTEM, format, ## args)
-#define CPRINTF(format, args...) cprintf(CC_SYSTEM, format, ## args)
+#define CPRINTS(format, args...) cprints(CC_SYSTEM, format, ##args)
+#define CPRINTF(format, args...) cprintf(CC_SYSTEM, format, ##args)
 
 BUILD_ASSERT(GPIO_OUT_HIGH == 0xA00, "Don't use cros ec gpio flags here");
 
@@ -45,9 +45,8 @@ static void corsola_db_config(enum corsola_db_type type)
 		gpio_enable_dt_interrupt(
 			GPIO_INT_FROM_NODELABEL(int_x_ec_gpio2));
 		/* EC_X_GPIO3 */
-		gpio_pin_configure_dt(
-			GPIO_DT_FROM_ALIAS(gpio_usb_c1_dp_in_hpd),
-			GPIO_OUT_LOW);
+		gpio_pin_configure_dt(GPIO_DT_FROM_ALIAS(gpio_usb_c1_dp_in_hpd),
+				      GPIO_OUT_LOW);
 		return;
 	default:
 		break;
