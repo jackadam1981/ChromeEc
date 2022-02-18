@@ -641,6 +641,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3eabd0d0_385e3f5d",
+        "filename": "zephyr/Kconfig.keyboard",
+        "patchSetId": 13
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-02-18T00:56:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "321af26b_e3e05c8e",
+      "range": {
+        "startLine": 199,
+        "startChar": 8,
+        "endLine": 199,
+        "endChar": 32
+      },
+      "revId": "bcf9296e136cdf50aec00bed7a7bfaefe6c3f639",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e67cab93_8ac1db58",
