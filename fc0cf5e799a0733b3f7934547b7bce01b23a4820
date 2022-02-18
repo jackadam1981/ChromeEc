@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dfdf98d5_956a43c1",
+        "filename": "zephyr/shim/src/chipset.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-02-18T21:10:04Z",
+      "side": 1,
+      "message": "Is there a bug for this? If not, please create one.",
+      "range": {
+        "startLine": 35,
+        "startChar": 3,
+        "endLine": 35,
+        "endChar": 7
+      },
+      "revId": "fc0cf5e799a0733b3f7934547b7bce01b23a4820",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd322209_490d1516",
+        "filename": "zephyr/subsys/ap_pwrseq/chipset_interface.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-02-18T21:10:04Z",
+      "side": 1,
+      "message": "This is the legacy EC file, correct?\n\nPlease create a bug to track removing this dependency.  You will need declare CHIPSET_STATE_* somewhere in the ap_pwrseq subsystem.\n\nOne idea create a new name-space for these bits, something AP_PWRSEQ_CHIPSET_STATE_*, and then you could have shim/chipset.c code translate the legacy mask bits to the zephyr mask bits.",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 20
+      },
+      "revId": "fc0cf5e799a0733b3f7934547b7bce01b23a4820",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "057b3253_aecc9f90",
+        "filename": "zephyr/subsys/ap_pwrseq/include/chipset.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-02-18T21:10:04Z",
+      "side": 1,
+      "message": "bool type",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 3
+      },
+      "revId": "fc0cf5e799a0733b3f7934547b7bce01b23a4820",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e4be119d_32f997c6",
+        "filename": "zephyr/subsys/ap_pwrseq/include/chipset.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-02-18T21:10:04Z",
+      "side": 1,
+      "message": "bool type",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 3
+      },
+      "revId": "fc0cf5e799a0733b3f7934547b7bce01b23a4820",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2617221e_deaa179c",
+        "filename": "zephyr/subsys/ap_pwrseq/include/x86_common_pwrseq.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-02-18T21:10:04Z",
+      "side": 1,
+      "message": "Use a bool type.",
+      "range": {
+        "startLine": 80,
+        "startChar": 1,
+        "endLine": 80,
+        "endChar": 4
+      },
+      "revId": "fc0cf5e799a0733b3f7934547b7bce01b23a4820",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a34646b3_c1c2aeca",
+        "filename": "zephyr/subsys/ap_pwrseq/include/x86_non_dsx_common_pwrseq_sm_handler.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-02-18T21:10:04Z",
+      "side": 1,
+      "message": "bool",
+      "range": {
+        "startLine": 53,
+        "startChar": 36,
+        "endLine": 53,
+        "endChar": 39
+      },
+      "revId": "fc0cf5e799a0733b3f7934547b7bce01b23a4820",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4566cb81_dd4bf0ba",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-02-18T21:10:04Z",
+      "side": 1,
+      "message": "bool",
+      "range": {
+        "startLine": 135,
+        "startChar": 36,
+        "endLine": 135,
+        "endChar": 39
+      },
+      "revId": "fc0cf5e799a0733b3f7934547b7bce01b23a4820",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
