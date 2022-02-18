@@ -22,6 +22,30 @@
       },
       "revId": "fea566618ebb425a52ab4f7414d1e68bf80c2608",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "61ee108d_7611163b",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_integration_tests.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-02-18T22:29:07Z",
+      "side": 1,
+      "message": "Created http://b/220381712",
+      "parentUuid": "b72075f6_83fc9420",
+      "range": {
+        "startLine": 126,
+        "startChar": 0,
+        "endLine": 131,
+        "endChar": 57
+      },
+      "revId": "fea566618ebb425a52ab4f7414d1e68bf80c2608",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
