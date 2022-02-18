@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f63eda0b_59f6cdfc",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-02-18T16:49:01Z",
+      "side": 1,
+      "message": "nit: can you indent these?",
+      "range": {
+        "startLine": 324,
+        "startChar": 0,
+        "endLine": 327,
+        "endChar": 3
+      },
+      "revId": "9901cdf686a9a5427ff8cd593f8bd29a6acdb01b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "636a11b0_3d906bcb",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 704,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-02-18T16:49:01Z",
+      "side": 1,
+      "message": "I think we need to support other boot keys (BOOT_KEY_DOWN_ARROW, BOOT_KEY_LEFT_SHIFT).",
+      "range": {
+        "startLine": 704,
+        "startChar": 12,
+        "endLine": 704,
+        "endChar": 30
+      },
+      "revId": "9901cdf686a9a5427ff8cd593f8bd29a6acdb01b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5bc36c53_36141ac6",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 801,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-02-18T16:49:01Z",
+      "side": 1,
+      "message": "Why is this called here instead of from check_boot_key? There are some checks (system_jumped_late, !RESET_FLAG_*) boot keys need to pass.",
+      "range": {
+        "startLine": 801,
+        "startChar": 1,
+        "endLine": 801,
+        "endChar": 19
+      },
+      "revId": "9901cdf686a9a5427ff8cd593f8bd29a6acdb01b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
