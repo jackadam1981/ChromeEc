@@ -1,6 +1,46 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "085abb77_5cf47612",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-02-18T20:17:16Z",
+      "side": 1,
+      "message": "Nice! good to get this in markdown!",
+      "revId": "9cc68fd426ead10ca63c481fb7137a455c4b35d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "029ab074_cf4bb1de",
+        "filename": "README.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-02-18T20:17:16Z",
+      "side": 1,
+      "message": "This is fine for now, but soon enough we\u0027ll want the top level README.md to be about Zephyr, and have the legacy stuff somewhere else.",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 0
+      },
+      "revId": "9cc68fd426ead10ca63c481fb7137a455c4b35d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dd03e73c_bb80c1b1",
@@ -37,6 +77,30 @@
       "writtenOn": "2022-02-18T20:08:15Z",
       "side": 1,
       "message": "Should we mention that we plan to integrate this into west one day?",
+      "range": {
+        "startLine": 19,
+        "startChar": 17,
+        "endLine": 19,
+        "endChar": 22
+      },
+      "revId": "9cc68fd426ead10ca63c481fb7137a455c4b35d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "822a5b3e_7354d4c1",
+        "filename": "docs/zephyr/README.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-02-18T20:17:16Z",
+      "side": 1,
+      "message": "I don\u0027t think we should. West very much sucks too.\n\nUltimately it would be nice if Zephyr\u0027s cmake system was simple enough that we didn\u0027t need a meta-build tool just to invoke it.",
+      "parentUuid": "3746e223_883fa1a8",
       "range": {
         "startLine": 19,
         "startChar": 17,
