@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd03e73c_bb80c1b1",
+        "filename": "docs/zephyr/README.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2022-02-18T20:08:15Z",
+      "side": 1,
+      "message": "-",
+      "range": {
+        "startLine": 14,
+        "startChar": 8,
+        "endLine": 14,
+        "endChar": 9
+      },
+      "revId": "9cc68fd426ead10ca63c481fb7137a455c4b35d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3746e223_883fa1a8",
+        "filename": "docs/zephyr/README.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2022-02-18T20:08:15Z",
+      "side": 1,
+      "message": "Should we mention that we plan to integrate this into west one day?",
+      "range": {
+        "startLine": 19,
+        "startChar": 17,
+        "endLine": 19,
+        "endChar": 22
+      },
+      "revId": "9cc68fd426ead10ca63c481fb7137a455c4b35d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc6a4b65_c84f9ef6",
+        "filename": "docs/zephyr/README.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2022-02-18T20:08:15Z",
+      "side": 1,
+      "message": "builds",
+      "range": {
+        "startLine": 40,
+        "startChar": 27,
+        "endLine": 40,
+        "endChar": 28
+      },
+      "revId": "9cc68fd426ead10ca63c481fb7137a455c4b35d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a971471_cd004994",
+        "filename": "docs/zephyr/README.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2022-02-18T20:08:15Z",
+      "side": 1,
+      "message": "I suggest:\n\ncommon/\n\ninstead of ./common since the ./ is implied and the trailing / indicates that this is a directory",
+      "range": {
+        "startLine": 57,
+        "startChar": 3,
+        "endLine": 57,
+        "endChar": 11
+      },
+      "revId": "9cc68fd426ead10ca63c481fb7137a455c4b35d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
