@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "747b5994_fd3c8e8a",
+        "filename": "zephyr/shim/src/cbi/CMakeLists.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-02-18T18:07:57Z",
+      "side": 1,
+      "message": "Nit - add one file per line to improve readability.",
+      "range": {
+        "startLine": 4,
+        "startChar": 0,
+        "endLine": 4,
+        "endChar": 64
+      },
+      "revId": "73787740f5c603c5a7d0728910555bfd6d7c4e40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3192c8e8_30466a12",
+        "filename": "zephyr/shim/src/cbi/cros_cbi_ssfc.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-02-18T18:07:57Z",
+      "side": 1,
+      "message": "Move these defines into the C source as they are only used by cros_cbi_ssfc_init().",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 50
+      },
+      "revId": "73787740f5c603c5a7d0728910555bfd6d7c4e40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
