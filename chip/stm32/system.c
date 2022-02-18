@@ -269,6 +269,7 @@ void system_pre_init(void)
 #ifdef CONFIG_SOFTWARE_PANIC
 	uint16_t reason, info;
 	uint8_t exception, panic_flags;
+	struct panic_data *pdata;
 #endif
 
 	/* enable clock on Power module */
@@ -350,13 +351,26 @@ void system_pre_init(void)
 	reason = bkpdata_read(BKPDATA_INDEX_SAVED_PANIC_REASON);
 	info = bkpdata_read(BKPDATA_INDEX_SAVED_PANIC_INFO);
 	exception = bkpdata_read(BKPDATA_INDEX_SAVED_PANIC_EXCEPTION);
-	panic_flags = bkpdata_read(BKPDATA_INDEX_SAVED_PANIC_FLAGS);
-	if (reason || info || exception || panic_flags) {
+	if (reason || info || exception) {
 		panic_set_reason(reason, info, exception);
-		panic_get_data()->flags = panic_flags;
 		bkpdata_write(BKPDATA_INDEX_SAVED_PANIC_REASON, 0);
 		bkpdata_write(BKPDATA_INDEX_SAVED_PANIC_INFO, 0);
 		bkpdata_write(BKPDATA_INDEX_SAVED_PANIC_EXCEPTION, 0);
+	}
+
+	/*
+	 * Many old ROs are restoring reason, info and exception but they are
+	 * not aware that RW saved panic flags too. In this case, saved panic
+	 * flags will remain intact and RW can safely restore it. It can be
+	 * done when panic data exists, created by RO or by RW in if statement
+	 * above. When panic data doesn't exist at this point then the
+	 * information is lost. Creating panic data just to restore panic flags
+	 * doesn't make sense.
+	 */
+	pdata = panic_get_data();
+	panic_flags = bkpdata_read(BKPDATA_INDEX_SAVED_PANIC_FLAGS);
+	if (pdata && panic_flags) {
+		pdata->flags = panic_flags;
 		bkpdata_write(BKPDATA_INDEX_SAVED_PANIC_FLAGS, 0);
 	}
 #endif
