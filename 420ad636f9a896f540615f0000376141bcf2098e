@@ -34,6 +34,24 @@
       "parentUuid": "2cfb496e_8d5b29dd",
       "revId": "420ad636f9a896f540615f0000376141bcf2098e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39be407f_ff2dece2",
+        "filename": "board/nipperkin/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 513,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2022-02-18T17:46:59Z",
+      "side": 1,
+      "message": "According to https://b.corp.google.com/issues/197186243#comment4 we should have a board version 1, not 0. I assume board 0 and board 1 should just be treated the same here to be safe.\n\nDo you know which keyboard board version 4 will use? I would have guessed the same as board_version 3. If so, maybe change keybd_wo_privacy_wo_kblight_V1 to the default when board_version \u003e 2.",
+      "parentUuid": "4cb60203_b0f0e026",
+      "revId": "420ad636f9a896f540615f0000376141bcf2098e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
