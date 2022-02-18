@@ -16,6 +16,24 @@
       "message": "So board_version \u003d\u003d 1 and board_version \u003d\u003d 4+ -\u003e keybd_wo_privacy_wo_kblight_V2. Is this intended?",
       "revId": "420ad636f9a896f540615f0000376141bcf2098e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4cb60203_b0f0e026",
+        "filename": "board/nipperkin/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 513,
+      "author": {
+        "id": 1294793
+      },
+      "writtenOn": "2022-02-18T01:04:30Z",
+      "side": 1,
+      "message": "I search CBI content issue, look like we have board version 0 2 3, don\u0027t have board version 1, so I think we could use keybd_wo_privacy_wo_kblight_V2 as default setting.",
+      "parentUuid": "2cfb496e_8d5b29dd",
+      "revId": "420ad636f9a896f540615f0000376141bcf2098e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
