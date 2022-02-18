@@ -33,6 +33,29 @@
       "message": "Keith has been looking at the hook side of things, and is likely the best person to comment.",
       "revId": "5bdaa90aa8b69432ad32495d1bb003b0de2038dc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a803056b_3e05f0c1",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 474,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-02-18T20:11:52Z",
+      "side": 1,
+      "message": "Please see https://docs.google.com/document/d/1GAFl1Nx6b8U1xDP6CnStGqVk80zQlZDYbugIvfzxbCc/edit#heading\u003dh.5irk4csrpu0y\n\nCreate a callback API specific to the AP_POWERSEQ subsys.  Priority order can probably be ignored at the moment.\n\nTo bridge the legacy EC to this new callback, zephyr_shim_setup_hooks() can  walk all the hooks setup with DECLARE_HOOK, and then call ap_pwrseq_init_callback() to create the run-time mapping between the legacy code and the new API call.",
+      "range": {
+        "startLine": 474,
+        "startChar": 0,
+        "endLine": 474,
+        "endChar": 36
+      },
+      "revId": "5bdaa90aa8b69432ad32495d1bb003b0de2038dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
