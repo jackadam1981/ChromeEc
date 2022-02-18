@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0518e9f_24fb47dc",
+        "filename": "include/chipset.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-02-18T03:42:14Z",
+      "side": 1,
+      "message": "As discussed to move to shim in CL:3381901",
+      "parentUuid": "8541528d_2510a8ee",
+      "revId": "b68ba714aed8b17bc7c0b9e377f2937b7b313880",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b398a030_841b3ba2",
@@ -85,6 +103,24 @@
       "side": 1,
       "message": "I think a shim between the legacy EC and the new power sequencing is a good short term approach.\n\nThese two functions: chipset_set_exit_hard_off_flag() and chipset_exit_hard_off() probably don\u0027t belong in this file.  Instead there should be a shared API, and each chipset state machine registers it\u0027s own handler.",
       "parentUuid": "7f2a572a_78f0f9aa",
+      "revId": "b68ba714aed8b17bc7c0b9e377f2937b7b313880",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "91aca890_f6029e41",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-02-18T03:42:14Z",
+      "side": 1,
+      "message": "Added the implementation in zephyr/shim, and moved to CL:3381901.",
+      "parentUuid": "284440ab_5084d489",
       "revId": "b68ba714aed8b17bc7c0b9e377f2937b7b313880",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
