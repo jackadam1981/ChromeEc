@@ -39,6 +39,30 @@
       },
       "revId": "9bc5d53b1463c469b9daa1a6759d2fa742655aba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "536c835c_a2a8147c",
+        "filename": "zephyr/zmake/setup.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-02-18T17:28:01Z",
+      "side": 1,
+      "message": "Actually, I may have forgotten to run black on the prior CL. I think I need to do that and then this won\u0027t be a diff any more.",
+      "parentUuid": "c7609338_f8bcb47d",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 83
+      },
+      "revId": "9bc5d53b1463c469b9daa1a6759d2fa742655aba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
