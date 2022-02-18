@@ -55,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3897287a_9f09a534",
+        "filename": "driver/tcpm/anx7406.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1520485
+      },
+      "writtenOn": "2022-02-18T02:27:32Z",
+      "side": 1,
+      "message": "I\u0027ll remove it.",
+      "parentUuid": "74f22f95_2d8e6ef4",
+      "revId": "d3d36dfcf3f3badc4cc73b83e82b06f936ba4646",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "eb0f55d3_92ced080",
         "filename": "driver/tcpm/anx7406.c",
         "patchSetId": 2
@@ -66,6 +84,30 @@
       "writtenOn": "2022-02-17T03:36:06Z",
       "side": 1,
       "message": "nit: please define 0xFF",
+      "range": {
+        "startLine": 139,
+        "startChar": 45,
+        "endLine": 139,
+        "endChar": 49
+      },
+      "revId": "d3d36dfcf3f3badc4cc73b83e82b06f936ba4646",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c07a842e_2b449484",
+        "filename": "driver/tcpm/anx7406.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1520485
+      },
+      "writtenOn": "2022-02-18T02:27:32Z",
+      "side": 1,
+      "message": "OK",
+      "parentUuid": "eb0f55d3_92ced080",
       "range": {
         "startLine": 139,
         "startChar": 45,
@@ -95,6 +137,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c6f88d82_f64b065d",
+        "filename": "driver/tcpm/anx7406.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1520485
+      },
+      "writtenOn": "2022-02-18T02:27:32Z",
+      "side": 1,
+      "message": "The driver code just initial SINK SOURCE control GPIO",
+      "parentUuid": "415bdc50_b7d3883d",
+      "revId": "d3d36dfcf3f3badc4cc73b83e82b06f936ba4646",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3dbb131f_0d3a4dad",
         "filename": "driver/tcpm/anx7406.c",
         "patchSetId": 2
@@ -106,6 +166,30 @@
       "writtenOn": "2022-02-17T03:36:06Z",
       "side": 1,
       "message": "rv \u003d anx7406_hpd_reset(port);",
+      "range": {
+        "startLine": 191,
+        "startChar": 0,
+        "endLine": 191,
+        "endChar": 25
+      },
+      "revId": "d3d36dfcf3f3badc4cc73b83e82b06f936ba4646",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9942d098_a78723be",
+        "filename": "driver/tcpm/anx7406.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1520485
+      },
+      "writtenOn": "2022-02-18T02:27:32Z",
+      "side": 1,
+      "message": "OK",
+      "parentUuid": "3dbb131f_0d3a4dad",
       "range": {
         "startLine": 191,
         "startChar": 0,
@@ -141,6 +225,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7a52d94d_5450f64d",
+        "filename": "driver/tcpm/anx7406.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1520485
+      },
+      "writtenOn": "2022-02-18T02:27:32Z",
+      "side": 1,
+      "message": "I don\u0027t think we need to clear it, the code directly set VCONN_CC1_PWR_ENABLE or VCONN_CC2_PWR_ENABLE based on the polarity.",
+      "parentUuid": "1056ad16_08d902a6",
+      "range": {
+        "startLine": 208,
+        "startChar": 0,
+        "endLine": 212,
+        "endChar": 47
+      },
+      "revId": "d3d36dfcf3f3badc4cc73b83e82b06f936ba4646",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6c19dd97_8b137afb",
         "filename": "driver/tcpm/anx7406.c",
         "patchSetId": 2
@@ -152,6 +260,24 @@
       "writtenOn": "2022-02-17T16:29:43Z",
       "side": 1,
       "message": "Is DRP required for low power mode? \n\nThis would break how we use low power on Chromebooks in shutdown or suspend, when we only present Rd.  In general, the TCPC driver really shouldn\u0027t be changing its role outside the interfaces for setting role control",
+      "revId": "d3d36dfcf3f3badc4cc73b83e82b06f936ba4646",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e4fe0f52_e78e7e07",
+        "filename": "driver/tcpm/anx7406.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 415,
+      "author": {
+        "id": 1520485
+      },
+      "writtenOn": "2022-02-18T02:27:32Z",
+      "side": 1,
+      "message": "Not must for low power mode, I\u0027ll remove this function.",
+      "parentUuid": "6c19dd97_8b137afb",
       "revId": "d3d36dfcf3f3badc4cc73b83e82b06f936ba4646",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
