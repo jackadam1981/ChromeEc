@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f514ee6f_d1785339",
+        "filename": "chip/npcx/adc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1513493
+      },
+      "writtenOn": "2022-02-18T06:17:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8d82e59f_3fcdce3d",
+      "range": {
+        "startLine": 45,
+        "startChar": 12,
+        "endLine": 45,
+        "endChar": 20
+      },
+      "revId": "19ce555a45063165417e63fa0b841ce03dc1aad2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d4048d94_755409c4",
@@ -49,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d83bee3b_41857f3d",
+        "filename": "chip/npcx/adc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 411,
+      "author": {
+        "id": 1513493
+      },
+      "writtenOn": "2022-02-18T06:17:51Z",
+      "side": 1,
+      "message": "This is needed because declaration of it in the include file needs to be wrapped with #ifdefs so as to not change the declaration in each chip file.",
+      "parentUuid": "d4048d94_755409c4",
+      "range": {
+        "startLine": 409,
+        "startChar": 0,
+        "endLine": 411,
+        "endChar": 5
+      },
+      "revId": "19ce555a45063165417e63fa0b841ce03dc1aad2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6fffeeac_ac75c699",
         "filename": "include/adc.h",
         "patchSetId": 2
@@ -60,6 +108,30 @@
       "writtenOn": "2022-02-17T20:57:36Z",
       "side": 1,
       "message": "You don\u0027t need this guard.",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 41
+      },
+      "revId": "19ce555a45063165417e63fa0b841ce03dc1aad2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46cdf60e_b3662701",
+        "filename": "include/adc.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1513493
+      },
+      "writtenOn": "2022-02-18T06:17:51Z",
+      "side": 1,
+      "message": "This guard is needed because all other files have declared it static and to restrict the scope of this CL, would like to avoid touching several unrelated files. Can add a TODO if required.",
+      "parentUuid": "6fffeeac_ac75c699",
       "range": {
         "startLine": 36,
         "startChar": 0,
