@@ -134,6 +134,26 @@
 #define FP_FRAME_SECTION    __SECTION(ahb4)
 #define FP_TEMPLATE_SECTION __SECTION(ahb)
 
+#if defined(BOARD_NOCTURNE_FP) || defined(BOARD_NAMI_FP)
+/*
+ * FPMCU RO for nocturne (nocturne_fp_v2.2.64-58cf5974e) and
+ * FPMCU RO for nami (nami_fp_v2.2.144-7a08e07eb)
+ * don't have the RV32I core panic data in their panic data structure.
+ * As a consequence the size of panic data structure is different between RO
+ * and RW (RO panic data structure is smaller). This results in overwriting RW
+ * panic data (if it exists) by RO when jumping to RW. Another problem is that
+ * RW can't find the jump data, because owerwritten panic data structure created
+ * by RW still contains RW panic data structure size (bigger than RO's), so
+ * calculated jump data address is wrong.
+ *
+ * The problem is fixed by excluding RV32I core panic data from RW, only when
+ * compiling firmware for nami_fp and nocturne_fp.
+ * Dartmonkey RO (dartmonkey_v2.0.2887-311310808) is newer and contains the
+ * RV32I panic data structure.
+ */
+#define CONFIG_DO_NOT_INCLUDE_RV32I_PANIC_DATA
+#endif
+
 #else /* SECTION_IS_RO */
 /* RO verifies the RW partition signature */
 #define CONFIG_RSA
