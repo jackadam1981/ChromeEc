@@ -110,6 +110,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d8f0ab07_fac4d633",
+        "filename": "zephyr/projects/nissa/prj_nivviks.conf",
+        "patchSetId": 23
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2022-02-18T02:47:27Z",
+      "side": 1,
+      "message": "By \u0027platform dependent\u0027 I refer to power signals I/O interface and how signals interact to achieve AP power on/off, this being tightly coupled to platform HW.\nThis file also deals with new signals that EC needs to drive as result of not having an external power sequencer present in the board.\nHaving this captured in a document sounds like a good idea, it would help us to find the right balance of functions that can be overridable.\nMaybe ADC threshold detector could be moved back to power sequence domain and use Nissa variant dts to configure it (just like power signals), however this file would still be required in order to determine signal role on platform power logic.",
+      "parentUuid": "c2d860b5_3e86258f",
+      "revId": "9940b2245de6672a5f49bd108f036d43c8099301",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "32181ece_1c3fd9f5",
         "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_adlp_nonpwrseq_sm.c",
         "patchSetId": 23
