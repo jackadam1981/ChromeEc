@@ -16,6 +16,23 @@
       "message": "The header include/hooks.h is not accessible to the ap_pwrseq which is why the hooks definition needs to be copied to shim/include. This doesn\u0027t seem like the ideal solution. Please let me know what would be a better approach.",
       "revId": "5bdaa90aa8b69432ad32495d1bb003b0de2038dc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d7bfc3bd_1a4de924",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-02-18T00:52:36Z",
+      "side": 1,
+      "message": "Keith has been looking at the hook side of things, and is likely the best person to comment.",
+      "revId": "5bdaa90aa8b69432ad32495d1bb003b0de2038dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
