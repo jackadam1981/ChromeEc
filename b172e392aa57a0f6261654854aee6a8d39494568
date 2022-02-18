@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15cd0f09_2078bffc",
+        "filename": "zephyr/projects/nissa/src/common_pwrseq.c",
+        "patchSetId": 28
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-02-18T03:03:49Z",
+      "side": 1,
+      "message": "So I see where you are going with this, and I think it has good promise to move some of the complexity out of the main code into some board level specific code where it perhaps belongs.\n\nI suggest that instead of making this tied to just one or 2 specific signals, that you should make the board level function a first class signal source that could optionally used for any signal.\n\nSo in the DTS bindings for the signals, have a bool option that says \u0027board-provided\u0027 or \u0027external\u0027, and do not specify a GPIO or VW property for that signal.\nThen, provide a board level function called \u0027board_get_power_signal(enum power_signal signal) and use this single function to retrieve the signal requested, with an appropriate assert for \u0027default\u0027 where it is asking for a signal you don\u0027t provide.\nThen, conceivably, you can move any or all gathering of the signal data into board-level functions (which would also be a great way of providing a test harness).\n\nPlease note my other comments about the DTS bindings where you don\u0027t need to include \u0027source\u0027 in the DTS.",
+      "revId": "b172e392aa57a0f6261654854aee6a8d39494568",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d207e122_0883d6f7",
+        "filename": "zephyr/projects/nissa/src/common_pwrseq.c",
+        "patchSetId": 28
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-02-18T03:03:49Z",
+      "side": 1,
+      "message": "This function likely should belong somewhere in the main code.\nI am not sure specifically why it needs to be platform dependent - if there are optional signals or controls, it may be better for the function to check for the signal existence directly.",
+      "revId": "b172e392aa57a0f6261654854aee6a8d39494568",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7cd9914b_a6b7b11f",
+        "filename": "zephyr/projects/nissa/src/common_pwrseq.c",
+        "patchSetId": 28
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-02-18T03:03:49Z",
+      "side": 1,
+      "message": "call this board_power_sequence_init instead of baseboard_init",
+      "range": {
+        "startLine": 213,
+        "startChar": 11,
+        "endLine": 213,
+        "endChar": 25
+      },
+      "revId": "b172e392aa57a0f6261654854aee6a8d39494568",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
