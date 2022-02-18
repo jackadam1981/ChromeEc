@@ -16,6 +16,98 @@
       "message": "That\u0027s a nice way of doing it",
       "revId": "0fcf76df06d3868d56d878990b233103f3155173",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c44dcb72_d1cfb45e",
+        "filename": "zephyr/zmake/tests/common.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-02-18T17:08:25Z",
+      "side": 1,
+      "message": "this should be the `tmp_path` fixture",
+      "range": {
+        "startLine": 19,
+        "startChar": 9,
+        "endLine": 19,
+        "endChar": 49
+      },
+      "revId": "0fcf76df06d3868d56d878990b233103f3155173",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a65a41b_d2a13e5c",
+        "filename": "zephyr/zmake/tests/common.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-02-18T17:08:25Z",
+      "side": 1,
+      "message": "to do this as a fixture, just change `@contextmanager` to `@pytest.fixture`\n\nputting it in `conftest.py` will make it available to all tests, no need for a module here.",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 0
+      },
+      "revId": "0fcf76df06d3868d56d878990b233103f3155173",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20166ed1_2bcc4305",
+        "filename": "zephyr/zmake/tests/common.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-02-18T17:08:25Z",
+      "side": 1,
+      "message": "same here, this should be a fixture",
+      "range": {
+        "startLine": 28,
+        "startChar": 1,
+        "endLine": 28,
+        "endChar": 15
+      },
+      "revId": "0fcf76df06d3868d56d878990b233103f3155173",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d2e7a2ac_01398048",
+        "filename": "zephyr/zmake/tests/test_generate_readme.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-02-18T17:08:25Z",
+      "side": 1,
+      "message": "non-module \"from\" imports are disallowed in chrome os",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 4
+      },
+      "revId": "0fcf76df06d3868d56d878990b233103f3155173",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
