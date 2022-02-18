@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f3607b9_74ee935d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-02-18T18:12:24Z",
+      "side": 1,
+      "message": "I think this is the main cast of this CL. Can you move it up to the subject line?",
+      "range": {
+        "startLine": 11,
+        "startChar": 4,
+        "endLine": 11,
+        "endChar": 30
+      },
+      "revId": "4a4d213cb2918d1c871974ab8101cfd2ed48fe1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9fbd1a90_6c575580",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-02-18T18:12:24Z",
+      "side": 1,
+      "message": "I usually don\u0027t see this many cq-depends. Are these all necessary? When CLs are stacked, the follower has automatic dependency on the predecessor. This patch looks like the one to be submitted at last. Antighost changes won\u0027t compile until CONFIG_KEYBOARD_SCAN_ADC is enabled.",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 45
+      },
+      "revId": "4a4d213cb2918d1c871974ab8101cfd2ed48fe1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
