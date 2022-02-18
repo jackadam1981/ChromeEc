@@ -16,6 +16,40 @@
       "message": "Please take a look, I fixed the issue by adding in a state that configures UFP to USB configuration, but I\u0027m unsure if `MODE_DP_PIN_A`, is the correct mode.",
       "revId": "3dc0bb3e3a9fb0e9c4308159eff8b1a238543239",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9352ca66_bfab1d68",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-02-18T23:48:42Z",
+      "side": 1,
+      "message": "This is awesome.  I was literally just thinking we needed to do something like this technically ",
+      "revId": "3dc0bb3e3a9fb0e9c4308159eff8b1a238543239",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3afaef9_3b2f7534",
+        "filename": "common/usbc/dp_alt_mode.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 325,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-02-18T23:48:42Z",
+      "side": 1,
+      "message": "Do you have a copy of the DP alt mode spec?  I was just looking at something like this when we did a WIP patch to see what active cable support would look like.\n\nActive cable section says to exit by sending \"DisplayPort Configure Command request addressed to SOP to stop SOP from engaging in DisplayPort.\"  Which I don\u0027t find to be terribly specific by itself, but checking Table 5-8, we can create the config with \"00h \u003d De-select pin assignment\" which I suspect would be what we\u0027re going for. Oh, and I think reading the paragraphs before the table we\u0027re required to ensure HPD is low before we send this",
+      "revId": "3dc0bb3e3a9fb0e9c4308159eff8b1a238543239",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
