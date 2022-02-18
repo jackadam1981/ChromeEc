@@ -35,6 +35,7 @@ enum dp_states {
 	DP_PREPARE_CONFIG,
 	DP_ACTIVE,
 	DP_ENTER_RETRY,
+	DP_EXIT_CONFIG,
 	DP_PREPARE_EXIT,
 	DP_INACTIVE,
 	DP_STATE_COUNT
@@ -157,6 +158,13 @@ void dp_vdm_acked(int port, enum tcpci_msg_type type, int vdo_count,
 			modep->fx->post_config(port);
 		dp_state[port] = DP_ACTIVE;
 		CPRINTS("C%d: Entered DP mode", port);
+		break;
+	case DP_EXIT_CONFIG:
+		/*
+		 * Reconfiguration was a success, we can continue breaking down
+		 * alt mode
+		 */
+		dp_state[port] = DP_PREPARE_EXIT;
 		break;
 	case DP_PREPARE_EXIT:
 		/*
@@ -306,8 +314,18 @@ enum dpm_msg_setup_status dp_setup_next_vdm(int port, int *vdo_count,
 			return MSG_SETUP_ERROR;
 
 		usb_mux_set_safe_mode_exit(port);
-		dp_state[port] = DP_PREPARE_EXIT;
+		dp_state[port] = DP_EXIT_CONFIG;
 		return MSG_SETUP_MUX_WAIT;
+	case DP_EXIT_CONFIG:
+		/* Tell UFP to change to USB configuration */
+		vdo_count_ret = modep->fx->config(port, vdm);
+		if (vdo_count_ret == 0)
+			return MSG_SETUP_ERROR;
+
+		vdm[1] = VDO_DP_CFG(MODE_DP_PIN_A, /* pin mode */
+					1, /* DPv1.3 signaling */
+					2); /* UFP connected */
+		break;
 	case DP_PREPARE_EXIT:
 		/* DPM should call setup only after safe state is set */
 		vdm[0] = VDO(USB_SID_DISPLAYPORT,
