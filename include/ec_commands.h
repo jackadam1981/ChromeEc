@@ -6962,7 +6962,7 @@ enum pchg_state {
 #define EC_MKBP_PCHG_PORT_SHIFT		28
 /* Utility macros for converting MKBP event <-> port number. */
 #define EC_MKBP_PCHG_EVENT_TO_PORT(e)	(((e) >> EC_MKBP_PCHG_PORT_SHIFT) & 0xf)
-#define EC_MKBP_PCHG_PORT_TO_EVENT(p)	(BIT((p) + EC_MKBP_PCHG_PORT_SHIFT))
+#define EC_MKBP_PCHG_PORT_TO_EVENT(p)	((p) << EC_MKBP_PCHG_PORT_SHIFT)
 /* Utility macro for extracting event bits. */
 #define EC_MKBP_PCHG_EVENT_MASK(e)	((e) \
 					& GENMASK(EC_MKBP_PCHG_PORT_SHIFT-1, 0))
