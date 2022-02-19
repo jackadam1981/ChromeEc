@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e6ba3878_6c0df513",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1528447
+      },
+      "writtenOn": "2022-02-19T03:06:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a10c8b79_8a0ce5ab",
+      "range": {
+        "startLine": 10,
+        "startChar": 8,
+        "endLine": 10,
+        "endChar": 9
+      },
+      "revId": "9668050c8d8949dae580ada3a72abfcd6c2f9029",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8213224c_ca80bc59",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-01-28T23:59:48Z",
       "side": 1,
       "message": "You don\u0027t necessarily need to list out the name of each function that you\u0027re adding. Instead, describe the motivation of this change and what functionality it introduces/fixes: https://chromium.googlesource.com/chromiumos/docs/+/HEAD/contributing.md#commit-messages\n\nThe first part of the message (before this) is doing that fairly well, so you can probably just delete these lines.",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 10
+      },
+      "revId": "9668050c8d8949dae580ada3a72abfcd6c2f9029",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bdbf1bcd_b357ccc8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1528447
+      },
+      "writtenOn": "2022-02-19T03:06:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8213224c_ca80bc59",
       "range": {
         "startLine": 12,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "95865bf6_ae873e0d",
+        "filename": "util/fptool.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1528447
+      },
+      "writtenOn": "2022-02-19T03:06:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6ddefb1a_28b236dc",
+      "range": {
+        "startLine": 278,
+        "startChar": 0,
+        "endLine": 278,
+        "endChar": 8
+      },
+      "revId": "9668050c8d8949dae580ada3a72abfcd6c2f9029",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ea62617d_70a3329e",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-01-28T23:59:48Z",
       "side": 1,
       "message": "Can you add doc string for this?",
+      "range": {
+        "startLine": 319,
+        "startChar": 4,
+        "endLine": 319,
+        "endChar": 13
+      },
+      "revId": "9668050c8d8949dae580ada3a72abfcd6c2f9029",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb6402c0_c961612d",
+        "filename": "util/fptool.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1528447
+      },
+      "writtenOn": "2022-02-19T03:06:04Z",
+      "side": 1,
+      "message": "Assimilated in the new class and renamed to be `Gpio.verify`.\nDone",
+      "parentUuid": "ea62617d_70a3329e",
       "range": {
         "startLine": 319,
         "startChar": 4,
