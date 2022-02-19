@@ -22,6 +22,30 @@
       },
       "revId": "04a6aa590031bbc23666ca8a1d648033064e3d95",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "335349c0_eb05706a",
+        "filename": "util/fptool.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1528447
+      },
+      "writtenOn": "2022-02-19T02:33:48Z",
+      "side": 1,
+      "message": "`sys.argv[0]` contains the path to the running utility\n- e.g. `/usr/local/bin/fptool`\nIt is highly unlikely to be invalid.\nThat said, point is taken and I reviewed the code to find other places where better error hanling is in order",
+      "parentUuid": "7925dfa9_70e9fdfd",
+      "range": {
+        "startLine": 109,
+        "startChar": 37,
+        "endLine": 109,
+        "endChar": 45
+      },
+      "revId": "04a6aa590031bbc23666ca8a1d648033064e3d95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
