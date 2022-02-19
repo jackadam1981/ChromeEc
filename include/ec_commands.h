@@ -6907,7 +6907,7 @@ struct ec_params_pchg {
 	uint8_t port;
 } __ec_align1;
 
-struct ec_response_pchg {
+struct ec_response_pchg /* v1 */ {
 	uint32_t error;			/* enum pchg_error */
 	uint8_t state;			/* enum pchg_state state */
 	uint8_t battery_percentage;
