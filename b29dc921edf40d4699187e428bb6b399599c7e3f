@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e459c145_2284a162",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1528447
+      },
+      "writtenOn": "2022-02-19T03:06:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d2e4a4be_ea911b68",
+      "range": {
+        "startLine": 10,
+        "startChar": 50,
+        "endLine": 10,
+        "endChar": 51
+      },
+      "revId": "b29dc921edf40d4699187e428bb6b399599c7e3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2e56e91c_11e3f9f1",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-01-29T00:39:34Z",
       "side": 1,
       "message": "This looks like it should be part of the commit that introduced the config (i.e., just rename it in that commit).",
+      "range": {
+        "startLine": 538,
+        "startChar": 0,
+        "endLine": 546,
+        "endChar": 13
+      },
+      "revId": "b29dc921edf40d4699187e428bb6b399599c7e3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "25da43d9_f7428ba0",
+        "filename": "util/fptool.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 546,
+      "author": {
+        "id": 1528447
+      },
+      "writtenOn": "2022-02-19T03:06:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2e56e91c_11e3f9f1",
       "range": {
         "startLine": 538,
         "startChar": 0,
@@ -64,6 +112,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5bc52fd3_e6c8c5a1",
+        "filename": "util/fptool.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 548,
+      "author": {
+        "id": 1528447
+      },
+      "writtenOn": "2022-02-19T03:06:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "80f48bff_68d136ef",
+      "revId": "b29dc921edf40d4699187e428bb6b399599c7e3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "16b202b4_f2c994c2",
@@ -77,6 +143,30 @@
       "writtenOn": "2022-01-29T00:39:34Z",
       "side": 1,
       "message": "I think you might be able to just use:\n\n```\ndatetime.datetime.now().isoformat()\n```",
+      "range": {
+        "startLine": 583,
+        "startChar": 0,
+        "endLine": 586,
+        "endChar": 59
+      },
+      "revId": "b29dc921edf40d4699187e428bb6b399599c7e3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a4fd70d7_2ae0af68",
+        "filename": "util/fptool.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 586,
+      "author": {
+        "id": 1528447
+      },
+      "writtenOn": "2022-02-19T03:06:40Z",
+      "side": 1,
+      "message": "It is not exactly the same, as `datetime.datetime.now().isoformat()` does not include time zone\nHowever, I think it is not significant, therefore; I modified it as `isoformat` is simpler",
+      "parentUuid": "16b202b4_f2c994c2",
       "range": {
         "startLine": 583,
         "startChar": 0,
@@ -106,6 +196,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d2219384_1d51e7c7",
+        "filename": "util/fptool.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 590,
+      "author": {
+        "id": 1528447
+      },
+      "writtenOn": "2022-02-19T03:06:40Z",
+      "side": 1,
+      "message": "In my opinion, the check for `gpiochip` is redundant, as in the current implementation, the chip name is retreived from the platform and is not hard coded anymore.\nI do not see a good reason to check it.\nWould love to hear your perspective.\nThank you",
+      "parentUuid": "d863b681_dd8a3481",
+      "revId": "b29dc921edf40d4699187e428bb6b399599c7e3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fb39c7d0_4705d641",
         "filename": "util/fptool.py",
         "patchSetId": 3
@@ -117,6 +225,30 @@
       "writtenOn": "2022-01-29T00:39:34Z",
       "side": 1,
       "message": "See comment in earlier CL where I suggest only using one variable (e.g., `services`) instead of variables for the positive and negative cases.",
+      "range": {
+        "startLine": 591,
+        "startChar": 10,
+        "endLine": 591,
+        "endChar": 26
+      },
+      "revId": "b29dc921edf40d4699187e428bb6b399599c7e3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f7658ddc_d5db7fc4",
+        "filename": "util/fptool.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 591,
+      "author": {
+        "id": 1528447
+      },
+      "writtenOn": "2022-02-19T03:06:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fb39c7d0_4705d641",
       "range": {
         "startLine": 591,
         "startChar": 10,
@@ -150,6 +282,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "433b8b7b_57dafc02",
+        "filename": "util/fptool.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 595,
+      "author": {
+        "id": 1528447
+      },
+      "writtenOn": "2022-02-19T03:06:40Z",
+      "side": 1,
+      "message": "It does, thank you.\nDone",
+      "parentUuid": "e01b10cf_e8b7fa2c",
+      "range": {
+        "startLine": 595,
+        "startChar": 23,
+        "endLine": 595,
+        "endChar": 25
+      },
+      "revId": "b29dc921edf40d4699187e428bb6b399599c7e3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c2eefbcc_d4ba98b4",
@@ -173,6 +329,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6fe332bc_30a1b364",
+        "filename": "util/fptool.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 610,
+      "author": {
+        "id": 1528447
+      },
+      "writtenOn": "2022-02-19T03:06:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c2eefbcc_d4ba98b4",
+      "range": {
+        "startLine": 610,
+        "startChar": 33,
+        "endLine": 610,
+        "endChar": 77
+      },
+      "revId": "b29dc921edf40d4699187e428bb6b399599c7e3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e590453f_fb8107ee",
@@ -186,6 +366,30 @@
       "writtenOn": "2022-01-29T00:39:34Z",
       "side": 1,
       "message": "I think it will work without the `+`. Can you check?",
+      "range": {
+        "startLine": 635,
+        "startChar": 23,
+        "endLine": 635,
+        "endChar": 25
+      },
+      "revId": "b29dc921edf40d4699187e428bb6b399599c7e3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3a7bd1a_f4ef37d1",
+        "filename": "util/fptool.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 635,
+      "author": {
+        "id": 1528447
+      },
+      "writtenOn": "2022-02-19T03:06:40Z",
+      "side": 1,
+      "message": "It is, thank you.\nDone",
+      "parentUuid": "e590453f_fb8107ee",
       "range": {
         "startLine": 635,
         "startChar": 23,
