@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "79b19a3c_00d13fd6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1528447
+      },
+      "writtenOn": "2022-02-19T02:40:21Z",
+      "side": 1,
+      "message": "Done. Thank you",
+      "parentUuid": "11368aab_dae98042",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 25
+      },
+      "revId": "020f8545fec60ff5659968e6664025f2046a9ff6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f4c5a49a_13eeb296",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-01-28T22:36:05Z",
       "side": 1,
       "message": "This is fairly confusing. Is there a simpler way to organize the data structure or can you create a class to represent it?\n\nMaybe it would help to describe what `gpio`, `pin`, and `idx` are and also provide an example.",
+      "range": {
+        "startLine": 134,
+        "startChar": 0,
+        "endLine": 143,
+        "endChar": 73
+      },
+      "revId": "020f8545fec60ff5659968e6664025f2046a9ff6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48162795_876aad54",
+        "filename": "util/fptool.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1528447
+      },
+      "writtenOn": "2022-02-19T02:40:21Z",
+      "side": 1,
+      "message": "I redesigned the code in a more Pythonic way.\nAdded a class to handle the GPIOs with an internal class to control a single GPIO.\nThe dictionary list seems to me still the optimal way to hold the ranges DB and yes, it is a bit confusing.\nI added a comprehensive comment (Or at least I find it comprehensive)\nI am open to suggestions, if you see a better way to hold the data.\nThank you",
+      "parentUuid": "f4c5a49a_13eeb296",
       "range": {
         "startLine": 134,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "febdf30d_4e21ea97",
+        "filename": "util/fptool.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1528447
+      },
+      "writtenOn": "2022-02-19T02:40:21Z",
+      "side": 1,
+      "message": "Modified",
+      "parentUuid": "fee8b352_50533836",
+      "range": {
+        "startLine": 151,
+        "startChar": 16,
+        "endLine": 151,
+        "endChar": 20
+      },
+      "revId": "020f8545fec60ff5659968e6664025f2046a9ff6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c983f769_a3ffc076",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-01-28T22:36:05Z",
       "side": 1,
       "message": "I think the code would be a little clearer if you created a regex to match the entire line and extract the variables from the matches. (Then you don\u0027t need to skip the first line either since that line won\u0027t match.)",
+      "range": {
+        "startLine": 155,
+        "startChar": 1,
+        "endLine": 161,
+        "endChar": 70
+      },
+      "revId": "020f8545fec60ff5659968e6664025f2046a9ff6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b344cb66_83680f18",
+        "filename": "util/fptool.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1528447
+      },
+      "writtenOn": "2022-02-19T02:40:21Z",
+      "side": 1,
+      "message": "Modified it to be a regex split.\nI hope it makes it a bit more clear",
+      "parentUuid": "c983f769_a3ffc076",
       "range": {
         "startLine": 155,
         "startChar": 1,
