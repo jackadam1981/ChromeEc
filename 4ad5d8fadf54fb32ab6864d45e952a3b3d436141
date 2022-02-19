@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "160fe540_7a3acf4b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1528447
+      },
+      "writtenOn": "2022-02-19T02:38:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e33cade6_4b3b46d8",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 25
+      },
+      "revId": "4ad5d8fadf54fb32ab6864d45e952a3b3d436141",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "59b472b8_228e0f3b",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-01-28T22:15:49Z",
       "side": 1,
       "message": "Looks like there are some spacing changes here. If you want the spacing changes, please move the change to the commit that introduced this text (I think it was the last commit).",
+      "range": {
+        "startLine": 111,
+        "startChar": 1,
+        "endLine": 115,
+        "endChar": 31
+      },
+      "revId": "4ad5d8fadf54fb32ab6864d45e952a3b3d436141",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "af091e83_4b3d0078",
+        "filename": "util/fptool.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1528447
+      },
+      "writtenOn": "2022-02-19T02:38:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "59b472b8_228e0f3b",
       "range": {
         "startLine": 111,
         "startChar": 1,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "584baea5_8087c6c1",
+        "filename": "util/fptool.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1528447
+      },
+      "writtenOn": "2022-02-19T02:38:55Z",
+      "side": 1,
+      "message": "Thank you for the reference.\nLooks cleaner that way.\nDone",
+      "parentUuid": "7539a8d7_c8188d1a",
+      "range": {
+        "startLine": 155,
+        "startChar": 3,
+        "endLine": 166,
+        "endChar": 74
+      },
+      "revId": "4ad5d8fadf54fb32ab6864d45e952a3b3d436141",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "75064f6a_766f4b5d",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-01-28T22:15:49Z",
       "side": 1,
       "message": "I think by default this splits every `-`, so wouldn\u0027t work for `hatch-arc-r`. Look at `maxsplit` arg. Also, double-check that it works in the case where there are no `-` (e.g., `hatch`).",
+      "range": {
+        "startLine": 189,
+        "startChar": 25,
+        "endLine": 189,
+        "endChar": 35
+      },
+      "revId": "4ad5d8fadf54fb32ab6864d45e952a3b3d436141",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c65d95ed_85d64f5e",
+        "filename": "util/fptool.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1528447
+      },
+      "writtenOn": "2022-02-19T02:38:55Z",
+      "side": 1,
+      "message": "As we are interested in the base name only, I reference the first element which will always be the original design board:\n\n`\u0027hatch-arc-r\u0027.split(\u0027-\u0027) -\u003e [\u0027hatch\u0027, \u0027arc\u0027, \u0027r\u0027]`\n`\u0027hatch\u0027.split(\u0027-\u0027) -\u003e [\u0027hatch\u0027]`\n\nSeems to work, so I kept the implemntation as is.\nWould you prefer me to change it?",
+      "parentUuid": "75064f6a_766f4b5d",
       "range": {
         "startLine": 189,
         "startChar": 25,
@@ -139,6 +235,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c87e9aa_67139f9b",
+        "filename": "util/fptool.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1528447
+      },
+      "writtenOn": "2022-02-19T02:38:55Z",
+      "side": 1,
+      "message": "No real reason :-)\nChanged",
+      "parentUuid": "76273719_757b7046",
+      "range": {
+        "startLine": 200,
+        "startChar": 20,
+        "endLine": 200,
+        "endChar": 60
+      },
+      "revId": "4ad5d8fadf54fb32ab6864d45e952a3b3d436141",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c20c15c_2cceefd1",
+        "filename": "util/fptool.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1528447
+      },
+      "writtenOn": "2022-02-19T02:38:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e183a9c2_df226b1d",
+      "range": {
+        "startLine": 200,
+        "startChar": 4,
+        "endLine": 200,
+        "endChar": 7
+      },
+      "revId": "4ad5d8fadf54fb32ab6864d45e952a3b3d436141",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9cfc1bb7_e3adafea",
@@ -152,6 +296,30 @@
       "writtenOn": "2022-01-28T22:15:49Z",
       "side": 1,
       "message": "Go ahead and use the full word: `firmware`",
+      "range": {
+        "startLine": 202,
+        "startChar": 66,
+        "endLine": 202,
+        "endChar": 68
+      },
+      "revId": "4ad5d8fadf54fb32ab6864d45e952a3b3d436141",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bbd62d18_77dcad83",
+        "filename": "util/fptool.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1528447
+      },
+      "writtenOn": "2022-02-19T02:38:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9cfc1bb7_e3adafea",
       "range": {
         "startLine": 202,
         "startChar": 66,
@@ -185,6 +353,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b0aabf6_8193e476",
+        "filename": "util/fptool.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1528447
+      },
+      "writtenOn": "2022-02-19T02:38:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "231a7440_161772be",
+      "range": {
+        "startLine": 205,
+        "startChar": 44,
+        "endLine": 205,
+        "endChar": 46
+      },
+      "revId": "4ad5d8fadf54fb32ab6864d45e952a3b3d436141",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ee37849a_113aba7f",
@@ -198,6 +390,30 @@
       "writtenOn": "2022-01-28T22:15:49Z",
       "side": 1,
       "message": "Can you specify the type contained in the list? I would expect it to be `list[int]` (e.g., `pids \u003d [101, 10, 50]`, but looks like it might be `list[str]` as written.",
+      "range": {
+        "startLine": 210,
+        "startChar": 30,
+        "endLine": 210,
+        "endChar": 34
+      },
+      "revId": "4ad5d8fadf54fb32ab6864d45e952a3b3d436141",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d49842a_92b3d6b7",
+        "filename": "util/fptool.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1528447
+      },
+      "writtenOn": "2022-02-19T02:38:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ee37849a_113aba7f",
       "range": {
         "startLine": 210,
         "startChar": 30,
@@ -233,6 +449,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4e26507f_74872773",
+        "filename": "util/fptool.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1528447
+      },
+      "writtenOn": "2022-02-19T02:38:55Z",
+      "side": 1,
+      "message": "Seems to work for all the devices I tested it on.\nKept it as is for now, if it is ok with you",
+      "parentUuid": "991c7270_ed615ef2",
+      "range": {
+        "startLine": 223,
+        "startChar": 12,
+        "endLine": 223,
+        "endChar": 37
+      },
+      "revId": "4ad5d8fadf54fb32ab6864d45e952a3b3d436141",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6d282cc5_9fa03317",
         "filename": "util/fptool.py",
         "patchSetId": 3
@@ -244,6 +484,30 @@
       "writtenOn": "2022-01-28T22:15:49Z",
       "side": 1,
       "message": "Looks like this is not imported.",
+      "range": {
+        "startLine": 228,
+        "startChar": 19,
+        "endLine": 228,
+        "endChar": 21
+      },
+      "revId": "4ad5d8fadf54fb32ab6864d45e952a3b3d436141",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "00fbdaa1_d0a18a19",
+        "filename": "util/fptool.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1528447
+      },
+      "writtenOn": "2022-02-19T02:38:55Z",
+      "side": 1,
+      "message": "Correct, thank you.\nIt was modified before I sterted testing with `cros lint`.\nAdded",
+      "parentUuid": "6d282cc5_9fa03317",
       "range": {
         "startLine": 228,
         "startChar": 19,
@@ -267,6 +531,30 @@
       "writtenOn": "2022-01-28T22:15:49Z",
       "side": 1,
       "message": "Can you clarify what these values represent? Generally it\u0027s nice if the code is self-describing (as opposed to just adding comments). One way to do it would be to write it something like this:\n\n```\nnumeric_pid \u003d proc.split(\u0027/\u0027)[2]\nprocess_name \u003d link\npids.append(f\u0027PID {numeric_pid} -\u003e {process_name}\u0027)\n```\n\n(I\u0027m not sure the names are right, since I didn\u0027t check to see what these two values actually mean.)",
+      "range": {
+        "startLine": 229,
+        "startChar": 33,
+        "endLine": 229,
+        "endChar": 46
+      },
+      "revId": "4ad5d8fadf54fb32ab6864d45e952a3b3d436141",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "01bbd1bd_ce4ab394",
+        "filename": "util/fptool.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1528447
+      },
+      "writtenOn": "2022-02-19T02:38:55Z",
+      "side": 1,
+      "message": "Thank you.\nI added clarifying variables:\n```\n    pid_str \u003d proc.split(\u0027/\u0027)[2]\n    device_file_name \u003d link\n    pids.append(f\u0027PID {pid_str} -\u003e {device_file_name}\u0027)\n```",
+      "parentUuid": "343f6748_601802ff",
       "range": {
         "startLine": 229,
         "startChar": 33,
