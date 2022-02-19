@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "177906b9_2a7c4cd6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2022-02-19T00:04:56Z",
+      "side": 1,
+      "message": "I\u0027d make the test something along the lines of verified that DPConfig was sent with 0 to the partner before exiting mode.",
+      "revId": "3dc0bb3e3a9fb0e9c4308159eff8b1a238543239",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "c70eaac8_fc033095",
@@ -48,6 +65,24 @@
       "writtenOn": "2022-02-18T23:48:42Z",
       "side": 1,
       "message": "Do you have a copy of the DP alt mode spec?  I was just looking at something like this when we did a WIP patch to see what active cable support would look like.\n\nActive cable section says to exit by sending \"DisplayPort Configure Command request addressed to SOP to stop SOP from engaging in DisplayPort.\"  Which I don\u0027t find to be terribly specific by itself, but checking Table 5-8, we can create the config with \"00h \u003d De-select pin assignment\" which I suspect would be what we\u0027re going for. Oh, and I think reading the paragraphs before the table we\u0027re required to ensure HPD is low before we send this",
+      "revId": "3dc0bb3e3a9fb0e9c4308159eff8b1a238543239",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15629051_436c3d7e",
+        "filename": "common/usbc/dp_alt_mode.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 325,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2022-02-19T00:04:56Z",
+      "side": 1,
+      "message": "+1. Yeah, it\u0027s not Pin Config A(0x01), it ought to be 0.",
+      "parentUuid": "a3afaef9_3b2f7534",
       "revId": "3dc0bb3e3a9fb0e9c4308159eff8b1a238543239",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
