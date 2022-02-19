@@ -9358,6 +9358,8 @@ static int cmd_pchg_update_open(int port, uint32_t version,
 		(struct ec_params_pchg_update *)(ec_outbuf);
 	struct ec_response_pchg_update *r =
 		(struct ec_response_pchg_update *)(ec_inbuf);
+	struct ec_params_pchg p2;
+	struct ec_response_pchg r2;
 	int rv;
 
 	/* Open session. */
@@ -9373,6 +9375,21 @@ static int cmd_pchg_update_open(int port, uint32_t version,
 	if (r->block_size + sizeof(*p) > ec_max_outsize) {
 		fprintf(stderr, "\nBlock size (%d) is too large.\n",
 			r->block_size);
+		return -1;
+	}
+
+	rv = cmd_pchg_wait_event(port, EC_MKBP_PCHG_DEVICE_EVENT);
+	if (rv)
+		return rv;
+
+	p2.port = port;
+	rv = ec_command(EC_CMD_PCHG, 1, &p2, sizeof(p2), &r2, sizeof(r2));
+	if (rv < 0) {
+		fprintf(stderr, "EC_CMD_PCHG failed: %d\n", rv);
+		return rv;
+	}
+	if (r2.state != PCHG_STATE_DOWNLOAD) {
+		fprintf(stderr, "Failed to reset to download mode: %d\n", rv);
 		return -1;
 	}
 
