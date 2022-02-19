@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "77bc39df_385f31fc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1528447
+      },
+      "writtenOn": "2022-02-19T02:41:18Z",
+      "side": 1,
+      "message": "Done, thank you",
+      "parentUuid": "a9eb3ddf_2fc70500",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 24
+      },
+      "revId": "64e87664fc73881ee6b02f82c984f2c75fd3e5bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "796fb991_185c187e",
@@ -70,6 +94,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5961f195_040d2c9c",
+        "filename": "util/fptool.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1528447
+      },
+      "writtenOn": "2022-02-19T02:41:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "796fb991_185c187e",
+      "range": {
+        "startLine": 185,
+        "startChar": 24,
+        "endLine": 185,
+        "endChar": 28
+      },
+      "revId": "64e87664fc73881ee6b02f82c984f2c75fd3e5bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e4f13567_d1546056",
+        "filename": "util/fptool.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1528447
+      },
+      "writtenOn": "2022-02-19T02:41:18Z",
+      "side": 1,
+      "message": "I moved the `gpiodetect` command but did not yet create a unit test to emulate the input.\nShould it be part of this commit?",
+      "parentUuid": "56c176c4_f9245255",
+      "range": {
+        "startLine": 185,
+        "startChar": 4,
+        "endLine": 185,
+        "endChar": 18
+      },
+      "revId": "64e87664fc73881ee6b02f82c984f2c75fd3e5bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5de7b95f_923548a8",
@@ -93,6 +165,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e54d6aab_603a77f1",
+        "filename": "util/fptool.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1528447
+      },
+      "writtenOn": "2022-02-19T02:41:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5de7b95f_923548a8",
+      "range": {
+        "startLine": 197,
+        "startChar": 4,
+        "endLine": 208,
+        "endChar": 35
+      },
+      "revId": "64e87664fc73881ee6b02f82c984f2c75fd3e5bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ce2e07b9_f91d60cf",
@@ -106,6 +202,30 @@
       "writtenOn": "2022-01-28T23:10:35Z",
       "side": 1,
       "message": "Probably good to add a check here that the result has at least two elements since you\u0027re referencing them below.",
+      "range": {
+        "startLine": 245,
+        "startChar": 4,
+        "endLine": 245,
+        "endChar": 25
+      },
+      "revId": "64e87664fc73881ee6b02f82c984f2c75fd3e5bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "25385ecc_80763b22",
+        "filename": "util/fptool.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1528447
+      },
+      "writtenOn": "2022-02-19T02:41:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ce2e07b9_f91d60cf",
       "range": {
         "startLine": 245,
         "startChar": 4,
