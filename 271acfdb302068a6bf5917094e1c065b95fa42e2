@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "66e7492a_684bccba",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1528447
+      },
+      "writtenOn": "2022-02-19T02:46:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "88275c14_221c499c",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 9
+      },
+      "revId": "271acfdb302068a6bf5917094e1c065b95fa42e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "95b0da85_91827b8d",
         "filename": "util/fptool.py",
         "patchSetId": 3
@@ -37,6 +61,24 @@
       "writtenOn": "2022-01-28T23:51:27Z",
       "side": 1,
       "message": "PEP 8: E301 expected 1 blank line, found 0",
+      "revId": "271acfdb302068a6bf5917094e1c065b95fa42e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ad08968_b2cf1460",
+        "filename": "util/fptool.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1528447
+      },
+      "writtenOn": "2022-02-19T02:46:54Z",
+      "side": 1,
+      "message": "Done.\n`cros lint` does not find these issues.\nIs there an additional tool I can use?\nThank you",
+      "parentUuid": "95b0da85_91827b8d",
       "revId": "271acfdb302068a6bf5917094e1c065b95fa42e2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -54,6 +96,30 @@
       "writtenOn": "2022-01-28T23:51:27Z",
       "side": 1,
       "message": "Argument name should be lowercase: https://google.github.io/styleguide/pyguide.html#316-naming",
+      "range": {
+        "startLine": 30,
+        "startChar": 23,
+        "endLine": 30,
+        "endChar": 27
+      },
+      "revId": "271acfdb302068a6bf5917094e1c065b95fa42e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ccf6b44_a088e24f",
+        "filename": "util/fptool.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1528447
+      },
+      "writtenOn": "2022-02-19T02:46:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d7f9f3a2_6254c8db",
       "range": {
         "startLine": 30,
         "startChar": 23,
@@ -104,6 +170,48 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bdf94d86_6fc87032",
+        "filename": "util/fptool.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1528447
+      },
+      "writtenOn": "2022-02-19T02:46:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6e069e01_1b6c1793",
+      "revId": "271acfdb302068a6bf5917094e1c065b95fa42e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "648c235b_dbf15580",
+        "filename": "util/fptool.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1528447
+      },
+      "writtenOn": "2022-02-19T02:46:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7c8f7ba0_9a4f1eff",
+      "range": {
+        "startLine": 31,
+        "startChar": 13,
+        "endLine": 31,
+        "endChar": 17
+      },
+      "revId": "271acfdb302068a6bf5917094e1c065b95fa42e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "08b58472_fc3511ce",
@@ -127,6 +235,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b957487_96f57d2a",
+        "filename": "util/fptool.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1528447
+      },
+      "writtenOn": "2022-02-19T02:46:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "08b58472_fc3511ce",
+      "range": {
+        "startLine": 33,
+        "startChar": 21,
+        "endLine": 33,
+        "endChar": 26
+      },
+      "revId": "271acfdb302068a6bf5917094e1c065b95fa42e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8c91307a_829b40a1",
@@ -140,6 +272,30 @@
       "writtenOn": "2022-01-28T23:51:27Z",
       "side": 1,
       "message": "This is a bit hard to mentally parse. Since we\u0027re only dealing with 3 GPIOs, can you just unroll the loop with the values? I think you\u0027re trying to do something like:\n\n```\ngpios.power_enable \u003d get_gpio(...)\ngpios.boot0 \u003d get_gpio(...)\ngpios.n_reset \u003d get_gpio(...)\n```",
+      "range": {
+        "startLine": 273,
+        "startChar": 3,
+        "endLine": 274,
+        "endChar": 68
+      },
+      "revId": "271acfdb302068a6bf5917094e1c065b95fa42e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a98c21fc_84d35f44",
+        "filename": "util/fptool.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1528447
+      },
+      "writtenOn": "2022-02-19T02:46:54Z",
+      "side": 1,
+      "message": "The reasoning was in case we add gpios in the future, to have a generic function that does not require modifications.\nI agree that this way it is more clear.\nModified",
+      "parentUuid": "8c91307a_829b40a1",
       "range": {
         "startLine": 273,
         "startChar": 3,
@@ -196,6 +352,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4eb4961_3a824811",
+        "filename": "util/fptool.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 390,
+      "author": {
+        "id": 1528447
+      },
+      "writtenOn": "2022-02-19T02:46:54Z",
+      "side": 1,
+      "message": "Moved the class to the global scope, as it is accessed by other functions as well.\nDone",
+      "parentUuid": "3558263b_c3433d9a",
+      "range": {
+        "startLine": 390,
+        "startChar": 4,
+        "endLine": 390,
+        "endChar": 9
+      },
+      "revId": "271acfdb302068a6bf5917094e1c065b95fa42e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0514acda_c94df8df",
+        "filename": "util/fptool.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 390,
+      "author": {
+        "id": 1528447
+      },
+      "writtenOn": "2022-02-19T02:46:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bd853c43_75fc807a",
+      "range": {
+        "startLine": 390,
+        "startChar": 10,
+        "endLine": 390,
+        "endChar": 25
+      },
+      "revId": "271acfdb302068a6bf5917094e1c065b95fa42e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f4bd58e7_8d03a510",
@@ -209,6 +413,30 @@
       "writtenOn": "2022-01-28T23:51:27Z",
       "side": 1,
       "message": "It\u0027s a little easier to read (and add new values) if this is a `dict` instead of `list`. Something like:\n\n```\nTRANSPORT \u003d \u0027transport\u0027\nTRANSPORT_DEVICE \u003d \u0027transport_device\u0027\nGPIOS \u003d \u0027gpios\u0027\n\n{\n  TRANSPORT: \u0027SPI\u0027,\n  TRANSPORT_DEVICE: \u0027/dev/spidev1.1\u0027\n  GPIOS: get_gpios(...)\n}\n```",
+      "range": {
+        "startLine": 406,
+        "startChar": 19,
+        "endLine": 407,
+        "endChar": 69
+      },
+      "revId": "271acfdb302068a6bf5917094e1c065b95fa42e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75613285_9be34866",
+        "filename": "util/fptool.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 407,
+      "author": {
+        "id": 1528447
+      },
+      "writtenOn": "2022-02-19T02:46:54Z",
+      "side": 1,
+      "message": "Thank you, way clearer now.\nRedesigned and done",
+      "parentUuid": "f4bd58e7_8d03a510",
       "range": {
         "startLine": 406,
         "startChar": 19,
@@ -242,6 +470,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "500dbb11_554142cb",
+        "filename": "util/fptool.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 469,
+      "author": {
+        "id": 1528447
+      },
+      "writtenOn": "2022-02-19T02:46:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "23f70362_c4d75116",
+      "range": {
+        "startLine": 468,
+        "startChar": 0,
+        "endLine": 469,
+        "endChar": 8
+      },
+      "revId": "271acfdb302068a6bf5917094e1c065b95fa42e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "929f22d0_b94ba00f",
@@ -265,6 +517,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "08b0411e_2dd041f1",
+        "filename": "util/fptool.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 472,
+      "author": {
+        "id": 1528447
+      },
+      "writtenOn": "2022-02-19T02:46:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "929f22d0_b94ba00f",
+      "range": {
+        "startLine": 472,
+        "startChar": 19,
+        "endLine": 472,
+        "endChar": 20
+      },
+      "revId": "271acfdb302068a6bf5917094e1c065b95fa42e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "29f10821_db601853",
@@ -278,6 +554,30 @@
       "writtenOn": "2022-01-28T23:51:27Z",
       "side": 1,
       "message": "PEP 8: E713 test for membership should be \u0027not in\u0027\n\n`if board not in ...`",
+      "range": {
+        "startLine": 487,
+        "startChar": 12,
+        "endLine": 487,
+        "endChar": 55
+      },
+      "revId": "271acfdb302068a6bf5917094e1c065b95fa42e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "06b09add_84073adb",
+        "filename": "util/fptool.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 487,
+      "author": {
+        "id": 1528447
+      },
+      "writtenOn": "2022-02-19T02:46:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "29f10821_db601853",
       "range": {
         "startLine": 487,
         "startChar": 12,
