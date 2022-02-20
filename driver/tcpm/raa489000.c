@@ -196,9 +196,11 @@ int raa489000_init(int port)
 	/*
 	 * Disable VBUS auto discharge, we'll turn it on later as its needed to
 	 * goodcrc.
+	 * Enable VBUS voltage monitor.
 	 */
 	rv = tcpc_read(port, TCPC_REG_POWER_CTRL, &regval);
 	regval &= ~TCPC_REG_POWER_CTRL_AUTO_DISCHARGE_DISCONNECT;
+	regval &= ~TCPC_REG_POWER_CTRL_VBUS_VOL_MONITOR_DIS;
 	rv |= tcpc_write(port, TCPC_REG_POWER_CTRL, regval);
 	if (rv)
 		CPRINTS("c%d: failed to set auto discharge", port);
