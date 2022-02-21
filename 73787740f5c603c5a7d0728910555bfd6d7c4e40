@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "664e8773_0957637a",
+        "filename": "zephyr/shim/src/cbi/CMakeLists.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2022-02-21T11:32:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "747b5994_fd3c8e8a",
+      "range": {
+        "startLine": 4,
+        "startChar": 0,
+        "endLine": 4,
+        "endChar": 64
+      },
+      "revId": "73787740f5c603c5a7d0728910555bfd6d7c4e40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3192c8e8_30466a12",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-02-18T18:07:57Z",
       "side": 1,
       "message": "Move these defines into the C source as they are only used by cros_cbi_ssfc_init().",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 50
+      },
+      "revId": "73787740f5c603c5a7d0728910555bfd6d7c4e40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "86990aad_7b12c10f",
+        "filename": "zephyr/shim/src/cbi/cros_cbi_ssfc.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2022-02-21T11:32:22Z",
+      "side": 1,
+      "message": "Actually, I moved the whole header file to the C source. Needed definitions are in the `cros_cbi.h` file.",
+      "parentUuid": "3192c8e8_30466a12",
       "range": {
         "startLine": 25,
         "startChar": 0,
