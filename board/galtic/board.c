@@ -24,6 +24,7 @@
 #include "driver/temp_sensor/thermistor.h"
 #include "driver/tcpm/raa489000.h"
 #include "driver/usb_mux/it5205.h"
+#include "driver/usb_mux/ps8743_public.h"
 #include "gpio.h"
 #include "hooks.h"
 #include "intc.h"
@@ -327,8 +328,14 @@ const struct usb_mux usbc1_retimer = {
 	.board_set = &board_tusb544_set,
 };
 
+const struct usb_mux usbc1_virtual_mux_ps8743 = {
+	.usb_port = 1,
+	.driver = &virtual_usb_mux_driver,
+	.hpd_update = &virtual_hpd_update,
+};
+
 /* USB Muxes */
-const struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
+struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 	{
 		.usb_port = 0,
 		.i2c_port = I2C_PORT_USB_C0,
@@ -421,6 +428,12 @@ void board_init(void)
 		keyscan_config.actual_key_mask[12] = 0xff;
 		keyscan_config.actual_key_mask[13] = 0xff;
 		keyscan_config.actual_key_mask[14] = 0xff;
+	}
+
+	if (get_cbi_ssfc_mux_redriver() == SSFC_REDRIVER_PS8743) {
+		usb_muxes[1].i2c_addr_flags = PS8743_I2C_ADDR1_FLAG;
+		usb_muxes[1].driver = &ps8743_usb_mux_driver;
+		usb_muxes[1].next_mux = &usbc1_virtual_mux_ps8743;
 	}
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
