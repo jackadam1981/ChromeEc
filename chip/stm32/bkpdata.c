@@ -69,7 +69,9 @@ uint32_t bkpdata_read_reset_flags()
 {
 	uint32_t flags = bkpdata_read(BKPDATA_INDEX_SAVED_RESET_FLAGS);
 
+#ifndef CONFIG_STM32_RO_DOES_NOT_SUPPORT_EXTENDED_RESET_FLAGS
 	flags |= bkpdata_read(BKPDATA_INDEX_SAVED_RESET_FLAGS_2) << 16;
+#endif
 
 	return flags;
 }
@@ -78,5 +80,7 @@ __overridable
 void bkpdata_write_reset_flags(uint32_t save_flags)
 {
 	bkpdata_write(BKPDATA_INDEX_SAVED_RESET_FLAGS, save_flags & 0xffff);
+#ifndef CONFIG_STM32_RO_DOES_NOT_SUPPORT_EXTENDED_RESET_FLAGS
 	bkpdata_write(BKPDATA_INDEX_SAVED_RESET_FLAGS_2, save_flags >> 16);
+#endif
 }

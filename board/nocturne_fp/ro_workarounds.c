@@ -83,7 +83,9 @@ void bkpdata_write_reset_flags(uint32_t save_flags)
 		save_flags |= FORGE_PORFLAG_FLAGS;
 
 	bkpdata_write(BKPDATA_INDEX_SAVED_RESET_FLAGS, save_flags & 0xffff);
+#ifndef CONFIG_STM32_RO_DOES_NOT_SUPPORT_EXTENDED_RESET_FLAGS
 	bkpdata_write(BKPDATA_INDEX_SAVED_RESET_FLAGS_2, save_flags >> 16);
+#endif
 }
 
 /*

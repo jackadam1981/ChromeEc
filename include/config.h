@@ -2184,6 +2184,16 @@
 #undef CONFIG_RO_HDR_MEM_OFF
 #undef CONFIG_RO_HDR_SIZE
 
+
+/*
+ * Some ROs don't support extended reset flags saved in backup RAM.
+ * BKPDATA_INDEX_SAVED_RESET_FLAGS_2 was defined in the middle of bkpdata_index
+ * enum, so it breaks compatibility between RO and RW. In some cases, extended
+ * reset flags in backup RAM are cleared because RO wrongly recognizes flags as
+ * panic reason.
+ */
+#undef CONFIG_STM32_RO_DOES_NOT_SUPPORT_EXTENDED_RESET_FLAGS
+
 /*
  * Write protect region offset / size. This region normally encompasses the
  * RO image, but may also contain additional images or data.
