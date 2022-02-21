@@ -71,6 +71,9 @@ void pwrseq_set_debug_signals(uint32_t signals);
 uint32_t pwrseq_get_debug_signals(void);
 void apshutdown(void);
 
+void pwrseq_adc_init(void);
+uint8_t pwrseq_adc_get_level(enum adc_power_signal signal);
+
 extern const char pwrsm_dbg[][25];
 
 #endif /* __X86_NON_DSX_COMMON_PWRSEQ_SM_HANDLER_H__ */

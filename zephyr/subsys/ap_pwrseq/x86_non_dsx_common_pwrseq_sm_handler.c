@@ -141,8 +141,10 @@ int power_signal_is_asserted(enum power_signal signal)
 		/* ESPI generated signal */
 		return vw_get_level(id) ==
 				!!(flags & POWER_SIGNAL_ACTIVE_STATE);
-	else /*TODO: CL:3482485 Add ADC signal handler*/
-		return board_power_signal_is_asserted(id);
+	else if (power_signal_list[signal].source == SOURCE_ADC)
+		return pwrseq_adc_get_level(id);
+	else
+		return  board_power_signal_is_asserted(id);
 }
 
 /**
@@ -576,6 +578,7 @@ static int pwrseq_init()
 
 	/* Configure gpio from device tree */
 	pwrseq_gpio_init();
+	pwrseq_adc_init();
 	LOG_DBG("Done gpio init");
 	/* Register espi handler */
 	ndsx_espi_configure();
