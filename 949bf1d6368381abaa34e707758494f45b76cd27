@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5c45f82_e12b7bb4",
+        "filename": "driver/charger/rt9490.c",
+        "patchSetId": 48
+      },
+      "lineNbr": 649,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2022-02-21T02:21:50Z",
+      "side": 1,
+      "message": "I am unsure if PD_CAPABLE is properly set when USB_CHG_EVENT_VBUS set?\n\nUSB_CHG_EVENT_VBUS is happening before the PD_CAPABLE event, so in theory there might be a time gap between these two events.",
+      "range": {
+        "startLine": 649,
+        "startChar": 26,
+        "endLine": 649,
+        "endChar": 36
+      },
+      "revId": "949bf1d6368381abaa34e707758494f45b76cd27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
