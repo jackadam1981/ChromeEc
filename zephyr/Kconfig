@@ -7,6 +7,12 @@ rsource "drivers/Kconfig"
 rsource "emul/Kconfig"
 rsource "subsys/Kconfig"
 
+config SCP_CORE1_RAM_SIZE
+	default 0x40000
+
+config USE_SCP_UART
+	default 0x40000
+
 if ZTEST
 
 config HAS_TEST_TASKS
