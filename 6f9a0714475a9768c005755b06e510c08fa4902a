@@ -34,39 +34,24 @@
       "parentUuid": "40a97677_1e8d9c1a",
       "revId": "6f9a0714475a9768c005755b06e510c08fa4902a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
-    }
-  ],
-  "submitRequirementResults": [
+    },
     {
-      "submitRequirement": {
-        "name": "Code-Review",
-        "description": {
-          "value": "Submit requirement for the \u0027Code-Review\u0027 label"
-        },
-        "applicabilityExpression": {},
-        "submittabilityExpression": {
-          "expressionString": "label:Code-Review\u003dMAX,user\u003dnon_uploader -label:Code-Review\u003dMIN"
-        },
-        "overrideExpression": {
-          "value": {
-            "expressionString": "label:Bot-Commit\u003d+1"
-          }
-        },
-        "allowOverrideInChildProjects": true
+      "unresolved": true,
+      "key": {
+        "uuid": "3f160dd3_5367a4aa",
+        "filename": "zephyr/boards/riscv/it8xxx2/Kconfig.defconfig",
+        "patchSetId": 1
       },
-      "applicabilityExpressionResult": {},
-      "submittabilityExpressionResult": {
-        "value": {"expression":{"expressionString":"label:Code-Review=MAX,user=non_uploader -label:Code-Review=MIN"},"status":"PASS","errorMessage":{"value":null},"passingAtoms":["label:Code-Review=MAX,user=non_uploader"],"failingAtoms":["label:Code-Review=MIN"]}
+      "lineNbr": 28,
+      "author": {
+        "id": 1281040
       },
-      "overrideExpressionResult": {
-        "value": {"expression":{"expressionString":"label:Bot-Commit=+1"},"status":"FAIL","errorMessage":{"value":null},"passingAtoms":[],"failingAtoms":["label:Bot-Commit=+1"]}
-      },
-      "patchSetCommitId": "6f9a0714475a9768c005755b06e510c08fa4902a",
-      "legacy": {
-        "value": false
-      },
-      "forced": {},
-      "hidden": {}
+      "writtenOn": "2022-02-21T06:44:08Z",
+      "side": 1,
+      "message": "I don\u0027t think it\u0027s a given that the boards directory will always be an EC build.\nI\u0027m thinking of other f/w build like the fingerprint scanner, which used an EC\nbased build originally.\nI think it\u0027s quite possible that other f/w builds may want to use out Zephyr build environment, but not specifically as an EC.\nThe sensible split I see is have fairly generic stuff in zephyr/boards, and all the EC specific stuff in zephyr (and maybe this needs a bit more of rethink in how things get arranged as well).\nIn any case, I don\u0027t think it\u0027s a big deal at the moment, but it would good to keep a little bit more flexibility in the future.",
+      "parentUuid": "8b48ec01_8472597e",
+      "revId": "6f9a0714475a9768c005755b06e510c08fa4902a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
