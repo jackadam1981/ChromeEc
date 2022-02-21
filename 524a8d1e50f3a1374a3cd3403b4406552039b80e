@@ -244,6 +244,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1a034938_f2d07e8e",
+        "filename": "zephyr/subsys/ap_pwrseq/include/x86_common_pwrseq.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-02-21T05:07:54Z",
+      "side": 1,
+      "message": "\"by ordering the enum starting with the GPIOs, followed by VW and ADC.\", yes, I rearranged the dts nodes in this way. \nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3451267/6/zephyr/projects/brya/brya/adl_power_signal.dts",
+      "parentUuid": "7bb5b146_9b3215a1",
+      "revId": "524a8d1e50f3a1374a3cd3403b4406552039b80e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "31a1f029_a49d88d7",
         "filename": "zephyr/subsys/ap_pwrseq/include/x86_power_signals.h",
         "patchSetId": 6
