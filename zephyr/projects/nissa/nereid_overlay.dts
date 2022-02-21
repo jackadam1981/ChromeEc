@@ -17,6 +17,20 @@
 		};
 	};
 
+	binman {
+		/*
+		 * Use full 1MB of Flash, not default 512k.
+		 * Kconfig must also set CROS_EC_RO_SIZE and related options.
+		 */
+		wp-ro {
+			size = <0x80000>;
+		};
+		ec-rw {
+			offset = <0x80000>;
+			size = <0x80000>;
+		};
+	};
+
 	hibernate-wake-pins {
 		compatible = "cros-ec,hibernate-wake-pins";
 		wakeup-irqs = <
