@@ -52,6 +52,24 @@
       "parentUuid": "4cb60203_b0f0e026",
       "revId": "420ad636f9a896f540615f0000376141bcf2098e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "385939f9_274445b4",
+        "filename": "board/nipperkin/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 513,
+      "author": {
+        "id": 1294793
+      },
+      "writtenOn": "2022-02-21T01:27:38Z",
+      "side": 1,
+      "message": "Hi Rob\nI missed the information from b:197186243#comment4, CL updated thank you.\nFrom board version \u003e\u003d 4 we will use keyboard with menu key.",
+      "parentUuid": "39be407f_ff2dece2",
+      "revId": "420ad636f9a896f540615f0000376141bcf2098e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
