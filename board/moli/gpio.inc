@@ -22,6 +22,12 @@ GPIO_INT(USB_C0_PPC_INT_ODL,         PIN(6, 2), GPIO_INT_FALLING, ppc_interrupt)
 GPIO_INT(USB_C0_RT_INT_ODL,          PIN(B, 1), GPIO_INT_FALLING, retimer_interrupt)
 GPIO_INT(BJ_ADP_PRESENT_ODL,         PIN(8, 2), GPIO_INT_BOTH | GPIO_PULL_UP, adp_connect_interrupt)
 GPIO_INT(EC_RECOVERY_BTN_ODL,        PIN(2, 3), GPIO_INT_BOTH, button_interrupt)
+GPIO_INT(HDMI_CONN_OC_ODL,           PIN(2, 4), GPIO_INPUT | GPIO_INT_BOTH, port_ocp_interrupt)
+GPIO_INT(USB_A0_OC_ODL,              PIN(3, 1), GPIO_INPUT | GPIO_PULL_UP | GPIO_INT_BOTH, port_ocp_interrupt)
+GPIO_INT(USB_A1_OC_ODL,              PIN(3, 0), GPIO_INPUT | GPIO_PULL_UP | GPIO_INT_BOTH, port_ocp_interrupt)
+GPIO_INT(USB_A2_OC_ODL,              PIN(2, 7), GPIO_INPUT | GPIO_PULL_UP | GPIO_INT_BOTH, port_ocp_interrupt)
+GPIO_INT(USB_A3_OC_ODL,              PIN(2, 6), GPIO_INPUT | GPIO_PULL_UP | GPIO_INT_BOTH, port_ocp_interrupt)
+GPIO_INT(USB_A4_OC_ODL,              PIN(0, 6), GPIO_INPUT | GPIO_PULL_UP | GPIO_INT_BOTH, port_ocp_interrupt)
 
 /* CCD */
 GPIO(CCD_MODE_ODL,                   PIN(E, 5), GPIO_INPUT)
@@ -38,7 +44,6 @@ GPIO(ANALOG_PPVAR_PWR_IN_IMON_EC,    PIN(4, 2), GPIO_INPUT)
 
 /* Display */
 GPIO(DP_CONN_OC_ODL,                 PIN(2, 5), GPIO_INPUT)
-GPIO(HDMI_CONN_OC_ODL,               PIN(2, 4), GPIO_INPUT)
 
 /* BarrelJack */
 GPIO(EN_PPVAR_BJ_ADP_L,              PIN(0, 7), GPIO_OUT_LOW)
@@ -97,11 +102,6 @@ GPIO(EC_I2C_USB_A0_A1_MIX_SDA,       PIN(E, 3), GPIO_INPUT)
 
 /* USBA */
 GPIO(EN_PP5000_USBA,                 PIN(D, 7), GPIO_OUT_LOW)
-GPIO(USB_A0_OC_ODL,                  PIN(3, 1), GPIO_INPUT | GPIO_PULL_UP)
-GPIO(USB_A1_OC_ODL,                  PIN(3, 0), GPIO_INPUT | GPIO_PULL_UP)
-GPIO(USB_A2_OC_ODL,                  PIN(2, 7), GPIO_INPUT | GPIO_PULL_UP)
-GPIO(USB_A3_OC_ODL,                  PIN(2, 6), GPIO_INPUT | GPIO_PULL_UP)
-GPIO(USB_A4_OC_ODL,                  PIN(0, 6), GPIO_INPUT | GPIO_PULL_UP)
 GPIO(USB_A0_STATUS_L,                PIN(2, 1), GPIO_INPUT)
 GPIO(USB_A1_STATUS_L,                PIN(2, 0), GPIO_INPUT)
 GPIO(USB_A2_STATUS_L,                PIN(1, 7), GPIO_INPUT)
