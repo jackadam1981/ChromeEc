@@ -152,6 +152,16 @@
  * RV32I panic data structure.
  */
 #define CONFIG_DO_NOT_INCLUDE_RV32I_PANIC_DATA
+
+/*
+ * FPMCU RO for nocturne and nami don't support extended reset flags in backup
+ * RAM. RO interprets the register as saved panic reason, so it tries to restore
+ * panic data when value in the register is different than 0. Another problem is
+ * that panic data saved in backup RAM on hard reset is restored incorrectly.
+ *
+ * CL:1295890 is the change which introduced extended reset flags.
+ */
+#define CONFIG_STM32_RO_DOES_NOT_SUPPORT_EXTENDED_RESET_FLAGS
 #endif
 
 #else /* SECTION_IS_RO */
