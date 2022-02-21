@@ -95,6 +95,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "50d79d93_ff92717e",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 704,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-02-21T18:40:41Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c55b3029_d54b735d",
+      "range": {
+        "startLine": 704,
+        "startChar": 12,
+        "endLine": 704,
+        "endChar": 30
+      },
+      "revId": "9901cdf686a9a5427ff8cd593f8bd29a6acdb01b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5bc36c53_36141ac6",
@@ -132,6 +156,30 @@
       "side": 1,
       "message": "It is done after this call at line number 819 in the function check_boot_key(debounced_state);\n\nNote here we are registering only the designated boot keys and not reading entire matrix. So the check at line number 694: /* If any other key was pressed, ignore all keys */ is not applicable here.",
       "parentUuid": "5bc36c53_36141ac6",
+      "range": {
+        "startLine": 801,
+        "startChar": 1,
+        "endLine": 801,
+        "endChar": 19
+      },
+      "revId": "9901cdf686a9a5427ff8cd593f8bd29a6acdb01b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "21e5f87e_d7885157",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 801,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-02-21T18:40:41Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "fd66a921_395267eb",
       "range": {
         "startLine": 801,
         "startChar": 1,

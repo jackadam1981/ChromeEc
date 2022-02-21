@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "813f22a5_ced9bce6",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-02-21T18:40:41Z",
+      "side": 1,
+      "message": "nit: ADC",
+      "range": {
+        "startLine": 200,
+        "startChar": 12,
+        "endLine": 200,
+        "endChar": 15
+      },
+      "revId": "01708c142fcf5a59c7bec1548321023fb4c8f837",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5058ac5d_ccbb7645",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-02-21T18:40:41Z",
+      "side": 1,
+      "message": "It would be interesting to measure the time of this loop (and print it if CONFIG_KEYBOARD_DEBUG is enabled).",
+      "range": {
+        "startLine": 209,
+        "startChar": 0,
+        "endLine": 213,
+        "endChar": 2
+      },
+      "revId": "01708c142fcf5a59c7bec1548321023fb4c8f837",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8a1cfc0_104defa9",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 905,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-02-21T18:40:41Z",
+      "side": 1,
+      "message": "nit: ifndef for consistency.",
+      "range": {
+        "startLine": 905,
+        "startChar": 1,
+        "endLine": 905,
+        "endChar": 12
+      },
+      "revId": "01708c142fcf5a59c7bec1548321023fb4c8f837",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e28d863b_1fc160e3",
+        "filename": "common/main.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-02-21T18:40:41Z",
+      "side": 1,
+      "message": "nit: \n\n  /*\n   * Initialize...\n   */",
+      "revId": "01708c142fcf5a59c7bec1548321023fb4c8f837",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
