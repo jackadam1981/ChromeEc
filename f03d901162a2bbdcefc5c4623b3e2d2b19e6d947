@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f50e9d9_49f71ce3",
+        "filename": "zephyr/subsys/ap_pwrseq/include/ap_pwrseq_chipset.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-02-21T00:56:40Z",
+      "side": 1,
+      "message": "This could be `enum ap_pwrseq_chipset_state_mask` which would be clearer, and the same for the following function as well.",
+      "range": {
+        "startLine": 33,
+        "startChar": 32,
+        "endLine": 33,
+        "endChar": 35
+      },
+      "revId": "f03d901162a2bbdcefc5c4623b3e2d2b19e6d947",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b37e326_ddfb2dd4",
+        "filename": "zephyr/subsys/ap_pwrseq/include/x86_non_dsx_common_pwrseq_sm_handler.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-02-21T00:56:40Z",
+      "side": 1,
+      "message": "`should_exit` or a different name might be clearer, since it\u0027s not exactly clear what this would `enable`.\n\nOr perhaps even rename the function, since taking a bool is pretty clear that the input is a flag; `chipset_request_exit_hard_off(bool should_exit)` maybe.",
+      "range": {
+        "startLine": 53,
+        "startChar": 41,
+        "endLine": 53,
+        "endChar": 47
+      },
+      "revId": "f03d901162a2bbdcefc5c4623b3e2d2b19e6d947",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
