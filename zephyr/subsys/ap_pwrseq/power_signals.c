@@ -11,6 +11,7 @@
 
 #include "signal_gpio.h"
 #include "signal_vw.h"
+#include "signal_adc.h"
 
 LOG_MODULE_DECLARE(ap_pwrseq, 4);
 
@@ -28,6 +29,7 @@ enum signal_source {
 	PWR_SIG_SRC_GPIO,
 	PWR_SIG_SRC_VW,
 	PWR_SIG_SRC_EXT,
+	PWR_SIG_SRC_ADC,
 };
 
 struct ps_config {
@@ -65,6 +67,8 @@ DT_FOREACH_STATUS_OKAY_VARGS(intel_ap_pwrseq_vw, GEN_PS_ENTRY,
 			     PWR_SIG_SRC_VW, PWR_SIG_TAG_VW)
 DT_FOREACH_STATUS_OKAY_VARGS(intel_ap_pwrseq_external, GEN_PS_ENTRY_NO_ENUM,
 			     PWR_SIG_SRC_EXT)
+DT_FOREACH_STATUS_OKAY_VARGS(intel_ap_pwrseq_adc, GEN_PS_ENTRY,
+			     PWR_SIG_SRC_ADC, PWR_SIG_TAG_ADC)
 };
 
 static power_signal_mask_t power_signals;
@@ -145,6 +149,11 @@ int power_signal_get(enum power_signal signal)
 #if HAS_EXT_SIGNALS
 	case PWR_SIG_SRC_EXT:
 		return board_power_signal_get(signal);
+#endif
+
+#if HAS_ADC_SIGNALS
+	case PWR_SIG_SRC_ADC:
+		return power_signal_adc_get(cp->src_enum);
 #endif
 	}
 }
