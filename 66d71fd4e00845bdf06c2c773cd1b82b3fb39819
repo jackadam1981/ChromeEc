@@ -16,6 +16,64 @@
       "message": "Peter@, I am out of b:220273249, can you loop me in?",
       "revId": "66d71fd4e00845bdf06c2c773cd1b82b3fb39819",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "74f2ab73_17f0fb4c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-02-21T03:52:11Z",
+      "side": 1,
+      "message": "CCd you back in so you can see it. This seems safer than what I was doing in https://crrev.com/c/3476658 since you say using 768k was still performant enough to avoid causing issues with software sync.",
+      "parentUuid": "6047edb8_05c11f81",
+      "revId": "66d71fd4e00845bdf06c2c773cd1b82b3fb39819",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d04896fa_79ce9ee2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-02-21T03:52:11Z",
+      "side": 1,
+      "message": "I looked into whether we could only specify these sizes in the device tree, but that turns out to be impossible because binman consumes the generated dts while other tools consume the generated kconfig to determine some addresses.",
+      "revId": "66d71fd4e00845bdf06c2c773cd1b82b3fb39819",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a05bfea3_6671f81c",
+        "filename": "zephyr/app/ec/chip/riscv/riscv-ite/Kconfig.it8xxx2",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-02-21T03:52:11Z",
+      "side": 1,
+      "message": "First 384k and second 384k.",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 48
+      },
+      "revId": "66d71fd4e00845bdf06c2c773cd1b82b3fb39819",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
