@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "560c296c_3f009bc8",
+        "filename": "zephyr/dts/bindings/power/intel,ap-pwrseq-signal-list.yaml",
+        "patchSetId": 9
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-02-21T05:01:31Z",
+      "side": 1,
+      "message": "Change made to use DT_NODE_HAS_PROP to find out signal source and assign value base on it. This property is removed from device tree.",
+      "parentUuid": "42d113ae_d17aef1c",
+      "revId": "5d1028c28409cf0e97eefbffa95040104d390312",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c5145d4f_562e2d9f",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-02-17T12:44:26Z",
       "side": 1,
       "message": "see my previous comment about just using a bool for indicating the interrupt should be enabled at start-up (you don\u0027t need the other flags).",
+      "revId": "5d1028c28409cf0e97eefbffa95040104d390312",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eeeddc80_3668e520",
+        "filename": "zephyr/dts/bindings/power/intel,ap-pwrseq-signal-list.yaml",
+        "patchSetId": 9
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-02-21T05:01:31Z",
+      "side": 1,
+      "message": "I have removed this and use a bool property enable-int-on-boot. Also this flags will go away or modified when b/220634934 is fixed to use logical level.",
+      "parentUuid": "c5145d4f_562e2d9f",
       "revId": "5d1028c28409cf0e97eefbffa95040104d390312",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -52,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f2a0f76_6830df93",
+        "filename": "zephyr/subsys/ap_pwrseq/include/x86_power_signals.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-02-21T05:01:31Z",
+      "side": 1,
+      "message": "Yes, made this change.",
+      "parentUuid": "8a50b941_d475998e",
+      "revId": "5d1028c28409cf0e97eefbffa95040104d390312",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "64d1e87f_49aec798",
@@ -69,6 +123,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "338a374a_aeda3e58",
+        "filename": "zephyr/subsys/ap_pwrseq/include/x86_power_signals.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-02-21T05:01:31Z",
+      "side": 1,
+      "message": "This is a good idea. So I split the header and created x86_power_signal.c; macro s only used by generating power_signal_list and \"const struct power_signal_info power_signal_list[]\" are moved to c file.",
+      "parentUuid": "64d1e87f_49aec798",
+      "revId": "5d1028c28409cf0e97eefbffa95040104d390312",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0357f79d_3d744185",
@@ -82,6 +154,24 @@
       "writtenOn": "2022-02-17T12:44:26Z",
       "side": 1,
       "message": "To generate both types of entries, and to avoid the generating macro to be too complicated, you could use 2 loops and generate the GPIO signals and VW signals separately (using \u0027[enum-entry] \u003d ...\u0027 to ensure they end up in the right place.",
+      "revId": "5d1028c28409cf0e97eefbffa95040104d390312",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f0eb9dc_05662e1b",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_adlp_pwrseq_sm.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-02-21T05:01:31Z",
+      "side": 1,
+      "message": "I tried the 2 loops. Entries can be generated for gpio and vw since they have special property to be identified. Other cases, like ADC, needs a third loop and there is no special property either. So instead of using 3 loops, I modified to use two COND_CODE_1, like a if - if else - else logic. \"[enum-entry] \" are used too.",
+      "parentUuid": "0357f79d_3d744185",
       "revId": "5d1028c28409cf0e97eefbffa95040104d390312",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

@@ -226,6 +226,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7bb5b146_9b3215a1",
+        "filename": "zephyr/subsys/ap_pwrseq/include/x86_common_pwrseq.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-02-21T05:01:31Z",
+      "side": 1,
+      "message": "I have made change to separate arrays for R/W data. But I don\u0027t figure out a good way to generate enum power_signal like your comment has. 😞\nAnother way I tried is to go through signal nodes with this:\n#define GEN_POWER_SIGNAL_CB_ENTRY                        \\\n        COND_CODE_1(DT_NODE_HAS_PROP(id, pwrseq_int_gpios), \\\n                ([GEN_POWER_SIGNAL_ENUM(id)] \u003d {},), ())\nstruct gpio_callback intr_callbacks[] \u003d {\n        DT_FOREACH_CHILD(\n                POWER_SIGNALS_LIST_NODE,\n                GEN_POWER_SIGNAL_CB_ENTRY)\n}; and expected to generate a table like: \nstruct gpio_callback intr_callbacks[] \u003d {\n[X86_SLP_S0_DEASSERTED] \u003d {},\n[X86_SLP_S3_DEASSERTED] \u003d {},\n[X86_SLP_SUS_DEASSERTED] \u003d {},\n[X86_RSMRST_L_PGOOD] \u003d {},\n[X86_DSW_PWROK] \u003d {},\n[X86_ALL_SYS_PGOOD] \u003d {},\n};\nsomehow there is build error couldn\u0027t find node. \nThen alternatively, I added a property to assign gpio count to POWER_SIGNAL_GPIO_COUNT.And declare the array \nstruct gpio_callback intr_callbacks[POWER_SIGNAL_GPIO_COUNT];",
+      "parentUuid": "384741ad_542ff602",
+      "revId": "524a8d1e50f3a1374a3cd3403b4406552039b80e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "31a1f029_a49d88d7",
         "filename": "zephyr/subsys/ap_pwrseq/include/x86_power_signals.h",
         "patchSetId": 6
@@ -690,6 +708,24 @@
       "side": 1,
       "message": "Since this function handles GPIO interrupts though, I think we actually want to call `gpio_pin_interrupt_configure_dt` during initialization for each pin that we want to interrupt on; no need to hook up IRQs, since the GPIO driver handles that.",
       "parentUuid": "8269f5d4_f2536db3",
+      "revId": "524a8d1e50f3a1374a3cd3403b4406552039b80e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d62370be_5887d3a0",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-02-21T05:01:31Z",
+      "side": 1,
+      "message": "Yes, gpio_pin_interrupt_configure_dt now are used in interrupt initialization.",
+      "parentUuid": "a37a3ef8_4554cf93",
       "revId": "524a8d1e50f3a1374a3cd3403b4406552039b80e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
