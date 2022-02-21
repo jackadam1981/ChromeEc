@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8640020_48ba7ee1",
+        "filename": "zephyr/projects/nissa/src/nivviks/board_config.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-02-21T00:04:25Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0fa862d4_86a0d425",
+      "revId": "e3201d87aa0db59f443ef2b4f1e591b665b108fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "37a261d0_a0efa188",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-02-21T00:02:23Z",
       "side": 1,
       "message": "I think this should be `LOW`, since we don\u0027t want to turn on the sub-board immediately- it should only be turned on when the system transitions to S3 or S0 (or perhaps S5? For LTE it\u0027s labelled EN_SUB_S5).",
+      "range": {
+        "startLine": 50,
+        "startChar": 3,
+        "endLine": 50,
+        "endChar": 19
+      },
+      "revId": "e3201d87aa0db59f443ef2b4f1e591b665b108fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "028578df_b3ec0fc8",
+        "filename": "zephyr/projects/nissa/src/nivviks/board_config.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-02-21T00:04:25Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "37a261d0_a0efa188",
       "range": {
         "startLine": 50,
         "startChar": 3,
