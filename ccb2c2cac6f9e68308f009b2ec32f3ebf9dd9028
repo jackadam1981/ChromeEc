@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "940eb8a4_29e4206c",
+        "filename": "chip/npcx/keyboard_raw.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1513493
+      },
+      "writtenOn": "2022-02-22T23:16:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bf7d38f0_8efed494",
+      "range": {
+        "startLine": 22,
+        "startChar": 1,
+        "endLine": 22,
+        "endChar": 24
+      },
+      "revId": "ccb2c2cac6f9e68308f009b2ec32f3ebf9dd9028",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6cde571f_eac08b31",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "85947a97_82dfe562",
+        "filename": "chip/npcx/keyboard_raw.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1513493
+      },
+      "writtenOn": "2022-02-22T23:16:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6cde571f_eac08b31",
+      "range": {
+        "startLine": 198,
+        "startChar": 0,
+        "endLine": 204,
+        "endChar": 25
+      },
+      "revId": "ccb2c2cac6f9e68308f009b2ec32f3ebf9dd9028",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0b39fb44_e334dc38",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-02-22T01:34:10Z",
       "side": 1,
       "message": "nit: BIT(col)",
+      "range": {
+        "startLine": 207,
+        "startChar": 17,
+        "endLine": 207,
+        "endChar": 31
+      },
+      "revId": "ccb2c2cac6f9e68308f009b2ec32f3ebf9dd9028",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b0710aa_2fb2a15a",
+        "filename": "chip/npcx/keyboard_raw.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1513493
+      },
+      "writtenOn": "2022-02-22T23:16:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0b39fb44_e334dc38",
       "range": {
         "startLine": 207,
         "startChar": 17,
