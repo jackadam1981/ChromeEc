@@ -16,6 +16,24 @@
       "message": "Hi Rob\nShould we cherry pick CL manually or we will use remote merge for guybrush branch?",
       "revId": "49a5caf5215227362e13f379dbb1513165e33eb6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "28a19e5d_dff59298",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2022-02-22T14:07:25Z",
+      "side": 1,
+      "message": "We will cherry pick for guybrush. This CL will be picked up automatically during the first round since we are fast forwarding to ToT first.",
+      "parentUuid": "f9ea4b29_0b985441",
+      "revId": "49a5caf5215227362e13f379dbb1513165e33eb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
