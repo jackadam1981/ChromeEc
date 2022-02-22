@@ -52,6 +52,21 @@
 #define CPRINTS(format, args...) cprints(CC_USBCHARGE, format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_USBCHARGE, format, ## args)
 
+const struct pwm_t pwm_channels[] = {
+	[PWM_CH_LED_WHITE] = {
+		.channel = 0,
+		.flags =  PWM_CONFIG_ACTIVE_LOW | PWM_CONFIG_DSLEEP,
+		.freq = 1000,
+	},
+	[PWM_CH_LED_AMBER] = {
+		.channel = 2,
+		.flags =  PWM_CONFIG_ACTIVE_LOW | PWM_CONFIG_DSLEEP,
+		.freq = 1000,
+	},
+};
+BUILD_ASSERT(ARRAY_SIZE(pwm_channels) == PWM_CH_COUNT);
+
+
 #define INT_RECHECK_US 5000
 
 #define ADC_VOL_UP_MASK     BIT(0)
