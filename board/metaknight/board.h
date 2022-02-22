@@ -33,6 +33,7 @@
 
 
 /* LED defines */
+#define CONFIG_PWM
 #define CONFIG_LED_ONOFF_STATES
 
 /* PWM */
@@ -176,6 +177,8 @@ enum sensor_id {
 };
 
 enum pwm_channel {
+	PWM_CH_LED_AMBER,
+	PWM_CH_LED_WHITE,
 	PWM_CH_COUNT,
 };
 
