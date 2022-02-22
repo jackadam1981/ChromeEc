@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a0dd3af4_81ab59e1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1449895
+      },
+      "writtenOn": "2022-02-22T03:21:02Z",
+      "side": 1,
+      "message": "The CL will break the firmware_EventLog test, could we revert the CL? \n\nSee more detail in b/215463426.",
+      "revId": "88b320028e803e60c97435b0f9b2de6d42a126af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
