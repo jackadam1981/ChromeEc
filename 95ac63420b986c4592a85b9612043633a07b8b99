@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f2a8e82_929826b8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-02-22T18:54:40Z",
+      "side": 1,
+      "message": "how much noise does this cause for recent commits?\n\ni.e., can you run it on the 100 most recent commits and see how many pass the check?\n\nif we are making too much noise, people will just --no-verify without even thinking too hard",
+      "range": {
+        "startLine": 20,
+        "startChar": 5,
+        "endLine": 21,
+        "endChar": 47
+      },
+      "revId": "95ac63420b986c4592a85b9612043633a07b8b99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
