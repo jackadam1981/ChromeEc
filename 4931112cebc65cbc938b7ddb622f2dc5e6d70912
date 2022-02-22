@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed430e41_642d7c29",
+        "filename": "common/rgb_keyboard.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-02-22T23:46:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e2dcd3c8_51393dea",
+      "revId": "4931112cebc65cbc938b7ddb622f2dc5e6d70912",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7772e136_e8025025",
@@ -48,6 +66,24 @@
       "writtenOn": "2022-02-22T19:33:40Z",
       "side": 1,
       "message": "test coverage for this function is needed",
+      "revId": "4931112cebc65cbc938b7ddb622f2dc5e6d70912",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d822603_a4677a56",
+        "filename": "common/rgb_keyboard.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-02-22T23:46:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7772e136_e8025025",
       "revId": "4931112cebc65cbc938b7ddb622f2dc5e6d70912",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -69,6 +105,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7bbc50d0_ea988c26",
+        "filename": "common/rgb_keyboard.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-02-22T23:46:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9baedef2_21492b56",
+      "revId": "4931112cebc65cbc938b7ddb622f2dc5e6d70912",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3f02c429_5c16c571",
@@ -86,6 +140,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c49cc542_2973fab6",
+        "filename": "common/rgb_keyboard.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-02-22T23:46:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3f02c429_5c16c571",
+      "revId": "4931112cebc65cbc938b7ddb622f2dc5e6d70912",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d33c72a0_7fc6f418",
@@ -99,6 +171,30 @@
       "writtenOn": "2022-02-22T19:33:40Z",
       "side": 1,
       "message": "typo",
+      "range": {
+        "startLine": 210,
+        "startChar": 13,
+        "endLine": 210,
+        "endChar": 21
+      },
+      "revId": "4931112cebc65cbc938b7ddb622f2dc5e6d70912",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a055c88d_bd3e3f5e",
+        "filename": "zephyr/Kconfig.keyboard",
+        "patchSetId": 18
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-02-22T23:46:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d33c72a0_7fc6f418",
       "range": {
         "startLine": 210,
         "startChar": 13,
