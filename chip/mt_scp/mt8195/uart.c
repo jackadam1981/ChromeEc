@@ -23,5 +23,9 @@ void uart_init_pinmux(void)
 	/* set AP GPIO102 and GPIO103 to alt func 5 */
 	AP_GPIO_MODE12_CLR = 0x77000000;
 	AP_GPIO_MODE12_SET = 0x55000000;
+#else
+	/* set AP GPIO102 and GPIO103 to alt func 5 */
+	AP_GPIO_MODE12_CLR = 0x77000000;
+	AP_GPIO_MODE12_SET = 0x55000000;
 #endif
 }
