@@ -5,10 +5,27 @@
 
 #include "battery.h"
 #include "charger.h"
+#include "charge_state_v2.h"
 #include "driver/charger/sm5803.h"
+
 #include "extpower.h"
+#include "hooks.h"
 #include "usb_pd.h"
 #include "sub_board.h"
+
+static inline enum ec_error_list chg_read8(int chgnum, int offset, int *value)
+{
+	return i2c_read8(chg_chips[chgnum].i2c_port,
+			 chg_chips[chgnum].i2c_addr_flags,
+			 offset, value);
+}
+
+static inline enum ec_error_list chg_write8(int chgnum, int offset, int value)
+{
+	return i2c_write8(chg_chips[chgnum].i2c_port,
+			  chg_chips[chgnum].i2c_addr_flags,
+			  offset, value);
+}
 
 const struct charger_config_t chg_chips[] = {
 	{
@@ -53,3 +70,23 @@ __override void board_check_extpower(void)
 
 	last_extpower_present = extpower_present;
 }
+
+/*
+ * Set input current limit step extension. When bit7 is set,
+ * the input current limit step is multiplied by 1.56.
+ */
+static void set_input_current_extension(void)
+{
+	int reg_read;
+	
+	int val;
+	int rv;
+	int chgnum = 0;
+
+	chgnum = charge_get_active_chg_chip();
+	reg_read = chg_read8(chgnum, SM5803_ISO_CL_REG2, &val);
+	val |= SM5803_CHG_ILIM_EXTD;
+	rv = chg_write8(chgnum, SM5803_ISO_CL_REG2, val);
+
+}
+DECLARE_HOOK(HOOK_INIT, set_input_current_extension, HOOK_PRIO_DEFAULT);
