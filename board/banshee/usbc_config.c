@@ -304,20 +304,20 @@ void board_reset_pd_mcu(void)
 	 */
 	gpio_set_level(GPIO_USB_C0_C1_TCPC_RST_ODL, 0);
 	gpio_set_level(GPIO_USB_C2_C3_TCPC_RST_ODL, 0);
-	gpio_set_level(IOEX_USB_C0_RT_RST_ODL, 0);
-	gpio_set_level(IOEX_USB_C1_RT_RST_ODL, 0);
-	gpio_set_level(IOEX_USB_C2_RT_RST_ODL, 0);
-	gpio_set_level(IOEX_USB_C3_RT_RST_ODL, 0);
+	ioex_set_level(IOEX_USB_C0_RT_RST_ODL, 0);
+	ioex_set_level(IOEX_USB_C1_RT_RST_ODL, 0);
+	ioex_set_level(IOEX_USB_C2_RT_RST_ODL, 0);
+	ioex_set_level(IOEX_USB_C3_RT_RST_ODL, 0);
 	/*
 	 * delay for power-on to reset-off and min. assertion time
 	 */
 	msleep(20);
 	gpio_set_level(GPIO_USB_C0_C1_TCPC_RST_ODL, 1);
 	gpio_set_level(GPIO_USB_C2_C3_TCPC_RST_ODL, 1);
-	gpio_set_level(IOEX_USB_C0_RT_RST_ODL, 1);
-	gpio_set_level(IOEX_USB_C1_RT_RST_ODL, 1);
-	gpio_set_level(IOEX_USB_C2_RT_RST_ODL, 1);
-	gpio_set_level(IOEX_USB_C3_RT_RST_ODL, 1);
+	ioex_set_level(IOEX_USB_C0_RT_RST_ODL, 1);
+	ioex_set_level(IOEX_USB_C1_RT_RST_ODL, 1);
+	ioex_set_level(IOEX_USB_C2_RT_RST_ODL, 1);
+	ioex_set_level(IOEX_USB_C3_RT_RST_ODL, 1);
 
 	/* wait for chips to come up */
 	msleep(50);
