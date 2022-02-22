@@ -16,6 +16,24 @@
       "message": "do we want to implement first-come-first-serve here?",
       "revId": "963d9347237d00218df465cb3d6ccd1b27f1602b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e087b586_99f44e15",
+        "filename": "zephyr/projects/corsola/src/usbc_config.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2022-02-22T12:40:06Z",
+      "side": 1,
+      "message": "Yes, this is a FCFS policy. If the DP is already muxed, it will be stopped at line:118.",
+      "parentUuid": "75bfa0ba_43b47864",
+      "revId": "963d9347237d00218df465cb3d6ccd1b27f1602b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
