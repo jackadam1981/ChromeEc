@@ -30,9 +30,9 @@ DECLARE_HOOK(HOOK_TICK, watchdog_reload, HOOK_PRIO_DEFAULT);
 void watchdog_disable(void)
 {
 	/* disable watchdog */
-	SCP_CORE0_WDT_CFG &= ~WDT_EN;
+	SCP_CORE_WDT_CFG &= ~WDT_EN;
 	/* clear watchdog irq */
-	SCP_CORE0_WDT_IRQ |= BIT(0);
+	SCP_CORE_WDT_IRQ |= BIT(0);
 }
 
 void watchdog_enable(void)
