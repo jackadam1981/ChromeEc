@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48774c8d_6af21f39",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-02-22T22:43:02Z",
+      "side": 1,
+      "message": "nit: I think you could change this to \"Furthermore\": `Furthermore, if panic data doesn\u0027t...`.",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 20
+      },
+      "revId": "519a7f9c52f94c538d3fb03780092632c18cfea8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f6b6e00_550d6886",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-02-22T22:43:02Z",
+      "side": 1,
+      "message": "Is this being tested on a device with incompatible RO/RW `struct panic_data`? I think it would be good to make it clear what setup you use to make `panic_get_data()` return `NULL`.",
+      "range": {
+        "startLine": 19,
+        "startChar": 5,
+        "endLine": 20,
+        "endChar": 19
+      },
+      "revId": "519a7f9c52f94c538d3fb03780092632c18cfea8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
