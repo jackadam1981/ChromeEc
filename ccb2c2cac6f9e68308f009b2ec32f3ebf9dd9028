@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf7d38f0_8efed494",
+        "filename": "chip/npcx/keyboard_raw.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-02-22T01:34:10Z",
+      "side": 1,
+      "message": "Do we need this?",
+      "range": {
+        "startLine": 22,
+        "startChar": 1,
+        "endLine": 22,
+        "endChar": 24
+      },
+      "revId": "ccb2c2cac6f9e68308f009b2ec32f3ebf9dd9028",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6cde571f_eac08b31",
+        "filename": "chip/npcx/keyboard_raw.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-02-22T01:34:10Z",
+      "side": 1,
+      "message": "nit: These blank lines and indentation don\u0027t look familiar to me. why not\n\n  \tif (col \u003d\u003d KEYBOARD_COLUMN_NONE)\n  \t\t/* Drive all lines to low */\n  \t\tset_kb_columns(0);\n  \telse if (col \u003d\u003d KEYBOARD_COLUMN_ALL)\n  \t\t/* Drive all lines to high to detect any key press */\n  \t\tset_kb_columns(0xFFFF);",
+      "range": {
+        "startLine": 198,
+        "startChar": 0,
+        "endLine": 204,
+        "endChar": 25
+      },
+      "revId": "ccb2c2cac6f9e68308f009b2ec32f3ebf9dd9028",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b39fb44_e334dc38",
+        "filename": "chip/npcx/keyboard_raw.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-02-22T01:34:10Z",
+      "side": 1,
+      "message": "nit: BIT(col)",
+      "range": {
+        "startLine": 207,
+        "startChar": 17,
+        "endLine": 207,
+        "endChar": 31
+      },
+      "revId": "ccb2c2cac6f9e68308f009b2ec32f3ebf9dd9028",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
