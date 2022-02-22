@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9ca5337_e1188997",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-02-22T23:32:23Z",
+      "side": 1,
+      "message": "Can you specify the version just so that it\u0027s clear exactly what was tested?",
+      "range": {
+        "startLine": 17,
+        "startChar": 52,
+        "endLine": 17,
+        "endChar": 61
+      },
+      "revId": "a1ce7ceb3b305a2066f799ffa399db55bdd0aac3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77d889b4_00bb4381",
+        "filename": "board/nocturne_fp/ro_workarounds.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-02-22T23:32:23Z",
+      "side": 1,
+      "message": "Can you use the `if (IS_ENABLED(...))` form?",
+      "range": {
+        "startLine": 86,
+        "startChar": 0,
+        "endLine": 86,
+        "endChar": 61
+      },
+      "revId": "a1ce7ceb3b305a2066f799ffa399db55bdd0aac3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf3ec869_e67cf6cf",
+        "filename": "chip/stm32/bkpdata.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-02-22T23:32:23Z",
+      "side": 1,
+      "message": "Can you use the `if (IS_ENABLED(...))` form?",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 61
+      },
+      "revId": "a1ce7ceb3b305a2066f799ffa399db55bdd0aac3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a098b7e4_6bd034f9",
+        "filename": "chip/stm32/bkpdata.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-02-22T23:32:23Z",
+      "side": 1,
+      "message": "Can you use the `if (IS_ENABLED(...))` form?",
+      "range": {
+        "startLine": 83,
+        "startChar": 0,
+        "endLine": 83,
+        "endChar": 61
+      },
+      "revId": "a1ce7ceb3b305a2066f799ffa399db55bdd0aac3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ad615cd_ccd5619a",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 2195,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-02-22T23:32:23Z",
+      "side": 1,
+      "message": "How about reversing the logic to make it a little easier to read? (http://go/tott/530)\n\n```\n#define CONFIG_STM32_EXTENDED_RESET_FLAGS 1\n```\n\nThen enum becomes:\n\n```\nenum bkpdata_index {\n\tBKPDATA_INDEX_SCRATCHPAD,\t     /* General-purpose scratchpad */\n\tBKPDATA_INDEX_SAVED_RESET_FLAGS,     /* Saved reset flags */\n#ifdef CONFIG_STM32_EXTENDED_RESET_FLAGS\n\tBKPDATA_INDEX_SAVED_RESET_FLAGS_2,   /* Saved reset flags (cont) */\n#endif\n```\n\nand checking logic becomes:\n\n```\nif (IS_ENABLED(CONFIG_STM32_EXTENDED_RESET_FLAGS))\n  bkpdata_write(BKPDATA_INDEX_SAVED_RESET_FLAGS_2, save_flags \u003e\u003e 16);\n```\n\nand https://crrev.com/c/3477958 is changed to `undef CONFIG_STM32_EXTENDED_RESET_FLAGS`.",
+      "range": {
+        "startLine": 2195,
+        "startChar": 0,
+        "endLine": 2195,
+        "endChar": 60
+      },
+      "revId": "a1ce7ceb3b305a2066f799ffa399db55bdd0aac3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
