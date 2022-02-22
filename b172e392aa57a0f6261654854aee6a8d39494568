@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f229247e_247223c6",
+        "filename": "zephyr/projects/nissa/src/common_pwrseq.c",
+        "patchSetId": 28
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2022-02-22T18:11:52Z",
+      "side": 1,
+      "message": "OK, currently we have GPIO, VW and OTHER, maybe we can include an ADC-CMP type to capture the signals that involve voltage monitoring, that way we could avoid having to override this function.",
+      "parentUuid": "15cd0f09_2078bffc",
+      "revId": "b172e392aa57a0f6261654854aee6a8d39494568",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d207e122_0883d6f7",
         "filename": "zephyr/projects/nissa/src/common_pwrseq.c",
         "patchSetId": 28
@@ -37,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "157af29e_b3e7ffb5",
+        "filename": "zephyr/projects/nissa/src/common_pwrseq.c",
+        "patchSetId": 28
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2022-02-22T18:11:52Z",
+      "side": 1,
+      "message": "OK, we can have one single function for this.",
+      "parentUuid": "d207e122_0883d6f7",
+      "revId": "b172e392aa57a0f6261654854aee6a8d39494568",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7cd9914b_a6b7b11f",
         "filename": "zephyr/projects/nissa/src/common_pwrseq.c",
         "patchSetId": 28
@@ -48,6 +84,30 @@
       "writtenOn": "2022-02-18T03:03:49Z",
       "side": 1,
       "message": "call this board_power_sequence_init instead of baseboard_init",
+      "range": {
+        "startLine": 213,
+        "startChar": 11,
+        "endLine": 213,
+        "endChar": 25
+      },
+      "revId": "b172e392aa57a0f6261654854aee6a8d39494568",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa576710_122fdf5e",
+        "filename": "zephyr/projects/nissa/src/common_pwrseq.c",
+        "patchSetId": 28
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2022-02-22T18:11:52Z",
+      "side": 1,
+      "message": "If I make ADC-CMP signal type, this could be removed as well.",
+      "parentUuid": "7cd9914b_a6b7b11f",
       "range": {
         "startLine": 213,
         "startChar": 11,
