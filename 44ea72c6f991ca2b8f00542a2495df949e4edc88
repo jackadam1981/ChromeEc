@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01ce5b9a_563dce5b",
+        "filename": "driver/fingerprint/fpc/bep/fpc_private.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-02-22T22:12:17Z",
+      "side": 1,
+      "message": "To avoid duplication, it would be good to have `fpc_check_hwid` call `fpc_get_hwid`. Something like this psuedocode:\n\n```\nint fpc_check_hwid(void)\n  uint16_t id;\n  \n  id \u003d fpc_get_hwid();\n  if (id \u003d\u003d ERROR) {\n    return ERROR;\n  }\n  \n  CPRINTS(FP_SENSOR_NAME \" id 0x%04x\", id);\n  return EC_SUCCESS;\n}\n```\n\nThe part that we have to decide is how to return errors from `fpc_get_hwid`. We can either try to encode the errors (`FP_ERROR_SPI_COMM` and `FP_ERROR_BAD_HWID`) into the return value (assuming the actual ID will never have those bits set), or we can separate the return value from the ID:\n\n```\nint fpc_get_hwid(uint16_t* id)\n```\n\nwhere the `int` return value indicates the error code (`EC_SUCCESS`, `FP_ERROR_SPI_COMM` or `FP_ERROR_BAD_HWID`) and the `id` is set with the actual ID. I think this way is a little cleaner, but make sure to document the function with [doxygen](https://www.doxygen.nl/manual/docblocks.html) to make it clear. [Example](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/common/flash.c;l\u003d233-243;drc\u003d74a02c2ff082d70608064f4b09f8ecf08a77e685)",
+      "range": {
+        "startLine": 117,
+        "startChar": 0,
+        "endLine": 139,
+        "endChar": 1
+      },
+      "revId": "44ea72c6f991ca2b8f00542a2495df949e4edc88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fda9b575_7bd9a893",
+        "filename": "test/fpsensor_hw.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-02-22T22:12:17Z",
+      "side": 1,
+      "message": "Extra indent here",
+      "range": {
+        "startLine": 26,
+        "startChar": 1,
+        "endLine": 26,
+        "endChar": 2
+      },
+      "revId": "44ea72c6f991ca2b8f00542a2495df949e4edc88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
