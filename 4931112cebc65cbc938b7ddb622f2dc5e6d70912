@@ -16,6 +16,97 @@
       "message": "Ping.",
       "revId": "4931112cebc65cbc938b7ddb622f2dc5e6d70912",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e2dcd3c8_51393dea",
+        "filename": "common/rgb_keyboard.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-02-22T19:33:40Z",
+      "side": 1,
+      "message": "needs test coverage",
+      "revId": "4931112cebc65cbc938b7ddb622f2dc5e6d70912",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7772e136_e8025025",
+        "filename": "common/rgb_keyboard.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-02-22T19:33:40Z",
+      "side": 1,
+      "message": "test coverage for this function is needed",
+      "revId": "4931112cebc65cbc938b7ddb622f2dc5e6d70912",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9baedef2_21492b56",
+        "filename": "common/rgb_keyboard.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-02-22T19:33:40Z",
+      "side": 1,
+      "message": "could use test coverage",
+      "revId": "4931112cebc65cbc938b7ddb622f2dc5e6d70912",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f02c429_5c16c571",
+        "filename": "common/rgb_keyboard.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-02-22T19:33:40Z",
+      "side": 1,
+      "message": "same with this case",
+      "revId": "4931112cebc65cbc938b7ddb622f2dc5e6d70912",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d33c72a0_7fc6f418",
+        "filename": "zephyr/Kconfig.keyboard",
+        "patchSetId": 18
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-02-22T19:33:40Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 210,
+        "startChar": 13,
+        "endLine": 210,
+        "endChar": 21
+      },
+      "revId": "4931112cebc65cbc938b7ddb622f2dc5e6d70912",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
