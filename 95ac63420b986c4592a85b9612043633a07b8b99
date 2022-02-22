@@ -22,6 +22,30 @@
       },
       "revId": "95ac63420b986c4592a85b9612043633a07b8b99",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "048534d6_f6a7243c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-02-22T21:12:07Z",
+      "side": 1,
+      "message": "If I exclude baseboard and board dirs, there were 3 flagged files.\n\nchip/stm32/dfu_bootmanager_main.c, chip/stm32/dfu_bootmanager_shared.c, chip/stm32/usb_dfu_runtime.c in crrev/c/3443960",
+      "parentUuid": "2f2a8e82_929826b8",
+      "range": {
+        "startLine": 20,
+        "startChar": 5,
+        "endLine": 21,
+        "endChar": 47
+      },
+      "revId": "95ac63420b986c4592a85b9612043633a07b8b99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
