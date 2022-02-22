@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "52d5413d_6bcd078a",
+        "filename": "docs/getting_started_quickly.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-02-22T21:50:11Z",
+      "side": 1,
+      "message": "I think we should remove this section in a followup CL. (See http://b/219082979#comment3.) It\u0027s going to be a constant struggle to keep it working and we don\u0027t test it, so I don\u0027t think it\u0027s a great thing to put in a \"Getting Started\" doc.\n\nThe chroot setup is the official way to develop that is tested with continuous integration.",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 51
+      },
+      "revId": "7be04d9ed16b35552e5bbc16ef420681535db5e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e194956d_c7c41134",
         "filename": "docs/getting_started_quickly.md",
         "patchSetId": 3
