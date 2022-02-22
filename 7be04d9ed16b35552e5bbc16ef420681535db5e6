@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f1024938_739ef639",
+        "filename": "docs/getting_started_quickly.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-02-22T22:32:43Z",
+      "side": 1,
+      "message": "Yes, I remember this was brought up also in the other review. I\u0027ll prepare a follow up CL right away to remove these lines.",
+      "parentUuid": "52d5413d_6bcd078a",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 51
+      },
+      "revId": "7be04d9ed16b35552e5bbc16ef420681535db5e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e194956d_c7c41134",
         "filename": "docs/getting_started_quickly.md",
         "patchSetId": 3
@@ -37,6 +61,30 @@
       "writtenOn": "2022-02-22T21:45:20Z",
       "side": 1,
       "message": "The only caveat here is that [this page](https://chromium.googlesource.com/chromiumos/docs/+/HEAD/developer_guide.md#sync-to-green) suggests it only works for Googlers. I have not actually checked to see if that is the case.",
+      "range": {
+        "startLine": 71,
+        "startChar": 71,
+        "endLine": 71,
+        "endChar": 80
+      },
+      "revId": "7be04d9ed16b35552e5bbc16ef420681535db5e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16ecb18c_ac8a18b8",
+        "filename": "docs/getting_started_quickly.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-02-22T22:32:43Z",
+      "side": 1,
+      "message": "Good catch! To make the instructions more general I can remove the option `-b stable`.\n\nDo you have strong opinion on one way or the other?",
+      "parentUuid": "e194956d_c7c41134",
       "range": {
         "startLine": 71,
         "startChar": 71,
