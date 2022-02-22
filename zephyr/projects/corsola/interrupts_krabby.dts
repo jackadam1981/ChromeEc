@@ -106,5 +106,10 @@
 			flags = <GPIO_INT_EDGE_FALLING>;
 			handler = "c1_bc12_interrupt";
 		};
+		int_usb_c0_ppc_frs_info: usb_c0_ppc_frsinfo {
+			irq-pin = <&usb_c0_ppc_frsinfo>;
+			flags = <GPIO_INT_EDGE_RISING>;
+			handler = "rt1739_frs_interrupt";
+		};
 	};
 };
