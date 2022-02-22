@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2fc29012_f56a9881",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2022-02-22T15:48:12Z",
+      "side": 1,
+      "message": "@Yuval/@Tristan - could you please review again?  I needed to add the changes in isl923x.c for the changing the name of reset API, otherwise compile fails.",
+      "revId": "567ed425eef499b4bc1cfde347f1fbee2c7e5953",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
