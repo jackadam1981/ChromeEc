@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6295a46_478aee63",
+        "filename": "board/nocturne_fp/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-02-22T22:31:14Z",
+      "side": 1,
+      "message": "To avoid any future changes to the `struct panic_data` causing problems like this again, could we also add something like:\n\n```\nBUILD_ASSERT(sizeof(struct panic_data) \u003d\u003d N);\n```\n\nwhere `N` is the size we expect?",
+      "range": {
+        "startLine": 154,
+        "startChar": 0,
+        "endLine": 154,
+        "endChar": 46
+      },
+      "revId": "c0665ca470512c7afef7dd3c77d23cf2facba801",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
