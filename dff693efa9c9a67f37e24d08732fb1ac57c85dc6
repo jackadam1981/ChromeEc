@@ -16,6 +16,24 @@
       "message": "Generally speaking I like reusability, but I believe that it makes these tests a bit brittle. Can we (for now) have the tests replicate logic? Once we close all these bugs we can work on finding a good pattern to take out the common code.",
       "revId": "dff693efa9c9a67f37e24d08732fb1ac57c85dc6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f8eb4e02_61416275",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2022-02-22T22:25:56Z",
+      "side": 1,
+      "message": "sure, I renamed the file to help identify the type of tests being covered.  Also moved common code to this file.  When we identify common patterns we can clean this up.",
+      "parentUuid": "c46d5879_0a811c9d",
+      "revId": "dff693efa9c9a67f37e24d08732fb1ac57c85dc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "43f0dd73_18a47b14",
+        "filename": "zephyr/test/drivers/include/usb_integration.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2022-02-22T22:25:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f391aeb9_0e3c3a6b",
+      "range": {
+        "startLine": 13,
+        "startChar": 1,
+        "endLine": 13,
+        "endChar": 18
+      },
+      "revId": "ca91292dabad8244891edf18902770ed898d9a46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "924b68dd_4d6d21a3",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9652faf5_8afcd533",
+        "filename": "zephyr/test/drivers/include/usb_integration.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2022-02-22T22:25:56Z",
+      "side": 1,
+      "message": "My intent here was to keep the same function signature, so if we wanted to create an array of function pointers to form a sequence of steps, we can just iterate through the array to reach a desired end result.  Do you foresee any additional usb actions that may be needed in the future that could leverage a sequence framework?  If not I can pass the sink/source directly here.",
+      "parentUuid": "924b68dd_4d6d21a3",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 76
+      },
+      "revId": "ca91292dabad8244891edf18902770ed898d9a46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a503a341_33b124b4",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-02-22T19:14:22Z",
       "side": 1,
       "message": "This seems brittle, the port is defined in the header and if someone changes it I don\u0027t think they would know to look here",
+      "range": {
+        "startLine": 42,
+        "startChar": 1,
+        "endLine": 46,
+        "endChar": 2
+      },
+      "revId": "ca91292dabad8244891edf18902770ed898d9a46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6b1ff23_5644249a",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_integration.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2022-02-22T22:25:56Z",
+      "side": 1,
+      "message": "Agree, this is not ideal. Shouldn\u0027t these REV/version be set in the emulator\u0027s init procedure?",
+      "parentUuid": "a503a341_33b124b4",
       "range": {
         "startLine": 42,
         "startChar": 1,
