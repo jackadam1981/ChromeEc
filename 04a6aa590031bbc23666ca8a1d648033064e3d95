@@ -46,6 +46,30 @@
       },
       "revId": "04a6aa590031bbc23666ca8a1d648033064e3d95",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9146cac_bc6e856a",
+        "filename": "util/fptool.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-02-22T16:05:22Z",
+      "side": 1,
+      "message": "Ah, sorry, I don\u0027t know why I didn\u0027t notice it was argv[0] which should always be valid.",
+      "parentUuid": "335349c0_eb05706a",
+      "range": {
+        "startLine": 109,
+        "startChar": 37,
+        "endLine": 109,
+        "endChar": 45
+      },
+      "revId": "04a6aa590031bbc23666ca8a1d648033064e3d95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
