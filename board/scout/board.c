@@ -5,7 +5,6 @@
 
 /* Puff board-specific configuration */
 
-#include "accelgyro.h"
 #include "adc.h"
 #include "adc_chip.h"
 #include "button.h"
@@ -13,7 +12,6 @@
 #include "common.h"
 #include "core/cortex-m/cpu.h"
 #include "cros_board_info.h"
-#include "driver/als_tcs3400.h"
 #include "driver/ina3221.h"
 #include "ec_commands.h"
 #include "extpower.h"
@@ -41,103 +39,6 @@
 
 #define CPRINTS(format, args...) cprints(CC_SYSTEM, format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_SYSTEM, format, ## args)
-
-/* Sensors */
-
-/* TCS3400 private data */
-static struct als_drv_data_t g_tcs3400_data = {
-	.als_cal.scale = 1,
-	.als_cal.uscale = 0,
-	.als_cal.offset = 0,
-	.als_cal.channel_scale = {
-		.k_channel_scale = ALS_CHANNEL_SCALE(1.0), /* kc */
-		.cover_scale = ALS_CHANNEL_SCALE(1.0),     /* CT */
-	},
-};
-
-static struct tcs3400_rgb_drv_data_t g_tcs3400_rgb_data = {
-	/*
-	 * b/202465034: calculate the actual coefficients and scaling factors
-	 */
-	.calibration.rgb_cal[X] = {
-		.offset = 0,
-		.scale = {
-			.k_channel_scale = ALS_CHANNEL_SCALE(1.0), /* kr */
-			.cover_scale = ALS_CHANNEL_SCALE(1.0)
-		},
-		.coeff[TCS_RED_COEFF_IDX] = FLOAT_TO_FP(0),
-		.coeff[TCS_GREEN_COEFF_IDX] = FLOAT_TO_FP(0),
-		.coeff[TCS_BLUE_COEFF_IDX] = FLOAT_TO_FP(0),
-		.coeff[TCS_CLEAR_COEFF_IDX] = FLOAT_TO_FP(0),
-	},
-	.calibration.rgb_cal[Y] = {
-		.offset = 0,
-		.scale = {
-			.k_channel_scale = ALS_CHANNEL_SCALE(1.0), /* kg */
-			.cover_scale = ALS_CHANNEL_SCALE(1.0)
-		},
-		.coeff[TCS_RED_COEFF_IDX] = FLOAT_TO_FP(0),
-		.coeff[TCS_GREEN_COEFF_IDX] = FLOAT_TO_FP(0),
-		.coeff[TCS_BLUE_COEFF_IDX] = FLOAT_TO_FP(0),
-		.coeff[TCS_CLEAR_COEFF_IDX] = FLOAT_TO_FP(0.1),
-	},
-	.calibration.rgb_cal[Z] = {
-		.offset = 0,
-		.scale = {
-			.k_channel_scale = ALS_CHANNEL_SCALE(1.0), /* kb */
-			.cover_scale = ALS_CHANNEL_SCALE(1.0)
-		},
-		.coeff[TCS_RED_COEFF_IDX] = FLOAT_TO_FP(0),
-		.coeff[TCS_GREEN_COEFF_IDX] = FLOAT_TO_FP(0),
-		.coeff[TCS_BLUE_COEFF_IDX] = FLOAT_TO_FP(0),
-		.coeff[TCS_CLEAR_COEFF_IDX] = FLOAT_TO_FP(0),
-	},
-	.calibration.irt = INT_TO_FP(1),
-	.saturation.again = TCS_DEFAULT_AGAIN,
-	.saturation.atime = TCS_DEFAULT_ATIME,
-};
-
-struct motion_sensor_t motion_sensors[] = {
-	[CLEAR_ALS] = {
-		.name = "Clear Light",
-		.active_mask = SENSOR_ACTIVE_S0_S3,
-		.chip = MOTIONSENSE_CHIP_TCS3400,
-		.type = MOTIONSENSE_TYPE_LIGHT,
-		.location = MOTIONSENSE_LOC_BASE,
-		.drv = &tcs3400_drv,
-		.drv_data = &g_tcs3400_data,
-		.port = I2C_PORT_SENSORS,
-		.i2c_spi_addr_flags = TCS3400_I2C_ADDR_FLAGS,
-		.rot_standard_ref = NULL,
-		.default_range = 0x10000, /* scale = 1x, uscale = 0 */
-		.min_frequency = TCS3400_LIGHT_MIN_FREQ,
-		.max_frequency = TCS3400_LIGHT_MAX_FREQ,
-		.config = {
-			/* Run ALS sensor in S0 */
-			[SENSOR_CONFIG_EC_S0] = {
-				.odr = 1000,
-			},
-		},
-	},
-	[RGB_ALS] = {
-		.name = "RGB Light",
-		.active_mask = SENSOR_ACTIVE_S0_S3,
-		.chip = MOTIONSENSE_CHIP_TCS3400,
-		.type = MOTIONSENSE_TYPE_LIGHT_RGB,
-		.location = MOTIONSENSE_LOC_BASE,
-		.drv = &tcs3400_rgb_drv,
-		.drv_data = &g_tcs3400_rgb_data,
-		.rot_standard_ref = NULL,
-		.default_range = 0x10000, /* scale = 1x, uscale = 0 */
-	},
-};
-const unsigned int motion_sensor_count = ARRAY_SIZE(motion_sensors);
-
-/* ALS instances when LPC mapping is needed. Each entry directs to a sensor. */
-const struct motion_sensor_t *motion_als_sensors[] = {
-	&motion_sensors[CLEAR_ALS],
-};
-BUILD_ASSERT(ARRAY_SIZE(motion_als_sensors) == ALS_COUNT);
 
 static void power_monitor(void);
 DECLARE_DEFERRED(power_monitor);
@@ -407,33 +308,6 @@ static void cbi_init(void)
 		board_version, sku_id, fw_config);
 }
 DECLARE_HOOK(HOOK_INIT, cbi_init, HOOK_PRIO_INIT_I2C + 1);
-
-static void board_sensors_init(void)
-{
-	/* Enable interrupt for the TCS3400 color light sensor */
-	switch (board_version) {
-	case BOARD_VERSION_PROTO:
-	case BOARD_VERSION_PRE_EVT:
-	case BOARD_VERSION_EVT:
-		/*
-		 * b/203224828: These versions incorrectly use a 1.8V interrupt
-		 * line, which sends a constant interrupt signal and eventually
-		 * triggers a watchdog reset, so we keep it disabled.
-		 */
-		gpio_disable_interrupt(GPIO_EC_RGB_INT_L);
-		CPRINTS("ALS interrupt disabled (detected known-bad hardware)");
-		break;
-
-	case BOARD_VERSION_DVT:
-	case BOARD_VERSION_PVT:
-	default:
-		gpio_enable_interrupt(GPIO_EC_RGB_INT_L);
-		CPRINTS("ALS interrupt enabled");
-		break;
-	}
-}
-/* Ensure board_sensors_init runs after cbi_init. */
-DECLARE_HOOK(HOOK_INIT, board_sensors_init, HOOK_PRIO_INIT_I2C + 2);
 
 static void board_init(void)
 {
