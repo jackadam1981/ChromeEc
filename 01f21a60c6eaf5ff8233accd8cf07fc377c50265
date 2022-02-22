@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "36dfc470_f09d07a8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-02-22T23:09:40Z",
+      "side": 1,
+      "message": "Would it be possible to write a unit test that does this? That way we can make sure that we don\u0027t hit any issues like this again with our old RO versions.\n\nI think the main part missing from the `run_device_tests.py` script is a way to create the combined \"old RO\" + \"current RW\". Since we do store the RO binaries in `firmware-bin` we could construct it for the test. (See the logic in [cros-ec-merge-ro.eclass](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/third_party/chromiumos-overlay/eclass/cros-ec-merge-ro.eclass;l\u003d46-79;drc\u003ddcbed7dff30f530bd07701716491522cda759ae8)).\n\nThere is an example of a unit test with reboot logic and panic in https://crrev.com/c/3288761.",
+      "range": {
+        "startLine": 18,
+        "startChar": 5,
+        "endLine": 20,
+        "endChar": 34
+      },
+      "revId": "01f21a60c6eaf5ff8233accd8cf07fc377c50265",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
