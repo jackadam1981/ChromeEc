@@ -22,6 +22,29 @@
       },
       "revId": "01f21a60c6eaf5ff8233accd8cf07fc377c50265",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "041612ea_ba8f3920",
+        "filename": "chip/stm32/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-02-22T23:18:14Z",
+      "side": 1,
+      "message": "Suggestion to make this a little clearer:\n\n\u003e Older ROs restore reason, info, and exception, but do not support the saved panic flags. In that case, we will let RW handle restoring the panic flags. If we get to this point in the code and the panic data does not exist, it doesn\u0027t make sense to try to only restore the panic flags; the information was lost.",
+      "range": {
+        "startLine": 362,
+        "startChar": 4,
+        "endLine": 368,
+        "endChar": 23
+      },
+      "revId": "01f21a60c6eaf5ff8233accd8cf07fc377c50265",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
