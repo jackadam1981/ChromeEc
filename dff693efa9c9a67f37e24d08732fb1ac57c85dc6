@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c46d5879_0a811c9d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-02-22T19:14:22Z",
+      "side": 1,
+      "message": "Generally speaking I like reusability, but I believe that it makes these tests a bit brittle. Can we (for now) have the tests replicate logic? Once we close all these bugs we can work on finding a good pattern to take out the common code.",
+      "revId": "dff693efa9c9a67f37e24d08732fb1ac57c85dc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
