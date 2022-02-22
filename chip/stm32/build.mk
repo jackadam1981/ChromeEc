@@ -25,7 +25,7 @@ else ifeq ($(CHIP_FAMILY),$(filter $(CHIP_FAMILY),stm32h7))
 # STM32FH7xx family has a Cortex-M7 ARM core
 CORE:=cortex-m
 # Allow the full Cortex-M4 instruction set (identical to M7)
-CFLAGS_CPU+=-march=armv7e-m -mcpu=cortex-m4
+CFLAGS_CPU+=-march=armv7e-m
 else ifeq ($(CHIP_FAMILY),$(filter $(CHIP_FAMILY),stm32l5))
 # STM32FL5xx family has a Cortex-M33 ARM core
 CORE:=cortex-m
