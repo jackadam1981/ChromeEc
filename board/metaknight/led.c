@@ -10,6 +10,13 @@
 #include "led_common.h"
 #include "led_onoff_states.h"
 #include "chipset.h"
+#include "charge_state.h"
+#include "hooks.h"
+#include "pwm.h"
+#include "task.h"
+
+
+#define CPRINTS(format, args...) cprints(CC_TASK, format, ## args)
 
 #define LED_ON_LVL 0
 #define LED_OFF_LVL 1
@@ -76,4 +83,96 @@ int led_set_brightness(enum ec_led_id led_id, const uint8_t *brightness)
 			led_set_color_battery(LED_OFF);
 	}
 	return EC_SUCCESS;
+}
+
+static void board_led_pwm_mode_disable(void)
+{
+	CPRINTS("%s", __func__);
+
+	/* set LED pin as GPIO function */
+	gpio_set_alternate_function(GPIO_PORT_C, (BIT(3) | BIT(4)), GPIO_ALT_FUNC_NONE);
+
+	/* disable pwm */
+	gpio_config_pin(MODULE_PWM, GPIO_LED_W_ODL, 0);
+	gpio_config_pin(MODULE_PWM, GPIO_LED_Y_ODL, 0);
+
+	/* enable gpio */
+	gpio_config_pin(MODULE_GPIO, GPIO_LED_W_ODL, 1);
+	gpio_config_pin(MODULE_GPIO, GPIO_LED_Y_ODL, 1);
+}
+
+static void board_led_pwm_mode_enable(void)
+{
+	CPRINTS("%s", __func__);
+
+	/* set LED pin as alternate function */
+	gpio_set_alternate_function(GPIO_PORT_C, (BIT(3) | BIT(4)), GPIO_ALT_FUNC_1);
+
+	/* disable gpio */
+	gpio_config_pin(MODULE_GPIO, GPIO_LED_W_ODL, 0);
+	gpio_config_pin(MODULE_GPIO, GPIO_LED_Y_ODL, 0);
+
+	/* enable pwm */
+	gpio_config_pin(MODULE_PWM, GPIO_LED_W_ODL, 1);
+	gpio_config_pin(MODULE_PWM, GPIO_LED_Y_ODL, 1);
+
+	pwm_enable(PWM_CH_LED_AMBER, 1);
+	pwm_enable(PWM_CH_LED_WHITE, 1);
+
+	pwm_set_duty(PWM_CH_LED_AMBER, 0);
+	pwm_set_duty(PWM_CH_LED_WHITE, 0);
+}
+
+static void board_led_mode_switch(void)
+{
+	if (chipset_in_state(CHIPSET_STATE_ANY_SUSPEND) &&
+		charge_get_state() == PWR_STATE_DISCHARGE) {
+
+		board_led_pwm_mode_enable();
+		task_wake(TASK_ID_LED_BREATHING);
+	} else {
+		board_led_pwm_mode_disable();
+	}
+}
+DECLARE_DEFERRED(board_led_mode_switch);
+
+static void board_led_mode_switch_check(void)
+{
+	hook_call_deferred(&board_led_mode_switch_data, (50 * MSEC));
+}
+DECLARE_HOOK(HOOK_AC_CHANGE, board_led_mode_switch_check, HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_CHIPSET_RESUME, board_led_mode_switch_check, HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, board_led_mode_switch_check, HOOK_PRIO_DEFAULT);
+
+static void led_breathing(void)
+{
+	static int count = 100;
+	static int state_up = 1;
+
+	if (count < 100 && state_up)
+		count++;
+	else if (count == 100 && state_up) {
+		count--;
+		state_up = 0;
+	}
+	else if (count > 0 && !state_up) {
+		count--;
+	}
+	else if (count == 0 && !state_up) {
+		count++;
+		state_up = 1;
+	}
+
+	pwm_set_duty(PWM_CH_LED_AMBER, count);
+}
+
+void led_breathing_task(void *u)
+{
+	while (1) {
+		led_breathing();
+		task_wait_event(20 * MSEC);
+		if (!chipset_in_state(CHIPSET_STATE_ANY_SUSPEND) ||
+			charge_get_state() != PWR_STATE_DISCHARGE)
+			task_wait_event(-1);
+	}
 }
