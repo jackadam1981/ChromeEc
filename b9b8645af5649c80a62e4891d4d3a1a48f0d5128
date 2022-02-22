@@ -1,6 +1,7 @@
 {
   "comments": [
     {
+      "unresolved": true,
       "key": {
         "uuid": "9a989eb1_86dea02d",
         "filename": "/COMMIT_MSG",
@@ -14,10 +15,10 @@
       "side": 1,
       "message": "TEST\u003dChange dummy\u003d to something else in dma_prepare_tx. See the new byte being sent over the wire over and over again in a SPI transaction.",
       "revId": "b9b8645af5649c80a62e4891d4d3a1a48f0d5128",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "3fc0106e_23c4e58a",
         "filename": "chip/stm32/dma.c",
@@ -37,10 +38,10 @@
         "endChar": 64
       },
       "revId": "b9b8645af5649c80a62e4891d4d3a1a48f0d5128",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "aab7a753_6532c34f",
         "filename": "chip/stm32/dma.c",
@@ -60,10 +61,10 @@
         "endChar": 64
       },
       "revId": "b9b8645af5649c80a62e4891d4d3a1a48f0d5128",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "a82d2088_eb9c79e9",
         "filename": "include/dma.h",
@@ -83,10 +84,10 @@
         "endChar": 2
       },
       "revId": "b9b8645af5649c80a62e4891d4d3a1a48f0d5128",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "1de4f82e_1e79f441",
         "filename": "include/dma.h",
@@ -107,10 +108,10 @@
         "endChar": 2
       },
       "revId": "b9b8645af5649c80a62e4891d4d3a1a48f0d5128",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "a4b02250_4db4314f",
         "filename": "include/dma.h",
@@ -124,8 +125,40 @@
       "side": 1,
       "message": "Should probably update the comments here. memory\u003d\u003dNULL is now accepted.",
       "revId": "b9b8645af5649c80a62e4891d4d3a1a48f0d5128",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ],
+  "submitRequirementResults": [
+    {
+      "submitRequirement": {
+        "name": "Code-Review",
+        "description": {
+          "value": "Submit requirement for the \u0027Code-Review\u0027 label"
+        },
+        "applicabilityExpression": {},
+        "submittabilityExpression": {
+          "expressionString": "label:Code-Review\u003dMAX,user\u003dnon_uploader -label:Code-Review\u003dMIN"
+        },
+        "overrideExpression": {
+          "value": {
+            "expressionString": "label:Bot-Commit\u003d+1"
+          }
+        },
+        "allowOverrideInChildProjects": true
+      },
+      "applicabilityExpressionResult": {},
+      "submittabilityExpressionResult": {
+        "value": {"expression":{"expressionString":"label:Code-Review=MAX,user=non_uploader -label:Code-Review=MIN"},"status":"FAIL","errorMessage":{"value":null},"passingAtoms":[],"failingAtoms":["label:Code-Review=MAX,user=non_uploader","label:Code-Review=MIN"]}
+      },
+      "overrideExpressionResult": {
+        "value": {"expression":{"expressionString":"label:Bot-Commit=+1"},"status":"FAIL","errorMessage":{"value":null},"passingAtoms":[],"failingAtoms":["label:Bot-Commit=+1"]}
+      },
+      "patchSetCommitId": "b9b8645af5649c80a62e4891d4d3a1a48f0d5128",
+      "legacy": {
+        "value": false
+      },
+      "forced": {},
+      "hidden": {}
     }
   ]
 }
