@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "643d1fd9_6ab63b19",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-02-23T18:42:08Z",
+      "side": 1,
+      "message": "I think this is missing the `undef` in config.h?\n\n```\n/* description of config */\n#undef CONFIG_RO_PANIC_DATA_SIZE\n```",
+      "revId": "80f4813de1db29749fc61f21401c8f011cd74926",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "2e7e6920_17275667",
