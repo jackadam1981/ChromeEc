@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9b35b8f_32870e1e",
+        "filename": "util/fptool.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-02-23T22:18:18Z",
+      "side": 1,
+      "message": "Type is a string, right? Can you add it?",
+      "range": {
+        "startLine": 49,
+        "startChar": 9,
+        "endLine": 49,
+        "endChar": 12
+      },
+      "revId": "af2208a46c5b547d095eecd8eb2ee54f8a3c269b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
