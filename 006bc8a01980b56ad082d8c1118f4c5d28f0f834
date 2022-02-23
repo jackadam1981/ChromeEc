@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b1e15e4_a31a583f",
+        "filename": "board/cr50/u2f_state_load.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2022-02-23T06:14:56Z",
+      "side": 1,
+      "message": "do we need these functions? we can just u2f_get_state_common() and pass commit to u2f_load_or_create_state_no_commit(), Other than from within this source file, it is only called from testing code https://source.corp.google.com/chromeos_public/src/platform/cr50/board/cr50/fips_cmd.c;l\u003d84 where can be hardcoded to use true",
+      "range": {
+        "startLine": 123,
+        "startChar": 1,
+        "endLine": 132,
+        "endChar": 0
+      },
+      "revId": "006bc8a01980b56ad082d8c1118f4c5d28f0f834",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c405afa_6e7666f9",
+        "filename": "board/cr50/u2f_state_load.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2022-02-23T06:14:56Z",
+      "side": 1,
+      "message": "just use \u0027commit\u0027 here and drop 2 functions above?",
+      "range": {
+        "startLine": 142,
+        "startChar": 68,
+        "endLine": 142,
+        "endChar": 73
+      },
+      "revId": "006bc8a01980b56ad082d8c1118f4c5d28f0f834",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
