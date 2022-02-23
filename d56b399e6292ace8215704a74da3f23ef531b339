@@ -46,6 +46,30 @@
       },
       "revId": "d56b399e6292ace8215704a74da3f23ef531b339",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e3db4d0_627491bc",
+        "filename": "chip/npcx/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 891,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-02-23T16:14:00Z",
+      "side": 1,
+      "message": "Please update the comment to indicate all modules that are disabled by these two statements.\nPWDN_7 - Disable UART2-4, SMB5-7. ITIM64\nPWDN_8 - I3C",
+      "parentUuid": "565ab089_912514bd",
+      "range": {
+        "startLine": 891,
+        "startChar": 40,
+        "endLine": 891,
+        "endChar": 41
+      },
+      "revId": "d56b399e6292ace8215704a74da3f23ef531b339",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
