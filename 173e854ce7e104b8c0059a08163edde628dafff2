@@ -236,6 +236,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f38a3e1_77edd44a",
+        "filename": "util/fptool.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-02-23T22:55:04Z",
+      "side": 1,
+      "message": "Yes, this is ok. I was hoping there was an easy way to convert it to a true boolean, but it looks like you\u0027d have to do something like:\n\n```\nwp_enabled \u003d bool(int(wp_enabled_str))\n...\n\nif wp_enabled:\n```\n\nHowever, I\u0027m not sure all those conversions are any clearer.",
+      "parentUuid": "4110b74e_517f96ec",
+      "range": {
+        "startLine": 73,
+        "startChar": 4,
+        "endLine": 73,
+        "endChar": 25
+      },
+      "revId": "173e854ce7e104b8c0059a08163edde628dafff2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "87f639cc_08d3fc64",
