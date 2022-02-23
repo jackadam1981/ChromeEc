@@ -18,14 +18,6 @@
 #include "scp_timer.h"
 #include "task.h"
 
-#ifdef CHIP_VARIANT_MT8195_CORE1
-#define TIMER_SYSTEM 4
-#define TIMER_EVENT 2
-#else
-#define TIMER_SYSTEM 5
-#define TIMER_EVENT 3
-#endif
-
 #define TIMER_CLOCK_MHZ 32.5
 #define OVERFLOW_TICKS (TIMER_CLOCK_MHZ * 0x100000000 - 1)
 
@@ -62,7 +54,7 @@ void timer_disable(int n)
 
 uint32_t timer_read_raw_sr(void)
 {
-	return SCP_CORE0_TIMER_CUR_VAL(TIMER_SR);
+	return SCP_CORE_TIMER_CUR_VAL(TIMER_SR);
 }
 
 static int timer_is_irq(int n)
@@ -87,7 +79,6 @@ static void timer_set_clock(int n, uint32_t clock_source)
 		(SCP_CORE_TIMER_EN(n) & ~TIMER_CLK_SRC_MASK) | clock_source;
 }
 
-#ifndef CHIP_VARIANT_MT8195_CORE1
 static void timer_reset(int n)
 {
 	timer_disable(n);
@@ -95,7 +86,6 @@ static void timer_reset(int n)
 	timer_set_reset_value(n, 0xffffffff);
 	timer_set_clock(n, TIMER_CLK_SRC_32K);
 }
-#endif
 
 /* Convert hardware countdown timer to 64bit countup ticks. */
 static uint64_t timer_read_raw_system(void)
@@ -145,7 +135,6 @@ static int timer_reload_event_high(void)
 
 int __hw_clock_source_init(uint32_t start_t)
 {
-#ifndef CHIP_VARIANT_MT8195_CORE1
 	int t;
 
 	/* enable clock gate */
@@ -154,7 +143,6 @@ int __hw_clock_source_init(uint32_t start_t)
 	/* reset all timer, select 32768Hz clock source */
 	for (t = 0; t < NUM_TIMERS; ++t)
 		timer_reset(t);
-#endif
 
 	/* System timestamp timer */
 	timer_set_clock(TIMER_SYSTEM, TIMER_CLK_SRC_BCLK);
