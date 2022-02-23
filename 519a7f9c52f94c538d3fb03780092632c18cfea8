@@ -86,6 +86,24 @@
       "message": "Just to be clear, was the issue here that we sometimes had hard resets where there was no panic data? In that case we were trying to dereference a null pointer returned by `panic_get_data()`, which resulted in a crash? If so, is this an expected condition? What is causing the hard reset in the field and should it have panic data?\n\nAs a broader issue (outside of the scope of this CL), it seems like a linter may have flagged this as a potential bug. Is there some tooling we can add to prevent similar issues in the future?",
       "revId": "519a7f9c52f94c538d3fb03780092632c18cfea8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "37f7d73e_16c95067",
+        "filename": "chip/stm32/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 433,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2022-02-23T15:44:15Z",
+      "side": 1,
+      "message": "\u003e Was the issue here that we sometimes had hard resets where there was no panic data?\nYes. One note: hard reset is performed quite often, eg. `ectool --name\u003dcros_fp reboot_ec` does hard reset.\n\u003e In that case we were trying to dereference a null pointer returned by  panic_get_data() , which resulted in a crash?\nI haven\u0027t noted any crashes, some garbage are saved in backup RAM as panic flags. After hard reboot there is new panic data filled with zeroes. This is partially fixed on CL:3477955. You can reproduce it on your chromebook by running `ectool --name\u003dcros_fp reboot_ec` and later `ectool --name\u003dcros_fp panicinfo`",
+      "parentUuid": "febf10c8_f01e293f",
+      "revId": "519a7f9c52f94c538d3fb03780092632c18cfea8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
