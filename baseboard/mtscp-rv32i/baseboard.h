@@ -25,7 +25,9 @@
 #endif
 
 #ifdef CHIP_VARIANT_MT8195
+#ifndef CHIP_VARIANT_MT8195_CORE1
 #define CONFIG_PANIC_CONSOLE_OUTPUT
+#endif
 #endif
 
 /* IPI configs */
