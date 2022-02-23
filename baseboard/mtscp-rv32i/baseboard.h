@@ -63,26 +63,26 @@
 
 #ifdef CHIP_VARIANT_MT8195_CORE1
 /* Access DRAM through cached access */
-#define CONFIG_DRAM_BASE 0x13000000
+#define CONFIG_DRAM_BASE 0x10A00000
 /* Shared memory address in AP physical address space. */
-#define CONFIG_DRAM_BASE_LOAD 0x53000000
-#define CONFIG_DRAM_SIZE 0x01000000 /* 16 MB */
-#else
+#define CONFIG_DRAM_BASE_LOAD 0x50A00000
+#define CONFIG_DRAM_SIZE 0x00A00000 /* 10 MB */
+#else /* CHIP_VARIANT_MT8195_CORE1 */
 /* Access DRAM through cached access */
 #define CONFIG_DRAM_BASE 0x10000000
 /* Shared memory address in AP physical address space. */
 #define CONFIG_DRAM_BASE_LOAD 0x50000000
-#define CONFIG_DRAM_SIZE 0x01400000 /* 20 MB */
-#endif
+#define CONFIG_DRAM_SIZE 0x00A00000 /* 10 MB */
+#endif /* CHIP_VARIANT_MT8195_CORE1 */
 
 /* Add some space (0x100) before panic for jump data */
-#define CONFIG_PANIC_DRAM_BASE (CONFIG_DRAM_BASE + CONFIG_DRAM_SIZE)
+#define CONFIG_PANIC_DRAM_BASE (CONFIG_DRAM_BASE + CONFIG_DRAM_SIZE - CONFIG_PANIC_DRAM_SIZE)
 #define CONFIG_PANIC_DRAM_SIZE 0x00001000 /* 4K */
 
 #define CONFIG_PANIC_BASE_OFFSET 0x100 /* reserved for jump data */
 #define CONFIG_PANIC_DATA_BASE (CONFIG_PANIC_DRAM_BASE + CONFIG_PANIC_BASE_OFFSET)
 
-#define CONFIG_SCP_CORE1_RAM_SIZE 0x10000
+#define CONFIG_SCP_CORE1_RAM_SIZE 0x10000 /* 64K */
 
 /* MPU settings */
 #define NR_MPU_ENTRIES 16
