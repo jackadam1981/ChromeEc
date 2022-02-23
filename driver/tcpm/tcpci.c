@@ -48,7 +48,7 @@ STATIC_IF(CONFIG_USB_PD_DECODE_SOP)
  * excluding XFER and BlockWrites, in an attempt to give clues as to what
  * was written to the TCPCI that caused the issue.
  */
-#undef DEBUG_I2C_FAULT_LAST_WRITE_OP
+#define DEBUG_I2C_FAULT_LAST_WRITE_OP 1
 
 struct i2c_wrt_op {
 	int addr;
@@ -1196,6 +1196,8 @@ void tcpci_tcpc_alert(int port)
 		CPRINTS("C%d: Failed to read alert register", port);
 		return;
 	}
+
+	CPRINTS("tcpci_tcpc_alert(%d): value 0x%02x", port, alert);
 
 	/* Get Extended Alert register if needed */
 	if (alert & TCPC_REG_ALERT_ALERT_EXT)

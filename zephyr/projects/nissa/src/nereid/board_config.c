@@ -13,12 +13,71 @@
 #include "driver/charger/sm5803.h"
 #include "gpio/gpio_int.h"
 #include "hooks.h"
-#include "usb_pd.h"
 #include "task.h"
+#include "usb_charge.h"
+#include "usb_pd.h"
 
 #include "sub_board.h"
 
 LOG_MODULE_DECLARE(nissa, CONFIG_NISSA_LOG_LEVEL);
+
+/*
+ * The USB-C1 interrupt line is shared between BC1.2, TCPC and charger.
+ *
+ * Because the shared IRQ may be asserted by any of the three devices, edges
+ * can be lost if one device asserts the IRQ while another is still pending
+ * and the IRQ can't be level-triggered because much of the processing happens
+ * outside ISR context (such as in the PD interrupt thread).
+ *
+ * To avoid losing interrupts, we schedule a task to poll the IRQ some time
+ * after we handle an event and run the ISRs again. As long as the IRQ is
+ * asserted, we should continue to process events but with increased latency.
+ */
+static void poll_c1_line(struct k_work *unused);
+
+static const struct gpio_dt_spec c1_irq = GPIO_DT_SPEC_GET(DT_PATH(zephyr_user), usb_c1_int_gpios);
+static K_WORK_DELAYABLE_DEFINE(poll_c1_work, poll_c1_line);
+
+static void notify_c1_chips(void)
+{
+	LOG_INF("C1 notifying handlers");
+	sm5803_interrupt(1);					/* charger */
+	schedule_deferred_pd_interrupt(1);			/* TCPC */
+	task_set_event(TASK_ID_USB_CHG_P1, USB_CHG_EVENT_BC12); /* BC1.2 */
+	/* Schedule a check in a bit for any lost edges */
+	k_work_reschedule(&poll_c1_work, K_MSEC(5));
+}
+
+static void poll_c1_line(struct k_work *unused)
+{
+	/*
+	 * If line is still being held low, run the ISRs again to try to clear
+	 * the IRQ.
+	 */
+	static int repeat_count;
+	int state = gpio_pin_get(c1_irq.port, c1_irq.pin);
+
+	if (state == 1 && repeat_count++ >= 100) {
+		LOG_WRN("C1 IRQ seems stuck! Aborting poll!");
+		return;
+	} else if (state == 0) {
+		LOG_INF("C1 IRQ cleared!");
+		repeat_count = 0;
+	}
+
+	if (gpio_pin_get(c1_irq.port, c1_irq.pin)) {
+		notify_c1_chips();
+	}
+}
+
+static void usb_c1_interrupt(const struct device *unused_device,
+			     struct gpio_callback *unused_cb,
+			     gpio_port_pins_t unused_pins)
+{
+	LOG_INF("C1 interrupt triggered");
+	/* Notify all chips using this line that an interrupt came in */
+	notify_c1_chips();
+}
 
 static void nereid_subboard_init(void)
 {
@@ -42,10 +101,11 @@ static void nereid_subboard_init(void)
 			GPIO_DISCONNECTED);
 	}
 	if (sb == NISSA_SB_C_A || sb == NISSA_SB_C_LTE) {
+		const struct gpio_dt_spec c1_irq =
+			GPIO_DT_SPEC_GET(DT_PATH(zephyr_user), usb_c1_int_gpios);
+		LOG_INF("subboard_init: enabling C1");
 		/* Enable type-C port 1 */
-		gpio_pin_configure_dt(
-			GPIO_DT_FROM_ALIAS(gpio_usb_c1_int_odl),
-			GPIO_INPUT);
+		gpio_pin_configure_dt(&c1_irq, GPIO_INPUT);
 		/* Configure type-A port 1 VBUS, initialise it as low */
 		gpio_pin_configure_dt(
 			GPIO_DT_FROM_ALIAS(gpio_en_usb_a1_vbus),
@@ -67,20 +127,39 @@ static void nereid_subboard_init(void)
 			GPIO_INPUT);
 	}
 }
-DECLARE_HOOK(HOOK_INIT, nereid_subboard_init, HOOK_PRIO_FIRST+1);
 
 /*
- * Enable interrupts
+ * Run sub-board configuration.
  */
 static void board_init(void)
 {
+	nereid_subboard_init();
+
 	/*
 	 * Enable USB-C interrupts.
 	 */
 	gpio_enable_dt_interrupt(GPIO_INT_FROM_NODELABEL(int_usb_c0));
-	if (board_get_usb_pd_port_count() == 2)
-		gpio_enable_dt_interrupt(GPIO_INT_FROM_NODELABEL(int_usb_c1));
+	if (board_get_usb_pd_port_count() == 2) {
+		int rv;
+		static struct gpio_callback c1_callback;
+		gpio_init_callback(&c1_callback, usb_c1_interrupt, BIT(c1_irq.pin));
+
+		rv = gpio_pin_interrupt_configure_dt(&c1_irq, GPIO_INT_EDGE_FALLING);
+		__ASSERT(rv == 0, "C1 IRQ config failed with code %d", rv);
+		rv = gpio_add_callback(c1_irq.port, &c1_callback);
+		__ASSERT(rv == 0, "C1 ISR config failed with code %d", rv);
+
+		/*
+		 * The IRQ line may already be asserted, so schedule a poll
+		 * for once initialization is done (taking care not to race with
+		 * other system init).
+		 */
+		// TODO K_NO_WAIT causes I2C locking problems, but a delay seems
+		// to help. Changing to HOOK_PRIO_LAST doesn't help.
+		k_work_reschedule(&poll_c1_work, K_MSEC(500));
+	}
 }
+/* EC init hooks run in main() after SYS_INIT so we need to use a hook */
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
 __override void board_hibernate(void)
@@ -102,3 +181,34 @@ __override void board_hibernate_late(void)
 	 * a small delay, so return.
 	 */
 }
+
+#include <drivers/i2c.h>
+
+static int cmd_c1_regdump(const struct shell *shell, size_t argc, char **argv)
+{
+	const struct device *c1_bus = DEVICE_DT_GET(DT_NODELABEL(i2c4));
+	uint8_t reg_addr;
+	uint8_t regs_buf[64];
+
+	shell_print(shell, "Charger");
+	reg_addr = 0;
+	i2c_write_read(c1_bus, 0x30, &reg_addr, 1, regs_buf, 16);
+	shell_hexdump(shell, regs_buf, 16);
+
+	shell_print(shell, "TCPC");
+	i2c_write_read(c1_bus, 0x0B, &reg_addr, 1, regs_buf, 36);
+	shell_hexdump(shell, regs_buf, 36);
+
+	shell_print(shell, "BC1.2");
+	i2c_write_read(c1_bus, 0x5f, &reg_addr, 1, regs_buf, 4);
+	shell_hexdump(shell, regs_buf, 4);
+
+	return 0;
+}
+SHELL_CMD_REGISTER(nissa_c1_regdump, NULL, "Dump USB-C1 registers", cmd_c1_regdump);
+
+static int cmd_kick_c1(const struct shell *shell, size_t argc, char **argv)
+{
+	return k_work_reschedule(&poll_c1_work, K_NO_WAIT);
+}
+SHELL_CMD_REGISTER(nissa_kick_c1, NULL, "Force USB-C1 interrupt poll", cmd_kick_c1);
