@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0bdda8bb_079e8cc5",
+        "filename": "include/config.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 6704,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-02-23T20:02:23Z",
+      "side": 1,
+      "message": "please add the customary comment section for this config \"option\".\nyou can carry over the Kconfig comment.",
+      "range": {
+        "startLine": 6704,
+        "startChar": 8,
+        "endLine": 6704,
+        "endChar": 27
+      },
+      "revId": "936e4036db4cd2cd124d78c662bbf6d814898022",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
