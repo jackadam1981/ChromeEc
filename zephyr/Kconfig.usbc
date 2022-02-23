@@ -933,6 +933,12 @@ config PLATFORM_EC_USB_PD_TCPM_TUSB422
 	  Manager (TCPM), communicates with the TUSB422 through an I2C
 	  interface.
 
+config PLATFORM_EC_USB_PD_TCPM_FUSB302
+	bool "Fairchild's FUSB302 Type-C port controller with USB PD"
+	help
+	  This is a USB Type-C port manager with USB PD for Fairchild
+          FUSB302.
+
 config PLATFORM_EC_USB_PD_TCPM_MUX
 	bool "Support optional register 18h steer the high-speed muxes"
 	help
