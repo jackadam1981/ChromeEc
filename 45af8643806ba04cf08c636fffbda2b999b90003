@@ -16,6 +16,29 @@
       "message": "Build error on it8xxx_evb board:\n\n/mnt/host/source/src/platform/ec/build/zephyr/it8xxx2_evb/modules/ec/common/flash.c:1307: undefined reference to `chipset_in_state\u0027\n",
       "revId": "45af8643806ba04cf08c636fffbda2b999b90003",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca4abb6a_26ffe272",
+        "filename": "zephyr/shim/src/chipset_api.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-02-23T17:57:49Z",
+      "side": 1,
+      "message": "You need to provide stub implementations for these functions to support configurations that have CONFIG_ZEPHYR\u003dy and HAS_TASK_CHIPSET\u003dn.",
+      "range": {
+        "startLine": 11,
+        "startChar": 4,
+        "endLine": 11,
+        "endChar": 20
+      },
+      "revId": "45af8643806ba04cf08c636fffbda2b999b90003",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
