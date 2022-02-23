@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d32188f_04ed7ce1",
+        "filename": "common/peripheral_charger.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-02-23T22:38:02Z",
+      "side": 1,
+      "message": "do we care if this wraps around?\nhopefully that\u0027s sufficiently extraordinary where the person\ninterpreting this would not be confused by a simple warp-around.",
+      "range": {
+        "startLine": 49,
+        "startChar": 7,
+        "endLine": 49,
+        "endChar": 31
+      },
+      "revId": "3ca294fb564d1a222d244d72526a9e58d7af7bd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "abc4e0ff_5e9e56ff",
+        "filename": "common/peripheral_charger.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-02-23T22:38:02Z",
+      "side": 1,
+      "message": "do we need to send a EC_MKBP_EVENT_PCHG \"reminder\" to the AP?\n\nis it possible for the EC to enqueue events without the AP\nreceiving EC_MKBP_EVENT_PCHG? maybe if we\u0027re generating events\nbefore the OS is running or if the AP reboots and the EC keeps\nrunning, possibly generating new events?",
+      "range": {
+        "startLine": 51,
+        "startChar": 2,
+        "endLine": 51,
+        "endChar": 8
+      },
+      "revId": "3ca294fb564d1a222d244d72526a9e58d7af7bd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e0fbf90_60cc39dd",
+        "filename": "common/peripheral_charger.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 645,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-02-23T22:38:02Z",
+      "side": 1,
+      "message": "\"event\", the new implementation only encodes 1 event per unit,\nright?",
+      "range": {
+        "startLine": 645,
+        "startChar": 10,
+        "endLine": 645,
+        "endChar": 16
+      },
+      "revId": "3ca294fb564d1a222d244d72526a9e58d7af7bd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "588adfc2_99da20ce",
+        "filename": "common/peripheral_charger.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 656,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-02-23T22:38:02Z",
+      "side": 1,
+      "message": "are",
+      "range": {
+        "startLine": 656,
+        "startChar": 29,
+        "endLine": 656,
+        "endChar": 31
+      },
+      "revId": "3ca294fb564d1a222d244d72526a9e58d7af7bd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd5050fc_3d91cfdb",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 6910,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-02-23T22:38:02Z",
+      "side": 1,
+      "message": "do you want to add dropped_host_event_count, bump struct rev.?",
+      "range": {
+        "startLine": 6910,
+        "startChar": 7,
+        "endLine": 6910,
+        "endChar": 23
+      },
+      "revId": "3ca294fb564d1a222d244d72526a9e58d7af7bd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ca56bbe_0940ef3a",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 6919,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-02-23T22:38:02Z",
+      "side": 1,
+      "message": "should this really be __ec_align4?",
+      "range": {
+        "startLine": 6919,
+        "startChar": 2,
+        "endLine": 6919,
+        "endChar": 13
+      },
+      "revId": "3ca294fb564d1a222d244d72526a9e58d7af7bd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
