@@ -22,6 +22,53 @@
       },
       "revId": "cd8435c9cd379aadbe1cc24de6fea0df7607a6a2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df9e98f2_a65f2489",
+        "filename": "docs/zephyr/zephyr_ap_power.md",
+        "patchSetId": 21
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-02-23T16:38:13Z",
+      "side": 1,
+      "message": "I think you can use \"battfake\" to force the battery level and then reboot the EC.  The EC should hold off powering up the AP if the battery level is too low.\n\nFor instance, when using default minimum power of 3%.\n  battfake 2\n  reboot\n  /* Verify AP is not booted */\n  battfake 3\n  /* Verify AP is booted */\n  \n  /* Restore normal operation */\n  battfake -1",
+      "parentUuid": "b2ceb638_056ed6d3",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 3
+      },
+      "revId": "cd8435c9cd379aadbe1cc24de6fea0df7607a6a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a4ff4e4_b7851eeb",
+        "filename": "docs/zephyr/zephyr_new_board_checklist.md",
+        "patchSetId": 21
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-02-23T16:38:13Z",
+      "side": 1,
+      "message": "\"AP Power Thresholds\" is more accurate.",
+      "range": {
+        "startLine": 55,
+        "startChar": 11,
+        "endLine": 55,
+        "endChar": 27
+      },
+      "revId": "cd8435c9cd379aadbe1cc24de6fea0df7607a6a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
