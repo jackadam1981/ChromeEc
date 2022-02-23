@@ -48,3 +48,9 @@ const char *system_get_chip_revision(void)
 {
 	return "";
 }
+
+void set_gpr(uint32_t idx, uint32_t v)
+{
+	if (idx < 8)
+		SCP_GPR(idx) = v;
+}
