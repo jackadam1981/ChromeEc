@@ -28,13 +28,10 @@
 
 static uint8_t init_done;
 
-#if (CONFIG_USE_SCP_UART == 1)
 static uint8_t tx_started;
-#endif
 
 void uart_init(void)
 {
-#if (CONFIG_USE_SCP_UART == 1)
 	const uint32_t baud_rate = CONFIG_UART_BAUD_RATE;
 	const uint32_t uart_clock = 26000000;
 	const uint32_t div = DIV_ROUND_NEAREST(uart_clock, baud_rate * 16);
@@ -63,7 +60,6 @@ void uart_init(void)
 	task_enable_irq(UART_TX_IRQ(UARTN));
 	task_enable_irq(UART_RX_IRQ(UARTN));
 #endif
-#endif /* CONFIG_USE_SCP_UART */
 
 	init_done = 1;
 }
@@ -89,12 +85,6 @@ int uart_rx_available(void)
 	return UART_LSR(UARTN) & UART_LSR_DR;
 }
 
-#if (CONFIG_USE_SCP_UART == 0)
-void uart_write_char(char c) {}
-int uart_read_char(void) { return 0; }
-void uart_tx_start(void) {}
-void uart_tx_stop(void) {}
-#else
 void uart_write_char(char c)
 {
 	while (!uart_tx_ready())
@@ -176,4 +166,3 @@ void uart_task(void)
 	}
 }
 #endif /* UARTN < SCP_UART_COUNT */
-#endif /* CONFIG_USE_SCP_UART == 0 */
