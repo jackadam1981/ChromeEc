@@ -26,6 +26,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "57469472_dabbdee5",
+        "filename": "util/migrated_files.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-02-23T19:13:47Z",
+      "side": 1,
+      "message": "do we need to exclude files not in either build system?\n\ne.g., markdown files, zmake, python scripts, etc?",
+      "range": {
+        "startLine": 15,
+        "startChar": 58,
+        "endLine": 15,
+        "endChar": 61
+      },
+      "revId": "8c73acdda4c1ccc1458abe2488ec1253c8771030",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "124f5c0e_f0900dba",
         "filename": "util/migrated_files.sh",
         "patchSetId": 5
