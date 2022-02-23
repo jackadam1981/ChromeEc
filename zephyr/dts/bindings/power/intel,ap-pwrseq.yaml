@@ -2,7 +2,16 @@
  # Use of this source code is governed by a BSD-style license that can be
  # found in the LICENSE file.
 
-description: Common fields for AP power sequence
+description: |
+    Common fields for AP power sequence configuration
+    The configuration consists of a number of mostly timing
+    related values, as well as child nodes defining the
+    different power signals and controls.
+
+    Different types of power signal sources can be set, such as
+    input GPIOs, output GPIOs ESPI virtual wire, and board specific sources.
+    The source is determined by the properties set in the child node.
+    They should be considered mutually exclusive.
 
 compatible: "intel,ap-pwrseq"
 
@@ -86,81 +95,83 @@ properties:
       description: |
         Maximum configured frequency for espi channel.
 
-    pg-ec-dsw-pwrok-gpios:
-      type: phandle-array
-      required: false
-      description: |
-        VR/Circuit input to EC 3.3V power good signal.
+child-binding:
+    description: |
+        Power sequence signals list child node.
 
-    ec-pch-rsmrst-odl-gpios:
-      type: phandle-array
-      required: true
-      description: |
-        EC output to PCH, indicating RSMRST power good signal.
+        All signals are treated as logical signals i.e a value of 1
+        is an asserted signal. For signals that are inverted at the
+        physical source, they should be configured to be read as an
+        active low signal and converted to a logical signal e.g for
+        GPIOs that are an active low signal, the GPIO_ACTIVE_LOW
+        flag should be set in the GPIO flags.
 
-    en-pp5000-s5-gpios:
-      type: phandle-array
-      required: false
-      description: |
-        Output from EC to enable 5V rail.
+    properties:
+        # The first 2 properties are common for all types of sources
+        dbg-label:
+            type: string
+            required: true
+            description: Label of power signals used in debug messages
 
-    pg-ec-rsmrst-odl-gpios:
-      type: phandle-array
-      required: true
-      description: |
-        VR/Circuit input to EC RSMRST power good for
-        VCCPRIM rails and other S5 rails.
+        enum-name:
+            type: string
+            required: true
+            description: Enumeration values for power signals
+            enum:
+            - PWR_PG_EC_DSW_PWROK
+            - PWR_EC_PCH_RSMRST
+            - PWR_EN_PP5000_A
+            - PWR_PG_EC_RSMRST
+            - PWR_SLP_S3
+            - PWR_ALL_SYS_PWRGD
+            - PWR_SYS_RST
+            - PWR_EC_PCH_SYS_PWROK
+            - PWR_PCH_PWROK
+            - PWR_IMVP9_VRRDY
+            - PWR_VCCST_PWRGD
+            - PWR_SLP_SUS
 
-    slp-s3-l-gpios:
-      type: phandle-array
-      required: true
-      description: |
-        SLP_S3 signal input to EC for S3 sleep control from SoC.
+        # The next properties is specific for output GPIOs.
+        output-gpios:
+            type: phandle-array
+            required: false
+            description: Output GPIO.
 
-    pg-ec-all-sys-pwrgd-gpios:
-      type: phandle-array
-      required: true
-      description: |
-        This represents the power good for all
-        the platform voltage rails input to EC.
+        # The next 3 properties are specific for input GPIOs.
+        input-gpios:
+            type: phandle-array
+            required: false
+            description: |
+              GPIO to be used for input signal. Input GPIOs can be
+              configured to generate an interrupt if the 'interrupt-flags'
+              property is set with the appropriate interrupt flags.
 
-    sys-rst-l-gpios:
-      type: phandle-array
-      required: false
-      description: |
-        SYS Reset signal output from EC.
+        interrupt-flags:
+            type: int
+            required: false
+            description: GPIO interrupt configuration flags.
 
-    ec-pch-sys-pwrok-gpios:
-      type: phandle-array
-      required: true
-      description: |
-        SYS_PWROK is a generic power good input to the PCH from EC,
-        driven and utilized in a platform specific manner.
+        enable-interrupt-on-boot:
+            type: boolean
+            description: true - Enable GPIO interrupt at boot up;
+                         false - Do not enable GPIO interrupt at boot up.
 
-    pch-pwrok-gpios:
-      type: phandle-array
-      required: true
-      description: |
-        PCH PWROK assertion indicates all the main PCH
-        primary rails and all the CPU rails are up from EC to PCH.
+        # Defined for a virtual wire signal source.
+        virtual-wire:
+            type: string
+            required: false
+            description: |
+              Enumeration value to eSPI signals that can be sent
+              or received through virtual wire channel
 
-    imvp9-vrrdy-od-gpios:
-      type: phandle-array
-      required: true
-      description: |
-        IMVP VRRDY input signal to EC indicates that the IMVP
-        start-up sequence is complete.
+            enum:
+            - ESPI_VWIRE_SIGNAL_SLP_S3
+            - ESPI_VWIRE_SIGNAL_SLP_S4
+            - ESPI_VWIRE_SIGNAL_SLP_S5
 
-    vccst-pwrgd-od-gpios:
-      type: phandle-array
-      required: true
-      description: |
-        VCCST PWRGD signal output from EC to indicate that the
-        VCC1P05_PROC/VDDQ power supplies are stable and
-        within specification.
-
-    slp-sus-l-gpios:
-      type: phandle-array
-      required: true
-      description: |
-        SLP_SUS signal from SoC to EC.
+        # Defined for a board provided signal.
+        external:
+            type: boolean
+            description: |
+              A signal that is provided from an external board
+              specific function.
