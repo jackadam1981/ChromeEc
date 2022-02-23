@@ -208,7 +208,7 @@ bool u2f_load_or_create_state(struct u2f_state *state, bool force_create);
  * @return EC_SUCCESS if seed was successfully created
  * (and persisted if requested).
  */
-enum ec_error_list u2f_gen_kek_seed(int commit);
+enum ec_error_list u2f_gen_kek_seed(void);
 
 /**
  * Zeroize U2F keys. Can be used to switch to FIPS-compliant path by
