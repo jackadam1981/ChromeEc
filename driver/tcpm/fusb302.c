@@ -38,7 +38,11 @@ static struct fusb302_chip_state {
 	uint8_t mdac_rd;
 } state[CONFIG_USB_PD_PORT_MAX_COUNT];
 
+#ifdef CONFIG_ZEPHYR
+K_MUTEX_DEFINE(measure_lock);
+#else
 static struct mutex measure_lock;
+#endif
 
 /*
  * Bring the FUSB302 out of reset after Hard Reset signaling. This will
