@@ -16,6 +16,24 @@
       "message": "Sorry, I forgot that this LC needs the PR:42668 merged first.",
       "revId": "4bd51b3cebcd3a209f0f44d6fe934d657726d8c1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd2268b7_54799c78",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-02-23T17:34:36Z",
+      "side": 1,
+      "message": "CL:3480279 is the downstream change for PR:42668",
+      "parentUuid": "941961e8_364901ae",
+      "revId": "4bd51b3cebcd3a209f0f44d6fe934d657726d8c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
