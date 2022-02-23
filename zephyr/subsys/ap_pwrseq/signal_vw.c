@@ -4,16 +4,56 @@
  */
 
 #include <drivers/espi.h>
-#include <x86_non_dsx_espi.h>
 #include <x86_non_dsx_common_pwrseq_sm_handler.h>
 
+#include "signal_vw.h"
+
 LOG_MODULE_DECLARE(ap_pwrseq, 3);
+
+#define INIT_ESPI_SIGNAL(id)						\
+	COND_CODE_1(DT_NODE_HAS_COMPAT(id, intel_ap_pwrseq_vw),		\
+	({								\
+		.espi_signal = DT_STRING_UPPER_TOKEN(id, virtual_wire),	\
+		.invert = DT_PROP(id, vw_invert),			\
+	}, ),								\
+	())
+
+/*
+ * Struct containing the eSPI virtual wire config.
+ */
+struct vw_config {
+	uint8_t espi_signal;	/* associated VW signal */
+	uint8_t invert;		/* Invert the signal value */
+};
+
+const static struct vw_config vw_config[] = {
+DT_FOREACH_CHILD(DT_COMPAT_GET_ANY_STATUS_OKAY(intel_ap_pwrseq),
+	INIT_ESPI_SIGNAL)
+/*
+ * If there are no VW signals, the compiler does not like an empty array.
+ */
+{
+}
+};
 
 #define espi_dev DEVICE_DT_GET(DT_CHOSEN(intel_ap_pwrseq_espi))
 
 struct espi_callback espi_bus_cb;
 struct espi_callback espi_chan_cb;
 struct espi_callback espi_vw_cb;
+
+uint8_t vw_get_level(enum espi_vwire_signal signal)
+{
+	uint8_t level;
+
+	if (espi_receive_vwire(espi_dev, signal, &level)) {
+		LOG_DBG("Espi: Failed to the espi GPIO level\n");
+		return 0;
+	}
+
+	LOG_DBG("Espi: GPIO level = %d\n", level);
+	return level;
+}
 
 static void espi_bus_vw_handler(const struct device *dev,
 				struct espi_callback *cb,
@@ -52,20 +92,13 @@ static void espi_bus_channel_handler(const struct device *dev,
 	LOG_DBG("ESPI channel ready");
 }
 
-uint8_t vw_get_level(enum espi_vwire_signal signal)
+int power_signal_vw_get(enum power_signal_vw vw)
 {
-	uint8_t level;
-
-	if (espi_receive_vwire(espi_dev, signal, &level)) {
-		LOG_DBG("Espi: Failed to the espi GPIO level\n");
-		return 0;
-	}
-
-	LOG_DBG("Espi: GPIO level = %d\n", level);
-	return level;
+	int value = vw_get_level(vw_config[vw].espi_signal);
+	return vw_config[vw].invert ? !value : value;
 }
 
-void ndsx_espi_configure(void)
+void power_signal_vw_init(void)
 {
 	struct espi_cfg cfg = {
 		.io_caps = ESPI_IO_MODE_SINGLE_LINE,
