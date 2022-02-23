@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e2995380_9b82dd2e",
+        "filename": "board/cr50/u2f_state_load.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-02-23T03:58:29Z",
+      "side": 1,
+      "message": "this function is called from a single place, and its return value is ignored. Why not make it return void and not require any arguments.",
+      "range": {
+        "startLine": 137,
+        "startChar": 0,
+        "endLine": 137,
+        "endChar": 47
+      },
+      "revId": "f3b809a6c989975775f3344ee6c511bce9917f17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "076f15f3_81266f8a",
+        "filename": "board/cr50/u2f_state_load.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-02-23T03:58:29Z",
+      "side": 1,
+      "message": "I don\u0027tunderstand this comment, who will call u2f_load_or_create_state() ?",
+      "range": {
+        "startLine": 140,
+        "startChar": 0,
+        "endLine": 142,
+        "endChar": 34
+      },
+      "revId": "f3b809a6c989975775f3344ee6c511bce9917f17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
