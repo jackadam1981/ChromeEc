@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf896bd1_e39a52cd",
+        "filename": "zephyr/projects/corsola/BUILD.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2022-02-23T08:52:09Z",
+      "side": 1,
+      "message": "added a comma here due to lint error",
+      "range": {
+        "startLine": 24,
+        "startChar": 31,
+        "endLine": 24,
+        "endChar": 32
+      },
+      "revId": "f5c844740251fcce935b74ae46e2957f3faba484",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
