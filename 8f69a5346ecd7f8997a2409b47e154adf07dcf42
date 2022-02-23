@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b9eaff2b_2c8cb818",
+        "filename": "chip/stm32/bkpdata.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-02-23T18:49:02Z",
+      "side": 1,
+      "message": "This change is clearly needed to fix the issue at hand but do we have a general principal on how we manage enumerations like this? I have historically avoided conditionally defining an enumeration value to ensure consistency between builds with/without a given feature. This case is a little different because the entries are used as an index, in which case leaving them in place would mean additional space may be reserved for data which going to be utilized. Is it worth an offline discussion of what could be done differently to prevent these types of bugs?",
+      "revId": "8f69a5346ecd7f8997a2409b47e154adf07dcf42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e56d7664_01aad2f3",
         "filename": "chip/stm32/bkpdata.h",
         "patchSetId": 3
