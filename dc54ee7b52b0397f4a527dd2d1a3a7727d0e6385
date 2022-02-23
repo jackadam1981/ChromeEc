@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "02e20d8f_095235ff",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-02-23T05:05:33Z",
+      "side": 1,
+      "message": "I think we should look into just removing u2f state in the tpm clear callback and not doing anything else, but this could be an exercise for another day",
+      "revId": "dc54ee7b52b0397f4a527dd2d1a3a7727d0e6385",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
