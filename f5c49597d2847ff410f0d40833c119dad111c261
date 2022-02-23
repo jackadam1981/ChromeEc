@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae3d8970_ea13ad7d",
+        "filename": "zephyr/shim/src/cbi/CMakeLists.txt",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-02-23T17:43:13Z",
+      "side": 1,
+      "message": "Sorry I wasn\u0027t clear on the format:\n\n  zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_CBI_EEPROM\n                               cbi_eeprom.c\n                               cros_cbi_fw_config.c\n                               ...)",
+      "range": {
+        "startLine": 3,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 0
+      },
+      "revId": "f5c49597d2847ff410f0d40833c119dad111c261",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
