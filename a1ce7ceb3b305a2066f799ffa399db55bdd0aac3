@@ -95,6 +95,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb741f61_dacc3c84",
+        "filename": "board/nocturne_fp/ro_workarounds.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-02-23T18:36:28Z",
+      "side": 1,
+      "message": "Ah, I see. I guess we could let `BKPDATA_INDEX_SAVED_RESET_FLAGS_2` be defined, but just not use it, but that seems error prone since someone could accidentally use it without checking the config. Let\u0027s leave it like you have it.",
+      "parentUuid": "9fd3adcb_abba1c3f",
+      "range": {
+        "startLine": 86,
+        "startChar": 0,
+        "endLine": 86,
+        "endChar": 61
+      },
+      "revId": "a1ce7ceb3b305a2066f799ffa399db55bdd0aac3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bf3ec869_e67cf6cf",
@@ -118,6 +142,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a56ee46_c7336b29",
+        "filename": "chip/stm32/bkpdata.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-02-23T18:36:28Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "bf3ec869_e67cf6cf",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 61
+      },
+      "revId": "a1ce7ceb3b305a2066f799ffa399db55bdd0aac3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a098b7e4_6bd034f9",
@@ -131,6 +179,30 @@
       "writtenOn": "2022-02-22T23:32:23Z",
       "side": 1,
       "message": "Can you use the `if (IS_ENABLED(...))` form?",
+      "range": {
+        "startLine": 83,
+        "startChar": 0,
+        "endLine": 83,
+        "endChar": 61
+      },
+      "revId": "a1ce7ceb3b305a2066f799ffa399db55bdd0aac3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "30bb7ea9_13e13e75",
+        "filename": "chip/stm32/bkpdata.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-02-23T18:36:28Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a098b7e4_6bd034f9",
       "range": {
         "startLine": 83,
         "startChar": 0,
