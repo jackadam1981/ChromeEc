@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58bef125_e51502db",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_5v_3a_pd_charger.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2022-02-23T23:34:52Z",
+      "side": 1,
+      "message": "I think it\u0027d be good to reserve the word charger for the chip responsible for battery charging and use \"source\" or \"power adapter\" for the thing that supplies us juice.",
+      "range": {
+        "startLine": 18,
+        "startChar": 27,
+        "endLine": 18,
+        "endChar": 34
+      },
+      "revId": "c932cd391fe52f8e0744fc8e96af3314a2f27056",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27ed63aa_edb3fd83",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_5v_3a_pd_charger.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2022-02-23T23:34:52Z",
+      "side": 1,
+      "message": "Should we try to make this function and fixture more generic so it can be reused by other suites? Or does the ztest fixture API force us to use a type by this name?",
+      "range": {
+        "startLine": 25,
+        "startChar": 24,
+        "endLine": 25,
+        "endChar": 66
+      },
+      "revId": "c932cd391fe52f8e0744fc8e96af3314a2f27056",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4fc1f1fa_f8dbf721",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_5v_3a_pd_charger.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2022-02-23T23:34:52Z",
+      "side": 1,
+      "message": "(Not sure how this array works but is there something else already at index 0?)",
+      "range": {
+        "startLine": 65,
+        "startChar": 34,
+        "endLine": 65,
+        "endChar": 35
+      },
+      "revId": "c932cd391fe52f8e0744fc8e96af3314a2f27056",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
