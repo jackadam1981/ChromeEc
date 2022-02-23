@@ -20,30 +20,6 @@ static const struct common_pwrseq_config com_cfg = {
 	.pch_rsmrst_delay_ms = DT_INST_PROP(0, rsmrst_delay),
 	.wait_signal_timeout_ms = DT_INST_PROP(0, wait_signal_timeout),
 	.s5_timeout_s = DT_INST_PROP(0, s5_inactivity_timeout),
-#if PWRSEQ_GPIO_PRESENT(en_pp5000_s5_gpios)
-	.enable_pp5000_a = GPIO_DT_SPEC_GET(DT_DRV_INST(0),
-						en_pp5000_s5_gpios),
-#endif
-#if PWRSEQ_GPIO_PRESENT(en_pp3300_s5_gpios)
-	.enable_pp3300_a = GPIO_DT_SPEC_GET(DT_DRV_INST(0),
-						en_pp3300_s5_gpios),
-#endif
-	.pg_ec_rsmrst_odl = GPIO_DT_SPEC_GET(DT_DRV_INST(0),
-						pg_ec_rsmrst_odl_gpios),
-	.ec_pch_rsmrst_odl = GPIO_DT_SPEC_GET(DT_DRV_INST(0),
-						ec_pch_rsmrst_odl_gpios),
-#if PWRSEQ_GPIO_PRESENT(pg_ec_dsw_pwrok_gpios)
-	.pg_ec_dsw_pwrok = GPIO_DT_SPEC_GET(DT_DRV_INST(0),
-						pg_ec_dsw_pwrok_gpios),
-#endif
-#if PWRSEQ_GPIO_PRESENT(ec_soc_dsw_pwrok_gpios)
-	.ec_soc_dsw_pwrok = GPIO_DT_SPEC_GET(DT_DRV_INST(0),
-						ec_soc_dsw_pwrok_gpios),
-#endif
-	.slp_s3_l = GPIO_DT_SPEC_GET(DT_DRV_INST(0), slp_s3_l_gpios),
-	.all_sys_pwrgd = GPIO_DT_SPEC_GET(DT_DRV_INST(0),
-						pg_ec_all_sys_pwrgd_gpios),
-	.slp_sus_l = GPIO_DT_SPEC_GET(DT_DRV_INST(0), slp_sus_l_gpios),
 };
 
 #ifdef CONFIG_LOG
@@ -67,48 +43,6 @@ const char pwrsm_dbg[][25] = {
 };
 #endif
 
-int power_signal_disable_interrupt(enum power_signal signal)
-{
-	int index = power_signal_list[signal].source_id;
-
-	return gpio_pin_interrupt_configure_dt(
-			&power_signal_gpio_list[index].spec,
-			GPIO_INT_DISABLE);
-}
-
-int power_signal_enable_interrupt(enum power_signal signal)
-{
-	int index = power_signal_list[signal].source_id;
-
-	return gpio_pin_interrupt_configure_dt(
-			&power_signal_gpio_list[index].spec,
-			power_signal_gpio_list[index].intr_flags);
-}
-
-int power_wait_mask_signals_timeout(uint32_t want, uint32_t mask, int timeout)
-{
-	int time_left = timeout;
-
-	pwrseq_ctx.in_want = want;
-	if (!mask)
-		return 0;
-
-	while (time_left--) {
-		if ((pwrseq_ctx.in_signals & mask) != pwrseq_ctx.in_want)
-			k_msleep(1);
-		else
-			return 0;
-	}
-
-	power_update_signals();
-	return -ETIMEDOUT;
-}
-
-int power_wait_signals_timeout(uint32_t want, int timeout)
-{
-	return power_wait_mask_signals_timeout(want, want, timeout);
-}
-
 int power_wait_signals(uint32_t want)
 {
 	int ret = power_wait_signals_timeout(want,
@@ -116,164 +50,21 @@ int power_wait_signals(uint32_t want)
 
 	if (ret == -ETIMEDOUT)
 		LOG_INF("power timeout on input; wanted 0x%04x, got 0x%04x",
-			want, pwrseq_ctx.in_signals & want);
+			want, power_get_signals() & want);
 	return ret;
-}
-
-__attribute__((weak)) int board_power_signal_is_asserted(
-	enum power_signal signal)
-{
-	return 0;
-}
-
-/* TODO: b/220634934 use GPIO logical level */
-int power_signal_is_asserted(enum power_signal signal)
-{
-	int flags = power_signal_list[signal].flags;
-	int id = power_signal_list[signal].source_id;
-
-	if (power_signal_list[signal].source == SOURCE_GPIO)
-		/* GPIO generated signal */
-		return gpio_pin_get_dt(
-			&power_signal_gpio_list[id].spec) ==
-				!!(flags & POWER_SIGNAL_ACTIVE_STATE);
-	else if (power_signal_list[signal].source == SOURCE_VW)
-		/* ESPI generated signal */
-		return vw_get_level(id) ==
-				!!(flags & POWER_SIGNAL_ACTIVE_STATE);
-	else /* TODO: handle SOURCE_ADC */
-		return board_power_signal_is_asserted(signal);
-}
-
-/**
- * Update input signals mask
- */
-void power_update_signals(void)
-{
-	uint32_t inew = 0;
-	int i;
-
-	for (i = 0; i < POWER_SIGNAL_COUNT; i++) {
-		if (power_signal_is_asserted(i))
-			inew |= BIT(i);
-	}
-
-	if ((pwrseq_ctx.in_signals & pwrseq_ctx.in_debug) !=
-				(inew & pwrseq_ctx.in_debug))
-		LOG_INF("power update 0x%04x->0x%04x",
-					pwrseq_ctx.in_signals, inew);
-	pwrseq_ctx.in_signals = inew;
-}
-
-uint32_t power_get_signals(void)
-{
-	return pwrseq_ctx.in_signals;
-}
-
-bool power_has_signals(uint32_t want)
-{
-	if ((pwrseq_ctx.in_signals & want) == want)
-		return true;
-
-	return false;
-}
-
-void power_signal_interrupt(const struct device *gpiodev,
-			struct gpio_callback *cb,
-			uint32_t pin)
-{
-	int index = cb - &intr_callbacks[0];
-
-	if (power_signal_gpio_list[index].power_signal
-			>= POWER_SIGNAL_COUNT)
-		return;
-
-	/* TODO: Monitor interrupt storm */
-
-	power_update_signals();
 }
 
 static int check_power_rails_enabled(void)
 {
 	int out = 1;
 
-#if PWRSEQ_GPIO_PRESENT(en_pp3300_s5_gpios)
-	out &= gpio_pin_get_dt(&com_cfg.enable_pp3300_a);
-#endif
-#if PWRSEQ_GPIO_PRESENT(en_pp5000_s5_gpios)
-	out &= gpio_pin_get_dt(&com_cfg.enable_pp5000_a);
-#endif
-#if PWRSEQ_GPIO_PRESENT(pg_ec_dsw_pwrok_gpios)
-	out &= gpio_pin_get_dt(&com_cfg.pg_ec_dsw_pwrok);
-#endif
+/*
+ * Should have CONFIG_HAVE_EN_PP3300
+	out &= power_signal_get(PWR_EN_PP3300_A);
+ */
+	out &= power_signal_get(PWR_EN_PP5000_A);
+	out &= power_signal_get(PWR_PG_EC_DSW_PWROK);
 	return out;
-}
-
-static void pwrseq_gpio_init(void)
-{
-	int ret = 0;
-	int i;
-
-	/* Configure the GPIO */
-#if PWRSEQ_GPIO_PRESENT(en_pp5000_s5_gpios)
-	ret = gpio_pin_configure_dt(&com_cfg.enable_pp5000_a,
-						GPIO_OUTPUT_LOW);
-#endif
-#if PWRSEQ_GPIO_PRESENT(en_pp3300_s5_gpios)
-	ret |= gpio_pin_configure_dt(&com_cfg.enable_pp3300_a,
-						GPIO_OUTPUT_LOW);
-#endif
-	ret |= gpio_pin_configure_dt(&com_cfg.pg_ec_rsmrst_odl,
-						GPIO_INPUT);
-	ret |= gpio_pin_configure_dt(&com_cfg.ec_pch_rsmrst_odl,
-						GPIO_OUTPUT_LOW);
-#if PWRSEQ_GPIO_PRESENT(pg_ec_dsw_pwrok_gpios)
-	ret |= gpio_pin_configure_dt(&com_cfg.pg_ec_dsw_pwrok,
-						GPIO_INPUT);
-#endif
-#if PWRSEQ_GPIO_PRESENT(ec_soc_dsw_pwrok_gpios)
-	ret |= gpio_pin_configure_dt(&com_cfg.ec_soc_dsw_pwrok,
-						GPIO_OUTPUT_LOW);
-#endif
-	ret |= gpio_pin_configure_dt(&com_cfg.slp_s3_l, GPIO_INPUT);
-	ret |= gpio_pin_configure_dt(&com_cfg.slp_sus_l, GPIO_INPUT);
-	ret |= gpio_pin_configure_dt(&com_cfg.all_sys_pwrgd, GPIO_INPUT);
-
-	if (!ret)
-		LOG_INF("Configuring GPIO complete");
-	else
-		LOG_ERR("GPIO configure failed\n");
-
-	/* Initialize GPIO interrupts */
-	for (i = 0; i < POWER_SIGNAL_GPIO_COUNT; i++) {
-		const struct gpio_power_signal_config *int_config = NULL;
-
-		int_config = &power_signal_gpio_list[i];
-
-		/* Configure interrupt */
-		gpio_init_callback(&intr_callbacks[i],
-					power_signal_interrupt,
-					BIT(int_config->spec.pin));
-		ret = gpio_add_callback(int_config->spec.port,
-			&intr_callbacks[i]);
-
-		if (!ret) {
-			if (int_config->enable_on_boot)
-				gpio_pin_interrupt_configure_dt(
-					&int_config->spec,
-					int_config->intr_flags);
-		} else {
-			LOG_ERR("Fail to config interrupt %s, ret=%d",
-				power_signal_list[i].debug_name, ret);
-		}
-	}
-
-	/*
-	 * Update input state again since there is a small window
-	 * before GPIO is enabled.
-	 */
-	power_update_signals();
-
 }
 
 enum power_states_ndsx pwr_sm_get_state(void)
@@ -289,21 +80,6 @@ void pwr_sm_set_state(enum power_states_ndsx new_state)
 	pwrseq_ctx.power_state = new_state;
 }
 
-uint32_t pwrseq_get_input_signals(void)
-{
-	return pwrseq_ctx.in_signals;
-}
-
-void pwrseq_set_debug_signals(uint32_t signals)
-{
-	pwrseq_ctx.in_debug = signals;
-}
-
-uint32_t pwrseq_get_debug_signals(void)
-{
-	return pwrseq_ctx.in_debug;
-}
-
 void apshutdown(void)
 {
 	if (pwr_sm_get_state() != SYS_POWER_STATE_G3) {
@@ -316,8 +92,8 @@ void apshutdown(void)
 /* Check RSMRST is fine to move from S5 to higher state */
 int check_rsmrst_ok(void)
 {
-	/* TODO: Check if this is still intact*/
-	return gpio_pin_get_dt(&com_cfg.pg_ec_rsmrst_odl);
+	/* TODO: Check if this is still intact */
+	return power_signal_get(PWR_PG_EC_RSMRST);
 }
 
 int check_pch_out_of_suspend(void)
@@ -337,13 +113,13 @@ __attribute__((weak)) void rsmrst_pass_thru_handler(void)
 {
 	/* Handle RSMRST passthrough */
 	/* TODO: Add additional conditions for RSMRST handling */
-	int in_sig_val = gpio_pin_get_dt(&com_cfg.pg_ec_rsmrst_odl);
-	int out_sig_val = gpio_pin_get_dt(&com_cfg.ec_pch_rsmrst_odl);
+	int in_sig_val = power_signal_get(PWR_PG_EC_RSMRST);
+	int out_sig_val = power_signal_get(PWR_EC_PCH_RSMRST);
 
 	if (in_sig_val != out_sig_val) {
 		if (in_sig_val)
 			k_msleep(com_cfg.pch_rsmrst_delay_ms);
-		gpio_pin_set_dt(&com_cfg.ec_pch_rsmrst_odl, in_sig_val);
+		power_signal_set(PWR_EC_PCH_RSMRST, in_sig_val);
 	}
 }
 
@@ -460,7 +236,7 @@ static int common_pwr_sm_run(int state)
 		}
 
 		/* All the power rails must be stable */
-		if (gpio_pin_get_dt(&com_cfg.all_sys_pwrgd))
+		if (power_signal_get(PWR_ALL_SYS_PWRGD))
 			return SYS_POWER_STATE_S0;
 		break;
 
@@ -508,8 +284,8 @@ static void pwrseq_loop_thread(void *p1, void *p2, void *p3)
 {
 	int32_t t_wait_ms = 10;
 	enum power_states_ndsx curr_state, new_state;
-	uint32_t this_in_signals;
-	static uint32_t last_in_signals;
+	power_signal_mask_t this_in_signals;
+	static power_signal_mask_t last_in_signals;
 	static enum power_states_ndsx last_state;
 
 	while (1) {
@@ -519,9 +295,9 @@ static void pwrseq_loop_thread(void *p1, void *p2, void *p3)
 		 * In order to prevent repeated console spam, only print the
 		 * current power state if something has actually changed.  It's
 		 * possible that one of the power signals goes away briefly and
-		 * comes back by the time we update our pwrseq_ctx.in_signals.
+		 * comes back by the time we update our signals.
 		 */
-		this_in_signals = pwrseq_ctx.in_signals;
+		this_in_signals = power_get_signals();
 		if (this_in_signals != last_in_signals ||
 				curr_state != last_state) {
 			LOG_INF("power state %d = %s, in 0x%04x",
@@ -574,11 +350,8 @@ static int pwrseq_init()
 {
 	LOG_ERR("Pwrseq Init\n");
 
-	/* Configure gpio from device tree */
-	pwrseq_gpio_init();
-	LOG_DBG("Done gpio init");
-	/* Register espi handler */
-	ndsx_espi_configure();
+	/* Initialize signal handlers */
+	power_signal_init();
 	/* TODO: Define initial state of power sequence */
 	LOG_DBG("Init pwr seq state");
 	init_pwr_seq_state();
