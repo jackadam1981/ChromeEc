@@ -16,6 +16,52 @@
       "message": "It looks good to me, unfortunately I cannot give you CR+2, even from G account, so maybe @Keith can do it.",
       "revId": "121c34802e84b0bc3704f8774aa0c49e325657ad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6365021_f368b73e",
+        "filename": "zephyr/projects/skyrim/gpio.dts",
+        "patchSetId": 6
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-02-23T19:20:50Z",
+      "side": 1,
+      "message": "Nit - you can delete this property on port 1 according the documentation.This should be 0xFF based on the documentation:\n\nhttp://cs/chromeos_public/src/third_party/zephyr/main/dts/bindings/gpio/nuvoton,nct38xx-gpio-port.yaml?l\u003d36",
+      "range": {
+        "startLine": 334,
+        "startChar": 0,
+        "endLine": 334,
+        "endChar": 24
+      },
+      "revId": "121c34802e84b0bc3704f8774aa0c49e325657ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d742f4d_0c99f8fe",
+        "filename": "zephyr/projects/skyrim/gpio.dts",
+        "patchSetId": 6
+      },
+      "lineNbr": 338,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-02-23T19:20:50Z",
+      "side": 1,
+      "message": "I\u0027m not sure if this belongs under the i2c0_0 node, but I\u0027m not sure where else it should go.",
+      "range": {
+        "startLine": 338,
+        "startChar": 1,
+        "endLine": 338,
+        "endChar": 16
+      },
+      "revId": "121c34802e84b0bc3704f8774aa0c49e325657ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
