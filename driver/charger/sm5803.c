@@ -313,7 +313,7 @@ enum ec_error_list sm5803_vbus_sink_enable(int chgnum, int enable)
 				rv = sm5803_flow2_update(chgnum,
 						SM5803_FLOW2_AUTO_TRKL_EN |
 						SM5803_FLOW2_AUTO_PRECHG_EN,
-						MASK_SET);
+						MASK_CLR);
 				fast_charge_disabled = true;
 			}
 		} else {
