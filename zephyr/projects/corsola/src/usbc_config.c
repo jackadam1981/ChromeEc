@@ -225,8 +225,13 @@ static void hdmi_fix_c1_port(void)
 	static struct tcpm_drv virtual_tcpc_drv = { 0 };
 	static struct bc12_drv virtual_bc12_drv = { 0 };
 
-	if (corsola_get_db_type() == CORSOLA_DB_TYPEC)
+	if (corsola_get_db_type() == CORSOLA_DB_TYPEC) {
+		/* kingler&krabby: usbc_c0_ppc_int_odl */
+		gpio_pin_interrupt_configure_dt(
+			GPIO_DT_FROM_NODELABEL(int_x_ec_gpio2),
+			GPIO_INT_EDGE_FALLING);
 		return;
+	}
 
 	/* drop related C1 port drivers when it's a HDMI DB. */
 	ppc_chips[USBC_PORT_C1] =
