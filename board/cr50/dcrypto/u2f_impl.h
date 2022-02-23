@@ -202,13 +202,12 @@ bool u2f_load_or_create_state(struct u2f_state *state, bool force_create);
 
 /***
  * Generates and persists to nvram a new seed that will be used to
- * derive kek in future calls to u2f_gen_kek().
+ * derive sign U2F key handles.
  *
- * @param commit whether to commit nvram changes before returning.
  * @return EC_SUCCESS if seed was successfully created
  * (and persisted if requested).
  */
-enum ec_error_list u2f_gen_kek_seed(int commit);
+enum ec_error_list u2f_gen_kek_seed(void);
 
 /**
  * Zeroize U2F keys. Can be used to switch to FIPS-compliant path by
