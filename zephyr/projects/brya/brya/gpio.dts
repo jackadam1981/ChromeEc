@@ -133,37 +133,29 @@
 			gpios = <&gpioc 7 GPIO_INPUT>;
 			enum-name = "GPIO_PG_EC_DSW_PWROK";
 		};
-		en_s5_rails {
+		gpio_en_s5_rails: en_s5_rails {
 			gpios = <&gpiob 6 GPIO_OUT_LOW>;
-			enum-name = "GPIO_EN_S5_RAILS";
 		};
-		sys_rst_odl {
-			gpios = <&gpioc 5 GPIO_ODR_HIGH>;
-			enum-name = "GPIO_SYS_RESET_L";
+		gpio_sys_rst_odl: sys_rst_odl {
+			gpios = <&gpioc 5 (GPIO_ACTIVE_LOW|GPIO_ODR_LOW)>;
 		};
 		gpio_pg_ec_rsmrst_odl: pg_ec_rsmrst_odl {
-			gpios = <&gpioe 2 GPIO_INPUT>;
-			enum-name = "GPIO_PG_EC_RSMRST_ODL";
+			gpios = <&gpioe 2 (GPIO_ACTIVE_LOW|GPIO_INPUT)>;
 		};
-		ec_pch_rsmrst_odl {
-			gpios = <&gpioa 6 GPIO_OUT_LOW>;
-			enum-name = "GPIO_PCH_RSMRST_L";
+		gpio_ec_pch_rsmrst_odl: ec_pch_rsmrst_odl {
+			gpios = <&gpioa 6 (GPIO_ACTIVE_LOW|GPIO_OUT_LOW)>;
 		};
 		gpio_pg_ec_all_sys_pwrgd: pg_ec_all_sys_pwrgd {
 			gpios = <&gpiof 4 GPIO_INPUT>;
-			enum-name = "GPIO_PG_EC_ALL_SYS_PWRGD";
 		};
 		gpio_slp_s0_l: slp_s0_l {
-			gpios = <&gpiod 5 GPIO_INPUT>;
-			enum-name = "GPIO_PCH_SLP_S0_L";
+			gpios = <&gpiod 5 (GPIO_ACTIVE_LOW|GPIO_INPUT)>;
 		};
 		gpio_slp_s3_l: slp_s3_l {
-			gpios = <&gpioa 5 GPIO_INPUT>;
-			enum-name = "GPIO_PCH_SLP_S3_L";
+			gpios = <&gpioa 5 (GPIO_ACTIVE_LOW|GPIO_INPUT)>;
 		};
-		vccst_pwrgd_od {
+		gpio_vccst_pwrgd_od: vccst_pwrgd_od {
 			gpios = <&gpioa 4 GPIO_ODR_LOW>;
-			enum-name = "GPIO_VCCST_PWRGD_OD";
 		};
 		ec_prochot_odl {
 			gpios = <&gpio6 3 GPIO_ODR_HIGH>;
@@ -174,20 +166,16 @@
 			enum-name = "GPIO_PCH_PWRBTN_L";
 		};
 		gpio_slp_sus_l: slp_sus_l {
-			gpios = <&gpiof 1 GPIO_INPUT>;
-			enum-name = "GPIO_SLP_SUS_L";
+			gpios = <&gpiof 1 (GPIO_ACTIVE_LOW|GPIO_INPUT)>;
 		};
-		pch_pwrok {
+		gpio_pch_pwrok: pch_pwrok {
 			gpios = <&gpio7 2 GPIO_OUT_LOW>;
-			enum-name = "GPIO_PCH_PWROK";
 		};
-		ec_pch_sys_pwrok {
+		gpio_ec_pch_sys_pwrok: ec_pch_sys_pwrok {
 			gpios = <&gpio3 7 GPIO_OUT_LOW>;
-			enum-name = "GPIO_EC_PCH_SYS_PWROK";
 		};
-		imvp9_vrrdy_od {
+		gpio_imvp9_vrrdy_od: imvp9_vrrdy_od {
 			gpios = <&gpio4 3 GPIO_INPUT>;
-			enum-name = "GPIO_IMVP9_VRRDY_OD";
 		};
 		ec_edp_bl_en {
 			gpios = <&gpiod 3 GPIO_OUT_HIGH>;
