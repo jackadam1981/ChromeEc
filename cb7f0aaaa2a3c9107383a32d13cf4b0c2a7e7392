@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b8b30542_4fc40ed5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2022-02-23T06:38:23Z",
+      "side": 1,
+      "message": "Please no cherry-picking to Brya EC firmware branch, all changes from ToT are merged on a weekly basis: https://chromium-review.googlesource.com/q/project:chromiumos%252Fplatform%252Fec+branch:firmware-brya-14505.B-main+status:merged\nThanks!",
+      "revId": "cb7f0aaaa2a3c9107383a32d13cf4b0c2a7e7392",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
