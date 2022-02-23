@@ -191,6 +191,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3e369914_48716137",
+        "filename": "util/fptool.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-02-23T22:59:16Z",
+      "side": 1,
+      "message": "Ah, this is fine. Can you add a unit test for this function?",
+      "parentUuid": "c65d95ed_85d64f5e",
+      "range": {
+        "startLine": 189,
+        "startChar": 25,
+        "endLine": 189,
+        "endChar": 35
+      },
+      "revId": "4ad5d8fadf54fb32ab6864d45e952a3b3d436141",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e183a9c2_df226b1d",
         "filename": "util/fptool.py",
         "patchSetId": 3
@@ -461,6 +485,30 @@
       "side": 1,
       "message": "Seems to work for all the devices I tested it on.\nKept it as is for now, if it is ok with you",
       "parentUuid": "991c7270_ed615ef2",
+      "range": {
+        "startLine": 223,
+        "startChar": 12,
+        "endLine": 223,
+        "endChar": 37
+      },
+      "revId": "4ad5d8fadf54fb32ab6864d45e952a3b3d436141",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb556967_ea5bdca7",
+        "filename": "util/fptool.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-02-23T22:59:16Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "4e26507f_74872773",
       "range": {
         "startLine": 223,
         "startChar": 12,

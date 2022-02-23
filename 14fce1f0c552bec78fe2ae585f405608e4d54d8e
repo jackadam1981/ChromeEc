@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "448e1ca4_a9dc0a2a",
+        "filename": "util/fptool.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-02-23T22:59:16Z",
+      "side": 1,
+      "message": "This function is a good candidate for a unit tests (one of the advantages of using Python over shell).\n\nSome details are here: https://chromium.googlesource.com/chromiumos/docs/+/HEAD/styleguide/python.md#Unit-tests\n\nSee [this comment](https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3405635/comments/2fb24315_a27d7207) on some examples of mocking. It may be easier to test if you exactly copy the version in https://chromium.googlesource.com/chromiumos/docs/+/HEAD/lsb-release.md#python (since you can specify a different file path for testing).",
+      "range": {
+        "startLine": 147,
+        "startChar": 0,
+        "endLine": 147,
+        "endChar": 20
+      },
+      "revId": "14fce1f0c552bec78fe2ae585f405608e4d54d8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
