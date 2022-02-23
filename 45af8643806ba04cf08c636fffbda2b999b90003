@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5075e17e_b9915ed4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-02-23T17:55:42Z",
+      "side": 1,
+      "message": "Build error on it8xxx_evb board:\n\n/mnt/host/source/src/platform/ec/build/zephyr/it8xxx2_evb/modules/ec/common/flash.c:1307: undefined reference to `chipset_in_state\u0027\n",
+      "revId": "45af8643806ba04cf08c636fffbda2b999b90003",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
