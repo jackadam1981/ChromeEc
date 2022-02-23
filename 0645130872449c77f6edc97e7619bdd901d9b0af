@@ -16,6 +16,24 @@
       "message": "This CL adds really nice functionality! \nDid you upload it without pre-commit hooks? ",
       "revId": "0645130872449c77f6edc97e7619bdd901d9b0af",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "45e72346_fcd38d25",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1533827
+      },
+      "writtenOn": "2022-02-23T22:09:41Z",
+      "side": 1,
+      "message": "Thanks! And yes it went through the pre-submit hooks.\nAnd by the looks of it none of these hooks run ShellCheck.",
+      "parentUuid": "dd2bd298_844c7aed",
+      "revId": "0645130872449c77f6edc97e7619bdd901d9b0af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
