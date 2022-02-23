@@ -6,10 +6,9 @@
 #ifndef __X86_COMMON_PWRSEQ_H__
 #define __X86_COMMON_PWRSEQ_H__
 
-#include <drivers/espi.h>
-#include <drivers/gpio.h>
+#include <power_signals.h>
+#include <signal_interface.h>
 #include <logging/log.h>
-#include <x86_power_signals.h>
 
 /**
  * @brief System power states for Non Deep Sleep Well

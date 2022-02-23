@@ -52,7 +52,7 @@ static int powerindebug_handler(const struct shell *shell, size_t argc,
 
 		shell_fprintf(shell, SHELL_INFO, "  0x%04x %d %s\n",
 			mask, pwrseq_get_input_signals() & mask ? 1 : 0,
-			power_signal_list[i].debug_name);
+			power_signal_name(i));
 	}
 
 	return 0;
