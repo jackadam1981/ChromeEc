@@ -340,6 +340,9 @@ void i2c_lock(int port, int lock)
 			port = i2c_get_physical_port(port);
 	}
 
+	__ASSERT(port >= 0 && port < ARRAY_SIZE(port_mutex),
+		 "attempted to lock nonexistent I2C port %d",
+		 port);
 	if (port < 0 || port >= ARRAY_SIZE(port_mutex))
 		return;
 

@@ -54,6 +54,7 @@ static void service_one_port(int port)
 {
 	timestamp_t now;
 
+	CPRINTS("service_one_port(%d)", port);
 	tcpc_alert(port);
 
 	now = get_time();
@@ -109,6 +110,7 @@ void pd_interrupt_handler_task(void *p)
 
 		if ((evt & PD_PROCESS_INTERRUPT) == 0)
 			continue;
+		CPRINTS("USBC interrupt task %d woken!", port);
 		/*
 		 * While the interrupt signal is asserted; we have more
 		 * work to do. This effectively makes the interrupt a

@@ -53,11 +53,6 @@
 			flags = <GPIO_INT_EDGE_FALLING>;
 			handler = "usb_c0_interrupt";
 		};
-		int_usb_c1: usb_c1 {
-			irq-pin = <&gpio_sb_1>;
-			flags = <GPIO_INT_EDGE_FALLING>;
-			handler = "usb_c1_interrupt";
-		};
 		int_prochot: ap_prochot {
 			irq-pin = <&gpio_ec_prochot_odl>;
 			flags = <GPIO_INT_EDGE_BOTH>;
@@ -177,6 +172,11 @@
 				port = <&i2c_ec_i2c_sub_usb_c1>;
 			};
 		};
+	};
+
+	zephyr,user {
+		/* NOTE: GPIO_INPUT can't be specified here, code needs to provide it */
+		usb-c1-int-gpios = <&gpioe 6 GPIO_ACTIVE_LOW>;
 	};
 };
 
