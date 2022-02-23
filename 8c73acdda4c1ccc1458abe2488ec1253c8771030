@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f0385574_21f87f84",
+        "filename": "util/migrated_files.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-02-23T19:12:10Z",
+      "side": 1,
+      "message": "should be everything under chip/*\n\nzephyr has never used that directory and never will",
+      "range": {
+        "startLine": 15,
+        "startChar": 29,
+        "endLine": 15,
+        "endChar": 35
+      },
+      "revId": "8c73acdda4c1ccc1458abe2488ec1253c8771030",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "124f5c0e_f0900dba",
         "filename": "util/migrated_files.sh",
         "patchSetId": 5

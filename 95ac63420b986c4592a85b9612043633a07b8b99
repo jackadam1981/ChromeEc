@@ -46,6 +46,30 @@
       },
       "revId": "95ac63420b986c4592a85b9612043633a07b8b99",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "465bd460_3cb3b159",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-02-23T19:12:10Z",
+      "side": 1,
+      "message": "can we exclude baseboard/, board/, and chip/ then?\n\nIf someone is editing those files, clearly they probably know they are editing non-Zephyr files, as we\u0027ve banned inclusion of thes",
+      "parentUuid": "048534d6_f6a7243c",
+      "range": {
+        "startLine": 20,
+        "startChar": 5,
+        "endLine": 21,
+        "endChar": 47
+      },
+      "revId": "95ac63420b986c4592a85b9612043633a07b8b99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
