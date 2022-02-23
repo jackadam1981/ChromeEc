@@ -16,6 +16,29 @@
       "message": "Ping on this review? ",
       "revId": "ffb23712877e4b8a65a66c516df28f920212b539",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3fc7ccc3_d0a5460c",
+        "filename": "zephyr/projects/skyrim/usbc.dts",
+        "patchSetId": 5
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1477788
+      },
+      "writtenOn": "2022-02-23T17:14:15Z",
+      "side": 1,
+      "message": "It should be tcpc1",
+      "range": {
+        "startLine": 32,
+        "startChar": 13,
+        "endLine": 32,
+        "endChar": 22
+      },
+      "revId": "ffb23712877e4b8a65a66c516df28f920212b539",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
