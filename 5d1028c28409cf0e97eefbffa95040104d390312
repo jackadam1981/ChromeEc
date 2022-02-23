@@ -192,6 +192,24 @@
       "parentUuid": "2f0eb9dc_05662e1b",
       "revId": "5d1028c28409cf0e97eefbffa95040104d390312",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f70d650_d538105b",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_adlp_pwrseq_sm.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-02-23T03:36:54Z",
+      "side": 1,
+      "message": "Thanks for putting up the document to provide a place for discussion and make the design clear. I will follow the design to make proper changes.",
+      "parentUuid": "7495a9e3_42454131",
+      "revId": "5d1028c28409cf0e97eefbffa95040104d390312",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
