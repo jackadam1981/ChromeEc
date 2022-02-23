@@ -16,6 +16,8 @@
 
 #define SCP_REG_BASE			0x70000000
 
+#define SCP_GPR(x)			REG32_ADDR(SCP_REG_BASE + 0x40040)[x]
+
 /* clock control */
 #define SCP_CLK_CTRL_BASE		(SCP_REG_BASE + 0x21000)
 /* system clock counter value */
