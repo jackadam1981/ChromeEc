@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9bca462_5f4f1427",
+        "filename": "board/felwinter/sensors.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2022-02-23T06:10:16Z",
+      "side": 1,
+      "message": "0 Kelvin? did you mean C_TO_K(0)?",
+      "range": {
+        "startLine": 188,
+        "startChar": 19,
+        "endLine": 188,
+        "endChar": 20
+      },
+      "revId": "e490bb3442cb5af2eee21cc461c796bb4bff612e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
