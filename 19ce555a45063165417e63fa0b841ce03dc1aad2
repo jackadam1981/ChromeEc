@@ -95,6 +95,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6ab0716_4918f5a7",
+        "filename": "chip/npcx/adc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 411,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-02-23T20:35:59Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d83bee3b_41857f3d",
+      "range": {
+        "startLine": 409,
+        "startChar": 0,
+        "endLine": 411,
+        "endChar": 5
+      },
+      "revId": "19ce555a45063165417e63fa0b841ce03dc1aad2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6fffeeac_ac75c699",

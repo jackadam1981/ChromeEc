@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c575304_2de8bc9c",
+        "filename": "chip/npcx/keyboard_raw.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-02-23T20:35:59Z",
+      "side": 1,
+      "message": "nit: I think we should put GPIO_KSO_* in a const array and do these in a for-loop.",
+      "range": {
+        "startLine": 177,
+        "startChar": 0,
+        "endLine": 191,
+        "endChar": 46
+      },
+      "revId": "1560b376964468bbd63e6c5ff0bee05a72b3d0c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58828ba2_fc1581e0",
+        "filename": "chip/npcx/keyboard_raw.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-02-23T20:35:59Z",
+      "side": 1,
+      "message": "nit: same for these.",
+      "range": {
+        "startLine": 211,
+        "startChar": 0,
+        "endLine": 219,
+        "endChar": 40
+      },
+      "revId": "1560b376964468bbd63e6c5ff0bee05a72b3d0c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
