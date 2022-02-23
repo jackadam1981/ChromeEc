@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "81f4d208_7e90b83b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-02-23T15:40:06Z",
+      "side": 1,
+      "message": "So I thought it would be good to code up an example of the kind\nof API layering that I think the power sequence code would benefit from.\nThe idea is that the code common code has no exposure to any of the details\nof where the signals are actually sourced, and DTS can be used to configure\nthe source of all the signals.\n\nIf you think that this would be a good approach, I can clean it up a bit\nand submit it.\nI have an associated CL in the chain that I cherry-picked from one of the Brya\nCLs, and adusted it to see how it would look with these bindings.\n",
+      "revId": "7ea8df14f6a2262ee71ea4b9b4355052c98e8883",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
