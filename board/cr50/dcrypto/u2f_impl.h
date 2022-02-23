@@ -189,6 +189,7 @@ enum ec_error_list u2f_attest(const struct u2f_state *state,
  * @return pointer to static state if successful, NULL otherwise
  */
 struct u2f_state *u2f_get_state(void);
+struct u2f_state *u2f_get_state_no_commit(void);
 
 /**
  * Try to load U2F keys or create if failed.
@@ -199,6 +200,7 @@ struct u2f_state *u2f_get_state(void);
  * @return true if state is properly initialized and will persist in flash.
  */
 bool u2f_load_or_create_state(struct u2f_state *state, bool force_create);
+bool u2f_load_or_create_state_no_commit(struct u2f_state *state, bool force_create);
 
 /***
  * Generates and persists to nvram a new seed that will be used to
