@@ -668,6 +668,8 @@ config PLATFORM_EC_CHARGER_CHGRAMP_BROKEN
 	  This should be enabled by charger drivers which need it. It cannot
 	  be set otherwise, even in prj.conf
 
+if PLATFORM_EC_USB_CHARGER
+
 choice "Charge-ramp method"
 	prompt "Select the charge-ramp method"
 	help
@@ -694,6 +696,8 @@ config PLATFORM_EC_CHARGE_RAMP_SW
 	  and removing them.
 
 endchoice  # "Charge-ramp method"
+
+endif # PLATFORM_EC_USB_CHARGER
 
 config PLATFORM_EC_CONSOLE_CMD_CHARGER_ADC_AMON_BMON
 	bool "Console command: amonbmon"
