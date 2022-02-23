@@ -564,6 +564,7 @@ config PLATFORM_EC_CHARGER_CHGRAMP_BROKEN
 
 choice "Charge-ramp method"
 	prompt "Select the charge-ramp method"
+	depends on PLATFORM_EC_USB_CHARGER
 	help
 	  Select the method used for ramping up charging of a battery. It is
 	  preferred to use the hardware method if the charger chip can support
