@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bc78c5ad_9a5ec19b",
+        "filename": "chip/stm32/bkpdata.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-02-23T19:27:51Z",
+      "side": 1,
+      "message": "Sorry for not including the above comment in with Tom\u0027s, I didn\u0027t see it when I made the above comment (I think it came in while I was reviewing). It might be worth having a separate discussion on this. Is there a reason that this has to be stored as an array rather than a structure? On possible design is to define a structure that is bit compatible with the existing RO data buffer. Then devices with additional data(reset flags2, panic reason, etc) could wrap the RO data in a secondary structure that could be defined for each device type. This could be cleaner and much less error prone.",
+      "parentUuid": "b9eaff2b_2c8cb818",
+      "revId": "8f69a5346ecd7f8997a2409b47e154adf07dcf42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e56d7664_01aad2f3",
         "filename": "chip/stm32/bkpdata.h",
         "patchSetId": 3
