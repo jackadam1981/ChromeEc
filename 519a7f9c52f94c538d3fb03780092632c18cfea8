@@ -45,6 +45,30 @@
       },
       "revId": "519a7f9c52f94c538d3fb03780092632c18cfea8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c47a4de6_683bb92b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2022-02-23T13:29:09Z",
+      "side": 1,
+      "message": "In this test. It doesn\u0027t matter if `struct panic_data` is compatible or not. `panic_get_data()` will return NULL when panic data doesn\u0027t exist.",
+      "parentUuid": "0f6b6e00_550d6886",
+      "range": {
+        "startLine": 19,
+        "startChar": 5,
+        "endLine": 20,
+        "endChar": 19
+      },
+      "revId": "519a7f9c52f94c538d3fb03780092632c18cfea8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
