@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "678a6c7b_cdfeaa8c",
+        "filename": "zephyr/shim/include/usbc/ppc_syv682x.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2022-02-23T06:31:52Z",
+      "side": 1,
+      "message": "Hi Dawid\n\n(Added you because you are the last person that touched ppc drivers)\nI found that irq is defined in schema but not used, is this reserved for frs_en, or does it has other usage?",
+      "range": {
+        "startLine": 15,
+        "startChar": 45,
+        "endLine": 15,
+        "endChar": 48
+      },
+      "revId": "88928b8523a280da4bd2bdd88bd1a87bb5adfbfb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
