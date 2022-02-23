@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d96110c7_a4cd1021",
+        "filename": "zephyr/projects/nissa/src/common_pwrseq.c",
+        "patchSetId": 28
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2022-02-23T04:13:27Z",
+      "side": 1,
+      "message": "With CL:3482485 now X86_DSW_PWROK is handled by ADC, no need to override this.\nWe can also remove intel_x86_get_pg_ec_dsw_pwrok and use power_signal_is_asserted(X86_DSW_PWROK) instead.\n\nI am suspecting that board_get_power_signal(enum power_signal signal)  would only have to deal with \"ALL_SYS_PWRGD\".",
+      "parentUuid": "f229247e_247223c6",
+      "revId": "b172e392aa57a0f6261654854aee6a8d39494568",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d207e122_0883d6f7",
@@ -108,6 +126,30 @@
       "side": 1,
       "message": "If I make ADC-CMP signal type, this could be removed as well.",
       "parentUuid": "7cd9914b_a6b7b11f",
+      "range": {
+        "startLine": 213,
+        "startChar": 11,
+        "endLine": 213,
+        "endChar": 25
+      },
+      "revId": "b172e392aa57a0f6261654854aee6a8d39494568",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff6a0dee_a77d05c0",
+        "filename": "zephyr/projects/nissa/src/common_pwrseq.c",
+        "patchSetId": 28
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2022-02-23T04:13:27Z",
+      "side": 1,
+      "message": "I moved this to CL:3482485",
+      "parentUuid": "fa576710_122fdf5e",
       "range": {
         "startLine": 213,
         "startChar": 11,
