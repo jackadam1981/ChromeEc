@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a11b47b8_ae96572d",
+        "filename": "board/cr50/u2f_state_load.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2022-02-23T04:17:16Z",
+      "side": 1,
+      "message": "i made caller checking return code - this seems a better approach to me",
+      "parentUuid": "e2995380_9b82dd2e",
+      "range": {
+        "startLine": 137,
+        "startChar": 0,
+        "endLine": 137,
+        "endChar": 47
+      },
+      "revId": "f3b809a6c989975775f3344ee6c511bce9917f17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "076f15f3_81266f8a",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-02-23T03:58:29Z",
       "side": 1,
       "message": "I don\u0027tunderstand this comment, who will call u2f_load_or_create_state() ?",
+      "range": {
+        "startLine": 140,
+        "startChar": 0,
+        "endLine": 142,
+        "endChar": 34
+      },
+      "revId": "f3b809a6c989975775f3344ee6c511bce9917f17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "08228a59_8e22c62b",
+        "filename": "board/cr50/u2f_state_load.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2022-02-23T04:17:16Z",
+      "side": 1,
+      "message": "updated",
+      "parentUuid": "076f15f3_81266f8a",
       "range": {
         "startLine": 140,
         "startChar": 0,
