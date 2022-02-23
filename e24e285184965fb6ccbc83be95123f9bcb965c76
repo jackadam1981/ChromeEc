@@ -1,0 +1,107 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b18beaf_c5d5b1bb",
+        "filename": "docs/ec_terms.md",
+        "patchSetId": 21
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-02-23T16:32:21Z",
+      "side": 1,
+      "message": "Need a period.",
+      "range": {
+        "startLine": 247,
+        "startChar": 25,
+        "endLine": 247,
+        "endChar": 29
+      },
+      "revId": "e24e285184965fb6ccbc83be95123f9bcb965c76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "247170dc_0546c665",
+        "filename": "docs/zephyr/zephyr_usba.md",
+        "patchSetId": 21
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-02-23T16:32:21Z",
+      "side": 1,
+      "message": "CONFIG_PLATFORM_EC_USBA enables support for USB-A ports in the EC application.  Refer to [Kconfig.usba] for all sub-options controlling USB-A ports.",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 14
+      },
+      "revId": "e24e285184965fb6ccbc83be95123f9bcb965c76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "122c0c3b_1008bc6a",
+        "filename": "docs/zephyr/zephyr_usba.md",
+        "patchSetId": 21
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-02-23T16:32:21Z",
+      "side": 1,
+      "message": "There is also the \"cros-ec,usba-port-enable-pins\" node that defines the GPIO used for each USB-A port.",
+      "revId": "e24e285184965fb6ccbc83be95123f9bcb965c76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "42c49df0_2ebad6a6",
+        "filename": "docs/zephyr/zephyr_usba.md",
+        "patchSetId": 21
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-02-23T16:32:21Z",
+      "side": 1,
+      "message": "This isn\u0027t correct.  When CONFIG_PLATFORM_EC_USB_PORT_POWER_DUMB\u003dy, then the EC application automatically powers up USB-A ports when the AP chipset starts upand powers off the USB-A ports when the AP chipset shuts down.",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 0
+      },
+      "revId": "e24e285184965fb6ccbc83be95123f9bcb965c76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "703d6c74_aa9d7680",
+        "filename": "docs/zephyr/zephyr_usba.md",
+        "patchSetId": 21
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-02-23T16:32:21Z",
+      "side": 1,
+      "message": "Document the \"usbchargemode\" command.",
+      "revId": "e24e285184965fb6ccbc83be95123f9bcb965c76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
