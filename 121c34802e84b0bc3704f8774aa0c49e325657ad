@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d2ebcf4_edb28fe5",
+        "filename": "zephyr/projects/skyrim/gpio.dts",
+        "patchSetId": 6
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-02-23T22:05:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d6365021_f368b73e",
+      "range": {
+        "startLine": 334,
+        "startChar": 0,
+        "endLine": 334,
+        "endChar": 24
+      },
+      "revId": "121c34802e84b0bc3704f8774aa0c49e325657ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9d742f4d_0c99f8fe",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-02-23T19:20:50Z",
       "side": 1,
       "message": "I\u0027m not sure if this belongs under the i2c0_0 node, but I\u0027m not sure where else it should go.",
+      "range": {
+        "startLine": 338,
+        "startChar": 1,
+        "endLine": 338,
+        "endChar": 16
+      },
+      "revId": "121c34802e84b0bc3704f8774aa0c49e325657ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8807dff_9957ff39",
+        "filename": "zephyr/projects/skyrim/gpio.dts",
+        "patchSetId": 6
+      },
+      "lineNbr": 338,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-02-23T22:05:19Z",
+      "side": 1,
+      "message": "Yeah, I just tried to follow brya here which puts the alert on the i2c node, but I\u0027m open to suggestions if you know another spot it makes more sense.",
+      "parentUuid": "9d742f4d_0c99f8fe",
       "range": {
         "startLine": 338,
         "startChar": 1,
