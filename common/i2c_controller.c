@@ -75,6 +75,10 @@ static int init_port_mutex(const struct device *dev)
 SYS_INIT(init_port_mutex, POST_KERNEL, 50);
 #endif /* CONFIG_ZEPHYR */
 
+#define VERIFY_PORT() \
+		__ASSERT(port >= 0 && port <= ARRAY_SIZE(port_mutex), \
+			 "%s: port %d out of range, caller %p", __func__, port, __builtin_extract_return_addr(__builtin_return_address(0)));
+
 /**
  * Non-deterministically test the lock status of the port.  If another task
  * has locked the port and the caller is accessing it illegally, then this test
@@ -88,6 +92,7 @@ static int i2c_port_is_locked(int port)
 	port = i2c_port_to_controller(port);
 #endif
 	/* can't lock a non-existing port */
+	VERIFY_PORT();
 	if (port < 0)
 		return 0;
 
@@ -314,6 +319,7 @@ int i2c_xfer(const int port,
 	     uint8_t *in, int in_size)
 {
 	int rv;
+	VERIFY_PORT();
 
 	i2c_lock(port, 1);
 	rv = i2c_xfer_unlocked(port, addr_flags,
@@ -340,8 +346,11 @@ void i2c_lock(int port, int lock)
 			port = i2c_get_physical_port(port);
 	}
 
-	if (port < 0 || port >= ARRAY_SIZE(port_mutex))
+	VERIFY_PORT();
+	if (port < 0 || port >= ARRAY_SIZE(port_mutex)) {
+		CPRINTS("Ignored request to lock invalid I2C port %d", port);
 		return;
+	}
 
 	if (lock) {
 		uint32_t irq_lock_key;
@@ -513,6 +522,7 @@ int i2c_read16(const int port,
 {
 	int rv;
 	uint8_t reg, buf[sizeof(uint16_t)];
+	VERIFY_PORT();
 
 	reg = offset & 0xff;
 	/* I2C read 16-bit word: transmit 8-bit offset, and read 16bits */
@@ -535,6 +545,7 @@ int i2c_write16(const int port,
 		int offset, int data)
 {
 	uint8_t buf[1 + sizeof(uint16_t)];
+	VERIFY_PORT();
 
 	buf[0] = offset & 0xff;
 
@@ -557,6 +568,7 @@ int i2c_read8(const int port,
 	int rv;
 	uint8_t reg = offset;
 	uint8_t buf;
+	VERIFY_PORT();
 
 	reg = offset;
 
@@ -573,6 +585,7 @@ int i2c_write8(const int port,
 	       int offset, int data)
 {
 	uint8_t buf[2];
+	VERIFY_PORT();
 
 	buf[0] = offset;
 	buf[1] = data;
@@ -590,6 +603,7 @@ int i2c_update8(const int port,
 	int read_val;
 	int write_val;
 
+	VERIFY_PORT();
 	rv = i2c_read8(port, addr_flags, offset, &read_val);
 	if (rv)
 		return rv;
@@ -613,6 +627,7 @@ int i2c_update16(const int port,
 	int read_val;
 	int write_val;
 
+	VERIFY_PORT();
 	rv = i2c_read16(port, addr_flags, offset, &read_val);
 	if (rv)
 		return rv;
@@ -636,6 +651,7 @@ int i2c_field_update8(const int port,
 	int read_val;
 	int write_val;
 
+	VERIFY_PORT();
 	rv = i2c_read8(port, addr_flags, offset, &read_val);
 	if (rv)
 		return rv;
@@ -658,6 +674,7 @@ int i2c_field_update16(const int port,
 	int read_val;
 	int write_val;
 
+	VERIFY_PORT();
 	rv = i2c_read16(port, addr_flags, offset, &read_val);
 	if (rv)
 		return rv;
@@ -677,6 +694,7 @@ int i2c_read_offset16(const int port,
 	int rv;
 	uint8_t buf[sizeof(uint16_t)], addr[sizeof(uint16_t)];
 
+	VERIFY_PORT();
 	if (len < 0 || len > 2)
 		return EC_ERROR_INVAL;
 
@@ -707,6 +725,7 @@ int i2c_write_offset16(const int port,
 {
 	uint8_t buf[2 + sizeof(uint16_t)];
 
+	VERIFY_PORT();
 	if (len < 0 || len > 2)
 		return EC_ERROR_INVAL;
 
@@ -733,6 +752,7 @@ int i2c_read_offset16_block(const int port,
 			    uint16_t offset, uint8_t *data, int len)
 {
 	uint8_t addr[sizeof(uint16_t)];
+	VERIFY_PORT();
 
 	addr[0] = (offset >> 8) & 0xff;
 	addr[1] = offset & 0xff;
@@ -746,6 +766,7 @@ int i2c_write_offset16_block(const int port,
 {
 	int rv;
 	uint8_t addr[sizeof(uint16_t)];
+	VERIFY_PORT();
 
 	addr[0] = (offset >> 8) & 0xff;
 	addr[1] = offset & 0xff;
@@ -772,6 +793,7 @@ int i2c_read_string(const int port,
 	int i, rv;
 	uint8_t reg, block_length;
 
+	VERIFY_PORT();
 	if (!IS_ENABLED(CONFIG_SMBUS_PEC) && I2C_USE_PEC(addr_flags))
 		return EC_ERROR_UNIMPLEMENTED;
 
@@ -858,6 +880,7 @@ int i2c_read_block(const int port, const uint16_t addr_flags, int offset,
 	int rv;
 	uint8_t reg_address = offset;
 
+	VERIFY_PORT();
 	rv = i2c_xfer(port, addr_flags, &reg_address, 1, data, len);
 	return rv;
 }
@@ -869,6 +892,7 @@ int i2c_write_block(const int port,
 	int i, rv;
 	uint8_t reg_address = offset, pec = 0;
 
+	VERIFY_PORT();
 	if (!IS_ENABLED(CONFIG_SMBUS_PEC) && I2C_USE_PEC(addr_flags))
 		return EC_ERROR_UNIMPLEMENTED;
 
