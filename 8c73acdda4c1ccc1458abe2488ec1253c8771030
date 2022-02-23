@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "124f5c0e_f0900dba",
+        "filename": "util/migrated_files.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-02-23T17:51:27Z",
+      "side": 1,
+      "message": "Should this language mention that bug fixes should be evaluated if they should also be ported into the Zephyr code?",
+      "range": {
+        "startLine": 19,
+        "startChar": 14,
+        "endLine": 19,
+        "endChar": 32
+      },
+      "revId": "8c73acdda4c1ccc1458abe2488ec1253c8771030",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
