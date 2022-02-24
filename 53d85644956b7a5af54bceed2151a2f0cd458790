@@ -87,6 +87,24 @@
       "parentUuid": "a03ee76f_333c989b",
       "revId": "53d85644956b7a5af54bceed2151a2f0cd458790",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc314841_54bd4507",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-02-24T03:43:37Z",
+      "side": 1,
+      "message": "Yes, I misunderstood what the portmap tells you: it\u0027s the mapping from EC to Zephyr buses, not EC bus to name.",
+      "parentUuid": "51c8c470_7579f48a",
+      "revId": "53d85644956b7a5af54bceed2151a2f0cd458790",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
