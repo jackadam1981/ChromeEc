@@ -38,6 +38,7 @@ register_corsola_project(
         here / "cbi_eeprom.dts",
         here / "motionsense_krabby.dts",
         here / "pwm_krabby.dts",
+        here / "usbc_krabby.dts"
     ],
     extra_kconfig_files=[here / "prj_krabby.conf"],
 )
