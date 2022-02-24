@@ -77,6 +77,14 @@ DECLARE_HOOK(HOOK_INIT, nivviks_subboard_init, HOOK_PRIO_FIRST+1);
 static void board_init(void)
 {
 	/*
+	 * Enable USB-A vbus
+	 * TODO(b/222238390):remove when BC1.2 is enabled.
+	 */
+	gpio_pin_configure_dt(
+			GPIO_DT_FROM_NODELABEL(gpio_en_usb_a0_vbus),
+			GPIO_OUTPUT_HIGH);
+
+	/*
 	 * Enable USB-C interrupts.
 	 */
 	gpio_enable_dt_interrupt(GPIO_INT_FROM_NODELABEL(int_usb_c0));
@@ -84,6 +92,20 @@ static void board_init(void)
 		gpio_enable_dt_interrupt(GPIO_INT_FROM_NODELABEL(int_usb_c1));
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
+
+
+/* Called on AP S4 -> S5 transition */
+static void board_chipset_shutdown(void)
+{
+	/*
+	 * Disable USB-A vbus
+	 * TODO(b/222238390):remove when BC1.2 is enabled.
+	 */
+	gpio_pin_configure_dt(
+			GPIO_DT_FROM_NODELABEL(gpio_en_usb_a0_vbus),
+			GPIO_OUTPUT_LOW);
+}
+DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, board_chipset_shutdown, HOOK_PRIO_DEFAULT);
 
 __override void board_hibernate(void)
 {
