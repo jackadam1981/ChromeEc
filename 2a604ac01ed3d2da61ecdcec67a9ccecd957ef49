@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eab38c31_c8efad9d",
+        "filename": "zephyr/include/drivers/cros_kb_raw.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-02-24T16:16:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c30ad5e0_b6af43f4",
+      "revId": "2a604ac01ed3d2da61ecdcec67a9ccecd957ef49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "51e54cdc_5cde59f6",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-02-24T01:01:04Z",
       "side": 1,
       "message": "output",
+      "revId": "2a604ac01ed3d2da61ecdcec67a9ccecd957ef49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d59189d4_75c7941e",
+        "filename": "zephyr/include/drivers/cros_kb_raw.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-02-24T16:16:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "51e54cdc_5cde59f6",
       "revId": "2a604ac01ed3d2da61ecdcec67a9ccecd957ef49",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -52,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c413279b_6d8a2507",
+        "filename": "zephyr/include/drivers/cros_kb_raw.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-02-24T16:16:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "55241c6d_eae27ce6",
+      "revId": "2a604ac01ed3d2da61ecdcec67a9ccecd957ef49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5c437e63_d8efea5e",
@@ -65,6 +119,24 @@
       "writtenOn": "2022-02-24T01:01:04Z",
       "side": 1,
       "message": "Is there a reason why you are using _raw for this?\nThe idea is that you can use a logical 0 or 1 (1 is asserted), and the GPIO config can have GPIO_ACTIVE_LOW for signals that are physically inverted.\nThis decouples the signal assertion from the actual polarity of the pin.",
+      "revId": "2a604ac01ed3d2da61ecdcec67a9ccecd957ef49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ba34783_13c798df",
+        "filename": "zephyr/include/drivers/cros_kb_raw.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-02-24T16:16:00Z",
+      "side": 1,
+      "message": "I\u0027m of two minds for this pin.  The keyboard signals are active high, except for KSO2.  I decided to use raw here so that the logic in each keyboard driver was unchanged.\n\nI\u0027ll add the GPIO_ACTIVE_LOW and change to using gpio_pin_set() as a separate CL.",
+      "parentUuid": "5c437e63_d8efea5e",
       "revId": "2a604ac01ed3d2da61ecdcec67a9ccecd957ef49",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
