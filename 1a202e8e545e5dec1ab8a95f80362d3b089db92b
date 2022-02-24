@@ -22,6 +22,30 @@
       },
       "revId": "1a202e8e545e5dec1ab8a95f80362d3b089db92b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c8a385e_db551548",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 6965,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-02-24T01:36:14Z",
+      "side": 0,
+      "message": "It was broken by CL:3410646.",
+      "parentUuid": "def74cdc_64c56569",
+      "range": {
+        "startLine": 6964,
+        "startChar": 0,
+        "endLine": 6965,
+        "endChar": 74
+      },
+      "revId": "1a202e8e545e5dec1ab8a95f80362d3b089db92b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
