@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c1bd46a_7459f5c4",
+        "filename": "util/ro_dependency_check.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2022-02-24T01:46:53Z",
+      "side": 1,
+      "message": "sometimes it get\u0027s a little more tricky - https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/board/brya/generated-gpio.inc",
+      "revId": "623f8446fc4aab427fa1060e9598467222502da5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "64f2f635_e3df7013",
+        "filename": "util/ro_dependency_check.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2022-02-24T01:46:53Z",
+      "side": 1,
+      "message": "nit: For easier understanding I would suggest to change to COMMIT_TEST_MSG_LOWCASE",
+      "range": {
+        "startLine": 26,
+        "startChar": 4,
+        "endLine": 26,
+        "endChar": 19
+      },
+      "revId": "623f8446fc4aab427fa1060e9598467222502da5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf7692c8_6ec6c0d8",
+        "filename": "util/ro_dependency_check.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2022-02-24T01:46:53Z",
+      "side": 1,
+      "message": "what is that magic?",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 25
+      },
+      "revId": "623f8446fc4aab427fa1060e9598467222502da5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7fa5f1c_98ab85e7",
+        "filename": "util/ro_dependency_check.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2022-02-24T01:46:53Z",
+      "side": 1,
+      "message": "What is the purpose of this check?\nMany times I see \"make -j --board\u003dBOARD_NAME\" in the test section - but this will not be enough..",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 68
+      },
+      "revId": "623f8446fc4aab427fa1060e9598467222502da5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
