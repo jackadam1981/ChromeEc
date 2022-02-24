@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "616a525b_60a28bd2",
+        "filename": "util/ectool.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 9390,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-02-24T22:48:55Z",
+      "side": 1,
+      "message": "rv2, probably needs a comment that can overlay rv1\nsince rv2 is a superset of rv1.\nit won\u0027t matter here (yet), but you may also want to\nzero rv2 here, or at least the part not occupied by rv1.",
+      "range": {
+        "startLine": 9390,
+        "startChar": 20,
+        "endLine": 9390,
+        "endChar": 23
+      },
+      "revId": "55ce152a990831f2f9ecc0c7a8454c77de726fff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
