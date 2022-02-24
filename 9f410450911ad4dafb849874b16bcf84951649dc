@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38fe4358_a083582a",
+        "filename": "board/volmar/sensors.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-02-24T05:25:28Z",
+      "side": 1,
+      "message": "that seems very low; if we\u0027re using 0..50 as the temp range\nmapped to fan speed, won\u0027t the fan still be on near freezing\ntemps?",
+      "range": {
+        "startLine": 112,
+        "startChar": 25,
+        "endLine": 112,
+        "endChar": 26
+      },
+      "revId": "9f410450911ad4dafb849874b16bcf84951649dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
