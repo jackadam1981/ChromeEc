@@ -70,6 +70,30 @@
       },
       "revId": "d56b399e6292ace8215704a74da3f23ef531b339",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "41e359d0_a3af4f17",
+        "filename": "chip/npcx/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 891,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2022-02-24T08:55:40Z",
+      "side": 1,
+      "message": "Thanks for the feedback.\nComments are added to all PWDWNx to describe what module is disabled in the new patch.",
+      "parentUuid": "6e3db4d0_627491bc",
+      "range": {
+        "startLine": 891,
+        "startChar": 40,
+        "endLine": 891,
+        "endChar": 41
+      },
+      "revId": "d56b399e6292ace8215704a74da3f23ef531b339",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
