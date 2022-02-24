@@ -4,6 +4,9 @@
  */
 
 /* Intel ADLRVP board-specific common configuration */
+#ifdef CONFIG_ZEPHYR
+#include "adlrvp_zephyr.h"
+#endif /* CONFIG_ZEPHYR*/
 
 #include "battery_fuel_gauge.h"
 #include "charger.h"
@@ -213,6 +216,7 @@ BUILD_ASSERT(ARRAY_SIZE(bb_controls) == CONFIG_USB_PD_PORT_MAX_COUNT);
 /* Cache BB retimer power state */
 static bool cache_bb_enable[CONFIG_USB_PD_PORT_MAX_COUNT];
 
+#ifndef CONFIG_ZEPHYR
 /* Each TCPC have corresponding IO expander and are available in pair */
 struct ioexpander_config_t ioex_config[] = {
 	[IOEX_C0_PCA9675] = {
@@ -239,7 +243,7 @@ struct ioexpander_config_t ioex_config[] = {
 #endif
 };
 BUILD_ASSERT(ARRAY_SIZE(ioex_config) == CONFIG_IO_EXPANDER_PORT_COUNT);
-
+#endif /* CONFIG_ZEPHYR */
 /* Charger Chips */
 struct charger_config_t chg_chips[] = {
 	{
@@ -430,11 +434,19 @@ static void configure_battery_type(void)
 	case ADLN_LP5_ERB_SKU_BOARD_ID:
 	case ADLN_LP5_RVP_SKU_BOARD_ID:
 		/* configure Battery to 2S based */
+#ifndef CONFIG_ZEPHYR
 		bat_cell_type = BATTERY_GETAC_SMP_HHP_408_2S;
+#else
+		bat_cell_type = BATTERY_TYPE(DT_ALIAS(getac_2s));
+#endif /*CONFIG_ZEPHYR */
 		break;
 	default:
 		/* configure Battery to 3S based */
+#ifndef CONFIG_ZEPHYR
 		bat_cell_type = BATTERY_GETAC_SMP_HHP_408_3S;
+#else
+		bat_cell_type = BATTERY_TYPE(DT_ALIAS(getac_3s));
+#endif /*CONFIG_ZEPHYR */
 		break;
 	}
 
@@ -449,7 +461,11 @@ static void configure_battery_type(void)
  */
 const struct intel_x86_pwrok_signal pwrok_signal_assert_list[] = {
 	{
+#ifndef CONFIG_ZEPHYR
 		.gpio = GPIO_SYS_PWROK_EC,
+#else
+		.gpio = GPIO_PCH_SYS_PWROK,
+#endif /* CONFIG_ZEPHYR */
 		.delay_ms = 3,
 	},
 };
@@ -457,10 +473,14 @@ const int pwrok_signal_assert_count = ARRAY_SIZE(pwrok_signal_assert_list);
 
 const struct intel_x86_pwrok_signal pwrok_signal_deassert_list[] = {
 	{
+#ifndef CONFIG_ZEPHYR
 		.gpio = GPIO_SYS_PWROK_EC,
+#else
+		.gpio = GPIO_PCH_SYS_PWROK,
+#endif /* CONFIG_ZEPHYR */
 	},
 };
-const int pwrok_signal_deassert_count = ARRAY_SIZE(pwrok_signal_assert_list);
+const int pwrok_signal_deassert_count = ARRAY_SIZE(pwrok_signal_deassert_list);
 
 /*
  * Returns board information (board id[7:0] and Fab id[15:8]) on success
