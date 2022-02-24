@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b3d1d2c_e4e8f3e8",
+        "filename": "docs/getting_started_quickly.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-02-24T16:58:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f1024938_739ef639",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 51
+      },
+      "revId": "7be04d9ed16b35552e5bbc16ef420681535db5e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e194956d_c7c41134",
@@ -85,6 +109,30 @@
       "side": 1,
       "message": "Good catch! To make the instructions more general I can remove the option `-b stable`.\n\nDo you have strong opinion on one way or the other?",
       "parentUuid": "e194956d_c7c41134",
+      "range": {
+        "startLine": 71,
+        "startChar": 71,
+        "endLine": 71,
+        "endChar": 80
+      },
+      "revId": "7be04d9ed16b35552e5bbc16ef420681535db5e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "980e5e1f_a72bd621",
+        "filename": "docs/getting_started_quickly.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-02-24T16:58:03Z",
+      "side": 1,
+      "message": "Removed `-b stable` to be on the safe side.",
+      "parentUuid": "16ecb18c_ac8a18b8",
       "range": {
         "startLine": 71,
         "startChar": 71,
