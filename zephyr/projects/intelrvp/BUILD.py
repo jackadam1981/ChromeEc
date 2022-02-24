@@ -37,6 +37,7 @@ register_intelrvp_project(
     chip="npcx9",
     extra_dts_overlays=[
         here / "adlrvp/adlrvp_npcx/adlrvp_npcx.dts",
+        here / "adlrvp/adlrvp_npcx/bb_retimer.dts",
         here / "adlrvp/adlrvp_npcx/gpio.dts",
         here / "adlrvp/adlrvp_npcx/interrupts.dts",
         here / "adlrvp/adlrvp_npcx/keyboard.dts",
