@@ -118,6 +118,30 @@
       },
       "revId": "d56b399e6292ace8215704a74da3f23ef531b339",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee5c4f3b_d8eec104",
+        "filename": "chip/npcx/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 891,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2022-02-24T10:21:59Z",
+      "side": 1,
+      "message": "Hi Caveh,\nAccording to the datasheet, PWDWN8 only powers down I3C only. Bit[7:1] are reserved and should keep its default value (i.e. bit[7:1] \u003d 0x18.)",
+      "parentUuid": "37a0fb09_c5d6fa7d",
+      "range": {
+        "startLine": 891,
+        "startChar": 40,
+        "endLine": 891,
+        "endChar": 41
+      },
+      "revId": "d56b399e6292ace8215704a74da3f23ef531b339",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
