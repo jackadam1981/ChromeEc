@@ -68,6 +68,24 @@
       "message": "I realise this actually doesn\u0027t work - optional signals\nare an interesting challenge. I\u0027ll think about it.\n\nAs it happens, this is resolved as above.",
       "revId": "7ea8df14f6a2262ee71ea4b9b4355052c98e8883",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4cc0202c_8ad73503",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-02-24T06:17:11Z",
+      "side": 1,
+      "message": "If take Brya as example, the signals being monitoring all time are 8 signals, 6 gpio and 2 vw, mapping to bit 0-7. At all time we will check this 8 signal bitmap, one signal or multiple signals, depends on power state. In DTS, all signals together are 14, actually it is 15, s0ix is not included yet. so 8 of 15 are being monitored. The enum value of those 8 are not consecutive. The signals being monitored are platform dependent,  will convert to common signal name, which is used in common code. We need to have the flexibility to set active low/high, not necessarily same as schematic has.",
+      "parentUuid": "39a346c6_952ea28b",
+      "revId": "7ea8df14f6a2262ee71ea4b9b4355052c98e8883",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

@@ -140,6 +140,30 @@
       },
       "revId": "49318287be676e9cea97fffea641eefb08bff2a3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "05ffb9b2_7f9506b5",
+        "filename": "zephyr/subsys/ap_pwrseq/signal_gpio.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-02-24T06:17:11Z",
+      "side": 1,
+      "message": "S0ix interrupt is not enabled at boot up. It will be enabled and disabled at run time. we still have to config it, but enable later.",
+      "parentUuid": "1efd5bc9_ec3dc4fd",
+      "range": {
+        "startLine": 45,
+        "startChar": 28,
+        "endLine": 45,
+        "endChar": 34
+      },
+      "revId": "49318287be676e9cea97fffea641eefb08bff2a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
