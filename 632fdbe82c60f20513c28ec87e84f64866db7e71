@@ -22,6 +22,30 @@
       },
       "revId": "632fdbe82c60f20513c28ec87e84f64866db7e71",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a514c7b_69e7fbfa",
+        "filename": "util/ectool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 9386,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-02-24T16:45:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "79e1a67f_731dba84",
+      "range": {
+        "startLine": 9386,
+        "startChar": 31,
+        "endLine": 9386,
+        "endChar": 32
+      },
+      "revId": "632fdbe82c60f20513c28ec87e84f64866db7e71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
