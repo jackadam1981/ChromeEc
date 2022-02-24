@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "844cc281_d530acf4",
+        "filename": "zephyr/dts/bindings/power/intel,ap-pwrseq.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-02-24T01:06:18Z",
+      "side": 1,
+      "message": "This enum list is not fixed? There are some chipset specific signals may exist in one platform, not the other.",
+      "range": {
+        "startLine": 120,
+        "startChar": 12,
+        "endLine": 120,
+        "endChar": 17
+      },
+      "revId": "49318287be676e9cea97fffea641eefb08bff2a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c86e9940_33be98ea",
+        "filename": "zephyr/subsys/ap_pwrseq/CMakeLists.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-02-24T01:06:18Z",
+      "side": 1,
+      "message": "Those are for CONFIG_AP_PWRSEQ? I don\u0027t see it\u0027s limited by non-dsx or dsx.",
+      "range": {
+        "startLine": 6,
+        "startChar": 1,
+        "endLine": 8,
+        "endChar": 14
+      },
+      "revId": "49318287be676e9cea97fffea641eefb08bff2a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c465f603_6f302dd1",
+        "filename": "zephyr/subsys/ap_pwrseq/signal_gpio.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-02-24T01:06:18Z",
+      "side": 1,
+      "message": "Not all input pin are interrupt pin, like imvp9-vrrdy-od, etc.",
+      "range": {
+        "startLine": 45,
+        "startChar": 28,
+        "endLine": 45,
+        "endChar": 34
+      },
+      "revId": "49318287be676e9cea97fffea641eefb08bff2a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
