@@ -77,6 +77,12 @@ DECLARE_HOOK(HOOK_INIT, nivviks_subboard_init, HOOK_PRIO_FIRST+1);
 static void board_init(void)
 {
 	/*
+	 * Enable USB-A vbus
+	 */
+	gpio_pin_configure_dt(
+			GPIO_DT_FROM_NODELABEL(gpio_en_usb_a0_vbus),
+			GPIO_OUTPUT_HIGH);
+	/*
 	 * Enable USB-C interrupts.
 	 */
 	gpio_enable_dt_interrupt(GPIO_INT_FROM_NODELABEL(int_usb_c0));
