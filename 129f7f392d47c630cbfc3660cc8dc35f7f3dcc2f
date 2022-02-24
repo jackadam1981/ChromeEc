@@ -16,6 +16,24 @@
       "message": "We\u0027re including gpio_signal twice here. I think this was an autoimport from clangd or something.",
       "revId": "129f7f392d47c630cbfc3660cc8dc35f7f3dcc2f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9efb9bb3_af6a28f8",
+        "filename": "zephyr/projects/skyrim/power_signals_guybrush.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-02-24T23:46:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b9f1c6df_a92fd9a3",
+      "revId": "129f7f392d47c630cbfc3660cc8dc35f7f3dcc2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
