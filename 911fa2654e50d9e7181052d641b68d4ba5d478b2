@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "74d35545_e3204af2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1477752
+      },
+      "writtenOn": "2022-02-24T10:31:36Z",
+      "side": 1,
+      "message": "Seems we got some error when building build/beadrix/util/genvif, not sure if it\u0027s a flake, should we try CQ+2 again?\n\n```\nchromeos-ec-0.0.2-r8678: util/genvif.c: In function \u0027override_vif_product_fields\u0027:\nchromeos-ec-0.0.2-r8678: util/genvif.c:1626:4: error: universal character names are only valid in C++ and C99 [-Werror]\nchromeos-ec-0.0.2-r8678:     \"USB4\\u2122 Product\");\nchromeos-ec-0.0.2-r8678:     ^\nchromeos-ec-0.0.2-r8678:   CC      RW/baseboard/dedede/baseboard.o\nchromeos-ec-0.0.2-r8678: util/genvif.c: In function \u0027init_vif_component_general_pd_fields\u0027:\nchromeos-ec-0.0.2-r8678: util/genvif.c:3110:8: error: universal character names are only valid in C++ and C99 [-Werror]\nchromeos-ec-0.0.2-r8678:    \"2\", \"USB Type-C\\u00ae Receptacle\");\nchromeos-ec-0.0.2-r8678:         ^\nchromeos-ec-0.0.2-r8678: util/genvif.c: In function \u0027init_vif_component_usb4_port_fields\u0027:\nchromeos-ec-0.0.2-r8678: util/genvif.c:3292:4: error: universal character names are only valid in C++ and C99 [-Werror]\nchromeos-ec-0.0.2-r8678:     \"USB4\\u2122 Port\");\nchromeos-ec-0.0.2-r8678:     ^\nchromeos-ec-0.0.2-r8678: util/genvif.c: In function \u0027init_remarks\u0027:\nchromeos-ec-0.0.2-r8678: util/genvif.c:3829:2: error: \u0027for\u0027 loop initial declarations are only allowed in C99 or C11 mode\nchromeos-ec-0.0.2-r8678:   for (int c \u003d 0; c \u003c max_component_index; ++c) {\nchromeos-ec-0.0.2-r8678:   ^\nchromeos-ec-0.0.2-r8678: util/genvif.c:3829:2: note: use option -std\u003dc99, -std\u003dgnu99, -std\u003dc11 or -std\u003dgnu11 to compile your code\nchromeos-ec-0.0.2-r8678: util/genvif.c:3838:5: error: universal character names are only valid in C++ and C99 [-Werror]\nchromeos-ec-0.0.2-r8678:      \"USB Type-C\\u00ae\");\nchromeos-ec-0.0.2-r8678:      ^\nchromeos-ec-0.0.2-r8678:   CC      RW/baseboard/dedede/cbi_fw_config.o\nchromeos-ec-0.0.2-r8678: util/genvif.c: At top level:\nchromeos-ec-0.0.2-r8678: cc1: error: unrecognized command line option \"-Wno-address-of-packed-member\" [-Werror]\nchromeos-ec-0.0.2-r8678: cc1: all warnings being treated as errors\nchromeos-ec-0.0.2-r8678: make: *** [Makefile.rules:663: build/beadrix/util/genvif] Error 1\nchromeos-ec-0.0.2-r8678: make: *** Waiting for unfinished jobs....\nchromeos-ec-0.0.2-r8678:  * ERROR: chromeos-base/chromeos-ec-0.0.2-r8678::chromiumos failed (compile phase):\nchromeos-ec-0.0.2-r8678:  *   emake failed\nchromeos-ec-0.0.2-r8678:  * \nchromeos-ec-0.0.2-r8678:  * Build log: /build/dedede/tmp/portage/logs/chromeos-base:chromeos-ec-0.0.2-r8678:20220217-092107.log\n```\n",
+      "revId": "911fa2654e50d9e7181052d641b68d4ba5d478b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
