@@ -85,6 +85,30 @@ static void board_init(void)
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
+/* Called on AP S3 -> S0 transition */
+static void board_chipset_resume(void)
+{
+	/*
+	 * Enable USB-A vbus
+	 */
+	gpio_pin_configure_dt(
+			GPIO_DT_FROM_NODELABEL(gpio_en_usb_a0_vbus),
+			GPIO_OUTPUT_HIGH);
+}
+DECLARE_HOOK(HOOK_CHIPSET_RESUME, board_chipset_resume, HOOK_PRIO_DEFAULT);
+
+/* Called on AP S0 -> S3 transition */
+static void board_chipset_suspend(void)
+{
+	/*
+	 * Disable USB-A vbus
+	 */
+	gpio_pin_configure_dt(
+			GPIO_DT_FROM_NODELABEL(gpio_en_usb_a0_vbus),
+			GPIO_OUTPUT_LOW);
+}
+DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, board_chipset_suspend, HOOK_PRIO_DEFAULT);
+
 __override void board_hibernate(void)
 {
 	/* Shut down the chargers */
