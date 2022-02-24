@@ -225,7 +225,7 @@
 			/* pg_pp5000_z2_od */
 			<&gpiod 2 GPIO_INPUT>,
 			/* pg_mt6315_proc_b_odl */
-			<&gpioe 1 GPIO_INPUT>,
+			<&gpioe 1 GPIO_INPUT_PULL_DOWN>,
 			/* ec_pen_chg_dis_odl */
 			<&gpioh 3 GPIO_ODR_HIGH>,
 			/* ccd_mode_odl */
