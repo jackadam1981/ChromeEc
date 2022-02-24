@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c30ad5e0_b6af43f4",
+        "filename": "zephyr/include/drivers/cros_kb_raw.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-02-24T01:01:04Z",
+      "side": 1,
+      "message": "determine",
+      "revId": "2a604ac01ed3d2da61ecdcec67a9ccecd957ef49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "51e54cdc_5cde59f6",
+        "filename": "zephyr/include/drivers/cros_kb_raw.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-02-24T01:01:04Z",
+      "side": 1,
+      "message": "output",
+      "revId": "2a604ac01ed3d2da61ecdcec67a9ccecd957ef49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55241c6d_eae27ce6",
+        "filename": "zephyr/include/drivers/cros_kb_raw.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-02-24T01:01:04Z",
+      "side": 1,
+      "message": "Could be GPIO_DT_FROM_NODE(KBD_KS02_NODE) to be consistent.",
+      "revId": "2a604ac01ed3d2da61ecdcec67a9ccecd957ef49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c437e63_d8efea5e",
+        "filename": "zephyr/include/drivers/cros_kb_raw.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-02-24T01:01:04Z",
+      "side": 1,
+      "message": "Is there a reason why you are using _raw for this?\nThe idea is that you can use a logical 0 or 1 (1 is asserted), and the GPIO config can have GPIO_ACTIVE_LOW for signals that are physically inverted.\nThis decouples the signal assertion from the actual polarity of the pin.",
+      "revId": "2a604ac01ed3d2da61ecdcec67a9ccecd957ef49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
