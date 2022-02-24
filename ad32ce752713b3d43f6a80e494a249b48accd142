@@ -16,6 +16,47 @@
       "message": "This CL has dependency on PR:42923 (https://github.com/zephyrproject-rtos/zephyr/pull/42923) which is under codeview.",
       "revId": "ad32ce752713b3d43f6a80e494a249b48accd142",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c719961_4d007bd3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-02-24T17:12:47Z",
+      "side": 1,
+      "message": "will wait until that merges to give a full +2",
+      "parentUuid": "89b62618_708f31fe",
+      "revId": "ad32ce752713b3d43f6a80e494a249b48accd142",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e9d71bd_022e5b7b",
+        "filename": "zephyr/projects/nissa/prj_nivviks.conf",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-02-24T17:12:47Z",
+      "side": 1,
+      "message": "would this make sense to cut back on config copy-pasting here?\n\n```\nconfig CROS_KB_RAW_NPCX\n    depends on KSCAN\n    default y\n```",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 25
+      },
+      "revId": "ad32ce752713b3d43f6a80e494a249b48accd142",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
