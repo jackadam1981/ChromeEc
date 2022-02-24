@@ -86,6 +86,24 @@
       "parentUuid": "39a346c6_952ea28b",
       "revId": "7ea8df14f6a2262ee71ea4b9b4355052c98e8883",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ebd674f5_e13ec38c",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-02-24T06:47:42Z",
+      "side": 1,
+      "message": "So it\u0027s not clear to me why you need these signals as consecutive enums.\nDoes it matter that the particular signals you are monitoring are adjacent in the bitmap? You could just have a mask of the bits you are monitoring.\nJust create a #define of the bits that you are interested in, and used it as a mask for the monitoring.\nSo is there a reason why \u0027enum power_signal\u0027 can\u0027t be used as the common signal names? This is the purpose of the DTS bindings enum, so that the common names can be used.\n\nI can cherry-pick in chromium:3449792 and that may help show how this can work.\nWould that help?\n\nThe active low/high seems an orthogonal issue.\nI am not sure why the GPIO_ACTIVE_LOW config flag cannot be used for this purpose. It seems perfect for what you need.\nI added a \u0027vw-invert\u0027 flag so that the VW signals can be inverted as required.\nIt seems the common code is the wrong place to have the config about inverting bits - this belongs in the platform specific code (or the GPIO layer etc.)",
+      "parentUuid": "4cc0202c_8ad73503",
+      "revId": "7ea8df14f6a2262ee71ea4b9b4355052c98e8883",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
