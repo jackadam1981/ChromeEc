@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "73ec9d35_d02e3aa2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 26
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-02-24T15:47:49Z",
+      "side": 1,
+      "message": "Hey Keith, finally got around to this, did a major rework of the document after switching LED and kblight off the shim API. Was hoping to port few other drivers before reworking the doc, but I did not have time for that, so I\u0027ve redone the document with what we have now. Changes:\n\n- dropped all references to named-pwm, don\u0027t see any problem dropping it at this point, just need to finish porting few drivers\n- changed the troubleshooting reference to the Zephyr command format\n- dropped the example and instead provided a full example for the kblight driver, I\u0027ll add the display backlight one as well as soon as I\u0027m done but it\u0027s going to look the same anyway\n\nLet me know what you think.",
+      "revId": "9438dd6d4ec83c1ae13fca803a24d76efb3a025e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

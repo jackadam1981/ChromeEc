@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "373888ad_64c3b2b9",
+        "filename": "docs/zephyr/zephyr_pwm.md",
+        "patchSetId": 20
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-02-24T15:47:49Z",
+      "side": 1,
+      "message": "Sure, http://crrev.com/c/3488366 and http://crrev.com/c/3488367",
+      "parentUuid": "8f732449_6c215b9b",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 68
+      },
+      "revId": "bb4a835b34fc869db7629a052921d235c72d839b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8fabdce1_5a172b1a",
@@ -37,6 +61,24 @@
       "writtenOn": "2022-02-04T17:28:49Z",
       "side": 1,
       "message": "Include the keyboard backlight PWM in this example above since it is shown in the schematic snippet.",
+      "revId": "bb4a835b34fc869db7629a052921d235c72d839b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a804a21d_c40c7be2",
+        "filename": "docs/zephyr/zephyr_pwm.md",
+        "patchSetId": 20
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-02-24T15:47:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8fabdce1_5a172b1a",
       "revId": "bb4a835b34fc869db7629a052921d235c72d839b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
