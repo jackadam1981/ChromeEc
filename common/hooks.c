@@ -112,8 +112,6 @@ void hook_notify(enum hook_type type)
 	uint64_t run_time;
 #endif
 
-	CPRINTS("hook notify %d", type);
-
 	start = hook_list[type].start;
 	end = hook_list[type].end;
 	count = end - start;
