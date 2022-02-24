@@ -289,6 +289,7 @@ static void tcpci_partner_common_reset(struct tcpci_partner_data *data)
 	data->recv_msg_id = -1;
 	data->wait_for_response = false;
 	data->in_soft_reset = false;
+	data->timer_end = 0;
 }
 
 /** Check description in emul_common_tcpci_partner.h */
@@ -315,6 +316,7 @@ void tcpci_partner_common_send_soft_reset(struct tcpci_partner_data *data)
 	/* Wait for accept of soft reset */
 	data->wait_for_response = true;
 	data->in_soft_reset = true;
+	data->timer_end = k_uptime_get() + TCPCI_PARTNER_RESPONSE_TIMEOUT_MS;
 }
 
 /** Check description in emul_common_tcpci_partner.h */
@@ -392,6 +394,10 @@ enum tcpci_partner_handler_res tcpci_partner_common_msg_handler(
 	case PD_CTRL_ACCEPT:
 		if (data->wait_for_response) {
 			if (data->in_soft_reset) {
+				__ASSERT(data->timer_end > k_uptime_get() ||
+					 !data->timer_end,
+					 "Timeout for soft reset response");
+
 				/*
 				 * Accept is response to soft reset send by
 				 * common code. It is handled here

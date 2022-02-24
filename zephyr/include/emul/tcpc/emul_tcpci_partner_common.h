@@ -27,6 +27,9 @@
  * in generic way using optional delay.
  */
 
+/** Timeout for other side to respond to PD message */
+#define TCPCI_PARTNER_RESPONSE_TIMEOUT_MS		30
+
 /** Common data for TCPCI partner device emulators */
 struct tcpci_partner_data {
 	/** Timer used to send message with delay */
@@ -64,6 +67,8 @@ struct tcpci_partner_data {
 	 * doesn't arrive, hard reset is triggered.
 	 */
 	bool in_soft_reset;
+	/** Indicate when timer should end. 0 is set when timer is stopped. */
+	uint64_t timer_end;
 };
 
 /** Structure of message used by TCPCI partner emulator */

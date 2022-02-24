@@ -27,6 +27,9 @@
  * sink capabilities constructed from given PDOs.
  */
 
+/** Timeout for source to transition to requested state after accept */
+#define TCPCI_PARTNER_TRANSITION_TIMEOUT_MS	550
+
 /** Structure describing sink device emulator data */
 struct tcpci_snk_emul_data {
 	/** Power data objects returned in sink capabilities message */
