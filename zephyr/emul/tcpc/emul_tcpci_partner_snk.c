@@ -290,6 +290,8 @@ static void tcpci_snk_emul_handle_source_cap(
 
 	/* Expect response for request */
 	common_data->wait_for_response = true;
+	common_data->timer_end = k_uptime_get() +
+				 TCPCI_PARTNER_RESPONSE_TIMEOUT;
 	tcpci_partner_send_data_msg(common_data, PD_DATA_REQUEST, &rdo,
 				    1 /* = data_obj_num */, 0 /* = delay */);
 }
@@ -326,19 +328,31 @@ enum tcpci_partner_handler_res tcpci_snk_emul_handle_sop_msg(
 		case PD_CTRL_PS_RDY:
 			__ASSERT(data->wait_for_ps_rdy,
 				 "Unexpected PS RDY message");
+			__ASSERT(common_data->timer_end > k_uptime_get() ||
+				 !common_data->timer_end, "Timeout for PS_RDY");
 			data->wait_for_ps_rdy = false;
 			data->pd_completed = true;
+			common_data->timer_end = 0;
 			return TCPCI_PARTNER_COMMON_MSG_HANDLED;
 		case PD_CTRL_REJECT:
+			__ASSERT(common_data->timer_end > k_uptime_get() ||
+				 !common_data->timer_end,
+				 "Timeout for request response");
 			/* Request rejected. Ask for capabilities again. */
 			tcpci_partner_send_control_msg(common_data,
 						       PD_CTRL_GET_SOURCE_CAP,
 						       0);
 			common_data->wait_for_response = false;
+			common_data->timer_end = 0;
 			return TCPCI_PARTNER_COMMON_MSG_HANDLED;
 		case PD_CTRL_ACCEPT:
+			__ASSERT(common_data->timer_end > k_uptime_get() ||
+				 !common_data->timer_end,
+				 "Timeout for request response");
 			common_data->wait_for_response = false;
 			data->wait_for_ps_rdy = true;
+			common_data->timer_end = k_uptime_get() +
+					TCPCI_PARTNER_TRANSITION_TIMEOUT;
 			return TCPCI_PARTNER_COMMON_MSG_HANDLED;
 		default:
 			return TCPCI_PARTNER_COMMON_MSG_NOT_HANDLED;
