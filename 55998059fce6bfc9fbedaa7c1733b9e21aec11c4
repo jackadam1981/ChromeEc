@@ -16,6 +16,24 @@
       "message": "This is the example for pytest-cov. Should we use the one for gcovr instead?",
       "revId": "55998059fce6bfc9fbedaa7c1733b9e21aec11c4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f94f0711_46000c12",
+        "filename": ".gitlab-ci.yml",
+        "patchSetId": 4
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-02-24T22:02:14Z",
+      "side": 1,
+      "message": "But we are running pytest here.\n\n```\necho \u0027TOTAL                       1181    289    76%\u0027 | pcregrep --only-matching\u003d1 \u0027^TOTAL.+?(\\d+\\%)$\u0027\n76%\n```",
+      "parentUuid": "2bffc5fe_0cc6c4dd",
+      "revId": "55998059fce6bfc9fbedaa7c1733b9e21aec11c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
