@@ -7,5 +7,5 @@
 chip-y+=$(CHIP_VARIANT)/uart.o
 chip-y+=mt8195/clock_$(CHIP_VARIANT).o
 chip-y+=$(CHIP_VARIANT)/video.o
-chip-y+=$(CHIP_VARIANT)/intc_group.o
+chip-y+=mt8195/intc_group.o
 
