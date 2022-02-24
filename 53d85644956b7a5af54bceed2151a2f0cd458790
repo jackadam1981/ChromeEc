@@ -51,6 +51,24 @@
       "parentUuid": "0b470bac_11c41528",
       "revId": "53d85644956b7a5af54bceed2151a2f0cd458790",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a03ee76f_333c989b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-02-24T02:38:43Z",
+      "side": 1,
+      "message": "I guess the real solution is to simply turn on `PLATFORM_EC_CONSOLE_CMD_I2C_PORTMAP` to be able to ask the EC which bus number is which.",
+      "parentUuid": "9d04ac60_afa4f6d9",
+      "revId": "53d85644956b7a5af54bceed2151a2f0cd458790",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
