@@ -141,15 +141,16 @@ void uart_init(void)
 	 * TODO(b:134035444): We could get slightly more precise frequency by
 	 * using the _measured_ ULPOSC1 frequency (instead of the target).
 	 */
-	const uint32_t uart_clock = ULPOSC1_CLOCK_MHZ * 1000 / 10 * 1000;
+	const uint32_t uart_clock = 26 * 1000  * 1000;
 	const uint32_t div = DIV_ROUND_NEAREST(uart_clock, baud_rate * 16);
+
 
 	/* Init clock */
 #if UARTN == 0
 	SCP_CLK_UART = CLK_UART_SEL_ULPOSC1_DIV10;
 	SCP_CLK_GATE |= CG_UART_M | CG_UART_B | CG_UART_RSTN;
 #elif UARTN == 1
-	SCP_CLK_UART = CLK_UART1_SEL_ULPOSC1_DIV10;
+	SCP_CLK_UART = CLK_UART1_SEL_26M;
 	SCP_CLK_GATE |= CG_UART1_M | CG_UART1_B | CG_UART1_RSTN;
 #endif
 
