@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d5dffa88_4d2a9c4f",
+        "filename": "zephyr/dts/bindings/power/intel,ap-pwrseq.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-02-24T01:19:57Z",
+      "side": 1,
+      "message": "Hmm I see this list as being all possible power signal names - platforms do not need to use them all.",
+      "parentUuid": "844cc281_d530acf4",
+      "range": {
+        "startLine": 120,
+        "startChar": 12,
+        "endLine": 120,
+        "endChar": 17
+      },
+      "revId": "49318287be676e9cea97fffea641eefb08bff2a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c86e9940_33be98ea",
         "filename": "zephyr/subsys/ap_pwrseq/CMakeLists.txt",
         "patchSetId": 2
@@ -49,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c6dc9223_3d359049",
+        "filename": "zephyr/subsys/ap_pwrseq/CMakeLists.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-02-24T01:19:57Z",
+      "side": 1,
+      "message": "You are right - I was just copying the code that was there.",
+      "parentUuid": "c86e9940_33be98ea",
+      "range": {
+        "startLine": 6,
+        "startChar": 1,
+        "endLine": 8,
+        "endChar": 14
+      },
+      "revId": "49318287be676e9cea97fffea641eefb08bff2a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c465f603_6f302dd1",
         "filename": "zephyr/subsys/ap_pwrseq/signal_gpio.c",
         "patchSetId": 2
@@ -60,6 +108,30 @@
       "writtenOn": "2022-02-24T01:06:18Z",
       "side": 1,
       "message": "Not all input pin are interrupt pin, like imvp9-vrrdy-od, etc.",
+      "range": {
+        "startLine": 45,
+        "startChar": 28,
+        "endLine": 45,
+        "endChar": 34
+      },
+      "revId": "49318287be676e9cea97fffea641eefb08bff2a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1efd5bc9_ec3dc4fd",
+        "filename": "zephyr/subsys/ap_pwrseq/signal_gpio.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-02-24T01:19:57Z",
+      "side": 1,
+      "message": "True - this likely needs a little more tuning.\nI am also not sure about the flag where it says \u0027enable-int-on-boot\u0027\nTo me, we should just have one flag that says this is an interrupt, and it should\nbe enabled on startup (given that most inputs are interrupts, maybe it\u0027s better to have a flag that says \u0027no-interrupt\u0027 instead).\nRegardless, it\u0027s low cost to just not enable the interrupt for 1 or 2 input pins.",
+      "parentUuid": "c465f603_6f302dd1",
       "range": {
         "startLine": 45,
         "startChar": 28,
