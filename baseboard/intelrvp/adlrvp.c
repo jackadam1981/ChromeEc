@@ -4,6 +4,9 @@
  */
 
 /* Intel ADLRVP board-specific common configuration */
+#ifdef CONFIG_ZEPHYR
+#include "adlrvp_zephyr.h"
+#endif /* CONFIG_ZEPHYR*/
 
 #include "battery_fuel_gauge.h"
 #include "charger.h"
@@ -32,28 +35,48 @@
 /* TCPC AIC GPIO Configuration */
 const struct tcpc_aic_gpio_config_t tcpc_aic_gpios[] = {
 	[TYPE_C_PORT_0] = {
+	#ifdef CONFIG_ZEPHYR
+		.tcpc_alert = GPIO_SIGNAL(DT_NODELABEL(usbc_tcpc_alrt_p0)),
+		.ppc_alert = GPIO_SIGNAL(DT_NODELABEL(usbc_tcpc_ppc_alrt_p0)),
+	#else
 		.tcpc_alert = GPIO_USBC_TCPC_ALRT_P0,
 		.ppc_alert = GPIO_USBC_TCPC_PPC_ALRT_P0,
+	#endif /* CONFIG_ZEPHYR */
 		.ppc_intr_handler = sn5s330_interrupt,
 	},
 #if defined(HAS_TASK_PD_C1)
 	[TYPE_C_PORT_1] = {
+	#ifdef CONFIG_ZEPHYR
+		.tcpc_alert = GPIO_SIGNAL(DT_NODELABEL(usbc_tcpc_alrt_p1)),
+		.ppc_alert = GPIO_SIGNAL(DT_NODELABEL(usbc_tcpc_ppc_alrt_p1)),
+	#else
 		.tcpc_alert = GPIO_USBC_TCPC_ALRT_P1,
 		.ppc_alert = GPIO_USBC_TCPC_PPC_ALRT_P1,
+	#endif /* CONFIG_ZEPHYR */
 		.ppc_intr_handler = sn5s330_interrupt,
 	},
 #endif
 #if defined(HAS_TASK_PD_C2)
 	[TYPE_C_PORT_2] = {
+	#ifdef CONFIG_ZEPHYR
+		.tcpc_alert = GPIO_SIGNAL(DT_NODELABEL(usbc_tcpc_alrt_p2)),
+		.ppc_alert = GPIO_SIGNAL(DT_NODELABEL(usbc_tcpc_ppc_alrt_p2)),
+	#else
 		.tcpc_alert = GPIO_USBC_TCPC_ALRT_P2,
 		.ppc_alert = GPIO_USBC_TCPC_PPC_ALRT_P2,
+	#endif /* CONFIG_ZEPHYR */
 		.ppc_intr_handler = sn5s330_interrupt,
 	},
 #endif
 #if defined(HAS_TASK_PD_C3)
 	[TYPE_C_PORT_3] = {
+	#ifdef CONFIG_ZEPHYR
+		.tcpc_alert = GPIO_SIGNAL(DT_NODELABEL(usbc_tcpc_alrt_p3)),
+		.ppc_alert = GPIO_SIGNAL(DT_NODELABEL(usbc_tcpc_ppc_alrt_p3)),
+	#else
 		.tcpc_alert = GPIO_USBC_TCPC_ALRT_P3,
 		.ppc_alert = GPIO_USBC_TCPC_PPC_ALRT_P3,
+	#endif /* CONFIG_ZEPHYR */
 		.ppc_intr_handler = sn5s330_interrupt,
 	},
 #endif
@@ -213,6 +236,7 @@ BUILD_ASSERT(ARRAY_SIZE(bb_controls) == CONFIG_USB_PD_PORT_MAX_COUNT);
 /* Cache BB retimer power state */
 static bool cache_bb_enable[CONFIG_USB_PD_PORT_MAX_COUNT];
 
+#ifndef CONFIG_ZEPHYR
 /* Each TCPC have corresponding IO expander and are available in pair */
 struct ioexpander_config_t ioex_config[] = {
 	[IOEX_C0_PCA9675] = {
@@ -239,7 +263,7 @@ struct ioexpander_config_t ioex_config[] = {
 #endif
 };
 BUILD_ASSERT(ARRAY_SIZE(ioex_config) == CONFIG_IO_EXPANDER_PORT_COUNT);
-
+#endif /* CONFIG_ZEPHYR */
 /* Charger Chips */
 struct charger_config_t chg_chips[] = {
 	{
@@ -305,7 +329,12 @@ __override int bb_retimer_power_enable(const struct usb_mux *me, bool enable)
 
 static void board_connect_c0_sbu_deferred(void)
 {
+#ifndef CONFIG_ZEPHYR
 	int ccd_intr_level = gpio_get_level(GPIO_CCD_MODE_ODL);
+#else
+	int ccd_intr_level = gpio_pin_get_dt(
+				GPIO_DT_FROM_NODELABEL(ccd_mode_odl));
+#endif /* CONFIG_ZEPHYR */
 
 	if (ccd_intr_level) {
 		/* Default set the SBU lines to AUX mode on TCPC-AIC */
@@ -326,7 +355,11 @@ void board_connect_c0_sbu(enum gpio_signal s)
 
 static void enable_h1_irq(void)
 {
+#ifndef CONFIG_ZEPHYR
 	gpio_enable_interrupt(GPIO_CCD_MODE_ODL);
+#else
+	gpio_enable_interrupt(GPIO_SIGNAL(DT_NODELABEL(ccd_mode_odl)));
+#endif /* CONFIG_ZEPHYR */
 }
 DECLARE_HOOK(HOOK_INIT, enable_h1_irq, HOOK_PRIO_LAST);
 
@@ -430,11 +463,19 @@ static void configure_battery_type(void)
 	case ADLN_LP5_ERB_SKU_BOARD_ID:
 	case ADLN_LP5_RVP_SKU_BOARD_ID:
 		/* configure Battery to 2S based */
+#ifndef CONFIG_ZEPHYR
 		bat_cell_type = BATTERY_GETAC_SMP_HHP_408_2S;
+#else
+		bat_cell_type = BATTERY_TYPE(DT_ALIAS(getac_2s));
+#endif /*CONFIG_ZEPHYR */
 		break;
 	default:
 		/* configure Battery to 3S based */
+#ifndef CONFIG_ZEPHYR
 		bat_cell_type = BATTERY_GETAC_SMP_HHP_408_3S;
+#else
+		bat_cell_type = BATTERY_TYPE(DT_ALIAS(getac_3s));
+#endif /*CONFIG_ZEPHYR */
 		break;
 	}
 
@@ -449,7 +490,11 @@ static void configure_battery_type(void)
  */
 const struct intel_x86_pwrok_signal pwrok_signal_assert_list[] = {
 	{
+#ifndef CONFIG_ZEPHYR
 		.gpio = GPIO_SYS_PWROK_EC,
+#else
+		.gpio = GPIO_PCH_SYS_PWROK,
+#endif /* CONFIG_ZEPHYR */
 		.delay_ms = 3,
 	},
 };
@@ -457,10 +502,14 @@ const int pwrok_signal_assert_count = ARRAY_SIZE(pwrok_signal_assert_list);
 
 const struct intel_x86_pwrok_signal pwrok_signal_deassert_list[] = {
 	{
+#ifndef CONFIG_ZEPHYR
 		.gpio = GPIO_SYS_PWROK_EC,
+#else
+		.gpio = GPIO_PCH_SYS_PWROK,
+#endif /* CONFIG_ZEPHYR */
 	},
 };
-const int pwrok_signal_deassert_count = ARRAY_SIZE(pwrok_signal_assert_list);
+const int pwrok_signal_deassert_count = ARRAY_SIZE(pwrok_signal_deassert_list);
 
 /*
  * Returns board information (board id[7:0] and Fab id[15:8]) on success
