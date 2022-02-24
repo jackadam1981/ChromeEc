@@ -94,6 +94,30 @@
       },
       "revId": "d56b399e6292ace8215704a74da3f23ef531b339",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "37a0fb09_c5d6fa7d",
+        "filename": "chip/npcx/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 891,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-02-24T09:59:26Z",
+      "side": 1,
+      "message": "thanks, much easier to follow.\n\nfor NPCX_PMC_PWDWN_8, does 0x31 power down I3C only\nor are there more blocks getting powered down?\ni could only find 0x01 defined in the datasheet.",
+      "parentUuid": "41e359d0_a3af4f17",
+      "range": {
+        "startLine": 891,
+        "startChar": 40,
+        "endLine": 891,
+        "endChar": 41
+      },
+      "revId": "d56b399e6292ace8215704a74da3f23ef531b339",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
