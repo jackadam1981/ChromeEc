@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2cb9a62c_fe5ecf3b",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_5v_3a_pd_charger.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-02-24T03:33:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "58bef125_e51502db",
+      "range": {
+        "startLine": 18,
+        "startChar": 27,
+        "endLine": 18,
+        "endChar": 34
+      },
+      "revId": "c932cd391fe52f8e0744fc8e96af3314a2f27056",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "27ed63aa_edb3fd83",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce285a16_d0ae015f",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_5v_3a_pd_charger.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-02-24T03:33:38Z",
+      "side": 1,
+      "message": "The fixture name must be the suite\u0027s name appended with _fixture. Once we start refactoring we can use nested structs and `CONTAINER_OF` as needed",
+      "parentUuid": "27ed63aa_edb3fd83",
+      "range": {
+        "startLine": 25,
+        "startChar": 24,
+        "endLine": 25,
+        "endChar": 66
+      },
+      "revId": "c932cd391fe52f8e0744fc8e96af3314a2f27056",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4fc1f1fa_f8dbf721",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-02-23T23:34:52Z",
       "side": 1,
       "message": "(Not sure how this array works but is there something else already at index 0?)",
+      "range": {
+        "startLine": 65,
+        "startChar": 34,
+        "endLine": 65,
+        "endChar": 35
+      },
+      "revId": "c932cd391fe52f8e0744fc8e96af3314a2f27056",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8314bcfe_30ac9c50",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_5v_3a_pd_charger.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-02-24T03:33:38Z",
+      "side": 1,
+      "message": "My understanding is that [0] is suppose to be left alone as there\u0027s some standard PDO object that\u0027s being set by the init function.",
+      "parentUuid": "4fc1f1fa_f8dbf721",
       "range": {
         "startLine": 65,
         "startChar": 34,
