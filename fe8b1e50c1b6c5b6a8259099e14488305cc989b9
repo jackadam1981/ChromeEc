@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f6f9665_177b38a1",
+        "filename": "zephyr/dts/bindings/power/intel,ap-pwrseq.yaml",
+        "patchSetId": 4
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-02-24T17:55:01Z",
+      "side": 1,
+      "message": "Why not use the \"label\" property which is common to all nodes?",
+      "range": {
+        "startLine": 111,
+        "startChar": 8,
+        "endLine": 111,
+        "endChar": 17
+      },
+      "revId": "fe8b1e50c1b6c5b6a8259099e14488305cc989b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5b48347_b8048b19",
+        "filename": "zephyr/dts/bindings/power/intel,ap-pwrseq.yaml",
+        "patchSetId": 4
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-02-24T17:55:01Z",
+      "side": 1,
+      "message": "We could create a virtual wire driver that maps into the GPIO API.  Then this property (and the next) wouldn\u0027t be needed.\n\nIf you like this idea, open a bug for cleanup later.",
+      "range": {
+        "startLine": 157,
+        "startChar": 0,
+        "endLine": 157,
+        "endChar": 21
+      },
+      "revId": "fe8b1e50c1b6c5b6a8259099e14488305cc989b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c13a28d3_20ab930c",
+        "filename": "zephyr/subsys/ap_pwrseq/CMakeLists.txt",
+        "patchSetId": 4
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-02-24T17:55:01Z",
+      "side": 1,
+      "message": "This guard isn\u0027t needed. The parent directory already does this check.  You can use \"zephyr_sources()\" instead.",
+      "range": {
+        "startLine": 4,
+        "startChar": 21,
+        "endLine": 4,
+        "endChar": 37
+      },
+      "revId": "fe8b1e50c1b6c5b6a8259099e14488305cc989b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "64d39691_4de575d8",
+        "filename": "zephyr/subsys/ap_pwrseq/CMakeLists.txt",
+        "patchSetId": 4
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-02-24T17:55:01Z",
+      "side": 1,
+      "message": "Nit - quotes not required.",
+      "range": {
+        "startLine": 5,
+        "startChar": 2,
+        "endLine": 5,
+        "endChar": 18
+      },
+      "revId": "fe8b1e50c1b6c5b6a8259099e14488305cc989b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a3c8262_a39faf44",
+        "filename": "zephyr/subsys/ap_pwrseq/include/power_signals.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-02-24T17:55:01Z",
+      "side": 1,
+      "message": "Nit - blank line before this line.",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 3
+      },
+      "revId": "fe8b1e50c1b6c5b6a8259099e14488305cc989b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
