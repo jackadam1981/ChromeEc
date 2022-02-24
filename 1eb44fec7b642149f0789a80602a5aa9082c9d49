@@ -16,6 +16,24 @@
       "message": "The document mentioned in the bug has the waiver for Redrix, not Gimble. I need some time to verify if it should be applied to gimble or not",
       "revId": "1eb44fec7b642149f0789a80602a5aa9082c9d49",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "af18f7aa_0d4256c8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2022-02-24T00:53:11Z",
+      "side": 1,
+      "message": "Verified that it is applicable to all Brya variants.",
+      "parentUuid": "d271be8f_96b7d46a",
+      "revId": "1eb44fec7b642149f0789a80602a5aa9082c9d49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
