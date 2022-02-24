@@ -10,6 +10,7 @@
 #include "registers.h"
 #include "scp_watchdog.h"
 #include "watchdog.h"
+#include "console.h"
 
 #ifdef CHIP_VARIANT_MT8195_CORE1
 #define SCP_CORE_WDT_KICK	SCP_CORE1_WDT_KICK
@@ -24,6 +25,7 @@
 void watchdog_reload(void)
 {
 	SCP_CORE_WDT_KICK = BIT(0);
+	ccprintf(".");
 }
 DECLARE_HOOK(HOOK_TICK, watchdog_reload, HOOK_PRIO_DEFAULT);
 
@@ -51,7 +53,7 @@ void watchdog_enable(void)
 
 int watchdog_init(void)
 {
-	watchdog_enable();
+	/* watchdog_enable(); */
 
 	return EC_SUCCESS;
 }
