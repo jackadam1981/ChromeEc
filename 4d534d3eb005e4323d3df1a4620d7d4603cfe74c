@@ -1,0 +1,211 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "547517c1_30f84ddd",
+        "filename": "driver/fingerprint/fpc/bep/fpc_private.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-02-24T18:36:47Z",
+      "side": 1,
+      "message": "Can you move the comment to the header file to be consistent with the rest of the functions? You can remove the comment here.",
+      "range": {
+        "startLine": 117,
+        "startChar": 0,
+        "endLine": 122,
+        "endChar": 3
+      },
+      "revId": "4d534d3eb005e4323d3df1a4620d7d4603cfe74c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b849895_68a2e49a",
+        "filename": "driver/fingerprint/fpc/bep/fpc_private.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-02-24T18:36:47Z",
+      "side": 1,
+      "message": "Can you add a check that `id` is not `NULL`?\n\n```\nif (id \u003d\u003d NULL)\n  return EC_ERROR_INVAL;\n```",
+      "range": {
+        "startLine": 126,
+        "startChar": 1,
+        "endLine": 126,
+        "endChar": 8
+      },
+      "revId": "4d534d3eb005e4323d3df1a4620d7d4603cfe74c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4154912a_a6d0c73f",
+        "filename": "driver/fingerprint/fpc/bep/fpc_private.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-02-24T18:36:47Z",
+      "side": 1,
+      "message": "In the error case, it\u0027s best not to modify `*id`. You could do something like:\n\n```\n        sensor_id \u003d (spi_buf[1] \u003c\u003c 8) | spi_buf[2];\n\tif ((id \u003e\u003e 4) !\u003d FP_SENSOR_HWID) {\n\t\tCPRINTS(\"FPC unknown silicon 0x%04x\", id);\n\t\treturn FP_ERROR_BAD_HWID;\n\t}\n\t*id \u003d sensor_id;\n```",
+      "range": {
+        "startLine": 137,
+        "startChar": 1,
+        "endLine": 141,
+        "endChar": 2
+      },
+      "revId": "4d534d3eb005e4323d3df1a4620d7d4603cfe74c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07a83ca5_a43e67c9",
+        "filename": "driver/fingerprint/fpc/bep/fpc_private.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-02-24T18:36:47Z",
+      "side": 1,
+      "message": "See if checkpatch complains about this when you do `repo upload`, but I think it will let you do:\n\n```\nint status;\nuint16_t id \u003d 0;\n```",
+      "range": {
+        "startLine": 148,
+        "startChar": 0,
+        "endLine": 151,
+        "endChar": 8
+      },
+      "revId": "4d534d3eb005e4323d3df1a4620d7d4603cfe74c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bce90116_2f0d5310",
+        "filename": "driver/fingerprint/fpc/libfp/fpc_private.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-02-24T18:36:47Z",
+      "side": 1,
+      "message": "Can you move the comment to the header file to be consistent with the rest of the functions? You can remove the comment here.",
+      "range": {
+        "startLine": 100,
+        "startChar": 0,
+        "endLine": 105,
+        "endChar": 3
+      },
+      "revId": "4d534d3eb005e4323d3df1a4620d7d4603cfe74c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c7b50ee_dc384e8d",
+        "filename": "driver/fingerprint/fpc/libfp/fpc_private.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-02-24T18:36:47Z",
+      "side": 1,
+      "message": "Same comment about needing to check if `id` is `NULL`.",
+      "range": {
+        "startLine": 108,
+        "startChar": 0,
+        "endLine": 108,
+        "endChar": 8
+      },
+      "revId": "4d534d3eb005e4323d3df1a4620d7d4603cfe74c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60a31e20_e1ee908e",
+        "filename": "driver/fingerprint/fpc/libfp/fpc_private.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-02-24T18:36:47Z",
+      "side": 1,
+      "message": "Same comment about not modifying `*id` in case of error.",
+      "range": {
+        "startLine": 122,
+        "startChar": 0,
+        "endLine": 122,
+        "endChar": 45
+      },
+      "revId": "4d534d3eb005e4323d3df1a4620d7d4603cfe74c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6483137e_4d0fb014",
+        "filename": "driver/fingerprint/fpc/libfp/fpc_private.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-02-24T18:36:47Z",
+      "side": 1,
+      "message": "Same as other comment",
+      "range": {
+        "startLine": 134,
+        "startChar": 0,
+        "endLine": 137,
+        "endChar": 8
+      },
+      "revId": "4d534d3eb005e4323d3df1a4620d7d4603cfe74c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f21a143b_9f560bb7",
+        "filename": "test/fpsensor_hw.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-02-24T18:36:47Z",
+      "side": 1,
+      "message": "You can declare and init on same line:\n\n```\nuint16_t id \u003d 0;\n```",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 8
+      },
+      "revId": "4d534d3eb005e4323d3df1a4620d7d4603cfe74c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
