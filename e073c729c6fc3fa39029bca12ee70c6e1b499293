@@ -16,6 +16,24 @@
       "message": "Thought about this CL, would it make more sense to just add these `ZTEST_F`s to Aaron\u0027s test suite? See `usb_20v_3a_pd_charger.c` for example, it has both the connect and disconnect tests on the same suite. `test_disconnect_*` tests just include a call to disconnect the source before running the host command.",
       "revId": "e073c729c6fc3fa39029bca12ee70c6e1b499293",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84cb9687_3cdbd0b6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-02-24T18:04:55Z",
+      "side": 1,
+      "message": "That makes a lot of sense to me.",
+      "parentUuid": "884da199_e4e9bee7",
+      "revId": "e073c729c6fc3fa39029bca12ee70c6e1b499293",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
