@@ -141,6 +141,30 @@
       },
       "revId": "7be04d9ed16b35552e5bbc16ef420681535db5e6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "79f48c06_eae7535c",
+        "filename": "docs/getting_started_quickly.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-02-24T18:11:02Z",
+      "side": 1,
+      "message": "Can you add something like this after the command?\n\n```\nNOTE: The [`-b stable` flag](https://chromium.googlesource.com/chromiumos/docs/+/HEAD/developer_guide.md#Sync-to-Green) only works for Googlers. Remove it if you are developing externally.\n\n```\n\nSorry, I had this as a draft that I didn\u0027t publish.",
+      "parentUuid": "16ecb18c_ac8a18b8",
+      "range": {
+        "startLine": 71,
+        "startChar": 71,
+        "endLine": 71,
+        "endChar": 80
+      },
+      "revId": "7be04d9ed16b35552e5bbc16ef420681535db5e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
