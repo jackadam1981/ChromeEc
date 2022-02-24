@@ -37,26 +37,54 @@ const struct charger_config_t chg_chips[] = {
 };
 
 /* PPC */
+/*
 struct ppc_config_t ppc_chips[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 	{
-		.i2c_port = I2C_PORT_PPC0,
+		.i2c_port = I2C_PORT_USB_C0,
 		.i2c_addr_flags = RT1739_ADDR1_FLAGS,
 		.drv = &rt1739_ppc_drv,
 		.frs_en = GPIO_SIGNAL(DT_NODELABEL(usb_c0_ppc_frsinfo)),
 	},
 	{
-		.i2c_port = I2C_PORT_PPC1,
+		.i2c_port = I2C_PORT_USB_C1,
 		.i2c_addr_flags = SYV682X_ADDR0_FLAGS,
 		.drv = &syv682x_drv,
 		.frs_en = GPIO_SIGNAL(DT_ALIAS(gpio_usb_c1_frs_en)),
 	},
 };
 unsigned int ppc_cnt = ARRAY_SIZE(ppc_chips);
+*/
+#define KRABBY_ASSERT(expr) ({ bool b = (expr); CPRINTS("\x1b[1;%dm%s %s\x1b[m", (b ? 32 : 31), #expr, (b ? "ok" : "fail")); });
+static void ppc_test(void)
+{
+	KRABBY_ASSERT(ppc_cnt == 2);
 
+	KRABBY_ASSERT(ppc_chips[0].i2c_port == I2C_PORT_USB_C0);
+	KRABBY_ASSERT(ppc_chips[0].i2c_addr_flags == RT1739_ADDR1_FLAGS);
+	KRABBY_ASSERT(ppc_chips[0].drv == &rt1739_ppc_drv);
+	KRABBY_ASSERT(ppc_chips[0].frs_en == GPIO_SIGNAL(DT_NODELABEL(usb_c0_ppc_frsinfo)));
+
+	KRABBY_ASSERT(ppc_chips[1].i2c_port == I2C_PORT_USB_C1);
+	KRABBY_ASSERT(ppc_chips[1].i2c_addr_flags == SYV682X_ADDR0_FLAGS);
+	KRABBY_ASSERT(ppc_chips[1].drv == &syv682x_drv);
+	KRABBY_ASSERT(ppc_chips[1].frs_en == GPIO_SIGNAL(DT_ALIAS(gpio_usb_c1_frs_en)));
+
+	KRABBY_ASSERT(bc12_ports[0].drv == &rt1739_bc12_drv);
+	KRABBY_ASSERT(bc12_ports[1].drv == &rt9490_bc12_drv);
+
+	KRABBY_ASSERT(tcpc_config[0].bus_type == EC_BUS_TYPE_EMBEDDED);
+	KRABBY_ASSERT(tcpc_config[0].drv == &it8xxx2_tcpm_drv);
+	KRABBY_ASSERT(tcpc_config[1].bus_type == EC_BUS_TYPE_EMBEDDED);
+	KRABBY_ASSERT(tcpc_config[1].drv == &it8xxx2_tcpm_drv);
+}
+DECLARE_HOOK(HOOK_INIT, ppc_test, HOOK_PRIO_DEFAULT);
+
+/*
 struct bc12_config bc12_ports[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 	{ .drv = &rt1739_bc12_drv },
 	{ .drv = &rt9490_bc12_drv },
 };
+*/
 
 void c0_bc12_interrupt(enum gpio_signal signal)
 {
@@ -88,6 +116,7 @@ static void board_usbc_init(void)
 DECLARE_HOOK(HOOK_INIT, board_usbc_init, HOOK_PRIO_DEFAULT + 1);
 
 /* TCPC */
+#if 0
 struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 	{
 		.bus_type = EC_BUS_TYPE_EMBEDDED,
@@ -104,6 +133,7 @@ struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 		.flags = 0,
 	},
 };
+#endif
 
 void ppc_interrupt(enum gpio_signal signal)
 {
