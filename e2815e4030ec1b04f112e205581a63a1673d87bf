@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "32f79e7d_dd05eb70",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2022-02-24T04:40:49Z",
+      "side": 1,
+      "message": "i\u0027m actually pulling DIOM3 up and down, say for wake from deep sleep tests. And just used a wire to connect DIOM3 with Vdd, but can move it to ground for tests\n\nmay be worth just to update documentation as this change will make it less flexible?",
+      "revId": "e2815e4030ec1b04f112e205581a63a1673d87bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
