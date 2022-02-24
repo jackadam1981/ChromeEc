@@ -188,9 +188,6 @@ board-$(CONFIG_PINWEAVER)+=pinweaver_tpm_imports.o
 TPM2_MODULE := linkedtpm2.cp.o
 board-y += $(TPM2_MODULE)
 
-ifneq ($(H1_RED_BOARD),)
-CPPFLAGS += -DH1_RED_BOARD=$(EMPTY)
-endif
 RW_BD_OUT=$(out)/RW/$(BDIR)
 
 # Build fips code separately
