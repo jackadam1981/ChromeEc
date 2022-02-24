@@ -47,6 +47,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "462ef07b_0898fdad",
+        "filename": "util/migrated_files.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-02-24T00:03:06Z",
+      "side": 1,
+      "message": "The next line is only looking at c files.",
+      "parentUuid": "57469472_dabbdee5",
+      "range": {
+        "startLine": 15,
+        "startChar": 58,
+        "endLine": 15,
+        "endChar": 61
+      },
+      "revId": "8c73acdda4c1ccc1458abe2488ec1253c8771030",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6b91950_773f447f",
+        "filename": "util/migrated_files.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-02-24T00:03:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f0385574_21f87f84",
+      "range": {
+        "startLine": 15,
+        "startChar": 29,
+        "endLine": 15,
+        "endChar": 35
+      },
+      "revId": "8c73acdda4c1ccc1458abe2488ec1253c8771030",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "124f5c0e_f0900dba",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-02-23T17:51:27Z",
       "side": 1,
       "message": "Should this language mention that bug fixes should be evaluated if they should also be ported into the Zephyr code?",
+      "range": {
+        "startLine": 19,
+        "startChar": 14,
+        "endLine": 19,
+        "endChar": 32
+      },
+      "revId": "8c73acdda4c1ccc1458abe2488ec1253c8771030",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a2ce05b4_97f93ee8",
+        "filename": "util/migrated_files.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-02-24T00:03:06Z",
+      "side": 1,
+      "message": "Changed. Let me know if you don\u0027t like that message also.",
+      "parentUuid": "124f5c0e_f0900dba",
       "range": {
         "startLine": 19,
         "startChar": 14,
