@@ -1,0 +1,135 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb2d4dc7_bdbb8fee",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_5v_3a_pd_sink.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-02-24T22:11:49Z",
+      "side": 1,
+      "message": "#include \u003cstdint.h\u003e",
+      "revId": "45e79d792e1dd8b16259e961104834e0a38d2754",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6945d6c_8622e873",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_5v_3a_pd_sink.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-02-24T22:11:49Z",
+      "side": 1,
+      "message": "Is the inline needed?",
+      "revId": "45e79d792e1dd8b16259e961104834e0a38d2754",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb92442c_ef9f9da1",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_5v_3a_pd_sink.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-02-24T22:11:49Z",
+      "side": 1,
+      "message": "If the register settings above aren\u0027t causing the TCPC to generate an interrupt, I think there should be a TODO for that here.",
+      "revId": "45e79d792e1dd8b16259e961104834e0a38d2754",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "03d95622_20b0a7f5",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_5v_3a_pd_sink.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-02-24T22:11:49Z",
+      "side": 1,
+      "message": "Nit: BATTERY_ORD doesn\u0027t get used that many times. I\u0027d prefer that the device tree accesses were inline like the ones for the TCPC and charger. If that\u0027s burdensome, then maybe the fixture should contain a handle to this emulator.",
+      "revId": "45e79d792e1dd8b16259e961104834e0a38d2754",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "019c5b47_516b5ff9",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_5v_3a_pd_sink.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-02-24T22:11:49Z",
+      "side": 1,
+      "message": "zassert_equal?",
+      "range": {
+        "startLine": 147,
+        "startChar": 1,
+        "endLine": 147,
+        "endChar": 13
+      },
+      "revId": "45e79d792e1dd8b16259e961104834e0a38d2754",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c91fa4ca_d4242a1b",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_5v_3a_pd_sink.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-02-24T22:11:49Z",
+      "side": 1,
+      "message": "Nit: This seems like a slightly odd test to me. Disconnecting a sink _shouldn\u0027t_ cause the battery to start charging, but is there reason to worry that it would? Without some other power source, these things should be independent of each other.",
+      "revId": "45e79d792e1dd8b16259e961104834e0a38d2754",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b4d0fd8f_c8189ef0",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_5v_3a_pd_sink.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-02-24T22:11:49Z",
+      "side": 1,
+      "message": "This is all new code, right, not just a conversion of the existing test?",
+      "range": {
+        "startLine": 100,
+        "startChar": 0,
+        "endLine": 166,
+        "endChar": 1
+      },
+      "revId": "45e79d792e1dd8b16259e961104834e0a38d2754",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
