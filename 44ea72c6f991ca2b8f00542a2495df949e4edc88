@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "03679225_0c943c86",
+        "filename": "driver/fingerprint/fpc/bep/fpc_private.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1202834
+      },
+      "writtenOn": "2022-02-24T01:33:15Z",
+      "side": 1,
+      "message": "Done (note: slightly different @return applied between icetower and dragonclaw to make the change as un-intrusive as possible).",
+      "parentUuid": "01ce5b9a_563dce5b",
+      "range": {
+        "startLine": 117,
+        "startChar": 0,
+        "endLine": 139,
+        "endChar": 1
+      },
+      "revId": "44ea72c6f991ca2b8f00542a2495df949e4edc88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fda9b575_7bd9a893",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-02-22T22:12:17Z",
       "side": 1,
       "message": "Extra indent here",
+      "range": {
+        "startLine": 26,
+        "startChar": 1,
+        "endLine": 26,
+        "endChar": 2
+      },
+      "revId": "44ea72c6f991ca2b8f00542a2495df949e4edc88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "460160e5_e2b8b80f",
+        "filename": "test/fpsensor_hw.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1202834
+      },
+      "writtenOn": "2022-02-24T01:33:15Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "fda9b575_7bd9a893",
       "range": {
         "startLine": 26,
         "startChar": 1,
