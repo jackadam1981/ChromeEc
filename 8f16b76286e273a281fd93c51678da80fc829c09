@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "54009766_fdbd3b83",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_5v_3a_pd_sink.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-02-24T16:54:28Z",
+      "side": 1,
+      "message": "Almost, it\u0027s using a different emulator (sink) instead of a source emulator to attach to the tcpci emulator. The goal is to finish this CL stack, Then Al\u0027s 2 permutations, and one more Aaron is working on. Then de-duplicate. Right now it\u0027s still hard to see the pattern exactly and some tests will need to be refactored a bit to de-duplicate properly.",
+      "parentUuid": "e356257d_5cc5bb67",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 34
+      },
+      "revId": "8f16b76286e273a281fd93c51678da80fc829c09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bea4dce3_ec87a55a",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-02-24T16:36:10Z",
       "side": 1,
       "message": "This is testing that the \"ac\" field is zero.  The error message implies that the test was expected AC_OK to be true.  Maybe \"AC_OK status expected 0, but was 1\".",
+      "range": {
+        "startLine": 175,
+        "startChar": 43,
+        "endLine": 175,
+        "endChar": 62
+      },
+      "revId": "8f16b76286e273a281fd93c51678da80fc829c09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c23630d2_efcf61f1",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_5v_3a_pd_sink.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-02-24T16:54:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bea4dce3_ec87a55a",
       "range": {
         "startLine": 175,
         "startChar": 43,
