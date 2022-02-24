@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e356257d_5cc5bb67",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_5v_3a_pd_sink.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-02-24T16:36:10Z",
+      "side": 1,
+      "message": "Is this file a duplicate of usb_20v_3a_pd_charger.c, with the exception of this enum setting?\n\nCan this code get de-duplicated?",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 34
+      },
+      "revId": "8f16b76286e273a281fd93c51678da80fc829c09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bea4dce3_ec87a55a",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_5v_3a_pd_sink.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-02-24T16:36:10Z",
+      "side": 1,
+      "message": "This is testing that the \"ac\" field is zero.  The error message implies that the test was expected AC_OK to be true.  Maybe \"AC_OK status expected 0, but was 1\".",
+      "range": {
+        "startLine": 175,
+        "startChar": 43,
+        "endLine": 175,
+        "endChar": 62
+      },
+      "revId": "8f16b76286e273a281fd93c51678da80fc829c09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
