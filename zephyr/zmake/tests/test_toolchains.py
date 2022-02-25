@@ -2,6 +2,8 @@
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
+"""Tests for toolchains.py."""
+
 import os
 import pathlib
 
@@ -13,21 +15,26 @@ import zmake.toolchains as toolchains
 
 
 @pytest.fixture
-def mockfs(monkeypatch, tmp_path):
+def mockfs(monkeypatch, tmp_path: pathlib.Path):
     """Setup a fake fs root for pathlib objects at tmp_path/mockfs."""
-    mockfs_dir = pathlib.PosixPath(tmp_path / "mockfs")
+    mockfs_dir = tmp_path / "mockfs"
     mockfs_dir.mkdir()
 
-    class FakePath(pathlib.Path):
-        def __new__(cls, *args, **kwargs):
-            parts = pathlib.PosixPath(*args).relative_to("/").parts
-            # Make sure we don't double up our mocked directory.
-            mock_dir_parts = mockfs_dir.relative_to("/").parts
-            if parts[: len(mock_dir_parts)] == mock_dir_parts:
-                return pathlib.PosixPath(*args)
-            return pathlib.PosixPath("/", *mock_dir_parts, *parts)
+    def map_path(path):
+        try:
+            rel_path = path.relative_to(mockfs_dir)
+            fake = mockfs_dir.joinpath(rel_path)
+            return fake
+        except ValueError:
+            fake = mockfs_dir.joinpath(*path.parts[1:])
+            return fake
 
-    monkeypatch.setattr(pathlib, "Path", FakePath)
+    real_stat = pathlib.Path.stat
+
+    def stat(path):
+        return real_stat(map_path(path))
+
+    monkeypatch.setattr(pathlib.Path, "stat", stat)
     return mockfs_dir
 
 
@@ -83,7 +90,7 @@ module_paths = {
 }
 
 
-def test_coreboot_sdk(fake_project, coreboot_sdk_exists):
+def test_coreboot_sdk(fake_project: project.Project, coreboot_sdk_exists):
     tc = fake_project.get_toolchain(module_paths)
     assert isinstance(tc, toolchains.CorebootSdkToolchain)
 
@@ -105,7 +112,10 @@ def test_llvm(fake_project, llvm_exists):
     }
 
 
-def test_zephyr(fake_project, zephyr_exists):
+def test_zephyr(fake_project: project.Project, zephyr_exists, monkeypatch):
+    environ = {}
+    monkeypatch.setattr(os, "environ", environ)
+
     tc = fake_project.get_toolchain(module_paths)
     assert isinstance(tc, toolchains.ZephyrToolchain)
 
