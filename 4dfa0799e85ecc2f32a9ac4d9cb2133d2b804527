@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "18465b51_cbbcff0d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-02-25T01:59:25Z",
+      "side": 1,
+      "message": "So Simon Glass recommended that each of the power signals has its\nown compatible. This means that we can strictly enforce the properties that are\nrequired, and do not need to deduce the type of signal from the properties.\n\nIt also will allow us to conditionally compile the code for the different signal types e.g if there are no board level signals, this code can be skipped.\n\nI also added a power_signal_{enable,disable_interrupt function for the API.\n\nI think this layered API is quite important, since it decouples the power sequence common and feature code from the specifics of how to access the signals.\nI think this is an important abstraction, and one that we need to avoid\nthe mistakes of the older EC-OS code (which became very complicated).\n",
+      "revId": "4dfa0799e85ecc2f32a9ac4d9cb2133d2b804527",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

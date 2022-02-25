@@ -260,6 +260,30 @@
       },
       "revId": "49318287be676e9cea97fffea641eefb08bff2a3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4849828d_499a95c5",
+        "filename": "zephyr/subsys/ap_pwrseq/signal_gpio.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-02-25T01:59:25Z",
+      "side": 1,
+      "message": "No problem, I can add a power_signal_{dis,en}able_interrupt function.",
+      "parentUuid": "54a3a6de_13f6efab",
+      "range": {
+        "startLine": 45,
+        "startChar": 28,
+        "endLine": 45,
+        "endChar": 34
+      },
+      "revId": "49318287be676e9cea97fffea641eefb08bff2a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
