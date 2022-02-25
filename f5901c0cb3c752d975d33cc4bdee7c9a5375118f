@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0c52536_ee3ce4c2",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_connection_tests.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-02-25T19:18:12Z",
+      "side": 1,
+      "message": "This diff is very hard to read, can you leave it as `usb_attach_src_snk.c`?",
+      "revId": "f5901c0cb3c752d975d33cc4bdee7c9a5375118f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1847445_f57f924d",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_connection_tests.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-02-25T19:18:12Z",
+      "side": 1,
+      "message": "Not sure if this is carried over from before, but we should fix this regardless. This shouldn\u0027t be a copy, we should be getting pointers to the fixture\u0027s data objects",
+      "range": {
+        "startLine": 189,
+        "startChar": 2,
+        "endLine": 190,
+        "endChar": 49
+      },
+      "revId": "f5901c0cb3c752d975d33cc4bdee7c9a5375118f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54863578_a137ada2",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_connection_tests.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-02-25T19:18:12Z",
+      "side": 1,
+      "message": "Please migrate to common utility at https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/test/drivers/include/utils.h;l\u003d159\n\nBelow as well",
+      "range": {
+        "startLine": 328,
+        "startChar": 1,
+        "endLine": 334,
+        "endChar": 72
+      },
+      "revId": "f5901c0cb3c752d975d33cc4bdee7c9a5375118f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5121d369_f6e497f4",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_connection_tests.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 492,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-02-25T19:18:12Z",
+      "side": 1,
+      "message": "nit: put this inside the setup function keep the global scope clean",
+      "range": {
+        "startLine": 492,
+        "startChar": 0,
+        "endLine": 492,
+        "endChar": 65
+      },
+      "revId": "f5901c0cb3c752d975d33cc4bdee7c9a5375118f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
