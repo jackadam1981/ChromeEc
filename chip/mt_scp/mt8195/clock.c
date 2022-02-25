@@ -486,6 +486,9 @@ void clock_init(void)
 	/* enable default clock gate */
 	SCP_SET_CLK_CG |= CG_DMA_CH3 | CG_DMA_CH2 | CG_DMA_CH1 | CG_DMA_CH0 |
 			  CG_I2C_MCLK | CG_MAD_MCLK | CG_AP2P_MCLK;
+
+	SCP_BUS_CTRL |= (SCP_BUS_CTRL & ~SCP_BUS_DCM_CLK_MASK) |
+			SCP_BUS_DCM_EN | SCP_BUS_DCM_CLK_SLOW;
 }
 
 #ifdef DEBUG

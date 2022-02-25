@@ -122,6 +122,14 @@
 #define SCP_GIPC_IN_CLR			REG32(SCP_REG_BASE + 0x2409C)
 #define   GIPC_IN(n)			BIT(n)
 
+/* BUS DCM */
+#ifdef CHIP_VARIANT_MT8195
+#define SCP_BUS_CTRL			REG32(SCP_REG_BASE + 0x50328)
+#define SCP_BUS_DCM_EN			BIT(1)
+#define SCP_BUS_DCM_CLK_MASK		0x600
+#define SCP_BUS_DCM_CLK_SLOW		BIT(10)
+#endif
+
 /* UART */
 #define SCP_UART_COUNT			2
 #define UART_TX_IRQ(n)			CONCAT3(SCP_IRQ_UART, n, _TX)
