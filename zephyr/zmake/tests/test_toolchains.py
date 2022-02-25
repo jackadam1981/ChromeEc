@@ -2,6 +2,8 @@
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
+"""Tests for toolchains.py."""
+
 import logging
 import os
 import pathlib
@@ -11,6 +13,8 @@ import pytest
 import zmake.output_packers
 import zmake.project as project
 import zmake.toolchains as toolchains
+
+# pylint:disable=redefined-outer-name,unused-argument
 
 
 @pytest.fixture
@@ -38,9 +42,9 @@ def mockfs(monkeypatch, tmp_path: pathlib.Path):
         logging.info("stat called with %r", path)
         path = map_path(path)
         try:
-            rv = real_stat(path)
-            logging.info("returning stat(%s) = %s", path, rv)
-            return rv
+            ret = real_stat(path)
+            logging.info("returning stat(%s) = %s", path, ret)
+            return ret
         except Exception as e:
             logging.info("raising error stat(%s) = %s", path, e)
             raise
@@ -51,12 +55,14 @@ def mockfs(monkeypatch, tmp_path: pathlib.Path):
 
 @pytest.fixture
 def coreboot_sdk_exists(mockfs):
+    """Provide a mock coreboot-sdk."""
     coreboot_sdk_dir = mockfs / "opt" / "coreboot-sdk"
     coreboot_sdk_dir.mkdir(parents=True)
 
 
 @pytest.fixture
 def llvm_exists(mockfs):
+    """Provide a mock llvm."""
     llvm_file = mockfs / "usr" / "bin" / "x86_64-pc-linux-gnu-clang"
     llvm_file.parent.mkdir(parents=True)
     llvm_file.write_text("")
@@ -64,6 +70,7 @@ def llvm_exists(mockfs):
 
 @pytest.fixture
 def host_toolchain_exists(mockfs, monkeypatch):
+    """Provide a mock host toolchain."""
     monkeypatch.setattr(os, "environ", {})
 
     gcc_file = mockfs / "usr" / "bin" / "gcc"
@@ -73,6 +80,7 @@ def host_toolchain_exists(mockfs, monkeypatch):
 
 @pytest.fixture
 def zephyr_exists(mockfs):
+    """Provide a mock zephyr sdk."""
     zephyr_sdk_version_file = mockfs / "opt" / "zephyr-sdk" / "sdk_version"
     zephyr_sdk_version_file.parent.mkdir(parents=True)
     zephyr_sdk_version_file.write_text("")
@@ -80,6 +88,7 @@ def zephyr_exists(mockfs):
 
 @pytest.fixture
 def fake_project(tmp_path):
+    """Create a project that can be used in all the tests."""
     return project.Project(
         project.ProjectConfig(
             project_name="foo",
@@ -102,10 +111,11 @@ module_paths = {
 
 
 def test_coreboot_sdk(fake_project: project.Project, coreboot_sdk_exists):
-    tc = fake_project.get_toolchain(module_paths)
-    assert isinstance(tc, toolchains.CorebootSdkToolchain)
+    """Test that the corebook sdk can be found."""
+    chain = fake_project.get_toolchain(module_paths)
+    assert isinstance(chain, toolchains.CorebootSdkToolchain)
 
-    config = tc.get_build_config()
+    config = chain.get_build_config()
     assert config.cmake_defs == {
         "ZEPHYR_TOOLCHAIN_VARIANT": "coreboot-sdk",
         "TOOLCHAIN_ROOT": "/mnt/host/source/src/platform/ec/zephyr",
@@ -113,10 +123,11 @@ def test_coreboot_sdk(fake_project: project.Project, coreboot_sdk_exists):
 
 
 def test_llvm(fake_project, llvm_exists):
-    tc = fake_project.get_toolchain(module_paths)
-    assert isinstance(tc, toolchains.LlvmToolchain)
+    """Test that the llvm can be found."""
+    chain = fake_project.get_toolchain(module_paths)
+    assert isinstance(chain, toolchains.LlvmToolchain)
 
-    config = tc.get_build_config()
+    config = chain.get_build_config()
     assert config.cmake_defs == {
         "ZEPHYR_TOOLCHAIN_VARIANT": "llvm",
         "TOOLCHAIN_ROOT": "/mnt/host/source/src/platform/ec/zephyr",
@@ -124,13 +135,14 @@ def test_llvm(fake_project, llvm_exists):
 
 
 def test_zephyr(fake_project: project.Project, zephyr_exists, monkeypatch):
+    """Test that the zephyr can be found in a standard location."""
     environ = {}
     monkeypatch.setattr(os, "environ", environ)
 
-    tc = fake_project.get_toolchain(module_paths)
-    assert isinstance(tc, toolchains.ZephyrToolchain)
+    chain = fake_project.get_toolchain(module_paths)
+    assert isinstance(chain, toolchains.ZephyrToolchain)
 
-    config = tc.get_build_config()
+    config = chain.get_build_config()
     assert config.cmake_defs == {
         "ZEPHYR_TOOLCHAIN_VARIANT": "zephyr",
         "ZEPHYR_SDK_INSTALL_DIR": str(pathlib.Path("/opt/zephyr-sdk")),
@@ -141,16 +153,17 @@ def test_zephyr(fake_project: project.Project, zephyr_exists, monkeypatch):
 
 
 def test_zephyr_from_env(mockfs, monkeypatch, fake_project):
+    """Test that the zephyr can be found from env variable."""
     zephyr_sdk_path = mockfs / "zsdk"
     zephyr_sdk_path.mkdir()
 
     environ = {"ZEPHYR_SDK_INSTALL_DIR": str(zephyr_sdk_path)}
     monkeypatch.setattr(os, "environ", environ)
 
-    tc = fake_project.get_toolchain(module_paths)
-    assert isinstance(tc, toolchains.ZephyrToolchain)
+    chain = fake_project.get_toolchain(module_paths)
+    assert isinstance(chain, toolchains.ZephyrToolchain)
 
-    config = tc.get_build_config()
+    config = chain.get_build_config()
     assert config.cmake_defs == {
         "ZEPHYR_TOOLCHAIN_VARIANT": "zephyr",
         "ZEPHYR_SDK_INSTALL_DIR": str(zephyr_sdk_path),
@@ -161,28 +174,32 @@ def test_zephyr_from_env(mockfs, monkeypatch, fake_project):
 
 
 def test_host_toolchain(fake_project, host_toolchain_exists):
-    tc = fake_project.get_toolchain(module_paths)
-    assert isinstance(tc, toolchains.HostToolchain)
+    """Test that the host toolchain can be found."""
+    chain = fake_project.get_toolchain(module_paths)
+    assert isinstance(chain, toolchains.HostToolchain)
 
-    config = tc.get_build_config()
+    config = chain.get_build_config()
     assert config.cmake_defs == {
         "ZEPHYR_TOOLCHAIN_VARIANT": "host",
     }
 
 
 def test_toolchain_override(mockfs, fake_project):
-    tc = fake_project.get_toolchain(module_paths, override="foo")
-    config = tc.get_build_config()
-    assert isinstance(tc, toolchains.GenericToolchain)
+    """Test that the override toolchain can be set."""
+    chain = fake_project.get_toolchain(module_paths, override="foo")
+    config = chain.get_build_config()
+    assert isinstance(chain, toolchains.GenericToolchain)
     assert config.cmake_defs == {"ZEPHYR_TOOLCHAIN_VARIANT": "foo"}
 
 
 def test_generic_toolchain():
-    tc = toolchains.GenericToolchain("name")
-    assert not tc.probe()
+    """GenericToolchain.probe always returns false."""
+    chain = toolchains.GenericToolchain("name")
+    assert not chain.probe()
 
 
 def test_no_toolchains(fake_project: project.Project, monkeypatch, mockfs):
+    """Check for error when there are no toolchains."""
     environ = {}
     monkeypatch.setattr(os, "environ", environ)
 
@@ -194,13 +211,14 @@ def test_no_toolchains(fake_project: project.Project, monkeypatch, mockfs):
 
 
 def test_override_without_sdk(fake_project: project.Project, monkeypatch, mockfs):
+    """Check for error override is set to zephyr, but it can't be found."""
     environ = {}
     monkeypatch.setattr(os, "environ", environ)
 
-    tc = fake_project.get_toolchain(module_paths, override="zephyr")
+    chain = fake_project.get_toolchain(module_paths, override="zephyr")
 
     try:
-        config = tc.get_build_config()
+        chain.get_build_config()
         assert False
     except RuntimeError as e:
         assert "No installed Zephyr SDK was found" in str(e)
