@@ -16,6 +16,23 @@
       "message": "Hi Andrew, could we move forward with this patch first, and apply CL: 3483904 on top of it. This CL is essential to power up/off/power state transition and proved working stable for a while. This will help our team focus on the implementation of feature sets and at the meantime you would take care the new power signal structure design/refactor. Also it\u0027s easier to test/debug functionalities with new structure based on a working one. ",
       "revId": "37e773e0db9cd4fed4d3b93c73ee36f648bbda2a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e3fbfa6_12932b31",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-02-25T03:41:11Z",
+      "side": 1,
+      "message": "I\u0027m OK with this going in, and I\u0027m happy to volunteer to merge it with chromium:3483904\nI am keen to make the change sooner rather than later so that as more code goes in, we are using the new API.\n",
+      "revId": "37e773e0db9cd4fed4d3b93c73ee36f648bbda2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
