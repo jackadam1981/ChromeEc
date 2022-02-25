@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5a5ed87_3f4a455e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2022-02-25T00:48:39Z",
+      "side": 1,
+      "message": "Can you please describe why flickering happens in the first place?",
+      "range": {
+        "startLine": 7,
+        "startChar": 8,
+        "endLine": 7,
+        "endChar": 11
+      },
+      "revId": "e045459da77d9dcaabb009c102b8801087b44c86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6f2a12c_34334df4",
+        "filename": "board/primus/pwm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2022-02-25T00:48:39Z",
+      "side": 1,
+      "message": "Unnecessary return in the middle of the function is obfuscating the control flow. Consider this alternative:\n```\nif (!chipset_in_state(CHIPSET_STATE_ANY_OFF)) {\n  /* Turn on KB LED at 50%. */\n  pwm_enable(PWM_CH_KBLIGHT, 1);\n  /* TODO(b/190518315)\n   * Check if need to turn to 100% after with chassis.\n   */\n  pwm_set_duty(PWM_CH_KBLIGHT, 50);\n}\n```",
+      "range": {
+        "startLine": 67,
+        "startChar": 2,
+        "endLine": 67,
+        "endChar": 8
+      },
+      "revId": "e045459da77d9dcaabb009c102b8801087b44c86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
