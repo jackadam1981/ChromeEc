@@ -74,6 +74,13 @@ def zephyr_exists(mockfs):
 
 
 @pytest.fixture
+def no_envron(monkeypatch):
+    """Clear all environment variables."""
+    environ = {}
+    monkeypatch.setattr(os, "environ", environ)
+
+
+@pytest.fixture
 def fake_project(tmp_path):
     """Create a project that can be used in all the tests."""
     return project.Project(
@@ -121,11 +128,8 @@ def test_llvm(fake_project, llvm_exists):
     }
 
 
-def test_zephyr(fake_project: project.Project, zephyr_exists, monkeypatch):
+def test_zephyr(fake_project: project.Project, zephyr_exists, monkeypatch, no_envron):
     """Test that the zephyr sdk can be found in a standard location."""
-    environ = {}
-    monkeypatch.setattr(os, "environ", environ)
-
     chain = fake_project.get_toolchain(module_paths)
     assert isinstance(chain, toolchains.ZephyrToolchain)
 
@@ -177,3 +181,26 @@ def test_toolchain_override(mockfs, fake_project):
     config = chain.get_build_config()
     assert isinstance(chain, toolchains.GenericToolchain)
     assert config.cmake_defs == {"ZEPHYR_TOOLCHAIN_VARIANT": "foo"}
+
+
+def test_generic_toolchain():
+    tc = toolchains.GenericToolchain("name")
+    assert not tc.probe()
+
+
+def test_no_toolchains(fake_project: project.Project, monkeypatch, mockfs, no_envron):
+    """Check for error when there are no toolchains."""
+    with pytest.raises(
+        OSError, match=r"No supported toolchains could be found on your system"
+    ):
+        fake_project.get_toolchain(module_paths)
+
+
+def test_override_without_sdk(
+    fake_project: project.Project, monkeypatch, mockfs, no_envron
+):
+    """Check for error override is set to zephyr, but it can't be found."""
+    chain = fake_project.get_toolchain(module_paths, override="zephyr")
+
+    with pytest.raises(RuntimeError, match=r"No installed Zephyr SDK was found"):
+        chain.get_build_config()
