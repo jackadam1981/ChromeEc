@@ -2640,4 +2640,11 @@ extern char mock_jump_data[sizeof(struct jump_data) + 256];
 #define CONFIG_PERIPHERAL_CHARGER
 #endif
 
+#undef CONFIG_GPIO_GET_EXTENDED
+#undef CONFIG_CMD_GPIO_EXTENDED
+#ifdef CONFIG_PLATFORM_EC_CONSOLE_GPIO_EXTENDED
+#define CONFIG_GPIO_GET_EXTENDED
+#define CONFIG_CMD_GPIO_EXTENDED
+#endif
+
 #endif /* __CROS_EC_CONFIG_CHIP_H */

@@ -160,7 +160,6 @@ static int command_gpio_set(int argc, const char **argv)
 	int gpio;
 	int flags = 0;
 	int af = -1;
-	char *e;
 
 	if (argc < 3)
 		return EC_ERROR_PARAM_COUNT;
@@ -175,24 +174,33 @@ static int command_gpio_set(int argc, const char **argv)
 		flags = GPIO_OUT_HIGH;
 	else if (strcasecmp(argv[2], "0") == 0)
 		flags = GPIO_OUT_LOW;
+#ifndef CONFIG_ZEPHYR
 	else if (strcasecmp(argv[2], "A") == 0)
 		flags = GPIO_ANALOG;
 	else if (strcasecmp(argv[2], "ALT") == 0) {
+		char *e;
 		if (argc >= 4) {
 			af = strtoi(argv[3], &e, 0);
 			if (*e || af < 0 || af > 5)
 				return EC_ERROR_PARAM2;
 		}
 		flags = GPIO_ALTERNATE;
-	} else
+	}
+#endif
+	else
 		return EC_ERROR_PARAM2;
 
 	/* Update alt function if requested. */
 	if (af >= 0) {
+#ifdef CONFIG_ZEPHYR
+		return EC_ERROR_PARAM2;
+#else
 		const struct gpio_info *g = gpio_list + gpio;
 
 		gpio_set_alternate_function(g->port, g->mask, af);
+#endif
 	}
+
 	/* Update GPIO flags. */
 	gpio_set_flags(gpio, flags);
 #else
