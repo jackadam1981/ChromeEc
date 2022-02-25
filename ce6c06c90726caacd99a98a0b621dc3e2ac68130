@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7cf771a3_39891765",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 2
+      },
+      "lineNbr": 661,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-02-25T22:22:44Z",
+      "side": 1,
+      "message": "You should also delete the prompt text here.  This changes this to a helper symbol.\n\nhttps://docs.zephyrproject.org/latest/guides/build/kconfig/tips.html#using-select-for-helper-symbols",
+      "range": {
+        "startLine": 661,
+        "startChar": 6,
+        "endLine": 661,
+        "endChar": 43
+      },
+      "revId": "ce6c06c90726caacd99a98a0b621dc3e2ac68130",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
