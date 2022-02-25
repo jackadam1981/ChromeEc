@@ -667,8 +667,7 @@ static void rt9490_usb_charger_task(const int port)
 			 * trigger bc1.2 detection for other cases.
 			 */
 			bool is_non_pd_sink = !pd_capable(port) &&
-				pd_get_power_role(port) == PD_ROLE_SINK &&
-				pd_snk_is_vbus_provided(port);
+				!board_vbus_source_enabled(port);
 
 			if (is_non_pd_sink)
 				rt9490_enable_chgdet_flow(CHARGER_SOLO, true);
