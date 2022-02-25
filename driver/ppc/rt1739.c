@@ -329,8 +329,7 @@ static void rt1739_usb_charger_task(const int port)
 	while (1) {
 		uint32_t evt = task_wait_event(-1);
 		bool is_non_pd_sink = !pd_capable(port) &&
-			pd_get_power_role(port) == PD_ROLE_SINK &&
-			pd_snk_is_vbus_provided(port);
+			!usb_charger_port_is_sourcing_vbus(port);
 
 		/* vbus change, start bc12 detection */
 		if (evt & USB_CHG_EVENT_VBUS) {
