@@ -33,9 +33,14 @@ static int battery_supports_pec(void)
 		int spec_info;
 		int rv = i2c_read16(I2C_PORT_BATTERY, BATTERY_ADDR_FLAGS,
 				    SB_SPECIFICATION_INFO, &spec_info);
+
 		/* failed, assuming not support and try again later */
-		if (rv)
+		if (rv) {
+			if (battery_is_present())
+				CPRINTS("BATTERY: %s failed rv=%d", __func__,
+					rv);
 			return 0;
+		}
 
 		supports_pec = (BATTERY_SPEC_VERSION(spec_info) ==
 				BATTERY_SPEC_VER_1_1_WITH_PEC);
@@ -46,6 +51,7 @@ static int battery_supports_pec(void)
 
 test_mockable int sb_read(int cmd, int *param)
 {
+	int rv;
 	uint16_t addr_flags = BATTERY_ADDR_FLAGS;
 
 #ifdef CONFIG_BATTERY_CUT_OFF
@@ -58,11 +64,17 @@ test_mockable int sb_read(int cmd, int *param)
 	if (battery_supports_pec())
 		addr_flags |= I2C_FLAG_PEC;
 
-	return i2c_read16(I2C_PORT_BATTERY, addr_flags, cmd, param);
+	rv = i2c_read16(I2C_PORT_BATTERY, addr_flags, cmd, param);
+
+	if (rv && battery_is_present())
+		CPRINTS("BATTERY: %s failed rv=%d", __func__, rv);
+
+	return rv;
 }
 
 test_mockable int sb_write(int cmd, int param)
 {
+	int rv;
 	uint16_t addr_flags = BATTERY_ADDR_FLAGS;
 
 #ifdef CONFIG_BATTERY_CUT_OFF
@@ -75,11 +87,17 @@ test_mockable int sb_write(int cmd, int param)
 	if (battery_supports_pec())
 		addr_flags |= I2C_FLAG_PEC;
 
-	return i2c_write16(I2C_PORT_BATTERY, addr_flags, cmd, param);
+	rv = i2c_write16(I2C_PORT_BATTERY, addr_flags, cmd, param);
+
+	if (rv && battery_is_present())
+		CPRINTS("BATTERY: %s failed rv=%d", __func__, rv);
+
+	return rv;
 }
 
 int sb_read_string(int offset, uint8_t *data, int len)
 {
+	int rv;
 	uint16_t addr_flags = BATTERY_ADDR_FLAGS;
 
 #ifdef CONFIG_BATTERY_CUT_OFF
@@ -92,7 +110,12 @@ int sb_read_string(int offset, uint8_t *data, int len)
 	if (battery_supports_pec())
 		addr_flags |= I2C_FLAG_PEC;
 
-	return i2c_read_string(I2C_PORT_BATTERY, addr_flags, offset, data, len);
+	rv = i2c_read_string(I2C_PORT_BATTERY, addr_flags, offset, data, len);
+
+	if (rv && battery_is_present())
+		CPRINTS("BATTERY: %s failed rv=%d", __func__, rv);
+
+	return rv;
 }
 
 int sb_read_mfgacc(int cmd, int block, uint8_t *data, int len)
@@ -127,6 +150,7 @@ int sb_read_mfgacc(int cmd, int block, uint8_t *data, int len)
 
 int sb_write_block(int reg, const uint8_t *val, int len)
 {
+	int rv;
 	uint16_t addr_flags = BATTERY_ADDR_FLAGS;
 
 #ifdef CONFIG_BATTERY_CUT_OFF
@@ -141,7 +165,12 @@ int sb_write_block(int reg, const uint8_t *val, int len)
 		addr_flags |= I2C_FLAG_PEC;
 
 	/* TODO: implement smbus_write_block. */
-	return i2c_write_block(I2C_PORT_BATTERY, addr_flags, reg, val, len);
+	rv = i2c_write_block(I2C_PORT_BATTERY, addr_flags, reg, val, len);
+
+	if (rv && battery_is_present())
+		CPRINTS("BATTERY: %s failed rv=%d", __func__, rv);
+
+	return rv;
 }
 
 int battery_get_mode(int *mode)
