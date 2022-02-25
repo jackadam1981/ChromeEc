@@ -58,6 +58,16 @@ config PLATFORM_EC_HOSTCMD_CONSOLE_BUF_SIZE
 
 endif # PLATFORM_EC_HOSTCMD_CONSOLE
 
+config PLATFORM_EC_CONSOLE_GPIO_EXTENDED
+	bool "Enable extended console functions to manipulate GPIOs"
+	default n
+	help
+	  This option enables the extended versions of gpioget and gpioset
+	  commands.
+	  The gpioget will display the flags of GPIOs in addition to only levels
+	  displayed without this config.
+	  The gpioset will allow to change the mode of GPIOs.
+
 menuconfig PLATFORM_EC_CONSOLE_DEBUG
 	bool "Console Debug"
 	depends on CONSOLE

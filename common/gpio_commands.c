@@ -189,10 +189,15 @@ static int command_gpio_set(int argc, const char **argv)
 
 	/* Update alt function if requested. */
 	if (af >= 0) {
+#ifdef CONFIG_ZEPHYR
+		return EC_ERROR_PARAM2;
+#else
 		const struct gpio_info *g = gpio_list + gpio;
 
 		gpio_set_alternate_function(g->port, g->mask, af);
+#endif
 	}
+
 	/* Update GPIO flags. */
 	gpio_set_flags(gpio, flags);
 #else
