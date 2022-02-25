@@ -552,6 +552,7 @@ static int syv682x_set_vconn(int port, int enable)
 #endif
 
 #ifdef CONFIG_CMD_PPC_DUMP
+/* Just a little comment to make sure this file is in gerrit. */
 static int syv682x_dump(int port)
 {
 	int reg_addr;

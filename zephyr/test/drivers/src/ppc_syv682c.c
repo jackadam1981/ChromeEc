@@ -522,15 +522,4 @@ ZTEST(ppc_syv682c, test_syv682x_vbus_sink_oc_limit)
 			"Sink disable failed");
 }
 
-ZTEST(ppc_syv682c, test_syv682x_ppc_dump)
-{
-	/*
-	 * The ppc_dump command should succeed for this port. Don't check the
-	 * output, since there are no standard requirements for that.
-	 */
-	const struct ppc_drv *drv = ppc_chips[syv682x_port].drv;
-
-	zassert_ok(drv->reg_dump(syv682x_port), "ppc_dump command failed");
-}
-
 ZTEST_SUITE(ppc_syv682c, drivers_predicate_post_main, NULL, NULL, NULL, NULL);
