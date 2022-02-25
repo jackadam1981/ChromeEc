@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bec116d4_3f879579",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-02-25T03:04:16Z",
+      "side": 1,
+      "message": "Hi Andrew, could we move forward with this patch first, and apply CL: 3483904 on top of it. This CL is essential to power up/off/power state transition and proved working stable for a while. This will help our team focus on the implementation of feature sets and at the meantime you would take care the new power signal structure design/refactor. Also it\u0027s easier to test/debug functionalities with new structure based on a working one. ",
+      "revId": "37e773e0db9cd4fed4d3b93c73ee36f648bbda2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
