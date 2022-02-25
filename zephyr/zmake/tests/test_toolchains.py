@@ -175,3 +175,32 @@ def test_toolchain_override(mockfs, fake_project):
     config = tc.get_build_config()
     assert isinstance(tc, toolchains.GenericToolchain)
     assert config.cmake_defs == {"ZEPHYR_TOOLCHAIN_VARIANT": "foo"}
+
+
+def test_generic_toolchain():
+    tc = toolchains.GenericToolchain("name")
+    assert not tc.probe()
+
+
+def test_no_toolchains(fake_project: project.Project, monkeypatch, mockfs):
+    environ = {}
+    monkeypatch.setattr(os, "environ", environ)
+
+    try:
+        fake_project.get_toolchain(module_paths)
+        assert False
+    except OSError as e:
+        assert "No supported toolchains could be found on your system." in str(e)
+
+
+def test_override_without_sdk(fake_project: project.Project, monkeypatch, mockfs):
+    environ = {}
+    monkeypatch.setattr(os, "environ", environ)
+
+    tc = fake_project.get_toolchain(module_paths, override="zephyr")
+
+    try:
+        config = tc.get_build_config()
+        assert False
+    except RuntimeError as e:
+        assert "No installed Zephyr SDK was found" in str(e)
