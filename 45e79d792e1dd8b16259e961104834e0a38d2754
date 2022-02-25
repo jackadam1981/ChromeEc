@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e5a4f11_e3449e1d",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_5v_3a_pd_sink.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-02-25T18:02:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bb2d4dc7_bdbb8fee",
+      "revId": "45e79d792e1dd8b16259e961104834e0a38d2754",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e6945d6c_8622e873",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-02-24T22:11:49Z",
       "side": 1,
       "message": "Is the inline needed?",
+      "revId": "45e79d792e1dd8b16259e961104834e0a38d2754",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c91798bd_2c613a8f",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_5v_3a_pd_sink.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-02-25T18:02:25Z",
+      "side": 1,
+      "message": "Nope, just habit (I originally thought this function will be much smaller)",
+      "parentUuid": "e6945d6c_8622e873",
       "revId": "45e79d792e1dd8b16259e961104834e0a38d2754",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -52,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5dcaa3d6_28b42344",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_5v_3a_pd_sink.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-02-25T18:02:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fb92442c_ef9f9da1",
+      "revId": "45e79d792e1dd8b16259e961104834e0a38d2754",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "03d95622_20b0a7f5",
@@ -65,6 +119,24 @@
       "writtenOn": "2022-02-24T22:11:49Z",
       "side": 1,
       "message": "Nit: BATTERY_ORD doesn\u0027t get used that many times. I\u0027d prefer that the device tree accesses were inline like the ones for the TCPC and charger. If that\u0027s burdensome, then maybe the fixture should contain a handle to this emulator.",
+      "revId": "45e79d792e1dd8b16259e961104834e0a38d2754",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9be53aab_3b00cb38",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_5v_3a_pd_sink.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-02-25T18:02:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "03d95622_20b0a7f5",
       "revId": "45e79d792e1dd8b16259e961104834e0a38d2754",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -92,6 +164,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9e5ee3a_af1ae1ee",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_5v_3a_pd_sink.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-02-25T18:02:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "019c5b47_516b5ff9",
+      "range": {
+        "startLine": 147,
+        "startChar": 1,
+        "endLine": 147,
+        "endChar": 13
+      },
+      "revId": "45e79d792e1dd8b16259e961104834e0a38d2754",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c91fa4ca_d4242a1b",
@@ -109,6 +205,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9acbd73_a0aa5790",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_5v_3a_pd_sink.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-02-25T18:02:25Z",
+      "side": 1,
+      "message": "I was on the fence for this test too. Without knowing the internal workings testing that we\u0027re discharging when we plug in a sink seems to go hand-in-hand with also making sure we\u0027re still discharging when we unplug it. Mostly for symmetry.",
+      "parentUuid": "c91fa4ca_d4242a1b",
+      "revId": "45e79d792e1dd8b16259e961104834e0a38d2754",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b4d0fd8f_c8189ef0",
@@ -122,6 +236,30 @@
       "writtenOn": "2022-02-24T22:11:49Z",
       "side": 1,
       "message": "This is all new code, right, not just a conversion of the existing test?",
+      "range": {
+        "startLine": 100,
+        "startChar": 0,
+        "endLine": 166,
+        "endChar": 1
+      },
+      "revId": "45e79d792e1dd8b16259e961104834e0a38d2754",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e0cbbc7_ed63bc7d",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_5v_3a_pd_sink.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-02-25T18:02:25Z",
+      "side": 1,
+      "message": "Same scenario, but more asserts (I\u0027ll update the commit message)",
+      "parentUuid": "b4d0fd8f_c8189ef0",
       "range": {
         "startLine": 100,
         "startChar": 0,
