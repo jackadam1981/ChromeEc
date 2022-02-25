@@ -40,7 +40,7 @@
 #define DEFAULT_SINK_SENT_TO_SOURCE_CAP_COUNT 1
 #define DEFAULT_SOURCE_SENT_TO_SINK_CAP_COUNT 1
 
-struct integration_usb_attach_src_then_snk_fixture {
+struct emul_state {
 	/* TODO(b/217737667): Remove driver specific code. */
 	const struct emul *tcpci_generic_emul;
 	const struct emul *tcpci_ps8xxx_emul;
@@ -49,13 +49,12 @@ struct integration_usb_attach_src_then_snk_fixture {
 	struct tcpci_snk_emul my_snk;
 };
 
+struct integration_usb_attach_src_then_snk_fixture {
+	struct emul_state *my_emulator_state;
+};
+
 struct integration_usb_attach_snk_then_src_fixture {
-	/* TODO(b/217737667): Remove driver specific code. */
-	const struct emul *tcpci_generic_emul;
-	const struct emul *tcpci_ps8xxx_emul;
-	const struct emul *charger_isl923x_emul;
-	struct tcpci_src_emul my_src;
-	struct tcpci_snk_emul my_snk;
+	struct emul_state *my_emulator_state;
 };
 
 static void *integration_usb_src_snk_setup(void)
@@ -66,10 +65,9 @@ static void *integration_usb_src_snk_setup(void)
 		emul_get_binding(DT_LABEL(TCPCI_EMUL_LABEL2));
 	const struct emul *charger_emul =
 		emul_get_binding(DT_LABEL(DT_NODELABEL(isl923x_emul)));
-	static struct tcpci_src_emul my_src;
-	static struct tcpci_snk_emul my_snk;
 
-	static struct integration_usb_attach_src_then_snk_fixture emul_state;
+	static struct emul_state emul_state;
+	static struct integration_usb_attach_src_then_snk_fixture fixture_state;
 
 	/* Setting these are required because compiler believes these values are
 	 * not compile time constants.
@@ -80,8 +78,7 @@ static void *integration_usb_src_snk_setup(void)
 	emul_state.tcpci_generic_emul = tcpci_emul;
 	emul_state.tcpci_ps8xxx_emul = tcpci_emul2;
 	emul_state.charger_isl923x_emul = charger_emul;
-	emul_state.my_src = my_src;
-	emul_state.my_snk = my_snk;
+	fixture_state.my_emulator_state = &emul_state;
 
 	/*
 	 * TODO(b/221288815): TCPCI config flags should be compile-time
@@ -94,13 +91,14 @@ static void *integration_usb_src_snk_setup(void)
 	tcpc_config[SRC_PORT].flags = tcpc_config[SRC_PORT].flags &
 				      ~TCPC_FLAGS_TCPCI_REV2_0;
 
-	return &emul_state;
+	return &fixture_state;
 }
 
 static void integration_usb_attach_snk_then_src_before(void *state)
 {
-	const struct integration_usb_attach_src_then_snk_fixture *my_state =
+	const struct integration_usb_attach_src_then_snk_fixture *fixture =
 		state;
+	struct emul_state *my_state = fixture->my_emulator_state;
 	const struct emul *tcpci_emul_src = my_state->tcpci_generic_emul;
 	const struct emul *tcpci_emul_snk = my_state->tcpci_ps8xxx_emul;
 	const struct emul *charger_emul = my_state->charger_isl923x_emul;
@@ -161,7 +159,9 @@ static void integration_usb_attach_snk_then_src_before(void *state)
 
 static void integration_usb_attach_src_then_snk_before(void *state)
 {
-	struct integration_usb_attach_src_then_snk_fixture *my_state = state;
+	const struct integration_usb_attach_src_then_snk_fixture *fixture =
+		state;
+	struct emul_state *my_state = fixture->my_emulator_state;
 
 	const struct emul *tcpci_emul_src = my_state->tcpci_generic_emul;
 	const struct emul *tcpci_emul_snk = my_state->tcpci_ps8xxx_emul;
@@ -224,7 +224,9 @@ static void integration_usb_attach_src_then_snk_before(void *state)
 
 static void integration_usb_attach_src_snk_after(void *state)
 {
-	struct integration_usb_attach_src_then_snk_fixture *my_state = state;
+	const struct integration_usb_attach_src_then_snk_fixture *fixture =
+		state;
+	struct emul_state *my_state = fixture->my_emulator_state;
 
 	const struct emul *tcpci_generic_emul = my_state->tcpci_generic_emul;
 	const struct emul *tcpci_ps8xxx_emul = my_state->tcpci_ps8xxx_emul;
