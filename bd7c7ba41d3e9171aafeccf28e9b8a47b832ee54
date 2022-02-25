@@ -16,6 +16,276 @@
       "message": "So this has been merged with the latest commits, and is ready for review.",
       "revId": "bd7c7ba41d3e9171aafeccf28e9b8a47b832ee54",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d83f0d3_e2c9c3ba",
+        "filename": "zephyr/dts/bindings/power/intel,ap-pwrseq-external.yaml",
+        "patchSetId": 12
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-02-25T17:35:44Z",
+      "side": 1,
+      "message": "This probably should be \"x86\".  This construct can also apply to AMD designs.",
+      "range": {
+        "startLine": 7,
+        "startChar": 13,
+        "endLine": 7,
+        "endChar": 18
+      },
+      "revId": "bd7c7ba41d3e9171aafeccf28e9b8a47b832ee54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf714e7a_c62f47fd",
+        "filename": "zephyr/dts/bindings/power/intel,ap-pwrseq-input-gpio.yaml",
+        "patchSetId": 12
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-02-25T17:35:44Z",
+      "side": 1,
+      "message": "x86",
+      "range": {
+        "startLine": 7,
+        "startChar": 13,
+        "endLine": 7,
+        "endChar": 18
+      },
+      "revId": "bd7c7ba41d3e9171aafeccf28e9b8a47b832ee54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe0162b3_7cbd324a",
+        "filename": "zephyr/subsys/ap_pwrseq/include/power_signals.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-02-25T17:35:44Z",
+      "side": 1,
+      "message": "These names are too terse and too generic.  There doesn\u0027t seem to be wide use of helper macros for compatible strings.  The only place I find this \nupstream is here: https://github.com/zephyrproject-rtos/zephyr/blob/0a9e8fb9ea5d2a381d770f61980420415b46530e/subsys/usb/class/audio/usb_audio_internal.h#L72\n\nMaybe it\u0027s better to just use the compatible string directly.",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 43
+      },
+      "revId": "bd7c7ba41d3e9171aafeccf28e9b8a47b832ee54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f455cacf_fab5d4b6",
+        "filename": "zephyr/subsys/ap_pwrseq/include/power_signals.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-02-25T17:35:44Z",
+      "side": 1,
+      "message": "Generally, Zephyr does not use overrides of weak functions.  Instead Zephyr uses callbacks.  Can this be refactored for callbacks?",
+      "range": {
+        "startLine": 78,
+        "startChar": 4,
+        "endLine": 78,
+        "endChar": 26
+      },
+      "revId": "bd7c7ba41d3e9171aafeccf28e9b8a47b832ee54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c462da98_3d219d7c",
+        "filename": "zephyr/subsys/ap_pwrseq/include/x86_common_signals.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-02-25T17:35:44Z",
+      "side": 1,
+      "message": "The file name suggests shared x86 signaling, but you\u0027re guarding off of ADL support.  This should be either `CONFIG_AP_X86_INTEL` or `CONFIG_AP_X86`.",
+      "range": {
+        "startLine": 11,
+        "startChar": 12,
+        "endLine": 11,
+        "endChar": 35
+      },
+      "revId": "bd7c7ba41d3e9171aafeccf28e9b8a47b832ee54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "657d654c_e49be902",
+        "filename": "zephyr/subsys/ap_pwrseq/include/x86_common_signals.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-02-25T17:35:44Z",
+      "side": 1,
+      "message": "Why is this a warning and not an error?",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 56
+      },
+      "revId": "bd7c7ba41d3e9171aafeccf28e9b8a47b832ee54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c17f9c1_7bd2138e",
+        "filename": "zephyr/subsys/ap_pwrseq/signal_gpio.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-02-25T17:35:44Z",
+      "side": 1,
+      "message": "See below, I think you should combine the input/output compatible nodes.\n\nThen you can set `#define DT_DRV_COMPAT x96_ap_pwrseq_gpio` and then use `DT_INST_FOREACH_STATUS_OKAY` as the iterator.\n\nI think you can use `DT_INST_NODE_HAS_PROP` to check for an input boolean property.",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 0
+      },
+      "revId": "bd7c7ba41d3e9171aafeccf28e9b8a47b832ee54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a75a19a_73721064",
+        "filename": "zephyr/subsys/ap_pwrseq/signal_gpio.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-02-25T17:35:44Z",
+      "side": 1,
+      "message": "The use of indexes seems pretty fragile - your `int_config` and `spec` arrays are different sizes for example.\n\nI think it would be better to either pass `enum power_signal` everywhere.  This wastes some space as the GPIO, VW, and external drivers all have to allocate sparse arrays.\n\nYou could also have each driver register a list of power signals with `signal_interface.c`.  Then `signal_interface.c` should pass a pointer to the sub-driver\u0027s power signal structure.\n\nSomething like\n```\nvoid power_signal_register(enum power_signal, void *drv_data, ...)\n````\n\n`signal_interface.c` would statically allocate an array that can hold all possible power signal names.",
+      "range": {
+        "startLine": 47,
+        "startChar": 33,
+        "endLine": 47,
+        "endChar": 46
+      },
+      "revId": "bd7c7ba41d3e9171aafeccf28e9b8a47b832ee54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "472a79f9_b1b33bbc",
+        "filename": "zephyr/subsys/ap_pwrseq/signal_gpio.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-02-25T17:35:44Z",
+      "side": 1,
+      "message": "This configures all pins as outputs.  The `spec[]` array contains both inputs and outputs.\n\nI think this would be cleaner if you combined the input/output compatible nodes and added an `input` boolean property to track the input vs. output.",
+      "range": {
+        "startLine": 128,
+        "startChar": 0,
+        "endLine": 128,
+        "endChar": 47
+      },
+      "revId": "bd7c7ba41d3e9171aafeccf28e9b8a47b832ee54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df75c25d_373b0fac",
+        "filename": "zephyr/subsys/ap_pwrseq/signal_interface.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-02-25T17:35:44Z",
+      "side": 1,
+      "message": "Should return an error code from errno-base.h.  Probably `-EINVAL`",
+      "range": {
+        "startLine": 94,
+        "startChar": 0,
+        "endLine": 94,
+        "endChar": 39
+      },
+      "revId": "bd7c7ba41d3e9171aafeccf28e9b8a47b832ee54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5bd1561c_756130fb",
+        "filename": "zephyr/subsys/ap_pwrseq/signal_interface.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-02-25T17:35:44Z",
+      "side": 1,
+      "message": "The code coverage will be happier if you refactor this with `IS_ENABLED`.\n\n```\nif (IS_ENABLED(DT_HAS_COMPAT_STATUS_OKAY(x86_ap_pwrseq_gpio)) \u0026\u0026 (cp-\u003esource))\n```",
+      "range": {
+        "startLine": 96,
+        "startChar": 0,
+        "endLine": 98,
+        "endChar": 0
+      },
+      "revId": "bd7c7ba41d3e9171aafeccf28e9b8a47b832ee54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b39bd354_f397ff6a",
+        "filename": "zephyr/subsys/ap_pwrseq/signal_vw.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-02-25T17:35:44Z",
+      "side": 1,
+      "message": "Set `DT_DRV_COMPAT`.",
+      "revId": "bd7c7ba41d3e9171aafeccf28e9b8a47b832ee54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
