@@ -22,6 +22,30 @@
       },
       "revId": "9f410450911ad4dafb849874b16bcf84951649dc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be07657a_a90be601",
+        "filename": "board/volmar/sensors.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1384576
+      },
+      "writtenOn": "2022-02-25T02:54:38Z",
+      "side": 1,
+      "message": "thermal RD is updated this value to 25..50",
+      "parentUuid": "38fe4358_a083582a",
+      "range": {
+        "startLine": 112,
+        "startChar": 25,
+        "endLine": 112,
+        "endChar": 26
+      },
+      "revId": "9f410450911ad4dafb849874b16bcf84951649dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
