@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d439d24_d41b4b4d",
+        "filename": "zephyr/Kconfig.powerseq",
+        "patchSetId": 4
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-02-25T00:00:36Z",
+      "side": 1,
+      "message": "prevailing style is to include a blank line\nafter \"if\" and before \"endif\"",
+      "revId": "3601c80ce5fcd6f8de8a440aa105ab3fb51437d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1cdf42c9_f4537451",
+        "filename": "zephyr/Kconfig.powerseq",
+        "patchSetId": 4
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-02-25T00:00:36Z",
+      "side": 1,
+      "message": "tab",
+      "range": {
+        "startLine": 178,
+        "startChar": 0,
+        "endLine": 178,
+        "endChar": 8
+      },
+      "revId": "3601c80ce5fcd6f8de8a440aa105ab3fb51437d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
