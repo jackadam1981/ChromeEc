@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "375aded6_b46ffd92",
+        "filename": "zephyr/boards/riscv/it8xxx2/it8xxx2_defconfig",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2022-02-25T02:15:52Z",
+      "side": 1,
+      "message": "You can drop this line, this defaults to y if SYS_CLOCK_EXISTS enabled (and it\u0027s default y too).",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 11
+      },
+      "revId": "860c07179753424f790a587800fb384293e564bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
