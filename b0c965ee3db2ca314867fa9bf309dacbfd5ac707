@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6c84991_644a784e",
+        "filename": "driver/battery/smart.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-02-25T23:14:39Z",
+      "side": 1,
+      "message": "nit: This isn\u0027t needed if you use \u0027if (rv)\u0027 below.",
+      "range": {
+        "startLine": 36,
+        "startChar": 46,
+        "endLine": 36,
+        "endChar": 48
+      },
+      "revId": "b0c965ee3db2ca314867fa9bf309dacbfd5ac707",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62b6a450_afb908e2",
+        "filename": "driver/battery/smart.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-02-25T23:14:39Z",
+      "side": 1,
+      "message": "I wonder if we check only rv and battery_is_present, errors are too noisy? If not, we can have these error messages included by default.",
+      "range": {
+        "startLine": 67,
+        "startChar": 45,
+        "endLine": 67,
+        "endChar": 71
+      },
+      "revId": "b0c965ee3db2ca314867fa9bf309dacbfd5ac707",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
