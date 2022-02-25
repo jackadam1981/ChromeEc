@@ -552,6 +552,9 @@
  */
 #undef CONFIG_BATTERY_SMART
 
+ /* Debug messages for battery i2c communication failures. */
+#undef CONFIG_BATTERY_I2C_DEBUG
+
 /* Chemistry of the battery device */
 #undef CONFIG_BATTERY_DEVICE_CHEMISTRY
 

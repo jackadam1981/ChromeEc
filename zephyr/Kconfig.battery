@@ -30,6 +30,14 @@ config PLATFORM_EC_BATTERY_SMART
 
 	  See here for the spec: http://sbs-forum.org/specs/sbdat110.pdf
 
+config PLATFORM_EC_BATTERY_I2C_DEBUG
+	bool "Debug battery I2C communication"
+	depends on PLATFORM_EC_I2C
+	depends on PLATFORM_EC_BATTERY_SMART
+	help
+	  Prints debug messages to console whenever i2c communication with
+	  battery fails.
+
 endchoice
 
 choice "Battery presence detection"
