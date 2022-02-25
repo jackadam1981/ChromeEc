@@ -335,6 +335,11 @@ static int usba0_retimer_init(const struct usb_mux *me)
 	}
 	CPRINTS("A0: PS8811 retimer detected");
 
+	/* Set channel A output swing */
+	rv = ps8811_i2c_field_update(
+		me, PS8811_REG_PAGE1, PS8811_REG1_USB_CHAN_A_SWING,
+		PS8811_CHAN_A_SWING_MASK, 0x2 << PS8811_CHAN_A_SWING_SHIFT);
+
 	return rv;
 }
 
@@ -355,6 +360,41 @@ static int usba1_retimer_init(const struct usb_mux *me)
 		return rv;
 	}
 	CPRINTS("A1: PS8811 retimer detected");
+
+	if (ec_cfg_has_lte()) {
+		/* Set channel A output swing */
+		rv = ps8811_i2c_field_update(
+			me, PS8811_REG_PAGE1, PS8811_REG1_USB_CHAN_A_SWING,
+			PS8811_CHAN_A_SWING_MASK, 0x2 <<
+			PS8811_CHAN_A_SWING_SHIFT);
+
+		/* Set channel A EQ setting */
+		rv |= ps8811_i2c_write(me, PS8811_REG_PAGE1,
+			PS8811_REG1_USB_AEQ_LEVEL,
+			PS8811_AEQ_I2C_LEVEL_UP_10_5DB |
+			PS8811_AEQ_PIN_LEVEL_UP_18DB);
+
+		/* Set ADE pin setting */
+		rv |= ps8811_i2c_write(me, PS8811_REG_PAGE1,
+			PS8811_REG1_USB_ADE_CONFIG,
+			(PS8811_ADE_PIN_MID_LEVEL_3DB <<
+			PS8811_ADE_PIN_MID_LEVEL_SHIFT) |
+			PS8811_AEQ_CONFIG_REG_ENABLE |
+			PS8811_AEQ_ADAPTIVE_REG_ENABLE);
+
+		/* Set channel B EQ setting */
+		rv |= ps8811_i2c_write(me, PS8811_REG_PAGE1,
+			PS8811_REG1_USB_BEQ_LEVEL,
+			PS8811_BEQ_I2C_LEVEL_UP_10_5DB |
+			PS8811_BEQ_PIN_LEVEL_UP_18DB);
+
+		/* Set BDE pin setting */
+		rv |= ps8811_i2c_write(me, PS8811_REG_PAGE1,
+			PS8811_REG1_USB_BDE_CONFIG,
+			(PS8811_BDE_PIN_MID_LEVEL_3DB <<
+			PS8811_BDE_PIN_MID_LEVEL_SHIFT) |
+			PS8811_AEQ_CONFIG_REG_ENABLE);
+	}
 
 	return rv;
 }
