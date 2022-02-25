@@ -57,6 +57,30 @@
       },
       "revId": "ad32ce752713b3d43f6a80e494a249b48accd142",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94791f48_4d64fbd5",
+        "filename": "zephyr/projects/nissa/prj_nivviks.conf",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2022-02-25T09:41:34Z",
+      "side": 1,
+      "message": "Indeed CONFIG_CROS_KB_RAW_NPCX\u003dy is not necessary because it is y when: \n```\n#zephyr/drivers/cros_kb_raw/Kconfig\nmenuconfig CROS_KB_RAW_NPCX\n        bool \"Nuvoton NPCX raw-keyboard-scan driver for the Zephyr shim\"\n        depends on SOC_FAMILY_NPCX\n        default y\n```\n\nIn patch 4, I removed CONFIG_CROS_KB_RAW_NPCX\u003dy in zephyr/project/*/prj.conf.\nAlso change the zephyr/drivers/cros_kb_raw/Kconfig:\n```\nmenuconfig CROS_KB_RAW_NPCX\n        bool \"Nuvoton NPCX raw-keyboard-scan driver for the Zephyr shim\"\n        depends on SOC_FAMILY_NPCX\n-       default y\n+       default y if KSCAN\n```",
+      "parentUuid": "8e9d71bd_022e5b7b",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 25
+      },
+      "revId": "ad32ce752713b3d43f6a80e494a249b48accd142",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
