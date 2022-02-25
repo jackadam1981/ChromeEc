@@ -37,6 +37,9 @@
 /* SRC TCPCI Emulator attaches as TYPEC_CC_VOLT_RP_3_0 */
 #define DEFAULT_VBUS_SNK_PORT_MA 3000
 
+#define DEFAULT_SINK_SENT_TO_SOURCE_CAP_COUNT 1
+#define DEFAULT_SOURCE_SENT_TO_SINK_CAP_COUNT 1
+
 struct integration_usb_attach_src_then_snk_fixture {
 	/* TODO(b/217737667): Remove driver specific code. */
 	const struct emul *tcpci_generic_emul;
@@ -392,6 +395,80 @@ ZTEST_F(integration_usb_attach_snk_then_src, verify_src_port_pd_info)
 	/* meas.voltage_max */
 	/* max_power */
 	/* current limit */
+}
+
+ZTEST_F(integration_usb_attach_src_then_snk, verify_snk_port_typec_status)
+{
+	struct ec_params_typec_status params = { .port = SNK_PORT };
+	struct ec_response_typec_status response;
+	struct host_cmd_handler_args args =
+		BUILD_HOST_COMMAND(EC_CMD_TYPEC_STATUS, 0, response, params);
+
+	/* Assume */
+	zassume_ok(host_command_process(&args), "Failed to get Type-C state");
+
+	/* Assert */
+	zassert_true(response.pd_enabled, "Source attached but PD disabled");
+
+	zassert_true(response.dev_connected,
+		     "Source attached but device disconnected");
+
+	zassert_true(response.sop_connected,
+		     "Source attached but not SOP capable");
+
+	zassert_equal(response.source_cap_count,
+		      DEFAULT_SOURCE_SENT_TO_SINK_CAP_COUNT,
+		      "Source received %d source PDOs",
+		      response.source_cap_count);
+
+	/* The source emulator is being attached to a sink port (our policy
+	 * engine) so it does not send any sink caps, so sink port received no
+	 * sink caps.
+	 */
+	zassert_equal(response.sink_cap_count, 0, "Port received %d sink PDOs",
+		      response.sink_cap_count);
+
+	zassert_equal(response.power_role, PD_ROLE_SINK,
+		      "Source attached, but TCPM power role is %d",
+		      response.power_role);
+}
+
+ZTEST_F(integration_usb_attach_src_then_snk, verify_src_port_typec_status)
+{
+	struct ec_params_typec_status params = { .port = SRC_PORT };
+	struct ec_response_typec_status response;
+	struct host_cmd_handler_args args =
+		BUILD_HOST_COMMAND(EC_CMD_TYPEC_STATUS, 0, response, params);
+
+	printf("pd_capable(%d) == %d\n", params.port, pd_capable(params.port));
+
+	/* Assume */
+	zassume_ok(host_command_process(&args), "Failed to get Type-C state");
+
+	/* Assert */
+	zassert_true(response.pd_enabled, "Sink attached but PD disabled");
+
+	zassert_true(response.dev_connected,
+		     "Sink attached but device disconnected");
+
+	zassert_true(response.sop_connected,
+		     "Sink attached but not SOP capable");
+
+	/* The sink emulator is being attached to a source port (our policy
+	 * engine) so it does not send any sink caps, so source port received no
+	 * sink caps.
+	 */
+	zassert_equal(response.source_cap_count, 0,
+		      "Port received %d source PDOs",
+		      response.source_cap_count);
+
+	zassert_equal(response.sink_cap_count,
+		      DEFAULT_SINK_SENT_TO_SOURCE_CAP_COUNT,
+		      "Port received %d sink PDOs", response.sink_cap_count);
+
+	zassert_equal(response.power_role, PD_ROLE_SOURCE,
+		      "Sink attached, but TCPM power role is %d",
+		      response.power_role);
 }
 
 ZTEST_SUITE(integration_usb_attach_src_then_snk, drivers_predicate_post_main,
