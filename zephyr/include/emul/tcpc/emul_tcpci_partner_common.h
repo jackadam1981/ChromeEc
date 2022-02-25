@@ -69,6 +69,12 @@ struct tcpci_partner_data {
 	bool in_soft_reset;
 	/** Indicate when timer should end. 0 is set when timer is stopped. */
 	uint64_t timer_end;
+	/** List with logged PD messages */
+	sys_slist_t msg_log;
+	/** Flag which controls if messages should be logged */
+	bool collect_msg_log;
+	/** Mutex for msg_log */
+	struct k_mutex msg_log_mutex;
 };
 
 /** Structure of message used by TCPCI partner emulator */
@@ -83,6 +89,24 @@ struct tcpci_partner_msg {
 	int type;
 	/** Number of data objects */
 	int data_objects;
+};
+
+/** Structure of logged PD message */
+struct tcpci_partner_log_msg {
+	/** Reserved for sys_slist_* usage */
+	sys_snode_t node;
+	/** Pointer to buffer for header and message */
+	uint8_t *buf;
+	/** Number of bytes in buf */
+	int cnt;
+	/** Type of message (SOP, SOP', etc) */
+	uint8_t type;
+	/** Time when message was send or received by partner emulator */
+	uint64_t time;
+	/** True if partner emulator send this message, false otherwise */
+	bool send_by_emul;
+	/** 0 if message was successfully received/send */
+	int status;
 };
 
 /** Result of common handler */
@@ -239,6 +263,29 @@ enum tcpci_partner_handler_res tcpci_partner_common_msg_handler(
 void tcpci_partner_common_handler_mask_msg(struct tcpci_partner_data *data,
 					   enum pd_ctrl_msg_type type,
 					   bool enable);
+
+/**
+ * @brief Select if PD messages should be logged or not.
+ *
+ * @param data Pointer to TCPCI partner emulator
+ * @param enable If true, PD messages are logged, false otherwise
+ */
+void tcpci_partner_common_enable_pd_logging(struct tcpci_partner_data *data,
+					    bool enable);
+
+/**
+ * @brief Print all logged PD messages
+ *
+ * @param data Pointer to TCPCI partner emulator
+ */
+void tcpci_partner_common_print_logged_msgs(struct tcpci_partner_data *data);
+
+/**
+ * @brief Clear all logged PD messages
+ *
+ * @param data Pointer to TCPCI partner emulator
+ */
+void tcpci_partner_common_clear_logged_msgs(struct tcpci_partner_data *data);
 
 /**
  * @}
