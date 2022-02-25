@@ -2602,4 +2602,11 @@ extern struct jump_data mock_jump_data;
 #define CONFIG_IO_EXPANDER_CCGXXF
 #endif
 
+#undef CONFIG_GPIO_GET_EXTENDED
+#undef CONFIG_CMD_GPIO_EXTENDED
+#ifdef CONFIG_PLATFORM_EC_CONSOLE_GPIO_EXTENDED
+#define CONFIG_GPIO_GET_EXTENDED
+#define CONFIG_CMD_GPIO_EXTENDED
+#endif
+
 #endif  /* __CROS_EC_CONFIG_CHIP_H */
