@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b4a4c6bb_68ab0d25",
+        "filename": "zephyr/Kconfig.keyboard",
+        "patchSetId": 9
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-02-25T05:27:50Z",
+      "side": 1,
+      "message": "this should also be added to chip_config.h",
+      "range": {
+        "startLine": 125,
+        "startChar": 7,
+        "endLine": 125,
+        "endChar": 46
+      },
+      "revId": "cafd367d2c79d94b6c8eb9f486228cd556b21d1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
