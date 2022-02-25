@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "640e214d_fee555db",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2022-02-25T08:46:00Z",
+      "side": 1,
+      "message": "Just found that you are doing the same thing as my CL:3490727",
+      "revId": "6147482cf069c4ff3cfe0a0eccdfed4a511bb269",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c070a13c_f3deb2be",
+        "filename": "zephyr/shim/src/usba.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2022-02-25T08:46:00Z",
+      "side": 1,
+      "message": "#include \"gpio_signal.h\"",
+      "range": {
+        "startLine": 9,
+        "startChar": 10,
+        "endLine": 9,
+        "endChar": 17
+      },
+      "revId": "6147482cf069c4ff3cfe0a0eccdfed4a511bb269",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cfca6d4c_0775f8e6",
+        "filename": "zephyr/shim/src/usba.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2022-02-25T08:46:00Z",
+      "side": 1,
+      "message": "Use `GPIO_SIGNAL(DT_PHANDLE_BY_IDX(id, prop, idx)),`\n\nenum_name is optional, `DT_STRING_UPPER_TOKEN(..., enum_name)` might not work on some config.\nThe `GPIO_SIGNAL` macro seems handles this correctly.",
+      "range": {
+        "startLine": 21,
+        "startChar": 1,
+        "endLine": 21,
+        "endChar": 28
+      },
+      "revId": "6147482cf069c4ff3cfe0a0eccdfed4a511bb269",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
