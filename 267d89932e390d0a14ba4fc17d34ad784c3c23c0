@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e969c1f7_85f74515",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_attach_src_snk.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-02-25T20:05:29Z",
+      "side": 1,
+      "message": "Unrelated refactor improvement. I can make it its own CL upon request.",
+      "range": {
+        "startLine": 122,
+        "startChar": 0,
+        "endLine": 123,
+        "endChar": 33
+      },
+      "revId": "267d89932e390d0a14ba4fc17d34ad784c3c23c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c474449c_b9bbd205",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_attach_src_snk.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-02-25T20:05:29Z",
+      "side": 1,
+      "message": "Only real change in this codeblock. Rest is clang-format.",
+      "revId": "267d89932e390d0a14ba4fc17d34ad784c3c23c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ee06fff_b6abf758",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_attach_src_snk.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-02-25T20:05:29Z",
+      "side": 1,
+      "message": "clang-format",
+      "range": {
+        "startLine": 151,
+        "startChar": 0,
+        "endLine": 153,
+        "endChar": 38
+      },
+      "revId": "267d89932e390d0a14ba4fc17d34ad784c3c23c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "03129a87_32321469",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_attach_src_snk.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-02-25T20:05:29Z",
+      "side": 1,
+      "message": "clang-format",
+      "range": {
+        "startLine": 195,
+        "startChar": 0,
+        "endLine": 197,
+        "endChar": 38
+      },
+      "revId": "267d89932e390d0a14ba4fc17d34ad784c3c23c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "47ff7996_bfc763ee",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_attach_src_snk.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-02-25T20:05:29Z",
+      "side": 1,
+      "message": "clang-format and fixing revision again.",
+      "range": {
+        "startLine": 214,
+        "startChar": 0,
+        "endLine": 217,
+        "endChar": 38
+      },
+      "revId": "267d89932e390d0a14ba4fc17d34ad784c3c23c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
