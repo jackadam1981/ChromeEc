@@ -4,8 +4,10 @@
  */
 
 #include <sys/atomic.h>
+#include <logging/log.h>
+
 #include <power_signals.h>
-#include <signal_gpio.h>
+#include <signal_adc.h>
 #include "drivers/sensor.h"
 
 #define MY_COMPAT	intel_ap_pwrseq_adc
@@ -73,6 +75,7 @@ int power_signal_adc_get(enum pwr_sig_adc adc)
 {
 	if (adc < 0 || adc >= ARRAY_SIZE(config)) {
 		return -EINVAL;
+	}
 	return !!value[adc];
 }
 
@@ -85,9 +88,9 @@ int power_signal_adc_get(enum pwr_sig_adc adc)
 
 #define PWR_ADC_ENUM(id) TAG_ADC(PWR_SIG_TAG_ADC, PWR_SIGNAL_ENUM(id))
 
-#define ADC_CB(id, lev)	cb_##lev##id
+#define ADC_CB(id, lev)	cb_##lev##_##id
 
-#define ADC_CB_DEFINE(id, lev)\
+#define ADC_CB_DEFINE(id, lev)					\
 static void ADC_CB(id, lev)(const struct device *dev,		\
 		       const struct sensor_trigger *trigger)	\
 {								\
@@ -114,7 +117,7 @@ void power_signal_adc_init(void)
 	};
 	int i;
 
-	for (i = 0; i < ARRAY_SIZE(handler); i++) {
+	for (i = 0; i < ARRAY_SIZE(low_cb); i++) {
 		/* Set high and low trigger callbacks */
 		sensor_trigger_set(config[i].dev_trig_high, &trig, high_cb[i]);
 		sensor_trigger_set(config[i].dev_trig_low, &trig, low_cb[i]);
