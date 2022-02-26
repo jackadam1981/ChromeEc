@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c06b174_99b0f71a",
+        "filename": "zephyr/zmake/tests/test_toolchains.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-02-26T00:26:51Z",
+      "side": 1,
+      "message": "these seem like \"debug\" instead of \"info\"\n\nor perhaps we just want to omit them from the submitted code",
+      "range": {
+        "startLine": 26,
+        "startChar": 20,
+        "endLine": 26,
+        "endChar": 24
+      },
+      "revId": "ae1d8c121d17d5fb04fda5e1c69336bf6c532007",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa1c786a_4ea7a9dd",
+        "filename": "zephyr/zmake/tests/test_toolchains.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-02-26T00:26:51Z",
+      "side": 1,
+      "message": "could use a comment ... what raises this and why do we just want to let it pass?",
+      "range": {
+        "startLine": 28,
+        "startChar": 8,
+        "endLine": 29,
+        "endChar": 16
+      },
+      "revId": "ae1d8c121d17d5fb04fda5e1c69336bf6c532007",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f0fd611_1c689839",
+        "filename": "zephyr/zmake/tests/test_toolchains.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-02-26T00:26:51Z",
+      "side": 1,
+      "message": "What requires suppressing all errors?",
+      "range": {
+        "startLine": 44,
+        "startChar": 8,
+        "endLine": 44,
+        "endChar": 29
+      },
+      "revId": "ae1d8c121d17d5fb04fda5e1c69336bf6c532007",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
