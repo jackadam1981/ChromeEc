@@ -45,6 +45,28 @@ enum gpio_power_signal {
 	POWER_SIGNAL_GPIO_COUNT
 };
 
+#define ADC_PWR_ENUM_COMMA(id)  DT_STRING_UPPER_TOKEN(id, pwrseq_adc_enum),
+
+#define GEN_ADC_ENUM(id)                                      \
+	COND_CODE_1(DT_NODE_HAS_PROP(id, pwrseq_adc_enum),    \
+		(ADC_PWR_ENUM_COMMA(id)), ())
+
+enum adc_power_signal {
+	DT_FOREACH_CHILD(POWER_SIGNALS_LIST_NODE, GEN_ADC_ENUM)
+	POWER_SIGNAL_ADC_COUNT
+};
+
+#define BOARD_PWR_ENUM_COMMA(id)  DT_STRING_UPPER_TOKEN(id, pwrseq_board_value),
+
+#define GEN_BOARD_ENUM(id)                                      \
+	COND_CODE_1(DT_NODE_HAS_PROP(id, pwrseq_board_value),    \
+		(BOARD_PWR_ENUM_COMMA(id)), ())
+
+enum board_power_signal {
+	DT_FOREACH_CHILD(POWER_SIGNALS_LIST_NODE, GEN_BOARD_ENUM)
+	POWER_SIGNAL_BOARD_COUNT
+};
+
 /* GPIO power signal configuration */
 struct gpio_power_signal_config {
 	enum power_signal power_signal;

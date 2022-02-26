@@ -121,7 +121,7 @@ int power_wait_signals(uint32_t want)
 }
 
 __attribute__((weak)) int board_power_signal_is_asserted(
-	enum power_signal signal)
+	enum board_power_signal signal)
 {
 	return 0;
 }
@@ -141,8 +141,8 @@ int power_signal_is_asserted(enum power_signal signal)
 		/* ESPI generated signal */
 		return vw_get_level(id) ==
 				!!(flags & POWER_SIGNAL_ACTIVE_STATE);
-	else /* TODO: handle SOURCE_ADC */
-		return board_power_signal_is_asserted(signal);
+	else /*TODO: CL:3482485 Add ADC signal handler*/
+		return board_power_signal_is_asserted(id);
 }
 
 /**
