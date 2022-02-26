@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b249ba23_ac5c5b87",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 21
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-02-26T02:53:55Z",
+      "side": 1,
+      "message": "I think the source caps are wrong, something isn\u0027t doing the handshake correctly (I think). I had to make some calls set various tcpci emulator registers, you might need to do the same (https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3470359)",
+      "revId": "b8cf6f2b611c9604117c217a5104bd670de76bdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ff0bcd4_95567a34",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_attach_src_snk.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 407,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-02-26T02:53:55Z",
+      "side": 1,
+      "message": "Please use the utils.h function `host_cmd_typec_status()`",
+      "range": {
+        "startLine": 401,
+        "startChar": 1,
+        "endLine": 407,
+        "endChar": 71
+      },
+      "revId": "b8cf6f2b611c9604117c217a5104bd670de76bdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b748106f_9c994229",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_attach_src_snk.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-02-26T02:53:55Z",
+      "side": 1,
+      "message": "In my test attaching a sink I was able to get sink_cap_count that matched the sink emulator, this should not be 0.",
+      "range": {
+        "startLine": 422,
+        "startChar": 1,
+        "endLine": 423,
+        "endChar": 33
+      },
+      "revId": "b8cf6f2b611c9604117c217a5104bd670de76bdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a20d96e6_f912d5e6",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_attach_src_snk.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 437,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-02-26T02:53:55Z",
+      "side": 1,
+      "message": "same here",
+      "range": {
+        "startLine": 432,
+        "startChar": 1,
+        "endLine": 437,
+        "endChar": 72
+      },
+      "revId": "b8cf6f2b611c9604117c217a5104bd670de76bdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5cc8a9c_997859bd",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_attach_src_snk.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 453,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-02-26T02:53:55Z",
+      "side": 1,
+      "message": "I think this should also not be 0",
+      "range": {
+        "startLine": 451,
+        "startChar": 1,
+        "endLine": 453,
+        "endChar": 35
+      },
+      "revId": "b8cf6f2b611c9604117c217a5104bd670de76bdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
