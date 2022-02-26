@@ -32,13 +32,6 @@ void ap_off(void)
 	gpio_pin_set_dt(&chip_cfg.ec_pch_sys_pwrok, 0);
 }
 
-/* This should be overridden if there is no power sequencer chip */
-__attribute__((weak)) int intel_x86_get_pg_ec_all_sys_pwrgd(
-				const struct common_pwrseq_config *com_cfg)
-{
-	return gpio_pin_get_dt(&com_cfg->all_sys_pwrgd);
-}
-
 /* Handle ALL_SYS_PWRGD signal
  * This will be overridden if the custom signal handler is needed
  */
@@ -50,12 +43,12 @@ __attribute__((weak)) int all_sys_pwrgd_handler(
 	/* TODO: Add condition for no power sequencer */
 	k_msleep(chip_cfg.all_sys_pwrgd_timeout);
 
-	if (intel_x86_get_pg_ec_all_sys_pwrgd(com_cfg) == 0) {
+	if (power_signal_is_asserted(X86_ALL_SYS_PGOOD) == 0) {
 	/* Todo: Remove workaround for the retry
 	 * without this change the system hits G3 as it detects
 	 * ALL_SYS_PWRGD as 0 and then 1 as a glitch
 	 */
-		while (!intel_x86_get_pg_ec_all_sys_pwrgd(com_cfg)) {
+		while (power_signal_is_asserted(X86_ALL_SYS_PGOOD) == 0) {
 			if (++retry > 2) {
 				LOG_ERR("PG_EC_ALL_SYS_PWRGD not ok\n");
 				ap_off();
@@ -120,7 +113,7 @@ void generate_sys_pwrok_handler(const struct common_pwrseq_config *com_cfg)
 	if (gpio_pin_get_dt(&chip_cfg.ec_pch_sys_pwrok) == 0) {
 		k_msleep(chip_cfg.sys_pwrok_delay_ms);
 		/* Check if we lost power while waiting. */
-		if (intel_x86_get_pg_ec_all_sys_pwrgd(com_cfg) == 0) {
+		if (power_signal_is_asserted(X86_ALL_SYS_PGOOD) == 0) {
 			LOG_DBG("PG_EC_ALL_SYS_PWRGD deasserted, "
 				"shutting AP off!");
 			ap_off();
@@ -164,17 +157,6 @@ void s0_action_handler(const struct common_pwrseq_config *com_cfg)
 	 */
 	/* Send SYS_PWROK->SoC if conditions met */
 	generate_sys_pwrok_handler(com_cfg);
-}
-
-/* This should be overridden if there is no power sequencer chip */
-__attribute__((weak)) int intel_x86_get_pg_ec_dsw_pwrok(
-			const struct common_pwrseq_config *com_cfg)
-{
-#if PWRSEQ_GPIO_PRESENT(pg_ec_dsw_pwroks_gpios)
-	return gpio_pin_get_dt(&com_cfg->pg_ec_dsw_pwrok);
-#else
-	return 0;
-#endif
 }
 
 void intel_x86_sys_reset_delay(void)
@@ -234,7 +216,7 @@ __attribute__((weak)) void chipset_force_shutdown(
 	 * power_wait_signals_timeout()
 	 */
 	/* Now wait for DSW_PWROK and  RSMRST_ODL to go away. */
-	while (intel_x86_get_pg_ec_dsw_pwrok(com_cfg) &&
+	while (power_signal_is_asserted(X86_DSW_PWROK) &&
 			gpio_pin_get_dt(&com_cfg->pg_ec_rsmrst_odl) &&
 			(timeout_ms > 0)) {
 		k_msleep(1);
