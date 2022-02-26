@@ -396,6 +396,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a25fb710_bc670b99",
+        "filename": "zephyr/subsys/ap_pwrseq/signal_gpio.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-02-26T00:17:02Z",
+      "side": 1,
+      "message": "Sorry, unfinished response.\n\nSo the idea is to use enum power_signal everywhere in the main power sequence code, and with any external code (e.g board level functions) that interact with this code.\nWhat I\u0027m trying to do is decouple the method of access of the signal from this common code, and internally in the access code (e.g signal_interface.c signal_gpio.c and signal_vw.c) whatever it uses to map the power_signal value is private data - this code really doesn\u0027t have to deal with enum power_signal at all, and in fact if it had to, it would be violating some layering.\nThe fact that the config is built from DTS also means the mapping is automatically created safely (theoretically :-)",
+      "parentUuid": "aff68d5f_961cfd87",
+      "range": {
+        "startLine": 47,
+        "startChar": 33,
+        "endLine": 47,
+        "endChar": 46
+      },
+      "revId": "bd7c7ba41d3e9171aafeccf28e9b8a47b832ee54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "472a79f9_b1b33bbc",
         "filename": "zephyr/subsys/ap_pwrseq/signal_gpio.c",
         "patchSetId": 12
