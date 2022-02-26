@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05f817da_2e8dedff",
+        "filename": "zephyr/zmake/tests/test_toolchains.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-02-26T00:33:25Z",
+      "side": 1,
+      "message": "can you squash this into the appropriate CL since it hasn\u0027t merged yet?",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 22
+      },
+      "revId": "b93ff0163136d8970041da8033dc2c69de74a134",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32763bea_604387bc",
+        "filename": "zephyr/zmake/tests/test_toolchains.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-02-26T00:33:25Z",
+      "side": 1,
+      "message": "Nit, grammar seems weird to write \"the llvm\" instead of just llvm",
+      "range": {
+        "startLine": 126,
+        "startChar": 17,
+        "endLine": 126,
+        "endChar": 20
+      },
+      "revId": "b93ff0163136d8970041da8033dc2c69de74a134",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07dedf11_bc281ea2",
+        "filename": "zephyr/zmake/tests/test_toolchains.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-02-26T00:33:25Z",
+      "side": 1,
+      "message": "zephyr sdk",
+      "range": {
+        "startLine": 138,
+        "startChar": 17,
+        "endLine": 138,
+        "endChar": 27
+      },
+      "revId": "b93ff0163136d8970041da8033dc2c69de74a134",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "efb5fe22_8ab88d99",
+        "filename": "zephyr/zmake/tests/test_toolchains.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-02-26T00:33:25Z",
+      "side": 1,
+      "message": "same",
+      "range": {
+        "startLine": 156,
+        "startChar": 18,
+        "endLine": 156,
+        "endChar": 27
+      },
+      "revId": "b93ff0163136d8970041da8033dc2c69de74a134",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c77a921_615d1936",
+        "filename": "zephyr/zmake/tests/test_toolchains.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-02-26T00:33:25Z",
+      "side": 1,
+      "message": "Test that the toolchain can be overridden",
+      "range": {
+        "startLine": 188,
+        "startChar": 17,
+        "endLine": 188,
+        "endChar": 20
+      },
+      "revId": "b93ff0163136d8970041da8033dc2c69de74a134",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2c688fc_739e84dc",
+        "filename": "zephyr/zmake/zmake/toolchains.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-02-26T00:33:25Z",
+      "side": 1,
+      "message": "It can be used outside of the chroot too.",
+      "range": {
+        "startLine": 46,
+        "startChar": 33,
+        "endLine": 46,
+        "endChar": 51
+      },
+      "revId": "b93ff0163136d8970041da8033dc2c69de74a134",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aabff992_74d25ea2",
+        "filename": "zephyr/zmake/zmake/toolchains.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-02-26T00:33:25Z",
+      "side": 1,
+      "message": "GCC (in caps)",
+      "range": {
+        "startLine": 154,
+        "startChar": 7,
+        "endLine": 154,
+        "endChar": 10
+      },
+      "revId": "b93ff0163136d8970041da8033dc2c69de74a134",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
