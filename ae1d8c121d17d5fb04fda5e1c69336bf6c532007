@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1b1ce4b_bf73a919",
+        "filename": "zephyr/zmake/tests/test_toolchains.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-02-26T00:35:02Z",
+      "side": 1,
+      "message": "I can remove them.",
+      "parentUuid": "3c06b174_99b0f71a",
+      "range": {
+        "startLine": 26,
+        "startChar": 20,
+        "endLine": 26,
+        "endChar": 24
+      },
+      "revId": "ae1d8c121d17d5fb04fda5e1c69336bf6c532007",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aa1c786a_4ea7a9dd",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4192439_29aef0e9",
+        "filename": "zephyr/zmake/tests/test_toolchains.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-02-26T00:35:02Z",
+      "side": 1,
+      "message": "path.relative_to raises ValueError(\"{!r} is not in the subpath of {!r}\"). If the provided path is not in the mockfs_dir, then I want to prepend the mockfs_dir.\n\nI can move the \"else\" case into the except: block, that might be clearer.",
+      "parentUuid": "aa1c786a_4ea7a9dd",
+      "range": {
+        "startLine": 28,
+        "startChar": 8,
+        "endLine": 29,
+        "endChar": 16
+      },
+      "revId": "ae1d8c121d17d5fb04fda5e1c69336bf6c532007",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1f0fd611_1c689839",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-02-26T00:26:51Z",
       "side": 1,
       "message": "What requires suppressing all errors?",
+      "range": {
+        "startLine": 44,
+        "startChar": 8,
+        "endLine": 44,
+        "endChar": 29
+      },
+      "revId": "ae1d8c121d17d5fb04fda5e1c69336bf6c532007",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d141cca6_f4a65fa0",
+        "filename": "zephyr/zmake/tests/test_toolchains.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-02-26T00:35:02Z",
+      "side": 1,
+      "message": "Not suppressing, just logging. See the raise statement after the log. But if the logging goes away, so does the try:except:",
+      "parentUuid": "1f0fd611_1c689839",
       "range": {
         "startLine": 44,
         "startChar": 8,
