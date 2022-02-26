@@ -12,7 +12,7 @@ static struct pwrseq_context pwrseq_ctx;
 /* S5 inactive timer*/
 K_TIMER_DEFINE(s5_inactive_timer, NULL, NULL);
 
-LOG_MODULE_REGISTER(ap_pwrseq, 4);
+LOG_MODULE_REGISTER(ap_pwrseq, LOG_LEVEL_DBG);
 
 static const struct common_pwrseq_config com_cfg = {
 	.pch_dsw_pwrok_delay_ms = DT_INST_PROP(0, dsw_pwrok_delay),
@@ -60,7 +60,7 @@ static int check_power_rails_enabled(void)
 
 	out &= power_signal_get(PWR_EN_PP3300_A);
 	out &= power_signal_get(PWR_EN_PP5000_A);
-	out &= power_signal_get(PWR_DSW_PWROK);
+	out &= power_signal_get(PWR_EC_SOC_DSW_PWROK);
 	return out;
 }
 
@@ -97,10 +97,10 @@ void apshutdown(void)
 }
 
 /* Check RSMRST is fine to move from S5 to higher state */
-int check_rsmrst_ok(void)
+int check_rsmrst_off(void)
 {
 	/* TODO: Check if this is still intact */
-	return power_signal_get(PWR_RSMRST);
+	return !power_signal_get(PWR_RSMRST);
 }
 
 int check_pch_out_of_suspend(void)
@@ -114,8 +114,11 @@ int check_pch_out_of_suspend(void)
 					      0,
 					      IN_PCH_SLP_SUS_WAIT_TIME_MS);
 
-	if (ret == 0)
+	if (ret == 0) {
+		LOG_DBG("SLP_SUS now %d", power_signal_get(PWR_SLP_SUS));
 		return 1;
+	}
+	LOG_ERR("wait SLP_SUS deassertion timeout");
 	return 0; /* timeout */
 }
 
@@ -163,7 +166,7 @@ static int common_pwr_sm_run(int state)
 	case SYS_POWER_STATE_S5:
 		/* In S5 make sure no more signal lost */
 		/* If A-rails are stable then move to higher state */
-		if (check_power_rails_enabled() && check_rsmrst_ok()) {
+		if (check_power_rails_enabled() && check_rsmrst_off()) {
 			/* rsmrst is intact */
 			rsmrst_pass_thru_handler();
 			if (!power_signals_off(IN_PCH_SLP_SUS)) {
@@ -197,7 +200,7 @@ static int common_pwr_sm_run(int state)
 
 	case SYS_POWER_STATE_S5S4:
 		/* Check if the PCH has come out of suspend state */
-		if (check_rsmrst_ok()) {
+		if (check_rsmrst_off()) {
 			LOG_DBG("RSMRST is ok");
 			return SYS_POWER_STATE_S4;
 		}
@@ -205,7 +208,7 @@ static int common_pwr_sm_run(int state)
 		return SYS_POWER_STATE_S5;
 
 	case SYS_POWER_STATE_S4:
-		if (!power_signals_off(IN_PCH_SLP_S5))
+		if (power_signals_off(IN_PCH_SLP_S5))
 			return SYS_POWER_STATE_S4S5;
 		else if (power_signals_off(IN_PCH_SLP_S4))
 			return SYS_POWER_STATE_S4S3;
@@ -362,7 +365,7 @@ void init_pwr_seq_state(void)
 }
 
 /* Initialize power sequence system state */
-static int pwrseq_init()
+void pwrseq_init(void)
 {
 	LOG_ERR("Pwrseq Init\n");
 
@@ -370,10 +373,8 @@ static int pwrseq_init()
 	power_signal_init();
 	/* TODO: Define initial state of power sequence */
 	LOG_DBG("Init pwr seq state");
+	power_set_debug(0xFFFFFF);
 	init_pwr_seq_state();
 	/* Create power sequence state handler core function thread */
 	create_pwrseq_thread();
-	return 0;
 }
-
-SYS_INIT(pwrseq_init, APPLICATION, CONFIG_APPLICATION_INIT_PRIORITY);

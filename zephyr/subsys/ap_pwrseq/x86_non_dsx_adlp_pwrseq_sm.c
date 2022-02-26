@@ -5,7 +5,7 @@
 
 #include <x86_non_dsx_adlp_pwrseq_sm.h>
 
-LOG_MODULE_DECLARE(ap_pwrseq, 4);
+LOG_MODULE_DECLARE(ap_pwrseq, LOG_LEVEL_DBG);
 
 static const struct chipset_pwrseq_config chip_cfg = {
 	.pch_pwrok_delay_ms = DT_INST_PROP(0, pch_pwrok_delay),
@@ -23,13 +23,6 @@ void ap_off(void)
 	power_signal_set(PWR_EC_PCH_SYS_PWROK, 0);
 }
 
-/* This should be overridden if there is no power sequencer chip */
-__attribute__((weak)) int intel_x86_get_pg_ec_all_sys_pwrgd(
-				const struct common_pwrseq_config *com_cfg)
-{
-	return power_signal_get(PWR_ALL_SYS_PWRGD);
-}
-
 /* Handle ALL_SYS_PWRGD signal
  * This will be overridden if the custom signal handler is needed
  */
@@ -41,12 +34,12 @@ __attribute__((weak)) int all_sys_pwrgd_handler(
 	/* TODO: Add condition for no power sequencer */
 	k_msleep(chip_cfg.all_sys_pwrgd_timeout);
 
-	if (intel_x86_get_pg_ec_all_sys_pwrgd(com_cfg) == 0) {
+	if (power_signal_get(PWR_DSW_PWROK) == 0) {
 	/* Todo: Remove workaround for the retry
 	 * without this change the system hits G3 as it detects
 	 * ALL_SYS_PWRGD as 0 and then 1 as a glitch
 	 */
-		while (!intel_x86_get_pg_ec_all_sys_pwrgd(com_cfg)) {
+		while (power_signal_get(PWR_ALL_SYS_PWRGD) == 0) {
 			if (++retry > 2) {
 				LOG_ERR("PG_EC_ALL_SYS_PWRGD not ok\n");
 				ap_off();
@@ -111,7 +104,7 @@ void generate_sys_pwrok_handler(const struct common_pwrseq_config *com_cfg)
 	if (power_signal_get(PWR_EC_PCH_SYS_PWROK) == 0) {
 		k_msleep(chip_cfg.sys_pwrok_delay_ms);
 		/* Check if we lost power while waiting. */
-		if (intel_x86_get_pg_ec_all_sys_pwrgd(com_cfg) == 0) {
+		if (power_signal_get(PWR_ALL_SYS_PWRGD) == 0) {
 			LOG_DBG("PG_EC_ALL_SYS_PWRGD deasserted, "
 				"shutting AP off!");
 			ap_off();
@@ -155,13 +148,6 @@ void s0_action_handler(const struct common_pwrseq_config *com_cfg)
 	 */
 	/* Send SYS_PWROK->SoC if conditions met */
 	generate_sys_pwrok_handler(com_cfg);
-}
-
-/* This should be overridden if there is no power sequencer chip */
-__attribute__((weak)) int intel_x86_get_pg_ec_dsw_pwrok(
-			const struct common_pwrseq_config *com_cfg)
-{
-	return power_signal_get(PWR_DSW_PWROK);
 }
 
 void intel_x86_sys_reset_delay(void)
@@ -221,7 +207,7 @@ __attribute__((weak)) void chipset_force_shutdown(
 	 * power_wait_signals_timeout()
 	 */
 	/* Now wait for DSW_PWROK and  RSMRST_ODL to go away. */
-	while (intel_x86_get_pg_ec_dsw_pwrok(com_cfg) &&
+	while (power_signal_get(PWR_DSW_PWROK) &&
 			(power_signal_get(PWR_RSMRST) == 0) &&
 			(timeout_ms > 0)) {
 		k_msleep(1);
