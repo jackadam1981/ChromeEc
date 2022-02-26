@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2872ae1a_0fb2f7b5",
+        "filename": "zephyr/zmake/tests/test_toolchains.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-02-26T01:09:24Z",
+      "side": 1,
+      "message": "I\u0027m not sure what you would call appropriate in this case. toolchains.py for example, isn\u0027t edited in any of the other cls. But let me move this first in the chain and see what happens.",
+      "parentUuid": "05f817da_2e8dedff",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 22
+      },
+      "revId": "b93ff0163136d8970041da8033dc2c69de74a134",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "32763bea_604387bc",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-02-26T00:33:25Z",
       "side": 1,
       "message": "Nit, grammar seems weird to write \"the llvm\" instead of just llvm",
+      "range": {
+        "startLine": 126,
+        "startChar": 17,
+        "endLine": 126,
+        "endChar": 20
+      },
+      "revId": "b93ff0163136d8970041da8033dc2c69de74a134",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6acf125d_4f265ebe",
+        "filename": "zephyr/zmake/tests/test_toolchains.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-02-26T01:09:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "32763bea_604387bc",
       "range": {
         "startLine": 126,
         "startChar": 17,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c9a8acd_9d185680",
+        "filename": "zephyr/zmake/tests/test_toolchains.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-02-26T01:09:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "07dedf11_bc281ea2",
+      "range": {
+        "startLine": 138,
+        "startChar": 17,
+        "endLine": 138,
+        "endChar": 27
+      },
+      "revId": "b93ff0163136d8970041da8033dc2c69de74a134",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "efb5fe22_8ab88d99",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-02-26T00:33:25Z",
       "side": 1,
       "message": "same",
+      "range": {
+        "startLine": 156,
+        "startChar": 18,
+        "endLine": 156,
+        "endChar": 27
+      },
+      "revId": "b93ff0163136d8970041da8033dc2c69de74a134",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "12ad94e1_0557c5bf",
+        "filename": "zephyr/zmake/tests/test_toolchains.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-02-26T01:09:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "efb5fe22_8ab88d99",
       "range": {
         "startLine": 156,
         "startChar": 18,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a54c21ab_7bae5cdf",
+        "filename": "zephyr/zmake/tests/test_toolchains.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-02-26T01:09:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0c77a921_615d1936",
+      "range": {
+        "startLine": 188,
+        "startChar": 17,
+        "endLine": 188,
+        "endChar": 20
+      },
+      "revId": "b93ff0163136d8970041da8033dc2c69de74a134",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f2c688fc_739e84dc",
@@ -139,6 +259,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f51cebf_133ffe78",
+        "filename": "zephyr/zmake/zmake/toolchains.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-02-26T01:09:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f2c688fc_739e84dc",
+      "range": {
+        "startLine": 46,
+        "startChar": 33,
+        "endLine": 46,
+        "endChar": 51
+      },
+      "revId": "b93ff0163136d8970041da8033dc2c69de74a134",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aabff992_74d25ea2",
@@ -152,6 +296,30 @@
       "writtenOn": "2022-02-26T00:33:25Z",
       "side": 1,
       "message": "GCC (in caps)",
+      "range": {
+        "startLine": 154,
+        "startChar": 7,
+        "endLine": 154,
+        "endChar": 10
+      },
+      "revId": "b93ff0163136d8970041da8033dc2c69de74a134",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "23305ede_923f4235",
+        "filename": "zephyr/zmake/zmake/toolchains.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-02-26T01:09:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aabff992_74d25ea2",
       "range": {
         "startLine": 154,
         "startChar": 7,
