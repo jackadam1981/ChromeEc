@@ -16,6 +16,24 @@
       "message": "This looks to me like a genuine failure:\n\nchromeos-ec-0.0.1-r5140: board/treeya/board.c:299:6: error: redefinition of \u0027board_hibernate_late\u0027\nchromeos-ec-0.0.1-r5140:  void board_hibernate_late(void)\nchromeos-ec-0.0.1-r5140:       ^\nchromeos-ec-0.0.1-r5140: board/treeya/board.c:272:6: note: previous definition of \u0027board_hibernate_late\u0027 was here\nchromeos-ec-0.0.1-r5140:  void board_hibernate_late(void)\nchromeos-ec-0.0.1-r5140:       ^\nchromeos-ec-0.0.1-r5140: make: *** [Makefile.rules:445: build/treeya/RO/board/treeya/board.o] Error 1\nchromeos-ec-0.0.1-r5140: make: *** Waiting for unfinished jobs....\nchromeos-ec-0.0.1-r5140:  * ERROR: chromeos-base/chromeos-ec-0.0.1-r5140::chromiumos failed (compile phase):\nchromeos-ec-0.0.1-r5140:  *   emake failed",
       "revId": "23b5888d40d86a50fdabef1544664957282a925d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd5fc3ab_31b37fc2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1485637
+      },
+      "writtenOn": "2022-02-26T14:45:50Z",
+      "side": 1,
+      "message": "After rebase, CQ try run is pass.",
+      "parentUuid": "7d2df66c_2d0da5c7",
+      "revId": "23b5888d40d86a50fdabef1544664957282a925d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
