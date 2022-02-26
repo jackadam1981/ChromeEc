@@ -53,7 +53,7 @@ struct common_pwrseq_config {
 extern const struct power_signal_config power_signal_list[];
 extern const struct gpio_power_signal_config power_signal_gpio_list[];
 extern struct gpio_callback intr_callbacks[];
-int board_power_signal_is_asserted(enum power_signal signal);
+int board_power_signal_is_asserted(enum board_power_signal signal);
 int power_signal_is_asserted(enum power_signal signal);
 void power_update_signals(void);
 enum power_states_ndsx chipset_pwr_sm_run(
