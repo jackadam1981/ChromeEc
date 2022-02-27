@@ -1,0 +1,21 @@
+# Copyright 2022 The Chromium OS Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+description: For power signal as a cros-ec,gpio-interrupts node
+
+compatible: "intel,ap-pwrseq-interrupt"
+
+include: intel,ap-pwr-signal-base.yaml
+properties:
+    interrupt:
+        type: phandle
+        required: true
+        description: |
+          Named interrupt node to be used for power signal. The
+          GPIO referenced in the interrupt node is used as the
+          power signal input.
+
+    no-enable:
+        type: boolean
+        description: Do not enable interrupt on start-up
