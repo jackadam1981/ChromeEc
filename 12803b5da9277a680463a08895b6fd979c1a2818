@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf44a8ba_78d4eb5d",
+        "filename": "zephyr/projects/nissa/src/common_pwrseq.c",
+        "patchSetId": 31
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2022-02-27T04:12:39Z",
+      "side": 1,
+      "message": "This function will take care of X86_ALL_SYS_PGOOD, while inside we access GPIO using signal GPIO_ALL_SYS_PGOOD.",
+      "range": {
+        "startLine": 89,
+        "startChar": 4,
+        "endLine": 89,
+        "endChar": 34
+      },
+      "revId": "12803b5da9277a680463a08895b6fd979c1a2818",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
