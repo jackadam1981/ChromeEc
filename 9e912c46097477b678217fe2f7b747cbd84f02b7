@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7390c4db_845c674e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 18
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-02-27T04:55:25Z",
+      "side": 1,
+      "message": "So it seemed sensible to move the common power signal processing\ninto single common file that can be used for any power sequencing.\nSo this is now power_signals.c, and holds the power signal masks and debug mask,\nand contains the common functions for accessing them.\n",
+      "revId": "9e912c46097477b678217fe2f7b747cbd84f02b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
