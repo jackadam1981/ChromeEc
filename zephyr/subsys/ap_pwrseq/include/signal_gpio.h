@@ -32,7 +32,7 @@ DT_FOREACH_STATUS_OKAY(intel_ap_pwrseq_gpio, PWR_GPIO_ENUM)
 /**
  * @brief Get the value of the GPIO power signal.
  *
- * @param signal The power_signal_gpios value to get.
+ * @param signal The enum of the GPIO to get.
  * @return the current value of the power signal.
  */
 int power_signal_gpio_get(enum pwr_sig_gpio gpio);
@@ -50,7 +50,7 @@ int power_signal_gpio_set(enum pwr_sig_gpio gpio, int value);
 /**
  * @brief Enable the GPIO interrupt
  *
- * @param signal The power_signal_gpios to enable.
+ * @param signal The enum of the GPIO to enable.
  * @return 0 if successful
  * @return -error if failed
  */
@@ -59,7 +59,7 @@ int power_signal_gpio_enable_int(enum pwr_sig_gpio gpio);
 /**
  * @brief Disable the GPIO interrupt
  *
- * @param signal The power_signal_gpios to disable.
+ * @param signal The enum of the GPIO to disable.
  * @return 0 if successful
  * @return -error if failed
  */
