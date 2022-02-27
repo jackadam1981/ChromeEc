@@ -9,7 +9,7 @@
 /**
  * @brief Get the value of the GPIO power signal.
  *
- * @param signal The power_signal_gpios value to get.
+ * @param signal The enum of the GPIO to get.
  * @return the current value of the power signal.
  */
 int power_signal_gpio_get(uint8_t gpio);
@@ -27,7 +27,7 @@ int power_signal_gpio_set(uint8_t gpio, int value);
 /**
  * @brief Enable the GPIO interrupt
  *
- * @param signal The power_signal_gpios to enable.
+ * @param signal The enum of the GPIO to enable.
  * @return 0 if successful
  * @return -error if failed
  */
@@ -36,7 +36,7 @@ int power_signal_gpio_enable_int(uint8_t gpio);
 /**
  * @brief Disable the GPIO interrupt
  *
- * @param signal The power_signal_gpios to disable.
+ * @param signal The enum of the GPIO to disable.
  * @return 0 if successful
  * @return -error if failed
  */

@@ -1,0 +1,40 @@
+/* Copyright 2022 The Chromium OS Authors. All rights reserved.
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+#ifndef __AP_PWRSEQ_SIGNAL_INTERRUPT_H__
+#define __AP_PWRSEQ_SIGNAL_INTERRUPT_H__
+
+/**
+ * @brief Get the value of the power signal from the interrupt GPIO.
+ *
+ * @param signal The enum of the interrupt to get.
+ * @return the current value of the power signal.
+ */
+int power_signal_interrupt_get(uint8_t interrupt);
+
+/**
+ * @brief Enable the interrupt
+ *
+ * @param signal The enum of the interrupt to enable.
+ * @return 0 if successful
+ * @return -error if failed
+ */
+int power_signal_interrupt_enable_int(uint8_t interrupt);
+
+/**
+ * @brief Disable the interrupt
+ *
+ * @param signal The enum of the interrupt to disable.
+ * @return 0 if successful
+ * @return -error if failed
+ */
+int power_signal_interrupt_disable_int(uint8_t interrupt);
+
+/**
+ * @brief Initialize the Interrupts for the power signals.
+ */
+void power_signal_interrupt_init(void);
+
+#endif /* __AP_PWRSEQ_SIGNAL_INTERRUPT_H__ */
