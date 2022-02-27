@@ -16,6 +16,23 @@
       "message": "on TOT, zmake testall --clobber\n\nI got build error:\n\nClearing build directory /mnt/host/source/src/platform/ec/build/zephyr/adlrvp_npcx due to --clobber\nToolchain \u003czmake.toolchains.CorebootSdkToolchain object at 0x7f032bcde2e8\u003e selected by probe function.\nBuilding adlrvp_npcx in /mnt/host/source/src/platform/ec/build/zephyr/adlrvp_npcx.\nConfiguring adlrvp_npcx:ro.\nConfiguring adlrvp_npcx:rw.\nBuilding adlrvp_npcx:ro: /usr/bin/ninja -C /mnt/host/source/src/platform/ec/build/zephyr/adlrvp_npcx/build-ro\nFAILED: CMakeFiles/app.dir/mnt/host/source/src/platform/ec/zephyr/drivers/cros_system/cros_system_npcx.c.obj \n/mnt/host/source/src/platform/ec/zephyr/drivers/cros_system/cros_system_npcx.c:511:2: error: #error \"vsby-psl-in-list cannot be used with non-HIBERNATE_PSL\"\n  511 | #error \"vsby-psl-in-list cannot be used with non-HIBERNATE_PSL\"\n      |  ^~~~~\nExecution failed (return code\u003d1): /usr/bin/ninja -C /mnt/host/source/src/platform/ec/build/zephyr/adlrvp_npcx/build-ro\n",
       "revId": "813f7256a5ebeb5c949183f963b3a0e30227afb1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c133474_7c1d2d3b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-02-27T23:17:42Z",
+      "side": 1,
+      "message": "The steps I did:\ngit fetch https://chromium.googlesource.com/chromiumos/platform/ec refs/changes/96/3449996/4 \u0026\u0026 git checkout -b change-3449996 FETCH_HEAD\n\nzmake testall --clobber\n\nthen there is build error.",
+      "revId": "813f7256a5ebeb5c949183f963b3a0e30227afb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
