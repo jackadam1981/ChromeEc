@@ -10,6 +10,8 @@
 #include <power_signals.h>
 
 #include "signal_gpio.h"
+#include "signal_interrupt.h"
+#include "signal_named_gpio.h"
 #include "signal_vw.h"
 
 LOG_MODULE_DECLARE(ap_pwrseq, 4);
@@ -22,12 +24,14 @@ BUILD_ASSERT(DT_NUM_INST_STATUS_OKAY(intel_ap_pwrseq) == 1,
 BUILD_ASSERT(POWER_SIGNAL_COUNT <= 32, "Too many power signals");
 
 /*
- * Enum indicating type of signal.
+ * Enum indicating type (source) of signal.
  */
 enum signal_source {
 	PWR_SIG_SRC_GPIO,
 	PWR_SIG_SRC_VW,
 	PWR_SIG_SRC_EXT,
+	PWR_SIG_SRC_INTERRUPT,
+	PWR_SIG_SRC_NAMED_GPIO,
 };
 
 struct ps_config {
@@ -57,6 +61,8 @@ struct ps_config {
 
 /*
  * Generate the power signal configuration array.
+ * This has to be in the same order as the
+ * enum generation in include/power_signals.h
  */
 static const struct ps_config sig_config[] = {
 DT_FOREACH_STATUS_OKAY_VARGS(intel_ap_pwrseq_gpio, GEN_PS_ENTRY,
@@ -65,6 +71,10 @@ DT_FOREACH_STATUS_OKAY_VARGS(intel_ap_pwrseq_vw, GEN_PS_ENTRY,
 			     PWR_SIG_SRC_VW, PWR_SIG_TAG_VW)
 DT_FOREACH_STATUS_OKAY_VARGS(intel_ap_pwrseq_external, GEN_PS_ENTRY_NO_ENUM,
 			     PWR_SIG_SRC_EXT)
+DT_FOREACH_STATUS_OKAY_VARGS(intel_ap_pwrseq_interrupt, GEN_PS_ENTRY,
+			     PWR_SIG_SRC_INTERRUPT, PWR_SIG_TAG_ISR)
+DT_FOREACH_STATUS_OKAY_VARGS(intel_ap_pwrseq_named_gpio, GEN_PS_ENTRY,
+			     PWR_SIG_SRC_NAMED_GPIO, PWR_SIG_TAG_NAMED_GPIO)
 };
 
 static power_signal_mask_t power_signals;
@@ -141,9 +151,22 @@ int power_signal_get(enum power_signal signal)
 	case PWR_SIG_SRC_EXT:
 		return board_power_signal_get(signal);
 #endif
+
+#if HAS_INTERRUPT_SIGNALS
+	case PWR_SIG_SRC_INTERRUPT:
+		return power_signal_interrupt_get(cp->src_enum);
+#endif
+
+#if HAS_NAMED_GPIO_SIGNALS
+	case PWR_SIG_SRC_NAMED_GPIO:
+		return power_signal_named_gpio_get(cp->src_enum);
+#endif
 	}
 }
 
+/*
+ * Virtual wire and named interrupts are not able to be set.
+ */
 int power_signal_set(enum power_signal signal, int value)
 {
 	const struct ps_config *cp = &sig_config[signal];
@@ -161,9 +184,17 @@ int power_signal_set(enum power_signal signal, int value)
 	case PWR_SIG_SRC_EXT:
 		return board_power_signal_set(signal, value);
 #endif
+
+#if HAS_NAMED_GPIO_SIGNALS
+	case PWR_SIG_SRC_NAMED_GPIO:
+		return power_signal_named_gpio_set(cp->src_enum, value);
+#endif
 	}
 }
 
+/*
+ * Only GPIOs and named interrupts can enable/disable interrupts.
+ */
 int power_signal_enable_interrupt(enum power_signal signal)
 {
 	const struct ps_config *cp = &sig_config[signal];
@@ -180,6 +211,11 @@ int power_signal_enable_interrupt(enum power_signal signal)
 	case PWR_SIG_SRC_GPIO:
 		return power_signal_gpio_enable_int(cp->src_enum);
 #endif
+
+#if HAS_INTERRUPT_SIGNALS
+	case PWR_SIG_SRC_INTERRUPT:
+		return power_signal_interrupt_enable_int(cp->src_enum);
+#endif
 	}
 }
 
@@ -194,6 +230,11 @@ int power_signal_disable_interrupt(enum power_signal signal)
 #if HAS_GPIO_SIGNALS
 	case PWR_SIG_SRC_GPIO:
 		return power_signal_gpio_disable_int(cp->src_enum);
+#endif
+
+#if HAS_INTERRUPT_SIGNALS
+	case PWR_SIG_SRC_INTERRUPT:
+		return power_signal_interrupt_disable_int(cp->src_enum);
 #endif
 	}
 }
@@ -210,5 +251,8 @@ void power_signal_init(void)
 	}
 	if (IS_ENABLED(HAS_VW_SIGNALS)) {
 		power_signal_vw_init();
+	}
+	if (IS_ENABLED(HAS_INTERRUPT_SIGNALS)) {
+		power_signal_interrupt_init();
 	}
 }
