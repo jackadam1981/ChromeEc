@@ -1,0 +1,19 @@
+# Copyright 2022 The Chromium OS Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+description: Node for power signal named-gpio
+
+compatible: "intel,ap-pwrseq-named-gpio"
+
+include: intel,ap-pwr-signal-base.yaml
+properties:
+    pin:
+        type: phandle
+        required: true
+        description: |
+          Named GPIO to be used for power signal.
+
+    output:
+        type: boolean
+        description: GPIO is used as an output.
