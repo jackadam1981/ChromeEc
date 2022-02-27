@@ -16,6 +16,24 @@
       "message": "is it needed by application?\n",
       "revId": "15fbec5582027efedb60608b5f3fcaa8484a95a1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ecf01977_3d3433d6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2022-02-27T16:44:47Z",
+      "side": 1,
+      "message": "No, it is helpful in debugging tcpc chip.\nThis will enable reporting the measured VBUS voltage by tcpc.",
+      "parentUuid": "283243a7_b9d63171",
+      "revId": "15fbec5582027efedb60608b5f3fcaa8484a95a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
