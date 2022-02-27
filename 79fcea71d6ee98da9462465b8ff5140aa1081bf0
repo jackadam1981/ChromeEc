@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "07b39fe9_d3cb5797",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-02-27T05:21:51Z",
+      "side": 1,
+      "message": "This CL adds the access API for power signals to be sourced from\nthe \u0027named\u0027gpios\u0027 nodes and also the \u0027gpio-interrupts\u0027.\n\nThe main requirements here is that we can use the RW sysjump init\nfor these GPIOs to ensure that when a RW sysjump occurs, the GPIOs are\ncorrectly initialised..\nIt also removes duplicate GPIO configurations and interrupt callbacks.\n",
+      "revId": "79fcea71d6ee98da9462465b8ff5140aa1081bf0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
