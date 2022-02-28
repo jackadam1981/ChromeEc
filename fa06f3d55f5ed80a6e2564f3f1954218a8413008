@@ -34,6 +34,24 @@
       "parentUuid": "2c44fee3_a4f7c82e",
       "revId": "fa06f3d55f5ed80a6e2564f3f1954218a8413008",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6614ab45_c71b4aaf",
+        "filename": "docs/getting_started_quickly.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-02-28T22:36:50Z",
+      "side": 0,
+      "message": "I think we can use the git history to resurrect if we need it in the future. I\u0027d be ok with leaving it somewhere if it worked, but we know it has problems. I personally find incorrect documentation worse than no documentation since it can lead you down the wrong path and waste a lot of time. I\u0027m also not convinced that the workflow is useful to anyone. We really just don\u0027t support building any Chrome OS components outside of the chroot.",
+      "parentUuid": "72e92160_c9a313aa",
+      "revId": "fa06f3d55f5ed80a6e2564f3f1954218a8413008",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
