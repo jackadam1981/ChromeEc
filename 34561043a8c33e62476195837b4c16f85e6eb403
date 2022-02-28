@@ -34,6 +34,24 @@
       "parentUuid": "66a43686_633c6216",
       "revId": "34561043a8c33e62476195837b4c16f85e6eb403",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "139b05f0_f50a0056",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-02-28T04:50:42Z",
+      "side": 1,
+      "message": "Sysjump to RW doesn\u0027t normally happen while the AP is on though, right? It\u0027ll usually happen right after EC power-on, unless we\u0027re also trying to support EFS1.",
+      "parentUuid": "f543ccb9_27c6b3f2",
+      "revId": "34561043a8c33e62476195837b4c16f85e6eb403",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
