@@ -39,9 +39,10 @@ static void hostcmd_respond(struct host_packet *pkt)
 
 static char calculate_checksum(const char *buf, int size)
 {
-	int c = 0;
+	int c;
 	int i;
 
+	c = 0;
 	for (i = 0; i < size; ++i)
 		c += buf[i];
 
