@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e6bdd159_ed319da9",
+        "filename": "chip/stm32/bkpdata.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2022-02-28T15:43:28Z",
+      "side": 1,
+      "message": "\u003e I have historically avoided conditionally defining an enumeration value to ensure consistency between builds with/without a given feature.\n\nSounds good, but as you said these values as used as index, so avoiding conditional defining would be problematic when we hit the limit of entries. Current solution works as long as new entries are added at the end of the enum and defines don\u0027t change between RO and RW.\n\n\u003e Is it worth an offline discussion of what could be done differently to prevent these types of bugs?\n\nI think we should discuss it when switching to Zephyr. Now I would leave it as it is.\n\n\u003e On possible design is to define a structure that is bit compatible with the existing RO data buffer.\n\nThere are many ROs with different structures. There is even difference between nocturne_fp and dartmonkey (the same hardware).\n\n\u003e Then devices with additional data(reset flags2, panic reason, etc) could wrap the RO data in a secondary structure that could be defined for each device type.\nSounds good. EC has a problem with panic data design - there is one panic data structure for all supported cores.",
+      "parentUuid": "bc78c5ad_9a5ec19b",
+      "revId": "8f69a5346ecd7f8997a2409b47e154adf07dcf42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e56d7664_01aad2f3",
@@ -49,6 +67,30 @@
       "writtenOn": "2022-02-23T18:36:28Z",
       "side": 1,
       "message": "I don\u0027t think we should try to do it for this CL, but what do you think about assigning explicit enum values to all the items? For example, if we ever changed one of the configs (`CONFIG_USB_PD_DUAL_ROLE`) after releasing RO, we\u0027d hit the same issue (unlikely with that specific config, but more could be added.). If they had explicit values it would be fine:\n\n```\nenum bkpdata_index {\n\tBKPDATA_INDEX_SCRATCHPAD \u003d 0,\t     \n\tBKPDATA_INDEX_SAVED_RESET_FLAGS \u003d 1,    \n#ifdef CONFIG_STM32_EXTENDED_RESET_FLAGS\n\tBKPDATA_INDEX_SAVED_RESET_FLAGS_2 \u003d 2,   \n#endif\n...\n```\n\nActually, I\u0027m not sure we could come up with a way to preserve compatibility with existing ROs easily with that. We could create separate versions for the RO/RW compatibility that we know about, but it\u0027s hard to know what variations other ECs might have used.",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 6
+      },
+      "revId": "8f69a5346ecd7f8997a2409b47e154adf07dcf42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aba5c101_37d664dd",
+        "filename": "chip/stm32/bkpdata.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2022-02-28T15:43:28Z",
+      "side": 1,
+      "message": "\u003e For example, if we ever changed one of the configs (`CONFIG_USB_PD_DUAL_ROLE`) after releasing RO\nI don\u0027t see why we should change these configs. When RO is released, hardware doesn\u0027t change.\n\n\u003e what do you think about assigning explicit enum values to all the items?\nWe will have backup RAM which cannot be used 😞 + mentioned problems with compatibility.\n\nI think we could introduce some \u0027translation array\u0027 which will keep information where the data is. We will gain some flexibility (order in bkpdata_index enum would be not important).",
+      "parentUuid": "e56d7664_01aad2f3",
       "range": {
         "startLine": 23,
         "startChar": 0,
