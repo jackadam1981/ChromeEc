@@ -15,6 +15,8 @@
  */
 #if CONFIG_AP_PWRSEQ
 
+#include "atomic.h"
+
 /*
  * From ec_commands.h
  * Host event codes. ACPI query EC command uses code 0 to mean "no event
@@ -85,8 +87,18 @@ enum host_sleep_event power_get_host_sleep_state(void);
 void power_set_host_sleep_state(enum host_sleep_event state);
 #endif /* CONFIG_AP_PWRSEQ_HOST_SLEEP */
 
+/* system.h */
+/* Low power modes for idle API */
+enum {
+	/*
+	 * Sleep masks to prevent going in to deep sleep.
+	 */
+	SLEEP_MASK_AP_RUN     = BIT(0), /* the main CPU is running */
+};
+
 /* host_command.h */
 typedef uint64_t host_event_t;
+extern void host_set_single_event(enum host_event_code event);
 extern uint8_t lpc_is_active_wm_set_by_host(void);
 extern int get_lazy_wake_mask(enum power_state state, host_event_t *mask);
 
@@ -103,6 +115,18 @@ extern host_event_t lpc_get_host_event_mask(
 	enum lpc_host_event_type type);
 extern void lpc_set_host_event_mask(
 	enum lpc_host_event_type type, host_event_t mask);
+
+extern atomic_t sleep_mask;
+
+static inline void enable_sleep(uint32_t mask)
+{
+	atomic_clear_bits(&sleep_mask, mask);
+}
+
+static inline void disable_sleep(uint32_t mask)
+{
+	atomic_or(&sleep_mask, mask);
+}
 
 #endif /* CONFIG_AP_PWRSEQ */
 
