@@ -1,0 +1,98 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f31844c1_4ffd9ab5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-02-28T14:02:47Z",
+      "side": 1,
+      "message": "\u003e \"sepecification\" is a possible misspelling of \"specification\".\n\nPlease fix.",
+      "parentUuid": "90ee343b_c3911474",
+      "range": {
+        "startLine": 10,
+        "startChar": 40,
+        "endLine": 10,
+        "endChar": 54
+      },
+      "revId": "a95402910b40e48363ca5bc2da399bc0f18075c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e799b08f_1122f5c3",
+        "filename": "zephyr/include/emul/tcpc/emul_tcpci_partner_common.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-02-28T14:02:47Z",
+      "side": 1,
+      "message": "\u003e \"responde\" is a possible misspelling of \"respond\", \"response\", \"responds\", \"responded\", or \"responder\".\n\nPlease fix.",
+      "parentUuid": "34b79288_f05eaf5b",
+      "range": {
+        "startLine": 30,
+        "startChar": 27,
+        "endLine": 30,
+        "endChar": 35
+      },
+      "revId": "a95402910b40e48363ca5bc2da399bc0f18075c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb63edf0_727f8d5f",
+        "filename": "zephyr/include/emul/tcpc/emul_tcpci_partner_snk.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-02-28T14:02:47Z",
+      "side": 1,
+      "message": "I would avoid mentioning the number in the comment itself, feels redundant and may go out of sync, just describe the scope of the definition (\"Timeout for source to transition...\")",
+      "range": {
+        "startLine": 30,
+        "startChar": 4,
+        "endLine": 30,
+        "endChar": 9
+      },
+      "revId": "a95402910b40e48363ca5bc2da399bc0f18075c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b27e8ae9_710c0c02",
+        "filename": "zephyr/include/emul/tcpc/emul_tcpci_partner_snk.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-02-28T14:02:47Z",
+      "side": 1,
+      "message": "Can you call out the unit in the constant name suffix? (TCPCI_PARTNER_TRANSITION_TIMEOUT_MS)\n\nSame for TCPCI_PARTNER_RESPONSE_TIMEOUT",
+      "range": {
+        "startLine": 31,
+        "startChar": 28,
+        "endLine": 31,
+        "endChar": 29
+      },
+      "revId": "a95402910b40e48363ca5bc2da399bc0f18075c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
