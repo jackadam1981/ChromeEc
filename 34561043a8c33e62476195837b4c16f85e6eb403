@@ -52,6 +52,24 @@
       "parentUuid": "f543ccb9_27c6b3f2",
       "revId": "34561043a8c33e62476195837b4c16f85e6eb403",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "474811a5_0e7a9d01",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-02-28T06:26:39Z",
+      "side": 1,
+      "message": "It depends on the system, lazor starts the AP to do EC verification before sysjump.\nIt\u0027s quite possible that for Nissa, this won\u0027t be an issue - not sure, though.",
+      "parentUuid": "139b05f0_f50a0056",
+      "revId": "34561043a8c33e62476195837b4c16f85e6eb403",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
