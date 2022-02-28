@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88c86dd3_0b15f37b",
+        "filename": "zephyr/CMakeLists.txt",
+        "patchSetId": 3
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2022-02-28T18:50:02Z",
+      "side": 0,
+      "message": "@Keith: subsys is needed for AP power sequencing. Any reason to remove it here?",
+      "range": {
+        "startLine": 88,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 26
+      },
+      "revId": "84fd17247ac8d55ae4adb67281841a9a2a4c2433",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
