@@ -42,7 +42,8 @@ static void espi_bus_vw_handler(const struct device *dev,
 /* This should be overridden by the chipset */
 __attribute__((weak)) void espi_bus_reset(void)
 {
-  /* Do nothing */
+	/* Do nothing */
+	ap_pwrseq_handle_chipset_reset();
 }
 
 static void espi_bus_reset_handler(const struct device *dev,
