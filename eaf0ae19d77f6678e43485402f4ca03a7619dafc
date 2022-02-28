@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a53ef69a_3a28d751",
+        "filename": "zephyr/projects/nissa/src/nivviks/board_config.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-02-28T18:56:15Z",
+      "side": 1,
+      "message": "on a second thought, do HID devices wake the device in S3?\nif not may be we have to change it to S3-\u003eS5 transition and vice versa",
+      "range": {
+        "startLine": 110,
+        "startChar": 13,
+        "endLine": 110,
+        "endChar": 33
+      },
+      "revId": "eaf0ae19d77f6678e43485402f4ca03a7619dafc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
