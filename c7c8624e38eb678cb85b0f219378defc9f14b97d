@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9581a51b_2c2376ab",
+        "filename": "zephyr/dts/bindings/power/intel,ap-pwrseq.yaml",
+        "patchSetId": 21
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-02-28T03:15:10Z",
+      "side": 0,
+      "message": "I prefer this approach of listing the required signals in the device tree bindings: it\u0027s easier to discover the requirements by reading this one file, and it seems weird to write multiple nodes with different `compatible` strings for what is actually a single driver as you\u0027ve done.\n\nDescribing \"each signal is one of the types with varying fields for each\" seems tricky though. A sub-node with `child-bindings` for each signal might work, with a required `type` property (one of GPIO, VW, etc) and optional properties for the properties specific to each type.\n\nI\u0027d like to be able to write something like\n\n    slp_s3_l {\n        type \u003d \"virtual_wire\";\n    };\n    impv9_vrrdy {\n        type \u003d \"gpio\";\n        gpios \u003d \u003c\u0026gpioj 4\u003e;\n    }\n\nBut I don\u0027t think that\u0027s very feasible with how bindings files are written.\n\n---\n\nThis top-level binding could define itself as a bus (`bus: intel,ap-pwrseq`?) and the bindings for each kind of signal then have a matching `on-bus`, but since bindings search isn\u0027t restricted to only the matching bus that woulnd\u0027t do much either.\n\nA final idea could be that this binding require a phandle for each signal that can be used referring to the more specific node defining the signal. That would allow this binding to list all the required signals (and detect if optional ones are present).",
+      "revId": "c7c8624e38eb678cb85b0f219378defc9f14b97d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

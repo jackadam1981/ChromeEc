@@ -420,6 +420,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b91f9531_8cf22a38",
+        "filename": "zephyr/subsys/ap_pwrseq/signal_gpio.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-02-28T03:15:10Z",
+      "side": 1,
+      "message": "I don\u0027t mind splitting them into separate arrays, but this could be made a little safer (and clearer) by giving each of the type enums a name (`enum pwr_sig_gpio`, etc) and receiving one of those as a parameter rather than a generic integer.",
+      "parentUuid": "a25fb710_bc670b99",
+      "range": {
+        "startLine": 47,
+        "startChar": 33,
+        "endLine": 47,
+        "endChar": 46
+      },
+      "revId": "bd7c7ba41d3e9171aafeccf28e9b8a47b832ee54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "472a79f9_b1b33bbc",
         "filename": "zephyr/subsys/ap_pwrseq/signal_gpio.c",
         "patchSetId": 12
