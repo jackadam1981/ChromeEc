@@ -46,6 +46,30 @@
       },
       "revId": "84fd17247ac8d55ae4adb67281841a9a2a4c2433",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "45ee62e2_cbb8071e",
+        "filename": "zephyr/CMakeLists.txt",
+        "patchSetId": 3
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-02-28T20:11:24Z",
+      "side": 0,
+      "message": "That was a rebase error on my part.  Sorry about that.",
+      "parentUuid": "7591cef7_dc00b389",
+      "range": {
+        "startLine": 88,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 26
+      },
+      "revId": "84fd17247ac8d55ae4adb67281841a9a2a4c2433",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
