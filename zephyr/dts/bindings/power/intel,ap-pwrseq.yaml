@@ -118,6 +118,12 @@ properties:
         VR/Circuit input to EC RSMRST power good for
         VCCPRIM rails and other S5 rails.
 
+    slp-s0-l-gpios:
+      type: phandle-array
+      required: true
+      description: |
+        SLP_S0 signal input to EC for S0ix sleep control from SoC.
+
     slp-s3-l-gpios:
       type: phandle-array
       required: true
