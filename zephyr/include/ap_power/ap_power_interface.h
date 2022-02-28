@@ -69,6 +69,15 @@ enum power_states_ndsx {
 	SYS_POWER_STATE_S3S4,
 	/* Determine if Suspend to RAM is asserted */
 	SYS_POWER_STATE_S0S3,
+
+	/* S0ix */
+#if defined(CONFIG_PLATFORM_EC_POWERSEQ_S0IX)
+	/* AP is in standby; cache is flushed to RAM */
+	SYS_POWER_STATE_S0ix,
+	/* Intermediate states */
+	SYS_POWER_STATE_S0ixS0, /* Power up   */
+	SYS_POWER_STATE_S0S0ix, /* Power down */
+#endif
 };
 
 /**
