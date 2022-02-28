@@ -337,21 +337,10 @@ __override int bb_retimer_power_enable(const struct usb_mux *me, bool enable)
 
 void board_reset_pd_mcu(void)
 {
-	enum gpio_signal tcpc_rst;
+	/* Reset the NCT38xx boot state (not resetting the chip) */
+	nct38xx_reset_notify(USBC_PORT_C0);
+	nct38xx_reset_notify(USBC_PORT_C2);
 
-	if (get_board_id() == 1)
-/* TODO: explore how to handle board id in zephyr*/
-#ifndef CONFIG_ZEPHYR
-		tcpc_rst = GPIO_ID_1_USB_C0_C2_TCPC_RST_ODL;
-	else
-#endif /* !CONFIG_ZEPHYR */
-		tcpc_rst = GPIO_USB_C0_C2_TCPC_RST_ODL;
-
-	/*
-	 * TODO(b/179648104): figure out correct timing
-	 */
-
-	gpio_set_level(tcpc_rst, 0);
 	if (ec_cfg_usb_db_type() != DB_USB_ABSENT) {
 		gpio_set_level(GPIO_USB_C1_RST_ODL, 0);
 		gpio_set_level(GPIO_USB_C1_RT_RST_R_ODL, 0);
@@ -363,7 +352,6 @@ void board_reset_pd_mcu(void)
 
 	msleep(20);
 
-	gpio_set_level(tcpc_rst, 1);
 	if (ec_cfg_usb_db_type() != DB_USB_ABSENT) {
 		gpio_set_level(GPIO_USB_C1_RST_ODL, 1);
 		gpio_set_level(GPIO_USB_C1_RT_RST_R_ODL, 1);
