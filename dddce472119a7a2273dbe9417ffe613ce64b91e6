@@ -3,6 +3,40 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "47b029fd_39d238a3",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_attach_src_snk.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-02-28T16:40:14Z",
+      "side": 1,
+      "message": "Just an idea: Now that we\u0027re building with C++, it might be nice to introduce our C++ style conventions around constants, e.g.\n namespace {\n const int kDefaultVbusSrcPortMa \u003d 1500;\n // ...\n }\n\nhttps://google.github.io/styleguide/cppguide.html#Preprocessor_Macros\n\nDoesn\u0027t need to happen in this CL.",
+      "revId": "dddce472119a7a2273dbe9417ffe613ce64b91e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2dca8e96_d4cbcbf9",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_attach_src_snk.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-02-28T16:40:14Z",
+      "side": 1,
+      "message": "Is this used?",
+      "revId": "dddce472119a7a2273dbe9417ffe613ce64b91e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6207c47b_85912517",
         "filename": "zephyr/test/drivers/src/integration/usbc/usb_attach_src_snk.c",
         "patchSetId": 4
