@@ -70,6 +70,11 @@ static void espi_bus_vw_handler(const struct device *dev,
 #endif
 		power_update_signals();
 		break;
+	case ESPI_VWIRE_SIGNAL_PLTRST:
+		/* ESPI PLTRST# get asserted. Notify ap_pwrseq */
+		if (!vw_get_level(event.evt_details))
+			ap_pwrseq_handle_chipset_reset();
+		break;
 	default:
 		break;
 	}
@@ -78,7 +83,7 @@ static void espi_bus_vw_handler(const struct device *dev,
 /* This should be overridden by the chipset */
 __attribute__((weak)) void espi_bus_reset(void)
 {
-  /* Do nothing */
+	/* Do nothing */
 }
 
 static void espi_bus_reset_handler(const struct device *dev,
