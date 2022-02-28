@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "68b0fcb6_46e81fd5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-02-28T19:18:52Z",
+      "side": 1,
+      "message": "See depended up CL that causes build-breakage. That CL also depends on this one as they must be atomically submitted together to not have build-breakage.",
+      "revId": "c007590d3b81c44ac819c976679fe75054b56971",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
