@@ -22,6 +22,29 @@
       },
       "revId": "962192ad46567b219dae02dc5b13c93270584c24",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f00f2ee1_d1623920",
+        "filename": "common/fpsensor/fpsensor.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 846,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-02-28T15:33:26Z",
+      "side": 1,
+      "message": "Why did you change the variable name from `errcode` to `match_result`? If I read it correctly, `EC_MKBP_FP_ERRCODE` is returning an error code. \n\nMore specifically, I believe we expect this to be a `match_errcode` as the error codes are defined in such a way that the value returned by `EC_MKBP_FP_ERRCODE` depends upon state of bits 27-31 (i.e. a value of 1 could mean `EC_MKBP_FP_ENROLL_LOW_QUALITY` if enrollment is active or `EC_MKBP_FP_ERR_MATCH_NO_INTERNAL` if matching is set). Is this right @tomhughes? Is there a reason we\u0027re reusing some of the error codes rather than just enumerating all errors? It appears that we presently only have 14 error codes (out of a possible 15) and some spare bits if we needed future growth.",
+      "range": {
+        "startLine": 846,
+        "startChar": 6,
+        "endLine": 846,
+        "endChar": 18
+      },
+      "revId": "962192ad46567b219dae02dc5b13c93270584c24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
