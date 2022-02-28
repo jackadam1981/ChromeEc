@@ -49,6 +49,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b53b40c3_59e8481b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-02-28T17:14:41Z",
+      "side": 1,
+      "message": "Yes, I didn\u0027t include it here because the bug was only mentioning the  case where there are no FP enrolled and the answer was incorrect.\n\nFYI, here is the output:\n\n```\n\u003e fpenroll\n[42.972047 Waiting for finger ...]\n[44.580083 [0]Enrolling ...]\n[44.714186 [0]Enroll \u003d\u003e0 (20%)]\n...\n[48.753620 done (events:48000640)]\n[48.753676 Enroll capture: OK (100%)]\n\n\n\u003e fpmatch\n[53.420392 Waiting for finger ...]\n[54.617727 Matching/1 ...]\n[54.767549 Match \u003d\u003e3 (finger 0)]\n[54.820564 done (events:50000003)]\n[54.820620 Match: YES (3)]\n```",
+      "parentUuid": "b5bbad2f_20b7841b",
+      "range": {
+        "startLine": 20,
+        "startChar": 35,
+        "endLine": 20,
+        "endChar": 37
+      },
+      "revId": "962192ad46567b219dae02dc5b13c93270584c24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f00f2ee1_d1623920",
         "filename": "common/fpsensor/fpsensor.c",
         "patchSetId": 1
@@ -60,6 +84,30 @@
       "writtenOn": "2022-02-28T15:33:26Z",
       "side": 1,
       "message": "Why did you change the variable name from `errcode` to `match_result`? If I read it correctly, `EC_MKBP_FP_ERRCODE` is returning an error code. \n\nMore specifically, I believe we expect this to be a `match_errcode` as the error codes are defined in such a way that the value returned by `EC_MKBP_FP_ERRCODE` depends upon state of bits 27-31 (i.e. a value of 1 could mean `EC_MKBP_FP_ENROLL_LOW_QUALITY` if enrollment is active or `EC_MKBP_FP_ERR_MATCH_NO_INTERNAL` if matching is set). Is this right @tomhughes? Is there a reason we\u0027re reusing some of the error codes rather than just enumerating all errors? It appears that we presently only have 14 error codes (out of a possible 15) and some spare bits if we needed future growth.",
+      "range": {
+        "startLine": 846,
+        "startChar": 6,
+        "endLine": 846,
+        "endChar": 18
+      },
+      "revId": "962192ad46567b219dae02dc5b13c93270584c24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16acc4dd_ede22ed3",
+        "filename": "common/fpsensor/fpsensor.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 846,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-02-28T17:14:41Z",
+      "side": 1,
+      "message": "Good question! I had found `errocode` to be too generic and wanted to give it a more descriptive name. Looking at the implementation of `fp_match_success()` I noticed that the input variable was called `match_result` and thought I would reuse it here.\n\nI agree with your comment and `match_errcode` is a more appropriate name.\n\nI\u0027ll let Tom comment on the last part.",
+      "parentUuid": "f00f2ee1_d1623920",
       "range": {
         "startLine": 846,
         "startChar": 6,
