@@ -16,6 +16,24 @@
       "message": "Please add a BUILD_ASSERT that checks the legacy chipset_state_mask values match the new values.\n\n```\nBUILD_ASSERT(AP_PWRSEQ_CHIPSET_STATE_HARD_OFF \u003d\u003d CHIPSET_STATE_HARD_OFF)\n```",
       "revId": "2c7db17d36e65b2ff72361985ede851ed3b4f86b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0de61659_59e2386c",
+        "filename": "zephyr/shim/src/chipset_api.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-02-28T22:02:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5cef5c74_199dc5b9",
+      "revId": "2c7db17d36e65b2ff72361985ede851ed3b4f86b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
