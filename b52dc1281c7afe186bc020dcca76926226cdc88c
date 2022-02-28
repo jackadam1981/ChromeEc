@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "180a2f44_eee0b01c",
+        "filename": "docs/getting_started_quickly.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-02-28T16:49:43Z",
+      "side": 1,
+      "message": "I think we can just leave this out entirely. I\u0027m worried that it leaving it in may just confuse people since we\u0027re only providing instructions on building inside the chroot.",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 0
+      },
+      "revId": "b52dc1281c7afe186bc020dcca76926226cdc88c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05816783_bf42492e",
+        "filename": "docs/getting_started_quickly.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-02-28T16:49:43Z",
+      "side": 1,
+      "message": "nit: \"set up\"",
+      "range": {
+        "startLine": 19,
+        "startChar": 26,
+        "endLine": 19,
+        "endChar": 31
+      },
+      "revId": "b52dc1281c7afe186bc020dcca76926226cdc88c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
