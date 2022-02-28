@@ -46,6 +46,29 @@ config X86_NON_DSW_PWRSEQ_STACK_SIZE
 	  This option specifies the size of the stack used by the
 	  AP power sequencing state machine thread handler.
 
+config PLATFORM_EC_POWERSEQ_HOST_SLEEP
+	bool "Track host sleep states"
+	help
+	  Enable EC code to track the AP sleep states.  This is
+	  required for S0ix support on Intel platforms, and optional
+	  for boards without S0ix support.
+
+config PLATFORM_EC_POWER_SLEEP_FAILURE_DETECTION
+	bool "Detect failure to enter a sleep state (S0ix/S3)"
+	depends on PLATFORM_EC_POWERSEQ_HOST_SLEEP
+	help
+	  Enables detection of the AP failing to go to sleep, perhaps due to a
+	  bug in the internal SoC periodic housekeeping code.
+	  Failure information is reported via the EC_CMD_HOST_SLEEP_EVENT host
+	  command.
+
+config PLATFORM_EC_POWERSEQ_S0IX
+	bool "Enable S0ix sleep states"
+	select PLATFORM_EC_POWERSEQ_HOST_SLEEP
+	help
+	  Enable the CONFIG_POWER_S0IX platform/ec configuration
+	  option, Intel's low-power idle sleep state, also known as
+	  "modern sleep".
 endif
 
 module = AP_PWRSEQ
