@@ -54,6 +54,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8d28725_3d839567",
+        "filename": "zephyr/subsys/ap_pwrseq/signal_gpio.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-02-28T23:02:47Z",
+      "side": 1,
+      "message": "I have added the range checks.",
+      "parentUuid": "75cff0d3_fedb89aa",
+      "revId": "0487693bebc0e43718c84125e8fbf0e6ba194204",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1c0ae60e_189dbfc5",
