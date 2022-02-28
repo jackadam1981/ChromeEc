@@ -444,6 +444,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f8a169f9_3f1c5efd",
+        "filename": "zephyr/subsys/ap_pwrseq/signal_gpio.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-02-28T03:44:56Z",
+      "side": 1,
+      "message": "I did have that, and went back and forth a bit on it.\nI eventually figured that these enums do not need to be exposed outside\nthe .c files, but I am starting to think that naming the enums\nis perhaps a good thing, and the argument to the handler becomes obvious.\nSo sounds like a reasonable thing to do.",
+      "parentUuid": "b91f9531_8cf22a38",
+      "range": {
+        "startLine": 47,
+        "startChar": 33,
+        "endLine": 47,
+        "endChar": 46
+      },
+      "revId": "bd7c7ba41d3e9171aafeccf28e9b8a47b832ee54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "472a79f9_b1b33bbc",
         "filename": "zephyr/subsys/ap_pwrseq/signal_gpio.c",
         "patchSetId": 12

@@ -16,6 +16,24 @@
       "message": "I prefer this approach of listing the required signals in the device tree bindings: it\u0027s easier to discover the requirements by reading this one file, and it seems weird to write multiple nodes with different `compatible` strings for what is actually a single driver as you\u0027ve done.\n\nDescribing \"each signal is one of the types with varying fields for each\" seems tricky though. A sub-node with `child-bindings` for each signal might work, with a required `type` property (one of GPIO, VW, etc) and optional properties for the properties specific to each type.\n\nI\u0027d like to be able to write something like\n\n    slp_s3_l {\n        type \u003d \"virtual_wire\";\n    };\n    impv9_vrrdy {\n        type \u003d \"gpio\";\n        gpios \u003d \u003c\u0026gpioj 4\u003e;\n    }\n\nBut I don\u0027t think that\u0027s very feasible with how bindings files are written.\n\n---\n\nThis top-level binding could define itself as a bus (`bus: intel,ap-pwrseq`?) and the bindings for each kind of signal then have a matching `on-bus`, but since bindings search isn\u0027t restricted to only the matching bus that woulnd\u0027t do much either.\n\nA final idea could be that this binding require a phandle for each signal that can be used referring to the more specific node defining the signal. That would allow this binding to list all the required signals (and detect if optional ones are present).",
       "revId": "c7c8624e38eb678cb85b0f219378defc9f14b97d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d349c619_b48a5b68",
+        "filename": "zephyr/dts/bindings/power/intel,ap-pwrseq.yaml",
+        "patchSetId": 21
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-02-28T03:44:56Z",
+      "side": 0,
+      "message": "So we\u0027ve gone back and forth on this, and we\u0027re reaching the limits of what we can sensibly do in device tree.\nIt\u0027s certainly possible that we could use a \u0027type\u0027 here, and that we need to do is manually write the checks that verify that the appropriate properties match the type - it would be nice if device tree had some more functionality here, but it starts to get a little complicated to get it right.\nIt was actually Simon Glass that said I should use separate compatibles for the main reason you could force the use of different properties.\n\nSo one of the advantages of separate compatibles here is that they don\u0027t have to be child nodes of the main binding, they can just be anywhere in the tree.\nSo your idea is to have child bindings for this main binding that contain the enum-name and debug-name, and a phandle to a node. This node can then be checked for whatever compatible it is, and appropriately processed. So essentially we\u0027re just moving the enum-name and debug-name into child nodes of this node?\nThere are some tricky bits to this - the main one being that you are decoupling the enum name from the node; consider that more compatibles nodes may exist than you link to (but this can be checked at build time by comparing the number of child nodes with the total number of signal nodes).\n\nWith device tree there are often multiple ways to skin a cat, and most have different trade-offs. It wouldn\u0027t be surprising if we revisit this a couple more times as we get experience with the different approaches, but I am minded that we should at least get an initial implementation in so that we can go forward with it.",
+      "parentUuid": "9581a51b_2c2376ab",
+      "revId": "c7c8624e38eb678cb85b0f219378defc9f14b97d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
