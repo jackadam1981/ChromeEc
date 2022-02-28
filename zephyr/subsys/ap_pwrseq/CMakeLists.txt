@@ -3,6 +3,7 @@
 zephyr_include_directories(include)
 zephyr_library_sources(
 	ap_pwrseq_chipset_api.c
+	ap_pwrseq_host_sleep.c
 	power_signals.c
 	signal_gpio.c
 	signal_vw.c
