@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b8225af_07f76d43",
+        "filename": "board/servo_v4/board.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1347380
+      },
+      "writtenOn": "2022-02-28T03:38:46Z",
+      "side": 0,
+      "message": "This applies to both servo_v4 and servo_v4p1\u0027s:\n\nUSB identifiers like DFU don\u0027t care where they are as an absolute index since the other descriptors are used instead. Servos/Servod should likely adopt that going forward as we update systems since it\u0027ll make these systems more robust to firmware changes. The old empty interfaces are being used for DFU so they can be removed.\n\nThe USB_IFACE_UPDATE is the last one as well so this will not need to be repeated once builds have removed it.",
+      "revId": "d61aceb028b07dcf432c0c3e717c1663a74def50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
