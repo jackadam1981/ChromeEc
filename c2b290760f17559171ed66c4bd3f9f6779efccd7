@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2edd1351_15e3923b",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 526,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-02-28T05:15:25Z",
+      "side": 1,
+      "message": "The order should be swapped.",
+      "range": {
+        "startLine": 523,
+        "startChar": 1,
+        "endLine": 526,
+        "endChar": 36
+      },
+      "revId": "c2b290760f17559171ed66c4bd3f9f6779efccd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
