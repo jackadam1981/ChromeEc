@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "75cff0d3_fedb89aa",
+        "filename": "zephyr/subsys/ap_pwrseq/signal_gpio.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-02-28T23:00:19Z",
+      "side": 1,
+      "message": "Could always __ASSERT those checks if you\u0027re concerned about code size or runtime cost too. I\u0027m a fan of catching errors early.",
+      "parentUuid": "9ce3a69a_3881ab23",
+      "revId": "0487693bebc0e43718c84125e8fbf0e6ba194204",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1c0ae60e_189dbfc5",
         "filename": "zephyr/subsys/ap_pwrseq/signal_vw.c",
         "patchSetId": 21

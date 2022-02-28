@@ -34,6 +34,24 @@
       "parentUuid": "9581a51b_2c2376ab",
       "revId": "c7c8624e38eb678cb85b0f219378defc9f14b97d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a0f7d2cf_83348db6",
+        "filename": "zephyr/dts/bindings/power/intel,ap-pwrseq.yaml",
+        "patchSetId": 21
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-02-28T23:00:19Z",
+      "side": 0,
+      "message": "Yeah, I\u0027m not convinced my way is really any better since it\u0027s kind of awkward to express with bindings. It seems fine as you\u0027ve written, and if you got a suggestion to do it this way from somebody else I don\u0027t feel strongly enough to disagree.",
+      "parentUuid": "d349c619_b48a5b68",
+      "revId": "c7c8624e38eb678cb85b0f219378defc9f14b97d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
