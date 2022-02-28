@@ -18,4 +18,17 @@ int ap_power_get_lazy_wake_mask(
 void ap_power_reset_host_sleep_state(void);
 #endif /* CONFIG_AP_PWRSEQ_S0IX */
 
+/* For S0ix path, flag to notify sleep change */
+enum ap_power_sleep_type {
+	AP_POWER_SLEEP_NONE,
+	AP_POWER_SLEEP_SUSPEND,
+	AP_POWER_SLEEP_RESUME,
+};
+
+void ap_power_set_active_wake_mask(void);
+void ap_power_sleep_set_notify(enum ap_power_sleep_type new_state);
+void ap_power_sleep_notify_transition(enum ap_power_sleep_type check_state);
+int ap_power_get_lazy_wake_mask(
+	enum power_states_ndsx state, host_event_t *mask);
+
 #endif /* __AP_PWRSEQ_HOST_SLEEP_H */

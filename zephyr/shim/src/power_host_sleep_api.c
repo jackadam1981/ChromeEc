@@ -28,3 +28,12 @@ int ap_power_get_lazy_wake_mask(
 {
 	return get_lazy_wake_mask(translate_ap_power_state(state), mask);
 }
+
+#if defined(CONFIG_PLATFORM_EC_POWERSEQ_HOST_SLEEP)
+void power_chipset_handle_host_sleep_event(
+		enum host_sleep_event state,
+		struct host_sleep_event_context *ctx)
+{
+	ap_power_chipset_handle_host_sleep_event(state, ctx);
+}
+#endif
