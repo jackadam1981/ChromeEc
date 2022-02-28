@@ -6,6 +6,7 @@
 #ifndef __X86_COMMON_PWRSEQ_H__
 #define __X86_COMMON_PWRSEQ_H__
 
+#include <power_host_sleep.h>
 #include <power_signals.h>
 #include <x86_power_signals.h>
 #include <logging/log.h>
@@ -29,6 +30,10 @@ enum power_states_ndsx {
 	SYS_POWER_STATE_S3,
 	/* AP is in active state */
 	SYS_POWER_STATE_S0,
+#ifdef CONFIG_PLATFORM_EC_POWERSEQ_S0IX
+	/* AP is in standby; cache is flushed to RAM */
+	SYS_POWER_STATE_S0ix,
+#endif
 
 	/*
 	 * Intermediate power up states
@@ -41,6 +46,9 @@ enum power_states_ndsx {
 	SYS_POWER_STATE_S4S3,
 	/* Determine if Suspend to RAM is de-asserted */
 	SYS_POWER_STATE_S3S0,
+#ifdef CONFIG_PLATFORM_EC_POWERSEQ_S0IX
+	SYS_POWER_STATE_S0ixS0,
+#endif
 
 	/*
 	 * Intermediate power down states
@@ -53,6 +61,9 @@ enum power_states_ndsx {
 	SYS_POWER_STATE_S3S4,
 	/* Determine if Suspend to RAM is asserted */
 	SYS_POWER_STATE_S0S3,
+#ifdef CONFIG_PLATFORM_EC_POWERSEQ_S0IX
+	SYS_POWER_STATE_S0S0ix,
+#endif
 };
 
 /* This encapsulates the attributes of the state machine */
@@ -69,5 +80,22 @@ struct pwrseq_context {
 
 #define AP_PWRSEQ_DT_VALUE(p)	\
 	DT_PROP(DT_COMPAT_GET_ANY_STATUS_OKAY(intel_ap_pwrseq), p)
+
+static inline enum power_state convert_ap_power_state_to_shim(
+	enum power_states_ndsx ap_power_state)
+{
+	switch (ap_power_state) {
+	case SYS_POWER_STATE_S5:
+		return POWER_S5;
+	case SYS_POWER_STATE_S3:
+			return POWER_S3;
+#ifdef CONFIG_PLATFORM_EC_POWERSEQ_S0IX
+	case SYS_POWER_STATE_S0ix:
+		return POWER_S0ix;
+#endif
+	default:
+		return 0;
+	}
+}
 
 #endif /* __X86_COMMON_PWRSEQ_H__ */
