@@ -5310,6 +5310,536 @@ struct ec_response_smart_discharge {
 	struct smart_discharge_zone dzone;
 };
 
+<<<<<<< HEAD   (a39950 battery: Set host's low battery shutdown SoC to 4%)
+=======
+/*****************************************************************************/
+/* Voltage regulator controls */
+
+/*
+ * Get basic info of voltage regulator for given index.
+ *
+ * Returns the regulator name and supported voltage list in mV.
+ */
+#define EC_CMD_REGULATOR_GET_INFO 0x012C
+
+/* Maximum length of regulator name */
+#define EC_REGULATOR_NAME_MAX_LEN 16
+
+/* Maximum length of the supported voltage list. */
+#define EC_REGULATOR_VOLTAGE_MAX_COUNT 16
+
+struct ec_params_regulator_get_info {
+	uint32_t index;
+} __ec_align4;
+
+struct ec_response_regulator_get_info {
+	char name[EC_REGULATOR_NAME_MAX_LEN];
+	uint16_t num_voltages;
+	uint16_t voltages_mv[EC_REGULATOR_VOLTAGE_MAX_COUNT];
+} __ec_align2;
+
+/*
+ * Configure the regulator as enabled / disabled.
+ */
+#define EC_CMD_REGULATOR_ENABLE 0x012D
+
+struct ec_params_regulator_enable {
+	uint32_t index;
+	uint8_t enable;
+} __ec_align4;
+
+/*
+ * Query if the regulator is enabled.
+ *
+ * Returns 1 if the regulator is enabled, 0 if not.
+ */
+#define EC_CMD_REGULATOR_IS_ENABLED 0x012E
+
+struct ec_params_regulator_is_enabled {
+	uint32_t index;
+} __ec_align4;
+
+struct ec_response_regulator_is_enabled {
+	uint8_t enabled;
+} __ec_align1;
+
+/*
+ * Set voltage for the voltage regulator within the range specified.
+ *
+ * The driver should select the voltage in range closest to min_mv.
+ *
+ * Also note that this might be called before the regulator is enabled, and the
+ * setting should be in effect after the regulator is enabled.
+ */
+#define EC_CMD_REGULATOR_SET_VOLTAGE 0x012F
+
+struct ec_params_regulator_set_voltage {
+	uint32_t index;
+	uint32_t min_mv;
+	uint32_t max_mv;
+} __ec_align4;
+
+/*
+ * Get the currently configured voltage for the voltage regulator.
+ *
+ * Note that this might be called before the regulator is enabled, and this
+ * should return the configured output voltage if the regulator is enabled.
+ */
+#define EC_CMD_REGULATOR_GET_VOLTAGE 0x0130
+
+struct ec_params_regulator_get_voltage {
+	uint32_t index;
+} __ec_align4;
+
+struct ec_response_regulator_get_voltage {
+	uint32_t voltage_mv;
+} __ec_align4;
+
+/*
+ * Gather all discovery information for the given port and partner type.
+ *
+ * Note that if discovery has not yet completed, only the currently completed
+ * responses will be filled in.   If the discovery data structures are changed
+ * in the process of the command running, BUSY will be returned.
+ *
+ * VDO field sizes are set to the maximum possible number of VDOs a VDM may
+ * contain, while the number of SVIDs here is selected to fit within the PROTO2
+ * maximum parameter size.
+ */
+#define EC_CMD_TYPEC_DISCOVERY 0x0131
+
+enum typec_partner_type {
+	TYPEC_PARTNER_SOP = 0,
+	TYPEC_PARTNER_SOP_PRIME = 1,
+};
+
+struct ec_params_typec_discovery {
+	uint8_t port;
+	uint8_t partner_type; /* enum typec_partner_type */
+} __ec_align1;
+
+struct svid_mode_info {
+	uint16_t svid;
+	uint16_t mode_count;  /* Number of modes partner sent */
+	uint32_t mode_vdo[6]; /* Max VDOs allowed after VDM header is 6 */
+};
+
+struct ec_response_typec_discovery {
+	uint8_t identity_count;    /* Number of identity VDOs partner sent */
+	uint8_t svid_count;	   /* Number of SVIDs partner sent */
+	uint16_t reserved;
+	uint32_t discovery_vdo[6]; /* Max VDOs allowed after VDM header is 6 */
+	struct svid_mode_info svids[0];
+} __ec_align1;
+
+/* USB Type-C commands for AP-controlled device policy. */
+#define EC_CMD_TYPEC_CONTROL 0x0132
+
+enum typec_control_command {
+	TYPEC_CONTROL_COMMAND_EXIT_MODES,
+	TYPEC_CONTROL_COMMAND_CLEAR_EVENTS,
+	TYPEC_CONTROL_COMMAND_ENTER_MODE,
+	TYPEC_CONTROL_COMMAND_TBT_UFP_REPLY,
+};
+
+/* Modes (USB or alternate) that a type-C port may enter. */
+enum typec_mode {
+	TYPEC_MODE_DP,
+	TYPEC_MODE_TBT,
+	TYPEC_MODE_USB4,
+};
+
+/* Replies the AP may specify to the TBT EnterMode command as a UFP */
+enum typec_tbt_ufp_reply {
+	TYPEC_TBT_UFP_REPLY_NAK,
+	TYPEC_TBT_UFP_REPLY_ACK,
+};
+
+struct ec_params_typec_control {
+	uint8_t port;
+	uint8_t command;	/* enum typec_control_command */
+	uint16_t reserved;
+
+	/*
+	 * This section will be interpreted based on |command|. Define a
+	 * placeholder structure to avoid having to increase the size and bump
+	 * the command version when adding new sub-commands.
+	 */
+	union {
+		/* Used for CLEAR_EVENTS */
+		uint32_t clear_events_mask;
+		/* Used for ENTER_MODE - enum typec_mode */
+		uint8_t mode_to_enter;
+		/* Used for TBT_UFP_REPLY - enum typec_tbt_ufp_reply */
+		uint8_t tbt_ufp_reply;
+		uint8_t placeholder[128];
+	};
+} __ec_align1;
+
+/*
+ * Gather all status information for a port.
+ *
+ * Note: this covers many of the return fields from the deprecated
+ * EC_CMD_USB_PD_CONTROL command, except those that are redundant with the
+ * discovery data.  The "enum pd_cc_states" is defined with the deprecated
+ * EC_CMD_USB_PD_CONTROL command.
+ *
+ * This also combines in the EC_CMD_USB_PD_MUX_INFO flags.
+ */
+#define EC_CMD_TYPEC_STATUS 0x0133
+
+/*
+ * Power role.
+ *
+ * Note this is also used for PD header creation, and values align to those in
+ * the Power Delivery Specification Revision 3.0 (See
+ * 6.2.1.1.4 Port Power Role).
+ */
+enum pd_power_role {
+	PD_ROLE_SINK = 0,
+	PD_ROLE_SOURCE = 1
+};
+
+/*
+ * Data role.
+ *
+ * Note this is also used for PD header creation, and the first two values
+ * align to those in the Power Delivery Specification Revision 3.0 (See
+ * 6.2.1.1.6 Port Data Role).
+ */
+enum pd_data_role {
+	PD_ROLE_UFP = 0,
+	PD_ROLE_DFP = 1,
+	PD_ROLE_DISCONNECTED = 2,
+};
+
+enum pd_vconn_role {
+	PD_ROLE_VCONN_OFF = 0,
+	PD_ROLE_VCONN_SRC = 1,
+};
+
+/*
+ * Note: BIT(0) may be used to determine whether the polarity is CC1 or CC2,
+ * regardless of whether a debug accessory is connected.
+ */
+enum tcpc_cc_polarity {
+	/*
+	 * _CCx: is used to indicate the polarity while not connected to
+	 * a Debug Accessory.  Only one CC line will assert a resistor and
+	 * the other will be open.
+	 */
+	POLARITY_CC1 = 0,
+	POLARITY_CC2 = 1,
+
+	/*
+	 * _CCx_DTS is used to indicate the polarity while connected to a
+	 * SRC Debug Accessory.  Assert resistors on both lines.
+	 */
+	POLARITY_CC1_DTS = 2,
+	POLARITY_CC2_DTS = 3,
+
+	/*
+	 * The current TCPC code relies on these specific POLARITY values.
+	 * Adding in a check to verify if the list grows for any reason
+	 * that this will give a hint that other places need to be
+	 * adjusted.
+	 */
+	POLARITY_COUNT
+};
+
+#define MODE_DP_PIN_A	BIT(0)
+#define MODE_DP_PIN_B	BIT(1)
+#define MODE_DP_PIN_C	BIT(2)
+#define MODE_DP_PIN_D	BIT(3)
+#define MODE_DP_PIN_E	BIT(4)
+#define MODE_DP_PIN_F	BIT(5)
+#define MODE_DP_PIN_ALL	GENMASK(5, 0)
+
+#define PD_STATUS_EVENT_SOP_DISC_DONE		BIT(0)
+#define PD_STATUS_EVENT_SOP_PRIME_DISC_DONE	BIT(1)
+#define PD_STATUS_EVENT_HARD_RESET		BIT(2)
+#define PD_STATUS_EVENT_DISCONNECTED		BIT(3)
+
+/*
+ * Encode and decode for BCD revision response
+ *
+ * Note: the major revision set is written assuming that the value given is the
+ * Specification Revision from the PD header, which currently only maps to PD
+ * 1.0-3.0 with the major revision being one greater than the binary value.
+ */
+#define PD_STATUS_REV_SET_MAJOR(r)	((r + 1) << 12)
+#define PD_STATUS_REV_GET_MAJOR(r)	((r >> 12) & 0xF)
+#define PD_STATUS_REV_GET_MINOR(r)	((r >> 8)  & 0xF)
+
+/*
+ * Decode helpers for Source and Sink Capability PDOs
+ *
+ * Note: The Power Delivery Specification should be considered the ultimate
+ * source of truth on the decoding of these PDOs
+ */
+#define PDO_TYPE_FIXED     (0 << 30)
+#define PDO_TYPE_BATTERY   (1 << 30)
+#define PDO_TYPE_VARIABLE  (2 << 30)
+#define PDO_TYPE_AUGMENTED (3 << 30)
+#define PDO_TYPE_MASK      (3 << 30)
+
+/*
+ * From Table 6-9 and Table 6-14 PD Rev 3.0 Ver 2.0
+ *
+ * <31:30> : Fixed Supply
+ * <29>    : Dual-Role Power
+ * <28>    : SNK/SRC dependent
+ * <27>    : Unconstrained Power
+ * <26>    : USB Communications Capable
+ * <25>    : Dual-Role Data
+ * <24:20> : SNK/SRC dependent
+ * <19:10> : Voltage in 50mV Units
+ * <9:0>   : Maximum Current in 10mA units
+ */
+#define PDO_FIXED_DUAL_ROLE	BIT(29)
+#define PDO_FIXED_UNCONSTRAINED	BIT(27)
+#define PDO_FIXED_COMM_CAP	BIT(26)
+#define PDO_FIXED_DATA_SWAP	BIT(25)
+#define PDO_FIXED_FRS_CURR_MASK GENMASK(24, 23) /* Sink Cap only */
+#define PDO_FIXED_VOLTAGE(p)	((p >> 10 & 0x3FF) * 50)
+#define PDO_FIXED_CURRENT(p)	((p & 0x3FF) * 10)
+
+/*
+ * From Table 6-12 and Table 6-16 PD Rev 3.0 Ver 2.0
+ *
+ * <31:30> : Battery
+ * <29:20> : Maximum Voltage in 50mV units
+ * <19:10> : Minimum Voltage in 50mV units
+ * <9:0>   : Maximum Allowable Power in 250mW units
+ */
+#define PDO_BATT_MAX_VOLTAGE(p)	((p >> 20 & 0x3FF) * 50)
+#define PDO_BATT_MIN_VOLTAGE(p)	((p >> 10 & 0x3FF) * 50)
+#define PDO_BATT_MAX_POWER(p)	((p & 0x3FF) * 250)
+
+/*
+ * From Table 6-11 and Table 6-15 PD Rev 3.0 Ver 2.0
+ *
+ * <31:30> : Variable Supply (non-Battery)
+ * <29:20> : Maximum Voltage in 50mV units
+ * <19:10> : Minimum Voltage in 50mV units
+ * <9:0>   : Operational Current in 10mA units
+ */
+#define PDO_VAR_MAX_VOLTAGE(p)	((p >> 20 & 0x3FF) * 50)
+#define PDO_VAR_MIN_VOLTAGE(p)	((p >> 10 & 0x3FF) * 50)
+#define PDO_VAR_MAX_CURRENT(p)	((p & 0x3FF) * 10)
+
+/*
+ * From Table 6-13 and Table 6-17 PD Rev 3.0 Ver 2.0
+ *
+ * Note this type is reserved in PD 2.0, and only one type of APDO is
+ * supported as of the cited version.
+ *
+ * <31:30> : Augmented Power Data Object
+ * <29:28> : Programmable Power Supply
+ * <27>    : PPS Power Limited
+ * <26:25> : Reserved
+ * <24:17> : Maximum Voltage in 100mV increments
+ * <16>    : Reserved
+ * <15:8>  : Minimum Voltage in 100mV increments
+ * <7>     : Reserved
+ * <6:0>   : Maximum Current in 50mA increments
+ */
+#define PDO_AUG_MAX_VOLTAGE(p)	((p >> 17 & 0xFF) * 100)
+#define PDO_AUG_MIN_VOLTAGE(p)	((p >> 8 & 0xFF) * 100)
+#define PDO_AUG_MAX_CURRENT(p)	((p & 0x7F) * 50)
+
+struct ec_params_typec_status {
+	uint8_t port;
+} __ec_align1;
+
+struct ec_response_typec_status {
+	uint8_t pd_enabled;		/* PD communication enabled - bool */
+	uint8_t dev_connected;		/* Device connected - bool */
+	uint8_t sop_connected;		/* Device is SOP PD capable - bool */
+	uint8_t source_cap_count;	/* Number of Source Cap PDOs */
+
+	uint8_t power_role;		/* enum pd_power_role */
+	uint8_t data_role;		/* enum pd_data_role */
+	uint8_t vconn_role;		/* enum pd_vconn_role */
+	uint8_t sink_cap_count;		/* Number of Sink Cap PDOs */
+
+	uint8_t polarity;		/* enum tcpc_cc_polarity */
+	uint8_t cc_state;		/* enum pd_cc_states */
+	uint8_t dp_pin;			/* DP pin mode (MODE_DP_IN_[A-E]) */
+	uint8_t mux_state;		/* USB_PD_MUX* - encoded mux state */
+
+	char tc_state[32];		/* TC state name */
+
+	uint32_t events;		/* PD_STATUS_EVENT bitmask */
+
+	/*
+	 * BCD PD revisions for partners
+	 *
+	 * The format has the PD major reversion in the upper nibble, and PD
+	 * minor version in the next nibble.  Following two nibbles are
+	 * currently 0.
+	 * ex. PD 3.2 would map to 0x3200
+	 *
+	 * PD major/minor will be 0 if no PD device is connected.
+	 */
+	uint16_t sop_revision;
+	uint16_t sop_prime_revision;
+
+	uint32_t source_cap_pdos[7];	/* Max 7 PDOs can be present */
+
+	uint32_t sink_cap_pdos[7];	/* Max 7 PDOs can be present */
+} __ec_align1;
+
+/**
+ * Get the number of peripheral charge ports
+ */
+#define EC_CMD_PCHG_COUNT 0x0134
+
+#define EC_PCHG_MAX_PORTS 8
+
+struct ec_response_pchg_count {
+	uint8_t port_count;
+} __ec_align1;
+
+/**
+ * Get the status of a peripheral charge port
+ */
+#define EC_CMD_PCHG 0x0135
+
+struct ec_params_pchg {
+	uint8_t port;
+} __ec_align1;
+
+struct ec_response_pchg {
+	uint32_t error;			/* enum pchg_error */
+	uint8_t state;			/* enum pchg_state state */
+	uint8_t battery_percentage;
+	uint8_t unused0;
+	uint8_t unused1;
+	/* Fields added in version 1 */
+	uint32_t fw_version;
+	uint32_t dropped_event_count;
+} __ec_align4;
+
+struct ec_response_pchg_v2 {
+	uint32_t error;			/* enum pchg_error */
+	uint8_t state;			/* enum pchg_state state */
+	uint8_t battery_percentage;
+	uint8_t unused0;
+	uint8_t unused1;
+	/* Fields added in version 1 */
+	uint32_t fw_version;
+	uint32_t dropped_event_count;
+	/* Fields added in version 2 */
+	uint32_t dropped_host_event_count;
+} __ec_align4;
+
+enum pchg_state {
+	/* Charger is reset and not initialized. */
+	PCHG_STATE_RESET = 0,
+	/* Charger is initialized or disabled. */
+	PCHG_STATE_INITIALIZED,
+	/* Charger is enabled and ready to detect a device. */
+	PCHG_STATE_ENABLED,
+	/* Device is in proximity. */
+	PCHG_STATE_DETECTED,
+	/* Device is being charged. */
+	PCHG_STATE_CHARGING,
+	/* Device is fully charged. It implies DETECTED (& not charging). */
+	PCHG_STATE_FULL,
+	/* In download (a.k.a. firmware update) mode */
+	PCHG_STATE_DOWNLOAD,
+	/* In download mode. Ready for receiving data. */
+	PCHG_STATE_DOWNLOADING,
+	/* Device is ready for data communication. */
+	PCHG_STATE_CONNECTED,
+	/* Put no more entry below */
+	PCHG_STATE_COUNT,
+};
+
+#define EC_PCHG_STATE_TEXT { \
+	[PCHG_STATE_RESET] = "RESET", \
+	[PCHG_STATE_INITIALIZED] = "INITIALIZED", \
+	[PCHG_STATE_ENABLED] = "ENABLED", \
+	[PCHG_STATE_DETECTED] = "DETECTED", \
+	[PCHG_STATE_CHARGING] = "CHARGING", \
+	[PCHG_STATE_FULL] = "FULL", \
+	[PCHG_STATE_DOWNLOAD] = "DOWNLOAD", \
+	[PCHG_STATE_DOWNLOADING] = "DOWNLOADING", \
+	[PCHG_STATE_CONNECTED] = "CONNECTED", \
+	}
+
+/**
+ * Update firmware of peripheral chip
+ */
+#define EC_CMD_PCHG_UPDATE 0x0136
+
+/* Port number is encoded in bit[28:31]. */
+#define EC_MKBP_PCHG_PORT_SHIFT		28
+/* Utility macros for converting MKBP event <-> port number. */
+#define EC_MKBP_PCHG_EVENT_TO_PORT(e)	(((e) >> EC_MKBP_PCHG_PORT_SHIFT) & 0xf)
+#define EC_MKBP_PCHG_PORT_TO_EVENT(p)	((p) << EC_MKBP_PCHG_PORT_SHIFT)
+/* Utility macro for extracting event bits. */
+#define EC_MKBP_PCHG_EVENT_MASK(e)	((e) \
+					& GENMASK(EC_MKBP_PCHG_PORT_SHIFT-1, 0))
+
+#define EC_MKBP_PCHG_UPDATE_OPENED	BIT(0)
+#define EC_MKBP_PCHG_WRITE_COMPLETE	BIT(1)
+#define EC_MKBP_PCHG_UPDATE_CLOSED	BIT(2)
+#define EC_MKBP_PCHG_UPDATE_ERROR	BIT(3)
+#define EC_MKBP_PCHG_DEVICE_EVENT	BIT(4)
+
+enum ec_pchg_update_cmd {
+	/* Reset chip to normal mode. */
+	EC_PCHG_UPDATE_CMD_RESET_TO_NORMAL = 0,
+	/* Reset and put a chip in update (a.k.a. download) mode. */
+	EC_PCHG_UPDATE_CMD_OPEN,
+	/* Write a block of data containing FW image. */
+	EC_PCHG_UPDATE_CMD_WRITE,
+	/* Close update session. */
+	EC_PCHG_UPDATE_CMD_CLOSE,
+	/* End of commands */
+	EC_PCHG_UPDATE_CMD_COUNT,
+};
+
+struct ec_params_pchg_update {
+	/* PCHG port number */
+	uint8_t port;
+	/* enum ec_pchg_update_cmd */
+	uint8_t cmd;
+	/* Padding */
+	uint8_t reserved0;
+	uint8_t reserved1;
+	/* Version of new firmware */
+	uint32_t version;
+	/* CRC32 of new firmware */
+	uint32_t crc32;
+	/* Address in chip memory where <data> is written to */
+	uint32_t addr;
+	/* Size of <data> */
+	uint32_t size;
+	/* Partial data of new firmware */
+	uint8_t data[];
+} __ec_align4;
+
+BUILD_ASSERT(EC_PCHG_UPDATE_CMD_COUNT
+	     < BIT(sizeof(((struct ec_params_pchg_update *)0)->cmd)*8));
+
+struct ec_response_pchg_update {
+	/* Block size */
+	uint32_t block_size;
+} __ec_align4;
+
+
+/*****************************************************************************
+ * Get displayable charge percent
+ *
+ * Return
+ * EC_RES_SUCCESS : Values successfully read
+ * EC_RES_UNAVAILABLE : Values are currently unavailable,
+ *			e.g. unresponsive battery.
+ */
+>>>>>>> CHANGE (b135e4 battery: Do not return display_soc if data is bad)
 #define EC_CMD_DISPLAY_SOC 0x0137
 
 struct ec_response_display_soc {
