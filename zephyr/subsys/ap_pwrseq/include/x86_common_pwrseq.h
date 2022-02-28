@@ -29,6 +29,10 @@ enum power_states_ndsx {
 	SYS_POWER_STATE_S3,
 	/* AP is in active state */
 	SYS_POWER_STATE_S0,
+#ifdef CONFIG_PLATFORM_EC_POWERSEQ_S0IX
+	/* AP is in standby; cache is flushed to RAM */
+	SYS_POWER_STATE_S0ix,
+#endif
 
 	/*
 	 * Intermediate power up states
@@ -41,6 +45,9 @@ enum power_states_ndsx {
 	SYS_POWER_STATE_S4S3,
 	/* Determine if Suspend to RAM is de-asserted */
 	SYS_POWER_STATE_S3S0,
+#ifdef CONFIG_PLATFORM_EC_POWERSEQ_S0IX
+	SYS_POWER_STATE_S0ixS0,
+#endif
 
 	/*
 	 * Intermediate power down states
@@ -53,6 +60,9 @@ enum power_states_ndsx {
 	SYS_POWER_STATE_S3S4,
 	/* Determine if Suspend to RAM is asserted */
 	SYS_POWER_STATE_S0S3,
+#ifdef CONFIG_PLATFORM_EC_POWERSEQ_S0IX
+	SYS_POWER_STATE_S0S0ix,
+#endif
 };
 
 /* This encapsulates the attributes of the state machine */
