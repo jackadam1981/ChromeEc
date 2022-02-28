@@ -16,6 +16,8 @@
 
 #if defined(CONFIG_AP_PWRSEQ)
 
+#include "atomic.h"
+
 /*
  * From ec_commands.h
  * Host event codes. ACPI query EC command uses code 0 to mean "no event
@@ -87,8 +89,40 @@ enum host_sleep_event power_get_host_sleep_state(void);
 void power_set_host_sleep_state(enum host_sleep_event state);
 #endif /* CONFIG_PLATFORM_EC_POWERSEQ_HOST_SLEEP */
 
+/* system.h */
+/* Low power modes for idle API */
+enum {
+	/*
+	 * Sleep masks to prevent going in to deep sleep.
+	 */
+	SLEEP_MASK_AP_RUN     = BIT(0), /* the main CPU is running */
+	SLEEP_MASK_UART       = BIT(1), /* UART communication ongoing */
+	SLEEP_MASK_I2C_CONTROLLER = BIT(2), /* I2C controller comms ongoing */
+	SLEEP_MASK_CHARGING   = BIT(3), /* Charging loop ongoing */
+	SLEEP_MASK_USB_PWR    = BIT(4), /* USB power loop ongoing */
+	SLEEP_MASK_USB_PD     = BIT(5), /* USB PD device connected */
+	SLEEP_MASK_SPI        = BIT(6), /* SPI communications ongoing */
+	SLEEP_MASK_I2C_PERIPHERAL = BIT(7), /* I2C peripheral comms ongoing */
+	SLEEP_MASK_FAN        = BIT(8), /* Fan control loop ongoing */
+	SLEEP_MASK_USB_DEVICE = BIT(9), /* Generic USB device in use */
+	SLEEP_MASK_PWM        = BIT(10), /* PWM output is enabled */
+	/* Physical presence detection ongoing */
+	SLEEP_MASK_PHYSICAL_PRESENCE  = BIT(11),
+	SLEEP_MASK_PLL        = BIT(12), /* High-speed PLL in-use */
+	SLEEP_MASK_ADC        = BIT(13), /* ADC conversion ongoing */
+	SLEEP_MASK_EMMC       = BIT(14), /* eMMC emulation ongoing */
+	SLEEP_MASK_FORCE_NO_DSLEEP    = BIT(15), /* Force disable. */
+	/*
+	 * Sleep masks to prevent using slow speed clock in deep sleep.
+	 */
+	SLEEP_MASK_JTAG     = BIT(16), /* JTAG is in use. */
+	SLEEP_MASK_CONSOLE  = BIT(17), /* Console is in use. */
+	SLEEP_MASK_FORCE_NO_LOW_SPEED = BIT(31)  /* Force disable. */
+};
+
 /* host_command.h */
 typedef uint64_t host_event_t;
+extern void host_set_single_event(enum host_event_code event);
 extern uint8_t lpc_is_active_wm_set_by_host(void);
 extern int get_lazy_wake_mask(enum power_state state, host_event_t *mask);
 
@@ -105,6 +139,18 @@ extern host_event_t lpc_get_host_event_mask(
 	enum lpc_host_event_type type);
 extern void lpc_set_host_event_mask(
 	enum lpc_host_event_type type, host_event_t mask);
+
+extern atomic_t sleep_mask;
+
+static inline void enable_sleep(uint32_t mask)
+{
+	atomic_clear_bits(&sleep_mask, mask);
+}
+
+static inline void disable_sleep(uint32_t mask)
+{
+	atomic_or(&sleep_mask, mask);
+}
 
 #endif /* CONFIG_AP_PWRSEQ */
 
