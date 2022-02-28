@@ -38,6 +38,7 @@ struct common_pwrseq_config {
 #if PWRSEQ_GPIO_PRESENT(ec_soc_dsw_pwrok_gpios)
 	const struct gpio_dt_spec ec_soc_dsw_pwrok;
 #endif
+	const struct gpio_dt_spec slp_s0_l;
 	const struct gpio_dt_spec slp_s3_l;
 	const struct gpio_dt_spec all_sys_pwrgd;
 	const struct gpio_dt_spec slp_sus_l;
