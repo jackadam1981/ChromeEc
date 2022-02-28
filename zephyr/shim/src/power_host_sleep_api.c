@@ -37,4 +37,3 @@ void power_chipset_handle_host_sleep_event(
 	ap_power_chipset_handle_host_sleep_event(state, ctx);
 }
 #endif
-
