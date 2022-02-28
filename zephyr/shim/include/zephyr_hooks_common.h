@@ -6,6 +6,7 @@
 #ifndef __ZEPHYR_HOOKS_COMMON_H_
 #define __ZEPHYR_HOOKS_COMMON_H_
 
+#include "atomic.h"
 /*
  * This is from hooks.h to use the shimmed hooks from legacy EC
  * Without this the definition is not available to zephyr inbuilt code
@@ -227,4 +228,14 @@ enum hook_type {
  */
 void hook_notify(enum hook_type type);
 
+extern atomic_t sleep_mask;
+
+static inline void enable_sleep(uint32_t mask)
+{
+	atomic_clear_bits(&sleep_mask, mask);
+}
+static inline void disable_sleep(uint32_t mask)
+{
+	atomic_or(&sleep_mask, mask);
+}
 #endif /* __ZEPHYR_HOOKS_COMMON_H_ */
