@@ -22,6 +22,30 @@
       },
       "revId": "77e45a39da69255548fdc0d979775a4b1c44ca4d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e2e69709_32b612c1",
+        "filename": "common/fpsensor/fpsensor.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 846,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-03-01T00:35:38Z",
+      "side": 1,
+      "message": "Makes sense, I had initially changed it to `int` to align with the input arguments of `fp_match_success()`. Moved it back to `uint32_t`.",
+      "parentUuid": "4f8ed1e3_891e5ff9",
+      "range": {
+        "startLine": 846,
+        "startChar": 2,
+        "endLine": 846,
+        "endChar": 5
+      },
+      "revId": "77e45a39da69255548fdc0d979775a4b1c44ca4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
