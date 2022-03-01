@@ -83,7 +83,7 @@ enum fan_mode {
 };
 
 /* Fan status data structure */
-struct fan_status_t {
+struct fan_data {
 	/* Fan mode */
 	enum fan_mode current_fan_mode;
 	/* Actual rpm */
@@ -103,7 +103,7 @@ struct fan_status_t {
 };
 
 /* Data structure to define PWM and tachometer. */
-struct fan_control_t {
+struct fan_config {
 	const struct device *pwm;
 	uint32_t channel;
 	pwm_flags_t flags;
@@ -112,15 +112,15 @@ struct fan_control_t {
 	const struct device *tach;
 };
 
-static struct fan_status_t fan_status[FAN_CH_COUNT];
-static const struct fan_control_t fan_control[] = {
+static struct fan_data fan_status[FAN_CH_COUNT];
+static const struct fan_config fan_control[] = {
 	DT_INST_FOREACH_CHILD(0, FAN_CONTROL_INST)
 };
 
 static void fan_pwm_update(int ch)
 {
-	const struct fan_control_t *ctrl = &fan_control[ch];
-	struct fan_status_t *status = &fan_status[ch];
+	const struct fan_config *ctrl = &fan_control[ch];
+	struct fan_data *status = &fan_status[ch];
 	uint32_t pulse_us;
 	int ret;
 
@@ -231,7 +231,7 @@ static void fan_adjust_duty(int ch, int rpm_diff, int duty)
  */
 enum fan_status fan_smart_control(int ch)
 {
-	struct fan_status_t *status = &fan_status[ch];
+	struct fan_data *status = &fan_status[ch];
 	int duty, rpm_diff;
 	int rpm_actual = status->rpm_actual;
 	int rpm_target = status->rpm_target;
@@ -275,7 +275,7 @@ enum fan_status fan_smart_control(int ch)
 
 static void fan_tick_func_rpm(int ch)
 {
-	struct fan_status_t *status = &fan_status[ch];
+	struct fan_data *status = &fan_status[ch];
 
 	if (!fan_get_enabled(ch))
 		return;
@@ -289,7 +289,7 @@ static void fan_tick_func_rpm(int ch)
 
 static void fan_tick_func_duty(int ch)
 {
-	struct fan_status_t *status = &fan_status[ch];
+	struct fan_data *status = &fan_status[ch];
 
 	/* Fan in duty mode still want rpm_actual being updated. */
 	if (status->flags & FAN_USE_RPM_MODE) {
@@ -376,7 +376,7 @@ void fan_set_enabled(int ch, int enabled)
 
 void fan_channel_setup(int ch, unsigned int flags)
 {
-	struct fan_status_t *status = fan_status + ch;
+	struct fan_data *status = fan_status + ch;
 
 	status->flags = flags;
 	/* Set default fan states */
