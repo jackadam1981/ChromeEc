@@ -27,7 +27,7 @@ const struct pwm_t pwm_channels[] = {
 	},
 	[PWM_CH_KBLIGHT] = {
 		.channel = 3,
-		.flags = 0,
+		.flags = PWM_CONFIG_DSLEEP,
 		/*
 		 * Set PWM frequency to multiple of 50 Hz and 60 Hz to prevent
 		 * flicker. Higher frequencies consume similar average power to
@@ -67,6 +67,6 @@ static void board_pwm_init(void)
 	/* TODO(b/190518315)
 	 * Check if need to turn to 100% after with chassis.
 	 */
-	pwm_set_duty(PWM_CH_KBLIGHT, 50);
+	pwm_set_duty(PWM_CH_KBLIGHT, 100);
 }
 DECLARE_HOOK(HOOK_INIT, board_pwm_init, HOOK_PRIO_DEFAULT);
