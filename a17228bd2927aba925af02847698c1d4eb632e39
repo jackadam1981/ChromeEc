@@ -52,6 +52,24 @@
       "parentUuid": "6d259619_9ba3915f",
       "revId": "a17228bd2927aba925af02847698c1d4eb632e39",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a30969a_a5b365ef",
+        "filename": "zephyr/subsys/ap_pwrseq/include/x86_power_signals.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2022-03-01T23:52:12Z",
+      "side": 1,
+      "message": "That is correct, it is coming from ADC comparator, however, PWR_DSW_PWROK is an input GPIO in some platforms.",
+      "parentUuid": "28a925b1_6f78e77b",
+      "revId": "a17228bd2927aba925af02847698c1d4eb632e39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
