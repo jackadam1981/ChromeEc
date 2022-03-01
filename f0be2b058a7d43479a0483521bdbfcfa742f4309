@@ -16,6 +16,24 @@
       "message": "Not sure why this is needed - in fact, the shim driver completely ignores the\nstatus of the compatible, so it is a no-op essentially (not great practice I guess).\nI\u0027d leave it out, unless you know it\u0027s needed.\nIf you find that for some reason you need it, it may be better to put it in the boards/riscv/it8xxx2 directory.",
       "revId": "f0be2b058a7d43479a0483521bdbfcfa742f4309",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f60ada49_87be07bd",
+        "filename": "zephyr/projects/nissa/nereid_overlay.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-03-01T23:26:31Z",
+      "side": 1,
+      "message": "It\u0027s default-disabled in the upstream it8xxx2.dtsi so is definitely required (build fails if I don\u0027t do this because the device doesn\u0027t get included in the build), but I\u0027ve moved it to the EC board definition.",
+      "parentUuid": "64d490e9_886b1183",
+      "revId": "f0be2b058a7d43479a0483521bdbfcfa742f4309",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
