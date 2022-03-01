@@ -20,6 +20,7 @@ import io
 import logging
 import os
 import re
+import socket
 import subprocess
 import sys
 import time
@@ -30,6 +31,7 @@ from typing import Optional, BinaryIO, List
 
 # pylint: disable=import-error
 import colorama  # type: ignore[import]
+from contextlib2 import ExitStack
 # pylint: enable=import-error
 
 EC_DIR = Path(os.path.dirname(os.path.realpath(__file__))).parent
@@ -281,15 +283,16 @@ def build(test_name: str, board_name: str, compiler: str) -> None:
     subprocess.run(cmd).check_returncode()  # pylint: disable=subprocess-run-check
 
 
-def flash(test_name: str, board: str, flasher: str, remote: str) -> bool:
+def flash(test_name: str, board: str, flasher: str, remote_ip: str,
+          remote_port: int) -> bool:
     """Flash specified test to specified board."""
     logging.info('Flashing test')
 
     cmd = []
     if flasher == JTRACE:
         cmd.append(JTRACE_FLASH_SCRIPT)
-        if remote:
-            cmd.extend(['--remote', remote])
+        if remote_ip:
+            cmd.extend(['--remote', remote_ip + ':' + str(remote_port)])
     elif flasher == SERVO_MICRO:
         cmd.append(SERVO_MICRO_FLASH_SCRIPT)
     else:
@@ -350,52 +353,52 @@ def process_console_output_line(line: bytes, test: TestConfig):
         return None
 
 
-def run_test(test: TestConfig, console: str, executor: ThreadPoolExecutor) ->\
-             bool:
+def run_test(test: TestConfig, console: io.FileIO,
+             executor: ThreadPoolExecutor) -> bool:
     """Run specified test."""
     start = time.time()
-    with open(console, 'wb+', buffering=0) as c:
-        # Wait for boot to finish
+
+    # Wait for boot to finish
+    time.sleep(1)
+    console.write('\n'.encode())
+    if test.image_to_use == ImageType.RO:
+        console.write('reboot ro\n'.encode())
         time.sleep(1)
-        c.write('\n'.encode())
-        if test.image_to_use == ImageType.RO:
-            c.write('reboot ro\n'.encode())
-            time.sleep(1)
 
-        test_cmd = 'runtest ' + ' '.join(test.test_args) + '\n'
-        c.write(test_cmd.encode())
+    test_cmd = 'runtest ' + ' '.join(test.test_args) + '\n'
+    console.write(test_cmd.encode())
 
-        while True:
-            c.flush()
-            line = readline(executor, c, 1)
-            if not line:
-                now = time.time()
-                if now - start > test.timeout_secs:
-                    logging.debug('Test timed out')
-                    return False
-                continue
+    while True:
+        console.flush()
+        line = readline(executor, console, 1)
+        if not line:
+            now = time.time()
+            if now - start > test.timeout_secs:
+                logging.debug('Test timed out')
+                return False
+            continue
 
-            logging.debug(line)
-            test.logs.append(line)
-            # Look for test_print_result() output (success or failure)
-            line_str = process_console_output_line(line, test)
-            if line_str is None:
-                # Sometimes we get non-unicode from the console (e.g., when the
-                # board reboots.) Not much we can do in this case, so we'll just
-                # ignore it.
-                continue
+        logging.debug(line)
+        test.logs.append(line)
+        # Look for test_print_result() output (success or failure)
+        line_str = process_console_output_line(line, test)
+        if line_str is None:
+            # Sometimes we get non-unicode from the console (e.g., when the
+            # board reboots.) Not much we can do in this case, so we'll just
+            # ignore it.
+            continue
 
-            for r in test.finish_regexes:
-                if r.match(line_str):
-                    # flush read the remaining
-                    lines = readlines_until_timeout(executor, c, 1)
-                    logging.debug(lines)
-                    test.logs.append(lines)
+        for r in test.finish_regexes:
+            if r.match(line_str):
+                # flush read the remaining
+                lines = readlines_until_timeout(executor, console, 1)
+                logging.debug(lines)
+                test.logs.append(lines)
 
-                    for line in lines:
-                        process_console_output_line(line, test)
+                for line in lines:
+                    process_console_output_line(line, test)
 
-                    return test.num_fails == 0
+                return test.num_fails == 0
 
 
 def get_test_list(config: BoardConfig, test_args) -> List[TestConfig]:
@@ -413,6 +416,18 @@ def get_test_list(config: BoardConfig, test_args) -> List[TestConfig]:
         test_list.append(test_config)
 
     return test_list
+
+
+def parse_remote_arg(remote: str) -> str:
+    if not remote:
+        return ''
+
+    try:
+        ip = socket.gethostbyname(remote)
+        return ip
+    except socket.gaierror:
+        logging.error('Failed to resolve host "%s".', remote)
+        sys.exit(1)
 
 
 def main():
@@ -454,18 +469,41 @@ def main():
     # we will leave it generic.
     parser.add_argument(
         '--remote', '-n',
-        help='The remote host:ip to connect to J-Link. '
-        'This is passed to flash_jlink.py.',
+        help='The remote host connected to one or both of: J-Link and Servo.',
     )
+
+    parser.add_argument('--jlink_port', '-j',
+                        type=int,
+                        default=2551,
+                        help='The port to use when connecting to JLink.')
+    parser.add_argument('--console_port', '-p',
+                        type=int,
+                        help='The port connected to the FPMCU console.')
 
     args = parser.parse_args()
     logging.basicConfig(level=args.log_level)
+
+    if args.jlink_port and not args.flasher == JTRACE:
+        logging.error('jlink_port specified, but flasher is not set to J-Link.')
+        sys.exit(1)
+
+    if args.remote and not (args.jlink_port or args.console_port):
+        logging.error('jlink_port or console_port must be specified when using '
+                      'the remote option.')
+        sys.exit(1)
+
+    if (args.jlink_port or args.console_port) and not args.remote:
+        logging.error('The remote option must be specified when using the '
+                      'jlink_port or console_port options.')
+        sys.exit(1)
 
     if args.board not in BOARD_CONFIGS:
         logging.error('Unable to find a config for board: "%s"', args.board)
         sys.exit(1)
 
     board_config = BOARD_CONFIGS[args.board]
+
+    remote_ip = parse_remote_arg(args.remote)
 
     e = ThreadPoolExecutor(max_workers=1)
 
@@ -482,7 +520,8 @@ def main():
         flash_succeeded = False
         for i in range(0, test.num_flash_attempts):
             logging.debug('Flash attempt %d', i + 1)
-            if flash(test.name, args.board, args.flasher, args.remote):
+            if flash(test.name, args.board, args.flasher, remote_ip,
+                     args.jlink_port):
                 flash_succeeded = True
                 break
             time.sleep(1)
@@ -502,8 +541,18 @@ def main():
 
         # run the test
         logging.info('Running test: "%s"', test.name)
-        console = get_console(board_config)
-        test.passed = run_test(test, console, executor=e)
+
+        with ExitStack() as stack:
+            if remote_ip and args.console_port:
+                s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+                s.connect((remote_ip, args.console_port))
+                console = stack.enter_context(
+                    s.makefile(mode='rwb', buffering=0))
+            else:
+                console = stack.enter_context(
+                    open(get_console(board_config), 'wb+', buffering=0))
+
+            test.passed = run_test(test, console, executor=e)
 
     colorama.init()
     exit_code = 0
