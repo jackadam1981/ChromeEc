@@ -34,6 +34,24 @@
       "parentUuid": "53682c5a_81c45adf",
       "revId": "a17228bd2927aba925af02847698c1d4eb632e39",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "28a925b1_6f78e77b",
+        "filename": "zephyr/subsys/ap_pwrseq/include/x86_power_signals.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-03-01T22:44:48Z",
+      "side": 1,
+      "message": "Unfortunately no such signal exists in the enum and I am not sure exactly which GPIO signal this relates to.\nI see elsewhere that this can be related to the 3.3v power good signal, so I presume that\u0027s what it is.",
+      "parentUuid": "6d259619_9ba3915f",
+      "revId": "a17228bd2927aba925af02847698c1d4eb632e39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
