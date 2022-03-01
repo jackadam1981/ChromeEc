@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd0a0731_130dfe10",
+        "filename": "common/battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 550,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-03-01T20:53:18Z",
+      "side": 1,
+      "message": "Two nits but we might decide that they\u0027re okay to live with: \n- This new retrieval of the battery params may not represent what charge_get_display_charge() saw since it\u0027s a cached charger_task value (i.e. one may see an error when the other didn\u0027t) \n- This will add a lot of time to this HC\u0027s execution, but I don\u0027t know how often the AP calls it",
+      "revId": "96e0bc93444996c4b8d7c4788523c85de401ff69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
