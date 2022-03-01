@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d790b3ad_cdf54d0e",
+        "filename": "zephyr/zmake/zmake/zmake.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 747,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-03-01T23:57:05Z",
+      "side": 1,
+      "message": "does `subprocess.DEVNULL` work?",
+      "range": {
+        "startLine": 747,
+        "startChar": 33,
+        "endLine": 747,
+        "endChar": 37
+      },
+      "revId": "f7af7fbf157de249575818934af7d0afdb90f97c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
