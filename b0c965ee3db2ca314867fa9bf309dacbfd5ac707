@@ -117,6 +117,30 @@
       },
       "revId": "b0c965ee3db2ca314867fa9bf309dacbfd5ac707",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "945cef1e_31695f69",
+        "filename": "driver/battery/smart.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-03-01T21:08:14Z",
+      "side": 1,
+      "message": "I\u0027d lean towards enabling them generally as well I think.  Mostly because up until this point we tend to have pretty quiet battery failures which is a danger.  If you got a feedback report and the cros_ec.log missed the charger problem print from charge_state_v2 it could be difficult to root cause",
+      "parentUuid": "4782f6d2_0c7d1b20",
+      "range": {
+        "startLine": 67,
+        "startChar": 45,
+        "endLine": 67,
+        "endChar": 71
+      },
+      "revId": "b0c965ee3db2ca314867fa9bf309dacbfd5ac707",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
