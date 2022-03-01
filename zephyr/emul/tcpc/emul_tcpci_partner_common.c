@@ -317,6 +317,40 @@ void tcpci_partner_common_send_soft_reset(struct tcpci_partner_data *data)
 	data->in_soft_reset = true;
 }
 
+enum tcpci_partner_handler_res tcpci_partner_common_vdm_handler(
+		struct tcpci_partner_data *data,
+		const struct tcpci_emul_msg *message)
+{
+	uint32_t vdm_header = sys_get_le32(message->buf + TCPCI_MSG_HEADER_LEN);
+
+	/* TCPCI r2.0: Ignore unsupported VDMs. Don't handle command types other
+	 * than REQ, unstructured VDMs, or SVIDs other than the PD SID.
+	 */
+	if (PD_VDO_CMDT(vdm_header) != CMDT_INIT || PD_VDO_SVDM(vdm_header) ||
+			/* TODO(b/219562077): Handle DP VID. */
+			PD_VDO_VID(vdm_header) != USB_SID_PD) {
+		return TCPCI_PARTNER_COMMON_MSG_HANDLED;
+	}
+
+	switch (PD_VDO_CMD(vdm_header)) {
+	case CMD_DISCOVER_IDENT:
+		tcpci_partner_send_data_msg(data, PD_DATA_VENDOR_DEF,
+				data->identity_vdm, data->identity_vdos, 0);
+		return TCPCI_PARTNER_COMMON_MSG_HANDLED;
+	case CMD_DISCOVER_SVID:
+		tcpci_partner_send_data_msg(data, PD_DATA_VENDOR_DEF,
+				data->svids_vdm, data->svids_vdos, 0);
+		return TCPCI_PARTNER_COMMON_MSG_HANDLED;
+	case CMD_DISCOVER_MODES:
+		tcpci_partner_send_data_msg(data, PD_DATA_VENDOR_DEF,
+				data->modes_vdm, data->modes_vdos, 0);
+		return TCPCI_PARTNER_COMMON_MSG_HANDLED;
+	default:
+		/* TCPCI r. 2.0: Ignore unsupported commands. */
+		return TCPCI_PARTNER_COMMON_MSG_HANDLED;
+	}
+}
+
 /** Check description in emul_common_tcpci_partner.h */
 enum tcpci_partner_handler_res tcpci_partner_common_msg_handler(
 	struct tcpci_partner_data *data,
@@ -362,8 +396,7 @@ enum tcpci_partner_handler_res tcpci_partner_common_msg_handler(
 	if (PD_HEADER_CNT(header)) {
 		switch (PD_HEADER_TYPE(header)) {
 		case PD_DATA_VENDOR_DEF:
-			/* VDM (vendor defined message) - ignore */
-			return TCPCI_PARTNER_COMMON_MSG_HANDLED;
+			return tcpci_partner_common_vdm_handler(data, tx_msg);
 		default:
 			/* No other common handlers for data messages */
 			return TCPCI_PARTNER_COMMON_MSG_NOT_HANDLED;
