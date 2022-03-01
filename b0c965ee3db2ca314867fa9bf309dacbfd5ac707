@@ -141,6 +141,30 @@
       },
       "revId": "b0c965ee3db2ca314867fa9bf309dacbfd5ac707",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "acfce06d_21bea9c6",
+        "filename": "driver/battery/smart.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2022-03-01T22:27:44Z",
+      "side": 1,
+      "message": "Sounds good. Removed the config guard.",
+      "parentUuid": "945cef1e_31695f69",
+      "range": {
+        "startLine": 67,
+        "startChar": 45,
+        "endLine": 67,
+        "endChar": 71
+      },
+      "revId": "b0c965ee3db2ca314867fa9bf309dacbfd5ac707",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
