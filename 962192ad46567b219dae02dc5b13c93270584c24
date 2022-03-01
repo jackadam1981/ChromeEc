@@ -116,6 +116,30 @@
       },
       "revId": "962192ad46567b219dae02dc5b13c93270584c24",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf76bcae_0d104b60",
+        "filename": "common/fpsensor/fpsensor.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 846,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-03-01T00:03:53Z",
+      "side": 1,
+      "message": "\u003e More specifically, I believe we expect this to be a  match_errcode  as the error codes are defined in such a way that the value returned by  EC_MKBP_FP_ERRCODE  depends upon state of bits 27-31 (i.e. a value of 1 could mean  EC_MKBP_FP_ENROLL_LOW_QUALITY  if enrollment is active or  EC_MKBP_FP_ERR_MATCH_NO_INTERNAL  if matching is set). Is this right @tomhughes?\n\nThat\u0027s correct.\n\n\u003e  Is there a reason we\u0027re reusing some of the error codes rather than just enumerating all errors? It appears that we presently only have 14 error codes (out of a possible 15) and some spare bits if we needed future growth.\n\nThis code was written before I started working on it. I think the design is as-is because they weren\u0027t sure how many types of events there would be for each type (i.e., did not know that there would be less than 15 in the end). Since other parts of the code do use the \"type\" bit (`EC_MKBP_FP_FINGER_DOWN`, `EC_MKBP_FP_ENROLL`, etc.), if you wanted to have 32 distinct error codes (like is supported now), you\u0027d have to use one more bit if you shared the error codes across types. I\u0027m guessing they were just trying to be conservative with the bits.",
+      "parentUuid": "16acc4dd_ede22ed3",
+      "range": {
+        "startLine": 846,
+        "startChar": 6,
+        "endLine": 846,
+        "endChar": 18
+      },
+      "revId": "962192ad46567b219dae02dc5b13c93270584c24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

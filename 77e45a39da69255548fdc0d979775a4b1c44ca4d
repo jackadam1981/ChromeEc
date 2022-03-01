@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f8ed1e3_891e5ff9",
+        "filename": "common/fpsensor/fpsensor.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 846,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-03-01T00:03:53Z",
+      "side": 1,
+      "message": "Let\u0027s keep the `uint32_t` to be explicit about the type. `event` is `uint32_t` and we\u0027re just masking it, so we shoul have the same type.",
+      "range": {
+        "startLine": 846,
+        "startChar": 2,
+        "endLine": 846,
+        "endChar": 5
+      },
+      "revId": "77e45a39da69255548fdc0d979775a4b1c44ca4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
