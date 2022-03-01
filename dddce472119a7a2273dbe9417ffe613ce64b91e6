@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "980a36fa_d35b0ac5",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_attach_src_snk.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-03-01T21:53:48Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "47b029fd_39d238a3",
+      "revId": "dddce472119a7a2273dbe9417ffe613ce64b91e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2dca8e96_d4cbcbf9",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "af83e2c7_4f7d11cb",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_attach_src_snk.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-03-01T21:53:48Z",
+      "side": 1,
+      "message": "Whoops. Accidentally included it here when splitting up CLs. Good catch.",
+      "parentUuid": "2dca8e96_d4cbcbf9",
+      "revId": "dddce472119a7a2273dbe9417ffe613ce64b91e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6207c47b_85912517",
@@ -48,6 +84,30 @@
       "writtenOn": "2022-02-26T02:48:10Z",
       "side": 1,
       "message": "nit: double `b/`",
+      "range": {
+        "startLine": 86,
+        "startChar": 9,
+        "endLine": 86,
+        "endChar": 11
+      },
+      "revId": "dddce472119a7a2273dbe9417ffe613ce64b91e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "660730b4_5e6ea7df",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_attach_src_snk.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-03-01T21:53:48Z",
+      "side": 1,
+      "message": "Oof. Good catch",
+      "parentUuid": "6207c47b_85912517",
       "range": {
         "startLine": 86,
         "startChar": 9,
