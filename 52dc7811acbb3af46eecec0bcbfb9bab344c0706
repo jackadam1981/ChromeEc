@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ba8ec34_8bc2cf33",
+        "filename": "zephyr/subsys/ap_pwrseq/include/x86_power_signals.h",
+        "patchSetId": 25
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-03-01T00:54:20Z",
+      "side": 1,
+      "message": "The flags, IN_PCH_SLP_S0_DEASSERTED, ... have to be proper defined since those are bit positions of input signals used by common_pwr_sm_run(). I don\u0027t see the mask like X86_SLP_S0_DEASSERTED in brya dts(the brya DTS patch) enum name. also the signal inverted or not has to match how it\u0027s used. Like S0/S3/S4/S5/SLP_SUS are used active high.",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 23
+      },
+      "revId": "52dc7811acbb3af46eecec0bcbfb9bab344c0706",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
