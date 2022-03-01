@@ -33,6 +33,24 @@
       "message": "The steps I did:\ngit fetch https://chromium.googlesource.com/chromiumos/platform/ec refs/changes/96/3449996/4 \u0026\u0026 git checkout -b change-3449996 FETCH_HEAD\n\nzmake testall --clobber\n\nthen there is build error.",
       "revId": "813f7256a5ebeb5c949183f963b3a0e30227afb1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "61b69fc8_9a030298",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2022-03-01T03:22:16Z",
+      "side": 1,
+      "message": "I did not get the build error on the current ToT.\nEC commit SHA ID: 1e70180175e02fe2465b7c676d862f6cc6e88529\nZephyr commit SHA ID: 0ba3e1d4fba6f8db0a52cd7cd0d1b708eefb1452\nNote: This CL depends on the this zephyr [commit](https://chromium-review.googlesource.com/c/chromiumos/third_party/zephyr/+/3480279)\nPlease check if your downstream zephyr repo include it or not.",
+      "parentUuid": "8c133474_7c1d2d3b",
+      "revId": "813f7256a5ebeb5c949183f963b3a0e30227afb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
