@@ -528,6 +528,13 @@ determines the [SKU information][Chrome OS Config SKU] (and thus the
 [fingerprint config][Chrome OS Config fingerprint]) from [CBI Info]. The SKU for
 a given device can be found by viewing `chrome://system/#platform_identity_sku`.
 
+## Kernel Driver
+
+The kernel driver responsible for handling communication between the AP and
+FPMCU is called [`cros_ec`] and is enabled with [`CONFIG_CROS_EC`] in the Linux
+kernel. FPMCUs that are connected via SPI use [`cros_ec_spi.c`], while FPMCUs
+that are connected via UART use [`cros_ec_uart.c`].
+
 [`common/fpsensor`]: https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/common/fpsensor/
 [`driver/fingerprint`]: https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/driver/fingerprint
 [`nocturne_fp`]: https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/board/nocturne_fp/
@@ -591,3 +598,7 @@ a given device can be found by viewing `chrome://system/#platform_identity_sku`.
 [regenerate the config]: https://chromium.googlesource.com/chromiumos/config/+/HEAD/README.md#making-configuration-changes-for-your-project
 [`CLFactory`]: https://chromium.googlesource.com/chromiumos/config/+/HEAD/README.md#making-bulk-changes-across-repos
 [Fingerprint MCU RAM and Flash]: ./fingerprint-ram-and-flash.md
+[`CONFIG_CROS_EC`]: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/third_party/kernel/v5.15/drivers/platform/chrome/Makefile;l=12;drc=735a92e19226d357a2b271093aa8a964393906e5
+[`cros_ec`]: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/third_party/kernel/v5.10/drivers/platform/chrome/cros_ec.c
+[`cros_ec_spi.c`]: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/third_party/kernel/v5.15/drivers/platform/chrome/cros_ec_spi.c
+[`cros_ec_uart.c`]: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/third_party/kernel/v5.15/drivers/platform/chrome/cros_ec_uart.c
