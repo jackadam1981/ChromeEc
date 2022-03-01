@@ -52,6 +52,24 @@
       "parentUuid": "12863c85_f965cde1",
       "revId": "96e0bc93444996c4b8d7c4788523c85de401ff69",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "98029045_f8dab4d5",
+        "filename": "common/battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 550,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2022-03-01T21:59:43Z",
+      "side": 1,
+      "message": "Yes, charger_current_battery_params is much better. Thank you.",
+      "parentUuid": "d28468a5_e2a2d0ba",
+      "revId": "96e0bc93444996c4b8d7c4788523c85de401ff69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
