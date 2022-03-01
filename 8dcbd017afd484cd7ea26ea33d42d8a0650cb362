@@ -22,6 +22,30 @@
       },
       "revId": "8dcbd017afd484cd7ea26ea33d42d8a0650cb362",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3612696_24727f70",
+        "filename": "zephyr/projects/nissa/prj.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-03-01T05:49:45Z",
+      "side": 1,
+      "message": "I was confused since I had found those configs, but it looks like my checkout was wonky and I didn\u0027t have them. You\u0027re right that I don\u0027t need to enable them here.",
+      "parentUuid": "5f3e2ea1_b144bb05",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 36
+      },
+      "revId": "8dcbd017afd484cd7ea26ea33d42d8a0650cb362",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
