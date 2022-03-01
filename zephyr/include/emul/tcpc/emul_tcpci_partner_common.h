@@ -13,9 +13,12 @@
 #define __EMUL_TCPCI_PARTNER_COMMON_H
 
 #include <drivers/emul.h>
-#include "emul/tcpc/emul_tcpci.h"
+#include <kernel.h>
+#include <stdbool.h>
+#include <stdint.h>
 
 #include "ec_commands.h"
+#include "emul/tcpc/emul_tcpci.h"
 #include "usb_pd.h"
 
 /**
@@ -64,6 +67,16 @@ struct tcpci_partner_data {
 	 * doesn't arrive, hard reset is triggered.
 	 */
 	bool in_soft_reset;
+	/* VDMs with which the partner responds to discovery REQs. The VDM
+	 * buffers include the VDM header, and the VDO counts include 1 for the
+	 * VDM header.
+	 */
+	uint32_t identity_vdm[VDO_MAX_SIZE];
+	int identity_vdos;
+	uint32_t svids_vdm[VDO_MAX_SIZE];
+	int svids_vdos;
+	uint32_t modes_vdm[VDO_MAX_SIZE];
+	int modes_vdos;
 };
 
 /** Structure of message used by TCPCI partner emulator */
