@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "388dac93_d53fabd7",
+        "filename": "common/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 561,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2022-03-01T00:57:49Z",
+      "side": 1,
+      "message": "A better solution may be to change charge_get_display_charge to return an error code. This would require more refactoring, could be done as a follow on.",
+      "revId": "9282d7dbe7122ce29081e9f2cb0b0b840a5d97d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
