@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f3e2ea1_b144bb05",
+        "filename": "zephyr/projects/nissa/prj.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1179294
+      },
+      "writtenOn": "2022-03-01T02:35:03Z",
+      "side": 1,
+      "message": "These three options have been enabled by default:\nhttps://github.com/zephyrproject-rtos/zephyr/blob/main/drivers/espi/Kconfig.it8xxx2#L23",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 36
+      },
+      "revId": "8dcbd017afd484cd7ea26ea33d42d8a0650cb362",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
