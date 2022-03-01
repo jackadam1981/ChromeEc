@@ -34,6 +34,24 @@
       "parentUuid": "bd0a0731_130dfe10",
       "revId": "96e0bc93444996c4b8d7c4788523c85de401ff69",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d28468a5_e2a2d0ba",
+        "filename": "common/battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 550,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-03-01T21:11:11Z",
+      "side": 1,
+      "message": "Oooo, good call.  That would both sync up the values and remove the i2c transaction time from the HC.",
+      "parentUuid": "12863c85_f965cde1",
+      "revId": "96e0bc93444996c4b8d7c4788523c85de401ff69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
