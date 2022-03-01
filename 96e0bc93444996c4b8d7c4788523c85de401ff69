@@ -70,6 +70,24 @@
       "parentUuid": "d28468a5_e2a2d0ba",
       "revId": "96e0bc93444996c4b8d7c4788523c85de401ff69",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bddad0b7_4791cfa5",
+        "filename": "common/battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 550,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-03-01T22:03:10Z",
+      "side": 1,
+      "message": "Thanks Diana for catching the bottleneck.",
+      "parentUuid": "98029045_f8dab4d5",
+      "revId": "96e0bc93444996c4b8d7c4788523c85de401ff69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
