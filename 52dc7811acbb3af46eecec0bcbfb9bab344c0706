@@ -22,6 +22,30 @@
       },
       "revId": "52dc7811acbb3af46eecec0bcbfb9bab344c0706",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90ef58d6_a37c0bab",
+        "filename": "zephyr/subsys/ap_pwrseq/include/x86_power_signals.h",
+        "patchSetId": 25
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-03-01T01:02:05Z",
+      "side": 1,
+      "message": "So the CONFIG dependencies are a little mixed up at this point (ap_pwrseq_chipset_api.c has references to functions in x86_non_dsx_adlp_pwrseq_sm.c which is only included if CONFIG_X86_NON_DSX_PWRSEQ is set)\n\nSo I\u0027ll try and clean this up so that it is consistent.",
+      "parentUuid": "5ba8ec34_8bc2cf33",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 23
+      },
+      "revId": "52dc7811acbb3af46eecec0bcbfb9bab344c0706",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
