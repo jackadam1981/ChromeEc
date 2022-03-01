@@ -172,9 +172,6 @@
 		gpio_usb_c0_tcpc_rst: usb_c0_tcpc_rst {
 			gpios = <&gpioc 0 GPIO_OUT_LOW>;
 		};
-		en_pp5000_usb_a0_vbus: en_pp5000_usb_a0_vbus_x {
-			gpios = <&gpio6 0 GPIO_OUT_LOW>;
-		};
 		gpio_hdmi_prsnt_odl: hdmi_prsnt_odl {
 			gpios = <&gpio3 7 GPIO_INPUT>;
 		};
@@ -209,6 +206,15 @@
 		ccd_mode_odl {
 			gpios = <&gpioe 5 GPIO_INPUT>;
 			enum-name = "GPIO_CCD_MODE_ODL";
+		};
+	};
+
+	named-ioexes {
+		compatible = "named-ioexes";
+		en_pp5000_usb_a0_vbus: en_pp5000_usb_a0_vbus_x {
+			gpios = <&gpio6 0 GPIO_OUT_LOW>;
+			enum-name = "IOEX_EN_PP5000_USB_A0_VBUS";
+			label = "IOEX_EN_PP5000_USB_A0_VBUS";
 		};
 	};
 
