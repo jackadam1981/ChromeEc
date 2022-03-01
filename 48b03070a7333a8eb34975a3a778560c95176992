@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b6946b6_97919759",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-03-01T23:29:53Z",
+      "side": 1,
+      "message": "In order to use the VBUS_VOLTAGE register, should we be also changing the TCPC_REG_POWER_CTRL during init?  (either based on the capability reported, or based on a TCPC flag depending on whether we foresee issues with a mass-enable like power consumption increases) ",
+      "revId": "48b03070a7333a8eb34975a3a778560c95176992",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8139e72f_235d6d27",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1339,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-03-01T23:29:53Z",
+      "side": 1,
+      "message": "We have this cached in dev_cap_1 if you want to save yourself the i2c read",
+      "revId": "48b03070a7333a8eb34975a3a778560c95176992",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
