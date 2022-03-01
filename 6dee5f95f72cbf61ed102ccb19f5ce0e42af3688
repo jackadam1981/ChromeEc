@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5dd846fa_46c46357",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2022-03-01T22:12:49Z",
+      "side": 1,
+      "message": "Need to bring this check back.",
+      "revId": "6dee5f95f72cbf61ed102ccb19f5ce0e42af3688",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf935efd_acf88882",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2022-03-01T22:12:49Z",
+      "side": 1,
+      "message": "The name should be renamed to PWR_RSMRST_IN, may be in another CL.",
+      "range": {
+        "startLine": 106,
+        "startChar": 25,
+        "endLine": 106,
+        "endChar": 35
+      },
+      "revId": "6dee5f95f72cbf61ed102ccb19f5ce0e42af3688",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

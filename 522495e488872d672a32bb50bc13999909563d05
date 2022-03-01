@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2322cb9_40a5a4f7",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_common_pwrseq_adc.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2022-03-01T22:12:49Z",
+      "side": 1,
+      "message": "nit:I see that this is local to this function and serves only for init purpose. Could you still give a different instant name instead of adc_inst colliding with the pointer global variable.",
+      "range": {
+        "startLine": 90,
+        "startChar": 3,
+        "endLine": 90,
+        "endChar": 12
+      },
+      "revId": "522495e488872d672a32bb50bc13999909563d05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
