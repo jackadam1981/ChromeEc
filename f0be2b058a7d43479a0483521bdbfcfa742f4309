@@ -34,6 +34,24 @@
       "parentUuid": "64d490e9_886b1183",
       "revId": "f0be2b058a7d43479a0483521bdbfcfa742f4309",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e38229e0_f3fcd9a7",
+        "filename": "zephyr/projects/nissa/nereid_overlay.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-03-01T23:29:49Z",
+      "side": 1,
+      "message": "I wonder why the npcx doesn\u0027t need it? Perhaps their driver ignores the status.",
+      "parentUuid": "f60ada49_87be07bd",
+      "revId": "f0be2b058a7d43479a0483521bdbfcfa742f4309",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
