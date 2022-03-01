@@ -324,6 +324,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "17ff9a6c_95e5205b",
+        "filename": "zephyr/subsys/ap_pwrseq/include/x86_common_signals.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-03-01T02:40:48Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b9260ad4_da1f948b",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 56
+      },
+      "revId": "bd7c7ba41d3e9171aafeccf28e9b8a47b832ee54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2c17f9c1_7bd2138e",
@@ -361,6 +385,30 @@
       "side": 1,
       "message": "Yep, I agree that keeping it separate is likely not a huge benefit.\nIt just saved a bit of space, and was possibly premature optimisation.\n\nSo the use of DT_DRV_COMPAT is a little tricky.\nThe current code uses this to access the main node (intel_ap_pwrseq) which has the config like timing values etc.\nSo there will be some collisions in files like signal_vw.c\n\nUsing DT_DRV_COMPAT also makes the node access a bit awkward - the macros get passed an instance number rather than the node, and then you need to use DT_INST_PROP along with the instance. This isn\u0027t a big deal, but the colliding DT_DRV_COMPAT is a bit hard to work around.\n\nDT_DRV_COMPAT seems to be great for defining real devices and drivers, but for more generic device tree config, it\u0027s not a great fit (especially when dealing concurrently with multiple compatibles).\nI tried to clean it up by creating separate guards for each signal source, and doing a funky MY_COMPAT for signal_gpio.c and signal_vw.c\nNone of this gets exposed outside these files.",
       "parentUuid": "2c17f9c1_7bd2138e",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 0
+      },
+      "revId": "bd7c7ba41d3e9171aafeccf28e9b8a47b832ee54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3f3e5d2_3e789672",
+        "filename": "zephyr/subsys/ap_pwrseq/signal_gpio.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-03-01T02:40:48Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "60c0357b_cff04fcd",
       "range": {
         "startLine": 11,
         "startChar": 0,
@@ -480,6 +528,30 @@
       "side": 1,
       "message": "I did have that, and went back and forth a bit on it.\nI eventually figured that these enums do not need to be exposed outside\nthe .c files, but I am starting to think that naming the enums\nis perhaps a good thing, and the argument to the handler becomes obvious.\nSo sounds like a reasonable thing to do.",
       "parentUuid": "b91f9531_8cf22a38",
+      "range": {
+        "startLine": 47,
+        "startChar": 33,
+        "endLine": 47,
+        "endChar": 46
+      },
+      "revId": "bd7c7ba41d3e9171aafeccf28e9b8a47b832ee54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4bc7880f_d641cd15",
+        "filename": "zephyr/subsys/ap_pwrseq/signal_gpio.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-03-01T02:40:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f8a169f9_3f1c5efd",
       "range": {
         "startLine": 47,
         "startChar": 33,

@@ -46,6 +46,30 @@
       },
       "revId": "52dc7811acbb3af46eecec0bcbfb9bab344c0706",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2184aed0_37a6cc97",
+        "filename": "zephyr/subsys/ap_pwrseq/include/x86_power_signals.h",
+        "patchSetId": 25
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-03-01T02:40:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "90ef58d6_a37c0bab",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 23
+      },
+      "revId": "52dc7811acbb3af46eecec0bcbfb9bab344c0706",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
