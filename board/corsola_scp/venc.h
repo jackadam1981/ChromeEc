@@ -9,6 +9,7 @@
 #include "compile_time_macros.h"
 #include "queue.h"
 #include "registers.h"
+#include "venc_h264_srv.h"
 
 enum venc_type {
 	VENC_H264,
@@ -25,6 +26,8 @@ struct venc_msg {
 BUILD_ASSERT(member_size(struct venc_msg, msg) <= CONFIG_IPC_SHARED_OBJ_BUF_SIZE);
 
 /* Functions provided by private overlay. */
-void venc_h264_msg_handler(void *data);
+/*
+ *void venc_h264_msg_handler(void *data);
+ */
 
 #endif /* __CROS_EC_SCP_VENC_H */

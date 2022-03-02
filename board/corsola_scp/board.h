@@ -79,6 +79,9 @@
 #define SCP_IPI_VDEC_CORE 15
 #define IPI_COUNT 16
 
+#define SCP_IPI_VENC_H264 4
+#define SCP_IPI_VENC_VP8 5
+
 
 #define IPI_NS_SERVICE 0xFF
 
