@@ -16,6 +16,24 @@
       "message": "As \"BUILDCC util/genvif\", gnu11 may need to be added to cmd_c_to_build as well.",
       "revId": "83a70f21f1d5075c0d439cc9400d0e3a061fecea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6db5c788_4578a6fe",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2022-03-02T10:00:28Z",
+      "side": 1,
+      "message": "https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3497907",
+      "parentUuid": "d2645039_b2f802ef",
+      "revId": "83a70f21f1d5075c0d439cc9400d0e3a061fecea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
