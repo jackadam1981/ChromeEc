@@ -12,6 +12,7 @@ CHIP_VARIANT:=npcx9m3f
 BASEBOARD:=brya
 
 board-y=
+board-y+=adc.o
 board-y+=battery.o
 board-y+=board.o
 board-y+=charger_isl9241.o
