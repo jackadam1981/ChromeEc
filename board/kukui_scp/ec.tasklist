@@ -15,7 +15,12 @@
 #endif
 
 #define S3_SUSPEND_TASK_LIST \
+#ifdef HAVE_PRIVATE_MT8183
 	TASK_ALWAYS(VDEC_SERVICE, vdec_service_task, NULL, LARGER_TASK_STACK_SIZE) \
+#else
+	TASK_ALWAYS(VDEC_SERVICE, vdec_service_task, NULL, 4096) \
+	TASK_ALWAYS(VDEC_CORE_SERVICE, vdec_core_service_task, NULL, 4096) \
+#endif
 	TASK_ALWAYS(VENC_SERVICE, venc_service_task, NULL, LARGER_TASK_STACK_SIZE) \
 	TASK_ALWAYS(FD_SERVICE, fd_service_task, NULL, 760) \
 	TASK_ALWAYS(DIP_SERVICE, dip_service_task, NULL, 6400) \
