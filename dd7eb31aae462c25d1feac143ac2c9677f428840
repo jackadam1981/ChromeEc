@@ -16,6 +16,24 @@
       "message": "This is a duplicate of CL:3489886.  Please coordinate with Diana as to which CL will land.",
       "revId": "dd7eb31aae462c25d1feac143ac2c9677f428840",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae31c0a7_532297d1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-03-02T16:21:28Z",
+      "side": 1,
+      "message": "I\u0027m fine with this change going in rather than mine.  I\u0027ll download it today to double check it works with the IOEX pins, which is my primary requirement",
+      "parentUuid": "71491434_9aa7f62a",
+      "revId": "dd7eb31aae462c25d1feac143ac2c9677f428840",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
