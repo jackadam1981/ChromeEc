@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0aeb499_cd0a62fb",
+        "filename": "zephyr/projects/intelrvp/adlrvp/adlrvp_npcx/interrupts.dts",
+        "patchSetId": 7
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-03-02T23:47:37Z",
+      "side": 1,
+      "message": "GPIO_INT_FALLING for both PPC \u0026 TCPC intr",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 4
+      },
+      "revId": "f2cc29557f95bdde594ffe2cb7970a3094ead8c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
