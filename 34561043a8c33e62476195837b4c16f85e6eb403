@@ -106,6 +106,24 @@
       "parentUuid": "b3109ef9_ffef93eb",
       "revId": "34561043a8c33e62476195837b4c16f85e6eb403",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "64d0a6c7_d4e7d863",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-03-02T04:00:30Z",
+      "side": 1,
+      "message": "`pwrindebug` allows the power inputs to be inspected from the console anyway (so we don\u0027t need gpioget) and I don\u0027t think supporting gpioset is very useful anyway, so it seems simpler to adjust the named-gpios than add these 300 lines of code- and we don\u0027t need to clean it up later.\n\nIf we\u0027re going to carry some amount of technical debt around the legacy GPIO code, I\u0027d rather keep it coupled to the legacy code (attached to legacy-gpios nodes) rather than need to remove it from new Zephyr code later.",
+      "parentUuid": "6465eea4_2a51d31c",
+      "revId": "34561043a8c33e62476195837b4c16f85e6eb403",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
