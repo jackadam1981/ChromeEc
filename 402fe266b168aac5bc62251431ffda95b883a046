@@ -16,6 +16,23 @@
       "message": "Do we need this on firmware branch as well ?\nhttps://chromium-review.googlesource.com/c/chromiumos/overlays/chromiumos-overlay/+/3450757",
       "revId": "402fe266b168aac5bc62251431ffda95b883a046",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "07987856_ff6aec29",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-03-02T23:06:55Z",
+      "side": 1,
+      "message": "This seems like about the right idea, but it\u0027s generating a build error on the CQ dry run: \nchromeos-ec-0.0.2-r8679: Traceback (most recent call last):\nchromeos-ec-0.0.2-r8679:   File \"./util/kconfig_check.py\", line 351, in \u003cmodule\u003e\nchromeos-ec-0.0.2-r8679:     sys.exit(main(sys.argv[1:]))\nchromeos-ec-0.0.2-r8679:   File \"./util/kconfig_check.py\", line 338, in main\nchromeos-ec-0.0.2-r8679:     args \u003d parse_args(argv)\nchromeos-ec-0.0.2-r8679:   File \"./util/kconfig_check.py\", line 73, in parse_args\nchromeos-ec-0.0.2-r8679:     subparsers \u003d parser.add_subparsers(dest\u003d\u0027cmd\u0027, required\u003dTrue)\nchromeos-ec-0.0.2-r8679:   File \"/usr/lib64/python3.6/argparse.py\", line 1703, in add_subparsers\nchromeos-ec-0.0.2-r8679:     action \u003d parsers_class(option_strings\u003d[], **kwargs)\nchromeos-ec-0.0.2-r8679: TypeError: __init__() got an unexpected keyword argument \u0027required\u0027\nchromeos-ec-0.0.2-r8679: make: *** [Makefile.rules:272: notice] Error 1\nchromeos-ec-0.0.2-r8679: make: *** Waiting for unfinished jobs....\nchromeos-ec-0.0.2-r8679:  * ERROR: chromeos-base/chromeos-ec-0.0.2-r8679::chromiumos failed (compile phase):\nchromeos-ec-0.0.2-r8679:  *   emake failed\n\nJack, any thoughts? ",
+      "revId": "402fe266b168aac5bc62251431ffda95b883a046",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
