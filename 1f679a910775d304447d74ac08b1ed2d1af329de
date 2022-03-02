@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6e431bb_ab2d4fbd",
+        "filename": "zephyr/projects/nissa/src/board_power.c",
+        "patchSetId": 37
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2022-03-02T00:57:15Z",
+      "side": 1,
+      "message": "This should be DSW_PWROK or signals in IN_PGOOD_ALL_CORE",
+      "range": {
+        "startLine": 72,
+        "startChar": 46,
+        "endLine": 72,
+        "endChar": 65
+      },
+      "revId": "1f679a910775d304447d74ac08b1ed2d1af329de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
