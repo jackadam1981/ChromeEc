@@ -22,6 +22,30 @@
       },
       "revId": "63db2430cab947e47de0a90137737bc15e5a87a0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74b174c6_0919dbfd",
+        "filename": "docs/fingerprint/fingerprint-debugging.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-03-02T23:13:39Z",
+      "side": 1,
+      "message": "At the beginning I wasn\u0027t sure if this was a problem with my specific environment but Bobby confirmed he also hast to use `sudo`.",
+      "parentUuid": "d1082bf7_15366a93",
+      "range": {
+        "startLine": 122,
+        "startChar": 11,
+        "endLine": 122,
+        "endChar": 15
+      },
+      "revId": "63db2430cab947e47de0a90137737bc15e5a87a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
