@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76b6c04c_c3883e82",
+        "filename": "board/taeko/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-03-02T20:37:29Z",
+      "side": 1,
+      "message": "i don\u0027t have your USB DB schematics, is it attached to\na bug somewhere?\nso, i\u0027m not sure what this should be on taeko.\non brya, this signal has a\npull-down on the MLB and is a no-connect on the DB\nso the ps8815 can drive FRS_EN.",
+      "range": {
+        "startLine": 74,
+        "startChar": 57,
+        "endLine": 74,
+        "endChar": 62
+      },
+      "revId": "7ac786bf23b1845b651e6379a5be9f34caefc4c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
