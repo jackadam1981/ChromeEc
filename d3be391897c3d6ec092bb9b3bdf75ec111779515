@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da5e0386_12d41489",
+        "filename": "board/anahera/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-03-02T00:50:32Z",
+      "side": 1,
+      "message": "i don\u0027t see GPIO17 used on the nct3807 in the schematics.\nwhich schematics should i be looking at?",
+      "range": {
+        "startLine": 150,
+        "startChar": 52,
+        "endLine": 150,
+        "endChar": 56
+      },
+      "revId": "d3be391897c3d6ec092bb9b3bdf75ec111779515",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
