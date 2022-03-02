@@ -16,6 +16,23 @@
       "message": "added a fix in CRYPTO_TEST execution path, PTAL",
       "revId": "a01d2c856c0247a0ec6d355f5f1503363af238e0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "011d01a9_3f874b6f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2022-03-02T20:27:45Z",
+      "side": 1,
+      "message": " host_command_fuzz failed. I\u0027m not sure how to reproduce this. make runtests -j passed on my workstation\n \n  CC      RO/chip/host/lpc.o\n  CC      RO/chip/host/i2c.o\n  TEST    run-host_command_fuzz\n  CC      p256_ecdsa.c\n  CC      RO/chip/host/persistence.o\nTest host_command_fuzz failed!\nmake: *** [Makefile.rules:317: run-host_command_fuzz] Error 1\nmake: *** Waiting for unfinished jobs....\n  CC      RO/chip/host/reboot.o\n  CC      RO/chip/host/system.o\n  CC      RO/chip/host/reboot.o",
+      "revId": "a01d2c856c0247a0ec6d355f5f1503363af238e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
