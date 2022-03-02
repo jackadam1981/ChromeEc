@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b83f4b6c_2f48e743",
+        "filename": "zephyr/subsys/ap_pwrseq/power_signals.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2022-03-02T22:30:42Z",
+      "side": 1,
+      "message": "Should this also configure external signals? board_signal_gpio_init?",
+      "range": {
+        "startLine": 221,
+        "startChar": 0,
+        "endLine": 221,
+        "endChar": 28
+      },
+      "revId": "8bf610567b4d646a00075fadd996d5b2a2cd1880",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
