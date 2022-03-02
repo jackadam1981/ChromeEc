@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a76f6c4_26e31ffa",
+        "filename": "zephyr/test/drivers/src/console_cmd/charge_state.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-03-02T20:02:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0b033c73_76df7eec",
+      "revId": "c5e520210b5fc7a93b434332b5ec890892e3245c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2ee907fe_4b2b991e",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-03-02T17:37:42Z",
       "side": 1,
       "message": "Nit: I\u0027d prefer the value under test to come first.",
+      "revId": "c5e520210b5fc7a93b434332b5ec890892e3245c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dfc146a2_890dc467",
+        "filename": "zephyr/test/drivers/src/console_cmd/charge_state.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-03-02T20:02:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2ee907fe_4b2b991e",
       "revId": "c5e520210b5fc7a93b434332b5ec890892e3245c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
