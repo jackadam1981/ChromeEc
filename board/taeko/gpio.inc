@@ -71,7 +71,7 @@ GPIO(IMVP9_VRRDY_OD,                 PIN(4, 3), GPIO_INPUT)
 GPIO(PCH_PWROK,                      PIN(7, 2), GPIO_OUT_LOW)
 GPIO(SYS_RST_ODL,                    PIN(C, 5), GPIO_ODR_HIGH)
 GPIO(USB_C0_TCPC_RST_ODL,            PIN(A, 7), GPIO_ODR_LOW)
-GPIO(USB_C1_FRS_EN,                  PIN(9, 4), GPIO_OUT_LOW)
+GPIO(USB_C1_FRS_EN,                  PIN(9, 4), GPIO_OUT_HIGH)
 GPIO(USB_C1_RT_INT_ODL,              PIN(A, 0), GPIO_INPUT)
 GPIO(USB_C1_RT_RST_R_ODL,            PIN(0, 2), GPIO_ODR_HIGH)
 GPIO(VCCST_PWRGD_OD,                 PIN(A, 4), GPIO_ODR_LOW)
@@ -134,7 +134,7 @@ GPIO(EC_KSO_02_INV,               PIN(1, 7), GPIO_OUT_LOW)
 /* GPIO02_P2 to PU */
 /* GPIO03_P2 to PU */
 IOEX(USB_C0_OC_ODL,          EXPIN(IOEX_C0_NCT38XX, 0, 4), GPIO_ODR_HIGH)
-IOEX(USB_C0_FRS_EN,          EXPIN(IOEX_C0_NCT38XX, 0, 6), GPIO_LOW)
+IOEX(USB_C0_FRS_EN,          EXPIN(IOEX_C0_NCT38XX, 0, 6), GPIO_OUT_LOW)
 
 /* LED */
 GPIO(LED_1_L,	 PIN(C, 4), GPIO_OUT_HIGH)	/* Battery - Red LED */
