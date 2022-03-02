@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1082bf7_15366a93",
+        "filename": "docs/fingerprint/fingerprint-debugging.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-03-02T22:31:10Z",
+      "side": 1,
+      "message": "Interesting, it\u0027s not required for me. I wonder if I changed permissions on something at some point. Possibly related to the [udev rules](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/third_party/portage-stable/dev-embedded/jlink/jlink-6.94a.ebuild;l\u003d100;drc\u003d69d441d8a75f2fd60c5d8a32fe06cf766b367a78)?",
+      "range": {
+        "startLine": 122,
+        "startChar": 11,
+        "endLine": 122,
+        "endChar": 15
+      },
+      "revId": "63db2430cab947e47de0a90137737bc15e5a87a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
