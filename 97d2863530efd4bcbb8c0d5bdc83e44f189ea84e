@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "959283e7_c65328a1",
+        "filename": "include/charge_state_v2.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-03-02T21:09:06Z",
+      "side": 1,
+      "message": "In non-test builds, test_export_static will declare the function as static, which will mean it\u0027s in scope in any file that includes this header, which I think is not what you want. Maybe __test_only instead?",
+      "revId": "97d2863530efd4bcbb8c0d5bdc83e44f189ea84e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
