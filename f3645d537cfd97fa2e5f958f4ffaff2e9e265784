@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04987e48_3a2c3776",
+        "filename": "util/pinmap/pm/generate.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1381813
+      },
+      "writtenOn": "2022-03-02T00:30:34Z",
+      "side": 1,
+      "message": "What about making this an enum instead where you can select the sorting key? Then you can keep all the sorting logic inside this function instead of it bleeding out into Generate().\n\nOr, if an enum is overkill, rename this variable sort_by_port and select the right ananymous function before passing it to sort.Slice()?",
+      "range": {
+        "startLine": 58,
+        "startChar": 68,
+        "endLine": 58,
+        "endChar": 79
+      },
+      "revId": "f3645d537cfd97fa2e5f958f4ffaff2e9e265784",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
