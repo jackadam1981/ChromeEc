@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56f47283_9baa2a54",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_attach_src_snk.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-03-02T05:23:09Z",
+      "side": 1,
+      "message": "I think that here you need to get the reference. Otherwise you\u0027re making a copy and still passing a local address to the various emul functions.\n\n```\nstruct tcpci_src_emul *my_src \u003d \u0026my_state-\u003emy_src;\n```",
+      "range": {
+        "startLine": 105,
+        "startChar": 1,
+        "endLine": 106,
+        "endChar": 49
+      },
+      "revId": "c66d8494bd9c93f0ec3fdfe92a3b421d78a1e290",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
