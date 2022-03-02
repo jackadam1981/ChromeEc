@@ -106,6 +106,24 @@
       "parentUuid": "28a925b1_6f78e77b",
       "revId": "a17228bd2927aba925af02847698c1d4eb632e39",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ad5302a_030bde89",
+        "filename": "zephyr/subsys/ap_pwrseq/include/x86_power_signals.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-03-02T02:53:55Z",
+      "side": 1,
+      "message": "OK I\u0027ll take this into account when doing the renaming (separately)",
+      "parentUuid": "4c369ec7_164eede4",
+      "revId": "a17228bd2927aba925af02847698c1d4eb632e39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
