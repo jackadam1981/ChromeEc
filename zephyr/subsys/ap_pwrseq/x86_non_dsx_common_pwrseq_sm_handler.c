@@ -85,10 +85,10 @@ void apshutdown(void)
 }
 
 /* Check RSMRST is fine to move from S5 to higher state */
-int check_rsmrst_off(void)
+int check_rsmrst_pwrgd_on(void)
 {
 	/* TODO: Check if this is still intact */
-	return !power_signal_get(PWR_RSMRST);
+	return power_signal_get(PWR_RSMRST);
 }
 
 int check_pch_out_of_suspend(void)
@@ -156,7 +156,7 @@ static int common_pwr_sm_run(int state)
 	case SYS_POWER_STATE_S5:
 		/* In S5 make sure no more signal lost */
 		/* If A-rails are stable then move to higher state */
-		if (check_power_rails_enabled() && check_rsmrst_off()) {
+		if (check_power_rails_enabled() && check_rsmrst_pwrgd_on()) {
 			/* rsmrst is intact */
 			rsmrst_pass_thru_handler();
 			if (power_signals_on(IN_PCH_SLP_SUS)) {
@@ -190,7 +190,7 @@ static int common_pwr_sm_run(int state)
 
 	case SYS_POWER_STATE_S5S4:
 		/* Check if the PCH has come out of suspend state */
-		if (check_rsmrst_off()) {
+		if (check_rsmrst_pwrgd_on()) {
 			LOG_DBG("RSMRST is ok");
 			return SYS_POWER_STATE_S4;
 		}
@@ -198,7 +198,7 @@ static int common_pwr_sm_run(int state)
 		return SYS_POWER_STATE_S5;
 
 	case SYS_POWER_STATE_S4:
-		if (power_signals_off(IN_PCH_SLP_S5))
+		if (power_signals_on(IN_PCH_SLP_S5))
 			return SYS_POWER_STATE_S4S5;
 		else if (power_signals_off(IN_PCH_SLP_S4))
 			return SYS_POWER_STATE_S4S3;
@@ -227,7 +227,7 @@ static int common_pwr_sm_run(int state)
 			/* Required rail went away, go straight to S5 */
 			new_chipset_force_shutdown();
 			return SYS_POWER_STATE_G3;
-		} else if (power_signals_on(IN_PCH_SLP_S3))
+		} else if (power_signals_off(IN_PCH_SLP_S3))
 			return SYS_POWER_STATE_S3S0;
 		else if (power_signals_on(IN_PCH_SLP_S4))
 			return SYS_POWER_STATE_S3S4;
@@ -249,7 +249,7 @@ static int common_pwr_sm_run(int state)
 		if (!power_signals_on(IN_PGOOD_ALL_CORE)) {
 			new_chipset_force_shutdown();
 			return SYS_POWER_STATE_G3;
-		} else if (power_signals_off(IN_PCH_SLP_S3))
+		} else if (power_signals_on(IN_PCH_SLP_S3))
 			return SYS_POWER_STATE_S0S3;
 		/* TODO: S0ix */
 
