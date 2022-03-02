@@ -46,6 +46,30 @@
       },
       "revId": "e3c670ca0345d9448207c8737505b032a6ded907",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67288f72_5284275d",
+        "filename": "zephyr/projects/nissa/nivviks_power_signals.dts",
+        "patchSetId": 38
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-03-02T22:31:10Z",
+      "side": 1,
+      "message": "That\u0027s correct behavior, since the pin is marked as GPIO_ACTIVE_LOW so when the physical pin is high `gpio_pin_get_dt` returns 0 because the signal is deasserted.",
+      "parentUuid": "9d59c96c_0af5d0e3",
+      "range": {
+        "startLine": 132,
+        "startChar": 1,
+        "endLine": 135,
+        "endChar": 34
+      },
+      "revId": "e3c670ca0345d9448207c8737505b032a6ded907",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
