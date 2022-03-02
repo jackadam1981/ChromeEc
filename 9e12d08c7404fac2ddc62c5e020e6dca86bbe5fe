@@ -16,6 +16,24 @@
       "message": "USB EN driver should not depend on the existence of enum_name (see my comment in CL:3489886).",
       "revId": "9e12d08c7404fac2ddc62c5e020e6dca86bbe5fe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f8f42618_ff0926c9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2022-03-02T18:50:43Z",
+      "side": 1,
+      "message": "I made the change. Thanks",
+      "parentUuid": "5e20fc86_e7a2b209",
+      "revId": "9e12d08c7404fac2ddc62c5e020e6dca86bbe5fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
