@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6747d0f_019471cd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2022-03-02T02:35:29Z",
+      "side": 1,
+      "message": "{kingler|krabby}",
+      "range": {
+        "startLine": 10,
+        "startChar": 24,
+        "endLine": 10,
+        "endChar": 33
+      },
+      "revId": "4c2c92775d7f66297a6976f566e9787d46fe9472",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "7b70a9d9_5c96a939",
@@ -14,6 +37,52 @@
       "writtenOn": "2022-03-01T22:06:32Z",
       "side": 1,
       "message": "I verified in the code the the pin array is generated correctly but maybe someone on the corsola project should take a look.",
+      "revId": "4c2c92775d7f66297a6976f566e9787d46fe9472",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f736723d_efcb84f6",
+        "filename": "zephyr/projects/corsola/gpio_kingler.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2022-03-02T02:35:29Z",
+      "side": 1,
+      "message": "This pin isn\u0027t a IOEX pin: https://ee-schematics.teams.x20web.corp.google.com/corsola/P0/kingler_mlb/kingler_mlb_cf04386a8d1e9dd54a2972197ae1ef22424b4c00.html#page22,EN_PP5000_USB_A0_VBUS_X",
+      "range": {
+        "startLine": 214,
+        "startChar": 2,
+        "endLine": 214,
+        "endChar": 23
+      },
+      "revId": "4c2c92775d7f66297a6976f566e9787d46fe9472",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d01cb302_960cdaca",
+        "filename": "zephyr/projects/corsola/gpio_krabby.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2022-03-02T02:35:29Z",
+      "side": 1,
+      "message": "This pin isn\u0027t a IOEX pin: https://ee-schematics.teams.x20web.corp.google.com/corsola/P0/krabby_mlb/krabby_mlb_e38a4177215d4feebad38e6a558fc5a984755661.html#page22,EN_PP5000_USB_A0_VBUS",
+      "range": {
+        "startLine": 181,
+        "startChar": 2,
+        "endLine": 181,
+        "endChar": 46
+      },
       "revId": "4c2c92775d7f66297a6976f566e9787d46fe9472",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
