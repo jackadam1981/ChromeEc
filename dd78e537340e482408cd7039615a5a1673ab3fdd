@@ -60,6 +60,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d48297f1_be6742d9",
+        "filename": "board/moli/gpio.inc",
+        "patchSetId": 18
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1528037
+      },
+      "writtenOn": "2022-03-02T02:07:10Z",
+      "side": 1,
+      "message": "Ok, we will request EE to modify this net name. Thanks.",
+      "parentUuid": "b12b0200_7dba9ffa",
+      "range": {
+        "startLine": 115,
+        "startChar": 5,
+        "endLine": 115,
+        "endChar": 12
+      },
+      "revId": "dd78e537340e482408cd7039615a5a1673ab3fdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "900c92ef_f1ed8b4e",
         "filename": "board/moli/gpio.inc",
         "patchSetId": 18
