@@ -22,6 +22,30 @@
       },
       "revId": "c66d8494bd9c93f0ec3fdfe92a3b421d78a1e290",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9ee7574_70c70174",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_attach_src_snk.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-03-02T17:54:56Z",
+      "side": 1,
+      "message": "Oof. No you\u0027re totally right. I fixed the other before where this happens.\n\nI\u0027m adding msan and asan to clang to catch this earlier.",
+      "parentUuid": "56f47283_9baa2a54",
+      "range": {
+        "startLine": 105,
+        "startChar": 1,
+        "endLine": 106,
+        "endChar": 49
+      },
+      "revId": "c66d8494bd9c93f0ec3fdfe92a3b421d78a1e290",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
