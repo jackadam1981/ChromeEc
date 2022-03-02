@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5dbcf25b_921df1c4",
+        "filename": "zephyr/subsys/ap_pwrseq/signal_adc.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-03-02T00:29:17Z",
+      "side": 1,
+      "message": "The order should be the same as the enum.\nFor the same build, each DT_FOREACH_STATUS_OKAY generates the same order of nodes, so the generated enums will match.\n(all the other types of signals assume this as well).",
+      "parentUuid": "15416f34_a9247474",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 2
+      },
+      "revId": "6dee5f95f72cbf61ed102ccb19f5ce0e42af3688",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2898f08e_9d5455a1",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-03-02T00:15:11Z",
       "side": 1,
       "message": "I wonder if compiler will throw error: \u0027declare function but never referenced\u0027 if there are no intel_ap_pwrseq_adc nodes.\nShould this be guarded by HAS_ADC_SIGNALS?",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 1
+      },
+      "revId": "6dee5f95f72cbf61ed102ccb19f5ce0e42af3688",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "180699b1_17182ca7",
+        "filename": "zephyr/subsys/ap_pwrseq/signal_adc.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-03-02T00:29:17Z",
+      "side": 1,
+      "message": "The whole file is guarded by this, so we should be good.",
+      "parentUuid": "2898f08e_9d5455a1",
       "range": {
         "startLine": 36,
         "startChar": 0,
