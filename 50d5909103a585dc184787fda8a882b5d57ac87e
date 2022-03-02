@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "246e9108_c5137c24",
+        "filename": "chip/mt_scp/build.mk",
+        "patchSetId": 7
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2022-03-02T08:13:14Z",
+      "side": 1,
+      "message": "Move this comment to the line before \u0027include ...$(CHIP_VARIANT)/build.mk\u0027.",
+      "revId": "50d5909103a585dc184787fda8a882b5d57ac87e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
