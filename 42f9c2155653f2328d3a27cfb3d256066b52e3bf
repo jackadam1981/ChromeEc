@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7229c49e_dc5e95a1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-03-02T22:13:30Z",
+      "side": 1,
+      "message": "This change requires PR#42923 to land correct?\n\nhttps://github.com/zephyrproject-rtos/zephyr/pull/42923\n\nPlease indicate note this dependency in the commit message.",
+      "range": {
+        "startLine": 7,
+        "startChar": 31,
+        "endLine": 7,
+        "endChar": 56
+      },
+      "revId": "42f9c2155653f2328d3a27cfb3d256066b52e3bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4824658c_ec4f54b7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-03-02T22:13:30Z",
+      "side": 1,
+      "message": "Please reference b:218332947",
+      "range": {
+        "startLine": 13,
+        "startChar": 4,
+        "endLine": 13,
+        "endChar": 8
+      },
+      "revId": "42f9c2155653f2328d3a27cfb3d256066b52e3bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "353da8c4_dc29d504",
+        "filename": "zephyr/drivers/cros_kb_raw/cros_kb_raw_npcx.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-03-02T22:13:30Z",
+      "side": 1,
+      "message": "This driver is not longer specific to Nuvoton.  It should work as long as there is a KSCAN driver available in Zephyr.\n\nAs a follow up CL, please rename this file to cros_kb_raw_kcan.c.",
+      "range": {
+        "startLine": 6,
+        "startChar": 22,
+        "endLine": 6,
+        "endChar": 46
+      },
+      "revId": "42f9c2155653f2328d3a27cfb3d256066b52e3bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
