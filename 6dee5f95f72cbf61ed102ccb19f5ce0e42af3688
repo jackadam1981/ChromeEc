@@ -3,6 +3,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "15416f34_a9247474",
+        "filename": "zephyr/subsys/ap_pwrseq/signal_adc.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2022-03-02T00:15:11Z",
+      "side": 1,
+      "message": "I think we need to have [] to ensure order matches enum pwr_sig_adc\n\n\t[DT_STRING_UPPER_TOKEN(node_id, enum-name)] \u003d {                         \\\n\t\t.dev_trig_high \u003d DEVICE_DT_GET(DT_PHANDLE(id, trigger_high)),\t\\\n\t\t.dev_trig_low \u003d DEVICE_DT_GET(DT_PHANDLE(id, trigger_low)),\n\t},\n\nSame with \u0027value\u0027 array.",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 2
+      },
+      "revId": "6dee5f95f72cbf61ed102ccb19f5ce0e42af3688",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2898f08e_9d5455a1",
+        "filename": "zephyr/subsys/ap_pwrseq/signal_adc.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2022-03-02T00:15:11Z",
+      "side": 1,
+      "message": "I wonder if compiler will throw error: \u0027declare function but never referenced\u0027 if there are no intel_ap_pwrseq_adc nodes.\nShould this be guarded by HAS_ADC_SIGNALS?",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 1
+      },
+      "revId": "6dee5f95f72cbf61ed102ccb19f5ce0e42af3688",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5dd846fa_46c46357",
         "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
         "patchSetId": 5
