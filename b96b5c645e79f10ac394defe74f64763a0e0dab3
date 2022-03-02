@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "8f2a3f58_6e6502e7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-03-02T06:34:23Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "907b265a_378eb6ec",
+      "revId": "b96b5c645e79f10ac394defe74f64763a0e0dab3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "9eb640e2_99864e11",
         "filename": "util/pinmap/pm/generate.go",
         "patchSetId": 2
@@ -31,6 +49,24 @@
       "writtenOn": "2022-03-02T06:29:06Z",
       "side": 1,
       "message": "Just a thought - I wonder if it\u0027s better stylistically to do this in a separate function instead of makinng gpioConfig have an additional side effect.",
+      "revId": "b96b5c645e79f10ac394defe74f64763a0e0dab3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "924d32ef_757cdd9e",
+        "filename": "util/pinmap/pm/generate.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-03-02T06:34:23Z",
+      "side": 1,
+      "message": "Point taken - it will need a bit of refactoring if I extend it more.",
+      "parentUuid": "9eb640e2_99864e11",
       "revId": "b96b5c645e79f10ac394defe74f64763a0e0dab3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
