@@ -43,6 +43,109 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "23985d18_4df0c7f2",
+        "filename": "driver/tcpm/anx7443.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-03-02T20:59:50Z",
+      "side": 1,
+      "message": "Please use inclusive language.  For i2c, this would be \"controller\" for the chip driving transactions and \"peripheral\" for the other chip",
+      "range": {
+        "startLine": 11,
+        "startChar": 59,
+        "endLine": 11,
+        "endChar": 64
+      },
+      "revId": "8f8aff6808ff1dc8318fe6b95a096b7c06c60387",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aafe0792_dcd0a94d",
+        "filename": "driver/tcpm/anx7443.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-03-02T20:59:50Z",
+      "side": 1,
+      "message": "Why the bit conversion?  Usually the EC codebase is aligned on 7-bit address encoding",
+      "range": {
+        "startLine": 20,
+        "startChar": 5,
+        "endLine": 20,
+        "endChar": 13
+      },
+      "revId": "8f8aff6808ff1dc8318fe6b95a096b7c06c60387",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "338bd651_722be796",
+        "filename": "driver/tcpm/anx7443.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-03-02T20:59:50Z",
+      "side": 1,
+      "message": "Set up a define for any register values being set",
+      "range": {
+        "startLine": 59,
+        "startChar": 65,
+        "endLine": 59,
+        "endChar": 69
+      },
+      "revId": "8f8aff6808ff1dc8318fe6b95a096b7c06c60387",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c6e5ff7_15108f90",
+        "filename": "driver/tcpm/anx7443.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-03-02T20:59:50Z",
+      "side": 1,
+      "message": "Are these addresses fixed, or will they depend on the Top i2c flags?",
+      "revId": "8f8aff6808ff1dc8318fe6b95a096b7c06c60387",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb55bb1e_0ae39a45",
+        "filename": "driver/tcpm/anx7443.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-03-02T20:59:50Z",
+      "side": 1,
+      "message": "I didn\u0027t see this in the datasheet I found on Drive for this part.  Does it have bits or values we should be defining in the header?",
+      "revId": "8f8aff6808ff1dc8318fe6b95a096b7c06c60387",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "eba2374c_071a2ab2",
         "filename": "include/config.h",
         "patchSetId": 1
