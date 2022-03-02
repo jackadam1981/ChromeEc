@@ -53,7 +53,6 @@ __attribute__((weak)) int all_sys_pwrgd_handler(
 
 	if (power_signal_get(PWR_VCCST_PWRGD) == 0) {
 		k_msleep(chip_cfg.vccst_pwrgd_delay_ms);
-		LOG_INF("Turning on PWR_VCCST_PWRGD");
 		power_signal_set(PWR_VCCST_PWRGD, 1);
 	}
 	return 0;
