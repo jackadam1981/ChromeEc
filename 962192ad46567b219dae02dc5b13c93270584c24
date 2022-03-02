@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e9e6b7c_c21db315",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-03-02T16:21:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "153d1bca_71e5ded2",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 4
+      },
+      "revId": "962192ad46567b219dae02dc5b13c93270584c24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b5bbad2f_20b7841b",
@@ -85,6 +109,30 @@
       "side": 1,
       "message": "Yes, I didn\u0027t include it here because the bug was only mentioning the  case where there are no FP enrolled and the answer was incorrect.\n\nFYI, here is the output:\n\n```\n\u003e fpenroll\n[42.972047 Waiting for finger ...]\n[44.580083 [0]Enrolling ...]\n[44.714186 [0]Enroll \u003d\u003e0 (20%)]\n...\n[48.753620 done (events:48000640)]\n[48.753676 Enroll capture: OK (100%)]\n\n\n\u003e fpmatch\n[53.420392 Waiting for finger ...]\n[54.617727 Matching/1 ...]\n[54.767549 Match \u003d\u003e3 (finger 0)]\n[54.820564 done (events:50000003)]\n[54.820620 Match: YES (3)]\n```",
       "parentUuid": "b5bbad2f_20b7841b",
+      "range": {
+        "startLine": 20,
+        "startChar": 35,
+        "endLine": 20,
+        "endChar": 37
+      },
+      "revId": "962192ad46567b219dae02dc5b13c93270584c24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "93d41e96_f4fcdebf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-03-02T16:21:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b53b40c3_59e8481b",
       "range": {
         "startLine": 20,
         "startChar": 35,
