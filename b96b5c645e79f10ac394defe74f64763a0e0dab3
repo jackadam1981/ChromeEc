@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "907b265a_378eb6ec",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1381813
+      },
+      "writtenOn": "2022-03-02T06:29:06Z",
+      "side": 1,
+      "message": "Sorry this took me so long to review. I think it\u0027s good enough to land but these are my thoughts about how it *might* be made better in the future (happy to discuss / hear your thoughts)\n\n- This code is beginning to get complicated enough that wrapping some of the low-level types in objects with well-named methods might improve legibility.\n\n- finding a way to use less-bespoke parsing for extracting information about the controller ID and pin number from the ball location might make it less fiddly.",
+      "revId": "b96b5c645e79f10ac394defe74f64763a0e0dab3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9eb640e2_99864e11",
+        "filename": "util/pinmap/pm/generate.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1381813
+      },
+      "writtenOn": "2022-03-02T06:29:06Z",
+      "side": 1,
+      "message": "Just a thought - I wonder if it\u0027s better stylistically to do this in a separate function instead of makinng gpioConfig have an additional side effect.",
+      "revId": "b96b5c645e79f10ac394defe74f64763a0e0dab3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
