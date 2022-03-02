@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "337d8781_676f4cb5",
+        "filename": "docs/zephyr/zephyr_ap_ec_comm.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1477788
+      },
+      "writtenOn": "2022-03-02T16:30:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "54f553cf_1f2628c6",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 0
+      },
+      "revId": "cd93458086792c3331f4819289dc2ef0e1119112",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cad9c721_1fb97adf",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-02-23T17:28:35Z",
       "side": 1,
       "message": "I think you should only include the following configs in this list:\nCONFIG_PLATFORM_EC_HOSTCMD_CONSOLE\nCONFIG_PLATFORM_EC_HOSTCMD_CONSOLE_BUF_SIZE\nCONFIG_PLATFORM_EC_HOST_COMMAND_STATUS\n\nThe configs that enable a specific host command belong with the feature.  For example the I2C section should reference CONFIG_PLATFORM_EC_HOSTCMD_I2C_CONTROL.",
+      "range": {
+        "startLine": 71,
+        "startChar": 1,
+        "endLine": 80,
+        "endChar": 0
+      },
+      "revId": "cd93458086792c3331f4819289dc2ef0e1119112",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c503cc7_c17c84cd",
+        "filename": "docs/zephyr/zephyr_ap_ec_comm.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1477788
+      },
+      "writtenOn": "2022-03-02T16:30:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cad9c721_1fb97adf",
       "range": {
         "startLine": 71,
         "startChar": 1,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b48d1177_19d1cadb",
+        "filename": "docs/zephyr/zephyr_ap_ec_comm.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1477788
+      },
+      "writtenOn": "2022-03-02T16:30:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "68322fcb_4a92af91",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 81,
+        "endChar": 35
+      },
+      "revId": "cd93458086792c3331f4819289dc2ef0e1119112",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aa989635_a1a979fc",
@@ -93,6 +165,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8883f7e_84ed38e8",
+        "filename": "docs/zephyr/zephyr_ap_ec_comm.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1477788
+      },
+      "writtenOn": "2022-03-02T16:30:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aa989635_a1a979fc",
+      "range": {
+        "startLine": 111,
+        "startChar": 0,
+        "endLine": 122,
+        "endChar": 0
+      },
+      "revId": "cd93458086792c3331f4819289dc2ef0e1119112",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4d2a01e9_f3624494",
@@ -106,6 +202,30 @@
       "writtenOn": "2022-02-23T17:28:35Z",
       "side": 1,
       "message": "Suggested rewording:\n\"The `host_command_task()` thread processes all requests from the AP, regardless of the host interface type enabled.",
+      "range": {
+        "startLine": 204,
+        "startChar": 0,
+        "endLine": 204,
+        "endChar": 55
+      },
+      "revId": "cd93458086792c3331f4819289dc2ef0e1119112",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8688e2c2_35487b57",
+        "filename": "docs/zephyr/zephyr_ap_ec_comm.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1477788
+      },
+      "writtenOn": "2022-03-02T16:30:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4d2a01e9_f3624494",
       "range": {
         "startLine": 204,
         "startChar": 0,
