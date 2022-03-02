@@ -88,6 +88,24 @@
       "parentUuid": "474811a5_0e7a9d01",
       "revId": "34561043a8c33e62476195837b4c16f85e6eb403",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6465eea4_2a51d31c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-03-02T01:43:27Z",
+      "side": 1,
+      "message": "Fair enough - I agree that having multiple choices has downsides, and I did go back and forth on whether this was a good thing or not.\nIn some ways it was a proof of concept for the API (whether it could be easily extended to support named-gpios and gpio-interrupts.\n\nBTW, chromium:3482485 adds ADC signal support as well.\n\nThe implication is:\n - any GPIO referenced needs to have the named-gpio instance either removed or have no-auto-init set.\n  - If it gets removed, gpioget/set won\u0027t see it until the upstreamed support for this lands.\n\nThis are easy enough to deal with.",
+      "parentUuid": "b3109ef9_ffef93eb",
+      "revId": "34561043a8c33e62476195837b4c16f85e6eb403",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
