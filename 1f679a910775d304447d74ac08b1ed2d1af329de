@@ -22,6 +22,30 @@
       },
       "revId": "1f679a910775d304447d74ac08b1ed2d1af329de",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0cc3f77c_02766325",
+        "filename": "zephyr/projects/nissa/src/board_power.c",
+        "patchSetId": 37
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-03-02T01:19:59Z",
+      "side": 1,
+      "message": "Done.\nThe API to these handlers likely needs a bit of a rethink - passing the delay parameters as arguments is a bit ugly, but it did avoid having to expose the internal structures of the power sequence code, which is important for good layering.",
+      "parentUuid": "c6e431bb_ab2d4fbd",
+      "range": {
+        "startLine": 72,
+        "startChar": 46,
+        "endLine": 72,
+        "endChar": 65
+      },
+      "revId": "1f679a910775d304447d74ac08b1ed2d1af329de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
