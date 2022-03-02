@@ -112,6 +112,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f482600f_81b8e470",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_attach_src_snk.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-03-02T05:20:31Z",
+      "side": 1,
+      "message": "I see, I was reading SINK_PORT as \"a port to which a sink is connected\"",
+      "parentUuid": "dd2f9f77_02bffb66",
+      "range": {
+        "startLine": 422,
+        "startChar": 1,
+        "endLine": 423,
+        "endChar": 33
+      },
+      "revId": "b8cf6f2b611c9604117c217a5104bd670de76bdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a20d96e6_f912d5e6",
@@ -196,6 +220,30 @@
       "side": 1,
       "message": "See earlier comment but our partner is only a sink, so we should receive 0 source caps.",
       "parentUuid": "c5cc8a9c_997859bd",
+      "range": {
+        "startLine": 451,
+        "startChar": 1,
+        "endLine": 453,
+        "endChar": 35
+      },
+      "revId": "b8cf6f2b611c9604117c217a5104bd670de76bdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "13e0b2c9_c31af484",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_attach_src_snk.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 453,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-03-02T05:20:31Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "73978b12_5af47541",
       "range": {
         "startLine": 451,
         "startChar": 1,
