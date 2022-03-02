@@ -31,6 +31,7 @@
 #include "task.h"
 #include "util.h"
 #include "hwtimer.h"
+#include "video.h"
 
 #define CPRINTF(format, args...) cprintf(CC_IPI, format, ##args)
 #define CPRINTS(format, args...) cprints(CC_IPI, format, ##args)
@@ -247,7 +248,7 @@ void ipi_inform_ap(void)
 	scp_run.signaled = 1;
 	strncpy(scp_run.fw_ver, system_get_version(EC_IMAGE_RW),
 		SCP_FW_VERSION_LEN);
-	scp_run.dec_capability = VCODEC_CAPABILITY_4K_DISABLED;
+	scp_run.dec_capability = video_get_dec_capability();
 	scp_run.enc_capability = 0;
 
 	ret = ipi_send(IPI_SCP_INIT, (void *)&scp_run, sizeof(scp_run), 1);
