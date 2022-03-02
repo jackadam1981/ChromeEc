@@ -66,6 +66,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "68b807f0_2ebe68ae",
+        "filename": "zephyr/projects/corsola/gpio_kingler.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2022-03-02T02:57:57Z",
+      "side": 1,
+      "message": "I thought it was because the enum-name for the pin is defined in dts/bindings/gpio/ioex-enum-name.yaml\n\ndescription: Named IOEXes parent node\nproperties:\n  enum-name:\n    type: string\n    description:\n      Names used for IO expanders pins\n    enum:\n      - IOEX_5V_DC_DC_MODE_CTRL\n      - IOEX_ATMEL_MISO\n      - IOEX_ATMEL_MOSI\n      - IOEX_ATMEL_RESET_L\n      - IOEX_ATMEL_SCLK\n      - IOEX_ATMEL_SS\n      - IOEX_BAT_LED_AMBER_L\n      - IOEX_BAT_LED_GREEN_FULL_L\n      - IOEX_BAT_LED_RED_L\n      - IOEX_BAT_LED_WHITE_L\n      - IOEX_BOARD_ID_DET0\n      - IOEX_BOARD_ID_DET1\n      - IOEX_BOARD_ID_DET2\n      - IOEX_C1_CHARGER_LED_AMBER_DB\n      - IOEX_C1_CHARGER_LED_WHITE_DB\n      - IOEX_DAC_BUF1_LATCH_FAULT_L\n      - IOEX_DAC_BUF2_LATCH_FAULT_L\n      - IOEX_DONGLE_DET\n      - IOEX_DUT_CHG_EN\n      - IOEX_EN_PP3300_DP\n      - IOEX_EN_PP3300_ETH\n      - IOEX_EN_PP5000_ALT_3P3\n      - IOEX_EN_PP5000_USB_A0_VBUS\n\nI\u0027ll add the enum-name to gpio-enum-name.yaml and update the device tree.",
+      "parentUuid": "f736723d_efcb84f6",
+      "range": {
+        "startLine": 214,
+        "startChar": 2,
+        "endLine": 214,
+        "endChar": 23
+      },
+      "revId": "4c2c92775d7f66297a6976f566e9787d46fe9472",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d01cb302_960cdaca",
         "filename": "zephyr/projects/corsola/gpio_krabby.dts",
         "patchSetId": 1
