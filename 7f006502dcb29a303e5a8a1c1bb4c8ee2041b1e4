@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4f3b5fb_0ce743c1",
+        "filename": "zephyr/include/emul/tcpc/emul_tcpci_partner_common.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2022-03-02T08:16:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d67e4543_caceca44",
+      "range": {
+        "startLine": 31,
+        "startChar": 41,
+        "endLine": 31,
+        "endChar": 43
+      },
+      "revId": "7f006502dcb29a303e5a8a1c1bb4c8ee2041b1e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "81154a83_29441985",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-03-01T15:32:42Z",
       "side": 1,
       "message": "nit: tab-\u003espace",
+      "range": {
+        "startLine": 31,
+        "startChar": 43,
+        "endLine": 31,
+        "endChar": 44
+      },
+      "revId": "7f006502dcb29a303e5a8a1c1bb4c8ee2041b1e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a3bf89e_a00c7d96",
+        "filename": "zephyr/include/emul/tcpc/emul_tcpci_partner_snk.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2022-03-02T08:16:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "81154a83_29441985",
       "range": {
         "startLine": 31,
         "startChar": 43,
