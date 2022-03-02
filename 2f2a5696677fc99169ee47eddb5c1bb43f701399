@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "693ddf90_0e3c5dff",
+        "filename": "zephyr/projects/nissa/BUILD.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-03-02T03:28:15Z",
+      "side": 1,
+      "message": "Semi-related thought: should we move these into board-specific directories to avoid duplicating the board-name prefix on a bunch of files?",
+      "revId": "2f2a5696677fc99169ee47eddb5c1bb43f701399",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b02c09e7_d4095c99",
+        "filename": "zephyr/projects/nissa/nereid_power_signals.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-03-02T03:28:15Z",
+      "side": 1,
+      "message": "I think this is GPK5? GPB5 is EN_PP5000_PEN_X for the stylus garage only, which is powered from PP5000_S5.",
+      "revId": "2f2a5696677fc99169ee47eddb5c1bb43f701399",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3d1a28e_11e7d9d8",
+        "filename": "zephyr/projects/nissa/nereid_power_signals.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-03-02T03:28:15Z",
+      "side": 1,
+      "message": "Missing trailing k?",
+      "range": {
+        "startLine": 69,
+        "startChar": 30,
+        "endLine": 69,
+        "endChar": 34
+      },
+      "revId": "2f2a5696677fc99169ee47eddb5c1bb43f701399",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff09e892_d906231f",
+        "filename": "zephyr/projects/nissa/nereid_power_signals.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-03-02T03:28:15Z",
+      "side": 1,
+      "message": "Missing a GPIO? This is on GPB7.",
+      "revId": "2f2a5696677fc99169ee47eddb5c1bb43f701399",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
