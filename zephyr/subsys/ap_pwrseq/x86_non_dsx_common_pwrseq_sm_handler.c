@@ -84,10 +84,12 @@ void apshutdown(void)
 	}
 }
 
-/* Check RSMRST is fine to move from S5 to higher state */
+/*
+ * Check RSMRST# is de-asserted, this is an indicator that power wells
+ * are stable; can move from S5 to higher state.
+ */
 int check_rsmrst_off(void)
 {
-	/* TODO: Check if this is still intact */
 	return !power_signal_get(PWR_RSMRST);
 }
 
@@ -198,7 +200,7 @@ static int common_pwr_sm_run(int state)
 		return SYS_POWER_STATE_S5;
 
 	case SYS_POWER_STATE_S4:
-		if (power_signals_off(IN_PCH_SLP_S5))
+		if (power_signals_on(IN_PCH_SLP_S5))
 			return SYS_POWER_STATE_S4S5;
 		else if (power_signals_off(IN_PCH_SLP_S4))
 			return SYS_POWER_STATE_S4S3;
@@ -227,7 +229,7 @@ static int common_pwr_sm_run(int state)
 			/* Required rail went away, go straight to S5 */
 			new_chipset_force_shutdown();
 			return SYS_POWER_STATE_G3;
-		} else if (power_signals_on(IN_PCH_SLP_S3))
+		} else if (power_signals_off(IN_PCH_SLP_S3))
 			return SYS_POWER_STATE_S3S0;
 		else if (power_signals_on(IN_PCH_SLP_S4))
 			return SYS_POWER_STATE_S3S4;
@@ -249,7 +251,7 @@ static int common_pwr_sm_run(int state)
 		if (!power_signals_on(IN_PGOOD_ALL_CORE)) {
 			new_chipset_force_shutdown();
 			return SYS_POWER_STATE_G3;
-		} else if (power_signals_off(IN_PCH_SLP_S3))
+		} else if (power_signals_on(IN_PCH_SLP_S3))
 			return SYS_POWER_STATE_S0S3;
 		/* TODO: S0ix */
 
