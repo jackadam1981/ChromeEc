@@ -33,6 +33,24 @@
       "message": "Can you tell what\u0027s going on here? I tried picking the CL and running make buildall. Everything ran cleanly.",
       "revId": "0a00abf4d1f00bcc2a5408397c6b5ad4c3d5b7ac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ea131f3_430ec12b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2022-03-02T17:32:10Z",
+      "side": 1,
+      "message": "It\u0027s a build issue\n\nboard/cr50/fips_cmd.c: In function \u0027print_u2f_keys_status\u0027:\nboard/cr50/fips_cmd.c:84:23: error: too few arguments to function \u0027u2f_load_or_create_state\u0027\n   84 |         load_result \u003d u2f_load_or_create_state(\u0026state, false);\n      |                       ^~~~~~~~~~~~~~~~~~~~~~~~\nIn file included from board/cr50/fips_cmd.c:24:\n/mnt/host/source/src/platform/cr50/board/cr50/dcrypto/u2f_impl.h:213:6: note: declared here\n  213 | bool u2f_load_or_create_state(struct u2f_state *state, bool force_create,\n      |      ^~~~~~~~~~~~~~~~~~~~~~~~\n  CC      RW/board/cr50/tpm2/virtual_nvmem.o\nmake: *** [Makefile.rules:500: build/cr50/RW/board/cr50/fips_cmd.o] Error 1\nmake: *** Waiting for unfinished jobs....\n# Running make buildall_only -j32.",
+      "parentUuid": "ddddc8ff_a5810d9b",
+      "revId": "0a00abf4d1f00bcc2a5408397c6b5ad4c3d5b7ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
