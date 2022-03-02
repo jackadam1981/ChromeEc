@@ -16,6 +16,24 @@
       "message": "Probably a better solution is to just change each OWNERS file to just have * as the only contents, then anyone can approve I believe based on this example: https://source.corp.google.com/chromeos_public/docs/OWNERS\n\nIf there is no OWNERS file..then you\u0027ll need to get sheriff\u0027s override or chump changes...neither of which is ideal.",
       "revId": "74fdbf2e4aa4a0a578ea30ecfef2b0646d7c0323",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6d23b68_6813baa9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2022-03-02T20:18:43Z",
+      "side": 1,
+      "message": "The repo already has a top-level OWNERS file that\u0027s set to `*`.\n\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/74fdbf2e4aa4a0a578ea30ecfef2b0646d7c0323/OWNERS",
+      "parentUuid": "e8f4700e_ec127e4b",
+      "revId": "74fdbf2e4aa4a0a578ea30ecfef2b0646d7c0323",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
