@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8f4700e_ec127e4b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1298800
+      },
+      "writtenOn": "2022-03-02T19:11:27Z",
+      "side": 1,
+      "message": "Probably a better solution is to just change each OWNERS file to just have * as the only contents, then anyone can approve I believe based on this example: https://source.corp.google.com/chromeos_public/docs/OWNERS\n\nIf there is no OWNERS file..then you\u0027ll need to get sheriff\u0027s override or chump changes...neither of which is ideal.",
+      "revId": "74fdbf2e4aa4a0a578ea30ecfef2b0646d7c0323",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
