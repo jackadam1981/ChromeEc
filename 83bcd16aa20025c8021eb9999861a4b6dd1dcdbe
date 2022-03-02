@@ -160,6 +160,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f58df72_aa92073f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1477788
+      },
+      "writtenOn": "2022-03-02T16:33:10Z",
+      "side": 1,
+      "message": "Old question, but I wanted to answer that before closing the CL. As far as I remember, it doesn\u0027t take it from environment, but from the cmake arguments \"-Dsomething\u003dvalue\".",
+      "parentUuid": "1b65653c_652d6740",
+      "revId": "83bcd16aa20025c8021eb9999861a4b6dd1dcdbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "64307137_37283117",
