@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "84f35f6b_153239e1",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_attach_src_snk.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 407,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-03-02T00:13:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ff0bcd4_95567a34",
+      "range": {
+        "startLine": 401,
+        "startChar": 1,
+        "endLine": 407,
+        "endChar": 71
+      },
+      "revId": "b8cf6f2b611c9604117c217a5104bd670de76bdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b748106f_9c994229",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-02-26T02:53:55Z",
       "side": 1,
       "message": "In my test attaching a sink I was able to get sink_cap_count that matched the sink emulator, this should not be 0.",
+      "range": {
+        "startLine": 422,
+        "startChar": 1,
+        "endLine": 423,
+        "endChar": 33
+      },
+      "revId": "b8cf6f2b611c9604117c217a5104bd670de76bdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd2f9f77_02bffb66",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_attach_src_snk.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-03-02T00:13:29Z",
+      "side": 1,
+      "message": "I think it\u0027s actually meant to be zero now based on the comment. I commented why this is so. Leaving unresolved for comment.\n\nResources:\nhttps://www.embedded.com/usb-type-c-and-power-delivery-101-power-delivery-protocol/\nPD spec state diagrams seem to confirm this if my interpretation is correct.",
+      "parentUuid": "b748106f_9c994229",
       "range": {
         "startLine": 422,
         "startChar": 1,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6fd9e383_26763ece",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_attach_src_snk.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 437,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-03-02T00:13:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a20d96e6_f912d5e6",
+      "range": {
+        "startLine": 432,
+        "startChar": 1,
+        "endLine": 437,
+        "endChar": 72
+      },
+      "revId": "b8cf6f2b611c9604117c217a5104bd670de76bdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c5cc8a9c_997859bd",
@@ -100,6 +172,30 @@
       "writtenOn": "2022-02-26T02:53:55Z",
       "side": 1,
       "message": "I think this should also not be 0",
+      "range": {
+        "startLine": 451,
+        "startChar": 1,
+        "endLine": 453,
+        "endChar": 35
+      },
+      "revId": "b8cf6f2b611c9604117c217a5104bd670de76bdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "73978b12_5af47541",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_attach_src_snk.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 453,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-03-02T00:13:29Z",
+      "side": 1,
+      "message": "See earlier comment but our partner is only a sink, so we should receive 0 source caps.",
+      "parentUuid": "c5cc8a9c_997859bd",
       "range": {
         "startLine": 451,
         "startChar": 1,
