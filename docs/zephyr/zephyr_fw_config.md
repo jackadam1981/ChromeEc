@@ -4,25 +4,17 @@
 
 ## Overview
 
-Zephyr CBI FW_CONFIG configuration
+Zephyr [CBI Configuration] FW_CONFIG
 
 ## Kconfig Options
 
-The CBI [Cross Board Info](https://chromium.googlesource.com/chromiumos/docs/+/HEAD/design_docs/cros_board_info.md)
-contains a variety of fields that the EC retrieves from an EEPROM.
+The CrOS Board Information [CBI] feature is enabled with the
+CONFIG_PLATFORM_EC_CBI_EEPROM Kconfig, as defined in the [CBI Configuration].
 
-The CBI feature is enabled using:
-
-Kconfig Option                   | Default | Documentation
-:--------------------------------| :-----: | :------------
-`CONFIG_PLATFORM_EC_CBI_EEPROM`   | n       | [zephyr/Kconfig](../zephyr/Kconfig)
-
-One of the CBI elements is the
-[`FW_CONFIG`](https://chromium.googlesource.com/chromiumos/docs/+/HEAD/design_docs/firmware_config.md)
-field.
+One of the CBI elements is the [FW_CONFIG] field.
 This config is used at run time to select different hardware options or behaviours, and
 is defined generally on a board by board basis.
-The `FW_CONFIG` block is limited to 32 bits. The 32 bits are divided into individual
+The FW_CONFIG block is limited to 32 bits. The 32 bits are divided into individual
 fields of varying sizes. Each field has defined values that may be set to control
 the behaviour according to the definition for that board.
 
@@ -30,10 +22,8 @@ Device tree is used to define and specify the field sizes and values.
 
 ## Devicetree Nodes
 
-The `FW_CONFIG` device tree nodes are defined via the
-[cros-ec-cbi-fw-config](../zephyr/dts/bindings/cbi/cros-ec-cbi-fw-config.yaml)
-and
-[cros-ec-cbi-fw-config-value](../zephyr/dts/bindings/cbi/cros-ec-cbi-fw-config-value.yaml)
+The FW_CONFIG device tree nodes are defined via the [cros-ec-cbi-fw-config] and
+[cros-ec-cbi-fw-config-value]
 YAML bindings.
 
 The `cros-ec-cbi-fw-config` bindings define the name, starting bit and size of each field.
@@ -94,21 +84,18 @@ and then the defined enums used e.g:
 
     int get_power_watts()
     {
-	int ret;
-	uint32_t val;
+        int ret;
+        uint32_t val;
 
-	if (dev == null)
-	    return -1;
+        ret = cros_cbi_get_fw_config(FW_BJ_POWER, &val);
+        if (ret < 0)
+            return -1;
 
-	ret = cros_cbi_get_fw_config(FW_BJ_POWER, &val);
-	if (ret < 0)
-	    return -1;
-
-	if (val == BJ_POWER_P65)
-	    return 65;
-	if (val == BJ_POWER_P90)
-	    return 90;
-	return -1;
+        if (val == BJ_POWER_P65)
+            return 65;
+        if (val == BJ_POWER_P90)
+            return 90;
+        return -1;
     }
 ```
 
@@ -119,3 +106,10 @@ No threads used in this feature.
 ## Testing and Debugging
 
 There are unit tests.
+
+
+[CBI]: https://chromium.googlesource.com/chromiumos/docs/+/HEAD/design_docs/cros_board_info.md
+[CBI Configuration]: ./zephyr_cbi.md
+[cros-ec-cbi-fw-config]: ../../zephyr/dts/bindings/cbi/cros-ec-cbi-fw-config.yaml
+[cros-ec-cbi-fw-config-value]: ../../zephyr/dts/bindings/cbi/cros-ec-cbi-fw-config-value.yaml
+[FW_CONFIG]: https://chromium.googlesource.com/chromiumos/docs/+/HEAD/design_docs/firmware_config.md
