@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "742b5ea3_178f9465",
+        "filename": "zephyr/emul/tcpc/emul_tcpci_partner_common.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 397,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-03-02T23:41:32Z",
+      "side": 1,
+      "message": "It\u0027s probably worth thinking about the appropriate failure mode when tSenderResponse times out in the emulated partner.\n\nAsserting inside the emulator may produce an error that seems random and hard to debug from the perspective of the developer who beaks a test.\n\nA real, compliant port partner would Soft Reset or Hard Reset on a timeout, but doing that here would potentially get us into an infinite loop for consistent timeouts. It might also hide flaky timeouts if the next try succeeded. It would also make the emulator more complicated.\n\nMaybe the best thing to do is log a timeout inside the emulator (like the following CL does with messages) and keep going as if there had not been a timeout.\n\nYuval, what do you think?",
+      "revId": "800856888123125565cf5ba77ea9adbe98b84934",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c585fda2_cbad0c70",
         "filename": "zephyr/emul/tcpc/emul_tcpci_partner_snk.c",
         "patchSetId": 3
