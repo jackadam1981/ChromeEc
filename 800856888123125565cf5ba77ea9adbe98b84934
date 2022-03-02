@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c585fda2_cbad0c70",
+        "filename": "zephyr/emul/tcpc/emul_tcpci_partner_snk.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-03-02T23:32:08Z",
+      "side": 1,
+      "message": "This is going to get hard to maintain as we add support for new message types (easy to make copy-paste errors). I\u0027d suggest defining functions to set, reset, and check the timeout and encapsulating the data member accesses inside those functions.\n\nSee the API for the real TCPM in usb_pd_timer.h. I don\u0027t think you need something that complicated yet, but I think that API is fairly well encapsulated.",
+      "revId": "800856888123125565cf5ba77ea9adbe98b84934",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "957ae19f_ef36e40a",
+        "filename": "zephyr/include/emul/tcpc/emul_tcpci_partner_common.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-03-02T23:32:08Z",
+      "side": 1,
+      "message": "See comment on other spec timeout constant.",
+      "revId": "800856888123125565cf5ba77ea9adbe98b84934",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "122e8ef3_3099a3fa",
+        "filename": "zephyr/include/emul/tcpc/emul_tcpci_partner_snk.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-03-02T23:32:08Z",
+      "side": 1,
+      "message": "I think we\u0027re using a few constants from the PD spec in the emulator at this point. This one happens to not match PD_T_PS_TRANSITION in usb_pd.h (max here vs nominal there). If we\u0027re going to define multiple of these in the context of the emulators, it would probably be good to put them all in one header file instead of scattering them through the different emulators.",
+      "revId": "800856888123125565cf5ba77ea9adbe98b84934",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
