@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "42a43ef2_c6209452",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_adlp_pwrseq_sm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-03-02T00:24:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5bfafeb0_da1030ac",
+      "range": {
+        "startLine": 37,
+        "startChar": 22,
+        "endLine": 37,
+        "endChar": 39
+      },
+      "revId": "acdd47810bcc69d0a600836168f0e6ebb2ffc20e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "49e9fc38_60f87b53",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-03-01T23:54:22Z",
       "side": 1,
       "message": "Same here, this is PWR_DSW_PWROK.",
+      "range": {
+        "startLine": 210,
+        "startChar": 25,
+        "endLine": 210,
+        "endChar": 42
+      },
+      "revId": "acdd47810bcc69d0a600836168f0e6ebb2ffc20e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "92c99bed_62f91760",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_adlp_pwrseq_sm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-03-02T00:24:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "49e9fc38_60f87b53",
       "range": {
         "startLine": 210,
         "startChar": 25,
