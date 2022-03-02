@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "98f8880a_9b8f4759",
+        "filename": "board/prism/board.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-03-02T20:48:03Z",
+      "side": 1,
+      "message": "is this an initial copy of the hammer board to get the\nprism board compiling which will then\nbe followed by patches to do the hammer -\u003e prism transition?",
+      "range": {
+        "startLine": 5,
+        "startChar": 3,
+        "endLine": 5,
+        "endChar": 9
+      },
+      "revId": "5daa2eeb0d8d2623d564742d69ddcc849e0be8d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
