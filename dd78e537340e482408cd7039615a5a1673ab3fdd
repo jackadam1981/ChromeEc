@@ -33,6 +33,52 @@
       "message": "Hi Googler, can you help to review this CL? Thanks.",
       "revId": "dd78e537340e482408cd7039615a5a1673ab3fdd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b12b0200_7dba9ffa",
+        "filename": "board/moli/gpio.inc",
+        "patchSetId": 18
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2022-03-02T01:36:14Z",
+      "side": 1,
+      "message": "Is it possible to rename this net name in the schematic to reflect it color?",
+      "range": {
+        "startLine": 115,
+        "startChar": 5,
+        "endLine": 115,
+        "endChar": 12
+      },
+      "revId": "dd78e537340e482408cd7039615a5a1673ab3fdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "900c92ef_f1ed8b4e",
+        "filename": "board/moli/gpio.inc",
+        "patchSetId": 18
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2022-03-02T01:36:14Z",
+      "side": 1,
+      "message": "Same here.",
+      "range": {
+        "startLine": 116,
+        "startChar": 5,
+        "endLine": 116,
+        "endChar": 12
+      },
+      "revId": "dd78e537340e482408cd7039615a5a1673ab3fdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
