@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f80ebc8_5c34c8bd",
+        "filename": "zephyr/test/drivers/CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-03-02T00:05:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "77c8a461_bccad050",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 1
+      },
+      "revId": "22d9ae96abd346aabe8bf03709f97ac1b31fe52d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5bc80402_85bb0aa2",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-03-01T21:05:48Z",
       "side": 1,
       "message": "unindent this parenthisis",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 1
+      },
+      "revId": "22d9ae96abd346aabe8bf03709f97ac1b31fe52d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "830518e0_7f7b5a73",
+        "filename": "zephyr/test/drivers/CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-03-02T00:05:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5bc80402_85bb0aa2",
       "range": {
         "startLine": 54,
         "startChar": 0,
