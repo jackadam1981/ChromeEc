@@ -70,6 +70,24 @@
       "parentUuid": "139b05f0_f50a0056",
       "revId": "34561043a8c33e62476195837b4c16f85e6eb403",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3109ef9_ffef93eb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-03-02T00:33:28Z",
+      "side": 1,
+      "message": "All EFS2 systems do the RW jump before power on.  Lazor is proof of concept code only.  Once more herobrine hardware is available we plan to drop lazor support.\n\nI think this change just makes the code more confusing.  It provides multiple paths for the user to specify the power sequence GPIOs.  I hope that once the eSPI VW are wrapped with a GPIO interface, then the power_signals.c only needs to handle two cases: a GPIO pin (direct or IOEX or eSPI VW) and the \"external/custom\"",
+      "parentUuid": "474811a5_0e7a9d01",
+      "revId": "34561043a8c33e62476195837b4c16f85e6eb403",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
