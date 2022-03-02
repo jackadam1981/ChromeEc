@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "da14e23d_1dcddcb5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-03-02T02:45:20Z",
+      "side": 1,
+      "message": "Turning on eSPI and keyboard support caused Nereid\u0027s RAM to become overfull to the tune of ~3200 bytes, so we need to save some.",
+      "revId": "94a1f652773ffecd1e56f3d25dd445bd8bd79052",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
