@@ -88,6 +88,24 @@
       "parentUuid": "0a30969a_a5b365ef",
       "revId": "a17228bd2927aba925af02847698c1d4eb632e39",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c369ec7_164eede4",
+        "filename": "zephyr/subsys/ap_pwrseq/include/x86_power_signals.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2022-03-02T00:18:11Z",
+      "side": 1,
+      "message": "For brya there is a DSW_PWROK coming into EC and SoC as well (i.e. EC does only monitoring no pass through), and in here we have 3.3V. The PWR_DSW_PWROK_OUT seems to be the right naming for EC out signal.\nFor input we could name to PWR_DSW_PWROK_IN to neutralize?",
+      "parentUuid": "28a925b1_6f78e77b",
+      "revId": "a17228bd2927aba925af02847698c1d4eb632e39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
