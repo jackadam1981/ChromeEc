@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f51e9140_7ef490bd",
+        "filename": "zephyr/projects/nissa/nivviks_power_signals.dts",
+        "patchSetId": 38
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2022-03-02T18:29:45Z",
+      "side": 1,
+      "message": "This should be a GPIO. \u003c\u0026gpioa 7 0\u003e;",
+      "range": {
+        "startLine": 132,
+        "startChar": 1,
+        "endLine": 135,
+        "endChar": 34
+      },
+      "revId": "e3c670ca0345d9448207c8737505b032a6ded907",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
