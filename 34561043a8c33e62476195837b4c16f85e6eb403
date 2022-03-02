@@ -142,6 +142,24 @@
       "parentUuid": "64d0a6c7_d4e7d863",
       "revId": "34561043a8c33e62476195837b4c16f85e6eb403",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ac2f876_cb6d6255",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-03-02T23:12:01Z",
+      "side": 1,
+      "message": "From my experience, gpioget/gpioset are very useful tool during poweron and also in some debug, like TBT/USB4. It can help quickly to identify/rule out issues. If it\u0027 s possible, I would suggest to keep this; or at least provide alternatives, not just for power sequencing. powerindebug only display value, not enough. and it only has power signals",
+      "parentUuid": "b3347bfc_7248122a",
+      "revId": "34561043a8c33e62476195837b4c16f85e6eb403",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
