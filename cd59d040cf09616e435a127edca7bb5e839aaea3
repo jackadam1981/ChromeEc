@@ -16,6 +16,24 @@
       "message": "The links are pointing to 5.15. Is it possible to point them to a more generic tree (e.g. \u0027upstream\u0027)?",
       "revId": "cd59d040cf09616e435a127edca7bb5e839aaea3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5af4dd99_4f091af6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-03-03T22:22:26Z",
+      "side": 1,
+      "message": "Good idea. I didn\u0027t know we had that upstream directory. Updated.",
+      "parentUuid": "a948f96f_e86aaf3b",
+      "revId": "cd59d040cf09616e435a127edca7bb5e839aaea3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
