@@ -16,6 +16,24 @@
       "message": "In non-test builds, test_export_static will declare the function as static, which will mean it\u0027s in scope in any file that includes this header, which I think is not what you want. Maybe __test_only instead?",
       "revId": "97d2863530efd4bcbb8c0d5bdc83e44f189ea84e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4ef2844_c5a50df0",
+        "filename": "include/charge_state_v2.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-03-03T03:21:47Z",
+      "side": 1,
+      "message": "Right, but the idea is that if it\u0027s static and never defined the linker will remove it no?",
+      "parentUuid": "959283e7_c65328a1",
+      "revId": "97d2863530efd4bcbb8c0d5bdc83e44f189ea84e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
