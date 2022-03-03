@@ -20,6 +20,10 @@ properties:
         type: boolean
         description: Output GPIO. No interrupts used.
 
+    init-high:
+        type: boolean
+        description: On initialisation, assert the signal
+
     interrupt-flags:
         type: int
         required: false
