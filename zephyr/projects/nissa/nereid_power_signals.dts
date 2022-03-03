@@ -33,14 +33,14 @@
 		compatible = "intel,ap-pwrseq-gpio";
 		dbg-label = "pwr-pg-ec-rsmrst-odl";
 		enum-name = "PWR_RSMRST";
-		gpios = <&gpioe 1 (GPIO_ACTIVE_LOW|GPIO_PULL_UP)>;
+		gpios = <&gpioe 1 (GPIO_PULL_UP)>;
 		interrupt-flags = <GPIO_INT_EDGE_BOTH>;
 	};
 	pwr-ec-pch-rsmrst-odl {
 		compatible = "intel,ap-pwrseq-gpio";
 		dbg-label = "pwr-ec-pch-rsmrst-odl";
 		enum-name = "PWR_EC_PCH_RSMRST";
-		gpios = <&gpioh 0 (GPIO_ACTIVE_LOW)>;
+		gpios = <&gpioh 0 0>;
 		output;
 	};
 	pwr-slp-s0-l {
@@ -128,7 +128,18 @@
 	};
 	/*
 	 * TODO: Add ADC comparators
+	 * Temporary board based signals.
 	 */
+	pwr-dsw-pwrgd {
+		compatible = "intel,ap-pwrseq-external";
+		dbg-label = "ADC for 3.3V";
+		enum-name = "PWR_DSW_PWROK";
+	};
+	pwr-pg-pp1p05 {
+		compatible = "intel,ap-pwrseq-external";
+		dbg-label = "ADC for 1.05V";
+		enum-name = "PWR_PG_PP1P05";
+	};
 };
 
 /*
