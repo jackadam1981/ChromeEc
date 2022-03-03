@@ -22,6 +22,30 @@
       },
       "revId": "6ad1b843c0ed878542e364a64a1f3b987dd0a1c4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87f2582f_f9a65de1",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-03-03T00:17:03Z",
+      "side": 1,
+      "message": "So these are active low signals, and my understanding is that you need to wait for this signal to be de-asserted?\nI.e the physical pin to go high, but since they are marked as active low, this reads as logical 0.",
+      "parentUuid": "9a021540_a692455d",
+      "range": {
+        "startLine": 113,
+        "startChar": 1,
+        "endLine": 114,
+        "endChar": 13
+      },
+      "revId": "6ad1b843c0ed878542e364a64a1f3b987dd0a1c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
