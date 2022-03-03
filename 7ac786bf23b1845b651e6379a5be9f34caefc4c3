@@ -46,6 +46,30 @@
       },
       "revId": "7ac786bf23b1845b651e6379a5be9f34caefc4c3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6a5429e_f778cc44",
+        "filename": "board/taeko/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-03-03T02:49:19Z",
+      "side": 1,
+      "message": "let me try to understand. if you\u0027re\nenabling TCPC_FLAGS_CONTROL_FRS for C1,\nFRS_EN should be an output on the ps8815\n(pin GPIO06) and an input on the PPC.\n\nwhat is the role of USB_C1_FRS_EN?\nif it\u0027s the same net, driving it high may not be good.\n\ncould you attach your USB DB schematics to the bug\nor where ever you normally upload schematics?",
+      "parentUuid": "e06ec0eb_aa2f33e4",
+      "range": {
+        "startLine": 74,
+        "startChar": 57,
+        "endLine": 74,
+        "endChar": 62
+      },
+      "revId": "7ac786bf23b1845b651e6379a5be9f34caefc4c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
