@@ -46,6 +46,30 @@
       },
       "revId": "c2d2ba09483d7425da1c86c7d83ad110b99f2755",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a59fbcd3_819b6c07",
+        "filename": "board/anahera/usbc_config.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-03-03T08:08:31Z",
+      "side": 1,
+      "message": "can\u0027t you call this function with USBA_PORT_A0 or USBA_PORT_A1:\n\n```\nusbaX_retimer_init(int port)\n{\n  const struct usb_mux *me \u003d \u0026usba_ps8811[port];\n...\n}\n```",
+      "parentUuid": "96a624ac_9acc6577",
+      "range": {
+        "startLine": 341,
+        "startChar": 11,
+        "endLine": 341,
+        "endChar": 29
+      },
+      "revId": "c2d2ba09483d7425da1c86c7d83ad110b99f2755",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
