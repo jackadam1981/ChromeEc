@@ -70,6 +70,30 @@
       },
       "revId": "b729d9390a9c513ca99d655d660c0a3819220154",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "56124703_c2a11f0e",
+        "filename": "zephyr/projects/nissa/src/board_power.c",
+        "patchSetId": 42
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2022-03-03T05:54:11Z",
+      "side": 1,
+      "message": "I am about to upload fix, final test being done on HW.",
+      "parentUuid": "60c3b701_63c948ac",
+      "range": {
+        "startLine": 113,
+        "startChar": 3,
+        "endLine": 113,
+        "endChar": 49
+      },
+      "revId": "b729d9390a9c513ca99d655d660c0a3819220154",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
