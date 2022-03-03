@@ -433,10 +433,10 @@ void sr_task(void *u)
 			watchdog_disable();
 
 			/* change to 26M to stop core at here */
-			clock_select_clock(SCP_CLK_SYSTEM);
+			/* clock_select_clock(SCP_CLK_SYSTEM); */
 
 			/* 26M is back */
-			clock_select_clock(SCP_CLK_ULPOSC2_HIGH_SPEED);
+			/* clock_select_clock(SCP_CLK_ULPOSC2_HIGH_SPEED); */
 
 			watchdog_enable();
 			interrupt_enable();
@@ -478,7 +478,7 @@ void clock_init(void)
 		clock_calibrate_ulposc(&opp[i]);
 
 	/* select ULPOSC2 high speed SCP clock */
-	clock_select_clock(SCP_CLK_ULPOSC2_HIGH_SPEED);
+	/* clock_select_clock(SCP_CLK_ULPOSC2_HIGH_SPEED); */
 
 	/* select BCLK to use ULPOSC / 8 */
 	SCP_BCLK_CK_SEL = BCLK_CK_SEL_ULPOSC_DIV8;
