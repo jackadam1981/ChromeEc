@@ -16,6 +16,40 @@
       "message": "@Yuval/@Tristan - could you please review again?  I needed to add the changes in isl923x.c for the changing the name of reset API, otherwise compile fails.",
       "revId": "567ed425eef499b4bc1cfde347f1fbee2c7e5953",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b17b5a6_a6467f29",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2022-03-03T23:49:15Z",
+      "side": 1,
+      "message": "Sorry, I didn\u0027t see your comment requesting a re-review",
+      "revId": "567ed425eef499b4bc1cfde347f1fbee2c7e5953",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02ac3ff2_5164a650",
+        "filename": "zephyr/emul/emul_isl923x.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 449,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2022-03-03T23:49:15Z",
+      "side": 1,
+      "message": "I believe this rule will run after every single test case (not just the ones in this suite). I don\u0027t know how much of a concern this is. Could ask Yuval for thoughts. It is possible to determine the suite by strcmp-ing test-\u003etest_suite_name",
+      "revId": "567ed425eef499b4bc1cfde347f1fbee2c7e5953",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
