@@ -13,6 +13,7 @@
 
 		sys-pwrok-delay = <10>;
 		all-sys-pwrgd-timeout = <20>;
+		pwrseq-espi-max-freq = <50>;
 	};
 
 	pwr-en-pp5000-s5 {
@@ -110,12 +111,14 @@
 		dbg-label = "SLP_S4";
 		enum-name = "PWR_SLP_S4";
 		virtual-wire = "ESPI_VWIRE_SIGNAL_SLP_S4";
+		vw-invert;
 	};
 	pwr-slp-s5 {
 		compatible = "intel,ap-pwrseq-vw";
 		dbg-label = "SLP_S5";
 		enum-name = "PWR_SLP_S5";
 		virtual-wire = "ESPI_VWIRE_SIGNAL_SLP_S5";
+		vw-invert;
 	};
 	pwr-all-sys-pwrgd {
 		/*
