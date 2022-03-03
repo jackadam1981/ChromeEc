@@ -956,6 +956,37 @@ static int ps8xxx_tcpm_set_vconn(int port, int enable)
 	return tcpci_tcpm_set_vconn(port, enable);
 }
 
+static int ps8xxx_tcpm_set_rx_enable(int port, int enable)
+{
+	int rv;
+	int role;
+	int status;
+	uint16_t pid;
+
+	pid = board_get_ps8xxx_product_id(port);
+	if (pid == 0)
+		return EC_ERROR_UNKNOWN;
+
+	if (pid == PS8815_PRODUCT_ID && !enable) {
+		/* Get the ROLE CONTROL and CC STATUS values */
+		rv = tcpc_read(port, TCPC_REG_ROLE_CTRL, &role);
+		if (rv)
+			return rv;
+
+		rv = tcpc_read(port, TCPC_REG_CC_STATUS, &status);
+		if (rv)
+			return rv;
+
+		if (role == 0x2A && (status == 0x04 || status == 0x01))
+			tcpc_write(port, TCPC_REG_RX_DETECT, TCPC_REG_RX_DETECT_SOP_HRST_MASK);
+	} else {
+		tcpci_tcpm_set_rx_enable(port, enable);
+	}
+
+
+	return EC_SUCCESS;
+}
+
 const struct tcpm_drv ps8xxx_tcpm_drv = {
 	.init			= ps8xxx_tcpm_init,
 	.release		= ps8xxx_tcpm_release,
@@ -971,7 +1002,7 @@ const struct tcpm_drv ps8xxx_tcpm_drv = {
 #endif
 	.set_vconn		= ps8xxx_tcpm_set_vconn,
 	.set_msg_header		= tcpci_tcpm_set_msg_header,
-	.set_rx_enable		= tcpci_tcpm_set_rx_enable,
+	.set_rx_enable		= ps8xxx_tcpm_set_rx_enable,
 	.get_message_raw	= tcpci_tcpm_get_message_raw,
 	.transmit		= ps8xxx_tcpm_transmit,
 	.tcpc_alert		= tcpci_tcpc_alert,
