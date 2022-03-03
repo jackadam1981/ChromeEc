@@ -46,6 +46,30 @@
       },
       "revId": "0d31e439e4331606fc6c0dda89052bdf5d16c03c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "772e8db1_4ebf3bff",
+        "filename": "zephyr/test/drivers/src/console_cmd/charge_state.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2022-03-03T17:47:25Z",
+      "side": 1,
+      "message": "My main problem with this is the redundancy as a maintenance issue if something in the implementation changes at some time in the future.  I like the idea of each test specifically testing one feature but not sure that is quite as good for testing one specific portion of each feature in a single test. If you were doing this with USB-C then you would have all sorts of redundancy for setup and intentionally injected failure points at each portion of this path if you have each one in its own test.",
+      "parentUuid": "664ec3a6_f0265684",
+      "range": {
+        "startLine": 171,
+        "startChar": 1,
+        "endLine": 189,
+        "endChar": 1
+      },
+      "revId": "0d31e439e4331606fc6c0dda89052bdf5d16c03c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
