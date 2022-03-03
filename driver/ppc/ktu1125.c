@@ -22,6 +22,7 @@
 #define CPRINTS(format, args...) cprints(CC_USBPD, format, ## args)
 
 static atomic_t irq_pending; /* Bitmask of ports signaling an interrupt. */
+static timestamp_t vbus_oc_timer[CONFIG_USB_PD_PORT_MAX_COUNT];
 
 static int read_reg(uint8_t port, int reg, int *regval)
 {
@@ -182,6 +183,10 @@ static int ktu1125_init(int port)
 	sysb_clp = KTU1125_SYSB_ILIM_1_70;
 #endif /* defined(CONFIG_USB_PD_MAX_SINGLE_SOURCE_CURRENT) */
 
+/* dirty hack */
+sysb_clp = KTU1125_SYSB_ILIM_0_6;
+
+
 	/* Set SYSB Current Limit Protection */
 	set_sw_cfg |= sysb_clp << KTU1125_SYSB_CLP_SHIFT;
 	/* Set VCONN Current Limit Protection.
@@ -189,7 +194,7 @@ static int ktu1125_init(int port)
 	 */
 	set_sw_cfg |= KTU1125_VCONN_ILIM_0_40 << KTU1125_VCONN_CLP_SHIFT;
 	/* Disable Dead Battery resistance, because CC FETs are ON */
-	set_sw_cfg |= KTU1125_RDB_DIS;
+	// set_sw_cfg |= KTU1125_RDB_DIS;
 
 	status = write_reg(port, KTU1125_SET_SW_CFG, set_sw_cfg);
 	if (status) {
@@ -237,8 +242,8 @@ static int ktu1125_init(int port)
 		return status;
 	}
 
-	/* Only leave VBUS_OK masked for SRC group of interrupts */
-	regval = KTU1125_SRC_MASK_ALL & KTU1125_VBUS_OK;
+ 	/* Only leave VBUS_OK masked for SRC group of interrupts */
+	regval = KTU1125_SRC_MASK_ALL & (KTU1125_VBUS_OK | KTU1125_SYSB_CLP);
 	status = write_reg(port, KTU1125_INTMASK_SRC, regval);
 	if (status) {
 		ppc_err_prints("Failed to write INTMASK_SRC!", port, status);
@@ -246,7 +251,9 @@ static int ktu1125_init(int port)
 	}
 
 	/* Unmask the entire DATA group of interrupts */
-	status = write_reg(port, KTU1125_INTMASK_DATA, ~KTU1125_DATA_MASK_ALL);
+	regval = KTU1125_DATA_MASK_ALL & (KTU1125_CC1_OVP | KTU1125_CC1_OVP);
+	// status = write_reg(port, KTU1125_INTMASK_DATA, ~KTU1125_DATA_MASK_ALL);
+	status = write_reg(port, KTU1125_INTMASK_DATA, regval);
 	if (status) {
 		ppc_err_prints("Failed to write INTMASK_DATA!", port, status);
 		return status;
@@ -326,6 +333,9 @@ static int ktu1125_set_vbus_src_current_limit(int port, enum tcpc_rp_value rp)
 		break;
 	};
 
+
+/* DIRTY HACK */
+regval = KTU1125_SYSB_ILIM_0_6;
 
 	status = set_field(port, KTU1125_SET_SW_CFG, KTU1125_SYSB_CLP_SHIFT,
 			    KTU1125_SYSB_CLP_LEN, regval);
@@ -432,6 +442,17 @@ static int ktu1125_set_sbu(int port, int enable)
 }
 #endif /* CONFIG_USBC_PPC_SBU */
 
+static void ktu1125_handle_clp(int port)
+{
+	if (vbus_oc_timer[port].val == UINT64_MAX)
+		vbus_oc_timer[port].val = get_time().val +
+			SOURCE_OC_DEGLITCH_MS * MSEC;
+	else if (get_time().val > vbus_oc_timer[port].val) {
+		vbus_oc_timer[port].val = UINT64_MAX;
+		pd_handle_overcurrent(port);
+	}
+}
+
 static void ktu1125_handle_interrupt(int port)
 {
 	int attempt = 0;
@@ -472,14 +493,20 @@ static void ktu1125_handle_interrupt(int port)
 			pd_handle_overcurrent(port);
 		}
 
-		if (src & (KTU1125_SYSB_CLP |
-			   KTU1125_SYSB_OCP |
-			   KTU1125_SYSB_SCP |
+		if (src & (KTU1125_SYSB_OCP |
+			   /* KTU1125_SYSB_SCP |  --- bug?*/
 			   KTU1125_VCONN_CLP |
 			   KTU1125_VCONN_SCP)) {
 			/* Log and PD reset */
 			pd_handle_overcurrent(port);
 		}
+
+
+		if (src & KTU1125_SYSB_CLP) {
+			ktu1125_handle_clp();
+		}
+
+
 
 		if (data & (KTU1125_SBU2_OVP | KTU1125_SBU1_OVP)) {
 			/* Log and PD reset */

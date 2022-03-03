@@ -15,6 +15,7 @@
 #include "driver/bc12/pi3usb9201_public.h"
 #include "driver/ppc/nx20p348x.h"
 #include "driver/ppc/syv682x_public.h"
+#include "driver/ppc/ktu1125_public.h"
 #include "driver/retimer/bb_retimer_public.h"
 #include "driver/tcpm/nct38xx.h"
 #include "driver/tcpm/ps8xxx_public.h"
@@ -100,14 +101,13 @@ BUILD_ASSERT(ARRAY_SIZE(usb_port_enable) == USB_PORT_COUNT);
 struct ppc_config_t ppc_chips[] = {
 	[USBC_PORT_C0] = {
 		.i2c_port = I2C_PORT_USB_C0_C2_PPC,
-		.i2c_addr_flags = SYV682X_ADDR0_FLAGS,
-		.frs_en = IOEX_USB_C0_FRS_EN,
-		.drv = &syv682x_drv,
+		.i2c_addr_flags = KTU1125_ADDR0_FLAGS, /* 0x78 */
+		.drv = &ktu1125_drv,
 	},
 	[USBC_PORT_C1] = {
 		/* Compatible with Silicon Mitus SM536A0 */
 		.i2c_port = I2C_PORT_USB_C1_PPC,
-		.i2c_addr_flags = NX20P3483_ADDR2_FLAGS,
+		.i2c_addr_flags = NX20P3483_ADDR2_FLAGS, /* 0x72 */
 		.drv = &nx20p348x_drv,
 	},
 	[USBC_PORT_C2] = {
@@ -337,21 +337,9 @@ __override int bb_retimer_power_enable(const struct usb_mux *me, bool enable)
 
 void board_reset_pd_mcu(void)
 {
-	enum gpio_signal tcpc_rst;
+	nct38xx_reset_notify(USBC_PORT_C0);
+	nct38xx_reset_notify(USBC_PORT_C2);
 
-	if (get_board_id() == 1)
-/* TODO: explore how to handle board id in zephyr*/
-#ifndef CONFIG_ZEPHYR
-		tcpc_rst = GPIO_ID_1_USB_C0_C2_TCPC_RST_ODL;
-	else
-#endif /* !CONFIG_ZEPHYR */
-		tcpc_rst = GPIO_USB_C0_C2_TCPC_RST_ODL;
-
-	/*
-	 * TODO(b/179648104): figure out correct timing
-	 */
-
-	gpio_set_level(tcpc_rst, 0);
 	if (ec_cfg_usb_db_type() != DB_USB_ABSENT) {
 		gpio_set_level(GPIO_USB_C1_RST_ODL, 0);
 		gpio_set_level(GPIO_USB_C1_RT_RST_R_ODL, 0);
@@ -363,7 +351,6 @@ void board_reset_pd_mcu(void)
 
 	msleep(20);
 
-	gpio_set_level(tcpc_rst, 1);
 	if (ec_cfg_usb_db_type() != DB_USB_ABSENT) {
 		gpio_set_level(GPIO_USB_C1_RST_ODL, 1);
 		gpio_set_level(GPIO_USB_C1_RT_RST_R_ODL, 1);
@@ -481,7 +468,7 @@ void ppc_interrupt(enum gpio_signal signal)
 {
 	switch (signal) {
 	case GPIO_USB_C0_PPC_INT_ODL:
-		syv682x_interrupt(USBC_PORT_C0);
+		ktu1125_interrupt(USBC_PORT_C0);
 		break;
 	case GPIO_USB_C1_PPC_INT_ODL:
 		switch (ec_cfg_usb_db_type()) {
