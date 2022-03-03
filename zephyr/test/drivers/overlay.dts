@@ -6,12 +6,14 @@
 #include <cros/thermistor/thermistor.dtsi>
 #include <dt-bindings/gpio_defines.h>
 #include <freq.h>
+#include <cros/binman.dtsi>
 
 / {
 	chosen {
 		cros-ec,espi = &espi0;
 		cros-ec,watchdog = &wdt_counter;
 		cros-ec,raw-kb = &cros_kb_raw;
+		cros-ec,flash-controller = &cros_flash;
 	};
 
 	aliases {
@@ -671,6 +673,11 @@
 	cros_kb_raw: kb-raw-emul {
 		compatible = "cros-ec,kb-raw-emul";
 		label = "KB_RAW";
+	};
+
+	cros_flash: cros-flash {
+		compatible = "cros-ec,flash-emul";
+		label = "FLASH";
 	};
 };
 
