@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e55cc07a_d4b69804",
+        "filename": "board/taniks/ec.tasklist",
+        "patchSetId": 24
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-03-03T08:01:22Z",
+      "side": 1,
+      "message": "add const in board.h\n\nfor brya, i started adding task/function associated stack size\ndefinitions like\n\nBASEBOARD_POWERBTN_TASK_STACK_SIZE\n\nthat makes more sense than picking starbucks drink sizes.",
+      "range": {
+        "startLine": 15,
+        "startChar": 40,
+        "endLine": 15,
+        "endChar": 44
+      },
+      "revId": "bb739c8e062d0fcd98dfd0dd47e5e498ecad0fd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f96cee7_16674b96",
+        "filename": "board/taniks/keyboard.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-03-03T08:01:22Z",
+      "side": 1,
+      "message": "oooh, addr of compound literal 😎\ndoes the struct actually show up in the .rodata section\nor do you end up with a dangling pointer?",
+      "range": {
+        "startLine": 53,
+        "startChar": 9,
+        "endLine": 58,
+        "endChar": 3
+      },
+      "revId": "bb739c8e062d0fcd98dfd0dd47e5e498ecad0fd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
