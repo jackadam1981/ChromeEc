@@ -491,7 +491,10 @@ static int ps8xxx_tcpc_drp_toggle(int port)
 {
 	int rv;
 	int status;
+	int role;
 	int opposite_pull;
+	int status1;
+	int role1;
 
 	/*
 	 * Workaround for PS8805/PS8815, which can't restart Connection
@@ -508,6 +511,9 @@ static int ps8xxx_tcpc_drp_toggle(int port)
 
 		/* Check CC_STATUS for the current pull */
 		rv = tcpc_read(port, TCPC_REG_CC_STATUS, &status);
+		/* Check ROLE_CTRL */
+		rv = tcpc_read(port, TCPC_REG_ROLE_CTRL, &role);
+		
 		if (status & TCPC_REG_CC_STATUS_CONNECT_RESULT_MASK) {
 			/* Current pull: Rd */
 			opposite_pull = TYPEC_CC_RP;
@@ -515,6 +521,20 @@ static int ps8xxx_tcpc_drp_toggle(int port)
 			/* Current pull: Rp */
 			opposite_pull = TYPEC_CC_RD;
 		}
+
+		/* Check if it is Ra cable */
+		status1 = ((status & 0x04) || (status & 0x01));
+
+		/* Check if cc1/ cc2 are Rd */
+		role1 = (role & 0x2a);
+
+		/*
+		 * Make PS8815 can receive cc message and send GoodCRC
+		 * when connect Ra cable.
+		 */
+		if (status1 && role1)
+			tcpc_write(port, TCPC_REG_RX_DETECT,
+				TCPC_REG_RX_DETECT_SOP_HRST_MASK);
 
 		/* Set auto drp toggle, starting with the opposite pull */
 		rv |= ps8xxx_set_role_ctrl(port, TYPEC_DRP, TYPEC_RP_USB,
