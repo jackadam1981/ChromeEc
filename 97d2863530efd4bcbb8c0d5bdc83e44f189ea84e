@@ -34,6 +34,24 @@
       "parentUuid": "959283e7_c65328a1",
       "revId": "97d2863530efd4bcbb8c0d5bdc83e44f189ea84e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb5326ed_f28c33a1",
+        "filename": "include/charge_state_v2.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-03-03T18:10:52Z",
+      "side": 1,
+      "message": "I think you\u0027re right. Hypothetically, if someone mistakenly referred to get_chg_ctrl_mode in non-test code, that would be caught in the linker, whereas it would ideally be caught by the compiler, but that\u0027s not that tragic. The get_chg_ctrl_mode symbol declared in the .c files that include charge_state_v2.h won\u0027t be the same symbol as is defined in charge_state_v2.c.",
+      "parentUuid": "a4ef2844_c5a50df0",
+      "revId": "97d2863530efd4bcbb8c0d5bdc83e44f189ea84e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
