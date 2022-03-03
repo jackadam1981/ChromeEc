@@ -56,6 +56,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8933acfd_91a90503",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-03-03T03:55:30Z",
+      "side": 1,
+      "message": "I think it depends on how you look at this signal. \nIf treat it as gpio referring schematic, then it\u0027s active low;\nif we are in the concept it\u0027s power signal, referring above power document, it\u0027s active high power good signal. Because this is in power sequencing module, it makes sense to me to follow the power signal document.\n\nthe log I sent to you, I has some modification not cleaned up, so rsmrst is 0. I was mainly to show the VW data, that part is untouched.\nso I use this CL and dts change active high in another patch, and captured the powerindebug,\n22-03-02 19:51:08.997   0x0001 1 pwr-en-pp5000-s5\n22-03-02 19:51:09.000   0x0002 1 pwr-en-pp3300-s5\n22-03-02 19:51:09.003   0x0004 1 pwr-pg-ec-rsmrst-odl\n22-03-02 19:51:09.006   0x0008 1 pwr-ec-pch-rsmrst-odl\n22-03-02 19:51:09.009   0x0010 0 pwr-slp-s0-l\n22-03-02 19:51:09.013   0x0020 0 pwr-slp-s3-l\n22-03-02 19:51:09.016   0x0040 0 pwr-slp-sus-l\n22-03-02 19:51:09.024   0x0080 1 pwr-ec-soc-dsw-pwrok\n22-03-02 19:51:09.024   0x0100 0 pwr-vccst-pwrgd-od\n22-03-02 19:51:09.027   0x0200 0 pwr-imvp9-vrrdy-od\n22-03-02 19:51:09.030   0x0400 0 pwr-ec-soc-pch-pwrok-od\n22-03-02 19:51:09.034   0x0800 0 pwr-ec-pch-sys-pwrok\n22-03-02 19:51:09.037   0x1000 0 pwr-sys-rst-l\n22-03-02 19:51:09.041   0x2000 0 SLP_S4\n22-03-02 19:51:09.043   0x4000 0 SLP_S5\n22-03-02 19:51:09.043   0x8000 1 ALL_SYS_PWRGD\n22-03-02 19:51:09.047   0x10000 1 PP3300_PROC\n22-03-02 19:51:09.050   0x20000 1 PP1P05_PROC",
+      "parentUuid": "827b3c4d_4565782e",
+      "revId": "fdb786965058e1cf5836148c89b388d4eebb3353",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "58072d3c_37d927e7",
         "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
         "patchSetId": 2
