@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8becc786_964731f4",
+        "filename": "common/usbc/usb_pd_timer.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2022-03-03T07:55:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9bf64ec4_3a2df7ad",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 0
+      },
+      "revId": "7af0b6f3c638b39436c4661a72e463a3c201bc01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6f8f1c5a_a637e350",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0b18dd6_98c6184d",
+        "filename": "common/usbc/usb_pd_timer.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2022-03-03T07:55:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6f8f1c5a_a637e350",
+      "range": {
+        "startLine": 133,
+        "startChar": 0,
+        "endLine": 137,
+        "endChar": 0
+      },
+      "revId": "7af0b6f3c638b39436c4661a72e463a3c201bc01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f3c7c068_e3afcd81",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-03-02T15:55:00Z",
       "side": 1,
       "message": "These are safer if written with parens around the parameter usage.\n\n    #define PD_operation(p, bit) \\\n        atomic_operation_bit(timer, (p) * PD_TIMER_COUNT + (bit))",
+      "range": {
+        "startLine": 344,
+        "startChar": 0,
+        "endLine": 358,
+        "endChar": 58
+      },
+      "revId": "7af0b6f3c638b39436c4661a72e463a3c201bc01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1cb8172c_b25cdc46",
+        "filename": "include/usb_pd_timer.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2022-03-03T07:55:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f3c7c068_e3afcd81",
       "range": {
         "startLine": 344,
         "startChar": 0,
