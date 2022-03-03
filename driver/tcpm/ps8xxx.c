@@ -491,7 +491,10 @@ static int ps8xxx_tcpc_drp_toggle(int port)
 {
 	int rv;
 	int status;
+	int role;
 	int opposite_pull;
+	int status1;
+	int role1;
 
 	/*
 	 * Workaround for PS8805/PS8815, which can't restart Connection
@@ -515,6 +518,13 @@ static int ps8xxx_tcpc_drp_toggle(int port)
 			/* Current pull: Rp */
 			opposite_pull = TYPEC_CC_RD;
 		}
+		rv = tcpc_read(port, TCPC_REG_ROLE_CTRL, &role);
+
+		status1 = ((status & 0x04) || (status & 0x01));
+		role1 = (role & 0x2a);
+
+		if (status1 && role1)
+			tcpc_write(port, TCPC_REG_RX_DETECT, TCPC_REG_RX_DETECT_SOP_HRST_MASK);
 
 		/* Set auto drp toggle, starting with the opposite pull */
 		rv |= ps8xxx_set_role_ctrl(port, TYPEC_DRP, TYPEC_RP_USB,
