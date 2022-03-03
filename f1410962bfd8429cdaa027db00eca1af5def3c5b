@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4567a1ae_26935254",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-03-03T22:50:27Z",
+      "side": 1,
+      "message": "What do we need this for? It seems like signals should be initially deasserted, in which case a signal that should be electrically high at initialization should be marked as ACTIVE_LOW and I assume then initialization will set it high.",
+      "revId": "f1410962bfd8429cdaa027db00eca1af5def3c5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
