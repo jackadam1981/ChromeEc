@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "93807a24_3e48e9f2",
+        "filename": "zephyr/emul/tcpc/emul_tcpci_partner_common.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-03-03T23:39:08Z",
+      "side": 1,
+      "message": "I mistyped. I meant should it be called inside `tcpci_emul_add_rx_msg`. But I can see how that would be a problem for the TCPC driver tests, and I withdraw the question.",
+      "parentUuid": "62f63544_8d09f145",
+      "revId": "509003c6d9708ca85b02b71df69e587881f40550",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "50b77a27_7979c99d",
