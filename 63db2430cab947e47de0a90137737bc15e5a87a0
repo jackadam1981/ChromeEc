@@ -46,6 +46,30 @@
       },
       "revId": "63db2430cab947e47de0a90137737bc15e5a87a0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe903248_229f656f",
+        "filename": "docs/fingerprint/fingerprint-debugging.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-03-03T01:43:21Z",
+      "side": 1,
+      "message": "Yeah, I don\u0027t remember needing this on cloudtop (haven\u0027t verified though) but I did need it on laptop. It\u0027s likely related to udev rules or some user/group.",
+      "parentUuid": "74b174c6_0919dbfd",
+      "range": {
+        "startLine": 122,
+        "startChar": 11,
+        "endLine": 122,
+        "endChar": 15
+      },
+      "revId": "63db2430cab947e47de0a90137737bc15e5a87a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
