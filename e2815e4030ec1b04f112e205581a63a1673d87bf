@@ -16,6 +16,24 @@
       "message": "i\u0027m actually pulling DIOM3 up and down, say for wake from deep sleep tests. And just used a wire to connect DIOM3 with Vdd, but can move it to ground for tests\n\nmay be worth just to update documentation as this change will make it less flexible?",
       "revId": "e2815e4030ec1b04f112e205581a63a1673d87bf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7fb00bab_42f95974",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-03-03T18:10:11Z",
+      "side": 1,
+      "message": "The pullup will not prevent you from connecting the pin to the ground, the pull up helps to avoid noise when the pin is floating.",
+      "parentUuid": "32f79e7d_dd05eb70",
+      "revId": "e2815e4030ec1b04f112e205581a63a1673d87bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
