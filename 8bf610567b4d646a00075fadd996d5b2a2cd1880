@@ -63,6 +63,30 @@
       },
       "revId": "8bf610567b4d646a00075fadd996d5b2a2cd1880",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6741add7_9d9b0487",
+        "filename": "zephyr/subsys/ap_pwrseq/power_signals.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2022-03-03T19:58:01Z",
+      "side": 1,
+      "message": "ACK",
+      "parentUuid": "4070d85c_703e83f8",
+      "range": {
+        "startLine": 221,
+        "startChar": 0,
+        "endLine": 221,
+        "endChar": 28
+      },
+      "revId": "8bf610567b4d646a00075fadd996d5b2a2cd1880",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
