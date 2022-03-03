@@ -22,6 +22,30 @@
       },
       "revId": "0d31e439e4331606fc6c0dda89052bdf5d16c03c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "664ec3a6_f0265684",
+        "filename": "zephyr/test/drivers/src/console_cmd/charge_state.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-03-03T17:34:12Z",
+      "side": 1,
+      "message": "The test uses the zassume vs zassert API. The key is, when something fails, to only fail on a single test and be explicit about the failure. This test requires the previous test to pass. But in theory, there are other code paths to put the state to CHARGE_CONTROL_DISCHARGE so I didn\u0027t want the test to be about how we get to the setup state. This way if anything changes, we can edit the zassume calls that get us to the state and leave the assert.\n\nI\u0027m happy to change if you feel strongly about it. Since this is running in posix with no real code size or runtime limitations I opted for more code in the test.",
+      "parentUuid": "250cc1fb_e44564b1",
+      "range": {
+        "startLine": 171,
+        "startChar": 1,
+        "endLine": 189,
+        "endChar": 1
+      },
+      "revId": "0d31e439e4331606fc6c0dda89052bdf5d16c03c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
