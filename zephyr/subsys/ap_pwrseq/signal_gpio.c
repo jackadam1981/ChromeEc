@@ -23,8 +23,9 @@ DT_FOREACH_STATUS_OKAY(MY_COMPAT, INIT_GPIO_SPEC)
  */
 struct ps_gpio_int {
 	gpio_flags_t flags;
-	uint8_t output;
-	uint8_t no_enable;
+	uint8_t output : 1;
+	uint8_t no_enable : 1;
+	uint8_t init_high : 1;
 };
 
 #define INIT_GPIO_CONFIG(id)					\
@@ -32,6 +33,7 @@ struct ps_gpio_int {
 		.flags = DT_PROP_OR(id, interrupt_flags, 0),	\
 		.no_enable = DT_PROP(id, no_enable),		\
 		.output = DT_PROP(id, output),			\
+		.init_high = DT_PROP(id, init_high),		\
 	 },
 
 const static struct ps_gpio_int gpio_config[] = {
@@ -114,7 +116,9 @@ void power_signal_gpio_init(void)
 {
 	for (int i = 0; i < ARRAY_SIZE(gpio_config); i++) {
 		if (gpio_config[i].output) {
-			gpio_pin_configure_dt(&spec[i], GPIO_OUTPUT);
+			gpio_flags_t f = gpio_config[i].init_high
+				? GPIO_OUTPUT : GPIO_OUTPUT | GPIO_OUTPUT_HIGH;
+			gpio_pin_configure_dt(&spec[i], f);
 		} else {
 			gpio_pin_configure_dt(&spec[i], GPIO_INPUT);
 			/* If interrupt, initialise it */
