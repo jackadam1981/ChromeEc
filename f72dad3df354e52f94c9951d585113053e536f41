@@ -22,6 +22,30 @@
       },
       "revId": "f72dad3df354e52f94c9951d585113053e536f41",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc235dca_3a474c20",
+        "filename": "board/hammer/variants.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2022-03-03T17:34:25Z",
+      "side": 1,
+      "message": "I\u0027m not really sure the history about this.\n\nMy understanding is that we need to read the numbers from a real device, and put it here to make a compile-time usb descriptor blob.",
+      "parentUuid": "e7f7d60c_586b41dd",
+      "range": {
+        "startLine": 102,
+        "startChar": 9,
+        "endLine": 102,
+        "endChar": 35
+      },
+      "revId": "f72dad3df354e52f94c9951d585113053e536f41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
