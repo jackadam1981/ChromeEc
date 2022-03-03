@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17eb4420_ac11829e",
+        "filename": "driver/retimer/ps8811.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-03-03T05:12:24Z",
+      "side": 1,
+      "message": "there\u0027s a mix of using P and _ for the decimal point.\nwe should really do a global substitution to make this\nconsistent (i personally prefer P to _).",
+      "range": {
+        "startLine": 46,
+        "startChar": 32,
+        "endLine": 46,
+        "endChar": 36
+      },
+      "revId": "c35515ffe234d1270cc062ea9954bc336523b5f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be97c2d9_1a088d53",
+        "filename": "driver/retimer/ps8811.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-03-03T05:12:24Z",
+      "side": 1,
+      "message": "i think it\u0027s better to change these to values\nthat need to be shifted\n(similar to PS8811_ADE_PIN_MID_LEVEL_0P5DB).\nso, please define *_CONFIG_MASK and\n_SHIFT for these and the new ones you\u0027re adding\nfor reg 0x01. having both styles is going to\nbe very confusing.\n\nfix the existing issues in a separate patch first.\nlooks like trembyle is the only board using this,\nso it should be pretty straight forward.",
+      "range": {
+        "startLine": 94,
+        "startChar": 0,
+        "endLine": 104,
+        "endChar": 0
+      },
+      "revId": "c35515ffe234d1270cc062ea9954bc336523b5f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
