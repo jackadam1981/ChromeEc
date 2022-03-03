@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d7321bd_51d17a45",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-03-03T00:13:20Z",
+      "side": 1,
+      "message": "So the odd think here is that you\u0027ve change the GPIO from active low to active high (though the signal itself is active low, as open-drain low), and then you are flipping the logic check here, so if I read this right, this doesn\u0027t actually change the test at all here?\nI\u0027m trying to figure out exactly what the signal should be tested as.\nSo when you are \u0027on\u0027 do you mean that the signal should be de-asserted?\nas in a physical 1 on the pin?",
+      "revId": "fdb786965058e1cf5836148c89b388d4eebb3353",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58072d3c_37d927e7",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-03-03T00:13:20Z",
+      "side": 1,
+      "message": "So this is somewhat confusing, because this signal from the CPU is a actually active low, and it is configured with vw-invert to get a logical value.\nSo the check here is to see if the value is asserted, a logical high?\nSo if the SLP_S5 signal is asserted (raw value of 0), this will be true, but I thought the check should be that it is de-asserted?\nCan you confirm that you are actually getting a real value from the virtual wire?\nAs I said, I put some debug, and I never saw any virtual wire signals being received from the CPU. Can you confirm they are actually are being sent?",
+      "revId": "fdb786965058e1cf5836148c89b388d4eebb3353",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
