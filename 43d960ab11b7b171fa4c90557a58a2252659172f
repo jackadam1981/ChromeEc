@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e286931_760b5393",
+        "filename": "util/ec_openocd.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-03-03T20:55:29Z",
+      "side": 1,
+      "message": "Probably specify what the file is for the help (i.e. input file, output file, binary, ...?)",
+      "revId": "43d960ab11b7b171fa4c90557a58a2252659172f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd4d3e82_84756457",
+        "filename": "util/ec_openocd.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-03-03T20:55:29Z",
+      "side": 1,
+      "message": "nit: since zephyr is the wave of the future and all, you could probably set it up as assumed and just let users of ECOS override this with --file",
+      "revId": "43d960ab11b7b171fa4c90557a58a2252659172f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c184927_f70fa955",
+        "filename": "util/ec_openocd.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-03-03T20:55:29Z",
+      "side": 1,
+      "message": "Are there ways to add a description of what flash and debug are doing in the context of the help menu, in addition to showing their specific additional options?",
+      "revId": "43d960ab11b7b171fa4c90557a58a2252659172f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "613b0538_f707f81d",
+        "filename": "util/openocd/target/npcx99nf.cfg",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-03-03T20:55:29Z",
+      "side": 1,
+      "message": "Should the existing .cfg files from util/openocd be moved into this target directory as well?",
+      "revId": "43d960ab11b7b171fa4c90557a58a2252659172f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
