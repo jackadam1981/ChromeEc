@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "951660b5_01afd24a",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_attach_src_snk.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 457,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2022-03-03T23:28:40Z",
+      "side": 1,
+      "message": "How do we know the source is attached? Is that checked in a before or setup function?",
+      "range": {
+        "startLine": 457,
+        "startChar": 36,
+        "endLine": 457,
+        "endChar": 51
+      },
+      "revId": "74a21ea41050641648037087833b7c4f667030b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
