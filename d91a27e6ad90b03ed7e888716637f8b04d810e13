@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "afcf1414_d38643d9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-03-03T21:13:10Z",
+      "side": 1,
+      "message": "It seems like longer-term we should move to always defining this array in the device tree (instead of just for the one CONFIG option), but this is a good backwards-compatible step forward ",
+      "revId": "d91a27e6ad90b03ed7e888716637f8b04d810e13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
