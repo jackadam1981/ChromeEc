@@ -118,6 +118,29 @@
       },
       "revId": "7ac786bf23b1845b651e6379a5be9f34caefc4c3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e5f7c536_9f076f19",
+        "filename": "board/taeko/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1461738
+      },
+      "writtenOn": "2022-03-03T07:19:00Z",
+      "side": 1,
+      "message": "Through our hardware member measure, that needs to set GPIO_OUT_HIGH and test can pass. So I will modify it, just let you know.",
+      "range": {
+        "startLine": 137,
+        "startChar": 59,
+        "endLine": 137,
+        "endChar": 71
+      },
+      "revId": "7ac786bf23b1845b651e6379a5be9f34caefc4c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
