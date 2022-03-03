@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9fe90b94_22c5c235",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2022-03-03T18:56:19Z",
+      "side": 1,
+      "message": "I will rework this CL according to Abe suggestions.",
+      "revId": "800856888123125565cf5ba77ea9adbe98b84934",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "742b5ea3_178f9465",
@@ -20,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fbd39e65_6fbaca44",
+        "filename": "zephyr/emul/tcpc/emul_tcpci_partner_common.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 397,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2022-03-03T18:56:19Z",
+      "side": 1,
+      "message": "I am thinking about logging here error/warning message, so someone running these test manually could spot it. Apart from that emulator may store total count of timeouts and it will be up to test code if timeouts are asserted. Emulator, in case of timeout, may start Soft or HardReset.",
+      "parentUuid": "742b5ea3_178f9465",
+      "revId": "800856888123125565cf5ba77ea9adbe98b84934",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c585fda2_cbad0c70",
         "filename": "zephyr/emul/tcpc/emul_tcpci_partner_snk.c",
         "patchSetId": 3
@@ -31,6 +66,24 @@
       "writtenOn": "2022-03-02T23:32:08Z",
       "side": 1,
       "message": "This is going to get hard to maintain as we add support for new message types (easy to make copy-paste errors). I\u0027d suggest defining functions to set, reset, and check the timeout and encapsulating the data member accesses inside those functions.\n\nSee the API for the real TCPM in usb_pd_timer.h. I don\u0027t think you need something that complicated yet, but I think that API is fairly well encapsulated.",
+      "revId": "800856888123125565cf5ba77ea9adbe98b84934",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f64d8b9_69577a60",
+        "filename": "zephyr/emul/tcpc/emul_tcpci_partner_snk.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2022-03-03T18:56:19Z",
+      "side": 1,
+      "message": "After consideration, I think it may be good idea to use here Zephyr timers here. Right now emulator may only act after receiving message from TCPM. Using timers with callback has advantage, because we can kick emulator on timer expiration without waiting for TCPM. Inside message handler would be only code to enable and disable timers. Timeout handler could be separate from that.",
+      "parentUuid": "c585fda2_cbad0c70",
       "revId": "800856888123125565cf5ba77ea9adbe98b84934",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
