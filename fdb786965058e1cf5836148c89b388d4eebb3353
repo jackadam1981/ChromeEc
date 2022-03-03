@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c18d1427_0a004a42",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-03-03T02:13:15Z",
+      "side": 1,
+      "message": "Here is the reference: \nhttps://intel.github.io/ecfw-zephyr/reference/power_sequencing/index.html#rsmrst-pwrgd\nIt\u0027s rsmrst power good signal, used as active high.\nIt\u0027s better to rename it as pwrgd pin as:\nPWR_RSMRST_PWROK and pwr-ec-rsmrst-pwrok\nPWR_EC_PCH_RSMRST_PWROK and pwr-ec-pch-rsmrst-pwrok.\nThe function name is check_rsmrst_pwrok_on(). \nIf you agree, I can make changes.",
+      "parentUuid": "3d7321bd_51d17a45",
+      "revId": "fdb786965058e1cf5836148c89b388d4eebb3353",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "58072d3c_37d927e7",
         "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
         "patchSetId": 2
@@ -31,6 +49,24 @@
       "writtenOn": "2022-03-03T00:13:20Z",
       "side": 1,
       "message": "So this is somewhat confusing, because this signal from the CPU is a actually active low, and it is configured with vw-invert to get a logical value.\nSo the check here is to see if the value is asserted, a logical high?\nSo if the SLP_S5 signal is asserted (raw value of 0), this will be true, but I thought the check should be that it is de-asserted?\nCan you confirm that you are actually getting a real value from the virtual wire?\nAs I said, I put some debug, and I never saw any virtual wire signals being received from the CPU. Can you confirm they are actually are being sent?",
+      "revId": "fdb786965058e1cf5836148c89b388d4eebb3353",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a6fa5b6_1295bda8",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-03-03T02:13:15Z",
+      "side": 1,
+      "message": "Yes, the logic here to check if it\u0027s asserted(physical level 0, then go to S5 sleep).\nI copied some of the log sent in email here, the vw data does get read as 1 and inverted as 0 for logical value. so we have those de-asserted and can continue booting up.\nvw_get_level(ESPI_VWIRE_SIGNAL_SLP_S4) 1\npower_signal_get(PWR_SLP_S4) 0\n\nvw_get_level(ESPI_VWIRE_SIGNAL_SLP_S5) 1\npower_signal_get(PWR_SLP_S5) 0\nBTW, the LOG_DBG is not working in vw file. I also use shell command to call the function there and couldn\u0027t get print either.",
+      "parentUuid": "58072d3c_37d927e7",
       "revId": "fdb786965058e1cf5836148c89b388d4eebb3353",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
