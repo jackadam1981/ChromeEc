@@ -22,6 +22,52 @@
       },
       "revId": "820ef70c06e3b31c5ec97a44dabb83b15471c490",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38729d31_439b147c",
+        "filename": "zephyr/projects/nissa/nivviks_power_signals.dts",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-03-03T23:01:37Z",
+      "side": 1,
+      "message": "If this signal is active high, the suffix should be `od` both here and in the debug label. Same for the other signal here.",
+      "range": {
+        "startLine": 32,
+        "startChar": 18,
+        "endLine": 32,
+        "endChar": 21
+      },
+      "revId": "820ef70c06e3b31c5ec97a44dabb83b15471c490",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "900d472d_d900dc79",
+        "filename": "zephyr/projects/nissa/nivviks_power_signals.dts",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-03-03T23:01:37Z",
+      "side": 1,
+      "message": "This signal has an external pullup to PP3300_S5 so we don\u0027t need to use an on-chip one.",
+      "range": {
+        "startLine": 36,
+        "startChar": 38,
+        "endLine": 36,
+        "endChar": 50
+      },
+      "revId": "820ef70c06e3b31c5ec97a44dabb83b15471c490",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
