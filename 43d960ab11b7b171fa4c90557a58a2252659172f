@@ -139,6 +139,24 @@
       "parentUuid": "613b0538_f707f81d",
       "revId": "43d960ab11b7b171fa4c90557a58a2252659172f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef5aadf0_eeecf2c8",
+        "filename": "util/openocd/target/npcx99nf.cfg",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-03-03T22:22:56Z",
+      "side": 1,
+      "message": "we should delete the `flash_ec` support for openocd if it\u0027s really no longer used",
+      "parentUuid": "8c300d51_fc78f056",
+      "revId": "43d960ab11b7b171fa4c90557a58a2252659172f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
