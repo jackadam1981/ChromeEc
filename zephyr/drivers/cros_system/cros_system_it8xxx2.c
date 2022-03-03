@@ -15,6 +15,7 @@
 #include "gpio/gpio_int.h"
 #include "system.h"
 #include "util.h"
+#include "gpio_signal.h"
 
 LOG_MODULE_REGISTER(cros_system, LOG_LEVEL_ERR);
 
@@ -192,6 +193,8 @@ static int cros_system_it8xxx2_hibernate(const struct device *dev,
 	}
 
 	if (seconds || microseconds) {
+		gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(ec_pmic_en_odl), 0);
+#if 0
 		/*
 		 * Convert milliseconds(or at least 1 ms) to 32 Hz
 		 * free run timer count for hibernate.
@@ -209,6 +212,7 @@ static int cros_system_it8xxx2_hibernate(const struct device *dev,
 		IT8XXX2_EXT_CTRLX(FREE_RUN_TIMER) |=
 			(IT8XXX2_EXT_ETXEN | IT8XXX2_EXT_ETXRST);
 		irq_enable(FREE_RUN_TIMER_IRQ);
+#endif
 	}
 
 #if DT_NODE_EXISTS(SYSTEM_DT_NODE_HIBERNATE_CONFIG)
