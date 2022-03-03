@@ -213,4 +213,8 @@ struct charge_state_data *charge_get_status(void);
 
 test_export_static enum ec_charge_control_mode get_chg_ctrl_mode(void);
 
+test_export_static void reset_prev_disp_charge(void);
+
+__test_only extern bool charging_progress_displayed;
+
 #endif /* __CROS_EC_CHARGE_STATE_V2_H */
