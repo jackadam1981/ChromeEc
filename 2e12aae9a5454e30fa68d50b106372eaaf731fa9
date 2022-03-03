@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc3c487f_8a546990",
+        "filename": "zephyr/subsys/ap_pwrseq/signal_vw.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-03-03T22:47:53Z",
+      "side": 1,
+      "message": "Maybe add a compile-time check here that `ARRAY_SIZE(vw_config) \u003c\u003d 8`, since it would misbehave if there were too many.",
+      "revId": "2e12aae9a5454e30fa68d50b106372eaaf731fa9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc9ad088_302f305b",
+        "filename": "zephyr/subsys/ap_pwrseq/signal_vw.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-03-03T22:47:53Z",
+      "side": 1,
+      "message": "You can use `BIT_MASK()` for this.",
+      "range": {
+        "startLine": 63,
+        "startChar": 21,
+        "endLine": 63,
+        "endChar": 53
+      },
+      "revId": "2e12aae9a5454e30fa68d50b106372eaaf731fa9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ebb0000_8f776dfb",
+        "filename": "zephyr/subsys/ap_pwrseq/signal_vw.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-03-03T22:47:53Z",
+      "side": 1,
+      "message": "Should we update signals after marking the bus as ready? If the handler depends on bus readiness it might mistakenly avoid doing some work that it could actually do.",
+      "revId": "2e12aae9a5454e30fa68d50b106372eaaf731fa9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "687f8257_c1c8e8ef",
+        "filename": "zephyr/subsys/ap_pwrseq/signal_vw.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-03-03T22:47:53Z",
+      "side": 1,
+      "message": "We could save some RAM by using a single callback that handles all three events and branches accordingly by reading `event.evt_type`.",
+      "revId": "2e12aae9a5454e30fa68d50b106372eaaf731fa9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
