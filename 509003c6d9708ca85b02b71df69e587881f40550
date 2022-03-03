@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "62f63544_8d09f145",
+        "filename": "zephyr/emul/tcpc/emul_tcpci_partner_common.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2022-03-03T19:09:36Z",
+      "side": 1,
+      "message": "It is called right after `tcpci_emul_add_rx_msg` and it needs to be called here also. Delayed message could be not send, because other event happen (e.g. hard reset). I think it is more appropriate to log this message only if it was actually send.",
+      "parentUuid": "2c600919_81ffed9a",
+      "revId": "509003c6d9708ca85b02b71df69e587881f40550",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "50b77a27_7979c99d",
         "filename": "zephyr/emul/tcpc/emul_tcpci_partner_common.c",
         "patchSetId": 3
@@ -31,6 +49,24 @@
       "writtenOn": "2022-03-03T00:15:16Z",
       "side": 1,
       "message": "Does this need to be protected by the mutex?",
+      "revId": "509003c6d9708ca85b02b71df69e587881f40550",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a62fffb_96b934ac",
+        "filename": "zephyr/emul/tcpc/emul_tcpci_partner_common.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 498,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2022-03-03T19:09:36Z",
+      "side": 1,
+      "message": "I don\u0027t expect that this function will be called from different threads, but it makes sense to use `msg_log_mutex` here. I will add it.",
+      "parentUuid": "50b77a27_7979c99d",
       "revId": "509003c6d9708ca85b02b71df69e587881f40550",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -105,6 +141,24 @@
       "writtenOn": "2022-03-03T00:15:16Z",
       "side": 1,
       "message": "Right now, the partner emulator doesn\u0027t handle cable communication. Are you expecting it to in the future? If so, would this field be true for cable communication?",
+      "revId": "509003c6d9708ca85b02b71df69e587881f40550",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2791df20_5b6fc7bb",
+        "filename": "zephyr/include/emul/tcpc/emul_tcpci_partner_common.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2022-03-03T19:09:36Z",
+      "side": 1,
+      "message": "I didn\u0027t take that into consideration. I think it make sense to change that into enum to describe sender accurately.",
+      "parentUuid": "07f1061e_32de68dd",
       "revId": "509003c6d9708ca85b02b71df69e587881f40550",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
