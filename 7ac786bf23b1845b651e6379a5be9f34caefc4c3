@@ -94,6 +94,30 @@
       },
       "revId": "7ac786bf23b1845b651e6379a5be9f34caefc4c3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b703717a_d2acdc6b",
+        "filename": "board/taeko/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-03-03T04:28:08Z",
+      "side": 1,
+      "message": "ok, looks to me like taeko is the same as brya:\npull-down on the MLB and a DNS resistor on the DB.\n\ni think GPIO_OUT_LOW makes more sense here or you could\njust declare this pin as UNUSED.",
+      "parentUuid": "e90711bd_fde2e776",
+      "range": {
+        "startLine": 74,
+        "startChar": 57,
+        "endLine": 74,
+        "endChar": 62
+      },
+      "revId": "7ac786bf23b1845b651e6379a5be9f34caefc4c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
