@@ -265,7 +265,7 @@ static int find_color(int node_idx, int ticks)
 		ticks = ticks % GET_PERIOD(node_idx, MAX_COLOR - 1);
 
 		for (color_idx = 0; color_idx < MAX_COLOR; color_idx++) {
-			if (GET_PERIOD(node_idx, color_idx) < ticks)
+			if (GET_PERIOD(node_idx, color_idx) > ticks)
 				break;
 		}
 	}
@@ -294,6 +294,13 @@ static void board_led_set_color(void)
 /* Called by hook task every TICK */
 static void led_tick(void)
 {
+	static uint32_t cnt;
+
+	cnt += HOOK_TICK_INTERVAL_MS;
+	if (cnt < 1000)
+		return;
+
+	cnt -= 1000;
 	if (led_auto_control_is_enabled(EC_LED_ID_BATTERY_LED))
 		board_led_set_color();
 }
