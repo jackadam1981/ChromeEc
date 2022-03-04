@@ -88,6 +88,24 @@
       "parentUuid": "1ee8bd18_a094fdbf",
       "revId": "f1410962bfd8429cdaa027db00eca1af5def3c5b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ba508a1_d1f97991",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-03-04T04:00:04Z",
+      "side": 1,
+      "message": "Confusion stems from that I assumed the Zephyr GPIO code would set a signal to its idle state, but it does not: GPIO_OUTPUT_INIT_* flags are required to set the initial state, otherwise it\u0027s unchanged regardless of logical polarity. You were only referring to the legacy code to illustrate what existing ECs do.\n\nCould we make this code do what I expected the GPIO driver to do though? It would avoid needing to add another DT property.",
+      "parentUuid": "ddafddeb_c54fd68b",
+      "revId": "f1410962bfd8429cdaa027db00eca1af5def3c5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
