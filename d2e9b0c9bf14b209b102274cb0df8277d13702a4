@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7887f0a_a449296a",
+        "filename": "zephyr/projects/trogdor/lazor/src/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-03-04T16:48:12Z",
+      "side": 1,
+      "message": "Is this to make the function fire every second? I think you can use `DECLARE_HOOK(HOOK_SECOND, ...)` instead.",
+      "range": {
+        "startLine": 299,
+        "startChar": 0,
+        "endLine": 304,
+        "endChar": 0
+      },
+      "revId": "d2e9b0c9bf14b209b102274cb0df8277d13702a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
