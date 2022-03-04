@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "54f22a57_33f849a6",
+        "filename": "zephyr/projects/intelrvp/adlrvp/src/adlrvp.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-03-04T23:18:12Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "f8cd20a1_8e9c868b",
+      "revId": "6ed77e587d3fbecb8de78cb7b95a9b762dd03211",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fcf8759c_e3b81734",
@@ -55,6 +73,30 @@
       "side": 1,
       "message": "looked at the driver, its just a i2c read,\nno need to update the driver, use i2c_read16()",
       "parentUuid": "fcf8759c_e3b81734",
+      "range": {
+        "startLine": 23,
+        "startChar": 5,
+        "endLine": 23,
+        "endChar": 17
+      },
+      "revId": "6ed77e587d3fbecb8de78cb7b95a9b762dd03211",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9238a332_7cb90592",
+        "filename": "zephyr/projects/intelrvp/src/intelrvp.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-03-04T23:18:12Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "fb6fab81_3a3c2dd9",
       "range": {
         "startLine": 23,
         "startChar": 5,
