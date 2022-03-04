@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23e082f6_55d7ec58",
+        "filename": "docs/zephyr/zephyr_cbi.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-03-04T17:29:35Z",
+      "side": 1,
+      "message": "Delete, replace with \".\"\n\nSome more information about FW_CONFIG vs SSFC is here:\n\nhttps://docs.google.com/document/d/1aaavIkkdLkQelJidmxb0EqIXzXKPned_RH_r-i5Ey0Y/edit#heading\u003dh.xgjl2srtytjt\n\nA couple key notes: each FW_CONFIG combination requires a new hardware SKU.\n\nIf a second source component is probable, it should be stored in SSFC, which avoids creating a new SKU.  If it is not probable, it must be added to FW_CONFIG.\n\nI\u0027m looking for a public version of the doc which would be good to reference.",
+      "range": {
+        "startLine": 13,
+        "startChar": 71,
+        "endLine": 13,
+        "endChar": 75
+      },
+      "revId": "7fed55710d65f1c97d0bc7f01388115c60ad9541",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f21e954_dbb2702e",
+        "filename": "docs/zephyr/zephyr_cbi.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-03-04T17:29:35Z",
+      "side": 1,
+      "message": "Capitalize.",
+      "range": {
+        "startLine": 14,
+        "startChar": 3,
+        "endLine": 14,
+        "endChar": 6
+      },
+      "revId": "7fed55710d65f1c97d0bc7f01388115c60ad9541",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fbc8e24a_6108b06b",
+        "filename": "docs/zephyr/zephyr_cbi.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-03-04T17:29:35Z",
+      "side": 1,
+      "message": "during",
+      "range": {
+        "startLine": 18,
+        "startChar": 46,
+        "endLine": 18,
+        "endChar": 48
+      },
+      "revId": "7fed55710d65f1c97d0bc7f01388115c60ad9541",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7d296f0_76be0d34",
+        "filename": "docs/zephyr/zephyr_cbi.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-03-04T17:29:35Z",
+      "side": 1,
+      "message": "You should also describe configuring the EEPROM device.  We\u0027re now using the upstream zephyr EEPROM driver.  Example \n\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/fe3358e6/zephyr/projects/nissa/nivviks_overlay.dts#194\n\nNote that the nodelabel must be \"cbi_eeprom\" to get picked up the cbi_eeprom.c driver.  The write protect signal also must be configured using the \"gpio_cbi_wp\" chosen node.\n\nThis information should be captured as it\u0027s own sub-section.",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 77
+      },
+      "revId": "7fed55710d65f1c97d0bc7f01388115c60ad9541",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef244fa8_93f9b1ef",
+        "filename": "docs/zephyr/zephyr_cbi.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-03-04T17:29:35Z",
+      "side": 1,
+      "message": "I just noticed Andrew already created a doc on FW_CONFIG.  You can just include a reference to that doc here.\n\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/zephyr/zephyr_fw_config.md\n\nI think moving the SSFC into a separate doc will clean up this doc.",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 42
+      },
+      "revId": "7fed55710d65f1c97d0bc7f01388115c60ad9541",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7cefa013_fcb66a28",
+        "filename": "docs/zephyr/zephyr_cbi.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-03-04T17:29:35Z",
+      "side": 1,
+      "message": "This is a bad link.",
+      "range": {
+        "startLine": 347,
+        "startChar": 13,
+        "endLine": 347,
+        "endChar": 40
+      },
+      "revId": "7fed55710d65f1c97d0bc7f01388115c60ad9541",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
