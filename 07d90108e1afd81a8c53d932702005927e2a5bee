@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5bd33c4c_56626674",
+        "filename": "docs/fingerprint/fingerprint-dev-for-partners.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-03-04T19:33:52Z",
+      "side": 1,
+      "message": "Thanks!",
+      "parentUuid": "82aa5ec6_b8d27cf4",
+      "revId": "07d90108e1afd81a8c53d932702005927e2a5bee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8248ae1f_5cf37e7c",
@@ -49,6 +67,30 @@
       "writtenOn": "2022-03-04T16:57:42Z",
       "side": 1,
       "message": "This is a bit pedantic, but can we make a separate CL for this fix since it\u0027s unrelated?",
+      "range": {
+        "startLine": 122,
+        "startChar": 0,
+        "endLine": 122,
+        "endChar": 49
+      },
+      "revId": "07d90108e1afd81a8c53d932702005927e2a5bee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4aed1ff_71a6a9e6",
+        "filename": "docs/fingerprint/fingerprint-dev-for-partners.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-03-04T19:33:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8248ae1f_5cf37e7c",
       "range": {
         "startLine": 122,
         "startChar": 0,
