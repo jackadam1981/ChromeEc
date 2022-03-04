@@ -70,6 +70,24 @@
       "parentUuid": "74d364a1_608301c4",
       "revId": "f1410962bfd8429cdaa027db00eca1af5def3c5b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ddafddeb_c54fd68b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-03-04T03:25:59Z",
+      "side": 1,
+      "message": "Oh, and just in case it isn\u0027t obvious, the default Zephyr GPIO pin flags do not have room for GPIO_OUTPUT or GPIO_OUTPUT_INIT_{HIGH,LOW}.\nThe named-gpios have special processing so that the complete set of 32 bit flags can be captured, not just the 8 bits of physical pin config.",
+      "parentUuid": "1ee8bd18_a094fdbf",
+      "revId": "f1410962bfd8429cdaa027db00eca1af5def3c5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
