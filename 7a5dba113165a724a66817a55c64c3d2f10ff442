@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "44f57181_4bf612fa",
+        "filename": "common/usb_pd_dual_role.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-03-04T22:07:20Z",
+      "side": 1,
+      "message": "it\u0027s not checked as such. i went through our code\nand it looks like there\u0027s always a fixed PDO in the\n1st slot. also, the spec forces this ordering:\n\nPD R3.1 V1.3 S 6.4.1\n\n1. vSafe5V Fixed Supply Object shall always be the first object\n\nso, i think it\u0027s a reasonable assumption given that\nwe\u0027re only extracting COMM_CAP.",
+      "parentUuid": "aef4f026_e0058d11",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 46
+      },
+      "revId": "7a5dba113165a724a66817a55c64c3d2f10ff442",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "58c70291_8738d193",
         "filename": "common/usb_pd_dual_role.c",
         "patchSetId": 4
