@@ -111,3 +111,23 @@ void host_cmd_motion_sense_dump(int max_sensor_count,
 	zassume_ok(host_command_process(&args),
 		   "Failed to get motion_sense dump");
 }
+
+void host_cmd_typec_discovery(int port, enum typec_partner_type partner_type,
+			      void *response)
+{
+	/* BUILD_HOST_COMMAND expects sizeof(response_packet) to be the actual
+	 * size of the buffer pointed to, so allocate a local array with that
+	 * property.
+	 */
+	uint8_t response_packet[EC_LPC_HOST_PACKET_SIZE];
+	struct ec_params_typec_discovery params = {
+		.port = port, .partner_type = partner_type
+	};
+	struct host_cmd_handler_args args = BUILD_HOST_COMMAND(
+		EC_CMD_TYPEC_DISCOVERY, 0, response_packet, params);
+
+	zassume_ok(host_command_process(&args),
+		   "Failed to get Type-C state for port %d", port);
+
+	memcpy(response, response_packet, sizeof(response_packet));
+}
