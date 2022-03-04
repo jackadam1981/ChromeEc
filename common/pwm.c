@@ -14,6 +14,7 @@
 
 #ifdef CONFIG_ZEPHYR
 #include "pwm/pwm.h"
+#include "drivers/cros_displight.h"
 #endif
 
 #ifdef CONFIG_PWM
@@ -32,7 +33,7 @@ static int get_target_channel(enum pwm_channel *channel, int type, int index)
 	case EC_PWM_TYPE_GENERIC:
 		*channel = index;
 		break;
-#ifdef CONFIG_PWM_DISPLIGHT
+#ifdef PWM_CH_DISPLIGHT
 	case EC_PWM_TYPE_DISPLAY_LIGHT:
 		*channel = PWM_CH_DISPLIGHT;
 		break;
@@ -71,6 +72,12 @@ host_command_pwm_set_duty(struct host_cmd_handler_args *args)
 		return EC_RES_SUCCESS;
 	}
 #endif
+#ifdef CONFIG_PLATFORM_EC_PWM_DISPLIGHT
+	if (p->pwm_type == EC_PWM_TYPE_DISPLAY_LIGHT) {
+		displight_set(PWM_RAW_TO_PERCENT(p->duty));
+		return EC_RES_SUCCESS;
+	}
+#endif
 
 	if (get_target_channel(&channel, p->pwm_type, p->index))
 		return EC_RES_INVALID_PARAM;
@@ -95,6 +102,13 @@ host_command_pwm_get_duty(struct host_cmd_handler_args *args)
 #ifdef CONFIG_PWM_KBLIGHT
 	if (p->pwm_type == EC_PWM_TYPE_KB_LIGHT) {
 		r->duty = PWM_PERCENT_TO_RAW(kblight_get());
+		args->response_size = sizeof(*r);
+		return EC_RES_SUCCESS;
+	}
+#endif
+#ifdef CONFIG_PLATFORM_EC_PWM_DISPLIGHT
+	if (p->pwm_type == EC_PWM_TYPE_DISPLAY_LIGHT) {
+		r->duty = PWM_PERCENT_TO_RAW(displight_get());
 		args->response_size = sizeof(*r);
 		return EC_RES_SUCCESS;
 	}
