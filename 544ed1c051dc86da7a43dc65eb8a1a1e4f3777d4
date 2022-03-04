@@ -39,6 +39,30 @@
       },
       "revId": "544ed1c051dc86da7a43dc65eb8a1a1e4f3777d4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cee169ec_3d7da228",
+        "filename": "common/fpsensor/fpsensor.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-03-04T16:16:21Z",
+      "side": 1,
+      "message": "For this change, let\u0027s keep it focused on the specific issue reported: http://go/smallcls. Further changes can be done with a followup CL.\n\nIn the same spirit, can you change the function so that it\u0027s exactly the same as before with the `if` statement?",
+      "parentUuid": "5eb9798c_ed148f21",
+      "range": {
+        "startLine": 83,
+        "startChar": 33,
+        "endLine": 83,
+        "endChar": 45
+      },
+      "revId": "544ed1c051dc86da7a43dc65eb8a1a1e4f3777d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
