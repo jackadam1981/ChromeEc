@@ -16,6 +16,24 @@
       "message": "@Diana - could you help confirm assert values?",
       "revId": "5b9f373206824dcb37a74f85e3e33ca357e698ba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fbcace94_7efb9153",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-03-04T18:39:49Z",
+      "side": 1,
+      "message": "Looks like the detach asserts are reasonable.  I\u0027m not totally certain the best range on Vbus for detach... The range for vSafe0V is 0-800 mV, but that\u0027s more of a cutoff where we declare 0V than a reflection of what the Vbus line will measure on its own.  \n\nFor fun, I checked my TCPC Vbus voltage readings and they\u0027re 100 mV when disconnected",
+      "parentUuid": "b52b0c71_8547a696",
+      "revId": "5b9f373206824dcb37a74f85e3e33ca357e698ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
