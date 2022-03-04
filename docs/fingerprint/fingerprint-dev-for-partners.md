@@ -57,6 +57,16 @@ This FPMCU board is Icetower Rev 0.1. |
 
 **Partners**: You can request an Icetower development board from Google.
 ***
+
+*** note
+The instructions to flash the board using the [Servo Micro] and `flash_ec`
+contained in this page are currently not working with the Icetower board.
+See details in this
+[bug report](https://buganizer.corp.google.com/issues/177331210).
+
+The recommended workaround is to use J-Link to flash the board as explained
+[here](./fingerprint-debugging.md#flash)
+***
 <!-- mdformat on -->
 
 ### Servo
@@ -109,7 +119,7 @@ Instructions for setup are described in [Fingerprint Debugging].
 *   Create and [enter the `chroot`].
     *   You can stop after the `enter the chroot` step.
 
-### Build the [EC]\ (embedded controller) codebase
+### Build the [EC] (embedded controller) codebase
 
 Open **two** terminals and enter the chroot in each:
 
