@@ -34,6 +34,24 @@
       "parentUuid": "107a1ffe_698faf1f",
       "revId": "852d6cb41de496ef11aa79ff018ad11a7a49650c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b57471e8_3acca1c8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-03-04T18:24:37Z",
+      "side": 1,
+      "message": "You should be able to rebase on the other change to use it once it merges. \n\nTo start with, we will use a TCPC flag to indicate enabling this feature and we can make it default later if it looks like there aren\u0027t any major issues with always enabling (ex. TCPCs incorrectly setting the capabilities bit, or large increases in chip power consumption for some TCPCs)",
+      "parentUuid": "f277d775_39fd2387",
+      "revId": "852d6cb41de496ef11aa79ff018ad11a7a49650c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
