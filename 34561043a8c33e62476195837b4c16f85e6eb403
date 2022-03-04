@@ -160,6 +160,24 @@
       "parentUuid": "b3347bfc_7248122a",
       "revId": "34561043a8c33e62476195837b4c16f85e6eb403",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90e33e96_3f4d5024",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-03-04T00:27:19Z",
+      "side": 1,
+      "message": "We plan to keep gpioget/gpioset, and Andrew has proposed changes to make this available to Zephyr upstream.\n\nFor the power signals, the direct GPIO, eSPI, and ADC controlled options all make sense.  Creating special cased for named-gpios and gpio-interrupts, which are both meant to be temporary doesn\u0027t seem worth the effort for the added complexity.",
+      "parentUuid": "1ac2f876_cb6d6255",
+      "revId": "34561043a8c33e62476195837b4c16f85e6eb403",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
