@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0ab3f019_55cfc017",
+        "filename": "driver/fingerprint/fpc/bep/fpc_private.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-03-04T18:34:49Z",
+      "side": 1,
+      "message": "Agreed, I should have suggested that earlier.",
+      "parentUuid": "0f338903_1cc7ec1f",
+      "revId": "2bbc8a31546c76072c2f2f388b2db7c1a8d78200",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2c1327a7_d7f12267",
         "filename": "driver/fingerprint/fpc/bep/fpc_private.c",
         "patchSetId": 17
@@ -100,6 +118,24 @@
       "writtenOn": "2022-03-04T18:29:13Z",
       "side": 1,
       "message": "What\u0027s the convention on function comments in ec?  Is it only in the header file, only in the c file, or in both?  It should be consistent.",
+      "revId": "2bbc8a31546c76072c2f2f388b2db7c1a8d78200",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3de5baa1_7bbbc97f",
+        "filename": "driver/fingerprint/fpc/libfp/fpc_private.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-03-04T18:34:49Z",
+      "side": 1,
+      "message": "Only in the header file is the general convention, so agree this should be removed.",
+      "parentUuid": "6e5ceb15_3868049e",
       "revId": "2bbc8a31546c76072c2f2f388b2db7c1a8d78200",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
