@@ -208,6 +208,20 @@ host_cmd_get_charge_control(void)
 
 	zassume_ok(host_command_process(&args),
 		   "Failed to get charge control values");
+}
+
+/* TODO: Don't make this inline. */
+static inline struct ec_response_typec_discovery host_cmd_typec_discovery(
+		int port, enum typec_partner_type partner_type)
+{
+	struct ec_params_typec_discovery params = {
+		.port = port, .partner_type = partner_type };
+	struct ec_response_typec_discovery response;
+	struct host_cmd_handler_args args =
+		BUILD_HOST_COMMAND(EC_CMD_TYPEC_STATUS, 0, response, params);
+
+	zassume_ok(host_command_process(&args),
+		   "Failed to get Type-C state for port %d", port);
 	return response;
 }
 
