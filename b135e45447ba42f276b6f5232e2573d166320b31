@@ -39,6 +39,30 @@
       },
       "revId": "b135e45447ba42f276b6f5232e2573d166320b31",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed3d29c8_19fec2eb",
+        "filename": "common/battery.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 561,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-03-04T22:21:53Z",
+      "side": 1,
+      "message": "Uploaded https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3503397. PTAL.",
+      "parentUuid": "d608d1b2_433ee922",
+      "range": {
+        "startLine": 560,
+        "startChar": 0,
+        "endLine": 561,
+        "endChar": 47
+      },
+      "revId": "b135e45447ba42f276b6f5232e2573d166320b31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
