@@ -16,6 +16,24 @@
       "message": "I\u0027m actually on a similar review to get a Vbus voltage API going in our TCPCI driver here: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3400768\n\nI\u0027d welcome your input on what you think would be reasonable conditions to change this register (i.e. always if a chip reports it can give Vbus voltage or only if we set some new TCPC flag to indicate we want this feature used) ",
       "revId": "852d6cb41de496ef11aa79ff018ad11a7a49650c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f277d775_39fd2387",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2022-03-04T17:47:42Z",
+      "side": 1,
+      "message": "Hi Diana,\nVBUS level reporting by tcpc depends on the tcpc chip capabilities.\nI think if it is capable, it should be enabled by default.\nThis helps in debug.\n\nShall i abandon this patch as going forward implementation would change.",
+      "parentUuid": "107a1ffe_698faf1f",
+      "revId": "852d6cb41de496ef11aa79ff018ad11a7a49650c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
