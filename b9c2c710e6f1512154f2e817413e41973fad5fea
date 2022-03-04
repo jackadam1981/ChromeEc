@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ca95a36_b999c9fc",
+        "filename": "zephyr/subsys/ap_pwrseq/signal_vw.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-03-04T02:13:28Z",
+      "side": 1,
+      "message": "Maybe do this before power_update_signals, since otherwise we log \"ready\" after the action happens.",
+      "revId": "b9c2c710e6f1512154f2e817413e41973fad5fea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
