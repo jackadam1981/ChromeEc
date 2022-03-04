@@ -34,6 +34,24 @@
       "parentUuid": "4567a1ae_26935254",
       "revId": "f1410962bfd8429cdaa027db00eca1af5def3c5b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74d364a1_608301c4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-03-04T00:14:51Z",
+      "side": 1,
+      "message": "And how does named-gpios interact with the Zephyr configuration of each GPIO? I\u0027d expect the configuration for each IO to come from GPIO refs in the device tree rather than the shim\u0027s named-gpios, so why is the latter relevant?\n\nConcretely, we have something like this for a power signal:\n```\n\tpwr-en-pp3300-s5 {\n\t\tcompatible \u003d \"intel,ap-pwrseq-gpio\";\n\t\tdbg-label \u003d \"pwr-en-pp3300-s5\";\n\t\tenum-name \u003d \"PWR_EN_PP3300_A\";\n\t\tgpios \u003d \u003c\u0026gpiob 6 0\u003e;\n\t\toutput;\n\t};\n```\n\nSince this can specify an active-low flag for GPIOB6 if needed, why do we care about what might be in named-gpios or what the GPIO shim code is doing? It seems like it might be relevant if https://crrev.com/c/3492299 were to go in, but given the consensus on that is that we shouldn\u0027t, I don\u0027t see why this is useful.",
+      "parentUuid": "6e324e59_109b82ab",
+      "revId": "f1410962bfd8429cdaa027db00eca1af5def3c5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
