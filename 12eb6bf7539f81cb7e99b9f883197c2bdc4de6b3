@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b17e75d6_fa989fc9",
+        "filename": "docs/zephyr/zephyr_mkbp.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-03-04T16:48:23Z",
+      "side": 1,
+      "message": "I opened b:222689734 to automatically enable the Kconfig option if the wake-up node is defined in the devicetree.",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 18
+      },
+      "revId": "12eb6bf7539f81cb7e99b9f883197c2bdc4de6b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c7f7a1f_452b5d93",
+        "filename": "docs/zephyr/zephyr_mkbp.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-03-04T16:48:23Z",
+      "side": 1,
+      "message": "Suggested wording:\n\n\"Wake-up masks define the event types that the EC use to wake up the AP.  The wake-up events are defined as device tree nodes, one for MKBP events and one for generic events.",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 0
+      },
+      "revId": "12eb6bf7539f81cb7e99b9f883197c2bdc4de6b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9fb6702f_b5c9ebcb",
+        "filename": "docs/zephyr/zephyr_mkbp.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-03-04T16:48:23Z",
+      "side": 1,
+      "message": "Add a note:\n\nFor detailed descriptions of the MKBP and host event types, please see include/ec_commands.h.",
+      "revId": "12eb6bf7539f81cb7e99b9f883197c2bdc4de6b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
