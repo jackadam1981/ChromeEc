@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3eb0b6c8_6e4bfe70",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-03-04T16:49:42Z",
+      "side": 1,
+      "message": "It looks like the issue is that the \"public\" build is failing. This is the build that uses the public (not internal manifest). To fully replicate the build, you would need to set up a new chromium source checkout using the public manifest instead of the private one.\n\nHowever, you should also be able to use a shortcut for testing the EC repo. You can either rename the `private` directory or comment out the include in the `Makefile`:\n\n```\ndiff --git a/Makefile b/Makefile\nindex 43712434a3..bee0e380c1 100644\n--- a/Makefile\n+++ b/Makefile\n@@ -265,7 +265,7 @@ include common/build.mk\n include driver/build.mk\n include fuzz/build.mk\n include power/build.mk\n--include private/build.mk\n+#-include private/build.mk\n -include private-kandou/build.mk\n ifneq ($(PDIR),)\n include $(PDIR)/build.mk\n```\n\nYou can check that you\u0027re building the public code with something like the following which will fail to compile if `HAVE_FP_PRIVATE_DRIVER` is defined:\n\n```\ndiff --git a/common/fpsensor/fpsensor.c b/common/fpsensor/fpsensor.c\nindex 58b1bd71cf..3d147bd6ee 100644\n--- a/common/fpsensor/fpsensor.c\n+++ b/common/fpsensor/fpsensor.c\n@@ -239,6 +239,7 @@ void fp_task(void)\n                fp_sensor_type_to_str(get_fp_sensor_type()));\n \n #ifdef HAVE_FP_PRIVATE_DRIVER\n+#error \"foo\"\n        /* Reset and initialize the sensor IC */\n        fp_sensor_init();\n```",
+      "parentUuid": "a66048ea_e37c9c6c",
+      "revId": "544ed1c051dc86da7a43dc65eb8a1a1e4f3777d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5eb9798c_ed148f21",
         "filename": "common/fpsensor/fpsensor.c",
         "patchSetId": 1
