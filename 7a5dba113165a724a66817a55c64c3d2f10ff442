@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "58c70291_8738d193",
+        "filename": "common/usb_pd_dual_role.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-03-04T16:49:38Z",
+      "side": 1,
+      "message": "As far as I know, the sink and source cap bits should be aligned and we should have one authoritative location acting as the truth for all three objects.  But having said that, we have a bunch of policy refactor coming up so we can definitely punt on that.",
+      "revId": "7a5dba113165a724a66817a55c64c3d2f10ff442",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
