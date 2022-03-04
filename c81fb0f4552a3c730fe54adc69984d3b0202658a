@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f43c49b_0bdf141b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-03-04T01:00:35Z",
+      "side": 1,
+      "message": "Does this save flash space on the legacy EC build and Zephyr EC build?\n\nIf this only saves space for the Zephyr EC builds, it\u0027s probably not worth making this change due to the complication of using a third party source file.",
+      "range": {
+        "startLine": 14,
+        "startChar": 1,
+        "endLine": 14,
+        "endChar": 5
+      },
+      "revId": "c81fb0f4552a3c730fe54adc69984d3b0202658a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
