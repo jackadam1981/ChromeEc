@@ -80,6 +80,17 @@ static inline int is_raw_capture(uint32_t mode)
 	     || capture_type == FP_CAPTURE_QUALITY_TEST);
 }
 
+static bool fp_match_success(int match_result)
+{
+	if (match_result == EC_MKBP_FP_ERR_MATCH_YES ||
+	    match_result == EC_MKBP_FP_ERR_MATCH_YES_UPDATED ||
+	    match_result == EC_MKBP_FP_ERR_MATCH_YES_UPDATE_FAILED) {
+		return true;
+	}
+
+	return false;
+}
+
 #ifdef HAVE_FP_PRIVATE_DRIVER
 static inline int is_test_capture(uint32_t mode)
 {
@@ -130,17 +141,6 @@ static uint32_t fp_process_enroll(void)
 	}
 	return EC_MKBP_FP_ENROLL | EC_MKBP_FP_ERRCODE(res)
 	     | (percent << EC_MKBP_FP_ENROLL_PROGRESS_OFFSET);
-}
-
-static bool fp_match_success(int match_result)
-{
-	if (match_result == EC_MKBP_FP_ERR_MATCH_YES ||
-	    match_result == EC_MKBP_FP_ERR_MATCH_YES_UPDATED ||
-	    match_result == EC_MKBP_FP_ERR_MATCH_YES_UPDATE_FAILED) {
-		return true;
-	}
-
-	return false;
 }
 
 static uint32_t fp_process_match(void)
