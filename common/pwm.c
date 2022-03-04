@@ -59,6 +59,43 @@ __attribute__((weak)) uint16_t pwm_get_raw_duty(enum pwm_channel ch)
 	return PWM_PERCENT_TO_RAW(pwm_get_duty(ch));
 }
 
+static bool pwm_is_kblight(int type, int index)
+{
+	if (type == EC_PWM_TYPE_KB_LIGHT)
+		return true;
+
+#ifdef CONFIG_ZEPHYR
+#define KBLIGHT_NODE DT_COMPAT_GET_ANY_STATUS_OKAY(cros_ec_kblight_pwm)
+#if DT_NODE_HAS_PROP(KBLIGHT_NODE, generic_pwm_channel)
+#define KBLIGHT_CH DT_PROP(KBLIGHT_NODE, generic_pwm_channel)
+	if (type == EC_PWM_TYPE_GENERIC && index == KBLIGHT_CH)
+		return true;
+
+#endif
+#endif
+
+	return false;
+}
+
+#ifdef CONFIG_PLATFORM_EC_PWM_DISPLIGHT
+static bool pwm_is_displight(int type, int index)
+{
+	if (type == EC_PWM_TYPE_DISPLAY_LIGHT)
+		return true;
+
+#ifdef CONFIG_ZEPHYR
+#define DISPLIGHT_NODE DT_COMPAT_GET_ANY_STATUS_OKAY(cros_ec_displight)
+#if DT_NODE_HAS_PROP(DISPLIGHT_NODE, generic_pwm_channel)
+#define DISPLIGHT_CH DT_PROP(DISPLIGHT_NODE, generic_pwm_channel)
+	if (type == EC_PWM_TYPE_GENERIC && index == DISPLIGHT_CH)
+		return true;
+
+#endif
+#endif
+	return false;
+}
+#endif
+
 static enum ec_status
 host_command_pwm_set_duty(struct host_cmd_handler_args *args)
 {
@@ -66,14 +103,14 @@ host_command_pwm_set_duty(struct host_cmd_handler_args *args)
 	enum pwm_channel channel;
 
 #ifdef CONFIG_PWM_KBLIGHT
-	if (p->pwm_type == EC_PWM_TYPE_KB_LIGHT) {
+	if (pwm_is_kblight(p->pwm_type, p->index)) {
 		kblight_set(PWM_RAW_TO_PERCENT(p->duty));
 		kblight_enable(p->duty > 0);
 		return EC_RES_SUCCESS;
 	}
 #endif
 #ifdef CONFIG_PLATFORM_EC_PWM_DISPLIGHT
-	if (p->pwm_type == EC_PWM_TYPE_DISPLAY_LIGHT) {
+	if (pwm_is_displight(p->pwm_type, p->index)) {
 		displight_set(PWM_RAW_TO_PERCENT(p->duty));
 		return EC_RES_SUCCESS;
 	}
@@ -100,14 +137,14 @@ host_command_pwm_get_duty(struct host_cmd_handler_args *args)
 	enum pwm_channel channel;
 
 #ifdef CONFIG_PWM_KBLIGHT
-	if (p->pwm_type == EC_PWM_TYPE_KB_LIGHT) {
+	if (pwm_is_kblight(p->pwm_type, p->index)) {
 		r->duty = PWM_PERCENT_TO_RAW(kblight_get());
 		args->response_size = sizeof(*r);
 		return EC_RES_SUCCESS;
 	}
 #endif
 #ifdef CONFIG_PLATFORM_EC_PWM_DISPLIGHT
-	if (p->pwm_type == EC_PWM_TYPE_DISPLAY_LIGHT) {
+	if (pwm_is_displight(p->pwm_type, p->index)) {
 		r->duty = PWM_PERCENT_TO_RAW(displight_get());
 		args->response_size = sizeof(*r);
 		return EC_RES_SUCCESS;
