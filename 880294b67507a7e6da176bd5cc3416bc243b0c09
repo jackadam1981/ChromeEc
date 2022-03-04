@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "986a8645_2857afb7",
+        "filename": "zephyr/projects/nissa/nivviks_power_signals.dts",
+        "patchSetId": 40
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-03-04T02:06:18Z",
+      "side": 1,
+      "message": "Comments from Peter in CL:3497864 regarding this pull up:  \"This signal has an external pullup to PP3300_S5 so we don\u0027t need to use an on-chip one.\" Please fix it here.",
+      "range": {
+        "startLine": 36,
+        "startChar": 37,
+        "endLine": 36,
+        "endChar": 49
+      },
+      "revId": "880294b67507a7e6da176bd5cc3416bc243b0c09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
