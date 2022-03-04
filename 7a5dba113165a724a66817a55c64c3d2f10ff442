@@ -50,6 +50,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "858a1122_8921e77f",
+        "filename": "common/usb_pd_dual_role.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-03-04T22:13:09Z",
+      "side": 1,
+      "message": "I think we go through the efforts to check that the partner sent a valid vSafe5V fixed PDO for sink/source caps, but selfishly assume our PDOs are always correct :) \n\nWe could validate them, but that would require some thought as to what validation would be best (ex. unit test vs. compile assert vs. runtime warning) and may be suited as a bug unto itself",
+      "parentUuid": "44f57181_4bf612fa",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 46
+      },
+      "revId": "7a5dba113165a724a66817a55c64c3d2f10ff442",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "58c70291_8738d193",
         "filename": "common/usb_pd_dual_role.c",
         "patchSetId": 4
