@@ -11,7 +11,6 @@
 #include "baseboard_usbc_config.h"
 #include "button.h"
 #include "charger.h"
-#include "charge_state_v2.h"
 #include "console.h"
 #include "ec_commands.h"
 #include "extpower.h"
@@ -84,12 +83,6 @@ void usb_a0_interrupt(enum gpio_signal signal)
 	}
 }
 
-void board_set_charge_limit(int port, int supplier, int charge_ma,
-			    int max_ma, int charge_mv)
-{
-	charge_set_input_current_limit(
-		MAX(charge_ma, CONFIG_CHARGER_INPUT_CURRENT), charge_mv);
-}
 
 void board_pd_vconn_ctrl(int port, enum usbpd_cc_pin cc_pin, int enabled)
 {

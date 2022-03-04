@@ -9,6 +9,7 @@
 #include "baseboard_usbc_config.h"
 #include "bc12/pi3usb9201_public.h"
 #include "charge_manager.h"
+#include "charge_state_v2.h"
 #include "charger.h"
 #include "console.h"
 #include "driver/charger/rt9490.h"
@@ -255,3 +256,10 @@ enum adc_channel board_get_vbus_adc(int port)
 	return ADC_VBUS_C0;
 }
 #endif /* CONFIG_USB_PD_VBUS_MEASURE_ADC_EACH_PORT */
+
+void board_set_charge_limit(int port, int supplier, int charge_ma,
+			    int max_ma, int charge_mv)
+{
+	charge_set_input_current_limit(
+		MAX(charge_ma, CONFIG_CHARGER_INPUT_CURRENT), charge_mv);
+}

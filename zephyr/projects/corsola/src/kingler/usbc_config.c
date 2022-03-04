@@ -6,6 +6,7 @@
 /* Kingler board-specific USB-C configuration */
 
 #include "charger.h"
+#include "charge_state_v2.h"
 #include "console.h"
 #include "driver/bc12/pi3usb9201_public.h"
 #include "driver/charger/isl923x_public.h"
@@ -139,6 +140,19 @@ const struct pi3usb9201_config_t
 	},
 	[USBC_PORT_C1] = { /* unused */ }
 };
+
+void board_set_charge_limit(int port, int supplier, int charge_ma,
+			    int max_ma, int charge_mv)
+{
+	int icl = MAX(charge_ma, CONFIG_CHARGER_INPUT_CURRENT);
+
+	/*
+	 * b:221781315: Input current spikes (>3200mA) are detected on
+	 * heavy-load. Preserve a margin in case of charger overdraw.
+	 */
+	icl = icl * 96 / 100;
+	charge_set_input_current_limit(icl, charge_mv);
+}
 
 void board_tcpc_init(void)
 {
