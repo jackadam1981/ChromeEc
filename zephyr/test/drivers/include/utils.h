@@ -189,6 +189,20 @@ static inline struct ec_response_typec_status host_cmd_typec_status(int port)
 	return response;
 }
 
+static inline struct ec_response_typec_discovery host_cmd_typec_discovery(
+		int port, enum typec_partner_type partner_type)
+{
+	struct ec_params_typec_discovery params = {
+		.port = port, .partner_type = partner_type };
+	struct ec_response_typec_discovery response;
+	struct host_cmd_handler_args args =
+		BUILD_HOST_COMMAND(EC_CMD_TYPEC_STATUS, 0, response, params);
+
+	zassume_ok(host_command_process(&args),
+		   "Failed to get Type-C state for port %d", port);
+	return response;
+}
+
 #define GPIO_ACOK_OD_NODE DT_NODELABEL(gpio_acok_od)
 #define GPIO_ACOK_OD_PIN  DT_GPIO_PIN(GPIO_ACOK_OD_NODE, gpios)
 
