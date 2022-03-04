@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "50976a0f_b79380f8",
+        "filename": "driver/fingerprint/fpc/bep/fpc_private.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1202834
+      },
+      "writtenOn": "2022-03-04T20:40:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0ab3f019_55cfc017",
+      "revId": "2bbc8a31546c76072c2f2f388b2db7c1a8d78200",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2c1327a7_d7f12267",
@@ -49,6 +67,30 @@
       "writtenOn": "2022-03-04T18:30:13Z",
       "side": 1,
       "message": "This will end up setting `*id` to the shifted value. The full id is the value before shifting `((spi_buf[1] \u003c\u003c 8) | spi_buf[2])`, so that\u0027s the one we want to return. The reason the shifting was added is because the [lower four bits are a manufacturing ID](https://chromium.googlesource.com/chromiumos/platform/ec/+/2bbc8a31546c76072c2f2f388b2db7c1a8d78200/driver/fingerprint/fpc/bep/fpc1025_private.h#9) that are OK to vary. However, if we\u0027re trying to get the ID we should get the full ID. If you change it back to how it was before it should be good:\n\n```\nsensor_id \u003d ((spi_buf[1] \u003c\u003c 8) | spi_buf[2]);\nif ((sensor_id \u003e\u003e 4) !\u003d FP_SENSOR_HWID) {\n```",
+      "range": {
+        "startLine": 134,
+        "startChar": 1,
+        "endLine": 135,
+        "endChar": 35
+      },
+      "revId": "2bbc8a31546c76072c2f2f388b2db7c1a8d78200",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f86777c_51b915f7",
+        "filename": "driver/fingerprint/fpc/bep/fpc_private.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1202834
+      },
+      "writtenOn": "2022-03-04T20:40:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2c1327a7_d7f12267",
       "range": {
         "startLine": 134,
         "startChar": 1,
@@ -82,6 +124,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "02a01778_9e1c8014",
+        "filename": "driver/fingerprint/fpc/bep/fpc_private.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1202834
+      },
+      "writtenOn": "2022-03-04T20:40:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4db87762_3b37dffa",
+      "range": {
+        "startLine": 150,
+        "startChar": 1,
+        "endLine": 150,
+        "endChar": 42
+      },
+      "revId": "2bbc8a31546c76072c2f2f388b2db7c1a8d78200",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b6e2d7cd_a5905702",
@@ -95,6 +161,30 @@
       "writtenOn": "2022-03-04T18:30:13Z",
       "side": 1,
       "message": "Can you word it as something like \"EC_SUCCESS on success, FP_ERROR_SPI_COMM, FP_ERROR_BAD_HWID, or EC_ERROR_INVAL on error\"?",
+      "range": {
+        "startLine": 41,
+        "startChar": 11,
+        "endLine": 41,
+        "endChar": 78
+      },
+      "revId": "2bbc8a31546c76072c2f2f388b2db7c1a8d78200",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e2a43e2_47ca3ad8",
+        "filename": "driver/fingerprint/fpc/bep/fpc_private.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1202834
+      },
+      "writtenOn": "2022-03-04T20:40:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b6e2d7cd_a5905702",
       "range": {
         "startLine": 41,
         "startChar": 11,
@@ -140,6 +230,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a952d977_e33cdc85",
+        "filename": "driver/fingerprint/fpc/libfp/fpc_private.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1202834
+      },
+      "writtenOn": "2022-03-04T20:40:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3de5baa1_7bbbc97f",
+      "revId": "2bbc8a31546c76072c2f2f388b2db7c1a8d78200",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c3a9cc89_7105e538",
@@ -153,6 +261,30 @@
       "writtenOn": "2022-03-04T18:30:13Z",
       "side": 1,
       "message": "Can you word it as something like \"EC_SUCCESS on success or EC_ERROR_HW_INTERNAL on error\"?",
+      "range": {
+        "startLine": 104,
+        "startChar": 11,
+        "endLine": 104,
+        "endChar": 43
+      },
+      "revId": "2bbc8a31546c76072c2f2f388b2db7c1a8d78200",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1900019d_02ae574b",
+        "filename": "driver/fingerprint/fpc/libfp/fpc_private.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1202834
+      },
+      "writtenOn": "2022-03-04T20:40:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c3a9cc89_7105e538",
       "range": {
         "startLine": 104,
         "startChar": 11,
@@ -180,6 +312,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c58c529_c2373a96",
+        "filename": "driver/fingerprint/fpc/libfp/fpc_private.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1202834
+      },
+      "writtenOn": "2022-03-04T20:40:25Z",
+      "side": 1,
+      "message": "Not sure, will take a closer look separately.",
+      "parentUuid": "b4b3b98e_61080d1c",
+      "revId": "2bbc8a31546c76072c2f2f388b2db7c1a8d78200",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f4506c65_23a52d7b",
@@ -193,6 +343,30 @@
       "writtenOn": "2022-03-04T18:30:13Z",
       "side": 1,
       "message": "This will end up setting `*id` to the shifted value. The full id is the value before shifting `((spi_buf[1] \u003c\u003c 8) | spi_buf[2])`, so that\u0027s the one we want to return. The reason the shifting was added is because the [lower four bits are a manufacturing ID](https://chromium.googlesource.com/chromiumos/platform/ec/+/2bbc8a31546c76072c2f2f388b2db7c1a8d78200/driver/fingerprint/fpc/bep/fpc1025_private.h#9) that are OK to vary. However, if we\u0027re trying to get the ID we should get the full ID. If you change it back to how it was before it should be good:\n\n```\nsensor_id \u003d ((spi_buf[1] \u003c\u003c 8) | spi_buf[2]);\nif ((sensor_id \u003e\u003e 4) !\u003d FP_SENSOR_HWID) {\n```",
+      "range": {
+        "startLine": 126,
+        "startChar": 0,
+        "endLine": 127,
+        "endChar": 35
+      },
+      "revId": "2bbc8a31546c76072c2f2f388b2db7c1a8d78200",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f7a921ab_e0ec5fc1",
+        "filename": "driver/fingerprint/fpc/libfp/fpc_private.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1202834
+      },
+      "writtenOn": "2022-03-04T20:40:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f4506c65_23a52d7b",
       "range": {
         "startLine": 126,
         "startChar": 0,
@@ -226,6 +400,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce898756_d15510ba",
+        "filename": "driver/fingerprint/fpc/libfp/fpc_private.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1202834
+      },
+      "writtenOn": "2022-03-04T20:40:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ed56acfe_76676193",
+      "range": {
+        "startLine": 143,
+        "startChar": 1,
+        "endLine": 143,
+        "endChar": 42
+      },
+      "revId": "2bbc8a31546c76072c2f2f388b2db7c1a8d78200",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4bd186a5_e8a9cd68",
@@ -249,6 +447,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bfeda699_a36caa1d",
+        "filename": "driver/fingerprint/fpc/libfp/fpc_private.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1202834
+      },
+      "writtenOn": "2022-03-04T20:40:25Z",
+      "side": 1,
+      "message": "Done, took a cue for the format from the function above.",
+      "parentUuid": "4bd186a5_e8a9cd68",
+      "range": {
+        "startLine": 132,
+        "startChar": 11,
+        "endLine": 132,
+        "endChar": 62
+      },
+      "revId": "2bbc8a31546c76072c2f2f388b2db7c1a8d78200",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f02e4776_14345efa",
@@ -262,6 +484,30 @@
       "writtenOn": "2022-03-04T18:37:01Z",
       "side": 1,
       "message": "Should also check that `fpc_get_hwid` returns success:\n\n```\nTEST_EQ(fpc_get_hwid(\u0026id), EC_SUCCESS, \"%d\");\n```",
+      "range": {
+        "startLine": 26,
+        "startChar": 2,
+        "endLine": 26,
+        "endChar": 14
+      },
+      "revId": "2bbc8a31546c76072c2f2f388b2db7c1a8d78200",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "851e4a78_85f11c33",
+        "filename": "test/fpsensor_hw.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1202834
+      },
+      "writtenOn": "2022-03-04T20:40:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f02e4776_14345efa",
       "range": {
         "startLine": 26,
         "startChar": 2,
