@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b03ff5ec_d6495960",
+        "filename": "include/atomic_bit.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-03-04T00:53:42Z",
+      "side": 1,
+      "message": "Because you\u0027re duplicating so much from the Zephyr source, this should be moved into platform/ec/third_party directory.\n\nYou should copy atomic.h and the LICENSE file from Zephyr and put into platform/ec/third_party/zephyr.  Check in these files unmodified.  \n\nAs a follow-on CL, modify atomic.h as needed, and add comments indicating what is changed from the upstream file.\n\nSee the \"Redistribution\" section of the Zephyr LICENSE file for details.\n\nI suggest trying to limit the atomic.h changes to deletions only.  If you need to add #includes, do that in a wrapper file.\n\natomic_bit.h\n```\n#include \"atomic.h\"\n#include \"stdbool.h\"\n#include \"third_party/zephyr/atomic.h\"\n```",
+      "revId": "9511860d5ba6d1fd99afde51d580f73ac35e5727",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
