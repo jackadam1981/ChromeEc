@@ -16,6 +16,24 @@
       "message": "I think we are avoiding a named \"label\" property these days.",
       "revId": "893c581c708bd07bbd7f878a589271b118fdfbec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf114a28_4d16c210",
+        "filename": "zephyr/projects/intelrvp/adlrvp/ioex.dts",
+        "patchSetId": 8
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-03-04T20:13:07Z",
+      "side": 1,
+      "message": "Yes you are right.\nBut named-ioex.yaml still uses label as a required property:\n\n********************************************\ndescription: Named IOEXes parent node\n\ncompatible: \"named-ioexes\"\n\nchild-binding:\n    description: Named IOEXes child node\n    include: ioex-enum-name.yaml\n    properties:\n       gpios:\n          type: phandle-array\n          required: true\n       label:\n          required: true\n          type: string\n          description: |\n            Human readable string describing the net name connected\n            to the I/O expander pin.\n       \"#gpio-cells\":\n          type: int\n          required: false\n          const: 0\n\n*****************************************",
+      "parentUuid": "d49ce4b3_3cee2ad2",
+      "revId": "893c581c708bd07bbd7f878a589271b118fdfbec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
