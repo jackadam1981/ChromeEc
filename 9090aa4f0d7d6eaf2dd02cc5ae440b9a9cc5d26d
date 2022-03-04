@@ -16,6 +16,41 @@
       "message": "Hi Sam,\n\nMy board came, and the ISL9238C is charging and behaving as expected for some quick checks.\n\nMy only concern - I\u0027d like to enable support for both ISL9238 and ISL9238C, although our focus will be on the C variant.  I suspect partners will pick the C variant anyway, but don\u0027t wish to block the ISL9238.  Will the CL enable both (just shift the default) or will it deprecate the ISL9238?",
       "revId": "9090aa4f0d7d6eaf2dd02cc5ae440b9a9cc5d26d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0e7d968_d501f140",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-03-04T00:54:08Z",
+      "side": 1,
+      "message": "Sam, feel free to submit it once you verify the ISL9238C.",
+      "revId": "9090aa4f0d7d6eaf2dd02cc5ae440b9a9cc5d26d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "060c0eae_baf11dec",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-03-04T00:54:08Z",
+      "side": 1,
+      "message": "I believe enabling the ISL9238C driver wont\u0027 break the ISL9238. The ADC scaler will be addressed in hardware.",
+      "parentUuid": "ee1ac3cf_fdcf72f4",
+      "revId": "9090aa4f0d7d6eaf2dd02cc5ae440b9a9cc5d26d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
