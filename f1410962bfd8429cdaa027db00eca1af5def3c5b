@@ -52,6 +52,24 @@
       "parentUuid": "6e324e59_109b82ab",
       "revId": "f1410962bfd8429cdaa027db00eca1af5def3c5b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ee8bd18_a094fdbf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-03-04T03:24:00Z",
+      "side": 1,
+      "message": "So the named-gpios is not relevant here except as reference for what is expected in the configuration.\nI expect if folks had to copy the config for legacy power sequence code, and use the named-gpios as reference, then the expectation is that the config will allow an initial state to be set for each GPIO.\n\nSo in the example you provide, this would be fine if the default init happens to be correct (the reset value of 0 on the pin)., but if this was an active low output, then the init at the moment would set to the physical state of 0, which is asserted.\nWith this change, an active low output would set it to the de-asserted value, , physical 1 on the pin. And if init-high is set, it would set it to physical 0, which matches what the config wants.\n\nSo the real fix here is that outputs should set to a known value at startup, with the default to set to de-asserted, but with the option to init it to asserted.",
+      "parentUuid": "74d364a1_608301c4",
+      "revId": "f1410962bfd8429cdaa027db00eca1af5def3c5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
