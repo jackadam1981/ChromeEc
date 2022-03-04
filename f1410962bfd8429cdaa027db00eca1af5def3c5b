@@ -16,6 +16,24 @@
       "message": "What do we need this for? It seems like signals should be initially deasserted, in which case a signal that should be electrically high at initialization should be marked as ACTIVE_LOW and I assume then initialization will set it high.",
       "revId": "f1410962bfd8429cdaa027db00eca1af5def3c5b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e324e59_109b82ab",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-03-04T00:04:57Z",
+      "side": 1,
+      "message": "In the named-gpios config, pins are able to specify an output state (e.g sys-reset has GPIO_ODR_HIGH), so to match this, the power signal config should be able to set an initial output value.\nThe initialisation will not set any initial value unless OUTPUT_INIT_{HIGH,LOW} is set, regardless of whether GPIO_ACTIVE_LOW is set (you just get the reset value, which physically low I guess).\nSo perhaps by default the init logic should set OUTPUT_INIT_LOW for all signals (for de-asserted at the start), and OUTPUT_INIT_HIGH if init-high is on, and let the ACTIVE_LOW be applied.\n\nFor pins like sys-rst, this would work.\nIt\u0027s possible that we may not need to set any pin as \u0027asserted\u0027 (OUTPUT_INIT_HIGH), but it\u0027s better to have this allowed in the config rather than relying code to explicitly have to set it (and risk glitches).\n\nPerhaps to be clearer, the config should be called \u0027init-assert\u0027, but the GPIO language consistently uses HIGH/LOW.",
+      "parentUuid": "4567a1ae_26935254",
+      "revId": "f1410962bfd8429cdaa027db00eca1af5def3c5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
