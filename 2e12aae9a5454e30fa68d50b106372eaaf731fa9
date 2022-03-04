@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c209b3a4_ba76dcc0",
+        "filename": "zephyr/subsys/ap_pwrseq/signal_vw.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-03-04T00:15:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bc3c487f_8a546990",
+      "revId": "2e12aae9a5454e30fa68d50b106372eaaf731fa9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cc9ad088_302f305b",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-03-03T22:47:53Z",
       "side": 1,
       "message": "You can use `BIT_MASK()` for this.",
+      "range": {
+        "startLine": 63,
+        "startChar": 21,
+        "endLine": 63,
+        "endChar": 53
+      },
+      "revId": "2e12aae9a5454e30fa68d50b106372eaaf731fa9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "279ebbb5_35a3bf5a",
+        "filename": "zephyr/subsys/ap_pwrseq/signal_vw.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-03-04T00:15:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cc9ad088_302f305b",
       "range": {
         "startLine": 63,
         "startChar": 21,
@@ -58,6 +100,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7957dc39_24543e79",
+        "filename": "zephyr/subsys/ap_pwrseq/signal_vw.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-03-04T00:15:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ebb0000_8f776dfb",
+      "revId": "2e12aae9a5454e30fa68d50b106372eaaf731fa9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "687f8257_c1c8e8ef",
@@ -71,6 +131,24 @@
       "writtenOn": "2022-03-03T22:47:53Z",
       "side": 1,
       "message": "We could save some RAM by using a single callback that handles all three events and branches accordingly by reading `event.evt_type`.",
+      "revId": "2e12aae9a5454e30fa68d50b106372eaaf731fa9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab5a3a7b_efb9922d",
+        "filename": "zephyr/subsys/ap_pwrseq/signal_vw.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-03-04T00:15:23Z",
+      "side": 1,
+      "message": "Yes, that was on my mind, and will likely do that separately.",
+      "parentUuid": "687f8257_c1c8e8ef",
       "revId": "2e12aae9a5454e30fa68d50b106372eaaf731fa9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
