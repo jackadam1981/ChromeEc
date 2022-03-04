@@ -16,6 +16,29 @@
       "message": "Hi Rob\nCould we have this CL in guybrush fw branch?",
       "revId": "b135e45447ba42f276b6f5232e2573d166320b31",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d608d1b2_433ee922",
+        "filename": "common/battery.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 561,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-03-04T22:14:02Z",
+      "side": 1,
+      "message": "Hi Rob, not returning this is a bit of a problem. \n\nPowerd reads these static params only at start-up. If it fails to read them, it uses some default values and never look back. So, we need to return them even if batt flags are bad and make powerd accept the params if the return code is EC_RES_UNAVAILABLE (or EC_RES_SUCCESS).",
+      "range": {
+        "startLine": 560,
+        "startChar": 0,
+        "endLine": 561,
+        "endChar": 47
+      },
+      "revId": "b135e45447ba42f276b6f5232e2573d166320b31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
