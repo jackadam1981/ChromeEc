@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f338903_1cc7ec1f",
+        "filename": "driver/fingerprint/fpc/bep/fpc_private.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2022-03-04T18:29:13Z",
+      "side": 1,
+      "message": "Normally the convention is to just to set the *id here and let the check method do further processing of it.  Status should be EC_SUCCESS and later if check finds it does not match FP_SENSOR_HWID it can return the FP_ERROR_BAD_HWID error code.  Same for the other file.",
+      "revId": "2bbc8a31546c76072c2f2f388b2db7c1a8d78200",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e5ceb15_3868049e",
+        "filename": "driver/fingerprint/fpc/libfp/fpc_private.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2022-03-04T18:29:13Z",
+      "side": 1,
+      "message": "What\u0027s the convention on function comments in ec?  Is it only in the header file, only in the c file, or in both?  It should be consistent.",
+      "revId": "2bbc8a31546c76072c2f2f388b2db7c1a8d78200",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b4b3b98e_61080d1c",
+        "filename": "driver/fingerprint/fpc/libfp/fpc_private.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2022-03-04T18:29:13Z",
+      "side": 1,
+      "message": "Nit, not related to your change and should be in another cl if the following is indeed an issue.  The other functions under bep are almost the same as these, only difference is this line.  Are the ones under bep supposed to have this line as well?  Can we consolidate some functions to avoid code duplication?",
+      "revId": "2bbc8a31546c76072c2f2f388b2db7c1a8d78200",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
