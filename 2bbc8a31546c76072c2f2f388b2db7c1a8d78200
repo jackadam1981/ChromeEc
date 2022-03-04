@@ -247,6 +247,29 @@
       },
       "revId": "2bbc8a31546c76072c2f2f388b2db7c1a8d78200",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f02e4776_14345efa",
+        "filename": "test/fpsensor_hw.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-03-04T18:37:01Z",
+      "side": 1,
+      "message": "Should also check that `fpc_get_hwid` returns success:\n\n```\nTEST_EQ(fpc_get_hwid(\u0026id), EC_SUCCESS, \"%d\");\n```",
+      "range": {
+        "startLine": 26,
+        "startChar": 2,
+        "endLine": 26,
+        "endChar": 14
+      },
+      "revId": "2bbc8a31546c76072c2f2f388b2db7c1a8d78200",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
