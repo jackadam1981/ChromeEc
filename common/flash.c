@@ -63,7 +63,7 @@ struct persist_state {
 	uint8_t mac_addr[CONFIG_MAC_ADDR_LEN];
 #endif /* CONFIG_MAC_ADDR_LEN */
 #if !defined(CONFIG_SERIALNO_LEN) && !defined(CONFIG_MAC_ADDR_LEN)
-	uint8_t padding[4 % CONFIG_FLASH_WRITE_SIZE];
+	uint8_t padding[0] __aligned(CONFIG_FLASH_WRITE_SIZE);
 #endif
 };
 
