@@ -16,6 +16,23 @@
       "message": "cherry pick to firmware branch",
       "revId": "4621558e22312449cbfdf280025b3c03477db07a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e52d1a46_59fedc17",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1416787
+      },
+      "writtenOn": "2022-03-04T03:33:37Z",
+      "side": 1,
+      "message": "we can\u0027t cherry pick by ourself. need to wait robot",
+      "revId": "4621558e22312449cbfdf280025b3c03477db07a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
