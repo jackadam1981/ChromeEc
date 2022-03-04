@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b011a77_2d2a0d85",
+        "filename": "common/fpsensor/fpsensor.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-03-04T17:50:44Z",
+      "side": 1,
+      "message": "Not a big fan of this solution, but the build fails if this function is not used.\n\nThat happens for example when you build some tests where I guess neither the console commands nor the private driver are used. Example:\n\n```\nmake buildfuzztests\n```\n\nThe alternative to this would be to ignore the unused-function error for `fp_match_success()`, but I am not sure that can be done easily.",
+      "revId": "a7d5f0f8da0a9a99cd914107ac4e8984ef634525",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
