@@ -24,6 +24,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c77bb7d_b1b1b0b9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-03-04T02:03:07Z",
+      "side": 1,
+      "message": "Updated parent patch, and this one is not needed anymore.",
+      "revId": "820ef70c06e3b31c5ec97a44dabb83b15471c490",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "38729d31_439b147c",
@@ -47,6 +64,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1f264e7_b044f147",
+        "filename": "zephyr/projects/nissa/nivviks_power_signals.dts",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-03-04T02:03:07Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "38729d31_439b147c",
+      "range": {
+        "startLine": 32,
+        "startChar": 18,
+        "endLine": 32,
+        "endChar": 21
+      },
+      "revId": "820ef70c06e3b31c5ec97a44dabb83b15471c490",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "900d472d_d900dc79",
@@ -60,6 +101,30 @@
       "writtenOn": "2022-03-03T23:01:37Z",
       "side": 1,
       "message": "This signal has an external pullup to PP3300_S5 so we don\u0027t need to use an on-chip one.",
+      "range": {
+        "startLine": 36,
+        "startChar": 38,
+        "endLine": 36,
+        "endChar": 50
+      },
+      "revId": "820ef70c06e3b31c5ec97a44dabb83b15471c490",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc47e023_11498a0f",
+        "filename": "zephyr/projects/nissa/nivviks_power_signals.dts",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-03-04T02:03:07Z",
+      "side": 1,
+      "message": "From parent patch, change in this one is not needed anymore.\nI\u0027m going to copy this comment to CL:3389663; the patch which creates this dts file; it can be fix there.",
+      "parentUuid": "900d472d_d900dc79",
       "range": {
         "startLine": 36,
         "startChar": 38,
