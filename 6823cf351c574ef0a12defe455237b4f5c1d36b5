@@ -39,6 +39,48 @@
       "message": "add some info from datasheet, refer the above config.",
       "revId": "6823cf351c574ef0a12defe455237b4f5c1d36b5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5aff76dc_92459706",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 2
+      },
+      "lineNbr": 939,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-03-05T00:09:04Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b611538e_42a49b95",
+      "revId": "6823cf351c574ef0a12defe455237b4f5c1d36b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d08f5ca_286d0203",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 2
+      },
+      "lineNbr": 939,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-03-05T00:09:04Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "5c68cfc3_45f5f6a1",
+      "range": {
+        "startLine": 939,
+        "startChar": 29,
+        "endLine": 939,
+        "endChar": 37
+      },
+      "revId": "6823cf351c574ef0a12defe455237b4f5c1d36b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
