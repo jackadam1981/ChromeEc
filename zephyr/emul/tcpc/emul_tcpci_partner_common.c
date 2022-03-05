@@ -436,9 +436,7 @@ enum tcpci_partner_handler_res tcpci_partner_common_vdm_handler(
 	/* TCPCI r2.0: Ignore unsupported VDMs. Don't handle command types other
 	 * than REQ, unstructured VDMs, or SVIDs other than the PD SID.
 	 */
-	if (PD_VDO_CMDT(vdm_header) != CMDT_INIT || PD_VDO_SVDM(vdm_header) ||
-			/* TODO(b/219562077): Handle DP VID. */
-			PD_VDO_VID(vdm_header) != USB_SID_PD) {
+	if (PD_VDO_CMDT(vdm_header) != CMDT_INIT || !PD_VDO_SVDM(vdm_header)) {
 		return TCPCI_PARTNER_COMMON_MSG_HANDLED;
 	}
 
@@ -755,4 +753,7 @@ void tcpci_partner_init(struct tcpci_partner_data *data,
 	data->hard_reset_func = hard_reset_func;
 	data->hard_reset_data = data;
 	data->tcpm_timeouts = 0;
+	data->identity_vdos = 0;
+	data->svids_vdos = 0;
+	data->modes_vdos = 0;
 }
