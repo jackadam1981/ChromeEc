@@ -8,6 +8,7 @@
 
 #include <drivers/emul.h>
 #include <drivers/gpio/gpio_emul.h>
+#include <string.h>
 
 #include "charger.h"
 #include "emul/tcpc/emul_tcpci_partner_src.h"
@@ -208,21 +209,25 @@ host_cmd_get_charge_control(void)
 
 	zassume_ok(host_command_process(&args),
 		   "Failed to get charge control values");
+
+	return response;
 }
 
 /* TODO: Don't make this inline. */
-static inline struct ec_response_typec_discovery host_cmd_typec_discovery(
-		int port, enum typec_partner_type partner_type)
+static inline void host_cmd_typec_discovery(
+		int port, enum typec_partner_type partner_type,
+		struct ec_response_typec_discovery *response)
 {
+	uint8_t array[EC_LPC_HOST_PACKET_SIZE];
 	struct ec_params_typec_discovery params = {
 		.port = port, .partner_type = partner_type };
-	struct ec_response_typec_discovery response;
 	struct host_cmd_handler_args args =
-		BUILD_HOST_COMMAND(EC_CMD_TYPEC_STATUS, 0, response, params);
+		BUILD_HOST_COMMAND(EC_CMD_TYPEC_DISCOVERY, 0, array, params);
 
 	zassume_ok(host_command_process(&args),
 		   "Failed to get Type-C state for port %d", port);
-	return response;
+
+	memcpy(response, array, sizeof(array));
 }
 
 #define GPIO_ACOK_OD_NODE DT_NODELABEL(gpio_acok_od)
