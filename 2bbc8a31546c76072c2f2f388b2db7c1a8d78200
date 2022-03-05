@@ -427,6 +427,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7603de16_059e55e8",
+        "filename": "driver/fingerprint/fpc/libfp/fpc_private.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-03-05T03:00:18Z",
+      "side": 1,
+      "message": "Tom is definitely the expert here so I\u0027ll defer to his judgement. If he sees a good reason to return the unshifted version then a Doxygen comment may be helpful to provide some context.",
+      "parentUuid": "ff42d760_12ff1b95",
+      "range": {
+        "startLine": 126,
+        "startChar": 0,
+        "endLine": 127,
+        "endChar": 35
+      },
+      "revId": "2bbc8a31546c76072c2f2f388b2db7c1a8d78200",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ed56acfe_76676193",
         "filename": "driver/fingerprint/fpc/libfp/fpc_private.c",
         "patchSetId": 17
