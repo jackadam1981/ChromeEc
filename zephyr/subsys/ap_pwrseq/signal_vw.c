@@ -44,48 +44,45 @@ static bool signal_data[ARRAY_SIZE(vw_config)];
 static uint8_t espi_ready;
 BUILD_ASSERT(ARRAY_SIZE(vw_config) <= 8);
 
-static void espi_bus_vw_handler(const struct device *dev,
-				struct espi_callback *cb,
-				struct espi_event event)
+static void espi_handler(const struct device *dev,
+			 struct espi_callback *cb,
+			 struct espi_event event)
 {
-	LOG_DBG("VW is triggered, event=%d, val=%d\n", event.evt_details,
-			event.evt_data);
+	switch (event.evt_type) {
+	case ESPI_BUS_RESET:
+		LOG_DBG("ESPI bus reset");
+		/*
+		 * Notify that the bus isn't ready, and clear
+		 * the signal mask.
+		 */
+		notify_espi_ready(false);
+		espi_ready = 0;
+		break;
 
-	for (int i = 0; i < ARRAY_SIZE(vw_config); i++) {
-		if (event.evt_details == vw_config[i].espi_signal) {
-			signal_data[i] = !!event.evt_data;
-			espi_ready |= BIT(i);
+	case ESPI_BUS_EVENT_CHANNEL_READY:
+		LOG_DBG("ESPI channel ready");
+		break;
+
+	case ESPI_BUS_EVENT_VWIRE_RECEIVED:
+		LOG_DBG("ESPI VW %d:%d", event.evt_details, event.evt_data);
+
+		for (int i = 0; i < ARRAY_SIZE(vw_config); i++) {
+			if (event.evt_details == vw_config[i].espi_signal) {
+				signal_data[i] = !!event.evt_data;
+				espi_ready |= BIT(i);
+			}
 		}
+		/*
+		 * When all the signals have been updated, notify that
+		 * the ESPI signals are valid.
+		 */
+		if (espi_ready == BIT_MASK(ARRAY_SIZE(vw_config))) {
+			LOG_DBG("ESPI signals valid");
+			notify_espi_ready(true);
+			power_update_signals();
+		}
+		break;
 	}
-	/*
-	 * When all the signals have been updated, notify that the ESPI
-	 * signals are ready.
-	 */
-	if (espi_ready == BIT_MASK(ARRAY_SIZE(vw_config))) {
-		LOG_DBG("ESPI signals ready");
-		notify_espi_ready(true);
-		power_update_signals();
-	}
-}
-
-static void espi_bus_reset_handler(const struct device *dev,
-				struct espi_callback *cb,
-				struct espi_event event)
-{
-	LOG_DBG("ESPI bus reset");
-	/*
-	 * Notify that the bus isn't ready, and clear
-	 * the signal mask.
-	 */
-	notify_espi_ready(false);
-	espi_ready = 0;
-}
-
-static void espi_bus_channel_handler(const struct device *dev,
-				struct espi_callback *cb,
-				struct espi_event event)
-{
-	LOG_DBG("ESPI channel ready");
 }
 
 int power_signal_vw_get(enum pwr_sig_vw vw)
@@ -101,9 +98,7 @@ int power_signal_vw_get(enum pwr_sig_vw vw)
 
 void power_signal_vw_init(void)
 {
-	static struct espi_callback espi_bus_cb;
-	static struct espi_callback espi_chan_cb;
-	static struct espi_callback espi_vw_cb;
+	static struct espi_callback espi_cb;
 
 	struct espi_cfg cfg = {
 		.io_caps = ESPI_IO_MODE_SINGLE_LINE,
@@ -125,17 +120,11 @@ void power_signal_vw_init(void)
 	}
 
 	/* Configure handler for eSPI events */
-	espi_init_callback(&espi_bus_cb, espi_bus_reset_handler,
-						ESPI_BUS_RESET);
-	espi_add_callback(espi_dev, &espi_bus_cb);
-
-	espi_init_callback(&espi_chan_cb, espi_bus_channel_handler,
-				ESPI_BUS_EVENT_CHANNEL_READY);
-	espi_add_callback(espi_dev, &espi_chan_cb);
-
-	espi_init_callback(&espi_vw_cb, espi_bus_vw_handler,
-				ESPI_BUS_EVENT_VWIRE_RECEIVED);
-	espi_add_callback(espi_dev, &espi_vw_cb);
+	espi_init_callback(&espi_cb, espi_handler,
+			   ESPI_BUS_RESET |
+			   ESPI_BUS_EVENT_CHANNEL_READY |
+			   ESPI_BUS_EVENT_VWIRE_RECEIVED);
+	espi_add_callback(espi_dev, &espi_cb);
 }
 
 #endif /* HAS_VW_SIGNALS */
