@@ -846,7 +846,7 @@ static int command_fpmatch(int argc, char **argv)
 		uint32_t match_errcode = EC_MKBP_FP_ERRCODE(event);
 
 		CPRINTS("Match: %s (%d)",
-			fp_match_success(match_errcode) ? "YES" : "NO",
+			fp_match_success((int) match_errcode) ? "YES" : "NO",
 			match_errcode);
 	}
 
