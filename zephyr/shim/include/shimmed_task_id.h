@@ -53,6 +53,9 @@ typedef uint8_t task_id_t;
 	COND_CODE_1(HAS_TASK_CHIPSET,                                     \
 		     (CROS_EC_TASK(CHIPSET, chipset_task, 0,              \
 				   CONFIG_TASK_CHIPSET_STACK_SIZE)), ())  \
+	COND_CODE_1(HAS_TASK_AP_PWRSEQ,                                     \
+		     (CROS_EC_TASK(AP_PWRSEQ, ap_pwrseq_task, 0,            \
+				   CONFIG_TASK_AP_PWRSEQ_STACK_SIZE)), ())  \
 	COND_CODE_1(HAS_TASK_MOTIONSENSE,                                     \
 		     (CROS_EC_TASK(MOTIONSENSE, motion_sense_task, 0,         \
 				   CONFIG_TASK_MOTIONSENSE_STACK_SIZE)), ())  \
