@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "33f668e7_62056203",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-03-06T06:40:10Z",
+      "side": 1,
+      "message": "So this is an interesting issue.\nThe power sequence code needs to start at an appropriate time in the EC initialisation.\nAdding it as a EC task allows that to happen, but at the cost of treating it as a shimmed EC task.\nPart of this is that we may should use the Kconfig.stacks to allow per-EC setting of the stack size.\n\nIt may be better to instead create a new extra task list that is just for Zephyr modules, or have a better hook for initialisation that is similar to the EC init hooks.",
+      "revId": "e8d6d9bcbb157f1cb26fed3d9d12d907b44f6e93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
