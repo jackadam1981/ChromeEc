@@ -8,8 +8,6 @@
 
 #include <x86_common_pwrseq.h>
 #include <kernel.h>
-#include <init.h>
-#include <zephyr/types.h>
 
 #define DT_DRV_COMPAT	intel_ap_pwrseq
 
@@ -36,6 +34,7 @@ void init_chipset_pwr_seq_state(void);
 void chipset_request_exit_hardoff(bool should_exit);
 enum power_states_ndsx pwr_sm_get_state(void);
 void apshutdown(void);
+void ap_pwrseq_task_entry(void);
 
 extern const char pwrsm_dbg[][25];
 

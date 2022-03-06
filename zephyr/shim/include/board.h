@@ -12,8 +12,12 @@
 /* Included shimed version of gpio signal. */
 #include "gpio_signal.h"
 
+#if defined(CONFIG_HAS_TASK_POWER_SEQ)
+void ap_pwrseq_task(void *u);
+#else
 /* Include shimmed version of power signal */
 #include "power/power.h"
+#endif
 
 /* Include board specific gpio mapping/aliases if named_pgios node exists */
 #if !defined(TEST_BUILD) && DT_NODE_EXISTS(DT_PATH(named_gpios))

@@ -15,6 +15,24 @@ config TASKS_SET_TEST_RUNNER_TID_RULE
 	  new thread created by ztest to access some of the components in the
 	  EC.
 
+config HAS_TASK_AP_PWRSEQ
+	bool
+	depends on AP_PWRSEQ
+	help
+	  This turns on the AP power sequence task. This deals with the
+	  CPU start up and shutdown control and monitoring, and handles inputs
+	  like the power button etc.
+
+if HAS_TASK_AP_PWRSEQ
+
+config TASK_AP_PWRSEQ_STACK_SIZE
+	int "Stack size"
+	default 928
+	help
+	  The stack size of the AP power sequence task.
+
+endif # HAS_TASK_AP_PWRSEQ
+
 config HAS_TASK_CHARGER
 	bool
 	depends on PLATFORM_EC_BATTERY
