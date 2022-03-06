@@ -178,6 +178,24 @@
       "parentUuid": "1ac2f876_cb6d6255",
       "revId": "34561043a8c33e62476195837b4c16f85e6eb403",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7eeb4b86_f031c2d7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-03-06T01:44:20Z",
+      "side": 1,
+      "message": "So we can keep gpioget and set, and still see the named-gpios for the power signals, as long as we set no-auto-init on these named-gpios\nThis is what happens in chromium:3389663",
+      "parentUuid": "1ac2f876_cb6d6255",
+      "revId": "34561043a8c33e62476195837b4c16f85e6eb403",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
