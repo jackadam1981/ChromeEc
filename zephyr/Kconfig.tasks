@@ -15,6 +15,25 @@ config TASKS_SET_TEST_RUNNER_TID_RULE
 	  new thread created by ztest to access some of the components in the
 	  EC.
 
+config HAS_TASK_AP_PWRSEQ
+	bool
+	depends on AP_PWRSEQ
+	help
+	  This turns on the charger task. This deals with monitoring the
+	  battery to make sure it is present and is responding properly to
+	  requests. If the battery is not full, it enables charging from a
+	  suitable power source.
+
+if HAS_TASK_AP_PWRSEQ
+
+config TASK_AP_PWRSEQ_STACK_SIZE
+	int "Stack size"
+	default 928
+	help
+	  The stack size of the AP power sequence task.
+
+endif # HAS_TASK_AP_PWRSEQ
+
 config HAS_TASK_CHARGER
 	bool
 	depends on PLATFORM_EC_BATTERY

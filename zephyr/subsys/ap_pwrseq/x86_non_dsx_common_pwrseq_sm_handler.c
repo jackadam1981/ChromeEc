@@ -5,9 +5,6 @@
 
 #include <x86_non_dsx_common_pwrseq_sm_handler.h>
 
-static K_KERNEL_STACK_DEFINE(pwrseq_thread_stack,
-			CONFIG_X86_NON_DSW_PWRSEQ_STACK_SIZE);
-static struct k_thread pwrseq_thread_data;
 static struct pwrseq_context pwrseq_ctx;
 /* S5 inactive timer*/
 K_TIMER_DEFINE(s5_inactive_timer, NULL, NULL);
@@ -298,7 +295,7 @@ static int common_pwr_sm_run(int state)
 	return state;
 }
 
-static void pwrseq_loop_thread(void *p1, void *p2, void *p3)
+static void pwrseq_loop(void)
 {
 	int32_t t_wait_ms = 10;
 	enum power_states_ndsx curr_state, new_state;
@@ -344,18 +341,6 @@ static void pwrseq_loop_thread(void *p1, void *p2, void *p3)
 	}
 }
 
-static inline void create_pwrseq_thread(void)
-{
-	k_thread_create(&pwrseq_thread_data,
-			pwrseq_thread_stack,
-			K_KERNEL_STACK_SIZEOF(pwrseq_thread_stack),
-			(k_thread_entry_t)pwrseq_loop_thread,
-			NULL, NULL, NULL,
-			K_PRIO_COOP(8), 0, K_NO_WAIT);
-
-	k_thread_name_set(&pwrseq_thread_data, "pwrseq_task");
-}
-
 void init_pwr_seq_state(void)
 {
 	init_chipset_pwr_seq_state();
@@ -364,8 +349,12 @@ void init_pwr_seq_state(void)
 	pwr_sm_set_state(SYS_POWER_STATE_G3S5);
 }
 
-/* Initialize power sequence system state */
-static int pwrseq_init()
+/*
+ * Task entry point for AP power sequence.
+ * Initialise the system state, then
+ * enter the state machine loop.
+ */
+void ap_pwrseq_task_entry(void)
 {
 	LOG_ERR("Pwrseq Init\n");
 
@@ -374,9 +363,6 @@ static int pwrseq_init()
 	/* TODO: Define initial state of power sequence */
 	LOG_DBG("Init pwr seq state");
 	init_pwr_seq_state();
-	/* Create power sequence state handler core function thread */
-	create_pwrseq_thread();
-	return 0;
+	/* Jump to state machine loop */
+	pwrseq_loop();
 }
-
-SYS_INIT(pwrseq_init, APPLICATION, CONFIG_APPLICATION_INIT_PRIORITY);
