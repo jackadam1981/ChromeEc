@@ -96,4 +96,7 @@ void ec_app_main(void)
 	if (IS_ENABLED(CONFIG_SHIMMED_TASKS)) {
 		start_ec_tasks();
 	}
+	if (IS_ENABLED(CONFIG_AP_PWRSEQ)) {
+		ap_pwrseq_task_start();
+	}
 }

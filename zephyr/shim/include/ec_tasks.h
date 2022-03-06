@@ -18,6 +18,8 @@
 
 /** Starts all of the shimmed EC tasks. Requires CONFIG_SHIMMED_TASKS=y. */
 void start_ec_tasks(void);
+/** Starts the AP power sequence thread */
+void ap_pwrseq_task_start(void);
 
 #ifdef TEST_BUILD
 /**
