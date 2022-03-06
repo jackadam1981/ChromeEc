@@ -92,6 +92,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "defef759_78ee1670",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-03-06T12:30:42Z",
+      "side": 1,
+      "message": "Ah, much better. It\u0027s clearer now.\n\nIn terms of the naming and how the signal is treated, I think it is fine to treat it as an active high power-good signal, just as long it is very well documented in the power_signals.dts, because other you get people like me asking odd questions.\n\nFor Nereid, I\u0027m hitting an issue with the espi signals not being valid before testing, so I\u0027m going to add some code for espi bus signal validation checking.\nI\u0027ll create a separate Cl and send it to you.",
+      "parentUuid": "8933acfd_91a90503",
+      "revId": "fdb786965058e1cf5836148c89b388d4eebb3353",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "58072d3c_37d927e7",
         "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
         "patchSetId": 2
