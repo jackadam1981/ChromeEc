@@ -30,6 +30,7 @@ enum power_states_ndsx chipset_pwr_sm_run(
 				const struct common_pwrseq_config *com_cfg);
 void new_chipset_force_shutdown(void);
 void chipset_reset(enum pwrseq_chipset_shutdown_reason reason);
+void ap_pwrseq_task_start(void);
 void init_chipset_pwr_seq_state(void);
 void chipset_request_exit_hardoff(bool should_exit);
 enum power_states_ndsx pwr_sm_get_state(void);
