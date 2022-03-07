@@ -70,6 +70,30 @@
       },
       "revId": "10efac94271ff56341a650175f370d190d5516d5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "45b9fcee_315c0b6b",
+        "filename": "zephyr/projects/herobrine/motionsense.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2022-03-07T17:52:34Z",
+      "side": 1,
+      "message": "From common/motion_sense.c:\n\nstatic void motion_sense_startup(void)\n{\n        /*\n         * If the AP is already in S0, call the resume hook now.\n         * We may initialize the sensor 2 times (once in RO, another time in\n         * RW), but it may be necessary if the init sequence has changed.\n         */\n        if (chipset_in_state(SENSOR_ACTIVE_S0_S3_S5))\n                motion_sense_shutdown();\n        if (chipset_in_state(SENSOR_ACTIVE_S0_S3))\n                motion_sense_suspend();\n        if (chipset_in_state(SENSOR_ACTIVE_S0))\n                motion_sense_resume();\n}\nDECLARE_HOOK(HOOK_INIT, motion_sense_startup,\n             MOTION_SENSE_HOOK_PRIO);",
+      "parentUuid": "47595f58_b40e1e2c",
+      "range": {
+        "startLine": 215,
+        "startChar": 18,
+        "endLine": 215,
+        "endChar": 37
+      },
+      "revId": "10efac94271ff56341a650175f370d190d5516d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
