@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "843d7ae8_441baa05",
+        "filename": "driver/tcpm/fusb302.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-03-07T21:23:26Z",
+      "side": 1,
+      "message": "You can use `K_MUTEX_DEFINE(measure_lock);` instead of creating the SYS_INIT hook.  See CL:2782232\n\nAlso, the shared code already redirects `mutex_lock` to `k_mutex_lock` when  doing Zephyr builds, so you don\u0027t those defined either.",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 33
+      },
+      "revId": "1bdc83c7792c5a2c6795d5a23ec89c3ac3bd57b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "91db0e50_d306bf7c",
+        "filename": "zephyr/Kconfig.tcpm",
+        "patchSetId": 11
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-03-07T21:23:26Z",
+      "side": 1,
+      "message": "I see that \"BMC\" came directly from the datasheet, but it seems like an out-dated term.  Can you delete both BMC references from this text?",
+      "range": {
+        "startLine": 134,
+        "startChar": 29,
+        "endLine": 134,
+        "endChar": 32
+      },
+      "revId": "1bdc83c7792c5a2c6795d5a23ec89c3ac3bd57b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
