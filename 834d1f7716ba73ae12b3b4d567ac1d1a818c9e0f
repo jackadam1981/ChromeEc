@@ -16,6 +16,24 @@
       "message": "Could we merge this relation chain if all looks ok. ",
       "revId": "834d1f7716ba73ae12b3b4d567ac1d1a818c9e0f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b592b8cf_25bdff87",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 50
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2022-03-07T22:19:01Z",
+      "side": 1,
+      "message": "Correction: Could we merge this relation chain if all looks ok, until the CL: 3499931 which does not have adc comparator dependencies.",
+      "parentUuid": "40187517_c9961f91",
+      "revId": "834d1f7716ba73ae12b3b4d567ac1d1a818c9e0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
