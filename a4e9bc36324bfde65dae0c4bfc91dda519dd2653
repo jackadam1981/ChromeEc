@@ -34,6 +34,24 @@
       "parentUuid": "f0a7d5d8_bbb0a4f6",
       "revId": "a4e9bc36324bfde65dae0c4bfc91dda519dd2653",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "677ce36a_5508b13b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-03-07T23:24:27Z",
+      "side": 1,
+      "message": "the coding for that ends up being a bit awkward because you have\nto manage 2 timers serially. you\u0027re effectively implementing a\nmini state machine as a sub-state. i found it more intuitive to\nadd the extra state.",
+      "parentUuid": "eb577136_c1c31178",
+      "revId": "a4e9bc36324bfde65dae0c4bfc91dda519dd2653",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

@@ -22,6 +22,30 @@
       },
       "revId": "21a0f120cda87fd13f391826fbaf28454360cb69",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bdedd8c3_29b6bf4e",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 4522,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-03-07T23:24:27Z",
+      "side": 1,
+      "message": "ya, wondering about that as well, but slightly different aspect.\n\njust eyeballing the timing measurement (plot) in the bug,\nit\u0027s very unlikely we can use the 30ms delay we commonly use\nfor this.\nPD_T_SRC_TRANSITION will shift the measurement to the right\nand (hopefully) get the falling edge to fit into the mask.\ni\u0027m not sure how much margin will be left on the rising\nedge... we may have 0 ms left for PD_POWER_SUPPLY_TURN_OFF_DELAY.",
+      "parentUuid": "98c809d0_eb5676c3",
+      "range": {
+        "startLine": 4522,
+        "startChar": 3,
+        "endLine": 4522,
+        "endChar": 33
+      },
+      "revId": "21a0f120cda87fd13f391826fbaf28454360cb69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
