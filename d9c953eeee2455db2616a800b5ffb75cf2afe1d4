@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7bf31235_fc486b56",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1267126
+      },
+      "writtenOn": "2022-03-07T21:56:52Z",
+      "side": 1,
+      "message": "It won\u0027t slow down the hpd code path right? I thought we had some tight timing requirements so that an IRQ_HPD pulse is a certain time but I see that we print before and after so it is probably OK because the pulse time is still controlled within the two prints.",
+      "revId": "d9c953eeee2455db2616a800b5ffb75cf2afe1d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
