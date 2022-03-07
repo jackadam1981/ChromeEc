@@ -46,6 +46,30 @@
       },
       "revId": "10efac94271ff56341a650175f370d190d5516d5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "47595f58_b40e1e2c",
+        "filename": "zephyr/projects/herobrine/motionsense.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-03-07T17:42:28Z",
+      "side": 1,
+      "message": "Could you check how this active-mask property is used?",
+      "parentUuid": "fdc3c6a1_32c0ad99",
+      "range": {
+        "startLine": 215,
+        "startChar": 18,
+        "endLine": 215,
+        "endChar": 37
+      },
+      "revId": "10efac94271ff56341a650175f370d190d5516d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
