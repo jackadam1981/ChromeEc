@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7af0475c_a19b4fce",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1128941
+      },
+      "writtenOn": "2022-03-07T17:11:43Z",
+      "side": 1,
+      "message": "Hi David, can you follow these instructions as well?\nhttps://chromium.googlesource.com/chromium/src/+/HEAD/docs/adding_to_third_party.md#before-you-start\n\nIn particular, the message to chrome-eng-review@ to get sign off. Thanks!",
+      "revId": "090bca6cd9580a283f1bd7b7a85589d89e2a1f09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f8d161cc_537154c9",
         "filename": "third_party/zephyr/LICENSE",
         "patchSetId": 2
