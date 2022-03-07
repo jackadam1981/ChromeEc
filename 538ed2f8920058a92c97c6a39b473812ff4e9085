@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f4e554b_ec39ef5b",
+        "filename": "baseboard/intelrvp/adlrvp.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-03-07T17:19:08Z",
+      "side": 1,
+      "message": "nit: add the common includes after endif",
+      "revId": "538ed2f8920058a92c97c6a39b473812ff4e9085",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d043d495_b8758cf6",
+        "filename": "zephyr/projects/intelrvp/src/intelrvp.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-03-07T17:19:08Z",
+      "side": 1,
+      "message": "remove this logic, directly call i2c_read16 in adlrvp.c\nnewer pca9555 support s16 bit reading",
+      "revId": "538ed2f8920058a92c97c6a39b473812ff4e9085",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
