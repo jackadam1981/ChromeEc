@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "89fc2738_a6de2ef6",
+        "filename": "zephyr/dts/bindings/battery/lgc,ap19a8k.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-03-07T21:27:33Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "7526c1f6_83f87f05",
+      "revId": "f4f7a30fb621af920347f57aa5f01fbeefab832c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "720f05ba_89e55ac7",
@@ -73,6 +91,30 @@
       "side": 1,
       "message": "The spec doesn\u0027t mention the margin. In the datasheet 4-3-2, the charge current \u003d 256mA is used as an example of the pre-charge case. I think the margin approaches 0, i.e. no margin is needed.",
       "parentUuid": "720f05ba_89e55ac7",
+      "range": {
+        "startLine": 38,
+        "startChar": 15,
+        "endLine": 38,
+        "endChar": 18
+      },
+      "revId": "f4f7a30fb621af920347f57aa5f01fbeefab832c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2f2f8ac_92c27668",
+        "filename": "zephyr/dts/bindings/battery/lgc,ap19a8k.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-03-07T21:27:33Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "4ee69807_3b66c916",
       "range": {
         "startLine": 38,
         "startChar": 15,
