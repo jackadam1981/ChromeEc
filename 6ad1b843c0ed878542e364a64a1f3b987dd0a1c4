@@ -46,6 +46,30 @@
       },
       "revId": "6ad1b843c0ed878542e364a64a1f3b987dd0a1c4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "145331f1_734281da",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-03-07T02:27:06Z",
+      "side": 1,
+      "message": "Yes, if waiting for deassertion then the desired value should always have that bit clear and the IO should be configured as active-low. This code is okay.",
+      "parentUuid": "87f2582f_f9a65de1",
+      "range": {
+        "startLine": 113,
+        "startChar": 1,
+        "endLine": 114,
+        "endChar": 13
+      },
+      "revId": "6ad1b843c0ed878542e364a64a1f3b987dd0a1c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
