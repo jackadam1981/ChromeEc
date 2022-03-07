@@ -22,6 +22,30 @@
       },
       "revId": "9600ef2727aab2910341017879b3cceca8aac6e1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "61718306_4209cb82",
+        "filename": "zephyr/projects/herobrine/display.dts",
+        "patchSetId": 9
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-03-07T14:22:16Z",
+      "side": 1,
+      "message": "Hey you are right, it does not show up in any kernel dts file, I checked some schematics and in some of them the line is not connected to anything. I\u0027d be tempted to drop it, but then the only other way of controlling this is with the EC_PWM_TYPE_DISPLAY_LIGHT pwm type, which we already determined it is not used in the kernel, so I\u0027m thinking that it may be worth leaving this here just in case it\u0027s used in some OEM out of tree dts overlay. It doesn\u0027t hurt and may save someone some troubleshooting time to find it later.",
+      "parentUuid": "f39b4663_d7536abd",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 10
+      },
+      "revId": "9600ef2727aab2910341017879b3cceca8aac6e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
