@@ -94,6 +94,30 @@
       },
       "revId": "10efac94271ff56341a650175f370d190d5516d5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "243ca09b_e85271cb",
+        "filename": "zephyr/projects/herobrine/motionsense.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-03-07T18:50:10Z",
+      "side": 1,
+      "message": "This is not where the \"active-mask\" property is used.\n\nThe name of \"active-mask\" property seems to be used to activate the sensor in these given states. Does the `active-mask \u003d \"SENSOR_ACTIVE_S0_S3\"` enable the ALS to sample color in S3? Does any application need to know the light color in S3? My quick thought is no need but I want to make sure anything I missed.",
+      "parentUuid": "45b9fcee_315c0b6b",
+      "range": {
+        "startLine": 215,
+        "startChar": 18,
+        "endLine": 215,
+        "endChar": 37
+      },
+      "revId": "10efac94271ff56341a650175f370d190d5516d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
