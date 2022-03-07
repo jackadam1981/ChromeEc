@@ -8,6 +8,8 @@ find_package(Zephyr REQUIRED HINTS $ENV{ZEPHYR_BASE})
 project(intelrvp)
 
 zephyr_include_directories(include)
+zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_LED_COMMON "${PLATFORM_EC}/baseboard/intelrvp/led.c")
+zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_LED_COMMON "${PLATFORM_EC}/baseboard/intelrvp/led_states.c")
 
 if(DEFINED CONFIG_BOARD_ADLRVP_NPCX)
   add_subdirectory(adlrvp)
