@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2b2b81b_4b4daf60",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-03-07T20:33:15Z",
+      "side": 1,
+      "message": "Note - I\u0027m attempting to validate this change.  There is still a depthcharge dependency to enable CONFIG_DRIVER_EC_PS8751_FLASH_WINDOW.  I\u0027m seeing a failure with some of the I2C pass thru commands that I\u0027m trying to track down.",
+      "revId": "1582d424cbd4d6bb17d4ccd81d5393e2004a3575",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
