@@ -122,15 +122,17 @@ void usb_retimer_fw_update_process_op_cb(int port)
 	switch (last_op) {
 	case USB_RETIMER_FW_UPDATE_SUSPEND_PD:
 		last_result = 0;
+
 		/*
 		 * Do not perform retimer firmware update process
-		 * if battery is not present, or battery level is low.
+		 * if battery is not present, or battery level is low,
+		 * or port has explcit connected.
 		 */
-		if (!pd_firmware_upgrade_check_power_readiness(port)) {
+		if (!pd_firmware_upgrade_check_power_readiness(port) ||
+		    pd_is_connected(port)) {
 			last_result = USB_RETIMER_FW_UPDATE_ERR;
 			break;
 		}
-
 		/*
 		 * If the port has entered low power mode, the PD task
 		 * is paused and will not complete processing of
