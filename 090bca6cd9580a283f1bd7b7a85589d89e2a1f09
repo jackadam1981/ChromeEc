@@ -22,6 +22,30 @@
       },
       "revId": "090bca6cd9580a283f1bd7b7a85589d89e2a1f09",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b343135_e24d3365",
+        "filename": "third_party/zephyr/LICENSE",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1164609
+      },
+      "writtenOn": "2022-03-07T16:52:48Z",
+      "side": 1,
+      "message": "Yes please.  The atomic.h file clearly says \"Apache 2.0\" so this file needs to contain the full Apache 2.0 license text",
+      "parentUuid": "f8d161cc_537154c9",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 62
+      },
+      "revId": "090bca6cd9580a283f1bd7b7a85589d89e2a1f09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
