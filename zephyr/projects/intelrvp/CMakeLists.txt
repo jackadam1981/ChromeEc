@@ -8,6 +8,8 @@ find_package(Zephyr REQUIRED HINTS $ENV{ZEPHYR_BASE})
 project(intelrvp)
 
 zephyr_include_directories(include)
+zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_LED_COMMON "${PLATFORM_EC}/baseboard/intelrvp/led.c")
+zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_LED_COMMON "${PLATFORM_EC}/baseboard/intelrvp/led_states.c")
 
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_USBC "${PLATFORM_EC}/baseboard/intelrvp/usb_pd_policy_mecc_1_0.c")
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_USBC "${PLATFORM_EC}/baseboard/intelrvp/chg_usb_pd_mecc_1_0.c")
