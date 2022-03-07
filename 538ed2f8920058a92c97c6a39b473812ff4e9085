@@ -20,6 +20,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "dc3e2254_bb547a58",
+        "filename": "baseboard/intelrvp/adlrvp.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 509,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-03-07T17:22:25Z",
+      "side": 1,
+      "message": "looks like its getting revered in follow on CLs, it it for compilation ?\npls add comment",
+      "revId": "538ed2f8920058a92c97c6a39b473812ff4e9085",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d043d495_b8758cf6",
         "filename": "zephyr/projects/intelrvp/src/intelrvp.c",
         "patchSetId": 12
