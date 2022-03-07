@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "98c809d0_eb5676c3",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 4522,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-03-07T22:57:42Z",
+      "side": 1,
+      "message": "I wonder how necessary this timer is at this point.  I suppose it\u0027s most useful for systems that don\u0027t have accurate vSafe0V reporting from a TCPC or similar?",
+      "range": {
+        "startLine": 4522,
+        "startChar": 3,
+        "endLine": 4522,
+        "endChar": 33
+      },
+      "revId": "21a0f120cda87fd13f391826fbaf28454360cb69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

@@ -16,6 +16,24 @@
       "message": "Will PE_PRS_SRC_SNK_Settle be added to the spec on this clarification or is it a non-documented state that we will be adding just to our code?",
       "revId": "a4e9bc36324bfde65dae0c4bfc91dda519dd2653",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb577136_c1c31178",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-03-07T22:57:42Z",
+      "side": 1,
+      "message": "I suggested adding the tSrcTransition delay directly into PE_PRS_SRC_SNK_TRANSITION_TO_OFF for my spec comments.  We\u0027ll find out tomorrow in the PD WG how that\u0027s received",
+      "parentUuid": "f0a7d5d8_bbb0a4f6",
+      "revId": "a4e9bc36324bfde65dae0c4bfc91dda519dd2653",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
