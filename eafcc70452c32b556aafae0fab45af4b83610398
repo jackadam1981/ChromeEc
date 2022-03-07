@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cdb2375d_72d054d0",
+        "filename": "zephyr/projects/intelrvp/include/intelrvp.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-03-07T17:28:18Z",
+      "side": 1,
+      "message": "check, if we need this .\nmay be these are part of old MECC spec",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 2
+      },
+      "revId": "eafcc70452c32b556aafae0fab45af4b83610398",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2db6cea7_b522b184",
+        "filename": "zephyr/projects/intelrvp/prj.conf",
+        "patchSetId": 14
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-03-07T17:28:18Z",
+      "side": 1,
+      "message": "nit:\n# BC1.2 configs\nCONFIG_PLATFORM_EC_USB_CHARGER\u003dn",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 30
+      },
+      "revId": "eafcc70452c32b556aafae0fab45af4b83610398",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e24102bc_e10c5dcf",
+        "filename": "zephyr/projects/intelrvp/prj.conf",
+        "patchSetId": 14
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-03-07T17:28:18Z",
+      "side": 1,
+      "message": "are these no config needed for compilation purpose ?",
+      "revId": "eafcc70452c32b556aafae0fab45af4b83610398",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
