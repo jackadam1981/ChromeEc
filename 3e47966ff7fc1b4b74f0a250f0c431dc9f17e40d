@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "47493451_e4eacb22",
+        "filename": "board/anahera/usbc_config.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 385,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2022-03-07T05:28:50Z",
+      "side": 1,
+      "message": "Channel A has it, so I\u0027m wondering if channel B should have PS8811_BEQ_ADAPTIVE_REG_ENABLE?",
+      "range": {
+        "startLine": 385,
+        "startChar": 4,
+        "endLine": 385,
+        "endChar": 32
+      },
+      "revId": "3e47966ff7fc1b4b74f0a250f0c431dc9f17e40d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
