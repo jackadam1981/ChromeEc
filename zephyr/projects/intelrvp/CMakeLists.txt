@@ -14,6 +14,8 @@ cros_ec_library_include_directories("${PLATFORM_EC}/driver/tcpm")
 cros_ec_library_include_directories("${PLATFORM_EC}/driver/usb_mux")
 zephyr_library_sources("src/intel_rvp_board_id.c")
 
+zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_LED_COMMON "${PLATFORM_EC}/baseboard/intelrvp/led.c")
+zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_LED_COMMON "${PLATFORM_EC}/baseboard/intelrvp/led_states.c")
 if(DEFINED CONFIG_BOARD_ADLRVP_NPCX)
   add_subdirectory(adlrvp)
   zephyr_library_sources("src/intelrvp.c")
