@@ -117,6 +117,30 @@
       },
       "revId": "9565490c7749a32561f0c84c0785dff94f186e0c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c909dd0_0eda760e",
+        "filename": "zephyr/subsys/ap_pwrseq/signal_gpio.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-03-07T02:45:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "509920a7_250c1cb0",
+      "range": {
+        "startLine": 118,
+        "startChar": 35,
+        "endLine": 118,
+        "endChar": 50
+      },
+      "revId": "9565490c7749a32561f0c84c0785dff94f186e0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
