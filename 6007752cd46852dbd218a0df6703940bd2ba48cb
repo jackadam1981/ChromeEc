@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ab3aa1f_b0b5cdf0",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
+        "patchSetId": 32
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-03-07T05:07:02Z",
+      "side": 1,
+      "message": "You are likely right, and possibly this code was before we spread GPIO_ACTIVE_LOW around the place.\nLet be build and try it.",
+      "parentUuid": "cde3de2c_ddc4ce47",
+      "range": {
+        "startLine": 239,
+        "startChar": 13,
+        "endLine": 239,
+        "endChar": 29
+      },
+      "revId": "6007752cd46852dbd218a0df6703940bd2ba48cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "057db37d_66af4227",
@@ -37,6 +61,24 @@
       "writtenOn": "2022-03-07T02:58:46Z",
       "side": 1,
       "message": "Save as above, but this wants SLP_S3 asserted to drop to S3 (so look for _on).",
+      "revId": "6007752cd46852dbd218a0df6703940bd2ba48cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9eea6d78_8922fc77",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
+        "patchSetId": 32
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-03-07T05:07:02Z",
+      "side": 1,
+      "message": "As above.",
+      "parentUuid": "057db37d_66af4227",
       "revId": "6007752cd46852dbd218a0df6703940bd2ba48cb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
