@@ -57,6 +57,30 @@
       },
       "revId": "e634d57edbc8bb81eee0f94aed4ff80716c45bba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b63eafd_cfb67cd1",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_adlp_pwrseq_sm.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-03-07T05:11:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "af85bc3a_c0cb04fc",
+      "range": {
+        "startLine": 206,
+        "startChar": 22,
+        "endLine": 206,
+        "endChar": 39
+      },
+      "revId": "e634d57edbc8bb81eee0f94aed4ff80716c45bba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
