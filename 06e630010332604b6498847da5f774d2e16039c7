@@ -16,6 +16,24 @@
       "message": "Why don\u0027t you use something similar to https://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/main/board/redrix/keyboard.c ? \n\nBanshee is Vivaldi keyboard, right?",
       "revId": "06e630010332604b6498847da5f774d2e16039c7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06240ef3_ea157619",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1316237
+      },
+      "writtenOn": "2022-03-07T01:36:38Z",
+      "side": 1,
+      "message": "banshee keyboard is not a common chrome keyboard, it is the customer specific keyboard, so the row and column is totally different with the Chromebook keyboard, is wanting to use Vivaldi we need to change common code, to make line#24 structure be a customization same like board_vivaldi_keybd_config\n\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/main/common/keyboard_vivaldi.c#24",
+      "parentUuid": "3fde8263_28db1c27",
+      "revId": "06e630010332604b6498847da5f774d2e16039c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
