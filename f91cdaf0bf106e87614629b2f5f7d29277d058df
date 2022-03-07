@@ -54,6 +54,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e93c2ba_bad04157",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2022-03-07T16:58:14Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "4bf792ab_3ecb918f",
+      "revId": "f91cdaf0bf106e87614629b2f5f7d29277d058df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e8b38aed_c187e4ba",
@@ -67,6 +85,24 @@
       "writtenOn": "2022-03-06T22:52:00Z",
       "side": 1,
       "message": "So the pin should already be configured, and all you should have to do is:\n\n   gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_en_usb_a0_vbus), 1);\n   \nAnd 0 for the next function.",
+      "revId": "f91cdaf0bf106e87614629b2f5f7d29277d058df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "65bae583_d20b1990",
+        "filename": "zephyr/projects/nissa/src/nivviks/board_config.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2022-03-07T16:58:14Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e8b38aed_c187e4ba",
       "revId": "f91cdaf0bf106e87614629b2f5f7d29277d058df",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
