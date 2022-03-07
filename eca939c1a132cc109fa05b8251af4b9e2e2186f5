@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f6f8ca1_87f41b4c",
+        "filename": "include/atomic_bit.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-03-07T16:39:45Z",
+      "side": 1,
+      "message": "Should this use __atomic_load_n() so that __ATOMIC_SEQ_CST flag is honored?",
+      "range": {
+        "startLine": 14,
+        "startChar": 9,
+        "endLine": 14,
+        "endChar": 15
+      },
+      "revId": "eca939c1a132cc109fa05b8251af4b9e2e2186f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
