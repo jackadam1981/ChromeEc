@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "f17636d1_30a97e67",
+        "filename": "board/anahera/usbc_config.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 323,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2022-03-07T07:16:18Z",
+      "side": 1,
+      "message": "Confirmed with parade, we don\u0027t need extra cycle to wake up the chip. I removed this and check it is able to detected as well.",
+      "parentUuid": "7f8e9573_b4a049fc",
+      "range": {
+        "startLine": 323,
+        "startChar": 13,
+        "endLine": 323,
+        "endChar": 14
+      },
+      "revId": "443d07a5e1a00d6e932835319feee9cf5e50a138",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "b7ab6a89_a2686b99",
         "filename": "board/anahera/usbc_config.c",
         "patchSetId": 3
