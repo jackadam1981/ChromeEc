@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "655aa893_bd6e1aa7",
+        "filename": "include/charge_state_v2.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-03-07T18:38:46Z",
+      "side": 1,
+      "message": "I\u0027d prefer not to add this to the header file unconditionally when it should only be exposed to test code. I suspect that there is probably a way to give this symbol the right visibility and linkage in test builds and in regular builds. But I see from the build output that it\u0027s trickier than I might have imagined. I don\u0027t want to hold up the whole CL if it\u0027s not practical to do this right.",
+      "revId": "8e3ff2b72985d6232c2276430925c7724365850d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
