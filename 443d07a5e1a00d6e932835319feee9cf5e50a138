@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f8e9573_b4a049fc",
+        "filename": "board/anahera/usbc_config.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 323,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2022-03-07T05:27:46Z",
+      "side": 1,
+      "message": "Would be nice to have some explanation in a comment. Why 2 and not 200? Should there be any sleep on each iteration?",
+      "range": {
+        "startLine": 323,
+        "startChar": 13,
+        "endLine": 323,
+        "endChar": 14
+      },
+      "revId": "443d07a5e1a00d6e932835319feee9cf5e50a138",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7ab6a89_a2686b99",
+        "filename": "board/anahera/usbc_config.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2022-03-07T05:27:46Z",
+      "side": 1,
+      "message": "suggestion: remove print line to save flash space\n```\nCPRINTS(\"A%d: PS8811 retimer %s detected!\", port, rv ? \"not\" : \"\");\nreturn rv;\n```",
+      "range": {
+        "startLine": 333,
+        "startChar": 0,
+        "endLine": 339,
+        "endChar": 11
+      },
+      "revId": "443d07a5e1a00d6e932835319feee9cf5e50a138",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
