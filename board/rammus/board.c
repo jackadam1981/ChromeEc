@@ -481,6 +481,10 @@ static void board_init(void)
 	/* Enable Gyro interrupts */
 	gpio_enable_interrupt(GPIO_BASE_SIXAXIS_INT_L);
 
+	/* Trigger once to set mux in case CCD cable is already connected. */
+	ccd_mode_isr(GPIO_CCD_MODE_ODL);
+	gpio_enable_interrupt(GPIO_CCD_MODE_ODL);
+
 	/* Initialize PMIC */
 	hook_call_deferred(&board_pmic_init_data, 0);
 }
@@ -854,3 +858,28 @@ static void board_chipset_shutdown(void)
 	gpio_set_level(GPIO_EN_PP3300_TRACKPAD, 0);
 }
 DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, board_chipset_shutdown, HOOK_PRIO_DEFAULT);
+
+
+static void anx7447_set_aux_switch(void)
+{
+	const int port = USB_PD_PORT_ANX7447;
+
+	/* Debounce */
+	if (gpio_get_level(GPIO_CCD_MODE_ODL))
+		return;
+
+	/*
+	 * Expect to set AUX_SWITCH to 0, but 0xc isolates the DP_AUX
+	 * signal from SBU.
+	 */
+	CPRINTS("C%d: AUX_SW_SEL=0x%x", port, 0xc);
+	if (tcpc_write(port, ANX7447_REG_TCPC_AUX_SWITCH, 0xc))
+		CPRINTS("C%d: Setting AUX_SW_SEL failed", port);
+}
+DECLARE_DEFERRED(anx7447_set_aux_switch);
+
+void ccd_mode_isr(enum gpio_signal signal)
+{
+	/* Wait 2 seconds until all mux setting is done by PD task */
+	hook_call_deferred(&anx7447_set_aux_switch_data, 2 * SECOND);
+}

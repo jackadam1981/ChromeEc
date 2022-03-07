@@ -28,6 +28,7 @@ GPIO_INT(USB_C0_BC12_INT_L,  PIN(D, 3), GPIO_INT_FALLING,                 usb0_e
 GPIO_INT(USB_C1_BC12_INT_L,  PIN(3, 3), GPIO_INT_FALLING,                 usb1_evt)
 GPIO_INT(BASE_SIXAXIS_INT_L, PIN(7, 3), GPIO_INT_FALLING | GPIO_SEL_1P8V, motion_interrupt)
 GPIO_INT(TABLET_MODE,        PIN(C, 6), GPIO_INT_BOTH,                    hall_sensor_isr)
+GPIO_INT(CCD_MODE_ODL,       PIN(6, 3), GPIO_INT_FALLING,		  ccd_mode_isr)
 
 GPIO(EN_PP3300_TRACKPAD,     PIN(4, 5), GPIO_OUT_LOW)                /* Enable TouchPad */
 GPIO(PCH_RTCRST,             PIN(8, 2), GPIO_OUT_LOW)                /* RTCRST# to SOC */
@@ -43,7 +44,6 @@ GPIO(PLATFORM_RST,           PIN(A, 6), GPIO_OUT_LOW)                /* EC Reset
 GPIO(SYS_RESET_L,            PIN(6, 1), GPIO_ODR_HIGH)               /* Cold Reset to SOC */
 GPIO(SLP_SUS_L_PMIC,         PIN(8, 5), GPIO_OUT_LOW)                /* SLP_SUS# to PMIC */
 GPIO(BATT_PRES_L,            PIN(3, 4), GPIO_INPUT)                  /* Battery Present */
-GPIO(CCD_MODE_ODL,           PIN(6, 3), GPIO_INPUT)                  /* Case Closed Debug Mode */
 GPIO(ENTERING_RW,            PIN(7, 6), GPIO_OUTPUT)                 /* EC Entering RW */
 GPIO(ROP_EC_INT_L,           PIN(6, 0), GPIO_INPUT)                  /* PMIC interrupt */
 GPIO(KB_BL_EN,               PIN(7, 1), GPIO_OUT_LOW)                /* Keyboard backlight enable */
