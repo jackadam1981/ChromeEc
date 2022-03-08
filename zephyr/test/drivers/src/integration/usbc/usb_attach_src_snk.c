@@ -47,6 +47,7 @@ struct emul_state {
 	const struct emul *charger_isl923x_emul;
 	struct tcpci_src_emul my_src;
 	struct tcpci_snk_emul my_snk;
+	enum tcpci_emul_rev tcpci_rev;
 };
 
 struct integration_usb_attach_src_then_snk_fixture {
@@ -57,7 +58,7 @@ struct integration_usb_attach_snk_then_src_fixture {
 	struct emul_state *my_emulator_state;
 };
 
-static void *integration_usb_src_snk_setup(void)
+static void *integration_usb_src_snk_tcpci_rev1(void)
 {
 	const struct emul *tcpci_emul =
 		emul_get_binding(DT_LABEL(TCPCI_EMUL_LABEL));
@@ -78,6 +79,7 @@ static void *integration_usb_src_snk_setup(void)
 	emul_state.tcpci_generic_emul = tcpci_emul;
 	emul_state.tcpci_ps8xxx_emul = tcpci_emul2;
 	emul_state.charger_isl923x_emul = charger_emul;
+	emul_state.tcpci_rev = TCPCI_EMUL_REV1_0_VER1_0;
 	fixture_state.my_emulator_state = &emul_state;
 
 	/*
@@ -146,10 +148,11 @@ static void attach_emulated_snk(struct emul_state *my_emul_state)
 {
 	const struct emul *tcpci_emul_snk = my_emul_state->tcpci_ps8xxx_emul;
 	struct tcpci_snk_emul *my_snk = &my_emul_state->my_snk;
+	enum tcpci_emul_rev rev = my_emul_state->tcpci_rev;
 
 	/* Attach emulated sink */
 	tcpci_snk_emul_init(my_snk);
-	tcpci_emul_set_rev(tcpci_emul_snk, TCPCI_EMUL_REV1_0_VER1_0);
+	tcpci_emul_set_rev(tcpci_emul_snk, rev);
 	zassume_ok(tcpci_snk_emul_connect_to_tcpci(
 			   &my_snk->data, &my_snk->common_data, &my_snk->ops,
 			   tcpci_emul_snk),
@@ -164,10 +167,11 @@ static void attach_emulated_src(struct emul_state *my_emul_state)
 	const struct emul *tcpci_emul_src = my_emul_state->tcpci_generic_emul;
 	const struct emul *charger_emul = my_emul_state->charger_isl923x_emul;
 	struct tcpci_src_emul *my_src = &my_emul_state->my_src;
+	enum tcpci_emul_rev rev = my_emul_state->tcpci_rev;
 
 	/* Attach emulated charger. */
 	tcpci_src_emul_init(my_src);
-	tcpci_emul_set_rev(tcpci_emul_src, TCPCI_EMUL_REV1_0_VER1_0);
+	tcpci_emul_set_rev(tcpci_emul_src, rev);
 	zassume_ok(tcpci_src_emul_connect_to_tcpci(
 			   &my_src->data, &my_src->common_data, &my_src->ops,
 			   tcpci_emul_src),
@@ -450,11 +454,11 @@ ZTEST_F(integration_usb_attach_src_then_snk, verify_src_port_typec_status)
 }
 
 ZTEST_SUITE(integration_usb_attach_src_then_snk, drivers_predicate_post_main,
-	    integration_usb_src_snk_setup,
+	    integration_usb_src_snk_tcpci_rev1,
 	    integration_usb_attach_src_then_snk_before,
 	    integration_usb_attach_src_then_snk_after, NULL);
 
 ZTEST_SUITE(integration_usb_attach_snk_then_src, drivers_predicate_post_main,
-	    integration_usb_src_snk_setup,
+	    integration_usb_src_snk_tcpci_rev1,
 	    integration_usb_attach_snk_then_src_before,
 	    integration_usb_attach_snk_then_src_after, NULL);
