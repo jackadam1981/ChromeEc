@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c0c7a6ae_e7981569",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-03-08T01:52:32Z",
+      "side": 1,
+      "message": "FYI, to be safe I tested it both for public and private code.",
+      "revId": "8b461747a86049fc6939047585e2d40694973fb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6cdd68a3_b20ec7a0",
+        "filename": "common/fpsensor/fpsensor.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-03-08T01:52:32Z",
+      "side": 1,
+      "message": "I am not sure if this is the right way to indent the code. Other functions put the logical operator in a new line, while my editor auto-format would put it at the end.\n\nI used the former for consistency, but I am happy to change it.\n\nDo we have a strong preference for one or the other?",
+      "range": {
+        "startLine": 86,
+        "startChar": 8,
+        "endLine": 86,
+        "endChar": 11
+      },
+      "revId": "8b461747a86049fc6939047585e2d40694973fb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
