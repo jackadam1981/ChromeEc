@@ -49,15 +49,15 @@ struct emul_state {
 	struct tcpci_snk_emul my_snk;
 };
 
-struct integration_usb_attach_src_then_snk_fixture {
+struct integration_usb_attach_src_then_snk__tcpci_rev1_fixture {
 	struct emul_state *my_emulator_state;
 };
 
-struct integration_usb_attach_snk_then_src_fixture {
+struct integration_usb_attach_snk_then_src__tcpci_rev1_fixture {
 	struct emul_state *my_emulator_state;
 };
 
-static void *integration_usb_src_snk_setup(void)
+static void *integration_usb_src_snk_setup__tcpci_rev1(void)
 {
 	const struct emul *tcpci_emul =
 		emul_get_binding(DT_LABEL(TCPCI_EMUL_LABEL));
@@ -67,7 +67,8 @@ static void *integration_usb_src_snk_setup(void)
 		emul_get_binding(DT_LABEL(DT_NODELABEL(isl923x_emul)));
 
 	static struct emul_state emul_state;
-	static struct integration_usb_attach_src_then_snk_fixture fixture_state;
+	static struct integration_usb_attach_src_then_snk__tcpci_rev1_fixture
+		fixture_state;
 
 	/* Setting these are required because compiler believes these values are
 	 * not compile time constants.
@@ -142,7 +143,7 @@ static void attach_src_snk_common_after(struct emul_state *my_emul_state)
 	isl923x_emul_set_adc_vbus(charger_emul, 0);
 }
 
-static void attach_emulated_snk(struct emul_state *my_emul_state)
+static void attach_emulated_snk__tcpci_rev1(struct emul_state *my_emul_state)
 {
 	const struct emul *tcpci_emul_snk = my_emul_state->tcpci_ps8xxx_emul;
 	struct tcpci_snk_emul *my_snk = &my_emul_state->my_snk;
@@ -159,7 +160,7 @@ static void attach_emulated_snk(struct emul_state *my_emul_state)
 	k_sleep(K_SECONDS(1));
 }
 
-static void attach_emulated_src(struct emul_state *my_emul_state)
+static void attach_emulated_src__tcpci_rev1(struct emul_state *my_emul_state)
 {
 	const struct emul *tcpci_emul_src = my_emul_state->tcpci_generic_emul;
 	const struct emul *charger_emul = my_emul_state->charger_isl923x_emul;
@@ -175,65 +176,66 @@ static void attach_emulated_src(struct emul_state *my_emul_state)
 	isl923x_emul_set_adc_vbus(charger_emul, DEFAULT_VBUS_MV);
 }
 
-static void integration_usb_attach_snk_then_src_before(void *state)
+static void integration_usb_attach_snk_then_src__tcpci_rev1_before(void *state)
 {
-	const struct integration_usb_attach_src_then_snk_fixture *fixture =
-		state;
+	const struct integration_usb_attach_src_then_snk__tcpci_rev1_fixture
+		*fixture = state;
 	struct emul_state *my_state = fixture->my_emulator_state;
 
 	attach_src_snk_common_before(my_state);
 
 	/* 1) Attach SINK */
-	attach_emulated_snk(my_state);
+	attach_emulated_snk__tcpci_rev1(my_state);
 
 	/* Wait for PD negotiation */
 	k_sleep(K_SECONDS(10));
 
 	/* 2) Attach SOURCE */
-	attach_emulated_src(my_state);
+	attach_emulated_src__tcpci_rev1(my_state);
 
 	/* Wait for PD negotiation */
 	k_sleep(K_SECONDS(10));
 }
 
-static void integration_usb_attach_src_then_snk_before(void *state)
+static void integration_usb_attach_src_then_snk__tcpci_rev1_before(void *state)
 {
-	const struct integration_usb_attach_src_then_snk_fixture *fixture =
-		state;
+	const struct integration_usb_attach_src_then_snk__tcpci_rev1_fixture
+		*fixture = state;
 	struct emul_state *my_state = fixture->my_emulator_state;
 
 	attach_src_snk_common_before(my_state);
 
 	/* 1) Attach SOURCE */
-	attach_emulated_src(my_state);
+	attach_emulated_src__tcpci_rev1(my_state);
 
 	/* Wait for PD negotiation */
 	k_sleep(K_SECONDS(10));
 
 	/* 2) Attach SINK */
-	attach_emulated_snk(my_state);
+	attach_emulated_snk__tcpci_rev1(my_state);
 
 	/* Wait for PD negotiation */
 	k_sleep(K_SECONDS(10));
 }
 
-static void integration_usb_attach_src_then_snk_after(void *state)
+static void integration_usb_attach_src_then_snk__tcpci_rev1_after(void *state)
 {
-	const struct integration_usb_attach_src_then_snk_fixture *fixture =
-		state;
+	const struct integration_usb_attach_src_then_snk__tcpci_rev1_fixture
+		*fixture = state;
 
 	attach_src_snk_common_after(fixture->my_emulator_state);
 }
 
-static void integration_usb_attach_snk_then_src_after(void *state)
+static void integration_usb_attach_snk_then_src__tcpci_rev1_after(void *state)
 {
-	const struct integration_usb_attach_snk_then_src_fixture *fixture =
-		state;
+	const struct integration_usb_attach_snk_then_src__tcpci_rev1_fixture
+		*fixture = state;
 
 	attach_src_snk_common_after(fixture->my_emulator_state);
 }
 
-ZTEST_F(integration_usb_attach_src_then_snk, verify_snk_port_pd_info)
+ZTEST_F(integration_usb_attach_src_then_snk__tcpci_rev1,
+	verify_snk_port_pd_info)
 {
 	struct ec_params_usb_pd_power_info params = { .port = SNK_PORT };
 	struct ec_response_usb_pd_power_info response;
@@ -275,7 +277,8 @@ ZTEST_F(integration_usb_attach_src_then_snk, verify_snk_port_pd_info)
 		      response.max_power);
 }
 
-ZTEST_F(integration_usb_attach_src_then_snk, verify_src_port_pd_info)
+ZTEST_F(integration_usb_attach_src_then_snk__tcpci_rev1,
+	verify_src_port_pd_info)
 {
 	struct ec_params_usb_pd_power_info params = { .port = SRC_PORT };
 	struct ec_response_usb_pd_power_info response;
@@ -310,7 +313,8 @@ ZTEST_F(integration_usb_attach_src_then_snk, verify_src_port_pd_info)
 	/* current limit */
 }
 
-ZTEST_F(integration_usb_attach_snk_then_src, verify_snk_port_pd_info)
+ZTEST_F(integration_usb_attach_snk_then_src__tcpci_rev1,
+	verify_snk_port_pd_info)
 {
 	struct ec_params_usb_pd_power_info params = { .port = SNK_PORT };
 	struct ec_response_usb_pd_power_info response;
@@ -353,7 +357,8 @@ ZTEST_F(integration_usb_attach_snk_then_src, verify_snk_port_pd_info)
 		      response.max_power);
 }
 
-ZTEST_F(integration_usb_attach_snk_then_src, verify_src_port_pd_info)
+ZTEST_F(integration_usb_attach_snk_then_src__tcpci_rev1,
+	verify_src_port_pd_info)
 {
 	struct ec_params_usb_pd_power_info params = { .port = SRC_PORT };
 	struct ec_response_usb_pd_power_info response;
@@ -389,7 +394,8 @@ ZTEST_F(integration_usb_attach_snk_then_src, verify_src_port_pd_info)
 	/* current limit */
 }
 
-ZTEST_F(integration_usb_attach_src_then_snk, verify_snk_port_typec_status)
+ZTEST_F(integration_usb_attach_src_then_snk__tcpci_rev1,
+	verify_snk_port_typec_status)
 {
 	struct ec_response_typec_status response =
 		host_cmd_typec_status(SNK_PORT);
@@ -419,7 +425,8 @@ ZTEST_F(integration_usb_attach_src_then_snk, verify_snk_port_typec_status)
 		      response.power_role);
 }
 
-ZTEST_F(integration_usb_attach_src_then_snk, verify_src_port_typec_status)
+ZTEST_F(integration_usb_attach_src_then_snk__tcpci_rev1,
+	verify_src_port_typec_status)
 {
 	struct ec_response_typec_status response =
 		host_cmd_typec_status(SRC_PORT);
@@ -449,12 +456,14 @@ ZTEST_F(integration_usb_attach_src_then_snk, verify_src_port_typec_status)
 		      response.power_role);
 }
 
-ZTEST_SUITE(integration_usb_attach_src_then_snk, drivers_predicate_post_main,
-	    integration_usb_src_snk_setup,
-	    integration_usb_attach_src_then_snk_before,
-	    integration_usb_attach_src_then_snk_after, NULL);
+ZTEST_SUITE(integration_usb_attach_src_then_snk__tcpci_rev1,
+	    drivers_predicate_post_main,
+	    integration_usb_src_snk_setup__tcpci_rev1,
+	    integration_usb_attach_src_then_snk__tcpci_rev1_before,
+	    integration_usb_attach_src_then_snk__tcpci_rev1_after, NULL);
 
-ZTEST_SUITE(integration_usb_attach_snk_then_src, drivers_predicate_post_main,
-	    integration_usb_src_snk_setup,
-	    integration_usb_attach_snk_then_src_before,
-	    integration_usb_attach_snk_then_src_after, NULL);
+ZTEST_SUITE(integration_usb_attach_snk_then_src__tcpci_rev1,
+	    drivers_predicate_post_main,
+	    integration_usb_src_snk_setup__tcpci_rev1,
+	    integration_usb_attach_snk_then_src__tcpci_rev1_before,
+	    integration_usb_attach_snk_then_src__tcpci_rev1_after, NULL);
