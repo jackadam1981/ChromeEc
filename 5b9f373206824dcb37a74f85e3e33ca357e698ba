@@ -34,6 +34,75 @@
       "parentUuid": "b52b0c71_8547a696",
       "revId": "5b9f373206824dcb37a74f85e3e33ca357e698ba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c85b241_1c94a6b6",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_attach_src_snk.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 447,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-03-08T05:38:01Z",
+      "side": 1,
+      "message": "Is there a reason for this to be a pointer? I think you can just nest the struct no?",
+      "range": {
+        "startLine": 447,
+        "startChar": 1,
+        "endLine": 447,
+        "endChar": 28
+      },
+      "revId": "5b9f373206824dcb37a74f85e3e33ca357e698ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb7b24e5_c4e988a2",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_attach_src_snk.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 488,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-03-08T05:38:01Z",
+      "side": 1,
+      "message": "This will cast `state` to `struct integration_usb_attach_snk_then_src_fixture`. While this works as they have the same structure, it could break very easily. I suggest to factor out the `_before` functionality for the `struct emul_state` and call it from all the `_before` functions.\n\n(same with `_after`)",
+      "range": {
+        "startLine": 488,
+        "startChar": 1,
+        "endLine": 488,
+        "endChar": 43
+      },
+      "revId": "5b9f373206824dcb37a74f85e3e33ca357e698ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88d08235_8bf0c061",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_attach_src_snk.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 493,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-03-08T05:38:01Z",
+      "side": 1,
+      "message": "See comment above for `_before`",
+      "range": {
+        "startLine": 493,
+        "startChar": 1,
+        "endLine": 493,
+        "endChar": 42
+      },
+      "revId": "5b9f373206824dcb37a74f85e3e33ca357e698ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
