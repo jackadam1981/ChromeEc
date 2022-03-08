@@ -5,7 +5,7 @@
 
 #include <ap_pwrseq/x86_non_dsx_adlp_pwrseq_sm.h>
 
-LOG_MODULE_DECLARE(ap_pwrseq, 4);
+LOG_MODULE_DECLARE(ap_pwrseq, CONFIG_AP_PWRSEQ_LOG_LEVEL);
 
 __override int all_sys_pwrgd_handler(void)
 {
