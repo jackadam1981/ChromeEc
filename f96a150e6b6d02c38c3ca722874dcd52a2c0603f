@@ -69,6 +69,23 @@
       "parentUuid": "6032f167_798332dd",
       "revId": "f96a150e6b6d02c38c3ca722874dcd52a2c0603f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ca2a537_4cd26aa9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2022-03-08T19:24:17Z",
+      "side": 1,
+      "message": "it worked!\ngsctool -d 18d1:504a /usr/local/google/home/sukhomlinov/ti50/common/build/ti50/dauntless/dauntless/full_image.signed.bin\nread 1048576(0x100000) bytes from /usr/local/google/home/sukhomlinov/ti50/common/build/ti50/dauntless/dauntless/full_image.signed.bin\nfinding_device 18d1:504a \nFound device.\nfound interface 3 endpoint 4, chunk_len 64\nREADY\n-------\nstart\ntarget running protocol version 6\nkeyids: RO 0x86d2b911, RW 0x1af97873\noffsets: backup RO at 0, backup RW at 0x84800\nsending 0x5a6e8 bytes to 0x93000\n-------\nupdate complete\nreboot requested\nimage updated\n",
+      "revId": "f96a150e6b6d02c38c3ca722874dcd52a2c0603f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
