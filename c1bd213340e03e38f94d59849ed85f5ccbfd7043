@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a3a2528_5a004b45",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-03-08T21:36:36Z",
+      "side": 1,
+      "message": "Good catch, thanks.",
+      "parentUuid": "3f2495bc_a5afd98a",
+      "range": {
+        "startLine": 69,
+        "startChar": 34,
+        "endLine": 69,
+        "endChar": 44
+      },
+      "revId": "c1bd213340e03e38f94d59849ed85f5ccbfd7043",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e692e076_0ea6a3d8",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-03-08T18:10:06Z",
       "side": 1,
       "message": "should be S5",
+      "range": {
+        "startLine": 73,
+        "startChar": 34,
+        "endLine": 73,
+        "endChar": 44
+      },
+      "revId": "c1bd213340e03e38f94d59849ed85f5ccbfd7043",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0e5e696_645de023",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-03-08T21:36:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e692e076_0ea6a3d8",
       "range": {
         "startLine": 73,
         "startChar": 34,
