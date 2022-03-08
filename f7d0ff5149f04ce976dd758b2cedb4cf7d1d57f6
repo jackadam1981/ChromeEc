@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea9f01e5_269faf68",
+        "filename": "zephyr/emul/tcpc/emul_tcpci_partner_common.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 594,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-03-08T22:50:20Z",
+      "side": 1,
+      "message": "I think the overall code here is reasonable, but I\u0027d rather not reason about a macro defined inside a function that operates on the local variables of the function. I think we actually have a code style rule somewhere to not define macros and then undefine them later. I would suggest\n\n1) Make `print_to_buf` a static function. Or if you think that this facility will be useful in other tests, stick it in utils.\n2) Either develop a convention around returning `ret` or take `chars_in` and `chars_left` as `int *` params, so it\u0027s easier to reason about how those variables are affected by calling `print_to_buf`.\n3) Consider getting rid of one of `chars_in` or `chars_left`, at least as inputs to `print_to_buf`. You should be able to compute one from the other at any point in this code. If you only have one as the source of truth, then you could return that from `print_to_buf` and simplify the interface.\n4) Just make the buffer length and maximum message length `const` local variables inside this function. I almost always prefer `const` variables and functions to macros.",
+      "revId": "f7d0ff5149f04ce976dd758b2cedb4cf7d1d57f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ede92bf9_4fb18e5c",
+        "filename": "zephyr/emul/tcpc/emul_tcpci_partner_common.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 620,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-03-08T22:50:20Z",
+      "side": 1,
+      "message": "Doesn\u0027t each line in the buffer already end with a newline?",
+      "revId": "f7d0ff5149f04ce976dd758b2cedb4cf7d1d57f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
