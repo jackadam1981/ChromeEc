@@ -52,6 +52,24 @@
       "parentUuid": "eb577136_c1c31178",
       "revId": "a4e9bc36324bfde65dae0c4bfc91dda519dd2653",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7d37b1d_93d796de",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2022-03-08T17:12:54Z",
+      "side": 1,
+      "message": "I don\u0027t like adding extra states that do not map direct to the spec. There are other examples of code that use a timeout of a minimum value required to get past a certain spot.  Disabling both timers in the one exit makes managing the cleanup easy. I am not sure this warrants the exception unless it is actually drawn into the spec as its own state",
+      "parentUuid": "677ce36a_5508b13b",
+      "revId": "a4e9bc36324bfde65dae0c4bfc91dda519dd2653",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
