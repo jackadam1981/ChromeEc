@@ -31,6 +31,7 @@
 #include "tablet_mode.h"
 #include "throttle_ap.h"
 #include "usbc_config.h"
+#include "tcpm/tcpci.h"
 
 #include "gpio_list.h" /* Must come after other header files. */
 
@@ -184,6 +185,10 @@ __overridable void board_ps8xxx_tcpc_init(int port)
 		PS8XXX_I2C_ADDR1_P1_FLAGS, PS8815_REG_RX_EQ_AT_5G, 0x44))
 		CPRINTS("ps8815: fail to write reg 0x%02x",
 			PS8815_REG_RX_EQ_AT_5G);
+
+	if (i2c_write8(I2C_PORT_USB_C1_TCPC,
+		PS8XXX_I2C_ADDR1_FLAGS, TCPC_REG_TCPC_CTRL, 0x40))
+		CPRINTS("ps8815: fail to write reg");
 }
 
 __override void board_set_charge_limit(int port, int supplier, int charge_ma,

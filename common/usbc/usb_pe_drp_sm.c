@@ -5149,6 +5149,7 @@ static void pe_bist_tx_run(int port)
 
 static void pe_bist_tx_exit(int port)
 {
+	tcpm_reset_bist_type_2(port);
 	pd_timer_disable(port, PE_TIMER_BIST_CONT_MODE);
 }
 
