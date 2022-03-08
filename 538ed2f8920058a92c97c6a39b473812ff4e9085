@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "facf3d58_fa80031d",
+        "filename": "baseboard/intelrvp/adlrvp.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-03-08T23:59:55Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "8f4e554b_ec39ef5b",
+      "revId": "538ed2f8920058a92c97c6a39b473812ff4e9085",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dc3e2254_bb547a58",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dbf59350_11dff5ed",
+        "filename": "baseboard/intelrvp/adlrvp.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 509,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-03-08T23:59:55Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "dc3e2254_bb547a58",
+      "revId": "538ed2f8920058a92c97c6a39b473812ff4e9085",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d043d495_b8758cf6",
@@ -48,6 +84,24 @@
       "writtenOn": "2022-03-07T17:19:08Z",
       "side": 1,
       "message": "remove this logic, directly call i2c_read16 in adlrvp.c\nnewer pca9555 support s16 bit reading",
+      "revId": "538ed2f8920058a92c97c6a39b473812ff4e9085",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e1bd6e24_4e6608db",
+        "filename": "zephyr/projects/intelrvp/src/intelrvp.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-03-08T23:59:55Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d043d495_b8758cf6",
       "revId": "538ed2f8920058a92c97c6a39b473812ff4e9085",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
