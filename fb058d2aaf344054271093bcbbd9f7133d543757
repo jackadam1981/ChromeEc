@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e88adacb_4766fc52",
+        "filename": "util/fptool.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2022-03-08T10:36:07Z",
+      "side": 1,
+      "message": "GPIO sysfs API is deprecated https://www.kernel.org/doc/html/latest/admin-guide/gpio/sysfs.html.\n\nThe recommended way is using /dev/gpiochip character device. Libgpiod https://git.kernel.org/pub/scm/libs/libgpiod/libgpiod.git/ provides functions for interacting with these devices and we have it already in cros_sdk! It has bindings for python too (but remember to add dependency in appropriate ebuild).",
+      "range": {
+        "startLine": 101,
+        "startChar": 0,
+        "endLine": 118,
+        "endChar": 70
+      },
+      "revId": "fb058d2aaf344054271093bcbbd9f7133d543757",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
