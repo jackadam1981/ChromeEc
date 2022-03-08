@@ -956,6 +956,22 @@ static int ps8xxx_tcpm_set_vconn(int port, int enable)
 	return tcpci_tcpm_set_vconn(port, enable);
 }
 
+static int ps8xxx_tcpm_reset_bist_type_2(int port)
+{
+	/*
+	 * The UCPD peripheral must be disabled, then enabled, to recover from
+	 * starting BIST type-2 mode. Call the init method to accomplish
+	 * this. Then, need to send a hard reset to port partner.
+	 */
+	ps8xxx_tcpm_init(port);
+	pd_execute_hard_reset(port);
+	tcpc_write(port, TCPC_REG_RX_DETECT,
+				TCPC_REG_RX_DETECT_SOP_HRST_MASK);
+	task_set_event(PD_PORT_TO_TASK_ID(port), TASK_EVENT_WAKE);
+
+	return EC_SUCCESS;
+}
+
 const struct tcpm_drv ps8xxx_tcpm_drv = {
 	.init			= ps8xxx_tcpm_init,
 	.release		= ps8xxx_tcpm_release,
@@ -990,6 +1006,7 @@ const struct tcpm_drv ps8xxx_tcpm_drv = {
 	.enter_low_power_mode	= ps8xxx_enter_low_power_mode,
 #endif
 	.set_bist_test_mode	= tcpci_set_bist_test_mode,
+	.reset_bist_type_2 = ps8xxx_tcpm_reset_bist_type_2,
 #if defined(CONFIG_USB_PD_FRS) && defined(CONFIG_USB_PD_TCPM_PS8815)
 	.set_frs_enable         = ps8815_tcpc_fast_role_swap_enable,
 #endif
