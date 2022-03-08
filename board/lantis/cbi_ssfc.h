@@ -42,13 +42,23 @@ enum ec_ssfc_audio_codec_source {
         SSFC_ADUIO_CODEC_VS = 2,
 };
 
+/*
+ * Touchscreen Driver Source(Bit 11-13)
+ */
+enum ec_ssfc_ts_driver_source {
+        SSFC_TS_DRIVER_DEFAULT = 0,
+        SSFC_TS_DRIVER_GENERIC = 1,
+        SSFC_TS_DRIVER_HID = 2,
+};
+
 union dedede_cbi_ssfc {
 	struct {
 		uint32_t base_sensor : 3;
 		uint32_t lid_sensor : 3;
 		uint32_t reserved : 2;
 		uint32_t audio_codec_source : 3;
-		uint32_t reserved_2 : 21;
+		uint32_t ts_driver_source: 3;
+		uint32_t reserved_2 : 18;
 	};
 	uint32_t raw_value;
 };
@@ -73,5 +83,12 @@ enum ec_ssfc_lid_sensor get_cbi_ssfc_lid_sensor(void);
  * @return the Audio codec source type.
  */
 enum ec_ssfc_audio_codec_source get_audio_codec_source(void);
+
+/**
+ * Get the Touchscreen driver source for ELAN from SSFC_CONFIG.
+ *
+ * @return the Touchscreen driver source type.
+ */
+enum ec_ts_driver_source get_cbi_ts_driver_source(void);
 
 #endif /* _DEDEDE_CBI_SSFC__H_ */
