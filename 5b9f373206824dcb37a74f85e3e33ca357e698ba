@@ -59,6 +59,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "88c3d4e3_6c4127e1",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_attach_src_snk.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 447,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2022-03-08T15:55:11Z",
+      "side": 1,
+      "message": "I was keeping this consistent with Aaron\u0027s implementation. I can update to nest the struct.",
+      "parentUuid": "3c85b241_1c94a6b6",
+      "range": {
+        "startLine": 447,
+        "startChar": 1,
+        "endLine": 447,
+        "endChar": 28
+      },
+      "revId": "5b9f373206824dcb37a74f85e3e33ca357e698ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cb7b24e5_c4e988a2",
@@ -82,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a7700c9_125f72cd",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_attach_src_snk.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 488,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2022-03-08T15:55:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cb7b24e5_c4e988a2",
+      "range": {
+        "startLine": 488,
+        "startChar": 1,
+        "endLine": 488,
+        "endChar": 43
+      },
+      "revId": "5b9f373206824dcb37a74f85e3e33ca357e698ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "88d08235_8bf0c061",
@@ -95,6 +143,30 @@
       "writtenOn": "2022-03-08T05:38:01Z",
       "side": 1,
       "message": "See comment above for `_before`",
+      "range": {
+        "startLine": 493,
+        "startChar": 1,
+        "endLine": 493,
+        "endChar": 42
+      },
+      "revId": "5b9f373206824dcb37a74f85e3e33ca357e698ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "63dffc19_882cb46d",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_attach_src_snk.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 493,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2022-03-08T15:55:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "88d08235_8bf0c061",
       "range": {
         "startLine": 493,
         "startChar": 1,
