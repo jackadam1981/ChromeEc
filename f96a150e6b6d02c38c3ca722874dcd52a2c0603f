@@ -16,6 +16,24 @@
       "message": "Do I also need to land this on the platform/ec branch?",
       "revId": "f96a150e6b6d02c38c3ca722874dcd52a2c0603f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6032f167_798332dd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2022-03-08T18:10:31Z",
+      "side": 1,
+      "message": "No, if gsctool still exists in platform/ec, we should delete that.",
+      "parentUuid": "8e9e1c6b_aaffeb3a",
+      "revId": "f96a150e6b6d02c38c3ca722874dcd52a2c0603f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
