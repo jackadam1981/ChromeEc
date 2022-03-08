@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0d4c547_f8846139",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_adlp_pwrseq_sm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-03-08T00:29:48Z",
+      "side": 1,
+      "message": "Seems like we should add a kconfig option for this subsystem\u0027s log level so we don\u0027t keep changing it (but could do so in another CL).",
+      "range": {
+        "startLine": 8,
+        "startChar": 30,
+        "endLine": 8,
+        "endChar": 43
+      },
+      "revId": "606a99a8fcb1a41331f0e295abb93a98ef9cd7df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b756cbe9_33fd01c1",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-03-08T00:29:48Z",
+      "side": 1,
+      "message": "I would prefer to make these functions (possibly static inline) so there\u0027s less magic around consuming a value with a specific name and more clarity around how it may vary.",
+      "revId": "606a99a8fcb1a41331f0e295abb93a98ef9cd7df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
