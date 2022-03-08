@@ -47,6 +47,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "42af09e4_75da2ec4",
+        "filename": "board/banshee/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1316237
+      },
+      "writtenOn": "2022-03-08T01:51:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "971c086c_cebf750a",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 3
+      },
+      "revId": "7cdd778d2db0f56fd967e8a68ed669a70483a021",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "95811097_de5dee57",
@@ -60,6 +84,30 @@
       "writtenOn": "2022-03-08T01:22:54Z",
       "side": 1,
       "message": "50% ?",
+      "range": {
+        "startLine": 105,
+        "startChar": 48,
+        "endLine": 105,
+        "endChar": 53
+      },
+      "revId": "7cdd778d2db0f56fd967e8a68ed669a70483a021",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "53df4c0e_9594a5ff",
+        "filename": "board/banshee/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1316237
+      },
+      "writtenOn": "2022-03-08T01:51:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "95811097_de5dee57",
       "range": {
         "startLine": 105,
         "startChar": 48,
@@ -93,6 +141,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ef0970e_e88b36c9",
+        "filename": "board/banshee/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1316237
+      },
+      "writtenOn": "2022-03-08T01:51:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c58a1907_5db8a574",
+      "range": {
+        "startLine": 139,
+        "startChar": 30,
+        "endLine": 139,
+        "endChar": 32
+      },
+      "revId": "7cdd778d2db0f56fd967e8a68ed669a70483a021",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "88b52802_b418a6b4",
@@ -106,6 +178,30 @@
       "writtenOn": "2022-03-08T01:22:54Z",
       "side": 1,
       "message": "this willbe called every 10 msec AND every tick (via led_set_power and then breath_led_run) - I don\u0027t think that was the intentioin, right?",
+      "range": {
+        "startLine": 162,
+        "startChar": 22,
+        "endLine": 162,
+        "endChar": 50
+      },
+      "revId": "7cdd778d2db0f56fd967e8a68ed669a70483a021",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b2c365e_8f5d00c2",
+        "filename": "board/banshee/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1316237
+      },
+      "writtenOn": "2022-03-08T01:51:15Z",
+      "side": 1,
+      "message": "First time will be called by tick(led_set_power and breath_led_run) after that will be called by 10 mesc hook_call_deferred, cause I have blocked condition to avoid into breath_led_pwm_deferred_data again from breath_led_run.",
+      "parentUuid": "88b52802_b418a6b4",
       "range": {
         "startLine": 162,
         "startChar": 22,
