@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e3d9538_c8f388d4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2022-03-08T07:40:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7229c49e_dc5e95a1",
+      "range": {
+        "startLine": 7,
+        "startChar": 31,
+        "endLine": 7,
+        "endChar": 56
+      },
+      "revId": "42f9c2155653f2328d3a27cfb3d256066b52e3bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4824658c_ec4f54b7",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b06bd02_c0e84e72",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2022-03-08T07:40:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4824658c_ec4f54b7",
+      "range": {
+        "startLine": 13,
+        "startChar": 4,
+        "endLine": 13,
+        "endChar": 8
+      },
+      "revId": "42f9c2155653f2328d3a27cfb3d256066b52e3bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "353da8c4_dc29d504",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-03-02T22:13:30Z",
       "side": 1,
       "message": "This driver is not longer specific to Nuvoton.  It should work as long as there is a KSCAN driver available in Zephyr.\n\nAs a follow up CL, please rename this file to cros_kb_raw_kcan.c.",
+      "range": {
+        "startLine": 6,
+        "startChar": 22,
+        "endLine": 6,
+        "endChar": 46
+      },
+      "revId": "42f9c2155653f2328d3a27cfb3d256066b52e3bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3307ef72_c42d9dce",
+        "filename": "zephyr/drivers/cros_kb_raw/cros_kb_raw_npcx.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2022-03-08T07:40:41Z",
+      "side": 1,
+      "message": "The patch set 5 removed the npcx prefix/postfix for related cors_kb_raw_ksan files.",
+      "parentUuid": "353da8c4_dc29d504",
       "range": {
         "startLine": 6,
         "startChar": 22,
