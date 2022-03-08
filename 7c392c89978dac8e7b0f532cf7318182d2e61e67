@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c9a33163_56100abb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 11
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-03-08T06:41:13Z",
+      "side": 1,
+      "message": "ADL-RVP is not using Charge Ramping, To disable this, i tried disabling  CONFIG_PLATFORM_EC_CHARGE_RAMP_HW\u003dn and CONFIG_PLATFORM_EC_CHARGE_RAMP_SW\u003dn \nin the prj.conf but still CONFIG_PLATFORM_EC_CHARGE_RAMP_SW is being set to \u0027y\u0027.\nIt looks like, choice \"Charge-ramp method\" is required choice.\n\nFrom internal discussion, I thought this is only required for BC1.2 charging.\nIf its not only for BC1.2 then another way i can think of making this choice optional by adding \"optional\" :\n\t\n\tchoice \"Charge-ramp method\"\n        prompt \"Select the charge-ramp method\"\n        optional\n        help\n          Select the method used for ramping up charging of a battery. It is\n          preferred to use the hardware method if the charger chip can support\n          it. If not, software-controlled charging can be used, with a slight\n          increase in code size.\n          \nWhat your opinion on this? can you suggest any other way of disabling both CONFIG_PLATFORM_EC_CHARGE_RAMP_HW and CONFIG_PLATFORM_EC_CHARGE_RAMP_SW ?",
+      "parentUuid": "1180bbc4_d66abff9",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 72
+      },
+      "revId": "7c392c89978dac8e7b0f532cf7318182d2e61e67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5ebcb068_d75afceb",
         "filename": "zephyr/Kconfig.charger",
         "patchSetId": 11
