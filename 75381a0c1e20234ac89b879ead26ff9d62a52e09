@@ -54,6 +54,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9c01c3dc_c6bab49e",
+        "filename": "board/mrbland/base_detect.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1512583
+      },
+      "writtenOn": "2022-03-08T01:48:26Z",
+      "side": 1,
+      "message": "Use !chipset_in_state(CHIPSET_STATE_ANY_OFF) as flag will cause the keyboard power \n keeping on when DUT transfor S0 to G3. That is because base_disable() is called in POWER_S3S5 while the chipset state is (CHIPSET_STATE_SOFT_OFF|CHIPSET_STATE_SUSPEND). Then in base_detect_change() the base_enable_allow flag is still true, and the function will return immediately, so the keyboard power still keep on.",
+      "parentUuid": "7b8d8730_f008fc3e",
+      "revId": "75381a0c1e20234ac89b879ead26ff9d62a52e09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2bf3aa66_c18d99b5",
         "filename": "common/lid_switch.c",
         "patchSetId": 2
