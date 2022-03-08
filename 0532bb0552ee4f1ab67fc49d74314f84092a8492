@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "82e4fb07_2bd0ed5f",
+        "filename": "util/ec_openocd.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2022-03-08T17:56:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d14e1abc_6b32066f",
+      "range": {
+        "startLine": 9,
+        "startChar": 15,
+        "endLine": 9,
+        "endChar": 16
+      },
+      "revId": "0532bb0552ee4f1ab67fc49d74314f84092a8492",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ce2e2e45_9dc55f11",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-03-03T22:22:56Z",
       "side": 1,
       "message": "`from` imports are discouraged in Chrome OS, just write `subprocess.PIPE` and `subprocess.STDOUT` instead",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 35
+      },
+      "revId": "0532bb0552ee4f1ab67fc49d74314f84092a8492",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "90dd5fc2_af79f1d9",
+        "filename": "util/ec_openocd.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2022-03-08T17:56:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ce2e2e45_9dc55f11",
       "range": {
         "startLine": 14,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c056ab39_68d75073",
+        "filename": "util/ec_openocd.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2022-03-08T17:56:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "37c9cb27_77aad3e9",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 13
+      },
+      "revId": "0532bb0552ee4f1ab67fc49d74314f84092a8492",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c9f4b3d7_9622585b",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-03-03T22:22:56Z",
       "side": 1,
       "message": "This is a good case for a dataclass:\n\nhttps://docs.python.org/3/library/dataclasses.html",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 46
+      },
+      "revId": "0532bb0552ee4f1ab67fc49d74314f84092a8492",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "33fc8c10_02dca968",
+        "filename": "util/ec_openocd.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2022-03-08T17:56:45Z",
+      "side": 1,
+      "message": "Data classes were added in python3.7, but the current version in the chroot seems to be python3.6.",
+      "parentUuid": "c9f4b3d7_9622585b",
       "range": {
         "startLine": 22,
         "startChar": 0,
@@ -133,6 +229,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e7b0b0d_7cb0e914",
+        "filename": "util/ec_openocd.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2022-03-08T17:56:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f649055a_7832bb93",
+      "revId": "0532bb0552ee4f1ab67fc49d74314f84092a8492",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cef89886_f7e7c64d",
@@ -146,6 +260,30 @@
       "writtenOn": "2022-03-03T22:22:56Z",
       "side": 1,
       "message": "can we add quotes in case there\u0027s spaces or other Tcl-sensitive characters in the filename?",
+      "range": {
+        "startLine": 70,
+        "startChar": 40,
+        "endLine": 70,
+        "endChar": 47
+      },
+      "revId": "0532bb0552ee4f1ab67fc49d74314f84092a8492",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "07808185_a2b25876",
+        "filename": "util/ec_openocd.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2022-03-08T17:56:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cef89886_f7e7c64d",
       "range": {
         "startLine": 70,
         "startChar": 40,
@@ -179,6 +317,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "da5bf1c9_2b6f4f15",
+        "filename": "util/ec_openocd.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2022-03-08T17:56:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3c3e43ff_b2adf885",
+      "range": {
+        "startLine": 72,
+        "startChar": 31,
+        "endLine": 72,
+        "endChar": 34
+      },
+      "revId": "0532bb0552ee4f1ab67fc49d74314f84092a8492",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "207a5b65_271dda32",
@@ -192,6 +354,30 @@
       "writtenOn": "2022-03-03T22:22:56Z",
       "side": 1,
       "message": "don\u0027t use a bare `except`, write `except subprocess.TimeoutExpired`",
+      "range": {
+        "startLine": 107,
+        "startChar": 4,
+        "endLine": 107,
+        "endChar": 10
+      },
+      "revId": "0532bb0552ee4f1ab67fc49d74314f84092a8492",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2871c0e1_f000e357",
+        "filename": "util/ec_openocd.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2022-03-08T17:56:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "207a5b65_271dda32",
       "range": {
         "startLine": 107,
         "startChar": 4,
@@ -225,6 +411,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "923b88ed_6cf809c5",
+        "filename": "util/ec_openocd.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2022-03-08T17:56:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8a599154_ee6878ad",
+      "range": {
+        "startLine": 108,
+        "startChar": 0,
+        "endLine": 110,
+        "endChar": 12
+      },
+      "revId": "0532bb0552ee4f1ab67fc49d74314f84092a8492",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bfa530b4_051027f3",
@@ -238,6 +448,30 @@
       "writtenOn": "2022-03-03T22:22:56Z",
       "side": 1,
       "message": "you probably want to collect `stdout` while the process is still running using `Popen.communicate`. Pipes in Linux only have a 64 KB buffer, so if more than 64 KB is written on stdout, the `openocd` process will be stuck until you kill it after the timeout.",
+      "range": {
+        "startLine": 120,
+        "startChar": 24,
+        "endLine": 120,
+        "endChar": 31
+      },
+      "revId": "0532bb0552ee4f1ab67fc49d74314f84092a8492",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fdcaa7c7_93537eb7",
+        "filename": "util/ec_openocd.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2022-03-08T17:56:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bfa530b4_051027f3",
       "range": {
         "startLine": 120,
         "startChar": 24,
@@ -271,6 +505,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e31b0228_b7ea722e",
+        "filename": "util/ec_openocd.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2022-03-08T17:56:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aad55ca9_ca1ff5cb",
+      "range": {
+        "startLine": 123,
+        "startChar": 15,
+        "endLine": 123,
+        "endChar": 76
+      },
+      "revId": "0532bb0552ee4f1ab67fc49d74314f84092a8492",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7aec3213_cb018cbf",
@@ -284,6 +542,30 @@
       "writtenOn": "2022-03-03T22:22:56Z",
       "side": 1,
       "message": "this should be a `choice` option on the supported boards",
+      "range": {
+        "startLine": 131,
+        "startChar": 0,
+        "endLine": 134,
+        "endChar": 5
+      },
+      "revId": "0532bb0552ee4f1ab67fc49d74314f84092a8492",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "27d78d4c_83ef0325",
+        "filename": "util/ec_openocd.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2022-03-08T17:56:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7aec3213_cb018cbf",
       "range": {
         "startLine": 131,
         "startChar": 0,
@@ -317,6 +599,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f63b6e49_5b6ef10e",
+        "filename": "util/ec_openocd.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2022-03-08T17:56:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "976ce29c_31d2ba08",
+      "range": {
+        "startLine": 145,
+        "startChar": 3,
+        "endLine": 146,
+        "endChar": 5
+      },
+      "revId": "0532bb0552ee4f1ab67fc49d74314f84092a8492",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "054f8ff1_afb6802d",
@@ -330,6 +636,30 @@
       "writtenOn": "2022-03-03T22:22:56Z",
       "side": 1,
       "message": "`args.file.resolve()` once you make it a `pathlib.Path`",
+      "range": {
+        "startLine": 172,
+        "startChar": 22,
+        "endLine": 172,
+        "endChar": 48
+      },
+      "revId": "0532bb0552ee4f1ab67fc49d74314f84092a8492",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "46f8bdc6_0549801f",
+        "filename": "util/ec_openocd.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2022-03-08T17:56:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "054f8ff1_afb6802d",
       "range": {
         "startLine": 172,
         "startChar": 22,
