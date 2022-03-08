@@ -53,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "55567e74_0f3bdcc1",
+        "filename": "zephyr/emul/tcpc/emul_tcpci_partner_common.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 397,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-03-08T21:26:37Z",
+      "side": 1,
+      "message": "That seems like a reasonable approach for now. If we want more granular checks later, we can add more logging.",
+      "parentUuid": "fbd39e65_6fbaca44",
+      "revId": "800856888123125565cf5ba77ea9adbe98b84934",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c585fda2_cbad0c70",
@@ -84,6 +102,24 @@
       "side": 1,
       "message": "After consideration, I think it may be good idea to use here Zephyr timers here. Right now emulator may only act after receiving message from TCPM. Using timers with callback has advantage, because we can kick emulator on timer expiration without waiting for TCPM. Inside message handler would be only code to enable and disable timers. Timeout handler could be separate from that.",
       "parentUuid": "c585fda2_cbad0c70",
+      "revId": "800856888123125565cf5ba77ea9adbe98b84934",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "522af305_f5ab6642",
+        "filename": "zephyr/emul/tcpc/emul_tcpci_partner_snk.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-03-08T21:26:37Z",
+      "side": 1,
+      "message": "I\u0027m a little out of my depth reviewing the delayed work code, but this overall approach seems reasonable.",
+      "parentUuid": "9f64d8b9_69577a60",
       "revId": "800856888123125565cf5ba77ea9adbe98b84934",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
