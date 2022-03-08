@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4038dda8_fd7308c1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2022-03-08T20:38:11Z",
+      "side": 1,
+      "message": "I have modified significantly this CL. Now timeout handler is scheduled using Zephyr delayed work. If it is not canceled (by partner emulator handler upon receiving expected message), timeout handler is executed. Handler send hard reset for all timers which support is added by this CL.",
+      "revId": "7e0238d58a71d8c250a0b8d4164088d648a200f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

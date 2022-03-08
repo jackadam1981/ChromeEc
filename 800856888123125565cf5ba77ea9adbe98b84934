@@ -105,6 +105,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "19f4779a_6dc9449f",
+        "filename": "zephyr/include/emul/tcpc/emul_tcpci_partner_common.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2022-03-08T20:38:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "957ae19f_ef36e40a",
+      "revId": "800856888123125565cf5ba77ea9adbe98b84934",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "122e8ef3_3099a3fa",
@@ -118,6 +136,24 @@
       "writtenOn": "2022-03-02T23:32:08Z",
       "side": 1,
       "message": "I think we\u0027re using a few constants from the PD spec in the emulator at this point. This one happens to not match PD_T_PS_TRANSITION in usb_pd.h (max here vs nominal there). If we\u0027re going to define multiple of these in the context of the emulators, it would probably be good to put them all in one header file instead of scattering them through the different emulators.",
+      "revId": "800856888123125565cf5ba77ea9adbe98b84934",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ad71ac4_67a72af8",
+        "filename": "zephyr/include/emul/tcpc/emul_tcpci_partner_snk.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2022-03-08T20:38:11Z",
+      "side": 1,
+      "message": "For now I moved every timeout define to `emul_tcpci_partner_common.h`. If there will be more of these defines, we can extract it to separate header.",
+      "parentUuid": "122e8ef3_3099a3fa",
       "revId": "800856888123125565cf5ba77ea9adbe98b84934",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
