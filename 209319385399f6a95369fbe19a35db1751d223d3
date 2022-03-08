@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7298a089_dad4049f",
+        "filename": "zephyr/projects/herobrine/motionsense.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-03-08T06:00:30Z",
+      "side": 1,
+      "message": "nit: indentation (below also)",
+      "range": {
+        "startLine": 85,
+        "startChar": 5,
+        "endLine": 85,
+        "endChar": 15
+      },
+      "revId": "209319385399f6a95369fbe19a35db1751d223d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d176ebbc_475a4b6a",
+        "filename": "zephyr/projects/herobrine/motionsense.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-03-08T06:00:30Z",
+      "side": 1,
+      "message": "Not required, but since you\u0027re using `SENSOR_ACTIVE_S0_S3` above you should have `ec-s3` config here",
+      "range": {
+        "startLine": 224,
+        "startChar": 4,
+        "endLine": 228,
+        "endChar": 6
+      },
+      "revId": "209319385399f6a95369fbe19a35db1751d223d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb094b44_3b6d1e77",
+        "filename": "zephyr/projects/herobrine/motionsense.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-03-08T06:00:30Z",
+      "side": 1,
+      "message": "Same here, this node is enabled in S0 and S3 but doesn\u0027t explicitly specify the configs. This means you\u0027ll just accept the system defaults which can be risky if we change anything later on.",
+      "range": {
+        "startLine": 232,
+        "startChar": 2,
+        "endLine": 232,
+        "endChar": 14
+      },
+      "revId": "209319385399f6a95369fbe19a35db1751d223d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

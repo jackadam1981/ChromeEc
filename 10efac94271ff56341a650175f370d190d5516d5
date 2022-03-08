@@ -118,6 +118,30 @@
       },
       "revId": "10efac94271ff56341a650175f370d190d5516d5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "006d9899_3366c741",
+        "filename": "zephyr/projects/herobrine/motionsense.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-03-08T06:00:30Z",
+      "side": 1,
+      "message": "The `active_mask` is used along with the `motion_sense.c` static variable `sensor_active` to check if the sensor should be enabled. Tam is right in that `SENSOR_ACTIVE_S0_S3` will enable the sensor in both `S0` and `S3`.\n\n(I have no information about whether it\u0027s needed)",
+      "parentUuid": "243ca09b_e85271cb",
+      "range": {
+        "startLine": 215,
+        "startChar": 18,
+        "endLine": 215,
+        "endChar": 37
+      },
+      "revId": "10efac94271ff56341a650175f370d190d5516d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
