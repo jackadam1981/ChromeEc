@@ -33,6 +33,23 @@
       "message": "There is a fix in https://crrev.com/c/3500989. We\u0027re just waiting for the CQ.",
       "revId": "7013342799db7e5841767eb083739adc854c6973",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "50454359_6cba6450",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-03-08T20:49:56Z",
+      "side": 1,
+      "message": "I\u0027m not sure what to put in the Code Review. +1 feels like it\u0027s saying \"yes, please revert\" but I don\u0027t think that\u0027s the right thing to do give that c/3500989 will resolve the issue.",
+      "revId": "7013342799db7e5841767eb083739adc854c6973",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
