@@ -396,7 +396,7 @@ void init_pwr_seq_state(void)
 }
 
 /* Initialize power sequence system state */
-static int pwrseq_init(void)
+static int pwrseq_init(const struct device *dev)
 {
 	LOG_INF("Pwrseq Init");
 
