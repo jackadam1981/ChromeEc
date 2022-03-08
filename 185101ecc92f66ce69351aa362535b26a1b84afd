@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04c91487_3af5772d",
+        "filename": "driver/tcpm/fusb302.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-03-08T23:30:01Z",
+      "side": 1,
+      "message": "You don\u0027t need this guard.  You can use `K_MUTEX_DEFINE` with the legacy EC and Zephyr EC builds.",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 20
+      },
+      "revId": "185101ecc92f66ce69351aa362535b26a1b84afd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
