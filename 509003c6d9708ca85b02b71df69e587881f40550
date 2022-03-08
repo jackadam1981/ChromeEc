@@ -106,6 +106,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "adb1d66b_a436d261",
+        "filename": "zephyr/emul/tcpc/emul_tcpci_partner_common.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 514,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2022-03-08T20:39:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6acf0aea_bfdca87b",
+      "revId": "509003c6d9708ca85b02b71df69e587881f40550",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3d114b64_4ac58fe7",
@@ -119,6 +137,24 @@
       "writtenOn": "2022-03-03T00:15:16Z",
       "side": 1,
       "message": "The word \"type\" is overloaded in this context, including in our existing TCPM code. I would suggest naming this field \"sop\". (Annoyingly, the PD spec doesn\u0027t really have a good word for the category of thing that SOP, SOP\u0027, and SOP\u0027\u0027 are.",
+      "revId": "509003c6d9708ca85b02b71df69e587881f40550",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ed53d14_5b4cfb9f",
+        "filename": "zephyr/include/emul/tcpc/emul_tcpci_partner_common.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2022-03-08T20:39:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3d114b64_4ac58fe7",
       "revId": "509003c6d9708ca85b02b71df69e587881f40550",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -177,6 +213,48 @@
       "side": 1,
       "message": "I didn\u0027t take that into consideration. I think it make sense to change that into enum to describe sender accurately.",
       "parentUuid": "07f1061e_32de68dd",
+      "revId": "509003c6d9708ca85b02b71df69e587881f40550",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9c535a4_632f9f44",
+        "filename": "zephyr/include/emul/tcpc/emul_tcpci_partner_common.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2022-03-08T20:39:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "404a306b_89b2f319",
+      "range": {
+        "startLine": 107,
+        "startChar": 6,
+        "endLine": 107,
+        "endChar": 18
+      },
+      "revId": "509003c6d9708ca85b02b71df69e587881f40550",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "beb22181_9ada5831",
+        "filename": "zephyr/include/emul/tcpc/emul_tcpci_partner_common.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2022-03-08T20:39:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2791df20_5b6fc7bb",
       "revId": "509003c6d9708ca85b02b71df69e587881f40550",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
