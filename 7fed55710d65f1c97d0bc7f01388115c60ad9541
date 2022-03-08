@@ -166,6 +166,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "be7bf863_7799ac13",
+        "filename": "docs/zephyr/zephyr_cbi.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2022-03-08T22:15:05Z",
+      "side": 1,
+      "message": "Do you want Andrew\u0027s FW_CONFIG document as is and remove the following sections from this one: \"Kconfig Options\", \"CBI Firmware Configuration (FW_CONFIG) Device Tree node\", \"CBI FW_CONFIG Device Tree Specification\" and \"CBI FW_CONFIG Access\"; replacing that with a link to Andrew\u0027s doc up in the top?  There seems to be different pieces of information in both... just remove my portions or try to blend the two together?\n\nAlso you want to move the SSFC to follow the same approach and create a document like Andrew\u0027s that covers SSFC and link that to the top of this document as well, correct?",
+      "parentUuid": "ef244fa8_93f9b1ef",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 42
+      },
+      "revId": "7fed55710d65f1c97d0bc7f01388115c60ad9541",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7cefa013_fcb66a28",
         "filename": "docs/zephyr/zephyr_cbi.md",
         "patchSetId": 5
