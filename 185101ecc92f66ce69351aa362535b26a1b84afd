@@ -22,6 +22,29 @@
       },
       "revId": "185101ecc92f66ce69351aa362535b26a1b84afd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b876e18e_3343d387",
+        "filename": "zephyr/CMakeLists.txt",
+        "patchSetId": 13
+      },
+      "lineNbr": 475,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-03-08T23:51:25Z",
+      "side": 1,
+      "message": "nit: replace tabs with spaces, not sure why other configs have spaces though and also they exceed 80 chars",
+      "range": {
+        "startLine": 475,
+        "startChar": 0,
+        "endLine": 475,
+        "endChar": 6
+      },
+      "revId": "185101ecc92f66ce69351aa362535b26a1b84afd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
