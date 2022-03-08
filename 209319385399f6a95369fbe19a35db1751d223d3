@@ -49,6 +49,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "60c5a72f_2dc7b658",
+        "filename": "zephyr/projects/herobrine/motionsense.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2022-03-08T06:17:44Z",
+      "side": 1,
+      "message": "I agree but looking at other boards such as Brya and Volteer, both have active-mask \u003d \"SENSOR_ACTIVE_S0_S3\" and have not defined ec-s3.",
+      "parentUuid": "d176ebbc_475a4b6a",
+      "range": {
+        "startLine": 224,
+        "startChar": 4,
+        "endLine": 228,
+        "endChar": 6
+      },
+      "revId": "209319385399f6a95369fbe19a35db1751d223d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fb094b44_3b6d1e77",
         "filename": "zephyr/projects/herobrine/motionsense.dts",
         "patchSetId": 2
