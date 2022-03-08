@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ead0d33_6919e7df",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_adlp_pwrseq_sm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-03-08T01:27:53Z",
+      "side": 1,
+      "message": "Yes, please raise a bug.",
+      "parentUuid": "a0d4c547_f8846139",
+      "range": {
+        "startLine": 8,
+        "startChar": 30,
+        "endLine": 8,
+        "endChar": 43
+      },
+      "revId": "606a99a8fcb1a41331f0e295abb93a98ef9cd7df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b756cbe9_33fd01c1",
@@ -37,6 +61,24 @@
       "writtenOn": "2022-03-08T00:29:48Z",
       "side": 1,
       "message": "I would prefer to make these functions (possibly static inline) so there\u0027s less magic around consuming a value with a specific name and more clarity around how it may vary.",
+      "revId": "606a99a8fcb1a41331f0e295abb93a98ef9cd7df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c5a2b06_29e54919",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-03-08T01:27:53Z",
+      "side": 1,
+      "message": "Yes, it is getting a little messy.\nPart of the problem is that the logic may want to do something different in the case when the signal is not valid (essentially making a ternary decision instead of binary). From what I see, I think the current logic can fold the \u0027not valid\u0027 branch with the other check, but this may not always be the case.\nBut all this can be redone more cleanly with inline functions.",
+      "parentUuid": "b756cbe9_33fd01c1",
       "revId": "606a99a8fcb1a41331f0e295abb93a98ef9cd7df",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
