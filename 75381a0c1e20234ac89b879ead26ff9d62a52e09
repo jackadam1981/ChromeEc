@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1808bd1b_c416babf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1512583
+      },
+      "writtenOn": "2022-03-08T02:14:09Z",
+      "side": 1,
+      "message": "We have tested on actual mrbland device. \n\nWhen the keyboard is disconnected, the lid interrupt is closed and the lid state is switch to open, then a lid_open event is sent to AP, so the DUT is not close at this time.\n\nWhen the keyboard is connected, the user can wake up/close the device by open/close the lid in S0/S3/G3. When the keyboard is disconnected, the user can not trigger DUT response by using external magnet in S0/S3/G3.",
+      "parentUuid": "02a0ff9e_4c11b58c",
+      "revId": "75381a0c1e20234ac89b879ead26ff9d62a52e09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7b8d8730_f008fc3e",
