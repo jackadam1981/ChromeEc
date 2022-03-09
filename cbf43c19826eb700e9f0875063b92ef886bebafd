@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76f17835_e1d721dc",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
+        "patchSetId": 57
+      },
+      "lineNbr": 399,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2022-03-09T06:30:20Z",
+      "side": 1,
+      "message": "Given that this change affects common functionality, can we move this to a separate CL. And revert only this part when the proposal is implemented to restart the thread in issue b:222937759",
+      "range": {
+        "startLine": 399,
+        "startChar": 0,
+        "endLine": 399,
+        "endChar": 21
+      },
+      "revId": "cbf43c19826eb700e9f0875063b92ef886bebafd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
