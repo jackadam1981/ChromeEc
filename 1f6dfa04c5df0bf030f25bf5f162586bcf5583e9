@@ -1,0 +1,95 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "79fabb8b_b8e164c9",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-03-09T00:05:28Z",
+      "side": 1,
+      "message": "As mentioned in the chat, could we add a few examples at the top? It\u0027s okay also if they are in a separate code review if you prefer.\n\nAlso, the first time I used the script it took me a while to realize that `~/.servodrc` is not strictly required - I don\u0027t think I have one.\nWe could update this section in general to describe different use cases and provide examples.",
+      "revId": "1f6dfa04c5df0bf030f25bf5f162586bcf5583e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69b54adb_df9e6b68",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 472,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-03-09T00:05:28Z",
+      "side": 1,
+      "message": "I haven\u0027t used this in a while, but I think we could use a custom [type](https://docs.python.org/3/library/argparse.html#type) to parse the argument string automatically.\n\nIn practice I think it would be enough to set it to the custom parser function `parse_remote_arg`.\n\nFeel free to ignore it if you think it makes the code less readable.",
+      "revId": "1f6dfa04c5df0bf030f25bf5f162586bcf5583e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a64203e_1fbeb7dd",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 477,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-03-09T00:05:28Z",
+      "side": 1,
+      "message": "Normally I forward port 19020 for J-Link. Is this port number used for a different purpose?",
+      "range": {
+        "startLine": 477,
+        "startChar": 32,
+        "endLine": 477,
+        "endChar": 36
+      },
+      "revId": "1f6dfa04c5df0bf030f25bf5f162586bcf5583e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19100480_af5b50f7",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 490,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-03-09T00:05:28Z",
+      "side": 1,
+      "message": "I agree with the logic implemented here, but since `jlink_port` and `console_port` are new arguments, is there a risk that existing scripts where they are not specified will break?\n\nI don\u0027t have any specific example in mind, but I am just bringing this up in case we had backward compatibility requirements and other scripts must be updated at the same time of this one.",
+      "revId": "1f6dfa04c5df0bf030f25bf5f162586bcf5583e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87733305_092b9993",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 548,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-03-09T00:05:28Z",
+      "side": 1,
+      "message": "Note: I haven\u0027t tested the script yet.\n\nDoes this assume the remote_ip (e.g. my laptop) is accessible from the cloudtop? Or can I still configure port forwarding using SSH and avoid opening ports on my router?",
+      "revId": "1f6dfa04c5df0bf030f25bf5f162586bcf5583e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
