@@ -50,6 +50,24 @@
       "message": "I believe this rule will run after every single test case (not just the ones in this suite). I don\u0027t know how much of a concern this is. Could ask Yuval for thoughts. It is possible to determine the suite by strcmp-ing test-\u003etest_suite_name",
       "revId": "567ed425eef499b4bc1cfde347f1fbee2c7e5953",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b11cde3_4d18213a",
+        "filename": "zephyr/emul/emul_isl923x.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 449,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2022-03-09T21:00:19Z",
+      "side": 1,
+      "message": "This is the intended behavior.  After discussing with Yuval we are only going to reset the emulated registers so they are in a success state when tests are ran",
+      "parentUuid": "02ac3ff2_5164a650",
+      "revId": "567ed425eef499b4bc1cfde347f1fbee2c7e5953",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
