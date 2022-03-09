@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e157f647_01ed3d63",
+        "filename": "zephyr/test/ap_power/include/stubs.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-03-09T04:48:01Z",
+      "side": 1,
+      "message": "This file seems like it would be the public API of stubs.c; since this function is actually part of the power sequencing code I think we should just inline it in stubs.c (unless the code that implements it could provide the declaration in its own header).",
+      "revId": "b2e42f779240b15c88b5249a58e1ba76d75a63bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13074c36_d3382ff2",
+        "filename": "zephyr/test/ap_power/overlay.dts",
+        "patchSetId": 4
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-03-09T04:48:01Z",
+      "side": 1,
+      "message": "Do these do anything? It doesn\u0027t look like it.",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 3
+      },
+      "revId": "b2e42f779240b15c88b5249a58e1ba76d75a63bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "68a6fe5c_73fd1e4d",
+        "filename": "zephyr/test/ap_power/overlay.dts",
+        "patchSetId": 4
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-03-09T04:48:01Z",
+      "side": 1,
+      "message": "Do we need this? (Does the power code refer to it for some reason?)",
+      "range": {
+        "startLine": 176,
+        "startChar": 0,
+        "endLine": 179,
+        "endChar": 3
+      },
+      "revId": "b2e42f779240b15c88b5249a58e1ba76d75a63bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "795daade_98ec186b",
+        "filename": "zephyr/test/ap_power/prj.conf",
+        "patchSetId": 4
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-03-09T04:48:01Z",
+      "side": 1,
+      "message": "Do we care about these for this test?",
+      "revId": "b2e42f779240b15c88b5249a58e1ba76d75a63bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
