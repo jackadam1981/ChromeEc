@@ -150,6 +150,9 @@ static enum ec_error_list sm5803_flow1_update(int chgnum, const uint8_t mask,
 	/* Safety checks done, onto the actual register update */
 	mutex_lock(&flow1_access_lock[chgnum]);
 
+	__ASSERT(chgnum >= 0 && chgnum < board_get_charger_chip_count(),
+		 "chgnum %d is invalid, caller %p", chgnum,
+		 __builtin_extract_return_addr(__builtin_return_address(0)));
 	rv = i2c_update8(chg_chips[chgnum].i2c_port,
 			 chg_chips[chgnum].i2c_addr_flags,
 			 SM5803_REG_FLOW1,

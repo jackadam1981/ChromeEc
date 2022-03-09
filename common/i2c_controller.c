@@ -76,8 +76,9 @@ SYS_INIT(init_port_mutex, POST_KERNEL, 50);
 #endif /* CONFIG_ZEPHYR */
 
 #define VERIFY_PORT() \
-		__ASSERT(port >= 0 && port <= ARRAY_SIZE(port_mutex), \
-			 "%s: port %d out of range, caller %p", __func__, port, __builtin_extract_return_addr(__builtin_return_address(0)));
+		__ASSERT(port >= 0 && port < ARRAY_SIZE(port_mutex), \
+			 "%s: port %d out of range, caller %p", __func__, port, \
+		 __builtin_extract_return_addr(__builtin_return_address(0)));
 
 /**
  * Non-deterministically test the lock status of the port.  If another task
