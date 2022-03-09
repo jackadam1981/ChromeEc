@@ -17,3 +17,6 @@ config GPIO
 
 config SHELL_PROMPT_UART
 	default "ec:~$ "
+
+config TRAP_UNALIGNED_ACCESS
+	default y
