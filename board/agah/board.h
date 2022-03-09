@@ -143,6 +143,11 @@
 #define CONFIG_CHARGER_SENSE_RESISTOR		10
 #define CONFIG_CHARGER_SENSE_RESISTOR_AC	10
 
+/* Barrel jack adapter settings */
+#undef  CONFIG_DEDICATED_CHARGE_PORT_COUNT
+#define CONFIG_DEDICATED_CHARGE_PORT_COUNT	1
+#define DEDICATED_CHARGE_PORT			3
+
 /*
  * Older boards have a different ADC assignment.
  */
@@ -196,6 +201,8 @@ enum mft_channel {
 	MFT_CH_0 = 0,
 	MFT_CH_COUNT
 };
+
+void adp_connect_interrupt(enum gpio_signal signal);
 
 #endif /* !__ASSEMBLER__ */
 
