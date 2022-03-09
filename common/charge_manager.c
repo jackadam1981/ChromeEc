@@ -149,13 +149,18 @@ enum charge_manager_change_type {
 	CHANGE_DUALROLE,
 };
 
+#ifdef CONFIG_USBC_ENABLE_NON_PD_PORTS
 static int is_pd_port(int port)
 {
 	return port >= 0 && port < board_get_usb_pd_port_count();
 }
+#else
+#define is_pd_port(port) (true)
+#endif
 
 static int is_sink(int port)
 {
+	ASSERT(port >= 0);
 	if (!is_pd_port(port))
 		return board_charge_port_is_sink(port);
 
