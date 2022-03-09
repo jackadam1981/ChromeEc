@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "83fdee12_0215806d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 11
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-03-09T16:59:01Z",
+      "side": 1,
+      "message": "Marking the charge-ramp method as optional is the correct approach.  Please also update the choice to provide an explicit label\n\n```\nchoice PLATFORM_EC_CHARGE_RAMP_TYPE\n    ...\n```",
+      "parentUuid": "c9a33163_56100abb",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 72
+      },
+      "revId": "7c392c89978dac8e7b0f532cf7318182d2e61e67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5ebcb068_d75afceb",
         "filename": "zephyr/Kconfig.charger",
         "patchSetId": 11
