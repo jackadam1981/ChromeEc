@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4c4bdde_a374ff71",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-03-09T10:48:34Z",
+      "side": 1,
+      "message": "Yep, adding this extra config is reaonable for the moment.\nIt would be nice if the new AP power sequence code defined HAS_TASK_CHIPSET, which unfortuantely is being used as the general case of \"some task is enabled that is controlling the AP\", and then we wouldn\u0027t have to touch the old code.\nBut this likely turns on a lot of stuff that it shouldn\u0027t, so I guess it is reasonable to be selective here.\n",
+      "revId": "f35d91c4476ddf959b46313d3a53144f059bb266",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
