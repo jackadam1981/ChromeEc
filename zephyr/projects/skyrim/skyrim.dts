@@ -84,7 +84,7 @@
 		ec_espi_rst_l {
 			gpios = <&gpio5 4 GPIO_PULL_DOWN>;
 		};
-		6axis_int_l {
+		gpio_accel_gyro_int_l: accel_gyro_int_l {
 			gpios = <&gpioa 0 GPIO_INPUT>;
 		};
 	};
