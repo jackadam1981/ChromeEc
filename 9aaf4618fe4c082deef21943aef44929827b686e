@@ -74,6 +74,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "af09ffa6_b0c79007",
+        "filename": "zephyr/projects/nissa/nereid_power_signals.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2022-03-09T22:55:37Z",
+      "side": 1,
+      "message": "Correction:\n\"95% is suggested by SOC documentation, I have set that for Nivviks.\"",
+      "parentUuid": "48e1d27a_52bc840a",
+      "revId": "9aaf4618fe4c082deef21943aef44929827b686e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2840461d_6246a54c",
         "filename": "zephyr/projects/nissa/prj_nereid.conf",
         "patchSetId": 1
