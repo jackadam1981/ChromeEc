@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2aa02954_5705d274",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-03-09T08:54:38Z",
+      "side": 1,
+      "message": "argh:\n/opt/coreboot-sdk/lib/gcc/arm-eabi/11.2.0/../../../../arm-eabi/bin/ld: No room left in the flash\n  CC      RW/common/gpio_commands.o\n  CC      RO/common/host_event_commands.o\ncollect2: error: ld returned 1 exit status\nmake[2]: *** [Makefile.rules:576: build/pdeval-stm32f072/RO/ec.RO.elf] Error 1\n\nstrangely, my local buildall passes!",
+      "revId": "fb7a47d237be3b257e212fdb8d7cd05761ec7ef0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
