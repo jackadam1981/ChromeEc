@@ -1962,6 +1962,11 @@ wait_for_it:
 		charge_request(curr.requested_voltage, curr.requested_current);
 #endif
 
+		/* Enable/disable bypass mode */
+		/* TODO: Find right place. */
+		charger_enable_bypass_mode(0, charge_manager_get_supplier() ==
+				CHARGE_SUPPLIER_DEDICATED);
+
 		/* How long to sleep? */
 		if (problems_exist)
 			/* If there are errors, don't wait very long. */

@@ -369,6 +369,79 @@ int isl9241_set_dc_prochot(int chgnum, int ma)
 	return rv;
 }
 
+enum ec_error_list isl9241_enable_bypass_mode(int chgnum, bool enable,
+					      int input_current,
+					      int battery_full_voltage_mv)
+{
+	enum ec_error_list rv = EC_ERROR_UNKNOWN;
+	int voltage;
+
+	if (enable) {
+		/*
+		 * Transition from NVDC to Bypass mode based on Table 1 in
+		 * ISL9241 Application Notes. Note '*' indicates necessary
+		 * steps.
+		 */
+
+		/* L: If we're in NVDC+Chg, first transition to NVDC. */
+		isl9241_set_current(chgnum, 0);
+		isl9241_write(chgnum, ISL9241_REG_MIN_SYSTEM_VOLTAGE, 0);
+
+		/* A: NVDC -> Bypass */
+		isl9241_set_input_current_limit(chgnum, input_current);
+		/* 1: Set charge pumps to 100%. */
+		isl9241_update(chgnum, ISL9241_REG_CONTROL0,
+			       ISL9241_CONTROL0_EN_CHARGE_PUMPS, MASK_SET);
+		/* 3: Enable ADC. */
+		isl9241_update(chgnum, ISL9241_REG_CONTROL3,
+			       ISL9241_CONTROL3_ENABLE_ADC, MASK_SET);
+		/* 4: Turn on Vin/Vout. */
+		isl9241_update(chgnum, ISL9241_REG_CONTROL0,
+			       ISL9241_CONTROL0_EN_VIN_VOUT_COMP, MASK_SET);
+		/* 5: Set ACOK reference higher than batt full voltage. */
+		isl9241_write(chgnum, ISL9241_REG_ACOK_REFERENCE,
+			      ISL9241_MV_TO_ACOK_REFERENCE(
+					      battery_full_voltage_mv + 800));
+		/* 6*: Reduce system load below ACLIM. */
+		/* 7: Force off BGATE */
+		isl9241_update(chgnum, ISL9241_REG_CONTROL1,
+			       ISL9241_CONTROL1_BGATE_OFF, MASK_SET);
+		/* 8*: Set MaxsysV = VADP. */
+		isl9241_get_vbus_voltage(chgnum, 0, &voltage);
+		isl9241_write(chgnum, ISL9241_REG_MAX_SYSTEM_VOLTAGE,
+			      voltage - 250);
+		/* 9*: Wait until VSYS == MaxsysV. */
+		/* 10: Wait 1 ms. */
+		msleep(1);
+		/* 12*: Turn off NGATE. */
+		isl9241_update(chgnum, ISL9241_REG_CONTROL0,
+			       ISL9241_CONTROL0_NGATE_OFF, MASK_SET);
+		/* 14*: Stop switching. */
+		isl9241_write(chgnum, ISL9241_REG_MAX_SYSTEM_VOLTAGE, 0);
+		/* 15: Set BGATE to normal operation. */
+		isl9241_update(chgnum, ISL9241_REG_CONTROL1,
+			       ISL9241_CONTROL1_BGATE_OFF, MASK_CLR);
+		/* 16: Enable 10 mA discharge on CSOP. */
+		/* 17: Read diode emulation active bit. */
+		/* 18: Disable 10mA discharge on CSOP. */
+		/* 19*: Force forward buck/reverse boost mode. */
+		isl9241_update(chgnum, ISL9241_REG_CONTROL4,
+			       ISL9241_CONTROL4_FORCE_BUCK_MODE, MASK_SET);
+
+	} else {
+		/* To NVDC (L) */
+		if (mode == CHARGE_MODE_NVDC) {
+			rv = isl9241_set_current(chgnum, 0);
+			rv |= isl9241_write(chgnum,
+					    ISL9241_REG_MIN_SYSTEM_VOLTAGE, 0);
+		} else {
+			return EC_ERROR_INVAL;
+		}
+	}
+
+	return rv;
+}
+
 /*****************************************************************************/
 /* ISL-9241 initialization */
 static void isl9241_init(int chgnum)
@@ -582,6 +655,7 @@ const struct charger_drv isl9241_drv = {
 	.ramp_is_detected = &isl9241_ramp_is_detected,
 	.ramp_get_current_limit = &isl9241_ramp_get_current_limit,
 #endif
+	.enable_bypass_mode = isl9241_enable_bypass_mode,
 #ifdef CONFIG_CMD_CHARGER_DUMP
 	.dump_registers = &command_isl9241_dump,
 #endif
