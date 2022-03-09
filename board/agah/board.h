@@ -133,9 +133,13 @@
 
 /* Charger defines */
 #define CONFIG_CHARGER_ISL9241
-#define CONFIG_CHARGE_RAMP_SW
 #define CONFIG_CHARGER_SENSE_RESISTOR		10
 #define CONFIG_CHARGER_SENSE_RESISTOR_AC	10
+
+/* Barrel jack adapter settings */
+#undef  CONFIG_DEDICATED_CHARGE_PORT_COUNT
+#define CONFIG_DEDICATED_CHARGE_PORT_COUNT	1
+#define DEDICATED_CHARGE_PORT			2
 
 /*
  * Older boards have a different ADC assignment.
@@ -192,12 +196,21 @@ enum mft_channel {
 	MFT_CH_COUNT
 };
 
+enum charge_port {
+	CHARGE_PORT_TYPEC0,
+	CHARGE_PORT_TYPEC1,
+	CHARGE_PORT_BARRELJACK,
+};
+
 /**
  * Interrupt handler for PG_PP3300_S5_OD changes.
  *
  * @param signal	Signal which triggered the interrupt.
  */
 void board_power_interrupt(enum gpio_signal signal);
+
+/* IRQ for BJ plug/unplug. */
+void bj_present_interrupt(enum gpio_signal signal);
 
 #endif /* !__ASSEMBLER__ */
 
