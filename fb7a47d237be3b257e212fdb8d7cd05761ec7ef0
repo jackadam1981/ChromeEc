@@ -16,6 +16,24 @@
       "message": "argh:\n/opt/coreboot-sdk/lib/gcc/arm-eabi/11.2.0/../../../../arm-eabi/bin/ld: No room left in the flash\n  CC      RW/common/gpio_commands.o\n  CC      RO/common/host_event_commands.o\ncollect2: error: ld returned 1 exit status\nmake[2]: *** [Makefile.rules:576: build/pdeval-stm32f072/RO/ec.RO.elf] Error 1\n\nstrangely, my local buildall passes!",
       "revId": "fb7a47d237be3b257e212fdb8d7cd05761ec7ef0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "622034a5_22189599",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-03-09T17:39:22Z",
+      "side": 1,
+      "message": "I get that periodically with boards that are in the dozens of bytes range for free space.  Local passes, but CQ fails.  I assume there\u0027s some oh-so-slight difference in the build toolchains used",
+      "parentUuid": "2aa02954_5705d274",
+      "revId": "fb7a47d237be3b257e212fdb8d7cd05761ec7ef0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
