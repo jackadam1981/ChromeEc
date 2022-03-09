@@ -58,6 +58,7 @@ static void board_chipset_resume(void)
 {
 	/* Allow keyboard backlight to be enabled */
 	pwm_set_duty(PWM_CH_KBLIGHT, KBLIGHT_LED_ON_LVL);
+	gpio_set_level(GPIO_TP4_RESET, 0);
 }
 DECLARE_HOOK(HOOK_CHIPSET_RESUME, board_chipset_resume, HOOK_PRIO_DEFAULT);
 
@@ -66,6 +67,7 @@ static void board_chipset_suspend(void)
 {
 	/* Turn off the keyboard backlight if it's on. */
 	pwm_set_duty(PWM_CH_KBLIGHT, KBLIGHT_LED_OFF_LVL);
+	gpio_set_level(GPIO_TP4_RESET, 1);
 }
 DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, board_chipset_suspend, HOOK_PRIO_DEFAULT);
 
