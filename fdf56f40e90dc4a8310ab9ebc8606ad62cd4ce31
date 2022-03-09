@@ -16,6 +16,24 @@
       "message": "This is failing because some boards that define CONFIG_BATTERY do not implement battery_is_present. There\u0027s a couple ways to solve this\n\n1) Require battery_is_present to always be defined when CONFIG_BATTERY is set and fill in missing cases.\n2) Only expect battery_is_present to be defined when CONFIG_BATTERY_PRESENT_CUSTOM or CONFIG_BATTERY_PRESENT_GPIO is set.\n3) Provide a weak implementation of battery_is_present in battery/smart.c based on battery responsiveness.\n\nFiguring this out is on the back burner for me at the moment. ",
       "revId": "fdf56f40e90dc4a8310ab9ebc8606ad62cd4ce31",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63002c9b_c03c0e19",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-03-09T20:01:20Z",
+      "side": 1,
+      "message": "+1 on #3. Then, we can get rid of CONFIG_BATTERY_PRESENT_CUSTOM and we already have a default version:\n\n  static inline enum battery_present battery_is_present(void)\n  {\n  \treturn BP_NO;\n  }\n  \nSo, we can make it \u0027__overridable\u0027.",
+      "parentUuid": "798f0880_43e0b1d9",
+      "revId": "fdf56f40e90dc4a8310ab9ebc8606ad62cd4ce31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
