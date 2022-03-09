@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2d7b176_9cf54ed3",
+        "filename": "zephyr/shim/include/ec_tasks.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-03-09T23:04:20Z",
+      "side": 1,
+      "message": "This belongs in a public include in the ap_prwseq susbsystem.  If we want to mirror the upstream organization, this should be `platform/ec/zephyr/include/ap_pwrseq/ap_pwrseq.h`",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 0
+      },
+      "revId": "f23ee9269d4d838dc636ac84dbe9d2c093fe1a2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
