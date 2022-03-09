@@ -72,6 +72,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8b597fb_e0e8e8be",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 11
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-03-09T20:03:16Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "83fdee12_0215806d",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 72
+      },
+      "revId": "7c392c89978dac8e7b0f532cf7318182d2e61e67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5ebcb068_d75afceb",
@@ -85,6 +109,30 @@
       "writtenOn": "2022-03-07T20:30:33Z",
       "side": 1,
       "message": "Please add a label to this choice. This allows board code to override if needed.\n\n```\nchoice PLATFORM_EC_CHARGE_RAMP_TYPE\n```",
+      "range": {
+        "startLine": 565,
+        "startChar": 7,
+        "endLine": 565,
+        "endChar": 27
+      },
+      "revId": "7c392c89978dac8e7b0f532cf7318182d2e61e67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0323855_093da147",
+        "filename": "zephyr/Kconfig.charger",
+        "patchSetId": 11
+      },
+      "lineNbr": 565,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-03-09T20:03:16Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "5ebcb068_d75afceb",
       "range": {
         "startLine": 565,
         "startChar": 7,
