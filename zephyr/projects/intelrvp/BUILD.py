@@ -20,6 +20,7 @@ def register_intelrvp_project(
     if project_name.startswith("adlrvp"):
         kconfig_files.append(here / "adlrvp/prj.conf")
         dts_overlays.append(here / "adlrvp/battery.dts")
+        dts_overlays.append(here / "adlrvp/cbi_eeprom.dts")
         dts_overlays.append(here / "adlrvp/ioex.dts")
     if project_name.startswith("mtlrvp"):
         kconfig_files.append(here / "mtlrvp/prj.conf")
