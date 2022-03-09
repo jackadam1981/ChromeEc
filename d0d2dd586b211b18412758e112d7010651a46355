@@ -33,6 +33,23 @@
       "message": "https://chromium.googlesource.com/chromiumos/platform/ec/+/2981d96eb8630748b90912b83c7772be47a904d4\nAdding the authors.",
       "revId": "d0d2dd586b211b18412758e112d7010651a46355",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f8ad04f_7744fa20",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 56
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1415203
+      },
+      "writtenOn": "2022-03-09T02:36:27Z",
+      "side": 1,
+      "message": "Build is broken for Nivviks. Perhaps related to https://chromium.googlesource.com/chromiumos/platform/ec/+/2981d96eb8630748b90912b83c7772be47a904d4",
+      "revId": "d0d2dd586b211b18412758e112d7010651a46355",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
