@@ -6,6 +6,8 @@
 #include <kernel.h>
 #include <zephyr.h>
 
+#include <ap_power/ap_power.h>
+#include <ap_power/ap_events.h>
 #include "common.h"
 #include "console.h"
 #include "ec_tasks.h"
@@ -130,3 +132,115 @@ int hook_call_deferred(const struct deferred_data *data, int us)
 
 	return rv;
 }
+
+/*
+ * Shims for interconnecting AP power sequence events with legacy hooks.
+ * Depending on whether the power sequence code is running in zephyr or
+ * not, a shim is setup to send events either from the legacy hooks to
+ * the ap_event callbacks, or vice versa.
+ */
+#ifdef CONFIG_AP_PWRSEQ
+
+/*
+ * Callback handler, dispatch to hooks
+ */
+static void ev_handler(struct ap_ev_callback *cb, struct ap_ev_data data)
+{
+	switch (data.event) {
+	default:
+		break;
+	case AP_EV_PRE_INIT:
+		hook_notify(HOOK_CHIPSET_PRE_INIT);
+		break;
+
+	case AP_EV_STARTUP:
+		hook_notify(HOOK_CHIPSET_STARTUP);
+		break;
+
+	case AP_EV_RESUME:
+		hook_notify(HOOK_CHIPSET_RESUME);
+		break;
+
+	case AP_EV_SUSPEND:
+		hook_notify(HOOK_CHIPSET_SUSPEND);
+		break;
+
+#ifdef CONFIG_CHIPSET_RESUME_INIT_HOOK
+	case AP_EV_RESUME_INIT:
+		hook_notify(HOOK_CHIPSET_RESUME_INIT);
+		break;
+
+	case AP_EV_SUSPEND_COMPLETE:
+		hook_notify(HOOK_CHIPSET_SUSPEND_COMPLETE);
+		break;
+#endif
+
+	case AP_EV_SHUTDOWN:
+		hook_notify(HOOK_CHIPSET_SHUTDOWN);
+		break;
+
+	case AP_EV_SHUTDOWN_COMPLETE:
+		hook_notify(HOOK_CHIPSET_SHUTDOWN_COMPLETE);
+		break;
+
+	case AP_EV_HARD_OFF:
+		hook_notify(HOOK_CHIPSET_HARD_OFF);
+		break;
+
+	case AP_EV_RESET:
+		hook_notify(HOOK_CHIPSET_RESET);
+		break;
+	}
+}
+
+/*
+ * Events are received from the ap_event system and sent to the hooks.
+ */
+static int zephyr_shim_setup_hooks(const struct device *unused)
+{
+	static struct ap_ev_callback cb;
+
+	/*
+	 * Register for all events.
+	 */
+	ap_ev_init_callback(&cb, ev_handler,
+			    AP_EV_PRE_INIT |
+			    AP_EV_STARTUP |
+			    AP_EV_RESUME |
+			    AP_EV_SUSPEND |
+#ifdef CONFIG_CHIPSET_RESUME_INIT_HOOK
+			    AP_EV_RESUME_INIT |
+			    AP_EV_SUSPEND_COMPLETE |
+#endif
+			    AP_EV_SHUTDOWN |
+			    AP_EV_SHUTDOWN_COMPLETE |
+			    AP_EV_HARD_OFF |
+			    AP_EV_RESET);
+}
+
+SYS_INIT(zephyr_shim_ap_event, APPLICATION, 1);
+#else
+
+/*
+ * Events received from the hooks and sent to the ap_event callbacks.
+ */
+#define EV_HOOK(lc, uc)						\
+static void hook_##lc(void)					\
+{								\
+	ap_ev_send_callbacks(AP_EV_##uc);			\
+}								\
+DECLARE_HOOK(HOOK_CHIPSET_##uc, hook_##lc, HOOK_PRIO_DEFAULT)
+
+EV_HOOK(pre_init, PRE_INIT);
+EV_HOOK(startup, STARTUP);
+EV_HOOK(resume, RESUME);
+EV_HOOK(suspend, SUSPEND);
+#ifdef CONFIG_CHIPSET_RESUME_INIT_HOOK
+EV_HOOK(resume_init, RESUME_INIT);
+EV_HOOK(suspend_complete, SUSPEND_COMPLETE);
+#endif
+EV_HOOK(shutdown, SHUTDOWN);
+EV_HOOK(shutdown_complete, SHUTDOWN_COMPLETE);
+EV_HOOK(hard_off, HARD_OFF);
+EV_HOOK(reset, RESET);
+#endif
