@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62fe0547_ee15b4fd",
+        "filename": "util/fptool.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2022-03-09T13:58:01Z",
+      "side": 1,
+      "message": "./src/mainboard/google/trogdor/board.h in coreboot repository says that EN_FP_RAILS is GPIO 74, but `gpioinfo` says that this is FPMCU_SEL. I\u0027ve checked it and it works.",
+      "range": {
+        "startLine": 317,
+        "startChar": 37,
+        "endLine": 317,
+        "endChar": 52
+      },
+      "revId": "7549e6e099b9a7fc8be8d4e4e5cc8e678483c0a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
