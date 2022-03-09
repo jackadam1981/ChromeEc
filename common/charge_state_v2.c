@@ -1686,10 +1686,17 @@ void charger_task(void *u)
 					if (rv != EC_SUCCESS)
 						charge_problem(
 							PR_SET_INPUT_CURR, rv);
+					/* Enable/disable bypass mode */
+
 				}
 
-				if (rv == EC_SUCCESS)
+				if (rv == EC_SUCCESS) {
 					prev_ac = curr.ac;
+					charger_enable_bypass_mode(
+							0,
+							charge_manager_get_supplier()
+									== CHARGE_SUPPLIER_DEDICATED);
+				}
 			} else {
 				/* Some things are only meaningful on AC */
 				set_chg_ctrl_mode(CHARGE_CONTROL_NORMAL);
@@ -1702,6 +1709,7 @@ void charger_task(void *u)
 				 * should be ok for all chargers.
 				 */
 				charger_set_current(chgnum, 0);
+				charger_enable_bypass_mode(0, false);
 			}
 		}
 
