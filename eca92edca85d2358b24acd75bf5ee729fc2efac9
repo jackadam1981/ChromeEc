@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4927dd90_9b05bb06",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-03-09T21:27:53Z",
+      "side": 1,
+      "message": "wake time is high on non ES-HBR due to debug enabled chip.\nneed to add these info in crosbug upon filing one.\nall this will go away on ES1 HBR",
+      "parentUuid": "9f23c882_9226d229",
+      "revId": "eca92edca85d2358b24acd75bf5ee729fc2efac9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "babaf3ea_99460530",
         "filename": "include/driver/retimer/bb_retimer.h",
         "patchSetId": 5
@@ -31,6 +49,24 @@
       "writtenOn": "2022-03-09T21:21:42Z",
       "side": 1,
       "message": "I think this is misleading. Perhaps right approach will be check the read device id with (BBR OR HBR) and either match will be success. Perhaps make this run-time. Once you remove the hack for read caching, the code will be agnostic to BBR or HBR on the platform?",
+      "revId": "eca92edca85d2358b24acd75bf5ee729fc2efac9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1de1968e_2c8f6c3c",
+        "filename": "include/driver/retimer/bb_retimer.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-03-09T21:27:53Z",
+      "side": 1,
+      "message": "initially i thought about it, but highly unlikely we will have both HBR \u0026 BBR combinations in design.\nMay be I can add #error to make sure only one config is enabled at a time",
+      "parentUuid": "babaf3ea_99460530",
       "revId": "eca92edca85d2358b24acd75bf5ee729fc2efac9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
