@@ -27,6 +27,12 @@
 #define CPUTS(outstr) cputs(CC_ACCEL, outstr)
 #define CPRINTF(format, args...) cprintf(CC_ACCEL, format, ## args)
 #define CPRINTS(format, args...) cprints(CC_ACCEL, format, ## args)
+/*
+ * Limit the number of interrupts to process at once since the interrupts
+ * might arrive faster than we can process them.
+ * See: b/218982018
+ */
+#define MAX_INTERRUPTS_TO_PROCESS 25
 
 STATIC_IF(CONFIG_BMI_ORIENTATION_SENSOR) void irq_set_orientation(
 				struct motion_sensor_t *s,
@@ -533,6 +539,7 @@ static int irq_handler(struct motion_sensor_t *s,
 	uint32_t interrupt;
 	int8_t has_read_fifo = 0;
 	int rv;
+	int times = 0;
 
 	if ((s->type != MOTIONSENSE_TYPE_ACCEL) ||
 			(!(*event & CONFIG_ACCELGYRO_BMI160_INT_EVENT)))
@@ -562,7 +569,8 @@ static int irq_handler(struct motion_sensor_t *s,
 		}
 		if (IS_ENABLED(CONFIG_BMI_ORIENTATION_SENSOR))
 			irq_set_orientation(s, interrupt);
-	} while (interrupt != 0);
+		times++;
+	} while (interrupt != 0 && times < MAX_INTERRUPTS_TO_PROCESS);
 
 	if (IS_ENABLED(CONFIG_ACCEL_FIFO) && has_read_fifo)
 		motion_sense_fifo_commit_data();
