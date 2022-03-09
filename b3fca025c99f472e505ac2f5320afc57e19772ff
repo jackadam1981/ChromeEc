@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "527f3c2f_6d9914c7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2022-03-09T04:14:53Z",
+      "side": 1,
+      "message": "please verify that the uart console doesn\u0027t complain about the dimensions.\n\nSee \"Trackpad dimensions are correct\" section in \nhttps://chromium.googlesource.com/chromiumos/platform2/+/HEAD/hammerd/hammertests/README.md",
+      "range": {
+        "startLine": 11,
+        "startChar": 5,
+        "endLine": 11,
+        "endChar": 9
+      },
+      "revId": "b3fca025c99f472e505ac2f5320afc57e19772ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
