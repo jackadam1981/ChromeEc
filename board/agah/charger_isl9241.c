@@ -183,7 +183,7 @@ static const struct charge_port_info bj_power = {
 };
 
 /* Debounce time for BJ plug/unplug */
-#define BJ_DEBOUNCE_MS		1000
+#define BJ_DEBOUNCE_MS		2
 
 static void bj_connect_deferred(void)
 {
