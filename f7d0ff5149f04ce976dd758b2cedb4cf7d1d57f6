@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bf1e791f_f8c947eb",
+        "filename": "zephyr/emul/tcpc/emul_tcpci_partner_common.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 594,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2022-03-09T16:03:11Z",
+      "side": 1,
+      "message": "I think that I applied all of your suggestions. Please check new CL. As for 1), I made static function. I am not sure if we will ever use such long log message.",
+      "parentUuid": "ea9f01e5_269faf68",
+      "revId": "f7d0ff5149f04ce976dd758b2cedb4cf7d1d57f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ede92bf9_4fb18e5c",
         "filename": "zephyr/emul/tcpc/emul_tcpci_partner_common.c",
         "patchSetId": 4
@@ -31,6 +49,24 @@
       "writtenOn": "2022-03-08T22:50:20Z",
       "side": 1,
       "message": "Doesn\u0027t each line in the buffer already end with a newline?",
+      "revId": "f7d0ff5149f04ce976dd758b2cedb4cf7d1d57f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3cc3ecd_85d110c3",
+        "filename": "zephyr/emul/tcpc/emul_tcpci_partner_common.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 620,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2022-03-09T16:03:11Z",
+      "side": 1,
+      "message": "Yes it does. I added here newline by mistake.",
+      "parentUuid": "ede92bf9_4fb18e5c",
       "revId": "f7d0ff5149f04ce976dd758b2cedb4cf7d1d57f6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
