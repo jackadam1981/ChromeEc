@@ -5142,8 +5142,14 @@ static void pe_bist_tx_run(int port)
 		 * GoodCRC Messages in response to received Messages will
 		 * be sent.
 		 */
+		int regval;
 		if (PE_CHK_FLAG(port, PE_FLAGS_MSG_RECEIVED))
 			PE_CLR_FLAG(port, PE_FLAGS_MSG_RECEIVED);
+
+		tcpc_read(port, 0x1d, &regval);
+		if (regval == 0x10) {
+			tcpc_write(port, 0x19, 0x41);
+		}
 	}
 }
 
