@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c13a8a8d_293d20ec",
+        "filename": "zephyr/subsys/ap_pwrseq/signal_vw.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-03-09T23:59:26Z",
+      "side": 1,
+      "message": "ESPI *event*?",
+      "range": {
+        "startLine": 51,
+        "startChar": 10,
+        "endLine": 51,
+        "endChar": 14
+      },
+      "revId": "dfa43f38edb7e3c2ed15466d17029c8765b32225",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a51e333c_456b55af",
+        "filename": "zephyr/subsys/ap_pwrseq/signal_vw.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-03-09T23:59:26Z",
+      "side": 1,
+      "message": "Perhaps add an __ASSERT here to flag misconfiguration of the callback.",
+      "revId": "dfa43f38edb7e3c2ed15466d17029c8765b32225",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
