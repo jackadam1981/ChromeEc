@@ -202,7 +202,7 @@
 #define CONFIG_CHARGER_ISL9241
 #define CONFIG_CHARGE_RAMP_SW
 #define CONFIG_CHARGER_SENSE_RESISTOR		10
-#define CONFIG_CHARGER_SENSE_RESISTOR_AC	10
+#define CONFIG_CHARGER_SENSE_RESISTOR_AC	20
 
 /*
  * Older boards have a different ADC assignment.
@@ -270,6 +270,8 @@ enum mft_channel {
 	MFT_CH_0 = 0,
 	MFT_CH_COUNT
 };
+
+void battery_present_interrupt(enum gpio_signal signal);
 
 #endif /* !__ASSEMBLER__ */
 
