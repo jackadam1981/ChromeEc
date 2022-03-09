@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "42ebcdc0_79d08208",
+        "filename": "zephyr/test/ap_power/include/stubs.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-03-09T05:09:32Z",
+      "side": 1,
+      "message": "Yeah, it\u0027s a bit messy here. Maybe we should just let chipset_force_shutdown in stubs.c be empty.",
+      "parentUuid": "e157f647_01ed3d63",
+      "revId": "b2e42f779240b15c88b5249a58e1ba76d75a63bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "13074c36_d3382ff2",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-03-09T04:48:01Z",
       "side": 1,
       "message": "Do these do anything? It doesn\u0027t look like it.",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 3
+      },
+      "revId": "b2e42f779240b15c88b5249a58e1ba76d75a63bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c432986_bbcae7a9",
+        "filename": "zephyr/test/ap_power/overlay.dts",
+        "patchSetId": 4
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-03-09T05:09:32Z",
+      "side": 1,
+      "message": "Unfortunately yes, the legacy power button handling code references these.\nAnd we need that code for the power sequence code.",
+      "parentUuid": "13074c36_d3382ff2",
       "range": {
         "startLine": 22,
         "startChar": 0,
@@ -64,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9910662_f48d318c",
+        "filename": "zephyr/test/ap_power/overlay.dts",
+        "patchSetId": 4
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-03-09T05:09:32Z",
+      "side": 1,
+      "message": "Possibly not, I would have to check whether the config entries still work without it.",
+      "parentUuid": "68a6fe5c_73fd1e4d",
+      "range": {
+        "startLine": 176,
+        "startChar": 0,
+        "endLine": 179,
+        "endChar": 3
+      },
+      "revId": "b2e42f779240b15c88b5249a58e1ba76d75a63bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "795daade_98ec186b",
@@ -77,6 +143,24 @@
       "writtenOn": "2022-03-09T04:48:01Z",
       "side": 1,
       "message": "Do we care about these for this test?",
+      "revId": "b2e42f779240b15c88b5249a58e1ba76d75a63bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb21846e_0b499f75",
+        "filename": "zephyr/test/ap_power/prj.conf",
+        "patchSetId": 4
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-03-09T05:09:32Z",
+      "side": 1,
+      "message": "The comment is likely a cut\u0027n\u0027paste from the drivers/ prj.conf.",
+      "parentUuid": "795daade_98ec186b",
       "revId": "b2e42f779240b15c88b5249a58e1ba76d75a63bb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
