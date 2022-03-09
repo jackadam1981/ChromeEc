@@ -13,7 +13,7 @@
 # This is used to exclude build targets that depend on sanitizers such as
 # fuzzers on architectures that don't support sanitizers yet (e.g. arm).
 ARCH?=amd64
-BOARD ?= bds
+BOARD ?= elm
 
 # Directory where the board is configured (includes /$(BOARD) at the end)
 BDIR:=$(wildcard board/$(BOARD))
@@ -212,13 +212,15 @@ _mock_cfg := $(foreach t,$(_mock_lst) ,HAS_MOCK_$(t))
 CPPFLAGS += $(foreach t,$(_mock_cfg),-D$(t)=$(EMPTY))
 $(foreach c,$(_mock_cfg),$(eval $(c)=y))
 
-ifneq "$(CONFIG_COMMON_RUNTIME)" "y"
+ifneq ($(CONFIG_COMMON_RUNTIME),y)
+ifneq ($(CONFIG_DFU_BOOTMANAGER_MAIN),ro)
 	_irq_list:=$(shell $(CPP) $(CPPFLAGS) -P -Ichip/$(CHIP) -I$(BASEDIR) \
 		-I$(BDIR) -D"ENABLE_IRQ(x)=EN_IRQ x" \
 		-imacros chip/$(CHIP)/registers.h \
 		- < $(BDIR)/ec.irqlist | grep "EN_IRQ .*" | cut -c8-)
 	CPPFLAGS+=$(foreach irq,$(_irq_list),\
 		    -D"irq_$(irq)_handler_optional=irq_$(irq)_handler")
+endif
 endif
 
 # Compute RW firmware size and offset

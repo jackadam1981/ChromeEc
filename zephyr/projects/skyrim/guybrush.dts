@@ -4,31 +4,31 @@
  */
 
 / {
+	aliases {
+		gpio-wp = &gpio_wp;
+		gpio-kbd-kso2 = &gpio_ec_kso_02_inv;
+	};
+
 	named-gpios {
 		/* Guybrush-specific GPIO customizations */
-		ec_wp_l {
-			gpios = <&gpio5 0 GPIO_INPUT>;
-			enum-name = "GPIO_WP_L";
+		gpio_wp: ec_wp_l {
+			gpios = <&gpio5 0 (GPIO_INPUT | GPIO_ACTIVE_LOW)>;
 		};
-		ec_pwr_btn_odl {
+		gpio_ec_pwr_btn_odl: ec_pwr_btn_odl {
 			gpios = <&gpio0 1 GPIO_INPUT>;
-			enum-name = "GPIO_EC_PWR_BTN_ODL";
 		};
-		slp_s3_s0i3_l {
+		gpio_slp_s3_s0i3_l: slp_s3_s0i3_l {
 			gpios = <&gpio7 4 GPIO_INPUT>;
 			enum-name = "GPIO_PCH_SLP_S0_L";
 		};
-		ec_pcore_int_odl {
+		gpio_ec_pcore_int_odl: ec_pcore_int_odl {
 			gpios = <&gpiof 0 GPIO_INPUT_PULL_UP>;
-			enum-name = "GPIO_EC_PCORE_INT_ODL";
 		};
-		pg_groupc_s0_od {
+		gpio_pg_groupc_s0_od: pg_groupc_s0_od {
 			gpios = <&gpioa 3 GPIO_INPUT>;
-			enum-name = "GPIO_PG_GROUPC_S0_OD";
 		};
-		pg_lpddr4x_s3_od {
+		gpio_pg_lpddr4x_s3_od: pg_lpddr4x_s3_od {
 			gpios = <&gpio9 5 GPIO_INPUT>;
-			enum-name = "GPIO_PG_LPDDR4X_S3_OD";
 		};
 		ec_soc_pwr_good {
 			gpios = <&gpiod 3 GPIO_OUT_LOW>;
@@ -44,7 +44,7 @@
 		ec_mem_event {
 			gpios = <&gpioa 5 GPIO_OUT_LOW>;
 		};
-		ec_soc_pwr_btn_l {
+		gpio_ec_soc_pwr_btn_l: ec_soc_pwr_btn_l {
 			gpios = <&gpio6 3 GPIO_OUT_HIGH>;
 			enum-name = "GPIO_PCH_PWRBTN_L";
 		};
@@ -54,18 +54,17 @@
 		soc_thermtrip_odl {
 			gpios = <&gpioe 5 GPIO_INPUT>;
 		};
-		usb_c0_c1_fault_odl {
+		gpio_usb_c0_c1_fault_odl: usb_c0_c1_fault_odl {
 			gpios = <&gpio7 3 GPIO_ODR_HIGH>;
-			enum-name = "GPIO_USB_C0_C1_FAULT_ODL";
 		};
 		3axis_int_l {
 			gpios = <&gpioa 2 GPIO_INPUT_PULL_DOWN>;
 		};
-		voldn_btn_odl {
+		gpio_voldn_btn_odl: voldn_btn_odl {
 			gpios = <&gpioa 7 GPIO_INPUT_PULL_UP>;
 			enum-name = "GPIO_VOLUME_DOWN_L";
 		};
-		volup_btn_odl {
+		gpio_volup_btn_odl: volup_btn_odl {
 			gpios = <&gpio9 3 GPIO_INPUT_PULL_UP>;
 			enum-name = "GPIO_VOLUME_UP_L";
 		};
@@ -90,6 +89,9 @@
 		ec_pwm7 {
 			gpios = <&gpio6 0 GPIO_INPUT_PULL_UP>;
 		};
+		6axis_int_l {
+			gpios = <&gpioa 0 GPIO_INPUT_PULL_UP>;
+		};
 	};
 
 	def-lvol-io-list {
@@ -105,7 +107,72 @@
 		adc_temp_soc: temp-soc {
 			label = "SOC";
 			enum-name = "ADC_TEMP_SENSOR_SOC";
-			channel = <0>;
+			io-channels = <&adc0 0>;
+		};
+	};
+
+	named-temp-sensors {
+		soc-tmp112 {
+			compatible = "cros-ec,temp-sensor-tmp112";
+			label = "SOC";
+			enum-name = "TEMP_SENSOR_SOC";
+			tmp112-name = "TMP112_SOC";
+			port = <&i2c_sensor>;
+			i2c-addr-flags = "TMP112_I2C_ADDR_FLAGS0";
+			temp_host_high = <100>;
+			temp_host_halt = <105>;
+			temp_host_release_high = <80>;
+			temp_fan_off = <0>;
+			temp_fan_max = <70>;
+		};
+		amb-tmp112 {
+			compatible = "cros-ec,temp-sensor-tmp112";
+			label = "Ambient";
+			enum-name = "TEMP_SENSOR_AMB";
+			tmp112-name = "TMP112_AMB";
+			port = <&i2c_sensor>;
+			i2c-addr-flags = "TMP112_I2C_ADDR_FLAGS1";
+		};
+		sb-tsi-sensor {
+			compatible = "cros-ec,temp-sensor-sb-tsi";
+			label = "CPU";
+			enum-name = "TEMP_SENSOR_CPU";
+			port = <&i2c_soc_thermal>;
+			temp_host_high = <100>;
+			temp_host_halt = <105>;
+			temp_host_release_high = <80>;
+			temp_fan_off = <60>;
+			temp_fan_max = <90>;
+		};
+	};
+
+	gpio-interrupts {
+		compatible = "cros-ec,gpio-interrupts";
+
+		int_pg_lpddr4x_s3: pg_lpddr4x_s3 {
+			irq-pin = <&gpio_pg_lpddr4x_s3_od>;
+			flags = <GPIO_INT_EDGE_BOTH>;
+			handler = "baseboard_en_pwr_pcore_s0";
+		};
+		int_slp_s3_s0i3: slp_s3_s0i3 {
+			irq-pin = <&gpio_slp_s3_s0i3_l>;
+			flags = <GPIO_INT_EDGE_BOTH>;
+			handler = "power_signal_interrupt";
+		};
+		int_ec_pwr_btn: ec_pwr_btn {
+			irq-pin = <&gpio_ec_pwr_btn_odl>;
+			flags = <GPIO_INT_EDGE_BOTH>;
+			handler = "power_signal_interrupt";
+		};
+		int_ec_pcore: ec_pcore {
+			irq-pin = <&gpio_ec_pcore_int_odl>;
+			flags = <GPIO_INT_EDGE_BOTH>;
+			handler = "power_signal_interrupt";
+		};
+		int_pg_groupc_s0: pg_groupc_s0 {
+			irq-pin = <&gpio_pg_groupc_s0_od>;
+			flags = <GPIO_INT_EDGE_BOTH>;
+			handler = "baseboard_en_pwr_pcore_s0";
 		};
 	};
 };

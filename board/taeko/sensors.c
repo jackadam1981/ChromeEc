@@ -12,12 +12,14 @@
 #include "driver/accelgyro_lsm6dsm.h"
 #include "driver/accelgyro_lsm6dso.h"
 #include "fw_config.h"
+#include "gpio.h"
 #include "hooks.h"
 #include "i2c.h"
 #include "motion_sense.h"
 #include "temp_sensor.h"
 #include "thermal.h"
 #include "temp_sensor/thermistor.h"
+#include "tablet_mode.h"
 
 #if 0
 #define CPRINTS(format, args...) ccprints(format, ## args)
@@ -331,6 +333,8 @@ static void baseboard_sensors_init(void)
 	} else {
 		CPRINTS("Clamshell");
 		motion_sensor_count = 0;
+		gmr_tablet_switch_disable();
+		gpio_set_flags(GPIO_TABLET_MODE_L, GPIO_INPUT | GPIO_PULL_DOWN);
 		/* Gyro is not present, don't allow line to float */
 		gpio_set_flags(GPIO_EC_IMU_INT_R_L, GPIO_INPUT |
 				GPIO_PULL_DOWN);
@@ -343,6 +347,10 @@ void motion_interrupt(enum gpio_signal signal)
 	if (motion_sensors[LID_ACCEL].chip == MOTIONSENSE_CHIP_LIS2DW12) {
 		lis2dw12_interrupt(signal);
 		CPRINTS("IS2DW12 interrupt");
+	}
+	if (motion_sensors[BASE_ACCEL].chip == MOTIONSENSE_CHIP_LSM6DSM) {
+		lsm6dsm_interrupt(signal);
+		CPRINTS("LSM6DSM interrupt");
 		return;
 	}
 

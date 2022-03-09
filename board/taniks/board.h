@@ -4,6 +4,7 @@
  */
 
 /* Taniks board configuration */
+#define CONFIG_BUTTONS_RUNTIME_CONFIG
 
 #ifndef __CROS_EC_BOARD_H
 #define __CROS_EC_BOARD_H
@@ -14,11 +15,17 @@
  * Taniks boards are set up for vivaldi
  */
 #define CONFIG_KEYBOARD_VIVALDI
+#undef CONFIG_VOLUME_BUTTONS
+#define NPCX_SELECT_KSI_TO_GPIO
+#define CONFIG_KEYBOARD_REFRESH_ROW3
+#define CONFIG_KEYBOARD_SCAN_ADC
 
 /* Baseboard features */
 #include "baseboard.h"
 
 #define CONFIG_SYSTEM_UNLOCKED
+
+#undef CONFIG_MKBP_INPUT_DEVICES
 
 /*
  * This will happen automatically on NPCX9 ES2 and later. Do not remove
@@ -89,6 +96,12 @@
 #define CONFIG_USBC_PPC_SYV682X
 #define CONFIG_USBC_PPC_NX20P3483
 
+/* I2C speed console command */
+#define CONFIG_CMD_I2C_SPEED
+
+/* I2C control host command */
+#define CONFIG_HOSTCMD_I2C_CONTROL
+
 /* TODO: b/177608416 - measure and check these values on brya */
 #define PD_POWER_SUPPLY_TURN_ON_DELAY	30000 /* us */
 #define PD_POWER_SUPPLY_TURN_OFF_DELAY	30000 /* us */
@@ -116,14 +129,36 @@
 #define GPIO_EC_INT_L			GPIO_EC_PCH_INT_ODL
 #define GPIO_ENABLE_BACKLIGHT		GPIO_EC_EN_EDP_BL
 #define GPIO_ENTERING_RW		GPIO_EC_ENTERING_RW
-#define GPIO_KBD_KSO2			GPIO_EC_KSO_02_INV
+#define GPIO_KSI_00			GPIO_EC_KSI_00
+#define GPIO_KSI_01			GPIO_EC_KSI_01
+#define GPIO_KSI_02			GPIO_EC_KSI_02
+#define GPIO_KSI_03			GPIO_EC_KSI_03
+#define GPIO_KSI_04			GPIO_EC_KSI_04
+#define GPIO_KSI_05			GPIO_EC_KSI_05
+#define GPIO_KSI_06			GPIO_EC_KSI_06
+#define GPIO_KSI_07			GPIO_EC_KSI_07
+#define GPIO_KSO_00			GPIO_EC_KSO_00
+#define GPIO_KSO_01			GPIO_EC_KSO_01
+#define GPIO_KSO_02			GPIO_EC_KSO_02_R
+#define GPIO_KSO_03			GPIO_EC_KSO_03
+#define GPIO_KSO_04			GPIO_EC_KSO_04
+#define GPIO_KSO_05			GPIO_EC_KSO_05
+#define GPIO_KSO_06			GPIO_EC_KSO_06_R
+#define GPIO_KSO_07			GPIO_EC_KSO_07_R
+#define GPIO_KSO_08			GPIO_EC_KSO_08
+#define GPIO_KSO_09			GPIO_EC_KSO_09
+#define GPIO_KSO_10			GPIO_EC_KSO_10
+#define GPIO_KSO_11			GPIO_EC_KSO_11
+#define GPIO_KSO_12			GPIO_EC_KSO_12
+#define GPIO_KSO_13			GPIO_EC_KSO_13
+#define GPIO_KSO_14			GPIO_EC_KSO_14
+#define GPIO_RFR_KEY_L			GPIO_EC_RFR_KEY_ODL_R
 #define GPIO_PACKET_MODE_EN		GPIO_EC_GSC_PACKET_MODE
 #define GPIO_PCH_PWRBTN_L		GPIO_EC_PCH_PWR_BTN_ODL
 #define GPIO_PCH_RSMRST_L		GPIO_EC_PCH_RSMRST_L
 #define GPIO_PCH_RTCRST			GPIO_EC_PCH_RTCRST
 #define GPIO_PCH_SLP_S0_L		GPIO_SYS_SLP_S0IX_L
 #define GPIO_PCH_SLP_S3_L		GPIO_SLP_S3_L
-#define GMR_TABLET_MODE_GPIO_L		GPIO_TABLET_MODE_L
 
 /*
  * GPIO_EC_PCH_INT_ODL is used for MKBP events as well as a PCH wakeup
@@ -206,15 +241,21 @@
 
 enum adc_channel {
 	ADC_TEMP_SENSOR_1_DDR_SOC,
-	ADC_TEMP_SENSOR_2_FAN,
 	ADC_TEMP_SENSOR_3_CHARGER,
 	ADC_TEMP_SENSOR_4_CPUCHOKE,
+	ADC_KSI_00,
+	ADC_KSI_01,
+	ADC_KSI_02,
+	ADC_KSI_03,
+	ADC_KSI_04,
+	ADC_KSI_05,
+	ADC_KSI_06,
+	ADC_KSI_07,
 	ADC_CH_COUNT
 };
 
 enum temp_sensor_id {
 	TEMP_SENSOR_1_DDR_SOC,
-	TEMP_SENSOR_2_FAN,
 	TEMP_SENSOR_3_CHARGER,
 	TEMP_SENSOR_4_CPUCHOKE,
 	TEMP_SENSOR_COUNT
@@ -233,9 +274,9 @@ enum ioex_port {
 };
 
 enum battery_type {
-	BATTERY_SMP,
+	BATTERY_SMP_51W,
+	BATTERY_SMP_71W,
 	BATTERY_LGC,
-	BATTERY_SUNWODA,
 	BATTERY_TYPE_COUNT,
 };
 

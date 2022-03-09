@@ -15,6 +15,7 @@
 
 /* Keyboard features */
 #define CONFIG_KEYBOARD_FACTORY_TEST
+#define CONFIG_KEYBOARD_REFRESH_ROW3
 
 /* EC console commands */
 #define CONFIG_CMD_BUTTON
@@ -25,6 +26,8 @@
 #define PD_MAX_VOLTAGE_MV       20000
 /* Max Power = 100 W */
 #define PD_MAX_POWER_MW         ((PD_MAX_VOLTAGE_MV * PD_MAX_CURRENT_MA) / 1000)
+
+#define CONFIG_CHARGER_PROFILE_OVERRIDE
 
 /* USB Type A Features */
 

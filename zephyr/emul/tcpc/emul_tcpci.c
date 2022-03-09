@@ -9,10 +9,11 @@
 LOG_MODULE_REGISTER(tcpci_emul, CONFIG_TCPCI_EMUL_LOG_LEVEL);
 
 #include <device.h>
-#include <emul.h>
+#include <drivers/emul.h>
 #include <drivers/i2c.h>
 #include <drivers/i2c_emul.h>
 #include <drivers/gpio/gpio_emul.h>
+#include <ztest.h>
 
 #include "tcpm/tcpci.h"
 
@@ -58,7 +59,7 @@ struct tcpci_emul_data {
 	/** Callbacks for specific TCPCI device emulator */
 	struct tcpci_emul_dev_ops *dev_ops;
 	/** Callbacks for TCPCI partner */
-	struct tcpci_emul_partner_ops *partner;
+	const struct tcpci_emul_partner_ops *partner;
 
 	/** Reference to Alert# GPIO emulator. */
 	const struct device *alert_gpio_port;
@@ -104,10 +105,33 @@ static int tcpci_emul_reg_bytes(int reg)
 int tcpci_emul_set_reg(const struct emul *emul, int reg, uint16_t val)
 {
 	struct tcpci_emul_data *data = emul->data;
+	uint16_t update_alert = 0;
+	uint16_t alert;
 	int byte;
 
 	if (reg < 0 || reg > TCPCI_EMUL_REG_COUNT) {
 		return -EINVAL;
+	}
+
+	/* Changing some registers has impact on alert register */
+	switch (reg) {
+	case TCPC_REG_POWER_STATUS:
+		update_alert = TCPC_REG_ALERT_POWER_STATUS;
+		break;
+	case TCPC_REG_FAULT_STATUS:
+		update_alert = TCPC_REG_ALERT_FAULT;
+		break;
+	case TCPC_REG_EXT_STATUS:
+		update_alert = TCPC_REG_ALERT_EXT_STATUS;
+		break;
+	case TCPC_REG_ALERT_EXT:
+		update_alert = TCPC_REG_ALERT_ALERT_EXT;
+		break;
+	}
+
+	if (update_alert != 0) {
+		tcpci_emul_get_reg(emul, TCPC_REG_ALERT, &alert);
+		tcpci_emul_set_reg(emul, TCPC_REG_ALERT, alert | update_alert);
 	}
 
 	for (byte = tcpci_emul_reg_bytes(reg); byte > 0; byte--) {
@@ -179,7 +203,7 @@ static bool tcpci_emul_check_int(const struct emul *emul)
 		return true;
 	}
 
-	if (alert & alert_mask & TCPC_REG_POWER_STATUS &&
+	if (alert & alert_mask & TCPC_REG_ALERT_POWER_STATUS &&
 	    data->reg[TCPC_REG_POWER_STATUS] &
 	    data->reg[TCPC_REG_POWER_STATUS_MASK]) {
 		return true;
@@ -328,7 +352,7 @@ void tcpci_emul_set_alert_callback(const struct emul *emul,
 
 /** Check description in emul_tcpci.h */
 void tcpci_emul_set_partner_ops(const struct emul *emul,
-				struct tcpci_emul_partner_ops *partner)
+				const struct tcpci_emul_partner_ops *partner)
 {
 	struct tcpci_emul_data *data = emul->data;
 
@@ -475,8 +499,10 @@ int tcpci_emul_disconnect_partner(const struct emul *emul)
 
 	/* Clear VBUS present in case if source partner is disconnected */
 	tcpci_emul_get_reg(emul, TCPC_REG_POWER_STATUS, &power_status);
-	tcpci_emul_set_reg(emul, TCPC_REG_POWER_STATUS,
-			   power_status & ~TCPC_REG_POWER_STATUS_VBUS_PRES);
+	if (power_status & TCPC_REG_POWER_STATUS_VBUS_PRES) {
+		power_status &= ~TCPC_REG_POWER_STATUS_VBUS_PRES;
+		tcpci_emul_set_reg(emul, TCPC_REG_POWER_STATUS, power_status);
+	}
 
 	return 0;
 }
@@ -674,11 +700,11 @@ static int tcpci_emul_reset(const struct emul *emul)
  */
 static int tcpci_emul_set_i2c_interface_err(const struct emul *emul)
 {
-	struct tcpci_emul_data *data = emul->data;
+	uint16_t fault_status;
 
-	data->reg[TCPC_REG_FAULT_STATUS] |=
-					TCPC_REG_FAULT_STATUS_I2C_INTERFACE_ERR;
-	data->reg[TCPC_REG_ALERT + 1] |= TCPC_REG_ALERT_FAULT >> 8;
+	tcpci_emul_get_reg(emul, TCPC_REG_FAULT_STATUS, &fault_status);
+	fault_status |= TCPC_REG_FAULT_STATUS_I2C_INTERFACE_ERR;
+	tcpci_emul_set_reg(emul, TCPC_REG_FAULT_STATUS, fault_status);
 
 	return tcpci_emul_alert_changed(emul);
 }
@@ -1410,3 +1436,16 @@ static int tcpci_emul_init(const struct emul *emul, const struct device *parent)
 		    &tcpci_emul_cfg_##n, &tcpci_emul_data_##n)
 
 DT_INST_FOREACH_STATUS_OKAY(TCPCI_EMUL)
+
+#ifdef CONFIG_ZTEST_NEW_API
+#define TCPCI_EMUL_RESET_RULE_BEFORE(n) \
+	tcpci_emul_reset(&EMUL_REG_NAME(DT_DRV_INST(n)));
+static void tcpci_emul_reset_rule_before(const struct ztest_unit_test *test,
+					 void *data)
+{
+	ARG_UNUSED(test);
+	ARG_UNUSED(data);
+	DT_INST_FOREACH_STATUS_OKAY(TCPCI_EMUL_RESET_RULE_BEFORE);
+}
+ZTEST_RULE(tcpci_emul_reset, tcpci_emul_reset_rule_before, NULL);
+#endif /* CONFIG_ZTEST_NEW_API */

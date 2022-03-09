@@ -17,8 +17,11 @@
 #include "stubs.h"
 #include "usb_prl_sm.h"
 #include "usb_tc_sm.h"
+#include "chipset.h"
 
 #include "driver/retimer/bb_retimer.h"
+#include "test_state.h"
+#include "utils.h"
 
 #define GPIO_USB_C1_LS_EN_PATH DT_PATH(named_gpios, usb_c1_ls_en)
 #define GPIO_USB_C1_LS_EN_PORT DT_GPIO_PIN(GPIO_USB_C1_LS_EN_PATH, gpios)
@@ -30,14 +33,14 @@
 #define BB_RETIMER_ORD DT_DEP_ORD(EMUL_LABEL)
 
 /** Test is retimer fw update capable function. */
-static void test_bb_is_fw_update_capable(void)
+ZTEST_USER(bb_retimer, test_bb_is_fw_update_capable)
 {
 	/* BB retimer is fw update capable */
 	zassert_true(bb_usb_retimer.is_retimer_fw_update_capable(), NULL);
 }
 
 /** Test is retimer fw update capable function. */
-static void test_bb_set_state(void)
+ZTEST_USER(bb_retimer, test_bb_set_state)
 {
 	struct pd_discovery *disc;
 	uint32_t conn, exp_conn;
@@ -93,7 +96,7 @@ static void test_bb_set_state(void)
 	/* Test USB3 gen2 mode */
 	disc = pd_get_am_discovery_and_notify_access(
 					USBC_PORT_C1, TCPCI_MSG_SOP_PRIME);
-	disc->identity.product_t1.p_rev20.ss = USB_R20_SS_U31_GEN1_GEN2;
+	disc->identity.product_t1.p_rev30.ss = USB_R30_SS_U32_U40_GEN2;
 	prl_set_rev(USBC_PORT_C1, TCPCI_MSG_SOP_PRIME, PD_REV30);
 	zassert_equal(EC_SUCCESS, bb_usb_retimer.set(&usb_muxes[USBC_PORT_C1],
 						     USB_PD_MUX_USB_ENABLED,
@@ -185,7 +188,7 @@ static void test_bb_set_state(void)
 }
 
 /** Test setting different options for DFP role */
-static void test_bb_set_dfp_state(void)
+ZTEST_USER(bb_retimer, test_bb_set_dfp_state)
 {
 	union tbt_mode_resp_device device_resp;
 	union tbt_mode_resp_cable cable_resp;
@@ -216,6 +219,7 @@ static void test_bb_set_dfp_state(void)
 					USBC_PORT_C1, TCPCI_MSG_SOP_PRIME);
 	disc->identity.idh.product_type = IDH_PTYPE_ACABLE;
 	disc->identity.product_t2.a2_rev30.active_elem = ACTIVE_RETIMER;
+	disc->identity.product_t1.p_rev30.ss = USB_R30_SS_U32_U40_GEN2;
 	prl_set_rev(USBC_PORT_C1, TCPCI_MSG_SOP_PRIME, PD_REV30);
 
 	/* Set cable VDO */
@@ -430,7 +434,7 @@ static void test_bb_set_dfp_state(void)
 }
 
 /** Test BB retimer init */
-static void test_bb_init(void)
+ZTEST_USER(bb_retimer, test_bb_init)
 {
 	const struct device *gpio_dev =
 		DEVICE_DT_GET(DT_GPIO_CTLR(GPIO_USB_C1_LS_EN_PATH, gpios));
@@ -441,7 +445,7 @@ static void test_bb_init(void)
 	emul = bb_emul_get(BB_RETIMER_ORD);
 
 	/* Set AP to normal state and wait for chipset task */
-	power_set_state(POWER_S0);
+	test_set_chipset_to_s0();
 
 	/* Setup emulator fail on read */
 	i2c_common_emul_set_read_fail_reg(emul, BB_RETIMER_REG_VENDOR_ID);
@@ -502,25 +506,44 @@ static void test_bb_init(void)
 		      NULL);
 
 	/* Set AP to off state and wait for chipset task */
-	power_set_state(POWER_G3);
+	test_set_chipset_to_g3();
 
 	/* With AP off, init should fail and pins should be unset */
 	zassert_equal(EC_ERROR_NOT_POWERED,
 		      bb_usb_retimer.init(&usb_muxes[USBC_PORT_C1]), NULL);
 	zassert_equal(0, gpio_emul_output_get(gpio_dev, GPIO_USB_C1_LS_EN_PORT),
 		      NULL);
+
+	msleep(1);
 	zassert_equal(0, gpio_emul_output_get(gpio_dev,
 					      GPIO_USB_C1_RT_RST_ODL_PORT),
 		      NULL);
 }
 
-
-void test_suite_bb_retimer(void)
+/** Test BB retimer console command */
+ZTEST_USER(bb_retimer, test_bb_console_cmd)
 {
-	ztest_test_suite(bb_retimer,
-			 ztest_user_unit_test(test_bb_is_fw_update_capable),
-			 ztest_user_unit_test(test_bb_set_state),
-			 ztest_user_unit_test(test_bb_set_dfp_state),
-			 ztest_user_unit_test(test_bb_init));
-	ztest_run_test_suite(bb_retimer);
+	int rv;
+
+	/* Validate well formed shell commands */
+	rv = shell_execute_cmd(get_ec_shell(), "bb 1 r 2");
+	zassert_ok(rv, "rv=%d", rv);
+	rv = shell_execute_cmd(get_ec_shell(), "bb 1 w 2 0");
+	zassert_ok(rv, "rv=%d", rv);
+
+	/* Validate errors for malformed shell commands */
+	rv = shell_execute_cmd(get_ec_shell(), "bb x");
+	zassert_equal(EC_ERROR_PARAM_COUNT, rv, "rv=%d", rv);
+	rv = shell_execute_cmd(get_ec_shell(), "bb x r 2");
+	zassert_equal(EC_ERROR_PARAM1, rv, "rv=%d", rv);
+	rv = shell_execute_cmd(get_ec_shell(), "bb 0 r 2");
+	zassert_equal(EC_ERROR_PARAM1, rv, "rv=%d", rv);
+	rv = shell_execute_cmd(get_ec_shell(), "bb 1 x 2");
+	zassert_equal(EC_ERROR_PARAM2, rv, "rv=%d", rv);
+	rv = shell_execute_cmd(get_ec_shell(), "bb 1 r x");
+	zassert_equal(EC_ERROR_PARAM3, rv, "rv=%d", rv);
+	rv = shell_execute_cmd(get_ec_shell(), "bb 1 w 2 x");
+	zassert_equal(EC_ERROR_PARAM4, rv, "rv=%d", rv);
 }
+
+ZTEST_SUITE(bb_retimer, drivers_predicate_post_main, NULL, NULL, NULL, NULL);

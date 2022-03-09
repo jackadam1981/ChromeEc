@@ -4,12 +4,15 @@
  */
 
 #include "atomic.h"
+#include "console.h"
 #include "chipset.h"
 #include "timer.h"
 #include "usb_dp_alt_mode.h"
 #include "usb_mux.h"
 #include "usb_pd.h"
 #include "usbc_ppc.h"
+
+#include "baseboard_usbc_config.h"
 
 #if CONFIG_USB_PD_3A_PORTS != 1
 #error Corsola reference must have at least one 3.0 A port
@@ -18,10 +21,16 @@
 #define CPRINTS(format, args...) cprints(CC_USBPD, format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_USBPD, format, ## args)
 
+int pd_check_vconn_swap(int port)
+{
+	/* Allow Vconn swap if AP is on. */
+	return chipset_in_state(CHIPSET_STATE_SUSPEND | CHIPSET_STATE_ON);
+}
+
 int svdm_get_hpd_gpio(int port)
 {
 	/* HPD is low active, inverse the result */
-	return !gpio_get_level(GPIO_EC_AP_DP_HPD_ODL);
+	return !gpio_pin_get_dt(GPIO_DT_FROM_NODELABEL(ec_ap_dp_hpd_odl));
 }
 
 void svdm_set_hpd_gpio(int port, int en)
@@ -30,18 +39,10 @@ void svdm_set_hpd_gpio(int port, int en)
 	 * HPD is low active, inverse the en
 	 * TODO: C0&C1 shares the same HPD, implement FCFS policy.
 	 */
-	gpio_set_level(GPIO_EC_AP_DP_HPD_ODL, !en);
+	gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(ec_ap_dp_hpd_odl), !en);
 }
 
-/**
- * Is the port fine to be muxed its DisplayPort lines?
- *
- * Only one port can be muxed to DisplayPort at a time.
- *
- * @param port	Port number of TCPC.
- * @return	1 is fine; 0 is bad as other port is already muxed;
- */
-static int is_dp_muxable(int port)
+int corsola_is_dp_muxable(int port)
 {
 	int i;
 
@@ -66,14 +67,16 @@ __override int svdm_dp_attention(int port, uint32_t *payload)
 
 	dp_status[port] = payload[1];
 
-	if (!is_dp_muxable(port)) {
+	if (!corsola_is_dp_muxable(port)) {
 		/* TODO(waihong): Info user? */
 		CPRINTS("p%d: The other port is already muxed.", port);
 		return 0; /* nak */
 	}
 
-	if (lvl)
-		gpio_set_level_verbose(CC_USBPD, GPIO_DP_AUX_PATH_SEL, port);
+	if (lvl) {
+		gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(dp_aux_path_sel), port);
+		CPRINTS("Set DP_AUX_PATH_SEL: %d", port);
+	}
 
 	if (chipset_in_state(CHIPSET_STATE_ANY_SUSPEND) &&
 	    (irq || lvl))
@@ -135,18 +138,4 @@ __override int svdm_dp_attention(int port, uint32_t *payload)
 
 	/* ack */
 	return 1;
-}
-
-__override void svdm_exit_dp_mode(int port)
-{
-#ifdef CONFIG_USB_PD_DP_HPD_GPIO
-	svdm_set_hpd_gpio(port, 0);
-#endif /* CONFIG_USB_PD_DP_HPD_GPIO */
-	usb_mux_hpd_update(port, USB_PD_MUX_HPD_LVL_DEASSERTED |
-				 USB_PD_MUX_HPD_IRQ_DEASSERTED);
-
-#ifdef USB_PD_PORT_TCPC_MST
-	if (port == USB_PD_PORT_TCPC_MST)
-		baseboard_mst_enable_control(port, 0);
-#endif
 }

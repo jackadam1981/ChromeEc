@@ -33,7 +33,7 @@
 			enum-name = "I2C_PORT_BATTERY";
 		};
 
-		usb_mux {
+		usb-mux {
 			i2c-port = <&i2c3_0>;
 			enum-name = "I2C_PORT_USB_MUX";
 		};
@@ -52,6 +52,11 @@
 			i2c-port = <&i2c6_1>;
 			enum-name = "I2C_PORT_SENSOR";
 		};
+
+		i2c_soc_thermal: soc-thermal {
+			i2c-port = <&i2c7_0>;
+			enum-name = "I2C_PORT_THERMAL_AP";
+		};
 	};
 
 
@@ -59,6 +64,7 @@
 
 &i2c0_0 {
 	status = "okay";
+	label = "I2C_TCPC0";
 	clock-frequency = <I2C_BITRATE_FAST>;
 };
 
@@ -68,6 +74,7 @@
 
 &i2c1_0 {
 	status = "okay";
+	label = "I2C_TCPC1";
 	clock-frequency = <I2C_BITRATE_FAST>;
 };
 
@@ -77,6 +84,7 @@
 
 &i2c2_0 {
 	status = "okay";
+	label = "I2C_BATTERY";
 	clock-frequency = <I2C_BITRATE_STANDARD>;
 };
 
@@ -86,6 +94,7 @@
 
 &i2c3_0 {
 	status = "okay";
+	label = "I2C_USB_MUX";
 	clock-frequency = <I2C_BITRATE_FAST>;
 };
 
@@ -95,6 +104,7 @@
 
 &i2c4_1 {
 	status = "okay";
+	label = "I2C_CHARGER";
 	clock-frequency = <I2C_BITRATE_FAST>;
 };
 
@@ -104,11 +114,17 @@
 
 &i2c5_0 {
 	status = "okay";
+	label = "I2C_EEPROM";
 	clock-frequency = <I2C_BITRATE_FAST>;
 
 	cbi_eeprom: eeprom@50 {
+		compatible = "atmel,at24";
 		reg = <0x50>;
 		label = "EEPROM_CBI";
+		size = <2048>;
+		pagesize = <16>;
+		address-width = <8>;
+		timeout = <5>;
 	};
 };
 
@@ -118,9 +134,20 @@
 
 &i2c6_1 {
 	status = "okay";
+	label = "I2C_SENSOR";
 	clock-frequency = <I2C_BITRATE_FAST>;
 };
 
 &i2c_ctrl6 {
+	status = "okay";
+};
+
+&i2c7_0 {
+	status = "okay";
+	label = "I2C_THERMAL_AP";
+	clock-frequency = <I2C_BITRATE_FAST>;
+};
+
+&i2c_ctrl7 {
 	status = "okay";
 };

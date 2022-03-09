@@ -6,65 +6,50 @@
 #include <device.h>
 #include <ztest.h>
 
-#include "drivers/cros_cbi.h"
+#include "cros_cbi.h"
+#include "test_state.h"
 
-static void test_check_match(void)
+ZTEST(cros_cbi, test_check_match)
 {
-	const struct device *dev = device_get_binding(CROS_CBI_LABEL);
 	int value;
 
-	zassert_not_null(dev, NULL);
-
 	value = cros_cbi_ssfc_check_match(
-		dev, CBI_SSFC_VALUE_ID(DT_NODELABEL(base_sensor_0)));
+		CBI_SSFC_VALUE_ID(DT_NODELABEL(base_sensor_0)));
 	zassert_true(value, "Expected cbi ssfc to match base_sensor_0");
 
 	value = cros_cbi_ssfc_check_match(
-		dev, CBI_SSFC_VALUE_ID(DT_NODELABEL(base_sensor_1)));
+		CBI_SSFC_VALUE_ID(DT_NODELABEL(base_sensor_1)));
 	zassert_false(value, "Expected cbi ssfc not to match base_sensor_1");
 
-	value = cros_cbi_ssfc_check_match(dev, CBI_SSFC_VALUE_COUNT);
+	value = cros_cbi_ssfc_check_match(CBI_SSFC_VALUE_COUNT);
 	zassert_false(value, "Expected cbi ssfc to fail on invalid enum");
 }
 
-static void test_fail_check_match(void)
+ZTEST(cros_cbi, test_fail_check_match)
 {
-	const struct device *dev = device_get_binding(CROS_CBI_LABEL);
 	int value;
 
-	zassert_not_null(dev, NULL);
-
-	value = cros_cbi_ssfc_check_match(dev, CBI_SSFC_VALUE_COUNT);
+	value = cros_cbi_ssfc_check_match(CBI_SSFC_VALUE_COUNT);
 	zassert_false(value,
 		      "Expected cbi ssfc to never match CBI_SSFC_VALUE_COUNT");
 }
 
-static void test_fw_config(void)
+ZTEST(cros_cbi, test_fw_config)
 {
-	const struct device *dev = device_get_binding(CROS_CBI_LABEL);
 	uint32_t value;
 	int ret;
 
-	zassert_not_null(dev, NULL);
-
-	ret = cros_cbi_get_fw_config(dev, FW_CONFIG_FIELD_1, &value);
+	ret = cros_cbi_get_fw_config(FW_CONFIG_FIELD_1, &value);
 	zassert_true(ret == 0,
 		     "Expected no error return from cros_cbi_get_fw_config");
-	zassert_true(value == FW_FIELD_1_A,
-		     "Expected field value to match FW_FIELD_1_A");
+	zassert_true(value == FW_FIELD_1_B,
+		     "Expected field value to match FW_FIELD_1_B as default");
 
-	ret = cros_cbi_get_fw_config(dev, FW_CONFIG_FIELD_2, &value);
+	ret = cros_cbi_get_fw_config(FW_CONFIG_FIELD_2, &value);
 	zassert_true(ret == 0,
 		     "Expected no error return from cros_cbi_get_fw_config");
 	zassert_false(value == FW_FIELD_2_X,
 		      "Expected field value to not match FW_FIELD_2_X");
 }
 
-void test_suite_cros_cbi(void)
-{
-	ztest_test_suite(cros_cbi,
-			 ztest_unit_test(test_check_match),
-			 ztest_unit_test(test_fail_check_match),
-			 ztest_unit_test(test_fw_config));
-	ztest_run_test_suite(cros_cbi);
-}
+ZTEST_SUITE(cros_cbi, drivers_predicate_post_main, NULL, NULL, NULL, NULL);

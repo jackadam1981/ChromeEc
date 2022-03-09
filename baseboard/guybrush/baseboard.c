@@ -591,21 +591,21 @@ void tcpc_alert_event(enum gpio_signal signal)
 
 static void reset_nct38xx_port(int port)
 {
-	enum gpio_signal reset_gpio_l;
-	int a_vbus, a_limit_sdp, a1_retimer_en;
+	int rv;
+	int saved_state[IOEX_COUNT] = {0};
+	enum gpio_signal reset_gpio_l = (port == USBC_PORT_C0) ?
+						      GPIO_USB_C0_TCPC_RST_L :
+						      GPIO_USB_C1_TCPC_RST_L;
 
-	/* Save type-A GPIO values to restore after reset */
-	if (port == USBC_PORT_C0) {
-		reset_gpio_l = GPIO_USB_C0_TCPC_RST_L;
-		ioex_get_level(IOEX_EN_PP5000_USB_A0_VBUS, &a_vbus);
-		ioex_get_level(IOEX_USB_A0_LIMIT_SDP, &a_limit_sdp);
-	} else if (port == USBC_PORT_C1) {
-		reset_gpio_l = GPIO_USB_C1_TCPC_RST_L;
-		ioex_get_level(IOEX_EN_PP5000_USB_A1_VBUS_DB, &a_vbus);
-		ioex_get_level(IOEX_USB_A1_LIMIT_SDP_DB, &a_limit_sdp);
-		ioex_get_level(IOEX_USB_A1_RETIMER_EN, &a1_retimer_en);
-	} else {
-		/* Invalid port: do nothing */
+	if (port < 0 || port > USBC_PORT_COUNT) {
+		CPRINTSUSB("%s invalid port %d", __func__, port);
+		return;
+	}
+
+	/* Save ioexpander GPIO state */
+	rv = ioex_save_gpio_state(port, saved_state, ARRAY_SIZE(saved_state));
+	if (rv) {
+		CPRINTSUSB("%s failed to save ioex state rv=%d", __func__, rv);
 		return;
 	}
 
@@ -618,16 +618,15 @@ static void reset_nct38xx_port(int port)
 
 	/* Re-init ioex after resetting the TCPC */
 	ioex_init(port);
-	if (port == USBC_PORT_C0) {
-		ioex_set_level(IOEX_EN_PP5000_USB_A0_VBUS, a_vbus);
-		ioex_set_level(IOEX_USB_A0_LIMIT_SDP, a_limit_sdp);
-	} else {
-		ioex_set_level(IOEX_EN_PP5000_USB_A1_VBUS_DB, a_vbus);
-		ioex_set_level(IOEX_USB_A1_LIMIT_SDP_DB, a_limit_sdp);
-		ioex_set_level(IOEX_USB_A1_RETIMER_EN, a1_retimer_en);
+	/* Restore ioexpander GPIO state */
+	rv = ioex_restore_gpio_state(port, saved_state,
+				     ARRAY_SIZE(saved_state));
+	if (rv) {
+		CPRINTSUSB("%s failed to restore ioex state rv=%d", __func__,
+			   rv);
+		return;
 	}
 }
-
 
 void board_reset_pd_mcu(void)
 {
@@ -752,6 +751,7 @@ void board_pwrbtn_to_pch(int level)
 void board_hibernate(void)
 {
 	int port;
+	enum ec_error_list ret;
 
 	/*
 	 * If we are charging, then drop the Vbus level down to 5V to ensure
@@ -768,7 +768,8 @@ void board_hibernate(void)
 	}
 
 	/* Try to put our battery fuel gauge into sleep mode */
-	if (battery_sleep_fuel_gauge() != EC_SUCCESS)
+	ret = battery_sleep_fuel_gauge();
+	if ((ret != EC_SUCCESS) && (ret != EC_ERROR_UNIMPLEMENTED))
 		cprints(CC_SYSTEM, "Failed to send battery sleep command");
 }
 

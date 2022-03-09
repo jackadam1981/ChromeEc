@@ -7,9 +7,12 @@
 
 #include "battery_fuel_gauge.h"
 #include "charger.h"
+#include "battery.h"
 #include "bq25710.h"
 #include "common.h"
 #include "driver/retimer/bb_retimer_public.h"
+#include "extpower.h"
+#include "gpio.h"
 #include "hooks.h"
 #include "ioexpander.h"
 #include "isl9241.h"
@@ -327,6 +330,32 @@ static void enable_h1_irq(void)
 }
 DECLARE_HOOK(HOOK_INIT, enable_h1_irq, HOOK_PRIO_LAST);
 
+void set_charger_system_voltage(void)
+{
+	switch (ADL_RVP_BOARD_ID(board_get_version())) {
+	case ADLN_LP5_ERB_SKU_BOARD_ID:
+	case ADLN_LP5_RVP_SKU_BOARD_ID:
+		/*
+		 * As per b:196184163 configure the PPVAR_SYS depend
+		 * on AC or AC+battery
+		 */
+		if (extpower_is_present() && battery_is_present()) {
+			bq25710_set_min_system_voltage(CHARGER_SOLO,
+				battery_get_info()->voltage_min);
+		} else {
+			bq25710_set_min_system_voltage(CHARGER_SOLO,
+				battery_get_info()->voltage_max);
+		}
+		break;
+
+	/* Add additional board SKUs */
+	default:
+		break;
+	}
+}
+DECLARE_HOOK(HOOK_AC_CHANGE, set_charger_system_voltage,
+		HOOK_PRIO_DEFAULT);
+
 static void configure_charger(void)
 {
 	switch (ADL_RVP_BOARD_ID(board_get_version())) {
@@ -335,6 +364,7 @@ static void configure_charger(void)
 		/* charger chip BQ25720 support */
 		chg_chips[0].i2c_addr_flags = BQ25710_SMBUS_ADDR1_FLAGS;
 		chg_chips[0].drv = &bq25710_drv;
+		set_charger_system_voltage();
 		break;
 
 	/* Add additional board SKUs */
@@ -501,12 +531,12 @@ __override void board_pre_task_i2c_peripheral_init(void)
 	/* Make sure SBU are routed to CCD or AUX based on CCD status at init */
 	board_connect_c0_sbu_deferred();
 
+	/* Configure battery type */
+	configure_battery_type();
+
 	/* Reconfigure board specific charger drivers */
 	configure_charger();
 
 	/* Configure board specific retimer & mux */
 	configure_retimer_usbmux();
-
-	/* Configure battery type */
-	configure_battery_type();
 }

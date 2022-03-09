@@ -12,6 +12,7 @@
 #include "charger/isl9241_public.h"
 #include "config.h"
 #include "fff.h"
+#include "gpio/gpio_int.h"
 #include "hooks.h"
 #include "i2c/i2c.h"
 #include "power.h"
@@ -54,13 +55,6 @@ BUILD_ASSERT(ARRAY_SIZE(pi3usb9201_bc12_chips) == USBC_PORT_COUNT);
 
 /* Charger Chip Configuration */
 const struct charger_config_t chg_chips[] = {
-#ifdef CONFIG_PLATFORM_EC_CHARGER_ISL9241
-	{
-		.i2c_port = I2C_PORT_CHARGER,
-		.i2c_addr_flags = ISL9241_ADDR_FLAGS,
-		.drv = &isl9241_drv,
-	},
-#endif
 #ifdef CONFIG_PLATFORM_EC_CHARGER_ISL9238
 	{
 		.i2c_port = I2C_PORT_CHARGER,
@@ -265,8 +259,9 @@ struct bb_usb_control bb_controls[] = {
 		/* USB-C port 0 doesn't have a retimer */
 	},
 	[USBC_PORT_C1] = {
-		.usb_ls_en_gpio = GPIO_USB_C1_LS_EN,
-		.retimer_rst_gpio = GPIO_USB_C1_RT_RST_ODL,
+		.usb_ls_en_gpio = GPIO_SIGNAL(DT_NODELABEL(usb_c1_ls_en)),
+		.retimer_rst_gpio =
+			 GPIO_SIGNAL(DT_NODELABEL(usb_c1_rt_rst_odl)),
 	},
 };
 BUILD_ASSERT(ARRAY_SIZE(bb_controls) == USBC_PORT_COUNT);
@@ -295,7 +290,7 @@ struct ppc_config_t ppc_chips[] = {
 	[USBC_PORT_C1] = {
 		.i2c_port = I2C_PORT_USB_C1,
 		.i2c_addr_flags = SYV682X_ADDR1_FLAGS,
-		.frs_en = GPIO_USB_C1_FRS_EN,
+		.frs_en = GPIO_SIGNAL(DT_NODELABEL(gpio_usb_c1_frs_en)),
 		.drv = &syv682x_drv,
 	},
 };
@@ -312,93 +307,30 @@ uint16_t tcpc_get_alert_status(void)
 	 * Check which port has the ALERT line set and ignore if that TCPC has
 	 * its reset line active.
 	 */
-	if (!gpio_get_level(GPIO_USB_C0_TCPC_INT_ODL)) {
-		if (gpio_get_level(GPIO_USB_C0_TCPC_RST_L) != 0)
+	if (!gpio_pin_get_dt(GPIO_DT_FROM_NODELABEL(usb_c0_tcpc_int_odl))) {
+		if (gpio_pin_get_dt(
+		GPIO_DT_FROM_NODELABEL(usb_c0_tcpc_rst_l)) != 0)
 			status |= PD_STATUS_TCPC_ALERT_0;
 	}
 
-	if (!gpio_get_level(GPIO_USB_C1_TCPC_INT_ODL)) {
-		if (gpio_get_level(GPIO_USB_C1_TCPC_RST_L) != 0)
+	if (!gpio_pin_get_dt(GPIO_DT_FROM_NODELABEL(usb_c1_tcpc_int_odl))) {
+		if (gpio_pin_get_dt(
+		GPIO_DT_FROM_NODELABEL(usb_c1_tcpc_rst_l)) != 0)
 			status |= PD_STATUS_TCPC_ALERT_1;
 	}
 
 	return status;
 }
 
-enum power_state power_chipset_init(void)
-{
-	return POWER_G3;
-}
-
-static enum power_state forced_state;
-static bool force_state;
-
-void force_power_state(bool force, enum power_state state)
-{
-	forced_state = state;
-	force_state = force;
-
-	if (force) {
-		task_wake(TASK_ID_CHIPSET);
-		/*
-		 * TODO(b/201420132) - setting power state requires to wake up
-		 * TASK_ID_CHIPSET Sleep is required to run chipset task before
-		 * continuing with test
-		 */
-		k_msleep(1);
-	}
-}
-
-enum power_state power_handle_state(enum power_state state)
-{
-	switch (state) {
-	case POWER_G3S5:
-	case POWER_S5S3:
-	case POWER_S3S0:
-	case POWER_S0S3:
-	case POWER_S3S5:
-	case POWER_S5G3:
-#ifdef CONFIG_POWER_S0IX
-	case POWER_S0ixS0:
-	case POWER_S0S0ix:
-#endif
-		/*
-		 * Wait for event in transition states to prevent dead loop in
-		 * chipset task
-		 */
-		task_wait_event(-1);
-		break;
-	default:
-		break;
-	}
-
-	if (force_state) {
-		state = forced_state;
-	}
-
-	return state;
-}
-
-void chipset_reset(enum chipset_shutdown_reason reason)
-{
-}
-
-void chipset_force_shutdown(enum chipset_shutdown_reason reason)
-{
-}
-
-/* Power signals list. Must match order of enum power_signal. */
-const struct power_signal_info power_signal_list[] = {};
-
 void tcpc_alert_event(enum gpio_signal signal)
 {
 	int port;
 
 	switch (signal) {
-	case GPIO_USB_C0_TCPC_INT_ODL:
+	case GPIO_SIGNAL(DT_NODELABEL(usb_c0_tcpc_int_odl)):
 		port = 0;
 		break;
-	case GPIO_USB_C1_TCPC_INT_ODL:
+	case GPIO_SIGNAL(DT_NODELABEL(usb_c1_tcpc_int_odl)):
 		port = 1;
 		break;
 	default:
@@ -411,10 +343,10 @@ void tcpc_alert_event(enum gpio_signal signal)
 void ppc_alert(enum gpio_signal signal)
 {
 	switch (signal) {
-	case GPIO_USB_C0_PPC_INT_ODL:
+	case GPIO_SIGNAL(DT_NODELABEL(gpio_usb_c0_ppc_int)):
 		ppc_chips[USBC_PORT_C0].drv->interrupt(USBC_PORT_C0);
 		break;
-	case GPIO_USB_C1_PPC_INT_ODL:
+	case GPIO_SIGNAL(DT_NODELABEL(gpio_usb_c1_ppc_int)):
 		ppc_chips[USBC_PORT_C1].drv->interrupt(USBC_PORT_C1);
 		break;
 	default:
@@ -428,27 +360,66 @@ void ppc_alert(enum gpio_signal signal)
 static void stubs_interrupt_init(void)
 {
 	/* Enable TCPC interrupts. */
-	gpio_enable_interrupt(GPIO_USB_C0_TCPC_INT_ODL);
-	gpio_enable_interrupt(GPIO_USB_C1_TCPC_INT_ODL);
+	gpio_enable_dt_interrupt(GPIO_INT_FROM_NODELABEL(int_usb_c0));
+	gpio_enable_dt_interrupt(GPIO_INT_FROM_NODELABEL(int_usb_c1));
 
 	cprints(CC_USB, "Resetting TCPCs...");
 	cflush();
 
 	/* Reset generic TCPCI on port 0. */
-	gpio_set_level(GPIO_USB_C0_TCPC_RST_L, 0);
+	gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(usb_c0_tcpc_rst_l), 0);
 	msleep(1);
-	gpio_set_level(GPIO_USB_C0_TCPC_RST_L, 1);
+	gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(usb_c0_tcpc_rst_l), 1);
 
 	/* Reset PS8XXX on port 1. */
-	gpio_set_level(GPIO_USB_C1_TCPC_RST_L, 0);
+	gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(usb_c1_tcpc_rst_l), 0);
 	msleep(PS8XXX_RESET_DELAY_MS);
-	gpio_set_level(GPIO_USB_C1_TCPC_RST_L, 1);
+	gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(usb_c1_tcpc_rst_l), 1);
 
 	/* Enable PPC interrupts. */
-	gpio_enable_interrupt(GPIO_USB_C0_PPC_INT_ODL);
-	gpio_enable_interrupt(GPIO_USB_C1_PPC_INT_ODL);
+	gpio_enable_dt_interrupt(GPIO_INT_FROM_NODELABEL(int_usb_c0_ppc));
+	gpio_enable_dt_interrupt(GPIO_INT_FROM_NODELABEL(int_usb_c1_ppc));
 
 	/* Enable SwitchCap interrupt */
-	gpio_enable_interrupt(GPIO_SWITCHCAP_PG_INT_L);
+	gpio_enable_dt_interrupt(GPIO_INT_FROM_NODELABEL(int_switchcap_pg));
 }
 DECLARE_HOOK(HOOK_INIT, stubs_interrupt_init, HOOK_PRIO_INIT_I2C + 1);
+
+void board_set_switchcap_power(int enable)
+{
+	gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_switchcap_on), enable);
+	/* TODO(b/217554681): So, the ln9310 emul should probably be setting
+	 * this instead of setting it here.
+	 */
+	gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_src_vph_pwr_pg), enable);
+	gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_mb_power_good), enable);
+}
+
+int board_is_switchcap_enabled(void)
+{
+	return gpio_pin_get_dt(GPIO_DT_FROM_NODELABEL(gpio_switchcap_on));
+}
+
+int board_is_switchcap_power_good(void)
+{
+	return gpio_pin_get_dt(GPIO_DT_FROM_NODELABEL(gpio_src_vph_pwr_pg));
+}
+
+void sys_arch_reboot(int type)
+{
+	ARG_UNUSED(type);
+}
+
+/* GPIO TEST interrupt handler */
+bool gpio_test_interrupt_triggered;
+void gpio_test_interrupt(enum gpio_signal signal)
+{
+	ARG_UNUSED(signal);
+	printk("%s called\n", __func__);
+	gpio_test_interrupt_triggered = true;
+}
+
+int clock_get_freq(void)
+{
+	return 16000000;
+}

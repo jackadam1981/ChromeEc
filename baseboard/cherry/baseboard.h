@@ -31,7 +31,7 @@
 
 /* Chipset */
 #define CONFIG_CMD_AP_RESET_LOG
-#define CONFIG_CMD_POWERINDEBUG
+#undef CONFIG_CMD_POWERINDEBUG
 #define CONFIG_HOST_COMMAND_STATUS
 #define CONFIG_LOW_POWER_IDLE
 #define CONFIG_LOW_POWER_S0
@@ -125,7 +125,6 @@
 #define CONFIG_USB_DRP_ACC_TRYSRC
 #define CONFIG_USBC_RETIMER_PS8802 /* C0 */
 #define CONFIG_USB_MUX_ANX3443 /* C1 */
-#define CONFIG_USB_MUX_VIRTUAL
 #define CONFIG_USB_PD_ALT_MODE
 #define CONFIG_USB_PD_ALT_MODE_DFP
 #define CONFIG_USB_PD_DECODE_SOP
@@ -234,14 +233,6 @@ enum adc_channel {
 enum temp_sensor_id {
 	TEMP_SENSOR_CHARGER,
 	TEMP_SENSOR_COUNT,
-};
-
-enum pwm_channel {
-	PWM_CH_LED1,
-	PWM_CH_LED2,
-	PWM_CH_LED3,
-	PWM_CH_KBLIGHT,
-	PWM_CH_COUNT,
 };
 
 void board_reset_pd_mcu(void);

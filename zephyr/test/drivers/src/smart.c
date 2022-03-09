@@ -9,17 +9,19 @@
 #include <shell/shell_uart.h>
 
 #include "common.h"
+#include "console.h"
 #include "i2c.h"
 #include "emul/emul_common_i2c.h"
 #include "emul/emul_smart_battery.h"
 
 #include "battery.h"
 #include "battery_smart.h"
+#include "test_state.h"
 
 #define BATTERY_ORD	DT_DEP_ORD(DT_NODELABEL(battery))
 
 /** Test all simple getters */
-static void test_battery_getters(void)
+ZTEST_USER(smart_battery, test_battery_getters)
 {
 	struct sbat_emul_bat_data *bat;
 	struct i2c_emul *emul;
@@ -76,7 +78,7 @@ static void test_battery_getters(void)
 }
 
 /** Test getting capacity. These functions should force mAh mode */
-static void test_battery_get_capacity(void)
+ZTEST_USER(smart_battery, test_battery_get_capacity)
 {
 	struct sbat_emul_bat_data *bat;
 	struct i2c_emul *emul;
@@ -114,7 +116,7 @@ static void test_battery_get_capacity(void)
 
 
 /** Test battery status */
-static void test_battery_status(void)
+ZTEST_USER(smart_battery, test_battery_status)
 {
 	struct sbat_emul_bat_data *bat;
 	struct i2c_emul *emul;
@@ -140,7 +142,7 @@ static void test_battery_status(void)
 }
 
 /** Test wait for stable function */
-static void test_battery_wait_for_stable(void)
+ZTEST_USER(smart_battery, test_battery_wait_for_stable)
 {
 	struct i2c_emul *emul;
 
@@ -156,7 +158,7 @@ static void test_battery_wait_for_stable(void)
 }
 
 /** Test manufacture date */
-static void test_battery_manufacture_date(void)
+ZTEST_USER(smart_battery, test_battery_manufacture_date)
 {
 	struct sbat_emul_bat_data *bat;
 	struct i2c_emul *emul;
@@ -180,7 +182,7 @@ static void test_battery_manufacture_date(void)
 }
 
 /** Test time at rate */
-static void test_battery_time_at_rate(void)
+ZTEST_USER(smart_battery, test_battery_time_at_rate)
 {
 	struct sbat_emul_bat_data *bat;
 	struct i2c_emul *emul;
@@ -238,7 +240,7 @@ static void test_battery_time_at_rate(void)
 }
 
 /** Test battery get params */
-static void test_battery_get_params(void)
+ZTEST_USER(smart_battery, test_battery_get_params)
 {
 	struct sbat_emul_bat_data *bat;
 	struct batt_params batt;
@@ -247,10 +249,6 @@ static void test_battery_get_params(void)
 
 	emul = sbat_emul_get_ptr(BATTERY_ORD);
 	bat = sbat_emul_get_bat_data(emul);
-
-	/* Battery wants to charge */
-	bat->desired_charg_cur = 1000;
-	bat->desired_charg_volt = 5000;
 
 	/* Fail temperature read */
 	i2c_common_emul_set_read_fail_reg(emul, SB_TEMPERATURE);
@@ -351,7 +349,7 @@ static int mfgacc_read_func(struct i2c_emul *emul, int reg, uint8_t *val,
 }
 
 /** Test battery manufacturer access */
-static void test_battery_mfacc(void)
+ZTEST_USER(smart_battery, test_battery_mfacc)
 {
 	struct sbat_emul_bat_data *bat;
 	struct mfgacc_data mfacc_conf;
@@ -422,7 +420,7 @@ static void test_battery_mfacc(void)
 }
 
 /** Test battery fake charge level set and read */
-static void test_battery_fake_charge(void)
+ZTEST_USER(smart_battery, test_battery_fake_charge)
 {
 	struct sbat_emul_bat_data *bat;
 	struct batt_params batt;
@@ -437,28 +435,28 @@ static void test_battery_fake_charge(void)
 
 	/* Success on command with no argument */
 	zassert_equal(EC_SUCCESS,
-		      shell_execute_cmd(shell_backend_uart_get_ptr(),
+		      shell_execute_cmd(get_ec_shell(),
 					"battfake"), NULL);
 
 	/* Fail on command with argument which is not a number */
 	zassert_equal(EC_ERROR_PARAM1,
-		      shell_execute_cmd(shell_backend_uart_get_ptr(),
+		      shell_execute_cmd(get_ec_shell(),
 					"battfake test"), NULL);
 
 	/* Fail on command with charge level above 100% */
 	zassert_equal(EC_ERROR_PARAM1,
-		      shell_execute_cmd(shell_backend_uart_get_ptr(),
+		      shell_execute_cmd(get_ec_shell(),
 					"battfake 123"), NULL);
 
 	/* Fail on command with charge level below 0% */
 	zassert_equal(EC_ERROR_PARAM1,
-		      shell_execute_cmd(shell_backend_uart_get_ptr(),
+		      shell_execute_cmd(get_ec_shell(),
 					"battfake -23"), NULL);
 
 	/* Set fake charge level */
 	fake_charge = 65;
 	zassert_equal(EC_SUCCESS,
-		      shell_execute_cmd(shell_backend_uart_get_ptr(),
+		      shell_execute_cmd(get_ec_shell(),
 					"battfake 65"), NULL);
 
 	/* Test that fake charge level is applied */
@@ -486,7 +484,7 @@ static void test_battery_fake_charge(void)
 
 	/* Disable fake charge level */
 	zassert_equal(EC_SUCCESS,
-		      shell_execute_cmd(shell_backend_uart_get_ptr(),
+		      shell_execute_cmd(get_ec_shell(),
 					"battfake -1"), NULL);
 
 	/* Test that fake charge level is not applied */
@@ -501,7 +499,7 @@ static void test_battery_fake_charge(void)
 }
 
 /** Test battery fake temperature set and read */
-static void test_battery_fake_temperature(void)
+ZTEST_USER(smart_battery, test_battery_fake_temperature)
 {
 	struct sbat_emul_bat_data *bat;
 	struct batt_params batt;
@@ -514,28 +512,28 @@ static void test_battery_fake_temperature(void)
 
 	/* Success on command with no argument */
 	zassert_equal(EC_SUCCESS,
-		      shell_execute_cmd(shell_backend_uart_get_ptr(),
+		      shell_execute_cmd(get_ec_shell(),
 					"batttempfake"), NULL);
 
 	/* Fail on command with argument which is not a number */
 	zassert_equal(EC_ERROR_PARAM1,
-		      shell_execute_cmd(shell_backend_uart_get_ptr(),
+		      shell_execute_cmd(get_ec_shell(),
 					"batttempfake test"), NULL);
 
 	/* Fail on command with too high temperature (above 500.0 K) */
 	zassert_equal(EC_ERROR_PARAM1,
-		      shell_execute_cmd(shell_backend_uart_get_ptr(),
+		      shell_execute_cmd(get_ec_shell(),
 					"batttempfake 5001"), NULL);
 
 	/* Fail on command with too low temperature (below 0 K) */
 	zassert_equal(EC_ERROR_PARAM1,
-		      shell_execute_cmd(shell_backend_uart_get_ptr(),
+		      shell_execute_cmd(get_ec_shell(),
 					"batttempfake -23"), NULL);
 
 	/* Set fake temperature */
 	fake_temp = 2840;
 	zassert_equal(EC_SUCCESS,
-		      shell_execute_cmd(shell_backend_uart_get_ptr(),
+		      shell_execute_cmd(get_ec_shell(),
 					"batttempfake 2840"), NULL);
 
 	/* Test that fake temperature is applied */
@@ -547,7 +545,7 @@ static void test_battery_fake_temperature(void)
 
 	/* Disable fake temperature */
 	zassert_equal(EC_SUCCESS,
-		      shell_execute_cmd(shell_backend_uart_get_ptr(),
+		      shell_execute_cmd(get_ec_shell(),
 					"batttempfake -1"), NULL);
 
 	/* Test that fake temperature is not applied */
@@ -558,18 +556,4 @@ static void test_battery_fake_temperature(void)
 		      bat->temp, batt.temperature);
 }
 
-void test_suite_smart_battery(void)
-{
-	ztest_test_suite(smart_battery,
-			 ztest_user_unit_test(test_battery_getters),
-			 ztest_user_unit_test(test_battery_get_capacity),
-			 ztest_user_unit_test(test_battery_status),
-			 ztest_user_unit_test(test_battery_wait_for_stable),
-			 ztest_user_unit_test(test_battery_manufacture_date),
-			 ztest_user_unit_test(test_battery_time_at_rate),
-			 ztest_user_unit_test(test_battery_get_params),
-			 ztest_user_unit_test(test_battery_mfacc),
-			 ztest_user_unit_test(test_battery_fake_charge),
-			 ztest_user_unit_test(test_battery_fake_temperature));
-	ztest_run_test_suite(smart_battery);
-}
+ZTEST_SUITE(smart_battery, drivers_predicate_post_main, NULL, NULL, NULL, NULL);

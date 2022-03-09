@@ -3,14 +3,17 @@
  * found in the LICENSE file.
  */
 
+#include <cros/binman.dtsi>
 #include <cros/thermistor/thermistor.dtsi>
 #include <dt-bindings/gpio_defines.h>
 #include <freq.h>
 
 / {
 	chosen {
-		cros-ec,adc = &adc0;
 		cros-ec,espi = &espi0;
+		cros-ec,watchdog = &wdt_counter;
+		cros-ec,raw-kb = &cros_kb_raw;
+		cros-ec,flash-controller = &cros_flash;
 	};
 
 	aliases {
@@ -18,15 +21,18 @@
 		bmi160-int = &ms_bmi160_accel;
 		lis2dw12-int = &ms_lis2dw12_accel;
 		tcs3400-int = &tcs3400_clear;
+		gpio-wp = &gpio_wp_l;
+		gpio-kbd-kso2 = &gpio_ec_kso_02_inv;
 	};
+	/*
+	 * Keep these GPIOs in pin order.
+	 * If you need to add one, make sure you increase
+	 * ngpios in the gpio0 node further down.
+	 */
 	named-gpios {
 		compatible = "named-gpios";
 
-		ec_batt_pres_odl {
-			gpios = <&gpio0 1 GPIO_INPUT>;
-			enum-name = "GPIO_BATT_PRES_ODL";
-		};
-		acok_od {
+		gpio_acok_od: acok_od {
 			gpios = <&gpio0 2 GPIO_INPUT>;
 			enum-name = "GPIO_AC_PRESENT";
 		};
@@ -35,61 +41,162 @@
 		 * protection.
 		 */
 		gpio_wp_l: wp_l {
-			#gpio-cells = <0>;
-			gpios = <&gpio0 3 (GPIO_INPUT | GPIO_OUTPUT)>;
-			enum-name = "GPIO_WP_L";
+			gpios = <&gpio0 3 (GPIO_INPUT | GPIO_OUTPUT |
+					   GPIO_ACTIVE_LOW)>;
+		};
+		gpio_ec_kso_02_inv: ec_kso_02_inv {
+			gpios = <&gpio0 4 (GPIO_INPUT | GPIO_OUT_LOW)>;
 		};
 		pg_ec_dsw_pwrok {
 			gpios = <&gpio0 4 GPIO_INPUT>;
-			enum-name = "GPIO_PG_EC_DSW_PWROK";
+			enum-name = "GPIO_TEMP_SENSOR_POWER";
 		};
-		ec_pch_wake_odl {
+		gpio_ec_pch_wake_odl: ec_pch_wake_odl {
 			gpios = <&gpio0 5 GPIO_OUT_HIGH>;
-			enum-name = "GPIO_EC_PCH_WAKE_ODL";
 		};
 		/* Setup USB C1 pin as output to check their state in test */
-		usb_c1_ls_en {
+		usb_c1_ls_en: usb_c1_ls_en {
 			gpios = <&gpio0 6 (GPIO_INPUT_PULL_UP |
 					   GPIO_OUTPUT)>;
-			enum-name = "GPIO_USB_C1_LS_EN";
 		};
-		usb_c1_rt_rst_odl {
+		usb_c1_rt_rst_odl: usb_c1_rt_rst_odl {
 			gpios = <&gpio0 7 (GPIO_OUTPUT | GPIO_INPUT)>;
-			enum-name = "GPIO_USB_C1_RT_RST_ODL";
 		};
 		gpio_usb_c1_frs_en: usb_c1_frs_en {
 			gpios = <&gpio0 8 (GPIO_OUT_LOW)>;
-			enum-name = "GPIO_USB_C1_FRS_EN";
 		};
 		usb_c0_tcpc_int_odl: usb_c0_tcpc_int_odl {
 			gpios = <&gpio0 9 GPIO_INPUT>;
-			enum-name = "GPIO_USB_C0_TCPC_INT_ODL";
 		};
 		usb_c1_tcpc_int_odl: usb_c1_tcpc_int_odl {
 			gpios = <&gpio0 10 GPIO_INPUT>;
-			enum-name = "GPIO_USB_C1_TCPC_INT_ODL";
 		};
-		usb_c0_tcpc_rst_l {
+		usb_c0_tcpc_rst_l: usb_c0_tcpc_rst_l {
 			gpios = <&gpio0 11 (GPIO_OUT_HIGH | GPIO_INPUT)>;
-			enum-name = "GPIO_USB_C0_TCPC_RST_L";
 		};
-		usb_c1_tcpc_rst_l {
+		usb_c1_tcpc_rst_l: usb_c1_tcpc_rst_l {
 			gpios = <&gpio0 12 (GPIO_OUT_HIGH | GPIO_INPUT)>;
-			enum-name = "GPIO_USB_C1_TCPC_RST_L";
 		};
 		gpio_usb_c1_ppc_int: usb_c1_ppc_int {
 			gpios = <&gpio0 13 GPIO_INPUT>;
-			enum-name = "GPIO_USB_C1_PPC_INT_ODL";
 		};
 		gpio_usb_c0_ppc_int: usb_c0_ppc_int {
 			gpios = <&gpio0 14 GPIO_INPUT>;
-			enum-name = "GPIO_USB_C0_PPC_INT_ODL";
 		};
 		gpio_switchcap_pg_int_l: switchcap_pg_int_l {
-			gpios = <&gpio0 15 GPIO_INPUT>;
-			enum-name = "GPIO_SWITCHCAP_PG_INT_L";
+			gpios = <&gpio0 15 (GPIO_OUTPUT | GPIO_INPUT)>;
+		};
+		gpio_ap_rst_l: ap_rst_l {
+			gpios = <&gpio0 16 GPIO_INPUT>;
+			enum-name = "GPIO_AP_RST_L";
+		};
+		gpio_ps_hold: ps_hold {
+			gpios = <&gpio0 17 (GPIO_INPUT | GPIO_PULL_DOWN)>;
+			enum-name = "GPIO_PS_HOLD";
+		};
+		gpio_mb_power_good: mb_power_good {
+			gpios = <&gpio0 18 (GPIO_OUTPUT | GPIO_INPUT |
+				GPIO_PULL_DOWN)>;
+			enum-name = "GPIO_POWER_GOOD";
+		};
+		gpio_ap_suspend: ap_suspend {
+			gpios = <&gpio0 19 GPIO_INPUT>;
+			enum-name = "GPIO_AP_SUSPEND";
+		};
+		gpio_pmic_kpd_pwr_odl: pmic_kpd_pwr_odl {
+			gpios = <&gpio0 20 GPIO_ODR_HIGH>;
+			enum-name = "GPIO_PMIC_KPD_PWR_ODL";
+		};
+		gpio_pmic_resin_l: pmic_resin_l {
+			gpios = <&gpio0 21 GPIO_ODR_HIGH>;
+			enum-name = "GPIO_PMIC_RESIN_L";
+		};
+		gpio_warm_reset_l: warm_reset_l {
+			gpios = <&gpio0 22 GPIO_INPUT>;
+			enum-name = "GPIO_WARM_RESET_L";
+		};
+		gpio_lid_open_ec: lid_open_ec {
+			/* GPIO_PULL_UP will cause this start asserted. */
+			gpios = <&gpio0 23 (GPIO_INPUT | GPIO_PULL_UP)>;
+			enum-name = "GPIO_LID_OPEN";
+		};
+		gpio_switchcap_on: switchcap_on {
+			gpios = <&gpio0 24 (GPIO_INPUT | GPIO_OUT_LOW)>;
+		};
+		gpio_ec_pwr_btn_odl: ec_pwr_btn_odl {
+			/* GPIO_PULL_UP will cause this start asserted,
+			 * i.e. not pressed.
+			 */
+			gpios = <&gpio0 25 (GPIO_INPUT | GPIO_PULL_UP)>;
+			enum-name = "GPIO_POWER_BUTTON_L";
+		};
+		gpio_src_vph_pwr_pg: src_vph_pwr_pg {
+			gpios = <&gpio0 26 (GPIO_INPUT | GPIO_OUTPUT |
+				GPIO_PULL_DOWN)>;
+		};
+		gpio_test: test {
+			gpios = <&gpio0 27 (GPIO_INPUT | GPIO_OUTPUT)>;
+		};
+		ec_batt_pres_odl {
+			gpios = <&gpio0 28 GPIO_INPUT>;
+			enum-name = "GPIO_BATT_PRES_ODL";
+		};
+		gpio_no_init: no_init {
+			gpios = <&gpio0 29 (GPIO_ACTIVE_LOW | GPIO_INPUT)>;
+			no-auto-init;
 		};
 	};
+
+	gpio-interrupts {
+		compatible = "cros-ec,gpio-interrupts";
+
+		int_ac_present: ac_present {
+			irq-pin = <&gpio_acok_od>;
+			flags = <GPIO_INT_EDGE_BOTH>;
+			handler = "extpower_interrupt";
+		};
+		int_usb_c0: usb_c0 {
+			irq-pin = <&usb_c0_tcpc_int_odl>;
+			flags = <GPIO_INT_EDGE_FALLING>;
+			handler = "tcpc_alert_event";
+		};
+		int_usb_c1: usb_c1 {
+			irq-pin = <&usb_c1_tcpc_int_odl>;
+			flags = <GPIO_INT_EDGE_FALLING>;
+			handler = "tcpc_alert_event";
+		};
+		int_usb_c0_ppc: usb_c0_ppc {
+			irq-pin = <&gpio_usb_c0_ppc_int>;
+			flags = <GPIO_INT_EDGE_FALLING>;
+			handler = "ppc_alert";
+		};
+		int_usb_c1_ppc: usb_c1_ppc {
+			irq-pin = <&gpio_usb_c1_ppc_int>;
+			flags = <GPIO_INT_EDGE_FALLING>;
+			handler = "ppc_alert";
+		};
+		int_switchcap_pg: switchcap_pg {
+			irq-pin = <&gpio_switchcap_pg_int_l>;
+			flags = <GPIO_INT_EDGE_FALLING>;
+			handler = "ln9310_interrupt";
+		};
+		int_gpio_test: test {
+			irq-pin = <&gpio_test>;
+			flags = <GPIO_INT_EDGE_BOTH>;
+			handler = "gpio_test_interrupt";
+		};
+		int_lid_open_ec: lid_open_ec {
+			irq-pin = <&gpio_lid_open_ec>;
+			flags = <GPIO_INT_EDGE_BOTH>;
+			handler = "lid_interrupt";
+		};
+		int_mb_power_good: mb_power_good {
+			irq-pin = <&gpio_mb_power_good>;
+			flags = <GPIO_INT_EDGE_BOTH>;
+			handler = "power_signal_interrupt";
+		};
+	};
+
 	named-i2c-ports {
 		compatible = "named-i2c-ports";
 
@@ -155,20 +262,21 @@
 	};
 
 	cbi-fw-config {
-		compatible = "named-cbi-fw-config";
+		compatible = "cros-ec,cbi-fw-config";
 		field-1 {
 			enum-name = "FW_CONFIG_FIELD_1";
 			start = <0>;
 			size = <2>;
 			val-0 {
-				compatible = "named-cbi-fw-config-value";
+				compatible = "cros-ec,cbi-fw-config-value";
 				enum-name = "FW_FIELD_1_A";
 				value = <0>;
 			};
 			val-1 {
-				compatible = "named-cbi-fw-config-value";
+				compatible = "cros-ec,cbi-fw-config-value";
 				enum-name = "FW_FIELD_1_B";
 				value = <1>;
+				default;
 			};
 		};
 		field-2 {
@@ -176,7 +284,7 @@
 			start = <5>;
 			size = <1>;
 			val-1 {
-				compatible = "named-cbi-fw-config-value";
+				compatible = "cros-ec,cbi-fw-config-value";
 				enum-name = "FW_FIELD_2_X";
 				value = <1>;
 			};
@@ -198,22 +306,22 @@
 		adc_charger: charger {
 			label = "ADC_TEMP_SENSOR_CHARGER";
 			enum-name = "ADC_TEMP_SENSOR_CHARGER";
-			channel = <0>;
+			io-channels = <&adc0 0>;
 		};
 		adc_pp3300_regulator: pp3300-regulator {
 			label = "ADC_TEMP_SENSOR_PP3300_REGULATOR";
 			enum-name = "ADC_TEMP_SENSOR_PP3300_REGULATOR";
-			channel = <1>;
+			io-channels = <&adc0 1>;
 		};
 		adc_ddr_soc: ddr-soc {
 			label = "ADC_TEMP_SENSOR_DDR_SOC";
 			enum-name = "ADC_TEMP_SENSOR_DDR_SOC";
-			channel = <2>;
+			io-channels = <&adc0 2>;
 		};
 		adc_fan: fan {
 			label = "ADC_TEMP_SENSOR_FAN";
 			enum-name = "ADC_TEMP_SENSOR_FAN";
-			channel = <3>;
+			io-channels = <&adc0 3>;
 		};
 	};
 
@@ -503,8 +611,9 @@
 			alert_gpio = <&usb_c1_tcpc_int_odl>;
 		};
 
-		ps8xxx_emul: ps8xxx_emul {
+		ps8xxx_emul: ps8xxx_emul@b1 {
 			compatible = "cros,ps8xxx-emul";
+			reg = <0xb1>;
 			tcpci-i2c = <&tcpci_ps8xxx_emul>;
 			p0-i2c-addr = <0x8>;
 			p1-i2c-addr = <0x9>;
@@ -554,6 +663,23 @@
 		compatible = "cros,clock-control-emul";
 		clock-frequency = <DT_FREQ_M(100)>; /* 100 MHz */
 	};
+
+	wdt_counter: wdt-counter {
+		compatible = "zephyr,counter-watchdog";
+		status = "okay";
+		counter = <&counter0>;
+		label = "WDT_COUNTER";
+	};
+
+	cros_kb_raw: kb-raw-emul {
+		compatible = "cros-ec,kb-raw-emul";
+		label = "KB_RAW";
+	};
+
+	cros_flash: cros-flash {
+		compatible = "cros-ec,flash-emul";
+		label = "FLASH";
+	};
 };
 
 &espi0 {
@@ -566,7 +692,7 @@
 };
 
 &gpio0 {
-	ngpios = <16>;
+	ngpios = <30>;
 };
 
 &i2c0 {
@@ -578,7 +704,6 @@
 		pagesize = <8>;
 		address-width = <8>;
 		timeout = <5>;
-		wp-gpios = <&gpio_wp_l>;
 	};
 
 	battery: sb@b {
@@ -587,6 +712,9 @@
 		label = "BATTERY";
 		cycle-count = <99>;
 		version = "BATTERY_SPEC_VER_1_1_WITH_PEC";
+		/* Real battery voltages are multiples of 4.4V. */
+		desired-charg-volt = <5000>;
+		desired-charg-cur = <1000>;
 	};
 
 	bma_emul: bma@18 {
@@ -609,7 +737,7 @@
 		compatible = "cros,sn5s330-emul";
 		reg = <0x40>;
 		label = "SN5S330_EMUL";
-		int_gpio = <&gpio_usb_c0_ppc_int>;
+		int-pin = <&gpio_usb_c0_ppc_int>;
 	};
 
 	accel_bmi260: bmi260@68 {
@@ -628,7 +756,7 @@
 		status = "okay";
 		reg = <0x80>;
 		label = "LN9310";
-		pg_int_gpio = <&gpio_switchcap_pg_int_l>;
+		pg-int-pin = <&gpio_switchcap_pg_int_l>;
 	};
 
 	lis2dw12_emul: lis2dw12@19 {

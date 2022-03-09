@@ -47,6 +47,7 @@ driver-$(CONFIG_ALS_OPT3001)+=als_opt3001.o
 driver-$(CONFIG_ALS_SI114X)+=als_si114x.o
 driver-$(CONFIG_ALS_BH1730)+=als_bh1730.o
 driver-$(CONFIG_ALS_TCS3400)+=als_tcs3400.o
+driver-$(CONFIG_ALS_CM32183)+=als_cm32183.o
 
 # Barometers
 driver-$(CONFIG_BARO_BMP280)+=baro_bmp280.o
@@ -56,7 +57,9 @@ driver-$(CONFIG_BATTERY_BQ20Z453)+=battery/bq20z453.o
 driver-$(CONFIG_BATTERY_BQ27541)+=battery/bq27541.o
 driver-$(CONFIG_BATTERY_BQ27621)+=battery/bq27621_g1.o
 driver-$(CONFIG_BATTERY_MAX17055)+=battery/max17055.o
+ifeq ($(HAS_MOCK_BATTERY),)
 driver-$(CONFIG_BATTERY_SMART)+=battery/smart.o
+endif
 driver-$(CONFIG_BATTERY_BQ4050)+=battery/bq4050.o
 driver-$(CONFIG_BATTERY_MM8013)+=battery/mm8013.o
 
@@ -75,6 +78,7 @@ driver-$(CONFIG_CHARGER_MT6370)+=charger/rt946x.o
 driver-$(CONFIG_CHARGER_RAA489000)+=charger/isl923x.o
 driver-$(CONFIG_CHARGER_RT9466)+=charger/rt946x.o
 driver-$(CONFIG_CHARGER_RT9467)+=charger/rt946x.o
+driver-$(CONFIG_CHARGER_RT9490)+=charger/rt9490.o
 driver-$(CONFIG_CHARGER_SY21612)+=charger/sy21612.o
 driver-$(CONFIG_CHARGER_SM5803)+=charger/sm5803.o
 
@@ -106,6 +110,8 @@ driver-$(CONFIG_LED_DRIVER_LM3630A)+=led/lm3630a.o
 driver-$(CONFIG_LED_DRIVER_LP5562)+=led/lp5562.o
 driver-$(CONFIG_LED_DRIVER_MP3385)+=led/mp3385.o
 driver-$(CONFIG_LED_DRIVER_OZ554)+=led/oz554.o
+driver-$(CONFIG_LED_DRIVER_IS31FL3743B)+=led/is31fl3743b.o
+driver-$(CONFIG_LED_DRIVER_AW20198)+=led/aw20198.o
 
 # 7-segment display
 driver-$(CONFIG_MAX695X_SEVEN_SEGMENT_DISPLAY)+=led/max695x.o
@@ -203,6 +209,7 @@ driver-$(CONFIG_USB_HUB_GL3590)+=gl3590.o
 # Type-C Power Path Controllers (PPC)
 driver-$(CONFIG_USBC_PPC_AOZ1380)+=ppc/aoz1380.o
 driver-$(CONFIG_USBC_PPC_RT1718S)+=ppc/rt1718s.o
+driver-$(CONFIG_USBC_PPC_RT1739)+=ppc/rt1739.o
 driver-$(CONFIG_USBC_PPC_SN5S330)+=ppc/sn5s330.o
 ifeq ($(CONFIG_USBC_PPC_NX20P3481)$(CONFIG_USBC_PPC_NX20P3483),y)
 driver-y += ppc/nx20p348x.o

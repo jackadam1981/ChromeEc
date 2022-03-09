@@ -5,6 +5,8 @@
 
 /* Guybrush family-specific USB-C configuration */
 
+#include <drivers/gpio.h>
+
 #include "cros_board_info.h"
 #include "battery_fuel_gauge.h"
 #include "charge_manager.h"
@@ -22,8 +24,9 @@
 #include "driver/tcpm/nct38xx.h"
 #include "driver/usb_mux/anx7451.h"
 #include "driver/usb_mux/amd_fp6.h"
-#include "gpio.h"
+#include "gpio/gpio_int.h"
 #include "hooks.h"
+#include "ioexpander.h"
 #include "power.h"
 #include "usb_mux.h"
 #include "usb_pd_tcpm.h"
@@ -79,21 +82,19 @@ const struct tcpc_config_t tcpc_config[] = {
 };
 BUILD_ASSERT(ARRAY_SIZE(tcpc_config) == CONFIG_USB_PD_PORT_MAX_COUNT);
 
-/* TODO: usb_port_enable expander pins */
-
 static void usbc_interrupt_init(void)
 {
 	/* Enable PPC interrupts. */
-	gpio_enable_interrupt(GPIO_USB_C0_PPC_INT_ODL);
-	gpio_enable_interrupt(GPIO_USB_C1_PPC_INT_ODL);
+	gpio_enable_dt_interrupt(GPIO_INT_FROM_NODELABEL(int_usb_c0_ppc));
+	gpio_enable_dt_interrupt(GPIO_INT_FROM_NODELABEL(int_usb_c1_ppc));
 
 	/* Enable TCPC interrupts. */
-	gpio_enable_interrupt(GPIO_USB_C0_TCPC_INT_ODL);
-	gpio_enable_interrupt(GPIO_USB_C1_TCPC_INT_ODL);
+	gpio_enable_dt_interrupt(GPIO_INT_FROM_NODELABEL(int_usb_c0_tcpc));
+	gpio_enable_dt_interrupt(GPIO_INT_FROM_NODELABEL(int_usb_c1_tcpc));
 
 	/* Enable BC 1.2 interrupts */
-	gpio_enable_interrupt(GPIO_USB_C0_BC12_INT_ODL);
-	gpio_enable_interrupt(GPIO_USB_C1_BC12_INT_ODL);
+	gpio_enable_dt_interrupt(GPIO_INT_FROM_NODELABEL(int_usb_c0_bc12));
+	gpio_enable_dt_interrupt(GPIO_INT_FROM_NODELABEL(int_usb_c1_bc12));
 
 	/* TODO: Enable SBU fault interrupts (io expander )*/
 }
@@ -113,19 +114,6 @@ struct ppc_config_t ppc_chips[] = {
 };
 BUILD_ASSERT(ARRAY_SIZE(ppc_chips) == CONFIG_USB_PD_PORT_MAX_COUNT);
 unsigned int ppc_cnt = ARRAY_SIZE(ppc_chips);
-
-const struct pi3usb9201_config_t pi3usb9201_bc12_chips[] = {
-	[USBC_PORT_C0] = {
-		.i2c_port = I2C_PORT_TCPC0,
-		.i2c_addr_flags = PI3USB9201_I2C_ADDR_3_FLAGS,
-	},
-
-	[USBC_PORT_C1] = {
-		.i2c_port = I2C_PORT_TCPC1,
-		.i2c_addr_flags = PI3USB9201_I2C_ADDR_3_FLAGS,
-	},
-};
-BUILD_ASSERT(ARRAY_SIZE(pi3usb9201_bc12_chips) == CONFIG_USB_PD_PORT_MAX_COUNT);
 
 /*
  * .init is not necessary here because it has nothing
@@ -162,6 +150,8 @@ struct usb_mux usbc1_ps8818 = {
 	.driver = &ps8818_usb_retimer_driver,
 	.board_set = &board_c1_ps8818_mux_set,
 };
+
+/* TODO: ANX7483 support */
 
 /*
  * ANX7491(A1) and ANX7451(C1) are on the same i2c bus. Both default
@@ -208,7 +198,9 @@ struct usb_mux usb_muxes[] = {
 };
 BUILD_ASSERT(ARRAY_SIZE(usb_muxes) == CONFIG_USB_PD_PORT_MAX_COUNT);
 
-/* TODO: ioex_config */
+/* TODO: SBU flip on DB with fusb */
+/* TODO: HPD signal on PS8818 DB */
+/* TODO: A1 retimer enable and reset on PS8811 DB */
 
 /*
  * USB C0 port SBU mux use standalone FSUSB42UMX
@@ -221,7 +213,11 @@ static int fsusb42umx_set_mux(const struct usb_mux *me, mux_state_t mux_state,
 	/* This driver does not use host command ACKs */
 	*ack_required = false;
 
-	/* TODO: set IOEX_USB_C0_SBU_FLIP */
+	if (mux_state & USB_PD_MUX_POLARITY_INVERTED)
+		ioex_set_level(IOEX_USB_C0_SBU_FLIP, 1);
+	else
+		ioex_set_level(IOEX_USB_C0_SBU_FLIP, 0);
+
 	return EC_SUCCESS;
 }
 
@@ -351,7 +347,9 @@ int board_aoz1380_set_vbus_source_current_limit(int port,
 {
 	int rv = EC_SUCCESS;
 
-	/* TODO: Set IOEX_USB_C0_PPC_ILIM_3A_EN */
+	rv = ioex_set_level(IOEX_USB_C0_PPC_ILIM_3A_EN,
+			    (rp == TYPEC_RP_3A0) ? 1 : 0);
+
 	return rv;
 }
 
@@ -393,19 +391,20 @@ void tcpc_alert_event(enum gpio_signal signal)
 
 static void reset_nct38xx_port(int port)
 {
-	enum gpio_signal reset_gpio_l;
+	const struct gpio_dt_spec *reset_gpio_l;
 
+	/* TODO: Save and restore ioex signals */
 	if (port == USBC_PORT_C0)
-		reset_gpio_l = GPIO_USB_C0_TCPC_RST_L;
+		reset_gpio_l = GPIO_DT_FROM_NODELABEL(gpio_usb_c0_tcpc_rst_l);
 	else if (port == USBC_PORT_C1)
-		reset_gpio_l = GPIO_USB_C1_TCPC_RST_L;
+		reset_gpio_l = GPIO_DT_FROM_NODELABEL(gpio_usb_c1_tcpc_rst_l);
 	else
 		/* Invalid port: do nothing */
 		return;
 
-	gpio_set_level(reset_gpio_l, 0);
+	gpio_pin_set_dt(reset_gpio_l, 0);
 	msleep(NCT38XX_RESET_HOLD_DELAY_MS);
-	gpio_set_level(reset_gpio_l, 1);
+	gpio_pin_set_dt(reset_gpio_l, 1);
 	nct38xx_reset_notify(port);
 	if (NCT3807_RESET_POST_DELAY_MS != 0)
 		msleep(NCT3807_RESET_POST_DELAY_MS);
@@ -429,13 +428,17 @@ uint16_t tcpc_get_alert_status(void)
 	 * Check which port has the ALERT line set and ignore if that TCPC has
 	 * its reset line active.
 	 */
-	if (!gpio_get_level(GPIO_USB_C0_TCPC_INT_ODL)) {
-		if (gpio_get_level(GPIO_USB_C0_TCPC_RST_L) != 0)
+	if (!gpio_pin_get_dt(
+	     GPIO_DT_FROM_NODELABEL(gpio_usb_c0_tcpc_int_odl))) {
+		if (gpio_pin_get_dt(
+		    GPIO_DT_FROM_NODELABEL(gpio_usb_c0_tcpc_rst_l)) != 0)
 			status |= PD_STATUS_TCPC_ALERT_0;
 	}
 
-	if (!gpio_get_level(GPIO_USB_C1_TCPC_INT_ODL)) {
-		if (gpio_get_level(GPIO_USB_C1_TCPC_RST_L) != 0)
+	if (!gpio_pin_get_dt(
+	     GPIO_DT_FROM_NODELABEL(gpio_usb_c1_tcpc_int_odl))) {
+		if (gpio_pin_get_dt(
+		    GPIO_DT_FROM_NODELABEL(gpio_usb_c1_tcpc_rst_l)) != 0)
 			status |= PD_STATUS_TCPC_ALERT_1;
 	}
 
@@ -516,6 +519,7 @@ int board_is_vbus_too_low(int port, enum chg_ramp_vbus_state ramp_state)
 void board_hibernate(void)
 {
 	int port;
+	enum ec_error_list ret;
 
 	/*
 	 * If we are charging, then drop the Vbus level down to 5V to ensure
@@ -532,7 +536,8 @@ void board_hibernate(void)
 	}
 
 	/* Try to put our battery fuel gauge into sleep mode */
-	if (battery_sleep_fuel_gauge() != EC_SUCCESS)
+	ret = battery_sleep_fuel_gauge();
+	if ((ret != EC_SUCCESS) && (ret != EC_ERROR_UNIMPLEMENTED))
 		cprints(CC_SYSTEM, "Failed to send battery sleep command");
 }
 
@@ -623,19 +628,3 @@ void baseboard_a1_retimer_setup(void)
 	a1_retimer.board_init(&a1_retimer);
 }
 DECLARE_DEFERRED(baseboard_a1_retimer_setup);
-
-/* TODO: Remove when guybrush is no longer supported */
-#ifdef CONFIG_BOARD_GUYBRUSH
-void board_overcurrent_event(int port, int is_overcurrented)
-{
-	switch (port) {
-	case USBC_PORT_C0:
-	case USBC_PORT_C1:
-		gpio_set_level(GPIO_USB_C0_C1_FAULT_ODL, !is_overcurrented);
-		break;
-
-	default:
-		break;
-	}
-}
-#endif

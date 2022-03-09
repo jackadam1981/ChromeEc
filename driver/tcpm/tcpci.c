@@ -341,13 +341,13 @@ static int init_alert_mask(int port)
 	if (TCPC_FLAGS_VSAFE0V(tcpc_config[port].flags))
 		mask |= TCPC_REG_ALERT_EXT_STATUS;
 
-	if (IS_ENABLED(CONFIG_USB_PD_FRS_TCPC))
+	if (tcpm_tcpc_has_frs_control(port))
 		mask |= TCPC_REG_ALERT_ALERT_EXT;
 
 	/* Set the alert mask in TCPC */
 	rv = tcpc_write16(port, TCPC_REG_ALERT_MASK, mask);
 
-	if (IS_ENABLED(CONFIG_USB_PD_FRS_TCPC)) {
+	if (tcpm_tcpc_has_frs_control(port)) {
 		if (rv)
 			return rv;
 
@@ -729,7 +729,7 @@ int tcpci_tcpm_set_rx_enable(int port, int enable)
 	return tcpc_write(port, TCPC_REG_RX_DETECT, detect_sop_en);
 }
 
-#ifdef CONFIG_USB_PD_FRS_TCPC
+#ifdef CONFIG_USB_PD_FRS
 int tcpci_tcpc_fast_role_swap_enable(int port, int enable)
 {
 	return tcpc_update8(port,
@@ -1309,7 +1309,7 @@ void tcpci_tcpc_alert(int port)
 	    alert & TCPC_REG_ALERT_TX_FAILED)
 		CPRINTS("C%d Hard Reset sent", port);
 
-	if (IS_ENABLED(CONFIG_USB_PD_FRS_TCPC)
+	if (tcpm_tcpc_has_frs_control(port)
 	    && (alert_ext & TCPC_REG_ALERT_EXT_SNK_FRS))
 		pd_got_frs_signal(port);
 
@@ -1329,6 +1329,31 @@ void tcpci_tcpc_alert(int port)
 	 */
 	if (pd_event)
 		task_set_event(PD_PORT_TO_TASK_ID(port), pd_event);
+}
+
+int tcpci_get_vbus_voltage(int port, int *vbus)
+{
+	int error, val;
+	int scale, measure;
+
+	if (!(dev_cap_1[port] & TCPC_REG_DEV_CAP_1_VBUS_MEASURE_ALARM_CAPABLE))
+		return EC_ERROR_UNIMPLEMENTED;
+
+	error = tcpc_read16(port, TCPC_REG_VBUS_VOLTAGE, &val);
+	if (error)
+		return error;
+
+	/*
+	 * 00: the measurement is not scaled
+	 * 01: the measurement is divided by 2
+	 * 10: the measurement is divided by 4
+	 * 11: reserved
+	 */
+	scale = (val & TCPC_REG_VBUS_VOLTAGE_SCALE_FACTOR) >> 9;
+	measure = val & TCPC_REG_VBUS_VOLTAGE_MEASUREMENT;
+
+	*vbus = (1 << scale) * measure * TCPC_REG_VBUS_VOLTAGE_LSB;
+	return EC_SUCCESS;
 }
 
 /*
@@ -1484,6 +1509,15 @@ int tcpci_tcpm_init(int port)
 					? BIT(VBUS_PRESENT)
 					: BIT(VBUS_SAFE0V);
 	}
+
+	/* Enable/disable VBUS monitor by the flag */
+	error = tcpc_update8(port, TCPC_REG_POWER_CTRL,
+			     TCPC_REG_POWER_CTRL_VBUS_VOL_MONITOR_DIS,
+			     tcpc_config[port].flags & TCPC_FLAGS_VBUS_MONITOR ?
+				     MASK_CLR :
+				     MASK_SET);
+	if (error)
+		return error;
 
 	/*
 	 * Force an update to the VBUS status in case the TCPC doesn't send a
@@ -1817,6 +1851,7 @@ const struct tcpm_drv tcpci_tcpm_drv = {
 #ifdef CONFIG_USB_PD_VBUS_DETECT_TCPC
 	.check_vbus_level	= &tcpci_tcpm_check_vbus_level,
 #endif
+	.get_vbus_voltage	= &tcpci_get_vbus_voltage,
 	.select_rp_value	= &tcpci_tcpm_select_rp_value,
 	.set_cc			= &tcpci_tcpm_set_cc,
 	.set_polarity		= &tcpci_tcpm_set_polarity,

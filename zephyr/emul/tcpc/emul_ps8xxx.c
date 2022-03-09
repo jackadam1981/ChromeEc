@@ -9,7 +9,7 @@
 LOG_MODULE_REGISTER(ps8xxx_emul, CONFIG_TCPCI_EMUL_LOG_LEVEL);
 
 #include <device.h>
-#include <emul.h>
+#include <drivers/emul.h>
 #include <drivers/i2c.h>
 #include <drivers/i2c_emul.h>
 
@@ -529,6 +529,8 @@ static int ps8xxx_emul_init(const struct emul *emul,
 
 	tcpci_emul_set_reg(data->tcpci_emul, TCPC_REG_PRODUCT_ID,
 			   data->prod_id);
+	/* FW rev is never 0 in a working device. Set arbitrary FW rev. */
+	tcpci_emul_set_reg(data->tcpci_emul, PS8XXX_REG_FW_REV, 0x31);
 
 	return ret;
 }
@@ -575,3 +577,17 @@ static int ps8xxx_emul_init(const struct emul *emul,
 		    &ps8xxx_emul_cfg_##n, &ps8xxx_emul_data_##n)
 
 DT_INST_FOREACH_STATUS_OKAY(PS8XXX_EMUL)
+
+#ifdef CONFIG_ZMAKE_NEW_API
+
+#define PS8XXX_EMUL_RESET_RULE_BEFORE(n) \
+	ps8xxx_emul_tcpci_reset(&ps8xxx_emul_data_##n, &ps8xxx_emul_ops);
+static void ps8xxx_emul_reset_rule_before(const struct ztest_unit_test *test,
+					  void *data)
+{
+	ARG_UNUSED(test);
+	ARG_UNUSED(data);
+	DT_INST_FOREACH_STATUS_OKAY(PS8XXX_EMUL_RESET_RULE_BEFORE);
+}
+ZTEST_RULE(ps8xxx_emul_reset, ps8xxx_emul_reset_rule_before, NULL);
+#endif /* CONFIG_ZMAKE_NEW_API */

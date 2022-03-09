@@ -7,6 +7,7 @@
 #define __BOARD_H
 
 #include <devicetree.h>
+#include "common.h"
 
 /* Included shimed version of gpio signal. */
 #include "gpio_signal.h"
@@ -15,7 +16,7 @@
 #include "power/power.h"
 
 /* Include board specific gpio mapping/aliases if named_pgios node exists */
-#if DT_NODE_EXISTS(DT_PATH(named_gpios))
+#if !defined(TEST_BUILD) && DT_NODE_EXISTS(DT_PATH(named_gpios))
 #include "gpio_map.h"
 #endif
 
@@ -31,6 +32,13 @@
 /* Include board specific sensor configuration if motionsense is enabled */
 #ifdef CONFIG_MOTIONSENSE
 #include "motionsense_sensors_defs.h"
+#endif
+
+/*
+ * Should generate enums for each charger.
+ */
+#ifdef CONFIG_PLATFORM_EC_OCPC
+#include "charger_enum.h"
 #endif
 
 #endif  /* __BOARD_H */
