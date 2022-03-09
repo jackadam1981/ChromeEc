@@ -109,7 +109,7 @@
 
 /* Retimer */
 #undef CONFIG_USBC_RETIMER_INTEL_BB
-#undef CONFIG_USBC_RETIMER_INTEL_BB_RUNTIME_CONFIG
+#undef CONFIG_USBC_RETIMER_INTEL_RUNTIME_CONFIG
 
 /*
  * Macros for GPIO signals used in common code that don't match the

@@ -4826,7 +4826,7 @@
 #undef CONFIG_TUSB544_EQ_BY_REGISTER
 
 /* Allow run-time configuration of the Burnside Bridge driver structure */
-#undef CONFIG_USBC_RETIMER_INTEL_BB_RUNTIME_CONFIG
+#undef CONFIG_USBC_RETIMER_INTEL_RUNTIME_CONFIG
 
 /* Require manual configuration of the KB800x crossbar mapping. */
 #undef CONFIG_KB800X_CUSTOM_XBAR
