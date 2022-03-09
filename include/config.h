@@ -5610,6 +5610,12 @@
  */
 #define CONFIG_CCD_USBC_PORT_NUMBER	0
 
+/*
+ * Enables the use of non-PD ports. Some code optimizations can be gained by
+ * undefining this value in board.h.
+ */
+#define CONFIG_USBC_ENABLE_NON_PD_PORTS
+
 /*****************************************************************************/
 /*
  * Include board and core configs, since those hold the CONFIG_ constants for a

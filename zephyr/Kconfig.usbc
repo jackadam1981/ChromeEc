@@ -31,6 +31,15 @@ rsource "Kconfig.usb_charger"
 
 if PLATFORM_EC_USBC
 
+config PLATFORM_EC_USBC_ENABLE_NON_PD_PORTS
+	bool "Enabled use of non-PD ports on the board"
+	help
+	  Legacy EC code still allows for code paths for non-PD ports which
+	  haven't been used in a long time and are unlikely to be used. This
+	  config option will allow us to prune that code statically such that it
+	  doesn't affect the image size and doesn't gain visibility into code
+	  coverage reports.
+
 config PLATFORM_EC_CHARGER_INPUT_CURRENT
 	int "Charger input current in mA"
 	depends on PLATFORM_EC_CHARGE_MANAGER
