@@ -4,12 +4,17 @@
 
 register_npcx_project(
     project_name="lazor",
-    zephyr_board="trogdor",
+    zephyr_board="npcx7",
     dts_overlays=[
+        "adc.dts",
         "battery.dts",
+        "display.dts",
         "gpio.dts",
+        "i2c.dts",
+        "interrupts.dts",
         "keyboard.dts",
         "led.dts",
         "motionsense.dts",
+        "pwm.dts",
     ],
 )

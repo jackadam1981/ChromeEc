@@ -47,6 +47,12 @@
 
 	#undef CONFIG_UART_TX_BUF_SIZE		/* UART */
 	#define CONFIG_UART_TX_BUF_SIZE 4096
+
+	/*
+	 * Limit maximal ODR to 125Hz, the EC is using ~5ms per sample at
+	 * 48MHz core cpu clock.
+	 */
+	#define CONFIG_EC_MAX_SENSOR_FREQ_MILLIHZ 125000
 #else
 #error "Must define a VARIANT_[DEDEDE|KEEBY]_EC!"
 #endif
@@ -94,7 +100,7 @@
 #define GPIO_VOLUME_UP_L	GPIO_VOLUP_BTN_ODL
 #define GPIO_VOLUME_DOWN_L	GPIO_VOLDN_BTN_ODL
 #define GPIO_WP			GPIO_EC_WP_OD
-#define GMR_TABLET_MODE_GPIO_L	GPIO_LID_360_L
+#define GPIO_TABLET_MODE_L	GPIO_LID_360_L
 
 /* Common EC defines */
 

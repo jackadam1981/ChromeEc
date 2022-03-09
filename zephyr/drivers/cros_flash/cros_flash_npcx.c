@@ -14,8 +14,8 @@
 #include <soc.h>
 
 #include "flash.h"
-#include "gpio.h"
 #include "spi_flash_reg.h"
+#include "write_protect.h"
 #include "../drivers/flash/spi_nor.h"
 
 LOG_MODULE_REGISTER(cros_flash, LOG_LEVEL_ERR);
@@ -34,7 +34,7 @@ struct cros_flash_npcx_data {
 
 static struct spi_config spi_cfg;
 
-#define FLASH_DEV DT_NODELABEL(int_flash)
+#define FLASH_DEV DT_CHOSEN(zephyr_flash_controller)
 #define SPI_CONTROLLER_DEV DT_NODELABEL(spi_fiu0)
 
 #define DRV_DATA(dev) ((struct cros_flash_npcx_data *)(dev)->data)
@@ -309,11 +309,7 @@ static int flash_set_status_for_prot(const struct device *dev, int reg1,
 	 * If WP# is active and ec doesn't protect the status registers of
 	 * internal spi-flash, protect it now before setting them.
 	 */
-#ifdef CONFIG_WP_ACTIVE_HIGH
-	flash_protect_int_flash(dev, gpio_get_level(GPIO_WP));
-#else
-	flash_protect_int_flash(dev, !gpio_get_level(GPIO_WP_L));
-#endif /*_CONFIG_WP_ACTIVE_HIGH_*/
+	flash_protect_int_flash(dev, write_protect_is_asserted());
 
 	flash_set_status(dev, reg1, reg2);
 
@@ -335,11 +331,7 @@ static int flash_check_prot_reg(const struct device *dev, unsigned int offset,
 	 * If WP# is active and ec doesn't protect the status registers of
 	 * internal spi-flash, protect it now.
 	 */
-#ifdef CONFIG_WP_ACTIVE_HIGH
-	flash_protect_int_flash(dev, gpio_get_level(GPIO_WP));
-#else
-	flash_protect_int_flash(dev, !gpio_get_level(GPIO_WP_L));
-#endif /* CONFIG_WP_ACTIVE_HIGH */
+	flash_protect_int_flash(dev, write_protect_is_asserted());
 
 	/* Invalid value */
 	if (offset + bytes > CONFIG_FLASH_SIZE_BYTES)
@@ -426,22 +418,9 @@ static int cros_flash_npcx_init(const struct device *dev)
 	 * Protect status registers of internal spi-flash if WP# is active
 	 * during ec initialization.
 	 */
-#ifdef CONFIG_WP_ACTIVE_HIGH
-	flash_protect_int_flash(dev, gpio_get_level(GPIO_WP));
-#else
-	flash_protect_int_flash(dev, !gpio_get_level(GPIO_WP_L));
-#endif /*CONFIG_WP_ACTIVE_HIGH */
+	flash_protect_int_flash(dev, write_protect_is_asserted());
 
 	return 0;
-}
-
-/* TODO(b/205175314): Migrate cros-flash driver to Zephyr flash driver) */
-static int cros_flash_npcx_read(const struct device *dev, int offset, int size,
-				char *dst_data)
-{
-	struct cros_flash_npcx_data *data = DRV_DATA(dev);
-
-	return flash_read(data->flash_dev, offset, dst_data, size);
 }
 
 static int cros_flash_npcx_write(const struct device *dev, int offset, int size,
@@ -463,7 +442,13 @@ static int cros_flash_npcx_write(const struct device *dev, int offset, int size,
 		return -EINVAL;
 	}
 
+	/* Lock physical flash operations */
+	crec_flash_lock_mapped_storage(1);
+
 	ret = flash_write(data->flash_dev, offset, src_data, size);
+
+	/* Unlock physical flash operations */
+	crec_flash_lock_mapped_storage(0);
 
 	return ret;
 }
@@ -491,7 +476,13 @@ static int cros_flash_npcx_erase(const struct device *dev, int offset, int size)
 		return -EINVAL;
 	}
 
+	/* Lock physical flash operations */
+	crec_flash_lock_mapped_storage(1);
+
 	ret = flash_erase(data->flash_dev, offset, size);
+
+	/* Unlock physical flash operations */
+	crec_flash_lock_mapped_storage(0);
 
 	return ret;
 }
@@ -609,7 +600,6 @@ static int cros_flash_npcx_get_status(const struct device *dev, uint8_t *sr1,
 /* cros ec flash driver registration */
 static const struct cros_flash_driver_api cros_flash_npcx_driver_api = {
 	.init = cros_flash_npcx_init,
-	.physical_read = cros_flash_npcx_read,
 	.physical_write = cros_flash_npcx_write,
 	.physical_erase = cros_flash_npcx_erase,
 	.physical_get_protect = cros_flash_npcx_get_protect,

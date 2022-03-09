@@ -148,8 +148,15 @@
 /* Enabling USB4 mode */
 #define CONFIG_USB_PD_USB4
 
+/*
+ * TODO: b/220634230, Disable BBR firmware update temporally,
+ * revert this patch once confirm BBR firmware update is ready
+ * on kernel.
+ */
 /* Retimer */
+#if 0
 #define CONFIG_USBC_RETIMER_FW_UPDATE
+#endif
 
 /* Thermal features */
 #define CONFIG_THERMISTOR
@@ -157,15 +164,19 @@
 #define CONFIG_TEMP_SENSOR_POWER
 #define CONFIG_STEINHART_HART_3V3_30K9_47K_4050B
 
+/* Fan features */
 #define CONFIG_FANS			FAN_CH_COUNT
+#define CONFIG_CUSTOM_FAN_CONTROL
+#define RPM_DEVIATION	1
 
 /* Charger defines */
 #define CONFIG_CHARGER_ISL9241
 #define CONFIG_CHARGE_RAMP_SW
-#define CONFIG_CHARGER_SENSE_RESISTOR		10
-#define CONFIG_CHARGER_SENSE_RESISTOR_AC	20
+#define CONFIG_CHARGER_SENSE_RESISTOR		5
+#define CONFIG_CHARGER_SENSE_RESISTOR_AC	10
 
 /* Keyboard features */
+#define CONFIG_KEYBOARD_FACTORY_TEST
 #define CONFIG_KEYBOARD_REFRESH_ROW3
 
 /*
@@ -214,6 +225,7 @@ enum ioex_port {
 
 enum battery_type {
 	BATTERY_SIMPLO_COS,
+	BATTERY_SIMPLO_COS2,
 	BATTERY_TYPE_COUNT
 };
 
@@ -232,6 +244,11 @@ enum mft_channel {
 	MFT_CH_0 = 0,
 	MFT_CH_COUNT
 };
+
+#ifdef CONFIG_KEYBOARD_FACTORY_TEST
+extern const int keyboard_factory_scan_pins[][2];
+extern const int keyboard_factory_scan_pins_used;
+#endif
 
 #endif /* !__ASSEMBLER__ */
 

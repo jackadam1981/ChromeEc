@@ -15,6 +15,7 @@
 
 /* Keyboard */
 #define CONFIG_KEYBOARD_PROTOCOL_MKBP
+#define CONFIG_KEYBOARD_REFRESH_ROW3
 
 #define CONFIG_PWM_KBLIGHT
 
@@ -57,7 +58,6 @@
 #define CONFIG_TABLET_MODE
 #define CONFIG_TABLET_MODE_SWITCH
 #define CONFIG_GMR_TABLET_MODE
-#define GMR_TABLET_MODE_GPIO_L GPIO_TABLET_MODE_L
 
 /* GPIO alias */
 #define GPIO_AC_PRESENT GPIO_ACOK_OD
@@ -103,6 +103,11 @@ enum battery_type {
 /* Reset all TCPCs. */
 void board_reset_pd_mcu(void);
 void board_set_tcpc_power_mode(int port, int mode);
+
+/* support factory keyboard test */
+#define CONFIG_KEYBOARD_FACTORY_TEST
+extern const int keyboard_factory_scan_pins[][2];
+extern const int keyboard_factory_scan_pins_used;
 
 #endif /* !defined(__ASSEMBLER__) */
 

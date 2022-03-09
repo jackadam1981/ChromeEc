@@ -5,13 +5,14 @@
 
 /* Shared USB-C policy for Zork boards */
 
+#include <drivers/gpio.h>
+
 #include "charge_manager.h"
 #include "chipset.h"
 #include "common.h"
 #include "compile_time_macros.h"
 #include "console.h"
 #include "ec_commands.h"
-#include "gpio.h"
 #include "ioexpander.h"
 #include "system.h"
 #include "usb_mux.h"
@@ -26,7 +27,7 @@ int pd_check_vconn_swap(int port)
 	 * S5_PGOOD depends on PG_PP5000_S5 being asserted,
 	 * so GPIO_S5_PGOOD is a reasonable proxy for PP5000_S5
 	 */
-	return gpio_get_level(GPIO_S5_PGOOD);
+	return gpio_pin_get_dt(GPIO_DT_FROM_NODELABEL(gpio_pg_pwr_s5));
 }
 
 void pd_power_supply_reset(int port)
@@ -70,9 +71,12 @@ __override int board_pd_set_frs_enable(int port, int enable)
 	/*
 	 * Both PPCs require the FRS GPIO to be set as soon as FRS capability
 	 * is established.
-	 *
-	 * TODO: Set IOEX_USB_C0_TCPC_FASTSW_CTL_EN
 	 */
+	if (port == 0)
+		ioex_set_level(IOEX_USB_C0_TCPC_FASTSW_CTL_EN, enable);
+	else
+		ioex_set_level(IOEX_USB_C1_TCPC_FASTSW_CTL_EN, enable);
+
 	return EC_SUCCESS;
 }
 

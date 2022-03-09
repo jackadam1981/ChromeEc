@@ -90,6 +90,7 @@
 #define GPIO_WP_L			GPIO_EC_WP_L
 
 /* Host communication */
+#define CONFIG_CMD_APTHROTTLE
 #define CONFIG_CMD_CHARGEN
 #define CONFIG_HOST_INTERFACE_ESPI
 #define CONFIG_MKBP_EVENT
@@ -107,6 +108,7 @@
 #define CONFIG_KEYBOARD_COL2_INVERTED
 #define CONFIG_KEYBOARD_PROTOCOL_8042
 #define CONFIG_KEYBOARD_VIVALDI
+#define CONFIG_KBLIGHT_ENABLE_PIN
 #define GPIO_EN_KEYBOARD_BACKLIGHT	GPIO_EN_KB_BL
 #define GPIO_KBD_KSO2			GPIO_EC_KSO_02_INV
 
@@ -115,7 +117,7 @@
 
 #define CONFIG_TABLET_MODE
 #define CONFIG_GMR_TABLET_MODE
-#define GMR_TABLET_MODE_GPIO_L		GPIO_TABLET_MODE
+#define GPIO_TABLET_MODE_L		GPIO_TABLET_MODE
 #define CONFIG_DYNAMIC_MOTION_SENSOR_COUNT
 #define CONFIG_LID_ANGLE
 #define CONFIG_LID_ANGLE_UPDATE
@@ -159,11 +161,11 @@
 #define CONFIG_CHARGER_SENSE_RESISTOR_AC 20
 
 /*
- * EC will boot AP to depthcharge if: (BAT >= 2%) || (AC >= 50W)
+ * EC will boot AP to depthcharge if: (BAT >= 2%) || (AC >= 65W)
  * CONFIG_CHARGER_LIMIT_* is not set, so there is no additional restriction on
  * Depthcharge to boot OS.
  */
-#define CONFIG_CHARGER_MIN_POWER_MW_FOR_POWER_ON		50000
+#define CONFIG_CHARGER_MIN_POWER_MW_FOR_POWER_ON		65000
 
 /*
  * We would prefer to use CONFIG_CHARGE_RAMP_HW to enable legacy BC1.2 charging

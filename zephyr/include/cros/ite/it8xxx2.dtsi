@@ -8,10 +8,10 @@
 
 / {
 	chosen {
-		cros-ec,adc = &adc0;
 		cros-ec,bbram = &bbram;
 		cros-ec,espi = &espi0;
-		cros-ec,flash = &fiu0;
+		cros-ec,flash = &flash0;
+		cros-ec,flash-controller = &fiu0;
 		cros-ec,raw-kb = &cros_kb_raw;
 		cros-ec,watchdog = &twd0;
 	};
@@ -90,15 +90,15 @@
 		};
 	};
 
-	/* it8xxx2 has 1MB of flash. currently, we use 512KB from flash. */
+	/* it8xxx2 has 1MB of flash. currently, we use 768KB from flash. */
 	binman {
 		wp-ro {
 			offset = <0x0>;
-			size = <0x40000>;
+			size = <0x60000>;
 		};
 		ec-rw {
-			offset = <0x40000>;
-			size = <0x40000>;
+			offset = <0x60000>;
+			size = <0x60000>;
 		};
 	};
 };

@@ -9,6 +9,7 @@
 #include "charger.h"
 #include "console.h"
 #include "driver/charger/bq257x0_regs.h"
+#include "gpio.h"
 #include "hooks.h"
 #include "i2c.h"
 #include "math_util.h"
@@ -46,7 +47,7 @@ static int cal_sys_watt(void)
 
 	adapter_voltage_v = charge_manager_get_charger_voltage() / 1000;
 
-	W_adpt = IDPM * adapter_voltage_v / PROCHOT_ADAPTER_WATT_RATIO * 100;
+	W_adpt = IDPM * adapter_voltage_v * PROCHOT_ADAPTER_WATT_RATIO / 100;
 
 	return W_adpt;
 }

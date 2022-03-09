@@ -8,9 +8,7 @@
 
 #include <devicetree.h>
 
-#define SENSOR_NODE			DT_PATH(motionsense_sensor)
-#define SENSOR_INFO_NODE		DT_PATH(motionsense_sensor_info)
-#define SENSOR_ALT_NODE			DT_PATH(motionsense_sensor_alt)
+#include "common.h"
 
 #define SENSOR_ID(id)			DT_CAT(SENSOR_, id)
 
@@ -95,8 +93,8 @@ enum sensor_alt_id {
 #define SENSOR_IN_FORCE_MODE(i, id)					\
 	| BIT(SENSOR_ID(DT_PHANDLE_BY_IDX(id, accel_force_mode_sensors, i)))
 #define CONFIG_ACCEL_FORCE_MODE_MASK					\
-	(0 UTIL_LISTIFY(DT_PROP_LEN(SENSOR_INFO_NODE,			\
-		accel_force_mode_sensors), SENSOR_IN_FORCE_MODE,	\
+	(0 LISTIFY(DT_PROP_LEN(SENSOR_INFO_NODE,			\
+		accel_force_mode_sensors), SENSOR_IN_FORCE_MODE, (),	\
 		SENSOR_INFO_NODE))
 #endif
 

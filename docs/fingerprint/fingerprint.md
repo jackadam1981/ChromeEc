@@ -33,6 +33,9 @@ MCU                      | Sensor     | Firmware (EC "board")                   
 [STM32H743] \(Cortex-M7) | [FPC 1145] | `dartmonkey`<br>(aka `nocturne_fp`, `nami_fp`) | [Icetower v0.2] <br>(Previously Dragontalon) | [Nucleo H743ZI2]
 [STM32F412] \(Cortex-M4) | [FPC 1025] | `bloonchipper`<br>(aka `hatch_fp`)             | [Dragonclaw v0.2]                            | [Nucleo F412ZG]
 
+RAM and Flash details for each board are in the [Fingerprint MCU RAM and Flash]
+document.
+
 ### Sensor Template Sizes
 
 Sensor     | Fingerprint Template Size
@@ -525,6 +528,13 @@ determines the [SKU information][Chrome OS Config SKU] (and thus the
 [fingerprint config][Chrome OS Config fingerprint]) from [CBI Info]. The SKU for
 a given device can be found by viewing `chrome://system/#platform_identity_sku`.
 
+## Kernel Driver
+
+The kernel driver responsible for handling communication between the AP and
+FPMCU is called [`cros_ec`] and is enabled with [`CONFIG_CROS_EC`] in the Linux
+kernel. FPMCUs that are connected via SPI use [`cros_ec_spi.c`], while FPMCUs
+that are connected via UART use [`cros_ec_uart.c`].
+
 [`common/fpsensor`]: https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/common/fpsensor/
 [`driver/fingerprint`]: https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/driver/fingerprint
 [`nocturne_fp`]: https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/board/nocturne_fp/
@@ -587,3 +597,8 @@ a given device can be found by viewing `chrome://system/#platform_identity_sku`.
 [Morphius `config.star`]: https://chrome-internal.googlesource.com/chromeos/project/zork/morphius/+/593b657a776ed6b320c826916adc9cd845faf709/config.star#85
 [regenerate the config]: https://chromium.googlesource.com/chromiumos/config/+/HEAD/README.md#making-configuration-changes-for-your-project
 [`CLFactory`]: https://chromium.googlesource.com/chromiumos/config/+/HEAD/README.md#making-bulk-changes-across-repos
+[Fingerprint MCU RAM and Flash]: ./fingerprint-ram-and-flash.md
+[`CONFIG_CROS_EC`]: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/third_party/kernel/upstream/drivers/platform/chrome/Makefile;l=11;drc=a4e493ca59115fc0692151c1818e5aadf0e79ad0
+[`cros_ec`]: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/third_party/kernel/upstream/drivers/platform/chrome/cros_ec.c
+[`cros_ec_spi.c`]: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/third_party/kernel/upstream/drivers/platform/chrome/cros_ec_spi.c
+[`cros_ec_uart.c`]: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/third_party/kernel/upstream/drivers/platform/chrome/cros_ec_uart.c

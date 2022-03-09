@@ -11,6 +11,7 @@ cscope.*
 .tests-passed
 .failedboards/
 .sizes.txt
+.gdb_history
 
 # VSCode IDE
 .vscode/*
@@ -23,6 +24,7 @@ cscope.*
 __pycache__
 *.egg-info
 .hypothesis/
+zephyr/zmake/.coverage
 
 # Clangd language server
 .cache/clangd/index/*

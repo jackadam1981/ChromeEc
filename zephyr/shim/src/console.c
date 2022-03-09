@@ -6,6 +6,9 @@
 #include <device.h>
 #include <drivers/uart.h>
 #include <shell/shell.h>
+#ifdef CONFIG_SHELL_BACKEND_DUMMY /* nocheck */
+#include <shell/shell_dummy.h> /* nocheck */
+#endif
 #include <shell/shell_uart.h>
 #include <stdbool.h>
 #include <string.h>
@@ -20,10 +23,21 @@
 #include "usb_console.h"
 #include "zephyr_console_shim.h"
 
+#if !defined(CONFIG_SHELL_BACKEND_SERIAL) && \
+	!defined(CONFIG_SHELL_BACKEND_DUMMY) /* nocheck */
+#error Must select either CONFIG_SHELL_BACKEND_SERIAL or \
+	CONFIG_SHELL_BACKEND_DUMMY /* nocheck */
+#endif
+#if defined(CONFIG_SHELL_BACKEND_SERIAL) && \
+	defined(CONFIG_SHELL_BACKEND_DUMMY) /* nocheck */
+#error Must select only one shell backend
+#endif
+
 LOG_MODULE_REGISTER(shim_console, LOG_LEVEL_ERR);
 
 static const struct device *uart_shell_dev =
 	DEVICE_DT_GET(DT_CHOSEN(zephyr_shell_uart));
+static int shell_priority = K_HIGHEST_APPLICATION_THREAD_PRIO;
 static const struct shell *shell_zephyr;
 static struct k_poll_signal shell_uninit_signal;
 static struct k_poll_signal shell_init_signal;
@@ -100,7 +114,7 @@ int uart_shell_stop(void)
 	k_poll_signal_init(&shell_uninit_signal);
 
 	/* Stop the shell */
-	shell_uninit(shell_backend_uart_get_ptr(), shell_uninit_callback);
+	shell_uninit(shell_zephyr, shell_uninit_callback);
 
 	/* Wait for the shell to be turned off, the signal will wake us */
 	k_poll(&event, 1, K_FOREVER);
@@ -114,19 +128,26 @@ static const struct shell_backend_config_flags shell_cfg_flags =
 
 static void shell_init_from_work(struct k_work *work)
 {
-	bool log_backend = CONFIG_SHELL_BACKEND_SERIAL_LOG_LEVEL > 0;
-	uint32_t level;
+	bool log_backend = 1;
+	uint32_t level = CONFIG_LOG_MAX_LEVEL;
 	ARG_UNUSED(work);
 
-	if (CONFIG_SHELL_BACKEND_SERIAL_LOG_LEVEL > LOG_LEVEL_DBG) {
-		level = CONFIG_LOG_MAX_LEVEL;
-	} else {
+#ifdef CONFIG_SHELL_BACKEND_SERIAL
+	log_backend = CONFIG_SHELL_BACKEND_SERIAL_LOG_LEVEL > 0;
+	if (CONFIG_SHELL_BACKEND_SERIAL_LOG_LEVEL <= LOG_LEVEL_DBG)
 		level = CONFIG_SHELL_BACKEND_SERIAL_LOG_LEVEL;
-	}
+#endif
 
 	/* Initialize the shell and re-enable both RX and TX */
-	shell_init(shell_backend_uart_get_ptr(), uart_shell_dev,
+	shell_init(shell_zephyr, uart_shell_dev,
 		   shell_cfg_flags, log_backend, level);
+
+	/*
+	 * shell_init() always resets the priority back to the default.
+	 * Update the priority as setup by the shimmed task code.
+	 */
+	k_thread_priority_set(shell_zephyr->ctx->tid, shell_priority);
+
 	uart_irq_rx_enable(uart_shell_dev);
 	uart_irq_tx_enable(uart_shell_dev);
 
@@ -156,6 +177,12 @@ void uart_shell_start(void)
 
 	/* Wait for initialization to be run, the signal will wake us */
 	k_poll(&event, 1, K_FOREVER);
+}
+
+void uart_shell_set_priority(int prio)
+{
+	shell_priority = prio;
+	k_thread_priority_set(shell_zephyr->ctx->tid, shell_priority);
 }
 
 int zshim_run_ec_console_command(const struct zephyr_console_command *command,
@@ -199,9 +226,22 @@ static int init_ec_console(const struct device *unused)
 
 static int init_ec_shell(const struct device *unused)
 {
-	shell_zephyr = shell_backend_uart_get_ptr();
+#if defined(CONFIG_SHELL_BACKEND_SERIAL)
+		shell_zephyr = shell_backend_uart_get_ptr();
+#elif defined(CONFIG_SHELL_BACKEND_DUMMY) /* nocheck */
+		shell_zephyr = shell_backend_dummy_get_ptr(); /* nocheck */
+#else
+#error A shell backend must be enabled
+#endif
 	return 0;
 } SYS_INIT(init_ec_shell, PRE_KERNEL_1, 50);
+
+#ifdef TEST_BUILD
+const struct shell *get_ec_shell(void)
+{
+	return shell_zephyr;
+}
+#endif
 
 void uart_tx_start(void)
 {
@@ -347,4 +387,12 @@ int cprints(enum console_channel channel, const char *format, ...)
 	zephyr_print(buff, len);
 
 	return rv > 0 ? EC_SUCCESS : rv;
+}
+
+/*
+ * Placeholder task so that the shell/console task priority can get set
+ * correctly by shimmed_task_id.h
+ */
+void console_task_nop(void *p)
+{
 }

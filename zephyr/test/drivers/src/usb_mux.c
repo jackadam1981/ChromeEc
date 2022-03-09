@@ -20,10 +20,14 @@
 #include "i2c.h"
 #include "stubs.h"
 #include "task.h"
+#include "tcpm/ps8xxx_public.h"
+#include "tcpm/tcpci.h"
 #include "usb_prl_sm.h"
 #include "usb_tc_sm.h"
 
 #include "usb_mux.h"
+#include "test_state.h"
+#include "utils.h"
 
 /** Copy of original usb_muxes[USB_PORT_C1] */
 struct usb_mux usb_mux_c1;
@@ -392,12 +396,12 @@ static void restore_usb_mux_chain(void)
 	} while (0)
 
 /** Test usb_mux init */
-static void test_usb_mux_init(void)
+ZTEST(usb_uninit_mux, test_usb_mux_init)
 {
 	int fail_on_2nd_ret[] = {EC_SUCCESS, EC_ERROR_NOT_POWERED};
 
 	/* Set AP to normal state to init BB retimer */
-	power_set_state(POWER_S0);
+	test_set_chipset_to_s0();
 
 	/* Test successful initialisation */
 	usb_mux_init(USBC_PORT_C1);
@@ -426,7 +430,7 @@ static void test_usb_mux_init(void)
 }
 
 /** Test usb_mux setting mux mode */
-static void test_usb_mux_set(void)
+ZTEST(usb_uninit_mux, test_usb_mux_set)
 {
 	int fail_on_2nd_ret[] = {EC_SUCCESS, EC_ERROR_UNKNOWN};
 	mux_state_t exp_mode;
@@ -484,7 +488,7 @@ static void test_usb_mux_set(void)
 }
 
 /** Test usb_mux reset in g3 when required flag is set */
-static void test_usb_mux_reset_in_g3(void)
+ZTEST(usb_uninit_mux, test_usb_mux_reset_in_g3)
 {
 	mux_state_t exp_mode = USB_PD_MUX_USB_ENABLED;
 
@@ -508,7 +512,7 @@ static void test_usb_mux_reset_in_g3(void)
 }
 
 /** Test usb_mux getting mux mode */
-static void test_usb_mux_get(void)
+ZTEST(usb_uninit_mux, test_usb_mux_get)
 {
 	int fail_on_2nd_ret[] = {EC_SUCCESS, EC_ERROR_UNKNOWN};
 	mux_state_t exp_mode, mode;
@@ -545,7 +549,7 @@ static void test_usb_mux_get(void)
 }
 
 /** Test usb_mux entering and exiting low power mode */
-static void test_usb_mux_low_power_mode(void)
+ZTEST(usb_init_mux, test_usb_mux_low_power_mode)
 {
 	int fail_on_2nd_ret[] = {EC_SUCCESS, EC_ERROR_NOT_POWERED};
 	mux_state_t exp_mode, mode;
@@ -611,7 +615,7 @@ static void test_usb_mux_low_power_mode(void)
 }
 
 /** Test usb_mux flip */
-static void test_usb_mux_flip(void)
+ZTEST(usb_uninit_mux, test_usb_mux_flip)
 {
 	mux_state_t exp_mode;
 
@@ -645,7 +649,7 @@ static void test_usb_mux_flip(void)
 	CHECK_PROXY_FAKE_CALL_CNT_MUX_STATE(proxy_set, NUM_OF_PROXY, exp_mode);
 }
 
-void test_usb_mux_hpd_update(void)
+ZTEST(usb_uninit_mux, test_usb_mux_hpd_update)
 {
 	mux_state_t exp_mode, mode, virt_mode;
 
@@ -698,9 +702,22 @@ void test_usb_mux_hpd_update(void)
 	CHECK_PROXY_FAKE_CALL_CNT(proxy_init, 0);
 	CHECK_PROXY_FAKE_CALL_CNT_MUX_STATE(proxy_hpd_update, NUM_OF_PROXY,
 					    exp_mode);
+
+	/* Test ps8xxx hpd update */
+	usb_muxes[USBC_PORT_C1].usb_port = 1;
+	usb_muxes[USBC_PORT_C1].driver = &tcpci_tcpm_usb_mux_driver;
+	usb_muxes[USBC_PORT_C1].hpd_update = &ps8xxx_tcpc_update_hpd_status;
+
+	reset_proxy_fakes();
+	exp_mode = virt_mode | USB_PD_MUX_HPD_LVL | USB_PD_MUX_HPD_IRQ;
+	usb_mux_hpd_update(USBC_PORT_C1, exp_mode);
+	/* Check if PS8xxx mux mode is updated correctly */
+	tcpci_tcpm_usb_mux_driver.get(&usb_muxes[USBC_PORT_C1], &mode);
+	zassert_equal(0, mode, "mux mode is 0x%x (!= 0x%x)",
+		      mode, 0);
 }
 
-void test_usb_mux_fw_update_port_info(void)
+ZTEST(usb_init_mux, test_usb_mux_fw_update_port_info)
 {
 	int port_info;
 
@@ -709,7 +726,7 @@ void test_usb_mux_fw_update_port_info(void)
 		     "fw update for port C1 should be set");
 }
 
-void test_usb_mux_chipset_reset(void)
+ZTEST(usb_init_mux, test_usb_mux_chipset_reset)
 {
 	/* After this hook chipset reset functions should be called */
 	hook_notify(HOOK_CHIPSET_RESET);
@@ -717,7 +734,7 @@ void test_usb_mux_chipset_reset(void)
 }
 
 /* Test host command get mux info */
-static void test_usb_mux_hc_mux_info(void)
+ZTEST(usb_init_mux, test_usb_mux_hc_mux_info)
 {
 	struct ec_response_usb_pd_mux_info response;
 	struct ec_params_usb_pd_mux_info params;
@@ -762,13 +779,14 @@ static void test_usb_mux_hc_mux_info(void)
 }
 
 /** Test typec console command */
-static void test_usb_mux_typec_command(void)
+ZTEST(usb_init_mux, test_usb_mux_typec_command)
 {
+	mux_state_t polarity;
 	mux_state_t exp_mode;
 
 	/* Test error on command with no argument */
 	zassert_equal(EC_ERROR_PARAM_COUNT,
-		      shell_execute_cmd(shell_backend_uart_get_ptr(),
+		      shell_execute_cmd(get_ec_shell(),
 					"typec"), NULL);
 
 	/*
@@ -777,17 +795,17 @@ static void test_usb_mux_typec_command(void)
 	 * without accessing cprints output.
 	 */
 	zassert_equal(EC_SUCCESS,
-		      shell_execute_cmd(shell_backend_uart_get_ptr(),
+		      shell_execute_cmd(get_ec_shell(),
 					"typec debug"), NULL);
 
 	/* Test error on port argument that is not a number */
 	zassert_equal(EC_ERROR_PARAM1,
-		      shell_execute_cmd(shell_backend_uart_get_ptr(),
+		      shell_execute_cmd(get_ec_shell(),
 					"typec test1"), NULL);
 
 	/* Test error on invalid port number */
 	zassert_equal(EC_ERROR_PARAM1,
-		      shell_execute_cmd(shell_backend_uart_get_ptr(),
+		      shell_execute_cmd(get_ec_shell(),
 					"typec 5"), NULL);
 
 	/*
@@ -796,7 +814,7 @@ static void test_usb_mux_typec_command(void)
 	 */
 	set_proxy_get_mux_state_seq(USB_PD_MUX_TBT_COMPAT_ENABLED);
 	zassert_equal(EC_SUCCESS,
-		      shell_execute_cmd(shell_backend_uart_get_ptr(),
+		      shell_execute_cmd(get_ec_shell(),
 					"typec 1"), NULL);
 	CHECK_PROXY_FAKE_CALL_CNT(proxy_get, NUM_OF_PROXY);
 
@@ -804,17 +822,21 @@ static void test_usb_mux_typec_command(void)
 	reset_proxy_fakes();
 	exp_mode = USB_PD_MUX_NONE;
 	zassert_equal(EC_SUCCESS,
-		      shell_execute_cmd(shell_backend_uart_get_ptr(),
+		      shell_execute_cmd(get_ec_shell(),
 					"typec 1 none"), NULL);
 	CHECK_PROXY_FAKE_CALL_CNT_MUX_STATE(proxy_set, NUM_OF_PROXY, exp_mode);
 	/* Mux will enter low power mode */
 	CHECK_PROXY_FAKE_CALL_CNT(proxy_enter_low_power_mode, NUM_OF_PROXY);
 
+	/* Polarity is set based on PD */
+	polarity = polarity_rm_dts(pd_get_polarity(USBC_PORT_C1)) ?
+			USB_PD_MUX_POLARITY_INVERTED : 0;
+
 	/* Test setting USB mode */
 	reset_proxy_fakes();
-	exp_mode = USB_PD_MUX_USB_ENABLED;
+	exp_mode = USB_PD_MUX_USB_ENABLED | polarity;
 	zassert_equal(EC_SUCCESS,
-		      shell_execute_cmd(shell_backend_uart_get_ptr(),
+		      shell_execute_cmd(get_ec_shell(),
 					"typec 1 usb"), NULL);
 	CHECK_PROXY_FAKE_CALL_CNT_MUX_STATE(proxy_set, NUM_OF_PROXY, exp_mode);
 	/* Mux will exit low power mode */
@@ -822,24 +844,25 @@ static void test_usb_mux_typec_command(void)
 
 	/* Test setting DP mode */
 	reset_proxy_fakes();
-	exp_mode = USB_PD_MUX_DP_ENABLED;
+	exp_mode = USB_PD_MUX_DP_ENABLED | polarity;
 	zassert_equal(EC_SUCCESS,
-		      shell_execute_cmd(shell_backend_uart_get_ptr(),
+		      shell_execute_cmd(get_ec_shell(),
 					"typec 1 dp"), NULL);
 	CHECK_PROXY_FAKE_CALL_CNT_MUX_STATE(proxy_set, NUM_OF_PROXY, exp_mode);
 
 	/* Test setting dock mode */
 	reset_proxy_fakes();
-	exp_mode = USB_PD_MUX_USB_ENABLED | USB_PD_MUX_DP_ENABLED;
+	exp_mode = USB_PD_MUX_USB_ENABLED | USB_PD_MUX_DP_ENABLED | polarity;
 	zassert_equal(EC_SUCCESS,
-		      shell_execute_cmd(shell_backend_uart_get_ptr(),
+		      shell_execute_cmd(get_ec_shell(),
 					"typec 1 dock"), NULL);
 	CHECK_PROXY_FAKE_CALL_CNT_MUX_STATE(proxy_set, NUM_OF_PROXY, exp_mode);
 }
 
 /** Setup proxy chain and uninit usb muxes */
-void setup_uninit_mux(void)
+void usb_uninit_mux_before(void *state)
 {
+	ARG_UNUSED(state);
 	setup_usb_mux_proxy_chain();
 	set_test_runner_tid();
 
@@ -849,9 +872,16 @@ void setup_uninit_mux(void)
 	reset_proxy_fakes();
 }
 
-/** Setup proxy chain and init usb muxes */
-void setup_init_mux(void)
+void usb_uninit_mux_after(void *state)
 {
+	ARG_UNUSED(state);
+	restore_usb_mux_chain();
+}
+
+/** Setup proxy chain and init usb muxes */
+void usb_init_mux_before(void *state)
+{
+	ARG_UNUSED(state);
 	setup_usb_mux_proxy_chain();
 	set_test_runner_tid();
 
@@ -860,36 +890,14 @@ void setup_init_mux(void)
 	reset_proxy_fakes();
 }
 
-void test_suite_usb_mux(void)
+void usb_init_mux_after(void *state)
 {
-	ztest_test_suite(usb_mux,
-			 ztest_unit_test_setup_teardown(test_usb_mux_init,
-				setup_uninit_mux, restore_usb_mux_chain),
-			 ztest_unit_test_setup_teardown(test_usb_mux_set,
-				setup_uninit_mux, restore_usb_mux_chain),
-			 ztest_unit_test_setup_teardown(
-				test_usb_mux_reset_in_g3,
-				setup_uninit_mux, restore_usb_mux_chain),
-			 ztest_unit_test_setup_teardown(test_usb_mux_get,
-				setup_uninit_mux, restore_usb_mux_chain),
-			 ztest_unit_test_setup_teardown(
-				test_usb_mux_low_power_mode,
-				setup_init_mux, restore_usb_mux_chain),
-			 ztest_unit_test_setup_teardown(test_usb_mux_flip,
-				setup_uninit_mux, restore_usb_mux_chain),
-			 ztest_unit_test_setup_teardown(test_usb_mux_hpd_update,
-				setup_uninit_mux, restore_usb_mux_chain),
-			 ztest_unit_test_setup_teardown(
-				test_usb_mux_fw_update_port_info,
-				setup_init_mux, restore_usb_mux_chain),
-			 ztest_unit_test_setup_teardown(
-				test_usb_mux_chipset_reset,
-				setup_init_mux, restore_usb_mux_chain),
-			 ztest_unit_test_setup_teardown(
-				test_usb_mux_hc_mux_info,
-				setup_init_mux, restore_usb_mux_chain),
-			 ztest_unit_test_setup_teardown(
-				test_usb_mux_typec_command,
-				setup_init_mux, restore_usb_mux_chain));
-	ztest_run_test_suite(usb_mux);
+	ARG_UNUSED(state);
+	restore_usb_mux_chain();
 }
+
+ZTEST_SUITE(usb_uninit_mux, drivers_predicate_post_main, NULL,
+	    usb_uninit_mux_before, usb_uninit_mux_after, NULL);
+
+ZTEST_SUITE(usb_init_mux, drivers_predicate_post_main, NULL,
+	    usb_init_mux_before, usb_init_mux_after, NULL);

@@ -349,6 +349,7 @@
 #undef CONFIG_ALS_BH1730_LUXTH_PARAMS
 #undef CONFIG_ALS_ISL29035
 #undef CONFIG_ALS_OPT3001
+#undef CONFIG_ALS_CM32183
 /* Define the exact model ID present on the board: SI1141 = 41, SI1142 = 42, */
 #undef CONFIG_ALS_SI114X
 /* Check if the device revision is supported */
@@ -938,6 +939,7 @@
 #undef CONFIG_CHARGER_RAA489000
 #undef CONFIG_CHARGER_RT9466
 #undef CONFIG_CHARGER_RT9467
+#undef CONFIG_CHARGER_RT9490
 #undef CONFIG_CHARGER_SM5803
 #undef CONFIG_CHARGER_SY21612
 
@@ -1320,12 +1322,6 @@
 /* Wireless chargers */
 #undef CONFIG_WIRELESS_CHARGER_P9221_R7
 
-/*
- * Workaround npcx9 A1 chip's bug for download_from_flash API in th booter.
- * This can be removed when A2 chip is available.
- */
-#undef CONFIG_WORKAROUND_FLASH_DOWNLOAD_API
-
 /*****************************************************************************/
 
 /*
@@ -1461,6 +1457,13 @@
 
 /* Redefine when we need a different power-on sequence on the same chipset. */
 #define CONFIG_CHIPSET_POWER_SEQ_VERSION 0
+
+/*
+ * Allow fake control of the power states.
+ *
+ * Note: This should NOT be used on platforms which have an SoC present.
+ */
+#undef CONFIG_POWERSEQ_FAKE_CONTROL
 
 /* AMD Side-Band Remote Management Interface (SB-RMI) support */
 #undef CONFIG_AMD_SB_RMI
@@ -1669,6 +1672,9 @@
 
 /* Provide another output method of panic information by console channel */
 #undef CONFIG_PANIC_CONSOLE_OUTPUT
+
+/* When defined, it enables build assert for panic data structure size */
+#undef CONFIG_RO_PANIC_DATA_SIZE
 
 /*
  * Provide the default GPIO abstraction layer.
@@ -2126,6 +2132,9 @@
 /* Enable support for floating point unit */
 #undef CONFIG_FPU
 
+/* Enable warnings on FPU exceptions */
+#undef CONFIG_FPU_WARNINGS
+
 /*****************************************************************************/
 /* Firmware region configuration */
 
@@ -2177,6 +2186,16 @@
  */
 #undef CONFIG_RO_HDR_MEM_OFF
 #undef CONFIG_RO_HDR_SIZE
+
+/*
+ * Support for saving extended reset flags in backup RAM.
+ *
+ * Please undefine it when RO firmware doesn't support extended reset flags.
+ * Otherwise, compatibility between RO and RW will be broken, because
+ * BKPDATA_INDEX_SAVED_RESET_FLAGS_2 was defined in the middle of bkpdata_index
+ * enum.
+ */
+#define CONFIG_STM32_EXTENDED_RESET_FLAGS
 
 /*
  * Write protect region offset / size. This region normally encompasses the
@@ -2898,6 +2917,7 @@
  *  - A response to EC_CMD_GET_KEYBD_CONFIG command from coreboot
  *  - Boards can specify their custom layout for top keys.
  */
+/* Keyboard features */
 #define CONFIG_KEYBOARD_VIVALDI
 
 /* Compile code for MKBP keyboard protocol */
@@ -2933,6 +2953,9 @@
  * and warm reboot, respectively).
  */
 #define CONFIG_KEYBOARD_RUNTIME_KEYS
+
+/* Add support for ADC based antighost feature */
+#undef CONFIG_KEYBOARD_SCAN_ADC
 
 /*
  * Allow the board layer keyboard customization. If define, the board layer
@@ -3091,6 +3114,8 @@
 #undef CONFIG_LED_DRIVER_LP5562  /* LP5562, on I2C interface */
 #undef CONFIG_LED_DRIVER_MP3385   /* MPS MP3385, on I2C */
 #undef CONFIG_LED_DRIVER_OZ554   /* O2Micro OZ554, on I2C */
+#undef CONFIG_LED_DRIVER_IS31FL3743B /* Lumissil IS31FL3743B on SPI */
+#undef CONFIG_LED_DRIVER_AW20198     /* Awinic AW20198 on I2C */
 
 /* Offset in flash where little firmware will live. */
 #undef CONFIG_LFW_OFFSET
@@ -3606,6 +3631,35 @@
  */
 #undef CONFIG_PWM_KBLIGHT
 
+/*
+ * Support a GPIO enable pin (set as GPIO_EN_KEYBOARD_BACKLIGHT) for the
+ * keyboard backlight.
+ */
+#undef CONFIG_KBLIGHT_ENABLE_PIN
+
+/*
+ * RGB Keyboard
+ */
+#undef CONFIG_RGB_KEYBOARD
+
+/*
+ * Enable debug messages from a RGB keyboard task.
+ */
+#undef CONFIG_RGB_KEYBOARD_DEBUG
+
+/*
+ * Enable demo for RGB keyboard to run on reset.
+ *
+ * FLOW: In each iteration, a new color is placed in (0,0) and the rest of LEDs
+ * copy colors from adjacent LEDs.
+ *
+ * DOT: A red dot is placed on (0,0) and traverses the grid from top to bottom
+ * left to right. After the entire matrix is traversed, it's repeated with a
+ * new color.
+ */
+#undef CONFIG_RGBKBD_DEMO_FLOW
+#undef CONFIG_RGBKBD_DEMO_DOT
+
 /* Support Real-Time Clock (RTC) */
 #undef CONFIG_RTC
 
@@ -3914,13 +3968,13 @@
 
 /*
  * Config to identify what devices use GMR sensor to detect tablet mode. If a
- * board selects this config, it also needs to provide GMR_TABLET_MODE_GPIO_L
+ * board selects this config, it also needs to provide GPIO_TABLET_MODE_L
  * and direct its interrupt to gmr_tablet_switch_isr.
  */
 #undef CONFIG_GMR_TABLET_MODE
 
 /*
- * Board provides board_sensor_at_360 method instead of GMR_TABLET_MODE_GPIO_L
+ * Board provides board_sensor_at_360 method instead of GPIO_TABLET_MODE_L
  * as the means for determining the state of the flipped-360-degree mode.
  */
 #undef CONFIG_GMR_TABLET_MODE_CUSTOM
@@ -4174,6 +4228,7 @@
 #undef CONFIG_STREAM_USART2
 #undef CONFIG_STREAM_USART3
 #undef CONFIG_STREAM_USART4
+#undef CONFIG_STREAM_USART5
 
 /*****************************************************************************/
 /* USB stream config */
@@ -4417,6 +4472,12 @@
  * Undef to allow runtime change via console command.
  */
 #undef CONFIG_USB_PD_DEBUG_LEVEL
+
+/*
+ * Set to a nonzero value to delay PD task startup by the given
+ * amount of time.
+ */
+#define CONFIG_USB_PD_STARTUP_DELAY_MS 0
 
 /*
  * Define if this board is using runtime flags instead of build time configs
@@ -4967,7 +5028,6 @@
  * Intel Reference Validation Platform's (RVP) Modular Embedded Control
  * Card (MECC) versions
  */
-#undef CONFIG_INTEL_RVP_MECC_VERSION_0_9
 #undef CONFIG_INTEL_RVP_MECC_VERSION_1_0
 #undef CONFIG_INTEL_RVP_MECC_VERSION_1_1
 
@@ -5398,6 +5458,30 @@
 
 /* PDU size for fw update over USB (or TPM). */
 #define CONFIG_UPDATE_PDU_SIZE 1024
+
+/* DFU firmware upgrade options */
+/*
+ * Enables DFU USB Runtime identifier.
+ */
+#undef CONFIG_DFU_RUNTIME
+
+/*
+ * Indicates this region is a DFU Boot Manager and is a minimal runtime.
+ */
+#undef CONFIG_DFU_BOOTMANAGER_MAIN
+/*
+ * Enables DFU Boot Manager reboot loop protection. When unexpected reboots
+ * occur, a counter is incremented which will enter DFU once it exceeds
+ * the value defined. This parameter should only be enabled on setups which
+ * can issue the command to exit DFU.
+ */
+#undef CONFIG_DFU_BOOTMANAGER_MAX_REBOOT_COUNT
+
+/*
+ * Enables access to shared utilities required for the application
+ * and DFU Boot Manager. This allows the application to enter DFU.
+ */
+#undef CONFIG_DFU_BOOTMANAGER_SHARED
 
 /*
  * If defined, charge_get_state returns a special status if battery is
@@ -5945,6 +6029,7 @@
 #if defined(CONFIG_CHARGER_BD9995X) || \
 	defined(CONFIG_CHARGER_RT9466) || \
 	defined(CONFIG_CHARGER_RT9467) || \
+	defined(CONFIG_CHARGER_RT9490) || \
 	defined(CONFIG_CHARGER_MT6370) || \
 	defined(CONFIG_CHARGER_BQ25710) || \
 	defined(CONFIG_CHARGER_BQ25720) || \
@@ -6447,7 +6532,7 @@
  * SLP_S0 did not assert.
  */
 #ifndef CONFIG_SLEEP_TIMEOUT_MS
-#define CONFIG_SLEEP_TIMEOUT_MS 10000
+#define CONFIG_SLEEP_TIMEOUT_MS 15000
 #endif
 
 #ifdef CONFIG_PWM_KBLIGHT
@@ -6697,6 +6782,14 @@
 /* AMD STT requires AMD SB-RMI to be enabled */
 #if defined(CONFIG_AMD_STT) && !defined(CONFIG_AMD_SB_RMI)
 #define CONFIG_AMD_SB_RMI
+#endif
+
+/*
+ * Default timeout value for which EC has to wait for system to exit from S5
+ * before performing RTC reset and moving the system to G3.
+ */
+#if defined(CONFIG_BOARD_HAS_RTC_RESET) && !defined(CONFIG_S5_EXIT_WAIT)
+#define CONFIG_S5_EXIT_WAIT 4
 #endif
 
 #endif  /* __CROS_EC_CONFIG_H */

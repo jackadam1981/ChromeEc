@@ -28,6 +28,8 @@
 #include "tablet_mode.h"
 #include "throttle_ap.h"
 #include "usbc_config.h"
+#include "keyboard_raw.h"
+#include "keyboard_scan.h"
 
 #include "gpio_list.h" /* Must come after other header files. */
 
@@ -49,6 +51,28 @@ __override void board_cbi_init(void)
 {
 	config_usb_db_type();
 }
+
+void board_init(void)
+{
+	if (!ec_cfg_has_tabletmode()) {
+		/* applies only to clamshell devices */
+		gpio_set_flags(GPIO_VOLUME_DOWN_L, GPIO_INPUT | GPIO_PULL_DOWN);
+		gpio_set_flags(GPIO_VOLUME_UP_L, GPIO_INPUT | GPIO_PULL_DOWN);
+		button_disable_gpio(BUTTON_VOLUME_UP);
+		button_disable_gpio(BUTTON_VOLUME_DOWN);
+	}
+	if (!ec_cfg_has_keyboard_number_pad()) {
+		/* Disable scanning KSO13 and 14 if keypad isn't present. */
+		keyboard_raw_set_cols(KEYBOARD_COLS_NO_KEYPAD);
+	} else {
+		/* Setting scan mask KSO11, KSO12, KSO13 and KSO14 */
+		keyscan_config.actual_key_mask[11] = 0xfe;
+		keyscan_config.actual_key_mask[12] = 0xff;
+		keyscan_config.actual_key_mask[13] = 0xff;
+		keyscan_config.actual_key_mask[14] = 0xff;
+	}
+}
+DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
 /* Called on AP S3 -> S0 transition */
 static void board_chipset_resume(void)

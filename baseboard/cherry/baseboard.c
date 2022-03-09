@@ -33,8 +33,6 @@
 #include "lid_switch.h"
 #include "power_button.h"
 #include "power.h"
-#include "pwm_chip.h"
-#include "pwm.h"
 #include "regulator.h"
 #include "spi.h"
 #include "switch.h"
@@ -190,42 +188,6 @@ static void ppc_interrupt(enum gpio_signal signal)
 	syv682x_interrupt(0);
 }
 
-/* PWM */
-
-/*
- * PWM channels. Must be in the exactly same order as in enum pwm_channel.
- * There total three 16 bits clock prescaler registers for all pwm channels,
- * so use the same frequency and prescaler register setting is required if
- * number of pwm channel greater than three.
- */
-const struct pwm_t pwm_channels[] = {
-	[PWM_CH_LED1] = {
-		.channel = 0,
-		.flags = PWM_CONFIG_DSLEEP | PWM_CONFIG_ACTIVE_LOW,
-		.freq_hz = 324, /* maximum supported frequency */
-		.pcfsr_sel = PWM_PRESCALER_C4,
-	},
-	[PWM_CH_LED2] = {
-		.channel = 1,
-		.flags = PWM_CONFIG_DSLEEP | PWM_CONFIG_ACTIVE_LOW,
-		.freq_hz = 324, /* maximum supported frequency */
-		.pcfsr_sel = PWM_PRESCALER_C4,
-	},
-	[PWM_CH_LED3] = {
-		.channel = 2,
-		.flags = PWM_CONFIG_DSLEEP | PWM_CONFIG_ACTIVE_LOW,
-		.freq_hz = 324, /* maximum supported frequency */
-		.pcfsr_sel = PWM_PRESCALER_C4,
-	},
-	[PWM_CH_KBLIGHT] = {
-		.channel = 3,
-		.flags = 0,
-		.freq_hz = 10000, /* SYV226 supports 10~100kHz */
-		.pcfsr_sel = PWM_PRESCALER_C6,
-	},
-};
-BUILD_ASSERT(ARRAY_SIZE(pwm_channels) == PWM_CH_COUNT);
-
 /* Called on AP S3 -> S0 transition */
 static void board_chipset_resume(void)
 {
@@ -269,18 +231,6 @@ __maybe_unused void xhci_init_done_interrupt(enum gpio_signal signal)
 }
 
 /* USB Mux */
-
-const struct usb_mux usbc0_virtual_mux = {
-	.usb_port = 0,
-	.driver = &virtual_usb_mux_driver,
-	.hpd_update = &virtual_hpd_update,
-};
-
-const struct usb_mux usbc1_virtual_mux = {
-	.usb_port = 1,
-	.driver = &virtual_usb_mux_driver,
-	.hpd_update = &virtual_hpd_update,
-};
 
 static int board_ps8762_mux_set(const struct usb_mux *me,
 				mux_state_t mux_state)
@@ -334,7 +284,6 @@ const struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 		.i2c_port = I2C_PORT_USB_MUX0,
 		.i2c_addr_flags = PS8802_I2C_ADDR_FLAGS,
 		.driver = &ps8802_usb_mux_driver,
-		.next_mux = &usbc0_virtual_mux,
 		.board_init = &board_ps8762_mux_init,
 		.board_set = &board_ps8762_mux_set,
 	},
@@ -343,7 +292,6 @@ const struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 		.i2c_port = I2C_PORT_USB_MUX1,
 		.i2c_addr_flags = ANX3443_I2C_ADDR0_FLAGS,
 		.driver = &anx3443_usb_mux_driver,
-		.next_mux = &usbc1_virtual_mux,
 		.board_set = &board_anx3443_mux_set,
 	},
 };
