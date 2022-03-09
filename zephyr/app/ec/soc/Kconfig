@@ -32,6 +32,12 @@ config AP_X86_INTEL_ADL
 	help
 	  The application processor is Intel Alder Lake (ADL) chipset.
 
+config AP_X86_INTEL_MTL
+	bool "AP is MTL chipset"
+	select AP_X86_INTEL
+	help
+	  The application processor is Intel Meteor Lake (MTL) chipset.
+
 config AP_X86_AMD
 	bool "AP is an AMD chipset"
 	select AP_x86
