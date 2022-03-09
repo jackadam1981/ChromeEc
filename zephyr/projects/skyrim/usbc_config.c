@@ -18,6 +18,7 @@
 #include "driver/charger/isl9241.h"
 #include "driver/ppc/aoz1380.h"
 #include "driver/ppc/nx20p348x.h"
+#include "driver/retimer/anx7483.h"
 #include "driver/retimer/anx7491.h"
 #include "driver/retimer/ps8811.h"
 #include "driver/retimer/ps8818.h"
@@ -151,7 +152,12 @@ struct usb_mux usbc1_ps8818 = {
 	.board_set = &board_c1_ps8818_mux_set,
 };
 
-/* TODO: ANX7483 support */
+struct usb_mux usbc1_anx7483 = {
+	.usb_port = USBC_PORT_C1,
+	.i2c_port = I2C_PORT_TCPC1,
+	.i2c_addr_flags = ANX7483_I2C_ADDR0_FLAGS,
+	.driver = &anx7483_usb_retimer_driver,
+};
 
 /*
  * ANX7491(A1) and ANX7451(C1) are on the same i2c bus. Both default
