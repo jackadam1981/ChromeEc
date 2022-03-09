@@ -89,7 +89,7 @@
 		ec_pwm7 {
 			gpios = <&gpio6 0 GPIO_INPUT_PULL_UP>;
 		};
-		6axis_int_l {
+		gpio_accel_gyro_int_l: accel_gyro_int_l {
 			gpios = <&gpioa 0 GPIO_INPUT_PULL_UP>;
 		};
 	};
