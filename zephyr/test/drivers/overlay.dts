@@ -143,6 +143,14 @@
 			gpios = <&gpio0 29 (GPIO_ACTIVE_LOW | GPIO_INPUT)>;
 			no-auto-init;
 		};
+		gpio_usb_c0_discharge: usb_c0_discharge {
+			gpios = <&gpio0 30 GPIO_OUT_LOW>;
+			enum-name = "GPIO_USB_C0_DISCHARGE";
+		};
+		gpio_usb_c1_discharge: usb_c1_discharge {
+			gpios = <&gpio0 31 GPIO_OUT_LOW>;
+			enum-name = "GPIO_USB_C1_DISCHARGE";
+		};
 	};
 
 	gpio-interrupts {
