@@ -45,12 +45,13 @@ config PLATFORM_EC_USBC_RETIMER_INTEL_HB
 	  - Multifunction Display (MFD): two unidirectional lanes of DP and
 	    one bi-directional lane of USB3.2 Gen1/2
 
-config PLATFORM_EC_USBC_RETIMER_INTEL_BB_RUNTIME_CONFIG
-	bool "Use runtime configuration of Intel Burnside Bridge"
-	depends on PLATFORM_EC_USBC_RETIMER_INTEL_BB
+config PLATFORM_EC_USBC_RETIMER_INTEL_RUNTIME_CONFIG
+	bool "Use runtime configuration of Intel retimers"
+	depends on (PLATFORM_EC_USBC_RETIMER_INTEL_BB ||
+		PLATFORM_EC_USBC_RETIMER_INTEL_HB)
 	default y
 	help
-	  Enable this to allow run-time configuration of the Burnside Bridge
+	  Enable this to allow run-time configuration of the Intel retimer
 	  driver structure. This makes the bb_controls[] array writable, i.e.
 	  not const. It should be declared as such in the board config.
 

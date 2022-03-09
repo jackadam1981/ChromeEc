@@ -233,7 +233,7 @@
 
 /* Retimer */
 #define CONFIG_USBC_RETIMER_INTEL_BB
-#define CONFIG_USBC_RETIMER_INTEL_BB_RUNTIME_CONFIG
+#define CONFIG_USBC_RETIMER_INTEL_RUNTIME_CONFIG
 #define CONFIG_USBC_RETIMER_FW_UPDATE
 
 /* Enable volume button command in EC console */

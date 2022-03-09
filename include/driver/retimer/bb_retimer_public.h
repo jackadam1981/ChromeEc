@@ -23,7 +23,7 @@ struct bb_usb_control {
 	enum gpio_signal retimer_rst_gpio;
 };
 
-#ifndef CONFIG_USBC_RETIMER_INTEL_BB_RUNTIME_CONFIG
+#ifndef CONFIG_USBC_RETIMER_INTEL_RUNTIME_CONFIG
 extern const struct bb_usb_control bb_controls[];
 #else
 extern struct bb_usb_control bb_controls[];
