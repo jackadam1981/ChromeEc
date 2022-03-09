@@ -16,6 +16,23 @@
       "message": "The build for Nivviks is broken; I checked out from patchset 56. Got\nBuilding nivviks:ro: /usr/bin/ninja -C /mnt/host/source/src/platform/ec/build/zephyr/nivviks/build-ro\n-- git describe warned: warning: tag \u0027upstream/v2.7.99\u0027 is externally known as \u0027v2.7.99\u0027\n-- Zephyr version: 3.0.99 (/mnt/host/source/src/third_party/zephyr/main), build: v2.7.99-4698-ge055751719c9\nFAILED: CMakeFiles/app.dir/mnt/host/source/src/platform/ec/build/zephyr/nivviks/modules/ec/common/motion_sense.c.obj \nIn file included from /mnt/host/source/src/platform/ec/build/zephyr/nivviks/modules/ec/zephyr/shim/include/board.h:34,\n                 from /mnt/host/source/src/platform/ec/build/zephyr/nivviks/modules/ec/include/config.h:5631,\n                 from /mnt/host/source/src/platform/ec/build/zephyr/nivviks/modules/ec/include/common.h:242,\n                 from /mnt/host/source/src/platform/ec/build/zephyr/nivviks/modules/ec/include/chipset.h:16,\n                 from /mnt/host/source/src/platform/ec/build/zephyr/nivviks/modules/ec/include/motion_sense.h:12,\n                 from /mnt/host/source/src/platform/ec/build/zephyr/nivviks/modules/ec/include/accelgyro.h:9,\n                 from /mnt/host/source/src/platform/ec/build/zephyr/nivviks/modules/ec/common/motion_sense.c:8:\n/mnt/host/source/src/platform/ec/build/zephyr/nivviks/modules/ec/common/motion_sense.c: In function \u0027motion_sensor_in_forced_mode\u0027:\n/mnt/host/source/src/platform/ec/build/zephyr/nivviks/modules/ec/zephyr/shim/include/motionsense_sensors_defs.h:96:12: error: expected \u0027)\u0027 before \u0027LISTIFY\u0027\n   96 |         (0 LISTIFY(DT_PROP_LEN(SENSOR_INFO_NODE,                        \\\n      |         ~  ^~~~~~~\n/mnt/host/source/src/platform/ec/build/zephyr/nivviks/modules/ec/common/motion_sense.c:98:15: note: in expansion of macro \u0027CONFIG_ACCEL_FORCE_MODE_MASK\u0027\n   98 |         if (!(CONFIG_ACCEL_FORCE_MODE_MASK \u0026 (1 \u003c\u003c (sensor - motion_sensors))))",
       "revId": "d0d2dd586b211b18412758e112d7010651a46355",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "38414acb_64cfcad3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 56
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1415203
+      },
+      "writtenOn": "2022-03-09T02:35:34Z",
+      "side": 1,
+      "message": "https://chromium.googlesource.com/chromiumos/platform/ec/+/2981d96eb8630748b90912b83c7772be47a904d4\nAdding the authors.",
+      "revId": "d0d2dd586b211b18412758e112d7010651a46355",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
