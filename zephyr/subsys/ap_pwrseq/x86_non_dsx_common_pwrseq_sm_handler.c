@@ -4,6 +4,7 @@
  */
 
 #include <x86_non_dsx_common_pwrseq_sm_handler.h>
+#include <state_notifier.h>
 
 static K_KERNEL_STACK_DEFINE(pwrseq_thread_stack,
 			CONFIG_X86_NON_DSW_PWRSEQ_STACK_SIZE);
@@ -263,7 +264,7 @@ static int common_pwr_sm_run(int state)
 		 * Clearing the S0ix flag on the path to S0
 		 * to handle any reset conditions.
 		 */
-
+		ap_pwrseq_notify(NOTIFY_CHIPSET_STARTUP);
 		return SYS_POWER_STATE_S3;
 
 	case SYS_POWER_STATE_S3:
@@ -286,8 +287,15 @@ static int common_pwr_sm_run(int state)
 		}
 
 		/* All the power rails must be stable */
-		if (power_signal_get(PWR_ALL_SYS_PWRGD))
+		if (power_signal_get(PWR_ALL_SYS_PWRGD)) {
+#ifdef CONFIG_CHIPSET_RESUME_INIT_HOOK
+			/* Call hooks prior to chipset resume */
+			ap_pwrseq_notify(NOTIFY_CHIPSET_RESUME_INIT);
+#endif
+			/* Call hooks now that rails are up */
+			ap_pwrseq_notify(NOTIFY_CHIPSET_RESUME);
 			return SYS_POWER_STATE_S0;
+		}
 		break;
 
 	case SYS_POWER_STATE_S0:
@@ -301,13 +309,12 @@ static int common_pwr_sm_run(int state)
 		break;
 
 	case SYS_POWER_STATE_S4S5:
+		ap_pwrseq_notify(NOTIFY_CHIPSET_SHUTDOWN);
 		/* TODO */
-		/* Call hooks before we remove power rails */
-		/* hook_notify(HOOK_CHIPSET_SHUTDOWN); */
 		/* Disable wireless */
 		/* wireless_set_state(WIRELESS_OFF); */
-		/* Call hooks after we remove power rails */
-		/* hook_notify(HOOK_CHIPSET_SHUTDOWN_COMPLETE); */
+		ap_pwrseq_notify(NOTIFY_CHIPSET_SHUTDOWN_COMPLETE);
+
 		/* Always enter into S5 state. The S5 state is required to
 		 * correctly handle global resets which have a bit of delay
 		 * while the SLP_Sx_L signals are asserted then deasserted.
@@ -318,8 +325,11 @@ static int common_pwr_sm_run(int state)
 		return SYS_POWER_STATE_S4;
 
 	case SYS_POWER_STATE_S0S3:
-		/* TODO: Call hooks before we remove power rails */
-		/* hook_notify(HOOK_CHIPSET_SUSPEND); */
+		ap_pwrseq_notify(NOTIFY_CHIPSET_SUSPEND);
+#ifdef CONFIG_CHIPSET_RESUME_INIT_HOOK
+		/* Call hooks after chipset suspend */
+		ap_pwrseq_notify(NOTIFY_CHIPSET_SUSPEND_COMPLETE);
+#endif
 		return SYS_POWER_STATE_S3;
 
 	default:

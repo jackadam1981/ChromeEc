@@ -12,6 +12,18 @@
 #include "hooks.h"
 #include "task.h"
 #include "timer.h"
+#include "state_notifier.h"
+
+/*
+ * This is a mapping from the legacy EC hook to AP power sequence mask.
+ * Any native code using the callback does not need this type conversion.
+ * The chipset hook type first element is HOOK_CHIPSET_PRE_INIT
+ */
+/* TODO: This size should be determined with a macro */
+#define HOOK_MAX_COUNT 50
+
+#define AP_PWRSEQ_HOOK_TO_MASK(hook_type) (hook_type - HOOK_CHIPSET_PRE_INIT)
+static struct ap_pwrseq_callback pwrseq_callback[HOOK_MAX_COUNT];
 
 static void hook_second_work(struct k_work *work);
 static void hook_tick_work(struct k_work *work);
@@ -71,19 +83,43 @@ DECLARE_HOOK(HOOK_INIT, check_hook_task_priority, HOOK_PRIO_FIRST);
 static int zephyr_shim_setup_hooks(const struct device *unused)
 {
 	int rv;
-
+#if CONFIG_AP_PWRSEQ
+	int i = 0;
+#endif
 	STRUCT_SECTION_FOREACH(zephyr_shim_hook_list, entry) {
-		struct zephyr_shim_hook_list **loc =
-			&hook_registry[entry->type];
+		switch (entry->type) {
+#ifdef CONFIG_AP_PWRSEQ
+		case HOOK_CHIPSET_PRE_INIT:
+		case HOOK_CHIPSET_STARTUP:
+		case HOOK_CHIPSET_RESUME:
+#ifdef CONFIG_CHIPSET_RESUME_INIT_HOOK
+		case HOOK_CHIPSET_RESUME_INIT:
+		case HOOK_CHIPSET_SUSPEND_COMPLETE:
+#endif
+		case HOOK_CHIPSET_SUSPEND:
+		case HOOK_CHIPSET_SHUTDOWN:
+		case HOOK_CHIPSET_SHUTDOWN_COMPLETE:
+		case HOOK_CHIPSET_HARD_OFF:
 
-		/* Find the correct place to put the entry in the registry. */
-		while (*loc && (*loc)->priority < entry->priority)
-			loc = &((*loc)->next);
+			ap_pwrseq_init_callback(&pwrseq_callback[i++],
+						entry->routine,
+						entry->priority,
+					AP_PWRSEQ_HOOK_TO_MASK(entry->type));
+			break;
+#endif
+		default:
+			struct zephyr_shim_hook_list **loc =
+				&hook_registry[entry->type];
 
-		entry->next = *loc;
+			/* Find the correct place to put the entry in the registry. */
+			while (*loc && (*loc)->priority < entry->priority)
+				loc = &((*loc)->next);
 
-		/* Insert the entry. */
-		*loc = entry;
+			entry->next = *loc;
+
+			/* Insert the entry. */
+			*loc = entry;
+		}
 	}
 
 	/* Startup the HOOK_TICK and HOOK_SECOND recurring work */
