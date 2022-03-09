@@ -80,6 +80,7 @@ set_property(TARGET ec_shim APPEND PROPERTY COMPILE_DEFINITIONS __REQUIRE_ZEPHYR
 # sources.
 set(ZEPHYR_CURRENT_LIBRARY app)
 
+add_subdirectory("subsys")
 # Custom function that ensures the include path is always updated for both
 # libraries.
 function(cros_ec_library_include_directories)
@@ -509,5 +510,4 @@ add_subdirectory(linker)
 add_subdirectory("app")
 add_subdirectory("drivers")
 add_subdirectory("emul")
-add_subdirectory("subsys")
 add_subdirectory_ifdef(CONFIG_PLATFORM_EC "shim")
