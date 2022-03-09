@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "908304e1_7381615f",
+        "filename": "zephyr/emul/tcpc/emul_tcpci_partner_common.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 594,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-03-09T16:12:40Z",
+      "side": 1,
+      "message": "I can think of some plausible scenarios with sensors or the keyboard or something else that streams data, but we can move this later if anything like that comes up.",
+      "parentUuid": "bf1e791f_f8c947eb",
+      "revId": "f7d0ff5149f04ce976dd758b2cedb4cf7d1d57f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ede92bf9_4fb18e5c",
