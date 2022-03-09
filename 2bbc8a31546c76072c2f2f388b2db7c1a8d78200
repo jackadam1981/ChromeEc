@@ -449,6 +449,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "51b8b2d4_17640e06",
+        "filename": "driver/fingerprint/fpc/libfp/fpc_private.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1202834
+      },
+      "writtenOn": "2022-03-09T07:01:11Z",
+      "side": 1,
+      "message": "Sure, Tom, let me know if you have concerns on the latest approach (summary: returning the unshifted value and informing callers via the Doxygen comment in the .h that it\u0027s the full 16 bits).",
+      "parentUuid": "7603de16_059e55e8",
+      "range": {
+        "startLine": 126,
+        "startChar": 0,
+        "endLine": 127,
+        "endChar": 35
+      },
+      "revId": "2bbc8a31546c76072c2f2f388b2db7c1a8d78200",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ed56acfe_76676193",
