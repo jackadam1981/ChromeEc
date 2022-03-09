@@ -58,6 +58,9 @@ static void board_chipset_resume(void)
 {
 	/* Allow keyboard backlight to be enabled */
 	pwm_set_duty(PWM_CH_KBLIGHT, KBLIGHT_LED_ON_LVL);
+
+	gpio_set_alternate_function(GPIO_PORT_6,
+		BIT(2) | BIT(3), GPIO_ALT_FUNC_DEFAULT);
 }
 DECLARE_HOOK(HOOK_CHIPSET_RESUME, board_chipset_resume, HOOK_PRIO_DEFAULT);
 
@@ -66,6 +69,11 @@ static void board_chipset_suspend(void)
 {
 	/* Turn off the keyboard backlight if it's on. */
 	pwm_set_duty(PWM_CH_KBLIGHT, KBLIGHT_LED_OFF_LVL);
+
+	gpio_set_flags(GPIO_EC_PS2_SCL_TPAD, GPIO_ODR_LOW);
+	gpio_set_flags(GPIO_EC_PS2_SDA_TPAD, GPIO_ODR_LOW);
+	gpio_set_alternate_function(GPIO_PORT_6,
+		BIT(2) | BIT(3), GPIO_ALT_FUNC_NONE);
 }
 DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, board_chipset_suspend, HOOK_PRIO_DEFAULT);
 
