@@ -8,9 +8,7 @@
 #include <assert.h>
 #include <drivers/cros_kb_raw.h>
 #include <drivers/clock_control.h>
-#include <drivers/gpio.h>
 #include <drivers/pinctrl.h>
-#include <kernel.h>
 #include <drivers/interrupt_controller/intc_mchp_xec_ecia.h>
 #include <soc.h>
 #include <soc/microchip_xec/reg_def_cros.h>
@@ -89,15 +87,15 @@ static int cros_kb_raw_xec_drive_column(const struct device *dev, int col)
 	/* Drive all lines to high. i.e. Key detection is disabled. */
 	if (col == KEYBOARD_COLUMN_NONE) {
 		inst->KSO_SEL = MCHP_KSCAN_KSO_EN;
-		if (IS_ENABLED(CONFIG_PLATFORM_EC_KEYBOARD_COL2_INVERTED))
-			gpio_set_level(GPIO_KBD_KSO2, 0);
+//		if (IS_ENABLED(CONFIG_PLATFORM_EC_KEYBOARD_COL2_INVERTED))
+//			gpio_set_level(GPIO_KBD_KSO2, 0);
 	}
 	/* Drive all lines to low for detection any key press */
 	else if (col == KEYBOARD_COLUMN_ALL) {
 		mchp_soc_ecia_girq_src_dis(MCHP_GIRQ21_ID, MCHP_KEYSCAN_GIRQ_POS);
 		inst->KSO_SEL = MCHP_KSCAN_KSO_ALL;
-		if (IS_ENABLED(CONFIG_PLATFORM_EC_KEYBOARD_COL2_INVERTED))
-			gpio_set_level(GPIO_KBD_KSO2, 1);
+//		if (IS_ENABLED(CONFIG_PLATFORM_EC_KEYBOARD_COL2_INVERTED))
+//			gpio_set_level(GPIO_KBD_KSO2, 1);
 
 		/* Workaround to fix glitches on KSIs pins as all KSOs are driven low */
 		if (inst->KSI_IN == 0xff) {
@@ -111,10 +109,10 @@ static int cros_kb_raw_xec_drive_column(const struct device *dev, int col)
 	else if (IS_ENABLED(CONFIG_PLATFORM_EC_KEYBOARD_COL2_INVERTED)) {
 		if (col == 2) {
 			inst->KSO_SEL = MCHP_KSCAN_KSO_EN;
-			gpio_set_level(GPIO_KBD_KSO2, 1);
+//			gpio_set_level(GPIO_KBD_KSO2, 1);
 		} else {
 			inst->KSO_SEL = col + CONFIG_KEYBOARD_KSO_BASE;
-			gpio_set_level(GPIO_KBD_KSO2, 0);
+//			gpio_set_level(GPIO_KBD_KSO2, 0);
 		}
 	} else {
 		inst->KSO_SEL = col + CONFIG_KEYBOARD_KSO_BASE;

@@ -25,3 +25,8 @@ endif()
 if(DEFINED CONFIG_PLATFORM_EC_IOEX_CROS_DRV)
 	zephyr_include_directories("${PLATFORM_EC}/driver/ioexpander")
 endif()
+
+if(DEFINED CONFIG_BOARD_ADLRVP_MCHP)
+  add_subdirectory(adlrvp)
+  zephyr_library_sources("src/intelrvp.c")
+endif()

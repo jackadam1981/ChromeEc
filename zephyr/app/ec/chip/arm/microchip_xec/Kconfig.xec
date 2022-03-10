@@ -26,8 +26,8 @@ if WATCHDOG
 
 # Set the delay time for printing panic data.
 # 1 cycle is about 32ms. 500ms is about 16 cycles.
-config WDT_XEC_DELAY_CYCLES
-	default 16
+#config WDT_XEC_DELAY_CYCLES
+#	default 16
 
 endif # WATCHDOG
 
