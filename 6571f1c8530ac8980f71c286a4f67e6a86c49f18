@@ -34,6 +34,24 @@
       "parentUuid": "15e889ee_a751fbef",
       "revId": "6571f1c8530ac8980f71c286a4f67e6a86c49f18",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "58168a31_a11407ca",
+        "filename": "common/fpsensor/fpsensor.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-03-10T23:07:51Z",
+      "side": 0,
+      "message": "I agree, in this case it doesn\u0027t really make the code more readable. I\u0027ll leave it as is to avoid unnecessary changes to the file.",
+      "parentUuid": "b917e1b6_05c2af21",
+      "revId": "6571f1c8530ac8980f71c286a4f67e6a86c49f18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
