@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8cdfd6e7_2d63bf88",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-03-10T20:58:12Z",
+      "side": 1,
+      "message": "Nice change! I really like how the fan node now contains both the PWM and tachometer phandles directly.\n\nI think the only other user of the PWM shim is the LEDs, correct?  Can you open a bug for adapting our LED PWM support to use the \"pwm-leds\" compatible in Zephyr?",
+      "revId": "60b6d21d6f9961c19d8e71289e97e997af2ba946",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80e73da7_b8944bb6",
+        "filename": "zephyr/shim/src/fan.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-03-10T20:58:12Z",
+      "side": 1,
+      "message": "Group with the other Zephyr headers and use `\u003c\u003e` instead of quotes to indicate the system include.",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 24
+      },
+      "revId": "60b6d21d6f9961c19d8e71289e97e997af2ba946",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
