@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d64e7659_bdf3562f",
+        "filename": "common/fpsensor/fpsensor.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-03-10T23:49:17Z",
+      "side": 1,
+      "message": "It looks like maybe the majority of the EC code formats it as `__maybe_unused static`, but it\u0027s not consistent.",
+      "range": {
+        "startLine": 83,
+        "startChar": 0,
+        "endLine": 83,
+        "endChar": 21
+      },
+      "revId": "c3fc9730ce80d6aa824afb0972d6ca0c1a91b2a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
