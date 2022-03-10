@@ -189,7 +189,9 @@ void tcpci_partner_set_header(struct tcpci_partner_data *data,
  * @param msg Pointer to message to send
  * @param delay Optional delay
  *
- * @return 0 on success
+ * @return TCPCI_EMUL_TX_SUCCESS on success
+ * @return TCPCI_EMUL_TX_FAILED when TCPCI is configured to not handle
+ *                              messages of this type
  * @return negative on failure
  */
 int tcpci_partner_send_msg(struct tcpci_partner_data *data,
@@ -202,7 +204,9 @@ int tcpci_partner_send_msg(struct tcpci_partner_data *data,
  * @param type Type of message
  * @param delay Optional delay
  *
- * @return 0 on success
+ * @return TCPCI_EMUL_TX_SUCCESS on success
+ * @return TCPCI_EMUL_TX_FAILED when TCPCI is configured to not handle
+ *                              messages of this type
  * @return -ENOMEM when there is no free memory for message
  * @return negative on failure
  */
@@ -220,7 +224,9 @@ int tcpci_partner_send_control_msg(struct tcpci_partner_data *data,
  * @param data_obj_num Number of data objects
  * @param delay Optional delay
  *
- * @return 0 on success
+ * @return TCPCI_EMUL_TX_SUCCESS on success
+ * @return TCPCI_EMUL_TX_FAILED when TCPCI is configured to not handle
+ *                              messages of this type
  * @return -ENOMEM when there is no free memory for message
  * @return negative on failure
  */

@@ -130,9 +130,20 @@ static void attach_src_snk_common_after(struct emul_state *my_emul_state)
 		my_emul_state->tcpci_generic_emul;
 	const struct emul *tcpci_ps8xxx_emul = my_emul_state->tcpci_ps8xxx_emul;
 	const struct emul *charger_emul = my_emul_state->charger_isl923x_emul;
+	struct tcpci_snk_emul *my_snk = &my_emul_state->my_snk;
+	struct tcpci_src_emul *my_src = &my_emul_state->my_src;
 
 	tcpci_emul_disconnect_partner(tcpci_generic_emul);
 	tcpci_emul_disconnect_partner(tcpci_ps8xxx_emul);
+
+	tcpci_partner_common_enable_pd_logging(&my_src->common_data, false);
+	tcpci_partner_common_enable_pd_logging(&my_snk->common_data, false);
+	printk("src\n");
+	tcpci_partner_common_print_logged_msgs(&my_src->common_data);
+	printk("snk\n");
+	tcpci_partner_common_print_logged_msgs(&my_snk->common_data);
+	tcpci_partner_common_clear_logged_msgs(&my_src->common_data);
+	tcpci_partner_common_clear_logged_msgs(&my_snk->common_data);
 
 	/* Give time to actually disconnect */
 	k_sleep(K_SECONDS(1));
@@ -149,6 +160,7 @@ static void attach_emulated_snk(struct emul_state *my_emul_state)
 
 	/* Attach emulated sink */
 	tcpci_snk_emul_init(my_snk);
+	tcpci_partner_common_enable_pd_logging(&my_snk->common_data, true);
 	tcpci_emul_set_rev(tcpci_emul_snk, TCPCI_EMUL_REV1_0_VER1_0);
 	zassume_ok(tcpci_snk_emul_connect_to_tcpci(
 			   &my_snk->data, &my_snk->common_data, &my_snk->ops,
@@ -167,6 +179,7 @@ static void attach_emulated_src(struct emul_state *my_emul_state)
 
 	/* Attach emulated charger. */
 	tcpci_src_emul_init(my_src);
+	tcpci_partner_common_enable_pd_logging(&my_src->common_data, true);
 	tcpci_emul_set_rev(tcpci_emul_src, TCPCI_EMUL_REV1_0_VER1_0);
 	zassume_ok(tcpci_src_emul_connect_to_tcpci(
 			   &my_src->data, &my_src->common_data, &my_src->ops,
