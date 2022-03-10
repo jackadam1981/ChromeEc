@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c912815d_5ddeb12d",
+        "filename": "zephyr/subsys/ap_pwrseq/signal_vw.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-03-10T01:29:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c13a8a8d_293d20ec",
+      "range": {
+        "startLine": 51,
+        "startChar": 10,
+        "endLine": 51,
+        "endChar": 14
+      },
+      "revId": "dfa43f38edb7e3c2ed15466d17029c8765b32225",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a51e333c_456b55af",
@@ -37,6 +61,24 @@
       "writtenOn": "2022-03-09T23:59:26Z",
       "side": 1,
       "message": "Perhaps add an __ASSERT here to flag misconfiguration of the callback.",
+      "revId": "dfa43f38edb7e3c2ed15466d17029c8765b32225",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "be553a28_d8b5ea2a",
+        "filename": "zephyr/subsys/ap_pwrseq/signal_vw.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-03-10T01:29:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a51e333c_456b55af",
       "revId": "dfa43f38edb7e3c2ed15466d17029c8765b32225",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
