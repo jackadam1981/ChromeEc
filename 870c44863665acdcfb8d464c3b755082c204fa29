@@ -22,6 +22,30 @@
       },
       "revId": "870c44863665acdcfb8d464c3b755082c204fa29",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b855238d_0c4f1e48",
+        "filename": "board/brask/fw_config.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2022-03-10T09:24:21Z",
+      "side": 1,
+      "message": "Yeah, we could set the value to the lowest power which can be supported by this project ie. bj_power[0]. I think it is safe because it is the lowest power. BTW, i think the reading of the FW_CONFIG should be correct and this is just an error handling in case it happens.",
+      "parentUuid": "708a5d0f_54d79f5e",
+      "range": {
+        "startLine": 60,
+        "startChar": 35,
+        "endLine": 60,
+        "endChar": 36
+      },
+      "revId": "870c44863665acdcfb8d464c3b755082c204fa29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
