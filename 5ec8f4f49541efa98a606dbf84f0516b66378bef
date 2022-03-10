@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa021758_55a88dbf",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-03-10T17:51:12Z",
+      "side": 1,
+      "message": "I believe curr.batt.flags are for BATT_FLAG_* because charger_task calls battery_get_params(\u0026curr.batt) and all of battery_get_params implementations populate the flags field using BATT_FLAG_*.\n\nSo, it\u0027s confusing what \u0027flags are actually _not_ BATT_FLAG_*\u0027 means in the patch description. Maybe the description is talking about memmap_flags and EC_BATT_FLAG_INVALID_DATA is a typo (of BATT_FLAG_BAD_ANY).",
+      "range": {
+        "startLine": 221,
+        "startChar": 5,
+        "endLine": 221,
+        "endChar": 48
+      },
+      "revId": "5ec8f4f49541efa98a606dbf84f0516b66378bef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
