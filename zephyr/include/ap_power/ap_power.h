@@ -15,6 +15,10 @@
 #ifndef __AP_POWER_AP_POWER_H__
 #define __AP_POWER_AP_POWER_H__
 
+#include <sys/__assert.h>
+#include <sys/slist.h>
+#include <sys/util.h>
+
 /**
  * @brief AP power events for callback notification.
  */
