@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "df715529_c1c99b1d",
+        "filename": "zephyr/include/ap_power/ap_power_interface.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-03-10T23:53:32Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "449c597e_4268aebb",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 26
+      },
+      "revId": "0d0044cdb74e886cc031cbbdd511f708b2f57807",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "62edb508_2024e598",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-03-10T21:53:40Z",
       "side": 1,
       "message": "I suggest providing a link to the Chromium source, since we hope to upstream this file.\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/include/ec_commands.h",
+      "range": {
+        "startLine": 51,
+        "startChar": 20,
+        "endLine": 51,
+        "endChar": 43
+      },
+      "revId": "0d0044cdb74e886cc031cbbdd511f708b2f57807",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0767664e_bf5f784e",
+        "filename": "zephyr/include/ap_power/ap_power_interface.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-03-10T23:53:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "62edb508_2024e598",
       "range": {
         "startLine": 51,
         "startChar": 20,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ebc90a45_a3f83ee0",
+        "filename": "zephyr/subsys/ap_pwrseq/Kconfig",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-03-10T23:53:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "12fc9d37_09511ea1",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 27
+      },
+      "revId": "0d0044cdb74e886cc031cbbdd511f708b2f57807",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7c154cd1_26ff2835",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-03-10T21:53:40Z",
       "side": 1,
       "message": "Cleanup of the weak/override functions as a separate CL.",
+      "range": {
+        "startLine": 29,
+        "startChar": 4,
+        "endLine": 29,
+        "endChar": 25
+      },
+      "revId": "0d0044cdb74e886cc031cbbdd511f708b2f57807",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e1b5a79f_3d3a3c7a",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_adlp_pwrseq_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-03-10T23:53:32Z",
+      "side": 1,
+      "message": "Yes, I was intending to.",
+      "parentUuid": "7c154cd1_26ff2835",
       "range": {
         "startLine": 29,
         "startChar": 4,
