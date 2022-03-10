@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec5d9585_c18877d3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-03-10T22:56:32Z",
+      "side": 1,
+      "message": "check how 1.8V gpios are handled in other boards, add similar gpio config ",
+      "revId": "3e77b5c82bcf1e9bbe9c258e822d41cbf5f70612",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d94da7ba_104d6472",
