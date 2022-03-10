@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dba912bf_3ef51873",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2022-03-10T20:10:14Z",
+      "side": 1,
+      "message": "Not a huge fan of long macro functions when a static or static inline would work the same. I will CR+2 but if there is not a good reason for using a macro here, it would be nice to see that vanish.",
+      "revId": "09ebf5ed4561e5e05733fa4c9f310e5c863d9734",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
