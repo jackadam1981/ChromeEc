@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "def746d5_83bfef11",
+        "filename": "zephyr/include/ap_power/ap_events.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-03-10T03:44:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b590cfae_2c8904cb",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 48
+      },
+      "revId": "1d89bc92f1b5ce2d964f275c4f4f8706319675e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b86ebbc6_b94cdb6a",
@@ -54,6 +78,42 @@
       "writtenOn": "2022-03-10T02:55:17Z",
       "side": 1,
       "message": "What if neither of legacy or Zephyr power sequencing is enabled?",
+      "revId": "1d89bc92f1b5ce2d964f275c4f4f8706319675e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "edfad849_b271ea69",
+        "filename": "zephyr/shim/src/hooks.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-03-10T03:44:56Z",
+      "side": 1,
+      "message": "So regardless of whether legacy power sequencing is enabled, most code still registers hooks for these events, so in essence this part is the default behaviour.\nPotentially we could guard it with HAS_TASK_CHIPSET, but this may break some behaviour if some code does a hook_notify(HOOK_CHIPSET_RESET) and other code expects to receive it.",
+      "parentUuid": "fecfb137_5768d38a",
+      "revId": "1d89bc92f1b5ce2d964f275c4f4f8706319675e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a7ce70cc_c915b352",
+        "filename": "zephyr/shim/src/hooks.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-03-10T03:44:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b86ebbc6_b94cdb6a",
       "revId": "1d89bc92f1b5ce2d964f275c4f4f8706319675e6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
