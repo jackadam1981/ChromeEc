@@ -1,0 +1,351 @@
+/* Copyright 2021 Microchip Technology Inc. All rights reserved.
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+/dts-v1/;
+
+#include <cros/microchip/mec1727.dtsi>
+#include <cros/thermistor/thermistor.dtsi>
+#include <dt-bindings/gpio_defines.h>
+#include <microchip/mec172xnsz.dtsi>
+#include <microchip/mec172x/mec172xnsz-pinctrl.dtsi>
+
+/ {
+	model = "MEC172x EVB";
+
+	chosen {
+		zephyr,sram = &sram0;
+		zephyr,console = &uart0;
+		zephyr,shell-uart = &uart0;
+		zephyr,flash = &flash0;
+		zephyr,flash-controller = &int_flash;
+	};
+
+	named-i2c-ports {
+		compatible = "named-i2c-ports";
+		i2c_sensor: sensor {
+			i2c-port = <&i2c_smb_0>;
+			enum-name = "I2C_PORT_SENSOR";
+		};
+		tcpc0_2 {
+			i2c-port = <&i2c_smb_1>;
+			enum-name = "I2C_PORT_USB_C0_C2_TCPC";
+		};
+		tcpc1 {
+			i2c-port = <&i2c_smb_2>;
+			enum-name = "I2C_PORT_USB_C1_TCPC";
+		};
+		ppc0_2 {
+			i2c-port = <&i2c_smb_3>;
+			enum-name = "I2C_PORT_USB_C0_C2_PPC";
+		};
+		ppc1 {
+			i2c-port = <&i2c_smb_3>;
+			enum-name = "I2C_PORT_USB_C1_PPC";
+		};
+		retimer0_2 {
+			i2c-port = <&i2c_smb_3>;
+			enum-name = "I2C_PORT_USB_C0_C2_MUX";
+		};
+		battery {
+			i2c-port = <&i2c_smb_0>;
+			enum-name = "I2C_PORT_BATTERY";
+		};
+		eeprom {
+			i2c-port = <&i2c_smb_4>;
+			enum-name = "I2C_PORT_EEPROM";
+		};
+		charger {
+			i2c-port = <&i2c_smb_4>;
+			enum-name = "I2C_PORT_CHARGER";
+		};
+		mp2964 {
+			i2c-port = <&i2c_smb_4>;
+			enum-name = "I2C_PORT_MP2964";
+		};
+	};
+
+	named-pwms {
+		compatible = "named-pwms";
+	};
+
+	named-adc-channels {
+		compatible = "named-adc-channels";
+
+		adc_ddr_soc: ddr_soc {
+			label = "TEMP_DDR_SOC";
+			enum-name = "ADC_TEMP_SENSOR_1_DDR_SOC";
+			io-channels = <&adc0 5>;
+		};
+		adc_ambient: ambient {
+			label = "TEMP_AMBIENT";
+			enum-name = "ADC_TEMP_SENSOR_2_AMBIENT";
+			io-channels = <&adc0 3>;
+		};
+		adc_charger: charger {
+			label = "TEMP_CHARGER";
+			enum-name = "ADC_TEMP_SENSOR_3_CHARGER";
+			io-channels = <&adc0 0>;
+		};
+		adc_wwan: wwan {
+			label = "TEMP_WWAN";
+			enum-name = "ADC_TEMP_SENSOR_4_WWAN";
+			io-channels = <&adc0 4>;
+		};
+	};
+
+	named-temp-sensors {
+		ddr_soc {
+			compatible = "cros-ec,temp-sensor-thermistor";
+			thermistor = <&thermistor_3V3_30K9_47K_4050B>;
+			label = "DDR and SOC";
+			enum-name = "TEMP_SENSOR_1_DDR_SOC";
+			temp_fan_off = <35>;
+			temp_fan_max = <60>;
+			temp_host_high = <85>;
+			temp_host_halt = <90>;
+			temp_host_release_high = <80>;
+			adc = <&adc_ddr_soc>;
+		};
+		ambient {
+			compatible = "cros-ec,temp-sensor-thermistor";
+			thermistor = <&thermistor_3V3_30K9_47K_4050B>;
+			label = "Ambient";
+			enum-name = "TEMP_SENSOR_2_AMBIENT";
+			temp_fan_off = <35>;
+			temp_fan_max = <60>;
+			temp_host_high = <85>;
+			temp_host_halt = <90>;
+			temp_host_release_high = <80>;
+			adc = <&adc_ambient>;
+		};
+		charger {
+			compatible = "cros-ec,temp-sensor-thermistor";
+			thermistor = <&thermistor_3V3_30K9_47K_4050B>;
+			label = "Charger";
+			enum-name = "TEMP_SENSOR_3_CHARGER";
+			temp_fan_off = <35>;
+			temp_fan_max = <65>;
+			temp_host_high = <105>;
+			temp_host_halt = <120>;
+			temp_host_release_high = <90>;
+			adc = <&adc_charger>;
+		};
+		wwan {
+			compatible = "cros-ec,temp-sensor-thermistor";
+			thermistor = <&thermistor_3V3_30K9_47K_4050B>;
+			label = "WWAN";
+			enum-name = "TEMP_SENSOR_4_WWAN";
+			temp_fan_off = <35>;
+			temp_fan_max = <60>;
+			temp_host_high = <130>;
+			temp_host_halt = <130>;
+			temp_host_release_high = <100>;
+			adc = <&adc_wwan>;
+		};
+	};
+
+	soc {
+		/delete-node/ rtc@400f5000;
+		/delete-node/ kscan@40009c00;
+
+		crtc: cros-rtc@400f5000 {
+			compatible = "microchip,xec-cros-rtc";
+			reg = <0x400f5000 0x100>;
+			interrupts = <119 0>, <120 0>;
+			label = "CRTC";
+		};
+
+		cros_kb_raw: cros-kb-raw@40009c00 {
+			compatible = "microchip,xec-cros-kb-raw";
+			reg = <0x40009c00 0x18>;
+			label = "CROS_KB_RAW_0";
+			interrupts = <135 4>;
+		};
+	};
+};
+
+&cpu0 {
+	status = "okay";
+/* cpu-power-states = <&suspend_to_idle_instant &suspend_to_idle_normal>; */
+};
+
+&bbram {
+	status = "okay";
+};
+
+&ecia {
+	status = "okay";
+};
+
+/* Enable aggregated GIRQ24/25 for eSPI virtual wires */
+&girq24 {
+	status = "okay";
+};
+
+&girq25 {
+	status = "okay";
+};
+
+&espi0 {
+	status = "okay";
+	pinctrl-0 = <&espi_reset_n_gpio061
+		     &espi_cs_n_gpio066
+		     &espi_clk_gpio065
+		     &espi_io0_gpio070
+		     &espi_io1_gpio071
+		     &espi_io2_gpio072
+		     &espi_io3_gpio073>;
+	pinctrl-names = "default";
+};
+
+/* Host facing devices on eSPI bus */
+&kbc0 {
+	status = "okay";
+};
+
+&acpi_ec0 {
+	status = "okay";
+};
+
+&acpi_ec1 {
+	status = "okay";
+};
+
+&emi0 {
+	status = "okay";
+};
+
+&p80bd0 {
+	status = "okay";
+};
+
+&crtc {
+	status = "okay";
+};
+
+&uart0 {
+	status = "okay";
+	current-speed = <115200>;
+	pinctrl-0 = <&uart0_tx_gpio104 &uart0_rx_gpio105>;
+	pinctrl-names = "default";
+};
+
+&spi0 {
+	status = "okay";
+	clock-frequency = <12000000>;
+	lines = <2>;
+	port-sel = <2>;
+	chip-select = <0>;
+	pinctrl-0 = < &gpspi_cs_n_gpio116
+		      &gpspi_clk_gpio117
+		      &gpspi_io0_gpio074
+		      &gpspi_io1_gpio075
+		      &gpspi_wp_n_gpio076 >;
+	pinctrl-names = "default";
+
+	int_flash: sst25pf040@0 {
+		compatible ="jedec,spi-nor";
+		/*  4194304 bits = 512K Bytes */
+		size = <0x400000>;
+		label = "SST25PF040";
+		reg = <0>;
+		spi-max-frequency = <40000000>;
+		status = "okay";
+		jedec-id = [62 06 13];
+	};
+};
+
+&i2c_smb_0 {
+	status = "okay";
+	clock-frequency = <I2C_BITRATE_FAST>;
+	port_sel = <0>;
+	pinctrl-0 = <&i2c00_scl_gpio004 &i2c00_sda_gpio003>;
+	pinctrl-names = "default";
+};
+
+&i2c_smb_1 {
+	status = "okay";
+	clock-frequency = <I2C_BITRATE_FAST_PLUS>;
+	port_sel = <2>;
+	pinctrl-0 = <&i2c02_scl_gpio155 &i2c02_sda_gpio154>;
+	pinctrl-names = "default";
+};
+
+&i2c_smb_2 {
+	status = "okay";
+	clock-frequency = <I2C_BITRATE_FAST_PLUS>;
+	port_sel = <3>;
+	pinctrl-0 = <&i2c03_scl_gpio010 &i2c03_sda_gpio007>;
+	pinctrl-names = "default";
+};
+
+&i2c_smb_3 {
+	status = "okay";
+	clock-frequency = <I2C_BITRATE_FAST_PLUS>;
+	port_sel = <6>;
+	pinctrl-0 = <&i2c06_scl_gpio140 &i2c06_sda_gpio132>;
+	pinctrl-names = "default";
+};
+
+&i2c_smb_4 {
+	status = "okay";
+	clock-frequency = <I2C_BITRATE_FAST>;
+	port_sel = <7>;
+	pinctrl-0 = <&i2c07_scl_gpio013 &i2c07_sda_gpio012>;
+	pinctrl-names = "default";
+
+	pmic_mp2964: pmic_mp2964@20 {
+		compatible = "mps,mp2964";
+		reg = <0x20>;
+		label = "I2C_ADDR_MP2964_FLAGS";
+	};
+};
+
+&cros_kb_raw {
+	status = "okay";
+	/*
+	 * No KSO2 (It's inverted and implemented by GPIO for
+	 * CONFIG_KEYBOARD_COL2_INVERTED.)
+	 */
+	pinctrl-0 = <&ksi0_gpio017
+		     &ksi1_gpio020
+		     &ksi3_gpio026
+		     &ksi4_gpio027
+		     &ksi5_gpio030
+		     &ksi6_gpio031
+		     &ksi7_gpio032
+		     &kso00_gpio040
+		     &kso01_gpio045
+		     &kso02_gpio046
+		     &kso03_gpio047
+		     &kso04_gpio107
+		     &kso05_gpio112
+		     &kso06_gpio113
+		     &kso07_gpio120
+		     &kso08_gpio121
+		     &kso09_gpio122
+		     &kso10_gpio123
+		     &kso11_gpio124
+		     &kso12_gpio125
+		     &kso13_gpio126
+		     &kso14_gpio152
+		     &kso15_gpio151
+		     &kso16_gpio132
+		     &kso17_gpio140>;
+	pinctrl-names = "default";
+};
+
+&adc0 {
+	status = "okay";
+	pinctrl-0 = <&adc00_gpio200
+		     &adc03_gpio203
+		     &adc04_gpio204
+		     &adc05_gpio205>;
+	pinctrl-names = "default";
+};
+
+&thermistor_3V3_30K9_47K_4050B {
+	status = "okay";
+};
