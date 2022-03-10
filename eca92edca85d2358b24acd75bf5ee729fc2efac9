@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "039cc9a4_b469666a",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1415203
+      },
+      "writtenOn": "2022-03-10T15:52:12Z",
+      "side": 1,
+      "message": "ok.",
+      "parentUuid": "4927dd90_9b05bb06",
+      "revId": "eca92edca85d2358b24acd75bf5ee729fc2efac9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "babaf3ea_99460530",
@@ -67,6 +85,24 @@
       "side": 1,
       "message": "initially i thought about it, but highly unlikely we will have both HBR \u0026 BBR combinations in design.\nMay be I can add #error to make sure only one config is enabled at a time",
       "parentUuid": "babaf3ea_99460530",
+      "revId": "eca92edca85d2358b24acd75bf5ee729fc2efac9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b85d5273_a2c7cb65",
+        "filename": "include/driver/retimer/bb_retimer.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1415203
+      },
+      "writtenOn": "2022-03-10T15:52:12Z",
+      "side": 1,
+      "message": "may be rename pound defines to have a generic name, instead of *BB? some one reading the code will get confused.",
+      "parentUuid": "1de1968e_2c8f6c3c",
       "revId": "eca92edca85d2358b24acd75bf5ee729fc2efac9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
