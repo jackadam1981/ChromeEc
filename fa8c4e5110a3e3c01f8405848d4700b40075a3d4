@@ -16,6 +16,24 @@
       "message": "Include the type to ease debugging: `\"ESPI unknown event type: %d\", event.evt_type`",
       "revId": "fa8c4e5110a3e3c01f8405848d4700b40075a3d4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "201622c0_703746ad",
+        "filename": "zephyr/subsys/ap_pwrseq/signal_vw.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-03-10T04:44:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "20b0af6b_72dc79c9",
+      "revId": "fa8c4e5110a3e3c01f8405848d4700b40075a3d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
