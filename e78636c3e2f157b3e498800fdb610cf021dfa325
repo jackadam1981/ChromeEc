@@ -34,6 +34,24 @@
       "parentUuid": "188da2bb_6d8bb9bc",
       "revId": "e78636c3e2f157b3e498800fdb610cf021dfa325",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "45b4a950_c03a2c9b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-03-10T23:45:37Z",
+      "side": 1,
+      "message": "Ah, you will have to just include the link directly in the commit message (not on the `BUG` line. As the checker indicates, only bugs that are on buganizer or the chromium project on crbug are supported. In this case it\u0027s in the [`gerrit` project](https://bugs.chromium.org/p/gerrit/issues/list), not the [`chromium` project](https://bugs.chromium.org/p/chromium/issues/list).",
+      "parentUuid": "7190f0bf_7a520dd3",
+      "revId": "e78636c3e2f157b3e498800fdb610cf021dfa325",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
