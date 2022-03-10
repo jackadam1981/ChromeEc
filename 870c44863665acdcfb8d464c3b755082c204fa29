@@ -46,6 +46,30 @@
       },
       "revId": "870c44863665acdcfb8d464c3b755082c204fa29",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "03745dbd_553db5f5",
+        "filename": "board/brask/fw_config.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-03-10T10:06:08Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b855238d_0c4f1e48",
+      "range": {
+        "startLine": 60,
+        "startChar": 35,
+        "endLine": 60,
+        "endChar": 36
+      },
+      "revId": "870c44863665acdcfb8d464c3b755082c204fa29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
