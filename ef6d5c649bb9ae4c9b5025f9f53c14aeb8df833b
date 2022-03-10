@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "960ec745_c38cfc91",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2022-03-10T20:06:34Z",
+      "side": 1,
+      "message": "Can you please test FRS on a real device?",
+      "range": {
+        "startLine": 13,
+        "startChar": 5,
+        "endLine": 13,
+        "endChar": 21
+      },
+      "revId": "ef6d5c649bb9ae4c9b5025f9f53c14aeb8df833b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd4d0faf_35736d41",
+        "filename": "board/taniks/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2022-03-10T20:06:34Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this be LOW by default? i.e. GPIO_OUT_LOW",
+      "range": {
+        "startLine": 159,
+        "startChar": 68,
+        "endLine": 159,
+        "endChar": 72
+      },
+      "revId": "ef6d5c649bb9ae4c9b5025f9f53c14aeb8df833b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
