@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed9042e7_3a9e97f0",
+        "filename": "zephyr/shim/src/hooks.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-03-10T21:17:54Z",
+      "side": 1,
+      "message": "Is this needed? Do we expect any callers to `ap_power_ev_add_callback()` when `CONFIG_AP_PWRSEQ\u003dn`?\n\nMy main concern is that this increases usage on boards that haven\u0027t migrated to AP_PWRSEQ.",
+      "range": {
+        "startLine": 205,
+        "startChar": 0,
+        "endLine": 205,
+        "endChar": 75
+      },
+      "revId": "383b218ac81664b9d655bfb2dc7a0acca3feb718",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
