@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "456d44d6_91c6e2e8",
+        "filename": "driver/charger/bq25710.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 428,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-03-10T11:05:17Z",
+      "side": 1,
+      "message": "could you move this before PP_INOM? it\u0027ll be easier to read\nif it\u0027s in the same order as the datasheet.",
+      "range": {
+        "startLine": 426,
+        "startChar": 0,
+        "endLine": 428,
+        "endChar": 0
+      },
+      "revId": "81ef7ea9489cb02d25c10721ca16bab7bee950f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
