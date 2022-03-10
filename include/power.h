@@ -319,6 +319,14 @@ void sleep_suspend_transition(void);
 void sleep_resume_transition(void);
 
 /**
+ * Type of sleep hang detected
+ */
+enum sleep_hang_type {
+	SLEEP_HANG_SUSPEND,
+	SLEEP_HANG_RESUME
+};
+
+/**
  * Start the suspend process.
  *
  * It is called in power_chipset_handle_host_sleep_event(), after it receives
@@ -328,7 +336,7 @@ void sleep_resume_transition(void);
  * @param callback Will be called if timed out, i.e. suspend hang.
  */
 void sleep_start_suspend(struct host_sleep_event_context *ctx,
-			 void (*callback)(void));
+			 void (*callback)(enum sleep_hang_type));
 
 /**
  * Complete the resume process.

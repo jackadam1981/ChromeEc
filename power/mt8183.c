@@ -581,7 +581,7 @@ enum power_state power_handle_state(enum power_state state)
 }
 
 #ifdef CONFIG_POWER_TRACK_HOST_SLEEP_STATE
-static void suspend_hang_detected(void)
+static void suspend_hang_detected(enum sleep_hang_type)
 {
 	CPRINTS("Warning: Detected sleep hang! Waking host up!");
 	host_set_single_event(EC_HOST_EVENT_HANG_DETECT);

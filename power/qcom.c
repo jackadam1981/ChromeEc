@@ -931,7 +931,7 @@ static inline int chipset_get_sleep_signal(void)
 		return fake_suspend;
 }
 
-static void suspend_hang_detected(void)
+static void suspend_hang_detected(enum sleep_hang_type)
 {
 	CPRINTS("Warning: Detected sleep hang! Waking host up!");
 	host_set_single_event(EC_HOST_EVENT_HANG_DETECT);

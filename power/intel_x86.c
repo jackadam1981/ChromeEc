@@ -178,7 +178,7 @@ static void lpc_s0ix_resume_restore_masks(void)
 	backup_sci_mask = backup_smi_mask = 0;
 }
 
-static void lpc_s0ix_hang_detected(void)
+static void lpc_s0ix_hang_detected(enum sleep_hang_type hang_type)
 {
 	/*
 	 * Wake up the AP so they don't just chill in a non-suspended state and

@@ -111,10 +111,13 @@ void sleep_notify_transition(int check_state, int hook_id)
 static uint16_t sleep_signal_timeout;
 static uint16_t host_sleep_timeout_default = CONFIG_SLEEP_TIMEOUT_MS;
 static uint32_t sleep_signal_transitions;
-static void (*sleep_timeout_callback)(void);
+static void (*sleep_timeout_callback)(enum sleep_hang_type);
 
-static void sleep_transition_timeout(void);
-DECLARE_DEFERRED(sleep_transition_timeout);
+static void suspend_transition_timeout(void);
+DECLARE_DEFERRED(suspend_transition_timeout);
+
+static void resume_transition_timeout(void);
+DECLARE_DEFERRED(resume_transition_timeout);
 
 static void sleep_increment_transition(void)
 {
@@ -126,7 +129,7 @@ static void sleep_increment_transition(void)
 void sleep_suspend_transition(void)
 {
 	sleep_increment_transition();
-	hook_call_deferred(&sleep_transition_timeout_data, -1);
+	hook_call_deferred(&suspend_transition_timeout_data, -1);
 }
 
 void sleep_resume_transition(void)
@@ -141,23 +144,34 @@ void sleep_resume_transition(void)
 	 * like this.
 	 */
 	if (sleep_signal_timeout)
-		hook_call_deferred(&sleep_transition_timeout_data,
+		hook_call_deferred(&resume_transition_timeout_data,
 				   (uint32_t)sleep_signal_timeout * 1000);
 }
 
-static void sleep_transition_timeout(void)
+static void suspend_transition_timeout(void)
 {
 	/* Mark the timeout. */
 	sleep_signal_transitions |= EC_HOST_RESUME_SLEEP_TIMEOUT;
-	hook_call_deferred(&sleep_transition_timeout_data, -1);
+	hook_call_deferred(&suspend_transition_timeout_data, -1);
 
 	/* Call the custom callback */
 	if (sleep_timeout_callback)
-		sleep_timeout_callback();
+		sleep_timeout_callback(SLEEP_HANG_SUSPEND);
+}
+
+static void resume_transition_timeout(void)
+{
+	/* Mark the timeout. */
+	sleep_signal_transitions |= EC_HOST_RESUME_SLEEP_TIMEOUT;
+	hook_call_deferred(&resume_transition_timeout_data, -1);
+
+	/* Call the custom callback */
+	if (sleep_timeout_callback)
+		sleep_timeout_callback(SLEEP_HANG_RESUME);
 }
 
 void sleep_start_suspend(struct host_sleep_event_context *ctx,
-			 void (*callback)(void))
+			 void (*callback)(enum sleep_hang_type))
 {
 	uint16_t timeout = ctx->sleep_timeout_ms;
 
@@ -176,19 +190,19 @@ void sleep_start_suspend(struct host_sleep_event_context *ctx,
 	}
 
 	sleep_signal_timeout = timeout;
-	hook_call_deferred(&sleep_transition_timeout_data,
+	hook_call_deferred(&suspend_transition_timeout_data,
 			   (uint32_t)timeout * 1000);
 }
 
 void sleep_complete_resume(struct host_sleep_event_context *ctx)
 {
 	/*
-	 * Ensure we don't schedule another sleep_transition_timeout
+	 * Ensure we don't schedule another resume_transition_timeout_data
 	 * if the the HOST_SLEEP_EVENT_S0IX_RESUME message arrives before
 	 * the CHIPSET task transitions to the POWER_S0ixS0 state.
 	 */
 	sleep_signal_timeout = 0;
-	hook_call_deferred(&sleep_transition_timeout_data, -1);
+	hook_call_deferred(&resume_transition_timeout_data, -1);
 	ctx->sleep_transitions = sleep_signal_transitions;
 }
 
@@ -254,7 +268,7 @@ void sleep_resume_transition(void)
 }
 
 void sleep_start_suspend(struct host_sleep_event_context *ctx,
-			 void (*callback)(void))
+			 void (*callback)(enum sleep_hang_type))
 {
 }
 
