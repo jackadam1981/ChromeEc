@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b5573bf_3d78e17a",
+        "filename": "zephyr/shim/src/hooks.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-03-10T23:44:26Z",
+      "side": 1,
+      "message": "I think it will be needed - if you see chromium:3518465, when we start to convert common code to use the new framework, it still needs to work with the all the projects.",
+      "parentUuid": "ed9042e7_3a9e97f0",
+      "range": {
+        "startLine": 205,
+        "startChar": 0,
+        "endLine": 205,
+        "endChar": 75
+      },
+      "revId": "383b218ac81664b9d655bfb2dc7a0acca3feb718",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d42d5bab_0b58f9f9",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-03-10T22:25:00Z",
       "side": 1,
       "message": "nit: This could be an array of list for the event to save time to parse.",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 63
+      },
+      "revId": "383b218ac81664b9d655bfb2dc7a0acca3feb718",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a3c2be4_2c5e5436",
+        "filename": "zephyr/subsys/ap_pwrseq/ap_events.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-03-10T23:44:26Z",
+      "side": 1,
+      "message": "I did consider something llike this, but the event mask can change if the caller uses ap_power_ev_remove_events or ap_power_ev_add_events to adjust the registered event mask, so bucketing the list by array is not possible.\nEven if we rebuilt the list, callbacks can register for multiple events, and it\u0027s not possible for e callback to be on multiple lists.",
+      "parentUuid": "d42d5bab_0b58f9f9",
       "range": {
         "startLine": 72,
         "startChar": 0,
