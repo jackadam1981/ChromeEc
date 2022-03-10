@@ -111,7 +111,7 @@ void pwr_sm_set_state(enum power_states_ndsx new_state)
 	pwrseq_ctx.power_state = new_state;
 }
 
-void chipset_request_exit_hardoff(bool should_exit)
+void request_exit_hardoff(bool should_exit)
 {
 	pwrseq_ctx.want_g3_exit = should_exit;
 }
@@ -124,7 +124,7 @@ static bool chipset_is_exit_hardoff(void)
 void apshutdown(void)
 {
 	if (pwr_sm_get_state() != SYS_POWER_STATE_G3) {
-		new_chipset_force_shutdown();
+		ap_power_force_shutdown(AP_POWER_SHUTDOWN_G3);
 		pwr_sm_set_state(SYS_POWER_STATE_G3);
 	}
 }
@@ -156,7 +156,7 @@ int check_pch_out_of_suspend(void)
 }
 
 /* Handling RSMRST signal is mostly common across x86 chipsets */
-__attribute__((weak)) void rsmrst_pass_thru_handler(void)
+void rsmrst_pass_thru_handler(void)
 {
 	/* Handle RSMRST passthrough */
 	/* TODO: Add additional conditions for RSMRST handling */
@@ -180,7 +180,7 @@ static int common_pwr_sm_run(int state)
 	switch (state) {
 	case SYS_POWER_STATE_G3:
 		if (chipset_is_exit_hardoff()) {
-			chipset_request_exit_hardoff(false);
+			request_exit_hardoff(false);
 			return SYS_POWER_STATE_G3S5;
 		}
 
@@ -230,7 +230,7 @@ static int common_pwr_sm_run(int state)
 		break;
 
 	case SYS_POWER_STATE_S5G3:
-		new_chipset_force_shutdown();
+		ap_power_force_shutdown(AP_POWER_SHUTDOWN_G3);
 		return SYS_POWER_STATE_G3;
 
 	case SYS_POWER_STATE_S5S4:
@@ -253,7 +253,7 @@ static int common_pwr_sm_run(int state)
 	case SYS_POWER_STATE_S4S3:
 		if (!power_signals_on(IN_PGOOD_ALL_CORE)) {
 			/* Required rail went away */
-			new_chipset_force_shutdown();
+			ap_power_force_shutdown(AP_POWER_SHUTDOWN_POWERFAIL);
 			return SYS_POWER_STATE_G3;
 		}
 
@@ -270,7 +270,7 @@ static int common_pwr_sm_run(int state)
 		/* AP is out of suspend to RAM */
 		if (!power_signals_on(IN_PGOOD_ALL_CORE)) {
 			/* Required rail went away, go straight to S5 */
-			new_chipset_force_shutdown();
+			ap_power_force_shutdown(AP_POWER_SHUTDOWN_POWERFAIL);
 			return SYS_POWER_STATE_G3;
 		} else if (signals_valid_and_off(IN_PCH_SLP_S3))
 			return SYS_POWER_STATE_S3S0;
@@ -281,7 +281,7 @@ static int common_pwr_sm_run(int state)
 
 	case SYS_POWER_STATE_S3S0:
 		if (!power_signals_on(IN_PGOOD_ALL_CORE)) {
-			new_chipset_force_shutdown();
+			ap_power_force_shutdown(AP_POWER_SHUTDOWN_POWERFAIL);
 			return SYS_POWER_STATE_G3;
 		}
 
@@ -292,7 +292,7 @@ static int common_pwr_sm_run(int state)
 
 	case SYS_POWER_STATE_S0:
 		if (!power_signals_on(IN_PGOOD_ALL_CORE)) {
-			new_chipset_force_shutdown();
+			ap_power_force_shutdown(AP_POWER_SHUTDOWN_POWERFAIL);
 			return SYS_POWER_STATE_G3;
 		} else if (signals_valid_and_on(IN_PCH_SLP_S3))
 			return SYS_POWER_STATE_S0S3;
@@ -390,7 +390,7 @@ static inline void create_pwrseq_thread(void)
 void init_pwr_seq_state(void)
 {
 	init_chipset_pwr_seq_state();
-	chipset_request_exit_hardoff(false);
+	request_exit_hardoff(false);
 
 	pwr_sm_set_state(SYS_POWER_STATE_G3S5);
 }
