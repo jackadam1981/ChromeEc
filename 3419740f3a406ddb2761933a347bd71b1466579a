@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "911a7393_97a1ab6c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2022-03-10T14:17:38Z",
+      "side": 1,
+      "message": "Host command battery_display_soc was not checking the flags until cl:3496464. But this change can block getting the static values of full_factor and shutdown_soc (see cl:3503397). So cl:3515274 reverts cl:3496464, which means the flags will not be checked in battery_display_soc.",
+      "parentUuid": "b113e7ac_e886a34d",
+      "range": {
+        "startLine": 11,
+        "startChar": 50,
+        "endLine": 11,
+        "endChar": 62
+      },
+      "revId": "3419740f3a406ddb2761933a347bd71b1466579a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d4e65564_b10e1929",
         "filename": "/COMMIT_MSG",
         "patchSetId": 4
