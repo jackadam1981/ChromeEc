@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b113e7ac_e886a34d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-03-10T10:01:23Z",
+      "side": 1,
+      "message": "could you explain which code path actually gets into trouble?\n\nall accesses to curr.batt.display_charge go through\ncharge_get_display_charge() (except for the status line\non the EC console) and every call site checks\n\n ((curr.batt.flags \u0026 BATT_FLAG_BAD_FULL_CAPACITY) ||\n  (curr.batt.flags \u0026 BATT_FLAG_BAD_REMAINING_CAPACITY)\n\nbefore using this value, so it\u0027s not clear to me how\nerrors in battery_get_params() would result in the caller\nusing display_charge when it\u0027s erroneously zero.",
+      "range": {
+        "startLine": 11,
+        "startChar": 50,
+        "endLine": 11,
+        "endChar": 62
+      },
+      "revId": "3419740f3a406ddb2761933a347bd71b1466579a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d4e65564_b10e1929",
         "filename": "/COMMIT_MSG",
         "patchSetId": 4
