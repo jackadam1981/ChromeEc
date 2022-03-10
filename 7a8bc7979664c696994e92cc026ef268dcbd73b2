@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7bb262e5_6ba1c56c",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-03-10T05:04:40Z",
+      "side": 1,
+      "message": "In further testing, this is failing. I\u0027m close to a fix, but will likely need to ask a few questions tomorrow and find out of a few extra details.",
+      "range": {
+        "startLine": 163,
+        "startChar": 1,
+        "endLine": 163,
+        "endChar": 19
+      },
+      "revId": "7a8bc7979664c696994e92cc026ef268dcbd73b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
