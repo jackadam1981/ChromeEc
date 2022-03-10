@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e319cfd8_7a1051f5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-03-10T20:28:45Z",
+      "side": 1,
+      "message": "ok, makes sense now. they key context i was not considering\nis that this assumes chromium:3515274 has been submitted. so, there\u0027s\nat least a logical Cq-Depend here.\n\ni\u0027m all for adding BATT_FLAG_BAD_DISPLAY_SOC so callers don\u0027t have\nto synthesize it with implementation dependent logic expressions.\n\nassuming it\u0027s too late to shuffle host commands (did this go into\nEC-RO images already?) we should teach powerd to refresh its idea of\nfull_factor and shutdown_pct whenever the display_soc HC succeeds\ninstead of defaulting to sub-optimal values when the 1st display_soc\nfails.\n\ngiven that the battery may not always respond with \"instantaneous\"\nvalues, either the EC or powerd need to handle the missing data case.\ni\u0027m not convinced the EC should patch over the failure by reporting\nstale data to the AP. it may be better to propagate the error to the\nAP/powerd and have it make a policy decision. on the other hand,\nthe EC also needs some of these battery readings, so falling back to\nthe most recent good reading may be required.",
+      "parentUuid": "40365cf5_9199ac08",
+      "range": {
+        "startLine": 11,
+        "startChar": 50,
+        "endLine": 11,
+        "endChar": 62
+      },
+      "revId": "3419740f3a406ddb2761933a347bd71b1466579a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d4e65564_b10e1929",
         "filename": "/COMMIT_MSG",
         "patchSetId": 4
