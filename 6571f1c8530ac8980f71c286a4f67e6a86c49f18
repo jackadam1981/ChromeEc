@@ -16,6 +16,24 @@
       "message": "Out of curiosity, do we usually want functions that return a `bool` to start with `is_`?",
       "revId": "6571f1c8530ac8980f71c286a4f67e6a86c49f18",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b917e1b6_05c2af21",
+        "filename": "common/fpsensor/fpsensor.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-03-10T19:33:13Z",
+      "side": 0,
+      "message": "I don\u0027t think we are consistent. I don\u0027t see any recommendations in the C++ style guide or http://go/c-readability-advice.\n\nI try to name things so that it\u0027s \"readable English\". That\u0027s somewhat vague, but basically, I check to see how it reads in conditionals:\n\n```\nif (fp_match_success())\n```\n\n```\nif (is_fp_match_success())\n```\n\n```\nif (fp_match_is_successful())\n```\n\nTo me the first sounds fine. The second one is a bit awkward; maybe `is_fp_match` or `fp_matches` would be better. The third one also sounds ok, but it\u0027s longer without being any clearer, so I\u0027d probably still go with the first.",
+      "parentUuid": "15e889ee_a751fbef",
+      "revId": "6571f1c8530ac8980f71c286a4f67e6a86c49f18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

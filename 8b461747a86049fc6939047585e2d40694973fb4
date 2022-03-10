@@ -39,6 +39,30 @@
       },
       "revId": "8b461747a86049fc6939047585e2d40694973fb4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c722bce9_25b94bbc",
+        "filename": "common/fpsensor/fpsensor.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-03-10T19:33:13Z",
+      "side": 1,
+      "message": "I try to follow how `clang-format` formats it (my editor is set to format with `clang-format`). Code that is in `platform2` has better support for `clang-format`, since the `platform2` uses the Google C++ style guide, which is better defined than the Linux kernel style guide used by EC.\n\nThe C++ style guide just [says to be consistent](https://google.github.io/styleguide/cppguide.html#Boolean_Expressions). I usually put them at the end:\n\n```\n\treturn match_result \u003d\u003d EC_MKBP_FP_ERR_MATCH_YES ||\n\t       match_result \u003d\u003d EC_MKBP_FP_ERR_MATCH_YES_UPDATED ||\n\t       match_result \u003d\u003d EC_MKBP_FP_ERR_MATCH_YES_UPDATE_FAILED;\n```",
+      "parentUuid": "6cdd68a3_b20ec7a0",
+      "range": {
+        "startLine": 86,
+        "startChar": 8,
+        "endLine": 86,
+        "endChar": 11
+      },
+      "revId": "8b461747a86049fc6939047585e2d40694973fb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
