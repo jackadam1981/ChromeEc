@@ -159,22 +159,22 @@ void intel_x86_sys_reset_delay(void)
 	k_msleep(chip_cfg.sys_reset_delay_ms);
 }
 
-void chipset_reset(enum pwrseq_chipset_shutdown_reason reason)
+void ap_power_reset(enum ap_power_shutdown_reason reason)
 {
 	/*
 	 * Irrespective of cold_reset value, always toggle SYS_RESET_L to
-	 * perform a chipset reset. RCIN# which was used earlier to trigger
+	 * perform an AP reset. RCIN# which was used earlier to trigger
 	 * a warm reset is known to not work in certain cases where the CPU
 	 * is in a bad state (crbug.com/721853).
 	 *
-	 * The EC cannot control warm vs cold reset of the chipset using
+	 * The EC cannot control warm vs cold reset of the AP using
 	 * SYS_RESET_L; it's more of a request.
 	 */
 	LOG_DBG("%s: %d", __func__, reason);
 
 	/*
 	 * Toggling SYS_RESET_L will not have any impact when it's already
-	 * low (i,e. Chipset is in reset state).
+	 * low (i,e. AP is in reset state).
 	 */
 	if (power_signal_get(PWR_SYS_RST)) {
 		LOG_DBG("Chipset is in reset state");
@@ -186,7 +186,7 @@ void chipset_reset(enum pwrseq_chipset_shutdown_reason reason)
 	power_signal_set(PWR_SYS_RST, 0);
 }
 
-__attribute__((weak)) void new_chipset_force_shutdown(void)
+void ap_power_force_shutdown(enum ap_power_shutdown_reason reason)
 {
 	int timeout_ms = 50;
 

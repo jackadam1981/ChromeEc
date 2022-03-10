@@ -9,7 +9,6 @@
 #include <zephyr.h>
 
 #include "button.h"
-#include "chipset.h"
 #include "ec_tasks.h"
 #include "hooks.h"
 #include "keyboard_scan.h"
