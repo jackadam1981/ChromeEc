@@ -16,6 +16,24 @@
       "message": "are you missing\n\tTCPC_FLAGS_CONTROL_FRS,\n\nhere?",
       "revId": "552dc4c8b8e9e4f13a448ae567c0f4743b486b1a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "63858953_3e557246",
+        "filename": "board/gimble/usbc_config.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2022-03-10T06:53:20Z",
+      "side": 1,
+      "message": "Since we haven\u0027t tested C1 port FRS(PS8815). Can we enable C1 FRS on another CL?\nNow we only test on C0 (SYV682).",
+      "parentUuid": "a6f5ab00_60ed4f06",
+      "revId": "552dc4c8b8e9e4f13a448ae567c0f4743b486b1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
