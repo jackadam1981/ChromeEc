@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bab9ca51_075b6e17",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-03-10T21:28:08Z",
+      "side": 1,
+      "message": "Nit - line length.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 73
+      },
+      "revId": "97b7df588e701ec8f8618b6be0dfc89d1fdd5b28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3dec40d_32835cf4",
+        "filename": "zephyr/test/drivers/src/charge_manager.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-03-10T21:28:08Z",
+      "side": 1,
+      "message": "Suggested reword (too many \"this\")\n\nIf the charge manager suite provides an override for board_fill_source_power_info(), test_default_fill_power_info can be deleted.",
+      "range": {
+        "startLine": 17,
+        "startChar": 51,
+        "endLine": 18,
+        "endChar": 38
+      },
+      "revId": "97b7df588e701ec8f8618b6be0dfc89d1fdd5b28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
