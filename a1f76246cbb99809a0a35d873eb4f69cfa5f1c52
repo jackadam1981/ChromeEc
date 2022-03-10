@@ -16,6 +16,52 @@
       "message": "Friendly ping.",
       "revId": "a1f76246cbb99809a0a35d873eb4f69cfa5f1c52",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "727fa2f9_e292b6d3",
+        "filename": "board/anahera/usbc_config.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 338,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-03-10T06:57:04Z",
+      "side": 1,
+      "message": "does USB A1 go to the LTE module?",
+      "range": {
+        "startLine": 338,
+        "startChar": 6,
+        "endLine": 338,
+        "endChar": 20
+      },
+      "revId": "a1f76246cbb99809a0a35d873eb4f69cfa5f1c52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dee3c1ef_e06881ab",
+        "filename": "board/anahera/usbc_config.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-03-10T06:57:04Z",
+      "side": 1,
+      "message": "maybe put these register values in an array and loop over the array.\nsee board/brya/tune_mp2964.c",
+      "range": {
+        "startLine": 346,
+        "startChar": 3,
+        "endLine": 375,
+        "endChar": 34
+      },
+      "revId": "a1f76246cbb99809a0a35d873eb4f69cfa5f1c52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
