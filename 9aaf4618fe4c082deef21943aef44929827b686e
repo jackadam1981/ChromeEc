@@ -110,6 +110,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c0c93d6f_146bca3f",
+        "filename": "zephyr/projects/nissa/nereid_power_signals.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2022-03-10T03:23:03Z",
+      "side": 1,
+      "message": "Should we set the same 90% for Nivviks?\nNivviks has it currently set to 95%.",
+      "parentUuid": "0ff41a1c_515ede3f",
+      "revId": "9aaf4618fe4c082deef21943aef44929827b686e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2840461d_6246a54c",
         "filename": "zephyr/projects/nissa/prj_nereid.conf",
         "patchSetId": 1
