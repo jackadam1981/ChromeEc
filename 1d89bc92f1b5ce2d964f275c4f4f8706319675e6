@@ -116,6 +116,24 @@
       "parentUuid": "b86ebbc6_b94cdb6a",
       "revId": "1d89bc92f1b5ce2d964f275c4f4f8706319675e6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f319e9a5_6c250508",
+        "filename": "zephyr/shim/src/hooks.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-03-10T04:05:04Z",
+      "side": 1,
+      "message": "But if the subsystem is disabled, would `ap_power_ev_send_callbacks` even exist? This seems like it would fail to build.",
+      "parentUuid": "edfad849_b271ea69",
+      "revId": "1d89bc92f1b5ce2d964f275c4f4f8706319675e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
