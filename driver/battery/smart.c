@@ -327,10 +327,23 @@ static void apply_fake_state_of_charge(struct batt_params *batt)
 
 void battery_get_params(struct batt_params *batt)
 {
-	struct batt_params batt_new = {0};
+	struct batt_params batt_new;
 	int v;
 
+<<<<<<< HEAD   (6362dd battery: Do not return display_soc if data is bad)
 	if (sb_read(SB_TEMPERATURE, &batt_new.temperature))
+=======
+	/*
+	 * Start with a copy so that only valid fields will be updated. Note
+	 * sb_read doesn't change the value if I2C fails. So, the current value
+	 * will be preserved.
+	 */
+	memcpy(&batt_new, batt, sizeof(*batt));
+	batt_new.flags = 0;
+
+	if (sb_read(SB_TEMPERATURE, &batt_new.temperature)
+			&& fake_temperature < 0)
+>>>>>>> CHANGE (1762eb battery/smart: Don't update fields if reading fails)
 		batt_new.flags |= BATT_FLAG_BAD_TEMPERATURE;
 
 	if (sb_read(SB_RELATIVE_STATE_OF_CHARGE, &batt_new.state_of_charge)
