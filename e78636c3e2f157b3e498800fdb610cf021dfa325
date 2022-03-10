@@ -16,6 +16,24 @@
       "message": "Can you add a link to this bug: https://crbug.com/gerrit/10963 in the commit message and the comment?\n\nThat will give people some additional context if they stumble across it and don\u0027t know what it is.",
       "revId": "e78636c3e2f157b3e498800fdb610cf021dfa325",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7190f0bf_7a520dd3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-03-10T23:22:32Z",
+      "side": 1,
+      "message": "Good idea! Could you please confirm that I used the right format in the commit message?\n\nI understand this is not buganizer so I shouldn\u0027t use b:####, but I am not 100% that\u0027s in chromium either. The pre-submit checker failed when I tried to use the URL and according to [the documentation](https://chromium.googlesource.com/chromiumos/docs/+/HEAD/contributing.md#link-to-issue-trackers) there are only two bug trackers supported at the moment.",
+      "parentUuid": "188da2bb_6d8bb9bc",
+      "revId": "e78636c3e2f157b3e498800fdb610cf021dfa325",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
