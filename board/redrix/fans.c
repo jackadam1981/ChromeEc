@@ -64,3 +64,14 @@ const struct fan_t fans[FAN_CH_COUNT] = {
 		.rpm = &fan_rpm_1,
 	},
 };
+
+/*
+ * b/223213015: Turn off FAN pwm prior to fan control task starting
+ * to avoid acoustic after EC is reseted.
+ */
+static void board_fan_init(void)
+{
+	pwm_enable(PWM_CH_FAN, 1);
+	pwm_set_duty(PWM_CH_FAN, 0);
+}
+DECLARE_HOOK(HOOK_INIT, board_fan_init, HOOK_PRIO_DEFAULT);
