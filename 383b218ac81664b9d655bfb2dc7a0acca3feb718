@@ -22,6 +22,29 @@
       },
       "revId": "383b218ac81664b9d655bfb2dc7a0acca3feb718",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d42d5bab_0b58f9f9",
+        "filename": "zephyr/subsys/ap_pwrseq/ap_events.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2022-03-10T22:25:00Z",
+      "side": 1,
+      "message": "nit: This could be an array of list for the event to save time to parse.",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 63
+      },
+      "revId": "383b218ac81664b9d655bfb2dc7a0acca3feb718",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
