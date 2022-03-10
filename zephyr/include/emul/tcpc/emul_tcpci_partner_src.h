@@ -133,7 +133,9 @@ enum check_pdos_res tcpci_src_emul_check_pdos(struct tcpci_src_emul_data *data);
  *                    (depends if Source Capabiliteis message was send
  *                    successfully). If false, no timer is started.
  *
- * @return 0 on success
+ * @return TCPCI_EMUL_TX_SUCCESS on success
+ * @return TCPCI_EMUL_TX_FAILED when TCPCI is configured to not handle
+ *                              messages of this type
  * @return -ENOMEM when there is no free memory for message
  * @return -EINVAL on TCPCI emulator add RX message error
  */

@@ -81,14 +81,14 @@ int tcpci_src_emul_send_capability_msg(struct tcpci_src_emul_data *data,
 		return ret;
 	}
 
-	if (ret != 0) {
+	if (ret != TCPCI_EMUL_TX_SUCCESS) {
 		tcpci_src_emul_start_source_capability_timer(data);
+	} else {
+		/* Expect Request message before SenderResponse timeout */
+		tcpci_partner_start_sender_response_timer(common_data);
+		/* Do not expect Accept or Reject messages */
+		data->common_data->wait_for_response = false;
 	}
-	/*
-	 * If sending message was successful, SenderResponse timer should be
-	 * started. However this will break emulation until RECEIVE_DETECT
-	 * register is properly implemented in TCPCI emulator.
-	 */
 
 	return TCPCI_EMUL_TX_SUCCESS;
 }
