@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20b0af6b_72dc79c9",
+        "filename": "zephyr/subsys/ap_pwrseq/signal_vw.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-03-10T02:14:06Z",
+      "side": 1,
+      "message": "Include the type to ease debugging: `\"ESPI unknown event type: %d\", event.evt_type`",
+      "revId": "fa8c4e5110a3e3c01f8405848d4700b40075a3d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
