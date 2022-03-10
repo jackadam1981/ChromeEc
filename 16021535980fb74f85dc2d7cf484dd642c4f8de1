@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "36d5aff1_2be74e3f",
+        "filename": "board/banshee/usbc_config.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2022-03-10T20:03:01Z",
+      "side": 1,
+      "message": "Please check, i think you need to add TCPC_FLAGS_CONTROL_FRS to all the .flags",
+      "range": {
+        "startLine": 51,
+        "startChar": 3,
+        "endLine": 51,
+        "endChar": 8
+      },
+      "revId": "16021535980fb74f85dc2d7cf484dd642c4f8de1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "906ff00d_494947a4",
         "filename": "board/banshee/usbc_config.c",
         "patchSetId": 1
