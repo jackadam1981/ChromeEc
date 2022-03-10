@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4e65564_b10e1929",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-03-10T05:19:51Z",
+      "side": 1,
+      "message": "oooh... subtle!\n\nif i understand this correctly, the real problem isn\u0027t\nthat data value fields are getting zero\u0027d out, but rather\nflags is getting zero\u0027d out, thus loosing previously\naccumulated \"invalid\" flags like BATT_FLAG_BAD_REMAINING_CAPACITY.\nthe result being that invalid data fields are getting\npromoted to valid fields without fresh data.",
+      "revId": "3419740f3a406ddb2761933a347bd71b1466579a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "b57b395e_12a1544a",
@@ -14,6 +31,29 @@
       "writtenOn": "2022-03-10T02:33:01Z",
       "side": 1,
       "message": "Tested on gruybrush. Glitching the battery does not cause a shutdown. The battery display % continues updating after the glitch stops.",
+      "revId": "3419740f3a406ddb2761933a347bd71b1466579a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88f013c9_8341ebe9",
+        "filename": "driver/battery/smart.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-03-10T05:19:51Z",
+      "side": 1,
+      "message": "the behavior is now more like \"update\".",
+      "range": {
+        "startLine": 367,
+        "startChar": 13,
+        "endLine": 367,
+        "endChar": 16
+      },
       "revId": "3419740f3a406ddb2761933a347bd71b1466579a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
