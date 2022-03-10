@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6f5ab00_60ed4f06",
+        "filename": "board/gimble/usbc_config.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-03-10T06:43:30Z",
+      "side": 1,
+      "message": "are you missing\n\tTCPC_FLAGS_CONTROL_FRS,\n\nhere?",
+      "revId": "552dc4c8b8e9e4f13a448ae567c0f4743b486b1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
