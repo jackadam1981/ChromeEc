@@ -18,6 +18,18 @@ module = AP_PWRSEQ
 module-str = AP power sequencing
 source "subsys/logging/Kconfig.template.log_config"
 
+config BOARD_FORCE_SHUTDOWN
+	bool
+	default n
+	help
+	  This option enables a board level function for ap_power_force_shutdown.
+	  If this option is set, the board specific code must support a
+	  function with the definition:
+
+	  	ap_power_force_shutdown(enum ap_power_shutdown_reason reason);
+
+	  This function must perform the AP shutdown.
+
 config X86_NON_DSX_PWRSEQ
 	bool
 	default n
