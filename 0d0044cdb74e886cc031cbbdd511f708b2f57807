@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "449c597e_4268aebb",
+        "filename": "zephyr/include/ap_power/ap_power_interface.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-03-10T21:53:40Z",
+      "side": 1,
+      "message": "Zephyr upstream uses similar terminology for the power states of the chip running Zephyr.\n\nhttps://github.com/zephyrproject-rtos/zephyr/blob/3e25b369795a9ee6505da83cc32f8cbe47651680/include/pm/state.h#L27\n\nFor consistency, we might consider changing `AP_POWER_STATE_ON` to `AP_POWER_STATE_ACTIVE`.  The other state names line up well.\n\nThis should be done as a follow-on CL.",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 26
+      },
+      "revId": "0d0044cdb74e886cc031cbbdd511f708b2f57807",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62edb508_2024e598",
+        "filename": "zephyr/include/ap_power/ap_power_interface.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-03-10T21:53:40Z",
+      "side": 1,
+      "message": "I suggest providing a link to the Chromium source, since we hope to upstream this file.\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/include/ec_commands.h",
+      "range": {
+        "startLine": 51,
+        "startChar": 20,
+        "endLine": 51,
+        "endChar": 43
+      },
+      "revId": "0d0044cdb74e886cc031cbbdd511f708b2f57807",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12fc9d37_09511ea1",
+        "filename": "zephyr/subsys/ap_pwrseq/Kconfig",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-03-10T21:53:40Z",
+      "side": 1,
+      "message": "Split this into a separate CL.",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 27
+      },
+      "revId": "0d0044cdb74e886cc031cbbdd511f708b2f57807",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c154cd1_26ff2835",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_adlp_pwrseq_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-03-10T21:53:40Z",
+      "side": 1,
+      "message": "Cleanup of the weak/override functions as a separate CL.",
+      "range": {
+        "startLine": 29,
+        "startChar": 4,
+        "endLine": 29,
+        "endChar": 25
+      },
+      "revId": "0d0044cdb74e886cc031cbbdd511f708b2f57807",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
