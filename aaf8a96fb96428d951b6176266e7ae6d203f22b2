@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "100fc8e7_e645a476",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-03-10T19:54:34Z",
+      "side": 1,
+      "message": "Only `OWNERS` files are different, so looks good:\n\n```\ngit diff 4a6781cb21..aaf8a96fb96428d951b6176266e7ae6d203f22b2\n```",
+      "revId": "aaf8a96fb96428d951b6176266e7ae6d203f22b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
