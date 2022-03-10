@@ -16,6 +16,24 @@
       "message": "Andrea, for context, the process for this is [documented here](http://go/cros-fingerprint-firmware-branching-and-signing#current-status).\n\nWhen reviewing, I usually [check out the branch for the CL](https://gerrit-review.googlesource.com/Documentation/user-review-ui.html#download) locally and then diff it against the commit from which it was merged. If everything is correct, there should be no differences (since we do a pure merge into the release branch), except for `OWNERS` files: https://crrev.com/c/3441166.\n\nFor example, for this CL I did:\n\n```\ngit diff 4a6781cb21..a30940ac8d47cc113cef9e324117d60008486bfb --stat\n```",
       "revId": "a30940ac8d47cc113cef9e324117d60008486bfb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef9ab5dd_ec9c8db1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-03-10T23:56:27Z",
+      "side": 1,
+      "message": "Thanks! This is very helpful. I downloaded the patch and confirmed that it includes only changes to `OWNERS` files:\n\n```\n git diff 4a6781cb21..a30940ac8d47cc113cef9e324117d60008486bfb --stat\n\n OWNERS                    | 9 ++-------\n board/hatch_fp/OWNERS     | 1 -\n board/nocturne_fp/OWNERS  | 1 -\n common/fpsensor/OWNERS    | 6 ------\n docs/fingerprint/OWNERS   | 1 -\n driver/fingerprint/OWNERS | 1 -\n util/ec3po/OWNERS         | 3 ---\n 7 files changed, 2 insertions(+), 20 deletions(-)\n```",
+      "parentUuid": "bad3846a_aac8b3ae",
+      "revId": "a30940ac8d47cc113cef9e324117d60008486bfb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
