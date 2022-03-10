@@ -710,7 +710,6 @@ int tcpci_tcpm_set_rx_enable(int port, int enable)
 		rx_en[port] = enable;
 	}
 
-
 	if (enable) {
 		detect_sop_en = TCPC_REG_RX_DETECT_SOP_HRST_MASK;
 
@@ -723,6 +722,9 @@ int tcpci_tcpm_set_rx_enable(int port, int enable)
 			detect_sop_en =
 				TCPC_REG_RX_DETECT_SOP_SOPP_SOPPP_HRST_MASK;
 		}
+	} else {
+		/* Exit BIST Test mode, in case the TCPC entered it. */
+		tcpc_set_bist_test_mode(port, false);
 	}
 
 	/* If enable, then set RX detect for SOP and HRST */
