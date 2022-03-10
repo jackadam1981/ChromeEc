@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "40365cf5_9199ac08",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-03-10T18:15:56Z",
+      "side": 1,
+      "message": "Currently, if battery_get_params fails to read a field, we set a BATT_FLAG_BAD_* set the field to zero. This forces us to check the flags everywhere fields are read. It also makes EC forget the last known good values. \n\nInstead, my thought is keeping always good values in the global batt_params. That is, we update fields only if reads are successful. (That\u0027s how other implementations of battery_get_params behave.) Then, if display_soc is zero, it was computed legitimately as zero (except the very initial value).  So, I think the current behavior of smart.c\u0027s battery_get_params is unintended.\n\nWithout CL:3496464, powerd will keep receiving a previous display_soc. The situation is reported through EC_BATT_FLAG_INVALID_DATA. So, maybe we can revert CL:3496464 (to avoid the unwanted side-effect Rob described above).\n\n--- \u003e8 ---\n\nI\u0027m wondering if we can get rid of (at least some of) the flags. Only use cases I can think of are: \n\n1. BAD flags can indicate fields contains previous values. If a value isn\u0027t new, we can skip some code.\n\n2. BAD flags can indicate fields which have never been successfully read thus contain zero. \n\n3. Powerd can know some reads failed (through EC_BATT_FLAG_INVALID_DATA). Check out crrev.com/c/3516912 for fun.\n\nIf we\u0027re keeping the flags, we should add BATT_FLAG_BAD_DISPLAY_SOC for consistency and disambiguation.",
+      "parentUuid": "911a7393_97a1ab6c",
+      "range": {
+        "startLine": 11,
+        "startChar": 50,
+        "endLine": 11,
+        "endChar": 62
+      },
+      "revId": "3419740f3a406ddb2761933a347bd71b1466579a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d4e65564_b10e1929",
         "filename": "/COMMIT_MSG",
         "patchSetId": 4
