@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b590cfae_2c8904cb",
+        "filename": "zephyr/include/ap_power/ap_events.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-03-10T02:55:17Z",
+      "side": 1,
+      "message": "I think the names for both functions and types should include \"power\" to differentiate from some other \"AP event\"s that might exist. `ap_power_ev_send_callbacks` and `enum ap_power_events` for instance.",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 48
+      },
+      "revId": "1d89bc92f1b5ce2d964f275c4f4f8706319675e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b86ebbc6_b94cdb6a",
+        "filename": "zephyr/shim/src/hooks.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-03-10T02:55:17Z",
+      "side": 1,
+      "message": "/* CONFIG_AP_PWRSEQ */\n\nThe #if is pretty far away, so let\u0027s make this easier to follow.",
+      "revId": "1d89bc92f1b5ce2d964f275c4f4f8706319675e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fecfb137_5768d38a",
+        "filename": "zephyr/shim/src/hooks.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-03-10T02:55:17Z",
+      "side": 1,
+      "message": "What if neither of legacy or Zephyr power sequencing is enabled?",
+      "revId": "1d89bc92f1b5ce2d964f275c4f4f8706319675e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
