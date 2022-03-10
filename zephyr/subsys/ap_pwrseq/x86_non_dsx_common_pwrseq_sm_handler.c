@@ -303,13 +303,12 @@ static int common_pwr_sm_run(int state)
 		break;
 
 	case SYS_POWER_STATE_S4S5:
-		/* TODO */
 		/* Call hooks before we remove power rails */
-		/* hook_notify(HOOK_CHIPSET_SHUTDOWN); */
+		ap_power_ev_send_callbacks(AP_POWER_SHUTDOWN);
 		/* Disable wireless */
 		/* wireless_set_state(WIRELESS_OFF); */
 		/* Call hooks after we remove power rails */
-		/* hook_notify(HOOK_CHIPSET_SHUTDOWN_COMPLETE); */
+		ap_power_ev_send_callbacks(AP_POWER_SHUTDOWN_COMPLETE);
 		/* Always enter into S5 state. The S5 state is required to
 		 * correctly handle global resets which have a bit of delay
 		 * while the SLP_Sx_L signals are asserted then deasserted.
@@ -320,8 +319,8 @@ static int common_pwr_sm_run(int state)
 		return SYS_POWER_STATE_S4;
 
 	case SYS_POWER_STATE_S0S3:
-		/* TODO: Call hooks before we remove power rails */
-		/* hook_notify(HOOK_CHIPSET_SUSPEND); */
+		/* Call hooks before we remove power rails */
+		ap_power_ev_send_callbacks(AP_POWER_SUSPEND);
 		return SYS_POWER_STATE_S3;
 
 	default:
