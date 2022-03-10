@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d967f5e3_369696ec",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-03-10T03:08:36Z",
+      "side": 1,
+      "message": "This is somewhat urgent - a number of changes rely on the AP pwrseq code accessing includes files in ec/zephyr/include\n",
+      "revId": "1ce6b4256c44f4ebfaee6bf8162a1f7fc456444f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
