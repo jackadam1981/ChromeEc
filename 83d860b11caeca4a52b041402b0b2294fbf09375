@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "13e9d382_7ad00f79",
+        "filename": "zephyr/dts/bindings/cros_kb_raw/cros-ec,cros-kb-raw.yaml",
+        "patchSetId": 5
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2022-03-11T09:16:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c4ed547d_563521b0",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 3,
+        "endChar": 0
+      },
+      "revId": "83d860b11caeca4a52b041402b0b2294fbf09375",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e1155789_71e15060",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-03-10T20:44:23Z",
       "side": 1,
       "message": "Chromium copyright and license.",
+      "range": {
+        "startLine": 2,
+        "startChar": 0,
+        "endLine": 2,
+        "endChar": 28
+      },
+      "revId": "83d860b11caeca4a52b041402b0b2294fbf09375",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd15bd7d_a7ce9bc2",
+        "filename": "zephyr/include/dt-bindings/cros-kb-raw/cros_kb_raw.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2022-03-11T09:16:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e1155789_71e15060",
       "range": {
         "startLine": 2,
         "startChar": 0,
