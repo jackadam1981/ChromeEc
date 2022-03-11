@@ -4569,6 +4569,14 @@ struct ec_response_i2c_passthru {
 /* Stop on end of AP S0->S3 transition (suspending or shutting down) */
 #define EC_HANG_STOP_ON_SUSPEND       BIT(10)
 
+/* Stop on end of AP S0->S3 transition (suspending or shutting down) */
+#define EC_HANG_STOP_ON_RESET	      BIT(11)
+
+/* Actions on hang detection */
+#define EC_HANG_SEND_EVENT_ON_HANG    BIT(20)
+
+#define EC_HANG_WARM_RESET_ON_HANG    BIT(21)
+
 /*
  * If this flag is set, all the other fields are ignored, and the hang detect
  * timer is started.  This provides the AP a way to start the hang timer
@@ -4584,15 +4592,15 @@ struct ec_response_i2c_passthru {
  */
 #define EC_HANG_STOP_NOW              BIT(31)
 
-struct ec_params_hang_detect {
+struct ec_params_hang_detect_v1 {
+	/* Timer Index */
+	uint16_t timer_index;
+
 	/* Flags; see EC_HANG_* */
 	uint32_t flags;
 
-	/* Timeout in msec before generating host event, if enabled */
-	uint16_t host_event_timeout_msec;
-
-	/* Timeout in msec before generating warm reboot, if enabled */
-	uint16_t warm_reboot_timeout_msec;
+	/* Timeout in seconds before triggering */
+	uint16_t timeout_msec;
 } __ec_align4;
 
 /*****************************************************************************/
