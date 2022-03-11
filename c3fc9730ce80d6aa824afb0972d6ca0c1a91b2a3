@@ -22,6 +22,30 @@
       },
       "revId": "c3fc9730ce80d6aa824afb0972d6ca0c1a91b2a3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9584afd7_a17ad294",
+        "filename": "common/fpsensor/fpsensor.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-03-11T01:18:29Z",
+      "side": 1,
+      "message": "I had done a quick search and saw both versions, but after looking again I agree that `__maybe_unused static` is more common.\n\nI\u0027ll update the patch to be consistent.",
+      "parentUuid": "d64e7659_bdf3562f",
+      "range": {
+        "startLine": 83,
+        "startChar": 0,
+        "endLine": 83,
+        "endChar": 21
+      },
+      "revId": "c3fc9730ce80d6aa824afb0972d6ca0c1a91b2a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
