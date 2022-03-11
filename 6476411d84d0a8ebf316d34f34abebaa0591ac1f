@@ -94,6 +94,30 @@
       },
       "revId": "6476411d84d0a8ebf316d34f34abebaa0591ac1f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d772a2d_14145758",
+        "filename": "zephyr/subsys/ap_pwrseq/signal_vw.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-03-11T05:50:40Z",
+      "side": 1,
+      "message": "ESPI_BUS_RESET is different, not the reset I meant here.\nI\u0027m wondering how we get chipset reset notification, like EC \"apreset\", or AP \"reboot\". ESPI_BUS_EVENT_VWIRE_RECEIVED signals VW channels like ESPI_VWIRE_SIGNAL_SLP_S3/S4/S5 has event, and ESPI_VWIRE_SIGNAL_PLTRST is one of the channel too. I know for sure ESPI_VWIRE_SIGNAL_PLTRST is signaled when I do \"apreset\" or AP \"reboot\". My understanding is ap_pwrseq will notify modules who registers SOC reset/or platform reset(not sure which is the right name) by ESPI_VWIRE_SIGNAL_PLTRST signaling.\nIn Shim zephyr code, chipset reset hook never happen even \"aprest\" or AP \"reboot\". maybe because it doesn\u0027t break any functionality so not noticed.\nMy point is if ap_pwrseq is the right place to send SOC reset notification, then we need to consider add the handling here.\nIf Keith can confirm this will be good.",
+      "parentUuid": "d04da58e_e3c9e8d1",
+      "range": {
+        "startLine": 68,
+        "startChar": 6,
+        "endLine": 68,
+        "endChar": 35
+      },
+      "revId": "6476411d84d0a8ebf316d34f34abebaa0591ac1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
