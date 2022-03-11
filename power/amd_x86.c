@@ -231,7 +231,7 @@ static void lpc_s0ix_resume_restore_masks(void)
 	backup_sci_mask = backup_smi_mask = 0;
 }
 
-static void lpc_s0ix_hang_detected(void)
+static void lpc_s0ix_suspend_hang_detected(void)
 {
 	/*
 	 * Wake up the AP so they don't just chill in a non-suspended state and
@@ -247,7 +247,13 @@ static void lpc_s0ix_hang_detected(void)
 		lpc_set_host_event_mask(LPC_HOST_EVENT_WAKE, sleep_wake_mask);
 	}
 
-	CPRINTS("Warning: Detected sleep hang! Waking host up!");
+	CPRINTS("Warning: Detected suspend hang! Waking host up!");
+	host_set_single_event(EC_HOST_EVENT_HANG_DETECT);
+}
+
+static void lpc_s0ix_resume_hang_detected(void)
+{
+	CPRINTS("Warning: Detected resume hang! Waking host up!");
 	host_set_single_event(EC_HOST_EVENT_HANG_DETECT);
 }
 
@@ -301,7 +307,8 @@ __override void power_chipset_handle_host_sleep_event(
 		 */
 		sleep_set_notify(SLEEP_NOTIFY_SUSPEND);
 
-		sleep_start_suspend(ctx, lpc_s0ix_hang_detected);
+		sleep_start_suspend(ctx, lpc_s0ix_suspend_hang_detected,
+				    lpc_s0ix_resume_hang_detected);
 		power_signal_enable_interrupt(GPIO_PCH_SLP_S0_L);
 	} else if (state == HOST_SLEEP_EVENT_S0IX_RESUME) {
 		/*

@@ -612,7 +612,8 @@ __override void power_chipset_handle_host_sleep_event(
 		 */
 		sleep_set_notify(SLEEP_NOTIFY_SUSPEND);
 
-		sleep_start_suspend(ctx, lpc_s0ix_hang_detected);
+		sleep_start_suspend(ctx, lpc_s0ix_hang_detected,
+				    lpc_s0ix_hang_detected);
 		power_signal_enable_interrupt(sleep_sig[SYS_SLEEP_S0IX]);
 	} else if (state == HOST_SLEEP_EVENT_S0IX_RESUME) {
 		/*

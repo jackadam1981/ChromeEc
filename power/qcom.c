@@ -968,7 +968,8 @@ __override void power_chipset_handle_host_sleep_event(
 		 * notification needs to be sent to listeners.
 		 */
 		sleep_set_notify(SLEEP_NOTIFY_SUSPEND);
-		sleep_start_suspend(ctx, suspend_hang_detected);
+		sleep_start_suspend(ctx, suspend_hang_detected,
+				    suspend_hang_detected);
 		power_signal_enable_interrupt(GPIO_AP_SUSPEND);
 
 	} else if (state == HOST_SLEEP_EVENT_S3_RESUME) {

@@ -328,7 +328,8 @@ void sleep_resume_transition(void);
  * @param callback Will be called if timed out, i.e. suspend hang.
  */
 void sleep_start_suspend(struct host_sleep_event_context *ctx,
-			 void (*callback)(void));
+			 void (*suspend_hang_callback)(void),
+			 void (*resume_hang_callback)(void));
 
 /**
  * Complete the resume process.
