@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e77a2ae9_05e6582b",
+        "filename": "util/fptool.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1528447
+      },
+      "writtenOn": "2022-03-11T04:45:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a7d7f4c2_9d2233fb",
+      "range": {
+        "startLine": 40,
+        "startChar": 16,
+        "endLine": 40,
+        "endChar": 23
+      },
+      "revId": "49aedd436a8a69397f3b0d52024c2be147914770",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "de628595_fdf7497a",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-02-23T23:40:52Z",
       "side": 1,
       "message": "I\u0027m interpreting this as we end up with the following mapping (gpio to pin):\n\n```\n318 -\u003e 30\n319 -\u003e 31\n320 -\u003e 32\n321 -\u003e 33\n322 -\u003e 34\n323 -\u003e 35\n```\n\nAm I interpreting that correctly?\n\nIf so, rather than trying to sort and do various range calculations, etc., can you just create a map directly from the above information?\n\n```\ngpio_to_pin_map[318] \u003d 30\n...\n```\n\nI guess that may not be enough since a given device (`INT1055:00` vs `INT1055:01`) will potentially have overlapping pins?\n\nIn that case maybe you could store as:\n\n```\ngpio_to_pin_map[318] \u003d {\u0027pin\u0027: 30, \u0027device\u0027: \u0027INTC1055:01\u0027}\n```\n\nWould that give you the ability to look up the information you need? \n\nI see that in a later commit you are getting some information like this:\n\n```\n       #  detect \u003d {\n        #       \u0027INTC1055:00\u0027: \u0027gpiochip0\u0027,\n        #       \u0027INTC1055:01\u0027: \u0027gpiochip1\u0027,\n        #       \u0027INTC1055:02\u0027: \u0027gpiochip2\u0027\n        #  }\n        #\n        # bases \u003d {\n        #       \u0027gpiochip0\u0027: 344\n        #       \u0027gpiochip1\u0027: 288\n        #       \u0027gpiochip2\u0027: 152\n        # }\n```\n\nbut I haven\u0027t followed all the code through to see what direction you are trying to map things to/from. Ultimately, are you trying to go from a GPIO to a `pin` on a `device` or something different (perhaps reverse)?",
+      "range": {
+        "startLine": 89,
+        "startChar": 0,
+        "endLine": 93,
+        "endChar": 29
+      },
+      "revId": "49aedd436a8a69397f3b0d52024c2be147914770",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "22ea7f5b_14f4d5d0",
+        "filename": "util/fptool.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1528447
+      },
+      "writtenOn": "2022-03-11T04:45:03Z",
+      "side": 1,
+      "message": "The issue here is that the GPIO is referred to by index, without any reference to the chip.\nIt is possible to create a flat dictionary, I did not think it will make the code much clearer.\nThe best way of course, as you mentioned, is to be able to use the `gpiodetect` `gpiofind` APIs; however, it applies to linux version \u003e 4.8 and the assumption that every gpio is assigned a name, which is a false assumption.",
+      "parentUuid": "de628595_fdf7497a",
       "range": {
         "startLine": 89,
         "startChar": 0,
