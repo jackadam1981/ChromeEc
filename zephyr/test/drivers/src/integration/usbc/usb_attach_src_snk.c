@@ -53,7 +53,15 @@ struct integration_usb_attach_src_then_snk__tcpci_rev1_fixture {
 	struct emul_state *my_emulator_state;
 };
 
+struct integration_usb_attach_src_then_snk__tcpci_rev2_fixture {
+	struct emul_state *my_emulator_state;
+};
+
 struct integration_usb_attach_snk_then_src__tcpci_rev1_fixture {
+	struct emul_state *my_emulator_state;
+};
+
+struct integration_usb_attach_snk_then_src__tcpci_rev2_fixture {
 	struct emul_state *my_emulator_state;
 };
 
@@ -84,13 +92,48 @@ static void *integration_usb_src_snk_setup__tcpci_rev1(void)
 	/*
 	 * TODO(b/221288815): TCPCI config flags should be compile-time
 	 * constants
-	 * TODO(b/209907615): Verify TCPCI Rev2
 	 */
 	/* Turn TCPCI rev 2 off */
 	tcpc_config[SNK_PORT].flags = tcpc_config[SNK_PORT].flags &
 				      ~TCPC_FLAGS_TCPCI_REV2_0;
 	tcpc_config[SRC_PORT].flags = tcpc_config[SRC_PORT].flags &
 				      ~TCPC_FLAGS_TCPCI_REV2_0;
+
+	return &fixture_state;
+}
+
+static void *integration_usb_src_snk__tcpci_rev2(void)
+{
+	static struct integration_usb_attach_src_then_snk__tcpci_rev2_fixture
+		fixture_state;
+	static struct emul_state emul_state;
+	const struct emul *tcpci_emul =
+		emul_get_binding(DT_LABEL(TCPCI_EMUL_LABEL));
+	const struct emul *tcpci_emul2 =
+		emul_get_binding(DT_LABEL(TCPCI_EMUL_LABEL2));
+	const struct emul *charger_emul =
+		emul_get_binding(DT_LABEL(DT_NODELABEL(isl923x_emul)));
+
+	/* Setting these are required because compiler believes these values are
+	 * not compile time constants.
+	 */
+	/*
+	 * TODO(b/217758708): emuls should be identified at compile-time.
+	 */
+	emul_state.tcpci_generic_emul = tcpci_emul;
+	emul_state.tcpci_ps8xxx_emul = tcpci_emul2;
+	emul_state.charger_isl923x_emul = charger_emul;
+	fixture_state.my_emulator_state = &emul_state;
+
+	/*
+	 * TODO(b/221288815): TCPCI config flags should be compile-time
+	 * constants
+	 */
+	/* Turn TCPCI rev 2 on */
+	tcpc_config[SNK_PORT].flags = tcpc_config[SNK_PORT].flags |
+				      TCPC_FLAGS_TCPCI_REV2_0;
+	tcpc_config[SRC_PORT].flags = tcpc_config[SRC_PORT].flags |
+				      TCPC_FLAGS_TCPCI_REV2_0;
 
 	return &fixture_state;
 }
@@ -200,6 +243,71 @@ static void attach_emulated_src__tcpci_rev1(struct emul_state *my_emul_state)
 	isl923x_emul_set_adc_vbus(charger_emul, DEFAULT_VBUS_MV);
 }
 
+static void attach_emulated_snk__tcpci_rev2(struct emul_state *my_emul_state)
+{
+	const struct emul *tcpci_emul_snk = my_emul_state->tcpci_ps8xxx_emul;
+	struct tcpci_snk_emul *my_snk = &my_emul_state->my_snk;
+	uint16_t power_reg_val;
+
+	/* Attach emulated sink */
+	tcpci_snk_emul_init(my_snk);
+	tcpci_emul_set_rev(tcpci_emul_snk, TCPCI_EMUL_REV2_0_VER1_1);
+
+	/* Turn on VBUS detection */
+	/*
+	 * TODO(b/223901282): integration tests should not be setting vbus
+	 * detection via registers.
+	 */
+	tcpci_emul_get_reg(tcpci_emul_snk, TCPC_REG_POWER_STATUS,
+			   &power_reg_val);
+	tcpci_emul_set_reg(tcpci_emul_snk, TCPC_REG_POWER_STATUS,
+			   power_reg_val | TCPC_REG_POWER_STATUS_VBUS_DET);
+
+	/* Necessary for TCPCIv2 vSave0V detection on VBUS */
+	tcpci_emul_set_reg(tcpci_emul_snk, TCPC_REG_EXT_STATUS,
+			   TCPC_REG_EXT_STATUS_SAFE0V);
+
+	zassume_ok(tcpci_snk_emul_connect_to_tcpci(
+			   &my_snk->data, &my_snk->common_data, &my_snk->ops,
+			   tcpci_emul_snk),
+		   NULL);
+
+	/* TODO(b/214401892): Check why need to give time TCPM to spin */
+	k_sleep(K_SECONDS(1));
+}
+
+static void attach_emulated_src__tcpci_rev2(struct emul_state *my_emul_state)
+{
+	const struct emul *tcpci_emul_src = my_emul_state->tcpci_generic_emul;
+	const struct emul *charger_emul = my_emul_state->charger_isl923x_emul;
+	struct tcpci_src_emul *my_src = &my_emul_state->my_src;
+	uint16_t power_reg_val;
+
+	/* Attach emulated charger. */
+	tcpci_src_emul_init(my_src);
+	tcpci_emul_set_rev(tcpci_emul_src, TCPCI_EMUL_REV2_0_VER1_1);
+
+	/* Turn on VBUS detection */
+	/*
+	 * TODO(b/223901282): integration tests should not be setting vbus
+	 * detection via registers.
+	 */
+	tcpci_emul_get_reg(tcpci_emul_src, TCPC_REG_POWER_STATUS,
+			   &power_reg_val);
+	tcpci_emul_set_reg(tcpci_emul_src, TCPC_REG_POWER_STATUS,
+			   power_reg_val | TCPC_REG_POWER_STATUS_VBUS_DET);
+
+	/* Necessary for TCPCIv2 vSave0V detection on VBUS */
+	tcpci_emul_set_reg(tcpci_emul_src, TCPC_REG_EXT_STATUS,
+			   TCPC_REG_EXT_STATUS_SAFE0V);
+
+	zassume_ok(tcpci_src_emul_connect_to_tcpci(
+			   &my_src->data, &my_src->common_data, &my_src->ops,
+			   tcpci_emul_src),
+		   NULL);
+	isl923x_emul_set_adc_vbus(charger_emul, DEFAULT_VBUS_MV);
+}
+
 static void integration_usb_attach_snk_then_src__tcpci_rev1_before(void *state)
 {
 	const struct integration_usb_attach_src_then_snk__tcpci_rev1_fixture
@@ -242,6 +350,48 @@ static void integration_usb_attach_src_then_snk__tcpci_rev1_before(void *state)
 	k_sleep(K_SECONDS(10));
 }
 
+static void integration_usb_attach_src_then_snk__tcpci_rev2_before(void *state)
+{
+	const struct integration_usb_attach_src_then_snk__tcpci_rev2_fixture
+		*fixture = state;
+	struct emul_state *my_state = fixture->my_emulator_state;
+
+	attach_src_snk_common_before(my_state);
+
+	/* 1) Attach SOURCE */
+	attach_emulated_src__tcpci_rev2(my_state);
+
+	/* Wait for PD negotiation */
+	k_sleep(K_SECONDS(10));
+
+	/* 2) Attach SINK */
+	attach_emulated_snk__tcpci_rev2(my_state);
+
+	/* Wait for PD negotiation */
+	k_sleep(K_SECONDS(10));
+}
+
+static void integration_usb_attach_snk_then_src__tcpci_rev2_before(void *state)
+{
+	const struct integration_usb_attach_snk_then_src__tcpci_rev2_fixture
+		*fixture = state;
+	struct emul_state *my_state = fixture->my_emulator_state;
+
+	attach_src_snk_common_before(my_state);
+
+	/* 1) Attach SINK */
+	attach_emulated_snk__tcpci_rev2(my_state);
+
+	/* Wait for PD negotiation */
+	k_sleep(K_SECONDS(10));
+
+	/* 2) Attach SOURCE */
+	attach_emulated_src__tcpci_rev2(my_state);
+
+	/* Wait for PD negotiation */
+	k_sleep(K_SECONDS(10));
+}
+
 static void integration_usb_attach_src_then_snk__tcpci_rev1_after(void *state)
 {
 	const struct integration_usb_attach_src_then_snk__tcpci_rev1_fixture
@@ -253,6 +403,22 @@ static void integration_usb_attach_src_then_snk__tcpci_rev1_after(void *state)
 static void integration_usb_attach_snk_then_src__tcpci_rev1_after(void *state)
 {
 	const struct integration_usb_attach_snk_then_src__tcpci_rev1_fixture
+		*fixture = state;
+
+	attach_src_snk_common_after(fixture->my_emulator_state);
+}
+
+static void integration_usb_attach_src_then_snk__tcpci_rev2_after(void *state)
+{
+	const struct integration_usb_attach_src_then_snk__tcpci_rev2_fixture
+		*fixture = state;
+
+	attach_src_snk_common_after(fixture->my_emulator_state);
+}
+
+static void integration_usb_attach_snk_then_src__tcpci_rev2_after(void *state)
+{
+	const struct integration_usb_attach_snk_then_src__tcpci_rev2_fixture
 		*fixture = state;
 
 	attach_src_snk_common_after(fixture->my_emulator_state);
@@ -483,6 +649,241 @@ ZTEST_F(integration_usb_attach_src_then_snk__tcpci_rev1,
 ZTEST_F(integration_usb_attach_snk_then_src__tcpci_rev1,
 	verify_snk_port_typec_status)
 {
+	struct ec_params_usb_pd_power_info params = { .port = SNK_PORT };
+	struct ec_response_usb_pd_power_info response;
+	struct host_cmd_handler_args args = BUILD_HOST_COMMAND(
+		EC_CMD_USB_PD_POWER_INFO, 0, response, params);
+
+	/* Assume */
+	zassume_ok(host_command_process(&args), "Failed to get PD power info");
+
+	/* Assert */
+	zassert_equal(response.role, USB_PD_PORT_POWER_SINK,
+		      "Power role %d, but PD reports role %d",
+		      USB_PD_PORT_POWER_SINK, response.role);
+	zassert_equal(response.type, USB_CHG_TYPE_PD,
+		      "Charger type %d, but PD reports type %d",
+		      USB_CHG_TYPE_PD, response.type);
+
+	zassert_equal(response.meas.voltage_max, DEFAULT_VBUS_MV,
+		      "Charging at VBUS %dmV, but PD reports %dmV",
+		      DEFAULT_VBUS_MV, response.meas.voltage_max);
+
+	zassert_within(response.meas.voltage_now, DEFAULT_VBUS_MV,
+		       DEFAULT_VBUS_MV / 10,
+		       "Actually charging at VBUS %dmV, but PD reports %dmV",
+		       DEFAULT_VBUS_MV, response.meas.voltage_now);
+
+	zassert_equal(response.meas.current_max, DEFAULT_VBUS_SNK_PORT_MA,
+		      "Charging at VBUS max %dmA, but PD reports %dmA",
+		      DEFAULT_VBUS_SNK_PORT_MA, response.meas.current_max);
+
+	zassert_true(response.meas.current_lim >= DEFAULT_VBUS_SNK_PORT_MA,
+		     "Charging at VBUS max %dmA, but PD current limit %dmA",
+		     DEFAULT_VBUS_SNK_PORT_MA, response.meas.current_lim);
+
+	zassert_equal(response.max_power,
+		      DEFAULT_VBUS_MV * DEFAULT_VBUS_SNK_PORT_MA,
+		      "Charging up to %duW, PD max power %duW",
+		      DEFAULT_VBUS_MV * DEFAULT_VBUS_SNK_PORT_MA,
+		      response.max_power);
+}
+
+ZTEST_F(integration_usb_attach_snk_then_src__tcpci_rev1,
+	verify_src_port_typec_status)
+{
+	host_cmd_typec_status(SRC_PORT);
+	struct ec_response_typec_status response =
+		host_cmd_typec_status(SRC_PORT);
+
+	zassert_true(response.pd_enabled, "Sink attached but PD disabled");
+
+	zassert_true(response.dev_connected,
+		     "Sink attached but device disconnected");
+
+	zassert_true(response.sop_connected,
+		     "Sink attached but not SOP capable");
+
+	/* The sink emulator is being attached to a source port (our policy
+	 * engine) so it does not send any sink caps, so source port received no
+	 * sink caps.
+	 */
+	zassert_equal(response.source_cap_count, 0,
+		      "Port received %d source PDOs",
+		      response.source_cap_count);
+
+	zassert_equal(response.sink_cap_count,
+		      DEFAULT_SINK_SENT_TO_SOURCE_CAP_COUNT,
+		      "Port received %d sink PDOs", response.sink_cap_count);
+
+	zassert_equal(response.power_role, PD_ROLE_SOURCE,
+		      "Sink attached, but TCPM power role is %d",
+		      response.power_role);
+}
+
+ZTEST_F(integration_usb_attach_src_then_snk__tcpci_rev2,
+	verify_snk_port_pd_info)
+{
+	struct ec_params_usb_pd_power_info params = { .port = SNK_PORT };
+	struct ec_response_usb_pd_power_info response;
+	struct host_cmd_handler_args args = BUILD_HOST_COMMAND(
+		EC_CMD_USB_PD_POWER_INFO, 0, response, params);
+
+	/* Assume */
+	zassume_ok(host_command_process(&args), "Failed to get PD power info");
+
+	/* Assert */
+	zassert_equal(response.role, USB_PD_PORT_POWER_SINK,
+		      "Power role %d, but PD reports role %d",
+		      USB_PD_PORT_POWER_SINK, response.role);
+	zassert_equal(response.type, USB_CHG_TYPE_PD,
+		      "Charger type %d, but PD reports type %d",
+		      USB_CHG_TYPE_PD, response.type);
+
+	zassert_equal(response.meas.voltage_max, DEFAULT_VBUS_MV,
+		      "Charging at VBUS %dmV, but PD reports %dmV",
+		      DEFAULT_VBUS_MV, response.meas.voltage_max);
+
+	zassert_within(response.meas.voltage_now, DEFAULT_VBUS_MV,
+		       DEFAULT_VBUS_MV / 10,
+		       "Actually charging at VBUS %dmV, but PD reports %dmV",
+		       DEFAULT_VBUS_MV, response.meas.voltage_now);
+
+	zassert_equal(response.meas.current_max, DEFAULT_VBUS_SNK_PORT_MA,
+		      "Charging at VBUS max %dmA, but PD reports %dmA",
+		      DEFAULT_VBUS_SNK_PORT_MA, response.meas.current_max);
+
+	zassert_true(response.meas.current_lim >= DEFAULT_VBUS_SNK_PORT_MA,
+		     "Charging at VBUS max %dmA, but PD current limit %dmA",
+		     DEFAULT_VBUS_SNK_PORT_MA, response.meas.current_lim);
+
+	zassert_equal(response.max_power,
+		      DEFAULT_VBUS_MV * DEFAULT_VBUS_SNK_PORT_MA,
+		      "Charging up to %duW, PD max power %duW",
+		      DEFAULT_VBUS_MV * DEFAULT_VBUS_SNK_PORT_MA,
+		      response.max_power);
+}
+
+ZTEST_F(integration_usb_attach_src_then_snk__tcpci_rev2,
+	verify_src_port_pd_info)
+{
+	struct ec_params_usb_pd_power_info params = { .port = SRC_PORT };
+	struct ec_response_usb_pd_power_info response;
+	struct host_cmd_handler_args args = BUILD_HOST_COMMAND(
+		EC_CMD_USB_PD_POWER_INFO, 0, response, params);
+
+	/* Assume */
+	zassume_ok(host_command_process(&args), "Failed to get PD power info");
+
+	/* Assert */
+	zassert_equal(response.role, USB_PD_PORT_POWER_SOURCE,
+		      "Power role %d, but PD reports role %d", PD_ROLE_SOURCE,
+		      response.role);
+
+	zassert_equal(response.type, USB_CHG_TYPE_NONE,
+		      "Charger type %d, but PD reports type %d",
+		      USB_CHG_TYPE_NONE, response.type);
+
+	/* TODO(b/209907615): Confirm measure value requirements */
+	zassert_within(response.meas.voltage_now, DEFAULT_VBUS_MV,
+		       DEFAULT_VBUS_MV / 10,
+		       "Expected Charging at VBUS %dmV, but PD reports %dmV",
+		       DEFAULT_VBUS_MV, response.meas.voltage_now);
+
+	zassume_equal(response.meas.current_max, DEFAULT_VBUS_SRC_PORT_MA,
+		      "Charging at VBUS max %dmA, but PD reports %dmA",
+		      DEFAULT_VBUS_SRC_PORT_MA, response.meas.current_max);
+
+	/* Note: We are the source so we skip checking: */
+	/* meas.voltage_max */
+	/* max_power */
+	/* current limit */
+}
+
+ZTEST_F(integration_usb_attach_snk_then_src__tcpci_rev2,
+	verify_snk_port_pd_info)
+{
+	struct ec_params_usb_pd_power_info params = { .port = SNK_PORT };
+	struct ec_response_usb_pd_power_info response;
+	struct host_cmd_handler_args args = BUILD_HOST_COMMAND(
+		EC_CMD_USB_PD_POWER_INFO, 0, response, params);
+
+	/* Assume */
+	zassume_ok(host_command_process(&args), "Failed to get PD power info");
+
+	/* Assert */
+	zassert_equal(response.role, USB_PD_PORT_POWER_SINK,
+		      "Power role %d, but PD reports role %d",
+		      USB_PD_PORT_POWER_SINK, response.role);
+	zassert_equal(response.type, USB_CHG_TYPE_PD,
+		      "Charger type %d, but PD reports type %d",
+		      USB_CHG_TYPE_PD, response.type);
+
+	/* Verify Default 5V and 3A */
+	zassert_equal(response.meas.voltage_max, DEFAULT_VBUS_MV,
+		      "Charging at VBUS %dmV, but PD reports %dmV",
+		      DEFAULT_VBUS_MV, response.meas.voltage_max);
+
+	zassert_within(response.meas.voltage_now, DEFAULT_VBUS_MV,
+		       DEFAULT_VBUS_MV / 10,
+		       "Actually charging at VBUS %dmV, but PD reports %dmV",
+		       DEFAULT_VBUS_MV, response.meas.voltage_now);
+
+	zassert_equal(response.meas.current_max, DEFAULT_VBUS_SNK_PORT_MA,
+		      "Charging at VBUS max %dmA, but PD reports %dmA",
+		      DEFAULT_VBUS_SNK_PORT_MA, response.meas.current_max);
+
+	zassert_true(response.meas.current_lim >= DEFAULT_VBUS_SNK_PORT_MA,
+		     "Charging at VBUS max %dmA, but PD current limit %dmA",
+		     DEFAULT_VBUS_SNK_PORT_MA, response.meas.current_lim);
+
+	zassert_equal(response.max_power,
+		      DEFAULT_VBUS_MV * DEFAULT_VBUS_SNK_PORT_MA,
+		      "Charging up to %duW, PD max power %duW",
+		      DEFAULT_VBUS_MV * DEFAULT_VBUS_SNK_PORT_MA,
+		      response.max_power);
+}
+
+ZTEST_F(integration_usb_attach_snk_then_src__tcpci_rev2,
+	verify_src_port_pd_info)
+{
+	struct ec_params_usb_pd_power_info params = { .port = SRC_PORT };
+	struct ec_response_usb_pd_power_info response;
+	struct host_cmd_handler_args args = BUILD_HOST_COMMAND(
+		EC_CMD_USB_PD_POWER_INFO, 0, response, params);
+
+	/* Assume */
+	zassume_ok(host_command_process(&args), "Failed to get PD power info");
+
+	/* Assert */
+	zassert_equal(response.role, USB_PD_PORT_POWER_SOURCE,
+		      "Power role %d, but PD reports role %d", PD_ROLE_SOURCE,
+		      response.role);
+
+	zassert_equal(response.type, USB_CHG_TYPE_NONE,
+		      "Charger type %d, but PD reports type %d",
+		      USB_CHG_TYPE_NONE, response.type);
+
+	/* Verify Default 5V and 3A */
+	/* TODO(b/209907615): Confirm measure value requirements */
+	zassert_within(response.meas.voltage_now, DEFAULT_VBUS_MV,
+		       DEFAULT_VBUS_MV / 10,
+		       "Expected Charging at VBUS %dmV, but PD reports %dmV",
+		       DEFAULT_VBUS_MV, response.meas.voltage_now);
+
+	zassume_equal(response.meas.current_max, DEFAULT_VBUS_SRC_PORT_MA,
+		      "Charging at VBUS max %dmA, but PD reports %dmA",
+		      DEFAULT_VBUS_SRC_PORT_MA, response.meas.current_max);
+
+	/* Note: We are the source so we skip checking: */
+	/* meas.voltage_max */
+	/* max_power */
+	/* current limit */
+}
+
+ZTEST_F(integration_usb_attach_src_then_snk__tcpci_rev2,
+	verify_snk_port_typec_status)
+{
 	struct ec_response_typec_status response =
 		host_cmd_typec_status(SNK_PORT);
 
@@ -511,9 +912,84 @@ ZTEST_F(integration_usb_attach_snk_then_src__tcpci_rev1,
 		      response.power_role);
 }
 
-ZTEST_F(integration_usb_attach_snk_then_src__tcpci_rev1,
+ZTEST_F(integration_usb_attach_src_then_snk__tcpci_rev2,
 	verify_src_port_typec_status)
 {
+	struct ec_response_typec_status response =
+		host_cmd_typec_status(SRC_PORT);
+
+	zassert_true(response.pd_enabled, "Sink attached but PD disabled");
+
+	zassert_true(response.dev_connected,
+		     "Sink attached but device disconnected");
+
+	zassert_true(response.sop_connected,
+		     "Sink attached but not SOP capable");
+
+	/* The sink emulator is being attached to a source port (our policy
+	 * engine) so it does not send any sink caps, so source port received no
+	 * sink caps.
+	 */
+	zassert_equal(response.source_cap_count, 0,
+		      "Port received %d source PDOs",
+		      response.source_cap_count);
+
+	zassert_equal(response.sink_cap_count,
+		      DEFAULT_SINK_SENT_TO_SOURCE_CAP_COUNT,
+		      "Port received %d sink PDOs", response.sink_cap_count);
+
+	zassert_equal(response.power_role, PD_ROLE_SOURCE,
+		      "Sink attached, but TCPM power role is %d",
+		      response.power_role);
+}
+
+ZTEST_F(integration_usb_attach_snk_then_src__tcpci_rev2,
+	verify_snk_port_typec_status)
+{
+	struct ec_params_usb_pd_power_info params = { .port = SNK_PORT };
+	struct ec_response_usb_pd_power_info response;
+	struct host_cmd_handler_args args = BUILD_HOST_COMMAND(
+		EC_CMD_USB_PD_POWER_INFO, 0, response, params);
+
+	/* Assume */
+	zassume_ok(host_command_process(&args), "Failed to get PD power info");
+
+	/* Assert */
+	zassert_equal(response.role, USB_PD_PORT_POWER_SINK,
+		      "Power role %d, but PD reports role %d",
+		      USB_PD_PORT_POWER_SINK, response.role);
+	zassert_equal(response.type, USB_CHG_TYPE_PD,
+		      "Charger type %d, but PD reports type %d",
+		      USB_CHG_TYPE_PD, response.type);
+
+	zassert_equal(response.meas.voltage_max, DEFAULT_VBUS_MV,
+		      "Charging at VBUS %dmV, but PD reports %dmV",
+		      DEFAULT_VBUS_MV, response.meas.voltage_max);
+
+	zassert_within(response.meas.voltage_now, DEFAULT_VBUS_MV,
+		       DEFAULT_VBUS_MV / 10,
+		       "Actually charging at VBUS %dmV, but PD reports %dmV",
+		       DEFAULT_VBUS_MV, response.meas.voltage_now);
+
+	zassert_equal(response.meas.current_max, DEFAULT_VBUS_SNK_PORT_MA,
+		      "Charging at VBUS max %dmA, but PD reports %dmA",
+		      DEFAULT_VBUS_SNK_PORT_MA, response.meas.current_max);
+
+	zassert_true(response.meas.current_lim >= DEFAULT_VBUS_SNK_PORT_MA,
+		     "Charging at VBUS max %dmA, but PD current limit %dmA",
+		     DEFAULT_VBUS_SNK_PORT_MA, response.meas.current_lim);
+
+	zassert_equal(response.max_power,
+		      DEFAULT_VBUS_MV * DEFAULT_VBUS_SNK_PORT_MA,
+		      "Charging up to %duW, PD max power %duW",
+		      DEFAULT_VBUS_MV * DEFAULT_VBUS_SNK_PORT_MA,
+		      response.max_power);
+}
+
+ZTEST_F(integration_usb_attach_snk_then_src__tcpci_rev2,
+	verify_src_port_typec_status)
+{
+	host_cmd_typec_status(SRC_PORT);
 	struct ec_response_typec_status response =
 		host_cmd_typec_status(SRC_PORT);
 
@@ -553,3 +1029,13 @@ ZTEST_SUITE(integration_usb_attach_snk_then_src__tcpci_rev1,
 	    integration_usb_src_snk_setup__tcpci_rev1,
 	    integration_usb_attach_snk_then_src__tcpci_rev1_before,
 	    integration_usb_attach_snk_then_src__tcpci_rev1_after, NULL);
+
+ZTEST_SUITE(integration_usb_attach_src_then_snk__tcpci_rev2,
+	    drivers_predicate_post_main, integration_usb_src_snk__tcpci_rev2,
+	    integration_usb_attach_src_then_snk__tcpci_rev2_before,
+	    integration_usb_attach_src_then_snk__tcpci_rev2_after, NULL);
+
+ZTEST_SUITE(integration_usb_attach_snk_then_src__tcpci_rev2,
+	    drivers_predicate_post_main, integration_usb_src_snk__tcpci_rev2,
+	    integration_usb_attach_snk_then_src__tcpci_rev2_before,
+	    integration_usb_attach_snk_then_src__tcpci_rev2_after, NULL);
