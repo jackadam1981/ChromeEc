@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5317b4c6_3da21a84",
+        "filename": "zephyr/subsys/ap_pwrseq/ap_events.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-03-11T03:49:29Z",
+      "side": 1,
+      "message": "Node removed, how about clean up it\u0027s event from cb_set?\nIn the case of someone request adding existing node, here will remove it first,then add it back?",
+      "range": {
+        "startLine": 25,
+        "startChar": 7,
+        "endLine": 25,
+        "endChar": 56
+      },
+      "revId": "2a2b47b06aada815ce95b9a86497083e01d989cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
