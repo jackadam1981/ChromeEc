@@ -36,6 +36,81 @@ config AP_PWRSEQ_STACK_SIZE
 	help
 	  This option specifies the size of the stack used by the
 	  AP power sequencing state machine thread handler.
+#
+# Optional board level functions. Setting any of these
+# will disable the default implementation and require
+# an external board level function to be defined.
+#
+config AP_PWRSEQ_BOARD_FORCE_SHUTDOWN
+	bool
+	default n
+	help
+	  This option enables an external function to be used
+	  to force the shutdown of the AP.
+	  The function should be defined as:
+
+		void board_ap_power_force_shutdown(void)
+
+config AP_PWRSEQ_BOARD_ALL_SYS_POWER_GOOD
+	bool
+	default n
+	help
+	  This option enables an external function to be used
+	  to return 0 when all system power is good.
+	  The function should be defined as:
+
+		int board_ap_power_all_sys_power_good(void)
+
+config AP_PWRSEQ_BOARD_ACTION_G3_S5
+	bool
+	default n
+	help
+	  This option enables an external function to be used
+	  to transition the AP from state G3 to S5.
+	  The function should be defined as:
+
+		void board_ap_power_action_g3_s5(void)
+
+config AP_PWRSEQ_BOARD_ACTION_S3_S0
+	bool
+	default n
+	help
+	  This option enables an external function to be used
+	  to transition the AP from state S3 to S0.
+	  The function should be defined as:
+
+		void board_ap_power_action_s3_s0(void)
+
+config AP_PWRSEQ_BOARD_ACTION_S0_S3
+	bool
+	default n
+	help
+	  This option enables an external function to be used
+	  to transition the AP from state S0 to S3.
+	  The function should be defined as:
+
+		void board_ap_power_action_s0_s3(void)
+
+config AP_PWRSEQ_BOARD_ASSERT_PCH_POWER_OK
+	bool
+	default n
+	help
+	  This option enables an external function to be used
+	  to assert the PCH Power Good signal to the AP.
+	  The function should be defined as:
+
+		void board_ap_power_action_assert_pch_power_ok(void)
+
+config AP_PWRSEQ_BOARD_RSMRST_PASS_THROUGH
+	bool
+	default n
+	help
+	  This option enables an external function to be used
+	  to read the input RSMRST signal and pass it through
+	  to the output RSMRST signal to the AP.
+	  The function should be defined as:
+
+		void board_ap_power_action_rsmrst_pass_through(void)
 
 config X86_NON_DSX_PWRSEQ
 	bool
