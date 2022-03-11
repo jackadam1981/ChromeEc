@@ -16,6 +16,23 @@
       "message": "This patch seems to have broken zephyr/test-ap_popwer:\n\n  $ zmake configure --test test-ap_power\n  ...\n  ld.lld: error: duplicate symbol: chipset_force_shutdown\n\nSomehow the CQ accepted it and is rejecting subsequent changes.",
       "revId": "52236bd5ef3d1b267ddecd8f5f7958a948bcdcf4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "31109359_b1002f31",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-03-11T22:49:39Z",
+      "side": 1,
+      "message": "Please review https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3516766",
+      "revId": "52236bd5ef3d1b267ddecd8f5f7958a948bcdcf4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
