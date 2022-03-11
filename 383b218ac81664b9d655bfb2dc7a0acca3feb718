@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a5667f5_465e8b60",
+        "filename": "zephyr/shim/src/hooks.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-03-11T01:27:30Z",
+      "side": 1,
+      "message": "Ack - I see this support is limited to code found under platforme/ec/zephyr. This is similar to what was done for GPIOs",
+      "parentUuid": "2b5573bf_3d78e17a",
+      "range": {
+        "startLine": 205,
+        "startChar": 0,
+        "endLine": 205,
+        "endChar": 75
+      },
+      "revId": "383b218ac81664b9d655bfb2dc7a0acca3feb718",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d42d5bab_0b58f9f9",
