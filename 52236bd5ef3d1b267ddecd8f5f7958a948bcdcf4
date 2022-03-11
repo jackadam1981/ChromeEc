@@ -33,6 +33,24 @@
       "message": "Please review https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3516766",
       "revId": "52236bd5ef3d1b267ddecd8f5f7958a948bcdcf4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab7284f2_48943cd9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-03-11T22:56:05Z",
+      "side": 1,
+      "message": "I think what happens is if you have 2 CLs that both in around the same time, and one changes something that the the depends on, both may test OK against head, and both get submitted.\nIt doesn\u0027t help that unnecessary verifiers are being run that takes 4 hours to run (b/218931984)",
+      "parentUuid": "a08dae9e_09a16b30",
+      "revId": "52236bd5ef3d1b267ddecd8f5f7958a948bcdcf4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
