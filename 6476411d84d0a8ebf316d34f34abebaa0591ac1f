@@ -46,6 +46,30 @@
       },
       "revId": "6476411d84d0a8ebf316d34f34abebaa0591ac1f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d04da58e_e3c9e8d1",
+        "filename": "zephyr/subsys/ap_pwrseq/signal_vw.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-03-11T05:37:30Z",
+      "side": 1,
+      "message": "And just to expand, none of the existing EC code references ESPI_VWIRE_SIGNAL_PLTRST at all. The ESPI devices use the notification that the ESPI bus has been reset to generate the reset event.\nI don\u0027t know enough about this system to know if that is correct or not.",
+      "parentUuid": "44ad8211_12d793e6",
+      "range": {
+        "startLine": 68,
+        "startChar": 6,
+        "endLine": 68,
+        "endChar": 35
+      },
+      "revId": "6476411d84d0a8ebf316d34f34abebaa0591ac1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
