@@ -70,6 +70,30 @@
       },
       "revId": "6476411d84d0a8ebf316d34f34abebaa0591ac1f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3080bd05_3be3e485",
+        "filename": "zephyr/subsys/ap_pwrseq/signal_vw.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-03-11T05:39:41Z",
+      "side": 1,
+      "message": "And to expand even further :-) this particular handler (signal_vw) is only using the ESPI bus reset as an indicator that the virtual wire signals will not be valid until new values are received - that\u0027s the only use of the ESPI bus reset callback in this file.",
+      "parentUuid": "d04da58e_e3c9e8d1",
+      "range": {
+        "startLine": 68,
+        "startChar": 6,
+        "endLine": 68,
+        "endChar": 35
+      },
+      "revId": "6476411d84d0a8ebf316d34f34abebaa0591ac1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
