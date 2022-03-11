@@ -118,6 +118,30 @@
       },
       "revId": "6476411d84d0a8ebf316d34f34abebaa0591ac1f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "78478529_501ec6d0",
+        "filename": "zephyr/subsys/ap_pwrseq/signal_vw.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-03-11T06:03:50Z",
+      "side": 1,
+      "message": "I understood what you meant (in terms of the ESPI bus reset vs the CPU reset).\nThe ESPI driver (both the legacy and the shim drivers) are the ones that are currently using the ESPI_BUS_RESET to presumably detect the CPU has been reset, and to then use that to notify about the CPU reset.\n\nSo you ask a good question, in that it is may be better for the ESPI drivers to use ESPI_VWIRE_SIGNAL_PLTRST rather than the ESPI bus reset to detect when the CPU has been reset.\nI do note that this action is guarded by CONFIG_PLATFORM_EC_CHIPSET_RESET_HOOK, but that by default it is enabled.\nI can\u0027t comment on what happens when \u0027apreset\u0027 or CPU reboot happens in terms of the ESPI driver. It may be worth putting in some debug to discover exactly when the ESPI bus reset occurs, and whether it is a reliable way to detect CPU reset.",
+      "parentUuid": "4d772a2d_14145758",
+      "range": {
+        "startLine": 68,
+        "startChar": 6,
+        "endLine": 68,
+        "endChar": 35
+      },
+      "revId": "6476411d84d0a8ebf316d34f34abebaa0591ac1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
