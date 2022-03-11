@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d133473a_1cd1c92f",
+        "filename": "util/fptool.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1528447
+      },
+      "writtenOn": "2022-03-11T04:35:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "de738b01_a89fd265",
+      "range": {
+        "startLine": 64,
+        "startChar": 7,
+        "endLine": 64,
+        "endChar": 48
+      },
+      "revId": "c52177e45c765db7c7a3e4ce4d98b2fdc8394b40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2fb24315_a27d7207",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-02-23T22:55:04Z",
       "side": 1,
       "message": "This function and `get_uart_dev_name` are good candiates for adding unit tests (one of the advantages of using Python over shell).\n\nSome details are here: https://chromium.googlesource.com/chromiumos/docs/+/HEAD/styleguide/python.md#Unit-tests\n\nYou can either split the function to separate out the part that does the `glob` and reads the file from the part that does the splitting or you can mock the `glob` and `readline` to return the values you want to test against. See [this example]( https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/factory/py/test/utils/serial_utils_unittest.py;l\u003d46-56;drc\u003d3eae1d45730ad01770122f3ba33e141d620a05b6).",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 81,
+        "endChar": 50
+      },
+      "revId": "c52177e45c765db7c7a3e4ce4d98b2fdc8394b40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "afeea77e_ab208599",
+        "filename": "util/fptool.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1528447
+      },
+      "writtenOn": "2022-03-11T04:35:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2fb24315_a27d7207",
       "range": {
         "startLine": 81,
         "startChar": 0,
