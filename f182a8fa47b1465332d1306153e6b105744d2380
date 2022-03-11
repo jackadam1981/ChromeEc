@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7f66116_9104dd2a",
+        "filename": "zephyr/shim/src/usba.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-03-11T06:41:31Z",
+      "side": 1,
+      "message": "So I don\u0027t think you can nest FOREACH, but I think what you need here is:\n\nDT_FOREACH_PROP_ELEM(DT_COMPAT_GET_ANY_STATUS_OKAY(DT_DRV_COMPAT), enable_pins, PIN)\n\nAssuming you only have one node with cros-ec,usba-port-enable-pins",
+      "revId": "f182a8fa47b1465332d1306153e6b105744d2380",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
