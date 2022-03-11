@@ -15,14 +15,6 @@ K_TIMER_DEFINE(s5_inactive_timer, NULL, NULL);
 
 LOG_MODULE_REGISTER(ap_pwrseq, CONFIG_AP_PWRSEQ_LOG_LEVEL);
 
-static const struct common_pwrseq_config com_cfg = {
-	.pch_dsw_pwrok_delay_ms = DT_INST_PROP(0, dsw_pwrok_delay),
-	.pch_pm_pwrbtn_delay_ms =  DT_INST_PROP(0, pm_pwrbtn_delay),
-	.pch_rsmrst_delay_ms = DT_INST_PROP(0, rsmrst_delay),
-	.wait_signal_timeout_ms = DT_INST_PROP(0, wait_signal_timeout),
-	.s5_timeout_s = DT_INST_PROP(0, s5_inactivity_timeout),
-};
-
 #ifdef CONFIG_LOG
 /**
  * @brief power_state names for debug
@@ -156,8 +148,8 @@ int check_pch_out_of_suspend(void)
 	return 0; /* timeout */
 }
 
-/* Handling RSMRST signal is mostly common across x86 chipsets */
-void rsmrst_pass_thru_handler(void)
+#ifndef CONFIG_AP_PWRSEQ_BOARD_RSMRST_PASS_THROUGH
+void board_ap_power_rsmrst_pass_through(void)
 {
 	/* Handle RSMRST passthrough */
 	/* TODO: Add additional conditions for RSMRST handling */
@@ -166,11 +158,12 @@ void rsmrst_pass_thru_handler(void)
 
 	if (in_sig_val != out_sig_val) {
 		if (in_sig_val)
-			k_msleep(com_cfg.pch_rsmrst_delay_ms);
+			k_msleep(AP_PWRSEQ_DT_VALUE(rsmrst_delay));
 		LOG_DBG("Setting PWR_EC_PCH_RSMRST to %d", in_sig_val);
 		power_signal_set(PWR_EC_PCH_RSMRST, in_sig_val);
 	}
 }
+#endif /* !CONFIG_AP_PWRSEQ_BOARD_RSMRST_PASS_THROUGH */
 
 /* TODO:
  * Add power down sequence
@@ -189,7 +182,8 @@ static int common_pwr_sm_run(int state)
 
 	case SYS_POWER_STATE_G3S5:
 		if (power_wait_signals_timeout(
-			IN_PGOOD_ALL_CORE, com_cfg.wait_signal_timeout_ms))
+			IN_PGOOD_ALL_CORE,
+			AP_PWRSEQ_DT_VALUE(wait_signal_timeout)))
 			break;
 		/*
 		 * Now wait for SLP_SUS_L to go high based on tPCH32. If this
@@ -204,7 +198,7 @@ static int common_pwr_sm_run(int state)
 		/* If A-rails are stable then move to higher state */
 		if (check_power_rails_enabled() && rsmrst_power_is_good()) {
 			/* rsmrst is intact */
-			rsmrst_pass_thru_handler();
+			board_ap_power_rsmrst_pass_through();
 			if (power_signals_on(IN_PCH_SLP_SUS)) {
 				k_timer_stop(&s5_inactive_timer);
 				return SYS_POWER_STATE_S5G3;
@@ -215,9 +209,9 @@ static int common_pwr_sm_run(int state)
 			}
 		}
 		/* S5 inactivity timeout, go to S5G3 */
-		if (com_cfg.s5_timeout_s == 0)
+		if (AP_PWRSEQ_DT_VALUE(s5_inactivity_timeout) == 0)
 			return SYS_POWER_STATE_S5G3;
-		else if (com_cfg.s5_timeout_s > 0) {
+		else if (AP_PWRSEQ_DT_VALUE(s5_inactivity_timeout) > 0) {
 			if (k_timer_status_get(&s5_inactive_timer) > 0)
 				/* Timer is expired */
 				return SYS_POWER_STATE_S5G3;
@@ -225,7 +219,8 @@ static int common_pwr_sm_run(int state)
 						&s5_inactive_timer) == 0)
 				/* Timer is not started or stopped */
 				k_timer_start(&s5_inactive_timer,
-					K_SECONDS(com_cfg.s5_timeout_s),
+					K_SECONDS(AP_PWRSEQ_DT_VALUE(
+						s5_inactivity_timeout)),
 					K_NO_WAIT);
 		}
 		break;
@@ -359,7 +354,7 @@ static void pwrseq_loop_thread(void *p1, void *p2, void *p3)
 		}
 
 		/* Run chipset specific state machine */
-		new_state = chipset_pwr_sm_run(curr_state, &com_cfg);
+		new_state = chipset_pwr_sm_run(curr_state);
 
 		/*
 		 * Run common power state machine
