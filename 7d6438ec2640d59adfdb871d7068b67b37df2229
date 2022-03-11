@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "07495ecb_546e7750",
+        "filename": "zephyr/include/ap_power/ap_power_interface.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-03-11T03:01:56Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a5d0f039_edb731e3",
+      "range": {
+        "startLine": 131,
+        "startChar": 68,
+        "endLine": 131,
+        "endChar": 70
+      },
+      "revId": "7d6438ec2640d59adfdb871d7068b67b37df2229",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cb85cfaa_4cbdf576",
