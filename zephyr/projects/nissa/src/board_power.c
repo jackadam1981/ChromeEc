@@ -33,7 +33,7 @@ static void generate_ec_soc_dsw_pwrok_handler(int delay)
 }
 
 /* Override */
-void ap_power_force_shutdown(enum ap_power_shutdown_reason reason)
+void board_ap_power_force_shutdown(void)
 {
 	int timeout_ms = X86_NON_DSX_ADLP_NONPWRSEQ_FORCE_SHUTDOWN_TO_MS;
 
@@ -65,11 +65,10 @@ void ap_power_force_shutdown(enum ap_power_shutdown_reason reason)
 
 	if (power_signal_get(PWR_DSW_PWROK))
 		LOG_WRN("DSW_PWROK didn't go low!  Assuming G3.");
-	ap_power_ev_send_callbacks(AP_POWER_SHUTDOWN);
 }
 
 /* Override */
-void g3s5_action_handler(int delay, int signal_timeout)
+void board_ap_power_action_g3_s5(int delay, int signal_timeout)
 {
 	LOG_DBG("Turning on PWR_EN_PP5000_A and PWR_EN_PP3300_A");
 	power_signal_set(PWR_EN_PP5000_A, 1);
@@ -80,8 +79,8 @@ void g3s5_action_handler(int delay, int signal_timeout)
 	generate_ec_soc_dsw_pwrok_handler(delay);
 }
 
-/* Override */
-int generate_pch_pwrok_handler(int delay)
+
+int board_ap_power_assert_pch_power_ok(int delay)
 {
 	/* Pass though PCH_PWROK */
 	if (power_signal_get(PWR_PCH_PWROK) == 0) {
