@@ -325,10 +325,12 @@ void sleep_resume_transition(void);
  * a host sleep event to hint that the suspend process starts.
  *
  * @param ctx Possible sleep parameters and return values, depending on state.
- * @param callback Will be called if timed out, i.e. suspend hang.
+ * @param suspend_hang_callback Will be called suspend hang detected
+ * @param resume_hang_callback Will be called resume hang detected
  */
 void sleep_start_suspend(struct host_sleep_event_context *ctx,
-			 void (*callback)(void));
+			 void (*suspend_hang_callback)(void),
+			 void (*resume_hang_callback)(void));
 
 /**
  * Complete the resume process.
