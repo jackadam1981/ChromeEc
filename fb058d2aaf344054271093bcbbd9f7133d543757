@@ -22,6 +22,30 @@
       },
       "revId": "fb058d2aaf344054271093bcbbd9f7133d543757",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b373533d_58aabae8",
+        "filename": "util/fptool.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1528447
+      },
+      "writtenOn": "2022-03-11T04:50:20Z",
+      "side": 1,
+      "message": "Thank you.\nThe `sysfs` interface was deprecated in Linux 4.8\nIs it guaranteed that the script is used only in Linux versions \u003e 4.8?\n\nIn addition, I did not find a `gpiod` API that allows to leave the gpio in a known state once the process is terminated.\n\nThank you",
+      "parentUuid": "e88adacb_4766fc52",
+      "range": {
+        "startLine": 101,
+        "startChar": 0,
+        "endLine": 118,
+        "endChar": 70
+      },
+      "revId": "fb058d2aaf344054271093bcbbd9f7133d543757",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
