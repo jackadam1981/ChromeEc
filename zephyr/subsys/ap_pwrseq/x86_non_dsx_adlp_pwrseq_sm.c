@@ -26,7 +26,8 @@ void ap_off(void)
 /* Handle ALL_SYS_PWRGD signal
  * This will be overridden if the custom signal handler is needed
  */
-int all_sys_pwrgd_handler(void)
+#ifndef CONFIG_AP_PWRSEQ_BOARD_ALL_SYS_POWER_GOOD
+int board_ap_power_all_sys_power_good(void)
 {
 	int retry = 0;
 
@@ -56,6 +57,7 @@ int all_sys_pwrgd_handler(void)
 	}
 	return 0;
 }
+#endif /* !CONFIG_AP_PWRSEQ_BOARD_ALL_SYS_POWER_GOOD */
 
 /*
  * We have asserted VCCST_PWRGO_OD, now wait for the IMVP9.1
@@ -76,8 +78,8 @@ static int wait_for_vrrdy(void)
 	return 0;
 }
 
-/* PCH_PWROK to PCH from EC */
-int generate_pch_pwrok_handler(int delay)
+#ifndef CONFIG_AP_PWRSEQ_BOARD_ASSERT_PCH_POWER_OK
+int board_ap_power_assert_pch_power_ok(int delay)
 {
 	/* Enable PCH_PWROK, gated by VRRDY. */
 	if (power_signal_get(PWR_PCH_PWROK) == 0) {
@@ -94,6 +96,7 @@ int generate_pch_pwrok_handler(int delay)
 
 	return 0;
 }
+#endif /* !CONFIG_AP_PWRSEQ_BOARD_ASSERT_PCH_POWER_OK */
 
 /* Generate SYS_PWROK->SOC if needed by system */
 void generate_sys_pwrok_handler(const struct common_pwrseq_config *com_cfg)
@@ -126,7 +129,7 @@ void s0_action_handler(const struct common_pwrseq_config *com_cfg)
 	/* This is not needed for alderlake silego, guarded by CONFIG? */
 
 	/* Check ALL_SYS_PWRGD and take action */
-	ret = all_sys_pwrgd_handler();
+	ret = board_ap_power_all_sys_power_good();
 	if (ret) {
 		LOG_DBG("ALL_SYS_PWRGD handling failed err= %d", ret);
 		return;
@@ -136,7 +139,8 @@ void s0_action_handler(const struct common_pwrseq_config *com_cfg)
 	/* TODO: There is possibility of EC not needing to generate
 	 * this as power sequencer may do it
 	 */
-	ret = generate_pch_pwrok_handler(chip_cfg.pch_pwrok_delay_ms);
+	ret = board_ap_power_assert_pch_power_ok(
+		chip_cfg.pch_pwrok_delay_ms);
 	if (ret) {
 		LOG_DBG("PCH_PWROK handling failed err=%d", ret);
 		return;
@@ -188,6 +192,12 @@ void ap_power_reset(enum ap_power_shutdown_reason reason)
 
 void ap_power_force_shutdown(enum ap_power_shutdown_reason reason)
 {
+	board_ap_power_force_shutdown();
+}
+
+#ifndef CONFIG_AP_PWRSEQ_BOARD_FORCE_SHUTDOWN
+void board_ap_power_force_shutdown(void)
+{
 	int timeout_ms = 50;
 
 	/* TODO: below
@@ -218,20 +228,27 @@ void ap_power_force_shutdown(enum ap_power_shutdown_reason reason)
 		LOG_DBG("DSW_PWROK or RSMRST_ODL didn't go low!  Assuming G3.");
 	ap_power_ev_send_callbacks(AP_POWER_SHUTDOWN);
 }
+#endif /* !CONFIG_AP_PWRSEQ_BOARD_FORCE_SHUTDOWN */
 
-void g3s5_action_handler(void)
+#ifndef CONFIG_AP_PWRSEQ_BOARD_ACTION_G3_S5
+void board_ap_power_action_g3_s5(void)
 {
 	power_signal_set(PWR_EN_PP5000_A, 1);
 }
+#endif /* !CONFIG_AP_PWRSEQ_BOARD_ACTION_G3_S5 */
 
-void s3s0_action_handler(void)
+#ifndef CONFIG_AP_PWRSEQ_BOARD_ACTION_S3_S0
+void board_ap_power_action_s3_s0(void)
 {
 }
+#endif /* !CONFIG_AP_PWRSEQ_BOARD_ACTION_S3_S0 */
 
-void s0s3_action_handler(void)
+#ifndef CONFIG_AP_PWRSEQ_BOARD_ACTION_S0_S3
+void board_ap_power_action_s0_s3(void)
 {
 	ap_off();
 }
+#endif /* !CONFIG_AP_PWRSEQ_BOARD_ACTION_S0_S3 */
 
 void init_chipset_pwr_seq_state(void)
 {
@@ -246,15 +263,15 @@ enum power_states_ndsx chipset_pwr_sm_run(enum power_states_ndsx curr_state,
 	/* Add chipset specific state handling if any */
 	switch (curr_state) {
 	case SYS_POWER_STATE_G3S5:
-		g3s5_action_handler();
+		board_ap_power_action_g3_s5();
 		break;
 	case SYS_POWER_STATE_S5:
 		break;
 	case SYS_POWER_STATE_S3S0:
-		s3s0_action_handler();
+		board_ap_power_action_s3_s0();
 		break;
 	case SYS_POWER_STATE_S0S3:
-		s0s3_action_handler();
+		board_ap_power_action_s0_s3();
 		break;
 	case SYS_POWER_STATE_S0:
 		s0_action_handler(com_cfg);

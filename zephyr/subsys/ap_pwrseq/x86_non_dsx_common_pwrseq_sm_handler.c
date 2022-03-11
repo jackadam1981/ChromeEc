@@ -156,8 +156,8 @@ int check_pch_out_of_suspend(void)
 	return 0; /* timeout */
 }
 
-/* Handling RSMRST signal is mostly common across x86 chipsets */
-void rsmrst_pass_thru_handler(void)
+#ifndef CONFIG_AP_PWRSEQ_BOARD_RSMRST_PASS_THROUGH
+void board_ap_power_rsmrst_pass_through(void)
 {
 	/* Handle RSMRST passthrough */
 	/* TODO: Add additional conditions for RSMRST handling */
@@ -171,6 +171,7 @@ void rsmrst_pass_thru_handler(void)
 		power_signal_set(PWR_EC_PCH_RSMRST, in_sig_val);
 	}
 }
+#endif /* !CONFIG_AP_PWRSEQ_BOARD_RSMRST_PASS_THROUGH */
 
 /* TODO:
  * Add power down sequence
@@ -204,7 +205,7 @@ static int common_pwr_sm_run(int state)
 		/* If A-rails are stable then move to higher state */
 		if (check_power_rails_enabled() && rsmrst_power_is_good()) {
 			/* rsmrst is intact */
-			rsmrst_pass_thru_handler();
+			board_ap_power_rsmrst_pass_through();
 			if (power_signals_on(IN_PCH_SLP_SUS)) {
 				k_timer_stop(&s5_inactive_timer);
 				return SYS_POWER_STATE_S5G3;
