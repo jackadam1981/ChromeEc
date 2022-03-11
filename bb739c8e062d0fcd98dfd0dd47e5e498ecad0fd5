@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f4c8014_f983e9f0",
+        "filename": "board/taniks/ec.tasklist",
+        "patchSetId": 24
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-03-11T19:36:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e55cc07a_d4b69804",
+      "range": {
+        "startLine": 15,
+        "startChar": 40,
+        "endLine": 15,
+        "endChar": 44
+      },
+      "revId": "bb739c8e062d0fcd98dfd0dd47e5e498ecad0fd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9f96cee7_16674b96",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-03-03T08:01:22Z",
       "side": 1,
       "message": "oooh, addr of compound literal 😎\ndoes the struct actually show up in the .rodata section\nor do you end up with a dangling pointer?",
+      "range": {
+        "startLine": 53,
+        "startChar": 9,
+        "endLine": 58,
+        "endChar": 3
+      },
+      "revId": "bb739c8e062d0fcd98dfd0dd47e5e498ecad0fd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "804218f7_99679da3",
+        "filename": "board/taniks/keyboard.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-03-11T19:36:05Z",
+      "side": 1,
+      "message": "Looks like it falls in .rodata:\n\nec.RW.elf shows:\n\n  100b42f0 \u003c__compound_literal.0.lto_priv.0\u003e:\n  100b42f0:       100b42d8        \u0026aw20198_drv\n  100b42f4:       00060b03        i2c, col_en, row_len\n\nec.RW.map shows:\n\n *(.rodata*)\n .rodata.str1.1\n                0x00000000100a9684     0x7f3b /tmp/cccj3P7K.ltrans0.ltrans.o\n                                       0x823a (size before relaxing)\n *fill*         0x00000000100b15bf        0x1 \n .rodata        0x00000000100b15c0     0x3258 /tmp/cccj3P7K.ltrans0.ltrans.o\n .rodata.buildinfo\n                0x00000000100b4818       0x59 /tmp/cccj3P7K.ltrans0.ltrans.o\n\nWe can also tell aw20198_drv, which is defined as const, resides right above the compound literal.",
+      "parentUuid": "9f96cee7_16674b96",
       "range": {
         "startLine": 53,
         "startChar": 9,
