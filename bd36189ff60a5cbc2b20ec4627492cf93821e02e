@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55635505_ca4d41eb",
+        "filename": "board/taniks/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-03-11T22:02:18Z",
+      "side": 1,
+      "message": "do all of your batteries identify themselves\nwith the same device name? how do you tell them\napart?",
+      "range": {
+        "startLine": 93,
+        "startChar": 19,
+        "endLine": 93,
+        "endChar": 27
+      },
+      "revId": "bd36189ff60a5cbc2b20ec4627492cf93821e02e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d5265eb_9a9e3d51",
+        "filename": "board/taniks/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-03-11T22:02:18Z",
+      "side": 1,
+      "message": "is this also a 71W battery?",
+      "range": {
+        "startLine": 105,
+        "startChar": 19,
+        "endLine": 105,
+        "endChar": 23
+      },
+      "revId": "bd36189ff60a5cbc2b20ec4627492cf93821e02e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
