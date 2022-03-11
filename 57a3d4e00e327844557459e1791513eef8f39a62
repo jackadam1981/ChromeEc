@@ -22,6 +22,30 @@
       },
       "revId": "57a3d4e00e327844557459e1791513eef8f39a62",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3793324f_68db5dd8",
+        "filename": "zephyr/test/ap_power/src/signals.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-03-11T04:37:05Z",
+      "side": 1,
+      "message": "These are the ones defined in overlay.dts.\nI imagine the unit tests for the actual power sequence code will ignore signals depending on the particular test it is doing.",
+      "parentUuid": "63f55061_80468173",
+      "range": {
+        "startLine": 39,
+        "startChar": 2,
+        "endLine": 39,
+        "endChar": 21
+      },
+      "revId": "57a3d4e00e327844557459e1791513eef8f39a62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
