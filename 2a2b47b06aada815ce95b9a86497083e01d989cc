@@ -22,6 +22,30 @@
       },
       "revId": "2a2b47b06aada815ce95b9a86497083e01d989cc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cbb39298_8560c7d1",
+        "filename": "zephyr/subsys/ap_pwrseq/ap_events.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-03-11T04:10:03Z",
+      "side": 1,
+      "message": "So cb_set is a hint or an optimisation that can tell you when there are events that no callback has ever been registered for, and thus the list doesn\u0027t have to run for that event.\nTo actually keep cb_set perfectly accurate, it would have to be recalculated every time:\n - a new handler is added or removed\n - a callback adjusts it\u0027s event mask using ap_power_ev_{add,remove}_event\n \nAnd this is potentially costly.\n\nAlso, the number of events is around 10, and if we add priority to this, it will be around 30, so it\u0027s very likely that many of these events may not have listeners on them.\nI figure in nearly every case, listeners will register a callback and never deregister it (some listeners may adjust their event mask at times), so the case when events are interesting, and then not is a rare case, and something I don\u0027t think we need to optimise for.\nSo cb_set is really just a hint that may mean the list doesn\u0027t have to run.\n\nIf we find there are many listeners that are adding and removing events, and the number of listeners grows, then maybe we can revisit this, but this isn\u0027t the case at the moment.",
+      "parentUuid": "5317b4c6_3da21a84",
+      "range": {
+        "startLine": 25,
+        "startChar": 7,
+        "endLine": 25,
+        "endChar": 56
+      },
+      "revId": "2a2b47b06aada815ce95b9a86497083e01d989cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
