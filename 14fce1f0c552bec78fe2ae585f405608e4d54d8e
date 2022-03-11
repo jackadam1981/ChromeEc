@@ -22,6 +22,30 @@
       },
       "revId": "14fce1f0c552bec78fe2ae585f405608e4d54d8e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "85d831e5_899ef395",
+        "filename": "util/fptool.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1528447
+      },
+      "writtenOn": "2022-03-11T04:36:51Z",
+      "side": 1,
+      "message": "Added unitest.\n\nThe lsbval read function as implemented in the \u0027/etc/lsb-release File Format\u0027 document does not pass `cros lint`:\n```\n************* Module fptool\nutil/fptool.py:182:16: W1636: map built-in referenced when not iterating (map-builtin-not-iterating)\nutil/fptool.py:182:16: W0141: Used builtin function \u0027map\u0027. Using a list comprehension can be clearer. (bad-builtin)\n```",
+      "parentUuid": "448e1ca4_a9dc0a2a",
+      "range": {
+        "startLine": 147,
+        "startChar": 0,
+        "endLine": 147,
+        "endChar": 20
+      },
+      "revId": "14fce1f0c552bec78fe2ae585f405608e4d54d8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
