@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c9ea32f_92b5390f",
+        "filename": "board/anahera/board.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-03-11T21:47:55Z",
+      "side": 1,
+      "message": "this can go into usbc_config.c.\ni don\u0027t think it\u0027s going to be helpful outside that file.",
+      "range": {
+        "startLine": 207,
+        "startChar": 0,
+        "endLine": 211,
+        "endChar": 0
+      },
+      "revId": "fe2ea4f0a5f44389a805bf8cb0adb4f9fee20395",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
