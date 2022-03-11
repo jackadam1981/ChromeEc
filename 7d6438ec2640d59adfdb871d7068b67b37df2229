@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "43e85fba_30d5f186",
+        "filename": "zephyr/include/ap_power/ap_power_interface.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-03-11T02:33:31Z",
+      "side": 1,
+      "message": "It\u0027s state_mask. Does compiler ignore parameter name mismatch between declaration and implementation?",
+      "range": {
+        "startLine": 131,
+        "startChar": 68,
+        "endLine": 131,
+        "endChar": 70
+      },
+      "revId": "7d6438ec2640d59adfdb871d7068b67b37df2229",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb85cfaa_4cbdf576",
+        "filename": "zephyr/subsys/ap_pwrseq/include/x86_non_dsx_common_pwrseq_sm_handler.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-03-11T02:33:31Z",
+      "side": 1,
+      "message": "How about list those in alphabet order?",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 40
+      },
+      "revId": "7d6438ec2640d59adfdb871d7068b67b37df2229",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "068d558d_030934d8",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_adlp_pwrseq_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-03-11T02:33:31Z",
+      "side": 1,
+      "message": "remove.",
+      "range": {
+        "startLine": 231,
+        "startChar": 1,
+        "endLine": 231,
+        "endChar": 20
+      },
+      "revId": "7d6438ec2640d59adfdb871d7068b67b37df2229",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
