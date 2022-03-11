@@ -46,6 +46,30 @@
       },
       "revId": "2a2b47b06aada815ce95b9a86497083e01d989cc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c13aa117_bb20b8ef",
+        "filename": "zephyr/subsys/ap_pwrseq/ap_events.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-03-11T04:25:54Z",
+      "side": 1,
+      "message": "This is fine giving current EC doesn\u0027t have anyone de-register event. I asked this just because here removal function is provided and also the code \"if ((cb_set \u0026 event) \u003d\u003d 0) {return;\t}\" is trying to avoid unnecessary run; I\u0027m not sure cleanup is missed. Maybe adding a brief note on cb_set is helpful.",
+      "parentUuid": "cbb39298_8560c7d1",
+      "range": {
+        "startLine": 25,
+        "startChar": 7,
+        "endLine": 25,
+        "endChar": 56
+      },
+      "revId": "2a2b47b06aada815ce95b9a86497083e01d989cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
