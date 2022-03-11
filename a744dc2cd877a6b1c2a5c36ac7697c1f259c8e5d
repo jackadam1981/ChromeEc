@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5ad3690_ac40bffa",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1404,
+      "author": {
+        "id": 1001880
+      },
+      "writtenOn": "2022-03-11T13:19:58Z",
+      "side": 1,
+      "message": "We still need CHARGE_CONTROL_IDLE when upper \u003d\u003d lower and upper \u003d\u003d soc. We just need the battery to discharge when upper \u003c soc. If you need to add some off by 1 margin for it to work well, that would work as well.",
+      "revId": "a744dc2cd877a6b1c2a5c36ac7697c1f259c8e5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
