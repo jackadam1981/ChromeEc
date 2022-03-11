@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "535b8e8d_7937605f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2022-03-11T17:59:51Z",
+      "side": 1,
+      "message": "this is aligned to the character limit for some reason gerrit messes it up now",
+      "parentUuid": "ec192722_2d026c16",
+      "range": {
+        "startLine": 9,
+        "startChar": 59,
+        "endLine": 10,
+        "endChar": 56
+      },
+      "revId": "b8f29f97f6121e76831260120b87fe577e765e2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8c65a8f1_7191781b",
         "filename": "zephyr/projects/intelrvp/mtlrvp/mtlrvpp_npcx/gpio.dts",
         "patchSetId": 1
@@ -37,6 +61,30 @@
       "writtenOn": "2022-03-10T22:55:17Z",
       "side": 1,
       "message": "we need to use virtual wire, lets check if this is needed",
+      "range": {
+        "startLine": 32,
+        "startChar": 3,
+        "endLine": 32,
+        "endChar": 35
+      },
+      "revId": "b8f29f97f6121e76831260120b87fe577e765e2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e20f69aa_aeb49613",
+        "filename": "zephyr/projects/intelrvp/mtlrvp/mtlrvpp_npcx/gpio.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2022-03-11T17:59:51Z",
+      "side": 1,
+      "message": "I think this is already configured to use virtual wires...this is leftover from development removing",
+      "parentUuid": "8c65a8f1_7191781b",
       "range": {
         "startLine": 32,
         "startChar": 3,
@@ -60,6 +108,30 @@
       "writtenOn": "2022-03-10T22:55:17Z",
       "side": 1,
       "message": "add a note: Netname is USBC_TCPC_PPC_ALRT_P0",
+      "range": {
+        "startLine": 66,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 4
+      },
+      "revId": "b8f29f97f6121e76831260120b87fe577e765e2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1207ac20_3b056568",
+        "filename": "zephyr/projects/intelrvp/mtlrvp/mtlrvpp_npcx/gpio.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2022-03-11T17:59:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "70e46f07_47fa70ba",
       "range": {
         "startLine": 66,
         "startChar": 0,
@@ -95,6 +167,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ffedd831_51f35a1f",
+        "filename": "zephyr/projects/intelrvp/mtlrvp/mtlrvpp_npcx/gpio.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2022-03-11T17:59:51Z",
+      "side": 1,
+      "message": "will move to ioex in updates once we have ioex enabled for MTL",
+      "parentUuid": "be4a19ee_868abada",
+      "range": {
+        "startLine": 255,
+        "startChar": 3,
+        "endLine": 255,
+        "endChar": 34
+      },
+      "revId": "b8f29f97f6121e76831260120b87fe577e765e2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f40ed670_58b8153e",
         "filename": "zephyr/projects/intelrvp/mtlrvp/mtlrvpp_npcx/interrupts.dts",
         "patchSetId": 1
@@ -106,6 +202,30 @@
       "writtenOn": "2022-03-10T22:55:17Z",
       "side": 1,
       "message": "no dsw in mtl",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 4
+      },
+      "revId": "b8f29f97f6121e76831260120b87fe577e765e2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ba67e48_735b7d6c",
+        "filename": "zephyr/projects/intelrvp/mtlrvp/mtlrvpp_npcx/interrupts.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2022-03-11T17:59:51Z",
+      "side": 1,
+      "message": "removed",
+      "parentUuid": "f40ed670_58b8153e",
       "range": {
         "startLine": 29,
         "startChar": 0,
@@ -129,6 +249,30 @@
       "writtenOn": "2022-03-10T22:55:17Z",
       "side": 1,
       "message": "we are using only 2 I2C / TCPC-AIC\npls update this.",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 4
+      },
+      "revId": "b8f29f97f6121e76831260120b87fe577e765e2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "817a0e77_790c6a67",
+        "filename": "zephyr/projects/intelrvp/mtlrvp/mtlrvpp_npcx/mtlrvp_npcx.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2022-03-11T17:59:51Z",
+      "side": 1,
+      "message": "fixing this...I had removed it but didn\u0027t add it to the commit",
+      "parentUuid": "4bbf2be8_34718151",
       "range": {
         "startLine": 18,
         "startChar": 0,

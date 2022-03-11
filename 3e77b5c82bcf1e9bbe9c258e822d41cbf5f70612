@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "97570193_e5d98dd4",
+        "filename": "zephyr/projects/intelrvp/mtlrvp/mtlrvpp_npcx/gpio.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2022-03-11T17:59:51Z",
+      "side": 1,
+      "message": "Since gpio-kbd-kso2 is required in the current zephyr code for npcx should we use an unused gpio for now? I want to avoid changing any common code for now in order to get this board up and running",
+      "parentUuid": "d94da7ba_104d6472",
+      "range": {
+        "startLine": 9,
+        "startChar": 2,
+        "endLine": 9,
+        "endChar": 35
+      },
+      "revId": "3e77b5c82bcf1e9bbe9c258e822d41cbf5f70612",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1a27ce87_35351ef2",
         "filename": "zephyr/projects/intelrvp/mtlrvp/mtlrvpp_npcx/gpio.dts",
         "patchSetId": 2
@@ -54,6 +78,30 @@
       "writtenOn": "2022-03-10T22:55:17Z",
       "side": 1,
       "message": "Add a note: Netname is USBC_TCPC_ALRT_P1",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 4
+      },
+      "revId": "3e77b5c82bcf1e9bbe9c258e822d41cbf5f70612",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c592e3a_de64edc7",
+        "filename": "zephyr/projects/intelrvp/mtlrvp/mtlrvpp_npcx/gpio.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2022-03-11T17:59:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a27ce87_35351ef2",
       "range": {
         "startLine": 69,
         "startChar": 0,
@@ -77,6 +125,30 @@
       "writtenOn": "2022-03-10T22:55:17Z",
       "side": 1,
       "message": "Add a note: Netname is USBC_TCPC_PPC_ALRT_P3",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 4
+      },
+      "revId": "3e77b5c82bcf1e9bbe9c258e822d41cbf5f70612",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "91149c42_ff0f6668",
+        "filename": "zephyr/projects/intelrvp/mtlrvp/mtlrvpp_npcx/gpio.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2022-03-11T17:59:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cc37b7eb_cb72e031",
       "range": {
         "startLine": 78,
         "startChar": 0,
@@ -123,6 +195,30 @@
       "writtenOn": "2022-03-10T22:55:17Z",
       "side": 1,
       "message": "Add Note Netname is USBC_TCPC_ALRT_P3",
+      "range": {
+        "startLine": 139,
+        "startChar": 0,
+        "endLine": 141,
+        "endChar": 4
+      },
+      "revId": "3e77b5c82bcf1e9bbe9c258e822d41cbf5f70612",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ded71d0d_e9c1ac0f",
+        "filename": "zephyr/projects/intelrvp/mtlrvp/mtlrvpp_npcx/gpio.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2022-03-11T17:59:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "69fb13c8_4955c9d1",
       "range": {
         "startLine": 139,
         "startChar": 0,
