@@ -46,6 +46,30 @@
       },
       "revId": "57a3d4e00e327844557459e1791513eef8f39a62",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "33ef6fae_3f7c72a6",
+        "filename": "zephyr/test/ap_power/src/signals.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-03-11T04:37:25Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "3793324f_68db5dd8",
+      "range": {
+        "startLine": 39,
+        "startChar": 2,
+        "endLine": 39,
+        "endChar": 21
+      },
+      "revId": "57a3d4e00e327844557459e1791513eef8f39a62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
