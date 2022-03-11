@@ -76,25 +76,6 @@ static int wait_for_vrrdy(void)
 	return 0;
 }
 
-/* PCH_PWROK to PCH from EC */
-__attribute__((weak)) int generate_pch_pwrok_handler(int delay)
-{
-	/* Enable PCH_PWROK, gated by VRRDY. */
-	if (power_signal_get(PWR_PCH_PWROK) == 0) {
-		if (wait_for_vrrdy() == 0) {
-			LOG_DBG("Timed out waiting for VRRDY, "
-				"shutting AP off!");
-			ap_off();
-			return -1;
-		}
-		k_msleep(delay);
-		power_signal_set(PWR_PCH_PWROK, 1);
-		LOG_DBG("Turning on PCH_PWROK");
-	}
-
-	return 0;
-}
-
 /* Generate SYS_PWROK->SOC if needed by system */
 void generate_sys_pwrok_handler(const struct common_pwrseq_config *com_cfg)
 {
@@ -136,7 +117,8 @@ void s0_action_handler(const struct common_pwrseq_config *com_cfg)
 	/* TODO: There is possibility of EC not needing to generate
 	 * this as power sequencer may do it
 	 */
-	ret = generate_pch_pwrok_handler(chip_cfg.pch_pwrok_delay_ms);
+	ret = board_ap_power_assert_pch_power_ok(
+		chip_cfg.pch_pwrok_delay_ms);
 	if (ret) {
 		LOG_DBG("PCH_PWROK handling failed err=%d", ret);
 		return;
@@ -186,43 +168,10 @@ void ap_power_reset(enum ap_power_shutdown_reason reason)
 	ap_power_ev_send_callbacks(AP_POWER_RESET);
 }
 
-__attribute__((weak)) void ap_power_force_shutdown(
-	enum ap_power_shutdown_reason reason)
+void ap_power_force_shutdown(enum ap_power_shutdown_reason reason)
 {
-	int timeout_ms = 50;
-
-	/* TODO: below
-	 * report_ap_reset(reason);
-	 */
-
-	/* Turn off RMSRST_L  to meet tPCH12 */
-	LOG_INF("Turning on PWR_EC_PCH_RSMRST");
-	power_signal_set(PWR_EC_PCH_RSMRST, 1);
-
-	/* Turn off S5 rails */
-	LOG_INF("Turning off PWR_EN_PP5000_A");
-	power_signal_set(PWR_EN_PP5000_A, 0);
-
-	/*
-	 * TODO(b/179519791): Replace this wait with
-	 * power_wait_signals_timeout()
-	 */
-	/* Now wait for DSW_PWROK and  RSMRST_ODL to go away. */
-	while (power_signal_get(PWR_DSW_PWROK) &&
-			(power_signal_get(PWR_RSMRST) == 0) &&
-			(timeout_ms > 0)) {
-		k_msleep(1);
-		timeout_ms--;
-	};
-
-	if (!timeout_ms)
-		LOG_DBG("DSW_PWROK or RSMRST_ODL didn't go low!  Assuming G3.");
+	board_ap_power_force_shutdown();
 	ap_power_ev_send_callbacks(AP_POWER_SHUTDOWN);
-}
-
-__attribute__((weak)) void g3s5_action_handler(int delay, int signal_timeout)
-{
-	power_signal_set(PWR_EN_PP5000_A, 1);
 }
 
 void s3s0_action_handler(void)
@@ -247,7 +196,7 @@ enum power_states_ndsx chipset_pwr_sm_run(enum power_states_ndsx curr_state,
 	/* Add chipset specific state handling if any */
 	switch (curr_state) {
 	case SYS_POWER_STATE_G3S5:
-		g3s5_action_handler(com_cfg->pch_dsw_pwrok_delay_ms,
+		board_ap_power_action_g3_s5(com_cfg->pch_dsw_pwrok_delay_ms,
 				    com_cfg->wait_signal_timeout_ms);
 		break;
 	case SYS_POWER_STATE_S5:
