@@ -35,6 +35,11 @@ properties:
       - TEMP_SENSOR_2_AMBIENT
       - TEMP_SENSOR_3_CHARGER
       - TEMP_SENSOR_4_WWAN
+      - TEMP_SNS_AMBIENT
+      - TEMP_SNS_BATTERY
+      - TEMP_SNS_DDR
+      - TEMP_SNS_SKIN
+      - TEMP_SNS_VR
 
     temp_fan_off:
       type: int
