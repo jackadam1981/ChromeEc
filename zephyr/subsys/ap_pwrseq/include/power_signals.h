@@ -209,7 +209,9 @@ void power_signal_interrupt(void);
 typedef uint32_t power_signal_mask_t;
 
 /**
- * @brief Update the stored mask of power signals.
+ * @brief Requests that the power signals mask is updated.
+ *
+ * Schedules an update to be done via sysworkq.
  */
 void power_update_signals(void);
 
@@ -282,6 +284,8 @@ static inline bool power_signals_off(power_signal_mask_t want)
  *
  * Given a signal mask and wanted value, wait until the
  * selected power signals match the wanted value.
+ * This function relies on the signal change being detected
+ * via interrupts.
  *
  * @param want The value of the signals to wait for.
  * @param mask The mask of the selected signals

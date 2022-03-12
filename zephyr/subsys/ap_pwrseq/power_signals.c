@@ -75,12 +75,29 @@ DT_FOREACH_STATUS_OKAY_VARGS(intel_ap_pwrseq_adc, GEN_PS_ENTRY,
 			     PWR_SIG_SRC_ADC, PWR_SIG_TAG_ADC)
 };
 
+/*
+ * Bitmask of power signals.
+ * This is updated via sysworkq when signal changes are detected and
+ * power_update_signals is called e.g when input GPIOs have interrupts
+ * enabled on them. If there is no way of detecting a signal's change (e.g
+ * if a input GPIO does not have interrupts enabled), then the only way that
+ * the signal is incorporated into the mask is when another signal triggers
+ * the update.
+ */
 static power_signal_mask_t power_signals;
 static power_signal_mask_t debug_signals;
+static struct k_work update_signals_work;
 
-void power_update_signals(void)
+/*
+ * Iterate through all the power signals and update the
+ * power signal mask.
+ * Normally called via sysworkq as a deferred task, but
+ * can be called explicitly via force_power_update_signals().
+ */
+static void update(struct k_work *work)
 {
 	power_signal_mask_t n = 0;
+	ARG_UNUSED(work);
 
 	for (int i = 0; i < POWER_SIGNAL_COUNT; i++) {
 		if (power_signal_get(i)) {
@@ -93,6 +110,23 @@ void power_update_signals(void)
 			power_signals, n, n ^ power_signals);
 	}
 	power_signals = n;
+}
+
+void power_update_signals(void)
+{
+	k_work_submit(&update_signals_work);
+}
+
+void force_power_update_signals(void)
+{
+	update(NULL);
+}
+
+void wait_power_update_signals(void)
+{
+	static struct k_work_sync sync;
+
+	k_work_flush(&update_signals_work, &sync);
 }
 
 void power_set_debug(power_signal_mask_t debug)
@@ -129,7 +163,6 @@ int power_wait_mask_signals_timeout(power_signal_mask_t mask,
 		}
 		k_msleep(1);
 	}
-	power_update_signals();
 	return -ETIMEDOUT;
 }
 
@@ -225,6 +258,7 @@ const char *power_signal_name(enum power_signal signal)
 
 void power_signal_init(void)
 {
+	k_work_init(&update_signals_work, update);
 	if (IS_ENABLED(HAS_GPIO_SIGNALS)) {
 		power_signal_gpio_init();
 	}
