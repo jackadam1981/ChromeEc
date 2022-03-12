@@ -50,7 +50,7 @@ void notify_espi_ready(bool ready)
 {
 	pwrseq_ctx.espi_ready = ready;
 	if (ready) {
-		power_update_signals();
+		request_power_update_signals();
 	}
 }
 #endif

@@ -77,10 +77,12 @@ DT_FOREACH_STATUS_OKAY_VARGS(intel_ap_pwrseq_adc, GEN_PS_ENTRY,
 
 static power_signal_mask_t power_signals;
 static power_signal_mask_t debug_signals;
+static struct k_work update_signals_work;
 
-void power_update_signals(void)
+static void power_update_signals(struct k_work *work)
 {
 	power_signal_mask_t n = 0;
+	ARG_UNUSED(work);
 
 	for (int i = 0; i < POWER_SIGNAL_COUNT; i++) {
 		if (power_signal_get(i)) {
@@ -93,6 +95,23 @@ void power_update_signals(void)
 			power_signals, n, n ^ power_signals);
 	}
 	power_signals = n;
+}
+
+void request_power_update_signals(void)
+{
+	k_work_submit(&update_signals_work);
+}
+
+void force_power_update_signals(void)
+{
+	power_update_signals(NULL);
+}
+
+void wait_power_update_signals(void)
+{
+	static struct k_work_sync sync;
+
+	k_work_flush(&update_signals_work, &sync);
 }
 
 void power_set_debug(power_signal_mask_t debug)
@@ -112,7 +131,7 @@ power_signal_mask_t power_get_signals(void)
 
 void power_signal_interrupt(void)
 {
-	power_update_signals();
+	request_power_update_signals();
 }
 
 int power_wait_mask_signals_timeout(power_signal_mask_t mask,
@@ -124,12 +143,12 @@ int power_wait_mask_signals_timeout(power_signal_mask_t mask,
 	}
 	want &= mask;
 	while (timeout-- > 0) {
+		force_power_update_signals();
 		if ((power_signals & mask) == want) {
 			return 0;
 		}
 		k_msleep(1);
 	}
-	power_update_signals();
 	return -ETIMEDOUT;
 }
 
@@ -225,6 +244,7 @@ const char *power_signal_name(enum power_signal signal)
 
 void power_signal_init(void)
 {
+	k_work_init(&update_signals_work, power_update_signals);
 	if (IS_ENABLED(HAS_GPIO_SIGNALS)) {
 		power_signal_gpio_init();
 	}
