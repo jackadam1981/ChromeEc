@@ -209,9 +209,26 @@ void power_signal_interrupt(void);
 typedef uint32_t power_signal_mask_t;
 
 /**
- * @brief Update the stored mask of power signals.
+ * @brief Request that the power signals mask is updated.
+ *
+ * This is actually done as a sysworkq deferred item to
+ * allow it to be called from ISRs.
  */
-void power_update_signals(void);
+void request_power_update_signals(void);
+
+/**
+ * @brief Force an immediate update of the power signals
+ *
+ * Should only be used for testing.
+ */
+void force_power_update_signals(void);
+
+/**
+ * @brief Wait for the previous request to complete
+ *
+ * Should only be used for testing.
+ */
+void wait_power_update_signals(void);
 
 /**
  * @brief Get the current power signals as a mask.
