@@ -40,6 +40,32 @@
 			enum-name = "I2C_PORT_TYPEC_3";
 		};
 	};
+
+	named-adc-channels {
+		compatible = "named-adc-channels";
+
+		adc_ambient: ambient {
+			label = "ADC_TEMP_SNS_AMBIENT";
+			enum-name = "ADC_TEMP_SNS_AMBIENT";
+			io-channels = <&adc0 3>;
+		};
+		adc_ddr: ddr {
+			label = "ADC_TEMP_SNS_DDR";
+			enum-name = "ADC_TEMP_SNS_DDR";
+			io-channels = <&adc0 4>;
+		};
+		adc_skin: skin {
+			label = "ADC_TEMP_SNS_SKIN";
+			enum-name = "ADC_TEMP_SNS_SKIN";
+			io-channels = <&adc0 2>;
+		};
+		adc_vr: vr {
+			label = "ADC_TEMP_SNS_VR";
+			enum-name = "ADC_TEMP_SNS_VR";
+			io-channels = <&adc0 1>;
+		};
+	};
+
 };
 
 /* TODO b/217436680: remove the flash jedec-id override once the upstream
@@ -129,5 +155,9 @@
 };
 
 &i2c_ctrl3 {
+	status = "okay";
+};
+
+&adc0 {
 	status = "okay";
 };
