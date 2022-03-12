@@ -217,20 +217,21 @@ ZTEST(signals, test_gpio_output)
 ZTEST(signals, test_signal_mask)
 {
 	power_signal_mask_t vm = POWER_SIGNAL_MASK(PWR_IMVP9_VRRDY);
+	power_signal_mask_t bm = POWER_SIGNAL_MASK(PWR_ALL_SYS_PWRGD);
 	power_signal_mask_t m;
 
+	power_signal_set(PWR_ALL_SYS_PWRGD, 0);
 	/* Use non-interrupt GPIO */
 	emul_set(PWR_IMVP9_VRRDY, 0);
 	m = power_get_signals() & vm;
 	zassert_equal(0, (power_get_signals() & vm), "Expected 0 signals");
 	emul_set(PWR_IMVP9_VRRDY, 1);
 	zassert_equal(0, (power_get_signals() & vm), "Expected 0 signals");
-	power_update_signals();
-	zassert_equal(vm, (power_get_signals() & vm),
-		"Expected non-zero signals");
-	zassert_equal(true, power_signals_match(vm, vm),
-		"Expected signal match");
-	zassert_equal(-ETIMEDOUT, power_wait_mask_signals_timeout(vm, 0, 5),
+
+	zassert_false(power_signals_on(bm), "Expected PWR_ALL_SYS_PWRGD off");
+	power_signal_set(PWR_ALL_SYS_PWRGD, 1);
+	zassert_true(power_signals_on(bm), "Expected PWR_ALL_SYS_PWRGD on");
+	zassert_equal(-ETIMEDOUT, power_wait_mask_signals_timeout(bm, 0, 5),
 		"Expected timeout");
 }
 
