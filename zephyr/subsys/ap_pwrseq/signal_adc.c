@@ -49,7 +49,7 @@ static void trigger_high(enum pwr_sig_adc adc)
 			SENSOR_ATTR_ALERT,
 			&val);
 	LOG_DBG("power signal adc%d is HIGH", adc);
-	power_update_signals();
+	request_power_update_signals();
 }
 
 static void trigger_low(enum pwr_sig_adc adc)
@@ -68,7 +68,7 @@ static void trigger_low(enum pwr_sig_adc adc)
 			SENSOR_ATTR_ALERT,
 			&val);
 	LOG_DBG("power signal adc%d is LOW", adc);
-	power_update_signals();
+	request_power_update_signals();
 }
 
 int power_signal_adc_get(enum pwr_sig_adc adc)
