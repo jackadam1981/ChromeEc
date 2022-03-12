@@ -209,7 +209,9 @@ void power_signal_interrupt(void);
 typedef uint32_t power_signal_mask_t;
 
 /**
- * @brief Update the stored mask of power signals.
+ * @brief Requests that the power signals mask is updated.
+ *
+ * Schedules an update to be done via sysworkq.
  */
 void power_update_signals(void);
 
