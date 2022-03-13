@@ -34,6 +34,24 @@
       "parentUuid": "e7f66116_9104dd2a",
       "revId": "f182a8fa47b1465332d1306153e6b105744d2380",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad9e06bf_e8127232",
+        "filename": "zephyr/shim/src/usba.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-03-13T23:16:26Z",
+      "side": 1,
+      "message": "Nesting should work in this case, but it is worth checking that it works as expected (nesting has issues with expanding multiple instances of the same macro).\nYou can verify what it produces by looking at the post-processed text.\nCan you do that by going to the ec/build/zephyr/\u003cvariant\u003e/build-ro and looking at the compile commands json output, and redoing it with -E",
+      "parentUuid": "5b1728ba_ff67db9d",
+      "revId": "f182a8fa47b1465332d1306153e6b105744d2380",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
