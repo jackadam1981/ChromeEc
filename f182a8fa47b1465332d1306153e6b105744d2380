@@ -16,6 +16,24 @@
       "message": "So I don\u0027t think you can nest FOREACH, but I think what you need here is:\n\nDT_FOREACH_PROP_ELEM(DT_COMPAT_GET_ANY_STATUS_OKAY(DT_DRV_COMPAT), enable_pins, PIN)\n\nAssuming you only have one node with cros-ec,usba-port-enable-pins",
       "revId": "f182a8fa47b1465332d1306153e6b105744d2380",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b1728ba_ff67db9d",
+        "filename": "zephyr/shim/src/usba.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-03-13T22:49:35Z",
+      "side": 1,
+      "message": "I specifically want to handle there being more than one node, since that\u0027s kind of the point of identifying things with compatible strings. This builds, so I assume it works correctly.",
+      "parentUuid": "e7f66116_9104dd2a",
+      "revId": "f182a8fa47b1465332d1306153e6b105744d2380",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
