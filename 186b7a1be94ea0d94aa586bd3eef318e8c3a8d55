@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "168a2175_627d4fa6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-03-13T23:24:26Z",
+      "side": 1,
+      "message": "I\u0027m not sure this is a good idea, since power signals can be very latency-sensitive and it\u0027s difficult to predict what workq latency will be like, especially since this update gets queued behind anything else that might be waiting and could itself yield to another thread if this isn\u0027t put at the head of the queue (`CONFIG_SYSTEM_WORKQUEUE_NO_YIELD`).\n\nThis seems like one of those situations where we really do need to do processing in an ISR (and that\u0027s okay because it never blocks), but it might be okay to drop it off the ISR context if we have evidence that the timing is okay for what any AP might need.",
+      "revId": "186b7a1be94ea0d94aa586bd3eef318e8c3a8d55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
