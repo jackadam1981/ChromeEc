@@ -48,6 +48,12 @@ int thermistor_linear_interpolate(uint16_t mv,
 			head = mid + 1;
 	}
 
+	__ASSERT(mid >= 0 && mid < (info->num_pairs - 1),
+		 "PTC offset %d is out of bounds (data size %d)",
+		 mid, info->num_pairs);
+	__ASSERT(v_high > v_low, "voltage delta (%d) is not positive",
+		 v_high - v_low);
+
 	t_low = data[mid].temp;
 	t_high = data[mid + 1].temp;
 
