@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f65a6fe_0f350417",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 58
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-03-13T04:59:28Z",
+      "side": 1,
+      "message": "What do you think about splitting this CL into one that has all the signal config, and a second that has the adc_cmp stuff that is waiting for upstreamed changes?\nThat way, we would minimise the number of CLs required for cherry-picking and limit these to just the changes dependent on the upstreamed changes.",
+      "revId": "0153e4057ca2f58d3b5f645d18a886bf20d9f1ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
