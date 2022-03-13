@@ -109,6 +109,15 @@ ZTEST(signals, test_validate_request)
 	zassert_equal(-EINVAL,
 		      power_signal_disable_interrupt(PWR_IMVP9_VRRDY),
 		      "enable interrupt succeeded");
+	/* Invalid signal */
+	zassert_equal(-EINVAL, power_signal_get(-1),
+		      "get with bad signal");
+	zassert_equal(-EINVAL, power_signal_set(-1, 1),
+		      "set with bad signal");
+	zassert_equal(-EINVAL, power_signal_enable_interrupt(-1),
+		      "enable interrupt with bad signal");
+	zassert_equal(-EINVAL, power_signal_disable_interrupt(-1),
+		      "disable interrupt with bad signal");
 }
 
 /**
@@ -126,6 +135,24 @@ ZTEST(signals, test_board_signals)
 		      "set failed");
 	zassert_equal(1, power_signal_get(PWR_ALL_SYS_PWRGD),
 		      "get failed");
+}
+
+/**
+ * @brief TestPurpose: Check name retrieval
+ *
+ * @details
+ * Validate correct name received
+ *
+ * Expected Results
+ *  - Can get signal name
+ */
+ZTEST(signals, test_signal_name)
+{
+	const char *name = power_signal_name(PWR_IMVP9_VRRDY);
+	const char *exp = "(PWR_IMVP9_VRRDY) VRRDY input from IMVP9";
+
+	zassert_equal(0, strcmp(name, exp), "name wrong");
+	zassert_is_null(power_signal_name(-1), "name should be null");
 }
 
 /**
@@ -232,6 +259,8 @@ ZTEST(signals, test_signal_mask)
 		"Expected signal match");
 	zassert_equal(-ETIMEDOUT, power_wait_mask_signals_timeout(vm, 0, 5),
 		"Expected timeout");
+	zassert_equal(0, power_wait_mask_signals_timeout(0, vm, 5),
+		"expected match");
 }
 
 /**
