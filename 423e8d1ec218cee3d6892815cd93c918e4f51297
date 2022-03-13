@@ -16,6 +16,24 @@
       "message": "Looking at some of these functions, I think most of them can instead be done using the power signals, maybe treating some as a pseudo signal from the board specific handlers e.g have PWR_ALL_POWER_GOOD, or a control signal PWR_ASSERT_RSMRST_TO_CPU.\n\nThis area of extending functionality to chipset or board specific handlers needs a better deisgn so that it is not going to be a mess of config items and confusing duplicate functions.\nI\u0027d really like to understand the requirements here. Perhaps someone from Intel could write-up a short doc that covers exactly what the requirements are here, something that outlines:\n - what is \u0027core\u0027 functionality and signals\n - what extensions/functions are needed for individual chipssets (ADL, MTL)\n - How to incorporate platform specific differences (PMIC, discrete etc.)\n\nThen I think we can consider how to design a system that meets these requirements (i.e extensible without being a tangled mess).\nMaybe there\u0027s a doc that covers these requirements already, but I haven\u0027t seen it.\n",
       "revId": "423e8d1ec218cee3d6892815cd93c918e4f51297",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8bb39cdd_c0f3a03a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-03-13T23:57:05Z",
+      "side": 1,
+      "message": "I don\u0027t think there was a doc, but what I recall from review comments was that if a particular configuration may need to handle something specially, the subsystem should provide hooks to register those functions and can provide a default implementation that runs if no hooks are configured on a given extension point.\n\nI don\u0027t think we want to do this right now, since:\n* We currently only need to support this one board\n* Requiring users to define symbols with magic names doesn\u0027t match Zephyr coding style\n* Cleaning it up to be an actual subsystem will allow hooks for extension points to be more naturally added\n\nThis adds complexity (as you note) for something that will be improved by other future work and would itself need to be cleaned up as well.",
+      "parentUuid": "ce28a478_2d0aac93",
+      "revId": "423e8d1ec218cee3d6892815cd93c918e4f51297",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
