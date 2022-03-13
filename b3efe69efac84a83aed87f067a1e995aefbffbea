@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "971f566a_fb34a781",
+        "filename": "zephyr/test/drivers/src/events.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-03-13T23:11:47Z",
+      "side": 1,
+      "message": "Can we make it do nothing (skip or auto-pass) if the config is enabled, then?",
+      "range": {
+        "startLine": 10,
+        "startChar": 11,
+        "endLine": 10,
+        "endChar": 39
+      },
+      "revId": "b3efe69efac84a83aed87f067a1e995aefbffbea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
