@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b4dbdc6_e980a9fc",
+        "filename": "zephyr/projects/nissa/nivviks_power_signals.dts",
+        "patchSetId": 3
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-03-13T23:29:38Z",
+      "side": 1,
+      "message": "Thresholds should match the ones for Nereid in https://crrev.com/c/3504427, see discussion there.\n\nI thought there was a change for Nivviks that had the same thresholds already, but can\u0027t find it now.",
+      "revId": "fc450aedfbf93228bbfc56d9a51deac8d3a8ab1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
