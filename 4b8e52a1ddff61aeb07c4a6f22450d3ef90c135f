@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d03a4f1f_24df302d",
+        "filename": "util/fptool_unitest.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-03-14T22:50:06Z",
+      "side": 1,
+      "message": "Can you change all the `assert`s in this file to `self.assertEqual`?\n\nWhen you write it this way, it will print a more useful error message showing exactly what is different.",
+      "range": {
+        "startLine": 303,
+        "startChar": 8,
+        "endLine": 303,
+        "endChar": 58
+      },
+      "revId": "4b8e52a1ddff61aeb07c4a6f22450d3ef90c135f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b246500f_2537a2af",
+        "filename": "util/fptool_unitest.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-03-14T22:50:06Z",
+      "side": 1,
+      "message": "Rather than testing both `fpgpios._parse_gpio_ranges()` and `gpio._get_gpio_by_index`, it\u0027s better to have the test only exercising a single function. For example:\n\n```\n      with mock.patch(\u0027fptool.FPGpios._read_gpio_ranges\u0027) as mock_ranges:\n            mock_ranges.return_value \u003d _GPIO_RANGES\n            gpio_ranges \u003d fpgpios._parse_gpio_ranges()\n            self.assertEqual(gpio_ranges, [\u003cspecify this as hardcoded value\u003e])\n```\n\nand  another test case\n\n```\n        gpio \u003d gpio._get_gpio_by_index([\u003cspecify this as hardcoded value\u003e], 126)\n        self.assertEqual(gpio, \u003cexpected value\u003e\n```",
+      "range": {
+        "startLine": 308,
+        "startChar": 11,
+        "endLine": 311,
+        "endChar": 0
+      },
+      "revId": "4b8e52a1ddff61aeb07c4a6f22450d3ef90c135f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0b0bfb6_d696450e",
+        "filename": "util/fptool_unitest.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 329,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-03-14T22:50:06Z",
+      "side": 1,
+      "message": "Same comment as last CL about splitting into separate test cases: http://go/tott/520",
+      "range": {
+        "startLine": 298,
+        "startChar": 4,
+        "endLine": 329,
+        "endChar": 30
+      },
+      "revId": "4b8e52a1ddff61aeb07c4a6f22450d3ef90c135f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
