@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3174e80a_c809e36e",
+        "filename": "zephyr/subsys/ap_pwrseq/include/ap_power_override_functions.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-03-14T15:26:05Z",
+      "side": 1,
+      "message": "See http://issuetracker.google.com/223923728#comment2.  You could pretty easily convert this to a callback registration, encapsulating all the supported callbacks into a single structure.",
+      "range": {
+        "startLine": 30,
+        "startChar": 5,
+        "endLine": 30,
+        "endChar": 34
+      },
+      "revId": "8508529c2035c2ae6ecad440ca1248cec848a423",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
