@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6652f2de_156bc0a9",
+        "filename": "zephyr/projects/intelrvp/adlrvp/adlrvp_npcx/prj.conf",
+        "patchSetId": 26
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2022-03-14T18:49:37Z",
+      "side": 1,
+      "message": "shouldn\u0027t this come from Device Tree counting instead of hard coded?",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 42
+      },
+      "revId": "8d6ef95745d5df8b393075e6eb1c2b493b294d45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e359dbd9_8aa4c94d",
+        "filename": "zephyr/projects/intelrvp/adlrvp/adlrvp_npcx/src/usbc.c",
+        "patchSetId": 26
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2022-03-14T18:49:37Z",
+      "side": 1,
+      "message": "Seems like this could be extracted from the Device Tree.",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 6
+      },
+      "revId": "8d6ef95745d5df8b393075e6eb1c2b493b294d45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
