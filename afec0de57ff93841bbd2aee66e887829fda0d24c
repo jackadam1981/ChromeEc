@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1cf1de65_bfd07c87",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-03-14T16:16:46Z",
+      "side": 1,
+      "message": "This fails to build on gitlab.\n\n```\n/builds/zephyr-ec/ec/zephyr/shim/src/gpio_int.c:203: undefined reference to `gpio_enable_dt_interrupt\u0027\n```",
+      "revId": "afec0de57ff93841bbd2aee66e887829fda0d24c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
