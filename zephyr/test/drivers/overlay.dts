@@ -200,11 +200,11 @@
 	named-i2c-ports {
 		compatible = "named-i2c-ports";
 
-		usb-c0 {
+		i2c_usb_c0: usb-c0 {
 			i2c-port = <&i2c0>;
 			enum-name = "I2C_PORT_USB_C0";
 		};
-		usb-c1 {
+		i2c_usb_c1: usb-c1 {
 			i2c-port = <&i2c1>;
 			enum-name = "I2C_PORT_USB_C1";
 		};
@@ -683,6 +683,44 @@
 	cros_flash: cros-flash {
 		compatible = "cros-ec,flash-emul";
 		label = "FLASH";
+	};
+
+	usbc {
+		compatible = "named-usbc-ports";
+		#address-cells = <1>;
+		#size-cells = <0>;
+
+		port0: usbc-port@0 {
+			reg = <0>;
+
+			bc12 {
+				compatible = "pericom,pi3usb9201";
+				port = <&i2c_usb_c0>;
+				i2c-addr-flags = "PI3USB9201_I2C_ADDR_3_FLAGS";
+			};
+
+			ppc {
+				compatible = "ti,sn5s330";
+				port = <&i2c_usb_c0>;
+				i2c-addr-flags = "SN5S330_ADDR0_FLAGS";
+			};
+		};
+		port1: usbc-port@1 {
+			reg = <1>;
+
+			bc12 {
+				compatible = "pericom,pi3usb9201";
+				port = <&i2c_usb_c1>;
+				i2c-addr-flags = "PI3USB9201_I2C_ADDR_1_FLAGS";
+			};
+
+			ppc {
+				compatible = "silergy,syv682x";
+				port = <&i2c_usb_c1>;
+				i2c-addr-flags = "SYV682X_ADDR1_FLAGS";
+				irq = <&gpio_usb_c1_frs_en>;
+			};
+		};
 	};
 };
 
