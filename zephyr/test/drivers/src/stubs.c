@@ -40,19 +40,6 @@ LOG_MODULE_REGISTER(stubs);
  * device tree.
  */
 
-/* BC1.2 charger detect configuration */
-const struct pi3usb9201_config_t pi3usb9201_bc12_chips[] = {
-	[USBC_PORT_C0] = {
-		.i2c_port = I2C_PORT_USB_C0,
-		.i2c_addr_flags = PI3USB9201_I2C_ADDR_3_FLAGS,
-	},
-	[USBC_PORT_C1] = {
-		.i2c_port = I2C_PORT_USB_C1,
-		.i2c_addr_flags = PI3USB9201_I2C_ADDR_1_FLAGS,
-	},
-};
-BUILD_ASSERT(ARRAY_SIZE(pi3usb9201_bc12_chips) == USBC_PORT_COUNT);
-
 /* Charger Chip Configuration */
 const struct charger_config_t chg_chips[] = {
 #ifdef CONFIG_PLATFORM_EC_CHARGER_ISL9238
@@ -172,28 +159,6 @@ void board_set_charge_limit(int port, int supplier, int charge_ma, int max_ma,
 	MAX(charge_ma, CONFIG_CHARGER_INPUT_CURRENT), charge_mv);
 }
 
-struct tcpc_config_t tcpc_config[] = {
-	[USBC_PORT_C0] = {
-		.bus_type = EC_BUS_TYPE_I2C,
-		.i2c_info = {
-			.port = I2C_PORT_USB_C0,
-			.addr_flags = DT_REG_ADDR(DT_NODELABEL(tcpci_emul)),
-		},
-		.drv = &tcpci_tcpm_drv,
-	},
-	[USBC_PORT_C1] = {
-		.bus_type = EC_BUS_TYPE_I2C,
-		.i2c_info = {
-			.port = I2C_PORT_USB_C1,
-			.addr_flags = DT_REG_ADDR(DT_NODELABEL(
-							tcpci_ps8xxx_emul)),
-		},
-		.drv = &ps8xxx_tcpm_drv,
-	},
-};
-BUILD_ASSERT(ARRAY_SIZE(tcpc_config) == USBC_PORT_COUNT);
-BUILD_ASSERT(CONFIG_USB_PD_PORT_MAX_COUNT == USBC_PORT_COUNT);
-
 static uint16_t ps8xxx_product_id = PS8805_PRODUCT_ID;
 
 uint16_t board_get_ps8xxx_product_id(int port)
@@ -279,23 +244,6 @@ int pd_set_power_supply_ready(int port)
 {
 	return EC_SUCCESS;
 }
-
-/* USBC PPC configuration */
-struct ppc_config_t ppc_chips[] = {
-	[USBC_PORT_C0] = {
-		.i2c_port = I2C_PORT_USB_C0,
-		.i2c_addr_flags = SN5S330_ADDR0_FLAGS,
-		.drv = &sn5s330_drv,
-	},
-	[USBC_PORT_C1] = {
-		.i2c_port = I2C_PORT_USB_C1,
-		.i2c_addr_flags = SYV682X_ADDR1_FLAGS,
-		.frs_en = GPIO_SIGNAL(DT_NODELABEL(gpio_usb_c1_frs_en)),
-		.drv = &syv682x_drv,
-	},
-};
-BUILD_ASSERT(ARRAY_SIZE(ppc_chips) == USBC_PORT_COUNT);
-unsigned int ppc_cnt = ARRAY_SIZE(ppc_chips);
 
 DEFINE_FAKE_VOID_FUNC(system_hibernate, uint32_t, uint32_t);
 
