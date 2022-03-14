@@ -52,6 +52,24 @@
       "parentUuid": "8d97f220_daf26a64",
       "revId": "186b7a1be94ea0d94aa586bd3eef318e8c3a8d55",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3673c6cd_47d6f02f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-03-14T03:32:05Z",
+      "side": 1,
+      "message": "OK I think this is now a reasonable approach.\n\nPart of the assumption here is that the mask doesn\u0027t include outputs.\nPotentially we could include them, but it seems excessive to poll the outputs, and I can\u0027t see a place where the state of the output is expected in the mask.\n\nThe board provided signals are not interrupt driven, so these are now polled whenever power_get_signals is called.",
+      "parentUuid": "751ba3a4_bed1a6b0",
+      "revId": "186b7a1be94ea0d94aa586bd3eef318e8c3a8d55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
