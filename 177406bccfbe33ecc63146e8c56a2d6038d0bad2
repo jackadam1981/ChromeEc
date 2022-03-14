@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "46f1c3f1_c86f7bca",
+        "filename": "util/fptool_unitest.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-03-14T22:35:28Z",
+      "side": 1,
+      "message": "Can you change all the `assert`s in this file to `self.assertEqual`:\n\n```\nself.assertEqual(exit_trap.exception.code, fptool.ExitCode.EXIT_PRECONDITION)\n```\n\nWhen you write it this way, it will print a more useful error message showing exactly what is different.",
+      "range": {
+        "startLine": 62,
+        "startChar": 8,
+        "endLine": 62,
+        "endChar": 76
+      },
+      "revId": "177406bccfbe33ecc63146e8c56a2d6038d0bad2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "962715f4_3e55932a",
         "filename": "util/fptool_unitest.py",
         "patchSetId": 5
