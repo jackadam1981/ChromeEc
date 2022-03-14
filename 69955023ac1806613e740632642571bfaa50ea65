@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5001e306_3a1cd837",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-03-14T23:14:59Z",
+      "side": 1,
+      "message": "This broke the volteer build on gitlab: https://gitlab.com/zephyr-ec/ec/-/jobs/2201025647\n\nIn the zephyr sdk, an empty array can\u0027t be dereferenced at all, even if those calls would always get optimized out. \n\nThe compiler there can figure out that \n```\npwm \u003d \u0026pwm_configs[i];\n```\n\nwill always fail, because sizeof(pwm_configs) \u003d\u003d 0, but not smart enough to realize that\n\n```\n\tfor (size_t i \u003d 0; i \u003c PWM_CH_COUNT; ++i) {\n\t\tpwm \u003d \u0026pwm_configs[i];\n\t}\n```\n\nwill never do anything because PWM_CH_COUNT \u003d\u003d 0.\n",
+      "revId": "69955023ac1806613e740632642571bfaa50ea65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
