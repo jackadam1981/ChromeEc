@@ -34,6 +34,24 @@
       "parentUuid": "168a2175_627d4fa6",
       "revId": "186b7a1be94ea0d94aa586bd3eef318e8c3a8d55",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "751ba3a4_bed1a6b0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-03-14T03:17:05Z",
+      "side": 1,
+      "message": "\u003e The power_wait_mask_signals_timeout is the time sensitive one, and the one that relies on interrupts to work.\n\nI don\u0027t think that\u0027s true in general; especially for power-down and S0ix (neither of which are currently implemented), the EC sometimes needs to respond quickly to signal changes from the AP.\n\n\u003e Hmmm... perhaps we should be separating out the mask usage so that the power_wait_mask_signals_timeout function is only looking at ISR signals, and avoiding the whole \u0027power_update_signals\u0027 thing.\n\nI think the key is that individual interrupts should avoid polling signals that they don\u0027t service (helping to ensure prompt processing), and both producers and consumers of the state bits should ensure they use thread-safe operations.\n\nI don\u0027t mind keeping all the signals in one value (it\u0027s convenient if there\u0027s a single SoT for every signal, and that may as well be an atomic value in RAM), but we should ensure that there are a few standard functions to safely manipulate it.",
+      "parentUuid": "8d97f220_daf26a64",
+      "revId": "186b7a1be94ea0d94aa586bd3eef318e8c3a8d55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
