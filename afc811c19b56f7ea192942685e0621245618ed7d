@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13726272_e5cd033d",
+        "filename": "zephyr/CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-03-14T18:53:21Z",
+      "side": 1,
+      "message": "Hey I\u0027m setting this unconditionally and flipping the default for the cpu trap in the next patch as that\u0027s what was done in ECOS, makes me think though: do we really want it all the time? The compiler should already only enable this when necessary, or we could make it conditional to the ARM family that does not support it.",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 67,
+        "endChar": 39
+      },
+      "revId": "afc811c19b56f7ea192942685e0621245618ed7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
