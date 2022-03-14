@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba1e1c33_1fdcee52",
+        "filename": "zephyr/test/ap_power/src/signals.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-03-14T16:04:24Z",
+      "side": 1,
+      "message": "I only see power_signal_name call in log or shell output. Normally, I would advocate against having tests for log contents, because they are brittle to changes that don\u0027t meaningfully affect behavior. Does that seem reasonable here?",
+      "revId": "c0b2eda156dbfe89c9f677416d52cd36d5afcd63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26e5041b_f46dfffc",
+        "filename": "zephyr/test/ap_power/src/signals.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-03-14T16:04:24Z",
+      "side": 1,
+      "message": "Is this the kind of thing where we would want to loop over a list of named power signals and check each of their names?",
+      "revId": "c0b2eda156dbfe89c9f677416d52cd36d5afcd63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be3f0a16_e696c719",
+        "filename": "zephyr/test/ap_power/src/signals.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-03-14T16:04:24Z",
+      "side": 1,
+      "message": "I think this should be a `zassert_ok` to make the semantics of power_wait_mask_signals_timeout more obvious.\n\nI also don\u0027t find the error message on the assert very enlightening. This might be out of scope for this CL, but this test doesn\u0027t have very helpful comments, error messages, or variable names in general. I think if I were encountering this after it failed, I would be starting from scratch in my debugging. It would be nice if the test explained what it was doing and expecting a bit more.",
+      "range": {
+        "startLine": 262,
+        "startChar": 15,
+        "endLine": 262,
+        "endChar": 16
+      },
+      "revId": "c0b2eda156dbfe89c9f677416d52cd36d5afcd63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
