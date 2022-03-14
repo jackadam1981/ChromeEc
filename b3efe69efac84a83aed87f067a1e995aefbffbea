@@ -70,6 +70,30 @@
       },
       "revId": "b3efe69efac84a83aed87f067a1e995aefbffbea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6318e33_de0168f8",
+        "filename": "zephyr/test/drivers/src/events.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-03-14T00:15:15Z",
+      "side": 1,
+      "message": "Yes, maybe it belongs in test/hooks.\nLet me move it there.",
+      "parentUuid": "ddf21a04_d1196cfe",
+      "range": {
+        "startLine": 10,
+        "startChar": 11,
+        "endLine": 10,
+        "endChar": 39
+      },
+      "revId": "b3efe69efac84a83aed87f067a1e995aefbffbea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
