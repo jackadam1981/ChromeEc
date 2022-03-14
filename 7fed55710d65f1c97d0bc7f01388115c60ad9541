@@ -214,6 +214,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ff8b344f_73044f13",
+        "filename": "docs/zephyr/zephyr_cbi.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-03-14T15:04:45Z",
+      "side": 1,
+      "message": "I think the following organization makes sense:\n\nzephyr_cbi.md: Provides an overview of the CBI EEPROM, including how to enable it (Kconfig and devicetree).  Provide links to separate FW_CONFIG and SSFC docs.\n\nzephyr_fw_config.md: Andrew\u0027s doc.  Needs some minor changes to point back to zephyr_cbi.md instead of duplicating the Kconfig section.\n\nzephyr_ssfc.md: Contains your content below.  Also links back to the zephyr_cbi.md doc.",
+      "parentUuid": "df5f91e6_6975a7bd",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 42
+      },
+      "revId": "7fed55710d65f1c97d0bc7f01388115c60ad9541",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7cefa013_fcb66a28",
         "filename": "docs/zephyr/zephyr_cbi.md",
         "patchSetId": 5
