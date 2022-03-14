@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a8b115d_f7d82c5d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-03-14T10:12:18Z",
+      "side": 1,
+      "message": "pwm-leds has been converted already, the only thing left is some board code for skyrim, I\u0027ll look into that separately and figure if it can be converted to pwm-leds, but we are close to being able to drop the pwm shim code entirely.",
+      "parentUuid": "8cdfd6e7_2d63bf88",
+      "revId": "60b6d21d6f9961c19d8e71289e97e997af2ba946",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "80e73da7_b8944bb6",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-03-10T20:58:12Z",
       "side": 1,
       "message": "Group with the other Zephyr headers and use `\u003c\u003e` instead of quotes to indicate the system include.",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 24
+      },
+      "revId": "60b6d21d6f9961c19d8e71289e97e997af2ba946",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d73ee65_62b14695",
+        "filename": "zephyr/shim/src/fan.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-03-14T10:12:18Z",
+      "side": 1,
+      "message": "Done, sorted the lists as well while I was at it.",
+      "parentUuid": "80e73da7_b8944bb6",
       "range": {
         "startLine": 14,
         "startChar": 0,
