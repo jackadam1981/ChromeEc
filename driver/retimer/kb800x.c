@@ -4,45 +4,37 @@
  *
  * Driver for Kandou KB800x USB-C 40 Gb/s multiprotocol switch.
  */
-
 #include "common.h"
 #include "console.h"
 #include "i2c.h"
 #include "kb800x.h"
 #include "time.h"
+#include <stdint.h>
 
 /* Time between load switch enable and the reset being de-asserted */
 #define KB800X_POWER_ON_DELAY_MS 20
-
 static mux_state_t cached_mux_state[CONFIG_USB_PD_PORT_MAX_COUNT];
-
 static int kb800x_write(const struct usb_mux *me, uint16_t address,
 			uint8_t data)
 {
 	uint8_t kb800x_config[3] = { 0x00, 0x00, 0x00 };
-
 	kb800x_config[0] = (address >> 8) & 0xff;
 	kb800x_config[1] = address & 0xff;
 	kb800x_config[2] = data;
 	return i2c_xfer(me->i2c_port, me->i2c_addr_flags, kb800x_config,
 			sizeof(kb800x_config), NULL, 0);
 }
-
 static int kb800x_read(const struct usb_mux *me, uint16_t address,
 		       uint8_t *data)
 {
 	uint8_t kb800x_config[2] = { 0x00, 0x00 };
-
 	kb800x_config[0] = (address >> 8) & 0xff;
 	kb800x_config[1] = address & 0xff;
 	return i2c_xfer(me->i2c_port, me->i2c_addr_flags, kb800x_config,
 			sizeof(kb800x_config), data, 1);
 }
-
 #ifdef CONFIG_KB800X_CUSTOM_XBAR
-
 /* These lookup tables are derived from the KB8001 EVB GUI register map */
-
 /* Map elastic buffer (EB) to register field for TX configuration. */
 static const uint8_t tx_eb_to_field_ab[] = {
 	[KB800X_EB1] = 4, [KB800X_EB2] = 0, [KB800X_EB3] = 0,
@@ -75,7 +67,6 @@ static const uint8_t usb_ss_lane_to_eb[] = { [KB800X_TX0] = KB800X_EB4,
 					     [KB800X_TX1] = KB800X_EB5,
 					     [KB800X_RX0] = KB800X_EB1,
 					     [KB800X_RX1] = KB800X_EB2 };
-
 /* Assign a phy TX to an elastic buffer */
 static int kb800x_assign_tx_to_eb(const struct usb_mux *me,
 			  enum kb800x_phy_lane phy_lane, enum kb800x_eb eb)
@@ -83,21 +74,16 @@ static int kb800x_assign_tx_to_eb(const struct usb_mux *me,
 	uint8_t field_value = 0;
 	uint8_t regval;
 	int rv;
-
 	field_value = KB800X_PHY_IS_AB(phy_lane) ? tx_eb_to_field_ab[eb] :
 						    tx_eb_to_field_cd[eb];
-
 	/* For lane1 of each PHY, shift by 3 bits */
 	field_value <<= 3 * KB800X_LANE_NUMBER_FROM_PHY(phy_lane);
-
 	rv = kb800x_read(me, KB800X_REG_TXSEL_FROM_PHY(phy_lane), &regval);
 	if (rv)
 		return rv;
 	return kb800x_write(me, KB800X_REG_TXSEL_FROM_PHY(phy_lane),
 		     regval | field_value);
 }
-
-
 /* Assign a phy RX to an elastic buffer */
 static int kb800x_assign_rx_to_eb(const struct usb_mux *me,
 			  enum kb800x_phy_lane phy_lane, enum kb800x_eb eb)
@@ -106,11 +92,8 @@ static int kb800x_assign_rx_to_eb(const struct usb_mux *me,
 	uint8_t field_value = 0;
 	uint8_t regval = 0;
 	int rv;
-
-
 	field_value = rx_phy_lane_to_field[phy_lane];
 	address = rx_eb_to_address[eb];
-
 	/*
 	 * need to shift by 4 for reverse EB or 3rd EB in set based on the
 	 * register definition from the KB8001 EVB register map
@@ -131,13 +114,11 @@ static int kb800x_assign_rx_to_eb(const struct usb_mux *me,
 	default:
 		break;
 	}
-
 	rv = kb800x_read(me, address, &regval);
 	if (rv)
 		return rv;
 	return kb800x_write(me, address, regval | field_value);
 }
-
 static bool kb800x_in_dpmf(const struct usb_mux *me)
 {
 	if ((cached_mux_state[me->usb_port] & USB_PD_MUX_DP_ENABLED) &&
@@ -146,7 +127,6 @@ static bool kb800x_in_dpmf(const struct usb_mux *me)
 	else
 		return false;
 }
-
 static bool kb800x_is_dp_lane(const struct usb_mux *me,
 			      enum kb800x_ss_lane ss_lane)
 {
@@ -166,13 +146,11 @@ static bool kb800x_is_dp_lane(const struct usb_mux *me,
 	/* Not a DP mode or ML2/3 while in DPMF */
 	return false;
 }
-
 /* Assigning this PHY to this SS lane means it should be RX */
 static bool kb800x_phy_ss_lane_is_rx(enum kb800x_phy_lane phy_lane,
 				     enum kb800x_ss_lane ss_lane)
 {
 	bool rx;
-
 	switch (ss_lane) {
 	case KB800X_TX0:
 	case KB800X_TX1:
@@ -188,14 +166,12 @@ static bool kb800x_phy_ss_lane_is_rx(enum kb800x_phy_lane phy_lane,
 		return !rx;
 	return rx;
 }
-
 /* Assign SS lane to PHY. Assumes A/B is connector-side, and C/D is host-side */
 static int kb800x_assign_lane(const struct usb_mux *me,
 			      enum kb800x_phy_lane phy_lane,
 			      enum kb800x_ss_lane ss_lane)
 {
 	enum kb800x_eb eb = 0;
-
 	/*
 	 * Easiest way to handle flipping is to just swap lane 1/0. This assumes
 	 * lanes are flipped in the AP. If they are not, they shouldn't be
@@ -203,7 +179,6 @@ static int kb800x_assign_lane(const struct usb_mux *me,
 	 */
 	if (cached_mux_state[me->usb_port] & USB_PD_MUX_POLARITY_INVERTED)
 		ss_lane = KB800X_FLIP_SS_LANE(ss_lane);
-
 	if (kb800x_is_dp_lane(me, ss_lane)) {
 		if (kb800x_in_dpmf(me)) {
 			/* Route USB3 RX/TX to EB1/4, and ML0/1 to EB5/6 */
@@ -221,14 +196,12 @@ static int kb800x_assign_lane(const struct usb_mux *me,
 			/* Route ML0/1/2/3 through EB1/5/4/6 */
 			eb = dp_ss_lane_to_eb[ss_lane];
 		}
-
 		/* For DP lanes, always DFP so A/B is TX, C/D is RX */
 		if (KB800X_PHY_IS_AB(phy_lane))
 			return kb800x_assign_tx_to_eb(me, phy_lane, eb);
 		else
 			return kb800x_assign_rx_to_eb(me, phy_lane, eb);
 	}
-
 	/* Lane is either USB3 or CIO */
 	if (kb800x_phy_ss_lane_is_rx(phy_lane, ss_lane))
 		return kb800x_assign_rx_to_eb(me, phy_lane,
@@ -237,12 +210,10 @@ static int kb800x_assign_lane(const struct usb_mux *me,
 		return kb800x_assign_tx_to_eb(me, phy_lane,
 					      usb_ss_lane_to_eb[ss_lane]);
 }
-
 static int kb800x_xbar_override(const struct usb_mux *me)
 {
 	int rv;
 	int i;
-
 	for (i = KB800X_A0; i < KB800X_PHY_LANE_COUNT; ++i) {
 		rv = kb800x_assign_lane(
 			me, i,
@@ -254,59 +225,83 @@ static int kb800x_xbar_override(const struct usb_mux *me)
 				KB800X_XBAR_OVR_EN);
 }
 #endif /* CONFIG_KB800X_CUSTOM_XBAR */
-
 /*
  * The initialization writes for each protocol can be found in the KB8001/KB8002
  * Programming Guidelines
  */
-static const uint16_t global_init_addresses[] = {
-	0x5058, 0x5059, 0xFF63, 0xF021, 0xF022, 0xF057, 0xF058,
-	0x8194, 0xF0C9, 0xF0CA, 0xF0CB, 0xF0CC, 0xF0CD, 0xF0CE,
-	0xF0DF, 0xF0E0, 0xF0E1, 0x8198, 0x8191
+typedef struct errata_pair
+{
+	uint16_t address;
+	uint8_t value;
+}errata_pair_t;
+
+static const errata_pair_t global_init[] = 
+{
+	{0x5058, 0x12}, {0x5059, 0x12},   //erratum_17338
+	{0xFF63, 0x3C},                   //erratum_17345
+	{0xF021, 0x01}, {0xF022, 0x01}, {0xF057, 0x01}, {0xF058, 0x01},  //erratum_17303
+	{0x8194, 0x37},   //erratum_17400
+	{0xF0C9, 0x0C}, {0xF0CA, 0x0B}, {0xF0CB, 0x0A}, {0xF0CC, 0x09}, {0xF0CD, 0x08}, {0xF0CE, 0x07}, {0xF0DF, 0x57}, 
+	    {0xF0E0, 0x66}, {0xF0E1, 0x66},   //erratum_17474
+	{0x8198, 0x33},   //erratum_17743 - Confirm
+	{0x8191, 0x00}    //erratum_17769 - Confirm
+}
+
+static const errata_pair_t usb3_init[] = 
+{ 
+	{0xF020, 0x13},   //erratum_16179
+	{0xF056, 0x00},   //erratum_15562
+	{0x70EF, 0x13},   //erratum_19805
+	{0xF2CF, 0x03}    //erratum_19538
 };
-static const uint8_t global_init_values[] = { 0x12, 0x12, 0x3C, 0x02, 0x02,
-					      0x02, 0x02, 0x37, 0x0C, 0x0B,
-					      0x0A, 0x09, 0x08, 0x07, 0x57,
-					      0x66, 0x66, 0x33, 0x00 };
-static const uint16_t usb3_init_addresses[] = { 0xF020, 0xF056 };
-static const uint8_t usb3_init_values[] = { 0x2f, 0x2f };
-static const uint16_t dp_init_addresses[] = { 0xF2CB, 0x0011 };
-static const uint8_t dp_init_values[] = { 0x30, 0x00 };
+
+static const errata_pair_t dp_init_gen[] = 
+{ 
+	{0xF2CB, 0x01},   //erratum_16515
+	{0x0011, 0x00},   //erratum_17400
+	{0x6314, 0x01}, {0x6315, 0x28}   //erratum_21572
+};
+
+//************************************************************************
+// The following are all covered under erratum_21577
+//************************************************************************
+static const errata_pair_t dp_init_c_and_d[] = { 0xF030, 0x05},	{0xF066, 0x05}, {0xFE87, 0x0F}, {0xFE88, 0x7F}, {0xF02B, 0xFD}, {0xF061, 0xFD} };
+static const errata_pair_t dp_init_d_mf_normal[] = { {0x4030, 0x05}, {0x4066, 0x05}, {0x4E87, 0x0F}, {0x4E88, 0x7F}, {0x402B, 0xFD}, {0x4E61, 0xFD} };
+static const errata_pair_t dp_init_c_mf_flip[] = { {0x3030, 0x05}, {0x3066, 0x05}, {0x3E87, 0x0F}, {0x3E88, 0x7F}, {0x302B, 0xFD}, {0x3E61, 0xFD} };
+//************************************************************************
+
 /*
  * The first 2 CIO writes apply an SBRX pullup to the host side (C/D)
  * This is required when the CPU doesn't apply a pullup.
  */
-static const uint16_t cio_init_addresses[] = { 0x81fd, 0x81fe, 0xF26B, 0xF26E };
-static const uint8_t cio_init_values[] = { 0x08, 0x80, 0x01, 0x19 };
+static const errata_pair_t cio_init[] = 
+{ 
+	{0x81fd, 0x08}, {0x81fe, 0x80},   //erratum_17400
+	{0xF26B, 0x01}, {0xF26E, 0x19},   //erratum_17307
+	{0x811F, 0x1D},   //erratum_21573
+	{0x8118, 0x63}    //erratum_21574
+};
 
-static int kb800x_bulk_write(const struct usb_mux *me,
-			     const uint16_t *addresses, const uint8_t *values,
-			     const uint8_t size)
+static int kb800x_bulk_write(const struct usb_mux* me,
+	const errata_pair_t* errata, const uint8_t size)
 {
 	int i;
 	int rv;
-
 	for (i = 0; i < size; ++i) {
-		rv = kb800x_write(me, addresses[i], values[i]);
+		rv = kb800x_write(me, errata[i].address, errata[i].values);
 		if (rv != EC_SUCCESS)
 			return rv;
 	}
-
 	return EC_SUCCESS;
 }
-
 static int kb800x_global_init(const struct usb_mux *me)
 {
-	return kb800x_bulk_write(me, global_init_addresses, global_init_values,
-				 sizeof(global_init_values));
+	return kb800x_bulk_write(me, global_init, sizeof(global_init) / sizeof(global_init[0]));
 }
-
 static int kb800x_dp_init(const struct usb_mux *me, mux_state_t mux_state)
 {
 	int rv;
-
-	rv = kb800x_bulk_write(me, dp_init_addresses, dp_init_values,
-			       sizeof(dp_init_values));
+	rv = kb800x_bulk_write(me, dp_init_gen, sizeof(dp_init_gen) / sizeof(dp_init_gen[0]));
 	if (rv)
 		return rv;
 	return kb800x_write(
@@ -316,13 +311,10 @@ static int kb800x_dp_init(const struct usb_mux *me, mux_state_t mux_state)
 				       KB800X_ORIENTATION_POLARITY :
 				       0x0));
 }
-
 static int kb800x_usb3_init(const struct usb_mux *me, mux_state_t mux_state)
 {
 	int rv;
-
-	rv = kb800x_bulk_write(me, usb3_init_addresses, usb3_init_values,
-			       sizeof(usb3_init_values));
+	rv = kb800x_bulk_write(me, usb3_init, sizeof(usb3_init) / sizeof(usb3_init[0]));
 	if (rv)
 		return rv;
 	if (mux_state & USB_PD_MUX_POLARITY_INVERTED)
@@ -331,27 +323,21 @@ static int kb800x_usb3_init(const struct usb_mux *me, mux_state_t mux_state)
 				    KB800X_ORIENTATION_POLARITY);
 	return EC_SUCCESS;
 }
-
 static int kb800x_cio_init(const struct usb_mux *me, mux_state_t mux_state)
 {
 	uint8_t orientation = 0x0;
 	int rv;
-
 	enum idh_ptype cable_type = get_usb_pd_cable_type(me->usb_port);
 	union tbt_mode_resp_cable cable_resp = {
 		.raw_value =
-			pd_get_tbt_mode_vdo(me->usb_port, TCPCI_MSG_SOP_PRIME)
+			pd_get_tbt_mode_vdo(me->usb_port, TCPC_TX_SOP_PRIME)
 	};
-
-	rv = kb800x_bulk_write(me, cio_init_addresses, cio_init_values,
-			       sizeof(cio_init_values));
+	rv = kb800x_bulk_write(me, cio_init, sizeof(cio_init) / sizeof(cio_init[0]));
 	if (rv)
 		return rv;
-
 	if (mux_state & USB_PD_MUX_POLARITY_INVERTED)
 		orientation = KB800X_ORIENTATION_CIO_LANE_SWAP |
 			      KB800X_ORIENTATION_POLARITY;
-
 	if (!(mux_state & USB_PD_MUX_USB4_ENABLED)) {
 		/* Special configuration only for legacy mode */
 		if (cable_type == IDH_PTYPE_ACABLE ||
@@ -375,15 +361,9 @@ static int kb800x_cio_init(const struct usb_mux *me, mux_state_t mux_state)
 	}
 	return kb800x_write(me, KB800X_REG_ORIENTATION, orientation);
 }
-
-static int kb800x_set_state(const struct usb_mux *me, mux_state_t mux_state,
-			    bool *ack_required)
+static int kb800x_set_state(const struct usb_mux *me, mux_state_t mux_state)
 {
 	int rv;
-
-	/* This driver does not use host command ACKs */
-	*ack_required = false;
-
 	cached_mux_state[me->usb_port] = mux_state;
 	rv = kb800x_write(me, KB800X_REG_RESET, KB800X_RESET_MASK);
 	if (rv)
@@ -393,16 +373,13 @@ static int kb800x_set_state(const struct usb_mux *me, mux_state_t mux_state,
 		     KB800X_RESET_MASK & ~KB800X_RESET_MM);
 	if (rv)
 		return rv;
-
 	/* Already in reset, nothing to do */
 	if ((mux_state == USB_PD_MUX_NONE) ||
 	    (mux_state & USB_PD_MUX_SAFE_MODE))
 		return EC_SUCCESS;
-
 	rv = kb800x_global_init(me);
 	if (rv)
 		return rv;
-
 	/* CIO mode (USB4/TBT) */
 	if (mux_state &
 	    (USB_PD_MUX_USB4_ENABLED | USB_PD_MUX_TBT_COMPAT_ENABLED)) {
@@ -418,7 +395,6 @@ static int kb800x_set_state(const struct usb_mux *me, mux_state_t mux_state,
 				return rv;
 			/* USB3-only is the default KB800X_REG_PROTOCOL value */
 		}
-
 		/* DP alt modes (DP-only or DPMF) */
 		if (mux_state & USB_PD_MUX_DP_ENABLED) {
 			rv = kb800x_dp_init(me, mux_state);
@@ -434,23 +410,17 @@ static int kb800x_set_state(const struct usb_mux *me, mux_state_t mux_state,
 	}
 	if (rv)
 		return rv;
-
 #ifdef CONFIG_KB800X_CUSTOM_XBAR
 	rv = kb800x_xbar_override(me);
 	if (rv)
 		return rv;
 #endif /* CONFIG_KB800X_CUSTOM_XBAR */
-
 	return kb800x_write(me, KB800X_REG_RESET, 0x00);
 }
-
 static int kb800x_init(const struct usb_mux *me)
 {
-	bool unused;
-
 	gpio_set_level(kb800x_control[me->usb_port].usb_ls_en_gpio, 1);
 	gpio_set_level(kb800x_control[me->usb_port].retimer_rst_gpio, 1);
-
 	/*
 	 * Delay after enabling power and releasing the reset to allow the power
 	 * to come up and the reset to be released by the power sequencing
@@ -460,51 +430,40 @@ static int kb800x_init(const struct usb_mux *me)
 	msleep(KB800X_POWER_ON_DELAY_MS);
 	if (!gpio_get_level(kb800x_control[me->usb_port].retimer_rst_gpio))
 		return EC_ERROR_NOT_POWERED;
-
-	return kb800x_set_state(me, USB_PD_MUX_NONE, &unused);
+	return kb800x_set_state(me, USB_PD_MUX_NONE);
 }
-
 static int kb800x_enter_low_power_mode(const struct usb_mux *me)
 {
 	gpio_set_level(kb800x_control[me->usb_port].retimer_rst_gpio, 0);
 	/* Power-down sequencing must be handled in HW */
 	gpio_set_level(kb800x_control[me->usb_port].usb_ls_en_gpio, 0);
-
 	return EC_SUCCESS;
 }
-
 #ifdef CONFIG_CMD_RETIMER
-
 static int console_command_kb800x_xfer(int argc, char **argv)
 {
 	char rw, *e;
 	int rv, port, reg, val;
 	uint8_t data;
 	const struct usb_mux *mux;
-
 	if (argc < 4)
 		return EC_ERROR_PARAM_COUNT;
-
 	/* Get port number */
 	port = strtoi(argv[1], &e, 0);
 	if (*e || !board_is_usb_pd_port_present(port))
 		return EC_ERROR_PARAM1;
-
 	mux = &usb_muxes[port];
 	while (mux) {
 		if (mux->driver == &kb800x_usb_mux_driver)
 			break;
 		mux = mux->next_mux;
 	}
-
 	if (!mux)
 		return EC_ERROR_PARAM1;
-
 	/* Validate r/w selection */
 	rw = argv[2][0];
 	if (rw != 'w' && rw != 'r')
 		return EC_ERROR_PARAM2;
-
 	/* Get register address */
 	reg = strtoi(argv[3], &e, 0);
 	if (*e || reg < 0)
@@ -526,18 +485,15 @@ static int console_command_kb800x_xfer(int argc, char **argv)
 				rv = EC_ERROR_UNKNOWN;
 		}
 	}
-
 	if (rv == EC_SUCCESS)
 		ccprintf("register 0x%x [%d] = 0x%x [%d]\n", reg, reg, data,
 			 data);
-
 	return rv;
 }
 DECLARE_CONSOLE_COMMAND(kbxfer, console_command_kb800x_xfer,
 			"<port> <r/w> <reg> | <val>",
 			"Read or write to KB retimer register");
 #endif /* CONFIG_CMD_RETIMER */
-
 const struct usb_mux_driver kb800x_usb_mux_driver = {
 	.init = kb800x_init,
 	.set = kb800x_set_state,
