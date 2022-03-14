@@ -22,6 +22,30 @@
       },
       "revId": "0da29ad9f0c8359e83a1128249f6a6d750e379d6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "359622dc_c3f9b231",
+        "filename": "zephyr/projects/intelrvp/adlrvp/adlrvp_npcx/fan.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-03-14T21:42:16Z",
+      "side": 1,
+      "message": "Hi Fabio,\nADL RVP  uses \u0026tach2 controller and TA2 is the input pin and other parameters will be similar to what you configured here.",
+      "parentUuid": "f0d39a0f_86b79d2a",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 0
+      },
+      "revId": "0da29ad9f0c8359e83a1128249f6a6d750e379d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
