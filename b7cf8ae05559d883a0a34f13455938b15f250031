@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f8b77f0_34b71036",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2022-03-14T18:13:42Z",
+      "side": 1,
+      "message": "Thanks for testing! Just to confirm, can you run the same test without FRS and confirm the monitor shuts down?\nI\u0027m asking because from steps 1+2 it is not clear that the hub is powered from the adapter",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 28
+      },
+      "revId": "b7cf8ae05559d883a0a34f13455938b15f250031",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
