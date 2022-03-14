@@ -6,7 +6,7 @@ properties:
       Enum used in code.
       These names should only be used for legacy common code.
 
-      Some development boards like trogdor, volteer etc. shim in
+      Some development boards like trogdor etc. shim in
       the older baseboard/board headers and code, so they
       are also using most of these names. When these
       boards get removed, these names can be removed

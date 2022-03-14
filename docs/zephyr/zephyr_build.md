@@ -75,7 +75,7 @@ To build using this flow, run:
 It should be possible to do this with:
 
 ```bash
-ninja -C /tmp/z/volteer/build-ro menuconfig
+ninja -C /tmp/z/herobrine/build-ro menuconfig
 ```
 
 However at present this does not work [b/184662866](http://b/184662866).
