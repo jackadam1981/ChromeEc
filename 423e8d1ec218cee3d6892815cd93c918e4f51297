@@ -70,6 +70,24 @@
       "parentUuid": "61ce08c3_e2898892",
       "revId": "423e8d1ec218cee3d6892815cd93c918e4f51297",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5fc478f0_e89d0e2e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-03-14T04:10:07Z",
+      "side": 1,
+      "message": "Yes, I\u0027m happy to simply remove the weak functions. Those need to be cleaned up anyway, and removing that \"wrong\" kind of extensibility (and adding TODOs probably) would make it clear that it should be extensible without also seeming to endorse the \"wrong\" way to do it.",
+      "parentUuid": "eb383d02_5bb6feca",
+      "revId": "423e8d1ec218cee3d6892815cd93c918e4f51297",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
