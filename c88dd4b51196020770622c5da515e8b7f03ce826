@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c225a5f5_e1968862",
+        "filename": "zephyr/test/drivers/CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-03-14T22:30:24Z",
+      "side": 1,
+      "message": "move this down under the `target_sources`",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 16
+      },
+      "revId": "c88dd4b51196020770622c5da515e8b7f03ce826",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a24b142_bb4ce59b",
+        "filename": "zephyr/test/drivers/isl923x/CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-03-14T22:30:24Z",
+      "side": 1,
+      "message": "I don\u0027t think you need this",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 53
+      },
+      "revId": "c88dd4b51196020770622c5da515e8b7f03ce826",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3391e93c_dbd9cb66",
+        "filename": "zephyr/test/drivers/isl923x/CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-03-14T22:30:24Z",
+      "side": 1,
+      "message": "`zephyr_library()` will automatically use the directory name, use `_named` when you have multiple libraries.",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 20
+      },
+      "revId": "c88dd4b51196020770622c5da515e8b7f03ce826",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4456ce83_bdf5cd45",
+        "filename": "zephyr/test/drivers/isl923x/CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-03-14T22:30:24Z",
+      "side": 1,
+      "message": "If you can\u0027t get this to work with the above changes, try creating a normal library then adding the `zephyr_interface` to it (https://cs.opensource.google/pigweed/pigweed/+/master:pw_build/CMakeLists.txt;l\u003d33?q\u003dzephyr_interface).\n\nFinally, if that doesn\u0027t work, you can simply add the sources to `app`; since the Zephyr package automatically declares that target, you\u0027re guaranteed that it\u0027s there.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 61
+      },
+      "revId": "c88dd4b51196020770622c5da515e8b7f03ce826",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
