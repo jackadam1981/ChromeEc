@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a300c11_16752660",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-03-14T15:46:04Z",
+      "side": 1,
+      "message": "Is there a plan or bug tracking to merge this support into the AP_PWRSEQ subsystem under Zephyr?",
+      "revId": "89e00ed5f95be2d05f0d330359c09ed4c1095427",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf260a46_0309ddf9",
+        "filename": "power/meteorlake.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-03-14T15:46:04Z",
+      "side": 1,
+      "message": "One second is pretty long.  Icelake/Tigerlake spec was 250 ms (150 ms wait time plus margin).",
+      "range": {
+        "startLine": 195,
+        "startChar": 52,
+        "endLine": 195,
+        "endChar": 58
+      },
+      "revId": "89e00ed5f95be2d05f0d330359c09ed4c1095427",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9aca4405_c720ded2",
+        "filename": "util/config_allowed.txt",
+        "patchSetId": 5
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-03-14T15:46:04Z",
+      "side": 1,
+      "message": "This shouldn\u0027t be needed because you have added the required hooks to config_chip.h",
+      "range": {
+        "startLine": 193,
+        "startChar": 0,
+        "endLine": 193,
+        "endChar": 25
+      },
+      "revId": "89e00ed5f95be2d05f0d330359c09ed4c1095427",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d5486de_036034e1",
+        "filename": "zephyr/Kconfig.powerseq",
+        "patchSetId": 5
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-03-14T15:46:04Z",
+      "side": 1,
+      "message": "Move this definition after the `if PLATFORM_EC_POWERSEQ_ICELAKE` block.\n\nAlso, if there are no other symbols that rely on this symbol, you can use `config` instead of `menuconfig`.",
+      "range": {
+        "startLine": 157,
+        "startChar": 0,
+        "endLine": 164,
+        "endChar": 0
+      },
+      "revId": "89e00ed5f95be2d05f0d330359c09ed4c1095427",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
