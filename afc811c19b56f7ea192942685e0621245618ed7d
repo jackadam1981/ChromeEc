@@ -22,6 +22,30 @@
       },
       "revId": "afc811c19b56f7ea192942685e0621245618ed7d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "97adda8a_e9737b78",
+        "filename": "zephyr/CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-03-14T18:56:02Z",
+      "side": 1,
+      "message": "There is typically significant performance impacts if you execute code or read data from unaligned addresses.  This is worth turning on all the time.",
+      "parentUuid": "13726272_e5cd033d",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 67,
+        "endChar": 39
+      },
+      "revId": "afc811c19b56f7ea192942685e0621245618ed7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
