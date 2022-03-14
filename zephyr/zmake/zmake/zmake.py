@@ -667,12 +667,14 @@ class Zmake:
                     errors="replace",
                 )
                 job_id = "{}:{}".format(project.config.project_name, build_name)
+                build_log = open(dirs[build_name] / "build.log", "w")
                 out = zmake.multiproc.log_output(
                     logger=self.logger,
                     log_level=logging.INFO,
                     file_descriptor=proc.stdout,
                     log_level_override_func=ninja_stdout_log_level_override,
                     job_id=job_id,
+                    tee_output=build_log,
                 )
                 err = zmake.multiproc.log_output(
                     self.logger,
