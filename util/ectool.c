@@ -7,6 +7,9 @@
 #include <errno.h>
 #include <getopt.h>
 #include <inttypes.h>
+#include <linux/linuxfs.h>
+#include <linux/kernel.h>
+#include <linux/module.h>
 #include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -202,6 +205,8 @@ const char help_str[] =
 	"      Dump keyboard matrix dimensions\n"
 	"  kbpress\n"
 	"      Simulate key press\n"
+	"  kerneltest\n"
+	"      Exercise all the ioctls to the kernel\n"
 	"  keyscan <beat_us> <filename>\n"
 	"      Test low-level key scanning\n"
 	"  led <name> <query | auto | off | <color> | <color>=<value>...>\n"
@@ -779,6 +784,21 @@ int cmd_hostsleepstate(int argc, char *argv[])
 
 	return 0;
 }
+
+int cmd_kerneltest(char *argv[])
+{
+        int fd;
+        int32_t value, number;
+
+        fd = open("/dev/cros_ec");
+
+        //scanf("%d",&number);
+        //ioctl(fd, foo, (int32_t*) &number);
+        //ioctl(fd, bar, (int32_t*) &value);
+        close(fd);
+}
+
+
 
 int cmd_test(int argc, char *argv[])
 {
