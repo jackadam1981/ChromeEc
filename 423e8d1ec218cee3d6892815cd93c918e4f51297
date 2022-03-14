@@ -52,6 +52,24 @@
       "parentUuid": "8bb39cdd_c0f3a03a",
       "revId": "423e8d1ec218cee3d6892815cd93c918e4f51297",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb383d02_5bb6feca",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-03-14T00:11:02Z",
+      "side": 1,
+      "message": "So to your point about \u0027one board\u0027 at the moment, we could just remove the weak functions in the core code and use the board functions without any config guards (calling them \u0027board_..\u0027 functions makes it obvious what they are).\nThat would sort us out initially.",
+      "parentUuid": "61ce08c3_e2898892",
+      "revId": "423e8d1ec218cee3d6892815cd93c918e4f51297",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
