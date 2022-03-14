@@ -93,6 +93,30 @@
       },
       "revId": "ef6d5c649bb9ae4c9b5025f9f53c14aeb8df833b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea8fadab_073ae446",
+        "filename": "board/taniks/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-03-14T21:23:29Z",
+      "side": 1,
+      "message": "as i mentioned in cl:3500327, i think this should be OUT_LOW\nbecause there\u0027s an external pull-down and not connected to anything\nelse. i suspect there will be a small current through the pull-down\nthat could be avoided. since your hardware team reviewed this and is\nOK with OUT_HIGH, then i have no objections.",
+      "parentUuid": "07a3122c_be94820a",
+      "range": {
+        "startLine": 159,
+        "startChar": 68,
+        "endLine": 159,
+        "endChar": 72
+      },
+      "revId": "ef6d5c649bb9ae4c9b5025f9f53c14aeb8df833b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
