@@ -88,6 +88,24 @@
       "parentUuid": "3673c6cd_47d6f02f",
       "revId": "186b7a1be94ea0d94aa586bd3eef318e8c3a8d55",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ee8ac31_88e6b0eb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-03-14T05:00:56Z",
+      "side": 1,
+      "message": "The previous code included all the signals, but I think that is not necessary, and may have been excessive.\nThe code does check the value of outputs, but not through the mask, only ever explicitly (not that I can find, anyway).\n\nI think it is reasonable to limit the combined mask to just inputs.\nThe intent of it is to test multiple input signals at once, which seems appropriate.\nI am not sure there is a use case for including outputs.\n\nIf we think there is, we could keep a mask of outputs that have been set, and just include that as well. It\u0027s not exactly the same, since potentially setting the output may not work and so the value is not matching what we thought it should be.\nConceivably the output handlers could separately flag the output is set once it is sucessful, I guess.\nBut my default position is that we should just outputs out of the mask.",
+      "parentUuid": "d1778cc0_33f528ab",
+      "revId": "186b7a1be94ea0d94aa586bd3eef318e8c3a8d55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
