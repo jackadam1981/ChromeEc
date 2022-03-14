@@ -313,6 +313,14 @@ void tcpci_partner_common_handler_mask_msg(struct tcpci_partner_data *data,
 					   bool enable);
 
 /**
+ * @brief Common disconnect function which clear messages queue, set
+ *        tcpci_emul field in struct tcpci_partner_data to NULL and stop timers.
+ *
+ * @param data Pointer to TCPCI partner emulator
+ */
+void tcpci_partner_common_disconnect(struct tcpci_partner_data *data);
+
+/**
  * @brief Select if PD messages should be logged or not.
  *
  * @param data Pointer to TCPCI partner emulator
