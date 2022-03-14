@@ -34,6 +34,24 @@
       "parentUuid": "5b4dbdc6_e980a9fc",
       "revId": "fc450aedfbf93228bbfc56d9a51deac8d3a8ab1c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e433f7e_f0223d6f",
+        "filename": "zephyr/projects/nissa/nivviks_power_signals.dts",
+        "patchSetId": 3
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2022-03-14T18:45:54Z",
+      "side": 1,
+      "message": "I added comments on this CL:3389663 PS: 49, 53 \u0026 54. It may have been overwritten when rebasing. I will add comments on this CL.",
+      "parentUuid": "ecb7f275_7bdbd196",
+      "revId": "fc450aedfbf93228bbfc56d9a51deac8d3a8ab1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
