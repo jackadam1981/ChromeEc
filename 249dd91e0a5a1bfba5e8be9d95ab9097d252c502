@@ -22,6 +22,30 @@
       },
       "revId": "249dd91e0a5a1bfba5e8be9d95ab9097d252c502",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "250aa76a_453561af",
+        "filename": "zephyr/projects/nissa/src/board_power.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-03-14T23:23:58Z",
+      "side": 1,
+      "message": "Basically a work around for not having the ADC_CMP for Nereid in this CL.\nSince this CL contains the Nivviks ADC_CMP stuff, weneed to ensure that at least for Nereid, it will build OK, even though the ADC config for Nereid is not in this CL.",
+      "parentUuid": "93510527_f2db4b90",
+      "range": {
+        "startLine": 126,
+        "startChar": 0,
+        "endLine": 126,
+        "endChar": 26
+      },
+      "revId": "249dd91e0a5a1bfba5e8be9d95ab9097d252c502",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
