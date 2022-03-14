@@ -13,3 +13,5 @@ zephyr_include_directories("${PLATFORM_EC}/driver/ppc/")
 
 FILE(GLOB_RECURSE test_sources src/*.c)
 target_sources(app PRIVATE ${test_sources})
+
+add_subdirectory(isl923x)
