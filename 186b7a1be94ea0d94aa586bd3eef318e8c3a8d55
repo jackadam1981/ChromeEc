@@ -70,6 +70,24 @@
       "parentUuid": "751ba3a4_bed1a6b0",
       "revId": "186b7a1be94ea0d94aa586bd3eef318e8c3a8d55",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1778cc0_33f528ab",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-03-14T04:22:58Z",
+      "side": 1,
+      "message": "\u003e Part of the assumption here is that the mask doesn\u0027t include outputs.\n\nWas that also the case before? The existing powerdown code waits on DSW_PWROK for instance, which is an output. In general, it seems like it should be possible to wait on outputs because they might be synthesized from inputs.\n\nOther than that this looks fine to me.",
+      "parentUuid": "3673c6cd_47d6f02f",
+      "revId": "186b7a1be94ea0d94aa586bd3eef318e8c3a8d55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
