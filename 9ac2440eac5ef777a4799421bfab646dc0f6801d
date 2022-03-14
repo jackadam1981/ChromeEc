@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a3999b1_4720acd8",
+        "filename": "util/ec_openocd.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-03-14T17:32:54Z",
+      "side": 1,
+      "message": "use double-quotes here for consistency with the below",
+      "range": {
+        "startLine": 38,
+        "startChar": 8,
+        "endLine": 38,
+        "endChar": 9
+      },
+      "revId": "9ac2440eac5ef777a4799421bfab646dc0f6801d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a16d29f_4888378f",
+        "filename": "util/ec_openocd.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-03-14T17:32:54Z",
+      "side": 1,
+      "message": "You want to just pass the timeout to communicate instead.",
+      "range": {
+        "startLine": 120,
+        "startChar": 0,
+        "endLine": 124,
+        "endChar": 26
+      },
+      "revId": "9ac2440eac5ef777a4799421bfab646dc0f6801d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

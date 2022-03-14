@@ -189,6 +189,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8080fb8_9ab70c36",
+        "filename": "util/ec_openocd.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-03-14T17:32:54Z",
+      "side": 1,
+      "message": "We have a backport of dataclasses to 3.6 available in the chroot.",
+      "parentUuid": "33fc8c10_02dca968",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 46
+      },
+      "revId": "0532bb0552ee4f1ab67fc49d74314f84092a8492",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "e77caef0_96b4c252",
