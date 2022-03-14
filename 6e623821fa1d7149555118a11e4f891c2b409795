@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f2ddcc7_5c9f8a9c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2022-03-14T16:20:50Z",
+      "side": 1,
+      "message": "Please fix the merge conflict",
+      "revId": "6e623821fa1d7149555118a11e4f891c2b409795",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "efb761e0_63c4e916",
+        "filename": "board/anahera/usbc_config.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 384,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2022-03-14T16:20:50Z",
+      "side": 1,
+      "message": "Shouldn\u0027t it return at the first failure?",
+      "range": {
+        "startLine": 384,
+        "startChar": 7,
+        "endLine": 384,
+        "endChar": 9
+      },
+      "revId": "6e623821fa1d7149555118a11e4f891c2b409795",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
