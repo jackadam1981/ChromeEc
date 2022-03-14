@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "62af837f_e1768725",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-03-14T21:14:32Z",
+      "side": 1,
+      "message": "yes, we will reuse the same bug added b:223985632 for this CL",
+      "parentUuid": "5a300c11_16752660",
+      "revId": "89e00ed5f95be2d05f0d330359c09ed4c1095427",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bf260a46_0309ddf9",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-03-14T15:46:04Z",
       "side": 1,
       "message": "One second is pretty long.  Icelake/Tigerlake spec was 250 ms (150 ms wait time plus margin).",
+      "range": {
+        "startLine": 195,
+        "startChar": 52,
+        "endLine": 195,
+        "endChar": 58
+      },
+      "revId": "89e00ed5f95be2d05f0d330359c09ed4c1095427",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ea1e45a_6b03a8fc",
+        "filename": "power/meteorlake.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-03-14T21:14:32Z",
+      "side": 1,
+      "message": "Thank you for noticing:\nAs this is still at platform level power rail, we are waiting to get RSMRST_PWRGD from Silego. To avoid the confusion I have changes to use power_wait_signals() which has default 1s wait.",
+      "parentUuid": "bf260a46_0309ddf9",
       "range": {
         "startLine": 195,
         "startChar": 52,
@@ -77,6 +119,30 @@
       "writtenOn": "2022-03-14T15:46:04Z",
       "side": 1,
       "message": "Move this definition after the `if PLATFORM_EC_POWERSEQ_ICELAKE` block.\n\nAlso, if there are no other symbols that rely on this symbol, you can use `config` instead of `menuconfig`.",
+      "range": {
+        "startLine": 157,
+        "startChar": 0,
+        "endLine": 164,
+        "endChar": 0
+      },
+      "revId": "89e00ed5f95be2d05f0d330359c09ed4c1095427",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "444e06b3_52acec16",
+        "filename": "zephyr/Kconfig.powerseq",
+        "patchSetId": 5
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-03-14T21:14:32Z",
+      "side": 1,
+      "message": "Done\n\nWill add menuconfig based on future need of below configs",
+      "parentUuid": "0d5486de_036034e1",
       "range": {
         "startLine": 157,
         "startChar": 0,
