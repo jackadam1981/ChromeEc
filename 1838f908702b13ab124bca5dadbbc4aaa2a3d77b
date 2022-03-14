@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac84b21a_aa684f32",
+        "filename": "util/fptool_unitest.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-03-14T23:04:07Z",
+      "side": 1,
+      "message": "Rather than replace the previous test case, I think you should create a new one. We still want to have unit tests for `_get_gpio_by_index` rather than relying on `fptool.FPGpios` to test it indirectly. That will make it easier to debug failures (we know if `_get_gpio_by_index` fails rather than something in `fptool.FPGpios`).",
+      "range": {
+        "startLine": 302,
+        "startChar": 4,
+        "endLine": 331,
+        "endChar": 53
+      },
+      "revId": "1838f908702b13ab124bca5dadbbc4aaa2a3d77b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7df63f51_8b996a5e",
+        "filename": "util/fptool_unitest.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-03-14T23:04:07Z",
+      "side": 1,
+      "message": "Same as last comment about adding new test cases rather than replacing the unit tests for `_parse_gpiochips`.",
+      "range": {
+        "startLine": 343,
+        "startChar": 15,
+        "endLine": 345,
+        "endChar": 57
+      },
+      "revId": "1838f908702b13ab124bca5dadbbc4aaa2a3d77b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "838c60e7_0fc0ec1c",
+        "filename": "util/fptool_unitest.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 410,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-03-14T23:04:07Z",
+      "side": 1,
+      "message": "Same comment as last CL about splitting into separate test cases: http://go/tott/520",
+      "range": {
+        "startLine": 337,
+        "startChar": 3,
+        "endLine": 410,
+        "endChar": 61
+      },
+      "revId": "1838f908702b13ab124bca5dadbbc4aaa2a3d77b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a2632f1_5f4db480",
+        "filename": "util/fptool_unitest.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 435,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-03-14T23:04:07Z",
+      "side": 1,
+      "message": "Can you change all the `assert`s in this file to `self.assertEqual`?\n\nWhen you write it this way, it will print a more useful error message showing exactly what is different.",
+      "range": {
+        "startLine": 435,
+        "startChar": 12,
+        "endLine": 435,
+        "endChar": 55
+      },
+      "revId": "1838f908702b13ab124bca5dadbbc4aaa2a3d77b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
