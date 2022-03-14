@@ -9,7 +9,7 @@
 	named-i2c-ports {
 		compatible = "named-i2c-ports";
 
-		battery {
+		battery: battery {
 			i2c-port = <&i2c_smb_0>;
 			enum-name = "I2C_PORT_BATTERY";
 		};
@@ -33,6 +33,13 @@
 			i2c-port = <&i2c_smb_4>;
 			enum-name = "I2C_PORT_TYPEC_3";
 		};
+	};
+
+	intelrvp_board_id: intelrvp-board-id {
+		compatible = "intelrvp-board-id";
+
+		i2c-port = <&battery>;
+		i2c-addr = <0x22>;
 	};
 };
 
