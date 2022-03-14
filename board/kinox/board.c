@@ -34,8 +34,6 @@ const int usb_port_enable[USB_PORT_COUNT] = {
 };
 BUILD_ASSERT(ARRAY_SIZE(usb_port_enable) == USB_PORT_COUNT);
 
-/******************************************************************************/
-
 int board_set_active_charge_port(int port)
 {
 	CPRINTS("Requested charge port change to %d", port);
