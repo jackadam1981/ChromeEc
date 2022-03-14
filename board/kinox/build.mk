@@ -13,6 +13,7 @@ BASEBOARD:=brask
 
 board-y=
 board-y+=board.o
+board-y+=adc.o
 board-y+=fans.o
 board-y+=i2c.o
 board-y+=led.o

@@ -164,7 +164,9 @@ enum adc_channel {
 	ADC_TEMP_SENSOR_2_CPU_VR,
 	ADC_TEMP_SENSOR_3_WIFI,
 	ADC_TEMP_SENSOR_4_DIMM,
+	ADC_PWR_IN_IMON,
 	ADC_VBUS,
+	ADC_ADP_ID,
 	ADC_CH_COUNT
 };
 
@@ -199,6 +201,20 @@ enum mft_channel {
 	MFT_CH_COUNT
 };
 
+enum adp_id {
+	TINY = 1,
+	TIO1,
+	TIO2
+};
+
+struct adpater_id_params {
+	int min_voltage;
+	int max_voltage;
+	int watt;
+	int obp95;
+	int obp85;
+};
+
 /*
  * firmware config fields
  */
@@ -210,6 +226,7 @@ enum mft_channel {
 #define EC_CFG_BJ_POWER_MASK GENMASK(EC_CFG_BJ_POWER_H, EC_CFG_BJ_POWER_L)
 
 extern void adp_connect_interrupt(enum gpio_signal signal);
+extern void adp_id_deferred(void);
 
 #endif /* !__ASSEMBLER__ */
 
