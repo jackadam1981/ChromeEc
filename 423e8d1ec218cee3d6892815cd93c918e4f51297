@@ -34,6 +34,24 @@
       "parentUuid": "ce28a478_2d0aac93",
       "revId": "423e8d1ec218cee3d6892815cd93c918e4f51297",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61ce08c3_e2898892",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-03-14T00:08:44Z",
+      "side": 1,
+      "message": "Part of the goal here is to get rid of the weak overrides, which are not part of the Zephyr system.\nSo the minimal I think we need to do is provide for the functions so that we do not have the weak override.\nI\u0027m open to suggesions about how to do this in a cleaner way.\nI would like to get something in as a good foundation so that we don\u0027t have to redo completely.\nMy thought about requirements is to try and get a clear understanding of what kind of extensibility we need, so that might help us use an appropriate mechanism.\nThis one here is definitely a stop-gap, and I\u0027m open to something cleaner and more extensible.",
+      "parentUuid": "8bb39cdd_c0f3a03a",
+      "revId": "423e8d1ec218cee3d6892815cd93c918e4f51297",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
