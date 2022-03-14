@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4dcdbbde_53a0e439",
+        "filename": "util/fptool_unitest.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-03-14T22:40:54Z",
+      "side": 1,
+      "message": "Rather than trying to test all the various formats in a single test, I would try to break into smaller focused tests, which are easier to debug when they fail.\n\nFor example,\n\n```\nclass LsbvalTest(unittest.TestCase):\n    \"\"\"Test the correctness of the lsbval parser\"\"\"\n\n    @mock.patch(\u0027fptool.read_lsbval\u0027)\n    def test_lsbval_leading_and_trailing_spaces(self, mock_lsbval):\n        mock_lsbval.return_value \u003d [\n           \u0027        WS_KEY  \u003d    value       \u0027,\n        ]\n        ret \u003d fptool.lsbval(\u0027WS_KEY\u0027)\n        self.assertEqual(ret, \u0027value\u0027)\n\n    @mock.patch(\u0027fptool.read_lsbval\u0027)\n    def test_lsbval_double_quotes(self, mock_lsbval):\n        mock_lsbval.return_value \u003d [\n           \u0027DOUBLE_QUOTES \u003d \\\"double\\\"\u0027,\n        ]\n        ret \u003d fptool.lsbval(\u0027DOUBLE_QUOTES\u0027)\n        self.assertEqual(ret, \u0027\"double\"\u0027)\n\n\nclass PlatformNameTest(unittest.TestCase):\n\n    @mock.patch(\u0027fptool.read_lsbval\u0027)\n    def test_get_platform_name(self, mock_lsbval):\n        mock_lsbval.return_value \u003d [\n           \u0027CHROMEOS_RELEASE_BOARD\u003dzork\u0027,\n        ]\n        platform_name \u003d fptool.get_platform_name()\n        assert platform_name \u003d\u003d \u0027zork\u0027\n```",
+      "range": {
+        "startLine": 198,
+        "startChar": 0,
+        "endLine": 202,
+        "endChar": 38
+      },
+      "revId": "53fd8e1873f2fc5076c2e022eb5e0d9930fffbbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5914dc9_af82c108",
+        "filename": "util/fptool_unitest.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-03-14T22:40:54Z",
+      "side": 1,
+      "message": "Can you change all the `assert`s in this file to `self.assertEqual`?\n\nWhen you write it this way, it will print a more useful error message showing exactly what is different.",
+      "range": {
+        "startLine": 210,
+        "startChar": 8,
+        "endLine": 210,
+        "endChar": 35
+      },
+      "revId": "53fd8e1873f2fc5076c2e022eb5e0d9930fffbbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc4ea966_3b138ba9",
+        "filename": "util/fptool_unitest.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-03-14T22:40:54Z",
+      "side": 1,
+      "message": "Same comment as last CL about splitting into separate test cases: http://go/tott/520",
+      "range": {
+        "startLine": 221,
+        "startChar": 0,
+        "endLine": 257,
+        "endChar": 60
+      },
+      "revId": "53fd8e1873f2fc5076c2e022eb5e0d9930fffbbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
