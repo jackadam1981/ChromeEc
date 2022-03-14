@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0aa882d5_708dd937",
+        "filename": "board/taniks/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1485637
+      },
+      "writtenOn": "2022-03-14T01:58:52Z",
+      "side": 1,
+      "message": "device_name is provided from our battery team, like below issue tracker.\nhttps://partnerissuetracker.corp.google.com/issues/208724534\nSMP is L21M4PG5\nLG is L21L4PG5",
+      "parentUuid": "55635505_ca4d41eb",
+      "range": {
+        "startLine": 93,
+        "startChar": 19,
+        "endLine": 93,
+        "endChar": 27
+      },
+      "revId": "bd36189ff60a5cbc2b20ec4627492cf93821e02e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8d5265eb_9a9e3d51",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-03-11T22:02:18Z",
       "side": 1,
       "message": "is this also a 71W battery?",
+      "range": {
+        "startLine": 105,
+        "startChar": 19,
+        "endLine": 105,
+        "endChar": 23
+      },
+      "revId": "bd36189ff60a5cbc2b20ec4627492cf93821e02e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "90947be0_ec6fa764",
+        "filename": "board/taniks/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1485637
+      },
+      "writtenOn": "2022-03-14T01:58:52Z",
+      "side": 1,
+      "message": "yes, taniks\u0027s LG battery is also 71W. \nBTW SMP_51W is only used for proto. \nEVT will use SMP_71W and LG battery.",
+      "parentUuid": "8d5265eb_9a9e3d51",
       "range": {
         "startLine": 105,
         "startChar": 19,
