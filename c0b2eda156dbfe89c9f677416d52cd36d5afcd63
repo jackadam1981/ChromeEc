@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "547ad9e3_43f4c32e",
+        "filename": "zephyr/test/ap_power/src/signals.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-03-15T00:02:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "159930b5_4966192c",
+      "revId": "c0b2eda156dbfe89c9f677416d52cd36d5afcd63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "26e5041b_f46dfffc",
@@ -67,6 +85,24 @@
       "side": 1,
       "message": "I mainly just wanted to ensure an out-of-bounds signal would be handled.",
       "parentUuid": "26e5041b_f46dfffc",
+      "revId": "c0b2eda156dbfe89c9f677416d52cd36d5afcd63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "edb8cbb7_26a4910b",
+        "filename": "zephyr/test/ap_power/src/signals.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-03-15T00:02:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f3d086f9_cc82626f",
       "revId": "c0b2eda156dbfe89c9f677416d52cd36d5afcd63",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -108,6 +144,30 @@
       "side": 1,
       "message": "It\u0027s quite possible that I need many more comments - I saw in some of the other tests a similar level of comments, so I didn\u0027t think that it was required.\nHappy to expand the messages and comments.",
       "parentUuid": "be3f0a16_e696c719",
+      "range": {
+        "startLine": 262,
+        "startChar": 15,
+        "endLine": 262,
+        "endChar": 16
+      },
+      "revId": "c0b2eda156dbfe89c9f677416d52cd36d5afcd63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb662426_6f1db523",
+        "filename": "zephyr/test/ap_power/src/signals.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-03-15T00:02:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "61eab7a5_96325550",
       "range": {
         "startLine": 262,
         "startChar": 15,
