@@ -1,0 +1,27 @@
+/* Copyright 2022 The Chromium OS Authors. All rights reserved.
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+/ {
+	named-fans {
+		compatible = "named-fans";
+
+		fan_0 {
+			label = "FAN_0";
+			pwms = <&pwm7 PWM_CHANNEL_7 PWM_POLARITY_NORMAL>;
+			pwm-frequency = <30000>;
+			tach = <&tach0>;
+			rpm_min = <1500>;
+			rpm_start = <1500>;
+			rpm_max = <6500>;
+		};
+	};
+};
+
+/* fan tachometer sensor */
+&tach0 {
+	status = "okay";
+	channel = <IT8XXX2_TACH_CHANNEL_A>;
+	pulses-per-round = <2>;
+};

@@ -1,0 +1,32 @@
+/* Copyright 2022 The Chromium OS Authors. All rights reserved.
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+/ {
+	named-pwms {
+		compatible = "named-pwms";
+
+		/* NOTE: &pwm number needs same with channel number */
+		pwm_test: test {
+			pwms = <&pwm0 PWM_CHANNEL_0 PWM_POLARITY_NORMAL>;
+			/*
+			 * If we need pwm output in ITE chip power saving
+			 * mode, then we should set frequency <=324Hz.
+			 */
+			frequency = <324>;
+		};
+	};
+};
+
+/* pwm for test */
+&pwm0 {
+	status = "okay";
+	prescaler-cx = <PWM_PRESCALER_C6>;
+};
+
+/* pwm for fan */
+&pwm7 {
+	status = "okay";
+	prescaler-cx = <PWM_PRESCALER_C4>;
+};
