@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d2d191b8_da413907",
+        "filename": "power/amd_x86.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2022-03-15T01:15:41Z",
+      "side": 1,
+      "message": "That\u0027s my assumption based on the comment \"If the system never entered S0ix, then manually set the wake mask to pretend it did\". We won\u0027t get a resume hang unless we at least made it to S0ix already.",
+      "parentUuid": "8733c1cf_d1af3901",
+      "revId": "a2e20e03705389e1d601feaf1ddd5870886287d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4ca15367_ff0befa5",
         "filename": "power/intel_x86.c",
         "patchSetId": 1
@@ -48,6 +66,24 @@
       "writtenOn": "2022-03-14T22:02:06Z",
       "side": 1,
       "message": "Should we fix up the other power sequencings as well, or let them fix it themselves now that the infrastructure is there?",
+      "revId": "a2e20e03705389e1d601feaf1ddd5870886287d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67daaf78_30033b9d",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2022-03-15T01:15:41Z",
+      "side": 1,
+      "message": "Was was leaning towards the latter since I can\u0027t verify on each of these platforms.",
+      "parentUuid": "4ca15367_ff0befa5",
       "revId": "a2e20e03705389e1d601feaf1ddd5870886287d0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
