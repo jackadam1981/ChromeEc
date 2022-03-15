@@ -1,0 +1,47 @@
+/* Copyright 2022 The Chromium OS Authors. All rights reserved.
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+/ {
+	named-i2c-ports {
+		compatible = "named-i2c-ports";
+
+		battery {
+			i2c-port = <&i2c2>;
+			enum-name = "I2C_PORT_BATTERY";
+		};
+		evb-1 {
+			i2c-port = <&i2c0>;
+			enum-name = "I2C_PORT_EVB_1";
+		};
+		evb-2 {
+			i2c-port = <&i2c1>;
+			enum-name = "I2C_PORT_EVB_2";
+		};
+		opt-4 {
+			i2c-port = <&i2c4>;
+			enum-name = "I2C_PORT_OPT_4";
+		};
+	};
+};
+
+&i2c0 {
+	status = "okay";
+	clock-frequency = <I2C_BITRATE_STANDARD>;
+};
+
+&i2c1 {
+	status = "okay";
+	clock-frequency = <I2C_BITRATE_STANDARD>;
+};
+
+&i2c2 {
+	status = "okay";
+	clock-frequency = <I2C_BITRATE_STANDARD>;
+};
+
+&i2c4 {
+	status = "okay";
+	clock-frequency = <I2C_BITRATE_STANDARD>;
+};
