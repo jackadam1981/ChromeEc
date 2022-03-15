@@ -34,6 +34,24 @@
       "parentUuid": "9c79c33c_d658d350",
       "revId": "6832a8e89781d95caf0343cbaa970fc961f70e22",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4e43f19_81277549",
+        "filename": "zephyr/projects/nissa/nissa.csv",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-03-15T04:53:15Z",
+      "side": 0,
+      "message": "I\u0027d prefer to include the CSV change here, since otherwise regenerating the pinmaps can have unexpected results. I\u0027ve been manually editing the CSV for these things recently (to match the sheet) to avoid the Nirwen noise.",
+      "parentUuid": "6c22072a_b3493b67",
+      "revId": "6832a8e89781d95caf0343cbaa970fc961f70e22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
