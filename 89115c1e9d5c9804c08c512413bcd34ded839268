@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e5eaaff_4d4e2238",
+        "filename": "zephyr/projects/intelrvp/mtlrvp/mtlrvpp_npcx/gpio.dts",
+        "patchSetId": 5
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2022-03-15T23:16:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3e43676c_52f19934",
+      "range": {
+        "startLine": 9,
+        "startChar": 1,
+        "endLine": 9,
+        "endChar": 2
+      },
+      "revId": "89115c1e9d5c9804c08c512413bcd34ded839268",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1ca29ec7_3aaf8ed1",
@@ -41,6 +65,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e25dbac3_dbf917b6",
+        "filename": "zephyr/projects/intelrvp/mtlrvp/mtlrvpp_npcx/gpio.dts",
+        "patchSetId": 5
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2022-03-15T23:16:06Z",
+      "side": 1,
+      "message": "updated 1.8V based on the legacy gpio file instead of the documentation per our discussion",
+      "parentUuid": "1ca29ec7_3aaf8ed1",
+      "revId": "89115c1e9d5c9804c08c512413bcd34ded839268",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b4bec7ae_dfd5ebad",
@@ -54,6 +96,30 @@
       "writtenOn": "2022-03-15T22:40:26Z",
       "side": 1,
       "message": "Pre-append something like \"Note: \u003ccontent\u003e:\" so that its catchy.\nMECC vendors may reuse the cod",
+      "range": {
+        "startLine": 66,
+        "startChar": 5,
+        "endLine": 66,
+        "endChar": 13
+      },
+      "revId": "89115c1e9d5c9804c08c512413bcd34ded839268",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b857ec1_9ee0c890",
+        "filename": "zephyr/projects/intelrvp/mtlrvp/mtlrvpp_npcx/gpio.dts",
+        "patchSetId": 5
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2022-03-15T23:16:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b4bec7ae_dfd5ebad",
       "range": {
         "startLine": 66,
         "startChar": 5,
@@ -87,6 +153,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "42520779_f3c1d80c",
+        "filename": "zephyr/projects/intelrvp/mtlrvp/mtlrvpp_npcx/gpio.dts",
+        "patchSetId": 5
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2022-03-15T23:16:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0c6a987a_c2335514",
+      "range": {
+        "startLine": 133,
+        "startChar": 4,
+        "endLine": 133,
+        "endChar": 5
+      },
+      "revId": "89115c1e9d5c9804c08c512413bcd34ded839268",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9b1a49e0_388cfc6c",
@@ -100,6 +190,30 @@
       "writtenOn": "2022-03-15T22:40:26Z",
       "side": 1,
       "message": "this is on IOEX, disable the config if needed, lets not add unwanted GPIOs",
+      "range": {
+        "startLine": 240,
+        "startChar": 5,
+        "endLine": 240,
+        "endChar": 11
+      },
+      "revId": "89115c1e9d5c9804c08c512413bcd34ded839268",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "94dc772d_8bb4a61c",
+        "filename": "zephyr/projects/intelrvp/mtlrvp/mtlrvpp_npcx/gpio.dts",
+        "patchSetId": 5
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2022-03-15T23:16:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9b1a49e0_388cfc6c",
       "range": {
         "startLine": 240,
         "startChar": 5,
