@@ -22,6 +22,30 @@
       },
       "revId": "b7cf8ae05559d883a0a34f13455938b15f250031",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ea47683_721531a6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1262393
+      },
+      "writtenOn": "2022-03-15T01:53:22Z",
+      "side": 1,
+      "message": "Yes, we test same steps without FRS on banshee, the monitor will shutdown and turn on.\n\nWhen connect adapter to DA310 Type-C port, we found banshee board can be charged, so the power source is from DA310.\n\nAnd we use PD analyzer to check the VBUS, w/ FRS function, when plug out adapter, the VBUS drop from 20V to 5V and keep 5V. But w/o FRS, the VBUS drop to close to 0V then boot 5V.",
+      "parentUuid": "4f8b77f0_34b71036",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 28
+      },
+      "revId": "b7cf8ae05559d883a0a34f13455938b15f250031",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
