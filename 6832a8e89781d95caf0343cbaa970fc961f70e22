@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c79c33c_d658d350",
+        "filename": "zephyr/projects/nissa/nissa.csv",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-03-15T04:39:56Z",
+      "side": 0,
+      "message": "This is very noisy since it adds the Nirwen definitions: can we ensure this change only includes the ones relevant to it (and add the Nirwen column in a different CL)?",
+      "revId": "6832a8e89781d95caf0343cbaa970fc961f70e22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
