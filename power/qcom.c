@@ -71,6 +71,16 @@ const struct power_signal_info power_signal_list[] = {
 		"DEPRECATED_AP_RST_REQ",
 	},
 #endif /* defined(CONFIG_CHIPSET_SC7180) */
+	[SC7X80_PMIC_RESIN_L] = {
+		GPIO_PMIC_RESIN_L,
+		POWER_SIGNAL_ACTIVE_LOW,
+		"PMIC_RESIN_L",
+	},
+	[SC7X80_PMIC_KPD_PWR_ODL] = {
+		GPIO_PMIC_KPD_PWR_ODL,
+		POWER_SIGNAL_ACTIVE_LOW,
+		"PMIC_KPD_PWR_ODL",
+	},
 };
 BUILD_ASSERT(ARRAY_SIZE(power_signal_list) == POWER_SIGNAL_COUNT);
 
@@ -528,13 +538,13 @@ static int set_pmic_pwron(int enable)
 	 * falls back to the next functions, which cuts off the system power.
 	 */
 
-	gpio_set_level(GPIO_PMIC_KPD_PWR_ODL, 0);
+	gpio_set_flags(GPIO_PMIC_KPD_PWR_ODL, GPIO_INT_BOTH | GPIO_OUT_LOW);
 	if (!enable)
-		gpio_set_level(GPIO_PMIC_RESIN_L, 0);
+		gpio_set_flags(GPIO_PMIC_RESIN_L, GPIO_INT_BOTH | GPIO_OUT_LOW);
 	ret = wait_pmic_pwron(enable, PMIC_POWER_AP_RESPONSE_TIMEOUT);
-	gpio_set_level(GPIO_PMIC_KPD_PWR_ODL, 1);
+	gpio_set_flags(GPIO_PMIC_KPD_PWR_ODL, GPIO_INT_BOTH);
 	if (!enable)
-		gpio_set_level(GPIO_PMIC_RESIN_L, 1);
+		gpio_set_flags(GPIO_PMIC_RESIN_L, GPIO_INT_BOTH);
 
 	return ret;
 }
@@ -846,9 +856,11 @@ static int warm_reset_seq(void)
 	 *         to initiate a cold reset power sequence.
 	 */
 
-	gpio_set_level(GPIO_PMIC_RESIN_L, 0);
+	CPRINTS("@@ GPIO_PMIC_RESIN_L -> 0");
+	gpio_set_flags(GPIO_PMIC_RESIN_L, GPIO_INT_BOTH | GPIO_OUT_LOW);
 	usleep(PMIC_RESIN_PULSE_LENGTH);
-	gpio_set_level(GPIO_PMIC_RESIN_L, 1);
+	gpio_set_flags(GPIO_PMIC_RESIN_L, GPIO_INT_BOTH);
+	CPRINTS("@@ GPIO_PMIC_RESIN_L -> 1");
 
 	rv = power_wait_signals_timeout(IN_AP_RST_ASSERTED,
 					PMIC_POWER_AP_RESPONSE_TIMEOUT);

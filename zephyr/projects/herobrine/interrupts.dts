@@ -61,6 +61,16 @@
 			flags = <GPIO_INT_EDGE_BOTH>;
 			handler = "power_signal_interrupt";
 		};
+		int_pmic_resin_l: pmic_resin_l {
+			irq-pin = <&gpio_pmic_resin_l>;
+			flags = <GPIO_INT_EDGE_BOTH>;
+			handler = "power_signal_interrupt";
+		};
+		int_pmic_kpd_pwr_odl: pmic_kpd_pwr_odl {
+			irq-pin = <&gpio_pmic_kpd_pwr_odl>;
+			flags = <GPIO_INT_EDGE_BOTH>;
+			handler = "power_signal_interrupt";
+		};
 		int_warm_reset: warm_reset {
 			irq-pin = <&gpio_warm_reset_l>;
 			flags = <GPIO_INT_EDGE_BOTH>;
