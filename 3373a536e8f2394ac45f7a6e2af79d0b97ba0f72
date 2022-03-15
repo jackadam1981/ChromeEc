@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "46dda021_8ff615e7",
+        "filename": "board/kinox/board.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1286280
+      },
+      "writtenOn": "2022-03-15T02:52:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e21fabc3_12fa3ef5",
+      "range": {
+        "startLine": 6,
+        "startChar": 3,
+        "endLine": 6,
+        "endChar": 9
+      },
+      "revId": "3373a536e8f2394ac45f7a6e2af79d0b97ba0f72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3d5dd533_24101762",
@@ -37,6 +61,24 @@
       "writtenOn": "2022-03-14T13:45:33Z",
       "side": 1,
       "message": "How many charger port on Kinox?",
+      "revId": "3373a536e8f2394ac45f7a6e2af79d0b97ba0f72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a7a2f89_85da786a",
+        "filename": "board/kinox/board.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1286280
+      },
+      "writtenOn": "2022-03-15T02:52:13Z",
+      "side": 1,
+      "message": "Done. 2 ports\nOne Type-C, one barrel",
+      "parentUuid": "3d5dd533_24101762",
       "revId": "3373a536e8f2394ac45f7a6e2af79d0b97ba0f72",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
