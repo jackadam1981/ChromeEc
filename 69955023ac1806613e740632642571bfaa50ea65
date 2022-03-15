@@ -34,6 +34,24 @@
       "parentUuid": "5001e306_3a1cd837",
       "revId": "69955023ac1806613e740632642571bfaa50ea65",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "adbc9f5e_4f3695dc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-03-15T17:23:22Z",
+      "side": 1,
+      "message": "I think Simon gets an email for each failure. I don\u0027t know how to change that to notify the author instead. I noticed because I have a Chat bot that notifies the \"zephyr-test\" group once a day when the build fails.",
+      "parentUuid": "1132cf7c_cf6cbf33",
+      "revId": "69955023ac1806613e740632642571bfaa50ea65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
