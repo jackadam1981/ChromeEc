@@ -231,8 +231,14 @@ static void lpc_s0ix_resume_restore_masks(void)
 	backup_sci_mask = backup_smi_mask = 0;
 }
 
-static void lpc_s0ix_hang_detected(void)
+__overridable void power_board_s0ix_hang_detected(void)
 {
+	/* Default weak implementation -- no action required. */
+}
+
+static void power_chipset_s0ix_hang_detected(void)
+{
+	power_board_s0ix_hang_detected();
 	/*
 	 * Wake up the AP so they don't just chill in a non-suspended state and
 	 * burn power. Overload a vaguely related event bit since event bits are
@@ -301,7 +307,7 @@ __override void power_chipset_handle_host_sleep_event(
 		 */
 		sleep_set_notify(SLEEP_NOTIFY_SUSPEND);
 
-		sleep_start_suspend(ctx, lpc_s0ix_hang_detected);
+		sleep_start_suspend(ctx, power_chipset_s0ix_hang_detected);
 		power_signal_enable_interrupt(GPIO_PCH_SLP_S0_L);
 	} else if (state == HOST_SLEEP_EVENT_S0IX_RESUME) {
 		/*
@@ -439,9 +445,9 @@ enum power_state power_handle_state(enum power_state state)
 		 * Ignore the SLP_S0 assertions in idle scenario by checking
 		 * the host sleep state.
 		 */
-		else if (power_get_host_sleep_state()
-					== HOST_SLEEP_EVENT_S0IX_SUSPEND &&
-				gpio_get_level(GPIO_PCH_SLP_S0_L) == 0) {
+		else if (power_get_host_sleep_state() ==
+				 HOST_SLEEP_EVENT_S0IX_SUSPEND &&
+			 gpio_get_level(GPIO_PCH_SLP_S0_L) == 0) {
 			return POWER_S0S0ix;
 		}
 #endif
