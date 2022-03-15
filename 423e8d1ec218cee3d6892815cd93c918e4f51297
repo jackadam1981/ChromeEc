@@ -106,6 +106,24 @@
       "parentUuid": "5fc478f0_e89d0e2e",
       "revId": "423e8d1ec218cee3d6892815cd93c918e4f51297",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5733efed_c17e0657",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-03-15T00:17:31Z",
+      "side": 1,
+      "message": "The AP power sequencing document and chipsets comparation excel sheet shared in the sync meeting have information about first two questions. We don\u0027t have document which generalize for all.\nThe core signals are s0/s3/s4/s5 sleep signals and slp_sus, rsmrst, all_sys_power_good, dsw_pwrok. Those signal could be a single signal or a result of signals combination. Also in the common code, we have to check core power if good, IN_PGOOD_ALL_CORE, that is platform dependent, could represents signal of PMIC, rsmrst, or combination in the case of discrete power sequencing.\nI also put some of my understanding in b:223923728",
+      "parentUuid": "21116b8d_4af8b23e",
+      "revId": "423e8d1ec218cee3d6892815cd93c918e4f51297",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
