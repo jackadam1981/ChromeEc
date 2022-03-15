@@ -34,6 +34,24 @@
       "parentUuid": "95cce5ed_63eec220",
       "revId": "30e48c3b0f7aa8818eb86a4543ae7779c33ce1e5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1cefeca3_13a817f1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 15
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-03-15T04:45:40Z",
+      "side": 1,
+      "message": "This still doesn\u0027t really \"allow\" anything: I can\u0027t understand what this is supposed to mean without reading the code, and even then it wouldn\u0027t be clear if I didn\u0027t have the context from discussion.\n\nSuggestion:\n\u003e ap_pwrseq: remove hookable weak functions\n\u003e \n\u003e We expect to replace these with callback-based APIs to support boards with different configuration in the near future, but don\u0027t currently need to support more than one board. This change hard-codes the functionality we currently require for simplicity until it is refactored.",
+      "parentUuid": "b278d8fb_50b34530",
+      "revId": "30e48c3b0f7aa8818eb86a4543ae7779c33ce1e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
