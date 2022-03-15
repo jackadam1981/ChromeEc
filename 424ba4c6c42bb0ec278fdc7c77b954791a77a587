@@ -16,6 +16,23 @@
       "message": "verify on lantis",
       "revId": "424ba4c6c42bb0ec278fdc7c77b954791a77a587",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4381657_d85272ad",
+        "filename": "board/lantis/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 470,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-03-15T21:38:09Z",
+      "side": 1,
+      "message": "Is this the correct method to decide the landia vs. lantis keyboard layouts?  I\u0027d thought lantis released with convertible boards?",
+      "revId": "424ba4c6c42bb0ec278fdc7c77b954791a77a587",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
