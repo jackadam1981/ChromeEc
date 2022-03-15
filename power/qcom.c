@@ -530,11 +530,11 @@ static int set_pmic_pwron(int enable)
 
 	gpio_set_level(GPIO_PMIC_KPD_PWR_ODL, 0);
 	if (!enable)
-		gpio_set_level(GPIO_PMIC_RESIN_L, 0);
+		gpio_set_flags(GPIO_PMIC_RESIN_L, GPIO_OUT_LOW);
 	ret = wait_pmic_pwron(enable, PMIC_POWER_AP_RESPONSE_TIMEOUT);
 	gpio_set_level(GPIO_PMIC_KPD_PWR_ODL, 1);
 	if (!enable)
-		gpio_set_level(GPIO_PMIC_RESIN_L, 1);
+		gpio_set_flags(GPIO_PMIC_RESIN_L, GPIO_INPUT);
 
 	return ret;
 }
@@ -846,9 +846,11 @@ static int warm_reset_seq(void)
 	 *         to initiate a cold reset power sequence.
 	 */
 
-	gpio_set_level(GPIO_PMIC_RESIN_L, 0);
+	CPRINTS("@@ GPIO_PMIC_RESIN_L -> 0");
+	gpio_set_flags(GPIO_PMIC_RESIN_L, GPIO_OUT_LOW);
 	usleep(PMIC_RESIN_PULSE_LENGTH);
-	gpio_set_level(GPIO_PMIC_RESIN_L, 1);
+	gpio_set_flags(GPIO_PMIC_RESIN_L, GPIO_INPUT);
+	CPRINTS("@@ GPIO_PMIC_RESIN_L -> 1");
 
 	rv = power_wait_signals_timeout(IN_AP_RST_ASSERTED,
 					PMIC_POWER_AP_RESPONSE_TIMEOUT);

@@ -110,7 +110,7 @@
 			enum-name = "GPIO_PACKET_MODE_EN";
 		};
 		pmic_resin_l {
-			gpios = <&gpioa 0 GPIO_ODR_HIGH>;
+			gpios = <&gpioa 0 GPIO_INPUT>;
 			enum-name = "GPIO_PMIC_RESIN_L";
 		};
 		pmic_kpd_pwr_odl {
