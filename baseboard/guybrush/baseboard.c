@@ -944,3 +944,76 @@ void baseboard_en_pwr_s0(enum gpio_signal signal)
 	/* Now chain off to the normal power signal interrupt handler. */
 	power_signal_interrupt(signal);
 }
+
+#if defined(SECTION_IS_RW) && defined(CONFIG_POWER_SLEEP_FAILURE_DETECTION)
+
+/**
+ * S0ix Hang Recovery Fallback Routines.
+ *
+ * Only runs in RW to de-risk an unrecoverable boot loop in RO.
+ * power_board_s0ix_hang_detected is triggered by the common host_sleep S0ix
+ * hang detection. The default behavior is to send a wake event. Additional
+ * hang recovery fallback remedies are defined here.
+ */
+
+/* A wake event will be sent after this timeout */
+#undef CONFIG_SLEEP_TIMEOUT_MS
+#define CONFIG_SLEEP_TIMEOUT_MS 10000
+/* This timeout begins after CONFIG_SLEEP_TIMEOUT_MS */
+#define S0IX_HANG_RESET_TIMEOUT_MS 10000
+/* This timeout begins after S0IX_HANG_RESET_TIMEOUT_MS */
+#define S0IX_HANG_SHUTDOWN_TIMEOUT_MS 10000
+
+static void board_s0ix_hang_reset(void);
+DECLARE_DEFERRED(board_s0ix_hang_reset);
+
+static void board_s0ix_hang_shutdown(void);
+DECLARE_DEFERRED(board_s0ix_hang_shutdown);
+
+__override void power_board_s0ix_hang_detected(void)
+{
+	ccprints("S0ix hang detected! Rebooting in %dms if it persists.",
+		 S0IX_HANG_RESET_TIMEOUT_MS);
+	hook_call_deferred(&board_s0ix_hang_reset_data,
+			   S0IX_HANG_RESET_TIMEOUT_MS * MSEC);
+}
+
+/**
+ * If hang persists, attempt to recover with an ap reset.
+ * AP reset will retain more error information compared to an ap shutdown.
+ */
+static void board_s0ix_hang_reset(void)
+{
+	ccprints("S0ix hang persisted. Attempting AP reset now!");
+	ccprints("Forcing shutdown in %dms if hang persists.",
+		 S0IX_HANG_SHUTDOWN_TIMEOUT_MS);
+	chipset_reset(CHIPSET_RESET_HANG_REBOOT);
+	hook_call_deferred(&board_s0ix_hang_shutdown_data,
+			   S0IX_HANG_SHUTDOWN_TIMEOUT_MS * MSEC);
+}
+
+/**
+ * If hang persists, attempt to recover with a forced shutdown.
+ * Leave AP shutdown to avoid potential battery draining boot loop.
+ */
+static void board_s0ix_hang_shutdown(void)
+{
+	ccprints("S0ix hang persisted after ap reset. "
+		 "Attempting forced shutdown now!");
+	chipset_force_shutdown(CHIPSET_SHUTDOWN_BOARD_CUSTOM);
+}
+
+/**
+ * Hang detection timers are stopped on any SUSPEND, RESUME and RESET events.
+ */
+static void stop_s0ix_hang_timers(void)
+{
+	/* Turn off hang timers */
+	hook_call_deferred(&board_s0ix_hang_reset_data, -1);
+	hook_call_deferred(&board_s0ix_hang_shutdown_data, -1);
+}
+DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, stop_s0ix_hang_timers, HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_CHIPSET_RESUME, stop_s0ix_hang_timers, HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_CHIPSET_RESET, stop_s0ix_hang_timers, HOOK_PRIO_DEFAULT);
+
+#endif /* SECTION_IS_RW && CONFIG_POWER_SLEEP_FAILURE_DETECTION */
