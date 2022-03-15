@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b4cb69e_a1a25f3d",
+        "filename": "zephyr/shim/src/tcpc_fusb302.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-03-15T02:49:53Z",
+      "side": 1,
+      "message": "just curios: can this file be made generic buy passing  drv and flags in the macro and assign them?",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 29
+      },
+      "revId": "872470c3de2894296481b6d42cd67121257dc031",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
