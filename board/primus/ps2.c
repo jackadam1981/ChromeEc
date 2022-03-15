@@ -36,3 +36,21 @@ static void board_init(void)
 	ps2_enable_channel(NPCX_PS2_CH1, 1, send_aux_data_to_host_interrupt);
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
+
+/* Called on AP S3 -> S0 transition */
+static void ps2_resume(void)
+{
+	ps2_transmit_byte(NPCX_PS2_CH1, 0xe2);
+	ps2_transmit_byte(NPCX_PS2_CH1, 0xbb);
+}
+DECLARE_HOOK(HOOK_CHIPSET_RESUME, ps2_resume, HOOK_PRIO_DEFAULT);
+
+/* Called on AP S0 -> S3 transition */
+static void ps2_suspend(void)
+{
+	ps2_transmit_byte(NPCX_PS2_CH1, 0xe2);
+	ps2_transmit_byte(NPCX_PS2_CH1, 0x47);
+	ps2_transmit_byte(NPCX_PS2_CH1, 0x28);
+	ps2_transmit_byte(NPCX_PS2_CH1, 0x08);
+}
+DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, ps2_suspend, HOOK_PRIO_DEFAULT);
