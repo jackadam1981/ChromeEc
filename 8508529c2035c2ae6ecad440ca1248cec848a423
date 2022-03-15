@@ -22,6 +22,30 @@
       },
       "revId": "8508529c2035c2ae6ecad440ca1248cec848a423",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "54cce7f9_66647f99",
+        "filename": "zephyr/subsys/ap_pwrseq/include/ap_power_override_functions.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-03-15T00:21:38Z",
+      "side": 1,
+      "message": "Yes, we can plan for this - it will likely take a bit more work, so my plan is\nto get this interim fix in, and then plan for the longer term solution.",
+      "parentUuid": "3174e80a_c809e36e",
+      "range": {
+        "startLine": 30,
+        "startChar": 5,
+        "endLine": 30,
+        "endChar": 34
+      },
+      "revId": "8508529c2035c2ae6ecad440ca1248cec848a423",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
