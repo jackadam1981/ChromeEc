@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ceb794ba_f1b234f3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-03-15T23:21:47Z",
+      "side": 1,
+      "message": "I was seeing linker errors for `pthread_detach` and a few other functions during incremental builds when I did a `git checkout` past this change in either direction. However, I just reproduced that failure while working in a CL chain not including this CL, so I think whatever causes that failure is unrelated to this CL. I suspect something in zmake is not correctly handling a change to CMakeLists.txt.\n\nThis CL now needs to be updated with the new files added since I started debugging this.",
+      "revId": "2fc6a4688319687178df42b0fc61c560e49eea0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
