@@ -11,7 +11,7 @@ import (
 // Reader reads the pin configuration from a source.
 type Reader interface {
 	Name() string
-	Read(arg string, chip string) (*Pins, error)
+	Read(chip string, arg string, column string) (*Pins, error)
 }
 
 // readerlist is registered list of readers.
@@ -19,10 +19,10 @@ var readerList []Reader
 
 // ReadPins will use the selected reader and the chip to
 // read the EC pin data.
-func ReadPins(reader, chip, arg string) (*Pins, error) {
+func ReadPins(reader, chip, column, arg string) (*Pins, error) {
 	for _, r := range readerList {
 		if r.Name() == reader {
-			return r.Read(chip, arg)
+			return r.Read(chip, arg, column)
 		}
 	}
 	return nil, fmt.Errorf("%s: unknown reader", reader)

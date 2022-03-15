@@ -9,6 +9,7 @@ import (
 	"encoding/csv"
 	"fmt"
 	"os"
+	"strings"
 
 	"pinmap/pm"
 )
@@ -26,7 +27,7 @@ func (r *CSVReader) Name() string {
 // Read reads the CSV file (provided as the argument) and extracts
 // the pin reference data. The first line is expected to be column
 // titles that are used to identify the columns.
-func (r *CSVReader) Read(chipName, arg string) (*pm.Pins, error) {
+func (r *CSVReader) Read(chipName, arg, column string) (*pm.Pins, error) {
 	f, err := os.Open(arg)
 	if err != nil {
 		return nil, err
@@ -50,10 +51,20 @@ func (r *CSVReader) Read(chipName, arg string) (*pm.Pins, error) {
 	if !ok {
 		return nil, fmt.Errorf("missing 'Signal Name' column")
 	}
-	// Find chip column
-	chip, ok := cmap[chipName]
+	// Either use a column string or the chipName to identify the chip column.
+	var chipKey string
+	if len(column) > 0 {
+		c := int(strings.ToLower(column)[0] - 'a')
+		if len(data[0]) <= c {
+			return nil, fmt.Errorf("Column name '%s' is out of range", column)
+		}
+		chipKey = data[0][c]
+	} else {
+		chipKey = chipName
+	}
+	chip, ok := cmap[chipKey]
 	if !ok {
-		return nil, fmt.Errorf("missing '%s' chip column", chipName)
+		return nil, fmt.Errorf("missing '%s' chip column", chipKey)
 	}
 	ptype, ok := cmap["Type"]
 	if !ok {
