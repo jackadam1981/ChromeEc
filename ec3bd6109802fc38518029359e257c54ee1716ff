@@ -16,6 +16,23 @@
       "message": "I don\u0027t know if you\u0027ll like this :-)\n\nI got sick of having the stack sizes all over the place.\n\n22-03-15 17:00:17.458 0x200c5120 PD_INT_C1  (real size 736):    unused 76       usage 660 / 736 (89 %)\n22-03-15 17:00:17.465 0x200c5018 PD_INT_C0  (real size 736):    unused 180      usage 556 / 736 (75 %)\n22-03-15 17:00:17.471 0x200c4f10 PD_C1      (real size 1184):   unused 304      usage 880 / 1184 (74 %)\n22-03-15 17:00:17.478 0x200c4e08 PD_C0      (real size 1184):   unused 220      usage 964 / 1184 (81 %)\n22-03-15 17:00:17.483 0x200c4d00 KEYSCAN    (real size 1024):   unused 380      usage 644 / 1024 (62 %)\n22-03-15 17:00:17.490 0x200c4bf8 POWERBTN   (real size 672):    unused 108      usage 564 / 672 (83 %)\n22-03-15 17:00:17.496 0x200c4af0 KEYPROTO   (real size 640):    unused 4        usage 636 / 640 (99 %)\n22-03-15 17:00:17.500 0x200c48e0 HOSTCMD    (real size 800):    unused 180      usage 620 / 800 (77 %)\n22-03-15 17:00:17.506 0x200c47d8 MOTIONSENSE (real size 800):   unused 140      usage 660 / 800 (82 %)\n22-03-15 17:00:17.513 0x200c46d0 CHARGER    (real size 1056):   unused 304      usage 752 / 1056 (71 %)\n22-03-15 17:00:17.519 0x200c45c8 USB_CHG_P1 (real size 800):    unused 240      usage 560 / 800 (70 %)\n22-03-15 17:00:17.526 0x200c44c0 USB_CHG_P0 (real size 800):    unused 240      usage 560 / 800 (70 %)\n22-03-15 17:00:17.534 0x200c6a90 shell_uart (real size 1536):   unused 772      usage 764 / 1536 (49 %)\n22-03-15 17:00:17.539 0x200c1570 pwrseq_task (real size 800):   unused 116      usage 684 / 800 (85 %)\n22-03-15 17:00:17.546 0x200c70e0 sysworkq   (real size 1024):   unused 260      usage 764 / 1024 (74 %)\n22-03-15 17:00:17.553 0x200c69d8 logging    (real size 768):    unused 612      usage 156 / 768 (20 %)\n22-03-15 17:00:17.559 0x200c6f70 idle 00    (real size 400):    unused 300      usage 100 / 400 (25 %)\n22-03-15 17:00:17.566 0x200c7028 main       (real size 1200):   unused 160      usage 1040 / 1200 (86 %)\n22-03-15 17:00:17.572 0x200cb668 IRQ 00     (real size 1024):   unused 280      usage 744 / 1024 (72 %)\n",
       "revId": "ec3bd6109802fc38518029359e257c54ee1716ff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "95ebad37_7922a3d3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-03-15T06:03:15Z",
+      "side": 1,
+      "message": "If the stack sizes were very close, I combined them",
+      "revId": "ec3bd6109802fc38518029359e257c54ee1716ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
