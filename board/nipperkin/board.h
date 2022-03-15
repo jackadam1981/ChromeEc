@@ -11,6 +11,8 @@
 /* Baseboard features */
 #include "baseboard.h"
 
+#define CONFIG_AP_HANG_DETECT
+
 /* Motion sensing drivers */
 
 /* Keyboard features */
