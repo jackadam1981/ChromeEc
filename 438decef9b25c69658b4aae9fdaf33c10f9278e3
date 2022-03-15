@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "712f8f02_c79d7ec3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1286280
+      },
+      "writtenOn": "2022-03-15T02:28:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "14b7ad87_23d8c9d0",
+      "range": {
+        "startLine": 19,
+        "startChar": 7,
+        "endLine": 19,
+        "endChar": 11
+      },
+      "revId": "438decef9b25c69658b4aae9fdaf33c10f9278e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "15ee22d6_7c7929dc",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-03-14T18:07:57Z",
       "side": 1,
       "message": "If you can - please check wake from shipping mode",
+      "range": {
+        "startLine": 20,
+        "startChar": 52,
+        "endLine": 21,
+        "endChar": 53
+      },
+      "revId": "438decef9b25c69658b4aae9fdaf33c10f9278e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "917e1868_522176a9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1286280
+      },
+      "writtenOn": "2022-03-15T02:28:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "15ee22d6_7c7929dc",
       "range": {
         "startLine": 20,
         "startChar": 52,
@@ -64,6 +112,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b424445d_f1b79850",
+        "filename": "board/banshee/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1286280
+      },
+      "writtenOn": "2022-03-15T02:28:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "efe08821_6bc59361",
+      "revId": "438decef9b25c69658b4aae9fdaf33c10f9278e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b12a1c5d_5e9469e8",
@@ -87,6 +153,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "791002cd_39b4f6bf",
+        "filename": "board/banshee/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1286280
+      },
+      "writtenOn": "2022-03-15T02:28:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b12a1c5d_5e9469e8",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 74,
+        "endChar": 2
+      },
+      "revId": "438decef9b25c69658b4aae9fdaf33c10f9278e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "705e4ae9_c71b15c0",
@@ -100,6 +190,30 @@
       "writtenOn": "2022-03-14T18:07:57Z",
       "side": 1,
       "message": "Please separate the driver change to a separate CL",
+      "range": {
+        "startLine": 107,
+        "startChar": 0,
+        "endLine": 108,
+        "endChar": 51
+      },
+      "revId": "438decef9b25c69658b4aae9fdaf33c10f9278e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20315f5d_0f96ccba",
+        "filename": "driver/charger/isl9241.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1286280
+      },
+      "writtenOn": "2022-03-15T02:28:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "705e4ae9_c71b15c0",
       "range": {
         "startLine": 107,
         "startChar": 0,
