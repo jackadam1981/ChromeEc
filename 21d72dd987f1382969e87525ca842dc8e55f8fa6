@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2070b8a4_eb307484",
+        "filename": "zephyr/dts/bindings/motionsense/driver/cros-ec,bmi3xx-accel.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-03-15T21:31:51Z",
+      "side": 1,
+      "message": "nit: usually changes to the DTS get broken out into a separate Zephyr tagged CL",
+      "revId": "21d72dd987f1382969e87525ca842dc8e55f8fa6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc369c43_c9eda1ad",
+        "filename": "zephyr/projects/skyrim/motionsense.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-03-15T21:31:51Z",
+      "side": 1,
+      "message": "2022 :)",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "21d72dd987f1382969e87525ca842dc8e55f8fa6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d64f01eb_0821f6a1",
+        "filename": "zephyr/projects/skyrim/motionsense.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-03-15T21:31:51Z",
+      "side": 1,
+      "message": "I haven\u0027t double checked the chip orientations on skyrim... an easy verification would be if you see similar values for x, y, and z on guybrush as you see on skyrim in the same board orientation.  If we need this to vary by board, we can pull this part into the board dts files",
+      "revId": "21d72dd987f1382969e87525ca842dc8e55f8fa6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
