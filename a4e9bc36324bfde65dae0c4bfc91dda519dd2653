@@ -88,6 +88,24 @@
       "parentUuid": "e7d37b1d_93d796de",
       "revId": "a4e9bc36324bfde65dae0c4bfc91dda519dd2653",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d4b912d_80cb34b9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-03-15T16:26:00Z",
+      "side": 1,
+      "message": "They haven\u0027t taken in new comments yet since there are active ECRs going.  We can either wait for comments to be accepted or go ahead and implement what we think would be best for our stack, fixing it later when the spec is updated.",
+      "parentUuid": "4f643a51_f8f51c36",
+      "revId": "a4e9bc36324bfde65dae0c4bfc91dda519dd2653",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

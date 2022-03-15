@@ -46,6 +46,30 @@
       },
       "revId": "21a0f120cda87fd13f391826fbaf28454360cb69",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10b51dc4_5ccdd11a",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 4522,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-03-15T16:26:00Z",
+      "side": 1,
+      "message": "I theorize we should be able to just use 0ms for the TURN_OFF_DELAY on systems where we have vSafe0V measurement since we actually know when we turned off in that case.  But that would certainly be worth verifying.",
+      "parentUuid": "bdedd8c3_29b6bf4e",
+      "range": {
+        "startLine": 4522,
+        "startChar": 3,
+        "endLine": 4522,
+        "endChar": 33
+      },
+      "revId": "21a0f120cda87fd13f391826fbaf28454360cb69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
