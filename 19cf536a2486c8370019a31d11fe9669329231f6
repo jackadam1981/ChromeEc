@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53fa8815_a5387003",
+        "filename": "zephyr/dts/bindings/adc/named-adc.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-03-15T00:03:56Z",
+      "side": 1,
+      "message": "nit: replace SNS with SENSOR to keep consistency, may be reuse few names",
+      "range": {
+        "startLine": 114,
+        "startChar": 0,
+        "endLine": 117,
+        "endChar": 23
+      },
+      "revId": "19cf536a2486c8370019a31d11fe9669329231f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70448b24_702dc341",
+        "filename": "zephyr/dts/bindings/temp/cros_ec_temp_sensor.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-03-15T00:03:56Z",
+      "side": 1,
+      "message": "nit: replace SNS with SENSOR to keep consistency, may be reuse few names",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 19
+      },
+      "revId": "19cf536a2486c8370019a31d11fe9669329231f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da727517_aa3300d3",
+        "filename": "zephyr/projects/intelrvp/temp_sensor.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-03-15T00:03:56Z",
+      "side": 1,
+      "message": "this is I2C based, may be keep it empty for now",
+      "range": {
+        "startLine": 29,
+        "startChar": 2,
+        "endLine": 30,
+        "endChar": 51
+      },
+      "revId": "19cf536a2486c8370019a31d11fe9669329231f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
