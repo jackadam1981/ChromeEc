@@ -9,6 +9,7 @@ import (
 	"encoding/csv"
 	"fmt"
 	"os"
+	"strings"
 
 	"pinmap/pm"
 )
@@ -26,7 +27,16 @@ func (r *CSVReader) Name() string {
 // Read reads the CSV file (provided as the argument) and extracts
 // the pin reference data. The first line is expected to be column
 // titles that are used to identify the columns.
-func (r *CSVReader) Read(chipName, arg string) (*pm.Pins, error) {
+// key identifies the column to use for the pin allocations,
+// such as "A", "B" etc.
+func (r *CSVReader) Read(key, arg string) (*pm.Pins, error) {
+	if len(key) != 1 {
+		return nil, fmt.Errorf("illegal column name: '%s'", key)
+	}
+	column := int(strings.ToLower(key)[0] - 'a')
+	if column < 0 {
+		return nil, fmt.Errorf("illegal column name (should be 'A' - 'Z')")
+	}
 	f, err := os.Open(arg)
 	if err != nil {
 		return nil, err
@@ -40,6 +50,9 @@ func (r *CSVReader) Read(chipName, arg string) (*pm.Pins, error) {
 	if len(data) < 2 {
 		return nil, fmt.Errorf("no data in file")
 	}
+	if len(data[0]) <= column {
+		return nil, fmt.Errorf("Column '%s' is out of range", key)
+	}
 	// Put the CSV headers into a map.
 	cmap := make(map[string]int)
 	for c, s := range data[0] {
@@ -50,10 +63,10 @@ func (r *CSVReader) Read(chipName, arg string) (*pm.Pins, error) {
 	if !ok {
 		return nil, fmt.Errorf("missing 'Signal Name' column")
 	}
-	// Find chip column
-	chip, ok := cmap[chipName]
+	chipKey := data[0][column]
+	chip, ok := cmap[chipKey]
 	if !ok {
-		return nil, fmt.Errorf("missing '%s' chip column", chipName)
+		return nil, fmt.Errorf("missing '%s' chip column", chipKey)
 	}
 	ptype, ok := cmap["Type"]
 	if !ok {

@@ -122,7 +122,7 @@ func gpioConfig(out io.Writer, pin *Pin, chip Chip, lineNameMap map[string][]lin
 	case Output:
 		gtype = "GPIO_OUTPUT"
 	case OutputL:
-		gtype = "(GPIO_OUTPUT | GPIO_ACTIVE_LOW)"
+		gtype = "(GPIO_OUT_LOW | GPIO_ACTIVE_LOW)"
 	case OutputOD:
 		gtype = "GPIO_ODR_HIGH"
 	case OutputODL:
