@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "546b970f_c50b7976",
+        "filename": "zephyr/projects/skyrim/usbc_config.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-03-15T15:13:05Z",
+      "side": 1,
+      "message": "Ah, good catch.  I\u0027d been using the EE schematics for the MB and ODM schematics for the DBs, but when I pull up the ODM schematics for the MB it\u0027s changed to the NX3DV221GM there as well",
+      "parentUuid": "8b824deb_d51037b8",
+      "revId": "41e7d5a62111fab526e0ee688c136f9c2c261883",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "16b87ffe_99cc864e",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-03-12T15:06:28Z",
       "side": 1,
       "message": "Where\u0027s this behavior documented? I don\u0027t see it in zephyr_fw_config.md or cros_cbi.h.",
+      "revId": "41e7d5a62111fab526e0ee688c136f9c2c261883",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "613fa0c6_e30e4b07",
+        "filename": "zephyr/projects/skyrim/usbc_config.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-03-15T15:13:05Z",
+      "side": 1,
+      "message": "Device tree stuff gets documented in yaml files: zephyr/dts/bindings/cbi/cros-ec-cbi-fw-config-value.yaml\n\n```\n    default:\n        type: boolean\n        description:\n          If set, this value will be the default value of this field\n          if the FW_CONFIG data is invalid or unavailable. It must\n          appear only once for any single field.\n```",
+      "parentUuid": "16b87ffe_99cc864e",
       "revId": "41e7d5a62111fab526e0ee688c136f9c2c261883",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
