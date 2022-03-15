@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "256b7131_31607f78",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2022-03-15T00:51:10Z",
+      "side": 1,
+      "message": "I don\u0027t see any conflict. they may be a gerrit bug I have see many times. I just rebased the conflict will be gone.",
+      "parentUuid": "1f2ddcc7_5c9f8a9c",
+      "revId": "6e623821fa1d7149555118a11e4f891c2b409795",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "efb761e0_63c4e916",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-03-14T16:20:50Z",
       "side": 1,
       "message": "Shouldn\u0027t it return at the first failure?",
+      "range": {
+        "startLine": 384,
+        "startChar": 7,
+        "endLine": 384,
+        "endChar": 9
+      },
+      "revId": "6e623821fa1d7149555118a11e4f891c2b409795",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d15460c8_7033c505",
+        "filename": "board/anahera/usbc_config.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 384,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2022-03-15T00:51:10Z",
+      "side": 1,
+      "message": "We have other settings if one of them failure.\nIf we are return at the first failure, the other settings will be breaked.",
+      "parentUuid": "efb761e0_63c4e916",
       "range": {
         "startLine": 384,
         "startChar": 7,
