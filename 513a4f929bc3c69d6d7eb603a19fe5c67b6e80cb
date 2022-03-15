@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20aa5912_d4874742",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-03-15T21:16:05Z",
+      "side": 1,
+      "message": "So what does this look like during testing?  Like in terms of, as a user what do I see if I open my chromebook? \n\nAnd are the cycles testing hang issues suspending, resuming, or both?",
+      "revId": "513a4f929bc3c69d6d7eb603a19fe5c67b6e80cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c229435d_e007b602",
+        "filename": "baseboard/guybrush/baseboard.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 961,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-03-15T21:16:05Z",
+      "side": 1,
+      "message": "Possibly silly question: does re-defining this here affect the power/host_sleep.c code?  We\u0027ve got a default in config.h that I think would get set unless we defined a board.h value, right?",
+      "revId": "513a4f929bc3c69d6d7eb603a19fe5c67b6e80cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69661f42_3ed9cba1",
+        "filename": "power/amd_x86.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-03-15T21:16:05Z",
+      "side": 1,
+      "message": "Maybe separate this out into its own CL?  And I\u0027m guessing we need an __override_proto in a header somewhere?",
+      "revId": "513a4f929bc3c69d6d7eb603a19fe5c67b6e80cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
