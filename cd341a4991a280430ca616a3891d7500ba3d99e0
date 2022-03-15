@@ -16,6 +16,24 @@
       "message": "Any value in adding _REG to the end to show it\u0027s an address?  Do we have anything in the coding standard for that?",
       "revId": "cd341a4991a280430ca616a3891d7500ba3d99e0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc2bfb95_7d158cdf",
+        "filename": "driver/retimer/anx7483.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-03-15T17:03:35Z",
+      "side": 1,
+      "message": "Usually I\u0027m a fan of putting \u003cchip\u003e_REG_\u003cname\u003e for register addresses, but in this case I opted not to since several bitfields within the register call themselves \"REG_blah blah\" and it seems potentially confusing",
+      "parentUuid": "1ac83995_8b11b3b1",
+      "revId": "cd341a4991a280430ca616a3891d7500ba3d99e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ],
   "submitRequirementResults": [
