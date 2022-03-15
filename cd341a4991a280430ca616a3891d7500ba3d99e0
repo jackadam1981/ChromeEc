@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ac83995_8b11b3b1",
+        "filename": "driver/retimer/anx7483.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1531147
+      },
+      "writtenOn": "2022-03-15T15:35:25Z",
+      "side": 1,
+      "message": "Any value in adding _REG to the end to show it\u0027s an address?  Do we have anything in the coding standard for that?",
+      "revId": "cd341a4991a280430ca616a3891d7500ba3d99e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
