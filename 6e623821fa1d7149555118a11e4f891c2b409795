@@ -81,6 +81,30 @@
       },
       "revId": "6e623821fa1d7149555118a11e4f891c2b409795",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "daa5c199_dc86abf7",
+        "filename": "board/anahera/usbc_config.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 384,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-03-15T00:58:11Z",
+      "side": 1,
+      "message": "ya, i think no matter which writes fail and how early\nyou return, the chip will be in some inconsistent state.\nthe caller will have to figure out how to recover.",
+      "parentUuid": "d15460c8_7033c505",
+      "range": {
+        "startLine": 384,
+        "startChar": 7,
+        "endLine": 384,
+        "endChar": 9
+      },
+      "revId": "6e623821fa1d7149555118a11e4f891c2b409795",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
