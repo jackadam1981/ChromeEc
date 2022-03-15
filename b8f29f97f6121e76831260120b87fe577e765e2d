@@ -189,6 +189,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "589fa379_a0aaef1e",
+        "filename": "zephyr/projects/intelrvp/mtlrvp/mtlrvpp_npcx/gpio.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2022-03-15T20:57:39Z",
+      "side": 1,
+      "message": "added comment until ioex is implemented",
+      "parentUuid": "ffedd831_51f35a1f",
+      "range": {
+        "startLine": 255,
+        "startChar": 3,
+        "endLine": 255,
+        "endChar": 34
+      },
+      "revId": "b8f29f97f6121e76831260120b87fe577e765e2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f40ed670_58b8153e",

@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f67f08e8_ccabd6dd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2022-03-15T20:57:39Z",
+      "side": 1,
+      "message": "updated 1.8V GPIO configs",
+      "parentUuid": "ec5d9585_c18877d3",
+      "revId": "3e77b5c82bcf1e9bbe9c258e822d41cbf5f70612",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d94da7ba_104d6472",
@@ -55,6 +73,30 @@
       "side": 1,
       "message": "Since gpio-kbd-kso2 is required in the current zephyr code for npcx should we use an unused gpio for now? I want to avoid changing any common code for now in order to get this board up and running",
       "parentUuid": "d94da7ba_104d6472",
+      "range": {
+        "startLine": 9,
+        "startChar": 2,
+        "endLine": 9,
+        "endChar": 35
+      },
+      "revId": "3e77b5c82bcf1e9bbe9c258e822d41cbf5f70612",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3510546f_813ed31f",
+        "filename": "zephyr/projects/intelrvp/mtlrvp/mtlrvpp_npcx/gpio.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2022-03-15T20:57:39Z",
+      "side": 1,
+      "message": "added comments until ioex is implemented",
+      "parentUuid": "97570193_e5d98dd4",
       "range": {
         "startLine": 9,
         "startChar": 2,
@@ -172,6 +214,30 @@
       "writtenOn": "2022-03-10T22:55:17Z",
       "side": 1,
       "message": "lets plan to use PWM based LED",
+      "range": {
+        "startLine": 130,
+        "startChar": 0,
+        "endLine": 135,
+        "endChar": 4
+      },
+      "revId": "3e77b5c82bcf1e9bbe9c258e822d41cbf5f70612",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8a83bd9_6c00893c",
+        "filename": "zephyr/projects/intelrvp/mtlrvp/mtlrvpp_npcx/gpio.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2022-03-15T20:57:39Z",
+      "side": 1,
+      "message": "added comment that these will be moved to pwm once implemented",
+      "parentUuid": "b92139cf_35c52e07",
       "range": {
         "startLine": 130,
         "startChar": 0,
