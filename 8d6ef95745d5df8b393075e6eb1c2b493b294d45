@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "50ad6d69_5a57918b",
+        "filename": "zephyr/projects/intelrvp/adlrvp/adlrvp_npcx/prj.conf",
+        "patchSetId": 26
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-03-15T15:28:37Z",
+      "side": 1,
+      "message": "b:176237074 tracks the effort to remove PLATFORM_EC_USB_PD_PORT_MAX_COUNT.",
+      "parentUuid": "7be9e5e9_9eb0e323",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 42
+      },
+      "revId": "8d6ef95745d5df8b393075e6eb1c2b493b294d45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e359dbd9_8aa4c94d",
         "filename": "zephyr/projects/intelrvp/adlrvp/adlrvp_npcx/src/usbc.c",
         "patchSetId": 26
