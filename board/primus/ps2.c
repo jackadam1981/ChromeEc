@@ -3,11 +3,13 @@
  * found in the LICENSE file.
  */
 
+#include "chipset.h"
 #include "gpio.h"
 #include "hooks.h"
 #include "i8042_protocol.h"
 #include "keyboard_8042.h"
 #include "ps2_chip.h"
+#include "time.h"
 
 void send_aux_data_to_device(uint8_t data)
 {
@@ -16,6 +18,11 @@ void send_aux_data_to_device(uint8_t data)
 		 * EC will receive I8042_CMD_RESET_DIS when warm reboot,
 		 * set GPIO62/ GPIO63 back to GPIO and pull low.
 		 */
+		ps2_transmit_byte(NPCX_PS2_CH1, 0xe2);
+		ps2_transmit_byte(NPCX_PS2_CH1, 0x47);
+		ps2_transmit_byte(NPCX_PS2_CH1, 0x28);
+		ps2_transmit_byte(NPCX_PS2_CH1, 0x08);
+		msleep(50);
 		gpio_set_flags(GPIO_EC_PS2_SCL_TPAD, GPIO_ODR_LOW);
 		gpio_set_flags(GPIO_EC_PS2_SDA_TPAD, GPIO_ODR_LOW);
 		gpio_set_alternate_function(GPIO_PORT_6,
@@ -36,3 +43,14 @@ static void board_init(void)
 	ps2_enable_channel(NPCX_PS2_CH1, 1, send_aux_data_to_host_interrupt);
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
+
+/* Called on AP S3 -> S0 transition */
+static void ps2_resume(void)
+{
+	gpio_set_alternate_function(GPIO_PORT_6,
+			BIT(2) | BIT(3), GPIO_ALT_FUNC_DEFAULT);
+
+	ps2_transmit_byte(NPCX_PS2_CH1, 0xe2);
+	ps2_transmit_byte(NPCX_PS2_CH1, 0xbb);	
+}
+DECLARE_HOOK(HOOK_CHIPSET_RESUME, ps2_resume, HOOK_PRIO_DEFAULT);
