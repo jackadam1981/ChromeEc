@@ -16,6 +16,23 @@
       "message": "Initial patch.",
       "revId": "2f43a762c0e59958d94ef4e37d6745ddd8c8db4e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c221e35d_94e5c45d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1347380
+      },
+      "writtenOn": "2022-03-15T19:01:51Z",
+      "side": 1,
+      "message": "I\u0027m curious, why does Servo_V4 have 50ms when this has 161 (going to 121ms)? I didn\u0027t expect there to be that much of a change\n\nAdded Sam as well due to his work on TCMPv2 which may be impacted.",
+      "revId": "2f43a762c0e59958d94ef4e37d6745ddd8c8db4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
