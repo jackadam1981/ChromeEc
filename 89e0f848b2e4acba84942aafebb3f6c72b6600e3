@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3f16824_96415dba",
+        "filename": "board/kinox/board.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2022-03-15T17:23:32Z",
+      "side": 1,
+      "message": "If you have only one typec port, maybe you can set this to 1?",
+      "range": {
+        "startLine": 17,
+        "startChar": 30,
+        "endLine": 17,
+        "endChar": 31
+      },
+      "revId": "89e0f848b2e4acba84942aafebb3f6c72b6600e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8944d180_2b7338aa",
+        "filename": "board/kinox/gpio.inc",
+        "patchSetId": 6
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2022-03-15T17:23:32Z",
+      "side": 1,
+      "message": "Can you explain why you need to set this pin to GPIO_ODR_LOW? Why don\u0027t just set this to GPIO_OUT_HIGH?",
+      "range": {
+        "startLine": 61,
+        "startChar": 48,
+        "endLine": 61,
+        "endChar": 60
+      },
+      "revId": "89e0f848b2e4acba84942aafebb3f6c72b6600e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5114793f_13a56efa",
+        "filename": "board/kinox/gpio.inc",
+        "patchSetId": 6
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2022-03-15T17:23:32Z",
+      "side": 1,
+      "message": "Please add the unused pin below",
+      "revId": "89e0f848b2e4acba84942aafebb3f6c72b6600e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5f55cbc_bf6b6b81",
+        "filename": "board/kinox/usbc_config.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2022-03-15T17:23:32Z",
+      "side": 1,
+      "message": "Do you need to add this flag?",
+      "range": {
+        "startLine": 47,
+        "startChar": 3,
+        "endLine": 47,
+        "endChar": 34
+      },
+      "revId": "89e0f848b2e4acba84942aafebb3f6c72b6600e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
