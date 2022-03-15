@@ -52,6 +52,24 @@
       "parentUuid": "6c22072a_b3493b67",
       "revId": "6832a8e89781d95caf0343cbaa970fc961f70e22",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4878bb37_65358681",
+        "filename": "zephyr/projects/nissa/nissa.csv",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-03-15T05:01:41Z",
+      "side": 0,
+      "message": "uhh the .csv shouldn\u0027t be converging from the spreadsheet.\nI\u0027d much prefer to let that just be a blob download for reference.\nI think it\u0027s OK to put the update in a separate CL for clarity, but let\u0027s not do any actual editing of the csv.",
+      "parentUuid": "c4e43f19_81277549",
+      "revId": "6832a8e89781d95caf0343cbaa970fc961f70e22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
