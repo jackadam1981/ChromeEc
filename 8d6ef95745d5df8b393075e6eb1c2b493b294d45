@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7be9e5e9_9eb0e323",
+        "filename": "zephyr/projects/intelrvp/adlrvp/adlrvp_npcx/prj.conf",
+        "patchSetId": 26
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-03-15T01:06:24Z",
+      "side": 1,
+      "message": "config PLATFORM_EC_USB_PD_PORT_MAX_COUNT\n        int \"Maximum number of USB PD ports supported\"\n        default 2\n        help\n          This sets the limit on the number of PD ports supported on the\n          device. This is used to set the size for tables used by devices.\n          TODO(b/176237074): Can we calculate this from the devicetree at some\n          point? Or update the sn5S330 driver to use an 8-bit flag byte for\n          source_enabled[] so that plenty of ports are supported without this\n          configuration option?\n          \n          \nCurrently is configurable in Kconfig.pd , partner tracker is already there to calculate it from devicetree (b/176237074)",
+      "parentUuid": "6652f2de_156bc0a9",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 42
+      },
+      "revId": "8d6ef95745d5df8b393075e6eb1c2b493b294d45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e359dbd9_8aa4c94d",
         "filename": "zephyr/projects/intelrvp/adlrvp/adlrvp_npcx/src/usbc.c",
         "patchSetId": 26
@@ -37,6 +61,30 @@
       "writtenOn": "2022-03-14T18:49:37Z",
       "side": 1,
       "message": "Seems like this could be extracted from the Device Tree.",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 6
+      },
+      "revId": "8d6ef95745d5df8b393075e6eb1c2b493b294d45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a699e87a_f03caeb4",
+        "filename": "zephyr/projects/intelrvp/adlrvp/adlrvp_npcx/src/usbc.c",
+        "patchSetId": 26
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-03-15T01:06:24Z",
+      "side": 1,
+      "message": "Ack.\n\nSeparate CL has been created to handle this: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3524221",
+      "parentUuid": "e359dbd9_8aa4c94d",
       "range": {
         "startLine": 12,
         "startChar": 0,
