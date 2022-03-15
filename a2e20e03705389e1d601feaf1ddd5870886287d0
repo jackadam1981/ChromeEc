@@ -72,6 +72,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "80f70379_346e67d1",
+        "filename": "power/amd_x86.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2022-03-15T16:39:51Z",
+      "side": 1,
+      "message": "Should we save this behavior change for a different CL? That way we can keep this one focused on adding the infrastructure.",
+      "parentUuid": "d2d191b8_da413907",
+      "revId": "a2e20e03705389e1d601feaf1ddd5870886287d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4ca15367_ff0befa5",
         "filename": "power/intel_x86.c",
         "patchSetId": 1
