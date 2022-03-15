@@ -46,6 +46,30 @@
       },
       "revId": "872470c3de2894296481b6d42cd67121257dc031",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e382bc8_3a497bd4",
+        "filename": "zephyr/shim/src/tcpc_fusb302.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-03-15T18:28:46Z",
+      "side": 1,
+      "message": "Ack.\n\nCreated partner tracker for this effort (b:224751369).",
+      "parentUuid": "af6386e7_9fa615f5",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 29
+      },
+      "revId": "872470c3de2894296481b6d42cd67121257dc031",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
