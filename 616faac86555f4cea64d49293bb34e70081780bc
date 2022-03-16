@@ -109,6 +109,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9c451b66_929cf8a1",
+        "filename": "zephyr/projects/intelrvp/mtlrvp/src/mtlrvp.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-03-16T22:32:48Z",
+      "side": 1,
+      "message": "lets figure out how to add that header, I see Rajesh has directly added \n#include \"pca9555.h\"",
+      "parentUuid": "35150de9_c90e5d5f",
+      "revId": "616faac86555f4cea64d49293bb34e70081780bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "aa9de9bb_a258e826",
         "filename": "zephyr/projects/intelrvp/mtlrvp/src/mtlrvp.c",
         "patchSetId": 1
