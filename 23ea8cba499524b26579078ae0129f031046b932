@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e964fe7_409ea371",
+        "filename": "zephyr/shim/src/adc.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-03-16T22:13:40Z",
+      "side": 1,
+      "message": "printk is synchronous; would it be better to LOG_* this?",
+      "revId": "23ea8cba499524b26579078ae0129f031046b932",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
