@@ -33,6 +33,24 @@
       "message": "Is this the correct method to decide the landia vs. lantis keyboard layouts?  I\u0027d thought lantis released with convertible boards?",
       "revId": "424ba4c6c42bb0ec278fdc7c77b954791a77a587",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb154a8d_b410d72b",
+        "filename": "board/lantis/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 470,
+      "author": {
+        "id": 1444467
+      },
+      "writtenOn": "2022-03-16T01:08:28Z",
+      "side": 1,
+      "message": "Hi Diana,\n\nLantis is released only with non-convertible boards, and Landia is the convertible version of Lantis.\n\nThanks!",
+      "parentUuid": "d4381657_d85272ad",
+      "revId": "424ba4c6c42bb0ec278fdc7c77b954791a77a587",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
