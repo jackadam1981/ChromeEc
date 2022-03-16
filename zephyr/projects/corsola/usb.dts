@@ -8,4 +8,16 @@
 		compatible = "cros-ec,usba-port-enable-pins";
 		enable-pins = <&en_pp5000_usb_a0_vbus>;
 	};
+
+	usbc {
+		port0 {
+			compatible = "named-usbc-port";
+			port = <0>;
+		};
+
+		port1 {
+			compatible = "named-usbc-port";
+			port = <1>;
+		};
+	};
 };
