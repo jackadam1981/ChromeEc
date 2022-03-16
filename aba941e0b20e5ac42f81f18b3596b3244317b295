@@ -22,6 +22,30 @@
       },
       "revId": "aba941e0b20e5ac42f81f18b3596b3244317b295",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a9ca979_71996fa7",
+        "filename": "zephyr/projects/intelrvp/CMakeLists.txt",
+        "patchSetId": 28
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-03-16T00:19:02Z",
+      "side": 1,
+      "message": "I kept these files out of If defined so that all rvp platform can pick this for compilation if CONFIG_PLATFORM_EC_USBC is enabled.\n\nIs these files are not required for all rvp platforms ?",
+      "parentUuid": "ee91f894_c2f0a86c",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 102
+      },
+      "revId": "aba941e0b20e5ac42f81f18b3596b3244317b295",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
