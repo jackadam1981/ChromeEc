@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "632909b2_bf8d4e15",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-03-16T23:27:24Z",
+      "side": 1,
+      "message": "Aaron took the opposite approach in crrev/c/3529816, and removed the tests instead. You should look at that cl and see if you want to undo it, or stop it before it merges.",
+      "revId": "1b1025b5ea5e442e51a3397f60ff5852b6607ae6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
