@@ -111,3 +111,23 @@ void host_cmd_motion_sense_dump(int max_sensor_count,
 	zassume_ok(host_command_process(&args),
 		   "Failed to get motion_sense dump");
 }
+
+K_HEAP_DEFINE(test_heap, 2048);
+
+void *test_malloc(size_t bytes)
+{
+	void *mem;
+
+	mem = k_heap_alloc(&test_heap, bytes, K_NO_WAIT);
+
+	if (mem == NULL) {
+		printk("Failed to alloc %d bytes\n", bytes);
+	}
+
+	return mem;
+}
+
+void test_free(void *mem)
+{
+	k_heap_free(&test_heap, mem);
+}
