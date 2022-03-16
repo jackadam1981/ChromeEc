@@ -24,10 +24,11 @@
 				i2c-addr-flags = "SN5S330_ADDR0_FLAGS";
 			};
 			tcpc {
-				compatible = "parade,ps8xxx";
+				compatible = "cros,tcpc";
 				status = "okay";
 				port = <&i2c_tcpc0>;
-				i2c-addr-flags = "PS8XXX_I2C_ADDR1_FLAGS";
+				i2c-addr-flags = <0x0b>;
+				drv = "ps8xxx_tcpm_drv";
 			};
 		};
 
@@ -47,10 +48,11 @@
 				i2c-addr-flags = "SN5S330_ADDR0_FLAGS";
 			};
 			tcpc {
-				compatible = "parade,ps8xxx";
+				compatible = "cros,tcpc";
 				status = "okay";
 				port = <&i2c_tcpc1>;
-				i2c-addr-flags = "PS8XXX_I2C_ADDR1_FLAGS";
+				i2c-addr-flags = <0x0b>;
+				drv = "ps8xxx_tcpm_drv";
 			};
 		};
 	};
