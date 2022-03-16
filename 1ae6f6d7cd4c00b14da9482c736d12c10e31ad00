@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1a22156_d1e7c0c2",
+        "filename": "zephyr/projects/intelrvp/mtlrvp/mtlrvpp_npcx/gpio.dts",
+        "patchSetId": 7
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2022-03-16T18:46:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c4aac693_76963d81",
+      "range": {
+        "startLine": 131,
+        "startChar": 21,
+        "endLine": 131,
+        "endChar": 26
+      },
+      "revId": "1ae6f6d7cd4c00b14da9482c736d12c10e31ad00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2ecc037c_61327e1a",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-03-16T18:17:24Z",
       "side": 1,
       "message": "remove, undef macro in board file",
+      "range": {
+        "startLine": 258,
+        "startChar": 0,
+        "endLine": 259,
+        "endChar": 34
+      },
+      "revId": "1ae6f6d7cd4c00b14da9482c736d12c10e31ad00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a711cc0_f767fd2d",
+        "filename": "zephyr/projects/intelrvp/mtlrvp/mtlrvpp_npcx/gpio.dts",
+        "patchSetId": 7
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2022-03-16T18:46:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2ecc037c_61327e1a",
       "range": {
         "startLine": 258,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b758bbf8_bb01a50d",
+        "filename": "zephyr/projects/intelrvp/mtlrvp/mtlrvpp_npcx/mtlrvp_npcx.dts",
+        "patchSetId": 7
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2022-03-16T18:46:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e50a11bf_9c1350cd",
+      "range": {
+        "startLine": 18,
+        "startChar": 2,
+        "endLine": 18,
+        "endChar": 9
+      },
+      "revId": "1ae6f6d7cd4c00b14da9482c736d12c10e31ad00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b8b421a7_d5e4bb33",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-03-16T18:17:24Z",
       "side": 1,
       "message": "try different name , these are based on AIC 1 \u0026 2, not w.r.t port\nmay be I2C_PORT_TYPEC_AIC1, I2C_PORT_TYPEC_AIC2",
+      "range": {
+        "startLine": 20,
+        "startChar": 16,
+        "endLine": 20,
+        "endChar": 32
+      },
+      "revId": "1ae6f6d7cd4c00b14da9482c736d12c10e31ad00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0cdb483a_ef3c0b22",
+        "filename": "zephyr/projects/intelrvp/mtlrvp/mtlrvpp_npcx/mtlrvp_npcx.dts",
+        "patchSetId": 7
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2022-03-16T18:46:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b8b421a7_d5e4bb33",
       "range": {
         "startLine": 20,
         "startChar": 16,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1925137_7a97c60d",
+        "filename": "zephyr/projects/intelrvp/mtlrvp/mtlrvpp_npcx/mtlrvp_npcx.dts",
+        "patchSetId": 7
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2022-03-16T18:46:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2500b22f_5db4c093",
+      "range": {
+        "startLine": 22,
+        "startChar": 2,
+        "endLine": 22,
+        "endChar": 10
+      },
+      "revId": "1ae6f6d7cd4c00b14da9482c736d12c10e31ad00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "db43fb48_b4312b3c",
@@ -129,6 +249,30 @@
       "writtenOn": "2022-03-16T18:17:24Z",
       "side": 1,
       "message": "Add a # TODO; Enable these in follow on CLs",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 31
+      },
+      "revId": "1ae6f6d7cd4c00b14da9482c736d12c10e31ad00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "478a12d2_dd5260b7",
+        "filename": "zephyr/projects/intelrvp/mtlrvp/prj.conf",
+        "patchSetId": 7
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2022-03-16T18:46:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "db43fb48_b4312b3c",
       "range": {
         "startLine": 13,
         "startChar": 0,
