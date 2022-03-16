@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6a4f6bc_8c27b3cb",
+        "filename": "zephyr/projects/intelrvp/include/gpio_map.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-03-16T21:11:06Z",
+      "side": 1,
+      "message": "nit: after looking at CL:3529812\nis it possible to define in mtl specific code rather than here?",
+      "revId": "d9ffaf64205352120fb5ad769be36349abded5e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
