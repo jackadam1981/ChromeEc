@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff45acec_7e94e7f6",
+        "filename": "board/kinox/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2022-03-16T14:44:03Z",
+      "side": 1,
+      "message": "This can be a local variable",
+      "range": {
+        "startLine": 157,
+        "startChar": 0,
+        "endLine": 157,
+        "endChar": 24
+      },
+      "revId": "fb0322f02c9ad5bbb1a148affc0eec11cbb530d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f8962de_f927cd1e",
+        "filename": "board/kinox/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2022-03-16T14:44:03Z",
+      "side": 1,
+      "message": "It looks like these two variables could be local variable",
+      "range": {
+        "startLine": 159,
+        "startChar": 0,
+        "endLine": 160,
+        "endChar": 32
+      },
+      "revId": "fb0322f02c9ad5bbb1a148affc0eec11cbb530d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "37453703_24de7d64",
+        "filename": "board/kinox/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2022-03-16T14:44:03Z",
+      "side": 1,
+      "message": "it looks like this is unnecessary because the active \u003d 1 in line 212",
+      "range": {
+        "startLine": 217,
+        "startChar": 0,
+        "endLine": 219,
+        "endChar": 13
+      },
+      "revId": "fb0322f02c9ad5bbb1a148affc0eec11cbb530d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
