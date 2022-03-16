@@ -64,6 +64,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f67c3f48_fcdb68f4",
+        "filename": "util/pinmap/pinmap/main.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-03-16T05:45:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4d832605_5c3a11c8",
+      "range": {
+        "startLine": 22,
+        "startChar": 58,
+        "endLine": 22,
+        "endChar": 59
+      },
+      "revId": "c489b4a7790c8e42ff2105dcc8570cca7e128673",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1863f77a_cddd814d",
@@ -77,6 +101,30 @@
       "writtenOn": "2022-03-16T05:27:10Z",
       "side": 1,
       "message": "why did you change OUTPUT to OUT_LOW?",
+      "range": {
+        "startLine": 125,
+        "startChar": 12,
+        "endLine": 125,
+        "endChar": 24
+      },
+      "revId": "c489b4a7790c8e42ff2105dcc8570cca7e128673",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4cd42758_b9320d0c",
+        "filename": "util/pinmap/pm/generate.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-03-16T05:45:59Z",
+      "side": 1,
+      "message": "Likely shouldn\u0027t occur in this change.",
+      "parentUuid": "1863f77a_cddd814d",
       "range": {
         "startLine": 125,
         "startChar": 12,
@@ -110,6 +158,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c42344c_4573138a",
+        "filename": "util/pinmap/readers/csv/csv.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-03-16T05:45:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e0ed84db_76fd8d6f",
+      "range": {
+        "startLine": 27,
+        "startChar": 28,
+        "endLine": 27,
+        "endChar": 52
+      },
+      "revId": "c489b4a7790c8e42ff2105dcc8570cca7e128673",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "347f8e84_d24abb63",
@@ -133,6 +205,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "454105ca_c1b10942",
+        "filename": "util/pinmap/readers/csv/csv.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-03-16T05:45:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "347f8e84_d24abb63",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 2
+      },
+      "revId": "c489b4a7790c8e42ff2105dcc8570cca7e128673",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "71750b0d_e5583796",
@@ -146,6 +242,30 @@
       "writtenOn": "2022-03-16T05:27:10Z",
       "side": 1,
       "message": "should this be `\u003c` instead? otherwise if you are selecting the last column, this will fail, no?",
+      "range": {
+        "startLine": 53,
+        "startChar": 18,
+        "endLine": 53,
+        "endChar": 19
+      },
+      "revId": "c489b4a7790c8e42ff2105dcc8570cca7e128673",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e441dd46_ba5134cf",
+        "filename": "util/pinmap/readers/csv/csv.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-03-16T05:45:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "71750b0d_e5583796",
       "range": {
         "startLine": 53,
         "startChar": 18,
