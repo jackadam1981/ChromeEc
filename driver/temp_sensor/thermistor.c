@@ -14,6 +14,9 @@
 #include "temp_sensor/thermistor.h"
 #include "util.h"
 
+#define CPRINTS(format, args...) cprints(CC_USBCHARGE, format, ## args)
+#define CPRINTF(format, args...) cprintf(CC_USBCHARGE, format, ## args)
+
 int thermistor_linear_interpolate(uint16_t mv,
 		const struct thermistor_info *info)
 {
@@ -88,6 +91,17 @@ int thermistor_get_temperature(int idx_adc, int *temp_ptr,
 	mv = adc_read_channel(idx_adc);
 	if (mv < 0)
 		return EC_ERROR_UNKNOWN;
+#ifdef CONFIG_NIVVIKS
+	/*
+	 * TODO(b/224900226): Remove when fixed.
+	 * Temporary workaround for b/224900226, where
+	 * the temperature ADCs sometimes read zero.
+	 */
+	if (mv == 0) {
+		CPRINTS("Zero read on sensor %d, ignored", idx_adc);
+		return EC_ERROR_UNKNOWN;
+	}
+#endif
 
 	*temp_ptr = thermistor_linear_interpolate(mv, info);
 	*temp_ptr = C_TO_K(*temp_ptr);
