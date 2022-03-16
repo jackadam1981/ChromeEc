@@ -70,6 +70,30 @@
       },
       "revId": "0da29ad9f0c8359e83a1128249f6a6d750e379d6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b539db18_6f61988b",
+        "filename": "zephyr/projects/intelrvp/adlrvp/adlrvp_npcx/fan.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-03-16T16:32:41Z",
+      "side": 1,
+      "message": "Yes, you are right its on GPIOA6.",
+      "parentUuid": "de087b6b_7bd84913",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 0
+      },
+      "revId": "0da29ad9f0c8359e83a1128249f6a6d750e379d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
