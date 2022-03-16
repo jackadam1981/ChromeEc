@@ -24,10 +24,11 @@
 				i2c-addr-flags = "SYV682X_ADDR1_FLAGS";
 			};
 			tcpc {
-				compatible = "parade,ps8xxx";
+				compatible = "cros,tcpc";
 				status = "okay";
 				port = <&i2c_tcpc0>;
 				i2c-addr-flags = "PS8XXX_I2C_ADDR2_FLAGS";
+				drv = "ps8xxx_tcpm_drv";
 			};
 		};
 
@@ -47,10 +48,11 @@
 				i2c-addr-flags = "SYV682X_ADDR1_FLAGS";
 			};
 			tcpc {
-				compatible = "parade,ps8xxx";
+				compatible = "cros,tcpc";
 				status = "okay";
 				port = <&i2c_tcpc1>;
 				i2c-addr-flags = "PS8XXX_I2C_ADDR2_FLAGS";
+				drv = "ps8xxx_tcpm_drv";
 			};
 		};
 	};

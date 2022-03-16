@@ -11,40 +11,44 @@
 		port0: usbc-port0@0 {
 			reg = <0>;
 			tcpc {
-				compatible = "fairchild,fusb302";
+				compatible = "cros,tcpc";
 				status = "okay";
 				port = <&typec_0>;
 				i2c-addr-flags = "FUSB302_I2C_ADDR_FLAGS";
+				drv = "fusb302_tcpm_drv";
 			};
 		};
 
 		port1: usbc-port1@1 {
 			reg = <1>;
 			tcpc {
-				compatible = "fairchild,fusb302";
+				compatible = "cros,tcpc";
 				status = "okay";
 				port = <&typec_1>;
 				i2c-addr-flags = "FUSB302_I2C_ADDR_FLAGS";
+				drv = "fusb302_tcpm_drv";
 			};
 		};
 
 		port2: usbc-port2@2 {
 			reg = <2>;
 			tcpc {
-				compatible = "fairchild,fusb302";
+				compatible = "cros,tcpc";
 				status = "okay";
 				port = <&typec_2>;
 				i2c-addr-flags = "FUSB302_I2C_ADDR_FLAGS";
+				drv = "fusb302_tcpm_drv";
 			};
 		};
 
 		port3: usbc-port3@3 {
 			reg = <3>;
 			tcpc {
-				compatible = "fairchild,fusb302";
+				compatible = "cros,tcpc";
 				status = "okay";
 				port = <&typec_3>;
 				i2c-addr-flags = "FUSB302_I2C_ADDR_FLAGS";
+				drv = "fusb302_tcpm_drv";
 			};
 		};
 	};
