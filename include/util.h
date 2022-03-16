@@ -73,7 +73,9 @@ extern "C" {
 #define POWER_OF_TWO(x) ((x) && !((x) & ((x) - 1)))
 
 /* Macro to check if the value is in range */
+#ifndef CONFIG_ZEPHYR
 #define IN_RANGE(x, min, max) ((x) >= (min) && (x) < (max))
+#endif
 
 /*
  * macros for integer division with various rounding variants
