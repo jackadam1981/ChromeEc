@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1e65906_33f24489",
+        "filename": "include/util.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-03-16T17:07:49Z",
+      "side": 1,
+      "message": "Do we need to add this?\n\n```\n#ifdef CONFIG_ZEPHYR\n#include \u003csys/util.h\u003e\n#endif\n```",
+      "revId": "88a90f48fdf1624ca55d670ee3ff9dc3e44c62fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
