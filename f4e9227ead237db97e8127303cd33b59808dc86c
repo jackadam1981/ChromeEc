@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a97225a_c66f8bae",
+        "filename": "zephyr/emul/tcpc/emul_tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1167,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-03-16T20:32:13Z",
+      "side": 0,
+      "message": "It looks like this code was just moved higher so it can be leveraged by  tcpci_emul_disconnect_partner, is that correct? I don\u0027t spot any changes in the two moved functions.",
+      "range": {
+        "startLine": 1117,
+        "startChar": 0,
+        "endLine": 1167,
+        "endChar": 0
+      },
+      "revId": "f4e9227ead237db97e8127303cd33b59808dc86c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
