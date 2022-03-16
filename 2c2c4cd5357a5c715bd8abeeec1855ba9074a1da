@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69ec755a_2a67de4e",
+        "filename": "zephyr/shim/src/tcpc.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-03-16T21:05:57Z",
+      "side": 1,
+      "message": "This looks a bit odd... are these different drivers expected to coexist in a mixed configuration? Or only one should be active at a time?",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 0
+      },
+      "revId": "2c2c4cd5357a5c715bd8abeeec1855ba9074a1da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
