@@ -931,12 +931,6 @@ static inline int chipset_get_sleep_signal(void)
 		return fake_suspend;
 }
 
-static void suspend_hang_detected(void)
-{
-	CPRINTS("Warning: Detected sleep hang! Waking host up!");
-	host_set_single_event(EC_HOST_EVENT_HANG_DETECT);
-}
-
 static void power_reset_host_sleep_state(void)
 {
 	power_set_host_sleep_state(HOST_SLEEP_EVENT_DEFAULT_RESET);
@@ -968,7 +962,7 @@ __override void power_chipset_handle_host_sleep_event(
 		 * notification needs to be sent to listeners.
 		 */
 		sleep_set_notify(SLEEP_NOTIFY_SUSPEND);
-		sleep_start_suspend(ctx, suspend_hang_detected);
+		sleep_start_suspend(ctx);
 		power_signal_enable_interrupt(GPIO_AP_SUSPEND);
 
 	} else if (state == HOST_SLEEP_EVENT_S3_RESUME) {

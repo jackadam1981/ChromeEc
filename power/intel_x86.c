@@ -179,8 +179,9 @@ static void lpc_s0ix_resume_restore_masks(void)
 	backup_sci_mask = backup_smi_mask = 0;
 }
 
-static void lpc_s0ix_hang_detected(void)
+__override void power_chipset_handle_sleep_hang(enum sleep_hang_type hang_type)
 {
+	power_board_handle_sleep_hang(hang_type);
 	/*
 	 * Wake up the AP so they don't just chill in a non-suspended state and
 	 * burn power. Overload a vaguely related event bit since event bits are
@@ -613,7 +614,7 @@ __override void power_chipset_handle_host_sleep_event(
 		 */
 		sleep_set_notify(SLEEP_NOTIFY_SUSPEND);
 
-		sleep_start_suspend(ctx, lpc_s0ix_hang_detected);
+		sleep_start_suspend(ctx);
 		power_signal_enable_interrupt(sleep_sig[SYS_SLEEP_S0IX]);
 	} else if (state == HOST_SLEEP_EVENT_S0IX_RESUME) {
 		/*

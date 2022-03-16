@@ -505,11 +505,6 @@ static void power_button_changed(void)
 DECLARE_HOOK(HOOK_POWER_BUTTON_CHANGE, power_button_changed, HOOK_PRIO_DEFAULT);
 
 #ifdef CONFIG_POWER_TRACK_HOST_SLEEP_STATE
-static void suspend_hang_detected(void)
-{
-	CPRINTS("Warning: Detected sleep hang! Waking host up!");
-	host_set_single_event(EC_HOST_EVENT_HANG_DETECT);
-}
 
 __override void power_chipset_handle_host_sleep_event(
 		enum host_sleep_event state,
@@ -524,7 +519,7 @@ __override void power_chipset_handle_host_sleep_event(
 		 * notification needs to be sent to listeners.
 		 */
 		sleep_set_notify(SLEEP_NOTIFY_SUSPEND);
-		sleep_start_suspend(ctx, suspend_hang_detected);
+		sleep_start_suspend(ctx);
 
 	} else if (state == HOST_SLEEP_EVENT_S3_RESUME) {
 		/*
