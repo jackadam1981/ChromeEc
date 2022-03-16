@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d688294e_5e34fb69",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-03-16T12:42:47Z",
+      "side": 1,
+      "message": "Hey, had to rework this one to make it work under risc-v, can\u0027t get away with just a \"if\" cause https://github.com/zephyrproject-rtos/zephyr/blob/main/arch/Kconfig#L12, so I had to add a pair of arch specific config override files.",
+      "revId": "14d18408dc0b7bfd3fa389c399a67a7a10a45aaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
