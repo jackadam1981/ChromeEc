@@ -22,6 +22,30 @@
       },
       "revId": "cb36e19d7f86ef4a62ef54142ef9f8730778efb2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc3cd718_3cdce6ec",
+        "filename": "util/pinmap/readers/csv/csv.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-03-16T04:59:25Z",
+      "side": 1,
+      "message": "You\u0027re right, I can add this as a test.",
+      "parentUuid": "9449c801_079e5a83",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 22
+      },
+      "revId": "cb36e19d7f86ef4a62ef54142ef9f8730778efb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
