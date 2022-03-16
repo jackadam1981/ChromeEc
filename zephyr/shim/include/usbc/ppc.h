@@ -15,7 +15,7 @@
 
 #define PPC_ID(id) DT_CAT(PPC_, id)
 #define PPC_ID_WITH_COMMA(id) PPC_ID(id),
-#define PPC_USBC_PORT(id) DT_REG_ADDR(DT_PARENT(id))
+#define PPC_USBC_PORT(id) DT_PROP(DT_PARENT(id), port)
 #define PPC_ALT_FOR(alt_id) PPC_USBC_PORT(DT_PHANDLE(alt_id, alternate_for))
 
 #define PPC_ALT_ENUM(id)                                 \
