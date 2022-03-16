@@ -1,0 +1,13 @@
+# Copyright (c) 2021 The Chromium OS Authors
+# SPDX-License-Identifier: Apache-2.0
+
+description: Named USB-C port node
+
+compatible: "named-usbc-port"
+
+properties:
+  port:
+    type: int
+    required: true
+    description: |
+      USB-C port number to serialize devices used for USB-C communication
