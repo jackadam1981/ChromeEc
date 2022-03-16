@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3286b469_5dcf54f0",
+        "filename": "zephyr/projects/intelrvp/mtlrvp/include/mtlrvp_zephyr.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2022-03-16T22:12:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c3f6d6e9_9d7d06ec",
+      "range": {
+        "startLine": 11,
+        "startChar": 8,
+        "endLine": 11,
+        "endChar": 26
+      },
+      "revId": "616faac86555f4cea64d49293bb34e70081780bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fdbcd9bb_90666e5a",
@@ -106,6 +130,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f61fa415_dda32d1c",
+        "filename": "zephyr/projects/intelrvp/mtlrvp/src/mtlrvp.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2022-03-16T22:12:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aa9de9bb_a258e826",
+      "range": {
+        "startLine": 42,
+        "startChar": 27,
+        "endLine": 42,
+        "endChar": 28
+      },
+      "revId": "616faac86555f4cea64d49293bb34e70081780bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "23c23187_e6b64443",
@@ -119,6 +167,30 @@
       "writtenOn": "2022-03-16T21:14:30Z",
       "side": 1,
       "message": "print these otherwise its unused variable",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 0
+      },
+      "revId": "616faac86555f4cea64d49293bb34e70081780bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f584f041_47dd8a14",
+        "filename": "zephyr/projects/intelrvp/mtlrvp/src/mtlrvp.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2022-03-16T22:12:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "23c23187_e6b64443",
       "range": {
         "startLine": 69,
         "startChar": 0,
