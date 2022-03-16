@@ -34,6 +34,24 @@
       "parentUuid": "9b739dc7_7f29022e",
       "revId": "541c98df7efc38213b96029fc3abccedb6616dbb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75eed6e1_96e285fa",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 4501,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-03-16T17:35:49Z",
+      "side": 1,
+      "message": "Since we plan to update the code when the new spec releases and we\u0027ve been running a quarterly PD spec release cadence, I think it should be okay for now.  The understanding would be that the spec should very hopefully have changed within a month, at which point we can align to the published decision there.",
+      "parentUuid": "5605a66e_513b039a",
+      "revId": "541c98df7efc38213b96029fc3abccedb6616dbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
