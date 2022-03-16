@@ -39,6 +39,30 @@
       },
       "revId": "14d18408dc0b7bfd3fa389c399a67a7a10a45aaa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "884f9ebe_085c4b28",
+        "filename": "zephyr/Kconfig.defaults",
+        "patchSetId": 4
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-03-16T15:58:56Z",
+      "side": 1,
+      "message": "I could give it a try and see how the maintainers like it. Though I don\u0027t mind separate per-arch override files either, does not look to bad with the optional source.\n\nHow about we go with this for now and I\u0027ll try to propose the glob PR separately? It would likely take a long time to review anyway and it\u0027s easy enough to merge this back.",
+      "parentUuid": "b8a7fb1e_7e97d49f",
+      "range": {
+        "startLine": 21,
+        "startChar": 26,
+        "endLine": 21,
+        "endChar": 33
+      },
+      "revId": "14d18408dc0b7bfd3fa389c399a67a7a10a45aaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
