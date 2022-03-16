@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f576978_7a4bf6d1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-03-16T16:40:50Z",
+      "side": 1,
+      "message": "I would be in favor of ",
+      "revId": "c401b45ada59f3be2e7f4456e4a1716340e8166b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3090f5b0_2ab29489",
+        "filename": "zephyr/shim/src/gpio.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-03-16T16:40:50Z",
+      "side": 1,
+      "message": "I\u0027m in favor of eliminating this GPIO pin get completely to match the cros-ec behavior.  During a sysjump, we should avoid any potential updates the GPIO module output register.\n\nBut I\u0027m good with submitting this now to get Herobrine unblocked.",
+      "range": {
+        "startLine": 306,
+        "startChar": 0,
+        "endLine": 306,
+        "endChar": 51
+      },
+      "revId": "c401b45ada59f3be2e7f4456e4a1716340e8166b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
