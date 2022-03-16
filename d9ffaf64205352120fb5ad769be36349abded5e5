@@ -16,6 +16,24 @@
       "message": "nit: after looking at CL:3529812\nis it possible to define in mtl specific code rather than here?",
       "revId": "d9ffaf64205352120fb5ad769be36349abded5e5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "59161925_cb32d5fc",
+        "filename": "zephyr/projects/intelrvp/include/gpio_map.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2022-03-16T21:24:56Z",
+      "side": 1,
+      "message": "I initially tried that and it appears that where the ENTERING_RW code is compiled is before the mtl specific code is called I will try a couple more things to try to get it organized in a way that it can be done in the MTL code",
+      "parentUuid": "f6a4f6bc_8c27b3cb",
+      "revId": "d9ffaf64205352120fb5ad769be36349abded5e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
