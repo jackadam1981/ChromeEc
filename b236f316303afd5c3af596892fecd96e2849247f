@@ -16,6 +16,46 @@
       "message": "LGTM",
       "revId": "b236f316303afd5c3af596892fecd96e2849247f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f01ff5bb_5811191a",
+        "filename": "zephyr/emul/tcpc/emul_tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1206,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-03-16T21:43:23Z",
+      "side": 1,
+      "message": "Did you mean for this to be in a different CL in this chain?",
+      "revId": "b236f316303afd5c3af596892fecd96e2849247f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60d82e9f_e4c643f6",
+        "filename": "zephyr/include/emul/tcpc/emul_tcpci_partner_common.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-03-16T21:43:23Z",
+      "side": 1,
+      "message": "Nits: \"clears\" \"sets\" \", and stops\"\n                ^-- Oxford comma",
+      "range": {
+        "startLine": 316,
+        "startChar": 10,
+        "endLine": 318,
+        "endChar": 2
+      },
+      "revId": "b236f316303afd5c3af596892fecd96e2849247f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
