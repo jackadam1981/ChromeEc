@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7dc1b48_cd74131a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-03-16T19:55:14Z",
+      "side": 1,
+      "message": "Let\u0027s make the subject specific about the CMakeLists.txt so when someone is browsing the git log they just see that which is more important.",
+      "revId": "a636162b0f6884a63536de0434ad4125e020d7b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bddf132b_9b381223",
+        "filename": "zephyr/shim/src/CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-03-16T19:55:14Z",
+      "side": 1,
+      "message": "I see TEST\u003dnone but we should build the zephyr boards to confirm this doesn\u0027t break anything.",
+      "range": {
+        "startLine": 44,
+        "startChar": 51,
+        "endLine": 44,
+        "endChar": 58
+      },
+      "revId": "a636162b0f6884a63536de0434ad4125e020d7b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
