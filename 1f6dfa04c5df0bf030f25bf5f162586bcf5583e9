@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "72052a96_650d1c96",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-03-16T23:55:24Z",
+      "side": 1,
+      "message": "FYI I tested this and got a timeout error.\n\nI haven\u0027t debugged this yet, but I am just sharing in case you recognize the problem. It\u0027s also possible I am not invoking the command correctly.\n\n\n```\n\u003e ./test/run_device_tests.py --flasher\u003djtrace --remote\u003dlocalhost --jlink_port\u003d19020 --console_port\u003d4567\n\n...\n\nConnecting to target via SWD\nFound SW-DP with ID 0x6BA02477\nSTM32 (connect): Can not attach to CPU. Trying connect under reset.\nFound SW-DP with ID 0x6BA02477\nJLinkGUIServerExe: cannot connect to X server \nDevice will be unsecured now.\nFound SW-DP with ID 0x6BA02477\nDPIDR: 0x6BA02477\nScanning AP map to find all available APs\nAP[3]: Stopped AP scan as end of AP map has been reached\nAP[0]: AHB-AP (IDR: 0x84770001)\nAP[1]: AHB-AP (IDR: 0x84770001)\nAP[2]: APB-AP (IDR: 0x54770002)\nIterating through AP map to find AHB-AP to use\nAP[0]: Core found\nAP[0]: AHB-AP ROM base: 0xE00FE000\nCPUID register: 0x411FC271. Implementer code: 0x41 (ARM)\nFound Cortex-M7 r1p1, Little endian.\nIdentified core does not match configuration. (Found: Cortex-M7, Configured: Cortex-M4)\nFPUnit: 8 code (BP) slots and 0 literal slots\nCoreSight components:\nROMTbl[0] @ E00FE000\nROMTbl[0][0]: E00FF000, CID: B105100D, PID: 000BB4C7 ROM Table\nROMTbl[1] @ E00FF000\nROMTbl[1][0]: E000E000, CID: B105E00D, PID: 000BB00C SCS-M7\nROMTbl[1][1]: E0001000, CID: B105E00D, PID: 000BB002 DWT\nROMTbl[1][2]: E0002000, CID: B105E00D, PID: 000BB00E FPB-M7\nROMTbl[1][3]: E0000000, CID: B105E00D, PID: 000BB001 ITM\nROMTbl[0][1]: E0041000, CID: B105900D, PID: 001BB975 ETM-M7\nROMTbl[0][2]: E0043000, CID: B105900D, PID: 004BB906 CTI\nCache: Separate I- and D-cache.\nI-Cache L1: 16 KB, 256 Sets, 32 Bytes/Line, 2-Way\nD-Cache L1: 16 KB, 128 Sets, 32 Bytes/Line, 4-Way\nCortex-M7 identified.\nReset delay: 0 ms\nReset type NORMAL: Resets core \u0026 peripherals via SYSRESETREQ \u0026 VECTRESET bit.\nReset: Halt core after reset via DEMCR.VC_CORERESET.\nReset: Reset device via AIRCR.SYSRESETREQ.\n\nDownloading file [/mnt/host/source/src/platform/ec/build/bloonchipper/aes/aes.bin]...\n\n****** Error: Timeout while preparing target, RAMCode did not respond in time. (PC \u003d 0x00000000, CPSR \u003d 0x00000000, LR \u003d 0x81000000)!\nFailed to prepare RAMCode using RAM\nUnspecified error -1\n\nScript processing completed.\n```\n",
+      "revId": "1f6dfa04c5df0bf030f25bf5f162586bcf5583e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "79fabb8b_b8e164c9",
         "filename": "test/run_device_tests.py",
         "patchSetId": 1
