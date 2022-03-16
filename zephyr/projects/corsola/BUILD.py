@@ -21,7 +21,7 @@ def register_corsola_project(
         dts_overlays=[
             here / "common.dts",
             here / "power_signal.dts",
-            here / "usba.dts",
+            here / "usb.dts",
             *extra_dts_overlays,
         ],
         kconfig_files=[here / "prj.conf", *extra_kconfig_files],

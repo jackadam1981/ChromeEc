@@ -15,7 +15,7 @@
 	DT_HAS_COMPAT_STATUS_OKAY(PS8XXX_COMPAT) ||                            \
 	DT_HAS_COMPAT_STATUS_OKAY(TCPCI_COMPAT)                                \
 
-#define USBC_PORT(id) DT_REG_ADDR(DT_PARENT(id))
+#define USBC_PORT(id) DT_PROP(DT_PARENT(id), port)
 
 #define TCPC_CONFIG(id, fn) [USBC_PORT(id)] = fn(id)
 
