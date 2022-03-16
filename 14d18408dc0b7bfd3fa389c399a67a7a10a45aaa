@@ -16,6 +16,29 @@
       "message": "Hey, had to rework this one to make it work under risc-v, can\u0027t get away with just a \"if\" cause https://github.com/zephyrproject-rtos/zephyr/blob/main/arch/Kconfig#L12, so I had to add a pair of arch specific config override files.",
       "revId": "14d18408dc0b7bfd3fa389c399a67a7a10a45aaa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b8a7fb1e_7e97d49f",
+        "filename": "zephyr/Kconfig.defaults",
+        "patchSetId": 4
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-03-16T15:30:43Z",
+      "side": 1,
+      "message": "the concern with this is that it adds more non-monolithic Kconfig (depends on values).\n\nZephyr is already littered with that but I imagine a future where that could be fixed.\n\nCan we source all arches and add `if ARCH_ARM` etc to all of them?",
+      "range": {
+        "startLine": 21,
+        "startChar": 26,
+        "endLine": 21,
+        "endChar": 33
+      },
+      "revId": "14d18408dc0b7bfd3fa389c399a67a7a10a45aaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
