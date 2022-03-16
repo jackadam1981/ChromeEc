@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b20418b1_17fd4fb0",
+        "filename": "power/host_sleep.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-03-16T21:36:56Z",
+      "side": 0,
+      "message": "Does the timeout_hang_type need some equivalent of NONE to be used the same way we used the callback? \n\nI\u0027d need to logic my way through the usages here, but it seems like we could have had calls of sleep_transition_timeout() before where no callback was called because it had been cleared.  I\u0027d need to dig into git history more for that though since the callback clear was a copy over from the Intel sleep hang code initially, so its git history would have the reasoning for the clearing.",
+      "revId": "41dd96a78d915404ad0bfa6a0a93fe1c45d9b03e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
