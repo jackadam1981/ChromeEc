@@ -124,6 +124,24 @@
       "parentUuid": "3ee8ac31_88e6b0eb",
       "revId": "186b7a1be94ea0d94aa586bd3eef318e8c3a8d55",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a8fa805_335801e2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-03-16T06:33:21Z",
+      "side": 1,
+      "message": "The very first patch only includes interrupt signals.\nWith this patch how about the console command, powerindebug? Will it still print all signals, if so, are those real time values?",
+      "parentUuid": "afff0658_9e7049b9",
+      "revId": "186b7a1be94ea0d94aa586bd3eef318e8c3a8d55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
