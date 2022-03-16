@@ -106,18 +106,13 @@ ZTEST(signals, test_validate_request)
 	zassert_equal(-EINVAL, power_signal_enable_interrupt(PWR_IMVP9_VRRDY),
 		      "enable interrupt on input pin without interrupt config");
 	/* Can't disable interrupt on input with no interrupt flags */
-	zassert_equal(-EINVAL,
-		      power_signal_disable_interrupt(PWR_IMVP9_VRRDY),
-		      "disable interrupt on input pin without interrupt config");
-	/* Invalid signal - should be rejectde */
-	zassert_equal(-EINVAL, power_signal_get(-1),
-		      "power_signal_get with -1 signal should fail");
-	zassert_equal(-EINVAL, power_signal_set(-1, 1),
-		      "power_signal_set with -1 signal should fail");
-	zassert_equal(-EINVAL, power_signal_enable_interrupt(-1),
-		      "enable interrupt with -1 signal should fail");
-	zassert_equal(-EINVAL, power_signal_disable_interrupt(-1),
-		      "disable interrupt with -1 signal should fail");
+	zassert_equal(
+		-EINVAL, power_signal_disable_interrupt(PWR_IMVP9_VRRDY),
+		"disable interrupt on input pin without interrupt config");
+
+	/* Input to power_signal_* functions is an enum type, don't test with
+	 * non-enum values.
+	 */
 }
 
 /**
