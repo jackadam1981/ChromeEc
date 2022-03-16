@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b76ca33_9193dbc3",
+        "filename": "zephyr/projects/nissa/src/common.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-03-16T03:57:18Z",
+      "side": 1,
+      "message": "This would be clearer if it said \"next_mux\" specifically and mentioned what fills it in, since on first reading I thought this was a form of TODO.\n\n\u003e next_mux is populated by board code if required",
+      "revId": "240cd2389b60ecb4fb75aa155fe96f553aebfd05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
