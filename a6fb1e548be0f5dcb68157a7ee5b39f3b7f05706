@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "296064a1_4c0024c0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1381813
+      },
+      "writtenOn": "2022-03-16T05:55:51Z",
+      "side": 1,
+      "message": "I think this is ok to land. I think at some point soon some variable names could be made slightly more descriptive than single-letter ones in various places. I like the idea that you can select the column now.",
+      "revId": "a6fb1e548be0f5dcb68157a7ee5b39f3b7f05706",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb87f801_7b792743",
+        "filename": "util/pinmap/readers/csv/csv.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1381813
+      },
+      "writtenOn": "2022-03-16T05:55:51Z",
+      "side": 1,
+      "message": "optional minor nit: \u0027key\u0027 is a bit too vague, but I suppose somebody could figure it out. not important enough to block merging.",
+      "range": {
+        "startLine": 32,
+        "startChar": 25,
+        "endLine": 32,
+        "endChar": 28
+      },
+      "revId": "a6fb1e548be0f5dcb68157a7ee5b39f3b7f05706",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
