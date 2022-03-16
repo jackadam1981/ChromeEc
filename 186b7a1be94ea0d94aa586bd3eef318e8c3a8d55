@@ -142,6 +142,24 @@
       "parentUuid": "afff0658_9e7049b9",
       "revId": "186b7a1be94ea0d94aa586bd3eef318e8c3a8d55",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d02af888_a1d5e787",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-03-16T06:47:47Z",
+      "side": 1,
+      "message": "Yes, it\u0027s only the power signal mask that\u0027s affected here.\nAny reading of signals using power_signal_get works as before.",
+      "parentUuid": "3a8fa805_335801e2",
+      "revId": "186b7a1be94ea0d94aa586bd3eef318e8c3a8d55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
