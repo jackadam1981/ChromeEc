@@ -16,6 +16,144 @@
       "message": "I refactored it a little to remove \u0027chip\u0027 as a column key.\n",
       "revId": "c489b4a7790c8e42ff2105dcc8570cca7e128673",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "370bf862_aaf74c77",
+        "filename": "util/pinmap/README.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1381813
+      },
+      "writtenOn": "2022-03-16T05:27:10Z",
+      "side": 1,
+      "message": "I suppose a future enhancement would be to select the column by name instead of alphabetic index?",
+      "range": {
+        "startLine": 94,
+        "startChar": 54,
+        "endLine": 94,
+        "endChar": 55
+      },
+      "revId": "c489b4a7790c8e42ff2105dcc8570cca7e128673",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d832605_5c3a11c8",
+        "filename": "util/pinmap/pinmap/main.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1381813
+      },
+      "writtenOn": "2022-03-16T05:27:10Z",
+      "side": 1,
+      "message": "maybe clarify that this is an alphabetic column index, people might get confused about column meaning the name of the column headings, for example.",
+      "range": {
+        "startLine": 22,
+        "startChar": 58,
+        "endLine": 22,
+        "endChar": 59
+      },
+      "revId": "c489b4a7790c8e42ff2105dcc8570cca7e128673",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1863f77a_cddd814d",
+        "filename": "util/pinmap/pm/generate.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1381813
+      },
+      "writtenOn": "2022-03-16T05:27:10Z",
+      "side": 1,
+      "message": "why did you change OUTPUT to OUT_LOW?",
+      "range": {
+        "startLine": 125,
+        "startChar": 12,
+        "endLine": 125,
+        "endChar": 24
+      },
+      "revId": "c489b4a7790c8e42ff2105dcc8570cca7e128673",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0ed84db_76fd8d6f",
+        "filename": "util/pinmap/readers/csv/csv.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1381813
+      },
+      "writtenOn": "2022-03-16T05:27:10Z",
+      "side": 1,
+      "message": "why not rename the \u0027arg\u0027 variable to \u0027filepath\u0027 or similar if this is the case to make it more obvious?",
+      "range": {
+        "startLine": 27,
+        "startChar": 28,
+        "endLine": 27,
+        "endChar": 52
+      },
+      "revId": "c489b4a7790c8e42ff2105dcc8570cca7e128673",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "347f8e84_d24abb63",
+        "filename": "util/pinmap/readers/csv/csv.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1381813
+      },
+      "writtenOn": "2022-03-16T05:27:10Z",
+      "side": 1,
+      "message": "this is a bit sketchy, it\u0027ll accept columns named \u0027{\u0027, \u0027|\u0027, \u0027}\u0027, \u0027~\u0027, \u0027^H`. But I guess it\u0027s highly unlikely a user will do that, and it doesn\u0027t really matter anyway if they do. I propose an optional fix to check for \u003e\u003d 26.",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 2
+      },
+      "revId": "c489b4a7790c8e42ff2105dcc8570cca7e128673",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71750b0d_e5583796",
+        "filename": "util/pinmap/readers/csv/csv.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1381813
+      },
+      "writtenOn": "2022-03-16T05:27:10Z",
+      "side": 1,
+      "message": "should this be `\u003c` instead? otherwise if you are selecting the last column, this will fail, no?",
+      "range": {
+        "startLine": 53,
+        "startChar": 18,
+        "endLine": 53,
+        "endChar": 19
+      },
+      "revId": "c489b4a7790c8e42ff2105dcc8570cca7e128673",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
