@@ -46,6 +46,30 @@
       },
       "revId": "aba941e0b20e5ac42f81f18b3596b3244317b295",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ef38f92_06ff8d7b",
+        "filename": "zephyr/projects/intelrvp/CMakeLists.txt",
+        "patchSetId": 28
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-03-16T04:49:16Z",
+      "side": 1,
+      "message": "these are MECC spec specific.\nADL is MECC1.0\nMTL will be MECC1.1\nAlso MTL and beyond we will can add these files in zephyr folder itself",
+      "parentUuid": "8a9ca979_71996fa7",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 102
+      },
+      "revId": "aba941e0b20e5ac42f81f18b3596b3244317b295",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
