@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e1806ef_861e6f65",
+        "filename": "zephyr/dts/bindings/motionsense/driver/cros-ec,bmi3xx-accel.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2022-03-16T16:26:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2070b8a4_eb307484",
+      "revId": "21d72dd987f1382969e87525ca842dc8e55f8fa6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fc369c43_c9eda1ad",
@@ -41,6 +59,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8355411b_ee0fadd0",
+        "filename": "zephyr/projects/skyrim/motionsense.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2022-03-16T16:26:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fc369c43_c9eda1ad",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "21d72dd987f1382969e87525ca842dc8e55f8fa6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d64f01eb_0821f6a1",
@@ -54,6 +96,24 @@
       "writtenOn": "2022-03-15T21:31:51Z",
       "side": 1,
       "message": "I haven\u0027t double checked the chip orientations on skyrim... an easy verification would be if you see similar values for x, y, and z on guybrush as you see on skyrim in the same board orientation.  If we need this to vary by board, we can pull this part into the board dts files",
+      "revId": "21d72dd987f1382969e87525ca842dc8e55f8fa6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b50ab019_6a3c9ec9",
+        "filename": "zephyr/projects/skyrim/motionsense.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2022-03-16T16:26:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d64f01eb_0821f6a1",
       "revId": "21d72dd987f1382969e87525ca842dc8e55f8fa6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
