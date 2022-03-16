@@ -111,6 +111,30 @@
       },
       "revId": "14d18408dc0b7bfd3fa389c399a67a7a10a45aaa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "98524983_3d64c40d",
+        "filename": "zephyr/Kconfig.defaults",
+        "patchSetId": 4
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-03-16T16:11:35Z",
+      "side": 1,
+      "message": "\u003e The problem is that the original option is defined in a file sourced from https://github.com/zephyrproject-rtos/zephyr/blob/main/arch/Kconfig#L12, so that\u0027s the one I would have to change to a wildcard and add \"if ARCH_*\" to all architecture Kconfig files (and there few other sets of those under soc/). If I just source all arch here and just put the override in an \"if\", the parser would try to parse and complain for missing type anyway.\n\nThat\u0027s annoying 😢\n\nLet\u0027s work on fixing that upstream. But for now I guess we\u0027ll have to survive with this.",
+      "parentUuid": "02093ad7_67a79253",
+      "range": {
+        "startLine": 21,
+        "startChar": 26,
+        "endLine": 21,
+        "endChar": 33
+      },
+      "revId": "14d18408dc0b7bfd3fa389c399a67a7a10a45aaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
