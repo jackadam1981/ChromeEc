@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac58c49b_42439e41",
+        "filename": "zephyr/emul/tcpc/emul_tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 389,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2022-03-16T16:11:42Z",
+      "side": 1,
+      "message": "Why isn\u0027t the emulator implicitly setting alert changed when the alert was changed?",
+      "range": {
+        "startLine": 387,
+        "startChar": 0,
+        "endLine": 389,
+        "endChar": 0
+      },
+      "revId": "b3cc0fdb01321e724c0a483095483b900cba1009",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5097604_16d21c7b",
+        "filename": "zephyr/emul/tcpc/emul_tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 435,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2022-03-16T16:11:42Z",
+      "side": 1,
+      "message": "is this needed with the previous set reg already setting the alert_reg?",
+      "range": {
+        "startLine": 435,
+        "startChar": 2,
+        "endLine": 435,
+        "endChar": 38
+      },
+      "revId": "b3cc0fdb01321e724c0a483095483b900cba1009",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
