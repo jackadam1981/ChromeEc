@@ -63,6 +63,30 @@
       },
       "revId": "14d18408dc0b7bfd3fa389c399a67a7a10a45aaa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "576ecd44_023ed945",
+        "filename": "zephyr/Kconfig.defaults",
+        "patchSetId": 4
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-03-16T16:02:39Z",
+      "side": 1,
+      "message": "\u003e I could give it a try and see how the maintainers like it.\n\nThis is in our repos tho?\n\n\u003e Though I don\u0027t mind separate per-arch override files either, does not look to bad with the optional source.\n\nThe issue is that it becomes difficult to grok the Kconfig outside of the Zephyr build system, which seems useful to do.\n\nWe\u0027re blocked on doing so by upstream zephyr not doing that, but I think we should work with them to fix that.",
+      "parentUuid": "884f9ebe_085c4b28",
+      "range": {
+        "startLine": 21,
+        "startChar": 26,
+        "endLine": 21,
+        "endChar": 33
+      },
+      "revId": "14d18408dc0b7bfd3fa389c399a67a7a10a45aaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
