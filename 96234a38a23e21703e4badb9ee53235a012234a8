@@ -46,6 +46,30 @@
       },
       "revId": "96234a38a23e21703e4badb9ee53235a012234a8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d518bf9f_91d9ee4c",
+        "filename": "zephyr/emul/tcpc/emul_tcpci.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1187,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-03-17T17:31:54Z",
+      "side": 1,
+      "message": "Ack. I should have double checked the enum.",
+      "parentUuid": "1d62621a_206010d5",
+      "range": {
+        "startLine": 1187,
+        "startChar": 5,
+        "endLine": 1187,
+        "endChar": 30
+      },
+      "revId": "96234a38a23e21703e4badb9ee53235a012234a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
