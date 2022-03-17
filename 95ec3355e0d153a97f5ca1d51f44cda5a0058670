@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e47c40b4_1bc72042",
+        "filename": "docs/zephyr/zephyr_ap_ec_comm.md",
+        "patchSetId": 6
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1477788
+      },
+      "writtenOn": "2022-03-17T16:06:59Z",
+      "side": 1,
+      "message": "Added the information in the CrOS EC documentation and mentioned it in the zephyr one. Is that ok?",
+      "parentUuid": "8e488921_e230be8d",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 87
+      },
+      "revId": "95ec3355e0d153a97f5ca1d51f44cda5a0058670",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d965a2cf_bee9a3af",
         "filename": "docs/zephyr/zephyr_ap_ec_comm.md",
         "patchSetId": 6
@@ -37,6 +61,30 @@
       "writtenOn": "2022-03-04T16:35:58Z",
       "side": 1,
       "message": "The eSPI node also needs to be enabled.\n```\n\u0026espi0 {\n\tstatus \u003d \"okay\";\n};\n```\n\nThe upstream eSPI drivers don\u0027t appear to be checking the `status` property, but it\u0027s a good idea to explicitly enable the node.",
+      "range": {
+        "startLine": 115,
+        "startChar": 0,
+        "endLine": 117,
+        "endChar": 0
+      },
+      "revId": "95ec3355e0d153a97f5ca1d51f44cda5a0058670",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "70db86d6_9ca285d9",
+        "filename": "docs/zephyr/zephyr_ap_ec_comm.md",
+        "patchSetId": 6
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1477788
+      },
+      "writtenOn": "2022-03-17T16:06:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d965a2cf_bee9a3af",
       "range": {
         "startLine": 115,
         "startChar": 0,
