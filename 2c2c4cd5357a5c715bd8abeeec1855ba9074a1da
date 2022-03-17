@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e3301071_c1532746",
+        "filename": "zephyr/shim/src/CMakeLists.txt",
+        "patchSetId": 10
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-03-17T18:24:43Z",
+      "side": 1,
+      "message": "Are these correct? Can\u0027t find a \"config PLATFORM_EC_USB_PD_TCPM_PS8755\" or \"config PLATFORM_EC_USB_PD_TCPM_PS8755\" in the Kconfigs (https://source.chromium.org/search?q\u003d%22config%20PLATFORM_EC_USB_PD_TCPM_PS8755%22\u0026sq\u003d\u0026ss\u003dchromiumos%2Fchromiumos%2Fcodesearch:src%2Fplatform%2Fec%2F)\n\nIdeally we\u0027d have a Kconfig structure that reflects the driver file organization, if we have a common and leaf files it\u0027d be cool to represent that. How about:\n\n- rework the Kconfig for this with a CONFIG_PLATFORM_EC_USB_PD_TCPM group and then sub-options for the individual drivers\n- use the common option for enabling tcpc.c here\n- always instantiate tcpc_config[] (i.e. remove the #if down there) but move the DT_FOREACH_STATUS_OKAY_VARGS in the leaf files, and make those a noop if the corresponding driver is not enabled (may have to have a tcpc_common.h for something)",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 0
+      },
+      "revId": "2c2c4cd5357a5c715bd8abeeec1855ba9074a1da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "69ec755a_2a67de4e",
         "filename": "zephyr/shim/src/tcpc.c",
         "patchSetId": 10
@@ -38,6 +61,30 @@
       "side": 1,
       "message": "Yes, we sometimes use different tcpc chip on different ports.\n\ne.g.\ncherry: https://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/main/baseboard/cherry/baseboard.c#355\ncorsola: https://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/main/zephyr/projects/corsola/src/kingler/usbc_config.c#38",
       "parentUuid": "69ec755a_2a67de4e",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 0
+      },
+      "revId": "2c2c4cd5357a5c715bd8abeeec1855ba9074a1da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad784a8e_8b3574da",
+        "filename": "zephyr/shim/src/tcpc.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-03-17T18:24:43Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a282ac7d_48989f73",
       "range": {
         "startLine": 26,
         "startChar": 0,
