@@ -22,6 +22,30 @@
       },
       "revId": "cf39ee24c1d2150a105a49b920b24dd621273d52",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0debc1f_061671e8",
+        "filename": "zephyr/projects/intelrvp/adlrvp/prj.conf",
+        "patchSetId": 5
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2022-03-17T16:55:11Z",
+      "side": 1,
+      "message": "I\u0027ll go through and double check all the boards that may need it. I assumed since I was was moving it from the baseboard to a variant that other boards had it set which was a bad assumption on my part",
+      "parentUuid": "8c4eb86a_5f3a2e6f",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 37
+      },
+      "revId": "cf39ee24c1d2150a105a49b920b24dd621273d52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
