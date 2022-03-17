@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "19603f1f_725eb7a7",
+        "filename": "docs/zephyr/zephyr_cbi.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2022-03-17T16:03:41Z",
+      "side": 1,
+      "message": "I merged information to make this more clear.",
+      "parentUuid": "23e082f6_55d7ec58",
+      "range": {
+        "startLine": 13,
+        "startChar": 71,
+        "endLine": 13,
+        "endChar": 75
+      },
+      "revId": "7fed55710d65f1c97d0bc7f01388115c60ad9541",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9f21e954_dbb2702e",
@@ -141,6 +165,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c959e589_cbe63164",
+        "filename": "docs/zephyr/zephyr_cbi.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2022-03-17T16:03:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a7d296f0_76be0d34",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 77
+      },
+      "revId": "7fed55710d65f1c97d0bc7f01388115c60ad9541",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ef244fa8_93f9b1ef",
@@ -226,6 +274,30 @@
       "side": 1,
       "message": "I think the following organization makes sense:\n\nzephyr_cbi.md: Provides an overview of the CBI EEPROM, including how to enable it (Kconfig and devicetree).  Provide links to separate FW_CONFIG and SSFC docs.\n\nzephyr_fw_config.md: Andrew\u0027s doc.  Needs some minor changes to point back to zephyr_cbi.md instead of duplicating the Kconfig section.\n\nzephyr_ssfc.md: Contains your content below.  Also links back to the zephyr_cbi.md doc.",
       "parentUuid": "df5f91e6_6975a7bd",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 42
+      },
+      "revId": "7fed55710d65f1c97d0bc7f01388115c60ad9541",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc867393_44e3c679",
+        "filename": "docs/zephyr/zephyr_cbi.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2022-03-17T16:03:41Z",
+      "side": 1,
+      "message": "I think I addressed all of your organization requests",
+      "parentUuid": "ff8b344f_73044f13",
       "range": {
         "startLine": 58,
         "startChar": 0,
