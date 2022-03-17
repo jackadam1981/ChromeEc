@@ -277,6 +277,8 @@ const char help_str[] =
 	"      Requests that the EC will automatically reboot the AP after a\n"
 	"      configurable number of seconds the next time we enter the G3\n"
 	"      power state.\n"
+	"  rgbkbd ...\n"
+	"      Set/get brightness and colors of RGB keyboard.\n"
 	"  rollbackinfo\n"
 	"      Print rollback block information\n"
 	"  rtcget\n"
@@ -1282,6 +1284,95 @@ int cmd_reboot_ap_on_g3(int argc, char *argv[])
 
 	rv = ec_command(EC_CMD_REBOOT_AP_ON_G3, cmdver, &p, sizeof(p), NULL, 0);
 	return (rv < 0 ? rv : 0);
+}
+
+static void cmd_rgbkbd_help(char *cmd)
+{
+	fprintf(stderr,
+	"  Usage1: %s <brightness>\n"
+	"          Set global brightness.\n"
+	"\n"
+	"  Usage2: %s <key#> <RGB>\n"
+	"          Set color of a specified key to <RGB>.\n"
+	"\n"
+	"  Usage3: %s all <RGB>\n"
+	"          Set color of all keys to <RGB>.\n"
+	"\n"
+	"  Usage4: %s demo <id>\n"
+	"          Start a demo specified by <id>.\n",
+	cmd, cmd, cmd, cmd);
+}
+
+static int cmd_rgbkbd(int argc, char *argv[])
+{
+	const size_t max_color_len = 1;
+	struct ec_params_rgbkbd_set_color *p;
+	int val, key;
+	char *e;
+	struct rgb_s color;
+	uint32_t rgb;
+	int rv;
+
+	p = malloc(sizeof(*p) + sizeof(color) * max_color_len);
+	if (p == NULL)
+		return -1;
+
+	if (argc < 2 || 3 < argc) {
+		cmd_rgbkbd_help(argv[0]);
+		return -1;
+	}
+
+	if (argc == 2) {
+		/* Usage 1 */
+		val = strtoul(argv[1], &e, 0);
+		if ((e && *e) || val > EC_RGBKBD_MAX_BRIGHTNESS) {
+			fprintf(stderr, "Invalid brightnes values.\n");
+			return -1;
+		}
+		printf("(Not Implemented) Global brightness set to %u.\n", val);
+		return 0;
+	} else if (!strcasecmp(argv[1], "all")) {
+		/* Usage 3 */
+		rgb = strtoul(argv[2], &e, 0);
+		if ((e && *e) || rgb > EC_RGBKBD_MAX_RGB_COLOR) {
+			fprintf(stderr, "Invalid RGB color.\n");
+			return -1;
+		}
+		printf("(Not Implemented) All keys set to RGB=0x%X.\n", rgb);
+		return 0;
+	} else if (!strcasecmp(argv[1], "demo")) {
+		/* Usage 4 */
+		val = strtoul(argv[2], &e, 0);
+		if ((e && *e) || val >= EC_RGBKBD_DEMO_COUNT)
+			return EC_ERROR_PARAM1;
+		printf("(Not Implemented) Demo set to %d.\n", val);
+		return 0;
+	} else {
+		/* Usage 2 */
+		key = strtol(argv[1], &e, 0);
+		if ((e && *e) || key >= EC_RGBKBD_MAX_KEY_COUNT) {
+			fprintf(stderr, "Invalid key ID.\n");
+			return -1;
+		}
+		rgb = strtoul(argv[2], &e, 0);
+		if ((e && *e) || rgb > EC_RGBKBD_MAX_RGB_COLOR) {
+			fprintf(stderr, "Invalid RGB color.\n");
+			return -1;
+		}
+
+		p->start_key = key;
+		p->length = max_color_len;
+		p->color[0].r = (rgb >> 16) & 0xff;
+		p->color[0].g = (rgb >> 8) & 0xff;
+		p->color[0].b = (rgb >> 0) & 0xff;
+	}
+
+	/* We need to speak usb_updater for KBMCU on USB. */
+	rv = ec_command(EC_CMD_RGBKBD_SET_COLOR, 0, &p, sizeof(p), NULL, 0);
+	if (rv < 0)
+		return rv;
+
+	return rv;
 }
 
 int cmd_button(int argc, char *argv[])
@@ -10651,6 +10742,7 @@ const struct command commands[] = {
 	{"rand", cmd_rand},
 	{"readtest", cmd_read_test},
 	{"reboot_ec", cmd_reboot_ec},
+	{"rgbkbd", cmd_rgbkbd},
 	{"rollbackinfo", cmd_rollback_info},
 	{"rtcget", cmd_rtc_get},
 	{"rtcgetalarm", cmd_rtc_get_alarm},
