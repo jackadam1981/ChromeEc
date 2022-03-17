@@ -10,10 +10,7 @@
 
 #include "compile_time_macros.h"
 
-/*
- * Early Volmar boards are not set up for vivaldi
- */
-#undef CONFIG_KEYBOARD_VIVALDI
+#define CONFIG_KEYBOARD_VIVALDI
 
 /* Baseboard features */
 #include "baseboard.h"
