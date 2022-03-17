@@ -295,6 +295,13 @@ int acpi_ap_to_ec(int is_cmd, uint8_t value, uint8_t *resultptr)
 			result = usb_retimer_fw_update_get_result();
 			break;
 #endif
+
+#ifdef CONFIG_FANS
+		case EC_ACPI_MEM_FAN_RPM:
+			result = dptf_get_fan_rpm_value();
+			break;
+#endif
+
 		default:
 			result = acpi_read(acpi_addr);
 			break;

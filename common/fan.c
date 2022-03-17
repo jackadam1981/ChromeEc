@@ -353,6 +353,16 @@ void dptf_set_fan_duty_target(int pct)
 	}
 }
 
+int dptf_get_fan_rpm_value(void)
+{
+	int fan = 0;
+
+	if (fan_count == 0)
+		return -1;
+
+	return actual_rpm = fan_get_rpm_actual(FAN_CH(fan));
+}
+
 /*****************************************************************************/
 /* Host commands */
 

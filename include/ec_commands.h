@@ -480,6 +480,8 @@ extern "C" {
 #define EC_ACPI_MEM_USB_RETIMER_OP(x) \
 	(((x) & 0xf0) >> USB_RETIMER_FW_UPDATE_OP_SHIFT)
 
+#define EC_ACPI_MEM_FAN_RPM 0x15
+
 /*
  * ACPI addresses 0x20 - 0xff map to EC_MEMMAP offset 0x00 - 0xdf.  This data
  * is read-only from the AP.  Added in EC_ACPI_MEM_VERSION 2.

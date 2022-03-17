@@ -20,6 +20,9 @@ void dptf_set_fan_duty_target(int pct);
  */
 int dptf_get_fan_duty_target(void);
 
+/* Return Fan rpm value. */
+int dptf_get_fan_rpm_value(void);
+
 /* Thermal thresholds may be set for each temp sensor. */
 #define DPTF_THRESHOLDS_PER_SENSOR 2
 #define DPTF_THRESHOLD_HYSTERESIS 2
