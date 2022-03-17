@@ -43,25 +43,20 @@ int hook_call_deferred(const struct deferred_data *data, int us);
 struct zephyr_shim_hook_info {
 	void (*routine)(void);
 	uint16_t priority; /* HOOK_PRIO_LAST = 9999 */
-	enum hook_type type;
 };
 
 struct zephyr_shim_hook_list {
-	const struct zephyr_shim_hook_info *info;
-	struct zephyr_shim_hook_list *next;
+	const struct zephyr_shim_hook_info *start;
+	const struct zephyr_shim_hook_info *end;
 };
 
 /**
  * See include/hooks.h for documentation.
  */
-#define DECLARE_HOOK(_hooktype, _routine, _priority)                     \
-	static const struct zephyr_shim_hook_info                        \
-		_cros_hook_##_hooktype##_info_##_routine = {             \
-			.type = _hooktype,                               \
-			.priority = _priority,                           \
-			.routine = _routine,                             \
-		};                                                       \
-	STRUCT_SECTION_ITERABLE(zephyr_shim_hook_list,                   \
-				_cros_hook_##_hooktype##_##_routine) = { \
-		.info = &_cros_hook_##_hooktype##_info_##_routine,       \
+#define DECLARE_HOOK(_hooktype, _routine, _priority)                 \
+	STRUCT_SECTION_ITERABLE_ALTERNATE(                           \
+		zephyr_shim_hook_##_hooktype, zephyr_shim_hook_info, \
+		_cros_hook_##_hooktype##_##_routine) = {             \
+		.routine = _routine,                                 \
+		.priority = _priority,                               \
 	}
