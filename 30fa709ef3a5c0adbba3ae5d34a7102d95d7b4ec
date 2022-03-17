@@ -22,6 +22,30 @@
       },
       "revId": "30fa709ef3a5c0adbba3ae5d34a7102d95d7b4ec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1425ee8_c075968e",
+        "filename": "zephyr/projects/corsola/src/krabby/charger_workaround.c",
+        "patchSetId": 39
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2022-03-17T09:10:16Z",
+      "side": 1,
+      "message": "This is for early sample only. There\u0027s no rev id in there reg table, so we have to detect this using board id.",
+      "parentUuid": "53844dda_bca14868",
+      "range": {
+        "startLine": 13,
+        "startChar": 5,
+        "endLine": 13,
+        "endChar": 28
+      },
+      "revId": "30fa709ef3a5c0adbba3ae5d34a7102d95d7b4ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
