@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ecabe2a_3d0f29c0",
+        "filename": "board/gimble/usbc_config.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-03-17T05:57:20Z",
+      "side": 1,
+      "message": "this should not be needed any more.\ni think this was only needed with early ps8815 firmware\n(around november 2019).\n\nyou can double check with parade, but don\u0027t have this on brya.",
+      "range": {
+        "startLine": 190,
+        "startChar": 1,
+        "endLine": 190,
+        "endChar": 16
+      },
+      "revId": "c4f19aaf2bb7a33efe58b6c760007baa3539312c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
