@@ -190,6 +190,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c7637d5_bf87b7a5",
+        "filename": "zephyr/emul/tcpc/emul_tcpci_partner_src.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-03-17T18:48:41Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c4682e98_e8f78de7",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 92,
+        "endChar": 0
+      },
+      "revId": "3b1d507ea0bb33f303f7a975c7a209b017dbbc67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c61c17b7_9f7b3c04",
@@ -227,6 +251,30 @@
       "side": 1,
       "message": "I added wrapper `tcpci_src_emul_send_capability_msg_with_timer()`. I think now both functions are easier to follow.",
       "parentUuid": "c61c17b7_9f7b3c04",
+      "range": {
+        "startLine": 126,
+        "startChar": 16,
+        "endLine": 126,
+        "endChar": 29
+      },
+      "revId": "3b1d507ea0bb33f303f7a975c7a209b017dbbc67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "30d3a68b_9d04d236",
+        "filename": "zephyr/emul/tcpc/emul_tcpci_partner_src.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-03-17T18:48:41Z",
+      "side": 1,
+      "message": "Thanks!",
+      "parentUuid": "61980bf8_1f3d9197",
       "range": {
         "startLine": 126,
         "startChar": 16,
