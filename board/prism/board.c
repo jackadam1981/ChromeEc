@@ -103,6 +103,48 @@ const uint8_t rgbkbd_count = ARRAY_SIZE(rgbkbds);
 const uint8_t rgbkbd_hsize = RGB_GRID0_COL + RGB_GRID1_COL;
 const uint8_t rgbkbd_vsize = RGB_GRID0_ROW;
 
+const uint8_t rgbkbd_map[] = {
+	RGBKBD_COORD( 0, 0), RGBKBD_TERM,	/* ESC */
+	RGBKBD_COORD( 1, 0), RGBKBD_TERM,	/* <- */
+	RGBKBD_COORD( 2, 0), RGBKBD_TERM,	/* Refresh */
+	RGBKBD_COORD( 3, 0), RGBKBD_TERM,	/* T3 */
+	RGBKBD_COORD( 4, 0), RGBKBD_TERM,	/* T4 */
+	RGBKBD_COORD( 5, 0), RGBKBD_TERM,	/* T5 */
+	RGBKBD_COORD( 6, 0), RGBKBD_TERM,	/* T6 */
+	RGBKBD_COORD( 7, 0), RGBKBD_TERM,	/* T7 */
+	RGBKBD_COORD( 8, 0), RGBKBD_TERM,	/* T8 */
+	RGBKBD_COORD( 9, 0), RGBKBD_TERM,	/* T9 */
+	RGBKBD_COORD(10, 0), RGBKBD_TERM,	/* T10 */
+	RGBKBD_COORD(11, 0), RGBKBD_TERM,	/* T11 */
+	RGBKBD_COORD(12, 0), RGBKBD_TERM,	/* T12 */
+	RGBKBD_COORD(13, 0), RGBKBD_TERM,	/* T13 */
+	RGBKBD_COORD(14, 0), RGBKBD_TERM,	/* T14 */
+	RGBKBD_COORD(15, 0), RGBKBD_TERM,	/* T15 */
+	RGBKBD_TERM,
+	RGBKBD_TERM,
+	RGBKBD_TERM,
+	RGBKBD_TERM,
+	RGBKBD_TERM,
+	RGBKBD_TERM,
+};
+const size_t rgbkbd_map_size = ARRAY_SIZE(rgbkbd_map);
+
+#if 0
+__override const uint8_t *rgbkbd_leds[] = {
+	[110] = {.x =  0, .y = 0},	/* ESC */
+	[  1] = {.x =  0, .y = 0},	/* ~ */
+	[ 16] = {.x =  0, .y = 1},	/* Tab */
+	[ 30] = {.x =  0, .y = 2},	/* Search */
+	[ 44] = {.x =  0, .y = 3},	/* Left Shift */
+	[ 57] = {.x = 18, .y = 5},	/* Right Shift */
+	[ 58] = {.x =  0, .y = 4},	/* Left Ctrl */
+	[ 60] = {.x = 18, .y = 2},	/* Left Alt */
+	[ 61] = {.x = 18, .y = 3},	/* Space */
+	[ 29] = {.x = 16, .y = 3},	/* \ */
+	[ 62] = {.x = 20, .y = 2},	/* Right Alt */
+};
+#endif
+
 __override void board_enable_rgb_keyboard(bool enable)
 {
 	gpio_set_level(GPIO_RGBKBD_POWER, 1);

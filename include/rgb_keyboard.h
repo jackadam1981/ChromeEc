@@ -7,16 +7,10 @@
 
 #include "common.h"
 #include "ec_commands.h"
+#include "stddef.h"
 
 /* Use this instead of '3' for readability where applicable. */
 #define SIZE_OF_RGB		sizeof(struct rgb_s)
-
-enum rgbkbd_demo {
-	RGBKBD_DEMO_OFF = 0,
-	RGBKBD_DEMO_FLOW = 1,
-	RGBKBD_DEMO_DOT = 2,
-	RGBKBD_DEMO_COUNT
-};
 
 struct rgbkbd_cfg {
 	/* Driver for LED IC */
@@ -79,6 +73,20 @@ struct rgbkbd_drv {
 	int (*set_gcc)(struct rgbkbd *ctx, uint8_t level);
 };
 
+/* Represents a position of an LED in RGB matrix. */
+struct rgbkbd_coord {
+	uint8_t y: 3;
+	uint8_t x: 5;
+};
+
+union rgbkbd_coord_u8 {
+	uint8_t u8;
+	struct rgbkbd_coord coord;
+};
+
+#define RGBKBD_COORD(x,y)	(x << 3) | (y)
+#define RGBKBD_TERM		0xff
+
 /*
  * The matrix consists of multiple grids:
  *
@@ -119,3 +127,39 @@ extern const uint8_t rgbkbd_vsize;
  * Called to power on or off the RGB keyboard module.
  */
 __override_proto void board_enable_rgb_keyboard(bool enable);
+
+/*
+ * rgbkbd_map describes a mapping from key IDs to LED IDs.
+ *
+ * Multiple keys can be mapped to one LED and one key can be mapped to multiple
+ * LEDs. For example, if the keyboard is divided into zones, multiple keys point
+ * to the same LED(s). Also, typically larger keys (e.g. space key) should be
+ * allocated multiple LEDs.
+ *
+ * On ROM, mapping data is laid out as follows:
+ *
+ *   01 FF 02 03 FF ... XX FF
+ *
+ * where FF is a terminating byte. This is interpreted as:
+ *
+ *   key1 = led1, key2 = led2, led3, ..., key127 = ledXX
+ *
+ * Note the size of rgbkbd_map varies because one key can have multiple LEDs.
+ *
+ * At run time, the table is loaded into RAM and addressed by a pointer array
+ * (rgbkbd_table[128]), whose index is the key ID. This allows the EC to quickly
+ * look up LEDs for a given key ID:
+ *
+ *   +-- rgbkbd_table[0]
+ *   |   rgbkbd_table[1] --+
+ *   |        ...          |
+ *   +---+      +----------+
+ *       |      |
+ *       v      v
+ *       01 FF 02 03 FF
+ *
+ * Finally, as optimization, LED coordinates are encoded in LED IDs (i.e.
+ * rgbkbd_coord). This saves us one translation.
+ */
+extern const uint8_t rgbkbd_map[];
+extern const size_t rgbkbd_map_size;
