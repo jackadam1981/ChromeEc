@@ -50,6 +50,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bb715e4f_0e75dbec",
+        "filename": "test/system_is_locked.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-03-17T17:30:09Z",
+      "side": 1,
+      "message": "Instead of having this check here, should it be in `main` so that it applies anywhere `write_protect_enabled` is true?\n\n```\n\tif (strncmp(argv[1], \"wp_on\", 5) \u003d\u003d 0) || IS_ENABLED(CONFIG_WP_ALWAYS)\n\t\twrite_protect_enabled \u003d true;\n```",
+      "range": {
+        "startLine": 18,
+        "startChar": 5,
+        "endLine": 18,
+        "endChar": 33
+      },
+      "revId": "a311694fa07589c996091e38da5918318bec68ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ffa6a49_528aa38b",
+        "filename": "test/system_is_locked.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-03-17T17:30:09Z",
+      "side": 1,
+      "message": "I\u0027m a little worried that we will accidentally only test this part of the conditional (e.g., the board has `CONFIG_SYSTEM_UNLOCKED` enabled).\n\nMaybe we should check if `CONFIG_SYSTEM_UNLOCKED` is set it `main` and fail the test in that case. (AFAIK, the fingerprint team is the only one running these tests on boards, so it should be ok, since we will not have `CONFIG_SYSTEM_UNLOCKED`.)",
+      "range": {
+        "startLine": 36,
+        "startChar": 5,
+        "endLine": 36,
+        "endChar": 39
+      },
+      "revId": "a311694fa07589c996091e38da5918318bec68ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f2b10a16_9320fc86",
         "filename": "test/system_is_locked.c",
         "patchSetId": 1
