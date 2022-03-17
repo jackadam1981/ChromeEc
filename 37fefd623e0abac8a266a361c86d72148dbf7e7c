@@ -1,0 +1,429 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d07ec7c9_2e37a7fe",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-03-17T17:23:05Z",
+      "side": 1,
+      "message": "Please also update the table in zephyr_new_board_checklist.md.  Probably makes sense to link only to the main CBI doc from that table.",
+      "revId": "37fefd623e0abac8a266a361c86d72148dbf7e7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d8531b93_a946c278",
+        "filename": "docs/zephyr/zephyr_cbi.md",
+        "patchSetId": 13
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-03-17T17:23:05Z",
+      "side": 1,
+      "message": "Change to [EEPROM] to link to the doc.",
+      "range": {
+        "startLine": 33,
+        "startChar": 26,
+        "endLine": 33,
+        "endChar": 34
+      },
+      "revId": "37fefd623e0abac8a266a361c86d72148dbf7e7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8741c57b_3a7c8bcd",
+        "filename": "docs/zephyr/zephyr_cbi.md",
+        "patchSetId": 13
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-03-17T17:23:05Z",
+      "side": 1,
+      "message": "Add a Testing and Debugging section.  Document the \"cbi\" EC console command, and document the \"ectool cbi\" command run from the kernel.",
+      "revId": "37fefd623e0abac8a266a361c86d72148dbf7e7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0cea72cb_fbeb6e77",
+        "filename": "docs/zephyr/zephyr_cbi.md",
+        "patchSetId": 13
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-03-17T17:23:05Z",
+      "side": 1,
+      "message": "Typo: zephyr_eeprom.md",
+      "range": {
+        "startLine": 44,
+        "startChar": 12,
+        "endLine": 44,
+        "endChar": 25
+      },
+      "revId": "37fefd623e0abac8a266a361c86d72148dbf7e7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87a33207_38c32d03",
+        "filename": "docs/zephyr/zephyr_eeprom.md",
+        "patchSetId": 13
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-03-17T17:23:05Z",
+      "side": 1,
+      "message": "nodelabel",
+      "range": {
+        "startLine": 32,
+        "startChar": 67,
+        "endLine": 32,
+        "endChar": 72
+      },
+      "revId": "37fefd623e0abac8a266a361c86d72148dbf7e7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f53fbbf_a2bc997e",
+        "filename": "docs/zephyr/zephyr_eeprom.md",
+        "patchSetId": 13
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-03-17T17:23:05Z",
+      "side": 1,
+      "message": "nodelabel\n\nThis helps differentiate from the label property (which is EEPROM_CBI in your example).",
+      "range": {
+        "startLine": 32,
+        "startChar": 19,
+        "endLine": 32,
+        "endChar": 24
+      },
+      "revId": "37fefd623e0abac8a266a361c86d72148dbf7e7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e4bfa91f_c7f4b034",
+        "filename": "docs/zephyr/zephyr_eeprom.md",
+        "patchSetId": 13
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-03-17T17:23:05Z",
+      "side": 1,
+      "message": "The current requirement is that you define an alias node called \"gpio-cbi-wp\" that points to the GPIO used as the write protect.\n\nExample here:\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/bb733b03/zephyr/projects/skyrim/skyrim.dts#9\n\nAlso, you should note that the \"wp-gpios\" property should not be used.  \n\n\"wp-gpios\" - Specifies the GPIO output signal from the SoC connected to the EEPROM write protect pin.  Zephyr uses this to automatically control write protection during write and erase operations.\n\nHowever on Chromebooks, the write protect signal is controlled by the Google Security Chip.  gpio-cbi-wb specifies the GPIO input signal to the SoC, used by the EC application to monitor the write protect state.",
+      "range": {
+        "startLine": 53,
+        "startChar": 59,
+        "endLine": 55,
+        "endChar": 0
+      },
+      "revId": "37fefd623e0abac8a266a361c86d72148dbf7e7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89ae8ff2_10cea03b",
+        "filename": "docs/zephyr/zephyr_eeprom.md",
+        "patchSetId": 13
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-03-17T17:23:05Z",
+      "side": 1,
+      "message": "You could point to the I2C document which has details for doing an I2C bus scan.  This can be used to verify the EEPROM device can be accessed.",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 21
+      },
+      "revId": "37fefd623e0abac8a266a361c86d72148dbf7e7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2dc37636_8dd68d2d",
+        "filename": "docs/zephyr/zephyr_fw_config.md",
+        "patchSetId": 13
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-03-17T17:23:05Z",
+      "side": 1,
+      "message": "[`FW_CONFIG`]",
+      "range": {
+        "startLine": 26,
+        "startChar": 4,
+        "endLine": 26,
+        "endChar": 15
+      },
+      "revId": "37fefd623e0abac8a266a361c86d72148dbf7e7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e0805ae_9b9d0cab",
+        "filename": "docs/zephyr/zephyr_fw_config.md",
+        "patchSetId": 13
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-03-17T17:23:05Z",
+      "side": 1,
+      "message": "Set link to [`cros-ec-cbi-fw-config`], and then use throughout.",
+      "range": {
+        "startLine": 26,
+        "startChar": 54,
+        "endLine": 26,
+        "endChar": 77
+      },
+      "revId": "37fefd623e0abac8a266a361c86d72148dbf7e7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7eb9ee16_c63f5435",
+        "filename": "docs/zephyr/zephyr_fw_config.md",
+        "patchSetId": 13
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-03-17T17:23:05Z",
+      "side": 1,
+      "message": "[`cros-ec-cbi-fw-config-value`]",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 29
+      },
+      "revId": "37fefd623e0abac8a266a361c86d72148dbf7e7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e49553f9_2606d91e",
+        "filename": "docs/zephyr/zephyr_fw_config.md",
+        "patchSetId": 13
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-03-17T17:23:05Z",
+      "side": 1,
+      "message": "[`cros-ec-cbi-fw-config`]",
+      "range": {
+        "startLine": 30,
+        "startChar": 4,
+        "endLine": 30,
+        "endChar": 27
+      },
+      "revId": "37fefd623e0abac8a266a361c86d72148dbf7e7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7885eaf5_f3873ba6",
+        "filename": "docs/zephyr/zephyr_fw_config.md",
+        "patchSetId": 13
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-03-17T17:23:05Z",
+      "side": 1,
+      "message": "[`cros-ec-cbi-fw-config-value`]",
+      "range": {
+        "startLine": 31,
+        "startChar": 4,
+        "endLine": 31,
+        "endChar": 33
+      },
+      "revId": "37fefd623e0abac8a266a361c86d72148dbf7e7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0955c132_fa2f9c83",
+        "filename": "docs/zephyr/zephyr_fw_config.md",
+        "patchSetId": 13
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-03-17T17:23:05Z",
+      "side": 1,
+      "message": "[`FW_CONFIG`]",
+      "range": {
+        "startLine": 36,
+        "startChar": 10,
+        "endLine": 36,
+        "endChar": 21
+      },
+      "revId": "37fefd623e0abac8a266a361c86d72148dbf7e7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b179b2f_3c6087a2",
+        "filename": "docs/zephyr/zephyr_fw_config.md",
+        "patchSetId": 13
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-03-17T17:23:05Z",
+      "side": 1,
+      "message": "The `ectool cbi` command can be used to read and set the FW_CONFIG.  Link back to \"./zephyr_cbi.md#testing-and-debugging\" from here.",
+      "range": {
+        "startLine": 109,
+        "startChar": 0,
+        "endLine": 109,
+        "endChar": 20
+      },
+      "revId": "37fefd623e0abac8a266a361c86d72148dbf7e7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8abdf76c_d79bce98",
+        "filename": "docs/zephyr/zephyr_ssfc.md",
+        "patchSetId": 13
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-03-17T17:23:05Z",
+      "side": 1,
+      "message": "Also set the link text to [`named-sbi-ssfc`] and use consistently in this doc.",
+      "range": {
+        "startLine": 28,
+        "startChar": 49,
+        "endLine": 28,
+        "endChar": 65
+      },
+      "revId": "37fefd623e0abac8a266a361c86d72148dbf7e7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72f1d7ae_cd39d777",
+        "filename": "docs/zephyr/zephyr_ssfc.md",
+        "patchSetId": 13
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-03-17T17:23:05Z",
+      "side": 1,
+      "message": "[`named-cbi-ssfc-value`]",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 22
+      },
+      "revId": "37fefd623e0abac8a266a361c86d72148dbf7e7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6391cdd_3de1764e",
+        "filename": "docs/zephyr/zephyr_ssfc.md",
+        "patchSetId": 13
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-03-17T17:23:05Z",
+      "side": 1,
+      "message": "(void)",
+      "range": {
+        "startLine": 83,
+        "startChar": 30,
+        "endLine": 83,
+        "endChar": 32
+      },
+      "revId": "37fefd623e0abac8a266a361c86d72148dbf7e7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b8983cbe_ea988e77",
+        "filename": "docs/zephyr/zephyr_ssfc.md",
+        "patchSetId": 13
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-03-17T17:23:05Z",
+      "side": 1,
+      "message": "The `ectool cbi` command can be used to read and set the SSFC.  Link back to \"./zephyr_cbi.md#testing-and-debugging\" from here.",
+      "range": {
+        "startLine": 96,
+        "startChar": 0,
+        "endLine": 96,
+        "endChar": 21
+      },
+      "revId": "37fefd623e0abac8a266a361c86d72148dbf7e7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
