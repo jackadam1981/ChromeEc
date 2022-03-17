@@ -40,7 +40,7 @@ GPIO(EC_SOC_PWR_BTN_L,		PIN(6, 3), GPIO_OUT_HIGH)						/* Power Button to SOC */
 GPIO(EC_SOC_PWR_GOOD,		PIN(D, 3), GPIO_OUT_LOW)						/* Power Good to SOC */
 GPIO(EC_SOC_WAKE_L,		PIN(0, 3), GPIO_OUT_HIGH)						/* Wake SOC */
 GPIO(EC_SOC_INT_L,		PIN(8, 3), GPIO_OUT_HIGH)						/* Matrix Keyboard Protocol Event to SOC */
-GPIO(PROCHOT_ODL,		PIN(D, 5), GPIO_ODR_HIGH)						/* Force SOC into HTC-active state */
+GPIO_INT(PROCHOT_ODL,		PIN(D, 5), GPIO_INT_FALLING,	baseboard_prochot_time)						/* Force SOC into HTC-active state */
 GPIO(SOC_ALERT_EC_L,		PIN(E, 2), GPIO_INPUT)							/* Sideband-Temperature Iterrupt */
 GPIO(SOC_THERMTRIP_ODL, 	PIN(E, 5), GPIO_INPUT)							/* Temperature Trip Sensor */
 

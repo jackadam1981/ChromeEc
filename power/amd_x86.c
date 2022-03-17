@@ -85,6 +85,12 @@ void chipset_reset(enum chipset_shutdown_reason reason)
 void chipset_throttle_cpu(int throttle)
 {
 	CPRINTS("%s(%d)", __func__, throttle);
+
+	if (throttle)
+		gpio_set_flags(GPIO_PROCHOT_ODL, GPIO_ODR_HIGH);
+	else
+		gpio_set_flags(GPIO_PROCHOT_ODL, GPIO_INPUT);
+
 	if (IS_ENABLED(CONFIG_CPU_PROCHOT_ACTIVE_LOW))
 		throttle = !throttle;
 
