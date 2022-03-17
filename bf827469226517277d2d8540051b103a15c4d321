@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "844e9e8b_58aabeb8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-03-17T23:24:46Z",
+      "side": 1,
+      "message": "later?",
+      "range": {
+        "startLine": 13,
+        "startChar": 35,
+        "endLine": 13,
+        "endChar": 41
+      },
+      "revId": "bf827469226517277d2d8540051b103a15c4d321",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "273bc7df_05fabad7",
+        "filename": "chip/npcx/adc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-03-17T23:24:46Z",
+      "side": 1,
+      "message": "nit: new line",
+      "range": {
+        "startLine": 27,
+        "startChar": 2,
+        "endLine": 27,
+        "endChar": 3
+      },
+      "revId": "bf827469226517277d2d8540051b103a15c4d321",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "47ab5dfc_dc214126",
+        "filename": "chip/npcx/adc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-03-17T23:24:46Z",
+      "side": 1,
+      "message": "ditto? I looked up dictionary and still think it\u0027s a typo...",
+      "range": {
+        "startLine": 31,
+        "startChar": 16,
+        "endLine": 31,
+        "endChar": 22
+      },
+      "revId": "bf827469226517277d2d8540051b103a15c4d321",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8f252dc_bf45d505",
+        "filename": "chip/npcx/adc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-03-17T23:24:46Z",
+      "side": 1,
+      "message": "nit: 0x03 for consistency?",
+      "range": {
+        "startLine": 37,
+        "startChar": 34,
+        "endLine": 37,
+        "endChar": 37
+      },
+      "revId": "bf827469226517277d2d8540051b103a15c4d321",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61207a43_91649280",
+        "filename": "chip/npcx/adc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 438,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-03-17T23:24:46Z",
+      "side": 1,
+      "message": "Originally it was 0x10 now it\u0027s 0x3 for npcx5 and 0x2 for the others. Is it intentional?",
+      "range": {
+        "startLine": 438,
+        "startChar": 45,
+        "endLine": 438,
+        "endChar": 52
+      },
+      "revId": "bf827469226517277d2d8540051b103a15c4d321",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
