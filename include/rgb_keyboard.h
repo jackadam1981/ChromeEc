@@ -11,13 +11,6 @@
 /* Use this instead of '3' for readability where applicable. */
 #define SIZE_OF_RGB		sizeof(struct rgb_s)
 
-enum rgbkbd_demo {
-	RGBKBD_DEMO_OFF = 0,
-	RGBKBD_DEMO_FLOW = 1,
-	RGBKBD_DEMO_DOT = 2,
-	RGBKBD_DEMO_COUNT
-};
-
 struct rgbkbd_cfg {
 	/* Driver for LED IC */
 	const struct rgbkbd_drv * const drv;
@@ -78,6 +71,19 @@ struct rgbkbd_drv {
 	 */
 	int (*set_gcc)(struct rgbkbd *ctx, uint8_t level);
 };
+
+/* Represents a position of an LED in RGB matrix. */
+struct rgbkbd_cord {
+	uint8_t y: 3;
+	uint8_t x: 5;
+};
+
+/*
+ * Describe the mapping between key ID -> LED matrix coordinate (x, y). Multiple
+ * keys can be mapped to the same coordinate. That means, those LEDs are grouped
+ * together (a.k.a. zone) and can show only one color at a time.
+ */
+__override_proto extern const struct rgbkbd_cord rgbkbd_map[128];
 
 /*
  * The matrix consists of multiple grids:
