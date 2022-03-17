@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "759d46ad_e69e0918",
+        "filename": "board/kinox/board.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1286280
+      },
+      "writtenOn": "2022-03-17T09:48:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e3f16824_96415dba",
+      "range": {
+        "startLine": 17,
+        "startChar": 30,
+        "endLine": 17,
+        "endChar": 31
+      },
+      "revId": "89e0f848b2e4acba84942aafebb3f6c72b6600e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8944d180_2b7338aa",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-03-15T17:23:32Z",
       "side": 1,
       "message": "Can you explain why you need to set this pin to GPIO_ODR_LOW? Why don\u0027t just set this to GPIO_OUT_HIGH?",
+      "range": {
+        "startLine": 61,
+        "startChar": 48,
+        "endLine": 61,
+        "endChar": 60
+      },
+      "revId": "89e0f848b2e4acba84942aafebb3f6c72b6600e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "48ca0f75_5fe645d2",
+        "filename": "board/kinox/gpio.inc",
+        "patchSetId": 6
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1286280
+      },
+      "writtenOn": "2022-03-17T09:48:16Z",
+      "side": 1,
+      "message": "The Compal-EE has reply at the tracker b:223950161#comment4.",
+      "parentUuid": "8944d180_2b7338aa",
       "range": {
         "startLine": 61,
         "startChar": 48,
@@ -64,6 +112,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3fa1032_4b06096e",
+        "filename": "board/kinox/gpio.inc",
+        "patchSetId": 6
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1286280
+      },
+      "writtenOn": "2022-03-17T09:48:16Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "5114793f_13a56efa",
+      "revId": "89e0f848b2e4acba84942aafebb3f6c72b6600e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b5f55cbc_bf6b6b81",
@@ -77,6 +143,30 @@
       "writtenOn": "2022-03-15T17:23:32Z",
       "side": 1,
       "message": "Do you need to add this flag?",
+      "range": {
+        "startLine": 47,
+        "startChar": 3,
+        "endLine": 47,
+        "endChar": 34
+      },
+      "revId": "89e0f848b2e4acba84942aafebb3f6c72b6600e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f43cba4_1cb7ba5e",
+        "filename": "board/kinox/usbc_config.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1286280
+      },
+      "writtenOn": "2022-03-17T09:48:16Z",
+      "side": 1,
+      "message": "Removed.",
+      "parentUuid": "b5f55cbc_bf6b6b81",
       "range": {
         "startLine": 47,
         "startChar": 3,
