@@ -18,9 +18,6 @@
 #ifndef ULPOSC2_CLOCK_MHZ
 #define ULPOSC2_CLOCK_MHZ 330
 #endif
-#ifdef CHIP_VARIANT_MT8183
-void scp_enable_clock(void);
-#endif
 
 enum scp_clock_source {
 	SCP_CLK_26M = CLK_SEL_SYS_26M,
@@ -28,6 +25,8 @@ enum scp_clock_source {
 	SCP_CLK_ULPOSC2 = CLK_SEL_ULPOSC_2,
 	SCP_CLK_ULPOSC1 = CLK_SEL_ULPOSC_1,
 };
+
+void scp_enable_clock(void);
 
 /* Switches to use 'src' clock */
 void scp_use_clock(enum scp_clock_source src);
