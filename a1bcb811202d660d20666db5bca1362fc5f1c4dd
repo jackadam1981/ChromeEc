@@ -22,6 +22,30 @@
       },
       "revId": "a1bcb811202d660d20666db5bca1362fc5f1c4dd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf18fcd9_b901ef4d",
+        "filename": "zephyr/test/ap_power/src/signals.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-03-17T00:54:19Z",
+      "side": 1,
+      "message": "Ha, yes, you\u0027re right - I did have range checking for the other levels, so I will add it.",
+      "parentUuid": "613f2c97_52dc8670",
+      "range": {
+        "startLine": 113,
+        "startChar": 1,
+        "endLine": 114,
+        "endChar": 55
+      },
+      "revId": "a1bcb811202d660d20666db5bca1362fc5f1c4dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
