@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bde8f8a7_697829d1",
+        "filename": "include/power.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2022-03-17T03:11:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bf726a17_fbd1c7c7",
+      "revId": "ee7a99e48ea2d02f7a0b21c3ea1e687ac2a976b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7329f411_da4f9b27",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-03-16T21:36:56Z",
       "side": 1,
       "message": "__override, right?  Because we expect this to be the authoritative function?",
+      "range": {
+        "startLine": 234,
+        "startChar": 0,
+        "endLine": 234,
+        "endChar": 13
+      },
+      "revId": "ee7a99e48ea2d02f7a0b21c3ea1e687ac2a976b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b58d3c0c_c8e1b0e5",
+        "filename": "power/amd_x86.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2022-03-17T03:11:30Z",
+      "side": 1,
+      "message": "I can imagine a scenario where a board would want to override the default chipset implementation as well, but we can cross that bridge later. Fixed.",
+      "parentUuid": "7329f411_da4f9b27",
       "range": {
         "startLine": 234,
         "startChar": 0,

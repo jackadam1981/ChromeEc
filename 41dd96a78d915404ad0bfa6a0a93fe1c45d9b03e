@@ -16,6 +16,24 @@
       "message": "Does the timeout_hang_type need some equivalent of NONE to be used the same way we used the callback? \n\nI\u0027d need to logic my way through the usages here, but it seems like we could have had calls of sleep_transition_timeout() before where no callback was called because it had been cleared.  I\u0027d need to dig into git history more for that though since the callback clear was a copy over from the Intel sleep hang code initially, so its git history would have the reasoning for the clearing.",
       "revId": "41dd96a78d915404ad0bfa6a0a93fe1c45d9b03e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "44b4d926_febf0f14",
+        "filename": "power/host_sleep.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2022-03-17T03:11:30Z",
+      "side": 0,
+      "message": "Offline discussion with Diana: Looks like it was added just for good practice (https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2327837/comments/b4a2375c_492f9b2e) \n\nAdding SLEEP_HANG_NONE here for the same reason.",
+      "parentUuid": "b20418b1_17fd4fb0",
+      "revId": "41dd96a78d915404ad0bfa6a0a93fe1c45d9b03e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
