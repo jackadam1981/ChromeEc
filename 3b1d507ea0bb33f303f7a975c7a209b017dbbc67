@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e55e486_64c17379",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2022-03-17T17:04:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "272b163d_31691b4a",
+      "range": {
+        "startLine": 9,
+        "startChar": 14,
+        "endLine": 9,
+        "endChar": 26
+      },
+      "revId": "3b1d507ea0bb33f303f7a975c7a209b017dbbc67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4fa55e65_2a835069",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-03-16T19:53:53Z",
       "side": 1,
       "message": "nit: typo",
+      "range": {
+        "startLine": 19,
+        "startChar": 23,
+        "endLine": 19,
+        "endChar": 33
+      },
+      "revId": "3b1d507ea0bb33f303f7a975c7a209b017dbbc67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d374f2ad_3fc9fa66",
+        "filename": "zephyr/emul/tcpc/emul_tcpci_partner_src.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2022-03-17T17:04:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4fa55e65_2a835069",
       "range": {
         "startLine": 19,
         "startChar": 23,
@@ -61,6 +109,30 @@
       "side": 1,
       "message": "\u003e \"miliseconds\" is a possible misspelling of \"milliseconds\".\n\nPlease fix.",
       "parentUuid": "5401654c_c58f256c",
+      "range": {
+        "startLine": 34,
+        "startChar": 42,
+        "endLine": 34,
+        "endChar": 53
+      },
+      "revId": "3b1d507ea0bb33f303f7a975c7a209b017dbbc67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0cc0698c_d0b83ab5",
+        "filename": "zephyr/emul/tcpc/emul_tcpci_partner_src.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2022-03-17T17:04:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "304e10c3_2bfbe2bf",
       "range": {
         "startLine": 34,
         "startChar": 42,
@@ -96,6 +168,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c4682e98_e8f78de7",
+        "filename": "zephyr/emul/tcpc/emul_tcpci_partner_src.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2022-03-17T17:04:05Z",
+      "side": 1,
+      "message": "I didn\u0027t add here TODO(), because it is implemented by next CL in the chain. I couldn\u0027t add this code in this CL, because without changes from next CL it wouldn\u0027t work. Other way around it is not possible too. After implementing `RECEIVE_DETECT` register, re-transmission of source capabilities is required.",
+      "parentUuid": "f2fcb19f_76a292b3",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 92,
+        "endChar": 0
+      },
+      "revId": "3b1d507ea0bb33f303f7a975c7a209b017dbbc67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c61c17b7_9f7b3c04",
         "filename": "zephyr/emul/tcpc/emul_tcpci_partner_src.c",
         "patchSetId": 1
@@ -107,6 +203,30 @@
       "writtenOn": "2022-03-16T19:53:53Z",
       "side": 1,
       "message": "I find these a bit hard to read... I would leave them out entirely. Alternatively, how would you feel about wrapping the function so that you can have the different behavior in the function name?",
+      "range": {
+        "startLine": 126,
+        "startChar": 16,
+        "endLine": 126,
+        "endChar": 29
+      },
+      "revId": "3b1d507ea0bb33f303f7a975c7a209b017dbbc67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61980bf8_1f3d9197",
+        "filename": "zephyr/emul/tcpc/emul_tcpci_partner_src.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2022-03-17T17:04:05Z",
+      "side": 1,
+      "message": "I added wrapper `tcpci_src_emul_send_capability_msg_with_timer()`. I think now both functions are easier to follow.",
+      "parentUuid": "c61c17b7_9f7b3c04",
       "range": {
         "startLine": 126,
         "startChar": 16,
@@ -165,6 +285,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "96be633e_cc4386f6",
+        "filename": "zephyr/include/emul/tcpc/emul_tcpci_partner_src.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2022-03-17T17:04:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5735014c_4c58348c",
+      "range": {
+        "startLine": 132,
+        "startChar": 30,
+        "endLine": 132,
+        "endChar": 36
+      },
+      "revId": "3b1d507ea0bb33f303f7a975c7a209b017dbbc67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "df862d93_6e5fc07d",
+        "filename": "zephyr/include/emul/tcpc/emul_tcpci_partner_src.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2022-03-17T17:04:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9d749abf_7d7a992a",
+      "range": {
+        "startLine": 132,
+        "startChar": 36,
+        "endLine": 132,
+        "endChar": 45
+      },
+      "revId": "3b1d507ea0bb33f303f7a975c7a209b017dbbc67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "401135c2_a9d8b91b",
@@ -178,6 +346,30 @@
       "writtenOn": "2022-03-16T19:53:53Z",
       "side": 1,
       "message": "nit: typo",
+      "range": {
+        "startLine": 133,
+        "startChar": 41,
+        "endLine": 133,
+        "endChar": 53
+      },
+      "revId": "3b1d507ea0bb33f303f7a975c7a209b017dbbc67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "343989cf_dd52b376",
+        "filename": "zephyr/include/emul/tcpc/emul_tcpci_partner_src.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2022-03-17T17:04:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "401135c2_a9d8b91b",
       "range": {
         "startLine": 133,
         "startChar": 41,
