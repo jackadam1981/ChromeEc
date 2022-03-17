@@ -18,16 +18,137 @@ LOG_MODULE_REGISTER(tcpci_drp_emul, CONFIG_TCPCI_EMUL_LOG_LEVEL);
 #include "tcpm/tcpci.h"
 #include "usb_pd.h"
 
-/** Check description in emul_tcpci_partner_drp.h */
-enum tcpci_partner_handler_res tcpci_drp_emul_handle_sop_msg(
-	struct tcpci_drp_emul_data *data,
-	struct tcpci_src_emul_data *src_data,
-	struct tcpci_snk_emul_data *snk_data,
-	struct tcpci_partner_data *common_data,
-	const struct tcpci_emul_partner_ops *ops,
-	const struct tcpci_emul_msg *msg)
+static enum tcpci_partner_handler_res
+tcpi_drp_emul_ps_rdy_pr_swap_handler(struct tcpci_drp_emul_data *data,
+				     struct tcpci_src_emul_data *src_data,
+				     struct tcpci_snk_emul_data *snk_data,
+				     struct tcpci_partner_data *common_data,
+				     const struct tcpci_emul_partner_ops *ops)
 {
 	uint16_t pwr_status;
+
+	/* Reset counters */
+	common_data->msg_id = 0;
+	common_data->recv_msg_id = -1;
+
+	/* Perform power role swap */
+	if (!data->sink) {
+		/* Disable VBUS if emulator was source
+		 */
+		tcpci_emul_get_reg(common_data->tcpci_emul,
+				   TCPC_REG_POWER_STATUS, &pwr_status);
+		pwr_status &= ~TCPC_REG_POWER_STATUS_VBUS_PRES;
+		tcpci_emul_set_reg(common_data->tcpci_emul,
+				   TCPC_REG_POWER_STATUS, pwr_status);
+		/* Reconnect as sink */
+		data->sink = true;
+		common_data->power_role = PD_ROLE_SINK;
+	} else {
+		/* Reconnect as source */
+		data->sink = false;
+		common_data->power_role = PD_ROLE_SOURCE;
+	}
+	tcpci_partner_send_control_msg(common_data, PD_CTRL_PS_RDY, 0);
+	/* Reconnect to TCPCI emulator */
+	tcpci_drp_emul_connect_to_tcpci(data, src_data, snk_data, common_data,
+					ops, common_data->tcpci_emul);
+
+	data->current_req = PD_CTRL_INVALID;
+
+	return TCPCI_PARTNER_COMMON_MSG_HANDLED;
+}
+
+static void tcpci_drp_emul_set_vconn(struct tcpci_partner_data *common_data,
+				     int enable)
+{
+	uint16_t vconn_status;
+
+	tcpci_emul_get_reg(common_data->tcpci_emul, TCPC_REG_POWER_CTRL,
+			   &vconn_status);
+
+	vconn_status &= ~TCPC_REG_POWER_CTRL_VCONN(1);
+	vconn_status |= TCPC_REG_POWER_CTRL_VCONN(enable);
+
+	tcpci_emul_set_reg(common_data->tcpci_emul, TCPC_REG_POWER_CTRL,
+			   vconn_status);
+}
+
+/**
+ * @brief Handle VCONN_SWAP message
+ *
+ * @return enum tcpci_partner_handler_res
+ */
+static enum tcpci_partner_handler_res
+tcpci_drp_emul_vconn_swap_handler(struct tcpci_drp_emul_data *data,
+				  struct tcpci_partner_data *common_data)
+{
+	data->current_req = PD_CTRL_VCONN_SWAP;
+
+	tcpci_partner_send_control_msg(common_data, PD_CTRL_ACCEPT, 0);
+
+	if (common_data->vconn_role == PD_ROLE_VCONN_OFF)
+		tcpci_drp_emul_set_vconn(common_data, 1);
+
+	/* PS ready after 15 ms */
+	tcpci_partner_send_control_msg(common_data, PD_CTRL_PS_RDY, 15);
+	return TCPCI_PARTNER_COMMON_MSG_HANDLED;
+}
+
+static enum tcpci_partner_handler_res tcpi_drp_emul_ps_rdy_vconn_swap_handler(
+	struct tcpci_drp_emul_data *data, struct tcpci_src_emul_data *src_data,
+	struct tcpci_snk_emul_data *snk_data,
+	struct tcpci_partner_data *common_data,
+	const struct tcpci_emul_partner_ops *ops)
+{
+	data->current_req = PD_CTRL_INVALID;
+
+	if (common_data->vconn_role == PD_ROLE_VCONN_SRC)
+		tcpci_drp_emul_set_vconn(common_data, 0);
+
+	/* Update VCONN Role */
+	common_data->vconn_role =
+		(common_data->vconn_role == PD_ROLE_VCONN_SRC) ?
+			PD_ROLE_VCONN_OFF :
+			PD_ROLE_VCONN_SRC;
+
+	return TCPCI_PARTNER_COMMON_MSG_HANDLED;
+}
+
+static enum tcpci_partner_handler_res
+tcpi_drp_emul_ps_rdy_handler(struct tcpci_drp_emul_data *data,
+			     struct tcpci_src_emul_data *src_data,
+			     struct tcpci_snk_emul_data *snk_data,
+			     struct tcpci_partner_data *common_data,
+			     const struct tcpci_emul_partner_ops *ops)
+{
+	switch (data->current_req) {
+	case PD_CTRL_PR_SWAP:
+		return tcpi_drp_emul_ps_rdy_pr_swap_handler(
+			data, src_data, snk_data, common_data, ops);
+
+	case PD_CTRL_VCONN_SWAP:
+		return tcpi_drp_emul_ps_rdy_vconn_swap_handler(
+			data, src_data, snk_data, common_data, ops);
+
+	case PD_CTRL_INVALID:
+		return TCPCI_PARTNER_COMMON_MSG_NOT_HANDLED;
+
+	default:
+		LOG_ERR("Unhandled current_req=%u in PS_RDY",
+			data->current_req);
+		return TCPCI_PARTNER_COMMON_MSG_NOT_HANDLED;
+	}
+}
+
+/** Check description in emul_tcpci_partner_drp.h */
+enum tcpci_partner_handler_res
+tcpci_drp_emul_handle_sop_msg(struct tcpci_drp_emul_data *data,
+			      struct tcpci_src_emul_data *src_data,
+			      struct tcpci_snk_emul_data *snk_data,
+			      struct tcpci_partner_data *common_data,
+			      const struct tcpci_emul_partner_ops *ops,
+			      const struct tcpci_emul_msg *msg)
+{
 	uint16_t header;
 
 	header = sys_get_le16(msg->buf);
@@ -60,44 +181,16 @@ enum tcpci_partner_handler_res tcpci_drp_emul_handle_sop_msg(
 			tcpci_partner_send_control_msg(common_data,
 						       PD_CTRL_ACCEPT,
 						       0);
-			data->in_pwr_swap = true;
+			data->current_req = PD_CTRL_PR_SWAP;
 			return TCPCI_PARTNER_COMMON_MSG_HANDLED;
+
+		case PD_CTRL_VCONN_SWAP:
+			return tcpci_drp_emul_vconn_swap_handler(data,
+								 common_data);
+
 		case PD_CTRL_PS_RDY:
-			if (!data->in_pwr_swap) {
-				return TCPCI_PARTNER_COMMON_MSG_NOT_HANDLED;
-			}
-			data->in_pwr_swap = false;
-
-			/* Reset counters */
-			common_data->msg_id = 0;
-			common_data->recv_msg_id = -1;
-
-			/* Perform power role swap */
-			if (!data->sink) {
-				/* Disable VBUS if emulator was source */
-				tcpci_emul_get_reg(common_data->tcpci_emul,
-						   TCPC_REG_POWER_STATUS,
-						   &pwr_status);
-				pwr_status &= ~TCPC_REG_POWER_STATUS_VBUS_PRES;
-				tcpci_emul_set_reg(common_data->tcpci_emul,
-						   TCPC_REG_POWER_STATUS,
-						   pwr_status);
-				/* Reconnect as sink */
-				data->sink = true;
-				common_data->power_role = PD_ROLE_SINK;
-			} else {
-				/* Reconnect as source */
-				data->sink = false;
-				common_data->power_role = PD_ROLE_SOURCE;
-			}
-			tcpci_partner_send_control_msg(common_data,
-						       PD_CTRL_PS_RDY, 0);
-			/* Reconnect to TCPCI emulator */
-			tcpci_drp_emul_connect_to_tcpci(
-					data, src_data, snk_data, common_data,
-					ops, common_data->tcpci_emul);
-
-			return TCPCI_PARTNER_COMMON_MSG_HANDLED;
+			return tcpi_drp_emul_ps_rdy_handler(
+				data, src_data, snk_data, common_data, ops);
 		}
 	}
 
@@ -279,6 +372,7 @@ void tcpci_drp_emul_init(struct tcpci_drp_emul *emul)
 	/* By default init as sink */
 	emul->common_data.data_role = PD_ROLE_DFP;
 	emul->common_data.power_role = PD_ROLE_SINK;
+	emul->common_data.vconn_role = PD_ROLE_VCONN_OFF;
 	emul->common_data.rev = PD_REV20;
 
 	emul->ops.transmit = tcpci_drp_emul_transmit_op;
@@ -287,7 +381,7 @@ void tcpci_drp_emul_init(struct tcpci_drp_emul *emul)
 	emul->ops.disconnect = tcpci_drp_emul_disconnect_op;
 
 	emul->data.sink = true;
-	emul->data.in_pwr_swap = false;
+	emul->data.current_req = PD_CTRL_INVALID;
 	tcpci_src_emul_init_data(&emul->src_data, &emul->common_data);
 	tcpci_snk_emul_init_data(&emul->snk_data);
 
