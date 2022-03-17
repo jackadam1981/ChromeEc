@@ -52,6 +52,24 @@
       "parentUuid": "acce7723_047be0cf",
       "revId": "b0a5696baaa8e945353bd61546d24d4a42233828",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "22a26387_217251eb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-03-17T04:30:55Z",
+      "side": 1,
+      "message": "Looks like kingler (which is also a NPCX993 platform) does use the active-low configuration and turn on this option, so we want to keep that.",
+      "parentUuid": "5a3a8c2f_122b3120",
+      "revId": "b0a5696baaa8e945353bd61546d24d4a42233828",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
