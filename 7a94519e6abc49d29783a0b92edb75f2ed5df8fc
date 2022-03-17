@@ -66,6 +66,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "52c79d9b_2592c03b",
+        "filename": "board/banshee/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-03-17T03:39:03Z",
+      "side": 1,
+      "message": "use i2c_update16 instead",
+      "range": {
+        "startLine": 68,
+        "startChar": 6,
+        "endLine": 68,
+        "endChar": 17
+      },
+      "revId": "7a94519e6abc49d29783a0b92edb75f2ed5df8fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3e6d2d29_bf64555d",
         "filename": "board/banshee/board.h",
         "patchSetId": 8
