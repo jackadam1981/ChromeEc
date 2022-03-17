@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9171b2b_3ce10d62",
+        "filename": "zephyr/test/drivers/include/utils.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-03-17T21:20:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d88dff77_30d1d596",
+      "range": {
+        "startLine": 214,
+        "startChar": 0,
+        "endLine": 214,
+        "endChar": 3
+      },
+      "revId": "91608a65fd0357e5bd474b23ec0c7a31086ff698",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e7b3c435_5b1f4495",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6d36af5_0e67a1f0",
+        "filename": "zephyr/test/drivers/src/host_cmd/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-03-17T21:20:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e7b3c435_5b1f4495",
+      "range": {
+        "startLine": 18,
+        "startChar": 3,
+        "endLine": 20,
+        "endChar": 49
+      },
+      "revId": "91608a65fd0357e5bd474b23ec0c7a31086ff698",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "946b40eb_e15d497b",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-03-16T20:09:19Z",
       "side": 1,
       "message": "hey do you even need the byte buffer? You only use it to get space for ec_response_motion_sense, why not allocate that directly?",
+      "range": {
+        "startLine": 22,
+        "startChar": 37,
+        "endLine": 22,
+        "endChar": 52
+      },
+      "revId": "91608a65fd0357e5bd474b23ec0c7a31086ff698",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "77c762db_79fa7d91",
+        "filename": "zephyr/test/drivers/src/host_cmd/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-03-17T21:20:19Z",
+      "side": 1,
+      "message": "`struct ec_response_motion_sense` uses a `[0]` for the data field. So you have to initialize it this way, the first part gets the size of the core struct, then you add `sizeof(struct ec_response_motion_sensor_data)` per instance of the sensor.",
+      "parentUuid": "946b40eb_e15d497b",
       "range": {
         "startLine": 22,
         "startChar": 37,
