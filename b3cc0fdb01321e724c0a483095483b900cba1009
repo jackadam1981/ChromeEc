@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5d05eee2_6ade0077",
+        "filename": "zephyr/emul/tcpc/emul_tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 389,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2022-03-17T17:10:55Z",
+      "side": 1,
+      "message": "I was thinking that there is situation where we want to postpone setting alert changed. But I didn\u0027t found any of such situation, so I will change it in future CL. Bug for this change https://b.corp.google.com/issues/225179399",
+      "parentUuid": "ac58c49b_42439e41",
+      "range": {
+        "startLine": 387,
+        "startChar": 0,
+        "endLine": 389,
+        "endChar": 0
+      },
+      "revId": "b3cc0fdb01321e724c0a483095483b900cba1009",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c5097604_16d21c7b",
         "filename": "zephyr/emul/tcpc/emul_tcpci.c",
         "patchSetId": 1
@@ -37,6 +61,30 @@
       "writtenOn": "2022-03-16T16:11:42Z",
       "side": 1,
       "message": "is this needed with the previous set reg already setting the alert_reg?",
+      "range": {
+        "startLine": 435,
+        "startChar": 2,
+        "endLine": 435,
+        "endChar": 38
+      },
+      "revId": "b3cc0fdb01321e724c0a483095483b900cba1009",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "adf2e645_3b5ac058",
+        "filename": "zephyr/emul/tcpc/emul_tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 435,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2022-03-17T17:10:55Z",
+      "side": 1,
+      "message": "Previous `tcpci_emul_alert_changed()` is called only for HardReset message and there is return right after it. So, I think this call is required.",
+      "parentUuid": "c5097604_16d21c7b",
       "range": {
         "startLine": 435,
         "startChar": 2,
