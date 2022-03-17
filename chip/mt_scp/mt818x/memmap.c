@@ -12,6 +12,7 @@
 #include "memmap.h"
 #include "registers.h"
 #include "util.h"
+#include "task.h"
 
 /*
  * Map SCP address (bits 31~28) to AP address
@@ -80,6 +81,8 @@ void cpu_invalidate_dcache_range(uintptr_t base, unsigned int length)
 	size_t pos;
 	uintptr_t addr;
 
+	interrupt_disable();
+
 	for (pos = 0; pos < length; pos += SCP_CACHE_LINE_SIZE) {
 		addr = base + pos;
 		SCP_CACHE_OP(CACHE_DCACHE) = addr & SCP_CACHE_OP_TADDR_MASK;
@@ -88,6 +91,8 @@ void cpu_invalidate_dcache_range(uintptr_t base, unsigned int length)
 		/* Read necessary to confirm the invalidation finish. */
 		REG32(addr);
 	}
+
+	interrupt_enable();
 	asm volatile("dsb;");
 }
 
@@ -108,6 +113,7 @@ void cpu_clean_invalidate_dcache_range(uintptr_t base, unsigned int length)
 {
 	size_t pos;
 	uintptr_t addr;
+	interrupt_disable();
 
 	for (pos = 0; pos < length; pos += SCP_CACHE_LINE_SIZE) {
 		addr = base + pos;
@@ -120,7 +126,9 @@ void cpu_clean_invalidate_dcache_range(uintptr_t base, unsigned int length)
 		/* Read necessary to confirm the invalidation finish. */
 		REG32(addr);
 	}
+
 	asm volatile("dsb;");
+	interrupt_enable();
 }
 
 static void scp_cache_init(void)
