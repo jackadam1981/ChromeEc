@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1fd08c22_3605e306",
+        "filename": "zephyr/emul/tcpc/emul_tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1206,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2022-03-17T17:01:50Z",
+      "side": 1,
+      "message": "I moved this line here from `tcpci_emul_disable_pd_msg_delivery()` function. I did it, because resetting mask registers is specific to hard reset handling. In `tcpci_emul_disconnect_partner()` PD message delivery should be disabled, but mask registers shouldn\u0027t be reset. In next CLs in this chain there will be more instances where PD message delivery is disabled without resetting mask registers.",
+      "parentUuid": "f01ff5bb_5811191a",
+      "revId": "b236f316303afd5c3af596892fecd96e2849247f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "60d82e9f_e4c643f6",
         "filename": "zephyr/include/emul/tcpc/emul_tcpci_partner_common.h",
         "patchSetId": 1
@@ -48,6 +66,30 @@
       "writtenOn": "2022-03-16T21:43:23Z",
       "side": 1,
       "message": "Nits: \"clears\" \"sets\" \", and stops\"\n                ^-- Oxford comma",
+      "range": {
+        "startLine": 316,
+        "startChar": 10,
+        "endLine": 318,
+        "endChar": 2
+      },
+      "revId": "b236f316303afd5c3af596892fecd96e2849247f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "76d3de75_d00b5e9a",
+        "filename": "zephyr/include/emul/tcpc/emul_tcpci_partner_common.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2022-03-17T17:01:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "60d82e9f_e4c643f6",
       "range": {
         "startLine": 316,
         "startChar": 10,
