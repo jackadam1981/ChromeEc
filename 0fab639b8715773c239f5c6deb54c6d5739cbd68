@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65a4183f_7f592a5c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2022-03-17T19:09:33Z",
+      "side": 1,
+      "message": "Is this change for tarlo? or taeko? or both?",
+      "range": {
+        "startLine": 7,
+        "startChar": 6,
+        "endLine": 7,
+        "endChar": 11
+      },
+      "revId": "0fab639b8715773c239f5c6deb54c6d5739cbd68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35ea9f23_9814e2e1",
+        "filename": "board/taeko/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2022-03-17T19:09:33Z",
+      "side": 1,
+      "message": "Please correct me if I\u0027m wrong, but TAEKO is a convertible device, which has volume slider and power button on the side. In that case it MKBP input devices should be defined",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 32
+      },
+      "revId": "0fab639b8715773c239f5c6deb54c6d5739cbd68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
