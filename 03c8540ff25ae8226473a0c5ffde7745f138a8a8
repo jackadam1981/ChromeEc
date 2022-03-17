@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7a81586_e440d806",
+        "filename": "zephyr/dts/bindings/usbc/cros,tcpc.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-03-17T01:58:53Z",
+      "side": 1,
+      "message": "is it possible to make thus file without having these defined?\nthis list has potential to end up growing too big",
+      "range": {
+        "startLine": 15,
+        "startChar": 4,
+        "endLine": 24,
+        "endChar": 32
+      },
+      "revId": "03c8540ff25ae8226473a0c5ffde7745f138a8a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86ea0850_1588f54e",
+        "filename": "zephyr/dts/bindings/usbc/cros,tcpc.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-03-17T01:58:53Z",
+      "side": 1,
+      "message": "same as above",
+      "range": {
+        "startLine": 34,
+        "startChar": 3,
+        "endLine": 36,
+        "endChar": 0
+      },
+      "revId": "03c8540ff25ae8226473a0c5ffde7745f138a8a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
