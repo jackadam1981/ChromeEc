@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b66a2625_ffe7c6ce",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115641
+      },
+      "writtenOn": "2022-03-17T09:50:16Z",
+      "side": 1,
+      "message": "Moving myself to CC. We need to pick back up this discussion about this approach to achieve low-power requirements. We don\u0027t have any boards on hand with this GPIOC0 (EC_IMX8_EN) signal.\n\nIIUC, Quanta tested this on a modified board.",
+      "revId": "1a87d139cca3a56901b63b35729372041151535d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
