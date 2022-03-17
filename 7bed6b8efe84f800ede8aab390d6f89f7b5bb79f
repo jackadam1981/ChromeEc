@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58f8a9df_eaf155cf",
+        "filename": "docs/ap-ec-comm.md",
+        "patchSetId": 7
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-03-17T17:55:05Z",
+      "side": 1,
+      "message": "The `ectool stress` command sends a large amount of host commands continuously to the EC.  This verifies that the EC can respond to all commands received without timeouts or communication errors.",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 41
+      },
+      "revId": "7bed6b8efe84f800ede8aab390d6f89f7b5bb79f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b99245f_aad7ec39",
+        "filename": "docs/ap-ec-comm.md",
+        "patchSetId": 7
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-03-17T17:55:05Z",
+      "side": 1,
+      "message": "Delete this sentence.",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 59
+      },
+      "revId": "7bed6b8efe84f800ede8aab390d6f89f7b5bb79f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "776ff3a6_0c5bc320",
+        "filename": "docs/zephyr/zephyr_ap_ec_comm.md",
+        "patchSetId": 7
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-03-17T17:55:05Z",
+      "side": 1,
+      "message": "Delete \"- host commands\"",
+      "range": {
+        "startLine": 1,
+        "startChar": 43,
+        "endLine": 1,
+        "endChar": 59
+      },
+      "revId": "7bed6b8efe84f800ede8aab390d6f89f7b5bb79f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb001f32_f3169261",
+        "filename": "docs/zephyr/zephyr_ap_ec_comm.md",
+        "patchSetId": 7
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-03-17T17:55:05Z",
+      "side": 1,
+      "message": "This is not correct.  The SoC specific Kconfig (CONFIG_CROS_SHI_NPCX or CONFIG_CROS_SHI_IT8XXX2) automatically gets enabled when PLATFORM_EC_HOST_INTERFACE_SHI.  Each driver SoC driver automatically selects the correct node from the compatible string.\n\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/bb733b03/zephyr/drivers/cros_shi/cros_shi_npcx.c#6\n\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/bb733b03/zephyr/drivers/cros_shi/cros_shi_it8xxx2.c#6",
+      "range": {
+        "startLine": 132,
+        "startChar": 0,
+        "endLine": 134,
+        "endChar": 0
+      },
+      "revId": "7bed6b8efe84f800ede8aab390d6f89f7b5bb79f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6e4bb02_b7092049",
+        "filename": "docs/zephyr/zephyr_ap_ec_comm.md",
+        "patchSetId": 7
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-03-17T17:55:05Z",
+      "side": 1,
+      "message": "MKBP Wake-up Masks",
+      "range": {
+        "startLine": 151,
+        "startChar": 4,
+        "endLine": 151,
+        "endChar": 14
+      },
+      "revId": "7bed6b8efe84f800ede8aab390d6f89f7b5bb79f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b74e5a17_9380c766",
+        "filename": "docs/zephyr/zephyr_ap_ec_comm.md",
+        "patchSetId": 7
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-03-17T17:55:05Z",
+      "side": 1,
+      "message": "I believe the MKBP wake-up masks are only used on ARM based Chromebooks.\n\nFor x86 based chromebooks the wakeup mask is controlled by the AP firmware.\n\nMy suggested rewording:\n\nThe EC can wake up up the AP from sleep modes based on multiple event types. A wake-up mask specifies which specific event types are able to wake the AP.  \n\nFor x86 based Chromebooks, the wake-up mask is controlled by the AP firmware directly using host commands EC_CMD_HOST_EVENT_SET_SMI_MASK, EC_CMD_HOST_EVENT_SET_SCI_MASK, and EC_CMD_HOST_EVENT_SET_WAKE_MASK.\n\nFor ARM based Chromebooks, the wake-up mask is defined as device tree nodes, one for MKBP events and one for generic host events. They have respective Kconfig options, which must be enabled to take the\nmasks into account.",
+      "range": {
+        "startLine": 153,
+        "startChar": 0,
+        "endLine": 159,
+        "endChar": 0
+      },
+      "revId": "7bed6b8efe84f800ede8aab390d6f89f7b5bb79f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
