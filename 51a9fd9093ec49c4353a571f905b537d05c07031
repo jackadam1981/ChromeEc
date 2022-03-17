@@ -33,6 +33,23 @@
       "message": "Nevermind. I was mistaken about being mistaken.",
       "revId": "51a9fd9093ec49c4353a571f905b537d05c07031",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e47e03c_6be75b99",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-03-17T00:19:59Z",
+      "side": 1,
+      "message": "Fixes in  https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3531308",
+      "revId": "51a9fd9093ec49c4353a571f905b537d05c07031",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
