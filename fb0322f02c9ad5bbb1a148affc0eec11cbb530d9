@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d034ea3_0a4fc88a",
+        "filename": "board/kinox/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1286280
+      },
+      "writtenOn": "2022-03-17T03:10:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ff45acec_7e94e7f6",
+      "range": {
+        "startLine": 157,
+        "startChar": 0,
+        "endLine": 157,
+        "endChar": 24
+      },
+      "revId": "fb0322f02c9ad5bbb1a148affc0eec11cbb530d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1f8962de_f927cd1e",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c129b97_1e0472d3",
+        "filename": "board/kinox/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1286280
+      },
+      "writtenOn": "2022-03-17T03:10:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1f8962de_f927cd1e",
+      "range": {
+        "startLine": 159,
+        "startChar": 0,
+        "endLine": 160,
+        "endChar": 32
+      },
+      "revId": "fb0322f02c9ad5bbb1a148affc0eec11cbb530d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "37453703_24de7d64",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-03-16T14:44:03Z",
       "side": 1,
       "message": "it looks like this is unnecessary because the active \u003d 1 in line 212",
+      "range": {
+        "startLine": 217,
+        "startChar": 0,
+        "endLine": 219,
+        "endChar": 13
+      },
+      "revId": "fb0322f02c9ad5bbb1a148affc0eec11cbb530d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "815d0150_1f69b3be",
+        "filename": "board/kinox/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1286280
+      },
+      "writtenOn": "2022-03-17T03:10:06Z",
+      "side": 1,
+      "message": "I change the coding to use the ADC interrupt.\nPlease help to review it.",
+      "parentUuid": "37453703_24de7d64",
       "range": {
         "startLine": 217,
         "startChar": 0,
