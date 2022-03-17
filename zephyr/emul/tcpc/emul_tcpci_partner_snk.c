@@ -539,6 +539,7 @@ void tcpci_snk_emul_init(struct tcpci_snk_emul *emul)
 
 	emul->common_data.data_role = PD_ROLE_DFP;
 	emul->common_data.power_role = PD_ROLE_SINK;
+	emul->common_data.vconn_role = PD_ROLE_VCONN_OFF;
 	emul->common_data.rev = PD_REV20;
 
 	emul->ops.transmit = tcpci_snk_emul_transmit_op;

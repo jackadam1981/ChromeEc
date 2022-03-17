@@ -450,6 +450,7 @@ void tcpci_src_emul_init(struct tcpci_src_emul *emul)
 
 	emul->common_data.data_role = PD_ROLE_UFP;
 	emul->common_data.power_role = PD_ROLE_SOURCE;
+	emul->common_data.vconn_role = PD_ROLE_VCONN_SRC;
 	emul->common_data.rev = PD_REV20;
 
 	emul->ops.transmit = tcpci_src_emul_transmit_op;

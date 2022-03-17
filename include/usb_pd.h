@@ -1153,6 +1153,8 @@ enum pd_ctrl_msg_type {
 	PD_CTRL_GET_PPS_STATUS = 20,
 	PD_CTRL_GET_COUNTRY_CODES = 21,
 	/* 22-31 Reserved */
+
+	PD_CTRL_INVALID = 32,
 };
 
 /* Control message types which always mark the start of an AMS */

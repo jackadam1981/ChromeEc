@@ -33,8 +33,8 @@
 struct tcpci_drp_emul_data {
 	/** Controls if device is sink or source */
 	bool sink;
-	/** If device is during power swap and is expecting PS_RDY message */
-	bool in_pwr_swap;
+	/** Current message being handled */
+	enum pd_ctrl_msg_type current_req;
 };
 
 /** Structure describing standalone dual role device emulator */

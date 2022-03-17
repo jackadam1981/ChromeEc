@@ -71,6 +71,8 @@ struct tcpci_partner_data {
 	enum pd_power_role power_role;
 	/** Data role (used in message header) */
 	enum pd_data_role data_role;
+	/** VConn role (used in message header) */
+	enum pd_vconn_role vconn_role;
 	/** Revision (used in message header) */
 	enum pd_rev_type rev;
 	/**
