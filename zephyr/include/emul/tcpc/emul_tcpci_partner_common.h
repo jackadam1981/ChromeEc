@@ -71,6 +71,8 @@ struct tcpci_partner_data {
 	enum pd_power_role power_role;
 	/** Data role (used in message header) */
 	enum pd_data_role data_role;
+	/** VConn role (used in message header) */
+	enum pd_vconn_role vconn_role;
 	/** Revision (used in message header) */
 	enum pd_rev_type rev;
 	/**
@@ -88,6 +90,8 @@ struct tcpci_partner_data {
 	 * doesn't arrive, hard reset is triggered.
 	 */
 	bool in_soft_reset;
+	/** Current requests being handled (mask of enum pd_ctrl_msg_type) */
+	uint32_t  ctrl_msg_req_mask;
 	/**
 	 * Mutex for TCPCI transmit handler. Should be used to synchronise
 	 * access to partner emulator with TCPCI emulator.
@@ -364,6 +368,22 @@ void tcpci_partner_common_print_logged_msgs(struct tcpci_partner_data *data);
  * @param data Pointer to TCPCI partner emulator
  */
 void tcpci_partner_common_clear_logged_msgs(struct tcpci_partner_data *data);
+
+/**
+ * @brief Sets ctrl_msg_req_mask
+ *
+ * @param msg_type enum pd_ctrl_msg_type
+ */
+void tcpci_partner_common_set_ctrl_msg_mask(struct tcpci_partner_data *data,
+					    enum pd_ctrl_msg_type msg_type);
+
+/**
+ * @brief Clears ctrl_msg_req_mask
+ *
+ * @param msg_type enum pd_ctrl_msg_type
+ */
+void tcpci_partner_common_clear_ctrl_msg_mask(struct tcpci_partner_data *data,
+					      enum pd_ctrl_msg_type msg_type);
 
 /**
  * @}
