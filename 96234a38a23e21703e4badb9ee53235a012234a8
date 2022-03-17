@@ -22,6 +22,30 @@
       },
       "revId": "96234a38a23e21703e4badb9ee53235a012234a8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d62621a_206010d5",
+        "filename": "zephyr/emul/tcpc/emul_tcpci.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1187,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2022-03-17T16:31:58Z",
+      "side": 1,
+      "message": "1. Error is generated only when TCPM send SOP* message and it is shorter than 2 bytes. If different message is sent (e.g. hard reset) than body of the message is not important and can be 0 or 1 byte. So it is not checking if type is correct, but if message length is correct for particular message type.\n2. `NUM_SOP_STAR_TYPES` is defined as `TCPCI_MSG_SOP_DEBUG_PRIME_PRIME + 1`, so I think that `\u003c` is correct to filter only SOP* types.",
+      "parentUuid": "e51b1f4d_746a0e86",
+      "range": {
+        "startLine": 1187,
+        "startChar": 5,
+        "endLine": 1187,
+        "endChar": 30
+      },
+      "revId": "96234a38a23e21703e4badb9ee53235a012234a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
