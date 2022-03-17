@@ -53,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "af70327c_9c481ac3",
+        "filename": "zephyr/emul/tcpc/emul_tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1206,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-03-17T17:29:46Z",
+      "side": 1,
+      "message": "I was wondering whether this change should be in the \"Fix sending Hard Reset\" CL, earlier in the stack. But if it makes sense to you for it to be in this CL, I\u0027m OK with that.",
+      "parentUuid": "1fd08c22_3605e306",
+      "revId": "b236f316303afd5c3af596892fecd96e2849247f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "60d82e9f_e4c643f6",
