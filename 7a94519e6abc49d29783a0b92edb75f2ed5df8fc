@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "024150e7_1fd8ee0b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-03-17T03:32:37Z",
+      "side": 1,
+      "message": "please add a note that this is done by disabling the\ninput current limit and why this is OK.",
+      "revId": "7a94519e6abc49d29783a0b92edb75f2ed5df8fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "688d9c74_51ba28d1",
+        "filename": "board/banshee/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-03-17T03:32:37Z",
+      "side": 1,
+      "message": "is this still needed after correcting the sense resistor?",
+      "range": {
+        "startLine": 49,
+        "startChar": 5,
+        "endLine": 49,
+        "endChar": 45
+      },
+      "revId": "7a94519e6abc49d29783a0b92edb75f2ed5df8fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eaad9497_63b6a275",
+        "filename": "board/banshee/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-03-17T03:32:37Z",
+      "side": 1,
+      "message": "CHARGER_SOLO",
+      "range": {
+        "startLine": 51,
+        "startChar": 13,
+        "endLine": 51,
+        "endChar": 16
+      },
+      "revId": "7a94519e6abc49d29783a0b92edb75f2ed5df8fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e6d2d29_bf64555d",
+        "filename": "board/banshee/board.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-03-17T03:32:37Z",
+      "side": 1,
+      "message": "correcting the sense resistor config needs a separate patch and should go in first.",
+      "range": {
+        "startLine": 197,
+        "startChar": 41,
+        "endLine": 197,
+        "endChar": 43
+      },
+      "revId": "7a94519e6abc49d29783a0b92edb75f2ed5df8fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
