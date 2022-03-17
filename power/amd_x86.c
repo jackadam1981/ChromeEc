@@ -88,6 +88,11 @@ void chipset_throttle_cpu(int throttle)
 	if (IS_ENABLED(CONFIG_CPU_PROCHOT_ACTIVE_LOW))
 		throttle = !throttle;
 
+	if (throttle)
+		gpio_set_flags(GPIO_PROCHOT_ODL, GPIO_ODR_HIGH);
+	else
+		gpio_set_flags(GPIO_PROCHOT_ODL, GPIO_INPUT);
+
 	if (chipset_in_state(CHIPSET_STATE_ON))
 		gpio_set_level(GPIO_CPU_PROCHOT, throttle);
 }

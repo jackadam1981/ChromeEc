@@ -204,6 +204,9 @@ static void baseboard_interrupt_init(void)
 	/* Enable SBU fault interrupts */
 	ioex_enable_interrupt(IOEX_USB_C0_SBU_FAULT_ODL);
 	ioex_enable_interrupt(IOEX_USB_C1_SBU_FAULT_ODL);
+
+	/* Enable PROCHOT interrupt */
+	gpio_enable_interrupt(GPIO_PROCHOT_ODL);
 }
 DECLARE_HOOK(HOOK_INIT, baseboard_interrupt_init, HOOK_PRIO_INIT_I2C + 1);
 
@@ -943,4 +946,22 @@ void baseboard_en_pwr_s0(enum gpio_signal signal)
 
 	/* Now chain off to the normal power signal interrupt handler. */
 	power_signal_interrupt(signal);
+}
+void print_regs_of_interest(void)
+{
+	int chg_reg = 0;
+	int pmu_reg = 0;
+
+	/* Hard code for the speed of it! */
+	i2c_read16(chg_chips[0].i2c_port, chg_chips[0].i2c_addr_flags, 0x3A, &chg_reg);
+	i2c_read16(chg_chips[0].i2c_port, 0x20, 0x84, &pmu_reg);
+
+	ccprints("PROCHOT detected: chg 0x3A reg = 0x%04x, pmu 0x84 reg = 0x%04x", chg_reg, pmu_reg);
+}
+DECLARE_DEFERRED(print_regs_of_interest);
+
+void baseboard_prochot_time(enum gpio_signal signal)
+{
+	/* have to use HOOKS because we can't run i2c in an interrupt */
+	hook_call_deferred(&print_regs_of_interest_data, 0);
 }
