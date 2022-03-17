@@ -16,6 +16,24 @@
       "message": "recommend to start with 400 for bringup and then verify that 1000 works for PPC and TCPC and only then switch",
       "revId": "64c820474677b1f1bd1b5311217bba0d7a41c30d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1193df14_a81d7f94",
+        "filename": "board/kinox/i2c.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2022-03-17T19:18:42Z",
+      "side": 1,
+      "message": ".. switch to 1000",
+      "parentUuid": "d7d0dbd9_d2c0e8cf",
+      "revId": "64c820474677b1f1bd1b5311217bba0d7a41c30d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
