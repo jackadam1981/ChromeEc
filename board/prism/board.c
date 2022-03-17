@@ -103,6 +103,8 @@ const uint8_t rgbkbd_count = ARRAY_SIZE(rgbkbds);
 const uint8_t rgbkbd_hsize = RGB_GRID0_COL + RGB_GRID1_COL;
 const uint8_t rgbkbd_vsize = RGB_GRID0_ROW;
 
+const struct rgbkbd_cord rgbkbd_map[128];
+
 __override void board_enable_rgb_keyboard(bool enable)
 {
 	gpio_set_level(GPIO_RGBKBD_POWER, 1);
