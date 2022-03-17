@@ -10,6 +10,7 @@
 #include "ec_commands.h"
 #include "gpio.h"
 #include "hooks.h"
+#include "host_command.h"
 #include "registers.h"
 #include "rgb_keyboard.h"
 #include "task.h"
@@ -21,15 +22,17 @@
 #define CPRINTF(fmt, args...) cprintf(CC_RGBKBD, "RGBKBD: " fmt, ##args)
 #define CPRINTS(fmt, args...) cprints(CC_RGBKBD, "RGBKBD: " fmt, ##args)
 
-test_export_static enum rgbkbd_demo demo =
+test_export_static enum ec_rgbkbd_demo demo =
 #if   defined(CONFIG_RGBKBD_DEMO_FLOW)
-	RGBKBD_DEMO_FLOW
+	EC_RGBKBD_DEMO_FLOW
 #elif defined(CONFIG_RGBKBD_DEMO_DOT)
-	RGBKBD_DEMO_DOT
+	EC_RGBKBD_DEMO_DOT
 #else
-	RGBKBD_DEMO_OFF
+	EC_RGBKBD_DEMO_OFF
 #endif
 	;
+
+__overridable const struct rgbkbd_cord rgbkbd_map[128];
 
 static int set_color_single(struct rgb_s color, int x, int y)
 {
@@ -166,16 +169,16 @@ static void rgbkbd_demo_dot(void)
 #endif
 }
 
-static void rgbkbd_demo(enum rgbkbd_demo id)
+static void rgbkbd_demo(enum ec_rgbkbd_demo id)
 {
 	switch (id) {
-	case RGBKBD_DEMO_FLOW:
+	case EC_RGBKBD_DEMO_FLOW:
 		rgbkbd_demo_flow();
 		break;
-	case RGBKBD_DEMO_DOT:
+	case EC_RGBKBD_DEMO_DOT:
 		rgbkbd_demo_dot();
 		break;
-	case RGBKBD_DEMO_OFF:
+	case EC_RGBKBD_DEMO_OFF:
 	default:
 		break;
 	}
@@ -211,6 +214,27 @@ void rgbkbd_task(void *u)
 	}
 }
 
+static enum ec_status hc_rgbkbd_set_color(struct host_cmd_handler_args *args)
+{
+	const struct ec_params_rgbkbd_set_color *p = args->params;
+	enum ec_status rv;
+	int i, k;
+
+	if (p->start_key + p->length > sizeof(rgbkbd_map))
+		return EC_RES_INVALID_PARAM;
+
+	for (i = 0, k = p->start_key; i < p->length; i++, k++) {
+		rv = set_color_single(p->color[i],
+				      rgbkbd_map[k].x, rgbkbd_map[k].y);
+		if (rv != EC_RES_SUCCESS)
+			return rv;
+	}
+
+	return EC_RES_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_RGBKBD_SET_COLOR, hc_rgbkbd_set_color,
+		     EC_VER_MASK(0));
+
 test_export_static int cc_rgbk(int argc, char **argv)
 {
 	struct rgbkbd *ctx;
@@ -241,7 +265,7 @@ test_export_static int cc_rgbk(int argc, char **argv)
 	} else if (!strcasecmp(argv[1], "demo")) {
 		/* Usage 4 */
 		val = strtoi(argv[2], &end, 0);
-		if (*end || val >= RGBKBD_DEMO_COUNT)
+		if (*end || val >= EC_RGBKBD_DEMO_COUNT)
 			return EC_ERROR_PARAM1;
 		demo = val;
 		rgbkbd_reset_color((struct rgb_s){.r = 0, .g = 0, .b = 0});
@@ -254,7 +278,7 @@ test_export_static int cc_rgbk(int argc, char **argv)
 		gcc = strtoi(argv[1], &end, 0);
 		if (*end || gcc < 0 || gcc > UINT8_MAX)
 			return EC_ERROR_PARAM1;
-		demo = RGBKBD_DEMO_OFF;
+		demo = EC_RGBKBD_DEMO_OFF;
 		for (i = 0; i < rgbkbd_count; i++) {
 			ctx = &rgbkbds[i];
 			ctx->cfg->drv->set_gcc(ctx, gcc);
@@ -278,7 +302,7 @@ test_export_static int cc_rgbk(int argc, char **argv)
 		return EC_ERROR_PARAM4;
 	color.b = val;
 
-	demo = RGBKBD_DEMO_OFF;
+	demo = EC_RGBKBD_DEMO_OFF;
 	if (y < 0 && x < 0) {
 		/* Usage 3 */
 		rgbkbd_reset_color(color);
