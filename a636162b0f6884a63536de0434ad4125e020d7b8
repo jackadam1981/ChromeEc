@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1b0cd2a_431f3cb7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1477788
+      },
+      "writtenOn": "2022-03-17T12:21:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b7dc1b48_cd74131a",
+      "revId": "a636162b0f6884a63536de0434ad4125e020d7b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bddf132b_9b381223",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-03-16T19:55:14Z",
       "side": 1,
       "message": "I see TEST\u003dnone but we should build the zephyr boards to confirm this doesn\u0027t break anything.",
+      "range": {
+        "startLine": 44,
+        "startChar": 51,
+        "endLine": 44,
+        "endChar": 58
+      },
+      "revId": "a636162b0f6884a63536de0434ad4125e020d7b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa04228d_0438963e",
+        "filename": "zephyr/shim/src/CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1477788
+      },
+      "writtenOn": "2022-03-17T12:21:48Z",
+      "side": 1,
+      "message": "Sure, I\u0027ve done the zmake testall just before uploading the first patch, but I\u0027ve forgot to change the description.",
+      "parentUuid": "bddf132b_9b381223",
       "range": {
         "startLine": 44,
         "startChar": 51,
