@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a4cc3da_ee538ceb",
+        "filename": "board/banshee/board.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2022-03-17T02:54:08Z",
+      "side": 1,
+      "message": "In case of error this function should terminate (return;)",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 8
+      },
+      "revId": "61ad69d41f74c300d7da25e437e564080c30adba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
