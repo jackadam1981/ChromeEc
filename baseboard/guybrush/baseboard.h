@@ -159,6 +159,7 @@
 #define CONFIG_CHARGER_ISL9241
 #define CONFIG_CHARGER_SENSE_RESISTOR 10
 #define CONFIG_CHARGER_SENSE_RESISTOR_AC 20
+#define CONFIG_CMD_CHARGER_DUMP
 
 /*
  * EC will boot AP to depthcharge if: (BAT >= 2%) || (AC >= 65W)
