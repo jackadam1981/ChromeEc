@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c0c79f2_d7130561",
+        "filename": "zephyr/dts/bindings/usbc/cros,tcpc.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-03-18T23:13:46Z",
+      "side": 1,
+      "message": "Needs chrome os copyright headers",
+      "revId": "c82c5016c49e5b9dd98868ba60005a694c827990",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f94a150_6f63421d",
+        "filename": "zephyr/dts/bindings/usbc/cros,tcpc.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-03-18T23:13:46Z",
+      "side": 1,
+      "message": "Should this be an `enum` then?",
+      "range": {
+        "startLine": 23,
+        "startChar": 6,
+        "endLine": 23,
+        "endChar": 77
+      },
+      "revId": "c82c5016c49e5b9dd98868ba60005a694c827990",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14deca02_64689633",
+        "filename": "zephyr/shim/src/tcpc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-03-18T23:13:46Z",
+      "side": 1,
+      "message": "what prevents us from including the header unconditionally?",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 38
+      },
+      "revId": "c82c5016c49e5b9dd98868ba60005a694c827990",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0918104_706bfe85",
+        "filename": "zephyr/shim/src/tcpc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-03-18T23:13:46Z",
+      "side": 1,
+      "message": "same here?",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 6
+      },
+      "revId": "c82c5016c49e5b9dd98868ba60005a694c827990",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
