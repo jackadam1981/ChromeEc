@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4c24c97b_6fa0257c",
+        "filename": "zephyr/dts/bindings/gpio/named-gpios.yaml",
+        "patchSetId": 10
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1513493
+      },
+      "writtenOn": "2022-03-18T20:41:44Z",
+      "side": 1,
+      "message": "Another example is adc is using specifier cells to input io-channels\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/test/drivers/overlay.dts;l\u003d298?q\u003dzephyr%2Ftest%2Fdrivers%2Foverlay.\u0026ss\u003dchromiumos%2Fchromiumos%2Fcodesearch:src%2F\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/test/drivers/overlay.dts;l\u003d310?q\u003dzephyr%2Ftest%2Fdrivers%2Foverlay.\u0026ss\u003dchromiumos%2Fchromiumos%2Fcodesearch:src%2F",
+      "parentUuid": "fc214180_4d1b4104",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 21
+      },
+      "revId": "23bc5547199a7fd77821b8f0faaa63bb27be1538",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "212a5ef3_0bdbc322",
         "filename": "zephyr/dts/bindings/gpio_led/cros-ec,gpio-led-pins.yaml",
         "patchSetId": 10
