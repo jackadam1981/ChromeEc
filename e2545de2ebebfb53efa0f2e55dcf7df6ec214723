@@ -33,6 +33,46 @@
       "message": "Looks like Aaron is OOO until March 21 too, swapping out for Abe 😊",
       "revId": "e2545de2ebebfb53efa0f2e55dcf7df6ec214723",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0341151_233daab1",
+        "filename": "zephyr/test/drivers/include/utils.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-03-18T17:20:06Z",
+      "side": 1,
+      "message": "This function returns void. Are you referring to the contents of `response`?",
+      "revId": "e2545de2ebebfb53efa0f2e55dcf7df6ec214723",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6598c26c_5240af85",
+        "filename": "zephyr/test/drivers/src/host_cmd/motion_sense.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-03-18T17:20:06Z",
+      "side": 1,
+      "message": "Is this double underscore intentional? If so, what does it mean?",
+      "range": {
+        "startLine": 56,
+        "startChar": 43,
+        "endLine": 56,
+        "endChar": 45
+      },
+      "revId": "e2545de2ebebfb53efa0f2e55dcf7df6ec214723",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
