@@ -145,6 +145,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c655076d_0f278fe7",
+        "filename": "zephyr/dts/bindings/gpio_led/cros-ec,gpio-led-pins.yaml",
+        "patchSetId": 10
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1513493
+      },
+      "writtenOn": "2022-03-18T23:36:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "212a5ef3_0bdbc322",
+      "range": {
+        "startLine": 10,
+        "startChar": 17,
+        "endLine": 10,
+        "endChar": 22
+      },
+      "revId": "23bc5547199a7fd77821b8f0faaa63bb27be1538",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4d407f58_31b8162a",
         "filename": "zephyr/projects/trogdor/lazor/gpio.dts",
         "patchSetId": 10
@@ -168,6 +192,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4fb2470f_8a255efd",
+        "filename": "zephyr/projects/trogdor/lazor/gpio.dts",
+        "patchSetId": 10
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1513493
+      },
+      "writtenOn": "2022-03-18T23:36:24Z",
+      "side": 1,
+      "message": "Had made a rebase error, fixed",
+      "parentUuid": "4d407f58_31b8162a",
+      "range": {
+        "startLine": 192,
+        "startChar": 26,
+        "endLine": 192,
+        "endChar": 29
+      },
+      "revId": "23bc5547199a7fd77821b8f0faaa63bb27be1538",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "05e83af8_8c289487",
         "filename": "zephyr/projects/trogdor/lazor/src/led.c",
         "patchSetId": 10
@@ -179,6 +227,30 @@
       "writtenOn": "2022-03-18T17:35:58Z",
       "side": 1,
       "message": "These 2 functions are still hard-coded, which limits to the 2 colors Lazor supports. I think they can be generalized, right? For example,\n * the led_get_brightness_range() to traverse the dts nodes to see if the color is defined or not.\n * the led_set_brightness() to cover all the colors, e.g. setting a not-defined color just does nothing and return SUCCESS.",
+      "range": {
+        "startLine": 178,
+        "startChar": 0,
+        "endLine": 194,
+        "endChar": 1
+      },
+      "revId": "23bc5547199a7fd77821b8f0faaa63bb27be1538",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39b58acd_5e790546",
+        "filename": "zephyr/projects/trogdor/lazor/src/led.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1513493
+      },
+      "writtenOn": "2022-03-18T23:36:24Z",
+      "side": 1,
+      "message": "Planning to create a separate review to bring these in.",
+      "parentUuid": "05e83af8_8c289487",
       "range": {
         "startLine": 178,
         "startChar": 0,
