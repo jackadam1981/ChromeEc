@@ -33,6 +33,24 @@
       "message": "Could we add a case to the unit test that covers this then?",
       "revId": "0ac20060874634f77f5fd102adb3a1b593b7dcae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f8917bf_53f4ef9b",
+        "filename": "driver/ppc/sn5s330.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2022-03-18T17:00:01Z",
+      "side": 1,
+      "message": "Because the function is static and only ever called with SN5S330_PP1_EN or SN5S330_PP2_EN we don\u0027t have a way to work this branch. We\u0027d need to expose the function directly. If you feel strongly I can address this in my ongoing UT work.",
+      "parentUuid": "7e8ba456_26f946a3",
+      "revId": "0ac20060874634f77f5fd102adb3a1b593b7dcae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
