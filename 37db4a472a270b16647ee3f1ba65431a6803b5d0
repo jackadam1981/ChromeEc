@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57a1fda9_79c227bd",
+        "filename": "zephyr/zmake/zmake/__main__.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-03-18T16:59:07Z",
+      "side": 1,
+      "message": "Can be omitted since you handle `None` elsewhere (and that\u0027s the default).",
+      "range": {
+        "startLine": 305,
+        "startChar": 8,
+        "endLine": 305,
+        "endChar": 19
+      },
+      "revId": "37db4a472a270b16647ee3f1ba65431a6803b5d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c30ef0ec_20d1f3c8",
+        "filename": "zephyr/zmake/zmake/__main__.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-03-18T16:59:07Z",
+      "side": 1,
+      "message": "can be omitted, this is the default",
+      "range": {
+        "startLine": 306,
+        "startChar": 8,
+        "endLine": 306,
+        "endChar": 28
+      },
+      "revId": "37db4a472a270b16647ee3f1ba65431a6803b5d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dbd6cb98_7c16aaa7",
+        "filename": "zephyr/zmake/zmake/zmake.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 439,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-03-18T16:59:07Z",
+      "side": 1,
+      "message": "is it worth removing the define if we aren\u0027t using it?\n\n```\nif extra_cflags:\n    base_config |\u003d zmake.build_config.BuildConfig(cmake_defs\u003d{\"EXTRA_CFLAGS\": extra_cflags})\n```",
+      "range": {
+        "startLine": 439,
+        "startChar": 16,
+        "endLine": 439,
+        "endChar": 51
+      },
+      "revId": "37db4a472a270b16647ee3f1ba65431a6803b5d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
