@@ -300,6 +300,12 @@ def add_common_configure_args(sub_parser: argparse.ArgumentParser):
         dest="coverage",
         help="Enable CONFIG_COVERAGE Kconfig.",
     )
+    sub_parser.add_argument(
+        "--extra-cflags",
+        default="",
+        dest="extra_cflags",
+        help="Additional CFLAGS to use for target builds",
+    )
     group = sub_parser.add_mutually_exclusive_group(required=True)
     group.add_argument(
         "-a",
