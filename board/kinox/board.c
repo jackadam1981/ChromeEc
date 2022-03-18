@@ -19,6 +19,7 @@
 #include "switch.h"
 #include "throttle_ap.h"
 #include "usbc_config.h"
+#include "usbc_ppc.h"
 
 #include "gpio_list.h" /* Must come after other header files. */
 
@@ -38,6 +39,8 @@ BUILD_ASSERT(ARRAY_SIZE(usb_port_enable) == USB_PORT_COUNT);
 
 int board_set_active_charge_port(int port)
 {
+	int rv;
+
 	CPRINTS("Requested charge port change to %d", port);
 
 	/*
@@ -79,16 +82,30 @@ int board_set_active_charge_port(int port)
 			return EC_ERROR_INVAL;
 	}
 
+	/* Make sure BJ adapter is sourcing power */
+	if (port == CHARGE_PORT_BARRELJACK &&
+				gpio_get_level(GPIO_BJ_ADP_PRESENT_ODL)) {
+		CPRINTS("BJ port selected, but not present!");
+		return EC_ERROR_INVAL;
+	}
+
 	CPRINTS("New charger p%d", port);
 
 	switch (port) {
 	case CHARGE_PORT_TYPEC0:
 		gpio_set_level(GPIO_EN_PPVAR_BJ_ADP_L, 1);
+		rv = ppc_vbus_sink_enable(CHARGE_PORT_TYPEC0, 1);
+		if (rv) {
+			CPRINTS("Failed to enable C0 sink path");
+			return rv;
+		}
 		break;
 	case CHARGE_PORT_BARRELJACK:
-		/* Make sure BJ adapter is sourcing power */
-		if (gpio_get_level(GPIO_BJ_ADP_PRESENT_ODL))
-			return EC_ERROR_INVAL;
+		rv = ppc_vbus_sink_enable(CHARGE_PORT_TYPEC0, 0);
+		if (rv) {
+			CPRINTS("Failed to disable C0 sink path");
+			return rv;
+		}
 		gpio_set_level(GPIO_EN_PPVAR_BJ_ADP_L, 0);
 		break;
 	default:
