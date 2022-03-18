@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b03ec9b_fd338b6c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2022-03-18T08:16:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "844e9e8b_58aabeb8",
+      "range": {
+        "startLine": 13,
+        "startChar": 35,
+        "endLine": 13,
+        "endChar": 41
+      },
+      "revId": "bf827469226517277d2d8540051b103a15c4d321",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "273bc7df_05fabad7",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-03-17T23:24:46Z",
       "side": 1,
       "message": "nit: new line",
+      "range": {
+        "startLine": 27,
+        "startChar": 2,
+        "endLine": 27,
+        "endChar": 3
+      },
+      "revId": "bf827469226517277d2d8540051b103a15c4d321",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2cd63c91_f82b1b56",
+        "filename": "chip/npcx/adc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2022-03-18T08:16:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "273bc7df_05fabad7",
       "range": {
         "startLine": 27,
         "startChar": 2,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "deaa4020_5c73d8f6",
+        "filename": "chip/npcx/adc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2022-03-18T08:16:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "47ab5dfc_dc214126",
+      "range": {
+        "startLine": 31,
+        "startChar": 16,
+        "endLine": 31,
+        "endChar": 22
+      },
+      "revId": "bf827469226517277d2d8540051b103a15c4d321",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e8f252dc_bf45d505",
@@ -93,6 +165,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc3072e2_3aadc0de",
+        "filename": "chip/npcx/adc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2022-03-18T08:16:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e8f252dc_bf45d505",
+      "range": {
+        "startLine": 37,
+        "startChar": 34,
+        "endLine": 37,
+        "endChar": 37
+      },
+      "revId": "bf827469226517277d2d8540051b103a15c4d321",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "61207a43_91649280",
@@ -106,6 +202,30 @@
       "writtenOn": "2022-03-17T23:24:46Z",
       "side": 1,
       "message": "Originally it was 0x10 now it\u0027s 0x3 for npcx5 and 0x2 for the others. Is it intentional?",
+      "range": {
+        "startLine": 438,
+        "startChar": 45,
+        "endLine": 438,
+        "endChar": 52
+      },
+      "revId": "bf827469226517277d2d8540051b103a15c4d321",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "278b01e3_9984898e",
+        "filename": "chip/npcx/adc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 438,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2022-03-18T08:16:56Z",
+      "side": 1,
+      "message": "Yes, it is intentional.\nThe DLY in ATCTL[10:8] should be set to\nRegular speed \u003d 0b011 (for npcx5)\nTurbo speed   \u003d 0b010 (for others)\nThe original DLY setting 0x11 should be a typo of 0b11, so I fixed it in the CL.",
+      "parentUuid": "61207a43_91649280",
       "range": {
         "startLine": 438,
         "startChar": 45,
