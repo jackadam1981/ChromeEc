@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5465ef47_e54d0d93",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_alt_mode.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2022-03-18T22:43:29Z",
+      "side": 1,
+      "message": "Does it take 10 seconds for the PD negotiation and current ramp?",
+      "range": {
+        "startLine": 47,
+        "startChar": 1,
+        "endLine": 47,
+        "endChar": 23
+      },
+      "revId": "13dd39f3eb2fe0492b0d096ee88f8240c6bc43f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
