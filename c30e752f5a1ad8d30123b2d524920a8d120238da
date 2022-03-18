@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f991404c_05cc79bd",
+        "filename": "test/system_is_locked.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-03-18T16:30:09Z",
+      "side": 1,
+      "message": "For simplicity, after the change suggested by Tom I think this block could be replaced with:\n\n```\nTEST_EQ(write_protect_is_asserted(), write_protect_enabled, \"%d\");\n```",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 2
+      },
+      "revId": "c30e752f5a1ad8d30123b2d524920a8d120238da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
