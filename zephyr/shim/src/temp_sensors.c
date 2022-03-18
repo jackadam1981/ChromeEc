@@ -12,6 +12,24 @@
 #include "temp_sensor/tmp112.h"
 
 #if DT_NODE_EXISTS(DT_PATH(named_temp_sensors))
+
+#define OPTIONAL_POWER_GPIO(node_id)					    \
+		COND_CODE_1(DT_NODE_HAS_PROP(node_id, power_gpio),	    \
+			    (GPIO_SIGNAL(DT_PHANDLE(node_id, power_gpio))), \
+			    (GPIO_UNIMPLEMENTED))
+
+#define HAS_POWER_GOOD_PIN(node_id) DT_NODE_HAS_PROP(node_id, power_good_pin) ||
+#define ANY_INST_HAS_POWER_GOOD_PIN					\
+	(DT_FOREACH_STATUS_OKAY(cros_ec_temp_sensor_thermistor,		\
+				HAS_POWER_GOOD_PIN)			\
+	DT_FOREACH_STATUS_OKAY(cros_ec_temp_sensor_pct2075,		\
+				HAS_POWER_GOOD_PIN)			\
+	DT_FOREACH_STATUS_OKAY(cros_ec_temp_sensor_sb_tsi,		\
+				HAS_POWER_GOOD_PIN)			\
+	DT_FOREACH_STATUS_OKAY(cros_ec_temp_sensor_tmp112,		\
+				HAS_POWER_GOOD_PIN)			\
+	0)
+
 static int thermistor_get_temp(const struct temp_sensor_t *sensor,
 			       int *temp_ptr)
 {
@@ -50,6 +68,7 @@ static int thermistor_get_temp(const struct temp_sensor_t *sensor,
 		.idx = ZSHIM_ADC_ID(DT_PHANDLE(node_id, adc)),                \
 		.type = TEMP_SENSOR_TYPE_BOARD,                               \
 		.zephyr_info = GET_ZEPHYR_TEMP_SENSOR_THERMISTOR(node_id),    \
+		.power_gpio = OPTIONAL_POWER_GPIO(node_id),		      \
 	},
 
 DT_FOREACH_STATUS_OKAY(cros_ec_thermistor, DEFINE_THERMISTOR_DATA)
@@ -79,6 +98,7 @@ static int pct2075_get_temp(const struct temp_sensor_t *sensor, int *temp_ptr)
 		.idx = ZSHIM_PCT2075_SENSOR_ID(node_id),		\
 		.type = TEMP_SENSOR_TYPE_BOARD,				\
 		.zephyr_info = GET_ZEPHYR_TEMP_SENSOR_PCT2075(node_id),	\
+		.power_gpio = OPTIONAL_POWER_GPIO(node_id), \
 	},
 
 const struct pct2075_sensor_t pct2075_sensors[PCT2075_COUNT] = {
@@ -110,6 +130,7 @@ static int sb_tsi_get_temp(const struct temp_sensor_t *sensor, int *temp_ptr)
 		.idx = 0,						\
 		.type = TEMP_SENSOR_TYPE_CPU,				\
 		.zephyr_info = GET_ZEPHYR_TEMP_SENSOR_SB_TSI(node_id),	\
+		.power_gpio = OPTIONAL_POWER_GPIO(node_id), \
 	},
 
 #if DT_HAS_COMPAT_STATUS_OKAY(cros_ec_temp_sensor_tmp112)
@@ -137,6 +158,7 @@ static int tmp112_get_temp(const struct temp_sensor_t *sensor, int *temp_ptr)
 		.idx = ZSHIM_TMP112_SENSOR_ID(node_id),			\
 		.type = TEMP_SENSOR_TYPE_BOARD,				\
 		.zephyr_info = GET_ZEPHYR_TEMP_SENSOR_TMP112(node_id),	\
+		.power_gpio = OPTIONAL_POWER_GPIO(node_id), \
 	},
 
 const struct tmp112_sensor_t tmp112_sensors[TMP112_COUNT] = {

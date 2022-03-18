@@ -7,6 +7,7 @@
 
 #include "common.h"
 #include "console.h"
+#include "gpio.h"
 #include "hooks.h"
 #include "host_command.h"
 #include "task.h"

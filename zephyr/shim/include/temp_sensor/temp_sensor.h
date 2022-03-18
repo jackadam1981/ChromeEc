@@ -58,6 +58,9 @@ struct zephyr_temp_sensor {
 	/* Read sensor value in K into temp_ptr; return non-zero if error. */
 	int (*read)(const struct temp_sensor_t *sensor, int *temp_ptr);
 	struct thermistor_info *thermistor;
+#if ANY_INST_HAS_POWER_GOOD_PIN
+	struct gpio_dt_spec *power_gpio;
+#endif
 };
 
 #endif /* CONFIG_PLATFORM_EC_TEMP_SENSOR */
