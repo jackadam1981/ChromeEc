@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6eba65f4_a0e45f53",
+        "filename": "zephyr/test/drivers/src/utils.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-03-18T23:04:35Z",
+      "side": 1,
+      "message": "This doesn\u0027t need to be so complicated, just don\u0027t use BUILD_HOST_COMMAND.\n\n```\nvoid host_cmd_typec_discovery(int port, enum typec_partner_type partner_type,\n\t\t\t      void *response, size_t response_size)\n{\n\tstruct ec_params_typec_discovery params \u003d {\n\t\t.port \u003d port, .partner_type \u003d partner_type\n\t};\n\tstruct host_cmd_handler_args args \u003d BUILD_HOST_COMMAND_PARAMS(\n\t\tEC_CMD_TYPEC_DISCOVERY, 0, params);\n\targs.response \u003d response;\n\targs.response_max \u003d response_size;\n\n\tzassume_ok(host_command_process(\u0026args),\n\t\t   \"Failed to get Type-C state for port %d\", port);\n\n}\n```",
+      "range": {
+        "startLine": 118,
+        "startChar": 1,
+        "endLine": 122,
+        "endChar": 50
+      },
+      "revId": "ed1c152a03fddf85ca0de5b349158199ba98ea55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
