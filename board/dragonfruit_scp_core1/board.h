@@ -33,6 +33,9 @@
 #define CONFIG_RAM_SIZE ((CONFIG_IPC_SHARED_OBJ_ADDR & (~(0x400 - 1))) - \
 			 CONFIG_RAM_BASE)
 
-#define SCP_FW_END 0x10000
+/* SCP_FW_END is used to calc the base of IPI buffer for AP.
+ * Provide AP view physical address which include the offset.
+ */
+#define SCP_FW_END 0xbf000
 
 #endif /* __CROS_EC_BOARD_H */
