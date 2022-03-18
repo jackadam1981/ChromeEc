@@ -12,6 +12,24 @@
 #include "temp_sensor/tmp112.h"
 
 #if DT_NODE_EXISTS(DT_PATH(named_temp_sensors))
+
+#define OPTIONAL_POWER_GOOD_DEV(node_id)				       \
+		COND_CODE_1(DT_NODE_HAS_PROP(node_id, power_good_pin),	       \
+			    GET_POWER_GOOD_DEV(node_id),		       \
+			    NULL)
+
+#define GET_POWER_GOOD_DEV(node_id)					       \
+		DEVICE_DT_GET(DT_GPIO_CTLR(DT_PROP(node_id, power_good_pin),   \
+					   gpios))
+
+#define OPTIONAL_POWER_GOOD_PIN(node_id)				       \
+		COND_CODE_1(DT_NODE_HAS_PROP(node_id, power_good_pin),	       \
+			    GET_POWER_GOOD_PIN(node_id),		       \
+			    0)
+
+#define GET_POWER_GOOD_PIN(node_id) DT_GPIO_PIN(DT_PROP(node_id,	       \
+							power_good_pin), gpios)
+
 static int thermistor_get_temp(const struct temp_sensor_t *sensor,
 			       int *temp_ptr)
 {
@@ -37,12 +55,23 @@ static int thermistor_get_temp(const struct temp_sensor_t *sensor,
 		.data = DT_CAT(node_id, _thermistor_data),          \
 	})
 
+#if ANY_INST_HAS_POWER_GOOD_PIN
+#define GET_ZEPHYR_TEMP_SENSOR_THERMISTOR(node_id)			      \
+	(&(struct zephyr_temp_sensor){					      \
+		.read = &thermistor_get_temp,				      \
+		.thermistor =                                                 \
+			GET_THERMISTOR_INFO(DT_PHANDLE(node_id, thermistor)), \
+		.power_good_dev = OPTIONAL_POWER_GOOD_DEV(node_id),	      \
+		.power_good_pin = OPTIONAL_POWER_GOOD_PIN(node_id),	      \
+	})
+#else
 #define GET_ZEPHYR_TEMP_SENSOR_THERMISTOR(node_id)			      \
 	(&(struct zephyr_temp_sensor){					      \
 		.read = &thermistor_get_temp,				      \
 		.thermistor =                                                 \
 			GET_THERMISTOR_INFO(DT_PHANDLE(node_id, thermistor)), \
 	})
+#endif /* ANY_INST_HAS_POWER_GOOD_PIN */
 
 #define TEMP_THERMISTOR(node_id)                                              \
 	[ZSHIM_TEMP_SENSOR_ID(node_id)] = {                                   \
@@ -67,11 +96,21 @@ static int pct2075_get_temp(const struct temp_sensor_t *sensor, int *temp_ptr)
 		.i2c_addr_flags = DT_STRING_TOKEN(node_id, i2c_addr_flags), \
 	},
 
+#if ANY_INST_HAS_POWER_GOOD_PIN
+#define GET_ZEPHYR_TEMP_SENSOR_PCT2075(node_id)				      \
+	(&(struct zephyr_temp_sensor){					      \
+		.read = &pct2075_get_temp,				      \
+		.thermistor = NULL,                                           \
+		.power_good_dev = OPTIONAL_POWER_GOOD_DEV(node_id),	      \
+		.power_good_pin = OPTIONAL_POWER_GOOD_PIN(node_id),	      \
+	})
+#else
 #define GET_ZEPHYR_TEMP_SENSOR_PCT2075(node_id)				      \
 	(&(struct zephyr_temp_sensor){					      \
 		.read = &pct2075_get_temp,				      \
 		.thermistor = NULL,                                           \
 	})
+#endif /* ANY_INST_HAS_POWER_GOOD_PIN */
 
 #define TEMP_PCT2075(node_id)						\
 	[ZSHIM_TEMP_SENSOR_ID(node_id)] = {				\
@@ -98,11 +137,21 @@ static int sb_tsi_get_temp(const struct temp_sensor_t *sensor, int *temp_ptr)
 
 #endif /* cros_ec_temp_sensor_sb_tsi */
 
+#if ANY_INST_HAS_POWER_GOOD_PIN
+#define GET_ZEPHYR_TEMP_SENSOR_SB_TSI(node_id)				      \
+	(&(struct zephyr_temp_sensor){					      \
+		.read = &sb_tsi_get_temp,				      \
+		.thermistor = NULL,                                           \
+		.power_good_dev = OPTIONAL_POWER_GOOD_DEV(node_id),	      \
+		.power_good_pin = OPTIONAL_POWER_GOOD_PIN(node_id),	      \
+	})
+#else
 #define GET_ZEPHYR_TEMP_SENSOR_SB_TSI(node_id)				      \
 	(&(struct zephyr_temp_sensor){					      \
 		.read = &sb_tsi_get_temp,				      \
 		.thermistor = NULL,                                           \
 	})
+#endif /* ANY_INST_HAS_POWER_GOOD_PIN */
 
 #define TEMP_SB_TSI(node_id)						\
 	[ZSHIM_TEMP_SENSOR_ID(node_id)] = {				\
@@ -125,11 +174,21 @@ static int tmp112_get_temp(const struct temp_sensor_t *sensor, int *temp_ptr)
 		.i2c_addr_flags = DT_STRING_TOKEN(node_id, i2c_addr_flags), \
 	},
 
+#if ANY_INST_HAS_POWER_GOOD_PIN
+#define GET_ZEPHYR_TEMP_SENSOR_TMP112(node_id)				      \
+	(&(struct zephyr_temp_sensor){					      \
+		.read = &tmp112_get_temp,				      \
+		.thermistor = NULL,                                           \
+		.power_good_dev = OPTIONAL_POWER_GOOD_DEV(node_id),	      \
+		.power_good_pin = OPTIONAL_POWER_GOOD_PIN(node_id),	      \
+	})
+#else
 #define GET_ZEPHYR_TEMP_SENSOR_TMP112(node_id)				      \
 	(&(struct zephyr_temp_sensor){					      \
 		.read = &tmp112_get_temp,				      \
 		.thermistor = NULL,                                           \
 	})
+#endif /* ANY_INST_HAS_POWER_GOOD_PIN */
 
 #define TEMP_TMP112(node_id)						\
 	[ZSHIM_TEMP_SENSOR_ID(node_id)] = {				\
@@ -157,6 +216,14 @@ int temp_sensor_read(enum temp_sensor_id id, int *temp_ptr)
 	if (id < 0 || id >= TEMP_SENSOR_COUNT)
 		return EC_ERROR_INVAL;
 	sensor = temp_sensors + id;
+
+#if ANY_INST_HAS_POWER_GOOD_PIN
+	if (sensor->zephyr_info->power_good_dev) {
+		if (!gpio_pin_get(sensor->zephyr_info->power_good_dev,
+				  sensor->zephyr_info->power_good_pin))
+			return EC_ERROR_NOT_POWERED;
+	}
+#endif
 
 	return sensor->zephyr_info->read(sensor, temp_ptr);
 }
