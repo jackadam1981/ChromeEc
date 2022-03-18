@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2a9a67fc_3f73f26a",
+        "filename": "zephyr/shim/src/CMakeLists.txt",
+        "patchSetId": 10
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2022-03-18T09:37:28Z",
+      "side": 1,
+      "message": "Common config added (just found that all drivers imply CONFIG_PLATFORM_EC_USB_PD_TCPM_TCPCI)\n\nAbout always instantiate tcpc_config[], this can\u0027t be done until we migrate all projects to use device tree for their tcpc component. Otherwise the tcpc_config instance here will conflict with the one in projects layer.",
+      "parentUuid": "e3301071_c1532746",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 0
+      },
+      "revId": "2c2c4cd5357a5c715bd8abeeec1855ba9074a1da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "69ec755a_2a67de4e",
         "filename": "zephyr/shim/src/tcpc.c",
         "patchSetId": 10
