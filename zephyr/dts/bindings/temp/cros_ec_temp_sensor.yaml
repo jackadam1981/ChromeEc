@@ -36,6 +36,12 @@ properties:
       - TEMP_SENSOR_3_CHARGER
       - TEMP_SENSOR_4_WWAN
 
+    power_gpio:
+      type: phandle
+      description:
+        If this sensor will be unpowered some of the time, provide a GPIO which
+        can be referenced to detect whether the sensor is powered before reading.
+
     temp_fan_off:
       type: int
       description:

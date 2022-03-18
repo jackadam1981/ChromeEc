@@ -7,6 +7,7 @@
 
 #include "common.h"
 #include "console.h"
+#include "gpio.h"
 #include "hooks.h"
 #include "host_command.h"
 #include "task.h"
@@ -28,6 +29,11 @@ int temp_sensor_read(enum temp_sensor_id id, int *temp_ptr)
 	sensor = temp_sensors + id;
 
 #ifdef CONFIG_ZEPHYR
+	/* Check our power GPIO, if defined */
+	if (sensor->power_gpio != GPIO_UNIMPLEMENTED &&
+					!gpio_get_level(sensor->power_gpio))
+		return EC_ERROR_NOT_POWERED;
+
 	return sensor->read(sensor, temp_ptr);
 #else
 	return sensor->read(sensor->idx, temp_ptr);

@@ -11,6 +11,11 @@
 #include "temp_sensor/thermistor.h"
 #include "temp_sensor/tmp112.h"
 
+#define OPTIONAL_POWER_GPIO(node_id)					    \
+		COND_CODE_1(DT_NODE_HAS_PROP(node_id, power_gpio),	    \
+			    (GPIO_SIGNAL(DT_PHANDLE(node_id, power_gpio))), \
+			    (GPIO_UNIMPLEMENTED))
+
 #if DT_NODE_EXISTS(DT_PATH(named_temp_sensors))
 static int thermistor_get_temp(const struct temp_sensor_t *sensor,
 			       int *temp_ptr)
@@ -45,6 +50,7 @@ static int thermistor_get_temp(const struct temp_sensor_t *sensor,
 		.type = TEMP_SENSOR_TYPE_BOARD,                               \
 		.thermistor =                                                 \
 			GET_THERMISTOR_INFO(DT_PHANDLE(node_id, thermistor)), \
+		.power_gpio = OPTIONAL_POWER_GPIO(node_id),		      \
 	},
 
 DT_FOREACH_STATUS_OKAY(cros_ec_thermistor, DEFINE_THERMISTOR_DATA)
@@ -62,12 +68,13 @@ static int pct2075_get_temp(const struct temp_sensor_t *sensor, int *temp_ptr)
 		.i2c_addr_flags = DT_STRING_TOKEN(node_id, i2c_addr_flags), \
 	},
 
-#define TEMP_PCT2075(node_id)                            \
-	[ZSHIM_TEMP_SENSOR_ID(node_id)] = {              \
-		.name = DT_LABEL(node_id),               \
-		.read = pct2075_get_temp,                \
-		.idx = ZSHIM_PCT2075_SENSOR_ID(node_id), \
-		.type = TEMP_SENSOR_TYPE_BOARD,          \
+#define TEMP_PCT2075(node_id)                               \
+	[ZSHIM_TEMP_SENSOR_ID(node_id)] = {                 \
+		.name = DT_LABEL(node_id),                  \
+		.read = pct2075_get_temp,                   \
+		.idx = ZSHIM_PCT2075_SENSOR_ID(node_id),    \
+		.type = TEMP_SENSOR_TYPE_BOARD,		    \
+		.power_gpio = OPTIONAL_POWER_GPIO(node_id), \
 	},
 
 const struct pct2075_sensor_t pct2075_sensors[PCT2075_COUNT] = {
@@ -87,12 +94,13 @@ static int sb_tsi_get_temp(const struct temp_sensor_t *sensor, int *temp_ptr)
 
 #endif /* cros_ec_temp_sensor_sb_tsi */
 
-#define TEMP_SB_TSI(node_id)                  \
-	[ZSHIM_TEMP_SENSOR_ID(node_id)] = {   \
-		.name = DT_LABEL(node_id),    \
-		.read = sb_tsi_get_temp,      \
-		.idx = 0,                     \
-		.type = TEMP_SENSOR_TYPE_CPU, \
+#define TEMP_SB_TSI(node_id)				    \
+	[ZSHIM_TEMP_SENSOR_ID(node_id)] = {		    \
+		.name = DT_LABEL(node_id),		    \
+		.read = sb_tsi_get_temp,		    \
+		.idx = 0,				    \
+		.type = TEMP_SENSOR_TYPE_CPU,		    \
+		.power_gpio = OPTIONAL_POWER_GPIO(node_id), \
 	},
 
 #if DT_HAS_COMPAT_STATUS_OKAY(cros_ec_temp_sensor_tmp112)
@@ -108,12 +116,13 @@ static int tmp112_get_temp(const struct temp_sensor_t *sensor, int *temp_ptr)
 		.i2c_addr_flags = DT_STRING_TOKEN(node_id, i2c_addr_flags), \
 	},
 
-#define TEMP_TMP112(node_id)                            \
-	[ZSHIM_TEMP_SENSOR_ID(node_id)] = {             \
-		.name = DT_LABEL(node_id),              \
-		.read = tmp112_get_temp,                \
-		.idx = ZSHIM_TMP112_SENSOR_ID(node_id), \
-		.type = TEMP_SENSOR_TYPE_BOARD,         \
+#define TEMP_TMP112(node_id)                                \
+	[ZSHIM_TEMP_SENSOR_ID(node_id)] = {                 \
+		.name = DT_LABEL(node_id),                  \
+		.read = tmp112_get_temp,                    \
+		.idx = ZSHIM_TMP112_SENSOR_ID(node_id),	    \
+		.type = TEMP_SENSOR_TYPE_BOARD,		    \
+		.power_gpio = OPTIONAL_POWER_GPIO(node_id), \
 	},
 
 const struct tmp112_sensor_t tmp112_sensors[TMP112_COUNT] = {

@@ -41,6 +41,9 @@ struct temp_sensor_t {
 	/* Read sensor value in K into temp_ptr; return non-zero if error. */
 	int (*read)(const struct temp_sensor_t *sensor, int *temp_ptr);
 	struct thermistor_info *thermistor;
+
+	/* Power GPIO to reference before attempting a read */
+	enum gpio_signal power_gpio;
 #else
 	/* Read sensor value in K into temp_ptr; return non-zero if error. */
 	int (*read)(int idx, int *temp_ptr);
