@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "74330c3a_578e82ab",
+        "filename": "zephyr/dts/bindings/gpio/named-gpios.yaml",
+        "patchSetId": 10
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1513493
+      },
+      "writtenOn": "2022-03-18T20:35:15Z",
+      "side": 1,
+      "message": "This is required as we are using specifier cells to define the value of the gpio pin. Eg. \u003c\u0026gpio_ec_chg_led_b_c1 1\u003e;\n\nhttps://docs.zephyrproject.org/latest/guides/dts/bindings.html#specifier-cell-names-cells",
+      "parentUuid": "cd75cfc6_3f4ee039",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 21
+      },
+      "revId": "23bc5547199a7fd77821b8f0faaa63bb27be1538",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "212a5ef3_0bdbc322",
         "filename": "zephyr/dts/bindings/gpio_led/cros-ec,gpio-led-pins.yaml",
         "patchSetId": 10
