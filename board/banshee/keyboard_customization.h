@@ -70,18 +70,4 @@ extern uint8_t keyboard_cols;
 #define KEYBOARD_ROW_LEFT_SHIFT 5
 #define KEYBOARD_MASK_LEFT_SHIFT KEYBOARD_ROW_TO_MASK(KEYBOARD_ROW_LEFT_SHIFT)
 
-#ifdef CONFIG_KEYBOARD_BACKLIGHT
-int hx20_kblight_enable(int enable);
-#endif
-
-#ifdef CONFIG_FACTORY_SUPPORT
-void factory_setting(uint8_t enable);
-void factory_power_button(int level);
-int factory_status(void);
-#endif
-
-#ifdef CONFIG_CAPSLED_SUPPORT
-void hx20_8042_led_control(int data);
-#endif
-
 #endif /* __KEYBOARD_CUSTOMIZATION_H */
