@@ -217,8 +217,6 @@ enum mft_channel {
 	MFT_CH_COUNT
 };
 
-extern void adp_connect_interrupt(enum gpio_signal signal);
-
 #endif /* !__ASSEMBLER__ */
 
 #endif /* __CROS_EC_BOARD_H */
