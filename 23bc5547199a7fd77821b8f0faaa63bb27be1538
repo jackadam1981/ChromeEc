@@ -98,6 +98,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "84161edb_94cc87c8",
+        "filename": "zephyr/dts/bindings/gpio/named-gpios.yaml",
+        "patchSetId": 10
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-03-18T21:47:15Z",
+      "side": 1,
+      "message": "+keithshort@ for any idea\n\nUsing a specific name like #led-pins-cells looks better.\n\nOr use another array property to store the GPIO values? like:\n\tled-gpios \u003d \u003c\u0026gpio_ec_chg_led_y_c1 \u0026gpio_ec_chg_led_b_c1\u003e;\n\tled-gpio-values \u003d \u003c1 0\u003e;",
+      "parentUuid": "4c24c97b_6fa0257c",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 21
+      },
+      "revId": "23bc5547199a7fd77821b8f0faaa63bb27be1538",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "212a5ef3_0bdbc322",
         "filename": "zephyr/dts/bindings/gpio_led/cros-ec,gpio-led-pins.yaml",
         "patchSetId": 10
