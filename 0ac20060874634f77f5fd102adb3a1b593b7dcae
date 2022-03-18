@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "929e0a48_97cbfb3c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2022-03-18T16:07:37Z",
+      "side": 1,
+      "message": "Thanks for the fix! I think this was just an oversight on my part.",
+      "revId": "0ac20060874634f77f5fd102adb3a1b593b7dcae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e8ba456_26f946a3",
+        "filename": "driver/ppc/sn5s330.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2022-03-18T16:07:37Z",
+      "side": 1,
+      "message": "Could we add a case to the unit test that covers this then?",
+      "revId": "0ac20060874634f77f5fd102adb3a1b593b7dcae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
