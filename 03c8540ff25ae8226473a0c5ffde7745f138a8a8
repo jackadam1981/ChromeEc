@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "db3c2746_9ca4499c",
+        "filename": "zephyr/dts/bindings/usbc/cros,tcpc.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-03-18T01:52:11Z",
+      "side": 1,
+      "message": "that should be okay, user can add addresses based on driver",
+      "parentUuid": "0f5b932b_22ee2573",
+      "range": {
+        "startLine": 15,
+        "startChar": 4,
+        "endLine": 24,
+        "endChar": 32
+      },
+      "revId": "03c8540ff25ae8226473a0c5ffde7745f138a8a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "86ea0850_1588f54e",
         "filename": "zephyr/dts/bindings/usbc/cros,tcpc.yaml",
         "patchSetId": 1
@@ -85,6 +109,30 @@
       "side": 1,
       "message": "justification same as above.. This can be done by removing enum from this property. If someone enter invalid string that will be allowed from dts prospective but compilation will fail.",
       "parentUuid": "86ea0850_1588f54e",
+      "range": {
+        "startLine": 34,
+        "startChar": 3,
+        "endLine": 36,
+        "endChar": 0
+      },
+      "revId": "03c8540ff25ae8226473a0c5ffde7745f138a8a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cded35b7_8c3b3d5c",
+        "filename": "zephyr/dts/bindings/usbc/cros,tcpc.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-03-18T01:52:11Z",
+      "side": 1,
+      "message": "that should be fine",
+      "parentUuid": "bf22cf12_991d5ebb",
       "range": {
         "startLine": 34,
         "startChar": 3,
