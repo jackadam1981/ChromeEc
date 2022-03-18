@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b866e914_e8efbff9",
+        "filename": "driver/led/aw20198.h",
+        "patchSetId": 29
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-03-18T01:13:38Z",
+      "side": 1,
+      "message": "please also add the\n#ifndef __CROS_EC_...\n#define __CROS_EC_...\nguards",
+      "revId": "183489024d37e0b16a5627649fe9f4a67169952c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "64a8db68_36e30684",
+        "filename": "driver/led/aw20198.h",
+        "patchSetId": 29
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-03-18T01:13:38Z",
+      "side": 1,
+      "message": "AD1 for consistency?",
+      "range": {
+        "startLine": 6,
+        "startChar": 27,
+        "endLine": 6,
+        "endChar": 30
+      },
+      "revId": "183489024d37e0b16a5627649fe9f4a67169952c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3996ccc9_852a44be",
+        "filename": "driver/led/aw20198.h",
+        "patchSetId": 29
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-03-18T01:13:38Z",
+      "side": 1,
+      "message": "this is a bit awkward since it depends on rgb_keyboard.h\nbut it\u0027s not included, and probably should not be included here.\n\nmaybe just use \"sizeof(struct rgb_s)\" directly from ec_commands.h\ninstead of pulling in the keyboard.",
+      "range": {
+        "startLine": 12,
+        "startChar": 26,
+        "endLine": 12,
+        "endChar": 37
+      },
+      "revId": "183489024d37e0b16a5627649fe9f4a67169952c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
