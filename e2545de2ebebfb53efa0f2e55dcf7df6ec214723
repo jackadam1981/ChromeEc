@@ -52,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a638f005_f2b38b83",
+        "filename": "zephyr/test/drivers/include/utils.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-03-18T17:27:25Z",
+      "side": 1,
+      "message": "Thanks, I forgot to remove, the function use to return a response but I had to have the caller allocate it instead.",
+      "parentUuid": "d0341151_233daab1",
+      "revId": "e2545de2ebebfb53efa0f2e55dcf7df6ec214723",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6598c26c_5240af85",
@@ -65,6 +83,30 @@
       "writtenOn": "2022-03-18T17:20:06Z",
       "side": 1,
       "message": "Is this double underscore intentional? If so, what does it mean?",
+      "range": {
+        "startLine": 56,
+        "startChar": 43,
+        "endLine": 56,
+        "endChar": 45
+      },
+      "revId": "e2545de2ebebfb53efa0f2e55dcf7df6ec214723",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e742129_6fd14af8",
+        "filename": "zephyr/test/drivers/src/host_cmd/motion_sense.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-03-18T17:27:25Z",
+      "side": 1,
+      "message": "Yes, this is common in JUnit testing where you\u0027re explaining the varation of what you\u0027re testing. In this case, I\u0027m testing the dump sub-command, where the max_sensor_count is too large. In camel case this would normally be testDump_largeMaxSensorCount, but I\u0027m using double `_` for the snake case",
+      "parentUuid": "6598c26c_5240af85",
       "range": {
         "startLine": 56,
         "startChar": 43,
