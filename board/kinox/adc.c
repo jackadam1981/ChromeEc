@@ -3,6 +3,7 @@
  * found in the LICENSE file.
  */
 #include "adc.h"
+#include "charge_manager.h"
 #include "chipset.h"
 #include "common.h"
 #include "compile_time_macros.h"
@@ -225,6 +226,7 @@ static void set_up_adc_irqs(void)
 DECLARE_DEFERRED(adp_id_deferred);
 void adp_id_deferred(void)
 {
+	struct charge_port_info pi = { 0 };
 	int i = 0;
 	int adp_type = 0;
 	int adp_id_value;
@@ -267,7 +269,11 @@ void adp_id_deferred(void)
 		if (adp_finial_adc_value <= power_type[i]->max_voltage) {
 			adc_obp_point_95.thresh_assert = power_type[i]->obp95;
 			adc_obp_point_85.thresh_assert = power_type[i]->obp85;
+			pi.voltage = power_type[i]->charge_voltage;
+			pi.current = power_type[i]->charge_current;
 			set_up_adc_irqs();
+			charge_manager_update_charge(CHARGE_SUPPLIER_DEDICATED,
+				     DEDICATED_CHARGE_PORT, &pi);
 			break;
 		}
 	}
