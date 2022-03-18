@@ -49,10 +49,10 @@
  *   +------------->|    ENABLED    |               |
  *   |              +-----+-+-------+               |
  *   |                    | |                       |
- *   |   DEVICE_CONNECTED | | DEVICE_DOCKED         |
+ *   |   DEVICE_CONNECTED | | DEVICE_DETECTED       |
  *   |                    | v                       |
  *   | DEVICE_LOST  +---------------+               |
- *   +--------------+     DOCKED    +---------------+
+ *   +--------------+    DETECTED   +---------------+
  *   |              +-------+-------+               |
  *   |                    | |                       |
  *   |                    | | DEVICE_CONNECTED      |

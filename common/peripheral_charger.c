@@ -498,6 +498,7 @@ static int pchg_run(struct pchg *ctx)
 
 	if (chipset_in_state(CHIPSET_STATE_ANY_SUSPEND))
 		return (ctx->event == PCHG_EVENT_DEVICE_DETECTED)
+			|| (ctx->event == PCHG_EVENT_DEVICE_CONNECTED)
 			|| (ctx->event == PCHG_EVENT_DEVICE_LOST);
 
 	if (ctx->event == PCHG_EVENT_CHARGE_UPDATE)
