@@ -46,6 +46,30 @@
       },
       "revId": "ee90dda4afa7f387f89e020a099726e27f49e050",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "98734660_2d9e5ffa",
+        "filename": "zephyr/projects/skyrim/skyrim.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-03-21T19:18:18Z",
+      "side": 1,
+      "message": "As I think about this more, the Zephyr model for having multiple drivers query a GPIO input is to register a GPIO interrupt callback.  The GPIO API manages a singly linked list of callback handlers.\n\nThat seems pretty heavyweight for this.  For now if you want the pin name, and you don\u0027t want to run afoul of needing to call `gpio_pin_configure_dt()`, you could call this property \"power-good-pin\".  You\u0027ll still extract the GPIO \u0027struct device *` pointer an the GPIO pin number.  Look at the gpio_int.c shim driver as an example.\n\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/82e218b9/zephyr/shim/src/gpio_int.c#74\n\nOur long term GPIO strategy still needs clarity.  This will also need adapt once Nuvoton and ITE switch from using pinmux drivers to pinctrl drivers.",
+      "parentUuid": "bff8d210_7df520b1",
+      "range": {
+        "startLine": 115,
+        "startChar": 0,
+        "endLine": 115,
+        "endChar": 34
+      },
+      "revId": "ee90dda4afa7f387f89e020a099726e27f49e050",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
