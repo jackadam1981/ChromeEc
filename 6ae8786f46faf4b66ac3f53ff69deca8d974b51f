@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7acc904_8200cde8",
+        "filename": "common/temp_sensor.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-03-21T15:21:23Z",
+      "side": 1,
+      "message": "In a separate CL, create `temp_sensor_read()` in zephyr/shim/src/temp_sensors.c.\n\nSo this file would have\n```\n#ifndef CONFIG_ZEPHYR\nint temp_sensor_read(enum temp_sensor_id id, int *temp_ptr)\n{\n\tconst struct temp_sensor_t *sensor;\n\n\tif (id \u003c 0 || id \u003e\u003d TEMP_SENSOR_COUNT)\n\t\treturn EC_ERROR_INVAL;\n\tsensor \u003d temp_sensors + id;\n\n\treturn sensor-\u003eread(sensor-\u003eidx, temp_ptr);\n}\n#endif\n```\n\nThe Zephyr file  would have:\n\n```\nint temp_sensor_read(enum temp_sensor_id id, int *temp_ptr)\n{\n\tconst struct temp_sensor_t *sensor;\n\n\tif (id \u003c 0 || id \u003e\u003d TEMP_SENSOR_COUNT)\n\t\treturn EC_ERROR_INVAL;\n\tsensor \u003d temp_sensors + id;\n\t\n\treturn sensor-\u003eread(sensor, temp_ptr);\n}\n```",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 59
+      },
+      "revId": "6ae8786f46faf4b66ac3f53ff69deca8d974b51f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9de34dd_9441be08",
+        "filename": "common/temp_sensor.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-03-21T15:21:23Z",
+      "side": 1,
+      "message": "Once you\u0027ve created a Zephyr specific `temp_sensor_read()`, you can conditionally compile in the GPIO check, only if at least one temp sensor has a power GPIO.\n\n```\n#if ANY_INST_HAS_POWER_GPIOS\n\t/* Check our power GPIO, if defined */\n\tif (sensor-\u003epower_gpio.port \u0026\u0026 \n\t    !gpio_pin_get_dt(sensor-\u003epower_gpio))\n\t\treturn EC_ERROR_NOT_POWERED;\n#endif\n```\n\nSee the upstream EEPROM driver for an example of this:\n\nhttps://github.com/zephyrproject-rtos/zephyr/blob/99ab33d117a9179a8626139ce9005e899874c9d0/drivers/eeprom/eeprom_at2x.c#L37",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 5
+      },
+      "revId": "6ae8786f46faf4b66ac3f53ff69deca8d974b51f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3adb832c_e5f7a830",
+        "filename": "include/temp_sensor.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-03-21T15:21:23Z",
+      "side": 1,
+      "message": "This should be a `struct gpio_dt_spec` since this is only used by Zephyr code.\n\nYou may need to hide this inside zephyr/shim/src/temp_sensors.c\n\nSomething like:\n```\n#ifdef CONFIG_ZEPHYR\n     struct zephyr_temp_sensor *zephyr_info;\n#else\n     int (*read)(int idx, int *temp_ptr);\n#endif\n```\n\nThen declare and allocate storage for `struct zephyr_temp_sensor` in the shim driver.",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 29
+      },
+      "revId": "6ae8786f46faf4b66ac3f53ff69deca8d974b51f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "951b6d15_f65cccbe",
+        "filename": "zephyr/dts/bindings/temp/cros_ec_temp_sensor.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-03-21T15:21:23Z",
+      "side": 1,
+      "message": "Name this `power-gpios` to conform with Zephyr naming convention.",
+      "range": {
+        "startLine": 39,
+        "startChar": 4,
+        "endLine": 39,
+        "endChar": 14
+      },
+      "revId": "6ae8786f46faf4b66ac3f53ff69deca8d974b51f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
