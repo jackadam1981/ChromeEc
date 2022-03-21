@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5a8d2b3_4e72dcd3",
+        "filename": "zephyr/projects/skyrim/skyrim.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-03-21T15:21:30Z",
+      "side": 1,
+      "message": "Once you convert change the temp sensor shim to use `struct gpio_dt_spec`, you will need to reference the gpio directly;\n```\npower-gpios \u003d \u003c\u0026gpiob 7 0\u003e;\n```\n\nAlso, is there a power good signal that is already configured as an input?    \n\nThe temp_sensor shim should call `gpio_pin_configure_dt()` for the power-gpio, but if the GPIO is an output used the power sequencing, we don\u0027t want to configure it twice.",
+      "range": {
+        "startLine": 115,
+        "startChar": 0,
+        "endLine": 115,
+        "endChar": 34
+      },
+      "revId": "ee90dda4afa7f387f89e020a099726e27f49e050",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
