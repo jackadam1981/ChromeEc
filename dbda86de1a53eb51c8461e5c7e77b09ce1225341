@@ -51,6 +51,121 @@
       "parentUuid": "fb9f8431_1b448a4f",
       "revId": "dbda86de1a53eb51c8461e5c7e77b09ce1225341",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46fe1be6_33595b23",
+        "filename": "baseboard/intelrvp/adlrvp.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-03-21T22:52:38Z",
+      "side": 1,
+      "message": "You\u0027re adding a lot of Zephyr specific code in to the legacy area.\n\nAt a minimum, you should move the board id related code into a separate file, and then compile that file in both the legacy and Zephyr builds.",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 20
+      },
+      "revId": "dbda86de1a53eb51c8461e5c7e77b09ce1225341",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5bffcf19_ce2d683a",
+        "filename": "baseboard/intelrvp/adlrvp.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 503,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-03-21T22:52:38Z",
+      "side": 1,
+      "message": "Iv you move this code into the zephyr projects area, you should use the Zephyr I2C APIs directly, and don\u0027t use the legacy I2C port numbers.\n\nAn example I2C driver:\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/82e218b9/zephyr/drivers/cros_rtc/nxp_rtc_pcf85063a.c#",
+      "range": {
+        "startLine": 503,
+        "startChar": 7,
+        "endLine": 503,
+        "endChar": 17
+      },
+      "revId": "dbda86de1a53eb51c8461e5c7e77b09ce1225341",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ee412fd_9dc4590f",
+        "filename": "baseboard/intelrvp/adlrvp.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 546,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-03-21T22:52:38Z",
+      "side": 1,
+      "message": "The Zephyr and legacy implementation don\u0027t really share any code.\n\nIf you all need is `board_get_version()`, then I suggest creating a source file in the zephyr/projects/intelrvp directory.",
+      "range": {
+        "startLine": 483,
+        "startChar": 0,
+        "endLine": 546,
+        "endChar": 0
+      },
+      "revId": "dbda86de1a53eb51c8461e5c7e77b09ce1225341",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "232f49b6_3b08fb50",
+        "filename": "zephyr/projects/intelrvp/adlrvp/adlrvp_npcx/adlrvp_npcx.dts",
+        "patchSetId": 24
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-03-21T22:52:38Z",
+      "side": 1,
+      "message": "You should move this directly onto the \u0026i2c8_0 bus below.\n\nSee this example:\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/82e218b9/zephyr/projects/skyrim/i2c.dts#120",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 0
+      },
+      "revId": "dbda86de1a53eb51c8461e5c7e77b09ce1225341",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "095c1d4a_961d7f20",
+        "filename": "zephyr/projects/intelrvp/adlrvp/include/adlrvp_zephyr.h",
+        "patchSetId": 24
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-03-21T22:52:38Z",
+      "side": 1,
+      "message": "You should be able to eliminate this file if you add a board_get_version() into the intelrvp Zephyr project.",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 44
+      },
+      "revId": "dbda86de1a53eb51c8461e5c7e77b09ce1225341",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
