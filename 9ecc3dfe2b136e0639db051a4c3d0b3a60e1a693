@@ -188,6 +188,30 @@
       },
       "revId": "9ecc3dfe2b136e0639db051a4c3d0b3a60e1a693",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3eaadfa_39a8b38f",
+        "filename": "board/banshee/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1316237
+      },
+      "writtenOn": "2022-03-21T07:50:36Z",
+      "side": 1,
+      "message": "seen like we need to define back CONFIG_USB_PD_PPC, because tcpm_get_snk_ctrl will call from nct38xx.c: line 221, or have other suggestions?",
+      "parentUuid": "4872159a_d4c23a6a",
+      "range": {
+        "startLine": 96,
+        "startChar": 8,
+        "endLine": 96,
+        "endChar": 25
+      },
+      "revId": "9ecc3dfe2b136e0639db051a4c3d0b3a60e1a693",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
