@@ -19,6 +19,12 @@
 #define CPRINTF(format, args...) cprintf(CC_IPI, format, ##args)
 #define CPRINTS(format, args...) cprints(CC_IPI, format, ##args)
 
+#ifdef CHIP_VARIANT_MT8195_CORE1
+#define SCP_AP2SCP_IRQ SCP_IRQ_GIPC_IN1
+#else
+#define SCP_AP2SCP_IRQ SCP_IRQ_GIPC_IN0
+#endif
+
 static uint8_t init_done;
 
 static struct mutex ipi_lock;
@@ -146,7 +152,7 @@ static void ipi_enable_deferred(void)
 	hostcmd_init();
 #endif
 
-	task_enable_irq(SCP_IRQ_GIPC_IN0);
+	task_enable_irq(SCP_AP2SCP_IRQ);
 }
 DECLARE_DEFERRED(ipi_enable_deferred);
 
