@@ -75,8 +75,8 @@
 &i2c_smb_2 {
 	status = "okay";
 	clock-frequency = <I2C_BITRATE_FAST>;
-	port_sel = <7>;
-	pinctrl-0 = <&i2c07_scl_gpio013 &i2c07_sda_gpio012>;
+	port_sel = <3>;
+	pinctrl-0 = <&i2c03_scl_gpio010 &i2c03_sda_gpio007>;
 	pinctrl-names = "default";
 };
 
@@ -84,8 +84,8 @@
 &i2c_smb_3 {
 	status = "okay";
 	clock-frequency = <I2C_BITRATE_FAST>;
-	port_sel = <3>;
-	pinctrl-0 = <&i2c03_scl_gpio010 &i2c03_sda_gpio007>;
+	port_sel = <7>;
+	pinctrl-0 = <&i2c07_scl_gpio013 &i2c07_sda_gpio012>;
 	pinctrl-names = "default";
 };
 

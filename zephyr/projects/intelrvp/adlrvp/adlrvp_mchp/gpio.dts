@@ -4,7 +4,6 @@
  */
 
 / {
-
 	aliases {
 		gpio-wp = &gpio_wp;
 		/* gpio-kbd-kso2 = &gpio_ec_kso_02_inv; */
@@ -56,35 +55,35 @@
 			gpios = <&gpio_100_136 13 GPIO_INPUT>;
 			enum-name = "GPIO_POWER_BUTTON_L";
 		}; /* GPIO115 */
-		std_adp_prsnt {
+		std_adp_prsnt: std-adp-prsnt {
 			gpios = <&gpio_040_076 3 GPIO_INPUT>;
 		}; /* GPIO043 */
 		bc_acok: bc_acok {
 			gpios = <&gpio_140_176 14 GPIO_INPUT>;
 			enum-name = "GPIO_AC_PRESENT";
 		}; /* GPIO156 */
-		usbc_tcpc_alrt_p0 {
+		usbc_tcpc_alrt_p0: usbc-tcpc-alrt-p0 {
 			gpios = <&gpio_140_176 3 GPIO_INPUT>;
 		}; /* GPIO143 */
-		usbc_tcpc_alrt_p1 {
+		usbc_tcpc_alrt_p1: usbc-tcpc-alrt-p1 {
 			gpios = <&gpio_240_276 1 GPIO_INPUT>;
 		}; /* GPIO241 */
-		usbc_tcpc_alrt_p2 {
+		usbc_tcpc_alrt_p2: usbc-tcpc-alrt-p2 {
 			gpios = <&gpio_100_136 24 GPIO_INPUT>;
 		}; /* GPIO130 */
-		usbc_tcpc_alrt_p3 {
+		usbc_tcpc_alrt_p3: usbc-tcpc-alrt-p3 {
 			gpios = <&gpio_240_276 2 GPIO_INPUT>;
 		}; /* GPIO242 */
-		usbc_tcpc_ppc_alrt_p0 {
+		usbc_tcpc_ppc_alrt_p0: usbc-tcpc-ppc-alrt-p0 {
 			gpios = <&gpio_240_276 0 GPIO_INPUT>;
 		}; /* GPIO240 */
-		usbc_tcpc_ppc_alrt_p1 {
+		usbc_tcpc_ppc_alrt_p1: usbc-tcpc-ppc-alrt-p1 {
 			gpios = <&gpio_100_136 1 GPIO_INPUT>;
 		}; /* GPIO101 */
-		usbc_tcpc_ppc_alrt_p2 {
+		usbc_tcpc_ppc_alrt_p2: usbc-tcpc-ppc-alrt-p2 {
 			gpios = <&gpio_140_176 4 GPIO_INPUT>;
 		}; /* GPIO144 */
-		usbc_tcpc_ppc_alrt_p3 {
+		usbc_tcpc_ppc_alrt_p3: usbc-tcpc-ppc-alrt-p3 {
 			gpios = <&gpio_140_176 2 GPIO_INPUT>;
 		}; /* GPIO142 */
 		gpio_ec_pch_wake_odl: smc_wake_sci_n_mecc {
@@ -151,8 +150,9 @@
 			gpios = <&gpio_100_136 2 GPIO_OUT_LOW>;
 			enum-name = "GPIO_ENTERING_RW";
 		}; /* GPIO102 */
-		ccd_mode_odl {
+		ccd_mode_odl: ccd-mode-odl {
 			gpios = <&gpio_140_176 29 GPIO_INPUT>;
+			enum-name  = "GPIO_CCD_MODE_ODL";
 		}; /* GPIO175 */
 		bat_det {
 			gpios = <&gpio_200_236 6 GPIO_INPUT>;
