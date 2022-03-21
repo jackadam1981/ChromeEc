@@ -33,6 +33,24 @@
       "message": "Hi Rajesh, this part of the codebase is outside of my area of expertise, but Keith Short says he can take a look later today.\n\nGenerally, we prefer to keep the Zephyr-specific code in its own files under the Zephyr directory rather than mixing it in to the legacy codebase using #ifdef\u0027s.",
       "revId": "dbda86de1a53eb51c8461e5c7e77b09ce1225341",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f448f4f2_f0b2902b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 24
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-03-21T20:56:14Z",
+      "side": 1,
+      "message": "Hi Tristan,\nThank you for the feedback.\nRe: on #ifdef\u0027s.\nADL RVP development was on legacy code and ADL RVP is almost end of life hence we planned to use ifdefs in legacy code.\nMTL RVP and beyond we will plan to have code in Zephyr directory.",
+      "parentUuid": "fb9f8431_1b448a4f",
+      "revId": "dbda86de1a53eb51c8461e5c7e77b09ce1225341",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
