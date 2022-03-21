@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "587bac4d_ebbf6964",
+        "filename": "zephyr/emul/tcpc/emul_tcpci_partner_common.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 472,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2022-03-21T19:10:01Z",
+      "side": 1,
+      "message": "Do we expect to hit this during normal use? Is there any easy way for a test to detect the message wasn\u0027t handled?",
+      "range": {
+        "startLine": 472,
+        "startChar": 9,
+        "endLine": 472,
+        "endChar": 41
+      },
+      "revId": "6b851781d985fdb1b4ce8bd4ac20d504e1750fea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
