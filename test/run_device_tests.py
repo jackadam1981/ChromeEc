@@ -91,11 +91,15 @@ class TestConfig:
 
     def __init__(self, name, image_to_use=ImageType.RW, finish_regexes=None,
                  toggle_power=False, test_args=None, num_flash_attempts=2,
-                 timeout_secs=10, enable_hw_write_protect=False):
+                 timeout_secs=10, enable_hw_write_protect=False,
+                 fail_regexes=None):
         if test_args is None:
             test_args = []
         if finish_regexes is None:
             finish_regexes = [ALL_TESTS_PASSED_REGEX, ALL_TESTS_FAILED_REGEX]
+        if fail_regexes is None:
+            fail_regexes = [SINGLE_CHECK_FAILED_REGEX, ALL_TESTS_FAILED_REGEX,
+                            ASSERTION_FAILURE_REGEX]
 
         self.name = name
         self.image_to_use = image_to_use
@@ -109,6 +113,7 @@ class TestConfig:
         self.passed = False
         self.num_fails = 0
         self.num_passes = 0
+        self.fail_regexes = fail_regexes
 
 
 # All possible tests.
@@ -339,14 +344,10 @@ def process_console_output_line(line: bytes, test: TestConfig):
         if SINGLE_CHECK_PASSED_REGEX.match(line_str):
             test.num_passes += 1
 
-        if SINGLE_CHECK_FAILED_REGEX.match(line_str):
-            test.num_fails += 1
-
-        if ALL_TESTS_FAILED_REGEX.match(line_str):
-            test.num_fails += 1
-
-        if ASSERTION_FAILURE_REGEX.match(line_str):
-            test.num_fails += 1
+        for regex in test.fail_regexes:
+            if regex.match(line_str):
+                test.num_fails += 1
+                break
 
         return line_str
     except UnicodeDecodeError:
