@@ -73,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "741e33a0_9de746b7",
+        "filename": "common/temp_sensor.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-03-21T18:53:52Z",
+      "side": 1,
+      "message": "The main goal is to save little bit of space.  gpio_dt_spec is 8 bytes (with padding).  No sense is carrying around gpio_dt_spec if none of the temperature sensors are using it.",
+      "parentUuid": "6c79decd_b9d5ea0d",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 5
+      },
+      "revId": "6ae8786f46faf4b66ac3f53ff69deca8d974b51f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3adb832c_e5f7a830",
         "filename": "include/temp_sensor.h",
         "patchSetId": 1
