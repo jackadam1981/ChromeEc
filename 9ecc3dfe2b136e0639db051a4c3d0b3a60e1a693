@@ -164,6 +164,30 @@
       },
       "revId": "9ecc3dfe2b136e0639db051a4c3d0b3a60e1a693",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4872159a_d4c23a6a",
+        "filename": "board/banshee/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2022-03-21T07:07:45Z",
+      "side": 1,
+      "message": "Do you add this to avoid the below build error?\n\n```\ndriver/tcpm/nct38xx.c: In function \u0027nct38xx_tcpm_set_cc\u0027:\ndriver/tcpm/nct38xx.c:221:50: error: implicit declaration of function \u0027tcpm_get_snk_ctrl\u0027; did you mean \u0027tcpci_tcpm_get_snk_ctrl\u0027? [-Werror\u003dimplicit-function-declaration]\n  221 |                         pull \u003d\u003d TYPEC_CC_OPEN \u0026\u0026 tcpm_get_snk_ctrl(port) ?\n      |                                                  ^~~~~~~~~~~~~~~~~\n      |                                                  tcpci_tcpm_get_snk_ctrl\ncc1: all warnings being treated as errors\nmake[2]: *** [Makefile.rules:608: build/banshee/RW/driver/tcpm/nct38xx.o] Error 1\nmake[1]: *** [Makefile.rules:279: proj-banshee] Error 2\nmake[1]: *** Waiting for unfinished jobs....\n```\n\nIt looks like the build error is caused by missing CONFIG_USB_PD_PPC",
+      "parentUuid": "a8e899b6_4f2d18ac",
+      "range": {
+        "startLine": 96,
+        "startChar": 8,
+        "endLine": 96,
+        "endChar": 25
+      },
+      "revId": "9ecc3dfe2b136e0639db051a4c3d0b3a60e1a693",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
