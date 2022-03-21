@@ -54,9 +54,11 @@ void uart_init(void)
 	/* Enable received data interrupt */
 	UART_IER(UARTN) |= UART_IER_RDI;
 
-#if (UARTN < SCP_UART_COUNT)
+#if (UARTN < 2)
+#ifdef CHIP_VARIANT_MT8195
 	task_enable_irq(UART_TX_IRQ(UARTN));
 	task_enable_irq(UART_RX_IRQ(UARTN));
+#endif
 #endif
 
 	init_done = 1;
@@ -125,11 +127,16 @@ void uart_tx_stop(void)
 
 static void uart_process(void)
 {
+#ifdef CHIP_VARIANT_MT8195
+#if (UARTN < 2)
 	uart_process_input();
+#endif
+#endif
 	uart_process_output();
 }
 
 #if (UARTN < SCP_UART_COUNT)
+#if defined(CHIP_VARIANT_MT8195) && (UARTN < SCP_UART_COUNT)
 static void uart_irq_handler(void)
 {
 	extern volatile int ec_int;
@@ -148,6 +155,21 @@ static void uart_irq_handler(void)
 	}
 }
 DECLARE_IRQ(UART_INTC_GROUP, uart_irq_handler, 0);
+
+void uart_task(void *u)
+{
+}
+#else
+void uart_task(void *u)
+{
+	while (1) {
+		if (tx_started)
+			uart_process();
+		else
+			task_wait_event(UART_IDLE_WAIT_US);
+	}
+}
+#endif
 #else
 
 #ifndef HAS_TASK_APUART
