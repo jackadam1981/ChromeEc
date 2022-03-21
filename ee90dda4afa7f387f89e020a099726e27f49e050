@@ -22,6 +22,30 @@
       },
       "revId": "ee90dda4afa7f387f89e020a099726e27f49e050",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bff8d210_7df520b1",
+        "filename": "zephyr/projects/skyrim/skyrim.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-03-21T17:45:08Z",
+      "side": 1,
+      "message": "We could use a PG pin for this.  I\u0027m a little bummed we\u0027ll lose the readability of the pin name for the dts file with the struct gpi_dt_spec, but it sounds like that\u0027s more standard.  \n\nI\u0027m uncertain why we want the temperature sensor shim to be configuring the power pin though.  Are we coding based on the idea that this could be a pin set aside for this exclusive purpose, rather than one shared with other purposes which have already taken care of the GPIO configuration?  Does zephyr have any way to intelligently skip re-configurations for multi-purpose pins?",
+      "parentUuid": "d5a8d2b3_4e72dcd3",
+      "range": {
+        "startLine": 115,
+        "startChar": 0,
+        "endLine": 115,
+        "endChar": 34
+      },
+      "revId": "ee90dda4afa7f387f89e020a099726e27f49e050",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
