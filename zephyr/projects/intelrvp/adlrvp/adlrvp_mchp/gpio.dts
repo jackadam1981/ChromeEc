@@ -4,7 +4,6 @@
  */
 
 / {
-
 	aliases {
 		gpio-wp = &gpio_wp;
 		/* gpio-kbd-kso2 = &gpio_ec_kso_02_inv; */
@@ -56,35 +55,35 @@
 			gpios = <&gpio_100_136 13 GPIO_INPUT>;
 			enum-name = "GPIO_POWER_BUTTON_L";
 		}; /* GPIO115 */
-		std_adp_prsnt {
+		std_adp_prsnt: std-adp-prsnt {
 			gpios = <&gpio_040_076 3 GPIO_INPUT>;
 		}; /* GPIO043 */
 		bc_acok: bc_acok {
 			gpios = <&gpio_140_176 14 GPIO_INPUT>;
 			enum-name = "GPIO_AC_PRESENT";
 		}; /* GPIO156 */
-		usbc_tcpc_alrt_p0 {
+		usbc_tcpc_alrt_p0: usbc-tcpc-alrt-p0 {
 			gpios = <&gpio_140_176 3 GPIO_INPUT>;
 		}; /* GPIO143 */
-		usbc_tcpc_alrt_p1 {
+		usbc_tcpc_alrt_p1: usbc-tcpc-alrt-p1 {
 			gpios = <&gpio_240_276 1 GPIO_INPUT>;
 		}; /* GPIO241 */
-		usbc_tcpc_alrt_p2 {
+		usbc_tcpc_alrt_p2: usbc-tcpc-alrt-p2 {
 			gpios = <&gpio_100_136 24 GPIO_INPUT>;
 		}; /* GPIO130 */
-		usbc_tcpc_alrt_p3 {
+		usbc_tcpc_alrt_p3: usbc-tcpc-alrt-p3 {
 			gpios = <&gpio_240_276 2 GPIO_INPUT>;
 		}; /* GPIO242 */
-		usbc_tcpc_ppc_alrt_p0 {
+		usbc_tcpc_ppc_alrt_p0: usbc-tcpc-ppc-alrt-p0 {
 			gpios = <&gpio_240_276 0 GPIO_INPUT>;
 		}; /* GPIO240 */
-		usbc_tcpc_ppc_alrt_p1 {
+		usbc_tcpc_ppc_alrt_p1: usbc-tcpc-ppc-alrt-p1 {
 			gpios = <&gpio_100_136 1 GPIO_INPUT>;
 		}; /* GPIO101 */
-		usbc_tcpc_ppc_alrt_p2 {
+		usbc_tcpc_ppc_alrt_p2: usbc-tcpc-ppc-alrt-p2 {
 			gpios = <&gpio_140_176 4 GPIO_INPUT>;
 		}; /* GPIO144 */
-		usbc_tcpc_ppc_alrt_p3 {
+		usbc_tcpc_ppc_alrt_p3: usbc-tcpc-ppc-alrt-p3 {
 			gpios = <&gpio_140_176 2 GPIO_INPUT>;
 		}; /* GPIO142 */
 		gpio_ec_pch_wake_odl: smc_wake_sci_n_mecc {
@@ -113,7 +112,7 @@
 			enum-name = "GPIO_SYS_RESET_L";
 		}; /* GPIO060 */
 		pm_rsmrst_n {
-			gpios = <&gpio_040_076 12 GPIO_OUT_LOW>;
+			gpios = <&gpio_040_076 12 GPIO_OUTPUT_LOW>;
 			enum-name = "GPIO_PCH_RSMRST_L";
 		}; /* GPIO054 */
 		pm_pwrbtn_n {
@@ -121,10 +120,10 @@
 			enum-name = "GPIO_PCH_PWRBTN_L";
 		}; /* GPIO016 */
 		ec_spi_oe_mecc: ec_spi_oe_mecc {
-			gpios = <&gpio_040_076 2 GPIO_OUT_LOW>;
+			gpios = <&gpio_040_076 2 GPIO_OUTPUT_LOW>;
 		}; /* GPIO042 */
 		ec_ds3 {
-			gpios = <&gpio_000_036 21 GPIO_OUT_LOW>;
+			gpios = <&gpio_000_036 21 GPIO_OUTPUT_LOW>;
 			enum-name = "GPIO_EN_PP3300_A";
 		}; /* GPIO025 */
 		pch_pwrok_ec {
@@ -132,12 +131,12 @@
 			enum-name = "GPIO_PCH_PWROK";
 		}; /* GPIO106 */
 		sys_pwrok {
-			gpios = <&gpio_200_236 2 GPIO_OUT_LOW>;
+			gpios = <&gpio_200_236 2 GPIO_OUTPUT_LOW>;
 			/* enum-name = "GPIO_EC_PCH_SYS_PWROK"; */
 			enum-name = "GPIO_PCH_SYS_PWROK";
 		}; /* GPIO202 */
 		ec_dsw_pwrok {
-			gpios = <&gpio_000_036 28 GPIO_OUT_LOW>;
+			gpios = <&gpio_000_036 28 GPIO_OUTPUT_LOW>;
 			enum-name = "GPIO_PCH_DSW_PWROK";
 		}; /* GPIO034 */
 		gpio_wp: ec_flash_wp_odl {
@@ -145,30 +144,32 @@
 			/* enum-name = "GPIO_WP_L"; */
 		}; /* GPIO014 */
 		ec_h1_packet_mode {
-			gpios = <&gpio_000_036 29 GPIO_OUT_LOW>;
+			gpios = <&gpio_000_036 29 GPIO_OUTPUT_LOW>;
+			enum-name = "GPIO_PACKET_MODE_EN";
 		}; /* GPIO035 */
 		ec_entering_rw {
-			gpios = <&gpio_100_136 2 GPIO_OUT_LOW>;
+			gpios = <&gpio_100_136 2 GPIO_OUTPUT_LOW>;
 			enum-name = "GPIO_ENTERING_RW";
 		}; /* GPIO102 */
-		ccd_mode_odl {
+		ccd_mode_odl: ccd-mode-odl {
 			gpios = <&gpio_140_176 29 GPIO_INPUT>;
+			enum-name  = "GPIO_CCD_MODE_ODL";
 		}; /* GPIO175 */
 		bat_det {
 			gpios = <&gpio_200_236 6 GPIO_INPUT>;
 			enum-name = "GPIO_BATT_PRES_ODL";
 		}; /* GPIO206 */
 		edp_bklt_en_mecc {
-			gpios = <&gpio_000_036 18 GPIO_OUT_HIGH>;
+			gpios = <&gpio_000_036 18 GPIO_OUTPUT_HIGH>;
 		}; /* GPIO022 */
 		led_1_l {
-			gpios = <&gpio_140_176 15 GPIO_OUT_HIGH>;
+			gpios = <&gpio_140_176 15 GPIO_OUTPUT_HIGH>;
 		}; /* GPIO157 */
 		led_2_l {
-			gpios = <&gpio_140_176 11 GPIO_OUT_HIGH>;
+			gpios = <&gpio_140_176 11 GPIO_OUTPUT_HIGH>;
 		}; /* GPIO153 */
 		therm_sen_mecc {
-			gpios = <&gpio_140_176 1 GPIO_OUT_LOW>;
+			gpios = <&gpio_140_176 1 GPIO_OUTPUT_LOW>;
 		}; /* GPIO141 */
 		smb_bs_clk {
 			gpios = <&gpio_000_036 4 GPIO_INPUT>;
@@ -276,8 +277,69 @@
 			gpios = <&gpio_000_036 27 GPIO_INPUT>;
 		}; /* GPIO033 */
 		ec_kso_02_inv {
-			gpios = <&gpio_040_076 6 GPIO_OUT_LOW>;
+			gpios = <&gpio_040_076 6 (GPIO_OUTPUT_LOW | GPIO_ACTIVE_LOW)>;
 			/* enum-name = "GPIO_KBD_KSO2"; */
 		}; /* GPIO046 KBD_KSO2 ???? */
+
+		usb_c0_bb_retimer_rst: usb-c0-bb-retimer-rst {
+			gpios = <&ioex_c0_port 0 GPIO_OUTPUT_LOW>;
+			enum-name = "IOEX_USB_C0_BB_RETIMER_RST";
+		};
+		usb-c0-bb-retimer-ls-en {
+			gpios = <&ioex_c0_port 1 GPIO_OUTPUT_LOW>;
+			enum-name = "IOEX_USB_C0_BB_RETIMER_LS_EN";
+		};
+		usb-c0-usb-mux-cntrl-1 {
+			gpios = <&ioex_c0_port 4 GPIO_OUTPUT_LOW>;
+			enum-name = "IOEX_USB_C0_USB_MUX_CNTRL_1";
+		};
+		usb-c0-usb-mux-cntrl-0 {
+			gpios = <&ioex_c0_port 5 GPIO_OUTPUT_LOW>;
+			enum-name = "IOEX_USB_C0_USB_MUX_CNTRL_0";
+		};
+		usb_c1_bb_retimer_rst: usb-c1-bb-retimer-rst {
+			gpios = <&ioex_c1_port 0 GPIO_OUTPUT_LOW>;
+			enum-name = "IOEX_USB_C1_BB_RETIMER_RST";
+		};
+		usb-c1-bb-retimer-ls-en {
+			gpios = <&ioex_c1_port 1 GPIO_OUTPUT_LOW>;
+			enum-name = "IOEX_USB_C1_BB_RETIMER_LS_EN";
+		};
+		usb-c1-hpd {
+			gpios = <&ioex_c1_port 2 GPIO_OUTPUT_LOW>;
+			enum-name = "IOEX_USB_C1_HPD";
+		};
+		usb-c0-c1-oc {
+			gpios = <&ioex_c1_port 8 GPIO_OUTPUT_HIGH>;
+			enum-name = "IOEX_USB_C0_C1_OC";
+		};
+		usb_c2_bb_retimer_rst: usb-c2-bb-retimer-rst {
+			gpios = <&ioex_c2_port 0 GPIO_OUTPUT_LOW>;
+			enum-name = "IOEX_USB_C2_BB_RETIMER_RST";
+		};
+		usb-c2-bb-retimer-ls-en {
+			gpios = <&ioex_c2_port 1 GPIO_OUTPUT_LOW>;
+			enum-name = "IOEX_USB_C2_BB_RETIMER_LS_EN";
+		};
+		usb-c2-usb-mux-cntrl-1 {
+			gpios = <&ioex_c2_port 4 GPIO_OUTPUT_LOW>;
+			enum-name = "IOEX_USB_C2_USB_MUX_CNTRL_1";
+		};
+		usb-c2-usb-mux-cntrl-0 {
+			gpios = <&ioex_c2_port 5 GPIO_OUTPUT_LOW>;
+			enum-name = "IOEX_USB_C2_USB_MUX_CNTRL_0";
+		};
+		usb_c3_bb_retimer_rst: usb-c3-bb-retimer-rst {
+			gpios = <&ioex_c3_port 0 GPIO_OUTPUT_LOW>;
+			enum-name = "IOEX_USB_C3_BB_RETIMER_RST";
+		};
+		usb-c3-bb-retimer-ls-en {
+			gpios = <&ioex_c3_port 1 GPIO_OUTPUT_LOW>;
+			enum-name = "IOEX_USB_C3_BB_RETIMER_LS_EN";
+		};
+		usb-c2-c3-oc {
+			gpios = <&ioex_c3_port 8 GPIO_OUTPUT_HIGH>;
+			enum-name = "IOEX_USB_C2_C3_OC";
+		};
 	};
 };

@@ -52,10 +52,12 @@ register_intelrvp_project(
     chip="adlrvpp_mchp1727",
     extra_dts_overlays=[
         here / "adlrvp/adlrvp_mchp/adlrvp_mchp.dts",
+        here / "adlrvp/adlrvp_mchp/bb_retimer.dts",
+        #here / "adlrvp/adlrvp_mchp/fan.dts",
         here / "adlrvp/adlrvp_mchp/gpio.dts",
         here / "adlrvp/adlrvp_mchp/interrupts.dts",
         here / "adlrvp/adlrvp_mchp/keyboard.dts",
-        ####here / "adlrvp/adlrvp_mchp/pwm.dts",
+        here / "adlrvp/adlrvp_mchp/usbc.dts",
     ],
     extra_kconfig_files=[here / "adlrvp/adlrvp_mchp/prj.conf"],
 )
