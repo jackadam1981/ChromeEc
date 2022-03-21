@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e98a8485_14ba9446",
+        "filename": "zephyr/dts/bindings/battery/battery-smart.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1511957
+      },
+      "writtenOn": "2022-03-21T17:34:26Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "abc6ba0f_a359b8db",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 25
+      },
+      "revId": "95614cc4ac100be4cfc7afc417d50822f992cddd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4b2d24c3_0c7e7bcd",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-03-21T16:56:25Z",
       "side": 1,
       "message": "This is a wrong bug. Should link to the AVL bug for this Ganfeng battery. The bug contains the details of the battery, like the datasheet, the test results, etc.",
+      "range": {
+        "startLine": 20,
+        "startChar": 20,
+        "endLine": 20,
+        "endChar": 31
+      },
+      "revId": "95614cc4ac100be4cfc7afc417d50822f992cddd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bae82658_da4b2e42",
+        "filename": "zephyr/dts/bindings/battery/ganfeng,7c01.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1511957
+      },
+      "writtenOn": "2022-03-21T17:34:26Z",
+      "side": 1,
+      "message": "Sorry, removed comment and updated parameters based on battery pack specs.",
+      "parentUuid": "4b2d24c3_0c7e7bcd",
       "range": {
         "startLine": 20,
         "startChar": 20,
