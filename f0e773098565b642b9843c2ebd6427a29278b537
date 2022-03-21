@@ -1,5 +1,98 @@
 {
-  "comments": [],
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d8bd829_bfcf4b85",
+        "filename": "zephyr/dts/bindings/gpio/named-gpios.yaml",
+        "patchSetId": 12
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-03-21T20:08:43Z",
+      "side": 1,
+      "message": "Is this actually needed?  Are the instances where the number of cells needs to change based on the driver type?",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 0
+      },
+      "revId": "f0e773098565b642b9843c2ebd6427a29278b537",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a175e7ee_b4afaa9a",
+        "filename": "zephyr/dts/bindings/gpio_led/cros-ec,gpio-led-pins.yaml",
+        "patchSetId": 12
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-03-21T20:08:43Z",
+      "side": 1,
+      "message": "It\u0027s a cleaner commit history if the board independent changes are checked in as a separate CL.",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 62
+      },
+      "revId": "f0e773098565b642b9843c2ebd6427a29278b537",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "42397f29_d0714f9a",
+        "filename": "zephyr/dts/bindings/gpio_led/cros-ec,gpio-led-pins.yaml",
+        "patchSetId": 12
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-03-21T20:08:43Z",
+      "side": 1,
+      "message": "For now, this is the correct approach.  Any property ending in `-gpios` is expected to point to a GPIO specifier, which must include the `#gpio-cells` property.",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 17
+      },
+      "revId": "f0e773098565b642b9843c2ebd6427a29278b537",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8b87186_74de7c2f",
+        "filename": "zephyr/projects/trogdor/lazor/src/led.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-03-21T20:08:43Z",
+      "side": 1,
+      "message": "These macros should be moved somewhere common.  We don\u0027t want each board to have to redefine these.",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 0
+      },
+      "revId": "f0e773098565b642b9843c2ebd6427a29278b537",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ],
   "submitRequirementResults": [
     {
       "submitRequirement": {
