@@ -22,6 +22,30 @@
       },
       "revId": "6b851781d985fdb1b4ce8bd4ac20d504e1750fea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f314abf_2db8a905",
+        "filename": "zephyr/emul/tcpc/emul_tcpci_partner_common.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 472,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-03-21T19:30:41Z",
+      "side": 1,
+      "message": "With this CL chain, we hit this when the TCPM tries to enter DisplayPort mode, because I didn\u0027t add those VDM command types to the partner yet. In addition, I would expect to hit this if the TCPM generated an Attention, for the same reason. I would expect tests for those behaviors to fail based on the final alt mode status. Right now, we\u0027re not actually checking the specific message flow in tests, but we could if we wanted to.",
+      "parentUuid": "587bac4d_ebbf6964",
+      "range": {
+        "startLine": 472,
+        "startChar": 9,
+        "endLine": 472,
+        "endChar": 41
+      },
+      "revId": "6b851781d985fdb1b4ce8bd4ac20d504e1750fea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
