@@ -12,3 +12,7 @@ ifeq ($(CHIP_VARIANT), mt8195)
 chip-y+=$(CHIP_VARIANT)/video.o
 endif
 
+ifeq ($(CHIP_VARIANT), mt8195_core1)
+chip-y+=mt8195/ipi_ops_$(CHIP_VARIANT).o
+endif
+
