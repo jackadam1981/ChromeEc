@@ -16,6 +16,24 @@
       "message": "Updated battery pack specs. Thanks.",
       "revId": "ca7e0435f9511cfec0dabd59438b6a4d347ea95e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "00377c6c_c46f30f7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-03-21T18:47:24Z",
+      "side": 1,
+      "message": "I suppose you uploaded the spec to a bug but I don\u0027t know which bug (I haven\u0027t been CC\u0027ed). Please update the BUG\u003d tag in the CL description to that bug.",
+      "parentUuid": "1b7117f5_c2fa81c7",
+      "revId": "ca7e0435f9511cfec0dabd59438b6a4d347ea95e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
