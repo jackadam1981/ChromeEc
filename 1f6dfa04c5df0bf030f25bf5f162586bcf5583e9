@@ -54,6 +54,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5a0c6785_c7554ac5",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 472,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-03-21T20:35:28Z",
+      "side": 1,
+      "message": "I don\u0027t think you need to use a type here, I think the `choices` parameter should work:\n```\nparser.add_argument(\n    \u0027--remote\u0027, \u0027-n\u0027,\n    help\u003d\u0027Specify the remote host connection type.\u0027,\n    choices\u003d[\u0027jlink\u0027, \u0027servo\u0027]\n)\n```",
+      "parentUuid": "69b54adb_df9e6b68",
+      "revId": "1f6dfa04c5df0bf030f25bf5f162586bcf5583e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8a64203e_1fbeb7dd",
         "filename": "test/run_device_tests.py",
         "patchSetId": 1
@@ -77,6 +95,53 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a6709903_8cef6da9",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 477,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-03-21T20:35:28Z",
+      "side": 1,
+      "message": "I\u0027m not sure what the difference is but if I recall correctly there are several docs that call out using 2551 when using `flash_jlink.py`. I was never clear on the reason.",
+      "parentUuid": "8a64203e_1fbeb7dd",
+      "range": {
+        "startLine": 477,
+        "startChar": 32,
+        "endLine": 477,
+        "endChar": 36
+      },
+      "revId": "1f6dfa04c5df0bf030f25bf5f162586bcf5583e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e25f6fc_106ddbfb",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 479,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-03-21T20:35:28Z",
+      "side": 1,
+      "message": "Would it make more sense to combine `--console_port` and `--jlink_port` into a single `--remote_port` such that the usage of `args.remote_port` was dependent upon the `args.remote`? I think it would simplify the logic and I don\u0027t believe that specifying `--remote\u003djlink` and `--console_port\u003d1234` but not `jlink_port\u003d5678` would make sense, right?",
+      "range": {
+        "startLine": 479,
+        "startChar": 25,
+        "endLine": 479,
+        "endChar": 39
+      },
+      "revId": "1f6dfa04c5df0bf030f25bf5f162586bcf5583e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "19100480_af5b50f7",
         "filename": "test/run_device_tests.py",
         "patchSetId": 1
@@ -88,6 +153,29 @@
       "writtenOn": "2022-03-09T00:05:28Z",
       "side": 1,
       "message": "I agree with the logic implemented here, but since `jlink_port` and `console_port` are new arguments, is there a risk that existing scripts where they are not specified will break?\n\nI don\u0027t have any specific example in mind, but I am just bringing this up in case we had backward compatibility requirements and other scripts must be updated at the same time of this one.",
+      "revId": "1f6dfa04c5df0bf030f25bf5f162586bcf5583e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0fbf886b_10674769",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 490,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-03-21T20:35:28Z",
+      "side": 1,
+      "message": "Should this more explicitly check the conditions for `jlink_port` and `console_port`? For example, something like:\n\n```\nif args.remote \u003d\u003d \u0027jlink\u0027 and not args.jlink_port:\n   logging.error(\u0027jlink_port is required when using remote type jlink\u0027)\nelif args.remote \u003d\u003d \u0027servo\u0027 and not args.console_port:\n   logging.error(\u0027console_port is required when using remote type servo\u0027)\n```",
+      "range": {
+        "startLine": 490,
+        "startChar": 4,
+        "endLine": 490,
+        "endChar": 65
+      },
       "revId": "1f6dfa04c5df0bf030f25bf5f162586bcf5583e9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
