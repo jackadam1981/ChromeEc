@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e7e1055a_0d787650",
+        "filename": "docs/zephyr/zephyr_mkbp.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1477788
+      },
+      "writtenOn": "2022-03-21T14:33:34Z",
+      "side": 1,
+      "message": "It\u0027s waiting for github PR to be merged. I have added comment to my CL to remember to update the docs.",
+      "parentUuid": "b17e75d6_fa989fc9",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 18
+      },
+      "revId": "12eb6bf7539f81cb7e99b9f883197c2bdc4de6b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5c7f7a1f_452b5d93",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c67117f6_730c3457",
+        "filename": "docs/zephyr/zephyr_mkbp.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1477788
+      },
+      "writtenOn": "2022-03-21T14:33:34Z",
+      "side": 1,
+      "message": "Used the version you have written in the previous commit",
+      "parentUuid": "5c7f7a1f_452b5d93",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 0
+      },
+      "revId": "12eb6bf7539f81cb7e99b9f883197c2bdc4de6b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9fb6702f_b5c9ebcb",
@@ -60,6 +108,24 @@
       "writtenOn": "2022-03-04T16:48:23Z",
       "side": 1,
       "message": "Add a note:\n\nFor detailed descriptions of the MKBP and host event types, please see include/ec_commands.h.",
+      "revId": "12eb6bf7539f81cb7e99b9f883197c2bdc4de6b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1110dea_90a9093d",
+        "filename": "docs/zephyr/zephyr_mkbp.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1477788
+      },
+      "writtenOn": "2022-03-21T14:33:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9fb6702f_b5c9ebcb",
       "revId": "12eb6bf7539f81cb7e99b9f883197c2bdc4de6b3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
