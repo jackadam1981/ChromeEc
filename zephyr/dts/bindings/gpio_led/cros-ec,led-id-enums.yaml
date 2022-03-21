@@ -1,0 +1,22 @@
+# Copyright 2022 The Chromium OS Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+description: GPIO LED ID enum.
+
+compatible: "cros-ec,led-id-enums"
+
+child-binding:
+    description: LED ID nodes with enum prop
+    properties:
+      enum-name:
+        type: string
+        required: true
+        enum:
+            - EC_LED_ID_BATTERY_LED
+            - EC_LED_ID_POWER_LED
+            - EC_LED_ID_ADAPTER_LED
+            - EC_LED_ID_LEFT_LED
+            - EC_LED_ID_RIGHT_LED
+            - EC_LED_ID_RECOVERY_HW_REINIT_LED
+            - EC_LED_ID_SYSRQ_DEBUG_LED

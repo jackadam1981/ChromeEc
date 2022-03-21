@@ -28,19 +28,25 @@ LOG_MODULE_REGISTER(gpio_led, LOG_LEVEL_ERR);
 #define BAT_LED_ON 1
 #define BAT_LED_OFF 0
 
-#define GPIO_LED_NODE    DT_PATH(gpio_led, gpio_led_colors)
+#define GPIO_LED_NODE		DT_PATH(gpio_led, gpio_led_colors)
+#define LED_COLOR_ENUMS_NODE	DT_PATH(gpio_led, led_color_enums)
+#define LED_ID_ENUMS_NODE	DT_PATH(gpio_led, led_id_enums)
+#define BRIGHTNESS_RANGE_NODE	DT_PATH(gpio_led, led_brightness_range)
+
+#define LED_ENUM(id) 	 DT_STRING_TOKEN(id, enum_name)
+#define LED_ENUM_WITH_COMMA(id) \
+	COND_CODE_1(DT_NODE_HAS_PROP(id, enum_name), (LED_ENUM(id),), ())
 
 const enum ec_led_id supported_led_ids[] = {
-	EC_LED_ID_BATTERY_LED,
+	DT_FOREACH_CHILD(LED_ID_ENUMS_NODE, LED_ENUM_WITH_COMMA)
 };
 
 const int supported_led_ids_count = ARRAY_SIZE(supported_led_ids);
 
 enum led_color {
-	LED_OFF = 0,
-	LED_AMBER,
-	LED_BLUE,
-	LED_COLOR_COUNT  /* Number of colors, not a color itself */
+	LED_OFF,
+	DT_FOREACH_CHILD(LED_COLOR_ENUMS_NODE, LED_ENUM_WITH_COMMA)
+	LED_COLOR_COUNT,
 };
 
 static void led_set_color(enum led_color color)
@@ -53,8 +59,13 @@ static void led_set_color(enum led_color color)
 
 void led_get_brightness_range(enum ec_led_id led_id, uint8_t *brightness_range)
 {
-	brightness_range[EC_LED_COLOR_AMBER] = 1;
-	brightness_range[EC_LED_COLOR_BLUE] = 1;
+	if (led_id == EC_LED_ID_BATTERY_LED) {
+		const uint8_t dt_brigthness_range[EC_LED_COLOR_COUNT] =
+		    DT_PROP(BRIGHTNESS_RANGE_NODE, brightness_range_battery);
+
+		memcpy(brightness_range, dt_brigthness_range,
+			sizeof(dt_brigthness_range));
+	}
 }
 
 int led_set_brightness(enum ec_led_id led_id, const uint8_t *brightness)

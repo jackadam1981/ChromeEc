@@ -2,6 +2,38 @@
 	gpio-led {
 		compatible = "gpio-led-behavior";
 
+		led-color-enums {
+			compatible = "cros-ec,led-color-enums";
+			
+			led-color-amber {
+				enum-name = "LED_AMBER";
+			};
+
+			led-color-blue {
+				enum-name = "LED_BLUE";
+			};
+		};
+
+		led-id-enums {
+			compatible = "cros-ec,led-id-enums";
+
+			led_id_battery {
+				enum-name = "EC_LED_ID_BATTERY_LED";
+			};
+		};
+
+		led-brightness-range {
+			compatible = "cros-ec,led-brightness-range";
+
+			brightness-range-battery = < 0x0 /* Red */
+						     0x0 /* Green */
+						     0x1 /* Blue */
+						     0x0 /* Yellow */
+						     0x0 /* White */
+						     0x1 /* Amber */
+						     >;
+		};
+
 		gpio-led-colors {
 			compatible = "cros-ec,gpio-led-colors";
 

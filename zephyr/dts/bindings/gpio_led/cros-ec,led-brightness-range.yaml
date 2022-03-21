@@ -1,0 +1,20 @@
+# Copyright 2022 The Chromium OS Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+description: Brightness range array to specifiy which LEDs are enabled
+
+compatible: "cros-ec,led-brightness-range"
+
+properties:
+    brightness-range-battery:
+        type: array
+        required: true
+        description: Brightness range values for gpio leds,
+                     1 for the enabled LEDs, otherwise 0
+
+    brightness-range-power:
+        type: array
+        required: false
+        description: Brightness range values for gpio leds,
+                     1 for the enabled LEDs, otherwise 0
