@@ -363,8 +363,12 @@ static void pwrseq_loop_thread(void *p1, void *p2, void *p3)
 		if (curr_state == new_state)
 			new_state = common_pwr_sm_run(curr_state);
 
-		if (curr_state != new_state)
+		if (curr_state != new_state) {
 			pwr_sm_set_state(new_state);
+			/* Notify power event before we enter G3 */
+			if (new_state == SYS_POWER_STATE_G3)
+				ap_power_ev_send_callbacks(AP_POWER_HARD_OFF);
+		}
 
 		k_msleep(t_wait_ms);
 	}
