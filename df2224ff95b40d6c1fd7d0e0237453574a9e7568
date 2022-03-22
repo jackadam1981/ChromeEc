@@ -39,6 +39,30 @@
       },
       "revId": "df2224ff95b40d6c1fd7d0e0237453574a9e7568",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "569829dc_ce4befdb",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 721,
+      "author": {
+        "id": 1513493
+      },
+      "writtenOn": "2022-03-22T15:49:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "37272597_14512419",
+      "range": {
+        "startLine": 721,
+        "startChar": 8,
+        "endLine": 721,
+        "endChar": 21
+      },
+      "revId": "df2224ff95b40d6c1fd7d0e0237453574a9e7568",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
