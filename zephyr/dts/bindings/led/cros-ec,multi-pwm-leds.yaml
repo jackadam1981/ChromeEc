@@ -1,0 +1,76 @@
+# Copyright 2022 The Chromium OS Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+description: Multi-PWM LED configuration
+
+compatible: "cros-ec,multi-pwm-leds"
+
+include: base.yaml
+
+properties:
+  pwms:
+    type: phandle-array
+    required: true
+    description: |
+      List of the PWMs attached to the LEDs, up to 3 PWM devices.
+      The order is matched against the array order of
+      the colors properties.
+
+      For example
+        led1 {
+                compatible = "cros-ec,multi-pwm-leds";
+
+                pwms = <&pwm1 0 PWM_POLARITY_INVERTED>,
+                       <&pwm0 0 PWM_POLARITY_INVERTED>,
+                       <&pwm2 0 PWM_POLARITY_INVERTED>;
+        };
+
+  frequency:
+    type: int
+    required: true
+    description: |
+      PWM frequency in Hz for LEDs.
+
+child-binding:
+  description: |
+    LED behaviour configurations. A list of child nodes
+    representing LED behaviours and actions, such as
+    colours, blink rates etc.
+  properties:
+    colors:
+      type: array
+      required: true
+      description: |
+        A list of values as percentages of PWM duty cycles per LED.
+        E.g
+             ...
+             led1-red: red {
+               colors = <100 0 0>;
+             };
+    alt-colors:
+      type: array
+      required: false
+      default: [0, 0, 0]
+      description: |
+        An alternate set of colors used for blinking.
+        E.g
+             ...
+             flash_red_green: flash {
+               colors = <100 0 0>;
+               blink = <1000 1000>;
+               alt-colors = <0 100 0>;
+             };
+        Defaults to zero so alternate flash colors are off.
+    blink:
+      type: array
+      required: false
+      default: [0, 0]
+      description: |
+        An optional blink rate as on/off times in milliseconds.
+        E.g for a green blinking LED at 1/2 second rate
+
+               led1-green-flash: green-flash {
+                 colors = <100 0 0>;
+                 blink = <500 500>;
+               };
