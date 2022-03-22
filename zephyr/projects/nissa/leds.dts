@@ -1,0 +1,57 @@
+/* Copyright 2022 The Chromium OS Authors. All rights reserved.
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+/ {
+	/*
+	 * Mapping of inputs to LED actions
+	 */
+	led-policy {
+		compatible = "cros-ec,led-policy";
+
+		led = <&leds>;
+
+		low-battery {
+			input = "BATTERY";
+			range = <0 10>;
+			action = <&red_flash>;
+		};
+		run {
+			input = "RUNNING";
+			action = <&green>;
+		};
+		suspend {
+			input = "SUSPENDED";
+			action = <&blue>;
+		};
+		off {
+			input = "POWER_OFF";
+			action = <&dim_blue_flash>;
+		};
+	};
+};
+
+/*
+ * LED configuration of colours and actions.
+ */
+&leds {
+	red: red {
+		colors = <100 0 0>;
+	};
+	red_flash: red-flash {
+		colors = <100 0 0>;
+		blink = <500 500>;
+	};
+	green: green {
+		colors = <0 100 0>;
+	};
+	blue: blue {
+		colors = <0 0 100>;
+	};
+	dim_blue_flash: dim_blue {
+		colors = <0 0 50>;
+		blink = <2000 2000>;
+		alt-colors = <0 50 0>;
+	};
+};
