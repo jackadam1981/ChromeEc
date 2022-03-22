@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "196438c1_0d9a4871",
+        "filename": "test/system_is_locked.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2022-03-22T10:47:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c90e68be_1e3b7967",
+      "range": {
+        "startLine": 72,
+        "startChar": 15,
+        "endLine": 73,
+        "endChar": 22
+      },
+      "revId": "b4270c19e79d607ff5c1d4c3b7d9a8a29d54b169",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4e5ae47f_a7ea466c",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-03-21T23:36:44Z",
       "side": 1,
       "message": "I guess it doesn\u0027t make sense if someone specifies `wp_off` on a board with `CONFIG_WP_ALWAYS`, so probably good to add a failure like you did with `CONFIG_SYSTEM_UNLOCKED`.",
+      "range": {
+        "startLine": 108,
+        "startChar": 0,
+        "endLine": 111,
+        "endChar": 32
+      },
+      "revId": "b4270c19e79d607ff5c1d4c3b7d9a8a29d54b169",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "12f3bc87_393ebf6a",
+        "filename": "test/system_is_locked.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2022-03-22T10:47:42Z",
+      "side": 1,
+      "message": "Fixed. I modified the test to fail when CONFIG_WP_ALWAYS is enabled and `wp_off` was passed as an argument to `runtest`.",
+      "parentUuid": "4e5ae47f_a7ea466c",
       "range": {
         "startLine": 108,
         "startChar": 0,
