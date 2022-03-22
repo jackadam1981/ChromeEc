@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d88b8d0_e6b14c42",
+        "filename": "zephyr/projects/corsola/src/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2022-03-22T08:53:17Z",
+      "side": 1,
+      "message": "Can you also put DP_AUX_PATH_SEL in low when no ports in the DP mode? This can save extra power.",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 47
+      },
+      "revId": "77c8df8d7deac0feafdd2ea3b03149f054d967d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
