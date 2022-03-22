@@ -26,7 +26,7 @@ import time
 from concurrent.futures.thread import ThreadPoolExecutor
 from enum import Enum
 from pathlib import Path
-from typing import Optional, BinaryIO, List
+from typing import Optional, BinaryIO, List, Dict
 
 # pylint: disable=import-error
 import colorama  # type: ignore[import]
@@ -195,8 +195,29 @@ class AllTests:
         if board_config.name == BLOONCHIPPER:
             tests['stm32f_rtc'] = TestConfig(name='stm32f_rtc')
 
+        tests.update(AllTests.get_private_tests())
+
         return tests
 
+    @staticmethod
+    def get_private_tests() -> Dict[str, TestConfig]:
+        # Return all private tests, if the folder exists
+        tests = {}
+        try:
+            current_dir = os.path.dirname(__file__)
+            private_dir = os.path.join(current_dir, '../private')
+            have_private = os.path.isdir(private_dir)
+            if not have_private:
+                return {}
+            sys.path.append(private_dir)
+            import private_tests # pylint: disable=import-error
+            for test_id, test_args in private_tests.tests.items():
+                tests[test_id] = TestConfig(**test_args)
+        # Catch all exceptions to avoid disruptions in public repo
+        except BaseException:
+            logging.debug('Failed to get private tests. Ignore and continue.')
+            return {}
+        return tests
 
 BLOONCHIPPER_CONFIG = BoardConfig(
     name=BLOONCHIPPER,
