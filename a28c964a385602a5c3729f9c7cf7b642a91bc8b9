@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e91bdfd7_6238db45",
+        "filename": "board/kinox/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1259885
+      },
+      "writtenOn": "2022-03-22T06:24:37Z",
+      "side": 1,
+      "message": "Need to check with team, do we allow port change when S5?",
+      "range": {
+        "startLine": 66,
+        "startChar": 1,
+        "endLine": 66,
+        "endChar": 48
+      },
+      "revId": "a28c964a385602a5c3729f9c7cf7b642a91bc8b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f598ca5f_ef59e6bf",
         "filename": "board/kinox/board.c",
         "patchSetId": 4
