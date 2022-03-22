@@ -46,6 +46,30 @@
       },
       "revId": "9a50c9f4ec8a904483203e9fa4c3d5519c21df29",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f5b629d_60782681",
+        "filename": "zephyr/shim/src/hooks.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-03-22T23:14:44Z",
+      "side": 1,
+      "message": "I was more thinking about the requirement of holding two separate hook lists and keeping the conditions for defining them synchronized between two files. Guess that that list doesn\u0027t change that often, but keeping a duplicate seems far from ideal.",
+      "parentUuid": "aaf07550_a2fd87fa",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 0
+      },
+      "revId": "9a50c9f4ec8a904483203e9fa4c3d5519c21df29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
