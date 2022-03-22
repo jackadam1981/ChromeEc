@@ -189,6 +189,60 @@
 			};
 		};
 	};
+
+	/*
+	 * LED configuration
+	 */
+	leds: leds {
+		compatible = "cros-ec,multi-pwm-leds";
+		pwms = <&pwm2 2 PWM_POLARITY_INVERTED>,
+		       <&pwm0 0 PWM_POLARITY_INVERTED>,
+		       <&pwm1 1 PWM_POLARITY_INVERTED>;
+		frequency = <4800>;
+		red: red {
+			colors = <100 0 0>;
+		};
+		red_flash: red-flash {
+			colors = <100 0 0>;
+			blink = <500 500>;
+		};
+		green: green {
+			colors = <0 100 0>;
+		};
+		blue: blue {
+			colors = <0 0 100>;
+		};
+		dim_blue_flash: dim_blue {
+			colors = <0 0 50>;
+			blink = <500 500>;
+		};
+	};
+	/*
+	 * Mapping of inputs to LED actions
+	 */
+	led-policy {
+		compatible = "cros-ec,led-policy";
+
+		led = <&leds>;
+
+		low-battery {
+			input = "BATTERY";
+			value = <10>;
+			action = <&red_flash>;
+		};
+		run {
+			input = "RUNNING";
+			action = <&green>;
+		};
+		suspend {
+			input = "SUSPENDED";
+			action = <&blue>;
+		};
+		off {
+			input = "POWER_OFF";
+			action = <&dim_blue_flash>;
+		};
+	};
 };
 
 &thermistor_3V3_51K1_47K_4050B {
