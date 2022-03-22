@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "994d5c38_cc6b760c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2022-03-22T04:45:05Z",
+      "side": 1,
+      "message": "Suggest rephrasing:\nR423 was changed to 402k. On a system with 2S battery, charger will monitor Vsys and trigger PROCHOT# if Vsys gets below 6v",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 35
+      },
+      "revId": "d646ec44a7be0740cdd8525ded8ebb6e4e484ffe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
