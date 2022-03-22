@@ -36,10 +36,12 @@ int svdm_get_hpd_gpio(int port)
 void svdm_set_hpd_gpio(int port, int en)
 {
 	/*
-	 * HPD is low active, inverse the en
-	 * TODO: C0&C1 shares the same HPD, implement FCFS policy.
+	 * HPD is low active, inverse the en.
+	 *
+	 * Toggle hpd only if it's the active dp port
 	 */
-	gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(ec_ap_dp_hpd_odl), !en);
+	if (usb_mux_get(port) & USB_PD_MUX_DP_ENABLED)
+		gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(ec_ap_dp_hpd_odl), !en);
 }
 
 __override int svdm_dp_config(int port, uint32_t *payload)
