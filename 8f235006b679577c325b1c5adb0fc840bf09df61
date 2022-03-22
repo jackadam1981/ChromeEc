@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ee3a496_2909e461",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2022-03-22T07:26:27Z",
+      "side": 1,
+      "message": "Please split this patch to two patches. 1. remove the 0-3 for the barrel jack. 2. add the dp_display bit",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 21
+      },
+      "revId": "8f235006b679577c325b1c5adb0fc840bf09df61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
