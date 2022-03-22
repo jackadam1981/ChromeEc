@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "db210205_c5f821a6",
+        "filename": "util/fptool_unitest.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 1528447
+      },
+      "writtenOn": "2022-03-22T01:04:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "01a1cec5_7bee6dd0",
+      "range": {
+        "startLine": 334,
+        "startChar": 4,
+        "endLine": 334,
+        "endChar": 40
+      },
+      "revId": "e4b7e80dfd9b2568d3d158044fc0b8a5488606cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bf7bd2cb_37c291c8",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d7eeae7e_2501ad7b",
+        "filename": "util/fptool_unitest.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 363,
+      "author": {
+        "id": 1528447
+      },
+      "writtenOn": "2022-03-22T01:04:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bf7bd2cb_37c291c8",
+      "range": {
+        "startLine": 334,
+        "startChar": 0,
+        "endLine": 363,
+        "endChar": 50
+      },
+      "revId": "e4b7e80dfd9b2568d3d158044fc0b8a5488606cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9e76c7e9_ee202eeb",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-03-14T22:59:02Z",
       "side": 1,
       "message": "Can you change all the `assert`s in this file to `self.assertEqual`?\n\nWhen you write it this way, it will print a more useful error message showing exactly what is different.",
+      "range": {
+        "startLine": 372,
+        "startChar": 8,
+        "endLine": 372,
+        "endChar": 58
+      },
+      "revId": "e4b7e80dfd9b2568d3d158044fc0b8a5488606cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ed3e2e3_0b421712",
+        "filename": "util/fptool_unitest.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1528447
+      },
+      "writtenOn": "2022-03-22T01:04:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9e76c7e9_ee202eeb",
       "range": {
         "startLine": 372,
         "startChar": 8,
