@@ -32,7 +32,7 @@ static struct consumer const event_venc_consumer = {
 static venc_msg_handler mtk_venc_msg_handle[VENC_MAX];
 
 /* Stub functions only provided by private overlays. */
-#ifndef HAVE_PRIVATE_MT8183
+#ifdef HAVE_PRIVATE_MT8183
 void venc_h264_msg_handler(void *data) {}
 #endif
 
