@@ -212,6 +212,30 @@
       },
       "revId": "9ecc3dfe2b136e0639db051a4c3d0b3a60e1a693",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5630d4c2_14cf1e8c",
+        "filename": "board/banshee/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-03-22T19:42:53Z",
+      "side": 1,
+      "message": "i just checked the schematics and it looks like the board\nuses the sy6862. removing CONFIG_USB_PD_PPC doesn\u0027t make\nsense in that case. btw., brya uses the sy682 - is there\nany difference? the datasheets seem to look alike.",
+      "parentUuid": "b3eaadfa_39a8b38f",
+      "range": {
+        "startLine": 96,
+        "startChar": 8,
+        "endLine": 96,
+        "endChar": 25
+      },
+      "revId": "9ecc3dfe2b136e0639db051a4c3d0b3a60e1a693",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
