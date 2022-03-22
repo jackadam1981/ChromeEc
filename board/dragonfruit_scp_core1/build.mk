@@ -9,3 +9,5 @@
 CHIP:=mt_scp
 CHIP_VARIANT:=mt8195_core1
 BASEBOARD:=mtscp-rv32i
+
+board-y+=ipi_test.o
