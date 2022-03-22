@@ -49,6 +49,8 @@
 
 #define IPI_COUNT SCP_IPI_COUNT
 
+#define SCP_IPI_DEBUG SCP_IPI_VDEC_H264
+
 #define SCP_IPI_NS_SERVICE 0xFF
 
 /*
