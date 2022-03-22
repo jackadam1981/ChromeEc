@@ -20,6 +20,8 @@
 #define SCP_REG_BASE 0x70000000
 #endif
 
+#define SCP_GPR(x)			REG32_ADDR(SCP_REG_BASE + 0x40040)[x]
+
 /* clock control */
 #define SCP_CLK_CTRL_BASE (SCP_REG_BASE + 0x21000)
 /* system clock counter value */
@@ -147,6 +149,12 @@
 #define SCP_CORE0_MON_PC_LATCH REG32(SCP_REG_BASE + 0x300D0)
 #define SCP_CORE0_MON_LR_LATCH REG32(SCP_REG_BASE + 0x300D4)
 #define SCP_CORE0_MON_SP_LATCH REG32(SCP_REG_BASE + 0x300D8)
+
+/* General purpose register */
+#define SCP_CORE0_GPR_COUNT		8
+#define SCP_CORE0_GPR(x)		REG32_ADDR(SCP_REG_BASE + 0x30040)[x]
+#define   SCP_CORE0_INIT_DONE		BIT(0)
+#define   SCP_CORE1_INIT_DONE		BIT(1)
 
 /* INTC */
 #define SCP_INTC_WORD(irq) ((irq) >> 5) /* word length = 2^5 */
