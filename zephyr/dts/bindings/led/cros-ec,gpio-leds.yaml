@@ -1,0 +1,58 @@
+# Copyright 2022 The Chromium OS Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+description: GPIO LED configuration
+
+compatible: "cros-ec,gpio-leds"
+
+include: base.yaml
+
+properties:
+  gpios:
+    type: phandle-array
+    required: true
+    description: |
+      List of the GPIOs controlling the LEDs. GPIO_ACTIVE_LOW
+      can be used for open drain inverted driving of the signal.
+
+      For example
+        led1 {
+                compatible = "cros-ec,gpio-leds";
+
+                pwms = <&gpioc 3 GPIO_ACTIVE_LOW>,
+                       <&gpioc 4 GPIO_ACTIVE_LOW>;
+        };
+
+  color-list:
+    type: array
+    required: true
+    description: |
+      Maps the requested colors from the EC host command
+      to the appropriate GPIO channel. So,
+
+          color-list = <BLUE YELLOW>;
+
+      Would return the EC brightness array
+
+          [0, 0, 1, 1, 0, 0]
+
+child-binding:
+  description: Colors and actions bound to this handler.
+  properties:
+    colors:
+      type: array
+      required: true
+      description: |
+        A list of colors/duration, as sets of 8 bit values,
+        interpreted as (colors.. duration), where the number
+        of colors matches the number of GPIOs, and duration is
+        tenths of a second. The colors can be set as {0,1}
+        for off and on.  When more than one set is configured,
+        the color sets are cycled through, with the duration
+        providing the delay between changes.
+        For example
+
+          colors = <1 0 10>, <0 1 5>;
+
+        This cycles through blue (1 second) and yellow (1/2 second).
