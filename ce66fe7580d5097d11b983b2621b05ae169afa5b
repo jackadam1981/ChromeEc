@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b71f7d9c_a99b6cac",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-03-22T20:05:59Z",
+      "side": 1,
+      "message": "we\u0027re still bulk updating the FW branch. \u003dnone is preferred.",
+      "range": {
+        "startLine": 21,
+        "startChar": 7,
+        "endLine": 21,
+        "endChar": 28
+      },
+      "revId": "ce66fe7580d5097d11b983b2621b05ae169afa5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d9dfb85_76eb0992",
+        "filename": "board/taeko/fw_config.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-03-22T20:05:59Z",
+      "side": 1,
+      "message": "do we need to check board revision as well?\ni assume that on some later build, CBI will be write\nprotected and this is not a viable option?",
+      "range": {
+        "startLine": 30,
+        "startChar": 12,
+        "endLine": 30,
+        "endChar": 29
+      },
+      "revId": "ce66fe7580d5097d11b983b2621b05ae169afa5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
