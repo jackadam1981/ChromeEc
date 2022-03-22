@@ -54,4 +54,6 @@
 /* TODO: core/riscv-rv32i pollution */
 #define __ram_code
 
+#define CONFIG_CHIP_PRE_INIT
+
 #endif /* __CROS_EC_CONFIG_CHIP_H */
