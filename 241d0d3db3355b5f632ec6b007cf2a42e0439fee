@@ -16,6 +16,52 @@
       "message": "LGTM from a code quality perspective but this isn\u0027t a part of the codebase I\u0027m very familiar with so I\u0027ll let Keith take a look",
       "revId": "241d0d3db3355b5f632ec6b007cf2a42e0439fee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9640b26_92f5a017",
+        "filename": "zephyr/projects/intelrvp/mtlrvp/mtlrvpp_npcx/gpio.dts",
+        "patchSetId": 10
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-03-22T17:53:18Z",
+      "side": 1,
+      "message": "This flag is only valid for ITE chipsets.  For Nuvoton you configure the low-power pins using the `def-lvol-io-list`.\n\nFor example:\n```\n\tdef-lvol-io-list {\n\t\tcompatible \u003d \"nuvoton,npcx-lvolctrl-def\";\n\t\tlvol-io-pads \u003d \u003c\u0026lvol_iob4 \u0026lvol_iob5\u003e; /* I2C_SDA0 \u0026 SCL0 */\n\t};\n```",
+      "range": {
+        "startLine": 22,
+        "startChar": 35,
+        "endLine": 22,
+        "endChar": 51
+      },
+      "revId": "241d0d3db3355b5f632ec6b007cf2a42e0439fee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ed0533f_4b01a22a",
+        "filename": "zephyr/projects/intelrvp/mtlrvp/mtlrvpp_npcx/pwm.dts",
+        "patchSetId": 10
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-03-22T17:53:18Z",
+      "side": 1,
+      "message": "Is there a tachometer control for this fan?\n\nThe PWM fan support was recently updated so that you can specify the PWM channel and tachometer channel in the device tree.\n\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/66c4507e/zephyr/projects/intelrvp/adlrvp/adlrvp_npcx/fan.dts#",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 16
+      },
+      "revId": "241d0d3db3355b5f632ec6b007cf2a42e0439fee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
