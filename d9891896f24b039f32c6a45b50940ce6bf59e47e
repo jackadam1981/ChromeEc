@@ -70,6 +70,30 @@
       },
       "revId": "d9891896f24b039f32c6a45b50940ce6bf59e47e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c8713e0_0e85455a",
+        "filename": "driver/als_cm32183.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1262393
+      },
+      "writtenOn": "2022-03-22T14:08:33Z",
+      "side": 1,
+      "message": "We discussed it with vendor by mail. Send e-mail to you to confirm.",
+      "parentUuid": "6a0dcf65_5be95a2b",
+      "range": {
+        "startLine": 40,
+        "startChar": 2,
+        "endLine": 40,
+        "endChar": 22
+      },
+      "revId": "d9891896f24b039f32c6a45b50940ce6bf59e47e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
