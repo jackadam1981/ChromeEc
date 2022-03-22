@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "6411767b_142f9ed8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 14
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2022-03-22T18:36:54Z",
+      "side": 1,
+      "message": "You want the Branch and the Bug to both be b:222105950?",
+      "parentUuid": "fb600220_141cd644",
+      "range": {
+        "startLine": 9,
+        "startChar": 7,
+        "endLine": 9,
+        "endChar": 11
+      },
+      "revId": "5dc7bcd04638e5a9736be0c91ff53f9d704a994b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "6197b317_0cab0b81",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-03-22T16:53:35Z",
       "side": 1,
       "message": "You should describe the CONFIG_PLATFORM_EC_CBI_STORAGE_TYPE choice. This lets the user select an EEPROM as the source of CBI data, or GPIOs.\n\nWhen CONFIG_PLATFORM_EC_CBI_GPIO is selected, the CBI data is emulated and only the BOARD_VERSION and SKU_ID CBI fields are available.",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 0
+      },
+      "revId": "5dc7bcd04638e5a9736be0c91ff53f9d704a994b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "effc628b_287a420a",
+        "filename": "docs/zephyr/zephyr_cbi.md",
+        "patchSetId": 14
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2022-03-22T18:36:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b6a7f889_d253bdad",
       "range": {
         "startLine": 33,
         "startChar": 0,
