@@ -39,6 +39,13 @@ struct mpu_entry mpu_entries[NR_MPU_ENTRIES] = {
 
 #include "gpio_list.h"
 
+#ifdef CHIP_VARIANT_MT8195
+static void core0_boot_done(void)
+{
+	SCP_CORE0_GPR(0) = SCP_CORE0_INIT_DONE;
+}
+#endif
+
 #ifdef CONFIG_PANIC_CONSOLE_OUTPUT
 static void report_previous_panic(void)
 {
@@ -59,5 +66,16 @@ static void report_previous_panic(void)
 		SCP_CORE0_MON_SP_LATCH);
 
 }
-DECLARE_HOOK(HOOK_INIT, report_previous_panic, HOOK_PRIO_DEFAULT);
 #endif
+
+static void scp_init_hook(void)
+{
+#ifdef CONFIG_PANIC_CONSOLE_OUTPUT
+	report_previous_panic();
+#endif
+
+#ifdef CHIP_VARIANT_MT8195
+	core0_boot_done();
+#endif
+}
+DECLARE_HOOK(HOOK_INIT, scp_init_hook, HOOK_PRIO_DEFAULT);
