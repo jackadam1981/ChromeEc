@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49a3b68d_a9d987dc",
+        "filename": "power/cometlake-discrete.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-03-22T23:20:16Z",
+      "side": 1,
+      "message": "intel_x86.c already calls `HOOK_CHIPSET_SUSPEND_COMPLETE` on transition to S0ix and `HOOK_CHIPSET_RESUME_INIT` when going back to S0, so I don\u0027t think this is necessary: the board code can simply hook those.",
+      "revId": "4481408005a325a7246cefe15d305eb1975c8fac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
