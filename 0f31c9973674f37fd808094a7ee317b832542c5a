@@ -1,6 +1,109 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c434a737_87d04f7f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-03-22T21:59:21Z",
+      "side": 1,
+      "message": "few nits so that MECC vendors can refer it and design their MECC",
+      "revId": "0f31c9973674f37fd808094a7ee317b832542c5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b9ea658c_981c2fa7",
+        "filename": "zephyr/projects/intelrvp/mtlrvp/mtlrvpp_npcx/gpio.dts",
+        "patchSetId": 11
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-03-22T21:59:21Z",
+      "side": 1,
+      "message": "/* 1.8V */",
+      "range": {
+        "startLine": 27,
+        "startChar": 34,
+        "endLine": 27,
+        "endChar": 35
+      },
+      "revId": "0f31c9973674f37fd808094a7ee317b832542c5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74548529_9ebe26e0",
+        "filename": "zephyr/projects/intelrvp/mtlrvp/mtlrvpp_npcx/gpio.dts",
+        "patchSetId": 11
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-03-22T21:59:21Z",
+      "side": 1,
+      "message": "/* 1.8V */",
+      "revId": "0f31c9973674f37fd808094a7ee317b832542c5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d76ccabb_f274a2a9",
+        "filename": "zephyr/projects/intelrvp/mtlrvp/mtlrvpp_npcx/gpio.dts",
+        "patchSetId": 11
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-03-22T21:59:21Z",
+      "side": 1,
+      "message": "add these to def-lvol-io-list",
+      "range": {
+        "startLine": 164,
+        "startChar": 1,
+        "endLine": 187,
+        "endChar": 4
+      },
+      "revId": "0f31c9973674f37fd808094a7ee317b832542c5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7683f426_3b80bc94",
+        "filename": "zephyr/projects/intelrvp/mtlrvp/mtlrvpp_npcx/gpio.dts",
+        "patchSetId": 11
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-03-22T21:59:21Z",
+      "side": 1,
+      "message": "def-lvol-io-list",
+      "range": {
+        "startLine": 197,
+        "startChar": 2,
+        "endLine": 199,
+        "endChar": 4
+      },
+      "revId": "0f31c9973674f37fd808094a7ee317b832542c5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "59e4a60f_456e3c6f",
