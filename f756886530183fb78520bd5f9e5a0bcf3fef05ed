@@ -1,0 +1,211 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c05d1cf_002065b9",
+        "filename": "util/fptool_unitest.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 541,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-03-22T20:14:54Z",
+      "side": 1,
+      "message": "This isn\u0027t necessary, since `self.assertRaises` will check the type: https://docs.python.org/3.6/library/unittest.html#unittest.TestCase.assertRaises",
+      "range": {
+        "startLine": 541,
+        "startChar": 12,
+        "endLine": 541,
+        "endChar": 62
+      },
+      "revId": "f756886530183fb78520bd5f9e5a0bcf3fef05ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57fbc4f9_dddaae74",
+        "filename": "util/fptool_unitest.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 564,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-03-22T20:14:54Z",
+      "side": 1,
+      "message": "This isn\u0027t necessary, since `self.assertRaises` will check the type: https://docs.python.org/3.6/library/unittest.html#unittest.TestCase.assertRaises",
+      "range": {
+        "startLine": 564,
+        "startChar": 20,
+        "endLine": 564,
+        "endChar": 70
+      },
+      "revId": "f756886530183fb78520bd5f9e5a0bcf3fef05ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "945899f8_4949c76a",
+        "filename": "util/fptool_unitest.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 592,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-03-22T20:14:54Z",
+      "side": 1,
+      "message": "This isn\u0027t necessary, since `self.assertRaises` will check the type: https://docs.python.org/3.6/library/unittest.html#unittest.TestCase.assertRaises",
+      "range": {
+        "startLine": 592,
+        "startChar": 12,
+        "endLine": 592,
+        "endChar": 62
+      },
+      "revId": "f756886530183fb78520bd5f9e5a0bcf3fef05ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b5e5864_6478f363",
+        "filename": "util/fptool_unitest.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 603,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-03-22T20:14:54Z",
+      "side": 1,
+      "message": "This isn\u0027t necessary, since `self.assertRaises` will check the type: https://docs.python.org/3.6/library/unittest.html#unittest.TestCase.assertRaises",
+      "range": {
+        "startLine": 603,
+        "startChar": 12,
+        "endLine": 603,
+        "endChar": 62
+      },
+      "revId": "f756886530183fb78520bd5f9e5a0bcf3fef05ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b20e1969_34f2d25f",
+        "filename": "util/fptool_unitest.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 614,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-03-22T20:14:54Z",
+      "side": 1,
+      "message": "This isn\u0027t necessary, since `self.assertRaises` will check the type: https://docs.python.org/3.6/library/unittest.html#unittest.TestCase.assertRaises",
+      "range": {
+        "startLine": 614,
+        "startChar": 12,
+        "endLine": 614,
+        "endChar": 62
+      },
+      "revId": "f756886530183fb78520bd5f9e5a0bcf3fef05ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26b8a4d6_5814753a",
+        "filename": "util/fptool_unitest.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 625,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-03-22T20:14:54Z",
+      "side": 1,
+      "message": "This isn\u0027t necessary, since `self.assertRaises` will check the type: https://docs.python.org/3.6/library/unittest.html#unittest.TestCase.assertRaises",
+      "range": {
+        "startLine": 625,
+        "startChar": 12,
+        "endLine": 625,
+        "endChar": 62
+      },
+      "revId": "f756886530183fb78520bd5f9e5a0bcf3fef05ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5e4400b_9d01c65b",
+        "filename": "util/fptool_unitest.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 636,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-03-22T20:14:54Z",
+      "side": 1,
+      "message": "This isn\u0027t necessary, since `self.assertRaises` will check the type: https://docs.python.org/3.6/library/unittest.html#unittest.TestCase.assertRaises",
+      "range": {
+        "startLine": 636,
+        "startChar": 12,
+        "endLine": 636,
+        "endChar": 62
+      },
+      "revId": "f756886530183fb78520bd5f9e5a0bcf3fef05ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7bc1bfe8_d1e792dc",
+        "filename": "util/fptool_unitest.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 651,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-03-22T20:14:54Z",
+      "side": 1,
+      "message": "From what I understand, this should not be throwing any exceptions. In that case, you can simplify with:\n\n```\n            rst_l \u003d gpio._get_gpio_by_name(_GPIO_BASES, \u0027FP_RST_L\u0027,\n                                           has_to_exist\u003dFalse)\n            mock_gpiofind.assert_called_once_with(\u0027FP_RST_L\u0027)\n            self.assertEqual(rst_l, fptool.constantValues.UNUSED_GPIO)\n```",
+      "range": {
+        "startLine": 645,
+        "startChar": 0,
+        "endLine": 651,
+        "endChar": 74
+      },
+      "revId": "f756886530183fb78520bd5f9e5a0bcf3fef05ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4fd29778_1c03bb84",
+        "filename": "util/fptool_unitest.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 653,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-03-22T20:14:54Z",
+      "side": 1,
+      "message": "Can you add `success` to the name to indicate this is a successful test case: `test_get_gpio_by_name_success`?",
+      "range": {
+        "startLine": 653,
+        "startChar": 8,
+        "endLine": 653,
+        "endChar": 29
+      },
+      "revId": "f756886530183fb78520bd5f9e5a0bcf3fef05ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
