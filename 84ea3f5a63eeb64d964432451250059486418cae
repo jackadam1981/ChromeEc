@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "abef2adf_692bd896",
+        "filename": "board/kinox/adc.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2022-03-22T07:23:10Z",
+      "side": 1,
+      "message": "What is the starting time for this 220ms? Is it starting from the power to the device or anything gpio status?",
+      "range": {
+        "startLine": 219,
+        "startChar": 5,
+        "endLine": 219,
+        "endChar": 17
+      },
+      "revId": "84ea3f5a63eeb64d964432451250059486418cae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89539536_7d05b2ee",
+        "filename": "board/kinox/adc.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2022-03-22T07:23:10Z",
+      "side": 1,
+      "message": "It would be better to clarify the starting point point of the 220ms. Do you measure the signal to check if this can meet the 220ms?",
+      "range": {
+        "startLine": 280,
+        "startChar": 43,
+        "endLine": 280,
+        "endChar": 46
+      },
+      "revId": "84ea3f5a63eeb64d964432451250059486418cae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52afa211_ba71fa7b",
+        "filename": "board/kinox/board.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2022-03-22T07:23:10Z",
+      "side": 1,
+      "message": "Do you need to expose this api? If not, please put it to the .c file with static",
+      "range": {
+        "startLine": 221,
+        "startChar": 0,
+        "endLine": 221,
+        "endChar": 34
+      },
+      "revId": "84ea3f5a63eeb64d964432451250059486418cae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "248f3414_e34e4641",
+        "filename": "board/kinox/build.mk",
+        "patchSetId": 9
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2022-03-22T07:23:10Z",
+      "side": 1,
+      "message": "Will it be better to change the name adc.o to power_detection.o?",
+      "range": {
+        "startLine": 16,
+        "startChar": 9,
+        "endLine": 16,
+        "endChar": 14
+      },
+      "revId": "84ea3f5a63eeb64d964432451250059486418cae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
