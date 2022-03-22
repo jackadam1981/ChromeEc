@@ -1,0 +1,64 @@
+# Copyright 2022 The Chromium OS Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+description: Multi-PWM LED configuration
+
+compatible: "cros-ec,multi-pwm-leds"
+
+include: base.yaml
+
+properties:
+  pwms:
+    type: phandle-array
+    required: true
+    description: |
+      List of the PWMs attached to the LEDs, up to 3 PWM devices.
+      The duration is used when multiple colors are specified
+      in a list, and indicates the duration the color is set for.
+
+      For example
+        led1 {
+                compatible = "cros-ec,multi-pwm-leds";
+
+                pwms = <&pwm1 0 PWM_POLARITY_INVERTED>,
+                       <&pwm0 0 PWM_POLARITY_INVERTED>,
+                       <&pwm2 0 PWM_POLARITY_INVERTED>;
+        };
+
+  frequency:
+    type: int
+    required: true
+    description: |
+      PWM frequency in Hz for LEDs.
+
+  color-list:
+    type: array
+    required: true
+    description: |
+      Maps the requested colors from the EC host command
+      to the appropriate PWM channel. So,
+
+          color-list = <RED GREEN BLUE>;
+
+      Would return the EC brightness array
+
+          [255, 255, 255, 0, 0, 0]
+
+child-binding:
+  description: Colors and actions bound to this handler.
+  properties:
+    colors:
+      type: array
+      required: true
+      description: |
+        A list of colors/duration, as sets of four 8 bit values,
+        interpreted as (R G B duration), where duration is
+        tenths of a second. When more than one set is configured,
+        the color sets are cycled through, with the duration
+        providing the delay between changes.
+        For example
+
+          colors = <100 0 0 10>, <0 100 0 5>;
+
+        This cycles through red (1 second) and green (1/2 second).
