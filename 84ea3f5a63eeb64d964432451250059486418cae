@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "015c10c5_f0d29015",
+        "filename": "board/kinox/adc.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1286280
+      },
+      "writtenOn": "2022-03-22T10:04:51Z",
+      "side": 1,
+      "message": "This 220ms value is from b:211806236#comment1 attach file \"Tiny + TIO working table 1202(1).xlsx\" \"Tiny + TIO working sheet\".\nAnd 220ms is count after EC ON.",
+      "parentUuid": "abef2adf_692bd896",
+      "range": {
+        "startLine": 219,
+        "startChar": 5,
+        "endLine": 219,
+        "endChar": 17
+      },
+      "revId": "84ea3f5a63eeb64d964432451250059486418cae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "89539536_7d05b2ee",
         "filename": "board/kinox/adc.c",
         "patchSetId": 9
@@ -37,6 +61,30 @@
       "writtenOn": "2022-03-22T07:23:10Z",
       "side": 1,
       "message": "It would be better to clarify the starting point point of the 220ms. Do you measure the signal to check if this can meet the 220ms?",
+      "range": {
+        "startLine": 280,
+        "startChar": 43,
+        "endLine": 280,
+        "endChar": 46
+      },
+      "revId": "84ea3f5a63eeb64d964432451250059486418cae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ca2cbf3_f60daab0",
+        "filename": "board/kinox/adc.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1286280
+      },
+      "writtenOn": "2022-03-22T10:04:51Z",
+      "side": 1,
+      "message": "According to Compal PWR and EE talk before.\nThe 220ms is SIO\u0027s VBS ON + DCIN_OK.\nThe EC NPCX993FA0BX VSB \u003d PP3300_Z1.\nWhen adapter plug in then the PP3300_Z1 ON only needs few ms.\nAnd EC juest needs get one data in 400ms after 220ms other one after 220ms+400ms.",
+      "parentUuid": "89539536_7d05b2ee",
       "range": {
         "startLine": 280,
         "startChar": 43,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "83476171_8bd27ede",
+        "filename": "board/kinox/board.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1286280
+      },
+      "writtenOn": "2022-03-22T10:04:51Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "52afa211_ba71fa7b",
+      "range": {
+        "startLine": 221,
+        "startChar": 0,
+        "endLine": 221,
+        "endChar": 34
+      },
+      "revId": "84ea3f5a63eeb64d964432451250059486418cae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "248f3414_e34e4641",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-03-22T07:23:10Z",
       "side": 1,
       "message": "Will it be better to change the name adc.o to power_detection.o?",
+      "range": {
+        "startLine": 16,
+        "startChar": 9,
+        "endLine": 16,
+        "endChar": 14
+      },
+      "revId": "84ea3f5a63eeb64d964432451250059486418cae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "286fbc09_182bf432",
+        "filename": "board/kinox/build.mk",
+        "patchSetId": 9
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1286280
+      },
+      "writtenOn": "2022-03-22T10:04:51Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "248f3414_e34e4641",
       "range": {
         "startLine": 16,
         "startChar": 9,
