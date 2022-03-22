@@ -1,0 +1,66 @@
+# Copyright 2022 The Chromium OS Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+description: LED inputs and triggers, used to drive LED actions
+
+compatible: "cros-ec,led-policy"
+
+include: base.yaml
+
+properties:
+  led:
+    type: phandle
+    required: true
+    description: |
+      Reference to the node lable of the LED to use
+      for this policy.
+      The inputs are checked in order and the first
+      matching one is used.
+
+child-binding:
+  description: Input to check for match.
+  properties:
+    cpu:
+      type: string
+      required: false
+      default: "ANY"
+      description: |
+        The AP state to check. ANY will match any state.
+        This must be the same as enum led_ap_state.
+      enum:
+        - ANY
+        - SUSPENDED
+        - RUNNING
+        - POWER_OFF
+    charger:
+      type: string
+      required: false
+      default: "ANY"
+      description: |
+        The charger state to match. ANY will match
+        any charger state.
+        This must be the same as enum led_charger_state.
+      enum:
+        - ANY
+        - FULL
+        - CHARGING
+        - DISCHARGING
+        - IDLE
+        - ERROR
+    battery:
+      type: array
+      required: false
+      default: [0, 100]
+      description: |
+        Battery charge to match, as a percentage between 0 and 100.
+        The current battery chrge is compared as
+
+          if (charge >= battery[0] && charge <= battery[1])
+                match...
+    action:
+      type: phandle
+      required: true
+      description: |
+        Reference to the LED action, a child node of the LED driver
+        configuration that defines the actual LED behaviour.
