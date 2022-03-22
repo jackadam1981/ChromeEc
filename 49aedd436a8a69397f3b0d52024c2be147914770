@@ -93,6 +93,30 @@
       },
       "revId": "49aedd436a8a69397f3b0d52024c2be147914770",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4cb87d5e_ac9de056",
+        "filename": "util/fptool.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-03-22T19:00:04Z",
+      "side": 1,
+      "message": "I added a comment [in the other CL](https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3405640/comments/e88adacb_4766fc52).\n\nIt sounds like the code would be a lot simpler if we used the `gpiodetect` and `gpiofind` APIs. Since the majority of devices run kernels that support those APIs (and all new devices will), how about we use those APIs by default and hardcode the GPIOs for the older devices (`ekko`, `nami`, and `nocturne`).\n\n\u003e the assumption that every gpio is assigned a name, which is a false assumption.\n\nIs the issue that we\u0027re missing names for some of the GPIOs that we care about? If so, we should file a bug and/or prepare a patch to add names.\n\nAnother suggestion: The changes to switch to may take a while, especially if kernel changes are involved. If you rebase your changes so that all of the GPIO-related things come after the rest of the commits, we can go ahead and land the other commits, while these are in progress. (i.e., the first step is converting `flash_fp_mcu` as it exists today with hardcoded GPIOs and the next step is adding the `gpiofind`/`gpiodetect` logic.)",
+      "parentUuid": "22ea7f5b_14f4d5d0",
+      "range": {
+        "startLine": 89,
+        "startChar": 0,
+        "endLine": 93,
+        "endChar": 29
+      },
+      "revId": "49aedd436a8a69397f3b0d52024c2be147914770",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
