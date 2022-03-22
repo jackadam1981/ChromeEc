@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb600220_141cd644",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 14
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-03-22T16:53:35Z",
+      "side": 1,
+      "message": "b:222105950",
+      "range": {
+        "startLine": 9,
+        "startChar": 7,
+        "endLine": 9,
+        "endChar": 11
+      },
+      "revId": "5dc7bcd04638e5a9736be0c91ff53f9d704a994b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6197b317_0cab0b81",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-03-22T16:53:35Z",
+      "side": 1,
+      "message": "This is getting pretty close. Thanks.\nI\u0027ve also opened b:226143500 to move all the CBI Kconfigs into their own file.",
+      "revId": "5dc7bcd04638e5a9736be0c91ff53f9d704a994b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6a7f889_d253bdad",
+        "filename": "docs/zephyr/zephyr_cbi.md",
+        "patchSetId": 14
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-03-22T16:53:35Z",
+      "side": 1,
+      "message": "You should describe the CONFIG_PLATFORM_EC_CBI_STORAGE_TYPE choice. This lets the user select an EEPROM as the source of CBI data, or GPIOs.\n\nWhen CONFIG_PLATFORM_EC_CBI_GPIO is selected, the CBI data is emulated and only the BOARD_VERSION and SKU_ID CBI fields are available.",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 0
+      },
+      "revId": "5dc7bcd04638e5a9736be0c91ff53f9d704a994b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
