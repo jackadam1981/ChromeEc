@@ -1,0 +1,81 @@
+/* Copyright 2022 The Chromium OS Authors. All rights reserved.
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+/ {
+	/*
+	 * Mapping of inputs to LED actions
+	 */
+	led-policy {
+		compatible = "cros-ec,led-policy";
+
+		led = <&leds>;
+
+		low-battery {
+			battery = <0 10>;
+			action = <&red_flash>;
+		};
+		run-on-battery {
+			cpu = "RUNNING";
+			charger = "DISCHARGING";
+			action = <&blue>;
+		};
+		run-charging {
+			cpu = "RUNNING";
+			charger = "CHARGING";
+			action = <&cycle>;
+		};
+		run-full {
+			cpu = "RUNNING";
+			charger = "FULL";
+			action = <&white>;
+		};
+		run {
+			cpu = "RUNNING";
+			action = <&green>;
+		};
+		suspend {
+			cpu = "SUSPENDED";
+			action = <&red>;
+		};
+		off {
+			cpu = "POWER_OFF";
+			action = <&red_flash>;
+		};
+		default {
+			action = <&cycle>;
+		};
+	};
+};
+
+&leds {
+	label = "EC_LED_ID_BATTERY_LED";
+	/*
+	 * LED colours and actions
+	 * Values are R G B Duration.
+	 * Duration is in tenths of a second.
+	 */
+	red_flash: red-flash {
+		colors = <100 0 0 10>,
+			 <0 0 0 10>;
+	};
+	red: red {
+		colors = <100 0 0 0>;
+	};
+	green: green {
+		colors = <0 100 0 0>;
+	};
+	blue: blue {
+		colors = <0 0 100 0>;
+	};
+	white: white {
+		colors = <100 100 100 0>;
+	};
+	cycle: cycle {
+		colors = <100 0 0 10>,
+			 <0 100 0 5>,
+			 <0 100 100 10>,
+			 <100 100 100 20>;
+	};
+};
