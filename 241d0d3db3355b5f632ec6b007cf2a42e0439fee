@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a4f9fc08_a8773b82",
+        "filename": "zephyr/projects/intelrvp/mtlrvp/mtlrvpp_npcx/gpio.dts",
+        "patchSetId": 10
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2022-03-22T19:00:30Z",
+      "side": 1,
+      "message": "updated to use the correct 1.8 V method",
+      "parentUuid": "d9640b26_92f5a017",
+      "range": {
+        "startLine": 22,
+        "startChar": 35,
+        "endLine": 22,
+        "endChar": 51
+      },
+      "revId": "241d0d3db3355b5f632ec6b007cf2a42e0439fee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3ed0533f_4b01a22a",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-03-22T17:53:18Z",
       "side": 1,
       "message": "Is there a tachometer control for this fan?\n\nThe PWM fan support was recently updated so that you can specify the PWM channel and tachometer channel in the device tree.\n\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/66c4507e/zephyr/projects/intelrvp/adlrvp/adlrvp_npcx/fan.dts#",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 16
+      },
+      "revId": "241d0d3db3355b5f632ec6b007cf2a42e0439fee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd4a0495_51458001",
+        "filename": "zephyr/projects/intelrvp/mtlrvp/mtlrvpp_npcx/pwm.dts",
+        "patchSetId": 10
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2022-03-22T19:00:30Z",
+      "side": 1,
+      "message": "updated to use the fan tach driver",
+      "parentUuid": "3ed0533f_4b01a22a",
       "range": {
         "startLine": 10,
         "startChar": 0,
