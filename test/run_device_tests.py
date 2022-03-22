@@ -67,6 +67,11 @@ SERVO_MICRO = 'servo_micro'
 GCC = 'gcc'
 CLANG = 'clang'
 
+TEST_ASSETS_BUCKET = 'gs://chromiumos-test-assets-public/tast/cros/firmware'
+DARTMONKEY_IMAGE_PATH = os.path.join(
+    TEST_ASSETS_BUCKET, 'dartmonkey_v2.0.2887-311310808_20201214.bin')
+BLOONCHIPPER_IMAGE_PATH = os.path.join(
+    TEST_ASSETS_BUCKET, 'bloonchipper_v2.0.4277-9f652bb3_20210401.bin')
 
 class ImageType(Enum):
     """EC Image type to use for the test."""
@@ -78,13 +83,15 @@ class BoardConfig:
     """Board-specific configuration."""
 
     def __init__(self, name, servo_uart_name, servo_power_enable,
-                 rollback_region0_regex, rollback_region1_regex, mpu_regex):
+                 rollback_region0_regex, rollback_region1_regex, mpu_regex,
+                 ro_image):
         self.name = name
         self.servo_uart_name = servo_uart_name
         self.servo_power_enable = servo_power_enable
         self.rollback_region0_regex = rollback_region0_regex
         self.rollback_region1_regex = rollback_region1_regex
         self.mpu_regex = mpu_regex
+        self.ro_image = ro_image
 
 
 class TestConfig:
@@ -161,6 +168,11 @@ class AllTests:
                            finish_regexes=[board_config.mpu_regex]),
             'mutex':
                 TestConfig(name='mutex'),
+            'panic_data':
+                TestConfig(name='panic_data',
+                           fail_regexes=[SINGLE_CHECK_FAILED_REGEX,
+                                         ALL_TESTS_FAILED_REGEX],
+                           ro_image=board_config.ro_image),
             'pingpong':
                 TestConfig(name='pingpong'),
             'printf':
@@ -212,6 +224,7 @@ BLOONCHIPPER_CONFIG = BoardConfig(
     rollback_region0_regex=DATA_ACCESS_VIOLATION_8020000_REGEX,
     rollback_region1_regex=DATA_ACCESS_VIOLATION_8040000_REGEX,
     mpu_regex=DATA_ACCESS_VIOLATION_20000000_REGEX,
+    ro_image=BLOONCHIPPER_IMAGE_PATH,
 )
 
 DARTMONKEY_CONFIG = BoardConfig(
@@ -221,6 +234,7 @@ DARTMONKEY_CONFIG = BoardConfig(
     rollback_region0_regex=DATA_ACCESS_VIOLATION_80C0000_REGEX,
     rollback_region1_regex=DATA_ACCESS_VIOLATION_80E0000_REGEX,
     mpu_regex=DATA_ACCESS_VIOLATION_24000000_REGEX,
+    ro_image=DARTMONKEY_IMAGE_PATH,
 )
 
 BOARD_CONFIGS = {
