@@ -16,6 +16,24 @@
       "message": "So the state machine loop is very clean at the moment, and everything is done in the handlers, so it\u0027s easy to see what is happening, and I\u0027m wondering if adding intermediate handling in this loop is a good idea.\nMaybe an intermediate state like POWER_STATE_SxG3 used to enter G3, and the handler would do whatever is needed prior to entering G3, and then step to POWER_STATE_G3?\nThis would keep all the state handling in the state machine.",
       "revId": "c0cad772a1c3c08f8533ef4aa08c5ee0cc973ade",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e7e36705_9886ee32",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-03-22T07:31:45Z",
+      "side": 1,
+      "message": "Moved SHUTDOWN_COMPLETE to S4S5; HARD_OFF is in S5G3.",
+      "parentUuid": "f7c7d06b_7aeaefed",
+      "revId": "c0cad772a1c3c08f8533ef4aa08c5ee0cc973ade",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
