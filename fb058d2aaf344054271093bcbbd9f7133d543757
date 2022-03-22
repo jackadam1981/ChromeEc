@@ -46,6 +46,30 @@
       },
       "revId": "fb058d2aaf344054271093bcbbd9f7133d543757",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bcc1c744_5ef646f2",
+        "filename": "util/fptool.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-03-22T18:49:48Z",
+      "side": 1,
+      "message": "\u003e Is it guaranteed that the script is used only in Linux versions \u003e 4.8?\n\nAny new devices that we ship should be using kernel versions \u003e 4.8. The older devices `nocturne`, `ekko`, and `bard` are using 4.4 IIRC. There is the \"kernelnext\" work, which may uprev them in the future though. Can you check with contacts listed on http://go/cros-uprev-roadshow-2022 to see what the plan is?\n\n\u003e In addition, I did not find a gpiod API that allows to leave the gpio in a known state once the process is terminated.\n\nThere should be a way to catch the exit in Python and run any arbitrary code (such as setting GPIO to a specific state). Is that what you mean or something else?",
+      "parentUuid": "b373533d_58aabae8",
+      "range": {
+        "startLine": 101,
+        "startChar": 0,
+        "endLine": 118,
+        "endChar": 70
+      },
+      "revId": "fb058d2aaf344054271093bcbbd9f7133d543757",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
