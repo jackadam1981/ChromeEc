@@ -165,7 +165,10 @@ extern "C" {
 /* 0x94 - 0x99: 1st Accelerometer */
 /* 0x9a - 0x9f: 2nd Accelerometer */
 #define EC_MEMMAP_GYRO_DATA        0xa0 /* Gyroscope data 0xa0 - 0xa5 */
-/* Unused 0xa6 - 0xdf */
+/* Power Participant related components */
+#define EC_MEMMAP_PWR_SRC          0xa6 /* Power source (8-bit) */
+/* To Add others */
+/* Unused 0xa7 - 0xdf */
 
 /*
  * ACPI is unable to access memory mapped data at or above this offset due to
