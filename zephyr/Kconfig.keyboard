@@ -132,16 +132,6 @@ config PLATFORM_EC_KEYBOARD_SCAN_ADC
 	  connected to adc channels to identify key presses by reading adc
 	  voltage.
 
-config PLATFORM_EC_VOLUME_BUTTONS
-	bool "Board has volume-up and volume-down buttons"
-	help
-	  Enable this if the board has physical buttons for the volume controls.
-	  These are buttons controlled by GPIOs and are not part of the keyboard
-	  matrix.
-
-	  Your board must define GPIO_VOLUME_UP_L and GPIO_VOLUME_DOWN_L in
-	  gpio_map.h
-
 config PLATFORM_EC_BUTTONS_RUNTIME_CONFIG
 	bool "Enable buttons runtime configuration"
 	help
@@ -252,3 +242,13 @@ config PLATFORM_EC_LED_DRIVER_AW20198
 	  Enable driver for AW20198 LED controller.
 
 endif # PLATFORM_EC_RGB_KEYBOARD
+
+config PLATFORM_EC_VOLUME_BUTTONS
+	bool "Board has volume-up and volume-down buttons"
+	help
+	  Enable this if the board has physical buttons for the volume controls.
+	  These are buttons controlled by GPIOs and are not part of the keyboard
+	  matrix.
+
+	  Your board must define GPIO_VOLUME_UP_L and GPIO_VOLUME_DOWN_L in
+	  gpio_map.h
