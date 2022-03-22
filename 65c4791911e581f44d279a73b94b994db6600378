@@ -1,5 +1,29 @@
 {
-  "comments": [],
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "daea29b4_4ef0b649",
+        "filename": "zephyr/projects/herobrine/src/villager/gpio.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-03-22T20:06:44Z",
+      "side": 1,
+      "message": "This file should be under  \nzephyr/projects/herobrine/ and rename it to gpio_villager.dts.",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 2
+      },
+      "revId": "65c4791911e581f44d279a73b94b994db6600378",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ],
   "submitRequirementResults": [
     {
       "submitRequirement": {
