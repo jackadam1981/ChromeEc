@@ -16,6 +16,24 @@
       "message": "How much RAM does this actually save? We use the logging subsystem in board code and in AP power sequencing, so I don\u0027t think we want to turn this off unless that logging still works somehow?",
       "revId": "42d999f9d42c3875386354b6fead89e1768eae16",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70134c52_57bb1c19",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-03-22T22:40:00Z",
+      "side": 1,
+      "message": "It\u0027s significant, I\u0027m getting 54956 B vs 57244 B with logging so more than 2kB. Haven\u0027t looked into where that space goes but stack plus buffer plus strdup buffers... I would suggest converting the prints you really want to CPRINT, we should rethink what to do with logging separately. The default async logging is cool but may not be for us, but we may consider syncronous or dictionary logging, or even a custom backend.",
+      "parentUuid": "ce37e44c_7d1c1c0f",
+      "revId": "42d999f9d42c3875386354b6fead89e1768eae16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
