@@ -22,6 +22,30 @@
       },
       "revId": "8f235006b679577c325b1c5adb0fc840bf09df61",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8d84e7c_1711146c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1286280
+      },
+      "writtenOn": "2022-03-22T10:52:21Z",
+      "side": 1,
+      "message": "New fw_config dp_display at https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3541802",
+      "parentUuid": "0ee3a496_2909e461",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 21
+      },
+      "revId": "8f235006b679577c325b1c5adb0fc840bf09df61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
