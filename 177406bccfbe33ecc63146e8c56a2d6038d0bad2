@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5480ae39_80ab6752",
+        "filename": "util/fptool_unitest.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1528447
+      },
+      "writtenOn": "2022-03-22T00:59:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "46f1c3f1_c86f7bca",
+      "range": {
+        "startLine": 62,
+        "startChar": 8,
+        "endLine": 62,
+        "endChar": 76
+      },
+      "revId": "177406bccfbe33ecc63146e8c56a2d6038d0bad2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "962715f4_3e55932a",
@@ -70,6 +94,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a67d4d1c_fc71b894",
+        "filename": "util/fptool_unitest.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1528447
+      },
+      "writtenOn": "2022-03-22T00:59:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "962715f4_3e55932a",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 16
+      },
+      "revId": "177406bccfbe33ecc63146e8c56a2d6038d0bad2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "60ea6bd0_ba0cc4a7",
+        "filename": "util/fptool_unitest.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1528447
+      },
+      "writtenOn": "2022-03-22T00:59:31Z",
+      "side": 1,
+      "message": "It was a way to ensure no error was encountered.\nAs you pointed out, since it is a pass, removed.",
+      "parentUuid": "85e9c29d_747049c8",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 16
+      },
+      "revId": "177406bccfbe33ecc63146e8c56a2d6038d0bad2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4afce012_cef72055",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-03-14T21:59:54Z",
       "side": 1,
       "message": "Can you split this into two test cases similar to what you did in `GetUartDevNameTest`?\n\ne.g., `test_get_devid_no_modalias_spi` and `test_get_devid_no_modalias_uart`",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 93,
+        "endChar": 28
+      },
+      "revId": "177406bccfbe33ecc63146e8c56a2d6038d0bad2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "337cdc0d_79969b52",
+        "filename": "util/fptool_unitest.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1528447
+      },
+      "writtenOn": "2022-03-22T00:59:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4afce012_cef72055",
       "range": {
         "startLine": 82,
         "startChar": 0,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d7be18bc_1d96863a",
+        "filename": "util/fptool_unitest.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1528447
+      },
+      "writtenOn": "2022-03-22T00:59:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "68e23612_935d061f",
+      "range": {
+        "startLine": 98,
+        "startChar": 0,
+        "endLine": 121,
+        "endChar": 31
+      },
+      "revId": "177406bccfbe33ecc63146e8c56a2d6038d0bad2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c47f7100_a820bec2",
@@ -129,6 +249,24 @@
       "writtenOn": "2022-03-14T21:59:54Z",
       "side": 1,
       "message": "`PEP 8: E302 expected 2 blank lines, found 1`\n\nNot sure why `cros lint` isn\u0027t catching it",
+      "revId": "177406bccfbe33ecc63146e8c56a2d6038d0bad2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a4974cff_353e4006",
+        "filename": "util/fptool_unitest.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1528447
+      },
+      "writtenOn": "2022-03-22T00:59:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c47f7100_a820bec2",
       "revId": "177406bccfbe33ecc63146e8c56a2d6038d0bad2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
