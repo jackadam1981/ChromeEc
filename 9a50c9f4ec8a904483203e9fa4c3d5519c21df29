@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "269dd7b3_c54ee00d",
+        "filename": "zephyr/shim/src/hooks.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-03-22T11:24:18Z",
+      "side": 1,
+      "message": "Oh wow, seriously good job putting this together... one major thought though, do we need the dynamically generated sections at all? The hooks are stored in flash lexicographically and have the hook type in the name, so they are already grouped together by type.\n\nThinking: how about we keep them in a single section and find the first-last pointers in runtime? We\u0027d have to store the hook type in `struct zephyr_shim_hook_info`, which is free because of the structure alignment.\n\nThat would obviously add extra cost to `hook_notify` (or bring back some ram cost if we want to store the pointers), but the macro implementation would be significantly simpler.",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 0
+      },
+      "revId": "9a50c9f4ec8a904483203e9fa4c3d5519c21df29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
