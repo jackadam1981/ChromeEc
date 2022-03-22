@@ -22,6 +22,30 @@
       },
       "revId": "d9891896f24b039f32c6a45b50940ce6bf59e47e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "861b3eae_ecc51e48",
+        "filename": "driver/als_cm32183.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1262393
+      },
+      "writtenOn": "2022-03-22T10:50:31Z",
+      "side": 1,
+      "message": "Hi Zhuohao,\nPlease refer b/208721153#comment14 cm32183 SW working discussion. We discussed with vendor, the lux date read from command code 0x04 would be multiply 0.016 as real Lux value w/o lens.",
+      "parentUuid": "ee51e1dc_fbf1ebed",
+      "range": {
+        "startLine": 40,
+        "startChar": 2,
+        "endLine": 40,
+        "endChar": 22
+      },
+      "revId": "d9891896f24b039f32c6a45b50940ce6bf59e47e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
