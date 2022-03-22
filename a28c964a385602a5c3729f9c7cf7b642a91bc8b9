@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f598ca5f_ef59e6bf",
+        "filename": "board/kinox/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1259885
+      },
+      "writtenOn": "2022-03-22T06:23:13Z",
+      "side": 1,
+      "message": "When we first plug typec-c adp, we will get bj_active \u003d 1 (default gpio is low),\nand bj_requested \u003d 0 (we want type_c_port).\n\nIn this case, we will fit (1 !\u003d 0) and return EC_ERROR_INVAL.\n\nMaybe we can still get type-c power, but we won\u0027t able to disable barrel jack.\nThis may have some risk.",
+      "range": {
+        "startLine": 81,
+        "startChar": 2,
+        "endLine": 81,
+        "endChar": 32
+      },
+      "revId": "a28c964a385602a5c3729f9c7cf7b642a91bc8b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
