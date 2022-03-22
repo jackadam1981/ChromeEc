@@ -81,6 +81,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "301338e8_bd5c3333",
+        "filename": "zephyr/projects/intelrvp/mtlrvp/mtlrvpp_npcx/gpio.dts",
+        "patchSetId": 11
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-03-22T22:02:07Z",
+      "side": 1,
+      "message": "Done\nPls ignore, VSPI is on 1.8V",
+      "parentUuid": "d76ccabb_f274a2a9",
+      "range": {
+        "startLine": 164,
+        "startChar": 1,
+        "endLine": 187,
+        "endChar": 4
+      },
+      "revId": "0f31c9973674f37fd808094a7ee317b832542c5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7683f426_3b80bc94",
@@ -94,6 +118,30 @@
       "writtenOn": "2022-03-22T21:59:21Z",
       "side": 1,
       "message": "def-lvol-io-list",
+      "range": {
+        "startLine": 197,
+        "startChar": 2,
+        "endLine": 199,
+        "endChar": 4
+      },
+      "revId": "0f31c9973674f37fd808094a7ee317b832542c5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1b9a557_514f5256",
+        "filename": "zephyr/projects/intelrvp/mtlrvp/mtlrvpp_npcx/gpio.dts",
+        "patchSetId": 11
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-03-22T22:02:07Z",
+      "side": 1,
+      "message": "Done\nPls ignore, VSPI is on 1.8V",
+      "parentUuid": "7683f426_3b80bc94",
       "range": {
         "startLine": 197,
         "startChar": 2,
