@@ -3948,6 +3948,10 @@ static void pd_chipset_resume(void)
 					   PD_DRP_TOGGLE_ON,
 					   PD_EVENT_UPDATE_DUAL_ROLE
 					   | PD_EVENT_POWER_STATE_CHANGE);
+
+		pe_set_ado(i, (ADO_EXTENDED_ALERT_EVENT
+					| ADO_POWER_STATE_CHANGE));
+		pd_dpm_request(i, DPM_REQUEST_SEND_ALERT);
 	}
 
 	CPRINTS("PD:S3->S0");
@@ -3963,6 +3967,10 @@ static void pd_chipset_suspend(void)
 					   pd_get_drp_state_in_suspend(),
 					   PD_EVENT_UPDATE_DUAL_ROLE
 					   | PD_EVENT_POWER_STATE_CHANGE);
+
+		pe_set_ado(i, (ADO_EXTENDED_ALERT_EVENT
+					| ADO_POWER_STATE_CHANGE));
+		pd_dpm_request(i, DPM_REQUEST_SEND_ALERT);
 	}
 
 	CPRINTS("PD:S0->S3");
@@ -4020,6 +4028,10 @@ static void pd_chipset_startup(void)
 		 */
 		if (IS_ENABLED(CONFIG_USB_PE_SM))
 			pd_dpm_request(i, DPM_REQUEST_PORT_DISCOVERY);
+
+		pe_set_ado(i, (ADO_EXTENDED_ALERT_EVENT
+					| ADO_POWER_STATE_CHANGE));
+		pd_dpm_request(i, DPM_REQUEST_SEND_ALERT);
 	}
 
 	CPRINTS("PD:S5->S3");
@@ -4036,6 +4048,10 @@ static void pd_chipset_shutdown(void)
 					   PD_DRP_FORCE_SINK,
 					   PD_EVENT_UPDATE_DUAL_ROLE
 					   | PD_EVENT_POWER_STATE_CHANGE);
+
+		pe_set_ado(i, (ADO_EXTENDED_ALERT_EVENT
+					| ADO_POWER_STATE_CHANGE));
+		pd_dpm_request(i, DPM_REQUEST_SEND_ALERT);
 	}
 
 	CPRINTS("PD:S3->S5");

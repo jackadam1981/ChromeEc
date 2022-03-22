@@ -176,6 +176,15 @@ const char *pe_get_current_state(int port);
  */
 uint32_t pe_get_flags(int port);
 
+/**
+ * Sets the Alert Data Object (ADO) send with .
+ *
+ * @param port USB-C port number
+ * @param data - ADO data sent during alert messages
+ */
+void pe_set_ado(int port, uint32_t data);
+
+
 #ifdef TEST_BUILD
 /**
  * Clears all internal port data, as we would on a detach event
