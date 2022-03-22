@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "209dca3e_429c8cdd",
+        "filename": "board/kinox/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1286280
+      },
+      "writtenOn": "2022-03-22T11:52:55Z",
+      "side": 1,
+      "message": "From Compal PWR feedback, the Kinox doesn\u0027t support the adapter change at any time.",
+      "parentUuid": "e91bdfd7_6238db45",
+      "range": {
+        "startLine": 66,
+        "startChar": 1,
+        "endLine": 66,
+        "endChar": 48
+      },
+      "revId": "a28c964a385602a5c3729f9c7cf7b642a91bc8b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f598ca5f_ef59e6bf",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-03-22T06:23:13Z",
       "side": 1,
       "message": "When we first plug typec-c adp, we will get bj_active \u003d 1 (default gpio is low),\nand bj_requested \u003d 0 (we want type_c_port).\n\nIn this case, we will fit (1 !\u003d 0) and return EC_ERROR_INVAL.\n\nMaybe we can still get type-c power, but we won\u0027t able to disable barrel jack.\nThis may have some risk.",
+      "range": {
+        "startLine": 81,
+        "startChar": 2,
+        "endLine": 81,
+        "endChar": 32
+      },
+      "revId": "a28c964a385602a5c3729f9c7cf7b642a91bc8b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8dd9de2d_4b4bad3c",
+        "filename": "board/kinox/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1286280
+      },
+      "writtenOn": "2022-03-22T11:52:55Z",
+      "side": 1,
+      "message": "Yes, I think it has risks.\nBut Kinox doesn\u0027t need this code.\nBecause the Kinox doesn\u0027t support adapter change when EC is on.",
+      "parentUuid": "f598ca5f_ef59e6bf",
       "range": {
         "startLine": 81,
         "startChar": 2,
