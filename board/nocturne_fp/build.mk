@@ -52,3 +52,7 @@ test-list-y=\
        timer_dos \
        utils \
        utils_str \
+
+# Note that this variable includes the trailing "/"
+_cur_dir:=$(dir $(lastword $(MAKEFILE_LIST)))
+-include $(_cur_dir)../../private/board/nocturne_fp/build.mk
