@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce37e44c_7d1c1c0f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-03-22T22:27:18Z",
+      "side": 1,
+      "message": "How much RAM does this actually save? We use the logging subsystem in board code and in AP power sequencing, so I don\u0027t think we want to turn this off unless that logging still works somehow?",
+      "revId": "42d999f9d42c3875386354b6fead89e1768eae16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
