@@ -16,6 +16,24 @@
       "message": "CL:3462922 has include directory added, may be rebase once it lands",
       "revId": "b020ad47399aa346d657c8b80c471740674abdb5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "863b719e_1cf0b8be",
+        "filename": "zephyr/projects/intelrvp/mtlrvp/src/mtlrvp.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2022-03-23T19:19:25Z",
+      "side": 1,
+      "message": "That is the plan this patch is CQ depend on that one merging and I will update as that lands",
+      "parentUuid": "48e3e185_7f5dc01a",
+      "revId": "b020ad47399aa346d657c8b80c471740674abdb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
