@@ -1969,6 +1969,9 @@
 /* Enable fake shared memory buffer, which is used by emulators. */
 #undef CONFIG_FAKE_SHMEM
 
+/* Enable Power Participant Support for DTT(Dynamic Tuning Technology) */
+#undef CONFIG_DTT_POWER_STATUS
+
 /*****************************************************************************/
 /* Number of cooling fans. Undef if none. */
 #undef CONFIG_FANS
