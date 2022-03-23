@@ -16,6 +16,24 @@
       "message": "So I think we\u0027ve been adding initial host command tests like this to https://crsrc.org/o/src/platform/ec/zephyr/test/drivers/src/espi.c, is that not a general rule?",
       "revId": "06768820f6b6f74286b23afbb18f81810dd12b43",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c4fcd19_7f2470fc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-03-23T17:00:02Z",
+      "side": 1,
+      "message": "The point of this cl was to add a test for common/vboot_hash.c, so putting it in a file named vboot_hash.c would be the logical place for someone to look if they are trying to find the existing tests for that file.",
+      "parentUuid": "6bba761e_c0ef5bd4",
+      "revId": "06768820f6b6f74286b23afbb18f81810dd12b43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
