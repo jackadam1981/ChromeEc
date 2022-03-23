@@ -2503,6 +2503,11 @@ extern struct jump_data mock_jump_data;
 #define CONFIG_POWER_COMMON
 #endif
 
+#undef CONFIG_DTT_POWER_STATUS
+#ifdef CONFIG_PLATFORM_EC_DTT_POWER_STATUS
+#define CONFIG_DTT_POWER_STATUS
+#endif
+
 #undef CONFIG_PORT80_4_BYTE
 #ifdef CONFIG_PLATFORM_EC_PORT80_4_BYTE
 #define CONFIG_PORT80_4_BYTE
