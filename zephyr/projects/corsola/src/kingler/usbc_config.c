@@ -207,7 +207,7 @@ __override int board_rt1718s_init(int port)
 	return EC_SUCCESS;
 }
 
-__override int board_pd_set_frs_enable(int port, int enable)
+__override int board_rt1718s_set_frs_enable(int port, int enable)
 {
 	if (port == USBC_PORT_C1)
 		/*
