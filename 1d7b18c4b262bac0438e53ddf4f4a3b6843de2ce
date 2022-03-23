@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61e6a7c4_cb5579f1",
+        "filename": "zephyr/shim/chip/mchp/clock.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2022-03-23T23:21:21Z",
+      "side": 1,
+      "message": "Should this include be part of this CL?",
+      "range": {
+        "startLine": 15,
+        "startChar": 10,
+        "endLine": 15,
+        "endChar": 19
+      },
+      "revId": "1d7b18c4b262bac0438e53ddf4f4a3b6843de2ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06fdcdc2_2b52b149",
+        "filename": "zephyr/shim/chip/mchp/clock.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2022-03-23T23:21:21Z",
+      "side": 1,
+      "message": "Will you add other module_ids later?",
+      "range": {
+        "startLine": 71,
+        "startChar": 5,
+        "endLine": 71,
+        "endChar": 30
+      },
+      "revId": "1d7b18c4b262bac0438e53ddf4f4a3b6843de2ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
