@@ -49,6 +49,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ee7ae98e_43564ab4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-03-23T22:28:06Z",
+      "side": 1,
+      "message": "I think so. We don\u0027t hide the fact that there are some things that are kept internal. [Example](https://chromium.googlesource.com/chromiumos/docs/+/HEAD/developer_guide.md#get-the-source-code) and [Example](https://www.chromium.org/chromium-os/developer-guide/gerrit-guide/#googlers-partners-to-get-access-to-the-internal-chrome-gerrit-instance).\n\nHowever, to make it sound a little nicer, we could remove the highlighted sentence. I don\u0027t think it adds much, since the next sentence makes it clear how private tests work.",
+      "parentUuid": "fe0d9cd5_9006de5e",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 53
+      },
+      "revId": "0d4d726099a2b426813ac6a10447c479326830d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fac1a4b3_61c4f306",
         "filename": "test/run_device_tests.py",
         "patchSetId": 1
