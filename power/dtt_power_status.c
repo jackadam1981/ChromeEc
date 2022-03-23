@@ -10,6 +10,7 @@
 #include "charge_state.h"
 #include "chipset.h"
 #include "console.h"
+#include "dptf.h"
 #include "ec_commands.h"
 #include "extpower.h"
 #include "hooks.h"
@@ -24,6 +25,9 @@
 
 /* pd_state_sequence number */
 #define PD_STATE_SEQUENCE_MAX 16
+
+/* pd_sequence corresponds to bit[0:3] in PSRC */
+#define PD_SEQUENCE_MASK	0xF0
 
 /* Current system power source */
 static enum system_power_source current_power_source = POWER_SOURCE_UNKNOWN;
@@ -150,3 +154,33 @@ static void power_status_init(void)
 	update_power_source();
 }
 DECLARE_HOOK(HOOK_INIT, power_status_init, HOOK_PRIO_LAST);
+
+/*
+ * Function to retrieve the pd sequence
+ */
+static int get_cached_pd_sequence(void)
+{
+	int cached_pd_sequence;
+	uint8_t *memmap_psrc = host_get_memmap(EC_MEMMAP_PWR_SRC);
+
+	cached_pd_sequence = (((*memmap_psrc) & PD_SEQUENCE_MASK) >> 4);
+
+	return cached_pd_sequence;
+}
+
+/*
+ * Function to handle power boss policy
+ */
+void dptf_handle_pbok(int pbok_sequence)
+{
+	/*
+	 * Deassert PROCHOT, only if sequence number received
+	 * from AP matches to the cached value at EC.
+	 */
+	if (pbok_sequence == get_cached_pd_sequence()) {
+
+		hook_call_deferred(&deassert_prochot_data, 0);
+
+		CPRINTS("Power Boss Policy OK! PROCHOT Deasserted!");
+	}
+}
