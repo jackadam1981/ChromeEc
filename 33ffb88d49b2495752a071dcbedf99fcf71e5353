@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "22b297b0_d9e42390",
+        "filename": "zephyr/shim/include/battery_enum.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-03-23T18:58:14Z",
+      "side": 1,
+      "message": "I opened b:226404277 to convert this to use a compatible string.  Looking up devices by node path is error prone.  The compatible string provides some build time checks.",
+      "range": {
+        "startLine": 18,
+        "startChar": 18,
+        "endLine": 18,
+        "endChar": 36
+      },
+      "revId": "33ffb88d49b2495752a071dcbedf99fcf71e5353",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
