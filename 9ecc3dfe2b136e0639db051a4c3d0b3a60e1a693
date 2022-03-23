@@ -236,6 +236,30 @@
       },
       "revId": "9ecc3dfe2b136e0639db051a4c3d0b3a60e1a693",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "878e322a_9f56cac9",
+        "filename": "board/banshee/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1316237
+      },
+      "writtenOn": "2022-03-23T01:18:59Z",
+      "side": 1,
+      "message": "I think the difference is Brya define CONFIG_USBC_PPC_NX20P3483 ,it will auto define CONFIG_USB_PD_PPC in config.h line:5981",
+      "parentUuid": "5630d4c2_14cf1e8c",
+      "range": {
+        "startLine": 96,
+        "startChar": 8,
+        "endLine": 96,
+        "endChar": 25
+      },
+      "revId": "9ecc3dfe2b136e0639db051a4c3d0b3a60e1a693",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
