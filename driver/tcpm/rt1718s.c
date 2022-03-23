@@ -18,6 +18,7 @@
 #include "timer.h"
 #include "usb_mux.h"
 #include "usb_pd.h"
+#include "usb_pe_sm.h"
 #include "util.h"
 
 #define CPRINTS(format, args...) cprints(CC_USBCHARGE, format, ## args)
@@ -528,6 +529,23 @@ int rt1718s_set_frs_enable_tcpc(int port, int enable)
 
 		vbus_ctrl_en |= RT1718S_VBUS_CTRL_EN_GPIO2_VBUS_PATH_EN;
 		vbus_ctrl_en |= RT1718S_VBUS_CTRL_EN_GPIO1_VBUS_PATH_EN;
+	} else if (pe_in_frs_mode(port)) {
+		/*
+		 * Polling RT1718S_RT_INT1_INT_VBUS_FRS_LOW then disable
+		 * FRS so that the FRS can be correctly triggered.
+		 * To prevent from long polling, we disable FRS
+		 * with at most 3 times.
+		 */
+		int poll = 3;
+		int int1;
+
+		do {
+			int rv;
+
+			rv = rt1718s_read8(port, RT1718S_RT_INT1, &int1);
+			if (rv)
+				return rv;
+		} while (poll-- && !(int1 & RT1718S_RT_INT1_INT_VBUS_FRS_LOW));
 	}
 
 	RETURN_ERROR(rt1718s_write8(port, RT1718S_FRS_CTRL2, frs_ctrl2));
