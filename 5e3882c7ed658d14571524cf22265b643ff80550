@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e3196df_c3c676fa",
+        "filename": "zephyr/projects/corsola/BUILD.py",
+        "patchSetId": 20
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2022-03-23T06:21:56Z",
+      "side": 1,
+      "message": "add a comma to pass lint check in CQ.",
+      "range": {
+        "startLine": 42,
+        "startChar": 32,
+        "endLine": 42,
+        "endChar": 33
+      },
+      "revId": "5e3882c7ed658d14571524cf22265b643ff80550",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
