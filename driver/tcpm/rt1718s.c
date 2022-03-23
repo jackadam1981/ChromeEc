@@ -12,18 +12,25 @@
 #include "driver/tcpm/tcpci.h"
 #include "driver/tcpm/tcpm.h"
 #include "gpio.h"
+#include "hooks.h"
 #include "stdint.h"
 #include "system.h"
 #include "task.h"
 #include "timer.h"
 #include "usb_mux.h"
 #include "usb_pd.h"
+#include "usb_pe_sm.h"
 #include "util.h"
 
 #define CPRINTS(format, args...) cprints(CC_USBCHARGE, format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_USBCHARGE, format, ## args)
 
 #define RT1718S_SW_RESET_DELAY_MS 2
+
+/* forward declaration */
+static int rt1718s_set_frs_enable_tcpc_impl(int port, int enable);
+
+uint8_t rt1718s_flags[CONFIG_USB_PD_PORT_MAX_COUNT];
 
 /* i2c_write function which won't wake TCPC from low power mode. */
 static int rt1718s_write(int port, int reg, int val, int len)
@@ -254,9 +261,12 @@ static int rt1718s_init(int port)
 				MASK_SET));
 
 	if (IS_ENABLED(CONFIG_USB_PD_FRS_TCPC))
-		/* Set Rx frs unmasked */
-		RETURN_ERROR(rt1718s_update_bits8(port, RT1718S_RT_MASK1,
-					 RT1718S_RT_MASK1_M_RX_FRS, 0xFF));
+		/* Set Rx FRS, VBUS FRS LOW  unmasked */
+		RETURN_ERROR(rt1718s_update_bits8(
+			port, RT1718S_RT_MASK1,
+			RT1718S_RT_MASK1_M_RX_FRS |
+				RT1718S_RT_MASK1_M_VBUS_FRS_LOW,
+			0xFF));
 
 	RETURN_ERROR(board_rt1718s_init(port));
 
@@ -354,6 +364,20 @@ static void rt1718s_bc12_usb_charger_task(const int port)
 	}
 }
 
+void rt1718s_frs_disable(void)
+{
+	int i;
+
+	for (i = 0; i < board_get_usb_pd_port_count(); i++) {
+		if (rt1718s_flags[i] & RT1718S_FLAG_FRS_SIGNALED) {
+			rt1718s_flags[i] &= ~RT1718S_FLAG_FRS_SIGNALED;
+			if (!(rt1718s_flags[i] & RT1718S_FLAG_FRS_ENABLED))
+				rt1718s_set_frs_enable_tcpc_impl(i, 0);
+		}
+	}
+}
+DECLARE_DEFERRED(rt1718s_frs_disable);
+
 void rt1718s_vendor_defined_alert(int port)
 {
 	int rv, value;
@@ -373,9 +397,18 @@ void rt1718s_vendor_defined_alert(int port)
 
 			tcpc_write16(port, TCPC_REG_ALERT,
 					TCPC_REG_ALERT_VENDOR_DEF);
-			/* ignore other interrupts for faster frs handling */
-			return;
+			rt1718s_flags[port] |= RT1718S_FLAG_FRS_SIGNALED;
+			hook_call_deferred(&rt1718s_frs_disable_data,
+					   PD_T_FRSWAP_INIT);
 		}
+		if (int1 & RT1718S_RT_INT1_INT_VBUS_FRS_LOW) {
+			if (!(rt1718s_flags[port] & RT1718S_FLAG_FRS_ENABLED))
+				rt1718s_set_frs_enable_tcpc_impl(port, 0);
+		}
+
+		/* ignore other interrupts for faster frs handling */
+		if (int1)
+			return;
 	}
 
 	/* Process BC12 alert */
@@ -514,7 +547,7 @@ out:
 }
 
 #ifdef CONFIG_USB_PD_FRS_TCPC
-int rt1718s_set_frs_enable_tcpc(int port, int enable)
+static int rt1718s_set_frs_enable_tcpc_impl(int port, int enable)
 {
 	/*
 	 * Use write instead of update to save 2 i2c read.
@@ -529,9 +562,31 @@ int rt1718s_set_frs_enable_tcpc(int port, int enable)
 		vbus_ctrl_en |= RT1718S_VBUS_CTRL_EN_GPIO2_VBUS_PATH_EN;
 		vbus_ctrl_en |= RT1718S_VBUS_CTRL_EN_GPIO1_VBUS_PATH_EN;
 	}
-
 	RETURN_ERROR(rt1718s_write8(port, RT1718S_FRS_CTRL2, frs_ctrl2));
 	RETURN_ERROR(rt1718s_write8(port, RT1718S_VBUS_CTRL_EN, vbus_ctrl_en));
+	return EC_SUCCESS;
+}
+
+int rt1718s_set_frs_enable_tcpc(int port, int enable)
+{
+	if (enable) {
+		rt1718s_flags[port] |= RT1718S_FLAG_FRS_ENABLED;
+		hook_call_deferred(&rt1718s_frs_disable_data, -1);
+		return rt1718s_set_frs_enable_tcpc_impl(port, 1);
+	} else {
+		rt1718s_flags[port] &= ~RT1718S_FLAG_FRS_ENABLED;
+		if (rt1718s_flags[port] & RT1718S_FLAG_FRS_SIGNALED) {
+			/*
+			 * deferred the FRS disable if we don't have FRS
+			 * signaled
+			 */
+			hook_call_deferred(&rt1718s_frs_disable_data,
+					   PD_T_FRSWAP_INIT);
+		} else {
+			return rt1718s_set_frs_enable_tcpc_impl(port, 0);
+		}
+	}
+
 	return EC_SUCCESS;
 }
 #endif

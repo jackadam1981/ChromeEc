@@ -183,6 +183,9 @@
 #define RT1718S_ADC_CHX_VOL_L(ch)			(0xF2A6 + (ch) * 2)
 #define RT1718S_ADC_CHX_VOL_H(ch)			(0xF2A7 + (ch) * 2)
 
+#define RT1718S_FLAG_FRS_SIGNALED			BIT(0)
+#define RT1718S_FLAG_FRS_ENABLED			BIT(1)
+
 extern const struct tcpm_drv rt1718s_tcpm_drv;
 extern const struct bc12_drv rt1718s_bc12_drv;
 
