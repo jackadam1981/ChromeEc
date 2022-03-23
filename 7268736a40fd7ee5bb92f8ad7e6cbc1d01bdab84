@@ -16,6 +16,29 @@
       "message": "are the content from this header used in follow on CLs?",
       "revId": "7268736a40fd7ee5bb92f8ad7e6cbc1d01bdab84",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e2d1bda_a6665a68",
+        "filename": "zephyr/shim/chip/mchp/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2022-03-23T20:07:14Z",
+      "side": 1,
+      "message": "This does not allow an error return to tell caller that this was not setup, supported, errored or if all went well. Is this really what you want?",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 41
+      },
+      "revId": "7268736a40fd7ee5bb92f8ad7e6cbc1d01bdab84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
