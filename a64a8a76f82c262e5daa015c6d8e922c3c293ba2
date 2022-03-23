@@ -16,6 +16,24 @@
       "message": "If there is nothing else being used for the callback, you can remove it entirely.\n",
       "revId": "a64a8a76f82c262e5daa015c6d8e922c3c293ba2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "05f97b72_1d312a57",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-03-23T06:05:43Z",
+      "side": 1,
+      "message": "I expect to use it in the child CL to enable HDMI power, so I\u0027m leaving it around.",
+      "parentUuid": "cfd0e410_f41021d9",
+      "revId": "a64a8a76f82c262e5daa015c6d8e922c3c293ba2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
