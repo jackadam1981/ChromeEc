@@ -53,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "250de724_b1db10ca",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2022-03-23T20:49:48Z",
+      "side": 1,
+      "message": "ran black and re uploaded",
+      "parentUuid": "73b50ccc_d5ab180e",
+      "revId": "a0be3023cb84127ea0ccd05338fae47789c86b3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "303e1459_a4eefa77",
@@ -66,6 +84,30 @@
       "writtenOn": "2022-03-23T20:48:20Z",
       "side": 1,
       "message": "may be these tabs causing the build error.",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 45
+      },
+      "revId": "a0be3023cb84127ea0ccd05338fae47789c86b3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "496f095f_c1412f5d",
+        "filename": "zephyr/projects/intelrvp/BUILD.py",
+        "patchSetId": 13
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2022-03-23T20:49:48Z",
+      "side": 1,
+      "message": "I am pushing the fix now",
+      "parentUuid": "303e1459_a4eefa77",
       "range": {
         "startLine": 55,
         "startChar": 0,
