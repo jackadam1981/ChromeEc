@@ -147,6 +147,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "670b7ab4_169fc68e",
+        "filename": "baseboard/intelrvp/adlrvp.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 503,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-03-23T20:14:22Z",
+      "side": 1,
+      "message": "Created a partner tracker to track this: \nb/226385321: use zephyr i2c_read to get board id",
+      "parentUuid": "313d4a72_f1aa9ead",
+      "range": {
+        "startLine": 503,
+        "startChar": 7,
+        "endLine": 503,
+        "endChar": 17
+      },
+      "revId": "dbda86de1a53eb51c8461e5c7e77b09ce1225341",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7ee412fd_9dc4590f",
