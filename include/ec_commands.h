@@ -167,7 +167,9 @@ extern "C" {
 #define EC_MEMMAP_GYRO_DATA        0xa0 /* Gyroscope data 0xa0 - 0xa5 */
 /* Power Participant related components */
 #define EC_MEMMAP_PWR_SRC          0xa6 /* Power source (8-bit) */
-/* Unused 0xa7 - 0xdf */
+#define EC_MEMMAP_PWR_ARTG         0xa7 /* Adapter rating (mW) (16 bits) */
+
+/* Unused 0xa9 - 0xdf */
 
 /*
  * ACPI is unable to access memory mapped data at or above this offset due to
