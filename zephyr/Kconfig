@@ -573,6 +573,11 @@ config PLATFORM_EC_POWER_COMMON
 	help
 	  Compile common code for AP power state machine.
 
+config PLATFORM_EC_DTT_POWER_STATUS
+	bool
+	help
+	  Enable Power Participant feature to support in Dynamic Tuning Technology.
+
 config PLATFORM_EC_MKBP_EVENT
     bool "MKBP event"
     help
