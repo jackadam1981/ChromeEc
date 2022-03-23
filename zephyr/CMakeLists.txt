@@ -354,6 +354,8 @@ zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_POWER_BUTTON
                                                 "${PLATFORM_EC}/common/power_button.c")
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_POWERSEQ
                                                 "${PLATFORM_EC}/power/common.c")
+zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_DTT_POWER_STATUS
+						"${PLATFORM_EC}/power/dtt_power_status.c")
 zephyr_library_sources_ifdef(CONFIG_CHIPSET_ALDERLAKE_SLG4BD44540
                                                 "${PLATFORM_EC}/power/alderlake_slg4bd44540.c")
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_POWERSEQ_AMD
