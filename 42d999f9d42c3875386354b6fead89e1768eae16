@@ -88,6 +88,24 @@
       "parentUuid": "9bb91ee7_d63d6595",
       "revId": "42d999f9d42c3875386354b6fead89e1768eae16",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5100408_8fc0b389",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-03-23T12:08:42Z",
+      "side": 1,
+      "message": "The underlying issue is that Nereid (IT81302) is having a serious RAM crunch, and effectively we\u0027re just playing whack-a-mole. We get savings where we can.\nA core issue is that the stack usage for RISC-V seems to be about 20% higher than ARM, and with the number of tasks we have (~16?), the margins are very tight.\nAs an ongoing task, we\u0027re trying to find out where most of the RAM usage is.\nHowever, I worry that we\u0027re rapidly hitting diminishing returns.",
+      "parentUuid": "d88c9690_b265c2b4",
+      "revId": "42d999f9d42c3875386354b6fead89e1768eae16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
