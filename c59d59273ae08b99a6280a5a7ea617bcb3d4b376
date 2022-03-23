@@ -152,6 +152,30 @@
       },
       "revId": "c59d59273ae08b99a6280a5a7ea617bcb3d4b376",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4decfc8c_4247de88",
+        "filename": "chip/npcx/fan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2022-03-23T09:49:09Z",
+      "side": 1,
+      "message": "When the rpm_target \u003c\u003d 3557,\nfor 1% : rpm_diff \u003d 3557 * 1%  +1 \u003d 36\nfor 7% \" rpm_diff \u003d 3557 * 7%  +1 \u003d 249\nAccording to [here](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/chip/npcx/fan.c;l\u003d264), the increasing duty step is the same.\nWhen the rpm_target \u003e 3557\nfor 1% : rpm_diff \u003d 3558 * 1%  +1 \u003d 36\nfor 7% \" rpm_diff \u003d 3557 * 7%  +1 \u003d 250\nThe increasing duty step is 1 for 1% and 3 for 7%.\nSearch the whole EC source, the existing rpm_max value \u003d 6900. That’s being said, the duty step should be either 1 or 3 depending on the target RPM and deviation. \nI played the fan control on Volteer which uses 7% deviation, I don\u0027t see the fan spin unsmooth with target RPM 2200~5400.\nIf you still have concern on the setting, how about change the code to use fixed rpm_diff like\n```\nrpm_diff \u003d MAX(250, RPM_MARGIN(rpm_target) + 1);\n```",
+      "parentUuid": "032c8c54_be8e4e26",
+      "range": {
+        "startLine": 304,
+        "startChar": 2,
+        "endLine": 304,
+        "endChar": 39
+      },
+      "revId": "c59d59273ae08b99a6280a5a7ea617bcb3d4b376",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
