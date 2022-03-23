@@ -70,6 +70,24 @@
       "parentUuid": "a6043be4_d3fc2c2e",
       "revId": "42d999f9d42c3875386354b6fead89e1768eae16",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d88c9690_b265c2b4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-03-23T11:31:39Z",
+      "side": 1,
+      "message": "Dynamic strings are used all over the main RTOS code... I don\u0027t quite see the point to keep deferred logging enabled and then pin down all its configuration to the point of consciously breaking some of its features.\n\nWould LOG_MODE_MINIMAL work for you? That has only flash space implications, and even then you could shut off individual module logs and only keep the one you care about.\n\nIf it works well and you find it helpful we may consider looking more into it and changing the project default (which is probably worth doing for the thread name you changed recently as well).\n\n(updated this patch for minimal logging)",
+      "parentUuid": "9bb91ee7_d63d6595",
+      "revId": "42d999f9d42c3875386354b6fead89e1768eae16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
