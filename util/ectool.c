@@ -18,6 +18,7 @@
 
 #include "battery.h"
 #include "comm-host.h"
+#include "comm-usb.h"
 #include "chipset.h"
 #include "compile_time_macros.h"
 #include "crc.h"
@@ -40,6 +41,9 @@
  * Calculate the expected response for a hello ec command.
  */
 #define HELLO_RESP(in_data) ((in_data) + 0x01020304)
+
+#define USB_VID_GOOGLE	0x18d1
+#define USB_PID_HAMMER	0x5022
 
 /* Command line options */
 enum {
@@ -395,13 +399,17 @@ int parse_bool(const char *s, int *dest)
 
 void print_help(const char *prog, int print_cmds)
 {
-	printf("Usage: %s [--dev=n] [--interface=dev|i2c|lpc] [--i2c_bus=n]",
+	printf("Usage: %s [--dev=n] "
+	       "[--interface=dev|i2c|lpc|vid:pid] [--i2c_bus=n]",
 	       prog);
 	printf("[--name=cros_ec|cros_fp|cros_pd|cros_scp|cros_ish] [--ascii] ");
 	printf("<command> [params]\n\n");
 	printf("  --i2c_bus=n  Specifies the number of an I2C bus to use. For\n"
 	       "               example, to use /dev/i2c-7, pass --i2c_bus=7.\n"
 	       "               Implies --interface=i2c.\n\n");
+	printf("  --interface Specifies the interface. For USB, specify vendor\n"
+	       "              ID and product ID in vid:pid format (e.g.\n"
+	       "              18d1:503c).\n\n");
 	if (print_cmds)
 		puts(help_str);
 	else
@@ -10691,6 +10699,7 @@ int main(int argc, char *argv[])
 	int interfaces = COMM_ALL;
 	int i2c_bus = -1;
 	char device_name[41] = CROS_EC_DEV_NAME;
+	uint16_t vid = USB_VID_GOOGLE, pid = USB_PID_HAMMER;
 	int rv = 1;
 	int parse_error = 0;
 	char *e;
@@ -10722,6 +10731,8 @@ int main(int argc, char *argv[])
 				interfaces = COMM_I2C;
 			} else if (!strcasecmp(optarg, "servo")) {
 				interfaces = COMM_SERVO;
+			} else if (parse_vidpid(optarg, &vid, &pid)) {
+				interfaces = COMM_USB;
 			} else {
 				fprintf(stderr, "Invalid --interface\n");
 				parse_error = 1;
@@ -10787,7 +10798,12 @@ int main(int argc, char *argv[])
 			fprintf(stderr, "Could not acquire GEC lock.\n");
 			exit(1);
 		}
-		if (comm_init_alt(interfaces, device_name, i2c_bus)) {
+		if (interfaces == COMM_USB) {
+			if (comm_init_usb(vid, pid)) {
+				fprintf(stderr, "Couldn't find EC on USB.\n");
+				goto out;
+			}
+		} else if (comm_init_alt(interfaces, device_name, i2c_bus)) {
 			fprintf(stderr, "Couldn't find EC\n");
 			goto out;
 		}
@@ -10812,5 +10828,9 @@ int main(int argc, char *argv[])
 
 out:
 	release_gec_lock();
+
+	if (interfaces == COMM_USB)
+		comm_cleanup_usb();
+
 	return !!rv;
 }
