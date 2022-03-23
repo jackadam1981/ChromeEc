@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55896704_53d4848d",
+        "filename": "docs/zephyr/zephyr_cbi.md",
+        "patchSetId": 16
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-03-23T19:12:16Z",
+      "side": 1,
+      "message": "Update this to just point to the Kconfig.cbi file.  This way we\u0027re not duplicating help.\n\nExample here:\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/66c4507e/docs/zephyr/zephyr_battery.md#9\n\nAlso, it might make sense to create a global Kconfig option for CBI support that guards all the other options.  Something like `CONFIG_PLATFORM_EC_CBI`.  \n\nPlease take a look at this after this merges.",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 0
+      },
+      "revId": "f909d3904155782a47dbb29e93bbf56c227d784e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
