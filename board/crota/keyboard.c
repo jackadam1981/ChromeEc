@@ -4,7 +4,8 @@
  */
 
 #include "common.h"
-
+#include "hooks.h"
+#include "keyboard_8042_sharedlib.h"
 #include "keyboard_scan.h"
 #include "timer.h"
 
@@ -20,6 +21,15 @@ __override struct keyboard_scan_config keyscan_config = {
 	.poll_timeout_us = 100 * MSEC,
 	.actual_key_mask = {
 		0x14, 0xff, 0xff, 0xff, 0xff, 0xf5, 0xff,
-		0xa4, 0xff, 0xfe, 0x55, 0xfa, 0xca  /* full set */
+		0xa4, 0xff, 0xf6, 0x55, 0xfa, 0xca  /* full set */
 	},
 };
+
+static void keyboard_init(void)
+{
+	/*
+	 * Set KSI3/KSO0(caps-lock) to KSI0/KSO1(T11)
+	 */
+	set_scancode_set2(0, 1, get_scancode_set2(3, 0));
+}
+DECLARE_HOOK(HOOK_INIT, keyboard_init, HOOK_PRIO_DEFAULT);
