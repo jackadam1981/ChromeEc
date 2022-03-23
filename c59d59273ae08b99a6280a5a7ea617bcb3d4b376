@@ -104,6 +104,30 @@
       },
       "revId": "c59d59273ae08b99a6280a5a7ea617bcb3d4b376",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a8753a0_36c6213c",
+        "filename": "chip/npcx/fan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2022-03-23T08:39:42Z",
+      "side": 1,
+      "message": "The driver can adjust the PWM duty only if rpm_diff is greater than the deviation [here](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/chip/npcx/fan.c;l\u003d306). \nSet \"rpm_diff \u003d RPM_MARGIN(rpm_target) + 1\" to make sure fan_adjust_duty() can be called while also increase the PWM duty with low steps.\nIt can help bypass the 100% spin issue at the beginning.\nOnce the 1 second passes, the driver go back to use the original fan control algorithm.",
+      "parentUuid": "488f7ea6_5149919c",
+      "range": {
+        "startLine": 304,
+        "startChar": 2,
+        "endLine": 304,
+        "endChar": 39
+      },
+      "revId": "c59d59273ae08b99a6280a5a7ea617bcb3d4b376",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
