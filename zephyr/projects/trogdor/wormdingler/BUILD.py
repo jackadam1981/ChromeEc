@@ -9,5 +9,6 @@ register_npcx_project(
         "gpio.dts",
         "interrupts.dts",
         "i2c.dts",
+        "battery.dts",
     ],
 )
