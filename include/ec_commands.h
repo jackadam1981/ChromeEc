@@ -459,6 +459,15 @@ extern "C" {
  */
 #define EC_ACPI_MEM_USB_RETIMER_FW_UPDATE 0x14
 
+/*
+ * Power Participant Component - PSRC
+ * Read:
+ *	Content of EC_MEMMAP_POWER_SRC
+ *	bits[3:0] - Power source
+ *	bits[7:4] - changed sequennce number
+ */
+#define EC_ACPI_MEM_PWR_SRC	0x15
+
 #define USB_RETIMER_FW_UPDATE_OP_SHIFT 4
 #define USB_RETIMER_FW_UPDATE_ERR         0xfe
 #define USB_RETIMER_FW_UPDATE_INVALID_MUX 0xff

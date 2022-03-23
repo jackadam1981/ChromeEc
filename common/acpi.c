@@ -295,6 +295,11 @@ int acpi_ap_to_ec(int is_cmd, uint8_t value, uint8_t *resultptr)
 			result = usb_retimer_fw_update_get_result();
 			break;
 #endif
+#ifdef CONFIG_DTT_POWER_STATUS
+		case EC_ACPI_MEM_PWR_SRC:
+			result = dptf_get_psrc();
+			break;
+#endif
 		default:
 			result = acpi_read(acpi_addr);
 			break;
