@@ -2,11 +2,20 @@
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
+#include <stddef.h>
 
+#include "console.h"
+#include "cbi_ssfc.h"
 #include "gpio.h"
 #include "hooks.h"
 #include "keyboard_8042.h"
+#include "ps2.h"
 #include "ps2_chip.h"
+#include "time.h"
+#include "registers.h"
+
+#define CPRINTS(format, args...) cprints(CC_PS2, format, ## args)
+
 
 void send_aux_data_to_device(uint8_t data)
 {
