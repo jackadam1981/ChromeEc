@@ -260,6 +260,30 @@
       },
       "revId": "9ecc3dfe2b136e0639db051a4c3d0b3a60e1a693",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "318fecfb_04a86fa6",
+        "filename": "board/banshee/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-03-23T01:25:21Z",
+      "side": 1,
+      "message": "ok, just enable CONFIG_USB_PD_PPC explicitly.",
+      "parentUuid": "878e322a_9f56cac9",
+      "range": {
+        "startLine": 96,
+        "startChar": 8,
+        "endLine": 96,
+        "endChar": 25
+      },
+      "revId": "9ecc3dfe2b136e0639db051a4c3d0b3a60e1a693",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
