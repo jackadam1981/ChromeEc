@@ -34,6 +34,217 @@
       "parentUuid": "0eea14f1_a4898fbd",
       "revId": "8c9274d7cac58599116f701720367f74fde4b3a5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "107822ce_f8c85850",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-03-23T22:59:52Z",
+      "side": 1,
+      "message": "Can you create a bug for the mchp shim layer and then update the commit messages in this chain with that bug number?",
+      "parentUuid": "5b8e5957_7251ca58",
+      "revId": "8c9274d7cac58599116f701720367f74fde4b3a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1fc0a7d0_320c3aa5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-03-23T22:59:52Z",
+      "side": 1,
+      "message": "First pass, looking primarily at code organization. I haven\u0027t really looked at the .c files yet.",
+      "revId": "8c9274d7cac58599116f701720367f74fde4b3a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "efbf537d_616ff617",
+        "filename": "zephyr/shim/chip/mchp/include/flash_chip.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-03-23T22:59:52Z",
+      "side": 1,
+      "message": "I\u0027m not clear on what needs to be done here. Please create a bug for the work that still needs to be done and format this as\n /* TODO(b/\u003cISSUE NUMBER\u003e): \u003cOne-line-summary of intended fix\u003e\n\nIt\u0027s OK if it\u0027s the same bug as the overall bug for this shim, as long as the bug contains context that explains what needs to be done here.",
+      "range": {
+        "startLine": 9,
+        "startChar": 3,
+        "endLine": 9,
+        "endChar": 7
+      },
+      "revId": "8c9274d7cac58599116f701720367f74fde4b3a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fac662a9_266cd0c8",
+        "filename": "zephyr/shim/chip/mchp/include/flash_chip.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-03-23T22:59:52Z",
+      "side": 1,
+      "message": "Is this the only flash type that mchp supports? It looks like we typically set this in the board config.",
+      "revId": "8c9274d7cac58599116f701720367f74fde4b3a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3766ce95_87847f04",
+        "filename": "zephyr/shim/chip/mchp/include/flash_chip.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-03-23T22:59:52Z",
+      "side": 1,
+      "message": "I don\u0027t see `CONFIG_FLASH_SIZE` referenced elsewhere in the shim, but it looks like we have generic code to set `CONFIG_FLASH_SIZE_BYTES` in `zephyr/shim/include/config_chip.h`. Does this need to be set here?",
+      "revId": "8c9274d7cac58599116f701720367f74fde4b3a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "008fe2be_522a5397",
+        "filename": "zephyr/shim/chip/mchp/include/rom_chip.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-03-23T22:59:52Z",
+      "side": 1,
+      "message": "Where does this enum get used? This is an odd name for an emum. (Typically, we would use lowercase.) I\u0027m not sure why the npcx code uses it, but AFAIK, we don\u0027t need to match the enum name here.",
+      "revId": "8c9274d7cac58599116f701720367f74fde4b3a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f49d83c8_8458e4b1",
+        "filename": "zephyr/shim/chip/mchp/include/rom_chip.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-03-23T22:59:52Z",
+      "side": 1,
+      "message": "Where do these constants get used?",
+      "revId": "8c9274d7cac58599116f701720367f74fde4b3a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7c2cad4_47e6bfc6",
+        "filename": "zephyr/shim/chip/mchp/include/rom_chip.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-03-23T22:59:52Z",
+      "side": 1,
+      "message": "Where does this download_from_flash stuff get used? I don\u0027t see any references to this outside of npcx in our ECOS codebase.",
+      "revId": "8c9274d7cac58599116f701720367f74fde4b3a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32cb4128_a9ba2544",
+        "filename": "zephyr/shim/chip/mchp/system_download_from_flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-03-23T22:59:52Z",
+      "side": 1,
+      "message": "Did you mean to leave this in? This probably shouldn\u0027t go in our production code.",
+      "revId": "8c9274d7cac58599116f701720367f74fde4b3a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2563c16d_5278cbaf",
+        "filename": "zephyr/shim/chip/mchp/system_external_storage.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-03-23T22:59:52Z",
+      "side": 1,
+      "message": "Delete blank line.",
+      "revId": "8c9274d7cac58599116f701720367f74fde4b3a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c2c0d28_134b7db4",
+        "filename": "zephyr/shim/src/flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-03-23T22:59:52Z",
+      "side": 1,
+      "message": "This should probably be\n #ifdef\n\nor\n #if IS_ENABLED(CONFIG_SOC_FAMILY_NPCX)",
+      "revId": "8c9274d7cac58599116f701720367f74fde4b3a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a13489b6_39aca1e1",
+        "filename": "zephyr/shim/src/flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-03-23T22:59:52Z",
+      "side": 1,
+      "message": "This should probably be\n #elif IS_ENABLED(CONFIG_SOC_FAMILY_MEC)",
+      "revId": "8c9274d7cac58599116f701720367f74fde4b3a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
