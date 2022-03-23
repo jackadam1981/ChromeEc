@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6fcace00_76013d7c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-03-23T20:39:27Z",
+      "side": 1,
+      "message": "i think this is OK, but let me double check whether this change requires a waiver.\nthere have been a lot of keyboard change requests recently.\n",
+      "revId": "99b961f0a49d69ea94152ad04ba8308ef55344d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dddb9031_3e23ec1d",
+        "filename": "board/crota/keyboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-03-23T20:39:27Z",
+      "side": 1,
+      "message": "add a 2nd comment:\nmove caps-lock to T11",
+      "revId": "99b961f0a49d69ea94152ad04ba8308ef55344d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
