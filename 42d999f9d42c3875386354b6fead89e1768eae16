@@ -124,6 +124,24 @@
       "parentUuid": "a5100408_8fc0b389",
       "revId": "42d999f9d42c3875386354b6fead89e1768eae16",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a41d3e2_6ef57546",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-03-23T23:11:46Z",
+      "side": 1,
+      "message": "I opened b:226411332 to investigate converting the BC1.2 threads to use the system workqueue instead.  That could save the over 2K of RAM.",
+      "parentUuid": "8106b36b_f5cf15b1",
+      "revId": "42d999f9d42c3875386354b6fead89e1768eae16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
