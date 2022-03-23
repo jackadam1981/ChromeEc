@@ -16,6 +16,24 @@
       "message": "You\u0027ll have to update HDMI sub board to call this function to ensure the consistency. (the code at `corsola/usbc_config.c`)",
       "revId": "af76b916dcb27d8ec165b03bb9d2ba0316be7d32",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bec38204_00626773",
+        "filename": "zephyr/projects/corsola/src/usb_pd_policy.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2022-03-23T09:55:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "864b7584_94a5b231",
+      "revId": "af76b916dcb27d8ec165b03bb9d2ba0316be7d32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
