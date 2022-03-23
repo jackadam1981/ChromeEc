@@ -116,8 +116,8 @@
 		/*
 		 * HPD pins for HDMI sub-board.
 		 */
-		gpio-hdmi-en-odl = &gpio_sb_3;
-		gpio-hpd-odl = &gpio_sb_4;
+		gpio-hdmi-en-odl = &gpio_sb_4;
+		gpio-hpd-odl = &gpio_sb_3;
 	};
 
 	named-temp-sensors {

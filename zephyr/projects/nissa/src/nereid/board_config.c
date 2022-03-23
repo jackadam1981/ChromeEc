@@ -52,15 +52,13 @@ static void nereid_subboard_init(void)
 			GPIO_OUTPUT_LOW);
 	}
 	if (sb == NISSA_SB_HDMI_A) {
-		/* Disable I2C_PORT_USB_C1_TCPC */
-		/* TODO(b:212490923): Use pinctrl to switch from I2C */
 		/* Enable HDMI GPIOs */
-		gpio_pin_configure_dt(
-			GPIO_DT_FROM_ALIAS(gpio_en_rails_odl),
-			GPIO_OUTPUT | GPIO_OUTPUT_INIT_HIGH);
-		gpio_pin_configure_dt(
-			GPIO_DT_FROM_ALIAS(gpio_hdmi_en_odl),
-			GPIO_OUTPUT | GPIO_OUTPUT_INIT_HIGH);
+		gpio_pin_configure_dt(GPIO_DT_FROM_ALIAS(gpio_en_rails_odl),
+				      GPIO_OUTPUT_INACTIVE | GPIO_OPEN_DRAIN |
+					      GPIO_ACTIVE_LOW);
+		gpio_pin_configure_dt(GPIO_DT_FROM_ALIAS(gpio_hdmi_en_odl),
+				      GPIO_OUTPUT_INACTIVE | GPIO_OPEN_DRAIN |
+					      GPIO_ACTIVE_LOW);
 		/* Configure the interrupt separately */
 		gpio_pin_configure_dt(
 			GPIO_DT_FROM_ALIAS(gpio_hpd_odl),
@@ -80,6 +78,11 @@ static void board_init(void)
 	gpio_enable_dt_interrupt(GPIO_INT_FROM_NODELABEL(int_usb_c0));
 	if (board_get_usb_pd_port_count() == 2)
 		gpio_enable_dt_interrupt(GPIO_INT_FROM_NODELABEL(int_usb_c1));
+
+	/*
+	 * TODO: Enable HDMI HPD: forward HPD input from sub-board to GPK7.
+	 * Both edges.
+	 */
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
