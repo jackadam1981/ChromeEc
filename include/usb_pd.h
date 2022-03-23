@@ -252,12 +252,15 @@ enum pd_rx_errors {
 #define PD_T_VCONN_REAPPLIED        (15*MSEC) /* between 10ms and 20ms */
 #define PD_T_VCONN_DISCHARGE       (240*MSEC) /* between 160ms and 240ms */
 
+/* FRS Timers */
 /*
  * Non-spec timer to prevent going Unattached if Vbus drops before a partner FRS
  * signal comes through.  This timer should be shorter than tSinkDisconnect
  * (40ms) to ensure we still transition out of Attached.SNK in time.
  */
 #define PD_T_FRS_VBUS_DEBOUNCE	     (5*MSEC)
+
+#define PD_T_FRSWAP_INIT            (15*MSEC) /* 15ms */
 
 /* number of edges and time window to detect CC line is not idle */
 #define PD_RX_TRANSITION_COUNT  3
