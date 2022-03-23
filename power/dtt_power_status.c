@@ -32,7 +32,17 @@
 /* Current system power source */
 static enum system_power_source current_power_source = POWER_SOURCE_UNKNOWN;
 
-/* Deassert PROCHOT, if already asserted.
+/* calculate and return the adapter rating */
+static int get_adapter_rating(void)
+{
+	int adapter_rating_mW = charge_manager_get_charger_current() *
+				charge_manager_get_charger_voltage() / 1000;
+
+	CPRINTS("Adapter rating - %d mW", adapter_rating_mW);
+	return adapter_rating_mW;
+}
+
+/* Deasset PROCHOT, if already asserted.
  * PROCHOT requires to be deasserted either based on Power boss OK ACK
  * or within 2 seconds of no recieval of Power boss OK ACK.
  */
@@ -88,6 +98,7 @@ static void update_power_source(void)
 	int current_port = charge_manager_get_active_charge_port();
 
 	uint8_t *memmap_psrc = host_get_memmap(EC_MEMMAP_PWR_SRC);
+	uint16_t *memmap_artg = (uint16_t *)host_get_memmap(EC_MEMMAP_PWR_ARTG);
 
 	/* Get the percentage of state of charge */
 	int batt_soc = usb_get_battery_soc();
@@ -105,11 +116,15 @@ static void update_power_source(void)
 		(on_battery && batt_soc <= BATTERY_LEVEL_LOW)) {
 
 		int ac_power_src;
+		int artg;
 
 		/* AC removal or low battery */
 		if (current_power_source == POWER_SOURCE_BATTERY) {
 			/* DC source */
 			ac_power_src = DC_SOURCE;
+
+			/* Adapter rating is zero for DC source */
+			artg = 0;
 
 			/* Increment sequence number and take care not to overflow */
 			psrc_sequence_num = (psrc_sequence_num + 1) % PSRC_SEQUENCE_MAX;
@@ -129,9 +144,20 @@ static void update_power_source(void)
 			ac_power_src = AC_SOURCE_USBC;
 
 			prev_charge_port = current_port;
+
+			/* calculate adapter rating */
+			artg = get_adapter_rating();
+
+			/* In EC memory, artg is bits[11:0].
+			 * So, artg is saved in 50mW units.
+			 * AP must convert it back to mW units,
+			 * when sending to DPTF.
+			 */
+			artg = artg / 50;
 		}
 
 		*memmap_psrc = (ac_power_src | (psrc_sequence_num << 4));
+		*memmap_artg = artg;
 
 		/* Send SCI Event */
 		pd_send_host_event(PD_EVENT_POWER_CHANGE);
@@ -148,9 +174,11 @@ DECLARE_HOOK(HOOK_AC_CHANGE, update_power_source, HOOK_PRIO_DEFAULT);
 static void power_status_init(void)
 {
 	uint8_t *memmap_psrc =  host_get_memmap(EC_MEMMAP_PWR_SRC);
+	uint16_t *memmap_artg = (uint16_t *)host_get_memmap(EC_MEMMAP_PWR_ARTG);
 
 	/* Initial Value */
 	*memmap_psrc = 0;
+	*memmap_artg = 0;
 
 	/* Update the initial information on power source */
 	update_power_source();
