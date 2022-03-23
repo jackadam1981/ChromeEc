@@ -22,6 +22,23 @@
       },
       "revId": "65c4791911e581f44d279a73b94b994db6600378",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6319f74_0f5b4932",
+        "filename": "zephyr/projects/herobrine/src/villager/gpio.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1513493
+      },
+      "writtenOn": "2022-03-23T22:17:15Z",
+      "side": 1,
+      "message": "Should this be ec_chg_led_y_c0? (For Amber)",
+      "revId": "65c4791911e581f44d279a73b94b994db6600378",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ],
   "submitRequirementResults": [
