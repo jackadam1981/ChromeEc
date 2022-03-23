@@ -20,6 +20,16 @@ enum pe_error {
 	ERR_TCH_XMIT,
 };
 
+/* Power State used to build Status message */
+enum pd_power_state {
+	PD_POWER_STATE_UNKNOWN = 0,
+	PD_POWER_STATE_S0 = 1,
+	PD_POWER_STATE_S0ix = 2,
+	PD_POWER_STATE_S3 = 3,
+	PD_POWER_STATE_S5 = 4,
+	PD_POWER_STATE_G3 = 5,
+};
+
 /**
  * Runs the Policy Engine State Machine
  *
@@ -184,6 +194,13 @@ uint32_t pe_get_flags(int port);
  */
 void pe_set_ado(int port, uint32_t data);
 
+/**
+ * Sets the power state for use by the PD policy engine
+ *
+ * @param port USB-C port number
+ * @param power_state value to be assigned to the pd state
+ */
+void pe_set_power_state(int port, enum pd_power_state power_state);
 
 #ifdef TEST_BUILD
 /**

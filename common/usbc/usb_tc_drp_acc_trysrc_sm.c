@@ -3941,6 +3941,7 @@ static void pd_chipset_resume(void)
 	int i;
 
 	for (i = 0; i < CONFIG_USB_PD_PORT_MAX_COUNT; i++) {
+		pe_set_power_state(i, PD_POWER_STATE_S0);
 		if(IS_ENABLED(CONFIG_USB_PE_SM))
 			pd_resume_check_pr_swap_needed(i);
 
@@ -3963,6 +3964,7 @@ static void pd_chipset_suspend(void)
 	int i;
 
 	for (i = 0; i < CONFIG_USB_PD_PORT_MAX_COUNT; i++) {
+		pe_set_power_state(i, PD_POWER_STATE_S3);
 		pd_set_dual_role_and_event(i,
 					   pd_get_drp_state_in_suspend(),
 					   PD_EVENT_UPDATE_DUAL_ROLE
@@ -4015,6 +4017,7 @@ static void pd_chipset_startup(void)
 	int i;
 
 	for (i = 0; i < CONFIG_USB_PD_PORT_MAX_COUNT; i++) {
+		pe_set_power_state(i, PD_POWER_STATE_S3);
 		TC_SET_FLAG(i, TC_FLAGS_UPDATE_USB_MUX);
 		pd_set_dual_role_and_event(i,
 					   pd_get_drp_state_in_suspend(),
@@ -4043,6 +4046,7 @@ static void pd_chipset_shutdown(void)
 	int i;
 
 	for (i = 0; i < CONFIG_USB_PD_PORT_MAX_COUNT; i++) {
+		pe_set_power_state(i, PD_POWER_STATE_S5);
 		TC_SET_FLAG(i, TC_FLAGS_UPDATE_USB_MUX);
 		pd_set_dual_role_and_event(i,
 					   PD_DRP_FORCE_SINK,

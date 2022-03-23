@@ -1190,6 +1190,15 @@ enum pd_ctrl_msg_type {
  */
 #define BATT_CAP_REF(n)  (((n) >> 16) & 0xff)
 
+/* Status offsets for 8-bit array indexes */
+#define STATUS_INTERNAL_TEMP         0
+#define STATUS_PRESENT_INPUT         1
+#define STATUS_PRESENT_BATTERY_INPUT 2
+#define STATUS_EVENT_FLAGS           3
+#define STATUS_TEMP_STATUS           4
+#define STATUS_POWER_STATUS          5
+#define STATUS_POWER_STATE_CHANGE    6
+
 /* Extended message type for REV 3.0 */
 enum pd_ext_msg_type {
 	/* 0 Reserved */
@@ -1362,6 +1371,19 @@ enum cable_outlet {
 
 /* Voltage threshold to detect connection when presenting Rd */
 #define PD_SNK_VA_MV             250
+
+/* Used in Status Data Block (SDB) */
+#define PD_SDB_POWER_STATE_NOT_SUPPORTED       0x0
+#define PD_SDB_POWER_STATE_S0                  0x1
+#define PD_SDB_POWER_STATE_MODERN_STANDBY      0x2
+#define PD_SDB_POWER_STATE_S3                  0x3
+#define PD_SDB_POWER_STATE_S4                  0x4
+#define PD_SDB_POWER_STATE_S5                  0x5
+#define PD_SDB_POWER_STATE_G3                  0x6
+#define PD_SDB_POWER_INDICATOR_OFF             (0x0 << 3)
+#define PD_SDB_POWER_INDICATOR_ON              (0x1 << 3)
+#define PD_SDB_POWER_INDICATOR_BLINK           (0x2 << 3)
+#define PD_SDB_POWER_INDICATOR_BREATH          (0x3 << 3)
 
 /* --- Policy layer functions --- */
 
