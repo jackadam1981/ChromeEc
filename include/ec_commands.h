@@ -4465,6 +4465,21 @@ enum system_power_source {
 	POWER_SOURCE_AC_BATTERY = 3,
 };
 
+/*
+ * Source of AC power
+ */
+enum ac_system_power_source {
+	/* Not an AC source */
+	DC_SOURCE = 0,
+	/* AC Source is dedicated barrel connector */
+	AC_SOURCE_BARREL_CONNECTOR = 1,
+	/* AC Source is TypeC based */
+	AC_SOURCE_USBC = 2,
+	/* AC Source is wireless */
+	AC_SOURCE_WIRELESS = 3,
+
+};
+
 struct ec_response_power_info_v1 {
 	/* enum system_power_source */
 	uint8_t system_power_source;
