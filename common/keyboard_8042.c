@@ -990,6 +990,8 @@ DECLARE_DEFERRED(send_aux_data_to_host_deferred);
  */
 void send_aux_data_to_host_interrupt(uint8_t data)
 {
+	if (data == 0xfa)
+		return;
 	queue_add_unit(&aux_to_host_queue, &data);
 	hook_call_deferred(&send_aux_data_to_host_deferred_data, 0);
 }
