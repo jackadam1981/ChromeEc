@@ -8,5 +8,6 @@ register_npcx_project(
     dts_overlays=[
         "gpio.dts",
         "interrupts.dts",
+        "i2c.dts",
     ],
 )
