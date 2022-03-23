@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13546a9e_83eded02",
+        "filename": "docs/zephyr/zephyr_led.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1513493
+      },
+      "writtenOn": "2022-03-23T18:25:22Z",
+      "side": 1,
+      "message": "Change to -\u003e that currently supports gpio based LEDs.\n\nThis file was moved to shim layer and I\u0027m currently working on enabling Villager to use it as well.",
+      "revId": "c4a84a6aec1cdca995e4879ba3f225120905fe76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ce45ccb_0d6df1fe",
+        "filename": "docs/zephyr/zephyr_led.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1513493
+      },
+      "writtenOn": "2022-03-23T18:25:22Z",
+      "side": 1,
+      "message": "Do we want to add more explanation here?\n\ngpio_led_colors node contains children nodes that decide the policy of led behavior. Main properties a node can contain is:\ncharge_state -\u003e Include this if the LED behavior changes with change in charge state\nchipset_state -\u003e Include this if the LED behavior changes with change in chipset_state\nextra_flag -\u003e Include this if the LED behavior depends on additional factors. Eg. factory vs normal mode\n\nBased on the combination of above properties, a color node dictates the color. It could be a solid color:\ncolor-0 {\n\tled-color \u003d \"LED_BLUE\";\n};\n\nor a blinking LED which will also have a period property:\n\n/* Blue 2 sec, Amber 2 sec */\ncolor-0 {\n\tled-color \u003d \"LED_BLUE\";\n\tperiod \u003d \u003c2\u003e;\n};\ncolor-1 {\n\tled-color \u003d \"LED_AMBER\";\n\tperiod \u003d \u003c2\u003e;\n};\n\n\ngpio_led_pins node contains children nodes that defines gpio pins that need to be set and its corresponding value for a given color.\n\nFor eg. for a board that supports blue and amber led, in order to turn off the LEDs, both the pins will need to set to 0. The node defining this will be:\ncolor-off {\n\tled-color \u003d \"LED_OFF\";\n\tled-pins \u003d \u003c\u0026gpio_ec_chg_led_y_c1 0\u003e,\n\t\t   \u003c\u0026gpio_ec_chg_led_b_c1 0\u003e;\n};",
+      "revId": "c4a84a6aec1cdca995e4879ba3f225120905fe76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd63dcd3_31d611e7",
+        "filename": "docs/zephyr/zephyr_led.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1513493
+      },
+      "writtenOn": "2022-03-23T18:25:22Z",
+      "side": 1,
+      "message": "Update the link to /zephyr/shim/src/led.c",
+      "revId": "c4a84a6aec1cdca995e4879ba3f225120905fe76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
