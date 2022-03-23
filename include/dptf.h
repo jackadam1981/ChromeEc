@@ -48,4 +48,9 @@ void dptf_set_charging_current_limit(int ma);
  */
 int dptf_get_charging_current_limit(void);
 
+/**
+ * Handle power boss policy.
+ */
+void dptf_handle_pbok(int pbok_sequence);
+
 #endif	/* __CROS_EC_DPTF_H */
