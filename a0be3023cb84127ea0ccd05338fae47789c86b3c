@@ -33,6 +33,24 @@
       "message": "Should Intel have access to https://cr-buildbucket.appspot.com/build/\n",
       "revId": "a0be3023cb84127ea0ccd05338fae47789c86b3c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "73b50ccc_d5ab180e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-03-23T20:45:31Z",
+      "side": 1,
+      "message": "You have a python style error.  Please run \"black\" against the BUILD.py file.",
+      "parentUuid": "cb96ea09_f227d89c",
+      "revId": "a0be3023cb84127ea0ccd05338fae47789c86b3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
