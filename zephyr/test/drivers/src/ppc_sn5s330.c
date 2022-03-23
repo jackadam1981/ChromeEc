@@ -457,6 +457,84 @@ ZTEST(ppc_sn5s330, test_init_reg_fails)
 	INIT_I2C_FAIL_HELPER(i2c_emul, I2C_WRITE, SN5S330_INT_TRIP_FALL_REG3);
 }
 
+/* Make an I2C emulator mock write func wrapped in FFF */
+FAKE_VALUE_FUNC(int, late_jump_write_fn, struct i2c_emul *, int, uint8_t, int,
+		void *);
+
+/**
+ * @brief Check the call history for the given fake to see if a given register
+ *        was written.
+ *
+ * @param fake The FFF fake to inspect
+ * @param reg  The register address to search for
+ * @return true The register was accessed
+ * @return false The register was not accessed
+ */
+static bool check_if_i2c_write_happened(late_jump_write_fn_Fake *fake, int reg)
+{
+	for (int i = 0; i < fake->call_count; i++) {
+		if (fake->arg1_history[i] == reg) {
+			return true;
+		}
+	}
+	return false;
+}
+
+ZTEST(ppc_sn5s330, test_init_late_jump)
+{
+	int ret;
+	struct i2c_emul *i2c_emul = sn5s330_emul_to_i2c_emul(EMUL);
+
+	/* Configure the system_jumped_late() mock to return true and ensure
+	 * the init function returns early by making sure certain I2C writes
+	 * did NOT happen.
+	 */
+
+	system_jumped_late_fake.return_val = 1;
+	i2c_common_emul_set_write_func(i2c_emul, late_jump_write_fn, NULL);
+
+	ret = sn5s330_drv.init(SN5S330_PORT);
+
+	zassert_equal(EC_SUCCESS, ret, "Expected EC_SUCCESS but got %d", ret);
+
+	zassert_false(check_if_i2c_write_happened(&late_jump_write_fn_fake,
+						  SN5S330_INT_MASK_RISE_REG1),
+		      "Access should not have happened.");
+	zassert_false(check_if_i2c_write_happened(&late_jump_write_fn_fake,
+						  SN5S330_INT_MASK_FALL_REG1),
+		      "Access should not have happened.");
+	zassert_false(check_if_i2c_write_happened(&late_jump_write_fn_fake,
+						  SN5S330_INT_MASK_RISE_REG2),
+		      "Access should not have happened.");
+	zassert_false(check_if_i2c_write_happened(&late_jump_write_fn_fake,
+						  SN5S330_INT_MASK_FALL_REG2),
+		      "Access should not have happened.");
+	zassert_false(check_if_i2c_write_happened(&late_jump_write_fn_fake,
+						  SN5S330_INT_MASK_RISE_REG3),
+		      "Access should not have happened.");
+	zassert_false(check_if_i2c_write_happened(&late_jump_write_fn_fake,
+						  SN5S330_INT_MASK_FALL_REG3),
+		      "Access should not have happened.");
+	zassert_false(check_if_i2c_write_happened(&late_jump_write_fn_fake,
+						  SN5S330_INT_TRIP_RISE_REG1),
+		      "Access should not have happened.");
+	zassert_false(check_if_i2c_write_happened(&late_jump_write_fn_fake,
+						  SN5S330_INT_TRIP_RISE_REG2),
+		      "Access should not have happened.");
+	zassert_false(check_if_i2c_write_happened(&late_jump_write_fn_fake,
+						  SN5S330_INT_TRIP_RISE_REG3),
+		      "Access should not have happened.");
+	zassert_false(check_if_i2c_write_happened(&late_jump_write_fn_fake,
+						  SN5S330_INT_TRIP_FALL_REG1),
+		      "Access should not have happened.");
+	zassert_false(check_if_i2c_write_happened(&late_jump_write_fn_fake,
+						  SN5S330_INT_TRIP_FALL_REG2),
+		      "Access should not have happened.");
+	zassert_false(check_if_i2c_write_happened(&late_jump_write_fn_fake,
+						  SN5S330_INT_TRIP_FALL_REG3),
+		      "Access should not have happened.");
+}
+
 static int pp_fet_test_mock_read_fn(struct i2c_emul *emul, int reg,
 				    uint8_t *val, int bytes, void *data)
 {
