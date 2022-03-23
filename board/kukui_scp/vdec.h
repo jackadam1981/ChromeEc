@@ -18,6 +18,8 @@ enum vdec_type {
 	VDEC_VP9,
 	VDEC_MAX,
 };
+
+typedef void (*vdec_msg_handler)(void *msg);
 #else
 enum vdec_type {
 	VDEC_LAT,
