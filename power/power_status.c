@@ -10,6 +10,7 @@
 #include "charge_state.h"
 #include "chipset.h"
 #include "console.h"
+#include "dptf.h"
 #include "ec_commands.h"
 #include "extpower.h"
 #include "hooks.h"
@@ -170,3 +171,26 @@ static void power_status_init(void)
 	update_power_source();
 }
 DECLARE_HOOK(HOOK_INIT, power_status_init, HOOK_PRIO_LAST);
+
+/*
+ * Function to handle power boss policy
+ */
+void dptf_handle_pbok(int pbok_sequence)
+{
+	uint8_t *memmap_psrc = host_get_memmap(EC_MEMMAP_PWR_SRC);
+
+	int cached_pd_sequence = ((*memmap_psrc & 0xF0) >> 4);
+
+	/*
+	 * Deassert PROCHOT, only if PROCHOT is already asserted and
+	 * sequence number received from AP matches to the cached
+	 * value at EC.
+	 */
+	if ((prochot_action == PROCHOT_DEASSERT_NOT_OK) &&
+			(pbok_sequence == cached_pd_sequence)) {
+
+		hook_call_deferred(&deassert_prochot_data, 0);
+
+		CPRINTS("Power Boss Policy OK! PROCHOT Deasserted!");
+	}
+}
