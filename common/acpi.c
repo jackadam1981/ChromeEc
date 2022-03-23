@@ -402,6 +402,11 @@ int acpi_ap_to_ec(int is_cmd, uint8_t value, uint8_t *resultptr)
 				EC_ACPI_MEM_USB_RETIMER_OP(data));
 			break;
 #endif
+#ifdef CONFIG_DTT_POWER_STATUS
+		case EC_ACPI_MEM_PWR_PBOK:
+			dptf_handle_pbok(data);
+			break;
+#endif
 		default:
 			CPRINTS("ACPI write 0x%02x = 0x%02x (ignored)",
 				acpi_addr, data);

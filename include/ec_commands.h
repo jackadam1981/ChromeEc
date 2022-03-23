@@ -167,8 +167,10 @@ extern "C" {
 #define EC_MEMMAP_GYRO_DATA        0xa0 /* Gyroscope data 0xa0 - 0xa5 */
 /* Power Participant related components */
 #define EC_MEMMAP_PWR_SRC          0xa6 /* Power source (8-bit) */
+#define EC_MEMMAP_PWR_PBOK         0xa7 /* PBOK (32 bits) */
+
 /* To Add others */
-/* Unused 0xa7 - 0xdf */
+/* Unused 0xab - 0xdf */
 
 /*
  * ACPI is unable to access memory mapped data at or above this offset due to
@@ -467,6 +469,13 @@ extern "C" {
  *	bits[7:4] - changed sequennce number
  */
 #define EC_ACPI_MEM_PWR_SRC	0x15
+/*
+ * Power Participant Component - PBOK
+ * Write:
+ *	write sequence number received from AP
+ *	Power boss policy is handled here.
+ */
+#define EC_ACPI_MEM_PWR_PBOK	0x16
 
 #define USB_RETIMER_FW_UPDATE_OP_SHIFT 4
 #define USB_RETIMER_FW_UPDATE_ERR         0xfe

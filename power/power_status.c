@@ -160,9 +160,12 @@ DECLARE_HOOK(HOOK_AC_CHANGE, update_power_source, HOOK_PRIO_DEFAULT);
 static void power_status_init(void)
 {
 	uint8_t *memmap_psrc =  host_get_memmap(EC_MEMMAP_PWR_SRC);
+	int *memmap_pbok = (int *)host_get_memmap(EC_MEMMAP_PWR_PBOK);
 
 	/* Initial Value */
 	*memmap_psrc = 0;
+	/* Default value of bit:31 - deassert_ok */
+	*memmap_pbok = (PROCHOT_DEASSERT_OK << 31);
 
 	/* Get an initial information on power source */
 	update_power_source();
@@ -182,4 +185,27 @@ int dptf_get_psrc(void)
 	result = *memmap_psrc;
 	CPRINTS("PSRC : 0x%0x", result);
 	return result;
+}
+
+void dptf_handle_pbok(int pbok_sequence)
+{
+	int *memmap_pbok = (int *)host_get_memmap(EC_MEMMAP_PWR_PBOK);
+	uint8_t *memmap_psrc = host_get_memmap(EC_MEMMAP_PWR_SRC);
+
+	int cached_pd_sequence = ((*memmap_psrc & 0xF0) >> 4);
+
+	/*
+	 * Deassert PROCHOT, only if sequence number received from AP
+	 * matches to the cahed value at EC as well as if PROCHOT is
+	 * already asserted.
+	 */
+	if ((prochot_action == PROCHOT_DEASSERT_OK) &&
+			(pbok_sequence == cached_pd_sequence)) {
+
+		hook_call_deferred(&deassert_prochot_data, 0);
+
+		*memmap_pbok = (pbok_sequence |
+				(prochot_action << 31));
+		CPRINTS("Power Boss Policy OK! PROCHOT Deasserted!");
+	}
 }
