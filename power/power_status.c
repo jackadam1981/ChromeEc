@@ -10,6 +10,7 @@
 #include "charge_state.h"
 #include "chipset.h"
 #include "console.h"
+#include "dptf.h"
 #include "ec_commands.h"
 #include "extpower.h"
 #include "hooks.h"
@@ -167,3 +168,18 @@ static void power_status_init(void)
 	update_power_source();
 }
 DECLARE_HOOK(HOOK_INIT, power_status_init, HOOK_PRIO_LAST);
+
+/*
+ * Retrieve the memory content of PSRC.
+ * Bits [3:0] indicates the power source and the bits [7:4] indicates
+ * the changed power delivery state sequence number.
+ */
+int dptf_get_psrc(void)
+{
+	int result;
+	uint8_t *memmap_psrc = host_get_memmap(EC_MEMMAP_PWR_SRC);
+
+	result = *memmap_psrc;
+	CPRINTS("PSRC : 0x%0x", result);
+	return result;
+}

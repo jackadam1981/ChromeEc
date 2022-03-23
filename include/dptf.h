@@ -48,4 +48,10 @@ void dptf_set_charging_current_limit(int ma);
  */
 int dptf_get_charging_current_limit(void);
 
+/**
+ * Get power source(3:0 bits) and the power delivery state
+ * change sequence number(7:4 bits).
+ */
+int dptf_get_psrc(void);
+
 #endif	/* __CROS_EC_DPTF_H */
