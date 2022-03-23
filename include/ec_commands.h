@@ -168,9 +168,10 @@ extern "C" {
 /* Power Participant related components */
 #define EC_MEMMAP_PWR_SRC          0xa6 /* Power source (8-bit) */
 #define EC_MEMMAP_PWR_PBOK         0xa7 /* PBOK (32 bits) */
+#define EC_MEMMAP_PWR_ARTG         0xab /* Adapter rating (W) (32 bits) */
 
 /* To Add others */
-/* Unused 0xab - 0xdf */
+/* Unused 0xaf - 0xdf */
 
 /*
  * ACPI is unable to access memory mapped data at or above this offset due to
