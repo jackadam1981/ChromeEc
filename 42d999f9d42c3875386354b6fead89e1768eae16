@@ -106,6 +106,24 @@
       "parentUuid": "d88c9690_b265c2b4",
       "revId": "42d999f9d42c3875386354b6fead89e1768eae16",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8106b36b_f5cf15b1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-03-23T12:10:43Z",
+      "side": 1,
+      "message": "Minimal logging saves the same 2k+ as well, can you check if it works for you?",
+      "parentUuid": "a5100408_8fc0b389",
+      "revId": "42d999f9d42c3875386354b6fead89e1768eae16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
