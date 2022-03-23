@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "be60c556_3fbe9c26",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-03-23T00:52:09Z",
+      "side": 1,
+      "message": "Hi Boris,\ncan you take a look at this CL? It is undoing a CL you landed last year (https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2907912). I sent you an email last week explaining why I think we need to change this back. There is also more information about it here: https://buganizer.corp.google.com/issues/220875780.\n\nLet me know if you have any questions.\n\nThanks,\nJameson",
+      "revId": "75865262ec2ddcf39faac93eec41598d5bd3d0b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
