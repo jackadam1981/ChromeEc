@@ -49,6 +49,8 @@ static struct consumer const event_vdec_core_consumer = {
 		.written = event_vdec_core_written,
 	}),
 };
+#else
+static vdec_msg_handler mtk_vdec_msg_handle[VDEC_MAX];
 #endif
 
 /* Stub functions only provided by private overlays. */
