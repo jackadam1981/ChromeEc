@@ -70,6 +70,30 @@
       },
       "revId": "9a50c9f4ec8a904483203e9fa4c3d5519c21df29",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "37df5c8f_731008f0",
+        "filename": "zephyr/shim/src/hooks.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-03-23T00:44:50Z",
+      "side": 1,
+      "message": "I was careful to make it as safe as possible with assertions and considered making the new list the canonical one, but opted not to since it would be harder to maintain the documentation for each type in that case.\n\nThe old ECOS code doesn\u0027t even seem to check for divergence between the copies (it has at least one additional copy), so this is still an improvement from that. I do realize I can add another assertion that every hook type is present (and there are no gaps), so I\u0027ve done that.",
+      "parentUuid": "9f5b629d_60782681",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 0
+      },
+      "revId": "9a50c9f4ec8a904483203e9fa4c3d5519c21df29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
