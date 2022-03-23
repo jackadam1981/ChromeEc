@@ -4532,6 +4532,20 @@ enum system_power_source {
 	POWER_SOURCE_AC_BATTERY = 3,
 };
 
+/*
+ * Source of power required for DTT
+ */
+enum ac_dtt_system_power_source {
+	/* Not an AC source */
+	SOURCE_DC = 0,
+	/* AC Source is dedicated barrel connector */
+	SOURCE_AC_BARREL_CONNECTOR = 1,
+	/* AC Source is TypeC based */
+	SOURCE_AC_USBC = 2,
+	/* AC Source is wireless */
+	SOURCE_AC_WIRELESS = 3,
+};
+
 struct ec_response_power_info_v1 {
 	/* enum system_power_source */
 	uint8_t system_power_source;
