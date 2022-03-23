@@ -473,6 +473,14 @@ extern "C" {
  */
 #define EC_ACPI_MEM_USB_RETIMER_FW_UPDATE 0x14
 
+/*
+ * Power Participant Component - PBOK
+ * Write:
+ *	write sequence number received from AP
+ *	Power boss policy is handled here.
+ */
+#define EC_ACPI_MEM_PWR_PBOK	0x15
+
 #define USB_RETIMER_FW_UPDATE_OP_SHIFT 4
 #define USB_RETIMER_FW_UPDATE_ERR 0xfe
 #define USB_RETIMER_FW_UPDATE_INVALID_MUX 0xff
