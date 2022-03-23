@@ -128,6 +128,30 @@
       },
       "revId": "c59d59273ae08b99a6280a5a7ea617bcb3d4b376",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "032c8c54_be8e4e26",
+        "filename": "chip/npcx/fan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-03-23T09:06:25Z",
+      "side": 1,
+      "message": "right, i\u0027m wondering about the case where the board leaves\nRPM_MARGIN at 7%. will it still ramp as smoothly as 1%?",
+      "parentUuid": "8a8753a0_36c6213c",
+      "range": {
+        "startLine": 304,
+        "startChar": 2,
+        "endLine": 304,
+        "endChar": 39
+      },
+      "revId": "c59d59273ae08b99a6280a5a7ea617bcb3d4b376",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
