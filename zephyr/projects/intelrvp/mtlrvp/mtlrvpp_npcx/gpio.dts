@@ -280,6 +280,24 @@
 		usb-c0-mux-sbu-sel-1 {
 			gpios = <&ioex_c1 4 GPIO_OUTPUT_LOW>;
 		};
+		dg-bssb-sbu-sel {
+			gpios = <&ioex_c2_port1 4 GPIO_INPUT>;
+		};
+		usb-c2-hbr-rst {
+			gpios = <&ioex_c2_port1 1 (GPIO_ODR_LOW | GPIO_VOLTAGE_1P8)>;
+		};
+		usb-c2-hbr-ls-en {
+			gpios = <&ioex_c2_port2 0 (GPIO_ODR_LOW | GPIO_VOLTAGE_1P8)>;
+		};
+		usb-c3-hbr-rst {
+			gpios = <&ioex_c2_port1 3 (GPIO_ODR_LOW | GPIO_VOLTAGE_1P8)>;
+		};
+		usb-c3-hbr-ls-en {
+			gpios = <&ioex_c2_port3 3 (GPIO_ODR_LOW | GPIO_VOLTAGE_1P8)>;
+		};
+		usb-c2-c3-prochot-n {
+			gpios = <&ioex_c2_port0 0 GPIO_INPUT>;
+		};
 	};
 
 	def-lvol-io-list {
