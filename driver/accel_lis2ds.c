@@ -289,17 +289,42 @@ static int read(const struct motion_sensor_t *s, intv3_t v)
 		return EC_SUCCESS;
 	}
 
-	/* Read 6 bytes starting at xyz_reg */
-	ret = st_raw_read_n_noinc(s->port, s->i2c_spi_addr_flags,
-				  LIS2DS_OUT_X_L_ADDR, raw,
-				  LIS2DS_OUT_XYZ_SIZE);
-	if (ret != EC_SUCCESS) {
-		CPRINTS("%s: type:0x%X RD XYZ Error %d", s->name, s->type, ret);
-		return ret;
-	}
+	if (IS_ENABLED(CONFIG_ACCEL_FIFO)) {
+		uint16_t nsamples = 0;
+		uint8_t fifo_src_samples[2];
 
-	/* Transform from LSB to real data with rotation and gain */
-	st_normalize(s, v, raw);
+		ret = st_raw_read_n_noinc(s->port,
+					  s->i2c_spi_addr_flags,
+					  LIS2DS_FIFO_SRC_ADDR,
+					  (uint8_t *)fifo_src_samples,
+					  sizeof(fifo_src_samples));
+		if (ret != EC_SUCCESS)
+			return ret;
+
+		/* Check if FIFO is full. */
+		if (fifo_src_samples[0] & LIS2DS_FIFO_OVR_MASK)
+			CPRINTS("%s FIFO Overrun", s->name);
+
+		/* DIFF8 = 1 FIFO FULL, 256 unread samples. */
+		nsamples = fifo_src_samples[1] & LIS2DS_FIFO_DIFF_MASK;
+		if (fifo_src_samples[0] & LIS2DS_FIFO_DIFF8_MASK)
+			nsamples = 256;
+
+		ret = lis2ds_load_fifo((struct motion_sensor_t *)s, nsamples, 0);
+	}
+	else {
+		/* Read 6 bytes starting at xyz_reg */
+		ret = st_raw_read_n_noinc(s->port, s->i2c_spi_addr_flags,
+					  LIS2DS_OUT_X_L_ADDR, raw,
+					  LIS2DS_OUT_XYZ_SIZE);
+		if (ret != EC_SUCCESS) {
+			CPRINTS("%s: type:0x%X RD XYZ Error %d", s->name, s->type, ret);
+			return ret;
+		}
+
+		/* Transform from LSB to real data with rotation and gain */
+		st_normalize(s, v, raw);
+	}
 
 	return EC_SUCCESS;
 }
