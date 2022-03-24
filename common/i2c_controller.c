@@ -75,35 +75,6 @@ static int init_port_mutex(const struct device *dev)
 SYS_INIT(init_port_mutex, POST_KERNEL, 50);
 #endif /* CONFIG_ZEPHYR */
 
-/**
- * Non-deterministically test the lock status of the port.  If another task
- * has locked the port and the caller is accessing it illegally, then this test
- * will incorrectly return true.  However, callers which failed to statically
- * lock the port will fail quickly.
- */
-static int i2c_port_is_locked(int port)
-{
-#ifdef CONFIG_I2C_MULTI_PORT_CONTROLLER
-	/* Test the controller, not the port */
-	port = i2c_port_to_controller(port);
-#endif
-	/* can't lock a non-existing port */
-	if (port < 0)
-		return 0;
-
-	if (IS_ENABLED(CONFIG_ZEPHYR)) {
-		/*
-		 * For Zephyr: to convert an i2c port enum value to a port
-		 * number in mutex_lock(), this number should be soc's i2c port
-		 * where the i2 device is connected to.
-		 */
-		if (i2c_get_physical_port(port) >= 0)
-			port = i2c_get_physical_port(port);
-	}
-
-	return (i2c_port_active_list >> port) & 1;
-}
-
 const struct i2c_port_t *get_i2c_port(const int port)
 {
 	int i;
@@ -228,10 +199,10 @@ int i2c_xfer_unlocked(const int port,
 	int ret = EC_SUCCESS;
 	uint16_t no_pec_af = addr_flags & ~I2C_FLAG_PEC;
 
-	if (!i2c_port_is_locked(port)) {
-		CPUTS("Access I2C without lock!");
-		return EC_ERROR_INVAL;
-	}
+	//if (!i2c_port_is_locked(port)) {
+	//	CPUTS("Access I2C without lock!");
+	//	return EC_ERROR_INVAL;
+	//}
 
 	for (i = 0; i <= CONFIG_I2C_NACK_RETRY_COUNT; i++) {
 #ifdef CONFIG_ZEPHYR
