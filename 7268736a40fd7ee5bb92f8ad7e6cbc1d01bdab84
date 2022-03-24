@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "43f1fcc3_866faa9e",
+        "filename": "zephyr/shim/chip/mchp/include/system_chip.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2022-03-24T14:52:28Z",
+      "side": 1,
+      "message": "yes, contents are used in shim layer code and for / from common code.",
+      "parentUuid": "95a03008_b35ad4e6",
+      "revId": "7268736a40fd7ee5bb92f8ad7e6cbc1d01bdab84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9e2d1bda_a6665a68",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-03-23T20:07:14Z",
       "side": 1,
       "message": "This does not allow an error return to tell caller that this was not setup, supported, errored or if all went well. Is this really what you want?",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 41
+      },
+      "revId": "7268736a40fd7ee5bb92f8ad7e6cbc1d01bdab84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0039490_711181d1",
+        "filename": "zephyr/shim/chip/mchp/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2022-03-24T14:52:28Z",
+      "side": 1,
+      "message": "yes, not an error return, but trace out error messages for debugging purpose.\nWe Pretty much refer what other vendors do",
+      "parentUuid": "9e2d1bda_a6665a68",
       "range": {
         "startLine": 14,
         "startChar": 0,
