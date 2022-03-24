@@ -9,6 +9,12 @@ choice "Measuring VBUS voltage"
 	prompt "Select how VBUS voltage is measured"
 	optional
 
+config PLATFORM_EC_USB_PD_VBUS_MEASURE_NOT_PRESENT
+	bool "VBUS voltage cannot be read"
+	help
+	  Enable this if the board does not provide any mechanism for the EC to
+	  read the analog VBUS voltage.
+
 config PLATFORM_EC_USB_PD_VBUS_MEASURE_CHARGER
 	bool "On-board charger supports VBUS measurement"
 	help
@@ -37,9 +43,3 @@ endchoice  # Measuring VBUS voltage
 
 endif # PLATFORM_EC_USB_POWER_DELIVERY
 endif # PLATFORM_EC_USBC
-
-config PLATFORM_EC_USB_PD_VBUS_MEASURE_NOT_PRESENT
-	bool "VBUS voltage cannot be read"
-	help
-	  Enable this if the board does not provide any mechanism for the EC to
-	  read the analog VBUS voltage.
