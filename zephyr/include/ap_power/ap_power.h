@@ -21,15 +21,25 @@
  * @brief AP power events for callback notification.
  */
 enum ap_power_events {
+	/* Transition up from G3 to S5 */
 	AP_POWER_PRE_INIT = BIT(0),
+	/* Transitioning up from S5 to S3 */
 	AP_POWER_STARTUP = BIT(1),
+	/* Transitioning up to S0 */
 	AP_POWER_RESUME = BIT(2),
+	/* Transitioning down from S0 */
 	AP_POWER_SUSPEND = BIT(3),
+	/* Transitioning up to S0, run before AP_POWER_RESUME */
 	AP_POWER_RESUME_INIT = BIT(4),
+	/* Transitioning down from S0, run after AP_POWER_SUSPEND */
 	AP_POWER_SUSPEND_COMPLETE = BIT(5),
+	/* Transitioning down to S5 */
 	AP_POWER_SHUTDOWN = BIT(6),
+	/* Transition down to S5 completed */
 	AP_POWER_SHUTDOWN_COMPLETE = BIT(7),
+	/* Transition down from S5 to G3 */
 	AP_POWER_HARD_OFF = BIT(8),
+	/* Software reset occurred */
 	AP_POWER_RESET = BIT(9),
 };
 
