@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c121bc29_0369ed5a",
+        "filename": "zephyr/projects/intelrvp/adlrvp/adlrvp_npcx/adlrvp_npcx.dts",
+        "patchSetId": 32
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-03-24T22:10:16Z",
+      "side": 1,
+      "message": "BOM ID[2:0] : IOEX[15:14, 0]",
+      "range": {
+        "startLine": 68,
+        "startChar": 2,
+        "endLine": 68,
+        "endChar": 24
+      },
+      "revId": "4196c148987836d44b4110c1c55a848c85d4e660",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd8a8317_fa6b5cef",
+        "filename": "zephyr/projects/intelrvp/adlrvp/adlrvp_npcx/adlrvp_npcx.dts",
+        "patchSetId": 32
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-03-24T22:10:16Z",
+      "side": 1,
+      "message": "nit: try keep the pins in ascending or descending order like in board-gpios",
+      "revId": "4196c148987836d44b4110c1c55a848c85d4e660",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6de4d926_ab315176",
+        "filename": "zephyr/projects/intelrvp/adlrvp/adlrvp_npcx/adlrvp_npcx.dts",
+        "patchSetId": 32
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-03-24T22:10:16Z",
+      "side": 1,
+      "message": "FAB ID [1:0]: IOEX[2:1]",
+      "range": {
+        "startLine": 71,
+        "startChar": 5,
+        "endLine": 71,
+        "endChar": 18
+      },
+      "revId": "4196c148987836d44b4110c1c55a848c85d4e660",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "356fe460_2fd46002",
+        "filename": "zephyr/projects/intelrvp/adlrvp/adlrvp_npcx/adlrvp_npcx.dts",
+        "patchSetId": 32
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-03-24T22:10:16Z",
+      "side": 1,
+      "message": "BOARD ID[5:0] : IOEX[13:8]",
+      "range": {
+        "startLine": 74,
+        "startChar": 0,
+        "endLine": 74,
+        "endChar": 35
+      },
+      "revId": "4196c148987836d44b4110c1c55a848c85d4e660",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04185388_5bb05085",
+        "filename": "zephyr/projects/intelrvp/adlrvp/src/adlrvp.c",
+        "patchSetId": 32
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-03-24T22:10:16Z",
+      "side": 1,
+      "message": "nit: IOExpander that has Board ID information is on DSW-VAL rail on ADL RVP. On cold boot cycles, DSW-VAL rail is taking time to settle. This loop retries to ensure rail is settled and read is successful.",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 70
+      },
+      "revId": "4196c148987836d44b4110c1c55a848c85d4e660",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
