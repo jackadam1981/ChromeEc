@@ -2450,4 +2450,9 @@ extern struct jump_data mock_jump_data;
 #define CONFIG_USB_PD_REQUIRE_AP_MODE_ENTRY
 #endif
 
+#undef CONFIG_IO_EXPANDER_CCGXXF
+#ifdef CONFIG_PLATFORM_EC_IOEX_CCGXXF
+#define CONFIG_IO_EXPANDER_CCGXXF
+#endif
+
 #endif  /* __CROS_EC_CONFIG_CHIP_H */
