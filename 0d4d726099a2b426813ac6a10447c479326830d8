@@ -95,6 +95,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "39b4ecc3_29177aa4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-03-24T23:48:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2147291e_2b3bf8a2",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 54
+      },
+      "revId": "0d4d726099a2b426813ac6a10447c479326830d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fac1a4b3_61c4f306",
@@ -118,6 +142,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "453e3ed6_d442902b",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-03-24T23:48:35Z",
+      "side": 1,
+      "message": "Good idea, I was not familiar with `os.pardir` but I agree it\u0027s better then `../`",
+      "parentUuid": "fac1a4b3_61c4f306",
+      "range": {
+        "startLine": 208,
+        "startChar": 53,
+        "endLine": 208,
+        "endChar": 56
+      },
+      "revId": "0d4d726099a2b426813ac6a10447c479326830d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "45630882_2e7e09c6",
@@ -131,6 +179,30 @@
       "writtenOn": "2022-03-23T21:40:56Z",
       "side": 1,
       "message": "Would it make sense to pull the `import` and path related code out and move it to the top (outside of the class)? Importing within a method always feels a bit weird, but I understand why you did it. I\u0027m not sure what the cleanest way is.",
+      "range": {
+        "startLine": 213,
+        "startChar": 12,
+        "endLine": 213,
+        "endChar": 18
+      },
+      "revId": "0d4d726099a2b426813ac6a10447c479326830d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27eb9049_8297e1f3",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-03-24T23:48:35Z",
+      "side": 1,
+      "message": "That\u0027s a good question and I agree that `import`s normally appear at the top of the file, but in this case I would need to move also a few lines above to modify `sys.path`. Since this module is used exclusively in this function, maybe it\u0027s a valid exception to import it here?\n\nI don\u0027t have a strong opinion. One benefit of the current implementation is that in this section of the code I am already \"protected\" by the `try...except`. This reduces the chances of breaking the public build if things go wrong in unexpected ways here.",
+      "parentUuid": "45630882_2e7e09c6",
       "range": {
         "startLine": 213,
         "startChar": 12,
@@ -178,6 +250,30 @@
       "side": 1,
       "message": "Good catch! This would be useful to avoid confusion. This type of problems is quite difficult to debug when they happen.",
       "parentUuid": "7a9c3ede_59eb42c9",
+      "range": {
+        "startLine": 214,
+        "startChar": 12,
+        "endLine": 215,
+        "endChar": 56
+      },
+      "revId": "0d4d726099a2b426813ac6a10447c479326830d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff1897a7_56a310ee",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-03-24T23:48:35Z",
+      "side": 1,
+      "message": "I implemented this logic at the level above since I don\u0027t have visibility of the public tests from inside this function.",
+      "parentUuid": "3f1fb467_7f02a22f",
       "range": {
         "startLine": 214,
         "startChar": 12,
