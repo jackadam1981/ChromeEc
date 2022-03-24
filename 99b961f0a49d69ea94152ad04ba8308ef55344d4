@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4c9c3a4_965ed1b7",
+        "filename": "board/crota/keyboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2022-03-24T01:19:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2727a42f_559fcbb4",
+      "range": {
+        "startLine": 24,
+        "startChar": 14,
+        "endLine": 24,
+        "endChar": 18
+      },
+      "revId": "99b961f0a49d69ea94152ad04ba8308ef55344d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dddb9031_3e23ec1d",
@@ -54,6 +78,24 @@
       "writtenOn": "2022-03-23T20:39:27Z",
       "side": 1,
       "message": "add a 2nd comment:\nmove caps-lock to T11",
+      "revId": "99b961f0a49d69ea94152ad04ba8308ef55344d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fcb44384_8afaf8ed",
+        "filename": "board/crota/keyboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2022-03-24T01:19:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dddb9031_3e23ec1d",
       "revId": "99b961f0a49d69ea94152ad04ba8308ef55344d4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
