@@ -36,6 +36,12 @@ __override struct keyboard_scan_config keyscan_config = {
 	},
 };
 
+/* Vol-up key matrix at T13 */
+const struct vol_up_key vol_up_key_matrix = {
+	.row = 3,
+	.col = 5,
+};
+
 /* Temperature charging table */
 const struct temp_chg_struct temp_chg_table[] = {
 	[LEVEL_0] = {
@@ -208,6 +214,9 @@ static void board_init(void)
 	/* Enable motion sensor interrupt */
 	gpio_enable_interrupt(GPIO_BASE_IMU_INT_L);
 	gpio_enable_interrupt(GPIO_LID_ACCEL_INT_L);
+
+	/* Set vol up key to T13 */
+	set_vol_up_key(vol_up_key_matrix.row, vol_up_key_matrix.col);
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
