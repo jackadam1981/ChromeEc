@@ -16,6 +16,24 @@
       "message": "So I\u0027m not sure if this shoud be turned on - it causes lots of\nconsole spam when CONFIG_LOG is enabled.\nPerhaps it should only be turned on for individual boards.",
       "revId": "83dc64e5ef30dd3b573e53dec92c6b36b6ad6884",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fddf51a5_b505778d",
+        "filename": "zephyr/boards/arm/npcx9/npcx9_defconfig",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-03-24T17:19:13Z",
+      "side": 1,
+      "message": "I\u0027ll defer that question to Keith.  It does provide useful data about our deep sleep behavior, but I don\u0027t know how often CONFIG_LOG is needed (or if we could set it up to spam less with CONFIG_LOG on)",
+      "parentUuid": "02f70c70_e636fa3f",
+      "revId": "83dc64e5ef30dd3b573e53dec92c6b36b6ad6884",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
