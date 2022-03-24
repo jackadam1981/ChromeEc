@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "633f4ce6_1aea09e2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-03-24T17:55:39Z",
+      "side": 1,
+      "message": "Just a thought: As we add more different types of partners, we might want to think about ways of composing them. This is a malfunctioning sink partner. What if we want a malfunctioning source or DRP partner? We could add new partner implementations for the different scenarios. We could add more malfunction action types for, for instance, failing to GoodCRC different types of messages. Those approaches might get tedious and redundant, though.\n\nIt might be more flexible for writing different kinds of tests if there was a facility in the common partner code that we could use to inject various kinds of malfunctions in any kind of partner.\n\nThis doesn\u0027t need to hold up this CL.",
+      "revId": "072e911b1a22d30ba637d86da4db74e4a08fe19a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
