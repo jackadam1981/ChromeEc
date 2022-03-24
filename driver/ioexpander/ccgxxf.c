@@ -14,10 +14,6 @@
 
 #define CPRINTS(format, args...) cprints(CC_GPIO, format, ## args)
 
-#ifdef CONFIG_IO_EXPANDER_SUPPORT_GET_PORT
-#error "This driver doesn't support get_port function"
-#endif
-
 static inline int ccgxxf_read8(int ioex, int reg, int *data)
 {
 	return i2c_read8(ioex_config[ioex].i2c_host_port,
@@ -133,6 +129,17 @@ static int ccgxxf_enable_interrupt(int ioex, int port, int mask, int enable)
 	return EC_ERROR_UNIMPLEMENTED;
 }
 
+
+#ifdef CONFIG_IO_EXPANDER_SUPPORT_GET_PORT
+
+static int ccgxxf_get_port(int ioex, int port, int *val)
+{
+	return ccgxxf_read8(ioex, port, val);
+}
+
+#endif
+
+
 int ccgxxf_init(int ioex)
 {
 	/* TCPC init of CCGXXF should handle initialization */
@@ -146,4 +153,7 @@ const struct ioexpander_drv ccgxxf_ioexpander_drv = {
 	.get_flags_by_mask	= &ccgxxf_get_flags_by_mask,
 	.set_flags_by_mask	= &ccgxxf_set_flags_by_mask,
 	.enable_interrupt	= &ccgxxf_enable_interrupt,
+#ifdef CONFIG_IO_EXPANDER_SUPPORT_GET_PORT
+	.get_port		= &ccgxxf_get_port,
+#endif
 };
