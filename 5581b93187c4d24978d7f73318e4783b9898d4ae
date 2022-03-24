@@ -1,0 +1,95 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54339d76_7923ed87",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_malfunction_sink.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-03-24T18:17:47Z",
+      "side": 1,
+      "message": "What do you use from this header? Ordinarily, I wouldn\u0027t expect it to be used outside the PD task.",
+      "revId": "5581b93187c4d24978d7f73318e4783b9898d4ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "50d8ec0f_ef706541",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_malfunction_sink.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-03-24T18:17:47Z",
+      "side": 1,
+      "message": "The partner emulator should probably abstract adding and removing actions with functions. The test shouldn\u0027t need to know how this is implemented.",
+      "revId": "5581b93187c4d24978d7f73318e4783b9898d4ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "162ffde9_cbb3cb5e",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_malfunction_sink.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-03-24T18:17:47Z",
+      "side": 1,
+      "message": "It seems a little odd to me to store the actions in the fixture, since their useful lifetime is entirely within the lifetime of a single test. Does k_fifo_put not copy the item into the fifo structure? Even if it did, wouldn\u0027t a local variable outlive the fifo element in this test?",
+      "revId": "5581b93187c4d24978d7f73318e4783b9898d4ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "582146b0_cb64006c",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_malfunction_sink.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-03-24T18:17:47Z",
+      "side": 1,
+      "message": "I find this slightly awkward to follow with the continue and . What about something like this?\n if (expect_hard_reset)\n   zassert_equal(msg-\u003esop, TCPCI_MSG_TX_HARD_RESET)\n else {\n   uint16_t header \u003d ...;\n   zassert_equal(msg-\u003esop, TCPCI_MSG_SOP, ...);\n   zassert_not_equal(PD_HEADER_CNT(header), 0, ...);\n   zassert_equal(PD_HEADER_TYPE(header), PD_DATA_SOURCE_CAP, ...);\n }\n msg_cnt++;\n expect_hard_reset \u003d !expect_hard_reset;\n\nYou could print the logged messages into a buffer and then have that buffer be your error string for the asserts.",
+      "range": {
+        "startLine": 204,
+        "startChar": 0,
+        "endLine": 230,
+        "endChar": 2
+      },
+      "revId": "5581b93187c4d24978d7f73318e4783b9898d4ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e727d972_d890c78e",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_malfunction_sink.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-03-24T18:17:47Z",
+      "side": 1,
+      "message": "This could just be in the `_after` function.",
+      "revId": "5581b93187c4d24978d7f73318e4783b9898d4ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
