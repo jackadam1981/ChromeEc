@@ -22,6 +22,30 @@
       },
       "revId": "c4f19aaf2bb7a33efe58b6c760007baa3539312c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a1f92804_d3780ccb",
+        "filename": "board/gimble/usbc_config.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2022-03-24T01:21:28Z",
+      "side": 1,
+      "message": "https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3533299\n\nCL already be merged.",
+      "parentUuid": "6ecabe2a_3d0f29c0",
+      "range": {
+        "startLine": 190,
+        "startChar": 1,
+        "endLine": 190,
+        "endChar": 16
+      },
+      "revId": "c4f19aaf2bb7a33efe58b6c760007baa3539312c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
