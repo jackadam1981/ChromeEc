@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b8b043e_13c969e9",
+        "filename": "board/kinox/board.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2022-03-24T07:44:31Z",
+      "side": 1,
+      "message": "Do you need to add this? Are you still using the old ps8815? It should be fine to have this but it would be better to confirm that we still need this.",
+      "range": {
+        "startLine": 34,
+        "startChar": 8,
+        "endLine": 34,
+        "endChar": 43
+      },
+      "revId": "731df9762410206829db446c70325bbd60241634",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
