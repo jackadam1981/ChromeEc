@@ -70,6 +70,24 @@
       "parentUuid": "e274e605_fc7cc3a6",
       "revId": "83dc64e5ef30dd3b573e53dec92c6b36b6ad6884",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c2b8445_21d25f20",
+        "filename": "zephyr/boards/arm/npcx9/npcx9_defconfig",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-03-24T21:21:09Z",
+      "side": 1,
+      "message": "Overriding the LOG level seems to work, so I\u0027ll do that.",
+      "parentUuid": "84ebffc1_17ea286b",
+      "revId": "83dc64e5ef30dd3b573e53dec92c6b36b6ad6884",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
