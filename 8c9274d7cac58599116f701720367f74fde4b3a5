@@ -73,6 +73,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a92c38b6_611df12f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2022-03-24T17:19:29Z",
+      "side": 1,
+      "message": "Ack, will create one",
+      "parentUuid": "107822ce_f8c85850",
+      "revId": "8c9274d7cac58599116f701720367f74fde4b3a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "efbf537d_616ff617",
         "filename": "zephyr/shim/chip/mchp/include/flash_chip.h",
         "patchSetId": 1
@@ -111,6 +129,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c64e8a5f_7e247079",
+        "filename": "zephyr/shim/chip/mchp/include/flash_chip.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2022-03-24T17:19:29Z",
+      "side": 1,
+      "message": "yes, only this flash type can be supported, SPI flash is embedded in EC chip.",
+      "parentUuid": "fac662a9_266cd0c8",
+      "revId": "8c9274d7cac58599116f701720367f74fde4b3a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3766ce95_87847f04",
@@ -141,6 +177,24 @@
       "writtenOn": "2022-03-23T22:59:52Z",
       "side": 1,
       "message": "Where does this enum get used? This is an odd name for an emum. (Typically, we would use lowercase.) I\u0027m not sure why the npcx code uses it, but AFAIK, we don\u0027t need to match the enum name here.",
+      "revId": "8c9274d7cac58599116f701720367f74fde4b3a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d299b05c_b5c5fb0e",
+        "filename": "zephyr/shim/chip/mchp/include/rom_chip.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2022-03-24T17:19:29Z",
+      "side": 1,
+      "message": "yes, mchp pretty much refers to what other vendors do.",
+      "parentUuid": "008fe2be_522a5397",
       "revId": "8c9274d7cac58599116f701720367f74fde4b3a5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -215,6 +269,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6ca6e168_d596289b",
+        "filename": "zephyr/shim/chip/mchp/system_external_storage.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2022-03-24T17:19:29Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "2563c16d_5278cbaf",
+      "revId": "8c9274d7cac58599116f701720367f74fde4b3a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7c2c0d28_134b7db4",
         "filename": "zephyr/shim/src/flash.c",
         "patchSetId": 1
@@ -232,6 +304,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ae709316_354d1d5f",
+        "filename": "zephyr/shim/src/flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2022-03-24T17:19:29Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "7c2c0d28_134b7db4",
+      "revId": "8c9274d7cac58599116f701720367f74fde4b3a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a13489b6_39aca1e1",
         "filename": "zephyr/shim/src/flash.c",
         "patchSetId": 1
@@ -243,6 +333,24 @@
       "writtenOn": "2022-03-23T22:59:52Z",
       "side": 1,
       "message": "This should probably be\n #elif IS_ENABLED(CONFIG_SOC_FAMILY_MEC)",
+      "revId": "8c9274d7cac58599116f701720367f74fde4b3a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1576888_3d0b06c1",
+        "filename": "zephyr/shim/src/flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2022-03-24T17:19:29Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a13489b6_39aca1e1",
       "revId": "8c9274d7cac58599116f701720367f74fde4b3a5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
