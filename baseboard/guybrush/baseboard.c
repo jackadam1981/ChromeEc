@@ -1044,6 +1044,7 @@ static void reset_hang_counters(void)
 	soft_sleep_hang_count = 0;
 }
 DECLARE_HOOK(HOOK_CHIPSET_RESUME, reset_hang_counters, HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_CHIPSET_RESET, reset_hang_counters, HOOK_PRIO_DEFAULT);
 
 /**
  * Hard hang detection timers are stopped on any suspend, resume, reset or
