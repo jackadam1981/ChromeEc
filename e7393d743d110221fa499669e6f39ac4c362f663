@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4301e02c_63c8f9f2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 23
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-03-24T19:59:20Z",
+      "side": 1,
+      "message": "can you pls spilt into multiple CL for easy reading?\n1. add SOIX in pow seq, like macros getting state etc\n2. handling Soix states in x86_non_dsx_common_pwrseq_sm_handler.c\n2. host interface power_host_sleep.c",
+      "revId": "e7393d743d110221fa499669e6f39ac4c362f663",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f06cc4ed_dd309703",
+        "filename": "zephyr/shim/include/power_host_sleep.h",
+        "patchSetId": 23
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-03-24T19:59:20Z",
+      "side": 1,
+      "message": "is entire data in this file needed in this CL?",
+      "revId": "e7393d743d110221fa499669e6f39ac4c362f663",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6979cfe_02ecaada",
+        "filename": "zephyr/subsys/ap_pwrseq/ap_power_interface.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-03-24T19:59:20Z",
+      "side": 1,
+      "message": "nit",
+      "range": {
+        "startLine": 52,
+        "startChar": 33,
+        "endLine": 52,
+        "endChar": 34
+      },
+      "revId": "e7393d743d110221fa499669e6f39ac4c362f663",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
