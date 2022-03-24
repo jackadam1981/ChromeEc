@@ -33,6 +33,24 @@
       "message": "Are the led_set_brightness and led_get_brightness_range APIs not required? This might break host command support.",
       "revId": "8b953384e9e738be8dcd56ba6051099ab78af2b3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "738c5550_966c19a8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-03-24T21:37:09Z",
+      "side": 1,
+      "message": "I can certainly add that API.\nThe problem with the host cmd API is that it relies on enums to identify the\nLEDs, and these don\u0027t really map easily to some systems.\nPart of the goal here is to migrate away from the legacy code, but I guess we still need some of these APIs for the moment.",
+      "parentUuid": "d8cc006b_3334371b",
+      "revId": "8b953384e9e738be8dcd56ba6051099ab78af2b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
