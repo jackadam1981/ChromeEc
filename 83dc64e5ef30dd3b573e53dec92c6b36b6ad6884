@@ -52,6 +52,24 @@
       "parentUuid": "02f70c70_e636fa3f",
       "revId": "83dc64e5ef30dd3b573e53dec92c6b36b6ad6884",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84ebffc1_17ea286b",
+        "filename": "zephyr/boards/arm/npcx9/npcx9_defconfig",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-03-24T21:13:08Z",
+      "side": 1,
+      "message": "The problem is the logging, the LOG_INF message in soc/arm/nuvoton_npcx/common/power.c\nI can\u0027t see where the default log level is being set, so maybe it defaults to INF.\nI\u0027ll try and override it to ERR.",
+      "parentUuid": "e274e605_fc7cc3a6",
+      "revId": "83dc64e5ef30dd3b573e53dec92c6b36b6ad6884",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
