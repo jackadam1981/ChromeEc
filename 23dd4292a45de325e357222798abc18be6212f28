@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8dd8860c_fb30ea5c",
+        "filename": "zephyr/dts/bindings/intelrvp/intelrvp-board-id.yaml",
+        "patchSetId": 28
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-03-24T21:40:53Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9d92fc30_682c6183",
+      "range": {
+        "startLine": 7,
+        "startChar": 13,
+        "endLine": 7,
+        "endChar": 30
+      },
+      "revId": "23dd4292a45de325e357222798abc18be6212f28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f97ffd1b_992c94e9",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-03-23T21:32:09Z",
       "side": 1,
       "message": "See my comments on the bug. Zephyr has a PCA95xx GPIO driver that should be used instead of doing direct I2C accesses to the chip.\n\nThat can be fixed in a follow up.",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 60
+      },
+      "revId": "23dd4292a45de325e357222798abc18be6212f28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d05f2ae2_32aefc34",
+        "filename": "zephyr/projects/intelrvp/adlrvp/src/adlrvp.c",
+        "patchSetId": 28
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-03-24T21:40:53Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "f97ffd1b_992c94e9",
       "range": {
         "startLine": 56,
         "startChar": 0,
