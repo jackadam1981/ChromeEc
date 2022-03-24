@@ -77,6 +77,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ded3505d_5cdac460",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_malfunction_sink.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-03-24T18:20:42Z",
+      "side": 1,
+      "message": "*`continue`, similar logic in both branches, and `if` followed by `zassert_unreachable` instead of a direct assert on the conditions.",
+      "parentUuid": "582146b0_cb64006c",
+      "range": {
+        "startLine": 204,
+        "startChar": 0,
+        "endLine": 230,
+        "endChar": 2
+      },
+      "revId": "5581b93187c4d24978d7f73318e4783b9898d4ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e727d972_d890c78e",
         "filename": "zephyr/test/drivers/src/integration/usbc/usb_malfunction_sink.c",
         "patchSetId": 1
