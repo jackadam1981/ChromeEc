@@ -9,3 +9,7 @@ project(wormdingler)
 
 cros_ec_library_include_directories(include)
 
+zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_USBC
+  "src/usb_pd_policy.c"
+  "src/usbc_config.c")
+

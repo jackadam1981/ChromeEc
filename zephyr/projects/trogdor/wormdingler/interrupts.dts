@@ -27,5 +27,45 @@
 			flags = <GPIO_INT_EDGE_BOTH>;
 			handler = "button_interrupt";
 		};
+		int_ac_present: ac_present {
+			irq-pin = <&gpio_acok_od>;
+			flags = <GPIO_INT_EDGE_BOTH>;
+			handler = "extpower_interrupt";
+		};
+		int_usb_c0_tcpc: usb_c0_tcpc {
+			irq-pin = <&gpio_usb_c0_pd_int_odl>;
+			flags = <GPIO_INT_EDGE_FALLING>;
+			handler = "tcpc_alert_event";
+		};
+		int_usb_c1_tcpc: usb_c1_tcpc {
+			irq-pin = <&gpio_usb_c1_pd_int_odl>;
+			flags = <GPIO_INT_EDGE_FALLING>;
+			handler = "tcpc_alert_event";
+		};
+		int_usb_c0_swctl: usb_c0_swctl {
+			irq-pin = <&gpio_usb_c0_swctl_int_odl>;
+			flags = <GPIO_INT_EDGE_FALLING>;
+			handler = "ppc_interrupt";
+		};
+		int_usb_c1_swctl: usb_c1_swctl {
+			irq-pin = <&gpio_usb_c1_swctl_int_odl>;
+			flags = <GPIO_INT_EDGE_FALLING>;
+			handler = "ppc_interrupt";
+		};
+		int_usb_c0_bc12: usb_c0_bc12 {
+			irq-pin = <&gpio_usb_c0_bc12_int_l>;
+			flags = <GPIO_INT_EDGE_FALLING>;
+			handler = "usb0_evt";
+		};
+		int_usb_c1_bc12: usb_c1_bc12 {
+			irq-pin = <&gpio_usb_c1_bc12_int_l>;
+			flags = <GPIO_INT_EDGE_FALLING>;
+			handler = "usb1_evt";
+		};
+		int_ccd_mode: ccd_mode {
+			irq-pin = <&gpio_ccd_mode_odl>;
+			flags = <GPIO_INT_EDGE_FALLING>;
+			handler = "board_connect_c0_sbu";
+		};
 	};
 };
