@@ -16,6 +16,24 @@
       "message": "Can we keep the signature similar to `host_cmd_typec_status` where we return the response?",
       "revId": "eb1d380f81280ad469ca56660a0c8b761fd8d1fd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a668859b_5bb0d4e0",
+        "filename": "zephyr/test/drivers/src/utils.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2022-03-24T14:42:31Z",
+      "side": 1,
+      "message": "I agree that we should keep the same signature, but this is not part of this CL (I only rebased it on current `cros/main`).",
+      "parentUuid": "21b0f174_a8773888",
+      "revId": "eb1d380f81280ad469ca56660a0c8b761fd8d1fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
