@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a89070a5_cc3691e5",
+        "filename": "board/kinox/adc.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1286280
+      },
+      "writtenOn": "2022-03-24T01:49:08Z",
+      "side": 1,
+      "message": "I think 220ms includes jumps RO to RW.\nBecause Compal PWM member says 220ms is star count from the PP3300_Z1 ON.\n\nThe 220ms is SIO\u0027s VBS ON + DCIN_OK.\nThe EC NPCX993FA0BX VSB \u003d PP3300_Z1.\nWhen the adapter plugin then the PP3300_Z1 ON only needs a few ms.",
+      "parentUuid": "b5ad88a5_3ab7beb3",
+      "range": {
+        "startLine": 219,
+        "startChar": 5,
+        "endLine": 219,
+        "endChar": 17
+      },
+      "revId": "84ea3f5a63eeb64d964432451250059486418cae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "89539536_7d05b2ee",
         "filename": "board/kinox/adc.c",
         "patchSetId": 9
