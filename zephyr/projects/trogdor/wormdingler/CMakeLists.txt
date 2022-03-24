@@ -13,3 +13,7 @@ zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_USBC
   "src/usb_pd_policy.c"
   "src/usbc_config.c")
 
+zephyr_library_sources(
+  "src/power.c"
+  "src/switchcap.c")
+

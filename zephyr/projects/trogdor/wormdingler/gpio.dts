@@ -99,12 +99,9 @@
 		gpio_accel_gyro_int_l: accel_gyro_int_l {
 			gpios = <&gpioa 0 GPIO_INPUT>;
 		};
-/*TODO: inport ln9310 to zephyr
-		ln9310_int {
+		gpio_switchcap_pg_int_l: switchcap_pg_int_l {
 			gpios = <&gpioe 2 GPIO_INPUT>;
-			label = "LN9310_INT";
 		};
-*/
 		gpio_ec_rst_odl: ec_rst_odl {
 			gpios = <&gpio0 2 GPIO_INPUT>;
 		};	
@@ -135,7 +132,7 @@
 			gpios = <&gpio5 2 GPIO_OUTPUT_HIGH>;
 		};
 		gpio_switchcap_on: switchcap_on {
-			gpios = <&gpiod 5 GPIO_OUTPUT_LOW>;
+			gpios = <&gpiod 5 (GPIO_ODR_HIGH | GPIO_ACTIVE_LOW)>;
 			enum-name = "GPIO_SWITCHCAP_ON";
 		};
 		gpio_en_pp3300_a: en_pp3300_a {
