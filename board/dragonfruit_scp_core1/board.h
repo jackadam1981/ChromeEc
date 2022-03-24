@@ -36,6 +36,6 @@
 /* SCP_FW_END is used to calc the base of IPI buffer for AP.
  * Provide AP view physical address which include the offset.
  */
-#define SCP_FW_END 0xbf000
+#define SCP_FW_END 0x10000
 
 #endif /* __CROS_EC_BOARD_H */
