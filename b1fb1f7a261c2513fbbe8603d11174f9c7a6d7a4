@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d2313534_2d7d5326",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-03-24T17:46:04Z",
+      "side": 1,
+      "message": "Nit: You might want to split this into one CL to create the mock and another to add the test. That way, we can roll back the test independently if we need to.",
+      "revId": "b1fb1f7a261c2513fbbe8603d11174f9c7a6d7a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f8908c6_236b34df",
+        "filename": "zephyr/test/drivers/src/ppc_sn5s330.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 491,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-03-24T17:46:04Z",
+      "side": 1,
+      "message": "This seems like a slightly odd test approach. The comment in the driver makes it sound like this early return is an optimization to avoid redundant work. Would anything bad happen if this branch wasn\u0027t there?\n\nIf something bad would happen, this seems like a slightly brittle way to test for it. If we realize that we need to change the init function to do one of these writes before the branch, this test will fail. If we change the init function to write an additional register before the branch, and that\u0027s incorrect, this test won\u0027t catch it.\n\nThe branch is based on the idea that init will have already run. I would suggest running init once, setting up your mock, and running init again. Then, in lieu of verifying the individual I2C writes, verify the state of the emulator after the second run. It should be the same as you would expect after one successful init run.\n\nIf there is something bad that can happen from not having this branch, e.g. power being disrupted, then maybe there is a way to directly test that that didn\u0027t happen. You might be able to monitor a register in the emulator that enables a power line. But unless there\u0027s some specific form of bug we\u0027re trying to avoid here, I\u0027d suggest framing the test in terms of the results of `init` rather than what it doesn\u0027t do.",
+      "range": {
+        "startLine": 488,
+        "startChar": 0,
+        "endLine": 491,
+        "endChar": 4
+      },
+      "revId": "b1fb1f7a261c2513fbbe8603d11174f9c7a6d7a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
