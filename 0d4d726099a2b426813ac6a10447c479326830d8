@@ -73,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2147291e_2b3bf8a2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-03-24T02:03:26Z",
+      "side": 1,
+      "message": "Sounds good! I will also remove the second sentence as suggested in the other thread.",
+      "parentUuid": "7781a959_5df1ea25",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 54
+      },
+      "revId": "0d4d726099a2b426813ac6a10447c479326830d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fac1a4b3_61c4f306",
         "filename": "test/run_device_tests.py",
         "patchSetId": 1
@@ -130,6 +154,30 @@
       "writtenOn": "2022-03-23T22:22:18Z",
       "side": 1,
       "message": "Should we check that we don\u0027t overwrite a test if we accidentally use the same name for a public test and private test?",
+      "range": {
+        "startLine": 214,
+        "startChar": 12,
+        "endLine": 215,
+        "endChar": 56
+      },
+      "revId": "0d4d726099a2b426813ac6a10447c479326830d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f1fb467_7f02a22f",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-03-24T02:03:26Z",
+      "side": 1,
+      "message": "Good catch! This would be useful to avoid confusion. This type of problems is quite difficult to debug when they happen.",
+      "parentUuid": "7a9c3ede_59eb42c9",
       "range": {
         "startLine": 214,
         "startChar": 12,
