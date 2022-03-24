@@ -38,8 +38,7 @@ static void connect_sink_to_port(struct usb_pd_ctrl_msg_test_fixture *fixture)
 				      TCPC_REG_POWER_STATUS,
 				      TCPC_REG_POWER_STATUS_VBUS_DET),
 		   NULL);
-	zassume_ok(tcpci_emul_set_reg(fixture->tcpci_emul,
-				      TCPC_REG_EXT_STATUS,
+	zassume_ok(tcpci_emul_set_reg(fixture->tcpci_emul, TCPC_REG_EXT_STATUS,
 				      TCPC_REG_EXT_STATUS_SAFE0V),
 		   NULL);
 	zassume_ok(tcpci_drp_emul_connect_to_tcpci(
@@ -60,8 +59,7 @@ static void connect_sink_to_port(struct usb_pd_ctrl_msg_test_fixture *fixture)
 static void
 disconnect_sink_from_port(struct usb_pd_ctrl_msg_test_fixture *fixture)
 {
-	zassume_ok(tcpci_emul_disconnect_partner(fixture->tcpci_emul),
-		   NULL);
+	zassume_ok(tcpci_emul_disconnect_partner(fixture->tcpci_emul), NULL);
 	k_sleep(K_SECONDS(1));
 }
 
@@ -147,4 +145,45 @@ ZTEST_F(usb_pd_ctrl_msg_test, verify_vconn_swap)
 	snk_resp = host_cmd_typec_status(SNK_PORT);
 	zassert_equal(PD_ROLE_VCONN_OFF, snk_resp.vconn_role,
 		      "SNK Returned vconn_role=%u", snk_resp.vconn_role);
+}
+
+ZTEST_F(usb_pd_ctrl_msg_test, verify_pr_swap)
+{
+	struct ec_response_typec_status snk_resp = { 0 };
+	uint16_t snk_rx_detect = 0;
+	int rv = 0;
+
+	snk_resp = host_cmd_typec_status(SNK_PORT);
+	zassert_equal(PD_ROLE_SINK, snk_resp.power_role,
+		      "SNK Returned power_role=%u", snk_resp.power_role);
+
+	/* TODO (b/227332106): TCPM should be setting RX_DETECT_SOP after
+	 * connection is established
+	 */
+	zassume_ok(tcpci_emul_set_reg(this->tcpci_emul, TCPC_REG_RX_DETECT,
+				      TCPC_REG_RX_DETECT_SOP | snk_rx_detect),
+		   NULL);
+	k_sleep(K_SECONDS(10));
+
+	/* Ignore ACCEPT in common handler for PR Swap request,
+	 * causes soft reset
+	 */
+	tcpci_partner_common_handler_mask_msg(
+		&this->partner_emul.common_data, PD_CTRL_ACCEPT, true);
+
+	/* Send PR_SWAP request */
+	rv = tcpci_partner_send_control_msg(&this->partner_emul.common_data,
+					    PD_CTRL_PR_SWAP, 0);
+	zassert_ok(rv, "Failed to send PR_SWAP request, rv=%d", rv);
+
+	/* Send PS_RDY request */
+	rv = tcpci_partner_send_control_msg(&this->partner_emul.common_data,
+					    PD_CTRL_PS_RDY, 15);
+	zassert_ok(rv, "Failed to send PS_RDY request, rv=%d", rv);
+
+	k_sleep(K_MSEC(20));
+
+	snk_resp = host_cmd_typec_status(SNK_PORT);
+	zassert_equal(PD_ROLE_SOURCE, snk_resp.power_role,
+		      "SNK Returned power_role=%u", snk_resp.power_role);
 }
