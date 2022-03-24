@@ -176,6 +176,30 @@
       },
       "revId": "c59d59273ae08b99a6280a5a7ea617bcb3d4b376",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ffeecf49_be20e312",
+        "filename": "chip/npcx/fan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-03-24T03:20:33Z",
+      "side": 1,
+      "message": "given your observation that the default 7% behaves OK\nand there\u0027s a trend for boards to specify a lower value,\ni think it\u0027s acceptable.",
+      "parentUuid": "4decfc8c_4247de88",
+      "range": {
+        "startLine": 304,
+        "startChar": 2,
+        "endLine": 304,
+        "endChar": 39
+      },
+      "revId": "c59d59273ae08b99a6280a5a7ea617bcb3d4b376",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
