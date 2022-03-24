@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca6683a6_86eb442a",
+        "filename": "zephyr/projects/nissa/src/led.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-03-24T02:04:51Z",
+      "side": 1,
+      "message": "Is the intent to move this out to live in drivers/ instead of being board code at some point?",
+      "revId": "b9c8f7448885bfdac4bcbf90277d232483910a72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
