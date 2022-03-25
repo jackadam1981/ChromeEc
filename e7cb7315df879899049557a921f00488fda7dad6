@@ -1,0 +1,85 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "68f072c6_456bbf97",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_pd_ctrl_msg.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-03-25T18:15:31Z",
+      "side": 1,
+      "message": "In the context of a PR Swap, these names don\u0027t really make sense, and it makes the PR Swap test a little hard to follow. To me, they already seem kind of odd, because both the partner and the TCPM are identified as sinks, but you can\u0027t connect two sinks together. I might suggest something like `tcpc_emul` and `partner_emul`.",
+      "revId": "e7cb7315df879899049557a921f00488fda7dad6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae396510_e43ab8ff",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_pd_ctrl_msg.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-03-25T18:15:31Z",
+      "side": 1,
+      "message": "What is happening here? I would expect that, after a PD connection is established, SOP detect would already be set. In any case, the TCPM should be setting this autonomously. There is a peek of RECEIVE_DETECT, but I don\u0027t see any code to check the register value.",
+      "range": {
+        "startLine": 182,
+        "startChar": 0,
+        "endLine": 189,
+        "endChar": 24
+      },
+      "revId": "e7cb7315df879899049557a921f00488fda7dad6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "beab720b_543a9138",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_pd_ctrl_msg.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-03-25T18:15:31Z",
+      "side": 1,
+      "message": "\u003e \"Igore\" is a possible misspelling of \"Ignore\".\n\nPlease fix.",
+      "parentUuid": "99f2d0e7_efffbc1c",
+      "range": {
+        "startLine": 191,
+        "startChar": 4,
+        "endLine": 191,
+        "endChar": 9
+      },
+      "revId": "e7cb7315df879899049557a921f00488fda7dad6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0242ab4_02dee4d5",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_pd_ctrl_msg.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-03-25T18:15:31Z",
+      "side": 1,
+      "message": "Is this supposed to cause the PR Swap initiated below to fail?",
+      "revId": "e7cb7315df879899049557a921f00488fda7dad6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
