@@ -178,9 +178,6 @@
 		gpio_ec_chg_led_g_c0: ec_chg_led_g_c0 {
 			gpios = <&gpioc 4 GPIO_OUTPUT_LOW>;
 		};
-		gpio_edp_bkltctl: edp_bkltctl {
-			gpios = <&gpiob 7 GPIO_INPUT>;
-		};
 		gpio_wcam_ec_vsync: wcam_ec_vsync {
 			gpios = <&gpioc 0 GPIO_INPUT>;
 		};

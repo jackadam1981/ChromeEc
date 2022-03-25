@@ -10,5 +10,6 @@ register_npcx_project(
         "interrupts.dts",
         "i2c.dts",
         "battery.dts",
+        "pwm.dts",
     ],
 )
