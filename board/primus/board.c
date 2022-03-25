@@ -9,6 +9,7 @@
 #include "charger.h"
 #include "common.h"
 #include "charge_manager.h"
+#include "charge_state.h"
 #include "charge_state_v2.h"
 #include "compile_time_macros.h"
 #include "console.h"
@@ -168,3 +169,12 @@ DECLARE_HOOK(HOOK_CHIPSET_STARTUP, configure_input_current_limit,
 		HOOK_PRIO_DEFAULT);
 DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN_COMPLETE, configure_input_current_limit,
 		HOOK_PRIO_DEFAULT);
+
+/* Called by hook task every 200 ms */
+static void check_battery_RSOC(void)
+{
+	CPRINTS("[SC] DIV_ROUND_NEAREST(charge_get_display_charge(), 10)=%d", DIV_ROUND_NEAREST(charge_get_display_charge(), 10));
+	if (DIV_ROUND_NEAREST(charge_get_display_charge(), 10) <= 3)
+		gpio_set_level(GPIO_EC_PROCHOT_ODL, 0);
+}
+DECLARE_HOOK(HOOK_TICK, check_battery_RSOC, HOOK_PRIO_DEFAULT);
