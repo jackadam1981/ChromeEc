@@ -114,6 +114,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fdf407e1_b04f837b",
+        "filename": "zephyr/shim/chip/mchp/include/flash_chip.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2022-03-25T20:53:16Z",
+      "side": 1,
+      "message": "will add bug ID into.W25X40 should be good, since it is configured in Legacy EC code, same EC chip.",
+      "parentUuid": "efbf537d_616ff617",
+      "range": {
+        "startLine": 9,
+        "startChar": 3,
+        "endLine": 9,
+        "endChar": 7
+      },
+      "revId": "8c9274d7cac58599116f701720367f74fde4b3a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fac662a9_266cd0c8",
         "filename": "zephyr/shim/chip/mchp/include/flash_chip.h",
         "patchSetId": 1
@@ -160,6 +184,24 @@
       "writtenOn": "2022-03-23T22:59:52Z",
       "side": 1,
       "message": "I don\u0027t see `CONFIG_FLASH_SIZE` referenced elsewhere in the shim, but it looks like we have generic code to set `CONFIG_FLASH_SIZE_BYTES` in `zephyr/shim/include/config_chip.h`. Does this need to be set here?",
+      "revId": "8c9274d7cac58599116f701720367f74fde4b3a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6459f293_9aeb9e43",
+        "filename": "zephyr/shim/chip/mchp/include/flash_chip.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2022-03-25T20:53:16Z",
+      "side": 1,
+      "message": "yes, can be removed.",
+      "parentUuid": "3766ce95_87847f04",
       "revId": "8c9274d7cac58599116f701720367f74fde4b3a5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -218,6 +260,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "916d2834_001b514f",
+        "filename": "zephyr/shim/chip/mchp/include/rom_chip.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2022-03-25T20:53:16Z",
+      "side": 1,
+      "message": "yes, this header file can be deleted, we copied from other vendors\u0027 at the beginning.",
+      "parentUuid": "f49d83c8_8458e4b1",
+      "revId": "8c9274d7cac58599116f701720367f74fde4b3a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a7c2cad4_47e6bfc6",
         "filename": "zephyr/shim/chip/mchp/include/rom_chip.h",
         "patchSetId": 1
@@ -235,6 +295,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9c669223_75245b8e",
+        "filename": "zephyr/shim/chip/mchp/include/rom_chip.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2022-03-25T20:53:16Z",
+      "side": 1,
+      "message": "can be removed. thanks.",
+      "parentUuid": "a7c2cad4_47e6bfc6",
+      "revId": "8c9274d7cac58599116f701720367f74fde4b3a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "32cb4128_a9ba2544",
         "filename": "zephyr/shim/chip/mchp/system_download_from_flash.c",
         "patchSetId": 1
@@ -246,6 +324,24 @@
       "writtenOn": "2022-03-23T22:59:52Z",
       "side": 1,
       "message": "Did you mean to leave this in? This probably shouldn\u0027t go in our production code.",
+      "revId": "8c9274d7cac58599116f701720367f74fde4b3a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a2bc6f7_661cfdba",
+        "filename": "zephyr/shim/chip/mchp/system_download_from_flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2022-03-25T20:53:16Z",
+      "side": 1,
+      "message": "agree, this is for debugging purpose, can be removed",
+      "parentUuid": "32cb4128_a9ba2544",
       "revId": "8c9274d7cac58599116f701720367f74fde4b3a5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
