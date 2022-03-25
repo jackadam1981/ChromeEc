@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "48827588_d8fec0d7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2022-03-25T23:48:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a6c43d45_38de6c06",
+      "range": {
+        "startLine": 7,
+        "startChar": 8,
+        "endLine": 7,
+        "endChar": 45
+      },
+      "revId": "aa678f4a4288273559b2924a76a0eb8d5af9be41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "094d612c_0dcd86ec",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-03-25T20:45:25Z",
       "side": 1,
       "message": "you could just write this as \"2 * SECOND\".\nthat does seem like a long time to defer setting the alt function,\nbut i see from your scope shots that the SoC really takes a long time\nin the cold boot case 😞",
+      "range": {
+        "startLine": 43,
+        "startChar": 38,
+        "endLine": 43,
+        "endChar": 49
+      },
+      "revId": "aa678f4a4288273559b2924a76a0eb8d5af9be41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e13fa4d2_cc2527af",
+        "filename": "board/primus/ps2.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2022-03-25T23:48:04Z",
+      "side": 1,
+      "message": "yeah, the PLTRST takes long time.",
+      "parentUuid": "094d612c_0dcd86ec",
       "range": {
         "startLine": 43,
         "startChar": 38,
