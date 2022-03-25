@@ -69,6 +69,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d00f1c7_942d3a8b",
+        "filename": "docs/usb-tcpmv2.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-03-25T16:29:13Z",
+      "side": 1,
+      "message": "The link is broken, so it would be irritating to readers inside Google, too.\n\nI\u0027m a little conflicted here. Our public docs shouldn\u0027t have non-public links. OTOH, leaving breadcrumbs to ongoing development makes the codebase more discoverable and increases the likelihood of this doc being updated when this caveat is no longer needed. I think I could make the case that this hotlist could be publicly visible, but that\u0027s out of scope for this review.\n\nI\u0027ll leave it out for now.",
+      "parentUuid": "f01e69d9_e85525a6",
+      "revId": "fa358268f3c6b775ce06df0e0049118182892230",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b6b4b77e_a287c8cd",
@@ -82,6 +100,24 @@
       "writtenOn": "2022-03-25T15:56:41Z",
       "side": 1,
       "message": "nit: active cable with SOP\u0027\u0027 support.  I believe only SOP\u0027 is Normative",
+      "revId": "fa358268f3c6b775ce06df0e0049118182892230",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e0ac886_dbb0b45a",
+        "filename": "docs/usb-tcpmv2.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-03-25T16:29:13Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "b6b4b77e_a287c8cd",
       "revId": "fa358268f3c6b775ce06df0e0049118182892230",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
