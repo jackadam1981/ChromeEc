@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90fcf308_74557f9c",
+        "filename": "zephyr/include/ap_power/ap_power.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-03-25T03:29:46Z",
+      "side": 1,
+      "message": "For this event, and for AP_POWER_SUSPEND_COMPLETE, I think these are gated on a CONFIG item. I am not sure why, but it may mean that some of these events are never generated depending on the CONFIG.",
+      "revId": "6bb3b99ea5c7cba619b5ee6f39c61780a8fb701a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
