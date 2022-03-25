@@ -10,6 +10,10 @@
 #include "queue.h"
 #include "registers.h"
 
+#ifdef HAVE_PRIVATE_MT8186
+#include "venc_h264_srv.h"
+#endif
+
 enum venc_type {
 	VENC_H264,
 	VENC_MAX,
@@ -24,7 +28,11 @@ struct venc_msg {
 
 BUILD_ASSERT(member_size(struct venc_msg, msg) <= CONFIG_IPC_SHARED_OBJ_BUF_SIZE);
 
+#ifdef HAVE_PRIVATE_MT8183
+#ifndef HAVE_PRIVATE_MT8186
 /* Functions provided by private overlay. */
 void venc_h264_msg_handler(void *data);
+#endif
+#endif
 
 #endif /* __CROS_EC_SCP_VENC_H */
