@@ -15,6 +15,7 @@
 			rpm_start = <2200>;
 			rpm_max = <4200>;
 			tach = <&tach2>;
+			enable_gpio = <&gpio_fan_control>;
 		};
 	};
 };
