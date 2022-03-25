@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb194ae2_b4a1f304",
+        "filename": "util/fptool_unitest.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1528447
+      },
+      "writtenOn": "2022-03-25T00:46:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "171068e2_c1a13647",
+      "range": {
+        "startLine": 53,
+        "startChar": 11,
+        "endLine": 62,
+        "endChar": 34
+      },
+      "revId": "b75364c015e477d74fcb67fe781314e842fbb9d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c8189696_85889ddc",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-03-22T18:21:02Z",
       "side": 1,
       "message": "camelcase: `LsbvalTest`",
+      "range": {
+        "startLine": 226,
+        "startChar": 6,
+        "endLine": 226,
+        "endChar": 16
+      },
+      "revId": "b75364c015e477d74fcb67fe781314e842fbb9d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ce505a3_10bfeab0",
+        "filename": "util/fptool_unitest.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1528447
+      },
+      "writtenOn": "2022-03-25T00:46:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c8189696_85889ddc",
       "range": {
         "startLine": 226,
         "startChar": 6,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "72bad84d_33914f5a",
+        "filename": "util/fptool_unitest.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1528447
+      },
+      "writtenOn": "2022-03-25T00:46:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e4135321_48da69fd",
+      "range": {
+        "startLine": 266,
+        "startChar": 6,
+        "endLine": 266,
+        "endChar": 22
+      },
+      "revId": "b75364c015e477d74fcb67fe781314e842fbb9d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "84121532_11ec94f3",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-03-22T18:21:02Z",
       "side": 1,
       "message": "It looks like there is no test case for the successful case. e.g., `test_success`",
+      "range": {
+        "startLine": 294,
+        "startChar": 6,
+        "endLine": 294,
+        "endChar": 28
+      },
+      "revId": "b75364c015e477d74fcb67fe781314e842fbb9d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2859f6a0_f591b15f",
+        "filename": "util/fptool_unitest.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 294,
+      "author": {
+        "id": 1528447
+      },
+      "writtenOn": "2022-03-25T00:46:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "84121532_11ec94f3",
       "range": {
         "startLine": 294,
         "startChar": 6,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9bcad55_31cd7ab6",
+        "filename": "util/fptool_unitest.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1528447
+      },
+      "writtenOn": "2022-03-25T00:46:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "55635b61_671e9c23",
+      "range": {
+        "startLine": 304,
+        "startChar": 16,
+        "endLine": 304,
+        "endChar": 66
+      },
+      "revId": "b75364c015e477d74fcb67fe781314e842fbb9d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e000a6ea_479174e5",
@@ -129,6 +249,30 @@
       "writtenOn": "2022-03-22T18:21:02Z",
       "side": 1,
       "message": "This isn\u0027t necessary, since `self.assertRaises` will check the type: https://docs.python.org/3.6/library/unittest.html#unittest.TestCase.assertRaises",
+      "range": {
+        "startLine": 316,
+        "startChar": 16,
+        "endLine": 316,
+        "endChar": 66
+      },
+      "revId": "b75364c015e477d74fcb67fe781314e842fbb9d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe2bd7ec_651fb9fa",
+        "filename": "util/fptool_unitest.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 316,
+      "author": {
+        "id": 1528447
+      },
+      "writtenOn": "2022-03-25T00:46:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e000a6ea_479174e5",
       "range": {
         "startLine": 316,
         "startChar": 16,
@@ -162,6 +306,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "99b67821_46bc2cb4",
+        "filename": "util/fptool_unitest.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1528447
+      },
+      "writtenOn": "2022-03-25T00:46:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1ea7a4e4_1b243a51",
+      "range": {
+        "startLine": 328,
+        "startChar": 16,
+        "endLine": 328,
+        "endChar": 66
+      },
+      "revId": "b75364c015e477d74fcb67fe781314e842fbb9d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "171b85bb_8c4f2763",
@@ -185,6 +353,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "682b6f88_f95360bc",
+        "filename": "util/fptool_unitest.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1528447
+      },
+      "writtenOn": "2022-03-25T00:46:52Z",
+      "side": 1,
+      "message": "Created the correct tests this time",
+      "parentUuid": "171b85bb_8c4f2763",
+      "range": {
+        "startLine": 333,
+        "startChar": 4,
+        "endLine": 333,
+        "endChar": 40
+      },
+      "revId": "b75364c015e477d74fcb67fe781314e842fbb9d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a16a1803_831eecb2",
@@ -198,6 +390,30 @@
       "writtenOn": "2022-03-22T18:21:02Z",
       "side": 1,
       "message": "It looks like this never gets executed because calling `fptool.get_default_firmware()` raises `SystemExit`, which is caught by `with self.assertRaises(SystemExit)`.",
+      "range": {
+        "startLine": 341,
+        "startChar": 0,
+        "endLine": 344,
+        "endChar": 73
+      },
+      "revId": "b75364c015e477d74fcb67fe781314e842fbb9d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f04ef51_952c7df7",
+        "filename": "util/fptool_unitest.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1528447
+      },
+      "writtenOn": "2022-03-25T00:46:52Z",
+      "side": 1,
+      "message": "Thank you for catching that, it is a bug",
+      "parentUuid": "a16a1803_831eecb2",
       "range": {
         "startLine": 341,
         "startChar": 0,
