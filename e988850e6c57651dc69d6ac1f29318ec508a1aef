@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac0a4a52_992e1a7d",
+        "filename": "zephyr/projects/intelrvp/src/board_version.c",
+        "patchSetId": 33
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-03-25T04:34:34Z",
+      "side": 1,
+      "message": "nit: pls move to adlrvp.c\nthese can change based on the board (MTL \u0026 ADL are same though)",
+      "revId": "e988850e6c57651dc69d6ac1f29318ec508a1aef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
