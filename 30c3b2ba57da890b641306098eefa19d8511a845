@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ef3effa_b6275d67",
+        "filename": "board/primus/cbi_ssfc.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2022-03-25T23:50:11Z",
+      "side": 1,
+      "message": "Add one bit for it",
+      "parentUuid": "e8b378cc_f71cf1d8",
+      "revId": "30c3b2ba57da890b641306098eefa19d8511a845",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "620ba90a_f12ab7b3",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-03-25T20:28:48Z",
       "side": 1,
       "message": "31",
+      "revId": "30c3b2ba57da890b641306098eefa19d8511a845",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "99899cf8_0c40e36f",
+        "filename": "board/primus/cbi_ssfc.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2022-03-25T23:50:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "620ba90a_f12ab7b3",
       "revId": "30c3b2ba57da890b641306098eefa19d8511a845",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
