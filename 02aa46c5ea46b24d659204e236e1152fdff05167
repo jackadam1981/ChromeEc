@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9fa6b88_80229b08",
+        "filename": "util/fptool_unitest.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1528447
+      },
+      "writtenOn": "2022-03-25T00:46:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c4f6ba72_8a323157",
+      "range": {
+        "startLine": 61,
+        "startChar": 12,
+        "endLine": 61,
+        "endChar": 62
+      },
+      "revId": "02aa46c5ea46b24d659204e236e1152fdff05167",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7e7cd7a4_1eb5e479",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-03-22T17:55:56Z",
       "side": 1,
       "message": "This isn\u0027t necessary, since `self.assertRaises` will check the type: https://docs.python.org/3.6/library/unittest.html#unittest.TestCase.assertRaises",
+      "range": {
+        "startLine": 70,
+        "startChar": 12,
+        "endLine": 70,
+        "endChar": 62
+      },
+      "revId": "02aa46c5ea46b24d659204e236e1152fdff05167",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "55aebe89_7ac96953",
+        "filename": "util/fptool_unitest.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1528447
+      },
+      "writtenOn": "2022-03-25T00:46:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7e7cd7a4_1eb5e479",
       "range": {
         "startLine": 70,
         "startChar": 12,
