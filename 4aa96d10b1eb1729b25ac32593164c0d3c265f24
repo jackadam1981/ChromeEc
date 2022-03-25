@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "217a2989_47443196",
+        "filename": "zephyr/projects/herobrine/src/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2022-03-25T23:40:32Z",
+      "side": 0,
+      "message": "This function also touches vbus which was causing it to open for approximately 8mS. My change seems to work but was it intended behavior to enable or disable vbus, depending on vbus_en[port], when setting the Rp?",
+      "range": {
+        "startLine": 83,
+        "startChar": 1,
+        "endLine": 83,
+        "endChar": 33
+      },
+      "revId": "4aa96d10b1eb1729b25ac32593164c0d3c265f24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
