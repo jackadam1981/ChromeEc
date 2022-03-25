@@ -21,7 +21,11 @@
  * @brief AP power events for callback notification.
  */
 enum ap_power_events {
-	/* Transition up from G3 to S5 */
+	/**
+	 * Transitioning from hard-off to soft-off.
+	 *
+	 * On x86 this is the transition up from G3 to S5.
+	 */
 	AP_POWER_PRE_INIT = BIT(0),
 	/* Transitioning up from S5 to S3 */
 	AP_POWER_STARTUP = BIT(1),
