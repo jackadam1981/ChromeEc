@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "06c80cdf_a429c0ad",
+        "filename": "board/primus/vif_override.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2022-03-25T02:45:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "13d3461f_f435702f",
+      "range": {
+        "startLine": 34,
+        "startChar": 26,
+        "endLine": 34,
+        "endChar": 45
+      },
+      "revId": "a896aa965360e20630cd1abaf02fd8b1d973e628",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2f22f6d7_2c0172f8",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-03-25T02:21:29Z",
       "side": 1,
       "message": "2, i think.\n\nVIF spec section 3.2.12 lists 3 as an option when USB4 host\nis not supported. i\u0027m surprised the VIF editor didn\u0027t flag this.\n\nin any case, the ports should match.",
+      "range": {
+        "startLine": 101,
+        "startChar": 36,
+        "endLine": 101,
+        "endChar": 43
+      },
+      "revId": "a896aa965360e20630cd1abaf02fd8b1d973e628",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d828212d_38684c83",
+        "filename": "board/primus/vif_override.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2022-03-25T02:45:28Z",
+      "side": 1,
+      "message": "Done.\n\nThe VIF editor select 2 PDUSB Peripheral by itself. It was fixed to 2(even I set 3 PSD in .xml) and cannot be modify. I think that why it didn\u0027t show error.",
+      "parentUuid": "2f22f6d7_2c0172f8",
       "range": {
         "startLine": 101,
         "startChar": 36,
