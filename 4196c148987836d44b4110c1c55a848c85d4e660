@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "25457638_71fd79a6",
+        "filename": "zephyr/projects/intelrvp/CMakeLists.txt",
+        "patchSetId": 32
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-03-25T02:34:36Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "54466af6_32b433b8",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 63
+      },
+      "revId": "4196c148987836d44b4110c1c55a848c85d4e660",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "00306cd1_b812fb1d",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-03-24T22:24:52Z",
       "side": 1,
       "message": "Use `cros_ec_library_include_directories` instead.",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 26
+      },
+      "revId": "4196c148987836d44b4110c1c55a848c85d4e660",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9607b98e_ae760a0b",
+        "filename": "zephyr/projects/intelrvp/adlrvp/CMakeLists.txt",
+        "patchSetId": 32
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-03-25T02:34:36Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "00306cd1_b812fb1d",
       "range": {
         "startLine": 5,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "83ba53ab_1fa643a4",
+        "filename": "zephyr/projects/intelrvp/adlrvp/adlrvp_npcx/adlrvp_npcx.dts",
+        "patchSetId": 32
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-03-25T02:34:36Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c121bc29_0369ed5a",
+      "range": {
+        "startLine": 68,
+        "startChar": 2,
+        "endLine": 68,
+        "endChar": 24
+      },
+      "revId": "4196c148987836d44b4110c1c55a848c85d4e660",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cd8a8317_fa6b5cef",
@@ -87,6 +159,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5f9e1e7_2dab24fd",
+        "filename": "zephyr/projects/intelrvp/adlrvp/adlrvp_npcx/adlrvp_npcx.dts",
+        "patchSetId": 32
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-03-25T02:34:36Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "cd8a8317_fa6b5cef",
+      "revId": "4196c148987836d44b4110c1c55a848c85d4e660",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6de4d926_ab315176",
@@ -100,6 +190,30 @@
       "writtenOn": "2022-03-24T22:10:16Z",
       "side": 1,
       "message": "FAB ID [1:0]: IOEX[2:1]",
+      "range": {
+        "startLine": 71,
+        "startChar": 5,
+        "endLine": 71,
+        "endChar": 18
+      },
+      "revId": "4196c148987836d44b4110c1c55a848c85d4e660",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "abbeb9a0_4f8545c1",
+        "filename": "zephyr/projects/intelrvp/adlrvp/adlrvp_npcx/adlrvp_npcx.dts",
+        "patchSetId": 32
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-03-25T02:34:36Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "6de4d926_ab315176",
       "range": {
         "startLine": 71,
         "startChar": 5,
@@ -133,6 +247,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3ad36ca_7186ddde",
+        "filename": "zephyr/projects/intelrvp/adlrvp/adlrvp_npcx/adlrvp_npcx.dts",
+        "patchSetId": 32
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-03-25T02:34:36Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "356fe460_2fd46002",
+      "range": {
+        "startLine": 74,
+        "startChar": 0,
+        "endLine": 74,
+        "endChar": 35
+      },
+      "revId": "4196c148987836d44b4110c1c55a848c85d4e660",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "04185388_5bb05085",
@@ -156,6 +294,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "72c5a8f9_03f34a7c",
+        "filename": "zephyr/projects/intelrvp/adlrvp/src/adlrvp.c",
+        "patchSetId": 32
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-03-25T02:34:36Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "04185388_5bb05085",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 70
+      },
+      "revId": "4196c148987836d44b4110c1c55a848c85d4e660",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4fa04eb3_f067f63c",
@@ -169,6 +331,30 @@
       "writtenOn": "2022-03-24T22:24:52Z",
       "side": 1,
       "message": "You should move the allocation of these structures into a C source file.  \n\nPutting this here will allocate storage for every C source file that includes intelrvp.h.  This definitions should also be marked `const`.\n\nI suggest intel_rvp_board_id.c.  You should also follow the Zephyr driver convention and include this definition at the top of the file:\n\n```\n#define DT_DRV_COMPAT intel_rvp_board_id\n```\n\nYou can the use the Zephyr helper macros that rely on `DT_DRV_COMPAT` to create the arrays.  Also see `GPIO_DT_SPEC_GET_BY_IDX` which is already setup to fully initialize a `gpio_dt_spec` structure.",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 0
+      },
+      "revId": "4196c148987836d44b4110c1c55a848c85d4e660",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8af5aa41_82b08e11",
+        "filename": "zephyr/projects/intelrvp/include/intelrvp.h",
+        "patchSetId": 32
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-03-25T02:34:36Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "4fa04eb3_f067f63c",
       "range": {
         "startLine": 39,
         "startChar": 0,
