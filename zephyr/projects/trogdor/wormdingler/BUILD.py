@@ -6,10 +6,11 @@ register_npcx_project(
     project_name="wormdingler",
     zephyr_board="npcx7",
     dts_overlays=[
+        "adc.dts",
+        "battery.dts",
         "gpio.dts",
         "interrupts.dts",
         "i2c.dts",
-        "battery.dts",
         "pwm.dts",
     ],
 )
