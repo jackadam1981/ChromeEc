@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7706600a_b6f165c2",
+        "filename": "board/primus/ps2.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2022-03-25T23:52:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bd87a6e4_4dc2616f",
+      "range": {
+        "startLine": 19,
+        "startChar": 19,
+        "endLine": 19,
+        "endChar": 31
+      },
+      "revId": "2f17005982c7dec5203523d66bd19a43c4e5fc7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e0599b54_d051f149",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-03-25T20:57:32Z",
       "side": 1,
       "message": "is the delay needed for the trackpoint to process the command?\n\nmaybe add a #defined for it and add another helper function\nso you only need to pass the command\n\n f(uint8_t cmd)\n {\n   ps2_transmit_byte(PRIMUS_PS2_CH, cmd);\n   msleep(SOME_DELAY);\n }",
+      "range": {
+        "startLine": 61,
+        "startChar": 8,
+        "endLine": 61,
+        "endChar": 10
+      },
+      "revId": "2f17005982c7dec5203523d66bd19a43c4e5fc7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9b0f54b_0c20182a",
+        "filename": "board/primus/ps2.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2022-03-25T23:52:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e0599b54_d051f149",
       "range": {
         "startLine": 61,
         "startChar": 8,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4f2d741_ceeaf662",
+        "filename": "board/primus/ps2.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2022-03-25T23:52:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fadf8242_686e9a67",
+      "range": {
+        "startLine": 95,
+        "startChar": 29,
+        "endLine": 95,
+        "endChar": 39
+      },
+      "revId": "2f17005982c7dec5203523d66bd19a43c4e5fc7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4f66fa73_18f58916",
@@ -93,6 +165,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "691291f0_615c2c2d",
+        "filename": "board/primus/ps2.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2022-03-25T23:52:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4f66fa73_18f58916",
+      "range": {
+        "startLine": 113,
+        "startChar": 35,
+        "endLine": 113,
+        "endChar": 39
+      },
+      "revId": "2f17005982c7dec5203523d66bd19a43c4e5fc7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "26f78c1a_d208e5bb",
@@ -106,6 +202,24 @@
       "writtenOn": "2022-03-25T21:02:16Z",
       "side": 1,
       "message": "Convention: please add header guard, for example\n#ifndef __CROS_EC_PRIMUS_PS2_H\n#define __CROS_EC_PRIMUS_PS2_H",
+      "revId": "2f17005982c7dec5203523d66bd19a43c4e5fc7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b8e4f048_231dbdbd",
+        "filename": "board/primus/ps2.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2022-03-25T23:52:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "26f78c1a_d208e5bb",
       "revId": "2f17005982c7dec5203523d66bd19a43c4e5fc7a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
