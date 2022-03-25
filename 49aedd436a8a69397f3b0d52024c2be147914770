@@ -117,6 +117,30 @@
       },
       "revId": "49aedd436a8a69397f3b0d52024c2be147914770",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7887c40_a5031fb6",
+        "filename": "util/fptool.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1528447
+      },
+      "writtenOn": "2022-03-25T00:59:28Z",
+      "side": 1,
+      "message": "\u003e It sounds like the code would be a lot simpler if we used the  gpiodetect  and  gpiofind  APIs. \n\nI absolutely agree, and this is the correct say, only hard coded names\n\n\u003e how about we use those APIs by default and hardcode the GPIOs for the older devices\n\nWould you prefer to remove the `gpio-ranges` parser and hardcode the gpio `index + base` the way `flash_fp_mcu` is currently implemented?\n\n\u003e Is the issue that we\u0027re missing names for some of the GPIOs that we care about?\n\nYes, most devices do support the API, however, as the signals\u0027 names are missing, we should rely on the GPIOs\u0027 indices instead\n\n\u003e Another suggestion: the first step is converting `flash_fp_mcu` as it exists today with hardcoded GPIOs and the next step is adding the  gpiofind / gpiodetect  logic.\n\n`flash_fp_mcu` relies on the `libgpiod` API for \u0027Herobrine\u0027 and \u0027Strongbad\u0027 and on hardcoded indices for the rest.\nBoth methods are required.\nTo simplify, as you suggested, I can refer to all the \u0027unnamed\u0027 GPIOs by hardcoded indices and not parse the `gpio-ranges`, and keep `gpiodetect` and `gpiofind` for the rest\n\nAlternatively, as most devices do support the `gpiodetect` and `gpiofind` APIs, instead of using hardcoded gpio indices, I can mock the `gpiofind` output something in the vicinity of:\n```\ndef gpiofind_brya(self, name: str) -\u003e list\n    gpios \u003d {\u0027FPMCU_BOOT0\u0027: \u0027gpiochip0 99\u0027,\n             \u0027FP_RST_L\u0027: \u0027gpiochip0 100\u0027,\n             \u0027FPMCU_PWR_EN\u0027: gpiochip0 101\u0027}\n             \n    return [0, gpios[name]]\n```",
+      "parentUuid": "4cb87d5e_ac9de056",
+      "range": {
+        "startLine": 89,
+        "startChar": 0,
+        "endLine": 93,
+        "endChar": 29
+      },
+      "revId": "49aedd436a8a69397f3b0d52024c2be147914770",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
