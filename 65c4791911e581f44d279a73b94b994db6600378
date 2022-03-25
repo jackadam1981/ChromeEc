@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e5df34db_af96971d",
+        "filename": "zephyr/projects/herobrine/src/villager/gpio.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2022-03-25T04:09:29Z",
+      "side": 1,
+      "message": "update",
+      "parentUuid": "daea29b4_4ef0b649",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 2
+      },
+      "revId": "65c4791911e581f44d279a73b94b994db6600378",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e6319f74_0f5b4932",
         "filename": "zephyr/projects/herobrine/src/villager/gpio.dts",
         "patchSetId": 1
@@ -37,6 +61,24 @@
       "writtenOn": "2022-03-23T22:17:15Z",
       "side": 1,
       "message": "Should this be ec_chg_led_y_c0? (For Amber)",
+      "revId": "65c4791911e581f44d279a73b94b994db6600378",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e144e2ae_8d81c1a7",
+        "filename": "zephyr/projects/herobrine/src/villager/gpio.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2022-03-25T04:09:29Z",
+      "side": 1,
+      "message": "yes, it is Amber",
+      "parentUuid": "e6319f74_0f5b4932",
       "revId": "65c4791911e581f44d279a73b94b994db6600378",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
