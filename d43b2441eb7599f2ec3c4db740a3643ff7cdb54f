@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "913680e3_7a7d5f28",
+        "filename": "zephyr/shim/chip/it8xxx2/power_policy.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2022-03-25T14:49:20Z",
+      "side": 1,
+      "message": "This seems odd that the name of this function is exactly the same and yet the meaning is the opposite... but used exactly the same as it did before.  Can you help me understand why this was looking for the state lock to be not active and now it is looking for the state lock to be active?",
+      "range": {
+        "startLine": 32,
+        "startChar": 7,
+        "endLine": 32,
+        "endChar": 37
+      },
+      "revId": "d43b2441eb7599f2ec3c4db740a3643ff7cdb54f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
