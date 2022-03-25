@@ -34,6 +34,29 @@
       "parentUuid": "48e3e185_7f5dc01a",
       "revId": "b020ad47399aa346d657c8b80c471740674abdb5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "42f3da52_de468626",
+        "filename": "zephyr/projects/intelrvp/mtlrvp/src/mtlrvp.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-03-25T02:33:39Z",
+      "side": 1,
+      "message": "We can use common code from this CL: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3462922/33/zephyr/projects/intelrvp/src/board_version.c\n\nTo use this, You need to \n1. Enable CONFIG_GPIO_PCA95XX\u003dy : https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3462922/33/zephyr/projects/intelrvp/adlrvp/prj.conf\n\n2. Enable pca95xx controller and configure RVP BORAD_ID ioex gpio controller pins: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3462922/33/zephyr/projects/intelrvp/adlrvp/adlrvp_npcx/adlrvp_npcx.dts",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 38
+      },
+      "revId": "b020ad47399aa346d657c8b80c471740674abdb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
