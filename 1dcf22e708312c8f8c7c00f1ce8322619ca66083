@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5fe9b9d2_99057464",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1513493
+      },
+      "writtenOn": "2022-03-25T04:15:34Z",
+      "side": 1,
+      "message": "Please update the commit message to show only gpio_villager.dts changes.",
+      "revId": "1dcf22e708312c8f8c7c00f1ce8322619ca66083",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d0b4af22_81d3193a",
         "filename": "zephyr/projects/herobrine/CMakeLists.txt",
         "patchSetId": 3
