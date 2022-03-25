@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8b378cc_f71cf1d8",
+        "filename": "board/primus/cbi_ssfc.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-03-25T20:28:48Z",
+      "side": 1,
+      "message": "is reserving only 1 bit going to be sufficient long term?\nlots of bits left over, easier to add one now than later.",
+      "revId": "30c3b2ba57da890b641306098eefa19d8511a845",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "620ba90a_f12ab7b3",
+        "filename": "board/primus/cbi_ssfc.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-03-25T20:28:48Z",
+      "side": 1,
+      "message": "31",
+      "revId": "30c3b2ba57da890b641306098eefa19d8511a845",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
