@@ -1,0 +1,181 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80f857d3_f1350682",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1157,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-03-25T17:57:14Z",
+      "side": 1,
+      "message": "Since we haven\u0027t needed a value like this up to this point, I might suggest using a different way of keeping your message flow state in the partner emulator to continue not needing this. The Policy Engine has \"ready\" states, during which it is receptive to various kinds of messages. At other times, it is only receptive to expected kinds of messages. I don\u0027t want the partner emulator to be that stateful if we can help it, but it might work to have a state field like `bool ams_in_progress`. (AMS stands for \"atomic message sequence.\")\n\nIf we do need an enum value like this, I would suggest using 0 instead of 32. If someone tries to jam it into an actual PD message, that would still be wrong, but the likely side effects seem easier to debug than 32, which would \"overflow\" the message type field.",
+      "revId": "b6db0487ee28e4dcca4338aff44d67eb14c62f8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa2b2ad2_015c3077",
+        "filename": "zephyr/emul/tcpc/emul_tcpci_partner_drp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-03-25T17:57:14Z",
+      "side": 1,
+      "message": "Nit: PR_Swap",
+      "range": {
+        "startLine": 22,
+        "startChar": 17,
+        "endLine": 22,
+        "endChar": 24
+      },
+      "revId": "b6db0487ee28e4dcca4338aff44d67eb14c62f8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c731daff_e586b49b",
+        "filename": "zephyr/emul/tcpc/emul_tcpci_partner_drp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-03-25T17:57:14Z",
+      "side": 1,
+      "message": "bool",
+      "range": {
+        "startLine": 76,
+        "startChar": 9,
+        "endLine": 76,
+        "endChar": 12
+      },
+      "revId": "b6db0487ee28e4dcca4338aff44d67eb14c62f8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2edb2314_d05b411d",
+        "filename": "zephyr/emul/tcpc/emul_tcpci_partner_drp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-03-25T17:57:14Z",
+      "side": 1,
+      "message": "I think this macro is supposed to take the POWER_CONTROL register value, e.g. `vconn_status` here. This expression will always evaluate to 0xfffe.",
+      "range": {
+        "startLine": 83,
+        "startChar": 18,
+        "endLine": 83,
+        "endChar": 43
+      },
+      "revId": "b6db0487ee28e4dcca4338aff44d67eb14c62f8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d2332b0_6d3664d5",
+        "filename": "zephyr/emul/tcpc/emul_tcpci_partner_drp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-03-25T17:57:14Z",
+      "side": 1,
+      "message": "This code changes whether the TCPM supplies VCONN (sort of, see other comments). The TC state machine and TCPC driver should already be doing that at appropriate times. This function should change whether the partner is supplying VCONN. Since the partner doesn\u0027t have a register set, and we\u0027re not emulating the cable yet, that can probably be as simple as setting `common_data-\u003evconn_role`.",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 20
+      },
+      "revId": "b6db0487ee28e4dcca4338aff44d67eb14c62f8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "339bdeec_e49a56a5",
+        "filename": "zephyr/emul/tcpc/emul_tcpci_partner_drp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 384,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-03-25T17:57:14Z",
+      "side": 1,
+      "message": "I\u0027m not sure how this hasn\u0027t come up before, but the initial roles when PD starts are either going to be Source/DFP/VCONN Source or Sink/UFP/VCONN off. Source vs Sink controls the others, so probably, when the TCPM comes up, it\u0027s going to treat the partner as if it were Sink/UFP/VCONN off.\n\nI\u0027m not sure what the implications are for our tests, and this is out of scope for this CL, but these initial roles should be consistent, and something else might need to change because of that.",
+      "revId": "b6db0487ee28e4dcca4338aff44d67eb14c62f8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8f83091_8022417a",
+        "filename": "zephyr/emul/tcpc/emul_tcpci_partner_src.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 453,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-03-25T17:57:14Z",
+      "side": 1,
+      "message": "Can this go in the common init?",
+      "revId": "b6db0487ee28e4dcca4338aff44d67eb14c62f8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dae091e6_ee294595",
+        "filename": "zephyr/include/emul/tcpc/emul_tcpci_partner_drp.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-03-25T17:57:14Z",
+      "side": 1,
+      "message": "See my other comment about the format of this state.\n\nMore generally, the ability to handle multiple types of message flows will eventually be common to all the emulator types. Any of the emulators we currently have should be able to handle VCONN Swap. I\u0027d put the VCS support in the common emulator.",
+      "revId": "b6db0487ee28e4dcca4338aff44d67eb14c62f8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10cdbfe5_980c3f02",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_pd_ctrl_msg.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-03-25T17:57:14Z",
+      "side": 1,
+      "message": "Can you split this CL to put the new test in its own CL following this one?",
+      "revId": "b6db0487ee28e4dcca4338aff44d67eb14c62f8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
