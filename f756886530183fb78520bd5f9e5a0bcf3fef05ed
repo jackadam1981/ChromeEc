@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ea1322b_764c253e",
+        "filename": "util/fptool_unitest.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 541,
+      "author": {
+        "id": 1528447
+      },
+      "writtenOn": "2022-03-25T01:00:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4c05d1cf_002065b9",
+      "range": {
+        "startLine": 541,
+        "startChar": 12,
+        "endLine": 541,
+        "endChar": 62
+      },
+      "revId": "f756886530183fb78520bd5f9e5a0bcf3fef05ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "57fbc4f9_dddaae74",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-03-22T20:14:54Z",
       "side": 1,
       "message": "This isn\u0027t necessary, since `self.assertRaises` will check the type: https://docs.python.org/3.6/library/unittest.html#unittest.TestCase.assertRaises",
+      "range": {
+        "startLine": 564,
+        "startChar": 20,
+        "endLine": 564,
+        "endChar": 70
+      },
+      "revId": "f756886530183fb78520bd5f9e5a0bcf3fef05ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0941a4a5_a0b7d43e",
+        "filename": "util/fptool_unitest.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 564,
+      "author": {
+        "id": 1528447
+      },
+      "writtenOn": "2022-03-25T01:00:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "57fbc4f9_dddaae74",
       "range": {
         "startLine": 564,
         "startChar": 20,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "da4d10d1_0edab160",
+        "filename": "util/fptool_unitest.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 592,
+      "author": {
+        "id": 1528447
+      },
+      "writtenOn": "2022-03-25T01:00:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "945899f8_4949c76a",
+      "range": {
+        "startLine": 592,
+        "startChar": 12,
+        "endLine": 592,
+        "endChar": 62
+      },
+      "revId": "f756886530183fb78520bd5f9e5a0bcf3fef05ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9b5e5864_6478f363",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-03-22T20:14:54Z",
       "side": 1,
       "message": "This isn\u0027t necessary, since `self.assertRaises` will check the type: https://docs.python.org/3.6/library/unittest.html#unittest.TestCase.assertRaises",
+      "range": {
+        "startLine": 603,
+        "startChar": 12,
+        "endLine": 603,
+        "endChar": 62
+      },
+      "revId": "f756886530183fb78520bd5f9e5a0bcf3fef05ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4af1555c_0af6b158",
+        "filename": "util/fptool_unitest.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 603,
+      "author": {
+        "id": 1528447
+      },
+      "writtenOn": "2022-03-25T01:00:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9b5e5864_6478f363",
       "range": {
         "startLine": 603,
         "startChar": 12,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9c4fb24_9f5c934d",
+        "filename": "util/fptool_unitest.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 614,
+      "author": {
+        "id": 1528447
+      },
+      "writtenOn": "2022-03-25T01:00:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b20e1969_34f2d25f",
+      "range": {
+        "startLine": 614,
+        "startChar": 12,
+        "endLine": 614,
+        "endChar": 62
+      },
+      "revId": "f756886530183fb78520bd5f9e5a0bcf3fef05ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "26b8a4d6_5814753a",
@@ -129,6 +249,30 @@
       "writtenOn": "2022-03-22T20:14:54Z",
       "side": 1,
       "message": "This isn\u0027t necessary, since `self.assertRaises` will check the type: https://docs.python.org/3.6/library/unittest.html#unittest.TestCase.assertRaises",
+      "range": {
+        "startLine": 625,
+        "startChar": 12,
+        "endLine": 625,
+        "endChar": 62
+      },
+      "revId": "f756886530183fb78520bd5f9e5a0bcf3fef05ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f83f6203_83d017ca",
+        "filename": "util/fptool_unitest.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 625,
+      "author": {
+        "id": 1528447
+      },
+      "writtenOn": "2022-03-25T01:00:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "26b8a4d6_5814753a",
       "range": {
         "startLine": 625,
         "startChar": 12,
@@ -162,6 +306,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8b92bfc_09dde759",
+        "filename": "util/fptool_unitest.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 636,
+      "author": {
+        "id": 1528447
+      },
+      "writtenOn": "2022-03-25T01:00:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d5e4400b_9d01c65b",
+      "range": {
+        "startLine": 636,
+        "startChar": 12,
+        "endLine": 636,
+        "endChar": 62
+      },
+      "revId": "f756886530183fb78520bd5f9e5a0bcf3fef05ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7bc1bfe8_d1e792dc",
@@ -185,6 +353,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "552997ed_a5889baa",
+        "filename": "util/fptool_unitest.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 651,
+      "author": {
+        "id": 1528447
+      },
+      "writtenOn": "2022-03-25T01:00:08Z",
+      "side": 1,
+      "message": "\u003e From what I understand, this should not be throwing any exceptions.\n\nThat is correct. I thought to make a point that it does not throw an exception, but that is redundant because the alternative is an exception anyway.\n\nDone.",
+      "parentUuid": "7bc1bfe8_d1e792dc",
+      "range": {
+        "startLine": 645,
+        "startChar": 0,
+        "endLine": 651,
+        "endChar": 74
+      },
+      "revId": "f756886530183fb78520bd5f9e5a0bcf3fef05ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4fd29778_1c03bb84",
@@ -198,6 +390,30 @@
       "writtenOn": "2022-03-22T20:14:54Z",
       "side": 1,
       "message": "Can you add `success` to the name to indicate this is a successful test case: `test_get_gpio_by_name_success`?",
+      "range": {
+        "startLine": 653,
+        "startChar": 8,
+        "endLine": 653,
+        "endChar": 29
+      },
+      "revId": "f756886530183fb78520bd5f9e5a0bcf3fef05ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd9193b5_8b410c53",
+        "filename": "util/fptool_unitest.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 653,
+      "author": {
+        "id": 1528447
+      },
+      "writtenOn": "2022-03-25T01:00:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4fd29778_1c03bb84",
       "range": {
         "startLine": 653,
         "startChar": 8,
