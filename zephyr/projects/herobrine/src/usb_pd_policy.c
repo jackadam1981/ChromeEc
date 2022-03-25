@@ -80,7 +80,7 @@ int board_vbus_source_enabled(int port)
 __override void typec_set_source_current_limit(int port, enum tcpc_rp_value rp)
 {
 	vbus_rp[port] = rp;
-	board_vbus_update_source_current(port);
+	ppc_set_vbus_source_current_limit(port, vbus_rp[port]);
 }
 
 int pd_snk_is_vbus_provided(int port)
