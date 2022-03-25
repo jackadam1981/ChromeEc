@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4cc336fd_2f38df61",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 5030,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-03-25T17:57:19Z",
+      "side": 1,
+      "message": "Add more comments about this ordering dependency if it\u0027s strictly required.  Otherwise, I imagine someone else may decide it\u0027s perfectly fine to switch it back later since it\u0027s all in the same entry function",
+      "revId": "4dd6d5cb4395ab0f62fdfc5caf9ed4d71c7f547e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
