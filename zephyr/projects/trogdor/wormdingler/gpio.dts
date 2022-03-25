@@ -184,15 +184,6 @@
 		gpio_fcam_ec_vsync: fcam_ec_vsync {
 			gpios = <&gpio6 0 GPIO_INPUT>;
 		};
-		gpio_ppvar_boostin_sense: ppvar_boostin_sense {
-			gpios = <&gpio4 4 GPIO_INPUT>;
-		};
-		gpio_charger_iadp: charger_iadp {
-			gpios = <&gpio4 3 GPIO_INPUT>;
-		};
-		gpio_charger_pmon: charger_pmon {
-			gpios = <&gpio4 2 GPIO_INPUT>;
-		};
 		gpio_brd_id0: brd_id0 {
 			gpios = <&gpioc 7 GPIO_INPUT>;
 			enum-name = "GPIO_BOARD_VERSION1";
