@@ -30,6 +30,7 @@ from typing import Optional, BinaryIO, List
 
 # pylint: disable=import-error
 import colorama  # type: ignore[import]
+import fmap
 # pylint: enable=import-error
 
 EC_DIR = Path(os.path.dirname(os.path.realpath(__file__))).parent
@@ -92,7 +93,7 @@ class TestConfig:
     def __init__(self, name, image_to_use=ImageType.RW, finish_regexes=None,
                  fail_regexes=None, toggle_power=False, test_args=None,
                  num_flash_attempts=2, timeout_secs=10,
-                 enable_hw_write_protect=False):
+                 enable_hw_write_protect=False, ro_image=None):
         if test_args is None:
             test_args = []
         if finish_regexes is None:
@@ -114,6 +115,7 @@ class TestConfig:
         self.passed = False
         self.num_fails = 0
         self.num_passes = 0
+        self.ro_image = ro_image
 
 
 # All possible tests.
@@ -226,6 +228,76 @@ BOARD_CONFIGS = {
     'dartmonkey': DARTMONKEY_CONFIG,
 }
 
+def read_file(path: str) -> bytearray:
+    """Get data from file in |path|"""
+    with open(path, 'rb') as f:
+        return bytearray(f.read())
+
+def read_file_gsutil(path: str) -> bytes:
+    """Get data from bucket, using gsutil tool"""
+    cmd = ['gsutil', 'cat', path]
+
+    logging.debug('Running command: "%s"', ' '.join(cmd))
+    gsutil = subprocess.run(cmd, stdout=subprocess.PIPE)  # pylint: disable=subprocess-run-check
+    gsutil.check_returncode()
+
+    return gsutil.stdout
+
+def write_file(path: str, data: bytes):
+    """Write |data| to file in |path|"""
+    with open(path, 'wb') as f:
+        f.write(data)
+
+def find_section_offset_size(section: str, image: bytes) -> (int, int):
+    """Get offset and size of the section in image"""
+    areas = fmap.fmap_decode(image)['areas']
+    area = next(area for area in areas if area['name'] == section)
+    return (area['offset'], area['size'])
+
+def read_section(src: bytes, section: str) -> bytearray:
+    """Read FMAP section content into byte array"""
+    (src_start, src_size) = find_section_offset_size(section, src)
+    src_end = src_start + src_size
+    return src[src_start:src_end]
+
+def write_section(data: bytes, image: bytearray, section: str):
+    """Write section content with data from src"""
+    (section_start, section_size) = find_section_offset_size(section, image)
+
+    if section_size < len(data):
+        raise ValueError(section + ' section size is not enough to store data')
+
+    section_end = section_start + section_size
+    filling = bytes([0xff for _ in range(section_size - len(data))])
+
+    image[section_start:section_end] = data + filling
+
+def copy_section(src: bytes, dst: bytearray, section: str):
+    """Copy section from src image to dst image"""
+    (src_start, src_size) = find_section_offset_size(section, src)
+    (dst_start, dst_size) = find_section_offset_size(section, dst)
+
+    if dst_size < src_size:
+        raise ValueError('Section ' + section + ' from source image has '
+                         'greater size than the section in destination image')
+
+    src_end = src_start + src_size
+    dst_end = dst_start + dst_size
+    filling = bytes([0xff for _ in range(dst_size - src_size)])
+
+    dst[dst_start:dst_end] = src[src_start:src_end] + filling
+
+def replace_ro(image: bytearray, ro: bytes):
+    """Replace RO in image with provided one"""
+    # Backup RO public key since its private part was used to sign RW.
+    ro_pubkey = read_section(image, 'KEY_RO')
+
+    # Copy RO part of the firmware to the image. Please note that RO public key
+    # is copied too since EC_RO area includes KEY_RO area.
+    copy_section(ro, image, 'EC_RO')
+
+    # Restore RO public key.
+    write_section(ro_pubkey, image, 'KEY_RO')
 
 def get_console(board_config: BoardConfig) -> Optional[str]:
     """Get the name of the console for a given board."""
@@ -315,6 +387,17 @@ def flash(test_name: str, board: str, flasher: str, remote: str) -> bool:
     completed_process = subprocess.run(cmd)  # pylint: disable=subprocess-run-check
     return completed_process.returncode == 0
 
+def patch_image(test: TestConfig, board: str):
+    """Apply changes to built image"""
+    # Replace RO part of the firmware with provided one.
+    if test.ro_image is not None:
+        image_path = os.path.join(EC_DIR, 'build', board, test.name,
+                                  test.name + '.bin')
+        image = read_file(image_path)
+        ro = read_file_gsutil(test.ro_image)
+        replace_ro(image, ro)
+
+        write_file(image_path, image)
 
 def readline(executor: ThreadPoolExecutor, f: BinaryIO, timeout_secs: int) -> \
              Optional[bytes]:
@@ -482,6 +565,14 @@ def main():
     for test in test_list:
         # build test binary
         build(test.name, args.board, args.compiler)
+
+        try:
+            patch_image(test, args.board)
+        except Exception as exception:
+            logging.warning('An exception occurred while patching image: %s',
+                            exception)
+            test.passed = False
+            continue
 
         # flash test binary
         # TODO(b/158327221): First attempt to flash fails after
