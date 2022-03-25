@@ -95,6 +95,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4dce0124_60672d1c",
+        "filename": "board/primus/ps2.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2022-03-25T23:55:38Z",
+      "side": 1,
+      "message": "If we send PS2 command like this, \nps2_transmit_byte(NPCX_PS2_CH1, command1);\nps2_transmit_byte(NPCX_PS2_CH1, command2);\nEC will not receive the ACK from PS2 device and then send another directly. This will cause the commands won\u0027t work. So add delay to make sure EC get the ACK command.",
+      "parentUuid": "d9b0f54b_0c20182a",
+      "range": {
+        "startLine": 61,
+        "startChar": 8,
+        "endLine": 61,
+        "endChar": 10
+      },
+      "revId": "2f17005982c7dec5203523d66bd19a43c4e5fc7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fadf8242_686e9a67",
