@@ -37,6 +37,11 @@ const struct charger_config_t chg_chips[] = {
 	},
 };
 
+__override uint16_t board_get_ps8xxx_product_id(int port)
+{
+	return PS8805_PRODUCT_ID;
+}
+
 int charger_profile_override(struct charge_state_data *curr)
 {
 	int usb_mv;
