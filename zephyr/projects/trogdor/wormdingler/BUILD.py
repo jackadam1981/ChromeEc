@@ -12,5 +12,6 @@ register_npcx_project(
         "interrupts.dts",
         "i2c.dts",
         "pwm.dts",
+        "wakeup_mask.dts"
     ],
 )
