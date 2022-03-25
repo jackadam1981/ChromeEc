@@ -33,6 +33,57 @@
       "message": "Friendly ping",
       "revId": "fa358268f3c6b775ce06df0e0049118182892230",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "77cc5d01_da6eaef3",
+        "filename": "docs/usb-c.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-03-25T15:56:41Z",
+      "side": 1,
+      "message": "We should probably update this one at some point... but that can wait",
+      "revId": "fa358268f3c6b775ce06df0e0049118182892230",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f01e69d9_e85525a6",
+        "filename": "docs/usb-tcpmv2.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-03-25T15:56:41Z",
+      "side": 1,
+      "message": "nit: the doc is public, so referencing a specific buganizer hotlist might be irritating to readers outside Google who would like to follow the link",
+      "revId": "fa358268f3c6b775ce06df0e0049118182892230",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6b4b77e_a287c8cd",
+        "filename": "docs/usb-tcpmv2.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-03-25T15:56:41Z",
+      "side": 1,
+      "message": "nit: active cable with SOP\u0027\u0027 support.  I believe only SOP\u0027 is Normative",
+      "revId": "fa358268f3c6b775ce06df0e0049118182892230",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
