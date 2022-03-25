@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd87a6e4_4dc2616f",
+        "filename": "board/primus/ps2.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-03-25T20:57:32Z",
+      "side": 1,
+      "message": "add\n #define PRIMUS_PS2_CH NPCX_PS2_CH1",
+      "range": {
+        "startLine": 19,
+        "startChar": 19,
+        "endLine": 19,
+        "endChar": 31
+      },
+      "revId": "2f17005982c7dec5203523d66bd19a43c4e5fc7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0599b54_d051f149",
+        "filename": "board/primus/ps2.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-03-25T20:57:32Z",
+      "side": 1,
+      "message": "is the delay needed for the trackpoint to process the command?\n\nmaybe add a #defined for it and add another helper function\nso you only need to pass the command\n\n f(uint8_t cmd)\n {\n   ps2_transmit_byte(PRIMUS_PS2_CH, cmd);\n   msleep(SOME_DELAY);\n }",
+      "range": {
+        "startLine": 61,
+        "startChar": 8,
+        "endLine": 61,
+        "endChar": 10
+      },
+      "revId": "2f17005982c7dec5203523d66bd19a43c4e5fc7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f66fa73_18f58916",
+        "filename": "board/primus/ps2.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-03-25T20:57:32Z",
+      "side": 1,
+      "message": "same as suspend?\n\ncould you also add some #defines somewhere for these commands",
+      "range": {
+        "startLine": 113,
+        "startChar": 35,
+        "endLine": 113,
+        "endChar": 39
+      },
+      "revId": "2f17005982c7dec5203523d66bd19a43c4e5fc7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
