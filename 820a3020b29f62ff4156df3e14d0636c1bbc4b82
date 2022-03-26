@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e023ac02_039eb970",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-03-26T19:23:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "95928198_3d02fa63",
+      "range": {
+        "startLine": 12,
+        "startChar": 23,
+        "endLine": 12,
+        "endChar": 32
+      },
+      "revId": "820a3020b29f62ff4156df3e14d0636c1bbc4b82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "26cbda92_9bb8e7d8",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-03-26T04:16:44Z",
       "side": 1,
       "message": "what does 0x80 do to the endpoint number?",
+      "range": {
+        "startLine": 82,
+        "startChar": 52,
+        "endLine": 82,
+        "endChar": 56
+      },
+      "revId": "820a3020b29f62ff4156df3e14d0636c1bbc4b82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "42dadc13_b2fa4503",
+        "filename": "util/comm-usb.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-03-26T19:23:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "26cbda92_9bb8e7d8",
       "range": {
         "startLine": 82,
         "startChar": 52,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fce2306f_096953a2",
+        "filename": "util/comm-usb.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-03-26T19:23:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "074c8d37_e89c080b",
+      "range": {
+        "startLine": 127,
+        "startChar": 5,
+        "endLine": 127,
+        "endChar": 10
+      },
+      "revId": "820a3020b29f62ff4156df3e14d0636c1bbc4b82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "65b9ce00_e089600d",
@@ -93,6 +165,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "73b508b1_3a84d479",
+        "filename": "util/comm-usb.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-03-26T19:23:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "65b9ce00_e089600d",
+      "range": {
+        "startLine": 148,
+        "startChar": 23,
+        "endLine": 148,
+        "endChar": 31
+      },
+      "revId": "820a3020b29f62ff4156df3e14d0636c1bbc4b82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3b83681b_4ac9e2bb",
@@ -106,6 +202,24 @@
       "writtenOn": "2022-03-26T04:16:44Z",
       "side": 1,
       "message": "do you need to set e\u003d0 again?",
+      "revId": "820a3020b29f62ff4156df3e14d0636c1bbc4b82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e61eb847_3f100bc8",
+        "filename": "util/comm-usb.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-03-26T19:23:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3b83681b_4ac9e2bb",
       "revId": "820a3020b29f62ff4156df3e14d0636c1bbc4b82",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
