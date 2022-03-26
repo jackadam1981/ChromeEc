@@ -39,8 +39,10 @@ const int supported_led_ids_count = ARRAY_SIZE(supported_led_ids);
 
 enum led_color {
 	LED_OFF = 0,
-	LED_AMBER,
+	LED_RED,
+	LED_GREEN,
 	LED_BLUE,
+	LED_AMBER,
 	LED_COLOR_COUNT  /* Number of colors, not a color itself */
 };
 
@@ -177,13 +179,19 @@ static void led_set_color(enum led_color color)
 
 void led_get_brightness_range(enum ec_led_id led_id, uint8_t *brightness_range)
 {
-	brightness_range[EC_LED_COLOR_AMBER] = 1;
+	brightness_range[EC_LED_COLOR_RED] = 1;
+	brightness_range[EC_LED_COLOR_GREEN] = 1;
 	brightness_range[EC_LED_COLOR_BLUE] = 1;
+	brightness_range[EC_LED_COLOR_AMBER] = 1;
 }
 
 int led_set_brightness(enum ec_led_id led_id, const uint8_t *brightness)
 {
-	if (brightness[EC_LED_COLOR_BLUE] != 0)
+	if (brightness[EC_LED_COLOR_RED] != 0)
+		led_set_color(LED_RED);
+	else if (brightness[EC_LED_COLOR_GREEN] != 0)
+		led_set_color(LED_GREEN);
+	else if (brightness[EC_LED_COLOR_BLUE] != 0)
 		led_set_color(LED_BLUE);
 	else if (brightness[EC_LED_COLOR_AMBER] != 0)
 		led_set_color(LED_AMBER);

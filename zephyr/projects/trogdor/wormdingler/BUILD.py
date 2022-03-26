@@ -11,6 +11,7 @@ register_npcx_project(
         "gpio.dts",
         "interrupts.dts",
         "i2c.dts",
+        "led.dts",
         "pwm.dts",
         "wakeup_mask.dts"
     ],

@@ -173,9 +173,11 @@
 			gpios = <&gpio9 5 GPIO_OUTPUT_LOW>;
 		};
 		gpio_ec_chg_led_r_c0: ec_chg_led_r_c0 {
+			#led-pin-cells = <1>;
 			gpios = <&gpioc 3 GPIO_OUTPUT_LOW>;
 		};
 		gpio_ec_chg_led_g_c0: ec_chg_led_g_c0 {
+			#led-pin-cells = <1>;
 			gpios = <&gpioc 4 GPIO_OUTPUT_LOW>;
 		};
 		gpio_wcam_ec_vsync: wcam_ec_vsync {
