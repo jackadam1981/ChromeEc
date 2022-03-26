@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c053df42_1ca604a6",
+        "filename": "common/usb_host_command.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-03-26T19:23:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9454549f_8a596be4",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "1d994114e8f9c146c84377129642f36514f8cc7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "56be79a5_f296d15b",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-03-26T04:22:05Z",
       "side": 1,
       "message": "all configs are supposed to be added on the zephyr side as well.",
+      "range": {
+        "startLine": 3227,
+        "startChar": 7,
+        "endLine": 3227,
+        "endChar": 32
+      },
+      "revId": "1d994114e8f9c146c84377129642f36514f8cc7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f25ddce_17738536",
+        "filename": "include/config.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 3227,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-03-26T19:23:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "56be79a5_f296d15b",
       "range": {
         "startLine": 3227,
         "startChar": 7,
