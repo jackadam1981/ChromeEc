@@ -14,6 +14,7 @@ zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_USBC
   "src/usbc_config.c")
 
 zephyr_library_sources(
+  "src/i2c.c"
   "src/power.c"
   "src/switchcap.c")
 

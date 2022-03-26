@@ -16,6 +16,10 @@
 			remote-port = <0>;
 			enum-name = "I2C_PORT_BATTERY";
 		};
+		virtual-battery {
+			i2c-port = <&i2c0_0>;
+			enum-name = "I2C_PORT_VIRTUAL_BATTERY";
+		};
 		charger {
 			i2c-port = <&i2c0_0>;
 			enum-name = "I2C_PORT_CHARGER";
