@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "64cda32c_200e1fbb",
+        "filename": "board/banshee/sensors.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2022-03-26T15:49:26Z",
+      "side": 1,
+      "message": "The proper setting is:\n.als_cal.scale \u003d 3,\n.als_cal.uscale \u003d 8000,",
+      "revId": "cd2f6aae8385c1506ab74cd0cb4aed11f9a98c3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
