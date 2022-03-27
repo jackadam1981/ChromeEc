@@ -1,118 +1,63 @@
+/* Copyright 2022 The Chromium OS Authors. All rights reserved.
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+#include <dt-bindings/colors.h>
+
 / {
-	gpio-led {
-		compatible = "gpio-led-behavior";
+	gpio_leds: gpio-leds {
+		compatible = "cros-ec,gpio-leds";
 
-		gpio-led-pins {
-			compatible = "cros-ec,gpio-led-pins";
+		gpios = <&gpioc 3 0>,
+			<&gpioc 4 0>;
+		color-list = <AMBER BLUE>;
+	};
 
-			color-off {
-				led-color = "LED_OFF";
-				led-pins = <&gpio_ec_chg_led_y_c1 0>,
-					   <&gpio_ec_chg_led_b_c1 0>;
-			};
+	led-policy {
+		compatible = "cros-ec,led-policy";
 
-			color-amber {
-				led-color = "LED_AMBER";
-				led-pins = <&gpio_ec_chg_led_y_c1 1>,
-					   <&gpio_ec_chg_led_b_c1 0>;
-			};
+		led = <&gpio_leds>;
+		enum-name = "EC_LED_ID_BATTERY_LED";
 
-			color-blue {
-				led-color = "LED_BLUE";
-				led-pins = <&gpio_ec_chg_led_y_c1 0>,
-					   <&gpio_ec_chg_led_b_c1 1>;
-			};
+		/*
+		 * First value is amber LED,
+		 * second blue LED,
+		 * third duration in tenths of a second.
+		 */
+		charging {
+			charger = "CHARGING";
+			action = <1 0 0>;
 		};
-
-		gpio-led-colors {
-			compatible = "cros-ec,gpio-led-colors";
-
-			power-state-charge {
-				charge-state = "PWR_STATE_CHARGE";
-
-				color-0 {
-					led-color = "LED_AMBER";
-				};
-			};
-
-			power-state-discharge-s0 {
-				charge-state = "PWR_STATE_DISCHARGE";
-				chipset-state = "POWER_S0";
-
-				color-0 {
-					led-color = "LED_BLUE";
-				};
-			};
-
-			power-state-discharge-s3 {
-				charge-state = "PWR_STATE_DISCHARGE";
-				chipset-state = "POWER_S3";
-
-				/* Amber 1 sec, off 3 sec */
-				color-0 {
-					led-color = "LED_AMBER";
-					period = <1>;
-				};
-				color-1 {
-					led-color = "LED_OFF";
-					period = <3>;
-				};
-			};
-
-			power-state-discharge-s5 {
-				charge-state = "PWR_STATE_DISCHARGE";
-				chipset-state = "POWER_S5";
-
-				color-0 {
-					led-color = "LED_OFF";
-				};
-			};
-
-			power-state-error {
-				charge-state = "PWR_STATE_ERROR";
-
-				/* Amber 1 sec, off 1 sec */
-				color-0 {
-					led-color = "LED_AMBER";
-					period = <1>;
-				};
-				color-1 {
-					led-color = "LED_OFF";
-					period = <1>;
-				};
-			};
-
-			power-state-near-full {
-				charge-state = "PWR_STATE_CHARGE_NEAR_FULL";
-
-				color-0 {
-					led-color = "LED_BLUE";
-				};
-			};
-
-			power-state-idle-forced {
-				charge-state = "PWR_STATE_IDLE";
-				extra-flag = "LED_CHFLAG_FORCE_IDLE";
-
-				/* Blue 2 sec, Amber 2 sec */
-				color-0 {
-					led-color = "LED_BLUE";
-					period = <2>;
-				};
-				color-1 {
-					led-color = "LED_AMBER";
-					period = <2>;
-				};
-			};
-
-			power-state-idle-default {
-				charge-state = "PWR_STATE_IDLE";
-				extra-flag = "LED_CHFLAG_DEFAULT";
-
-				color-0 {
-					led-color = "LED_BLUE";
-				};
-			};
+		discharging-s0 {
+			cpu = "RUNNING";
+			charger = "DISCHARGING";
+			action = <0 1 0>;
+		};
+		discharging-s3 {
+			cpu = "SUSPENDED";
+			charger = "DISCHARGING";
+			action = <1 0 10>, <0 0 30>;
+		};
+		discharging-s6 {
+			cpu = "POWER_OFF";
+			charger = "DISCHARGING";
+			action = <0 0 0>;
+		};
+		discharging-error {
+			charger = "ERROR";
+			action = <1 0 10>, <0 0 10>;
+		};
+		battery-full {
+			charger = "FULL";
+			action = <0 1 0>;
+		};
+		charging-idle {
+			charger = "IDLE";
+			action = <1 0 20>, <0 1 20>;
+		};
+		default {
+			action = <0 1 0>;
 		};
 	};
 };
