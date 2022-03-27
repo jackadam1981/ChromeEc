@@ -16,6 +16,24 @@
       "message": "For this event, and for AP_POWER_SUSPEND_COMPLETE, I think these are gated on a CONFIG item. I am not sure why, but it may mean that some of these events are never generated depending on the CONFIG.",
       "revId": "6bb3b99ea5c7cba619b5ee6f39c61780a8fb701a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "05b7772a_d168d0bf",
+        "filename": "zephyr/include/ap_power/ap_power.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-03-27T22:51:17Z",
+      "side": 1,
+      "message": "In that case we should make this header work like the legacy one and avoid defining these events if they will never be emitted, so attempting to use them is a compile-time error. Will do in a separate CL.",
+      "parentUuid": "90fcf308_74557f9c",
+      "revId": "6bb3b99ea5c7cba619b5ee6f39c61780a8fb701a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
