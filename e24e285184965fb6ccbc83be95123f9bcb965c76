@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3b61003_ad771266",
+        "filename": "docs/ec_terms.md",
+        "patchSetId": 21
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2022-03-28T20:49:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3b18beaf_c5d5b1bb",
+      "range": {
+        "startLine": 247,
+        "startChar": 25,
+        "endLine": 247,
+        "endChar": 29
+      },
+      "revId": "e24e285184965fb6ccbc83be95123f9bcb965c76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "247170dc_0546c665",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-02-23T16:32:21Z",
       "side": 1,
       "message": "CONFIG_PLATFORM_EC_USBA enables support for USB-A ports in the EC application.  Refer to [Kconfig.usba] for all sub-options controlling USB-A ports.",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 14
+      },
+      "revId": "e24e285184965fb6ccbc83be95123f9bcb965c76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fbe6e8cf_9d25125c",
+        "filename": "docs/zephyr/zephyr_usba.md",
+        "patchSetId": 21
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2022-03-28T20:49:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "247170dc_0546c665",
       "range": {
         "startLine": 12,
         "startChar": 0,
@@ -64,6 +112,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "64daa933_b2189b56",
+        "filename": "docs/zephyr/zephyr_usba.md",
+        "patchSetId": 21
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2022-03-28T20:49:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "122c0c3b_1008bc6a",
+      "revId": "e24e285184965fb6ccbc83be95123f9bcb965c76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "42c49df0_2ebad6a6",
@@ -87,6 +153,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cda82d32_1c92574d",
+        "filename": "docs/zephyr/zephyr_usba.md",
+        "patchSetId": 21
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2022-03-28T20:49:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "42c49df0_2ebad6a6",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 0
+      },
+      "revId": "e24e285184965fb6ccbc83be95123f9bcb965c76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "703d6c74_aa9d7680",
@@ -100,6 +190,24 @@
       "writtenOn": "2022-02-23T16:32:21Z",
       "side": 1,
       "message": "Document the \"usbchargemode\" command.",
+      "revId": "e24e285184965fb6ccbc83be95123f9bcb965c76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a97b6c05_b856b6c8",
+        "filename": "docs/zephyr/zephyr_usba.md",
+        "patchSetId": 21
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2022-03-28T20:49:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "703d6c74_aa9d7680",
       "revId": "e24e285184965fb6ccbc83be95123f9bcb965c76",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
