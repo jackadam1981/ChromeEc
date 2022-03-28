@@ -45,7 +45,7 @@ struct mpu_entry mpu_entries[NR_MPU_ENTRIES] = {
 #ifdef CHIP_VARIANT_MT8195
 static void core0_boot_done(void)
 {
-	SCP_CORE0_GPR(0) = SCP_CORE0_INIT_DONE;
+	/* SCP_CORE0_GPR(0) = SCP_CORE0_INIT_DONE; */
 }
 #endif
 
