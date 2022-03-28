@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "793c0fb3_ab1736f4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-03-28T21:21:00Z",
+      "side": 1,
+      "message": "LGTM except for include change.",
+      "revId": "e92f25a8dd2b8bf73e823abb435abd5d4d2dc141",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d23cf9d6_7f9d6fa5",
+        "filename": "zephyr/shim/chip/mchp/system_download_from_flash.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-03-28T21:21:00Z",
+      "side": 1,
+      "message": "I suspect that __assert.h is not meant to be included directly. Why did you change this?",
+      "revId": "e92f25a8dd2b8bf73e823abb435abd5d4d2dc141",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
