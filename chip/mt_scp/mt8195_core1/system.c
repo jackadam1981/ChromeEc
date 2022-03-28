@@ -7,9 +7,9 @@
 
 void chip_pre_init(void)
 {
-	/* wait core 0 init done */
-	while (SCP_CORE0_GPR(0) != SCP_CORE0_INIT_DONE);
+	/* ask core 0 if I can run */
+	SCP_GIPC_IN_SET = SCP_GIPC_IS_CORE0_OK;
 
-	/* let core 0 clear this bit when it's init done */
-	SCP_CORE0_GPR(0) |= SCP_CORE1_INIT_DONE;
+	/* wait core 0 init done */
+	while ((SCP_GIPC_IN_SET & SCP_GIPC_IS_CORE0_OK) != 0);
 }

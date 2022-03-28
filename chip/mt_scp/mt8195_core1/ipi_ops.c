@@ -29,3 +29,8 @@ int ipi_op_ap2scp_is_irq_set(void)
 {
 	return SCP_GIPC_IN_SET & GIPC_IN(4);
 }
+
+int ipi_op_core2core(void)
+{
+	return 0;
+}
