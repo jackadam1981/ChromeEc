@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "291633e1_8de0e6bb",
+        "filename": "zephyr/projects/nissa/nereid_overlay.dts",
+        "patchSetId": 8
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-03-28T00:41:24Z",
+      "side": 1,
+      "message": "Maybe it\u0027s better to have the flags set to 0 for the sub-board\nGPIOs, and set them all in the board config.\nOtherwise they are always going to be OR\u0027ed in with the extra flags.",
+      "revId": "14861ba4b9e84fe5f0386e437217dfd48308c84c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
