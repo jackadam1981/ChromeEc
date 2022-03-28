@@ -10,6 +10,8 @@
 #include "driver/accel_kx022.h"
 #include "driver/accelgyro_icm42607.h"
 #include "driver/accelgyro_icm_common.h"
+#include "driver/accelgyro_bmi_common_public.h"
+#include "driver/accelgyro_bmi260_public.h"
 #include "gpio.h"
 #include "hooks.h"
 #include "keyboard_scan.h"
@@ -61,6 +63,7 @@ static struct mutex g_base_mutex;
 static struct mutex g_lid_mutex;
 
 static struct icm_drv_data_t g_icm42607_data;
+static struct bmi_drv_data_t g_bmi260_data;
 static struct kionix_accel_data g_kx022_data;
 
 /* Matrix to rotate accelrator into standard reference frame */
@@ -154,6 +157,63 @@ struct motion_sensor_t motion_sensors[] = {
 };
 const unsigned int motion_sensor_count = ARRAY_SIZE(motion_sensors);
 
+struct motion_sensor_t bmi260_base_accel = {
+	.name = "Base Accel",
+	.active_mask = SENSOR_ACTIVE_S0_S3,
+	.chip = MOTIONSENSE_CHIP_BMI260,
+	.type = MOTIONSENSE_TYPE_ACCEL,
+	.location = MOTIONSENSE_LOC_BASE,
+	.drv = &bmi260_drv,
+	.mutex = &g_base_mutex,
+	.drv_data = &g_bmi260_data,
+	.port = I2C_PORT_ACCEL,
+	.i2c_spi_addr_flags = BMI260_ADDR0_FLAGS,
+	.rot_standard_ref = &base_standard_ref,
+	.min_frequency = BMI_ACCEL_MIN_FREQ,
+	.max_frequency = BMI_ACCEL_MAX_FREQ,
+	.default_range = 4, /* g */
+	.config = {
+		/* EC use accel for angle detection */
+		[SENSOR_CONFIG_EC_S0] = {
+			.odr = 10000 | ROUND_UP_FLAG,
+			.ec_rate = 100 * MSEC,
+		},
+		/* Sensor on in S3 */
+		[SENSOR_CONFIG_EC_S3] = {
+			.odr = 10000 | ROUND_UP_FLAG,
+			.ec_rate = 100 * MSEC,
+		},
+	},
+};
+
+struct motion_sensor_t bmi260_base_gyro = {
+	.name = "Base Gyro",
+	.active_mask = SENSOR_ACTIVE_S0_S3,
+	.chip = MOTIONSENSE_CHIP_BMI260,
+	.type = MOTIONSENSE_TYPE_GYRO,
+	.location = MOTIONSENSE_LOC_BASE,
+	.drv = &bmi260_drv,
+	.mutex = &g_base_mutex,
+	.drv_data = &g_bmi260_data,
+	.port = I2C_PORT_ACCEL,
+	.i2c_spi_addr_flags = BMI260_ADDR0_FLAGS,
+	.default_range = 1000, /* dps */
+	.rot_standard_ref = &base_standard_ref,
+	.min_frequency = BMI_GYRO_MIN_FREQ,
+	.max_frequency = BMI_GYRO_MAX_FREQ,
+};
+
+static void board_update_motion_sensor_config(void)
+{
+	if (system_get_board_version() >= 2) {
+		motion_sensors[BASE_ACCEL] = bmi260_base_accel;
+		motion_sensors[BASE_GYRO] = bmi260_base_gyro;
+		ccprints("BASE ACCEL/GYRO is BMI260");
+	} else {
+		ccprints("BASE ACCEL/GYRO is ICM42607");
+	}
+}
+
 /* PWM */
 
 /*
@@ -208,6 +268,8 @@ static void board_init(void)
 	/* Enable motion sensor interrupt */
 	gpio_enable_interrupt(GPIO_BASE_IMU_INT_L);
 	gpio_enable_interrupt(GPIO_LID_ACCEL_INT_L);
+
+	board_update_motion_sensor_config();
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
