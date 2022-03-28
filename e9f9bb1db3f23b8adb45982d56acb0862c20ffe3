@@ -1,0 +1,159 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f110f73_d34ba37c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-03-28T20:10:54Z",
+      "side": 1,
+      "message": "A bunch of nits, but overall this change should be good to go once addressed",
+      "revId": "e9f9bb1db3f23b8adb45982d56acb0862c20ffe3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0c54adf_4b8d9ec3",
+        "filename": "zephyr/emul/tcpc/emul_tcpci_partner_common.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 481,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-03-28T20:10:54Z",
+      "side": 1,
+      "message": "nit: check alignment/run clang-format",
+      "range": {
+        "startLine": 481,
+        "startChar": 0,
+        "endLine": 481,
+        "endChar": 9
+      },
+      "revId": "e9f9bb1db3f23b8adb45982d56acb0862c20ffe3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f35237a6_4a16ef15",
+        "filename": "zephyr/emul/tcpc/emul_tcpci_partner_common.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 499,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-03-28T20:10:54Z",
+      "side": 1,
+      "message": "nit: style guide, should wrap with `{}`",
+      "range": {
+        "startLine": 499,
+        "startChar": 1,
+        "endLine": 499,
+        "endChar": 58
+      },
+      "revId": "e9f9bb1db3f23b8adb45982d56acb0862c20ffe3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d36a787a_a6ddfcd9",
+        "filename": "zephyr/emul/tcpc/emul_tcpci_partner_common.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 833,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-03-28T20:10:54Z",
+      "side": 1,
+      "message": "nit: Should user Zephyr\u0027s asserts here.",
+      "range": {
+        "startLine": 833,
+        "startChar": 1,
+        "endLine": 833,
+        "endChar": 9
+      },
+      "revId": "e9f9bb1db3f23b8adb45982d56acb0862c20ffe3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fbc8eed2_59c946e5",
+        "filename": "zephyr/include/emul/tcpc/emul_tcpci_partner_common.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 412,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-03-28T20:10:54Z",
+      "side": 1,
+      "message": "Can you add more details here? Anyone not familiar with PD (myself included) will not know what masks are used for.",
+      "range": {
+        "startLine": 412,
+        "startChar": 0,
+        "endLine": 412,
+        "endChar": 2
+      },
+      "revId": "e9f9bb1db3f23b8adb45982d56acb0862c20ffe3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c000998_1c160a2b",
+        "filename": "zephyr/include/emul/tcpc/emul_tcpci_partner_common.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 413,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-03-28T20:10:54Z",
+      "side": 1,
+      "message": "This is a pointer to the emulator\u0027s data",
+      "range": {
+        "startLine": 413,
+        "startChar": 24,
+        "endLine": 413,
+        "endChar": 57
+      },
+      "revId": "e9f9bb1db3f23b8adb45982d56acb0862c20ffe3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c52aaa57_495fecf8",
+        "filename": "zephyr/include/emul/tcpc/emul_tcpci_partner_common.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 422,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-03-28T20:10:54Z",
+      "side": 1,
+      "message": "Same here, this is the data",
+      "range": {
+        "startLine": 422,
+        "startChar": 24,
+        "endLine": 422,
+        "endChar": 57
+      },
+      "revId": "e9f9bb1db3f23b8adb45982d56acb0862c20ffe3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
