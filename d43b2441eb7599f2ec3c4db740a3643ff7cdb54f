@@ -94,6 +94,30 @@
       },
       "revId": "d43b2441eb7599f2ec3c4db740a3643ff7cdb54f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "91589267_ab729dc4",
+        "filename": "zephyr/shim/chip/it8xxx2/power_policy.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2022-03-28T15:50:09Z",
+      "side": 1,
+      "message": "First line was my error in logic... the pm_constraint_get function returned 1 is it was idle, 0 if active.  So checking for 0 was not checking for idle but was checking for active.  This makes sense now.",
+      "parentUuid": "3b111613_af517b73",
+      "range": {
+        "startLine": 32,
+        "startChar": 7,
+        "endLine": 32,
+        "endChar": 37
+      },
+      "revId": "d43b2441eb7599f2ec3c4db740a3643ff7cdb54f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
