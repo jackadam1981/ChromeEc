@@ -129,6 +129,9 @@
 /* bit 12~15 = SCP_IRQ_GIPC_IN3 */
 /* bit 16~19 = SCP_IRQ_GIPC_IN4 */
 #define   GIPC_IN(n)			BIT(n)
+#define SCP_GIPC_CORE0_IPI		GIPC_IN(0)
+#define SCP_GIPC_IS_CORE0_OK		GIPC_IN(1)
+#define SCP_GIPC_CORE1_IPI		GIPC_IN(4)
 
 /* UART */
 #define SCP_UART_COUNT			2
