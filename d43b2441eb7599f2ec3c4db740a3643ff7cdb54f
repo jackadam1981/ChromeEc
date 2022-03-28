@@ -46,6 +46,30 @@
       },
       "revId": "d43b2441eb7599f2ec3c4db740a3643ff7cdb54f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "354a4f5b_442b0336",
+        "filename": "zephyr/shim/chip/it8xxx2/power_policy.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2022-03-28T09:30:02Z",
+      "side": 1,
+      "message": "The function of the following patch is only renamed without removing the \"!\".\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3547572",
+      "parentUuid": "468b2a7f_c5016083",
+      "range": {
+        "startLine": 32,
+        "startChar": 7,
+        "endLine": 32,
+        "endChar": 37
+      },
+      "revId": "d43b2441eb7599f2ec3c4db740a3643ff7cdb54f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
