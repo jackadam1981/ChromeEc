@@ -21,7 +21,10 @@
 #define TCPCI_EMUL_LABEL DT_NODELABEL(tcpci_emul)
 
 struct usb_pd_ctrl_msg_test_fixture {
-	struct tcpci_drp_emul partner_emul;
+	struct tcpci_partner_data partner_emul;
+	struct tcpci_snk_emul_data snk_ext;
+	struct tcpci_src_emul_data src_ext;
+	struct tcpci_drp_emul_data drp_ext;
 	const struct emul *tcpci_emul;
 	const struct emul *charger_emul;
 };
@@ -41,13 +44,8 @@ static void connect_sink_to_port(struct usb_pd_ctrl_msg_test_fixture *fixture)
 	zassume_ok(tcpci_emul_set_reg(fixture->tcpci_emul, TCPC_REG_EXT_STATUS,
 				      TCPC_REG_EXT_STATUS_SAFE0V),
 		   NULL);
-	zassume_ok(tcpci_drp_emul_connect_to_tcpci(
-			   &fixture->partner_emul.data,
-			   &fixture->partner_emul.src_data,
-			   &fixture->partner_emul.snk_data,
-			   &fixture->partner_emul.common_data,
-			   &fixture->partner_emul.ops, fixture->tcpci_emul),
-		   NULL);
+	zassume_ok(tcpci_partner_connect_to_tcpci(&fixture->partner_emul,
+						  fixture->tcpci_emul), NULL);
 
 	tcpci_tcpc_alert(SNK_PORT);
 	/* Wait for PD negotiation and current ramp.
@@ -96,8 +94,20 @@ static void usb_pd_ctrl_msg_before(void *data)
 	/* TODO(b/214401892): Check why need to give time TCPM to spin */
 	k_sleep(K_SECONDS(1));
 
-	/* Initialized the sink to request 5V and 3A */
-	tcpci_drp_emul_init(&fixture->partner_emul);
+	/*
+	 * Initialized DRP as the sink (sink extension is connected after
+	 * source)
+	 */
+	fixture->partner_emul.extensions = &fixture->drp_ext.ext;
+	fixture->drp_ext.ext.ops = &tcpci_drp_emul_ops;
+	fixture->drp_ext.ext.next = &fixture->src_ext.ext;
+	fixture->src_ext.ext.ops = &tcpci_src_emul_ops;
+	fixture->src_ext.ext.next = &fixture->snk_ext.ext;
+	fixture->snk_ext.ext.ops = &tcpci_snk_emul_ops;
+	fixture->snk_ext.ext.next = NULL;
+	tcpci_partner_init(&fixture->partner_emul);
+	tcpci_drp_emul_set_dr_in_first_pdo(fixture->snk_ext.pdo);
+	tcpci_drp_emul_set_dr_in_first_pdo(fixture->src_ext.pdo);
 
 	connect_sink_to_port(fixture);
 
@@ -129,7 +139,7 @@ ZTEST_F(usb_pd_ctrl_msg_test, verify_vconn_swap)
 		      "SNK Returned vconn_role=%u", snk_resp.vconn_role);
 
 	/* Send VCONN_SWAP request */
-	rv = tcpci_partner_send_control_msg(&this->partner_emul.common_data,
+	rv = tcpci_partner_send_control_msg(&this->partner_emul,
 					    PD_CTRL_VCONN_SWAP, 0);
 	zassert_ok(rv, "Failed to send VCONN_SWAP request, rv=%d", rv);
 
@@ -157,16 +167,16 @@ ZTEST_F(usb_pd_ctrl_msg_test, verify_pr_swap)
 	/* Ignore ACCEPT in common handler for PR Swap request,
 	 * causes soft reset
 	 */
-	tcpci_partner_common_handler_mask_msg(&this->partner_emul.common_data,
+	tcpci_partner_common_handler_mask_msg(&this->partner_emul,
 					      PD_CTRL_ACCEPT, true);
 
 	/* Send PR_SWAP request */
-	rv = tcpci_partner_send_control_msg(&this->partner_emul.common_data,
+	rv = tcpci_partner_send_control_msg(&this->partner_emul,
 					    PD_CTRL_PR_SWAP, 0);
 	zassert_ok(rv, "Failed to send PR_SWAP request, rv=%d", rv);
 
 	/* Send PS_RDY request */
-	rv = tcpci_partner_send_control_msg(&this->partner_emul.common_data,
+	rv = tcpci_partner_send_control_msg(&this->partner_emul,
 					    PD_CTRL_PS_RDY, 15);
 	zassert_ok(rv, "Failed to send PS_RDY request, rv=%d", rv);
 
