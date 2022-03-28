@@ -50,6 +50,11 @@ const uint8_t rgbkbd_count = ARRAY_SIZE(rgbkbds);
 const uint8_t rgbkbd_hsize = RGB_GRID0_COL + RGB_GRID1_COL;
 const uint8_t rgbkbd_vsize = RGB_GRID0_ROW;
 
+const uint8_t rgbkbd_map[] = {
+	RGBKBD_TERM,
+};
+const size_t rgbkbd_map_size = ARRAY_SIZE(rgbkbd_map);
+
 static struct rgbkbd_mock {
 	uint32_t count_drv_reset;
 	uint32_t count_drv_init;
