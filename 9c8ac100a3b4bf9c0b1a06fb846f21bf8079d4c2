@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f04c71f8_ba90b8b3",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_pd_ctrl_msg.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-03-28T22:31:41Z",
+      "side": 1,
+      "message": "nit: not needed. `this` is already typed to the suite\u0027s name with `_fixture` appended.",
+      "range": {
+        "startLine": 167,
+        "startChar": 1,
+        "endLine": 167,
+        "endChar": 53
+      },
+      "revId": "9c8ac100a3b4bf9c0b1a06fb846f21bf8079d4c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
