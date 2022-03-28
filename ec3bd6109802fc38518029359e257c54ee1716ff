@@ -68,6 +68,24 @@
       "parentUuid": "74a721ff_cf033062",
       "revId": "ec3bd6109802fc38518029359e257c54ee1716ff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4497760a_68703d95",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-03-28T17:42:14Z",
+      "side": 1,
+      "message": "Actually, we don\u0027t need a fall-back default setting, only defaults for each EC chip type.  Kconfig.tasks defines the default size.",
+      "parentUuid": "4c039e3f_5ebecdbc",
+      "revId": "ec3bd6109802fc38518029359e257c54ee1716ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
