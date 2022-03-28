@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e488d0d_89df9f80",
+        "filename": "test/panic_data.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-03-28T18:19:21Z",
+      "side": 1,
+      "message": "Should we also explicitly check that the upper 16 bits are set to zero?\n\nOr maybe their value is not predictable?",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 56
+      },
+      "revId": "0a0cdc75a7dbb3c718258e1910723b529cf68e48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cbae65f5_f23e1237",
+        "filename": "test/panic_data.tasklist",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-03-28T18:19:21Z",
+      "side": 1,
+      "message": "Not a code review comment, but only a question for my personal understanding of the tasklist.\n\nHow do we decide which test should run inside a task Vs doing everything directly inside `run_test`? What\u0027s the difference between the two?",
+      "revId": "0a0cdc75a7dbb3c718258e1910723b529cf68e48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
