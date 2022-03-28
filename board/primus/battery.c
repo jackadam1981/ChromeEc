@@ -6,8 +6,11 @@
  */
 
 #include "battery_fuel_gauge.h"
+#include "charge_state.h"
+#include "chipset.h"
 #include "common.h"
 #include "compile_time_macros.h"
+#include "util.h"
 
 /*
  * Battery info for all Primus battery types. Note that the fields
@@ -122,3 +125,26 @@ const struct board_batt_params board_battery_info[] = {
 BUILD_ASSERT(ARRAY_SIZE(board_battery_info) == BATTERY_TYPE_COUNT);
 
 const enum battery_type DEFAULT_BATTERY_TYPE = BATTERY_SUNWODA;
+
+int charger_profile_override(struct charge_state_data *curr)
+{
+	if (chipset_in_state(CHIPSET_STATE_ON))
+		return 0;
+
+	if (DIV_ROUND_NEAREST(charge_get_display_charge(), 10) <= 2)
+		curr->requested_current = 1000;
+
+	return 0;
+}
+
+enum ec_status charger_profile_override_get_param(uint32_t param,
+						  uint32_t *value)
+{
+	return EC_RES_INVALID_PARAM;
+}
+
+enum ec_status charger_profile_override_set_param(uint32_t param,
+						  uint32_t value)
+{
+	return EC_RES_INVALID_PARAM;
+}
