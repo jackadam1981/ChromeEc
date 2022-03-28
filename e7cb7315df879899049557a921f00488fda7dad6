@@ -85,6 +85,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7e3d01af_0c3947f7",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_pd_ctrl_msg.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-03-28T21:00:22Z",
+      "side": 1,
+      "message": "This should be happening automatically as part of our connection code. I don\u0027t think you should need to set it here. If you do, that\u0027s a separate bug.",
+      "parentUuid": "ea507f37_720ce0db",
+      "range": {
+        "startLine": 182,
+        "startChar": 0,
+        "endLine": 189,
+        "endChar": 24
+      },
+      "revId": "e7cb7315df879899049557a921f00488fda7dad6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "beab720b_543a9138",
         "filename": "zephyr/test/drivers/src/integration/usbc/usb_pd_ctrl_msg.c",
         "patchSetId": 1
@@ -162,6 +186,24 @@
       "side": 1,
       "message": "yeah, after sending `PR_SWAP` request to the tcpi_emul, it responds with an `ACCEPT`. This `ACCEPT` request seems to be received back on tcpi_emul (this doesn\u0027t seem right) which triggers a soft reset in `tcpci_partner_common_msg_handler`.  I can ignore it by updating this mask.",
       "parentUuid": "b0242ab4_02dee4d5",
+      "revId": "e7cb7315df879899049557a921f00488fda7dad6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a33e9ad_fb765250",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_pd_ctrl_msg.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-03-28T21:00:22Z",
+      "side": 1,
+      "message": "\u003e This  ACCEPT  request seems to be received back on tcpi_emul (this doesn\u0027t seem right) which triggers a soft reset in  `tcpci_partner_common_msg_handler`.  I can ignore it by updating this mask.\n\nI\u0027ll follow up OOB. This sounds complicated.",
+      "parentUuid": "8c9741d5_a9a1f3a3",
       "revId": "e7cb7315df879899049557a921f00488fda7dad6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
