@@ -54,8 +54,44 @@
  */
 typedef void (*tcpci_partner_hard_reset_func)(void *data);
 
+typedef enum tcpci_partner_handler_res (*tcpci_partner_msg_handler)(
+	struct tcpci_partner_extension *ext,
+	struct tcpci_partner_data *common_data,
+	const struct tcpci_emul_msg *msg);
+
+struct tcpci_partner_extension_ops {
+	enum tcpci_partner_handler_res (*sop_msg_handler)(
+		struct tcpci_partner_extension *ext,
+		struct tcpci_partner_data *common_data,
+		const struct tcpci_emul_msg *msg);
+	void (*hard_reset)(
+		struct tcpci_partner_extension *ext,
+		struct tcpci_partner_data *common_data);
+	void (*soft_reset)(
+		struct tcpci_partner_extension *ext,
+		struct tcpci_partner_data *common_data);
+	void (*disconnect)(
+		struct tcpci_partner_extension *ext,
+		struct tcpci_partner_data *common_data);
+	int (*connect)(
+		struct tcpci_partner_extension *ext,
+		struct tcpci_partner_data *common_data,
+		const struct emul *tcpci_emul);
+	void (*init)(
+		struct tcpci_partner_extension *ext,
+		struct tcpci_partner_data *common_data);
+};
+
+struct tcpci_partner_extension {
+	struct tcpci_partner_extension *next;
+	struct tcpci_partner_extension_ops *ops;
+}
+
 /** Common data for TCPCI partner device emulators */
 struct tcpci_partner_data {
+	struct tcpci_partner_extension *extensions;
+	/** Operations used by TCPCI emulator */
+	struct tcpci_emul_partner_ops ops;
 	/** Timer used to send message with delay */
 	struct k_timer delayed_send;
 	/** Reserved for fifo, used for scheduling messages */
@@ -91,6 +127,13 @@ struct tcpci_partner_data {
 	 * doesn't arrive, hard reset is triggered.
 	 */
 	bool in_soft_reset;
+	/**
+	 * If common code should send GoodCRC for each message. If false,
+	 * than one of extensions should call tcpci_emul_partner_msg_status().
+	 * If message is handled by common code, than GoodCRC is send regardless
+	 * of send_goodcrc value.
+	 */
+	bool send_goodcrc;
 	/**
 	 * Mutex for TCPCI transmit handler. Should be used to synchronise
 	 * access to partner emulator with TCPCI emulator.

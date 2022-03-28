@@ -352,15 +352,25 @@ static void tcpci_partner_common_reset(struct tcpci_partner_data *data)
 	tcpci_partner_stop_sender_response_timer(data);
 }
 
+void tcpci_partner_common_hard_reset(struct tcpci_partner_data *data)
+{
+	struct tcpci_partner_extension *ext;
+
+	tcpci_partner_common_reset(data);
+	for (ext = data->extensions; ext != NULL; ext = ext->next) {
+		if (ext->ops->hard_reset == NULL) {
+			continue
+		}
+		ext->ops->hard_reset(ext, data);
+	}
+}
+
 /** Check description in emul_common_tcpci_partner.h */
 void tcpci_partner_common_send_hard_reset(struct tcpci_partner_data *data)
 {
 	struct tcpci_partner_msg *msg;
 
-	tcpci_partner_common_reset(data);
-	if (data->hard_reset_func != NULL) {
-		data->hard_reset_func(data->hard_reset_data);
-	}
+	tcpci_partner_common_hard_reset(data);
 
 	msg = tcpci_partner_alloc_msg(0);
 	msg->msg.type = TCPCI_MSG_TX_HARD_RESET;
@@ -477,37 +487,21 @@ tcpci_partner_common_vdm_handler(struct tcpci_partner_data *data,
 enum tcpci_partner_handler_res tcpci_partner_common_msg_handler(
 	struct tcpci_partner_data *data,
 	const struct tcpci_emul_msg *tx_msg,
-	enum tcpci_msg_type type,
-	enum tcpci_emul_tx_status tx_status)
+	enum tcpci_msg_type type)
 {
+	struct tcpci_partner_extension *ext;
 	uint16_t header;
 	int msg_type;
 
 	tcpci_partner_log_msg(data, tx_msg, TCPCI_PARTNER_SENDER_TCPM,
 			      tx_status);
 
-	/*
-	 * Do not change alert register in TCPCI emulator upon receiving
-	 * hard reset or cable reset
-	 */
-	if (type != TCPCI_MSG_TX_HARD_RESET && type != TCPCI_MSG_CABLE_RESET) {
-		tcpci_emul_partner_msg_status(data->tcpci_emul, tx_status);
-	}
-
-	/* If receiving message was unsuccessful, abandon processing message */
-	if (tx_status != TCPCI_EMUL_TX_SUCCESS) {
-		return TCPCI_PARTNER_COMMON_MSG_NOT_HANDLED;
-	}
-
 	LOG_HEXDUMP_INF(tx_msg->buf, tx_msg->cnt,
 			"USB-C partner emulator received message");
 
 	/* Handle hard reset */
 	if (type == TCPCI_MSG_TX_HARD_RESET) {
-		tcpci_partner_common_reset(data);
-		if (data->hard_reset_func != NULL) {
-			data->hard_reset_func(data->hard_reset_data);
-		}
+		tcpci_partner_common_hard_reset(data);
 
 		return TCPCI_PARTNER_COMMON_MSG_HARD_RESET;
 	}
@@ -548,6 +542,14 @@ enum tcpci_partner_handler_res tcpci_partner_common_msg_handler(
 	case PD_CTRL_SOFT_RESET:
 		data->msg_id = 0;
 		tcpci_partner_send_control_msg(data, PD_CTRL_ACCEPT, 0);
+
+		for (ext = data->extensions; ext != NULL; ext = ext->next) {
+			if (ext->ops->soft_reset == NULL) {
+				continue
+			}
+			ext->ops->soft_reset(ext, data);
+		}
+
 		return TCPCI_PARTNER_COMMON_MSG_HANDLED;
 
 	case PD_CTRL_REJECT:
@@ -754,11 +756,173 @@ void tcpci_partner_common_clear_logged_msgs(struct tcpci_partner_data *data)
 	k_mutex_unlock(&data->msg_log_mutex);
 }
 
+/**
+ * @brief Function called when TCPM wants to transmit message. Accept received
+ *        message and generate response.
+ *
+ * @param emul Pointer to TCPCI emulator
+ * @param ops Pointer to partner operations structure
+ * @param tx_msg Pointer to TX message buffer
+ * @param type Type of message
+ * @param retry Count of retries
+ */
+static void tcpci_partner_transmit_op(const struct emul *emul,
+				       const struct tcpci_emul_partner_ops *ops,
+				       const struct tcpci_emul_msg *tx_msg,
+				       enum tcpci_msg_type type,
+				       int retry)
+{
+	struct tcpci_partner_data *data =
+		CONTAINER_OF(ops, struct tcpci_partner_data, ops);
+	enum tcpci_partner_handler_res processed;
+	struct tcpci_partner_extension *ext;
+	uint16_t header;
+	int ret;
+
+	ret = k_mutex_lock(&data->transmit_mutex, K_FOREVER);
+	if (ret) {
+		LOG_ERR("Failed to get partner mutex");
+		/* Inform TCPM that message send failed */
+		if (type != TCPCI_MSG_TX_HARD_RESET &&
+		    type != TCPCI_MSG_CABLE_RESET) {
+			tcpci_emul_partner_msg_status(data->tcpci_emul,
+						      TCPCI_EMUL_TX_FAILED);
+		}
+		return;
+	}
+
+	header = sys_get_le16(tx_msg->buf);
+
+	/* Call common handler */
+	/* Add flag if any component wants to send "GoodCRC" on its own */
+	processed = tcpci_partner_common_msg_handler(data, tx_msg, type);
+	if (type != TCPCI_MSG_TX_HARD_RESET && type != TCPCI_MSG_CABLE_RESET &&
+	    (data->send_goodcrc ||
+	     processed == TCPCI_PARTNER_COMMON_MSG_HANDLED)) {
+			tcpci_emul_partner_msg_status(data->tcpci_emul,
+						      TCPCI_EMUL_TX_SUCCESS);
+	}
+
+	if (processed != TCPCI_PARTNER_COMMON_MSG_NOT_HANDLED) {
+		k_mutex_unlock(&drp_emul->common_data.transmit_mutex);
+		return;
+	}
+
+	/* Handle only SOP messages */
+	if (type != TCPCI_MSG_SOP) {
+		k_mutex_unlock(&data->transmit_mutex);
+		return;
+	}
+
+	for (ext = data->extensions; ext != NULL; ext = ext->next) {
+		if (ext->ops->sop_msg_handler == NULL) {
+			continue
+		}
+		processed = ext->ops->sop_msg_handler(ext, data, tx_msg);
+		if (processed == TCPCI_PARTNER_COMMON_MSG_HANDLED) {
+			k_mutex_unlock(&data->transmit_mutex);
+			return;
+		}
+	}
+
+	/* Send reject for not handled messages (PD rev 2.0) */
+	tcpci_partner_send_control_msg(&drp_emul->common_data,
+				       PD_CTRL_REJECT, 0);
+	k_mutex_unlock(&data->transmit_mutex);
+}
+
+/**
+ * @brief Function called when TCPM consumes message. Free message that is no
+ *        longer needed.
+ *
+ * @param emul Pointer to TCPCI emulator
+ * @param ops Pointer to partner operations structure
+ * @param rx_msg Message that was consumed by TCPM
+ */
+static void tcpci_partner_rx_consumed_op(
+		const struct emul *emul,
+		const struct tcpci_emul_partner_ops *ops,
+		const struct tcpci_emul_msg *rx_msg)
+{
+	struct tcpci_partner_msg *msg = CONTAINER_OF(rx_msg,
+						     struct tcpci_partner_msg,
+						     msg);
+
+	tcpci_partner_free_msg(msg);
+}
+
+/**
+ * @brief Function called when emulator is disconnected from TCPCI
+ *
+ * @param emul Pointer to TCPCI emulator
+ * @param ops Pointer to partner operations structure
+ */
+static void tcpci_drp_emul_disconnect_op(
+		const struct emul *emul,
+		const struct tcpci_emul_partner_ops *ops)
+{
+	struct tcpci_partner_data *data =
+		CONTAINER_OF(ops, struct tcpci_partner_data, ops);
+	struct tcpci_partner_extension *ext;
+
+	tcpci_partner_common_disconnect(data);
+	for (ext = data->extensions; ext != NULL; ext = ext->next) {
+		if (ext->ops->disconnect == NULL) {
+			continue
+		}
+		ext->ops->disconnect(ext, data);
+	}
+}
+
+/** Check description in emul_tcpci_partner_drp.h */
+int tcpci_partner_connect_to_tcpci(struct tcpci_partner_data *common_data,
+				   const struct emul *tcpci_emul)
+{
+	struct tcpci_partner_extension *ext;
+	bool connected = true;
+	int ret;
+
+	for (ext = data->extensions; ext != NULL; ext = ext->next) {
+		if (ext->ops->connect == NULL) {
+			continue
+		}
+		ret = ext->ops->connect(ext, data, tcpci_emul);
+		if (ret < 0) {
+			return ret;
+		}
+		if (ret == 1) {
+			if (!connected) {
+				connected = true;
+			} else {
+				/*
+				 * Probably it's unintended to connect from more
+				 * than one extension to tcpci_emul
+				 */
+				LOG_WRN("Multiple extensions connected to tcpci_emul");
+			}
+		}
+	}
+
+	common_data->tcpci_emul = tcpci_emul;
+
+	return 0;
+	/////
+	if (data->sink) {
+		return tcpci_snk_emul_connect_to_tcpci(snk_data, common_data,
+						       ops, tcpci_emul);
+	}
+
+	return tcpci_src_emul_connect_to_tcpci(src_data, common_data,
+					       ops, tcpci_emul);
+}
+
 /** Check description in emul_common_tcpci_partner.h */
 void tcpci_partner_init(struct tcpci_partner_data *data,
 			tcpci_partner_hard_reset_func hard_reset_func,
 			void *hard_reset_data)
 {
+	struct tcpci_partner_extension *ext;
+
 	k_timer_init(&data->delayed_send, tcpci_partner_delayed_send_timer,
 		     NULL);
 	k_work_init_delayable(&data->sender_response_timeout,
@@ -776,4 +940,11 @@ void tcpci_partner_init(struct tcpci_partner_data *data,
 	data->identity_vdos = 0;
 	data->svids_vdos = 0;
 	data->modes_vdos = 0;
+
+	for (ext = data->extensions; ext != NULL; ext = ext->next) {
+		if (ext->init == NULL) {
+			continue
+		}
+		ext->init(ext, data);
+	}
 }

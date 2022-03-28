@@ -27,8 +27,11 @@
  * source capabilities constructed from given PDOs.
  */
 
+extern struct tcpci_partner_extension_ops tcpci_src_emul_ops;
+
 /** Structure describing source device emulator data */
 struct tcpci_src_emul_data {
+	struct tcpci_partner_extension ext;
 	/** Power data objects returned in source capabilities message */
 	uint32_t pdo[PDO_MAX_OBJECTS];
 	/** Pointer to common TCPCI partner data */
@@ -37,15 +40,8 @@ struct tcpci_src_emul_data {
 	struct k_work_delayable source_capability_timeout;
 };
 
-/** Structure describing standalone source device emulator */
-struct tcpci_src_emul {
-	/** Common TCPCI partner data */
-	struct tcpci_partner_data common_data;
-	/** Operations used by TCPCI emulator */
-	struct tcpci_emul_partner_ops ops;
-	/** Source emulator data */
-	struct tcpci_src_emul_data data;
-};
+#define DECLARE_TCPCI_SRC_EMUL(name)	\
+	struct tcpci_src_emul_data name = {.ext.ops = &tcpci_src_emul_ops}
 
 /** Return values of @ref tcpci_src_emul_check_pdos function */
 enum check_pdos_res {

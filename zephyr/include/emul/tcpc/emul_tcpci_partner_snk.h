@@ -27,8 +27,11 @@
  * sink capabilities constructed from given PDOs.
  */
 
+extern struct tcpci_partner_extension_ops tcpci_snk_emul_ops;
+
 /** Structure describing sink device emulator data */
 struct tcpci_snk_emul_data {
+	struct tcpci_partner_extension ext;
 	/** Power data objects returned in sink capabilities message */
 	uint32_t pdo[PDO_MAX_OBJECTS];
 	/** Emulator is waiting for PS RDY message */
@@ -37,15 +40,8 @@ struct tcpci_snk_emul_data {
 	bool pd_completed;
 };
 
-/** Structure describing standalone sink device emulator */
-struct tcpci_snk_emul {
-	/** Common TCPCI partner data */
-	struct tcpci_partner_data common_data;
-	/** Operations used by TCPCI emulator */
-	struct tcpci_emul_partner_ops ops;
-	/** Sink emulator data */
-	struct tcpci_snk_emul_data data;
-};
+#define DECLARE_TCPCI_SNK_EMUL(name)	\
+	struct tcpci_snk_emul_data name = {.ext.ops = &tcpci_snk_emul_ops}
 
 /**
  * @brief Initialise USB-C sink device emulator. Need to be called before

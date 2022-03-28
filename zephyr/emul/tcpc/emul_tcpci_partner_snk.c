@@ -331,10 +331,12 @@ static void tcpci_snk_emul_stop_partner_transition_timer(
 
 /** Check description in emul_tcpci_snk.h */
 enum tcpci_partner_handler_res tcpci_snk_emul_handle_sop_msg(
-	struct tcpci_snk_emul_data *data,
+	struct tcpci_partner_extension *ext,
 	struct tcpci_partner_data *common_data,
 	const struct tcpci_emul_msg *msg)
 {
+	struct tcpci_snk_emul_data *data =
+		CONTAINER_OF(ext, struct tcpci_snk_emul_data, ext);
 	uint16_t header;
 
 	header = sys_get_le16(msg->buf);
@@ -386,140 +388,50 @@ enum tcpci_partner_handler_res tcpci_snk_emul_handle_sop_msg(
 }
 
 /** Check description in emul_tcpci_partner_snk.h */
-void tcpci_snk_emul_hard_reset(void *data)
+void tcpci_snk_emul_hard_reset(struct tcpci_partner_extension *ext,
+		struct tcpci_partner_data *common_data)
 {
-	struct tcpci_snk_emul_data *snk_emul_data = data;
+	struct tcpci_snk_emul_data *data =
+		CONTAINER_OF(ext, struct tcpci_snk_emul_data, ext);
 
-	snk_emul_data->wait_for_ps_rdy = false;
-	snk_emul_data->pd_completed = false;
-}
-
-/**
- * @brief Function called when TCPM wants to transmit message. Accept received
- *        message and generate response.
- *
- * @param emul Pointer to TCPCI emulator
- * @param ops Pointer to partner operations structure
- * @param tx_msg Pointer to TX message buffer
- * @param type Type of message
- * @param retry Count of retries
- */
-static void tcpci_snk_emul_transmit_op(const struct emul *emul,
-				       const struct tcpci_emul_partner_ops *ops,
-				       const struct tcpci_emul_msg *tx_msg,
-				       enum tcpci_msg_type type,
-				       int retry)
-{
-	struct tcpci_snk_emul *snk_emul =
-		CONTAINER_OF(ops, struct tcpci_snk_emul, ops);
-	enum tcpci_partner_handler_res processed;
-	int ret;
-
-	ret = k_mutex_lock(&snk_emul->common_data.transmit_mutex, K_FOREVER);
-	if (ret) {
-		LOG_ERR("Failed to get SNK mutex");
-		/* Inform TCPM that message send failed */
-		tcpci_partner_common_msg_handler(&snk_emul->common_data,
-						 tx_msg, type,
-						 TCPCI_EMUL_TX_FAILED);
-		return;
-	}
-
-	/* Call common handler */
-	processed = tcpci_partner_common_msg_handler(&snk_emul->common_data,
-						     tx_msg, type,
-						     TCPCI_EMUL_TX_SUCCESS);
-	switch (processed) {
-	case TCPCI_PARTNER_COMMON_MSG_HARD_RESET:
-	case TCPCI_PARTNER_COMMON_MSG_HANDLED:
-		/* Message handled nothing to do */
-		k_mutex_unlock(&snk_emul->common_data.transmit_mutex);
-		return;
-	case TCPCI_PARTNER_COMMON_MSG_NOT_HANDLED:
-	default:
-		/* Continue */
-		break;
-	}
-
-	/* Handle only SOP messages */
-	if (type != TCPCI_MSG_SOP) {
-		k_mutex_unlock(&snk_emul->common_data.transmit_mutex);
-		return;
-	}
-
-	/* Call sink specific handler */
-	processed = tcpci_snk_emul_handle_sop_msg(&snk_emul->data,
-						  &snk_emul->common_data,
-						  tx_msg);
-	if (processed == TCPCI_PARTNER_COMMON_MSG_NOT_HANDLED) {
-		/* Send reject for not handled messages (PD rev 2.0) */
-		tcpci_partner_send_control_msg(&snk_emul->common_data,
-					       PD_CTRL_REJECT, 0);
-	}
-	k_mutex_unlock(&snk_emul->common_data.transmit_mutex);
-}
-
-/**
- * @brief Function called when TCPM consumes message. Free message that is no
- *        longer needed.
- *
- * @param emul Pointer to TCPCI emulator
- * @param ops Pointer to partner operations structure
- * @param rx_msg Message that was consumed by TCPM
- */
-static void tcpci_snk_emul_rx_consumed_op(
-		const struct emul *emul,
-		const struct tcpci_emul_partner_ops *ops,
-		const struct tcpci_emul_msg *rx_msg)
-{
-	struct tcpci_partner_msg *msg = CONTAINER_OF(rx_msg,
-						     struct tcpci_partner_msg,
-						     msg);
-
-	tcpci_partner_free_msg(msg);
-}
-
-/**
- * @brief Function called when emulator is disconnected from TCPCI
- *
- * @param emul Pointer to TCPCI emulator
- * @param ops Pointer to partner operations structure
- */
-static void tcpci_snk_emul_disconnect_op(
-		const struct emul *emul,
-		const struct tcpci_emul_partner_ops *ops)
-{
-	struct tcpci_snk_emul *snk_emul =
-		CONTAINER_OF(ops, struct tcpci_snk_emul, ops);
-
-	tcpci_partner_common_disconnect(&snk_emul->common_data);
+	data->wait_for_ps_rdy = false;
+	data->pd_completed = false;
 }
 
 /** Check description in emul_tcpci_snk.h */
-int tcpci_snk_emul_connect_to_tcpci(struct tcpci_snk_emul_data *data,
+int tcpci_snk_emul_connect_to_tcpci(struct tcpci_partner_extension *ext,
 				    struct tcpci_partner_data *common_data,
-				    const struct tcpci_emul_partner_ops *ops,
 				    const struct emul *tcpci_emul)
 {
+	struct tcpci_snk_emul_data *data =
+		CONTAINER_OF(ext, struct tcpci_snk_emul_data, ext);
 	int ret;
 
-	tcpci_emul_set_partner_ops(tcpci_emul, ops);
+	if (common_data->power_role != PD_ROLE_SINK) {
+		return 0;
+	}
+
+	tcpci_emul_set_partner_ops(tcpci_emul, common_data->ops);
 	ret = tcpci_emul_connect_partner(tcpci_emul, PD_ROLE_SINK,
 					 TYPEC_CC_VOLT_RD,
 					 TYPEC_CC_VOLT_OPEN, POLARITY_CC1);
 	if (!ret) {
-		common_data->tcpci_emul = tcpci_emul;
+		return ret;
 	}
 
 	data->wait_for_ps_rdy = false;
 	data->pd_completed = false;
 
-	return ret;
+	return 1;
 }
 
 /** Check description in emul_tcpci_snk.h */
-void tcpci_snk_emul_init_data(struct tcpci_snk_emul_data *data)
+void tcpci_snk_emul_init_data(struct tcpci_partner_extension *ext,
+			      struct tcpci_partner_data *common_data)
 {
+	struct tcpci_snk_emul_data *data =
+		CONTAINER_OF(ext, struct tcpci_snk_emul_data, ext);
+
 	/* By default there is only PDO 5v@500mA */
 	data->pdo[0] = PDO_FIXED(5000, 500, 0);
 	for (int i = 1; i < PDO_MAX_OBJECTS; i++) {
@@ -529,22 +441,16 @@ void tcpci_snk_emul_init_data(struct tcpci_snk_emul_data *data)
 	data->wait_for_ps_rdy = false;
 	data->pd_completed = false;
 
+	common_data->data_role = PD_ROLE_DFP;
+	common_data->power_role = PD_ROLE_SINK;
+	common_data->rev = PD_REV20;
 }
 
-/** Check description in emul_tcpci_snk.h */
-void tcpci_snk_emul_init(struct tcpci_snk_emul *emul)
-{
-	tcpci_partner_init(&emul->common_data, tcpci_snk_emul_hard_reset,
-			   &emul->data);
-
-	emul->common_data.data_role = PD_ROLE_DFP;
-	emul->common_data.power_role = PD_ROLE_SINK;
-	emul->common_data.rev = PD_REV20;
-
-	emul->ops.transmit = tcpci_snk_emul_transmit_op;
-	emul->ops.rx_consumed = tcpci_snk_emul_rx_consumed_op;
-	emul->ops.control_change = NULL;
-	emul->ops.disconnect = tcpci_snk_emul_disconnect_op;
-
-	tcpci_snk_emul_init_data(&emul->data);
+struct tcpci_partner_extension_ops tcpci_snk_emul_ops = {
+	.sop_msg_handler = tcpci_snk_emul_handle_sop_msg,
+	.hard_reset = tcpci_src_emul_hard_reset,
+	.soft_reset = NULL,
+	.disconnect = NULL,
+	.connect = tcpci_snk_emul_connect_to_tcpci,
+	.init = tcpci_snk_emul_init_data,
 }

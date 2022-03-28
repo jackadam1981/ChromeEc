@@ -29,26 +29,15 @@
  * to send both source and sink capabilities.
  */
 
+extern struct tcpci_partner_extension_ops tcpci_drp_emul_ops;
+
 /** Structure describing dual role device emulator data */
 struct tcpci_drp_emul_data {
+	struct tcpci_partner_extension ext;
 	/** Controls if device is sink or source */
 	bool sink;
 	/** If device is during power swap and is expecting PS_RDY message */
 	bool in_pwr_swap;
-};
-
-/** Structure describing standalone dual role device emulator */
-struct tcpci_drp_emul {
-	/** Common TCPCI partner data */
-	struct tcpci_partner_data common_data;
-	/** Operations used by TCPCI emulator */
-	struct tcpci_emul_partner_ops ops;
-	/** Dual role emulator data */
-	struct tcpci_drp_emul_data data;
-	/** Source emulator data */
-	struct tcpci_src_emul_data src_data;
-	/** Sink emulator data */
-	struct tcpci_snk_emul_data snk_data;
 };
 
 /**

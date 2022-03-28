@@ -28,22 +28,13 @@
  * capability message (by not sending GoodCRC or Request after GoodCRC).
  */
 
+extern struct tcpci_partner_extension_ops tcpci_faulty_snk_emul_ops;
+
 /** Structure describing malfunctioning sink emulator data */
 struct tcpci_faulty_snk_emul_data {
+	struct tcpci_partner_extension ext;
 	/* List of action to perform */
 	struct k_fifo action_list;
-};
-
-/** Structure describing standalone malfunctioning device emulator */
-struct tcpci_faulty_snk_emul {
-	/** Common TCPCI partner data */
-	struct tcpci_partner_data common_data;
-	/** Operations used by TCPCI emulator */
-	struct tcpci_emul_partner_ops ops;
-	/** Malfunctioning sink emulator data */
-	struct tcpci_faulty_snk_emul_data data;
-	/** Sink emulator data */
-	struct tcpci_snk_emul_data snk_data;
 };
 
 /** Actions that can be performed by malfunctioning sink emulator */
