@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6501cbd_9e616e25",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1157,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2022-03-28T16:17:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "80f857d3_f1350682",
+      "revId": "b6db0487ee28e4dcca4338aff44d67eb14c62f8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fa2b2ad2_015c3077",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-03-25T17:57:14Z",
       "side": 1,
       "message": "Nit: PR_Swap",
+      "range": {
+        "startLine": 22,
+        "startChar": 17,
+        "endLine": 22,
+        "endChar": 24
+      },
+      "revId": "b6db0487ee28e4dcca4338aff44d67eb14c62f8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "36aac5be_693c7c29",
+        "filename": "zephyr/emul/tcpc/emul_tcpci_partner_drp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2022-03-28T16:17:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa2b2ad2_015c3077",
       "range": {
         "startLine": 22,
         "startChar": 17,
@@ -64,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d52457b_c01679b1",
+        "filename": "zephyr/emul/tcpc/emul_tcpci_partner_drp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2022-03-28T16:17:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c731daff_e586b49b",
+      "range": {
+        "startLine": 76,
+        "startChar": 9,
+        "endLine": 76,
+        "endChar": 12
+      },
+      "revId": "b6db0487ee28e4dcca4338aff44d67eb14c62f8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2edb2314_d05b411d",
@@ -77,6 +143,30 @@
       "writtenOn": "2022-03-25T17:57:14Z",
       "side": 1,
       "message": "I think this macro is supposed to take the POWER_CONTROL register value, e.g. `vconn_status` here. This expression will always evaluate to 0xfffe.",
+      "range": {
+        "startLine": 83,
+        "startChar": 18,
+        "endLine": 83,
+        "endChar": 43
+      },
+      "revId": "b6db0487ee28e4dcca4338aff44d67eb14c62f8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "03403842_826340f9",
+        "filename": "zephyr/emul/tcpc/emul_tcpci_partner_drp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2022-03-28T16:17:26Z",
+      "side": 1,
+      "message": "Does this mean the logic in `tcpci_tcpm_set_vconn` is wrong?  I copied this from there and adapted it for the emulator.  Either way given your later comments, I\u0027ll remove this.",
+      "parentUuid": "2edb2314_d05b411d",
       "range": {
         "startLine": 83,
         "startChar": 18,
@@ -110,6 +200,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1936c7c9_ab02277b",
+        "filename": "zephyr/emul/tcpc/emul_tcpci_partner_drp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2022-03-28T16:17:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8d2332b0_6d3664d5",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 20
+      },
+      "revId": "b6db0487ee28e4dcca4338aff44d67eb14c62f8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "339bdeec_e49a56a5",
@@ -123,6 +237,24 @@
       "writtenOn": "2022-03-25T17:57:14Z",
       "side": 1,
       "message": "I\u0027m not sure how this hasn\u0027t come up before, but the initial roles when PD starts are either going to be Source/DFP/VCONN Source or Sink/UFP/VCONN off. Source vs Sink controls the others, so probably, when the TCPM comes up, it\u0027s going to treat the partner as if it were Sink/UFP/VCONN off.\n\nI\u0027m not sure what the implications are for our tests, and this is out of scope for this CL, but these initial roles should be consistent, and something else might need to change because of that.",
+      "revId": "b6db0487ee28e4dcca4338aff44d67eb14c62f8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cdd522c8_126b637d",
+        "filename": "zephyr/emul/tcpc/emul_tcpci_partner_drp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 384,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2022-03-28T16:17:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "339bdeec_e49a56a5",
       "revId": "b6db0487ee28e4dcca4338aff44d67eb14c62f8b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -144,6 +276,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ad22867_95f9aac7",
+        "filename": "zephyr/emul/tcpc/emul_tcpci_partner_src.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 453,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2022-03-28T16:17:26Z",
+      "side": 1,
+      "message": "I think the common init can default these roles, but the src/snk emul_inits should still overwrite them for what they need. Given your later comments, this will be removed.",
+      "parentUuid": "f8f83091_8022417a",
+      "revId": "b6db0487ee28e4dcca4338aff44d67eb14c62f8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dae091e6_ee294595",
@@ -161,6 +311,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c38cdd9_cec15fb4",
+        "filename": "zephyr/include/emul/tcpc/emul_tcpci_partner_drp.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2022-03-28T16:17:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dae091e6_ee294595",
+      "revId": "b6db0487ee28e4dcca4338aff44d67eb14c62f8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "10cdbfe5_980c3f02",
@@ -174,6 +342,24 @@
       "writtenOn": "2022-03-25T17:57:14Z",
       "side": 1,
       "message": "Can you split this CL to put the new test in its own CL following this one?",
+      "revId": "b6db0487ee28e4dcca4338aff44d67eb14c62f8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f71dd9e_6beab490",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_pd_ctrl_msg.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2022-03-28T16:17:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "10cdbfe5_980c3f02",
       "revId": "b6db0487ee28e4dcca4338aff44d67eb14c62f8b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
