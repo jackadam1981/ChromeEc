@@ -102,10 +102,12 @@ int tcpci_src_emul_send_capability_msg_with_timer(
 
 /** Check description in emul_tcpci_partner_src.h */
 enum tcpci_partner_handler_res tcpci_src_emul_handle_sop_msg(
-	struct tcpci_src_emul_data *data,
+	struct tcpci_partner_extension *ext,
 	struct tcpci_partner_data *common_data,
 	const struct tcpci_emul_msg *msg)
 {
+	struct tcpci_src_emul_data *data =
+		CONTAINER_OF(ext, struct tcpci_src_emul_data, ext);
 	uint16_t header;
 
 	header = sys_get_le16(msg->buf);
@@ -177,138 +179,46 @@ static void tcpci_src_emul_source_capability_timeout(struct k_work *work)
 }
 
 /** Check description in emul_tcpci_partner_src.h */
-void tcpci_src_emul_hard_reset(void *data)
+void tcpci_src_emul_reset(
+		struct tcpci_partner_extension *ext,
+		struct tcpci_partner_data *common_data)
 {
-	struct tcpci_src_emul_data *src_emul_data = data;
+	struct tcpci_src_emul_data *data =
+		CONTAINER_OF(ext, struct tcpci_src_emul_data, ext);
+
+	if (common_data->power_role != PD_ROLE_SOURCE) {
+		return;
+	}
 
 	/* Send capability to establish PD again */
-	tcpci_src_emul_send_capability_msg_with_timer(
-			src_emul_data, src_emul_data->common_data, 0);
-}
-
-/**
- * @brief Function called when TCPM wants to transmit message. Accept received
- *        message and generate response.
- *
- * @param emul Pointer to TCPCI emulator
- * @param ops Pointer to partner operations structure
- * @param tx_msg Pointer to TX message buffer
- * @param type Type of message
- * @param retry Count of retries
- */
-static void tcpci_src_emul_transmit_op(const struct emul *emul,
-				       const struct tcpci_emul_partner_ops *ops,
-				       const struct tcpci_emul_msg *tx_msg,
-				       enum tcpci_msg_type type,
-				       int retry)
-{
-	struct tcpci_src_emul *src_emul =
-		CONTAINER_OF(ops, struct tcpci_src_emul, ops);
-	enum tcpci_partner_handler_res processed;
-	uint16_t header;
-	int ret;
-
-	ret = k_mutex_lock(&src_emul->common_data.transmit_mutex, K_FOREVER);
-	if (ret) {
-		LOG_ERR("Failed to get SRC mutex");
-		/* Inform TCPM that message send failed */
-		tcpci_partner_common_msg_handler(&src_emul->common_data,
-						 tx_msg, type,
-						 TCPCI_EMUL_TX_FAILED);
-		return;
-	}
-
-	processed = tcpci_partner_common_msg_handler(&src_emul->common_data,
-						     tx_msg, type,
-						     TCPCI_EMUL_TX_SUCCESS);
-	/* Handle hard reset */
-	if (processed == TCPCI_PARTNER_COMMON_MSG_HARD_RESET) {
-		k_mutex_unlock(&src_emul->common_data.transmit_mutex);
-		return;
-	}
-
-	/* Handle only SOP messages */
-	if (type != TCPCI_MSG_SOP) {
-		k_mutex_unlock(&src_emul->common_data.transmit_mutex);
-		return;
-	}
-
-	header = sys_get_le16(tx_msg->buf);
-	if (processed == TCPCI_PARTNER_COMMON_MSG_HANDLED &&
-	    !(PD_HEADER_CNT(header) == 0 &&
-	      PD_HEADER_TYPE(header) == PD_CTRL_SOFT_RESET)) {
-		/*
-		 * Only soft reset requires additional handling after
-		 * common handler
-		 */
-		k_mutex_unlock(&src_emul->common_data.transmit_mutex);
-		return;
-	}
-
-	/* Call source specific handler */
-	processed = tcpci_src_emul_handle_sop_msg(&src_emul->data,
-						  &src_emul->common_data,
-						  tx_msg);
-	if (processed == TCPCI_PARTNER_COMMON_MSG_NOT_HANDLED) {
-		/* Send reject for not handled messages (PD rev 2.0) */
-		tcpci_partner_send_control_msg(&src_emul->common_data,
-					       PD_CTRL_REJECT, 0);
-	}
-	k_mutex_unlock(&src_emul->common_data.transmit_mutex);
-}
-
-/**
- * @brief Function called when TCPM consumes message. Free message that is no
- *        longer needed.
- *
- * @param emul Pointer to TCPCI emulator
- * @param ops Pointer to partner operations structure
- * @param rx_msg Message that was consumed by TCPM
- */
-static void tcpci_src_emul_rx_consumed_op(
-		const struct emul *emul,
-		const struct tcpci_emul_partner_ops *ops,
-		const struct tcpci_emul_msg *rx_msg)
-{
-	struct tcpci_partner_msg *msg = CONTAINER_OF(rx_msg,
-						     struct tcpci_partner_msg,
-						     msg);
-
-	tcpci_partner_free_msg(msg);
+	tcpci_src_emul_send_capability_msg_with_timer(data, common_data, 0);
 }
 
 /** Check description in emul_tcpci_partner_src.h */
-void tcpci_src_emul_disconnect(struct tcpci_src_emul_data *data)
+void tcpci_src_emul_disconnect(
+		struct tcpci_partner_extension *ext,
+		struct tcpci_partner_data *common_data)
 {
+	struct tcpci_src_emul_data *data =
+		CONTAINER_OF(ext, struct tcpci_src_emul_data, ext);
+
 	tcpci_src_emul_stop_source_capability_timer(data);
 }
 
-/**
- * @brief Function called when emulator is disconnected from TCPCI
- *
- * @param emul Pointer to TCPCI emulator
- * @param ops Pointer to partner operations structure
- */
-static void tcpci_src_emul_disconnect_op(
-		const struct emul *emul,
-		const struct tcpci_emul_partner_ops *ops)
-{
-	struct tcpci_src_emul *src_emul =
-		CONTAINER_OF(ops, struct tcpci_src_emul, ops);
-
-	tcpci_partner_common_disconnect(&src_emul->common_data);
-	tcpci_src_emul_disconnect(&src_emul->data);
-}
-
 /** Check description in emul_tcpci_partner_src.h */
-int tcpci_src_emul_connect_to_tcpci(struct tcpci_src_emul_data *data,
+int tcpci_src_emul_connect_to_tcpci(struct tcpci_partner_extension *ext,
 				    struct tcpci_partner_data *common_data,
-				    const struct tcpci_emul_partner_ops *ops,
 				    const struct emul *tcpci_emul)
 {
+	struct tcpci_src_emul_data *data =
+		CONTAINER_OF(ext, struct tcpci_src_emul_data, ext);
 	int ec;
 
-	tcpci_emul_set_partner_ops(tcpci_emul, ops);
+	if (common_data->power_role != PD_ROLE_SOURCE) {
+		return 0;
+	}
+
+	tcpci_emul_set_partner_ops(tcpci_emul, &common_data->ops);
 	ec = tcpci_emul_connect_partner(tcpci_emul, PD_ROLE_SOURCE,
 					TYPEC_CC_VOLT_RP_3_0,
 					TYPEC_CC_VOLT_OPEN, POLARITY_CC1);
@@ -316,7 +226,6 @@ int tcpci_src_emul_connect_to_tcpci(struct tcpci_src_emul_data *data,
 		return ec;
 	}
 
-	common_data->tcpci_emul = tcpci_emul;
 	/*
 	 * It is not required to wait on connection before sending source
 	 * capabilities, but it is permit. Timeout is obligatory for power swap.
@@ -325,7 +234,7 @@ int tcpci_src_emul_connect_to_tcpci(struct tcpci_src_emul_data *data,
 					data, data->common_data,
 					TCPCI_SWAP_SOURCE_START_TIMEOUT_MS);
 
-	return 0;
+	return 1;
 }
 
 #define PDO_FIXED_FLAGS_MASK						\
@@ -428,9 +337,12 @@ enum check_pdos_res tcpci_src_emul_check_pdos(struct tcpci_src_emul_data *data)
 }
 
 /** Check description in emul_tcpci_partner_src.h */
-void tcpci_src_emul_init_data(struct tcpci_src_emul_data *data,
+void tcpci_src_emul_init_data(struct tcpci_partner_extension *ext,
 			      struct tcpci_partner_data *common_data)
 {
+	struct tcpci_src_emul_data *data =
+		CONTAINER_OF(ext, struct tcpci_src_emul_data, ext);
+
 	/* By default there is only PDO 5v@3A */
 	data->pdo[0] = PDO_FIXED(5000, 3000, PDO_FIXED_UNCONSTRAINED);
 	for (int i = 1; i < PDO_MAX_OBJECTS; i++) {
@@ -440,22 +352,17 @@ void tcpci_src_emul_init_data(struct tcpci_src_emul_data *data,
 	k_work_init_delayable(&data->source_capability_timeout,
 			      tcpci_src_emul_source_capability_timeout);
 	data->common_data = common_data;
+
+	common_data->data_role = PD_ROLE_UFP;
+	common_data->power_role = PD_ROLE_SOURCE;
+	common_data->rev = PD_REV20;
 }
 
-/** Check description in emul_tcpci_parnter_src.h */
-void tcpci_src_emul_init(struct tcpci_src_emul *emul)
-{
-	tcpci_partner_init(&emul->common_data, tcpci_src_emul_hard_reset,
-			   &emul->data);
-
-	emul->common_data.data_role = PD_ROLE_UFP;
-	emul->common_data.power_role = PD_ROLE_SOURCE;
-	emul->common_data.rev = PD_REV20;
-
-	emul->ops.transmit = tcpci_src_emul_transmit_op;
-	emul->ops.rx_consumed = tcpci_src_emul_rx_consumed_op;
-	emul->ops.control_change = NULL;
-	emul->ops.disconnect = tcpci_src_emul_disconnect_op;
-
-	tcpci_src_emul_init_data(&emul->data, &emul->common_data);
-}
+struct tcpci_partner_extension_ops tcpci_src_emul_ops = {
+	.sop_msg_handler = tcpci_src_emul_handle_sop_msg,
+	.hard_reset = tcpci_src_emul_reset,
+	.soft_reset = tcpci_src_emul_reset,
+	.disconnect = tcpci_src_emul_disconnect,
+	.connect = tcpci_src_emul_connect_to_tcpci,
+	.init = tcpci_src_emul_init_data,
+};

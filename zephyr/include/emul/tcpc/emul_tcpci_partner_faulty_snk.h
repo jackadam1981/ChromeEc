@@ -28,23 +28,22 @@
  * capability message (by not sending GoodCRC or Request after GoodCRC).
  */
 
+extern struct tcpci_partner_extension_ops tcpci_faulty_snk_emul_ops;
+
 /** Structure describing malfunctioning sink emulator data */
 struct tcpci_faulty_snk_emul_data {
+	struct tcpci_partner_extension ext;
 	/* List of action to perform */
 	struct k_fifo action_list;
 };
 
-/** Structure describing standalone malfunctioning device emulator */
-struct tcpci_faulty_snk_emul {
-	/** Common TCPCI partner data */
-	struct tcpci_partner_data common_data;
-	/** Operations used by TCPCI emulator */
-	struct tcpci_emul_partner_ops ops;
-	/** Malfunctioning sink emulator data */
-	struct tcpci_faulty_snk_emul_data data;
-	/** Sink emulator data */
-	struct tcpci_snk_emul_data snk_data;
-};
+#define DECLARE_TCPCI_FAULTY_SNK_EMUL(name)			\
+	struct tcpci_faulty_snk_emul_data name = {		\
+		.ext = {					\
+			.ops = &tcpci_faulty_snk_emul_ops,	\
+			.next = NULL,				\
+		}						\
+	}
 
 /** Actions that can be performed by malfunctioning sink emulator */
 enum tcpci_faulty_snk_action_type {
@@ -82,14 +81,14 @@ struct tcpci_faulty_snk_action {
  *
  * @param emul Pointer to USB-C malfunctioning sink device emulator
  */
-void tcpci_faulty_snk_emul_init(struct tcpci_faulty_snk_emul *emul);
+//void tcpci_faulty_snk_emul_init(struct tcpci_faulty_snk_emul *emul);
 
 /**
  * @brief Initialise USB-C malfunctioning sink device data structure.
  *
  * @param data Pointer to USB-C malfunctioning sink device emulator data
  */
-void tcpci_faulty_snk_emul_init_data(struct tcpci_faulty_snk_emul_data *data);
+//void tcpci_faulty_snk_emul_init_data(struct tcpci_faulty_snk_emul_data *data);
 
 /**
  * @brief Connect emulated device to TCPCI.
@@ -102,11 +101,11 @@ void tcpci_faulty_snk_emul_init_data(struct tcpci_faulty_snk_emul_data *data);
  * @return 0 on success
  * @return negative on TCPCI connect error
  */
-int tcpci_faulty_snk_emul_connect_to_tcpci(
-	struct tcpci_snk_emul_data *snk_data,
-	struct tcpci_partner_data *common_data,
-	const struct tcpci_emul_partner_ops *ops,
-	const struct emul *tcpci_emul);
+//int tcpci_faulty_snk_emul_connect_to_tcpci(
+//	struct tcpci_snk_emul_data *snk_data,
+//	struct tcpci_partner_data *common_data,
+//	const struct tcpci_emul_partner_ops *ops,
+//	const struct emul *tcpci_emul);
 
 /**
  * @brief Handle SOP messages as TCPCI dual role device
@@ -120,12 +119,12 @@ int tcpci_faulty_snk_emul_connect_to_tcpci(
  * @return TCPCI_PARTNER_COMMON_MSG_HANDLED Message was handled
  * @return TCPCI_PARTNER_COMMON_MSG_NOT_HANDLED Message wasn't handled
  */
-enum tcpci_partner_handler_res tcpci_faulty_snk_emul_handle_sop_msg(
-	struct tcpci_faulty_snk_emul_data *data,
-	struct tcpci_snk_emul_data *snk_data,
-	struct tcpci_partner_data *common_data,
-	const struct tcpci_emul_partner_ops *ops,
-	const struct tcpci_emul_msg *msg);
+//enum tcpci_partner_handler_res tcpci_faulty_snk_emul_handle_sop_msg(
+//	struct tcpci_faulty_snk_emul_data *data,
+//	struct tcpci_snk_emul_data *snk_data,
+//	struct tcpci_partner_data *common_data,
+//	const struct tcpci_emul_partner_ops *ops,
+//	const struct tcpci_emul_msg *msg);
 
 /**
  * @}

@@ -27,8 +27,11 @@
  * source capabilities constructed from given PDOs.
  */
 
+extern struct tcpci_partner_extension_ops tcpci_src_emul_ops;
+
 /** Structure describing source device emulator data */
 struct tcpci_src_emul_data {
+	struct tcpci_partner_extension ext;
 	/** Power data objects returned in source capabilities message */
 	uint32_t pdo[PDO_MAX_OBJECTS];
 	/** Pointer to common TCPCI partner data */
@@ -37,15 +40,13 @@ struct tcpci_src_emul_data {
 	struct k_work_delayable source_capability_timeout;
 };
 
-/** Structure describing standalone source device emulator */
-struct tcpci_src_emul {
-	/** Common TCPCI partner data */
-	struct tcpci_partner_data common_data;
-	/** Operations used by TCPCI emulator */
-	struct tcpci_emul_partner_ops ops;
-	/** Source emulator data */
-	struct tcpci_src_emul_data data;
-};
+#define DECLARE_TCPCI_SRC_EMUL(name)			\
+	struct tcpci_src_emul_data name = {		\
+		.ext = {				\
+			.ops = &tcpci_src_emul_ops,	\
+			.next = NULL,			\
+		}					\
+	}
 
 /** Return values of @ref tcpci_src_emul_check_pdos function */
 enum check_pdos_res {
@@ -67,7 +68,7 @@ enum check_pdos_res {
  *
  * @param emul Pointer to USB-C source device emulator
  */
-void tcpci_src_emul_init(struct tcpci_src_emul *emul);
+//void tcpci_src_emul_init(struct tcpci_src_emul *emul);
 
 /**
  * @brief Initialise USB-C source device data structure. Single PDO 5V@3A is
@@ -76,8 +77,8 @@ void tcpci_src_emul_init(struct tcpci_src_emul *emul);
  * @param data Pointer to USB-C source device emulator data
  * @param common_data Pointer to USB-C device emulator common data
  */
-void tcpci_src_emul_init_data(struct tcpci_src_emul_data *data,
-			      struct tcpci_partner_data *common_data);
+//void tcpci_src_emul_init_data(struct tcpci_src_emul_data *data,
+//			      struct tcpci_partner_data *common_data);
 
 /**
  * @brief Connect emulated device to TCPCI
@@ -90,10 +91,10 @@ void tcpci_src_emul_init_data(struct tcpci_src_emul_data *data,
  * @return 0 on success
  * @return negative on TCPCI connect error or send source capabilities error
  */
-int tcpci_src_emul_connect_to_tcpci(struct tcpci_src_emul_data *data,
-				    struct tcpci_partner_data *common_data,
-				    const struct tcpci_emul_partner_ops *ops,
-				    const struct emul *tcpci_emul);
+//int tcpci_src_emul_connect_to_tcpci(struct tcpci_src_emul_data *data,
+//				    struct tcpci_partner_data *common_data,
+//				    const struct tcpci_emul_partner_ops *ops,
+//				    const struct emul *tcpci_emul);
 
 /**
  * @brief Check if PDOs of given source device emulator are in correct order
@@ -171,10 +172,10 @@ int tcpci_src_emul_send_capability_msg_with_timer(
  * @param TCPCI_PARTNER_COMMON_MSG_HANDLED Message was handled
  * @param TCPCI_PARTNER_COMMON_MSG_NOT_HANDLED Message wasn't handled
  */
-enum tcpci_partner_handler_res tcpci_src_emul_handle_sop_msg(
-	struct tcpci_src_emul_data *data,
-	struct tcpci_partner_data *common_data,
-	const struct tcpci_emul_msg *msg);
+//enum tcpci_partner_handler_res tcpci_src_emul_handle_sop_msg(
+//	struct tcpci_src_emul_data *data,
+//	struct tcpci_partner_data *common_data,
+//	const struct tcpci_emul_msg *msg);
 
 /**
  * @brief Perform action required by source device on hard reset. Schedule
@@ -182,14 +183,14 @@ enum tcpci_partner_handler_res tcpci_src_emul_handle_sop_msg(
  *
  * @param data Pointer to USB-C source device emulator data
  */
-void tcpci_src_emul_hard_reset(void *data);
+//void tcpci_src_emul_hard_reset(void *data);
 
 /**
  * @brief Disable source capabilities timer on disconnect
  *
  * @param data Pointer to USB-C source device emulator data
  */
-void tcpci_src_emul_disconnect(struct tcpci_src_emul_data *data);
+//void tcpci_src_emul_disconnect(struct tcpci_src_emul_data *data);
 
 /**
  * @}

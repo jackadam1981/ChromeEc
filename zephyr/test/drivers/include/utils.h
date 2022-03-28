@@ -275,7 +275,8 @@ static inline void set_ac_enabled(bool enabled)
  * @param tcpci_emul The TCPCI emulator that the source will connect to
  * @param charger_emul The charger chip emulator
  */
-void connect_source_to_port(struct tcpci_src_emul *src, int pdo_index,
+void connect_source_to_port(struct tcpci_partner_data *partner,
+			    struct tcpci_src_emul_data *src, int pdo_index,
 			    const struct emul *tcpci_emul,
 			    const struct emul *charger_emul);
 

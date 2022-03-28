@@ -27,8 +27,11 @@
  * sink capabilities constructed from given PDOs.
  */
 
+extern struct tcpci_partner_extension_ops tcpci_snk_emul_ops;
+
 /** Structure describing sink device emulator data */
 struct tcpci_snk_emul_data {
+	struct tcpci_partner_extension ext;
 	/** Power data objects returned in sink capabilities message */
 	uint32_t pdo[PDO_MAX_OBJECTS];
 	/** Emulator is waiting for PS RDY message */
@@ -37,15 +40,13 @@ struct tcpci_snk_emul_data {
 	bool pd_completed;
 };
 
-/** Structure describing standalone sink device emulator */
-struct tcpci_snk_emul {
-	/** Common TCPCI partner data */
-	struct tcpci_partner_data common_data;
-	/** Operations used by TCPCI emulator */
-	struct tcpci_emul_partner_ops ops;
-	/** Sink emulator data */
-	struct tcpci_snk_emul_data data;
-};
+#define DECLARE_TCPCI_SNK_EMUL(name)			\
+	struct tcpci_snk_emul_data name = {		\
+		.ext = {				\
+			.ops = &tcpci_snk_emul_ops,	\
+			.next = NULL,			\
+		}					\
+	}
 
 /**
  * @brief Initialise USB-C sink device emulator. Need to be called before
@@ -53,7 +54,7 @@ struct tcpci_snk_emul {
  *
  * @param emul Pointer to USB-C sink device emulator
  */
-void tcpci_snk_emul_init(struct tcpci_snk_emul *emul);
+//void tcpci_snk_emul_init(struct tcpci_snk_emul *emul);
 
 /**
  * @brief Initialise USB-C sink device data structure. Single PDO 5V@500mA is
@@ -61,7 +62,7 @@ void tcpci_snk_emul_init(struct tcpci_snk_emul *emul);
  *
  * @param data Pointer to USB-C sink device emulator data
  */
-void tcpci_snk_emul_init_data(struct tcpci_snk_emul_data *data);
+//void tcpci_snk_emul_init_data(struct tcpci_snk_emul_data *data);
 
 /**
  * @brief Connect emulated device to TCPCI
@@ -74,10 +75,10 @@ void tcpci_snk_emul_init_data(struct tcpci_snk_emul_data *data);
  * @return 0 on success
  * @return negative on TCPCI connect error
  */
-int tcpci_snk_emul_connect_to_tcpci(struct tcpci_snk_emul_data *data,
-				    struct tcpci_partner_data *common_data,
-				    const struct tcpci_emul_partner_ops *ops,
-				    const struct emul *tcpci_emul);
+//int tcpci_snk_emul_connect_to_tcpci(struct tcpci_snk_emul_data *data,
+//				    struct tcpci_partner_data *common_data,
+//				    const struct tcpci_emul_partner_ops *ops,
+//				    const struct emul *tcpci_emul);
 
 /**
  * @brief Handle SOP messages as TCPCI sink device. It handles source cap,
@@ -92,10 +93,10 @@ int tcpci_snk_emul_connect_to_tcpci(struct tcpci_snk_emul_data *data,
  * @param TCPCI_PARTNER_COMMON_MSG_HANDLED Message was handled
  * @param TCPCI_PARTNER_COMMON_MSG_NOT_HANDLED Message wasn't handled
  */
-enum tcpci_partner_handler_res tcpci_snk_emul_handle_sop_msg(
-	struct tcpci_snk_emul_data *data,
-	struct tcpci_partner_data *common_data,
-	const struct tcpci_emul_msg *msg);
+//enum tcpci_partner_handler_res tcpci_snk_emul_handle_sop_msg(
+//	struct tcpci_snk_emul_data *data,
+//	struct tcpci_partner_data *common_data,
+//	const struct tcpci_emul_msg *msg);
 
 /**
  * @brief Perform action required by sink device on hard reset. Reset sink
@@ -103,7 +104,7 @@ enum tcpci_partner_handler_res tcpci_snk_emul_handle_sop_msg(
  *
  * @param data Pointer to USB-C source device emulator data
  */
-void tcpci_snk_emul_hard_reset(void *data);
+//void tcpci_snk_emul_hard_reset(void *data);
 
 /**
  * @}

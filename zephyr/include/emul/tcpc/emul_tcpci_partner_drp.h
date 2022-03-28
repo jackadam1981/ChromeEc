@@ -29,27 +29,24 @@
  * to send both source and sink capabilities.
  */
 
+extern struct tcpci_partner_extension_ops tcpci_drp_emul_ops;
+
 /** Structure describing dual role device emulator data */
 struct tcpci_drp_emul_data {
+	struct tcpci_partner_extension ext;
 	/** Controls if device is sink or source */
 	bool sink;
 	/** If device is during power swap and is expecting PS_RDY message */
 	bool in_pwr_swap;
 };
 
-/** Structure describing standalone dual role device emulator */
-struct tcpci_drp_emul {
-	/** Common TCPCI partner data */
-	struct tcpci_partner_data common_data;
-	/** Operations used by TCPCI emulator */
-	struct tcpci_emul_partner_ops ops;
-	/** Dual role emulator data */
-	struct tcpci_drp_emul_data data;
-	/** Source emulator data */
-	struct tcpci_src_emul_data src_data;
-	/** Sink emulator data */
-	struct tcpci_snk_emul_data snk_data;
-};
+#define DECLARE_TCPCI_DRP_EMUL(name)			\
+	struct tcpci_drp_emul_data name = {		\
+		.ext = {				\
+			.ops = &tcpci_drp_emul_ops,	\
+			.next = NULL,			\
+		}					\
+	}
 
 /**
  * @brief Initialise USB-C dual role device emulator. Need to be called before
@@ -57,7 +54,7 @@ struct tcpci_drp_emul {
  *
  * @param emul Pointer to USB-C dual role device emulator
  */
-void tcpci_drp_emul_init(struct tcpci_drp_emul *emul);
+//void tcpci_drp_emul_init(struct tcpci_drp_emul *emul);
 
 /**
  * @brief Connect emulated device to TCPCI. Connect as sink or source depending
@@ -74,12 +71,12 @@ void tcpci_drp_emul_init(struct tcpci_drp_emul *emul);
  * @return 0 on success
  * @return negative on TCPCI connect error
  */
-int tcpci_drp_emul_connect_to_tcpci(struct tcpci_drp_emul_data *data,
-				    struct tcpci_src_emul_data *src_data,
-				    struct tcpci_snk_emul_data *snk_data,
-				    struct tcpci_partner_data *common_data,
-				    const struct tcpci_emul_partner_ops *ops,
-				    const struct emul *tcpci_emul);
+//int tcpci_drp_emul_connect_to_tcpci(struct tcpci_drp_emul_data *data,
+//				    struct tcpci_src_emul_data *src_data,
+//				    struct tcpci_snk_emul_data *snk_data,
+//				    struct tcpci_partner_data *common_data,
+//				    const struct tcpci_emul_partner_ops *ops,
+//				    const struct emul *tcpci_emul);
 
 /**
  * @brief Handle SOP messages as TCPCI dual role device
@@ -94,13 +91,13 @@ int tcpci_drp_emul_connect_to_tcpci(struct tcpci_drp_emul_data *data,
  * @return TCPCI_PARTNER_COMMON_MSG_HANDLED Message was handled
  * @return TCPCI_PARTNER_COMMON_MSG_NOT_HANDLED Message wasn't handled
  */
-enum tcpci_partner_handler_res tcpci_drp_emul_handle_sop_msg(
-	struct tcpci_drp_emul_data *data,
-	struct tcpci_src_emul_data *src_data,
-	struct tcpci_snk_emul_data *snk_data,
-	struct tcpci_partner_data *common_data,
-	const struct tcpci_emul_partner_ops *ops,
-	const struct tcpci_emul_msg *msg);
+//enum tcpci_partner_handler_res tcpci_drp_emul_handle_sop_msg(
+//	struct tcpci_drp_emul_data *data,
+//	struct tcpci_src_emul_data *src_data,
+//	struct tcpci_snk_emul_data *snk_data,
+//	struct tcpci_partner_data *common_data,
+//	const struct tcpci_emul_partner_ops *ops,
+//	const struct tcpci_emul_msg *msg);
 
 /**
  * @brief Perform action required by DRP device on hard reset. If device acts

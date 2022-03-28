@@ -108,7 +108,10 @@ ZTEST(integration_usb, test_attach_drp)
 {
 	const struct emul *tcpci_emul =
 		emul_get_binding(DT_LABEL(TCPCI_EMUL_LABEL));
-	struct tcpci_drp_emul my_drp;
+	struct tcpci_partner_data my_drp;
+	DECLARE_TCPCI_DRP_EMUL(drp_ext);
+	DECLARE_TCPCI_SNK_EMUL(snk_ext);
+	DECLARE_TCPCI_SRC_EMUL(src_ext);
 
 	/* Set chipset to ON, this will set TCPM to DRP */
 	test_set_chipset_to_s0();
@@ -117,16 +120,19 @@ ZTEST(integration_usb, test_attach_drp)
 	k_sleep(K_SECONDS(1));
 
 	/* Attach emulated sink */
-	tcpci_drp_emul_init(&my_drp);
-	zassert_ok(tcpci_drp_emul_connect_to_tcpci(&my_drp.data,
-						   &my_drp.src_data,
-						   &my_drp.snk_data,
-						   &my_drp.common_data,
-						   &my_drp.ops, tcpci_emul),
+	my_drp.extensions = &drp_ext.ext;
+	drp_ext.ext.next = &snk_ext.ext;
+	snk_ext.ext.next = &src_ext.ext;
+	tcpci_partner_init(&my_drp);
+	tcpci_partner_common_enable_pd_logging(&my_drp, true);
+	zassert_ok(tcpci_partner_connect_to_tcpci(&my_drp, tcpci_emul),
 		   NULL);
 
 	/* Wait for PD negotiation */
 	k_sleep(K_SECONDS(10));
+	tcpci_partner_common_enable_pd_logging(&my_drp, false);
+	tcpci_partner_common_print_logged_msgs(&my_drp);
+	tcpci_partner_common_clear_logged_msgs(&my_drp);
 
 	/*
 	 * Test that SRC ready is achieved
