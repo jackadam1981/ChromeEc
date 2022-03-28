@@ -8,8 +8,8 @@
 void chip_pre_init(void)
 {
 	/* ask core 0 if I can run */
-	SCP_GIPC_IN_SET = SCP_GIPC_IS_CORE0_OK;
+	/* SCP_GIPC_IN_SET = SCP_GIPC_IS_CORE0_OK; */
 
 	/* wait core 0 init done */
-	while ((SCP_GIPC_IN_SET & SCP_GIPC_IS_CORE0_OK) != 0);
+	/* while ((SCP_GIPC_IN_SET & SCP_GIPC_IS_CORE0_OK) != 0); */
 }
