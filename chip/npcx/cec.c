@@ -994,6 +994,9 @@ DECLARE_EVENT_SOURCE(EC_MKBP_EVENT_CEC_MESSAGE, cec_get_next_msg);
 static void cec_init(void)
 {
 	int mdl = NPCX_MFT_MODULE_1;
+#ifdef CONFIG_TWO_CEC
+	int mdl1 = NPCX_MFT_MODULE_1;
+#endif
 
 	/* APB1 is the clock we base the timers on */
 	apb1_freq_div_10k = clock_get_apb1_freq()/10000;
@@ -1012,6 +1015,28 @@ static void cec_init(void)
 
 	/* Ensure the CEC bus is not pulled low by default on startup. */
 	gpio_set_level(CEC_GPIO_OUT, 1);
+
+#ifdef CONFIG_TWO_CEC
+
+	/* APB1 is the clock we base the timers on */
+	apb1_freq_div_10k = clock_get_apb1_freq()/10000;
+
+	/* Ensure Multi-Function timer is powered up. */
+	CLEAR_BIT(NPCX_PWDWN_CTL(mdl1), NPCX_PWDWN_CTL1_MFT1_PD);
+
+	/* Mode 2 - Dual-input capture */
+	SET_FIELD(NPCX_TMCTRL(mdl1), NPCX_TMCTRL_MDSEL_FIELD, NPCX_MFT_MDSEL_2);
+
+	/* Enable capture TCNT1 into TCRA and preset TCNT1. */
+	SET_BIT(NPCX_TMCTRL(mdl1), NPCX_TMCTRL_TAEN);
+
+	/* If RO doesn't set it, RW needs to set it explicitly. */
+	gpio_set_level(CEC1_GPIO_PULL_UP, 1);
+
+	/* Ensure the CEC bus is not pulled low by default on startup. */
+	gpio_set_level(CEC1_GPIO_OUT, 1);
+
+#endif
 
 	CPRINTS("CEC initialized");
 }
