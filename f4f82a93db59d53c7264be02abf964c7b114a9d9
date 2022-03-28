@@ -16,6 +16,24 @@
       "message": "Why did the base standard reference also change?  I\u0027d assume this would be independent of the lid accel",
       "revId": "f4f82a93db59d53c7264be02abf964c7b114a9d9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3691a736_1e3bef18",
+        "filename": "board/lantis/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1536982
+      },
+      "writtenOn": "2022-03-28T01:31:07Z",
+      "side": 1,
+      "message": "I will move these changes to another CL about tuning g-sensor.",
+      "parentUuid": "7a232987_a9376ed2",
+      "revId": "f4f82a93db59d53c7264be02abf964c7b114a9d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
