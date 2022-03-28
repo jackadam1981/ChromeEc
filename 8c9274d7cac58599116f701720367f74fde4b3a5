@@ -89,6 +89,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6ecd30c_58f4e03f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2022-03-28T17:13:17Z",
+      "side": 1,
+      "message": "created one bug to track this upload:\nzephyr: MEC172x Shim layer flash i/f implementation request [226599277] - Visible to Partners - Issue Tracker (google.com)",
+      "parentUuid": "a92c38b6_611df12f",
+      "revId": "8c9274d7cac58599116f701720367f74fde4b3a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "efbf537d_616ff617",
@@ -126,6 +144,30 @@
       "side": 1,
       "message": "will add bug ID into.W25X40 should be good, since it is configured in Legacy EC code, same EC chip.",
       "parentUuid": "efbf537d_616ff617",
+      "range": {
+        "startLine": 9,
+        "startChar": 3,
+        "endLine": 9,
+        "endChar": 7
+      },
+      "revId": "8c9274d7cac58599116f701720367f74fde4b3a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0481ad2d_80e0eae4",
+        "filename": "zephyr/shim/chip/mchp/include/flash_chip.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2022-03-28T17:13:17Z",
+      "side": 1,
+      "message": "added:\nTODO(b/226599277):need to check if SST25PF040 is compatible W25X40",
+      "parentUuid": "fdf407e1_b04f837b",
       "range": {
         "startLine": 9,
         "startChar": 3,
@@ -206,6 +248,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2115e4b9_b595391b",
+        "filename": "zephyr/shim/chip/mchp/include/flash_chip.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2022-03-28T17:13:17Z",
+      "side": 1,
+      "message": "removed in patchset2",
+      "parentUuid": "6459f293_9aeb9e43",
+      "revId": "8c9274d7cac58599116f701720367f74fde4b3a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "008fe2be_522a5397",
@@ -276,6 +336,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1dc08eb_14cfad7d",
+        "filename": "zephyr/shim/chip/mchp/include/rom_chip.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2022-03-28T17:13:17Z",
+      "side": 1,
+      "message": "deleted rom_chip.h in patchset2",
+      "parentUuid": "916d2834_001b514f",
+      "revId": "8c9274d7cac58599116f701720367f74fde4b3a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a7c2cad4_47e6bfc6",
@@ -307,6 +385,24 @@
       "side": 1,
       "message": "can be removed. thanks.",
       "parentUuid": "a7c2cad4_47e6bfc6",
+      "revId": "8c9274d7cac58599116f701720367f74fde4b3a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d7b561f_20b964d3",
+        "filename": "zephyr/shim/chip/mchp/include/rom_chip.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2022-03-28T17:13:17Z",
+      "side": 1,
+      "message": "deleted rom_chip.h in patchset2",
+      "parentUuid": "9c669223_75245b8e",
       "revId": "8c9274d7cac58599116f701720367f74fde4b3a5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -346,6 +442,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ea6b169_e5a1c8b3",
+        "filename": "zephyr/shim/chip/mchp/system_download_from_flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2022-03-28T17:13:17Z",
+      "side": 1,
+      "message": "deleted pragma for jtag debugging purpose",
+      "parentUuid": "8a2bc6f7_661cfdba",
+      "revId": "8c9274d7cac58599116f701720367f74fde4b3a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2563c16d_5278cbaf",
@@ -377,6 +491,24 @@
       "side": 1,
       "message": "Ack",
       "parentUuid": "2563c16d_5278cbaf",
+      "revId": "8c9274d7cac58599116f701720367f74fde4b3a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "31ed85b9_73ecaef4",
+        "filename": "zephyr/shim/chip/mchp/system_external_storage.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2022-03-28T17:13:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6ca6e168_d596289b",
       "revId": "8c9274d7cac58599116f701720367f74fde4b3a5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -416,6 +548,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "25be4e38_7b14d03b",
+        "filename": "zephyr/shim/src/flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2022-03-28T17:13:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ae709316_354d1d5f",
+      "revId": "8c9274d7cac58599116f701720367f74fde4b3a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a13489b6_39aca1e1",
@@ -447,6 +597,24 @@
       "side": 1,
       "message": "Ack",
       "parentUuid": "a13489b6_39aca1e1",
+      "revId": "8c9274d7cac58599116f701720367f74fde4b3a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "822ea6fa_96988d54",
+        "filename": "zephyr/shim/src/flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2022-03-28T17:13:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e1576888_3d0b06c1",
       "revId": "8c9274d7cac58599116f701720367f74fde4b3a5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
