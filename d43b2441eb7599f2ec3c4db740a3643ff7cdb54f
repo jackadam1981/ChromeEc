@@ -70,6 +70,30 @@
       },
       "revId": "d43b2441eb7599f2ec3c4db740a3643ff7cdb54f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b111613_af517b73",
+        "filename": "zephyr/shim/chip/it8xxx2/power_policy.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2022-03-28T15:45:08Z",
+      "side": 1,
+      "message": "The oldest code using \"pm_constraint_get() \u003d\u003d 0\" looks like it was checking for not active.\nThis was changed to using \"!pm_policy_state_lock_is_active()\" and it too was checking for not active.\nNow you are changing the line to \"pm_policy_state_lock_is_active()\" and it is now checking that it is active.\n\nI don\u0027t see anything in the commit message or comments as to why this is now checking for the state to be active instead of the original NOT active",
+      "parentUuid": "354a4f5b_442b0336",
+      "range": {
+        "startLine": 32,
+        "startChar": 7,
+        "endLine": 32,
+        "endChar": 37
+      },
+      "revId": "d43b2441eb7599f2ec3c4db740a3643ff7cdb54f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
