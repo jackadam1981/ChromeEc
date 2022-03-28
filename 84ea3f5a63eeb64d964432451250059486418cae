@@ -170,6 +170,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "adbf8426_7c157c7b",
+        "filename": "board/kinox/adc.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2022-03-28T09:48:03Z",
+      "side": 1,
+      "message": "It looks like there are some implementation detail need to be discussed. Could you please file a bug for the detail implementation discussion? I would suggest to land to the other dependency CLs which are unrelated to this power design. If you agree it too, please rebase the those dependency CLs.",
+      "parentUuid": "c5a2aa6d_e9a72c32",
+      "range": {
+        "startLine": 219,
+        "startChar": 5,
+        "endLine": 219,
+        "endChar": 17
+      },
+      "revId": "84ea3f5a63eeb64d964432451250059486418cae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "89539536_7d05b2ee",
         "filename": "board/kinox/adc.c",
         "patchSetId": 9
