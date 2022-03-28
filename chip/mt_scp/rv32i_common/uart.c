@@ -136,7 +136,7 @@ static void uart_process(void)
 }
 
 #if (UARTN < SCP_UART_COUNT)
-#if defined(CHIP_VARIANT_MT8195) && (UARTN < SCP_UART_COUNT)
+#if defined(CHIP_VARIANT_MT8195) && (UARTN < 2)
 static void uart_irq_handler(void)
 {
 	extern volatile int ec_int;
