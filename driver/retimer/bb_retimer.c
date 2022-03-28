@@ -153,6 +153,14 @@ __overridable int bb_retimer_power_enable(const struct usb_mux *me, bool enable)
 	return EC_SUCCESS;
 }
 
+static bool intel_host_supports_vpro(void)
+{
+	if(IS_ENABLED(CONFIG_USBC_RETIMER_INTEL_BB_NO_VPRO_HOST_SUPPORT))
+		return false;
+
+	return true;
+}
+
 static void retimer_set_state_dfp(int port, mux_state_t mux_state,
 				  uint32_t *set_retimer_con)
 {
@@ -226,7 +234,8 @@ static void retimer_set_state_dfp(int port, mux_state_t mux_state,
 		 * 1 - vPro Dock or DP Overdrive
 		 *     detected
 		 */
-		if (dev_resp.intel_spec_b0 == VENDOR_SPECIFIC_SUPPORTED ||
+		if ((dev_resp.intel_spec_b0 == VENDOR_SPECIFIC_SUPPORTED &&
+		     intel_host_supports_vpro()) ||
 		    dev_resp.vendor_spec_b1 == VENDOR_SPECIFIC_SUPPORTED)
 			*set_retimer_con |= BB_RETIMER_VPRO_DOCK_DP_OVERDRIVE;
 
@@ -313,8 +322,9 @@ static void retimer_set_state_ufp(int port, mux_state_t mux_state,
 		 *
 		 * Set according to TBT3 Enter Mode bit 26 or bit 31
 		 */
-		if (ufp_tbt_enter_mode.intel_spec_b0 ==
-					VENDOR_SPECIFIC_SUPPORTED ||
+		if ((ufp_tbt_enter_mode.intel_spec_b0 ==
+					VENDOR_SPECIFIC_SUPPORTED &&
+		    intel_host_supports_vpro()) ||
 		    ufp_tbt_enter_mode.vendor_spec_b1 ==
 					VENDOR_SPECIFIC_SUPPORTED)
 			*set_retimer_con |= BB_RETIMER_VPRO_DOCK_DP_OVERDRIVE;
