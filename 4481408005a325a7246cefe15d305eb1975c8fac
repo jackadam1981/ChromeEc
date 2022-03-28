@@ -16,6 +16,24 @@
       "message": "Were the other two values not actually in use?",
       "revId": "4481408005a325a7246cefe15d305eb1975c8fac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "97ad2722_db10bcc7",
+        "filename": "board/lantis/cbi_ssfc.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1536982
+      },
+      "writtenOn": "2022-03-28T01:33:27Z",
+      "side": 0,
+      "message": "Yes, these two sensor are not in use.",
+      "parentUuid": "060acf2e_0e2a6266",
+      "revId": "4481408005a325a7246cefe15d305eb1975c8fac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
