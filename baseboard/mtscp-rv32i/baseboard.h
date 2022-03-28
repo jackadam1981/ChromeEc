@@ -84,15 +84,38 @@
  * (3) 0x104FF000 0x1000
  * (4) 0x10500000 0xF00000
  * (5) 0x11400000
+ * MT8195 dual - core0
+ * (1) 0x10000000 0x4FF000
+ * (2) 0x104FF000 0
+ * (3) 0x104FF000 0x1000
+ * (4) 0x10500000 0x500000
+ * (5) 0x10A00000
+ * MT8195 dual - core1
+ * (1) 0x10A00000 0x4FF000
+ * (2) 0x10EFF000 0
+ * (3) 0x10EFF000 0x1000
+ * (4) 0x10F00000 0x500000
+ * (5) 0x11400000
  */
 
 /* (1) DRAM cacheable region */
+#if defined(CHIP_VARIANT_MT8195_CORE1)
+#define CONFIG_DRAM_BASE 0x10A00000
+#define CONFIG_DRAM_BASE_LOAD 0x50A00000
+#else
 /* Access DRAM through cached access */
 #define CONFIG_DRAM_BASE 0x10000000
 /* Shared memory address in AP physical address space. */
 #define CONFIG_DRAM_BASE_LOAD 0x50000000
+#endif
+
 #define CONFIG_DRAM_SIZE (DRAM_TOTAL_SIZE - CONFIG_PANIC_DRAM_SIZE - DRAM_NC_SIZE - KERNEL_SIZE)
+
+#if defined(CHIP_VARIANT_MT8195_CORE1) || defined(BOARD_DRAGONFRUIT_SCP_CORE0)
+#define DRAM_TOTAL_SIZE 0x00A00000 /* 10 MB */
+#else
 #define DRAM_TOTAL_SIZE 0x01400000 /* 20 MB */
+#endif
 
 /* (2) DRAM non-cacheable region */
 #define DRAM_NC_BASE (CONFIG_DRAM_BASE + CONFIG_DRAM_SIZE)
@@ -112,7 +135,11 @@
 
 /* (4) kernel DMA allocable region */
 #define KERNEL_BASE (CONFIG_PANIC_DRAM_BASE + CONFIG_PANIC_DRAM_SIZE)
+#if defined(CHIP_VARIANT_MT8195_CORE1) || defined(BOARD_DRAGONFRUIT_SCP_CORE0)
+#define KERNEL_SIZE 0x500000
+#else
 #define KERNEL_SIZE 0xF00000
+#endif
 
 #define CONFIG_SCP_CORE1_RAM_SIZE 0x10000 /* 64K */
 #define CONFIG_SCP_CORE1_RAM_PADDING 0xc00 /* for 4K-alignment */
