@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2b77f64_af7ec28a",
+        "filename": "zephyr/projects/brya/usbc.dts",
+        "patchSetId": 6
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-03-28T19:39:11Z",
+      "side": 1,
+      "message": "I\u0027m torn on whether to use \u003creg\u003e here or \u003cport\u003e.  If we use the \u003creg\u003e property, I think we get some build-time checks that the port numbers are not repeated.\n\nZephyr upstream does seem to overload \u003creg\u003e for this type of purpose.\nhttps://github.com/zephyrproject-rtos/zephyr/blob/bd4d7fb5bd5c4f756839fefe2222243d35fed96a/boards/arc/nsim/nsim_hs_smp.dts#L15\n\nRegardless, the \u003creg\u003e to \u003cport\u003e change should be in a separate CL.  We can discuss the merits of each in the dev meeting.",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 14
+      },
+      "revId": "1c5314362c8e9943f4736dba6cf922464999dd6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f2ec6e9_c7cfc8d0",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 1329,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-03-28T19:39:11Z",
+      "side": 1,
+      "message": "I guess there isn\u0027t a DT macro for retrieving the number of children of a node.  But moving the compatible flag from the parent to each port probably makes sense.",
+      "range": {
+        "startLine": 1329,
+        "startChar": 37,
+        "endLine": 1329,
+        "endChar": 60
+      },
+      "revId": "1c5314362c8e9943f4736dba6cf922464999dd6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
