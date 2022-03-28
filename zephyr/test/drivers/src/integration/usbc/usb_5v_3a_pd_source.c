@@ -16,7 +16,8 @@
 #define BATTERY_ORD DT_DEP_ORD(DT_NODELABEL(battery))
 
 struct usb_attach_5v_3a_pd_source_fixture {
-	struct tcpci_src_emul source_5v_3a;
+	struct tcpci_partner_data source_5v_3a;
+	struct tcpci_src_emul_data src_ext;
 	const struct emul *tcpci_emul;
 	const struct emul *charger_emul;
 };
@@ -32,8 +33,11 @@ static void *usb_attach_5v_3a_pd_source_setup(void)
 		emul_get_binding(DT_LABEL(DT_NODELABEL(isl923x_emul)));
 
 	/* Initialized the charger to supply 5V and 3A */
-	tcpci_src_emul_init(&test_fixture.source_5v_3a);
-	test_fixture.source_5v_3a.data.pdo[1] =
+	test_fixture.src_ext.ext.ops = &tcpci_src_emul_ops;
+	test_fixture.src_ext.ext.next = NULL;
+	test_fixture.source_5v_3a.extensions = &test_fixture.src_ext.ext;
+	tcpci_partner_init(&test_fixture.source_5v_3a);
+	test_fixture.src_ext.pdo[1] =
 		PDO_FIXED(5000, 3000, PDO_FIXED_UNCONSTRAINED);
 
 	return &test_fixture;
@@ -43,8 +47,8 @@ static void usb_attach_5v_3a_pd_source_before(void *data)
 {
 	struct usb_attach_5v_3a_pd_source_fixture *fixture = data;
 
-	connect_source_to_port(&fixture->source_5v_3a, 1, fixture->tcpci_emul,
-			       fixture->charger_emul);
+	connect_source_to_port(&fixture->source_5v_3a, &fixture->src_ext, 1,
+			       fixture->tcpci_emul, fixture->charger_emul);
 }
 
 static void usb_attach_5v_3a_pd_source_after(void *data)
