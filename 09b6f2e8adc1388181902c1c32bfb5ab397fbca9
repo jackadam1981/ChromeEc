@@ -1,0 +1,153 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d61a1314_b0a90e1a",
+        "filename": "zephyr/drivers/cros_led/led.h",
+        "patchSetId": 28
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-03-28T04:33:08Z",
+      "side": 1,
+      "message": "This is confusing because it doesn\u0027t actually seem to refer to this file.",
+      "range": {
+        "startLine": 19,
+        "startChar": 19,
+        "endLine": 19,
+        "endChar": 56
+      },
+      "revId": "09b6f2e8adc1388181902c1c32bfb5ab397fbca9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d2cf3582_c69b93d2",
+        "filename": "zephyr/drivers/cros_led/led_gpio.c",
+        "patchSetId": 28
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-03-28T04:33:08Z",
+      "side": 1,
+      "message": "ARRAY_SIZE",
+      "range": {
+        "startLine": 86,
+        "startChar": 14,
+        "endLine": 86,
+        "endChar": 20
+      },
+      "revId": "09b6f2e8adc1388181902c1c32bfb5ab397fbca9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a24f4b3_4220bb4a",
+        "filename": "zephyr/drivers/cros_led/led_gpio.c",
+        "patchSetId": 28
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-03-28T04:33:08Z",
+      "side": 1,
+      "message": "Could the DT specification be adjusted to use a an action format common to both GPIO and PWM output? Then each output kind would only need to translate to  commands for the appropriate driver and probably save a lot of complexity in converting DT to code.\n\nIt also seems like the handling of actions (timing, etc) could be put in the policy code so each driver doesn\u0027t need code to handle walking through actions and managing timers: instead the policy code just sets individual LEDs.",
+      "revId": "09b6f2e8adc1388181902c1c32bfb5ab397fbca9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9fad2dca_d8359f9e",
+        "filename": "zephyr/drivers/cros_led/led_gpio.c",
+        "patchSetId": 28
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-03-28T04:33:08Z",
+      "side": 1,
+      "message": "\"get_brightness_max\"? I thought this got the current or desired setting until I found the function that calls this.",
+      "range": {
+        "startLine": 205,
+        "startChar": 5,
+        "endLine": 205,
+        "endChar": 28
+      },
+      "revId": "09b6f2e8adc1388181902c1c32bfb5ab397fbca9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf858ca3_34e57350",
+        "filename": "zephyr/dts/bindings/led/cros-ec,gpio-leds.yaml",
+        "patchSetId": 28
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-03-28T04:33:08Z",
+      "side": 1,
+      "message": "\"low-side control\", since it doesn\u0027t matter to software whether the pin is open-drain or push-pull but it does matter which pin setting (0 or 1) turns on the LED.",
+      "range": {
+        "startLine": 17,
+        "startChar": 22,
+        "endLine": 17,
+        "endChar": 49
+      },
+      "revId": "09b6f2e8adc1388181902c1c32bfb5ab397fbca9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a45dcc6a_37eac8b5",
+        "filename": "zephyr/dts/bindings/led/cros-ec,led-policy.yaml",
+        "patchSetId": 28
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-03-28T04:33:08Z",
+      "side": 1,
+      "message": "Just a reference to the node: labels are just what you use to create a reference in the textual version of the DT.",
+      "range": {
+        "startLine": 16,
+        "startChar": 28,
+        "endLine": 16,
+        "endChar": 33
+      },
+      "revId": "09b6f2e8adc1388181902c1c32bfb5ab397fbca9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32f8fcc8_9cd45c5f",
+        "filename": "zephyr/dts/bindings/led/cros-ec,multi-pwm-leds.yaml",
+        "patchSetId": 28
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-03-28T04:33:08Z",
+      "side": 1,
+      "message": "I don\u0027t understand what this means: what is the \"EC brightness array\"? Why does it need to be configured?\n\nCan this be explained better?",
+      "revId": "09b6f2e8adc1388181902c1c32bfb5ab397fbca9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
