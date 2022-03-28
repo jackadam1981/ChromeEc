@@ -68,6 +68,7 @@ int ipi_op_scp2ap_is_irq_set(void);
 void ipi_op_scp2ap_irq_set(void);
 void ipi_op_ap2scp_irq_clr(void);
 int ipi_op_ap2scp_is_irq_set(void);
+int ipi_op_core2core(void);
 
 /* Helper macros to build the IPI handler and wakeup functions. */
 #define IPI_HANDLER(id) CONCAT3(ipi_, id, _handler)
