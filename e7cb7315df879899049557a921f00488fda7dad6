@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5db98b79_f6411d86",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_pd_ctrl_msg.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2022-03-28T16:18:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "68f072c6_456bbf97",
+      "revId": "e7cb7315df879899049557a921f00488fda7dad6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ae396510_e43ab8ff",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-03-25T18:15:31Z",
       "side": 1,
       "message": "What is happening here? I would expect that, after a PD connection is established, SOP detect would already be set. In any case, the TCPM should be setting this autonomously. There is a peek of RECEIVE_DETECT, but I don\u0027t see any code to check the register value.",
+      "range": {
+        "startLine": 182,
+        "startChar": 0,
+        "endLine": 189,
+        "endChar": 24
+      },
+      "revId": "e7cb7315df879899049557a921f00488fda7dad6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea507f37_720ce0db",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_pd_ctrl_msg.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2022-03-28T16:18:04Z",
+      "side": 1,
+      "message": "I had a printf of the content of this register for debugging.  Missed cleaning up the peek.  I was receiving a failure when sending `PR_SWAP` request if I didn\u0027t set `RX_DETECT_SOP`.  This register was showing up as `0x0` before I set `SOP`.",
+      "parentUuid": "ae396510_e43ab8ff",
       "range": {
         "startLine": 182,
         "startChar": 0,
@@ -65,6 +107,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "768d1801_2825065e",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_pd_ctrl_msg.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2022-03-28T16:18:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "beab720b_543a9138",
+      "range": {
+        "startLine": 191,
+        "startChar": 4,
+        "endLine": 191,
+        "endChar": 9
+      },
+      "revId": "e7cb7315df879899049557a921f00488fda7dad6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b0242ab4_02dee4d5",
@@ -78,6 +144,24 @@
       "writtenOn": "2022-03-25T18:15:31Z",
       "side": 1,
       "message": "Is this supposed to cause the PR Swap initiated below to fail?",
+      "revId": "e7cb7315df879899049557a921f00488fda7dad6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c9741d5_a9a1f3a3",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_pd_ctrl_msg.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2022-03-28T16:18:04Z",
+      "side": 1,
+      "message": "yeah, after sending `PR_SWAP` request to the tcpi_emul, it responds with an `ACCEPT`. This `ACCEPT` request seems to be received back on tcpi_emul (this doesn\u0027t seem right) which triggers a soft reset in `tcpci_partner_common_msg_handler`.  I can ignore it by updating this mask.",
+      "parentUuid": "b0242ab4_02dee4d5",
       "revId": "e7cb7315df879899049557a921f00488fda7dad6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
