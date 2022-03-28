@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a6d3f76_eebaf7c4",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-03-28T18:43:19Z",
+      "side": 1,
+      "message": "Minor:could we move it next to `finish_regexes`? Since this is a keyword argument, I don\u0027t *think* this should break existing calls to this function.",
+      "range": {
+        "startLine": 95,
+        "startChar": 17,
+        "endLine": 95,
+        "endChar": 29
+      },
+      "revId": "41fee68954bad617960d318a13407cbc94b31147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4d88eef_edb758dc",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-03-28T18:43:19Z",
+      "side": 1,
+      "message": "Do we need to break here?\n\nI am looking at the lines above that were removed. In the previous implementation if the line matched multiple regexes I think we would count all of them. Maybe it was a mistake and we should have used `elif` also before.",
+      "revId": "41fee68954bad617960d318a13407cbc94b31147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
