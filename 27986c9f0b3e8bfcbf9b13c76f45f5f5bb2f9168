@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a977d49c_cc24f9e5",
+        "filename": "zephyr/projects/intelrvp/include/intel_rvp_board_id.h",
+        "patchSetId": 34
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-03-28T17:58:30Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "62a429d9_59faa529",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 0
+      },
+      "revId": "27986c9f0b3e8bfcbf9b13c76f45f5f5bb2f9168",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0143493e_28fb25eb",
@@ -60,6 +84,30 @@
       "writtenOn": "2022-03-28T16:50:46Z",
       "side": 1,
       "message": "You don\u0027t need to rely on the nodelabel, you can use `DT_DRV_INST(0)` here to get the node ID of the node with a compatible string matching what is set in `DT_DRV_COMPAT`.  See https://docs.zephyrproject.org/3.0.0/guides/dts/howtos.html#option-1-create-devices-using-instance-numbers for tips.\n\nYou should also add a build-time check that there is a single instance.\nExample here:\nhttps://github.com/zephyrproject-rtos/zephyr/blob/bd4d7fb5bd5c4f756839fefe2222243d35fed96a/drivers/peci/peci_ite_it8xxx2.c#L30",
+      "range": {
+        "startLine": 12,
+        "startChar": 20,
+        "endLine": 12,
+        "endChar": 46
+      },
+      "revId": "27986c9f0b3e8bfcbf9b13c76f45f5f5bb2f9168",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e5a372b5_3d7652e0",
+        "filename": "zephyr/projects/intelrvp/src/intel_rvp_board_id.c",
+        "patchSetId": 34
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-03-28T17:58:30Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "46f0a1cc_c12266eb",
       "range": {
         "startLine": 12,
         "startChar": 20,
