@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c8055b0_e193720b",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2022-03-28T15:27:49Z",
+      "side": 1,
+      "message": "This test needs to be run on nami_fp, nocturne_fp, and bloonchipper for zork since the have different RO versions. Is there some good/recommended way to do it? For me, the best way is to add nami_fp and nocturne_fp board configs, but it would be problematic for zork bloonchipper.",
+      "range": {
+        "startLine": 171,
+        "startChar": 12,
+        "endLine": 175,
+        "endChar": 59
+      },
+      "revId": "0d53b455cd10c00decc28d805f3bd6e86cb78787",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
