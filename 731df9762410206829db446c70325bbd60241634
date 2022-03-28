@@ -22,6 +22,30 @@
       },
       "revId": "731df9762410206829db446c70325bbd60241634",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "efbb51ef_a14a83da",
+        "filename": "board/kinox/board.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1286280
+      },
+      "writtenOn": "2022-03-28T09:36:42Z",
+      "side": 1,
+      "message": "Confirm with the vendor PS8815 is use the \"SA0000E5K10 PS8815QFN52GTR-A2\".",
+      "parentUuid": "1b8b043e_13c969e9",
+      "range": {
+        "startLine": 34,
+        "startChar": 8,
+        "endLine": 34,
+        "endChar": 43
+      },
+      "revId": "731df9762410206829db446c70325bbd60241634",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
