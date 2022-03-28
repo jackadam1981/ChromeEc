@@ -188,6 +188,10 @@ static void irq_group7_handler(void)
 		ipi_op_ap2scp_irq_clr();
 		asm volatile ("fence.i" ::: "memory");
 		task_clear_pending_irq(ec_int);
+	} else {
+		ipi_op_core2core();
+		asm volatile ("fence.i" ::: "memory");
+		task_clear_pending_irq(ec_int);
 	}
 }
 DECLARE_IRQ(7, irq_group7_handler, 0);
