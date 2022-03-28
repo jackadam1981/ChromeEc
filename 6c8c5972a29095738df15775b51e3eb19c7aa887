@@ -16,6 +16,52 @@
       "message": "Zhuohao, could you help to review this CL?",
       "revId": "6c8c5972a29095738df15775b51e3eb19c7aa887",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c082e8ea_6646da5c",
+        "filename": "board/moli/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2022-03-28T04:25:48Z",
+      "side": 1,
+      "message": "Will you submit another change for the Moli? It looks like the below implementation is copied from the brask and is not matching the HW of the Moli. For example, the number of typec port.",
+      "range": {
+        "startLine": 356,
+        "startChar": 0,
+        "endLine": 356,
+        "endChar": 31
+      },
+      "revId": "6c8c5972a29095738df15775b51e3eb19c7aa887",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18600148_0ef52a05",
+        "filename": "board/moli/led.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2022-03-28T04:25:48Z",
+      "side": 1,
+      "message": "Tab",
+      "range": {
+        "startLine": 256,
+        "startChar": 0,
+        "endLine": 256,
+        "endChar": 2
+      },
+      "revId": "6c8c5972a29095738df15775b51e3eb19c7aa887",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
