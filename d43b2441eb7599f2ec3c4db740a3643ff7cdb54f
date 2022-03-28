@@ -22,6 +22,30 @@
       },
       "revId": "d43b2441eb7599f2ec3c4db740a3643ff7cdb54f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "468b2a7f_c5016083",
+        "filename": "zephyr/shim/chip/it8xxx2/power_policy.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2022-03-28T03:38:56Z",
+      "side": 1,
+      "message": "Previously, pm_constraint_get() was used to obtain whether the count is equal to zero before entering the power state. But now use pm_policy_state_lock_is_active() to get whether the conunt is not equal to zero, then it cannot enter the power state.",
+      "parentUuid": "913680e3_7a7d5f28",
+      "range": {
+        "startLine": 32,
+        "startChar": 7,
+        "endLine": 32,
+        "endChar": 37
+      },
+      "revId": "d43b2441eb7599f2ec3c4db740a3643ff7cdb54f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
