@@ -30,3 +30,12 @@ __overridable int ipi_op_ap2scp_is_irq_set(void)
 {
 	return SCP_GIPC_IN_SET & GIPC_IN(0);
 }
+
+__overridable int ipi_op_core2core(void)
+{
+	if (SCP_GIPC_IN_SET & SCP_GIPC_IS_CORE0_OK) {
+		SCP_GIPC_IN_CLR = SCP_GIPC_IS_CORE0_OK;
+	}
+
+	return 0;
+}
