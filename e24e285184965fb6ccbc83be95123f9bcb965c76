@@ -22,6 +22,30 @@
       },
       "revId": "e24e285184965fb6ccbc83be95123f9bcb965c76",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "618df7eb_4a9d3fe9",
+        "filename": "docs/zephyr/zephyr_usba.md",
+        "patchSetId": 21
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2022-03-28T20:52:21Z",
+      "side": 0,
+      "message": "Yes. It\u0027s part of the previous USBA documentation CL and I added it to this CL by mistake.",
+      "parentUuid": "7c289d72_dfd3aae5",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 27
+      },
+      "revId": "e24e285184965fb6ccbc83be95123f9bcb965c76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

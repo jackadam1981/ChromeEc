@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3238d418_b13bd9a6",
+        "filename": "docs/zephyr/zephyr_ap_power.md",
+        "patchSetId": 21
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2022-03-28T20:52:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "df9e98f2_a65f2489",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 3
+      },
+      "revId": "cd8435c9cd379aadbe1cc24de6fea0df7607a6a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0a4ff4e4_b7851eeb",
@@ -61,6 +85,30 @@
       "writtenOn": "2022-02-23T16:38:13Z",
       "side": 1,
       "message": "\"AP Power Thresholds\" is more accurate.",
+      "range": {
+        "startLine": 55,
+        "startChar": 11,
+        "endLine": 55,
+        "endChar": 27
+      },
+      "revId": "cd8435c9cd379aadbe1cc24de6fea0df7607a6a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9822544_2cfbe053",
+        "filename": "docs/zephyr/zephyr_new_board_checklist.md",
+        "patchSetId": 21
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2022-03-28T20:52:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0a4ff4e4_b7851eeb",
       "range": {
         "startLine": 55,
         "startChar": 11,
