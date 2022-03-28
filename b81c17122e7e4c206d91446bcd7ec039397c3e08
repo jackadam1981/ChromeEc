@@ -22,6 +22,30 @@
       },
       "revId": "b81c17122e7e4c206d91446bcd7ec039397c3e08",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8cba515_b1826ffe",
+        "filename": "board/primus/ps2.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2022-03-28T14:51:46Z",
+      "side": 1,
+      "message": "Modified in https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3552486",
+      "parentUuid": "1d8c78c9_32df571c",
+      "range": {
+        "startLine": 82,
+        "startChar": 13,
+        "endLine": 82,
+        "endChar": 24
+      },
+      "revId": "b81c17122e7e4c206d91446bcd7ec039397c3e08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
