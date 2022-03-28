@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "53be08f2_c4801d17",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2022-03-28T20:50:59Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "631af759_5981c734",
+      "revId": "997366c5af4810d2977d1e8046256713484e9cca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "045d86f0_c7b3af49",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-03-28T19:57:14Z",
       "side": 1,
       "message": "Nit: Why not put the `#ifdef` inside the curly braces?\n\nActually, it would be a little more EC-style to put a guard clause at the beginning of the function:\n```\nif (IS_ENABLED(CONFIG_USBC_PPC_VCONN)) {\n  ztest_test_skip();\n  return;\n}\n```\n\nAlso, this is testing a VBUS-based interrupt condition. Why is it compiled based on VCONN support?",
+      "revId": "997366c5af4810d2977d1e8046256713484e9cca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1715c985_94465388",
+        "filename": "zephyr/test/drivers/src/ppc_sn5s330.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2022-03-28T20:50:59Z",
+      "side": 1,
+      "message": "This was copied from the existing `test_sn5s330_disable_vbus_low_interrupt` test. I can re-work it to use the if statement. I don\u0027t know what the rationale behind the config flag is.",
+      "parentUuid": "045d86f0_c7b3af49",
       "revId": "997366c5af4810d2977d1e8046256713484e9cca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
