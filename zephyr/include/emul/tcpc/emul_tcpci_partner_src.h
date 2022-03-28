@@ -18,17 +18,22 @@
 #include "usb_pd.h"
 
 /**
- * @brief USB-C source device emulator backend API
- * @defgroup tcpci_src_emul USB-C source device emulator
+ * @brief USB-C source device extension backend API
+ * @defgroup tcpci_src_emul USB-C source device extension
  * @{
  *
- * USB-C source device emulator can be attached to TCPCI emulator. It is able to
- * respond to some TCPM messages. It always attach as source and present
+ * USB-C source device extension can be used with TCPCI partner emulator. It is
+ * able to respond to some TCPM messages. It always attach as source and present
  * source capabilities constructed from given PDOs.
  */
 
+/** USB-C source device extension callbacks */
+extern struct tcpci_partner_extension_ops tcpci_src_emul_ops;
+
 /** Structure describing source device emulator data */
 struct tcpci_src_emul_data {
+	/** Common extension structure */
+	struct tcpci_partner_extension ext;
 	/** Power data objects returned in source capabilities message */
 	uint32_t pdo[PDO_MAX_OBJECTS];
 	/** Pointer to common TCPCI partner data */
@@ -37,15 +42,18 @@ struct tcpci_src_emul_data {
 	struct k_work_delayable source_capability_timeout;
 };
 
-/** Structure describing standalone source device emulator */
-struct tcpci_src_emul {
-	/** Common TCPCI partner data */
-	struct tcpci_partner_data common_data;
-	/** Operations used by TCPCI emulator */
-	struct tcpci_emul_partner_ops ops;
-	/** Source emulator data */
-	struct tcpci_src_emul_data data;
-};
+/** Initialization of TCPCI source extension */
+#define INIT_TCPCI_SRC_EMUL					\
+	{							\
+		.ext = {					\
+			.ops = &tcpci_src_emul_ops,		\
+			.next = NULL,				\
+		}						\
+	}
+
+/** Declaration of TCPCI source extension */
+#define DECLARE_TCPCI_SRC_EMUL(name)				\
+	struct tcpci_src_emul_data name = INIT_TCPCI_SRC_EMUL
 
 /** Return values of @ref tcpci_src_emul_check_pdos function */
 enum check_pdos_res {
@@ -60,40 +68,6 @@ enum check_pdos_res {
 	TCPCI_SRC_EMUL_VAR_VOLT_NOT_IN_ORDER,
 	TCPCI_SRC_EMUL_PDO_AFTER_ZERO,
 };
-
-/**
- * @brief Initialise USB-C source device emulator. Need to be called before
- *        any other function that use @p emul or it's components.
- *
- * @param emul Pointer to USB-C source device emulator
- */
-void tcpci_src_emul_init(struct tcpci_src_emul *emul);
-
-/**
- * @brief Initialise USB-C source device data structure. Single PDO 5V@3A is
- *        created with fixed unconstrained flag.
- *
- * @param data Pointer to USB-C source device emulator data
- * @param common_data Pointer to USB-C device emulator common data
- */
-void tcpci_src_emul_init_data(struct tcpci_src_emul_data *data,
-			      struct tcpci_partner_data *common_data);
-
-/**
- * @brief Connect emulated device to TCPCI
- *
- * @param data Pointer to USB-C source device emulator data
- * @param common_data Pointer to USB-C device emulator common data
- * @param ops Pointer to USB-C device emulato operations
- * @param tcpci_emul Poinetr to TCPCI emulator to connect
- *
- * @return 0 on success
- * @return negative on TCPCI connect error or send source capabilities error
- */
-int tcpci_src_emul_connect_to_tcpci(struct tcpci_src_emul_data *data,
-				    struct tcpci_partner_data *common_data,
-				    const struct tcpci_emul_partner_ops *ops,
-				    const struct emul *tcpci_emul);
 
 /**
  * @brief Check if PDOs of given source device emulator are in correct order
@@ -159,37 +133,6 @@ int tcpci_src_emul_send_capability_msg_with_timer(
 	struct tcpci_src_emul_data *data,
 	struct tcpci_partner_data *common_data,
 	uint64_t delay);
-
-/**
- * @brief Handle SOP messages as TCPCI source device. It handles request,
- *        get source cap and soft reset messages.
- *
- * @param data Pointer to USB-C source device emulator data
- * @param common_data Pointer to common TCPCI partner data
- * @param msg Pointer to received message
- *
- * @param TCPCI_PARTNER_COMMON_MSG_HANDLED Message was handled
- * @param TCPCI_PARTNER_COMMON_MSG_NOT_HANDLED Message wasn't handled
- */
-enum tcpci_partner_handler_res tcpci_src_emul_handle_sop_msg(
-	struct tcpci_src_emul_data *data,
-	struct tcpci_partner_data *common_data,
-	const struct tcpci_emul_msg *msg);
-
-/**
- * @brief Perform action required by source device on hard reset. Schedule
- *        source capabilities message in 15 ms after hard reset.
- *
- * @param data Pointer to USB-C source device emulator data
- */
-void tcpci_src_emul_hard_reset(void *data);
-
-/**
- * @brief Disable source capabilities timer on disconnect
- *
- * @param data Pointer to USB-C source device emulator data
- */
-void tcpci_src_emul_disconnect(struct tcpci_src_emul_data *data);
 
 /**
  * @}

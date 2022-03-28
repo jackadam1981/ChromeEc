@@ -16,7 +16,8 @@
 #include "usb_pd.h"
 
 struct usb_attach_5v_3a_pd_sink_fixture {
-	struct tcpci_snk_emul sink_5v_3a;
+	struct tcpci_partner_data sink_5v_3a;
+	struct tcpci_snk_emul_data snk_ext;
 	const struct emul *tcpci_emul;
 	const struct emul *charger_emul;
 };
@@ -38,10 +39,9 @@ connect_sink_to_port(struct usb_attach_5v_3a_pd_sink_fixture *fixture)
 	tcpci_tcpc_alert(0);
 	k_sleep(K_SECONDS(1));
 
-	zassume_ok(tcpci_snk_emul_connect_to_tcpci(
-			   &fixture->sink_5v_3a.data,
-			   &fixture->sink_5v_3a.common_data,
-			   &fixture->sink_5v_3a.ops, fixture->tcpci_emul),
+	zassume_ok(tcpci_partner_connect_to_tcpci(
+			   &fixture->sink_5v_3a,
+			   fixture->tcpci_emul),
 		   NULL);
 
 	/* Wait for PD negotiation and current ramp.
@@ -82,8 +82,11 @@ static void usb_attach_5v_3a_pd_sink_before(void *data)
 	k_sleep(K_SECONDS(1));
 
 	/* Initialized the sink to request 5V and 3A */
-	tcpci_snk_emul_init(&test_fixture->sink_5v_3a);
-	test_fixture->sink_5v_3a.data.pdo[1] =
+	test_fixture->snk_ext.ext.ops = &tcpci_snk_emul_ops;
+	test_fixture->snk_ext.ext.next = NULL;
+	test_fixture->sink_5v_3a.extensions = &test_fixture->snk_ext.ext;
+	tcpci_partner_init(&test_fixture->sink_5v_3a);
+	test_fixture->snk_ext.pdo[1] =
 		PDO_FIXED(5000, 3000, PDO_FIXED_UNCONSTRAINED);
 	connect_sink_to_port(test_fixture);
 }
@@ -101,7 +104,7 @@ ZTEST_SUITE(usb_attach_5v_3a_pd_sink, drivers_predicate_post_main,
 
 ZTEST_F(usb_attach_5v_3a_pd_sink, test_partner_pd_completed)
 {
-	zassert_true(this->sink_5v_3a.data.pd_completed, NULL);
+	zassert_true(this->snk_ext.pd_completed, NULL);
 }
 
 ZTEST(usb_attach_5v_3a_pd_sink, test_battery_is_discharging)
