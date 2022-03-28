@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69ef0b9a_68a2cc3c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-03-28T21:09:26Z",
+      "side": 1,
+      "message": "Maybe describe what the test does a little bit?",
+      "revId": "50ff3340de82a7a1efcc4979e54ebd5555189aa3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "387a527c_526121b1",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_pd_ctrl_msg.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-03-28T21:09:26Z",
+      "side": 1,
+      "message": "Unused. Please remove any unneeded includes and macro definitions.",
+      "revId": "50ff3340de82a7a1efcc4979e54ebd5555189aa3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d61eb179_d34d6ac8",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_pd_ctrl_msg.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-03-28T21:09:26Z",
+      "side": 1,
+      "message": "Unused. Delete.",
+      "revId": "50ff3340de82a7a1efcc4979e54ebd5555189aa3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8bf444c_5191b058",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_pd_ctrl_msg.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-03-28T21:09:26Z",
+      "side": 1,
+      "message": "What happens if you don\u0027t have this?",
+      "revId": "50ff3340de82a7a1efcc4979e54ebd5555189aa3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ef26be6_51948fc4",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_pd_ctrl_msg.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-03-28T21:09:26Z",
+      "side": 1,
+      "message": "See comment on other CL. We should figure out why this is necessary and fix it.",
+      "revId": "50ff3340de82a7a1efcc4979e54ebd5555189aa3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1cd53b1_fb983775",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_pd_ctrl_msg.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-03-28T21:09:26Z",
+      "side": 1,
+      "message": "Based on how the TCPM works now, I think this _should_ consistently work. In theory, it could be flaky if the TCPM immediately tried to take back VCONN after swapping it away, which would be allowed. This is probably still the best way to test a partner-initiated VCONN Swap for now.",
+      "revId": "50ff3340de82a7a1efcc4979e54ebd5555189aa3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
