@@ -50,6 +50,24 @@
       "message": "Any thoughts?",
       "revId": "ec3bd6109802fc38518029359e257c54ee1716ff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c039e3f_5ebecdbc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-03-28T16:15:07Z",
+      "side": 1,
+      "message": "I think it might make sense to have explicit defaults for each architecture - even if there is duplication.\n\n```\nconfig TASK_CHARGER_STACK_SIZE\n\tdefault 1280 if SOC_SERIES_RISCV32_IT8XXX2\n\tdefault 704 if SOC_SERIES_NPCX7\n\tdefault 1056 if SOC_SERIES_NPCX9\n\tdefault 1280\n```\n\nWDYT?",
+      "parentUuid": "74a721ff_cf033062",
+      "revId": "ec3bd6109802fc38518029359e257c54ee1716ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
