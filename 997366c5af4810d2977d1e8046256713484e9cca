@@ -69,6 +69,24 @@
       "parentUuid": "045d86f0_c7b3af49",
       "revId": "997366c5af4810d2977d1e8046256713484e9cca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "933c2b16_62aad525",
+        "filename": "zephyr/test/drivers/src/ppc_sn5s330.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-03-28T22:13:19Z",
+      "side": 1,
+      "message": "Aaron says he meant to use this VCONN check to guard a VCONN test. I don\u0027t think it should be here.",
+      "parentUuid": "1715c985_94465388",
+      "revId": "997366c5af4810d2977d1e8046256713484e9cca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
