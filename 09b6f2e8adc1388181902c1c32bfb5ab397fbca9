@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3304dddb_ccba0511",
+        "filename": "zephyr/drivers/cros_led/led.h",
+        "patchSetId": 28
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-03-28T05:34:39Z",
+      "side": 1,
+      "message": "Yep, originally it was one file, but not broken up for clarity.",
+      "parentUuid": "d61a1314_b0a90e1a",
+      "range": {
+        "startLine": 19,
+        "startChar": 19,
+        "endLine": 19,
+        "endChar": 56
+      },
+      "revId": "09b6f2e8adc1388181902c1c32bfb5ab397fbca9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d2cf3582_c69b93d2",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-03-28T04:33:08Z",
       "side": 1,
       "message": "ARRAY_SIZE",
+      "range": {
+        "startLine": 86,
+        "startChar": 14,
+        "endLine": 86,
+        "endChar": 20
+      },
+      "revId": "09b6f2e8adc1388181902c1c32bfb5ab397fbca9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cae4c161_4d2222f0",
+        "filename": "zephyr/drivers/cros_led/led_gpio.c",
+        "patchSetId": 28
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-03-28T05:34:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d2cf3582_c69b93d2",
       "range": {
         "startLine": 86,
         "startChar": 14,
@@ -66,6 +114,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7fe64cbc_18db45a4",
+        "filename": "zephyr/drivers/cros_led/led_gpio.c",
+        "patchSetId": 28
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-03-28T05:34:39Z",
+      "side": 1,
+      "message": "So I do think there may be the chance to do this (consolidate\nsome of the GPIO and PWM code). I would prefer to wait until I have\nimplemented the config for multiple kinds of boards, just to ensure that\nit can handle both types well enough.\nThe action list may well be made common (it wasn\u0027t clear at the start that it could be) since in both cases it just a byte array, though getting the count becomes a little trickier (different sizes for each compat).\n\nIn terms of the action handling, this has been a point of much discussion between\nTom Tam and myself. I see some design purity in keeping the behaviours separate from the policy, and it means the policy code doesn\u0027t have to validate the actions (i.e the colour values and sizes etc), and keeps the policy portions simpler.\nBut I\u0027m willing to consider the idea, especially since the actions themselves seem to be very similar for both GPIO and PWM.\nThere are a couple of small twists since the common LED API needs to be able to\nturn off the automatic control for each driver (and yes, lots of ways this can be worked around).\nWhere the timer runs I don\u0027t see as a big deal - it\u0027s not that much code to drive it, but I do get your point that the 2 drivers are looking similar in places and de-duping the timer would work.\n\nIf possible, I\u0027d like to consider doing this as a refactor, since I\u0027d like to be certain that we\u0027re not losing some benefit from moving the actions to the policy.",
+      "parentUuid": "2a24f4b3_4220bb4a",
+      "revId": "09b6f2e8adc1388181902c1c32bfb5ab397fbca9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9fad2dca_d8359f9e",
         "filename": "zephyr/drivers/cros_led/led_gpio.c",
         "patchSetId": 28
@@ -77,6 +143,30 @@
       "writtenOn": "2022-03-28T04:33:08Z",
       "side": 1,
       "message": "\"get_brightness_max\"? I thought this got the current or desired setting until I found the function that calls this.",
+      "range": {
+        "startLine": 205,
+        "startChar": 5,
+        "endLine": 205,
+        "endChar": 28
+      },
+      "revId": "09b6f2e8adc1388181902c1c32bfb5ab397fbca9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bea0fc96_1e3f3b41",
+        "filename": "zephyr/drivers/cros_led/led_gpio.c",
+        "patchSetId": 28
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-03-28T05:34:39Z",
+      "side": 1,
+      "message": "Yeah, it took me a while to figure out what it meant as well.\nRenamed.",
+      "parentUuid": "9fad2dca_d8359f9e",
       "range": {
         "startLine": 205,
         "startChar": 5,
@@ -110,6 +200,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "918ecbd7_32912eb1",
+        "filename": "zephyr/dts/bindings/led/cros-ec,gpio-leds.yaml",
+        "patchSetId": 28
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-03-28T05:34:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bf858ca3_34e57350",
+      "range": {
+        "startLine": 17,
+        "startChar": 22,
+        "endLine": 17,
+        "endChar": 49
+      },
+      "revId": "09b6f2e8adc1388181902c1c32bfb5ab397fbca9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a45dcc6a_37eac8b5",
@@ -133,6 +247,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bcd032af_e932ac57",
+        "filename": "zephyr/dts/bindings/led/cros-ec,led-policy.yaml",
+        "patchSetId": 28
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-03-28T05:34:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a45dcc6a_37eac8b5",
+      "range": {
+        "startLine": 16,
+        "startChar": 28,
+        "endLine": 16,
+        "endChar": 33
+      },
+      "revId": "09b6f2e8adc1388181902c1c32bfb5ab397fbca9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "32f8fcc8_9cd45c5f",
@@ -146,6 +284,24 @@
       "writtenOn": "2022-03-28T04:33:08Z",
       "side": 1,
       "message": "I don\u0027t understand what this means: what is the \"EC brightness array\"? Why does it need to be configured?\n\nCan this be explained better?",
+      "revId": "09b6f2e8adc1388181902c1c32bfb5ab397fbca9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7b86580_d355e518",
+        "filename": "zephyr/dts/bindings/led/cros-ec,multi-pwm-leds.yaml",
+        "patchSetId": 28
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-03-28T05:34:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "32f8fcc8_9cd45c5f",
       "revId": "09b6f2e8adc1388181902c1c32bfb5ab397fbca9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
