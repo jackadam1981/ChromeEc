@@ -11,10 +11,14 @@
 #include "keyboard_8042.h"
 #include "ps2.h"
 #include "ps2_chip.h"
-#include "time.h"
+#include "queue.h"
 #include "registers.h"
+#include "time.h"
 
 #define	PS2_TRANSMIT_DELAY_MS	10
+
+/* queue for save PS2 data */
+static struct queue const ps2_queue = QUEUE_NULL(16, uint8_t);
 
 void send_aux_data_to_device(uint8_t data)
 {
@@ -46,7 +50,7 @@ static void disable_ps2(void)
 	gpio_set_flags(GPIO_EC_PS2_SDA_TPAD, GPIO_ODR_LOW);
 	gpio_set_alternate_function(GPIO_PORT_6,
 		BIT(2) | BIT(3), GPIO_ALT_FUNC_NONE);
-	/* make sure PLTRST# goes high and re-enable ps2.*/
+	/* make sure PLTRST# goes high and re-enable PS2.*/
 	hook_call_deferred(&enable_ps2_data, 2 * SECOND);
 }
 DECLARE_HOOK(HOOK_CHIPSET_RESET, disable_ps2, HOOK_PRIO_DEFAULT);
@@ -55,6 +59,13 @@ static void ps2_transmit(uint8_t cmd)
 {
 	ps2_transmit_byte(PRIMUS_PS2_CH, cmd);
 	msleep(PS2_TRANSMIT_DELAY_MS);
+}
+
+/* Process the PS2 data at here */
+void get_ps2_data(uint8_t data)
+{
+	/* receive the PS2 data and save in PS2 queue */
+	queue_add_unit(&ps2_queue, &data);
 }
 
 static void send_command_to_trackpoint(uint8_t command1, uint8_t command2)
@@ -71,26 +82,49 @@ static void send_command_to_trackpoint(uint8_t command1, uint8_t command2)
 	ps2_transmit(command2);
 }
 
-int get_trackpoint_id(void)
+uint8_t get_trackpoint_id(void)
 {
-	if (get_cbi_ssfc_trackpoint() == SSFC_SENSOR_TRACKPOINT_ELAN)
-		return TP_VARIANT_ELAN;
-	else
-		return TP_VARIANT_SYNAPTICS;
+	int i;
+	uint8_t queue_data;
+	/*
+	 * only two data will be received when asking PS2
+	 * device id, ACK and device ID.
+	 */
+	uint8_t ps2_data[2];
+
+	ps2_transmit(TP_READ_ID);
+	for (i = 0; i < queue_count(&ps2_queue); ++i) {
+		queue_peek_units(&ps2_queue, &queue_data, i, 1);
+		ps2_data[i] = queue_data;
+	}
+	/*
+	 * When EC send TP_READ_ID, trackpoint will return ACK(0xFA),
+	 * and then return device ID. So return the second data.
+	 */
+	return ps2_data[1];
 }
 
-/* Called on AP S0 -> S3 transition */
+/* Called on AP S0 -> S0ix transition */
 static void ps2_suspend(void)
 {
-	int trackpoint_id;
+	uint8_t trackpoint_id;
 	/*
 	 * When EC send PS2 command to PS2 device,
 	 * PS2 device will return ACK(0xFA).
 	 * EC will send it to host and cause host wake from suspend.
 	 * So disable EC send data to host to avoid it.
+	 *
+	 * In order to receive the PS2 data and also not to wake host,
+	 * use get_ps2_data to process PS2 data.
+	 */
+	ps2_enable_channel(PRIMUS_PS2_CH, 1, get_ps2_data);
+	trackpoint_id = get_trackpoint_id();
+	/*
+	 * Don't need to read any data from PS2 device now,
+	 * so disable it.
 	 */
 	ps2_enable_channel(PRIMUS_PS2_CH, 1, NULL);
-	trackpoint_id = get_trackpoint_id();
+
 	/*
 	 * Send suspend mode to trackpoint
 	 * Those commands was provide by Elan and Synaptics
@@ -104,11 +138,12 @@ static void ps2_suspend(void)
 }
 DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, ps2_suspend, HOOK_PRIO_DEFAULT);
 
-/* Called on AP S3 -> S0 transition */
+/* Called on AP S0ix -> S0 transition */
 static void ps2_resume(void)
 {
-	int trackpoint_id;
+	uint8_t trackpoint_id;
 
+	ps2_enable_channel(PRIMUS_PS2_CH, 1, get_ps2_data);
 	trackpoint_id = get_trackpoint_id();
 	ps2_enable_channel(PRIMUS_PS2_CH, 1, send_aux_data_to_host_interrupt);
 	/*
