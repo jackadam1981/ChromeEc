@@ -132,6 +132,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "74344cd8_bf78f250",
+        "filename": "zephyr/drivers/cros_led/led_gpio.c",
+        "patchSetId": 28
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-03-28T08:02:32Z",
+      "side": 1,
+      "message": "Actually, let me have a go at doing this move, and see how it looks.",
+      "parentUuid": "7fe64cbc_18db45a4",
+      "revId": "09b6f2e8adc1388181902c1c32bfb5ab397fbca9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9fad2dca_d8359f9e",
         "filename": "zephyr/drivers/cros_led/led_gpio.c",
         "patchSetId": 28
