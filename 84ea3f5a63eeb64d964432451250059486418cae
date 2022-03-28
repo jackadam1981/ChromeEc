@@ -146,6 +146,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c5a2aa6d_e9a72c32",
+        "filename": "board/kinox/adc.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1286280
+      },
+      "writtenOn": "2022-03-28T06:24:36Z",
+      "side": 1,
+      "message": "The EC jump RO to RW needs 275ms on the Brask.\n\n[0.275014 UART initialized after sysjump]\n[Image: RW, kinox_v2.0.12887-71f931fa7 kinox_14505.35.22_03_16 2022-03-12 19:30:20 @localhost]\n[Reset cause: soft sysjump efs]\n[0.278052 init buttons]\n[0.278286 VB Main]\n[0.278485 VB Already in RW]\n[0.278721 VB show_power_shortage]\n[0.278998 Inits done]",
+      "parentUuid": "2df7eeae_59104b8e",
+      "range": {
+        "startLine": 219,
+        "startChar": 5,
+        "endLine": 219,
+        "endChar": 17
+      },
+      "revId": "84ea3f5a63eeb64d964432451250059486418cae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "89539536_7d05b2ee",
         "filename": "board/kinox/adc.c",
         "patchSetId": 9
