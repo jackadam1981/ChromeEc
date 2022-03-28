@@ -102,5 +102,10 @@
 			flags = <GPIO_INT_EDGE_BOTH>;
 			handler = "chipset_warm_reset_interrupt";
 		};
+		int_accel: accel {
+			irq-pin = <&gpio_accel_gyro_int_l>;
+			flags = <GPIO_INT_EDGE_FALLING>;
+			handler = "icm42607_interrupt";
+		};
 	};
 };
