@@ -177,6 +177,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "63679073_9f6e03c9",
+        "filename": "zephyr/emul/tcpc/emul_tcpci_partner_drp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-03-28T20:54:22Z",
+      "side": 1,
+      "message": "OK, I misunderstood the flow of this a little bit. The logic in `tcpci_tcpm_set_vconn` is technically correct. It\u0027s just confusing. `TCPC_REG_POWER_CTRL_VCONN()` is supposed to take a register value as an argument. It just so happens that the value of this register with only _Enable VCONN_ set is 0x01, so passing in 1 works. This macro and `TCPC_REG_POWER_CTRL_SET` are not like the others for this register, and I don\u0027t know why. They should probably be cleaned up, but it\u0027s out of scope here.",
+      "parentUuid": "03403842_826340f9",
+      "range": {
+        "startLine": 83,
+        "startChar": 18,
+        "endLine": 83,
+        "endChar": 43
+      },
+      "revId": "b6db0487ee28e4dcca4338aff44d67eb14c62f8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8d2332b0_6d3664d5",

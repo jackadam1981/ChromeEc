@@ -89,6 +89,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bcd22afa_b1f4fc26",
+        "filename": "zephyr/include/emul/tcpc/emul_tcpci_partner_common.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-03-28T20:54:22Z",
+      "side": 1,
+      "message": "I think I was unclear in my previous comment about the format of this state. In theory, the partner emulators will eventually need to handle most possible incoming message types to cover the entire TCPM. However, PD only ever has one atomic message sequence going at a time. If an unexpected message comes in during an AMS, either it\u0027s a protocol error (uninterruptible AMS), or it cancels the previous AMS (interruptible AMS). So there\u0027s no particular reason that this needs to be a bit field, and I would suggest just making it an `enum pd_ctrl_msg_type` and using 0 to represent no active AMS.",
+      "revId": "e9f9bb1db3f23b8adb45982d56acb0862c20ffe3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fbc8eed2_59c946e5",
         "filename": "zephyr/include/emul/tcpc/emul_tcpci_partner_common.h",
         "patchSetId": 5
@@ -100,6 +117,30 @@
       "writtenOn": "2022-03-28T20:10:54Z",
       "side": 1,
       "message": "Can you add more details here? Anyone not familiar with PD (myself included) will not know what masks are used for.",
+      "range": {
+        "startLine": 412,
+        "startChar": 0,
+        "endLine": 412,
+        "endChar": 2
+      },
+      "revId": "e9f9bb1db3f23b8adb45982d56acb0862c20ffe3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e37b703f_20c151fe",
+        "filename": "zephyr/include/emul/tcpc/emul_tcpci_partner_common.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 412,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-03-28T20:54:22Z",
+      "side": 1,
+      "message": "Yuval: I think this concept is original to this emulator. At least, I\u0027m unfamiliar.\n\nAl: The implementations of these functions make clear that only one control message type may be active at a time. If this is the case, then I don\u0027t think the caller needs to be aware that the underlying data structure used by this function is a mask. The function can just be called something like set_active_control_message. See my other comment about whether it makes sense to use a mask for this.",
+      "parentUuid": "fbc8eed2_59c946e5",
       "range": {
         "startLine": 412,
         "startChar": 0,
