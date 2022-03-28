@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce5d416a_35be694e",
+        "filename": "board/munna/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1449895
+      },
+      "writtenOn": "2022-03-28T01:32:07Z",
+      "side": 1,
+      "message": "there is a new bug about LPM\n1. disable the LPM, reboot or sysjump will lead to TCPC_INIT loop\n2. enable the LPM, SINK devices cann\u0027t wake up TCPC from LPM.",
+      "revId": "0721ccca28334b496fbc267368fc32489519b23e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
