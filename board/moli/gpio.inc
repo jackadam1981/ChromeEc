@@ -22,6 +22,9 @@ GPIO_INT(USB_C0_PPC_INT_ODL,         PIN(6, 2), GPIO_INT_FALLING, ppc_interrupt)
 GPIO_INT(USB_C0_RT_INT_ODL,          PIN(B, 1), GPIO_INT_FALLING, retimer_interrupt)
 GPIO_INT(BJ_ADP_PRESENT_ODL,         PIN(8, 2), GPIO_INT_BOTH | GPIO_PULL_UP, adp_connect_interrupt)
 GPIO_INT(EC_RECOVERY_BTN_ODL,        PIN(2, 3), GPIO_INT_BOTH, button_interrupt)
+GPIO_INT(USB_C2_RT_INT_ODL,          PIN(4, 1), GPIO_INT_FALLING, retimer_interrupt)
+GPIO_INT(USB_C2_BC12_INT_ODL,        PIN(8, 3), GPIO_INT_FALLING, bc12_interrupt)
+GPIO_INT(USB_C2_PPC_INT_ODL,         PIN(7, 0), GPIO_INT_FALLING, ppc_interrupt)
 
 /* CCD */
 GPIO(CCD_MODE_ODL,                   PIN(E, 5), GPIO_INPUT)
@@ -80,6 +83,9 @@ GPIO(EC_I2C_QI_INT_ODL,              PIN(9, 6), GPIO_INPUT)
 GPIO(HDMI_CEC_IN,                    PIN(4, 0), GPIO_INPUT)
 GPIO(HDMI_CEC_OUT,                   PIN(D, 3), GPIO_OUT_HIGH | GPIO_OPEN_DRAIN)
 GPIO(HDMI_CEC_PULL_UP,               PIN(C, 2), GPIO_OUT_HIGH)
+GPIO(HDMI2_CEC_PULL_UP,              PIN(F, 3), GPIO_OUT_HIGH)
+GPIO(HDMI2_CEC_OUT,                  PIN(F, 2), GPIO_OUT_HIGH | GPIO_OPEN_DRAIN)
+GPIO(HDMI2_CEC_IN,                   PIN(A, 7), GPIO_INPUT)
 
 /* I2C SCL/SDA */
 GPIO(EC_I2C_QI_SCL,                  PIN(3, 3), GPIO_INPUT)
@@ -97,7 +103,6 @@ GPIO(EC_I2C_USB_A0_A1_MIX_SDA,       PIN(E, 3), GPIO_INPUT)
 
 /* USBA */
 GPIO(EN_PP5000_USBA,                 PIN(D, 7), GPIO_OUT_LOW)
-GPIO(USB_A0_OC_ODL,                  PIN(3, 1), GPIO_INPUT | GPIO_PULL_UP)
 GPIO(USB_A1_OC_ODL,                  PIN(3, 0), GPIO_INPUT | GPIO_PULL_UP)
 GPIO(USB_A2_OC_ODL,                  PIN(2, 7), GPIO_INPUT | GPIO_PULL_UP)
 GPIO(USB_A3_OC_ODL,                  PIN(2, 6), GPIO_INPUT | GPIO_PULL_UP)
@@ -105,29 +110,22 @@ GPIO(USB_A4_OC_ODL,                  PIN(0, 6), GPIO_INPUT | GPIO_PULL_UP)
 GPIO(USB_A0_STATUS_L,                PIN(2, 1), GPIO_INPUT)
 GPIO(USB_A1_STATUS_L,                PIN(2, 0), GPIO_INPUT)
 GPIO(USB_A2_STATUS_L,                PIN(1, 7), GPIO_INPUT)
-GPIO(USB_A_LOW_PWR0_OD,              PIN(1, 5), GPIO_INPUT | GPIO_PULL_DOWN)
 GPIO(USB_A_LOW_PWR1_OD,              PIN(1, 4), GPIO_INPUT | GPIO_PULL_DOWN)
 GPIO(USB_A_LOW_PWR2_OD,              PIN(1, 1), GPIO_INPUT | GPIO_PULL_DOWN)
 GPIO(USB_A_OC_SOC_L,                 PIN(8, 0), GPIO_OUT_HIGH)
 
-/* LED */
-/* TODO(b/197471359): LED implementation */
-GPIO(LED_1_L,                        PIN(C, 3), GPIO_OUT_LOW)
-GPIO(LED_2_L,                        PIN(C, 4), GPIO_OUT_LOW)
-
 /* USBC */
-GPIO(USB_C0_C2_TCPC_RST_ODL,         PIN(A, 7), GPIO_ODR_LOW)
+GPIO(USB_C0_C2_TCPC_RST_ODL,         PIN(F, 5), GPIO_ODR_LOW)
 
 /* LAN */
 GPIO(LAN_PWR_GOOD,                   PIN(0, 2), GPIO_INPUT)
 
 /* Option Board */
 GPIO(HDMI1_MONITOR_ON,               PIN(B, 4), GPIO_INPUT)
-GPIO(HDMI1_MONON_SIO,                PIN(1, 6), GPIO_OUT_LOW)
+GPIO(HDMI1_MONON_SIO,                PIN(1, 6), GPIO_ODR_LOW)
 GPIO(OPTION_MONITOR_ON,              PIN(1, 0), GPIO_INPUT)
-GPIO(DP1_MONITOR_ON,                 PIN(B, 5), GPIO_INPUT)
-GPIO(OPTION_MONON_SIO,               PIN(4, 1), GPIO_OUT_LOW)
-GPIO(DP1_MONON_SIO,                  PIN(8, 3), GPIO_OUT_LOW)
+GPIO(HDMI2_MONITOR_ON,               PIN(B, 5), GPIO_INPUT)
+GPIO(HDMI2_MONON_SIO,                PIN(1, 5), GPIO_ODR_LOW)
 
 /* GPIO02_P1 to PU */
 /* GPIO03_P1 to PU */
@@ -160,6 +158,7 @@ ALTERNATE(PIN_MASK(E, 0x02), 0, MODULE_ADC, 0)               /* GPIOE1/ADC7 */
 
 /* Unused Pins */
 UNUSED(PIN(D, 6))       /* GPOD6/CR_SOUT3/SHDF_ESPI_L */
+UNUSED(PIN(3, 1))       /* KSI0/GPIO31/TRACEDATA3/GP_MOSI */
 UNUSED(PIN(3, 2))       /* GPO32/TRIS_L */
 UNUSED(PIN(3, 5))       /* GPO35/CR_SOUT4/TEST_L */
 UNUSED(PIN(6, 6))       /* GPIO66 */
@@ -172,9 +171,5 @@ UNUSED(PIN(1, 2))       /* KSO07/GPO12/JEN# */
 UNUSED(PIN(0, 4))       /* KSO13/GPIO04 */
 UNUSED(PIN(A, 2))       /* F_SCLK/GPIOA2 */
 UNUSED(PIN(5, 0))       /* GPIO50 */
-UNUSED(PIN(7, 0))       /* GPIO70/PS2_DAT0 */
 UNUSED(PIN(9, 4))       /* GPIO94 */
-UNUSED(PIN(F, 5))       /* GPIOF5/I2C5_SCL1 */
-UNUSED(PIN(F, 3))       /* GPIOF3/I2C4_SCL1 */
-UNUSED(PIN(F, 2))       /* GPIOF2/I2C4_SDA1 */
 UNUSED(PIN(A, 0))       /* F_CS0_L/GPIOA0 */
