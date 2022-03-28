@@ -16,6 +16,23 @@
       "message": "Hi Cros EC Reviewers, could you PTAL? ty!",
       "revId": "155e4031b5dbc85217b48cd8587c34eec1622817",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9fc81ff_ab1be7e6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-03-28T18:42:40Z",
+      "side": 1,
+      "message": "weird, this CL is not using strtoull()... the failure is not related to this CL... and the failure doesn\u0027t seem be an infra issue...",
+      "revId": "155e4031b5dbc85217b48cd8587c34eec1622817",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
