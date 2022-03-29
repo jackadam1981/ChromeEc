@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "577dcc46_e085ddf1",
+        "filename": "zephyr/projects/brya/usbc.dts",
+        "patchSetId": 6
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2022-03-29T15:08:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f2b77f64_af7ec28a",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 14
+      },
+      "revId": "1c5314362c8e9943f4736dba6cf922464999dd6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7f2ec6e9_c7cfc8d0",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-03-28T19:39:11Z",
       "side": 1,
       "message": "I guess there isn\u0027t a DT macro for retrieving the number of children of a node.  But moving the compatible flag from the parent to each port probably makes sense.",
+      "range": {
+        "startLine": 1329,
+        "startChar": 37,
+        "endLine": 1329,
+        "endChar": 60
+      },
+      "revId": "1c5314362c8e9943f4736dba6cf922464999dd6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d50ee2d0_8c239ffe",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 1329,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2022-03-29T15:08:47Z",
+      "side": 1,
+      "message": "I was surprised, but I haven\u0027t found DT macro that returns a number of children nodes, so I decided to change the compatible property.",
+      "parentUuid": "7f2ec6e9_c7cfc8d0",
       "range": {
         "startLine": 1329,
         "startChar": 37,
