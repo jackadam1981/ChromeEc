@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2435dcd9_368b517e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2022-03-29T15:50:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "69ef0b9a_68a2cc3c",
+      "revId": "50ff3340de82a7a1efcc4979e54ebd5555189aa3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "387a527c_526121b1",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8819ee2d_8b610b50",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_pd_ctrl_msg.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2022-03-29T15:50:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "387a527c_526121b1",
+      "revId": "50ff3340de82a7a1efcc4979e54ebd5555189aa3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d61eb179_d34d6ac8",
@@ -48,6 +84,24 @@
       "writtenOn": "2022-03-28T21:09:26Z",
       "side": 1,
       "message": "Unused. Delete.",
+      "revId": "50ff3340de82a7a1efcc4979e54ebd5555189aa3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5250d58d_33adb2cf",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_pd_ctrl_msg.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2022-03-29T15:50:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d61eb179_d34d6ac8",
       "revId": "50ff3340de82a7a1efcc4979e54ebd5555189aa3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -71,6 +125,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "735dfdd1_fe4c6292",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_pd_ctrl_msg.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2022-03-29T15:50:35Z",
+      "side": 1,
+      "message": "Running this along with the other tests causes this test to FAIL.  I found adding this chipset toggling helps put the test environment back in an initial state after other tests allowing this to PASS.",
+      "parentUuid": "e8bf444c_5191b058",
+      "revId": "50ff3340de82a7a1efcc4979e54ebd5555189aa3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5ef26be6_51948fc4",
         "filename": "zephyr/test/drivers/src/integration/usbc/usb_pd_ctrl_msg.c",
         "patchSetId": 3
@@ -82,6 +154,24 @@
       "writtenOn": "2022-03-28T21:09:26Z",
       "side": 1,
       "message": "See comment on other CL. We should figure out why this is necessary and fix it.",
+      "revId": "50ff3340de82a7a1efcc4979e54ebd5555189aa3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c200273_061be905",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_pd_ctrl_msg.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2022-03-29T15:50:35Z",
+      "side": 1,
+      "message": "Created http://b/227332106 to track this.",
+      "parentUuid": "5ef26be6_51948fc4",
       "revId": "50ff3340de82a7a1efcc4979e54ebd5555189aa3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
