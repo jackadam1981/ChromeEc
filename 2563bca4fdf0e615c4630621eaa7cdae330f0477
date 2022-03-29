@@ -70,6 +70,30 @@
       },
       "revId": "2563bca4fdf0e615c4630621eaa7cdae330f0477",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "326ecfd2_3672e3c1",
+        "filename": "zephyr/Kconfig.retimer",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-03-29T21:51:35Z",
+      "side": 1,
+      "message": "I\u0027d lean toward defining the config positively (\"supports vPro\") and having the default be \"y\" if most relevant boards except this one support it.",
+      "parentUuid": "fca81eed_149d6001",
+      "range": {
+        "startLine": 42,
+        "startChar": 7,
+        "endLine": 42,
+        "endChar": 61
+      },
+      "revId": "2563bca4fdf0e615c4630621eaa7cdae330f0477",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
