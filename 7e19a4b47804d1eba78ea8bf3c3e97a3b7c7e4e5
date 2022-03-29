@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7d433e82_a2bafdea",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-03-29T14:38:46Z",
+      "side": 1,
+      "message": "Also include some good documentation for the option.  Could other drivers require this change?  Should this affect our Mode Entry VDO we need to send?  What circumstances would cause us to want to disable vPro support?",
+      "parentUuid": "8780e97e_e64d2c39",
+      "range": {
+        "startLine": 158,
+        "startChar": 8,
+        "endLine": 158,
+        "endChar": 35
+      },
+      "revId": "7e19a4b47804d1eba78ea8bf3c3e97a3b7c7e4e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3847e1b1_d6f1e16e",
         "filename": "driver/retimer/bb_retimer.c",
         "patchSetId": 1
