@@ -16,6 +16,98 @@
       "message": "Hi Caveh,\nCan you help to review this CL. In the meanwhile, we will discuss the suspend command with OEM and vendor.",
       "revId": "d107f08714ba963a787504e98eabbc763d0707ed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7135493d_638cc403",
+        "filename": "board/primus/ps2.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2022-03-29T08:59:12Z",
+      "side": 1,
+      "message": "How to decide this queue size? Why is it 16?",
+      "range": {
+        "startLine": 21,
+        "startChar": 49,
+        "endLine": 21,
+        "endChar": 51
+      },
+      "revId": "d107f08714ba963a787504e98eabbc763d0707ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "231abe77_c4185f5b",
+        "filename": "board/primus/ps2.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2022-03-29T08:59:12Z",
+      "side": 1,
+      "message": "I think it would be better to do the error handling like the queue full. Maybe you can print some error messages if the queue is full?",
+      "range": {
+        "startLine": 68,
+        "startChar": 1,
+        "endLine": 68,
+        "endChar": 15
+      },
+      "revId": "d107f08714ba963a787504e98eabbc763d0707ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fbd05b10_121b1215",
+        "filename": "board/primus/ps2.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2022-03-29T08:59:12Z",
+      "side": 1,
+      "message": "Do you only need two bytes to store the required data? If so, it looks like the queue is unnecessary, right?",
+      "range": {
+        "startLine": 93,
+        "startChar": 9,
+        "endLine": 93,
+        "endChar": 20
+      },
+      "revId": "d107f08714ba963a787504e98eabbc763d0707ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa1d11f4_f628f724",
+        "filename": "board/primus/ps2.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2022-03-29T08:59:12Z",
+      "side": 1,
+      "message": "will this make the stack overflow?",
+      "range": {
+        "startLine": 98,
+        "startChar": 2,
+        "endLine": 98,
+        "endChar": 13
+      },
+      "revId": "d107f08714ba963a787504e98eabbc763d0707ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
