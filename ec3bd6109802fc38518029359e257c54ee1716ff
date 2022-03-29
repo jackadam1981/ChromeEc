@@ -86,6 +86,24 @@
       "parentUuid": "4c039e3f_5ebecdbc",
       "revId": "ec3bd6109802fc38518029359e257c54ee1716ff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac98ae60_503ab0e8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-03-29T01:11:38Z",
+      "side": 1,
+      "message": "I think explicitly laying out each value per-chip is a good approach.\nI originally did this because trying to find all the places a stack size is defined for a feature was quite hard, and the overrides were very inconsistent.\nI figured at least if fiolks are going to change the stack size of a task, then at least they will be prompted to do it for all chips types.",
+      "parentUuid": "4497760a_68703d95",
+      "revId": "ec3bd6109802fc38518029359e257c54ee1716ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
