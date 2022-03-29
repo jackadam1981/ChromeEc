@@ -22,6 +22,30 @@
       },
       "revId": "a5cbca53a97e0a492f602f17d3424560f38013b0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8022288a_bc1108f2",
+        "filename": "zephyr/shim/src/hooks.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-03-29T22:47:24Z",
+      "side": 1,
+      "message": "`#if` should be used for kconfig values, since they will always be defined and set to either 0 or 1: the `#ifdef`s I changed here were difficult to reason about because they were using the legacy code\u0027s config symbol that is either defined with no value or undefined, so I changed them to use the equivalent kconfig symbol.",
+      "parentUuid": "2abc659f_24c609bf",
+      "range": {
+        "startLine": 210,
+        "startChar": 0,
+        "endLine": 210,
+        "endChar": 4
+      },
+      "revId": "a5cbca53a97e0a492f602f17d3424560f38013b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
