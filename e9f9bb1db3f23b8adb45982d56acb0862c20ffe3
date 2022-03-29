@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c34448c3_28f4a724",
+        "filename": "zephyr/emul/tcpc/emul_tcpci_partner_common.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 481,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2022-03-29T15:50:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a0c54adf_4b8d9ec3",
+      "range": {
+        "startLine": 481,
+        "startChar": 0,
+        "endLine": 481,
+        "endChar": 9
+      },
+      "revId": "e9f9bb1db3f23b8adb45982d56acb0862c20ffe3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f35237a6_4a16ef15",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-03-28T20:10:54Z",
       "side": 1,
       "message": "nit: style guide, should wrap with `{}`",
+      "range": {
+        "startLine": 499,
+        "startChar": 1,
+        "endLine": 499,
+        "endChar": 58
+      },
+      "revId": "e9f9bb1db3f23b8adb45982d56acb0862c20ffe3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea42b0d5_5a72ac1d",
+        "filename": "zephyr/emul/tcpc/emul_tcpci_partner_common.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 499,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2022-03-29T15:50:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f35237a6_4a16ef15",
       "range": {
         "startLine": 499,
         "startChar": 1,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "910a496c_e525e686",
+        "filename": "zephyr/emul/tcpc/emul_tcpci_partner_common.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 833,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2022-03-29T15:50:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d36a787a_a6ddfcd9",
+      "range": {
+        "startLine": 833,
+        "startChar": 1,
+        "endLine": 833,
+        "endChar": 9
+      },
+      "revId": "e9f9bb1db3f23b8adb45982d56acb0862c20ffe3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bcd22afa_b1f4fc26",
@@ -100,6 +172,24 @@
       "writtenOn": "2022-03-28T20:54:22Z",
       "side": 1,
       "message": "I think I was unclear in my previous comment about the format of this state. In theory, the partner emulators will eventually need to handle most possible incoming message types to cover the entire TCPM. However, PD only ever has one atomic message sequence going at a time. If an unexpected message comes in during an AMS, either it\u0027s a protocol error (uninterruptible AMS), or it cancels the previous AMS (interruptible AMS). So there\u0027s no particular reason that this needs to be a bit field, and I would suggest just making it an `enum pd_ctrl_msg_type` and using 0 to represent no active AMS.",
+      "revId": "e9f9bb1db3f23b8adb45982d56acb0862c20ffe3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3271c665_eabe12ae",
+        "filename": "zephyr/include/emul/tcpc/emul_tcpci_partner_common.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2022-03-29T15:50:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bcd22afa_b1f4fc26",
       "revId": "e9f9bb1db3f23b8adb45982d56acb0862c20ffe3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -175,6 +265,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "66d2df15_c7d999a5",
+        "filename": "zephyr/include/emul/tcpc/emul_tcpci_partner_common.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 412,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2022-03-29T15:50:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "96d8c1f4_0587dcab",
+      "range": {
+        "startLine": 412,
+        "startChar": 0,
+        "endLine": 412,
+        "endChar": 2
+      },
+      "revId": "e9f9bb1db3f23b8adb45982d56acb0862c20ffe3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2c000998_1c160a2b",
@@ -198,6 +312,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c46cdeb8_baaf9154",
+        "filename": "zephyr/include/emul/tcpc/emul_tcpci_partner_common.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 413,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2022-03-29T15:50:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2c000998_1c160a2b",
+      "range": {
+        "startLine": 413,
+        "startChar": 24,
+        "endLine": 413,
+        "endChar": 57
+      },
+      "revId": "e9f9bb1db3f23b8adb45982d56acb0862c20ffe3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c52aaa57_495fecf8",
@@ -211,6 +349,30 @@
       "writtenOn": "2022-03-28T20:10:54Z",
       "side": 1,
       "message": "Same here, this is the data",
+      "range": {
+        "startLine": 422,
+        "startChar": 24,
+        "endLine": 422,
+        "endChar": 57
+      },
+      "revId": "e9f9bb1db3f23b8adb45982d56acb0862c20ffe3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5e401cf_13b77f14",
+        "filename": "zephyr/include/emul/tcpc/emul_tcpci_partner_common.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 422,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2022-03-29T15:50:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c52aaa57_495fecf8",
       "range": {
         "startLine": 422,
         "startChar": 24,
