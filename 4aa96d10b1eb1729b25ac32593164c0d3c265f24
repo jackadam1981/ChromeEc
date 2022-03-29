@@ -46,6 +46,30 @@
       },
       "revId": "4aa96d10b1eb1729b25ac32593164c0d3c265f24",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e39d5edd_38bbd3f8",
+        "filename": "zephyr/projects/herobrine/src/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-03-29T14:29:57Z",
+      "side": 0,
+      "message": "It looks like we call this function shortly before pd_set_power_supply_ready() for Attached.SRC entry at least. The only places I see it called in common code are Attached.SRC entry and run, with one call in the charge manager that I only see old boards using.  In general, I wouldn\u0027t expect it to interrupt Vbus if we run this function to change the current limit for a non-PD port partner so I\u0027m a little surprised it\u0027s interrupting Vbus here. \n\nIs the Vbus interruption due to going from the FRS-triggered Vbus to our regular Vbus sourcing on your chips?  Or did the board\u0027s cached Vbus enable not get updated correctly during the FRS process?",
+      "parentUuid": "25112f55_c94c4752",
+      "range": {
+        "startLine": 83,
+        "startChar": 1,
+        "endLine": 83,
+        "endChar": 33
+      },
+      "revId": "4aa96d10b1eb1729b25ac32593164c0d3c265f24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
