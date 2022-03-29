@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "50175e45_c0dbebd3",
+        "filename": "include/hooks.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-03-29T16:29:48Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "684ccb69_1ea5f04e",
+      "range": {
+        "startLine": 25,
+        "startChar": 1,
+        "endLine": 25,
+        "endChar": 19
+      },
+      "revId": "dd804a7b6e6a76f91e868b23a5645249eea09fab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c427248b_245fb199",
@@ -85,6 +109,30 @@
       "side": 1,
       "message": "These are unused by Zephyr.",
       "parentUuid": "c427248b_245fb199",
+      "range": {
+        "startLine": 63,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 40
+      },
+      "revId": "dd804a7b6e6a76f91e868b23a5645249eea09fab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "523dfd50_333836d3",
+        "filename": "include/hooks.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-03-29T16:29:48Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "7b2736cf_0796a76a",
       "range": {
         "startLine": 63,
         "startChar": 0,
