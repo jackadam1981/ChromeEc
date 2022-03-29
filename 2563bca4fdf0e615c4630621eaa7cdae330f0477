@@ -46,6 +46,30 @@
       },
       "revId": "2563bca4fdf0e615c4630621eaa7cdae330f0477",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fca81eed_149d6001",
+        "filename": "zephyr/Kconfig.retimer",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-03-29T20:21:37Z",
+      "side": 1,
+      "message": "you don\u0027t need to be a domain expert to make a logic argument 😊\ni tend to agree with you, but judging from the implementation,\nthis looks like a special case for SPEC_B0 where vPro must\nexplicitly be disabled.\n\nhowever, that means default should be \"no\"",
+      "parentUuid": "825cdeeb_9edc1173",
+      "range": {
+        "startLine": 42,
+        "startChar": 7,
+        "endLine": 42,
+        "endChar": 61
+      },
+      "revId": "2563bca4fdf0e615c4630621eaa7cdae330f0477",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
