@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01a4f4b6_a78e43d1",
+        "filename": "zephyr/Kconfig.host_interface",
+        "patchSetId": 5
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-03-29T02:14:46Z",
+      "side": 1,
+      "message": "also add to\nzephyr/shim/include/config_chip.h\n(see CONFIG_HOST_INTERFACE_SHI example)",
+      "range": {
+        "startLine": 57,
+        "startChar": 7,
+        "endLine": 57,
+        "endChar": 37
+      },
+      "revId": "716cbd6eece7766cdd038eb3678f5c4542c36bea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
