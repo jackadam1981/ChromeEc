@@ -32,6 +32,11 @@ const char pwrsm_dbg[][25] = {
 	[SYS_POWER_STATE_S4S5] = "S4S5",
 	[SYS_POWER_STATE_S3S4] = "S3S4",
 	[SYS_POWER_STATE_S0S3] = "S0S3",
+#if CONFIG_AP_PWRSEQ_S0IX
+	[SYS_POWER_STATE_S0ix] = "S0ix",
+	[SYS_POWER_STATE_S0ixS0] = "S0ixS0",
+	[SYS_POWER_STATE_S0S0ix] = "S0S0ix",
+#endif
 };
 
 #ifdef PWRSEQ_REQUIRE_ESPI
