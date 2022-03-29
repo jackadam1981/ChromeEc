@@ -22,6 +22,30 @@
       },
       "revId": "0d53b455cd10c00decc28d805f3bd6e86cb78787",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a70db6e_0391c667",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-03-29T21:56:40Z",
+      "side": 1,
+      "message": "What about changing `TestConfig.ro_image` to an dict of images (`TestConfig.ro_images`)?\n\nThen you could add some logic in this `get` method to generate the various combinations (or hardcode them):\n\n```\n            \u0027panic_data_nami_fp\u0027:\n                TestConfig(name\u003d\u0027panic_data\u0027,\n                           fail_regexes\u003d[SINGLE_CHECK_FAILED_REGEX,\n                                         ALL_TESTS_FAILED_REGEX],\n                           ro_image\u003dboard_config.ro_images[\u0027nami_fp\u0027]),\n            \u0027panic_data_nocturne_fp\u0027:\n            ...\n            \u0027panic_data_bloonchipper_ro_v123\u0027:\n            ...\n            \u0027panic_data_bloonchipper_ro_v456\u0027:\n            ...\n```",
+      "parentUuid": "1c8055b0_e193720b",
+      "range": {
+        "startLine": 171,
+        "startChar": 12,
+        "endLine": 175,
+        "endChar": 59
+      },
+      "revId": "0d53b455cd10c00decc28d805f3bd6e86cb78787",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
