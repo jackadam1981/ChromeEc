@@ -126,7 +126,7 @@ void usb_retimer_fw_update_process_op_cb(int port)
 		 * Do not perform retimer firmware update process
 		 * if battery is not present, or battery level is low.
 		 */
-		if (!pd_firmware_upgrade_check_power_readiness(port)) {
+		if (!pd_firmware_upgrade_check_power_readiness(port) || 1) {
 			last_result = USB_RETIMER_FW_UPDATE_ERR;
 			break;
 		}
