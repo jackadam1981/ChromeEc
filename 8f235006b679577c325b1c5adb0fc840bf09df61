@@ -46,6 +46,30 @@
       },
       "revId": "8f235006b679577c325b1c5adb0fc840bf09df61",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a77c10db_69f4b231",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1286280
+      },
+      "writtenOn": "2022-03-29T10:27:11Z",
+      "side": 1,
+      "message": "Hi Zhuohao,\nBecause the OBP function needs to discuss.\nSo this CL just remove the bj_power config.\nThe adp_id_deferred() function set the charge_manager_update_charge(CHARGE_SUPPLIER_DEDICATED, DEDICATED_CHARGE_PORT, \u0026pi) move to OBP CL implement.",
+      "parentUuid": "e8d84e7c_1711146c",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 21
+      },
+      "revId": "8f235006b679577c325b1c5adb0fc840bf09df61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
