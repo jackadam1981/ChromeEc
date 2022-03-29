@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b3e0103_d0abed11",
+        "filename": "board/primus/ps2.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2022-03-29T16:05:28Z",
+      "side": 1,
+      "message": "Maybe you can put this to line 20",
+      "range": {
+        "startLine": 65,
+        "startChar": 1,
+        "endLine": 65,
+        "endChar": 23
+      },
+      "revId": "3e851efd3a8eb01e4eba71ad17231e8a5a9f5e2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c56fc035_0018ee55",
+        "filename": "board/primus/ps2.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2022-03-29T16:05:28Z",
+      "side": 1,
+      "message": "data_count++",
+      "range": {
+        "startLine": 74,
+        "startChar": 12,
+        "endLine": 74,
+        "endChar": 22
+      },
+      "revId": "3e851efd3a8eb01e4eba71ad17231e8a5a9f5e2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "380f7da4_08b2a277",
+        "filename": "board/primus/ps2.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2022-03-29T16:05:28Z",
+      "side": 1,
+      "message": "It looks like there is no error during the read. I\u0027m unsure if this could happen. Is it possible to do the basic data check and clean it after you have get the id?",
+      "range": {
+        "startLine": 102,
+        "startChar": 41,
+        "endLine": 102,
+        "endChar": 57
+      },
+      "revId": "3e851efd3a8eb01e4eba71ad17231e8a5a9f5e2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
