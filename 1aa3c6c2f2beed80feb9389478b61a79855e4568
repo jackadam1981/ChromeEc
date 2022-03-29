@@ -16,6 +16,24 @@
       "message": "Seems like Nivviks isn\u0027t affected by this because the charger and TCPC are the same chip there!",
       "revId": "1aa3c6c2f2beed80feb9389478b61a79855e4568",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19e7b3fb_274097fd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-03-29T05:34:47Z",
+      "side": 1,
+      "message": "That actually doesn\u0027t make sense, since the charger and TCPC functions are handled by different drivers. Nivviks may be affected by this too.",
+      "parentUuid": "ad290148_fa687dc7",
+      "revId": "1aa3c6c2f2beed80feb9389478b61a79855e4568",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
