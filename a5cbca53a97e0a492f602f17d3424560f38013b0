@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2abc659f_24c609bf",
+        "filename": "zephyr/shim/src/hooks.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-03-29T03:46:21Z",
+      "side": 1,
+      "message": "I see both config check \"#if CONFIG...\" and \"#ifdef CONFIG...\" are used in zephyr upstream code. Is there any coding convention what to use, or just personal preference?",
+      "range": {
+        "startLine": 210,
+        "startChar": 0,
+        "endLine": 210,
+        "endChar": 4
+      },
+      "revId": "a5cbca53a97e0a492f602f17d3424560f38013b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
