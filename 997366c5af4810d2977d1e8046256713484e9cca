@@ -87,6 +87,24 @@
       "parentUuid": "1715c985_94465388",
       "revId": "997366c5af4810d2977d1e8046256713484e9cca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b97ed73_7cce14a4",
+        "filename": "zephyr/test/drivers/src/ppc_sn5s330.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2022-03-29T22:22:29Z",
+      "side": 1,
+      "message": "being dealt with in crrev.com/c/3558910",
+      "parentUuid": "933c2b16_62aad525",
+      "revId": "997366c5af4810d2977d1e8046256713484e9cca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
