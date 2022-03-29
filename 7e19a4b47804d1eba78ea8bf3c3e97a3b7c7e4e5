@@ -65,6 +65,48 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6af1bc45_a5753aba",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1456367
+      },
+      "writtenOn": "2022-03-29T16:45:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a0068273_2defacda",
+      "revId": "7e19a4b47804d1eba78ea8bf3c3e97a3b7c7e4e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92b623c6_dcbe508b",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1456367
+      },
+      "writtenOn": "2022-03-29T16:45:28Z",
+      "side": 1,
+      "message": "As I understand chrome systems doesn\u0027t have support for vpro feature from the host side, so on connecting the vpro dock to the host that doesn\u0027t have the support and configuring the redriver with the vpro support is causing the s0ix issue.\nThis issue is observed even on Voxel.\nI think even other redriver might need this change if it has the vpro support, but do not see this support added in other drivers code.\n\nI\u0027m discussing with internal team for more clarification. I will get back on this once I get more information.",
+      "parentUuid": "7d433e82_a2bafdea",
+      "range": {
+        "startLine": 158,
+        "startChar": 8,
+        "endLine": 158,
+        "endChar": 35
+      },
+      "revId": "7e19a4b47804d1eba78ea8bf3c3e97a3b7c7e4e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3847e1b1_d6f1e16e",
@@ -78,6 +120,30 @@
       "writtenOn": "2022-03-29T00:45:57Z",
       "side": 1,
       "message": "did you want this override to be B0 specific or should\nit also be relevant to B1, etc.?",
+      "range": {
+        "startLine": 238,
+        "startChar": 7,
+        "endLine": 238,
+        "endChar": 33
+      },
+      "revId": "7e19a4b47804d1eba78ea8bf3c3e97a3b7c7e4e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d30951dc_ac50c3bc",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1456367
+      },
+      "writtenOn": "2022-03-29T16:45:28Z",
+      "side": 1,
+      "message": "I wanted this override to be b0 specific for vpro. B0 is set when vpro dock is connected.",
+      "parentUuid": "3847e1b1_d6f1e16e",
       "range": {
         "startLine": 238,
         "startChar": 7,
