@@ -16,6 +16,52 @@
       "message": "Use `if (IS_ENABLED(CONFIG_DISABLE_VPRO_SUPPORT))`. (Or just use `IS_ENABLED` directly the `if`s below.",
       "revId": "7e19a4b47804d1eba78ea8bf3c3e97a3b7c7e4e5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8780e97e_e64d2c39",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-03-29T00:45:57Z",
+      "side": 1,
+      "message": "* this appears to be a device specific config. if so, please use the CONFIG_USBC_RETIMER_INTEL_BB prefix for this new config option\n* add config option to include/config.h\n* add config option to zephyr Kconfig.",
+      "range": {
+        "startLine": 158,
+        "startChar": 8,
+        "endLine": 158,
+        "endChar": 35
+      },
+      "revId": "7e19a4b47804d1eba78ea8bf3c3e97a3b7c7e4e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3847e1b1_d6f1e16e",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-03-29T00:45:57Z",
+      "side": 1,
+      "message": "did you want this override to be B0 specific or should\nit also be relevant to B1, etc.?",
+      "range": {
+        "startLine": 238,
+        "startChar": 7,
+        "endLine": 238,
+        "endChar": 33
+      },
+      "revId": "7e19a4b47804d1eba78ea8bf3c3e97a3b7c7e4e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
