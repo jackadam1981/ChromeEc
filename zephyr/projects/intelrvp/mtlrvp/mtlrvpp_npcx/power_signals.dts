@@ -1,0 +1,98 @@
+/* Copyright 2022 The Chromium OS Authors. All rights reserved.
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+/ {
+	chosen {
+		intel-ap-pwrseq,espi = &espi0;
+	};
+
+	common-pwrseq {
+		compatible = "intel,ap-pwrseq";
+
+		sys-pwrok-delay = <3>;
+		all-sys-pwrgd-timeout = <0>;
+		pwrseq-espi-max-freq = <25>;
+	};
+
+	/* Inputs */
+	rsmrst_pwrgd {
+		compatible = "intel,ap-pwrseq-gpio";
+		dbg-label = "RSMRST power good from regulator";
+		enum-name = "PWR_RSMRST";
+		gpios = <&gpio6 6 GPIO_INPUT>; /* 1.8V */
+		interrupt-flags = <GPIO_INT_EDGE_BOTH>;
+	};
+
+	/* Outputs */
+	ec-ds3-r {
+		compatible = "intel,ap-pwrseq-gpio";
+		dbg-label = "Enable A-rails"
+		enum-name = "PWR_EN_DS3";
+		gpios = <&gpioc 4 GPIO_OUTPUT_LOW>;
+		output;
+	};
+	pm-rsmrst-r-n {
+		compatible = "intel,ap-pwrseq-gpio";
+		dbg-label = "RSMRST output to PCH";
+		enum-name = "PWR_EC_PCH_RSMRST";
+		gpios = <&gpioa 4 GPIO_OUTPUT_LOW>; /* 1.8V */
+		output;
+	};
+
+	pwr-slp-s0-l {
+		compatible = "intel,ap-pwrseq-gpio";
+		dbg-label = "SLP_S0_L input from PCH";
+		enum-name = "PWR_SLP_S0";
+		gpios = <&gpio9 7 GPIO_ACTIVE_LOW>;
+		interrupt-flags = <GPIO_INT_EDGE_BOTH>;
+	};
+	pwr-slp-s3-l {
+		compatible = "intel,ap-pwrseq-gpio";
+		dbg-label = "SLP_S3_L input from PCH";
+		enum-name = "PWR_SLP_S3";
+		gpios = <&gpioa 5 GPIO_ACTIVE_LOW>;
+		interrupt-flags = <GPIO_INT_EDGE_BOTH>;
+	};
+	pwr-pch-pwrok {
+		compatible = "intel,ap-pwrseq-gpio";
+		dbg-label = "PCH_PWROK output to PCH";
+		enum-name = "PWR_PCH_PWROK";
+		gpios = <&gpio7 2 GPIO_OPEN_DRAIN>;
+		output;
+	};
+	pwr-ec-pch-sys-pwrok {
+		compatible = "intel,ap-pwrseq-gpio";
+		dbg-label = "SYS_PWROK output to PCH";
+		enum-name = "PWR_EC_PCH_SYS_PWROK";
+		gpios = <&gpio3 7 0>;
+		output;
+	};
+	pwr-sys-rst-l {
+		compatible = "intel,ap-pwrseq-gpio";
+		dbg-label = "SYS_RESET# output to PCH";
+		enum-name = "PWR_SYS_RST";
+		gpios = <&gpioc 5 (GPIO_ACTIVE_LOW|GPIO_OPEN_DRAIN)>;
+		output;
+	};
+	pwr-slp-s4 {
+		compatible = "intel,ap-pwrseq-vw";
+		dbg-label = "SLP_S4 virtual wire input from PCH";
+		enum-name = "PWR_SLP_S4";
+		virtual-wire = "ESPI_VWIRE_SIGNAL_SLP_S4";
+		vw-invert;
+	};
+	pwr-slp-s5 {
+		compatible = "intel,ap-pwrseq-vw";
+		dbg-label = "SLP_S5 virtual wire input from PCH";
+		enum-name = "PWR_SLP_S5";
+		virtual-wire = "ESPI_VWIRE_SIGNAL_SLP_S5";
+		vw-invert;
+	};
+	pwr-all-sys-pwrgd {
+		compatible = "intel,ap-pwrseq-external";
+		dbg-label = "Combined all power good";
+		enum-name = "PWR_ALL_SYS_PWRGD";
+	};
+};

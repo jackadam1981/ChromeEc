@@ -7,6 +7,7 @@
 #include "power/meteorlake.h"
 
 /******************************************************************************/
+#if 0
 /* PWROK signal configuration */
 /*
  * On MTLRVP, SYS_PWROK_EC is an output controlled by EC and uses ALL_SYS_PWRGD
@@ -26,3 +27,18 @@ const struct intel_x86_pwrok_signal pwrok_signal_deassert_list[] = {
 	},
 };
 const int pwrok_signal_deassert_count = ARRAY_SIZE(pwrok_signal_deassert_list);
+#endif
+
+void board_ap_power_action_g3_s5(void)
+{
+	LOG_DBG("Turning on PWR_EN_DS3");
+	power_signal_set(PWR_EN_DS3, 1);
+
+	power_wait_signals_timeout(IN_PGOOD_ALL_CORE,
+		AP_PWRSEQ_DT_VALUE(wait_signal_timeout));
+}
+
+int board_ap_power_assert_pch_power_ok(void)
+{
+	return 0;
+}
