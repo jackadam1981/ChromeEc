@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "caba8129_b4caa3cb",
+        "filename": "util/ectool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 7924,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-03-29T17:05:40Z",
+      "side": 0,
+      "message": "BTW, a single bad value prevents other fields from being displayed. I think we should print something like:\n\n  printf(\"  Present voltage %s%d mV\\n\",\n         is_battery_range(val) ? \" \" : \"(Bad value)\", val);\n\nand continue to the next field.",
+      "range": {
+        "startLine": 7924,
+        "startChar": 6,
+        "endLine": 7924,
+        "endChar": 22
+      },
+      "revId": "35e833c0ff3b1e94a1b3f5efae054fde7286df9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
