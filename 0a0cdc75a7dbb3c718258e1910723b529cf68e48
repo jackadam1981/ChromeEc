@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b8a3a3bc_fe36ea80",
+        "filename": "test/panic_data.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-03-29T16:00:45Z",
+      "side": 1,
+      "message": "You are right! I got confused and thought we were masking also the register value inside the assert.",
+      "parentUuid": "a15e4478_ef726304",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 56
+      },
+      "revId": "0a0cdc75a7dbb3c718258e1910723b529cf68e48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cbae65f5_f23e1237",
@@ -79,6 +103,24 @@
       "side": 1,
       "message": "If test needs to reboot EC then it should be a multi-state test. In this case we need a task which will run test in desired state after reboot. State is saved in backup RAM.\n\nIf test doesn\u0027t reboot EC then everything can be done inside `run_test()`",
       "parentUuid": "cbae65f5_f23e1237",
+      "revId": "0a0cdc75a7dbb3c718258e1910723b529cf68e48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a6aceb4_d5ee1c12",
+        "filename": "test/panic_data.tasklist",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-03-29T16:00:45Z",
+      "side": 1,
+      "message": "Thanks for the clarification!",
+      "parentUuid": "a6f8eac4_965a622b",
       "revId": "0a0cdc75a7dbb3c718258e1910723b529cf68e48",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
