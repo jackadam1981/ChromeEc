@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1664d1ea_dcf79e71",
+        "filename": "zephyr/drivers/cros_led/led_policy.c",
+        "patchSetId": 33
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-03-29T23:01:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ba7f8c8b_81ba5d86",
+      "range": {
+        "startLine": 150,
+        "startChar": 30,
+        "endLine": 150,
+        "endChar": 56
+      },
+      "revId": "ae93dc34a7c475e7f07e2a3f677106592a62700b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8e5a2af1_f6a98c5b",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-03-29T22:55:58Z",
       "side": 1,
       "message": "Can also be removed.",
+      "range": {
+        "startLine": 152,
+        "startChar": 25,
+        "endLine": 152,
+        "endChar": 50
+      },
+      "revId": "ae93dc34a7c475e7f07e2a3f677106592a62700b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dfb29428_5c1373a8",
+        "filename": "zephyr/drivers/cros_led/led_policy.c",
+        "patchSetId": 33
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-03-29T23:01:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8e5a2af1_f6a98c5b",
       "range": {
         "startLine": 152,
         "startChar": 25,
