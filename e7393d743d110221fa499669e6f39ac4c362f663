@@ -38,6 +38,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "011d9914_06f9f65d",
+        "filename": "zephyr/include/ap_power/ap_power_interface.h",
+        "patchSetId": 23
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-03-29T04:18:59Z",
+      "side": 1,
+      "message": "From https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/zephyr/zephyr_shim.md#Configuration\nusing CONFIG_PLATFORM_EC is only for shim code and EC (mostly legacy) s/w features.\nSo maybe this should follow the pattern that\u0027s already there and use CONFIG_AP_PWRSEQ_S0IX",
+      "revId": "e7393d743d110221fa499669e6f39ac4c362f663",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f06cc4ed_dd309703",
         "filename": "zephyr/shim/include/power_host_sleep.h",
         "patchSetId": 23
@@ -49,6 +66,69 @@
       "writtenOn": "2022-03-24T19:59:20Z",
       "side": 1,
       "message": "is entire data in this file needed in this CL?",
+      "revId": "e7393d743d110221fa499669e6f39ac4c362f663",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21381a87_d90c9826",
+        "filename": "zephyr/shim/include/power_host_sleep.h",
+        "patchSetId": 23
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-03-29T04:18:59Z",
+      "side": 1,
+      "message": "I guess we\u0027re going to have to figure long term how to incorporate all the values from ec_command.h eventually, just so that we don\u0027t have to make selective\ncopies of them all.\nCan you add\n\nTODO: Once ec_commands.h is available in Zephyr code, remove this.",
+      "range": {
+        "startLine": 14,
+        "startChar": 8,
+        "endLine": 14,
+        "endChar": 19
+      },
+      "revId": "e7393d743d110221fa499669e6f39ac4c362f663",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4002191f_c7a96de8",
+        "filename": "zephyr/shim/src/power_host_sleep_api.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-03-29T04:18:59Z",
+      "side": 1,
+      "message": "It would be good to split the host sleep support changes away from the S0ix specific\nchanges so it is clear they are 2 separate changes.",
+      "revId": "e7393d743d110221fa499669e6f39ac4c362f663",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c005f43c_9350667d",
+        "filename": "zephyr/subsys/ap_pwrseq/Kconfig",
+        "patchSetId": 23
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-03-29T04:18:59Z",
+      "side": 1,
+      "message": "Same comment about the name, maybe should AP_PWRSEQ_HOST_SLEEP",
+      "range": {
+        "startLine": 64,
+        "startChar": 7,
+        "endLine": 64,
+        "endChar": 38
+      },
       "revId": "e7393d743d110221fa499669e6f39ac4c362f663",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -72,6 +152,40 @@
         "endLine": 52,
         "endChar": 34
       },
+      "revId": "e7393d743d110221fa499669e6f39ac4c362f663",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6703ee3e_7f2b452c",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 474,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-03-29T04:18:59Z",
+      "side": 1,
+      "message": "So this call will invoke a deferred function (5 ms) delay.\nThis is called on every new state, and a new request to schedule the function\nwill be ignore (the delay on the first request is honoured).\nMaybe you need k_work_reschedule instead. I don\u0027t quite understand the\nbackground here, so I can\u0027t claim to know what the right thing to do is.\nI do observe that the deferred function does check the state at the time it gets called, so maybe the deferred function only does something under certain circumstances, but it is being invokved every time the state changes.\nMaybe it should be more selective, and part of the state machine handling (i.e\nat the appropriate states, invoke the deferred function.",
+      "revId": "e7393d743d110221fa499669e6f39ac4c362f663",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef0ce190_0b8db697",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 478,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-03-29T04:18:59Z",
+      "side": 1,
+      "message": "Rather than putting this check in the state machine loop, should it go into\nan intermediate state? That way all the state processing is contained, rather than added to this loop.",
       "revId": "e7393d743d110221fa499669e6f39ac4c362f663",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
