@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d6c1976_023d6ef9",
+        "filename": "board/prism/board.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-03-29T03:53:04Z",
+      "side": 1,
+      "message": "how about using\nstruct rgbkbd_coord\nhere?\n\nis there a case where uint8_t makes processing\nmore convenient?",
+      "range": {
+        "startLine": 106,
+        "startChar": 6,
+        "endLine": 106,
+        "endChar": 13
+      },
+      "revId": "90275c86c15bd442c22657691c21d42f3d8c7eb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1da713e3_8dc63010",
+        "filename": "common/rgb_keyboard.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-03-29T03:53:04Z",
+      "side": 1,
+      "message": "would help to store the index instead of pointer?\nrgbkbd_table[k++] \u003d i\n\nthat\u0027ll cut your RAM footprint by 4x since i think a uint8_t is sufficient.\nyou\u0027ll need to define an \"empty\" marker like 0xff\ninstead of relying on NULL and initialize the remaining\nentries to 0xff if key-LED map is short.",
+      "range": {
+        "startLine": 208,
+        "startChar": 4,
+        "endLine": 209,
+        "endChar": 42
+      },
+      "revId": "90275c86c15bd442c22657691c21d42f3d8c7eb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06d54b58_518998d5",
+        "filename": "include/rgb_keyboard.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-03-29T03:53:04Z",
+      "side": 1,
+      "message": "(x)",
+      "range": {
+        "startLine": 98,
+        "startChar": 28,
+        "endLine": 98,
+        "endChar": 29
+      },
+      "revId": "90275c86c15bd442c22657691c21d42f3d8c7eb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
