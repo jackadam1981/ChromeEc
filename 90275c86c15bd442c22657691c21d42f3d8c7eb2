@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "27f3f8ff_16aab103",
+        "filename": "board/prism/board.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-03-29T16:36:18Z",
+      "side": 1,
+      "message": "It allows comparison using binary operator in rgbkbd_init_lookup_table.",
+      "parentUuid": "2d6c1976_023d6ef9",
+      "range": {
+        "startLine": 106,
+        "startChar": 6,
+        "endLine": 106,
+        "endChar": 13
+      },
+      "revId": "90275c86c15bd442c22657691c21d42f3d8c7eb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1da713e3_8dc63010",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eaaf0ef2_6758e017",
+        "filename": "common/rgb_keyboard.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-03-29T16:36:18Z",
+      "side": 1,
+      "message": "Done.\n\n\u003e  i think a uint8_t is sufficient.\n\nOn the largest keyboard (125 keys, with numpad), we would allow only a few extra LEDs. So, this scheme is tight. We can move up to uint16_t when we find the table limit is too small.",
+      "parentUuid": "1da713e3_8dc63010",
+      "range": {
+        "startLine": 208,
+        "startChar": 4,
+        "endLine": 209,
+        "endChar": 42
+      },
+      "revId": "90275c86c15bd442c22657691c21d42f3d8c7eb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "06d54b58_518998d5",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-03-29T03:53:04Z",
       "side": 1,
       "message": "(x)",
+      "range": {
+        "startLine": 98,
+        "startChar": 28,
+        "endLine": 98,
+        "endChar": 29
+      },
+      "revId": "90275c86c15bd442c22657691c21d42f3d8c7eb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4caf00e_749efe55",
+        "filename": "include/rgb_keyboard.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-03-29T16:36:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "06d54b58_518998d5",
       "range": {
         "startLine": 98,
         "startChar": 28,
