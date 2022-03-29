@@ -39,6 +39,24 @@
       "message": "Do we need to break here?\n\nI am looking at the lines above that were removed. In the previous implementation if the line matched multiple regexes I think we would count all of them. Maybe it was a mistake and we should have used `elif` also before.",
       "revId": "41fee68954bad617960d318a13407cbc94b31147",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "54b5db35_3069b661",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2022-03-29T09:42:44Z",
+      "side": 1,
+      "message": "This process one console line per one call. Another point is that we are using re.match(). It means that we are checking for a match only at the beginning of the string. That said, it\u0027s not possible to prepare a string which matches eg. ALL_TESTS_FAILED_REGEX and ASSERTION_FAILURE_REGEX at the same time, so I think that we can safely assume that only one regex will match.",
+      "parentUuid": "f4d88eef_edb758dc",
+      "revId": "41fee68954bad617960d318a13407cbc94b31147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
