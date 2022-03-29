@@ -90,12 +90,6 @@
 		ap_ec_spi_cs_l {
 			gpios = <&gpio5 3 GPIO_INPUT_PULL_DOWN>;
 		};
-/*TODO: enable detachable base
-		base_det_l {
-			gpios = <&gpio3 7 GPIO_INPUT>;
-			label = "BASE_DET_L";
-		};
-*/
 		gpio_accel_gyro_int_l: accel_gyro_int_l {
 			gpios = <&gpioa 0 GPIO_INPUT>;
 		};
@@ -147,16 +141,15 @@
 			gpios = <&gpiob 6 GPIO_OUTPUT_LOW>;
 			enum-name = "GPIO_ENABLE_BACKLIGHT";
 		};
-/*TODO: enable base
-		en_base {
+		gpio_en_base: en_base {
 			gpios = <&gpio0 4 GPIO_OUTPUT_LOW>;
-			label = "EN_BASE";
 		};
-		pogo_vbus_present {
+		gpio_pogo_vbus_present: pogo_vbus_present {
 			gpios = <&gpio6 2 GPIO_INPUT>;
-			label = "POGO_VBUS_PRESENT";
 		};
-*/
+		gpio_base_det_l: base_det_l {
+			gpios = <&gpio3 7 GPIO_INPUT>;
+		};
 		gpio_usb_c0_pd_rst_l: usb_c0_pd_rst_l {
 			gpios = <&gpiof 1 GPIO_ODR_HIGH>;
 		};

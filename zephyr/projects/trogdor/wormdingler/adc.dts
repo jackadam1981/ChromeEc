@@ -38,6 +38,15 @@
 			 */
 			mul = <124000>;
 		};
+		base_det {
+			label = "BASE_DET";
+			enum-name = "ADC_BASE_DET";
+			/*
+			 *channel 6 is an unimplemented ADC slot, change it to 5
+			 *at board runtime, so that we can configure this PIN as
+			 *an interrupt PIN.
+			 */
+			io-channels = <&adc0 6>;
+		};
 	};
-
 };

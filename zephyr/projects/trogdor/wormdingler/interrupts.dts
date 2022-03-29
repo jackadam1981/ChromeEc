@@ -107,5 +107,10 @@
 			flags = <GPIO_INT_EDGE_FALLING>;
 			handler = "icm42607_interrupt";
 		};
+		int_base_det: base_det {
+			irq-pin = <&gpio_base_det_l>;
+			flags = <GPIO_INT_EDGE_BOTH>;
+			handler = "base_detect_interrupt";
+		};
 	};
 };
