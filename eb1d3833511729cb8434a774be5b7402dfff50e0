@@ -16,6 +16,24 @@
       "message": "This configuration behaves weirdly on my Nereid, and I can\u0027t tell if it\u0027s an implementation bug or just tuning of the values that needs to be done. The LED seems to rapidly cycle between yellow and white at what looks like constant brightness, with a little flash of blue in there as well (it does turn off for a moment, so that part seems okay).",
       "revId": "eb1d3833511729cb8434a774be5b7402dfff50e0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c6c479d_6ae42fff",
+        "filename": "zephyr/projects/nissa/leds.dts",
+        "patchSetId": 13
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-03-29T23:32:13Z",
+      "side": 1,
+      "message": "Hmm it looks fine on the Nivviks, and my Nereid LED is broken, so it\u0027s hard for me to check.\nFeel free to experiment with some values to tune the colours.\n\nAlso make sure you have the latest cherry-pick, I did fix a bug in the multi-colour cycle that would cause this behaviour.",
+      "parentUuid": "98619f88_b11d7775",
+      "revId": "eb1d3833511729cb8434a774be5b7402dfff50e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
