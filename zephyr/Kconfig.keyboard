@@ -252,3 +252,21 @@ config PLATFORM_EC_VOLUME_BUTTONS
 
 	  Your board must define GPIO_VOLUME_UP_L and GPIO_VOLUME_DOWN_L in
 	  gpio_map.h
+
+config PLATFORM_EC_VOLUME_BUTTONS
+	bool "Board has volume-up and volume-down buttons"
+	help
+	  Enable this if the board has physical buttons for the volume controls.
+	  These are buttons controlled by GPIOs and are not part of the keyboard
+	  matrix.
+
+config PLATFORM_EC_DETACHABLE_BASE
+	bool "Compile detachable base support"
+	help
+	  Enabled on all boards that have a detachable base.
+
+config PLATFORM_EC_BASE_ATTACHED_SWITCH
+	bool "Add a virtual switch to indicate when detachable device state"
+	depends on PLATFORM_EC_DETACHABLE_BASE
+	help
+	  Enabled on all boards that have a detachable base.
