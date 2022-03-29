@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a15e4478_ef726304",
+        "filename": "test/panic_data.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2022-03-29T15:39:51Z",
+      "side": 1,
+      "message": "Actually the test checks if upper 16 bits are zero. Updated comment.",
+      "parentUuid": "8e488d0d_89df9f80",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 56
+      },
+      "revId": "0a0cdc75a7dbb3c718258e1910723b529cf68e48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cbae65f5_f23e1237",
@@ -37,6 +61,24 @@
       "writtenOn": "2022-03-28T18:19:21Z",
       "side": 1,
       "message": "Not a code review comment, but only a question for my personal understanding of the tasklist.\n\nHow do we decide which test should run inside a task Vs doing everything directly inside `run_test`? What\u0027s the difference between the two?",
+      "revId": "0a0cdc75a7dbb3c718258e1910723b529cf68e48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6f8eac4_965a622b",
+        "filename": "test/panic_data.tasklist",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2022-03-29T15:39:51Z",
+      "side": 1,
+      "message": "If test needs to reboot EC then it should be a multi-state test. In this case we need a task which will run test in desired state after reboot. State is saved in backup RAM.\n\nIf test doesn\u0027t reboot EC then everything can be done inside `run_test()`",
+      "parentUuid": "cbae65f5_f23e1237",
       "revId": "0a0cdc75a7dbb3c718258e1910723b529cf68e48",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
