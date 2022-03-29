@@ -22,6 +22,30 @@
       },
       "revId": "2563bca4fdf0e615c4630621eaa7cdae330f0477",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2173c276_56fb7ac3",
+        "filename": "zephyr/Kconfig.retimer",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-03-29T20:20:31Z",
+      "side": 1,
+      "message": "Yes, I\u0027d say that is generally the scheme we prefer to follow.  So we\u0027d add the CONFIG to turn on vPro and currently nothing would enable it.  This will change all other TBT Chromebooks behavior as well as redrix, but that sounds like the correct thing to do based on the bug discussion",
+      "parentUuid": "825cdeeb_9edc1173",
+      "range": {
+        "startLine": 42,
+        "startChar": 7,
+        "endLine": 42,
+        "endChar": 61
+      },
+      "revId": "2563bca4fdf0e615c4630621eaa7cdae330f0477",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
