@@ -215,4 +215,14 @@
 			&lvol_iob2 /* EC_I2C_SENSOR_SDA */
 		>;
 	};
+
+	hibernate-wake-pins {
+		compatible = "cros-ec,hibernate-wake-pins";
+		wakeup-irqs = <
+			&int_ac_present
+			&int_power_button
+			&int_lid_open
+			&int_ec_rst
+		>;
+	};
 };
