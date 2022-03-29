@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee9de0aa_95a22fc4",
+        "filename": "zephyr/emul/tcpc/emul_tcpci_partner_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-03-29T14:00:40Z",
+      "side": 1,
+      "message": "Should the refactor from `test_malloc` and `test_free` to `malloc` and `free` be a separate CL?",
+      "range": {
+        "startLine": 30,
+        "startChar": 11,
+        "endLine": 30,
+        "endChar": 17
+      },
+      "revId": "e38bb46b16fb79c15ce12fc04f2acaa707d2e576",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
