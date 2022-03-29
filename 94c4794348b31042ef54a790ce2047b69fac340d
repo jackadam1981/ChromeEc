@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4feba810_94355a2e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2022-03-29T22:16:19Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "facddc2e_d882df43",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 13
+      },
+      "revId": "94c4794348b31042ef54a790ce2047b69fac340d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "23d8f85d_87b84b5a",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-03-29T21:48:09Z",
       "side": 1,
       "message": "They should be around this test not the vbus one. Sorry for the confusion.",
+      "range": {
+        "startLine": 317,
+        "startChar": 18,
+        "endLine": 317,
+        "endChar": 46
+      },
+      "revId": "94c4794348b31042ef54a790ce2047b69fac340d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d49c2332_7e8e2587",
+        "filename": "zephyr/test/drivers/src/ppc_sn5s330.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2022-03-29T22:16:19Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "23d8f85d_87b84b5a",
       "range": {
         "startLine": 317,
         "startChar": 18,
