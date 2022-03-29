@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7bc9731a_217a0843",
+        "filename": "zephyr/drivers/cros_led/led_policy.c",
+        "patchSetId": 31
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-03-29T00:47:10Z",
+      "side": 1,
+      "message": "May as well actually declare it as enum led_driver_type.",
+      "range": {
+        "startLine": 150,
+        "startChar": 1,
+        "endLine": 150,
+        "endChar": 8
+      },
+      "revId": "d854b9fad6e7799a03d433e7583fcb8f30656aaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0dbeb86_79c18f57",
+        "filename": "zephyr/drivers/cros_led/led_policy.c",
+        "patchSetId": 31
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-03-29T00:47:10Z",
+      "side": 1,
+      "message": "enum ec_led_id?",
+      "range": {
+        "startLine": 152,
+        "startChar": 1,
+        "endLine": 152,
+        "endChar": 8
+      },
+      "revId": "d854b9fad6e7799a03d433e7583fcb8f30656aaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1c9ec20_01b320d1",
+        "filename": "zephyr/drivers/cros_led/led_policy.c",
+        "patchSetId": 31
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-03-29T00:47:10Z",
+      "side": 1,
+      "message": "`\"Unknown driver: %d\", lp-\u003edriver` so it\u0027s easier to tell what value is problematic?",
+      "revId": "d854b9fad6e7799a03d433e7583fcb8f30656aaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

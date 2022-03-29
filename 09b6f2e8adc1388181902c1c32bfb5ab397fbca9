@@ -340,6 +340,24 @@
       "parentUuid": "32f8fcc8_9cd45c5f",
       "revId": "09b6f2e8adc1388181902c1c32bfb5ab397fbca9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b46cca8_f6c631a0",
+        "filename": "zephyr/dts/bindings/led/cros-ec,multi-pwm-leds.yaml",
+        "patchSetId": 28
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-03-29T00:47:10Z",
+      "side": 1,
+      "message": "Much clearer, thank you. :)",
+      "parentUuid": "c7b86580_d355e518",
+      "revId": "09b6f2e8adc1388181902c1c32bfb5ab397fbca9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
