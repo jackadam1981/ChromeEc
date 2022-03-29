@@ -145,6 +145,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "675d59aa_daf7f625",
+        "filename": "board/kinox/gpio.inc",
+        "patchSetId": 6
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1286280
+      },
+      "writtenOn": "2022-03-29T03:14:15Z",
+      "side": 1,
+      "message": "Hi Zhuohao,\nDo you have any other concerns?",
+      "parentUuid": "a3716c03_d844c43e",
+      "range": {
+        "startLine": 61,
+        "startChar": 48,
+        "endLine": 61,
+        "endChar": 60
+      },
+      "revId": "89e0f848b2e4acba84942aafebb3f6c72b6600e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5114793f_13a56efa",
         "filename": "board/kinox/gpio.inc",
         "patchSetId": 6
