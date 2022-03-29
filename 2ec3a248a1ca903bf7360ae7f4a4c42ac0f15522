@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6bed6448_ac162d87",
+        "filename": "zephyr/projects/corsola/usbc_kingler.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-03-29T19:31:54Z",
+      "side": 1,
+      "message": "Add comment:\n\n TODO(b/227359727): krabby: convert USB-C configuration to device tree",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 11
+      },
+      "revId": "2ec3a248a1ca903bf7360ae7f4a4c42ac0f15522",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09e7c375_f483532b",
+        "filename": "zephyr/projects/trogdor/lazor/usbc.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-03-29T19:31:54Z",
+      "side": 1,
+      "message": "Add comment:\nTODO(b/227359762): lazor: move UBC-C configuration into the devicetree",
+      "revId": "2ec3a248a1ca903bf7360ae7f4a4c42ac0f15522",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
