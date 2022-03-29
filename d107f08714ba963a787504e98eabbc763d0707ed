@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "45d6daaf_a45cc450",
+        "filename": "board/primus/ps2.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2022-03-29T10:20:01Z",
+      "side": 1,
+      "message": "Remove it since we don\u0027t need to use queue.",
+      "parentUuid": "7135493d_638cc403",
+      "range": {
+        "startLine": 21,
+        "startChar": 49,
+        "endLine": 21,
+        "endChar": 51
+      },
+      "revId": "d107f08714ba963a787504e98eabbc763d0707ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "231abe77_c4185f5b",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-03-29T08:59:12Z",
       "side": 1,
       "message": "I think it would be better to do the error handling like the queue full. Maybe you can print some error messages if the queue is full?",
+      "range": {
+        "startLine": 68,
+        "startChar": 1,
+        "endLine": 68,
+        "endChar": 15
+      },
+      "revId": "d107f08714ba963a787504e98eabbc763d0707ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "15db0157_68888ec1",
+        "filename": "board/primus/ps2.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2022-03-29T10:20:01Z",
+      "side": 1,
+      "message": "Use this to prevent stack overflow. \n/* Prevent stack overflow */\nif (data_count \u003e ARRAY_SIZE(queue_data))\n\tdata_count \u003d 0;",
+      "parentUuid": "231abe77_c4185f5b",
       "range": {
         "startLine": 68,
         "startChar": 1,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b36246f_49d1d91e",
+        "filename": "board/primus/ps2.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2022-03-29T10:20:01Z",
+      "side": 1,
+      "message": "There will be three bytes that will send from trackpoint.",
+      "parentUuid": "fbd05b10_121b1215",
+      "range": {
+        "startLine": 93,
+        "startChar": 9,
+        "endLine": 93,
+        "endChar": 20
+      },
+      "revId": "d107f08714ba963a787504e98eabbc763d0707ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aa1d11f4_f628f724",
@@ -100,6 +172,30 @@
       "writtenOn": "2022-03-29T08:59:12Z",
       "side": 1,
       "message": "will this make the stack overflow?",
+      "range": {
+        "startLine": 98,
+        "startChar": 2,
+        "endLine": 98,
+        "endChar": 13
+      },
+      "revId": "d107f08714ba963a787504e98eabbc763d0707ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ce463ef_06b73654",
+        "filename": "board/primus/ps2.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2022-03-29T10:20:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aa1d11f4_f628f724",
       "range": {
         "startLine": 98,
         "startChar": 2,
