@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b9c9fcd_0ba88b1c",
+        "filename": "board/lantis/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2022-03-29T06:00:25Z",
+      "side": 1,
+      "message": "Can we use a function call to define this? such as\nbool is_led_new(void) and add a description why we using those fw_config?",
+      "range": {
+        "startLine": 197,
+        "startChar": 7,
+        "endLine": 200,
+        "endChar": 22
+      },
+      "revId": "6f90d4215c6966bf2627d2c4770d343247a42dbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
