@@ -55,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9cee5f2e_f218f2e2",
+        "filename": "zephyr/include/ap_power/ap_power_interface.h",
+        "patchSetId": 23
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-03-29T22:43:03Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "011d9914_06f9f65d",
+      "revId": "e7393d743d110221fa499669e6f39ac4c362f663",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f06cc4ed_dd309703",
         "filename": "zephyr/shim/include/power_host_sleep.h",
         "patchSetId": 23
@@ -95,6 +113,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f51e1136_f60d9ce3",
+        "filename": "zephyr/shim/include/power_host_sleep.h",
+        "patchSetId": 23
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-03-29T22:43:03Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "21381a87_d90c9826",
+      "range": {
+        "startLine": 14,
+        "startChar": 8,
+        "endLine": 14,
+        "endChar": 19
+      },
+      "revId": "e7393d743d110221fa499669e6f39ac4c362f663",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4002191f_c7a96de8",
         "filename": "zephyr/shim/src/power_host_sleep_api.c",
         "patchSetId": 23
@@ -112,6 +154,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a3b07952_9073508d",
+        "filename": "zephyr/shim/src/power_host_sleep_api.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-03-29T22:43:03Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "4002191f_c7a96de8",
+      "revId": "e7393d743d110221fa499669e6f39ac4c362f663",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c005f43c_9350667d",
         "filename": "zephyr/subsys/ap_pwrseq/Kconfig",
         "patchSetId": 23
@@ -123,6 +183,30 @@
       "writtenOn": "2022-03-29T04:18:59Z",
       "side": 1,
       "message": "Same comment about the name, maybe should AP_PWRSEQ_HOST_SLEEP",
+      "range": {
+        "startLine": 64,
+        "startChar": 7,
+        "endLine": 64,
+        "endChar": 38
+      },
+      "revId": "e7393d743d110221fa499669e6f39ac4c362f663",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e71436f8_8d17c8ae",
+        "filename": "zephyr/subsys/ap_pwrseq/Kconfig",
+        "patchSetId": 23
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-03-29T22:43:03Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c005f43c_9350667d",
       "range": {
         "startLine": 64,
         "startChar": 7,
@@ -186,6 +270,24 @@
       "writtenOn": "2022-03-29T04:18:59Z",
       "side": 1,
       "message": "Rather than putting this check in the state machine loop, should it go into\nan intermediate state? That way all the state processing is contained, rather than added to this loop.",
+      "revId": "e7393d743d110221fa499669e6f39ac4c362f663",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f457dd7f_3d754af4",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 478,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-03-29T22:43:03Z",
+      "side": 1,
+      "message": "Oops, this shouldn\u0027t be here, rebase kept this one here though it\u0027s moved to S5G3 state. Will remove this.",
+      "parentUuid": "ef0ce190_0b8db697",
       "revId": "e7393d743d110221fa499669e6f39ac4c362f663",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
