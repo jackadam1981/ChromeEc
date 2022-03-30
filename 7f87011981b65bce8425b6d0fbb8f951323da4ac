@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21be9971_5628b581",
+        "filename": "docs/zephyr/zephyr_usba.md",
+        "patchSetId": 41
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-03-30T17:04:55Z",
+      "side": 1,
+      "message": "Add backticks around this symbol.",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 23
+      },
+      "revId": "7f87011981b65bce8425b6d0fbb8f951323da4ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3cd5f85d_80a4f46a",
+        "filename": "docs/zephyr/zephyr_usba.md",
+        "patchSetId": 41
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-03-30T17:04:55Z",
+      "side": 1,
+      "message": "Add backticks",
+      "range": {
+        "startLine": 29,
+        "startChar": 5,
+        "endLine": 29,
+        "endChar": 45
+      },
+      "revId": "7f87011981b65bce8425b6d0fbb8f951323da4ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c08fdabd_36a2f8d0",
+        "filename": "docs/zephyr/zephyr_usba.md",
+        "patchSetId": 41
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-03-30T17:04:55Z",
+      "side": 1,
+      "message": "\"up and\"",
+      "range": {
+        "startLine": 30,
+        "startChar": 49,
+        "endLine": 30,
+        "endChar": 54
+      },
+      "revId": "7f87011981b65bce8425b6d0fbb8f951323da4ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32e39e89_69131bfc",
+        "filename": "docs/zephyr/zephyr_usba.md",
+        "patchSetId": 41
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-03-30T17:04:55Z",
+      "side": 1,
+      "message": "Suggested rewording:\n\nUse the `gpioset` console command to manually enable and disable the USB Type-A port power.",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 0
+      },
+      "revId": "7f87011981b65bce8425b6d0fbb8f951323da4ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c58fec4f_a2b27c45",
+        "filename": "docs/zephyr/zephyr_usba.md",
+        "patchSetId": 41
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-03-30T17:04:55Z",
+      "side": 1,
+      "message": "Note - the usage of `usbchargemode` differs depending on whether the power power control is \"smart\" or \"dumb\".   So you should document both.\n\nIt would also be helpful to describe the parameters for smart mode: \n  port-number\n  mode (disabled, SDP, CDP, DCP, etc)\n  inhibit charge during suspend.",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 0
+      },
+      "revId": "7f87011981b65bce8425b6d0fbb8f951323da4ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89ef60ea_d720b76d",
+        "filename": "docs/zephyr/zephyr_usba.md",
+        "patchSetId": 41
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-03-30T17:04:55Z",
+      "side": 1,
+      "message": "This enum-name isn\u0027t required.  Also, you should use the example from the Herobrine board that includes the nodelabel.\n\n```\n\t\tgpio_en_usb_a_5v: en_usb_a_5v {\n\t\t\tgpios \u003d \u003c\u0026gpiof 0 GPIO_OUTPUT_LOW\u003e;\n\t\t}\n```",
+      "range": {
+        "startLine": 61,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 32
+      },
+      "revId": "7f87011981b65bce8425b6d0fbb8f951323da4ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cffe5f99_17d6f282",
+        "filename": "docs/zephyr/zephyr_usba.md",
+        "patchSetId": 41
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-03-30T17:04:55Z",
+      "side": 1,
+      "message": "You also need to show an example of \"cros-ec,usba-port-enable-pins\".",
+      "range": {
+        "startLine": 63,
+        "startChar": 0,
+        "endLine": 63,
+        "endChar": 3
+      },
+      "revId": "7f87011981b65bce8425b6d0fbb8f951323da4ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5fe0f4ba_6e3ad7dd",
+        "filename": "docs/zephyr/zephyr_usba.md",
+        "patchSetId": 41
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-03-30T17:04:55Z",
+      "side": 1,
+      "message": "No need to document the legacy macro `USB_PORT_COUNT`.",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 72
+      },
+      "revId": "7f87011981b65bce8425b6d0fbb8f951323da4ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
