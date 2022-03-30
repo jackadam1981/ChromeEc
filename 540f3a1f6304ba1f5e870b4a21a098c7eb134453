@@ -16,6 +16,24 @@
       "message": "Have you tested that the issue is gone? I mean Power+ESC+Refresh and the power/screen LED stays ON",
       "revId": "540f3a1f6304ba1f5e870b4a21a098c7eb134453",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "18e9aa13_1850a35a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1461738
+      },
+      "writtenOn": "2022-03-30T01:11:41Z",
+      "side": 1,
+      "message": "Sure, I tried this that repo sync the code base to new, then modify this change and re-test it. that always can pass when I press \"Power+ESC+Refresh\" three keys at the same time.",
+      "parentUuid": "f9e4db91_b68989fc",
+      "revId": "540f3a1f6304ba1f5e870b4a21a098c7eb134453",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
