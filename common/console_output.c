@@ -9,7 +9,17 @@
 #include "uart.h"
 #include "usb_console.h"
 #include "util.h"
-
+/***********************************************************/
+/***********************************************************/
+/***********************************************************/
+#include <errno.h>
+#include <zephyr.h>
+#include <sys/printk.h>
+#include <device.h>
+#include <drivers/spi.h>
+/***********************************************************/
+/***********************************************************/
+/***********************************************************/
 #ifdef CONFIG_CONSOLE_CHANNEL
 /* Default to all channels active */
 #ifndef CC_DEFAULT
@@ -35,7 +45,117 @@ static const char * const channel_names[] = {
 BUILD_ASSERT(ARRAY_SIZE(channel_names) == CC_CHANNEL_COUNT);
 /* ensure that we are not silently masking additional channels */
 BUILD_ASSERT(CC_CHANNEL_COUNT <= 8*sizeof(uint32_t));
+/***********************************************************/
+/***********************************************************/
+/***********************************************************/
 
+
+/* Console commands & test codes of IT8XXX2 SPI */
+static const struct device *spi_dev;
+
+static const struct spi_config spi_cfg = {
+	.operation = SPI_WORD_SET(8) | SPI_TRANSFER_MSB |
+		     SPI_MODE_CPOL | SPI_MODE_CPHA,
+	.frequency = 4000000,
+	.slave = 0,
+};
+
+static void spi_init(void)
+{
+	printk("%s\r\n", __func__);
+	spi_dev = DEVICE_DT_GET(DT_NODELABEL(spi0));
+
+	if (!device_is_ready(spi_dev)) {
+		printk("[user] Err: SPI device is not ready\r\n");
+	}
+	else
+		printk("[user] It seems that the SPI0 is ready.\r\n");
+
+}
+
+
+void spi_test_send(void)
+{
+	int err;
+	static uint8_t tx_buffer[6];
+	static uint8_t rx_buffer[1];
+	uint8_t cnt;
+
+
+	const struct spi_buf tx_buf = {
+		.buf = tx_buffer,
+		.len = sizeof(tx_buffer)
+	};
+	const struct spi_buf_set tx = {
+		.buffers = &tx_buf,
+		.count = 1
+	};
+
+	struct spi_buf rx_buf = {
+		.buf = NULL,
+		.len = 0,
+	};
+	const struct spi_buf_set rx = {
+		.buffers = &rx_buf,
+		.count = 0
+	};
+
+	tx_buffer[0] = 0x06;
+	tx_buffer[1] = 0x04;
+	tx_buffer[2] = 0x02;
+	tx_buffer[3] = 0x01;
+	tx_buffer[4] = 0x03;
+	tx_buffer[5] = 0x05;
+	printk("[user] len txbuf=%d\r\n", tx_buf.len);
+	printk("[user] len tx_buffer=%d\r\n", sizeof(tx_buffer));
+
+	for(cnt=0 ; cnt < tx_buf.len ; cnt++) {
+		printk("[user] tx_buffer[%d]=0x%X\r\n", cnt, tx_buffer[cnt]);
+	}
+
+	err = spi_transceive(spi_dev, &spi_cfg, &tx, &rx);
+	if (err) {
+		printk("SPI error: %d\n", err);
+	} else {
+		/* Connect MISO to MOSI for loopback */
+		printk("TX sent: %x\n", tx_buffer[0]);
+		printk("RX recv: %x\n", rx_buffer[0]);
+		tx_buffer[0]++;
+	}	
+}
+
+int spi_cmd(int cnt)
+{
+	printk("SPIM Example\n");
+	spi_init();
+
+	while (cnt > 0) {
+		spi_test_send();
+		k_sleep(K_MSEC(1000));
+		cnt--;
+	}
+
+	return 0;
+}
+
+static int command_spi_cmd(int argc, char **argv)
+{
+	int ret=0;
+	printk("%s\r\n", __func__);
+
+	ret = spi_cmd(1);
+	
+	return ret; 
+}
+DECLARE_CONSOLE_COMMAND(spi_test, command_spi_cmd,
+			NULL,
+			"SPI Test");
+/* SPI Commands End Up Here */
+
+ 
+/***********************************************************/
+/***********************************************************/
+/***********************************************************/
 static int console_channel_name_to_index(const char *name)
 {
 	int i;
