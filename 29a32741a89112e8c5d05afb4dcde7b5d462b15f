@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49166791_61049bd6",
+        "filename": "common/usb_common.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-03-30T19:18:50Z",
+      "side": 1,
+      "message": "I spoke with the original author of this code (Jett).  The original PD firmware updates were only triggered from depthcharge, before the kernel is up and so the power requirements to run the AP were lower.\n\nIn this case, updating the Burnside Bridge firmware is run from the kernel, so the power requirements can be significantly higher.\n\nChanging this to a percentage seems like a good idea, but what about increasing the percentage quite a bit to ensure we have margin?\n\nDaisuke - what are your thoughts of bumping this to something like 25%?",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 52
+      },
+      "revId": "29a32741a89112e8c5d05afb4dcde7b5d462b15f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
