@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0c774ed_c1c900d5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2022-03-30T09:38:58Z",
+      "side": 1,
+      "message": "cbi has it\u0027s own cache (see cbi_get_cache_status / cbi_read), no need to store the board version here.",
+      "revId": "dbd2c7091d457f197eaa102a14cdfe7530788407",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
