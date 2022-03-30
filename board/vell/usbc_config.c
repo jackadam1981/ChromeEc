@@ -38,6 +38,8 @@
 #define CPRINTF(format, args...) cprintf(CC_USBPD, format, ## args)
 #define CPRINTS(format, args...) cprints(CC_USBPD, format, ## args)
 
+#define INT_RECHECK_US 5000
+
 /* USBC TCPC configuration */
 const struct tcpc_config_t tcpc_config[] = {
 	[USBC_PORT_C0] = {
@@ -380,14 +382,46 @@ int ppc_get_alert_status(int port)
 	return 0;
 }
 
+static void usb_c0_c1_interrupt(void);
+DECLARE_DEFERRED(usb_c0_c1_interrupt);
+
+static void usb_c0_c1_interrupt(void)
+{
+	/*
+	 * If line is still being held low, see if there's more to process from
+	 * tcpc.
+	 */
+	if (!gpio_get_level(GPIO_USB_C0_C1_TCPC_INT_ODL)) {
+		schedule_deferred_pd_interrupt(USBC_PORT_C0);
+		hook_call_deferred(&usb_c0_c1_interrupt_data, INT_RECHECK_US);
+	} else
+		hook_call_deferred(&usb_c0_c1_interrupt_data, -1);
+}
+
+static void usb_c2_c3_interrupt(void);
+DECLARE_DEFERRED(usb_c2_c3_interrupt);
+
+static void usb_c2_c3_interrupt(void)
+{
+	/*
+	 * If line is still being held low, see if there's more to process from
+	 * tcpc.
+	 */
+	if (!gpio_get_level(GPIO_USB_C2_C3_TCPC_INT_ODL)) {
+		schedule_deferred_pd_interrupt(USBC_PORT_C2);
+		hook_call_deferred(&usb_c2_c3_interrupt_data, INT_RECHECK_US);
+	} else
+		hook_call_deferred(&usb_c2_c3_interrupt_data, -1);
+}
+
 void tcpc_alert_event(enum gpio_signal signal)
 {
 	switch (signal) {
 	case GPIO_USB_C0_C1_TCPC_INT_ODL:
-		schedule_deferred_pd_interrupt(USBC_PORT_C0);
+		usb_c0_c1_interrupt();
 		break;
 	case GPIO_USB_C2_C3_TCPC_INT_ODL:
-		schedule_deferred_pd_interrupt(USBC_PORT_C2);
+		usb_c2_c3_interrupt();
 		break;
 	default:
 		break;
