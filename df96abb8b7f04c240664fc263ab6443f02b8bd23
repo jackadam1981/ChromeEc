@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b4f2900d_d4b28dd8",
+        "filename": "board/moli/gpio.inc",
+        "patchSetId": 5
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2022-03-30T16:39:02Z",
+      "side": 1,
+      "message": "PLease add this case to bc12_interrupt handler",
+      "revId": "df96abb8b7f04c240664fc263ab6443f02b8bd23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d367ba2c_b581046f",
+        "filename": "board/moli/gpio.inc",
+        "patchSetId": 5
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2022-03-30T16:39:02Z",
+      "side": 1,
+      "message": "Please add this case to ppc_interrupt function",
+      "revId": "df96abb8b7f04c240664fc263ab6443f02b8bd23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b790bd1e_70383dc7",
+        "filename": "board/moli/gpio.inc",
+        "patchSetId": 5
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2022-03-30T16:39:02Z",
+      "side": 1,
+      "message": "Shouldn\u0027t that be GPIO_OUT_LOW?",
+      "range": {
+        "startLine": 128,
+        "startChar": 48,
+        "endLine": 128,
+        "endChar": 60
+      },
+      "revId": "df96abb8b7f04c240664fc263ab6443f02b8bd23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
