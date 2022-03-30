@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "acd403b3_38dcdc5b",
+        "filename": "test/panic_data.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2022-03-30T18:06:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "04bf5dbe_2780d42a",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 1
+      },
+      "revId": "61a61e839569c7a8c02fa6b1c1109224a9c1b237",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d5ae463e_58ea099f",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-03-29T21:56:40Z",
       "side": 1,
       "message": "Could you add a comment on why we only have 16 bits in this case?",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 26
+      },
+      "revId": "61a61e839569c7a8c02fa6b1c1109224a9c1b237",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba4d4de6_a626dc01",
+        "filename": "test/panic_data.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2022-03-30T18:06:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d5ae463e_58ea099f",
       "range": {
         "startLine": 50,
         "startChar": 0,
