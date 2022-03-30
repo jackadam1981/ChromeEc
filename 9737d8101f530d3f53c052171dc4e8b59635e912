@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7068a2cf_3f802fca",
+        "filename": "zephyr/projects/nissa/src/nereid/board_config.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-03-30T04:15:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "79aba989_24f7b4ec",
+      "revId": "9737d8101f530d3f53c052171dc4e8b59635e912",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5376ef86_274b1e4f",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-03-30T03:44:10Z",
       "side": 1,
       "message": "Configure (Enable implies it is enabling the interrupt)",
+      "range": {
+        "startLine": 119,
+        "startChar": 5,
+        "endLine": 119,
+        "endChar": 11
+      },
+      "revId": "9737d8101f530d3f53c052171dc4e8b59635e912",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7efb8dbf_ccb6eaac",
+        "filename": "zephyr/projects/nissa/src/nereid/board_config.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-03-30T04:15:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5376ef86_274b1e4f",
       "range": {
         "startLine": 119,
         "startChar": 5,
