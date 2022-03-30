@@ -256,8 +256,8 @@ static int board_anx3443_mux_set(const struct usb_mux *me,
 	return EC_SUCCESS;
 }
 
-const struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
-	{
+struct usb_mux usb_muxes[] = {
+	[USBC_PORT_C0] = {
 		.usb_port = 0,
 		.i2c_port = I2C_PORT_USB_MUX0,
 		.i2c_addr_flags = PS8802_I2C_ADDR_FLAGS,
@@ -265,7 +265,7 @@ const struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 		.board_init = &board_ps8762_mux_init,
 		.board_set = &board_ps8762_mux_set,
 	},
-	{
+	[USBC_PORT_C1] = {
 		.usb_port = 1,
 		.i2c_port = I2C_PORT_USB_MUX1,
 		.i2c_addr_flags = ANX3443_I2C_ADDR0_FLAGS,
@@ -273,6 +273,26 @@ const struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 		.board_set = &board_anx3443_mux_set,
 	},
 };
+BUILD_ASSERT(ARRAY_SIZE(usb_muxes) == USBC_PORT_COUNT);
+
+struct usb_mux c1_ps8802_usb_mux = {
+	.usb_port = 1,
+	.i2c_port = I2C_PORT_USB_MUX1,
+	.i2c_addr_flags = PS8802_I2C_ADDR_FLAGS,
+	.driver = &ps8802_usb_mux_driver,
+	.board_init = &board_ps8762_mux_init,
+	.board_set = &board_ps8762_mux_set,
+};
+
+static void board_update_usb_mux_config(void)
+{
+	if (board_version >= 2) {
+		usb_muxes[USBC_PORT_C1] = c1_ps8802_usb_mux;
+		ccprints("C1 USB MUX is PS8802");
+	} else {
+		ccprints("C1 USB MUX is ANX3443");
+	}
+}
 
 /* Initialize board. */
 static void board_init(void)
@@ -283,6 +303,8 @@ static void board_init(void)
 
 	/* Store board version for use of something */
 	cbi_get_board_version(&board_version);
+
+	board_update_usb_mux_config();
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
