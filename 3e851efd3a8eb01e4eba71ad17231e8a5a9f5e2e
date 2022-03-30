@@ -140,6 +140,30 @@
       },
       "revId": "3e851efd3a8eb01e4eba71ad17231e8a5a9f5e2e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8375021c_cf6b07c2",
+        "filename": "board/primus/ps2.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2022-03-30T05:17:36Z",
+      "side": 1,
+      "message": "I mean how to make sure the read will also return 3 bytes? Will it lost if some errors happen? Is it possible to do some data validation before queuing the data?",
+      "parentUuid": "a8f3cebe_7e087b79",
+      "range": {
+        "startLine": 102,
+        "startChar": 41,
+        "endLine": 102,
+        "endChar": 57
+      },
+      "revId": "3e851efd3a8eb01e4eba71ad17231e8a5a9f5e2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
