@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5bb7238b_ca6b26e8",
+        "filename": "docs/zephyr/zephyr_pd_int_shared.md",
+        "patchSetId": 43
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-03-30T17:50:34Z",
+      "side": 1,
+      "message": "I would just add this and the other smaller PD related items as a subsection to a main USB-C PD doc. \nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3451256/43/docs/zephyr/zephyr_pd.md\n\nThese smaller items don\u0027t need a full doc - especially because all the PD features are so related.  It\u0027s not really possible to test individual features.\n\n\nUnder the \"Kconfig Options\", organize something like:\n\n## Kconfig Options\nThe CONFIG_PLATFORM_EC_USB_POWER_DELIVERY option enables USB-C power delivery support on the Chromebook.  See Kconfig.pd for sub-options related to this feature.\n\n### Shared PD interrupts\nEnable the CONFIG_PLATFORM_EC_USB_PD_INT_SHARED if multiple USB-C ports share a single interrupt signal on the EC.  See Kconfig.pd_int_shared for details about all sub-options.\n\nA platform that shares an interrupt signal between USB-C ports 0 and 2 includes these configuration settings:\n\nCONFIG_PLATFORM_EC_USB_PD_INT_SHARED\u003dy\nCONFIG_PLATFORM_EC_USB_PD_PORT_0_SHARED\u003dy\nCONFIG_PLATFORM_EC_USB_PD_PORT_2_SHARED\u003dy\n\n\n### Measuring and detecting VBUS Voltage\nSee Kconfig.pd_meas_vbus ...\n\nSee Kconfig.pd_vbus_detections...",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 74
+      },
+      "revId": "220f08cdb8d95be363bb7fe099dc4241b6886290",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5690dc2b_f3f28e71",
         "filename": "docs/zephyr/zephyr_pd_int_shared.md",
         "patchSetId": 43
