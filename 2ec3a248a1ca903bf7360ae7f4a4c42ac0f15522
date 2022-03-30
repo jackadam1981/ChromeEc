@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6e73753_449e0736",
+        "filename": "zephyr/projects/corsola/usbc_kingler.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2022-03-30T15:22:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6bed6448_ac162d87",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 11
+      },
+      "revId": "2ec3a248a1ca903bf7360ae7f4a4c42ac0f15522",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "09e7c375_f483532b",
@@ -37,6 +61,24 @@
       "writtenOn": "2022-03-29T19:31:54Z",
       "side": 1,
       "message": "Add comment:\nTODO(b/227359762): lazor: move UBC-C configuration into the devicetree",
+      "revId": "2ec3a248a1ca903bf7360ae7f4a4c42ac0f15522",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ffd61a82_2e4a34bc",
+        "filename": "zephyr/projects/trogdor/lazor/usbc.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2022-03-30T15:22:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "09e7c375_f483532b",
       "revId": "2ec3a248a1ca903bf7360ae7f4a4c42ac0f15522",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
