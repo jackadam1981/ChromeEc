@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "554cd9ab_9e735e1a",
+        "filename": "board/primus/ps2.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2022-03-30T00:36:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9b3e0103_d0abed11",
+      "range": {
+        "startLine": 65,
+        "startChar": 1,
+        "endLine": 65,
+        "endChar": 23
+      },
+      "revId": "3e851efd3a8eb01e4eba71ad17231e8a5a9f5e2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c56fc035_0018ee55",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d5640c1_a2204d59",
+        "filename": "board/primus/ps2.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2022-03-30T00:36:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c56fc035_0018ee55",
+      "range": {
+        "startLine": 74,
+        "startChar": 12,
+        "endLine": 74,
+        "endChar": 22
+      },
+      "revId": "3e851efd3a8eb01e4eba71ad17231e8a5a9f5e2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "380f7da4_08b2a277",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-03-29T16:05:28Z",
       "side": 1,
       "message": "It looks like there is no error during the read. I\u0027m unsure if this could happen. Is it possible to do the basic data check and clean it after you have get the id?",
+      "range": {
+        "startLine": 102,
+        "startChar": 41,
+        "endLine": 102,
+        "endChar": 57
+      },
+      "revId": "3e851efd3a8eb01e4eba71ad17231e8a5a9f5e2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8f3cebe_7e087b79",
+        "filename": "board/primus/ps2.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2022-03-30T00:36:00Z",
+      "side": 1,
+      "message": "Add memset(queue_data, 0, ARRAY_SIZE(queue_data)); for clear it.",
+      "parentUuid": "380f7da4_08b2a277",
       "range": {
         "startLine": 102,
         "startChar": 41,
