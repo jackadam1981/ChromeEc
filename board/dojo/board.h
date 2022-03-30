@@ -32,6 +32,7 @@
 
 /* PD / USB-C / PPC */
 #undef CONFIG_USB_PD_DEBUG_LEVEL /* default to 1, configurable in ec console */
+#define CONFIG_USB_MUX_RUNTIME_CONFIG
 
 /* Optional console commands */
 #define CONFIG_CMD_FLASH
@@ -123,6 +124,13 @@ struct temp_chg_struct {
 
 /* Forward declaration of temperature charging table */
 extern const struct temp_chg_struct temp_chg_table[];
+
+/* USB-C ports */
+enum usbc_port {
+	USBC_PORT_C0 = 0,
+	USBC_PORT_C1,
+	USBC_PORT_COUNT
+};
 
 int board_accel_force_mode_mask(void);
 
