@@ -107,6 +107,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "276f3e48_d663c8a7",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1473007
+      },
+      "writtenOn": "2022-03-30T12:08:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "92b623c6_dcbe508b",
+      "range": {
+        "startLine": 158,
+        "startChar": 8,
+        "endLine": 158,
+        "endChar": 35
+      },
+      "revId": "7e19a4b47804d1eba78ea8bf3c3e97a3b7c7e4e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3847e1b1_d6f1e16e",
@@ -143,6 +167,30 @@
       "writtenOn": "2022-03-29T16:45:28Z",
       "side": 1,
       "message": "I wanted this override to be b0 specific for vpro. B0 is set when vpro dock is connected.",
+      "parentUuid": "3847e1b1_d6f1e16e",
+      "range": {
+        "startLine": 238,
+        "startChar": 7,
+        "endLine": 238,
+        "endChar": 33
+      },
+      "revId": "7e19a4b47804d1eba78ea8bf3c3e97a3b7c7e4e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0f170f2_e6316999",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1473007
+      },
+      "writtenOn": "2022-03-30T12:08:05Z",
+      "side": 1,
+      "message": "I wanted this override to be b0 specific for vpro as b1 might be used for the DP overdrive. From the experiment b0 is set when vpro is connected.",
       "parentUuid": "3847e1b1_d6f1e16e",
       "range": {
         "startLine": 238,
