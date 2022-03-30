@@ -16,6 +16,46 @@
       "message": "This changes fixes the herobrine FRS problem. Please see my comment.",
       "revId": "20a64b4f3f40495d4f60607e4d49bfc3372c50f5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "10af292d_411bf4b9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2022-03-30T18:57:25Z",
+      "side": 1,
+      "message": "Also, there is a com",
+      "revId": "20a64b4f3f40495d4f60607e4d49bfc3372c50f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3cfea1c9_2032a7e5",
+        "filename": "zephyr/projects/herobrine/src/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2022-03-30T18:57:25Z",
+      "side": 1,
+      "message": "Does this imply that the current code implementation only works for SN5S330 PPC only? Port0 is using the SYV682x PPC.",
+      "range": {
+        "startLine": 35,
+        "startChar": 1,
+        "endLine": 35,
+        "endChar": 47
+      },
+      "revId": "20a64b4f3f40495d4f60607e4d49bfc3372c50f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
