@@ -94,6 +94,30 @@
       },
       "revId": "2563bca4fdf0e615c4630621eaa7cdae330f0477",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4bed314_8d992513",
+        "filename": "zephyr/Kconfig.retimer",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1456367
+      },
+      "writtenOn": "2022-03-30T02:54:49Z",
+      "side": 1,
+      "message": "I agree to have a config to enable vpro but introducing this would will affect all other platforms. As per my current understanding non of the chrome platform has support for vpro, so I think it should be ok to make this change. I will make this change try to test on another platform once.",
+      "parentUuid": "326ecfd2_3672e3c1",
+      "range": {
+        "startLine": 42,
+        "startChar": 7,
+        "endLine": 42,
+        "endChar": 61
+      },
+      "revId": "2563bca4fdf0e615c4630621eaa7cdae330f0477",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
