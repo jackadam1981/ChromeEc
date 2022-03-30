@@ -34,6 +34,24 @@
       "parentUuid": "98619f88_b11d7775",
       "revId": "eb1d3833511729cb8434a774be5b7402dfff50e0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "609814b4_b6a7ea10",
+        "filename": "zephyr/projects/nissa/leds.dts",
+        "patchSetId": 13
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-03-30T02:01:40Z",
+      "side": 1,
+      "message": "It still does this on all the latest code, but since funny LED blinks don\u0027t affect any other functionality I\u0027m okay with submitting this and filing a bug to investigate the oddities on Nereid.",
+      "parentUuid": "0c6c479d_6ae42fff",
+      "revId": "eb1d3833511729cb8434a774be5b7402dfff50e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
