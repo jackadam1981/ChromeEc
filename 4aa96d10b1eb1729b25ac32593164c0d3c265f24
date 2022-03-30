@@ -94,6 +94,30 @@
       },
       "revId": "4aa96d10b1eb1729b25ac32593164c0d3c265f24",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21114fff_76e7f3b2",
+        "filename": "zephyr/projects/herobrine/src/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-03-30T19:59:17Z",
+      "side": 0,
+      "message": "Conceptually, we \"enable\" Vbus well before we enter Attached.SRC during FRS.  So I could see it being valid to set the Vbus enable cache before we\u0027ve entered Attached.SRC.\n\nHaving said that, could we reduce how much cached state we have in the board code here?  It seems potentially bug-prone and generally redundant with the PD state, though perhaps it\u0027s fixing some issue I don\u0027t have history on.  It looks like trogdor had it in the initial commit which was based on cheza which is no longer on ToT.",
+      "parentUuid": "e314a38d_a999de0c",
+      "range": {
+        "startLine": 83,
+        "startChar": 1,
+        "endLine": 83,
+        "endChar": 33
+      },
+      "revId": "4aa96d10b1eb1729b25ac32593164c0d3c265f24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

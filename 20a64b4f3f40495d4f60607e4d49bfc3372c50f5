@@ -56,6 +56,30 @@
       },
       "revId": "20a64b4f3f40495d4f60607e4d49bfc3372c50f5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70d0eade_08e58175",
+        "filename": "zephyr/projects/herobrine/src/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-03-30T19:59:17Z",
+      "side": 1,
+      "message": "Honestly, I\u0027m not sure why the ppc_vbus_source_enable() is being called for either PPC in the path for typec_set_source_current_limit().  Octopus used the SN5S330 on its ITE TCPC models and I can\u0027t find it overriding typec_set_source_current_limit().  Same with voxel which uses the SYV682x driver.  So that would imply they\u0027re both using the common code version that just sets the PPC current limit",
+      "parentUuid": "3cfea1c9_2032a7e5",
+      "range": {
+        "startLine": 35,
+        "startChar": 1,
+        "endLine": 35,
+        "endChar": 47
+      },
+      "revId": "20a64b4f3f40495d4f60607e4d49bfc3372c50f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
