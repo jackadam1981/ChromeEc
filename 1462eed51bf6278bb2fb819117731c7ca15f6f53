@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa913b0c_4ec196f4",
+        "filename": "docs/zephyr/zephyr_retimer.md",
+        "patchSetId": 43
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-03-30T17:27:57Z",
+      "side": 1,
+      "message": "Refer to [Kconfig.retimer] for all the Kconfig options related to USB-C retimers.",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 17
+      },
+      "revId": "1462eed51bf6278bb2fb819117731c7ca15f6f53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6efc98fa_ebf1c7a7",
+        "filename": "docs/zephyr/zephyr_retimer.md",
+        "patchSetId": 43
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-03-30T17:27:57Z",
+      "side": 1,
+      "message": "Provide a link to the dts bindings retimer directory.\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/dts/bindings/retimer/",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 61
+      },
+      "revId": "1462eed51bf6278bb2fb819117731c7ca15f6f53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "37a7125d_884d8b38",
+        "filename": "docs/zephyr/zephyr_retimer.md",
+        "patchSetId": 43
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-03-30T17:27:57Z",
+      "side": 1,
+      "message": "Volteer has been removed.  Use the Brya platform as an example.",
+      "range": {
+        "startLine": 32,
+        "startChar": 4,
+        "endLine": 32,
+        "endChar": 11
+      },
+      "revId": "1462eed51bf6278bb2fb819117731c7ca15f6f53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
