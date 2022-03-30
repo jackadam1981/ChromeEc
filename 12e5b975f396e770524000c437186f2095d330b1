@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4ab6426_429d1452",
+        "filename": "common/rgb_keyboard.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-03-30T21:25:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "923442ef_f4b23e54",
+      "revId": "12e5b975f396e770524000c437186f2095d330b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "79aa869f_2405df01",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-03-30T04:33:56Z",
       "side": 1,
       "message": "no comma needed if we plan to never extend past this entry.",
+      "range": {
+        "startLine": 7106,
+        "startChar": 23,
+        "endLine": 7106,
+        "endChar": 24
+      },
+      "revId": "12e5b975f396e770524000c437186f2095d330b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7650a2ba_2e9266ca",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 7106,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-03-30T21:25:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "79aa869f_2405df01",
       "range": {
         "startLine": 7106,
         "startChar": 23,
