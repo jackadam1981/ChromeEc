@@ -16,6 +16,40 @@
       "message": "\u003e Patch Set 3: Code-Review+2\n\u003e \n\u003e By voting Code-Review+2 the following files are now code-owner approved by \u003cGERRIT_ACCOUNT_1287197\u003e:\n\u003e * driver/retimer/bb_retimer.c\n\u003e * zephyr/Kconfig.retimer\n\u003e * zephyr/shim/include/config_chip.h\n\u003e \n\nHow this change can be applied to previous platform like voxel.",
       "revId": "10dab8dd813bbccd488a21d4f6b3c76507243b45",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ae8ce75_ae920cd6",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-03-30T22:16:04Z",
+      "side": 1,
+      "message": "This exceeds 80 columns. (Are you uploading with `repo upload` to run our pre-upload checks?)",
+      "revId": "10dab8dd813bbccd488a21d4f6b3c76507243b45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aecddc03_fed851ba",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-03-30T22:16:04Z",
+      "side": 1,
+      "message": "There should be an entry in `include/config.h` corresponding to this config item for the ECOS build.",
+      "revId": "10dab8dd813bbccd488a21d4f6b3c76507243b45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
