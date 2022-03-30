@@ -23,7 +23,7 @@ extern bool wdt_warning_triggered;
 static void wdt_warning_handler(const struct device *wdt_dev, int channel_id)
 {
 	/* TODO(b/176523207): watchdog warning message */
-	printk("Watchdog deadline is close!\n");
+	//printk("Watchdog deadline is close!\n");
 	#ifdef TEST_BUILD
 	wdt_warning_triggered = true;
 	#endif
