@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "274c2ef2_10d55efa",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 1384,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2022-03-30T15:23:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c9ae72b8_99ede81f",
+      "range": {
+        "startLine": 1384,
+        "startChar": 8,
+        "endLine": 1384,
+        "endChar": 27
+      },
+      "revId": "a003f23d72fd0fb753481defc2f73368d9df4e69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8ca630f3_9a1532b4",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-03-29T19:37:44Z",
       "side": 1,
       "message": "CONFIG_PLATFORM_EC_USB_POWER_DELIVERY",
+      "range": {
+        "startLine": 1386,
+        "startChar": 10,
+        "endLine": 1386,
+        "endChar": 40
+      },
+      "revId": "a003f23d72fd0fb753481defc2f73368d9df4e69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0eb31694_6e90327a",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 1386,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2022-03-30T15:23:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8ca630f3_9a1532b4",
       "range": {
         "startLine": 1386,
         "startChar": 10,
