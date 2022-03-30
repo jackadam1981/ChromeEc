@@ -70,6 +70,30 @@
       },
       "revId": "ee90dda4afa7f387f89e020a099726e27f49e050",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "224e9c97_507e6c84",
+        "filename": "zephyr/projects/skyrim/skyrim.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-03-30T21:56:01Z",
+      "side": 1,
+      "message": "Okay, previous CLs updated to be similar to the interrupts DT",
+      "parentUuid": "98734660_2d9e5ffa",
+      "range": {
+        "startLine": 115,
+        "startChar": 0,
+        "endLine": 115,
+        "endChar": 34
+      },
+      "revId": "ee90dda4afa7f387f89e020a099726e27f49e050",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
