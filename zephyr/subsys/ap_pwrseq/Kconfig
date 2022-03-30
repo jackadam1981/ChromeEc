@@ -64,10 +64,36 @@ config X86_NON_DSX_PWRSEQ_CONSOLE
 	  This option enables Non Deep Sleep Well power sequencing shell
 	  console commands to debug.
 
+config AP_PWRSEQ_HOST_SLEEP
+	bool "Handle host sleep state changes"
+	help
+	  Enable AP power sequencing to receive and process host command
+	  host sleep state changes.  This is required for S0ix support on
+	  Intel platforms, and optional for boards without S0ix support.
+
 config AP_PWRSEQ_S0IX
-	bool "Enable S0ix power state"
+	bool "Enable power state S0ix for Intel x86 chipset"
+	select AP_PWRSEQ_HOST_SLEEP
 	default n
 	help
-	  This option enables power state S0ix for Intel x86 chipset.
+	  This option enables power state S0ix for Intel x86 chipset. As
+	  required, AP_PWRSEQ_HOST_SLEEP for host sleep event handling is
+	  enabled.
+
+#TODO: Remove below two flags when HC host sleep handling migrates to zephyr
+config PLATFORM_EC_POWERSEQ_HOST_SLEEP
+	bool "Track host sleep states"
+	help
+	  Enable EC code to track the AP sleep states.  This is
+	  required for S0ix support on Intel platforms, and optional
+	  for boards without S0ix support.
+
+config PLATFORM_EC_POWERSEQ_S0IX
+	bool "Enable S0ix sleep states"
+	select PLATFORM_EC_POWERSEQ_HOST_SLEEP
+	help
+	  Enable the CONFIG_POWER_S0IX platform/ec configuration
+	  option, Intel's low-power idle sleep state, also known as
+	  "modern sleep".
 
 endif
