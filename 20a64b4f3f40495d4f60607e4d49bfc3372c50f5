@@ -80,6 +80,30 @@
       },
       "revId": "20a64b4f3f40495d4f60607e4d49bfc3372c50f5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "787dea90_8dc7e8d6",
+        "filename": "zephyr/projects/herobrine/src/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2022-03-30T21:16:33Z",
+      "side": 1,
+      "message": "Using the common typec_set_source_current_limit function to set the PPC Rp seems to work for both ports. I also removed the Rp caching.",
+      "parentUuid": "70d0eade_08e58175",
+      "range": {
+        "startLine": 35,
+        "startChar": 1,
+        "endLine": 35,
+        "endChar": 47
+      },
+      "revId": "20a64b4f3f40495d4f60607e4d49bfc3372c50f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
