@@ -33,6 +33,24 @@
       "message": "Do you need to reset the data_count too?",
       "revId": "cc10ca1e9c237d1cc8ced17dae36d46497f539f5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8209599b_70683ec3",
+        "filename": "board/primus/ps2.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2022-03-30T05:49:19Z",
+      "side": 1,
+      "message": "if (data_count \u003e (ARRAY_SIZE(queue_data) - 1))\n\t\tdata_count \u003d 0;\n\t\t\ndata_count will be clear at here.",
+      "parentUuid": "02db7741_fc3a6a38",
+      "revId": "cc10ca1e9c237d1cc8ced17dae36d46497f539f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

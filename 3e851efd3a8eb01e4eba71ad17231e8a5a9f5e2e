@@ -164,6 +164,30 @@
       },
       "revId": "3e851efd3a8eb01e4eba71ad17231e8a5a9f5e2e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a7ea025_3f868f59",
+        "filename": "board/primus/ps2.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2022-03-30T05:49:19Z",
+      "side": 1,
+      "message": "if (queue_data[1] \u003d\u003d TP_VARIANT_ELAN ||\n\t\tqueue_data[1] \u003d\u003d TP_VARIANT_SYNAPTICS)\n\t\treturn queue_data[1];\n\telse\n\t\treturn 0;\nAdd this one to check the data.",
+      "parentUuid": "8375021c_cf6b07c2",
+      "range": {
+        "startLine": 102,
+        "startChar": 41,
+        "endLine": 102,
+        "endChar": 57
+      },
+      "revId": "3e851efd3a8eb01e4eba71ad17231e8a5a9f5e2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
