@@ -61,6 +61,13 @@ static int it8xxx2_pinmux_init(const struct device *dev)
 	pinmux_pin_set(portb, 1, IT8XXX2_PINMUX_FUNC_3);
 #endif
 
+#if 1
+	const struct device *portc = DEVICE_DT_GET(DT_NODELABEL(pinmuxc));
+	/* SI */
+	pinmux_pin_pullup(portc, 3, PINMUX_PULLUP_ENABLE);
+	/* SO */
+	pinmux_pin_pullup(portc, 5, PINMUX_PULLUP_ENABLE);
+#endif
 	return 0;
 }
 SYS_INIT(it8xxx2_pinmux_init, PRE_KERNEL_1, CONFIG_PINMUX_INIT_PRIORITY);
