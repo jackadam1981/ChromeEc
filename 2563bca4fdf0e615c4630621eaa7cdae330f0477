@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "595b5f7c_dfca89df",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-03-30T03:57:12Z",
+      "side": 1,
+      "message": "nit: may be try directly use macro instead of function.",
+      "revId": "2563bca4fdf0e615c4630621eaa7cdae330f0477",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "825cdeeb_9edc1173",
         "filename": "zephyr/Kconfig.retimer",
         "patchSetId": 2
