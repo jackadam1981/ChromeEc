@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df560031_c256ab33",
+        "filename": "zephyr/projects/skyrim/fan.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-03-30T15:19:58Z",
+      "side": 0,
+      "message": "Looks like you need a rebase on top of this CL: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3497452",
+      "revId": "de593ffabc4cef2f03d329cc57ff3b070603b630",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
