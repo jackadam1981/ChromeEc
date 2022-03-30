@@ -16,6 +16,24 @@
       "message": "I\u0027m trying to test this on my Nivviks, but haven\u0027t found a combination of hub and monitor that works.",
       "revId": "e1e78532b6ec3c6dab5894ec88864844771642f3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1657ca88_37c7e364",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-03-30T22:41:18Z",
+      "side": 1,
+      "message": "Does ToT do the same thing, or is it a regression with this change? (I don\u0027t think this would break things in the way you\u0027ve described to me, so I suspect it\u0027s not a regression.)",
+      "parentUuid": "78a5f3bb_281fe151",
+      "revId": "e1e78532b6ec3c6dab5894ec88864844771642f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
