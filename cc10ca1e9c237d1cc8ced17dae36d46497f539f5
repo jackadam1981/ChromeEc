@@ -51,6 +51,24 @@
       "parentUuid": "02db7741_fc3a6a38",
       "revId": "cc10ca1e9c237d1cc8ced17dae36d46497f539f5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff9a8264_4b92be0c",
+        "filename": "board/primus/ps2.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2022-03-30T08:46:20Z",
+      "side": 1,
+      "message": "That assumes the `ps2_transmit(TP_READ_ID);` will always read 3 bytes. I\u0027m not sure if it is always true (for example, the get_ps2_data() is only called twice and the data_count\u003d1, the rest of the access will be incorrect). Consider the error handling, i would suggest to set the data_count \u003d 0 after doing the memset.",
+      "parentUuid": "8209599b_70683ec3",
+      "revId": "cc10ca1e9c237d1cc8ced17dae36d46497f539f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
