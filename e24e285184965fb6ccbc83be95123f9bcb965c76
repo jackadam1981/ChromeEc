@@ -46,6 +46,30 @@
       },
       "revId": "e24e285184965fb6ccbc83be95123f9bcb965c76",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0fefec4a_8fcc1dc0",
+        "filename": "docs/zephyr/zephyr_usba.md",
+        "patchSetId": 21
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-03-30T17:34:58Z",
+      "side": 0,
+      "message": "As is, the parent CL adds this file, and this CL deletes it.  I don\u0027t think that is what you want.",
+      "parentUuid": "618df7eb_4a9d3fe9",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 27
+      },
+      "revId": "e24e285184965fb6ccbc83be95123f9bcb965c76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
