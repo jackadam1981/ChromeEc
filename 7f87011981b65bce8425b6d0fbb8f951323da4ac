@@ -72,6 +72,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "62686442_44ea1b6d",
+        "filename": "docs/zephyr/zephyr_usba.md",
+        "patchSetId": 41
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-03-30T17:26:48Z",
+      "side": 1,
+      "message": "`ectool usbchargemode` can also be used from the kernel.",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 24
+      },
+      "revId": "7f87011981b65bce8425b6d0fbb8f951323da4ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "32e39e89_69131bfc",
         "filename": "docs/zephyr/zephyr_usba.md",
         "patchSetId": 41
