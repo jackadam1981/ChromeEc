@@ -70,6 +70,30 @@
       },
       "revId": "4aa96d10b1eb1729b25ac32593164c0d3c265f24",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e314a38d_a999de0c",
+        "filename": "zephyr/projects/herobrine/src/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2022-03-30T18:54:41Z",
+      "side": 0,
+      "message": "NOTE: VBUS is being tuned off here because vbus_en[port] \u003d 0;\n       typec_set_source_current_limit(port, tc[port].select_current_limit_rp);\n\n        if (IS_ENABLED(CONFIG_USB_PE_SM)) {\n                if (TC_CHK_FLAG(port, TC_FLAGS_PR_SWAP_IN_PROGRESS)) {\n                        /* Change role to source */\n                        tc_set_power_role(port, PD_ROLE_SOURCE);\n\n                        tcpm_set_msg_header(port,\n                                        tc[port].power_role,\n                                        tc[port].data_role);\n\nNOTE: And then VBUS is turned on here\n                        /* Enable VBUS */\n                        tc_src_power_on(port);",
+      "parentUuid": "e39d5edd_38bbd3f8",
+      "range": {
+        "startLine": 83,
+        "startChar": 1,
+        "endLine": 83,
+        "endChar": 33
+      },
+      "revId": "4aa96d10b1eb1729b25ac32593164c0d3c265f24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
