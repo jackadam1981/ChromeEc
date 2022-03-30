@@ -22,6 +22,30 @@
       },
       "revId": "29a32741a89112e8c5d05afb4dcde7b5d462b15f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0046b58_f9b2980e",
+        "filename": "common/usb_common.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-03-30T23:36:20Z",
+      "side": 1,
+      "message": "Skipping an update partially creates a potentially untested combination of firmware \u0026 OS images. Increasing the threshold may surface bugs in corner cases we luckily haven\u0027t seen?\n\nI remember PD firmware update was deliberately placed in Depthcharge to address this concern.\n\n\u003e what are your thoughts of bumping this to something like 25%?\n\nAssuming a retry happens timely, I agree we don\u0027t need to be so inpatient about updating PD firmware though 25% seems a bit too laid back.",
+      "parentUuid": "49166791_61049bd6",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 52
+      },
+      "revId": "29a32741a89112e8c5d05afb4dcde7b5d462b15f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
