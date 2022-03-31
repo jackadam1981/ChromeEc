@@ -50,6 +50,42 @@
       "message": "There should be an entry in `include/config.h` corresponding to this config item for the ECOS build.",
       "revId": "10dab8dd813bbccd488a21d4f6b3c76507243b45",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b66894f4_d4eeb883",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1456367
+      },
+      "writtenOn": "2022-03-31T02:34:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aecddc03_fed851ba",
+      "revId": "10dab8dd813bbccd488a21d4f6b3c76507243b45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ae485fd_9d40bea1",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1456367
+      },
+      "writtenOn": "2022-03-31T02:34:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7ae8ce75_ae920cd6",
+      "revId": "10dab8dd813bbccd488a21d4f6b3c76507243b45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
