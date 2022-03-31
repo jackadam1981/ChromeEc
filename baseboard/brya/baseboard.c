@@ -7,8 +7,12 @@
 #include "common.h"
 #include "compile_time_macros.h"
 #include "gpio_signal.h"
+#include "hooks.h"
 #include "keyboard_scan.h"
 #include "tablet_mode.h"
+#include "usb_pd.h"
+
+#define RESUME  0
 
 /* Wake up pins */
 const enum gpio_signal hibernate_wake_pins[] = {
@@ -41,3 +45,23 @@ __override void lid_angle_peripheral_enable(int enable)
 			keyboard_scan_enable(0, KB_SCAN_DISABLE_LID_ANGLE);
 		}
 }
+
+#ifdef CONFIG_USB_PD_USB4
+/*
+ * When TBT update procress begin, PD enter suspend.
+ * If we press shutdown button when PD suspend, the PD function
+ * will be lost during S5.
+ * So resume PD from suspend when enter S5.
+ */
+static void resume_port(void)
+{
+	int port;
+
+	for  (port = 0; port < CONFIG_USB_PD_PORT_MAX_COUNT; port++) {
+		if (!pd_is_port_enabled(port))
+			pd_set_suspend(port, RESUME);
+	}
+}
+DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, resume_port, HOOK_PRIO_DEFAULT);
+
+#endif /* CONFIG_USB_PD_USB4 */
