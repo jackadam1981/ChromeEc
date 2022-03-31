@@ -3,8 +3,6 @@
  * found in the LICENSE file.
  */
 
-#include <toolchain.h>
-
 #include "charger.h"
 #include "driver/charger/rt9490.h"
 #include "hooks.h"
@@ -12,11 +10,10 @@
 #include "system.h"
 
 /* work around for IBUS ADC unstable issue */
-static int board_rt9490_workaround(const struct device *unused)
+void board_rt9490_workaround(void)
 {
-	ARG_UNUSED(unused);
 	if (system_get_board_version() != 0)
-		return 0;
+		return;
 
 	i2c_update8(chg_chips[CHARGER_SOLO].i2c_port,
 		    chg_chips[CHARGER_SOLO].i2c_addr_flags,
@@ -40,6 +37,5 @@ static int board_rt9490_workaround(const struct device *unused)
 		    RT9490_REG_ADC_CHANNEL0,
 		    RT9490_VSYS_ADC_DIS,
 		    MASK_CLR);
-	return 0;
 }
-SYS_INIT(board_rt9490_workaround, APPLICATION, HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_INIT, board_rt9490_workaround, HOOK_PRIO_DEFAULT);
