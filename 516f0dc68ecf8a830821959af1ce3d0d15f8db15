@@ -51,6 +51,29 @@
       "parentUuid": "0056ba9c_eb64faa9",
       "revId": "516f0dc68ecf8a830821959af1ce3d0d15f8db15",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8e2d541_8926fca0",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2022-03-31T19:13:01Z",
+      "side": 1,
+      "message": "Is this actually microchip specific? We\u0027ve used MEC ECs in the past and I\u0027m not aware of this limitation.",
+      "range": {
+        "startLine": 116,
+        "startChar": 8,
+        "endLine": 116,
+        "endChar": 35
+      },
+      "revId": "516f0dc68ecf8a830821959af1ce3d0d15f8db15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
