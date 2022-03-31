@@ -70,6 +70,30 @@
       },
       "revId": "29a32741a89112e8c5d05afb4dcde7b5d462b15f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e74e06c_c3f672e0",
+        "filename": "common/usb_common.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2022-03-31T01:39:49Z",
+      "side": 1,
+      "message": "Can we set to 10% as the threshold? Since we need this for the FSI FW.",
+      "parentUuid": "28f4f91b_586cdc0b",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 52
+      },
+      "revId": "29a32741a89112e8c5d05afb4dcde7b5d462b15f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
