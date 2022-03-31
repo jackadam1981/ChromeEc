@@ -84,6 +84,9 @@
 #define CONFIG_CBI_EEPROM
 #define CONFIG_BOARD_VERSION_CBI
 #define CONFIG_CMD_CBI
+#define CONFIG_EEPROM_CBI_WP
+#define CONFIG_BYPASS_CBI_EEPROM_WP_CHECK
+#define GPIO_EC_CBI_WP GPIO_EC_FLASH_WP_ODL
 #define CBI_FW_MF_MASK BIT(0)
 #define CBI_FW_MF_PREFERENCE(val) (val & (CBI_FW_MF_MASK))
 
@@ -95,6 +98,7 @@
 #define DEFAULT_SERIALNO "Uninitialized"
 #define CONFIG_MAC_ADDR
 #define DEFAULT_MAC_ADDR "Uninitialized"
+#define CONFIG_USB_MS_EXTENDED_COMPAT_ID_DESCRIPTOR
 
 /* USB endpoint indexes (use define rather than enum to expand them) */
 #define USB_EP_CONTROL		0
@@ -157,7 +161,6 @@ enum usb_strings {
 #define CONFIG_USBC_VCONN
 #define CONFIG_USBC_VCONN_SWAP
 #define CONFIG_USBC_SS_MUX
-#define CONFIG_USBC_SS_MUX_UFP_USB3
 
 #define CONFIG_HAS_TASK_PD_INT
 #define CONFIG_STM32G4_UCPD_DEBUG

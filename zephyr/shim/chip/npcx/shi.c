@@ -11,6 +11,7 @@
 #include <soc.h>
 #include <zephyr.h>
 
+#include <ap_power/ap_power.h>
 #include "chipset.h"
 #include "drivers/cros_shi.h"
 #include "hooks.h"
@@ -33,21 +34,6 @@ static void shi_enable(void)
 	LOG_INF("%s", __func__);
 	cros_shi_enable(cros_shi_dev);
 }
-#ifdef CONFIG_CHIPSET_RESUME_INIT_HOOK
-DECLARE_HOOK(HOOK_CHIPSET_RESUME_INIT, shi_enable, HOOK_PRIO_DEFAULT);
-#else
-DECLARE_HOOK(HOOK_CHIPSET_RESUME, shi_enable, HOOK_PRIO_DEFAULT);
-#endif
-
-static void shi_reenable_on_sysjump(void)
-{
-	if (IS_ENABLED(CONFIG_CROS_SHI_NPCX_DEBUG) ||
-	    (system_jumped_late() && chipset_in_state(CHIPSET_STATE_ON))) {
-		shi_enable();
-	}
-}
-/* Call hook after chipset sets initial power state */
-DECLARE_HOOK(HOOK_INIT, shi_reenable_on_sysjump, HOOK_PRIO_INIT_CHIPSET + 1);
 
 static void shi_disable(void)
 {
@@ -61,12 +47,60 @@ static void shi_disable(void)
 	LOG_INF("%s", __func__);
 	cros_shi_disable(cros_shi_dev);
 }
-#ifdef CONFIG_CHIPSET_RESUME_INIT_HOOK
-DECLARE_HOOK(HOOK_CHIPSET_SUSPEND_COMPLETE, shi_disable, HOOK_PRIO_DEFAULT);
-#else
-DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, shi_disable, HOOK_PRIO_DEFAULT);
-#endif
 DECLARE_HOOK(HOOK_SYSJUMP, shi_disable, HOOK_PRIO_DEFAULT);
+
+static void shi_power_change(struct ap_power_ev_callback *cb,
+			     struct ap_power_ev_data data)
+{
+	switch (data.event) {
+	default:
+		return;
+
+#if CONFIG_PLATFORM_EC_CHIPSET_RESUME_INIT_HOOK
+	case AP_POWER_RESUME_INIT:
+		shi_enable();
+		break;
+
+	case AP_POWER_SHUTDOWN_COMPLETE:
+		shi_disable();
+		break;
+#else
+	case AP_POWER_RESUME:
+		shi_enable();
+		break;
+
+	case AP_POWER_SHUTDOWN:
+		shi_disable();
+		break;
+#endif
+	}
+}
+
+static int shi_init(const struct device *unused)
+{
+	ARG_UNUSED(unused);
+	static struct ap_power_ev_callback cb;
+
+	ap_power_ev_init_callback(&cb, shi_power_change,
+#if CONFIG_PLATFORM_EC_CHIPSET_RESUME_INIT_HOOK
+				  AP_POWER_RESUME_INIT |
+				  AP_POWER_SHUTDOWN_COMPLETE
+#else
+				  AP_POWER_RESUME |
+				  AP_POWER_SUSPEND
+#endif
+				  );
+	ap_power_ev_add_callback(&cb);
+
+	if (IS_ENABLED(CONFIG_CROS_SHI_NPCX_DEBUG) ||
+	    (system_jumped_late() && chipset_in_state(CHIPSET_STATE_ON))) {
+		shi_enable();
+	}
+
+	return 0;
+}
+/* Call hook after chipset sets initial power state */
+SYS_INIT(shi_init, APPLICATION, HOOK_PRIO_POST_CHIPSET);
 
 /* Get protocol information */
 static enum ec_status shi_get_protocol_info(struct host_cmd_handler_args *args)

@@ -3,7 +3,7 @@
  * found in the LICENSE file.
  */
 
-/* Homestar board-specific configuration */
+/* Mrbland board-specific configuration */
 
 #include "adc_chip.h"
 #include "button.h"
@@ -13,6 +13,8 @@
 #include "extpower.h"
 #include "driver/accel_bma2x2.h"
 #include "driver/accelgyro_bmi_common.h"
+#include "driver/accelgyro_icm_common.h"
+#include "driver/accelgyro_icm42607.h"
 #include "driver/ln9310.h"
 #include "driver/ppc/sn5s330.h"
 #include "driver/tcpm/ps8xxx.h"
@@ -45,7 +47,6 @@
 /* Forward declaration */
 static void tcpc_alert_event(enum gpio_signal signal);
 static void usb0_evt(enum gpio_signal signal);
-static void usb1_evt(enum gpio_signal signal);
 static void ppc_interrupt(enum gpio_signal signal);
 static void board_connect_c0_sbu(enum gpio_signal s);
 static void switchcap_interrupt(enum gpio_signal signal);
@@ -61,9 +62,6 @@ static void tcpc_alert_event(enum gpio_signal signal)
 	case GPIO_USB_C0_PD_INT_ODL:
 		port = 0;
 		break;
-	case GPIO_USB_C1_PD_INT_ODL:
-		port = 1;
-		break;
 	default:
 		return;
 	}
@@ -76,19 +74,11 @@ static void usb0_evt(enum gpio_signal signal)
 	task_set_event(TASK_ID_USB_CHG_P0, USB_CHG_EVENT_BC12);
 }
 
-static void usb1_evt(enum gpio_signal signal)
-{
-	task_set_event(TASK_ID_USB_CHG_P1, USB_CHG_EVENT_BC12);
-}
-
 static void ppc_interrupt(enum gpio_signal signal)
 {
 	switch (signal) {
 	case GPIO_USB_C0_SWCTL_INT_ODL:
 		sn5s330_interrupt(0);
-		break;
-	case GPIO_USB_C1_SWCTL_INT_ODL:
-		sn5s330_interrupt(1);
 		break;
 	default:
 		break;
@@ -117,16 +107,34 @@ static void switchcap_interrupt(enum gpio_signal signal)
 
 /* I2C port map */
 const struct i2c_port_t i2c_ports[] = {
-	{"power",   I2C_PORT_POWER,  100, GPIO_EC_I2C_POWER_SCL,
-					  GPIO_EC_I2C_POWER_SDA},
-	{"tcpc0",   I2C_PORT_TCPC0, 1000, GPIO_EC_I2C_USB_C0_PD_SCL,
-					  GPIO_EC_I2C_USB_C0_PD_SDA},
-	{"tcpc1",   I2C_PORT_TCPC1, 1000, GPIO_EC_I2C_USB_C1_PD_SCL,
-					  GPIO_EC_I2C_USB_C1_PD_SDA},
-	{"eeprom",  I2C_PORT_EEPROM, 400, GPIO_EC_I2C_EEPROM_SCL,
-					  GPIO_EC_I2C_EEPROM_SDA},
-	{"sensor",  I2C_PORT_SENSOR, 400, GPIO_EC_I2C_SENSOR_SCL,
-					  GPIO_EC_I2C_SENSOR_SDA},
+	{
+		.name = "power",
+		.port = I2C_PORT_POWER,
+		.kbps = 100,
+		.scl  = GPIO_EC_I2C_POWER_SCL,
+		.sda  = GPIO_EC_I2C_POWER_SDA
+	},
+	{
+		.name = "tcpc0",
+		.port = I2C_PORT_TCPC0,
+		.kbps = 1000,
+		.scl  = GPIO_EC_I2C_USB_C0_PD_SCL,
+		.sda  = GPIO_EC_I2C_USB_C0_PD_SDA
+	},
+	{
+		.name = "eeprom",
+		.port = I2C_PORT_EEPROM,
+		.kbps = 400,
+		.scl  = GPIO_EC_I2C_EEPROM_SCL,
+		.sda  = GPIO_EC_I2C_EEPROM_SDA
+	},
+	{
+		.name = "sensor",
+		.port = I2C_PORT_SENSOR,
+		.kbps = 400,
+		.scl  = GPIO_EC_I2C_SENSOR_SCL,
+		.sda  = GPIO_EC_I2C_SENSOR_SDA
+	},
 };
 
 const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
@@ -195,11 +203,6 @@ struct ppc_config_t ppc_chips[] = {
 		.i2c_addr_flags = SN5S330_ADDR0_FLAGS,
 		.drv = &sn5s330_drv
 	},
-	{
-		.i2c_port = I2C_PORT_TCPC1,
-		.i2c_addr_flags = SN5S330_ADDR0_FLAGS,
-		.drv = &sn5s330_drv
-	},
 };
 unsigned int ppc_cnt = ARRAY_SIZE(ppc_chips);
 
@@ -209,15 +212,7 @@ const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 		.bus_type = EC_BUS_TYPE_I2C,
 		.i2c_info = {
 			.port = I2C_PORT_TCPC0,
-			.addr_flags = PS8751_I2C_ADDR1_FLAGS,
-		},
-		.drv = &ps8xxx_tcpm_drv,
-	},
-	{
-		.bus_type = EC_BUS_TYPE_I2C,
-		.i2c_info = {
-			.port = I2C_PORT_TCPC1,
-			.addr_flags = PS8751_I2C_ADDR1_FLAGS,
+			.addr_flags = PS8XXX_I2C_ADDR1_FLAGS,
 		},
 		.drv = &ps8xxx_tcpm_drv,
 	},
@@ -236,19 +231,10 @@ const struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 		.driver = &tcpci_tcpm_usb_mux_driver,
 		.hpd_update = &ps8xxx_tcpc_update_hpd_status,
 	},
-	{
-		.usb_port = 1,
-		.driver = &tcpci_tcpm_usb_mux_driver,
-		.hpd_update = &ps8xxx_tcpc_update_hpd_status,
-	}
 };
 
 /* BC1.2 */
 const struct pi3usb9201_config_t pi3usb9201_bc12_chips[] = {
-	{
-		.i2c_port = I2C_PORT_POWER,
-		.i2c_addr_flags = PI3USB9201_I2C_ADDR_3_FLAGS,
-	},
 	{
 		.i2c_port = I2C_PORT_EEPROM,
 		.i2c_addr_flags = PI3USB9201_I2C_ADDR_3_FLAGS,
@@ -259,12 +245,66 @@ const struct pi3usb9201_config_t pi3usb9201_bc12_chips[] = {
 static struct mutex g_lid_mutex;
 
 static struct bmi_drv_data_t g_bmi160_data;
+static struct icm_drv_data_t g_icm42607_data;
+
+enum lid_accelgyro_type {
+	LID_GYRO_NONE = 0,
+	LID_GYRO_BMI160 = 1,
+	LID_GYRO_ICM42607 = 2,
+};
+
+static enum lid_accelgyro_type lid_accelgyro_config;
 
 /* Matrix to rotate accelerometer into standard reference frame */
 const mat33_fp_t lid_standard_ref = {
-	{ FLOAT_TO_FP(-1), 0, 0},
-	{ 0, FLOAT_TO_FP(-1), 0},
+	{ FLOAT_TO_FP(1), 0, 0},
+	{ 0, FLOAT_TO_FP(1), 0},
 	{ 0,  0, FLOAT_TO_FP(1)}
+};
+
+const mat33_fp_t lid_standard_ref_icm42607 = {
+	{ 0, FLOAT_TO_FP(-1), 0},
+	{ FLOAT_TO_FP(1), 0, 0},
+	{ 0,  0, FLOAT_TO_FP(1)}
+};
+
+struct motion_sensor_t icm42607_lid_accel = {
+	.name = "Lid Accel",
+	.active_mask = SENSOR_ACTIVE_S0_S3,
+	.chip = MOTIONSENSE_CHIP_ICM42607,
+	.type = MOTIONSENSE_TYPE_ACCEL,
+	.location = MOTIONSENSE_LOC_LID,
+	.drv = &icm42607_drv,
+	.mutex = &g_lid_mutex,
+	.drv_data = &g_icm42607_data,
+	.port = I2C_PORT_SENSOR,
+	.i2c_spi_addr_flags = ICM42607_ADDR0_FLAGS,
+	.rot_standard_ref = &lid_standard_ref_icm42607,
+	.default_range = 4,  /* g, to meet CDD 7.3.1/C-1-4 reqs */
+	.min_frequency = ICM42607_ACCEL_MIN_FREQ,
+	.max_frequency = ICM42607_ACCEL_MAX_FREQ,
+	.config = {
+		[SENSOR_CONFIG_EC_S0] = {
+			.odr = 10000 | ROUND_UP_FLAG,
+		},
+	},
+};
+
+struct motion_sensor_t icm42607_lid_gyro = {
+	.name = "Gyro",
+	.active_mask = SENSOR_ACTIVE_S0_S3,
+	.chip = MOTIONSENSE_CHIP_ICM42607,
+	.type = MOTIONSENSE_TYPE_GYRO,
+	.location = MOTIONSENSE_LOC_LID,
+	.drv = &icm42607_drv,
+	.mutex = &g_lid_mutex,
+	.drv_data = &g_icm42607_data,
+	.port = I2C_PORT_SENSOR,
+	.i2c_spi_addr_flags = ICM42607_ADDR0_FLAGS,
+	.default_range = 1000, /* dps */
+	.rot_standard_ref = &lid_standard_ref_icm42607,
+	.min_frequency = ICM42607_GYRO_MIN_FREQ,
+	.max_frequency = ICM42607_GYRO_MAX_FREQ,
 };
 
 struct motion_sensor_t motion_sensors[] = {
@@ -313,6 +353,44 @@ struct motion_sensor_t motion_sensors[] = {
 };
 const unsigned int motion_sensor_count = ARRAY_SIZE(motion_sensors);
 
+static void board_detect_motionsensor(void)
+{
+	int val = -1;
+
+	if (chipset_in_state(CHIPSET_STATE_ANY_OFF))
+		return;
+	if (lid_accelgyro_config != LID_GYRO_NONE)
+		return;
+
+	/* Check base accelgyro chip */
+	icm_read8(&icm42607_lid_accel, ICM42607_REG_WHO_AM_I, &val);
+	if (val == ICM42607_CHIP_ICM42607P) {
+		motion_sensors[LID_ACCEL] = icm42607_lid_accel;
+		motion_sensors[LID_GYRO] = icm42607_lid_gyro;
+		lid_accelgyro_config = LID_GYRO_ICM42607;
+		CPRINTS("LID Accelgyro: ICM42607");
+	} else {
+		lid_accelgyro_config = LID_GYRO_BMI160;
+		CPRINTS("LID Accelgyro: BMI160");
+	}
+}
+DECLARE_HOOK(HOOK_CHIPSET_STARTUP, board_detect_motionsensor,
+	     HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_INIT, board_detect_motionsensor, HOOK_PRIO_DEFAULT + 1);
+
+void motion_interrupt(enum gpio_signal signal)
+{
+	switch (lid_accelgyro_config) {
+	case LID_GYRO_ICM42607:
+		icm42607_interrupt(signal);
+		break;
+	case LID_GYRO_BMI160:
+	default:
+		bmi160_interrupt(signal);
+		break;
+	}
+}
+
 enum battery_cell_type board_get_battery_cell_type(void)
 {
 	return BATTERY_CELL_TYPE_2S;
@@ -336,7 +414,6 @@ static void board_init(void)
 {
 	/* Enable BC1.2 interrupts */
 	gpio_enable_interrupt(GPIO_USB_C0_BC12_INT_L);
-	gpio_enable_interrupt(GPIO_USB_C1_BC12_INT_L);
 	gpio_enable_interrupt(GPIO_ACCEL_GYRO_INT_L);
 
 	/*
@@ -355,11 +432,10 @@ DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
 __overridable uint16_t board_get_ps8xxx_product_id(int port)
 {
-	/* Coachz board rev 2+ changes TCPC from 8805 to 8755*/
-	if (system_get_board_version() < 2)
-		return PS8805_PRODUCT_ID;
+	if (check_ps8755_chip(port))
+		return PS8755_PRODUCT_ID;
 
-	return PS8755_PRODUCT_ID;
+	return PS8805_PRODUCT_ID;
 }
 
 void board_tcpc_init(void)
@@ -375,14 +451,14 @@ void board_tcpc_init(void)
 
 	/* Enable TCPC interrupts */
 	gpio_enable_interrupt(GPIO_USB_C0_PD_INT_ODL);
-	gpio_enable_interrupt(GPIO_USB_C1_PD_INT_ODL);
 
 	/*
 	 * Initialize HPD to low; after sysjump SOC needs to see
 	 * HPD pulse to enable video path
 	 */
 	for (int port = 0; port < CONFIG_USB_PD_PORT_MAX_COUNT; ++port)
-		usb_mux_hpd_update(port, 0, 0);
+		usb_mux_hpd_update(port, USB_PD_MUX_HPD_LVL_DEASSERTED |
+					 USB_PD_MUX_HPD_IRQ_DEASSERTED);
 }
 DECLARE_HOOK(HOOK_INIT, board_tcpc_init, HOOK_PRIO_INIT_I2C+1);
 
@@ -457,10 +533,8 @@ void board_reset_pd_mcu(void)
 	cflush();
 
 	gpio_set_level(GPIO_USB_C0_PD_RST_L, 0);
-	gpio_set_level(GPIO_USB_C1_PD_RST_L, 0);
 	msleep(PS8XXX_RESET_DELAY_MS);
 	gpio_set_level(GPIO_USB_C0_PD_RST_L, 1);
-	gpio_set_level(GPIO_USB_C1_PD_RST_L, 1);
 }
 
 void board_set_tcpc_power_mode(int port, int mode)
@@ -572,32 +646,6 @@ uint16_t tcpc_get_alert_status(void)
 	if (!gpio_get_level(GPIO_USB_C0_PD_INT_ODL))
 		if (gpio_get_level(GPIO_USB_C0_PD_RST_L))
 			status |= PD_STATUS_TCPC_ALERT_0;
-	if (!gpio_get_level(GPIO_USB_C1_PD_INT_ODL))
-		if (gpio_get_level(GPIO_USB_C1_PD_RST_L))
-			status |= PD_STATUS_TCPC_ALERT_1;
 
 	return status;
 }
-
-int battery_get_vendor_param(uint32_t param, uint32_t *value)
-{
-	int rv;
-	uint8_t data[16] = {};
-
-	/* only allow reading 0x70~0x7F, 16 byte data */
-	if (param < 0x70 || param >= 0x80)
-		return EC_ERROR_ACCESS_DENIED;
-
-	rv = sb_read_string(0x70, data, sizeof(data));
-	if (rv)
-		return rv;
-
-	*value = data[param - 0x70];
-	return EC_SUCCESS;
-}
-
-int battery_set_vendor_param(uint32_t param, uint32_t value)
-{
-	return EC_ERROR_UNIMPLEMENTED;
-}
-
