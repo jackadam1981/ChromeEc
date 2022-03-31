@@ -1,6 +1,52 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "eba5b4b3_e506739d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2022-03-31T21:10:53Z",
+      "side": 1,
+      "message": "H1D3C. didn\u0027t start with this CL, but let\u0027s be more precise here",
+      "range": {
+        "startLine": 7,
+        "startChar": 25,
+        "endLine": 7,
+        "endChar": 34
+      },
+      "revId": "3361610e3ca6142465ba9fa948aa9e5d081e5cc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2a29417_40b839c3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2022-03-31T21:10:53Z",
+      "side": 1,
+      "message": "-D for the same reason, may need further changes to how we call options",
+      "range": {
+        "startLine": 10,
+        "startChar": 13,
+        "endLine": 10,
+        "endChar": 24
+      },
+      "revId": "3361610e3ca6142465ba9fa948aa9e5d081e5cc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "baedb32c_b5c1721d",
@@ -14,6 +60,75 @@
       "writtenOn": "2022-03-31T20:39:32Z",
       "side": 1,
       "message": "LGTM, will let Mary approve",
+      "revId": "3361610e3ca6142465ba9fa948aa9e5d081e5cc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e5359a7_da1c341d",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2813,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2022-03-31T21:10:53Z",
+      "side": 1,
+      "message": "this is not introduced by this CL, but is still handled by this CL the same way for dt.\nwe don\u0027t seem to do anywhere endianness conversion for this field. whatever is chosen for this field - LE or BE, the native endianness may be different.\nor am I wrong?",
+      "range": {
+        "startLine": 2813,
+        "startChar": 23,
+        "endLine": 2813,
+        "endChar": 33
+      },
+      "revId": "3361610e3ca6142465ba9fa948aa9e5d081e5cc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a1dbe1f_7de3fc90",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2879,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2022-03-31T21:10:53Z",
+      "side": 1,
+      "message": "feels like we can extract just this part: pop_flog() vs pop_flog_dt() and keep the rest of the loop unchanged.\n\nso, something like this?\n```\nstruct parsed_flog_entry {\n  bool end_of_list;\n  char payload[MAX_PAYLOAD_SIZE];\n  size_t payload_size;\n  uint64_t raw_timestamp; // 32 bits for cr50 fit in 64 bits\n  time_t timestamp;\n  uintXX_t event_type; // cr50 8-bit (iirc) entry type should fit\n}\nwhile (retries--) {\n  parsed_flog_entry entry;\n  if (dt) { rv \u003d pop_flog_dt(\u0026entry) } else { rv \u003d pop_flog(\u0026entry) }\n  if (rv ) { ... }\n  if (entry.end_of_list) { ... no more entries ... }\n  if  (show_machine_output) {\n    printf(\"%10lu:%02x\", entry.raw_timestamp, entry.event_type);\n  } else {\n     ... also common code here ...\n  } \n}\n```",
+      "range": {
+        "startLine": 2856,
+        "startChar": 2,
+        "endLine": 2879,
+        "endChar": 50
+      },
+      "revId": "3361610e3ca6142465ba9fa948aa9e5d081e5cc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ab73d6d_a5ed7123",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2882,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2022-03-31T21:10:53Z",
+      "side": 1,
+      "message": "we do want \"entry type\" explicitly printed here (and in human-targeted version below). this allows us to report event types to UMA and monitor if an update brings an increase in certain critical errors.\nso, I\u0027m afraid, we can\u0027t avoid struct \"C\" for event on the f/w side, so it can be paresed here.",
+      "range": {
+        "startLine": 2881,
+        "startChar": 7,
+        "endLine": 2882,
+        "endChar": 32
+      },
       "revId": "3361610e3ca6142465ba9fa948aa9e5d081e5cc3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
