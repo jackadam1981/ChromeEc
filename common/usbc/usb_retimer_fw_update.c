@@ -215,3 +215,13 @@ void usb_retimer_fw_update_process_op(int port, int op)
 		break;
 	}
 }
+
+static void resume_port(void)
+{
+	int port;
+	for  (port=0; port < CONFIG_USB_PD_PORT_MAX_COUNT; port++) {
+		if (!pd_is_port_enabled(port))
+			pd_set_suspend(port, RESUME);
+	}
+}
+DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, resume_port, HOOK_PRIO_DEFAULT);
