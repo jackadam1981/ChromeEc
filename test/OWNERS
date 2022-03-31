@@ -1,0 +1,3 @@
+# Fingerprint-related tests
+per-file run_device_tests.py,aes.c,cortexm_fpu.c,flash_physical.c,flash_write_protect.c,fpsensor.c,fpsensor_hw.c,mpu.c,rollback.c,rollback_entropy.c,rsa3.c,rtc.c,sha256.c,sha256_unrolled.c,stm32f_rtc.c,system_is_locked.c=set noparent
+per-file run_device_tests.py,aes.c,cortexm_fpu.c,flash_physical.c,flash_write_protect.c,fpsensor.c,fpsensor_hw.c,mpu.c,rollback.c,rollback_entropy.c,rsa3.c,rtc.c,sha256.c,sha256_unrolled.c,stm32f_rtc.c,system_is_locked.c=file:../common/fpsensor/OWNERS

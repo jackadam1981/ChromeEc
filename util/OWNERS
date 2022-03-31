@@ -1,0 +1,3 @@
+# Fingerprint-related utilities
+per-file flash_fp_mcu,flash_jlink.py,fptool.py,stm32mon.c=set noparent
+per-file flash_fp_mcu,flash_jlink.py,fptool.py,stm32mon.c=file:../common/fpsensor/OWNERS
