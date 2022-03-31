@@ -46,6 +46,30 @@
       },
       "revId": "29a32741a89112e8c5d05afb4dcde7b5d462b15f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28f4f91b_586cdc0b",
+        "filename": "common/usb_common.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-03-31T00:20:57Z",
+      "side": 1,
+      "message": "Good point that a higher threshold delays updating the firmware.  How about 10% as the threshold?",
+      "parentUuid": "e0046b58_f9b2980e",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 52
+      },
+      "revId": "29a32741a89112e8c5d05afb4dcde7b5d462b15f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
