@@ -16,6 +16,24 @@
       "message": "I checked in on this change to see if generic EC support was far enough along to land this now. It seems not to be. Though the change at [1] is landed, enabling _POWERSEQ leads to lots of undefined GPIOs, including GPIO_EN_PP5000, GPIO_PCH_SLP_S3_L, GPIO_PCH_SLP_S0_L, GPIO_CPU_PROCHOT, GPIO_PG_EC_RSMRST_ODL, GPIO_PCH_RSMRST_L, GPIO_SYS_RESET_L, and others.\n\nKeith, any idea when these GPIOs are going to get defined for Nissa boards? CONFIG_PLATFORM_EC_POWERSEQ is a pretty core config, I\u0027m a little surprised it\u0027s not on yet.\n\n\n[1] https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3449792/3",
       "revId": "9f98c461a4fa6f326ebb2495bd9c4ec4c8f633f0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9bb4027f_d3403225",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-03-31T20:34:45Z",
+      "side": 1,
+      "message": "Nissa/Nereid are using an alternate power sequencing implementation: CONFIG_AP_PWRSEQ.  https://chromium.googlesource.com/chromiumos/platform/ec/+/8be1e6b6/zephyr/projects/nissa/prj.conf#53\n\nThis alternate power sequencing implementation is here:\nhttps://source.corp.google.com/chromeos_public/src/platform/ec/zephyr/subsys/ap_pwrseq/\n\nThis new implementation uses the device tree to specify the power sequence signals instead of relying on hard-coded GPIO names.\n\nI opened b/227651161 to track the S4 residency support with the new AP power sequencing subsystem.",
+      "parentUuid": "6a5bf0de_84248103",
+      "revId": "9f98c461a4fa6f326ebb2495bd9c4ec4c8f633f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
