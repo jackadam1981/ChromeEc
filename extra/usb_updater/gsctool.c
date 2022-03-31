@@ -27,6 +27,7 @@
 #include "ap_ro_integrity_check.h"
 #include "ccd_config.h"
 #include "compile_time_macros.h"
+#include "dauntless_event.h"
 #include "flash_log.h"
 #include "generated_version.h"
 #include "gsctool.h"
@@ -2837,6 +2838,76 @@ static int process_get_flog(struct transfer_descriptor *td, uint32_t prev_stamp,
 	return rv;
 }
 
+static int process_get_flog_dt(struct transfer_descriptor *td, uint64_t prev_stamp,
+			    bool show_machine_output)
+{
+	int rv;
+	const int max_retries = 3;
+	int retries = max_retries;
+	bool time_zone_reported = false;
+
+	while (retries--) {
+		union dt_entry_u entry;
+		size_t resp_size;
+		size_t i;
+		struct tm loc_time;
+		time_t entry_epoch;
+		char date_str[25];
+		uint32_t converted_time;
+
+		resp_size = sizeof(entry);
+		rv = send_vendor_command(td, VENDOR_CC_POP_LOG_ENTRY_MS,
+					 &prev_stamp, sizeof(prev_stamp),
+					 &entry, &resp_size);
+
+		if (rv) {
+			/*
+			 * Flash log could be momentarily locked by a
+			 * concurrent access, let it settle and try again, 10
+			 * ms should be enough.
+			 */
+			usleep(10 * 1000);
+			continue;
+		}
+
+		if (resp_size == 0) {
+			/* No more entries. */
+			return 0;
+		}
+
+		prev_stamp = entry.evt.time;
+		converted_time = (uint32_t) (prev_stamp / 1000);
+
+		if  (show_machine_output) {
+			printf("%10lu:", prev_stamp);
+		} else {
+			entry_epoch = converted_time;
+			localtime_r(&entry_epoch, &loc_time);
+
+			if (!time_zone_reported) {
+				strftime(date_str, sizeof(date_str), "%Z",
+					 &loc_time);
+				printf("Log time zone is %s\n", date_str);
+				time_zone_reported = true;
+			}
+
+			/* Date format is MMM DD YY HH:mm:ss */
+			strftime(date_str, sizeof(date_str), "%b %d %y %T",
+				 &loc_time);
+			printf("%s :", date_str);
+		}
+		for (i = 0; i < entry.evt.size; i++)
+			printf(" %02x", entry.evt.evt[i]);
+		printf("\n");
+		retries = max_retries;
+	}
+
+	fprintf(stderr, "%s: error %d\n", __func__, rv);
+
+	return rv;
+}
+
+
 static int process_tstamp(struct transfer_descriptor *td,
 			  const char *tstamp_ascii)
 {
@@ -3393,8 +3464,13 @@ int main(int argc, char *argv[])
 	if (get_boot_mode)
 		exit(process_get_boot_mode(&td));
 
-	if (get_flog)
-		process_get_flog(&td, prev_log_entry, show_machine_output);
+	if (get_flog) {
+		if (is_dauntless) {
+			process_get_flog_dt(&td, prev_log_entry, show_machine_output);
+		} else {
+			process_get_flog(&td, prev_log_entry, show_machine_output);
+		}
+	}
 
 	if (erase_ap_ro_hash)
 		process_erase_ap_ro_hash(&td);
