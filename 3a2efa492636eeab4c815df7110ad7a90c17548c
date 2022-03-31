@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5eed5835_876f74ed",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2022-03-31T19:34:12Z",
+      "side": 1,
+      "message": "Hi Jack,\nper failure info:\nFailed builds:\n  luci.chromeos.cq/firmware-ec-cq JOB_FAILED https://cr-buildbucket.appspot.com/build/8818158774479888161\n    Step(\u0027build firmware.call build API script\u0027) (retcode: 1)\n    \nI can not access this link, could you tell me what is root cause of failure? do i need to rebase?\nI can pass \"zmake testall\".",
+      "revId": "3a2efa492636eeab4c815df7110ad7a90c17548c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
