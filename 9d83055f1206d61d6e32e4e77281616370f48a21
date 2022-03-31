@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da02b11b_ae7b953d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-03-31T22:46:08Z",
+      "side": 1,
+      "message": "You can change this to `TEST\u003d./util/fptool_unittest.py` now that you have unit tests. Same for the other CLs.",
+      "range": {
+        "startLine": 15,
+        "startChar": 5,
+        "endLine": 15,
+        "endChar": 9
+      },
+      "revId": "9d83055f1206d61d6e32e4e77281616370f48a21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13044644_900efec5",
+        "filename": "util/fptool.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-03-31T22:46:08Z",
+      "side": 1,
+      "message": "This is returning a string, but according to the type annotation you are only returning `int`.",
+      "range": {
+        "startLine": 120,
+        "startChar": 16,
+        "endLine": 120,
+        "endChar": 49
+      },
+      "revId": "9d83055f1206d61d6e32e4e77281616370f48a21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb60de8f_df29cf92",
+        "filename": "util/fptool.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 295,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-03-31T22:46:08Z",
+      "side": 1,
+      "message": "Looks like the returned type is actually `Dict[str, int]`?",
+      "range": {
+        "startLine": 295,
+        "startChar": 34,
+        "endLine": 295,
+        "endChar": 48
+      },
+      "revId": "9d83055f1206d61d6e32e4e77281616370f48a21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0cd9dd04_33255769",
+        "filename": "util/fptool.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-03-31T22:46:08Z",
+      "side": 1,
+      "message": "I think this part would be a bit clearer if you use the example from below here instead:\n\n```\n{\n  \u0027gpiochip0\u0027: 344\n  \u0027gpiochip1\u0027: 288\n  \u0027gpiochip2\u0027: 152\n}\n```",
+      "range": {
+        "startLine": 300,
+        "startChar": 0,
+        "endLine": 302,
+        "endChar": 26
+      },
+      "revId": "9d83055f1206d61d6e32e4e77281616370f48a21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c358c20_73fe07d4",
+        "filename": "util/fptool.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-03-31T22:46:08Z",
+      "side": 1,
+      "message": "I think you can simplify this with a [raw string](https://docs.python.org/3/library/re.html#raw-string-notation) and a few other substitutions:\n\n```\n            args \u003d re.split(r\u0027gpiochip([\\d]+) \\[(\\S*)] \\(([\\d]+) lines\\)\u0027,\n                            device, 1)\n```",
+      "range": {
+        "startLine": 346,
+        "startChar": 0,
+        "endLine": 347,
+        "endChar": 50
+      },
+      "revId": "9d83055f1206d61d6e32e4e77281616370f48a21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65127a01_72c93ee5",
+        "filename": "util/fptool_unitest.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-03-31T22:46:08Z",
+      "side": 1,
+      "message": "`LABELS`",
+      "range": {
+        "startLine": 195,
+        "startChar": 10,
+        "endLine": 195,
+        "endChar": 16
+      },
+      "revId": "9d83055f1206d61d6e32e4e77281616370f48a21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
