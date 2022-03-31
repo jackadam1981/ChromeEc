@@ -1,0 +1,234 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61469b93_85831ec4",
+        "filename": "zephyr/dts/bindings/gpio_led/cros-ec,gpio-led-colors.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-03-31T17:27:01Z",
+      "side": 1,
+      "message": "The include/ec_commands.h defines the enum as \"ec_led_id\". Is there any conflict if using the name \"led-id\" so it matches?",
+      "range": {
+        "startLine": 71,
+        "startChar": 12,
+        "endLine": 71,
+        "endChar": 20
+      },
+      "revId": "d3ba43f94a6e65efe6bc62e1c24cb3e04dad9a28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eab02ff1_68fb1e2f",
+        "filename": "zephyr/dts/bindings/gpio_led/cros-ec,gpio-led-colors.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-03-31T17:27:01Z",
+      "side": 1,
+      "message": "Add all the support LED types in include/ec_commands.h.\n\n\n enum ec_led_id {\n        /* LED to indicate battery state of charge */\n        EC_LED_ID_BATTERY_LED \u003d 0,\n        /*\n         * LED to indicate system power state (on or in suspend).\n         * May be on power button or on C-panel.\n         */\n        EC_LED_ID_POWER_LED,\n        /* LED on power adapter or its plug */\n        EC_LED_ID_ADAPTER_LED,\n        /* LED to indicate left side */\n        EC_LED_ID_LEFT_LED,\n        /* LED to indicate right side */\n        EC_LED_ID_RIGHT_LED,\n        /* LED to indicate recovery mode with HW_REINIT */\n        EC_LED_ID_RECOVERY_HW_REINIT_LED,\n        /* LED to indicate sysrq debug mode. */\n        EC_LED_ID_SYSRQ_DEBUG_LED,\n        EC_LED_ID_COUNT\n };",
+      "range": {
+        "startLine": 76,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 31
+      },
+      "revId": "d3ba43f94a6e65efe6bc62e1c24cb3e04dad9a28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63733ebc_92d21b15",
+        "filename": "zephyr/dts/bindings/gpio_led/cros-ec,gpio-led-pins.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-03-31T17:27:01Z",
+      "side": 1,
+      "message": "Add a note that the \"left port\" is \"c1\" which matches the below GPIO configurations.",
+      "range": {
+        "startLine": 14,
+        "startChar": 69,
+        "endLine": 14,
+        "endChar": 70
+      },
+      "revId": "d3ba43f94a6e65efe6bc62e1c24cb3e04dad9a28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21174971_a627765f",
+        "filename": "zephyr/dts/bindings/gpio_led/cros-ec,gpio-led-pins.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-03-31T17:27:01Z",
+      "side": 1,
+      "message": "You should not set to the both left and right LEDs. It will cause a race.",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 67
+      },
+      "revId": "d3ba43f94a6e65efe6bc62e1c24cb3e04dad9a28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee9e04da_47baac04",
+        "filename": "zephyr/dts/bindings/gpio_led/cros-ec,gpio-led-pins.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-03-31T17:27:01Z",
+      "side": 1,
+      "message": "The definition should be the same as what is defined in \"cros-ec,gpio-led-colors.yaml\", right?",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 27
+      },
+      "revId": "d3ba43f94a6e65efe6bc62e1c24cb3e04dad9a28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99a7594e_331daa44",
+        "filename": "zephyr/shim/src/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-03-31T17:27:01Z",
+      "side": 1,
+      "message": "Can you use the existing enum in include/ec_commands.h?",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 2
+      },
+      "revId": "d3ba43f94a6e65efe6bc62e1c24cb3e04dad9a28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "600e407c_86c932fb",
+        "filename": "zephyr/shim/src/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-03-31T17:27:01Z",
+      "side": 1,
+      "message": "This case needs to be separated in a different CL and needs more explanation.",
+      "range": {
+        "startLine": 179,
+        "startChar": 0,
+        "endLine": 186,
+        "endChar": 2
+      },
+      "revId": "d3ba43f94a6e65efe6bc62e1c24cb3e04dad9a28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a781776_512732a9",
+        "filename": "zephyr/shim/src/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-03-31T17:27:01Z",
+      "side": 1,
+      "message": "If you use the same enum in include/ec_commands.h, it is just the argument `led_id`.",
+      "range": {
+        "startLine": 211,
+        "startChar": 26,
+        "endLine": 211,
+        "endChar": 38
+      },
+      "revId": "d3ba43f94a6e65efe6bc62e1c24cb3e04dad9a28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c915b080_18fc83ac",
+        "filename": "zephyr/shim/src/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-03-31T17:27:01Z",
+      "side": 1,
+      "message": "This code may be enabled/disabled in build time, as there are many LED types.",
+      "range": {
+        "startLine": 364,
+        "startChar": 0,
+        "endLine": 367,
+        "endChar": 33
+      },
+      "revId": "d3ba43f94a6e65efe6bc62e1c24cb3e04dad9a28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe452ca1_f08f12ca",
+        "filename": "zephyr/shim/src/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 381,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-03-31T17:27:01Z",
+      "side": 1,
+      "message": "`led_id` here?",
+      "range": {
+        "startLine": 381,
+        "startChar": 22,
+        "endLine": 381,
+        "endChar": 34
+      },
+      "revId": "d3ba43f94a6e65efe6bc62e1c24cb3e04dad9a28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
