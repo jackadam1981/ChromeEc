@@ -42,19 +42,10 @@ void c0_bc12_interrupt(enum gpio_signal signal)
 	rt1739_interrupt(0);
 }
 
-void c1_bc12_interrupt(enum gpio_signal signal)
-{
-	rt9490_interrupt(1);
-}
-
-
 static int board_sub_bc12_init(const struct device *unused)
 {
 	ARG_UNUSED(unused);
-	if (corsola_get_db_type() == CORSOLA_DB_TYPEC)
-		gpio_enable_dt_interrupt(
-			GPIO_INT_FROM_NODELABEL(int_usb_c1_bc12_charger));
-	else
+	if (corsola_get_db_type() == CORSOLA_DB_HDMI)
 		/* If this is not a Type-C subboard, disable the task. */
 		task_disable_task(TASK_ID_USB_CHG_P1);
 
