@@ -32,5 +32,45 @@
 				value = <3>;
 			};
 		};
+
+		/*
+		 * FW_CONFIG field to enable fan or not.
+		 */
+		form-factor {
+			enum-name = "FW_FAN";
+			start = <2>;
+			size = <1>;
+
+			tablet {
+				compatible = "cros-ec,cbi-fw-config-value";
+				enum-name = "FW_FAN_NOT_PRESENT";
+				value = <0>;
+			};
+			acrylic {
+				compatible = "cros-ec,cbi-fw-config-value";
+				enum-name = "FW_FAN_PRESENT";
+				value = <1>;
+			};
+		};
+
+		/*
+		 * FW_CONFIG field to set form factor based config.
+		 */
+		form-factor {
+			enum-name = "FW_FORM_FACTOR";
+			start = <3>;
+			size = <1>;
+
+			tablet {
+				compatible = "cros-ec,cbi-fw-config-value";
+				enum-name = "FW_FF_TABLET";
+				value = <0>;
+			};
+			acrylic {
+				compatible = "cros-ec,cbi-fw-config-value";
+				enum-name = "FW_FF_NOT_TABLET";
+				value = <1>;
+			};
+		};
 	};
 };
