@@ -1,0 +1,50 @@
+/* Copyright 2022 The Chromium OS Authors. All rights reserved.
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+#define DT_DRV_COMPAT richtek_rt9490_bc12
+
+#include <devicetree.h>
+#include "driver/charger/rt9490.h"
+#include "gpio/gpio_int.h"
+#include "hooks.h"
+
+#if DT_HAS_COMPAT_STATUS_OKAY(DT_DRV_COMPAT)
+
+#define BC12_GPIO_ENABLE_INTERRUPT(inst)				\
+	IF_ENABLED(DT_INST_NODE_HAS_PROP(inst, irq),			\
+		   (gpio_enable_dt_interrupt(				\
+			GPIO_INT_FROM_NODE(DT_INST_PHANDLE(inst, irq))); \
+		   ) \
+		  )
+
+static void rt9490_bc12_enable_irqs(void)
+{
+	DT_INST_FOREACH_STATUS_OKAY(BC12_GPIO_ENABLE_INTERRUPT);
+}
+DECLARE_HOOK(HOOK_INIT, rt9490_bc12_enable_irqs, HOOK_PRIO_DEFAULT);
+
+#define GPIO_SIGNAL_FROM_INST(inst)					\
+	GPIO_SIGNAL(DT_PHANDLE(DT_INST_PHANDLE(inst, irq), irq_pin))
+
+#define USBC_PORT(inst)							\
+	DT_REG_ADDR(DT_PARENT(DT_DRV_INST(inst)))
+
+#define RT9490_DISPATCH_INTERRUPT(inst)					\
+	IF_ENABLED(DT_INST_NODE_HAS_PROP(inst, irq),			\
+		   (case GPIO_SIGNAL_FROM_INST(inst):			\
+			rt9490_interrupt(USBC_PORT(inst));		\
+			break;						\
+		   ))
+
+void rt9490_bc12_dt_interrupt(enum gpio_signal signal)
+{
+	switch (signal) {
+		DT_INST_FOREACH_STATUS_OKAY(RT9490_DISPATCH_INTERRUPT);
+	default:
+		break;
+	}
+}
+
+#endif /* DT_HAS_COMPAT_STATUS_OKAY(DT_DRV_COMPAT) */
