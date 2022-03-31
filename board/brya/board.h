@@ -15,6 +15,9 @@
  */
 #undef CONFIG_KEYBOARD_VIVALDI
 
+/* Add Power participant support in DTT */
+#define CONFIG_DTT_POWER_STATUS
+
 /* Baseboard features */
 #include "baseboard.h"
 
