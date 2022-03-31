@@ -28,8 +28,8 @@ LOG_MODULE_REGISTER(gpio_led, LOG_LEVEL_ERR);
 #define BAT_LED_ON 1
 #define BAT_LED_OFF 0
 
-#define GPIO_LED_COLOR_NODE  DT_PATH(gpio_led, gpio_led_colors)
-#define GPIO_LED_PINS_NODE   DT_PATH(gpio_led, gpio_led_pins)
+#define GPIO_LED_COLOR_NODE DT_PATH(gpio_led, gpio_led_colors)
+#define GPIO_LED_PINS_NODE  DT_PATH(gpio_led, gpio_led_pins)
 
 const enum ec_led_id supported_led_ids[] = {
 	EC_LED_ID_BATTERY_LED,
@@ -44,7 +44,15 @@ enum led_color {
 	LED_COLOR_COUNT  /* Number of colors, not a color itself */
 };
 
-#define LED_PIN_COUNT	(LED_COLOR_COUNT - 1)
+enum led_type {
+	BATT_LED_ANY = 0,
+	BATT_LED_LEFT,
+	BATT_LED_RIGHT,
+	POWER_LED
+};
+
+#define COLOR_OFF_NODE	DT_CHILD(GPIO_LED_PINS_NODE, color_off)
+#define LED_PIN_COUNT   DT_PROP_LEN(COLOR_OFF_NODE, led_pins)
 
 struct led_color_node_t {
 	int led_color;
@@ -77,6 +85,7 @@ enum led_extra_flag_t {
 struct node_prop_t {
 	enum charge_state pwr_state;
 	enum power_state chipset_state;
+	enum led_type led_id;
 	enum led_extra_flag_t led_extra_flag;
 	struct led_color_node_t led_colors[MAX_COLOR];
 };
@@ -119,6 +128,7 @@ struct node_prop_t {
 {									\
 	.pwr_state = GET_PROP(state_id, charge_state),			\
 	.chipset_state = GET_PROP(state_id, chipset_state),		\
+	.led_id = GET_PROP(state_id, led_id),				\
 	.led_extra_flag = GET_PROP(state_id, extra_flag),		\
 	.led_colors = {LED_COLOR_INIT(0, 1, state_id),			\
 		       LED_COLOR_INIT(1, 2, state_id),			\
@@ -138,6 +148,7 @@ struct gpio_pins_t {
 
 struct led_pins_node_t {
 	int led_color;
+	enum led_type led_id;
 	struct gpio_pins_t gpio_pins[LED_PIN_COUNT];
 };
 
@@ -155,6 +166,7 @@ struct led_pins_node_t {
 #define SET_PIN_NODE(node_id)						\
 {									\
 	.led_color = GET_PROP(node_id, led_color),			\
+	.led_id = GET_PROP(node_id, led_id),				\
 	.gpio_pins = SET_GPIO_PIN(node_id)				\
 },
 
@@ -162,15 +174,27 @@ struct led_pins_node_t pins_node[LED_COLOR_COUNT] = {
 	DT_FOREACH_CHILD(GPIO_LED_PINS_NODE, SET_PIN_NODE)
 };
 
-static void led_set_color(enum led_color color)
+static void led_set_color(enum led_color color, enum led_type led_id)
 {
+	if (led_id == BATT_LED_ANY) {
+		if (LED_PIN_COUNT > (MAX_COLOR - 1)) {
+			/* Dual port LEDs, check which port is active */
+			int port = charge_manager_get_active_charge_port();
+
+			led_id = (port ? BATT_LED_RIGHT : BATT_LED_LEFT);
+		}
+	}
+
 	for (int i = 0; i < LED_COLOR_COUNT; i++) {
-		if (pins_node[i].led_color == color) {
+		if ((pins_node[i].led_color == color) &&
+		    (pins_node[i].led_id == led_id)) {
 			for (int j = 0; j < LED_PIN_COUNT; j++) {
 				gpio_pin_set_dt(gpio_get_dt_spec(
 					pins_node[i].gpio_pins[j].signal),
 					pins_node[i].gpio_pins[j].val);
 			}
+
+			break; /* Found the correct pins node, break here */
 		}
 	}
 }
@@ -184,11 +208,11 @@ void led_get_brightness_range(enum ec_led_id led_id, uint8_t *brightness_range)
 int led_set_brightness(enum ec_led_id led_id, const uint8_t *brightness)
 {
 	if (brightness[EC_LED_COLOR_BLUE] != 0)
-		led_set_color(LED_BLUE);
+		led_set_color(LED_BLUE, BATT_LED_ANY);
 	else if (brightness[EC_LED_COLOR_AMBER] != 0)
-		led_set_color(LED_AMBER);
+		led_set_color(LED_AMBER, BATT_LED_ANY);
 	else
-		led_set_color(LED_OFF);
+		led_set_color(LED_OFF, BATT_LED_ANY);
 
 	return EC_SUCCESS;
 }
@@ -252,11 +276,15 @@ static bool find_node_with_extra_flag(int i)
 	return found_node;
 }
 
-static int find_node(void)
+static int find_node(enum led_type led_id)
 {
 	int i = 0;
 
 	for (i = 0; i < ARRAY_SIZE(node_array); i++) {
+		/* Find a node with matching led_id */
+		if (node_array[i].led_id != led_id)
+			continue;
+
 		/* Check if this node depends on power state */
 		if (node_array[i].pwr_state != PWR_STATE_UNCHANGE) {
 			enum charge_state pwr_state = charge_get_state();
@@ -312,7 +340,7 @@ static int find_color(int node_idx, int ticks)
 	return GET_COLOR(node_idx, color_idx);
 }
 
-static void board_led_set_color(void)
+static void board_led_set_color(enum led_type led_id)
 {
 	int color = LED_OFF;
 	int node = 0;
@@ -320,21 +348,23 @@ static void board_led_set_color(void)
 
 	ticks++;
 
-	node = find_node();
+	node = find_node(led_id);
 
 	if (node < 0)
 		LOG_ERR("Invalid node id, node with matching prop not found");
 	else
 		color = find_color(node, ticks);
 
-	led_set_color(color);
+	led_set_color(color, led_id);
 }
 
 /* Called by hook task every second */
 static void led_tick(void)
 {
 	if (led_auto_control_is_enabled(EC_LED_ID_BATTERY_LED))
-		board_led_set_color();
+		board_led_set_color(BATT_LED_ANY);
+	if (led_auto_control_is_enabled(EC_LED_ID_POWER_LED))
+		board_led_set_color(POWER_LED);
 }
 DECLARE_HOOK(HOOK_SECOND, led_tick, HOOK_PRIO_DEFAULT);
 
@@ -348,7 +378,7 @@ void led_control(enum ec_led_id led_id, enum ec_led_state state)
 
 	if (state == LED_STATE_RESET) {
 		led_auto_control(EC_LED_ID_BATTERY_LED, 1);
-		board_led_set_color();
+		board_led_set_color(BATT_LED_ANY);
 		return;
 	}
 
@@ -356,5 +386,5 @@ void led_control(enum ec_led_id led_id, enum ec_led_state state)
 
 	led_auto_control(EC_LED_ID_BATTERY_LED, 0);
 
-	led_set_color(color);
+	led_set_color(color, BATT_LED_ANY);
 }

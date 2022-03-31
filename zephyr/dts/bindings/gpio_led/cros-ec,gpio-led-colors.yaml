@@ -7,7 +7,19 @@ description: GPIO LED colors parent node
 compatible: "cros-ec,gpio-led-colors"
 
 child-binding:
-    description: LED Color nodes
+    description: LED Color nodes that contain all the policies a color depends on
+
+                 Eg. During battery charged state and power state S0, a node for
+                     battery led will be
+
+                     power-state-charge {
+                        charge-state = "PWR_STATE_CHARGE";
+                        chipset-state = "POWER_S0";
+                        led-type = "BATT_LED_ANY";
+                        color-0 {
+                                led-color = "LED_BLUE";
+                        };
+                     };
     properties:
         charge-state:
             description: If the LED color depends on charge state, this
@@ -56,6 +68,13 @@ child-binding:
                     - LED_YELLOW
                     - LED_WHITE
                     - LED_AMBER
+            led-type:
+                description: Type of LED, battery led or power led
+                type: string
+                required: false
+                enum:
+                    - BATT_LED_ANY
+                    - POWER_LED
             period:
                 description: In case of blinking LEDs, amount of time in secs
                              the LED color is active
