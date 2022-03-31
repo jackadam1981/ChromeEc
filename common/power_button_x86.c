@@ -520,7 +520,7 @@ static enum ec_status hc_config_powerbtn_x86(struct host_cmd_handler_args *args)
 	power_button_pulse_enabled =
 		!!(p->flags & EC_POWER_BUTTON_ENABLE_PULSE);
 
-	return EC_SUCCESS;
+	return EC_RES_SUCCESS;
 }
 DECLARE_HOST_COMMAND(EC_CMD_CONFIG_POWER_BUTTON, hc_config_powerbtn_x86,
 		     EC_VER_MASK(0));
@@ -562,7 +562,7 @@ static void power_button_pulse_setting_restore_state(void)
 		power_button_pulse_enabled = *state;
 }
 DECLARE_HOOK(HOOK_INIT, power_button_pulse_setting_restore_state,
-	     HOOK_PRIO_INIT_POWER_BUTTON + 1);
+	     HOOK_PRIO_POST_POWER_BUTTON);
 
 static void power_button_pulse_setting_preserve_state(void)
 {

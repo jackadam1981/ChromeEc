@@ -25,6 +25,21 @@ the following sections.
 providing a CLI. They call one of the transport-specific `ec_command`
 implementations in the `util/comm-*.c` files to send and receive from the EC.
 
+#### Stress test
+
+The `ectool stress` command sends a large amount of host commands continuously
+to the EC. This verifies that the EC can respond to all commands received
+without timeouts or communication errors.
+
+It will log the time elapsed for every iteration of sending 10000 host commands
+with the time that it took to send them.
+
+Example output of stress test is:
+`Update: attempt 10000 round 1 | took 205 seconds`
+
+Killing the process will result in displaying the total runtime and failures
+that happened during it.
+
 ### EC kernel driver
 
 In most cases, `ectool` communicates via the [`cros-ec` Kernel driver], rather
@@ -148,5 +163,5 @@ after receiving a host packet and before it has a response ready.
 
 [`cros-ec` Kernel driver]: https://chromium.googlesource.com/chromiumos/third_party/kernel/+/refs/heads/chromeos-4.19/drivers/mfd/cros_ec_dev.c
 [Industrial I/O]: https://www.kernel.org/doc/html/v4.14/driver-api/iio/index.html
-[host command task]: https://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/master/common/host_command.c
+[host command task]: https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/common/host_command.c
 [Transport-specific details]: #Transport_specific-details

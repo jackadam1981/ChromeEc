@@ -6,7 +6,6 @@
 /* Zork family-specific configuration */
 
 #include "adc.h"
-#include "adc_chip.h"
 #include "button.h"
 #include "cbi_ec_fw_config.h"
 #include "charge_manager.h"
@@ -156,8 +155,7 @@ const struct thermistor_info thermistor_info = {
 	.data = thermistor_data,
 };
 
-#ifndef TEST_BUILD
-void lid_angle_peripheral_enable(int enable)
+__override void lid_angle_peripheral_enable(int enable)
 {
 	if (ec_config_has_lid_angle_tablet_mode()) {
 		int chipset_in_s0 = chipset_in_state(CHIPSET_STATE_ON);
@@ -177,7 +175,6 @@ void lid_angle_peripheral_enable(int enable)
 		}
 	}
 }
-#endif
 
 static void cbi_init(void)
 {

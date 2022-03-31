@@ -10,10 +10,15 @@
 #include "usb_pd_tcpm.h"
 
 /* RT1718S Private RegMap */
-#define RT1718S_I2C_ADDR_FLAGS				0x43
+#define RT1718S_I2C_ADDR1_FLAGS				0x43
+#define RT1718S_I2C_ADDR2_FLAGS				0x40
 
 #define RT1718S_VID					0x29CF
 #define RT1718S_PID					0x1718
+
+#define RT1718S_DEVICE_ID				0x04
+#define RT1718S_DEVICE_ID_ES1				0x4511
+#define RT1718S_DEVICE_ID_ES2				0x4513
 
 #define RT1718S_PHYCTRL1				0x80
 #define RT1718S_PHYCTRL2				0x81
@@ -28,6 +33,15 @@
 #define RT1718S_SYS_CTRL2_BMCIO_OSC_EN			BIT(0)
 #define RT1718S_SYS_CTRL2_LPWR_EN			BIT(3)
 
+#define RT1718S_VCONN_CONTROL_2				0x8B
+#define RT1718S_VCONN_CONTROL_2_OVP_EN_CC1		BIT(7)
+#define RT1718S_VCONN_CONTROL_2_OVP_EN_CC2		BIT(6)
+#define RT1718S_VCONN_CONTROL_3				0x8C
+#define RT1718S_VCONN_CONTROL_3_VCONN_OVP_DEG		BIT(1)
+
+#define RT1718S_SYS_CTRL2				0x90
+#define RT1718S_SYS_CTRL2_VCONN_DISCHARGE_EN		BIT(5)
+
 #define RT1718S_RT_MASK1				0x91
 #define RT1718S_RT_MASK1_M_VBUS_FRS_LOW			BIT(7)
 #define RT1718S_RT_MASK1_M_RX_FRS			BIT(6)
@@ -41,10 +55,15 @@
 #define RT1718S_RT_MASK6_M_BC12_TA_CHG			BIT(5)
 #define RT1718S_RT_MASK7				0x97
 
+#define RT1718S_RT_INT1					0x98
+#define RT1718S_RT_INT1_INT_VBUS_FRS_LOW		BIT(7)
+#define RT1718S_RT_INT1_INT_RX_FRS			BIT(6)
+#define RT1718S_RT_INT2					0x99
 #define RT1718S_RT_INT6					0x9D
 #define RT1718S_RT_INT6_INT_BC12_SNK_DONE		BIT(7)
 #define RT1718S_RT_INT6_INT_HVDCP_CHK_DONE		BIT(6)
 #define RT1718S_RT_INT6_INT_BC12_TA_CHG			BIT(5)
+#define RT1718S_RT_INT6_INT_ADC_DONE			BIT(0)
 
 #define RT1718S_RT_ST6					0xA4
 #define RT1718S_RT_ST6_BC12_SNK_DONE			BIT(7)
@@ -65,13 +84,34 @@
 
 #define RT1718S_HILO_CTRL9				0xC8
 #define RT1718S_SHILED_CTRL1				0xCA
+#define RT1718S_FRS_CTRL1				0xCB
+#define RT1718S_FRS_CTRL1_FRSWAPRX_MASK			0xF0
+#define RT1718S_FRS_CTRL2				0xCC
+#define RT1718S_FRS_CTRL2_RX_FRS_EN			BIT(6)
+#define RT1718S_FRS_CTRL2_FR_VBUS_SELECT		BIT(4)
+#define RT1718S_FRS_CTRL2_VBUS_FRS_EN			BIT(3)
+#define RT1718S_FRS_CTRL3				0xCE
+#define RT1718S_FRS_CTRL3_FRS_RX_WAIT_GPIO2		BIT(3)
+#define RT1718S_FRS_CTRL3_FRS_RX_WAIT_GPIO1		BIT(2)
 
 #define RT1718S_DIS_SRC_VBUS_CTRL			0xE0
 #define RT1718S_ENA_SRC_VBUS_CTRL			0xE1
 #define RT1718S_FAULT_OC1_VBUS_CTRL			0xE3
+#define RT1718S_GPIO1_VBUS_CTRL				0xEA
+#define RT1718S_GPIO1_VBUS_CTRL_FRS_RX_VBUS		BIT(6)
 #define RT1718S_GPIO2_VBUS_CTRL				0xEB
-#define RT1718S_GPIO1_CTRL				0xED
-#define RT1718S_GPIO2_CTRL				0xEE
+#define RT1718S_GPIO2_VBUS_CTRL_FRS_RX_VBUS		BIT(6)
+#define RT1718S_VBUS_CTRL_EN				0xEC
+#define RT1718S_VBUS_CTRL_EN_GPIO2_VBUS_PATH_EN		BIT(7)
+#define RT1718S_VBUS_CTRL_EN_GPIO1_VBUS_PATH_EN		BIT(6)
+
+#define RT1718S_GPIO_CTRL(n)				(0xED + (n))
+#define RT1718S_GPIO_CTRL_PU				BIT(5)
+#define RT1718S_GPIO_CTRL_PD				BIT(4)
+#define RT1718S_GPIO_CTRL_OD_N				BIT(3)
+#define RT1718S_GPIO_CTRL_OE				BIT(2)
+#define RT1718S_GPIO_CTRL_O				BIT(1)
+#define RT1718S_GPIO_CTRL_I				BIT(0)
 
 #define RT1718S_UNLOCK_PW_2				0xF0
 #define RT1718S_UNLOCK_PW_1				0xF1
@@ -84,6 +124,10 @@
 #define RT1718S_RT2_VBUS_VOL_CTRL			0xF213
 #define RT1718S_RT2_VBUS_VOL_CTRL_OVP_SEL		(BIT(5) | BIT(4))
 #define RT1718S_RT2_VBUS_VOL_CTRL_VOL_SEL		0x0F
+
+#define RT1718S_VCON_CTRL4				0xF211
+#define RT1718S_VCON_CTRL4_UVP_CP_EN			BIT(5)
+#define RT1718S_VCON_CTRL4_OVP_CP_EN			BIT(4)
 
 #define RT1718S_RT2_VBUS_OCRC_EN			0xF214
 #define RT1718S_RT2_VBUS_OCRC_EN_VBUS_OCP1_EN		BIT(0)
@@ -134,12 +178,104 @@
 #define RT1718S_RT2_BC12_SRC_FUNC_SRC_MODE_SEL_BC12_DCP	0x20
 #define RT1718S_RT2_BC12_SRC_FUNC_WAIT_VBUS_ON		BIT(0)
 
+#define RT1718S_ADC_CTRL_01				0xF2A0
+#define RT1718S_ADC_CTRL_02				0xF2A1
+#define RT1718S_ADC_CHX_VOL_L(ch)			(0xF2A6 + (ch) * 2)
+#define RT1718S_ADC_CHX_VOL_H(ch)			(0xF2A7 + (ch) * 2)
+
 extern const struct tcpm_drv rt1718s_tcpm_drv;
 extern const struct bc12_drv rt1718s_bc12_drv;
 
 int rt1718s_write8(int port, int reg, int val);
 int rt1718s_read8(int port, int reg, int *val);
 int rt1718s_update_bits8(int port, int reg, int mask, int val);
+int rt1718s_write16(int port, int reg, int val);
+int rt1718s_read16(int port, int reg, int *val);
 __override_proto int board_rt1718s_init(int port);
 
+enum rt1718s_adc_channel {
+	RT1718S_ADC_VBUS1 = 0,
+	RT1718S_ADC_VBUS2,
+	RT1718S_ADC_VDC,
+	RT1718S_ADC_VBUS_CURRENT,
+	RT1718S_ADC_CC1,
+	RT1718S_ADC_CC2,
+	RT1718S_ADC_SBU1,
+	RT1718S_ADC_SBU2,
+	RT1718S_ADC_DP,
+	RT1718S_ADC_DM,
+	RT1718S_ADC_CH10,
+	RT1718S_ADC_CH11,
+};
+
+int rt1718s_get_adc(int port, enum rt1718s_adc_channel channel, int *adc_val);
+
+enum rt1718s_gpio {
+	RT1718S_GPIO1 = 0,
+	RT1718S_GPIO2,
+	RT1718S_GPIO3,
+	RT1718S_GPIO_COUNT,
+};
+
+/**
+ * Set flags for GPIO
+ *
+ * @param port		rt1718s I2C port
+ * @param signal	gpio pin name in enum rt1718s_gpio
+ * @param flags		GPIO_* flags defined in include/gpio.h
+ */
+void rt1718s_gpio_set_flags(int port, enum rt1718s_gpio signal, uint32_t flags);
+
+/**
+ * Set the value of a signal
+ *
+ * @param port		rt1718s I2C port
+ * @param signal	gpio pin name in enum rt1718s_gpio
+ * @param value		New value for signal (0 = low, non-zero = high)
+ */
+void rt1718s_gpio_set_level(int port, enum rt1718s_gpio signal, int value);
+
+/**
+ * Get the current value of a signal.
+ *
+ * @param port		rt1718s I2C port
+ * @param signal	gpio pin name in enum rt1718s_gpio
+ * @return 0 if low, 1 if high.
+ */
+int rt1718s_gpio_get_level(int port, enum rt1718s_gpio signal);
+
+/**
+ * Set fast role swap.
+ *
+ * @param port		USB-C port
+ * @param enable	enable/disable FRS
+ * @return EC_SUCCESS if success, EC_ERROR_UNKNOWN otherwise.
+ */
+int rt1718s_set_frs_enable(int port, int enable);
+
+/**
+ * Initialize RT1718S FRS function
+ *
+ * @param port		USB-C port
+ * @return EC_SUCCESS if success, EC_ERROR_UNKNOWN otherwise.
+ */
+int rt1718s_frs_init(int port);
+
+
+/**
+ * Software reset RT1718S
+ *
+ * @param port		USB-C port
+ * @return EC_SUCCESS if success, EC_ERROR_UNKNOWN otherwise.
+ */
+int rt1718s_sw_reset(int port);
+
+/**
+ * Board hook for rt1718s_set_snk_enable
+ *
+ * @param port		USB-C port
+ * @param enable	enable/disable sink
+ * @return EC_SUCCESS if success, EC_ERROR_UNKNOWN otherwise.
+ */
+__override_proto int board_rt1718s_set_snk_enable(int port, int enable);
 #endif /* __CROS_EC_USB_PD_TCPM_MT6370_H */

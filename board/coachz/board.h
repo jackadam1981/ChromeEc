@@ -23,6 +23,16 @@
 /* Internal SPI flash on NPCX7 */
 #define CONFIG_FLASH_SIZE_BYTES (512 * 1024)  /* 512KB internal spi flash */
 
+/* Save some flash space */
+#define CONFIG_LTO
+#define CONFIG_USB_PD_DEBUG_LEVEL 2
+#undef CONFIG_CMD_FLASHINFO
+#undef CONFIG_CMD_MMAPINFO
+#undef CONFIG_CMD_ACCELSPOOF
+#undef CONFIG_CMD_ACCEL_FIFO
+#undef CONFIG_CMD_ACCEL_INFO
+#undef CONFIG_CMD_TASK_RESET
+
 /* Battery */
 #define CONFIG_BATTERY_DEVICE_CHEMISTRY  "LION"
 #define CONFIG_BATTERY_REVIVE_DISCONNECT
@@ -45,6 +55,9 @@
 #define CONFIG_ACCELGYRO_BMI160_INT_EVENT \
 	TASK_EVENT_MOTION_SENSOR_INTERRUPT(LID_ACCEL)
 #define OPT3001_I2C_ADDR_FLAGS OPT3001_I2C_ADDR1_FLAGS
+#define CONFIG_ACCELGYRO_BMI260
+#define CONFIG_ACCELGYRO_BMI260_INT_EVENT \
+	TASK_EVENT_MOTION_SENSOR_INTERRUPT(LID_ACCEL)
 
 #define CONFIG_TABLET_MODE
 #define CONFIG_TABLET_MODE_SWITCH
@@ -60,17 +73,14 @@
 #define GPIO_AC_PRESENT GPIO_CHG_ACOK_OD
 #define GPIO_WP_L GPIO_EC_FLASH_WP_ODL
 #define GPIO_PMIC_RESIN_L GPIO_PM845_RESIN_L
-#define GMR_TABLET_MODE_GPIO_L GPIO_LID_360_L
+#define GPIO_TABLET_MODE_L GPIO_LID_360_L
 #define GPIO_KS_ATTACHED_L GPIO_LID_INT_N_HALL1
 #define GPIO_KS_OPEN GPIO_LID_INT_N_HALL2
 
 /* WLC pins */
-#ifdef SECTION_IS_RW
-#define GPIO_PCHG_P0 GPIO_WLC_IRQ_CONN
 #define CONFIG_PERIPHERAL_CHARGER
 #define CONFIG_DEVICE_EVENT
 #define CONFIG_CTN730
-#endif
 
 #ifndef __ASSEMBLER__
 
@@ -111,6 +121,8 @@ void board_reset_pd_mcu(void);
 void board_set_tcpc_power_mode(int port, int mode);
 /* Base detection */
 void base_detect_interrupt(enum gpio_signal signal);
+/* motion sensor interrupt */
+void motion_interrupt(enum gpio_signal signal);
 
 #endif /* !defined(__ASSEMBLER__) */
 

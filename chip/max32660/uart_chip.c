@@ -11,6 +11,7 @@
 #include "uart.h"
 #include "registers.h"
 #include "tmr_regs.h"
+#include "gpio.h"
 #include "gpio_regs.h"
 #include "common.h"
 #include "gcr_regs.h"
@@ -221,7 +222,7 @@ int uart_read_char(void)
 /**
  * Interrupt handlers for UART
  */
-void uart_rxtx_interrupt(void)
+static void uart_rxtx_interrupt(void)
 {
 	/* Process the Console Input */
 	uart_process_input();

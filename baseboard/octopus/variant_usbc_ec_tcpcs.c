@@ -49,10 +49,16 @@ const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 
 /* TODO(crbug.com/826441): Consolidate this logic with other impls */
 static void board_it83xx_hpd_status(const struct usb_mux *me,
-				    int hpd_lvl, int hpd_irq)
+				    mux_state_t mux_state,
+				    bool *ack_required)
 {
+	int hpd_lvl = (mux_state & USB_PD_MUX_HPD_LVL) ? 1 : 0;
+	int hpd_irq = (mux_state & USB_PD_MUX_HPD_IRQ) ? 1 : 0;
 	enum gpio_signal gpio = me->usb_port ?
 		GPIO_USB_C1_HPD_1V8_ODL : GPIO_USB_C0_HPD_1V8_ODL;
+
+	/* This driver does not use host command ACKs */
+	*ack_required = false;
 
 	/* Invert HPD level since GPIOs are active low. */
 	hpd_lvl = !hpd_lvl;
@@ -78,7 +84,7 @@ struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 		.usb_port = USB_PD_PORT_ITE_1,
 		/* Use PS8751 as mux only */
 		.i2c_port = I2C_PORT_USBC1,
-		.i2c_addr_flags = PS8751_I2C_ADDR1_FLAGS,
+		.i2c_addr_flags = PS8XXX_I2C_ADDR1_FLAGS,
 		.flags = USB_MUX_FLAG_NOT_TCPC,
 		.driver = &ps8xxx_usb_mux_driver,
 		.hpd_update = &ps8xxx_tcpc_update_hpd_status,

@@ -9,8 +9,10 @@
 #include "cros_board_info.h"
 #include "gpio.h"
 #include "i2c.h"
+#include "system.h"
 #include "timer.h"
 #include "util.h"
+#include "write_protect.h"
 
 #define CPRINTS(format, args...) cprints(CC_SYSTEM, "CBI " format, ## args)
 
@@ -32,11 +34,8 @@ static int eeprom_is_write_protected(void)
 {
 	if (IS_ENABLED(CONFIG_BYPASS_CBI_EEPROM_WP_CHECK))
 		return 0;
-#if defined(CONFIG_WP_ACTIVE_HIGH)
-	return gpio_get_level(GPIO_WP);
-#else
-	return !gpio_get_level(GPIO_WP_L);
-#endif
+
+	return write_protect_is_asserted();
 }
 
 static int eeprom_write(uint8_t *cbi)
@@ -62,6 +61,14 @@ static int eeprom_write(uint8_t *cbi)
 
 	return EC_SUCCESS;
 }
+
+#ifdef CONFIG_EEPROM_CBI_WP
+void cbi_latch_eeprom_wp(void)
+{
+	CPRINTS("WP latched");
+	gpio_set_level(GPIO_EC_CBI_WP, 1);
+}
+#endif /* CONFIG_EEPROM_CBI_WP */
 
 const struct cbi_storage_driver eeprom_drv = {
 	.store = eeprom_write,

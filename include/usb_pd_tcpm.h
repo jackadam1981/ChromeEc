@@ -65,20 +65,28 @@ static inline enum tcpc_cc_polarity polarity_rm_dts(
 	return (enum tcpc_cc_polarity)(polarity & BIT(0));
 }
 
-enum tcpm_transmit_type {
-	TCPC_TX_SOP = 0,
-	TCPC_TX_SOP_PRIME = 1,
-	TCPC_TX_SOP_PRIME_PRIME = 2,
-	TCPC_TX_SOP_DEBUG_PRIME = 3,
-	TCPC_TX_SOP_DEBUG_PRIME_PRIME = 4,
-	TCPC_TX_HARD_RESET = 5,
-	TCPC_TX_CABLE_RESET = 6,
-	TCPC_TX_BIST_MODE_2 = 7,
-	TCPC_TX_INVALID = 0xf,
+/*
+ * Types of PD data that can be sent or received. The values match the TCPCI bit
+ * field values TRANSMIT[Transmit SOP* Message] (TCPCI r2.0 v1.2, table 4-38)
+ * and RX_BUF_FRAME_TYPE[Received SOP* message] (table 4-37). Note that Hard
+ * Reset, Cable Reset, and BIST Carrier Mode 2 are not really messages.
+ */
+enum tcpci_msg_type {
+	TCPCI_MSG_SOP = 0,
+	TCPCI_MSG_SOP_PRIME = 1,
+	TCPCI_MSG_SOP_PRIME_PRIME = 2,
+	TCPCI_MSG_SOP_DEBUG_PRIME = 3,
+	TCPCI_MSG_SOP_DEBUG_PRIME_PRIME = 4,
+	/* Only a valid register setting for TRANSMIT */
+	TCPCI_MSG_TX_HARD_RESET = 5,
+	TCPCI_MSG_CABLE_RESET = 6,
+	/* Only a valid register setting for TRANSMIT */
+	TCPCI_MSG_TX_BIST_MODE_2 = 7,
+	TCPCI_MSG_INVALID = 0xf,
 };
 
 /* Number of valid Transmit Types */
-#define NUM_SOP_STAR_TYPES (TCPC_TX_SOP_DEBUG_PRIME_PRIME + 1)
+#define NUM_SOP_STAR_TYPES (TCPCI_MSG_SOP_DEBUG_PRIME_PRIME + 1)
 
 enum tcpc_transmit_complete {
 	TCPC_TX_UNSET = -1,
@@ -205,6 +213,16 @@ struct tcpm_drv {
 	bool (*check_vbus_level)(int port, enum vbus_level level);
 
 	/**
+	 * Get VBUS voltage
+	 *
+	 * @param port Type-C port number
+	 * @param vbus read VBUS voltage in mV
+	 *
+	 * @return EC_SUCCESS or error
+	 */
+	int (*get_vbus_voltage)(int port, int *vbus);
+
+	/**
 	 * Set the value of the CC pull-up used when we are a source.
 	 *
 	 * @param port Type-C port number
@@ -302,7 +320,7 @@ struct tcpm_drv {
 	 *
 	 * @return EC_SUCCESS or error
 	 */
-	int (*transmit)(int port, enum tcpm_transmit_type type, uint16_t header,
+	int (*transmit)(int port, enum tcpci_msg_type type, uint16_t header,
 					const uint32_t *data);
 
 	/**
@@ -422,9 +440,19 @@ struct tcpm_drv {
 	 * @return EC_SUCCESS or error
 	 */
 	int (*enter_low_power_mode)(int port);
+
+	/**
+	 * Starts I2C wake sequence for TCPC
+	 *
+	 * NOTE: Do no use tcpc_(read|write) style helper methods in this
+	 * function. You must use i2c_(read|write) directly.
+	 *
+	 * @param port Type-C port number
+	 */
+	void (*wake_low_power_mode)(int port);
 #endif
 
-#ifdef CONFIG_USB_PD_FRS_TCPC
+#ifdef CONFIG_USB_PD_FRS
 	/**
 	 * Enable/Disable TCPC FRS detection
 	 *
@@ -479,6 +507,9 @@ struct tcpm_drv {
  * Bit 4 --> Set to 1 if TCPC is using TCPCI Revision 2.0 but does not support
  *           the vSafe0V bit in the EXTENDED_STATUS_REGISTER
  * Bit 5 --> Set to 1 to prevent TCPC setting debug accessory control
+ * Bit 6 --> TCPC controls VCONN (even when CONFIG_USB_PD_TCPC_VCONN is off)
+ * Bit 7 --> TCPC controls FRS (even when CONFIG_USB_PD_FRS_TCPC is off)
+ * Bit 8 --> TCPC enable VBUS monitoring
  */
 #define TCPC_FLAGS_ALERT_ACTIVE_HIGH	BIT(0)
 #define TCPC_FLAGS_ALERT_OD		BIT(1)
@@ -486,6 +517,9 @@ struct tcpm_drv {
 #define TCPC_FLAGS_TCPCI_REV2_0		BIT(3)
 #define TCPC_FLAGS_TCPCI_REV2_0_NO_VSAFE0V	BIT(4)
 #define TCPC_FLAGS_NO_DEBUG_ACC_CONTROL	BIT(5)
+#define TCPC_FLAGS_CONTROL_VCONN	BIT(6)
+#define TCPC_FLAGS_CONTROL_FRS		BIT(7)
+#define TCPC_FLAGS_VBUS_MONITOR		BIT(8)
 
 struct tcpc_config_t {
 	enum ec_bus_type bus_type;	/* enum ec_bus_type */
@@ -495,6 +529,7 @@ struct tcpc_config_t {
 	const struct tcpm_drv *drv;
 	/* See TCPC_FLAGS_* above */
 	uint32_t flags;
+	enum gpio_signal alert_signal;
 };
 
 #ifndef CONFIG_USB_PD_TCPC_RUNTIME_CONFIG

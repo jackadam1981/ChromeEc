@@ -249,7 +249,7 @@ const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 		.bus_type = EC_BUS_TYPE_I2C,
 		.i2c_info = {
 			.port = I2C_PORT_SUB_USB_C1,
-			.addr_flags = PS8751_I2C_ADDR1_FLAGS,
+			.addr_flags = PS8XXX_I2C_ADDR1_FLAGS,
 		},
 		.drv = &ps8xxx_tcpm_drv,
 	},
@@ -266,7 +266,7 @@ const struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 	{
 		.usb_port = 1,
 		.i2c_port = I2C_PORT_SUB_USB_C1,
-		.i2c_addr_flags = PS8751_I2C_ADDR1_FLAGS,
+		.i2c_addr_flags = PS8XXX_I2C_ADDR1_FLAGS,
 		.driver = &tcpci_tcpm_usb_mux_driver,
 		.hpd_update = &ps8xxx_tcpc_update_hpd_status,
 	},
@@ -364,8 +364,6 @@ struct motion_sensor_t motion_sensors[] = {
 		.mutex = &g_base_mutex,
 		.drv_data = LSM6DSM_ST_DATA(lsm6dsm_data,
 				MOTIONSENSE_TYPE_ACCEL),
-		.int_signal = GPIO_BASE_SIXAXIS_INT_L,
-		.flags = MOTIONSENSE_FLAG_INT_SIGNAL,
 		.port = I2C_PORT_SENSOR,
 		.i2c_spi_addr_flags = LSM6DSM_ADDR0_FLAGS,
 		.rot_standard_ref = &base_standard_ref,
@@ -393,8 +391,6 @@ struct motion_sensor_t motion_sensors[] = {
 		.mutex = &g_base_mutex,
 		.drv_data = LSM6DSM_ST_DATA(lsm6dsm_data,
 				MOTIONSENSE_TYPE_GYRO),
-		.int_signal = GPIO_BASE_SIXAXIS_INT_L,
-		.flags = MOTIONSENSE_FLAG_INT_SIGNAL,
 		.port = I2C_PORT_SENSOR,
 		.i2c_spi_addr_flags = LSM6DSM_ADDR0_FLAGS,
 		.default_range = 1000 | ROUND_UP_FLAG, /* dps */
@@ -705,9 +701,8 @@ const struct temp_sensor_t temp_sensors[] = {
 };
 BUILD_ASSERT(ARRAY_SIZE(temp_sensors) == TEMP_SENSOR_COUNT);
 
-#ifndef TEST_BUILD
 /* This callback disables keyboard when convertibles are fully open */
-void lid_angle_peripheral_enable(int enable)
+__override void lid_angle_peripheral_enable(int enable)
 {
 	int chipset_in_s0 = chipset_in_state(CHIPSET_STATE_ON);
 
@@ -731,7 +726,6 @@ void lid_angle_peripheral_enable(int enable)
 			keyboard_scan_enable(0, KB_SCAN_DISABLE_LID_ANGLE);
 	}
 }
-#endif
 
 __override void ocpc_get_pid_constants(int *kp, int *kp_div,
 				       int *ki, int *ki_div,

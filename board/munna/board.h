@@ -99,7 +99,7 @@
 #define I2C_PORT_USB_MUX            0
 #define I2C_PORT_CHARGER            2
 #define I2C_PORT_SENSORS            2
-#define I2C_PORT_IO_EXPANDER_IT8801 2
+#define IT8801_KEYBOARD_PWM_I2C_PORT 2
 #define I2C_PORT_VIRTUAL_BATTERY    I2C_PORT_BATTERY
 #define I2C_PORT_BATTERY            3
 #define I2C_PORT_TCPC0              0
@@ -109,8 +109,11 @@
 #define I2C_CONTROLLER_COUNT        3
 #define I2C_PORT_COUNT              3
 
+/* IT8801 I2C address */
+#define IT8801_KEYBOARD_PWM_I2C_ADDR_FLAGS    IT8801_I2C_ADDR1
+
 /* Enable Accel over SPI */
-#define CONFIG_SPI_ACCEL_PORT    0  /* The first SPI master port (SPI2) */
+#define CONFIG_SPI_ACCEL_PORT    0  /* The first SPI controller port (SPI2) */
 
 #define CONFIG_KEYBOARD_PROTOCOL_MKBP
 #define CONFIG_MKBP_EVENT
@@ -121,7 +124,7 @@
 		 EC_HOST_EVENT_MASK(EC_HOST_EVENT_POWER_BUTTON))
 
 #undef CONFIG_GMR_TABLET_MODE
-#undef GMR_TABLET_MODE_GPIO_L
+#undef GPIO_TABLET_MODE_L
 #undef CONFIG_TABLET_MODE
 #undef CONFIG_TABLET_MODE_SWITCH
 

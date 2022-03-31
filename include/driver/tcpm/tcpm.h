@@ -22,7 +22,7 @@
 
 #ifndef CONFIG_USB_PD_TCPC
 
-/* I2C wrapper functions - get I2C port / slave addr from config struct. */
+/* I2C wrapper functions - get I2C port / peripheral addr from config struct. */
 #ifndef CONFIG_USB_PD_TCPC_LOW_POWER
 static inline int tcpc_addr_write(int port, int i2c_addr, int reg, int val)
 {
@@ -227,13 +227,14 @@ static inline int tcpm_sop_prime_enable(int port, bool enable)
 
 static inline int tcpm_set_vconn(int port, int enable)
 {
-#ifdef CONFIG_USB_PD_TCPC_VCONN
-	int rv;
+	if (IS_ENABLED(CONFIG_USB_PD_TCPC_VCONN) ||
+	    tcpc_config[port].flags & TCPC_FLAGS_CONTROL_VCONN) {
+		int rv;
 
-	rv = tcpc_config[port].drv->set_vconn(port, enable);
-	if (rv)
-		return rv;
-#endif
+		rv = tcpc_config[port].drv->set_vconn(port, enable);
+		if (rv)
+			return rv;
+	}
 
 	return tcpm_sop_prime_enable(port, enable);
 }
@@ -271,7 +272,7 @@ static inline int tcpm_reset_bist_type_2(int port)
  */
 int tcpm_enqueue_message(int port);
 
-static inline int tcpm_transmit(int port, enum tcpm_transmit_type type,
+static inline int tcpm_transmit(int port, enum tcpci_msg_type type,
 				uint16_t header, const uint32_t *data)
 {
 	return tcpc_config[port].drv->transmit(port, type, header, data);
@@ -355,8 +356,15 @@ static inline int tcpm_enter_low_power_mode(int port)
 {
 	return tcpc_config[port].drv->enter_low_power_mode(port);
 }
+
+static inline void tcpm_wake_low_power_mode(int port)
+{
+	if (tcpc_config[port].drv->wake_low_power_mode)
+		tcpc_config[port].drv->wake_low_power_mode(port);
+}
 #else
 int tcpm_enter_low_power_mode(int port);
+void tcpm_wake_low_power_mode(int port);
 #endif
 
 #ifdef CONFIG_CMD_I2C_STRESS_TEST_TCPC
@@ -392,7 +400,24 @@ static inline enum ec_error_list tcpc_set_bist_test_mode(int port, bool enable)
 	return rv;
 }
 
-#ifdef CONFIG_USB_PD_FRS_TCPC
+/*
+ * Returns true if the port controls FRS using the TCPC.
+ */
+static inline int tcpm_tcpc_has_frs_control(int port)
+{
+	if (!IS_ENABLED(CONFIG_USB_PD_FRS))
+		return 0;
+
+	if (IS_ENABLED(CONFIG_USB_PD_FRS_TCPC))
+		return 1;
+
+	if (tcpc_config[port].flags & TCPC_FLAGS_CONTROL_FRS)
+		return 1;
+
+	return 0;
+}
+
+#ifdef CONFIG_USB_PD_FRS
 static inline int tcpm_set_frs_enable(int port, int enable)
 {
 	const struct tcpm_drv *tcpc;
@@ -407,7 +432,7 @@ static inline int tcpm_set_frs_enable(int port, int enable)
 		rv = tcpc->set_frs_enable(port, enable);
 	return rv;
 }
-#endif /* defined(CONFIG_USB_PD_FRS_TCPC) */
+#endif /* defined(CONFIG_USB_PD_FRS) */
 
 #else /* CONFIG_USB_PD_TCPC */
 
@@ -532,7 +557,7 @@ void tcpm_enable_auto_discharge_disconnect(int port, int enable);
  *
  * @return EC_SUCCESS or error
  */
-int tcpm_transmit(int port, enum tcpm_transmit_type type, uint16_t header,
+int tcpm_transmit(int port, enum tcpci_msg_type type, uint16_t header,
 		  const uint32_t *data);
 
 /**
