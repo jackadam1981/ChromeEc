@@ -35,6 +35,8 @@
 #define CPRINTF(format, args...) cprintf(CC_USBPD, format, ## args)
 #define CPRINTS(format, args...) cprints(CC_USBPD, format, ## args)
 
+#define RESUME  0
+
 /* USBC TCPC configuration */
 const struct tcpc_config_t tcpc_config[] = {
 	[USBC_PORT_C0] = {
@@ -282,3 +284,20 @@ __override enum tbt_compat_cable_speed board_get_max_tbt_speed(int port)
 
 	return TBT_SS_TBT_GEN3;
 }
+
+/*
+ * When TBT update procress begin, PD enter suspend.
+ * If we press shutdown button when PD suspend, the PD function
+ * will be lost during S5.
+ * So resume PD from suspend when enter S5.
+ */
+static void resume_port(void)
+{
+	int port;
+
+	for  (port = 0; port < CONFIG_USB_PD_PORT_MAX_COUNT; port++) {
+		if (!pd_is_port_enabled(port))
+			pd_set_suspend(port, RESUME);
+	}
+}
+DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, resume_port, HOOK_PRIO_DEFAULT);
