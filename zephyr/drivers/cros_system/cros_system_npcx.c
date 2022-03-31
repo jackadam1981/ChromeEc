@@ -4,7 +4,6 @@
  */
 
 #include <arch/arm/aarch32/cortex_m/cmsis.h>
-#include <drivers/cros_system.h>
 #include <drivers/gpio.h>
 #include <drivers/watchdog.h>
 #include <logging/log.h>
@@ -12,51 +11,14 @@
 #include <soc/nuvoton_npcx/reg_def_cros.h>
 #include <sys/util.h>
 
-#include "gpio.h"
+#include "drivers/cros_system.h"
+#include "gpio/gpio_int.h"
 #include "rom_chip.h"
 #include "soc_gpio.h"
 #include "soc_miwu.h"
 #include "system.h"
 
 LOG_MODULE_REGISTER(cros_system, LOG_LEVEL_ERR);
-
-/**
- * @brief Get a node from path '/hibernate_wakeup_pins' which has a property
- *        'wakeup-pins' contains GPIO list for hibernate wake-up
- *
- * @return node identifier with that path.
- */
-#define SYSTEM_DT_NODE_HIBERNATE_CONFIG DT_INST(0, cros_ec_hibernate_wake_pins)
-
-/**
- * @brief Get the length of 'wakeup-pins' property
- *
- * @return length of 'wakeup-pins' prop which type is 'phandles'
- */
-#define SYSTEM_DT_NODE_WAKEUP_PIN_LEN \
-	DT_PROP_LEN(SYSTEM_DT_NODE_HIBERNATE_CONFIG, wakeup_pins)
-
-/**
- * @brief Get a node identifier from a phandle in property 'wakeup-pins' at
- *        index i.
- *
- * @param i index of 'wakeup-pins' prop which type is 'phandles'
- * @return node identifier with that path.
- */
-#define SYSTEM_DT_NODE_WAKEUP_PIN_BY_IDX(i) \
-	DT_PHANDLE_BY_IDX(SYSTEM_DT_NODE_HIBERNATE_CONFIG, wakeup_pins, i)
-
-/**
- * @brief Get the enum using in chromium system by index i in 'wakeup-pins'
- *        list.
- *
- * @param i index of 'wakeup-pins' prop which type is 'phandles'
- * @return GPIO enumeration
- */
-#define SYSTEM_DT_WAKEUP_GPIO_ENUM_BY_IDX(i, _)                           \
-	COND_CODE_1(DT_NODE_HAS_PROP(SYSTEM_DT_NODE_WAKEUP_PIN_BY_IDX(i), \
-				     enum_name),                          \
-		    (GPIO_SIGNAL(SYSTEM_DT_NODE_WAKEUP_PIN_BY_IDX(i)), ), ())
 
 /* Driver config */
 struct cros_system_npcx_config {
@@ -102,10 +64,15 @@ struct cros_system_npcx_data {
  * total RAM size = code ram + data ram + extra 2K for ROM functions
  * divided by the block size 32k.
  */
+#if DT_NODE_EXISTS(DT_NODELABEL(bootloader_ram))
+#define BT_RAM_SIZE DT_REG_SIZE(DT_NODELABEL(bootloader_ram))
+#else
+#define BT_RAM_SIZE 0
+#endif
 #define DATA_RAM_SIZE DT_REG_SIZE(DT_NODELABEL(sram0))
 #define CODE_RAM_SIZE DT_REG_SIZE(DT_NODELABEL(flash0))
 #define NPCX_RAM_BLOCK_COUNT \
-	((DATA_RAM_SIZE + CODE_RAM_SIZE + KB(2)) / NPCX_RAM_BLOCK_SIZE)
+	((DATA_RAM_SIZE + CODE_RAM_SIZE + BT_RAM_SIZE) / NPCX_RAM_BLOCK_SIZE)
 
 /* Valid bit-depth of RAM block Power-Down control (RAM_PD) registers. Use its
  * mask to power down all unnecessary RAM blocks before hibernating.
@@ -115,7 +82,7 @@ struct cros_system_npcx_data {
 
 /* Get saved reset flag address in battery-backed ram */
 #define BBRAM_SAVED_RESET_FLAG_ADDR                         \
-	(DT_REG_ADDR(DT_INST(0, nuvoton_npcx_cros_bbram)) + \
+	(DT_REG_ADDR(DT_INST(0, nuvoton_npcx_bbram)) + \
 	 DT_PROP(DT_PATH(named_bbram_regions, saved_reset_flags), offset))
 
 /* Soc specific system local functions */
@@ -179,6 +146,13 @@ static void system_npcx_disable_instant_wakeup(void)
 	inst_pmc->ENIDL_CTL &= ~BIT(NPCX_ENIDL_CTL_LP_WK_CTL);
 }
 
+/*
+ * Fake wake ISR handler, needed for pins that do not have a handler.
+ */
+void wake_isr(enum gpio_signal signal)
+{
+}
+
 static void system_npcx_set_wakeup_gpios_before_hibernate(void)
 {
 	const uintptr_t miwu_base[] = {
@@ -202,19 +176,43 @@ static void system_npcx_set_wakeup_gpios_before_hibernate(void)
 		}
 	}
 
-	static const int wakeup_pin_list[] = {
 #if DT_NODE_EXISTS(SYSTEM_DT_NODE_HIBERNATE_CONFIG)
-		UTIL_LISTIFY(SYSTEM_DT_NODE_WAKEUP_PIN_LEN,
-			     SYSTEM_DT_WAKEUP_GPIO_ENUM_BY_IDX, _)
-#endif
-	};
 
-	/* Reconfigure wake-up GPIOs */
-	for (int i = 0; i < ARRAY_SIZE(wakeup_pin_list); i++) {
-		gpio_reset(wakeup_pin_list[i]);
-		/* Re-enable interrupt for wake-up inputs */
-		gpio_enable_interrupt(wakeup_pin_list[i]);
-	}
+/*
+ * Get the interrupt DTS node for this wakeup pin
+ */
+#define WAKEUP_INT(id, prop, idx)  DT_PHANDLE_BY_IDX(id, prop, idx)
+
+/*
+ * Get the named-gpio node for this wakeup pin by reading the
+ * irq-gpio property from the interrupt node.
+ */
+#define WAKEUP_NGPIO(id, prop, idx) \
+	DT_PHANDLE(WAKEUP_INT(id, prop, idx), irq_pin)
+
+/*
+ * Reset and re-enable interrupts on this wake pin.
+ */
+#define WAKEUP_SETUP(id, prop, idx)		\
+do {									       \
+	gpio_pin_configure_dt(GPIO_DT_FROM_NODE(WAKEUP_NGPIO(id, prop, idx)),  \
+			      GPIO_INPUT);				       \
+	gpio_enable_dt_interrupt(					       \
+		GPIO_INT_FROM_NODE(WAKEUP_INT(id, prop, idx)));	       \
+	} while (0);
+
+/*
+ * For all the wake-pins, re-init the GPIO and re-enable the interrupt.
+ */
+	DT_FOREACH_PROP_ELEM(SYSTEM_DT_NODE_HIBERNATE_CONFIG,
+			     wakeup_irqs,
+			     WAKEUP_SETUP);
+
+#undef WAKEUP_INT
+#undef WAKEUP_NGPIO
+#undef WAKEUP_SETUP
+
+#endif
 }
 
 /*
@@ -508,6 +506,16 @@ static int cros_system_npcx_soc_reset(const struct device *dev)
 	return 0;
 }
 
+#if defined(CONFIG_PLATFORM_EC_HIBERNATE_PSL)
+#if DT_HAS_COMPAT_STATUS_OKAY(cros_ec_hibernate_wake_pins)
+#error "cros-ec,hibernate-wake-pins cannot be used with HIBERNATE_PSL"
+#endif
+#else
+#if DT_HAS_COMPAT_STATUS_OKAY(nuvoton_npcx_pslctrl_def)
+#error "vsby-psl-in-list cannot be used with non-HIBERNATE_PSL"
+#endif
+#endif
+
 static int cros_system_npcx_hibernate(const struct device *dev,
 				      uint32_t seconds, uint32_t microseconds)
 {
@@ -550,7 +558,7 @@ static const struct cros_system_driver_api cros_system_driver_npcx_api = {
 	.chip_vendor = cros_system_npcx_get_chip_vendor,
 	.chip_name = cros_system_npcx_get_chip_name,
 	.chip_revision = cros_system_npcx_get_chip_revision,
-#ifdef CONFIG_SOC_POWER_MANAGEMENT_TRACE
+#ifdef CONFIG_NPCX_PM_TRACE
 	.deep_sleep_ticks = cros_system_npcx_deep_sleep_ticks,
 #endif
 };

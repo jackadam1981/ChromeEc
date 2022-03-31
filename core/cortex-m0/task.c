@@ -22,7 +22,7 @@ typedef union {
 		 * for __switchto() to work.
 		 */
 		uint32_t sp;       /* Saved stack pointer for context switch */
-		uint32_t events;   /* Bitmaps of received events */
+		atomic_t events;   /* Bitmaps of received events */
 		uint64_t runtime;  /* Time spent in task */
 		uint32_t *stack;   /* Start of stack */
 	};
@@ -136,13 +136,13 @@ task_ *current_task = (task_ *)scratchpad;
  * can do their init within a task switching context.  The hooks task will then
  * make a call to enable all tasks.
  */
-static uint32_t tasks_ready = BIT(TASK_ID_HOOKS);
+static atomic_t tasks_ready = BIT(TASK_ID_HOOKS);
 /*
  * Initially allow only the HOOKS and IDLE task to run, regardless of ready
  * status, in order for HOOK_INIT to complete before other tasks.
  * task_enable_all_tasks() will open the flood gates.
  */
-static uint32_t tasks_enabled = BIT(TASK_ID_HOOKS) | BIT(TASK_ID_IDLE);
+static atomic_t tasks_enabled = BIT(TASK_ID_HOOKS) | BIT(TASK_ID_IDLE);
 
 static int start_called;  /* Has task swapping started */
 
@@ -161,20 +161,32 @@ void interrupt_enable(void)
 	asm("cpsie i");
 }
 
-inline int in_interrupt_context(void)
+inline bool is_interrupt_enabled(void)
 {
-	int ret;
-	asm("mrs %0, ipsr\n"              /* read exception number */
-	    "lsl %0, #23\n" : "=r"(ret)); /* exception bits are the 9 LSB */
-	return ret;
+	int primask;
+
+	/* Interrupts are enabled when PRIMASK bit is 0 */
+	asm("mrs %0, primask":"=r"(primask));
+
+	return !(primask & 0x1);
 }
 
+inline bool in_interrupt_context(void)
+{
+	int ret;
+	asm("mrs %0, ipsr\n" /* read exception number */
+	    : "=r"(ret));
+	return ret & GENMASK(8, 0); /* exception bits are the 9 LSB */
+}
+
+#ifdef CONFIG_TASK_PROFILING
 static inline int get_interrupt_context(void)
 {
 	int ret;
 	asm("mrs %0, ipsr\n" : "=r"(ret)); /* read exception number */
 	return ret & 0x1ff;                /* exception bits are the 9 LSB */
 }
+#endif
 
 task_id_t task_get_current(void)
 {
@@ -185,7 +197,7 @@ task_id_t task_get_current(void)
 	return current_task - tasks;
 }
 
-uint32_t *task_get_event_bitmap(task_id_t tskid)
+atomic_t *task_get_event_bitmap(task_id_t tskid)
 {
 	task_ *tsk = __task_id_to_ptr(tskid);
 	return &tsk->events;
@@ -292,7 +304,9 @@ void task_start_irq_handler(void *excep_return)
 	 * Continue iff the tasks are ready and we are not called from another
 	 * exception (as the time accouting is done in the outer irq).
 	 */
-	if (!start_called || ((uint32_t)excep_return & 0xf) == 1)
+	if (!start_called
+	    || (((uint32_t)excep_return & EXC_RETURN_MODE_MASK)
+		== EXC_RETURN_MODE_HANDLER))
 		return;
 
 	exc_start_time = t;
@@ -310,7 +324,9 @@ void task_end_irq_handler(void *excep_return)
 	 * Continue iff the tasks are ready and we are not called from another
 	 * exception (as the time accouting is done in the outer irq).
 	 */
-	if (!start_called || ((uint32_t)excep_return & 0xf) == 1)
+	if (!start_called
+	    || (((uint32_t)excep_return & EXC_RETURN_MODE_MASK)
+		== EXC_RETURN_MODE_HANDLER))
 		return;
 
 	/* Track time in interrupts */
@@ -326,6 +342,12 @@ static uint32_t __wait_evt(int timeout_us, task_id_t resched)
 	uint32_t evt;
 	int ret __attribute__((unused));
 
+	/*
+	 * Scheduling task when interrupts are disabled will result in Forced
+	 * Hard Fault because disabling interrupt using 'cpsid i' also disables
+	 * SVCall handler (because it has configurable priority)
+	 */
+	ASSERT(is_interrupt_enabled());
 	ASSERT(!in_interrupt_context());
 
 	if (timeout_us > 0) {
@@ -363,7 +385,7 @@ uint32_t task_set_event(task_id_t tskid, uint32_t event)
 	atomic_or(&receiver->events, event);
 
 	/* Re-schedule if priorities have changed */
-	if (in_interrupt_context()) {
+	if (in_interrupt_context() || !is_interrupt_enabled()) {
 		/* The receiver might run again */
 		atomic_or(&tasks_ready, 1 << tskid);
 		if (start_called) {
@@ -426,7 +448,8 @@ void task_enable_all_tasks(void)
 	/* Mark all tasks as ready and able to run. */
 	tasks_ready = tasks_enabled = BIT(TASK_ID_COUNT) - 1;
 	/* Reschedule the highest priority task. */
-	__schedule(0, 0);
+	if (is_interrupt_enabled())
+		__schedule(0, 0);
 }
 
 void task_enable_task(task_id_t tskid)
@@ -438,7 +461,8 @@ void task_disable_task(task_id_t tskid)
 {
 	atomic_clear_bits(&tasks_enabled, BIT(tskid));
 
-	if (!in_interrupt_context() && tskid == task_get_current())
+	if (!in_interrupt_context() && is_interrupt_enabled() &&
+	    tskid == task_get_current())
 		__schedule(0, 0);
 }
 
@@ -545,7 +569,7 @@ void task_print_list(void)
 	ccputs("Task Ready Name         Events      Time (s)  StkUsed\n");
 
 	for (i = 0; i < TASK_ID_COUNT; i++) {
-		char is_ready = (tasks_ready & (1<<i)) ? 'R' : ' ';
+		char is_ready = ((uint32_t)tasks_ready & BIT(i)) ? 'R' : ' ';
 		uint32_t *sp;
 
 		int stackused = tasks_init[i].stack_size;
@@ -556,13 +580,13 @@ void task_print_list(void)
 			stackused -= sizeof(uint32_t);
 
 		ccprintf("%4d %c %-16s %08x %11.6lld  %3d/%3d\n", i, is_ready,
-			 task_names[i], tasks[i].events, tasks[i].runtime,
+			 task_names[i], (int)tasks[i].events, tasks[i].runtime,
 			 stackused, tasks_init[i].stack_size);
 		cflush();
 	}
 }
 
-int command_task_info(int argc, char **argv)
+static int command_task_info(int argc, char **argv)
 {
 #ifdef CONFIG_TASK_PROFILING
 	int total = 0;
@@ -599,10 +623,10 @@ DECLARE_CONSOLE_COMMAND(taskinfo, command_task_info,
 static int command_task_ready(int argc, char **argv)
 {
 	if (argc < 2) {
-		ccprintf("tasks_ready: 0x%08x\n", tasks_ready);
+		ccprintf("tasks_ready: 0x%08x\n", (int)tasks_ready);
 	} else {
 		tasks_ready = strtoi(argv[1], NULL, 16);
-		ccprintf("Setting tasks_ready to 0x%08x\n", tasks_ready);
+		ccprintf("Setting tasks_ready to 0x%08x\n", (int)tasks_ready);
 		__schedule(0, 0);
 	}
 

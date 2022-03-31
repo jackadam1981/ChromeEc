@@ -5,7 +5,6 @@
 /* nucleo-f411re development board configuration */
 
 #include "adc.h"
-#include "adc_chip.h"
 #include "common.h"
 #include "console.h"
 #include "driver/accelgyro_bmi_common.h"
@@ -53,8 +52,13 @@ BUILD_ASSERT(ARRAY_SIZE(adc_channels) == ADC_CH_COUNT);
 
 /* I2C ports */
 const struct i2c_port_t i2c_ports[] = {
-	{"master", I2C_PORT_MASTER, 100,
-	 GPIO_MASTER_I2C_SCL, GPIO_MASTER_I2C_SDA},
+	{
+		.name = "master",
+		.port = I2C_PORT_MASTER,
+		.kbps = 100,
+		.scl  = GPIO_MASTER_I2C_SCL,
+		.sda  = GPIO_MASTER_I2C_SDA
+	},
 };
 
 const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
@@ -113,7 +117,7 @@ const unsigned int motion_sensor_count = ARRAY_SIZE(motion_sensors);
 
 #ifdef CONFIG_DMA_HELP
 #include "dma.h"
-int command_dma_help(int argc, char **argv)
+static int command_dma_help(int argc, char **argv)
 {
 	dma_dump(STM32_DMA2_STREAM0);
 	dma_test(STM32_DMA2_STREAM0);

@@ -45,7 +45,7 @@ static void test_button_init(void)
 
 static void test_setup_espi(void)
 {
-#ifdef CONFIG_PLATFORM_EC_ESPI
+#ifdef CONFIG_PLATFORM_EC_HOST_INTERFACE_ESPI
 	zassert_unreachable("TODO: Implement this test.");
 #else
 	ztest_test_skip();
@@ -63,44 +63,12 @@ static void test_watchdog_init(void)
 
 static void test_vboot_main(void)
 {
-#ifdef CONFIG_PLATFORM_EC_VBOOT
+#ifdef CONFIG_PLATFORM_EC_VBOOT_EFS2
 	zassert_unreachable("TODO: Implement this test.");
 #else
 	ztest_test_skip();
 #endif
 }
-
-#ifdef CONFIG_PLATFORM_EC_HOOKS
-static int sample_init_hook_count;
-/**
- * Just a sample hook.
- */
-static void sample_init_hook(void)
-{
-	printk("Running hook.\n");
-	sample_init_hook_count++;
-}
-DECLARE_HOOK(HOOK_INIT, sample_init_hook, HOOK_PRIO_DEFAULT);
-
-/**
- * @brief Test EC App main runs hooks of type HOOK_INIT.
- *
- * This test installs a hook, runs main and verifies that the hook ran.
- *
- */
-static void test_hook_notify_init(void)
-{
-	sample_init_hook_count = 0;
-	ec_app_main();
-	zassert_equal(1, sample_init_hook_count,
-		      "Expected sample_init_hook to run once.");
-}
-#else
-static void test_hook_notify_init(void)
-{
-	ztest_test_skip();
-}
-#endif
 
 static void test_start_ec_tasks(void)
 {
@@ -120,7 +88,6 @@ void test_main(void)
 			 ztest_unit_test(test_setup_espi),
 			 ztest_unit_test(test_watchdog_init),
 			 ztest_unit_test(test_vboot_main),
-			 ztest_unit_test(test_hook_notify_init),
 			 ztest_unit_test(test_start_ec_tasks));
 
 	ztest_run_test_suite(ec_app_tests);

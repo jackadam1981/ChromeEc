@@ -22,6 +22,7 @@
 #include "task.h"
 #include "usb_charge.h"
 #include "usb_pd.h"
+#include "usb_pd_flags.h"
 #include "usbc_ppc.h"
 #include "util.h"
 
@@ -81,11 +82,11 @@ void usb_charger_vbus_change(int port, int vbus_level)
 		usb_charger_reset_charge(port);
 #endif
 
-#if (defined(CONFIG_USB_PD_VBUS_DETECT_CHARGER) \
-	|| defined(CONFIG_USB_PD_VBUS_DETECT_PPC))
-	/* USB PD task */
-	task_wake(PD_PORT_TO_TASK_ID(port));
-#endif
+	if ((get_usb_pd_vbus_detect() == USB_PD_VBUS_DETECT_CHARGER) ||
+		(get_usb_pd_vbus_detect() == USB_PD_VBUS_DETECT_PPC)) {
+		/* USB PD task */
+		task_wake(PD_PORT_TO_TASK_ID(port));
+	}
 }
 
 void usb_charger_reset_charge(int port)
@@ -124,11 +125,18 @@ static void usb_charger_init(void)
 		update_vbus_supplier(i, pd_is_vbus_present(i));
 	}
 }
-DECLARE_HOOK(HOOK_INIT, usb_charger_init, HOOK_PRIO_CHARGE_MANAGER_INIT + 1);
+DECLARE_HOOK(HOOK_INIT, usb_charger_init, HOOK_PRIO_POST_CHARGE_MANAGER);
 
 void usb_charger_task(void *u)
 {
 	int port = TASK_ID_TO_USB_CHG_PORT(task_get_current());
+
+	/*
+	 * The actual number of ports may be less than the maximum
+	 * configured, so only run the task if the port exists.
+	 */
+	if (port >= board_get_usb_pd_port_count())
+		return;
 
 	ASSERT(bc12_ports[port].drv->usb_charger_task);
 	bc12_ports[port].drv->usb_charger_task(port);

@@ -181,7 +181,7 @@ const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 		.bus_type = EC_BUS_TYPE_I2C,
 		.i2c_info = {
 			.port = I2C_PORT_I2C1,
-			.addr_flags = PS8751_I2C_ADDR2_FLAGS,
+			.addr_flags = PS8XXX_I2C_ADDR2_FLAGS,
 		},
 		.drv = &ps8xxx_tcpm_drv,
 	},
@@ -198,7 +198,7 @@ const struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 	[USB_PD_PORT_DP] = {
 		.usb_port = USB_PD_PORT_DP,
 		.i2c_port = I2C_PORT_I2C1,
-		.i2c_addr_flags = PS8751_I2C_ADDR2_FLAGS,
+		.i2c_addr_flags = PS8XXX_I2C_ADDR2_FLAGS,
 		.driver = &tcpci_tcpm_usb_mux_driver,
 		.hpd_update = &ps8xxx_tcpc_update_hpd_status,
 	},
@@ -344,6 +344,30 @@ int dock_get_mf_preference(void)
 
 	return mf;
 }
+
+static void board_usb_tc_connect(void)
+{
+	int port = TASK_ID_TO_PD_PORT(task_get_current());
+
+	/*
+	 * The EC needs to indicate to the MST hub when the host port is
+	 * attached. GPIO_UFP_PLUG_DET is used for this purpose.
+	 */
+	if (port == USB_PD_PORT_HOST)
+		gpio_set_level(GPIO_UFP_PLUG_DET, 0);
+}
+DECLARE_HOOK(HOOK_USB_PD_CONNECT, board_usb_tc_connect, HOOK_PRIO_DEFAULT);
+
+static void board_usb_tc_disconnect(void)
+{
+	int port = TASK_ID_TO_PD_PORT(task_get_current());
+
+	/* Only the host port disconnect is relevant */
+	if (port == USB_PD_PORT_HOST)
+		gpio_set_level(GPIO_UFP_PLUG_DET, 1);
+}
+DECLARE_HOOK(HOOK_USB_PD_DISCONNECT, board_usb_tc_disconnect, \
+	     HOOK_PRIO_DEFAULT);
 
 #endif /* SECTION_IS_RW */
 
