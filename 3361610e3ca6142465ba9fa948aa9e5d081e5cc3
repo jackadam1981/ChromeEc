@@ -89,6 +89,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d6459fff_56f78731",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2813,
+      "author": {
+        "id": 1466877
+      },
+      "writtenOn": "2022-03-31T21:23:42Z",
+      "side": 1,
+      "message": "You\u0027re correct. This was confusing to sift through. Cr50 does everything native (LE) for this command. To match, Ti50 explicitly does LE. We could add le32toh here and make it more \"official\".\n\nOddly, set log timestamp does make everything big endian. Not sure how this command ended up being an exception.",
+      "parentUuid": "3e5359a7_da1c341d",
+      "range": {
+        "startLine": 2813,
+        "startChar": 23,
+        "endLine": 2813,
+        "endChar": 33
+      },
+      "revId": "3361610e3ca6142465ba9fa948aa9e5d081e5cc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1a1dbe1f_7de3fc90",
         "filename": "extra/usb_updater/gsctool.c",
         "patchSetId": 3
