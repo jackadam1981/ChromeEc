@@ -157,6 +157,9 @@ enum vendor_cmd_cc {
 
 	VENDOR_CC_AP_RO_VALIDATE = 58,
 
+	/* POP_LOG_ENTRY with a 64 bit previous timestamp in ms */
+	VENDOR_CC_POP_LOG_ENTRY_MS = 59,
+
 	LAST_VENDOR_COMMAND = 65535,
 };
 
