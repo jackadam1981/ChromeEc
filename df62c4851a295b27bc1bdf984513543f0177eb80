@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2edfd7fd_8b5064dc",
+        "filename": "zephyr/shim/src/hooks.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2022-03-31T15:28:08Z",
+      "side": 1,
+      "message": "nit: bet there is something better to use here than a magic number 😊",
+      "range": {
+        "startLine": 102,
+        "startChar": 53,
+        "endLine": 102,
+        "endChar": 55
+      },
+      "revId": "df62c4851a295b27bc1bdf984513543f0177eb80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
