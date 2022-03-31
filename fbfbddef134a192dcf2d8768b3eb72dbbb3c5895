@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dba22f61_362415c6",
+        "filename": "util/fptool.py",
+        "patchSetId": 10
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-03-31T23:07:17Z",
+      "side": 1,
+      "message": "Since this appears to be checking kernel version, I would name it as `kernel_version_ge`.",
+      "range": {
+        "startLine": 72,
+        "startChar": 4,
+        "endLine": 72,
+        "endChar": 10
+      },
+      "revId": "fbfbddef134a192dcf2d8768b3eb72dbbb3c5895",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63358612_43a63c13",
+        "filename": "util/fptool.py",
+        "patchSetId": 10
+      },
+      "lineNbr": 406,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-03-31T23:07:17Z",
+      "side": 1,
+      "message": "I am going to hold off on reviewing this change for now, since you\u0027re going to be making [changes to remove `parse_gpio_ranges`](https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3405637/comments/de628595_fdf7497a)",
+      "range": {
+        "startLine": 406,
+        "startChar": 8,
+        "endLine": 406,
+        "endChar": 47
+      },
+      "revId": "fbfbddef134a192dcf2d8768b3eb72dbbb3c5895",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
