@@ -31,4 +31,7 @@ void uart_init_pinmux(void)
 	AP_GPIO_MODE12_CLR = 0x77000000;
 	AP_GPIO_MODE12_SET = 0x55000000;
 #endif
+	/* set AP GPIO10 and GPIO11 to alt func 2, ADSP UART */
+	AP_GPIO_MODE1_CLR = 0x00007700;
+	AP_GPIO_MODE1_SET = 0x00003300;
 }
