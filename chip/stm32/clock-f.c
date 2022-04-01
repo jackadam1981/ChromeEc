@@ -336,7 +336,7 @@ void rtc_alarm_irq(void)
 #endif
 }
 
-static void __rtc_alarm_irq(void)
+static void __keep __rtc_alarm_irq(void)
 {
 	rtc_alarm_irq();
 }
