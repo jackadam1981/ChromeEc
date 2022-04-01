@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "138076d6_494955f7",
+        "filename": "zephyr/projects/nissa/cbi.dts",
+        "patchSetId": 6
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-04-01T05:10:02Z",
+      "side": 1,
+      "message": "This doesn\u0027t seem very descriptive; perhaps \"describe mainboard orientation in chassis\" since this describes which direction the sensors should consider \"up.\"",
+      "range": {
+        "startLine": 62,
+        "startChar": 28,
+        "endLine": 62,
+        "endChar": 55
+      },
+      "revId": "9dcbca8b0218fe5842fc623b9a07cf1bfd27baf7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
