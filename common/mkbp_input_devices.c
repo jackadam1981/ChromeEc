@@ -115,7 +115,7 @@ static void mkbp_lid_change(void)
 	mkbp_update_switches(EC_MKBP_LID_OPEN, lid_is_open());
 }
 DECLARE_HOOK(HOOK_LID_CHANGE, mkbp_lid_change, HOOK_PRIO_LAST);
-DECLARE_HOOK(HOOK_INIT, mkbp_lid_change, HOOK_PRIO_INIT_LID+1);
+DECLARE_HOOK(HOOK_INIT, mkbp_lid_change, HOOK_PRIO_POST_LID);
 #endif
 
 #ifdef CONFIG_TABLET_MODE_SWITCH
@@ -124,7 +124,7 @@ static void mkbp_tablet_mode_change(void)
 	mkbp_update_switches(EC_MKBP_TABLET_MODE, tablet_get_mode());
 }
 DECLARE_HOOK(HOOK_TABLET_MODE_CHANGE, mkbp_tablet_mode_change, HOOK_PRIO_LAST);
-DECLARE_HOOK(HOOK_INIT, mkbp_tablet_mode_change, HOOK_PRIO_INIT_LID+1);
+DECLARE_HOOK(HOOK_INIT, mkbp_tablet_mode_change, HOOK_PRIO_POST_LID);
 #endif
 
 #ifdef CONFIG_BASE_ATTACHED_SWITCH
@@ -134,7 +134,7 @@ static void mkbp_base_attached_change(void)
 }
 DECLARE_HOOK(HOOK_BASE_ATTACHED_CHANGE, mkbp_base_attached_change,
 	     HOOK_PRIO_LAST);
-DECLARE_HOOK(HOOK_INIT, mkbp_base_attached_change, HOOK_PRIO_INIT_LID+1);
+DECLARE_HOOK(HOOK_INIT, mkbp_base_attached_change, HOOK_PRIO_POST_LID);
 #endif
 
 static void mkbp_report_switch_on_init(void)
@@ -181,7 +181,7 @@ DECLARE_EVENT_SOURCE(EC_MKBP_EVENT_SYSRQ, sysrq_get_next_event);
 /************************ Keyboard press simulation ************************/
 #ifndef HAS_TASK_KEYSCAN
 /* Keys simulated-pressed */
-static uint8_t __bss_slow simulated_key[KEYBOARD_COLS_MAX];
+static uint8_t simulated_key[KEYBOARD_COLS_MAX];
 uint8_t keyboard_cols = KEYBOARD_COLS_MAX;
 
 /* For boards without a keyscan task, try and simulate keyboard presses. */

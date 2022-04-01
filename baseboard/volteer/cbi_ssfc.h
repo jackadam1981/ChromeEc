@@ -18,7 +18,12 @@
 enum ec_ssfc_base_sensor {
 	SSFC_SENSOR_BASE_DEFAULT = 0,
 	SSFC_SENSOR_BASE_BMI160 = 1,
+<<<<<<< HEAD   (7b2059 battery/smart: Don't update fields if reading fails)
 	SSFC_SENSOR_BASE_ICM426XX = 2
+=======
+	SSFC_SENSOR_BASE_ICM426XX = 2,
+	SSFC_SENSOR_BASE_ICM42607 = 3
+>>>>>>> BRANCH (4e387b guybrush: moving buttons and switches to use MKBP)
 };
 
 /*

@@ -4,12 +4,13 @@
  */
 
 #include "adc.h"
-#include "adc_chip.h"
 #include "button.h"
+#include "cbi_ssfc.h"
 #include "charge_state_v2.h"
 #include "cros_board_info.h"
 #include "driver/accelgyro_bmi_common.h"
 #include "driver/accelgyro_icm_common.h"
+#include "driver/accelgyro_icm42607.h"
 #include "driver/accelgyro_icm426xx.h"
 #include "driver/accel_kionix.h"
 #include "driver/accel_kx022.h"
@@ -210,6 +211,52 @@ struct motion_sensor_t icm426xx_base_gyro = {
 	.max_frequency = ICM426XX_GYRO_MAX_FREQ,
 };
 
+
+struct motion_sensor_t icm42607_base_accel = {
+	.name = "Base Accel",
+	.active_mask = SENSOR_ACTIVE_S0_S3,
+	.chip = MOTIONSENSE_CHIP_ICM42607,
+	.type = MOTIONSENSE_TYPE_ACCEL,
+	.location = MOTIONSENSE_LOC_BASE,
+	.drv = &icm42607_drv,
+	.mutex = &g_base_mutex,
+	.drv_data = &g_icm426xx_data,
+	.port = I2C_PORT_SENSOR,
+	.i2c_spi_addr_flags = ICM42607_ADDR0_FLAGS,
+	.default_range = 4, /* g, to meet CDD 7.3.1/C-1-4 reqs.*/
+	.rot_standard_ref = &base_standard_ref_1,
+	.min_frequency = ICM42607_ACCEL_MIN_FREQ,
+	.max_frequency = ICM42607_ACCEL_MAX_FREQ,
+	.config = {
+		/* EC use accel for angle detection */
+		[SENSOR_CONFIG_EC_S0] = {
+			.odr = 10000 | ROUND_UP_FLAG,
+			.ec_rate = 100,
+		},
+		/* EC use accel for angle detection */
+		[SENSOR_CONFIG_EC_S3] = {
+			.odr = 10000 | ROUND_UP_FLAG,
+		},
+	},
+};
+
+struct motion_sensor_t icm42607_base_gyro = {
+	.name = "Base Gyro",
+	.active_mask = SENSOR_ACTIVE_S0_S3,
+	.chip = MOTIONSENSE_CHIP_ICM42607,
+	.type = MOTIONSENSE_TYPE_GYRO,
+	.location = MOTIONSENSE_LOC_BASE,
+	.drv = &icm42607_drv,
+	.mutex = &g_base_mutex,
+	.drv_data = &g_icm426xx_data,
+	.port = I2C_PORT_SENSOR,
+	.i2c_spi_addr_flags = ICM42607_ADDR0_FLAGS,
+	.default_range = 1000, /* dps */
+	.rot_standard_ref = &base_standard_ref_1,
+	.min_frequency = ICM42607_GYRO_MIN_FREQ,
+	.max_frequency = ICM42607_GYRO_MAX_FREQ,
+};
+
 const struct power_signal_info power_signal_list[] = {
 	[X86_SLP_S3_N] = {
 		.gpio = GPIO_PCH_SLP_S3_L,
@@ -275,8 +322,12 @@ const struct pi3hdx1204_tuning pi3hdx1204_tuning = {
  * chip and it need a board specific driver.
  * Overall, it will use chained mux framework.
  */
-static int fsusb42umx_set_mux(const struct usb_mux *me, mux_state_t mux_state)
+static int fsusb42umx_set_mux(const struct usb_mux *me, mux_state_t mux_state,
+			      bool *ack_required)
 {
+	/* This driver does not use host command ACKs */
+	*ack_required = false;
+
 	if (mux_state & USB_PD_MUX_POLARITY_INVERTED)
 		ioex_set_level(IOEX_USB_C0_SBU_FLIP, 1);
 	else
@@ -305,27 +356,34 @@ const struct usb_mux usbc0_sbu_mux = {
  * Base Gyro Sensor dynamic configuration
  */
 
-static int base_gyro_config;
+static enum ec_ssfc_base_gyro_sensor base_gyro_config = SSFC_BASE_GYRO_NONE;
 
 static void setup_base_gyro_config(void)
 {
 	base_gyro_config = ec_config_has_base_gyro_sensor();
 
-	if (base_gyro_config == BASE_GYRO_ICM426XX) {
+	if (base_gyro_config == SSFC_BASE_GYRO_ICM426XX) {
 		motion_sensors[BASE_ACCEL] = icm426xx_base_accel;
 		motion_sensors[BASE_GYRO] = icm426xx_base_gyro;
 		ccprints("BASE GYRO is ICM426XX");
-	} else if (base_gyro_config == BASE_GYRO_BMI160)
+	} else if (base_gyro_config == SSFC_BASE_GYRO_ICM42607) {
+		motion_sensors[BASE_ACCEL] = icm42607_base_accel;
+		motion_sensors[BASE_GYRO] = icm42607_base_gyro;
+		ccprints("BASE GYRO is ICM42607");
+	} else if (base_gyro_config == SSFC_BASE_GYRO_BMI160)
 		ccprints("BASE GYRO is BMI160");
 }
 
 void motion_interrupt(enum gpio_signal signal)
 {
 	switch (base_gyro_config) {
-	case BASE_GYRO_ICM426XX:
+	case SSFC_BASE_GYRO_ICM426XX:
 		icm426xx_interrupt(signal);
 		break;
-	case BASE_GYRO_BMI160:
+	case SSFC_BASE_GYRO_ICM42607:
+		icm42607_interrupt(signal);
+		break;
+	case SSFC_BASE_GYRO_BMI160:
 	default:
 		bmi160_interrupt(signal);
 		break;
@@ -336,9 +394,29 @@ void motion_interrupt(enum gpio_signal signal)
  * USB-C MUX/Retimer dynamic configuration
  */
 
+int board_usbc1_retimer_inhpd = IOEX_USB_C1_HPD_IN_DB;
+
 static void setup_mux(void)
 {
-	if (ec_config_has_usbc1_retimer_tusb544()) {
+	enum ec_ssfc_c1_mux mux = get_cbi_ssfc_c1_mux();
+
+	if (mux == SSFC_C1_MUX_NONE && ec_config_has_usbc1_retimer_tusb544())
+		mux = SSFC_C1_MUX_TUSB544;
+
+	if (mux == SSFC_C1_MUX_PS8818) {
+		ccprints("C1 PS8818 detected");
+		/*
+		 * Main MUX is FP5, secondary MUX is PS8818
+		 *
+		 * Replace usb_muxes[USBC_PORT_C1] with the AMD FP5
+		 * table entry.
+		 */
+		memcpy(&usb_muxes[USBC_PORT_C1],
+		       &usbc1_amd_fp5_usb_mux,
+		       sizeof(struct usb_mux));
+		/* Set the PS8818 as the secondary MUX */
+		usb_muxes[USBC_PORT_C1].next_mux = &usbc1_ps8818;
+	} else if (mux == SSFC_C1_MUX_TUSB544) {
 		ccprints("C1 TUSB544 detected");
 		/*
 		 * Main MUX is FP5, secondary MUX is TUSB544
@@ -691,29 +769,40 @@ const struct temp_sensor_t temp_sensors[] = {
 };
 BUILD_ASSERT(ARRAY_SIZE(temp_sensors) == TEMP_SENSOR_COUNT);
 
-const static struct ec_thermal_config thermal_thermistor = {
-	.temp_host = {
-		[EC_TEMP_THRESH_HIGH] = C_TO_K(85),
-		[EC_TEMP_THRESH_HALT] = C_TO_K(95),
-	},
-	.temp_host_release = {
-		[EC_TEMP_THRESH_HIGH] = C_TO_K(70),
-	},
-	.temp_fan_off = 0,
-	.temp_fan_max = 0,
-};
+/*
+ * TODO(b/202062363): Remove when clang is fixed.
+ */
+#define THERMAL_THERMISTOR \
+	{ \
+		.temp_host = { \
+			[EC_TEMP_THRESH_HIGH] = C_TO_K(85), \
+			[EC_TEMP_THRESH_HALT] = C_TO_K(95), \
+		}, \
+		.temp_host_release = { \
+			[EC_TEMP_THRESH_HIGH] = C_TO_K(70), \
+		}, \
+		.temp_fan_off = 0, \
+		.temp_fan_max = 0, \
+	}
+__maybe_unused static const struct ec_thermal_config thermal_thermistor =
+	THERMAL_THERMISTOR;
 
-const static struct ec_thermal_config thermal_soc = {
-	.temp_host = {
-		[EC_TEMP_THRESH_HIGH] = C_TO_K(75),
-		[EC_TEMP_THRESH_HALT] = C_TO_K(80),
-	},
-	.temp_host_release = {
-		[EC_TEMP_THRESH_HIGH] = C_TO_K(65),
-	},
-	.temp_fan_off = C_TO_K(32),
-	.temp_fan_max = C_TO_K(75),
-};
+/*
+ * TODO(b/202062363): Remove when clang is fixed.
+ */
+#define THERMAL_SOC \
+	{ \
+		.temp_host = { \
+			[EC_TEMP_THRESH_HIGH] = C_TO_K(75), \
+			[EC_TEMP_THRESH_HALT] = C_TO_K(80), \
+		}, \
+		.temp_host_release = { \
+			[EC_TEMP_THRESH_HIGH] = C_TO_K(65), \
+		}, \
+		.temp_fan_off = C_TO_K(32), \
+		.temp_fan_max = C_TO_K(75), \
+	}
+__maybe_unused static const struct ec_thermal_config thermal_soc = THERMAL_SOC;
 
 struct ec_thermal_config thermal_params[TEMP_SENSOR_COUNT];
 

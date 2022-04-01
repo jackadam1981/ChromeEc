@@ -129,8 +129,6 @@ struct motion_sensor_t motion_sensors[] = {
 	 .mutex = &g_base_mutex,
 	 .drv_data = LSM6DSM_ST_DATA(g_lsm6dsm_data,
 			MOTIONSENSE_TYPE_ACCEL),
-	 .int_signal = GPIO_6AXIS_INT_L,
-	 .flags = MOTIONSENSE_FLAG_INT_SIGNAL,
 	 .port = I2C_PORT_SENSOR,
 	 .i2c_spi_addr_flags = LSM6DSM_ADDR0_FLAGS,
 	 .default_range = 4, /* g, to meet CDD 7.3.1/C-1-4 reqs.*/
@@ -161,8 +159,6 @@ struct motion_sensor_t motion_sensors[] = {
 	 .mutex = &g_base_mutex,
 	 .drv_data = LSM6DSM_ST_DATA(g_lsm6dsm_data,
 			MOTIONSENSE_TYPE_GYRO),
-	.int_signal = GPIO_6AXIS_INT_L,
-	.flags = MOTIONSENSE_FLAG_INT_SIGNAL,
 	 .port = I2C_PORT_SENSOR,
 	 .i2c_spi_addr_flags = LSM6DSM_ADDR0_FLAGS,
 	 .default_range = 1000 | ROUND_UP_FLAG, /* dps */
@@ -175,8 +171,8 @@ struct motion_sensor_t motion_sensors[] = {
 unsigned int motion_sensor_count = ARRAY_SIZE(motion_sensors);
 
 /* These IO expander GPIOs vary with DB option. */
-enum gpio_signal IOEX_USB_A1_RETIMER_EN = IOEX_USB_A1_RETIMER_EN_OPT1;
-enum gpio_signal IOEX_USB_A1_CHARGE_EN_DB_L = IOEX_USB_A1_CHARGE_EN_DB_L_OPT1;
+enum ioex_signal IOEX_USB_A1_RETIMER_EN = IOEX_USB_A1_RETIMER_EN_OPT1;
+enum ioex_signal IOEX_USB_A1_CHARGE_EN_DB_L = IOEX_USB_A1_CHARGE_EN_DB_L_OPT1;
 
 static void pcal6408_handler(void)
 {
@@ -250,8 +246,12 @@ static int board_ps8743_mux_set(const struct usb_mux *me,
  * chip and it need a board specific driver.
  * Overall, it will use chained mux framework.
  */
-static int fsusb42umx_set_mux(const struct usb_mux *me, mux_state_t mux_state)
+static int fsusb42umx_set_mux(const struct usb_mux *me, mux_state_t mux_state,
+			      bool *ack_required)
 {
+	/* This driver does not use host command ACKs */
+	*ack_required = false;
+
 	if (mux_state & USB_PD_MUX_POLARITY_INVERTED)
 		ioex_set_level(IOEX_USB_C0_SBU_FLIP, 1);
 	else
@@ -463,8 +463,8 @@ static void reset_nct38xx_port(int port)
 	msleep(NCT38XX_RESET_HOLD_DELAY_MS);
 	gpio_set_level(reset_gpio_l, 1);
 	nct38xx_reset_notify(port);
-	if (NCT38XX_RESET_POST_DELAY_MS != 0)
-		msleep(NCT38XX_RESET_POST_DELAY_MS);
+	if (NCT3807_RESET_POST_DELAY_MS != 0)
+		msleep(NCT3807_RESET_POST_DELAY_MS);
 }
 
 
@@ -636,13 +636,13 @@ struct ioexpander_config_t ioex_config[] = {
 		.i2c_host_port = I2C_PORT_TCPC1,
 		.i2c_addr_flags = NCT38XX_I2C_ADDR1_1_FLAGS,
 		.drv = &nct38xx_ioexpander_drv,
-		.flags = IOEX_FLAGS_DISABLED,
+		.flags = IOEX_FLAGS_DEFAULT_INIT_DISABLED,
 	},
 	[IOEX_HDMI_PCAL6408] = {
 		.i2c_host_port = I2C_PORT_TCPC1,
 		.i2c_addr_flags = PCAL6408_I2C_ADDR0,
 		.drv = &pcal6408_ioexpander_drv,
-		.flags = IOEX_FLAGS_DISABLED,
+		.flags = IOEX_FLAGS_DEFAULT_INIT_DISABLED,
 	},
 };
 BUILD_ASSERT(ARRAY_SIZE(ioex_config) == CONFIG_IO_EXPANDER_PORT_COUNT);

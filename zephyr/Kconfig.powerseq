@@ -44,10 +44,47 @@ config PLATFORM_EC_HOSTCMD_AP_RESET
 
 config PLATFORM_EC_POWERSEQ_PP5000_CONTROL
 	bool "Enable a task-safe way to control the PP5000 rail"
+	depends on !AP_X86_AMD
 	default y
 	help
 	  Guard access to the PP5000 GPIO using mutex locks, allowing
 	  the rail to be changed in a task-safe manner.
+
+config PLATFORM_EC_POWERSEQ_RSMRST_DELAY
+	bool "Wait at least 10ms before deasserting RSMRST to PCH"
+	default y if AP_X86_INTEL_TGL
+	depends on AP_X86_AMD || AP_X86_INTEL
+	help
+	  Wait at least 10ms between power signals going high and
+	  deasserting RSMRST to PCH.
+
+config PLATFORM_EC_POWERSEQ_FAKE_CONTROL
+	bool "Console command: powerfake"
+	depends on PLATFORM_EC_SYSTEM_UNLOCKED
+	help
+	  Enable fake control of the power sequencing on the platform.  This
+	  will require some SoC-specific implementation and allows a fake boot
+	  without an SoC present.  This command should not be used on platforms
+	  with an SoC present.
+
+menuconfig PLATFORM_EC_POWERSEQ_AMD
+	bool "AMD power sequencing"
+	depends on AP_X86_AMD
+	select HAS_TASK_POWERBTN
+	default y
+	help
+	  Enable AMD power sequencing code.
+
+if PLATFORM_EC_POWERSEQ_AMD
+
+config PLATFORM_EC_POWER_BUTTON_TO_PCH_CUSTOM
+	bool "Custom board_pwrbtn_to_pch"
+	help
+	  The board support code provides a custom function,
+	  board_pwrbtn_to_pch, that replaces the standard GPIO set
+	  level to the SoC.
+
+endif  # PLATFORM_EC_POWERSEQ_AMD
 
 menuconfig PLATFORM_EC_POWERSEQ_INTEL
 	bool "Enable shimming common Intel power sequencing code"
@@ -67,13 +104,6 @@ config PLATFORM_EC_POWERSEQ_CPU_PROCHOT_ACTIVE_LOW
 	  If CPU_PROCHOT should be treated as active-low, enable this
 	  configuration option.
 
-config PLATFORM_EC_POWERSEQ_RSMRST_DELAY
-	bool "Wait at least 10ms before deasserting RSMRST to PCH"
-	default y if AP_X86_INTEL_TGL
-	help
-	  Wait at least 10ms between power signals going high and
-	  deasserting RSMRST to PCH.
-
 config PLATFORM_EC_POWERSEQ_RTC_RESET
 	bool "Board has an RTC reset"
 	help
@@ -89,6 +119,17 @@ config PLATFORM_EC_POWERSEQ_S0IX
 	  option, Intel's low-power idle sleep state, also known as
 	  "modern sleep".
 
+config PLATFORM_EC_POWERSEQ_S4
+	bool "Advertise S4 residency"
+	depends on PLATFORM_EC_ESPI_VW_SLP_S5
+	default y if AP_X86_INTEL_TGL
+	default y if AP_X86_INTEL_ADL
+	default y if AP_X86_INTEL_MTL
+	help
+	  Advertise S4 residency capabilities to the AP. This is required for
+	  AP hibernate (suspend-to-disk) on Intel platforms with Key Locker
+	  support (TGL+)
+
 config PLATFORM_EC_POWERSEQ_COMETLAKE
 	bool "Use common Comet Lake code for power sequencing"
 	depends on AP_X86_INTEL_CML
@@ -96,10 +137,26 @@ config PLATFORM_EC_POWERSEQ_COMETLAKE
 	help
 	  Use the Comet Lake code for power sequencing.
 
+config CHIPSET_ALDERLAKE_SLG4BD44540
+       bool "Use powersequencing with Silego"
+       depends on AP_X86_INTEL_ADL
+       default y
+       help
+          Use this for AlderLake power sequencing with the
+          Silego chips.
+
+config PLATFORM_EC_POWERSEQ_METEORLAKE
+	bool "Use common Meteorlake code for power sequencing"
+	depends on AP_X86_INTEL_MTL
+	default n
+	help
+	  Use the Meteorlake common code for power sequencing. Note that
+	  this applies to Meteorlake and potentially future SoCs.
+
 menuconfig PLATFORM_EC_POWERSEQ_ICELAKE
 	bool "Use common Icelake code for power sequencing"
-	default y if AP_X86_INTEL_TGL
-	default y if AP_X86_INTEL_ADL
+	depends on AP_X86_INTEL_TGL
+	default n
 	help
 	  Use the Icelake common code for power sequencing.  Note that
 	  this applies to more platforms than just Icelake.  For
@@ -123,25 +180,32 @@ config PLATFORM_EC_POWERSEQ_PP3300_RAIL_FIRST
 
 endif # PLATFORM_EC_POWERSEQ_ICELAKE
 
-endif # PLATFORM_EC_POWERSEQ_INTEL
+if PLATFORM_EC_POWERSEQ_RTC_RESET
 
-menuconfig PLATFORM_EC_POWERSEQ_IT8XXX2
-	bool "Enable shimming common ITE8xxx2 power sequencing code"
-	depends on AP_ARM_MTK_MT8192
-	default y
+config PLATFORM_EC_S5_EXIT_WAIT
+	int "time(in secs) for EC to wait for system to exit from S5"
+	default 4
 	help
-	  Enable shimming platform/ec AP power sequencing code for
-	  IT8xxx2.
+	  Timeout value for which EC has to wait for system to exit from S5
+	  before performing RTC reset and moving the system to G3.
 
-if PLATFORM_EC_POWERSEQ_IT8XXX2
+endif # PLATFORM_EC_POWERSEQ_RTC_RESET
+
+endif # PLATFORM_EC_POWERSEQ_INTEL
 
 config PLATFORM_EC_POWERSEQ_MT8192
 	bool "Use common MT8192 code for power sequencing"
 	default y
+	depends on AP_ARM_MTK_MT8192
 	help
-	  Use the Comet Lake code for power sequencing.
+	  Use the MT8192 code for power sequencing.
 
-endif # PLATFORM_EC_POWERSEQ_ITE8XXX2
+config PLATFORM_EC_POWERSEQ_MT8186
+	bool "Use common MT8186 code for power sequencing"
+	default y
+	depends on AP_ARM_MTK_MT8186
+	help
+	  Use the MT8186 code for power sequencing.
 
 config PLATFORM_EC_POWERSEQ_SC7180
 	bool "SC7180 power sequencing"

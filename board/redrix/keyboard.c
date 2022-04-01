@@ -4,7 +4,8 @@
  */
 
 #include "common.h"
-
+#include "ec_commands.h"
+#include "fw_config.h"
 #include "keyboard_scan.h"
 #include "timer.h"
 
@@ -19,7 +20,75 @@ __override struct keyboard_scan_config keyscan_config = {
 	.min_post_scan_delay_us = 1000,
 	.poll_timeout_us = 100 * MSEC,
 	.actual_key_mask = {
-		0x14, 0xff, 0xff, 0xff, 0xff, 0xf5, 0xff,
+		0x1c, 0xff, 0xff, 0xff, 0xff, 0xf5, 0xff,
 		0xa4, 0xff, 0xfe, 0x55, 0xfa, 0xca  /* full set */
 	},
 };
+
+static const struct ec_response_keybd_config keybd1 = {
+	.num_top_row_keys = 13,
+	.action_keys = {
+		TK_BACK,		/* T1 */
+		TK_REFRESH,		/* T2 */
+		TK_FULLSCREEN,		/* T3 */
+		TK_OVERVIEW,		/* T4 */
+		TK_SNAPSHOT,		/* T5 */
+		TK_BRIGHTNESS_DOWN,	/* T6 */
+		TK_BRIGHTNESS_UP,	/* T7 */
+		TK_KBD_BKLIGHT_TOGGLE,	/* T8 */
+		TK_PLAY_PAUSE,		/* T9 */
+		TK_MICMUTE,		/* T10 */
+		TK_VOL_MUTE,		/* T11 */
+		TK_VOL_DOWN,		/* T12 */
+		TK_VOL_UP,		/* T13 */
+	},
+	.capabilities = KEYBD_CAP_SCRNLOCK_KEY,
+};
+
+static const struct ec_response_keybd_config keybd2 = {
+	.num_top_row_keys = 13,
+	.action_keys = {
+		TK_BACK,		/* T1 */
+		TK_REFRESH,		/* T2 */
+		TK_FULLSCREEN,		/* T3 */
+		TK_OVERVIEW,		/* T4 */
+		TK_SNAPSHOT,		/* T5 */
+		TK_BRIGHTNESS_DOWN,	/* T6 */
+		TK_BRIGHTNESS_UP,	/* T7 */
+		TK_PRIVACY_SCRN_TOGGLE,	/* T8 */
+		TK_KBD_BKLIGHT_TOGGLE,	/* T9 */
+		TK_MICMUTE,		/* T10 */
+		TK_VOL_MUTE,		/* T11 */
+		TK_VOL_DOWN,		/* T12 */
+		TK_VOL_UP,		/* T13 */
+	},
+	.capabilities = KEYBD_CAP_SCRNLOCK_KEY,
+};
+
+__override const struct ec_response_keybd_config *
+board_vivaldi_keybd_config(void)
+{
+	if (ec_cfg_has_eps() == 0)
+		return &keybd1;
+	else
+		return &keybd2;
+}
+
+
+#ifdef CONFIG_KEYBOARD_FACTORY_TEST
+/*
+ * Map keyboard connector pins to EC GPIO pins for factory test.
+ * Pins mapped to {-1, -1} are skipped.
+ * The connector has 24 pins total, and there is no pin 0.
+ */
+const int keyboard_factory_scan_pins[][2] = {
+		{-1, -1}, {0, 5}, {1, 1}, {1, 0}, {0, 6},
+		{0, 7}, {1, 4}, {1, 3}, {1, 6}, {1, 7},
+		{3, 1}, {2, 0}, {1, 5}, {2, 6}, {2, 7},
+		{2, 1}, {2, 4}, {2, 5}, {1, 2}, {2, 3},
+		{2, 2}, {3, 0}, {-1, -1}, {-1, -1}, {-1, -1},
+};
+
+const int keyboard_factory_scan_pins_used =
+			ARRAY_SIZE(keyboard_factory_scan_pins);
+#endif

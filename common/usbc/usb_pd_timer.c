@@ -4,32 +4,47 @@
  */
 
 #include "assert.h"
+#include "atomic.h"
+#include "atomic_bit.h"
 #include "common.h"
 #include "console.h"
 #include "limits.h"
+#include "math_util.h"
 #include "system.h"
 #include "usb_pd_timer.h"
 #include "usb_tc_sm.h"
 
 #define MAX_PD_PORTS	CONFIG_USB_PD_PORT_MAX_COUNT
 #define MAX_PD_TIMERS	PD_TIMER_COUNT
-#define PD_TIMERS_ALL_MASK ((uint32_t)(((uint64_t)1 << PD_TIMER_COUNT) - 1))
+#define PD_TIMERS_ALL_MASK (UINT64_MAX >> (64 - PD_TIMER_COUNT))
 
 #define MAX_EXPIRE	(0x7FFFFFFF)
 #define NO_TIMEOUT	(-1)
 #define EXPIRE_NOW	(0)
 
-#define PD_SET_ACTIVE(p, m)	atomic_or(&timer_active[p], (m))
-#define PD_CLR_ACTIVE(p, m)	atomic_clear_bits(&timer_active[p], (m))
-#define PD_CHK_ACTIVE(p, m)	(timer_active[p] & (m))
+#define PD_SET_ACTIVE(p, bit) \
+	atomic_set_bit(timer_active, (p) * PD_TIMER_COUNT + (bit))
 
-#define PD_SET_DISABLED(p, m)	atomic_or(&timer_disabled[p], (m))
-#define PD_CLR_DISABLED(p, m)	atomic_clear_bits(&timer_disabled[p], (m))
-#define PD_CHK_DISABLED(p, m)	(timer_disabled[p] & (m))
+#define PD_CLR_ACTIVE(p, bit) \
+	atomic_clear_bit(timer_active, (p) * PD_TIMER_COUNT + (bit))
 
-static uint32_t timer_active[MAX_PD_PORTS];
-static uint32_t timer_disabled[MAX_PD_PORTS];
-static uint64_t timer_expires[MAX_PD_PORTS][MAX_PD_TIMERS];
+#define PD_CHK_ACTIVE(p, bit) \
+	atomic_test_bit(timer_active, (p) * PD_TIMER_COUNT + (bit))
+
+#define PD_SET_DISABLED(p, bit) \
+	atomic_set_bit(timer_disabled, (p) * PD_TIMER_COUNT + (bit))
+
+#define PD_CLR_DISABLED(p, bit) \
+	atomic_clear_bit(timer_disabled, (p) * PD_TIMER_COUNT + (bit))
+
+#define PD_CHK_DISABLED(p, bit) \
+	atomic_test_bit(timer_disabled, (p) * PD_TIMER_COUNT + (bit))
+
+test_mockable_static
+ATOMIC_DEFINE(timer_active, PD_TIMER_COUNT * MAX_PD_PORTS);
+test_mockable_static
+ATOMIC_DEFINE(timer_disabled, PD_TIMER_COUNT * MAX_PD_PORTS);
+static uint64_t timer_expires[MAX_PD_PORTS][PD_TIMER_COUNT];
 
 /*
  * CONFIG_CMD_PD_TIMER debug variables
@@ -55,6 +70,9 @@ __maybe_unused static __const_data const char * const pd_timer_names[] = {
 	[PE_TIMER_VCONN_ON]		= "PE-VCONN_ON",
 	[PE_TIMER_VDM_RESPONSE]		= "PE-VDM_RESPONSE",
 	[PE_TIMER_WAIT_AND_ADD_JITTER]	= "PE-WAIT_AND_ADD_JITTER",
+	[PE_TIMER_VCONN_DISCHARGE]	= "PE-VCONN_DISCHARGE",
+	[PE_TIMER_VCONN_REAPPLIED]	= "PE-VCONN_REAPPLIED",
+	[PE_TIMER_DATA_RESET_FAIL]	= "PE-DATA_RESET_FAIL",
 
 	[PR_TIMER_CHUNK_SENDER_REQUEST]	= "PR-CHUNK_SENDER_REQUEST",
 	[PR_TIMER_CHUNK_SENDER_RESPONSE] = "PR-CHUNK_SENDER_RESPONSE",
@@ -82,31 +100,26 @@ __maybe_unused static __const_data const char * const pd_timer_names[] = {
  * already and will always return that it is still expired.  This timer state
  * will not adjust the task scheduling timeout value.
  */
+
 static void pd_timer_inactive(int port, enum pd_task_timer timer)
 {
-	uint32_t mask = 1 << timer;
-
-	if (PD_CHK_ACTIVE(port, mask)) {
-		PD_CLR_ACTIVE(port, mask);
+	if (PD_CHK_ACTIVE(port, timer)) {
+		PD_CLR_ACTIVE(port, timer);
 
 		if (IS_ENABLED(CONFIG_CMD_PD_TIMER))
 			count[port]--;
 	}
-	PD_CLR_DISABLED(port, mask);
+	PD_CLR_DISABLED(port, timer);
 }
 
 static bool pd_timer_is_active(int port, enum pd_task_timer timer)
 {
-	uint32_t mask = 1 << timer;
-
-	return PD_CHK_ACTIVE(port, mask);
+	return PD_CHK_ACTIVE(port, timer);
 }
 
 static bool pd_timer_is_inactive(int port, enum pd_task_timer timer)
 {
-	uint32_t mask = 1 << timer;
-
-	return !PD_CHK_ACTIVE(port, mask) && !PD_CHK_DISABLED(port, mask);
+	return !PD_CHK_ACTIVE(port, timer) && !PD_CHK_DISABLED(port, timer);
 }
 
 /*****************************************************************************
@@ -117,16 +130,20 @@ void pd_timer_init(int port)
 	if (IS_ENABLED(CONFIG_CMD_PD_TIMER))
 		count[port] = 0;
 
-	PD_CLR_ACTIVE(port, PD_TIMERS_ALL_MASK);
-	PD_SET_DISABLED(port, PD_TIMERS_ALL_MASK);
+	/*
+	 * timer_active and timer_disabled are atomic_t global arrays.
+	 * Set them to the initial state.
+	 */
+	for (int i = 0; i < ARRAY_SIZE(timer_active); i++) {
+		*(timer_active + i) = 0;
+		*(timer_disabled + i) = ~0;
+	}
 }
 
 void pd_timer_enable(int port, enum pd_task_timer timer, uint32_t expires_us)
 {
-	uint32_t mask = 1 << timer;
-
-	if (!PD_CHK_ACTIVE(port, mask)) {
-		PD_SET_ACTIVE(port, mask);
+	if (!PD_CHK_ACTIVE(port, timer)) {
+		PD_SET_ACTIVE(port, timer);
 
 		if (IS_ENABLED(CONFIG_CMD_PD_TIMER)) {
 			count[port]++;
@@ -134,21 +151,19 @@ void pd_timer_enable(int port, enum pd_task_timer timer, uint32_t expires_us)
 				max_count[port] = count[port];
 		}
 	}
-	PD_CLR_DISABLED(port, mask);
+	PD_CLR_DISABLED(port, timer);
 	timer_expires[port][timer] = get_time().val + expires_us;
 }
 
 void pd_timer_disable(int port, enum pd_task_timer timer)
 {
-	uint32_t mask = 1 << timer;
-
-	if (PD_CHK_ACTIVE(port, mask)) {
-		PD_CLR_ACTIVE(port, mask);
+	if (PD_CHK_ACTIVE(port, timer)) {
+		PD_CLR_ACTIVE(port, timer);
 
 		if (IS_ENABLED(CONFIG_CMD_PD_TIMER))
 			count[port]--;
 	}
-	PD_SET_DISABLED(port, mask);
+	PD_SET_DISABLED(port, timer);
 }
 
 void pd_timer_disable_range(int port, enum pd_timer_range range)
@@ -179,9 +194,7 @@ void pd_timer_disable_range(int port, enum pd_timer_range range)
 
 bool pd_timer_is_disabled(int port, enum pd_task_timer timer)
 {
-	uint32_t mask = 1 << timer;
-
-	return PD_CHK_DISABLED(port, mask);
+	return PD_CHK_DISABLED(port, timer);
 }
 
 bool pd_timer_is_expired(int port, enum pd_task_timer timer)
@@ -200,11 +213,10 @@ void pd_timer_manage_expired(int port)
 {
 	int timer;
 
-	if (timer_active[port])
-		for (timer = 0; timer < MAX_PD_TIMERS; ++timer)
-			if (pd_timer_is_active(port, timer) &&
-			    pd_timer_is_expired(port, timer))
-				pd_timer_inactive(port, timer);
+	for (timer = 0; timer < PD_TIMER_COUNT; ++timer)
+		if (pd_timer_is_active(port, timer) &&
+		    pd_timer_is_expired(port, timer))
+			pd_timer_inactive(port, timer);
 }
 
 int pd_timer_next_expiration(int port)
@@ -213,7 +225,7 @@ int pd_timer_next_expiration(int port)
 	int ret_value = MAX_EXPIRE;
 	uint64_t now = get_time().val;
 
-	for (timer = 0; timer < MAX_PD_TIMERS; ++timer) {
+	for (timer = 0; timer < PD_TIMER_COUNT; ++timer) {
 		/* Only use active timers for the next expired value */
 		if (pd_timer_is_active(port, timer)) {
 			int delta;
@@ -237,7 +249,7 @@ int pd_timer_next_expiration(int port)
 }
 
 #ifdef CONFIG_CMD_PD_TIMER
-void pd_timer_dump(int port)
+test_mockable_static void pd_timer_dump(int port)
 {
 	int timer;
 	uint64_t now = get_time().val;
@@ -245,7 +257,7 @@ void pd_timer_dump(int port)
 	ccprints("Timers(%d): cur=%d max=%d",
 		port, count[port], max_count[port]);
 
-	for (timer = 0; timer < MAX_PD_TIMERS; ++timer) {
+	for (timer = 0; timer < PD_TIMER_COUNT; ++timer) {
 		if (pd_timer_is_disabled(port, timer)) {
 			continue;
 		} else if (pd_timer_is_active(port, timer)) {

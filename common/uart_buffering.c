@@ -63,8 +63,8 @@ static int uart_buffer_calc_checksum(void)
 void uart_init_buffer(void)
 {
 	if (tx_checksum != uart_buffer_calc_checksum() ||
-	    !IN_RANGE(tx_buf_head, 0, CONFIG_UART_TX_BUF_SIZE) ||
-	    !IN_RANGE(tx_buf_tail, 0, CONFIG_UART_TX_BUF_SIZE)) {
+	    !IN_RANGE(tx_buf_head, 0, CONFIG_UART_TX_BUF_SIZE - 1) ||
+	    !IN_RANGE(tx_buf_tail, 0, CONFIG_UART_TX_BUF_SIZE - 1)) {
 		/*
 		 * NOTE:
 		 * We are here because EC cold reset or RO/RW's preserve_logs
@@ -261,7 +261,7 @@ void uart_flush_output(void)
 
 	/* Loop until buffer is empty */
 	while (tx_buf_head != tx_buf_tail) {
-		if (in_interrupt_context()) {
+		if (in_interrupt_context() || !is_interrupt_enabled()) {
 			/*
 			 * Explicitly process UART output, since the UART
 			 * interrupt may not be able to preempt the interrupt

@@ -1,0 +1,9 @@
+<<<<<<< HEAD   (7b2059 battery/smart: Don't update fields if reading fails)
+=======
+# Fingerprint Sensor
+
+# Don't inherit owners from elsewhere in the manifest
+set noparent
+
+include chromiumos/platform2:/biod/OWNERS
+>>>>>>> BRANCH (4e387b guybrush: moving buttons and switches to use MKBP)

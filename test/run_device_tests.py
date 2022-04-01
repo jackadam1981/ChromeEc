@@ -4,6 +4,7 @@
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
+# pylint: disable=line-too-long
 """Runs unit tests on device and displays the results.
 
 This script assumes you have a ~/.servodrc config file with a line that
@@ -11,6 +12,8 @@ corresponds to the board being tested.
 
 See https://chromium.googlesource.com/chromiumos/third_party/hdctools/+/HEAD/docs/servo.md#servodrc
 """
+# pylint: enable=line-too-long
+
 import argparse
 import concurrent
 import io
@@ -25,7 +28,9 @@ from enum import Enum
 from pathlib import Path
 from typing import Optional, BinaryIO, List
 
+# pylint: disable=import-error
 import colorama  # type: ignore[import]
+# pylint: enable=import-error
 
 EC_DIR = Path(os.path.dirname(os.path.realpath(__file__))).parent
 JTRACE_FLASH_SCRIPT = os.path.join(EC_DIR, 'util/flash_jlink.py')
@@ -58,6 +63,9 @@ DARTMONKEY = 'dartmonkey'
 JTRACE = 'jtrace'
 SERVO_MICRO = 'servo_micro'
 
+GCC = 'gcc'
+CLANG = 'clang'
+
 
 class ImageType(Enum):
     """EC Image type to use for the test."""
@@ -82,16 +90,21 @@ class TestConfig:
     """Configuration for a given test."""
 
     def __init__(self, name, image_to_use=ImageType.RW, finish_regexes=None,
-                 toggle_power=False, test_args=None, num_flash_attempts=2,
-                 timeout_secs=10, enable_hw_write_protect=False):
+                 fail_regexes=None, toggle_power=False, test_args=None,
+                 num_flash_attempts=2, timeout_secs=10,
+                 enable_hw_write_protect=False):
         if test_args is None:
             test_args = []
         if finish_regexes is None:
             finish_regexes = [ALL_TESTS_PASSED_REGEX, ALL_TESTS_FAILED_REGEX]
+        if fail_regexes is None:
+            fail_regexes = [SINGLE_CHECK_FAILED_REGEX, ALL_TESTS_FAILED_REGEX,
+                            ASSERTION_FAILURE_REGEX]
 
         self.name = name
         self.image_to_use = image_to_use
         self.finish_regexes = finish_regexes
+        self.fail_regexes = fail_regexes
         self.test_args = test_args
         self.toggle_power = toggle_power
         self.num_flash_attempts = num_flash_attempts
@@ -114,6 +127,8 @@ class AllTests:
                 TestConfig(name='aes'),
             'cec':
                 TestConfig(name='cec'),
+            'cortexm_fpu':
+                TestConfig(name='cortexm_fpu'),
             'crc':
                 TestConfig(name='crc'),
             'flash_physical':
@@ -168,6 +183,12 @@ class AllTests:
                 TestConfig(name='sha256_unrolled'),
             'static_if':
                 TestConfig(name='static_if'),
+            'system_is_locked_wp_on':
+                TestConfig(name='system_is_locked', test_args=['wp_on'],
+                           toggle_power=True, enable_hw_write_protect=True),
+            'system_is_locked_wp_off':
+                TestConfig(name='system_is_locked', test_args=['wp_off'],
+                           toggle_power=True, enable_hw_write_protect=False),
             'timer_dos':
                 TestConfig(name='timer_dos'),
             'utils':
@@ -236,7 +257,7 @@ def power(board_config: BoardConfig, on: bool) -> None:
         board_config.servo_power_enable + ':' + state,
     ]
     logging.debug('Running command: "%s"', ' '.join(cmd))
-    subprocess.run(cmd).check_returncode()
+    subprocess.run(cmd).check_returncode()  # pylint: disable=subprocess-run-check
 
 
 def hw_write_protect(enable: bool) -> None:
@@ -251,25 +272,29 @@ def hw_write_protect(enable: bool) -> None:
         'fw_wp_state:' + state,
         ]
     logging.debug('Running command: "%s"', ' '.join(cmd))
-    subprocess.run(cmd).check_returncode()
+    subprocess.run(cmd).check_returncode()  # pylint: disable=subprocess-run-check
 
 
-def build(test_name: str, board_name: str) -> None:
+def build(test_name: str, board_name: str, compiler: str) -> None:
     """Build specified test for specified board."""
-    cmd = [
-        'make',
+    cmd = ['make']
+
+    if compiler == CLANG:
+        cmd = cmd + ['CC=arm-none-eabi-clang']
+
+    cmd = cmd + [
         'BOARD=' + board_name,
         'test-' + test_name,
         '-j',
     ]
 
     logging.debug('Running command: "%s"', ' '.join(cmd))
-    subprocess.run(cmd).check_returncode()
+    subprocess.run(cmd).check_returncode()  # pylint: disable=subprocess-run-check
 
 
 def flash(test_name: str, board: str, flasher: str, remote: str) -> bool:
     """Flash specified test to specified board."""
-    logging.info("Flashing test")
+    logging.info('Flashing test')
 
     cmd = []
     if flasher == JTRACE:
@@ -287,7 +312,7 @@ def flash(test_name: str, board: str, flasher: str, remote: str) -> bool:
                                 test_name + '.bin'),
     ])
     logging.debug('Running command: "%s"', ' '.join(cmd))
-    completed_process = subprocess.run(cmd)
+    completed_process = subprocess.run(cmd)  # pylint: disable=subprocess-run-check
     return completed_process.returncode == 0
 
 
@@ -319,14 +344,10 @@ def process_console_output_line(line: bytes, test: TestConfig):
         if SINGLE_CHECK_PASSED_REGEX.match(line_str):
             test.num_passes += 1
 
-        if SINGLE_CHECK_FAILED_REGEX.match(line_str):
-            test.num_fails += 1
-
-        if ALL_TESTS_FAILED_REGEX.match(line_str):
-            test.num_fails += 1
-
-        if ASSERTION_FAILURE_REGEX.match(line_str):
-            test.num_fails += 1
+        for regex in test.fail_regexes:
+            if regex.match(line_str):
+                test.num_fails += 1
+                break
 
         return line_str
     except UnicodeDecodeError:
@@ -340,7 +361,7 @@ def run_test(test: TestConfig, console: str, executor: ThreadPoolExecutor) ->\
              bool:
     """Run specified test."""
     start = time.time()
-    with open(console, "wb+", buffering=0) as c:
+    with open(console, 'wb+', buffering=0) as c:
         # Wait for boot to finish
         time.sleep(1)
         c.write('\n'.encode())
@@ -357,7 +378,7 @@ def run_test(test: TestConfig, console: str, executor: ThreadPoolExecutor) ->\
             if not line:
                 now = time.time()
                 if now - start > test.timeout_secs:
-                    logging.debug("Test timed out")
+                    logging.debug('Test timed out')
                     return False
                 continue
 
@@ -426,10 +447,15 @@ def main():
 
     flasher_choices = [SERVO_MICRO, JTRACE]
     parser.add_argument(
-         '--flasher', '-f',
-         choices=flasher_choices,
-         default=JTRACE
-     )
+        '--flasher', '-f',
+        choices=flasher_choices,
+        default=JTRACE
+    )
+
+    compiler_options = [GCC, CLANG]
+    parser.add_argument('--compiler', '-c',
+                        choices=compiler_options,
+                        default=GCC)
 
     # This might be expanded to serve as a "remote" for flash_ec also, so
     # we will leave it generic.
@@ -455,7 +481,7 @@ def main():
 
     for test in test_list:
         # build test binary
-        build(test.name, args.board)
+        build(test.name, args.board, args.compiler)
 
         # flash test binary
         # TODO(b/158327221): First attempt to flash fails after
@@ -504,4 +530,4 @@ def main():
 
 
 if __name__ == '__main__':
-  sys.exit(main())
+    sys.exit(main())

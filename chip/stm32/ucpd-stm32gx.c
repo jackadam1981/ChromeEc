@@ -105,7 +105,7 @@ union buffer {
 };
 
 struct ucpd_tx_desc {
-	enum tcpm_transmit_type type;
+	enum tcpci_msg_type type;
 	int msg_len;
 	int msg_index;
 	union buffer data;
@@ -719,13 +719,13 @@ int stm32gx_ucpd_get_chip_info(int port, int live,
 
 static int stm32gx_ucpd_start_transmit(int port, enum ucpd_tx_msg msg_type)
 {
-	enum tcpm_transmit_type type;
+	enum tcpci_msg_type type;
 
 	/* Select the correct tx desciptor */
 	ucpd_tx_active_buffer = &ucpd_tx_buffers[msg_type];
 	type = ucpd_tx_active_buffer->type;
 
-	if (type == TCPC_TX_HARD_RESET) {
+	if (type == TCPCI_MSG_TX_HARD_RESET) {
 				/*
 		 * From RM0440 45.4.4:
 		 * In order to facilitate generation of a Hard Reset, a special
@@ -750,7 +750,7 @@ static int stm32gx_ucpd_start_transmit(int port, enum ucpd_tx_msg msg_type)
 			STM32_UCPD_IMR_HRSTSENTIE;
 		/* Initiate Hard Reset */
 		STM32_UCPD_CR(port) |= STM32_UCPD_CR_TXHRST;
-	} else if (type != TCPC_TX_INVALID) {
+	} else if (type != TCPCI_MSG_INVALID) {
 		int msg_len = 0;
 		int mode;
 
@@ -774,9 +774,9 @@ static int stm32gx_ucpd_start_transmit(int port, enum ucpd_tx_msg msg_type)
 		 * the header is number of 32 bit objects. Also, the length
 		 * field must account for the 2 header bytes.
 		 */
-		if (type == TCPC_TX_BIST_MODE_2) {
+		if (type == TCPCI_MSG_TX_BIST_MODE_2) {
 			mode = STM32_UCPD_CR_TXMODE_BIST;
-		} else if (type == TCPC_TX_CABLE_RESET) {
+		} else if (type == TCPCI_MSG_CABLE_RESET) {
 			mode = STM32_UCPD_CR_TXMODE_CBL_RST;
 		} else {
 			mode = STM32_UCPD_CR_TXMODE_DEF;
@@ -790,11 +790,8 @@ static int stm32gx_ucpd_start_transmit(int port, enum ucpd_tx_msg msg_type)
 		STM32_UCPD_CR(port) |= STM32_UCPD_CR_TXMODE_VAL(mode);
 
 		/* Index into ordset enum for start of packet */
-		if (type <= TCPC_TX_CABLE_RESET )
+		if (type <= TCPCI_MSG_CABLE_RESET)
 			STM32_UCPD_TX_ORDSETR(port) = ucpd_txorderset[type];
-		else
-			STM32_UCPD_TX_ORDSETR(port) =
-				ucpd_txorderset[TX_ORDERSET_SOP];
 
 		/* Reset msg byte index */
 		ucpd_tx_active_buffer-> msg_index = 0;
@@ -1130,7 +1127,7 @@ static void ucpd_send_good_crc(int port, uint16_t rx_header)
 	int msg_id;
 	int rev_id;
 	uint16_t tx_header;
-	enum tcpm_transmit_type tx_type;
+	enum tcpci_msg_type tx_type;
 	enum pd_power_role pr = 0;
 	enum pd_data_role dr = 0;
 
@@ -1146,7 +1143,7 @@ static void ucpd_send_good_crc(int port, uint16_t rx_header)
 
 	/*
 	 * Get the rx ordered set code just detected. SOP -> SOP''_Debug are in
-	 * the same order as enum tcpm_transmit_type and so can be used
+	 * the same order as enum tcpci_msg_type and so can be used
 	 * directly.
 	 */
 	tx_type = STM32_UCPD_RX_ORDSETR(port) & STM32_UCPD_RXORDSETR_MASK;
@@ -1164,7 +1161,7 @@ static void ucpd_send_good_crc(int port, uint16_t rx_header)
 	/* construct header message */
 	msg_id = PD_HEADER_ID(rx_header);
 	rev_id = PD_HEADER_REV(rx_header);
-	if (tx_type == TCPC_TX_SOP) {
+	if (tx_type == TCPCI_MSG_SOP) {
 		pr = msg_header.pr;
 		dr = msg_header.dr;
 	}
@@ -1180,7 +1177,7 @@ static void ucpd_send_good_crc(int port, uint16_t rx_header)
 }
 
 int stm32gx_ucpd_transmit(int port,
-			  enum tcpm_transmit_type type,
+			  enum tcpci_msg_type type,
 			  uint16_t header,
 			  const uint32_t *data)
 {
@@ -1203,7 +1200,7 @@ int stm32gx_ucpd_transmit(int port,
 	 * resets as they are able to interrupt ongoing transmit, and should
 	 * have priority over any pending message.
 	 */
-	if (type == TCPC_TX_HARD_RESET)
+	if (type == TCPCI_MSG_TX_HARD_RESET)
 		task_set_event(TASK_ID_UCPD, UCPD_EVT_HR_REQ);
 	else
 		task_set_event(TASK_ID_UCPD, UCPD_EVT_TCPM_MSG_REQ);
@@ -1251,7 +1248,7 @@ enum ec_error_list stm32gx_ucpd_set_bist_test_mode(const int port,
 	return EC_SUCCESS;
 }
 
-void stm32gx_ucpd1_irq(void)
+static void stm32gx_ucpd1_irq(void)
 {
 	/* STM32_IRQ_UCPD indicates this is from UCPD1, so port = 0 */
 	int port = 0;
@@ -1319,7 +1316,7 @@ void stm32gx_ucpd1_irq(void)
 		/* Check for errors */
 		if (!(sr & STM32_UCPD_SR_RXERR)) {
 			uint16_t *rx_header = (uint16_t *)ucpd_rx_buffer;
-			enum tcpm_transmit_type type;
+			enum tcpci_msg_type type;
 			int good_crc = 0;
 
 			type = STM32_UCPD_RX_ORDSETR(port) &
@@ -1339,7 +1336,7 @@ void stm32gx_ucpd1_irq(void)
 			 * without disabling the ucpd peripheral.
 			 */
 			if (!good_crc && (ucpd_rx_sop_prime_enabled ||
-					  type == TCPC_TX_SOP)) {
+					  type == TCPCI_MSG_SOP)) {
 
 				/*
 				 * If BIST test mode is active, then still need
@@ -1559,7 +1556,7 @@ static int command_ucpd(int argc, char **argv)
 		 * pd_dpm_request(port, DPM_REQUEST_BIST_TX);
 		 */
 	} else if (!strcasecmp(argv[1], "hard")) {
-		stm32gx_ucpd_transmit(port, TCPC_TX_HARD_RESET, 0,
+		stm32gx_ucpd_transmit(port, TCPCI_MSG_TX_HARD_RESET, 0,
 				      &tx_data);
 	} else if (!strcasecmp(argv[1], "pol")) {
 		if (argc < 3)

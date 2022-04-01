@@ -4,65 +4,22 @@
  */
 /* Cherry board configuration */
 
-#include "adc.h"
-#include "adc_chip.h"
-#include "button.h"
-#include "charge_manager.h"
-#include "charge_state_v2.h"
-#include "charger.h"
-#include "chipset.h"
 #include "common.h"
 #include "console.h"
+#include "driver/accel_bma422.h"
 #include "driver/accel_kionix.h"
 #include "driver/accel_kx022.h"
 #include "driver/accelgyro_icm42607.h"
 #include "driver/accelgyro_icm_common.h"
-#include "driver/bc12/mt6360.h"
-#include "driver/bc12/pi3usb9201.h"
-#include "driver/charger/isl923x.h"
-#include "driver/ppc/syv682x.h"
-#include "driver/tcpm/it83xx_pd.h"
-#include "driver/temp_sensor/thermistor.h"
-#include "driver/usb_mux/it5205.h"
-#include "driver/usb_mux/ps8743.h"
-#include "extpower.h"
 #include "gpio.h"
 #include "hooks.h"
-#include "i2c.h"
-#include "keyboard_scan.h"
-#include "lid_switch.h"
 #include "motion_sense.h"
-#include "power.h"
-#include "power_button.h"
 #include "pwm.h"
 #include "pwm_chip.h"
-#include "regulator.h"
-#include "spi.h"
-#include "switch.h"
-#include "tablet_mode.h"
-#include "task.h"
-#include "temp_sensor.h"
-#include "timer.h"
-#include "uart.h"
-#include "usb_charge.h"
-#include "usb_mux.h"
-#include "usb_pd_tcpm.h"
-#include "usbc_ppc.h"
+#include "system.h"
 
 #define CPRINTS(format, args...) cprints(CC_USBCHARGE, format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_USBCHARGE, format, ## args)
-
-/* Initialize board. */
-static void board_init(void)
-{
-	/* Enable motion sensor interrupt */
-	gpio_enable_interrupt(GPIO_BASE_IMU_INT_L);
-	gpio_enable_interrupt(GPIO_LID_ACCEL_INT_L);
-
-	/* Disable PWM_CH_LED2(Green) for unuse */
-	pwm_enable(PWM_CH_LED2, 0);
-}
-DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
 /* Sensor */
 static struct mutex g_base_mutex;
@@ -70,6 +27,7 @@ static struct mutex g_lid_mutex;
 
 static struct icm_drv_data_t g_icm42607_data;
 static struct kionix_accel_data g_kx022_data;
+static struct accelgyro_saved_data_t g_bma422_data;
 
 /* Matrix to rotate accelrator into standard reference frame */
 static const mat33_fp_t base_standard_ref = {
@@ -161,3 +119,109 @@ struct motion_sensor_t motion_sensors[] = {
 	},
 };
 const unsigned int motion_sensor_count = ARRAY_SIZE(motion_sensors);
+
+struct motion_sensor_t bma422_lid_accel = {
+	.name = "Lid Accel",
+	.active_mask = SENSOR_ACTIVE_S0_S3,
+	.chip = MOTIONSENSE_CHIP_BMA422,
+	.type = MOTIONSENSE_TYPE_ACCEL,
+	.location = MOTIONSENSE_LOC_LID,
+	.drv = &bma4_accel_drv,
+	.mutex = &g_lid_mutex,
+	.drv_data = &g_bma422_data,
+	.port = I2C_PORT_ACCEL,
+	.i2c_spi_addr_flags = BMA4_I2C_ADDR_PRIMARY,
+	.rot_standard_ref = &lid_standard_ref,
+	.min_frequency = BMA4_ACCEL_MIN_FREQ,
+	.max_frequency = BMA4_ACCEL_MAX_FREQ,
+	.default_range = 2, /* g, enough for laptop. */
+	.config = {
+		/* EC use accel for angle detection */
+		[SENSOR_CONFIG_EC_S0] = {
+			.odr = 12500 | ROUND_UP_FLAG,
+			.ec_rate = 100 * MSEC,
+		},
+		/* Sensor on in S3 */
+		[SENSOR_CONFIG_EC_S3] = {
+			.odr = 12500 | ROUND_UP_FLAG,
+			.ec_rate = 0,
+		},
+	},
+};
+
+static void board_update_motion_sensor_config(void)
+{
+	if (system_get_board_version() >= 2) {
+		motion_sensors[LID_ACCEL] = bma422_lid_accel;
+		ccprints("LID ACCEL is BMA422");
+	} else {
+		ccprints("LID ACCEL is KX022");
+	}
+}
+
+/* PWM */
+
+/*
+ * PWM channels. Must be in the exactly same order as in enum pwm_channel.
+ * There total three 16 bits clock prescaler registers for all pwm channels,
+ * so use the same frequency and prescaler register setting is required if
+ * number of pwm channel greater than three.
+ */
+const struct pwm_t pwm_channels[] = {
+	[PWM_CH_LED1] = {
+		.channel = 0,
+		.flags = PWM_CONFIG_DSLEEP | PWM_CONFIG_ACTIVE_LOW,
+		.freq_hz = 324, /* maximum supported frequency */
+		.pcfsr_sel = PWM_PRESCALER_C4,
+	},
+	[PWM_CH_LED2] = {
+		.channel = 1,
+		.flags = PWM_CONFIG_DSLEEP | PWM_CONFIG_ACTIVE_LOW,
+		.freq_hz = 324, /* maximum supported frequency */
+		.pcfsr_sel = PWM_PRESCALER_C4,
+	},
+	[PWM_CH_LED3] = {
+		.channel = 2,
+		.flags = PWM_CONFIG_DSLEEP | PWM_CONFIG_ACTIVE_LOW,
+		.freq_hz = 324, /* maximum supported frequency */
+		.pcfsr_sel = PWM_PRESCALER_C4,
+	},
+	[PWM_CH_KBLIGHT] = {
+		.channel = 3,
+		.flags = PWM_CONFIG_DSLEEP,
+		.freq_hz = 10000, /* SYV226 supports 10~100kHz */
+		.pcfsr_sel = PWM_PRESCALER_C6,
+	},
+};
+BUILD_ASSERT(ARRAY_SIZE(pwm_channels) == PWM_CH_COUNT);
+
+/* Initialize board. */
+static void board_init(void)
+{
+	/* Enable motion sensor interrupt */
+	gpio_enable_interrupt(GPIO_BASE_IMU_INT_L);
+	gpio_enable_interrupt(GPIO_LID_ACCEL_INT_L);
+
+	/* Disable PWM_CH_LED2(Green) for unuse */
+	pwm_enable(PWM_CH_LED2, 0);
+
+	board_update_motion_sensor_config();
+
+	if (board_get_version() >= 2) {
+		gpio_set_flags(GPIO_I2C_H_SCL, GPIO_INPUT | GPIO_PULL_DOWN);
+		gpio_set_flags(GPIO_I2C_H_SDA, GPIO_INPUT | GPIO_PULL_DOWN);
+	}
+}
+DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
+
+static void board_do_chipset_resume(void)
+{
+	gpio_set_level(GPIO_EN_KB_BL, 1);
+}
+DECLARE_HOOK(HOOK_CHIPSET_RESUME, board_do_chipset_resume, HOOK_PRIO_DEFAULT);
+
+static void board_do_chipset_suspend(void)
+{
+	gpio_set_level(GPIO_EN_KB_BL, 0);
+}
+DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, board_do_chipset_suspend, HOOK_PRIO_DEFAULT);

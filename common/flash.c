@@ -7,6 +7,7 @@
 
 #include "common.h"
 #include "console.h"
+#include "cros_board_info.h"
 #include "flash.h"
 #include "gpio.h"
 #include "hooks.h"
@@ -17,6 +18,7 @@
 #include "system.h"
 #include "util.h"
 #include "vboot_hash.h"
+#include "write_protect.h"
 
 /*
  * Contents of erased flash, as a 32-bit value.  Most platforms erase flash
@@ -744,15 +746,8 @@ uint32_t crec_flash_get_protect(void)
 #endif
 
 	/* Read write protect GPIO */
-#ifdef CONFIG_WP_ALWAYS
-	flags |= EC_FLASH_PROTECT_GPIO_ASSERTED;
-#elif defined(CONFIG_WP_ACTIVE_HIGH)
-	if (gpio_get_level(GPIO_WP))
+	if (write_protect_is_asserted())
 		flags |= EC_FLASH_PROTECT_GPIO_ASSERTED;
-#else
-	if (!gpio_get_level(GPIO_WP_L))
-		flags |= EC_FLASH_PROTECT_GPIO_ASSERTED;
-#endif
 
 #ifdef CONFIG_FLASH_PSTATE
 	/* Read persistent state of RO-at-boot flag */
@@ -945,6 +940,15 @@ int crec_flash_set_protect(uint32_t mask, uint32_t flags)
 		rv = crec_flash_physical_protect_now(0);
 		if (rv)
 			retval = rv;
+
+		/*
+		 * Latch the CBI EEPROM WP immediately if HW WP is asserted and
+		 * we're now protecting the RO region with SW WP.
+		 */
+		if (IS_ENABLED(CONFIG_EEPROM_CBI_WP) &&
+		    (EC_FLASH_PROTECT_GPIO_ASSERTED &
+		     crec_flash_get_protect()))
+			cbi_latch_eeprom_wp();
 	}
 
 	/* 5 - Commit ALL_NOW. */
@@ -1022,6 +1026,8 @@ static int command_flash_info(int argc, char **argv)
 		ccputs(" STUCK");
 	if (flags & EC_FLASH_PROTECT_ERROR_INCONSISTENT)
 		ccputs(" INCONSISTENT");
+	if (flags & EC_FLASH_PROTECT_ERROR_UNKNOWN)
+		ccputs(" UNKNOWN_ERROR");
 #ifdef CONFIG_ROLLBACK
 	if (flags & EC_FLASH_PROTECT_ROLLBACK_AT_BOOT)
 		ccputs(" rollback_at_boot");
@@ -1480,6 +1486,7 @@ static enum ec_status flash_command_protect(struct host_cmd_handler_args *args)
 		EC_FLASH_PROTECT_GPIO_ASSERTED |
 		EC_FLASH_PROTECT_ERROR_STUCK |
 		EC_FLASH_PROTECT_ERROR_INCONSISTENT |
+		EC_FLASH_PROTECT_ERROR_UNKNOWN |
 		crec_flash_physical_get_valid_flags();
 	r->writable_flags = crec_flash_physical_get_writable_flags(r->flags);
 
