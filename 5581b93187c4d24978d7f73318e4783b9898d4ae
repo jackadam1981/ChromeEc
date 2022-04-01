@@ -106,6 +106,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f73ded4_3ac46bbc",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_malfunction_sink.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-04-01T16:51:39Z",
+      "side": 1,
+      "message": "A static variable outside the fixture has a similar lifetime mismatch with the test as the field inside the fixture.\n\nIf I understand you correctly, `k_fifo_put` and `k_fifo_get` treat the `data` parameter as opaque and don\u0027t dereference it. For the sake of argument, that would mean that it\u0027s OK to call either of those macros when the next item in the queue happens to contain a stale pointer, as long as you\u0027re only doing it to clear the queue. You could have a local `struct tcpci_faulty_snk_action actions` and put the address of that in the queue, knowing that you\u0027re only going to dereference the pointer during the object\u0027s lifetime.\n\nBut that might be too clever for our own good. If we were using C++, I\u0027d have you use some RAII data structure to manage the queue and its contents. For the time being, putting this structure in the fixture is OK.",
+      "parentUuid": "ed9771d7_82ae8282",
+      "revId": "5581b93187c4d24978d7f73318e4783b9898d4ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "582146b0_cb64006c",
@@ -177,6 +195,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "677823b7_2e72521f",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_malfunction_sink.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-04-01T16:51:39Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "cfc57ae9_8369461b",
+      "range": {
+        "startLine": 204,
+        "startChar": 0,
+        "endLine": 230,
+        "endChar": 2
+      },
+      "revId": "5581b93187c4d24978d7f73318e4783b9898d4ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e727d972_d890c78e",
@@ -190,6 +232,24 @@
       "writtenOn": "2022-03-24T18:17:47Z",
       "side": 1,
       "message": "This could just be in the `_after` function.",
+      "revId": "5581b93187c4d24978d7f73318e4783b9898d4ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d5447a7_07da2836",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_malfunction_sink.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-04-01T16:51:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e727d972_d890c78e",
       "revId": "5581b93187c4d24978d7f73318e4783b9898d4ae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
