@@ -1005,7 +1005,7 @@ void set_up_comparator(void)
 	task_enable_irq(STM32_IRQ_COMP);
 }
 
-static void h1_vref_change(void)
+static void __keep h1_vref_change(void)
 {
 	/* Ack the interrupt */
 	STM32_EXTI_PR = EXTI_COMP2_EVENT;
