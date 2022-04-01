@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "88d05e15_4b47b71f",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_malfunction_sink.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2022-04-01T12:24:17Z",
+      "side": 1,
+      "message": "I added it during some debugging. It is not needed now.",
+      "parentUuid": "54339d76_7923ed87",
+      "revId": "5581b93187c4d24978d7f73318e4783b9898d4ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "50d8ec0f_ef706541",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a067dd9_8b072737",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_malfunction_sink.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2022-04-01T12:24:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "50d8ec0f_ef706541",
+      "revId": "5581b93187c4d24978d7f73318e4783b9898d4ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "162ffde9_cbb3cb5e",
@@ -48,6 +84,24 @@
       "writtenOn": "2022-03-24T18:17:47Z",
       "side": 1,
       "message": "It seems a little odd to me to store the actions in the fixture, since their useful lifetime is entirely within the lifetime of a single test. Does k_fifo_put not copy the item into the fifo structure? Even if it did, wouldn\u0027t a local variable outlive the fifo element in this test?",
+      "revId": "5581b93187c4d24978d7f73318e4783b9898d4ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed9771d7_82ae8282",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_malfunction_sink.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2022-04-01T12:24:17Z",
+      "side": 1,
+      "message": "The problem is that I want to clear actions in `usb_malfunction_sink_after`, so if it was local variable it would be out of the scope. Zephyr FIFO expects that structure that is put has `void*` field reserved for internal FIFO usage, so it is not allocating anything on `k_fifo_put`.\n\nI agree that actions in the fixture is strange. What do you think about making static variable in the test instead?",
+      "parentUuid": "162ffde9_cbb3cb5e",
       "revId": "5581b93187c4d24978d7f73318e4783b9898d4ae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -89,6 +143,30 @@
       "side": 1,
       "message": "*`continue`, similar logic in both branches, and `if` followed by `zassert_unreachable` instead of a direct assert on the conditions.",
       "parentUuid": "582146b0_cb64006c",
+      "range": {
+        "startLine": 204,
+        "startChar": 0,
+        "endLine": 230,
+        "endChar": 2
+      },
+      "revId": "5581b93187c4d24978d7f73318e4783b9898d4ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cfc57ae9_8369461b",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_malfunction_sink.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2022-04-01T12:24:17Z",
+      "side": 1,
+      "message": "It is not trivial to change `tcpci_partner_common_print_logged_msgs` to print into buffer, so I would like to do it in different CL. For now, I change it to code proposed by you without printing logged messages on assert.",
+      "parentUuid": "ded3505d_5cdac460",
       "range": {
         "startLine": 204,
         "startChar": 0,
