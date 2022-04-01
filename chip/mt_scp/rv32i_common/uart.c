@@ -54,8 +54,8 @@ void uart_init(void)
 	/* Enable received data interrupt */
 	UART_IER(UARTN) |= UART_IER_RDI;
 
-#if (UARTN < SCP_UART_COUNT)
-#ifdef CHIP_VARIANT_MT8195_CORE1
+#if (UARTN < 2)
+#ifdef CHIP_VARIANT_MT8195
 	task_enable_irq(UART_TX_IRQ(UARTN));
 	task_enable_irq(UART_RX_IRQ(UARTN));
 #endif
@@ -127,14 +127,14 @@ void uart_tx_stop(void)
 
 static void uart_process(void)
 {
-#ifdef CHIP_VARIANT_MT8195_CORE1
-	uart_process_input();
+#ifdef CHIP_VARIANT_MT8195
+	/* uart_process_input(); */
 #endif
 	uart_process_output();
 }
 
 #if (UARTN < SCP_UART_COUNT)
-#ifdef CHIP_VARIANT_MT8195_CORE1
+#if 0
 static void uart_irq_handler(void)
 {
 	extern volatile int ec_int;
