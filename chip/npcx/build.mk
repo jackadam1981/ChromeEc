@@ -37,6 +37,7 @@ chip-$(CONFIG_HOST_INTERFACE_ESPI)+=espi.o
 chip-$(CONFIG_PECI)+=peci.o
 chip-$(CONFIG_HOST_INTERFACE_SHI)+=shi.o
 chip-$(CONFIG_CEC)+=cec.o
+chip-$(CONFIG_CEC2)+=cec2.o
 # pwm functions are implemented with the fan functions
 chip-$(CONFIG_PWM)+=pwm.o
 chip-$(CONFIG_SPI)+=spi.o
