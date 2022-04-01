@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "47e531e5_32c8c66b",
+        "filename": "board/moonbuggy/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 391,
+      "author": {
+        "id": 1115641
+      },
+      "writtenOn": "2022-04-01T06:55:50Z",
+      "side": 1,
+      "message": "There\u0027s no control line for USB power on Atlas? Seems like an oversight that we should raise with Quanta/Göran.",
+      "range": {
+        "startLine": 389,
+        "startChar": 0,
+        "endLine": 391,
+        "endChar": 2
+      },
+      "revId": "0ddf7bf5a0de40c131cd04f55c972c779356f4ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0620662_e213db69",
+        "filename": "board/moonbuggy/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1115641
+      },
+      "writtenOn": "2022-04-01T06:55:50Z",
+      "side": 1,
+      "message": "I\u0027m guessing this will some day be an interrupt signal to trigger the EC to enable full AP power? Not yet needed for this build, imo.",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 53
+      },
+      "revId": "0ddf7bf5a0de40c131cd04f55c972c779356f4ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
