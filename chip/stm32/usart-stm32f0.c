@@ -105,7 +105,7 @@ struct usart_hw_config const usart1_hw = {
 	.ops = &usart_variant_hw_ops,
 };
 
-static void usart1_interrupt(void)
+static void __keep usart1_interrupt(void)
 {
 	usart_interrupt(configs[0]);
 }
@@ -123,7 +123,7 @@ struct usart_hw_config const usart2_hw = {
 	.ops = &usart_variant_hw_ops,
 };
 
-static void usart2_interrupt(void)
+static void __keep usart2_interrupt(void)
 {
 	usart_interrupt(configs[1]);
 }
@@ -154,7 +154,7 @@ struct usart_hw_config const usart4_hw = {
 #endif
 
 #if defined(CONFIG_STREAM_USART3) || defined(CONFIG_STREAM_USART4)
-static void usart3_4_interrupt(void)
+static void __keep usart3_4_interrupt(void)
 {
 	/*
 	 * This interrupt handler could be called with one of these configs
