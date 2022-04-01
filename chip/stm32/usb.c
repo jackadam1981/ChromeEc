@@ -684,7 +684,7 @@ static void usb_interrupt_handle_wake(uint16_t status)
 }
 #endif /* CONFIG_USB_SUSPEND && CONFIG_USB_REMOTE_WAKEUP */
 
-static void usb_interrupt(void)
+static void __keep usb_interrupt(void)
 {
 	uint16_t status = STM32_USB_ISTR;
 
