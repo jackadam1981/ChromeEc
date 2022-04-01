@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8447832_738852b0",
+        "filename": "zephyr/boards/arm/npcx7/npcx7_defconfig",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2022-04-01T07:33:13Z",
+      "side": 0,
+      "message": "I see the config is added in the [CL:3547916](https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3547916) to suppress the console spam. When the [PR:44195](https://github.com/zephyrproject-rtos/zephyr/pull/44195) is cherry-picked to the downstream, it is not needed.\nLet\u0027s remove it in the CL.",
+      "revId": "f00d79f1687a03d9e3ee410529ec9c2d7987c36d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "08292dbe_f84a1efe",
+        "filename": "zephyr/boards/arm/npcx9/npcx9_defconfig",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2022-04-01T07:33:13Z",
+      "side": 0,
+      "message": "Same above.",
+      "revId": "f00d79f1687a03d9e3ee410529ec9c2d7987c36d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
