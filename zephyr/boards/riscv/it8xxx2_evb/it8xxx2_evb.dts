@@ -8,6 +8,7 @@
 #include <cros/ite/it8xxx2.dtsi>
 #include <dt-bindings/gpio_defines.h>
 #include <it8xxx2.dtsi>
+#include <ite/it8xxx2-pinctrl-map.dtsi>
 
 / {
 	model = "IT8XXX2 EV-Board";
