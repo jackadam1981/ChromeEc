@@ -51,6 +51,23 @@
       "parentUuid": "c221e35d_94e5c45d",
       "revId": "2f43a762c0e59958d94ef4e37d6745ddd8c8db4e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "15246bb3_0e2b1991",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459152
+      },
+      "writtenOn": "2022-04-01T16:00:38Z",
+      "side": 1,
+      "message": "I have been also affected by this, https://buganizer.corp.google.com/issues/227620120 \nwith two different power supplies a lenovo 65W, and a screen with Power delivery:\n\nThis patch fixes the issue for me.\n\n",
+      "revId": "2f43a762c0e59958d94ef4e37d6745ddd8c8db4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
