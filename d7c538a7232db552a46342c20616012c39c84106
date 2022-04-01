@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "172c1a75_61ed0767",
+        "filename": "zephyr/projects/nissa/src/nivviks/form_factor.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-04-01T05:52:25Z",
+      "side": 1,
+      "message": "I don\u0027t think this is going to be temporary, since other boards may use either orientation. Remove?",
+      "revId": "d7c538a7232db552a46342c20616012c39c84106",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
