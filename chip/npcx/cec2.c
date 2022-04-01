@@ -67,11 +67,40 @@ static struct cec_rx_queue cec_rx_queue;
 /* Events to send to AP */
 static atomic_t cec_events;
 
+/* APB1 frequency. Store divided by 10k to avoid some runtime divisions */
+static uint32_t apb1_freq_div_10k;
+
 static void send_mkbp_event(uint32_t event)
 {
 	atomic_or(&cec_events, event);
 	mkbp_send_event(EC_MKBP_EVENT_CEC_EVENT);
 }
+
+static void cec2_init(void)
+{
+	int mdl = NPCX_MFT_MODULE_2;
+
+	/* APB1 is the clock we base the timers on */
+	apb1_freq_div_10k = clock_get_apb1_freq()/10000;
+
+	/* Ensure Multi-Function timer is powered up. */
+	CLEAR_BIT(NPCX_PWDWN_CTL(mdl), NPCX_PWDWN_CTL1_MFT2_PD);
+
+	/* Mode 2 - Dual-input capture */
+	SET_FIELD(NPCX_TMCTRL(mdl), NPCX_TMCTRL_MDSEL_FIELD, NPCX_MFT_MDSEL_2);
+
+	/* Enable capture TCNT1 into TCRA and preset TCNT1. */
+	SET_BIT(NPCX_TMCTRL(mdl), NPCX_TMCTRL_TBEN);
+
+	/* If RO doesn't set it, RW needs to set it explicitly. */
+	gpio_set_level(CEC2_GPIO_PULL_UP, 1);
+
+	/* Ensure the CEC bus is not pulled low by default on startup. */
+	gpio_set_level(CEC2_GPIO_OUT, 1);
+
+	CPRINTS("CEC2 initialized");
+}
+DECLARE_HOOK(HOOK_INIT, cec2_init, HOOK_PRIO_LAST);
 
 void cec2_task(void *unused)
 {
