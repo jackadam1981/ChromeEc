@@ -16,6 +16,24 @@
       "message": "I don\u0027t think this is going to be temporary, since other boards may use either orientation. Remove?",
       "revId": "d7c538a7232db552a46342c20616012c39c84106",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0fcaf341_dc63a51b",
+        "filename": "zephyr/projects/nissa/src/nivviks/form_factor.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-04-01T05:55:39Z",
+      "side": 1,
+      "message": "As Sam points out, this isn\u0027t quite right yet since it\u0027s the base that needs the config, not the lid, and this should only be temporary since production boards will only have one orientation.",
+      "parentUuid": "172c1a75_61ed0767",
+      "revId": "d7c538a7232db552a46342c20616012c39c84106",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
