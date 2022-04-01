@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b47307d_c0cc5677",
+        "filename": "zephyr/projects/nissa/src/nivviks/form_factor.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-04-01T05:32:31Z",
+      "side": 1,
+      "message": "This should be a uint32_t to match the cros_cbi_get_fw_config signature.",
+      "range": {
+        "startLine": 28,
+        "startChar": 10,
+        "endLine": 28,
+        "endChar": 13
+      },
+      "revId": "f2f7be8f5cb66902289b715fcd29e546396dca93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "592f0bb6_db563b26",
+        "filename": "zephyr/projects/nissa/src/nivviks/form_factor.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-04-01T05:32:31Z",
+      "side": 1,
+      "message": "This seems more like an informative message than a problem worth warning about.",
+      "range": {
+        "startLine": 41,
+        "startChar": 2,
+        "endLine": 41,
+        "endChar": 9
+      },
+      "revId": "f2f7be8f5cb66902289b715fcd29e546396dca93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
