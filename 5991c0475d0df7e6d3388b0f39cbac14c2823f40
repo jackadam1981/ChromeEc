@@ -70,6 +70,24 @@
       "parentUuid": "c278a617_cf6fb128",
       "revId": "5991c0475d0df7e6d3388b0f39cbac14c2823f40",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed120a22_b8fee3c4",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-04-01T19:14:17Z",
+      "side": 1,
+      "message": "Good idea! The test case for the commit would become:\n\n```\nTEST\u003dRun \u0027./test/run_device_tests.py --board dartmonkey \\\n     --tests system_is_locked.*\u0027\n```\n\nRight?\n\nAdding `.*` could be a good way to explicitly say \"I want to run more than one test\".\n\nPatryk, would that work for you?",
+      "parentUuid": "c278a617_cf6fb128",
+      "revId": "5991c0475d0df7e6d3388b0f39cbac14c2823f40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
