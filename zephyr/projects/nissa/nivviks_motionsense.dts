@@ -36,6 +36,13 @@
 	/* Rotation matrix used by drivers. */
 	motionsense-rotation-ref {
 		compatible = "cros-ec,motionsense-rotation-ref";
+
+		lid_rot_inverted: lid-rotation-inverted {
+			mat33 = <(-1) 0 0
+				 0 (-1) 0
+				 0 0 1>;
+		};
+
 		lid_rot_ref: lid-rotation-ref {
 			mat33 = <(-1) 0 0
 				 0 1 0
@@ -123,6 +130,9 @@
 			location = "MOTIONSENSE_LOC_LID";
 			mutex = <&lid_mutex>;
 			port = <&i2c_ec_i2c_sensor>;
+			/*
+			 * May be overridden by board config.
+			 */
 			rot-standard-ref = <&lid_rot_ref>;
 			default-range = <2>;
 			drv-data = <&lis2dw12_data>;
