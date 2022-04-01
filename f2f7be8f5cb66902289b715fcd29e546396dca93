@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ccd996f_349c620b",
+        "filename": "zephyr/projects/nissa/src/nivviks/form_factor.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-04-01T05:50:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6b47307d_c0cc5677",
+      "range": {
+        "startLine": 28,
+        "startChar": 10,
+        "endLine": 28,
+        "endChar": 13
+      },
+      "revId": "f2f7be8f5cb66902289b715fcd29e546396dca93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "592f0bb6_db563b26",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-04-01T05:32:31Z",
       "side": 1,
       "message": "This seems more like an informative message than a problem worth warning about.",
+      "range": {
+        "startLine": 41,
+        "startChar": 2,
+        "endLine": 41,
+        "endChar": 9
+      },
+      "revId": "f2f7be8f5cb66902289b715fcd29e546396dca93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8d292d7_d1ca2ad7",
+        "filename": "zephyr/projects/nissa/src/nivviks/form_factor.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-04-01T05:50:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "592f0bb6_db563b26",
       "range": {
         "startLine": 41,
         "startChar": 2,
