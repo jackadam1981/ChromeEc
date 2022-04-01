@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d00426c_a4645f7c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-04-01T22:57:37Z",
+      "side": 1,
+      "message": "Just a nit.",
+      "revId": "131370ceb44bd7937471dcd8437b0d057eb2601a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f76bcf30_d8af002b",
+        "filename": "zephyr/dts/bindings/leds/cros-ec,led-colors.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-04-01T22:57:37Z",
+      "side": 1,
+      "message": "Don\u0027t change it when update an existing file. Only do it on a new created file. Moving a file is not considered a new file.",
+      "range": {
+        "startLine": 1,
+        "startChar": 15,
+        "endLine": 1,
+        "endChar": 16
+      },
+      "revId": "131370ceb44bd7937471dcd8437b0d057eb2601a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
