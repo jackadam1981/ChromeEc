@@ -93,6 +93,30 @@
       },
       "revId": "61a61e839569c7a8c02fa6b1c1109224a9c1b237",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b8a5b64_44e7e8ca",
+        "filename": "test/panic_data.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-04-01T17:30:04Z",
+      "side": 1,
+      "message": "\u003e These information are saved in backup RAM because hard reboot clears memory\n\nDoes the backup RAM only have 16 bits available? I think that\u0027s the part that is missing from the description for those that aren\u0027t familiar with the details.\n\nFor example,\n\n\"This information is saved in backup RAM because hard reboot clears memory. The backup RAM only has 16 bits available for this information.\"",
+      "parentUuid": "ba4d4de6_a626dc01",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 26
+      },
+      "revId": "61a61e839569c7a8c02fa6b1c1109224a9c1b237",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

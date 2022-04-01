@@ -16,6 +16,69 @@
       "message": "This looks great! ",
       "revId": "64184fe8e15f4627e451cc9c1182a6f67db98b38",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3fca5386_c63974b5",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-04-01T17:30:04Z",
+      "side": 1,
+      "message": "Just a reminder to change before submitting.",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 81,
+        "endChar": 71
+      },
+      "revId": "64184fe8e15f4627e451cc9c1182a6f67db98b38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b12eb8bc_562741f1",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-04-01T17:30:04Z",
+      "side": 1,
+      "message": "`PEP 8: E302 expected 2 blank lines, found 1`",
+      "revId": "64184fe8e15f4627e451cc9c1182a6f67db98b38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02d2f336_a7728981",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-04-01T17:30:04Z",
+      "side": 1,
+      "message": "I think it would be ok to add `NOCTURNE_FP_IMAGE_PATH` and `NAMI_FP_IMAGE_PATH` to `DARTMONKEY_CONFIG`, so that it is covered by the for loop above. You can move this comment to the place where you do that in the `DARTMONKEY_CONFIG`.",
+      "range": {
+        "startLine": 229,
+        "startChar": 8,
+        "endLine": 230,
+        "endChar": 51
+      },
+      "revId": "64184fe8e15f4627e451cc9c1182a6f67db98b38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
