@@ -242,6 +242,12 @@
 
 &adc0 {
 	status = "okay";
+	pinctrl-0 = <&adc0_default    /* ADC0 */
+				 &adc2_default    /* ADC2 */
+				 &adc3_default    /* ADC3 */
+				 &adc13_default   /* ADC13 */
+				 &adc14_default>; /* ADC14 */
+	pinctrl-names = "default";
 };
 
 &i2c0 {

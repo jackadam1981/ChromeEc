@@ -8,6 +8,7 @@
 #include <cros/ite/it8xxx2.dtsi>
 #include <dt-bindings/gpio_defines.h>
 #include <it8xxx2.dtsi>
+#include <ite/it8xxx2-pinctrl-map.dtsi>
 
 / {
 	model = "IT8XXX2 EV-Board";
@@ -283,6 +284,8 @@
 
 &adc0 {
 	status = "okay";
+	pinctrl-0 = <&adc3_default>;  /* ADC3 */
+	pinctrl-names = "default";
 };
 
 &i2c0 {
@@ -332,4 +335,6 @@
 	status = "okay";
 	channel = <IT8XXX2_TACH_CHANNEL_A>;
 	pulses-per-round = <2>;
+	pinctrl-0 = <&tach0a_default>; /* GPD6 */
+	pinctrl-names = "default";
 };

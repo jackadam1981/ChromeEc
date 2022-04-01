@@ -34,4 +34,9 @@
 
 &adc0 {
 	status = "okay";
+	pinctrl-0 = <&adc0_default    /* ADC0 */
+				 &adc1_default    /* ADC1 */
+				 &adc2_default    /* ADC2 */
+				 &adc7_default>;  /* ADC7 */
+	pinctrl-names = "default";
 };
