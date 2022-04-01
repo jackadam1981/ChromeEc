@@ -33,6 +33,24 @@
       "message": "It\u0027s a minor point, but the states are grouped so that the transition states are after the main states, and even though it requires 2 ifdefs, it may make it clearer to keep to that pattern.\nIt\u0027s a tradeoff between more conditional guards and keeping the pattern of states.\nOthers may prefer it this way. I don\u0027t have a strong opinion.",
       "revId": "42a9a8c70a1cdfcd9739e1acffc17a322dd8f2c6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9bcec4d_e7c384f5",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-04-01T18:11:22Z",
+      "side": 1,
+      "message": "I was debating more ifdef or not. To make it consistent, I made the change here and enum power_states_ndsx too.",
+      "parentUuid": "7188cabe_7b0cad59",
+      "revId": "42a9a8c70a1cdfcd9739e1acffc17a322dd8f2c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
