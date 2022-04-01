@@ -253,7 +253,7 @@ static void configure_pvd(void)
 	STM32_PWR_CR |= STM32_PWR_PVDE;
 }
 
-static void pvd_interrupt(void)
+static void __keep pvd_interrupt(void)
 {
 	/* Clear Pending Register */
 	STM32_EXTI_PR = EXTI_PVD_EVENT;
