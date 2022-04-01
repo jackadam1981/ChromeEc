@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c488ffd_7f90c685",
+        "filename": "zephyr/dts/bindings/temp/cros_ec_temp_sensor.yaml",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-04-01T15:56:09Z",
+      "side": 1,
+      "message": "As a followup, can you add a compatible string to this file:\n\n```\ncompatible: cros-ec,temp-sensor\n```\n\nThen in the board dts file, we can add a secondary compatible string like this:\n\n```\nsoc-tmp112 {\n\tcompatible \u003d \"cros-ec,temp-sensor-tmp112\", \"cros-ec,temp-sensor\";\n\n```",
+      "revId": "12c0c7509859ce25ffde3d6f29948af3ebe91641",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "482157eb_a7cb257c",
+        "filename": "zephyr/shim/include/temp_sensor/temp_sensor.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-04-01T15:56:09Z",
+      "side": 1,
+      "message": "See the comment in the yaml, if we add a second compatible string to each temperature sensor, this this code simplifies to just:\n\n```\n#define ANY_INST_HAS_POWER_GOOD_PIN\t\t\t\t\t\\\n\t(DT_FOREACH_STATUS_OKAY(cros_ec_temp_sensor,\t\t\\\n\t\t\t\tHAS_POWER_GOOD_PIN)\t\t\t\\\n\t0)\n\n```",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 0
+      },
+      "revId": "12c0c7509859ce25ffde3d6f29948af3ebe91641",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8849b488_3a9e703e",
+        "filename": "zephyr/shim/src/temp_sensors.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-04-01T15:56:09Z",
+      "side": 1,
+      "message": "Can you create a helper for this bit and share for each temp sensor type?",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 0
+      },
+      "revId": "12c0c7509859ce25ffde3d6f29948af3ebe91641",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
