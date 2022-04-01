@@ -34,6 +34,24 @@
       "parentUuid": "5404a8aa_e651d40b",
       "revId": "5991c0475d0df7e6d3388b0f39cbac14c2823f40",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c278a617_cf6fb128",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-04-01T17:41:16Z",
+      "side": 1,
+      "message": "Would `fullmatch` fix it?\n\nThen you could use `sha256.*` to match both.",
+      "parentUuid": "44e529c9_3dce7dc9",
+      "revId": "5991c0475d0df7e6d3388b0f39cbac14c2823f40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
