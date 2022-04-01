@@ -79,6 +79,145 @@
       },
       "revId": "64184fe8e15f4627e451cc9c1182a6f67db98b38",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "903847a1_2954412b",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-04-01T18:02:55Z",
+      "side": 1,
+      "message": "Ah, I missed the `build_board` part. We could add that to the `ro_images` dict:\n\n```\n    ro_images\u003d{\n        \u0027dartmonkey_v2.0.2887\u0027: {\n            \u0027image_path\u0027: DARTMONKEY_IMAGE_PATH,\n            \u0027build_board\u0027: \u0027dartmonkey\u0027\n        }\n    }\n```\n\nand set it in the for loop above.",
+      "parentUuid": "02d2f336_a7728981",
+      "range": {
+        "startLine": 229,
+        "startChar": 8,
+        "endLine": 230,
+        "endChar": 51
+      },
+      "revId": "64184fe8e15f4627e451cc9c1182a6f67db98b38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e03962da_9d2db27c",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-04-01T18:02:55Z",
+      "side": 1,
+      "message": "`PEP 8: E203 whitespace before \u0027:\u0027`",
+      "range": {
+        "startLine": 255,
+        "startChar": 39,
+        "endLine": 255,
+        "endChar": 40
+      },
+      "revId": "64184fe8e15f4627e451cc9c1182a6f67db98b38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12c8e2a0_f05434f3",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-04-01T18:02:55Z",
+      "side": 1,
+      "message": "`PEP 8: E231 missing whitespace after \u0027,\u0027`",
+      "range": {
+        "startLine": 256,
+        "startChar": 71,
+        "endLine": 256,
+        "endChar": 72
+      },
+      "revId": "64184fe8e15f4627e451cc9c1182a6f67db98b38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7bd3323_2c965c6e",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-04-01T18:02:55Z",
+      "side": 1,
+      "message": "`PEP 8: E203 whitespace before \u0027:\u0027`",
+      "range": {
+        "startLine": 256,
+        "startChar": 39,
+        "endLine": 256,
+        "endChar": 40
+      },
+      "revId": "64184fe8e15f4627e451cc9c1182a6f67db98b38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "107e3be8_9991bcef",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-04-01T18:02:55Z",
+      "side": 1,
+      "message": "`PEP 8: E231 missing whitespace after \u0027,\u0027`",
+      "range": {
+        "startLine": 266,
+        "startChar": 61,
+        "endLine": 266,
+        "endChar": 62
+      },
+      "revId": "64184fe8e15f4627e451cc9c1182a6f67db98b38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a189c529_7f824ac2",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-04-01T18:02:55Z",
+      "side": 1,
+      "message": "`PEP 8: E203 whitespace before \u0027:\u0027`",
+      "range": {
+        "startLine": 266,
+        "startChar": 37,
+        "endLine": 266,
+        "endChar": 38
+      },
+      "revId": "64184fe8e15f4627e451cc9c1182a6f67db98b38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
