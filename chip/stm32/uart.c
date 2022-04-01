@@ -161,7 +161,7 @@ int uart_read_char(void)
 }
 
 /* Interrupt handler for console USART */
-static void uart_interrupt(void)
+static void __keep uart_interrupt(void)
 {
 #ifndef CONFIG_UART_TX_DMA
 	/*
