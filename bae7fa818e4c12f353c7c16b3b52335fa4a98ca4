@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a34e1da_ffdba51c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 48
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-04-01T20:48:24Z",
+      "side": 1,
+      "message": "Commit failed because of conflict with CL merged today (https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3557849).\n\nRe-basing and updating CL to aligned with change merge today.",
+      "revId": "bae7fa818e4c12f353c7c16b3b52335fa4a98ca4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
