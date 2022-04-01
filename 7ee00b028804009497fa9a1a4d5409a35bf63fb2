@@ -3,6 +3,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e0010f74_55489b14",
+        "filename": "test/OWNERS",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-04-01T19:35:58Z",
+      "side": 1,
+      "message": "Should this match the tests listed in [run_device_tests.py#126](https://chromium.googlesource.com/chromiumos/platform/ec/+/refs/changes/43/3565043/1/test/run_device_tests.py#126)?\n\nI am not familiar with many of those, but I see the Python scripts has some extra tests, e.g. `cec`.",
+      "range": {
+        "startLine": 2,
+        "startChar": 29,
+        "endLine": 2,
+        "endChar": 220
+      },
+      "revId": "7ee00b028804009497fa9a1a4d5409a35bf63fb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c12e913_cdcd6b09",
+        "filename": "test/OWNERS",
+        "patchSetId": 1
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-04-01T19:35:58Z",
+      "side": 1,
+      "message": "Do we care also about the corresponding `*.tasklist` files?",
+      "range": {
+        "startLine": 3,
+        "startChar": 33,
+        "endLine": 3,
+        "endChar": 34
+      },
+      "revId": "7ee00b028804009497fa9a1a4d5409a35bf63fb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "540a57f6_26ab5c2d",
         "filename": "util/OWNERS",
         "patchSetId": 1
@@ -14,6 +60,30 @@
       "writtenOn": "2022-03-31T23:49:34Z",
       "side": 1,
       "message": "The format is described [here](https://android-review.googlesource.com/plugins/code-owners/Documentation/backend-find-owners.html#syntax).",
+      "range": {
+        "startLine": 2,
+        "startChar": 0,
+        "endLine": 3,
+        "endChar": 88
+      },
+      "revId": "7ee00b028804009497fa9a1a4d5409a35bf63fb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "785877be_88438705",
+        "filename": "util/OWNERS",
+        "patchSetId": 1
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-04-01T19:35:58Z",
+      "side": 1,
+      "message": "Thanks! I was going to ask that next 😊\n\nIn this case, are we only interested in source files?\n\nI am not familiar with all the content of the folder but I also saw another fingerprint-related file that is not listed here: `fingerprint-relevant-paths.txt`",
+      "parentUuid": "540a57f6_26ab5c2d",
       "range": {
         "startLine": 2,
         "startChar": 0,
