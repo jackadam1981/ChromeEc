@@ -76,6 +76,31 @@ static void send_mkbp_event(uint32_t event)
 	mkbp_send_event(EC_MKBP_EVENT_CEC_EVENT);
 }
 
+static int cec2_get_next_event(uint8_t *out)
+{
+	uint32_t event_out = atomic_clear(&cec_events);
+
+	memcpy(out, &event_out, sizeof(event_out));
+
+	return sizeof(event_out);
+}
+DECLARE_EVENT_SOURCE(EC_MKBP_EVENT_CEC2_EVENT, cec2_get_next_event);
+
+static int cec2_get_next_msg(uint8_t *out)
+{
+	int rv;
+	uint8_t msg_len, msg[MAX_CEC_MSG_LEN];
+
+	rv = cec_rx_queue_pop(&cec_rx_queue, msg, &msg_len);
+	if (rv != 0)
+		return EC_RES_UNAVAILABLE;
+
+	memcpy(out, msg, msg_len);
+
+	return msg_len;
+}
+DECLARE_EVENT_SOURCE(EC_MKBP_EVENT_CEC2_MESSAGE, cec2_get_next_msg);
+
 static void cec2_init(void)
 {
 	int mdl = NPCX_MFT_MODULE_2;
