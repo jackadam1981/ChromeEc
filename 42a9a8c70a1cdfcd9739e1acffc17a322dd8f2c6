@@ -16,6 +16,23 @@
       "message": "I have split original patch into four. And addressed the feedback in these four patches.",
       "revId": "42a9a8c70a1cdfcd9739e1acffc17a322dd8f2c6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7188cabe_7b0cad59",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-04-01T05:35:09Z",
+      "side": 1,
+      "message": "It\u0027s a minor point, but the states are grouped so that the transition states are after the main states, and even though it requires 2 ifdefs, it may make it clearer to keep to that pattern.\nIt\u0027s a tradeoff between more conditional guards and keeping the pattern of states.\nOthers may prefer it this way. I don\u0027t have a strong opinion.",
+      "revId": "42a9a8c70a1cdfcd9739e1acffc17a322dd8f2c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
