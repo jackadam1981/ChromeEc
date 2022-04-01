@@ -15,6 +15,8 @@ if(DEFINED CONFIG_BOARD_NIVVIKS)
 	project(nivviks)
 	zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_USBC "src/nivviks/usbc.c")
 	zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_CHARGER "src/nivviks/charger.c")
+	zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_CHARGER
+		"src/nivviks/form_factor.c")
 endif()
 if(DEFINED CONFIG_BOARD_NEREID)
 	project(nereid)
