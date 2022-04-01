@@ -73,7 +73,7 @@ STATIC_IF(CONFIG_MOTION_FILL_LPC_SENSE_DATA) void update_sense_data(
 		uint8_t *lpc_status, int *psample_id);
 
 /* Flags to control whether to send an ODR change event for a sensor */
-static uint32_t odr_event_required;
+static atomic_t odr_event_required;
 
 /* Whether or not the FIFO interrupt should be enabled (set from the AP). */
 __maybe_unused static int fifo_int_enabled;
@@ -211,28 +211,28 @@ static int motion_sense_set_ec_rate_from_ap(
 
 	if (new_rate_us == 0)
 		return 0;
-	if (motion_sensor_in_forced_mode(sensor))
-		/*
-		 * AP EC sampling rate does not matter: we will collect at the
-		 * requested sensor frequency.
-		 */
-		goto end_set_ec_rate_from_ap;
+
 	if (odr_mhz == 0)
+		/*
+		 * No event (interrupt or forced mode) are generated,
+		 * any ec rate works.
+		 */
 		goto end_set_ec_rate_from_ap;
 
 	/*
 	 * If the EC collection rate is close to the sensor data rate,
-	 * given variation from the EC scheduler, it is possible that a sensor
-	 * will not present any measurement for a given time slice, and then 2
-	 * measurement for the next. That will create a large interval between
-	 * 2 measurements.
-	 * To prevent that, increase the EC period by 5% to be sure to get at
-	 * least one measurement at every collection time.
+	 * given variation from the EC scheduler, we want to be sure the EC is
+	 * ready to send an event to the AP when either the interrupt arrives,
+	 * or the EC is actively probing the sensor.
+	 * Decrease the EC period by 5% to be sure to get at least one
+	 * measurement at every collection time.
 	 * We will apply that correction only if the ec rate is within 10% of
 	 * the data rate.
+	 * It is possible for sensors at the same ODR to not be in phase.
+	 * One will have a delay guarantee to be less than its ODR.
 	 */
 	if (SECOND * 1100 / odr_mhz > new_rate_us)
-		new_rate_us = new_rate_us / 100 * 105;
+		new_rate_us = new_rate_us * 95 / 100;
 
 end_set_ec_rate_from_ap:
 	return MAX(new_rate_us, motion_min_interval);
@@ -332,10 +332,10 @@ static inline int motion_sense_init(struct motion_sensor_t *sensor)
 
 	BUILD_ASSERT(SENSOR_COUNT < 32);
 #if defined(HAS_TASK_CONSOLE)
-	ASSERT((task_get_current() == TASK_ID_HOOKS) ||
+	ASSERT((in_deferred_context()) ||
 	       (task_get_current() == TASK_ID_CONSOLE));
 #else
-	ASSERT(task_get_current() == TASK_ID_HOOKS);
+	ASSERT(in_deferred_context());
 #endif /* HAS_TASK_CONSOLE */
 
 	/* Initialize accelerometers. */
@@ -386,7 +386,7 @@ static void motion_sense_switch_sensor_rate(void)
 	struct motion_sensor_t *sensor;
 	unsigned int sensor_setup_mask = 0;
 
-	ASSERT(task_get_current() == TASK_ID_HOOKS);
+	ASSERT(in_deferred_context());
 
 	for (i = 0; i < motion_sensor_count; ++i) {
 		sensor = &motion_sensors[i];
@@ -1070,6 +1070,12 @@ static enum ec_status host_cmd_motion_sense(struct host_cmd_handler_args *args)
 	struct ec_response_motion_sense *out = args->response;
 	struct motion_sensor_t *sensor;
 	int i, ret = EC_RES_INVALID_PARAM, reported;
+	const void *in_offset;
+	const void *in_scale;
+	void *out_calib_read;
+	void *out_scale;
+	void *out_offset;
+	int16_t out_temp;
 
 	switch (in->cmd) {
 	case MOTIONSENSE_CMD_DUMP:
@@ -1120,6 +1126,7 @@ static enum ec_status host_cmd_motion_sense(struct host_cmd_handler_args *args)
 			return EC_RES_INVALID_PARAM;
 
 		if (IS_ENABLED(CONFIG_GESTURE_HOST_DETECTION) &&
+		    MOTION_SENSE_ACTIVITY_SENSOR_ID >= 0 &&
 		    (in->sensor_odr.sensor_num ==
 		     MOTION_SENSE_ACTIVITY_SENSOR_ID))
 			out->info.type = MOTIONSENSE_TYPE_ACTIVITY;
@@ -1235,8 +1242,9 @@ static enum ec_status host_cmd_motion_sense(struct host_cmd_handler_args *args)
 			if (!sensor->drv->set_offset)
 				return EC_RES_INVALID_COMMAND;
 
+			in_offset = in->sensor_offset.offset;
 			ret = sensor->drv->set_offset(sensor,
-						in->sensor_offset.offset,
+						in_offset,
 						in->sensor_offset.temp);
 			if (ret != EC_SUCCESS)
 				return ret;
@@ -1245,10 +1253,12 @@ static enum ec_status host_cmd_motion_sense(struct host_cmd_handler_args *args)
 		if (!sensor->drv->get_offset)
 			return EC_RES_INVALID_COMMAND;
 
-		ret = sensor->drv->get_offset(sensor, out->sensor_offset.offset,
-				&out->sensor_offset.temp);
+		out_offset = out->sensor_offset.offset;
+		ret = sensor->drv->get_offset(sensor, out_offset, &out_temp);
 		if (ret != EC_SUCCESS)
 			return ret;
+
+		out->sensor_offset.temp = out_temp;
 		args->response_size = sizeof(out->sensor_offset);
 		break;
 
@@ -1263,9 +1273,10 @@ static enum ec_status host_cmd_motion_sense(struct host_cmd_handler_args *args)
 			if (!sensor->drv->set_scale)
 				return EC_RES_INVALID_COMMAND;
 
+			in_scale = in->sensor_scale.scale;
 			ret = sensor->drv->set_scale(sensor,
-						in->sensor_scale.scale,
-						in->sensor_scale.temp);
+						     in_scale,
+						     in->sensor_scale.temp);
 			if (ret != EC_SUCCESS)
 				return ret;
 		}
@@ -1273,10 +1284,13 @@ static enum ec_status host_cmd_motion_sense(struct host_cmd_handler_args *args)
 		if (!sensor->drv->get_scale)
 			return EC_RES_INVALID_COMMAND;
 
-		ret = sensor->drv->get_scale(sensor, out->sensor_scale.scale,
-				&out->sensor_scale.temp);
+		out_scale = out->sensor_scale.scale;
+		ret = sensor->drv->get_scale(sensor, out_scale,
+				&out_temp);
 		if (ret != EC_SUCCESS)
 			return ret;
+
+		out->sensor_scale.temp = out_temp;
 		args->response_size = sizeof(out->sensor_scale);
 		break;
 
@@ -1293,10 +1307,13 @@ static enum ec_status host_cmd_motion_sense(struct host_cmd_handler_args *args)
 				sensor, in->perform_calib.enable);
 		if (ret != EC_SUCCESS)
 			return ret;
-		ret = sensor->drv->get_offset(sensor, out->perform_calib.offset,
-				&out->perform_calib.temp);
+
+		out_offset = out->perform_calib.offset;
+		ret = sensor->drv->get_offset(sensor, out_offset, &out_temp);
 		if (ret != EC_SUCCESS)
 			return ret;
+
+		out->perform_calib.temp = out_temp;
 		args->response_size = sizeof(out->perform_calib);
 		break;
 
@@ -1366,9 +1383,9 @@ static enum ec_status host_cmd_motion_sense(struct host_cmd_handler_args *args)
 		if (sensor == NULL)
 			return EC_RES_INVALID_PARAM;
 
-
+		out_calib_read = &out->online_calib_read;
 		args->response_size =
-			online_calibration_read(sensor, &out->online_calib_read)
+			online_calibration_read(sensor, out_calib_read)
 			? sizeof(struct ec_response_online_calibration_data)
 			: 0;
 		break;
@@ -1451,6 +1468,7 @@ static enum ec_status host_cmd_motion_sense(struct host_cmd_handler_args *args)
 	case MOTIONSENSE_CMD_SPOOF: {
 		/* spoof activity if it is activity sensor */
 		if (IS_ENABLED(CONFIG_GESTURE_HOST_DETECTION) &&
+		    MOTION_SENSE_ACTIVITY_SENSOR_ID >= 0 &&
 		    in->spoof.sensor_id == MOTION_SENSE_ACTIVITY_SENSOR_ID) {
 			switch (in->spoof.activity_num) {
 #ifdef CONFIG_BODY_DETECTION

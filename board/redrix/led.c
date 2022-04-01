@@ -53,10 +53,10 @@ static void led_set_color_battery(int port, enum led_color color)
 {
 	enum gpio_signal amber_led, white_led;
 
-	amber_led = (port == RIGHT_PORT ? GPIO_C0_CHARGE_LED_AMBER_L :
-				 GPIO_C1_CHARGE_LED_AMBER_L);
-	white_led = (port == RIGHT_PORT ? GPIO_C0_CHARGE_LED_WHITE_L :
-				 GPIO_C1_CHARGE_LED_WHITE_L);
+	amber_led = (port == RIGHT_PORT ? GPIO_C1_CHARGE_LED_AMBER_L :
+				 GPIO_C0_CHARGE_LED_AMBER_L);
+	white_led = (port == RIGHT_PORT ? GPIO_C1_CHARGE_LED_WHITE_L :
+				 GPIO_C0_CHARGE_LED_WHITE_L);
 
 	switch (color) {
 	case LED_WHITE:
@@ -76,7 +76,7 @@ static void led_set_color_battery(int port, enum led_color color)
 	}
 }
 
-void led_set_color_power(enum ec_led_colors color)
+void led_set_color_power(enum led_color color)
 {
 	switch (color) {
 	case LED_OFF:
@@ -174,17 +174,30 @@ static void led_set_battery(void)
 			if (charge_get_percent() < 10)
 				led_set_color_battery(RIGHT_PORT,
 					(battery_ticks % LED_TICKS_PER_CYCLE
-					 < LED_ON_TICKS) ? LED_WHITE : LED_OFF);
+					 < LED_ON_TICKS) ? LED_AMBER : LED_OFF);
 			else
 				led_set_color_battery(RIGHT_PORT, LED_OFF);
 		}
 
-		if (led_auto_control_is_enabled(EC_LED_ID_LEFT_LED))
-			led_set_color_battery(LEFT_PORT, LED_OFF);
+		if (led_auto_control_is_enabled(EC_LED_ID_LEFT_LED)) {
+			if (charge_get_percent() < 10)
+				led_set_color_battery(LEFT_PORT,
+					(battery_ticks % LED_TICKS_PER_CYCLE
+					 < LED_ON_TICKS) ? LED_AMBER : LED_OFF);
+			else
+				led_set_color_battery(LEFT_PORT, LED_OFF);
+		}
 		break;
 	case PWR_STATE_ERROR:
-		set_active_port_color((battery_ticks & 0x2) ?
-				LED_WHITE : LED_OFF);
+		if (led_auto_control_is_enabled(EC_LED_ID_RIGHT_LED)) {
+			led_set_color_battery(RIGHT_PORT, (battery_ticks & 0x1)
+				? LED_AMBER : LED_OFF);
+		}
+
+		if (led_auto_control_is_enabled(EC_LED_ID_LEFT_LED)) {
+			led_set_color_battery(LEFT_PORT, (battery_ticks & 0x1)
+				? LED_AMBER : LED_OFF);
+		}
 		break;
 	case PWR_STATE_CHARGE_NEAR_FULL:
 		set_active_port_color(LED_WHITE);
@@ -205,16 +218,8 @@ static void led_set_battery(void)
 
 static void led_set_power(void)
 {
-	static unsigned int power_tick;
-
-	power_tick++;
-
 	if (chipset_in_state(CHIPSET_STATE_ON))
 		led_set_color_power(LED_WHITE);
-	else if (chipset_in_state(CHIPSET_STATE_ANY_SUSPEND))
-		led_set_color_power((power_tick %
-			LED_TICKS_PER_CYCLE < LED_ON_TICKS) ?
-			LED_WHITE : LED_OFF);
 	else
 		led_set_color_power(LED_OFF);
 }

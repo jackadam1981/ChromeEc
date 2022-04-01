@@ -54,17 +54,17 @@ const struct power_signal_info power_signal_list[] = {
 		POWER_SIGNAL_ACTIVE_HIGH,
 		"POWER_GOOD",
 	},
-	[SC7X80_WARM_RESET] = {
-		GPIO_WARM_RESET_L,
-		POWER_SIGNAL_ACTIVE_HIGH,
-		"WARM_RESET_L",
-	},
 	[SC7X80_AP_SUSPEND] = {
 		GPIO_AP_SUSPEND,
 		POWER_SIGNAL_ACTIVE_HIGH,
 		"AP_SUSPEND",
 	},
 #ifdef CONFIG_CHIPSET_SC7180
+	[SC7X80_WARM_RESET] = {
+		GPIO_WARM_RESET_L,
+		POWER_SIGNAL_ACTIVE_HIGH,
+		"WARM_RESET_L",
+	},
 	[SC7X80_DEPRECATED_AP_RST_REQ] = {
 		GPIO_DEPRECATED_AP_RST_REQ,
 		POWER_SIGNAL_ACTIVE_HIGH,
@@ -126,9 +126,12 @@ BUILD_ASSERT(ARRAY_SIZE(power_signal_list) == POWER_SIGNAL_COUNT);
 /*
  * Delay between power-on the system and power-on the PMIC.
  * Some latest PMIC firmware needs this delay longer, for doing a cold
- * reboot. Did an experiment; it should be 120ms+. Set it with margin.
+ * reboot.
+ *
+ * Measured on Herobrine IOB + Trogdor MLB, the delay takes ~200ms. Set
+ * it with margin.
  */
-#define SYSTEM_POWER_ON_DELAY		(150 * MSEC)
+#define SYSTEM_POWER_ON_DELAY		(300 * MSEC)
 
 /*
  * Delay between the PMIC power drop and power-off the system.
@@ -155,9 +158,6 @@ static char power_button_was_pressed;
 /* 1 if lid-open event has been detected */
 static char lid_opened;
 
-/* 1 if AP_RST_L and PS_HOLD is overdriven by EC */
-static char ap_rst_overdriven;
-
 /* Time where we will power off, if power button still held down */
 static timestamp_t power_off_deadline;
 
@@ -168,7 +168,8 @@ enum power_request_t {
 	POWER_REQ_NONE,
 	POWER_REQ_OFF,
 	POWER_REQ_ON,
-	POWER_REQ_RESET,
+	POWER_REQ_COLD_RESET,
+	POWER_REQ_WARM_RESET,
 
 	POWER_REQ_COUNT,
 };
@@ -250,10 +251,15 @@ void chipset_ap_rst_interrupt(enum gpio_signal signal)
 	power_signal_interrupt(signal);
 }
 
+#ifdef CONFIG_CHIPSET_SC7180
+
+/* 1 if AP_RST_L and PS_HOLD is overdriven by EC */
+static char ap_rst_overdriven;
+
 /* Issue a request to initiate a reset sequence */
 static void request_cold_reset(void)
 {
-	power_request = POWER_REQ_RESET;
+	power_request = POWER_REQ_COLD_RESET;
 	task_wake(TASK_ID_CHIPSET);
 }
 
@@ -317,6 +323,7 @@ void chipset_power_good_interrupt(enum gpio_signal signal)
 	}
 	power_signal_interrupt(signal);
 }
+#endif /* defined(CONFIG_CHIPSET_SC7180) */
 
 static void sc7x80_lid_event(void)
 {
@@ -496,8 +503,8 @@ static int set_pmic_pwron(int enable)
 	if (enable == is_pmic_pwron())
 		return EC_SUCCESS;
 
-	if (!gpio_get_level(GPIO_PMIC_KPD_PWR_ODL)) {
-		CPRINTS("PMIC_KPD_PWR_ODL not pulled up by PMIC; cancel pwron");
+	if (!gpio_get_level(GPIO_PMIC_RESIN_L)) {
+		CPRINTS("PMIC_RESIN_L not pulled up by PMIC; cancel pwron");
 		return EC_ERROR_UNKNOWN;
 	}
 
@@ -538,8 +545,10 @@ enum power_state power_chipset_init(void)
 	uint32_t reset_flags = system_get_reset_flags();
 
 	/* Enable interrupts */
-	gpio_enable_interrupt(GPIO_WARM_RESET_L);
-	gpio_enable_interrupt(GPIO_POWER_GOOD);
+	if (IS_ENABLED(CONFIG_CHIPSET_SC7180)) {
+		gpio_enable_interrupt(GPIO_WARM_RESET_L);
+		gpio_enable_interrupt(GPIO_POWER_GOOD);
+	}
 
 	/*
 	 * Force the AP shutdown unless we are doing SYSJUMP. Otherwise,
@@ -570,13 +579,19 @@ enum power_state power_chipset_init(void)
 		}
 	}
 
-	/* Leave power off only if requested by reset flags */
-	if (!(reset_flags & EC_RESET_FLAG_AP_OFF) &&
-	    !(reset_flags & EC_RESET_FLAG_SYSJUMP)) {
-		CPRINTS("auto_power_on set due to reset_flag 0x%x",
-			system_get_reset_flags());
-		auto_power_on = 1;
-	}
+	auto_power_on = 1;
+
+	/*
+	 * Leave power off only if requested by reset flags
+	 *
+	 * TODO(b/201099749): EC bootloader: Give RO chance to run EFS after
+	 * shutdown from recovery screen
+	 */
+	if (reset_flags & EC_RESET_FLAG_AP_OFF)
+		auto_power_on = 0;
+	else if (!(reset_flags & EC_RESET_FLAG_EFS) &&
+		    (reset_flags & EC_RESET_FLAG_SYSJUMP))
+		auto_power_on = 0;
 
 	if (battery_is_present() == BP_YES) {
 		/*
@@ -587,6 +602,9 @@ enum power_state power_chipset_init(void)
 		battery_wait_for_stable();
 	}
 
+	if (auto_power_on)
+		CPRINTS("auto_power_on set due to reset flags");
+
 	return init_power_state;
 }
 
@@ -594,34 +612,40 @@ enum power_state power_chipset_init(void)
 
 /**
  * Power off the AP
+ *
+ * @param shutdown_event	reason of shutdown, which is a return value of
+ *				check_for_power_off_event()
  */
-static void power_off(void)
+static void power_off_seq(uint8_t shutdown_event)
 {
 	/* Check PMIC POWER_GOOD */
 	if (is_pmic_pwron()) {
-		/* Do a graceful way to shutdown PMIC/AP first */
-		set_pmic_pwron(0);
-		usleep(PMIC_POWER_OFF_DELAY);
-
-		/*
-		 * Disable signal interrupts, as they are floating when
-		 * switchcap off.
-		 */
-		power_signal_disable_interrupt(GPIO_AP_RST_L);
+		if (shutdown_event == POWER_OFF_BY_POWER_GOOD_LOST) {
+			/*
+			 * The POWER_GOOD was lost previously, which sets the
+			 * shutdown_event flag. But now it is up again. This
+			 * is unexpected. Show the warning message. Then go
+			 * straight to turn off the switchcap.
+			 */
+			CPRINTS("Warning: POWER_GOOD up again after lost");
+		} else {
+			/* Do a graceful way to shutdown PMIC/AP first */
+			set_pmic_pwron(0);
+			usleep(PMIC_POWER_OFF_DELAY);
+		}
 	}
+
+	/*
+	 * Disable signal interrupts, as they are floating when
+	 * switchcap off.
+	 */
+	power_signal_disable_interrupt(GPIO_AP_RST_L);
 
 	/* Check the switchcap status */
 	if (is_system_powered()) {
 		/* Force to switch off all rails */
 		set_system_power(0);
 	}
-
-	/* Turn off the 5V rail. */
-#ifdef CONFIG_POWER_PP5000_CONTROL
-	power_5v_enable(task_get_current(), 0);
-#else /* !defined(CONFIG_POWER_PP5000_CONTROL) */
-	gpio_set_level(GPIO_EN_PP5000, 0);
-#endif /* defined(CONFIG_POWER_PP5000_CONTROL) */
 
 	lid_opened = 0;
 }
@@ -654,16 +678,9 @@ static int power_is_enough(void)
  *
  * @return EC_SUCCESS or error
  */
-static int power_on(void)
+static int power_on_seq(void)
 {
 	int ret;
-
-	/* Enable the 5V rail. */
-#ifdef CONFIG_POWER_PP5000_CONTROL
-	power_5v_enable(task_get_current(), 1);
-#else /* !defined(CONFIG_POWER_PP5000_CONTROL) */
-	gpio_set_level(GPIO_EN_PP5000, 1);
-#endif /* defined(CONFIG_POWER_PP5000_CONTROL) */
 
 	ret = set_system_power(1);
 	if (ret != EC_SUCCESS)
@@ -692,33 +709,31 @@ static int power_on(void)
  */
 static uint8_t check_for_power_on_event(void)
 {
+	uint8_t ret;
+
 	if (power_request == POWER_REQ_ON) {
-		power_request = POWER_REQ_NONE;
-		return POWER_ON_BY_POWER_REQ_ON;
-	} else if (power_request == POWER_REQ_RESET) {
-		power_request = POWER_REQ_NONE;
-		return POWER_ON_BY_POWER_REQ_RESET;
+		ret = POWER_ON_BY_POWER_REQ_ON;
+	} else if (power_request == POWER_REQ_COLD_RESET) {
+		ret = POWER_ON_BY_POWER_REQ_RESET;
+	} else if (auto_power_on) {
+		/* power on requested at EC startup for recovery */
+		ret = POWER_ON_BY_AUTO_POWER_ON;
+	} else if (lid_opened) {
+		/* check lid open */
+		ret = POWER_ON_BY_LID_OPEN;
+	} else if (power_button_is_pressed()) {
+		/* check for power button press */
+		ret = POWER_ON_BY_POWER_BUTTON_PRESSED;
+	} else {
+		ret = POWER_OFF_CANCEL;
 	}
-	/* Clear invalid request */
+
+	/* The flags are handled above. Clear them all. */
 	power_request = POWER_REQ_NONE;
+	auto_power_on = 0;
+	lid_opened = 0;
 
-	/* power on requested at EC startup for recovery */
-	if (auto_power_on) {
-		auto_power_on = 0;
-		return POWER_ON_BY_AUTO_POWER_ON;
-	}
-
-	/* Check lid open */
-	if (lid_opened) {
-		lid_opened = 0;
-		return POWER_ON_BY_LID_OPEN;
-	}
-
-	/* check for power button press */
-	if (power_button_is_pressed())
-		return POWER_ON_BY_POWER_BUTTON_PRESSED;
-
-	return POWER_OFF_CANCEL;
+	return ret;
 }
 
 /**
@@ -737,7 +752,7 @@ static uint8_t check_for_power_off_event(void)
 	if (power_request == POWER_REQ_OFF) {
 		power_request = POWER_REQ_NONE;
 		return POWER_OFF_BY_POWER_REQ_OFF;
-	} else if (power_request == POWER_REQ_RESET) {
+	} else if (power_request == POWER_REQ_COLD_RESET) {
 		/*
 		 * The power_request flag will be cleared later
 		 * in check_for_power_on_event() in S5.
@@ -809,12 +824,14 @@ void chipset_force_shutdown(enum chipset_shutdown_reason reason)
 	task_wake(TASK_ID_CHIPSET);
 }
 
-void chipset_reset(enum chipset_reset_reason reason)
+/**
+ * Warm reset the AP
+ *
+ * @return EC_SUCCESS or error
+ */
+static int warm_reset_seq(void)
 {
 	int rv;
-
-	CPRINTS("%s(%d)", __func__, reason);
-	report_ap_reset(reason);
 
 	/*
 	 * Warm reset sequence:
@@ -835,11 +852,40 @@ void chipset_reset(enum chipset_reset_reason reason)
 
 	rv = power_wait_signals_timeout(IN_AP_RST_ASSERTED,
 					PMIC_POWER_AP_RESPONSE_TIMEOUT);
+
 	/* Exception case: PMIC not work as expected, request a cold reset */
-	if (rv != EC_SUCCESS) {
-		CPRINTS("AP refuses to warm reset. Cold resetting.");
-		request_cold_reset();
+	if (rv != EC_SUCCESS)
+		return rv;
+
+	return EC_SUCCESS;
+}
+
+/**
+ * Check for some event triggering the warm reset.
+ *
+ * The only event is a request by the console command `apreset`.
+ */
+static void check_for_warm_reset_event(void)
+{
+	int rv;
+
+	if (power_request == POWER_REQ_WARM_RESET) {
+		power_request = POWER_REQ_NONE;
+		rv = warm_reset_seq();
+		if (rv != EC_SUCCESS) {
+			CPRINTS("AP refuses to warm reset. Cold resetting.");
+			power_request = POWER_REQ_COLD_RESET;
+		}
 	}
+}
+
+void chipset_reset(enum chipset_shutdown_reason reason)
+{
+	CPRINTS("%s(%d)", __func__, reason);
+	report_ap_reset(reason);
+
+	power_request = POWER_REQ_WARM_RESET;
+	task_wake(TASK_ID_CHIPSET);
 }
 
 /*
@@ -885,7 +931,8 @@ static inline int chipset_get_sleep_signal(void)
 		return fake_suspend;
 }
 
-static void suspend_hang_detected(void)
+__override void power_chipset_handle_sleep_hang(
+		enum sleep_hang_type hang_type)
 {
 	CPRINTS("Warning: Detected sleep hang! Waking host up!");
 	host_set_single_event(EC_HOST_EVENT_HANG_DETECT);
@@ -922,7 +969,7 @@ __override void power_chipset_handle_host_sleep_event(
 		 * notification needs to be sent to listeners.
 		 */
 		sleep_set_notify(SLEEP_NOTIFY_SUSPEND);
-		sleep_start_suspend(ctx, suspend_hang_detected);
+		sleep_start_suspend(ctx);
 		power_signal_enable_interrupt(GPIO_AP_SUSPEND);
 
 	} else if (state == HOST_SLEEP_EVENT_S3_RESUME) {
@@ -988,8 +1035,8 @@ enum power_state power_handle_state(enum power_state state)
 		/* Initialize components to ready state before AP is up. */
 		hook_notify(HOOK_CHIPSET_PRE_INIT);
 
-		if (power_on() != EC_SUCCESS) {
-			power_off();
+		if (power_on_seq() != EC_SUCCESS) {
+			power_off_seq(shutdown_from_on);
 			boot_from_off = 0;
 			return POWER_S5;
 		}
@@ -1050,6 +1097,8 @@ enum power_state power_handle_state(enum power_state state)
 		return POWER_S0;
 
 	case POWER_S0:
+		check_for_warm_reset_event();
+
 		shutdown_from_on = check_for_power_off_event();
 		if (shutdown_from_on) {
 			return POWER_S0S3;
@@ -1098,7 +1147,7 @@ enum power_state power_handle_state(enum power_state state)
 		/* Call hooks before we drop power rails */
 		hook_notify(HOOK_CHIPSET_SHUTDOWN);
 
-		power_off();
+		power_off_seq(shutdown_from_on);
 		CPRINTS("power shutdown complete");
 
 		/* Call hooks after we drop power rails */
@@ -1116,6 +1165,11 @@ enum power_state power_handle_state(enum power_state state)
 
 	case POWER_S5G3:
 		return POWER_G3;
+
+	default:
+		CPRINTS("Unexpected power state %d", state);
+		ASSERT(0);
+		break;
 	}
 
 	return state;

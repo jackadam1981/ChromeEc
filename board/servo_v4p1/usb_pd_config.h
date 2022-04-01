@@ -57,6 +57,7 @@
 				  * Emulate Electronically Marked Cable Assembly
 				  * (EMCA) servo (or non-EMCA)
 				  */
+#define CC_FASTBOOT_DFP	BIT(7)   /* Allow mux uServo->Fastboot on DFP */
 
 /* Servo v4 DP alt-mode configuration */
 #define ALT_DP_ENABLE		BIT(0)   /* Enable DP alt-mode or not */
@@ -279,4 +280,3 @@ static inline void pd_config_init(int port, uint8_t power_role)
 int pd_adc_read(int port, int cc);
 
 #endif /* __CROS_EC_USB_PD_CONFIG_H */
-

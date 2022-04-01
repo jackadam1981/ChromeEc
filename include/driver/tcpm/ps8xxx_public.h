@@ -8,15 +8,17 @@
 #ifndef __CROS_EC_DRIVER_TCPM_PS8XXX_PUBLIC_H
 #define __CROS_EC_DRIVER_TCPM_PS8XXX_PUBLIC_H
 
+#include "usb_mux.h"
+
 struct usb_mux;
 
 /* I2C interface */
-#define PS8751_I2C_ADDR1_P1_FLAGS 0x09
-#define PS8751_I2C_ADDR1_P2_FLAGS 0x0A
-#define PS8751_I2C_ADDR1_FLAGS    0x0B	/* P3 */
-#define PS8751_I2C_ADDR2_FLAGS    0x1B
-#define PS8751_I2C_ADDR3_FLAGS    0x2B
-#define PS8751_I2C_ADDR4_FLAGS    0x4B
+#define PS8XXX_I2C_ADDR1_P1_FLAGS 0x09
+#define PS8XXX_I2C_ADDR1_P2_FLAGS 0x0A
+#define PS8XXX_I2C_ADDR1_FLAGS    0x0B	/* P3 */
+#define PS8XXX_I2C_ADDR2_FLAGS    0x1B
+#define PS8XXX_I2C_ADDR3_FLAGS    0x2B
+#define PS8XXX_I2C_ADDR4_FLAGS    0x4B
 
 #define PS8XXX_VENDOR_ID  0x1DA0
 
@@ -48,7 +50,7 @@ struct usb_mux;
  *   20ms is marginal
  *   25ms is OK
  */
-#define PS8815_FW_INIT_DELAY_MS 40
+#define PS8815_FW_INIT_DELAY_MS 50
 
 /* NOTE: The Product ID will read as 0x8803 if the firmware has malfunctioned in
  * 8705, 8755 and 8805.
@@ -77,7 +79,8 @@ __override_proto
 uint16_t board_get_ps8xxx_product_id(int port);
 
 void ps8xxx_tcpc_update_hpd_status(const struct usb_mux *me,
-				   int hpd_lvl, int hpd_irq);
+				   mux_state_t mux_state,
+				   bool *ack_required);
 
 #ifdef CONFIG_CMD_I2C_STRESS_TEST_TCPC
 extern struct i2c_stress_test_dev ps8xxx_i2c_stress_test_dev;

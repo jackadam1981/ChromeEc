@@ -6,7 +6,6 @@
 /* Trembyle board configuration */
 
 #include "adc.h"
-#include "adc_chip.h"
 #include "button.h"
 #include "charger.h"
 #include "cbi_ec_fw_config.h"
@@ -221,8 +220,10 @@ static void board_chipset_resume(void)
 		rv = i2c_write8(I2C_PORT_USBA1,
 				PS8811_I2C_ADDR_FLAGS3 + PS8811_REG_PAGE1,
 				PS8811_REG1_USB_BEQ_LEVEL,
-				PS8811_BEQ_I2C_LEVEL_UP_13DB |
-				PS8811_BEQ_PIN_LEVEL_UP_18DB);
+				(PS8811_BEQ_I2C_LEVEL_UP_13DB <<
+				PS8811_BEQ_I2C_LEVEL_UP_SHIFT) |
+				(PS8811_BEQ_PIN_LEVEL_UP_18DB <<
+				PS8811_BEQ_PIN_LEVEL_UP_SHIFT));
 		if (!rv)
 			break;
 	}
@@ -448,29 +449,40 @@ const struct temp_sensor_t temp_sensors[] = {
 };
 BUILD_ASSERT(ARRAY_SIZE(temp_sensors) == TEMP_SENSOR_COUNT);
 
-const static struct ec_thermal_config thermal_thermistor = {
-	.temp_host = {
-		[EC_TEMP_THRESH_HIGH] = C_TO_K(90),
-		[EC_TEMP_THRESH_HALT] = C_TO_K(92),
-	},
-	.temp_host_release = {
-		[EC_TEMP_THRESH_HIGH] = C_TO_K(80),
-	},
-	.temp_fan_off = C_TO_K(25),
-	.temp_fan_max = C_TO_K(58),
-};
+/*
+ * TODO(b/202062363): Remove when clang is fixed.
+ */
+#define THERMAL_THERMISTOR \
+	{ \
+		.temp_host = { \
+			[EC_TEMP_THRESH_HIGH] = C_TO_K(90), \
+			[EC_TEMP_THRESH_HALT] = C_TO_K(92), \
+		}, \
+		.temp_host_release = { \
+			[EC_TEMP_THRESH_HIGH] = C_TO_K(80), \
+		}, \
+		.temp_fan_off = C_TO_K(25), \
+		.temp_fan_max = C_TO_K(58), \
+	}
+__maybe_unused static const struct ec_thermal_config thermal_thermistor =
+	THERMAL_THERMISTOR;
 
-const static struct ec_thermal_config thermal_cpu = {
-	.temp_host = {
-		[EC_TEMP_THRESH_HIGH] = C_TO_K(90),
-		[EC_TEMP_THRESH_HALT] = C_TO_K(92),
-	},
-	.temp_host_release = {
-		[EC_TEMP_THRESH_HIGH] = C_TO_K(80),
-	},
-	.temp_fan_off = C_TO_K(25),
-	.temp_fan_max = C_TO_K(58),
-};
+/*
+ * TODO(b/202062363): Remove when clang is fixed.
+ */
+#define THERMAL_CPU \
+	{ \
+		.temp_host = { \
+			[EC_TEMP_THRESH_HIGH] = C_TO_K(90), \
+			[EC_TEMP_THRESH_HALT] = C_TO_K(92), \
+		}, \
+		.temp_host_release = { \
+			[EC_TEMP_THRESH_HIGH] = C_TO_K(80), \
+		}, \
+		.temp_fan_off = C_TO_K(25), \
+		.temp_fan_max = C_TO_K(58), \
+	}
+__maybe_unused static const struct ec_thermal_config thermal_cpu = THERMAL_CPU;
 
 struct ec_thermal_config thermal_params[TEMP_SENSOR_COUNT];
 

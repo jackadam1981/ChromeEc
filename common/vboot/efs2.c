@@ -16,6 +16,7 @@
 #include "console.h"
 #include "crc8.h"
 #include "flash.h"
+#include "gpio.h"
 #include "hooks.h"
 #include "sha256.h"
 #include "system.h"
@@ -49,7 +50,7 @@ static bool is_valid_cr50_response(enum cr50_comm_err code)
 			&& (code >> 8) == CR50_COMM_ERR_PREFIX;
 }
 
-static void enable_packet_mode(bool enable)
+__overridable void board_enable_packet_mode(bool enable)
 {
 	/*
 	 * This can be done by set_flags(INPUT|PULL_UP). We don't need it now
@@ -66,14 +67,14 @@ static enum cr50_comm_err send_to_cr50(const uint8_t *data, size_t size)
 	struct cr50_comm_response res = {};
 
 	/* This will wake up (if it's sleeping) and interrupt Cr50. */
-	enable_packet_mode(true);
+	board_enable_packet_mode(true);
 
 	uart_flush_output();
 	uart_clear_input();
 
 	if (uart_shell_stop()) {
 		/* Failed to stop the shell. */
-		enable_packet_mode(false);
+		board_enable_packet_mode(false);
 		return CR50_COMM_ERR_UNKNOWN;
 	}
 
@@ -122,7 +123,7 @@ static enum cr50_comm_err send_to_cr50(const uint8_t *data, size_t size)
 #endif /* CONFIG_ZEPHYR */
 
 	/* Exit packet mode */
-	enable_packet_mode(false);
+	board_enable_packet_mode(false);
 
 	CPRINTS("Received 0x%04x", res.error);
 
@@ -177,10 +178,10 @@ static enum cr50_comm_err verify_hash(void)
 	int rv;
 
 	/* Wake up Cr50 beforehand in case it's asleep. */
-	enable_packet_mode(true);
+	board_enable_packet_mode(true);
 	CPRINTS("Ping Cr50");
 	msleep(1);
-	enable_packet_mode(false);
+	board_enable_packet_mode(false);
 
 	rv = vboot_get_rw_hash(&hash);
 	if (rv)

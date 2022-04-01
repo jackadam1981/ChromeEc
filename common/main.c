@@ -6,18 +6,23 @@
  */
 
 #include "board_config.h"
+#ifdef CONFIG_KEYBOARD_SCAN_ADC
+#include "adc.h"
+#endif
 #include "button.h"
 #include "chipset.h"
 #include "clock.h"
 #include "common.h"
 #include "console.h"
 #include "cpu.h"
+#include "cros_board_info.h"
 #include "dma.h"
 #include "eeprom.h"
 #include "flash.h"
 #include "gpio.h"
 #include "hooks.h"
 #include "i2c.h"
+#include "i2c_bitbang.h"
 #include "keyboard_scan.h"
 #include "link_defs.h"
 #include "lpc.h"
@@ -170,6 +175,14 @@ test_mockable __keep int main(void)
 #endif
 
 	/*
+	 * If the EC has exclusive control over the CBI EEPROM WP signal, have
+	 * the EC set the WP if appropriate.  Note that once the WP is set, the
+	 * EC must be reset via EC_RST_ODL in order for the WP to become unset.
+	 */
+	if (IS_ENABLED(CONFIG_EEPROM_CBI_WP) && system_is_locked())
+		cbi_latch_eeprom_wp();
+
+	/*
 	 * Keyboard scan init/Button init can set recovery events to
 	 * indicate to host entry into recovery mode. Before this is
 	 * done, LPC_HOST_EVENT_ALWAYS_REPORT mask needs to be initialized
@@ -184,10 +197,32 @@ test_mockable __keep int main(void)
 		 * pretty early, so let's initialize the controller now.
 		 */
 		i2c_init();
+
+		if (IS_ENABLED(CONFIG_I2C_BITBANG)) {
+			/*
+			 * Enable I2C raw mode for the ports which need
+			 * pre-task i2c transactions.
+			 */
+			enable_i2c_raw_mode(true);
+
+			/* Board level pre-task I2C peripheral initialization */
+			board_pre_task_i2c_peripheral_init();
+		}
 	}
+
 #ifdef HAS_TASK_KEYSCAN
-	keyboard_scan_init();
+
+#ifdef CONFIG_KEYBOARD_SCAN_ADC
+	/*
+	 * Initialize adc here as we need to use it during keyboard_scan_init
+	 * to scan boot keys
+	 */
+	adc_init();
 #endif
+
+	keyboard_scan_init();
+#endif /* HAS_TASK_KEYSCAN */
+
 #if defined(CONFIG_DEDICATED_RECOVERY_BUTTON) || defined(CONFIG_VOLUME_BUTTONS)
 	button_init();
 #endif /* defined(CONFIG_DEDICATED_RECOVERY_BUTTON | CONFIG_VOLUME_BUTTONS) */
@@ -236,6 +271,15 @@ test_mockable __keep int main(void)
 		}
 	}
 #endif  /* !CONFIG_VBOOT_EFS && CONFIG_RWSIG && !HAS_TASK_RWSIG */
+
+	/*
+	 * Disable I2C raw mode for the ports which needed pre-task i2c
+	 * transactions as the task is about to start and the I2C can resume
+	 * to event based transactions.
+	 */
+	if (IS_ENABLED(CONFIG_I2C_BITBANG) &&
+		IS_ENABLED(CONFIG_I2C_CONTROLLER))
+		enable_i2c_raw_mode(false);
 
 	/*
 	 * Print the init time.  Not completely accurate because it can't take

@@ -7,7 +7,6 @@
 
 #include "accelgyro.h"
 #include "adc.h"
-#include "adc_chip.h"
 #include "button.h"
 #include "charge_manager.h"
 #include "charge_state_v2.h"
@@ -19,6 +18,7 @@
 #include "driver/als_tcs3400.h"
 #include "driver/ina3221.h"
 #include "driver/led/oz554.h"
+#include "driver/led/mp3385.h"
 #include "driver/ppc/sn5s330.h"
 #include "driver/tcpm/anx7447.h"
 #include "driver/tcpm/ps8xxx.h"
@@ -184,71 +184,77 @@ BUILD_ASSERT(ARRAY_SIZE(motion_als_sensors) == ALS_COUNT);
 static void power_monitor(void);
 DECLARE_DEFERRED(power_monitor);
 
+/* On ECs without an FPU, the fp_t type is backed by a 32-bit fixed precision
+ * representation that can only store values in the range [-32K, +32K]. Some
+ * intermediary values produced in tcs3400_translate_to_xyz() do not fit in
+ * that range, so we define and use a 64-bit fixed representation instead.
+ */
+typedef int64_t fp64_t;
+#define INT_TO_FP64(x)   ((int64_t)(x) << 32)
+#define FP64_TO_INT(x)   ((x) >> 32)
+#define FLOAT_TO_FP64(x) ((int64_t)((x) * (float)(1LL << 32)))
+
 __override void tcs3400_translate_to_xyz(struct motion_sensor_t *s,
-				     int32_t *crgb_data, int32_t *xyz_data)
+					 int32_t *crgb_data, int32_t *xyz_data)
 {
-	int n, cur_gain;
-	fp_t n_interval, rgbc_sum;
-	int integration_time_us;
 	struct tcs_saturation_t *sat_p =
-				&(TCS3400_RGB_DRV_DATA(s+1)->saturation);
+		&(TCS3400_RGB_DRV_DATA(s+1)->saturation);
 
-	cur_gain = (1 << (2 * sat_p->again));
-
-	integration_time_us =
+	int32_t cur_gain = (1 << (2 * sat_p->again));
+	int32_t integration_time_us =
 		tcs3400_get_integration_time(sat_p->atime);
 
-	/* n_interval = (G+B)/C, to use different coefficient*/
-	if (crgb_data[0] != 0)
-		n_interval = INT_TO_FP(crgb_data[2]+crgb_data[3])/crgb_data[0];
-	else
-		n_interval = FLOAT_TO_FP(0.692); /* set default n = 2 */
+	fp64_t c_coeff, r_coeff, g_coeff, b_coeff;
+	fp64_t result;
 
-	if (n_interval < FLOAT_TO_FP(0.692))
-		n = 1;
-	else if (n_interval >= FLOAT_TO_FP(0.692) &&
-			n_interval < FLOAT_TO_FP(1.012))
-		n = 2;
-	else
-		n = 3;
+	/* Use different coefficients based on n_interval = (G+B)/C */
+	fp64_t gb_sum = INT_TO_FP64(crgb_data[2]) +
+			INT_TO_FP64(crgb_data[3]);
+	fp64_t n_interval = gb_sum / MAX(crgb_data[0], 1);
 
-	switch (n) {
-	case 1:
-		rgbc_sum =
-			fp_mul(INT_TO_FP(crgb_data[0]), FLOAT_TO_FP(0.009)) +
-			fp_mul(INT_TO_FP(crgb_data[1]), FLOAT_TO_FP(0.056)) +
-			fp_mul(INT_TO_FP(crgb_data[2]), FLOAT_TO_FP(2.735)) +
-			fp_mul(INT_TO_FP(crgb_data[3]), FLOAT_TO_FP(-1.903));
+	if (n_interval < FLOAT_TO_FP64(0.692)) {
+		const float scale = 799.797;
 
-		xyz_data[1] = FP_TO_INT(fp_mul(FLOAT_TO_FP(799.797), rgbc_sum
-			/ (int)(integration_time_us * cur_gain / 1000ULL)));
-	break;
-	case 2:
-		rgbc_sum =
-			fp_mul(INT_TO_FP(crgb_data[0]), FLOAT_TO_FP(0.202)) +
-			fp_mul(INT_TO_FP(crgb_data[1]), FLOAT_TO_FP(-1.1)) +
-			fp_mul(INT_TO_FP(crgb_data[2]), FLOAT_TO_FP(8.692)) +
-			fp_mul(INT_TO_FP(crgb_data[3]), FLOAT_TO_FP(-7.068));
+		c_coeff = FLOAT_TO_FP64(0.009  * scale);
+		r_coeff = FLOAT_TO_FP64(0.056  * scale);
+		g_coeff = FLOAT_TO_FP64(2.735  * scale);
+		b_coeff = FLOAT_TO_FP64(-1.903 * scale);
+	} else if (n_interval < FLOAT_TO_FP64(1.012)) {
+		const float scale = 801.347;
 
-		xyz_data[1] = FP_TO_INT(fp_mul(FLOAT_TO_FP(801.347), rgbc_sum
-			/ (int)(integration_time_us * cur_gain / 1000ULL)));
-	break;
-	case 3:
-		rgbc_sum =
-			fp_mul(INT_TO_FP(crgb_data[0]), FLOAT_TO_FP(-0.661)) +
-			fp_mul(INT_TO_FP(crgb_data[1]), FLOAT_TO_FP(1.334)) +
-			fp_mul(INT_TO_FP(crgb_data[2]), FLOAT_TO_FP(1.095)) +
-			fp_mul(INT_TO_FP(crgb_data[3]), FLOAT_TO_FP(-1.821));
+		c_coeff = FLOAT_TO_FP64(0.202  * scale);
+		r_coeff = FLOAT_TO_FP64(-1.1   * scale);
+		g_coeff = FLOAT_TO_FP64(8.692  * scale);
+		b_coeff = FLOAT_TO_FP64(-7.068 * scale);
+	} else {
+		const float scale = 795.574;
 
-		xyz_data[1] = FP_TO_INT(fp_mul(FLOAT_TO_FP(795.574), rgbc_sum
-			/ (int)(integration_time_us * cur_gain / 1000ULL)));
-	break;
-	default:
-	break;
+		c_coeff = FLOAT_TO_FP64(-0.661 * scale);
+		r_coeff = FLOAT_TO_FP64(1.334  * scale);
+		g_coeff = FLOAT_TO_FP64(1.095  * scale);
+		b_coeff = FLOAT_TO_FP64(-1.821 * scale);
 	}
 
-	if (xyz_data[1] < 0)
-		xyz_data[1] = 0;
+	/* Multiply each channel by the coefficient and compute the sum.
+	 * Note: int * fp64_t = fp64_t and fp64_t + fp64_t = fp64_t.
+	 */
+	result = crgb_data[0] * c_coeff +
+		 crgb_data[1] * r_coeff +
+		 crgb_data[2] * g_coeff +
+		 crgb_data[3] * b_coeff;
+
+	/* Adjust for exposure time and sensor gain.
+	 * Note: fp64_t / int = fp64_t.
+	 */
+	result /= MAX(integration_time_us * cur_gain / 1000, 1);
+
+	/* Some C/R/G/B coefficients are negative, so the result could also be
+	 * negative and must be clamped at zero.
+	 *
+	 * The value of xyz_data[1] is stored in a 16 bit integer later on, so
+	 * it must be clamped at INT16_MAX.
+	 */
+	xyz_data[1] = MIN(MAX(FP64_TO_INT(result), 0), INT16_MAX);
 }
 
 static void ppc_interrupt(enum gpio_signal signal)
@@ -462,7 +468,7 @@ static void adp_state_init(void)
 	/* Report charge state from the barrel jack. */
 	adp_connect_deferred();
 }
-DECLARE_HOOK(HOOK_INIT, adp_state_init, HOOK_PRIO_CHARGE_MANAGER_INIT + 1);
+DECLARE_HOOK(HOOK_INIT, adp_state_init, HOOK_PRIO_INIT_CHARGE_MANAGER + 1);
 
 
 #include "gpio_list.h" /* Must come after other header files. */
@@ -527,13 +533,55 @@ const struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 /******************************************************************************/
 /* I2C port map configuration */
 const struct i2c_port_t i2c_ports[] = {
-	{"ina",     I2C_PORT_INA,     400, GPIO_I2C0_SCL, GPIO_I2C0_SDA},
-	{"ppc0",    I2C_PORT_PPC0,    400, GPIO_I2C1_SCL, GPIO_I2C1_SDA},
-	{"ppc1",    I2C_PORT_PPC1,    400, GPIO_I2C2_SCL, GPIO_I2C1_SDA},
-	{"tcpc0",   I2C_PORT_TCPC0,   400, GPIO_I2C3_SCL, GPIO_I2C3_SDA},
-	{"tcpc1",   I2C_PORT_TCPC1,   400, GPIO_I2C4_SCL, GPIO_I2C3_SDA},
-	{"power",   I2C_PORT_POWER,   400, GPIO_I2C5_SCL, GPIO_I2C5_SDA},
-	{"eeprom",  I2C_PORT_EEPROM,  400, GPIO_I2C7_SCL, GPIO_I2C7_SDA},
+	{
+		.name = "ina",
+		.port = I2C_PORT_INA,
+		.kbps = 400,
+		.scl  = GPIO_I2C0_SCL,
+		.sda  = GPIO_I2C0_SDA
+	},
+	{
+		.name = "ppc0",
+		.port = I2C_PORT_PPC0,
+		.kbps = 400,
+		.scl  = GPIO_I2C1_SCL,
+		.sda  = GPIO_I2C1_SDA
+	},
+	{
+		.name = "ppc1",
+		.port = I2C_PORT_PPC1,
+		.kbps = 400,
+		.scl  = GPIO_I2C2_SCL,
+		.sda  = GPIO_I2C2_SDA
+	},
+	{
+		.name = "tcpc0",
+		.port = I2C_PORT_TCPC0,
+		.kbps = 400,
+		.scl  = GPIO_I2C3_SCL,
+		.sda  = GPIO_I2C3_SDA
+	},
+	{
+		.name = "tcpc1",
+		.port = I2C_PORT_TCPC1,
+		.kbps = 400,
+		.scl  = GPIO_I2C4_SCL,
+		.sda  = GPIO_I2C4_SDA
+	},
+	{
+		.name = "power",
+		.port = I2C_PORT_POWER,
+		.kbps = 400,
+		.scl  = GPIO_I2C5_SCL,
+		.sda  = GPIO_I2C5_SDA
+	},
+	{
+		.name = "eeprom",
+		.port = I2C_PORT_EEPROM,
+		.kbps = 400,
+		.scl  = GPIO_I2C7_SCL,
+		.sda  = GPIO_I2C7_SDA
+	},
 };
 const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
 
@@ -622,23 +670,28 @@ BUILD_ASSERT(ARRAY_SIZE(mft_channels) == MFT_CH_COUNT);
 
 /******************************************************************************/
 /* Thermal control; drive fan based on temperature sensors. */
-const static struct ec_thermal_config thermal_a = {
-	.temp_host = {
-		[EC_TEMP_THRESH_WARN] = 0,
-		[EC_TEMP_THRESH_HIGH] = C_TO_K(75),
-		[EC_TEMP_THRESH_HALT] = C_TO_K(78),
-	},
-	.temp_host_release = {
-		[EC_TEMP_THRESH_WARN] = 0,
-		[EC_TEMP_THRESH_HIGH] = C_TO_K(65),
-		[EC_TEMP_THRESH_HALT] = 0,
-	},
-	.temp_fan_off = C_TO_K(41),
-	.temp_fan_max = C_TO_K(72),
-};
+/*
+ * TODO(b/202062363): Remove when clang is fixed.
+ */
+#define THERMAL_A \
+	{ \
+		.temp_host = { \
+			[EC_TEMP_THRESH_WARN] = 0, \
+			[EC_TEMP_THRESH_HIGH] = C_TO_K(75), \
+			[EC_TEMP_THRESH_HALT] = C_TO_K(78), \
+		}, \
+		.temp_host_release = { \
+			[EC_TEMP_THRESH_WARN] = 0, \
+			[EC_TEMP_THRESH_HIGH] = C_TO_K(65), \
+			[EC_TEMP_THRESH_HALT] = 0, \
+		}, \
+		.temp_fan_off = C_TO_K(41), \
+		.temp_fan_max = C_TO_K(72), \
+	}
+__maybe_unused static const struct ec_thermal_config thermal_a = THERMAL_A;
 
 struct ec_thermal_config thermal_params[] = {
-	[TEMP_SENSOR_1] = thermal_a,
+	[TEMP_SENSOR_1] = THERMAL_A,
 };
 BUILD_ASSERT(ARRAY_SIZE(thermal_params) == TEMP_SENSOR_COUNT);
 
@@ -653,6 +706,7 @@ const unsigned int ina3221_count = ARRAY_SIZE(ina3221);
 static uint16_t board_version;
 static uint32_t sku_id;
 static uint32_t fw_config;
+static uint32_t ssfc;
 
 static void cbi_init(void)
 {
@@ -670,8 +724,11 @@ static void cbi_init(void)
 		sku_id = val;
 	if (cbi_get_fw_config(&val) == EC_SUCCESS)
 		fw_config = val;
-	CPRINTS("Board Version: %d, SKU ID: 0x%08x, F/W config: 0x%08x",
-		board_version, sku_id, fw_config);
+	if (cbi_get_ssfc(&val) == EC_SUCCESS)
+		ssfc = val;
+	CPRINTS("Board Version: %d, SKU ID: 0x%08x, "
+			"F/W config: 0x%08x, SSFC: 0x%08x ",
+		board_version, sku_id, fw_config, ssfc);
 }
 DECLARE_HOOK(HOOK_INIT, cbi_init, HOOK_PRIO_INIT_I2C + 1);
 
@@ -705,6 +762,13 @@ static void board_init(void)
 	/* Always claim AC is online, because we don't have a battery. */
 	memmap_batt_flags = host_get_memmap(EC_MEMMAP_BATT_FLAG);
 	*memmap_batt_flags |= EC_BATT_FLAG_AC_PRESENT;
+
+	/* Initial backlight ic setting by ssfc */
+	if (ec_ssfc_get_led_ic() == SSFC_LED_MP3385)
+		mp3385_board_init();
+	else
+		oz554_board_init();
+	gpio_enable_interrupt(GPIO_PANEL_BACKLIGHT_EN);
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
@@ -723,8 +787,19 @@ static void board_chipset_startup(void)
 		ppc_vbus_source_enable(USB_PD_PORT_TCPC_0, 1);
 	if (ppc_is_sourcing_vbus(USB_PD_PORT_TCPC_1))
 		ppc_vbus_source_enable(USB_PD_PORT_TCPC_1, 1);
+
+	/* set high to enable EDID ROM WP */
+	gpio_set_level(GPIO_EC_EDID_WP_DISABLE_L, 1);
 }
 DECLARE_HOOK(HOOK_CHIPSET_STARTUP, board_chipset_startup,
+	     HOOK_PRIO_DEFAULT);
+
+static void board_chipset_shutdown(void)
+{
+	/* set low to prevent power leakage */
+	gpio_set_level(GPIO_EC_EDID_WP_DISABLE_L, 0);
+}
+DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, board_chipset_shutdown,
 	     HOOK_PRIO_DEFAULT);
 /******************************************************************************/
 /* USB-C PPC Configuration */
@@ -899,6 +974,11 @@ unsigned int ec_config_get_bj_power(void)
 unsigned int ec_config_get_thermal_solution(void)
 {
 	return (fw_config & EC_CFG_THERMAL_MASK) >> EC_CFG_THERMAL_L;
+}
+
+unsigned int ec_ssfc_get_led_ic(void)
+{
+	return (ssfc & EC_SSFC_LED_MASK) >> EC_SSFC_LED_L;
 }
 
 /*
@@ -1155,7 +1235,7 @@ static void power_monitor(void)
 	hook_call_deferred(&power_monitor_data, delay);
 }
 
-__override void oz554_board_init(void)
+void oz554_board_init(void)
 {
 	int pin_status = 0;
 
@@ -1179,4 +1259,46 @@ __override void oz554_board_init(void)
 		CPRINTS("PANEL UNKNOWN");
 		break;
 	}
+}
+
+void mp3385_board_init(void)
+{
+	int pin_status = 0;
+
+	pin_status |= gpio_get_level(GPIO_PANEL_ID0) << 0;
+	pin_status |= gpio_get_level(GPIO_PANEL_ID1) << 1;
+
+	switch (pin_status) {
+	case 0x00:
+		CPRINTS("PANEL_HAN01.10A");
+		mp3385_set_config(0, 0xF1);
+		mp3385_set_config(2, 0x4C);
+		mp3385_set_config(5, 0xB7);
+		break;
+	case 0x02:
+		CPRINTS("PANEL_WF9_SSA2");
+		mp3385_set_config(0, 0xF1);
+		mp3385_set_config(2, 0x55);
+		mp3385_set_config(5, 0x87);
+		break;
+	default:
+		CPRINTS("PANEL UNKNOWN");
+		break;
+	}
+}
+
+void board_backlight_enable_interrupt(enum gpio_signal signal)
+{
+	switch (ec_ssfc_get_led_ic()) {
+	case SSFC_LED_OZ554:
+		oz554_interrupt(signal);
+		break;
+	case SSFC_LED_MP3385:
+		mp3385_interrupt(signal);
+		break;
+	default:
+		oz554_interrupt(signal);
+		break;
+	}
+
 }
