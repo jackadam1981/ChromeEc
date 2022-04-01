@@ -3841,6 +3841,12 @@ enum ec_mkbp_event {
 	/* Peripheral device charger event */
 	EC_MKBP_EVENT_PCHG = 12,
 
+	/* Notify the AP that something happened on CEC */
+	EC_MKBP_EVENT_CEC2_EVENT = 13,
+
+	/* Send an incoming CEC message to the AP */
+	EC_MKBP_EVENT_CEC2_MESSAGE = 14,
+
 	/* Number of MKBP events */
 	EC_MKBP_EVENT_COUNT,
 };
