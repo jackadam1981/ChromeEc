@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea44ff3d_e2930177",
+        "filename": "baseboard/dedede/baseboard.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2022-04-01T18:06:11Z",
+      "side": 1,
+      "message": "Thoughts on whether this is too spammy or not? It\u0027ll be printed everytime we check DSW_PWROK. I find it useful to see when PP3300_A is disabled or not though.\n```\n22-04-01 12:58:26.943 [1809.349760 power state 5 \u003d S0ix, in 0x00ff]\n22-04-01 12:58:26.946 [1809.350266 In suspend, assuming PP3300_A is hi!]\n22-04-01 12:58:26.949 [1809.351367 In suspend, assuming PP3300_A is hi!]\n22-04-01 12:58:26.956 [1809.354090 power state 5 \u003d S0ix, in 0x00fe]\n22-04-01 12:58:26.959 [1809.354627 In suspend, assuming PP3300_A is hi!]\n22-04-01 13:01:25.938 [1988.841321 In suspend, assuming PP3300_A is hi!]\n22-04-01 13:01:25.944 [1988.841842 power state 5 \u003d S0ix, in 0x00ff]\n22-04-01 13:01:25.946 [1988.842332 In suspend, assuming PP3300_A is hi!]\n22-04-01 13:01:25.949 [1988.843681 In suspend, assuming PP3300_A is hi!]\n22-04-01 13:01:25.956 [1988.846382 power state 5 \u003d S0ix, in 0x00fe]\n```",
+      "range": {
+        "startLine": 141,
+        "startChar": 0,
+        "endLine": 142,
+        "endChar": 51
+      },
+      "revId": "81d30272d611db73b026d171be6b93f6c4207e0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
