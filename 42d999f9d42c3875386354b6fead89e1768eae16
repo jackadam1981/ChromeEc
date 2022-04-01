@@ -160,6 +160,24 @@
       "parentUuid": "8106b36b_f5cf15b1",
       "revId": "42d999f9d42c3875386354b6fead89e1768eae16",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "278ae71c_e493e005",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-04-01T10:09:18Z",
+      "side": 1,
+      "message": "Well the EC code is packed with CPRINT, which resolve to printk (synchronous) already anyway so I would be surprised if enabling the Zephyr option makes any difference at all, but if that is a concern, one option would be to enable build time filtering and have info logs only for your module, and error/warning or none at all for the rest. Guess it depends on how much you want that memory and flash back, thinking it may be better to set it up that way early once we have the option to revert it if something goes wrong than later down the road when some other feature actually needs those resources.",
+      "parentUuid": "1417721e_c0be2a28",
+      "revId": "42d999f9d42c3875386354b6fead89e1768eae16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
