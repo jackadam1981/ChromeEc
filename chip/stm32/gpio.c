@@ -172,7 +172,7 @@ void __keep gpio_interrupt(void)
 	}
 }
 #ifdef CHIP_FAMILY_STM32F0
-static void _gpio_interrupt(void)
+static void __keep _gpio_interrupt(void)
 {
 	gpio_interrupt();
 }
