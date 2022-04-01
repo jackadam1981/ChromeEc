@@ -45,6 +45,40 @@
       },
       "revId": "0ddf7bf5a0de40c131cd04f55c972c779356f4ef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46bee692_0e2f8887",
+        "filename": "board/moonbuggy/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1362837
+      },
+      "writtenOn": "2022-04-01T15:53:01Z",
+      "side": 1,
+      "message": "I would recommend file a bug and add a TODO(b/bugid) here before submitting this CL. We should capture your email thread in the bug.",
+      "revId": "0ddf7bf5a0de40c131cd04f55c972c779356f4ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77044220_9292ab3d",
+        "filename": "board/moonbuggy/pse.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1362837
+      },
+      "writtenOn": "2022-04-01T15:53:01Z",
+      "side": 1,
+      "message": "Why was it set to MAX before? Was it a typo?",
+      "revId": "0ddf7bf5a0de40c131cd04f55c972c779356f4ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
