@@ -94,7 +94,7 @@ static int nx20p348x_set_vbus_source_current_limit(int port,
 		break;
 
 	case TYPEC_RP_1A5:
-		regval |= NX20P348X_ILIM_1_600;
+		regval |= NX20P348X_ILIM_1_800;
 		break;
 
 	case TYPEC_RP_USB:
