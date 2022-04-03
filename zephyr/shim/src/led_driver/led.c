@@ -29,7 +29,7 @@ LOG_MODULE_REGISTER(gpio_led, LOG_LEVEL_ERR);
 #define BAT_LED_ON 1
 #define BAT_LED_OFF 0
 
-#define LED_COLOR_NODE  DT_PATH(led, led_colors)
+#define LED_COLOR_NODE  DT_PATH(led_colors)
 
 const enum ec_led_id supported_led_ids[] = {
 	EC_LED_ID_BATTERY_LED,
@@ -245,7 +245,8 @@ static int find_color(int node_idx, int ticks)
 	/* If period value at index 0 is not 0, it's a blinking LED */
 	if (GET_PERIOD(node_idx, 0) != 0) {
 		/*  Period is accumulated at the last index */
-		ticks = ticks % GET_PERIOD(node_idx, MAX_COLOR - 1);
+		ticks = (ticks * LED_ONE_SEC) %
+			GET_PERIOD(node_idx, MAX_COLOR - 1);
 
 		for (color_idx = 0; color_idx < MAX_COLOR; color_idx++) {
 			if (ticks < GET_PERIOD(node_idx, color_idx))
