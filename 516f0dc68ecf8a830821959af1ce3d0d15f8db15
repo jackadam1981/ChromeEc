@@ -70,6 +70,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c91cdb4_f6dfae5e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1535162
+      },
+      "writtenOn": "2022-04-03T17:05:56Z",
+      "side": 1,
+      "message": "\u003e (and apologies...\n\nNot a problem! Thanks!",
+      "revId": "516f0dc68ecf8a830821959af1ce3d0d15f8db15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f8e2d541_8926fca0",
@@ -83,6 +100,30 @@
       "writtenOn": "2022-03-31T19:13:01Z",
       "side": 1,
       "message": "Is this actually microchip specific? We\u0027ve used MEC ECs in the past and I\u0027m not aware of this limitation.",
+      "range": {
+        "startLine": 116,
+        "startChar": 8,
+        "endLine": 116,
+        "endChar": 35
+      },
+      "revId": "516f0dc68ecf8a830821959af1ce3d0d15f8db15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cfa6c700_a8124a24",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1535162
+      },
+      "writtenOn": "2022-04-03T17:05:56Z",
+      "side": 1,
+      "message": "\u003e Is this actually microchip specific? We\u0027ve used MEC ECs in the past and I\u0027m not aware of this limitation.\n\nThat\u0027s a good question. I\u0027ll have to defer to any expert you all may have on the mchp platform, since I\u0027m coming at this as an outsider. Reviewing the cros-ec-lpcs driver in Linux, it explicitly calls this protocol (the one that uses port 0x800 and 0x802-0x807) the \"MEC\" protocol.\n\nI suspect that this _is_ Microchip EC specific... and further postulate that we didn\u0027t need to know the window size for communicating with a MEC because the ChromeOS EC wasn\u0027t being used in a more standard system configuration (versus bespoke Chrome devices) where it would matter.\n\nThe core of the issue here is that (1) Framework Laptop uses a MEC and (2) its ACPI table for the EC device only offers ports 0x800-0x807 and makes no mention of ports 0x808-0x9FF. 😊",
+      "parentUuid": "f8e2d541_8926fca0",
       "range": {
         "startLine": 116,
         "startChar": 8,
