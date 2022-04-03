@@ -132,6 +132,30 @@
       },
       "revId": "516f0dc68ecf8a830821959af1ce3d0d15f8db15",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "57dd58df_0474bee9",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1535162
+      },
+      "writtenOn": "2022-04-03T21:43:17Z",
+      "side": 1,
+      "message": "Okay, I do think this is specific to the Microchip MEC series. In their documentation[1] for the MEC152x series of chips, they describe a \"four-byte transfer mode\" where four OS2EC and EC2OS registers are used to communicate with the host.\n\nThis is accompanied by a status register and a command register.\n\n[1]: http://ww1.microchip.com/downloads/en/DeviceDoc/MEC152x-Data-Sheet-DS00003427A.pdf\n\nI\u0027m going to mark this one resolved for now, but I\u0027m of course not terminating the discussion. :)",
+      "parentUuid": "cfa6c700_a8124a24",
+      "range": {
+        "startLine": 116,
+        "startChar": 8,
+        "endLine": 116,
+        "endChar": 35
+      },
+      "revId": "516f0dc68ecf8a830821959af1ce3d0d15f8db15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
