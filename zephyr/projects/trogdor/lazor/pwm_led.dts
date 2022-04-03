@@ -1,0 +1,28 @@
+/* Copyright 2022 The Chromium OS Authors. All rights reserved.
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+/ {
+	pwm_pins {
+		compatible = "cros-ec,pwm-pin-config";
+
+		pwm_y: pwm_y {
+			#led-pin-cells = <1>;
+			pwms = <&pwm0 0 0>;
+		};
+
+		pwm_b: pwm_b {
+			#led-pin-cells = <1>;
+			pwms = <&pwm2 0 0>;
+		};
+	};
+};
+
+&pwm0 {
+	status = "okay";
+};
+
+&pwm2 {
+	status = "okay";
+};

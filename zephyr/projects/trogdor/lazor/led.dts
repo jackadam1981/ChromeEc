@@ -2,25 +2,26 @@
 	led {
 		compatible = "led-behavior";
 
-		gpio-led-pins {
-			compatible = "cros-ec,gpio-led-pins";
+		pwm-led-pins {
+			compatible = "cros-ec,pwm-led-pins";
+			pwm-frequency = <324>;
 
 			color-off {
 				led-color = "LED_OFF";
-				led-pins = <&gpio_ec_chg_led_y_c1 0>,
-					   <&gpio_ec_chg_led_b_c1 0>;
+				led-pins = <&pwm_y 0>,
+					   <&pwm_b 0>;
 			};
 
 			color-amber {
 				led-color = "LED_AMBER";
-				led-pins = <&gpio_ec_chg_led_y_c1 1>,
-					   <&gpio_ec_chg_led_b_c1 0>;
+				led-pins = <&pwm_y 100>,
+					   <&pwm_b 0>;
 			};
 
 			color-blue {
 				led-color = "LED_BLUE";
-				led-pins = <&gpio_ec_chg_led_y_c1 0>,
-					   <&gpio_ec_chg_led_b_c1 1>;
+				led-pins = <&pwm_y 0>,
+					   <&pwm_b 100>;
 			};
 		};
 
