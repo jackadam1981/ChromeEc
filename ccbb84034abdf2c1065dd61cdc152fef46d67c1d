@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5cec7f09_df45a75b",
+        "filename": "zephyr/projects/trogdor/lazor/gpio_led.dts",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-04-04T23:51:32Z",
+      "side": 1,
+      "message": "Please separate it into two CLs.\n* One CL to refactor the `led.dts` to move this `gpio-led-pins` to `gpio_led.dts`. It still uses the GPIO approach.\n* Another CL to add `pwm_led.dts` and update `BUILD.py`.",
+      "range": {
+        "startLine": 7,
+        "startChar": 1,
+        "endLine": 7,
+        "endChar": 16
+      },
+      "revId": "ccbb84034abdf2c1065dd61cdc152fef46d67c1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
