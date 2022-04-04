@@ -16,6 +16,24 @@
       "message": "Use system_jumped_late(); saves needing to interpret jump_data and lets an early sysjump (from EFS2) reinitialize things to ensure they\u0027re in good shape.",
       "revId": "78f77aff9723cf292024b847d2f904ddae066273",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b627131_b81e3ce9",
+        "filename": "zephyr/subsys/ap_pwrseq/signal_gpio.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-04-04T01:18:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2b883049_be592477",
+      "revId": "78f77aff9723cf292024b847d2f904ddae066273",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
