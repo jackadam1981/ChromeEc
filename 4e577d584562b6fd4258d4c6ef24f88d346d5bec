@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3df6f41_b49f102e",
+        "filename": "zephyr/projects/trogdor/lazor/gpio_led.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1513493
+      },
+      "writtenOn": "2022-04-04T23:38:00Z",
+      "side": 1,
+      "message": "moved gpio-led-pins node to a separate file",
+      "revId": "4e577d584562b6fd4258d4c6ef24f88d346d5bec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a4eca310_d2fc6b46",
+        "filename": "zephyr/projects/trogdor/lazor/led.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1513493
+      },
+      "writtenOn": "2022-04-04T23:38:00Z",
+      "side": 1,
+      "message": "Removed led-behavior parent node as currently it is not required.",
+      "revId": "4e577d584562b6fd4258d4c6ef24f88d346d5bec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

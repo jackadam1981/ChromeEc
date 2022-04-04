@@ -94,6 +94,30 @@
       },
       "revId": "249255a007e5d2187ccf42cc39d6cf4db595899e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "31cfc0dd_ae72d86d",
+        "filename": "zephyr/projects/trogdor/lazor/BUILD.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1513493
+      },
+      "writtenOn": "2022-04-04T23:38:00Z",
+      "side": 1,
+      "message": "Enabling pwm_led.dts or gpio_led.dts will allow to switch between gpio or pwm based config.",
+      "parentUuid": "6e630515_cc8e4d89",
+      "range": {
+        "startLine": 16,
+        "startChar": 9,
+        "endLine": 16,
+        "endChar": 16
+      },
+      "revId": "249255a007e5d2187ccf42cc39d6cf4db595899e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
