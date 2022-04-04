@@ -22,6 +22,30 @@
       },
       "revId": "24bd0ea5c4201f209c192e2dc55af216f8fffd8e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1a74b69_cbe0612f",
+        "filename": "zephyr/projects/nissa/prj.conf",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-04-04T23:51:13Z",
+      "side": 1,
+      "message": "I copied this from Corsola, which has both of these, so maybe you should also let them know.\nI think the second one is needed to drive the different states for the CPU.\nWhen I didn\u0027t have it, it didn\u0027t seem to change the LED state when the CPU was shutdown.\nI\u0027ll have to investigate a bit more what the specific differences are between these 2 configs (there are so many configs...)",
+      "parentUuid": "666ee40a_229584ca",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 37
+      },
+      "revId": "24bd0ea5c4201f209c192e2dc55af216f8fffd8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
