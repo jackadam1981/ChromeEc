@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "687e79d9_bd582990",
+        "filename": "zephyr/dts/bindings/temp/cros_ec_temp_sensor.yaml",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-04-04T20:52:35Z",
+      "side": 1,
+      "message": "Okay, I think I understand and I\u0027ll give it a shot.",
+      "parentUuid": "8c488ffd_7f90c685",
+      "revId": "12c0c7509859ce25ffde3d6f29948af3ebe91641",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "482157eb_a7cb257c",
         "filename": "zephyr/shim/include/temp_sensor/temp_sensor.h",
         "patchSetId": 4
@@ -54,6 +72,30 @@
       "writtenOn": "2022-04-01T15:56:09Z",
       "side": 1,
       "message": "Can you create a helper for this bit and share for each temp sensor type?",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 0
+      },
+      "revId": "12c0c7509859ce25ffde3d6f29948af3ebe91641",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ffc7758c_d96f6bc3",
+        "filename": "zephyr/shim/src/temp_sensors.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-04-04T20:52:35Z",
+      "side": 1,
+      "message": "I\u0027ll see if I can get it to compile.  I had a lot of build bracketing errors trying to get COND_CODE_1 working for the power_good_pin outside the structure initialization macro",
+      "parentUuid": "8849b488_3a9e703e",
       "range": {
         "startLine": 56,
         "startChar": 0,
