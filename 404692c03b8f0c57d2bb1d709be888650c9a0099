@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e34a73f_0e211804",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-04-04T16:57:48Z",
+      "side": 1,
+      "message": "Hi! This is build only tested, I borrowed the setup from https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/projects/corsola/led_kingler.dts so I think it should be alright, would you have a chance to try it on a board?",
+      "revId": "404692c03b8f0c57d2bb1d709be888650c9a0099",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
