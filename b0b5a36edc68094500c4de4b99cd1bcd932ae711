@@ -16,6 +16,52 @@
       "message": "Corresponding Lazor changes are here: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3564077. Not sure if we want to bring that in or keep Lazor LEDs as GPIOs.",
       "revId": "b0b5a36edc68094500c4de4b99cd1bcd932ae711",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "acbb51a2_c0c8651f",
+        "filename": "zephyr/shim/src/led_driver/led_gpio.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-04-04T21:29:01Z",
+      "side": 1,
+      "message": "Can both GPIO LED and PWM LED be supported?",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 46
+      },
+      "revId": "b0b5a36edc68094500c4de4b99cd1bcd932ae711",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10bdd1cb_8186a993",
+        "filename": "zephyr/shim/src/led_driver/led_pwm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-04-04T21:29:01Z",
+      "side": 1,
+      "message": "Please give more explanation and better an example of this line and the below line 54-55. The calculate is not trivial.",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 61
+      },
+      "revId": "b0b5a36edc68094500c4de4b99cd1bcd932ae711",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
