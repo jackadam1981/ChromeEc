@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ce17933_d034f5e1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-04-04T01:19:58Z",
+      "side": 1,
+      "message": "I had copied the code from shim/src/gpio.c, but that code likely needed to run very early, and it seems OK for this code to run later.\nThis is just the first part of the fix, the rest is to fix the state machine code to figure out the state on sysjump.",
+      "revId": "e40ec893f15f9a4149a91d71ddc20d1c74bf8aad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
