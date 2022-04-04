@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e4f9143_5fd30e50",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 2793,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2022-04-04T17:09:17Z",
+      "side": 1,
+      "message": "nit: keep line length to 80 characters max.",
+      "range": {
+        "startLine": 2793,
+        "startChar": 0,
+        "endLine": 2793,
+        "endChar": 99
+      },
+      "revId": "c56120851ce493d7ff6798e6986b8c0251a0ed28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
