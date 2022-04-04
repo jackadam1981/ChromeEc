@@ -535,14 +535,14 @@ def run_test(test: TestConfig, console: str, executor: ThreadPoolExecutor) ->\
 def get_test_list(config: BoardConfig, test_args) -> List[TestConfig]:
     """Get a list of tests to run."""
     if test_args == 'all':
-        return list(AllTests.get(config).values())
+        return list(AllTests.get(config).items())
 
     test_list = []
     for t in test_args:
         logging.debug('test: %s', t)
         test_regex = re.compile(t)
-        tests = [v for k, v in AllTests.get(config).items()
-                 if test_regex.fullmatch(k)]
+        tests = [pair for pair in AllTests.get(config).items()
+                 if test_regex.fullmatch(pair[0])]
         if not tests:
             logging.error('Unable to find test config for "%s"', t)
             sys.exit(1)
@@ -606,9 +606,9 @@ def main():
     e = ThreadPoolExecutor(max_workers=1)
 
     test_list = get_test_list(board_config, args.tests)
-    logging.debug('Running tests: %s', [t.name for t in test_list])
+    logging.debug('Running tests: %s', [name for name, _ in test_list])
 
-    for test in test_list:
+    for name, test in test_list:
         build_board = args.board
         # If test provides this information, build image for board specified
         # by test.
@@ -655,15 +655,15 @@ def main():
         hw_write_protect(test.enable_hw_write_protect)
 
         # run the test
-        logging.info('Running test: "%s"', test.name)
+        logging.info('Running test: "%s"', name)
         console = get_console(board_config)
         test.passed = run_test(test, console, executor=e)
 
     colorama.init()
     exit_code = 0
-    for test in test_list:
+    for name, test in test_list:
         # print results
-        print('Test "' + test.name + '": ', end='')
+        print('Test "' + name + '": ', end='')
         if test.passed:
             print(colorama.Fore.GREEN + 'PASSED')
         else:
