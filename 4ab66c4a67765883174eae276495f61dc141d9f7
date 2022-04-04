@@ -16,6 +16,24 @@
       "message": "Does nivviks have the same issue?",
       "revId": "4ab66c4a67765883174eae276495f61dc141d9f7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "816fb59f_160618f6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-04-04T06:29:07Z",
+      "side": 1,
+      "message": "I don\u0027t think so, since the nivviks interrupts don\u0027t manually connect the charger interrupt (I\u0027m not sure where it gets called from, actually). Nereid calls `sm5803_interrupt()` from board code, but Nivviks doesn\u0027t do anything equivalent.",
+      "parentUuid": "438980cd_42f94c02",
+      "revId": "4ab66c4a67765883174eae276495f61dc141d9f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
