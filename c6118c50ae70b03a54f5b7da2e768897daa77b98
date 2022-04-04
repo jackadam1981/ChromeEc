@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74dc3cb4_168dd38e",
+        "filename": "baseboard/guybrush/baseboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 874,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-04-04T15:17:46Z",
+      "side": 1,
+      "message": "If the lid state doesn\u0027t change, what clears the BL disable on initial boot?",
+      "revId": "c6118c50ae70b03a54f5b7da2e768897daa77b98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
