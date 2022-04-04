@@ -336,7 +336,7 @@ config PLATFORM_EC_FLASH_CROS
 
 config PLATFORM_EC_FPU
 	bool "Support floating point"
-	depends on FPU && CPU_CORTEX_M && !NEWLIB_LIBC
+	depends on FPU && (CPU_CORTEX_M || RISCV) && !NEWLIB_LIBC
 	default y
 	help
 	  This enables support for floating point. This is generally already
