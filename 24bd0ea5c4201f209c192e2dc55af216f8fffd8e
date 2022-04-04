@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "666ee40a_229584ca",
+        "filename": "zephyr/projects/nissa/prj.conf",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-04-04T16:01:57Z",
+      "side": 1,
+      "message": "I think only one of them should be defined. They both registers a `HOOK_TICK` to periodically update the LED status according to their rules. Defining them both results doing the same job twice?",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 37
+      },
+      "revId": "24bd0ea5c4201f209c192e2dc55af216f8fffd8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
