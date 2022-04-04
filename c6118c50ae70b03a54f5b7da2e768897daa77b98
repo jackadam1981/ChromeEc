@@ -16,6 +16,24 @@
       "message": "If the lid state doesn\u0027t change, what clears the BL disable on initial boot?",
       "revId": "c6118c50ae70b03a54f5b7da2e768897daa77b98",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2bf8d0e_79072b24",
+        "filename": "baseboard/guybrush/baseboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 874,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2022-04-04T18:23:29Z",
+      "side": 1,
+      "message": "On initial EC boot? https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/common/backlight_lid.c;l\u003d57 will init the BL to the lid state.",
+      "parentUuid": "74dc3cb4_168dd38e",
+      "revId": "c6118c50ae70b03a54f5b7da2e768897daa77b98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
