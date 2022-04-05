@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "afe0750f_0be3318b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1466877
+      },
+      "writtenOn": "2022-04-05T21:33:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eba5b4b3_e506739d",
+      "range": {
+        "startLine": 7,
+        "startChar": 25,
+        "endLine": 7,
+        "endChar": 34
+      },
+      "revId": "3361610e3ca6142465ba9fa948aa9e5d081e5cc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c2a29417_40b839c3",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-03-31T21:10:53Z",
       "side": 1,
       "message": "-D for the same reason, may need further changes to how we call options",
+      "range": {
+        "startLine": 10,
+        "startChar": 13,
+        "endLine": 10,
+        "endChar": 24
+      },
+      "revId": "3361610e3ca6142465ba9fa948aa9e5d081e5cc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc9e695f_3cbc318b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1466877
+      },
+      "writtenOn": "2022-04-05T21:33:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c2a29417_40b839c3",
       "range": {
         "startLine": 10,
         "startChar": 13,
