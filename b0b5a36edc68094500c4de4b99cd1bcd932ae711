@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "807ecd10_53dc56b1",
+        "filename": "zephyr/shim/src/led_driver/led_gpio.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1513493
+      },
+      "writtenOn": "2022-04-05T05:30:58Z",
+      "side": 1,
+      "message": "It can certainly be supported. Existing boards don\u0027t have that use case. I have added an issue tracker here to bring that change separately. b:228125169",
+      "parentUuid": "acbb51a2_c0c8651f",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 46
+      },
+      "revId": "b0b5a36edc68094500c4de4b99cd1bcd932ae711",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "10bdd1cb_8186a993",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-04-04T21:29:01Z",
       "side": 1,
       "message": "Please give more explanation and better an example of this line and the below line 54-55. The calculate is not trivial.",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 61
+      },
+      "revId": "b0b5a36edc68094500c4de4b99cd1bcd932ae711",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a862b01a_1c8041b2",
+        "filename": "zephyr/shim/src/led_driver/led_pwm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1513493
+      },
+      "writtenOn": "2022-04-05T05:30:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "10bdd1cb_8186a993",
       "range": {
         "startLine": 44,
         "startChar": 0,
