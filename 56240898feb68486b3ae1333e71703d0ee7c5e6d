@@ -3,6 +3,74 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "99bf087e_371672e9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-04-05T10:15:34Z",
+      "side": 1,
+      "message": "reused",
+      "revId": "56240898feb68486b3ae1333e71703d0ee7c5e6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e55c0637_a8101d54",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-04-05T10:15:34Z",
+      "side": 1,
+      "message": "will be migrated",
+      "revId": "56240898feb68486b3ae1333e71703d0ee7c5e6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "441e3be6_cb6d180e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-04-05T10:15:34Z",
+      "side": 1,
+      "message": "implementation",
+      "revId": "56240898feb68486b3ae1333e71703d0ee7c5e6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd4f2f29_b33d51e5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-04-05T10:15:34Z",
+      "side": 1,
+      "message": "Change to CON...EC_AP_PWRSEQ_S0IX and EC_AP_PWRSEQ_HOST_SLEEP\nto match existing config names.",
+      "revId": "56240898feb68486b3ae1333e71703d0ee7c5e6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "360b36c5_d249086b",
         "filename": "zephyr/shim/include/power_host_sleep.h",
         "patchSetId": 9
@@ -19,6 +87,46 @@
         "startChar": 3,
         "endLine": 14,
         "endChar": 30
+      },
+      "revId": "56240898feb68486b3ae1333e71703d0ee7c5e6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "441a144a_65f4930b",
+        "filename": "zephyr/shim/include/power_host_sleep.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-04-05T10:15:34Z",
+      "side": 1,
+      "message": "Do you really need 64 bits here, or will BIT() suffice?",
+      "revId": "56240898feb68486b3ae1333e71703d0ee7c5e6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ddb6da0_7e3568a7",
+        "filename": "zephyr/shim/src/power_host_sleep_api.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-04-05T10:15:34Z",
+      "side": 1,
+      "message": "Maybe an __ASSERT here if this should never happen.",
+      "range": {
+        "startLine": 22,
+        "startChar": 1,
+        "endLine": 22,
+        "endChar": 8
       },
       "revId": "56240898feb68486b3ae1333e71703d0ee7c5e6d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
@@ -66,6 +174,23 @@
         "endLine": 84,
         "endChar": 19
       },
+      "revId": "56240898feb68486b3ae1333e71703d0ee7c5e6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "657a92d2_1c530c77",
+        "filename": "zephyr/subsys/ap_pwrseq/Kconfig",
+        "patchSetId": 9
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-04-05T10:15:34Z",
+      "side": 1,
+      "message": "I think the PLATFORM_EC configs are reserved for use only in the top level Kconfig files, since they represent shim behaviour or other specific meaning.\nSo it might be best to drop the PLATFORM_EC_ part and use another name,",
       "revId": "56240898feb68486b3ae1333e71703d0ee7c5e6d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
