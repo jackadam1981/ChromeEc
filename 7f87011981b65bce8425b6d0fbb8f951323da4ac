@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ea2bfac_ecdf31da",
+        "filename": "docs/zephyr/zephyr_usba.md",
+        "patchSetId": 41
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2022-04-05T15:59:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "21be9971_5628b581",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 23
+      },
+      "revId": "7f87011981b65bce8425b6d0fbb8f951323da4ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3cd5f85d_80a4f46a",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-03-30T17:04:55Z",
       "side": 1,
       "message": "Add backticks",
+      "range": {
+        "startLine": 29,
+        "startChar": 5,
+        "endLine": 29,
+        "endChar": 45
+      },
+      "revId": "7f87011981b65bce8425b6d0fbb8f951323da4ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf19450a_c0212962",
+        "filename": "docs/zephyr/zephyr_usba.md",
+        "patchSetId": 41
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2022-04-05T15:59:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3cd5f85d_80a4f46a",
       "range": {
         "startLine": 29,
         "startChar": 5,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "601a03d0_4ba1aeb2",
+        "filename": "docs/zephyr/zephyr_usba.md",
+        "patchSetId": 41
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2022-04-05T15:59:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c08fdabd_36a2f8d0",
+      "range": {
+        "startLine": 30,
+        "startChar": 49,
+        "endLine": 30,
+        "endChar": 54
+      },
+      "revId": "7f87011981b65bce8425b6d0fbb8f951323da4ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "62686442_44ea1b6d",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-03-30T17:26:48Z",
       "side": 1,
       "message": "`ectool usbchargemode` can also be used from the kernel.",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 24
+      },
+      "revId": "7f87011981b65bce8425b6d0fbb8f951323da4ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b5a6c335_4f28366e",
+        "filename": "docs/zephyr/zephyr_usba.md",
+        "patchSetId": 41
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2022-04-05T15:59:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "62686442_44ea1b6d",
       "range": {
         "startLine": 33,
         "startChar": 0,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c837b517_344b472e",
+        "filename": "docs/zephyr/zephyr_usba.md",
+        "patchSetId": 41
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2022-04-05T15:59:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "32e39e89_69131bfc",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 0
+      },
+      "revId": "7f87011981b65bce8425b6d0fbb8f951323da4ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c58fec4f_a2b27c45",
@@ -129,6 +249,30 @@
       "writtenOn": "2022-03-30T17:04:55Z",
       "side": 1,
       "message": "Note - the usage of `usbchargemode` differs depending on whether the power power control is \"smart\" or \"dumb\".   So you should document both.\n\nIt would also be helpful to describe the parameters for smart mode: \n  port-number\n  mode (disabled, SDP, CDP, DCP, etc)\n  inhibit charge during suspend.",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 0
+      },
+      "revId": "7f87011981b65bce8425b6d0fbb8f951323da4ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "351f8c75_bc5a1d96",
+        "filename": "docs/zephyr/zephyr_usba.md",
+        "patchSetId": 41
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2022-04-05T15:59:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c58fec4f_a2b27c45",
       "range": {
         "startLine": 40,
         "startChar": 0,
@@ -162,6 +306,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3de8c8a_19877073",
+        "filename": "docs/zephyr/zephyr_usba.md",
+        "patchSetId": 41
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2022-04-05T15:59:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "89ef60ea_d720b76d",
+      "range": {
+        "startLine": 61,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 32
+      },
+      "revId": "7f87011981b65bce8425b6d0fbb8f951323da4ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cffe5f99_17d6f282",
@@ -185,6 +353,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d2b74d51_ac6920e2",
+        "filename": "docs/zephyr/zephyr_usba.md",
+        "patchSetId": 41
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2022-04-05T15:59:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cffe5f99_17d6f282",
+      "range": {
+        "startLine": 63,
+        "startChar": 0,
+        "endLine": 63,
+        "endChar": 3
+      },
+      "revId": "7f87011981b65bce8425b6d0fbb8f951323da4ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5fe0f4ba_6e3ad7dd",
@@ -198,6 +390,30 @@
       "writtenOn": "2022-03-30T17:04:55Z",
       "side": 1,
       "message": "No need to document the legacy macro `USB_PORT_COUNT`.",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 72
+      },
+      "revId": "7f87011981b65bce8425b6d0fbb8f951323da4ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "06c79872_ecae77fc",
+        "filename": "docs/zephyr/zephyr_usba.md",
+        "patchSetId": 41
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2022-04-05T15:59:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5fe0f4ba_6e3ad7dd",
       "range": {
         "startLine": 65,
         "startChar": 0,
