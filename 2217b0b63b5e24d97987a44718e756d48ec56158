@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c11cbe35_14be0642",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2022-04-05T15:50:24Z",
+      "side": 1,
+      "message": "I don\u0027t understand why one would even want user space in charge of PROCHOT#? That doesn\u0027t make sense to me; it is a last-resort emergency trigger to use to keep the system from browning out when the EC is aware of some situation (like we have with measuring the system current, e.g. getting the information from the charging circuitry, not userspace)",
+      "revId": "2217b0b63b5e24d97987a44718e756d48ec56158",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
