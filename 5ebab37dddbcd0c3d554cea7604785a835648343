@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ffeeeff0_4da40e0e",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 4471,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2022-04-05T15:43:36Z",
+      "side": 1,
+      "message": "these are specific to DPTF/DTT, can we include that in the name of the enum ?",
+      "range": {
+        "startLine": 4471,
+        "startChar": 5,
+        "endLine": 4471,
+        "endChar": 27
+      },
+      "revId": "5ebab37dddbcd0c3d554cea7604785a835648343",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44bc5b04_b7fd61a0",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 4480,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2022-04-05T15:43:36Z",
+      "side": 1,
+      "message": "nit: extra blank line",
+      "revId": "5ebab37dddbcd0c3d554cea7604785a835648343",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
