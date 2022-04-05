@@ -1,0 +1,112 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44fc8d52_92d8da2f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-04-05T10:26:07Z",
+      "side": 1,
+      "message": "does not get involved",
+      "range": {
+        "startLine": 13,
+        "startChar": 31,
+        "endLine": 13,
+        "endChar": 32
+      },
+      "revId": "f618c376f1392523215d14338483fd5e07b5c1a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "987946cd_2dd97634",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-04-05T10:26:07Z",
+      "side": 1,
+      "message": "and so can\u0027t",
+      "revId": "f618c376f1392523215d14338483fd5e07b5c1a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e921dc6_1b1d4fad",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-04-05T10:26:07Z",
+      "side": 1,
+      "message": "saves",
+      "revId": "f618c376f1392523215d14338483fd5e07b5c1a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49734fca_cb13c170",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-04-05T10:26:07Z",
+      "side": 1,
+      "message": "clears",
+      "revId": "f618c376f1392523215d14338483fd5e07b5c1a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "13e0cacd_641f9075",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-04-05T10:26:07Z",
+      "side": 1,
+      "message": "I like the level of comments, it is well documented.",
+      "revId": "f618c376f1392523215d14338483fd5e07b5c1a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0c6c81c_a5963485",
+        "filename": "zephyr/subsys/ap_pwrseq/power_host_sleep.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-04-05T10:26:07Z",
+      "side": 1,
+      "message": "Prefer to use braces here to match the previous if\u0027s braces.",
+      "revId": "f618c376f1392523215d14338483fd5e07b5c1a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
