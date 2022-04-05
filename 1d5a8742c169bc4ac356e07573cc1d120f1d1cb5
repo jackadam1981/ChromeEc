@@ -34,6 +34,24 @@
       "parentUuid": "c238822d_7d51b009",
       "revId": "1d5a8742c169bc4ac356e07573cc1d120f1d1cb5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0ab8eec_f5532c6d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-04-05T20:48:33Z",
+      "side": 1,
+      "message": "(guess you meant to link to crrev.com/c/3564077) Oh I was thinking about the other way around: configuring them as GPIO rather than PWM since they are only used at either 0 or 100%. Either way, this is just doing the same with one less layer so the whole conversation and changes can happen separately. Thanks for checking it.",
+      "parentUuid": "1113dba2_c6fa0018",
+      "revId": "1d5a8742c169bc4ac356e07573cc1d120f1d1cb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
