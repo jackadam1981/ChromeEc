@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "49e484c3_a301a543",
+        "filename": "zephyr/shim/src/temp_sensors.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-04-05T21:55:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a2f97ee2_206608ea",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 34
+      },
+      "revId": "def016513ceaa5047f384731b1c4c9d8105b3e49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "31c575a0_c905d38c",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-04-05T21:27:08Z",
       "side": 1,
       "message": "I think these `#else` paths can be eliminated by moving the `ANY_INST_HAS_POWER_GOOD_PIN` to the `FILL_POWER_GOOD()` macro.",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 0
+      },
+      "revId": "def016513ceaa5047f384731b1c4c9d8105b3e49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d935d17_2c2ad76b",
+        "filename": "zephyr/shim/src/temp_sensors.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-04-05T21:55:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "31c575a0_c905d38c",
       "range": {
         "startLine": 67,
         "startChar": 0,
