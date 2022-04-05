@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa073432_579a7c8a",
+        "filename": "zephyr/subsys/ap_pwrseq/power_host_sleep.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-04-05T04:28:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "72f805ce_32569a32",
+      "range": {
+        "startLine": 36,
+        "startChar": 40,
+        "endLine": 38,
+        "endChar": 10
+      },
+      "revId": "8e0ba35b7f9474b4b269d2e6e40c64693e13b1fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "665227e2_cff10bf5",
@@ -37,6 +61,24 @@
       "writtenOn": "2022-04-04T16:25:22Z",
       "side": 1,
       "message": "nit: need to print rv value or we can remove it",
+      "revId": "8e0ba35b7f9474b4b269d2e6e40c64693e13b1fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "87ef8ac3_f4d46096",
+        "filename": "zephyr/subsys/ap_pwrseq/power_host_sleep.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-04-05T04:28:25Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "665227e2_cff10bf5",
       "revId": "8e0ba35b7f9474b4b269d2e6e40c64693e13b1fb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
