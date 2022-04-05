@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "360b36c5_d249086b",
+        "filename": "zephyr/shim/include/power_host_sleep.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-04-05T06:54:42Z",
+      "side": 1,
+      "message": "Why can\u0027t we simply include the existing files? The power states in particular already have zephyr versions, don\u0027t they?",
+      "range": {
+        "startLine": 13,
+        "startChar": 3,
+        "endLine": 14,
+        "endChar": 30
+      },
+      "revId": "56240898feb68486b3ae1333e71703d0ee7c5e6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56def9b0_6a15e7f5",
+        "filename": "zephyr/subsys/ap_pwrseq/Kconfig",
+        "patchSetId": 9
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-04-05T06:54:42Z",
+      "side": 1,
+      "message": "The S0IX option selecting this captures the requirement, so I don\u0027t think you need to include it in the help.",
+      "range": {
+        "startLine": 71,
+        "startChar": 30,
+        "endLine": 72,
+        "endChar": 65
+      },
+      "revId": "56240898feb68486b3ae1333e71703d0ee7c5e6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ea626fc_c179baa0",
+        "filename": "zephyr/subsys/ap_pwrseq/Kconfig",
+        "patchSetId": 9
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-04-05T06:54:42Z",
+      "side": 1,
+      "message": "These are new options, so I think you should omit the PLATFORM_EC prefix (it\u0027s used only for legacy features that are shimmed in).",
+      "range": {
+        "startLine": 84,
+        "startChar": 7,
+        "endLine": 84,
+        "endChar": 19
+      },
+      "revId": "56240898feb68486b3ae1333e71703d0ee7c5e6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20845ccc_8a1a279b",
+        "filename": "zephyr/subsys/ap_pwrseq/Kconfig",
+        "patchSetId": 9
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-04-05T06:54:42Z",
+      "side": 1,
+      "message": "As above, since the dependant selects this I don\u0027t think you need to include it in the help.",
+      "range": {
+        "startLine": 87,
+        "startChar": 49,
+        "endLine": 89,
+        "endChar": 35
+      },
+      "revId": "56240898feb68486b3ae1333e71703d0ee7c5e6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
