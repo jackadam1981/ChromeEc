@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "09df4c06_d2c1ba2f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2022-04-05T15:48:09Z",
+      "side": 1,
+      "message": "This is wildly different support than just keeping track of the current power source; we already have PROCHOT# support elsewhere in the code (typically based on inrush current, and not just an arbitrary condition, like AC removal). This part absolutely belongs in a different CL.\n\nI\u0027m still not convinced that this is even necessary, as we already have the `ACEX` ACPI bit to tell you if A/C is present or not, and there is already a host event handler in ACPI for A/C disconnect and connect. We do not have wireless support for Chromebooks as of now, and the barrel-jack connection is (approximately) only for ChromeBoxes/ChromeBases.  What is the purpose of even distinguishing between barrel-jack and Type-C as far as DTT is concerned?\n\nAlso why does the EC need to keep track of the number of power source change events? We could handle that in ACPI with the host event handler, and not bother the EC with that information.",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 41
+      },
+      "revId": "5ebab37dddbcd0c3d554cea7604785a835648343",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ffeeeff0_4da40e0e",
         "filename": "include/ec_commands.h",
         "patchSetId": 2
