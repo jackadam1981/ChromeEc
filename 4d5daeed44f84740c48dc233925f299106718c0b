@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "710b97c4_58010d94",
+        "filename": "zephyr/projects/intelrvp/mtlrvp/prj.conf",
+        "patchSetId": 8
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2022-04-05T17:45:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d3888104_a09a5e56",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 1
+      },
+      "revId": "4d5daeed44f84740c48dc233925f299106718c0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3ca84949_d36e933e",
@@ -54,6 +78,24 @@
       "writtenOn": "2022-04-05T17:39:33Z",
       "side": 1,
       "message": "Remove duplicate blank line",
+      "revId": "4d5daeed44f84740c48dc233925f299106718c0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "efe0ecfa_292e05ca",
+        "filename": "zephyr/projects/intelrvp/mtlrvp/src/mtlrvp.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2022-04-05T17:45:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3ca84949_d36e933e",
       "revId": "4d5daeed44f84740c48dc233925f299106718c0b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
