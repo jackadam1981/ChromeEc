@@ -47,6 +47,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "82cef406_f101ba31",
+        "filename": "test/OWNERS",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-04-05T16:09:44Z",
+      "side": 1,
+      "message": "Some of the tests are not fingerprint-specific (e.g., `cec`), so I left them out. I was a little worried about getting a lot of reviews for those tests. However, looking at the git history, there aren\u0027t many changes, and it\u0027s likely the OWNERS file will get out of sync more easily if we don\u0027t match our test list, so I updated it.",
+      "parentUuid": "e0010f74_55489b14",
+      "range": {
+        "startLine": 2,
+        "startChar": 29,
+        "endLine": 2,
+        "endChar": 220
+      },
+      "revId": "7ee00b028804009497fa9a1a4d5409a35bf63fb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c61cef2_f0b16d32",
+        "filename": "test/OWNERS",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-04-05T16:09:44Z",
+      "side": 1,
+      "message": "See",
+      "parentUuid": "ec6f84cc_b53b67af",
+      "range": {
+        "startLine": 2,
+        "startChar": 0,
+        "endLine": 2,
+        "endChar": 8
+      },
+      "revId": "7ee00b028804009497fa9a1a4d5409a35bf63fb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4c12e913_cdcd6b09",
@@ -84,6 +132,30 @@
       "side": 1,
       "message": "I would assume so. Tom?",
       "parentUuid": "4c12e913_cdcd6b09",
+      "range": {
+        "startLine": 3,
+        "startChar": 33,
+        "endLine": 3,
+        "endChar": 34
+      },
+      "revId": "7ee00b028804009497fa9a1a4d5409a35bf63fb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fcbd2258_3de3a87d",
+        "filename": "test/OWNERS",
+        "patchSetId": 1
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-04-05T16:09:44Z",
+      "side": 1,
+      "message": "Yes",
+      "parentUuid": "89bbeeff_83a7199a",
       "range": {
         "startLine": 3,
         "startChar": 33,
