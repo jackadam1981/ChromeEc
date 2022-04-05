@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef6f63b7_9552711f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2022-04-05T17:17:53Z",
+      "side": 1,
+      "message": "1: rebase on 04/05 - repo sync\n2: cherry pick - CL:3563498\n3: nothing is conflicting, pass all projects build: zmake testall\n4: re-upload\n5: not sure why previous merge (w/o 04/05 rebase) failed",
+      "revId": "431033969a3a8ccf9e0170e6a30a59316e547620",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
