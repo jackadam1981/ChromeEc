@@ -178,6 +178,24 @@
       "parentUuid": "1417721e_c0be2a28",
       "revId": "42d999f9d42c3875386354b6fead89e1768eae16",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "52f0b76b_78ee543d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-04-05T02:56:55Z",
+      "side": 1,
+      "message": "I booted this on a Nereid and it seems to work okay so I guess I\u0027m happy with this given it saves quite a lot of RAM.",
+      "parentUuid": "278ae71c_e493e005",
+      "revId": "42d999f9d42c3875386354b6fead89e1768eae16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
