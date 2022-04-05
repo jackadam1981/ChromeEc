@@ -16,6 +16,46 @@
       "message": "Can we get this reviewed again now that it has been updated to match the upstream code that was merged?",
       "revId": "4d5daeed44f84740c48dc233925f299106718c0b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3888104_a09a5e56",
+        "filename": "zephyr/projects/intelrvp/mtlrvp/prj.conf",
+        "patchSetId": 8
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-04-05T17:39:33Z",
+      "side": 1,
+      "message": "Add space after `#`",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 1
+      },
+      "revId": "4d5daeed44f84740c48dc233925f299106718c0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ca84949_d36e933e",
+        "filename": "zephyr/projects/intelrvp/mtlrvp/src/mtlrvp.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-04-05T17:39:33Z",
+      "side": 1,
+      "message": "Remove duplicate blank line",
+      "revId": "4d5daeed44f84740c48dc233925f299106718c0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
