@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "314bbfe4_01989ceb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-04-05T16:03:39Z",
+      "side": 1,
+      "message": "Just a nit.",
+      "revId": "8872149df3a2dd05f4bdcc7e1bae60366154d9df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e078c5e9_7ac1c4ae",
+        "filename": "zephyr/shim/src/led_driver/led_pwm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-04-05T16:03:39Z",
+      "side": 1,
+      "message": "duty_cycle_in_perct",
+      "range": {
+        "startLine": 47,
+        "startChar": 25,
+        "endLine": 47,
+        "endChar": 44
+      },
+      "revId": "8872149df3a2dd05f4bdcc7e1bae60366154d9df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
