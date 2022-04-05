@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0a5028c9_22edf65a",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-04-05T17:31:01Z",
+      "side": 1,
+      "message": "After writing my comment on like 484 I started wondering if there were a simpler way. Would it be easier if we passed the \"test name\" into the `TestConfig` constructor and saved both `test_name` and `config_name`? I believe if we made that change then we just need to selectively use `test_name` or `config_name` as appropriate below and it should read a bit easier. Thoughts?",
+      "range": {
+        "startLine": 104,
+        "startChar": 8,
+        "endLine": 104,
+        "endChar": 24
+      },
+      "revId": "9c32bdc4faa08e6328da6c25b6bffd81eb271e12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "678efe4c_bcbad6e5",
         "filename": "test/run_device_tests.py",
         "patchSetId": 2
@@ -19,6 +42,53 @@
         "startChar": 53,
         "endLine": 408,
         "endChar": 69
+      },
+      "revId": "9c32bdc4faa08e6328da6c25b6bffd81eb271e12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b63d50e7_20deac98",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 408,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-04-05T17:31:01Z",
+      "side": 1,
+      "message": "Yes, I believe the type will have changed from a list of `TestConfig` to a list of `(key, TestConfig)`.",
+      "parentUuid": "678efe4c_bcbad6e5",
+      "range": {
+        "startLine": 408,
+        "startChar": 53,
+        "endLine": 408,
+        "endChar": 69
+      },
+      "revId": "9c32bdc4faa08e6328da6c25b6bffd81eb271e12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d29cb175_1846a915",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 484,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-04-05T17:31:01Z",
+      "side": 1,
+      "message": "There are two different \"names\" now (the test name that is returned here and `test.name`). I was going to suggest renaming `test.name` to `test.config_name` or something similar but that feels a bit wrong from an OOP standpoint.",
+      "range": {
+        "startLine": 484,
+        "startChar": 8,
+        "endLine": 484,
+        "endChar": 12
       },
       "revId": "9c32bdc4faa08e6328da6c25b6bffd81eb271e12",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
