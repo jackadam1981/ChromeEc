@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c238822d_7d51b009",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-04-05T10:45:05Z",
+      "side": 1,
+      "message": "Hi Parth, working on dropping the named-pwm APIs, put these together for krabby. I think board_led_pwm_set_duty should go in a common module but wanted to be minimally intrusive to the work you are carrying on. Do these looks good to you? Also this is not really using PWM functionality at all, do you know if we could convert them to use the pins in standard GPIO mode?",
+      "revId": "1d5a8742c169bc4ac356e07573cc1d120f1d1cb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
