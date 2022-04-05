@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5c33a1f6_362b2a0a",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-04-05T23:06:52Z",
+      "side": 1,
+      "message": "I was also thinking about this solution and whether it would make the code easier to read and maintain.\n\nIf I understand your proposal, the new `config_name` would be equal to the key used in the dictionary with all the tests, right? If so, the same name would need to be specified twice for each test case that we declare starting at line 126. For example:\n\n```\n    \u0027fpsensor_uart_rw\u0027:\n        TestConfig(test_name\u003d\u0027fpsensor\u0027, test_args\u003d[\u0027uart\u0027],\n        config_name\u003d\u0027fpsensor_uart_rw\u0027)\n```\n\nWith this solution, my concern is that the name used as key for the dictionary and the one passed as argument to the constructor of `TestConfig` are not guaranteed to be the same.\n\nOn the other hand, I like the idea of having both names available inside the `TestConfig` object.\n\nIs there a better way to implement it?\n\nMaybe we can get rid of the dictionary entirely and replace it with a \"simple\" list of `TestConfig` objects. Then we update `get_test_list` to [`filter()`](https://docs.python.org/3/library/functions.html#filter) the elements of the list based on `config_name` instead of using the key of the dictionary?",
+      "parentUuid": "0a5028c9_22edf65a",
+      "range": {
+        "startLine": 104,
+        "startChar": 8,
+        "endLine": 104,
+        "endChar": 24
+      },
+      "revId": "9c32bdc4faa08e6328da6c25b6bffd81eb271e12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "678efe4c_bcbad6e5",
         "filename": "test/run_device_tests.py",
         "patchSetId": 2
