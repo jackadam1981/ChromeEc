@@ -111,6 +111,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "196ffce6_ba3e3ae8",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2813,
+      "author": {
+        "id": 1466877
+      },
+      "writtenOn": "2022-04-05T20:55:49Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d6459fff_56f78731",
+      "range": {
+        "startLine": 2813,
+        "startChar": 23,
+        "endLine": 2813,
+        "endChar": 33
+      },
+      "revId": "3361610e3ca6142465ba9fa948aa9e5d081e5cc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1a1dbe1f_7de3fc90",
@@ -134,6 +158,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "80108001_f7e61bcc",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2879,
+      "author": {
+        "id": 1466877
+      },
+      "writtenOn": "2022-04-05T20:55:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a1dbe1f_7de3fc90",
+      "range": {
+        "startLine": 2856,
+        "startChar": 2,
+        "endLine": 2879,
+        "endChar": 50
+      },
+      "revId": "3361610e3ca6142465ba9fa948aa9e5d081e5cc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9ab73d6d_a5ed7123",
@@ -147,6 +195,30 @@
       "writtenOn": "2022-03-31T21:10:53Z",
       "side": 1,
       "message": "we do want \"entry type\" explicitly printed here (and in human-targeted version below). this allows us to report event types to UMA and monitor if an update brings an increase in certain critical errors.\nso, I\u0027m afraid, we can\u0027t avoid struct \"C\" for event on the f/w side, so it can be paresed here.",
+      "range": {
+        "startLine": 2881,
+        "startChar": 7,
+        "endLine": 2882,
+        "endChar": 32
+      },
+      "revId": "3361610e3ca6142465ba9fa948aa9e5d081e5cc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b828aa34_2375ec04",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2882,
+      "author": {
+        "id": 1466877
+      },
+      "writtenOn": "2022-04-05T20:55:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ab73d6d_a5ed7123",
       "range": {
         "startLine": 2881,
         "startChar": 7,

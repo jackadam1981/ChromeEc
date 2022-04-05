@@ -22,6 +22,30 @@
       },
       "revId": "c56120851ce493d7ff6798e6986b8c0251a0ed28",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c357108_f3bd465c",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 2793,
+      "author": {
+        "id": 1466877
+      },
+      "writtenOn": "2022-04-05T20:55:49Z",
+      "side": 1,
+      "message": "I think I got the indent style right?",
+      "parentUuid": "1e4f9143_5fd30e50",
+      "range": {
+        "startLine": 2793,
+        "startChar": 0,
+        "endLine": 2793,
+        "endChar": 99
+      },
+      "revId": "c56120851ce493d7ff6798e6986b8c0251a0ed28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
