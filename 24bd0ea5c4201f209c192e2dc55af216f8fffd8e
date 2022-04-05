@@ -46,6 +46,30 @@
       },
       "revId": "24bd0ea5c4201f209c192e2dc55af216f8fffd8e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "673ee50b_f64bddf9",
+        "filename": "zephyr/projects/nissa/prj.conf",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-04-05T01:00:32Z",
+      "side": 1,
+      "message": "It looks like ONOFF_STATES doesn\u0027t actually do anything since we don\u0027t have any implementation of led_set_color_{power,battery} to replace the default stubs. However, disabling it gave me the same behavior as if LED control were completely disabled (LED stuck on and white) and turning off PWM only fails to build.",
+      "parentUuid": "d1a74b69_cbe0612f",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 37
+      },
+      "revId": "24bd0ea5c4201f209c192e2dc55af216f8fffd8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
