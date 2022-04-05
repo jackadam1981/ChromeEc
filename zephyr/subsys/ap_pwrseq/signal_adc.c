@@ -6,6 +6,7 @@
 #include <sys/atomic.h>
 #include <logging/log.h>
 
+#include <ap_power/ap_power.h>
 #include <power_signals.h>
 #include <signal_adc.h>
 #include "drivers/sensor.h"
@@ -50,7 +51,7 @@ static void trigger_high(enum pwr_sig_adc adc)
 			SENSOR_CHAN_VOLTAGE,
 			SENSOR_ATTR_ALERT,
 			&val);
-	LOG_DBG("power signal adc%d is HIGH", adc);
+	LOG_INF("power signal adc%d is HIGH", adc);
 	power_signal_interrupt(config[adc].signal, 1);
 }
 
@@ -69,7 +70,7 @@ static void trigger_low(enum pwr_sig_adc adc)
 			SENSOR_CHAN_VOLTAGE,
 			SENSOR_ATTR_ALERT,
 			&val);
-	LOG_DBG("power signal adc%d is LOW", adc);
+	LOG_INF("power signal adc%d is LOW", adc);
 	power_signal_interrupt(config[adc].signal, 0);
 }
 
@@ -104,8 +105,39 @@ DT_FOREACH_STATUS_OKAY_VARGS(MY_COMPAT, ADC_CB_DEFINE, low)
 
 #define ADC_CB_COMMA(id, lev)	ADC_CB(id, lev),
 
+static void power_signal_adc_power_change(struct ap_power_ev_callback *cb,
+					  struct ap_power_ev_data data)
+{
+	const struct device *adc_dev;
+	struct sensor_value val;
+	int i;
+
+	switch (data.event) {
+	case AP_POWER_RESUME:
+		val.val1 = true;
+		break;
+
+	case AP_POWER_S0IX:
+		val.val1 = false;
+		break;
+	default:
+		return;
+	}
+
+	for (i = 0; i < ARRAY_SIZE(config); i++) {
+		adc_dev = !!value[i] ? config[i].dev_trig_low :
+			config[i].dev_trig_high;
+		sensor_attr_set(adc_dev, SENSOR_CHAN_VOLTAGE,
+				SENSOR_ATTR_ALERT,
+				&val);
+		LOG_INF("adc%d trig-%s %sable", i, !!value[i] ? "low" : "high",
+			val.val1 ? "en" : "dis");
+	}
+}
+
 void power_signal_adc_init(void)
 {
+	static struct ap_power_ev_callback cb;
 	struct sensor_trigger trig = {
 		.type = SENSOR_TRIG_THRESHOLD,
 		.chan = SENSOR_CHAN_VOLTAGE
@@ -118,6 +150,10 @@ void power_signal_adc_init(void)
 		DT_FOREACH_STATUS_OKAY_VARGS(MY_COMPAT, ADC_CB_COMMA, high)
 	};
 	int i;
+
+	ap_power_ev_init_callback(&cb, power_signal_adc_power_change,
+				  AP_POWER_S0IX | AP_POWER_RESUME);
+	ap_power_ev_add_callback(&cb);
 
 	for (i = 0; i < ARRAY_SIZE(low_cb); i++) {
 		/* Set high and low trigger callbacks */

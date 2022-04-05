@@ -87,6 +87,9 @@ enum ap_power_events {
 	AP_POWER_HARD_OFF = BIT(8),
 	/** Software reset occurred */
 	AP_POWER_RESET = BIT(9),
+
+	/* S0is Specific state */
+	AP_POWER_S0IX = BIT(10),
 };
 
 /**

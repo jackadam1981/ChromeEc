@@ -146,6 +146,7 @@ void ap_power_sleep_notify_transition(enum ap_power_sleep_type check_state)
 		 * clear mask before others running suspend.
 		 */
 		power_s0ix_suspend_clear_masks();
+		ap_power_ev_send_callbacks(AP_POWER_S0IX);
 		ap_power_ev_send_callbacks(AP_POWER_SUSPEND);
 	} else if (check_state == AP_POWER_SLEEP_RESUME)
 		ap_power_ev_send_callbacks(AP_POWER_RESUME);
