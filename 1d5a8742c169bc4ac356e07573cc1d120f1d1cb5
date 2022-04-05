@@ -16,6 +16,24 @@
       "message": "Hi Parth, working on dropping the named-pwm APIs, put these together for krabby. I think board_led_pwm_set_duty should go in a common module but wanted to be minimally intrusive to the work you are carrying on. Do these looks good to you? Also this is not really using PWM functionality at all, do you know if we could convert them to use the pins in standard GPIO mode?",
       "revId": "1d5a8742c169bc4ac356e07573cc1d120f1d1cb5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1113dba2_c6fa0018",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1513493
+      },
+      "writtenOn": "2022-04-05T17:58:40Z",
+      "side": 1,
+      "message": "Hi Fabio, this looks good, we can eventually move to common layer once my implementation is up. It is possible to configure the pins as GPIOs. Please take a look at this file for Lazor where I am configuring pins to be PWM channels instead of GPIO. (just to test my PWM code) https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3569765/comments/c238822d_7d51b009",
+      "parentUuid": "c238822d_7d51b009",
+      "revId": "1d5a8742c169bc4ac356e07573cc1d120f1d1cb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
