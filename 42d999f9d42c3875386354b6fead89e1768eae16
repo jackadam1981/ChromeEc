@@ -196,6 +196,24 @@
       "parentUuid": "278ae71c_e493e005",
       "revId": "42d999f9d42c3875386354b6fead89e1768eae16",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "376d086b_5289adc7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-04-05T10:50:51Z",
+      "side": 1,
+      "message": "Cool, thanks for the time invested into testing this, I\u0027ll look into porting some of the overrides you did for the platform at project level, long term we definitely want logging enabled for other drivers as well.",
+      "parentUuid": "52f0b76b_78ee543d",
+      "revId": "42d999f9d42c3875386354b6fead89e1768eae16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
