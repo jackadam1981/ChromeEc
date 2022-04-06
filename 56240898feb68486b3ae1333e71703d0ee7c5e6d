@@ -216,6 +216,40 @@
       },
       "revId": "56240898feb68486b3ae1333e71703d0ee7c5e6d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af722add_57479550",
+        "filename": "zephyr/subsys/ap_pwrseq/power_host_sleep.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-04-06T00:53:35Z",
+      "side": 1,
+      "message": "Perhaps add an assertion here, since we don\u0027t expect work scheduling errors to happen unless there\u0027s a bug.",
+      "revId": "56240898feb68486b3ae1333e71703d0ee7c5e6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca927a62_e4293ff9",
+        "filename": "zephyr/subsys/ap_pwrseq/power_host_sleep.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-04-06T00:53:35Z",
+      "side": 1,
+      "message": "Any reason this can\u0027t be implemented right now?",
+      "revId": "56240898feb68486b3ae1333e71703d0ee7c5e6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
