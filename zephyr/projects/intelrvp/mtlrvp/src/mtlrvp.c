@@ -10,9 +10,175 @@
 #include "intelrvp.h"
 #include "intel_rvp_board_id.h"
 #include "power/meteorlake.h"
+#include "battery_fuel_gauge.h"
+#include "charger.h"
+#include "battery.h"
+#include "bq25710.h"
+#include "driver/retimer/bb_retimer_public.h"
+#include "driver/tcpm/nct38xx.h"
+#include "extpower.h"
+#include "hooks.h"
+#include "ioexpander.h"
+#include "isl9241.h"
+#include "sn5s330.h"
+#include "system.h"
+#include "task.h"
+#include "tusb1064.h"
+#include "usb_mux.h"
+#include "usbc_ppc.h"
+#include "util.h"
 
 #define CPRINTF(format, args...) cprintf(CC_COMMAND, format, ## args)
 #define CPRINTS(format, args...) cprints(CC_COMMAND, format, ## args)
+
+/*******************************************************************/
+/* USB-C Configuration Start */
+
+/* PPC */
+#define I2C_ADDR_SN5S330_P0 0x40
+#define I2C_ADDR_SN5S330_P1 0x41
+
+/* Connector side BB retimers */
+#define I2C_PORT0_HBR_ADDR	0x56
+#if defined(HAS_TASK_PD_C1)
+#define I2C_PORT1_HBR_ADDR	0x57
+#endif
+#if defined(HAS_TASK_PD_C2)
+#define I2C_PORT2_HBR_ADDR	0x58
+#endif
+#if defined(HAS_TASK_PD_C3)
+#define I2C_PORT3_HBR_ADDR	0x59
+#endif
+
+
+/* USB-C ports */
+enum usbc_port {
+	USBC_PORT_C0 = 0,
+	USBC_PORT_C1,
+	USBC_PORT_COUNT
+};
+BUILD_ASSERT(USBC_PORT_COUNT == CONFIG_USB_PD_PORT_MAX_COUNT);
+
+/* USB-C PPC configuration */
+struct ppc_config_t ppc_chips[] = {
+	[USBC_PORT_C0] = {
+		.i2c_port = I2C_PORT_TYPEC_AIC_1,
+		.i2c_addr_flags = I2C_ADDR_SN5S330_P0,
+		.drv = &sn5s330_drv,
+	},
+	[USBC_PORT_C1] = {
+		.i2c_port = I2C_PORT_TYPEC_AIC_1,
+		.i2c_addr_flags = I2C_ADDR_SN5S330_P1,
+		.drv = &sn5s330_drv,
+	},
+};
+BUILD_ASSERT(ARRAY_SIZE(ppc_chips) == CONFIG_USB_PD_PORT_MAX_COUNT);
+unsigned int ppc_cnt = ARRAY_SIZE(ppc_chips);
+
+const struct tcpc_config_t tcpc_config[] = {
+	[USBC_PORT_C0] = {
+		.bus_type = EC_BUS_TYPE_I2C,
+		.i2c_info = {
+			.port = I2C_PORT_TYPEC_AIC_1,
+			.addr_flags = NCT38XX_I2C_ADDR1_1_FLAGS,
+		},
+		.drv = &nct38xx_tcpm_drv,
+		.flags = TCPC_FLAGS_TCPCI_REV2_0,
+	},
+	[USBC_PORT_C1] = {
+		.bus_type = EC_BUS_TYPE_I2C,
+		.i2c_info = {
+			.port = I2C_PORT_TYPEC_AIC_1,
+			.addr_flags = NCT38XX_I2C_ADDR1_2_FLAGS,
+		},
+		.drv = &nct38xx_tcpm_drv,
+		.flags = TCPC_FLAGS_TCPCI_REV2_0,
+	},
+};
+
+struct charger_config_t chg_chips[] = {
+	{
+		.i2c_port = I2C_PORT_CHARGER,
+		.i2c_addr_flags = ISL9241_ADDR_FLAGS,
+		.drv = &isl9241_drv,
+	}
+};
+
+/* USB-C retimer Configuration */
+struct usb_mux usbc0_tcss_usb_mux = {
+	.usb_port = USBC_PORT_C0,
+	.driver = &virtual_usb_mux_driver,
+	.hpd_update = &virtual_hpd_update,
+};
+#if defined(HAS_TASK_PD_C1)
+struct usb_mux usbc1_tcss_usb_mux = {
+	.usb_port = USBC_PORT_C1,
+	.driver = &virtual_usb_mux_driver,
+	.hpd_update = &virtual_hpd_update,
+};
+#endif
+#if defined(HAS_TASK_PD_C2)
+struct usb_mux usbc2_tcss_usb_mux = {
+	.usb_port = TYPE_C_PORT_2,
+	.driver = &virtual_usb_mux_driver,
+	.hpd_update = &virtual_hpd_update,
+};
+#endif
+#if defined(HAS_TASK_PD_C3)
+struct usb_mux usbc3_tcss_usb_mux = {
+	.usb_port = TYPE_C_PORT_3,
+	.driver = &virtual_usb_mux_driver,
+	.hpd_update = &virtual_hpd_update,
+};
+#endif
+
+/* USB muxes Configuration */
+struct usb_mux usb_muxes[] = {
+	[USBC_PORT_C0] = {
+		.usb_port = USBC_PORT_C0,
+		.next_mux = &usbc0_tcss_usb_mux,
+		.driver = &bb_usb_retimer,
+		.hpd_update = bb_retimer_hpd_update,
+		.i2c_port = I2C_PORT_TYPEC_AIC_1,
+		.i2c_addr_flags = I2C_PORT0_HBR_ADDR,
+	},
+#if defined(HAS_TASK_PD_C1)
+	[USBC_PORT_C1] = {
+		.usb_port = USBC_PORT_C1,
+		.next_mux = &usbc1_tcss_usb_mux,
+		.driver = &bb_usb_retimer,
+		.hpd_update = bb_retimer_hpd_update,
+		.i2c_port = I2C_PORT_TYPEC_AIC_1,
+		.i2c_addr_flags = I2C_PORT1_HBR_ADDR,
+	},
+#endif
+#if defined(HAS_TASK_PD_C2)
+	[TYPE_C_PORT_2] = {
+		.usb_port = TYPE_C_PORT_2,
+		.next_mux = &usbc2_tcss_usb_mux,
+		.driver = &bb_usb_retimer,
+		.hpd_update = bb_retimer_hpd_update,
+		.i2c_port = I2C_PORT_TYPEC_AIC2,
+		.i2c_addr_flags = I2C_PORT2_HBR_ADDR,
+	},
+#endif
+#if defined(HAS_TASK_PD_C3)
+	[TYPE_C_PORT_3] = {
+		.usb_port = TYPE_C_PORT_3,
+		.next_mux = &usbc3_tcss_usb_mux,
+		.driver = &bb_usb_retimer,
+		.hpd_update = bb_retimer_hpd_update,
+		.i2c_port = I2C_PORT_TYPEC_AIC2,
+		.i2c_addr_flags = I2C_PORT3_HBR_ADDR,
+	},
+#endif
+};
+BUILD_ASSERT(ARRAY_SIZE(usb_muxes) == CONFIG_USB_PD_PORT_MAX_COUNT);
+
+void board_reset_pd_mcu(void)
+{
+}
+
 
 /******************************************************************************/
 /* PWROK signal configuration */
