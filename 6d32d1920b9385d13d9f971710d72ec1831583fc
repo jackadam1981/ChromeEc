@@ -16,6 +16,24 @@
       "message": "I\u0027ve rebased this and updated for ITE vcmp support as landed upstream (https://crrev.com/c/3554285), but it doesn\u0027t currently build because the driver doesn\u0027t work correctly when multiple vcmp channels are used; https://issuetracker.google.com/227250926 is tracking that issue.",
       "revId": "6d32d1920b9385d13d9f971710d72ec1831583fc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e7ce4c7_fe0e2a67",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-04-06T01:18:34Z",
+      "side": 1,
+      "message": "vcmp fix was landed, I\u0027ve rebased this and verified Nereid boots with this patch.",
+      "parentUuid": "6bf8b658_223dc052",
+      "revId": "6d32d1920b9385d13d9f971710d72ec1831583fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
