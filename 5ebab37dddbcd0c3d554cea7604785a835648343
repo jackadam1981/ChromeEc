@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7154e444_47498853",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2022-04-06T19:36:07Z",
+      "side": 1,
+      "message": "There is PROCHOT support for low battery volt and over current scenarios , when configs - CONFIG_THROTTLE_AP_ON_BAT_DISCHG_CURRENT \u0026 CONFIG_THROTTLE_AP_ON_BAT_VOLTAGE are enabled ((common/charge_state_v2.c - line: 1285 \u0026 1315). But, at present these configs seemed to be enabled only for scarlet. Incase, if we enable these configs for brya, along with volt level \u0026 current thresholds, we will have to increment of sequence number at these places along with sending of sci event to indicate to AP to read the memap regions for PSRC, ARTG, PROP etc. But, again sending of sci event may get repeated again at AC /connect or disconnect evnt as well. Also, default timing of 60 sec for prochot clearing may have to get changed to 2sec to meet the Power boss policy as per doc - 626708.\n Also, if we reuse the  sci event just at AC connect or disconnct, we may have to add the psrc  updation in  common/extpower_common.c \n in the handler directly as USBC, based on jst AC connectn \u0026 Disconnection , which is not ideally correct , as AC  power source  is  either\n USBC type or DC for brya, while AC type may differ for other platforms. Also, as AC barrel jack is supported in RVPs \u0026 Chromebases, DTT functionality at kernel \n side may get extended for them in future and extending them inside AC connct or disconnct handler may not be correct approach.\nAS anyways CONFIG_THROTTLE_AP_ON_BAT_VOLTAGE \u0026 CONFIG_THROTTLE_AP_ON_BAT_DISCHG_CURRENT is not enabled for brya, why not add the DTT support as general in a separate file itself as in this CL? . Also, wouldn\u0027t extending the feature for Wireless charger and barrel jack would be easier, if under this file seperately, as a different module? \n Also , As per doc(626708), on Ac removal \u0026 on condition of low battery charge level, proc hot must be asserted and deassertion is expected within 2sec(sec 8.1.10 ).Also, the sequence number, which is incremented along with prochot assertion ,helps to ensure that the prochot, that is cleared at EC is same as that is got just processed at kernel level.\n Also, note that, here we havent used host command for PBOK processing but used ACPI method (next cl).Sci event with pd source change is just acting as an indication to CB for reading corresponding power source, sequence number, artg etc.",
+      "parentUuid": "2790bd69_808ac6ff",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 41
+      },
+      "revId": "5ebab37dddbcd0c3d554cea7604785a835648343",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ffeeeff0_4da40e0e",
         "filename": "include/ec_commands.h",
         "patchSetId": 2
