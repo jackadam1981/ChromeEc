@@ -71,6 +71,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7315199_c10ec44d",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-04-06T18:00:18Z",
+      "side": 1,
+      "message": "I verified the patch using the steps below and it worked great.\n\nDone",
+      "parentUuid": "79fabb8b_b8e164c9",
+      "revId": "1f6dfa04c5df0bf030f25bf5f162586bcf5583e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "69b54adb_df9e6b68",
@@ -160,6 +178,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d6265ef_c6bbbc61",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 472,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-04-06T18:00:18Z",
+      "side": 1,
+      "message": "In theory, it should be enough to set the type to `parse_remote_arg` (maybe renaming the function):\n\n```\n    parser.add_argument(\n        \u0027--remote\u0027, \u0027-n\u0027,\n        help\u003d\u0027The remote host connected to one or both of: J-Link and Servo.\u0027,\n        type\u003dparse_remote_arg\n```\n\nthen we can omit line 536 and use directly `args.remote`. Either way, I agree it might not substantially improve readability in this case. Feel free to experiment with that, but I am going to mark it as Resolved to unblock the patch.",
+      "parentUuid": "e257d208_dc747a9f",
+      "revId": "1f6dfa04c5df0bf030f25bf5f162586bcf5583e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8a64203e_1fbeb7dd",
@@ -221,6 +257,30 @@
       "side": 1,
       "message": "I can\u0027t remember how I ended up using port `2551` (I always specify it when running `JLinkRemoteServerCLExe`), but let\u0027s change it to `19020`, which is the default port: https://crrev.com/c/3055111.",
       "parentUuid": "a6709903_8cef6da9",
+      "range": {
+        "startLine": 477,
+        "startChar": 32,
+        "endLine": 477,
+        "endChar": 36
+      },
+      "revId": "1f6dfa04c5df0bf030f25bf5f162586bcf5583e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2220fde_0f84370a",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 477,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-04-06T18:00:18Z",
+      "side": 1,
+      "message": "Sounds good! I agree that",
+      "parentUuid": "9fd314df_447fadf1",
       "range": {
         "startLine": 477,
         "startChar": 32,
