@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c857c82_ee255c30",
+        "filename": "zephyr/projects/brya/BUILD.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2022-04-06T15:37:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7f47a9a5_faec9ac6",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 0
+      },
+      "revId": "fa61e45ee950aab628c9e09a20d52832b451a343",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3578931d_57190ebd",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-04-05T22:05:34Z",
       "side": 1,
       "message": "This duplicates the Zephyr board boards/arm/npcx9/npcx9_defconfig and isn\u0027t needed here.\n\nPlease add some help text:\nBuild Google Byra reference board. The board uses the Nuvoton NPCX9 chip as the EC.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 0
+      },
+      "revId": "fa61e45ee950aab628c9e09a20d52832b451a343",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba8116a6_c2e326e5",
+        "filename": "zephyr/projects/brya/Kconfig",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2022-04-06T15:37:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3578931d_57190ebd",
       "range": {
         "startLine": 7,
         "startChar": 0,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "135e1668_cee974e3",
+        "filename": "zephyr/projects/brya/brya.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2022-04-06T15:37:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0d5ed2ac_259064d4",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 39
+      },
+      "revId": "fa61e45ee950aab628c9e09a20d52832b451a343",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "65dbca5b_281cbbd2",
@@ -100,6 +172,30 @@
       "writtenOn": "2022-04-05T22:05:34Z",
       "side": 1,
       "message": "This is also specified by the npcx9 board overlay.",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 2
+      },
+      "revId": "fa61e45ee950aab628c9e09a20d52832b451a343",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8402a25c_29d83dd7",
+        "filename": "zephyr/projects/brya/brya.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2022-04-06T15:37:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "65dbca5b_281cbbd2",
       "range": {
         "startLine": 25,
         "startChar": 0,
@@ -133,6 +229,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "91d2047c_8010a79f",
+        "filename": "zephyr/projects/brya/i2c.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2022-04-06T15:37:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8e581497_60a70457",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 0
+      },
+      "revId": "fa61e45ee950aab628c9e09a20d52832b451a343",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "90c6962f_0ce1e84d",
@@ -146,6 +266,30 @@
       "writtenOn": "2022-04-05T22:05:34Z",
       "side": 1,
       "message": "CL:3572886 will land before this change. You\u0027ll need to add the \"cros-ec,temp-sensor\" compatible flag to each temperature sensor to be compatible with that change.",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 49
+      },
+      "revId": "fa61e45ee950aab628c9e09a20d52832b451a343",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c0e8b30_17d7b119",
+        "filename": "zephyr/projects/brya/temp_sensors.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2022-04-06T15:37:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "90c6962f_0ce1e84d",
       "range": {
         "startLine": 11,
         "startChar": 0,
