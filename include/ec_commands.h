@@ -4716,6 +4716,39 @@ struct ec_params_dedicated_charger_limit {
 	uint16_t voltage_lim; /* in mV */
 } __ec_align2;
 
+/*
+ * Get and set charging splashscreen variables
+ */
+#define EC_CMD_CHARGESPLASH 0x00A4
+
+enum ec_chargesplash_cmd {
+	/* Get the current state variables */
+	EC_CHARGESPLASH_GET_STATE = 0,
+
+	/* Indicate initialization of the display loop */
+	EC_CHARGESPLASH_INIT_DISPLAY,
+
+	/* Manually put the EC into the requested state */
+	EC_CHARGESPLASH_REQUEST,
+
+	/* Reset all state variables */
+	EC_CHARGESPLASH_RESET,
+
+	/* Manually trigger a lockout */
+	EC_CHARGESPLASH_LOCKOUT,
+};
+
+struct __ec_align1 ec_params_chargesplash {
+	/* enum ec_chargesplash_cmd */
+	uint8_t cmd;
+};
+
+struct __ec_align1 ec_response_chargesplash {
+	uint8_t requested;
+	uint8_t tries;
+	uint8_t max_tries;
+};
+
 /*****************************************************************************/
 /* Hibernate/Deep Sleep Commands */
 
@@ -6127,6 +6160,8 @@ enum chipset_shutdown_reason {
 	CHIPSET_SHUTDOWN_THERMAL,
 	/* Force a chipset shutdown from the power button through EC */
 	CHIPSET_SHUTDOWN_BUTTON,
+	/* AC was disconnected during a chargesplash request */
+	CHIPSET_SHUTDOWN_CHARGESPLASH_CANCEL,
 
 	CHIPSET_SHUTDOWN_COUNT, /* End of shutdown reasons. */
 };
