@@ -77,5 +77,27 @@
 				value = <1>;
 			};
 		};
+
+		/*
+		 * FW_CONFIG field to select I2C voltage on sub-board
+		 * type C USB port. Only relevant for nivviks and nirwen,
+		 * reserved here so that nereid does not reuse the field.
+		 */
+		i2c-sb-voltage {
+			enum-name = "FW_I2C_VOLTAGE";
+			start = <4>;
+			size = <1>;
+
+			v33 {
+				compatible = "cros-ec,cbi-fw-config-value";
+				enum-name = "FW_I2C_SB_33V";
+				value = <0>;
+			};
+			v18 {
+				compatible = "cros-ec,cbi-fw-config-value";
+				enum-name = "FW_I2C_SB_18V";
+				value = <1>;
+			};
+		};
 	};
 };
