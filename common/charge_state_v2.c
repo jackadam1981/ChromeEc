@@ -201,10 +201,16 @@ void reset_prev_disp_charge(void)
 	prev_disp_charge = -1;
 }
 
+static bool battery_sustainer_enabled(void)
+{
+	return sustain_soc.lower != -1 && sustain_soc.upper != -1;
+}
+
 static int battery_sustainer_set(int8_t lower, int8_t upper)
 {
 	if (lower == -1 || upper == -1) {
-		CPRINTS("Sustain mode disabled");
+		if (battery_sustainer_enabled())
+			CPRINTS("Sustainer disabled");
 		sustain_soc.lower = -1;
 		sustain_soc.upper = -1;
 		return EC_SUCCESS;
@@ -214,6 +220,8 @@ static int battery_sustainer_set(int8_t lower, int8_t upper)
 		/* Currently sustainer requires discharge_on_ac. */
 		if (!IS_ENABLED(CONFIG_CHARGER_DISCHARGE_ON_AC))
 			return EC_RES_UNAVAILABLE;
+		if (!battery_sustainer_enabled())
+			CPRINTS("Sustainer enabled");
 		sustain_soc.lower = lower;
 		sustain_soc.upper = upper;
 		return EC_SUCCESS;
@@ -226,11 +234,6 @@ static int battery_sustainer_set(int8_t lower, int8_t upper)
 static void battery_sustainer_disable(void)
 {
 	battery_sustainer_set(-1, -1);
-}
-
-static bool battery_sustainer_enabled(void)
-{
-	return sustain_soc.lower != -1 && sustain_soc.upper != -1;
 }
 
 #ifdef CONFIG_EC_EC_COMM_BATTERY_CLIENT
@@ -2466,17 +2469,12 @@ charge_command_charge_control(struct host_cmd_handler_args *args)
 
 	if (args->version >= 2) {
 		if (p->cmd == EC_CHARGE_CONTROL_CMD_SET) {
-			if (p->mode == CHARGE_CONTROL_NORMAL) {
-				rv = battery_sustainer_set(
-						p->sustain_soc.lower,
-						p->sustain_soc.upper);
-				if (rv == EC_RES_UNAVAILABLE)
-					return EC_RES_UNAVAILABLE;
-				if (rv)
-					return EC_RES_INVALID_PARAM;
-			} else {
-				battery_sustainer_disable();
-			}
+			rv = battery_sustainer_set(p->sustain_soc.lower,
+						   p->sustain_soc.upper);
+			if (rv == EC_RES_UNAVAILABLE)
+				return EC_RES_UNAVAILABLE;
+			if (rv)
+				return EC_RES_INVALID_PARAM;
 		} else if (p->cmd == EC_CHARGE_CONTROL_CMD_GET) {
 			r->mode = get_chg_ctrl_mode();
 			r->sustain_soc.lower = sustain_soc.lower;
