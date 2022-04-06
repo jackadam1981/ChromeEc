@@ -49,3 +49,8 @@ int cmd_i2c_read(int argc, char *argv[]);
 int cmd_i2c_speed(int argc, char *argv[]);
 int cmd_i2c_write(int argc, char *argv[]);
 int cmd_i2c_xfer(int argc, char *argv[]);
+
+/**
+ * cmd_chargesplash() - Draw the chargesplash UI
+ */
+int cmd_chargesplash(int argc, char **argv);

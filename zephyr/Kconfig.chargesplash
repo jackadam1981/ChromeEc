@@ -1,0 +1,27 @@
+# Copyright 2022 The Chromium OS Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+menuconfig PLATFORM_EC_CHARGESPLASH
+	bool "Charging splashscreen support"
+	depends on PLATFORM_EC_CHARGER
+	help
+	  Enable visual charging indicator to display on-screen when
+	  AC is initially connected.
+
+if PLATFORM_EC_CHARGESPLASH
+
+config PLATFORM_EC_CHARGESPLASH_BOOT_MAX_TRIES
+	int "Max boot tries"
+	default 5
+	help
+	  A charger which is connecting and disconnecting frequently
+	  can indicate damage to the charger or port.  If the charger
+	  disconnects too frequently when booting to the charging
+	  splash, it could indicate this condition, and the
+	  chargesplash feature will lockout until the next EC reset.
+
+	  Set this value to the number of boot failures by AC
+	  disconnection that should trigger the lockout.
+
+endif  # PLATFORM_EC_CHARGESPLASH

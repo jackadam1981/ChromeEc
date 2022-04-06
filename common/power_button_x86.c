@@ -473,6 +473,13 @@ static void powerbtn_x86_lid_change(void)
 DECLARE_HOOK(HOOK_LID_CHANGE, powerbtn_x86_lid_change, HOOK_PRIO_DEFAULT);
 #endif
 
+void chipset_power_on(void)
+{
+	if (chipset_in_state(CHIPSET_STATE_ANY_OFF) &&
+	    pwrbtn_state != PWRBTN_STATE_INIT_ON)
+		power_button_pch_pulse();
+}
+
 /**
  * Handle debounced power button changing state.
  */

@@ -99,6 +99,8 @@ const char help_str[] =
 	"      Force the battery to stop charging or discharge\n"
 	"  chargeoverride\n"
 	"      Overrides charge port selection logic\n"
+	"  chargesplash\n"
+	"      Show the charging UI\n"
 	"  chargestate\n"
 	"      Handle commands related to charge state v2 (and later)\n"
 	"  chipinfo\n"
@@ -1006,6 +1008,7 @@ static const char *reset_cause_to_str(uint16_t cause)
 		"shutdown: entering G3",
 		"shutdown: thermal",
 		"shutdown: power button",
+		"shutdown: cancel chargesplash request",
 	};
 	BUILD_ASSERT(ARRAY_SIZE(shutdown_causes) ==
 		     CHIPSET_SHUTDOWN_COUNT - CHIPSET_SHUTDOWN_BEGIN);
@@ -10665,6 +10668,7 @@ const struct command commands[] = {
 	{"chargecurrentlimit", cmd_charge_current_limit},
 	{"chargecontrol", cmd_charge_control},
 	{"chargeoverride", cmd_charge_port_override},
+	{"chargesplash", cmd_chargesplash},
 	{"chargestate", cmd_charge_state},
 	{"chipinfo", cmd_chipinfo},
 	{"cmdversions", cmd_cmdversions},

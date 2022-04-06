@@ -4673,6 +4673,7 @@ struct ec_response_charge_state {
 			int chg_current;
 			int chg_input_current;
 			int batt_state_of_charge;
+			int boot_for_chargesplash;	/* Supported by v2 */
 		} get_state;
 
 		struct __ec_align4 {
@@ -6127,6 +6128,8 @@ enum chipset_shutdown_reason {
 	CHIPSET_SHUTDOWN_THERMAL,
 	/* Force a chipset shutdown from the power button through EC */
 	CHIPSET_SHUTDOWN_BUTTON,
+	/* AC was disconnected during a chargesplash request */
+	CHIPSET_SHUTDOWN_CHARGESPLASH_CANCEL,
 
 	CHIPSET_SHUTDOWN_COUNT, /* End of shutdown reasons. */
 };
