@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad8bd598_ce49f857",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2022-04-06T22:17:26Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "3fb306fb_9d71b903",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 21
+      },
+      "revId": "f40d985e83561e6689b93464b1d6803a3a4697d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c31863e8_bab00065",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-04-06T21:49:48Z",
       "side": 1,
       "message": "This is missing a semi-colon and causing the build failure. Please make sure you run the tests you list in the commit message with each patch set.",
+      "range": {
+        "startLine": 306,
+        "startChar": 0,
+        "endLine": 306,
+        "endChar": 2
+      },
+      "revId": "f40d985e83561e6689b93464b1d6803a3a4697d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e973774b_9d87e38f",
+        "filename": "zephyr/projects/brya/gpio.dts",
+        "patchSetId": 6
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2022-04-06T22:17:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c31863e8_bab00065",
       "range": {
         "startLine": 306,
         "startChar": 0,
