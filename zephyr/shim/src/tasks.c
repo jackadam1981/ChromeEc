@@ -64,6 +64,12 @@ struct task_ctx_data {
 	struct k_timer timer;
 };
 
+struct sysworkq_ctx_data {
+	struct k_poll_signal new_event;
+	atomic_t event_mask;
+	struct k_timer timer;
+};
+
 #define CROS_EC_TASK(_name, _entry, _parameter, _size)                 \
 	{                                                              \
 		.entry = _entry,                                       \
@@ -74,7 +80,6 @@ struct task_ctx_data {
 	},
 #define TASK_TEST(_name, _entry, _parameter, _size) \
 	CROS_EC_TASK(_name, _entry, _parameter, _size)
-/* Note: no static entry is required for sysworkq, as it isn't started here */
 const static struct task_ctx_cfg shimmed_tasks_cfg[TASK_ID_COUNT] = {
 	CROS_EC_TASK_LIST
 #ifdef TEST_BUILD
@@ -82,8 +87,8 @@ const static struct task_ctx_cfg shimmed_tasks_cfg[TASK_ID_COUNT] = {
 #endif
 };
 
-/* In tasks data, allocate one extra spot for the sysworkq */
-static struct task_ctx_data shimmed_tasks_data[TASK_ID_COUNT + 1];
+static struct task_ctx_data shimmed_tasks_data[TASK_ID_COUNT];
+static struct sysworkq_ctx_data sysworkq_task_data;
 
 #define TASK_ID_SYSWORKQ TASK_ID_COUNT
 
@@ -93,10 +98,13 @@ static int tasks_started;
 
 task_id_t task_get_current(void)
 {
-	/* Include sysworkq entry in search for the task ID */
-	for (size_t i = 0; i < TASK_ID_COUNT + 1; ++i) {
+	for (size_t i = 0; i < TASK_ID_COUNT; ++i) {
 		if (shimmed_tasks_data[i].zephyr_tid == k_current_get())
 			return i;
+	}
+
+	if (in_deferred_context()) {
+		return TASK_ID_SYSWORKQ;
 	}
 
 	__ASSERT(false, "Task index out of bound");
@@ -110,14 +118,28 @@ __test_only k_tid_t task_get_zephyr_tid(size_t cros_tid)
 
 atomic_t *task_get_event_bitmap(task_id_t cros_task_id)
 {
-	struct task_ctx_data *const data = &shimmed_tasks_data[cros_task_id];
+	struct task_ctx_data *data;
+
+	if (cros_task_id == TASK_ID_SYSWORKQ) {
+		return &sysworkq_task_data.event_mask;
+	}
+
+	data = &shimmed_tasks_data[cros_task_id];
 
 	return &data->event_mask;
 }
 
 uint32_t task_set_event(task_id_t cros_task_id, uint32_t event)
 {
-	struct task_ctx_data *const data = &shimmed_tasks_data[cros_task_id];
+	struct task_ctx_data *data;
+
+	if (cros_task_id == TASK_ID_SYSWORKQ) {
+		atomic_or(&sysworkq_task_data.event_mask, event);
+		k_poll_signal_raise(&sysworkq_task_data.new_event, 0);
+		return 0;
+	}
+
+	data = &shimmed_tasks_data[cros_task_id];
 
 	atomic_or(&data->event_mask, event);
 	k_poll_signal_raise(&data->new_event, 0);
@@ -127,8 +149,19 @@ uint32_t task_set_event(task_id_t cros_task_id, uint32_t event)
 
 uint32_t task_wait_event(int timeout_us)
 {
-	struct task_ctx_data *const data =
-		&shimmed_tasks_data[task_get_current()];
+	struct k_poll_signal *new_event;
+	atomic_t *task_event_mask;
+
+	if (task_get_current() == TASK_ID_SYSWORKQ) {
+		new_event = &sysworkq_task_data.new_event;
+		task_event_mask = &sysworkq_task_data.event_mask;
+	} else {
+		struct task_ctx_data *const data =
+			&shimmed_tasks_data[task_get_current()];
+		new_event = &data->new_event;
+		task_event_mask = &data->event_mask;
+	}
+
 	const k_timeout_t timeout = (timeout_us == -1) ? K_FOREVER :
 							 K_USEC(timeout_us);
 	const int64_t tick_deadline =
@@ -137,14 +170,14 @@ uint32_t task_wait_event(int timeout_us)
 	struct k_poll_event poll_events[1] = {
 		K_POLL_EVENT_INITIALIZER(K_POLL_TYPE_SIGNAL,
 					 K_POLL_MODE_NOTIFY_ONLY,
-					 &data->new_event),
+					 new_event),
 	};
 
 	/* Wait for signal, then clear it before reading events */
 	const int rv = k_poll(poll_events, ARRAY_SIZE(poll_events), timeout);
 
-	k_poll_signal_reset(&data->new_event);
-	uint32_t events = atomic_set(&data->event_mask, 0);
+	k_poll_signal_reset(new_event);
+	uint32_t events = atomic_set(task_event_mask, 0);
 
 	if (rv == -EAGAIN) {
 		events |= TASK_EVENT_TIMER;
@@ -170,8 +203,19 @@ uint32_t task_wait_event(int timeout_us)
 
 uint32_t task_wait_event_mask(uint32_t event_mask, int timeout_us)
 {
-	struct task_ctx_data *const data =
-		&shimmed_tasks_data[task_get_current()];
+	struct k_poll_signal *new_event;
+	atomic_t *task_event_mask;
+
+	if (task_get_current() == TASK_ID_SYSWORKQ) {
+		new_event = &sysworkq_task_data.new_event;
+		task_event_mask = &sysworkq_task_data.event_mask;
+	} else {
+		struct task_ctx_data *const data =
+			&shimmed_tasks_data[task_get_current()];
+		new_event = &data->new_event;
+		task_event_mask = &data->event_mask;
+	}
+
 	uint32_t events = 0;
 	const int64_t tick_deadline =
 		k_uptime_ticks() + k_us_to_ticks_near64(timeout_us);
@@ -190,20 +234,20 @@ uint32_t task_wait_event_mask(uint32_t event_mask, int timeout_us)
 		struct k_poll_event poll_events[1] = {
 			K_POLL_EVENT_INITIALIZER(K_POLL_TYPE_SIGNAL,
 						 K_POLL_MODE_NOTIFY_ONLY,
-						 &data->new_event),
+						 new_event),
 		};
 
 		/* Ensure to honor the -1 timeout as FOREVER */
 		k_poll(poll_events, ARRAY_SIZE(poll_events),
 		       timeout_us == -1 ? K_FOREVER : K_TICKS(ticks_left));
-		k_poll_signal_reset(&data->new_event);
-		events |= atomic_set(&data->event_mask, 0);
+		k_poll_signal_reset(new_event);
+		events |= atomic_set(task_event_mask, 0);
 	}
 
 	/* Replace any events that weren't in the mask */
 	if (events & ~event_mask) {
-		atomic_or(&data->event_mask, events & ~event_mask);
-		k_poll_signal_raise(&data->new_event, 0);
+		atomic_or(task_event_mask, events & ~event_mask);
+		k_poll_signal_raise(new_event, 0);
 	}
 
 	return events & event_mask;
@@ -235,10 +279,21 @@ static void timer_expire(struct k_timer *timer_id)
 	task_set_event(cros_ec_task_id, TASK_EVENT_TIMER);
 }
 
+static void sysworkq_timer_expire(struct k_timer *timer_id)
+{
+	task_set_event(TASK_ID_SYSWORKQ, TASK_EVENT_TIMER);
+}
+
 int timer_arm(timestamp_t event, task_id_t cros_ec_task_id)
 {
+	struct k_timer *timer;
 	timestamp_t now = get_time();
-	struct task_ctx_data *const data = &shimmed_tasks_data[cros_ec_task_id];
+
+	if (cros_ec_task_id == TASK_ID_SYSWORKQ) {
+		timer = &sysworkq_task_data.timer;
+	} else {
+		timer = &shimmed_tasks_data[cros_ec_task_id].timer;
+	}
 
 	if (event.val <= now.val) {
 		/* Timer requested for now or in the past, fire right away */
@@ -247,18 +302,24 @@ int timer_arm(timestamp_t event, task_id_t cros_ec_task_id)
 	}
 
 	/* Check for a running timer */
-	if (k_timer_remaining_get(&data->timer))
+	if (k_timer_remaining_get(timer))
 		return EC_ERROR_BUSY;
 
-	k_timer_start(&data->timer, K_USEC(event.val - now.val), K_NO_WAIT);
+	k_timer_start(timer, K_USEC(event.val - now.val), K_NO_WAIT);
 	return EC_SUCCESS;
 }
 
 void timer_cancel(task_id_t cros_ec_task_id)
 {
-	struct task_ctx_data *const data = &shimmed_tasks_data[cros_ec_task_id];
+	struct k_timer *timer;
 
-	k_timer_stop(&data->timer);
+	if (cros_ec_task_id == TASK_ID_SYSWORKQ) {
+		timer = &sysworkq_task_data.timer;
+	} else {
+		timer = &shimmed_tasks_data[cros_ec_task_id].timer;
+	}
+
+	k_timer_stop(timer);
 }
 
 #ifdef TEST_BUILD
@@ -288,7 +349,6 @@ void start_ec_tasks(void)
 {
 	int priority;
 
-	/* Initialize all EC tasks, which does not include the sysworkq entry */
 	for (size_t i = 0; i < TASK_ID_COUNT; ++i) {
 		struct task_ctx_data *const data = &shimmed_tasks_data[i];
 		const struct task_ctx_cfg *const cfg = &shimmed_tasks_cfg[i];
@@ -342,8 +402,7 @@ void start_ec_tasks(void)
 #endif
 	}
 
-	/* Create an entry for sysworkq we can send events to */
-	shimmed_tasks_data[TASK_ID_COUNT].zephyr_tid = &k_sys_work_q.thread;
+	k_timer_init(&sysworkq_task_data.timer, sysworkq_timer_expire, NULL);
 
 	tasks_started = 1;
 }
@@ -357,12 +416,13 @@ int init_signals(const struct device *unused)
 {
 	ARG_UNUSED(unused);
 
-	/* Initialize event structures for all entries, including sysworkq */
-	for (size_t i = 0; i < TASK_ID_COUNT + 1; ++i) {
+	for (size_t i = 0; i < TASK_ID_COUNT; ++i) {
 		struct task_ctx_data *const data = &shimmed_tasks_data[i];
 
 		k_poll_signal_init(&data->new_event);
 	}
+
+	k_poll_signal_init(&sysworkq_task_data.new_event);
 
 	return 0;
 }
