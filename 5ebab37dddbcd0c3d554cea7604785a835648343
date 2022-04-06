@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "916f1fd8_c1515275",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2022-04-06T19:48:20Z",
+      "side": 1,
+      "message": "Other details: ACEX doesn\u0027t give info on whether USBC/Wireless/Barrel jack.  Also, In future RVP \u0026 chrome bases that support barrel AC might need DTT support.  Also, wireless charger support in future platforms too cant be ruled out. As per doc , power source distinction is required by DTT for further processing at kernel level.\nEC needs to keep track of power source change events based on sequence number to ensure the sync between EC side \u0026 Kernel side on PROCHOT processing. (Again, As per doc ).Again , if we handle them at ACPI level on kernel side, it may deviate from doc.",
+      "parentUuid": "7154e444_47498853",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 41
+      },
+      "revId": "5ebab37dddbcd0c3d554cea7604785a835648343",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ffeeeff0_4da40e0e",
         "filename": "include/ec_commands.h",
         "patchSetId": 2
