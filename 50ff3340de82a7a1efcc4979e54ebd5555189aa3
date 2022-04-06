@@ -143,6 +143,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fd1e484f_9cd0c803",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_pd_ctrl_msg.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-04-06T17:35:36Z",
+      "side": 1,
+      "message": "That\u0027s a little spooky, just to make sure, you\u0027ve tried calling `test_set_chipset_to_s0()` without the move to `g3` and that fails? Would you be able to get a list of the test suites that run before this one? Should be a \"simple\" grep on the output, I think we should find who didn\u0027t clean up after themselves.",
+      "parentUuid": "735dfdd1_fe4c6292",
+      "revId": "50ff3340de82a7a1efcc4979e54ebd5555189aa3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5ef26be6_51948fc4",
         "filename": "zephyr/test/drivers/src/integration/usbc/usb_pd_ctrl_msg.c",
         "patchSetId": 3

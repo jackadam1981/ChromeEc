@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d9f2bc6_48c6eb1c",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_pd_ctrl_msg.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-04-06T17:35:36Z",
+      "side": 1,
+      "message": "Would it be possible to use the existing APIs at https://source.chromium.org/chromium/chromiumos/platform/ec/+/HEAD:zephyr/test/drivers/include/test/drivers/utils.h;l\u003d278;drc\u003dc8161f086096caf932df834784e8d7215c9eebdb?",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 1
+      },
+      "revId": "a45e1d182ba24386e6688e4030fb017155d852ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ca6db20_09dd39bb",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_pd_ctrl_msg.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-04-06T17:35:36Z",
+      "side": 1,
+      "message": "Why call this directly? It should be the parameter for `ZTEST_SUITE` right after the setup function.",
+      "range": {
+        "startLine": 125,
+        "startChar": 1,
+        "endLine": 125,
+        "endChar": 23
+      },
+      "revId": "a45e1d182ba24386e6688e4030fb017155d852ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
