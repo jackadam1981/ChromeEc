@@ -159,6 +159,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "50c22ea7_243c6003",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_pd_ctrl_msg.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2022-04-06T20:55:50Z",
+      "side": 1,
+      "message": "After rebasing I\u0027m unable to reproduce the issue. I can clean this up.",
+      "parentUuid": "fd1e484f_9cd0c803",
+      "revId": "50ff3340de82a7a1efcc4979e54ebd5555189aa3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5ef26be6_51948fc4",

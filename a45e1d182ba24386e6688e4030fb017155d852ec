@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "125cde65_bc667bff",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_pd_ctrl_msg.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2022-04-06T20:55:50Z",
+      "side": 1,
+      "message": "Link doesn\u0027t seem to point a valid file anymore.  Looking locally it appears these APIs you\u0027re referencing are for connecting/disconnecting `source` using the `tcpi_src_emul` interface.  I\u0027m using the `tcpi_drp_emul*` here.",
+      "parentUuid": "7d9f2bc6_48c6eb1c",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 1
+      },
+      "revId": "a45e1d182ba24386e6688e4030fb017155d852ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6ca6db20_09dd39bb",
         "filename": "zephyr/test/drivers/src/integration/usbc/usb_pd_ctrl_msg.c",
         "patchSetId": 5
@@ -37,6 +61,30 @@
       "writtenOn": "2022-04-06T17:35:36Z",
       "side": 1,
       "message": "Why call this directly? It should be the parameter for `ZTEST_SUITE` right after the setup function.",
+      "range": {
+        "startLine": 125,
+        "startChar": 1,
+        "endLine": 125,
+        "endChar": 23
+      },
+      "revId": "a45e1d182ba24386e6688e4030fb017155d852ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7185a8c_c7c6fac7",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_pd_ctrl_msg.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2022-04-06T20:55:50Z",
+      "side": 1,
+      "message": "`ZTEST_SUITE` runs `before`, `rules`, and `test` in this order.  One of the `rules` resets the tcpi emulator registers to all zero.  This affects the RX_DETECT_SOP bit that was setup in `before` and we\u0027re unable to successfully send control messages in this state.",
+      "parentUuid": "6ca6db20_09dd39bb",
       "range": {
         "startLine": 125,
         "startChar": 1,
