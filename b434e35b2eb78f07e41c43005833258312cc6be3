@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "871d56c5_a08854c0",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2867,
+      "author": {
+        "id": 1466877
+      },
+      "writtenOn": "2022-04-06T18:45:45Z",
+      "side": 1,
+      "message": "%lu here broke on the builder last time. Apparently those are 32 bit? Locally (even in chroot), I get uint64_t as long unsigned int. On the builder it turned out to be long long unsigned int.",
+      "revId": "b434e35b2eb78f07e41c43005833258312cc6be3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
