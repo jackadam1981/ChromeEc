@@ -8,5 +8,8 @@
 		default_battery: ap19a8k {
 			compatible = "lgc,ap19a8k", "battery-smart";
 		};
+		ap19a5k {
+			compatible = "panasonic,ap19a5k", "battery-smart";
+		};
 	};
 };
