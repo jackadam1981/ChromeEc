@@ -449,6 +449,10 @@ flash_fp_mcu_stm32() {
   # detected on boot. We force a POR here to ensure we avoid this reboot loop.
   # See to b/146428434.
   if [[ "${gpio_pwren}" -gt 0 ]]; then
+    # From the data in b/191110371#comment39, there is a timing that we can't
+    # do the power cycle after entering the normal mode. So, we need to add a
+    # delay after switching to the normal mode before doing the power cycle.
+    sleep 0.5
     echo "Power cycling the FPMCU."
     gpio export "${gpio_pwren}"
     gpio out    "${gpio_pwren}"
