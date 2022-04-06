@@ -10,9 +10,299 @@
 #include "intelrvp.h"
 #include "intel_rvp_board_id.h"
 #include "power/meteorlake.h"
+#include "battery_fuel_gauge.h"
+#include "charger.h"
+#include "battery.h"
+#include "driver/retimer/bb_retimer_public.h"
+#include "driver/tcpm/nct38xx.h"
+#include "extpower.h"
+#include "hooks.h"
+#include "ioexpander.h"
+#include "isl9241.h"
+#include "sn5s330.h"
+#include "system.h"
+#include "task.h"
+#include "tusb1064.h"
+#include "usb_mux.h"
+#include "usbc_ppc.h"
+#include "util.h"
 
 #define CPRINTF(format, args...) cprintf(CC_COMMAND, format, ## args)
 #define CPRINTS(format, args...) cprints(CC_COMMAND, format, ## args)
+
+/*******************************************************************/
+/* USB-C Configuration Start */
+
+/* PPC */
+#define I2C_ADDR_SN5S330_P0 0x40
+#define I2C_ADDR_SN5S330_P1 0x41
+
+/* Connector side BB retimers */
+#define I2C_PORT0_HBR_ADDR	0x56
+#if defined(HAS_TASK_PD_C1)
+#define I2C_PORT1_HBR_ADDR	0x57
+#endif
+#if defined(HAS_TASK_PD_C2)
+#define I2C_PORT2_HBR_ADDR	0x58
+#endif
+#if defined(HAS_TASK_PD_C3)
+#define I2C_PORT3_HBR_ADDR	0x59
+#endif
+
+
+/* USB-C ports */
+enum usbc_port {
+	USBC_PORT_C0 = 0,
+	USBC_PORT_C1,
+	USBC_PORT_COUNT
+};
+BUILD_ASSERT(USBC_PORT_COUNT == CONFIG_USB_PD_PORT_MAX_COUNT);
+
+/* USB-C PPC configuration */
+struct ppc_config_t ppc_chips[] = {
+	[USBC_PORT_C0] = {
+		.i2c_port = I2C_PORT_TYPEC_AIC_1,
+		.i2c_addr_flags = I2C_ADDR_SN5S330_P0,
+		.drv = &sn5s330_drv,
+	},
+	[USBC_PORT_C1] = {
+		.i2c_port = I2C_PORT_TYPEC_AIC_1,
+		.i2c_addr_flags = I2C_ADDR_SN5S330_P1,
+		.drv = &sn5s330_drv,
+	},
+};
+BUILD_ASSERT(ARRAY_SIZE(ppc_chips) == CONFIG_USB_PD_PORT_MAX_COUNT);
+unsigned int ppc_cnt = ARRAY_SIZE(ppc_chips);
+
+struct tcpc_config_t tcpc_config[] = {
+	[USBC_PORT_C0] = {
+		.bus_type = EC_BUS_TYPE_I2C,
+		.i2c_info = {
+			.port = I2C_PORT_TYPEC_AIC_1,
+			.addr_flags = NCT38XX_I2C_ADDR1_4_FLAGS,
+		},
+		.drv = &nct38xx_tcpm_drv,
+		.flags = TCPC_FLAGS_TCPCI_REV2_0 |
+			TCPC_FLAGS_NO_DEBUG_ACC_CONTROL,
+	},
+	[USBC_PORT_C1] = {
+		.bus_type = EC_BUS_TYPE_I2C,
+		.i2c_info = {
+			.port = I2C_PORT_TYPEC_AIC_1,
+			.addr_flags = NCT38XX_I2C_ADDR2_4_FLAGS,
+		},
+		.drv = &nct38xx_tcpm_drv,
+		.flags = TCPC_FLAGS_TCPCI_REV2_0,
+	},
+};
+
+const struct charger_config_t  chg_chips[] = {
+	{
+		.i2c_port = I2C_PORT_CHARGER,
+		.i2c_addr_flags = ISL9241_ADDR_FLAGS,
+		.drv = &isl9241_drv,
+	}
+};
+
+/* USB-C retimer Configuration */
+struct usb_mux usbc0_tcss_usb_mux = {
+	.usb_port = USBC_PORT_C0,
+	.driver = &virtual_usb_mux_driver,
+	.hpd_update = &virtual_hpd_update,
+};
+#if defined(HAS_TASK_PD_C1)
+struct usb_mux usbc1_tcss_usb_mux = {
+	.usb_port = USBC_PORT_C1,
+	.driver = &virtual_usb_mux_driver,
+	.hpd_update = &virtual_hpd_update,
+};
+#endif
+#if defined(HAS_TASK_PD_C2)
+struct usb_mux usbc2_tcss_usb_mux = {
+	.usb_port = TYPE_C_PORT_2,
+	.driver = &virtual_usb_mux_driver,
+	.hpd_update = &virtual_hpd_update,
+};
+#endif
+#if defined(HAS_TASK_PD_C3)
+struct usb_mux usbc3_tcss_usb_mux = {
+	.usb_port = TYPE_C_PORT_3,
+	.driver = &virtual_usb_mux_driver,
+	.hpd_update = &virtual_hpd_update,
+};
+#endif
+
+/* USB muxes Configuration */
+struct usb_mux usb_muxes[] = {
+	[USBC_PORT_C0] = {
+		.usb_port = USBC_PORT_C0,
+		.next_mux = &usbc0_tcss_usb_mux,
+		.driver = &bb_usb_retimer,
+		.hpd_update = bb_retimer_hpd_update,
+		.i2c_port = I2C_PORT_TYPEC_AIC_1,
+		.i2c_addr_flags = I2C_PORT0_HBR_ADDR,
+	},
+#if defined(HAS_TASK_PD_C1)
+	[USBC_PORT_C1] = {
+		.usb_port = USBC_PORT_C1,
+		.next_mux = &usbc1_tcss_usb_mux,
+		.driver = &bb_usb_retimer,
+		.hpd_update = bb_retimer_hpd_update,
+		.i2c_port = I2C_PORT_TYPEC_AIC_1,
+		.i2c_addr_flags = I2C_PORT1_HBR_ADDR,
+	},
+#endif
+#if defined(HAS_TASK_PD_C2)
+	[USBC_PORT_C2] = {
+		.usb_port = USBC_PORT_C2,
+		.next_mux = &usbc2_tcss_usb_mux,
+		.driver = &bb_usb_retimer,
+		.hpd_update = bb_retimer_hpd_update,
+		.i2c_port = I2C_PORT_TYPEC_AIC_2,
+		.i2c_addr_flags = I2C_PORT2_HBR_ADDR,
+	},
+#endif
+#if defined(HAS_TASK_PD_C3)
+	[USBC_PORT_C3] = {
+		.usb_port = USBC_PORT_C3,
+		.next_mux = &usbc3_tcss_usb_mux,
+		.driver = &bb_usb_retimer,
+		.hpd_update = bb_retimer_hpd_update,
+		.i2c_port = I2C_PORT_TYPEC_AIC_2,
+		.i2c_addr_flags = I2C_PORT3_HBR_ADDR,
+	},
+#endif
+};
+BUILD_ASSERT(ARRAY_SIZE(usb_muxes) == CONFIG_USB_PD_PORT_MAX_COUNT);
+
+/* TCPC AIC GPIO Configuration */
+const struct tcpc_aic_gpio_config_t tcpc_aic_gpios[] = {
+	[USBC_PORT_C0] = {
+		.tcpc_alert = GPIO_SIGNAL(DT_NODELABEL(usbc_tcpc_alrt_p0)),
+		.ppc_alert = GPIO_SIGNAL(DT_NODELABEL(usbc_tcpc_ppc_alrt_p0)),
+		.ppc_intr_handler = sn5s330_interrupt,
+	},
+#if defined(HAS_TASK_PD_C1)
+	[USBC_PORT_C1] = {
+		.tcpc_alert = GPIO_SIGNAL(DT_NODELABEL(usbc_tcpc_alrt_p0)),
+		.ppc_alert = GPIO_SIGNAL(DT_NODELABEL(usbc_tcpc_ppc_alrt_p1)),
+		.ppc_intr_handler = sn5s330_interrupt,
+	},
+#endif
+#if defined(HAS_TASK_PD_C2)
+	[USBC_PORT_C2] = {
+		.tcpc_alert = GPIO_USBC_TCPC_ALRT_P2,
+		/* No PPC alert for CCGXXF */
+	},
+#endif
+#if defined(HAS_TASK_PD_C3)
+	[USBC_PORT_C3] = {
+		.tcpc_alert = GPIO_USBC_TCPC_ALRT_P3,
+		/* No PPC alert for CCGXXF */
+	},
+#endif
+};
+BUILD_ASSERT(ARRAY_SIZE(tcpc_aic_gpios) == CONFIG_USB_PD_PORT_MAX_COUNT);
+
+static void board_connect_c0_sbu_deferred(void)
+{
+	enum pd_power_role prole;
+
+	if (gpio_get_level(GPIO_CCD_MODE_ODL)) {
+		CPRINTS("Default AUX line connected");
+		/* Default set the SBU lines to AUX mode */
+		ioex_set_level(IOEX_USB_C0_MUX_SBU_SEL_1, 0);
+		ioex_set_level(IOEX_USB_C0_MUX_SBU_SEL_0, 1);
+	} else {
+		prole = pd_get_power_role(USBC_PORT_C0);
+		CPRINTS("%s debug device is attached",
+			prole == PD_ROLE_SINK ? "Servo V4C/SuzyQ" : "Intel");
+
+		if (prole == PD_ROLE_SINK) {
+			/* Set the SBU lines to Google CCD mode */
+			ioex_set_level(IOEX_USB_C0_MUX_SBU_SEL_1, 1);
+			ioex_set_level(IOEX_USB_C0_MUX_SBU_SEL_0, 1);
+		} else {
+			/* Set the SBU lines to Intel CCD mode */
+			ioex_set_level(IOEX_USB_C0_MUX_SBU_SEL_1, 0);
+			ioex_set_level(IOEX_USB_C0_MUX_SBU_SEL_0, 0);
+		}
+	}
+}
+DECLARE_DEFERRED(board_connect_c0_sbu_deferred);
+/* Make sure SBU are routed to CCD or AUX based on CCD status at init */
+DECLARE_HOOK(HOOK_INIT, board_connect_c0_sbu_deferred, HOOK_PRIO_INIT_I2C + 2);
+
+void board_overcurrent_event(int port, int is_overcurrented)
+{
+	/* TODO: Send VW */
+}
+
+/* Reset PD MCU */
+void board_reset_pd_mcu(void)
+{
+}
+
+__override int bb_retimer_power_enable(const struct usb_mux *me, bool enable)
+{
+	/* Handle retimer's power domain.*/
+	if (enable) {
+		ioex_set_level(bb_controls[me->usb_port].usb_ls_en_gpio, 1);
+
+		/*
+		 * minimum time from VCC to RESET_N de-assertion is 100us
+		 * For boards that don't provide a load switch control, the
+		 * retimer_init() function ensures power is up before calling
+		 * this function.
+		 */
+		msleep(1);
+		ioex_set_level(bb_controls[me->usb_port].retimer_rst_gpio, 1);
+
+		/*
+		 * Allow 1ms time for the retimer to power up lc_domain
+		 * which powers I2C controller within retimer
+		 */
+		msleep(1);
+
+	} else {
+		ioex_set_level(bb_controls[me->usb_port].retimer_rst_gpio, 0);
+		msleep(1);
+		ioex_set_level(bb_controls[me->usb_port].usb_ls_en_gpio, 0);
+	}
+	return EC_SUCCESS;
+}
+
+void board_connect_c0_sbu(enum gpio_signal signal)
+{
+	hook_call_deferred(&board_connect_c0_sbu_deferred_data, 0);
+}
+
+struct bb_usb_control bb_controls[] = {
+	[USBC_PORT_C0] = {
+		.retimer_rst_gpio = IOEX_USB_C0_HBR_RST,
+		.usb_ls_en_gpio = IOEX_USB_C0_HBR_LS_EN,
+	},
+#if defined(HAS_TASK_PD_C1)
+	[USBC_PORT_C1] = {
+		.retimer_rst_gpio = IOEX_USB_C1_HBR_RST,
+		.usb_ls_en_gpio = IOEX_USB_C1_HBR_LS_EN,
+	},
+#endif
+#if defined(HAS_TASK_PD_C2)
+	[USBC_PORT_C2] = {
+		.retimer_rst_gpio = IOEX_USB_C2_HBR_RST,
+		.usb_ls_en_gpio = IOEX_USB_C2_HBR_LS_EN,
+	},
+#endif
+#if defined(HAS_TASK_PD_C3)
+	[USBC_PORT_C3] = {
+		.retimer_rst_gpio = IOEX_USB_C3_HBR_RST,
+		.usb_ls_en_gpio = IOEX_USB_C3_HBR_LS_EN,
+	},
+#endif
+};
+BUILD_ASSERT(ARRAY_SIZE(bb_controls) == CONFIG_USB_PD_PORT_MAX_COUNT);
+
 
 /******************************************************************************/
 /* PWROK signal configuration */
