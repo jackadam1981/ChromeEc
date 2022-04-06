@@ -8,4 +8,11 @@ config BUG209907615
 	This flag may change as we protoype integration tests.
 	TODO(b/209907615): Remove when test finished.
 
+config BUG229391866
+	bool "Enable test for b:229391866"
+	default y
+	help
+	Flag for skipping DR swap test case.
+	TODO(b/229391866): Remove when test is functional.
+
 source "Kconfig.zephyr"
