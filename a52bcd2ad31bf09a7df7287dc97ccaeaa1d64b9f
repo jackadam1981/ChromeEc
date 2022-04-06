@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3be44874_2a291d5a",
+        "filename": "zephyr/projects/brya/Kconfig",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-04-06T15:50:28Z",
+      "side": 1,
+      "message": "\"as the EC\"",
+      "range": {
+        "startLine": 9,
+        "startChar": 8,
+        "endLine": 9,
+        "endChar": 13
+      },
+      "revId": "a52bcd2ad31bf09a7df7287dc97ccaeaa1d64b9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f883a13_bc84353c",
+        "filename": "zephyr/projects/brya/i2c.dts",
+        "patchSetId": 3
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-04-06T15:50:28Z",
+      "side": 1,
+      "message": "Nit - extra line.",
+      "revId": "a52bcd2ad31bf09a7df7287dc97ccaeaa1d64b9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "680a596b_08761df0",
+        "filename": "zephyr/projects/brya/temp_sensors.dts",
+        "patchSetId": 3
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-04-06T15:50:28Z",
+      "side": 1,
+      "message": "Extra line.",
+      "revId": "a52bcd2ad31bf09a7df7287dc97ccaeaa1d64b9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
