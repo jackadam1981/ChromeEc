@@ -16,6 +16,23 @@
       "message": "@ Prashant / @Abe / @Diana - Can you pls commit the patch to merge. Looks like Sugnan pushed the merge and it failed. Pls help",
       "revId": "e2788f72d414ee46b465ca6d4ae2d9392cf2c36c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c6a263d_3a14a769",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2022-04-06T18:45:22Z",
+      "side": 1,
+      "message": "Abe, Diana,\n\nWould you happen to know what\u0027s failing here, seems to be some sort of Zephyr test automation failure:\n```\nPROJECT EXECUTION FAILED\nExecution failed (return code\u003d1): /mnt/host/source/src/platform/ec/build/zephyr/test-drivers/output/zephyr.elf\nTraceback (most recent call last):\n  File \"/mnt/host/source/src/platform/ec/zephyr/zmake/zmake/multiproc.py\", line 317, in _run_fn\n    result \u003d func()\n  File \"/mnt/host/source/src/platform/ec/zephyr/zmake/zmake/zmake.py\", line 792, in _run_test\n    _run()\n  File \"/mnt/host/source/src/platform/ec/zephyr/zmake/zmake/zmake.py\", line 777, in _run\n    raise OSError(get_process_failure_msg(proc))\nOSError: Execution failed (return code\u003d1): /mnt/host/source/src/platform/ec/build/zephyr/test-drivers/output/zephyr.elf\n\nTraceback (most recent call last):\n  File \"/mnt/host/source/src/platform/ec/zephyr/firmware_builder.py\", line 303, in \u003cmodule\u003e\n    sys.exit(main(sys.argv[1:]))\n  File \"/mnt/host/source/src/platform/ec/zephyr/firmware_builder.py\", line 230, in main\n    return opts.func(opts)\n  File \"/mnt/host/source/src/platform/ec/zephyr/firmware_builder.py\", line 186, in test\n    rv \u003d subprocess.run(cmd, check\u003dTrue).returncode\n  File \"/usr/lib64/python3.6/subprocess.py\", line 438, in run\n    output\u003dstdout, stderr\u003dstderr)\nsubprocess.CalledProcessError: Command \u0027[\u0027zmake\u0027, \u0027-D\u0027, \u0027test\u0027, \u0027-a\u0027, \u0027--no-rebuild\u0027, \u0027--coverage\u0027]\u0027 returned non-zero exit status 255.\n11:40:19.089: INFO: Endpoint execution completed, return code: 3\n```",
+      "revId": "e2788f72d414ee46b465ca6d4ae2d9392cf2c36c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
