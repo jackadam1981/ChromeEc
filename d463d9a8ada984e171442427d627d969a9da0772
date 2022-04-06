@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "dc41c031_c6797ac6",
+        "filename": "zephyr/projects/intelrvp/mtlrvp/mtlrvpp_npcx/gpio.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2022-04-06T18:40:53Z",
+      "side": 1,
+      "message": "added in CCGXXF working on IT8801 seems to be some issues with the shimmed code",
+      "parentUuid": "517585ec_bd14b413",
+      "revId": "d463d9a8ada984e171442427d627d969a9da0772",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "395c4045_931bbb53",
         "filename": "zephyr/projects/intelrvp/mtlrvp/mtlrvpp_npcx/gpio.dts",
         "patchSetId": 1
@@ -31,6 +49,24 @@
       "writtenOn": "2022-03-24T22:26:16Z",
       "side": 1,
       "message": "nit: check if tabs are needed",
+      "revId": "d463d9a8ada984e171442427d627d969a9da0772",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "43311f0d_0d85c6c9",
+        "filename": "zephyr/projects/intelrvp/mtlrvp/mtlrvpp_npcx/gpio.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2022-04-06T18:40:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "395c4045_931bbb53",
       "revId": "d463d9a8ada984e171442427d627d969a9da0772",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -48,6 +84,24 @@
       "writtenOn": "2022-03-24T22:26:16Z",
       "side": 1,
       "message": "these are on same I2C",
+      "revId": "d463d9a8ada984e171442427d627d969a9da0772",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "58a7d0bb_057d4780",
+        "filename": "zephyr/projects/intelrvp/mtlrvp/mtlrvpp_npcx/gpio.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2022-04-06T18:40:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ca9a3d14_6c01afa2",
       "revId": "d463d9a8ada984e171442427d627d969a9da0772",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
