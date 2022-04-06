@@ -70,6 +70,24 @@
       "parentUuid": "f7471ad6_6f67e819",
       "revId": "404692c03b8f0c57d2bb1d709be888650c9a0099",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e190cbd_4fff47f9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-04-06T16:54:25Z",
+      "side": 1,
+      "message": "The original DTS comment was probably a copy/paste misprint :) \n\nThis works when I put it on my board version 0 unit.  I\u0027ll grab another SKU of board version 1 and see if it\u0027s something about the LED DB that\u0027s off in my testing... but since the change works on board version 0, it\u0027s probably sound.\n\nFYI, I have a small LED CL up here as well but I don\u0027t think they\u0027ll merge conflict: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3573697",
+      "parentUuid": "ca00e9d6_cde3d774",
+      "revId": "404692c03b8f0c57d2bb1d709be888650c9a0099",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
