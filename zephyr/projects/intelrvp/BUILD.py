@@ -60,11 +60,13 @@ register_intelrvp_project(
     chip="npcx9",
     extra_dts_overlays=[
         here / "mtlrvp/mtlrvpp_npcx/mtlrvp_npcx.dts",
+        here / "mtlrvp/mtlrvpp_npcx/hb_retimer.dts",
         here / "mtlrvp/mtlrvpp_npcx/fan.dts",
         here / "mtlrvp/mtlrvpp_npcx/gpio.dts",
         here / "mtlrvp/mtlrvpp_npcx/interrupts.dts",
         here / "adlrvp/adlrvp_npcx/cbi_eeprom.dts",
         here / "adlrvp/adlrvp_npcx/temp_sensor.dts",
+        here / "mtlrvp/usbc.dts",
     ],
     extra_kconfig_files=[here / "mtlrvp/mtlrvpp_npcx/prj.conf"],
 )
