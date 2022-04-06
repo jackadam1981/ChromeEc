@@ -170,3 +170,33 @@ ZTEST_F(usb_pd_ctrl_msg_test, verify_pr_swap)
 	zassert_equal(PD_ROLE_SOURCE, snk_resp.power_role,
 		      "SNK Returned power_role=%u", snk_resp.power_role);
 }
+
+
+ZTEST_F(usb_pd_ctrl_msg_test, verify_dr_swap)
+{
+	struct ec_response_typec_status snk_resp = { 0 };
+	int rv = 0;
+
+	usb_pd_ctrl_msg_before(this);
+
+	snk_resp = host_cmd_typec_status(SNK_PORT);
+	zassert_equal(PD_ROLE_DFP, snk_resp.data_role,
+		      "SNK Returned data_role=%u", snk_resp.data_role);
+
+	/* Ignore ACCEPT in common handler for DR Swap request,
+	 * causes soft reset
+	 */
+	tcpci_partner_common_handler_mask_msg(&this->partner_emul.common_data,
+					      PD_CTRL_ACCEPT, true);
+
+	/* Send DR_SWAP request */
+	rv = tcpci_partner_send_control_msg(&this->partner_emul.common_data,
+					    PD_CTRL_DR_SWAP, 0);
+	zassert_ok(rv, "Failed to send PR_SWAP request, rv=%d", rv);
+
+	k_sleep(K_MSEC(20));
+
+	snk_resp = host_cmd_typec_status(SNK_PORT);
+	zassert_equal(PD_ROLE_UFP, snk_resp.data_role,
+		      "SNK Returned data_role=%u", snk_resp.data_role);
+}
