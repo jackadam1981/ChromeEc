@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e339a975_60e85300",
+        "filename": "zephyr/Kconfig.usba",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-04-06T15:44:20Z",
+      "side": 1,
+      "message": "Please add a symbol to this choice.  It\u0027s a more flexible design pattern.\n\n```\nchoice PLATFORM_EC_USBA_PORT_POWER_TYPE\n    prompt \"USBA port power control type\"\n    default PLATFORM_EC_USB_PORT_POWER_DUMB\n    help\n         ...\n```\n\nBoards should really pick the choice using this pattern:\n\n```\n# Set power power type to smart switch\nchoice PLATFORM_EC_USBA_PORT_POWER_TYPE\n    default PLATFORM_EC_USB_PORT_POWER_SMART\n```\n\nThis can be done as a follow-up CL.",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 6
+      },
+      "revId": "6191fed95c8d00b5558acae41835e9893add6ef8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
