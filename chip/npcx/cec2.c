@@ -73,7 +73,7 @@ static uint32_t apb1_freq_div_10k;
 static void send_mkbp_event(uint32_t event)
 {
 	atomic_or(&cec_events, event);
-	mkbp_send_event(EC_MKBP_EVENT_CEC_EVENT);
+	mkbp_send_event(EC_MKBP_EVENT_CEC2_EVENT);
 }
 
 static int cec2_get_next_event(uint8_t *out)
