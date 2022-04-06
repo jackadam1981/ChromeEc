@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea2af661_312bd61c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2022-04-06T07:14:48Z",
+      "side": 1,
+      "message": "In commit message, add extra line to describe you set the default ram size for core 1. And following fields:\n\nBUG\u003db:...\nBRANCH\u003dnone\nTEST\u003dzmake testall\n\n",
+      "revId": "0f76b16a15f2242d905b8b3d13e84b632f555ff3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
