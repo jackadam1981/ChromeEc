@@ -5,12 +5,15 @@
  * Battery charging task and state machine.
  */
 
+#include <stddef.h>
+
 #include "battery.h"
 #include "battery_smart.h"
 #include "charge_manager.h"
 #include "charger_profile_override.h"
 #include "charge_state.h"
 #include "charger.h"
+#include "chargesplash.h"
 #include "chipset.h"
 #include "common.h"
 #include "console.h"
@@ -2572,7 +2575,16 @@ charge_command_charge_state(struct host_cmd_handler_args *args)
 		out->get_state.chg_current = curr.chg.current;
 		out->get_state.chg_input_current = curr.chg.input_current;
 		out->get_state.batt_state_of_charge = curr.batt.state_of_charge;
-		args->response_size = sizeof(out->get_state);
+		if (args->version >= 2) {
+			/* boot_for_chargesplash added in v2 */
+			out->get_state.boot_for_chargesplash =
+				chargesplash_get_boot_mode();
+			args->response_size = sizeof(out->get_state);
+		} else {
+			args->response_size =
+				offsetof(typeof(*out),
+					 get_state.boot_for_chargesplash);
+		}
 		break;
 
 	case CHARGE_STATE_CMD_GET_PARAM:
@@ -2683,7 +2695,7 @@ charge_command_charge_state(struct host_cmd_handler_args *args)
 }
 
 DECLARE_HOST_COMMAND(EC_CMD_CHARGE_STATE, charge_command_charge_state,
-		     EC_VER_MASK(0) | EC_VER_MASK(1));
+		     EC_VER_MASK(0) | EC_VER_MASK(1) | EC_VER_MASK(2));
 
 /*****************************************************************************/
 /* Console commands */

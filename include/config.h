@@ -918,6 +918,9 @@
 /* Compile input current ramping support using software control */
 #undef CONFIG_CHARGE_RAMP_SW
 
+/* Enable EC support for charging splashscreen */
+#undef CONFIG_CHARGESPLASH
+
 /*****************************************************************************/
 /* Charger config */
 
