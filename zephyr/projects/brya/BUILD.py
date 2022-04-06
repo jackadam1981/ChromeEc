@@ -19,4 +19,7 @@ brya = register_npcx_project(
     ],
 )
 
-ghost = brya.variant(project_name="ghost")
+ghost = brya.variant(
+    project_name="ghost",
+    kconfig_files=[here / "prj_ghost.conf"],
+)
