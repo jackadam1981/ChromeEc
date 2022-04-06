@@ -64,6 +64,7 @@
 
 /* USB Type C and USB PD defines */
 #define CONFIG_USB_PD_REQUIRE_AP_MODE_ENTRY
+#define CONFIG_USB_PD_COMM_LOCKED
 
 #define CONFIG_IO_EXPANDER
 #define CONFIG_IO_EXPANDER_NCT38XX
@@ -74,6 +75,9 @@
 
 /* I2C control host command */
 #define CONFIG_HOSTCMD_I2C_CONTROL
+
+/* Disable console commands to help save space */
+#undef CONFIG_CMD_POWERINDEBUG
 
 #define CONFIG_USBC_PPC_SYV682X
 #define CONFIG_USBC_PPC_NX20P3483
