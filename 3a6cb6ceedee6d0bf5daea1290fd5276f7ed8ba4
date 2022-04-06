@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d32b1617_2b831c20",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2022-04-06T16:39:35Z",
+      "side": 1,
+      "message": "Nearly there.",
+      "revId": "3a6cb6ceedee6d0bf5daea1290fd5276f7ed8ba4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1e78ac7_94557631",
+        "filename": "board/lantis/led.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2022-04-06T16:39:35Z",
+      "side": 1,
+      "message": "need to add a brace here",
+      "revId": "3a6cb6ceedee6d0bf5daea1290fd5276f7ed8ba4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54c23b43_4c0a1f72",
+        "filename": "board/lantis/led.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2022-04-06T16:39:35Z",
+      "side": 1,
+      "message": "and here as well",
+      "revId": "3a6cb6ceedee6d0bf5daea1290fd5276f7ed8ba4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b359b31_f0922ca5",
+        "filename": "board/lantis/led.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2022-04-06T16:39:35Z",
+      "side": 1,
+      "message": "this block also needs braces because the if clause has braces.",
+      "range": {
+        "startLine": 232,
+        "startChar": 4,
+        "endLine": 232,
+        "endChar": 8
+      },
+      "revId": "3a6cb6ceedee6d0bf5daea1290fd5276f7ed8ba4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
