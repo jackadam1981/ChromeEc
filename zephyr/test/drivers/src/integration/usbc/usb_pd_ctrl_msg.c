@@ -17,6 +17,7 @@
 #include "usb_pd.h"
 
 #define SNK_PORT USBC_PORT_C0
+#define SRC_PORT USBC_PORT_C1
 
 #define TCPCI_EMUL_LABEL DT_NODELABEL(tcpci_emul)
 
@@ -26,7 +27,7 @@ struct usb_pd_ctrl_msg_test_fixture {
 	const struct emul *charger_emul;
 };
 
-static void connect_sink_to_port(struct usb_pd_ctrl_msg_test_fixture *fixture)
+static void connect_partner(struct usb_pd_ctrl_msg_test_fixture *fixture)
 {
 	/*
 	 * TODO(b/221439302) Updating the TCPCI emulator registers, updating the
@@ -41,6 +42,7 @@ static void connect_sink_to_port(struct usb_pd_ctrl_msg_test_fixture *fixture)
 	zassume_ok(tcpci_emul_set_reg(fixture->tcpci_emul, TCPC_REG_EXT_STATUS,
 				      TCPC_REG_EXT_STATUS_SAFE0V),
 		   NULL);
+	tcpci_tcpc_alert(SNK_PORT);
 	zassume_ok(tcpci_drp_emul_connect_to_tcpci(
 			   &fixture->partner_emul.data,
 			   &fixture->partner_emul.src_data,
@@ -49,7 +51,6 @@ static void connect_sink_to_port(struct usb_pd_ctrl_msg_test_fixture *fixture)
 			   &fixture->partner_emul.ops, fixture->tcpci_emul),
 		   NULL);
 
-	tcpci_tcpc_alert(SNK_PORT);
 	/* Wait for PD negotiation and current ramp.
 	 * TODO(b/213906889): Check message timing and contents.
 	 */
@@ -57,7 +58,7 @@ static void connect_sink_to_port(struct usb_pd_ctrl_msg_test_fixture *fixture)
 }
 
 static void
-disconnect_sink_from_port(struct usb_pd_ctrl_msg_test_fixture *fixture)
+disconnect_partner(struct usb_pd_ctrl_msg_test_fixture *fixture)
 {
 	zassume_ok(tcpci_emul_disconnect_partner(fixture->tcpci_emul), NULL);
 	k_sleep(K_SECONDS(1));
@@ -73,20 +74,17 @@ static void *usb_pd_ctrl_msg_setup(void)
 	fixture.charger_emul =
 		emul_get_binding(DT_LABEL(DT_NODELABEL(isl923x_emul)));
 
-	tcpci_emul_set_rev(fixture.tcpci_emul, TCPCI_EMUL_REV2_0_VER1_1);
-
-	/* Turn TCPCI rev 2 ON */
-	tcpc_config[SNK_PORT].flags |= TCPC_FLAGS_TCPCI_REV2_0;
-
 	return &fixture;
 }
 
-static void usb_pd_ctrl_msg_before(void *data)
+static void usb_pd_ctrl_msg_before_sink(void *data)
 {
 	struct usb_pd_ctrl_msg_test_fixture *fixture = data;
 
 	set_test_runner_tid();
 
+	test_set_chipset_to_s0();
+	k_sleep(K_SECONDS(1));
 	test_set_chipset_to_g3();
 	k_sleep(K_SECONDS(1));
 
@@ -99,7 +97,65 @@ static void usb_pd_ctrl_msg_before(void *data)
 	/* Initialized the sink to request 5V and 3A */
 	tcpci_drp_emul_init(&fixture->partner_emul);
 
-	connect_sink_to_port(fixture);
+	tcpci_emul_set_rev(fixture->tcpci_emul, TCPCI_EMUL_REV2_0_VER1_1);
+
+	/* Turn TCPCI rev 2 ON */
+	tcpc_config[SNK_PORT].flags |= TCPC_FLAGS_TCPCI_REV2_0;
+
+	connect_partner(fixture);
+
+	k_sleep(K_SECONDS(10));
+}
+
+static void usb_pd_ctrl_msg_before_source(void *data)
+{
+	struct usb_pd_ctrl_msg_test_fixture *fixture = data;
+	uint16_t power_reg_val;
+
+	set_test_runner_tid();
+
+	test_set_chipset_to_g3();
+	k_sleep(K_SECONDS(1));
+
+	zassume_ok(tcpc_config[SRC_PORT].drv->init(SRC_PORT), NULL);
+	pd_set_suspend(SRC_PORT, false);
+	zassume_ok(tcpci_emul_disconnect_partner(fixture->tcpci_emul), NULL);
+
+	/* Set chipset to ON, this will set TCPM to DRP */
+	test_set_chipset_to_s0();
+
+	/* TODO(b/214401892): Check why need to give time TCPM to spin */
+	k_sleep(K_SECONDS(1));
+
+	/* Initialized the sink to request 5V and 3A */
+	tcpci_drp_emul_init(&fixture->partner_emul);
+
+	fixture->partner_emul.data.sink = false;
+	fixture->partner_emul.snk_data.pdo[1] =
+		PDO_FIXED(5000, 3000, PDO_FIXED_UNCONSTRAINED) | PDO_FIXED_DUAL_ROLE;
+	fixture->partner_emul.src_data.pdo[1] =
+		PDO_FIXED(5000, 3000, PDO_FIXED_UNCONSTRAINED) | PDO_FIXED_DUAL_ROLE;
+
+	tcpci_emul_set_rev(fixture->tcpci_emul, TCPCI_EMUL_REV2_0_VER1_1);
+
+	tcpci_emul_get_reg(fixture->tcpci_emul, TCPC_REG_POWER_STATUS,
+			   &power_reg_val);
+	tcpci_emul_set_reg(fixture->tcpci_emul, TCPC_REG_POWER_STATUS,
+			   power_reg_val | TCPC_REG_POWER_STATUS_VBUS_DET);
+	tcpci_emul_set_reg(fixture->tcpci_emul, TCPC_REG_EXT_STATUS,
+			   TCPC_REG_EXT_STATUS_SAFE0V);
+
+	zassume_ok(tcpci_drp_emul_connect_to_tcpci(
+			   &fixture->partner_emul.data,
+			   &fixture->partner_emul.src_data,
+			   &fixture->partner_emul.snk_data,
+			   &fixture->partner_emul.common_data,
+			   &fixture->partner_emul.ops, fixture->tcpci_emul),
+		   NULL);
+
+	isl923x_emul_set_adc_vbus(
+		fixture->charger_emul,
+		5000);
 
 	k_sleep(K_SECONDS(10));
 }
@@ -108,7 +164,7 @@ static void usb_pd_ctrl_msg_after(void *data)
 {
 	struct usb_pd_ctrl_msg_test_fixture *fixture = data;
 
-	disconnect_sink_from_port(fixture);
+	disconnect_partner(fixture);
 }
 
 ZTEST_SUITE(usb_pd_ctrl_msg_test, drivers_predicate_post_main,
@@ -122,7 +178,7 @@ ZTEST_F(usb_pd_ctrl_msg_test, verify_vconn_swap)
 	/* TODO(b/228593065): Revert this once ZTEST fix before ordering
 	 * is pulled in
 	 */
-	usb_pd_ctrl_msg_before(this);
+	usb_pd_ctrl_msg_before_sink(this);
 
 	snk_resp = host_cmd_typec_status(SNK_PORT);
 	zassert_equal(PD_ROLE_VCONN_SRC, snk_resp.vconn_role,
@@ -148,7 +204,7 @@ ZTEST_F(usb_pd_ctrl_msg_test, verify_pr_swap)
 	/* TODO(b/228593065): Revert this once ZTEST fix before ordering
 	 * is pulled in
 	 */
-	usb_pd_ctrl_msg_before(this);
+	usb_pd_ctrl_msg_before_sink(this);
 
 	snk_resp = host_cmd_typec_status(SNK_PORT);
 	zassert_equal(PD_ROLE_SINK, snk_resp.power_role,
@@ -175,4 +231,42 @@ ZTEST_F(usb_pd_ctrl_msg_test, verify_pr_swap)
 	snk_resp = host_cmd_typec_status(SNK_PORT);
 	zassert_equal(PD_ROLE_SOURCE, snk_resp.power_role,
 		      "SNK Returned power_role=%u", snk_resp.power_role);
+}
+
+
+ZTEST_F(usb_pd_ctrl_msg_test, verify_dr_swap)
+{
+	struct ec_response_typec_status snk_resp = { 0 };
+	int rv = 0;
+
+	printf("Before verify_dr_swap\n");
+
+	/* TODO(b/228593065): Revert this once ZTEST fix before ordering
+	 * is pulled in
+	 */
+	usb_pd_ctrl_msg_before_source(this);
+
+	printf("Running verify_dr_swap\n");
+
+	snk_resp = host_cmd_typec_status(SRC_PORT);
+	zassert_equal(PD_ROLE_UFP, snk_resp.data_role,
+		      "Returned data_role=%u", snk_resp.data_role);
+
+	/* Ignore ACCEPT in common handler for DR Swap request,
+	 * causes soft reset
+	 */
+	tcpci_partner_common_handler_mask_msg(&this->partner_emul.common_data,
+					      PD_CTRL_ACCEPT, true);
+
+	printf("Send DR_Swap\n");
+	/* Send DR_SWAP request */
+	rv = tcpci_partner_send_control_msg(&this->partner_emul.common_data,
+					    PD_CTRL_DR_SWAP, 0);
+	zassert_ok(rv, "Failed to send PR_SWAP request, rv=%d", rv);
+
+	k_sleep(K_MSEC(20));
+
+	snk_resp = host_cmd_typec_status(SRC_PORT);
+	zassert_equal(PD_ROLE_DFP, snk_resp.data_role,
+		      "Returned data_role=%u", snk_resp.data_role);
 }

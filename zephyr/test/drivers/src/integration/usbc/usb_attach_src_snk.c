@@ -110,6 +110,8 @@ static void attach_src_snk_common_before(struct emul_state *my_emul_state)
 	const struct emul *tcpci_emul_snk = my_emul_state->tcpci_ps8xxx_emul;
 	const struct emul *charger_emul = my_emul_state->charger_isl923x_emul;
 
+	set_test_runner_tid();
+
 	/* Reset vbus to 0mV */
 	/* TODO(b/217737667): Remove driver specific code. */
 	isl923x_emul_set_adc_vbus(charger_emul, 0);

@@ -515,6 +515,21 @@ tcpci_partner_common_ps_rdy_vconn_swap_handler(struct tcpci_partner_data *data)
 	return TCPCI_PARTNER_COMMON_MSG_HANDLED;
 }
 
+/**
+ * @brief Handle DR_SWAP message
+ *
+ * @return enum tcpci_partner_handler_res
+ */
+static enum tcpci_partner_handler_res
+tcpci_partner_common_dr_swap_handler(struct tcpci_partner_data *data)
+{
+	//tcpci_partner_common_set_ams_ctrl_msg(data, PD_CTRL_DR_SWAP);
+
+	tcpci_partner_send_control_msg(data, PD_CTRL_ACCEPT, 0);
+
+	return TCPCI_PARTNER_COMMON_MSG_HANDLED;
+}
+
 static enum tcpci_partner_handler_res
 tcpi_drp_emul_ps_rdy_handler(struct tcpci_partner_data *data)
 {
@@ -609,6 +624,9 @@ enum tcpci_partner_handler_res tcpci_partner_common_msg_handler(
 	case PD_CTRL_VCONN_SWAP:
 		return tcpci_partner_common_vconn_swap_handler(data);
 
+	case PD_CTRL_DR_SWAP:
+		return tcpci_partner_common_dr_swap_handler(data);
+
 	case PD_CTRL_PS_RDY:
 		return tcpi_drp_emul_ps_rdy_handler(data);
 
@@ -639,6 +657,9 @@ enum tcpci_partner_handler_res tcpci_partner_common_msg_handler(
 			return TCPCI_PARTNER_COMMON_MSG_NOT_HANDLED;
 		}
 
+		LOG_INF("Unexpected message %d - trigger soft reset. cur_ams_ctrl_req=%d",
+			PD_HEADER_TYPE(header),
+			data->cur_ams_ctrl_req);
 		/* Unexpected message - trigger soft reset */
 		tcpci_partner_common_send_soft_reset(data);
 
