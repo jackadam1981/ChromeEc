@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c11e174_517c0867",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-04-06T00:13:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b482bbc5_c1719f07",
+      "revId": "1f6dfa04c5df0bf030f25bf5f162586bcf5583e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "79fabb8b_b8e164c9",
@@ -126,6 +144,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e257d208_dc747a9f",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 472,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-04-06T00:13:26Z",
+      "side": 1,
+      "message": "\u003e My understanding is that the remote is the hostname (e.g. localhost) of the computer where the flasher is connected to.\n\nCorrect.\n\n\u003e In practice I think it would be enough to set it to the custom parser function  parse_remote_arg .\n\nIt looks like you have to create a custom [Action](https://docs.python.org/3/library/argparse.html#action) to do that? (which doesn\u0027t seem like much of an improvement in readability.) Or is there some other way?",
+      "parentUuid": "ad1b9bbb_36dd0322",
+      "revId": "1f6dfa04c5df0bf030f25bf5f162586bcf5583e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8a64203e_1fbeb7dd",
         "filename": "test/run_device_tests.py",
         "patchSetId": 1
@@ -161,6 +197,30 @@
       "side": 1,
       "message": "I\u0027m not sure what the difference is but if I recall correctly there are several docs that call out using 2551 when using `flash_jlink.py`. I was never clear on the reason.",
       "parentUuid": "8a64203e_1fbeb7dd",
+      "range": {
+        "startLine": 477,
+        "startChar": 32,
+        "endLine": 477,
+        "endChar": 36
+      },
+      "revId": "1f6dfa04c5df0bf030f25bf5f162586bcf5583e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9fd314df_447fadf1",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 477,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-04-06T00:13:26Z",
+      "side": 1,
+      "message": "I can\u0027t remember how I ended up using port `2551` (I always specify it when running `JLinkRemoteServerCLExe`), but let\u0027s change it to `19020`, which is the default port: https://crrev.com/c/3055111.",
+      "parentUuid": "a6709903_8cef6da9",
       "range": {
         "startLine": 477,
         "startChar": 32,
@@ -282,6 +342,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e7c8c5da_e45c1ca7",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 490,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-04-06T00:13:26Z",
+      "side": 1,
+      "message": "No, this script is only run by hand by us, not in any automated way.",
+      "parentUuid": "19100480_af5b50f7",
+      "revId": "1f6dfa04c5df0bf030f25bf5f162586bcf5583e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "87733305_092b9993",
@@ -295,6 +373,24 @@
       "writtenOn": "2022-03-09T00:05:28Z",
       "side": 1,
       "message": "Note: I haven\u0027t tested the script yet.\n\nDoes this assume the remote_ip (e.g. my laptop) is accessible from the cloudtop? Or can I still configure port forwarding using SSH and avoid opening ports on my router?",
+      "revId": "1f6dfa04c5df0bf030f25bf5f162586bcf5583e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "04458cfe_d7417fea",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 548,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-04-06T00:13:26Z",
+      "side": 1,
+      "message": "You can still configure port forwarding in which case you can set `remote_ip` to `127.0.0.1`.",
+      "parentUuid": "87733305_092b9993",
       "revId": "1f6dfa04c5df0bf030f25bf5f162586bcf5583e9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
