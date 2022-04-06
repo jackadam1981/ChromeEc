@@ -47,8 +47,8 @@ static struct consumer const event_vdec_core_consumer = {
 
 /* Stub functions only provided by private overlays. */
 #ifndef HAVE_PRIVATE_MT_SCP
-void vdec_msg_handler(void *data) {}
-void vdec_core_msg_handler(void *data) {}
+__overridable void vdec_msg_handler(void *data) {}
+__overridable void vdec_core_msg_handler(void *data) {}
 #endif
 
 static void vdec_h264_ipi_handler(int id, void *data, uint32_t len)
