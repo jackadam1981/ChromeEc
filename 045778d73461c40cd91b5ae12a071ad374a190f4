@@ -22,6 +22,30 @@
       },
       "revId": "045778d73461c40cd91b5ae12a071ad374a190f4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e61dfdb1_a5a09e55",
+        "filename": "zephyr/boards/riscv/it8xxx2_evb/it8xxx2_evb.dts",
+        "patchSetId": 5
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-04-07T20:02:02Z",
+      "side": 0,
+      "message": "Not really, no standard place to put it in Zephyr, sometimes it\u0027s hardcoded, sometimes it\u0027s in the phande-array (but not for ite), sometimes in the upper level driver...\n\nIn this setup it would either take a upper driver default or can be set arbitrarily with the shell command (it takes period and pulse).",
+      "parentUuid": "eee6cbe8_d5a1489b",
+      "range": {
+        "startLine": 155,
+        "startChar": 3,
+        "endLine": 155,
+        "endChar": 21
+      },
+      "revId": "045778d73461c40cd91b5ae12a071ad374a190f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
