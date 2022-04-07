@@ -1,0 +1,24 @@
+# Copyright (c) 2022 The Chromium OS Authors
+# SPDX-License-Identifier: Apache-2.0
+
+description: Common properties for USB-C mux
+
+properties:
+  flags:
+    type: int
+    required: false
+    default: 0
+    description: |
+      Mask of flags defined in dt-bindings/usbc_mux.h
+
+  board-init:
+    type: string
+    required: false
+    description: |
+      Name of function used as board_init callback
+
+  board-set:
+    type: string
+    required: false
+    description: |
+      Name of function used as board_set callback

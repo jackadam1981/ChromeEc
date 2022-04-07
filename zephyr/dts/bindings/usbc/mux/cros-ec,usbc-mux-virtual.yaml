@@ -1,0 +1,8 @@
+# Copyright (c) 2022 The Chromium OS Authors
+# SPDX-License-Identifier: Apache-2.0
+
+description: USB-C Virtual USB MUX
+
+include: cros-ec,usbc-mux.yaml
+
+compatible: "cros-ec,usbc-mux-virtual"
