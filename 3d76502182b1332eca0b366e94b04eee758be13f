@@ -52,6 +52,24 @@
       "parentUuid": "436f1231_8895c53f",
       "revId": "3d76502182b1332eca0b366e94b04eee758be13f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e193f393_f48fe42e",
+        "filename": "zephyr/projects/nissa/src/nivviks/usbc.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-04-07T07:35:08Z",
+      "side": 1,
+      "message": "Thanks, it\u0027s good to know there is no issue with setting the pin as 1.8V for all boards.\nPeter, even with this, I\u0027m still inclined to keep the config there regardless, unless you think there is some harm in doing so (I think having an API to do his dynamically may come in useful [maybe]).\nWhat do you think?",
+      "parentUuid": "276fef73_7ee0ab16",
+      "revId": "3d76502182b1332eca0b366e94b04eee758be13f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
