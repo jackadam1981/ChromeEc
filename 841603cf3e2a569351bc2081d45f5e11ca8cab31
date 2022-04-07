@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a0a4ea33_0e88e52e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2022-04-07T18:48:25Z",
+      "side": 1,
+      "message": "Caveh, Boris, what do you folks think about this?\n\nI think the approach *seems* fine to me; since it is the shutdown path, but of course, it needs a proper review.",
+      "revId": "841603cf3e2a569351bc2081d45f5e11ca8cab31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
