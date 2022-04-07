@@ -235,26 +235,85 @@ void rgbkbd_init_lookup_table(void)
 
 __overridable void board_enable_rgb_keyboard(bool enable) {}
 
+static int rgbkbd_init(void)
+{
+	int rv = EC_SUCCESS;
+	int e, i;
+	bool updated = false;
+
+	for (i = 0; i < rgbkbd_count; i++) {
+		struct rgbkbd *ctx = &rgbkbds[i];
+
+		if (ctx->state >= RGBKBD_STATE_INITIALIZED)
+			continue;
+
+		e = ctx->cfg->drv->init(ctx);
+		if (e) {
+			CPRINTS("Failed to init GRID%d (%d)", i, e);
+			rv = e;
+			continue;
+		}
+
+		ctx->state = RGBKBD_STATE_INITIALIZED;
+		updated = true;
+
+		e = ctx->cfg->drv->set_scale(ctx, 0, 0x80, get_grid_size(ctx));
+		if (e) {
+			CPRINTS("Failed to set scale of GRID%d (%d)", i, e);
+			rv = e;
+		}
+	}
+
+	if (updated)
+		CPRINTS("Initialized (%d)", rv);
+
+	/* Return EC_SUCCESS or the last error. */
+	return rv;
+}
+
+static int rgbkbd_enable(int enable)
+{
+	int rv = EC_SUCCESS;
+	int e, i;
+	bool updated = false;
+
+	for (i = 0; i < rgbkbd_count; i++) {
+		struct rgbkbd *ctx = &rgbkbds[i];
+
+		if (ctx->state >= RGBKBD_STATE_ENABLED && enable)
+			continue;
+
+		e = ctx->cfg->drv->enable(ctx, enable);
+		if (e) {
+			CPRINTS("Failed to %s GRID%d (%d)",
+				enable ? "enable" : "disable", i, e);
+			rv = e;
+			continue;
+		}
+
+		ctx->state = enable ?
+				RGBKBD_STATE_ENABLED : RGBKBD_STATE_DISABLED;
+		updated = true;
+	}
+
+	if (updated)
+		CPRINTS("%s (%d)", enable ? "Enabled" : "Disabled", rv);
+
+	/* Return EC_SUCCESS or the last error. */
+	return rv;
+}
+
+
 void rgbkbd_task(void *u)
 {
 	uint32_t event;
-	int i, rv;
 
 	board_enable_rgb_keyboard(true);
 
 	rgbkbd_init_lookup_table();
-
-	for (i = 0; i < rgbkbd_count; i++) {
-		struct rgbkbd *ctx = &rgbkbds[i];
-		rv = ctx->cfg->drv->init(ctx);
-		if (rv)
-			CPRINTS("Failed to init GRID%d (%d)", i, rv);
-		rv = ctx->cfg->drv->set_gcc(ctx, 0x80);
-		rv |= ctx->cfg->drv->set_scale(ctx, 0, 0x80,
-					       get_grid_size(ctx));
-		if (rv)
-			CPRINTS("Failed to set GCC or scale (%d)", rv);
-	}
+	rgbkbd_init();
+	rgbkbd_enable(1);
+	rgbkbd_set_global_brightness(0x80);
 
 	while (1) {
 		event = task_wait_event(100 * MSEC);
