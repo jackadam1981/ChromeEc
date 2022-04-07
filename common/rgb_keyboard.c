@@ -233,6 +233,33 @@ void rgbkbd_init_lookup_table(void)
 	 */
 }
 
+int rgbkbd_set_global_brightness(uint8_t gcc)
+{
+	int grid, rv;
+
+	for (grid = 0; grid < rgbkbd_count; grid++) {
+		const struct rgbkbd *ctx = &rgbkbds[grid];
+
+		rv = ctx->cfg->drv->set_gcc(ctx, gcc);
+		if (rv) {
+			CPRINTS("Failed to set GCC to %u for grid=%d (%d)",
+				gcc, grid, rv);
+			return rv;
+		}
+	}
+
+	CPRINTS("Set GCC to %u", gcc);
+
+	return EC_SUCCESS;
+}
+
+int rgbkbd_get_global_brightness(uint8_t *gcc)
+{
+	*gcc = rgbkbds[0].gcc;
+
+	return EC_SUCCESS;
+}
+
 __overridable void board_enable_rgb_keyboard(bool enable) {}
 
 void rgbkbd_task(void *u)
@@ -356,12 +383,7 @@ test_export_static int cc_rgbk(int argc, char **argv)
 		gcc = strtoi(argv[1], &end, 0);
 		if (*end || gcc < 0 || gcc > UINT8_MAX)
 			return EC_ERROR_PARAM1;
-		demo = RGBKBD_DEMO_OFF;
-		for (i = 0; i < rgbkbd_count; i++) {
-			ctx = &rgbkbds[i];
-			ctx->cfg->drv->set_gcc(ctx, gcc);
-		}
-		return EC_SUCCESS;
+		return rgbkbd_set_global_brightness(gcc);
 	}
 
 	if (argc != 5)
