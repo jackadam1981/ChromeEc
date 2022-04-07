@@ -97,6 +97,15 @@ typedef const char *(*cros_system_chip_revision_api)(const struct device *dev);
  */
 typedef uint64_t (*cros_system_deep_sleep_ticks_api)(const struct device *dev);
 
+/**
+ * @typedef cros_system_pin_voltage
+ * @brief Callback API for enabling/disabling pin low voltage.
+ * See cros_system_pin_voltage() for argument descriptions
+ */
+typedef int (*cros_system_pin_voltage_api)(const struct device *dev,
+				       int pin_id,
+				       bool low_voltage);
+
 /** @brief Driver API structure. */
 __subsystem struct cros_system_driver_api {
 	cros_system_get_reset_cause_api get_reset_cause;
@@ -106,6 +115,7 @@ __subsystem struct cros_system_driver_api {
 	cros_system_chip_name_api chip_name;
 	cros_system_chip_revision_api chip_revision;
 	cros_system_deep_sleep_ticks_api deep_sleep_ticks;
+	cros_system_pin_voltage_api pin_voltage;
 };
 
 /**
@@ -263,6 +273,37 @@ z_impl_cros_system_deep_sleep_ticks(const struct device *dev)
 	}
 
 	return api->deep_sleep_ticks(dev);
+}
+
+/**
+ * @brief Set or reset the low voltage on a selected pin.
+ *
+ * The pinctrl Zephyr API can be used if it is available,
+ * otherwise chip specific configuration may be required.
+ *
+ * @param dev Pointer to the device structure for the driver instance.
+ * @param pin_id Pin index, expected to be the index for a DTS entry.
+ * @param enable_low_voltage If true, selects low voltage on the pin
+ * @retval 0 if successful.
+ * @retval Negative errno code if failure.
+ */
+__syscall int cros_system_pin_voltage(const struct device *dev,
+				      int pin_id,
+				      bool enable_low_voltage);
+
+static inline int
+z_impl_cros_system_pin_voltage(const struct device *dev,
+			       int pin_id,
+			       bool enable_low_voltage)
+{
+	const struct cros_system_driver_api *api =
+		(const struct cros_system_driver_api *)dev->api;
+
+	if (!api->pin_voltage) {
+		return -ENOTSUP;
+	}
+
+	return api->pin_voltage(dev, pin_id, enable_low_voltage);
 }
 
 /**
