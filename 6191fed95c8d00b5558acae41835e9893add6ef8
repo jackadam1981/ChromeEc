@@ -22,6 +22,30 @@
       },
       "revId": "6191fed95c8d00b5558acae41835e9893add6ef8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "48925411_c3b66fd1",
+        "filename": "zephyr/Kconfig.usba",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2022-04-07T13:48:00Z",
+      "side": 1,
+      "message": "Done inn CL:3575154.",
+      "parentUuid": "e339a975_60e85300",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 6
+      },
+      "revId": "6191fed95c8d00b5558acae41835e9893add6ef8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
