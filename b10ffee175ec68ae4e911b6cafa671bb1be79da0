@@ -1,0 +1,245 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b70e6488_33cc34ad",
+        "filename": "zephyr/projects/intelrvp/CMakeLists.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-04-07T00:43:23Z",
+      "side": 1,
+      "message": "bring in the MECC1.1 changes to zephyr folder",
+      "range": {
+        "startLine": 30,
+        "startChar": 1,
+        "endLine": 32,
+        "endChar": 104
+      },
+      "revId": "b10ffee175ec68ae4e911b6cafa671bb1be79da0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c67fc991_63e4406b",
+        "filename": "zephyr/projects/intelrvp/mtlrvp/mtlrvpp_npcx/bb_retimer.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-04-07T00:43:23Z",
+      "side": 1,
+      "message": "nit: bring it on top of CL:3138214\nchange names to HBR from BBR",
+      "revId": "b10ffee175ec68ae4e911b6cafa671bb1be79da0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2d445b6_842621bc",
+        "filename": "zephyr/projects/intelrvp/mtlrvp/prj.conf",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-04-07T00:43:23Z",
+      "side": 1,
+      "message": "remove",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 43
+      },
+      "revId": "b10ffee175ec68ae4e911b6cafa671bb1be79da0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b44ef44d_31b4bd78",
+        "filename": "zephyr/projects/intelrvp/mtlrvp/prj.conf",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-04-07T00:43:23Z",
+      "side": 1,
+      "message": "try add only ones that are needed\nand also bring the ones down that are added to remove compile errors",
+      "revId": "b10ffee175ec68ae4e911b6cafa671bb1be79da0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d43cd4a_a71a35ec",
+        "filename": "zephyr/projects/intelrvp/mtlrvp/prj.conf",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-04-07T00:43:23Z",
+      "side": 1,
+      "message": "y",
+      "range": {
+        "startLine": 33,
+        "startChar": 47,
+        "endLine": 33,
+        "endChar": 49
+      },
+      "revId": "b10ffee175ec68ae4e911b6cafa671bb1be79da0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61a1fb9c_af6d645c",
+        "filename": "zephyr/projects/intelrvp/mtlrvp/prj.conf",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-04-07T00:43:23Z",
+      "side": 1,
+      "message": "n",
+      "range": {
+        "startLine": 34,
+        "startChar": 46,
+        "endLine": 34,
+        "endChar": 48
+      },
+      "revId": "b10ffee175ec68ae4e911b6cafa671bb1be79da0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2aecbd6_dbfa3376",
+        "filename": "zephyr/projects/intelrvp/mtlrvp/prj.conf",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-04-07T00:43:23Z",
+      "side": 1,
+      "message": "n",
+      "range": {
+        "startLine": 38,
+        "startChar": 29,
+        "endLine": 38,
+        "endChar": 37
+      },
+      "revId": "b10ffee175ec68ae4e911b6cafa671bb1be79da0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba1311ef_ba56d0f2",
+        "filename": "zephyr/projects/intelrvp/mtlrvp/prj.conf",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-04-07T00:43:23Z",
+      "side": 1,
+      "message": "n",
+      "range": {
+        "startLine": 41,
+        "startChar": 44,
+        "endLine": 41,
+        "endChar": 49
+      },
+      "revId": "b10ffee175ec68ae4e911b6cafa671bb1be79da0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55255cbc_8bd8b97e",
+        "filename": "zephyr/projects/intelrvp/mtlrvp/prj.conf",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-04-07T00:43:23Z",
+      "side": 1,
+      "message": "n",
+      "range": {
+        "startLine": 49,
+        "startChar": 29,
+        "endLine": 49,
+        "endChar": 39
+      },
+      "revId": "b10ffee175ec68ae4e911b6cafa671bb1be79da0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bdc07c92_41bd7081",
+        "filename": "zephyr/projects/intelrvp/mtlrvp/prj.conf",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-04-07T00:43:23Z",
+      "side": 1,
+      "message": "remove",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 0
+      },
+      "revId": "b10ffee175ec68ae4e911b6cafa671bb1be79da0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe08aed5_ef2eb426",
+        "filename": "zephyr/projects/intelrvp/mtlrvp/src/mtlrvp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-04-07T00:43:23Z",
+      "side": 1,
+      "message": "need to define dts file for this",
+      "range": {
+        "startLine": 78,
+        "startChar": 27,
+        "endLine": 78,
+        "endChar": 38
+      },
+      "revId": "b10ffee175ec68ae4e911b6cafa671bb1be79da0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
