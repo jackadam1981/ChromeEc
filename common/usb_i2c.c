@@ -112,6 +112,8 @@ static void usb_i2c_execute(struct usb_i2c_config const *config)
 	int read_count      = (config->buffer[1] >> 8) & 0xff;
 	int offset          = 0;    /* Offset for extended reading header. */
 
+	CPRINTS("usb_i2c_execute()");
+
 	config->buffer[0] = 0;
 	config->buffer[1] = 0;
 
@@ -159,6 +161,7 @@ static void usb_i2c_execute(struct usb_i2c_config const *config)
 			       write_count,
 			       (uint8_t *)(config->buffer + 2),
 			       read_count);
+		CPRINTS("i2c_xfer(%d, 0x%02x, [...], %d, [...], %d) = %d", portindex, addr_flags, write_count, read_count, ret);
 		config->buffer[0] = usb_i2c_map_error(ret);
 	}
 	usb_i2c_write_packet(config, read_count + 4);
