@@ -179,7 +179,7 @@
 #define GPIO_WP_L			GPIO_EC_WP_ODL
 
 /* System has back-lit keyboard */
-#define CONFIG_PWM_KBLIGHT
+#define CONFIG_PWM
 
 /* I2C Bus Configuration */
 #define I2C_PORT_SENSOR		NPCX_I2C_PORT0_0
@@ -294,7 +294,6 @@ enum battery_type {
 };
 
 enum pwm_channel {
-	PWM_CH_KBLIGHT = 0,		/* PWM3 */
 	PWM_CH_FAN,			/* PWM5 */
 	PWM_CH_COUNT
 };
