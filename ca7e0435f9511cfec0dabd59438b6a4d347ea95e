@@ -70,6 +70,24 @@
       "parentUuid": "43978598_9300e271",
       "revId": "ca7e0435f9511cfec0dabd59438b6a4d347ea95e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "866823ed_b0571e0d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-04-07T16:24:05Z",
+      "side": 1,
+      "message": "The fuel gauge registers need to be confirmed. I asked Mike to inquiry these fuel gauge info.\n\nThis behavior you mentioned depends on the fuel gauge implementation. I saw some fuel gauge has this kind of problems, like must wait multiple hours to complete enter the cutoff state. IMO, some are bugs, like not well-defined state machine, wrong transition between states. Need the datasheet and talk to the battery vendor to confirm.",
+      "parentUuid": "0f5b9f29_a2d898bf",
+      "revId": "ca7e0435f9511cfec0dabd59438b6a4d347ea95e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
