@@ -9,6 +9,7 @@
 #include <devicetree.h>
 #include <sys/util_macro.h>
 #include "usb_mux.h"
+#include "usbc/tcpci_usb_mux.h"
 #include "usbc/it5205_usb_mux.h"
 #include "usbc/tusb1064_usb_mux.h"
 #include "usbc/virtual_usb_mux.h"
@@ -18,6 +19,7 @@
  *        elment of list has to have (compatible, config) format.
  */
 #define USB_MUX_DRIVERS						\
+	(TCPCI_TCPM_USB_MUX_COMPAT, USB_MUX_CONFIG_TCPCI_TCPM),	\
 	(IT5205_USB_MUX_COMPAT, USB_MUX_CONFIG_IT5205),		\
 	(TUSB1064_USB_MUX_COMPAT, USB_MUX_CONFIG_TUSB1064),	\
 	(VIRTUAL_USB_MUX_COMPAT, USB_MUX_CONFIG_VIRTUAL)

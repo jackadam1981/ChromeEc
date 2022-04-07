@@ -31,6 +31,11 @@
 				port = <&i2c_tcpc0>;
 				i2c-addr-flags = "PS8XXX_I2C_ADDR1_FLAGS";
 			};
+			usb-mux {
+				compatible = "cros-ec,tcpci-usb-mux";
+				hpd-update = "ps8xxx_tcpc_update_hpd_status";
+				first-mux;
+			};
 		};
 
 		port1@1 {
@@ -55,6 +60,11 @@
 				status = "okay";
 				port = <&i2c_tcpc1>;
 				i2c-addr-flags = "PS8XXX_I2C_ADDR1_FLAGS";
+			};
+			usb-mux {
+				compatible = "cros-ec,tcpci-usb-mux";
+				hpd-update = "ps8xxx_tcpc_update_hpd_status";
+				first-mux;
 			};
 		};
 	};

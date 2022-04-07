@@ -7,11 +7,13 @@
 #include <sys/util_macro.h>
 #include "usb_mux.h"
 #include "usbc/it5205_usb_mux.h"
+#include "usbc/tcpci_usb_mux.h"
 #include "usbc/tusb1064_usb_mux.h"
 #include "usbc/usb_muxes.h"
 #include "usbc/virtual_usb_mux.h"
 
 #if DT_HAS_COMPAT_STATUS_OKAY(IT5205_USB_MUX_COMPAT) ||			\
+	DT_HAS_COMPAT_STATUS_OKAY(TCPCI_TCPM_USB_MUX_COMPAT) ||		\
 	DT_HAS_COMPAT_STATUS_OKAY(TUSB1064_USB_MUX_COMPAT) ||		\
 	DT_HAS_COMPAT_STATUS_OKAY(VIRTUAL_USB_MUX_COMPAT)
 
