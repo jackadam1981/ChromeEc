@@ -220,6 +220,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "64b999f3_72cf90ed",
+        "filename": "zephyr/subsys/ap_pwrseq/Kconfig",
+        "patchSetId": 9
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-04-07T11:50:25Z",
+      "side": 1,
+      "message": "The tricky thing here is that you are selectively including a legacy file into your build, so you may have to be careful if there are any transitive dependencies that this file has. It there are no external dependencies for this file, it might be OK, or it could be a very slippery slope trying to disentangle it from all the rest of the legacy code. YMMV.\n\nSo ignore the build.mk, since that is only used for the legacy build.\nInstead, the CMakeLists.txt file in the top level ec/zephyr directory should be where you reference the legacy files.\n\nSo perhaps in that file, you could add:\n\nzephyr_library_sources_ifdef(CONFIG_AP_PWRSEQ_HOST_SLEEP\n        \"${PLATFORM_EC}/power/host_sleep.c\")\n\n\nThat should solve the file build addition.\nI don\u0027t think you should have to define CONFIG_POWER_TRACK_HOST_SLEEP_STATE, that seems only there to make sure the file gets included in the build.\n\nIt\u0027s tough to do this kind of migration. Sometimes it\u0027s better to drop the old stuff and redo it to avoid the transitive dependencies and reliance on all the old APIs, but by doing so, there may be new bugs and you have duplicate implementations. It\u0027s sometimes a hard judgement call which is best.",
+      "parentUuid": "fe5b6195_93421d52",
+      "range": {
+        "startLine": 84,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 38
+      },
+      "revId": "56240898feb68486b3ae1333e71703d0ee7c5e6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "20845ccc_8a1a279b",
         "filename": "zephyr/subsys/ap_pwrseq/Kconfig",
         "patchSetId": 9
