@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e1cc4481_1c472c7c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2022-04-07T14:49:48Z",
+      "side": 1,
+      "message": "CR+2 except I want Keith to check over the DTSI and /delete-node/ portions",
+      "revId": "9a02e46b31d36c906991a0a6d3a5d6337f5dba37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "075085d4_b50f5fdd",
