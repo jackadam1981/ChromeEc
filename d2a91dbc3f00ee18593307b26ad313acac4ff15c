@@ -94,6 +94,30 @@
       },
       "revId": "d2a91dbc3f00ee18593307b26ad313acac4ff15c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e33b850_aaea3826",
+        "filename": "zephyr/projects/herobrine/battery_villager.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-04-07T05:17:43Z",
+      "side": 1,
+      "message": "If both are used according to SKUs, it doesn\u0027t matter which one is default.",
+      "parentUuid": "155f576d_5a7a448d",
+      "range": {
+        "startLine": 8,
+        "startChar": 2,
+        "endLine": 8,
+        "endChar": 17
+      },
+      "revId": "d2a91dbc3f00ee18593307b26ad313acac4ff15c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
