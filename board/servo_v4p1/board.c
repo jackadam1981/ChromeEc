@@ -356,6 +356,32 @@ USB_STREAM_CONFIG_USART_IFACE(usart4_usb,
 	usart4_to_usb,
 	usart4)
 
+static int command_usart4_tx(int argc, char *argv[])
+{
+	char *endptr;
+	int strtoi_ret;
+	uint8_t usart_data;
+	static struct mutex usart4_mutex;
+
+	/* Check argument count */
+	if (argc != 2)
+		return EC_ERROR_PARAM_COUNT;
+
+	strtoi_ret = strtoi(argv[1], &endptr, 0);
+
+	/* Check for valin input */
+	if (endptr == argv[1] || strtoi_ret < 0 || strtoi_ret > 255)
+		return EC_ERROR_PARAM1;
+
+	usart_data = (uint8_t) strtoi_ret;
+	mutex_lock(&usart4_mutex);
+	queue_add_unit(&usb_to_usart4, &usart_data);
+	mutex_unlock(&usart4_mutex);
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(usart4_tx, command_usart4_tx, "<USART data byte>",
+	"Send data to the Atmel ATMEGA32U4");
 
 /*
  * Define usb interface descriptor for the `EMPTY` usb interface, to satisfy
