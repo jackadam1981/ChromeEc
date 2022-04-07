@@ -26,6 +26,16 @@
 			&int_lid_open
 		>;
 	};
+	/*
+	 * Define a set of pins that can be low voltage.
+	 * This is used by the pin_voltage API where the
+	 * pin_id is the index to the array.
+	 */
+	low_voltage_pins: lvol-pins {
+		compatible = "nuvoton,npcx-lvolctrl-def";
+
+		lvol-io-pads = <&lvol_iof5 &lvol_iof4>;
+	};
 
 	gpio-interrupts {
 		compatible = "cros-ec,gpio-interrupts";

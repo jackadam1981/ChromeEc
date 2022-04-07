@@ -105,6 +105,8 @@ static void nereid_subboard_config(void)
 	 * configuration provided.
 	 */
 	if (sb == NISSA_SB_C_A || sb == NISSA_SB_C_LTE) {
+		/* Do any board specific config */
+		nissa_configure_c1();
 		/* Configure interrupt input */
 		gpio_pin_configure_dt(
 			GPIO_DT_FROM_ALIAS(gpio_usb_c1_int_odl),
