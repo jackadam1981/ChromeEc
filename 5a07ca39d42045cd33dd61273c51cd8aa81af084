@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52d8396a_c2e31e25",
+        "filename": "test/motion_sense_fifo.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-04-07T19:57:13Z",
+      "side": 1,
+      "message": "Nit - please use parenthesis to be explicit about the order of operation.",
+      "range": {
+        "startLine": 299,
+        "startChar": 24,
+        "endLine": 299,
+        "endChar": 50
+      },
+      "revId": "5a07ca39d42045cd33dd61273c51cd8aa81af084",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aecc4062_d671d69e",
+        "filename": "test/motion_sense_fifo.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-04-07T19:57:13Z",
+      "side": 1,
+      "message": "This seems over complicated.  Why not use \"now\" as the base timestamp and then add an offset for each sample:\n\n```\nts \u003d now + ((i/2) * 10);\n```\n\nAlso, with the divide by two, every pair of samples contains the same timestamp.  Why is this - does this better match how real sensors insert samples?",
+      "range": {
+        "startLine": 314,
+        "startChar": 0,
+        "endLine": 314,
+        "endChar": 45
+      },
+      "revId": "5a07ca39d42045cd33dd61273c51cd8aa81af084",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0c5bebf_00069980",
+        "filename": "test/motion_sense_fifo.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-04-07T19:57:13Z",
+      "side": 1,
+      "message": "The checks below are verifying that the first and third entries include a timestamp.  It\u0027s only the check at line 336 that validates the timestamps are different, correct?",
+      "range": {
+        "startLine": 322,
+        "startChar": 4,
+        "endLine": 322,
+        "endChar": 62
+      },
+      "revId": "5a07ca39d42045cd33dd61273c51cd8aa81af084",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
