@@ -16,6 +16,24 @@
       "message": "See my comment on the next CL:3574425. I think because Nuvoton indicated it is safe to set 1.8 V on pins that are connected 3.3V, there is no need to extend the cros_system driver at this time.",
       "revId": "ae9fa03225c524d41e55983261683dffc9f2ae07",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "519b71e8_74d4dfe1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-04-07T23:32:55Z",
+      "side": 1,
+      "message": "OK will keep these around just in case.",
+      "parentUuid": "0be72db2_e524dbcd",
+      "revId": "ae9fa03225c524d41e55983261683dffc9f2ae07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
