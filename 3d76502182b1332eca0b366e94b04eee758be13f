@@ -16,6 +16,24 @@
       "message": "I think it\u0027s actually safe to always configure for 1.8V. Maximum input voltage (datasheet section 7.1.2) on non-5V-tolerant pins is Vsup + 0.5V, and 2.4.13 indicates that Vsup on all I2C pins is Vcc1 (nominally 3.3V).\n\nI\u0027m reasonably confident in this interpretation because the absolute maximums refer to power wells, which seem like they should be fixed per-pin regardless of LV_GPIO_* setting. Might want to verify with Nuvoton though.",
       "revId": "3d76502182b1332eca0b366e94b04eee758be13f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "436f1231_8895c53f",
+        "filename": "zephyr/projects/nissa/src/nivviks/usbc.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-04-07T06:47:47Z",
+      "side": 1,
+      "message": "Copied Mulin.\n\nI was a little concerned that changing the voltage for all boards would change the I2C bus response (different rise times at higher speeds).\nMaybe I\u0027ll check with Ben and Louis whether this is a factor.",
+      "parentUuid": "e6ff59fe_b5df724a",
+      "revId": "3d76502182b1332eca0b366e94b04eee758be13f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
