@@ -52,6 +52,24 @@
       "parentUuid": "00377c6c_c46f30f7",
       "revId": "ca7e0435f9511cfec0dabd59438b6a4d347ea95e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f5b9f29_a2d898bf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1511957
+      },
+      "writtenOn": "2022-04-07T13:28:12Z",
+      "side": 1,
+      "message": "Mike helped in getting battery information from vendor and updated buganizer, https://partnerissuetracker.corp.google.com/issues/226820234, could you please review now and if these FET addresses are as expected or not. Also I have seen that immediately after cutoff, if we apply power, battery doesn\u0027t detect, I need to wait ~40 seconds after cutoff for next battery detection to plug in AC. Is that how it was supposed to do?",
+      "parentUuid": "43978598_9300e271",
+      "revId": "ca7e0435f9511cfec0dabd59438b6a4d347ea95e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
