@@ -86,6 +86,24 @@
       "parentUuid": "be04489b_9a25b360",
       "revId": "e2788f72d414ee46b465ca6d4ae2d9392cf2c36c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77397c98_4dc91904",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1456367
+      },
+      "writtenOn": "2022-04-07T15:54:05Z",
+      "side": 1,
+      "message": "Is it possible to share the that is observed on https://cr-buildbucket.appspot.com/build/8817577358595746273\n\nLocally I\u0027m observing the following error. It passes locally if I remove the added changes in zephyr/test/drivers/src/bb_retimer.c\n\nExpected state 0x410001, got 0x490001",
+      "parentUuid": "ef59df0e_1b601faf",
+      "revId": "e2788f72d414ee46b465ca6d4ae2d9392cf2c36c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
