@@ -154,7 +154,13 @@ DECLARE_IRQ(UART_INTC_GROUP, uart_irq_handler, 0);
 #error "APUART task hasn't defined in ec.tasklist."
 #endif
 
-void uart_task(void)
+int uart_interrupt(void);
+int uart_interrupt(void)
+{
+	return 0;
+}
+
+void uart_task(void *u)
 {
 	while (1) {
 		if (uart_rx_available() || tx_started)
