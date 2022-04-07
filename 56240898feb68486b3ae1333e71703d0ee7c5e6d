@@ -197,6 +197,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fe5b6195_93421d52",
+        "filename": "zephyr/subsys/ap_pwrseq/Kconfig",
+        "patchSetId": 9
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-04-07T06:51:46Z",
+      "side": 1,
+      "message": "To use legacy EC file power/host_sleep.c, the build.mk requires config flag power-$(CONFIG_POWER_TRACK_HOST_SLEEP_STATE)+\u003dhost_sleep.o, so I added config flags PLATFORM_EC_POWERSEQ_HOST_SLEEP and PLATFORM_EC_POWERSEQ_S0IX, then shim/config_chip.h will enable CONFIG_POWER_TRACK_HOST_SLEEP_STATE.\n\nIf I don\u0027t use those two PLATFORM_EC_xxx flags, how to make this work? I tried to add CONFIG_POWER_TRACK_HOST_SLEEP_STATE directly to here, but it will be undefined by config_chip.h. I can use other names, still need a way to enable CONFIG_POWER_TRACK_HOST_SLEEP_STATE. I don\u0027t have a better idea. any suggestions?",
+      "range": {
+        "startLine": 84,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 38
+      },
+      "revId": "56240898feb68486b3ae1333e71703d0ee7c5e6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "20845ccc_8a1a279b",
         "filename": "zephyr/subsys/ap_pwrseq/Kconfig",
         "patchSetId": 9
