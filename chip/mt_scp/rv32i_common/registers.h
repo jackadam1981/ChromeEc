@@ -14,6 +14,8 @@
 
 #define UNIMPLEMENTED_GPIO_BANK 0
 
+/* external address: AP */
+#define AP_REG_BASE			0x60000000 /* 0x10000000 remap to 0x6 */
 #define SCP_REG_BASE			0x70000000
 
 #define SCP_GPR(x)			REG32_ADDR(SCP_REG_BASE + 0x40040)[x]
@@ -136,6 +138,7 @@
 #define UART_RX_IRQ(n)			CONCAT3(SCP_IRQ_UART, n, _RX)
 #define SCP_UART0_BASE			(SCP_REG_BASE + 0x26000)
 #define SCP_UART1_BASE			(SCP_REG_BASE + 0x27000)
+#define SCP_UART2_BASE			(AP_REG_BASE + 0x1001300)
 #define SCP_UART_BASE(n)		CONCAT3(SCP_UART, n, _BASE)
 #define UART_REG(n, offset)		REG32_ADDR(SCP_UART_BASE(n))[offset]
 
@@ -212,8 +215,6 @@
 #define SCP_R_REMAP_0X89AB		REG32(SCP_REG_BASE + 0xA5068)
 #define SCP_R_REMAP_0XCDEF		REG32(SCP_REG_BASE + 0xA506C)
 
-/* external address: AP */
-#define AP_REG_BASE			0x60000000 /* 0x10000000 remap to 0x6 */
 /* AP GPIO */
 #define AP_GPIO_BASE			(AP_REG_BASE + 0x5000)
 #define AP_GPIO_MODE11_SET		REG32(AP_GPIO_BASE + 0x03B4)
