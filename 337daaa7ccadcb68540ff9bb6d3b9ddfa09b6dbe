@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0094ce99_07453c40",
+        "filename": "zephyr/shim/src/bc12_rt9490.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-04-07T21:15:40Z",
+      "side": 1,
+      "message": "Please add the rt9490 driver support as a separate CL from the board changes.",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 63
+      },
+      "revId": "337daaa7ccadcb68540ff9bb6d3b9ddfa09b6dbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a258dc3_1f1c5f26",
+        "filename": "zephyr/shim/src/bc12_rt9490.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-04-07T21:15:40Z",
+      "side": 1,
+      "message": "This macro appears to be identical to the one defined by bc12_pi3usb9201.c.  Can you find a common location to share this macro?",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 5
+      },
+      "revId": "337daaa7ccadcb68540ff9bb6d3b9ddfa09b6dbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
