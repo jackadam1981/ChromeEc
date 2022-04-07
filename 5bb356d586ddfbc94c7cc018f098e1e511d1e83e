@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "308d0f32_dab512a8",
+        "filename": "zephyr/projects/intelrvp/adlrvp/adlrvp_npcx/fan.dts",
+        "patchSetId": 8
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2022-04-07T08:09:26Z",
+      "side": 1,
+      "message": "\u003e It seems that rpm_min/rpm_start/rpm_max setting is different from legacy EC  here   \n\u003e #define BOARD_FAN_MIN_RPM\t3000\n\u003e #define BOARD_FAN_MAX_RPM\t10000\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/baseboard/intelrvp/baseboard.c;l\u003d112",
+      "parentUuid": "e5de9da3_b93f8c94",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 20
+      },
+      "revId": "5bb356d586ddfbc94c7cc018f098e1e511d1e83e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3c265d1b_1b54a6e1",
         "filename": "zephyr/projects/intelrvp/adlrvp/adlrvp_npcx/fan.dts",
         "patchSetId": 8
@@ -37,6 +61,24 @@
       "writtenOn": "2022-04-07T03:43:10Z",
       "side": 1,
       "message": "From legacy EC,  pgood_gpio  is configured.\nShould you add it to this node as well?",
+      "revId": "5bb356d586ddfbc94c7cc018f098e1e511d1e83e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4cb9d014_17af721c",
+        "filename": "zephyr/projects/intelrvp/adlrvp/adlrvp_npcx/fan.dts",
+        "patchSetId": 8
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2022-04-07T08:09:26Z",
+      "side": 1,
+      "message": "\u003e From legacy EC,  pgood_gpio  is configured.\n\u003e Should you add it to this node as well?\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/baseboard/intelrvp/baseboard.c;l\u003d106",
+      "parentUuid": "3c265d1b_1b54a6e1",
       "revId": "5bb356d586ddfbc94c7cc018f098e1e511d1e83e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -77,6 +119,30 @@
       "writtenOn": "2022-04-07T03:43:10Z",
       "side": 1,
       "message": "Check the legacy EC  here , it seems the open-drain flag is not set.",
+      "range": {
+        "startLine": 34,
+        "startChar": 1,
+        "endLine": 34,
+        "endChar": 18
+      },
+      "revId": "5bb356d586ddfbc94c7cc018f098e1e511d1e83e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a41c8c9_c00366d5",
+        "filename": "zephyr/projects/intelrvp/adlrvp/adlrvp_npcx/fan.dts",
+        "patchSetId": 8
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2022-04-07T08:09:26Z",
+      "side": 1,
+      "message": "\u003e Check the legacy EC  here , it seems the open-drain flag is not set.\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/baseboard/intelrvp/npcx_ec.c;l\u003d65",
+      "parentUuid": "4c287a92_4d8d9985",
       "range": {
         "startLine": 34,
         "startChar": 1,
