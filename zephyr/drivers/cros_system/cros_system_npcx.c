@@ -36,7 +36,8 @@ struct cros_system_npcx_data {
 /* Driver convenience defines */
 #define DRV_CONFIG(dev) ((const struct cros_system_npcx_config *)(dev)->config)
 
-#define HAL_SCFG_INST(dev) (struct scfg_reg *)(DRV_CONFIG(dev)->base_scfg)
+#define HAL_SCFG_BASE_INST(dev) (DRV_CONFIG(dev)->base_scfg)
+#define HAL_SCFG_INST(dev) (struct scfg_reg *)(HAL_SCFG_BASE_INST(dev))
 #define HAL_TWD_INST(dev) (struct twd_reg *)(DRV_CONFIG(dev)->base_twd)
 #define HAL_MSWC_INST(dev) (struct mswc_reg *)(DRV_CONFIG(dev)->base_mswc)
 
@@ -556,6 +557,40 @@ cros_system_npcx_deep_sleep_ticks(const struct device *dev)
 	return npcx_clock_get_sleep_ticks();
 }
 
+#define	DT_LV_PINS	DT_NODELABEL(low_voltage_pins)
+
+#if DT_NODE_EXISTS(DT_LV_PINS)
+
+/*
+ * Replace default list with our list.
+ */
+#undef NPCX_DT_NODE_DEF_LVOL_LIST
+
+#define NPCX_DT_NODE_DEF_LVOL_LIST	DT_LV_PINS
+
+static const struct npcx_lvol lvol_pins[] = NPCX_DT_IO_LVOL_ITEMS_DEF_LIST;
+
+static int
+cros_system_npcx_pin_voltage(const struct device *dev,
+			     int pin_id,
+			     bool enable_low_voltage)
+{
+	const uint32_t base = HAL_SCFG_BASE_INST(dev);
+
+	if (pin_id < 0 || pin_id >= ARRAY_SIZE(lvol_pins)) {
+		return -EINVAL;
+	}
+	if (enable_low_voltage) {
+		NPCX_LV_GPIO_CTL(base, lvol_pins[pin_id].ctrl)
+			|= BIT(lvol_pins[pin_id].bit);
+	} else {
+		NPCX_LV_GPIO_CTL(base, lvol_pins[pin_id].ctrl)
+			&= ~BIT(lvol_pins[pin_id].bit);
+	}
+	return 0;
+}
+#endif
+
 static struct cros_system_npcx_data cros_system_npcx_dev_data;
 
 static const struct cros_system_npcx_config cros_system_dev_cfg = {
@@ -574,6 +609,9 @@ static const struct cros_system_driver_api cros_system_driver_npcx_api = {
 	.chip_revision = cros_system_npcx_get_chip_revision,
 #ifdef CONFIG_NPCX_PM_TRACE
 	.deep_sleep_ticks = cros_system_npcx_deep_sleep_ticks,
+#endif
+#if DT_NODE_EXISTS(DT_LV_PINS)
+	.pin_voltage = cros_system_npcx_pin_voltage
 #endif
 };
 
