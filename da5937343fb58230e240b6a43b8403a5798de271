@@ -34,6 +34,24 @@
       "parentUuid": "f8103ffb_747ac7f8",
       "revId": "da5937343fb58230e240b6a43b8403a5798de271",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0f862cc_87bd210c",
+        "filename": "zephyr/test/drivers/src/bb_retimer.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 435,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-04-07T17:21:04Z",
+      "side": 1,
+      "message": "The failures are for different clauses of the test because I believe we\u0027re changing around the device\u0027s response in these tests (see line 424).  \n\nSo initially the patchset 4 failure was this: \n```\n    Assertion failed at CMAKE_SOURCE_DIR/src/bb_retimer.c:417: bb_retimer_test_bb_set_dfp_state: (exp_conn not equal to conn)\nExpected state 0x490001, got 0x410001\n```\n\nIn that first check above this comment.  On the patchset 5 run, we see this: \n```\n    Assertion failed at CMAKE_SOURCE_DIR/src/bb_retimer.c:439: bb_retimer_test_bb_set_dfp_state: (exp_conn not equal to conn)\nExpected state 0x410001, got 0x490001\n```\n\nWhich is for this second check.  In this second check, the test has set the vendor specific b1 bit, which changes the BB retimer driver\u0027s register choice. \n\nThe test logic should match the logic we expect the driver to be using for the changing vendor specific bits.",
+      "parentUuid": "002d1266_1a144aab",
+      "revId": "da5937343fb58230e240b6a43b8403a5798de271",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
