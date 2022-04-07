@@ -98,6 +98,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6dff790c_0d839012",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2022-04-07T06:58:13Z",
+      "side": 1,
+      "message": "Copied Above comments to crossbug:b:205928013 ,so that we can further discuss on implementation in partner bug itself.",
+      "parentUuid": "916f1fd8_c1515275",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 41
+      },
+      "revId": "5ebab37dddbcd0c3d554cea7604785a835648343",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ffeeeff0_4da40e0e",
         "filename": "include/ec_commands.h",
         "patchSetId": 2
