@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ef1927b1_ee2385a6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2022-04-07T03:14:48Z",
+      "side": 1,
+      "message": "I can reproduce this issue on Brya. The Port0/ Port2 will be lost function if I press shutdown during TBT FW update.",
+      "parentUuid": "c90c4b37_24a1cae5",
+      "revId": "0d086a179076bfbed8b0f020668a335d73b22a98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4c9ca746_14872c7d",
         "filename": "board/primus/usbc_config.c",
         "patchSetId": 4
@@ -31,6 +49,30 @@
       "writtenOn": "2022-04-07T02:50:01Z",
       "side": 1,
       "message": "nit: will be lost",
+      "range": {
+        "startLine": 291,
+        "startChar": 7,
+        "endLine": 291,
+        "endChar": 8
+      },
+      "revId": "0d086a179076bfbed8b0f020668a335d73b22a98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a038b6a_1d40c351",
+        "filename": "board/primus/usbc_config.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2022-04-07T03:14:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4c9ca746_14872c7d",
       "range": {
         "startLine": 291,
         "startChar": 7,
