@@ -68,7 +68,7 @@
 			enum-name = "GPIO_PACKET_MODE_EN";
 		};
 		gpio_ec_kso_02_inv: ec_kso_02_inv {
-			gpios = <&gpio1 7 (GPIO_OUTPUT_LOW | GPIO_ACTIVE_LOW)>;
+			gpios = <&gpio1 7 (GPIO_OUTPUT | GPIO_ACTIVE_LOW)>;
 		};
 		gpio_ec_pch_wake_odl: ec_pch_wake_odl {
 			gpios = <&gpiob 0 GPIO_ODR_LOW>;
@@ -227,23 +227,6 @@
 			enum-name = "I2C_PORT_BATTERY";
 		};
 	};
-
-	named-pwms {
-		compatible = "named-pwms";
-
-		pwm_pwm_kb_bl: pwm_kb_bl {
-			pwms = <&pwm6 6 0>;
-		};
-		pwm_pwm_led_1_odl: pwm_led_1_odl {
-			pwms = <&pwm2 2 1>;
-		};
-		pwm_pwm_led_2_odl: pwm_led_2_odl {
-			pwms = <&pwm0 0 1>;
-		};
-		pwm_pwm_led_3_odl: pwm_led_3_odl {
-			pwms = <&pwm1 1 1>;
-		};
-	};
 };
 
 &adc0 {
@@ -287,21 +270,5 @@
 };
 
 &i2c_ctrl7 {
-	status = "okay";
-};
-
-&pwm0 {
-	status = "okay";
-};
-
-&pwm1 {
-	status = "okay";
-};
-
-&pwm2 {
-	status = "okay";
-};
-
-&pwm6 {
 	status = "okay";
 };
