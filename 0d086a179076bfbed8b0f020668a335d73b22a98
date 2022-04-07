@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8a9c35e8_76a99f95",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2022-04-07T19:07:05Z",
+      "side": 1,
+      "message": "Can you please move this fix to the baseboard folder and wrap it with \n```\nif (IS_ENABLED(CONFIG_USB_PD_USB4))\n```\nso it will only apply to TBT-enabled boards",
+      "parentUuid": "ef1927b1_ee2385a6",
+      "revId": "0d086a179076bfbed8b0f020668a335d73b22a98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4c9ca746_14872c7d",
         "filename": "board/primus/usbc_config.c",
         "patchSetId": 4
