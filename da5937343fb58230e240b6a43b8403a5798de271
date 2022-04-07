@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8103ffb_747ac7f8",
+        "filename": "zephyr/test/drivers/src/bb_retimer.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 435,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-04-07T16:22:32Z",
+      "side": 1,
+      "message": "The expected value logic needs to more closely match the driver logic.  In this case, b1 is supported and so I believe we still expect this bit to be set.",
+      "revId": "da5937343fb58230e240b6a43b8403a5798de271",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
