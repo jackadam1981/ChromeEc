@@ -24,6 +24,16 @@
 			tcpc {
 				compatible = "ite,it8xxx2-tcpc";
 			};
+			usb-mux {
+				compatible = "ite,it5205-usb-mux";
+				port = <&i2c_usb_mux0>;
+				i2c-addr-flags = "IT5205_I2C_ADDR1_FLAGS";
+				first-mux;
+				next-mux = <&virtual_usb_mux0>;
+			};
+			virtual_usb_mux0: virtual-usb-mux {
+				compatible = "cros-ec,virtual-usb-mux";
+			};
 		};
 
 		port1@1 {
@@ -42,6 +52,16 @@
 			};
 			tcpc {
 				compatible = "ite,it8xxx2-tcpc";
+			};
+			usb-mux {
+				compatible = "ti,tusb1064-usb-mux";
+				port = <&i2c_usb_mux1>;
+				i2c-addr-flags = "TUSB1064_I2C_ADDR0_FLAGS";
+				first-mux;
+				next-mux = <&virtual_usb_mux1>;
+			};
+			virtual_usb_mux1: virtual-usb-mux {
+				compatible = "cros-ec,virtual-usb-mux";
 			};
 		};
 	};

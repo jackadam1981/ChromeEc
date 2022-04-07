@@ -1,0 +1,29 @@
+# Copyright (c) 2022 The Chromium OS Authors
+# SPDX-License-Identifier: Apache-2.0
+
+description: Common properties for USB mux
+
+properties:
+  next-mux:
+    type: phandle
+    required: false
+    description: |
+      Next mux in chain
+
+  first-mux:
+    type: boolean
+    required: false
+    description: |
+      If this is first mux
+
+  board-init:
+    type: string
+    required: false
+    description: |
+      Name of function used as board_init callback
+
+  board-set:
+    type: string
+    required: false
+    description: |
+      Name of function used as board_set callback
