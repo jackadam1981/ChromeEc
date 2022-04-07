@@ -233,6 +233,38 @@ void rgbkbd_init_lookup_table(void)
 	 */
 }
 
+int rgbkbd_set_global_brightness(uint8_t gcc)
+{
+	int e, grid;
+	int rv = EC_SUCCESS;
+
+	for (grid = 0; grid < rgbkbd_count; grid++) {
+		struct rgbkbd *ctx = &rgbkbds[grid];
+
+		e = ctx->cfg->drv->set_gcc(ctx, gcc);
+		if (e) {
+			CPRINTS("Failed to set GCC to %u for grid=%d (%d)",
+				gcc, grid, e);
+			rv = e;
+			continue;
+		}
+
+		ctx->gcc = gcc;
+	}
+
+	CPRINTS("Set GCC to %u", gcc);
+
+	/* Return EC_SUCCESS or the last error. */
+	return rv;
+}
+
+int rgbkbd_get_global_brightness(uint8_t *gcc)
+{
+	*gcc = rgbkbds[0].gcc;
+
+	return EC_SUCCESS;
+}
+
 __overridable void board_enable_rgb_keyboard(bool enable) {}
 
 static int rgbkbd_init(void)
@@ -374,7 +406,6 @@ DECLARE_HOST_COMMAND(EC_CMD_RGBKBD, hc_rgbkbd, EC_VER_MASK(0));
 
 test_export_static int cc_rgbk(int argc, char **argv)
 {
-	struct rgbkbd *ctx;
 	char *end, *comma;
 	struct rgb_s color;
 	int gcc, x, y, val;
@@ -415,12 +446,7 @@ test_export_static int cc_rgbk(int argc, char **argv)
 		gcc = strtoi(argv[1], &end, 0);
 		if (*end || gcc < 0 || gcc > UINT8_MAX)
 			return EC_ERROR_PARAM1;
-		demo = RGBKBD_DEMO_OFF;
-		for (i = 0; i < rgbkbd_count; i++) {
-			ctx = &rgbkbds[i];
-			ctx->cfg->drv->set_gcc(ctx, gcc);
-		}
-		return EC_SUCCESS;
+		return rgbkbd_set_global_brightness(gcc);
 	}
 
 	if (argc != 5)
