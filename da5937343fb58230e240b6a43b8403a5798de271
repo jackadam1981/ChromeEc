@@ -16,6 +16,24 @@
       "message": "The expected value logic needs to more closely match the driver logic.  In this case, b1 is supported and so I believe we still expect this bit to be set.",
       "revId": "da5937343fb58230e240b6a43b8403a5798de271",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "002d1266_1a144aab",
+        "filename": "zephyr/test/drivers/src/bb_retimer.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 435,
+      "author": {
+        "id": 1456367
+      },
+      "writtenOn": "2022-04-07T16:28:16Z",
+      "side": 1,
+      "message": "https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3551382/5#message-6c18053f27e5cf980aaeed59ad8a6021a23563f2\n\n```\nExpected state 0x490001, got 0x410001\n```\nBut in the error shared earlier this bit is not set in the value stored in conn (BB_RETIMER_REG_CONNECTION_STATE)",
+      "parentUuid": "f8103ffb_747ac7f8",
+      "revId": "da5937343fb58230e240b6a43b8403a5798de271",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
