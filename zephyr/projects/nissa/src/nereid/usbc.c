@@ -359,7 +359,6 @@ int pd_snk_is_vbus_provided(int port)
 	return chg_det;
 }
 
-
 const struct usb_mux *nissa_get_c1_sb_mux(void)
 {
 	/*
@@ -375,4 +374,8 @@ const struct usb_mux *nissa_get_c1_sb_mux(void)
 	};
 
 	return &usbc1_tcpc_mux;
+}
+
+void nissa_configure_c1(void)
+{
 }
