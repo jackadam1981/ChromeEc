@@ -137,6 +137,10 @@ requires the battery module for correct operation.
 
 ## Testing and Debugging
 
+### EC Console Commands
+
+#### battery
+
 The `battery` [EC console command] may be invoked to check battery information
 on a flashed board.
 
@@ -168,6 +172,31 @@ Time-full: 0h:0
 full_factor:0.97
 shutdown_soc:4 %
 ```
+
+#### pwr_avg
+
+The `pwr_avg` [EC console command] logs the battery charging rate by querying
+the battery fuel gauge driver.
+
+Example output of `uart:~$ pwr_avg`:
+
+Charging
+
+```
+mv = 13073
+ma = 439
+mw = 573
+```
+
+Discharging
+
+```
+mv = 12824
+ma = -146
+mw = -1872
+```
+
+Note: A fully charged board may report `ma = 0` and `mw = 0` average rates.
 
 <!-- Reference Links -->
 
