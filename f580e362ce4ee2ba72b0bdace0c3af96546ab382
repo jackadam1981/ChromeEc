@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a2b53bb1_5f81e640",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-04-07T15:49:49Z",
+      "side": 1,
+      "message": "Can we remove the PLATFORM_EC_I2C in the test prj.conf files too?\nI think we should keep the test confs aligned as much as possible.\n\nE.g. https://crsrc.org/o/src/platform/ec/zephyr/test/i2c/prj.conf;l\u003d17\n\nThere should be a prj.conf file in every direct child of https://crsrc.org/o/src/platform/ec/zephyr/test/ directory.",
+      "revId": "f580e362ce4ee2ba72b0bdace0c3af96546ab382",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
