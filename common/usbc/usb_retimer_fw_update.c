@@ -85,6 +85,28 @@ int usb_retimer_fw_update_get_result(void)
 	return result;
 }
 
+int pd_port_all_resume(void)
+{
+	int port;
+
+	for  (port = 0; port < CONFIG_USB_PD_PORT_MAX_COUNT; port++) {
+		if (!pd_is_port_enabled(port))
+			return false;
+	}
+	return true;
+}
+
+static void deferred_resume_port(void)
+{
+	int port;
+
+	for  (port = 0; port < CONFIG_USB_PD_PORT_MAX_COUNT; port++) {
+		if (!pd_is_port_enabled(port))
+			pd_set_suspend(port, RESUME);
+	}
+}
+DECLARE_DEFERRED(deferred_resume_port);
+
 static void deferred_pd_suspend(void)
 {
 	pd_set_suspend(cur_port, SUSPEND);
@@ -139,9 +161,22 @@ void usb_retimer_fw_update_process_op_cb(int port)
 		 * a wake event to the PD task and enter suspended mode.
 		 */
 		hook_call_deferred(&deferred_pd_suspend_data, 0);
+		/*
+		 * When TBT update procress begin, PD enter suspend. Normally,
+		 * PD will resume within 10 seconds after etering suspend,
+		 * if we press shutdown button when PD suspend, the PD function
+		 * will be lost during S5.
+		 * So resume PD from suspend after 10 seconds.
+		 */
+		hook_call_deferred(&deferred_resume_port_data, 10 * SECOND);
 		break;
 	case USB_RETIMER_FW_UPDATE_RESUME_PD:
+		/*
+		 * Cancel deferred call if resume PD operation is received.
+		 */
 		pd_set_suspend(port, RESUME);
+		if (pd_port_all_resume())
+			hook_call_deferred(&deferred_resume_port_data, -1);
 		break;
 	case USB_RETIMER_FW_UPDATE_GET_MUX:
 		result_mux_get = true;
