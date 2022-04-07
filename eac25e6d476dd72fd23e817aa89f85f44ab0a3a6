@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0f13e63_82ac4440",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-04-07T18:42:22Z",
+      "side": 1,
+      "message": "Hi Aseda.\nI saw you had reviewed some previous updates to board.c for servo_v4p1, could you take a look at this one? It adds a command we can use to send data over the usart4 interface. We need this to communicate with the servo\u0027s keyboard emulator for a new USB HID test.",
+      "revId": "eac25e6d476dd72fd23e817aa89f85f44ab0a3a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
