@@ -8,6 +8,14 @@ compatible: "named-usbc-port"
 
 include: base.yaml
 
+properties:
+  usb-muxes:
+    type: phandles
+    required: false
+    description: |
+      Phandles of USB muxes which create chain
+
+
 # Example:
 #	usbc {
 #		#address-cells = <1>;
