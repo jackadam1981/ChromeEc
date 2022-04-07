@@ -253,6 +253,11 @@ void uart_clear_input(void)
 
 #endif /* !CONFIG_UART_RX_DMA */
 
+__overridable int uart_interrupt(void)
+{
+	return 1;
+}
+
 void uart_flush_output(void)
 {
 	/* If UART not initialized ignore flush request. */
@@ -261,7 +266,7 @@ void uart_flush_output(void)
 
 	/* Loop until buffer is empty */
 	while (tx_buf_head != tx_buf_tail) {
-		if (in_interrupt_context() || !is_interrupt_enabled()) {
+		if (in_interrupt_context() || !is_interrupt_enabled() || !uart_interrupt()) {
 			/*
 			 * Explicitly process UART output, since the UART
 			 * interrupt may not be able to preempt the interrupt
