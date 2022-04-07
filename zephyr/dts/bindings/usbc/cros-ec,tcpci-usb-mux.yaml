@@ -1,0 +1,17 @@
+# Copyright (c) 2022 The Chromium OS Authors
+# SPDX-License-Identifier: Apache-2.0
+
+description: USBC TCPC USB MUX
+
+include: cros-ec,usb-mux.yaml
+
+compatible: "cros-ec,tcpci-usb-mux"
+
+properties:
+  hpd-update:
+    type: string
+    required: false
+    description: |
+      Name of function used as hpd_update callback
+    enum:
+      - ps8xxx_tcpc_update_hpd_status
