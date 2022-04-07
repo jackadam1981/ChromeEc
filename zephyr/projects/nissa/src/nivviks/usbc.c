@@ -7,12 +7,14 @@
 
 #include "charge_state_v2.h"
 #include "chipset.h"
+#include "cros_board_info.h"
 #include "hooks.h"
 #include "usb_mux.h"
 #include "system.h"
 #include "driver/retimer/anx7483_public.h"
 #include "driver/tcpm/tcpci.h"
 #include "driver/tcpm/raa489000.h"
+#include "drivers/cros_system.h"
 
 #include "nissa_common.h"
 
@@ -280,4 +282,22 @@ const struct usb_mux *nissa_get_c1_sb_mux(void)
 		.driver = &anx7483_usb_retimer_driver,
 	};
 	return &usbc1_anx7483;
+}
+
+void nissa_configure_c1(void)
+{
+	int version;
+	const struct device *dev = device_get_binding("CROS_SYSTEM");
+
+	if (cbi_get_board_version(&version)) {
+		LOG_WRN("Unable to determine board version, assuming 0");
+		version = 0;
+	}
+	if (version == 1) {
+		/* Set I2C5_1 voltage to 1.8V */
+		if (cros_system_pin_voltage(dev, 0, true) != 0 ||
+		    cros_system_pin_voltage(dev, 1, true) != 0) {
+			LOG_WRN("Error setting I2C low voltage pins");
+		}
+	}
 }

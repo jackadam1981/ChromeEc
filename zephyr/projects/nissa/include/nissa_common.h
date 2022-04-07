@@ -27,4 +27,9 @@ enum nissa_sub_board_type nissa_get_sb_type(void);
  */
 const struct usb_mux *nissa_get_c1_sb_mux(void);
 
+/**
+ * Perform local configuration on the sub-board type C port.
+ */
+void nissa_configure_c1(void);
+
 #endif /* __CROS_EC_NISSA_NISSA_COMMON_H__ */
