@@ -34,6 +34,24 @@
       "parentUuid": "e6ff59fe_b5df724a",
       "revId": "3d76502182b1332eca0b366e94b04eee758be13f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "276fef73_7ee0ab16",
+        "filename": "zephyr/projects/nissa/src/nivviks/usbc.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2022-04-07T07:28:18Z",
+      "side": 1,
+      "message": "Hi all: \nThe following is my reply and hope it helps.\n\n\u003e I think it\u0027s actually safe to always configure for 1.8V. Maximum input voltage (datasheet section 7.1.2) on non-5V-tolerant pins is Vsup + 0.5V, and 2.4.13 indicates that Vsup on all I2C pins is Vcc1 (nominally 3.3V).\n[ML] After discussing with our AE, yes, your understanding is correct.\n\n\u003eI\u0027m reasonably confident in this interpretation because the absolute maximums refer to power wells, which seem like they should be fixed per-pin regardless of LV_GPIO_* setting. Might want to verify with Nuvoton though.\n[ML] LV_GPIO_* setting only changes the detection level of input pads regardless of the power well that they refer to.\n\n\u003e I was a little concerned that changing the voltage for all boards would change the I2C bus response (different rise times at higher speeds).\n[ML] The main factor of I2C bus response time is the value of PU resistance. LV_GPIO_* setting won\u0027t affect it. But please notice the VIH and VIL is still (1.8*0.7)V and (1.8*0.3)V even though the pad voltage is 3.3V.",
+      "parentUuid": "436f1231_8895c53f",
+      "revId": "3d76502182b1332eca0b366e94b04eee758be13f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
