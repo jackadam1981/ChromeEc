@@ -34,6 +34,24 @@
       "parentUuid": "0766bbef_31daa2f3",
       "revId": "a29c4c02a89ff041ff8c004e3b03d5ebbb17c4d6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12a5b55a_89508139",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2022-04-07T02:28:39Z",
+      "side": 1,
+      "message": "I mean, you fixed the build error by adding \u0027static\u0027. So you don\u0027t need to move DECLARE_SAFE_CONSOLE_COMMAND(). BTW, remove the build error message from commit message and post them into bug instead. And you will need BUG\u003d BRANCH\u003d and TEST\u003d.",
+      "parentUuid": "762cf88a_5867acae",
+      "revId": "a29c4c02a89ff041ff8c004e3b03d5ebbb17c4d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
