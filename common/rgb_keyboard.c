@@ -38,16 +38,17 @@ uint8_t rgbkbd_table[EC_RGBKBD_MAX_KEY_COUNT];
 static int set_color_single(struct rgb_s color, int x, int y)
 {
 	struct rgbkbd *ctx = &rgbkbds[0];
-	uint8_t gid;
+	uint8_t grid;
 	uint8_t col = 0;
 	uint8_t offset;
+	int rv;
 
 	if (rgbkbd_hsize <= x || rgbkbd_vsize <= y) {
 		return EC_ERROR_OVERFLOW;
 	}
 
 	/* Search the grid where x belongs to. */
-	for (gid = 0; gid < rgbkbd_count; gid++, ctx++) {
+	for (grid = 0; grid < rgbkbd_count; grid++, ctx++) {
 		if (x < col + ctx->cfg->col_len)
 			break;
 		col += ctx->cfg->col_len;
@@ -56,9 +57,13 @@ static int set_color_single(struct rgb_s color, int x, int y)
 	offset = ctx->cfg->row_len * (x - col) + y;
 	ctx->buf[offset] = color;
 
-	CPRINTS("Set [%d,%d] to color=[%d,%d,%d] (gid=%u offset=%u)",
-		x, y, color.r, color.g, color.b, gid, offset);
-	return ctx->cfg->drv->set_color(ctx, offset, &ctx->buf[offset], 1);
+	rv = ctx->cfg->drv->set_color(ctx, offset, &ctx->buf[offset], 1);
+
+	CPRINTS("%sset (%d,%d) to color=(%d,%d,%d) grid=%u offset=%u (%d)",
+		rv ? "Failed to " : "",
+		x, y, color.r, color.g, color.b, grid, offset, rv);
+
+	return rv;
 }
 
 test_export_static uint8_t get_grid_size(const struct rgbkbd *ctx)
@@ -226,6 +231,33 @@ void rgbkbd_init_lookup_table(void)
 	 * LED group pointed by rgbkbd_table[k-1] is guaranteed to be properly
 	 * terminated. The rest of the table entries remain non-existent (0).
 	 */
+}
+
+int rgbkbd_set_global_brightness(uint8_t gcc)
+{
+	int grid, rv;
+
+	for (grid = 0; grid < rgbkbd_count; grid++) {
+		struct rgbkbd *ctx = &rgbkbds[grid];
+
+		rv = ctx->cfg->drv->set_gcc(ctx, gcc);
+		if (rv) {
+			CPRINTS("Failed to set GCC to %u for grid=%d (%d)",
+				gcc, grid, rv);
+			return rv;
+		}
+	}
+
+	CPRINTS("Set GCC to %u", gcc);
+
+	return EC_SUCCESS;
+}
+
+int rgbkbd_get_global_brightness(uint8_t *gcc)
+{
+	*gcc = rgbkbds[0].gcc;
+
+	return EC_SUCCESS;
 }
 
 __overridable void board_enable_rgb_keyboard(bool enable) {}
