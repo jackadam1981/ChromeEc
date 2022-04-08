@@ -47,6 +47,7 @@
 
 /* mt8195 supported features */
 #define CONFIG_CHIP_MEMORY_REGIONS
+#define CONFIG_PANIC_CONSOLE_OUTPUT
 
 /* TODO: need to confirm, placeholder */
 #define GPIO_PIN(num) ((num) / 32), ((num) % 32)
