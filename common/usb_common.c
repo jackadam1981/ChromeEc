@@ -29,6 +29,7 @@
 #include "usb_pd_dpm.h"
 #include "usb_pd_flags.h"
 #include "usb_pd_tcpm.h"
+#include "usb_pe_sm.h"
 #include "usbc_ocp.h"
 #include "usbc_ppc.h"
 #include "util.h"
@@ -1053,22 +1054,20 @@ void pd_srccaps_dump(int port)
 	}
 }
 
-int pd_build_alert_msg(uint32_t *msg, uint32_t *len, enum pd_power_role pr)
+int pd_broadcast_alert_msg(uint32_t ado)
 {
-	if (msg == NULL || len == NULL)
-		return EC_ERROR_INVAL;
+	for (int i = 0; i < CONFIG_USB_PD_PORT_MAX_COUNT; i++) {
+		pe_set_ado(i, ado);
+		pd_dpm_request(i, DPM_REQUEST_SEND_ALERT);
+	}
 
-	/*
-	 * SOURCE: currently only supports OCP
-	 * SINK:   currently only supports OVP
-	 */
-	if (pr == PD_ROLE_SOURCE)
-		*msg = ADO_OCP_EVENT;
-	else
-		*msg = ADO_OVP_EVENT;
+	return EC_SUCCESS;
+}
 
-	/* Alert data is 4 bytes */
-	*len = 4;
+int pd_send_alert_msg(int port, uint32_t ado)
+{
+	pe_set_ado(port, ado);
+	pd_dpm_request(port, DPM_REQUEST_SEND_ALERT);
 
 	return EC_SUCCESS;
 }
