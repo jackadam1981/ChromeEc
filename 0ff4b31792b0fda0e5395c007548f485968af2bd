@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "acf2f4a4_4e9ee08d",
+        "filename": "zephyr/dts/bindings/leds/cros-ec,led-id.yaml",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1513493
+      },
+      "writtenOn": "2022-04-08T23:43:31Z",
+      "side": 1,
+      "message": "One way of using build time macros is to create an array property in the cros-ec,gpio-led-pins or cros-ec,pwm-led-pins, instead of iterating through the nodes which will result in duplicates (same LED-ID for different nodes) and might not be very straightforward with macros.\n\n  / {    \n          gpio-led-pins {    \n                  compatible \u003d \"cros-ec,gpio-led-pins\";    \n      \n                  led-id \u003d \"EC_LED_ID_BATTERY_LED\", \"EC_LED_ID_POWER_LED\";\n \n                  color-off {    \n                          led-color \u003d \"LED_OFF\";    \n                          led-id \u003d \"EC_LED_ID_BATTERY_LED\";    \n                          led-pins \u003d \u003c\u0026gpio_ec_chg_led_y_c1 0\u003e,    \n                                  ┆  \u003c\u0026gpio_ec_chg_led_b_c1 0\u003e;    \n                  };    \n      \n                  color-amber {    \n                          led-color \u003d \"LED_AMBER\";    \n                          br-color \u003d \"EC_LED_COLOR_AMBER\";    \n                          led-id \u003d \"EC_LED_ID_POWER_LED\";    \n                          led-pins \u003d \u003c\u0026gpio_ec_chg_led_y_c1 1\u003e,    \n                                  ┆  \u003c\u0026gpio_ec_chg_led_b_c1 0\u003e;    \n                  };    \n      \n                  color-blue {    \n                          led-color \u003d \"LED_BLUE\";    \n                          br-color \u003d \"EC_LED_COLOR_BLUE\";    \n                          led-id \u003d \"EC_LED_ID_BATTERY_LED\";    \n                          led-pins \u003d \u003c\u0026gpio_ec_chg_led_y_c1 0\u003e,    \n                                  ┆  \u003c\u0026gpio_ec_chg_led_b_c1 1\u003e;    \n                  };    \n          };    \n  };",
+      "parentUuid": "b9da1a0f_a953a882",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 28
+      },
+      "revId": "0ff4b31792b0fda0e5395c007548f485968af2bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "08bf5939_8bed164f",
         "filename": "zephyr/shim/src/led_driver/led.c",
         "patchSetId": 4
