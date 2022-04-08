@@ -47,6 +47,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e1eeb99_f8c44739",
+        "filename": "zephyr/shim/src/led_driver/led.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-04-08T23:05:40Z",
+      "side": 1,
+      "message": "Ignore it. I saw it is used in common/led_common.c.",
+      "parentUuid": "08bf5939_8bed164f",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 0
+      },
+      "revId": "0ff4b31792b0fda0e5395c007548f485968af2bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0004c9f8_d39bf9b1",
