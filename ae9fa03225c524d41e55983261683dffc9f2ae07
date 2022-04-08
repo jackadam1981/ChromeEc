@@ -34,6 +34,29 @@
       "parentUuid": "0be72db2_e524dbcd",
       "revId": "ae9fa03225c524d41e55983261683dffc9f2ae07",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf1cf36c_5d0544f5",
+        "filename": "zephyr/include/drivers/cros_system.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-04-08T16:01:47Z",
+      "side": 1,
+      "message": "Sorry, I am a bit late for the review.\n\nWhy need a runtime function to configure a pin switching between 3.3V and 1.8V? I think the pin\u0027s voltage should be defined explicitly in the hardware design phase. A pin should be either 3.3V or 1.8V and won\u0027t change during run-time. Changing the pin\u0027s voltage during runtime seems horrible and may damage the hardware.",
+      "range": {
+        "startLine": 279,
+        "startChar": 10,
+        "endLine": 279,
+        "endChar": 57
+      },
+      "revId": "ae9fa03225c524d41e55983261683dffc9f2ae07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
