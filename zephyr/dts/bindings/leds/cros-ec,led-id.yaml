@@ -1,0 +1,30 @@
+# Copyright 2022 The Chromium OS Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+description: LED ID parent node
+
+compatible: "cros-ec,led-id"
+
+child-binding:
+    description: List all the LED IDs supported as child nodes
+                 Eg. led-id {
+                        battery {
+                          enum-name = "EC_LED_ID_BATTERY_LED";
+                        };
+                        power {
+                          enum-name = "EC_LED_ID_BATTERY_LED";
+                        };
+                      };
+    properties:
+        enum-name:
+            type: string
+            required: true
+            enum:
+                - EC_LED_ID_BATTERY_LED
+                - EC_LED_ID_POWER_LED
+                - EC_LED_ID_ADAPTER_LED
+                - EC_LED_ID_LEFT_LED
+                - EC_LED_ID_RIGHT_LED
+                - EC_LED_ID_RECOVERY_HW_REINIT_LED
+                - EC_LED_ID_SYSRQ_DEBUG_LED
