@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b9da1a0f_a953a882",
+        "filename": "zephyr/dts/bindings/leds/cros-ec,led-id.yaml",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-04-08T23:23:51Z",
+      "side": 1,
+      "message": "I am not sure if the build-time creation is difficult or not, e.g. the macro limitation. If it is, a runtime creation is probably easier. Maybe you need to refactor the code which uses the `supported_led_ids[]` and the `supported_led_ids_count`, and relax them from constants to variables.",
+      "parentUuid": "050f6e36_4d90703b",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 28
+      },
+      "revId": "0ff4b31792b0fda0e5395c007548f485968af2bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "08bf5939_8bed164f",
         "filename": "zephyr/shim/src/led_driver/led.c",
         "patchSetId": 4
