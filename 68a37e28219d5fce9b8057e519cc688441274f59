@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2dbdb565_4ca33401",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-04-08T20:50:32Z",
+      "side": 1,
+      "message": "Nice work!",
+      "revId": "68a37e28219d5fce9b8057e519cc688441274f59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3bd7b5a8_7d2ac20f",
+        "filename": "driver/charger/isl9241.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-04-08T20:50:32Z",
+      "side": 1,
+      "message": "nit: I believe the repo upload hooks usually insist that you leave the first line on multi-line comments blank, unless our style checks have changed",
+      "revId": "68a37e28219d5fce9b8057e519cc688441274f59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
