@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f186e3ec_74cda9fe",
+        "filename": "docs/zephyr/zephyr_usba.md",
+        "patchSetId": 43
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2022-04-08T20:16:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "78e74b22_67af9ca4",
+      "range": {
+        "startLine": 39,
+        "startChar": 36,
+        "endLine": 39,
+        "endChar": 44
+      },
+      "revId": "d1a12bc42a552326efd0446d87aa0d0bdda285ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ff917b70_27279d2c",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-04-08T19:36:41Z",
       "side": 1,
       "message": "Add bullets for these two lines.",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 0
+      },
+      "revId": "d1a12bc42a552326efd0446d87aa0d0bdda285ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "481cd91a_23608d9b",
+        "filename": "docs/zephyr/zephyr_usba.md",
+        "patchSetId": 43
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2022-04-08T20:16:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ff917b70_27279d2c",
       "range": {
         "startLine": 42,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae46e455_f70706e7",
+        "filename": "docs/zephyr/zephyr_usba.md",
+        "patchSetId": 43
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2022-04-08T20:16:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "477c67ed_dae7bc47",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 25
+      },
+      "revId": "d1a12bc42a552326efd0446d87aa0d0bdda285ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "97e16704_9f73a815",
@@ -83,6 +155,24 @@
       "writtenOn": "2022-04-08T19:36:41Z",
       "side": 1,
       "message": "Also add a link to the main ectool documention:\n\n\"Refer the [Application Processor to EC communication](../ap-ec-comm.md) for more information about using `ectool`.",
+      "revId": "d1a12bc42a552326efd0446d87aa0d0bdda285ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "087c75c9_ef3a02b0",
+        "filename": "docs/zephyr/zephyr_usba.md",
+        "patchSetId": 43
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2022-04-08T20:16:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "97e16704_9f73a815",
       "revId": "d1a12bc42a552326efd0446d87aa0d0bdda285ca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -110,6 +200,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "55efb1bf_245670fe",
+        "filename": "docs/zephyr/zephyr_usba.md",
+        "patchSetId": 43
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2022-04-08T20:16:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "99814073_bf8f2d43",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 39
+      },
+      "revId": "d1a12bc42a552326efd0446d87aa0d0bdda285ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "84751c81_fc7ade4c",
@@ -123,6 +237,30 @@
       "writtenOn": "2022-04-08T19:36:41Z",
       "side": 1,
       "message": "Delete.",
+      "range": {
+        "startLine": 74,
+        "startChar": 0,
+        "endLine": 74,
+        "endChar": 85
+      },
+      "revId": "d1a12bc42a552326efd0446d87aa0d0bdda285ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e63a15c_7e7a3eb4",
+        "filename": "docs/zephyr/zephyr_usba.md",
+        "patchSetId": 43
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2022-04-08T20:16:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "84751c81_fc7ade4c",
       "range": {
         "startLine": 74,
         "startChar": 0,
