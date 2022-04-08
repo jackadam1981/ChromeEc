@@ -96,6 +96,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ce5ac5a_2a4f2b48",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-04-08T16:04:47Z",
+      "side": 1,
+      "message": "Yes, this is what I was thinking except that I didn\u0027t consider making an optional parameter for config_name, which is definitely an improvement!",
+      "parentUuid": "281b36e0_292c40d6",
+      "range": {
+        "startLine": 104,
+        "startChar": 8,
+        "endLine": 104,
+        "endChar": 24
+      },
+      "revId": "9c32bdc4faa08e6328da6c25b6bffd81eb271e12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "678efe4c_bcbad6e5",
