@@ -45,6 +45,30 @@
       },
       "revId": "13be67048a119dc3b0f51cab72adcf2fb212fd15",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ba01dbe_64eea05d",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2022-04-08T15:58:07Z",
+      "side": 1,
+      "message": "Private is in a different repository, so it will be a separate patch + changes in line 230 and 231 here.",
+      "parentUuid": "564eec29_5df14966",
+      "range": {
+        "startLine": 230,
+        "startChar": 16,
+        "endLine": 230,
+        "endChar": 59
+      },
+      "revId": "13be67048a119dc3b0f51cab72adcf2fb212fd15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
