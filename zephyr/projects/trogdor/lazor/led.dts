@@ -1,4 +1,12 @@
 / {
+	led-id {
+		compatible = "cros-ec,led-id";
+
+		battery {
+			enum-name = "EC_LED_ID_BATTERY_LED";
+		};
+	};
+
 	led-colors {
 		compatible = "cros-ec,led-colors";
 
