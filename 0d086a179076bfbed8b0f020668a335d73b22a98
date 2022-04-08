@@ -54,6 +54,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "17b77a39_50b3eb93",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2022-04-08T00:16:13Z",
+      "side": 1,
+      "message": "Done, I used #ifdef CONFIG_USB_PD_USB4 for it.",
+      "parentUuid": "8a9c35e8_76a99f95",
+      "revId": "0d086a179076bfbed8b0f020668a335d73b22a98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4c9ca746_14872c7d",
