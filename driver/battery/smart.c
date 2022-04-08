@@ -44,9 +44,66 @@ static int battery_supports_pec(void)
 	return supports_pec;
 }
 
+/**
+ * The status error code correlates to the previous i2c transaction with the
+ * smart battery. The status error code will be cleared after reading.
+ * Print then return the negative status error code when found.
+ */
+static int sb_check_print_status_error(void)
+{
+	static const char * const error_name[] = {
+		"OK",
+		"BUSY",
+		"RESERVED",
+		"UNSUPPORTED",
+		"ACCESS_DENIED",
+		"OVER_UNDER_FLOW",
+		"BAD_SIZE",
+		"UNKNOWN"
+	};
+	int status;
+	int error_code;
+	int rv;
+	int retry = 50;
+
+	while (true && retry > 0) {
+		rv = i2c_read16(I2C_PORT_BATTERY, BATTERY_ADDR_FLAGS,
+				SB_BATTERY_STATUS, &status);
+
+		if (rv) {
+			if (IS_ENABLED(CONFIG_SB_I2C_DEBUG))
+				CPRINTS("%s i2c error offset:%x rv:%d",
+					__func__, SB_BATTERY_STATUS, rv);
+			msleep(5);
+		} else
+			break;
+		retry -= 1;
+	}
+	if (retry == 0) {
+		CPRINTS("%s failed", __func__);
+		return rv;
+	}
+
+	error_code = status & STATUS_ERR_CODE_MASK;
+
+	if (error_code == STATUS_CODE_OK)
+		return EC_SUCCESS;
+
+	if (error_code >= ARRAY_SIZE(error_name)) {
+		CPRINTS("%s unexpected error code: %d", __func__, error_code);
+		return EC_ERROR_UNKNOWN;
+	}
+
+	CPRINTS("battery error: %s", error_name[error_code]);
+
+	return -error_code;
+}
+
 test_mockable int sb_read(int cmd, int *param)
 {
 	uint16_t addr_flags = BATTERY_ADDR_FLAGS;
+	int i2c_rv;
+	int status_rv;
 
 #ifdef CONFIG_BATTERY_CUT_OFF
 	/*
@@ -58,12 +115,25 @@ test_mockable int sb_read(int cmd, int *param)
 	if (battery_supports_pec())
 		addr_flags |= I2C_FLAG_PEC;
 
-	return i2c_read16(I2C_PORT_BATTERY, addr_flags, cmd, param);
+	i2c_rv = i2c_read16(I2C_PORT_BATTERY, addr_flags, cmd, param);
+
+	if (i2c_rv && IS_ENABLED(CONFIG_SB_I2C_DEBUG))
+		CPRINTS("%s i2c error cmd:%x rv:%d", __func__, cmd, i2c_rv);
+
+	status_rv = sb_check_print_status_error();
+	if (status_rv) {
+		CPRINTS("%s(%x) error detected", __func__, cmd);
+		return status_rv;
+	}
+
+	return i2c_rv;
 }
 
 test_mockable int sb_write(int cmd, int param)
 {
 	uint16_t addr_flags = BATTERY_ADDR_FLAGS;
+	int i2c_rv;
+	int status_rv;
 
 #ifdef CONFIG_BATTERY_CUT_OFF
 	/*
@@ -75,12 +145,26 @@ test_mockable int sb_write(int cmd, int param)
 	if (battery_supports_pec())
 		addr_flags |= I2C_FLAG_PEC;
 
-	return i2c_write16(I2C_PORT_BATTERY, addr_flags, cmd, param);
+
+	i2c_rv = i2c_write16(I2C_PORT_BATTERY, addr_flags, cmd, param);
+
+	if (i2c_rv && IS_ENABLED(CONFIG_SB_I2C_DEBUG))
+		CPRINTS("%s i2c error cmd:%x rv:%d", __func__, cmd, i2c_rv);
+
+	status_rv = sb_check_print_status_error();
+	if (status_rv) {
+		CPRINTS("%s(%x) error detected", __func__, cmd);
+		return status_rv;
+	}
+
+	return i2c_rv;
 }
 
 int sb_read_string(int offset, uint8_t *data, int len)
 {
 	uint16_t addr_flags = BATTERY_ADDR_FLAGS;
+	int i2c_rv;
+	int status_rv;
 
 #ifdef CONFIG_BATTERY_CUT_OFF
 	/*
@@ -92,7 +176,21 @@ int sb_read_string(int offset, uint8_t *data, int len)
 	if (battery_supports_pec())
 		addr_flags |= I2C_FLAG_PEC;
 
-	return i2c_read_string(I2C_PORT_BATTERY, addr_flags, offset, data, len);
+	i2c_rv = i2c_read_string(I2C_PORT_BATTERY, addr_flags, offset, data,
+				 len);
+
+	if (i2c_rv && IS_ENABLED(CONFIG_SB_I2C_DEBUG))
+		CPRINTS("%s i2c error offset:%x rv:%d", __func__, offset,
+			i2c_rv);
+
+	status_rv = sb_check_print_status_error();
+	if (status_rv) {
+		CPRINTS("%s(%x) error detected", __func__, offset);
+		return status_rv;
+	}
+
+
+	return i2c_rv;
 }
 
 int sb_read_mfgacc(int cmd, int block, uint8_t *data, int len)
@@ -128,6 +226,8 @@ int sb_read_mfgacc(int cmd, int block, uint8_t *data, int len)
 int sb_write_block(int reg, const uint8_t *val, int len)
 {
 	uint16_t addr_flags = BATTERY_ADDR_FLAGS;
+	int i2c_rv;
+	int status_rv;
 
 #ifdef CONFIG_BATTERY_CUT_OFF
 	/*
@@ -141,7 +241,18 @@ int sb_write_block(int reg, const uint8_t *val, int len)
 		addr_flags |= I2C_FLAG_PEC;
 
 	/* TODO: implement smbus_write_block. */
-	return i2c_write_block(I2C_PORT_BATTERY, addr_flags, reg, val, len);
+	i2c_rv = i2c_write_block(I2C_PORT_BATTERY, addr_flags, reg, val, len);
+
+	if (i2c_rv && IS_ENABLED(CONFIG_SB_I2C_DEBUG))
+		CPRINTS("%s i2c error reg:%x rv:%d", __func__, reg, i2c_rv);
+
+	status_rv = sb_check_print_status_error();
+	if (status_rv) {
+		CPRINTS("%s(%x) error detected", __func__, reg);
+		return status_rv;
+	}
+
+	return i2c_rv;
 }
 
 int battery_get_mode(int *mode)
