@@ -1190,6 +1190,14 @@ enum pd_ctrl_msg_type {
  */
 #define BATT_CAP_REF(n)  (((n) >> 16) & 0xff)
 
+/* Status offsets for 8-bit array indexes */
+#define STATUS_INTERNAL_TEMP         0
+#define STATUS_PRESENT_INPUT         1
+#define STATUS_PRESENT_BATTERY_INPUT 2
+#define STATUS_EVENT_FLAGS           3
+#define STATUS_TEMP_STATUS           4
+#define STATUS_POWER_STATUS          5
+
 /* Extended message type for REV 3.0 */
 enum pd_ext_msg_type {
 	/* 0 Reserved */
