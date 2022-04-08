@@ -8,12 +8,10 @@
 
 #define CONFIG_CHIP_MEMORY_REGIONS
 
-#if !defined(CHIP_VARIANT_MT8195_CORE1)
 #define CONFIG_PANIC_CONSOLE_OUTPUT
 
 /* Add some space (0x100) before panic for jump data */
 #define CONFIG_PANIC_BASE_OFFSET 0x100 /* reserved for jump data */
 #define CONFIG_PANIC_DATA_BASE (CONFIG_PANIC_DRAM_BASE + CONFIG_PANIC_BASE_OFFSET)
-#endif
 
 #endif /* __CROS_EC_CONFIG_CHIP_MT8195_H */
