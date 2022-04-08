@@ -70,6 +70,30 @@
       },
       "revId": "26c317af25e5693478cf43a011743b29cdbf5f89",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d7cdd10_6d67c56b",
+        "filename": "zephyr/projects/nissa/nivviks_overlay.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-04-08T01:12:23Z",
+      "side": 1,
+      "message": "I took them out, check that you\u0027re seeing the latest patches.",
+      "parentUuid": "7f3c25b9_84a06cfe",
+      "range": {
+        "startLine": 206,
+        "startChar": 51,
+        "endLine": 207,
+        "endChar": 47
+      },
+      "revId": "26c317af25e5693478cf43a011743b29cdbf5f89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
