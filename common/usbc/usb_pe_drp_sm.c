@@ -553,6 +553,10 @@ static struct policy_engine {
 	uint32_t vdm_data[VDO_HDR_SIZE + VDO_MAX_SIZE];
 	uint8_t vdm_ack_min_data_objects;
 
+	/* ADO - Used to store information about alert messages */
+	uint32_t ado;
+	mutex_t ado_lock;
+
 	/* Counters */
 
 	/*
@@ -1343,6 +1347,21 @@ static void pe_clear_port_data(int port)
 
 	/* Exit BIST Test mode, in case the TCPC entered it. */
 	tcpc_set_bist_test_mode(port, false);
+}
+
+void pe_set_ado(int port, uint32_t data)
+{
+	pe[port].ado = data;
+}
+
+void pe_lock_ado(int port)
+{
+	mutex_lock(&pe[port].ado_lock);
+}
+
+void pe_unlock_ado(int port)
+{
+	mutex_unlock(&pe[port].ado_lock);
 }
 
 static void pe_handle_detach(void)
@@ -4182,8 +4201,13 @@ static void pe_send_alert_entry(int port)
 
 	print_current_state(port);
 
-	if (pd_build_alert_msg(msg, len, pe[port].power_role) != EC_SUCCESS)
+	if (msg == NULL || len == NULL) {
 		pe_set_ready_state(port);
+	} else {
+		/* Get ADO from PE state, the ADO is a uint32_t */
+		*msg = pe[port].ado;
+		*len = sizeof(pe[port].ado);
+	}
 
 	/* Request the Protocol Layer to send Alert Message. */
 	send_data_msg(port, TCPCI_MSG_SOP, PD_DATA_ALERT);
@@ -4193,6 +4217,7 @@ static void pe_send_alert_run(int port)
 {
 	if (PE_CHK_FLAG(port, PE_FLAGS_TX_COMPLETE)) {
 		PE_CLR_FLAG(port, PE_FLAGS_TX_COMPLETE);
+		pe_set_ado(port, 0x0);
 		pe_set_ready_state(port);
 	}
 }
