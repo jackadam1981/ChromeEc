@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "316496f8_13a87a70",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 46
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-04-08T19:42:36Z",
+      "side": 1,
+      "message": "The USB Mux and retimers should be combined into a single section.  The devices are treated identically by software.\n\nAlso note that the USB mux stuff is getting refactored on b/227757117.  So you can probably wait on this section until that bug is fixed.",
+      "revId": "a055322d73322bf119339af754f17d4c500beedf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
