@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "71255d6f_e0c7a924",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2022-04-08T14:32:18Z",
+      "side": 1,
+      "message": "I replaced the dictionary with a list of `TestConfig` objects. Also added `config_name` and `test_name` fields in `TestConfig`. Let me know what you think about it.\n\nNote: I know that support for private tests was merged. I will fix the private test code when we decide that version with a list of `TestConfig` is ok.",
+      "parentUuid": "5c33a1f6_362b2a0a",
+      "range": {
+        "startLine": 104,
+        "startChar": 8,
+        "endLine": 104,
+        "endChar": 24
+      },
+      "revId": "9c32bdc4faa08e6328da6c25b6bffd81eb271e12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "678efe4c_bcbad6e5",
         "filename": "test/run_device_tests.py",
         "patchSetId": 2
@@ -95,6 +119,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "850faa8b_debb06d2",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 408,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2022-04-08T14:32:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b63d50e7_20deac98",
+      "range": {
+        "startLine": 408,
+        "startChar": 53,
+        "endLine": 408,
+        "endChar": 69
+      },
+      "revId": "9c32bdc4faa08e6328da6c25b6bffd81eb271e12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d29cb175_1846a915",
@@ -108,6 +156,30 @@
       "writtenOn": "2022-04-05T17:31:01Z",
       "side": 1,
       "message": "There are two different \"names\" now (the test name that is returned here and `test.name`). I was going to suggest renaming `test.name` to `test.config_name` or something similar but that feels a bit wrong from an OOP standpoint.",
+      "range": {
+        "startLine": 484,
+        "startChar": 8,
+        "endLine": 484,
+        "endChar": 12
+      },
+      "revId": "9c32bdc4faa08e6328da6c25b6bffd81eb271e12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f4c39c8_c2d49a1f",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 484,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2022-04-08T14:32:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d29cb175_1846a915",
       "range": {
         "startLine": 484,
         "startChar": 8,
