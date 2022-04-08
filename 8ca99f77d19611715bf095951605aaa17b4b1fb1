@@ -46,6 +46,30 @@
       },
       "revId": "8ca99f77d19611715bf095951605aaa17b4b1fb1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bcdcfc72_767b4769",
+        "filename": "zephyr/projects/intelrvp/adlrvp/prj.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-04-08T01:01:43Z",
+      "side": 1,
+      "message": "for RVP its always\nCONFIG_USB_PD_PORT_MAX_COUNT + 1",
+      "parentUuid": "94fbfcb5_9252f28b",
+      "range": {
+        "startLine": 30,
+        "startChar": 41,
+        "endLine": 30,
+        "endChar": 42
+      },
+      "revId": "8ca99f77d19611715bf095951605aaa17b4b1fb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
