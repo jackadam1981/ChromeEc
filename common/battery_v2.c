@@ -68,7 +68,13 @@ static void battery_update(enum battery_index i)
 	batt_str[EC_MEMMAP_TEXT_MAX - 1] = 0;
 
 	*memmap_volt = battery_dynamic[i].actual_voltage;
-	*memmap_rate = battery_dynamic[i].actual_current;
+	/*
+	 * Rate must be absolute, flags will indicate whether
+	 * the battery is charging or discharging.
+	 */
+	*memmap_rate = (battery_dynamic[i].actual_current < 0)
+				? -battery_dynamic[i].actual_current
+				: battery_dynamic[i].actual_current;
 	*memmap_cap = battery_dynamic[i].remaining_capacity;
 	*memmap_lfcc = battery_dynamic[i].full_capacity;
 	*memmap_flags = battery_dynamic[i].flags;
