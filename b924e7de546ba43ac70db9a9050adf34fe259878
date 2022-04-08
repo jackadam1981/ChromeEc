@@ -16,6 +16,24 @@
       "message": "in my chroot build error:\n\ndevicetree error: \u0027br-color\u0027 appears in /gpio-led-pins/color-amber in /mnt/host/source/src/platform/ec/build/zephyr/villager/build-ro/zephyr/zephyr.dts.pre, but is not declared in \u0027properties:\u0027 in /mnt/host/source/src/platform/ec/zephyr/dts/bindings/leds/cros-ec,gpio-led-pins.yaml\nCMake Error at /mnt/host/source/src/third_party/zephyr/main/cmake/modules/dts.cmake:212 (message):\n  gen_defines.py failed with return code: 1",
       "revId": "b924e7de546ba43ac70db9a9050adf34fe259878",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "274cff7f_f564ca59",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1513493
+      },
+      "writtenOn": "2022-04-08T05:48:42Z",
+      "side": 1,
+      "message": "Yes it is dependent on this [CR](https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3576899/)\n\nI have added Cq-Depend in commit message.",
+      "parentUuid": "b9e4ef01_9ec25151",
+      "revId": "b924e7de546ba43ac70db9a9050adf34fe259878",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
