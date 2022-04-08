@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa176bc7_3d4d4c3c",
+        "filename": "board/vell/usbc_config.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2022-04-08T21:42:43Z",
+      "side": 1,
+      "message": "I expect this configuration to be used for future board IDs, right?\nIn that case, can you please make the `i2c_addr_flags\u003dSYV682X_ADDR0_FLAGS` by default and change this check to `if (get_board_id \u003c 2)` so the future boards will continue to use the correct address?",
+      "range": {
+        "startLine": 345,
+        "startChar": 5,
+        "endLine": 345,
+        "endChar": 24
+      },
+      "revId": "311e7c3bb681dd376a6a89a745f3a409b2853d19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
