@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eceb9cbd_119980fd",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2883,
+      "author": {
+        "id": 1466877
+      },
+      "writtenOn": "2022-04-08T23:26:30Z",
+      "side": 1,
+      "message": "I realized this mask was getting applied to both devices. Wouldn\u0027t have broken anything until a possible larger event got added.\n\nCan someone double check this on Cr50? I don\u0027t have anything to sign dev Cr50 images.",
+      "revId": "638bd7c48fcd1809ea14de5eda3f43a30bda3a83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
