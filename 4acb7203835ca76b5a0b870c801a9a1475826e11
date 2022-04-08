@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8dd66381_10a61ca5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-04-08T17:37:48Z",
+      "side": 1,
+      "message": "I\u0027m suspicious of this overall approach. Further comments on the bug.",
+      "revId": "4acb7203835ca76b5a0b870c801a9a1475826e11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e647640_27b91ff2",
+        "filename": "baseboard/brya/baseboard.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-04-08T17:37:48Z",
+      "side": 1,
+      "message": "The \"resume\" macro is unnecessary. Just use `false` as the argument.",
+      "revId": "4acb7203835ca76b5a0b870c801a9a1475826e11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
