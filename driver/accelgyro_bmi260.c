@@ -470,30 +470,38 @@ static int bmi_config_load(const struct motion_sensor_t *s)
 		addr[1] = (i / 2) >> 4;
 		ret = bmi_write_n(s->port, s->i2c_spi_addr_flags,
 				  BMI260_INIT_ADDR_0, addr, 2);
-		if (ret)
+		if (ret) {
+			ccprints("!!! bmi_write_n: ret = %d !!!", ret);
 			break;
+		}
 
 		if (!bmi_config) {
+			ccprints("!!! !bmi_config !!!");
 			/*
 			 * init_rom region isn't memory mapped. Copy the
 			 * data through a RAM buffer.
 			 */
 			ret = init_rom_copy((int)&bmi_config_tbin[i], len,
 				bmi_ram_buffer);
-			if (ret)
+			if (ret) {
+				ccprints("!!! init_rom_copy: ret = %d !!!", ret);
 				break;
+			}
 
 			ret = bmi_write_n(s->port, s->i2c_spi_addr_flags,
 					  BMI260_INIT_DATA,
 					  bmi_ram_buffer, len);
 		} else {
+			ccprints("!!! bmi_config !!!");
 			ret = bmi_write_n(s->port, s->i2c_spi_addr_flags,
 					  BMI260_INIT_DATA,
 					  &bmi_config[i], len);
 		}
 
-		if (ret)
+		if (ret) {
+			ccprints("!!! bmi_write_n_2: ret = %d !!!", ret);
 			break;
+		}
 	}
 
 	/*
@@ -523,15 +531,19 @@ static int init_config(const struct motion_sensor_t *s)
 	/* finish config load */
 	bmi_write8(s->port, s->i2c_spi_addr_flags, BMI260_INIT_CTRL, 1);
 	/* return error if load config failed */
-	if (ret)
+	if (ret) {
+		ccprints("!!! bmi_config_load: ret = %d !!!", ret);
 		return ret;
+	}
 	/* wait INTERNAL_STATUS.message to be 0x1 which take at most 150ms */
 	for (i = 0; i < 15; ++i) {
 		msleep(10);
 		ret = bmi_read8(s->port, s->i2c_spi_addr_flags,
 			BMI260_INTERNAL_STATUS, &init_status);
-		if (ret)
+		if (ret) {
+			ccprints("!!! bmi_read8: ret = %d !!!", ret);
 			break;
+		}
 		init_status &= BMI260_MESSAGE_MASK;
 		if (init_status == BMI260_INIT_OK)
 			break;
