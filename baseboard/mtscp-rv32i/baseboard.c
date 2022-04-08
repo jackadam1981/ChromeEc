@@ -36,6 +36,17 @@ struct mpu_entry mpu_entries[NR_MPU_ENTRIES] = {
 #include "gpio_list.h"
 
 #ifdef CONFIG_PANIC_CONSOLE_OUTPUT
+
+#ifdef CHIP_VARIANT_MT8195_CORE1
+#define SCP_CORE_MON_PC_LATCH SCP_CORE1_MON_PC_LATCH
+#define SCP_CORE_MON_LR_LATCH SCP_CORE1_MON_LR_LATCH
+#define SCP_CORE_MON_SP_LATCH SCP_CORE1_MON_SP_LATCH
+#else
+#define SCP_CORE_MON_PC_LATCH SCP_CORE0_MON_PC_LATCH
+#define SCP_CORE_MON_LR_LATCH SCP_CORE0_MON_LR_LATCH
+#define SCP_CORE_MON_SP_LATCH SCP_CORE0_MON_SP_LATCH
+#endif
+
 static void report_previous_panic(void)
 {
 	struct panic_data * panic = panic_get_data();
@@ -50,10 +61,9 @@ static void report_previous_panic(void)
 		ccprintf("No panic data\n");
 	}
 	ccprintf("Latch PC:%x LR:%x SP:%x\n",
-		SCP_CORE0_MON_PC_LATCH,
-		SCP_CORE0_MON_LR_LATCH,
-		SCP_CORE0_MON_SP_LATCH);
-
+		SCP_CORE_MON_PC_LATCH,
+		SCP_CORE_MON_LR_LATCH,
+		SCP_CORE_MON_SP_LATCH);
 }
 DECLARE_HOOK(HOOK_INIT, report_previous_panic, HOOK_PRIO_DEFAULT);
 #endif
