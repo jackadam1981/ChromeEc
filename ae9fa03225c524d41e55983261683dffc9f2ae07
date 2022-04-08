@@ -57,6 +57,30 @@
       },
       "revId": "ae9fa03225c524d41e55983261683dffc9f2ae07",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "33a6b4be_5267dd28",
+        "filename": "zephyr/include/drivers/cros_system.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-04-08T23:03:35Z",
+      "side": 1,
+      "message": "Please read the linked bug.",
+      "parentUuid": "bf1cf36c_5d0544f5",
+      "range": {
+        "startLine": 279,
+        "startChar": 10,
+        "endLine": 279,
+        "endChar": 57
+      },
+      "revId": "ae9fa03225c524d41e55983261683dffc9f2ae07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
