@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "31d576a1_65b67da8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-04-08T05:38:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5c5b2871_66440bb0",
+      "range": {
+        "startLine": 13,
+        "startChar": 48,
+        "endLine": 13,
+        "endChar": 50
+      },
+      "revId": "8c9cddb20823b9ad4d4d5253484f9a0464c49210",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b58da5c8_3a0f88a3",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d2ce7b7_4ea2e7b4",
+        "filename": "zephyr/subsys/ap_pwrseq/power_host_sleep.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-04-08T05:38:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b58da5c8_3a0f88a3",
+      "range": {
+        "startLine": 128,
+        "startChar": 0,
+        "endLine": 130,
+        "endChar": 0
+      },
+      "revId": "8c9cddb20823b9ad4d4d5253484f9a0464c49210",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8597c120_404fdba4",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-04-04T17:11:34Z",
       "side": 1,
       "message": "nit: check if these can be static functions",
+      "range": {
+        "startLine": 134,
+        "startChar": 5,
+        "endLine": 134,
+        "endChar": 30
+      },
+      "revId": "8c9cddb20823b9ad4d4d5253484f9a0464c49210",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e1457f34_f6bcc871",
+        "filename": "zephyr/subsys/ap_pwrseq/power_host_sleep.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-04-08T05:38:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8597c120_404fdba4",
       "range": {
         "startLine": 134,
         "startChar": 5,

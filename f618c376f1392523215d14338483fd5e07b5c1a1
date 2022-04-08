@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f73244c_b764c4fa",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-04-08T05:38:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "44fc8d52_92d8da2f",
+      "range": {
+        "startLine": 13,
+        "startChar": 31,
+        "endLine": 13,
+        "endChar": 32
+      },
+      "revId": "f618c376f1392523215d14338483fd5e07b5c1a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "987946cd_2dd97634",
@@ -41,6 +65,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "101c6ef2_0cb19883",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-04-08T05:38:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "987946cd_2dd97634",
+      "revId": "f618c376f1392523215d14338483fd5e07b5c1a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7e921dc6_1b1d4fad",
@@ -54,6 +96,24 @@
       "writtenOn": "2022-04-05T10:26:07Z",
       "side": 1,
       "message": "saves",
+      "revId": "f618c376f1392523215d14338483fd5e07b5c1a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c193badf_ce9c0c87",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-04-08T05:38:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7e921dc6_1b1d4fad",
       "revId": "f618c376f1392523215d14338483fd5e07b5c1a1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -77,6 +137,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "1101f33f_26c2c956",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-04-08T05:38:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "49734fca_cb13c170",
+      "revId": "f618c376f1392523215d14338483fd5e07b5c1a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "13e0cacd_641f9075",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 5
@@ -88,6 +166,24 @@
       "writtenOn": "2022-04-05T10:26:07Z",
       "side": 1,
       "message": "I like the level of comments, it is well documented.",
+      "revId": "f618c376f1392523215d14338483fd5e07b5c1a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "63e1ec96_e3b23b35",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-04-08T05:38:01Z",
+      "side": 1,
+      "message": "Thanks~~",
+      "parentUuid": "13e0cacd_641f9075",
       "revId": "f618c376f1392523215d14338483fd5e07b5c1a1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -105,6 +201,24 @@
       "writtenOn": "2022-04-05T10:26:07Z",
       "side": 1,
       "message": "Prefer to use braces here to match the previous if\u0027s braces.",
+      "revId": "f618c376f1392523215d14338483fd5e07b5c1a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "26051393_696241b0",
+        "filename": "zephyr/subsys/ap_pwrseq/power_host_sleep.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-04-08T05:38:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d0c6c81c_a5963485",
       "revId": "f618c376f1392523215d14338483fd5e07b5c1a1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
