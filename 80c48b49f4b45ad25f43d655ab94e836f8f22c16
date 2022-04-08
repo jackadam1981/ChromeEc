@@ -46,6 +46,30 @@
       },
       "revId": "80c48b49f4b45ad25f43d655ab94e836f8f22c16",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c292f19_e6f1cccd",
+        "filename": "zephyr/subsys/ap_pwrseq/signal_adc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2022-04-08T02:03:04Z",
+      "side": 1,
+      "message": "Actually those are error messages:\n\u003cerr\u003e adc_npcx: Threshold selection (1) is not nabled\n\u003cerr\u003e adc_npcx: Threshold selection (3) is not enabled\n\nAs you mentioned, we can track the current state and set toggle interruptions accordingly. \n\nI would need to do further test to invoke this in the right location.",
+      "parentUuid": "6ae3fc2f_b7b866d4",
+      "range": {
+        "startLine": 112,
+        "startChar": 1,
+        "endLine": 120,
+        "endChar": 50
+      },
+      "revId": "80c48b49f4b45ad25f43d655ab94e836f8f22c16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
