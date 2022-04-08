@@ -16,7 +16,6 @@
 
 LOG_MODULE_REGISTER(pwm_led, LOG_LEVEL_ERR);
 
-#define PWM_LED_PINS_NODE	DT_PATH(pwm_led_pins)
 #define LED_PIN_COUNT		(LED_COLOR_COUNT - 1)
 
 /*
