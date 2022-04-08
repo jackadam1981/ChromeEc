@@ -39,7 +39,7 @@ static void report_previous_panic(void)
 {
 	struct panic_data * panic = panic_get_data();
 
-	if (panic == NULL && SCP_CORE0_MON_PC_LATCH == 0)
+	if (panic == NULL && SCP_CORE_MON_PC_LATCH == 0)
 		return;
 
 	ccprintf("[Previous Panic]\n");
@@ -49,10 +49,9 @@ static void report_previous_panic(void)
 		ccprintf("No panic data\n");
 	}
 	ccprintf("Latch PC:%x LR:%x SP:%x\n",
-		SCP_CORE0_MON_PC_LATCH,
-		SCP_CORE0_MON_LR_LATCH,
-		SCP_CORE0_MON_SP_LATCH);
-
+		SCP_CORE_MON_PC_LATCH,
+		SCP_CORE_MON_LR_LATCH,
+		SCP_CORE_MON_SP_LATCH);
 }
 DECLARE_HOOK(HOOK_INIT, report_previous_panic, HOOK_PRIO_DEFAULT);
 #endif
