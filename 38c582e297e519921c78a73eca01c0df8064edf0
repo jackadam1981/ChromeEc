@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1056a43c_6794b9e3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2022-04-08T20:16:24Z",
+      "side": 1,
+      "message": "Since bugzzy has a interrupt to the lid sensor [LID_360_L], the read() entry point of the sensor is not used. Beside, for lid calculation purposes, the algorithm only uses the latest accelerometer data, so collecting missed sample won\u0027t help.",
+      "revId": "38c582e297e519921c78a73eca01c0df8064edf0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
