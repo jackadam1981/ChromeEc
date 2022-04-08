@@ -22,6 +22,30 @@
       },
       "revId": "8ca99f77d19611715bf095951605aaa17b4b1fb1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94fbfcb5_9252f28b",
+        "filename": "zephyr/projects/intelrvp/adlrvp/prj.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-04-08T00:57:14Z",
+      "side": 1,
+      "message": "Yes, its we can use CONFIG_USB_PD_PORT_MAX_COUNT instead of hard coding \"4\"\n\ndoes CONFIG_PLATFORM_EC_DEDICATED_CHARGE_PORT_COUNT always need to be either 0/1 or it can be more than 1 ? if its only feature enabling flag, we can set it to \u0027y\u0027 instead of 0/1",
+      "parentUuid": "d84cbc24_1cdc3c4f",
+      "range": {
+        "startLine": 30,
+        "startChar": 41,
+        "endLine": 30,
+        "endChar": 42
+      },
+      "revId": "8ca99f77d19611715bf095951605aaa17b4b1fb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
