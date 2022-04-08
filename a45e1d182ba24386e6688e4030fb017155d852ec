@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f750e04_5869d97a",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_pd_ctrl_msg.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-04-08T04:47:02Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "125cde65_bc667bff",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 1
+      },
+      "revId": "a45e1d182ba24386e6688e4030fb017155d852ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6ca6db20_09dd39bb",
@@ -85,6 +109,30 @@
       "side": 1,
       "message": "`ZTEST_SUITE` runs `before`, `rules`, and `test` in this order.  One of the `rules` resets the tcpi emulator registers to all zero.  This affects the RX_DETECT_SOP bit that was setup in `before` and we\u0027re unable to successfully send control messages in this state.",
       "parentUuid": "6ca6db20_09dd39bb",
+      "range": {
+        "startLine": 125,
+        "startChar": 1,
+        "endLine": 125,
+        "endChar": 23
+      },
+      "revId": "a45e1d182ba24386e6688e4030fb017155d852ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "917b76f7_293a525f",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_pd_ctrl_msg.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-04-08T04:47:02Z",
+      "side": 1,
+      "message": "Can you file a bug on yourself to make sure we fix this once https://github.com/zephyrproject-rtos/zephyr/pull/44650 merges?",
+      "parentUuid": "c7185a8c_c7c6fac7",
       "range": {
         "startLine": 125,
         "startChar": 1,
