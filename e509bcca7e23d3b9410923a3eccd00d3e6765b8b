@@ -33,6 +33,24 @@
       "message": "Any need for this to still return a correct TID on the sysworkq?  I haven\u0027t found anywhere this function is used so I wasn\u0027t certain",
       "revId": "e509bcca7e23d3b9410923a3eccd00d3e6765b8b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "300931de_865360a5",
+        "filename": "zephyr/shim/src/tasks.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-04-08T21:15:39Z",
+      "side": 1,
+      "message": "Hey good point, did not even give a second look at this function... I\u0027ll add one more patch to drop it.",
+      "parentUuid": "26f035a7_d7efcc44",
+      "revId": "e509bcca7e23d3b9410923a3eccd00d3e6765b8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
