@@ -57,6 +57,53 @@
       },
       "revId": "9a02e46b31d36c906991a0a6d3a5d6337f5dba37",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e89ca2d_fb7c1203",
+        "filename": "zephyr/boards/riscv/it8xxx2/it8xxx2.dts",
+        "patchSetId": 11
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-04-08T20:37:34Z",
+      "side": 1,
+      "message": "There seems to be a limitation of devicetrees with deleting nodes.\nhttps://github.com/zephyrproject-rtos/zephyr/discussions/35214#discussioncomment-1290623\n\nhttps://elinux.org/Device_Tree_Source_Undocumented\n\nThe issue seems to be that the `/delete-node/` is ignored from the dtsi file and has to be specified on the dts file (I think).\n\nSo you should remove the `/delete-node/` from https://chromium.googlesource.com/chromiumos/platform/ec/+/627d546a/zephyr/include/cros/ite/it8xxx2.dtsi# because it doesn\u0027t appear to do anything.",
+      "parentUuid": "075085d4_b50f5fdd",
+      "range": {
+        "startLine": 25,
+        "startChar": 2,
+        "endLine": 25,
+        "endChar": 29
+      },
+      "revId": "9a02e46b31d36c906991a0a6d3a5d6337f5dba37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d319e4e_9e1c523f",
+        "filename": "zephyr/include/cros/ite/it8xxx2.dtsi",
+        "patchSetId": 11
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-04-08T20:37:34Z",
+      "side": 1,
+      "message": "See my other comment.  You can remove this line as it apparent gets ignored.",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 81,
+        "endChar": 29
+      },
+      "revId": "9a02e46b31d36c906991a0a6d3a5d6337f5dba37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
