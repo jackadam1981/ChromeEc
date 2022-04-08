@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55e79eea_61334a13",
+        "filename": "zephyr/projects/nissa/nivviks_overlay.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-04-08T00:38:11Z",
+      "side": 1,
+      "message": "HDMI board should be fine with low-voltage settings too, since both signals are open-drain with that board. One of them is the HPD input, but thresholds in 1.8V mode should still be okay.",
+      "range": {
+        "startLine": 206,
+        "startChar": 51,
+        "endLine": 207,
+        "endChar": 47
+      },
+      "revId": "26c317af25e5693478cf43a011743b29cdbf5f89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
