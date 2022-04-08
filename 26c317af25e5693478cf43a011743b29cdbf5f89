@@ -46,6 +46,30 @@
       },
       "revId": "26c317af25e5693478cf43a011743b29cdbf5f89",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f3c25b9_84a06cfe",
+        "filename": "zephyr/projects/nissa/nivviks_overlay.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-04-08T01:06:12Z",
+      "side": 1,
+      "message": "I\u0027d prefer to remove the comments about switching voltage on the HDMI board, since it doesn\u0027t need to. Nivviks variants should be able to support HDMI.",
+      "parentUuid": "946b5753_25dee082",
+      "range": {
+        "startLine": 206,
+        "startChar": 51,
+        "endLine": 207,
+        "endChar": 47
+      },
+      "revId": "26c317af25e5693478cf43a011743b29cdbf5f89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
