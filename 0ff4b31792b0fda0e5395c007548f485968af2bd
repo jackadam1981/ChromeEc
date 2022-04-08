@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "050f6e36_4d90703b",
+        "filename": "zephyr/dts/bindings/leds/cros-ec,led-id.yaml",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-04-08T21:50:46Z",
+      "side": 1,
+      "message": "In my study, the Appendix-A of http://go/led_er_model, the `led-id` should be an attribute of `Color`. You can iterate through the `Color` entities (`cros-ec,gpio-led-pins` or `cros-ec,pwm-led-pins` here) to know all the supported `led-id`. Don\u0027t need a separate node.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 28
+      },
+      "revId": "0ff4b31792b0fda0e5395c007548f485968af2bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "08bf5939_8bed164f",
+        "filename": "zephyr/shim/src/led_driver/led.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-04-08T21:50:46Z",
+      "side": 1,
+      "message": "Seems that no one uses these constants, right?",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 0
+      },
+      "revId": "0ff4b31792b0fda0e5395c007548f485968af2bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0004c9f8_d39bf9b1",
+        "filename": "zephyr/shim/src/led_driver/led.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-04-08T21:50:46Z",
+      "side": 1,
+      "message": "Separate these line as a CL. It is to generalize the `led_color`.",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 6
+      },
+      "revId": "0ff4b31792b0fda0e5395c007548f485968af2bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
