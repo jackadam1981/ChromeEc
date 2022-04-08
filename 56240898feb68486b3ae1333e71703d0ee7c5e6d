@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4242f84_cbdfdd04",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-04-08T05:37:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "99bf087e_371672e9",
+      "revId": "56240898feb68486b3ae1333e71703d0ee7c5e6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e55c0637_a8101d54",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-04-05T10:15:34Z",
       "side": 1,
       "message": "will be migrated",
+      "revId": "56240898feb68486b3ae1333e71703d0ee7c5e6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c0e89185_f6163ada",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-04-08T05:37:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e55c0637_a8101d54",
       "revId": "56240898feb68486b3ae1333e71703d0ee7c5e6d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -52,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "51e1c10a_3b245cc0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-04-08T05:37:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "441e3be6_cb6d180e",
+      "revId": "56240898feb68486b3ae1333e71703d0ee7c5e6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cd4f2f29_b33d51e5",
@@ -65,6 +119,24 @@
       "writtenOn": "2022-04-05T10:15:34Z",
       "side": 1,
       "message": "Change to CON...EC_AP_PWRSEQ_S0IX and EC_AP_PWRSEQ_HOST_SLEEP\nto match existing config names.",
+      "revId": "56240898feb68486b3ae1333e71703d0ee7c5e6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c116fa9a_6e5c7d43",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-04-08T05:37:37Z",
+      "side": 1,
+      "message": "Deleted since those two flags are not needed now.",
+      "parentUuid": "cd4f2f29_b33d51e5",
       "revId": "56240898feb68486b3ae1333e71703d0ee7c5e6d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -94,6 +166,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d8659d1b_7038ab82",
+        "filename": "zephyr/shim/include/power_host_sleep.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-04-08T05:37:37Z",
+      "side": 1,
+      "message": "I made changes and files can be directly included are included now.\nStill power.h can\u0027t be included there are some compile error.\n\nZephyr does have its version of power states, here we have to call legacy code function \"get_lazy_wake_mask()\" which requires legacy power state as parameter. So have to access both power state definitions in order to convert Zephyr version to legacy EC power state.\n\nAnother possible way is to split power.h to two files, move power states enum and host sleep APIs into a new file. I feel this is less favorable alternative since we avoid to making changes in legacy code.",
+      "parentUuid": "360b36c5_d249086b",
+      "range": {
+        "startLine": 13,
+        "startChar": 3,
+        "endLine": 14,
+        "endChar": 30
+      },
+      "revId": "56240898feb68486b3ae1333e71703d0ee7c5e6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "441a144a_65f4930b",
         "filename": "zephyr/shim/include/power_host_sleep.h",
         "patchSetId": 9
@@ -105,6 +201,24 @@
       "writtenOn": "2022-04-05T10:15:34Z",
       "side": 1,
       "message": "Do you really need 64 bits here, or will BIT() suffice?",
+      "revId": "56240898feb68486b3ae1333e71703d0ee7c5e6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "89ef416c_5e51f226",
+        "filename": "zephyr/shim/include/power_host_sleep.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-04-08T05:37:37Z",
+      "side": 1,
+      "message": "64bits is not necessarily required since the event_code uses bits until bit 31. Legacy EC code use luu so I choose 64 bits.\n\nNow I included ec_commands.h instead of copying the definition.",
+      "parentUuid": "441a144a_65f4930b",
       "revId": "56240898feb68486b3ae1333e71703d0ee7c5e6d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -132,6 +246,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "99489253_1eb88055",
+        "filename": "zephyr/shim/src/power_host_sleep_api.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-04-08T05:37:37Z",
+      "side": 1,
+      "message": "It could happen in power states other than these three sleep states; since update wake mask is a deferred call. So better not to add assert.",
+      "parentUuid": "0ddb6da0_7e3568a7",
+      "range": {
+        "startLine": 22,
+        "startChar": 1,
+        "endLine": 22,
+        "endChar": 8
+      },
+      "revId": "56240898feb68486b3ae1333e71703d0ee7c5e6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "56def9b0_6a15e7f5",
@@ -145,6 +283,30 @@
       "writtenOn": "2022-04-05T06:54:42Z",
       "side": 1,
       "message": "The S0IX option selecting this captures the requirement, so I don\u0027t think you need to include it in the help.",
+      "range": {
+        "startLine": 71,
+        "startChar": 30,
+        "endLine": 72,
+        "endChar": 65
+      },
+      "revId": "56240898feb68486b3ae1333e71703d0ee7c5e6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f20bcd6a_36225b68",
+        "filename": "zephyr/subsys/ap_pwrseq/Kconfig",
+        "patchSetId": 9
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-04-08T05:37:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "56def9b0_6a15e7f5",
       "range": {
         "startLine": 71,
         "startChar": 30,
@@ -242,6 +404,72 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "99638f01_ef38983d",
+        "filename": "zephyr/subsys/ap_pwrseq/Kconfig",
+        "patchSetId": 9
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-04-08T05:37:37Z",
+      "side": 1,
+      "message": "Thanks. Added above to zephyr/CMakeLists.txt.\n\nBut in legacy code, it still expects config flags CONFIG_POWER_S0IX and CONFIG_POWER_TRACK_HOST_SLEEP_STATE to be enabled. I made changes in zephyr/shim/config_chips.h to conditionally enable these two config flags if CONFIG_AP_PWRSEQ_HOST_SLEEP and CONFIG_AP_PWRSEQ_S0IX are enabled.",
+      "parentUuid": "64b999f3_72cf90ed",
+      "range": {
+        "startLine": 84,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 38
+      },
+      "revId": "56240898feb68486b3ae1333e71703d0ee7c5e6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "961d403a_36bcbe34",
+        "filename": "zephyr/subsys/ap_pwrseq/Kconfig",
+        "patchSetId": 9
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-04-08T05:37:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "657a92d2_1c530c77",
+      "revId": "56240898feb68486b3ae1333e71703d0ee7c5e6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "83cba1d8_6f19dd0e",
+        "filename": "zephyr/subsys/ap_pwrseq/Kconfig",
+        "patchSetId": 9
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-04-08T05:37:37Z",
+      "side": 1,
+      "message": "Using different to include power/host_sleep.c. So those two flags are not needed here. Removed.",
+      "parentUuid": "5ea626fc_c179baa0",
+      "range": {
+        "startLine": 84,
+        "startChar": 7,
+        "endLine": 84,
+        "endChar": 19
+      },
+      "revId": "56240898feb68486b3ae1333e71703d0ee7c5e6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "20845ccc_8a1a279b",
@@ -255,6 +483,30 @@
       "writtenOn": "2022-04-05T06:54:42Z",
       "side": 1,
       "message": "As above, since the dependant selects this I don\u0027t think you need to include it in the help.",
+      "range": {
+        "startLine": 87,
+        "startChar": 49,
+        "endLine": 89,
+        "endChar": 35
+      },
+      "revId": "56240898feb68486b3ae1333e71703d0ee7c5e6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "69dddc40_a2c1f6f9",
+        "filename": "zephyr/subsys/ap_pwrseq/Kconfig",
+        "patchSetId": 9
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-04-08T05:37:37Z",
+      "side": 1,
+      "message": "This config is removed from here.",
+      "parentUuid": "20845ccc_8a1a279b",
       "range": {
         "startLine": 87,
         "startChar": 49,
@@ -282,6 +534,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f438f117_cb5a4e5f",
+        "filename": "zephyr/subsys/ap_pwrseq/power_host_sleep.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-04-08T05:37:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "af722add_57479550",
+      "revId": "56240898feb68486b3ae1333e71703d0ee7c5e6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ca927a62_e4293ff9",
@@ -295,6 +565,24 @@
       "writtenOn": "2022-04-06T00:53:35Z",
       "side": 1,
       "message": "Any reason this can\u0027t be implemented right now?",
+      "revId": "56240898feb68486b3ae1333e71703d0ee7c5e6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "22739680_262727f7",
+        "filename": "zephyr/subsys/ap_pwrseq/power_host_sleep.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-04-08T05:37:37Z",
+      "side": 1,
+      "message": "Will add in separate patch. If system is in S0ix, and reset is going to happen, this has to be called before power state change, I do notice if register with AP_POWER_RESET, it is processed later than power state changes. Legacy EC registers it with hook in first priority. I need to figure this out.",
+      "parentUuid": "ca927a62_e4293ff9",
       "revId": "56240898feb68486b3ae1333e71703d0ee7c5e6d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
