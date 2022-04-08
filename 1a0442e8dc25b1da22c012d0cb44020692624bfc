@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e48cd2fc_571df143",
+        "filename": "docs/ec_terms.md",
+        "patchSetId": 45
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-04-08T19:23:39Z",
+      "side": 1,
+      "message": "Delete this space.",
+      "range": {
+        "startLine": 224,
+        "startChar": 37,
+        "endLine": 224,
+        "endChar": 38
+      },
+      "revId": "1a0442e8dc25b1da22c012d0cb44020692624bfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "08c77fca_c0d1c30a",
+        "filename": "docs/zephyr/zephyr_usbc.md",
+        "patchSetId": 45
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-04-08T19:23:39Z",
+      "side": 1,
+      "message": "delete",
+      "range": {
+        "startLine": 7,
+        "startChar": 11,
+        "endLine": 7,
+        "endChar": 25
+      },
+      "revId": "1a0442e8dc25b1da22c012d0cb44020692624bfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a17916e3_b9f3cc4c",
+        "filename": "docs/zephyr/zephyr_usbc.md",
+        "patchSetId": 45
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-04-08T19:23:39Z",
+      "side": 1,
+      "message": "This is maybe too much detail.  Maybe it would be better to include a list of the signals used on a USB-C connector here instead. The description of the USB PD state machine below is great.",
+      "range": {
+        "startLine": 8,
+        "startChar": 42,
+        "endLine": 22,
+        "endChar": 69
+      },
+      "revId": "1a0442e8dc25b1da22c012d0cb44020692624bfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4bc00a62_4f58eee0",
+        "filename": "docs/zephyr/zephyr_usbc.md",
+        "patchSetId": 45
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-04-08T19:23:39Z",
+      "side": 1,
+      "message": "Also add a bullet for USB4/Thunderbolt mode",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 78
+      },
+      "revId": "1a0442e8dc25b1da22c012d0cb44020692624bfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1441919_457ac026",
+        "filename": "docs/zephyr/zephyr_usbc.md",
+        "patchSetId": 45
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-04-08T19:23:39Z",
+      "side": 1,
+      "message": "I realize this is WIP, but you\u0027ll want a couple sentences or table indicating all the sub-components that need to be configured.",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 0
+      },
+      "revId": "1a0442e8dc25b1da22c012d0cb44020692624bfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
