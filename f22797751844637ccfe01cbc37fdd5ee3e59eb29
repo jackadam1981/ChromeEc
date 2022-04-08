@@ -1,0 +1,147 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7650cb8c_d424892c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-04-08T00:53:50Z",
+      "side": 1,
+      "message": "make sure, all the components are tested like\nUSB, DP, TBT \u0026 USB4",
+      "range": {
+        "startLine": 14,
+        "startChar": 6,
+        "endLine": 14,
+        "endChar": 42
+      },
+      "revId": "f22797751844637ccfe01cbc37fdd5ee3e59eb29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "382189cf_1bb87a65",
+        "filename": "zephyr/projects/intelrvp/CMakeLists.txt",
+        "patchSetId": 7
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-04-08T00:53:50Z",
+      "side": 1,
+      "message": "bring it to zephyr, going forward w can use files inside zephyr folder only",
+      "revId": "f22797751844637ccfe01cbc37fdd5ee3e59eb29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "494af8b9_52402485",
+        "filename": "zephyr/projects/intelrvp/include/intelrvp.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-04-08T00:53:50Z",
+      "side": 1,
+      "message": "nit: extra new line",
+      "revId": "f22797751844637ccfe01cbc37fdd5ee3e59eb29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35714a2c_9b5c1b2e",
+        "filename": "zephyr/projects/intelrvp/mtlrvp/prj.conf",
+        "patchSetId": 7
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-04-08T00:53:50Z",
+      "side": 1,
+      "message": "refer other comment about HBR",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 40
+      },
+      "revId": "f22797751844637ccfe01cbc37fdd5ee3e59eb29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5196a80d_5bbde15c",
+        "filename": "zephyr/projects/intelrvp/mtlrvp/prj.conf",
+        "patchSetId": 7
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-04-08T00:53:50Z",
+      "side": 1,
+      "message": "double check, NPCX needs CONFIG_PLATFORM_EC_USB_PPC",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 29
+      },
+      "revId": "f22797751844637ccfe01cbc37fdd5ee3e59eb29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc3c22ce_b3c9aa80",
+        "filename": "zephyr/projects/intelrvp/mtlrvp/src/mtlrvp.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 417,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-04-08T00:53:50Z",
+      "side": 1,
+      "message": "not needed in this CL",
+      "range": {
+        "startLine": 393,
+        "startChar": 0,
+        "endLine": 417,
+        "endChar": 1
+      },
+      "revId": "f22797751844637ccfe01cbc37fdd5ee3e59eb29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a2f0aa7_c612bd23",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 1407,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-04-08T00:53:50Z",
+      "side": 1,
+      "message": "submit a separate CL",
+      "revId": "f22797751844637ccfe01cbc37fdd5ee3e59eb29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
