@@ -81,6 +81,48 @@ int power_signal_adc_get(enum pwr_sig_adc adc)
 	return !!value[adc];
 }
 
+int power_signal_adc_enable_int(enum pwr_sig_adc adc)
+{
+	struct sensor_value val;
+
+	if (adc < 0 || adc >= ARRAY_SIZE(config)) {
+		return -EINVAL;
+	}
+	/*
+	 * Enable high trigger callback only, on the assumption
+	 * that the ADC is being enabled and we only want to know
+	 * when the power rails are across the high threshold
+	 */
+	val.val1 = true;
+	return sensor_attr_set(config[adc].dev_trig_high,
+			       SENSOR_CHAN_VOLTAGE,
+			       SENSOR_ATTR_ALERT,
+			       &val);
+}
+
+int power_signal_adc_disable_int(enum pwr_sig_adc adc)
+{
+	struct sensor_value val;
+	int ret;
+
+	if (adc < 0 || adc >= ARRAY_SIZE(config)) {
+		return -EINVAL;
+	}
+	/* Disable both high and low threshold interrupts */
+	val.val1 = false;
+	ret = sensor_attr_set(config[adc].dev_trig_low,
+			      SENSOR_CHAN_VOLTAGE,
+			      SENSOR_ATTR_ALERT,
+			      &val);
+	if (ret < 0) {
+		return ret;
+	}
+	return sensor_attr_set(config[adc].dev_trig_high,
+			       SENSOR_CHAN_VOLTAGE,
+			       SENSOR_ATTR_ALERT,
+			       &val);
+}
+
 /*
  * Macros to create individual callbacks for
  * high and low triggers for each ADC.
@@ -110,7 +152,6 @@ void power_signal_adc_init(void)
 		.type = SENSOR_TRIG_THRESHOLD,
 		.chan = SENSOR_CHAN_VOLTAGE
 	};
-	struct sensor_value val;
 	sensor_trigger_handler_t low_cb[] = {
 		DT_FOREACH_STATUS_OKAY_VARGS(MY_COMPAT, ADC_CB_COMMA, low)
 	};
@@ -123,13 +164,7 @@ void power_signal_adc_init(void)
 		/* Set high and low trigger callbacks */
 		sensor_trigger_set(config[i].dev_trig_high, &trig, high_cb[i]);
 		sensor_trigger_set(config[i].dev_trig_low, &trig, low_cb[i]);
-
-		/* Enable high trigger callback only */
-		val.val1 = true;
-		sensor_attr_set(config[i].dev_trig_high,
-				SENSOR_CHAN_VOLTAGE,
-				SENSOR_ATTR_ALERT,
-				&val);
+		power_signal_adc_enable_int(i);
 	}
 }
 
