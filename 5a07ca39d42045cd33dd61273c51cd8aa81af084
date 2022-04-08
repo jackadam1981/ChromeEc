@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d535deef_e562246a",
+        "filename": "test/motion_sense_fifo.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-04-08T01:02:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "52d8396a_c2e31e25",
+      "range": {
+        "startLine": 299,
+        "startChar": 24,
+        "endLine": 299,
+        "endChar": 50
+      },
+      "revId": "5a07ca39d42045cd33dd61273c51cd8aa81af084",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aecc4062_d671d69e",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "36d68e45_8e644726",
+        "filename": "test/motion_sense_fifo.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-04-08T01:02:46Z",
+      "side": 1,
+      "message": "This is more accurate. When you add the first sample above the fifo will grab the current clock as the time in which the first sample was added (this is used as the anchor for the timestamp spreading). While the algorithm would technically work if the timestamps were in the future it is expected that they\u0027ll be older.",
+      "parentUuid": "aecc4062_d671d69e",
+      "range": {
+        "startLine": 314,
+        "startChar": 0,
+        "endLine": 314,
+        "endChar": 45
+      },
+      "revId": "5a07ca39d42045cd33dd61273c51cd8aa81af084",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b0c5bebf_00069980",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-04-07T19:57:13Z",
       "side": 1,
       "message": "The checks below are verifying that the first and third entries include a timestamp.  It\u0027s only the check at line 336 that validates the timestamps are different, correct?",
+      "range": {
+        "startLine": 322,
+        "startChar": 4,
+        "endLine": 322,
+        "endChar": 62
+      },
+      "revId": "5a07ca39d42045cd33dd61273c51cd8aa81af084",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3df68dfb_9fb75860",
+        "filename": "test/motion_sense_fifo.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-04-08T01:02:46Z",
+      "side": 1,
+      "message": "I fixed the comments.",
+      "parentUuid": "b0c5bebf_00069980",
       "range": {
         "startLine": 322,
         "startChar": 4,
