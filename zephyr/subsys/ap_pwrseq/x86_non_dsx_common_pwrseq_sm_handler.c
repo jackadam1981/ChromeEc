@@ -4,6 +4,8 @@
  */
 
 #include <init.h>
+
+#include "system.h"
 #include <x86_non_dsx_common_pwrseq_sm_handler.h>
 
 static K_KERNEL_STACK_DEFINE(pwrseq_thread_stack,
@@ -416,10 +418,45 @@ void ap_pwrseq_task_start(void)
 
 static void init_pwr_seq_state(void)
 {
+	/*
+	 * TODO: Initial state sets to G3 once CONFIG_PLATFORM_EC_BRINGUP=y
+	 * is removed from project configuration.
+	 */
+	enum power_states_ndsx start_state = SYS_POWER_STATE_G3S5;
+
 	init_chipset_pwr_seq_state();
 	request_exit_hardoff(false);
 
-	pwr_sm_set_state(SYS_POWER_STATE_G3S5);
+	/*
+	 * We are here as RW. We need to handle the following cases:
+	 *
+	 * 1. Late sysjump by software sync. AP is in S0.
+	 * 2. Shutting down in recovery mode then sysjump by EFS2. AP is in S5
+	 *    and expected to sequence down.
+	 * 3. Rebooting from recovery mode then sysjump by EFS2. AP is in S5
+	 *    and expected to sequence up.
+	 * 4. RO jumps to RW from main() by EFS2. (a.k.a. power on reset, cold
+	 *    reset). AP is in G3.
+	 */
+	if (system_jumped_to_this_image()) {
+		if ((power_get_signals() & IN_ALL_S0_MASK) == IN_ALL_S0_VALUE) {
+			/* Case 1 */
+			disable_sleep(SLEEP_MASK_AP_RUN);
+			LOG_DBG("already in S0");
+			start_state = SYS_POWER_STATE_S0;
+		} else if ((power_get_signals() & AP_PWRSEQ_G3S5_POWERUP_MASK)
+					== AP_PWRSEQ_G3S5_POWERUP_VALUE) {
+			/* Case 2 & 3 */
+			LOG_DBG("already in S5");
+			start_state = SYS_POWER_STATE_S5;
+		} else {
+			/* Case 4 */
+			ap_power_force_shutdown(AP_POWER_SHUTDOWN_G3);
+			start_state = SYS_POWER_STATE_G3;
+		}
+	}
+
+	pwr_sm_set_state(start_state);
 }
 
 /* Initialize power sequence system state */
