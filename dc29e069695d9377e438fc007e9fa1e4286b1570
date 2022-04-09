@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9dd9261_c3ce9943",
+        "filename": "zephyr/subsys/ap_pwrseq/signal_adc.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-04-09T03:47:48Z",
+      "side": 1,
+      "message": "I guess there is the chance of a race condition between checking the value bit\nand disabling the trigger - it would seem safer to disable both regardless (the\ndisabling will test/{set,clear} if the trigger is set, so there shouldn\u0027t be any race there).\nThere should be no problems in the enable routine, because the triggers aren\u0027t enabled at that time, but in this routine it could happen.",
+      "revId": "dc29e069695d9377e438fc007e9fa1e4286b1570",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
