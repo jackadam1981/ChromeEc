@@ -33,6 +33,144 @@
       "message": "Is that relevant for all brask boards? in that case - please move to baseboard/brask  ",
       "revId": "7df0c90ab3751112a496b5af1e260ad6d8e64bf5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc2a534d_5ade7288",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2022-04-09T05:46:26Z",
+      "side": 1,
+      "message": "I think it depends on the project design.",
+      "parentUuid": "2669c042_fc6e541c",
+      "revId": "7df0c90ab3751112a496b5af1e260ad6d8e64bf5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bab779d6_99e141d2",
+        "filename": "board/moli/board.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2022-04-09T05:46:26Z",
+      "side": 1,
+      "message": "Do you check if this is true for Moli? Please don\u0027t copy it directly from the brask because the moli design is not the same as Brask.",
+      "revId": "7df0c90ab3751112a496b5af1e260ad6d8e64bf5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17cd5b64_29c50c75",
+        "filename": "board/moli/board.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2022-04-09T05:46:26Z",
+      "side": 1,
+      "message": "Please check your io port and make sure it is true for moli.",
+      "revId": "7df0c90ab3751112a496b5af1e260ad6d8e64bf5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a853238c_9411e1f7",
+        "filename": "board/moli/led.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2022-04-09T05:46:26Z",
+      "side": 1,
+      "message": "add a newline",
+      "revId": "7df0c90ab3751112a496b5af1e260ad6d8e64bf5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db5bb80b_ecef908e",
+        "filename": "board/moli/sensors.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2022-04-09T05:46:26Z",
+      "side": 1,
+      "message": "Can you mention clearly how do you get this value?",
+      "range": {
+        "startLine": 49,
+        "startChar": 23,
+        "endLine": 49,
+        "endChar": 39
+      },
+      "revId": "7df0c90ab3751112a496b5af1e260ad6d8e64bf5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db575fd9_9d8b207f",
+        "filename": "board/moli/sensors.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2022-04-09T05:46:26Z",
+      "side": 1,
+      "message": "how to get this value?",
+      "range": {
+        "startLine": 52,
+        "startChar": 31,
+        "endLine": 52,
+        "endChar": 35
+      },
+      "revId": "7df0c90ab3751112a496b5af1e260ad6d8e64bf5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d8586406_d9cd44d0",
+        "filename": "board/moli/sensors.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2022-04-09T05:46:26Z",
+      "side": 1,
+      "message": "how to get this value?",
+      "range": {
+        "startLine": 53,
+        "startChar": 37,
+        "endLine": 53,
+        "endChar": 41
+      },
+      "revId": "7df0c90ab3751112a496b5af1e260ad6d8e64bf5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
