@@ -1,0 +1,89 @@
+/* Copyright 2022 The Chromium OS Authors. All rights reserved.
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+/ {
+	pwm_pins {
+		compatible = "cros-ec,pwm-pin-config";
+
+		pwm_r: pwm_r {
+			#led-pin-cells = <1>;
+			pwms = <&pwm2 2 PWM_POLARITY_INVERTED>;
+		};
+
+		pwm_g: pwm_g {
+			#led-pin-cells = <1>;
+			pwms = <&pwm0 0 PWM_POLARITY_INVERTED>;
+		};
+
+		pwm_b: pwm_b {
+			#led-pin-cells = <1>;
+			pwms = <&pwm1 1 PWM_POLARITY_INVERTED>;
+		};
+	};
+
+	pwm-led-pins {
+		compatible = "cros-ec,pwm-led-pins";
+		pwm-frequency = <324>;
+
+		color-off {
+			led-color = "LED_OFF";
+			led-pins = <&pwm_r 0>,
+				   <&pwm_g 0>,
+				   <&pwm_b 0>;
+		};
+
+		color-red {
+			led-color = "LED_RED";
+			br-color = "EC_LED_COLOR_RED";
+			led-pins = <&pwm_r 100>,
+				   <&pwm_g 0>,
+				   <&pwm_b 0>;
+		};
+
+		color-green {
+			led-color = "LED_GREEN";
+			br-color = "EC_LED_COLOR_GREEN";
+			led-pins = <&pwm_r 0>,
+				   <&pwm_g 100>,
+				   <&pwm_b 0>;
+		};
+
+		color-blue {
+			led-color = "LED_BLUE";
+			br-color = "EC_LED_COLOR_BLUE";
+			led-pins = <&pwm_r 0>,
+				   <&pwm_g 0>,
+				   <&pwm_b 100>;
+		};
+
+		color-amber {
+			led-color = "LED_AMBER";
+			br-color = "EC_LED_COLOR_AMBER";
+			led-pins = <&pwm_r 100>,
+				   <&pwm_g 20>,
+				   <&pwm_b 100>;
+		};
+
+		color-white {
+			led-color = "LED_WHITE";
+			br-color = "EC_LED_COLOR_WHITE";
+			led-pins = <&pwm_r 100>,
+				   <&pwm_g 100>,
+				   <&pwm_b 100>;
+		};
+	};
+};
+
+&pwm0 {
+	status = "okay";
+};
+
+&pwm1 {
+	status = "okay";
+};
+
+&pwm2 {
+	status = "okay";
+};

@@ -28,11 +28,12 @@ register_nissa_project(
     chip="npcx9",
     extra_dts_overlays=[
         here / "nivviks_generated.dts",
+        here / "nivviks_led.dts",
         here / "nivviks_overlay.dts",
         here / "nivviks_motionsense.dts",
         here / "nivviks_keyboard.dts",
         here / "nivviks_power_signals.dts",
-        here / "nivviks_pwm_leds.dts",
+        here / "nivviks_pwm_led.dts",
     ],
     extra_kconfig_files=[here / "prj_nivviks.conf"],
 )
@@ -42,11 +43,12 @@ register_nissa_project(
     chip="it8xxx2",
     extra_dts_overlays=[
         here / "nereid_generated.dts",
+        here / "nereid_led.dts",
         here / "nereid_overlay.dts",
         here / "nereid_motionsense.dts",
         here / "nereid_keyboard.dts",
         here / "nereid_power_signals.dts",
-        here / "nereid_pwm_leds.dts",
+        here / "nereid_pwm_led.dts",
     ],
     extra_kconfig_files=[here / "prj_nereid.conf"],
 )

@@ -1,0 +1,77 @@
+/ {
+	led-colors {
+		compatible = "cros-ec,led-colors";
+
+		power-state-charge-batt-lvl-1 {
+			charge-state = "PWR_STATE_CHARGE";
+			extra-flag = "LED_BATT_BELOW_10_PCT";
+
+			color-0 {
+				led-color = "LED_RED";
+			};
+		};
+
+		power-state-charge-batt-lvl-2 {
+			charge-state = "PWR_STATE_CHARGE";
+			extra-flag = "LED_BATT_ABOVE_10_PCT";
+
+			color-0 {
+				led-color = "LED_AMBER";
+			};
+		};
+
+		power-state-near-full {
+			charge-state = "PWR_STATE_CHARGE_NEAR_FULL";
+
+			color-0 {
+				led-color = "LED_GREEN";
+			};
+		};
+
+		power-state-discharge {
+			charge-state = "PWR_STATE_DISCHARGE";
+
+			color-0 {
+				led-color = "LED_OFF";
+			};
+		};
+
+		power-state-error {
+			charge-state = "PWR_STATE_ERROR";
+
+			/* Red 1 sec, off 1 sec */
+			color-0 {
+				led-color = "LED_RED";
+				period = <1>;
+			};
+			color-1 {
+				led-color = "LED_OFF";
+				period = <1>;
+			};
+		};
+
+		power-state-idle-forced {
+			charge-state = "PWR_STATE_IDLE";
+			extra-flag = "LED_CHFLAG_FORCE_IDLE";
+
+			/* Red 2 sec, Green 2 sec */
+			color-0 {
+				led-color = "LED_RED";
+				period = <2>;
+			};
+			color-1 {
+				led-color = "LED_GREEN";
+				period = <2>;
+			};
+		};
+
+		power-state-idle-default {
+			charge-state = "PWR_STATE_IDLE";
+			extra-flag = "LED_CHFLAG_DEFAULT";
+
+			color-0 {
+				led-color = "LED_WHITE";
+			};
+		};
+	};
+};
