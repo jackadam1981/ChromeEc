@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fd5955b4_53529ce5",
+        "filename": "zephyr/dts/bindings/leds/cros-ec,led-id.yaml",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-04-09T00:22:29Z",
+      "side": 1,
+      "message": "Looks like the `led_is_supported(enum ec_led_id led_id)` in `common/led_common.c` is the only place uses `supported_led_ids[]` and the `supported_led_ids_count`. Retrofitting this function takes too much effort and complicates the configuration with no point. A better way seems to be refactoring it, like making it overridable. And the Zephyr driver overrides this function to another implementation, which iterates through all led-pins.",
+      "parentUuid": "acf2f4a4_4e9ee08d",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 28
+      },
+      "revId": "0ff4b31792b0fda0e5395c007548f485968af2bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "08bf5939_8bed164f",
         "filename": "zephyr/shim/src/led_driver/led.c",
         "patchSetId": 4
