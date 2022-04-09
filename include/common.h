@@ -439,11 +439,8 @@ enum ec_error_list {
 #define __config_enabled(cfg, value)					      \
 	__cfg_select(							      \
 		value, 1, ({						      \
-			int __undefined = __builtin_strcmp(cfg, #value) == 0; \
-			extern int IS_ENABLED_BAD_ARGS(void) __error(	      \
+			BUILD_ASSERT(__builtin_strcmp(cfg, #value) == 0,      \
 				cfg " must be <blank>, or not defined.");     \
-			if (!__undefined)				      \
-				IS_ENABLED_BAD_ARGS();			      \
 			0;						      \
 		}))
 
