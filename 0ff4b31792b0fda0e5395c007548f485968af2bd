@@ -164,6 +164,30 @@
       },
       "revId": "0ff4b31792b0fda0e5395c007548f485968af2bd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3144a971_5675635b",
+        "filename": "zephyr/shim/src/led_driver/led.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1513493
+      },
+      "writtenOn": "2022-04-09T00:27:52Z",
+      "side": 1,
+      "message": "Done. [New CR](https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3579991)",
+      "parentUuid": "0004c9f8_d39bf9b1",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 6
+      },
+      "revId": "0ff4b31792b0fda0e5395c007548f485968af2bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
