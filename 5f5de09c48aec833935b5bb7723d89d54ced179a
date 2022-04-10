@@ -16,6 +16,23 @@
       "message": "Hi Andrew, would you or anyone with access to nivviks/nereid HW help test this patch for the LED policies for nivviks and nereid?",
       "revId": "5f5de09c48aec833935b5bb7723d89d54ced179a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e2c97d2_c0f691e7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-04-10T00:36:29Z",
+      "side": 1,
+      "message": "So I\u0027d much prefer to see the updated design before any implementation is done, otherwise there may be multiple rounds of refactoring and correction.\nThere is no schedule urgency for nissa, since we now have used the legacy implementation.\n\nI certainly think we need to review some of the compats - having 2 separate compats for the PWMs seems very cumbersome, and using enums is much less preferred than phandles.\n",
+      "revId": "5f5de09c48aec833935b5bb7723d89d54ced179a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
