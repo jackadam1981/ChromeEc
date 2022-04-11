@@ -22,6 +22,30 @@
       },
       "revId": "68bb710c536cd8430fa03c84c5182aa8a3f3fd26",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d7476c2_45bcd58f",
+        "filename": "power/amd_x86.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 295,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2022-04-11T18:16:47Z",
+      "side": 1,
+      "message": "Depends if the host sends HOST_SLEEP_EVENT_S0IX_RESUME on abort. The EC assumes if HOST_SLEEP_EVENT_S0IX_SUSPEND is received, HOST_SLEEP_EVENT_S0IX_RESUME will be received to resume.\n\nI think calling lpc_s0ix_resume_restore_masks when a hang is detected could resolve this. I created b/228857046 to track.",
+      "parentUuid": "f6ac49a6_69caf327",
+      "range": {
+        "startLine": 295,
+        "startChar": 2,
+        "endLine": 295,
+        "endChar": 30
+      },
+      "revId": "68bb710c536cd8430fa03c84c5182aa8a3f3fd26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
