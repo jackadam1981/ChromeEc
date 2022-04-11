@@ -93,6 +93,30 @@
       },
       "revId": "56251ac5485ed1512d5f1223bac26ac60fbe3c63",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a0bfb632_e97559cc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-04-11T18:49:50Z",
+      "side": 1,
+      "message": "Ha, I ran it in the wrong branch.\n\nhttps://paste.googleplex.com/5024359929348096\n\ngrep zmake lint.out  | wc -l \u003d 192\n\negrep -v \u0027Total errors found|file excluded by|Your code has been rated\u0027 lint.out | wc -l \u003d 7948",
+      "parentUuid": "8328e70f_bbcf0f33",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 9
+      },
+      "revId": "56251ac5485ed1512d5f1223bac26ac60fbe3c63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
