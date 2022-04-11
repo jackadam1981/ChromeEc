@@ -34,4 +34,8 @@
 
 &adc0 {
 	status = "okay";
+	pinctrl-0 = <&pinctrl_adc0   /* ADC0*/
+		     &pinctrl_adc1   /* ADC1*/
+		     &pinctrl_adc2   /* ADC2*/
+		     &pinctrl_adc7>; /* ADC7*/
 };
