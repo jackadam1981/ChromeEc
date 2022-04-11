@@ -422,6 +422,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f90fe79f_8cc055a8",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 490,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-04-11T20:05:16Z",
+      "side": 1,
+      "message": "I wouldn\u0027t say that this is a blocking issue, I think it is just a bit tougher to read than it needs to be. Having said that, it could definitely be that I\u0027m missing something in the logic.",
+      "parentUuid": "0fbf886b_10674769",
+      "range": {
+        "startLine": 490,
+        "startChar": 4,
+        "endLine": 490,
+        "endChar": 65
+      },
+      "revId": "1f6dfa04c5df0bf030f25bf5f162586bcf5583e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "87733305_092b9993",
         "filename": "test/run_device_tests.py",
         "patchSetId": 1
