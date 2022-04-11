@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4544aacf_1ebf2959",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1702,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-04-11T16:29:42Z",
+      "side": 1,
+      "message": "I think \"on\" may be ambiguous if someone sees the call site without the context of `pd_get_drp_state_in_suspend`. How about `pd_get_drp_state_in_s0`?",
+      "range": {
+        "startLine": 1702,
+        "startChar": 42,
+        "endLine": 1702,
+        "endChar": 64
+      },
+      "revId": "a9f94b3bb1e6f4b41acb81c1c52b6fcfa620db82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
