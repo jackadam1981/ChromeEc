@@ -6,8 +6,10 @@
  */
 
 #include "battery_fuel_gauge.h"
+#include "battery_smart.h"
 #include "charge_state.h"
 #include "common.h"
+#include "util.h"
 
 /*
  * Battery info for all waddledoo battery types. Note that the fields
@@ -44,8 +46,40 @@ const struct board_batt_params board_battery_info[] = {
 			},
 			.fet = {
 				.reg_addr       = 0x0,
-				.reg_mask       = 0x2000,
-				.disconnect_val = 0x2000,
+				.reg_mask       = 0x8000,
+				.disconnect_val = 0x8000,
+				.cfet_mask = 0x4000,
+				.cfet_off_val = 0x4000,
+			}
+		},
+		.batt_info = {
+			.voltage_max          = 13200,    /* mV */
+			.voltage_normal       = 11400,
+			.voltage_min          = 9000,
+			.precharge_current    = 256,       /* mA */
+			.start_charging_min_c = -3,
+			.start_charging_max_c = 50,
+			.charging_min_c       = -3,
+			.charging_max_c       = 60,
+			.discharging_min_c    = -5,
+			.discharging_max_c    = 70,
+		},
+	},
+
+	/* BYD Battery Information */
+	[BATTERY_BYD_YT39X] = {
+		.fuel_gauge = {
+			.manuf_name = "BYD",
+			.device_name = "DELL YT39X",
+			.ship_mode = {
+				.wb_support = 1,
+				.reg_addr = 0x44,
+				.reg_data = { 0x0010, 0x0010 },
+			},
+			.fet = {
+				.reg_addr       = 0x0,
+				.reg_mask       = 0x8000,
+				.disconnect_val = 0x8000,
 				.cfet_mask = 0x4000,
 				.cfet_off_val = 0x4000,
 			}
@@ -96,9 +130,10 @@ const struct board_batt_params board_battery_info[] = {
 	},
 
 	/* LGC Battery Information */
-	[BATTERY_LGC] = {
+	[BATTERY_LGC_FDRHM] = {
 		.fuel_gauge = {
 			.manuf_name = "LGC-LGC3.65",
+			.device_name = "DELL FDRHM",
 			.ship_mode = {
 				.wb_support = 1,
 				.reg_addr = 0x44,
@@ -106,8 +141,8 @@ const struct board_batt_params board_battery_info[] = {
 			},
 			.fet = {
 				.reg_addr       = 0x0,
-				.reg_mask       = 0x2000,
-				.disconnect_val = 0x2000,
+				.reg_mask       = 0x8000,
+				.disconnect_val = 0x8000,
 				.cfet_mask = 0x4000,
 				.cfet_off_val = 0x4000,
 			}
@@ -126,10 +161,11 @@ const struct board_batt_params board_battery_info[] = {
 		},
 	},
 
-	/* SWD-ATL Battery Information */
-	[BATTERY_SWD_ATL] = {
+	/* LGC Battery Information */
+	[BATTERY_LGC_8GHCX] = {
 		.fuel_gauge = {
-			.manuf_name = "SWD-ATL3.618",
+			.manuf_name = "LGC-LGC3.65",
+			.device_name = "DELL 8GHCX",
 			.ship_mode = {
 				.wb_support = 1,
 				.reg_addr = 0x44,
@@ -137,8 +173,73 @@ const struct board_batt_params board_battery_info[] = {
 			},
 			.fet = {
 				.reg_addr       = 0x0,
-				.reg_mask       = 0x2000,
-				.disconnect_val = 0x2000,
+				.reg_mask       = 0x8000,
+				.disconnect_val = 0x8000,
+				.cfet_mask = 0x4000,
+				.cfet_off_val = 0x4000,
+			}
+		},
+		.batt_info = {
+			.voltage_max          = 13200,    /* mV */
+			.voltage_normal       = 11460,
+			.voltage_min          = 9000,
+			.precharge_current    = 256,       /* mA */
+			.start_charging_min_c = -3,
+			.start_charging_max_c = 50,
+			.charging_min_c       = -3,
+			.charging_max_c       = 60,
+			.discharging_min_c    = -5,
+			.discharging_max_c    = 70,
+		},
+	},
+
+
+	/* SWD-ATL Battery Information */
+	[BATTERY_SWD_ATL_WJPC4] = {
+		.fuel_gauge = {
+			.manuf_name = "SWD-ATL3.618",
+			.device_name = "DELL WJPC4",
+			.ship_mode = {
+				.wb_support = 1,
+				.reg_addr = 0x44,
+				.reg_data = { 0x0010, 0x0010 },
+			},
+			.fet = {
+				.reg_addr       = 0x0,
+				.reg_mask       = 0x8000,
+				.disconnect_val = 0x8000,
+				.cfet_mask = 0x4000,
+				.cfet_off_val = 0x4000,
+			}
+		},
+		.batt_info = {
+			.voltage_max          = 13200,    /* mV */
+			.voltage_normal       = 11400,
+			.voltage_min          = 9000,
+			.precharge_current    = 256,       /* mA */
+			.start_charging_min_c = -3,
+			.start_charging_max_c = 50,
+			.charging_min_c       = -3,
+			.charging_max_c       = 60,
+			.discharging_min_c    = -5,
+			.discharging_max_c    = 70,
+		},
+	},
+
+	/* SWD-ATL Battery Information */
+	[BATTERY_SWD_ATL_CTGKT] = {
+		.fuel_gauge = {
+			.manuf_name = "SWD-ATL3.618",
+			.device_name = "DELL CTGKT",
+			.ship_mode = {
+				.wb_support = 1,
+				.reg_addr = 0x44,
+				.reg_data = { 0x0010, 0x0010 },
+			},
+			.fet = {
+				.reg_addr       = 0x0,
+				.reg_mask       = 0x8000,
+				.disconnect_val = 0x8000,
 				.cfet_mask = 0x4000,
 				.cfet_off_val = 0x4000,
 			}
@@ -158,9 +259,10 @@ const struct board_batt_params board_battery_info[] = {
 	},
 
 	/* SWD-COS Battery Information */
-	[BATTERY_SWD_COS] = {
+	[BATTERY_SWD_COS_WJPC4] = {
 		.fuel_gauge = {
 			.manuf_name = "SWD-COS3.634",
+			.device_name = "DELL WJPC4",
 			.ship_mode = {
 				.wb_support = 1,
 				.reg_addr = 0x44,
@@ -168,8 +270,40 @@ const struct board_batt_params board_battery_info[] = {
 			},
 			.fet = {
 				.reg_addr       = 0x0,
-				.reg_mask       = 0x2000,
-				.disconnect_val = 0x2000,
+				.reg_mask       = 0x8000,
+				.disconnect_val = 0x8000,
+				.cfet_mask = 0x4000,
+				.cfet_off_val = 0x4000,
+			}
+		},
+		.batt_info = {
+			.voltage_max          = 13200,    /* mV */
+			.voltage_normal       = 11400,
+			.voltage_min          = 9000,
+			.precharge_current    = 256,       /* mA */
+			.start_charging_min_c = -3,
+			.start_charging_max_c = 50,
+			.charging_min_c       = -3,
+			.charging_max_c       = 60,
+			.discharging_min_c    = -5,
+			.discharging_max_c    = 70,
+		},
+	},
+
+	/* SWD-COS Battery Information */
+	[BATTERY_SWD_COS_CTGKT] = {
+		.fuel_gauge = {
+			.manuf_name = "SWD-COS3.634",
+			.device_name = "DELL CTGKT",
+			.ship_mode = {
+				.wb_support = 1,
+				.reg_addr = 0x44,
+				.reg_data = { 0x0010, 0x0010 },
+			},
+			.fet = {
+				.reg_addr       = 0x0,
+				.reg_mask       = 0x8000,
+				.disconnect_val = 0x8000,
 				.cfet_mask = 0x4000,
 				.cfet_off_val = 0x4000,
 			}
@@ -200,8 +334,40 @@ const struct board_batt_params board_battery_info[] = {
 			},
 			.fet = {
 				.reg_addr       = 0x0,
-				.reg_mask       = 0x2000,
-				.disconnect_val = 0x2000,
+				.reg_mask       = 0x8000,
+				.disconnect_val = 0x8000,
+				.cfet_mask = 0x4000,
+				.cfet_off_val = 0x4000,
+			}
+		},
+		.batt_info = {
+			.voltage_max          = 13200,    /* mV */
+			.voltage_normal       = 11400,
+			.voltage_min          = 9000,
+			.precharge_current    = 256,       /* mA */
+			.start_charging_min_c = -3,
+			.start_charging_max_c = 50,
+			.charging_min_c       = -3,
+			.charging_max_c       = 60,
+			.discharging_min_c    = -5,
+			.discharging_max_c    = 70,
+		},
+	},
+
+	/* SMP-ATL Battery Information */
+	[BATTERY_SMP_ATL_26JGK] = {
+		.fuel_gauge = {
+			.manuf_name = "SMP-ATL-3.61",
+			.device_name = "DELL 26JGK",
+			.ship_mode = {
+				.wb_support = 1,
+				.reg_addr = 0x44,
+				.reg_data = { 0x0010, 0x0010 },
+			},
+			.fet = {
+				.reg_addr       = 0x0,
+				.reg_mask       = 0x8000,
+				.disconnect_val = 0x8000,
 				.cfet_mask = 0x4000,
 				.cfet_off_val = 0x4000,
 			}
@@ -263,8 +429,8 @@ const struct board_batt_params board_battery_info[] = {
 			},
 			.fet = {
 				.reg_addr       = 0x0,
-				.reg_mask       = 0x2000,
-				.disconnect_val = 0x2000,
+				.reg_mask       = 0x8000,
+				.disconnect_val = 0x8000,
 				.cfet_mask = 0x4000,
 				.cfet_off_val = 0x4000,
 			}
@@ -283,6 +449,37 @@ const struct board_batt_params board_battery_info[] = {
 		},
 	},
 
+	/* SMP-COS Battery Information */
+	[BATTERY_SMP_COS_26JGK] = {
+		.fuel_gauge = {
+			.manuf_name = "SMP-COS3.63",
+			.device_name = "DELL 26JGK",
+			.ship_mode = {
+				.wb_support = 1,
+				.reg_addr = 0x44,
+				.reg_data = { 0x0010, 0x0010 },
+			},
+			.fet = {
+				.reg_addr       = 0x0,
+				.reg_mask       = 0x8000,
+				.disconnect_val = 0x8000,
+				.cfet_mask = 0x4000,
+				.cfet_off_val = 0x4000,
+			}
+		},
+		.batt_info = {
+			.voltage_max          = 13200,    /* mV */
+			.voltage_normal       = 11400,
+			.voltage_min          = 9000,
+			.precharge_current    = 256,       /* mA */
+			.start_charging_min_c = -3,
+			.start_charging_max_c = 50,
+			.charging_min_c       = -3,
+			.charging_max_c       = 60,
+			.discharging_min_c    = -5,
+			.discharging_max_c    = 70,
+		},
+	},
 	/* SMP-COS Battery Information */
 	[BATTERY_SMP_COS_RF9H3] = {
 		.fuel_gauge = {
@@ -353,9 +550,9 @@ const struct board_batt_params board_battery_info[] = {
 				.reg_data = { 0x0010, 0x0010 },
 			},
 			.fet = {
-				.reg_addr = 0x0,
-				.reg_mask = 0x2000,
-				.disconnect_val = 0x2000,
+				.reg_addr       = 0x0,
+				.reg_mask       = 0x8000,
+				.disconnect_val = 0x8000,
 				.cfet_mask = 0x4000,
 				.cfet_off_val = 0x4000,
 			}
@@ -437,3 +634,25 @@ const struct board_batt_params board_battery_info[] = {
 BUILD_ASSERT(ARRAY_SIZE(board_battery_info) == BATTERY_TYPE_COUNT);
 
 const enum battery_type DEFAULT_BATTERY_TYPE = BATTERY_BYD_1VX1H;
+
+int charger_profile_override(struct charge_state_data *curr)
+{
+	if (chipset_in_state(CHIPSET_STATE_ON)) {
+		curr->requested_current = MIN(curr->requested_current,
+				CHARGING_CURRENT_1100MA);
+	}
+
+	return 0;
+}
+
+enum ec_status charger_profile_override_get_param(uint32_t param,
+						  uint32_t *value)
+{
+	return EC_RES_INVALID_PARAM;
+}
+
+enum ec_status charger_profile_override_set_param(uint32_t param,
+						  uint32_t value)
+{
+	return EC_RES_INVALID_PARAM;
+}

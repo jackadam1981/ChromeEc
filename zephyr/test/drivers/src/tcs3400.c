@@ -9,10 +9,12 @@
 #include "common.h"
 #include "i2c.h"
 #include "emul/emul_tcs3400.h"
+#include "emul/emul_common_i2c.h"
 
 #include "motion_sense.h"
 #include "motion_sense_fifo.h"
 #include "driver/als_tcs3400.h"
+#include "test/drivers/test_state.h"
 
 #define TCS_ORD			DT_DEP_ORD(DT_NODELABEL(tcs_emul))
 #define TCS_CLR_SENSOR_ID	SENSOR_ID(DT_NODELABEL(tcs3400_clear))
@@ -24,7 +26,7 @@
 #define V_EPS		8
 
 /** Test initialization of light sensor driver and device */
-static void test_tcs_init(void)
+ZTEST_USER(tcs3400, test_tcs_init)
 {
 	struct motion_sensor_t *ms, *ms_rgb;
 	struct i2c_emul *emul;
@@ -37,16 +39,16 @@ static void test_tcs_init(void)
 	zassert_equal(EC_SUCCESS, ms_rgb->drv->init(ms_rgb), NULL);
 
 	/* Fail init on communication errors */
-	tcs_emul_set_read_fail_reg(emul, TCS_EMUL_FAIL_ALL_REG);
-	zassert_equal(-EIO, ms->drv->init(ms), NULL);
-	tcs_emul_set_read_fail_reg(emul, TCS_EMUL_NO_FAIL_REG);
+	i2c_common_emul_set_read_fail_reg(emul, I2C_COMMON_EMUL_FAIL_ALL_REG);
+	zassert_equal(EC_ERROR_INVAL, ms->drv->init(ms), NULL);
+	i2c_common_emul_set_read_fail_reg(emul, I2C_COMMON_EMUL_NO_FAIL_REG);
 
 	/* Fail on bad ID */
 	tcs_emul_set_reg(emul, TCS_I2C_ID, 0);
 	zassert_equal(EC_ERROR_ACCESS_DENIED, ms->drv->init(ms), NULL);
 	/* Restore ID */
-	tcs_emul_set_reg(emul, TCS_I2C_ID, DT_ENUM_TOKEN(DT_NODELABEL(tcs_emul),
-							 device_id));
+	tcs_emul_set_reg(emul, TCS_I2C_ID,
+			 DT_STRING_TOKEN(DT_NODELABEL(tcs_emul), device_id));
 
 	/* Test successful init. ATIME and AGAIN should be changed on init */
 	zassert_equal(EC_SUCCESS, ms->drv->init(ms), NULL);
@@ -57,7 +59,7 @@ static void test_tcs_init(void)
 }
 
 /** Test if read function leaves device in correct mode to accuire data */
-static void test_tcs_read(void)
+ZTEST_USER(tcs3400, test_tcs_read)
 {
 	struct motion_sensor_t *ms;
 	struct i2c_emul *emul;
@@ -68,13 +70,13 @@ static void test_tcs_read(void)
 	ms = &motion_sensors[TCS_CLR_SENSOR_ID];
 
 	/* Test error on writing registers */
-	tcs_emul_set_write_fail_reg(emul, TCS_I2C_ATIME);
-	zassert_equal(-EIO, ms->drv->read(ms, v), NULL);
-	tcs_emul_set_write_fail_reg(emul, TCS_I2C_CONTROL);
-	zassert_equal(-EIO, ms->drv->read(ms, v), NULL);
-	tcs_emul_set_write_fail_reg(emul, TCS_I2C_ENABLE);
-	zassert_equal(-EIO, ms->drv->read(ms, v), NULL);
-	tcs_emul_set_write_fail_reg(emul, TCS_EMUL_NO_FAIL_REG);
+	i2c_common_emul_set_write_fail_reg(emul, TCS_I2C_ATIME);
+	zassert_equal(EC_ERROR_INVAL, ms->drv->read(ms, v), NULL);
+	i2c_common_emul_set_write_fail_reg(emul, TCS_I2C_CONTROL);
+	zassert_equal(EC_ERROR_INVAL, ms->drv->read(ms, v), NULL);
+	i2c_common_emul_set_write_fail_reg(emul, TCS_I2C_ENABLE);
+	zassert_equal(EC_ERROR_INVAL, ms->drv->read(ms, v), NULL);
+	i2c_common_emul_set_write_fail_reg(emul, I2C_COMMON_EMUL_NO_FAIL_REG);
 
 	/* Test starting read with calibration */
 	tcs_emul_set_reg(emul, TCS_I2C_ATIME, 0);
@@ -119,11 +121,14 @@ static void check_fifo_empty_f(struct motion_sensor_t *ms,
 
 		if (ms - motion_sensors == vector.sensor_num) {
 			zassert_unreachable(
-					"Unexpected frame for clear sensor");
+				"Unexpected frame for clear sensor @line: %d",
+				line);
 		}
 
 		if (ms_rgb - motion_sensors == vector.sensor_num) {
-			zassert_unreachable("Unexpected frame for rgb sensor");
+			zassert_unreachable(
+				"Unexpected frame for rgb sensor @line: %d",
+				line);
 		}
 	}
 }
@@ -134,7 +139,7 @@ static void check_fifo_empty_f(struct motion_sensor_t *ms,
  * Test different conditions where irq handler fail or commit no data
  * to fifo
  */
-static void test_tcs_irq_handler_fail(void)
+ZTEST_USER(tcs3400, test_tcs_irq_handler_fail)
 {
 	struct motion_sensor_t *ms, *ms_rgb;
 	struct i2c_emul *emul;
@@ -152,15 +157,15 @@ static void test_tcs_irq_handler_fail(void)
 
 	event = TCS_INT_EVENT;
 	/* Test error on reading status */
-	tcs_emul_set_read_fail_reg(emul, TCS_I2C_STATUS);
-	zassert_equal(-EIO, ms->drv->irq_handler(ms, &event), NULL);
-	tcs_emul_set_read_fail_reg(emul, TCS_EMUL_NO_FAIL_REG);
+	i2c_common_emul_set_read_fail_reg(emul, TCS_I2C_STATUS);
+	zassert_equal(EC_ERROR_INVAL, ms->drv->irq_handler(ms, &event), NULL);
+	i2c_common_emul_set_read_fail_reg(emul, I2C_COMMON_EMUL_NO_FAIL_REG);
 	check_fifo_empty(ms, ms_rgb);
 
 	/* Test fail on changing device power state */
-	tcs_emul_set_write_fail_reg(emul, TCS_I2C_ENABLE);
-	zassert_equal(-EIO, ms->drv->irq_handler(ms, &event), NULL);
-	tcs_emul_set_write_fail_reg(emul, TCS_EMUL_NO_FAIL_REG);
+	i2c_common_emul_set_write_fail_reg(emul, TCS_I2C_ENABLE);
+	zassert_equal(EC_ERROR_INVAL, ms->drv->irq_handler(ms, &event), NULL);
+	i2c_common_emul_set_write_fail_reg(emul, I2C_COMMON_EMUL_NO_FAIL_REG);
 	check_fifo_empty(ms, ms_rgb);
 
 	/* Test that no data is committed when status is 0 */
@@ -222,14 +227,13 @@ static void check_fifo_f(struct motion_sensor_t *ms,
 	check_fifo_f(ms, ms_rgb, exp_v, eps, __LINE__)
 
 /** Test calibration mode reading of light sensor values */
-static void test_tcs_read_calibration(void)
+ZTEST_USER(tcs3400, test_tcs_read_calibration)
 {
 	struct motion_sensor_t *ms, *ms_rgb;
 	struct i2c_emul *emul;
 	uint32_t event = TCS_INT_EVENT;
 	int emul_v[4];
 	int exp_v[4];
-	int ret;
 	intv3_t v;
 
 	emul = tcs_emul_get(TCS_ORD);
@@ -335,7 +339,7 @@ static void set_emul_val_from_exp(int *exp_v, uint16_t *scale,
 }
 
 /** Test normal mode reading of light sensor values */
-static void test_tcs_read_xyz(void)
+ZTEST_USER(tcs3400, test_tcs_read_xyz)
 {
 	struct motion_sensor_t *ms, *ms_rgb;
 	struct i2c_emul *emul;
@@ -359,7 +363,7 @@ static void test_tcs_read_xyz(void)
 		MOTION_SENSE_DEFAULT_SCALE, MOTION_SENSE_DEFAULT_SCALE,
 		MOTION_SENSE_DEFAULT_SCALE, MOTION_SENSE_DEFAULT_SCALE
 	};
-	int ret, i, test;
+	int i, test;
 	intv3_t v;
 
 	emul = tcs_emul_get(TCS_ORD);
@@ -413,7 +417,7 @@ static void test_tcs_read_xyz(void)
  * Test getting and setting scale of light sensor. Checks if collected values
  * are scaled properly.
  */
-static void test_tcs_scale(void)
+ZTEST_USER(tcs3400, test_tcs_scale)
 {
 	struct motion_sensor_t *ms, *ms_rgb;
 	struct i2c_emul *emul;
@@ -451,7 +455,7 @@ static void test_tcs_scale(void)
 	};
 	uint16_t scale[3];
 	int16_t temp;
-	int ret, i, test;
+	int i, test;
 	intv3_t v;
 
 	emul = tcs_emul_get(TCS_ORD);
@@ -525,7 +529,7 @@ static void test_tcs_scale(void)
 }
 
 /** Test setting and getting data rate of light sensor */
-static void test_tcs_data_rate(void)
+ZTEST_USER(tcs3400, test_tcs_data_rate)
 {
 	struct motion_sensor_t *ms, *ms_rgb;
 	struct i2c_emul *emul;
@@ -537,12 +541,12 @@ static void test_tcs_data_rate(void)
 	ms_rgb = &motion_sensors[TCS_RGB_SENSOR_ID];
 
 	/* Test fail on reading device power state */
-	tcs_emul_set_read_fail_reg(emul, TCS_I2C_ENABLE);
-	zassert_equal(-EIO, ms->drv->set_data_rate(ms, 0, 0), NULL);
-	zassert_equal(-EIO, ms->drv->set_data_rate(ms, 0, 1), NULL);
-	zassert_equal(-EIO, ms->drv->set_data_rate(ms, 100, 0), NULL);
-	zassert_equal(-EIO, ms->drv->set_data_rate(ms, 100, 1), NULL);
-	tcs_emul_set_read_fail_reg(emul, TCS_EMUL_NO_FAIL_REG);
+	i2c_common_emul_set_read_fail_reg(emul, TCS_I2C_ENABLE);
+	zassert_equal(EC_ERROR_INVAL, ms->drv->set_data_rate(ms, 0, 0), NULL);
+	zassert_equal(EC_ERROR_INVAL, ms->drv->set_data_rate(ms, 0, 1), NULL);
+	zassert_equal(EC_ERROR_INVAL, ms->drv->set_data_rate(ms, 100, 0), NULL);
+	zassert_equal(EC_ERROR_INVAL, ms->drv->set_data_rate(ms, 100, 1), NULL);
+	i2c_common_emul_set_read_fail_reg(emul, I2C_COMMON_EMUL_NO_FAIL_REG);
 
 	/* Test setting 0 rate disables device */
 	zassert_equal(EC_SUCCESS, ms->drv->set_data_rate(ms, 0, 0), NULL);
@@ -587,7 +591,7 @@ static void test_tcs_data_rate(void)
 }
 
 /** Test set range function of clear and RGB sensors */
-static void test_tcs_set_range(void)
+ZTEST_USER(tcs3400, test_tcs_set_range)
 {
 	struct motion_sensor_t *ms, *ms_rgb;
 	struct i2c_emul *emul;
@@ -607,16 +611,4 @@ static void test_tcs_set_range(void)
 	zassert_equal(0x10000, ms->current_range, NULL);
 }
 
-void test_suite_tcs3400(void)
-{
-	ztest_test_suite(tcs3400,
-			 ztest_user_unit_test(test_tcs_init),
-			 ztest_user_unit_test(test_tcs_read),
-			 ztest_user_unit_test(test_tcs_irq_handler_fail),
-			 ztest_user_unit_test(test_tcs_read_calibration),
-			 ztest_user_unit_test(test_tcs_read_xyz),
-			 ztest_user_unit_test(test_tcs_scale),
-			 ztest_user_unit_test(test_tcs_data_rate),
-			 ztest_user_unit_test(test_tcs_set_range));
-	ztest_run_test_suite(tcs3400);
-}
+ZTEST_SUITE(tcs3400, drivers_predicate_post_main, NULL, NULL, NULL, NULL);

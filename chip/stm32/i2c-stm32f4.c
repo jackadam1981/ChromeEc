@@ -1,3 +1,4 @@
+
 /* Copyright 2016 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
@@ -8,6 +9,7 @@
 #include "common.h"
 #include "console.h"
 #include "dma.h"
+#include "gpio.h"
 #include "hooks.h"
 #include "i2c.h"
 #include "registers.h"
@@ -975,7 +977,7 @@ static void i2c_event_handler(int port)
 	if (!(i2c_cr1 & STM32_I2C_CR1_PE))
 		STM32_I2C_CR1(port) |= STM32_I2C_CR1_PE;
 }
-void i2c_event_interrupt(void) { i2c_event_handler(I2C_PORT_EC); }
+static void i2c_event_interrupt(void) { i2c_event_handler(I2C_PORT_EC); }
 DECLARE_IRQ(IRQ_PERIPHERAL_EV, i2c_event_interrupt, 2);
 DECLARE_IRQ(IRQ_PERIPHERAL_ER, i2c_event_interrupt, 2);
 #endif

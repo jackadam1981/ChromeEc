@@ -23,6 +23,14 @@ int ps8743_write(const struct usb_mux *me, uint8_t reg, uint8_t val)
 			  reg, val);
 }
 
+int ps8743_field_update(const struct usb_mux *me, uint8_t reg, uint8_t mask,
+			uint8_t val)
+{
+	return i2c_field_update8(me->i2c_port, me->i2c_addr_flags,
+			  reg, mask, val);
+}
+
+
 int ps8743_check_chip_id(const struct usb_mux *me, int *val)
 {
 	int id1;
@@ -94,7 +102,8 @@ static int ps8743_init(const struct usb_mux *me)
 }
 
 /* Writes control register to set switch mode */
-static int ps8743_set_mux(const struct usb_mux *me, mux_state_t mux_state)
+static int ps8743_set_mux(const struct usb_mux *me, mux_state_t mux_state,
+			  bool *ack_required)
 {
 	/*
 	 * For CE_DP, CE_USB, and FLIP, disable pin control and enable I2C
@@ -104,6 +113,9 @@ static int ps8743_set_mux(const struct usb_mux *me, mux_state_t mux_state)
 		       PS8743_MODE_DP_REG_CONTROL |
 		       PS8743_MODE_USB_REG_CONTROL |
 		       PS8743_MODE_FLIP_REG_CONTROL);
+
+	/* This driver does not use host command ACKs */
+	*ack_required = false;
 
 	if (mux_state & USB_PD_MUX_USB_ENABLED)
 		reg |= PS8743_MODE_USB_ENABLE;

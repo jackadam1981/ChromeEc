@@ -13,6 +13,7 @@
 #include "extpower.h"
 #include "driver/accel_bma2x2.h"
 #include "driver/accelgyro_bmi_common.h"
+#include "driver/accelgyro_bmi260.h"
 #include "driver/ppc/sn5s330.h"
 #include "driver/tcpm/ps8xxx.h"
 #include "driver/tcpm/tcpci.h"
@@ -50,7 +51,16 @@ static void ks_interrupt(enum gpio_signal s);
 
 #include "gpio_list.h"
 
+/*
+ * Workaround for b/193223400. This disables the IRQ from CTN730. Fixing this
+ * here (using a rather awkward way) separates the fix from the common code.
+ */
 #ifdef SECTION_IS_RW
+#define GPIO_PCHG_P0 GPIO_WLC_IRQ_CONN
+#else
+#define GPIO_PCHG_P0 ARRAY_SIZE(gpio_irq_handlers)
+#endif
+
 extern struct pchg_drv ctn730_drv;
 
 struct pchg pchgs[] = {
@@ -58,7 +68,7 @@ struct pchg pchgs[] = {
 		.cfg = &(const struct pchg_config) {
 			.drv = &ctn730_drv,
 			.i2c_port = I2C_PORT_WLC,
-			.irq_pin = GPIO_WLC_IRQ_CONN,
+			.irq_pin = GPIO_PCHG_P0,
 			.full_percent = 96,
 			.block_size = 128,
 		},
@@ -66,7 +76,6 @@ struct pchg pchgs[] = {
 	},
 };
 const int pchg_count = ARRAY_SIZE(pchgs);
-#endif
 
 /* GPIO Interrupt Handlers */
 static void tcpc_alert_event(enum gpio_signal signal)
@@ -182,18 +191,48 @@ static void ks_interrupt(enum gpio_signal s)
 
 /* I2C port map */
 const struct i2c_port_t i2c_ports[] = {
-	{"power",   I2C_PORT_POWER,  100, GPIO_EC_I2C_POWER_SCL,
-					  GPIO_EC_I2C_POWER_SDA},
-	{"tcpc0",   I2C_PORT_TCPC0, 1000, GPIO_EC_I2C_USB_C0_PD_SCL,
-					  GPIO_EC_I2C_USB_C0_PD_SDA},
-	{"tcpc1",   I2C_PORT_TCPC1, 1000, GPIO_EC_I2C_USB_C1_PD_SCL,
-					  GPIO_EC_I2C_USB_C1_PD_SDA},
-	{"wlc",     I2C_PORT_WLC,    400, GPIO_EC_I2C_WLC_SCL,
-					  GPIO_EC_I2C_WLC_SDA},
-	{"eeprom",  I2C_PORT_EEPROM, 400, GPIO_EC_I2C_EEPROM_SCL,
-					  GPIO_EC_I2C_EEPROM_SDA},
-	{"sensor",  I2C_PORT_SENSOR, 400, GPIO_EC_I2C_SENSOR_SCL,
-					  GPIO_EC_I2C_SENSOR_SDA},
+	{
+		.name = "power",
+		.port = I2C_PORT_POWER,
+		.kbps = 100,
+		.scl  = GPIO_EC_I2C_POWER_SCL,
+		.sda  = GPIO_EC_I2C_POWER_SDA
+	},
+	{
+		.name = "tcpc0",
+		.port = I2C_PORT_TCPC0,
+		.kbps = 1000,
+		.scl  = GPIO_EC_I2C_USB_C0_PD_SCL,
+		.sda  = GPIO_EC_I2C_USB_C0_PD_SDA
+	},
+	{
+		.name = "tcpc1",
+		.port = I2C_PORT_TCPC1,
+		.kbps = 1000,
+		.scl  = GPIO_EC_I2C_USB_C1_PD_SCL,
+		.sda  = GPIO_EC_I2C_USB_C1_PD_SDA
+	},
+	{
+		.name = "wlc",
+		.port = I2C_PORT_WLC,
+		.kbps = 400,
+		.scl  = GPIO_EC_I2C_WLC_SCL,
+		.sda  = GPIO_EC_I2C_WLC_SDA
+	},
+	{
+		.name = "eeprom",
+		.port = I2C_PORT_EEPROM,
+		.kbps = 400,
+		.scl  = GPIO_EC_I2C_EEPROM_SCL,
+		.sda  = GPIO_EC_I2C_EEPROM_SDA
+	},
+	{
+		.name = "sensor",
+		.port = I2C_PORT_SENSOR,
+		.kbps = 400,
+		.scl  = GPIO_EC_I2C_SENSOR_SCL,
+		.sda  = GPIO_EC_I2C_SENSOR_SDA
+	},
 };
 
 const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
@@ -270,7 +309,7 @@ const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 		.bus_type = EC_BUS_TYPE_I2C,
 		.i2c_info = {
 			.port = I2C_PORT_TCPC0,
-			.addr_flags = PS8751_I2C_ADDR1_FLAGS,
+			.addr_flags = PS8XXX_I2C_ADDR1_FLAGS,
 		},
 		.drv = &ps8xxx_tcpm_drv,
 	},
@@ -278,7 +317,7 @@ const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 		.bus_type = EC_BUS_TYPE_I2C,
 		.i2c_info = {
 			.port = I2C_PORT_TCPC1,
-			.addr_flags = PS8751_I2C_ADDR1_FLAGS,
+			.addr_flags = PS8XXX_I2C_ADDR1_FLAGS,
 		},
 		.drv = &ps8xxx_tcpm_drv,
 	},
@@ -320,6 +359,9 @@ const struct pi3usb9201_config_t pi3usb9201_bc12_chips[] = {
 static struct mutex g_lid_mutex;
 
 static struct bmi_drv_data_t g_bmi160_data;
+static struct bmi_drv_data_t g_bmi260_data;
+
+bool is_bmi260_present;
 
 /* Matrix to rotate accelerometer into standard reference frame */
 const mat33_fp_t lid_standard_ref = {
@@ -372,7 +414,85 @@ struct motion_sensor_t motion_sensors[] = {
 	 .max_frequency = BMI_GYRO_MAX_FREQ,
 	},
 };
+
+struct motion_sensor_t motion_sensors_260[] = {
+	/*
+	 * Note: bmi260: supports accelerometer and gyro sensor
+	 * Requirement: accelerometer sensor must init before gyro sensor
+	 * DO NOT change the order of the following table.
+	 */
+	[LID_ACCEL] = {
+	 .name = "Lid Accel",
+	 .active_mask = SENSOR_ACTIVE_S0_S3,
+	 .chip = MOTIONSENSE_CHIP_BMI260,
+	 .type = MOTIONSENSE_TYPE_ACCEL,
+	 .location = MOTIONSENSE_LOC_LID,
+	 .drv = &bmi260_drv,
+	 .mutex = &g_lid_mutex,
+	 .drv_data = &g_bmi260_data,
+	 .port = I2C_PORT_SENSOR,
+	 .i2c_spi_addr_flags = BMI260_ADDR0_FLAGS,
+	 .rot_standard_ref = &lid_standard_ref,
+	 .default_range = 4,  /* g, to meet CDD 7.3.1/C-1-4 reqs */
+	 .min_frequency = BMI_ACCEL_MIN_FREQ,
+	 .max_frequency = BMI_ACCEL_MAX_FREQ,
+	 .config = {
+		 [SENSOR_CONFIG_EC_S0] = {
+			 .odr = 10000 | ROUND_UP_FLAG,
+		 },
+	 },
+	},
+	[LID_GYRO] = {
+	 .name = "Gyro",
+	 .active_mask = SENSOR_ACTIVE_S0_S3,
+	 .chip = MOTIONSENSE_CHIP_BMI260,
+	 .type = MOTIONSENSE_TYPE_GYRO,
+	 .location = MOTIONSENSE_LOC_LID,
+	 .drv = &bmi260_drv,
+	 .mutex = &g_lid_mutex,
+	 .drv_data = &g_bmi260_data,
+	 .port = I2C_PORT_SENSOR,
+	 .i2c_spi_addr_flags = BMI260_ADDR0_FLAGS,
+	 .default_range = 1000, /* dps */
+	 .rot_standard_ref = &lid_standard_ref,
+	 .min_frequency = BMI_GYRO_MIN_FREQ,
+	 .max_frequency = BMI_GYRO_MAX_FREQ,
+	},
+};
+
 const unsigned int motion_sensor_count = ARRAY_SIZE(motion_sensors);
+
+static void board_detect_motionsensor(void)
+{
+	int val = -1;
+
+	if (chipset_in_state(CHIPSET_STATE_ANY_OFF))
+		return;
+
+	/* Check base accelgyro chip */
+	bmi_read8(motion_sensors[LID_ACCEL].port,
+		motion_sensors[LID_ACCEL].i2c_spi_addr_flags,
+		BMI260_CHIP_ID, &val);
+	if (val == BMI260_CHIP_ID_MAJOR) {
+		motion_sensors[LID_ACCEL] = motion_sensors_260[LID_ACCEL];
+		motion_sensors[LID_GYRO] = motion_sensors_260[LID_GYRO];
+		is_bmi260_present = 1;
+	} else {
+		is_bmi260_present = 0;
+	}
+}
+DECLARE_HOOK(HOOK_CHIPSET_STARTUP, board_detect_motionsensor,
+	     HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_INIT, board_detect_motionsensor, HOOK_PRIO_DEFAULT + 1);
+
+void motion_interrupt(enum gpio_signal signal)
+{
+	if (is_bmi260_present) {
+		bmi260_interrupt(signal);
+	} else {
+		bmi160_interrupt(signal);
+	}
+}
 
 /* Initialize board. */
 static void board_init(void)
@@ -432,7 +552,8 @@ void board_tcpc_init(void)
 	 * HPD pulse to enable video path
 	 */
 	for (int port = 0; port < CONFIG_USB_PD_PORT_MAX_COUNT; ++port)
-		usb_mux_hpd_update(port, 0, 0);
+		usb_mux_hpd_update(port, USB_PD_MUX_HPD_LVL_DEASSERTED |
+					 USB_PD_MUX_HPD_IRQ_DEASSERTED);
 }
 DECLARE_HOOK(HOOK_INIT, board_tcpc_init, HOOK_PRIO_INIT_I2C+1);
 
@@ -627,26 +748,3 @@ uint16_t tcpc_get_alert_status(void)
 
 	return status;
 }
-
-int battery_get_vendor_param(uint32_t param, uint32_t *value)
-{
-	int rv;
-	uint8_t data[16] = {};
-
-	/* only allow reading 0x70~0x7F, 16 byte data */
-	if (param < 0x70 || param >= 0x80)
-		return EC_ERROR_ACCESS_DENIED;
-
-	rv = sb_read_string(0x70, data, sizeof(data));
-	if (rv)
-		return rv;
-
-	*value = data[param - 0x70];
-	return EC_SUCCESS;
-}
-
-int battery_set_vendor_param(uint32_t param, uint32_t value)
-{
-	return EC_ERROR_UNIMPLEMENTED;
-}
-

@@ -6,7 +6,6 @@
 /* Fizz board-specific configuration */
 
 #include "adc.h"
-#include "adc_chip.h"
 #include "als.h"
 #include "battery.h"
 #include "bd99992gw.h"
@@ -165,11 +164,41 @@ BUILD_ASSERT(ARRAY_SIZE(mft_channels) == MFT_CH_COUNT);
 
 /* I2C port map */
 const struct i2c_port_t i2c_ports[]  = {
-	{"tcpc", NPCX_I2C_PORT0_0, 400, GPIO_I2C0_0_SCL, GPIO_I2C0_0_SDA},
-	{"eeprom", NPCX_I2C_PORT0_1, 400, GPIO_I2C0_1_SCL, GPIO_I2C0_1_SDA},
-	{"charger", NPCX_I2C_PORT1, 100, GPIO_I2C1_SCL, GPIO_I2C1_SDA},
-	{"pmic", NPCX_I2C_PORT2, 400, GPIO_I2C2_SCL, GPIO_I2C2_SDA},
-	{"thermal", NPCX_I2C_PORT3, 400, GPIO_I2C3_SCL, GPIO_I2C3_SDA},
+	{
+		.name = "tcpc",
+		.port = NPCX_I2C_PORT0_0,
+		.kbps = 400,
+		.scl  = GPIO_I2C0_0_SCL,
+		.sda  = GPIO_I2C0_0_SDA
+	},
+	{
+		.name = "eeprom",
+		.port = NPCX_I2C_PORT0_1,
+		.kbps = 400,
+		.scl  = GPIO_I2C0_1_SCL,
+		.sda  = GPIO_I2C0_1_SDA
+	},
+	{
+		.name = "charger",
+		.port = NPCX_I2C_PORT1,
+		.kbps = 100,
+		.scl  = GPIO_I2C1_SCL,
+		.sda  = GPIO_I2C1_SDA
+	},
+	{
+		.name = "pmic",
+		.port = NPCX_I2C_PORT2,
+		.kbps = 400,
+		.scl  = GPIO_I2C2_SCL,
+		.sda  = GPIO_I2C2_SDA
+	},
+	{
+		.name = "thermal",
+		.port = NPCX_I2C_PORT3,
+		.kbps = 400,
+		.scl  = GPIO_I2C3_SCL,
+		.sda  = GPIO_I2C3_SDA
+	},
 };
 const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
 
@@ -240,7 +269,8 @@ void board_tcpc_init(void)
 	 * HPD pulse to enable video path
 	 */
 	for (int port = 0; port < CONFIG_USB_PD_PORT_MAX_COUNT; ++port)
-		usb_mux_hpd_update(port, 0, 0);
+		usb_mux_hpd_update(port, USB_PD_MUX_HPD_LVL_DEASSERTED |
+					 USB_PD_MUX_HPD_IRQ_DEASSERTED);
 }
 DECLARE_HOOK(HOOK_INIT, board_tcpc_init, HOOK_PRIO_INIT_I2C+1);
 
@@ -507,7 +537,7 @@ void board_set_charge_limit(int port, int supplier, int charge_ma,
 
 	/*
 	 * In terms of timing, this should always work because
-	 * HOOK_PRIO_CHARGE_MANAGER_INIT is notified after HOOK_PRIO_INIT_I2C.
+	 * HOOK_PRIO_INIT_CHARGE_MANAGER is notified after HOOK_PRIO_INIT_I2C.
 	 * If CBI isn't initialized or contains invalid data, we assume it's
 	 * a new board.
 	 */
@@ -781,7 +811,7 @@ static void board_charge_manager_init(void)
 	}
 }
 DECLARE_HOOK(HOOK_INIT, board_charge_manager_init,
-	     HOOK_PRIO_CHARGE_MANAGER_INIT + 1);
+	     HOOK_PRIO_INIT_CHARGE_MANAGER + 1);
 
 static void board_init(void)
 {

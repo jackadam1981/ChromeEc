@@ -19,11 +19,7 @@
  * The internal data structure stored for a deferred function.
  */
 struct deferred_data {
-#if IS_ZEPHYR_VERSION(2, 6)
 	struct k_work_delayable *work;
-#else
-	struct k_delayed_work *work;
-#endif
 };
 
 /**
@@ -31,55 +27,38 @@ struct deferred_data {
  */
 int hook_call_deferred(const struct deferred_data *data, int us);
 
-#if IS_ZEPHYR_VERSION(2, 6)
 #define DECLARE_DEFERRED(routine)                                    \
 	K_WORK_DELAYABLE_DEFINE(routine##_work_data,                 \
 				(void (*)(struct k_work *))routine); \
 	__maybe_unused const struct deferred_data routine##_data = { \
 		.work = &routine##_work_data,                \
 	}
-#else
-#define DECLARE_DEFERRED(routine)                                    \
-	K_DELAYED_WORK_DEFINE(routine##_work_data,                   \
-			      (void (*)(struct k_work *))routine);   \
-	__maybe_unused const struct deferred_data routine##_data = { \
-		.work = &routine##_work_data,                \
-	}
-#endif
 
 /**
- * Internal linked-list structure used to store hook lists.
+ * Record describing a single hook routine.
  */
-struct zephyr_shim_hook_list {
+struct zephyr_shim_hook_info {
 	void (*routine)(void);
-	int priority;
-	struct zephyr_shim_hook_list *next;
+	uint16_t priority; /* HOOK_PRIO_LAST = 9999 */
 };
 
-/**
- * Runtime helper for DECLARE_HOOK setup data.
+/*
+ * List of hook routines.
  *
- * @param type		The type of hook.
- * @param routine	The handler for the hook.
- * @param priority	The priority (smaller values are executed first).
- * @param entry		A statically allocated list entry.
+ * Values are contiguous, where *start is the first and *(end - 1) is the last.
  */
-void zephyr_shim_setup_hook(enum hook_type type, void (*routine)(void),
-			    int priority, struct zephyr_shim_hook_list *entry);
+struct zephyr_shim_hook_list {
+	const struct zephyr_shim_hook_info *start;
+	const struct zephyr_shim_hook_info *end;
+};
 
 /**
  * See include/hooks.h for documentation.
  */
-#define DECLARE_HOOK(hooktype, routine, priority) \
-	_DECLARE_HOOK_1(hooktype, routine, priority, __LINE__)
-#define _DECLARE_HOOK_1(hooktype, routine, priority, line) \
-	_DECLARE_HOOK_2(hooktype, routine, priority, line)
-#define _DECLARE_HOOK_2(hooktype, routine, priority, line)                 \
-	static int _setup_hook_##line(const struct device *unused)         \
-	{                                                                  \
-		ARG_UNUSED(unused);                                        \
-		static struct zephyr_shim_hook_list lst;                   \
-		zephyr_shim_setup_hook(hooktype, routine, priority, &lst); \
-		return 0;                                                  \
-	}                                                                  \
-	SYS_INIT(_setup_hook_##line, APPLICATION, 1)
+#define DECLARE_HOOK(_hooktype, _routine, _priority)                 \
+	STRUCT_SECTION_ITERABLE_ALTERNATE(                           \
+		zephyr_shim_hook_##_hooktype, zephyr_shim_hook_info, \
+		_cros_hook_##_hooktype##_##_routine) = {             \
+		.routine = _routine,                                 \
+		.priority = _priority,                               \
+	}

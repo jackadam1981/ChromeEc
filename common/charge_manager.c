@@ -11,6 +11,7 @@
 #include "charge_state_v2.h"
 #include "charger.h"
 #include "console.h"
+#include "dps.h"
 #include "extpower.h"
 #include "gpio.h"
 #include "hooks.h"
@@ -106,6 +107,7 @@ static int charge_current = CHARGE_CURRENT_UNINITIALIZED;
 static int charge_current_uncapped = CHARGE_CURRENT_UNINITIALIZED;
 static int charge_voltage;
 static int charge_supplier = CHARGE_SUPPLIER_NONE;
+static int charge_pd_current_uncapped = CHARGE_CURRENT_UNINITIALIZED;
 static int override_port = OVERRIDE_OFF;
 
 static int delayed_override_port = OVERRIDE_OFF;
@@ -179,7 +181,6 @@ static int is_valid_port(int port)
 	return 1;
 }
 
-#ifndef TEST_BUILD
 static int is_connected(int port)
 {
 	if (!is_pd_port(port))
@@ -187,7 +188,6 @@ static int is_connected(int port)
 
 	return pd_is_connected(port);
 }
-#endif /* !TEST_BUILD */
 
 #ifndef CONFIG_CHARGE_MANAGER_DRP_CHARGING
 /**
@@ -234,7 +234,7 @@ static void charge_manager_init(void)
 			source_port_rp[i] = CONFIG_USB_PD_PULLUP;
 	}
 }
-DECLARE_HOOK(HOOK_INIT, charge_manager_init, HOOK_PRIO_CHARGE_MANAGER_INIT);
+DECLARE_HOOK(HOOK_INIT, charge_manager_init, HOOK_PRIO_INIT_CHARGE_MANAGER);
 
 /**
  * Check if the charge manager is seeded.
@@ -266,7 +266,11 @@ static int charge_manager_is_seeded(void)
 	return 1;
 }
 
-#ifndef TEST_BUILD
+int charge_manager_get_pd_current_uncapped(void)
+{
+	return charge_pd_current_uncapped;
+}
+
 /**
  * Get the maximum charge current for a port.
  *
@@ -350,6 +354,11 @@ static enum usb_power_roles get_current_power_role(int port,
 	return role;
 }
 
+__overridable int board_get_vbus_voltage(int port)
+{
+	return 0;
+}
+
 static int get_vbus_voltage(int port, enum usb_power_roles current_role)
 {
 	int voltage_mv;
@@ -375,6 +384,8 @@ static int get_vbus_voltage(int port, enum usb_power_roles current_role)
 #elif defined(CONFIG_USB_PD_VBUS_MEASURE_NOT_PRESENT)
 		/* No VBUS ADC channel - voltage is unknown */
 		voltage_mv = 0;
+#elif defined(CONFIG_USB_PD_VBUS_MEASURE_BY_BOARD)
+		voltage_mv = board_get_vbus_voltage(port);
 #else
 		/* There is a single ADC that measures joint Vbus */
 		voltage_mv = adc_read_channel(ADC_VBUS);
@@ -529,7 +540,6 @@ static void charge_manager_fill_power_info(int port,
 		r->meas.voltage_now = get_vbus_voltage(port, r->role);
 	}
 }
-#endif /* TEST_BUILD */
 
 #ifdef CONFIG_USB_PD_LOGGING
 /**
@@ -617,11 +627,13 @@ static void charge_manager_get_best_charge_port(int *new_port,
 
 	/* Skip port selection on OVERRIDE_DONT_CHARGE. */
 	if (override_port != OVERRIDE_DONT_CHARGE) {
+
 		/*
 		 * Charge supplier selection logic:
-		 * 1. Prefer higher priority supply.
-		 * 2. Prefer higher power over lower in case priority is tied.
-		 * 3. Prefer current charge port over new port in case (1)
+		 * 1. Prefer DPS charge port.
+		 * 2. Prefer higher priority supply.
+		 * 3. Prefer higher power over lower in case priority is tied.
+		 * 4. Prefer current charge port over new port in case (1)
 		 *    and (2) are tied.
 		 * available_charge can be changed at any time by other tasks,
 		 * so make no assumptions about its consistency.
@@ -663,8 +675,16 @@ static void charge_manager_get_best_charge_port(int *new_port,
 				candidate_port_power =
 					POWER(available_charge[i][j]);
 
+				/* Select DPS port if provided. */
+				if (IS_ENABLED(CONFIG_USB_PD_DPS) &&
+				    override_port == OVERRIDE_OFF &&
+				    i == CHARGE_SUPPLIER_PD &&
+				    j == dps_get_charge_port()) {
+					supplier = i;
+					port = j;
+					break;
 				/* Select if no supplier chosen yet. */
-				if (supplier == CHARGE_SUPPLIER_NONE ||
+				} else if (supplier == CHARGE_SUPPLIER_NONE ||
 				/* ..or if supplier priority is higher. */
 				    supplier_priority[i] <
 				    supplier_priority[supplier] ||
@@ -810,6 +830,15 @@ static void charge_manager_refresh(void)
 			available_charge[new_supplier][new_port].voltage;
 	}
 
+	/*
+	 * Record the PD current limit to prevent from over-sinking
+	 * the charger.
+	 */
+	if (new_supplier == CHARGE_SUPPLIER_PD)
+		charge_pd_current_uncapped = new_charge_current_uncapped;
+	else
+		charge_pd_current_uncapped = CHARGE_CURRENT_UNINITIALIZED;
+
 	/* Change the charge limit + charge port/supplier if modified. */
 	if (new_port != charge_port || new_charge_current != charge_current ||
 	    new_supplier != charge_supplier) {
@@ -901,6 +930,7 @@ static void charge_manager_refresh(void)
 			uint32_t max_voltage;
 			uint32_t max_current;
 			uint32_t unused;
+			bool new_req = false;
 			/*
 			 * Check if new voltage/current is different
 			 * than requested. If yes, send new power request
@@ -909,19 +939,28 @@ static void charge_manager_refresh(void)
 			    charge_voltage ||
 			    pd_get_requested_current(updated_new_port) !=
 			    charge_current_uncapped)
-				pd_set_new_power_request(updated_new_port);
+				new_req = true;
 
-			/*
-			 * Check if we can get more power from this port.
-			 * If yes, send new power request
-			 */
-			pd_find_pdo_index(pd_get_src_cap_cnt(updated_new_port),
-					  pd_get_src_caps(updated_new_port),
-					  pd_get_max_voltage(), &pdo);
-			pd_extract_pdo_power(pdo, &max_current, &max_voltage,
-					     &unused);
-			if (charge_voltage != max_voltage ||
-			    charge_current_uncapped != max_current)
+			if (IS_ENABLED(CONFIG_USB_PD_DPS) && dps_is_enabled()) {
+				/* Fall-through. DPS control sink voltage */
+			} else {
+				/*
+				 * Check if we can get more power from this
+				 * port. If yes, send new power request
+				 */
+				pd_find_pdo_index(
+					pd_get_src_cap_cnt(updated_new_port),
+					pd_get_src_caps(updated_new_port),
+					pd_get_max_voltage(), &pdo);
+				pd_extract_pdo_power(pdo, &max_current,
+						     &max_voltage, &unused);
+
+				if (charge_voltage != max_voltage ||
+				    charge_current_uncapped != max_current)
+					new_req = true;
+			}
+
+			if (new_req)
 				pd_set_new_power_request(updated_new_port);
 		} else {
 			/*
@@ -1345,9 +1384,9 @@ void charge_manager_source_port(int port, int enable)
 	int p, rp;
 
 	if (enable)
-		atomic_or((uint32_t *)&source_port_bitmap, 1 << port);
+		atomic_or((atomic_t *)&source_port_bitmap, 1 << port);
 	else
-		atomic_clear_bits((uint32_t *)&source_port_bitmap, 1 << port);
+		atomic_clear_bits((atomic_t *)&source_port_bitmap, 1 << port);
 
 	/* No change, exit early. */
 	if (prev_bitmap == source_port_bitmap)
@@ -1386,7 +1425,6 @@ int charge_manager_get_source_pdo(const uint32_t **src_pdo, const int port)
 }
 #endif /* CONFIG_USB_PD_MAX_SINGLE_SOURCE_CURRENT && !CONFIG_USB_PD_TCPMV2 */
 
-#ifndef TEST_BUILD
 static enum ec_status hc_pd_power_info(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_usb_pd_power_info *p = args->params;
@@ -1413,7 +1451,6 @@ static enum ec_status hc_pd_power_info(struct host_cmd_handler_args *args)
 DECLARE_HOST_COMMAND(EC_CMD_USB_PD_POWER_INFO,
 		     hc_pd_power_info,
 		     EC_VER_MASK(0));
-#endif /* TEST_BUILD */
 
 static enum ec_status hc_charge_port_count(struct host_cmd_handler_args *args)
 {

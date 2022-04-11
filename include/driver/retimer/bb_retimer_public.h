@@ -8,6 +8,8 @@
 #ifndef __CROS_EC_DRIVER_RETIMER_BB_RETIMER_PUBLIC_H
 #define __CROS_EC_DRIVER_RETIMER_BB_RETIMER_PUBLIC_H
 
+#include "usb_mux.h"
+
 struct usb_mux;
 
 /* Supported USB retimer drivers */
@@ -40,5 +42,18 @@ extern struct bb_usb_control bb_controls[];
  */
 __override_proto int bb_retimer_power_enable(const struct usb_mux *me,
 					     bool enable);
+
+/**
+ * Set HPD on the BB retimer
+ *
+ * Set the HPD related fields in the BB retimer
+ *
+ * @param[in]  me		Pointer to USB mux
+ * @param[in]  mux_state	USB mux state containing HPD level and IRQ
+ * @param[out] ack_required	Outputs whether the given change will require
+ *				the AP to ACK before proceeding
+ */
+void bb_retimer_hpd_update(const struct usb_mux *me, mux_state_t mux_state,
+			   bool *ack_required);
 
 #endif /* __CROS_EC_DRIVER_RETIMER_BB_RETIMER_PUBLIC_H */

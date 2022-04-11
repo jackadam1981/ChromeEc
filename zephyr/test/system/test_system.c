@@ -4,11 +4,10 @@
  */
 
 #include <device.h>
-#include <drivers/cros_bbram.h>
+#include <drivers/bbram.h>
 #include <logging/log.h>
 #include <ztest.h>
 
-#include "bbram.h"
 #include "system.h"
 
 LOG_MODULE_REGISTER(test);
@@ -21,57 +20,34 @@ LOG_MODULE_REGISTER(test);
 static char mock_data[64] =
 	"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@";
 
-static int mock_bbram_read(const struct device *unused, int offset, int size,
-			   uint8_t *data)
-{
-	if (offset < 0 || offset + size >= ARRAY_SIZE(mock_data))
-		return -1;
-	memcpy(data, mock_data + offset, size);
-	return EC_SUCCESS;
-}
-
-static const struct cros_bbram_driver_api bbram_api = {
-	.ibbr = NULL,
-	.reset_ibbr = NULL,
-	.vsby = NULL,
-	.reset_vsby = NULL,
-	.vcc1 = NULL,
-	.reset_vcc1 = NULL,
-	.read = mock_bbram_read,
-	.write = NULL,
-};
-
-static const struct device bbram_dev_instance = {
-	.name = "TEST_BBRAM_DEV",
-	.config = NULL,
-	.api = &bbram_api,
-	.data = NULL,
-};
-
-const struct device *bbram_dev = &bbram_dev_instance;
-
 static void test_bbram_get(void)
 {
+	const struct device *const bbram_dev =
+		DEVICE_DT_GET(DT_CHOSEN(cros_ec_bbram));
 	uint8_t output[10];
 	int rc;
 
+	/* Write expected data to read back */
+	rc = bbram_write(bbram_dev, 0, ARRAY_SIZE(mock_data), mock_data);
+	zassert_ok(rc, NULL);
+
 	rc = system_get_bbram(SYSTEM_BBRAM_IDX_PD0, output);
-	zassert_equal(rc, 0, NULL);
+	zassert_ok(rc, NULL);
 	zassert_mem_equal(output, mock_data + BBRAM_REGION_OFF(pd0),
 			  BBRAM_REGION_SIZE(pd0), NULL);
 
 	rc = system_get_bbram(SYSTEM_BBRAM_IDX_PD1, output);
-	zassert_equal(rc, 0, NULL);
+	zassert_ok(rc, NULL);
 	zassert_mem_equal(output, mock_data + BBRAM_REGION_OFF(pd1),
 			  BBRAM_REGION_SIZE(pd1), NULL);
 
 	rc = system_get_bbram(SYSTEM_BBRAM_IDX_PD2, output);
-	zassert_equal(rc, 0, NULL);
+	zassert_ok(rc, NULL);
 	zassert_mem_equal(output, mock_data + BBRAM_REGION_OFF(pd2),
 			  BBRAM_REGION_SIZE(pd2), NULL);
 
 	rc = system_get_bbram(SYSTEM_BBRAM_IDX_TRY_SLOT, output);
-	zassert_equal(rc, 0, NULL);
+	zassert_ok(rc, NULL);
 	zassert_mem_equal(output, mock_data + BBRAM_REGION_OFF(try_slot),
 			  BBRAM_REGION_SIZE(try_slot), NULL);
 }

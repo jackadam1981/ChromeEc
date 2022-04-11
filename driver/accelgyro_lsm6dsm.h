@@ -95,13 +95,13 @@
 #define LSM6DSM_EMBED_FUNC_EN			0x04
 #define LSM6DSM_SIG_MOT_EN			0x01
 
-/* Master mode configuration register */
-#define LSM6DSM_MASTER_CFG_ADDR		0x1a
+/* Controller mode configuration register */
+#define LSM6DSM_CONTROLLER_CFG_ADDR	0x1a
 #define LSM6DSM_PASSTROUGH_MASK			0x1f
 #define LSM6DSM_EXT_TRIGGER_EN			0x10
 #define LSM6DSM_PULLUP_EN			0x08
 #define LSM6DSM_I2C_PASS_THRU_MODE		0x04
-#define LSM6DSM_I2C_MASTER_ON			0x01
+#define LSM6DSM_I2C_CONTROLLER_ON		0x01
 
 #define LSM6DSM_TAP_SRC_ADDR		0x1c
 #define LSM6DSM_STAP_DETECT			0x20
@@ -293,17 +293,6 @@ struct lsm6dsm_fifo_data {
 	int total_samples_in_pattern;
 };
 
-/*
- * Structure used to maintain the load state per sensor. This will be used to
- * properly spread values in case we have more than one reading for a given
- * sensor in a single fifo read pass.
- */
-struct load_fifo_sensor_state_t {
-	uint32_t int_timestamp;
-	uint8_t sample_count;
-	int sample_rate;
-};
-
 /**
  * Structure used to hold fifo state. This struct should only be used if
  * CONFIG_ACCEL_FIFO is defined.
@@ -317,7 +306,6 @@ struct lsm6dsm_accel_fifo_state {
 	 * initial samples with incorrect values
 	 */
 	unsigned int samples_to_discard[FIFO_DEV_NUM];
-	struct load_fifo_sensor_state_t load_fifo_sensor_state[FIFO_DEV_NUM];
 };
 
 /*

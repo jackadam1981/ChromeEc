@@ -10,6 +10,9 @@
 
 #include <stdbool.h>
 
+#include "atomic.h"
+#include "atomic_bit.h"
+
 /*
  * List of all timers that will be managed by usb_pd_timer
  */
@@ -34,6 +37,15 @@ enum pd_task_timer {
 	 * ChunkingNotSupportedTimer expires.
 	 */
 	PE_TIMER_CHUNKING_NOT_SUPPORTED,
+
+	/*
+	 * PD 3.0, rev. 3.1, v. 1.2, section 6.6.10.3: The DataResetFailTimer
+	 * Shall be used by the DFP’s Policy Engine to ensure the Data Reset
+	 * process completes within tDataResetFail of the last bit of the
+	 * GoodCRC acknowledging the Accept Message in response to the
+	 * Data_Reset Message.
+	 */
+	PE_TIMER_DATA_RESET_FAIL,
 
 	/*
 	 * This timer is used during an Explicit Contract when discovering
@@ -122,9 +134,23 @@ enum pd_task_timer {
 	PE_TIMER_TIMEOUT,
 
 	/*
+	 * The amount of timer that the DFP shall wait for the UFP to discharge
+	 * VCONN (and send PS_RDY) during Data Reset. See PD 3.0, rev. 3.1, v.
+	 * 1.2, section 6.6.10.1 VCONNDischargeTimer.
+	 */
+	PE_TIMER_VCONN_DISCHARGE,
+
+	/*
 	 * This timer is used during a VCONN Swap.
 	 */
 	PE_TIMER_VCONN_ON,
+
+	/*
+	 * The amount of time that VCONN shall remain off during the cable reset
+	 * portion of a Data Reset. See PD 3.0, rev. 3.1, v. 1.2, section 7.1.15
+	 * VCONN Power Cycle.
+	 */
+	PE_TIMER_VCONN_REAPPLIED,
 
 	/*
 	 * This timer is used by the Initiator’s Policy Engine to ensure that
@@ -194,7 +220,6 @@ enum pd_task_timer {
 
 	PD_TIMER_COUNT
 };
-BUILD_ASSERT(PD_TIMER_COUNT <= 32);
 
 enum pd_timer_range {
 	PE_TIMER_RANGE,
@@ -294,5 +319,44 @@ int pd_timer_next_expiration(int port);
  * @param port USB-C port number
  */
 void pd_timer_dump(int port);
+
+#ifdef TEST_BUILD
+/*****************************************************************************
+ * TEST_BUILD section
+ *
+ * This is solely for the use of unit testing.  Most of the inner workings
+ * of PD timer are internal static, so they have to be allowed access in
+ * order to unit test the basics of the code.
+ *
+ * If you are interested in the workings of PD timers please refer to
+ * common/usbc/usb_pd_timer.c
+ */
+
+/* exported: number of USB-C ports */
+#define MAX_PD_PORTS		CONFIG_USB_PD_PORT_MAX_COUNT
+
+/* PD timers have three possible states: Active, Inactive and Disabled */
+/* exported: timer_active indicates if a timer is currently active */
+extern ATOMIC_DEFINE(timer_active, PD_TIMER_COUNT * MAX_PD_PORTS);
+/* exported: timer_disabled indicates if a timer is currently disabled */
+extern ATOMIC_DEFINE(timer_disabled, PD_TIMER_COUNT * MAX_PD_PORTS);
+
+/* exported: set/clear/check the current timer_active for a timer */
+#define PD_SET_ACTIVE(p, bit) \
+	atomic_set_bit(timer_active, (p) * PD_TIMER_COUNT + (bit))
+#define PD_CLR_ACTIVE(p, bit) \
+	atomic_clear_bit(timer_active, (p) * PD_TIMER_COUNT + (bit))
+#define PD_CHK_ACTIVE(p, bit) \
+	atomic_test_bit(timer_active, (p) * PD_TIMER_COUNT + (bit))
+
+/* exported: set/clear/check the current timer_disabled for a timer */
+#define PD_SET_DISABLED(p, bit) \
+	atomic_set_bit(timer_disabled, (p) * PD_TIMER_COUNT + (bit))
+#define PD_CLR_DISABLED(p, bit) \
+	atomic_clear_bit(timer_disabled, (p) * PD_TIMER_COUNT + (bit))
+#define PD_CHK_DISABLED(p, bit) \
+	atomic_test_bit(timer_disabled, (p) * PD_TIMER_COUNT + (bit))
+
+#endif /* TEST_BUILD */
 
 #endif  /* __CROS_EC_USB_PD_TIMER_H */

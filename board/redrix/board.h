@@ -10,11 +10,6 @@
 
 #include "compile_time_macros.h"
 
-/*
- * Early redrix boards are not set up for vivaldi
- */
-#undef CONFIG_KEYBOARD_VIVALDI
-
 /* Baseboard features */
 #include "baseboard.h"
 
@@ -24,12 +19,17 @@
  */
 #define CONFIG_HIBERNATE_PSL_VCC1_RST_WAKEUP
 
+/* Chipset */
+#define CONFIG_CHIPSET_RESUME_INIT_HOOK
+
 /* Sensors */
 #define CONFIG_ACCEL_BMA255		/* Lid accel */
+#define CONFIG_ACCEL_BMA4XX		/* 2nd source Lid accel */
 #define CONFIG_ACCELGYRO_LSM6DSM	/* Base accel */
 #define CONFIG_ACCEL_LSM6DSM_INT_EVENT \
 	TASK_EVENT_MOTION_SENSOR_INTERRUPT(BASE_ACCEL)
 #define CONFIG_LID_ANGLE
+#define CONFIG_LID_ANGLE_UPDATE
 #define CONFIG_LID_ANGLE_SENSOR_BASE	BASE_ACCEL
 #define CONFIG_LID_ANGLE_SENSOR_LID	LID_ACCEL
 
@@ -57,6 +57,14 @@
 #define CONFIG_CMD_ACCELS
 #define CONFIG_CMD_ACCEL_INFO
 
+/* WLC pins */
+#ifdef SECTION_IS_RW
+#define CONFIG_PERIPHERAL_CHARGER
+#define CONFIG_DEVICE_EVENT
+#define CONFIG_CTN730
+#define CONFIG_MKBP_EVENT_WAKEUP_MASK (BIT(EC_MKBP_EVENT_PCHG))
+#endif
+
 /* USB Type A Features */
 #define USB_PORT_COUNT			1
 #define CONFIG_USB_PORT_POWER_DUMB
@@ -67,6 +75,8 @@
 #define CONFIG_IO_EXPANDER
 #define CONFIG_IO_EXPANDER_NCT38XX
 #define CONFIG_IO_EXPANDER_PORT_COUNT		2
+
+#define CONFIG_USB_PD_FRS_PPC
 
 #define CONFIG_USBC_RETIMER_INTEL_BB
 
@@ -104,7 +114,7 @@
 #define GPIO_PCH_RTCRST			GPIO_EC_PCH_RTCRST
 #define GPIO_PCH_SLP_S0_L		GPIO_SYS_SLP_S0IX_L
 #define GPIO_PCH_SLP_S3_L		GPIO_SLP_S3_L
-#define GMR_TABLET_MODE_GPIO_L		GPIO_TABLET_MODE_L
+#define GPIO_TEMP_SENSOR_POWER		GPIO_SEQ_EC_DSW_PWROK
 
 /*
  * GPIO_EC_PCH_INT_ODL is used for MKBP events as well as a PCH wakeup
@@ -115,13 +125,12 @@
 #define GPIO_PG_EC_DSW_PWROK		GPIO_SEQ_EC_DSW_PWROK
 #define GPIO_PG_EC_RSMRST_ODL		GPIO_SEQ_EC_RSMRST_ODL
 #define GPIO_POWER_BUTTON_L		GPIO_GSC_EC_PWR_BTN_ODL
-#define GPIO_RSMRST_L_PGOOD		GPIO_SEQ_EC_RSMRST_ODL
 #define GPIO_SYS_RESET_L		GPIO_SYS_RST_ODL
 #define GPIO_VOLUME_DOWN_L		GPIO_EC_VOLDN_BTN_ODL
 #define GPIO_VOLUME_UP_L		GPIO_EC_VOLUP_BTN_ODL
 #define GPIO_WP_L			GPIO_EC_WP_ODL
 
-#define GPIO_ID_1_EC_KB_BL_EN		GPIO_EC_BATT_PRES_ODL
+#define GPIO_WLC_NRST_CONN		GPIO_PEN_RST_L
 
 /* System has back-lit keyboard */
 #define CONFIG_PWM_KBLIGHT
@@ -145,6 +154,7 @@
 #define I2C_PORT_BATTERY	NPCX_I2C_PORT5_0
 #define I2C_PORT_CHARGER	NPCX_I2C_PORT7_0
 #define I2C_PORT_EEPROM		NPCX_I2C_PORT7_0
+#define I2C_PORT_WLC		NPCX_I2C_PORT7_0
 
 #define I2C_ADDR_EEPROM_FLAGS	0x50
 
@@ -152,7 +162,7 @@
  * see b/174768555#comment22
  */
 #define USBC_PORT_C0_BB_RETIMER_I2C_ADDR	0x56
-#define USBC_PORT_C1_BB_RETIMER_I2C_ADDR	0x57
+#define USBC_PORT_C1_BB_RETIMER_I2C_ADDR	0x58
 
 /* Enabling Thunderbolt-compatible mode */
 #define CONFIG_USB_PD_TBT_COMPAT_MODE
@@ -166,18 +176,35 @@
 /* Thermal features */
 #define CONFIG_THERMISTOR
 #define CONFIG_TEMP_SENSOR
-#define CONFIG_TEMP_SENSOR_POWER_GPIO	GPIO_SEQ_EC_DSW_PWROK
+#define CONFIG_TEMP_SENSOR_POWER
 #define CONFIG_STEINHART_HART_3V3_30K9_47K_4050B
 
 /* Fan features */
 #define CONFIG_FANS		FAN_CH_COUNT
+#define CONFIG_CUSTOM_FAN_CONTROL
+#define RPM_DEVIATION	1
 
 /* Charger defines */
 #define CONFIG_CHARGER_BQ25720
+/*
+ * b/202915015: The IDCHG current limit is set in 512 mA steps.
+ * The value set here is somewhat specific to the battery pack being
+ * currently used. The limit here was set based on the battery's
+ * discharge current limit and what was tested to prevent the AP
+ * rebooting with low charge level batteries.
+ */
+#define CONFIG_CHARGER_BQ25710_IDCHG_LIMIT_MA	8192
+#define CONFIG_CHARGER_BQ25720_VSYS_TH2_CUSTOM
 #define CONFIG_CHARGER_BQ25720_VSYS_TH2_DV	70
-#define CONFIG_CHARGE_RAMP_SW
-#define CONFIG_CHARGER_SENSE_RESISTOR		10
-#define CONFIG_CHARGER_SENSE_RESISTOR_AC	10
+#define CONFIG_CHARGE_RAMP_HW
+#define CONFIG_CHARGER_BQ25710_SENSE_RESISTOR		10
+#define CONFIG_CHARGER_BQ25710_SENSE_RESISTOR_AC	10
+#define CONFIG_CHARGER_PROFILE_OVERRIDE
+
+/* Keyboard features */
+#define CONFIG_KEYBOARD_FACTORY_TEST
+#define CONFIG_KEYBOARD_VIVALDI
+#define CONFIG_KEYBOARD_REFRESH_ROW3
 
 #ifndef __ASSEMBLER__
 
@@ -186,16 +213,18 @@
 #include "usbc_config.h"
 
 enum adc_channel {
-	ADC_TEMP_SENSOR_1_DDR_SOC,
-	ADC_TEMP_SENSOR_2_FAN,
+	ADC_TEMP_SENSOR_1_DDR,
+	ADC_TEMP_SENSOR_2_SOC,
 	ADC_TEMP_SENSOR_3_CHARGER,
-	ADC_TEMP_SENSOR_4_WWAN,
+	ADC_TEMP_SENSOR_4_REGULATOR,
 	ADC_CH_COUNT
 };
 
 enum temp_sensor_id {
-	TEMP_SENSOR_1_DDR_SOC,
-	TEMP_SENSOR_2_FAN,
+	TEMP_SENSOR_1_DDR,
+	TEMP_SENSOR_2_SOC,
+	TEMP_SENSOR_3_CHARGER,
+	TEMP_SENSOR_4_REGULATOR,
 	TEMP_SENSOR_COUNT
 };
 
@@ -237,6 +266,11 @@ enum mft_channel {
 	MFT_CH_1,
 	MFT_CH_COUNT
 };
+
+#ifdef CONFIG_KEYBOARD_FACTORY_TEST
+extern const int keyboard_factory_scan_pins[][2];
+extern const int keyboard_factory_scan_pins_used;
+#endif
 
 #endif /* !__ASSEMBLER__ */
 

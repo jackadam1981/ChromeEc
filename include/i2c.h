@@ -9,7 +9,7 @@
 #define __CROS_EC_I2C_H
 
 #include "common.h"
-#include "gpio.h"
+#include "gpio_signal.h"
 #include "host_command.h"
 #include "stddef.h"
 
@@ -106,9 +106,9 @@ struct i2c_drv {
 
 /* Data structure to define I2C port configuration. */
 struct i2c_port_t {
-	const char *name;     /* Port name */
 	int port;             /* Port */
 #ifndef CONFIG_ZEPHYR
+	const char *name;     /* Port name */
 	int kbps;             /* Speed in kbps */
 	enum gpio_signal scl; /* Port SCL GPIO line */
 	enum gpio_signal sda; /* Port SDA GPIO line */
@@ -161,6 +161,15 @@ struct i2c_stress_test {
 extern struct i2c_stress_test i2c_stress_tests[];
 extern const int i2c_test_dev_used;
 #endif
+
+/*
+ * Data structure to define I2C Parameters for a command
+ */
+struct i2c_cmd_desc_t {
+	uint8_t port;		/* I2C port */
+	uint16_t addr_flags;	/* Peripheral address and flags */
+	uint8_t cmd;		/* command, only valid on write operations */
+};
 
 /* Flags for i2c_xfer_unlocked() */
 #define I2C_XFER_START BIT(0)  /* Start smbus session from idle state */
@@ -477,14 +486,6 @@ int i2c_write_block(const int port,
 int i2c_port_to_controller(int port);
 
 /**
- * Command handler to get host command protocol information
- *
- * @param args:	host command handler arguments
- * @return	EC_SUCCESS
- */
-enum ec_status i2c_get_protocol_info(struct host_cmd_handler_args *args);
-
-/**
  * Callbacks processing received data and response
  *
  * i2c_data_received will be called when a peripheral finishes receiving data
@@ -510,13 +511,13 @@ void i2c_init(void);
 
 /**
  * Board-level function to determine whether i2c passthru should be allowed
- * on a given port.
+ * on a given I2C command.
  *
- * @parm port I2C port
+ * @parm cmd_desc I2C command
  *
- * @return true, if passthru should be allowed on the port.
+ * @return true, if passthru should be allowed on the I2C command.
  */
-int board_allow_i2c_passthru(int port);
+int board_allow_i2c_passthru(const struct i2c_cmd_desc_t *cmd_desc);
 
 /**
  * Board level function that can indicate if a particular i2c bus is known to be
@@ -562,10 +563,31 @@ void i2c_end_xfer_notify(const int port,
  * @param out_size: size of data written
  * @param in_data: pointer to data read
  * @param in_size: size of data read
+ * @param ret: return of i2c transaction (EC_SUCCESS or otherwise on failure)
  */
 void i2c_trace_notify(int port, uint16_t addr_flags,
 		      const uint8_t *out_data, size_t out_size,
-		      const uint8_t *in_data, size_t in_size);
+		      const uint8_t *in_data, size_t in_size, int ret);
+
+/**
+ * Convert an enum i2c_freq constant to numeric frequency in kHz.
+ *
+ * @param freq		An enum i2c_freq constant
+ *
+ * @return The frequency in kHz, or 0 if the input is not a valid
+ *			speed.
+ */
+int i2c_freq_to_khz(enum i2c_freq freq);
+
+/**
+ * Convert a numeric frequency in kHz to an enum i2c_freq constant.
+ *
+ * @param speed_khz	The frequency in kHz
+ *
+ * @return The frequency as an enum i2c_freq constant, or I2C_FREQ_COUNT
+ *			if the input is not a valid speed.
+ */
+enum i2c_freq i2c_khz_to_freq(int speed_khz);
 
 /**
  * Set bus speed. Only support for ports with I2C_PORT_FLAG_DYNAMIC_SPEED

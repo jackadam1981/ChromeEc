@@ -3,6 +3,7 @@
  * found in the LICENSE file.
  */
 
+#include "chipset.h"
 #include "common.h"
 #include "compile_time_macros.h"
 #include "hooks.h"
@@ -17,7 +18,7 @@ const struct pwm_t pwm_channels[] = {
 	},
 	[PWM_CH_TKP_A_LED_N] = {
 		.channel = 1,
-		.flags = PWM_CONFIG_ACTIVE_LOW | PWM_CONFIG_DSLEEP,
+		.flags = PWM_CONFIG_DSLEEP,
 		.freq = 4800,
 	},
 	[PWM_CH_LED1_AMBER] = {
@@ -27,7 +28,7 @@ const struct pwm_t pwm_channels[] = {
 	},
 	[PWM_CH_KBLIGHT] = {
 		.channel = 3,
-		.flags = 0,
+		.flags = PWM_CONFIG_DSLEEP,
 		/*
 		 * Set PWM frequency to multiple of 50 Hz and 60 Hz to prevent
 		 * flicker. Higher frequencies consume similar average power to
@@ -52,17 +53,18 @@ BUILD_ASSERT(ARRAY_SIZE(pwm_channels) == PWM_CH_COUNT);
 static void board_pwm_init(void)
 {
 	/*
-	 * Turn on LOGO led and turn off battery/power led
+	 * Turn off LOGO/power/battery led
 	 */
 	pwm_enable(PWM_CH_LED1_AMBER, 1);
 	pwm_set_duty(PWM_CH_LED1_AMBER, 0);
 	pwm_enable(PWM_CH_LED2_WHITE, 1);
 	pwm_set_duty(PWM_CH_LED2_WHITE, 0);
 	pwm_enable(PWM_CH_TKP_A_LED_N, 1);
-	pwm_set_duty(PWM_CH_TKP_A_LED_N, 100);
+	pwm_set_duty(PWM_CH_TKP_A_LED_N, 0);
 	pwm_enable(PWM_CH_LED4, 1);
 	pwm_set_duty(PWM_CH_LED4, 0);
-
+	if (chipset_in_state(CHIPSET_STATE_ANY_OFF))
+		return;
 	pwm_enable(PWM_CH_KBLIGHT, 1);
 	/* TODO(b/190518315)
 	 * Check if need to turn to 100% after with chassis.

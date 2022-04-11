@@ -14,6 +14,11 @@
 #define CHARGE_V_MAX	18304
 #define CHARGE_V_MIN	64
 #define CHARGE_V_STEP	8
+/*
+ * When the default sense resistor value is used, register values
+ * represent mA. For other sense resistors values, register
+ * values must be scaled accordingly to convert to mA.
+ */
 #define CHARGE_I_MAX	6140
 #define CHARGE_I_MIN	4
 #define CHARGE_I_STEP	4
@@ -99,6 +104,8 @@
 #define ISL9241_REG_CONTROL3		0x4C
 /* 14: ACLIM Reload (0 - reload, 1 - Do not reload */
 #define ISL9241_CONTROL3_ACLIM_RELOAD	BIT(14)
+/* 5: Input Current Limit Loop (0 - Enable, 1 - Disable */
+#define ISL9241_CONTROL3_INPUT_CURRENT_LIMIT	BIT(5)
 /* 2: Digital Reset (0 - Idle, 1 - Reset */
 #define ISL9241_CONTROL3_DIGITAL_RESET	BIT(2)
 /* 0: Enable ADC (0 - Active when charging, 1 - Active always) */

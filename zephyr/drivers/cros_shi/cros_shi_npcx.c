@@ -54,7 +54,7 @@ LOG_MODULE_REGISTER(cros_shi, LOG_LEVEL_DBG);
  * practically want to run the SHI interface, since running it slower
  * significantly impacts firmware update times.
  */
-#define SHI_CMD_RX_TIMEOUT_MS 9
+#define SHI_CMD_RX_TIMEOUT_US 8192
 
 /*
  * The AP blindly clocks back bytes over the SPI interface looking for a
@@ -237,7 +237,7 @@ static int shi_read_inbuf_wait(struct shi_reg *const inst, uint32_t szbytes)
 		 */
 		while (shi_params.rx_buf ==
 		       inst->IBUF + shi_read_buf_pointer(inst)) {
-			if (k_uptime_get() > shi_params.rx_deadline) {
+			if (k_cycle_get_64() >= shi_params.rx_deadline) {
 				return 0;
 			}
 		}
@@ -445,7 +445,8 @@ static void shi_parse_header(struct shi_reg *const inst)
 	DEBUG_CPRINTF("RV-");
 
 	/* Setup deadline time for receiving */
-	shi_params.rx_deadline = k_uptime_get() + SHI_CMD_RX_TIMEOUT_MS;
+	shi_params.rx_deadline =
+		k_cycle_get_64() + k_us_to_cyc_near64(SHI_CMD_RX_TIMEOUT_US);
 
 	/* Wait for version, command, length bytes */
 	if (!shi_read_inbuf_wait(inst, 3))
@@ -763,7 +764,16 @@ static void cros_shi_npcx_reset_prepare(struct shi_reg *const inst)
 static int cros_shi_npcx_enable(const struct device *dev)
 {
 	const struct cros_shi_npcx_config *const config = DRV_CONFIG(dev);
+	const struct device *clk_dev = DEVICE_DT_GET(NPCX_CLK_CTRL_NODE);
 	struct shi_reg *const inst = HAL_INSTANCE(dev);
+	int ret;
+
+	ret = clock_control_on(clk_dev,
+			       (clock_control_subsys_t *)&config->clk_cfg);
+	if (ret < 0) {
+		DEBUG_CPRINTF("Turn on SHI clock fail %d", ret);
+		return ret;
+	}
 
 	cros_shi_npcx_reset_prepare(inst);
 	npcx_miwu_irq_disable(&config->shi_cs_wui);
@@ -781,6 +791,8 @@ static int cros_shi_npcx_enable(const struct device *dev)
 static int cros_shi_npcx_disable(const struct device *dev)
 {
 	const struct cros_shi_npcx_config *const config = DRV_CONFIG(dev);
+	const struct device *clk_dev = DEVICE_DT_GET(NPCX_CLK_CTRL_NODE);
+	int ret;
 
 	state = SHI_STATE_DISABLED;
 
@@ -789,6 +801,13 @@ static int cros_shi_npcx_disable(const struct device *dev)
 
 	/* Configure pin-mux from SHI to GPIO. */
 	npcx_pinctrl_mux_configure(config->alts_list, config->alts_size, 0);
+
+	ret = clock_control_off(clk_dev,
+			       (clock_control_subsys_t *)&config->clk_cfg);
+	if (ret < 0) {
+		DEBUG_CPRINTF("Turn off SHI clock fail %d", ret);
+		return ret;
+	}
 
 	/*
 	 * Allow deep sleep again in case CS dropped before ec was
@@ -804,7 +823,7 @@ static int shi_npcx_init(const struct device *dev)
 	int ret;
 	const struct cros_shi_npcx_config *const config = DRV_CONFIG(dev);
 	struct shi_reg *const inst = HAL_INSTANCE(dev);
-	const struct device *clk_dev = DEVICE_DT_GET(DT_NODELABEL(pcc));
+	const struct device *clk_dev = DEVICE_DT_GET(NPCX_CLK_CTRL_NODE);
 
 	/* Turn on shi device clock first */
 	ret = clock_control_on(clk_dev,
@@ -814,10 +833,10 @@ static int shi_npcx_init(const struct device *dev)
 		return ret;
 	}
 
-	/*
-	 * TODO: for npcx9, HIF_TYP_SEL in DEVCNT register should be set
-	 * by firmware because the BOOTER no longer touches it.
-	 */
+	/* If booter doesn't set the host interface type */
+	if (!NPCX_BOOTER_IS_HIF_TYPE_SET()) {
+		npcx_host_interface_sel(NPCX_HIF_TYPE_ESPI_SHI);
+	}
 
 	/*
 	 * SHICFG1 (SHI Configuration 1) setting

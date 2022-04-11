@@ -6,7 +6,6 @@
 /* NPCX-specific ADC module for Chrome EC */
 
 #include "adc.h"
-#include "adc_chip.h"
 #include "atomic.h"
 #include "clock.h"
 #include "clock_chip.h"
@@ -25,11 +24,28 @@
 
 /* Maximum time we allow for an ADC conversion */
 #define ADC_TIMEOUT_US            SECOND
+/*
+ * ADC basic clock is from APB1.
+ * In npcx5, APB1 clock frequency is (15 MHz / 4).
+ * Configure ADC clock divider and speed parameters to set the ADC clock to
+ * ~2 MHz.
+ * In npcx7 and later chips, APB1 clock frequency is 15 MHz.
+ * Configure ADC clock divider and speed parameters to set the ADC clock to
+ * 7.5 MHz.
+ */
+#if defined(CHIP_FAMILY_NPCX5)
 #define ADC_CLK                   2000000
-#define ADC_REGULAR_DLY           0x11
-#define ADC_REGULAR_ADCCNF2       0x8B07
-#define ADC_REGULAR_GENDLY        0x0100
-#define ADC_REGULAR_MEAST         0x0001
+#define ADC_DLY                   0x03
+#define ADC_ADCCNF2               0x8B07
+#define ADC_GENDLY                0x0100
+#define ADC_MEAST                 0x0001
+#else
+#define ADC_CLK                   7500000
+#define ADC_DLY                   0x02
+#define ADC_ADCCNF2               0x8901
+#define ADC_GENDLY                0x0100
+#define ADC_MEAST                 0x0405
+#endif
 
 /* ADC conversion mode */
 enum npcx_adc_conversion_mode {
@@ -41,6 +57,8 @@ enum npcx_adc_conversion_mode {
 static volatile task_id_t task_waiting;
 
 struct mutex adc_lock;
+
+static volatile bool adc_done;
 
 /**
  * Preset ADC operation clock.
@@ -78,7 +96,11 @@ static int start_single_and_wait(enum npcx_adc_input_channel input_ch
 {
 	int event;
 
-	task_waiting = task_get_current();
+	if (IS_ENABLED(CONFIG_KEYBOARD_SCAN_ADC)) {
+		if (task_start_called())
+			task_waiting = task_get_current();
+	} else
+		task_waiting = task_get_current();
 
 	/* Stop ADC conversion first */
 	SET_BIT(NPCX_ADCCNF, NPCX_ADCCNF_STOP);
@@ -102,13 +124,36 @@ static int start_single_and_wait(enum npcx_adc_input_channel input_ch
 	/* Start conversion */
 	SET_BIT(NPCX_ADCCNF, NPCX_ADCCNF_START);
 
-	/* Wait for interrupt */
-	event = task_wait_event_mask(TASK_EVENT_ADC_DONE, timeout);
+/*
+ * If tasks have started, we can suspend to the task that called us.
+ * If not, we need to busy poll for adc to finish before proceeding
+ */
+	if (IS_ENABLED(CONFIG_KEYBOARD_SCAN_ADC)) {
+		if (!task_start_called()) {
 
-	task_waiting = TASK_ID_INVALID;
+			/* Wait for the ADC interrupt to set the flag */
+			do {
+				usleep(10);
+			} while (adc_done == false);
+
+			adc_done = false;
+
+			event = TASK_EVENT_ADC_DONE;
+		} else {
+			/* Wait for interrupt */
+			event = task_wait_event_mask(TASK_EVENT_ADC_DONE,
+								timeout);
+
+			task_waiting = TASK_ID_INVALID;
+		}
+	} else {
+		/* Wait for interrupt */
+		event = task_wait_event_mask(TASK_EVENT_ADC_DONE, timeout);
+
+		task_waiting = TASK_ID_INVALID;
+	}
 
 	return (event == TASK_EVENT_ADC_DONE);
-
 }
 
 static uint16_t repetitive_enabled;
@@ -319,7 +364,7 @@ void npcx_adc_register_thresh_irq(int threshold_idx,
  * @return  none
  * @notes   Only handle SW-triggered conversion in npcx chip
  */
-void adc_interrupt(void)
+static void adc_interrupt(void)
 {
 	int i;
 	uint16_t thrcts;
@@ -339,6 +384,11 @@ void adc_interrupt(void)
 		/* Wake up the task which was waiting for the interrupt */
 		if (task_waiting != TASK_ID_INVALID)
 			task_set_event(task_waiting, TASK_EVENT_ADC_DONE);
+
+		if (IS_ENABLED(CONFIG_KEYBOARD_SCAN_ADC)) {
+			if (!task_start_called())
+				adc_done = true;
+		}
 	}
 
 	for (i = NPCX_THRCTS_THR1_STS; i < NPCX_ADC_THRESH_CNT; i++) {
@@ -357,13 +407,23 @@ void adc_interrupt(void)
 }
 DECLARE_IRQ(NPCX_IRQ_ADC, adc_interrupt, 4);
 
+/*
+ * For Antighost keyboard, we need to initialize adc from
+ * main before keyboard_scan_init is called in order to
+ * detect boot keys
+ */
+
 /**
  * ADC initial.
  *
  * @param none
  * @return none
  */
+#ifndef CONFIG_KEYBOARD_SCAN_ADC
 static void adc_init(void)
+#else
+void adc_init(void)
+#endif
 {
 	/* Configure pins from GPIOs to ADCs */
 	gpio_config_module(MODULE_ADC, 1);
@@ -376,16 +436,18 @@ static void adc_init(void)
 	adc_freq_changed();
 
 	/* Set regular speed */
-	SET_FIELD(NPCX_ATCTL, NPCX_ATCTL_DLY_FIELD, (ADC_REGULAR_DLY - 1));
+	SET_FIELD(NPCX_ATCTL, NPCX_ATCTL_DLY_FIELD, ADC_DLY);
 
 	/* Set the other ADC settings */
-	NPCX_ADCCNF2 = ADC_REGULAR_ADCCNF2;
-	NPCX_GENDLY = ADC_REGULAR_GENDLY;
-	NPCX_MEAST = ADC_REGULAR_MEAST;
+	NPCX_ADCCNF2 = ADC_ADCCNF2;
+	NPCX_GENDLY = ADC_GENDLY;
+	NPCX_MEAST = ADC_MEAST;
 
 	task_waiting = TASK_ID_INVALID;
 
 	/* Enable IRQs */
 	task_enable_irq(NPCX_IRQ_ADC);
 }
+#ifndef CONFIG_KEYBOARD_SCAN_ADC
 DECLARE_HOOK(HOOK_INIT, adc_init, HOOK_PRIO_INIT_ADC);
+#endif

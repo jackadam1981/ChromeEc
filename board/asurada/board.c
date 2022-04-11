@@ -5,7 +5,6 @@
 /* Asurada board configuration */
 
 #include "adc.h"
-#include "adc_chip.h"
 #include "button.h"
 #include "charge_manager.h"
 #include "charge_state_v2.h"
@@ -53,6 +52,15 @@ static struct mutex g_lid_mutex;
 
 static struct bmi_drv_data_t g_bmi160_data;
 static struct stprivate_data g_lis2dwl_data;
+static struct icm_drv_data_t g_icm426xx_data;
+
+enum base_accelgyro_type {
+	BASE_GYRO_NONE = 0,
+	BASE_GYRO_BMI160 = 1,
+	BASE_GYRO_ICM426XX = 2,
+};
+
+static enum base_accelgyro_type base_accelgyro_config;
 
 #ifdef BOARD_ASURADA_REV0
 /* Matrix to rotate accelerometer into standard reference frame */
@@ -137,6 +145,9 @@ static const mat33_fp_t base_standard_ref = {
 
 static void update_rotation_matrix(void)
 {
+	if (base_accelgyro_config == BASE_GYRO_ICM426XX)
+		return;
+
 	if (board_get_version() >= 2) {
 		motion_sensors[BASE_ACCEL].rot_standard_ref =
 			&base_standard_ref;
@@ -147,16 +158,6 @@ static void update_rotation_matrix(void)
 DECLARE_HOOK(HOOK_INIT, update_rotation_matrix, HOOK_PRIO_INIT_ADC + 2);
 
 #endif
-
-static struct icm_drv_data_t g_icm426xx_data;
-
-enum base_accelgyro_type {
-	BASE_GYRO_NONE = 0,
-	BASE_GYRO_BMI160 = 1,
-	BASE_GYRO_ICM426XX = 2,
-};
-
-static enum base_accelgyro_type base_accelgyro_config;
 
 struct motion_sensor_t icm426xx_base_accel = {
 	.name = "Base Accel",
@@ -193,6 +194,7 @@ struct motion_sensor_t icm426xx_base_gyro = {
 	.location = MOTIONSENSE_LOC_BASE,
 	.drv = &icm426xx_drv,
 	.mutex = &g_base_mutex,
+	.drv_data = &g_icm426xx_data,
 	.port = I2C_PORT_ACCEL,
 	.i2c_spi_addr_flags = ICM426XX_ADDR0_FLAGS,
 	.default_range = 1000, /* dps */
@@ -260,10 +262,8 @@ struct motion_sensor_t motion_sensors[] = {
 		.drv = &lis2dw12_drv,
 		.mutex = &g_lid_mutex,
 		.drv_data = &g_lis2dwl_data,
-		.int_signal = GPIO_LID_ACCEL_INT_L,
 		.port = I2C_PORT_ACCEL,
 		.i2c_spi_addr_flags = LIS2DWL_ADDR1_FLAGS,
-		.flags = MOTIONSENSE_FLAG_INT_SIGNAL,
 		.rot_standard_ref = NULL, /* identity matrix */
 		.default_range = 2, /* g */
 		.min_frequency = LIS2DW12_ODR_MIN_VAL,

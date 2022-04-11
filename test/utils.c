@@ -44,20 +44,8 @@ static int test_memmove(void)
 	ccprintf(" %" PRId64 " us) ", t3.val-t2.val);
 	TEST_ASSERT_ARRAY_EQ(buf + 100, buf, len);
 
-	/* Expected about 4x speed gain. Use 3x because it fluctuates */
-	if (!IS_ENABLED(EMU_BUILD)) {
-		/*
-		 * The speed gain is too unpredictable on host, especially on
-		 * buildbots. Skip it if we are running in the emulator.
-		 */
-		int expected_speedup = 3;
-
-		if (IS_ENABLED(CHIP_FAMILY_STM32H7))
-			expected_speedup = 2;
-
-		TEST_ASSERT((t1.val - t0.val) >
-			    (unsigned int)(t3.val - t2.val) * expected_speedup);
-	}
+	if (!IS_ENABLED(EMU_BUILD))
+		TEST_ASSERT((t1.val - t0.val) > (t3.val - t2.val));
 
 	/* Test small moves */
 	memmove(buf + 1, buf, 1);
@@ -101,14 +89,8 @@ static int test_memcpy(void)
 	ccprintf(" %" PRId64 " us) ", t3.val-t2.val);
 	TEST_ASSERT_ARRAY_EQ(buf + dest_offset, buf, len);
 
-	/* Expected about 4x speed gain. Use 3x because it fluctuates */
-#ifndef EMU_BUILD
-	/*
-	 * The speed gain is too unpredictable on host, especially on
-	 * buildbots. Skip it if we are running in the emulator.
-	 */
-	TEST_ASSERT((t1.val-t0.val) > (unsigned)(t3.val-t2.val) * 3);
-#endif
+	if (!IS_ENABLED(EMU_BUILD))
+		TEST_ASSERT((t1.val - t0.val) > (t3.val - t2.val));
 
 	memcpy(buf + dest_offset + 1, buf + 1, len - 1);
 	TEST_ASSERT_ARRAY_EQ(buf + dest_offset + 1, buf + 1, len - 1);
@@ -163,24 +145,8 @@ static int test_memset(void)
 	TEST_ASSERT_MEMSET(buf, (char)1, len);
 	ccprintf(" %" PRId64 " us) ", t3.val-t2.val);
 
-	/*
-	 * Expected about 4x speed gain. Use smaller value since it
-	 * fluctuates.
-	 */
-	if (!IS_ENABLED(EMU_BUILD)) {
-		/*
-		 * The speed gain is too unpredictable on host, especially on
-		 * buildbots. Skip it if we are running in the emulator.
-		 */
-		int expected_speedup = 3;
-
-		if (IS_ENABLED(CHIP_FAMILY_STM32F4) ||
-		    IS_ENABLED(CHIP_FAMILY_STM32H7))
-			expected_speedup = 2;
-
-		TEST_ASSERT((t1.val - t0.val) >
-			    (unsigned int)(t3.val - t2.val) * expected_speedup);
-	}
+	if (!IS_ENABLED(EMU_BUILD))
+		TEST_ASSERT((t1.val - t0.val) > (t3.val - t2.val));
 
 	memset(buf, 128, len);
 	TEST_ASSERT_MEMSET(buf, (char)128, len);
@@ -270,8 +236,11 @@ static int test_shared_mem(void)
 
 static int test_scratchpad(void)
 {
+	uint32_t scratchpad_value;
+
 	system_set_scratchpad(0xfeed);
-	TEST_ASSERT(system_get_scratchpad() == 0xfeed);
+	TEST_EQ(system_get_scratchpad(&scratchpad_value), EC_SUCCESS, "%d");
+	TEST_EQ(scratchpad_value, 0xfeed, "%d");
 
 	return EC_SUCCESS;
 }
@@ -463,7 +432,10 @@ test_static int test_safe_memcmp(void)
 	const char str2[] = "def";
 	const char str3[] = "abc";
 
-	BUILD_ASSERT(str1 != str3);
+	/* Verify that the compiler hasn't optimized str1 and str3 to point
+	 * to the same underlying memory.
+	 */
+	TEST_NE(str1, str3, "%p");
 
 	TEST_EQ(safe_memcmp(NULL, NULL, 0), 0, "%d");
 	TEST_EQ(safe_memcmp(str1, str2, sizeof(str1)), 1, "%d");

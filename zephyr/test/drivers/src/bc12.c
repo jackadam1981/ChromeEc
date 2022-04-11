@@ -14,7 +14,8 @@
 #include "usb_charge.h"
 #include "battery.h"
 #include "extpower.h"
-#include "stubs.h"
+#include "test/drivers/stubs.h"
+#include "test/drivers/test_state.h"
 
 #include <logging/log.h>
 LOG_MODULE_REGISTER(test_drivers_bc12, LOG_LEVEL_DBG);
@@ -94,16 +95,6 @@ static const struct bc12_status bc12_chg_limits[] = {
 
 #define GPIO_ACOK_OD_PATH DT_PATH(named_gpios, acok_od)
 #define GPIO_ACOK_OD_PORT DT_GPIO_PIN(GPIO_ACOK_OD_PATH, gpios)
-
-/*
- * The driver test app seems to have USBC_PORT_COUNT=2 but missing the task for
- * port 1, so change port count to 1 here.
- * TODO: fix the app so count and tasks agree.
- */
-__override uint8_t board_get_usb_pd_port_count(void)
-{
-	return 1;
-}
 
 static void test_bc12_pi3usb9201_host_mode(void)
 {
@@ -195,6 +186,8 @@ static void test_bc12_pi3usb9201_client_mode(
 		port = USBC_PORT_C0;
 		voltage = USB_CHARGER_VOLTAGE_MV;
 	}
+	/* Wait for the charge port to update. */
+	msleep(500);
 	zassert_equal(charge_manager_get_active_charge_port(),
 		      port, NULL);
 	zassert_equal(charge_manager_get_supplier(),
@@ -237,7 +230,7 @@ static void test_bc12_pi3usb9201_client_mode(
  * attached host type. In both host mode and client mode, the detection results
  * are reported through I2C to the controller.
  */
-static void test_bc12_pi3usb9201(void)
+ZTEST_USER(bc12, test_bc12_pi3usb9201)
 {
 	const struct device *batt_pres_dev =
 		DEVICE_DT_GET(DT_GPIO_CTLR(GPIO_BATT_PRES_ODL_PATH, gpios));
@@ -262,6 +255,7 @@ static void test_bc12_pi3usb9201(void)
 	 * role to disconnected.
 	 */
 	task_set_event(TASK_ID_USB_CHG_P0, USB_CHG_EVENT_CC_OPEN);
+	task_set_event(TASK_ID_USB_CHG_P1, USB_CHG_EVENT_CC_OPEN);
 	msleep(1);
 	/*
 	 * Expect the pi3usb9201 driver to configure power down mode and mask
@@ -281,9 +275,8 @@ static void test_bc12_pi3usb9201(void)
 	}
 }
 
-void test_suite_bc12(void)
-{
-	ztest_test_suite(bc12,
-			 ztest_user_unit_test(test_bc12_pi3usb9201));
-	ztest_run_test_suite(bc12);
-}
+/*
+ * TODO(b/216660795): Cleanup state using a teardown_fn
+ */
+
+ZTEST_SUITE(bc12, drivers_predicate_post_main, NULL, NULL, NULL, NULL);

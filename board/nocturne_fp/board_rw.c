@@ -19,6 +19,18 @@
 #error "This file should only be built for RW."
 #endif
 
+/**
+ * Disable restricted commands when the system is locked.
+ *
+ * @see console.h system.c
+ */
+int console_is_restricted(void)
+{
+	return system_is_locked();
+}
+
+#include "gpio_list.h"
+
 /* SPI devices */
 struct spi_device_t spi_devices[] = {
 	/* Fingerprint sensor (SCLK at 4Mhz) */
@@ -74,7 +86,9 @@ static void spi_configure(enum fp_sensor_spi_select spi_select)
 		gpio_config_module(MODULE_SPI_CONTROLLER, 1);
 	}
 
-	/* Set all SPI master signal pins to very high speed: pins E2/4/5/6 */
+	/* Set all SPI controller signal pins to very high speed:
+	 * pins E2/4/5/6
+	 */
 	STM32_GPIO_OSPEEDR(GPIO_E) |= 0x00003f30;
 	/* Enable clocks to SPI4 module (master) */
 	STM32_RCC_APB2ENR |= STM32_RCC_PB2_SPI4;
@@ -84,7 +98,7 @@ static void spi_configure(enum fp_sensor_spi_select spi_select)
 	spi_enable(&spi_devices[0], 1);
 }
 
-void board_init_rw(void)
+void board_init(void)
 {
 	enum fp_sensor_spi_select spi_select = get_fp_sensor_spi_select();
 
@@ -111,10 +125,12 @@ void board_init_rw(void)
 	/* Enable interrupt on PCH power signals */
 	gpio_enable_interrupt(gpio_slp_alt_l);
 	gpio_enable_interrupt(GPIO_SLP_L);
+
 	/*
-	 * Enable the SPI slave interface if the PCH is up.
+	 * Enable the SPI peripheral interface if the PCH is up.
 	 * Do not use hook_call_deferred(), because ap_deferred() will be
 	 * called after tasks with priority higher than HOOK task (very late).
 	 */
 	ap_deferred();
 }
+DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);

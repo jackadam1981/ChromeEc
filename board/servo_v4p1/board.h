@@ -214,6 +214,7 @@
 #define CONFIG_USB_PD_ONLY_FIXED_PDOS
 #define CONFIG_USB_PD_ALT_MODE
 #define CONFIG_USBC_SS_MUX
+#define CONFIG_USBC_SS_MUX_UFP_ONLY
 
 /* Don't automatically change roles */
 #undef CONFIG_USB_PD_INITIAL_DRP_STATE
@@ -228,8 +229,9 @@
  * to give the upstream charger the maximum time to respond.
  *
  * Currently tuned with the Apple 96W adapter.
+ * TODO: Change to EVENT-based PS_RDY notification (b/214216304)
  */
-#define PD_POWER_SUPPLY_TURN_ON_DELAY  (161*MSEC)
+#define PD_POWER_SUPPLY_TURN_ON_DELAY  (121*MSEC)
 #define PD_POWER_SUPPLY_TURN_OFF_DELAY (461*MSEC)
 
 /* Define typical operating power and max power */

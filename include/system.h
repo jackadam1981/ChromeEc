@@ -185,6 +185,14 @@ uintptr_t get_program_memory_addr(enum ec_image copy);
  */
 int system_jumped_to_this_image(void);
 
+#ifdef CONFIG_ZTEST
+struct system_jumped_late_mock {
+	int ret_val;
+	int call_count;
+};
+extern struct system_jumped_late_mock system_jumped_late_mock;
+#endif
+
 /**
  * Return non-zero if late (legacy) sysjump occurred.
  *
@@ -286,6 +294,15 @@ const struct image_data *system_get_image_data(enum ec_image copy);
 const char *system_get_version(enum ec_image copy);
 
 /**
+ * Get the CrOS fwid string for an image
+ *
+ * @param copy		Image copy to get version from, or SYSTEM_IMAGE_UNKNOWN
+ *			to get the version for the currently running image.
+ * @return The fwid string for the image copy, or an empty string if error.
+ */
+const char *system_get_cros_fwid(enum ec_image copy);
+
+/**
  * Get the SKU ID for a device
  *
  * @return A value that identifies the SKU variant of a model. Its meaning and
@@ -338,6 +355,11 @@ const char *system_get_build_info(void);
  * Stay in RO next reboot, instead of potentially selecting RW during EFS.
  */
 #define SYSTEM_RESET_STAY_IN_RO         BIT(6)
+/*
+ * Hibernate reset. Reset EC when wake up from hibernate mode
+ * (the most power saving mode).
+ */
+#define SYSTEM_RESET_HIBERNATE          BIT(7)
 
 /**
  * Reset the system.
@@ -361,9 +383,15 @@ void system_reset(int flags);
 int system_set_scratchpad(uint32_t value);
 
 /**
- * Return the current scratchpad register value.
+ * Get the scratchpad register value.
+ *
+ * The scratchpad register maintains its contents across a
+ * software-requested warm reset.
+ *
+ * @param value Where to store the content of the register.
+ * @return      EC_SUCCESS, or non-zero if error.
  */
-uint32_t system_get_scratchpad(void);
+int system_get_scratchpad(uint32_t *value);
 
 /**
  * Return the chip vendor/name/revision string.
@@ -542,7 +570,7 @@ enum {
  * Current sleep mask. You may read from this variable, but must NOT
  * modify it; use enable_sleep() or disable_sleep() to do that.
  */
-extern uint32_t sleep_mask;
+extern atomic_t sleep_mask;
 
 /*
  * Macros to use to get whether deep sleep is allowed or whether
@@ -585,7 +613,7 @@ static inline void disable_sleep(uint32_t mask)
  * Do NOT access it directly. Use idle_is_disabled() to read it and
  * enable_idle()/disable_idle() to write it.
  */
-extern uint32_t idle_disabled;
+extern atomic_t idle_disabled;
 
 static inline uint32_t idle_is_disabled(void)
 {

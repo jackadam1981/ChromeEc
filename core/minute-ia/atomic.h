@@ -8,11 +8,9 @@
 #ifndef __CROS_EC_ATOMIC_H
 #define __CROS_EC_ATOMIC_H
 
+#include "atomic_t.h"
 #include "common.h"
 #include "util.h"
-
-typedef int atomic_t;
-typedef atomic_t atomic_val_t;
 
 static inline int bool_compare_and_swap_u32(uint32_t *var, uint32_t old_value,
 		uint32_t new_value)
@@ -37,9 +35,9 @@ static inline atomic_val_t atomic_and_u8(uint8_t *addr, uint8_t bits)
 	return __atomic_fetch_and(addr, bits, __ATOMIC_SEQ_CST);
 }
 
-static inline void atomic_clear_bits(atomic_t *addr, atomic_val_t bits)
+static inline atomic_val_t atomic_clear_bits(atomic_t *addr, atomic_val_t bits)
 {
-	__atomic_fetch_and(addr, ~bits, __ATOMIC_SEQ_CST);
+	return __atomic_fetch_and(addr, ~bits, __ATOMIC_SEQ_CST);
 }
 
 static inline atomic_val_t atomic_or(atomic_t *addr, atomic_val_t bits)

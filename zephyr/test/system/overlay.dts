@@ -4,6 +4,16 @@
  */
 
 / {
+	chosen {
+		cros-ec,bbram = &bbram;
+	};
+
+	bbram: test-bbram-dev {
+		compatible = "zephyr,bbram-emul";
+		label = "TEST_BBRAM_DEV";
+		size = <64>;
+	};
+
 	named-bbram-regions {
 		compatible = "named-bbram-regions";
 		pd0 {
@@ -21,6 +31,14 @@
 		pd2 {
 			offset = <0x07>;
 			size = <0x05>;
+		};
+		scratchpad {
+			offset = <0x0c>;
+			size = <0x04>;
+		};
+		saved-reset-flags {
+			offset = <0x10>;
+			size = <0x04>;
 		};
 	};
 };

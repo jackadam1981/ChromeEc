@@ -8,10 +8,15 @@
 #ifndef __CROS_EC_BOARD_H
 #define __CROS_EC_BOARD_H
 
+/* Free up flash space */
+#define CONFIG_LTO
+
 /* Select Baseboard features */
 #define VARIANT_OCTOPUS_EC_NPCX796FB
 #define VARIANT_OCTOPUS_CHARGER_ISL9238
 #include "baseboard.h"
+
+#define GPIO_PG_EC_RSMRST_ODL GPIO_RSMRST_L_PGOOD
 
 /* I2C bus configuraiton */
 #define I2C_PORT_ACCEL	I2C_PORT_SENSOR
@@ -25,6 +30,7 @@
 /* Sensors */
 #define CONFIG_ACCEL_KX022	/* Lid accel */
 #define CONFIG_ACCELGYRO_BMI160	/* Base accel */
+#define CONFIG_ACCELGYRO_ICM426XX	/* 2nd Base accel */
 #define CONFIG_SYNC		/* Camera VSYNC */
 
 #define CONFIG_DYNAMIC_MOTION_SENSOR_COUNT
@@ -33,6 +39,8 @@
 
 /* Motion Sense Task Events */
 #define CONFIG_ACCELGYRO_BMI160_INT_EVENT \
+	TASK_EVENT_MOTION_SENSOR_INTERRUPT(BASE_ACCEL)
+#define CONFIG_ACCELGYRO_ICM426XX_INT_EVENT \
 	TASK_EVENT_MOTION_SENSOR_INTERRUPT(BASE_ACCEL)
 
 #define CONFIG_SYNC_INT_EVENT	\
@@ -51,10 +59,6 @@
 #define CONFIG_THERMISTOR
 #define CONFIG_STEINHART_HART_3V3_13K7_47K_4050B
 #define CONFIG_STEINHART_HART_3V3_51K1_47K_4050B
-
-/* Keyboard backliht */
-#define CONFIG_PWM
-#define CONFIG_PWM_KBLIGHT
 
 #ifndef __ASSEMBLER__
 
@@ -79,11 +83,6 @@ enum temp_sensor_id {
 	TEMP_SENSOR_COUNT
 };
 
-enum pwm_channel {
-	PWM_CH_KBLIGHT,
-	PWM_CH_COUNT
-};
-
 /* Motion sensors */
 enum sensor_id {
 	LID_ACCEL,
@@ -98,8 +97,11 @@ enum battery_type {
 	BATTERY_SIMPLO_SDI,
 	BATTERY_SIMPLO_BYD,
 	BATTERY_SIMPLO_CA475778G,
+	BATTERY_SIMPLO_CA475778G_R,
 	BATTERY_TYPE_COUNT,
 };
+
+void sensor_interrupt(enum gpio_signal signal);
 
 #endif /* !__ASSEMBLER__ */
 
