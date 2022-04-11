@@ -571,11 +571,14 @@ void common_intel_x86_handle_rsmrst(enum power_state state)
 
 	board_before_rsmrst(rsmrst_in);
 
-#ifdef CONFIG_CHIPSET_APL_GLK
+#if defined(CONFIG_CHIPSET_APL_GLK) || \
+	defined(CONFIG_CHIPSET_ALDERLAKE_SLG4BD44540)
 	/* Only passthrough RSMRST_L de-assertion on power up */
 	if (rsmrst_in && !power_s5_up)
 		return;
-#elif defined(CONFIG_CHIPSET_X86_RSMRST_DELAY)
+#endif
+
+#if defined(CONFIG_CHIPSET_X86_RSMRST_DELAY)
 	/*
 	 * Wait at least 10ms between power signals going high
 	 * and deasserting RSMRST to PCH.
