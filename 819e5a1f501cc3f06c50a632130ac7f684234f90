@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf5cfb4a_db64f01d",
+        "filename": "zephyr/projects/corsola/src/krabby/usbc_config.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-04-11T21:52:48Z",
+      "side": 1,
+      "message": "Please use `{}` braces on every if/else/switch body to match the Zephyr style.\n\nhttps://docs.zephyrproject.org/latest/contribute/guidelines.html#coding-style\n\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/3e3ef8f7/.checkpatch.conf#24",
+      "revId": "819e5a1f501cc3f06c50a632130ac7f684234f90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
