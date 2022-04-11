@@ -83,6 +83,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ac5ac24_34a161cc",
+        "filename": "zephyr/boards/riscv/it8xxx2/it8xxx2.dts",
+        "patchSetId": 11
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2022-04-11T06:43:33Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "4e89ca2d_fb7c1203",
+      "range": {
+        "startLine": 25,
+        "startChar": 2,
+        "endLine": 25,
+        "endChar": 29
+      },
+      "revId": "9a02e46b31d36c906991a0a6d3a5d6337f5dba37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0d319e4e_9e1c523f",
@@ -96,6 +120,30 @@
       "writtenOn": "2022-04-08T20:37:34Z",
       "side": 1,
       "message": "See my other comment.  You can remove this line as it apparent gets ignored.",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 81,
+        "endChar": 29
+      },
+      "revId": "9a02e46b31d36c906991a0a6d3a5d6337f5dba37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "29a362ea_93abeb43",
+        "filename": "zephyr/include/cros/ite/it8xxx2.dtsi",
+        "patchSetId": 11
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2022-04-11T06:43:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0d319e4e_9e1c523f",
       "range": {
         "startLine": 81,
         "startChar": 0,
