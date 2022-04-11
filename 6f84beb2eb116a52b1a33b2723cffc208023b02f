@@ -22,6 +22,30 @@
       },
       "revId": "6f84beb2eb116a52b1a33b2723cffc208023b02f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "711964dd_26d4a988",
+        "filename": "zephyr/Kconfig.charger",
+        "patchSetId": 4
+      },
+      "lineNbr": 646,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2022-04-11T21:57:24Z",
+      "side": 1,
+      "message": "It probably can let me look into the complexities in moving it to devicetree since right now none of these settings are defined in devicetree",
+      "parentUuid": "3073efa3_29945f1c",
+      "range": {
+        "startLine": 641,
+        "startChar": 0,
+        "endLine": 646,
+        "endChar": 67
+      },
+      "revId": "6f84beb2eb116a52b1a33b2723cffc208023b02f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
