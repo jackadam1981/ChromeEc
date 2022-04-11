@@ -22,6 +22,30 @@
       },
       "revId": "b13ff180551d8b1383958044835fbd74bf572380",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "32d9b1f0_1af83de6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2022-04-11T08:58:57Z",
+      "side": 1,
+      "message": "I don\u0027t think so. The term \"test variants\" only applies to the `run_device_tests.py` script used exclusively by The Fingerprint Team to run EC hardware unit tests. Basically the test in EC code base is the same (eg. `system_is_locked`) but it can be run with WP on and off. Another thing is that `docs/unit_tests.md` doensn\u0027t mention anything about `run_device_tests.py`.",
+      "parentUuid": "f0eed63f_21464fdd",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 45
+      },
+      "revId": "b13ff180551d8b1383958044835fbd74bf572380",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
