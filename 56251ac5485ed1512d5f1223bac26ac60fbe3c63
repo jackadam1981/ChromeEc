@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5037279b_9e65f430",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-04-11T18:40:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d5d283fc_00967d3e",
+      "range": {
+        "startLine": 11,
+        "startChar": 56,
+        "endLine": 11,
+        "endChar": 60
+      },
+      "revId": "56251ac5485ed1512d5f1223bac26ac60fbe3c63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b287bc1d_e4639cba",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-04-11T18:36:25Z",
       "side": 1,
       "message": "can you `git ls-files -z | xargs -0 cros lint`?",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 9
+      },
+      "revId": "56251ac5485ed1512d5f1223bac26ac60fbe3c63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8328e70f_bbcf0f33",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-04-11T18:40:35Z",
+      "side": 1,
+      "message": "Ew, it generates a bunch of C warnings about tabs.",
+      "parentUuid": "b287bc1d_e4639cba",
       "range": {
         "startLine": 31,
         "startChar": 0,
