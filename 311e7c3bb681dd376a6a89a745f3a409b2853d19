@@ -22,6 +22,30 @@
       },
       "revId": "311e7c3bb681dd376a6a89a745f3a409b2853d19",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3711f4d5_0d094d91",
+        "filename": "board/vell/usbc_config.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2022-04-11T01:41:24Z",
+      "side": 1,
+      "message": "Yes, thanks for the point. we need fro future board IDs.",
+      "parentUuid": "fa176bc7_3d4d4c3c",
+      "range": {
+        "startLine": 345,
+        "startChar": 5,
+        "endLine": 345,
+        "endChar": 24
+      },
+      "revId": "311e7c3bb681dd376a6a89a745f3a409b2853d19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
