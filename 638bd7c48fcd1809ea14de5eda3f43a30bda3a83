@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8d20928c_6049fff9",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2784,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2022-04-11T16:19:43Z",
+      "side": 1,
+      "message": "I just noticed this. Keep all lines at 80 chars max.",
+      "range": {
+        "startLine": 2784,
+        "startChar": 0,
+        "endLine": 2784,
+        "endChar": 71
+      },
+      "revId": "638bd7c48fcd1809ea14de5eda3f43a30bda3a83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "eceb9cbd_119980fd",
         "filename": "extra/usb_updater/gsctool.c",
         "patchSetId": 2
