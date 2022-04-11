@@ -41,6 +41,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d8b29a8_a5143fe3",
+        "filename": "zephyr/projects/intelrvp/CMakeLists.txt",
+        "patchSetId": 7
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2022-04-11T22:13:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "382189cf_1bb87a65",
+      "revId": "f22797751844637ccfe01cbc37fdd5ee3e59eb29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "494af8b9_52402485",
@@ -94,6 +112,30 @@
       "writtenOn": "2022-04-08T00:53:50Z",
       "side": 1,
       "message": "double check, NPCX needs CONFIG_PLATFORM_EC_USB_PPC",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 29
+      },
+      "revId": "f22797751844637ccfe01cbc37fdd5ee3e59eb29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab539fc3_f9cb956f",
+        "filename": "zephyr/projects/intelrvp/mtlrvp/prj.conf",
+        "patchSetId": 7
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2022-04-11T22:13:57Z",
+      "side": 1,
+      "message": "This is needed for NCT38XX TCPC",
+      "parentUuid": "5196a80d_5bbde15c",
       "range": {
         "startLine": 46,
         "startChar": 0,
