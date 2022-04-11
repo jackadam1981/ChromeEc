@@ -105,6 +105,24 @@
       "parentUuid": "92b03a9b_a626679c",
       "revId": "541c98df7efc38213b96029fc3abccedb6616dbb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "897e04c5_db967810",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 4501,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-04-11T20:15:07Z",
+      "side": 1,
+      "message": "Circling back with the WG\u0027s decision: no change to the spec state machines\n\nThe justification given was that the times from chapter 7 aren\u0027t generally referenced in the state machine descriptions, only named timers are referenced.  So I suppose the timed wait would be considered a part of the DPM turning off the source, since a number of the voltage transitions require tSrcTransition and are considered managed by the DPM in the states",
+      "parentUuid": "f309987f_bf6bad2d",
+      "revId": "541c98df7efc38213b96029fc3abccedb6616dbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
