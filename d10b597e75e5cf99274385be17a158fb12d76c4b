@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "07092e21_870f1c47",
+        "filename": "zephyr/test/drivers/src/host_cmd/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-04-11T22:38:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3512cb66_f0d339e7",
+      "range": {
+        "startLine": 96,
+        "startChar": 7,
+        "endLine": 96,
+        "endChar": 24
+      },
+      "revId": "d10b597e75e5cf99274385be17a158fb12d76c4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bd0a067e_89ac431f",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e09d2f9c_9ac71156",
+        "filename": "zephyr/test/drivers/src/host_cmd/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-04-11T22:38:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bd0a067e_89ac431f",
+      "range": {
+        "startLine": 140,
+        "startChar": 0,
+        "endLine": 142,
+        "endChar": 0
+      },
+      "revId": "d10b597e75e5cf99274385be17a158fb12d76c4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "24dd494a_e2cd70b7",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-04-11T21:13:14Z",
       "side": 1,
       "message": "Both of these values are uint8_t in the host command processing.",
+      "range": {
+        "startLine": 130,
+        "startChar": 31,
+        "endLine": 130,
+        "endChar": 62
+      },
+      "revId": "d10b597e75e5cf99274385be17a158fb12d76c4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "55fc1352_b8da2e4d",
+        "filename": "zephyr/test/drivers/src/utils.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-04-11T22:38:35Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "24dd494a_e2cd70b7",
       "range": {
         "startLine": 130,
         "startChar": 31,
