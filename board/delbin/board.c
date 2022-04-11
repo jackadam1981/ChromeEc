@@ -111,17 +111,22 @@ const struct fan_t fans[FAN_CH_COUNT] = {
  * 130 C.  However, sensor is located next to DDR, so we need to use the lower
  * DDR temperature limit (85 C)
  */
-const static struct ec_thermal_config thermal_cpu = {
-	.temp_host = {
-		[EC_TEMP_THRESH_HIGH] = C_TO_K(70),
-		[EC_TEMP_THRESH_HALT] = C_TO_K(80),
-	},
-	.temp_host_release = {
-		[EC_TEMP_THRESH_HIGH] = C_TO_K(65),
-	},
-	.temp_fan_off = C_TO_K(35),
-	.temp_fan_max = C_TO_K(65),
-};
+/*
+ * TODO(b/202062363): Remove when clang is fixed.
+ */
+#define THERMAL_CPU \
+	{ \
+		.temp_host = { \
+			[EC_TEMP_THRESH_HIGH] = C_TO_K(70), \
+			[EC_TEMP_THRESH_HALT] = C_TO_K(80), \
+		}, \
+		.temp_host_release = { \
+			[EC_TEMP_THRESH_HIGH] = C_TO_K(65), \
+		}, \
+		.temp_fan_off = C_TO_K(35), \
+		.temp_fan_max = C_TO_K(65), \
+	}
+__maybe_unused static const struct ec_thermal_config thermal_cpu = THERMAL_CPU;
 
 /*
  * Inductor limits - used for both charger and PP3300 regulator
@@ -134,24 +139,29 @@ const static struct ec_thermal_config thermal_cpu = {
  * Inductors: limit of 125c
  * PCB: limit is 80c
  */
-const static struct ec_thermal_config thermal_inductor = {
-	.temp_host = {
-		[EC_TEMP_THRESH_HIGH] = C_TO_K(75),
-		[EC_TEMP_THRESH_HALT] = C_TO_K(80),
-	},
-	.temp_host_release = {
-		[EC_TEMP_THRESH_HIGH] = C_TO_K(65),
-	},
-	.temp_fan_off = C_TO_K(40),
-	.temp_fan_max = C_TO_K(65),
-};
-
+/*
+ * TODO(b/202062363): Remove when clang is fixed.
+ */
+#define THERMAL_INDUCTOR \
+	{ \
+		.temp_host = { \
+			[EC_TEMP_THRESH_HIGH] = C_TO_K(75), \
+			[EC_TEMP_THRESH_HALT] = C_TO_K(80), \
+		}, \
+		.temp_host_release = { \
+			[EC_TEMP_THRESH_HIGH] = C_TO_K(65), \
+		}, \
+		.temp_fan_off = C_TO_K(40), \
+		.temp_fan_max = C_TO_K(65), \
+	}
+__maybe_unused static const struct ec_thermal_config thermal_inductor =
+	THERMAL_INDUCTOR;
 
 struct ec_thermal_config thermal_params[] = {
-	[TEMP_SENSOR_1_CHARGER]			= thermal_inductor,
-	[TEMP_SENSOR_2_PP3300_REGULATOR]	= thermal_inductor,
-	[TEMP_SENSOR_3_DDR_SOC]			= thermal_cpu,
-	[TEMP_SENSOR_4_FAN]			= thermal_cpu,
+	[TEMP_SENSOR_1_CHARGER] = THERMAL_INDUCTOR,
+	[TEMP_SENSOR_2_PP3300_REGULATOR] = THERMAL_INDUCTOR,
+	[TEMP_SENSOR_3_DDR_SOC] = THERMAL_CPU,
+	[TEMP_SENSOR_4_FAN] = THERMAL_CPU,
 };
 BUILD_ASSERT(ARRAY_SIZE(thermal_params) == TEMP_SENSOR_COUNT);
 
@@ -268,24 +278,26 @@ static void ps8815_reset(int port)
 	CPRINTS("[C%d] %s: patching ps8815 registers", port, __func__);
 
 	if (i2c_read8(i2c_port,
-		      PS8751_I2C_ADDR1_P2_FLAGS, 0x0f, &val) == EC_SUCCESS)
+		      PS8XXX_I2C_ADDR1_P2_FLAGS, 0x0f, &val) == EC_SUCCESS)
 		CPRINTS("ps8815: reg 0x0f was %02x", val);
 
 	if (i2c_write8(i2c_port,
-		      PS8751_I2C_ADDR1_P2_FLAGS, 0x0f, 0x31) == EC_SUCCESS)
+		      PS8XXX_I2C_ADDR1_P2_FLAGS, 0x0f, 0x31) == EC_SUCCESS)
 		CPRINTS("ps8815: reg 0x0f set to 0x31");
 
 	if (i2c_read8(i2c_port,
-		      PS8751_I2C_ADDR1_P2_FLAGS, 0x0f, &val) == EC_SUCCESS)
+		      PS8XXX_I2C_ADDR1_P2_FLAGS, 0x0f, &val) == EC_SUCCESS)
 		CPRINTS("ps8815: reg 0x0f now %02x", val);
 }
 
 void board_reset_pd_mcu(void)
 {
 	ps8815_reset(USBC_PORT_C0);
-	usb_mux_hpd_update(USBC_PORT_C0, 0, 0);
+	usb_mux_hpd_update(USBC_PORT_C0, USB_PD_MUX_HPD_LVL_DEASSERTED |
+					 USB_PD_MUX_HPD_IRQ_DEASSERTED);
 	ps8815_reset(USBC_PORT_C1);
-	usb_mux_hpd_update(USBC_PORT_C1, 0, 0);
+	usb_mux_hpd_update(USBC_PORT_C1, USB_PD_MUX_HPD_LVL_DEASSERTED |
+					 USB_PD_MUX_HPD_IRQ_DEASSERTED);
 }
 
 /******************************************************************************/
@@ -406,7 +418,7 @@ const struct tcpc_config_t tcpc_config[] = {
 		.bus_type = EC_BUS_TYPE_I2C,
 		.i2c_info = {
 			.port = I2C_PORT_USB_C0,
-			.addr_flags = PS8751_I2C_ADDR1_FLAGS,
+			.addr_flags = PS8XXX_I2C_ADDR1_FLAGS,
 		},
 		.flags = TCPC_FLAGS_TCPCI_REV2_0 |
 			TCPC_FLAGS_TCPCI_REV2_0_NO_VSAFE0V,
@@ -416,7 +428,7 @@ const struct tcpc_config_t tcpc_config[] = {
 		.bus_type = EC_BUS_TYPE_I2C,
 		.i2c_info = {
 			.port = I2C_PORT_USB_C1,
-			.addr_flags = PS8751_I2C_ADDR1_FLAGS,
+			.addr_flags = PS8XXX_I2C_ADDR1_FLAGS,
 		},
 		.flags = TCPC_FLAGS_TCPCI_REV2_0 |
 			TCPC_FLAGS_TCPCI_REV2_0_NO_VSAFE0V,

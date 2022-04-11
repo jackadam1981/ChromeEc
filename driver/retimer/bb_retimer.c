@@ -5,10 +5,11 @@
  * Driver for Intel Burnside Bridge - Thunderbolt/USB/DisplayPort Retimer
  */
 
-#include "bb_retimer.h"
+#include "driver/retimer/bb_retimer.h"
 #include "chipset.h"
 #include "common.h"
 #include "console.h"
+#include "gpio.h"
 #include "i2c.h"
 #include "task.h"
 #include "timer.h"
@@ -156,7 +157,7 @@ static void retimer_set_state_dfp(int port, mux_state_t mux_state,
 				  uint32_t *set_retimer_con)
 {
 	union tbt_mode_resp_cable cable_resp = {
-		.raw_value = pd_get_tbt_mode_vdo(port, TCPC_TX_SOP_PRIME) };
+		.raw_value = pd_get_tbt_mode_vdo(port, TCPCI_MSG_SOP_PRIME) };
 	union tbt_mode_resp_device dev_resp;
 	enum idh_ptype cable_type = get_usb_pd_cable_type(port);
 
@@ -188,7 +189,7 @@ static void retimer_set_state_dfp(int port, mux_state_t mux_state,
 
 	if (mux_state & USB_PD_MUX_TBT_COMPAT_ENABLED ||
 	    mux_state & USB_PD_MUX_USB4_ENABLED) {
-		dev_resp.raw_value = pd_get_tbt_mode_vdo(port, TCPC_TX_SOP);
+		dev_resp.raw_value = pd_get_tbt_mode_vdo(port, TCPCI_MSG_SOP);
 
 		/*
 		 * Bit 2: RE_TIMER_DRIVER
@@ -225,7 +226,8 @@ static void retimer_set_state_dfp(int port, mux_state_t mux_state,
 		 * 1 - vPro Dock or DP Overdrive
 		 *     detected
 		 */
-		if (dev_resp.intel_spec_b0 == VENDOR_SPECIFIC_SUPPORTED ||
+		if ((IS_ENABLED(CONFIG_USBC_RETIMER_INTEL_BB_VPRO_CAPABLE) &&
+		     dev_resp.intel_spec_b0 == VENDOR_SPECIFIC_SUPPORTED) ||
 		    dev_resp.vendor_spec_b1 == VENDOR_SPECIFIC_SUPPORTED)
 			*set_retimer_con |= BB_RETIMER_VPRO_DOCK_DP_OVERDRIVE;
 
@@ -312,8 +314,9 @@ static void retimer_set_state_ufp(int port, mux_state_t mux_state,
 		 *
 		 * Set according to TBT3 Enter Mode bit 26 or bit 31
 		 */
-		if (ufp_tbt_enter_mode.intel_spec_b0 ==
-					VENDOR_SPECIFIC_SUPPORTED ||
+		if ((IS_ENABLED(CONFIG_USBC_RETIMER_INTEL_BB_VPRO_CAPABLE) &&
+		     ufp_tbt_enter_mode.intel_spec_b0 ==
+					VENDOR_SPECIFIC_SUPPORTED) ||
 		    ufp_tbt_enter_mode.vendor_spec_b1 ==
 					VENDOR_SPECIFIC_SUPPORTED)
 			*set_retimer_con |= BB_RETIMER_VPRO_DOCK_DP_OVERDRIVE;
@@ -367,11 +370,15 @@ static void retimer_set_state_ufp(int port, mux_state_t mux_state,
 /**
  * Driver interface functions
  */
-static int retimer_set_state(const struct usb_mux *me, mux_state_t mux_state)
+static int retimer_set_state(const struct usb_mux *me, mux_state_t mux_state,
+			     bool *ack_required)
 {
 	uint32_t set_retimer_con = 0;
 	uint8_t dp_pin_mode;
 	int port = me->usb_port;
+
+	/* This driver does not use host command ACKs */
+	*ack_required = false;
 
 	/*
 	 * Bit 0: DATA_CONNECTION_PRESENT
@@ -466,6 +473,42 @@ static int retimer_set_state(const struct usb_mux *me, mux_state_t mux_state)
 	/* Writing the register4 */
 	return bb_retimer_write(me, BB_RETIMER_REG_CONNECTION_STATE,
 			set_retimer_con);
+}
+
+void bb_retimer_hpd_update(const struct usb_mux *me, mux_state_t mux_state,
+			   bool *ack_required)
+{
+	uint32_t retimer_con_reg = 0;
+
+	/* This driver does not use host command ACKs */
+	*ack_required = false;
+
+	if (bb_retimer_read(me, BB_RETIMER_REG_CONNECTION_STATE,
+			    &retimer_con_reg) != EC_SUCCESS)
+		return;
+
+	/*
+	 * Bit 14: IRQ_HPD (ignored if BIT8 = 0)
+	 * 0 - No IRQ_HPD
+	 * 1 - IRQ_HPD received
+	 */
+	if (mux_state & USB_PD_MUX_HPD_IRQ)
+		retimer_con_reg |= BB_RETIMER_IRQ_HPD;
+	else
+		retimer_con_reg &= ~BB_RETIMER_IRQ_HPD;
+
+	/*
+	 * Bit 15: HPD_LVL (ignored if BIT8 = 0)
+	 * 0 - HPD_State Low
+	 * 1 - HPD_State High
+	 */
+	if (mux_state & USB_PD_MUX_HPD_LVL)
+		retimer_con_reg |= BB_RETIMER_HPD_LVL;
+	else
+		retimer_con_reg &= ~BB_RETIMER_HPD_LVL;
+
+	/* Writing the register4 */
+	bb_retimer_write(me, BB_RETIMER_REG_CONNECTION_STATE, retimer_con_reg);
 }
 
 static int retimer_low_power_mode(const struct usb_mux *me)

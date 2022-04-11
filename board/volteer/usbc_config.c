@@ -29,7 +29,7 @@ static const struct tcpc_config_t tcpc_config_p1_usb3 = {
 	.bus_type = EC_BUS_TYPE_I2C,
 	.i2c_info = {
 		.port = I2C_PORT_USB_C1,
-		.addr_flags = PS8751_I2C_ADDR1_FLAGS,
+		.addr_flags = PS8XXX_I2C_ADDR1_FLAGS,
 	},
 	.flags = TCPC_FLAGS_TCPCI_REV2_0 | TCPC_FLAGS_TCPCI_REV2_0_NO_VSAFE0V,
 	.drv = &ps8xxx_tcpm_drv,
@@ -223,6 +223,7 @@ struct usb_mux usb_muxes[] = {
 	[USBC_PORT_C1] = {
 		.usb_port = USBC_PORT_C1,
 		.driver = &bb_usb_retimer,
+		.hpd_update = bb_retimer_hpd_update,
 		.next_mux = &usbc1_tcss_usb_mux,
 		.i2c_port = I2C_PORT_USB_1_MIX,
 		.i2c_addr_flags = USBC_PORT_C1_BB_RETIMER_I2C_ADDR,
@@ -300,15 +301,15 @@ static void ps8815_reset(void)
 	CPRINTS("%s: patching ps8815 registers", __func__);
 
 	if (i2c_read8(I2C_PORT_USB_C1,
-		      PS8751_I2C_ADDR1_P2_FLAGS, 0x0f, &val) == EC_SUCCESS)
+		      PS8XXX_I2C_ADDR1_P2_FLAGS, 0x0f, &val) == EC_SUCCESS)
 		CPRINTS("ps8815: reg 0x0f was %02x", val);
 
 	if (i2c_write8(I2C_PORT_USB_C1,
-		       PS8751_I2C_ADDR1_P2_FLAGS, 0x0f, 0x31) == EC_SUCCESS)
+		       PS8XXX_I2C_ADDR1_P2_FLAGS, 0x0f, 0x31) == EC_SUCCESS)
 		CPRINTS("ps8815: reg 0x0f set to 0x31");
 
 	if (i2c_read8(I2C_PORT_USB_C1,
-		      PS8751_I2C_ADDR1_P2_FLAGS, 0x0f, &val) == EC_SUCCESS)
+		      PS8XXX_I2C_ADDR1_P2_FLAGS, 0x0f, &val) == EC_SUCCESS)
 		CPRINTS("ps8815: reg 0x0f now %02x", val);
 }
 
@@ -320,7 +321,8 @@ void board_reset_pd_mcu(void)
 	/* Daughterboard specific reset for port 1 */
 	if (usb_db == DB_USB3_ACTIVE) {
 		ps8815_reset();
-		usb_mux_hpd_update(USBC_PORT_C1, 0, 0);
+		usb_mux_hpd_update(USBC_PORT_C1, USB_PD_MUX_HPD_LVL_DEASSERTED |
+						 USB_PD_MUX_HPD_IRQ_DEASSERTED);
 	}
 }
 
@@ -338,12 +340,15 @@ static void board_tcpc_init(void)
 	gpio_enable_interrupt(GPIO_USB_C0_TCPC_INT_ODL);
 	gpio_enable_interrupt(GPIO_USB_C1_TCPC_INT_ODL);
 
+#ifndef CONFIG_ZEPHYR
 	/* Enable BC1.2 interrupts. */
 	gpio_enable_interrupt(GPIO_USB_C0_BC12_INT_ODL);
 	gpio_enable_interrupt(GPIO_USB_C1_BC12_INT_ODL);
+#endif /* !CONFIG_ZEPHYR */
 }
 DECLARE_HOOK(HOOK_INIT, board_tcpc_init, HOOK_PRIO_INIT_CHIPSET);
 
+#ifndef CONFIG_ZEPHYR
 /******************************************************************************/
 /* BC1.2 charger detect configuration */
 const struct pi3usb9201_config_t pi3usb9201_bc12_chips[] = {
@@ -357,6 +362,7 @@ const struct pi3usb9201_config_t pi3usb9201_bc12_chips[] = {
 	},
 };
 BUILD_ASSERT(ARRAY_SIZE(pi3usb9201_bc12_chips) == USBC_PORT_COUNT);
+#endif /* !CONFIG_ZEPHYR */
 
 /******************************************************************************/
 /* TCPC support routines */

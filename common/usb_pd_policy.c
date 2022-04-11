@@ -26,6 +26,7 @@
 #include "usb_common.h"
 #include "usb_mux.h"
 #include "usb_pd.h"
+#include "usb_pd_tcpm.h"
 #include "usbc_ppc.h"
 
 #ifdef CONFIG_COMMON_RUNTIME
@@ -246,7 +247,7 @@ static inline bool is_limit_tbt_cable_speed(int port)
 	return !!(cable[port].flags & CABLE_FLAGS_TBT_COMPAT_LIMIT_SPEED);
 }
 
-static bool is_intel_svid(int port, enum tcpm_transmit_type type)
+static bool is_intel_svid(int port, enum tcpci_msg_type type)
 {
 	int i;
 
@@ -313,7 +314,7 @@ static inline void disable_usb4_mode(int port)
 static bool is_cable_ready_to_enter_usb4(int port, int cnt)
 {
 	/* TODO: USB4 enter mode for Active cables */
-	struct pd_discovery *disc = &discovery[port][TCPC_TX_SOP_PRIME];
+	struct pd_discovery *disc = &discovery[port][TCPCI_MSG_SOP_PRIME];
 	if (IS_ENABLED(CONFIG_USB_PD_USB4) &&
 	    (get_usb_pd_cable_type(port) == IDH_PTYPE_PCABLE) &&
 	    is_vdo_present(cnt, VDO_INDEX_PTYPE_CABLE1)) {
@@ -353,6 +354,10 @@ static bool is_cable_ready_to_enter_usb4(int port, int cnt)
 void pd_dfp_discovery_init(int port)
 {
 	memset(&discovery[port], 0, sizeof(struct pd_discovery));
+}
+
+void pd_dfp_mode_init(int port)
+{
 	memset(&partner_amodes[port], 0, sizeof(partner_amodes[0]));
 }
 
@@ -368,13 +373,20 @@ static int dfp_discover_svids(uint32_t *payload)
 	return 1;
 }
 
-struct pd_discovery *pd_get_am_discovery(int port, enum tcpm_transmit_type type)
+struct pd_discovery *pd_get_am_discovery_and_notify_access(
+				int port, enum tcpci_msg_type type)
+{
+	return (struct pd_discovery *)pd_get_am_discovery(port, type);
+}
+
+const struct pd_discovery *pd_get_am_discovery(int port,
+			enum tcpci_msg_type type)
 {
 	return &discovery[port][type];
 }
 
 struct partner_active_modes *
-pd_get_partner_active_modes(int port, enum tcpm_transmit_type type)
+pd_get_partner_active_modes(int port, enum tcpci_msg_type type)
 {
 	assert(type < AMODE_TYPE_COUNT);
 	return &partner_amodes[port][type];
@@ -394,7 +406,8 @@ void pd_set_dfp_enter_mode_flag(int port, bool set)
  */
 static int dfp_discover_modes(int port, uint32_t *payload)
 {
-	struct pd_discovery *disc = pd_get_am_discovery(port, TCPC_TX_SOP);
+	const struct pd_discovery *disc =
+			pd_get_am_discovery(port, TCPCI_MSG_SOP);
 	uint16_t svid = disc->svids[disc->svid_idx].svid;
 
 	if (disc->svid_idx >= disc->svid_cnt)
@@ -424,10 +437,11 @@ static bool is_usb4_vdo(int port, int cnt, uint32_t *payload)
 
 static int process_am_discover_ident_sop(int port, int cnt, uint32_t head,
 					 uint32_t *payload,
-					 enum tcpm_transmit_type *rtype)
+					 enum tcpci_msg_type *rtype)
 {
 	pd_dfp_discovery_init(port);
-	dfp_consume_identity(port, TCPC_TX_SOP, cnt, payload);
+	pd_dfp_mode_init(port);
+	dfp_consume_identity(port, TCPCI_MSG_SOP, cnt, payload);
 
 	if (IS_ENABLED(CONFIG_USB_PD_DECODE_SOP) && is_sop_prime_ready(port) &&
 	    board_is_tbt_usb4_port(port)) {
@@ -447,7 +461,7 @@ static int process_am_discover_ident_sop(int port, int cnt, uint32_t head,
 
 		if (is_modal(port, cnt, payload) ||
 		    is_usb4_vdo(port, cnt, payload)) {
-			*rtype = TCPC_TX_SOP_PRIME;
+			*rtype = TCPCI_MSG_SOP_PRIME;
 			return dfp_discover_ident(payload);
 		}
 	}
@@ -458,7 +472,7 @@ static int process_am_discover_ident_sop(int port, int cnt, uint32_t head,
 static int process_am_discover_ident_sop_prime(int port, int cnt, uint32_t head,
 					       uint32_t *payload)
 {
-	dfp_consume_identity(port, TCPC_TX_SOP_PRIME, cnt, payload);
+	dfp_consume_identity(port, TCPCI_MSG_SOP_PRIME, cnt, payload);
 	cable[port].rev = PD_HEADER_REV(head);
 
 	/*
@@ -490,13 +504,13 @@ static int process_am_discover_ident_sop_prime(int port, int cnt, uint32_t head,
 }
 
 static int process_am_discover_svids(int port, int cnt, uint32_t *payload,
-				     enum tcpm_transmit_type sop,
-				     enum tcpm_transmit_type *rtype)
+				     enum tcpci_msg_type sop,
+				     enum tcpci_msg_type *rtype)
 {
 	/*
 	 * The pd_discovery structure stores SOP and SOP' discovery results
 	 * separately, but TCPMv1 depends on one-dimensional storage of SVIDs
-	 * and modes. Therefore, always use TCPC_TX_SOP in TCPMv1.
+	 * and modes. Therefore, always use TCPCI_MSG_SOP in TCPMv1.
 	 */
 	dfp_consume_svids(port, sop, cnt, payload);
 
@@ -526,12 +540,12 @@ static int process_am_discover_svids(int port, int cnt, uint32_t *payload,
 				return 0;
 			}
 
-			if (sop == TCPC_TX_SOP_PRIME)
+			if (sop == TCPCI_MSG_SOP_PRIME)
 				limit_tbt_cable_speed(port);
 			else
 				disable_tbt_compat_mode(port);
-		} else if (sop == TCPC_TX_SOP) {
-			*rtype = TCPC_TX_SOP_PRIME;
+		} else if (sop == TCPCI_MSG_SOP) {
+			*rtype = TCPCI_MSG_SOP_PRIME;
 			return dfp_discover_svids(payload);
 		}
 	}
@@ -540,21 +554,21 @@ static int process_am_discover_svids(int port, int cnt, uint32_t *payload,
 }
 
 static int process_tbt_compat_discover_modes(int port,
-					     enum tcpm_transmit_type sop,
+					     enum tcpci_msg_type sop,
 					     uint32_t *payload,
-					     enum tcpm_transmit_type *rtype)
+					     enum tcpci_msg_type *rtype)
 {
 	int rsize;
 
 	/* Initialize transmit type to SOP */
-	*rtype = TCPC_TX_SOP;
+	*rtype = TCPCI_MSG_SOP;
 
 	/*
 	 * For active cables, Enter mode: SOP', SOP'', SOP
 	 * Ref: USB Type-C Cable and Connector Specification, figure F-1: TBT3
 	 * Discovery Flow and Section F.2.7 TBT3 Cable Enter Mode Command.
 	 */
-	if (sop == TCPC_TX_SOP_PRIME) {
+	if (sop == TCPCI_MSG_SOP_PRIME) {
 		/* Store Discover Mode SOP' response */
 		cable[port].cable_mode_resp.raw_value = payload[1];
 
@@ -579,7 +593,7 @@ static int process_tbt_compat_discover_modes(int port,
 		 * otherwise send TBT3 Device Enter Mode (SOP).
 		 */
 		if (get_usb_pd_cable_type(port) == IDH_PTYPE_ACABLE)
-			*rtype = TCPC_TX_SOP_PRIME;
+			*rtype = TCPCI_MSG_SOP_PRIME;
 
 		rsize = enter_tbt_compat_mode(port, *rtype, payload);
 	} else {
@@ -595,31 +609,31 @@ static int process_tbt_compat_discover_modes(int port,
 			rsize = enter_tbt_compat_mode(port, *rtype, payload);
 		} else {
 			/* Discover modes for SOP' */
-			discovery[port][TCPC_TX_SOP].svid_idx--;
+			discovery[port][TCPCI_MSG_SOP].svid_idx--;
 			rsize = dfp_discover_modes(port, payload);
-			*rtype = TCPC_TX_SOP_PRIME;
+			*rtype = TCPCI_MSG_SOP_PRIME;
 		}
 	}
 
 	return rsize;
 }
 
-static int obj_cnt_enter_tbt_compat_mode(int port, enum tcpm_transmit_type sop,
+static int obj_cnt_enter_tbt_compat_mode(int port, enum tcpci_msg_type sop,
 					 uint32_t *payload,
-					 enum tcpm_transmit_type *rtype)
+					 enum tcpci_msg_type *rtype)
 {
-	struct pd_discovery *disc = &discovery[port][TCPC_TX_SOP_PRIME];
+	struct pd_discovery *disc = &discovery[port][TCPCI_MSG_SOP_PRIME];
 
 	/* Enter mode SOP' for active cables */
-	if (sop == TCPC_TX_SOP_PRIME) {
+	if (sop == TCPCI_MSG_SOP_PRIME) {
 		/* Check if the cable has a SOP'' controller */
 		if (disc->identity.product_t1.a_rev20.sop_p_p)
-			*rtype = TCPC_TX_SOP_PRIME_PRIME;
+			*rtype = TCPCI_MSG_SOP_PRIME_PRIME;
 		return enter_tbt_compat_mode(port, *rtype, payload);
 	}
 
 	/* Enter Mode SOP'' for active cables with SOP'' controller */
-	if (sop == TCPC_TX_SOP_PRIME_PRIME)
+	if (sop == TCPCI_MSG_SOP_PRIME_PRIME)
 		return enter_tbt_compat_mode(port, *rtype, payload);
 
 	/* Update Mux state to Thunderbolt-compatible mode. */
@@ -630,7 +644,7 @@ static int obj_cnt_enter_tbt_compat_mode(int port, enum tcpm_transmit_type sop,
 #endif /* CONFIG_USB_PD_ALT_MODE_DFP */
 
 int pd_svdm(int port, int cnt, uint32_t *payload, uint32_t **rpayload,
-	    uint32_t head, enum tcpm_transmit_type *rtype)
+	    uint32_t head, enum tcpci_msg_type *rtype)
 {
 	int cmd = PD_VDO_CMD(payload[0]);
 	int cmd_type = PD_VDO_CMDT(payload[0]);
@@ -639,11 +653,11 @@ int pd_svdm(int port, int cnt, uint32_t *payload, uint32_t **rpayload,
 	int rsize = 1; /* VDM header at a minimum */
 
 #ifdef CONFIG_USB_PD_ALT_MODE_DFP
-	enum tcpm_transmit_type sop = PD_HEADER_GET_SOP(head);
+	enum tcpci_msg_type sop = PD_HEADER_GET_SOP(head);
 #endif
 
 	/* Transmit SOP messages by default */
-	*rtype = TCPC_TX_SOP;
+	*rtype = TCPCI_MSG_SOP;
 
 	payload[0] &= ~VDO_CMDT_MASK;
 	*rpayload = payload;
@@ -699,19 +713,20 @@ int pd_svdm(int port, int cnt, uint32_t *payload, uint32_t **rpayload,
 			payload[0] |= VDO_CMDT(CMDT_RSP_BUSY);
 			rsize = 1;
 		}
-		payload[0] |= VDO_SVDM_VERS(pd_get_vdo_ver(port, TCPC_TX_SOP));
+		payload[0] |=
+			VDO_SVDM_VERS(pd_get_vdo_ver(port, TCPCI_MSG_SOP));
 	} else if (cmd_type == CMDT_RSP_ACK) {
 #ifdef CONFIG_USB_PD_ALT_MODE_DFP
 		struct svdm_amode_data *modep;
 
-		modep = pd_get_amode_data(port, TCPC_TX_SOP,
+		modep = pd_get_amode_data(port, TCPCI_MSG_SOP,
 					  PD_VDO_VID(payload[0]));
 #endif
 		switch (cmd) {
 #ifdef CONFIG_USB_PD_ALT_MODE_DFP
 		case CMD_DISCOVER_IDENT:
 			/* Received a SOP' Discover Ident msg */
-			if (sop == TCPC_TX_SOP_PRIME) {
+			if (sop == TCPCI_MSG_SOP_PRIME) {
 				rsize = process_am_discover_ident_sop_prime(
 					port, cnt, head, payload);
 				/* Received a SOP Discover Ident Message */
@@ -743,7 +758,7 @@ int pd_svdm(int port, int cnt, uint32_t *payload, uint32_t **rpayload,
 				 */
 				disable_tbt_compat_mode(port);
 				payload[0] = pd_dfp_enter_mode(
-					port, TCPC_TX_SOP, 0, 0);
+					port, TCPCI_MSG_SOP, 0, 0);
 				if (payload[0])
 					rsize = 1;
 			}
@@ -760,8 +775,8 @@ int pd_svdm(int port, int cnt, uint32_t *payload, uint32_t **rpayload,
 				rsize = 0;
 			} else {
 				if (!modep->opos)
-					pd_dfp_enter_mode(port, TCPC_TX_SOP, 0,
-							  0);
+					pd_dfp_enter_mode(port, TCPCI_MSG_SOP,
+							0, 0);
 
 				if (modep->opos) {
 					rsize = modep->fx->status(port,
@@ -771,13 +786,31 @@ int pd_svdm(int port, int cnt, uint32_t *payload, uint32_t **rpayload,
 			}
 			break;
 		case CMD_DP_STATUS:
-			/* DP status response & UFP's DP attention have same
-			   payload */
+			/*
+			 * Note: DP status response & UFP's DP attention have
+			 * the same payload
+			 */
 			dfp_consume_attention(port, payload);
-			if (modep && modep->opos)
+
+			if (modep && modep->opos) {
+				/*
+				 * Place the USB Type-C pins that are to be
+				 * re-configured to DisplayPort Configuration
+				 * into the Safe state. For USB_PD_MUX_DOCK,
+				 * the superspeed signals can remain connected.
+				 * For USB_PD_MUX_DP_ENABLED, disconnect the
+				 * superspeed signals here, before the pins are
+				 * re-configured to DisplayPort (in
+				 * svdm_dp_post_config, when we receive the
+				 * config ack).
+				 */
+				if (svdm_dp_get_mux_mode(port) ==
+							USB_PD_MUX_DP_ENABLED)
+					usb_mux_set_safe_mode(port);
 				rsize = modep->fx->config(port, payload);
-			else
+			} else {
 				rsize = 0;
+			}
 			break;
 		case CMD_DP_CONFIG:
 			if (modep && modep->opos && modep->fx->post_config)
@@ -800,7 +833,8 @@ int pd_svdm(int port, int cnt, uint32_t *payload, uint32_t **rpayload,
 		}
 
 		payload[0] |= VDO_CMDT(CMDT_INIT);
-		payload[0] |= VDO_SVDM_VERS(pd_get_vdo_ver(port, TCPC_TX_SOP));
+		payload[0] |=
+			VDO_SVDM_VERS(pd_get_vdo_ver(port, TCPCI_MSG_SOP));
 #ifdef CONFIG_USB_PD_ALT_MODE_DFP
 	} else if (cmd_type == CMDT_RSP_BUSY) {
 		switch (cmd) {
@@ -824,7 +858,7 @@ int pd_svdm(int port, int cnt, uint32_t *payload, uint32_t **rpayload,
 	} else if (cmd_type == CMDT_RSP_NAK) {
 		/* Passive cable Nacked for Discover SVID */
 		if (cmd == CMD_DISCOVER_SVID && is_tbt_compat_enabled(port) &&
-		    sop == TCPC_TX_SOP_PRIME &&
+		    sop == TCPCI_MSG_SOP_PRIME &&
 		    get_usb_pd_cable_type(port) == IDH_PTYPE_PCABLE) {
 			limit_tbt_cable_speed(port);
 			rsize = dfp_discover_modes(port, payload);
@@ -843,7 +877,7 @@ int pd_svdm(int port, int cnt, uint32_t *payload, uint32_t **rpayload,
 #else
 
 int pd_svdm(int port, int cnt, uint32_t *payload, uint32_t **rpayload,
-	    uint32_t head, enum tcpm_transmit_type *rtype)
+	    uint32_t head, enum tcpci_msg_type *rtype)
 {
 	return 0;
 }

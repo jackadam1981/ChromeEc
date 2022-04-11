@@ -26,12 +26,21 @@ const struct image_data __keep current_image_data
 #endif
 	.rollback_version = CONFIG_ROLLBACK_VERSION,
 	.cookie2 = CROS_EC_IMAGE_DATA_COOKIE2,
+	.cros_fwid = CROS_FWID32,
+	.cookie3 = CROS_EC_IMAGE_DATA_COOKIE3,
 };
 BUILD_ASSERT(sizeof(CROS_EC_VERSION32) <= 32);
+BUILD_ASSERT(sizeof(CROS_FWID32) <= 32);
 
+#ifdef CONFIG_CROS_FWID_VERSION
+const char build_info[] __keep __attribute__((section(".rodata.buildinfo"))) =
+	VERSION " " CROS_FWID32 " " DATE " " BUILDER;
+#else
 const char build_info[] __keep __attribute__((section(".rodata.buildinfo"))) =
 	VERSION " " DATE " " BUILDER;
+#endif
 
+/* LCOV_EXCL_START - this function doesn't work in GitLab */
 static int get_num_commits(const struct image_data *data)
 {
 	int numperiods = 0;
@@ -62,7 +71,9 @@ static int get_num_commits(const struct image_data *data)
 	return (i == sizeof(data->version) ? 0 : ret);
 
 }
+/* LCOV_EXCL_STOP */
 
+/* LCOV_EXCL_START - this function doesn't work in GitLab */
 int ver_get_num_commits(enum ec_image copy)
 {
 	const struct image_data *data;
@@ -72,3 +83,4 @@ int ver_get_num_commits(enum ec_image copy)
 		data = &current_image_data;
 	return data ? get_num_commits(data) : 0;
 }
+/* LCOV_EXCL_STOP */

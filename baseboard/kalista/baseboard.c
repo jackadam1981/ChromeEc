@@ -6,7 +6,6 @@
 /* Kalista baseboard configuration */
 
 #include "adc.h"
-#include "adc_chip.h"
 #include "baseboard.h"
 #include "battery.h"
 #include "bd99992gw.h"
@@ -129,11 +128,41 @@ const struct mft_t mft_channels[] = {
 BUILD_ASSERT(ARRAY_SIZE(mft_channels) == MFT_CH_COUNT);
 
 const struct i2c_port_t i2c_ports[]  = {
-	{"tcpc", I2C_PORT_TCPC0, 400, GPIO_I2C0_0_SCL, GPIO_I2C0_0_SDA},
-	{"eeprom", I2C_PORT_EEPROM, 400, GPIO_I2C0_1_SCL, GPIO_I2C0_1_SDA},
-	{"backlight", I2C_PORT_BACKLIGHT, 100, GPIO_I2C1_SCL, GPIO_I2C1_SDA},
-	{"pmic", I2C_PORT_PMIC, 400, GPIO_I2C2_SCL, GPIO_I2C2_SDA},
-	{"thermal", I2C_PORT_THERMAL, 400, GPIO_I2C3_SCL, GPIO_I2C3_SDA},
+	{
+		.name = "tcpc",
+		.port = I2C_PORT_TCPC0,
+		.kbps = 400,
+		.scl  = GPIO_I2C0_0_SCL,
+		.sda  = GPIO_I2C0_0_SDA
+	},
+	{
+		.name = "eeprom",
+		.port = I2C_PORT_EEPROM,
+		.kbps = 400,
+		.scl  = GPIO_I2C0_1_SCL,
+		.sda  = GPIO_I2C0_1_SDA
+	},
+	{
+		.name = "backlight",
+		.port = I2C_PORT_BACKLIGHT,
+		.kbps = 100,
+		.scl  = GPIO_I2C1_SCL,
+		.sda  = GPIO_I2C1_SDA
+	},
+	{
+		.name = "pmic",
+		.port = I2C_PORT_PMIC,
+		.kbps = 400,
+		.scl  = GPIO_I2C2_SCL,
+		.sda  = GPIO_I2C2_SDA
+	},
+	{
+		.name = "thermal",
+		.port = I2C_PORT_THERMAL,
+		.kbps = 400,
+		.scl  = GPIO_I2C3_SCL,
+		.sda  = GPIO_I2C3_SDA
+	},
 };
 const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
 
@@ -204,7 +233,8 @@ void board_tcpc_init(void)
 	 * HPD pulse to enable video path
 	 */
 	for (int port = 0; port < CONFIG_USB_PD_PORT_MAX_COUNT; ++port)
-		usb_mux_hpd_update(port, 0, 0);
+		usb_mux_hpd_update(port, USB_PD_MUX_HPD_LVL_DEASSERTED |
+					 USB_PD_MUX_HPD_IRQ_DEASSERTED);
 }
 DECLARE_HOOK(HOOK_INIT, board_tcpc_init, HOOK_PRIO_INIT_I2C+1);
 

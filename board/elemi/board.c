@@ -98,47 +98,64 @@ const struct fan_t fans[FAN_CH_COUNT] = {
  * 130 C.  However, sensor is located next to DDR, so we need to use the lower
  * DDR temperature limit (85 C)
  */
-const static struct ec_thermal_config thermal_cpu = {
-	.temp_host = {
-		[EC_TEMP_THRESH_HIGH] = C_TO_K(68),
-		[EC_TEMP_THRESH_HALT] = C_TO_K(70),
-	},
-	.temp_host_release = {
-		[EC_TEMP_THRESH_HIGH] = C_TO_K(58),
-	},
-	.temp_fan_off = C_TO_K(40),
-	.temp_fan_max = C_TO_K(60),
-};
+/*
+ * TODO(b/202062363): Remove when clang is fixed.
+ */
+#define THERMAL_CPU \
+	{ \
+		.temp_host = { \
+			[EC_TEMP_THRESH_HIGH] = C_TO_K(68), \
+			[EC_TEMP_THRESH_HALT] = C_TO_K(70), \
+		}, \
+		.temp_host_release = { \
+			[EC_TEMP_THRESH_HIGH] = C_TO_K(58), \
+		}, \
+		.temp_fan_off = C_TO_K(40), \
+		.temp_fan_max = C_TO_K(60), \
+	}
+__maybe_unused static const struct ec_thermal_config thermal_cpu = THERMAL_CPU;
 
-const static struct ec_thermal_config thermal_charger = {
-	.temp_host = {
-		[EC_TEMP_THRESH_HIGH] = C_TO_K(78),
-		[EC_TEMP_THRESH_HALT] = C_TO_K(80),
-	},
-	.temp_host_release = {
-		[EC_TEMP_THRESH_HIGH] = C_TO_K(68),
-	},
-	.temp_fan_off = C_TO_K(40),
-	.temp_fan_max = C_TO_K(70),
-};
+/*
+ * TODO(b/202062363): Remove when clang is fixed.
+ */
+#define THERMAL_CHARGER \
+	{ \
+		.temp_host = { \
+			[EC_TEMP_THRESH_HIGH] = C_TO_K(78), \
+			[EC_TEMP_THRESH_HALT] = C_TO_K(80), \
+		}, \
+		.temp_host_release = { \
+			[EC_TEMP_THRESH_HIGH] = C_TO_K(68), \
+		}, \
+		.temp_fan_off = C_TO_K(40), \
+		.temp_fan_max = C_TO_K(70), \
+	}
+__maybe_unused static const struct ec_thermal_config thermal_charger =
+	THERMAL_CHARGER;
 
-const static struct ec_thermal_config thermal_regulator = {
-	.temp_host = {
-		[EC_TEMP_THRESH_HIGH] = C_TO_K(68),
-		[EC_TEMP_THRESH_HALT] = C_TO_K(70),
-	},
-	.temp_host_release = {
-		[EC_TEMP_THRESH_HIGH] = C_TO_K(58),
-	},
-	.temp_fan_off = C_TO_K(40),
-	.temp_fan_max = C_TO_K(55),
-};
+/*
+ * TODO(b/202062363): Remove when clang is fixed.
+ */
+#define THERMAL_REGULATOR \
+	{ \
+		.temp_host = { \
+			[EC_TEMP_THRESH_HIGH] = C_TO_K(68), \
+			[EC_TEMP_THRESH_HALT] = C_TO_K(70), \
+		}, \
+		.temp_host_release = { \
+			[EC_TEMP_THRESH_HIGH] = C_TO_K(58), \
+		}, \
+		.temp_fan_off = C_TO_K(40), \
+		.temp_fan_max = C_TO_K(55), \
+	}
+__maybe_unused static const struct ec_thermal_config thermal_regulator =
+	THERMAL_REGULATOR;
 
 struct ec_thermal_config thermal_params[] = {
-	[TEMP_SENSOR_1_CHARGER]			= thermal_charger,
-	[TEMP_SENSOR_2_PP3300_REGULATOR]	= thermal_regulator,
-	[TEMP_SENSOR_3_DDR_SOC]			= thermal_cpu,
-	[TEMP_SENSOR_4_FAN]			= thermal_cpu,
+	[TEMP_SENSOR_1_CHARGER] = THERMAL_CHARGER,
+	[TEMP_SENSOR_2_PP3300_REGULATOR] = THERMAL_REGULATOR,
+	[TEMP_SENSOR_3_DDR_SOC] = THERMAL_CPU,
+	[TEMP_SENSOR_4_FAN] = THERMAL_CPU,
 };
 BUILD_ASSERT(ARRAY_SIZE(thermal_params) == TEMP_SENSOR_COUNT);
 
@@ -231,7 +248,7 @@ DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, kb_backlight_disable, HOOK_PRIO_DEFAULT);
 __override void board_ps8xxx_tcpc_init(int port)
 {
 	/* b/189587527: Set Displayport EQ loss up to 10dB */
-	tcpc_addr_write(port, PS8751_I2C_ADDR1_P1_FLAGS,
+	tcpc_addr_write(port, PS8XXX_I2C_ADDR1_P1_FLAGS,
 		PS8815_REG_DP_EQ_SETTING,
 		PS8815_DPEQ_LOSS_UP_10DB << PS8815_REG_DP_EQ_COMP_SHIFT);
 }
@@ -273,15 +290,15 @@ static void ps8815_reset(void)
 	CPRINTS("%s: patching ps8815 registers", __func__);
 
 	if (i2c_read8(I2C_PORT_USB_C1,
-		      PS8751_I2C_ADDR1_P2_FLAGS, 0x0f, &val) == EC_SUCCESS)
+		      PS8XXX_I2C_ADDR1_P2_FLAGS, 0x0f, &val) == EC_SUCCESS)
 		CPRINTS("ps8815: reg 0x0f was %02x", val);
 
 	if (i2c_write8(I2C_PORT_USB_C1,
-		       PS8751_I2C_ADDR1_P2_FLAGS, 0x0f, 0x31) == EC_SUCCESS)
+		       PS8XXX_I2C_ADDR1_P2_FLAGS, 0x0f, 0x31) == EC_SUCCESS)
 		CPRINTS("ps8815: reg 0x0f set to 0x31");
 
 	if (i2c_read8(I2C_PORT_USB_C1,
-		      PS8751_I2C_ADDR1_P2_FLAGS, 0x0f, &val) == EC_SUCCESS)
+		      PS8XXX_I2C_ADDR1_P2_FLAGS, 0x0f, &val) == EC_SUCCESS)
 		CPRINTS("ps8815: reg 0x0f now %02x", val);
 }
 
@@ -290,7 +307,8 @@ void board_reset_pd_mcu(void)
 	/* No reset available for TCPC on port 0 */
 	/* Daughterboard specific reset for port 1 */
 	ps8815_reset();
-	usb_mux_hpd_update(USBC_PORT_C1, 0, 0);
+	usb_mux_hpd_update(USBC_PORT_C1, USB_PD_MUX_HPD_LVL_DEASSERTED |
+					 USB_PD_MUX_HPD_IRQ_DEASSERTED);
 }
 
 __override void board_cbi_init(void)
@@ -361,7 +379,7 @@ const struct tcpc_config_t tcpc_config[] = {
 		.bus_type = EC_BUS_TYPE_I2C,
 		.i2c_info = {
 			.port = I2C_PORT_USB_C1,
-			.addr_flags = PS8751_I2C_ADDR1_FLAGS,
+			.addr_flags = PS8XXX_I2C_ADDR1_FLAGS,
 		},
 		.flags = TCPC_FLAGS_TCPCI_REV2_0 |
 			TCPC_FLAGS_TCPCI_REV2_0_NO_VSAFE0V,

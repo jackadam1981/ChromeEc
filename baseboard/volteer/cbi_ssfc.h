@@ -18,7 +18,12 @@
 enum ec_ssfc_base_sensor {
 	SSFC_SENSOR_BASE_DEFAULT = 0,
 	SSFC_SENSOR_BASE_BMI160 = 1,
+<<<<<<< HEAD   (063f55 chgstv2: rework "charge_command_charge_control()")
 	SSFC_SENSOR_BASE_ICM426XX = 2
+=======
+	SSFC_SENSOR_BASE_ICM426XX = 2,
+	SSFC_SENSOR_BASE_ICM42607 = 3
+>>>>>>> BRANCH (7d04c7 Reland "Enable "cros lint" presubmit check")
 };
 
 /*

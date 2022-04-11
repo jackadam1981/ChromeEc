@@ -6,16 +6,18 @@
 #include <atomic.h>
 #include <device.h>
 #include <drivers/espi.h>
+#include <drivers/gpio.h>
 #include <logging/log.h>
 #include <kernel.h>
 #include <stdint.h>
 #include <zephyr.h>
 
+#include <ap_power/ap_power.h>
+#include <ap_power/ap_power_events.h>
 #include "acpi.h"
 #include "chipset.h"
 #include "common.h"
 #include "espi.h"
-#include "gpio.h"
 #include "hooks.h"
 #include "i8042_protocol.h"
 #include "keyboard_protocol.h"
@@ -139,7 +141,11 @@ static void espi_vwire_handler(const struct device *dev,
 #ifdef CONFIG_PLATFORM_EC_CHIPSET_RESET_HOOK
 static void espi_chipset_reset(void)
 {
-	hook_notify(HOOK_CHIPSET_RESET);
+	if (IS_ENABLED(CONFIG_AP_PWRSEQ)) {
+		ap_power_ev_send_callbacks(AP_POWER_RESET);
+	} else {
+		hook_notify(HOOK_CHIPSET_RESET);
+	}
 }
 DECLARE_DEFERRED(espi_chipset_reset);
 
@@ -153,8 +159,7 @@ static void espi_reset_handler(const struct device *dev,
 }
 #endif /* CONFIG_PLATFORM_EC_CHIPSET_RESET_HOOK */
 
-#define ESPI_NODE DT_NODELABEL(espi0)
-static const struct device *espi_dev;
+#define espi_dev DEVICE_DT_GET(DT_CHOSEN(cros_ec_espi))
 
 
 int espi_vw_set_wire(enum espi_vw_signal signal, uint8_t level)
@@ -196,11 +201,11 @@ int espi_vw_disable_wire_int(enum espi_vw_signal signal)
 uint8_t *lpc_get_memmap_range(void)
 {
 	uint32_t lpc_memmap = 0;
+	int result = espi_read_lpc_request(espi_dev, EACPI_GET_SHARED_MEMORY,
+					   &lpc_memmap);
 
-	if (espi_read_lpc_request(espi_dev, EACPI_GET_SHARED_MEMORY,
-				  &lpc_memmap) != 0) {
-		LOG_ERR("Get lpc_memmap failed!\n");
-	}
+	if (result != EC_SUCCESS)
+		LOG_ERR("Get lpc_memmap failed (%d)!\n", result);
 
 	return (uint8_t *)lpc_memmap;
 }
@@ -219,7 +224,8 @@ static void lpc_update_wake(host_event_t wake_events)
 	wake_events &= ~EC_HOST_EVENT_MASK(EC_HOST_EVENT_POWER_BUTTON);
 
 	/* Signal is asserted low when wake events is non-zero */
-	gpio_set_level(GPIO_EC_PCH_WAKE_ODL, !wake_events);
+	gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_ec_pch_wake_odl),
+			!wake_events);
 }
 
 static void lpc_generate_smi(void)
@@ -413,7 +419,7 @@ static enum ec_status lpc_get_protocol_info(struct host_cmd_handler_args *args)
 
 	args->response_size = sizeof(*r);
 
-	return EC_SUCCESS;
+	return EC_RES_SUCCESS;
 }
 DECLARE_HOST_COMMAND(EC_CMD_GET_PROTOCOL_INFO, lpc_get_protocol_info,
 		     EC_VER_MASK(0));
@@ -510,7 +516,7 @@ static void espi_peripheral_handler(const struct device *dev,
 	}
 }
 
-int zephyr_shim_setup_espi(void)
+static int zephyr_shim_setup_espi(const struct device *unused)
 {
 	static struct {
 		struct espi_callback cb;
@@ -534,17 +540,14 @@ int zephyr_shim_setup_espi(void)
 	};
 
 	struct espi_cfg cfg = {
-		.io_caps = ESPI_IO_MODE_SINGLE_LINE,
+		.io_caps = ESPI_IO_MODE_QUAD_LINES,
 		.channel_caps = ESPI_CHANNEL_VWIRE | ESPI_CHANNEL_PERIPHERAL |
 				ESPI_CHANNEL_OOB,
-		.max_freq = 20,
+		.max_freq = 50,
 	};
 
-	espi_dev = DEVICE_DT_GET(ESPI_NODE);
-	if (!device_is_ready(espi_dev)) {
-		LOG_ERR("Error: device %s is not ready", espi_dev->name);
-		return -1;
-	}
+	if (!device_is_ready(espi_dev))
+		k_oops();
 
 	/* Configure eSPI */
 	if (espi_config(espi_dev, &cfg)) {
@@ -560,4 +563,49 @@ int zephyr_shim_setup_espi(void)
 	}
 
 	return 0;
+}
+
+/* Must be before zephyr_shim_setup_hooks. */
+SYS_INIT(zephyr_shim_setup_espi, APPLICATION, 0);
+
+bool is_acpi_command(uint32_t data)
+{
+	struct espi_evt_data_acpi *acpi = (struct espi_evt_data_acpi *)&data;
+
+	return acpi->type;
+}
+
+uint32_t get_acpi_value(uint32_t data)
+{
+	struct espi_evt_data_acpi *acpi = (struct espi_evt_data_acpi *)&data;
+
+	return acpi->data;
+}
+
+bool is_8042_ibf(uint32_t data)
+{
+	struct espi_evt_data_kbc *kbc = (struct espi_evt_data_kbc *)&data;
+
+	return kbc->evt & HOST_KBC_EVT_IBF;
+}
+
+bool is_8042_obe(uint32_t data)
+{
+	struct espi_evt_data_kbc *kbc = (struct espi_evt_data_kbc *)&data;
+
+	return kbc->evt & HOST_KBC_EVT_OBE;
+}
+
+uint32_t get_8042_type(uint32_t data)
+{
+	struct espi_evt_data_kbc *kbc = (struct espi_evt_data_kbc *)&data;
+
+	return kbc->type;
+}
+
+uint32_t get_8042_data(uint32_t data)
+{
+	struct espi_evt_data_kbc *kbc = (struct espi_evt_data_kbc *)&data;
+
+	return kbc->data;
 }

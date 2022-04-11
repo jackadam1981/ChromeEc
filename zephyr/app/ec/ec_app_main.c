@@ -8,6 +8,7 @@
 #include <shell/shell_uart.h>
 #include <zephyr.h>
 
+#include "ap_power/ap_pwrseq.h"
 #include "button.h"
 #include "chipset.h"
 #include "ec_tasks.h"
@@ -38,7 +39,8 @@ void ec_app_main(void)
 
 	system_print_banner();
 
-	if (IS_ENABLED(CONFIG_PLATFORM_EC_WATCHDOG)) {
+	if (IS_ENABLED(CONFIG_PLATFORM_EC_WATCHDOG) &&
+		!IS_ENABLED(CONFIG_WDT_DISABLE_AT_BOOT)) {
 		watchdog_init();
 	}
 
@@ -61,13 +63,7 @@ void ec_app_main(void)
 		button_init();
 	}
 
-	if (IS_ENABLED(CONFIG_PLATFORM_EC_ESPI)) {
-		if (zephyr_shim_setup_espi() < 0) {
-			printk("Failed to init eSPI!\n");
-		}
-	}
-
-	if (IS_ENABLED(CONFIG_PLATFORM_EC_VBOOT)) {
+	if (IS_ENABLED(CONFIG_PLATFORM_EC_VBOOT_EFS2)) {
 		/*
 		 * For RO, it behaves as follows:
 		 *   In recovery, it enables PD communication and returns.
@@ -90,21 +86,6 @@ void ec_app_main(void)
 		hook_notify(HOOK_INIT);
 	}
 
-
-	/*
-	 * Increase priority of shell thread.
-	 * This is temporary code that'll be removed
-	 * after the feature outlined in bug b/191795553
-	 * is implemented.
-	 */
-	{
-		static const struct shell *shell;
-
-		shell = shell_backend_uart_get_ptr();
-		k_thread_priority_set(shell->ctx->tid,
-				K_HIGHEST_APPLICATION_THREAD_PRIO);
-	}
-
 	/*
 	 * Print the init time.  Not completely accurate because it can't take
 	 * into account the time before timer_init(), but it'll at least catch
@@ -115,5 +96,8 @@ void ec_app_main(void)
 	/* Start the EC tasks after performing all main initialization */
 	if (IS_ENABLED(CONFIG_SHIMMED_TASKS)) {
 		start_ec_tasks();
+	}
+	if (IS_ENABLED(CONFIG_AP_PWRSEQ)) {
+		ap_pwrseq_task_start();
 	}
 }

@@ -10,11 +10,6 @@
 
 #include "compile_time_macros.h"
 
-/*
- * Early brya boards are not set up for vivaldi
- */
-#undef CONFIG_KEYBOARD_VIVALDI
-
 /* Baseboard features */
 #include "baseboard.h"
 
@@ -33,6 +28,13 @@
 #define CONFIG_ACCEL_INTERRUPTS
 #define CONFIG_ACCELGYRO_BMI160	/* Base accel/gyro */
 #define CONFIG_ACCELGYRO_BMI160_INT_EVENT \
+	TASK_EVENT_MOTION_SENSOR_INTERRUPT(BASE_ACCEL)
+
+/* BMA422 accelerometer in lid */
+#define CONFIG_ACCEL_BMA4XX
+
+#define CONFIG_ACCELGYRO_LSM6DSM /* Base accel/gyro */
+#define CONFIG_ACCEL_LSM6DSM_INT_EVENT \
 	TASK_EVENT_MOTION_SENSOR_INTERRUPT(BASE_ACCEL)
 
 /* Sensors without hardware FIFO are in forced mode */
@@ -60,8 +62,6 @@
 #define CONFIG_USB_PORT_POWER_DUMB
 
 /* USB Type C and USB PD defines */
-#define CONFIG_USB_PD_REQUIRE_AP_MODE_ENTRY
-
 #define CONFIG_IO_EXPANDER
 #define CONFIG_IO_EXPANDER_NCT38XX
 #define CONFIG_IO_EXPANDER_PORT_COUNT		1
@@ -70,12 +70,23 @@
 #undef CONFIG_USBC_RETIMER_INTEL_BB
 
 #define CONFIG_USBC_PPC_SYV682X
+#undef CONFIG_SYV682X_HV_ILIM
+#define CONFIG_SYV682X_HV_ILIM SYV682X_HV_ILIM_5_50
 #define CONFIG_USBC_PPC_NX20P3483
+
+#define CONFIG_USB_PD_FRS
+#define CONFIG_USB_PD_FRS_PPC
 
 /* measure and check these values on gimble */
 #define PD_POWER_SUPPLY_TURN_ON_DELAY	30000 /* us */
 #define PD_POWER_SUPPLY_TURN_OFF_DELAY	30000 /* us */
 #define PD_VCONN_SWAP_DELAY		5000 /* us */
+
+/* I2C speed console command */
+#define CONFIG_CMD_I2C_SPEED
+
+/* I2C control host command */
+#define CONFIG_HOSTCMD_I2C_CONTROL
 
 /*
  * Passive USB-C cables only support up to 60W.
@@ -103,7 +114,7 @@
 #define GPIO_PCH_RTCRST			GPIO_EC_PCH_RTCRST
 #define GPIO_PCH_SLP_S0_L		GPIO_SYS_SLP_S0IX_L
 #define GPIO_PCH_SLP_S3_L		GPIO_SLP_S3_L
-#define GMR_TABLET_MODE_GPIO_L		GPIO_TABLET_MODE_L
+#define GPIO_TEMP_SENSOR_POWER		GPIO_SEQ_EC_DSW_PWROK
 
 /*
  * GPIO_EC_PCH_INT_ODL is used for MKBP events as well as a PCH wakeup
@@ -114,7 +125,6 @@
 #define GPIO_PG_EC_DSW_PWROK		GPIO_SEQ_EC_DSW_PWROK
 #define GPIO_PG_EC_RSMRST_ODL		GPIO_SEQ_EC_RSMRST_ODL
 #define GPIO_POWER_BUTTON_L		GPIO_GSC_EC_PWR_BTN_ODL
-#define GPIO_RSMRST_L_PGOOD		GPIO_SEQ_EC_RSMRST_ODL
 #define GPIO_SYS_RESET_L		GPIO_SYS_RST_ODL
 #define GPIO_VOLUME_DOWN_L		GPIO_EC_VOLDN_BTN_ODL
 #define GPIO_VOLUME_UP_L		GPIO_EC_VOLUP_BTN_ODL
@@ -122,6 +132,10 @@
 
 /* System has back-lit keyboard */
 #define CONFIG_PWM_KBLIGHT
+
+/* Keyboard features */
+#define CONFIG_KEYBOARD_VIVALDI
+#define CONFIG_KEYBOARD_REFRESH_ROW3
 
 /* I2C Bus Configuration */
 
@@ -158,22 +172,44 @@
 #undef CONFIG_USBC_RETIMER_FW_UPDATE
 
 /* Thermal features */
+#define CONFIG_FANS FAN_CH_COUNT
 #define CONFIG_THERMISTOR
 #define CONFIG_TEMP_SENSOR
-#define CONFIG_TEMP_SENSOR_POWER_GPIO	GPIO_SEQ_EC_DSW_PWROK
+#define CONFIG_TEMP_SENSOR_POWER
 #define CONFIG_STEINHART_HART_3V3_30K9_47K_4050B
+
+/* LED defines */
+#define CONFIG_LED_ONOFF_STATES
+#define CONFIG_LED_ONOFF_STATES_BAT_LOW 10
 
 /*
  * TODO(b/181271666): no fan control loop until sensors are tuned
  */
-/* #define CONFIG_FANS			FAN_CH_COUNT */
+/* Fan features */
+#define CONFIG_CUSTOM_FAN_CONTROL
 
 /* Charger defines */
 #define CONFIG_CHARGER_BQ25720
+#define CONFIG_CHARGER_BQ25720_VSYS_TH2_CUSTOM
 #define CONFIG_CHARGER_BQ25720_VSYS_TH2_DV	70
 #define CONFIG_CHARGE_RAMP_SW
-#define CONFIG_CHARGER_SENSE_RESISTOR		10
-#define CONFIG_CHARGER_SENSE_RESISTOR_AC	10
+#define CONFIG_CHARGER_BQ25710_SENSE_RESISTOR		10
+#define CONFIG_CHARGER_BQ25710_SENSE_RESISTOR_AC	10
+#define CONFIG_CHARGER_BQ25710_PSYS_SENSING
+
+/* PROCHOT defines */
+#define BATT_MAX_CONTINUE_DISCHARGE_WATT    45
+
+/* Prochot assertion/deassertion ratios*/
+#define PROCHOT_ADAPTER_WATT_RATIO 97
+#define PROCHOT_ASSERTION_BATTERY_RATIO 95
+#define PROCHOT_DEASSERTION_BATTERY_RATIO 85
+#define PROCHOT_ASSERTION_PD_RATIO 104
+#define PROCHOT_DEASSERTION_PD_RATIO 94
+#define PROCHOT_DEASSERTION_PD_BATTERY_RATIO 95
+#define PROCHOT_ASSERTION_ADAPTER_RATIO 102
+#define PROCHOT_DEASSERTION_ADAPTER_RATIO 100
+#define PROCHOT_DEASSERTION_ADAPTER_BATT_RATIO 90
 
 #ifndef __ASSEMBLER__
 
@@ -185,6 +221,7 @@ enum adc_channel {
 	ADC_TEMP_SENSOR_1_DDR_SOC,
 	ADC_TEMP_SENSOR_2_FAN,
 	ADC_TEMP_SENSOR_3_CHARGER,
+	ADC_IADPT,
 	ADC_CH_COUNT
 };
 
@@ -232,6 +269,8 @@ enum mft_channel {
 	MFT_CH_0 = 0,
 	MFT_CH_COUNT
 };
+
+void motion_interrupt(enum gpio_signal signal);
 
 #endif /* !__ASSEMBLER__ */
 

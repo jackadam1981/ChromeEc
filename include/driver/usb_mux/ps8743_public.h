@@ -28,6 +28,24 @@
 /* To reset the state machine to default */
 #define PS8743_MODE_POWER_DOWN (PS8743_MODE_USB_REG_CONTROL |  \
 				PS8743_MODE_DP_REG_CONTROL)
+/* DP output setting */
+#define PS8743_REG_DP_SETTING    0x07
+#define PS8743_DP_SWG_ADJ_DFLT   0x00
+#define PS8743_DP_SWG_ADJ_N20P   0x40
+#define PS8743_DP_SWG_ADJ_N15P   0x80
+#define PS8743_DP_SWG_ADJ_P15P   0xc0
+#define PS8743_DP_OUT_SWG_400    0x00
+#define PS8743_DP_OUT_SWG_600    0x10
+#define PS8743_DP_OUT_SWG_800    0x20
+#define PS8743_DP_OUT_SWG_1000   0x30
+#define PS8743_DP_OUT_PRE_EM_0_DB   0x00
+#define PS8743_DP_OUT_PRE_EM_3_5_DB 0x04
+#define PS8743_DP_OUT_PRE_EM_6_0_DB 0x08
+#define PS8743_DP_OUT_PRE_EM_9_5_DB 0x0c
+#define PS8743_DP_POST_CUR2_0_DB       0x00
+#define PS8743_DP_POST_CUR2_NEG_0_9_DB 0x01
+#define PS8743_DP_POST_CUR2_NEG_1_9_DB 0x02
+#define PS8743_DP_POST_CUR2_NEG_3_1_DB 0x03
 
 /* USB equalization settings for Host to Mux */
 #define PS8743_REG_USB_EQ_TX     0x32
@@ -38,6 +56,15 @@
 #define PS8743_USB_EQ_TX_15_DB   0x80
 #define PS8743_USB_EQ_TX_10_9_DB 0xc0
 #define PS8743_USB_EQ_TX_4_5_DB  0xe0
+
+/* USB swing adjust for Mux to Type-C connector */
+#define PS8743_REG_USB_SWING     0x36
+#define PS8743_OUT_SWG_DEFAULT   0x00
+#define PS8743_OUT_SWG_NEG_20    0x40
+#define PS8743_OUT_SWG_NEG_15    0x80
+#define PS8743_OUT_SWG_POS_15    0xc0
+#define PS8743_LFPS_SWG_DEFAULT  0x00
+#define PS8743_LFPS_SWG_TD       0x08
 
 /* USB equalization settings for Connector to Mux */
 #define PS8743_REG_USB_EQ_RX     0x3b
@@ -68,9 +95,19 @@
 #define PS8743_USB_HS_THRESH_NEG_45  0xc0
 #define PS8743_USB_HS_THRESH_NEG_35  0xe0
 
+/* DCI config: 0x45~0x4D */
+#define PS8743_REG_DCI_CONFIG_2        0x47
+#define PS8743_AUTO_DCI_MODE_SHIFT     6
+#define PS8743_AUTO_DCI_MODE_MASK      (3 << PS8743_AUTO_DCI_MODE_SHIFT)
+#define PS8743_AUTO_DCI_MODE_ENABLE    (0 << PS8743_AUTO_DCI_MODE_SHIFT)
+#define PS8743_AUTO_DCI_MODE_FORCE_USB (2 << PS8743_AUTO_DCI_MODE_SHIFT)
+#define PS8743_AUTO_DCI_MODE_FORCE_DCI (3 << PS8743_AUTO_DCI_MODE_SHIFT)
+
 int ps8743_tune_usb_eq(const struct usb_mux *me, uint8_t tx, uint8_t rx);
 int ps8743_write(const struct usb_mux *me, uint8_t reg, uint8_t val);
 int ps8743_read(const struct usb_mux *me, uint8_t reg, int *val);
+int ps8743_field_update(const struct usb_mux *me, uint8_t reg, uint8_t mask,
+			uint8_t val);
 int ps8743_check_chip_id(const struct usb_mux *me, int *val);
 
 #endif /* __CROS_EC_DRIVER_USB_MUX_PS8743_PUBLIC_H */

@@ -5,7 +5,6 @@
 /* Spherion board configuration */
 
 #include "adc.h"
-#include "adc_chip.h"
 #include "button.h"
 #include "charge_manager.h"
 #include "charge_state_v2.h"
@@ -106,9 +105,26 @@ DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, kb_backlight_disable, HOOK_PRIO_DEFAULT);
 
 void board_usb_mux_init(void)
 {
-	if (board_get_sub_board() == SUB_BOARD_TYPEC)
+	if (board_get_sub_board() == SUB_BOARD_TYPEC) {
 		ps8743_tune_usb_eq(&usb_muxes[1],
 				   PS8743_USB_EQ_TX_12_8_DB,
 				   PS8743_USB_EQ_RX_12_8_DB);
+		ps8743_field_update(&usb_muxes[1],
+				   PS8743_REG_DCI_CONFIG_2,
+				   PS8743_AUTO_DCI_MODE_MASK,
+				   PS8743_AUTO_DCI_MODE_FORCE_USB);
+	}
 }
 DECLARE_HOOK(HOOK_INIT, board_usb_mux_init, HOOK_PRIO_INIT_I2C + 1);
+
+static void board_suspend(void)
+{
+	gpio_set_level(GPIO_EN_5V_USM, 0);
+}
+DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, board_suspend, HOOK_PRIO_DEFAULT);
+
+static void board_resume(void)
+{
+	gpio_set_level(GPIO_EN_5V_USM, 1);
+}
+DECLARE_HOOK(HOOK_CHIPSET_RESUME, board_resume, HOOK_PRIO_DEFAULT);

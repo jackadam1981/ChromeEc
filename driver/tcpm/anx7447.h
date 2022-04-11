@@ -14,6 +14,7 @@
 #define ANX7447_REG_TCPC_SWITCH_0	0xB4
 #define ANX7447_REG_TCPC_SWITCH_1	0xB5
 #define ANX7447_REG_TCPC_AUX_SWITCH	0xB6
+#define VCONN_VOLTAGE_ALARM_HI_CFG	0xB7
 
 #define ANX7447_REG_INTR_ALERT_MASK_0	0xC9
 
@@ -143,7 +144,8 @@ extern const struct tcpm_drv anx7447_tcpm_drv;
 extern const struct usb_mux_driver anx7447_usb_mux_driver;
 void anx7447_tcpc_clear_hpd_status(int port);
 void anx7447_tcpc_update_hpd_status(const struct usb_mux *me,
-				    int hpd_lvl, int hpd_irq);
+				    mux_state_t mux_state,
+				    bool *ack_required);
 
 /**
  * Erase OCM flash if it's not empty

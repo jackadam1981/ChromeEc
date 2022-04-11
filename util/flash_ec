@@ -51,14 +51,8 @@ die() {
 BOARDS_IT83XX=(
 	adlrvpm_ite
 	adlrvpp_ite
-	glkrvp_ite
 	it83xx_evb
-	jslrvp_ite
 	reef_it8320
-	tglrvpu_ite
-	tglrvpu_ite_tcpmv1
-	tglrvpy_ite
-	tglrvpy_ite_tcpmv1
 )
 
 BOARDS_IT83XX_SPI_PROGRAMMING=(
@@ -83,7 +77,6 @@ BOARDS_STM32=(
 	pit
 	plankton
 	rainier
-	samus_pd
 	strago_pd
 	zinger
 )
@@ -123,7 +116,10 @@ BOARDS_NPCX_7M7X_JTAG=(
 )
 
 BOARDS_NPCX_SPI=(
-	glkrvp
+)
+
+BOARDS_NPCX_INT_SPI=(
+	adlrvpp_npcx
 )
 
 BOARDS_SPI_1800MV=(
@@ -135,7 +131,6 @@ BOARDS_RAIDEN=(
 	coral
 	eve
 	fizz
-	flapjack
 	kukui
 	nami
 	nautilus
@@ -180,6 +175,8 @@ DEFINE_boolean verbose "${FLAGS_FALSE}" \
 	"Verbose hw control logging"
 DEFINE_boolean verify "${FLAGS_FALSE}" \
 	"Verify EC firmware image after programming."
+DEFINE_boolean zephyr "${FLAGS_FALSE}" \
+	"Program a Zephyr EC image instead of a CrOS EC image"
 
 # Parse command line
 FLAGS_HELP="usage: $0 [flags]"
@@ -312,6 +309,10 @@ if $(in_array "${BOARDS_NPCX_SPI[@]}" "${BOARD}"); then
 	SUPPORTED_CHIPS+=("npcx_spi")
 fi
 
+if $(in_array "${BOARDS_NPCX_INT_SPI[@]}" "${BOARD}"); then
+	SUPPORTED_CHIPS+=("npcx_int_spi")
+fi
+
 if $(in_array "${BOARDS_IT83XX[@]}" "${BOARD}"); then
 	SUPPORTED_CHIPS+=("it83xx")
 fi
@@ -368,7 +369,7 @@ fi
 # Servo variables management
 case "${BOARD}" in
 	chocodile_bec ) MCU="usbpd" ;;
-	oak_pd|samus_pd|strago_pd ) MCU="usbpd" ;;
+	oak_pd|strago_pd ) MCU="usbpd" ;;
 	chell_pd|glados_pd ) MCU="usbpd" ;;
 	bloonchipper|dartmonkey|hatch_fp|nami_fp|nocturne_fp ) MCU="fpmcu" ;;
 	dingdong|hoho|twinkie ) DUT_CONTROL_CMD=( "true" ); MCU="ec" ;;
@@ -419,8 +420,7 @@ if [[ "${SERVO_TYPE}" =~ ^servo_v4(p1)?_with_.*_and_.*$ ]]; then
 fi
 
 servo_is_ccd() {
-	[[ "${SERVO_TYPE}" =~ "ccd_cr50" ]] || \
-	[[ "${SERVO_TYPE}" =~ "ccd_ti50" ]]
+	[[ "${SERVO_TYPE}" =~ "ccd" ]]
 }
 
 servo_has_warm_reset() {
@@ -660,9 +660,20 @@ cleanup() {
 }
 trap cleanup EXIT
 
+# TODO: the name of the RO images created for zephyr vary based on whether
+# the RO image includes a header.
+# NPCX images use "build-ro/zephyr/zephyr.npcx.bin"
+# ITE images use "build-ro/zephyr/zephyr.bin"
+if [ "${FLAGS_ro}" = ${FLAGS_TRUE} ] && [ "${FLAGS_zephyr}" = ${FLAGS_TRUE} ]
+then
+	die "The --ro flag is not supported with the --zephyr flag"
+fi
+
 # Possible default EC images
 if [ "${FLAGS_ro}" = ${FLAGS_TRUE} ] ; then
 	EC_FILE=ec.RO.flat
+elif [ "${FLAGS_zephyr}" = ${FLAGS_TRUE} ] ; then
+	EC_FILE=zephyr.bin
 else
 	EC_FILE=ec.bin
 fi
@@ -671,6 +682,8 @@ LOCAL_BUILD=
 if [[ -n "${EC_DIR}" ]]; then
 	if [ "${FLAGS_ro}" = ${FLAGS_TRUE} ] ; then
 		LOCAL_BUILD="${EC_DIR}/build/${BOARD}/RO/${EC_FILE}"
+	elif [ "${FLAGS_zephyr}" = ${FLAGS_TRUE} ] ; then
+		LOCAL_BUILD="${EC_DIR}/build/zephyr/${BOARD}/output/${EC_FILE}"
 	else
 		LOCAL_BUILD="${EC_DIR}/build/${BOARD}/${EC_FILE}"
 	fi
@@ -1242,6 +1255,14 @@ function dut_i2c_dev() {
 		return
 	fi
 
+	local has_i2c_pseudo="$(dut_control_get_or_die \
+		"${ACTIVE_DEVICE}_i2c_pseudo_is_running")"
+	if [[ "${has_i2c_pseudo}" == False ]]; then
+		error "i2c-pseudo module is not running."
+		error "Please follow https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/util/iteflash.md#i2c-pseudo"
+		die "to install i2c-pseudo module."
+	fi
+
 	local adap_num=
 	adap_num="$(dut_control_get_or_die \
 	    "${ACTIVE_DEVICE}_i2c_pseudo_adapter_num")"
@@ -1370,24 +1391,6 @@ function flash_ite_spi_ccd_i2c() {
 	fi
 }
 
-function flash_lm4() {
-	OCD_CHIP_CFG="lm4_chip.cfg"
-	OCD_CMDS="init; flash_lm4 ${IMG} ${FLAGS_offset}; shutdown;"
-
-	flash_openocd
-
-}
-
-function flash_nrf51() {
-	OCD_CHIP_CFG="nrf51_chip.cfg"
-	OCD_CMDS="init; flash_nrf51 ${IMG} ${FLAGS_offset}; exit_debug_mode_nrf51; shutdown;"
-
-	flash_openocd
-
-	# waiting 100us for the reset pulse is not necessary, it takes ~2.5ms
-	dut_control swd_reset:on swd_reset:off
-}
-
 function flash_npcx_jtag() {
 	IMG_PATH="${EC_DIR}/build/${BOARD}"
 	OCD_CHIP_CFG="npcx_chip.cfg"
@@ -1417,6 +1420,7 @@ function flash_npcx_uut() {
 		"$(dirname "$IMG")/chip/npcx/spiflashfw" \
 		"$(dirname "$IMG")" \
 		"${EC_DIR}/build/${BOARD}/chip/npcx/spiflashfw" \
+		"${EC_DIR}/build/zephyr/${BOARD}/output" \
 		"$(dirname "$LOCAL_BUILD")" \
 		"$(dirname "$EMERGE_BUILD")" ;
 	do
@@ -1492,8 +1496,26 @@ function flash_npcx_uut() {
 		if [[ "${FLAGS_verbose}" = ${FLAGS_TRUE} ]]; then
 			echo "${UUT_MON[*]}"
 		fi
+
+		local monitor_res=0
 		print_or_run timeout -k 10 -s 9 "${FLAGS_timeout}" \
-			"${UUT_MON[@]}" || die "Failed to load monitor binary."
+			"${UUT_MON[@]}" || monitor_res=$?
+
+		if [[ ${monitor_res} != 0 ]]; then
+			# Try to determine if WP is enabled
+			local dut_res=0
+			local wp_state
+			wp_state=$(dut-control fw_wp_state) || dut_res=$?
+
+			if [[ ${dut_res} = 0 ]]; then
+				if echo "${wp_state}" | grep "on"; then
+					die "Failed to load monitor binary, WP is enabled"
+				fi
+			fi
+
+			die "Failed to load monitor binary."
+		fi
+
 
 		info "Programming EC firmware image."
 		local UUT_WR=( "${NPCX_UUT}" "${UUT_ARGS[@]}"      \

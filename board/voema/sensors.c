@@ -14,6 +14,7 @@
 #include "driver/als_tcs3400.h"
 #include "driver/sync.h"
 #include "keyboard_scan.h"
+#include "gpio.h"
 #include "hooks.h"
 #include "i2c.h"
 #include "system.h"
@@ -288,8 +289,12 @@ static void baseboard_sensors_init(void)
 	 * TODO: If a SSFC for the base sensor is added, add the check
 	 * here.
 	 */
+<<<<<<< HEAD   (063f55 chgstv2: rework "charge_command_charge_control()")
 	if (IS_ENABLED(BOARD_VOEMA) && get_cbi_ssfc_base_sensor() ==
 			SSFC_SENSOR_BASE_ICM426XX) {
+=======
+	if (get_cbi_ssfc_base_sensor() == SSFC_SENSOR_BASE_ICM426XX) {
+>>>>>>> BRANCH (7d04c7 Reland "Enable "cros lint" presubmit check")
 		gpio_enable_interrupt(GPIO_EC_MB_ACCEL_INT_L);
 		motion_sensors[BASE_ACCEL] = icm_base_accel;
 		motion_sensors[BASE_GYRO] = icm_base_gyro;
@@ -305,6 +310,7 @@ static void baseboard_sensors_init(void)
 }
 DECLARE_HOOK(HOOK_INIT, baseboard_sensors_init, HOOK_PRIO_DEFAULT);
 
+<<<<<<< HEAD   (063f55 chgstv2: rework "charge_command_charge_control()")
 #ifndef BOARD_VOEMA_NPCX796FC
 void motion_interrupt(enum gpio_signal signal)
 {
@@ -322,19 +328,17 @@ int board_accel_force_mode_mask(void)
 
 #ifndef TEST_BUILD
 void lid_angle_peripheral_enable(int enable)
+=======
+void motion_interrupt(enum gpio_signal signal)
+>>>>>>> BRANCH (7d04c7 Reland "Enable "cros lint" presubmit check")
 {
-	int chipset_in_s0 = chipset_in_state(CHIPSET_STATE_ON);
-
-	if (enable) {
-		keyboard_scan_enable(1, KB_SCAN_DISABLE_LID_ANGLE);
-	} else {
-		/*
-		 * Ensure that the chipset is off before disabling the keyboard.
-		 * When the chipset is on, the EC keeps the keyboard enabled and
-		 * the AP decides whether to ignore input devices or not.
-		 */
-		if (!chipset_in_s0)
-			keyboard_scan_enable(0, KB_SCAN_DISABLE_LID_ANGLE);
-	}
+	icm426xx_interrupt(signal);
 }
-#endif
+
+int board_accel_force_mode_mask(void)
+{
+	if (system_get_board_version() <= 2)
+		return (BIT(LID_ACCEL) | BIT(CLEAR_ALS) | BIT(BASE_ACCEL));
+	else
+		return (BIT(LID_ACCEL) | BIT(CLEAR_ALS));
+}

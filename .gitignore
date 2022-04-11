@@ -11,6 +11,9 @@ cscope.*
 .tests-passed
 .failedboards/
 .sizes.txt
+.gdb_history
+# Git commit message template (see https://crbug.com/gerrit/10963)
+.gitmessage
 
 # VSCode IDE
 .vscode/*
@@ -23,3 +26,8 @@ cscope.*
 __pycache__
 *.egg-info
 .hypothesis/
+zephyr/zmake/.coverage
+
+# Clangd language server
+.cache/clangd/index/*
+compile_commands.json

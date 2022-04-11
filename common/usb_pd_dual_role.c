@@ -7,12 +7,16 @@
 
 #include "charge_manager.h"
 #include "charge_state.h"
+#include "dps.h"
 #include "system.h"
 #include "usb_common.h"
 #include "usb_pd.h"
 #include "util.h"
 
 #define CPRINTS(format, args...) cprints(CC_USBPD, format, ## args)
+
+/* The macro is used to prevent a DBZ exception while decoding PDOs. */
+#define PROCESS_ZERO_DIVISOR(x) ((x) == 0 ? 1 : (x))
 
 #if defined(PD_MAX_VOLTAGE_MV) && defined(PD_OPERATING_POWER_MW)
 /*
@@ -21,6 +25,7 @@
  */
 static unsigned int max_request_mv = PD_MAX_VOLTAGE_MV;
 
+/* TODO(b:169532537): deprecate CONFIG_USB_PD_PREFER_MV */
 STATIC_IF_NOT(CONFIG_USB_PD_PREFER_MV)
 struct pd_pref_config_t __maybe_unused pd_pref_config;
 
@@ -32,6 +37,28 @@ void pd_set_max_voltage(unsigned int mv)
 unsigned int pd_get_max_voltage(void)
 {
 	return max_request_mv;
+}
+
+/**
+ * Return true if port is capable of communication over USB data lines.
+ *
+ * @param port USB-C port number
+ */
+static bool pd_get_usb_comm_capable(int port)
+{
+	uint32_t fixed_pdo;
+
+	/* the fixed PDO is always the first entry */
+	if (pd_get_power_role(port) == PD_ROLE_SINK) {
+		fixed_pdo = pd_snk_pdo[0];
+	} else {
+		const uint32_t *pdo;
+
+		pd_get_source_pdo(&pdo, port);
+		fixed_pdo = pdo[0];
+	}
+
+	return !!(fixed_pdo & PDO_FIXED_COMM_CAP);
 }
 
 /*
@@ -190,9 +217,10 @@ void pd_extract_pdo_power(uint32_t pdo, uint32_t *ma, uint32_t *max_mv,
 		max_ma = PDO_VAR_MAX_CURRENT(pdo);
 	} else {
 		mw = PDO_BATT_MAX_POWER(pdo);
-		max_ma = 1000 * mw / *min_mv;
+		max_ma = 1000 * mw / PROCESS_ZERO_DIVISOR(*min_mv);
 	}
-	max_ma = MIN(max_ma, PD_MAX_POWER_MW * 1000 / *min_mv);
+	max_ma = MIN(max_ma,
+		     PD_MAX_POWER_MW * 1000 / PROCESS_ZERO_DIVISOR(*min_mv));
 	*ma = MIN(max_ma, PD_MAX_CURRENT_MA);
 }
 
@@ -235,6 +263,10 @@ void pd_build_request(int32_t vpd_vdo, uint32_t *rdo, uint32_t *ma,
 		max_request_allowed = pd_is_max_request_allowed();
 	else
 		max_request_allowed = 1;
+
+	if (IS_ENABLED(CONFIG_USB_PD_DPS) && dps_is_enabled())
+		max_request_mv =
+			MIN(max_request_mv, dps_get_dynamic_voltage());
 
 	/*
 	 * If currently charging on a different port, or we are not allowed to
@@ -324,12 +356,12 @@ void pd_build_request(int32_t vpd_vdo, uint32_t *rdo, uint32_t *ma,
 	 * 6.4.2.4 USB Communications Capable
 	 * 6.4.2.5 No USB Suspend
 	 *
-	 * If the port partner is capable of USB communication set the
-	 * USB Communications Capable flag.
+	 * If the port is capable of USB communication, set the USB
+	 * Communications Capable flag.
 	 * If the port partner is sink device do not suspend USB as the
 	 * power can be used for charging.
 	 */
-	if (pd_get_partner_usb_comm_capable(port)) {
+	if (pd_get_usb_comm_capable(port)) {
 		*rdo |= RDO_COMM_CAP;
 		if (pd_get_power_role(port) == PD_ROLE_SINK)
 			*rdo |= RDO_NO_SUSPEND;
@@ -342,11 +374,15 @@ void pd_process_source_cap(int port, int cnt, uint32_t *src_caps)
 
 	if (IS_ENABLED(CONFIG_CHARGE_MANAGER)) {
 		uint32_t ma, mv, pdo, unused;
+		uint32_t max_mv = pd_get_max_voltage();
+
+		if (IS_ENABLED(CONFIG_USB_PD_DPS) && dps_is_enabled())
+			max_mv = MIN(max_mv, dps_get_dynamic_voltage());
 
 		/* Get max power info that we could request */
 		pd_find_pdo_index(pd_get_src_cap_cnt(port),
 					pd_get_src_caps(port),
-					pd_get_max_voltage(), &pdo);
+					max_mv, &pdo);
 		pd_extract_pdo_power(pdo, &ma, &mv, &unused);
 
 		/* Set max. limit, but apply 500mA ceiling */

@@ -7,6 +7,7 @@
 
 #include "adc_chip.h"
 #include "button.h"
+#include "cbi_fw_config.h"
 #include "charge_manager.h"
 #include "charge_state_v2.h"
 #include "charger.h"
@@ -21,6 +22,7 @@
 #include "gpio.h"
 #include "hooks.h"
 #include "intc.h"
+#include "keyboard_raw.h"
 #include "keyboard_scan.h"
 #include "lid_switch.h"
 #include "power.h"
@@ -64,7 +66,7 @@ __override struct keyboard_scan_config keyscan_config = {
 	.min_post_scan_delay_us = 1000,
 	.poll_timeout_us = 100 * MSEC,
 	.actual_key_mask = {
-		0x14, 0xff, 0xff, 0xff, 0xff, 0xf5, 0xff,
+		0x1c, 0xff, 0xff, 0xff, 0xff, 0xf5, 0xff,
 		0xa4, 0xff, 0xf6, 0x55, 0xfa, 0xca  /* full set */
 	},
 };
@@ -86,10 +88,29 @@ static const struct ec_response_keybd_config pirika_kb = {
 	.capabilities = KEYBD_CAP_SCRNLOCK_KEY,
 };
 
+static const struct ec_response_keybd_config pasara_kb = {
+	.num_top_row_keys = 10,
+	.action_keys = {
+		TK_BACK,		/* T1 */
+		TK_REFRESH,		/* T2 */
+		TK_FULLSCREEN,		/* T3 */
+		TK_OVERVIEW,		/* T4 */
+		TK_SNAPSHOT,		/* T5 */
+		TK_BRIGHTNESS_DOWN,	/* T6 */
+		TK_BRIGHTNESS_UP,	/* T7 */
+		TK_VOL_MUTE,		/* T8 */
+		TK_VOL_DOWN,		/* T9 */
+		TK_VOL_UP,		/* T10 */
+	},
+	.capabilities = KEYBD_CAP_SCRNLOCK_KEY | KEYBD_CAP_NUMERIC_KEYPAD,
+};
 __override const struct ec_response_keybd_config
 *board_vivaldi_keybd_config(void)
 {
-	return &pirika_kb;
+	if (get_cbi_fw_config_numeric_pad() == NUMERIC_PAD_ABSENT)
+		return &pirika_kb;
+	else
+		return &pasara_kb;
 }
 
 static void notify_c0_chips(void)
@@ -405,6 +426,16 @@ void board_init(void)
 	on = chipset_in_state(CHIPSET_STATE_ON | CHIPSET_STATE_ANY_SUSPEND |
 			      CHIPSET_STATE_SOFT_OFF);
 	board_power_5v_enable(on);
+
+	if (get_cbi_fw_config_numeric_pad() == NUMERIC_PAD_ABSENT) {
+		keyboard_raw_set_cols(KEYBOARD_COLS_NO_KEYPAD);
+	} else {
+		/* Setting scan mask KSO11, KSO12, KSO13 and KSO14 */
+		keyscan_config.actual_key_mask[11] = 0xfe;
+		keyscan_config.actual_key_mask[12] = 0xff;
+		keyscan_config.actual_key_mask[13] = 0xff;
+		keyscan_config.actual_key_mask[14] = 0xff;
+	}
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
@@ -631,8 +662,6 @@ struct motion_sensor_t motion_sensors[] = {
 		.mutex = &g_base_mutex,
 		.drv_data = LSM6DSM_ST_DATA(lsm6dsm_data,
 				MOTIONSENSE_TYPE_ACCEL),
-		.int_signal = GPIO_BASE_SIXAXIS_INT_L,
-		.flags = MOTIONSENSE_FLAG_INT_SIGNAL,
 		.port = I2C_PORT_SENSOR,
 		.i2c_spi_addr_flags = LSM6DSM_ADDR0_FLAGS,
 		.rot_standard_ref = NULL,
@@ -660,8 +689,6 @@ struct motion_sensor_t motion_sensors[] = {
 		.mutex = &g_base_mutex,
 		.drv_data = LSM6DSM_ST_DATA(lsm6dsm_data,
 				MOTIONSENSE_TYPE_GYRO),
-		.int_signal = GPIO_BASE_SIXAXIS_INT_L,
-		.flags = MOTIONSENSE_FLAG_INT_SIGNAL,
 		.port = I2C_PORT_SENSOR,
 		.i2c_spi_addr_flags = LSM6DSM_ADDR0_FLAGS,
 		.default_range = 1000 | ROUND_UP_FLAG, /* dps */
@@ -690,43 +717,61 @@ const struct temp_sensor_t temp_sensors[] = {
 };
 BUILD_ASSERT(ARRAY_SIZE(temp_sensors) == TEMP_SENSOR_COUNT);
 
-const static struct ec_thermal_config thermal_charger = {
-	.temp_host = {
-		[EC_TEMP_THRESH_HIGH] = C_TO_K(68),
-		[EC_TEMP_THRESH_HALT] = C_TO_K(90),
-	},
-	.temp_host_release = {
-		[EC_TEMP_THRESH_HIGH] = C_TO_K(50),
-	},
-};
-const static struct ec_thermal_config thermal_vcore = {
-	.temp_host = {
-		[EC_TEMP_THRESH_HIGH] = C_TO_K(65),
-		[EC_TEMP_THRESH_HALT] = C_TO_K(80),
-	},
-	.temp_host_release = {
-		[EC_TEMP_THRESH_HIGH] = C_TO_K(53),
-	},
-};
-const static struct ec_thermal_config thermal_ambient = {
-	.temp_host = {
-		[EC_TEMP_THRESH_HIGH] = C_TO_K(65),
-		[EC_TEMP_THRESH_HALT] = C_TO_K(80),
-	},
-	.temp_host_release = {
-		[EC_TEMP_THRESH_HIGH] = C_TO_K(50),
-	},
-};
+/*
+ * TODO(b/202062363): Remove when clang is fixed.
+ */
+#define THERMAL_CHARGER \
+	{ \
+		.temp_host = { \
+			[EC_TEMP_THRESH_HIGH] = C_TO_K(68), \
+			[EC_TEMP_THRESH_HALT] = C_TO_K(90), \
+		}, \
+		.temp_host_release = { \
+			[EC_TEMP_THRESH_HIGH] = C_TO_K(50), \
+		}, \
+	}
+__maybe_unused static const struct ec_thermal_config thermal_charger =
+	THERMAL_CHARGER;
+/*
+ * TODO(b/202062363): Remove when clang is fixed.
+ */
+#define THERMAL_VCORE \
+	{ \
+		.temp_host = { \
+			[EC_TEMP_THRESH_HIGH] = C_TO_K(65), \
+			[EC_TEMP_THRESH_HALT] = C_TO_K(80), \
+		}, \
+		.temp_host_release = { \
+			[EC_TEMP_THRESH_HIGH] = C_TO_K(53), \
+		}, \
+	}
+__maybe_unused static const struct ec_thermal_config thermal_vcore =
+	THERMAL_VCORE;
+/*
+ * TODO(b/202062363): Remove when clang is fixed.
+ */
+#define THERMAL_AMBIENT \
+	{ \
+		.temp_host = { \
+			[EC_TEMP_THRESH_HIGH] = C_TO_K(65), \
+			[EC_TEMP_THRESH_HALT] = C_TO_K(80), \
+		}, \
+		.temp_host_release = { \
+			[EC_TEMP_THRESH_HIGH] = C_TO_K(50), \
+		}, \
+	}
+__maybe_unused static const struct ec_thermal_config thermal_ambient =
+	THERMAL_AMBIENT;
+
 struct ec_thermal_config thermal_params[] = {
-	[TEMP_SENSOR_1] = thermal_charger,
-	[TEMP_SENSOR_2] = thermal_vcore,
-	[TEMP_SENSOR_3] = thermal_ambient,
+	[TEMP_SENSOR_1] = THERMAL_CHARGER,
+	[TEMP_SENSOR_2] = THERMAL_VCORE,
+	[TEMP_SENSOR_3] = THERMAL_AMBIENT,
 };
 BUILD_ASSERT(ARRAY_SIZE(thermal_params) == TEMP_SENSOR_COUNT);
 
-#ifndef TEST_BUILD
 /* This callback disables keyboard when convertibles are fully open */
-void lid_angle_peripheral_enable(int enable)
+__override void lid_angle_peripheral_enable(int enable)
 {
 	int chipset_in_s0 = chipset_in_state(CHIPSET_STATE_ON);
 
@@ -750,7 +795,6 @@ void lid_angle_peripheral_enable(int enable)
 			keyboard_scan_enable(0, KB_SCAN_DISABLE_LID_ANGLE);
 	}
 }
-#endif
 
 __override void board_pulse_entering_rw(void)
 {

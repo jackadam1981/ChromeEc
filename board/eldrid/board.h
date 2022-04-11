@@ -13,13 +13,11 @@
 
 /* Optional features */
 #undef CONFIG_SYSTEM_UNLOCKED /* Allow dangerous commands while in dev. */
-#ifndef BOARD_ELDRID_NPCX796
 /*
  * The RAM and flash size combination on the the NPCX797FC does not leave
  * any unused flash space that can be used to store the .init_rom section.
  */
 #undef CONFIG_CHIP_INIT_ROM_REGION
-#endif
 
 #define CONFIG_VBOOT_EFS2
 
@@ -122,14 +120,12 @@
 #define GPIO_PCH_SLP_S3_L		GPIO_SLP_S3_L
 #define GPIO_PCH_DSW_PWROK		GPIO_EC_PCH_DSW_PWROK
 #define GPIO_POWER_BUTTON_L		GPIO_H1_EC_PWR_BTN_ODL
-#define GPIO_RSMRST_L_PGOOD		GPIO_PG_EC_RSMRST_ODL
 #define GPIO_CPU_PROCHOT		GPIO_EC_PROCHOT_ODL
 #define GPIO_SYS_RESET_L		GPIO_SYS_RST_ODL
 #define GPIO_WP_L			GPIO_EC_WP_L
 #define GPIO_USB_C1_BC12_INT_ODL	GPIO_USB_C1_MIX_INT_ODL
 #define GPIO_VOLUME_UP_L		GPIO_EC_VOLUP_BTN_ODL
 #define GPIO_VOLUME_DOWN_L		GPIO_EC_VOLDN_BTN_ODL
-#define GMR_TABLET_MODE_GPIO_L		GPIO_TABLET_MODE_L
 
 /* I2C Bus Configuration */
 #define CONFIG_I2C

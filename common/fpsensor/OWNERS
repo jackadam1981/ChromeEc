@@ -1,0 +1,9 @@
+<<<<<<< HEAD   (063f55 chgstv2: rework "charge_command_charge_control()")
+=======
+# Fingerprint Sensor
+
+# Don't inherit owners from elsewhere in the manifest
+set noparent
+
+include chromiumos/platform2:/biod/OWNERS
+>>>>>>> BRANCH (7d04c7 Reland "Enable "cros lint" presubmit check")

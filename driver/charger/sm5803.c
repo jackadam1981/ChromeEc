@@ -48,10 +48,10 @@ static const struct charger_info sm5803_charger_info = {
 	.input_current_step = INPUT_I_STEP,
 };
 
-static uint32_t irq_pending; /* Bitmask of chips with interrupts pending */
+static atomic_t irq_pending; /* Bitmask of chips with interrupts pending */
 
-static struct mutex flow1_access_lock[CHARGER_NUM];
-static struct mutex flow2_access_lock[CHARGER_NUM];
+static mutex_t flow1_access_lock[CHARGER_NUM];
+static mutex_t flow2_access_lock[CHARGER_NUM];
 
 static int charger_vbus[CHARGER_NUM];
 
@@ -396,6 +396,19 @@ static void init_status_retrieve(void)
 }
 DECLARE_HOOK(HOOK_INIT, init_status_retrieve, HOOK_PRIO_FIRST);
 
+#ifdef CONFIG_ZEPHYR
+static void init_mutexes(void)
+{
+	int i;
+
+	for (i = 0; i < CHARGER_NUM; i++) {
+		k_mutex_init(&flow1_access_lock[i]);
+		k_mutex_init(&flow2_access_lock[i]);
+	}
+}
+DECLARE_HOOK(HOOK_INIT, init_mutexes, HOOK_PRIO_FIRST);
+#endif
+
 static void sm5803_init(int chgnum)
 {
 	enum ec_error_list rv;
@@ -653,12 +666,6 @@ static void sm5803_init(int chgnum)
 	rv = chg_write8(chgnum, SM5803_REG_DPM_VL_SET_MSB, (reg >> 3));
 	rv |= chg_write8(chgnum, SM5803_REG_DPM_VL_SET_LSB, (reg & 0x7));
 
-	/* Set the VCHGPWR thresholds to mirror those for VBUS. */
-	rv |= meas_write8(chgnum, SM5803_REG_VCHG_PWR_HIGH_TH,
-			  SM5803_VBUS_HIGH_LEVEL);
-	rv |= meas_write8(chgnum, SM5803_REG_VCHG_PWR_LOW_TH,
-			  SM5803_VBUS_LOW_LEVEL);
-
 	/* Set default input current */
 	reg = SM5803_CURRENT_TO_REG(CONFIG_CHARGER_INPUT_CURRENT)
 		& SM5803_CHG_ILIM_RAW;
@@ -689,12 +696,8 @@ static void sm5803_init(int chgnum)
 	rv |= main_write8(chgnum, SM5803_REG_INT2_EN, reg);
 
 
-	/*
-	 * Configure TINT & VCHGPWR interrupts to fire after thresholds are set.
-	 */
-	rv |= main_read8(chgnum, SM5803_REG_INT2_EN, &reg);
-	reg |= SM5803_INT2_TINT | SM5803_INT2_VCHGPWR;
-	rv |= main_write8(chgnum, SM5803_REG_INT2_EN, reg);
+	/* Configure TINT interrupts to fire after thresholds are set */
+	rv |= main_write8(chgnum, SM5803_REG_INT2_EN, SM5803_INT2_TINT);
 
 	/*
 	 * Configure CHG_ENABLE to only be set through I2C by setting
@@ -1016,7 +1019,7 @@ void sm5803_restart_charging(void)
 	int act_chg = charge_manager_get_active_charge_port();
 	timestamp_t now = get_time();
 
-	if (act_chg == active_restart_port) {
+	if (act_chg != CHARGE_PORT_NONE && act_chg == active_restart_port) {
 		if (timestamp_expired(failure_tracker[act_chg].time, &now)) {
 			/*
 			 * Enough time has passed since our last failure,
@@ -1071,6 +1074,7 @@ void sm5803_handle_interrupt(int chgnum)
 			if (IS_ENABLED(CONFIG_USB_CHARGER))
 				usb_charger_vbus_change(chgnum, 1);
 		}
+		board_check_extpower();
 	}
 
 	rv = main_read8(chgnum, SM5803_REG_INT2_REQ, &int_reg);
@@ -1113,10 +1117,6 @@ void sm5803_handle_interrupt(int chgnum)
 		 * ignored.
 		 */
 	}
-
-	/* Update extpower if VCHGPWR changes. */
-	if (int_reg & SM5803_INT2_VCHGPWR)
-		board_check_extpower();
 
 	if (int_reg & SM5803_INT2_VBATSNSP) {
 		int meas_volt;
@@ -1597,33 +1597,30 @@ static enum ec_error_list sm5803_get_option(int chgnum, int *option)
 enum ec_error_list sm5803_is_acok(int chgnum, bool *acok)
 {
 	int rv;
-	enum sm5803_charger_modes mode;
-	int reg;
+	int reg, vbus_mv;
 
-	rv = chg_read8(chgnum, SM5803_REG_FLOW1, &reg);
+	rv = main_read8(chgnum, SM5803_REG_STATUS1, &reg);
+
 	if (rv)
 		return rv;
 
-	/* The charger mode is contained in the last 2 bits. */
-	reg &= SM5803_FLOW1_MODE;
-	mode = (enum sm5803_charger_modes)reg;
-
 	/* If we're not sinking, then AC can't be OK. */
-	if (mode != CHARGER_MODE_SINK) {
+	if (!(reg & SM5803_STATUS1_CHG_DET)) {
 		*acok = false;
 		return EC_SUCCESS;
 	}
 
 	/*
-	 * Okay, we're sinking.  Check that VCHGPWR has some voltage.  This
+	 * Okay, we're sinking. Check that VBUS has some voltage. This
 	 * should indicate that the path is good.
 	 */
-	rv = meas_read8(chgnum, SM5803_REG_VCHG_PWR_MSB, &reg);
+	rv = charger_get_vbus_voltage(chgnum, &vbus_mv);
+
 	if (rv)
 		return rv;
 
-	/* Assume that ACOK would be asserted if VCHGPWR is higher than ~4V. */
-	*acok = reg >= SM5803_VBUS_HIGH_LEVEL;
+	/* Assume that ACOK would be asserted if VBUS is higher than ~4V. */
+	*acok = vbus_mv >= 4000;
 
 	return EC_SUCCESS;
 }
@@ -1866,14 +1863,10 @@ static int sm5803_ramp_get_current_limit(int chgnum)
 #endif /* CONFIG_CHARGE_RAMP_HW */
 
 #ifdef CONFIG_CMD_CHARGER_DUMP
-static int command_sm5803_dump(int argc, char **argv)
+static void command_sm5803_dump(int chgnum)
 {
 	int reg;
 	int regval;
-	int chgnum = 0;
-
-	if (argc > 1)
-		chgnum = atoi(argv[1]);
 
 	/* Dump base regs */
 	ccprintf("BASE regs\n");
@@ -1907,11 +1900,7 @@ static int command_sm5803_dump(int argc, char **argv)
 			watchdog_reload();
 		}
 	}
-
-	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(charger_dump, command_sm5803_dump,
-			"charger_dump [chgnum]", "Dumps SM5803 registers");
 #endif /* CONFIG_CMD_CHARGER_DUMP */
 
 const struct charger_drv sm5803_drv = {
@@ -1945,5 +1934,8 @@ const struct charger_drv sm5803_drv = {
 	.ramp_is_stable = &sm5803_ramp_is_stable,
 	.ramp_is_detected = &sm5803_ramp_is_detected,
 	.ramp_get_current_limit = &sm5803_ramp_get_current_limit,
+#endif
+#ifdef CONFIG_CMD_CHARGER_DUMP
+	.dump_registers = &command_sm5803_dump,
 #endif
 };

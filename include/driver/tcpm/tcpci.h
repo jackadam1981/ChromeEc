@@ -21,12 +21,24 @@
 #define TCPC_REG_PD_REV            0x8
 #define TCPC_REG_PD_INT_REV        0xa
 
+#define TCPC_REG_PD_INT_REV_REV_MASK  0xff00
+#define TCPC_REG_PD_INT_REV_REV_1_0   0x10
+#define TCPC_REG_PD_INT_REV_REV_2_0   0x20
+#define TCPC_REG_PD_INT_REV_VER_MASK  0x00ff
+#define TCPC_REG_PD_INT_REV_VER_1_0   0x10
+#define TCPC_REG_PD_INT_REV_VER_1_1   0x11
+#define TCPC_REG_PD_INT_REV_REV(reg) \
+		((reg & TCOC_REG_PD_INT_REV_REV_MASK) >> 8)
+#define TCPC_REG_PD_INT_REV_VER(reg) \
+		(reg & TCOC_REG_PD_INT_REV_VER_MASK)
+
 #define TCPC_REG_ALERT             0x10
 #define TCPC_REG_ALERT_NONE         0x0000
 #define TCPC_REG_ALERT_MASK_ALL     0xffff
 #define TCPC_REG_ALERT_VENDOR_DEF   BIT(15)
 #define TCPC_REG_ALERT_ALERT_EXT    BIT(14)
 #define TCPC_REG_ALERT_EXT_STATUS   BIT(13)
+#define TCPC_REG_ALERT_RX_BEGINNING BIT(12)
 #define TCPC_REG_ALERT_VBUS_DISCNCT BIT(11)
 #define TCPC_REG_ALERT_RX_BUF_OVF   BIT(10)
 #define TCPC_REG_ALERT_FAULT        BIT(9)
@@ -92,6 +104,7 @@
 
 #define TCPC_REG_FAULT_CTRL        0x1b
 #define TCPC_REG_FAULT_CTRL_VBUS_OVP_FAULT_DIS         BIT(1)
+#define TCPC_REG_FAULT_CTRL_VBUS_OCP_FAULT_DIS         BIT(0)
 
 #define TCPC_REG_POWER_CTRL        0x1c
 #define TCPC_REG_POWER_CTRL_FRS_ENABLE                 BIT(7)
@@ -146,12 +159,15 @@
 #define TCPC_REG_ALERT_EXT_SNK_FRS              BIT(0)
 
 #define TCPC_REG_COMMAND           0x23
+#define TCPC_REG_COMMAND_WAKE_I2C		 0x11
 #define TCPC_REG_COMMAND_ENABLE_VBUS_DETECT      0x33
 #define TCPC_REG_COMMAND_SNK_CTRL_LOW            0x44
 #define TCPC_REG_COMMAND_SNK_CTRL_HIGH           0x55
 #define TCPC_REG_COMMAND_SRC_CTRL_LOW            0x66
 #define TCPC_REG_COMMAND_SRC_CTRL_HIGH           0x77
 #define TCPC_REG_COMMAND_LOOK4CONNECTION         0x99
+#define TCPC_REG_COMMAND_RESET_TRANSMIT_BUF      0xDD
+#define TCPC_REG_COMMAND_RESET_RECEIVE_BUF       0xEE
 #define TCPC_REG_COMMAND_I2CIDLE                 0xFF
 
 #define TCPC_REG_DEV_CAP_1         0x24
@@ -180,13 +196,29 @@
 #define TCPC_REG_DEV_CAP_1_SOURCE_VBUS			BIT(0)
 
 #define TCPC_REG_DEV_CAP_2         0x26
-#define TCPC_REG_DEV_CAP_2_SNK_FR_SWAP           BIT(9)
+#define TCPC_REG_DEV_CAP_2_LONG_MSG		BIT(12)
+#define TCPC_REG_DEV_CAP_2_SNK_FR_SWAP		BIT(9)
 
 #define TCPC_REG_STD_INPUT_CAP     0x28
+#define TCPC_REG_STD_INPUT_CAP_SRC_FR_SWAP	(BIT(4)|BIT(3))
+#define TCPC_REG_STD_INPUT_CAP_EXT_OVR_V_F	BIT(2)
+#define TCPC_REG_STD_INPUT_CAP_EXT_OVR_C_F	BIT(1)
+#define TCPC_REG_STD_INPUT_CAP_FORCE_OFF_VBUS	BIT(0)
+
 #define TCPC_REG_STD_OUTPUT_CAP    0x29
+#define TCPC_REG_STD_OUTPUT_CAP_SNK_DISC_DET		BIT(7)
+#define TCPC_REG_STD_OUTPUT_CAP_DBG_ACCESSORY		BIT(6)
+#define TCPC_REG_STD_OUTPUT_CAP_VBUS_PRESENT_MON	BIT(5)
+#define TCPC_REG_STD_OUTPUT_CAP_AUDIO_ACCESSORY		BIT(4)
+#define TCPC_REG_STD_OUTPUT_CAP_ACTIVE_CABLE		BIT(3)
+#define TCPC_REG_STD_OUTPUT_CAP_MUX_CONF_CTRL		BIT(2)
+#define TCPC_REG_STD_OUTPUT_CAP_CONN_PRESENT		BIT(1)
+#define TCPC_REG_STD_OUTPUT_CAP_CONN_ORIENTATION	BIT(0)
 
 #define TCPC_REG_CONFIG_EXT_1      0x2A
 #define TCPC_REG_CONFIG_EXT_1_FR_SWAP_SNK_DIR	BIT(1)
+
+#define TCPC_REG_GENERIC_TIMER     0x2c
 
 #define TCPC_REG_MSG_HDR_INFO      0x2e
 #define TCPC_REG_MSG_HDR_INFO_SET(drole, prole) \
@@ -195,8 +227,21 @@
 #define TCPC_REG_MSG_HDR_INFO_PROLE(reg) ((reg) & 0x1)
 
 #define TCPC_REG_RX_DETECT         0x2f
-#define TCPC_REG_RX_DETECT_SOP_HRST_MASK 0x21
-#define TCPC_REG_RX_DETECT_SOP_SOPP_SOPPP_HRST_MASK 0x27
+#define TCPC_REG_RX_DETECT_MSG_DISABLE_DISCONNECT	BIT(7)
+#define TCPC_REG_RX_DETECT_CABLE_RST			BIT(6)
+#define TCPC_REG_RX_DETECT_HRST				BIT(5)
+#define TCPC_REG_RX_DETECT_SOPPP_DBG			BIT(4)
+#define TCPC_REG_RX_DETECT_SOPP_DBG			BIT(3)
+#define TCPC_REG_RX_DETECT_SOPPP			BIT(2)
+#define TCPC_REG_RX_DETECT_SOPP				BIT(1)
+#define TCPC_REG_RX_DETECT_SOP				BIT(0)
+#define TCPC_REG_RX_DETECT_SOP_HRST_MASK (TCPC_REG_RX_DETECT_SOP | \
+					  TCPC_REG_RX_DETECT_HRST)
+#define TCPC_REG_RX_DETECT_SOP_SOPP_SOPPP_HRST_MASK		\
+					(TCPC_REG_RX_DETECT_SOP | \
+					 TCPC_REG_RX_DETECT_SOPP | \
+					 TCPC_REG_RX_DETECT_SOPPP | \
+					 TCPC_REG_RX_DETECT_HRST)
 
 /* TCPCI Rev 1.0 receive registers */
 #define TCPC_REG_RX_BYTE_CNT       0x30
@@ -232,6 +277,9 @@
 #define TCPC_REG_TX_BUFFER         0x51
 
 #define TCPC_REG_VBUS_VOLTAGE                0x70
+#define TCPC_REG_VBUS_VOLTAGE_MEASUREMENT    GENMASK(9, 0)
+#define TCPC_REG_VBUS_VOLTAGE_SCALE_FACTOR   GENMASK(11, 10)
+#define TCPC_REG_VBUS_VOLTAGE_LSB            25
 
 #define TCPC_REG_VBUS_SINK_DISCONNECT_THRESH 0x72
 #define TCPC_REG_VBUS_SINK_DISCONNECT_THRESH_DEFAULT 0x008C /* 3.5 V */
@@ -239,6 +287,8 @@
 #define TCPC_REG_VBUS_STOP_DISCHARGE_THRESH  0x74
 #define TCPC_REG_VBUS_VOLTAGE_ALARM_HI_CFG   0x76
 #define TCPC_REG_VBUS_VOLTAGE_ALARM_LO_CFG   0x78
+
+#define TCPC_REG_VBUS_NONDEFAULT_TARGET      0x7a
 
 extern const struct tcpm_drv tcpci_tcpm_drv;
 extern const struct usb_mux_driver tcpci_tcpm_usb_mux_driver;
@@ -261,7 +311,7 @@ int tcpci_tcpm_set_vconn(int port, int enable);
 int tcpci_tcpm_set_msg_header(int port, int power_role, int data_role);
 int tcpci_tcpm_set_rx_enable(int port, int enable);
 int tcpci_tcpm_get_message_raw(int port, uint32_t *payload, int *head);
-int tcpci_tcpm_transmit(int port, enum tcpm_transmit_type type,
+int tcpci_tcpm_transmit(int port, enum tcpci_msg_type type,
 			uint16_t header, const uint32_t *data);
 int tcpci_tcpm_release(int port);
 #ifdef CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE
@@ -271,22 +321,23 @@ int tcpci_tcpc_drp_toggle(int port);
 #endif
 #ifdef CONFIG_USB_PD_TCPC_LOW_POWER
 int tcpci_enter_low_power_mode(int port);
+void tcpci_wake_low_power_mode(int port);
 #endif
 enum ec_error_list tcpci_set_bist_test_mode(const int port,
 		const bool enable);
-#ifdef CONFIG_USB_PD_DISCHARGE_TCPC
 void tcpci_tcpc_discharge_vbus(int port, int enable);
-#endif
 void tcpci_tcpc_enable_auto_discharge_disconnect(int port, int enable);
 int tcpci_tcpc_debug_accessory(int port, bool enable);
 
 int tcpci_tcpm_mux_init(const struct usb_mux *me);
-int tcpci_tcpm_mux_set(const struct usb_mux *me, mux_state_t mux_state);
+int tcpci_tcpm_mux_set(const struct usb_mux *me, mux_state_t mux_state,
+		       bool *ack_required);
 int tcpci_tcpm_mux_get(const struct usb_mux *me, mux_state_t *mux_state);
 int tcpci_tcpm_mux_enter_low_power(const struct usb_mux *me);
 int tcpci_get_chip_info(int port, int live,
 			struct ec_response_pd_chip_info_v1 *chip_info);
-#ifdef CONFIG_USBC_PPC
+int tcpci_get_vbus_voltage(int port, int *vbus);
+#ifdef CONFIG_USB_PD_PPC
 bool tcpci_tcpm_get_snk_ctrl(int port);
 int tcpci_tcpm_set_snk_ctrl(int port, int enable);
 bool tcpci_tcpm_get_src_ctrl(int port);

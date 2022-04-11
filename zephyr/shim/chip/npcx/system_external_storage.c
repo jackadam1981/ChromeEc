@@ -3,6 +3,9 @@
  * found in the LICENSE file.
  */
 
+#include <devicetree.h>
+#include <drivers/syscon.h>
+
 #include "clock_chip.h"
 #include "common.h"
 #include "rom_chip.h"
@@ -11,10 +14,44 @@
 
 /* TODO (b:179900857) Make this implementation not npcx specific. */
 
-#define NPCX_MDC_BASE_ADDR                0x4000C000
-#define NPCX_FWCTRL                       REG8(NPCX_MDC_BASE_ADDR + 0x007)
+static const struct device *mdc_dev = DEVICE_DT_GET(DT_NODELABEL(mdc));
+
+/*
+ * b/218820985: The FWCTL register reset to 0xFF on multiple reads.
+ * Read the register once, and then cache all writes to this register
+ *
+ * TODO: if this is a chip bug, this should be managed by the syscon driver
+ * upstream.
+ */
+static uint32_t fwctrl_cached = 0xFFFFFFFF;
+
+#ifdef CONFIG_SOC_SERIES_NPCX7
+#define NPCX_FWCTRL                       0x007
 #define NPCX_FWCTRL_RO_REGION             0
 #define NPCX_FWCTRL_FW_SLOT               1
+#elif defined(CONFIG_SOC_SERIES_NPCX9)
+#define NPCX_FWCTRL                       0x009
+#define NPCX_FWCTRL_RO_REGION             6
+#define NPCX_FWCTRL_FW_SLOT               7
+#else
+#error "Unsupported NPCX SoC series."
+#endif
+
+static uint32_t read_fwctrl(void)
+{
+	/* On first entry, read the value and cache it. */
+	if (fwctrl_cached == 0xFFFFFFFF) {
+		syscon_read_reg(mdc_dev, NPCX_FWCTRL, &fwctrl_cached);
+	}
+
+	return fwctrl_cached;
+}
+
+static void write_fwctrl(uint32_t fwctrl)
+{
+	syscon_write_reg(mdc_dev, NPCX_FWCTRL, fwctrl);
+	fwctrl_cached = fwctrl;
+}
 
 void system_jump_to_booter(void)
 {
@@ -97,18 +134,21 @@ uint32_t system_get_lfw_address()
 
 enum ec_image system_get_shrspi_image_copy(void)
 {
-	/* TODO (b:179900857) Make this implementation not npcx specific. */
-	if (IS_BIT_SET(NPCX_FWCTRL, NPCX_FWCTRL_RO_REGION)) {
+	uint32_t fwctrl;
+
+	fwctrl = read_fwctrl();
+
+	if (IS_BIT_SET(fwctrl, NPCX_FWCTRL_RO_REGION)) {
 		/* RO image */
 #ifdef CHIP_HAS_RO_B
-		if (!IS_BIT_SET(NPCX_FWCTRL, NPCX_FWCTRL_FW_SLOT))
+		if (!IS_BIT_SET(fwctrl, NPCX_FWCTRL_FW_SLOT))
 			return EC_IMAGE_RO_B;
 #endif
 		return EC_IMAGE_RO;
 	} else {
 #ifdef CONFIG_RW_B
 		/* RW image */
-		if (!IS_BIT_SET(NPCX_FWCTRL, NPCX_FWCTRL_FW_SLOT))
+		if (!IS_BIT_SET(fwctrl, NPCX_FWCTRL_FW_SLOT))
 			/* Slot A */
 			return EC_IMAGE_RW_B;
 #endif
@@ -118,23 +158,27 @@ enum ec_image system_get_shrspi_image_copy(void)
 
 void system_set_image_copy(enum ec_image copy)
 {
-	/* TODO (b:179900857) Make this implementation not npcx specific. */
+	uint32_t fwctrl;
+
+	fwctrl = read_fwctrl();
 	switch (copy) {
 	case EC_IMAGE_RW:
-		CLEAR_BIT(NPCX_FWCTRL, NPCX_FWCTRL_RO_REGION);
-		SET_BIT(NPCX_FWCTRL, NPCX_FWCTRL_FW_SLOT);
+		CLEAR_BIT(fwctrl, NPCX_FWCTRL_RO_REGION);
+		SET_BIT(fwctrl, NPCX_FWCTRL_FW_SLOT);
 		break;
 #ifdef CONFIG_RW_B
 	case EC_IMAGE_RW_B:
-		CLEAR_BIT(NPCX_FWCTRL, NPCX_FWCTRL_RO_REGION);
-		CLEAR_BIT(NPCX_FWCTRL, NPCX_FWCTRL_FW_SLOT);
+		CLEAR_BIT(fwctrl, NPCX_FWCTRL_RO_REGION);
+		CLEAR_BIT(fwctrl, NPCX_FWCTRL_FW_SLOT);
 		break;
 #endif
 	default:
 		/* Fall through to EC_IMAGE_RO */
 	case EC_IMAGE_RO:
-		SET_BIT(NPCX_FWCTRL, NPCX_FWCTRL_RO_REGION);
-		SET_BIT(NPCX_FWCTRL, NPCX_FWCTRL_FW_SLOT);
+		SET_BIT(fwctrl, NPCX_FWCTRL_RO_REGION);
+		SET_BIT(fwctrl, NPCX_FWCTRL_FW_SLOT);
 		break;
 	}
+
+	write_fwctrl(fwctrl);
 }

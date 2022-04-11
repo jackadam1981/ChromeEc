@@ -9,6 +9,7 @@
 #include "crc8.h"
 #include "mt6360.h"
 #include "ec_commands.h"
+#include "gpio.h"
 #include "hooks.h"
 #include "i2c.h"
 #include "task.h"
@@ -118,7 +119,9 @@ static void mt6360_update_charge_manager(int port,
 	static enum charge_supplier current_bc12_type = CHARGE_SUPPLIER_NONE;
 
 	if (new_bc12_type != current_bc12_type) {
-		charge_manager_update_charge(current_bc12_type, port, NULL);
+		if (current_bc12_type >= 0)
+			charge_manager_update_charge(current_bc12_type, port,
+							NULL);
 
 		if (new_bc12_type != CHARGE_SUPPLIER_NONE) {
 			struct charge_port_info chg = {
@@ -164,7 +167,19 @@ static void mt6360_usb_charger_task(const int port)
 
 		/* vbus change, start bc12 detection */
 		if (evt & USB_CHG_EVENT_VBUS) {
-			if (pd_snk_is_vbus_provided(port))
+			bool is_sink = pd_get_power_role(port) == PD_ROLE_SINK;
+			bool is_non_pd_sink = !pd_capable(port) &&
+				is_sink &&
+				pd_snk_is_vbus_provided(port);
+
+			if (is_sink)
+				mt6360_clr_bit(MT6360_REG_CHG_CTRL1,
+					       MT6360_MASK_HZ);
+			else
+				mt6360_set_bit(MT6360_REG_CHG_CTRL1,
+					       MT6360_MASK_HZ);
+
+			if (is_non_pd_sink)
 				mt6360_enable_bc12_detection(1);
 			else
 				mt6360_update_charge_manager(
@@ -535,7 +550,7 @@ DECLARE_HOOK(HOOK_INIT, mt6360_led_init, HOOK_PRIO_DEFAULT);
 
 int mt6360_led_enable(enum mt6360_led_id led_id, int enable)
 {
-	if (!IN_RANGE(led_id, 0, MT6360_LED_COUNT))
+	if (!IN_RANGE(led_id, 0, MT6360_LED_COUNT - 1))
 		return EC_ERROR_INVAL;
 
 	if (enable)
@@ -548,9 +563,9 @@ int mt6360_led_set_brightness(enum mt6360_led_id led_id, int brightness)
 {
 	int val;
 
-	if (!IN_RANGE(led_id, 0, MT6360_LED_COUNT))
+	if (!IN_RANGE(led_id, 0, MT6360_LED_COUNT - 1))
 		return EC_ERROR_INVAL;
-	if (!IN_RANGE(brightness, 0, 16))
+	if (!IN_RANGE(brightness, 0, 15))
 		return EC_ERROR_INVAL;
 
 	RETURN_ERROR(mt6360_read8(MT6360_REG_RGB_ISINK(led_id), &val));

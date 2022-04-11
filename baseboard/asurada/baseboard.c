@@ -6,7 +6,6 @@
 /* Asurada baseboard-specific configuration */
 
 #include "adc.h"
-#include "adc_chip.h"
 #include "button.h"
 #include "charge_manager.h"
 #include "charger.h"
@@ -53,29 +52,6 @@ enum gpio_signal hibernate_wake_pins[] = {
 };
 int hibernate_wake_pins_used = ARRAY_SIZE(hibernate_wake_pins);
 
-__override void board_hibernate_late(void)
-{
-	/*
-	 * Turn off PP5000_A. Required for devices without Z-state.
-	 * Don't care for devices with Z-state.
-	 */
-	gpio_set_level(GPIO_EN_PP5000_A, 0);
-
-	/*
-	 * GPIO_EN_SLP_Z not implemented in rev0/1,
-	 * fallback to usual hibernate process.
-	 */
-	if (IS_ENABLED(BOARD_ASURADA) && board_get_version() <= 1)
-		return;
-
-	isl9238c_hibernate(CHARGER_SOLO);
-
-	gpio_set_level(GPIO_EN_SLP_Z, 1);
-
-	/* should not reach here */
-	__builtin_unreachable();
-}
-
 /*
  * I2C channels (A, B, and C) are using the same timing registers (00h~07h)
  * at default.
@@ -95,16 +71,40 @@ __override void board_hibernate_late(void)
 
 /* I2C ports */
 const struct i2c_port_t i2c_ports[] = {
-	{"bat_chg",  IT83XX_I2C_CH_A, 100, GPIO_I2C_A_SCL, GPIO_I2C_A_SDA},
-	{"sensor",   IT83XX_I2C_CH_B, 400, GPIO_I2C_B_SCL, GPIO_I2C_B_SDA},
-	{"usb0",     IT83XX_I2C_CH_C, 400, GPIO_I2C_C_SCL, GPIO_I2C_C_SDA},
-	{"usb1",     IT83XX_I2C_CH_E, 400, GPIO_I2C_E_SCL, GPIO_I2C_E_SDA},
+	{
+		.name = "bat_chg",
+		.port = IT83XX_I2C_CH_A,
+		.kbps = 100,
+		.scl  = GPIO_I2C_A_SCL,
+		.sda  = GPIO_I2C_A_SDA
+	},
+	{
+		.name = "sensor",
+		.port = IT83XX_I2C_CH_B,
+		.kbps = 400,
+		.scl = GPIO_I2C_B_SCL,
+		.sda = GPIO_I2C_B_SDA
+	},
+	{
+		.name = "usb0",
+		.port = IT83XX_I2C_CH_C,
+		.kbps = 400,
+		.scl = GPIO_I2C_C_SCL,
+		.sda = GPIO_I2C_C_SDA
+	},
+	{
+		.name = "usb1",
+		.port = IT83XX_I2C_CH_E,
+		.kbps = 400,
+		.scl = GPIO_I2C_E_SCL,
+		.sda = GPIO_I2C_E_SDA
+	},
 };
 const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
 
-int board_allow_i2c_passthru(int port)
+int board_allow_i2c_passthru(const struct i2c_cmd_desc_t *cmd_desc)
 {
-	return (port == I2C_PORT_VIRTUAL_BATTERY);
+	return (cmd_desc->port == I2C_PORT_VIRTUAL_BATTERY);
 }
 
 const struct cc_para_t *board_get_cc_tuning_parameter(enum usbpd_port port)
@@ -123,24 +123,3 @@ const struct cc_para_t *board_get_cc_tuning_parameter(enum usbpd_port port)
 
 	return &cc_parameter[port];
 }
-
-/* Lid */
-#ifndef TEST_BUILD
-/* This callback disables keyboard when convertibles are fully open */
-void lid_angle_peripheral_enable(int enable)
-{
-	int chipset_in_s0 = chipset_in_state(CHIPSET_STATE_ON);
-
-	if (enable) {
-		keyboard_scan_enable(1, KB_SCAN_DISABLE_LID_ANGLE);
-	} else {
-		/*
-		 * Ensure that the chipset is off before disabling the keyboard.
-		 * When the chipset is on, the EC keeps the keyboard enabled and
-		 * the AP decides whether to ignore input devices or not.
-		 */
-		if (!chipset_in_s0)
-			keyboard_scan_enable(0, KB_SCAN_DISABLE_LID_ANGLE);
-	}
-}
-#endif
