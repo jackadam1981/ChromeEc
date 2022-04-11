@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3512cb66_f0d339e7",
+        "filename": "zephyr/test/drivers/src/host_cmd/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-04-11T21:13:14Z",
+      "side": 1,
+      "message": "Interesting, the C code checks this using a mix signed/unsigned logic:\n\n```\n\tif (host_id \u003e\u003d motion_sensor_count)\n\t\treturn NULL;\n\tsensor \u003d \u0026motion_sensors[host_id];\n\t\t\n```\n\nThe assembly shows that a signed comparison is used:\n```\n        if (host_id \u003e\u003d motion_sensor_count)\n10086ed4:       2804            cmp     r0, #4\n10086ed6:       dc10            bgt.n   10086efa \u003chost_sensor_id_to_real_sensor+0x26\u003e\n                return NULL;\n```\n\n\"bgt\" is the signed version of branch if greater than. \"bhs\" is the unsigned version - branch higher or same.\n\nThis appears to work because the host command interface the packs the sensor number into a `uint8_t`, so -1 gets converted to 0xFF, which is safely below `INT_MAX` and is interpreted as +255.\n\nI\u0027d recommend using `UINT8_MAX` after changing the parameters types on `host_cmd_motion_sense_info()`.",
+      "range": {
+        "startLine": 96,
+        "startChar": 7,
+        "endLine": 96,
+        "endChar": 24
+      },
+      "revId": "d10b597e75e5cf99274385be17a158fb12d76c4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd0a067e_89ac431f",
+        "filename": "zephyr/test/drivers/src/host_cmd/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-04-11T21:13:14Z",
+      "side": 1,
+      "message": "Does this need to check `CONFIG_ONLINE_CALIB`?  Looks like that config option isn\u0027t part of Zephyr at the moment.  Can you open a bug on this?",
+      "range": {
+        "startLine": 140,
+        "startChar": 0,
+        "endLine": 142,
+        "endChar": 0
+      },
+      "revId": "d10b597e75e5cf99274385be17a158fb12d76c4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "24dd494a_e2cd70b7",
+        "filename": "zephyr/test/drivers/src/utils.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-04-11T21:13:14Z",
+      "side": 1,
+      "message": "Both of these values are uint8_t in the host command processing.",
+      "range": {
+        "startLine": 130,
+        "startChar": 31,
+        "endLine": 130,
+        "endChar": 62
+      },
+      "revId": "d10b597e75e5cf99274385be17a158fb12d76c4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
