@@ -1457,6 +1457,9 @@
  */
 #undef CONFIG_CHIPSET_X86_RSMRST_DELAY
 
+/* Passthrough RSMRST_L de-assertion after S5 */
+#undef CONFIG_CHIPSET_X86_RSMRST_AFTER_S5
+
 /* Support PMIC reset(using LDO_EN) in chipset */
 #undef CONFIG_CHIPSET_HAS_PLATFORM_PMIC_RESET
 
@@ -6313,6 +6316,7 @@
 
 #if defined(CONFIG_CHIPSET_APL_GLK)
 #define CONFIG_CHIPSET_HAS_PRE_INIT_CALLBACK
+#define CONFIG_CHIPSET_X86_RSMRST_DELAY
 #endif
 
 #if defined(CONFIG_CHIPSET_ALDERLAKE_SLG4BD44540) || \
