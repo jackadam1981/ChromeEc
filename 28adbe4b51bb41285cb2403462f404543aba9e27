@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5fe68ac5_7a8b4aec",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_pd_ctrl_msg.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2022-04-12T22:35:01Z",
+      "side": 1,
+      "message": "Discussing with Yuval - Ideally these connection functions should be part of their respective emulator files.  This function definition will eventually move to `emul_tcpci_partner_drp.c`",
+      "revId": "28adbe4b51bb41285cb2403462f404543aba9e27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
