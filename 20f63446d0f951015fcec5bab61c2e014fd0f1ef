@@ -52,6 +52,24 @@
       "parentUuid": "90363c23_3b27af0d",
       "revId": "20f63446d0f951015fcec5bab61c2e014fd0f1ef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b5b2081_1f4e8e3b",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_adlp_pwrseq_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-04-12T20:27:24Z",
+      "side": 1,
+      "message": "Fair enough, but you still a default implementation, or overrides added to the test.\n\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/08e09567/zephyr/test/ap_power/src/board.c#65",
+      "parentUuid": "fcc2e8f8_a5ddd329",
+      "revId": "20f63446d0f951015fcec5bab61c2e014fd0f1ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
