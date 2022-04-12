@@ -220,10 +220,35 @@ class NpcxPacker(BinmanPacker):
         yield ro / self.npcx_monitor, self.npcx_monitor
 
 
+# MCHP all we do is set binman's ro file to zephyr.mchp.bin
+class MchpPacker(BinmanPacker):
+    """Packer for RO/RW image to generate a .bin build using FMAP.
+
+    This expects that the build is setup to generate a
+    zephyr.npcx.bin for the RO image, which should be packed using
+    Microchip's loader format.
+    """
+
+    ro_file = "zephyr.mchp.bin"
+
+    # This can probably be removed too and just rely on binman to
+    # check the sizes... see the comment above.
+    def pack_firmware(self, work_dir, jobclient, ro, rw, version_string=""):
+        for path, output_file in super().pack_firmware(
+            work_dir,
+            jobclient,
+            ro,
+            rw,
+            version_string=version_string,
+        ):
+            yield path, output_file
+
+
 # A dictionary mapping packer config names to classes.
 packer_registry = {
     "binman": BinmanPacker,
     "elf": ElfPacker,
     "npcx": NpcxPacker,
     "raw": RawBinPacker,
+    "mchp": MchpPacker,
 }
