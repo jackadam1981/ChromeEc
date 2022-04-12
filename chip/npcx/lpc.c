@@ -192,10 +192,11 @@ static void lpc_generate_sci(void)
 	 * status should be read from bit 1/0 in eSPI VMEVSM(2) register.
 	 */
 	NPCX_HIPMIC(PMC_ACPI) = NPCX_VW_SCI(1);
-	udelay(65);
+	aaaa
+	udelay(135);
 	/* Generate a falling edge */
 	NPCX_HIPMIC(PMC_ACPI) = NPCX_VW_SCI(0);
-	udelay(65);
+	udelay(135);
 	/* Set signal high */
 	NPCX_HIPMIC(PMC_ACPI) = NPCX_VW_SCI(1);
 #else
