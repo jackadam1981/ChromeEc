@@ -16,6 +16,24 @@
       "message": "I\u0027m not clear on how this works. What is the type-C state flow with this change to force sink vs without it?",
       "revId": "53543540fd35aebc723f28d2b8b229612db42a31",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "763c3bba_c38948f6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2022-04-12T06:34:48Z",
+      "side": 1,
+      "message": "It doesn\u0027t have much difference. We delay enabling DRP_TOGGLE for a few seconds until the XHCI init done (`gpio_ap_xhci_init_done\u003d1`). \n\nS5-\u003eS0: initially force sink and delay the DRP toggle at S0\nS0-\u003eS3-\u003eS0: no change for type-c state\nS0-\u003eS5: switch to force sink, no change.\nS0-\u003eS0 reboot AP: switch to force sink, and set to DRP_TOGGLE after XHCI ready.\n\n`gpio_ap_xhci_init_done` is managed by coreboot and it won\u0027t be changing until the AP reset.",
+      "parentUuid": "e5cc1bfc_5288540a",
+      "revId": "53543540fd35aebc723f28d2b8b229612db42a31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
