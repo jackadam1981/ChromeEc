@@ -178,6 +178,7 @@ int virtual_battery_operation(const uint8_t *batt_cmd_head,
 {
 	int val;
 	int year, month, day;
+	char str[32];
 	/*
 	 * We cache battery operational mode locally for both read and write
 	 * commands. If MODE_CAPACITY bit is set, battery capacity will be
@@ -341,6 +342,12 @@ int virtual_battery_operation(const uint8_t *batt_cmd_head,
 			val = 0;
 		}
 		memcpy(dest, &val, bounded_read_len);
+		break;
+	case SB_MANUFACTURER_DATA:
+		/* This may cause an i2c transaction */
+		if (battery_manufacturer_data(str, read_len))
+			return EC_ERROR_INVAL;
+		memcpy(dest, &str, read_len);
 		break;
 	case SB_MANUFACTURER_ACCESS:
 		/* No manuf. access reg access allowed over VB interface */

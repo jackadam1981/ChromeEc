@@ -211,6 +211,11 @@ int battery_design_voltage(int *voltage)
 	return EC_SUCCESS;
 }
 
+int battery_manufacturer_data(char *data, int size);
+{
+	return EC_ERROR_UNIMPLEMENTED;
+}
+
 /**
  * Check if battery allows charging.
  *

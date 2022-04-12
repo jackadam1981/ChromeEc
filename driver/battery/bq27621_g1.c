@@ -519,6 +519,11 @@ int battery_status(int *status)
 	return EC_ERROR_UNIMPLEMENTED;
 }
 
+int battery_manufacturer_data(char *data, int size)
+{
+	return EC_ERROR_UNIMPLEMENTED;
+}
+
 enum battery_present battery_is_present(void)
 {
 	return EC_ERROR_UNIMPLEMENTED;

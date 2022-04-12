@@ -170,6 +170,11 @@ int battery_status(int *status)
 	return EC_SUCCESS;
 }
 
+int battery_manufacturer_data(char *data, int size)
+{
+	return EC_UNIMPLEMENTED;
+}
+
 enum battery_present battery_is_present(void)
 {
 	int temp;

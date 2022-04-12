@@ -205,6 +205,11 @@ int battery_time_to_full(int *minutes)
 	return sb_read(SB_AVERAGE_TIME_TO_FULL, minutes);
 }
 
+int battery_manufacturer_data(char *data, int size)
+{
+	return sb_read_string(SB_MANUFACTURER_DATA, data, size);
+}
+
 /* Read battery status */
 int battery_status(int *status)
 {
