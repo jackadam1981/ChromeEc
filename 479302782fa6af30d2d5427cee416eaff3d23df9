@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e71535d2_57e75f4b",
+        "filename": "docs/zephyr/zephyr_ppc.md",
+        "patchSetId": 48
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-04-12T19:51:44Z",
+      "side": 1,
+      "message": "Do you think it\u0027s worth organizing the USB-C DTS files into subdirectories related to the chip type.  For instance\n```\nzephyr/dts/bindings/usbc.\n    ./bc12\n    ./ppc\n    ./tcpc\n    ./mux\n    \nThen this document can point to the ./ppc directory.",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 48
+      },
+      "revId": "479302782fa6af30d2d5427cee416eaff3d23df9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "22e77d9a_ab96c9a1",
+        "filename": "docs/zephyr/zephyr_ppc.md",
+        "patchSetId": 48
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-04-12T19:51:44Z",
+      "side": 1,
+      "message": "There is also the `ppc_dump` command.",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 74
+      },
+      "revId": "479302782fa6af30d2d5427cee416eaff3d23df9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44fc91ac_8a42aecd",
+        "filename": "docs/zephyr/zephyr_ppc.md",
+        "patchSetId": 48
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-04-12T19:51:44Z",
+      "side": 1,
+      "message": "Wrap in triple backticks.",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 0
+      },
+      "revId": "479302782fa6af30d2d5427cee416eaff3d23df9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
