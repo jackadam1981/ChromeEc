@@ -34,6 +34,24 @@
       "parentUuid": "e5cc1bfc_5288540a",
       "revId": "53543540fd35aebc723f28d2b8b229612db42a31",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e4f5798_2181c2f7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-04-12T21:13:38Z",
+      "side": 1,
+      "message": "Does forcing sink state avoid a hard reset? If so, how?",
+      "parentUuid": "763c3bba_c38948f6",
+      "revId": "53543540fd35aebc723f28d2b8b229612db42a31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
