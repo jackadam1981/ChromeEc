@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "980f8ef7_2af79c59",
+        "filename": "zephyr/emul/tcpc/emul_tcpci_partner_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 532,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2022-04-12T22:29:13Z",
+      "side": 1,
+      "message": "There\u0027s a third value for this enum `PD_ROLE_DISCONNECTED \u003d 2`. I don\u0027t want to inadvertently convert from this to `UFP` or `DFP`.  I can add this as an `else` condition and leave a comment to do nothing so it\u0027s a bit more explicit and future proof.",
+      "parentUuid": "80002a9b_cc64dc4c",
+      "range": {
+        "startLine": 528,
+        "startChar": 0,
+        "endLine": 532,
+        "endChar": 2
+      },
+      "revId": "dde4b24c34f8c30d50c0692082955cc3438200dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "04f19eb4_229b381e",
         "filename": "zephyr/emul/tcpc/emul_tcpci_partner_common.c",
         "patchSetId": 1
@@ -37,6 +61,24 @@
       "writtenOn": "2022-04-12T21:32:59Z",
       "side": 1,
       "message": "When we send or receive a Soft Reset, we should clear the active AMS. Otherwise, we\u0027ll run into the same error again next time the partner sends a control message.",
+      "revId": "dde4b24c34f8c30d50c0692082955cc3438200dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "09cc2cef_a35789c3",
+        "filename": "zephyr/emul/tcpc/emul_tcpci_partner_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 711,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2022-04-12T22:29:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "04f19eb4_229b381e",
       "revId": "dde4b24c34f8c30d50c0692082955cc3438200dd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
