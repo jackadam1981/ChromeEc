@@ -115,7 +115,8 @@
 			enum-name = "GPIO_EN_PP3300_A";
 		};
 		pch-pwrok-ec-r {
-			gpios = <&gpiod 3 GPIO_INPUT>;
+			gpios = <&gpiod 3 GPIO_OUTPUT_LOW>;
+			enum-name = "GPIO_PCH_PWROK";
 		};
 		sys_pwrok_ec: sys-pwrok-ec {
 			gpios = <&gpiof 5 GPIO_OUTPUT_LOW>;
