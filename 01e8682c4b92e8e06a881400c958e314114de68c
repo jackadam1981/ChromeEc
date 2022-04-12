@@ -16,6 +16,24 @@
       "message": "Is this relevant?",
       "revId": "01e8682c4b92e8e06a881400c958e314114de68c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6fa12968_c667576a",
+        "filename": "zephyr/test/ap_power/prj.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-04-12T03:27:37Z",
+      "side": 1,
+      "message": "Unfortunately yes, due to a tricky ordering of Kconfigs and defaults with the power sequence code, and how the test code does not include all the Kconfig files.",
+      "parentUuid": "a54c97bc_b027cc49",
+      "revId": "01e8682c4b92e8e06a881400c958e314114de68c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
