@@ -16,6 +16,24 @@
       "message": "Hi Andrew and Peter, can we have the rest reviewed https://chromium-review.googlesource.com/q/topic:zephyr-s0ix? I updated those.",
       "revId": "3bcd77164b98be12fd78025cc7710fe8eaf81939",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "36bf747e_a029dfd6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-04-12T05:47:39Z",
+      "side": 1,
+      "message": "OK will take a look - BTW, can we add the zephyr-inbuilt-pwrseq topic to these CLs?\nI am not sure if Gerrit allows multiple topics, but I can try it and see it works.",
+      "parentUuid": "542c6210_e96e7bec",
+      "revId": "3bcd77164b98be12fd78025cc7710fe8eaf81939",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
