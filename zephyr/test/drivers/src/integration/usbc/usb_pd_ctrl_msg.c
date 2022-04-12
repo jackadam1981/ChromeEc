@@ -132,21 +132,18 @@ static void usb_pd_ctrl_msg_after(void *data)
 }
 
 ZTEST_SUITE(usb_pd_ctrl_msg_test_sink, drivers_predicate_post_main,
-	    usb_pd_ctrl_msg_setup_sink, NULL, usb_pd_ctrl_msg_after, NULL);
+	    usb_pd_ctrl_msg_setup_sink, usb_pd_ctrl_msg_before,
+	    usb_pd_ctrl_msg_after, NULL);
 
 ZTEST_SUITE(usb_pd_ctrl_msg_test_source, drivers_predicate_post_main,
-	    usb_pd_ctrl_msg_setup_source, NULL, usb_pd_ctrl_msg_after, NULL);
+	    usb_pd_ctrl_msg_setup_source, usb_pd_ctrl_msg_before,
+	    usb_pd_ctrl_msg_after, NULL);
 
 ZTEST_F(usb_pd_ctrl_msg_test_sink, verify_vconn_swap)
 {
 	struct usb_pd_ctrl_msg_test_fixture *fixture = &this->fixture;
 	struct ec_response_typec_status snk_resp = { 0 };
 	int rv = 0;
-
-	/* TODO(b/228593065): Revert this once ZTEST fix before ordering
-	 * is pulled in
-	 */
-	usb_pd_ctrl_msg_before(fixture);
 
 	snk_resp = host_cmd_typec_status(TEST_USB_PORT);
 	zassert_equal(PD_ROLE_VCONN_SRC, snk_resp.vconn_role,
@@ -169,11 +166,6 @@ ZTEST_F(usb_pd_ctrl_msg_test_sink, verify_pr_swap)
 	struct usb_pd_ctrl_msg_test_fixture *fixture = &this->fixture;
 	struct ec_response_typec_status snk_resp = { 0 };
 	int rv = 0;
-
-	/* TODO(b/228593065): Revert this once ZTEST fix before ordering
-	 * is pulled in
-	 */
-	usb_pd_ctrl_msg_before(fixture);
 
 	snk_resp = host_cmd_typec_status(TEST_USB_PORT);
 	zassert_equal(PD_ROLE_SINK, snk_resp.power_role,
@@ -204,10 +196,7 @@ ZTEST_F(usb_pd_ctrl_msg_test_sink, verify_pr_swap)
 
 ZTEST_F(usb_pd_ctrl_msg_test_sink, verify_dr_swap)
 {
-	struct usb_pd_ctrl_msg_test_fixture *fixture = &this->fixture;
 	struct ec_response_typec_status typec_status = { 0 };
-
-	usb_pd_ctrl_msg_before(fixture);
 
 	/* Give TCPM time to trigger DR Swap request */
 	k_sleep(K_MSEC(20));
@@ -222,11 +211,6 @@ ZTEST_F(usb_pd_ctrl_msg_test_source, verify_dr_swap)
 	struct usb_pd_ctrl_msg_test_fixture *fixture = &this->fixture;
 	struct ec_response_typec_status typec_status = { 0 };
 	int rv = 0;
-
-	/* TODO(b/228593065): Revert this once ZTEST fix before ordering
-	 * is pulled in
-	 */
-	usb_pd_ctrl_msg_before(fixture);
 
 	typec_status = host_cmd_typec_status(TEST_USB_PORT);
 	zassert_equal(PD_ROLE_DFP, typec_status.data_role,
@@ -247,10 +231,7 @@ ZTEST_F(usb_pd_ctrl_msg_test_source, verify_dr_swap)
 
 ZTEST_F(usb_pd_ctrl_msg_test_sink, verify_dpm_dr_swap)
 {
-	struct usb_pd_ctrl_msg_test_fixture *fixture = &this->fixture;
 	struct ec_response_typec_status typec_status = { 0 };
-
-	usb_pd_ctrl_msg_before(fixture);
 
 	typec_status = host_cmd_typec_status(TEST_USB_PORT);
 	zassert_equal(PD_ROLE_DFP, typec_status.data_role,
@@ -266,10 +247,7 @@ ZTEST_F(usb_pd_ctrl_msg_test_sink, verify_dpm_dr_swap)
 
 ZTEST_F(usb_pd_ctrl_msg_test_source, verify_dpm_dr_swap)
 {
-	struct usb_pd_ctrl_msg_test_fixture *fixture = &this->fixture;
 	struct ec_response_typec_status typec_status = { 0 };
-
-	usb_pd_ctrl_msg_before(fixture);
 
 	typec_status = host_cmd_typec_status(TEST_USB_PORT);
 	zassert_equal(PD_ROLE_DFP, typec_status.data_role,
