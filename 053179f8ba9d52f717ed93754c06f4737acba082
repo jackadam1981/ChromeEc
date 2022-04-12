@@ -16,6 +16,24 @@
       "message": "Can you make all these renames and fixture/this changes into a separate trivial refactoring CL and just have the new and substantively changed code in this CL? I\u0027m having trouble differentiating functional changes from refactoring here.",
       "revId": "053179f8ba9d52f717ed93754c06f4737acba082",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b8abec82_f33f59c7",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_pd_ctrl_msg.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2022-04-12T22:31:27Z",
+      "side": 1,
+      "message": "I need the separate fixtures to support the sink and source variants of the DR Swap tests.  I moved the refactoring/naming to a new CL. Hopefully this is a little less messy.",
+      "parentUuid": "a605ced5_c29fe2be",
+      "revId": "053179f8ba9d52f717ed93754c06f4737acba082",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
