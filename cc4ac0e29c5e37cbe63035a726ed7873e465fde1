@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6f9d647_742559db",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-04-12T21:17:33Z",
+      "side": 1,
+      "message": "Should pwm.c also be renamed? The headline of this commit is, \"drop the shim PWM code,\" but there is still \"PWM\" code inside the shim.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 46
+      },
+      "revId": "cc4ac0e29c5e37cbe63035a726ed7873e465fde1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
