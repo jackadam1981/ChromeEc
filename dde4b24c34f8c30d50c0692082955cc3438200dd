@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80002a9b_cc64dc4c",
+        "filename": "zephyr/emul/tcpc/emul_tcpci_partner_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 532,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-04-12T21:32:59Z",
+      "side": 1,
+      "message": "Nit: There are only 2 sensible values for this. I\u0027d suggest something like\n data-\u003edata_role \u003d (data-\u003edata_role \u003d\u003d PD_ROLE_UFP) ? PD_ROLE_DFP : PD_ROLE_UFP;`\n\nIt\u0027s a little terser, but also, doing `if/else` instead of `if/else if` ensures that if the field were somehow set to a nonsensical value, there is a mechanism to eventually return it to a sensible value.",
+      "range": {
+        "startLine": 528,
+        "startChar": 0,
+        "endLine": 532,
+        "endChar": 2
+      },
+      "revId": "dde4b24c34f8c30d50c0692082955cc3438200dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04f19eb4_229b381e",
+        "filename": "zephyr/emul/tcpc/emul_tcpci_partner_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 711,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-04-12T21:32:59Z",
+      "side": 1,
+      "message": "When we send or receive a Soft Reset, we should clear the active AMS. Otherwise, we\u0027ll run into the same error again next time the partner sends a control message.",
+      "revId": "dde4b24c34f8c30d50c0692082955cc3438200dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
