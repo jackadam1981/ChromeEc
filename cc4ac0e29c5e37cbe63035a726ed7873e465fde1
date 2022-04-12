@@ -22,6 +22,30 @@
       },
       "revId": "cc4ac0e29c5e37cbe63035a726ed7873e465fde1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6bc52910_2b350edf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-04-12T21:32:11Z",
+      "side": 1,
+      "message": "Yeah good point, I thought about it, but then there\u0027s some similar PWM support code around the various drivers (LED in particular) that I think I\u0027ll try to unify and move to a common file eventually, so I\u0027ve figured I may as well keep this generic for the moment and either reuse it or rename it later if we start shuffling all these around in zephyr/drivers. I would keep it for now, lmk if you feel strongly about it.",
+      "parentUuid": "c6f9d647_742559db",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 46
+      },
+      "revId": "cc4ac0e29c5e37cbe63035a726ed7873e465fde1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
