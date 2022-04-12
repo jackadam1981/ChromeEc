@@ -72,6 +72,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0a7a48de_db6d6fa8",
+        "filename": "docs/zephyr/zephyr_usbc.md",
+        "patchSetId": 45
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-04-12T20:05:26Z",
+      "side": 1,
+      "message": "I see that this came from Jett\u0027s original documentation in https://chromium.googlesource.com/chromiumos/platform/ec/+/08e09567/docs/usb-c.md#\n\nI think we should split out the \"Different PD Stacks\" section into a separate doc as this is specific to the legacy code.  Then both the legacy USB-C and the Zephyr USB-C should point to the shared USB-C overview doc.",
+      "parentUuid": "a17916e3_b9f3cc4c",
+      "range": {
+        "startLine": 8,
+        "startChar": 42,
+        "endLine": 22,
+        "endChar": 69
+      },
+      "revId": "1a0442e8dc25b1da22c012d0cb44020692624bfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4bc00a62_4f58eee0",
         "filename": "docs/zephyr/zephyr_usbc.md",
         "patchSetId": 45
