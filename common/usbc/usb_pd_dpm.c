@@ -579,6 +579,7 @@ static void balance_source_ports(void)
 		if (count_port_bits(max_current_claimed) <
 						CONFIG_USB_PD_3A_PORTS) {
 			max_current_claimed |= BIT(new_max_port);
+			ccprints("[SC] 3A, port=%d", new_max_port);
 			typec_select_src_current_limit_rp(new_max_port,
 							  TYPEC_RP_3A0);
 		} else if (non_pd_sink_max_requested & max_current_claimed) {
@@ -668,10 +669,10 @@ void dpm_evaluate_sink_fixed_pdo(int port, uint32_t vsafe5v_pdo)
 	/* Verify partner supplied valid vSafe5V fixed object first */
 	if ((vsafe5v_pdo & PDO_TYPE_MASK) != PDO_TYPE_FIXED)
 		return;
-
+	ccprints("[SC] 11");
 	if (PDO_FIXED_VOLTAGE(vsafe5v_pdo) != 5000)
 		return;
-
+	ccprints("[SC] 22");
 	if (pd_get_power_role(port) == PD_ROLE_SOURCE) {
 		if (CONFIG_USB_PD_3A_PORTS == 0)
 			return;
@@ -679,7 +680,7 @@ void dpm_evaluate_sink_fixed_pdo(int port, uint32_t vsafe5v_pdo)
 		/* Valid PDO to process, so evaluate whether >1.5A is needed */
 		if (PDO_FIXED_CURRENT(vsafe5v_pdo) <= 1500)
 			return;
-
+		ccprints("[SC] 33");
 		atomic_or(&sink_max_pdo_requested, BIT(port));
 	} else {
 		int frs_current = vsafe5v_pdo & PDO_FIXED_FRS_CURR_MASK;
@@ -708,7 +709,7 @@ void dpm_evaluate_sink_fixed_pdo(int port, uint32_t vsafe5v_pdo)
 			return;
 		}
 	}
-
+	ccprints("[SC] 44");
 	balance_source_ports();
 }
 

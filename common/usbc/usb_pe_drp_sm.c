@@ -2488,7 +2488,7 @@ static void pe_src_negotiate_capability_entry(int port)
 
 	/* Get message payload */
 	payload = *(uint32_t *)(&rx_emsg[port].buf);
-
+	ccprints("[SC] payload=%x", payload);
 	/*
 	 * Evaluate the Request from the Attached Sink
 	 */
@@ -6849,6 +6849,10 @@ static void pe_dr_get_sink_cap_run(int port)
 		cnt = PD_HEADER_CNT(rx_emsg[port].header);
 		ext = PD_HEADER_EXT(rx_emsg[port].header);
 		sop = PD_HEADER_GET_SOP(rx_emsg[port].header);
+		ccprints("[SC] type=%x",  type);
+		ccprints("[SC] cnt=%x", cnt);
+		ccprints("[SC] ext=%x",  ext);
+		ccprints("[SC] sop=%x",  sop);
 
 		if (ext == 0 && sop == TCPCI_MSG_SOP) {
 			if ((cnt > 0) && (type == PD_DATA_SINK_CAP)) {
@@ -6858,7 +6862,7 @@ static void pe_dr_get_sink_cap_run(int port)
 							sizeof(uint32_t);
 
 				pe_set_snk_caps(port, cap_cnt, payload);
-
+				ccprints("[SC] payload[0]=%x",  payload[0]);
 				dpm_evaluate_sink_fixed_pdo(port, payload[0]);
 				pe_set_ready_state(port);
 				return;

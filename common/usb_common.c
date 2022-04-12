@@ -330,7 +330,8 @@ int pd_check_requested_voltage(uint32_t rdo, const int port)
 	uint32_t pdo_ma;
 	const uint32_t *src_pdo;
 	int pdo_cnt;
-
+	ccprints("[SC] max_ma=%d", max_ma);
+	ccprints("[SC] op_ma=%d", op_ma);
 	pdo_cnt = pd_get_source_pdo(&src_pdo, port);
 
 	/* Check for invalid index */
@@ -344,12 +345,15 @@ int pd_check_requested_voltage(uint32_t rdo, const int port)
 	/* check current ... */
 	pdo = src_pdo[idx - 1];
 	pdo_ma = (pdo & 0x3ff);
-
+	ccprints("[SC] pdo_ma=%d", pdo_ma);
 	if (op_ma > pdo_ma)
 		return EC_ERROR_INVAL; /* too much op current */
 
 	if (max_ma > pdo_ma && !(rdo & RDO_CAP_MISMATCH))
 		return EC_ERROR_INVAL; /* too much max current */
+
+	if (op_ma != pdo_ma)
+		dpm_remove_sink(port);
 
 	CPRINTF("Requested %d mV %d mA (for %d/%d mA)\n",
 		 ((pdo >> 10) & 0x3ff) * 50, (pdo & 0x3ff) * 10,
