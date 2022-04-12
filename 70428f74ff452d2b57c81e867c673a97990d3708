@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a97b5483_e7e78955",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-04-12T19:56:10Z",
+      "side": 1,
+      "message": "Please add the common shim code as a separate CL from any board changes.  Specifically move the krabby board changes into a separate CL.",
+      "revId": "70428f74ff452d2b57c81e867c673a97990d3708",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
