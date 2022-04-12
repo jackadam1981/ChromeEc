@@ -160,8 +160,6 @@
 
 #define CONFIG_ACCELGYRO_BMI160		/* Base accel */
 
-/* Lid operates in forced mode, base in FIFO */
-#define CONFIG_ACCEL_FORCE_MODE_MASK BIT(LID_ACCEL)
 #define CONFIG_ACCEL_FIFO
 #define CONFIG_ACCEL_FIFO_SIZE 256	/* Must be a power of 2 */
 #define CONFIG_ACCEL_FIFO_THRES (CONFIG_ACCEL_FIFO_SIZE / 3)
