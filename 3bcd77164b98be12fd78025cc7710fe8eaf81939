@@ -34,6 +34,23 @@
       "parentUuid": "542c6210_e96e7bec",
       "revId": "3bcd77164b98be12fd78025cc7710fe8eaf81939",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f2018bb6_d8c5c9f8",
+        "filename": "zephyr/subsys/ap_pwrseq/power_host_sleep.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-04-12T06:08:34Z",
+      "side": 1,
+      "message": "So this is a little weird how this is defined outside the enum, and relies\non the enum not using 0. But I see that is how all the legacy code uses it.",
+      "revId": "3bcd77164b98be12fd78025cc7710fe8eaf81939",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
