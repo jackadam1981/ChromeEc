@@ -40,3 +40,8 @@ def register_binman_project(**kwargs):
 def register_npcx_project(**kwargs):
     kwargs.setdefault("output_packer", zmake.output_packers.NpcxPacker)
     return register_binman_project(**kwargs)
+
+
+def register_mchp_project(**kwargs):
+    kwargs.setdefault("output_packer", zmake.output_packers.MchpPacker)
+    return register_binman_project(**kwargs)
