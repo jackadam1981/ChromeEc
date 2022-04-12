@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "80bcdc52_b30ccfda",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1513493
+      },
+      "writtenOn": "2022-04-12T15:46:52Z",
+      "side": 1,
+      "message": "nit: be",
+      "range": {
+        "startLine": 12,
+        "startChar": 28,
+        "endLine": 12,
+        "endChar": 30
+      },
+      "revId": "4191785f30703fd063bee3a6711cf5be58c5b531",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "56047bdd_38f41782",
+        "filename": "include/rgb_keyboard.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1513493
+      },
+      "writtenOn": "2022-04-12T15:46:52Z",
+      "side": 1,
+      "message": "nit: Any better name idea? Does gcc stand for something?",
+      "range": {
+        "startLine": 43,
+        "startChar": 9,
+        "endLine": 43,
+        "endChar": 12
+      },
+      "revId": "4191785f30703fd063bee3a6711cf5be58c5b531",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
