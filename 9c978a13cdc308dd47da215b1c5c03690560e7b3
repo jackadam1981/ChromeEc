@@ -16,6 +16,24 @@
       "message": "For this to work, config.star changes will be needed to tie different skus with proper fw_config value as well.\n\nCan you put them altogether with Cq-Depend to tie them up?\n\nThanks.",
       "revId": "9c978a13cdc308dd47da215b1c5c03690560e7b3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eabe7b11_6accf7be",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1384576
+      },
+      "writtenOn": "2022-04-12T03:01:04Z",
+      "side": 1,
+      "message": "Waiting for depend cl upload now",
+      "parentUuid": "15194256_cc410a57",
+      "revId": "9c978a13cdc308dd47da215b1c5c03690560e7b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
