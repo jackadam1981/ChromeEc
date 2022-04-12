@@ -25,12 +25,18 @@ const struct intel_x86_pwrok_signal pwrok_signal_assert_list[] = {
 		.gpio = GPIO_PCH_SYS_PWROK,
 		.delay_ms = 3,
 	},
+	{.
+		gpio = GPIO_PCH_PWROK,
+	},
 };
 const int pwrok_signal_assert_count = ARRAY_SIZE(pwrok_signal_assert_list);
 
 const struct intel_x86_pwrok_signal pwrok_signal_deassert_list[] = {
 	{
 		.gpio = GPIO_PCH_SYS_PWROK,
+	},
+	{
+		.gpio = GPIO_PCH_PWROK,
 	},
 };
 const int pwrok_signal_deassert_count = ARRAY_SIZE(pwrok_signal_deassert_list);
