@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "09e403f5_1cf8e790",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2022-04-12T20:59:28Z",
+      "side": 1,
+      "message": "I realize this is not a super state to leave the SoC in, but without the extra mux between host and the other agents accessing the flash, this seems like the only stable way to leave C2D2 working for all boards. ",
+      "revId": "bff209292f208587844636e7583af6ba754e186c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
