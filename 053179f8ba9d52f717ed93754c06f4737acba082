@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a605ced5_c29fe2be",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_pd_ctrl_msg.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-04-12T21:37:47Z",
+      "side": 1,
+      "message": "Can you make all these renames and fixture/this changes into a separate trivial refactoring CL and just have the new and substantively changed code in this CL? I\u0027m having trouble differentiating functional changes from refactoring here.",
+      "revId": "053179f8ba9d52f717ed93754c06f4737acba082",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
