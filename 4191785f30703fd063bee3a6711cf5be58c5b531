@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "2ee07cb6_42dccc6d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-04-12T18:17:17Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "80bcdc52_b30ccfda",
+      "range": {
+        "startLine": 12,
+        "startChar": 28,
+        "endLine": 12,
+        "endChar": 30
+      },
+      "revId": "4191785f30703fd063bee3a6711cf5be58c5b531",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "56047bdd_38f41782",
         "filename": "include/rgb_keyboard.h",
         "patchSetId": 5
@@ -37,6 +61,30 @@
       "writtenOn": "2022-04-12T15:46:52Z",
       "side": 1,
       "message": "nit: Any better name idea? Does gcc stand for something?",
+      "range": {
+        "startLine": 43,
+        "startChar": 9,
+        "endLine": 43,
+        "endChar": 12
+      },
+      "revId": "4191785f30703fd063bee3a6711cf5be58c5b531",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "705e4af1_218f2eec",
+        "filename": "include/rgb_keyboard.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-04-12T18:17:17Z",
+      "side": 1,
+      "message": "Updated the comment.\n\nGCC is used in the datasheets of IS31FL3743B and AW20198. So, I don\u0027t think it\u0027s entirely obscure. Looks like it\u0027s a de facto standard.",
+      "parentUuid": "56047bdd_38f41782",
       "range": {
         "startLine": 43,
         "startChar": 9,
