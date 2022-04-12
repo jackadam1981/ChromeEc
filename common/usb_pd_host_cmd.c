@@ -313,12 +313,14 @@ static enum ec_status hc_usb_pd_control(struct host_cmd_handler_args *args)
 	}
 
 	if (IS_ENABLED(CONFIG_USBC_SS_MUX) &&
-		p->mux != USB_PD_CTRL_MUX_NO_CHANGE)
+		p->mux != USB_PD_CTRL_MUX_NO_CHANGE) {
+		ccprints("will tsai usb_mux_set-6");
 		usb_mux_set(p->port, typec_mux_map[p->mux],
 			    typec_mux_map[p->mux] == USB_PD_MUX_NONE ?
 			    USB_SWITCH_DISCONNECT :
 			    USB_SWITCH_CONNECT,
 			    polarity_rm_dts(pd_get_polarity(p->port)));
+		}
 
 	if (p->swap == USB_PD_CTRL_SWAP_DATA) {
 		pd_request_data_swap(p->port);

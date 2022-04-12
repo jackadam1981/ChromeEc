@@ -211,6 +211,7 @@ void dpm_vdm_acked(int port, enum tcpci_msg_type type, int vdo_count,
 
 	switch (svid) {
 	case USB_SID_DISPLAYPORT:
+		ccprints("will tsai USB_SID_DISPLAYPORT");
 		dp_vdm_acked(port, type, vdo_count, vdm);
 		break;
 	case USB_VID_INTEL:

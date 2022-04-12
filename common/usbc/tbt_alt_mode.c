@@ -394,6 +394,7 @@ void intel_vdm_naked(int port, enum tcpci_msg_type type, uint8_t vdm_cmd)
 		tbt_state[port] = TBT_EXIT_SOP_PRIME;
 		break;
 	case TBT_EXIT_SOP_PRIME:
+		ccprints("will tsai TBT_EXIT_SOP_PRIME");
 		set_usb_mux_with_current_data_role(port);
 		if (TBT_CHK_FLAG(port, TBT_FLAG_RETRY_DONE)) {
 			/*

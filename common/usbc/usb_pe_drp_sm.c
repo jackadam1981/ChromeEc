@@ -769,6 +769,7 @@ static void pe_init(int port)
 	pe[port].tx_type = TCPCI_MSG_INVALID;
 	pe[port].events = 0;
 
+	ccprints("will tsai tc_pd_connection-1");
 	tc_pd_connection(port, 0);
 
 	if (pd_get_power_role(port) == PD_ROLE_SOURCE)
@@ -2398,6 +2399,7 @@ static void pe_src_send_capabilities_run(int port)
 
 			/* We are PD connected */
 			PE_SET_FLAG(port, PE_FLAGS_PD_CONNECTION);
+			ccprints("will tsai tc_pd_connection-2");
 			tc_pd_connection(port, 1);
 
 			/*
@@ -3225,6 +3227,7 @@ static void pe_snk_select_capability_entry(int port)
 
 	/* We are PD Connected */
 	PE_SET_FLAG(port, PE_FLAGS_PD_CONNECTION);
+	ccprints("will tsai tc_pd_connection-3");
 	tc_pd_connection(port, 1);
 }
 
@@ -5963,6 +5966,7 @@ static void pe_vdm_request_dpm_run(int port)
 		 * PE initiator VDM-ACKed state for requested VDM, like
 		 * PE_INIT_VDM_FOO_ACKed, embedded here.
 		 */
+		ccprints("will tsai VDM_RESULT_ACK");
 		dpm_vdm_acked(port, sop, cnt, payload);
 
 		if (sop == TCPCI_MSG_SOP && svid == USB_SID_DISPLAYPORT &&
@@ -7150,6 +7154,7 @@ static void pe_ddr_perform_data_reset_entry(int port)
 	 *    b) If operating in USB 3.2 remove the port’s Rx Terminations.
 	 *    c) If operating in [USB4] drive the port’s SBTX to a logic low.
 	 */
+	ccprints("will tsai usb_mux_set-13");
 	usb_mux_set(port, USB_PD_MUX_NONE, USB_SWITCH_DISCONNECT,
 			polarity_rm_dts(pd_get_polarity(port)));
 
@@ -7212,6 +7217,7 @@ static void pe_ddr_perform_data_reset_run(int port)
 		 * interpretations are mutually exclusive. Resolve that
 		 * ambiguity and update this implementation.
 		 */
+		ccprints("will tsai usb_mux_set-14");
 		usb_mux_set(port, USB_PD_MUX_NONE, USB_SWITCH_DISCONNECT,
 				polarity_rm_dts(pd_get_polarity(port)));
 	} else if (IS_ENABLED(CONFIG_USBC_VCONN) &&

@@ -107,6 +107,7 @@ static int pd_allocate_mode(int port, enum tcpci_msg_type type,
 			 * TODO(b/155890173): Support AP-directed mode entry
 			 * where the mode is unknown to the TCPM.
 			 */
+			ccprints("will tsai supported_modes");
 			if ((svidp->svid != supported_modes[i].svid) ||
 			    (svid && (svidp->svid != svid)))
 				continue;
@@ -872,6 +873,7 @@ void set_tbt_compat_mode_ready(int port)
 			ppc_set_sbu(port, 1);
 
 		/* Set usb mux to Thunderbolt-compatible mode */
+		ccprints("will tsai usb_mux_set-4");
 		usb_mux_set(port, USB_PD_MUX_TBT_COMPAT_ENABLED,
 			USB_SWITCH_CONNECT,
 			polarity_rm_dts(pd_get_polarity(port)));
@@ -1301,6 +1303,7 @@ __overridable void svdm_dp_post_config(int port)
 	/* Connect the SBU and USB lines to the connector. */
 	if (IS_ENABLED(CONFIG_USBC_PPC_SBU))
 		ppc_set_sbu(port, 1);
+	ccprints("will tsai usb_mux_set-5");
 	usb_mux_set(port, mux_mode, USB_SWITCH_CONNECT,
 		polarity_rm_dts(pd_get_polarity(port)));
 

@@ -553,6 +553,7 @@ void set_usb_mux_with_current_data_role(int port)
 				(mux_mode == USB_PD_MUX_NONE) ?
 				USB_SWITCH_DISCONNECT : USB_SWITCH_CONNECT;
 
+		ccprints("will tsai usb_mux_set-1");
 		usb_mux_set(port, mux_mode, usb_switch_mode,
 				polarity_rm_dts(pd_get_polarity(port)));
 	}
@@ -561,6 +562,7 @@ void set_usb_mux_with_current_data_role(int port)
 void usb_mux_set_safe_mode(int port)
 {
 	if (IS_ENABLED(CONFIG_USBC_SS_MUX)) {
+		ccprints("will tsai usb_mux_set-2");
 		usb_mux_set(port, IS_ENABLED(CONFIG_USB_MUX_VIRTUAL) ?
 			USB_PD_MUX_SAFE_MODE : USB_PD_MUX_NONE,
 			USB_SWITCH_CONNECT,
@@ -574,9 +576,11 @@ void usb_mux_set_safe_mode(int port)
 
 void usb_mux_set_safe_mode_exit(int port)
 {
-	if (IS_ENABLED(CONFIG_USBC_SS_MUX))
+	if (IS_ENABLED(CONFIG_USBC_SS_MUX)) {
+		ccprints("will tsai usb_mux_set-3");
 		usb_mux_set(port, USB_PD_MUX_NONE, USB_SWITCH_CONNECT,
 			    polarity_rm_dts(pd_get_polarity(port)));
+	}
 
 	/* Isolate the SBU lines. */
 	if (IS_ENABLED(CONFIG_USBC_PPC_SBU))

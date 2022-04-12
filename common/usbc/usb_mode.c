@@ -124,7 +124,8 @@ void usb4_exit_mode_request(int port)
 	usb4_state[port] = USB4_START;
 	usb_mux_set_safe_mode_exit(port);
 	/* If TBT mode is active, leave safe state for mode exit VDMs */
-	if (!tbt_is_active(port))
+	if (!tbt_is_active(port)) {
+		ccprints("will tsai usb4_exit_mode_request");
 		set_usb_mux_with_current_data_role(port);
 }
 
@@ -139,6 +140,7 @@ void enter_usb_failed(int port)
 	 * Since Enter USB sets the mux state to SAFE mode, fall back
 	 * to USB mode on receiving a NAK.
 	 */
+	ccprints("will tsai usb_mux_set-11");
 	usb_mux_set(port, USB_PD_MUX_USB_ENABLED, USB_SWITCH_CONNECT,
 		    polarity_rm_dts(pd_get_polarity(port)));
 
@@ -249,6 +251,7 @@ void enter_usb_accepted(int port, enum tcpci_msg_type type)
 		usb4_state[port] = USB4_ACTIVE;
 
 		/* Set usb mux to USB4 mode */
+		ccprints("will tsai usb_mux_set-12");
 		usb_mux_set(port, USB_PD_MUX_USB4_ENABLED, USB_SWITCH_CONNECT,
 			    polarity_rm_dts(pd_get_polarity(port)));
 

@@ -147,6 +147,7 @@ void usb_retimer_fw_update_process_op_cb(int port)
 		result_mux_get = true;
 		break;
 	case USB_RETIMER_FW_UPDATE_SET_USB:
+		ccprints("will tsai usb_mux_set-15");
 		usb_mux_set(port, USB_PD_MUX_USB_ENABLED,
 			USB_SWITCH_CONNECT, pd_get_polarity(port));
 		result_mux_get = true;
@@ -156,11 +157,13 @@ void usb_retimer_fw_update_process_op_cb(int port)
 		result_mux_get = true;
 		break;
 	case USB_RETIMER_FW_UPDATE_SET_TBT:
+		ccprints("will tsai usb_mux_set-16");
 		usb_mux_set(port, USB_PD_MUX_TBT_COMPAT_ENABLED,
 			USB_SWITCH_CONNECT, pd_get_polarity(port));
 		result_mux_get = true;
 		break;
 	case USB_RETIMER_FW_UPDATE_DISCONNECT:
+		ccprints("will tsai usb_mux_set-17");
 		usb_mux_set(port, USB_PD_MUX_NONE,
 			USB_SWITCH_DISCONNECT, pd_get_polarity(port));
 		result_mux_get = true;

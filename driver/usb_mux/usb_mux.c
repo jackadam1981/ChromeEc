@@ -154,8 +154,10 @@ __maybe_unused static void mux_task_enqueue(int port, enum mux_config_type type,
 
 	if (queue_add_unit(&mux_queue[port], &new_entry) == 0)
 		CPRINTS("Error: Dropping port %d mux %d", port, type);
-	else
+	else {
+		ccprints("will tsai TASK_ID_USB_MUX");
 		task_wake(TASK_ID_USB_MUX);
+	}
 
 	mutex_unlock(&queue_lock[port]);
 }
@@ -211,10 +213,12 @@ __maybe_unused void usb_mux_task(void *u)
 				CPRINTS("C%d: Start mux set queued %d us ago",
 					port, time_since32(next.enqueued_time));
 #endif
-				if (next.type == USB_MUX_SET_MODE)
+				if (next.type == USB_MUX_SET_MODE) {
+					ccprints("will tsai usb_mux_task");
 					perform_mux_set(port, next.mux_mode,
 							next.usb_config,
 							next.polarity);
+				}
 				else if (next.type == USB_MUX_HPD_UPDATE)
 					perform_mux_hpd_update(port,
 							       next.mux_mode);
@@ -268,6 +272,7 @@ static int configure_mux(int port,
 	 * MUXes.  So when we change one, we traverse the whole list
 	 * to make sure they are all updated appropriately.
 	 */
+	ccprints("will tsai in configure_mux");
 	for (mux_ptr = &usb_muxes[port];
 	     rv == EC_SUCCESS && mux_ptr != NULL;
 	     mux_ptr = mux_ptr->next_mux) {
@@ -379,7 +384,9 @@ static int configure_mux(int port,
 			task_wait_event_mask(PD_EVENT_AP_MUX_DONE, 100*MSEC);
 			ack_task[port] = TASK_ID_INVALID;
 
+			ccprints("will tsai before usleep");
 			usleep(12.5 * MSEC);
+			ccprints("will tsai after usleep");
 		}
 	}
 
@@ -406,8 +413,10 @@ static void enter_low_power_mode(int port)
 static int exit_low_power_mode(int port)
 {
 	/* If we are in low power, initialize device (which clears LPM flag) */
-	if (flags[port] & USB_MUX_FLAG_IN_LPM)
+	if (flags[port] & USB_MUX_FLAG_IN_LPM) {
+		ccprints("will tsai exit_low_power_mode");
 		usb_mux_init(port);
+	}
 
 	if (!(flags[port] & USB_MUX_FLAG_INIT)) {
 		CPRINTS("C%d: USB_MUX_FLAG_INIT not set", port);
@@ -432,6 +441,7 @@ void usb_mux_init(int port)
 		return;
 	}
 
+	ccprints("will tsai configure_mux-1");
 	rv = configure_mux(port, USB_MUX_INIT, NULL);
 
 	if (rv == EC_SUCCESS)
@@ -456,8 +466,10 @@ static void perform_mux_set(int port, mux_state_t mux_mode,
 		usb_mode == USB_SWITCH_DISCONNECT);
 
 	/* Perform initialization if not initialized yet */
-	if (!(flags[port] & USB_MUX_FLAG_INIT))
+	if (!(flags[port] & USB_MUX_FLAG_INIT)) {
+		ccprints("will tsai perform_mux_set");
 		usb_mux_init(port);
+	}
 
 	/* Configure USB2.0 */
 	if (IS_ENABLED(CONFIG_USB_CHARGER))
@@ -471,6 +483,7 @@ static void perform_mux_set(int port, mux_state_t mux_mode,
 	if (should_enter_low_power_mode && (flags[port] & USB_MUX_FLAG_IN_LPM))
 		return;
 
+	ccprints("will tsai perform_mux_set>exit_low_power_mode");
 	if (exit_low_power_mode(port) != EC_SUCCESS)
 		return;
 
@@ -479,8 +492,11 @@ static void perform_mux_set(int port, mux_state_t mux_mode,
 			? mux_mode | USB_PD_MUX_POLARITY_INVERTED
 			: mux_mode;
 
-	if (configure_mux(port, USB_MUX_SET_MODE, &mux_state))
+	
+	if (configure_mux(port, USB_MUX_SET_MODE, &mux_state)) {
+		ccprints("will tsai configure_mux-2");
 		return;
+	}
 
 	if (enable_debug_prints)
 		CPRINTS(
@@ -502,11 +518,15 @@ void usb_mux_set(int port, mux_state_t mux_mode,
 		return;
 
 	/* Block if we have no mux task, but otherwise queue it up and return */
-	if (IS_ENABLED(HAS_TASK_USB_MUX))
+	if (IS_ENABLED(HAS_TASK_USB_MUX)) {
+		ccprints("will tsai mux_task_enqueue");
 		mux_task_enqueue(port, USB_MUX_SET_MODE, mux_mode,
 				 usb_mode, polarity);
-	else
+	}
+	else {
+		ccprints("will tsai usb_mux_set");
 		perform_mux_set(port,  mux_mode, usb_mode, polarity);
+	}
 }
 
 bool usb_mux_set_completed(int port)
@@ -543,14 +563,17 @@ static enum ec_error_list try_usb_mux_get(int port, mux_state_t *mux_state)
 		return EC_ERROR_INVAL;
 
 	/* Perform initialization if not initialized yet */
-	if (!(flags[port] & USB_MUX_FLAG_INIT))
+	if (!(flags[port] & USB_MUX_FLAG_INIT)) {
+		ccprints("will tsai try_usb_mux_get");
 		usb_mux_init(port);
+	}
 
 	if (flags[port] & USB_MUX_FLAG_IN_LPM) {
 		*mux_state = USB_PD_MUX_NONE;
 		return EC_SUCCESS;
 	}
 
+	ccprints("will tsai configure_mux-3");
 	return configure_mux(port, USB_MUX_GET_MODE, mux_state);
 }
 
@@ -573,12 +596,16 @@ void usb_mux_flip(int port)
 	}
 
 	/* Perform initialization if not initialized yet */
-	if (!(flags[port] & USB_MUX_FLAG_INIT))
+	if (!(flags[port] & USB_MUX_FLAG_INIT)) {
+		ccprints("will tsai usb_mux_flip");
 		usb_mux_init(port);
+	}
 
+	ccprints("will tsai usb_mux_flip>exit_low_power_mode");
 	if (exit_low_power_mode(port) != EC_SUCCESS)
 		return;
 
+	ccprints("will tsai configure_mux-4");
 	if (configure_mux(port, USB_MUX_GET_MODE, &mux_state))
 		return;
 
@@ -593,12 +620,16 @@ void usb_mux_flip(int port)
 static void perform_mux_hpd_update(int port, mux_state_t hpd_state)
 {
 	/* Perform initialization if not initialized yet */
-	if (!(flags[port] & USB_MUX_FLAG_INIT))
+	if (!(flags[port] & USB_MUX_FLAG_INIT)) {
+		ccprints("will tsai perform_mux_hpd_update");
 		usb_mux_init(port);
+	}
 
+	ccprints("will tsai perform_mux_hpd_update>exit_low_power_mode");
 	if (exit_low_power_mode(port) != EC_SUCCESS)
 		return;
 
+	ccprints("will tsai configure_mux-5");
 	configure_mux(port, USB_MUX_HPD_UPDATE, &hpd_state);
 }
 
@@ -638,6 +669,7 @@ static void mux_chipset_reset(void)
 {
 	int port;
 
+	ccprints("will tsai configure_mux-6");
 	for (port = 0; port < board_get_usb_pd_port_count(); ++port)
 		configure_mux(port, USB_MUX_CHIPSET_RESET, NULL);
 }
@@ -710,6 +742,7 @@ static int command_typec(int argc, char **argv)
 	for (i = 0; i < ARRAY_SIZE(mux_name); i++)
 		if (!strcasecmp(argv[2], mux_name[i]))
 			mux = i;
+	ccprints("will tsai usb_mux_set-21");
 	usb_mux_set(port, mux, mux == USB_PD_MUX_NONE ?
 				      USB_SWITCH_DISCONNECT :
 				      USB_SWITCH_CONNECT,

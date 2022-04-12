@@ -846,6 +846,7 @@ static inline void set_state(int port, enum pd_states next_state)
 		 */
 		pd_execute_data_swap(port, PD_ROLE_DFP);
 #ifdef CONFIG_USBC_SS_MUX
+		ccprints("will tsai usb_mux_set-7");
 		usb_mux_set(port, USB_PD_MUX_NONE, USB_SWITCH_DISCONNECT,
 			    pd[port].polarity);
 #endif
@@ -1331,6 +1332,7 @@ static void pd_set_data_role(int port, enum pd_data_role role)
 #endif /* defined(CONFIG_USB_PD_DUAL_ROLE) */
 	pd_execute_data_swap(port, role);
 
+	ccprints("will tsai pd_set_data_role");
 	set_usb_mux_with_current_data_role(port);
 	pd_update_roles(port);
 #ifdef CONFIG_BC12_DETECT_DATA_ROLE_TRIGGER
@@ -1840,6 +1842,7 @@ static void handle_ctrl_request(int port, uint32_t head,
 			 * resetting the mux state back to USB mode on
 			 * recieveing a NACK.
 			 */
+			ccprints("will tsai usb_mux_set-8");
 			usb_mux_set(port, USB_PD_MUX_USB_ENABLED,
 				USB_SWITCH_CONNECT, pd[port].polarity);
 
@@ -1917,6 +1920,7 @@ static void handle_ctrl_request(int port, uint32_t head,
 				ppc_set_sbu(port, 1);
 
 			/* Set usb mux to USB4 mode */
+			ccprints("will tsai usb_mux_set-9");
 			usb_mux_set(port, USB_PD_MUX_USB4_ENABLED,
 				USB_SWITCH_CONNECT, pd[port].polarity);
 
@@ -2206,6 +2210,7 @@ static void exit_tbt_mode_sop_prime(int port)
 	pd_transmit(port, TCPCI_MSG_SOP_PRIME, header, pd[port].vdo_data,
 		    AMS_START);
 
+	ccprints("will tsai usb_mux_set-10");
 	usb_mux_set(port, USB_PD_MUX_USB_ENABLED, USB_SWITCH_CONNECT,
 		   polarity_rm_dts(pd_get_polarity(port)));
 }
@@ -2426,6 +2431,7 @@ static void handle_new_power_state(int port)
 	}
 #endif
 	/* Ensure mux is set properly after chipset transition */
+	ccprints("will tsai handle_new_power_state");
 	set_usb_mux_with_current_data_role(port);
 }
 #endif /* CONFIG_POWER_COMMON */
@@ -3436,6 +3442,7 @@ void pd_task(void *u)
 							  PD_ROLE_VCONN_OFF);
 #endif /* CONFIG_USBC_VCONN */
 #ifdef CONFIG_USBC_SS_MUX
+					CPRINTS("will tsai pd_task in usb_pd_protocol");
 					usb_mux_set(port, USB_PD_MUX_NONE,
 						    USB_SWITCH_DISCONNECT,
 						    pd[port].polarity);

@@ -154,8 +154,10 @@ void dp_vdm_acked(int port, enum tcpci_msg_type type, int vdo_count,
 		dp_state[port] = DP_STATUS_ACKED;
 		break;
 	case DP_PREPARE_CONFIG:
-		if (modep && modep->opos && modep->fx->post_config)
+		if (modep && modep->opos && modep->fx->post_config) {
+			ccprints("will tsai post_config-2");
 			modep->fx->post_config(port);
+		}
 		dp_state[port] = DP_ACTIVE;
 		CPRINTS("C%d: Entered DP mode", port);
 		break;

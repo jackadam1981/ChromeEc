@@ -728,6 +728,7 @@ static void tc_detached(int port)
 {
 	TC_CLR_FLAG(port, TC_FLAGS_TS_DTS_PARTNER);
 	hook_notify(HOOK_USB_PD_DISCONNECT);
+	ccprints("will tsai tc_pd_connection-4");
 	tc_pd_connection(port, 0);
 	tcpm_debug_accessory(port, 0);
 	set_ccd_mode(port, 0);
@@ -736,9 +737,11 @@ static void tc_detached(int port)
 		prl_set_default_pd_revision(port);
 
 	/* Clear any mux connection on detach */
-	if (IS_ENABLED(CONFIG_USBC_SS_MUX))
+	if (IS_ENABLED(CONFIG_USBC_SS_MUX)) {
+		ccprints("will tsai usb_mux_set-18");
 		usb_mux_set(port, USB_PD_MUX_NONE,
 			    USB_SWITCH_DISCONNECT, tc[port].polarity);
+	}
 }
 
 static inline void pd_set_dual_role_and_event(int port,
@@ -859,8 +862,10 @@ void tc_pd_connection(int port, int en)
 		 * devices, without data capability are not marked as having
 		 * USB.
 		 */
-		if (new_pd_capable)
+		if (new_pd_capable) {
+			ccprints("will tsai new_pd_capable=true");
 			set_usb_mux_with_current_data_role(port);
+		}
 	} else {
 		TC_CLR_FLAG(port, TC_FLAGS_PARTNER_PD_CAPABLE);
 		/* If a PD device isn't attached then enable deep sleep */
@@ -1319,6 +1324,7 @@ static bool tc_perform_src_hard_reset(int port)
 		set_vconn(port, 0);
 
 		/* Set role to DFP */
+		ccprints("will tsai tc_perform_src_hard_reset");
 		tc_set_data_role(port, PD_ROLE_DFP);
 
 		/*
@@ -1370,6 +1376,7 @@ static bool tc_perform_snk_hard_reset(int port)
 	switch (tc[port].ps_reset_state) {
 	case PS_STATE0:
 		/* Hard reset sets us back to default data role */
+		ccprints("will tsai tc_perform_snk_hard_reset");
 		tc_set_data_role(port, PD_ROLE_UFP);
 
 		/*
@@ -1802,8 +1809,10 @@ void tc_set_data_role(int port, enum pd_data_role role)
 	prev_data_role = tc[port].data_role;
 	tc[port].data_role = role;
 
-	if (IS_ENABLED(CONFIG_USBC_SS_MUX))
+	if (IS_ENABLED(CONFIG_USBC_SS_MUX)) {
+		ccprints("will tsai CONFIG_USBC_SS_MUX=true");
 		set_usb_mux_with_current_data_role(port);
+	}
 
 	/*
 	 * Run any board-specific code for role swap (e.g. setting OTG signals
@@ -1947,6 +1956,7 @@ __maybe_unused static void handle_new_power_state(int port)
 	 */
 	if (TC_CHK_FLAG(port, TC_FLAGS_UPDATE_USB_MUX)) {
 		TC_CLR_FLAG(port, TC_FLAGS_UPDATE_USB_MUX);
+		ccprints("will tsai TC_CLR_FLAG");
 		set_usb_mux_with_current_data_role(port);
 	}
 }
@@ -2376,6 +2386,8 @@ static void tc_attach_wait_snk_entry(const int port)
 	print_current_state(port);
 
 	tc[port].cc_state = PD_CC_UNSET;
+	ccprints("will tsai tc_attach_wait_snk_entry");
+	tc_set_data_role(port, PD_ROLE_UFP);
 }
 
 static void tc_attach_wait_snk_run(const int port)
@@ -2512,7 +2524,7 @@ static void tc_attached_snk_entry(const int port)
 		tc[port].polarity = get_snk_polarity(cc1, cc2);
 		pd_set_polarity(port, tc[port].polarity);
 
-		tc_set_data_role(port, PD_ROLE_UFP);
+		//tc_set_data_role(port, PD_ROLE_UFP);
 
 		hook_notify(HOOK_USB_PD_CONNECT);
 
@@ -2848,6 +2860,7 @@ static void tc_unattached_src_run(const int port)
 	if (IS_ENABLED(CONFIG_USB_PE_SM)) {
 		if (TC_CHK_FLAG(port, TC_FLAGS_HARD_RESET_REQUESTED)) {
 			TC_CLR_FLAG(port, TC_FLAGS_HARD_RESET_REQUESTED);
+			ccprints("will tsai tc_unattached_src_run");
 			tc_set_data_role(port, PD_ROLE_DFP);
 			/* Inform Policy Engine that hard reset is complete */
 			pe_ps_reset_complete(port);
@@ -2911,6 +2924,8 @@ static void tc_attach_wait_src_entry(const int port)
 	print_current_state(port);
 
 	tc[port].cc_state = PD_CC_UNSET;
+	ccprints("will tsai tc_attach_wait_src_entry-1");
+			tc_set_data_role(port, PD_ROLE_DFP);
 }
 
 static void tc_attach_wait_src_run(const int port)
@@ -3048,7 +3063,8 @@ static void tc_attached_src_entry(const int port)
 			 * Initial data role for sink is DFP
 			 * This also sets the usb mux
 			 */
-			tc_set_data_role(port, PD_ROLE_DFP);
+			/*ccprints("will tsai tc_attached_src_entry-1");
+			tc_set_data_role(port, PD_ROLE_DFP);*/
 
 			/*
 			 * Start sourcing Vconn before Vbus to ensure
@@ -3066,11 +3082,13 @@ static void tc_attached_src_entry(const int port)
 				if (IS_ENABLED(CONFIG_USBC_VCONN))
 					set_vconn(port, 0);
 
-				if (IS_ENABLED(CONFIG_USBC_SS_MUX))
+				if (IS_ENABLED(CONFIG_USBC_SS_MUX)) {
+					ccprints("will tsai usb_mux_set-19");
 					usb_mux_set(port,
 						USB_PD_MUX_NONE,
 						USB_SWITCH_DISCONNECT,
 						tc[port].polarity);
+				}
 			}
 
 			tc_enable_pd(port, 0);
@@ -3100,6 +3118,7 @@ static void tc_attached_src_entry(const int port)
 		 * Initial data role for sink is DFP
 		 * This also sets the usb mux
 		 */
+		ccprints("will tsai tc_attached_src_entry-2");
 		tc_set_data_role(port, PD_ROLE_DFP);
 
 		/*
@@ -3118,9 +3137,11 @@ static void tc_attached_src_entry(const int port)
 			if (IS_ENABLED(CONFIG_USBC_VCONN))
 				set_vconn(port, 0);
 
-			if (IS_ENABLED(CONFIG_USBC_SS_MUX))
+			if (IS_ENABLED(CONFIG_USBC_SS_MUX)) {
+				ccprints("will tsai usb_mux_set-20");
 				usb_mux_set(port, USB_PD_MUX_NONE,
 				USB_SWITCH_DISCONNECT, tc[port].polarity);
+			}
 		}
 	}
 
@@ -3247,6 +3268,7 @@ static void tc_attached_src_run(const int port)
 			TC_CLR_FLAG(port, TC_FLAGS_REQUEST_DR_SWAP);
 
 			/* Perform Data Role Swap */
+			ccprints("will tsai tc_attached_src_run");
 			tc_set_data_role(port,
 				tc[port].data_role == PD_ROLE_DFP ?
 					PD_ROLE_UFP : PD_ROLE_DFP);
