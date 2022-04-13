@@ -16,6 +16,24 @@
       "message": "Hi Ting,\nWe verify command \"ectool i2cxfer 2 0x0b 5 0x23\".\nIt will cause system reboot sometime.\nAnd EC UART wil get \"goIdle\", \"goPreIdle\", \"boot_init\".",
       "revId": "f805fff80a62a83a94f731d4d6351ffe943fbdb7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "900b33b5_f4e95ccf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2022-04-13T09:08:40Z",
+      "side": 1,
+      "message": "What\u0027s the reset cause? watchdog?\n\nAnd any clue in `panicinfo`?",
+      "parentUuid": "b35644da_9072b9b8",
+      "revId": "f805fff80a62a83a94f731d4d6351ffe943fbdb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
