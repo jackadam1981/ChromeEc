@@ -12,6 +12,7 @@
 #include "driver/tcpm/tcpci.h"
 #include "driver/tcpm/tcpm.h"
 #include "gpio.h"
+#include "hooks.h"
 #include "stdint.h"
 #include "system.h"
 #include "task.h"
@@ -24,7 +25,14 @@
 #define CPRINTS(format, args...) cprints(CC_USBCHARGE, format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_USBCHARGE, format, ## args)
 
-#define RT1718S_SW_RESET_DELAY_MS 2
+#define RT1718S_SW_RESET_DELAY_MS	2
+#define RT1718S_FRS_DIS_DELAY		(5 * MSEC)
+
+#define FLAG_FRS_ENABLED		BIT(0)
+#define FLAG_FRS_RX_SIGNALED		BIT(1)
+#define FLAG_FRS_VBUS_VALID_FALL	BIT(2)
+static atomic_t frs_flag[CONFIG_USB_PD_PORT_MAX_COUNT];
+static int rt1718s_set_frs_enable_tcpc(int port, int enable);
 
 /* i2c_write function which won't wake TCPC from low power mode. */
 static int rt1718s_write(int port, int reg, int val, int len)
@@ -255,9 +263,12 @@ static int rt1718s_init(int port)
 				MASK_SET));
 
 	if (IS_ENABLED(CONFIG_USB_PD_FRS_TCPC))
-		/* Set Rx frs unmasked */
-		RETURN_ERROR(rt1718s_update_bits8(port, RT1718S_RT_MASK1,
-					 RT1718S_RT_MASK1_M_RX_FRS, 0xFF));
+		/* Set Rx frs and valid vbus fall unmasked */
+		RETURN_ERROR(rt1718s_update_bits8(
+			port, RT1718S_RT_MASK1,
+			RT1718S_RT_MASK1_M_RX_FRS |
+				RT1718S_RT_MASK1_M_VBUS_FRS_LOW,
+			0xFF));
 
 	RETURN_ERROR(board_rt1718s_init(port));
 
@@ -360,6 +371,24 @@ static void rt1718s_bc12_usb_charger_task(const int port)
 	}
 }
 
+static void frs_disable_deferred(void)
+{
+	int i;
+
+	for (i = 0; i < board_get_usb_pd_port_count(); ++i) {
+		if (frs_flag[i] & FLAG_FRS_VBUS_VALID_FALL) {
+			atomic_clear_bits(&frs_flag[i],
+					  FLAG_FRS_RX_SIGNALED |
+						  FLAG_FRS_VBUS_VALID_FALL);
+			/* If the FRS gets enabled again, do not disable it. */
+			if (!(frs_flag[i] & FLAG_FRS_ENABLED)) {
+				rt1718s_set_frs_enable_tcpc(i, 0);
+			}
+		}
+	}
+}
+DECLARE_DEFERRED(frs_disable_deferred);
+
 void rt1718s_vendor_defined_alert(int port)
 {
 	int rv, value;
@@ -375,13 +404,23 @@ void rt1718s_vendor_defined_alert(int port)
 			return;
 
 		if ((int1 & RT1718S_RT_INT1_INT_RX_FRS)) {
+			atomic_or(&frs_flag[port], FLAG_FRS_RX_SIGNALED);
+			/* notify TCPM we got FRS signal */
 			pd_got_frs_signal(port);
 
 			tcpc_write16(port, TCPC_REG_ALERT,
 					TCPC_REG_ALERT_VENDOR_DEF);
 			/* ignore other interrupts for faster frs handling */
-			return;
 		}
+
+		if ((int1 & RT1718S_RT_INT1_INT_VBUS_FRS_LOW)) {
+			atomic_or(&frs_flag[port], FLAG_FRS_VBUS_VALID_FALL);
+			hook_call_deferred(&frs_disable_deferred_data,
+					   RT1718S_FRS_DIS_DELAY);
+		}
+
+		if (int1)
+			return;
 	}
 
 	/* Process BC12 alert */
@@ -520,7 +559,7 @@ out:
 }
 
 #ifdef CONFIG_USB_PD_FRS_TCPC
-int rt1718s_set_frs_enable_tcpc(int port, int enable)
+static int rt1718s_set_frs_enable_tcpc(int port, int enable)
 {
 	/*
 	 * Use write instead of update to save 2 i2c read.
@@ -529,32 +568,18 @@ int rt1718s_set_frs_enable_tcpc(int port, int enable)
 	int frs_ctrl2 = 0x10, vbus_ctrl_en = 0x3F;
 
 	if (enable) {
+		atomic_or(&frs_flag[port], FLAG_FRS_ENABLED);
 		frs_ctrl2 |= RT1718S_FRS_CTRL2_RX_FRS_EN;
 		frs_ctrl2 |= RT1718S_FRS_CTRL2_VBUS_FRS_EN;
 
 		vbus_ctrl_en |= RT1718S_VBUS_CTRL_EN_GPIO2_VBUS_PATH_EN;
 		vbus_ctrl_en |= RT1718S_VBUS_CTRL_EN_GPIO1_VBUS_PATH_EN;
-	} else if (pe_in_frs_mode(port)) {
-		/*
-		 * Polling RT1718S_RT_INT1_INT_VBUS_FRS_LOW then disable
-		 * FRS so that the FRS can be correctly triggered.
-		 * To prevent from long polling, we disable FRS
-		 * with at most 10 times.
-		 */
-		int poll = 10;
-		int int1;
-
-		do {
-			int rv;
-
-			rv = rt1718s_read8(port, RT1718S_RT_INT1, &int1);
-			if (rv)
-				return rv;
-		} while (poll-- && !(int1 & RT1718S_RT_INT1_INT_VBUS_FRS_LOW));
-
-		if (int1 & RT1718S_RT_INT1_INT_VBUS_FRS_LOW)
-			rt1718s_write8(port, RT1718S_RT_INT1,
-				       RT1718S_RT_INT1_INT_VBUS_FRS_LOW);
+	} else {
+		atomic_clear_bits(&frs_flag[port], FLAG_FRS_ENABLED);
+		 if (frs_flag[port] & FLAG_FRS_RX_SIGNALED) {
+			 /* We have RX signaled, it will be disabled later. */
+			return EC_SUCCESS;
+		 }
 	}
 
 	RETURN_ERROR(rt1718s_write8(port, RT1718S_FRS_CTRL2, frs_ctrl2));
