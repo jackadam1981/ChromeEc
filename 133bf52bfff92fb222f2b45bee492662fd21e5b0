@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2884e6a1_557d61dc",
+        "filename": "board/anahera/usbc_config.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 398,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-04-13T05:35:39Z",
+      "side": 1,
+      "message": "this bit pattern is outside of PS8811_CHAN_B_DE_PS_LSB_MASK.\nwhich bits did you mean to set?",
+      "range": {
+        "startLine": 398,
+        "startChar": 34,
+        "endLine": 398,
+        "endChar": 38
+      },
+      "revId": "133bf52bfff92fb222f2b45bee492662fd21e5b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
