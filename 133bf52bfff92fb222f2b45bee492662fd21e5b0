@@ -22,6 +22,30 @@
       },
       "revId": "133bf52bfff92fb222f2b45bee492662fd21e5b0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c7eef92_6c8c8f27",
+        "filename": "board/anahera/usbc_config.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 398,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2022-04-13T05:43:14Z",
+      "side": 1,
+      "message": "P1.0XA5 0x82 R/W [ 7: 3] R e s e r v e d\n[ 2: 0]\nPS Level for B channel\n000: min\n010: default (1.5dB )\n111: max\n\nI think we should set bit0 - bit2. I need to check parade why the defualt is 0x82.",
+      "parentUuid": "2884e6a1_557d61dc",
+      "range": {
+        "startLine": 398,
+        "startChar": 34,
+        "endLine": 398,
+        "endChar": 38
+      },
+      "revId": "133bf52bfff92fb222f2b45bee492662fd21e5b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
