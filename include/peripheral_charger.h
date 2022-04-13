@@ -6,7 +6,6 @@
 #ifndef __CROS_EC_PERIPHERAL_CHARGER_H
 #define __CROS_EC_PERIPHERAL_CHARGER_H
 
-#include "atomic.h"
 #include "common.h"
 #include "ec_commands.h"
 #include "gpio.h"
@@ -197,7 +196,7 @@ struct pchg {
 	/* Event queue mutex */
 	struct mutex mtx;
 	/* 1:Pending IRQ 0:No pending IRQ */
-	atomic_t irq;
+	uint32_t irq;
 	/* Event currently being handled */
 	enum pchg_event event;
 	/* Error (enum pchg_error). Port is disabled until it's cleared. */

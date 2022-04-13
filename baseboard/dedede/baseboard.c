@@ -123,7 +123,7 @@ __override void board_check_extpower(void)
 	last_extpower_present = extpower_present;
 }
 
-atomic_t pp3300_a_pgood;
+uint32_t pp3300_a_pgood;
 __override int intel_x86_get_pg_ec_dsw_pwrok(void)
 {
 	/*
