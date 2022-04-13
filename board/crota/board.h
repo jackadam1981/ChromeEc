@@ -177,7 +177,7 @@
 #define I2C_ADDR_EEPROM_FLAGS	0x50
 
 #define I2C_ADDR_MP2964_FLAGS	0x20
-
+#define CONFIG_BRINGUP
 /*
  * see b/174768555#comment22
  */
@@ -249,7 +249,7 @@ enum sensor_id {
 
 enum ioex_port {
 	IOEX_C0_NCT38XX = 0,
-	IOEX_C2_NCT38XX,
+	IOEX_C1_NCT38XX,
 	IOEX_PORT_COUNT
 };
 
