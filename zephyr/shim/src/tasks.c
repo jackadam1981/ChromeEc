@@ -56,7 +56,7 @@ struct task_ctx_data {
 	/** A wait-able event that is raised when a new task event is posted */
 	struct k_poll_signal new_event;
 	/** The current platform/ec events set for this task/thread */
-	atomic_t event_mask;
+	uint32_t event_mask;
 	/**
 	 * The timer associated with this task, which can be set using
 	 * timer_arm().
@@ -108,7 +108,7 @@ __test_only k_tid_t task_get_zephyr_tid(size_t cros_tid)
 	return shimmed_tasks_data[cros_tid].zephyr_tid;
 }
 
-atomic_t *task_get_event_bitmap(task_id_t cros_task_id)
+uint32_t *task_get_event_bitmap(task_id_t cros_task_id)
 {
 	struct task_ctx_data *const data = &shimmed_tasks_data[cros_task_id];
 

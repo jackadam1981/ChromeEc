@@ -15,7 +15,6 @@
  * defines for inline asm
  */
 #ifndef __ASSEMBLER__
-#include "atomic.h"
 #include "common.h"
 
 #define USE_FPU_OFFSET_STR	STRINGIFY(USE_FPU_OFFSET)	/* "20" */
@@ -35,7 +34,7 @@ typedef union {
 		 * for __switchto() to work.
 		 */
 		uint32_t sp;	/* Saved stack pointer for context switch */
-		atomic_t events;	/* Bitmaps of received events */
+		uint32_t events;	/* Bitmaps of received events */
 		uint64_t runtime;	/* Time spent in task */
 		uint32_t *stack;	/* Start of stack */
 #ifdef CONFIG_FPU

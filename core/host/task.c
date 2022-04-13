@@ -28,7 +28,7 @@
 struct emu_task_t {
 	pthread_t thread;
 	pthread_cond_t resume;
-	atomic_t event;
+	uint32_t event;
 	timestamp_t wake_time;
 	uint8_t started;
 };
@@ -213,7 +213,7 @@ uint32_t task_set_event(task_id_t tskid, uint32_t event)
 	return 0;
 }
 
-atomic_t *task_get_event_bitmap(task_id_t tskid)
+uint32_t *task_get_event_bitmap(task_id_t tskid)
 {
 	return &tasks[tskid].event;
 }
