@@ -533,7 +533,7 @@ __override bool board_is_tbt_usb4_port(int port)
 	return tbt_usb4;
 }
 
-__override void board_pre_task_i2c_peripheral_init(void)
+void board_pre_task_peripheral_init(void)
 {
 	/* Initialized IOEX-0 to access IOEX-GPIOs needed pre-task */
 	ioex_init(IOEX_C0_PCA9675);
