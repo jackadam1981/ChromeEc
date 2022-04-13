@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e9edd81_fd639348",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 3
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-04-13T23:37:10Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "adce6a71_cf41d648",
+      "range": {
+        "startLine": 130,
+        "startChar": 48,
+        "endLine": 130,
+        "endChar": 49
+      },
+      "revId": "8b1e3fa9980ab30c13758c9d627014590ee282bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "398fdb92_24faeafe",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-04-13T23:21:11Z",
       "side": 1,
       "message": "Initialize board specific",
+      "range": {
+        "startLine": 57,
+        "startChar": 4,
+        "endLine": 57,
+        "endChar": 22
+      },
+      "revId": "8b1e3fa9980ab30c13758c9d627014590ee282bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf175159_e75df50d",
+        "filename": "zephyr/app/ec/ec_app_main.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-04-13T23:37:10Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "398fdb92_24faeafe",
       "range": {
         "startLine": 57,
         "startChar": 4,
