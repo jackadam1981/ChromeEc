@@ -2003,7 +2003,7 @@ ZTEST_USER(bmi160, test_bmi_interrupt_handler)
 	 * interrupt, and ensure the flag is set.
 	 */
 
-	atomic_t *mask;
+	uint32_t *mask;
 
 	mask = task_get_event_bitmap(TASK_ID_MOTIONSENSE);
 	zassert_true(mask != NULL,
