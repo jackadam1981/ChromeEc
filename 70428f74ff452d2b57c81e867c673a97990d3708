@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0079b783_a55905f8",
+        "filename": "zephyr/dts/bindings/usbc/cros-ec,usb-mux.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2022-04-13T19:09:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f41a2018_40d4fec6",
+      "revId": "70428f74ff452d2b57c81e867c673a97990d3708",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "09e8418a_5040942f",
@@ -48,6 +66,30 @@
       "writtenOn": "2022-04-12T23:14:53Z",
       "side": 1,
       "message": "You also need a property to the set the \"flags\" field.  \n\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/08e09567/include/usb_mux.h#113",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 10
+      },
+      "revId": "70428f74ff452d2b57c81e867c673a97990d3708",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cedafb2a_0a53cd61",
+        "filename": "zephyr/dts/bindings/usbc/cros-ec,usb-mux.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2022-04-13T19:09:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "09e8418a_5040942f",
       "range": {
         "startLine": 6,
         "startChar": 0,
@@ -81,6 +123,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "11e2a90b_f1b210b5",
+        "filename": "zephyr/dts/bindings/usbc/cros-ec,virtual-usb-mux.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2022-04-13T19:09:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eae472a9_e41505d1",
+      "range": {
+        "startLine": 8,
+        "startChar": 21,
+        "endLine": 8,
+        "endChar": 36
+      },
+      "revId": "70428f74ff452d2b57c81e867c673a97990d3708",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "59177278_0c1b3ede",
@@ -94,6 +160,30 @@
       "writtenOn": "2022-04-12T23:14:53Z",
       "side": 1,
       "message": "Drop the \"-usb-mux\".  The Zephyr convention seems to be to use just \"vendor,part-number\". The device type is only appended if the device has multiple functions.",
+      "range": {
+        "startLine": 8,
+        "startChar": 23,
+        "endLine": 8,
+        "endChar": 31
+      },
+      "revId": "70428f74ff452d2b57c81e867c673a97990d3708",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "538dfb16_31468304",
+        "filename": "zephyr/dts/bindings/usbc/ite,it5205-usb-mux.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2022-04-13T19:09:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "59177278_0c1b3ede",
       "range": {
         "startLine": 8,
         "startChar": 23,
@@ -127,6 +217,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "53b2994c_10cdd1e0",
+        "filename": "zephyr/dts/bindings/usbc/named-usbc-port.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2022-04-13T19:09:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "97573fc5_dfb554cc",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 46
+      },
+      "revId": "70428f74ff452d2b57c81e867c673a97990d3708",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "93803c57_69139a05",
@@ -150,6 +264,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "75466848_1cc62ce1",
+        "filename": "zephyr/dts/bindings/usbc/ti,tusb1064-usb-mux.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2022-04-13T19:09:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "93803c57_69139a05",
+      "range": {
+        "startLine": 4,
+        "startChar": 13,
+        "endLine": 4,
+        "endChar": 32
+      },
+      "revId": "70428f74ff452d2b57c81e867c673a97990d3708",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c8bc191a_057df3be",
@@ -163,6 +301,30 @@
       "writtenOn": "2022-04-12T23:14:53Z",
       "side": 1,
       "message": "delete",
+      "range": {
+        "startLine": 8,
+        "startChar": 24,
+        "endLine": 8,
+        "endChar": 32
+      },
+      "revId": "70428f74ff452d2b57c81e867c673a97990d3708",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2d415f9_2098b486",
+        "filename": "zephyr/dts/bindings/usbc/ti,tusb1064-usb-mux.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2022-04-13T19:09:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c8bc191a_057df3be",
       "range": {
         "startLine": 8,
         "startChar": 24,
@@ -198,6 +360,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fdb02cab_6440ceff",
+        "filename": "zephyr/projects/corsola/usbc_krabby.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2022-04-13T19:09:16Z",
+      "side": 1,
+      "message": "It cannot be done this way, because Zephyr doesn\u0027t allow circular dependencies in DTS (e.g. it5205 depends on port, because it is child node and port depends on it5205, because of phandle in usb-muxes property).\n\nI see here 2 options:\n1) Keep it as it is: usb-muxes is property of named-usbc-port and USBC muxes nodes are not descendants of named-usbc-port.\n2) Make USBC muxes nodes children of named-usbc-port and move usb-muxes property to node that is sibling of USBC muxes or named-usbc-port.",
+      "parentUuid": "3d6c7974_70d259d4",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 43
+      },
+      "revId": "70428f74ff452d2b57c81e867c673a97990d3708",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9495a377_ed277489",
         "filename": "zephyr/shim/include/usbc/tusb1064_usb_mux.h",
         "patchSetId": 2
@@ -209,6 +395,30 @@
       "writtenOn": "2022-04-12T23:14:53Z",
       "side": 1,
       "message": "As a separate CL, can you add a Kconfig for PLATFORM_EC_USB_MUX_TUSB1064.  This should be organized as a choice, because the TUSB1044 and TUSB1064 options are mutually exclusive.",
+      "range": {
+        "startLine": 13,
+        "startChar": 12,
+        "endLine": 13,
+        "endChar": 35
+      },
+      "revId": "70428f74ff452d2b57c81e867c673a97990d3708",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d1587d6_08e1b054",
+        "filename": "zephyr/shim/include/usbc/tusb1064_usb_mux.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2022-04-13T19:09:16Z",
+      "side": 1,
+      "message": "Please check last CL in this chain (https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3579120)",
+      "parentUuid": "9495a377_ed277489",
       "range": {
         "startLine": 13,
         "startChar": 12,
@@ -232,6 +442,30 @@
       "writtenOn": "2022-04-12T23:14:53Z",
       "side": 1,
       "message": "Needs `MAYBE_CONST` applied.",
+      "range": {
+        "startLine": 60,
+        "startChar": 35,
+        "endLine": 60,
+        "endChar": 41
+      },
+      "revId": "70428f74ff452d2b57c81e867c673a97990d3708",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "533d0ef5_12d95894",
+        "filename": "zephyr/shim/include/usbc/usb_muxes.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2022-04-13T19:09:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bae93d6d_dabbc1a8",
       "range": {
         "startLine": 60,
         "startChar": 35,
@@ -267,6 +501,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "687f6c3d_1cb004ac",
+        "filename": "zephyr/shim/include/usbc/usb_muxes.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2022-04-13T19:09:16Z",
+      "side": 1,
+      "message": "It is connected with that USBC muxes are not children of port node. If we change DTS, than using `DT_PARENT()` would be desired.",
+      "parentUuid": "ab464298_aace6537",
+      "range": {
+        "startLine": 206,
+        "startChar": 2,
+        "endLine": 206,
+        "endChar": 23
+      },
+      "revId": "70428f74ff452d2b57c81e867c673a97990d3708",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2786b2b4_193078ff",
         "filename": "zephyr/shim/src/usb_muxes.c",
         "patchSetId": 2
@@ -278,6 +536,30 @@
       "writtenOn": "2022-04-12T23:14:53Z",
       "side": 1,
       "message": "It would be helpful to provide an example of the definitions created by this macro.\n\n```\nconst struct usb_mux USB_MUX_NODE_\u003cnode_id\u003e;\nconst struct usb_mux USB_MUX_NODE_DT_N_S_usbc_S_port0_0_S_it5205_mux_0;\n```",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 40
+      },
+      "revId": "70428f74ff452d2b57c81e867c673a97990d3708",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "de994d5a_8334cdd6",
+        "filename": "zephyr/shim/src/usb_muxes.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2022-04-13T19:09:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2786b2b4_193078ff",
       "range": {
         "startLine": 27,
         "startChar": 0,
