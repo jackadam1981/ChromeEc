@@ -163,6 +163,10 @@ static void all_sys_pwrgd_pass_thru(void)
 
 		pwrok_signal_set(pwrok_signal, all_sys_pwrgd_in);
 	}
+
+	/* PCH_PWROK is combination of ALL_SYS_PWRGD and SLP_S3 */
+	gpio_set_level(GPIO_EC_PCH_PWROK, all_sys_pwrgd_in &&
+				chipset_get_sleep_signal(SYS_SLEEP_S3));
 }
 
 enum power_state power_handle_state(enum power_state state)
