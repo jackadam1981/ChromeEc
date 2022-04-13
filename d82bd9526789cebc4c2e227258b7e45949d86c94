@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0cab777_91827ddd",
+        "filename": "zephyr/shim/include/shimmed_task_id.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-04-13T19:20:57Z",
+      "side": 1,
+      "message": "Debating on whether to put these under a conditional or not. Listing all of them has the advantage that we always get a worst case max task count regardless of what\u0027s actually used in the project.",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 6
+      },
+      "revId": "d82bd9526789cebc4c2e227258b7e45949d86c94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
