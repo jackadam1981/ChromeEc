@@ -13,6 +13,7 @@
 #include "chipset.h"
 #include "ec_tasks.h"
 #include "hooks.h"
+#include "i2c.h"
 #include "keyboard_scan.h"
 #include "lpc.h"
 #include "system.h"
@@ -52,6 +53,11 @@ void ec_app_main(void)
 	 */
 	if (IS_ENABLED(CONFIG_HOSTCMD_X86)) {
 		lpc_init_mask();
+	}
+
+	/* Board level pre-task I2C peripheral initialization */
+	if (IS_ENABLED(CONFIG_PLATFORM_EC_I2C)) {
+		board_pre_task_i2c_peripheral_init();
 	}
 
 	if (IS_ENABLED(HAS_TASK_KEYSCAN)) {
