@@ -72,11 +72,11 @@ STATIC_IF(CONFIG_HIBERNATE) uint32_t hibernate_seconds;
 STATIC_IF(CONFIG_HIBERNATE) uint32_t hibernate_microseconds;
 
 /* On-going actions preventing going into deep-sleep mode */
-atomic_t sleep_mask;
+uint32_t sleep_mask;
 
 #ifdef CONFIG_LOW_POWER_IDLE_LIMITED
 /* Set it to prevent going into idle mode */
-atomic_t idle_disabled;
+uint32_t idle_disabled;
 #endif
 
 /* SKU ID sourced from AP */

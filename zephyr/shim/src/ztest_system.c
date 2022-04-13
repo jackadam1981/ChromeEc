@@ -10,6 +10,8 @@
 #include "sysjump.h"
 
 #define CPRINTS(format, args...) cprints(CC_SYSTEM, format, ##args)
+/* Ongoing actions preventing going into deep-sleep mode. */
+uint32_t sleep_mask;
 
 struct jump_data mock_jump_data = {};
 
