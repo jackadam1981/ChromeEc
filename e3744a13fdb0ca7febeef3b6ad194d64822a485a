@@ -22,6 +22,29 @@
       },
       "revId": "e3744a13fdb0ca7febeef3b6ad194d64822a485a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6bca61c7_e4c90d5f",
+        "filename": "power/meteorlake.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2022-04-13T18:51:49Z",
+      "side": 1,
+      "message": "this is declared in intel_x86.c so it isn\u0027t accessible here",
+      "range": {
+        "startLine": 169,
+        "startChar": 4,
+        "endLine": 169,
+        "endChar": 28
+      },
+      "revId": "e3744a13fdb0ca7febeef3b6ad194d64822a485a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
