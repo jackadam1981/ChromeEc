@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e766e3be_1e38bbfa",
+        "filename": "zephyr/subsys/ap_pwrseq/include/ap_power_host_sleep.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-04-13T01:02:06Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d2014d1e_acd5083a",
+      "range": {
+        "startLine": 43,
+        "startChar": 39,
+        "endLine": 43,
+        "endChar": 41
+      },
+      "revId": "78d43e666cbbdfba589258ad2b3f3ed05557faeb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5a6fb6b7_304fa70a",
@@ -37,6 +61,24 @@
       "writtenOn": "2022-04-12T06:11:01Z",
       "side": 1,
       "message": "HC?",
+      "revId": "78d43e666cbbdfba589258ad2b3f3ed05557faeb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3553835d_520a1196",
+        "filename": "zephyr/subsys/ap_pwrseq/power_host_sleep.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-04-13T01:02:06Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "5a6fb6b7_304fa70a",
       "revId": "78d43e666cbbdfba589258ad2b3f3ed05557faeb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
