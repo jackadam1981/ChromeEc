@@ -46,6 +46,30 @@
       },
       "revId": "3cf163c02ea7ef92a218f89802326df43637775c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9494d43a_915dd7ac",
+        "filename": "common/virtual_battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 391,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2022-04-13T07:39:01Z",
+      "side": 1,
+      "message": "But you have to prevent invalid access from other malicious user.\n\nPlease add something like\nif (read_len \u003e ARRAY_SIZE(str)) return EC_ERROR_INVAL;",
+      "parentUuid": "b6304f1e_bd5de57e",
+      "range": {
+        "startLine": 391,
+        "startChar": 37,
+        "endLine": 391,
+        "endChar": 45
+      },
+      "revId": "3cf163c02ea7ef92a218f89802326df43637775c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
