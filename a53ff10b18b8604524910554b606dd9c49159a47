@@ -16,6 +16,23 @@
       "message": "Does not work on my EVT bugzzy (work in a bugzzy in the lab [chromeos2-row1-rack5-host8.cros]). Let me check the difference.",
       "revId": "a53ff10b18b8604524910554b606dd9c49159a47",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74f797c9_bac9b46d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2022-04-13T02:38:21Z",
+      "side": 1,
+      "message": "Did not work on the original DUT either. But according to the board layout, we don\u0027t need to be in forced mode.",
+      "revId": "a53ff10b18b8604524910554b606dd9c49159a47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
