@@ -727,8 +727,8 @@ void dpm_remove_sink(int port)
 	if (CONFIG_USB_PD_3A_PORTS == 0)
 		return;
 
-	if (!(BIT(port) & (uint32_t)sink_max_pdo_requested) &&
-	    !(BIT(port) & (uint32_t)non_pd_sink_max_requested))
+	if (!(BIT(port) & sink_max_pdo_requested) &&
+	    !(BIT(port) & non_pd_sink_max_requested))
 		return;
 
 	atomic_clear_bits(&sink_max_pdo_requested, BIT(port));
@@ -749,7 +749,7 @@ void dpm_remove_source(int port)
 	if (!IS_ENABLED(CONFIG_USB_PD_FRS))
 		return;
 
-	if (!(BIT(port) & (uint32_t)source_frs_max_requested))
+	if (!(BIT(port) & source_frs_max_requested))
 		return;
 
 	atomic_clear_bits(&source_frs_max_requested, BIT(port));
