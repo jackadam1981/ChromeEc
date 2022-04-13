@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d5b9c491_c3d819e7",
+        "filename": "zephyr/Kconfig.charger",
+        "patchSetId": 4
+      },
+      "lineNbr": 641,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-04-13T02:01:23Z",
+      "side": 1,
+      "message": "Legacy build seems to be failing with this change. You might need to updated config_allowed.txt.\n\n*********************************************************************\n*** 57056 bytes in flash and 25248 bytes in RAM still available on adlrvpp_npcx RO ****\n  *** 57096 bytes in flash and 25248 bytes in RAM still available on adlrvpp_npcx RW ****\n  CHECK_ALLOWED build/adlrvpp_npcx/.config\nThe following options are now in Kconfig:\n\nCONFIG_DEDICATED_CHARGE_PORT_COUNT\n\nPlease run this to update the list of allowed ad-hoc CONFIGs and include this\nupdate in your CL:\n\n   cp /tmp/new_config_allowed.txt util/config_allowed.txt\n\n*********************************************************************",
+      "range": {
+        "startLine": 641,
+        "startChar": 0,
+        "endLine": 641,
+        "endChar": 46
+      },
+      "revId": "6f84beb2eb116a52b1a33b2723cffc208023b02f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3073efa3_29945f1c",
         "filename": "zephyr/Kconfig.charger",
         "patchSetId": 4
