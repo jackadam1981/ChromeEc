@@ -42,7 +42,7 @@
 #ifdef CONFIG_ZEPHYR
 enum ioex_port {
 	IOEX_C0_NCT38XX = 0,
-	IOEX_C2_NCT38XX,
+	IOEX_C1_NCT38XX,
 	IOEX_ID_1_C0_NCT38XX,
 	IOEX_ID_1_C2_NCT38XX,
 	IOEX_PORT_COUNT
@@ -61,7 +61,7 @@ const struct tcpc_config_t tcpc_config[] = {
 		.flags = TCPC_FLAGS_TCPCI_REV2_0 |
 			TCPC_FLAGS_NO_DEBUG_ACC_CONTROL,
 	},
-	[USBC_PORT_C2] = {
+	[USBC_PORT_C1] = {
 		.bus_type = EC_BUS_TYPE_I2C,
 		.i2c_info = {
 			.port = I2C_PORT_USB_C0_C2_TCPC,
@@ -91,7 +91,7 @@ struct ppc_config_t ppc_chips[] = {
 		.i2c_addr_flags = SYV682X_ADDR0_FLAGS,
 		.drv = &syv682x_drv,
 	},
-	[USBC_PORT_C2] = {
+	[USBC_PORT_C1] = {
 		.i2c_port = I2C_PORT_USB_C0_C2_PPC,
 		.i2c_addr_flags = SYV682X_ADDR2_FLAGS,
 		.drv = &syv682x_drv,
@@ -108,7 +108,7 @@ static const struct usb_mux usbc0_tcss_usb_mux = {
 	.hpd_update = &virtual_hpd_update,
 };
 static const struct usb_mux usbc2_tcss_usb_mux = {
-	.usb_port = USBC_PORT_C2,
+	.usb_port = USBC_PORT_C1,
 	.driver = &virtual_usb_mux_driver,
 	.hpd_update = &virtual_hpd_update,
 };
@@ -121,8 +121,8 @@ const struct usb_mux usb_muxes[] = {
 		.i2c_addr_flags = USBC_PORT_C0_BB_RETIMER_I2C_ADDR,
 		.next_mux = &usbc0_tcss_usb_mux,
 	},
-	[USBC_PORT_C2] = {
-		.usb_port = USBC_PORT_C2,
+	[USBC_PORT_C1] = {
+		.usb_port = USBC_PORT_C1,
 		.driver = &bb_usb_retimer,
 		.hpd_update = bb_retimer_hpd_update,
 		.i2c_port = I2C_PORT_USB_C0_C2_MUX,
@@ -139,7 +139,7 @@ const struct pi3usb9201_config_t pi3usb9201_bc12_chips[] = {
 		.i2c_port = I2C_PORT_USB_C0_C2_BC12,
 		.i2c_addr_flags = PI3USB9201_I2C_ADDR_3_FLAGS,
 	},
-	[USBC_PORT_C2] = {
+	[USBC_PORT_C1] = {
 		.i2c_port = I2C_PORT_USB_C0_C2_BC12,
 		.i2c_addr_flags = PI3USB9201_I2C_ADDR_1_FLAGS,
 	},
@@ -162,9 +162,9 @@ struct ioexpander_config_t ioex_config[] = {
 		.drv = &nct38xx_ioexpander_drv,
 		.flags = IOEX_FLAGS_DEFAULT_INIT_DISABLED,
 	},
-	[IOEX_C2_NCT38XX] = {
+	[IOEX_C1_NCT38XX] = {
 		.i2c_host_port = I2C_PORT_USB_C0_C2_TCPC,
-		.i2c_addr_flags = NCT38XX_I2C_ADDR2_1_FLAGS,
+		.i2c_addr_flags = NCT38XX_I2C_ADDR1_4_FLAGS,
 		.drv = &nct38xx_ioexpander_drv,
 		.flags = IOEX_FLAGS_DEFAULT_INIT_DISABLED,
 	},
@@ -223,7 +223,7 @@ __override int bb_retimer_power_enable(const struct usb_mux *me, bool enable)
 
 	if (me->usb_port == USBC_PORT_C0) {
 		rst_signal = IOEX_USB_C0_RT_RST_ODL;
-	} else if (me->usb_port == USBC_PORT_C2) {
+	} else if (me->usb_port == USBC_PORT_C1) {
 		rst_signal = IOEX_USB_C2_RT_RST_ODL;
 	} else {
 		return EC_ERROR_INVAL;
@@ -287,7 +287,7 @@ static void board_tcpc_init(void)
 	 * been taken out of reset.
 	 */
 	ioex_init(IOEX_C0_NCT38XX);
-	ioex_init(IOEX_C2_NCT38XX);
+	ioex_init(IOEX_C1_NCT38XX);
 
 	/* Enable PPC interrupts. */
 	gpio_enable_interrupt(GPIO_USB_C0_PPC_INT_ODL);
@@ -309,7 +309,7 @@ uint16_t tcpc_get_alert_status(void)
 	uint16_t status = 0;
 
 	if (gpio_get_level(GPIO_USB_C0_C2_TCPC_INT_ODL) == 0)
-		status |= PD_STATUS_TCPC_ALERT_0 | PD_STATUS_TCPC_ALERT_2;
+		status |= PD_STATUS_TCPC_ALERT_0 | PD_STATUS_TCPC_ALERT_1;
 
 	return status;
 }
@@ -318,7 +318,7 @@ int ppc_get_alert_status(int port)
 {
 	if (port == USBC_PORT_C0)
 		return gpio_get_level(GPIO_USB_C0_PPC_INT_ODL) == 0;
-	else if (port == USBC_PORT_C2)
+	else if (port == USBC_PORT_C1)
 		return gpio_get_level(GPIO_USB_C2_PPC_INT_ODL) == 0;
 	return 0;
 }
@@ -341,7 +341,7 @@ void bc12_interrupt(enum gpio_signal signal)
 		task_set_event(TASK_ID_USB_CHG_P0, USB_CHG_EVENT_BC12);
 		break;
 	case GPIO_USB_C2_BC12_INT_ODL:
-		task_set_event(TASK_ID_USB_CHG_P2, USB_CHG_EVENT_BC12);
+		task_set_event(TASK_ID_USB_CHG_P1, USB_CHG_EVENT_BC12);
 		break;
 	default:
 		break;
@@ -355,7 +355,7 @@ void ppc_interrupt(enum gpio_signal signal)
 		syv682x_interrupt(USBC_PORT_C0);
 		break;
 	case GPIO_USB_C2_PPC_INT_ODL:
-		syv682x_interrupt(USBC_PORT_C2);
+		syv682x_interrupt(USBC_PORT_C1);
 		break;
 	default:
 		break;
@@ -376,7 +376,7 @@ __override bool board_is_dts_port(int port)
 
 __override bool board_is_tbt_usb4_port(int port)
 {
-	if (port == USBC_PORT_C0 || port == USBC_PORT_C2)
+	if (port == USBC_PORT_C0 || port == USBC_PORT_C1)
 		return true;
 
 	return false;
