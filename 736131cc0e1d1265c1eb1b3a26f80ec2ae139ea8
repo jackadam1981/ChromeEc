@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a0f45070_c68bef19",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-04-13T18:26:17Z",
+      "side": 1,
+      "message": "This will disable the RGB keyboard in suspend. Are we failing PLT because of not having this change?",
+      "revId": "736131cc0e1d1265c1eb1b3a26f80ec2ae139ea8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
