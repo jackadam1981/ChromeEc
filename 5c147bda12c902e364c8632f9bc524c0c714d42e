@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8bf71e33_3ffe2aa1",
+        "filename": "zephyr/projects/corsola/src/krabby/hooks.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2022-04-13T01:43:51Z",
+      "side": 1,
+      "message": "Will it be handled correctly when no AC with the first boot? Will the ADC still be disabled?",
+      "range": {
+        "startLine": 85,
+        "startChar": 2,
+        "endLine": 85,
+        "endChar": 56
+      },
+      "revId": "5c147bda12c902e364c8632f9bc524c0c714d42e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
