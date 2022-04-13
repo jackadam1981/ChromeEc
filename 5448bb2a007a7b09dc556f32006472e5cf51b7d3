@@ -24,6 +24,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "793e6602_06053d49",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-04-13T20:14:51Z",
+      "side": 1,
+      "message": "Zick, can please you test the patch again? There are a few non-negligible changes between PS8 and PS9.",
+      "revId": "5448bb2a007a7b09dc556f32006472e5cf51b7d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "38112cbd_6c62faa1",
@@ -37,6 +54,30 @@
       "writtenOn": "2022-04-13T08:58:14Z",
       "side": 1,
       "message": "isn\u0027t this a bit redundant as it looks like most (all?) of\nthe use cases also pass __func__ and the function names\nstart with isl9241_?",
+      "range": {
+        "startLine": 45,
+        "startChar": 54,
+        "endLine": 45,
+        "endChar": 61
+      },
+      "revId": "5448bb2a007a7b09dc556f32006472e5cf51b7d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d7d25243_ec2008d2",
+        "filename": "driver/charger/isl9241.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-04-13T20:14:51Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "38112cbd_6c62faa1",
       "range": {
         "startLine": 45,
         "startChar": 54,
@@ -70,6 +111,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5243ac0c_7e613c3a",
+        "filename": "driver/charger/isl9241.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 427,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-04-13T20:14:51Z",
+      "side": 1,
+      "message": "\u0027chrg\u0027 corresponds to the state documented in the isl9241 application notes. So, I used the same name for clarification.",
+      "parentUuid": "f104ba45_99bb1f28",
+      "range": {
+        "startLine": 427,
+        "startChar": 20,
+        "endLine": 427,
+        "endChar": 30
+      },
+      "revId": "5448bb2a007a7b09dc556f32006472e5cf51b7d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "71b71316_3e209060",
@@ -83,6 +148,30 @@
       "writtenOn": "2022-04-13T08:58:14Z",
       "side": 1,
       "message": "OR?",
+      "range": {
+        "startLine": 441,
+        "startChar": 31,
+        "endLine": 441,
+        "endChar": 33
+      },
+      "revId": "5448bb2a007a7b09dc556f32006472e5cf51b7d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc8e693b_01cd6893",
+        "filename": "driver/charger/isl9241.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 441,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-04-13T20:14:51Z",
+      "side": 1,
+      "message": "I think so. Thanks,",
+      "parentUuid": "71b71316_3e209060",
       "range": {
         "startLine": 441,
         "startChar": 31,
@@ -116,6 +205,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b2dc2aa_5f77bb7d",
+        "filename": "driver/charger/isl9241.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 469,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-04-13T20:14:51Z",
+      "side": 1,
+      "message": "Done. I don\u0027t think this needs board customization.",
+      "parentUuid": "f10f49ba_ff3016d2",
+      "range": {
+        "startLine": 469,
+        "startChar": 37,
+        "endLine": 469,
+        "endChar": 41
+      },
+      "revId": "5448bb2a007a7b09dc556f32006472e5cf51b7d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "74fb9143_99004b6a",
@@ -129,6 +242,30 @@
       "writtenOn": "2022-04-13T08:58:14Z",
       "side": 1,
       "message": "what are these acronyms?\n\nis there a state diagram or flow chart that i should be consulting?",
+      "range": {
+        "startLine": 475,
+        "startChar": 38,
+        "endLine": 475,
+        "endChar": 41
+      },
+      "revId": "5448bb2a007a7b09dc556f32006472e5cf51b7d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "de2dcdca_fcf98ef7",
+        "filename": "driver/charger/isl9241.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 475,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-04-13T20:14:51Z",
+      "side": 1,
+      "message": "Yes, those symbols refer to ISL9241 Application Note: Operation Modes.",
+      "parentUuid": "74fb9143_99004b6a",
       "range": {
         "startLine": 475,
         "startChar": 38,
@@ -164,6 +301,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a1ee10d3_31737e99",
+        "filename": "driver/charger/isl9241.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 557,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-04-13T20:14:51Z",
+      "side": 1,
+      "message": "Done. What name do you suggest? I don\u0027t think this deserves a name, though.",
+      "parentUuid": "14ea665a_45e8e6d0",
+      "range": {
+        "startLine": 557,
+        "startChar": 65,
+        "endLine": 557,
+        "endChar": 68
+      },
+      "revId": "5448bb2a007a7b09dc556f32006472e5cf51b7d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "088f9067_31a4db1d",
         "filename": "driver/charger/isl9241.c",
         "patchSetId": 8
@@ -175,6 +336,30 @@
       "writtenOn": "2022-04-13T08:58:14Z",
       "side": 1,
       "message": "is this in the datasheets anywhere?",
+      "range": {
+        "startLine": 563,
+        "startChar": 1,
+        "endLine": 563,
+        "endChar": 10
+      },
+      "revId": "5448bb2a007a7b09dc556f32006472e5cf51b7d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "35f07cfb_299a6a54",
+        "filename": "driver/charger/isl9241.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 563,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-04-13T20:14:51Z",
+      "side": 1,
+      "message": "Yes. It\u0027s from the application notes.",
+      "parentUuid": "088f9067_31a4db1d",
       "range": {
         "startLine": 563,
         "startChar": 1,
