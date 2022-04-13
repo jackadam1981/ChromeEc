@@ -53,7 +53,7 @@ static struct rgb_s grid0[RGB_GRID0_COL * RGB_GRID0_ROW];
 struct rgbkbd rgbkbds[] = {
 	[0] = {
 		.cfg = &(const struct rgbkbd_cfg) {
-			.drv = &aw20198_drv,
+			.drv = &is31fl3733b_drv,
 			.i2c = I2C_PORT_KBMCU,
 			.col_len = RGB_GRID0_COL,
 			.row_len = RGB_GRID0_ROW,
