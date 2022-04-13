@@ -21,12 +21,12 @@ static int command_usart_info(int argc, char **argv)
 			continue;
 
 		ccprintf("USART%d\n"
-			 "    dropped %d bytes\n"
-			 "    overran %d times\n",
+			 "    dropped %ld bytes\n"
+			 "    overran %ld times\n",
 			 config->hw->index + 1,
-			 (int)atomic_clear(
+			 (long)atomic_clear(
 				 (atomic_t *)&(config->state->rx_dropped)),
-			 (int)atomic_clear(
+			 (long)atomic_clear(
 				 (atomic_t *)&(config->state->rx_overrun)));
 
 		if (config->rx->info)
