@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f5aa7d5_42d1282a",
+        "filename": "board/agah/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-04-13T09:11:06Z",
+      "side": 1,
+      "message": "this is going to look wierd, but USBC_PORT_COUNT\nmay make more sense here since we \"enumerate\" the\nbarrel jack after USBC ports.\nmaybe just add a comment that this is the next\navailable port number due to USBC_PORT_COUNT.\n\noh, there\u0027s CHARGE_PORT_BARRELJACK below. is that better?",
+      "range": {
+        "startLine": 149,
+        "startChar": 32,
+        "endLine": 149,
+        "endChar": 33
+      },
+      "revId": "b046aaef1cea290544d81ee7be24bde4e274370f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf8d1c3f_9a2590f6",
+        "filename": "board/agah/charger_isl9241.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-04-13T09:11:06Z",
+      "side": 1,
+      "message": "what happens if the barrel jack connected but not\nconnected to the building power outlet?",
+      "range": {
+        "startLine": 48,
+        "startChar": 20,
+        "endLine": 48,
+        "endChar": 43
+      },
+      "revId": "b046aaef1cea290544d81ee7be24bde4e274370f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
