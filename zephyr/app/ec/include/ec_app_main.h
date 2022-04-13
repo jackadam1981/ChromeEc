@@ -4,3 +4,4 @@
  */
 
 void ec_app_main(void);
+extern void board_pre_task_peripheral_init(void);
