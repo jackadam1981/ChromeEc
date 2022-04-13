@@ -422,6 +422,8 @@ zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_USB_MUX_TUSB1044
                                                 "${PLATFORM_EC}/driver/usb_mux/tusb1064.c")
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_USB_MUX_TUSB546
                                                 "${PLATFORM_EC}/driver/usb_mux/tusb1064.c")
+zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_USB_MUX_TUSB1064
+                                                "${PLATFORM_EC}/driver/usb_mux/tusb1064.c")
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_USB_MUX_VIRTUAL
                                                 "${PLATFORM_EC}/driver/usb_mux/virtual.c")
 
