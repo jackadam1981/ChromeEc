@@ -16,6 +16,24 @@
       "message": "Did this value come from testing to find a value large enough to ensure there\u0027s no stack overflow?",
       "revId": "1158ea1942d98e467ed7ad4b83f65082ce598871",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9b511b5_7ce84d29",
+        "filename": "zephyr/projects/skyrim/prj.conf",
+        "patchSetId": 2
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-04-13T17:42:30Z",
+      "side": 1,
+      "message": "Yup.  Also by picking the next nice-ish looking binary value.  \n\nWe see this for our maximum stack usage recorded by the kernel with i2ctrace on and it should give us some nice overhead: \n\n22-04-13 11:16:31.562  0x200c4998 PD_C0     \n22-04-13 11:16:31.565 \toptions: 0x0, priority: 3 timeout: 1021\n22-04-13 11:16:31.567 \tstate: pending, entry: 0x1009a61d\n22-04-13 11:16:31.570 \tstack size 1280, unused 292, usage 988 / 1280 (77 %)",
+      "parentUuid": "88e28220_eaaee864",
+      "revId": "1158ea1942d98e467ed7ad4b83f65082ce598871",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
