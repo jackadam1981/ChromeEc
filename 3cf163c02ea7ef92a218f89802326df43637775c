@@ -22,6 +22,30 @@
       },
       "revId": "3cf163c02ea7ef92a218f89802326df43637775c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6304f1e_bd5de57e",
+        "filename": "common/virtual_battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 391,
+      "author": {
+        "id": 1294441
+      },
+      "writtenOn": "2022-04-13T06:55:45Z",
+      "side": 1,
+      "message": "We only read 5 bytes for manufacturer data on damu",
+      "parentUuid": "be7cbac7_c8340494",
+      "range": {
+        "startLine": 391,
+        "startChar": 37,
+        "endLine": 391,
+        "endChar": 45
+      },
+      "revId": "3cf163c02ea7ef92a218f89802326df43637775c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
