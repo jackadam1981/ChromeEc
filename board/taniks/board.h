@@ -242,9 +242,11 @@
 /* RGB Keyboard */
 #define GPIO_RGBKBD_SDB_L	GPIO_KBMCU_INT_ODL
 #define CONFIG_RGB_KEYBOARD
-#define CONFIG_LED_DRIVER_AW20198     /* Awinic AW20198 on I2C */
-#define RGB_GRID0_COL		11
-#define RGB_GRID0_ROW		6
+#define CONFIG_LED_DRIVER_IS31FL3733B     /* is31fl3733b on I2C */
+/* #define CONFIG_LED_DRIVER_AW20198      Awinic AW20198 on I2C */
+
+#define RGB_GRID0_COL		4
+#define RGB_GRID0_ROW		16
 
 #ifndef __ASSEMBLER__
 
