@@ -54,6 +54,11 @@ void ec_app_main(void)
 		lpc_init_mask();
 	}
 
+	/* Initialize board specific peripherals before task starts */
+	if (IS_ENABLED(CONFIG_PLATFORM_EC_BOARD_PRE_TASK_PERIPHERAL_INIT)) {
+		board_pre_task_peripheral_init();
+	}
+
 	if (IS_ENABLED(HAS_TASK_KEYSCAN)) {
 		keyboard_scan_init();
 	}
