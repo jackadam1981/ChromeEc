@@ -20,6 +20,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "804bf68c_83c4b0fb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-04-13T20:53:58Z",
+      "side": 1,
+      "message": "let\u0027s hold off on this until the discussion about disabling\nshutdown in b/223468686 reaches a conclusion.\n",
+      "revId": "4acb7203835ca76b5a0b870c801a9a1475826e11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6e647640_27b91ff2",
         "filename": "baseboard/brya/baseboard.c",
         "patchSetId": 7
