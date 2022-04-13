@@ -5972,6 +5972,13 @@
 #define CONFIG_BATTERY
 #endif
 
+/****************************************************************************/
+/*
+ * Define CONFIG_SB_MANUFACTURER_DATA_LEN if need support access battery
+ * manufacturer data.
+ */
+#undef CONFIG_SB_MANUFACTURER_DATA_LEN
+
 /*****************************************************************************/
 /* Define CONFIG_USBC_PPC if board has a USB Type-C Power Path Controller. */
 #if defined(CONFIG_USBC_PPC_AOZ1380) || \
