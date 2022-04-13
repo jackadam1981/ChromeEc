@@ -302,6 +302,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "251be9e5_f61cd439",
+        "filename": "driver/charger/isl9241.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 475,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-04-13T20:26:51Z",
+      "side": 1,
+      "message": "could you add or link the app note to the bug?",
+      "parentUuid": "de2dcdca_fcf98ef7",
+      "range": {
+        "startLine": 475,
+        "startChar": 38,
+        "endLine": 475,
+        "endChar": 41
+      },
+      "revId": "5448bb2a007a7b09dc556f32006472e5cf51b7d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "14ea665a_45e8e6d0",
         "filename": "driver/charger/isl9241.c",
         "patchSetId": 8
