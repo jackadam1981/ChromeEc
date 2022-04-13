@@ -51,6 +51,52 @@
       "parentUuid": "b156c863_06f7e32d",
       "revId": "bff209292f208587844636e7583af6ba754e186c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "beaaf72f_45357a5a",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 576,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-04-13T03:45:35Z",
+      "side": 1,
+      "message": "does this need to be platform specific?\nin other words, do we have a case where we would\nwant to pass through rsmrst de-assertion when not\ntransitioning out of G3?\n\nalso, considering that this is a change in the critical path\n*very* late  in the firmware cycle,\nwe may need to turn this into config\noption that\u0027s only enabled on affected follower devices.",
+      "range": {
+        "startLine": 576,
+        "startChar": 1,
+        "endLine": 576,
+        "endChar": 57
+      },
+      "revId": "bff209292f208587844636e7583af6ba754e186c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60713e50_a161cac8",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 581,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-04-13T03:45:35Z",
+      "side": 1,
+      "message": "this can now be converted to IS_ENABLED(...)",
+      "range": {
+        "startLine": 581,
+        "startChar": 0,
+        "endLine": 581,
+        "endChar": 3
+      },
+      "revId": "bff209292f208587844636e7583af6ba754e186c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
