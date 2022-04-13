@@ -392,7 +392,7 @@ typedef struct k_mutex mutex_t;
 #else
 struct mutex {
 	uint32_t lock;
-	atomic_t waiters;
+	uint32_t waiters;
 };
 
 typedef struct mutex mutex_t;
