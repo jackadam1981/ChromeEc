@@ -626,4 +626,15 @@ const struct i2c_port_t *get_i2c_port(const int port);
  */
 int i2c_get_physical_port(int enum_port);
 
+/**
+ * Board level function to initialize I2C peripherals before task starts.
+ *
+ * Note: This requires CONFIG_I2C_BITBANG to be enabled, as the task event
+ * based I2C transactions can only be done in bitbang mode if accessed pre-task.
+ *
+ * Example: I/O expanders can be initialized to utilize GPIOs earlier
+ * than the HOOK task starts.
+ */
+__override_proto void board_pre_task_i2c_peripheral_init(void);
+
 #endif  /* __CROS_EC_I2C_H */

@@ -62,6 +62,10 @@ static volatile uint32_t i2c_port_active_list;
 BUILD_ASSERT(ARRAY_SIZE(port_mutex) < 32);
 static uint8_t port_protected[I2C_PORT_COUNT + I2C_BITBANG_PORT_COUNT];
 
+__overridable void board_pre_task_i2c_peripheral_init(void)
+{
+}
+
 #ifdef CONFIG_ZEPHYR
 static int init_port_mutex(const struct device *dev)
 {
