@@ -196,10 +196,7 @@
 			<&gpiof 0 GPIO_INPUT_PULL_DOWN>,
 			/* gpiof1 */
 			<&gpiof 1 GPIO_INPUT_PULL_DOWN>,
-			/* gpiof2 */
-			<&gpiof 2 GPIO_INPUT_PULL_DOWN>,
-			/* gpiof3 */
-			<&gpiof 3 GPIO_INPUT_PULL_DOWN>,
+
 			/* gpiof4 */
 			<&gpiof 4 GPIO_INPUT_PULL_DOWN>,
 			/* gpiof5 */
@@ -286,6 +283,18 @@
 	pinctrl-0 = <&i2c2_clk_gpf6_default
 		     &i2c2_data_gpf7_default>;
 	pinctrl-names = "default";
+};
+
+&i2c3 {
+	status = "okay";
+	clock-frequency = <I2C_BITRATE_FAST>;
+	scl-gpios = <&gpiof 2 0>;
+	sda-gpios = <&gpiof 3 0>;
+	pinctrl-0 = <&i2c3_clk_gpf2_default
+		     &i2c3_data_gpf3_default>;
+	pinctrl-1 = <&i2c3_clk_gpf2_sleep
+		     &i2c3_data_gpf3_sleep>;
+	pinctrl-names = "default", "sleep";
 };
 
 &i2c4 {
