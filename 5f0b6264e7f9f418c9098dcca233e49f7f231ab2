@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a16affc2_c1ccf31d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-04-13T20:54:05Z",
+      "side": 1,
+      "message": "how about just defining a new config\nCONFIG_PRE_TASK_PERIPHERAL_INIT and not touch the legacy code?",
+      "revId": "5f0b6264e7f9f418c9098dcca233e49f7f231ab2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
