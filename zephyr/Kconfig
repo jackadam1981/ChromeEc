@@ -124,6 +124,14 @@ config PLATFORM_EC_BACKLIGHT_LID_ACTIVE_LOW
 	  Support controlling the backlight with an active low GPIO signal.
           This config option expects a GPIO_ENABLE_BACKLIGHT_L defined.
 
+config PLATFORM_EC_BOARD_PRE_TASK_PERIPHERAL_INIT
+	bool "Initialization of peripherals before task starts"
+	help
+	  Enable this config to allow initialization of board specific
+	  peripherals before the task starts.
+	  Board must define function board_pre_task_peripheral_init() if
+	  enabling this configuration.
+
 config PLATFORM_EC_BOARD_RESET_AFTER_POWER_ON
 	bool "Work around H1 reset issue"
 	help
