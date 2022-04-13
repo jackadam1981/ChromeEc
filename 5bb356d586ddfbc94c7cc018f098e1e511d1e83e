@@ -244,6 +244,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e31b16aa_3e127d71",
+        "filename": "zephyr/projects/intelrvp/adlrvp/adlrvp_npcx/fan.dts",
+        "patchSetId": 8
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-04-13T03:10:39Z",
+      "side": 1,
+      "message": "22-04-12 19:31:22.192 ec:~$ adc\n22-04-12 19:31:23.378   ADC_TEMP_SNS_AMBIENT \u003d 2813 mV\n22-04-12 19:31:23.383   ADC_TEMP_SNS_DDR \u003d 2813 mV\n22-04-12 19:31:23.386   ADC_TEMP_SNS_SKIN \u003d 2813 mV\n22-04-12 19:31:23.388   ADC_TEMP_SNS_VR \u003d 2813 mV",
+      "parentUuid": "eaf83d87_c62f3d5d",
+      "range": {
+        "startLine": 25,
+        "startChar": 1,
+        "endLine": 29,
+        "endChar": 34
+      },
+      "revId": "5bb356d586ddfbc94c7cc018f098e1e511d1e83e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4c287a92_4d8d9985",
