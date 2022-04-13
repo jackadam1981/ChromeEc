@@ -172,6 +172,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "546e7a30_65ad525c",
+        "filename": "zephyr/projects/intelrvp/adlrvp/adlrvp_npcx/fan.dts",
+        "patchSetId": 8
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2022-04-13T02:11:32Z",
+      "side": 1,
+      "message": "Hi,\nMay I know if your Zephyr repo includes the patch in CL:3561239?\nIt seems that this is an known issue and this CL can fix it.\nSee more information about this issue in [bug:224740655#27](https://partnerissuetracker.corp.google.com/u/0/issues/224740655#comment27)",
+      "parentUuid": "fcd9f1bf_50049e37",
+      "range": {
+        "startLine": 25,
+        "startChar": 1,
+        "endLine": 29,
+        "endChar": 34
+      },
+      "revId": "5bb356d586ddfbc94c7cc018f098e1e511d1e83e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4c287a92_4d8d9985",
