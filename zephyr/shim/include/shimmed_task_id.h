@@ -187,4 +187,22 @@ enum {
 #undef CROS_EC_TASK
 #undef TASK_TEST
 
+/*
+ * Additional task IDs for features that runs on non shimmed threads.
+ */
+#define CROS_EC_EXTRA_TASKS(fn) \
+	COND_CODE_1(HOSTCMD_IN_MAIN, (fn(HOSTCMD)), ()) \
+	fn(SYSWORKQ)
+
+#define EXTRA_TASK_INTERNAL_ID(name) EXTRA_TASK_##name,
+enum {
+	CROS_EC_EXTRA_TASKS(EXTRA_TASK_INTERNAL_ID)
+	EXTRA_TASK_COUNT,
+};
+
+#define EXTRA_TASK_ID(name) TASK_ID_##name = (TASK_ID_COUNT + EXTRA_TASK_##name),
+enum {
+	CROS_EC_EXTRA_TASKS(EXTRA_TASK_ID)
+};
+
 #endif /* __CROS_EC_SHIMMED_TASK_ID_H */
