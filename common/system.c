@@ -1496,7 +1496,7 @@ static int command_sleepmask(int argc, char **argv)
 		}
 	}
 #endif
-	ccprintf("sleep mask: %08lx\n", (long)sleep_mask);
+	ccprintf("sleep mask: %08x\n", sleep_mask);
 
 	return EC_SUCCESS;
 }
