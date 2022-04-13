@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b251e84f_385fd7f7",
+        "filename": "common/rgb_keyboard.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2022-04-13T13:07:51Z",
+      "side": 1,
+      "message": "The ASSERT should be from the ACPI interrupt, right? If so, is it possible to change the kblight_enable() to use hook_call_deferred() to avoid the ASSERT?",
+      "range": {
+        "startLine": 367,
+        "startChar": 4,
+        "endLine": 367,
+        "endChar": 35
+      },
+      "revId": "3b411c342bc906fa949441a0403e28b3196e3765",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
