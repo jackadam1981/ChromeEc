@@ -22,6 +22,30 @@
       },
       "revId": "027a18416f966053343487dab88a22bc4bc8462c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff10c006_de6a0d99",
+        "filename": "zephyr/app/ec/ec_app_main.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-04-13T22:38:42Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "dd7bfa30_6ab602a8",
+      "range": {
+        "startLine": 59,
+        "startChar": 16,
+        "endLine": 59,
+        "endChar": 38
+      },
+      "revId": "027a18416f966053343487dab88a22bc4bc8462c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
