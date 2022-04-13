@@ -6827,4 +6827,12 @@
 #define CONFIG_S5_EXIT_WAIT 4
 #endif
 
+/*
+ * The historical default SCI pulse width to the host is 65 microseconds, but
+ * some chipsets may require different widths.
+ */
+#ifndef CONFIG_ESPI_DEFAULT_SCI_WIDTH_US
+#define CONFIG_ESPI_DEFAULT_SCI_WIDTH_US	65
+#endif
+
 #endif  /* __CROS_EC_CONFIG_H */
