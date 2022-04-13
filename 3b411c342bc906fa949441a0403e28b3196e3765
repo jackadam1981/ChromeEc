@@ -22,6 +22,30 @@
       },
       "revId": "3b411c342bc906fa949441a0403e28b3196e3765",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5230402e_dadee81f",
+        "filename": "common/rgb_keyboard.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-04-13T15:28:53Z",
+      "side": 1,
+      "message": "Yes. I didn\u0027t do it because at this point, enable is managed by rgbkbd. Also, I don\u0027t think it\u0027s a good design to manipulate APIs (e.g. kblight_set) to make it callable from IRQ. I think we should think of changing the callers (e.g. ACPI), first.",
+      "parentUuid": "b251e84f_385fd7f7",
+      "range": {
+        "startLine": 367,
+        "startChar": 4,
+        "endLine": 367,
+        "endChar": 35
+      },
+      "revId": "3b411c342bc906fa949441a0403e28b3196e3765",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
