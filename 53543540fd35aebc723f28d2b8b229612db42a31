@@ -52,6 +52,24 @@
       "parentUuid": "763c3bba_c38948f6",
       "revId": "53543540fd35aebc723f28d2b8b229612db42a31",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d2e5423e_a7028537",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2022-04-13T01:22:45Z",
+      "side": 1,
+      "message": "For DRP devices and SRC devices, this won\u0027t change the role, it\u0027s not the cases we need to handle (i.e. hard reset is not required).\n\nFor sink devices, this will delay their attach events until we enable DRP toggle, so the hard reset is not needed.",
+      "parentUuid": "9e4f5798_2181c2f7",
+      "revId": "53543540fd35aebc723f28d2b8b229612db42a31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
