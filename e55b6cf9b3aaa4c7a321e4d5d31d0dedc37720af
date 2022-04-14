@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7be24408_6b4823cd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-04-14T02:10:46Z",
+      "side": 1,
+      "message": "I am really surprised it makes any difference about the ordering.\nI would have thought that as long as you disabled the trigger at any time before returning from the handler would have been enough. Were you actually seeing multiple triggers after you had disabled it?\n",
+      "revId": "e55b6cf9b3aaa4c7a321e4d5d31d0dedc37720af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
