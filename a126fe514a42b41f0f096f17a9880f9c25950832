@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0974d53_1a6d125a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-04-14T00:04:42Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "35764417_54933f7a",
+      "range": {
+        "startLine": 7,
+        "startChar": 8,
+        "endLine": 7,
+        "endChar": 79
+      },
+      "revId": "a126fe514a42b41f0f096f17a9880f9c25950832",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cff78691_6302679d",
@@ -41,6 +65,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7148660b_85a4ec10",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-04-14T00:04:42Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "cff78691_6302679d",
+      "revId": "a126fe514a42b41f0f096f17a9880f9c25950832",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "75334b4a_6a859856",
@@ -54,6 +96,30 @@
       "writtenOn": "2022-04-12T03:53:49Z",
       "side": 1,
       "message": "nit: tab",
+      "range": {
+        "startLine": 235,
+        "startChar": 0,
+        "endLine": 240,
+        "endChar": 9
+      },
+      "revId": "a126fe514a42b41f0f096f17a9880f9c25950832",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ade0677b_55c3c43c",
+        "filename": "zephyr/Kconfig.battery",
+        "patchSetId": 1
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-04-14T00:04:42Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "75334b4a_6a859856",
       "range": {
         "startLine": 235,
         "startChar": 0,
