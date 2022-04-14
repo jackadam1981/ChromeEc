@@ -22,6 +22,30 @@
       },
       "revId": "31950eb9061587c09e8fd01f71f8c5cbb965a7be",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5d6491a_6315545e",
+        "filename": "common/usbc/usb_pd_timer.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2022-04-14T09:19:36Z",
+      "side": 1,
+      "message": "You are right, let me prepare a fix.",
+      "parentUuid": "aea6b9bc_2cc23109",
+      "range": {
+        "startLine": 137,
+        "startChar": 32,
+        "endLine": 137,
+        "endChar": 44
+      },
+      "revId": "31950eb9061587c09e8fd01f71f8c5cbb965a7be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
