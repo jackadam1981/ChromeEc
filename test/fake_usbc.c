@@ -7,6 +7,7 @@
 #include "common.h"
 #include "usb_tc_sm.h"
 #include "usb_pd.h"
+#include "usb_pd_tcpm.h"
 
 __overridable int pd_is_vbus_present(int port)
 {
@@ -56,7 +57,7 @@ __overridable enum pd_cable_plug tc_get_cable_plug(int port)
 	return PD_PLUG_FROM_DFP_UFP;
 }
 
-__overridable int pd_get_rev(int port, enum tcpm_transmit_type type)
+__overridable int pd_get_rev(int port, enum tcpci_msg_type type)
 {
 	return IS_ENABLED(CONFIG_USB_PD_REV30) ? PD_REV30 : PD_REV20;
 }
@@ -149,6 +150,13 @@ __overridable enum pd_dual_role_states pd_get_dual_role(int port)
 __overridable void pd_dev_get_rw_hash(int port, uint16_t *dev_id,
 		uint8_t *rw_hash, uint32_t *current_image)
 {
+}
+
+__overridable int pd_dev_store_rw_hash(int port, uint16_t dev_id,
+				       uint32_t *rw_hash,
+				       uint32_t current_image)
+{
+	return 0;
 }
 
 __overridable int pd_comm_is_enabled(int port)
@@ -258,12 +266,16 @@ void dpm_init(int port)
 {
 }
 
-void dpm_vdm_acked(int port, enum tcpm_transmit_type type, int vdo_count,
+void dpm_mode_exit_complete(int port)
+{
+}
+
+void dpm_vdm_acked(int port, enum tcpci_msg_type type, int vdo_count,
 		uint32_t *vdm)
 {
 }
 
-void dpm_vdm_naked(int port, enum tcpm_transmit_type type, uint16_t svid,
+void dpm_vdm_naked(int port, enum tcpci_msg_type type, uint16_t svid,
 		uint8_t vdm_cmd)
 {
 }

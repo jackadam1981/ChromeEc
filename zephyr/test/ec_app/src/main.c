@@ -45,7 +45,7 @@ static void test_button_init(void)
 
 static void test_setup_espi(void)
 {
-#ifdef CONFIG_PLATFORM_EC_ESPI
+#ifdef CONFIG_PLATFORM_EC_HOST_INTERFACE_ESPI
 	zassert_unreachable("TODO: Implement this test.");
 #else
 	ztest_test_skip();
@@ -63,7 +63,7 @@ static void test_watchdog_init(void)
 
 static void test_vboot_main(void)
 {
-#ifdef CONFIG_PLATFORM_EC_VBOOT
+#ifdef CONFIG_PLATFORM_EC_VBOOT_EFS2
 	zassert_unreachable("TODO: Implement this test.");
 #else
 	ztest_test_skip();

@@ -9,12 +9,9 @@
 
 #include "baseboard.h"
 
-/* Chipset config */
-#define CONFIG_BRINGUP
-
 /* Optional features */
-#define CONFIG_SYSTEM_UNLOCKED
 #define CONFIG_LTO
+#define CONFIG_PRESERVE_LOGS
 
 /*
  * TODO: Remove this option once the VBAT no longer keeps high when
@@ -29,7 +26,7 @@
 #define CONFIG_LED_ONOFF_STATES_BAT_LOW 10
 
 /* PD / USB-C / PPC */
-#define CONFIG_USB_PD_DEBUG_LEVEL 3
+#undef CONFIG_USB_PD_DEBUG_LEVEL /* default to 1, configurable in ec console */
 
 /* Optional console commands */
 #define CONFIG_CMD_FLASH
@@ -39,13 +36,12 @@
 #define CONFIG_BATT_FULL_CHIPSET_OFF_INPUT_LIMIT_MV	9000
 
 /* Keyboard */
-#define GPIO_EN_KEYBOARD_BACKLIGHT	GPIO_EN_KB_BL
+#define CONFIG_KEYBOARD_REFRESH_ROW3
 
 /* Sensor */
 #define CONFIG_GMR_TABLET_MODE
 #define CONFIG_TABLET_MODE
 #define CONFIG_TABLET_MODE_SWITCH
-#define GMR_TABLET_MODE_GPIO_L GPIO_TABLET_MODE_L
 
 /* ICM426XX Base accel/gyro */
 #define CONFIG_ACCELGYRO_ICM42607
@@ -54,6 +50,9 @@
 
 /* KX022 Lid accel */
 #define CONFIG_ACCEL_KX022
+
+/* BMA422 Lid accel */
+#define CONFIG_ACCEL_BMA4XX
 
 #define CONFIG_ACCEL_FORCE_MODE_MASK BIT(LID_ACCEL)
 
@@ -82,6 +81,7 @@
 enum battery_type {
 	BATTERY_PANASONIC_AC16L5J,
 	BATTERY_PANASONIC_AC16L5J_KT00205009,
+	BATTERY_AP16L8J,
 	BATTERY_LGC_AP18C8K,
 	BATTERY_TYPE_COUNT,
 };
@@ -91,6 +91,14 @@ enum sensor_id {
 	BASE_GYRO,
 	LID_ACCEL,
 	SENSOR_COUNT,
+};
+
+enum pwm_channel {
+	PWM_CH_LED1,
+	PWM_CH_LED2,
+	PWM_CH_LED3,
+	PWM_CH_KBLIGHT,
+	PWM_CH_COUNT,
 };
 
 int board_accel_force_mode_mask(void);

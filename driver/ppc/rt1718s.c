@@ -71,12 +71,30 @@ static int rt1718s_is_sourcing_vbus(int port)
 
 static int rt1718s_vbus_source_enable(int port, int enable)
 {
-	if (enable)
-		atomic_or(&flags[port], RT1718S_FLAGS_SOURCE_ENABLED);
-	else
-		atomic_clear_bits(&flags[port], RT1718S_FLAGS_SOURCE_ENABLED);
+	atomic_t prev_flag;
 
-	return tcpm_set_src_ctrl(port, enable);
+	if (enable)
+		prev_flag = atomic_or(&flags[port],
+				RT1718S_FLAGS_SOURCE_ENABLED);
+	else
+		prev_flag = atomic_clear_bits(&flags[port],
+				RT1718S_FLAGS_SOURCE_ENABLED);
+
+	/* Return if status doesn't change */
+	if (!!(prev_flag & RT1718S_FLAGS_SOURCE_ENABLED) == !!enable)
+		return EC_SUCCESS;
+
+	RETURN_ERROR(tcpm_set_src_ctrl(port, enable));
+
+#if defined(CONFIG_USB_CHARGER) && defined(CONFIG_USB_PD_VBUS_DETECT_PPC)
+	/*
+	 * Since the VBUS state could be changing here, need to wake the
+	 * USB_CHG_N task so that BC 1.2 detection will be triggered.
+	 */
+	usb_charger_vbus_change(port, enable);
+#endif
+
+	return EC_SUCCESS;
 }
 
 static int rt1718s_vbus_sink_enable(int port, int enable)
@@ -129,16 +147,42 @@ static int rt1718s_dump(int port)
 #ifdef CONFIG_USB_PD_VBUS_DETECT_PPC
 static int rt1718s_is_vbus_present(int port)
 {
-	int status;
-	int rv = read_reg(port, TCPC_REG_POWER_STATUS, &status);
+	__maybe_unused static atomic_t vbus_prev[CONFIG_USB_PD_PORT_MAX_COUNT];
+	int status, vbus;
 
-	return (rv == 0) && (status & TCPC_REG_POWER_STATUS_VBUS_PRES);
+	if (read_reg(port, TCPC_REG_POWER_STATUS, &status))
+		return 0;
+
+	vbus = !!(status & TCPC_REG_POWER_STATUS_VBUS_PRES);
+
+#ifdef CONFIG_USB_CHARGER
+	if (!!(vbus_prev[port] != vbus))
+		usb_charger_vbus_change(port, vbus);
+
+	if (vbus)
+		atomic_or(&vbus_prev[port], 1);
+	else
+		atomic_clear(&vbus_prev[port]);
+#endif
+
+	return vbus;
 }
 #endif
+
+int rt1718s_frs_init(int port)
+{
+	/* Set Rx frs unmasked */
+	RETURN_ERROR(update_bits(port, RT1718S_RT_MASK1,
+				 RT1718S_RT_MASK1_M_RX_FRS, 0xFF));
+	return EC_SUCCESS;
+}
 
 static int rt1718s_init(int port)
 {
 	atomic_clear(&flags[port]);
+
+	if (IS_ENABLED(CONFIG_USB_PD_FRS_PPC))
+		RETURN_ERROR(rt1718s_frs_init(port));
 
 	return EC_SUCCESS;
 }
@@ -147,6 +191,29 @@ static int rt1718s_init(int port)
 static int rt1718s_set_polarity(int port, int polarity)
 {
 	return tcpci_tcpm_set_polarity(port, polarity);
+}
+#endif
+
+#ifdef CONFIG_USB_PD_FRS_PPC
+int rt1718s_set_frs_enable_ppc(int port, int enable)
+{
+	/*
+	 * Use write instead of update to save 2 i2c read.
+	 * Assume other bits are at their reset value.
+	 */
+	int frs_ctrl2 = 0x10, vbus_ctrl_en = 0x3F;
+
+	if (enable) {
+		frs_ctrl2 |= RT1718S_FRS_CTRL2_RX_FRS_EN;
+		frs_ctrl2 |= RT1718S_FRS_CTRL2_VBUS_FRS_EN;
+
+		vbus_ctrl_en |= RT1718S_VBUS_CTRL_EN_GPIO2_VBUS_PATH_EN;
+		vbus_ctrl_en |= RT1718S_VBUS_CTRL_EN_GPIO1_VBUS_PATH_EN;
+	}
+
+	RETURN_ERROR(write_reg(port, RT1718S_FRS_CTRL2, frs_ctrl2));
+	RETURN_ERROR(write_reg(port, RT1718S_VBUS_CTRL_EN, vbus_ctrl_en));
+	return EC_SUCCESS;
 }
 #endif
 
@@ -168,5 +235,8 @@ const struct ppc_drv rt1718s_ppc_drv = {
 #endif
 #ifdef CONFIG_USBC_PPC_VCONN
 	.set_vconn = &tcpci_tcpm_set_vconn,
+#endif
+#ifdef CONFIG_USB_PD_FRS_PPC
+	.set_frs_enable = rt1718s_set_frs_enable_ppc,
 #endif
 };

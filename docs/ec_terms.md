@@ -65,6 +65,11 @@
     switching, sensor management, and other functions, offloading these tasks
     from the [AP](#ap).
 
+*   **ectool** {#ectool}
+
+    The [ectool] is the [AP](#ap) console's CLI for sending commands to the
+    [EC](#ec).
+
 *   **EC-3PO** {#ec-3po}
 
     A replacement of the current UART-based console which moves much of the code
@@ -187,6 +192,15 @@
     [chromium.org documentation](https://www.chromium.org/for-testers/saft) for
     more details.
 
+*   **SHI - SPI Host Interface** {#shi}
+
+    [SPI](#spi) host interface used for communication between the AP and the EC.
+    In this configuration, the AP provides the SPI controller and the EC
+    provides the SPI peripheral. This interface is only used for non-x86 base
+    APs.
+
+    x86-based APs use either the [eSPI](#espi) or [LPC](#lpc) interface.
+
 *   **SPI - Serial Peripheral Interconnect** {#spi}
 
     A 4-wire synchronous communication bus consisting of the signals CLK
@@ -223,17 +237,22 @@
     second). Typical use is to provide a debug console to the EC. [RS-232] is
     the protocol standard used by UARTs.
 
+*   **USBA - USB Type-A** {#usba}
+
+    Traditional USB Host port.
+
 *   **VCONN - Connector Voltage** {#vconn}
 
     See the [USB-C documentation](./usb-c.md#vconn) for more details.
 
 [BC 1.2 Specification]: <https://www.usb.org/document-library/battery-charging-v12-spec-and-adopters-agreement>
-[CrOS Board Info]: <https://chromium.googlesource.com/chromiumos/docs/+/master/design_docs/cros_board_info.md>
 [CEC Wikipedia page]: <https://en.wikipedia.org/wiki/Consumer_Electronics_Control>
-[DPTF Readme]: <https://github.com/intel/dptf/blob/master/README.txt>
-[eSPI Specification]: <https://www.intel.com/content/dam/support/us/en/documents/software/chipset-software/327432-004_espi_base_specification_rev1.0.pdf>
-[FAFT design doc]: <https://chromium.googlesource.com/chromiumos/third_party/autotest/+/refs/heads/master/docs/faft-design-doc.md>
+[CrOS Board Info]: <https://chromium.googlesource.com/chromiumos/docs/+/HEAD/design_docs/cros_board_info.md>
+[DPTF Readme]: <https://github.com/intel/dptf/blob/HEAD/README.txt>
+[EC MKBP driver]: <https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/common/keyboard_mkbp.c>
+[FAFT design doc]: <https://chromium.googlesource.com/chromiumos/third_party/autotest/+/HEAD/docs/faft-design-doc.md>
 [I2C Specification]: <https://www.nxp.com/docs/en/user-guide/UM10204.pdf>
-[RS-232]: <https://en.wikipedia.org/wiki/RS-232>
-[EC MKBP driver]: <https://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/master/common/keyboard_mkbp.c>
 [Low Pin Count bus]: https://en.wikipedia.org/wiki/Low_Pin_Count
+[RS-232]: <https://en.wikipedia.org/wiki/RS-232>
+[eSPI Specification]: <https://www.intel.com/content/dam/support/us/en/documents/software/chipset-software/327432-004_espi_base_specification_rev1.0.pdf>
+[ectool]: ../docs/ap-ec-comm.md

@@ -11,17 +11,11 @@
 #include "common.h"
 #include "system.h"
 
-#ifdef CONFIG_ZEPHYR
-#include "version.h"
-
-#define IS_ZEPHYR_VERSION(major, minor) \
-	(KERNEL_VERSION_MAJOR == (major) && KERNEL_VERSION_MINOR == (minor))
-#else
-#define IS_ZEPHYR_VERSION(major, minor) false
-#endif /* CONFIG_ZEPHYR */
-
 #define CROS_EC_IMAGE_DATA_COOKIE1 0xce778899
 #define CROS_EC_IMAGE_DATA_COOKIE2 0xceaabbdd
+#define CROS_EC_IMAGE_DATA_COOKIE3 0xceeeff00
+#define CROS_EC_IMAGE_DATA_COOKIE3_MASK		GENMASK(31, 8)
+#define CROS_EC_IMAGE_DATA_COOKIE3_VERSION	GENMASK(7, 0)
 
 struct image_data {
 	uint32_t cookie1;
@@ -29,6 +23,8 @@ struct image_data {
 	uint32_t size;
 	int32_t rollback_version;
 	uint32_t cookie2;
+	char cros_fwid[32];
+	uint32_t cookie3;
 } __packed;
 
 extern const struct image_data current_image_data;

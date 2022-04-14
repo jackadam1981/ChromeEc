@@ -4,7 +4,6 @@
  */
 
 #include "adc.h"
-#include "adc_chip.h"
 #include "backlight.h"
 #include "button.h"
 #include "charge_manager.h"
@@ -65,13 +64,32 @@ BUILD_ASSERT(ARRAY_SIZE(adc_channels) == ADC_CH_COUNT);
 /******************************************************************************/
 /* I2C ports */
 const struct i2c_port_t i2c_ports[] = {
-	{"typec", 0, 400, GPIO_I2C1_SCL, GPIO_I2C1_SDA},
-	{"other", 1, 400, GPIO_I2C2_SCL, GPIO_I2C2_SDA},
+	{
+		.name = "typec",
+		.port = 0,
+		.kbps = 400,
+		.scl  = GPIO_I2C1_SCL,
+		.sda  = GPIO_I2C1_SDA
+	},
+	{
+		.name = "other",
+		.port = 1,
+		.kbps = 400,
+		.scl  = GPIO_I2C2_SCL,
+		.sda  = GPIO_I2C2_SDA
+	},
 };
 const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
 
 const struct i2c_port_t i2c_bitbang_ports[] = {
-	{"battery", 2, 100, GPIO_I2C3_SCL, GPIO_I2C3_SDA, .drv = &bitbang_drv},
+	{
+		.name = "battery",
+		.port = 2,
+		.kbps = 100,
+		.scl  = GPIO_I2C3_SCL,
+		.sda  = GPIO_I2C3_SDA,
+		.drv = &bitbang_drv
+	},
 };
 const unsigned int i2c_bitbang_ports_used = ARRAY_SIZE(i2c_bitbang_ports);
 
@@ -104,8 +122,8 @@ __override struct keyboard_scan_config keyscan_config = {
 
 struct ioexpander_config_t ioex_config[CONFIG_IO_EXPANDER_PORT_COUNT] = {
 	[0] = {
-		.i2c_host_port = I2C_PORT_IO_EXPANDER_IT8801,
-		.i2c_addr_flags = IT8801_I2C_ADDR,
+		.i2c_host_port = IT8801_KEYBOARD_PWM_I2C_PORT,
+		.i2c_addr_flags = IT8801_I2C_ADDR1,
 		.drv = &it8801_ioexpander_drv,
 	},
 };
@@ -137,8 +155,12 @@ const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 };
 
 static void board_hpd_status(const struct usb_mux *me,
-			     int hpd_lvl, int hpd_irq)
+			     mux_state_t mux_state,
+			     bool *ack_required)
 {
+	/* This driver does not use host command ACKs */
+	*ack_required = false;
+
 	/*
 	 * svdm_dp_attention() did most of the work, we only need to notify
 	 * host here.

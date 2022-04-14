@@ -10,6 +10,7 @@
 #include "driver/mp4245.h"
 #include "driver/tcpm/tcpci.h"
 #include "driver/mp4245.h"
+#include "gpio.h"
 #include "hooks.h"
 #include "task.h"
 #include "timer.h"
@@ -369,20 +370,16 @@ static void usb_tc_connect(void)
 {
 	int port = TASK_ID_TO_PD_PORT(task_get_current());
 
+	/* Clear data role swap attempt counter at each usbc attach */
+	pd_dr_swap_attempt_count[port] = 0;
+
 	/*
 	 * The EC needs to indicate to the USB hub when the host port is
 	 * attached so that the USB-EP can be properly enumerated. GPIO_BPWR_DET
 	 * is used for this purpose.
 	 */
-	if (port == USB_PD_PORT_HOST) {
+	if (port == USB_PD_PORT_HOST)
 		gpio_set_level(GPIO_BPWR_DET, 1);
-#ifdef GPIO_UFP_PLUG_DET
-		gpio_set_level(GPIO_UFP_PLUG_DET, 0);
-#endif
-	}
-
-	/* Clear data role swap attempt counter at each usbc attach */
-	pd_dr_swap_attempt_count[port] = 0;
 }
 DECLARE_HOOK(HOOK_USB_PD_CONNECT, usb_tc_connect, HOOK_PRIO_DEFAULT);
 
@@ -391,12 +388,8 @@ static void usb_tc_disconnect(void)
 	int port = TASK_ID_TO_PD_PORT(task_get_current());
 
 	/* Only the host port disconnect is relevant */
-	if (port == USB_PD_PORT_HOST) {
+	if (port == USB_PD_PORT_HOST)
 		gpio_set_level(GPIO_BPWR_DET, 0);
-#ifdef GPIO_UFP_PLUG_DET
-		gpio_set_level(GPIO_UFP_PLUG_DET, 1);
-#endif
-	}
 }
 DECLARE_HOOK(HOOK_USB_PD_DISCONNECT, usb_tc_disconnect, HOOK_PRIO_DEFAULT);
 
@@ -458,7 +451,7 @@ static int svdm_response_identity(int port, uint32_t *payload)
 	payload[VDO_INDEX_CSTAT] = VDO_CSTAT(0);
 	payload[VDO_INDEX_PRODUCT] = vdo_product;
 
-	if (pd_get_rev(port, TCPC_TX_SOP) == PD_REV30) {
+	if (pd_get_rev(port, TCPCI_MSG_SOP) == PD_REV30) {
 		/* PD Revision 3.0 */
 		payload[VDO_INDEX_IDH] = vdo_idh_rev30;
 		payload[VDO_INDEX_PTYPE_UFP1_VDO] = vdo_ufp1;

@@ -17,20 +17,12 @@
 #include "usb_api.h"
 #include "usb_bb.h"
 #include "usb_pd.h"
+#include "usb_pd_pdo.h"
+#include "usb_pd_tcpm.h"
 #include "util.h"
 
 #define CPRINTF(format, args...) cprintf(CC_USBPD, format, ## args)
 #define CPRINTS(format, args...) cprints(CC_USBPD, format, ## args)
-
-/* Source PDOs */
-const uint32_t pd_src_pdo[] = {};
-const int pd_src_pdo_cnt = ARRAY_SIZE(pd_src_pdo);
-
-/* Fake PDOs : we just want our pre-defined voltages */
-const uint32_t pd_snk_pdo[] = {
-		PDO_FIXED(5000, 500, PDO_FIXED_COMM_CAP),
-};
-const int pd_snk_pdo_cnt = ARRAY_SIZE(pd_snk_pdo);
 
 /* Holds valid object position (opos) for entered mode */
 static int alt_mode[PD_AMODE_COUNT];
@@ -194,9 +186,9 @@ static int svdm_enter_mode(int port, uint32_t *payload)
 	return rv;
 }
 
-int pd_alt_mode(int port, enum tcpm_transmit_type type, uint16_t svid)
+int pd_alt_mode(int port, enum tcpci_msg_type type, uint16_t svid)
 {
-	if (type != TCPC_TX_SOP)
+	if (type != TCPCI_MSG_SOP)
 		return 0;
 
 	if (svid == USB_SID_DISPLAYPORT)

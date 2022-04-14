@@ -9,6 +9,29 @@ import re
 import shlex
 
 
+def c_str(input_str):
+    """Make a string that can be included as a literal in C source code.
+
+    Args:
+        input_str: The string to process.
+
+    Returns:
+        A string which can be included in C source code.
+    """
+
+    def c_chr(char):
+        # Convert a char in a string to the C representation.  Per the
+        # C standard, we can use all characters but quote, newline,
+        # and backslash directly with no replacements.
+        return {
+            '"': r"\"",
+            "\n": r"\n",
+            "\\": "\\\\",
+        }.get(char, char)
+
+    return '"{}"'.format("".join(map(c_chr, input_str)))
+
+
 def locate_cros_checkout():
     """Find the path to the ChromiumOS checkout.
 
@@ -41,26 +64,6 @@ def locate_cros_checkout():
     raise FileNotFoundError("Unable to locate a ChromiumOS checkout")
 
 
-def locate_zephyr_base(checkout, version):
-    """Locate the path to the Zephyr RTOS in a ChromiumOS checkout.
-
-    Args:
-        checkout: The path to the ChromiumOS checkout.
-        version: The requested zephyr version, as a tuple of integers.
-
-    Returns:
-        The path to the Zephyr source.
-    """
-    return (
-        checkout
-        / "src"
-        / "third_party"
-        / "zephyr"
-        / "main"
-        / "v{}.{}".format(*version[:2])
-    )
-
-
 def read_kconfig_file(path):
     """Parse a Kconfig file.
 
@@ -71,8 +74,8 @@ def read_kconfig_file(path):
         A dictionary of kconfig items to their values.
     """
     result = {}
-    with open(path) as f:
-        for line in f:
+    with open(path) as file:
+        for line in file:
             line, _, _ = line.partition("#")
             line = line.strip()
             if line:
@@ -92,11 +95,12 @@ def read_kconfig_autoconf_value(path, key):
         The value associated with the key or nothing if the key wasn't found.
     """
     prog = re.compile(r"^#define\s{}\s(\S+)$".format(key))
-    with open(path / "autoconf.h") as f:
-        for line in f:
-            m = prog.match(line)
-            if m:
-                return m.group(1)
+    with open(path / "autoconf.h") as file:
+        for line in file:
+            match = prog.match(line)
+            if match:
+                return match.group(1)
+    return None
 
 
 def write_kconfig_file(path, config, only_if_changed=True):
@@ -111,26 +115,9 @@ def write_kconfig_file(path, config, only_if_changed=True):
     if only_if_changed:
         if path.exists() and read_kconfig_file(path) == config:
             return
-    with open(path, "w") as f:
+    with open(path, "w") as file:
         for name, value in config.items():
-            f.write("{}={}\n".format(name, value))
-
-
-def parse_zephyr_version(version_string):
-    """Parse a human-readable version string (e.g., "v2.4") as a tuple.
-
-    Args:
-        version_string: The human-readable version string.
-
-    Returns:
-        A 2-tuple or 3-tuple of integers representing the version.
-    """
-    match = re.fullmatch(r"v?(\d+)[._](\d+)(?:[._](\d+))?", version_string)
-    if not match:
-        raise ValueError(
-            "{} does not look like a Zephyr version.".format(version_string)
-        )
-    return tuple(int(x) for x in match.groups() if x is not None)
+            file.write("{}={}\n".format(name, value))
 
 
 def read_zephyr_version(zephyr_base):
@@ -145,9 +132,9 @@ def read_zephyr_version(zephyr_base):
     version_file = pathlib.Path(zephyr_base) / "VERSION"
 
     file_vars = {}
-    with open(version_file) as f:
-        for line in f:
-            key, sep, value = line.partition("=")
+    with open(version_file) as file:
+        for line in file:
+            key, _, value = line.partition("=")
             file_vars[key.strip()] = value.strip()
 
     return (
@@ -197,36 +184,3 @@ def log_multi_line(logger, level, message):
     for line in message.splitlines():
         if line:
             logger.log(level, line)
-
-
-def resolve_build_dir(platform_ec_dir, project_dir, build_dir):
-    """Resolve the build directory using platform/ec/build/... as default.
-
-    Args:
-        platform_ec_dir: The path to the chromiumos source's platform/ec
-          directory.
-        project_dir: The directory of the project.
-        build_dir: The directory to build in (may be None).
-    Returns:
-        The resolved build directory (using build_dir if not None).
-    """
-    if build_dir:
-        return build_dir
-
-    if not pathlib.Path.exists(project_dir / "zmake.yaml"):
-        raise OSError("Invalid configuration")
-
-    # Resolve project_dir to absolute path.
-    project_dir = project_dir.resolve()
-
-    # Compute the path of project_dir relative to platform_ec_dir.
-    project_relative_path = pathlib.Path.relative_to(project_dir, platform_ec_dir)
-
-    # Make sure that the project_dir is a subdirectory of platform_ec_dir.
-    if platform_ec_dir / project_relative_path != project_dir:
-        raise OSError(
-            "Can't resolve project directory {} which is not a subdirectory"
-            " of the platform/ec directory {}".format(project_dir, platform_ec_dir)
-        )
-
-    return platform_ec_dir / "build" / project_relative_path

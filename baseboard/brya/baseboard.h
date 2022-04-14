@@ -9,9 +9,12 @@
 #define __CROS_EC_BASEBOARD_H
 
 /*
- * By default, enable all console messages excepted HC
+ * By default, enable all console messages excepted HC, ACPI and event:
+ * The sensor stack is generating a lot of activity.
  */
-#define CC_DEFAULT     (CC_ALL & ~(BIT(CC_HOSTCMD)))
+#define CC_DEFAULT     (CC_ALL & ~(CC_MASK(CC_EVENTS) | CC_MASK(CC_LPC)))
+#undef CONFIG_HOSTCMD_DEBUG_MODE
+#define CONFIG_HOSTCMD_DEBUG_MODE HCDEBUG_OFF
 
 /* NPCX9 config */
 #define NPCX9_PWM1_SEL    1  /* GPIO C2 is used as PWM1. */
@@ -42,8 +45,9 @@
 #define CONFIG_BOARD_RESET_AFTER_POWER_ON
 
 /* Host communication */
-#define CONFIG_HOSTCMD_ESPI
+#define CONFIG_HOST_INTERFACE_ESPI
 #define CONFIG_HOSTCMD_ESPI_VW_SLP_S4
+#define CONFIG_HOSTCMD_ESPI_VW_SLP_S5
 
 /*
  * TODO(b/179648721): implement sensors
@@ -53,7 +57,8 @@
 #define CONFIG_GMR_TABLET_MODE
 
 #define CONFIG_MKBP_EVENT
-#define CONFIG_MKBP_USE_HOST_EVENT
+#define CONFIG_MKBP_USE_GPIO_AND_HOST_EVENT
+#define CONFIG_MKBP_INPUT_DEVICES
 
 /* LED */
 #define CONFIG_LED_COMMON
@@ -84,6 +89,13 @@
 #define CONFIG_BATTERY_HW_PRESENT_CUSTOM
 #define CONFIG_BATTERY_REVIVE_DISCONNECT
 #define CONFIG_CMD_BATT_MFG_ACCESS
+/*
+ * Enable support for battery hostcmd, supporting longer strings.
+ * support for EC_CMD_BATTERY_GET_STATIC version 1.
+ */
+#define CONFIG_BATTERY_V2
+#define CONFIG_BATTERY_COUNT 1
+#define CONFIG_HOSTCMD_BATTERY_V2
 
 /* Chipset config */
 #define CONFIG_CHIPSET_ALDERLAKE_SLG4BD44540
@@ -94,19 +106,16 @@
 #define CONFIG_POWER_BUTTON
 #define CONFIG_POWER_BUTTON_X86
 #define CONFIG_POWER_S0IX
+#define CONFIG_POWER_S4_RESIDENCY
 #define CONFIG_POWER_SLEEP_FAILURE_DETECTION
 #define CONFIG_POWER_TRACK_HOST_SLEEP_STATE
 #define CONFIG_LOW_POWER_IDLE
 
 #define CONFIG_HOSTCMD_ESPI_RESET_SLP_SX_VW_ON_ESPI_RST
 
-/*
- * TODO(b/191742284): When DAM enabled coreboot image is flashed on top of DAM
- * disabled coreboot, S5 exit is taking more than 4 seconds, then EC triggers
- * system shutdown. This WA deselects CONFIG_BOARD_HAS_RTC_RESET to prevent
- * EC from system shutdown.
- */
-/* #define CONFIG_BOARD_HAS_RTC_RESET */
+#define CONFIG_BOARD_HAS_RTC_RESET
+#undef CONFIG_S5_EXIT_WAIT
+#define CONFIG_S5_EXIT_WAIT 10
 
 #define CONFIG_CMD_AP_RESET_LOG
 #define CONFIG_HOSTCMD_AP_RESET
@@ -208,28 +217,30 @@
 /* Device version of product. */
 #define CONFIG_USB_BCD_DEV 0x0000
 
+/*
+ * These stack sizes were determined using "make analyzestack" for brya
+ * and include about 15% headroom. Sizes are rounded to multiples of 64
+ * bytes. Task stack sizes not listed here use more generic values (see
+ * ec.tasklist).
+ */
+#define BASEBOARD_CHARGER_TASK_STACK_SIZE	1088
+#define BASEBOARD_CHG_RAMP_TASK_STACK_SIZE	1088
+#define BASEBOARD_CHIPSET_TASK_STACK_SIZE	1152
+#define BASEBOARD_PD_INT_TASK_STACK_SIZE	 800
+#define BASEBOARD_PD_TASK_STACK_SIZE		1216
+#define BASEBOARD_POWERBTN_TASK_STACK_SIZE	1088
+#define BASEBOARD_RGBKBD_TASK_STACK_SIZE	2048
+
 #ifndef __ASSEMBLER__
 
 #include <stdbool.h>
 #include <stdint.h>
 
+#include "cbi.h"
 #include "common.h"
 #include "baseboard_usbc_config.h"
 #include "extpower.h"
 
-/**
- * Configure run-time data structures and operation based on CBI data. This
- * typically includes customization for changes in the BOARD_VERSION and
- * FW_CONFIG fields in CBI. This routine is called from the baseboard after
- * the CBI data has been initialized.
- */
-__override_proto void board_cbi_init(void);
-
-/**
- * Initialize the FW_CONFIG from CBI data. If the CBI data is not valid, set the
- * FW_CONFIG to the board specific defaults.
- */
-__override_proto void board_init_fw_config(void);
 
 /*
  * Check battery disconnect state.
@@ -237,11 +248,6 @@ __override_proto void board_init_fw_config(void);
  * @return true - initialized. false - not.
  */
 __override_proto bool board_battery_is_initialized(void);
-
-/*
- * Return the board revision number.
- */
-uint8_t get_board_id(void);
 
 #endif /* !__ASSEMBLER__ */
 

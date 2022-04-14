@@ -12,6 +12,7 @@
 #include "board_revs.h"
 
 /* Free up some flash space */
+#define CONFIG_DEBUG_ASSERT_BRIEF
 #define CONFIG_USB_PD_DEBUG_LEVEL 0
 
 #define CONFIG_LTO
@@ -162,7 +163,7 @@
 #define I2C_PORT_TCPC    1
 
 /* Enable Accel over SPI */
-#define CONFIG_SPI_ACCEL_PORT    0  /* First SPI master port (SPI2) */
+#define CONFIG_SPI_ACCEL_PORT    0  /* First SPI controller port (SPI2) */
 
 /* Ambient Light Sensor address */
 #define OPT3001_I2C_ADDR_FLAGS OPT3001_I2C_ADDR1_FLAGS

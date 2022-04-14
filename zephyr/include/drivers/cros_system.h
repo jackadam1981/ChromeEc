@@ -39,6 +39,14 @@ enum system_reset_cause {
 };
 
 /**
+ * @brief Get a node from path '/hibernate_wakeup_pins' which has a property
+ *        'wakeup-pins' contains GPIO list for hibernate wake-up
+ *
+ * @return node identifier with that path.
+ */
+#define SYSTEM_DT_NODE_HIBERNATE_CONFIG DT_INST(0, cros_ec_hibernate_wake_pins)
+
+/**
  * @typedef cros_system_get_reset_cause_api
  * @brief Callback API for getting reset cause instance.
  * See cros_system_get_reset_cause() for argument descriptions

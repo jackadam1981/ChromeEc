@@ -21,6 +21,9 @@
 #define CONFIG_ACCELGYRO_BMI160
 #define CONFIG_ACCELGYRO_BMI160_INT_EVENT \
 	TASK_EVENT_MOTION_SENSOR_INTERRUPT(BASE_ACCEL)
+#define CONFIG_ACCELGYRO_ICM426XX
+#define CONFIG_ACCELGYRO_ICM426XX_INT_EVENT \
+	TASK_EVENT_MOTION_SENSOR_INTERRUPT(BASE_ACCEL)
 #define CONFIG_ACCEL_INTERRUPTS
 #define CONFIG_ACCEL_KX022
 #define CONFIG_CMD_ACCELS
@@ -70,7 +73,6 @@
 #define GPIO_VOLUME_UP_L		GPIO_VOLUP_BTN_ODL
 #define GPIO_WP_L			GPIO_EC_WP_L
 #define GPIO_PACKET_MODE_EN		GPIO_EC_H1_PACKET_MODE
-#define GMR_TABLET_MODE_GPIO_L		GPIO_TABLET_MODE_L
 
 #ifndef __ASSEMBLER__
 
@@ -191,21 +193,26 @@ static inline bool ec_config_has_mst_hub_rtd2141b(void)
 		  HAS_MST_HUB_RTD2141B);
 }
 
-/*
+/**
+ * @warning Callers must use gpio_or_ioex_set_level to handle the return result
+ * since either type of signal can be returned.
+ *
  * USB-C0 always uses USB_C0_HPD (= DP3_HPD).
  * USB-C1 OPT1 DB uses DP2_HPD.
  * USB-C1 OPT3 DB uses DP1_HPD via RTD2141B MST hub to drive AP
  *    HPD, EC drives MST hub HPD input from USB-PD messages.
+ *
+ * @return GPIO (gpio_signal) or IOEX (ioex_signal)
  */
-
-enum gpio_signal board_usbc_port_to_hpd_gpio(int port);
-#define PORT_TO_HPD(port) board_usbc_port_to_hpd_gpio(port)
+int board_usbc_port_to_hpd_gpio_or_ioex(int port);
+#define PORT_TO_HPD(port) board_usbc_port_to_hpd_gpio_or_ioex(port)
 
 extern const struct usb_mux usbc0_pi3dpx1207_usb_retimer;
 extern const struct usb_mux usbc1_ps8802;
 extern const struct usb_mux usbc1_ps8818;
 extern struct usb_mux usbc1_amd_fp5_usb_mux;
 void hdmi_hpd_interrupt(enum gpio_signal signal);
+void motion_interrupt(enum gpio_signal signal);
 
 #endif /* !__ASSEMBLER__ */
 

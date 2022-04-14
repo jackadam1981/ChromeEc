@@ -6,7 +6,7 @@
 #define DT_DRV_COMPAT zephyr_pi3usb9201_emul
 
 #include <device.h>
-#include <emul.h>
+#include <drivers/emul.h>
 #include <drivers/i2c.h>
 #include <drivers/i2c_emul.h>
 
@@ -96,9 +96,6 @@ static int pi3usb9201_emul_transfer(struct i2c_emul *emul, struct i2c_msg *msgs,
 {
 	const struct pi3usb9201_emul_cfg *cfg;
 	struct pi3usb9201_emul_data *data;
-	unsigned int len;
-	int ret, i, reg;
-	bool read;
 
 	data = CONTAINER_OF(emul, struct pi3usb9201_emul_data, emul);
 	cfg = data->cfg;
@@ -172,18 +169,15 @@ static int pi3usb9201_emul_init(const struct emul *emul,
 	return ret;
 }
 
-#define PI3USB9201_EMUL(n)					\
-	static struct pi3usb9201_emul_data			\
-		pi3usb9201_emul_data_##n = {};			\
-								\
-	static const struct pi3usb9201_emul_cfg			\
-		pi3usb9201_emul_cfg_##n = {			\
-		.i2c_label = DT_INST_BUS_LABEL(n),		\
-		.data = &pi3usb9201_emul_data_##n,		\
-		.addr = DT_INST_REG_ADDR(n),			\
-	};							\
-	EMUL_DEFINE(pi3usb9201_emul_init, DT_DRV_INST(n),	\
-		    &pi3usb9201_emul_cfg_##n)
+#define PI3USB9201_EMUL(n)                                                  \
+	static struct pi3usb9201_emul_data pi3usb9201_emul_data_##n = {};   \
+	static const struct pi3usb9201_emul_cfg pi3usb9201_emul_cfg_##n = { \
+		.i2c_label = DT_INST_BUS_LABEL(n),                          \
+		.data = &pi3usb9201_emul_data_##n,                          \
+		.addr = DT_INST_REG_ADDR(n),                                \
+	};                                                                  \
+	EMUL_DEFINE(pi3usb9201_emul_init, DT_DRV_INST(n),                   \
+		    &pi3usb9201_emul_cfg_##n, &pi3usb9201_emul_data_##n)
 
 DT_INST_FOREACH_STATUS_OKAY(PI3USB9201_EMUL)
 

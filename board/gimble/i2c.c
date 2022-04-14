@@ -18,36 +18,29 @@ const struct i2c_port_t i2c_ports[] = {
 		.sda = GPIO_EC_I2C_SENSOR_SDA,
 	},
 	{
-		/* I2C1
-		 * TODO(b/194264003) Need to check the signals with a scope
-		 * before raising to 1MHz.
-		 */
 		/* I2C1 */
-		.name = "tcpc0,2",
+		.name = "tcpc0",
 		.port = I2C_PORT_USB_C0_TCPC,
-		.kbps = 400,
+		.kbps = 1000,
 		.scl = GPIO_EC_I2C_USB_C0_C2_TCPC_SCL,
 		.sda = GPIO_EC_I2C_USB_C0_C2_TCPC_SDA,
 	},
 	{
 		/* I2C2 */
-		.name = "ppc0,2",
+		.name = "ppc0",
 		.port = I2C_PORT_USB_C0_PPC,
 		.kbps = 1000,
 		.scl = GPIO_EC_I2C_USB_C0_C2_PPC_BC_SCL,
 		.sda = GPIO_EC_I2C_USB_C0_C2_PPC_BC_SDA,
 	},
 	{
-		/* I2C4
-		 * TODO(b/194264003) Need to check the signals with a scope
-		 * before raising to 1MHz.
-		 */
 		/* I2C4 C1 TCPC */
 		.name = "tcpc1",
 		.port = I2C_PORT_USB_C1_TCPC,
-		.kbps = 400,
+		.kbps = 1000,
 		.scl = GPIO_EC_I2C_USB_C1_TCPC_SCL,
 		.sda = GPIO_EC_I2C_USB_C1_TCPC_SDA,
+		.flags = I2C_PORT_FLAG_DYNAMIC_SPEED,
 	},
 	{
 		/* I2C5 */
@@ -56,14 +49,6 @@ const struct i2c_port_t i2c_ports[] = {
 		.kbps = 100,
 		.scl = GPIO_EC_I2C_BAT_SCL,
 		.sda = GPIO_EC_I2C_BAT_SDA,
-	},
-	{
-		/* I2C6 */
-		.name = "ppc1",
-		.port = I2C_PORT_USB_C1_PPC,
-		.kbps = 400,
-		.scl = GPIO_EC_I2C_USB_C1_MIX_SCL,
-		.sda = GPIO_EC_I2C_USB_C1_MIX_SDA,
 	},
 	{
 		/* I2C7 */

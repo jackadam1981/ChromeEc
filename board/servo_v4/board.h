@@ -10,6 +10,12 @@
 
 #define CONFIG_LTO
 
+/* Free up flash space */
+#ifdef SECTION_IS_RO
+#define CONFIG_DEBUG_ASSERT_BRIEF
+#undef CONFIG_USB_PD_TCPMV1_DEBUG
+#endif
+
 /*
  * Board Versions:
  * Versions are designated by the PCB color and consist of red, blue, and
@@ -97,6 +103,7 @@
 #undef CONFIG_CMD_WAITMS
 #undef CONFIG_CMD_USART_INFO
 #undef CONFIG_CMD_CHARGE_SUPPLIER_INFO
+#define CONFIG_CMD_PD_SRCCAPS_REDUCED_SIZE
 
 /* Enable control of I2C over USB */
 #define CONFIG_USB_I2C

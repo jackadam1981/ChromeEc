@@ -95,9 +95,10 @@ enum isl923x_mon_dir { MON_CHARGE = 0, MON_DISCHARGE = 1 };
 static int learn_mode;
 
 /* Mutex for CONTROL1 register, that can be updated from multiple tasks. */
-K_MUTEX_DEFINE(control1_mutex);
+K_MUTEX_DEFINE(control1_mutex_isl923x);
 
 static enum ec_error_list isl923x_discharge_on_ac(int chgnum, int enable);
+static enum ec_error_list isl923x_discharge_on_ac_weak_disable(int chgnum);
 
 /* Charger parameters */
 static const struct charger_info isl9237_charger_info = {
@@ -112,13 +113,6 @@ static const struct charger_info isl9237_charger_info = {
 	.input_current_min  = AC_REG_TO_CURRENT(INPUT_I_MIN),
 	.input_current_step = AC_REG_TO_CURRENT(INPUT_I_STEP),
 };
-
-static inline enum ec_error_list raw_read8(int chgnum, int offset, int *value)
-{
-	return i2c_read8(chg_chips[chgnum].i2c_port,
-			 chg_chips[chgnum].i2c_addr_flags,
-			 offset, value);
-}
 
 static inline enum ec_error_list raw_read16(int chgnum, int offset, int *value)
 {
@@ -189,7 +183,7 @@ static int get_amon_bmon(int chgnum, enum isl923x_amon_bmon amon,
 			return ret;
 	}
 
-	mutex_lock(&control1_mutex);
+	mutex_lock(&control1_mutex_isl923x);
 
 	ret = raw_read16(chgnum, ISL923X_REG_CONTROL1, &reg);
 	if (!ret) {
@@ -204,7 +198,7 @@ static int get_amon_bmon(int chgnum, enum isl923x_amon_bmon amon,
 		ret = raw_write16(chgnum, ISL923X_REG_CONTROL1, reg);
 	}
 
-	mutex_unlock(&control1_mutex);
+	mutex_unlock(&control1_mutex_isl923x);
 
 	if (ret)
 		return ret;
@@ -271,7 +265,7 @@ static enum ec_error_list isl923x_enable_otg_power(int chgnum, int enabled)
 {
 	int rv, control1;
 
-	mutex_lock(&control1_mutex);
+	mutex_lock(&control1_mutex_isl923x);
 
 	rv = raw_read16(chgnum, ISL923X_REG_CONTROL1, &control1);
 	if (rv)
@@ -285,7 +279,7 @@ static enum ec_error_list isl923x_enable_otg_power(int chgnum, int enabled)
 	rv = raw_write16(chgnum, ISL923X_REG_CONTROL1, control1);
 
 out:
-	mutex_unlock(&control1_mutex);
+	mutex_unlock(&control1_mutex_isl923x);
 
 	return rv;
 }
@@ -402,8 +396,7 @@ static enum ec_error_list isl923x_set_mode(int chgnum, int mode)
 	 * See crosbug.com/p/51196.  Always disable learn mode unless it was set
 	 * explicitly.
 	 */
-	if (!learn_mode)
-		rv = isl923x_discharge_on_ac(chgnum, 0);
+	rv = isl923x_discharge_on_ac_weak_disable(chgnum);
 
 	/* ISL923X does not support inhibit mode setting. */
 	return rv;
@@ -770,12 +763,14 @@ init_fail:
 	CPRINTS("%s init failed!", CHARGER_NAME);
 }
 
-static enum ec_error_list isl923x_discharge_on_ac(int chgnum, int enable)
+/*
+ * Writes to ISL923X_REG_CONTROL1, unsafe as it does not lock
+ * control1_mutex_isl923x.
+ */
+static enum ec_error_list isl923x_discharge_on_ac_unsafe(int chgnum, int enable)
 {
 	int rv;
 	int control1;
-
-	mutex_lock(&control1_mutex);
 
 	rv = raw_read16(chgnum, ISL923X_REG_CONTROL1, &control1);
 	if (rv)
@@ -789,14 +784,36 @@ static enum ec_error_list isl923x_discharge_on_ac(int chgnum, int enable)
 
 	rv = raw_write16(chgnum, ISL923X_REG_CONTROL1, control1);
 
-	learn_mode = !rv && enable;
+	if (!rv)
+		learn_mode = enable;
 
 out:
-	mutex_unlock(&control1_mutex);
 	return rv;
 }
 
-#ifdef CONFIG_CHARGER_RAA489000
+static enum ec_error_list isl923x_discharge_on_ac(int chgnum, int enable)
+{
+	int rv;
+
+	mutex_lock(&control1_mutex_isl923x);
+	rv = isl923x_discharge_on_ac_unsafe(chgnum, enable);
+	mutex_unlock(&control1_mutex_isl923x);
+	return rv;
+}
+
+/* Disables discharge on ac only if it wasn't explicitly enabled. */
+static enum ec_error_list isl923x_discharge_on_ac_weak_disable(int chgnum)
+{
+	int rv = 0;
+
+	mutex_lock(&control1_mutex_isl923x);
+	if (!learn_mode)
+		rv = isl923x_discharge_on_ac_unsafe(chgnum, 0);
+
+	mutex_unlock(&control1_mutex_isl923x);
+	return rv;
+}
+
 enum ec_error_list raa489000_is_acok(int chgnum, bool *acok)
 {
 	int regval, rv;
@@ -916,9 +933,7 @@ void raa489000_hibernate(int chgnum, bool disable_adc)
 
 	cflush();
 }
-#endif /* CONFIG_CHARGER_RAA489000 */
 
-#ifdef CONFIG_CHARGER_ISL9238C
 enum ec_error_list isl9238c_hibernate(int chgnum)
 {
 	/* Disable IMON */
@@ -958,7 +973,6 @@ enum ec_error_list isl9238c_resume(int chgnum)
 
 	return EC_SUCCESS;
 }
-#endif /* CONFIG_CHARGER_ISL9238C */
 
 
 /*****************************************************************************/
@@ -1022,7 +1036,7 @@ static void charger_enable_psys(void)
 {
 	int val;
 
-	mutex_lock(&control1_mutex);
+	mutex_lock(&control1_mutex_isl923x);
 
 	/*
 	 * enable system power monitor PSYS function
@@ -1038,7 +1052,7 @@ static void charger_enable_psys(void)
 	psys_enabled = 1;
 
 out:
-	mutex_unlock(&control1_mutex);
+	mutex_unlock(&control1_mutex_isl923x);
 }
 DECLARE_HOOK(HOOK_CHIPSET_RESUME, charger_enable_psys, HOOK_PRIO_DEFAULT);
 
@@ -1046,7 +1060,7 @@ static void charger_disable_psys(void)
 {
 	int val;
 
-	mutex_lock(&control1_mutex);
+	mutex_lock(&control1_mutex_isl923x);
 
 	/*
 	 * disable system power monitor PSYS function
@@ -1062,7 +1076,7 @@ static void charger_disable_psys(void)
 	psys_enabled = 0;
 
 out:
-	mutex_unlock(&control1_mutex);
+	mutex_unlock(&control1_mutex_isl923x);
 }
 DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, charger_disable_psys, HOOK_PRIO_DEFAULT);
 
@@ -1196,17 +1210,8 @@ static void dump_reg_range(int chgnum, int low, int high)
 	}
 }
 
-static int command_isl923x_dump(int argc, char **argv)
+static void command_isl923x_dump(int chgnum)
 {
-	int chgnum = 0;
-	char *e;
-
-	if (argc >= 2) {
-		chgnum = strtoi(argv[1], &e, 10);
-		if (*e)
-			return EC_ERROR_PARAM1;
-	}
-
 	dump_reg_range(chgnum, 0x14, 0x15);
 	if (IS_ENABLED(CONFIG_CHARGER_ISL9238C))
 		dump_reg_range(chgnum, 0x37, 0x37);
@@ -1216,11 +1221,7 @@ static int command_isl923x_dump(int argc, char **argv)
 	    IS_ENABLED(CONFIG_CHARGER_RAA489000))
 		dump_reg_range(chgnum, 0x4B, 0x4E);
 	dump_reg_range(chgnum, 0xFE, 0xFF);
-
-	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(charger_dump, command_isl923x_dump,
-			"charger_dump <chgnum>", "Dumps ISL923x registers");
 #endif /* CONFIG_CMD_CHARGER_DUMP */
 
 static enum ec_error_list isl923x_get_vbus_voltage(int chgnum, int port,
@@ -1306,6 +1307,7 @@ static enum ec_error_list raa489000_enable_linear_charge(int chgnum,
 		rv = raw_update16(CHARGER_PRIMARY, RAA489000_REG_CONTROL10,
 				  RAA489000_C10_ENABLE_DVC_TRICKLE_CHARGE,
 				  MASK_CLR);
+		rv |= isl9237_set_current(CHARGER_PRIMARY, 0);
 	}
 
 	return rv;
@@ -1467,5 +1469,8 @@ const struct charger_drv isl923x_drv = {
 #if defined(CONFIG_CHARGER_RAA489000) && defined(CONFIG_OCPC)
 	.enable_linear_charge = &raa489000_enable_linear_charge,
 	.set_vsys_compensation = &raa489000_set_vsys_compensation,
+#endif
+#ifdef CONFIG_CMD_CHARGER_DUMP
+	.dump_registers = &command_isl923x_dump,
 #endif
 };

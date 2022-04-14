@@ -142,6 +142,8 @@ struct timer_ctlr {
 /* Must be volatile, or compiler optimizes out repeated accesses */
 typedef volatile struct timer_ctlr timer_ctlr_t;
 
+#define IRQ_TIM(n) CONCAT2(STM32_IRQ_TIM, n)
+
 /* --- Low power timers --- */
 #define STM32_LPTIM_BASE(n)          CONCAT3(STM32_LPTIM, n, _BASE)
 
@@ -483,6 +485,8 @@ typedef volatile struct timer_ctlr timer_ctlr_t;
 #include "registers-stm32l.h"
 #elif defined(CHIP_FAMILY_STM32L4)
 #include "registers-stm32l4.h"
+#elif defined(CHIP_FAMILY_STM32L5)
+#include "registers-stm32l5.h"
 #else
 #error "Unsupported chip family"
 #endif

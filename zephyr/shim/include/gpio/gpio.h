@@ -9,6 +9,21 @@
 #include <device.h>
 #include <devicetree.h>
 
+/*
+ * Validate interrupt flags are valid for the Zephyr GPIO driver.
+ */
+#define IS_GPIO_INTERRUPT_FLAG(flag, mask) ((flag & mask) == mask)
+#define VALID_GPIO_INTERRUPT_FLAG(flag)                             \
+	(IS_GPIO_INTERRUPT_FLAG(flag, GPIO_INT_EDGE_RISING) ||      \
+	 IS_GPIO_INTERRUPT_FLAG(flag, GPIO_INT_EDGE_FALLING) ||     \
+	 IS_GPIO_INTERRUPT_FLAG(flag, GPIO_INT_EDGE_BOTH) ||        \
+	 IS_GPIO_INTERRUPT_FLAG(flag, GPIO_INT_LEVEL_LOW) ||        \
+	 IS_GPIO_INTERRUPT_FLAG(flag, GPIO_INT_LEVEL_HIGH) ||       \
+	 IS_GPIO_INTERRUPT_FLAG(flag, GPIO_INT_EDGE_TO_INACTIVE) || \
+	 IS_GPIO_INTERRUPT_FLAG(flag, GPIO_INT_EDGE_TO_ACTIVE) ||   \
+	 IS_GPIO_INTERRUPT_FLAG(flag, GPIO_INT_LEVEL_INACTIVE) ||   \
+	 IS_GPIO_INTERRUPT_FLAG(flag, GPIO_INT_LEVEL_ACTIVE))
+
 /* Information about each unused pin in the 'unused-pins' device tree node. */
 struct unused_pin_config {
 	/* Device name of a unused gpio pin */
@@ -68,7 +83,7 @@ int gpio_config_unused_pins(void) __attribute__((weak));
 
 /**
  * @brief Macro function to construct a list of unused_pin_config items by
- *        UTIL_LISTIFY func.
+ *        LISTIFY func.
  *
  * Example devicetree fragment:
  *    / {
@@ -87,7 +102,7 @@ int gpio_config_unused_pins(void) __attribute__((weak));
  * @return a list of unused_pin_config items
  */
 #define UNUSED_GPIO_CONFIG_LIST \
-	UTIL_LISTIFY(UNUSED_GPIOS_LIST_LEN, UNUSED_GPIO_CONFIG_BY_IDX, _)
+	LISTIFY(UNUSED_GPIOS_LIST_LEN, UNUSED_GPIO_CONFIG_BY_IDX, (), _)
 
 #else
 #define UNUSED_GPIO_CONFIG_LIST /* Nothing if no 'unused-pins' node */

@@ -4,12 +4,12 @@
  */
 
 #include "adc.h"
-#include "adc_chip.h"
 #include "charger.h"
 #include "chipset.h"
 #include "dma.h"
 #include "gpio.h"
 #include "hooks.h"
+#include "i2c.h"
 #include "keyboard_scan.h"
 #include "registers.h"
 #include "timer.h"
@@ -195,14 +195,14 @@ static void baseboard_spi_init(void)
 }
 DECLARE_HOOK(HOOK_INIT, baseboard_spi_init, HOOK_PRIO_INIT_SPI + 1);
 
-int board_allow_i2c_passthru(int port)
+int board_allow_i2c_passthru(const struct i2c_cmd_desc_t *cmd_desc)
 {
-	return (port == I2C_PORT_VIRTUAL_BATTERY);
+	return (cmd_desc->port == I2C_PORT_VIRTUAL_BATTERY);
 }
 
 /* Enable or disable input devices, based on chipset state and tablet mode */
-#if !defined(TEST_BUILD) && defined(VARIANT_KUKUI_JACUZZI)
-void lid_angle_peripheral_enable(int enable)
+#ifdef VARIANT_KUKUI_JACUZZI
+__override void lid_angle_peripheral_enable(int enable)
 {
 	int chipset_in_s0 = chipset_in_state(CHIPSET_STATE_ON);
 

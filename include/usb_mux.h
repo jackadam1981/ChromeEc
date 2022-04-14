@@ -17,6 +17,7 @@
 /* Flags used for usb_mux.flags */
 #define USB_MUX_FLAG_NOT_TCPC BIT(0) /* TCPC/MUX device used only as MUX */
 #define USB_MUX_FLAG_SET_WITHOUT_FLIP BIT(1) /* SET should not flip */
+#define USB_MUX_FLAG_RESETS_IN_G3 BIT(2) /* Mux chip will reset in G3 */
 
 /*
  * USB-C mux state
@@ -42,11 +43,14 @@ struct usb_mux_driver {
 	/**
 	 * Set USB mux state.
 	 *
-	 * @param me usb_mux
-	 * @param mux_state State to set mux to.
+	 * @param[in]  me usb_mux
+	 * @param[in]  mux_state State to set mux to.
+	 * @param[out] bool ack_required - indication of whether this mux needs
+	 * to wait on a host command ACK at the end of a set
 	 * @return EC_SUCCESS on success, non-zero error code on failure.
 	 */
-	int (*set)(const struct usb_mux *me, mux_state_t mux_state);
+	int (*set)(const struct usb_mux *me, mux_state_t mux_state,
+		   bool *ack_required);
 
 	/**
 	 * Get current state of USB mux.
@@ -132,17 +136,18 @@ struct usb_mux {
 	int (*board_set)(const struct usb_mux *me, mux_state_t mux_state);
 
 	/*
-	 * TODO: Consider moving this to usb_mux_driver struct
-	 *
 	 * USB Type-C DP alt mode support. Notify Type-C controller
 	 * there is DP dongle hot-plug.
 	 *
-	 * @param me usb_mux
-	 * @param hpd_lvl Level
-	 * @param hpd_irq IRQ
+	 * @param[in]  me usb_mux
+	 * @param[in]  mux_state with HPD IRQ and HPD LVL flags set
+	 *	       accordingly
+	 * @param[out] ack_required: indication of whether this function
+	 *	       requires a wait for an AP ACK after
 	 */
 	void (*hpd_update)(const struct usb_mux *me,
-			   int hpd_lvl, int hpd_irq);
+			   mux_state_t mux_state,
+			   bool *ack_required);
 };
 
 /* Supported USB mux drivers */
@@ -166,7 +171,8 @@ extern const struct usb_mux usb_muxes[];
 #endif
 
 /* Supported hpd_update functions */
-void virtual_hpd_update(const struct usb_mux *me, int hpd_lvl, int hpd_irq);
+void virtual_hpd_update(const struct usb_mux *me, mux_state_t mux_state,
+			bool *ack_required);
 
 /*
  * Helper methods that either use tcpc communication or direct i2c
@@ -245,10 +251,9 @@ void usb_mux_flip(int port);
  * Update the hot-plug event.
  *
  * @param port port number.
- * @param hpd_lvl HPD level.
- * @param hpd_irq HPD IRQ.
+ * @param mux_state HPD IRQ and LVL mux flags
  */
-void usb_mux_hpd_update(int port, int hpd_lvl, int hpd_irq);
+void usb_mux_hpd_update(int port, mux_state_t mux_state);
 
 /**
  * Port information about retimer firmware update support.
@@ -261,4 +266,11 @@ void usb_mux_hpd_update(int port, int hpd_lvl, int hpd_irq);
  */
 int usb_mux_retimer_fw_update_port_info(void);
 
+/**
+ * Check whether this port has pending mux sets
+ *
+ * @param  port USB-C port number
+ * @return True if all pending mux sets have completed
+ */
+bool usb_mux_set_completed(int port);
 #endif

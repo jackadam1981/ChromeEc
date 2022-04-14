@@ -6,6 +6,7 @@
 #include "battery.h"
 #include "button.h"
 #include "charge_ramp.h"
+#include "charge_state.h"
 #include "charger.h"
 #include "common.h"
 #include "compile_time_macros.h"
@@ -18,6 +19,7 @@
 #include "fw_config.h"
 #include "hooks.h"
 #include "lid_switch.h"
+#include "peripheral_charger.h"
 #include "power_button.h"
 #include "power.h"
 #include "registers.h"
@@ -31,6 +33,28 @@
 /* Console output macros */
 #define CPRINTF(format, args...) cprintf(CC_CHARGER, format, ## args)
 #define CPRINTS(format, args...) cprints(CC_CHARGER, format, ## args)
+
+/* Battery discharging over-current limit is 8A */
+#define BATT_OC_LIMIT -8000
+
+/* PCHG control */
+#ifdef SECTION_IS_RW
+extern struct pchg_drv ctn730_drv;
+
+struct pchg pchgs[] = {
+	[0] = {
+		.cfg = &(const struct pchg_config) {
+			.drv = &ctn730_drv,
+			.i2c_port = I2C_PORT_WLC,
+			.irq_pin = GPIO_PEN_INT_ODL,
+			.full_percent = 96,
+			.block_size = 128,
+		},
+		.events = QUEUE_NULL(PCHG_EVENT_QUEUE_SIZE, enum pchg_event),
+	},
+};
+const int pchg_count = ARRAY_SIZE(pchgs);
+#endif
 
 /******************************************************************************/
 /* USB-A charging control */
@@ -46,7 +70,7 @@ BUILD_ASSERT(ARRAY_SIZE(usb_port_enable) == USB_PORT_COUNT);
 static void board_chipset_resume(void)
 {
 	/* Allow keyboard backlight to be enabled */
-	gpio_set_level(GPIO_EC_KB_BL_EN_L, 0);
+	gpio_set_level(GPIO_EC_KB_BL_EN, 1);
 }
 DECLARE_HOOK(HOOK_CHIPSET_RESUME, board_chipset_resume, HOOK_PRIO_DEFAULT);
 
@@ -54,46 +78,36 @@ DECLARE_HOOK(HOOK_CHIPSET_RESUME, board_chipset_resume, HOOK_PRIO_DEFAULT);
 static void board_chipset_suspend(void)
 {
 	/* Turn off the keyboard backlight if it's on. */
-	gpio_set_level(GPIO_EC_KB_BL_EN_L, 1);
+	gpio_set_level(GPIO_EC_KB_BL_EN, 0);
 }
 DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, board_chipset_suspend, HOOK_PRIO_DEFAULT);
-
-#ifdef CONFIG_CHARGE_RAMP_SW
-
-/*
- * TODO(b/181508008): tune this threshold
- */
-
-#define BC12_MIN_VOLTAGE 4400
-
-/**
- * Return true if VBUS is too low
- */
-int board_is_vbus_too_low(int port, enum chg_ramp_vbus_state ramp_state)
-{
-	int voltage;
-
-	if (charger_get_vbus_voltage(port, &voltage))
-		voltage = 0;
-
-	if (voltage == 0) {
-		CPRINTS("%s: must be disconnected", __func__);
-		return 1;
-	}
-
-	if (voltage < BC12_MIN_VOLTAGE) {
-		CPRINTS("%s: port %d: vbus %d lower than %d", __func__,
-			port, voltage, BC12_MIN_VOLTAGE);
-		return 1;
-	}
-
-	return 0;
-}
-
-#endif /* CONFIG_CHARGE_RAMP_SW */
 
 enum battery_present battery_hw_present(void)
 {
 	/* The GPIO is low when the battery is physically present */
 	return gpio_get_level(GPIO_EC_BATT_PRES_ODL) ? BP_NO : BP_YES;
+}
+
+int charger_profile_override(struct charge_state_data *curr)
+{
+	/* Turn off haptic pad LRA if battery discharing current over 8A */
+	if (!(curr->batt.flags & BATT_FLAG_BAD_CURRENT) &&
+	    curr->batt.current < BATT_OC_LIMIT)
+		gpio_set_level(GPIO_LRA_DIS_ODL, 0);
+	else
+		gpio_set_level(GPIO_LRA_DIS_ODL, 1);
+
+	return 0;
+}
+
+enum ec_status charger_profile_override_get_param(uint32_t param,
+						  uint32_t *value)
+{
+	return EC_RES_INVALID_PARAM;
+}
+
+enum ec_status charger_profile_override_set_param(uint32_t param,
+						  uint32_t value)
+{
+	return EC_RES_INVALID_PARAM;
 }

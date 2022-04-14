@@ -8,18 +8,16 @@
 	"included in all zephyr builds automatically"
 #endif
 
-/* TODO(b/183544739): Move this to use compatible strings */
-
 #define BATTERY_ENUM(val)	DT_CAT(BATTERY_, val)
-#define BATTERY_TYPE(id)	BATTERY_ENUM(DT_ENUM_UPPER_TOKEN(id, enum_name))
+#define BATTERY_TYPE(id) BATTERY_ENUM(DT_STRING_UPPER_TOKEN(id, enum_name))
 #define BATTERY_TYPE_WITH_COMMA(id)	BATTERY_TYPE(id),
 
 /* This produces a list of BATTERY_<ENUM_NAME> identifiers */
 enum battery_type {
-#if DT_NODE_EXISTS(DT_PATH(named_batteries))
-	DT_FOREACH_CHILD(DT_PATH(named_batteries), BATTERY_TYPE_WITH_COMMA)
+#if DT_HAS_COMPAT_STATUS_OKAY(battery_smart)
+	DT_FOREACH_STATUS_OKAY(battery_smart, BATTERY_TYPE_WITH_COMMA)
 #endif
-
 	BATTERY_TYPE_COUNT,
 };
+
 #undef BATTERY_TYPE_WITH_COMMA
