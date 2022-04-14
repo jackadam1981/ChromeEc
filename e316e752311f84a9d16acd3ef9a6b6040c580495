@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "deda79c3_5ef67d53",
+        "filename": "zephyr/projects/intelrvp/adlrvp/adlrvp_npcx/temp_sensor.dts",
+        "patchSetId": 16
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2022-04-14T03:25:22Z",
+      "side": 1,
+      "message": "Should \"cros-ec,temp-sensor\" be added to the compatible property as well?\nI see in the Brya(ADL-P) and Nissa(ADL-N), bpth \"cros-ec,temp-sensor-thermistor\" and \"cros-ec,temp-sensor\" are added to this property.",
+      "range": {
+        "startLine": 11,
+        "startChar": 3,
+        "endLine": 11,
+        "endChar": 48
+      },
+      "revId": "e316e752311f84a9d16acd3ef9a6b6040c580495",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f462ab41_2f5c5eb0",
+        "filename": "zephyr/projects/intelrvp/adlrvp/adlrvp_npcx/temp_sensor.dts",
+        "patchSetId": 16
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2022-04-14T03:25:22Z",
+      "side": 1,
+      "message": "Same above.",
+      "range": {
+        "startLine": 29,
+        "startChar": 5,
+        "endLine": 29,
+        "endChar": 49
+      },
+      "revId": "e316e752311f84a9d16acd3ef9a6b6040c580495",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2378c564_75fd5444",
+        "filename": "zephyr/projects/intelrvp/adlrvp/adlrvp_npcx/temp_sensor.dts",
+        "patchSetId": 16
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2022-04-14T03:25:22Z",
+      "side": 1,
+      "message": "Same above.",
+      "range": {
+        "startLine": 43,
+        "startChar": 3,
+        "endLine": 43,
+        "endChar": 47
+      },
+      "revId": "e316e752311f84a9d16acd3ef9a6b6040c580495",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67e504cd_25b4e6f5",
+        "filename": "zephyr/projects/intelrvp/adlrvp/adlrvp_npcx/temp_sensor.dts",
+        "patchSetId": 16
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2022-04-14T03:25:22Z",
+      "side": 1,
+      "message": "Same above.",
+      "range": {
+        "startLine": 55,
+        "startChar": 3,
+        "endLine": 55,
+        "endChar": 47
+      },
+      "revId": "e316e752311f84a9d16acd3ef9a6b6040c580495",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d8d567b3_ebf70c7c",
+        "filename": "zephyr/projects/intelrvp/adlrvp/adlrvp_npcx/temp_sensor.dts",
+        "patchSetId": 16
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2022-04-14T03:25:22Z",
+      "side": 1,
+      "message": "Same above.",
+      "range": {
+        "startLine": 67,
+        "startChar": 3,
+        "endLine": 67,
+        "endChar": 49
+      },
+      "revId": "e316e752311f84a9d16acd3ef9a6b6040c580495",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
