@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14f6f99b_43755d36",
+        "filename": "zephyr/projects/nissa/prj_nereid.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2022-04-14T09:41:03Z",
+      "side": 1,
+      "message": "Since we specify extensions in the soc/riscv/riscv-ite/CMakeLists.txt\nYou might need the below change to make build happy:\nhttps://chromium-review.googlesource.com/c/chromiumos/third_party/zephyr/+/3581491",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 19
+      },
+      "revId": "31d268a9565f26fd11bf0a80fd688972722cfd50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
