@@ -16,6 +16,23 @@
       "message": "Denis, could you take a look?",
       "revId": "0dd892ba4c0b4e465928cd0d04f5680117c51e56",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e4d86b7_12c75fc9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-04-14T20:17:21Z",
+      "side": 1,
+      "message": "This CL will not be required once https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3585888 will be approved to merge.",
+      "revId": "0dd892ba4c0b4e465928cd0d04f5680117c51e56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
