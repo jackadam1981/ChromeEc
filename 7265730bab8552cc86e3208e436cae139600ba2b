@@ -34,6 +34,24 @@
       "parentUuid": "f4e25742_a6de6ce0",
       "revId": "7265730bab8552cc86e3208e436cae139600ba2b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "382d57ae_cbb8962d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1513493
+      },
+      "writtenOn": "2022-04-14T17:35:28Z",
+      "side": 1,
+      "message": "Did you notice the noise levels of 199 mV? We need the data of worst case noise level. After that we can set threshold value to (worst case noise level + 50 mV). If noise level max is 150 mV, threshold voltage of 200 mV is ok.",
+      "parentUuid": "b6b166a6_37d23e46",
+      "revId": "7265730bab8552cc86e3208e436cae139600ba2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
