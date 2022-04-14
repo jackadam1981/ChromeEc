@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "79a6dfa2_e56422a3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1510217
+      },
+      "writtenOn": "2022-04-14T01:01:05Z",
+      "side": 1,
+      "message": "\u003e Patch Set 1: -Code-Review -Commit-Queue\n\u003e \n\u003e By removing the Code-Review vote the following files are no longer code-owner approved by \u003cGERRIT_ACCOUNT_1510217\u003e:\n\u003e * driver/charger/isl9241.c\n\u003e \n\nOops, I accidentally clicked +2.",
+      "revId": "6ac1c791190380fc6fc3864df4096f92ee0103f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
