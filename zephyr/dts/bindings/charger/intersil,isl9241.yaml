@@ -6,7 +6,7 @@ description: Intersil ISL9241 Charger IC
 
 compatible: "intersil,isl9241"
 
-include: i2c-device.yaml
+include: chg-chip.yaml
 
 properties:
     switching-frequency:
