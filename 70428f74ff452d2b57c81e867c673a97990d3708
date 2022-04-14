@@ -382,6 +382,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "331266a4_66055371",
+        "filename": "zephyr/projects/corsola/usbc_krabby.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-04-14T21:49:41Z",
+      "side": 1,
+      "message": "I prefer option 1.  Having `usb-muxes` as a property of `named-usbc-port`.",
+      "parentUuid": "fdb02cab_6440ceff",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 43
+      },
+      "revId": "70428f74ff452d2b57c81e867c673a97990d3708",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9495a377_ed277489",
@@ -513,6 +537,30 @@
       "side": 1,
       "message": "It is connected with that USBC muxes are not children of port node. If we change DTS, than using `DT_PARENT()` would be desired.",
       "parentUuid": "ab464298_aace6537",
+      "range": {
+        "startLine": 206,
+        "startChar": 2,
+        "endLine": 206,
+        "endChar": 23
+      },
+      "revId": "70428f74ff452d2b57c81e867c673a97990d3708",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "49fc2101_96bf3cf2",
+        "filename": "zephyr/shim/include/usbc/usb_muxes.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-04-14T21:49:41Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "687f6c3d_1cb004ac",
       "range": {
         "startLine": 206,
         "startChar": 2,
