@@ -6,6 +6,7 @@
 /dts-v1/;
 
 #include <cros/nuvoton/npcx7.dtsi>
+#include <dt-bindings/espi.h>
 #include <dt-bindings/gpio_defines.h>
 #include <nuvoton/npcx7m7fc.dtsi>
 
@@ -40,6 +41,17 @@
 
 	def-lvol-io-list {
 		compatible = "nuvoton,npcx-lvolctrl-def";
+	};
+
+	espi-init {
+		compatible = "cros-shi,espi";
+
+		device = <&espi0>;
+		frequency = <50>;
+		io-caps = <ESPI_IO_MODE_QUAD_LINES>;
+		channel-caps = <(ESPI_CHANNEL_VWIRE |
+				 ESPI_CHANNEL_PERIPHERAL |
+				 ESPI_CHANNEL_OOB)>;
 	};
 };
 

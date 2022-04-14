@@ -1,0 +1,46 @@
+# Copyright 2022 The Chromium OS Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+#
+description: |
+  ESPI device initialisation
+
+  Configures the ESPI device using device tree.
+
+    espi-init {
+      compatible = "cros-shi,espi";
+      device = <&espi>;
+      frequency = 50;
+      io-caps = "ESPI_IO_MODE_QUAD_LINES";
+      channel-caps = "ESPI_CHANNEL_VWIRE", "ESPI_CHANNEL_PERIPHERAL";
+    };
+
+    Defaults are provided.
+
+compatible: "cros-shi,espi"
+
+properties:
+  device:
+    type: phandle
+    required: true
+    description: The ESPI device to configure
+  frequency:
+    type: int
+    required: false
+    default: 50
+    description: The max bus frequency
+    enum:
+      - 20
+      - 25
+      - 33
+      - 50
+  io-caps:
+    type: int
+    default: 4
+    required: false
+    description: The I/O mode capabilities, default quad lines
+  channel-caps:
+    type: int
+    default: 7
+    required: false
+    description: Channel capabilities, default PERIPHERAL|VWIRE|OOB

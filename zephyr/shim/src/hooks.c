@@ -113,7 +113,7 @@ static int zephyr_shim_setup_hooks(const struct device *unused)
 	return 0;
 }
 
-SYS_INIT(zephyr_shim_setup_hooks, APPLICATION, 1);
+SYS_INIT(zephyr_shim_setup_hooks, APPLICATION, 2);
 
 void hook_notify(enum hook_type type)
 {
