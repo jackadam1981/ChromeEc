@@ -16,6 +16,24 @@
       "message": "# PLATFORM_EC_PWM_KBLIGHT",
       "revId": "32687d7ba072afc9f261a04f5a147d6f816090c4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e81a31f_b8cee402",
+        "filename": "zephyr/Kconfig.keyboard",
+        "patchSetId": 3
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-04-14T19:12:35Z",
+      "side": 1,
+      "message": "Thanks, went for PLATFORM_EC_KBLIGHT_MODE (the one you mentioned is the config)",
+      "parentUuid": "86a4c23d_5dc416fa",
+      "revId": "32687d7ba072afc9f261a04f5a147d6f816090c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
