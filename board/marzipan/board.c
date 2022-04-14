@@ -105,16 +105,41 @@ __override struct keyboard_scan_config keyscan_config = {
 
 /* I2C port map */
 const struct i2c_port_t i2c_ports[] = {
-	{"power",   I2C_PORT_POWER,  100, GPIO_EC_I2C_POWER_SCL,
-					  GPIO_EC_I2C_POWER_SDA},
-	{"tcpc0",   I2C_PORT_TCPC0, 1000, GPIO_EC_I2C_USB_C0_PD_SCL,
-					  GPIO_EC_I2C_USB_C0_PD_SDA},
-	{"tcpc1",   I2C_PORT_TCPC1, 1000, GPIO_EC_I2C_USB_C1_PD_SCL,
-					  GPIO_EC_I2C_USB_C1_PD_SDA},
-	{"eeprom",  I2C_PORT_EEPROM, 400, GPIO_EC_I2C_EEPROM_SCL,
-					  GPIO_EC_I2C_EEPROM_SDA},
-	{"sensor",  I2C_PORT_SENSOR, 400, GPIO_EC_I2C_SENSOR_SCL,
-					  GPIO_EC_I2C_SENSOR_SDA},
+	{
+		.name = "power",
+		.port = I2C_PORT_POWER,
+		.kbps = 100,
+		.scl  = GPIO_EC_I2C_POWER_SCL,
+		.sda  = GPIO_EC_I2C_POWER_SDA
+	},
+	{
+		.name = "tcpc0",
+		.port = I2C_PORT_TCPC0,
+		.kbps = 1000,
+		.scl  = GPIO_EC_I2C_USB_C0_PD_SCL,
+		.sda  = GPIO_EC_I2C_USB_C0_PD_SDA
+	},
+	{
+		.name = "tcpc1",
+		.port = I2C_PORT_TCPC1,
+		.kbps = 1000,
+		.scl  = GPIO_EC_I2C_USB_C1_PD_SCL,
+		.sda  = GPIO_EC_I2C_USB_C1_PD_SDA
+	},
+	{
+		.name = "eeprom",
+		.port = I2C_PORT_EEPROM,
+		.kbps = 400,
+		.scl  = GPIO_EC_I2C_EEPROM_SCL,
+		.sda  = GPIO_EC_I2C_EEPROM_SDA
+	},
+	{
+		.name = "sensor",
+		.port = I2C_PORT_SENSOR,
+		.kbps = 400,
+		.scl  = GPIO_EC_I2C_SENSOR_SCL,
+		.sda  = GPIO_EC_I2C_SENSOR_SDA
+	},
 };
 
 const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
@@ -184,7 +209,7 @@ const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 		.bus_type = EC_BUS_TYPE_I2C,
 		.i2c_info = {
 			.port = I2C_PORT_TCPC0,
-			.addr_flags = PS8751_I2C_ADDR1_FLAGS,
+			.addr_flags = PS8XXX_I2C_ADDR1_FLAGS,
 		},
 		.drv = &ps8xxx_tcpm_drv,
 	},
@@ -192,7 +217,7 @@ const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 		.bus_type = EC_BUS_TYPE_I2C,
 		.i2c_info = {
 			.port = I2C_PORT_TCPC1,
-			.addr_flags = PS8751_I2C_ADDR1_FLAGS,
+			.addr_flags = PS8XXX_I2C_ADDR1_FLAGS,
 		},
 		.drv = &ps8xxx_tcpm_drv,
 	},
@@ -418,26 +443,6 @@ struct motion_sensor_t icm426xx_base_gyro = {
 	.max_frequency = ICM426XX_GYRO_MAX_FREQ,
 };
 
-#ifndef TEST_BUILD
-/* This callback disables keyboard when convertibles are fully open */
-void lid_angle_peripheral_enable(int enable)
-{
-	int chipset_in_s0 = chipset_in_state(CHIPSET_STATE_ON);
-
-	if (enable) {
-		keyboard_scan_enable(1, KB_SCAN_DISABLE_LID_ANGLE);
-	} else {
-		/*
-		 * Ensure that the chipset is off before disabling the keyboard.
-		 * When the chipset is on, the EC keeps the keyboard enabled and
-		 * the AP decides whether to ignore input devices or not.
-		 */
-		if (!chipset_in_s0)
-			keyboard_scan_enable(0, KB_SCAN_DISABLE_LID_ANGLE);
-	}
-}
-#endif
-
 static int base_accelgyro_config;
 
 void motion_interrupt(enum gpio_signal signal)
@@ -533,7 +538,8 @@ void board_tcpc_init(void)
 	 * HPD pulse to enable video path
 	 */
 	for (int port = 0; port < CONFIG_USB_PD_PORT_MAX_COUNT; ++port)
-		usb_mux_hpd_update(port, 0, 0);
+		usb_mux_hpd_update(port, USB_PD_MUX_HPD_LVL_DEASSERTED |
+					 USB_PD_MUX_HPD_IRQ_DEASSERTED);
 }
 DECLARE_HOOK(HOOK_INIT, board_tcpc_init, HOOK_PRIO_INIT_I2C+1);
 
@@ -685,4 +691,3 @@ uint16_t tcpc_get_alert_status(void)
 
 	return status;
 }
-

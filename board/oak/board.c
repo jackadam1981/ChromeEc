@@ -6,7 +6,6 @@
 /* Oak board configuration */
 
 #include "adc.h"
-#include "adc_chip.h"
 #include "als.h"
 #include "atomic.h"
 #include "battery.h"
@@ -98,8 +97,20 @@ BUILD_ASSERT(ARRAY_SIZE(adc_channels) == ADC_CH_COUNT);
 
 /* I2C ports */
 const struct i2c_port_t i2c_ports[] = {
-	{"battery", I2C_PORT_BATTERY, 100,  GPIO_I2C0_SCL, GPIO_I2C0_SDA},
-	{"pd",      I2C_PORT_PD_MCU,  1000, GPIO_I2C1_SCL, GPIO_I2C1_SDA}
+	{
+		.name = "battery",
+		.port = I2C_PORT_BATTERY,
+		.kbps = 100,
+		.scl  = GPIO_I2C0_SCL,
+		.sda  = GPIO_I2C0_SDA
+	},
+	{
+		.name = "pd",
+		.port = I2C_PORT_PD_MCU,
+		.kbps = 1000,
+		.scl  = GPIO_I2C1_SCL,
+		.sda  = GPIO_I2C1_SDA
+	}
 };
 
 const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
@@ -726,7 +737,7 @@ struct motion_sensor_t motion_sensors[] = {
 };
 const unsigned int motion_sensor_count = ARRAY_SIZE(motion_sensors);
 
-void lid_angle_peripheral_enable(int enable)
+__override void lid_angle_peripheral_enable(int enable)
 {
 	keyboard_scan_enable(enable, KB_SCAN_DISABLE_LID_ANGLE);
 }

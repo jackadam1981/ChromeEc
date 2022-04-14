@@ -4,7 +4,6 @@
  */
 
 /* Volteer board-specific configuration */
-#include "bb_retimer.h"
 #include "button.h"
 #include "common.h"
 #include "accelgyro.h"
@@ -17,7 +16,7 @@
 #include "driver/tcpm/tcpci.h"
 #include "driver/tcpm/tusb422.h"
 #include "driver/tcpm/rt1715.h"
-#include "driver/retimer/bb_retimer.h"
+#include "driver/retimer/bb_retimer_public.h"
 #include "driver/sync.h"
 #include "extpower.h"
 #include "fan.h"
@@ -181,23 +180,28 @@ const struct fan_t fans[FAN_CH_COUNT] = {
  * Reference that temperature and fan settings
  * are derived from data in b/167523658#39
  */
-const static struct ec_thermal_config thermal_cpu = {
-	.temp_host = {
-		[EC_TEMP_THRESH_HIGH] = C_TO_K(75),
-		[EC_TEMP_THRESH_HALT] = C_TO_K(85),
-	},
-	.temp_host_release = {
-		[EC_TEMP_THRESH_HIGH] = C_TO_K(68),
-	},
-	.temp_fan_off = C_TO_K(25),
-	.temp_fan_max = C_TO_K(90),
-};
+/*
+ * TODO(b/202062363): Remove when clang is fixed.
+ */
+#define THERMAL_CPU \
+	{ \
+		.temp_host = { \
+			[EC_TEMP_THRESH_HIGH] = C_TO_K(75), \
+			[EC_TEMP_THRESH_HALT] = C_TO_K(85), \
+		}, \
+		.temp_host_release = { \
+			[EC_TEMP_THRESH_HIGH] = C_TO_K(68), \
+		}, \
+		.temp_fan_off = C_TO_K(25), \
+		.temp_fan_max = C_TO_K(90), \
+	}
+__maybe_unused static const struct ec_thermal_config thermal_cpu = THERMAL_CPU;
 
 struct ec_thermal_config thermal_params[] = {
-	[TEMP_SENSOR_1_CHARGER]			= thermal_cpu,
-	[TEMP_SENSOR_2_PP3300_REGULATOR]	= thermal_cpu,
-	[TEMP_SENSOR_3_DDR_SOC]			= thermal_cpu,
-	[TEMP_SENSOR_4_FAN]			= thermal_cpu,
+	[TEMP_SENSOR_1_CHARGER] = THERMAL_CPU,
+	[TEMP_SENSOR_2_PP3300_REGULATOR] = THERMAL_CPU,
+	[TEMP_SENSOR_3_DDR_SOC] = THERMAL_CPU,
+	[TEMP_SENSOR_4_FAN] = THERMAL_CPU,
 };
 BUILD_ASSERT(ARRAY_SIZE(thermal_params) == TEMP_SENSOR_COUNT);
 
@@ -441,6 +445,7 @@ struct usb_mux usb_muxes[] = {
 		.usb_port = USBC_PORT_C0,
 		.next_mux = &usbc0_tcss_usb_mux,
 		.driver = &bb_usb_retimer,
+		.hpd_update = bb_retimer_hpd_update,
 		.i2c_port = I2C_PORT_USB_0_MIX,
 		.i2c_addr_flags = USBC_PORT_C0_BB_RETIMER_I2C_ADDR,
 	},
@@ -448,6 +453,7 @@ struct usb_mux usb_muxes[] = {
 		.usb_port = USBC_PORT_C1,
 		.next_mux = &usbc1_tcss_usb_mux,
 		.driver = &bb_usb_retimer,
+		.hpd_update = bb_retimer_hpd_update,
 		.i2c_port = I2C_PORT_USB_1_MIX,
 		.i2c_addr_flags = USBC_PORT_C1_BB_RETIMER_I2C_ADDR,
 	},

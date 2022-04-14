@@ -14,3 +14,10 @@ zephyr_linker_sources(RAM_SECTIONS image_size.ld)
 # Little FW with specific purposes used by NPCX EC
 zephyr_linker_sources_ifdef(CONFIG_SOC_FAMILY_NPCX ROM_START SORT_KEY 1
   npcx-lfw.ld)
+
+# Little FW with specific purposes used by MCHP XEC EC family
+zephyr_linker_sources_ifdef(CONFIG_SOC_FAMILY_MEC ROM_START SORT_KEY 1
+  mchp-xec-lfw.ld)
+
+zephyr_linker_sources(DATA_SECTIONS iterables-ram.ld)
+zephyr_linker_sources(SECTIONS iterables-rom.ld)

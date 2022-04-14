@@ -87,12 +87,16 @@ static void check_reset_cause(void)
 {
 	uint32_t flags = chip_read_reset_flags();
 	uint32_t raw_cause = STM32_RCC_RESET_CAUSE;
+#ifdef STM32_PWR_RESET_CAUSE
 	uint32_t pwr_status = STM32_PWR_RESET_CAUSE;
+#endif
 
 	/* Clear the hardware reset cause by setting the RMVF bit */
 	STM32_RCC_RESET_CAUSE |= RESET_CAUSE_RMVF;
+#ifdef STM32_PWR_RESET_CAUSE
 	/* Clear SBF in PWR_CSR */
 	STM32_PWR_RESET_CAUSE_CLR |= RESET_CAUSE_SBF_CLR;
+#endif
 	/* Clear saved reset flags */
 	chip_save_reset_flags(0);
 
@@ -114,9 +118,11 @@ static void check_reset_cause(void)
 	if (raw_cause & RESET_CAUSE_PIN)
 		flags |= EC_RESET_FLAG_RESET_PIN;
 
+#ifdef STM32_PWR_RESET_CAUSE
 	if (pwr_status & RESET_CAUSE_SBF)
 		/* Hibernated and subsequently awakened */
 		flags |= EC_RESET_FLAG_HIBERNATE;
+#endif
 
 	if (!flags && (raw_cause & RESET_CAUSE_OTHER))
 		flags |= EC_RESET_FLAG_OTHER;
@@ -202,11 +208,15 @@ void chip_pre_init(void)
 #elif defined(CHIP_FAMILY_STM32H7)
 	/* TODO(b/67081508) */
 #endif
-
+#if defined(CHIP_FAMILY_STM32L5)
+	(void)apb1fz_reg;
+	(void)apb2fz_reg;
+#else
 	if (apb1fz_reg)
 		STM32_DBGMCU_APB1FZ |= apb1fz_reg;
 	if (apb2fz_reg)
 		STM32_DBGMCU_APB2FZ |= apb2fz_reg;
+#endif
 }
 
 #ifdef CONFIG_PVD
@@ -243,7 +253,7 @@ static void configure_pvd(void)
 	STM32_PWR_CR |= STM32_PWR_PVDE;
 }
 
-void pvd_interrupt(void)
+static void pvd_interrupt(void)
 {
 	/* Clear Pending Register */
 	STM32_EXTI_PR = EXTI_PVD_EVENT;
@@ -259,6 +269,7 @@ void system_pre_init(void)
 #ifdef CONFIG_SOFTWARE_PANIC
 	uint16_t reason, info;
 	uint8_t exception, panic_flags;
+	struct panic_data *pdata;
 #endif
 
 	/* enable clock on Power module */
@@ -312,7 +323,8 @@ void system_pre_init(void)
 		STM32_RCC_CSR = (STM32_RCC_CSR & ~0x00C30000) | 0x00420000;
 	}
 #elif defined(CHIP_FAMILY_STM32F0) || defined(CHIP_FAMILY_STM32F3) || \
-	defined(CHIP_FAMILY_STM32L4) || defined(CHIP_FAMILY_STM32F4) || \
+	defined(CHIP_FAMILY_STM32L4) || \
+	defined(CHIP_FAMILY_STM32L5) || defined(CHIP_FAMILY_STM32F4) ||	\
 	defined(CHIP_FAMILY_STM32H7) || defined(CHIP_FAMILY_STM32G4)
 	if ((STM32_RCC_BDCR & BDCR_ENABLE_MASK) != BDCR_ENABLE_VALUE) {
 		/* The RTC settings are bad, we need to reset it */
@@ -339,13 +351,24 @@ void system_pre_init(void)
 	reason = bkpdata_read(BKPDATA_INDEX_SAVED_PANIC_REASON);
 	info = bkpdata_read(BKPDATA_INDEX_SAVED_PANIC_INFO);
 	exception = bkpdata_read(BKPDATA_INDEX_SAVED_PANIC_EXCEPTION);
-	panic_flags = bkpdata_read(BKPDATA_INDEX_SAVED_PANIC_FLAGS);
-	if (reason || info || exception || panic_flags) {
+	if (reason || info || exception) {
 		panic_set_reason(reason, info, exception);
-		panic_get_data()->flags = panic_flags;
 		bkpdata_write(BKPDATA_INDEX_SAVED_PANIC_REASON, 0);
 		bkpdata_write(BKPDATA_INDEX_SAVED_PANIC_INFO, 0);
 		bkpdata_write(BKPDATA_INDEX_SAVED_PANIC_EXCEPTION, 0);
+	}
+
+	/*
+	 * Older ROs restore reason, info, and exception, but do not support
+	 * the saved panic flags. In that case, we will let RW handle restoring
+	 * the panic flags. If we get to this point in the code and the panic
+	 * data does not exist, it doesn't make sense to try to only restore
+	 * the panic flags, the information was lost.
+	 */
+	pdata = panic_get_data();
+	panic_flags = bkpdata_read(BKPDATA_INDEX_SAVED_PANIC_FLAGS);
+	if (pdata && panic_flags) {
+		pdata->flags = panic_flags;
 		bkpdata_write(BKPDATA_INDEX_SAVED_PANIC_FLAGS, 0);
 	}
 #endif
@@ -400,17 +423,25 @@ void system_reset(int flags)
 
 	if (flags & SYSTEM_RESET_HARD) {
 #ifdef CONFIG_SOFTWARE_PANIC
-		uint32_t reason, info;
-		uint8_t exception;
-		uint8_t panic_flags = panic_get_data()->flags;
-
 		/* Panic data will be wiped by hard reset, so save it */
-		panic_get_reason(&reason, &info, &exception);
-		/* 16 bits stored - upper 16 bits of reason / info are lost */
-		bkpdata_write(BKPDATA_INDEX_SAVED_PANIC_REASON, reason);
-		bkpdata_write(BKPDATA_INDEX_SAVED_PANIC_INFO, info);
-		bkpdata_write(BKPDATA_INDEX_SAVED_PANIC_EXCEPTION, exception);
-		bkpdata_write(BKPDATA_INDEX_SAVED_PANIC_FLAGS, panic_flags);
+		uint32_t reason, info;
+		uint8_t exception, panic_flags;
+		struct panic_data *pdata = panic_get_data();
+
+		if (pdata) {
+			panic_flags = pdata->flags;
+			panic_get_reason(&reason, &info, &exception);
+			/*
+			 * 16 bits stored - upper 16 bits of reason / info
+			 * are lost.
+			 */
+			bkpdata_write(BKPDATA_INDEX_SAVED_PANIC_REASON, reason);
+			bkpdata_write(BKPDATA_INDEX_SAVED_PANIC_INFO, info);
+			bkpdata_write(BKPDATA_INDEX_SAVED_PANIC_EXCEPTION,
+			    exception);
+			bkpdata_write(BKPDATA_INDEX_SAVED_PANIC_FLAGS,
+			    panic_flags);
+		}
 #endif
 
 #if defined(CHIP_FAMILY_STM32L) || defined(CHIP_FAMILY_STM32L4)
@@ -526,9 +557,10 @@ int system_set_scratchpad(uint32_t value)
 	return bkpdata_write(BKPDATA_INDEX_SCRATCHPAD, (uint16_t)value);
 }
 
-uint32_t system_get_scratchpad(void)
+int system_get_scratchpad(uint32_t *value)
 {
-	return (uint32_t)bkpdata_read(BKPDATA_INDEX_SCRATCHPAD);
+	*value = (uint32_t)bkpdata_read(BKPDATA_INDEX_SCRATCHPAD);
+	return EC_SUCCESS;
 }
 
 const char *system_get_chip_vendor(void)
@@ -601,6 +633,9 @@ int system_is_reboot_warm(void)
 #elif defined(CHIP_FAMILY_STM32L)
 	return ((STM32_RCC_AHBENR & 0x3f) == 0x3f);
 #elif defined(CHIP_FAMILY_STM32L4)
+	return ((STM32_RCC_AHB2ENR & STM32_RCC_AHB2ENR_GPIOMASK)
+			== STM32_RCC_AHB2ENR_GPIOMASK);
+#elif defined(CHIP_FAMILY_STM32L5)
 	return ((STM32_RCC_AHB2ENR & STM32_RCC_AHB2ENR_GPIOMASK)
 			== STM32_RCC_AHB2ENR_GPIOMASK);
 #elif defined(CHIP_FAMILY_STM32F4)

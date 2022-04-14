@@ -20,6 +20,7 @@ test-list-host += bklight_passthru
 test-list-host += body_detection
 test-list-host += button
 test-list-host += cbi
+test-list-host += cbi_wp
 test-list-host += cec
 test-list-host += charge_manager
 test-list-host += charge_manager_drp_charging
@@ -66,6 +67,7 @@ test-list-host += pingpong
 test-list-host += power_button
 test-list-host += printf
 test-list-host += queue
+test-list-host += rgb_keyboard
 test-list-host += rsa
 test-list-host += rsa3
 test-list-host += rtc
@@ -82,9 +84,11 @@ test-list-host += uptime
 test-list-host += usb_common
 test-list-host += usb_pd_int
 test-list-host += usb_pd
+test-list-host += usb_pd_console
 test-list-host += usb_pd_giveback
 test-list-host += usb_pd_rev30
 test-list-host += usb_pd_pdo_fixed
+test-list-host += usb_pd_timer
 test-list-host += usb_ppc
 test-list-host += usb_sm_framework_h3
 test-list-host += usb_sm_framework_h2
@@ -104,8 +108,10 @@ test-list-host += usb_pe_drp_noextended
 test-list-host += utils
 test-list-host += utils_str
 test-list-host += vboot
+test-list-host += version
 test-list-host += x25519
 test-list-host += stillness_detector
+-include private/test/build.mk
 endif
 
 # Build up the list of coverage test targets based on test-list-host, but
@@ -121,6 +127,15 @@ cov-dont-test += fpsensor
 cov-dont-test += fpsensor_crypto
 # fpsensor_state: genhtml looks for build/host/fpsensor_state/cryptoc/util.c
 cov-dont-test += fpsensor_state
+# version: Only works in a chroot.
+cov-dont-test += version
+# interrupt: The test often times out if enabled for coverage.
+cov-dont-test += interrupt
+# Flaky tests. The number of covered lines changes from run to run
+# b/213374060
+cov-dont-test += accel_cal entropy flash float kb_mkbp kb_scan kb_scan_strict
+cov-dont-test += rsa
+
 cov-test-list-host = $(filter-out $(cov-dont-test), $(test-list-host))
 
 accel_cal-y=accel_cal.o
@@ -132,12 +147,14 @@ bklight_passthru-y=bklight_passthru.o
 body_detection-y=body_detection.o body_detection_data_literals.o motion_common.o
 button-y=button.o
 cbi-y=cbi.o
+cbi_wp-y=cbi_wp.o
 cec-y=cec.o
-charge_manager-y=charge_manager.o
-charge_manager_drp_charging-y=charge_manager.o
+charge_manager-y=charge_manager.o fake_usbc.o
+charge_manager_drp_charging-y=charge_manager.o fake_usbc.o
 charge_ramp-y+=charge_ramp.o
 compile_time_macros-y=compile_time_macros.o
 console_edit-y=console_edit.o
+cortexm_fpu-y=cortexm_fpu.o
 crc-y=crc.o
 entropy-y=entropy.o
 extpwr_gpio-y=extpwr_gpio.o
@@ -171,10 +188,12 @@ motion_lid-y=motion_lid.o
 motion_sense_fifo-y=motion_sense_fifo.o
 online_calibration-y=online_calibration.o
 online_calibration_spoof-y=online_calibration_spoof.o gyro_cal_init_for_test.o
+rgb_keyboard-y=rgb_keyboard.o
 kasa-y=kasa.o
 mpu-y=mpu.o
 mutex-y=mutex.o
 newton_fit-y=newton_fit.o
+panic_data-y=panic_data.o
 pingpong-y=pingpong.o
 power_button-y=power_button.o
 powerdemo-y=powerdemo.o
@@ -195,6 +214,7 @@ static_if-y=static_if.o
 stm32f_rtc-y=stm32f_rtc.o
 stress-y=stress.o
 system-y=system.o
+system_is_locked-y=system_is_locked.o
 thermal-y=thermal.o
 timer_calib-y=timer_calib.o
 timer_dos-y=timer_dos.o
@@ -202,9 +222,11 @@ uptime-y=uptime.o
 usb_common-y=usb_common_test.o fake_battery.o
 usb_pd_int-y=usb_pd_int.o
 usb_pd-y=usb_pd.o
+usb_pd_console-y=usb_pd_console.o
 usb_pd_giveback-y=usb_pd.o
 usb_pd_rev30-y=usb_pd.o
 usb_pd_pdo_fixed-y=usb_pd_pdo_fixed_test.o
+usb_pd_timer-y=usb_pd_timer.o
 usb_ppc-y=usb_ppc.o
 usb_sm_framework_h3-y=usb_sm_framework_h3.o
 usb_sm_framework_h2-y=usb_sm_framework_h3.o
@@ -240,6 +262,7 @@ usb_tcpmv2_compliance-y=usb_tcpmv2_compliance.o usb_tcpmv2_compliance_common.o \
 utils-y=utils.o
 utils_str-y=utils_str.o
 vboot-y=vboot.o
+version-y += version.o
 float-y=fp.o
 fp-y=fp.o
 x25519-y=x25519.o

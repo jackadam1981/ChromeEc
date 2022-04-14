@@ -6,7 +6,6 @@
 /* reef_it8320 board-specific configuration */
 
 #include "adc.h"
-#include "adc_chip.h"
 #include "button.h"
 #include "charge_manager.h"
 #include "charge_ramp.h"
@@ -67,10 +66,20 @@ const struct adc_t adc_channels[] = {
 BUILD_ASSERT(ARRAY_SIZE(adc_channels) == ADC_CH_COUNT);
 
 const struct i2c_port_t i2c_ports[]  = {
-	{"mux",       IT83XX_I2C_CH_C, 400,
-		GPIO_EC_I2C_C_SCL, GPIO_EC_I2C_C_SDA},
-	{"batt",      IT83XX_I2C_CH_E, 100,
-		GPIO_EC_I2C_E_SCL, GPIO_EC_I2C_E_SDA},
+	{
+		.name = "mux",
+		.port = IT83XX_I2C_CH_C,
+		.kbps = 400,
+		.scl  = GPIO_EC_I2C_C_SCL,
+		.sda  = GPIO_EC_I2C_C_SDA
+	},
+	{
+		.name = "batt",
+		.port = IT83XX_I2C_CH_E,
+		.kbps = 100,
+		.scl  = GPIO_EC_I2C_E_SCL,
+		.sda  = GPIO_EC_I2C_E_SDA
+	},
 };
 const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
 
@@ -112,11 +121,17 @@ const enum gpio_signal hibernate_wake_pins[] = {
 const int hibernate_wake_pins_used = ARRAY_SIZE(hibernate_wake_pins);
 
 static void it83xx_tcpc_update_hpd_status(const struct usb_mux *me,
-					  int hpd_lvl, int hpd_irq)
+					  mux_state_t mux_state,
+					  bool *ack_required)
 {
+	int hpd_lvl = (mux_state & USB_PD_MUX_HPD_LVL) ? 1 : 0;
+	int hpd_irq = (mux_state & USB_PD_MUX_HPD_IRQ) ? 1 : 0;
 	enum gpio_signal gpio =
 		me->usb_port ? GPIO_USB_C1_HPD_1P8_ODL
 			     : GPIO_USB_C0_HPD_1P8_ODL;
+
+	/* This driver does not use host command ACKs */
+	*ack_required = false;
 
 	hpd_lvl = !hpd_lvl;
 
@@ -223,7 +238,8 @@ static void board_init(void)
 	* HPD pulse to enable video path
 	*/
 	for (int port = 0; port < CONFIG_USB_PD_PORT_MAX_COUNT; ++port)
-		usb_mux_hpd_update(port, 0, 0);
+		usb_mux_hpd_update(port, USB_PD_MUX_HPD_LVL_DEASSERTED |
+					 USB_PD_MUX_HPD_IRQ_DEASSERTED);
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_INIT_I2C + 1);
 

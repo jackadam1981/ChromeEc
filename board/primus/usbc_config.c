@@ -90,6 +90,7 @@ const struct usb_mux usb_muxes[] = {
 	[USBC_PORT_C0] = {
 		.usb_port = USBC_PORT_C0,
 		.driver = &bb_usb_retimer,
+		.hpd_update = bb_retimer_hpd_update,
 		.i2c_port = I2C_PORT_USB_C0_C1_RT,
 		.i2c_addr_flags = USBC_PORT_C0_BB_RETIMER_I2C_ADDR,
 		.next_mux = &usbc0_tcss_usb_mux,
@@ -97,6 +98,7 @@ const struct usb_mux usb_muxes[] = {
 	[USBC_PORT_C1] = {
 		.usb_port = USBC_PORT_C1,
 		.driver = &bb_usb_retimer,
+		.hpd_update = bb_retimer_hpd_update,
 		.i2c_port = I2C_PORT_USB_C0_C1_RT,
 		.i2c_addr_flags = USBC_PORT_C1_BB_RETIMER_I2C_ADDR,
 		.next_mux = &usbc1_tcss_usb_mux,
@@ -130,7 +132,7 @@ void config_usb_db_type(void)
 
 __override int bb_retimer_power_enable(const struct usb_mux *me, bool enable)
 {
-	enum ioex_signal rst_signal;
+	enum gpio_signal rst_signal;
 
 	if (me->usb_port == USBC_PORT_C0) {
 		rst_signal = GPIO_USB_C0_RT_RST_ODL;
@@ -271,4 +273,12 @@ void retimer_interrupt(enum gpio_signal signal)
 __override bool board_is_dts_port(int port)
 {
 	return port == USBC_PORT_C0;
+}
+
+__override enum tbt_compat_cable_speed board_get_max_tbt_speed(int port)
+{
+	if (ec_cfg_mlb_usb())
+		return TBT_SS_U32_GEN1_GEN2;
+
+	return TBT_SS_TBT_GEN3;
 }

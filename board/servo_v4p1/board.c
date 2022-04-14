@@ -5,7 +5,6 @@
 /* Servo V4p1 configuration */
 
 #include "adc.h"
-#include "adc_chip.h"
 #include "ccd_measure_sbu.h"
 #include "chg_control.h"
 #include "common.h"
@@ -66,6 +65,26 @@ static void tca_evt(enum gpio_signal signal)
 	irq_ioexpanders();
 }
 
+/*
+ * TUSB1064 set mux board tuning.
+ * Adds in board specific gain and DP lane count configuration
+ */
+static int board_tusb1064_dp_rx_eq_set(const struct usb_mux *me,
+				       mux_state_t mux_state)
+{
+	int rv = EC_SUCCESS;
+
+	/*
+	 * Apply 10dB gain. Note, this value is selected to match the gain that
+	 * would be set by default if the 2 GPIO gain set pins are left
+	 * floating.
+	 */
+	if (mux_state & USB_PD_MUX_DP_ENABLED)
+		rv = tusb1064_set_dp_rx_eq(me, TUSB1064_DP_EQ_RX_10_0_DB);
+
+	return rv;
+}
+
 const struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 	[CHG] = { /* CHG port connected directly to USB 3.0 hub, no mux */ },
 	[DUT] = { /* DUT port with UFP mux */
@@ -73,6 +92,7 @@ const struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 		.i2c_port = I2C_PORT_MASTER,
 		.i2c_addr_flags = TUSB1064_I2C_ADDR10_FLAGS,
 		.driver = &tusb1064_usb_mux_driver,
+		.board_set = &board_tusb1064_dp_rx_eq_set,
 	}
 };
 
@@ -103,7 +123,7 @@ static volatile int hpd_prev_level;
 
 void hpd_irq_deferred(void)
 {
-	int dp_mode = pd_alt_mode(1, TCPC_TX_SOP, USB_SID_DISPLAYPORT);
+	int dp_mode = pd_alt_mode(1, TCPCI_MSG_SOP, USB_SID_DISPLAYPORT);
 
 	if (dp_mode) {
 		pd_send_hpd(DUT, hpd_irq);
@@ -115,7 +135,7 @@ DECLARE_DEFERRED(hpd_irq_deferred);
 void hpd_lvl_deferred(void)
 {
 	int level = gpio_get_level(GPIO_DP_HPD);
-	int dp_mode = pd_alt_mode(1, TCPC_TX_SOP, USB_SID_DISPLAYPORT);
+	int dp_mode = pd_alt_mode(1, TCPCI_MSG_SOP, USB_SID_DISPLAYPORT);
 
 	if (level != hpd_prev_level) {
 		/* It's a glitch while in deferred or canceled action */
@@ -381,8 +401,13 @@ BUILD_ASSERT(ARRAY_SIZE(usb_strings) == USB_STR_COUNT);
 
 /* I2C ports */
 const struct i2c_port_t i2c_ports[] = {
-	{"master", I2C_PORT_MASTER, 100,
-		GPIO_MASTER_I2C_SCL, GPIO_MASTER_I2C_SDA},
+	{
+		.name = "master",
+		.port = I2C_PORT_MASTER,
+		.kbps = 100,
+		.scl  = GPIO_MASTER_I2C_SCL,
+		.sda  = GPIO_MASTER_I2C_SDA
+	},
 };
 const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
 
@@ -526,13 +551,13 @@ struct ioexpander_config_t ioex_config[] = {
 		.drv = &tca64xxa_ioexpander_drv,
 		.i2c_host_port = TCA6416A_PORT,
 		.i2c_addr_flags = TCA6416A_ADDR,
-		.flags = TCA64XXA_FLAG_VER_TCA6416A
+		.flags = IOEX_FLAGS_TCA64XXA_FLAG_VER_TCA6416A
 	},
 	[1] = {
 		.drv = &tca64xxa_ioexpander_drv,
 		.i2c_host_port = TCA6424A_PORT,
 		.i2c_addr_flags = TCA6424A_ADDR,
-		.flags = TCA64XXA_FLAG_VER_TCA6424A
+		.flags = IOEX_FLAGS_TCA64XXA_FLAG_VER_TCA6424A
 	}
 };
 

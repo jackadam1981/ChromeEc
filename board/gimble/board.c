@@ -6,20 +6,26 @@
 #include "battery.h"
 #include "button.h"
 #include "charge_ramp.h"
+#include "charge_state_v2.h"
 #include "charger.h"
 #include "common.h"
 #include "compile_time_macros.h"
 #include "console.h"
+#include "driver/charger/bq25710.h"
 #include "gpio.h"
 #include "gpio_signal.h"
 #include "hooks.h"
 #include "driver/accel_bma2x2_public.h"
+#include "driver/accel_bma422.h"
 #include "driver/accelgyro_bmi160.h"
+#include "driver/accelgyro_lsm6dsm.h"
 #include "fw_config.h"
 #include "hooks.h"
+#include "keyboard_8042_sharedlib.h"
 #include "lid_switch.h"
 #include "power_button.h"
 #include "power.h"
+#include "ps8xxx.h"
 #include "registers.h"
 #include "switch.h"
 #include "tablet_mode.h"
@@ -45,6 +51,13 @@ BUILD_ASSERT(ARRAY_SIZE(usb_port_enable) == USB_PORT_COUNT);
 __override void board_cbi_init(void)
 {
 	config_usb_db_type();
+
+	/*
+	 * If keyboard is US2(KB_LAYOUT_1), we need translate right ctrl
+	 * to backslash(\|) key.
+	 */
+	if (ec_cfg_keyboard_layout() == KB_LAYOUT_1)
+		set_scancode_set2(4, 0, get_scancode_set2(2, 7));
 }
 
 /* Called on AP S3 -> S0 transition */
@@ -111,4 +124,78 @@ enum battery_present battery_hw_present(void)
 
 	/* The GPIO is low when the battery is physically present */
 	return gpio_get_level(batt_pres) ? BP_NO : BP_YES;
+}
+
+static void board_init(void)
+{
+	/* The PPVAR_SYS must same as battery voltage(3 cells * 4.4V) */
+	if (extpower_is_present() && battery_hw_present()) {
+		bq25710_set_min_system_voltage(CHARGER_SOLO, 9200);
+	} else {
+		bq25710_set_min_system_voltage(CHARGER_SOLO, 13200);
+	}
+}
+DECLARE_HOOK(HOOK_SECOND, board_init, HOOK_PRIO_DEFAULT);
+
+__overridable void board_ps8xxx_tcpc_init(int port)
+{
+	int val;
+
+	if (i2c_read8(I2C_PORT_USB_C1_TCPC,
+		PS8XXX_I2C_ADDR1_P1_FLAGS, PS8815_REG_APTX_EQ_AT_10G, &val))
+		CPRINTS("ps8815: fail to read reg 0x%02x",
+			PS8815_REG_APTX_EQ_AT_10G);
+
+	/* APTX2 EQ 23dB, APTX1 EQ 23dB */
+	if (i2c_write8(I2C_PORT_USB_C1_TCPC,
+		PS8XXX_I2C_ADDR1_P1_FLAGS, PS8815_REG_APTX_EQ_AT_10G, 0x99))
+		CPRINTS("ps8815: fail to write reg 0x%02x",
+			PS8815_REG_APTX_EQ_AT_10G);
+
+	if (i2c_read8(I2C_PORT_USB_C1_TCPC,
+		PS8XXX_I2C_ADDR1_P1_FLAGS, PS8815_REG_RX_EQ_AT_10G, &val))
+		CPRINTS("ps8815: fail to read reg 0x%02x",
+			PS8815_REG_RX_EQ_AT_10G);
+
+	/* RX2 EQ 18dB, RX1 EQ 16dB */
+	if (i2c_write8(I2C_PORT_USB_C1_TCPC,
+		PS8XXX_I2C_ADDR1_P1_FLAGS, PS8815_REG_RX_EQ_AT_10G, 0x64))
+		CPRINTS("ps8815: fail to write reg 0x%02x",
+			PS8815_REG_RX_EQ_AT_10G);
+
+	if (i2c_read8(I2C_PORT_USB_C1_TCPC,
+		PS8XXX_I2C_ADDR1_P1_FLAGS, PS8815_REG_APTX_EQ_AT_5G, &val))
+		CPRINTS("ps8815: fail to read reg 0x%02x",
+			PS8815_REG_APTX_EQ_AT_5G);
+
+	/* APTX2 EQ 16dB, APTX1 EQ 16dB */
+	if (i2c_write8(I2C_PORT_USB_C1_TCPC,
+		PS8XXX_I2C_ADDR1_P1_FLAGS, PS8815_REG_APTX_EQ_AT_5G, 0x44))
+		CPRINTS("ps8815: fail to write reg 0x%02x",
+			PS8815_REG_APTX_EQ_AT_5G);
+
+	if (i2c_read8(I2C_PORT_USB_C1_TCPC,
+		PS8XXX_I2C_ADDR1_P1_FLAGS, PS8815_REG_RX_EQ_AT_5G, &val))
+		CPRINTS("ps8815: fail to read reg 0x%02x",
+			PS8815_REG_RX_EQ_AT_5G);
+
+	/* RX2 EQ 16dB, RX1 EQ 16dB */
+	if (i2c_write8(I2C_PORT_USB_C1_TCPC,
+		PS8XXX_I2C_ADDR1_P1_FLAGS, PS8815_REG_RX_EQ_AT_5G, 0x44))
+		CPRINTS("ps8815: fail to write reg 0x%02x",
+			PS8815_REG_RX_EQ_AT_5G);
+}
+
+__override void board_set_charge_limit(int port, int supplier, int charge_ma,
+			    int max_ma, int charge_mv)
+{
+	/*
+	 * Follow OEM request to limit the input current to
+	 * 90% negotiated limit.
+	 */
+	charge_ma = charge_ma * 90 / 100;
+
+	charge_set_input_current_limit(MAX(charge_ma,
+					CONFIG_CHARGER_INPUT_CURRENT),
+					charge_mv);
 }

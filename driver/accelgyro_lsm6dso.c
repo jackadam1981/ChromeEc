@@ -25,6 +25,23 @@ STATIC_IF(CONFIG_ACCEL_FIFO) volatile uint32_t last_interrupt_timestamp;
 STATIC_IF(CONFIG_ACCEL_INTERRUPTS) int config_interrupt(
 		const struct motion_sensor_t *s);
 
+#if defined(CONFIG_ZEPHYR) && defined(CONFIG_ACCEL_INTERRUPTS)
+/* Get the motion sensor ID of the LSM6DSO sensor that generates the
+ * interrupt. The interrupt is converted to the event and transferred to
+ * motion sense task that actually handles the interrupt.
+ *
+ * Here we use an alias (lsm6dso_int) to get the motion sensor ID. This alias
+ * MUST be defined for this driver to work.
+ * aliases {
+ *   lsm6dso-int = &lid_accel;
+ * };
+ */
+#if DT_NODE_EXISTS(DT_ALIAS(lsm6dso_int))
+#define CONFIG_ACCEL_LSM6DSO_INT_EVENT \
+	TASK_EVENT_MOTION_SENSOR_INTERRUPT(SENSOR_ID(DT_ALIAS(lsm6dso_int)))
+#endif
+#endif
+
 /*
  * When ODR change, the sensor filters need settling time;
  * Add a counter to discard a well known number of data with
@@ -159,32 +176,24 @@ static void push_fifo_data(struct motion_sensor_t *main_s, uint8_t *fifo,
 	motion_sense_fifo_stage_data(&vect, sensor, 3, saved_ts);
 }
 
-static inline int load_fifo(struct motion_sensor_t *s,
-			    const struct lsm6dso_fstatus *fsts,
-			    uint32_t saved_ts)
+static inline int load_fifo(struct motion_sensor_t *main_s,
+			    const uint16_t fifo_len)
 {
-	uint8_t fifo[FIFO_READ_LEN], *ptr;
-	int i, err, read_len = 0, word_len, fifo_len;
-	uint16_t fifo_depth;
+	uint8_t fifo[LSM6DSO_FIFO_SAMPLE_SIZE];
+	int i, err;
 
-	fifo_depth = fsts->len & LSM6DSO_FIFO_DIFF_MASK;
-	fifo_len = fifo_depth * LSM6DSO_FIFO_SAMPLE_SIZE;
-	while (read_len < fifo_len) {
-		word_len = GENERIC_MIN(fifo_len - read_len, sizeof(fifo));
-		err = st_raw_read_n_noinc(s->port, s->i2c_spi_addr_flags,
+	for (i = 0; i < fifo_len; i++) {
+		err = st_raw_read_n_noinc(main_s->port,
+					  main_s->i2c_spi_addr_flags,
 					  LSM6DSO_FIFO_DATA_ADDR_TAG,
-					  fifo, word_len);
+					  fifo, LSM6DSO_FIFO_SAMPLE_SIZE);
 		if (err != EC_SUCCESS)
 			return err;
 
-		for (i = 0; i < word_len; i += LSM6DSO_FIFO_SAMPLE_SIZE) {
-			ptr = &fifo[i];
-			push_fifo_data(LSM6DSO_MAIN_SENSOR(s), ptr, saved_ts);
-		}
-		read_len += word_len;
+		push_fifo_data(main_s, fifo, last_interrupt_timestamp);
 	}
 
-	return read_len;
+	return EC_SUCCESS;
 }
 
 /**
@@ -208,7 +217,7 @@ static int accelgyro_config_fifo(const struct motion_sensor_t *s)
 	 */
 	samples_to_discard[s->type] = LSM6DSO_DISCARD_SAMPLES;
 
-	fifo_odr_mask = LSM6DSO_FIFO_ODR_TO_REG(s);
+	fifo_odr_mask = LSM6DSO_FIFO_ODR_MASK(s);
 	reg_val = LSM6DSO_ODR_TO_REG(data->base.odr);
 	err = st_write_data_with_mask(s, LSM6DSO_FIFO_CTRL3_ADDR,
 				      fifo_odr_mask, reg_val);
@@ -234,33 +243,36 @@ void lsm6dso_interrupt(enum gpio_signal signal)
  */
 static int irq_handler(struct motion_sensor_t *s, uint32_t *event)
 {
-	int ret = EC_SUCCESS;
+	int fifo_len = 0;
 	struct lsm6dso_fstatus fsts;
+	bool has_read_fifo = false;
 
-	if (((s->type != MOTIONSENSE_TYPE_ACCEL) &&
-	     (s->type != MOTIONSENSE_TYPE_GYRO)) ||
+	if ((s->type != MOTIONSENSE_TYPE_ACCEL) ||
 	    (!(*event & CONFIG_ACCEL_LSM6DSO_INT_EVENT)))
 		return EC_ERROR_NOT_HANDLED;
 
-	if (IS_ENABLED(CONFIG_ACCEL_FIFO)) {
-		/* Read how many data patterns on FIFO to read. */
-		ret = st_raw_read_n_noinc(s->port, s->i2c_spi_addr_flags,
-					  LSM6DSO_FIFO_STS1_ADDR,
-					  (uint8_t *)&fsts, sizeof(fsts));
-		if (ret != EC_SUCCESS)
-			return ret;
+	if (!IS_ENABLED(CONFIG_ACCEL_FIFO))
+		return EC_SUCCESS;
 
+	do {
+		/* Read how many data patterns on FIFO to read. */
+		RETURN_ERROR(st_raw_read_n_noinc(s->port, s->i2c_spi_addr_flags,
+					LSM6DSO_FIFO_STS1_ADDR,
+					(uint8_t *)&fsts, sizeof(fsts)));
 		if (fsts.len & (LSM6DSO_FIFO_DATA_OVR | LSM6DSO_FIFO_FULL))
 			CPRINTS("%s FIFO Overrun: %04x", s->name, fsts.len);
 
-		if (fsts.len & LSM6DSO_FIFO_DIFF_MASK)
-			ret = load_fifo(s, &fsts, last_interrupt_timestamp);
+		fifo_len = fsts.len & LSM6DSO_FIFO_DIFF_MASK;
+		if (fifo_len) {
+			RETURN_ERROR(load_fifo(s, fifo_len));
+			has_read_fifo = true;
+		}
+	} while (fifo_len != 0);
 
-		if (IS_ENABLED(CONFIG_ACCEL_FIFO) && ret > 0)
-			motion_sense_fifo_commit_data();
-	}
+	if (has_read_fifo)
+		motion_sense_fifo_commit_data();
 
-	return ret;
+	return EC_SUCCESS;
 }
 #endif /* CONFIG_ACCEL_INTERRUPTS */
 
@@ -333,8 +345,7 @@ static int set_data_rate(const struct motion_sensor_t *s, int rate, int rnd)
 		}
 
 		if (normalized_rate < LSM6DSO_ODR_MIN_VAL ||
-		    normalized_rate > MIN(LSM6DSO_ODR_MAX_VAL,
-					  CONFIG_EC_MAX_SENSOR_FREQ_MILLIHZ))
+		    normalized_rate > LSM6DSO_ODR_MAX_VAL)
 			return EC_RES_INVALID_PARAM;
 	}
 

@@ -8,6 +8,9 @@
 #ifndef __CROS_EC_BOARD_H
 #define __CROS_EC_BOARD_H
 
+/* Free up flash space */
+#define CONFIG_LTO
+
 /* 48 MHz SYSCLK clock frequency */
 #define CPU_CLOCK 48000000
 
@@ -29,7 +32,7 @@
 #define CONFIG_RWSIG
 #define CONFIG_RWSIG_TYPE_USBPD1
 #define CONFIG_SHA256
-/* TODO(tbroch) Re-enable once STM spi master can be inhibited at boot so it
+/* TODO(tbroch) Re-enable once STM spi controller can be inhibited at boot so it
    doesn't interfere with HDMI loading its f/w */
 #undef CONFIG_SPI_FLASH
 #define CONFIG_SPI_CS_GPIO GPIO_PD_MCDP_SPI_CS_L

@@ -38,7 +38,8 @@ struct anx_usb_mux {
 	int state;
 };
 
-static int anx7447_mux_set(const struct usb_mux *me, mux_state_t mux_state);
+static int anx7447_mux_set(const struct usb_mux *me, mux_state_t mux_state,
+			   bool *ack_required);
 
 static struct anx_state anx[CONFIG_USB_PD_PORT_MAX_COUNT];
 static struct anx_usb_mux mux[CONFIG_USB_PD_PORT_MAX_COUNT];
@@ -290,6 +291,7 @@ static int anx7447_init(int port)
 {
 	int rv, reg, i;
 	const struct usb_mux *me = &usb_muxes[port];
+	bool unused;
 
 	ASSERT(port < CONFIG_USB_PD_PORT_MAX_COUNT);
 
@@ -344,14 +346,10 @@ static int anx7447_init(int port)
 	if (rv)
 		return rv;
 
-	/*
-	 * Specifically disable voltage alarms, as VBUS_VOLTAGE_ALARM_HI may
-	 * trigger repeatedly despite being masked (b/153989733)
-	 */
-	rv = tcpc_update16(port, TCPC_REG_POWER_CTRL,
-			   TCPC_REG_POWER_CTRL_VBUS_VOL_MONITOR_DIS, MASK_SET);
-	if (rv)
-		return rv;
+	/* Set VBUS_VOLTAGE_ALARM_HI threshold */
+	RETURN_ERROR(tcpc_write16(port, TCPC_REG_VBUS_VOLTAGE_ALARM_HI_CFG, 0x3FF));
+	/* Set VCONN_VOLTAGE_ALARM_HI threshold to 6V */
+	RETURN_ERROR(tcpc_write16(port, VCONN_VOLTAGE_ALARM_HI_CFG, 0xF0));
 
 	/* ADC enable, use to monitor VBUS voltage */
 	rv = tcpc_read(port, ANX7447_REG_ADC_CTRL_1, &reg);
@@ -388,9 +386,13 @@ static int anx7447_init(int port)
 	while ((me != NULL) && (me->driver != &anx7447_usb_mux_driver))
 		me = me->next_mux;
 
+	/*
+	 * Note that bypassing the usb_mux API is okay for internal driver calls
+	 * since the task calling init already holds this port's mux lock.
+	 */
 	if (me != NULL &&
 	    !(me->flags & USB_MUX_FLAG_NOT_TCPC))
-		rv = anx7447_mux_set(me, USB_PD_MUX_NONE);
+		rv = anx7447_mux_set(me, USB_PD_MUX_NONE, &unused);
 #endif /* CONFIG_USB_PD_TCPM_MUX */
 
 	return rv;
@@ -449,10 +451,16 @@ static void anx7447_tcpc_alert(int port)
 static uint64_t hpd_deadline[CONFIG_USB_PD_PORT_MAX_COUNT];
 
 void anx7447_tcpc_update_hpd_status(const struct usb_mux *me,
-				    int hpd_lvl, int hpd_irq)
+				    mux_state_t mux_state,
+				    bool *ack_required)
 {
 	int reg = 0;
 	int port = me->usb_port;
+	int hpd_lvl = (mux_state & USB_PD_MUX_HPD_LVL) ? 1 : 0;
+	int hpd_irq = (mux_state & USB_PD_MUX_HPD_IRQ) ? 1 : 0;
+
+	/* This driver does not use host command ACKs */
+	*ack_required = false;
 
 	/*
 	 * All calls within this method need to update to a mux_read/write calls
@@ -496,6 +504,27 @@ void anx7447_tcpc_clear_hpd_status(int port)
 static int anx7447_mux_init(const struct usb_mux *me)
 {
 	int port = me->usb_port;
+	int i;
+	bool unused;
+
+	/*
+	 * find corresponding anx7447 SPI address according to
+	 * specified MUX address
+	 */
+	for (i = 0; i < ARRAY_SIZE(anx7447_i2c_addrs_flags); i++) {
+		if (I2C_STRIP_FLAGS(usb_muxes[port].i2c_addr_flags) ==
+		    I2C_STRIP_FLAGS(
+			    anx7447_i2c_addrs_flags[i].tcpc_addr_flags)) {
+			anx[port].i2c_addr_flags =
+				anx7447_i2c_addrs_flags[i].spi_addr_flags;
+			break;
+		}
+	}
+	if (!I2C_STRIP_FLAGS(anx[port].i2c_addr_flags)) {
+		ccprintf("TCPC I2C addr 0x%x is invalid for ANX7447\n",
+			 I2C_STRIP_FLAGS(usb_muxes[port].i2c_addr_flags));
+		return EC_ERROR_UNKNOWN;
+	}
 
 	ASSERT(port < CONFIG_USB_PD_PORT_MAX_COUNT);
 
@@ -511,7 +540,7 @@ static int anx7447_mux_init(const struct usb_mux *me)
 	 * USB_PD_MUX_DP_ENABLED) when reinitialized, we need to force
 	 * initialize it to USB_PD_MUX_NONE
 	 */
-	return anx7447_mux_set(me, USB_PD_MUX_NONE);
+	return anx7447_mux_set(me, USB_PD_MUX_NONE, &unused);
 }
 
 #ifdef CONFIG_USB_PD_TCPM_ANX7447_AUX_PU_PD
@@ -559,13 +588,17 @@ static inline void anx7447_configure_aux_src(const struct usb_mux *me,
  *
  * a2, a3, a10, a11, b2, b3, b10, b11 are pins on the USB-C connector.
  */
-static int anx7447_mux_set(const struct usb_mux *me, mux_state_t mux_state)
+static int anx7447_mux_set(const struct usb_mux *me, mux_state_t mux_state,
+			   bool *ack_required)
 {
 	int cc_direction;
 	mux_state_t mux_type;
 	int sw_sel = 0x00, aux_sw = 0x00;
 	int rv;
 	int port = me->usb_port;
+
+	/* This driver does not use host command ACKs */
+	*ack_required = false;
 
 	cc_direction = mux_state & USB_PD_MUX_POLARITY_INVERTED;
 	mux_type = mux_state & USB_PD_MUX_DOCK;
@@ -843,6 +876,6 @@ const struct usb_mux_driver anx7447_usb_mux_driver = {
 	.init = anx7447_mux_init,
 	.set = anx7447_mux_set,
 	.get = anx7447_mux_get,
+	.enter_low_power_mode = &tcpci_tcpm_mux_enter_low_power,
 };
 #endif /* CONFIG_USB_PD_TCPM_MUX */
-

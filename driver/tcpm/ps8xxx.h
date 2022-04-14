@@ -11,6 +11,7 @@
 #ifndef __CROS_EC_USB_PD_TCPM_PS8XXX_H
 #define __CROS_EC_USB_PD_TCPM_PS8XXX_H
 
+#define PS8751_P3_TO_P0_FLAGS(p3_flags)	((p3_flags) - 3)
 #define PS8751_P3_TO_P1_FLAGS(p3_flags)	((p3_flags) - 2)
 
 #define PS8751_BIST_TIMER_FREQ  15000000
@@ -44,6 +45,9 @@
 
 #define PS8XXX_P1_REG_MUX_USB_DCI_CFG           0x4B
 
+#define PS8755_P0_REG_SM			0x06
+#define PS8755_P0_REG_SM_VALUE			0x80
+
 #if defined(CONFIG_USB_PD_TCPM_PS8751)
 /* Vendor defined registers */
 #define PS8XXX_REG_VENDOR_ID_L                  0x00
@@ -57,6 +61,17 @@
 
 /* Vendor defined registers */
 #define PS8815_P1_REG_HW_REVISION		0xF0
+
+/* Vendor defined registers */
+#define PS8815_REG_APTX_EQ_AT_10G		0x20
+#define PS8815_REG_RX_EQ_AT_10G			0x22
+#define PS8815_REG_APTX_EQ_AT_5G		0x24
+#define PS8815_REG_RX_EQ_AT_5G			0x26
+
+#define PS8815_REG_RESERVED_D1			0xD1
+#define PS8815_REG_RESERVED_D1_FRS_EN		BIT(7)
+#define PS8815_REG_RESERVED_F4			0xF4
+#define PS8815_REG_RESERVED_F4_FRS_EN		BIT(6)
 
 /*
  * Below register is defined from Parade PS8815 Register Table,
@@ -78,6 +93,12 @@
 #define PS8815_DPEQ_LOSS_UP_9DB			0x00
 #define PS8815_REG_DP_EQ_COMP_SHIFT		3
 #define PS8815_AUX_INTERCEPTION_DISABLE		BIT(1)
+
+/*
+ * PS8805 register to distinguish chip revision
+ * bit 7-4: 1010b is A3 chip, 0000b is A2 chip
+ */
+#define PS8805_P0_REG_CHIP_REVISION		0x62
 
 /*
  * PS8805 GPIO control register. Note the device I2C address of 0x1A is
@@ -116,6 +137,14 @@ int ps8805_gpio_set_level(int port, enum ps8805_gpio signal, int level);
  * @return EC_SUCCESS if I2C accesses are successful
  */
 int ps8805_gpio_get_level(int port, enum ps8805_gpio signal, int *level);
+
+/**
+ * Check if the chip is PS8755
+ *
+ * @param port: The Type-C port number.
+ * @return true if hidden register sm is 0x80
+ */
+bool check_ps8755_chip(int port);
 
 /*
  * Allow boards to customize for PS8XXX initial if board has
