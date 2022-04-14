@@ -82,6 +82,15 @@
 #define CONFIG_DRAM_BASE_LOAD 0x50000000
 #define CONFIG_DRAM_SIZE 0x010a0000 /* 20 MB */
 
+
+/* Add some space (0x100) before panic for jump data */
+#define CONFIG_PANIC_DRAM_BASE 0x11090000
+#define CONFIG_PANIC_DRAM_SIZE 0x00001000 /* 4K */
+
+#define CONFIG_PANIC_BASE_OFFSET 0x100 /* reserved for jump data */
+#define CONFIG_PANIC_DATA_BASE (CONFIG_PANIC_DRAM_BASE + CONFIG_PANIC_BASE_OFFSET)
+
+
 /* IPI configs */
 #define CONFIG_IPC_SHARED_OBJ_BUF_SIZE 288
 #define CONFIG_IPC_SHARED_OBJ_ADDR                                             \

@@ -290,6 +290,72 @@ void panic_data_print(const struct panic_data *pdata)
 #endif
 }
 
+
+static void ccprint_reg(int regnum, const uint32_t *regs, int index)
+{
+	static const char regname[] = "r10r11r12sp lr pc ";
+	static char rname[3] = "r  ";
+	const char *name;
+
+	rname[1] = '0' + regnum;
+	name = regnum < 10 ? rname : &regname[(regnum - 10) * 3];
+	ccprintf("%c%c%c:", name[0], name[1], name[2]);
+	if (regs)
+		ccprintf("%08x", regs[index]);
+	else
+		ccprintf("        ");
+	ccprintf((regnum & 3) == 3 ? "\n" : " ");
+}
+
+
+/*
+ * Print panic data
+ */
+void ccprint_panic_data_print(const struct panic_data *pdata)
+{
+	const uint32_t *lregs = pdata->cm.regs;
+	const uint32_t *sregs = NULL;
+	const int32_t in_handler = is_frame_in_handler_stack(
+		pdata->cm.regs[CORTEX_PANIC_REGISTER_LR]);
+	int i;
+
+	if (pdata->flags & PANIC_DATA_FLAG_FRAME_VALID)
+		sregs = pdata->cm.frame;
+
+	ccprintf("\n=== %s EXCEPTION: %02x ====== xPSR: %08x ===\n",
+		     in_handler ? "HANDLER" : "PROCESS",
+		     lregs[CORTEX_PANIC_REGISTER_IPSR] & 0xff,
+		     sregs ? sregs[CORTEX_PANIC_FRAME_REGISTER_PSR] : -1);
+	for (i = 0; i < 4; i++)
+		ccprint_reg(i, sregs, i);
+	for (i = 4; i < 10; i++)
+		ccprint_reg(i, lregs, i - 1);
+	ccprint_reg(10, lregs, CORTEX_PANIC_REGISTER_R10);
+	ccprint_reg(11, lregs, CORTEX_PANIC_REGISTER_R11);
+	ccprint_reg(12, sregs, CORTEX_PANIC_FRAME_REGISTER_R12);
+	ccprint_reg(13, lregs,
+		  in_handler ? CORTEX_PANIC_REGISTER_MSP :
+				     CORTEX_PANIC_REGISTER_PSP);
+	ccprint_reg(14, sregs, CORTEX_PANIC_FRAME_REGISTER_LR);
+	ccprint_reg(15, sregs, CORTEX_PANIC_FRAME_REGISTER_PC);
+}
+
+
+static int dump_panic_info(int argc, char *argv[])
+{
+	/*
+	 * Don't need to get pointer via get_panic_data_write()
+	 * because memory below pdata_ptr is stack now (see exception_panic())
+	 */
+	struct panic_data *pdata = pdata_ptr;
+
+	ccprintf("dump_panic_info \n");
+
+	ccprint_panic_data_print(pdata);
+
+	return EC_SUCCESS;
+}
+
 void __keep report_panic(void)
 {
 	/*
@@ -356,6 +422,13 @@ void __keep report_panic(void)
 	/* Make sure that all changes are saved into RAM */
 	if (IS_ENABLED(CONFIG_ARMV7M_CACHE))
 		cpu_clean_invalidate_dcache();
+
+	//ccprintf("\n***** Allen test *****\n");
+	//ccprint_panic_data_print(pdata);
+	//ccprintf("\n***** Allen test *****\n");
+
+	//cpu_clean_invalidate_dcache();
+	cpu_clean_invalidate_dcache_range((uintptr_t)CONFIG_PANIC_DATA_BASE, CONFIG_PANIC_DRAM_SIZE);
 
 	panic_reboot();
 }
@@ -486,3 +559,8 @@ void ignore_bus_fault(int ignored)
 	CPU_NVIC_SHCSR |= CPU_NVIC_SHCSR_BUSFAULTENA;
 	bus_fault_ignored = ignored;
 }
+
+
+
+DECLARE_CONSOLE_COMMAND(dumppanic, dump_panic_info, "[PANIC]",
+			"Dump Panic Info");
