@@ -33,6 +33,24 @@
       "message": "Not sure if CL:3581820 and CL:3581821 are included? If not, can we include those as well?\n\n",
       "revId": "10cf54860dc2f7ac36610799919f1a0cf1d501bb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c740da2a_0747a089",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2022-04-14T19:13:52Z",
+      "side": 1,
+      "message": "Those 2 were included in previous merge, landed in 14505.65",
+      "parentUuid": "83603c8e_f2309f50",
+      "revId": "10cf54860dc2f7ac36610799919f1a0cf1d501bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
