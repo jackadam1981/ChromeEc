@@ -16,6 +16,24 @@
       "message": "I feel like this would be better handled in the programming scripts instead of modifying the chipset driver; instead of making assumptions for all x86 boards.",
       "revId": "f9950d0808aad45d2c56882e145e2f902814f5b9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "72649c2e_fe445d88",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2022-04-14T03:25:58Z",
+      "side": 1,
+      "message": "I add another option CONFIG_CHIPSET_X86_RSMRST_AFTER_S5 and only turns it on when the project is needed. It can avoid impacting all of the other x86 chipset. I\u0027m unsure how to use the programming scripts to make the same behavior. Could you please shed some light on this?",
+      "parentUuid": "fa5395c9_caff2b74",
+      "revId": "f9950d0808aad45d2c56882e145e2f902814f5b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
