@@ -412,6 +412,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1630dd49_3e4fd5ac",
+        "filename": "zephyr/projects/intelrvp/adlrvp/adlrvp_npcx/fan.dts",
+        "patchSetId": 8
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2022-04-14T05:48:12Z",
+      "side": 1,
+      "message": "@Rajesh, Vijay\nCould you clarify what kind of EC kernel and chip variant combination can observe this issue?\nI assume that you are using the MECC card and the EC　chip is npcx9m7f.\nIf you saw the symptom in legacy EC, I don\u0027t think it is the ADC driver issue as it has been used for a long time in many platforms. I\u0027d suggest you to measure the hardware signal to understand the root cause.",
+      "parentUuid": "0cabf066_94f8930c",
+      "range": {
+        "startLine": 25,
+        "startChar": 1,
+        "endLine": 29,
+        "endChar": 34
+      },
+      "revId": "5bb356d586ddfbc94c7cc018f098e1e511d1e83e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4c287a92_4d8d9985",
