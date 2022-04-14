@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf7d20db_5ce71b28",
+        "filename": "zephyr/shim/src/tasks.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-04-14T22:04:39Z",
+      "side": 1,
+      "message": "Update this comment to refer to the system work queue, which runs all the legacy HOOK_DEFERRED calls.",
+      "range": {
+        "startLine": 16,
+        "startChar": 56,
+        "endLine": 16,
+        "endChar": 64
+      },
+      "revId": "12ccd4b014b7d9a9d791cfa8c9c676d40e9686b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d9fb61a_270a0680",
+        "filename": "zephyr/test/tasks/shimmed_test_tasks.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-04-14T22:04:39Z",
+      "side": 1,
+      "message": "Priorities should be reversed.  Lower numbers are higher priority.",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 0
+      },
+      "revId": "12ccd4b014b7d9a9d791cfa8c9c676d40e9686b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
