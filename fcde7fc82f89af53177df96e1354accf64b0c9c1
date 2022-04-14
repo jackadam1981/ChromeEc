@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "91ca7a64_8b10665b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-04-14T16:21:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eb70b1f9_909b32f6",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 1
+      },
+      "revId": "fcde7fc82f89af53177df96e1354accf64b0c9c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bc945779_a01a3019",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-04-14T12:58:33Z",
       "side": 1,
       "message": "Do you want to update the script to support Ti50 in a followup CL?",
+      "range": {
+        "startLine": 12,
+        "startChar": 39,
+        "endLine": 12,
+        "endChar": 43
+      },
+      "revId": "fcde7fc82f89af53177df96e1354accf64b0c9c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "98a2fd35_ad47e45f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-04-14T16:21:02Z",
+      "side": 1,
+      "message": "Yes, let\u0027s see how it goes with Ti50, how its hashes show up in UMA, etc. I did not think about it before you asked, but likely the Cros side also needs to be modified to anchor on both Cr50 and Ti50?",
+      "parentUuid": "bc945779_a01a3019",
       "range": {
         "startLine": 12,
         "startChar": 39,
