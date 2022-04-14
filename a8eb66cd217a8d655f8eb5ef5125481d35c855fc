@@ -22,6 +22,30 @@
       },
       "revId": "a8eb66cd217a8d655f8eb5ef5125481d35c855fc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "97957d4e_745741ed",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 2466,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2022-04-14T23:41:11Z",
+      "side": 1,
+      "message": "this makes sense to me I will update the patch to be a bool and set the value as max always",
+      "parentUuid": "5c172952_d602b6c7",
+      "range": {
+        "startLine": 2466,
+        "startChar": 8,
+        "endLine": 2466,
+        "endChar": 42
+      },
+      "revId": "a8eb66cd217a8d655f8eb5ef5125481d35c855fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
