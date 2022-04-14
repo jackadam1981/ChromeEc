@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aea6b9bc_2cc23109",
+        "filename": "common/usbc/usb_pd_timer.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-04-14T09:07:30Z",
+      "side": 1,
+      "message": "this does not look right.\nwe should only access the timers associated with this port (i.e. task).",
+      "range": {
+        "startLine": 137,
+        "startChar": 32,
+        "endLine": 137,
+        "endChar": 44
+      },
+      "revId": "31950eb9061587c09e8fd01f71f8c5cbb965a7be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
