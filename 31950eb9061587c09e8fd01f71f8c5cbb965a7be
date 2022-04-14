@@ -46,6 +46,30 @@
       },
       "revId": "31950eb9061587c09e8fd01f71f8c5cbb965a7be",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f26c4a0_5181984b",
+        "filename": "common/usbc/usb_pd_timer.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-04-14T09:25:39Z",
+      "side": 1,
+      "message": "could you also have a look at\nhttps://b.corp.google.com/issues/228775568#comment16\nand post your update?\ni\u0027m hoping the ODM can test a fix for this to determine\nif it is the cause of the observed problem.\nwe don\u0027t really understand the root cause of that bug,\nso it would be good to quickly rule out stuff like this.",
+      "parentUuid": "f5d6491a_6315545e",
+      "range": {
+        "startLine": 137,
+        "startChar": 32,
+        "endLine": 137,
+        "endChar": 44
+      },
+      "revId": "31950eb9061587c09e8fd01f71f8c5cbb965a7be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
