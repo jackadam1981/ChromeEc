@@ -357,6 +357,7 @@ void __keep report_panic(void)
 	if (IS_ENABLED(CONFIG_ARMV7M_CACHE))
 		cpu_clean_invalidate_dcache();
 
+	cpu_clean_invalidate_dcache_range((uintptr_t)CONFIG_PANIC_DATA_BASE, CONFIG_PANIC_DRAM_SIZE);
 	panic_reboot();
 }
 
