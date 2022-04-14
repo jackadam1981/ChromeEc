@@ -16,6 +16,121 @@
       "message": "Keith, could you also take a look?",
       "revId": "3a7f6b006a48786228793916510b4f00179ae366",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e0ccb46_e9868ac7",
+        "filename": "zephyr/dts/bindings/cros_shi/cros-shi,espi.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-04-14T22:31:41Z",
+      "side": 1,
+      "message": "These channel capabilities are the same for all boards.  Have espi_init.c set the `.channel_caps` to a fixed value, I don\u0027t think we need this control in the devicetree at the moment.",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 0
+      },
+      "revId": "3a7f6b006a48786228793916510b4f00179ae366",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af8571f5_1aa5a9e7",
+        "filename": "zephyr/include/dt-bindings/espi.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-04-14T22:31:41Z",
+      "side": 1,
+      "message": "These parameters are software only.  I\u0027d argue that given Zephyr application will require a fixed set of the eSPI messages.  Possibly only the ESPI_CHANNEL_FLASH is board dependent, but we don\u0027t support sharing the AP SPI flash with the EC on any designs.",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 0
+      },
+      "revId": "3a7f6b006a48786228793916510b4f00179ae366",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f224f9a_19dc2134",
+        "filename": "zephyr/include/dt-bindings/espi.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-04-14T22:31:41Z",
+      "side": 1,
+      "message": "These parameters are potentially board specific.  All Chromebooks use quad support AFAIK, so setting this parameter from devicetree could be deferred to later.\n\nI\u0027d prefer ading these to a dt-bindings file in Zephyr upstream instead of duplicating the definition here.\n\nDuplicating the GPIO defines has proven to be somewhat messy.",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 0
+      },
+      "revId": "3a7f6b006a48786228793916510b4f00179ae366",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a1bba79_83429760",
+        "filename": "zephyr/shim/src/espi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 579,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-04-14T22:31:41Z",
+      "side": 1,
+      "message": "Use `espi_get_channel_status()` to verify that eSPI has been setup.",
+      "range": {
+        "startLine": 579,
+        "startChar": 0,
+        "endLine": 579,
+        "endChar": 53
+      },
+      "revId": "3a7f6b006a48786228793916510b4f00179ae366",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e11084e_0c845af1",
+        "filename": "zephyr/subsys/ap_pwrseq/signal_vw.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-04-14T22:31:41Z",
+      "side": 1,
+      "message": "Use `espi_get_channel_status()` to verify that eSPI has been setup.",
+      "range": {
+        "startLine": 117,
+        "startChar": 0,
+        "endLine": 117,
+        "endChar": 49
+      },
+      "revId": "3a7f6b006a48786228793916510b4f00179ae366",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
