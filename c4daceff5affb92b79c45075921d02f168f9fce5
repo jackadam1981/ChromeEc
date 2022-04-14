@@ -1,0 +1,180 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed5df744_225ca998",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_pd_ctrl_msg.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-04-14T16:36:38Z",
+      "side": 1,
+      "message": "I can\u0027t tell whether this refers to the partner or the TCPM. Can you rename it to clarify?",
+      "revId": "c4daceff5affb92b79c45075921d02f168f9fce5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9927c87b_abc5c2bd",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_pd_ctrl_msg.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-04-14T16:36:38Z",
+      "side": 1,
+      "message": "Why do we need separate fixtures if they contain the same data? I find the `fixture-\u003efixture` idiom below odd.",
+      "revId": "c4daceff5affb92b79c45075921d02f168f9fce5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a7422be_e0258157",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_pd_ctrl_msg.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-04-14T16:36:38Z",
+      "side": 1,
+      "message": "Nit: I think it would be more consistent with our existing code to call this `usb_pd_ctrl_msg_source_setup`.",
+      "revId": "c4daceff5affb92b79c45075921d02f168f9fce5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c9adbed_7ea5be98",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_pd_ctrl_msg.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-04-14T16:36:38Z",
+      "side": 1,
+      "message": "Instead of having this setup function invert the setting of the other setup function, how about having them both call a common function that sets the `struct emul*`s and then set `is_sink` as appropriate?",
+      "revId": "c4daceff5affb92b79c45075921d02f168f9fce5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "45228fbb_1902414b",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_pd_ctrl_msg.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-04-14T16:36:38Z",
+      "side": 1,
+      "message": "This should be constant through all the tests, right? Can you do it during setup?",
+      "revId": "c4daceff5affb92b79c45075921d02f168f9fce5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0751c15b_40172f81",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_pd_ctrl_msg.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-04-14T16:36:38Z",
+      "side": 1,
+      "message": "IIUC, the separate suite and setup function are required, because we need the TCPM to come up as Sink/UFP and try to swap to DFP. The structure of the code makes this pretty subtle, and it may be lost on future readers. Can you comment these tests to explain how they are expected to work a little bit?",
+      "revId": "c4daceff5affb92b79c45075921d02f168f9fce5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4275e6c0_4124e8ff",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_pd_ctrl_msg.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-04-14T16:36:38Z",
+      "side": 1,
+      "message": "At this point, haven\u0027t you already waited 10 seconds?",
+      "revId": "c4daceff5affb92b79c45075921d02f168f9fce5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a468a2bf_078055c1",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_pd_ctrl_msg.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-04-14T16:36:38Z",
+      "side": 1,
+      "message": "Maybe name this test `verify_dr_swap_rejected`?",
+      "revId": "c4daceff5affb92b79c45075921d02f168f9fce5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54db8f33_e71891dd",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_pd_ctrl_msg.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-04-14T16:36:38Z",
+      "side": 1,
+      "message": "Nit: Looks like the PR merged, and I see that you have a commit further up in the chain to revert this change. If we don\u0027t need to explicitly call the before functions now, can you modify this CL to just not do it in the first place?",
+      "revId": "c4daceff5affb92b79c45075921d02f168f9fce5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "542a1685_682fb5c2",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_pd_ctrl_msg.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-04-14T16:36:38Z",
+      "side": 1,
+      "message": "I\u0027m not sure I understand the difference between these two tests. The initial roles should be different, but they both expect a DFP-to-UFP transition. Is that because the TCPM should spontaneously DRS after the connection? If so, that\u0027s a bit subtle, and I think it deserves a comment and a distinct test name.\n\nDoes this result in additional coverage? We already have a test for a TCPM-initiated UFP-to-DFP swap and for a host-command-initiated DFP-to-UFP swap. I\u0027m not sure we need another test that effectively combines those scenarios.",
+      "range": {
+        "startLine": 250,
+        "startChar": 0,
+        "endLine": 287,
+        "endChar": 0
+      },
+      "revId": "c4daceff5affb92b79c45075921d02f168f9fce5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
