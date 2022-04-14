@@ -4,3 +4,4 @@
 
 zephyr_library_sources_ifdef(CONFIG_CROS_SHI_IT8XXX2	cros_shi_it8xxx2.c)
 zephyr_library_sources_ifdef(CONFIG_CROS_SHI_NPCX	cros_shi_npcx.c)
+zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_HOST_INTERFACE_ESPI espi_init.c)

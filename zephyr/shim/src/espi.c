@@ -576,21 +576,7 @@ static int zephyr_shim_setup_espi(const struct device *unused)
 #endif
 	};
 
-	struct espi_cfg cfg = {
-		.io_caps = ESPI_IO_MODE_QUAD_LINES,
-		.channel_caps = ESPI_CHANNEL_VWIRE | ESPI_CHANNEL_PERIPHERAL |
-				ESPI_CHANNEL_OOB,
-		.max_freq = 50,
-	};
-
-	if (!device_is_ready(espi_dev))
-		k_oops();
-
-	/* Configure eSPI */
-	if (espi_config(espi_dev, &cfg)) {
-		LOG_ERR("Failed to configure eSPI device");
-		return -1;
-	}
+	/* Assume espi device has already been configured */
 
 	/* Setup callbacks */
 	for (size_t i = 0; i < ARRAY_SIZE(callbacks); i++) {
@@ -602,8 +588,8 @@ static int zephyr_shim_setup_espi(const struct device *unused)
 	return 0;
 }
 
-/* Must be before zephyr_shim_setup_hooks. */
-SYS_INIT(zephyr_shim_setup_espi, APPLICATION, 0);
+/* Must be before zephyr_shim_setup_hooks, and after espi_init */
+SYS_INIT(zephyr_shim_setup_espi, APPLICATION, 1);
 
 bool is_acpi_command(uint32_t data)
 {
