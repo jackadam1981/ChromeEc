@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9bca8d83_a021afa2",
+        "filename": "zephyr/Kconfig.charger",
+        "patchSetId": 4
+      },
+      "lineNbr": 641,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2022-04-14T18:03:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d5b9c491_c3d819e7",
+      "range": {
+        "startLine": 641,
+        "startChar": 0,
+        "endLine": 641,
+        "endChar": 46
+      },
+      "revId": "6f84beb2eb116a52b1a33b2723cffc208023b02f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3073efa3_29945f1c",
@@ -61,6 +85,30 @@
       "side": 1,
       "message": "It probably can let me look into the complexities in moving it to devicetree since right now none of these settings are defined in devicetree",
       "parentUuid": "3073efa3_29945f1c",
+      "range": {
+        "startLine": 641,
+        "startChar": 0,
+        "endLine": 646,
+        "endChar": 67
+      },
+      "revId": "6f84beb2eb116a52b1a33b2723cffc208023b02f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "98086084_2923ba5a",
+        "filename": "zephyr/Kconfig.charger",
+        "patchSetId": 4
+      },
+      "lineNbr": 646,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2022-04-14T18:03:24Z",
+      "side": 1,
+      "message": "we will do this in a follow on patch. Created tracker to track this issue",
+      "parentUuid": "711964dd_26d4a988",
       "range": {
         "startLine": 641,
         "startChar": 0,
