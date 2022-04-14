@@ -9,6 +9,7 @@
 #include <shell/shell.h>
 
 #include "common.h"
+#include "host_command.h"
 #include "timer.h"
 #include "task.h"
 
@@ -113,6 +114,9 @@ task_id_t task_get_current(void)
 {
 	if (in_deferred_context()) {
 		return TASK_ID_SYSWORKQ;
+	} else if (IS_ENABLED(CONFIG_TASK_HOSTCMD_THREAD_MAIN) &&
+		   in_host_command_main()) {
+		return TASK_ID_HOSTCMD;
 	}
 
 	for (size_t i = 0; i < TASK_ID_COUNT; ++i) {
