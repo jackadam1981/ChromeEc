@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ec559396_e6c7747b",
+        "filename": "driver/led/is31fl3733b.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-04-14T17:57:06Z",
+      "side": 1,
+      "message": "Will this be locked again? If not, do we keep it unlocked?",
+      "range": {
+        "startLine": 91,
+        "startChar": 4,
+        "endLine": 91,
+        "endChar": 10
+      },
+      "revId": "a98ac5c7235defacae7d5a79560606740db7e8e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a3fdc623_e5c0598b",
         "filename": "driver/led/is31fl3733b.c",
         "patchSetId": 2
@@ -19,6 +42,53 @@
         "startChar": 14,
         "endLine": 148,
         "endChar": 15
+      },
+      "revId": "a98ac5c7235defacae7d5a79560606740db7e8e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "88f33a8f_e9ba2573",
+        "filename": "driver/led/is31fl3733b.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-04-14T17:57:06Z",
+      "side": 1,
+      "message": "Let\u0027s start with 26.7. We can adjust it later if needed.",
+      "parentUuid": "a3fdc623_e5c0598b",
+      "range": {
+        "startLine": 148,
+        "startChar": 14,
+        "endLine": 148,
+        "endChar": 15
+      },
+      "revId": "a98ac5c7235defacae7d5a79560606740db7e8e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8260358f_485e2922",
+        "filename": "driver/led/is31fl3733b.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-04-14T17:57:06Z",
+      "side": 1,
+      "message": "I\u0027m adding BIT_SET \u0026 BIT_UPDATE macros (https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3587152).\n\nOnce it\u0027s merged, can you update cfg as done in https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3587154?",
+      "range": {
+        "startLine": 148,
+        "startChar": 8,
+        "endLine": 148,
+        "endChar": 40
       },
       "revId": "a98ac5c7235defacae7d5a79560606740db7e8e3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
