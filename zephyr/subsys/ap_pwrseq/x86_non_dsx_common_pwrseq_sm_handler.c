@@ -433,13 +433,90 @@ static int common_pwr_sm_run(int state)
 	return state;
 }
 
+/**
+ * Determine the current state of the CPU from the
+ * power signals.
+ */
+static enum power_states_ndsx current_state(void)
+{
+#define MASK_ALL_POWER_GOOD \
+		(POWER_SIGNAL_MASK(PWR_RSMRST) |	\
+		 POWER_SIGNAL_MASK(PWR_ALL_SYS_PWRGD) |	\
+		 POWER_SIGNAL_MASK(PWR_DSW_PWROK) |	\
+		 POWER_SIGNAL_MASK(PWR_PG_PP1P05))
+
+	static struct {
+		power_signal_mask_t mask, value;
+		enum power_states_ndsx state;
+	} signal_to_state[] = {
+	{
+		/*
+		 * S0, all power OK, no suspend on.
+		 */
+		.mask = MASK_ALL_POWER_GOOD |
+			POWER_SIGNAL_MASK(PWR_SLP_S0) |
+			POWER_SIGNAL_MASK(PWR_SLP_S3) |
+			POWER_SIGNAL_MASK(PWR_SLP_SUS) |
+			POWER_SIGNAL_MASK(PWR_SLP_S4) |
+			POWER_SIGNAL_MASK(PWR_SLP_S5),
+		.value = MASK_ALL_POWER_GOOD,
+		.state = SYS_POWER_STATE_S0,
+	},
+	{
+		/*
+		 * S3, all power OK, PWR_SLP_S3 on.
+		 */
+		.mask = MASK_ALL_POWER_GOOD |
+			POWER_SIGNAL_MASK(PWR_SLP_S3) |
+			POWER_SIGNAL_MASK(PWR_SLP_SUS) |
+			POWER_SIGNAL_MASK(PWR_SLP_S4) |
+			POWER_SIGNAL_MASK(PWR_SLP_S5) |
+			POWER_SIGNAL_MASK(PWR_ALL_SYS_PWRGD) |
+			POWER_SIGNAL_MASK(PWR_DSW_PWROK) |
+			POWER_SIGNAL_MASK(PWR_PG_PP1P05),
+		.value = MASK_ALL_POWER_GOOD |
+			 POWER_SIGNAL_MASK(PWR_SLP_S3),
+		.state = SYS_POWER_STATE_S0,
+	},
+	{
+		/*
+		 * S5, all power OK, PWR_SLP_S5 on.
+		 */
+		.mask = MASK_ALL_POWER_GOOD |
+			POWER_SIGNAL_MASK(PWR_SLP_SUS) |
+			POWER_SIGNAL_MASK(PWR_SLP_S5),
+		.value = MASK_ALL_POWER_GOOD |
+			 POWER_SIGNAL_MASK(PWR_SLP_S5),
+		.state = SYS_POWER_STATE_S0,
+	},
+	};
+	power_signal_mask_t signals = power_get_signals();
+
+	for (int i = 0; i < ARRAY_SIZE(signal_to_state); i++) {
+		if ((signals & signal_to_state[i].mask) ==
+		    signal_to_state[i].value) {
+			LOG_INF("Setting CPU state to %s",
+				pwrsm_dbg[signal_to_state[i].state]);
+			return signal_to_state[i].state;
+		}
+	}
+	/*
+	 * Unable to determine state, force to G3.
+	 */
+	ap_power_force_shutdown(AP_POWER_SHUTDOWN_G3);
+	LOG_INF("Unable to determine CPU state, forcing off");
+	return SYS_POWER_STATE_G3;
+}
+
 static void pwrseq_loop_thread(void *p1, void *p2, void *p3)
 {
 	int32_t t_wait_ms = 10;
 	enum power_states_ndsx curr_state, new_state;
 	power_signal_mask_t this_in_signals;
 	power_signal_mask_t last_in_signals = 0;
-	enum power_states_ndsx last_state = pwr_sm_get_state();
+	enum power_states_ndsx last_state = current_state();
+
+	pwr_sm_set_state(last_state);
 
 	while (1) {
 		curr_state = pwr_sm_get_state();
@@ -507,8 +584,6 @@ static void init_pwr_seq_state(void)
 {
 	init_chipset_pwr_seq_state();
 	request_exit_hardoff(false);
-
-	pwr_sm_set_state(SYS_POWER_STATE_G3S5);
 }
 
 /* Initialize power sequence system state */
@@ -518,7 +593,6 @@ static int pwrseq_init(const struct device *dev)
 
 	/* Initialize signal handlers */
 	power_signal_init();
-	/* TODO: Define initial state of power sequence */
 	LOG_DBG("Init pwr seq state");
 	init_pwr_seq_state();
 	/* Create power sequence state handler core function thread */
