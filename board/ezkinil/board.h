@@ -19,6 +19,9 @@
 #define CONFIG_ACCELGYRO_ICM426XX
 #define CONFIG_ACCELGYRO_ICM426XX_INT_EVENT \
 	TASK_EVENT_MOTION_SENSOR_INTERRUPT(BASE_ACCEL)
+#define CONFIG_ACCELGYRO_ICM42607
+#define CONFIG_ACCELGYRO_ICM42607_INT_EVENT \
+	TASK_EVENT_MOTION_SENSOR_INTERRUPT(BASE_ACCEL)
 #define CONFIG_ACCELGYRO_BMI160
 #define CONFIG_ACCELGYRO_BMI160_INT_EVENT \
 	TASK_EVENT_MOTION_SENSOR_INTERRUPT(BASE_ACCEL)
@@ -204,6 +207,7 @@ static inline bool ec_config_has_hdmi_conn_hpd(void)
 		: GPIO_DP2_HPD)
 
 extern const struct usb_mux usbc1_tusb544;
+extern const struct usb_mux usbc1_ps8818;
 extern const struct usb_mux usbc1_ps8743;
 extern struct usb_mux usbc1_amd_fp5_usb_mux;
 

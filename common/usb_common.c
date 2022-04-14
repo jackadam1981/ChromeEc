@@ -15,7 +15,9 @@
 #include "common.h"
 #include "console.h"
 #include "ec_commands.h"
+#include "gpio.h"
 #include "hooks.h"
+#include "mkbp_event.h"
 #include "stdbool.h"
 #include "host_command.h"
 #include "system.h"
@@ -25,6 +27,7 @@
 #include "usb_mux.h"
 #include "usb_pd.h"
 #include "usb_pd_dpm.h"
+#include "usb_pd_flags.h"
 #include "usb_pd_tcpm.h"
 #include "usbc_ocp.h"
 #include "usbc_ppc.h"
@@ -40,11 +43,11 @@
 
 /*
  * If we are trying to upgrade PD firmwares (TCPC chips, retimer, etc), we
- * need to ensure the battery has enough charge for this process. 100mAh
- * is about 5% of most batteries, and it should be enough charge to get us
+ * need to ensure the battery has enough charge for this process. Set the
+ * threshold to 10%, and it should be enough charge to get us
  * through the EC jump to RW and PD upgrade.
  */
-#define MIN_BATTERY_FOR_PD_UPGRADE_MAH 100 /* mAH */
+#define MIN_BATTERY_FOR_PD_UPGRADE_PERCENT 10 /* % */
 
 #if defined(CONFIG_CMD_PD) && defined(CONFIG_CMD_PD_FLASH)
 int hex8tou32(char *str, uint32_t *val)
@@ -126,6 +129,12 @@ int remote_flashing(int argc, char **argv)
 }
 #endif /* defined(CONFIG_CMD_PD) && defined(CONFIG_CMD_PD_FLASH) */
 
+#ifdef CONFIG_COMMON_RUNTIME
+struct ec_params_usb_pd_rw_hash_entry rw_hash_table[RW_HASH_ENTRIES];
+#endif /* CONFIG_COMMON_RUNTIME */
+
+static __maybe_unused atomic_t pd_host_event_status __aligned(4);
+
 bool pd_firmware_upgrade_check_power_readiness(int port)
 {
 	if (IS_ENABLED(HAS_TASK_CHARGER)) {
@@ -139,12 +148,12 @@ bool pd_firmware_upgrade_check_power_readiness(int port)
 		 * charge to finish the upgrade.
 		 */
 		battery_get_params(&batt);
-		if (batt.flags & BATT_FLAG_BAD_REMAINING_CAPACITY ||
-			batt.remaining_capacity <
-				MIN_BATTERY_FOR_PD_UPGRADE_MAH) {
+		if (batt.flags & BATT_FLAG_BAD_STATE_OF_CHARGE ||
+			batt.state_of_charge <
+				MIN_BATTERY_FOR_PD_UPGRADE_PERCENT) {
 			CPRINTS("C%d: Cannot suspend for upgrade, not "
-					"enough battery (%dmAh)!",
-					port, batt.remaining_capacity);
+					"enough battery (%d%%)!",
+					port, batt.state_of_charge);
 			return false;
 		}
 	} else {
@@ -294,13 +303,8 @@ __overridable int pd_board_check_request(uint32_t rdo, int pdo_cnt)
 	return EC_SUCCESS;
 }
 
-int pd_check_requested_voltage(uint32_t rdo, const int port)
+int pd_get_source_pdo(const uint32_t **src_pdo_p, const int port)
 {
-	int max_ma = rdo & 0x3FF;
-	int op_ma = (rdo >> 10) & 0x3FF;
-	int idx = RDO_POS(rdo);
-	uint32_t pdo;
-	uint32_t pdo_ma;
 #if defined(CONFIG_USB_PD_TCPMV2) && defined(CONFIG_USB_PE_SM)
 	const uint32_t *src_pdo;
 	const int pdo_cnt = dpm_get_source_pdo(&src_pdo, port);
@@ -312,6 +316,22 @@ int pd_check_requested_voltage(uint32_t rdo, const int port)
 	const uint32_t *src_pdo = pd_src_pdo;
 	const int pdo_cnt = pd_src_pdo_cnt;
 #endif
+
+	*src_pdo_p = src_pdo;
+	return pdo_cnt;
+}
+
+int pd_check_requested_voltage(uint32_t rdo, const int port)
+{
+	int max_ma = rdo & 0x3FF;
+	int op_ma = (rdo >> 10) & 0x3FF;
+	int idx = RDO_POS(rdo);
+	uint32_t pdo;
+	uint32_t pdo_ma;
+	const uint32_t *src_pdo;
+	int pdo_cnt;
+
+	pdo_cnt = pd_get_source_pdo(&src_pdo, port);
 
 	/* Check for invalid index */
 	if (!idx || idx > pdo_cnt)
@@ -361,7 +381,7 @@ __overridable bool board_is_dts_port(int port)
 	return true;
 }
 
-int pd_get_retry_count(int port, enum tcpm_transmit_type type)
+int pd_get_retry_count(int port, enum tcpci_msg_type type)
 {
 	/* PD 3.0 6.7.7: nRetryCount = 2; PD 2.0 6.6.9: nRetryCount = 3 */
 	return pd_get_rev(port, type) == PD_REV30 ? 2 : 3;
@@ -458,6 +478,11 @@ enum pd_drp_next_states drp_auto_toggle_next_state(
 	}
 }
 
+__overridable bool usb_ufp_check_usb3_enable(int port)
+{
+	return false;
+}
+
 mux_state_t get_mux_mode_to_set(int port)
 {
 	/*
@@ -477,10 +502,26 @@ mux_state_t get_mux_mode_to_set(int port)
 	if (pd_is_disconnected(port))
 		return USB_PD_MUX_NONE;
 
+	/*
+	 * For type-c only connections, there may be a need to enable USB3.1
+	 * mode when the port is in a UFP data role, independent of any other
+	 * conditions which are checked below. The default function returns
+	 * false, so only boards that override this check will be affected.
+	 */
+	if (usb_ufp_check_usb3_enable(port) && pd_get_data_role(port)
+	    == PD_ROLE_UFP)
+		return USB_PD_MUX_USB_ENABLED;
+
 	/* If new data role isn't DFP & we only support DFP, also disconnect. */
 	if (IS_ENABLED(CONFIG_USB_PD_DUAL_ROLE) &&
 	    IS_ENABLED(CONFIG_USBC_SS_MUX_DFP_ONLY) &&
 	    pd_get_data_role(port) != PD_ROLE_DFP)
+		return USB_PD_MUX_NONE;
+
+	/* If new data role isn't UFP & we only support UFP then disconnect. */
+	if (IS_ENABLED(CONFIG_USB_PD_DUAL_ROLE) &&
+	    IS_ENABLED(CONFIG_USBC_SS_MUX_UFP_ONLY) &&
+	    pd_get_data_role(port) != PD_ROLE_UFP)
 		return USB_PD_MUX_NONE;
 
 	/*
@@ -549,7 +590,7 @@ static void pd_send_hard_reset(int port)
 
 #ifdef CONFIG_USBC_OCP
 
-static uint32_t port_oc_reset_req;
+static atomic_t port_oc_reset_req;
 
 static void re_enable_ports(void)
 {
@@ -676,30 +717,6 @@ __overridable void typec_set_source_current_limit(int p, enum tcpc_rp_value rp)
 		ppc_set_vbus_source_current_limit(p, rp);
 }
 
-/* ---------------- Power Data Objects (PDOs) ----------------- */
-#ifndef CONFIG_USB_PD_CUSTOM_PDO
-#define PDO_FIXED_FLAGS (PDO_FIXED_DUAL_ROLE | PDO_FIXED_DATA_SWAP |\
-			 PDO_FIXED_COMM_CAP)
-
-const uint32_t pd_src_pdo[] = {
-	PDO_FIXED(5000, 1500, PDO_FIXED_FLAGS),
-};
-const int pd_src_pdo_cnt = ARRAY_SIZE(pd_src_pdo);
-const uint32_t pd_src_pdo_max[] = {
-	PDO_FIXED(5000, 3000, PDO_FIXED_FLAGS),
-};
-const int pd_src_pdo_max_cnt = ARRAY_SIZE(pd_src_pdo_max);
-
-const uint32_t pd_snk_pdo[] = {
-	PDO_FIXED(5000,
-		  GENERIC_MIN((PD_OPERATING_POWER_MW / 5), PD_MAX_CURRENT_MA),
-		  PDO_FIXED_FLAGS),
-	PDO_BATT(4750, PD_MAX_VOLTAGE_MV, PD_OPERATING_POWER_MW),
-	PDO_VAR(4750, PD_MAX_VOLTAGE_MV, PD_MAX_CURRENT_MA),
-};
-const int pd_snk_pdo_cnt = ARRAY_SIZE(pd_snk_pdo);
-#endif /* CONFIG_USB_PD_CUSTOM_PDO */
-
 /* ----------------- Vendor Defined Messages ------------------ */
 #if defined(CONFIG_USB_PE_SM) && !defined(CONFIG_USB_VPD) && \
 	!defined(CONFIG_USB_CTVPD)
@@ -788,7 +805,7 @@ static void pd_usb_billboard_deferred(void)
 		 * 1. Will we have multiple type-C port UFPs
 		 * 2. Will there be other modes applicable to DFPs besides DP
 		 */
-		if (!pd_alt_mode(0, TCPC_TX_SOP, USB_SID_DISPLAYPORT))
+		if (!pd_alt_mode(0, TCPCI_MSG_SOP, USB_SID_DISPLAYPORT))
 			usb_connect();
 	}
 }
@@ -830,19 +847,24 @@ void pd_set_vbus_discharge(int port, int enable)
 	mutex_lock(&discharge_lock[port]);
 	enable &= !board_vbus_source_enabled(port);
 
-	if (IS_ENABLED(CONFIG_USB_PD_DISCHARGE_GPIO))
+	if (get_usb_pd_discharge() == USB_PD_DISCHARGE_GPIO) {
 		gpio_discharge_vbus(port, enable);
-	else if (IS_ENABLED(CONFIG_USB_PD_DISCHARGE_TCPC))
+	} else if (get_usb_pd_discharge() == USB_PD_DISCHARGE_TCPC) {
+#ifdef CONFIG_USB_PD_DISCHARGE_TCPC
 		tcpc_discharge_vbus(port, enable);
-	else if (IS_ENABLED(CONFIG_USB_PD_DISCHARGE_PPC))
+#endif
+	} else if (get_usb_pd_discharge() == USB_PD_DISCHARGE_PPC) {
+#ifdef CONFIG_USB_PD_DISCHARGE_PPC
 		ppc_discharge_vbus(port, enable);
+#endif
+	}
 
 	mutex_unlock(&discharge_lock[port]);
 }
 #endif /* CONFIG_USB_PD_DISCHARGE */
 
 #ifdef CONFIG_USB_PD_TCPM_TCPCI
-static uint32_t pd_ports_to_resume;
+static atomic_t pd_ports_to_resume;
 static void resume_pd_port(void)
 {
 	uint32_t port;
@@ -863,6 +885,10 @@ void pd_deferred_resume(int port)
 }
 #endif /* CONFIG_USB_PD_TCPM_TCPCI */
 
+__overridable int pd_snk_is_vbus_provided(int port)
+{
+	return EC_SUCCESS;
+}
 
 /*
  * Check the specified Vbus level
@@ -872,8 +898,10 @@ void pd_deferred_resume(int port)
  */
 __overridable bool pd_check_vbus_level(int port, enum vbus_level level)
 {
-	if (IS_ENABLED(CONFIG_USB_PD_VBUS_DETECT_TCPC))
+	if (IS_ENABLED(CONFIG_USB_PD_VBUS_DETECT_TCPC) &&
+		(get_usb_pd_vbus_detect() == USB_PD_VBUS_DETECT_TCPC)) {
 		return tcpm_check_vbus_level(port, level);
+	}
 	else if (level == VBUS_PRESENT)
 		return pd_snk_is_vbus_provided(port);
 	else
@@ -897,7 +925,8 @@ int pd_set_frs_enable(int port, int enable)
 
 	if (IS_ENABLED(CONFIG_USB_PD_FRS_PPC))
 		rv = ppc_set_frs_enable(port, enable);
-	if (rv == EC_SUCCESS && IS_ENABLED(CONFIG_USB_PD_FRS_TCPC))
+	if ((rv == EC_SUCCESS || rv == EC_ERROR_UNIMPLEMENTED) &&
+	    tcpm_tcpc_has_frs_control(port))
 		rv = tcpm_set_frs_enable(port, enable);
 	if (rv == EC_SUCCESS)
 		rv = board_pd_set_frs_enable(port, enable);
@@ -961,6 +990,7 @@ void pd_srccaps_dump(int port)
 	for (i = 0; i < pd_get_src_cap_cnt(port); ++i) {
 		uint32_t max_ma, max_mv, min_mv;
 
+#ifdef CONFIG_CMD_PD_SRCCAPS_REDUCED_SIZE
 		pd_extract_pdo_power(srccaps[i], &max_ma, &max_mv, &min_mv);
 
 		if ((srccaps[i] & PDO_TYPE_MASK) == PDO_TYPE_AUGMENTED) {
@@ -970,6 +1000,56 @@ void pd_srccaps_dump(int port)
 		} else {
 			ccprintf("%d: %dmV/%dmA\n", i, max_mv, max_ma);
 		}
+#else
+		const uint32_t pdo = srccaps[i];
+		const uint32_t pdo_mask = pdo & PDO_TYPE_MASK;
+		const char *pdo_type;
+		bool range_flag = true;
+
+		pd_extract_pdo_power(pdo, &max_ma, &max_mv, &min_mv);
+
+		switch (pdo_mask) {
+		case PDO_TYPE_FIXED:
+			pdo_type = "Fixed";
+			range_flag = false;
+			break;
+		case PDO_TYPE_BATTERY:
+			pdo_type = "Battery";
+			break;
+		case PDO_TYPE_VARIABLE:
+			pdo_type = "Variable";
+			break;
+		case PDO_TYPE_AUGMENTED:
+			pdo_type = "Augmnt";
+			if (!IS_ENABLED(CONFIG_USB_PD_REV30)) {
+				pdo_type = "Aug3.0";
+				range_flag = false;
+			}
+			break;
+		default:
+			pdo_type = "?";
+			break;
+		}
+
+		ccprintf("Src %d: (%s) %dmV", i, pdo_type, max_mv);
+		if (range_flag)
+			ccprintf("-%dmV", min_mv);
+		ccprintf("/%dm%c", max_ma,
+				 pdo_mask == PDO_TYPE_BATTERY ? 'W' : 'A');
+
+		if (pdo & PDO_FIXED_DUAL_ROLE)
+			ccprintf(" DRP");
+		if (pdo & PDO_FIXED_UNCONSTRAINED)
+			ccprintf(" UP");
+		if (pdo & PDO_FIXED_COMM_CAP)
+			ccprintf(" USB");
+		if (pdo & PDO_FIXED_DATA_SWAP)
+			ccprintf(" DRD");
+		/* Note from ectool.c: FRS bits are reserved in PD 2.0 spec */
+		if (pdo & PDO_FIXED_FRS_CURR_MASK)
+			ccprintf(" FRS");
+		ccprintf("\n");
+#endif
 	}
 }
 
@@ -991,4 +1071,26 @@ int pd_build_alert_msg(uint32_t *msg, uint32_t *len, enum pd_power_role pr)
 	*len = 4;
 
 	return EC_SUCCESS;
+}
+
+#if defined(HAS_TASK_HOSTCMD) && !defined(TEST_BUILD)
+void pd_send_host_event(int mask)
+{
+	/* mask must be set */
+	if (!mask)
+		return;
+
+	atomic_or(&pd_host_event_status, mask);
+	/* interrupt the AP */
+	host_set_single_event(EC_HOST_EVENT_PD_MCU);
+}
+#endif /* defined(HAS_TASK_HOSTCMD) && !defined(TEST_BUILD) */
+
+__overridable void pd_notify_dp_alt_mode_entry(int port)
+{
+	if (IS_ENABLED(CONFIG_MKBP_EVENT)) {
+		(void)port;
+		CPRINTS("Notifying AP of DP Alt Mode Entry...");
+		mkbp_send_event(EC_MKBP_EVENT_DP_ALT_MODE_ENTERED);
+	}
 }

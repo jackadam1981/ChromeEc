@@ -7,16 +7,24 @@
 
 #include "adc_chip.h"
 #include "button.h"
+#include "cbi_fw_config.h"
 #include "cros_board_info.h"
+#include "cbi_ssfc.h"
 #include "charge_manager.h"
 #include "charge_state_v2.h"
 #include "charger.h"
+#include "driver/accel_lis2dw12.h"
+#include "driver/accelgyro_lsm6dsm.h"
 #include "driver/bc12/pi3usb9201.h"
 #include "driver/charger/isl923x.h"
 #include "driver/temp_sensor/thermistor.h"
 #include "driver/tcpm/raa489000.h"
 #include "driver/tcpm/tcpci.h"
 #include "driver/usb_mux/it5205.h"
+#include "driver/accelgyro_bmi_common.h"
+#include "driver/accelgyro_bmi260.h"
+#include "driver/accelgyro_icm42607.h"
+#include "driver/accelgyro_icm_common.h"
 #include "gpio.h"
 #include "hooks.h"
 #include "intc.h"
@@ -29,6 +37,7 @@
 #include "pwm_chip.h"
 #include "switch.h"
 #include "system.h"
+#include "tablet_mode.h"
 #include "task.h"
 #include "tcpm/tcpci.h"
 #include "temp_sensor.h"
@@ -38,6 +47,7 @@
 #include "usb_pd.h"
 #include "usb_pd_tcpm.h"
 
+#define CPRINTF(format, args...) cprints(CC_SYSTEM, format, ## args)
 #define CPRINTUSB(format, args...) cprints(CC_USBCHARGE, format, ## args)
 #define INT_RECHECK_US 5000
 
@@ -211,6 +221,194 @@ const int usb_port_enable[USB_PORT_COUNT] = {
 
 static uint32_t board_id;
 
+/* Sensors */
+static struct mutex g_lid_mutex;
+static struct mutex g_base_mutex;
+
+/* Matrices to rotate accelerometers into the standard reference. */
+static const mat33_fp_t lid_lis2dwl_ref = {
+	{ 0, FLOAT_TO_FP(1), 0},
+	{ FLOAT_TO_FP(1), 0, 0},
+	{ 0, 0, FLOAT_TO_FP(-1)}
+};
+
+static struct lsm6dsm_data lsm6dsm_data = LSM6DSM_DATA;
+
+/* Lid accel private data */
+static struct stprivate_data g_lis2dwl_data;
+struct motion_sensor_t motion_sensors[] = {
+	[LID_ACCEL] = {
+		.name = "Lid Accel",
+		.active_mask = SENSOR_ACTIVE_S0_S3,
+		.chip = MOTIONSENSE_CHIP_LIS2DWL,
+		.type = MOTIONSENSE_TYPE_ACCEL,
+		.location = MOTIONSENSE_LOC_LID,
+		.drv = &lis2dw12_drv,
+		.mutex = &g_lid_mutex,
+		.drv_data = &g_lis2dwl_data,
+		.port = I2C_PORT_SENSOR,
+		.i2c_spi_addr_flags = LIS2DWL_ADDR1_FLAGS,
+		.rot_standard_ref = &lid_lis2dwl_ref,
+		.default_range = 2, /* g */
+		.min_frequency = LIS2DW12_ODR_MIN_VAL,
+		.max_frequency = LIS2DW12_ODR_MAX_VAL,
+		.config = {
+			/* EC use accel for angle detection */
+			[SENSOR_CONFIG_EC_S0] = {
+				.odr = 12500 | ROUND_UP_FLAG,
+			},
+			/* Sensor on for lid angle detection */
+			[SENSOR_CONFIG_EC_S3] = {
+				.odr = 10000 | ROUND_UP_FLAG,
+			},
+		},
+	},
+	[BASE_ACCEL] = {
+		.name = "Base Accel",
+		.active_mask = SENSOR_ACTIVE_S0_S3,
+		.chip = MOTIONSENSE_CHIP_LSM6DS3,
+		.type = MOTIONSENSE_TYPE_ACCEL,
+		.location = MOTIONSENSE_LOC_BASE,
+		.drv = &lsm6dsm_drv,
+		.mutex = &g_base_mutex,
+		.drv_data = LSM6DSM_ST_DATA(lsm6dsm_data,
+				MOTIONSENSE_TYPE_ACCEL),
+		.port = I2C_PORT_SENSOR,
+		.i2c_spi_addr_flags = LSM6DSM_ADDR0_FLAGS,
+		.rot_standard_ref = NULL,		/* identity matrix */
+		.default_range = 4,  /* g */
+		.min_frequency = LSM6DSM_ODR_MIN_VAL,
+		.max_frequency = LSM6DSM_ODR_MAX_VAL,
+		.config = {
+			[SENSOR_CONFIG_EC_S0] = {
+				.odr = 13000 | ROUND_UP_FLAG,
+				.ec_rate = 100 * MSEC,
+			},
+			[SENSOR_CONFIG_EC_S3] = {
+				.odr = 10000 | ROUND_UP_FLAG,
+				.ec_rate = 100 * MSEC,
+			},
+		},
+	},
+	[BASE_GYRO] = {
+		.name = "Base Gyro",
+		.active_mask = SENSOR_ACTIVE_S0_S3,
+		.chip = MOTIONSENSE_CHIP_LSM6DS3,
+		.type = MOTIONSENSE_TYPE_GYRO,
+		.location = MOTIONSENSE_LOC_BASE,
+		.drv = &lsm6dsm_drv,
+		.mutex = &g_base_mutex,
+		.drv_data = LSM6DSM_ST_DATA(lsm6dsm_data,
+				MOTIONSENSE_TYPE_GYRO),
+		.port = I2C_PORT_SENSOR,
+		.i2c_spi_addr_flags = LSM6DSM_ADDR0_FLAGS,
+		.default_range = 1000 | ROUND_UP_FLAG, /* dps */
+		.rot_standard_ref = NULL,               /* identity matrix */
+		.min_frequency = LSM6DSM_ODR_MIN_VAL,
+		.max_frequency = LSM6DSM_ODR_MAX_VAL,
+	},
+};
+
+static struct icm_drv_data_t g_icm42607_data;
+const mat33_fp_t based_ref_icm42607 = {
+	{ FLOAT_TO_FP(1), 0, 0},
+	{ 0, FLOAT_TO_FP(1), 0},
+	{ 0, 0, FLOAT_TO_FP(1)}
+};
+struct motion_sensor_t icm42607_base_accel = {
+	 .name = "Base Accel",
+	 .active_mask = SENSOR_ACTIVE_S0_S3,
+	 .chip = MOTIONSENSE_CHIP_ICM42607,
+	 .type = MOTIONSENSE_TYPE_ACCEL,
+	 .location = MOTIONSENSE_LOC_BASE,
+	 .drv = &icm42607_drv,
+	 .mutex = &g_base_mutex,
+	 .drv_data = &g_icm42607_data,
+	 .port = I2C_PORT_ACCEL,
+	 .i2c_spi_addr_flags = ICM42607_ADDR0_FLAGS,
+	 .default_range = 4, /* g, to meet CDD 7.3.1/C-1-4 reqs.*/
+	 .rot_standard_ref = &based_ref_icm42607,
+	 .min_frequency = ICM42607_ACCEL_MIN_FREQ,
+	 .max_frequency = ICM42607_ACCEL_MAX_FREQ,
+	 .config = {
+		 /* EC use accel for angle detection */
+		[SENSOR_CONFIG_EC_S0] = {
+			.odr = 10000 | ROUND_UP_FLAG,
+		},
+		/* EC use accel for angle detection */
+		[SENSOR_CONFIG_EC_S3] = {
+			.odr = 10000 | ROUND_UP_FLAG,
+		},
+	 },
+};
+struct motion_sensor_t icm42607_base_gyro = {
+	 .name = "Base Gyro",
+	 .active_mask = SENSOR_ACTIVE_S0_S3,
+	 .chip = MOTIONSENSE_CHIP_ICM42607,
+	 .type = MOTIONSENSE_TYPE_GYRO,
+	 .location = MOTIONSENSE_LOC_BASE,
+	 .drv = &icm42607_drv,
+	 .mutex = &g_base_mutex,
+	 .drv_data = &g_icm42607_data,
+	 .port = I2C_PORT_ACCEL,
+	 .i2c_spi_addr_flags = ICM42607_ADDR0_FLAGS,
+	 .default_range = 1000, /* dps */
+	 .rot_standard_ref = &based_ref_icm42607,
+	 .min_frequency = ICM42607_GYRO_MIN_FREQ,
+	 .max_frequency = ICM42607_GYRO_MAX_FREQ,
+};
+
+static struct bmi_drv_data_t g_bmi220_data;
+const mat33_fp_t based_ref_bmi220 = {
+	{ 0, FLOAT_TO_FP(1), 0},
+	{ FLOAT_TO_FP(-1), 0, 0},
+	{ 0, 0, FLOAT_TO_FP(1)}
+};
+struct motion_sensor_t bmi220_base_accel = {
+	 .name = "Base Accel",
+	 .active_mask = SENSOR_ACTIVE_S0_S3,
+	 .chip = MOTIONSENSE_CHIP_BMI220,
+	 .type = MOTIONSENSE_TYPE_ACCEL,
+	 .location = MOTIONSENSE_LOC_BASE,
+	 .drv = &bmi260_drv,
+	 .mutex = &g_base_mutex,
+	 .drv_data = &g_bmi220_data,
+	 .port = I2C_PORT_ACCEL,
+	 .i2c_spi_addr_flags = BMI260_ADDR0_FLAGS,
+	 .default_range = 4, /* g, to meet CDD 7.3.1/C-1-4 reqs.*/
+	 .rot_standard_ref = &based_ref_bmi220,
+	 .min_frequency = BMI_ACCEL_MIN_FREQ,
+	 .max_frequency = BMI_ACCEL_MAX_FREQ,
+	 .config = {
+		[SENSOR_CONFIG_EC_S0] = {
+				.odr = 13000 | ROUND_UP_FLAG,
+				.ec_rate = 100 * MSEC,
+		},
+		[SENSOR_CONFIG_EC_S3] = {
+			.odr = 10000 | ROUND_UP_FLAG,
+			.ec_rate = 100 * MSEC,
+		},
+	 },
+};
+struct motion_sensor_t bmi220_base_gyro = {
+	 .name = "Base Gyro",
+	 .active_mask = SENSOR_ACTIVE_S0_S3,
+	 .chip = MOTIONSENSE_CHIP_BMI220,
+	 .type = MOTIONSENSE_TYPE_GYRO,
+	 .location = MOTIONSENSE_LOC_BASE,
+	 .drv = &bmi260_drv,
+	 .mutex = &g_base_mutex,
+	 .drv_data = &g_bmi220_data,
+	 .port = I2C_PORT_ACCEL,
+	 .i2c_spi_addr_flags = BMI260_ADDR0_FLAGS,
+	 .default_range = 1000, /* dps */
+	 .rot_standard_ref = &based_ref_bmi220,
+	 .min_frequency = BMI_GYRO_MIN_FREQ,
+	 .max_frequency = BMI_GYRO_MAX_FREQ,
+};
+
+unsigned int motion_sensor_count = ARRAY_SIZE(motion_sensors);
+
 void board_init(void)
 {
 	gpio_enable_interrupt(GPIO_USB_C0_INT_ODL);
@@ -221,6 +419,11 @@ void board_init(void)
 	/* Set LEDs luminance */
 	pwm_set_duty(PWM_CH_LED_RED, 70);
 	pwm_set_duty(PWM_CH_LED_GREEN, 70);
+	pwm_set_duty(PWM_CH_LED_WHITE, 70);
+
+	/* Enable Base Accel interrupt for Beetley */
+	if (get_cbi_fw_config_tablet_mode() == TABLET_MODE_PRESENT)
+		gpio_enable_interrupt(GPIO_BASE_SIXAXIS_INT_L);
 
 	/*
 	 * If interrupt lines are already low, schedule them to be processed
@@ -236,8 +439,55 @@ void board_init(void)
 	keyscan_config.actual_key_mask[14] = 0xff;
 
 	cbi_get_board_version(&board_id);
+
+	if (get_cbi_fw_config_tablet_mode() == TABLET_MODE_ABSENT) {
+		motion_sensor_count = 0;
+		gmr_tablet_switch_disable();
+		/*
+		 * Base accel is not stuffed, don't allow
+		 * line to float.
+		 */
+		gpio_set_flags(GPIO_BASE_SIXAXIS_INT_L,
+				GPIO_INPUT | GPIO_PULL_DOWN);
+
+		/* Disable Volume keys for blipper */
+		button_disable_gpio(BUTTON_VOLUME_UP);
+		button_disable_gpio(BUTTON_VOLUME_DOWN);
+		gpio_set_flags(GPIO_VOLDN_BTN_ODL,
+				GPIO_INPUT | GPIO_PULL_DOWN);
+		gpio_set_flags(GPIO_VOLUP_BTN_ODL,
+				GPIO_INPUT | GPIO_PULL_DOWN);
+	} else {
+		if (get_cbi_ssfc_base_sensor() == SSFC_SENSOR_ICM42607) {
+			motion_sensors[BASE_ACCEL] = icm42607_base_accel;
+			motion_sensors[BASE_GYRO] = icm42607_base_gyro;
+			CPRINTF("BASE GYRO is ICM42607");
+		} else if (get_cbi_ssfc_base_sensor() == SSFC_SENSOR_BMI220) {
+			motion_sensors[BASE_ACCEL] = bmi220_base_accel;
+			motion_sensors[BASE_GYRO] = bmi220_base_gyro;
+			CPRINTF("BASE GYRO is BMI220");
+		} else {
+			CPRINTF("BASE GYRO is LSM6DSM");
+		}
+	}
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
+
+void motion_interrupt(enum gpio_signal signal)
+{
+	switch (get_cbi_ssfc_base_sensor()) {
+	case SSFC_SENSOR_ICM42607:
+		icm42607_interrupt(signal);
+		break;
+	case SSFC_SENSOR_BMI220:
+		bmi260_interrupt(signal);
+		break;
+	case SSFC_SENSOR_LSM6DSM:
+	default:
+		lsm6dsm_interrupt(signal);
+		break;
+	}
+}
 
 void board_hibernate(void)
 {
@@ -377,6 +627,12 @@ const struct pwm_t pwm_channels[] = {
 		.flags = PWM_CONFIG_DSLEEP | PWM_CONFIG_ACTIVE_LOW,
 		.freq_hz = 2400,
 	},
+
+	[PWM_CH_LED_WHITE] = {
+		.channel = 3,
+		.flags = PWM_CONFIG_DSLEEP | PWM_CONFIG_ACTIVE_LOW,
+		.freq_hz = 2400,
+	},
 };
 BUILD_ASSERT(ARRAY_SIZE(pwm_channels) == PWM_CH_COUNT);
 
@@ -396,3 +652,29 @@ const struct temp_sensor_t temp_sensors[] = {
 			   .idx = ADC_TEMP_SENSOR_3},
 };
 BUILD_ASSERT(ARRAY_SIZE(temp_sensors) == TEMP_SENSOR_COUNT);
+
+/* This callback disables keyboard when convertibles are fully open */
+__override void lid_angle_peripheral_enable(int enable)
+{
+	int chipset_in_s0 = chipset_in_state(CHIPSET_STATE_ON);
+
+	/*
+	 * If the lid is in tablet position via other sensors,
+	 * ignore the lid angle, which might be faulty then
+	 * disable keyboard.
+	 */
+	if (tablet_get_mode())
+		enable = 0;
+
+	if (enable) {
+		keyboard_scan_enable(1, KB_SCAN_DISABLE_LID_ANGLE);
+	} else {
+		/*
+		 * Ensure that the chipset is off before disabling the keyboard.
+		 * When the chipset is on, the EC keeps the keyboard enabled and
+		 * the AP decides whether to ignore input devices or not.
+		 */
+		if (!chipset_in_s0)
+			keyboard_scan_enable(0, KB_SCAN_DISABLE_LID_ANGLE);
+	}
+}

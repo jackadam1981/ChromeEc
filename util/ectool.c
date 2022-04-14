@@ -18,6 +18,7 @@
 
 #include "battery.h"
 #include "comm-host.h"
+#include "comm-usb.h"
 #include "chipset.h"
 #include "compile_time_macros.h"
 #include "crc.h"
@@ -41,6 +42,9 @@
  */
 #define HELLO_RESP(in_data) ((in_data) + 0x01020304)
 
+#define USB_VID_GOOGLE	0x18d1
+#define USB_PID_HAMMER	0x5022
+
 /* Command line options */
 enum {
 	OPT_DEV = 1000,
@@ -48,6 +52,7 @@ enum {
 	OPT_NAME,
 	OPT_ASCII,
 	OPT_I2C_BUS,
+	OPT_DEVICE,
 };
 
 static struct option long_opts[] = {
@@ -56,6 +61,7 @@ static struct option long_opts[] = {
 	{"name", 1, 0, OPT_NAME},
 	{"ascii", 0, 0, OPT_ASCII},
 	{"i2c_bus", 1, 0, OPT_I2C_BUS},
+	{"device", 1, 0, OPT_DEVICE},
 	{NULL, 0, 0, 0}
 };
 
@@ -184,9 +190,11 @@ const char help_str[] =
 	"      Protect EC's I2C bus\n"
 	"  i2cread\n"
 	"      Read I2C bus\n"
+	"  i2cspeed <port> [speed]\n"
+	"      Get or set EC's I2C bus speed\n"
 	"  i2cwrite\n"
 	"      Write I2C bus\n"
-	"  i2cxfer <port> <slave_addr> <read_count> [write bytes...]\n"
+	"  i2cxfer <port> <peripheral_addr> <read_count> [write bytes...]\n"
 	"      Perform I2C transfer on EC's I2C bus\n"
 	"  infopddev <port>\n"
 	"      Get info about USB type-C accessory attached to port\n"
@@ -271,6 +279,8 @@ const char help_str[] =
 	"      Requests that the EC will automatically reboot the AP after a\n"
 	"      configurable number of seconds the next time we enter the G3\n"
 	"      power state.\n"
+	"  rgbkbd ...\n"
+	"      Set/get RGB keyboard status, config, etc..\n"
 	"  rollbackinfo\n"
 	"      Print rollback block information\n"
 	"  rtcget\n"
@@ -303,7 +313,7 @@ const char help_str[] =
 	"  switches\n"
 	"      Prints current EC switch positions\n"
 	"  temps <sensorid>\n"
-	"      Print temperature.\n"
+	"      Print temperature and fan speed\n"
 	"  tempsinfo <sensorid>\n"
 	"      Print temperature sensor info.\n"
 	"  thermalget <platform-specific args>\n"
@@ -335,8 +345,14 @@ const char help_str[] =
 			"[toggle|toggle-off|sink|source] [none|usb|dp|dock] "
 			"[dr_swap|pr_swap|vconn_swap]>\n"
 	"      Control USB PD/type-C [deprecated]\n"
-	"  usbpdmuxinfo\n"
-	"      Get USB-C SS mux info\n"
+	"  usbpddps [enable | disable]\n"
+	"      Enable or disable dynamic pdo selection\n"
+	"  usbpdmuxinfo [tsv]\n"
+	"      Get USB-C SS mux info.\n"
+	"          tsv: Output as tab separated values. Columns are defined "
+			"as:\n"
+	"               Port, USB enabled, DP enabled, Polarity, HPD IRQ, "
+			"HPD LVL\n"
 	"  usbpdpower [port]\n"
 	"      Get USB PD power information\n"
 	"  version\n"
@@ -362,7 +378,7 @@ static const char * const led_names[] = {
 BUILD_ASSERT(ARRAY_SIZE(led_names) == EC_LED_ID_COUNT);
 
 /* ASCII mode for printing, default off */
-static int ascii_mode = 0;
+int ascii_mode;
 
 /* Check SBS numerical value range */
 int is_battery_range(int val)
@@ -387,13 +403,17 @@ int parse_bool(const char *s, int *dest)
 
 void print_help(const char *prog, int print_cmds)
 {
-	printf("Usage: %s [--dev=n] [--interface=dev|i2c|lpc] [--i2c_bus=n]",
+	printf("Usage: %s [--dev=n] "
+	       "[--interface=dev|i2c|lpc] [--i2c_bus=n] [--device=vid:pid] ",
 	       prog);
 	printf("[--name=cros_ec|cros_fp|cros_pd|cros_scp|cros_ish] [--ascii] ");
 	printf("<command> [params]\n\n");
 	printf("  --i2c_bus=n  Specifies the number of an I2C bus to use. For\n"
 	       "               example, to use /dev/i2c-7, pass --i2c_bus=7.\n"
 	       "               Implies --interface=i2c.\n\n");
+	printf("  --interface Specifies the interface.\n\n");
+	printf("  --device    Specifies USB endpoint by vendor ID and product\n"
+	       "              ID (e.g. 18d1:5022).\n\n");
 	if (print_cmds)
 		puts(help_str);
 	else
@@ -858,7 +878,7 @@ static const char * const ec_feature_names[] = {
 	[EC_FEATURE_WIFI_SWITCH] = "Switch wifi on/off",
 	[EC_FEATURE_HOST_EVENTS] = "Host event",
 	[EC_FEATURE_GPIO] = "GPIO",
-	[EC_FEATURE_I2C] = "I2C master",
+	[EC_FEATURE_I2C] = "I2C controller",
 	[EC_FEATURE_CHARGER] = "Charger",
 	[EC_FEATURE_BATTERY] = "Simple Battery",
 	[EC_FEATURE_SMART_BATTERY] = "Smart Battery",
@@ -890,6 +910,7 @@ static const char * const ec_feature_names[] = {
 		"Host-controlled Type-C mode entry",
 	[EC_FEATURE_TYPEC_MUX_REQUIRE_AP_ACK] =
 		"AP ack for Type-C mux configuration",
+	[EC_FEATURE_S4_RESIDENCY] = "S4 residency",
 };
 
 int cmd_inventory(int argc, char *argv[])
@@ -1069,15 +1090,26 @@ int cmd_uptimeinfo(int argc, char *argv[])
 
 int cmd_version(int argc, char *argv[])
 {
-	struct ec_response_get_version r;
+	struct ec_response_get_version_v1 r;
 	char *build_string = (char *)ec_inbuf;
 	int rv;
 
-	rv = ec_command(EC_CMD_GET_VERSION, 0, NULL, 0, &r, sizeof(r));
+	if (ec_cmd_version_supported(EC_CMD_GET_VERSION, 1)) {
+		rv = ec_command(EC_CMD_GET_VERSION, 1, NULL, 0, &r,
+				sizeof(struct ec_response_get_version_v1));
+	} else {
+		/* Fall-back to version 0 if version 1 is not supported */
+		rv = ec_command(EC_CMD_GET_VERSION, 0, NULL, 0, &r,
+				sizeof(struct ec_response_get_version));
+		/* These fields are not supported in version 0, ensure empty */
+		r.cros_fwid_ro[0] = '\0';
+		r.cros_fwid_rw[0] = '\0';
+	}
 	if (rv < 0) {
 		fprintf(stderr, "ERROR: EC_CMD_GET_VERSION failed: %d\n", rv);
 		goto exit;
 	}
+
 	rv = ec_command(EC_CMD_GET_BUILD_INFO, 0,
 			NULL, 0, ec_inbuf, ec_max_insize);
 	if (rv < 0) {
@@ -1085,16 +1117,22 @@ int cmd_version(int argc, char *argv[])
 				rv);
 		goto exit;
 	}
+
 	rv = 0;
 
 	/* Ensure versions are null-terminated before we print them */
 	r.version_string_ro[sizeof(r.version_string_ro) - 1] = '\0';
 	r.version_string_rw[sizeof(r.version_string_rw) - 1] = '\0';
 	build_string[ec_max_insize - 1] = '\0';
-
+	r.cros_fwid_ro[sizeof(r.cros_fwid_ro) - 1] = '\0';
+	r.cros_fwid_rw[sizeof(r.cros_fwid_rw) - 1] = '\0';
 	/* Print versions */
 	printf("RO version:    %s\n", r.version_string_ro);
+	if (strlen(r.cros_fwid_ro))
+		printf("RO cros fwid:  %s\n", r.cros_fwid_ro);
 	printf("RW version:    %s\n", r.version_string_rw);
+	if (strlen(r.cros_fwid_rw))
+		printf("RW cros fwid:  %s\n", r.cros_fwid_rw);
 	printf("Firmware copy: %s\n",
 	       (r.current_image < ARRAY_SIZE(image_names) ?
 		image_names[r.current_image] : "?"));
@@ -1247,6 +1285,101 @@ int cmd_reboot_ap_on_g3(int argc, char *argv[])
 		cmdver = 0;
 
 	rv = ec_command(EC_CMD_REBOOT_AP_ON_G3, cmdver, &p, sizeof(p), NULL, 0);
+	return (rv < 0 ? rv : 0);
+}
+
+static void cmd_rgbkbd_help(char *cmd)
+{
+	fprintf(stderr,
+	"  Usage1: %s <key> <RGB>\n"
+	"          Set the color of <key> to <RGB>.\n"
+	"\n"
+	"  Usage2: %s clear <RGB>\n"
+	"          Set the color of all keys to <RGB>.\n"
+	"\n",
+	cmd, cmd);
+}
+
+static int cmd_rgbkbd_parse_rgb_text(const char *text, struct rgb_s *color)
+{
+	uint32_t rgb;
+	char *e;
+
+	rgb = strtoul(text, &e, 0);
+	if ((e && *e) || rgb > EC_RGBKBD_MAX_RGB_COLOR) {
+		fprintf(stderr, "Invalid color '%s'.\n", text);
+		return -1;
+	}
+	color->r = (rgb >> 16) & 0xff;
+	color->g = (rgb >> 8) & 0xff;
+	color->b = (rgb >> 0) & 0xff;
+
+	return 0;
+}
+
+static int cmd_rgbkbd_set_color(int argc, char *argv[])
+{
+	struct ec_params_rgbkbd_set_color *p;
+	int i, key, outlen;
+	char *e;
+	int rv = -1;
+
+	outlen = sizeof(*p) + sizeof(struct rgb_s) * EC_RGBKBD_MAX_KEY_COUNT;
+	p = malloc(outlen);
+	if (p == NULL)
+		return -1;
+	memset(p, 0, outlen);
+
+	key = strtol(argv[1], &e, 0);
+	if ((e && *e) || key >= EC_RGBKBD_MAX_KEY_COUNT) {
+		fprintf(stderr, "Invalid key ID '%s'.\n", argv[1]);
+		goto out;
+	}
+	p->start_key = key;
+
+	if (argc - 2 > EC_RGBKBD_MAX_KEY_COUNT) {
+		fprintf(stderr, "# of colors exceed max key count.\n");
+		goto out;
+	}
+
+	for (i = 2; i < argc; i++) {
+		if (cmd_rgbkbd_parse_rgb_text(argv[i], &p->color[p->length]))
+			goto out;
+		p->length++;
+	}
+
+	outlen = sizeof(*p) + sizeof(struct rgb_s) * p->length;
+	rv = ec_command(EC_CMD_RGBKBD_SET_COLOR, 0, p, outlen, NULL, 0);
+
+out:
+	free(p);
+
+	return rv;
+}
+
+static int cmd_rgbkbd(int argc, char *argv[])
+{
+	int rv = -1;;
+
+	if (argc < 3) {
+		cmd_rgbkbd_help(argv[0]);
+		return -1;
+	}
+
+	if (argc == 3 && !strcasecmp(argv[1], "clear")) {
+		/* Usage 2 */
+		struct ec_params_rgbkbd p;
+
+		p.subcmd = EC_RGBKBD_SUBCMD_CLEAR;
+		if (cmd_rgbkbd_parse_rgb_text(argv[2], &p.color))
+			return -1;
+
+		rv = ec_command(EC_CMD_RGBKBD, 0, &p, sizeof(p), NULL, 0);
+	} else if (2 < argc) {
+		/* Usage 1 */
+		rv = cmd_rgbkbd_set_color(argc, argv);
+	}
+
 	return (rv < 0 ? rv : 0);
 }
 
@@ -1557,6 +1690,8 @@ static void print_flash_protect_flags(const char *desc, uint32_t flags)
 		printf(" STUCK");
 	if (flags & EC_FLASH_PROTECT_ERROR_INCONSISTENT)
 		printf(" INCONSISTENT");
+	if (flags & EC_FLASH_PROTECT_ERROR_UNKNOWN)
+		printf(" UNKNOWN_ERROR");
 	printf("\n");
 }
 
@@ -2997,12 +3132,51 @@ int read_mapped_temperature(int id)
 	return rv;
 }
 
+static int get_thermal_fan_percent(int temp, int sensor_id)
+{
+	struct ec_params_thermal_get_threshold_v1 p;
+	struct ec_thermal_config r;
+	int rv = 0;
+
+	p.sensor_num = sensor_id;
+	rv = ec_command(EC_CMD_THERMAL_GET_THRESHOLD, 1, &p, sizeof(p),
+			&r, sizeof(r));
+
+	if (rv <= 0 || r.temp_fan_max == r.temp_fan_off)
+		return -1;
+	if (temp < r.temp_fan_off)
+		return 0;
+	if (temp > r.temp_fan_max)
+		return 100;
+	return 100 * (temp - r.temp_fan_off) /
+		     (r.temp_fan_max - r.temp_fan_off);
+}
+
+static int cmd_temperature_print(int id, int mtemp)
+{
+	struct ec_response_temp_sensor_get_info r;
+	struct ec_params_temp_sensor_get_info p;
+	int rc;
+	int temp = mtemp + EC_TEMP_SENSOR_OFFSET;
+
+	p.id = id;
+	rc = ec_command(EC_CMD_TEMP_SENSOR_GET_INFO, 0, &p, sizeof(p),
+			&r, sizeof(r));
+	if (rc < 0)
+		return rc;
+	printf("%-20s  %d K (= %d C) %11d%%\n", r.sensor_name, temp,
+	       K_TO_C(temp), get_thermal_fan_percent(temp, id));
+
+	return 0;
+}
 
 int cmd_temperature(int argc, char *argv[])
 {
-	int rv;
+	int mtemp;
 	int id;
 	char *e;
+	const char header[] = "--sensor name -------- temperature "
+			      "-------- fan speed --\n";
 
 	if (argc != 2) {
 		fprintf(stderr, "Usage: %s <sensorid> | all\n", argv[0]);
@@ -3010,11 +3184,10 @@ int cmd_temperature(int argc, char *argv[])
 	}
 
 	if (strcmp(argv[1], "all") == 0) {
-		for (id = 0;
-		     id < EC_TEMP_SENSOR_ENTRIES + EC_TEMP_SENSOR_B_ENTRIES;
-		     id++) {
-			rv = read_mapped_temperature(id);
-			switch (rv) {
+		fprintf(stdout, header);
+		for (id = 0; id < EC_MAX_TEMP_SENSOR_ENTRIES; id++) {
+			mtemp = read_mapped_temperature(id);
+			switch (mtemp) {
 			case EC_TEMP_SENSOR_NOT_PRESENT:
 				break;
 			case EC_TEMP_SENSOR_ERROR:
@@ -3028,8 +3201,7 @@ int cmd_temperature(int argc, char *argv[])
 					id);
 				break;
 			default:
-				printf("%d: %d K\n", id,
-				       rv + EC_TEMP_SENSOR_OFFSET);
+				cmd_temperature_print(id, mtemp);
 			}
 		}
 		return 0;
@@ -3042,15 +3214,15 @@ int cmd_temperature(int argc, char *argv[])
 	}
 
 	if (id < 0 ||
-	    id >= EC_TEMP_SENSOR_ENTRIES + EC_TEMP_SENSOR_B_ENTRIES) {
+	    id >= EC_MAX_TEMP_SENSOR_ENTRIES) {
 		printf("Sensor ID invalid.\n");
 		return -1;
 	}
 
 	printf("Reading temperature...");
-	rv = read_mapped_temperature(id);
+	mtemp = read_mapped_temperature(id);
 
-	switch (rv) {
+	switch (mtemp) {
 	case EC_TEMP_SENSOR_NOT_PRESENT:
 		printf("Sensor not present\n");
 		return -1;
@@ -3064,8 +3236,9 @@ int cmd_temperature(int argc, char *argv[])
 		fprintf(stderr, "Sensor not calibrated\n");
 		return -1;
 	default:
-		printf("%d K\n", rv + EC_TEMP_SENSOR_OFFSET);
-		return 0;
+		fprintf(stdout, "\n");
+		fprintf(stdout, header);
+		return cmd_temperature_print(id, mtemp);
 	}
 }
 
@@ -3083,9 +3256,7 @@ int cmd_temp_sensor_info(int argc, char *argv[])
 	}
 
 	if (strcmp(argv[1], "all") == 0) {
-		for (p.id = 0;
-		     p.id < EC_TEMP_SENSOR_ENTRIES + EC_TEMP_SENSOR_B_ENTRIES;
-		     p.id++) {
+		for (p.id = 0; p.id < EC_MAX_TEMP_SENSOR_ENTRIES; p.id++) {
 			if (read_mapped_temperature(p.id) ==
 			    EC_TEMP_SENSOR_NOT_PRESENT)
 				continue;
@@ -3207,7 +3378,11 @@ int cmd_thermal_get_threshold_v1(int argc, char *argv[])
 	int i;
 
 	printf("sensor  warn  high  halt   fan_off fan_max   name\n");
-	for (i = 0; i < 99; i++) {	/* number of sensors is unknown */
+	for (i = 0; i < EC_MAX_TEMP_SENSOR_ENTRIES; i++) {
+
+		if (read_mapped_temperature(i) ==
+			EC_TEMP_SENSOR_NOT_PRESENT)
+			continue;
 
 		/* ask for one */
 		p.sensor_num = i;
@@ -5033,7 +5208,7 @@ static int ms_help(const char *cmd)
 		cmd);
 	printf("  %s active                       - print active flag\n", cmd);
 	printf("  %s info NUM                     - print sensor info\n", cmd);
-	printf("  %s ec_rate [RATE_MS]            - set/get sample rate\n",
+	printf("  %s ec_rate NUM [RATE_MS]        - set/get sample rate\n",
 		cmd);
 	printf("  %s odr NUM [ODR [ROUNDUP]]      - set/get sensor ODR\n",
 		cmd);
@@ -5102,7 +5277,6 @@ static int cmd_motionsense(int argc, char **argv)
 		{ "Motion sensing inactive", "0"},
 		{ "Motion sensing active", "1"},
 	};
-
 	/* No motionsense command has more than 7 args. */
 	if (argc > 7)
 		return ms_help(argv[0]);
@@ -5248,6 +5422,9 @@ static int cmd_motionsense(int argc, char **argv)
 		case MOTIONSENSE_CHIP_OPT3001:
 			printf("opt3001\n");
 			break;
+		case MOTIONSENSE_CHIP_CM32183:
+			printf("cm32183\n");
+			break;
 		case MOTIONSENSE_CHIP_BH1730:
 			printf("bh1730\n");
 			break;
@@ -5302,6 +5479,9 @@ static int cmd_motionsense(int argc, char **argv)
 		case MOTIONSENSE_CHIP_BMA422:
 			printf("bma422\n");
 			break;
+		case MOTIONSENSE_CHIP_BMI220:
+			printf("bmi220\n");
+			break;
 		default:
 			printf("unknown\n");
 		}
@@ -5321,14 +5501,18 @@ static int cmd_motionsense(int argc, char **argv)
 		return 0;
 	}
 
-	if (argc < 4 && !strcasecmp(argv[1], "ec_rate")) {
+	if (argc > 2 && !strcasecmp(argv[1], "ec_rate")) {
 		param.cmd = MOTIONSENSE_CMD_EC_RATE;
 		param.ec_rate.data = EC_MOTION_SENSE_NO_VALUE;
-
-		if (argc == 3) {
-			param.ec_rate.data = strtol(argv[2], &e, 0);
+		param.sensor_odr.sensor_num = strtol(argv[2], &e, 0);
+		if (e && *e) {
+			fprintf(stderr, "Bad %s arg.\n", argv[2]);
+			return -1;
+		}
+		if (argc == 4) {
+			param.ec_rate.data = strtol(argv[3], &e, 0);
 			if (e && *e) {
-				fprintf(stderr, "Bad %s arg.\n", argv[2]);
+				fprintf(stderr, "Bad %s arg.\n", argv[3]);
 				return -1;
 			}
 		}
@@ -6281,6 +6465,37 @@ int cmd_usb_pd(int argc, char *argv[])
 	return 0;
 }
 
+int cmd_usb_pd_dps(int argc, char *argv[])
+{
+	struct ec_params_usb_pd_dps_control p;
+	int rv;
+
+	/*
+	 * Set up requested flags.  If no flags were specified, p.mask will
+	 * be 0 and nothing will change.
+	 */
+	if (argc < 1) {
+		fprintf(stderr, "Usage: %s [enable|disable]\n", argv[0]);
+		return -1;
+	}
+
+	if (!strcasecmp(argv[1], "enable")) {
+		p.enable = 1;
+	} else if (!strcasecmp(argv[1], "disable")) {
+		p.enable = 0;
+	} else {
+		fprintf(stderr, "Usage: %s [enable|disable]\n", argv[0]);
+		return -1;
+	}
+
+	rv = ec_command(EC_CMD_USB_PD_DPS_CONTROL, 0,
+			&p, sizeof(p), NULL, 0);
+	if (rv < 0)
+		return rv;
+
+	return 0;
+}
+
 static void print_pd_power_info(struct ec_response_usb_pd_power_info *r)
 {
 	switch (r->role) {
@@ -6353,6 +6568,14 @@ int cmd_usb_pd_mux_info(int argc, char *argv[])
 	struct ec_params_usb_pd_mux_info p;
 	struct ec_response_usb_pd_mux_info r;
 	int num_ports, rv, i;
+	bool tsv = false;
+
+	if (argc == 2 && (strncmp(argv[1], "tsv", 4) == 0)) {
+		tsv = true;
+	} else if (argc >= 2) {
+		fprintf(stderr, "Usage: %s [tsv]\n", argv[0]);
+		return -1;
+	}
 
 	rv = ec_command(EC_CMD_USB_PD_PORTS, 0, NULL, 0,
 			ec_inbuf, ec_max_insize);
@@ -6368,17 +6591,41 @@ int cmd_usb_pd_mux_info(int argc, char *argv[])
 		if (rv < 0)
 			return rv;
 
-		printf("Port %d: ", i);
-		printf("USB=%d ", !!(r.flags & USB_PD_MUX_USB_ENABLED));
-		printf("DP=%d ", !!(r.flags & USB_PD_MUX_DP_ENABLED));
-		printf("POLARITY=%s ", r.flags & USB_PD_MUX_POLARITY_INVERTED ?
-					"INVERTED" : "NORMAL");
-		printf("HPD_IRQ=%d ", !!(r.flags & USB_PD_MUX_HPD_IRQ));
-		printf("HPD_LVL=%d ", !!(r.flags & USB_PD_MUX_HPD_LVL));
-		printf("SAFE=%d ", !!(r.flags & USB_PD_MUX_SAFE_MODE));
-		printf("TBT=%d ", !!(r.flags & USB_PD_MUX_TBT_COMPAT_ENABLED));
-		printf("USB4=%d ", !!(r.flags & USB_PD_MUX_USB4_ENABLED));
-		printf("\n");
+		if (tsv) {
+			/*
+			 * Machine-readable tab-separated values. This set of
+			 * values is append-only. Columns should not be removed
+			 * or repurposed. Update the documentation above if new
+			 * columns are added.
+			 */
+			printf("%d\t", i);
+			printf("%d\t", !!(r.flags & USB_PD_MUX_USB_ENABLED));
+			printf("%d\t", !!(r.flags & USB_PD_MUX_DP_ENABLED));
+			printf("%s\t",
+				r.flags & USB_PD_MUX_POLARITY_INVERTED ?
+							"INVERTED" : "NORMAL");
+			printf("%d\t", !!(r.flags & USB_PD_MUX_HPD_IRQ));
+			printf("%d\n", !!(r.flags & USB_PD_MUX_HPD_LVL));
+		} else {
+			/* Human-readable mux info. */
+			printf("Port %d: ", i);
+			printf("USB=%d ",
+				!!(r.flags & USB_PD_MUX_USB_ENABLED));
+			printf("DP=%d ", !!(r.flags & USB_PD_MUX_DP_ENABLED));
+			printf("POLARITY=%s",
+				r.flags & USB_PD_MUX_POLARITY_INVERTED ?
+							"INVERTED" : "NORMAL");
+			printf("HPD_IRQ=%d ",
+				!!(r.flags & USB_PD_MUX_HPD_IRQ));
+			printf("HPD_LVL=%d ",
+				!!(r.flags & USB_PD_MUX_HPD_LVL));
+			printf("SAFE=%d ", !!(r.flags & USB_PD_MUX_SAFE_MODE));
+			printf("TBT=%d ",
+				!!(r.flags & USB_PD_MUX_TBT_COMPAT_ENABLED));
+			printf("USB4=%d ",
+				!!(r.flags & USB_PD_MUX_USB4_ENABLED));
+			printf("\n");
+		}
 	}
 
 	return 0;
@@ -7031,315 +7278,6 @@ int cmd_wireless(int argc, char *argv[])
 	return 0;
 }
 
-
-int cmd_i2c_protect(int argc, char *argv[])
-{
-	struct ec_params_i2c_passthru_protect p;
-	char *e;
-	int rv;
-
-	if (argc != 2 && (argc != 3 || strcmp(argv[2], "status"))) {
-		fprintf(stderr, "Usage: %s <port> [status]\n",
-				argv[0]);
-		return -1;
-	}
-
-	p.port = strtol(argv[1], &e, 0);
-	if (e && *e) {
-		fprintf(stderr, "Bad port.\n");
-		return -1;
-	}
-
-	if (argc == 3) {
-		struct ec_response_i2c_passthru_protect r;
-
-		p.subcmd = EC_CMD_I2C_PASSTHRU_PROTECT_STATUS;
-
-		rv = ec_command(EC_CMD_I2C_PASSTHRU_PROTECT, 0, &p, sizeof(p),
-				&r, sizeof(r));
-
-		if (rv < 0)
-			return rv;
-
-		printf("I2C port %d: %s (%d)\n", p.port,
-			r.status ? "Protected" : "Unprotected", r.status);
-	} else {
-		p.subcmd = EC_CMD_I2C_PASSTHRU_PROTECT_ENABLE;
-
-		rv = ec_command(EC_CMD_I2C_PASSTHRU_PROTECT, 0, &p, sizeof(p),
-				NULL, 0);
-
-		if (rv < 0)
-			return rv;
-	}
-	return 0;
-}
-
-
-int do_i2c_xfer(unsigned int port, unsigned int addr,
-		uint8_t *write_buf, int write_len,
-		uint8_t **read_buf, int read_len) {
-	struct ec_params_i2c_passthru *p =
-		(struct ec_params_i2c_passthru *)ec_outbuf;
-	struct ec_response_i2c_passthru *r =
-		(struct ec_response_i2c_passthru *)ec_inbuf;
-	struct ec_params_i2c_passthru_msg *msg = p->msg;
-	uint8_t *pdata;
-	int size;
-	int rv;
-
-	p->port = port;
-	p->num_msgs = (read_len != 0) + (write_len != 0);
-
-	size = sizeof(*p) + p->num_msgs * sizeof(*msg);
-	if (size + write_len > ec_max_outsize) {
-		fprintf(stderr, "Params too large for buffer\n");
-		return -1;
-	}
-	if (sizeof(*r) + read_len > ec_max_insize) {
-		fprintf(stderr, "Read length too big for buffer\n");
-		return -1;
-	}
-
-	pdata = (uint8_t *)p + size;
-	if (write_len) {
-		msg->addr_flags = addr;
-		msg->len = write_len;
-
-		memcpy(pdata, write_buf, write_len);
-		msg++;
-	}
-
-	if (read_len) {
-		msg->addr_flags = addr | EC_I2C_FLAG_READ;
-		msg->len = read_len;
-	}
-
-	rv = ec_command(EC_CMD_I2C_PASSTHRU, 0, p, size + write_len,
-			r, sizeof(*r) + read_len);
-	if (rv < 0)
-		return rv;
-
-	/* Parse response */
-	if (r->i2c_status & (EC_I2C_STATUS_NAK | EC_I2C_STATUS_TIMEOUT)) {
-		fprintf(stderr, "Transfer failed with status=0x%x\n",
-			r->i2c_status);
-		return -1;
-	}
-
-	if (rv < sizeof(*r) + read_len) {
-		fprintf(stderr, "Truncated read response\n");
-		return -1;
-	}
-
-	if (read_len)
-		*read_buf = r->data;
-
-	return 0;
-}
-
-static void cmd_i2c_help(void)
-{
-	fprintf(stderr,
-	"  Usage: i2cread <8 | 16> <port> <addr8> <offset>\n"
-	"  Usage: i2cwrite <8 | 16> <port> <addr8> <offset> <data>\n"
-	"  Usage: i2cxfer <port> <addr7> <read_count> [bytes...]\n"
-	"    <port> i2c port number\n"
-	"    <addr8> 8-bit i2c address\n"
-	"    <addr7> 7-bit i2c address\n"
-	"    <offset> offset to read from or write to\n"
-	"    <data> data to write\n"
-	"    <read_count> number of bytes to read\n"
-	"    [bytes ...] data to write\n"
-	);
-
-}
-
-int cmd_i2c_read(int argc, char *argv[])
-{
-	unsigned int port, addr8, addr7;
-	int read_len, write_len;
-	uint8_t write_buf[1];
-	uint8_t *read_buf = NULL;
-	char *e;
-	int rv;
-
-	if (argc != 5) {
-		cmd_i2c_help();
-		return -1;
-	}
-
-	read_len = strtol(argv[1], &e, 0);
-	if ((e && *e) || (read_len != 8 && read_len != 16)) {
-		fprintf(stderr, "Bad read size.\n");
-		return -1;
-	}
-	read_len = read_len / 8;
-
-	port = strtol(argv[2], &e, 0);
-	if (e && *e) {
-		fprintf(stderr, "Bad port.\n");
-		return -1;
-	}
-
-	addr8 = strtol(argv[3], &e, 0);
-	if (e && *e) {
-		fprintf(stderr, "Bad address.\n");
-		return -1;
-	}
-	addr7 = addr8 >> 1;
-
-	write_buf[0] = strtol(argv[4], &e, 0);
-	if (e && *e) {
-		fprintf(stderr, "Bad offset.\n");
-		return -1;
-	}
-	write_len = 1;
-
-	rv = do_i2c_xfer(port, addr7, write_buf, write_len, &read_buf,
-			 read_len);
-
-	if (rv < 0)
-		return rv;
-
-	printf("Read from I2C port %d at 0x%x offset 0x%x = 0x%x\n",
-		port, addr8, write_buf[0], *(uint16_t *)read_buf);
-	return 0;
-}
-
-
-int cmd_i2c_write(int argc, char *argv[])
-{
-	unsigned int port, addr8, addr7;
-	int write_len;
-	uint8_t write_buf[3];
-	char *e;
-	int rv;
-
-	if (argc != 6) {
-		cmd_i2c_help();
-		return -1;
-	}
-
-	write_len = strtol(argv[1], &e, 0);
-	if ((e && *e) || (write_len != 8 && write_len != 16)) {
-		fprintf(stderr, "Bad write size.\n");
-		return -1;
-	}
-	/* Include offset (length 1) */
-	write_len = 1 + write_len / 8;
-
-	port = strtol(argv[2], &e, 0);
-	if (e && *e) {
-		fprintf(stderr, "Bad port.\n");
-		return -1;
-	}
-
-	addr8 = strtol(argv[3], &e, 0);
-	if (e && *e) {
-		fprintf(stderr, "Bad address.\n");
-		return -1;
-	}
-	addr7 = addr8 >> 1;
-
-	write_buf[0] = strtol(argv[4], &e, 0);
-	if (e && *e) {
-		fprintf(stderr, "Bad offset.\n");
-		return -1;
-	}
-
-	*((uint16_t *)&write_buf[1]) = strtol(argv[5], &e, 0);
-	if (e && *e) {
-		fprintf(stderr, "Bad data.\n");
-		return -1;
-	}
-
-	rv = do_i2c_xfer(port, addr7, write_buf, write_len, NULL, 0);
-
-	if (rv < 0)
-		return rv;
-
-	printf("Wrote 0x%x to I2C port %d at 0x%x offset 0x%x.\n",
-	       *((uint16_t *)&write_buf[1]), port, addr8, write_buf[0]);
-	return 0;
-}
-
-int cmd_i2c_xfer(int argc, char *argv[])
-{
-	unsigned int port, addr;
-	int read_len, write_len;
-	uint8_t *write_buf = NULL;
-	uint8_t *read_buf;
-	char *e;
-	int rv, i;
-
-	if (argc < 4) {
-		cmd_i2c_help();
-		return -1;
-	}
-
-	port = strtol(argv[1], &e, 0);
-	if (e && *e) {
-		fprintf(stderr, "Bad port.\n");
-		return -1;
-	}
-
-	addr = strtol(argv[2], &e, 0) & 0x7f;
-	if (e && *e) {
-		fprintf(stderr, "Bad slave address.\n");
-		return -1;
-	}
-
-	read_len = strtol(argv[3], &e, 0);
-	if (e && *e) {
-		fprintf(stderr, "Bad read length.\n");
-		return -1;
-	}
-
-	/* Skip over params to bytes to write */
-	argc -= 4;
-	argv += 4;
-	write_len = argc;
-
-	if (write_len) {
-		write_buf = (uint8_t *)(malloc(write_len));
-		if (write_buf == NULL)
-			return -1;
-		for (i = 0; i < write_len; i++) {
-			write_buf[i] = strtol(argv[i], &e, 0);
-			if (e && *e) {
-				fprintf(stderr, "Bad write byte %d\n", i);
-				free(write_buf);
-				return -1;
-			}
-		}
-	}
-
-	rv = do_i2c_xfer(port, addr, write_buf, write_len, &read_buf, read_len);
-
-	if (write_len)
-		free(write_buf);
-
-	if (rv)
-		return rv;
-
-	if (read_len) {
-		if (ascii_mode) {
-			for (i = 0; i < read_len; i++)
-				printf(isprint(read_buf[i]) ? "%c" : "\\x%02x",
-				       read_buf[i]);
-		} else {
-			printf("Read bytes:");
-			for (i = 0; i < read_len; i++)
-				printf(" %#02x", read_buf[i]);
-		}
-		printf("\n");
-	} else {
-		printf("Write successful.\n");
-	}
-
-	return 0;
-}
 
 static void cmd_locate_chip_help(const char *const cmd)
 {
@@ -8019,6 +7957,7 @@ int cmd_battery(int argc, char *argv[])
 	int rv, val;
 	char *e;
 	int index = 0;
+	uint8_t flags;
 
 	if (argc > 2) {
 		fprintf(stderr, "Usage: %s [index]\n", argv[0]);
@@ -8044,6 +7983,8 @@ int cmd_battery(int argc, char *argv[])
 		fprintf(stderr, "Battery version %d is not supported\n", val);
 		return -1;
 	}
+
+	flags = read_mapped_mem8(EC_MEMMAP_BATT_FLAG);
 
 	printf("Battery info:\n");
 
@@ -8097,15 +8038,15 @@ int cmd_battery(int argc, char *argv[])
 	val = read_mapped_mem32(EC_MEMMAP_BATT_RATE);
 	if (!is_battery_range(val))
 		goto cmd_error;
-	printf("  Present current         %u mA\n", val);
+	printf("  Present current         %u mA%s\n", val,
+	       flags & EC_BATT_FLAG_DISCHARGING ? " (discharging)" : "");
 
 	val = read_mapped_mem32(EC_MEMMAP_BATT_CAP);
 	if (!is_battery_range(val))
 		goto cmd_error;
 	printf("  Remaining capacity      %u mAh\n", val);
 
-	val = read_mapped_mem8(EC_MEMMAP_BATT_FLAG);
-	print_battery_flags(val);
+	print_battery_flags(flags);
 
 	return 0;
 cmd_error:
@@ -9556,25 +9497,46 @@ static int cmd_pchg_wait_event(int port, uint32_t expected)
 static int cmd_pchg_update_open(int port, uint32_t version,
 				uint32_t *block_size, uint32_t *crc)
 {
-	struct ec_params_pchg_update *p =
+	struct ec_params_pchg_update *pu =
 		(struct ec_params_pchg_update *)(ec_outbuf);
 	struct ec_response_pchg_update *r =
 		(struct ec_response_pchg_update *)(ec_inbuf);
+	struct ec_params_pchg p;
+	struct ec_response_pchg_v2 rv2;
 	int rv;
 
 	/* Open session. */
-	p->port = port;
-	p->cmd = EC_PCHG_UPDATE_CMD_OPEN;
-	p->version = version;
-	rv = ec_command(EC_CMD_PCHG_UPDATE, 0, p, sizeof(*p), r, sizeof(*r));
+	pu->port = port;
+	pu->cmd = EC_PCHG_UPDATE_CMD_OPEN;
+	pu->version = version;
+	rv = ec_command(EC_CMD_PCHG_UPDATE, 0, pu, sizeof(*pu), r, sizeof(*r));
 	if (rv < 0) {
 		fprintf(stderr, "\nFailed to open update session: %d\n", rv);
 		return rv;
 	}
 
-	if (r->block_size + sizeof(*p) > ec_max_outsize) {
+	if (r->block_size + sizeof(*pu) > ec_max_outsize) {
 		fprintf(stderr, "\nBlock size (%d) is too large.\n",
 			r->block_size);
+		return -1;
+	}
+
+	rv = cmd_pchg_wait_event(port, EC_MKBP_PCHG_DEVICE_EVENT);
+	if (rv)
+		return rv;
+
+	p.port = port;
+	rv = ec_command(EC_CMD_PCHG, 2, &p, sizeof(p), &rv2, sizeof(rv2));
+	if (rv == -EC_RES_INVALID_VERSION - EECRESULT)
+		/* We can use v2 because it's a superset of v1. */
+		rv = ec_command(EC_CMD_PCHG, 1, &p, sizeof(p),
+				&rv2, sizeof(struct ec_response_pchg));
+	if (rv < 0) {
+		fprintf(stderr, "EC_CMD_PCHG failed: %d\n", rv);
+		return rv;
+	}
+	if (rv2.state != PCHG_STATE_DOWNLOAD) {
+		fprintf(stderr, "Failed to reset to download mode: %d\n", rv);
 		return -1;
 	}
 
@@ -10035,7 +9997,9 @@ int cmd_typec_control(int argc, char *argv[])
 			"    1: Clear events\n"
 			"        args: <event mask>\n"
 			"    2: Enter mode\n"
-			"        args: <0: DP, 1:TBT, 2:USB4>\n",
+			"        args: <0: DP, 1:TBT, 2:USB4>\n"
+			"    3: Set TBT UFP Reply\n"
+			"        args: <0: NAK, 1: ACK>\n",
 			argv[0]);
 		return -1;
 	}
@@ -10078,6 +10042,19 @@ int cmd_typec_control(int argc, char *argv[])
 			return -1;
 		}
 		p.mode_to_enter = conversion_result;
+	case TYPEC_CONTROL_COMMAND_TBT_UFP_REPLY:
+		if (argc < 4) {
+			fprintf(stderr, "Missing reply\n");
+			return -1;
+		}
+
+		conversion_result = strtol(argv[3], &endptr, 0);
+		if ((endptr && *endptr) || conversion_result > UINT8_MAX ||
+						conversion_result < 0) {
+			fprintf(stderr, "Bad reply\n");
+			return -1;
+		}
+		p.tbt_ufp_reply = conversion_result;
 	}
 
 	rv = ec_command(EC_CMD_TYPEC_CONTROL, 0, &p, sizeof(p),
@@ -10733,6 +10710,7 @@ const struct command commands[] = {
 	{"locatechip", cmd_locate_chip},
 	{"i2cprotect", cmd_i2c_protect},
 	{"i2cread", cmd_i2c_read},
+	{"i2cspeed", cmd_i2c_speed},
 	{"i2cwrite", cmd_i2c_write},
 	{"i2cxfer", cmd_i2c_xfer},
 	{"infopddev", cmd_pd_device_info},
@@ -10775,6 +10753,7 @@ const struct command commands[] = {
 	{"rand", cmd_rand},
 	{"readtest", cmd_read_test},
 	{"reboot_ec", cmd_reboot_ec},
+	{"rgbkbd", cmd_rgbkbd},
 	{"rollbackinfo", cmd_rollback_info},
 	{"rtcget", cmd_rtc_get},
 	{"rtcgetalarm", cmd_rtc_get_alarm},
@@ -10806,6 +10785,7 @@ const struct command commands[] = {
 	{"usbchargemode", cmd_usb_charge_set_mode},
 	{"usbmux", cmd_usb_mux},
 	{"usbpd", cmd_usb_pd},
+	{"usbpddps", cmd_usb_pd_dps},
 	{"usbpdmuxinfo", cmd_usb_pd_mux_info},
 	{"usbpdpower", cmd_usb_pd_power},
 	{"version", cmd_version},
@@ -10822,6 +10802,7 @@ int main(int argc, char *argv[])
 	int interfaces = COMM_ALL;
 	int i2c_bus = -1;
 	char device_name[41] = CROS_EC_DEV_NAME;
+	uint16_t vid = USB_VID_GOOGLE, pid = USB_PID_HAMMER;
 	int rv = 1;
 	int parse_error = 0;
 	char *e;
@@ -10855,6 +10836,14 @@ int main(int argc, char *argv[])
 				interfaces = COMM_SERVO;
 			} else {
 				fprintf(stderr, "Invalid --interface\n");
+				parse_error = 1;
+			}
+			break;
+		case OPT_DEVICE:
+			if (parse_vidpid(optarg, &vid, &pid)) {
+				interfaces = COMM_USB;
+			} else {
+				fprintf(stderr, "Invalid --device\n");
 				parse_error = 1;
 			}
 			break;
@@ -10918,7 +10907,12 @@ int main(int argc, char *argv[])
 			fprintf(stderr, "Could not acquire GEC lock.\n");
 			exit(1);
 		}
-		if (comm_init_alt(interfaces, device_name, i2c_bus)) {
+		if (interfaces == COMM_USB) {
+			if (comm_init_usb(vid, pid)) {
+				fprintf(stderr, "Couldn't find EC on USB.\n");
+				goto out;
+			}
+		} else if (comm_init_alt(interfaces, device_name, i2c_bus)) {
 			fprintf(stderr, "Couldn't find EC\n");
 			goto out;
 		}
@@ -10943,5 +10937,9 @@ int main(int argc, char *argv[])
 
 out:
 	release_gec_lock();
+
+	if (interfaces == COMM_USB)
+		comm_usb_exit();
+
 	return !!rv;
 }

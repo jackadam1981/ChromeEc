@@ -8,6 +8,7 @@
 #include "console.h"
 #include "cros_board_info.h"
 #include "fw_config.h"
+#include "gpio.h"
 
 #define CPRINTS(format, args...) cprints(CC_CHIPSET, format, ## args)
 
@@ -26,6 +27,32 @@ static const union taeko_cbi_fw_config fw_config_defaults = {
 /****************************************************************************
  * Taeko FW_CONFIG access
  */
+static void determine_storage(void)
+{
+	const bool has_nvme = fw_config.nvme_status == NVME_ENABLED;
+	const bool has_emmc = fw_config.emmc_status == EMMC_ENABLED;
+
+	/*
+	 * If both masks are enabled or disabled, read the EMMC_SKU_DET pin
+	 * (should happen only in the factory).
+	 */
+	if (has_nvme == has_emmc) {
+		/* 0 = eMMC SKU, 1 = NVMe SKU */
+		if (gpio_get_level(GPIO_EMMC_SKU_DET)) {
+			CPRINTS("CBI: Detected NVMe SKU, disabling eMMC");
+			fw_config.emmc_status = EMMC_DISABLED;
+			fw_config.nvme_status = NVME_ENABLED;
+		} else {
+			CPRINTS("CBI: Detected eMMC SKU, disabling NVMe");
+			fw_config.nvme_status = NVME_DISABLED;
+			fw_config.emmc_status = EMMC_ENABLED;
+		}
+	}
+
+	cbi_set_board_info(CBI_TAG_FW_CONFIG, (uint8_t *)&fw_config,
+			   sizeof(fw_config));
+}
+
 void board_init_fw_config(void)
 {
 	if (cbi_get_fw_config(&fw_config.raw_value)) {
@@ -35,18 +62,18 @@ void board_init_fw_config(void)
 
 	if (get_board_id() == 0) {
 		/*
-		 * Early boards have a zero'd out FW_CONFIG, so replace
-		 * it with a sensible default value. If DB_USB_ABSENT2
-		 * was used as an alternate encoding of DB_USB_ABSENT to
-		 * avoid the zero check, then fix it.
+		 * Early boards doesn't have correct FW_CONFIG, so replace
+		 * it with a sensible default value.
 		 */
-		if (fw_config.raw_value == 0) {
-			CPRINTS("CBI: FW_CONFIG is zero, using board defaults");
+		CPRINTS("CBI: Using board defaults for early board");
+		if (ec_cfg_has_tabletmode()) {
 			fw_config = fw_config_defaults;
-		} else if (fw_config.usb_db == DB_USB_ABSENT2) {
-			fw_config.usb_db = DB_USB_ABSENT;
-		}
+			fw_config.tabletmode = TABLETMODE_ENABLED;
+		} else
+			fw_config = fw_config_defaults;
 	}
+
+	determine_storage();
 }
 
 union taeko_cbi_fw_config get_fw_config(void)
@@ -57,4 +84,19 @@ union taeko_cbi_fw_config get_fw_config(void)
 enum ec_cfg_usb_db_type ec_cfg_usb_db_type(void)
 {
 	return fw_config.usb_db;
+}
+
+bool ec_cfg_has_keyboard_backlight(void)
+{
+	return (fw_config.kb_bl == KEYBOARD_BACKLIGHT_ENABLED);
+}
+
+bool ec_cfg_has_tabletmode(void)
+{
+	return (fw_config.tabletmode == TABLETMODE_ENABLED);
+}
+
+bool ec_cfg_has_keyboard_number_pad(void)
+{
+	return (fw_config.kbnumpad == KEYBOARD_NUMBER_PAD);
 }

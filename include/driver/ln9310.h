@@ -8,6 +8,9 @@
 #ifndef __CROS_EC_LN9310_H
 #define __CROS_EC_LN9310_H
 
+#include "common.h"
+#include "gpio_signal.h"
+
 /* I2C address */
 #define LN9310_I2C_ADDR_0_FLAGS		0x72
 #define LN9310_I2C_ADDR_1_FLAGS		0x73
@@ -208,8 +211,12 @@ struct ln9310_config_t {
 /* Configuration struct defined at board level */
 extern const struct ln9310_config_t ln9310_config;
 
-/* Init the driver */
-void ln9310_init(void);
+/**
+ * @brief Init the driver
+ *
+ * @return EC_SUCCESS when initialization was complete.
+ */
+int ln9310_init(void);
 
 /* Enable/disable the ln9310 output */
 void ln9310_software_enable(int enable);
@@ -228,5 +235,10 @@ enum battery_cell_type {
 };
 
 enum battery_cell_type board_get_battery_cell_type(void);
+
+/**
+ *  @brief Resets LN9310 Driver State
+ */
+__test_only void ln9310_reset_to_initial_state(void);
 
 #endif /* __CROS_EC_LN9310_H */

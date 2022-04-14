@@ -11,6 +11,7 @@
 #include "driver/tcpm/rt1718s.h"
 #include "driver/tcpm/tcpci.h"
 #include "driver/tcpm/tcpm.h"
+#include "gpio.h"
 #include "stdint.h"
 #include "system.h"
 #include "task.h"
@@ -25,26 +26,42 @@
 #define RT1718S_SW_RESET_DELAY_MS 2
 
 /* i2c_write function which won't wake TCPC from low power mode. */
-int rt1718s_write8(int port, int reg, int val)
+static int rt1718s_write(int port, int reg, int val, int len)
 {
 	if (reg > 0xFF) {
 		return i2c_write_offset16(
 			tcpc_config[port].i2c_info.port,
 			tcpc_config[port].i2c_info.addr_flags,
-			reg, val, 1);
+			reg, val, len);
+	} else if (len == 1) {
+		return tcpc_write(port, reg, val);
+	} else {
+		return tcpc_write16(port, reg, val);
 	}
-	return tcpc_write(port, reg, val);
 }
 
-int rt1718s_read8(int port, int reg, int *val)
+static int rt1718s_read(int port, int reg, int *val, int len)
 {
 	if (reg > 0xFF) {
 		return i2c_read_offset16(
 			tcpc_config[port].i2c_info.port,
 			tcpc_config[port].i2c_info.addr_flags,
-			reg, val, 1);
+			reg, val, len);
+	} else if (len == 1) {
+		return tcpc_read(port, reg, val);
+	} else {
+		return tcpc_read16(port, reg, val);
 	}
-	return tcpc_read(port, reg, val);
+}
+
+int rt1718s_write8(int port, int reg, int val)
+{
+	return rt1718s_write(port, reg, val, 1);
+}
+
+int rt1718s_read8(int port, int reg, int *val)
+{
+	return rt1718s_read(port, reg, val, 1);
 }
 
 int rt1718s_update_bits8(int port, int reg, int mask, int val)
@@ -61,7 +78,18 @@ int rt1718s_update_bits8(int port, int reg, int mask, int val)
 	return rt1718s_write8(port, reg, reg_val);
 }
 
-static int rt1718s_sw_reset(int port)
+int rt1718s_write16(int port, int reg, int val)
+{
+	return rt1718s_write(port, reg, val, 2);
+}
+
+int rt1718s_read16(int port, int reg, int *val)
+{
+	return rt1718s_read(port, reg, val, 2);
+}
+
+
+int rt1718s_sw_reset(int port)
 {
 	int rv;
 
@@ -149,8 +177,38 @@ static int rt1718s_bc12_init(int port)
 	/* Disable sink wait vbus */
 	RETURN_ERROR(rt1718s_set_bc12_sink_wait_vbus(port, false));
 
-	/* Disable bc 1.2 sink function */
-	RETURN_ERROR(rt1718s_enable_bc12_sink(port, false));
+	return EC_SUCCESS;
+}
+
+static int rt1718s_workaround(int port)
+{
+	int device_id;
+
+	RETURN_ERROR(tcpc_read16(port, RT1718S_DEVICE_ID, &device_id));
+
+	switch (device_id) {
+	case RT1718S_DEVICE_ID_ES1:
+		RETURN_ERROR(rt1718s_update_bits8(port, RT1718S_VCONN_CONTROL_3,
+					RT1718S_VCONN_CONTROL_3_VCONN_OVP_DEG,
+					0xFF));
+		/* fallthrough */
+	case RT1718S_DEVICE_ID_ES2:
+		RETURN_ERROR(rt1718s_update_bits8(port, TCPC_REG_FAULT_CTRL,
+					TCPC_REG_FAULT_CTRL_VBUS_OCP_FAULT_DIS,
+					0xFF));
+		RETURN_ERROR(rt1718s_update_bits8(port, RT1718S_VCON_CTRL4,
+					RT1718S_VCON_CTRL4_UVP_CP_EN |
+					RT1718S_VCON_CTRL4_OVP_CP_EN,
+					0));
+		RETURN_ERROR(rt1718s_update_bits8(port, RT1718S_VCONN_CONTROL_2,
+					RT1718S_VCONN_CONTROL_2_OVP_EN_CC1 |
+					RT1718S_VCONN_CONTROL_2_OVP_EN_CC2,
+					0xFF));
+		break;
+	default:
+		/* do nothing */
+		break;
+	}
 
 	return EC_SUCCESS;
 }
@@ -163,14 +221,6 @@ static int rt1718s_init(int port)
 		RETURN_ERROR(rt1718s_sw_reset(port));
 		need_sw_reset = false;
 	}
-
-	if (IS_ENABLED(CONFIG_USB_PD_FRS_TCPC))
-		/* Set vbus frs low unmasked, Rx frs unmasked */
-		RETURN_ERROR(rt1718s_update_bits8(port, RT1718S_RT_MASK1,
-					RT1718S_RT_MASK1_M_VBUS_FRS_LOW |
-					RT1718S_RT_MASK1_M_RX_FRS,
-					0xFF));
-
 
 	RETURN_ERROR(rt1718s_bc12_init(port));
 
@@ -194,6 +244,7 @@ static int rt1718s_init(int port)
 
 	RETURN_ERROR(tcpci_tcpm_init(port));
 
+	RETURN_ERROR(rt1718s_workaround(port));
 	/*
 	 * Set vendor defined alert unmasked, this must be done after
 	 * tcpci_tcpm_init.
@@ -201,6 +252,11 @@ static int rt1718s_init(int port)
 	RETURN_ERROR(tcpc_update16(port, TCPC_REG_ALERT_MASK,
 				TCPC_REG_ALERT_MASK_VENDOR_DEF,
 				MASK_SET));
+
+	if (IS_ENABLED(CONFIG_USB_PD_FRS_TCPC))
+		/* Set Rx frs unmasked */
+		RETURN_ERROR(rt1718s_update_bits8(port, RT1718S_RT_MASK1,
+					 RT1718S_RT_MASK1_M_RX_FRS, 0xFF));
 
 	RETURN_ERROR(board_rt1718s_init(port));
 
@@ -251,7 +307,9 @@ static void rt1718s_update_charge_manager(int port,
 	static enum charge_supplier current_bc12_type = CHARGE_SUPPLIER_NONE;
 
 	if (new_bc12_type != current_bc12_type) {
-		charge_manager_update_charge(current_bc12_type, port, NULL);
+		if (current_bc12_type != CHARGE_SUPPLIER_NONE)
+			charge_manager_update_charge(current_bc12_type, port,
+							NULL);
 
 		if (new_bc12_type != CHARGE_SUPPLIER_NONE) {
 			struct charge_port_info chg = {
@@ -272,20 +330,30 @@ static void rt1718s_bc12_usb_charger_task(const int port)
 
 	while (1) {
 		uint32_t evt = task_wait_event(-1);
+		bool is_non_pd_sink = !pd_capable(port) &&
+			!usb_charger_port_is_sourcing_vbus(port) &&
+			pd_check_vbus_level(port, VBUS_PRESENT);
 
-		if (evt & USB_CHG_EVENT_DR_UFP)
-			rt1718s_enable_bc12_sink(port, true);
+		if (evt & USB_CHG_EVENT_VBUS) {
 
-		if ((evt & USB_CHG_EVENT_DR_DFP) ||
-		    (evt & USB_CHG_EVENT_CC_OPEN)) {
-			rt1718s_update_charge_manager(
-					port, CHARGE_SUPPLIER_NONE);
+			if (is_non_pd_sink)
+				rt1718s_enable_bc12_sink(port, true);
+			else
+				rt1718s_update_charge_manager(
+						port, CHARGE_SUPPLIER_NONE);
 		}
 
 		/* detection done, update charge_manager and stop detection */
 		if (evt & USB_CHG_EVENT_BC12) {
+			int type;
+
+			if (is_non_pd_sink)
+				type = rt1718s_get_bc12_type(port);
+			else
+				type = CHARGE_SUPPLIER_NONE;
+
 			rt1718s_update_charge_manager(
-					port, rt1718s_get_bc12_type(port));
+					port, type);
 			rt1718s_enable_bc12_sink(port, false);
 		}
 	}
@@ -294,6 +362,26 @@ static void rt1718s_bc12_usb_charger_task(const int port)
 void rt1718s_vendor_defined_alert(int port)
 {
 	int rv, value;
+
+	if (IS_ENABLED(CONFIG_USB_PD_FRS)) {
+		int int1;
+
+		rv = rt1718s_read8(port, RT1718S_RT_INT1, &int1);
+		if (rv)
+			return;
+		rv = rt1718s_write8(port, RT1718S_RT_INT1, int1);
+		if (rv)
+			return;
+
+		if ((int1 & RT1718S_RT_INT1_INT_RX_FRS)) {
+			pd_got_frs_signal(port);
+
+			tcpc_write16(port, TCPC_REG_ALERT,
+					TCPC_REG_ALERT_VENDOR_DEF);
+			/* ignore other interrupts for faster frs handling */
+			return;
+		}
+	}
 
 	/* Process BC12 alert */
 	rv = rt1718s_read8(port, RT1718S_RT_INT6, &value);
@@ -309,6 +397,36 @@ void rt1718s_vendor_defined_alert(int port)
 	if (value & RT1718S_RT_INT6_INT_BC12_SNK_DONE)
 		task_set_event(USB_CHG_PORT_TO_TASK_ID(port),
 			       USB_CHG_EVENT_BC12);
+
+	/* clear the alerts from rt1718s_workaround() */
+	rv = rt1718s_write8(port, RT1718S_RT_INT2, 0xFF);
+	if (rv)
+		return;
+	/* ES1 workaround: disable Vconn discharge */
+	rv = rt1718s_update_bits8(port, RT1718S_SYS_CTRL2,
+			RT1718S_SYS_CTRL2_VCONN_DISCHARGE_EN,
+			0);
+	if (rv)
+		return;
+
+	tcpc_write16(port, TCPC_REG_ALERT, TCPC_REG_ALERT_VENDOR_DEF);
+}
+
+__overridable int board_rt1718s_set_snk_enable(int port, int enable)
+{
+	return EC_SUCCESS;
+}
+
+
+static int rt1718s_tcpm_set_snk_ctrl(int port, int enable)
+{
+	int rv;
+
+	rv = board_rt1718s_set_snk_enable(port, enable);
+	if (rv)
+		return rv;
+
+	return tcpci_tcpm_set_snk_ctrl(port, enable);
 }
 
 static void rt1718s_alert(int port)
@@ -318,9 +436,12 @@ static void rt1718s_alert(int port)
 	tcpc_read16(port, TCPC_REG_ALERT, &alert);
 	if (alert & TCPC_REG_ALERT_VENDOR_DEF)
 		rt1718s_vendor_defined_alert(port);
-	tcpci_tcpc_alert(port);
+
+	if (alert & ~TCPC_REG_ALERT_VENDOR_DEF)
+		tcpci_tcpc_alert(port);
 }
 
+#ifdef CONFIG_USB_PD_TCPC_LOW_POWER
 static int rt1718s_enter_low_power_mode(int port)
 {
 	/* enter low power mode */
@@ -334,6 +455,153 @@ static int rt1718s_enter_low_power_mode(int port)
 
 	return tcpci_enter_low_power_mode(port);
 }
+#endif
+
+int rt1718s_get_adc(int port, enum rt1718s_adc_channel channel, int *adc_val)
+{
+	static mutex_t adc_lock;
+	int rv;
+	const int max_wait_times = 30;
+
+	if (in_interrupt_context()) {
+		CPRINTS("Err: use ADC in IRQ");
+		return EC_ERROR_INVAL;
+	}
+
+	mutex_lock(&adc_lock);
+
+	/* Start ADC conversation */
+	rv = rt1718s_write16(port, RT1718S_ADC_CTRL_01, BIT(channel));
+	if (rv)
+		goto out;
+
+	/*
+	 * The expected conversion time is 85.3us * number of enabled channels.
+	 * Polling for 3ms should be long enough.
+	 */
+	for (int i = 0; i < max_wait_times; i++) {
+		int adc_done;
+
+		usleep(100);
+		rv = rt1718s_read8(port, RT1718S_RT_INT6, &adc_done);
+		if (rv)
+			goto out;
+		if (adc_done & RT1718S_RT_INT6_INT_ADC_DONE)
+			break;
+		if (i == max_wait_times - 1) {
+			CPRINTS("conversion fail channel=%d", channel);
+			rv = EC_ERROR_TIMEOUT;
+			goto out;
+		}
+	}
+
+	/* Read ADC data */
+	rv = rt1718s_read16(port, RT1718S_ADC_CHX_VOL_L(channel), adc_val);
+	if (rv)
+		goto out;
+
+	/*
+	 * The resolution of VBUS1 ADC is 12.5mV,
+	 * other channels are 4mV.
+	 */
+	if (channel == RT1718S_ADC_VBUS1)
+		*adc_val = *adc_val * 125 / 10;
+	else
+		*adc_val *= 4;
+
+out:
+	/* Cleanup: disable adc and clear interrupt. Error ignored. */
+	rt1718s_write16(port, RT1718S_ADC_CTRL_01, 0);
+	rt1718s_write8(port, RT1718S_RT_INT6, RT1718S_RT_INT6_INT_ADC_DONE);
+
+	mutex_unlock(&adc_lock);
+	return rv;
+}
+
+#ifdef CONFIG_USB_PD_FRS_TCPC
+int rt1718s_set_frs_enable_tcpc(int port, int enable)
+{
+	/*
+	 * Use write instead of update to save 2 i2c read.
+	 * Assume other bits are at their reset value.
+	 */
+	int frs_ctrl2 = 0x10, vbus_ctrl_en = 0x3F;
+
+	if (enable) {
+		frs_ctrl2 |= RT1718S_FRS_CTRL2_RX_FRS_EN;
+		frs_ctrl2 |= RT1718S_FRS_CTRL2_VBUS_FRS_EN;
+
+		vbus_ctrl_en |= RT1718S_VBUS_CTRL_EN_GPIO2_VBUS_PATH_EN;
+		vbus_ctrl_en |= RT1718S_VBUS_CTRL_EN_GPIO1_VBUS_PATH_EN;
+	}
+
+	RETURN_ERROR(rt1718s_write8(port, RT1718S_FRS_CTRL2, frs_ctrl2));
+	RETURN_ERROR(rt1718s_write8(port, RT1718S_VBUS_CTRL_EN, vbus_ctrl_en));
+	return EC_SUCCESS;
+}
+#endif
+
+void rt1718s_gpio_set_flags(int port, enum rt1718s_gpio signal, uint32_t flags)
+{
+	int val = 0;
+
+	if (!(flags & GPIO_OPEN_DRAIN))
+		val |= RT1718S_GPIO_CTRL_OD_N;
+	if (flags & GPIO_PULL_UP)
+		val |= RT1718S_GPIO_CTRL_PU;
+	if (flags & GPIO_PULL_DOWN)
+		val |= RT1718S_GPIO_CTRL_PD;
+	if (flags & GPIO_HIGH)
+		val |= RT1718S_GPIO_CTRL_O;
+	if (flags & GPIO_OUTPUT)
+		val |= RT1718S_GPIO_CTRL_OE;
+
+	rt1718s_write8(port, RT1718S_GPIO_CTRL(signal), val);
+}
+
+void rt1718s_gpio_set_level(int port, enum rt1718s_gpio signal, int value)
+{
+	rt1718s_update_bits8(port, RT1718S_GPIO_CTRL(signal),
+			RT1718S_GPIO_CTRL_O,
+			value ? 0xFF : 0);
+}
+
+int rt1718s_gpio_get_level(int port, enum rt1718s_gpio signal)
+{
+	int val;
+
+	rt1718s_read8(port, RT1718S_GPIO_CTRL(signal), &val);
+	return !!(val & RT1718S_GPIO_CTRL_I);
+}
+
+static int command_rt1718s_gpio(int argc, char **argv)
+{
+	int i, j;
+	uint32_t flags;
+
+	for (i = 0; i < board_get_usb_pd_port_count(); i++) {
+
+		if (tcpc_config[i].drv != &rt1718s_tcpm_drv)
+			continue;
+
+		for (j = 0; j < RT1718S_GPIO_COUNT; j++) {
+			int rv;
+
+			rv = rt1718s_read8(i, RT1718S_GPIO_CTRL(j), &flags);
+			if (rv)
+				return EC_ERROR_UNKNOWN;
+
+			ccprintf("C%d GPIO%d OD=%d PU=%d PD=%d OE=%d HL=%d\n",
+				 i, j+1, !(flags & RT1718S_GPIO_CTRL_OD_N),
+				 !!(flags & RT1718S_GPIO_CTRL_PU),
+				 !!(flags & RT1718S_GPIO_CTRL_PD),
+				 !!(flags & RT1718S_GPIO_CTRL_OE),
+				 !!(flags & RT1718S_GPIO_CTRL_O));
+		}
+	}
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(rt1718s_gpio, command_rt1718s_gpio, "", "RT1718S GPIO");
 
 /* RT1718S is a TCPCI compatible port controller */
 const struct tcpm_drv rt1718s_tcpm_drv = {
@@ -354,7 +622,7 @@ const struct tcpm_drv rt1718s_tcpm_drv = {
 	.set_rx_enable		= &tcpci_tcpm_set_rx_enable,
 	.get_message_raw	= &tcpci_tcpm_get_message_raw,
 	.transmit		= &tcpci_tcpm_transmit,
-	.tcpc_alert		= &tcpci_tcpc_alert,
+	.tcpc_alert		= &rt1718s_alert,
 #ifdef CONFIG_USB_PD_DISCHARGE_TCPC
 	.tcpc_discharge_vbus	= &tcpci_tcpc_discharge_vbus,
 #endif
@@ -363,11 +631,14 @@ const struct tcpm_drv rt1718s_tcpm_drv = {
 #endif
 	.get_chip_info		= &tcpci_get_chip_info,
 #ifdef CONFIG_USB_PD_PPC
-	.set_snk_ctrl		= &tcpci_tcpm_set_snk_ctrl,
+	.set_snk_ctrl		= &rt1718s_tcpm_set_snk_ctrl,
 	.set_src_ctrl		= &tcpci_tcpm_set_src_ctrl,
 #endif
 #ifdef CONFIG_USB_PD_TCPC_LOW_POWER
 	.enter_low_power_mode	= &rt1718s_enter_low_power_mode,
+#endif
+#ifdef CONFIG_USB_PD_FRS_TCPC
+	.set_frs_enable		= &rt1718s_set_frs_enable_tcpc,
 #endif
 };
 

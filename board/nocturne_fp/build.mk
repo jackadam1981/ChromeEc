@@ -9,8 +9,12 @@ CHIP:=stm32
 CHIP_FAMILY:=stm32h7
 CHIP_VARIANT:=stm32h7x3
 
+# Don't forget that the board build.mk is included more than once to allow
+# conditional variables to be realized. This means that we need to redefine all
+# variable or the "+=" lines will compound.
+board-y=
 board-rw=ro_workarounds.o board_rw.o
-board-y=board.o
+board-ro=board_ro.o
 # If we're mocking the sensor detection for testing (so we can test
 # sensor/transport permutations in the unit tests), don't build the real sensor
 # detection.
@@ -25,6 +29,7 @@ test-list-y=\
        aes \
        cec \
        compile_time_macros \
+       cortexm_fpu \
        crc \
        flash_physical \
        flash_write_protect \
@@ -32,6 +37,7 @@ test-list-y=\
        fpsensor_hw \
        mpu \
        mutex \
+       panic_data \
        pingpong \
        printf \
        queue \
@@ -43,6 +49,11 @@ test-list-y=\
        sha256 \
        sha256_unrolled \
        static_if \
+       system_is_locked \
        timer_dos \
        utils \
        utils_str \
+
+# Note that this variable includes the trailing "/"
+_nocturne_fp_cur_dir:=$(dir $(lastword $(MAKEFILE_LIST)))
+-include $(_nocturne_fp_cur_dir)../../private/board/nocturne_fp/build.mk

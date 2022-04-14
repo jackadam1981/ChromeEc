@@ -10,16 +10,8 @@
 
 #include "compile_time_macros.h"
 
-/*
- * Early primus boards are not set up for vivaldi
- */
-#undef CONFIG_KEYBOARD_VIVALDI
-
 /* Baseboard features */
 #include "baseboard.h"
-
-#define CONFIG_BRINGUP
-#define CONFIG_SYSTEM_UNLOCKED
 
 /*
  * This will happen automatically on NPCX9 ES2 and later. Do not remove
@@ -39,6 +31,7 @@
 #define CONFIG_USB_PORT_POWER_DUMB
 
 /* USB Type C and USB PD defines */
+#define CONFIG_USB_PD_REQUIRE_AP_MODE_ENTRY
 
 #undef  CONFIG_USB_PD_TCPM_NCT38XX
 #define CONFIG_USB_PD_TCPM_RT1715
@@ -54,8 +47,8 @@
  * Passive USB-C cables only support up to 60W.
  */
 #define PD_OPERATING_POWER_MW	15000
-#define PD_MAX_POWER_MW		60000
-#define PD_MAX_CURRENT_MA	3000
+#define PD_MAX_POWER_MW		65000
+#define PD_MAX_CURRENT_MA	3250
 #define PD_MAX_VOLTAGE_MV	20000
 
 /*
@@ -76,6 +69,7 @@
 #define GPIO_PCH_RTCRST			GPIO_EC_PCH_RTCRST
 #define GPIO_PCH_SLP_S0_L		GPIO_SYS_SLP_S0IX_L
 #define GPIO_PCH_SLP_S3_L		GPIO_SLP_S3_L
+#define GPIO_TEMP_SENSOR_POWER		GPIO_SEQ_EC_DSW_PWROK
 
 /*
  * GPIO_EC_PCH_INT_ODL is used for MKBP events as well as a PCH wakeup
@@ -86,7 +80,6 @@
 #define GPIO_PG_EC_DSW_PWROK		GPIO_SEQ_EC_DSW_PWROK
 #define GPIO_PG_EC_RSMRST_ODL		GPIO_SEQ_EC_RSMRST_ODL
 #define GPIO_POWER_BUTTON_L		GPIO_GSC_EC_PWR_BTN_ODL
-#define GPIO_RSMRST_L_PGOOD		GPIO_SEQ_EC_RSMRST_ODL
 #define GPIO_SYS_RESET_L		GPIO_SYS_RST_ODL
 #define GPIO_WP_L			GPIO_EC_WP_ODL
 
@@ -94,6 +87,9 @@
 
 /* System has back-lit keyboard */
 #define CONFIG_PWM_KBLIGHT
+
+/* Keyboard features */
+#define CONFIG_KEYBOARD_REFRESH_ROW3
 
 /* I2C Bus Configuration */
 
@@ -127,25 +123,45 @@
 /* Thermal features */
 #define CONFIG_THERMISTOR
 #define CONFIG_TEMP_SENSOR
-#define CONFIG_TEMP_SENSOR_POWER_GPIO	GPIO_SEQ_EC_DSW_PWROK
+#define CONFIG_TEMP_SENSOR_POWER
 #define CONFIG_STEINHART_HART_3V3_30K9_47K_4050B
 
-/*
- * TODO: no fan control loop until sensors are tuned
- */
-/* #define CONFIG_FANS			FAN_CH_COUNT */
+/* LED */
+#define CONFIG_BATTERY_LEVEL_NEAR_FULL 91
+
+/* Fan features */
+#define CONFIG_CUSTOM_FAN_CONTROL
+#define CONFIG_FANS			FAN_CH_COUNT
+#define RPM_DEVIATION	1
 
 /* Charger defines */
 #define CONFIG_CHARGER_BQ25720
+#define CONFIG_CHARGER_BQ25720_VSYS_TH2_CUSTOM
 #define CONFIG_CHARGER_BQ25720_VSYS_TH2_DV	70
 #define CONFIG_CHARGE_RAMP_SW
-#define CONFIG_CHARGER_SENSE_RESISTOR		10
-#define CONFIG_CHARGER_SENSE_RESISTOR_AC	10
+#define CONFIG_CHARGER_BQ25710_SENSE_RESISTOR		10
+#define CONFIG_CHARGER_BQ25710_SENSE_RESISTOR_AC	10
+
+/* PROCHOT defines */
+#define BATT_MAX_CONTINUE_DISCHARGE_WATT    66
+
+/* Prochot assertion/deassertion ratios*/
+#define PROCHOT_ADAPTER_WATT_RATIO 97
+#define PROCHOT_ASSERTION_BATTERY_RATIO 95
+#define PROCHOT_DEASSERTION_BATTERY_RATIO 85
+#define PROCHOT_ASSERTION_PD_RATIO 105
+#define PROCHOT_DEASSERTION_PD_RATIO 100
+#define PROCHOT_DEASSERTION_PD_BATTERY_RATIO 95
+#define PROCHOT_ASSERTION_ADAPTER_RATIO 105
+#define PROCHOT_DEASSERTION_ADAPTER_RATIO 100
+#define PROCHOT_DEASSERTION_ADAPTER_BATT_RATIO 90
 
 /* PS2 defines */
 #define CONFIG_8042_AUX
 #define CONFIG_PS2
 #define CONFIG_CMD_PS2
+#define PRIMUS_PS2_CH		NPCX_PS2_CH1
+
 /* Button */
 #undef CONFIG_VOLUME_BUTTONS
 
@@ -161,6 +177,7 @@ enum adc_channel {
 	ADC_TEMP_SENSOR_3_CHARGER,
 	ADC_TEMP_SENSOR_4_MEMORY,
 	ADC_TEMP_SENSOR_5_USBC,
+	ADC_IADPT,
 	ADC_CH_COUNT
 };
 
@@ -183,8 +200,9 @@ enum sensor_id {
 };
 
 enum battery_type {
-	BATTERY_POWER_TECH,
-	BATTERY_LGC011,
+	BATTERY_SUNWODA,
+	BATTERY_SMP,
+	BATTERY_CELXPERT,
 	BATTERY_TYPE_COUNT
 };
 

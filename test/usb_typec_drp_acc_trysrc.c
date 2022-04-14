@@ -703,7 +703,7 @@ __maybe_unused static int test_auto_toggle_delay(void)
 	 */
 	task_wait_event(SECOND);
 	TEST_GT(mock_tcpc.first_call_to_enable_auto_toggle - time,
-		15ul * MSEC, "%lu");
+		(uint64_t)15 * MSEC, "%" PRIu64);
 
 	return EC_SUCCESS;
 }
@@ -733,7 +733,7 @@ __maybe_unused static int test_auto_toggle_delay_early_connect(void)
 	/* Ensure the auto toggle enable was never called */
 	task_wait_event(SECOND);
 	TEST_EQ(mock_tcpc.first_call_to_enable_auto_toggle,
-		TIMER_DISABLED, "%lu");
+		TIMER_DISABLED, "%" PRIu64);
 
 	/* Ensure that the first CC set call was to Rd. */
 	TEST_GT(cc_pull_count, 0, "%d");
@@ -778,6 +778,25 @@ __maybe_unused static int test_typec_dis_as_src(void)
 
 	/* We are in Unattached.SNK. Verify Vbus has been removed */
 	TEST_EQ(mock_get_vbus_enabled(0), false, "%d");
+
+	return EC_SUCCESS;
+}
+
+__maybe_unused static int test_wake_tcpc_toggle_change(void)
+{
+	/* Start with auto toggle disabled */
+	pd_set_dual_role(PORT0, PD_DRP_TOGGLE_OFF);
+	task_wait_event(SECOND);
+
+	/* TCPC should be asleep */
+	TEST_EQ(mock_tcpc.lpm_wake_requested, false, "%d");
+
+	/* Enabled auto toggle */
+	pd_set_dual_role(PORT0, PD_DRP_TOGGLE_ON);
+	task_wait_event(FUDGE);
+
+	/* Ensure TCPC was woken */
+	TEST_EQ(mock_tcpc.lpm_wake_requested, true, "%d");
 
 	return EC_SUCCESS;
 }
@@ -832,6 +851,8 @@ void run_test(int argc, char **argv)
 	RUN_TEST(test_cc_rd_on_por_reset);
 	RUN_TEST(test_auto_toggle_delay);
 	RUN_TEST(test_auto_toggle_delay_early_connect);
+
+	RUN_TEST(test_wake_tcpc_toggle_change);
 
 	/* Do basic state machine validity checks last. */
 	RUN_TEST(test_tc_no_parent_cycles);

@@ -186,7 +186,7 @@ DECLARE_HOOK(HOOK_CHIPSET_RESET, handle_chipset_reset, HOOK_PRIO_FIRST);
 #endif /* CONFIG_POWER_TRACK_HOST_SLEEP_STATE */
 
 /* If chipset needs to be reset, EC also reboots to RO. */
-void chipset_reset(enum chipset_reset_reason reason)
+void chipset_reset(enum chipset_shutdown_reason reason)
 {
 	int flags = SYSTEM_RESET_HARD;
 
@@ -570,13 +570,19 @@ enum power_state power_handle_state(enum power_state state)
 		}
 
 		return POWER_G3;
+
+	default:
+		CPRINTS("Unexpected power state %d", state);
+		ASSERT(0);
+		break;
 	}
 
 	return state;
 }
 
 #ifdef CONFIG_POWER_TRACK_HOST_SLEEP_STATE
-static void suspend_hang_detected(void)
+__override void power_chipset_handle_sleep_hang(
+		enum sleep_hang_type hang_type)
 {
 	CPRINTS("Warning: Detected sleep hang! Waking host up!");
 	host_set_single_event(EC_HOST_EVENT_HANG_DETECT);
@@ -595,7 +601,7 @@ __override void power_chipset_handle_host_sleep_event(
 		 * notification needs to be sent to listeners.
 		 */
 		sleep_set_notify(SLEEP_NOTIFY_SUSPEND);
-		sleep_start_suspend(ctx, suspend_hang_detected);
+		sleep_start_suspend(ctx);
 
 	} else if (state == HOST_SLEEP_EVENT_S3_RESUME) {
 		/*

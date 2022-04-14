@@ -6,7 +6,6 @@
 /* Fluffy configuration */
 
 #include "adc.h"
-#include "adc_chip.h"
 #include "common.h"
 #include "console.h"
 #include "ec_version.h"
@@ -262,7 +261,7 @@ static void set_mux(enum usb_mux mux, uint8_t val)
 		break;
 
 	default:
-		break;
+		return;
 	}
 
 	val &= 0x7;

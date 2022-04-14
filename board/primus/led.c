@@ -171,20 +171,35 @@ static void suspend_led_update(void)
 {
 	while (1) {
 		tick++;
-		if (chipset_in_state(CHIPSET_STATE_ON))
+
+		/* HOOK_CHIPSET_SUSPEND will be called when POWER_S0S0ix,
+		 * if we are not transitioning to suspend, we should break here.
+		 */
+		if (!chipset_in_or_transitioning_to_state(
+			CHIPSET_STATE_ANY_SUSPEND))
 			break;
 
 		/* 1s gradual on, 1s gradual off, 3s off */
 		if (tick <= TICKS_STEP2_DIMMER) {
-			/* increase 5 duty every 50ms until PWM=100 */
-			/* enter here 20 times, total duartion is 1sec */
+			/* increase 5 duty every 50ms until PWM=100
+			 * enter here 20 times, total duartion is 1sec
+			 * A-cover and power button led are shared same
+			 * behavior.
+			 */
 			pwm_set_duty(PWM_CH_TKP_A_LED_N,
+				tick * LED_BAT_S3_PWM_RESCALE);
+			pwm_set_duty(PWM_CH_LED4,
 				tick * LED_BAT_S3_PWM_RESCALE);
 			msleep(LED_BAT_S3_TICK_MS);
 		} else if (tick <= TICKS_STEP3_OFF) {
-			/* decrease 5 duty every 50ms until PWM=0 */
-			/* enter here 20 times, total duartion is 1sec */
+			/* decrease 5 duty every 50ms until PWM=0
+			 * enter here 20 times, total duartion is 1sec
+			 * A-cover and power button led are shared same
+			 * behavior.
+			 */
 			pwm_set_duty(PWM_CH_TKP_A_LED_N, (TICKS_STEP3_OFF
+				- tick) * LED_BAT_S3_PWM_RESCALE);
+			pwm_set_duty(PWM_CH_LED4, (TICKS_STEP3_OFF
 				- tick) * LED_BAT_S3_PWM_RESCALE);
 			msleep(LED_BAT_S3_TICK_MS);
 		} else {

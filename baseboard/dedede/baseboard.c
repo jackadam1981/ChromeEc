@@ -12,13 +12,19 @@
 #include "charger/sm5803.h"
 #include "chipset.h"
 #include "common.h"
+#include "console.h"
 #include "extpower.h"
 #include "gpio.h"
 #include "hooks.h"
 #include "host_command.h"
+#include "power/icelake.h"
 #include "power/intel_x86.h"
 #include "system.h"
 #include "usb_pd.h"
+
+/* Console output macros */
+#define CPRINTF(format, args...) cprintf(CC_SYSTEM, format, ## args)
+#define CPRINTS(format, args...) cprints(CC_SYSTEM, format, ## args)
 
 /******************************************************************************/
 /*
@@ -117,7 +123,7 @@ __override void board_check_extpower(void)
 	last_extpower_present = extpower_present;
 }
 
-uint32_t pp3300_a_pgood;
+atomic_t pp3300_a_pgood;
 __override int intel_x86_get_pg_ec_dsw_pwrok(void)
 {
 	/*
@@ -126,6 +132,19 @@ __override int intel_x86_get_pg_ec_dsw_pwrok(void)
 	 * read the ADC values during an interrupt, therefore, this power good
 	 * value is updated via ADC threshold interrupts.
 	 */
+	if (chipset_in_or_transitioning_to_state(CHIPSET_STATE_ANY_SUSPEND)) {
+		/*
+		 * The ADC interrupts are disabled in suspend for PP3000_A,
+		 * therefore this value may be stale. Assume that the PGOOD
+		 * follows the enable signal for this case only.
+		 */
+		if (!gpio_get_level(GPIO_EN_PP3300_A)) {
+			CPRINTS("EN_PP3300_A is low, assuming PG is low!");
+			atomic_clear(&pp3300_a_pgood);
+		} else {
+			atomic_or(&pp3300_a_pgood, 1);
+		}
+	}
 	return pp3300_a_pgood;
 }
 
@@ -154,7 +173,7 @@ static void baseboard_prepare_power_signals(void)
 
 	/* Restore pull-up on PG_PP1050_ST_OD */
 	if (system_jumped_to_this_image() &&
-					gpio_get_level(GPIO_RSMRST_L_PGOOD))
+					gpio_get_level(GPIO_PG_EC_RSMRST_ODL))
 		board_after_rsmrst(1);
 }
 DECLARE_HOOK(HOOK_INIT, baseboard_prepare_power_signals, HOOK_PRIO_FIRST);
@@ -184,10 +203,10 @@ __override int power_signal_get_level(enum gpio_signal signal)
 	if (signal == GPIO_PG_EC_ALL_SYS_PWRGD)
 		return intel_x86_get_pg_ec_all_sys_pwrgd();
 
-	if (IS_ENABLED(CONFIG_HOSTCMD_ESPI)) {
+	if (IS_ENABLED(CONFIG_HOST_INTERFACE_ESPI)) {
 		/* Check signal is from GPIOs or VWs */
 		if (espi_signal_is_vw(signal))
-			return espi_vw_get_wire(signal);
+			return espi_vw_get_wire((enum espi_vw_signal)signal);
 	}
 	return gpio_get_level(signal);
 

@@ -5,7 +5,9 @@
 
 #include "battery.h"
 #include "button.h"
+#include "charge_manager.h"
 #include "charge_ramp.h"
+#include "charge_state_v2.h"
 #include "charger.h"
 #include "common.h"
 #include "compile_time_macros.h"
@@ -26,6 +28,8 @@
 #include "tablet_mode.h"
 #include "throttle_ap.h"
 #include "usbc_config.h"
+#include "keyboard_raw.h"
+#include "keyboard_scan.h"
 
 #include "gpio_list.h" /* Must come after other header files. */
 
@@ -48,15 +52,36 @@ __override void board_cbi_init(void)
 	config_usb_db_type();
 }
 
+void board_init(void)
+{
+	if (!ec_cfg_has_tabletmode()) {
+		/* applies only to clamshell devices */
+		gpio_set_flags(GPIO_VOLUME_DOWN_L, GPIO_INPUT | GPIO_PULL_DOWN);
+		gpio_set_flags(GPIO_VOLUME_UP_L, GPIO_INPUT | GPIO_PULL_DOWN);
+		button_disable_gpio(BUTTON_VOLUME_UP);
+		button_disable_gpio(BUTTON_VOLUME_DOWN);
+	}
+	if (!ec_cfg_has_keyboard_number_pad()) {
+		/* Disable scanning KSO13 and 14 if keypad isn't present. */
+		keyboard_raw_set_cols(KEYBOARD_COLS_NO_KEYPAD);
+	} else {
+		/* Setting scan mask KSO11, KSO12, KSO13 and KSO14 */
+		keyscan_config.actual_key_mask[11] = 0xfe;
+		keyscan_config.actual_key_mask[12] = 0xff;
+		keyscan_config.actual_key_mask[13] = 0xff;
+		keyscan_config.actual_key_mask[14] = 0xff;
+	}
+}
+DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
+
 /* Called on AP S3 -> S0 transition */
 static void board_chipset_resume(void)
 {
 	/* Allow keyboard backlight to be enabled */
-
-	if (get_board_id() == 1)
-		gpio_set_level(GPIO_ID_1_EC_KB_BL_EN, 1);
-	else
+	if (ec_cfg_has_keyboard_backlight() == 1) {
+		/* GPIO_EC_KB_BL_EN_L is low active pin */
 		gpio_set_level(GPIO_EC_KB_BL_EN_L, 0);
+	}
 }
 DECLARE_HOOK(HOOK_CHIPSET_RESUME, board_chipset_resume, HOOK_PRIO_DEFAULT);
 
@@ -64,11 +89,10 @@ DECLARE_HOOK(HOOK_CHIPSET_RESUME, board_chipset_resume, HOOK_PRIO_DEFAULT);
 static void board_chipset_suspend(void)
 {
 	/* Turn off the keyboard backlight if it's on. */
-
-	if (get_board_id() == 1)
-		gpio_set_level(GPIO_ID_1_EC_KB_BL_EN, 0);
-	else
+	if (ec_cfg_has_keyboard_backlight() == 1) {
+		/* GPIO_EC_KB_BL_EN_L is low active pin */
 		gpio_set_level(GPIO_EC_KB_BL_EN_L, 1);
+	}
 }
 DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, board_chipset_suspend, HOOK_PRIO_DEFAULT);
 
@@ -108,58 +132,20 @@ int board_is_vbus_too_low(int port, enum chg_ramp_vbus_state ramp_state)
 
 enum battery_present battery_hw_present(void)
 {
-	enum gpio_signal batt_pres;
-
-	if (get_board_id() == 1)
-		batt_pres = GPIO_ID_1_EC_BATT_PRES_ODL;
-	else
-		batt_pres = GPIO_EC_BATT_PRES_ODL;
-
 	/* The GPIO is low when the battery is physically present */
-	return gpio_get_level(batt_pres) ? BP_NO : BP_YES;
+	return gpio_get_level(GPIO_EC_BATT_PRES_ODL) ? BP_NO : BP_YES;
 }
 
-/*
- * Explicitly apply the board ID 1 *gpio.inc settings to pins that
- * were reassigned on current boards.
- */
-
-static void set_board_id_1_gpios(void)
+__override void board_set_charge_limit(int port, int supplier, int charge_ma,
+			    int max_ma, int charge_mv)
 {
-	if (get_board_id() != 1)
-		return;
-
-	gpio_set_flags(GPIO_ID_1_EC_KB_BL_EN, GPIO_OUT_LOW);
-}
-DECLARE_HOOK(HOOK_INIT, set_board_id_1_gpios, HOOK_PRIO_FIRST);
-
-/*
- * Reclaim GPIO pins on board ID 1 that are used as ADC inputs on
- * current boards. ALT function group MODULE_ADC pins are set in
- * HOOK_PRIO_INIT_ADC and can be reclaimed right after the hook runs.
- */
-
-static void board_id_1_reclaim_adc(void)
-{
-	if (get_board_id() != 1)
-		return;
-
 	/*
-	 * GPIO_ID_1_USB_C0_C2_TCPC_RST_ODL is on GPIO34
-	 *
-	 * The TCPC has already been reset by board_tcpc_init() executed
-	 * from HOOK_PRIO_INIT_CHIPSET. Later, the pin gets set to ADC6
-	 * in HOOK_PRIO_INIT_ADC, so we simply need to set the pin back
-	 * to GPIO34.
+	 * Follow OEM request to limit the input current to
+	 * 95% negotiated limit.
 	 */
-	gpio_set_flags(GPIO_ID_1_USB_C0_C2_TCPC_RST_ODL, GPIO_ODR_HIGH);
-	gpio_set_alternate_function(GPIO_PORT_3, BIT(4), GPIO_ALT_FUNC_NONE);
+	charge_ma = charge_ma * 95 / 100;
 
-	/*
-	 * The pin gets set to ADC7 in HOOK_PRIO_INIT_ADC, so we simply
-	 * need to set it back to GPIOE1.
-	 */
-	gpio_set_flags(GPIO_ID_1_EC_BATT_PRES_ODL, GPIO_INPUT);
-	gpio_set_alternate_function(GPIO_PORT_E, BIT(1), GPIO_ALT_FUNC_NONE);
+	charge_set_input_current_limit(MAX(charge_ma,
+					CONFIG_CHARGER_INPUT_CURRENT),
+					charge_mv);
 }
-DECLARE_HOOK(HOOK_INIT, board_id_1_reclaim_adc, HOOK_PRIO_INIT_ADC + 1);

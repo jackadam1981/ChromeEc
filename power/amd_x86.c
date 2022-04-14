@@ -30,6 +30,23 @@
 
 static int forcing_shutdown; /* Forced shutdown in progress? */
 
+#ifdef CONFIG_POWERSEQ_FAKE_CONTROL
+/* Create fake power states through forcing the SoC SLP signal sequencing */
+void power_fake_s0(void)
+{
+	/* Change the SLP signals to output and drive them */
+	gpio_set_flags(GPIO_PCH_SLP_S5_L, GPIO_OUT_HIGH);
+	gpio_set_flags(GPIO_PCH_SLP_S3_L, GPIO_OUT_HIGH);
+}
+
+void power_fake_disable(void)
+{
+	/* Pins back to inputs */
+	gpio_set_flags(GPIO_PCH_SLP_S5_L, GPIO_INPUT);
+	gpio_set_flags(GPIO_PCH_SLP_S3_L, GPIO_INPUT);
+}
+#endif /* defined(CONFIG_POWERSEQ_FAKE_CONTROL) */
+
 void chipset_force_shutdown(enum chipset_shutdown_reason reason)
 {
 	CPRINTS("%s()", __func__);
@@ -47,7 +64,7 @@ static void chipset_force_g3(void)
 	gpio_set_level(GPIO_EN_PWR_A, 0);
 }
 
-void chipset_reset(enum chipset_reset_reason reason)
+void chipset_reset(enum chipset_shutdown_reason reason)
 {
 	CPRINTS("%s: %d", __func__, reason);
 
@@ -214,7 +231,8 @@ static void lpc_s0ix_resume_restore_masks(void)
 	backup_sci_mask = backup_smi_mask = 0;
 }
 
-static void lpc_s0ix_hang_detected(void)
+__override void power_chipset_handle_sleep_hang(
+		enum sleep_hang_type hang_type)
 {
 	/*
 	 * Wake up the AP so they don't just chill in a non-suspended state and
@@ -233,13 +251,6 @@ static void lpc_s0ix_hang_detected(void)
 	CPRINTS("Warning: Detected sleep hang! Waking host up!");
 	host_set_single_event(EC_HOST_EVENT_HANG_DETECT);
 }
-
-static void handle_chipset_suspend(void)
-{
-	/* Clear masks before any hooks are run for suspend. */
-	lpc_s0ix_suspend_clear_masks();
-}
-DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, handle_chipset_suspend, HOOK_PRIO_FIRST);
 
 static void handle_chipset_reset(void)
 {
@@ -278,13 +289,18 @@ __override void power_chipset_handle_host_sleep_event(
 #ifdef CONFIG_POWER_S0IX
 	if (state == HOST_SLEEP_EVENT_S0IX_SUSPEND) {
 		/*
+		 * Clear event mask for SMI and SCI first to avoid host being
+		 * interrupted while suspending.
+		 */
+		lpc_s0ix_suspend_clear_masks();
+		/*
 		 * Indicate to power state machine that a new host event for
 		 * s0ix/s3 suspend has been received and so chipset suspend
 		 * notification needs to be sent to listeners.
 		 */
 		sleep_set_notify(SLEEP_NOTIFY_SUSPEND);
 
-		sleep_start_suspend(ctx, lpc_s0ix_hang_detected);
+		sleep_start_suspend(ctx);
 		power_signal_enable_interrupt(GPIO_PCH_SLP_S0_L);
 	} else if (state == HOST_SLEEP_EVENT_S0IX_RESUME) {
 		/*

@@ -15,6 +15,9 @@
 #include "builtin/assert.h"         /* For ASSERT(). */
 #include <stdbool.h>
 #include <stddef.h>
+#ifdef CONFIG_ZEPHYR
+#include <sys/util.h>
+#endif
 
 #ifdef __cplusplus
 extern "C" {
@@ -45,6 +48,9 @@ extern "C" {
 #define NULL ((void *)0)
 #endif
 
+/* Returns true if string is not null and not empty */
+#define IS_NONEMPTY_STRING(s) ((s) && (s)[0])
+
 /**
  * Ensure that value `v` is between `min` and `max`.
  *
@@ -70,7 +76,9 @@ extern "C" {
 #define POWER_OF_TWO(x) ((x) && !((x) & ((x) - 1)))
 
 /* Macro to check if the value is in range */
-#define IN_RANGE(x, min, max) ((x) >= (min) && (x) < (max))
+#ifndef CONFIG_ZEPHYR
+#define IN_RANGE(x, min, max) ((x) >= (min) && (x) <= (max))
+#endif
 
 /*
  * macros for integer division with various rounding variants
@@ -123,6 +131,12 @@ void *memchr(const void *buffer, int c, size_t n);
  * @return	Pointer to the located substring or NULL if not found.
  */
 char *strstr(const char *s1, const char *s2);
+
+/**
+ * Calculates the length of the initial segment of s which consists
+ * entirely of bytes not in reject.
+ */
+size_t strcspn(const char *s, const char *reject);
 
 size_t strlen(const char *s);
 char *strncpy(char *dest, const char *src, size_t n);
@@ -336,7 +350,7 @@ void wait_for_ready(volatile uint32_t *reg, uint32_t enable, uint32_t ready);
  * the normal ternary system order (skipping the values that were already used
  * up).
  *
- * This function is useful for converting BOARd ID, which is initially used a
+ * This function is useful for converting BOARD ID, which is initially used a
  * binary and later decided to switch to tri-state after some revisions have
  * already been built.
  *
@@ -358,6 +372,25 @@ void wait_for_ready(volatile uint32_t *reg, uint32_t enable, uint32_t ready);
  * @return Number in the binary-first ternary number system.
  */
 int binary_first_base3_from_bits(int *bits, int nbits);
+
+/**
+ * Convert the binary bit array to integer value.
+ *
+ * @param bits    array of integers with values of 0 and 1
+ * @param nbits   number of bits to decode
+ * @return        integer decoded from bits
+ */
+int binary_from_bits(int *bits, int nbits);
+
+/**
+ * Convert the ternary bit array to integer value.
+ * This function is used to handle 'Z' state of gpio as value of '2'.
+ *
+ * @param bits    array of integers with values of 0, 1 or 2
+ * @param nbits   number of bits to decode
+ * @return        integer decoded from bits
+ */
+int ternary_from_bits(int *bits, int nbits);
 
 #ifdef __cplusplus
 }

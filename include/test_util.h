@@ -256,6 +256,9 @@ uint32_t test_get_state(void);
  */
 void test_clean_up(void);
 
+/* Set the next step */
+void test_set_next_step(enum test_state_t step);
+
 /* Set the next step and reboot */
 void test_reboot_to_next_step(enum test_state_t step);
 
@@ -399,17 +402,6 @@ struct unit_test {
 };
 
 /**
- * @brief void(*)(void) function that does nothing.
- *
- * This function should be used for setup or teardown when no work is required.
- * Note that before_test() and after_test() will still be run to maintain
- * compatibility.
- */
-static inline void unit_test_noop(void)
-{
-}
-
-/**
  * Create a unit test for a given function name with provided setup/teardown
  * functions.
  *
@@ -433,7 +425,7 @@ static inline void unit_test_noop(void)
  * @see ztest_unit_test_setup_teardown
  */
 #define ztest_unit_test(fn) \
-	ztest_unit_test_setup_teardown(fn, unit_test_noop, unit_test_noop)
+	ztest_unit_test_setup_teardown(fn, before_test, after_test)
 
 /**
  * @brief Create a test suite

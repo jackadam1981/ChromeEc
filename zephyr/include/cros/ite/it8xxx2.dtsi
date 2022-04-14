@@ -4,8 +4,18 @@
  */
 
 #include <cros/binman.dtsi>
+#include <it8xxx2.dtsi>
 
 / {
+	chosen {
+		cros-ec,bbram = &bbram;
+		cros-ec,espi = &espi0;
+		cros-ec,flash = &flash0;
+		cros-ec,flash-controller = &fiu0;
+		cros-ec,raw-kb = &cros_kb_raw;
+		cros-ec,watchdog = &twd0;
+	};
+
 	named-bbram-regions {
 		compatible = "named-bbram-regions";
 
@@ -56,6 +66,10 @@
 			label = "SHI";
 			interrupts = <171 0>;
 			interrupt-parent = <&intc>;
+			pinctrl-0 = <&pinctrl_shi_mosi  /* GPM0 */
+				     &pinctrl_shi_miso  /* GPM1 */
+				     &pinctrl_shi_clk   /* GPM4 */
+				     &pinctrl_shi_cs>;  /* GPM5 */
 		};
 
 		fiu0: cros-flash@80000000 {
@@ -63,17 +77,34 @@
 			reg = <0x80000000 0x100000>;
 			label = "FLASH";
 		};
+
+		cros_kb_raw: cros-kb-raw@f01d00 {
+			compatible = "ite,it8xxx2-cros-kb-raw";
+			reg = <0x00f01d00 0x29>;
+			label = "CROS_KB_RAW_0";
+			interrupt-parent = <&intc>;
+			interrupts = <13 IRQ_TYPE_LEVEL_HIGH>;
+			wucctrl = <&wuc_wu30   /* KSI[0] */
+				   &wuc_wu31   /* KSI[1] */
+				   &wuc_wu32   /* KSI[2] */
+				   &wuc_wu33   /* KSI[3] */
+				   &wuc_wu34   /* KSI[4] */
+				   &wuc_wu35   /* KSI[5] */
+				   &wuc_wu36   /* KSI[6] */
+				   &wuc_wu37>; /* KSI[7] */
+			status = "disabled";
+		};
 	};
 
-	/* it8xxx2 has 1MB of flash */
+	/* it8xxx2 has 1MB of flash. currently, we use 768KB from flash. */
 	binman {
 		wp-ro {
 			offset = <0x0>;
-			size = <0x80000>;
+			size = <0x60000>;
 		};
 		ec-rw {
-			offset = <0x80000>;
-			size = <0x80000>;
+			offset = <0x60000>;
+			size = <0x60000>;
 		};
 	};
 };
