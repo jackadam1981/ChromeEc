@@ -55,6 +55,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e1902168_9903dc48",
+        "filename": "board/moli/board.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1428319
+      },
+      "writtenOn": "2022-04-14T18:09:17Z",
+      "side": 1,
+      "message": "Moli\u0027s rear type A ports only support a fixed current (~1055 ma).",
+      "range": {
+        "startLine": 117,
+        "startChar": 29,
+        "endLine": 117,
+        "endChar": 33
+      },
+      "revId": "7df0c90ab3751112a496b5af1e260ad6d8e64bf5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ca1238a_34e3d9bd",
+        "filename": "board/moli/board.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1428319
+      },
+      "writtenOn": "2022-04-14T18:09:17Z",
+      "side": 1,
+      "message": "Since the load switch U4012 is shared for both HDMI ports this should be set higher (~1200 ma).",
+      "range": {
+        "startLine": 119,
+        "startChar": 29,
+        "endLine": 119,
+        "endChar": 32
+      },
+      "revId": "7df0c90ab3751112a496b5af1e260ad6d8e64bf5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bab779d6_99e141d2",
         "filename": "board/moli/board.c",
         "patchSetId": 13
@@ -66,6 +112,52 @@
       "writtenOn": "2022-04-09T05:46:26Z",
       "side": 1,
       "message": "Do you check if this is true for Moli? Please don\u0027t copy it directly from the brask because the moli design is not the same as Brask.",
+      "revId": "7df0c90ab3751112a496b5af1e260ad6d8e64bf5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fdb62fc3_58348eba",
+        "filename": "board/moli/board.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1428319
+      },
+      "writtenOn": "2022-04-14T18:09:17Z",
+      "side": 1,
+      "message": "Note that this should be changed to \"rear_ports\" for A3 and A4. This was just corrected on Brask as well.",
+      "range": {
+        "startLine": 157,
+        "startChar": 2,
+        "endLine": 157,
+        "endChar": 13
+      },
+      "revId": "7df0c90ab3751112a496b5af1e260ad6d8e64bf5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55ce7ff0_d3e90a6f",
+        "filename": "board/moli/board.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1428319
+      },
+      "writtenOn": "2022-04-14T18:09:17Z",
+      "side": 1,
+      "message": "Note that this should be changed to \"rear_ports\" for A3 and A4. This was just corrected on Brask as well.",
+      "range": {
+        "startLine": 161,
+        "startChar": 2,
+        "endLine": 161,
+        "endChar": 13
+      },
       "revId": "7df0c90ab3751112a496b5af1e260ad6d8e64bf5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
