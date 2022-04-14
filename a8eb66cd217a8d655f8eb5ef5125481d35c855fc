@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c172952_d602b6c7",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 2466,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-04-14T22:58:31Z",
+      "side": 1,
+      "message": "It looks like the maximum value for `CONFIG_DEDICATED_CHARGE_PORT_COUNT` for any board in the legacy code is 1.\n\nFurthermore, for the platforms that are using a dedicated charge port, most are setting `DEDICATED_CHARGE_PORT \u003d\u003d CONFIG_USB_PD_PORT_MAX_COUNT`.\n\nI think a better approach is to create `CONFIG_PLATFORM_EC_DEDICATED_CHARGE_PORT` as a boolean config.\n\nThen in this file, do the following assignment:\n```\n#undef CONFIG_DEDICATED_CHARGE_PORT_COUNT\n#ifdef CONFIG_PLATFORM_EC_DEDICATED_CHARGE_PORT\n#define CONFIG_DEDICATED_CHARGE_PORT_COUNT\n#define DEDICATED_CHARGE_PORT  CONFIG_USB_PD_PORT_MAX_COUNT\n#endif\n```\n\nYou can reference bug b:229308304 which I created to track if more than one dedicated charge port needs support.",
+      "range": {
+        "startLine": 2466,
+        "startChar": 8,
+        "endLine": 2466,
+        "endChar": 42
+      },
+      "revId": "a8eb66cd217a8d655f8eb5ef5125481d35c855fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
