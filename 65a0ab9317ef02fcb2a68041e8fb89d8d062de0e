@@ -16,6 +16,24 @@
       "message": "Hi yu-an.chen\n\nThanks for submitting the patch. I see lots if similarities between is31fl3733b.c and is31fl3743b.c (as expected). What do you think of combining them?",
       "revId": "65a0ab9317ef02fcb2a68041e8fb89d8d062de0e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7feefa30_f261dbb1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1384576
+      },
+      "writtenOn": "2022-04-14T01:50:45Z",
+      "side": 1,
+      "message": "Hi Daisuke\nLooks that there are not many parts that can be directly shared between them, such as, although the Configuration Register shares the address 0x00, but the bit defined have a lot different, This means we maybe need to use a lot of #if to separate the two registers and code?",
+      "parentUuid": "5695b230_088da21f",
+      "revId": "65a0ab9317ef02fcb2a68041e8fb89d8d062de0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
