@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "11e2e178_b302777e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-04-14T19:28:31Z",
+      "side": 1,
+      "message": "please separate the common code vs. board specific\nchanges into separate patches.",
+      "revId": "0948bb8040c65435fcaa11b2c201f87fd6672e18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0dba299d_decf8ec9",
         "filename": "include/config.h",
         "patchSetId": 1
