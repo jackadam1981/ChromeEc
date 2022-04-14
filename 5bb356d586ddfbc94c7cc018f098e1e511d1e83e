@@ -316,6 +316,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "726c52ea_0ae52dce",
+        "filename": "zephyr/projects/intelrvp/adlrvp/adlrvp_npcx/fan.dts",
+        "patchSetId": 8
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2022-04-14T03:25:37Z",
+      "side": 1,
+      "message": "@Bernardo Do you also see an issue on the ADC reading?\n@Rajesh In the ITE　MICA card with ADL RVP, what is the EC kernel it runs?\nIs it Zephyr kernel or original CROS EC kernel?\nAlso, I left my comments in the CL:3519878 for zephyr/projects/intelrvp/adlrvp/adlrvp_npcx/temp_sensor.dts",
+      "parentUuid": "eaf6b3e3_bef761f6",
+      "range": {
+        "startLine": 25,
+        "startChar": 1,
+        "endLine": 29,
+        "endChar": 34
+      },
+      "revId": "5bb356d586ddfbc94c7cc018f098e1e511d1e83e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4c287a92_4d8d9985",
