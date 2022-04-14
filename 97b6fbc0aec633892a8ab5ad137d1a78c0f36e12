@@ -16,6 +16,24 @@
       "message": "I read through this only briefly and the general content looks great.  But does this belong in the upstream Zephyr documentation?  I don\u0027t see anything in here that is Chromebook EC specific.",
       "revId": "97b6fbc0aec633892a8ab5ad137d1a78c0f36e12",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e64097e7_f7a63a93",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2022-04-14T23:16:09Z",
+      "side": 1,
+      "message": "Thanks Keith, you are right, it looks more intended to zephyr documentation,\nI will upload it to upstream then.",
+      "parentUuid": "1f84a757_714298d3",
+      "revId": "97b6fbc0aec633892a8ab5ad137d1a78c0f36e12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
