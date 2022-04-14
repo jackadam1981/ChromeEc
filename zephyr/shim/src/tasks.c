@@ -115,11 +115,19 @@ static struct task_ctx_base_data *task_get_base_data(task_id_t cros_task_id)
 	return &shimmed_tasks_data[cros_task_id].base;
 }
 
+extern struct k_thread z_main_thread;
+
 task_id_t task_get_current(void)
 {
 	if (in_deferred_context()) {
 		return TASK_ID_SYSWORKQ;
 	}
+
+#if CONFIG_TASK_HOSTCMD_THREAD_MAIN
+	if (k_current_get() == &z_main_thread) {
+		return TASK_ID_HOSTCMD;
+	}
+#endif
 
 	for (size_t i = 0; i < TASK_ID_COUNT; ++i) {
 		if (shimmed_tasks_data[i].zephyr_tid == k_current_get())
