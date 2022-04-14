@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb70b1f9_909b32f6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2022-04-14T12:58:33Z",
+      "side": 1,
+      "message": "nit: tpm_hash_gen",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 1
+      },
+      "revId": "fcde7fc82f89af53177df96e1354accf64b0c9c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc945779_a01a3019",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2022-04-14T12:58:33Z",
+      "side": 1,
+      "message": "Do you want to update the script to support Ti50 in a followup CL?",
+      "range": {
+        "startLine": 12,
+        "startChar": 39,
+        "endLine": 12,
+        "endChar": 43
+      },
+      "revId": "fcde7fc82f89af53177df96e1354accf64b0c9c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c6f905b_d8222b8e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2022-04-14T12:58:33Z",
+      "side": 1,
+      "message": "LGTM after fixing the commit message",
+      "revId": "fcde7fc82f89af53177df96e1354accf64b0c9c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
