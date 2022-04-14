@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "75914490_f912a811",
+        "filename": "zephyr/projects/intelrvp/src/chg_usb_pd.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2022-04-14T20:48:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "00b18e49_f3063065",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 26
+      },
+      "revId": "6f3046fd58526b4fe9f0f57dadc9675841f4518a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "968c0829_6dd8a84d",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb01cb6a_20126f4e",
+        "filename": "zephyr/projects/intelrvp/src/chg_usb_pd.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2022-04-14T20:48:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "968c0829_6dd8a84d",
+      "range": {
+        "startLine": 115,
+        "startChar": 0,
+        "endLine": 118,
+        "endChar": 30
+      },
+      "revId": "6f3046fd58526b4fe9f0f57dadc9675841f4518a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "682d0199_aebed336",
@@ -60,6 +108,24 @@
       "writtenOn": "2022-04-14T18:46:21Z",
       "side": 1,
       "message": "pick the latest files from internal branch",
+      "revId": "6f3046fd58526b4fe9f0f57dadc9675841f4518a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bca7d75d_3e88e80b",
+        "filename": "zephyr/projects/intelrvp/src/usb_pd_policy_mecc_1_1.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2022-04-14T20:48:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "682d0199_aebed336",
       "revId": "6f3046fd58526b4fe9f0f57dadc9675841f4518a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
