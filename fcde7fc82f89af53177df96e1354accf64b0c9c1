@@ -97,6 +97,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "160f1f8a_42370906",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2022-04-14T16:40:45Z",
+      "side": 1,
+      "message": "There are infineon tpm versions in the same histogram/enum, so I don\u0027t know how much anchoring we need to add.",
+      "parentUuid": "98a2fd35_ad47e45f",
+      "range": {
+        "startLine": 12,
+        "startChar": 39,
+        "endLine": 12,
+        "endChar": 43
+      },
+      "revId": "fcde7fc82f89af53177df96e1354accf64b0c9c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "0c6f905b_d8222b8e",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
