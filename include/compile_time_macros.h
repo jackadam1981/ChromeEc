@@ -82,6 +82,16 @@
 #endif
 #define BIT_ULL(nr)		(1ULL << (nr))
 
+#define BIT_SET(reg, bit)		((reg) |= BIT(bit))
+#define BIT_CLR(reg, bit)		((reg) &= (~BIT(bit)))
+#define BIT_UPDATE(reg, bit, cond)	\
+	do { \
+		if (cond) \
+			BIT_SET(reg, bit); \
+		else \
+			BIT_CLR(reg, bit); \
+	} while (0)
+
 /*
  * Create a bit mask from least significant bit |l|
  * to bit |h|, inclusive.
