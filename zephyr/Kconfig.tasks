@@ -88,8 +88,21 @@ config HAS_TASK_HOSTCMD
 
 if HAS_TASK_HOSTCMD
 
+choice
+	prompt "Host command thread selection"
+	default TASK_HOSTCMD_THREAD_SHIM if ZTEST
+
+config TASK_HOSTCMD_THREAD_MAIN
+	bool "Run the host command in the main thread"
+
+config TASK_HOSTCMD_THREAD_SHIM
+	bool "Run the host command in a dedicated thread"
+
+endchoice
+
 config TASK_HOSTCMD_STACK_SIZE
 	int "HOSTCMD task stack size"
+	depends on TASK_HOSTCMD_THREAD_SHIM
 	default 1024
 	help
 	  The size of the host-command task stack.
