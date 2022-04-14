@@ -29,6 +29,57 @@ static int test_BIT_ULL(void)
 	return EC_SUCCESS;
 }
 
+static int test_BIT_SET(void)
+{
+	uint32_t reg __maybe_unused;
+
+	reg = 0;
+	BIT_SET(reg, 0);
+	TEST_EQ(reg, 0x00000001U, "%u");
+	BIT_SET(reg, 25);
+	TEST_EQ(reg, 0x02000001U, "%u");
+	BIT_SET(reg, 31);
+	TEST_EQ(reg, 0x82000001U, "%u");
+	BIT_SET(reg, 0);
+	TEST_EQ(reg, 0x82000001U, "%u");
+
+	return EC_SUCCESS;
+}
+
+static int test_BIT_CLR(void)
+{
+	uint32_t reg __maybe_unused;
+
+	reg = 0xffffffff;
+	BIT_CLR(reg, 0);
+	TEST_EQ(reg, 0xfffffffeU, "%u");
+	BIT_CLR(reg, 25);
+	TEST_EQ(reg, 0xfdfffffeU, "%u");
+	BIT_CLR(reg, 31);
+	TEST_EQ(reg, 0x7dfffffeU, "%u");
+	BIT_CLR(reg, 0);
+	TEST_EQ(reg, 0x7dfffffeU, "%u");
+
+	return EC_SUCCESS;
+}
+
+static int test_BIT_UPDATE(void)
+{
+	uint32_t reg __maybe_unused;
+
+	reg = 0;
+	BIT_UPDATE(reg, 0, true);
+	TEST_EQ(reg, 0x00000001, "%u");
+	BIT_UPDATE(reg, 25, true);
+	TEST_EQ(reg, 0x02000001, "%u");
+	BIT_UPDATE(reg, 31, true);
+	TEST_EQ(reg, 0x82000001, "%u");
+	BIT_UPDATE(reg, 0, false);
+	TEST_EQ(reg, 0x82000000, "%u");
+
+	return EC_SUCCESS;
+}
+
 static int test_GENMASK(void)
 {
 	TEST_EQ(GENMASK(0, 0),   0x00000001U, "%u");
@@ -73,6 +124,9 @@ void run_test(int argc, char **argv)
 
 	RUN_TEST(test_BIT);
 	RUN_TEST(test_BIT_ULL);
+	RUN_TEST(test_BIT_SET);
+	RUN_TEST(test_BIT_CLR);
+	RUN_TEST(test_BIT_UPDATE);
 	RUN_TEST(test_GENMASK);
 	RUN_TEST(test_GENMASK_ULL);
 	RUN_TEST(test_IS_ARRAY);
