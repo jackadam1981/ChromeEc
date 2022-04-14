@@ -14,6 +14,15 @@
 
 #ifdef CONFIG_PLATFORM_EC_HOSTCMD
 
+/* Initializes and runs the host command handler loop.  */
+void host_command_task(void *u);
+
+/* Takes over the main thread and runs the host command loop. */
+void host_command_main(void);
+
+/* True if running in the main thread. */
+bool in_host_command_main(void);
+
 /**
  * See include/host_command.h for documentation.
  */
