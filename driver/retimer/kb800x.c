@@ -15,6 +15,9 @@
 /* Time between load switch enable and the reset being de-asserted */
 #define KB800X_POWER_ON_DELAY_MS 20
 
+#define CPRINTS(format, args...) cprints(CC_USB, format, ## args)
+#define CPRINTF(format, args...) cprintf(CC_USB, format, ## args)
+
 static mux_state_t cached_mux_state[CONFIG_USB_PD_PORT_MAX_COUNT];
 
 static int kb800x_write(const struct usb_mux *me, uint16_t address,
@@ -377,6 +380,14 @@ static int kb800x_cio_init(const struct usb_mux *me, mux_state_t mux_state)
 	return kb800x_write(me, KB800X_REG_ORIENTATION, orientation);
 }
 
+static void kb800x_dp_mode_en(const struct usb_mux *me, bool enable)
+{
+	gpio_set_level(kb800x_control[me->usb_port].dp_en_gpio, enable ? 1 : 0);
+	CPRINTS("dp_en_gpio:%d,exp:%d",
+		gpio_get_level(kb800x_control[me->usb_port].dp_en_gpio),
+		enable);
+}
+
 static int kb800x_set_state(const struct usb_mux *me, mux_state_t mux_state,
 			    bool *ack_required)
 {
@@ -397,8 +408,10 @@ static int kb800x_set_state(const struct usb_mux *me, mux_state_t mux_state,
 
 	/* Already in reset, nothing to do */
 	if ((mux_state == USB_PD_MUX_NONE) ||
-	    (mux_state & USB_PD_MUX_SAFE_MODE))
+	    (mux_state & USB_PD_MUX_SAFE_MODE)) {
+		kb800x_dp_mode_en(me, false);
 		return EC_SUCCESS;
+	}
 
 	rv = kb800x_global_init(me);
 	if (rv)
@@ -407,6 +420,7 @@ static int kb800x_set_state(const struct usb_mux *me, mux_state_t mux_state,
 	/* CIO mode (USB4/TBT) */
 	if (mux_state &
 	    (USB_PD_MUX_USB4_ENABLED | USB_PD_MUX_TBT_COMPAT_ENABLED)) {
+		CPRINTS("USB4/TBT mode");
 		rv = kb800x_cio_init(me, mux_state);
 		if (rv)
 			return rv;
@@ -414,6 +428,7 @@ static int kb800x_set_state(const struct usb_mux *me, mux_state_t mux_state,
 	} else {
 		/* USB3 enabled (USB3-only or DPMF) */
 		if (mux_state & USB_PD_MUX_USB_ENABLED) {
+			CPRINTS("USB3 mode");
 			rv = kb800x_usb3_init(me, mux_state);
 			if (rv)
 				return rv;
@@ -422,6 +437,8 @@ static int kb800x_set_state(const struct usb_mux *me, mux_state_t mux_state,
 
 		/* DP alt modes (DP-only or DPMF) */
 		if (mux_state & USB_PD_MUX_DP_ENABLED) {
+			CPRINTS("DP mode");
+			kb800x_dp_mode_en(me, true);
 			rv = kb800x_dp_init(me, mux_state);
 			if (rv)
 				return rv;
@@ -470,6 +487,8 @@ static int kb800x_enter_low_power_mode(const struct usb_mux *me)
 	gpio_set_level(kb800x_control[me->usb_port].retimer_rst_gpio, 0);
 	/* Power-down sequencing must be handled in HW */
 	gpio_set_level(kb800x_control[me->usb_port].usb_ls_en_gpio, 0);
+	/* Make sure the DP output is disabled when entering low power mode */
+	kb800x_dp_mode_en(me, false);
 
 	return EC_SUCCESS;
 }
