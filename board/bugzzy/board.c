@@ -239,6 +239,8 @@ void board_init(void)
 	}
 	/* Enable gpio interrupt for base accelgyro sensor */
 	gpio_enable_interrupt(GPIO_BASE_SIXAXIS_INT_L);
+	/* Enable gpio interrupt for lid accel sensor */
+	gpio_enable_interrupt(GPIO_LID_360_L);
 
 	/* Turn on 5V if the system is on, otherwise turn it off. */
 	on = chipset_in_state(CHIPSET_STATE_ON | CHIPSET_STATE_ANY_SUSPEND |
