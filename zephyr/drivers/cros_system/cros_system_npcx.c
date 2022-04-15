@@ -553,7 +553,8 @@ static int cros_system_npcx_hibernate(const struct device *dev,
 __maybe_unused static uint64_t
 cros_system_npcx_deep_sleep_ticks(const struct device *dev)
 {
-	return npcx_clock_get_sleep_ticks();
+	return 0;
+	//return npcx_clock_get_sleep_ticks();
 }
 
 static struct cros_system_npcx_data cros_system_npcx_dev_data;
