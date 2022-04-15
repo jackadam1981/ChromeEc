@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5485ba0_102a23b2",
+        "filename": "zephyr/Kconfig.charger",
+        "patchSetId": 18
+      },
+      "lineNbr": 641,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-04-15T15:41:08Z",
+      "side": 1,
+      "message": "space after `#`",
+      "range": {
+        "startLine": 641,
+        "startChar": 0,
+        "endLine": 641,
+        "endChar": 1
+      },
+      "revId": "6c3a4df95d8b5f71626a8e2d1a1d2b4e95d1276f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db3098d7_5f163c41",
+        "filename": "zephyr/Kconfig.charger",
+        "patchSetId": 18
+      },
+      "lineNbr": 644,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-04-15T15:41:08Z",
+      "side": 1,
+      "message": "Remove, this is already the default for the `bool` type",
+      "range": {
+        "startLine": 644,
+        "startChar": 1,
+        "endLine": 644,
+        "endChar": 10
+      },
+      "revId": "6c3a4df95d8b5f71626a8e2d1a1d2b4e95d1276f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1823d046_cca7f074",
+        "filename": "zephyr/Kconfig.charger",
+        "patchSetId": 18
+      },
+      "lineNbr": 647,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-04-15T15:41:08Z",
+      "side": 1,
+      "message": "`be enabled`",
+      "range": {
+        "startLine": 647,
+        "startChar": 51,
+        "endLine": 647,
+        "endChar": 66
+      },
+      "revId": "6c3a4df95d8b5f71626a8e2d1a1d2b4e95d1276f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53dd49b9_a4dc8446",
+        "filename": "zephyr/Kconfig.charger",
+        "patchSetId": 18
+      },
+      "lineNbr": 647,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-04-15T15:41:08Z",
+      "side": 1,
+      "message": "`more than 0,`",
+      "range": {
+        "startLine": 647,
+        "startChar": 22,
+        "endLine": 647,
+        "endChar": 23
+      },
+      "revId": "6c3a4df95d8b5f71626a8e2d1a1d2b4e95d1276f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5353370_03c9db39",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 2460,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-04-15T15:41:08Z",
+      "side": 1,
+      "message": "This list should be alphasorted",
+      "range": {
+        "startLine": 2460,
+        "startChar": 7,
+        "endLine": 2460,
+        "endChar": 47
+      },
+      "revId": "6c3a4df95d8b5f71626a8e2d1a1d2b4e95d1276f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1c3bc2b_012209ef",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 2465,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-04-15T15:41:08Z",
+      "side": 1,
+      "message": "remove duplicate blank line",
+      "revId": "6c3a4df95d8b5f71626a8e2d1a1d2b4e95d1276f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
