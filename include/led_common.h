@@ -17,6 +17,16 @@ extern const enum ec_led_id supported_led_ids[];
 extern const int supported_led_ids_count;
 
 /**
+ * Whether LED is supported.
+ *
+ * @param led_id	ID of LED to query.
+ *
+ * @returns		1 if LED is supported. 0 if it is not.
+ *
+ */
+__override_proto int led_is_supported(enum ec_led_id led_id);
+
+/**
  * Enable or disable automatic control of an LED.
  *
  * @param led_id	ID of LED to enable or disable automatic control.
