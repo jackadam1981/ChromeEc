@@ -11,7 +11,14 @@
 
 static inline atomic_val_t atomic_get(const atomic_t *target)
 {
+#ifdef __clang__
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Watomic-alignment"
+#endif /* __clang__ */
 	return __atomic_load_n(target, __ATOMIC_SEQ_CST);
+#ifdef __clang__
+#pragma clang diagnostic pop
+#endif /* __clang__ */
 }
 
 #include "third_party/zephyr/atomic.h"
