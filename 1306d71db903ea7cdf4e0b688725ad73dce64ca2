@@ -16,6 +16,24 @@
       "message": "Able to move this CL to CR+2? or need further reviewer CR+1?",
       "revId": "1306d71db903ea7cdf4e0b688725ad73dce64ca2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e2324c0_b9c0d1c0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2022-04-15T14:36:59Z",
+      "side": 1,
+      "message": "I am not a python programmer, so I didn\u0027t feel comfortable giving this a +2. It looks good to me but wanted one of the other reviewers that may know python to give it the +2.",
+      "parentUuid": "e3555e64_afe1b0d2",
+      "revId": "1306d71db903ea7cdf4e0b688725ad73dce64ca2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
