@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5afb5e87_ea9df36a",
+        "filename": "zephyr/shim/include/usbc/chg_isl923x.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-04-15T22:40:30Z",
+      "side": 1,
+      "message": "This file organization is slightly confusing.  The charger chip yaml files are located under dts/bindings/charger, but you have the header files located under the usbc directory.\n\nMaybe move these files under shim/include/charger instead for consistency.  While chromebooks do require USB-C ports, the charger IC themselves do not have requirement for USB-C.",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 63
+      },
+      "revId": "812b4a8ae5f52151758745286c200ce6a54fe6f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c69777bc_192a2be0",
         "filename": "zephyr/shim/src/charger.c",
         "patchSetId": 3
