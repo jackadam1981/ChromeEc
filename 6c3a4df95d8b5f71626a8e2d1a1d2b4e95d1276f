@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "261334a2_af9b8076",
+        "filename": "zephyr/Kconfig.charger",
+        "patchSetId": 18
+      },
+      "lineNbr": 641,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2022-04-15T16:56:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f5485ba0_102a23b2",
+      "range": {
+        "startLine": 641,
+        "startChar": 0,
+        "endLine": 641,
+        "endChar": 1
+      },
+      "revId": "6c3a4df95d8b5f71626a8e2d1a1d2b4e95d1276f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "35cc1e3f_1f3b5247",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4ed7c1c_2305efb5",
+        "filename": "zephyr/Kconfig.charger",
+        "patchSetId": 18
+      },
+      "lineNbr": 643,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2022-04-15T16:56:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "35cc1e3f_1f3b5247",
+      "range": {
+        "startLine": 643,
+        "startChar": 7,
+        "endLine": 643,
+        "endChar": 51
+      },
+      "revId": "6c3a4df95d8b5f71626a8e2d1a1d2b4e95d1276f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "db3098d7_5f163c41",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-04-15T15:41:08Z",
       "side": 1,
       "message": "Remove, this is already the default for the `bool` type",
+      "range": {
+        "startLine": 644,
+        "startChar": 1,
+        "endLine": 644,
+        "endChar": 10
+      },
+      "revId": "6c3a4df95d8b5f71626a8e2d1a1d2b4e95d1276f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b7cd204_262ba8cd",
+        "filename": "zephyr/Kconfig.charger",
+        "patchSetId": 18
+      },
+      "lineNbr": 644,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2022-04-15T16:56:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "db3098d7_5f163c41",
       "range": {
         "startLine": 644,
         "startChar": 1,
@@ -106,6 +178,54 @@
       "writtenOn": "2022-04-15T15:41:08Z",
       "side": 1,
       "message": "`more than 0,`",
+      "range": {
+        "startLine": 647,
+        "startChar": 22,
+        "endLine": 647,
+        "endChar": 23
+      },
+      "revId": "6c3a4df95d8b5f71626a8e2d1a1d2b4e95d1276f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc208e0b_cc3a2b1b",
+        "filename": "zephyr/Kconfig.charger",
+        "patchSetId": 18
+      },
+      "lineNbr": 647,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2022-04-15T16:56:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1823d046_cca7f074",
+      "range": {
+        "startLine": 647,
+        "startChar": 51,
+        "endLine": 647,
+        "endChar": 66
+      },
+      "revId": "6c3a4df95d8b5f71626a8e2d1a1d2b4e95d1276f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4cef0158_bdcf8aa6",
+        "filename": "zephyr/Kconfig.charger",
+        "patchSetId": 18
+      },
+      "lineNbr": 647,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2022-04-15T16:56:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "53dd49b9_a4dc8446",
       "range": {
         "startLine": 647,
         "startChar": 22,
@@ -163,6 +283,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e921c371_be1c0f05",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 2460,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2022-04-15T16:56:22Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0a84278f_351e133e",
+      "range": {
+        "startLine": 2460,
+        "startChar": 7,
+        "endLine": 2460,
+        "endChar": 47
+      },
+      "revId": "6c3a4df95d8b5f71626a8e2d1a1d2b4e95d1276f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d1c3bc2b_012209ef",
@@ -176,6 +320,24 @@
       "writtenOn": "2022-04-15T15:41:08Z",
       "side": 1,
       "message": "remove duplicate blank line",
+      "revId": "6c3a4df95d8b5f71626a8e2d1a1d2b4e95d1276f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e68b7c6_2e21c90a",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 2465,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2022-04-15T16:56:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d1c3bc2b_012209ef",
       "revId": "6c3a4df95d8b5f71626a8e2d1a1d2b4e95d1276f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
