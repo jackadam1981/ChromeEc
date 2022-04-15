@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e5234089_8c77bb06",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 22
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2022-04-15T19:55:45Z",
+      "side": 1,
+      "message": "removed config_allowed change and reset CHARGE_PORT_COUNT to 0 if not configured",
+      "revId": "05949c27cd0fe0c4126804c3aaafe9b658dafd0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
