@@ -70,6 +70,30 @@
       },
       "revId": "a8eb66cd217a8d655f8eb5ef5125481d35c855fc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "da091d5f_616f9ce6",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 2466,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2022-04-15T00:09:50Z",
+      "side": 1,
+      "message": "decided to set CONFIG_DEDICATED_CHARGE_PORT_COUNT to 1 instead and that should work and not require changes to legacy",
+      "parentUuid": "4d174b7b_6c9db60b",
+      "range": {
+        "startLine": 2466,
+        "startChar": 8,
+        "endLine": 2466,
+        "endChar": 42
+      },
+      "revId": "a8eb66cd217a8d655f8eb5ef5125481d35c855fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
