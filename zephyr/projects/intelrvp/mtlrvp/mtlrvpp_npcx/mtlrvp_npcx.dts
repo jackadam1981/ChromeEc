@@ -24,6 +24,10 @@
 			i2c-port = <&i2c7_0>;
 			enum-name = "I2C_PORT_CHARGER";
 		};
+		keyboard {
+			i2c-port = <&i2c7_0>;
+			enum-name = "IT8801_KEYBOARD_PWM_I2C_PORT";
+		};
 		typec_aic1: typec-aic1{
 			i2c-port = <&i2c0_0>;
 			enum-name = "I2C_PORT_TYPEC_AIC_1";
@@ -93,6 +97,12 @@
 		 */
 		board-gpios = <&pca95xx 13 0>, <&pca95xx 12 0>, <&pca95xx 11 0>,
 			      <&pca95xx 10 0>, <&pca95xx 9 0>, <&pca95xx 8 0>;
+	};
+
+	kb_not_raw: ite-it8801@39 {
+		compatible = "ite,it8801";
+		reg = <0x39>;
+		label = "IT8801_KEYBOARD_NOT_RAW";
 	};
 };
 
