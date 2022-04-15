@@ -97,7 +97,7 @@ const struct board_batt_params board_battery_info[] = {
 			.manuf_name = "COM",
 			.device_name = "DELL MVK11",
 			.ship_mode = {
-				.reg_addr = 0x44,
+				.reg_addr = 0x00,
 				.reg_data = { 0x0010, 0x0010 },
 			},
 			.fet = {
