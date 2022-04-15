@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23acd4a6_44613de8",
+        "filename": "zephyr/dts/bindings/charger/intersil,isl9241.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-04-15T17:53:45Z",
+      "side": 0,
+      "message": "Why are you dropping this property?  It is used to set the CONFIG_ISL9241_SWITCHING_FREQ legacy config in config_chip.h.\n\nThis config appears to be used on Volteer only. Can you update  CONFIG_ISL9241_SWITCHING_FREQ to be based on directly a Kconfig value? That seems like the best path for now.\n\nWhen we move this driver upstream, a devicetree property that can be set on each driver instance makes sense.",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 0
+      },
+      "revId": "b7f91ecd3583b2e8ec6404cf40469621daaac129",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
