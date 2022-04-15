@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "76a3196c_97b3d839",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-04-15T18:35:30Z",
+      "side": 1,
+      "message": "You need to update zephyr/CmakeLists.txt so that the tusb1064.c driver is compiled for both config options.",
+      "revId": "79ab07ce4cc4b1ab09752f484a95aef99fafef5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
