@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "12fd4806_43ca89c5",
+        "filename": "docs/zephyr/zephyr_ppc.md",
+        "patchSetId": 48
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-04-15T22:20:25Z",
+      "side": 1,
+      "message": "Note that Tomasz started work on this for the USB muxes on CL:3575157.\n\nI\u0027ll create some bus for Tomasz to update the other USB-C chips.",
+      "parentUuid": "5ff431bb_1b897663",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 48
+      },
+      "revId": "479302782fa6af30d2d5427cee416eaff3d23df9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "22e77d9a_ab96c9a1",
         "filename": "docs/zephyr/zephyr_ppc.md",
         "patchSetId": 48
