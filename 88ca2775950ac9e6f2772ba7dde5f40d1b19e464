@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "47483b81_a854a5db",
+        "filename": "common/led_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-04-15T17:38:56Z",
+      "side": 1,
+      "message": "This function now becomes global. Add the function description to the `include/led_common.h`.\n\nUse the `__override_proto` descriptor in the .h file, e.g.\n\n /**\n  * XXXXXXX\n  */\n __override_proto int led_is_supported(enum ec_led_id led_id);",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 57
+      },
+      "revId": "88ca2775950ac9e6f2772ba7dde5f40d1b19e464",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
