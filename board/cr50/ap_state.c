@@ -117,6 +117,18 @@ static void set_state(enum device_state new_state)
  */
 static void deferred_set_ap_off(void)
 {
+	/*
+	 * Don't set AP off when TPM_RST_L is deasserted. This shouldn't happen
+	 * There's no need to check the level in ap_is_on. It's important not to
+	 * set the ap state to off the AP while it's on since TPM communication
+	 * is probably ongoing. It's fine to wait for polling to notice the AP
+	 * is off. Waiting for polling just delays deep sleep by 1 second.
+	 */
+	if (gpio_get_level(GPIO_TPM_RST_L)) {
+		/* Short version of "AP override". */
+		CPRINTS("AP: ovrd");
+		return;
+	}
 	CPRINTS("AP off");
 	set_state(DEVICE_STATE_OFF);
 
@@ -254,6 +266,31 @@ void board_closed_loop_reset(void)
 		tpm_rst_asserted(GPIO_TPM_RST_L);
 }
 
+static void poll_ap_state(void)
+{
+	/*
+	 * High means the AP is on. If cr50 thinks the AP is off, it missed an
+	 * interrupt. Trigger the deasserted interrupt.
+	 */
+	if (gpio_get_level(GPIO_TPM_RST_L)) {
+		/*
+		 * If cr50 thinks the AP is off while TPM_RST_L is high, it
+		 * missed a falling edge interrupt. Trigger it.
+		 */
+		if (!ap_is_on()) {
+			CPRINTS("appoll: R-");
+			tpm_rst_deasserted(GPIO_TPM_RST_L);
+		}
+	} else if (ap_is_on()) {
+		/*
+		 * If cr50 thinks the AP is on while TPM_RST_L is low, it missed
+		 * a falling edge interrupt. Trigger it.
+		 */
+		CPRINTS("appoll: -F");
+		tpm_rst_asserted(GPIO_TPM_RST_L);
+	}
+}
+DECLARE_HOOK(HOOK_SECOND, poll_ap_state, HOOK_PRIO_DEFAULT);
 /**
  * Check the initial AP state.
  */
