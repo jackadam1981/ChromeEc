@@ -26,6 +26,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "35cc1e3f_1f3b5247",
+        "filename": "zephyr/Kconfig.charger",
+        "patchSetId": 18
+      },
+      "lineNbr": 643,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-04-15T16:14:48Z",
+      "side": 1,
+      "message": "This is now a bool, and not a count\n\n`bool \"Dedicated charging port\"`\n\nPlease also update the help text to match.",
+      "range": {
+        "startLine": 643,
+        "startChar": 7,
+        "endLine": 643,
+        "endChar": 51
+      },
+      "revId": "6c3a4df95d8b5f71626a8e2d1a1d2b4e95d1276f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "db3098d7_5f163c41",
         "filename": "zephyr/Kconfig.charger",
         "patchSetId": 18
@@ -106,6 +129,30 @@
       "writtenOn": "2022-04-15T15:41:08Z",
       "side": 1,
       "message": "This list should be alphasorted",
+      "range": {
+        "startLine": 2460,
+        "startChar": 7,
+        "endLine": 2460,
+        "endChar": 47
+      },
+      "revId": "6c3a4df95d8b5f71626a8e2d1a1d2b4e95d1276f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a84278f_351e133e",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 2460,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-04-15T16:14:48Z",
+      "side": 1,
+      "message": "That\u0027s not required per our shimming instructions:\n\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/c0333e1c/docs/zephyr/zephyr_shim.md#323",
+      "parentUuid": "d5353370_03c9db39",
       "range": {
         "startLine": 2460,
         "startChar": 7,
