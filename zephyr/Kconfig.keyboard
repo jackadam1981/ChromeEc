@@ -48,6 +48,11 @@ config PLATFORM_EC_KEYBOARD_PROTOCOL_MKBP
 
 endchoice # PLATFORM_EC_KEYBOARD_PROTOCOL_MODE
 
+config PLATFORM_EC_KEYBOARD_NOT_RAW
+	bool "Enable non RAW Keyboard"
+	help
+	  Enable RAW
+
 config PLATFORM_EC_KEYBOARD_DEBUG
 	bool "Enable keyboard debug prints"
 	depends on PLATFORM_EC_SYSTEM_UNLOCKED
