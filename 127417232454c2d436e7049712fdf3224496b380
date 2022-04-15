@@ -39,6 +39,30 @@
       },
       "revId": "127417232454c2d436e7049712fdf3224496b380",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e2ae728_d6a986f8",
+        "filename": "zephyr/projects/corsola/src/usbc_config.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2022-04-15T08:18:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fb94f109_1858a2c1",
+      "range": {
+        "startLine": 99,
+        "startChar": 1,
+        "endLine": 103,
+        "endChar": 27
+      },
+      "revId": "127417232454c2d436e7049712fdf3224496b380",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
