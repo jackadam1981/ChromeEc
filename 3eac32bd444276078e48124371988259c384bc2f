@@ -16,6 +16,29 @@
       "message": "Please ignore this whole patchset. This is only for the purpose of releasing new servo_v4p1 firmware.",
       "revId": "3eac32bd444276078e48124371988259c384bc2f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dbf7fae0_31763bb5",
+        "filename": "board/servo_v4p1/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 816,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-04-15T17:12:00Z",
+      "side": 1,
+      "message": "Better to create a new function for it to disable the USB2 lines. In this new function, override the \nGPIO_FASTBOOT_DUTHUB_MUX_EN_L and \nGPIO_FASTBOOT_DUTHUB_MUX_SEL. Reusing the `uservo_to_host()` just complicates the logic and `uservo_to_host()` actually doesn\u0027t fit the need.\n\nMake this `pd_execute_data_swap()` function only calls the `uservo_to_host()`, `dut_to_host()`, and the new function. It shouldn\u0027t override the GPIOs.",
+      "range": {
+        "startLine": 814,
+        "startChar": 0,
+        "endLine": 816,
+        "endChar": 20
+      },
+      "revId": "3eac32bd444276078e48124371988259c384bc2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
