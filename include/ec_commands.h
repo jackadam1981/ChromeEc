@@ -2863,6 +2863,10 @@ enum motionsense_spoof_mode {
 
 struct ec_params_motion_sense {
 	uint8_t cmd;
+#ifdef __clang__
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wunaligned-access"
+#endif /* __clang__ */
 	union {
 		/* Used for MOTIONSENSE_CMD_DUMP. */
 		struct __ec_todo_unpacked {
@@ -3061,6 +3065,9 @@ struct ec_params_motion_sense {
 			uint8_t activity;  /* enum motionsensor_activity */
 		} get_activity;
 	};
+#ifdef __clang__
+#pragma clang diagnostic pop
+#endif /* __clang__ */
 } __ec_todo_packed;
 
 enum motion_sense_cmd_info_flags {
@@ -3355,12 +3362,19 @@ enum ec_port80_subcmd {
 
 struct ec_params_port80_read {
 	uint16_t subcmd;
+#ifdef __clang__
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wunaligned-access"
+#endif /* __clang__ */
 	union {
 		struct __ec_todo_unpacked {
 			uint32_t offset;
 			uint32_t num_entries;
 		} read_buffer;
 	};
+#ifdef __clang__
+#pragma clang diagnostic pop
+#endif /* __clang__ */
 } __ec_todo_packed;
 
 struct ec_response_port80_read {
@@ -4658,6 +4672,10 @@ enum charge_state_params {
 
 struct ec_params_charge_state {
 	uint8_t cmd;				/* enum charge_state_command */
+#ifdef __clang__
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wunaligned-access"
+#endif /* __clang__ */
 	union {
 		/* get_state has no args */
 
@@ -4671,6 +4689,9 @@ struct ec_params_charge_state {
 		} set_param;
 	};
 	uint8_t chgnum;				/* Version 1 supports chgnum */
+#ifdef __clang__
+#pragma clang diagnostic pop
+#endif /* __clang__ */
 } __ec_todo_packed;
 
 struct ec_response_charge_state {
@@ -5968,16 +5989,27 @@ struct ec_response_pd_chip_info {
 	uint16_t vendor_id;
 	uint16_t product_id;
 	uint16_t device_id;
+#ifdef __clang__
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wunaligned-access"
+#endif /* __clang__ */
 	union {
 		uint8_t fw_version_string[8];
 		uint64_t fw_version_number;
 	};
+#ifdef __clang__
+#pragma clang diagnostic pop
+#endif /* __clang__ */
 } __ec_align2;
 
 struct ec_response_pd_chip_info_v1 {
 	uint16_t vendor_id;
 	uint16_t product_id;
 	uint16_t device_id;
+#ifdef __clang__
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wunaligned-access"
+#endif /* __clang__ */
 	union {
 		uint8_t fw_version_string[8];
 		uint64_t fw_version_number;
@@ -5986,6 +6018,9 @@ struct ec_response_pd_chip_info_v1 {
 		uint8_t min_req_fw_version_string[8];
 		uint64_t min_req_fw_version_number;
 	};
+#ifdef __clang__
+#pragma clang diagnostic pop
+#endif /* __clang__ */
 } __ec_align2;
 
 /* Run RW signature verification and get status */
