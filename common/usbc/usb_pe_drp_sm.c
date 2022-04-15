@@ -19,6 +19,8 @@
 #include "system.h"
 #include "task.h"
 #include "tcpm/tcpm.h"
+#include "temp_sensor.h"
+#include "thermal.h"
 #include "util.h"
 #include "usb_charge.h"
 #include "usb_common.h"
@@ -4275,13 +4277,67 @@ static void pe_give_status_entry(int port)
 	uint8_t *msg = (uint8_t *)tx_emsg[port].buf;
 	uint32_t *len = &tx_emsg[port].len;
 
+	int i, temp_k, temp_c;
+
 	print_current_state(port);
 
 	/* USB PD Rev 3.0: 6.5.2 Status Message */
 	*len = 6;
 
-	/* Internal Temp */
+	/*
+	 * Internal Temp
+	 * Source or Sink’s internal temperature in degrees centigrade.
+	 * 0 = feature not supported
+	 * 1 = temperature is less than 2°C.
+	 * 2-255 = temperature in °C.
+	 *
+	 * Temperature Status
+	 * 0 Reserved and Shall be set to zero
+	 * 1…2 00 – Not Supported
+	 *     01 – Normal
+	 *     10 – Warning
+	 *     11 – Over temperature
+	 * 3…7 Reserved and Shall be set to zero
+	 *
+	 * Chromebooks can have multiple temperature sensors, so we send the
+	 * highest valid (<=255°C) temperature reading and the highest exceeded
+	 * threshold.
+	 */
+
+	/* send not supported if no sensor reads are successful. */
 	msg[STATUS_INTERNAL_TEMP] = 0x0;
+	msg[STATUS_TEMP_STATUS] = 0x0;
+	for (i = 0; i < TEMP_SENSOR_COUNT; ++i) {
+		if (temp_sensor_read(i, &temp_k) != EC_SUCCESS)
+			continue;
+
+		/* Convert tempurature from K to C */
+		temp_c = temp_k - 273;
+
+		/* Check temp is in expected range (<255°C) */
+		if (temp_c > 255)
+			continue;
+		else if (temp_c < 2)
+			temp_c = 1;
+
+		if (((uint8_t) temp_c) > msg[STATUS_INTERNAL_TEMP])
+			msg[STATUS_INTERNAL_TEMP] = (uint8_t) temp_c;
+
+		if (temp_k > thermal_params[i].temp_host[EC_TEMP_THRESH_HALT]) {
+			/* Over temperature */
+			if (msg[STATUS_TEMP_STATUS] < 0x6)
+				msg[STATUS_TEMP_STATUS] = 0x6;
+		} else if (temp_k >
+			   thermal_params[i].temp_host[EC_TEMP_THRESH_HIGH]) {
+			/* Warning */
+			if (msg[STATUS_TEMP_STATUS] < 0x4)
+				msg[STATUS_TEMP_STATUS] = 0x4;
+		} else {
+			/* Normal */
+			if (msg[STATUS_TEMP_STATUS] < 0x2)
+				msg[STATUS_TEMP_STATUS] = 0x2;
+		}
+	}
 
 	/* Present Input */
 	msg[STATUS_PRESENT_INPUT] = 0x0;
@@ -4291,9 +4347,6 @@ static void pe_give_status_entry(int port)
 
 	/* Event Flags */
 	msg[STATUS_EVENT_FLAGS] = 0x0;
-
-	/* Temperature Status */
-	msg[STATUS_TEMP_STATUS] = 0x0;
 
 	/* Power Status */
 	msg[STATUS_POWER_STATUS] = 0x0;
