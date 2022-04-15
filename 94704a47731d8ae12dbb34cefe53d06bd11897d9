@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a0093e82_3758e80d",
+        "filename": "zephyr/dts/bindings/leds/cros-ec,pwm-led-pins.yaml",
+        "patchSetId": 10
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1513493
+      },
+      "writtenOn": "2022-04-15T19:27:40Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "f44779fb_9d777453",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 36
+      },
+      "revId": "94704a47731d8ae12dbb34cefe53d06bd11897d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7bdbbaa9_0f6c9db9",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c19e68c_1ce7ad3c",
+        "filename": "zephyr/shim/src/led_driver/led_gpio.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1513493
+      },
+      "writtenOn": "2022-04-15T19:27:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7bdbbaa9_0f6c9db9",
+      "range": {
+        "startLine": 126,
+        "startChar": 0,
+        "endLine": 127,
+        "endChar": 38
+      },
+      "revId": "94704a47731d8ae12dbb34cefe53d06bd11897d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "88366e24_59b87107",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-04-15T17:27:10Z",
       "side": 1,
       "message": "Similar to these functions, they can be shared between GPIO and PWM. Move them to another C file.",
+      "range": {
+        "startLine": 92,
+        "startChar": 0,
+        "endLine": 134,
+        "endChar": 1
+      },
+      "revId": "94704a47731d8ae12dbb34cefe53d06bd11897d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc404083_22beb741",
+        "filename": "zephyr/shim/src/led_driver/led_gpio.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1513493
+      },
+      "writtenOn": "2022-04-15T19:27:40Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "88366e24_59b87107",
       "range": {
         "startLine": 92,
         "startChar": 0,
