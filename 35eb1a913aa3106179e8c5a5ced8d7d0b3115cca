@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2fc34dd0_2705ee6a",
+        "filename": "test/usb_pd_timer.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-04-15T21:23:23Z",
+      "side": 1,
+      "message": "how about putting the loop body in a separate function\n(more or less the original test_pd_timers_bit_ops)\ninstead of adding another level of nesting?",
+      "range": {
+        "startLine": 61,
+        "startChar": 1,
+        "endLine": 61,
+        "endChar": 66
+      },
+      "revId": "35eb1a913aa3106179e8c5a5ced8d7d0b3115cca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
