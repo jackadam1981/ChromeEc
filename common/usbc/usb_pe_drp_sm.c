@@ -13,6 +13,7 @@
 #include "dps.h"
 #include "driver/tcpm/tcpm.h"
 #include "ec_commands.h"
+#include "gpio.h"
 #include "hooks.h"
 #include "host_command.h"
 #include "stdbool.h"
@@ -4283,11 +4284,22 @@ static void pe_give_status_entry(int port)
 	/* Internal Temp */
 	msg[STATUS_INTERNAL_TEMP] = 0x0;
 
-	/* Present Input */
-	msg[STATUS_PRESENT_INPUT] = 0x0;
-
-	/* Present Battery Input */
-	msg[STATUS_PRESENT_BATTERY_INPUT] = 0x0;
+	/*
+	 * Present Input and Present Battery Input
+	 * The EC external power API only looks for AC power to be present, and
+	 * we only have one fixed battery. First look for AC power, then check
+	 * for battery presence. If neither is true, send 0 for input source.
+	 */
+	if (gpio_get_level(GPIO_AC_PRESENT)) {
+		msg[STATUS_PRESENT_INPUT] = 0x6;
+		msg[STATUS_PRESENT_BATTERY_INPUT] = 0x0;
+	} else if (battery_is_present()) {
+		msg[STATUS_PRESENT_INPUT] = 0x8;
+		msg[STATUS_PRESENT_BATTERY_INPUT] = 0x1;
+	} else {
+		msg[STATUS_PRESENT_INPUT] = 0x0;
+		msg[STATUS_PRESENT_BATTERY_INPUT] = 0x0;
+	}
 
 	/* Event Flags */
 	msg[STATUS_EVENT_FLAGS] = 0x0;
