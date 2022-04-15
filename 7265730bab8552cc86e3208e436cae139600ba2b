@@ -88,6 +88,24 @@
       "parentUuid": "421c66ef_0aa87708",
       "revId": "7265730bab8552cc86e3208e436cae139600ba2b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "06f74d70_15cb06c6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-04-15T17:36:48Z",
+      "side": 1,
+      "message": "We can even go up to 250 mV. IIUC, Vadc dropping to 200mV is only mathematically possible. I believe most resistors of a matrix fall within 10% torelance. Only one or two resistors reach 25%. (https://en.wikipedia.org/wiki/Standard_deviation) The chance there are 10 bad resistors all located in the same row sounds like a miracle.",
+      "parentUuid": "af7eb040_7923a728",
+      "revId": "7265730bab8552cc86e3208e436cae139600ba2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
