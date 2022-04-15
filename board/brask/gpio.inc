@@ -131,7 +131,7 @@ GPIO(LED_RED_L,                      PIN(C, 4), GPIO_OUT_LOW)
 /* USBC */
 GPIO(USB_C0_C2_TCPC_RST_ODL,         PIN(A, 7), GPIO_ODR_LOW)
 GPIO(USB_C1_FRS_EN,                  PIN(9, 4), GPIO_OUT_LOW)
-GPIO(USB_C1_RT_INT_ODL,              PIN(A, 0), GPIO_INPUT)
+GPIO(USB_C1_DP_EN,                   PIN(A, 0), GPIO_OUT_LOW)
 GPIO(USB_C1_RT_RST_R_L,              PIN(0, 2), GPIO_OUT_LOW)
 
 /* GPIO02_P2 to PU */

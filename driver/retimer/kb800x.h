@@ -89,6 +89,7 @@ enum kb800x_eb {
 struct kb800x_control_t {
 	enum gpio_signal retimer_rst_gpio;
 	enum gpio_signal usb_ls_en_gpio;
+	enum gpio_signal dp_en_gpio;
 #ifdef CONFIG_KB800X_CUSTOM_XBAR
 	enum kb800x_ss_lane ss_lanes[KB800X_PHY_LANE_COUNT];
 #endif /* CONFIG_KB800X_CUSTOM_XBAR */
