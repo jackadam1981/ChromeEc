@@ -45,6 +45,30 @@
       },
       "revId": "bd0a3d0d7bae91fe5e3300aef84aa30b7b30ef55",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d378adf_aac906be",
+        "filename": "zephyr/projects/intelrvp/adlrvp/adlrvp_npcx/adlrvp_npcx.dts",
+        "patchSetId": 8
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-04-15T16:28:29Z",
+      "side": 1,
+      "message": "Hi Keith,\nTo keep same h/w between MECC vendors we didn\u0027t use  CONFIG_PLATFORM_EC_HIBERNATE_PSL on RVP (PSL EC GPIO is not controlling DSW rail).",
+      "parentUuid": "6c74852a_5547ff1e",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 22
+      },
+      "revId": "bd0a3d0d7bae91fe5e3300aef84aa30b7b30ef55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
