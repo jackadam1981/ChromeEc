@@ -10,6 +10,45 @@
 #include "usb_pd_timer.h"
 
 /*
+ * Verify the init operation of PD timers.
+ */
+int test_pd_timers_init(void)
+{
+	int bit;
+	int prim_port, sec_port;
+
+	/*
+	 * Initialization calling pd_timer_init will initialize the port's
+	 * active timer to be clear and disabled timer to be set for all mask
+	 * bits
+	 */
+	for (int port = 0; port < CONFIG_USB_PD_PORT_MAX_COUNT; port++) {
+		prim_port = port;
+		sec_port = (port + 1) % CONFIG_USB_PD_PORT_MAX_COUNT;
+		pd_timer_init(prim_port);
+		for (bit = 0; bit < PD_TIMER_COUNT; ++bit)
+			TEST_EQ(PD_CHK_ACTIVE(prim_port, bit), 0, "%d");
+		for (bit = 0; bit < PD_TIMER_COUNT; ++bit)
+			TEST_NE(PD_CHK_DISABLED(prim_port, bit), 0, "%d");
+
+		/*
+		 * Make sure pd_timer_init(sec_port) doesn't affect other ports
+		 */
+		for (bit = 0; bit < PD_TIMER_COUNT; ++bit) {
+			PD_SET_ACTIVE(prim_port, bit);
+			PD_CLR_DISABLED(prim_port, bit);
+		}
+		pd_timer_init(sec_port);
+		for (bit = 0; bit < PD_TIMER_COUNT; ++bit) {
+			TEST_NE(PD_CHK_ACTIVE(prim_port, bit), 0, "%d");
+			TEST_EQ(PD_CHK_DISABLED(prim_port, bit), 0, "%d");
+		}
+	}
+
+	return EC_SUCCESS;
+}
+
+/*
  * Verify the operation of the underlying bit operations underlying the timer
  * module. This is technically redundant with the higher level test below, but
  * it is useful for catching bugs during timer changes.
@@ -17,49 +56,55 @@
 int test_pd_timers_bit_ops(void)
 {
 	int bit;
-	const int port = 0;
+	int prim_port, sec_port;
 
-	/*
-	 * Initialization calling pd_timer_init will initialize the port's
-	 * active timer to be clear and disabled timer to be set for all mask
-	 * bits
-	 */
-	pd_timer_init(port);
-	for (bit = 0; bit < PD_TIMER_COUNT; ++bit)
-		TEST_EQ(PD_CHK_ACTIVE(port, bit), 0, "%d");
-	for (bit = 0; bit < PD_TIMER_COUNT; ++bit)
-		TEST_NE(PD_CHK_DISABLED(port, bit), 0, "%d");
+	for (int port = 0; port < CONFIG_USB_PD_PORT_MAX_COUNT; port++) {
+		prim_port = port;
+		sec_port = (port + 1) % CONFIG_USB_PD_PORT_MAX_COUNT;
 
-	/*
-	 * Set one active bit at a time and verify it is the only bit set. Reset
-	 * the bit on each iteration of the bit loop.
-	 */
-	for (bit = 0; bit < PD_TIMER_COUNT; ++bit) {
-		TEST_EQ(PD_CHK_ACTIVE(port, bit), 0, "%d");
-		PD_SET_ACTIVE(port, bit);
-		for (int i = 0; i < PD_TIMER_COUNT; ++i) {
-			if (i != bit)
-				TEST_EQ(PD_CHK_ACTIVE(port, i), 0, "%d");
-			else
-				TEST_NE(PD_CHK_ACTIVE(port, i), 0, "%d");
+		pd_timer_init(prim_port);
+		pd_timer_init(sec_port);
+		/*
+		 * Set one active bit at a time and verify it is the only bit
+		 * set. Reset the bit on each iteration of the bit loop.
+		 */
+		for (bit = 0; bit < PD_TIMER_COUNT; ++bit) {
+			TEST_EQ(PD_CHK_ACTIVE(prim_port, bit), 0, "%d");
+			PD_SET_ACTIVE(prim_port, bit);
+			for (int i = 0; i < PD_TIMER_COUNT; ++i) {
+				if (i != bit)
+					TEST_EQ(PD_CHK_ACTIVE(prim_port, i), 0,
+						"%d");
+				else
+					TEST_NE(PD_CHK_ACTIVE(prim_port, i), 0,
+						"%d");
+
+				/* Make sure the second port is not affected. */
+				TEST_EQ(PD_CHK_ACTIVE(sec_port, i), 0, "%d");
+			}
+			PD_CLR_ACTIVE(prim_port, bit);
 		}
-		PD_CLR_ACTIVE(port, bit);
-	}
 
-	/*
-	 * Clear one disabled bit at a time and verify it is the only bit clear.
-	 * Reset the bit on each iteration of the bit loop.
-	 */
-	for (bit = 0; bit < PD_TIMER_COUNT; ++bit) {
-		TEST_NE(PD_CHK_DISABLED(port, bit), 0, "%d");
-		PD_CLR_DISABLED(port, bit);
-		for (int i = 0; i < PD_TIMER_COUNT; ++i) {
-			if (i != bit)
-				TEST_NE(PD_CHK_DISABLED(port, i), 0, "%d");
-			else
-				TEST_EQ(PD_CHK_DISABLED(port, i), 0, "%d");
+		/*
+		 * Clear one disabled bit at a time and verify it is the only
+		 * bit clear. Reset the bit on each iteration of the bit loop.
+		 */
+		for (bit = 0; bit < PD_TIMER_COUNT; ++bit) {
+			TEST_NE(PD_CHK_DISABLED(prim_port, bit), 0, "%d");
+			PD_CLR_DISABLED(prim_port, bit);
+			for (int i = 0; i < PD_TIMER_COUNT; ++i) {
+				if (i != bit)
+					TEST_NE(PD_CHK_DISABLED(prim_port, i),
+						0, "%d");
+				else
+					TEST_EQ(PD_CHK_DISABLED(prim_port, i),
+						0, "%d");
+
+				/* Make sure the second port is not affected. */
+				TEST_NE(PD_CHK_DISABLED(sec_port, i), 0, "%d");
+			}
+			PD_SET_DISABLED(prim_port, bit);
 		}
-		PD_SET_DISABLED(port, bit);
 	}
 
 	return EC_SUCCESS;
@@ -157,6 +202,7 @@ int test_pd_timers(void)
 
 void run_test(int argc, char **argv)
 {
+	RUN_TEST(test_pd_timers_init);
 	RUN_TEST(test_pd_timers_bit_ops);
 	RUN_TEST(test_pd_timers);
 
