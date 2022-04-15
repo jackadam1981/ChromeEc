@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d28ddd5c_1d86d79a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1160139
+      },
+      "writtenOn": "2022-04-15T00:30:49Z",
+      "side": 1,
+      "message": "`emerge-volteer chromos-ec` completed successfully.\n`make buildall` failed on oak -- the board will be removed by later CL.\n",
+      "revId": "322abf7a1c2e0ea08b4e3eb60533c5329b8cb816",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
