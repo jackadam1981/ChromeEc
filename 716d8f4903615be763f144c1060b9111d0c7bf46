@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "91e83aa7_25345071",
+        "filename": "zephyr/Kconfig.charger",
+        "patchSetId": 15
+      },
+      "lineNbr": 642,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-04-15T00:17:37Z",
+      "side": 1,
+      "message": "Change to CONFIG_PLATFORM_EC_DEDICATED_CHARGE_PORT",
+      "range": {
+        "startLine": 642,
+        "startChar": 7,
+        "endLine": 642,
+        "endChar": 46
+      },
+      "revId": "716d8f4903615be763f144c1060b9111d0c7bf46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
