@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f44779fb_9d777453",
+        "filename": "zephyr/dts/bindings/leds/cros-ec,pwm-led-pins.yaml",
+        "patchSetId": 10
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-04-15T17:27:10Z",
+      "side": 1,
+      "message": "These properties are common between GPIO and PWM, mostly for supporting the ectool. Better to combine them and move them to another yaml file and include yaml here.\n\nYou can do it in a followup CL.",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 36
+      },
+      "revId": "94704a47731d8ae12dbb34cefe53d06bd11897d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88366e24_59b87107",
+        "filename": "zephyr/shim/src/led_driver/led_gpio.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-04-15T17:27:10Z",
+      "side": 1,
+      "message": "Similar to these functions, they can be shared between GPIO and PWM. Move them to another C file.",
+      "range": {
+        "startLine": 92,
+        "startChar": 0,
+        "endLine": 134,
+        "endChar": 1
+      },
+      "revId": "94704a47731d8ae12dbb34cefe53d06bd11897d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
