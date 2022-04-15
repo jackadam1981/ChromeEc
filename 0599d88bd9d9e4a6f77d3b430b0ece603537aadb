@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f4708ece_c7e1c83c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-04-15T23:56:33Z",
+      "side": 1,
+      "message": "Hi Diana,\ncan you take a look at this CL? It is 1 of 2 CLs which follow up on another CL to add a Status response to Get_Status messages. This CL fills in the Present Input and Present Battery Input fields. It assumes power is either coming from an external AC source or a fixed battery. Let me know if you have any questions.",
+      "revId": "0599d88bd9d9e4a6f77d3b430b0ece603537aadb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
