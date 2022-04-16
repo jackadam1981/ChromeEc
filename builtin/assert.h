@@ -48,6 +48,8 @@ extern noreturn void panic_assert_fail(const char *msg, const char *func,
 #define ARCH_SOFTWARE_BREAKPOINT __asm("break 0")
 #elif defined(__riscv)
 #define ARCH_SOFTWARE_BREAKPOINT __asm("ebreak")
+#elif defined(__i386__) || defined(__x86_64__)
+#define ARCH_SOFTWARE_BREAKPOINT __asm("int3")
 #elif defined(VIF_BUILD)
 /* The genvif utility compiles usb_pd_policy.c and needs an empty definition. */
 #define ARCH_SOFTWARE_BREAKPOINT
