@@ -199,6 +199,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7176cbc3_a29c6695",
+        "filename": "zephyr/shim/src/espi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 579,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-04-16T02:31:47Z",
+      "side": 1,
+      "message": "It\u0027s also a little tricky here since the config can be done before\nthe eSPI bus is up and ready - the original did not actually check for any\nchannel status, but relied on the interrupt to indicate when the\nsignals changed (or the bus was ready).\nSo it may be the wrong place to check for it here.",
+      "parentUuid": "79bcfe07_9abdf4a9",
+      "range": {
+        "startLine": 579,
+        "startChar": 0,
+        "endLine": 579,
+        "endChar": 53
+      },
+      "revId": "3a7f6b006a48786228793916510b4f00179ae366",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1e11084e_0c845af1",
@@ -236,6 +260,30 @@
       "side": 1,
       "message": "Ack",
       "parentUuid": "1e11084e_0c845af1",
+      "range": {
+        "startLine": 117,
+        "startChar": 0,
+        "endLine": 117,
+        "endChar": 49
+      },
+      "revId": "3a7f6b006a48786228793916510b4f00179ae366",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "afb956a2_09660dac",
+        "filename": "zephyr/subsys/ap_pwrseq/signal_vw.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-04-16T02:31:47Z",
+      "side": 1,
+      "message": "Similar to above, but it is likely I\u0027ll need to add this check\nin this code somewhere, but maybe prefer to do it in a different CL.",
+      "parentUuid": "3d36eb66_eec8c2f5",
       "range": {
         "startLine": 117,
         "startChar": 0,
