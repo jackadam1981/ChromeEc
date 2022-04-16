@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f2457f3_cfe331df",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-04-16T00:40:42Z",
+      "side": 1,
+      "message": "So the primaary motivation for this was seeing that this operation was being done twice, and since I observed that some of the config items actually set registers in the Nuvoton driver, there is potential for having config mismatches, hence moving it somewhere common. I agree that it may not be that useful for driving the config entirely by DTS, seeing that we have a consistent config for all chromebooks, just wasn\u0027t sure about that.\nMaybe a reasonable compromise is to use Kconfig to set some defaults up.\nI could add that as a TODO, in case we need it sometime.\n",
+      "revId": "3a7f6b006a48786228793916510b4f00179ae366",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4e0ccb46_e9868ac7",
@@ -31,6 +48,30 @@
       "writtenOn": "2022-04-14T22:31:41Z",
       "side": 1,
       "message": "These channel capabilities are the same for all boards.  Have espi_init.c set the `.channel_caps` to a fixed value, I don\u0027t think we need this control in the devicetree at the moment.",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 0
+      },
+      "revId": "3a7f6b006a48786228793916510b4f00179ae366",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d65c259_1c861713",
+        "filename": "zephyr/dts/bindings/cros_shi/cros-shi,espi.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-04-16T00:40:42Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "4e0ccb46_e9868ac7",
       "range": {
         "startLine": 42,
         "startChar": 0,
@@ -87,6 +128,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee4b1861_053c3830",
+        "filename": "zephyr/include/dt-bindings/espi.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-04-16T00:40:42Z",
+      "side": 1,
+      "message": "If we are always using QUAD lines, we can likely avoid this file altogether and just hard code it in the init.",
+      "parentUuid": "2f224f9a_19dc2134",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 0
+      },
+      "revId": "3a7f6b006a48786228793916510b4f00179ae366",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2a1bba79_83429760",
@@ -110,6 +175,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "79bcfe07_9abdf4a9",
+        "filename": "zephyr/shim/src/espi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 579,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-04-16T00:40:42Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "2a1bba79_83429760",
+      "range": {
+        "startLine": 579,
+        "startChar": 0,
+        "endLine": 579,
+        "endChar": 53
+      },
+      "revId": "3a7f6b006a48786228793916510b4f00179ae366",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1e11084e_0c845af1",
@@ -123,6 +212,30 @@
       "writtenOn": "2022-04-14T22:31:41Z",
       "side": 1,
       "message": "Use `espi_get_channel_status()` to verify that eSPI has been setup.",
+      "range": {
+        "startLine": 117,
+        "startChar": 0,
+        "endLine": 117,
+        "endChar": 49
+      },
+      "revId": "3a7f6b006a48786228793916510b4f00179ae366",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d36eb66_eec8c2f5",
+        "filename": "zephyr/subsys/ap_pwrseq/signal_vw.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-04-16T00:40:42Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "1e11084e_0c845af1",
       "range": {
         "startLine": 117,
         "startChar": 0,
