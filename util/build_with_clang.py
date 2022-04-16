@@ -79,6 +79,34 @@ BOARDS_THAT_COMPILE_SUCCESSFULLY_WITH_CLANG = [
     'volet',
     'voxel',
     'woomax',
+# The following compile, but run out of space:
+    #'fennel',
+    #'kodama',
+    #'makomo',
+    #'halvor',
+    #'malefor',
+    #'terrador',
+    #'lingcod',
+    #'volteer',
+    #'todor',
+    #'trondo',
+    #'servo_v4',
+    #'jacuzzi',
+    #'stern',
+    #'burnet',
+    #'damu',
+    #'willow',
+    #'oak',
+    #'kappa',         # enough space when reverting use of compiler-rt
+    #'fusb307bgevb',  # enough space when reverting use of compiler-rt
+# Other errors:
+    #'fluffy',
+# ld.lld: error: undefined symbol: __aeabi_memclr4
+    #'rainier',
+    #'scarlet',
+    #'elm',
+# ld.lld: error: undefined symbol: __atomic_load_4
+    #'chocodile_vpdmcu',
 ]
 
 
