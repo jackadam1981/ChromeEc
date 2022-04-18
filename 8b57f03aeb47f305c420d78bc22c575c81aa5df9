@@ -107,6 +107,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6e9e42a3_6b79ffcc",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 4284,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-04-18T23:26:56Z",
+      "side": 1,
+      "message": "If you expect to populate all this stuff eventually, then leave a TODO with a bug.",
+      "revId": "8b57f03aeb47f305c420d78bc22c575c81aa5df9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "dc01aa36_e01ca332",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 5
