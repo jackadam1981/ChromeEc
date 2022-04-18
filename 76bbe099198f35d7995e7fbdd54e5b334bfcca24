@@ -16,6 +16,23 @@
       "message": "This code seems to work fine for a sysjump RW (it needs to also have chromium:3586352)",
       "revId": "76bbe099198f35d7995e7fbdd54e5b334bfcca24",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c748cc46_4c865aaf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-04-18T06:16:48Z",
+      "side": 1,
+      "message": "Looks fine except the 5s delay, isn\u0027t it too long? Add Vijay who originally implemented the solution to keep same power state during sysjump to review the code. \nAlso does system_jumped_to_this_image() return the true jumped or not by the time pwrseq_init() is called? ",
+      "revId": "76bbe099198f35d7995e7fbdd54e5b334bfcca24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
