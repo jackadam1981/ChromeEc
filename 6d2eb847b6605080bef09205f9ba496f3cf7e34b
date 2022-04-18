@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5f4701f_7fccd897",
+        "filename": "zephyr/drivers/cros_kb_raw/cros_kb_raw_xec.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-04-18T20:09:24Z",
+      "side": 1,
+      "message": "Can you use `cfg-\u003eirq` here?",
+      "range": {
+        "startLine": 63,
+        "startChar": 13,
+        "endLine": 63,
+        "endChar": 47
+      },
+      "revId": "6d2eb847b6605080bef09205f9ba496f3cf7e34b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cca28c31_37340df3",
+        "filename": "zephyr/drivers/cros_kb_raw/cros_kb_raw_xec.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-04-18T20:09:24Z",
+      "side": 1,
+      "message": "Same here: `cfg-\u003eirq`.",
+      "range": {
+        "startLine": 66,
+        "startChar": 14,
+        "endLine": 66,
+        "endChar": 48
+      },
+      "revId": "6d2eb847b6605080bef09205f9ba496f3cf7e34b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a872c71c_ab35556a",
+        "filename": "zephyr/drivers/cros_kb_raw/cros_kb_raw_xec.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-04-18T20:09:24Z",
+      "side": 1,
+      "message": "This seems unnecessary because you\u0027re also always clearing the interrupt status before enabling the interrupt.\n\nAlso, considering the keyboard_scan code repeatedly enables and disables the interrupt, should pending interrupts be cleared during the enable path? Can this cause missed key events?\n\nI see that the init path also clears out pending interrupts.",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 61
+      },
+      "revId": "6d2eb847b6605080bef09205f9ba496f3cf7e34b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "019061a2_6aebf802",
+        "filename": "zephyr/drivers/cros_kb_raw/cros_kb_raw_xec.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-04-18T20:09:24Z",
+      "side": 1,
+      "message": "`cros_kb_raw_set_col2()` already as this guard, you don\u0027t need to duplicate it here.",
+      "range": {
+        "startLine": 98,
+        "startChar": 0,
+        "endLine": 98,
+        "endChar": 60
+      },
+      "revId": "6d2eb847b6605080bef09205f9ba496f3cf7e34b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "47d5ae75_ad9a76f0",
+        "filename": "zephyr/drivers/cros_kb_raw/cros_kb_raw_xec.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-04-18T20:09:24Z",
+      "side": 1,
+      "message": "Same here, this guard isn\u0027t needed.",
+      "range": {
+        "startLine": 107,
+        "startChar": 0,
+        "endLine": 107,
+        "endChar": 60
+      },
+      "revId": "6d2eb847b6605080bef09205f9ba496f3cf7e34b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "47f91fe8_0559f0cc",
+        "filename": "zephyr/drivers/cros_kb_raw/cros_kb_raw_xec.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-04-18T20:09:24Z",
+      "side": 1,
+      "message": "This sequence is duplicated in the enable_interrupt path, here, and during init.  If at least 2 of these are actually needed, please create a helper function.",
+      "range": {
+        "startLine": 112,
+        "startChar": 0,
+        "endLine": 116,
+        "endChar": 35
+      },
+      "revId": "6d2eb847b6605080bef09205f9ba496f3cf7e34b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
