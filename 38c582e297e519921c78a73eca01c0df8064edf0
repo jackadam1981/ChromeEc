@@ -50,6 +50,24 @@
       "message": "0 (last timestamp) is incorrect.",
       "revId": "38c582e297e519921c78a73eca01c0df8064edf0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a7f2fb9_66204248",
+        "filename": "driver/accel_lis2ds.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1248412
+      },
+      "writtenOn": "2022-04-18T09:15:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "20de0544_b0d0827c",
+      "revId": "38c582e297e519921c78a73eca01c0df8064edf0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
