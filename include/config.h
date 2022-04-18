@@ -1849,7 +1849,7 @@
  *
  * Boards may #undef this to reduce image size.
  */
-#define CONFIG_DEBUG_ASSERT_REBOOTS
+#undef CONFIG_DEBUG_ASSERT_REBOOTS
 
 /*
  * On assertion failure, prints only the file name and the line number.
