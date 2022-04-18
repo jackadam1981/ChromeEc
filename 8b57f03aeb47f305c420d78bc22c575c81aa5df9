@@ -20,6 +20,41 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "79b7949a_063dc5fe",
+        "filename": "common/usb_common.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1059,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-04-18T23:25:18Z",
+      "side": 1,
+      "message": "Unless there\u0027s some alternative action to take with a PD 2.0 connection, it seems easier to just fire and forget to the PE, and the PE can ignore the request if it\u0027s 2.0.",
+      "parentUuid": "aabc07e2_b1ca6589",
+      "revId": "8b57f03aeb47f305c420d78bc22c575c81aa5df9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69f2e1ca_0f101ac3",
+        "filename": "common/usb_common.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1060,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-04-18T23:25:18Z",
+      "side": 1,
+      "message": "Does this need to be synchronized?",
+      "revId": "8b57f03aeb47f305c420d78bc22c575c81aa5df9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f50f40f3_50b967bc",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 5
@@ -54,6 +89,41 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cfd45c43_c2886537",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 4284,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-04-18T23:25:18Z",
+      "side": 1,
+      "message": "Some of the items in here aren\u0027t very related to PD as far as our codebase is concerned. I think it would be nice going forward if the DPM acted as an interface between the PD stack and the rest of the system. (This would fit well with what Sam is currently doing upstream in Zephyr.) So maybe we could have a function like `dpm_get_status_msg` or `dpm_populate_status_msg` that handled all the GPIO polling and sensor checking and whatever else we need to do to get this info.",
+      "parentUuid": "d1b98dd4_e6efa97b",
+      "revId": "8b57f03aeb47f305c420d78bc22c575c81aa5df9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc01aa36_e01ca332",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 4306,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-04-18T23:25:18Z",
+      "side": 1,
+      "message": "Oddly, the spec doesn\u0027t seem to contemplate this process failing, but I think we should be bailing out if we fail to transmit, similar to most of our other message sending states. (We don\u0027t seem to do this in Give_Battery_Status either. Maybe I\u0027m missing something.)",
+      "revId": "8b57f03aeb47f305c420d78bc22c575c81aa5df9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "464bee52_229aaf61",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 5
@@ -65,6 +135,40 @@
       "writtenOn": "2022-04-18T20:20:20Z",
       "side": 1,
       "message": "This should go back to source or sink ready as appropriate",
+      "revId": "8b57f03aeb47f305c420d78bc22c575c81aa5df9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4fe3b58c_ebbfd7a4",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 4326,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-04-18T23:25:18Z",
+      "side": 1,
+      "message": "All data objects are 4 bytes. Scanning through usb_pd.h, it looks like we would typically just set `len` to something like `sizeof(uint32_t)` or `sizeof(uint32_t) * ALERT_MAX_OBJECTS`. You\u0027d have to `#define ALERT_MAX_OBJECTS 1`.",
+      "revId": "8b57f03aeb47f305c420d78bc22c575c81aa5df9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "660b2b90_17cc83eb",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 4335,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-04-18T23:25:18Z",
+      "side": 1,
+      "message": "Should we retry if sending fails? If so, should we leave this field populated until it succeeds?",
       "revId": "8b57f03aeb47f305c420d78bc22c575c81aa5df9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
