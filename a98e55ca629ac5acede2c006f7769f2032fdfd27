@@ -39,6 +39,29 @@
       },
       "revId": "a98e55ca629ac5acede2c006f7769f2032fdfd27",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0cd817cf_75cf79f8",
+        "filename": "include/compile_time_macros.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-04-18T15:39:49Z",
+      "side": 1,
+      "message": "When possible, I tend to prefer functions over macros when there are multiple lines since you don\u0027t have to do all the escaping and `do while` wrapping. If you\u0027re worried about the overhead of the function call you could try `inline`, but if this ends up being used in a lot of places having a regular function may help with code size.",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 93,
+        "endChar": 12
+      },
+      "revId": "a98e55ca629ac5acede2c006f7769f2032fdfd27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
