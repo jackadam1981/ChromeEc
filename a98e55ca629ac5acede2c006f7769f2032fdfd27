@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3eb3f200_919d1991",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-04-18T17:22:11Z",
+      "side": 1,
+      "message": "Moved to a +1 for the discussion on inlines.",
+      "revId": "a98e55ca629ac5acede2c006f7769f2032fdfd27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2c18511c_6695bf82",
@@ -78,6 +95,30 @@
       "side": 1,
       "message": "I see your point about readability, especially the escaping part.\n\nI was wondering if in this case the type of `reg` is expected to be always the same. One advantage of the MACRO is that it works for multiple data types.\n\nIf in this context `reg` is always going to be a `uint32_t` then it shouldn\u0027t make a difference. However, if we need to handle multiple types (e.g. `uint16_t` and `uint64_t`) then I suspect we will need multiple functions, each one with its own tests.",
       "parentUuid": "0cd817cf_75cf79f8",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 93,
+        "endChar": 12
+      },
+      "revId": "a98e55ca629ac5acede2c006f7769f2032fdfd27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea58c2e8_0a0c3c99",
+        "filename": "include/compile_time_macros.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-04-18T17:22:11Z",
+      "side": 1,
+      "message": "I was thinking the same thing at first didn\u0027t comment on it because macros seem to already be commonly used. Inlines are definitely more readable and robust.",
+      "parentUuid": "2c9d60a2_8efce113",
       "range": {
         "startLine": 87,
         "startChar": 0,
