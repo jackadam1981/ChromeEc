@@ -333,6 +333,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee5358f0_66dc1939",
+        "filename": "board/moli/sensors.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1528037
+      },
+      "writtenOn": "2022-04-18T10:42:37Z",
+      "side": 1,
+      "message": "Modify the value to 697.8mA\n20/(20+8.66) \u003d 697.8",
+      "parentUuid": "db5bb80b_ecef908e",
+      "range": {
+        "startLine": 49,
+        "startChar": 23,
+        "endLine": 49,
+        "endChar": 39
+      },
+      "revId": "7df0c90ab3751112a496b5af1e260ad6d8e64bf5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "db575fd9_9d8b207f",
@@ -356,6 +380,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "51b71c32_e2c05649",
+        "filename": "board/moli/sensors.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1528037
+      },
+      "writtenOn": "2022-04-18T10:42:37Z",
+      "side": 1,
+      "message": "20/(20+8.66) \u003d 1000/1433",
+      "parentUuid": "db575fd9_9d8b207f",
+      "range": {
+        "startLine": 52,
+        "startChar": 31,
+        "endLine": 52,
+        "endChar": 35
+      },
+      "revId": "7df0c90ab3751112a496b5af1e260ad6d8e64bf5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d8586406_d9cd44d0",
@@ -369,6 +417,30 @@
       "writtenOn": "2022-04-09T05:46:26Z",
       "side": 1,
       "message": "how to get this value?",
+      "range": {
+        "startLine": 53,
+        "startChar": 37,
+        "endLine": 53,
+        "endChar": 41
+      },
+      "revId": "7df0c90ab3751112a496b5af1e260ad6d8e64bf5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "992f2f14_8692369f",
+        "filename": "board/moli/sensors.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1528037
+      },
+      "writtenOn": "2022-04-18T10:42:37Z",
+      "side": 1,
+      "message": "Modify the value to 1000\n20/(20+8.66) \u003d 1000/1433",
+      "parentUuid": "d8586406_d9cd44d0",
       "range": {
         "startLine": 53,
         "startChar": 37,
