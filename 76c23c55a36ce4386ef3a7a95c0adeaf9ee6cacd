@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "635d5f0f_046af7ad",
+        "filename": "zephyr/drivers/cros_shi/espi_init.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-04-18T19:49:49Z",
+      "side": 1,
+      "message": "This isn\u0027t the correct location for this file.  \"shi\" is the SPI Host interface used with ARM based APs.\n\nYou should must move the `espi_config()` back into `zephyr_shim_setup_espi()`.  To fix the original problem, you just need to delete the `espi_config()` done by the VW driver.",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 63
+      },
+      "revId": "76c23c55a36ce4386ef3a7a95c0adeaf9ee6cacd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "98b3a90e_8331af50",
+        "filename": "zephyr/shim/src/hooks.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-04-18T19:49:49Z",
+      "side": 1,
+      "message": "This can also be reverted once you restore `zephyr_shim_setup_espi()`.",
+      "range": {
+        "startLine": 116,
+        "startChar": 0,
+        "endLine": 116,
+        "endChar": 50
+      },
+      "revId": "76c23c55a36ce4386ef3a7a95c0adeaf9ee6cacd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
