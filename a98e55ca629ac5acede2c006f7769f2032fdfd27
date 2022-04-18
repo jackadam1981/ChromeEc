@@ -16,6 +16,29 @@
       "message": "Ping.",
       "revId": "a98e55ca629ac5acede2c006f7769f2032fdfd27",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c18511c_6695bf82",
+        "filename": "include/compile_time_macros.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-04-18T15:31:10Z",
+      "side": 1,
+      "message": "It\u0027s not super critical but while we\u0027re adding SET, CLR, and UPDATE it may be worth adding a TOGGLE macro too. If you\u0027d prefer I could just push that into a subsequent CL.",
+      "range": {
+        "startLine": 86,
+        "startChar": 8,
+        "endLine": 86,
+        "endChar": 15
+      },
+      "revId": "a98e55ca629ac5acede2c006f7769f2032fdfd27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
