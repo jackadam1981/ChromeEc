@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9037220_3354501e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-04-18T20:21:36Z",
+      "side": 1,
+      "message": "I updated the patch to accommodate most requests/suggestions: \n\n- Removed do..while(0) (and renamed to WRITE_BIT).\n- Replaced SET_BIT \u0026 CLR_BIT with WRITE_BIT.\n- Added tests for uint8_t and uint16_t.",
+      "revId": "05ebd695f2ab3796fa90b1cb5ddf0b4341e641b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
