@@ -34,6 +34,24 @@
       "parentUuid": "63206aa4_d6d9bdb8",
       "revId": "4bf209792649501851ea8cee2f408e5dcde396f2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5bc4bc21_da75fc73",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-04-18T19:52:41Z",
+      "side": 1,
+      "message": "reverting this change also swaps the C0_OC and C0_FRS pin assignments.\nwhich is the correct? the revert won\u0027t match the schematics i can see.\n\nwill it help so only remove:\n #define CONFIG_USB_PD_FRS_PPC",
+      "parentUuid": "e7b21014_81eba92f",
+      "revId": "4bf209792649501851ea8cee2f408e5dcde396f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
