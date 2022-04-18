@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b0b4ccf_62514c29",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-04-18T23:33:03Z",
+      "side": 1,
+      "message": "Assuming that I understand your last test correctly, LGTM modulo comment clarification.",
+      "revId": "fee9777cb64424e6580ec70cdc354d26e3f52eeb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f23fe87_77e30a01",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_pd_ctrl_msg.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-04-18T23:33:03Z",
+      "side": 1,
+      "message": "I\u0027m not exactly sure what you mean here, but the initial states of the TCPM are either Source/DFP or Sink/UFP. IIUC, what will happen here is that the TCPM will have initial state Sink/UFP, then DR swap to DFP according to policy. Then, the test will cause the TCPM to swap back to UFP. If that\u0027s right, can you break your first \"brought up\" step down into 2 steps to clarify?",
+      "revId": "fee9777cb64424e6580ec70cdc354d26e3f52eeb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

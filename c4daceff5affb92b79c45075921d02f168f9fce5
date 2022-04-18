@@ -71,6 +71,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dec85d2d_3606ba67",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_pd_ctrl_msg.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-04-18T23:33:03Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "837683a4_15beba8c",
+      "revId": "c4daceff5affb92b79c45075921d02f168f9fce5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9a7422be_e0258157",
