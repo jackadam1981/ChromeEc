@@ -60,6 +60,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ffa8189e_367e6c2f",
+        "filename": "docs/zephyr/zephyr_ap_pwrseq.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2022-04-18T22:02:19Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b45b554c_562fed26",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 0
+      },
+      "revId": "3c077010de44f00bded93a662bb407ebb7f146b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "45736c83_65ed2371",
         "filename": "docs/zephyr/zephyr_ap_pwrseq.md",
         "patchSetId": 3
@@ -71,6 +95,30 @@
       "writtenOn": "2022-04-18T19:22:32Z",
       "side": 1,
       "message": "Note - in my suggestions I avoided using the acronym \"PS\".  I don\u0027t think this acronym help readability, and it doesn\u0027t seem to be used in the code.",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 19
+      },
+      "revId": "3c077010de44f00bded93a662bb407ebb7f146b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f8a0c6b_56753095",
+        "filename": "docs/zephyr/zephyr_ap_pwrseq.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2022-04-18T22:02:19Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "45736c83_65ed2371",
       "range": {
         "startLine": 28,
         "startChar": 0,
@@ -106,6 +154,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4ba2a694_7f038f01",
+        "filename": "docs/zephyr/zephyr_ap_pwrseq.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2022-04-18T22:02:19Z",
+      "side": 1,
+      "message": "Ack, thanks for this suggestion.",
+      "parentUuid": "2137b687_44ce2209",
+      "range": {
+        "startLine": 30,
+        "startChar": 1,
+        "endLine": 34,
+        "endChar": 59
+      },
+      "revId": "3c077010de44f00bded93a662bb407ebb7f146b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f1a9817a_ede5cefb",
         "filename": "docs/zephyr/zephyr_ap_pwrseq.md",
         "patchSetId": 3
@@ -117,6 +189,30 @@
       "writtenOn": "2022-04-18T19:22:32Z",
       "side": 1,
       "message": "Please provide a link to where the enumeration is defined.",
+      "range": {
+        "startLine": 36,
+        "startChar": 30,
+        "endLine": 36,
+        "endChar": 46
+      },
+      "revId": "3c077010de44f00bded93a662bb407ebb7f146b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a31022f_a8307e3d",
+        "filename": "docs/zephyr/zephyr_ap_pwrseq.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2022-04-18T22:02:19Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "f1a9817a_ede5cefb",
       "range": {
         "startLine": 36,
         "startChar": 30,
@@ -152,6 +248,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "876a6a21_300c2f82",
+        "filename": "docs/zephyr/zephyr_ap_pwrseq.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2022-04-18T22:02:19Z",
+      "side": 1,
+      "message": "This is currently only supported for Intel, I should mention it, or once we have a generic implementation for this we can update links.",
+      "parentUuid": "c66e12d4_5a2e9584",
+      "range": {
+        "startLine": 38,
+        "startChar": 56,
+        "endLine": 39,
+        "endChar": 25
+      },
+      "revId": "3c077010de44f00bded93a662bb407ebb7f146b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ee449873_24aec201",
         "filename": "docs/zephyr/zephyr_ap_pwrseq.md",
         "patchSetId": 3
@@ -163,6 +283,30 @@
       "writtenOn": "2022-04-18T19:22:32Z",
       "side": 1,
       "message": "Intel",
+      "range": {
+        "startLine": 41,
+        "startChar": 50,
+        "endLine": 41,
+        "endChar": 55
+      },
+      "revId": "3c077010de44f00bded93a662bb407ebb7f146b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0da68bc_c162d1b1",
+        "filename": "docs/zephyr/zephyr_ap_pwrseq.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2022-04-18T22:02:19Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ee449873_24aec201",
       "range": {
         "startLine": 41,
         "startChar": 50,
@@ -198,6 +342,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0021acb3_8a3b75a2",
+        "filename": "docs/zephyr/zephyr_ap_pwrseq.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2022-04-18T22:02:19Z",
+      "side": 1,
+      "message": "I wanted to provide an example on how the power sequence access the power signal values. I will mention this intention.",
+      "parentUuid": "7c958e8c_679dda95",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 81,
+        "endChar": 0
+      },
+      "revId": "3c077010de44f00bded93a662bb407ebb7f146b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d0efcf2a_ea8282f7",
         "filename": "docs/zephyr/zephyr_ap_pwrseq.md",
         "patchSetId": 3
@@ -209,6 +377,30 @@
       "writtenOn": "2022-04-18T19:22:32Z",
       "side": 1,
       "message": "Use the full compatible name: `intel,ap-pwerseq-external\".\n\nAlthough, why is the vendor set to `intel` for all these drivers?  There isn\u0027t any specific to Intel for processing GPIOs or ADCs, for instance.",
+      "range": {
+        "startLine": 83,
+        "startChar": 68,
+        "endLine": 83,
+        "endChar": 76
+      },
+      "revId": "3c077010de44f00bded93a662bb407ebb7f146b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "194221f5_f1972f53",
+        "filename": "docs/zephyr/zephyr_ap_pwrseq.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2022-04-18T22:02:19Z",
+      "side": 1,
+      "message": "Ack, currently power signals C code has:\n#define MY_COMPAT       intel_ap_pwrseq_xxx\n\nI will provide generic version of this then.",
+      "parentUuid": "d0efcf2a_ea8282f7",
       "range": {
         "startLine": 83,
         "startChar": 68,
@@ -244,6 +436,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "39c6d665_5b9c37b1",
+        "filename": "docs/zephyr/zephyr_ap_pwrseq.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2022-04-18T22:02:19Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a8275800_7674f17c",
+      "range": {
+        "startLine": 107,
+        "startChar": 0,
+        "endLine": 107,
+        "endChar": 12
+      },
+      "revId": "3c077010de44f00bded93a662bb407ebb7f146b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2120c48b_e4e58d9d",
         "filename": "docs/zephyr/zephyr_ap_pwrseq.md",
         "patchSetId": 3
@@ -267,6 +483,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "112133f7_efbbb174",
+        "filename": "docs/zephyr/zephyr_ap_pwrseq.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2022-04-18T22:02:19Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "2120c48b_e4e58d9d",
+      "range": {
+        "startLine": 115,
+        "startChar": 0,
+        "endLine": 123,
+        "endChar": 0
+      },
+      "revId": "3c077010de44f00bded93a662bb407ebb7f146b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a24288b6_4d73c49c",
         "filename": "docs/zephyr/zephyr_ap_pwrseq.md",
         "patchSetId": 3
@@ -278,6 +518,30 @@
       "writtenOn": "2022-04-18T19:22:32Z",
       "side": 1,
       "message": "Why is the priority fixed?  Should a Kconfig option be provided to set the priority.  Also, why is 8 a good choice?  It would be good to describe which threads the power sequencing should be higher and lower than.",
+      "range": {
+        "startLine": 128,
+        "startChar": 0,
+        "endLine": 128,
+        "endChar": 16
+      },
+      "revId": "3c077010de44f00bded93a662bb407ebb7f146b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7bdbe8a_aa26052e",
+        "filename": "docs/zephyr/zephyr_ap_pwrseq.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2022-04-18T22:02:19Z",
+      "side": 1,
+      "message": "This is the way is currently on code, adding Kconfig sounds like a better option.",
+      "parentUuid": "a24288b6_4d73c49c",
       "range": {
         "startLine": 128,
         "startChar": 0,
