@@ -51,6 +51,46 @@
       "message": "Hi Denis,\nUnderstand that. \nI added Keith S. in this CL to see if he can add engineer into, who is familiar with EC image generation process.\n",
       "revId": "1306d71db903ea7cdf4e0b688725ad73dce64ca2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5fb6f3f5_611f7248",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-04-18T22:31:50Z",
+      "side": 1,
+      "message": "Can you verify that the image works? Do we have a valid build? It would be nice to include that in the TEST\u003d line if possible.",
+      "revId": "1306d71db903ea7cdf4e0b688725ad73dce64ca2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "455402af_69bec60b",
+        "filename": "zephyr/zmake/zmake/output_packers.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-04-18T22:31:50Z",
+      "side": 1,
+      "message": "This doesn\u0027t seem to do anything, please remove",
+      "range": {
+        "startLine": 234,
+        "startChar": 1,
+        "endLine": 244,
+        "endChar": 35
+      },
+      "revId": "1306d71db903ea7cdf4e0b688725ad73dce64ca2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
