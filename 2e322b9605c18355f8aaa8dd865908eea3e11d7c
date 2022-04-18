@@ -70,6 +70,30 @@
       },
       "revId": "2e322b9605c18355f8aaa8dd865908eea3e11d7c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "de36abf3_66c217ca",
+        "filename": "zephyr/projects/intelrvp/src/intelrvp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-04-18T22:20:04Z",
+      "side": 1,
+      "message": "Done\nOkay. Legacy EC CL:2134326",
+      "parentUuid": "e9a30c3d_ba8c0d0d",
+      "range": {
+        "startLine": 21,
+        "startChar": 39,
+        "endLine": 23,
+        "endChar": 19
+      },
+      "revId": "2e322b9605c18355f8aaa8dd865908eea3e11d7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
