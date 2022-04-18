@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a0ef7e7_eacc30b8",
+        "filename": "zephyr/drivers/cros_shi/espi_init.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-04-18T22:46:36Z",
+      "side": 1,
+      "message": "It\u0027s always hard to know where to put things.\nNow that the config is hard-coded, much less reason to move things around.\nI had a bit of an idea that this could be the start of migrating the shimmed code, but likely needs more planning for this.",
+      "parentUuid": "635d5f0f_046af7ad",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 63
+      },
+      "revId": "76c23c55a36ce4386ef3a7a95c0adeaf9ee6cacd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "98b3a90e_8331af50",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-04-18T19:49:49Z",
       "side": 1,
       "message": "This can also be reverted once you restore `zephyr_shim_setup_espi()`.",
+      "range": {
+        "startLine": 116,
+        "startChar": 0,
+        "endLine": 116,
+        "endChar": 50
+      },
+      "revId": "76c23c55a36ce4386ef3a7a95c0adeaf9ee6cacd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0bca0838_36416a92",
+        "filename": "zephyr/shim/src/hooks.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-04-18T22:46:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "98b3a90e_8331af50",
       "range": {
         "startLine": 116,
         "startChar": 0,
