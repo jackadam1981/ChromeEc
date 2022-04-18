@@ -76,6 +76,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "621370ee_6b5c9237",
+        "filename": "board/moli/board.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1528037
+      },
+      "writtenOn": "2022-04-18T10:11:25Z",
+      "side": 1,
+      "message": "Already modify the value after confirming with EE.\nRear type A ports: 913-1128mA",
+      "parentUuid": "e1902168_9903dc48",
+      "range": {
+        "startLine": 117,
+        "startChar": 29,
+        "endLine": 117,
+        "endChar": 33
+      },
+      "revId": "7df0c90ab3751112a496b5af1e260ad6d8e64bf5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4ca1238a_34e3d9bd",
@@ -89,6 +113,30 @@
       "writtenOn": "2022-04-14T18:09:17Z",
       "side": 1,
       "message": "Since the load switch U4012 is shared for both HDMI ports this should be set higher (~1200 ma).",
+      "range": {
+        "startLine": 119,
+        "startChar": 29,
+        "endLine": 119,
+        "endChar": 32
+      },
+      "revId": "7df0c90ab3751112a496b5af1e260ad6d8e64bf5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0c22691_ccfdbd2c",
+        "filename": "board/moli/board.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1528037
+      },
+      "writtenOn": "2022-04-18T10:11:25Z",
+      "side": 1,
+      "message": "Already modify the value after confirming with EE.",
+      "parentUuid": "4ca1238a_34e3d9bd",
       "range": {
         "startLine": 119,
         "startChar": 29,
@@ -240,6 +288,24 @@
       "writtenOn": "2022-04-09T05:46:26Z",
       "side": 1,
       "message": "add a newline",
+      "revId": "7df0c90ab3751112a496b5af1e260ad6d8e64bf5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa867f02_6d19c70e",
+        "filename": "board/moli/led.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1528037
+      },
+      "writtenOn": "2022-04-18T10:11:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a853238c_9411e1f7",
       "revId": "7df0c90ab3751112a496b5af1e260ad6d8e64bf5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
