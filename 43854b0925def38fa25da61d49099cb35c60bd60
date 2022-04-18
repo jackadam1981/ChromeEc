@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2b53615_97b71f5b",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_pd_ctrl_msg.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2022-04-18T22:12:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0668a354_f516e5cc",
+      "range": {
+        "startLine": 224,
+        "startChar": 0,
+        "endLine": 227,
+        "endChar": 0
+      },
+      "revId": "43854b0925def38fa25da61d49099cb35c60bd60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c6c69df8_c811429c",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-04-18T18:15:54Z",
       "side": 1,
       "message": "\"the TCPM not being initial UFP.\"",
+      "range": {
+        "startLine": 239,
+        "startChar": 33,
+        "endLine": 239,
+        "endChar": 46
+      },
+      "revId": "43854b0925def38fa25da61d49099cb35c60bd60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "04cfc08f_44fed7c6",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_pd_ctrl_msg.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2022-04-18T22:12:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c6c69df8_c811429c",
       "range": {
         "startLine": 239,
         "startChar": 33,
@@ -64,6 +112,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e91b73ab_c6152a6a",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_pd_ctrl_msg.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2022-04-18T22:12:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eb920a4e_6b2faf3e",
+      "revId": "43854b0925def38fa25da61d49099cb35c60bd60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8639351d_7ed67529",
@@ -77,6 +143,24 @@
       "writtenOn": "2022-04-18T18:15:54Z",
       "side": 1,
       "message": "If possible, I\u0027d like to avoid committing code with known bugs. If this test isn\u0027t ready yet, maybe split it into its own CL and merge the other ones?\n\nBut IIUC, you\u0027re trying to trigger the TCPM to swap from UFP to DFP, but after your setup, you\u0027re already DFP. If that\u0027s the case, you could probably just swap from DFP to UFP and then back to DFP using 2 host commands.",
+      "revId": "43854b0925def38fa25da61d49099cb35c60bd60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd9b8731_d9a1f91c",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_pd_ctrl_msg.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2022-04-18T22:12:25Z",
+      "side": 1,
+      "message": "As discussed offline, I\u0027ll move the DPM handling for DR swap to  `common_src_snk_dpm_requests`",
+      "parentUuid": "8639351d_7ed67529",
       "revId": "43854b0925def38fa25da61d49099cb35c60bd60",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
