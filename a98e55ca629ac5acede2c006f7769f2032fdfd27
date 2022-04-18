@@ -127,6 +127,30 @@
       },
       "revId": "a98e55ca629ac5acede2c006f7769f2032fdfd27",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c053c1ef_c0b7b9d2",
+        "filename": "include/compile_time_macros.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2022-04-18T17:48:29Z",
+      "side": 1,
+      "message": "Precedent isn\u0027t always right, but do note that we have this macro for npcx. Consolidation would be nice.\n\nhttps://crsrc.org/o/src/platform/ec/chip/npcx/registers.h;l\u003d23-26",
+      "parentUuid": "ea58c2e8_0a0c3c99",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 93,
+        "endChar": 12
+      },
+      "revId": "a98e55ca629ac5acede2c006f7769f2032fdfd27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
