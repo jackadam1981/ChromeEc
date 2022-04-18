@@ -63,6 +63,23 @@
       "message": "Our power team verified with these patches charger can enter bypass mode by battery +barrel adapter.\n\nEC console:\n22-04-18 13:55:18.569 \u003e [35.563006 BJ connected]                                \n22-04-18 13:55:47.386 [35.563439 Changing charge port to 2 (current port\u003d-1 sup]\n22-04-18 13:55:47.392 [35.564852 Succeeded to disable sink path C0 (0).]        \n22-04-18 13:55:47.397 [35.565349 BJ power is enabled]                           \n22-04-18 13:55:47.399 [35.566920 Succeeded nvdc_chrg -\u003e nvdc]                   \n22-04-18 13:55:47.402 [35.576278 Succeeded nvdc -\u003e bypass]                      \n22-04-18 13:55:47.407 [35.576606 New charger p2]                                \n22-04-18 13:55:47.409 [35.577465 CL: p2 s10 i7700 v19500]                       \n22-04-18 13:55:47.415 [35.596158 AC on]                                         \n22-04-18 13:55:47.932 [36.113886 Battery 100% (Display 100.0 %) / 346h:46 to em]\n22-04-18 13:55:47.941 [36.121879 charge_request(17600mV, 0mA)]                  \n22-04-18 13:55:51.328 [39.521024 AC off]                                        \n22-04-18 13:55:52.010 [40.201374 BJ disconnected]                               \n22-04-18 13:55:52.012 [40.201829 Changing charge port to -1 (current port\u003d2 sup]\n22-04-18 13:55:52.015 [40.202345 Disabling all charger ports]                   \n22-04-18 13:55:52.020 [40.206861 Succeeded bypass_chrg -\u003e bat]                  \n22-04-18 13:55:52.023 [40.208056 Succeeded to disable sink path C0 (0).]        ",
       "revId": "c78750b6c464673865bc869c98a8d32009cdade1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "821a0c99_d3f24fe0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-04-18T18:06:52Z",
+      "side": 1,
+      "message": "Ping, caveh?",
+      "revId": "c78750b6c464673865bc869c98a8d32009cdade1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
