@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aabc07e2_b1ca6589",
+        "filename": "common/usb_common.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1059,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-04-18T20:20:20Z",
+      "side": 1,
+      "message": "Should this be gated on whether a PD 3.0 port partner is currently connected on a port?",
+      "revId": "8b57f03aeb47f305c420d78bc22c575c81aa5df9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f50f40f3_50b967bc",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 4271,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-04-18T20:20:20Z",
+      "side": 1,
+      "message": "Note the spec-state names here.  We don\u0027t need to actually have different states per source/sink role, but noting them in a comment makes the state search-able in our code",
+      "revId": "8b57f03aeb47f305c420d78bc22c575c81aa5df9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1b98dd4_e6efa97b",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 4284,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-04-18T20:20:20Z",
+      "side": 1,
+      "message": "So some of these represent things we could derive from common code functions.  I\u0027ll defer to Abe for his thoughts here on how the DPM should be providing the status to fill in",
+      "revId": "8b57f03aeb47f305c420d78bc22c575c81aa5df9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "464bee52_229aaf61",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 4308,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-04-18T20:20:20Z",
+      "side": 1,
+      "message": "This should go back to source or sink ready as appropriate",
+      "revId": "8b57f03aeb47f305c420d78bc22c575c81aa5df9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

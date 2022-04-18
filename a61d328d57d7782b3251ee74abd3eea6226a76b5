@@ -16,6 +16,24 @@
       "message": "Hi Diana,\ncan you take a look at this CL which updates how alert messages are sent and adds a Status response to Get_Status messages? I had them as one CL to test the Alert-\u003eGet_Status-\u003eStatus sequence, let me know if you want to split this up into 2 CLs.\n\nThe idea is that to support more alert messages going forward, like go/power-button, the alert needs to be defined where it is triggered. It cannot be defined just using the port\u0027s state, as we do now. This CL creates two functions (pd_broadcast_alert_msg and pd_send_alert_msg) which will allow other parts of the EC to define and send alert messages. For example, battery_v2.c will be able to trigger Battery Status Change alerts, and thermal.c can trigger Operating Condition Change alerts. \n\nThis CL just adds the new functions for sending alerts and a zero\u0027d out Status response. I plan to follow it with CLs to send alerts from different parts of the EC and add the relevant data to the Status response.",
       "revId": "a61d328d57d7782b3251ee74abd3eea6226a76b5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2dd4d7c0_e383264a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-04-18T20:20:20Z",
+      "side": 1,
+      "message": "Splitting up into two makes sense.  I\u0027m also adding Abe, who has been making some of the decisions for how we handle DPM interfacing in the code since that\u0027s our most weakly defined layer currently.",
+      "parentUuid": "e639744c_8f006f1c",
+      "revId": "a61d328d57d7782b3251ee74abd3eea6226a76b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
