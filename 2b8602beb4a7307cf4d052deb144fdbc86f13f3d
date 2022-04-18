@@ -16,6 +16,24 @@
       "message": "Out of curiousity, does removing this flag have any effect, does it affect image size?",
       "revId": "2b8602beb4a7307cf4d052deb144fdbc86f13f3d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e4b3c07_8b656db6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1171009
+      },
+      "writtenOn": "2022-04-18T20:24:00Z",
+      "side": 1,
+      "message": "this flag was only used for building fuzzing binaries. So removing it should not have any effects on normal builds.",
+      "parentUuid": "66ee729e_f3157ddf",
+      "revId": "2b8602beb4a7307cf4d052deb144fdbc86f13f3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
