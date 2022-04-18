@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0668a354_f516e5cc",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_pd_ctrl_msg.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-04-18T18:15:54Z",
+      "side": 1,
+      "message": "Nit: This could be a one-liner.",
+      "range": {
+        "startLine": 224,
+        "startChar": 0,
+        "endLine": 227,
+        "endChar": 0
+      },
+      "revId": "43854b0925def38fa25da61d49099cb35c60bd60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6c69df8_c811429c",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_pd_ctrl_msg.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-04-18T18:15:54Z",
+      "side": 1,
+      "message": "\"the TCPM not being initial UFP.\"",
+      "range": {
+        "startLine": 239,
+        "startChar": 33,
+        "endLine": 239,
+        "endChar": 46
+      },
+      "revId": "43854b0925def38fa25da61d49099cb35c60bd60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb920a4e_6b2faf3e",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_pd_ctrl_msg.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-04-18T18:15:54Z",
+      "side": 1,
+      "message": "Can you explain the flow of this test as you did for the previous test? I see that you changed the expected roles around, and I\u0027m not following how the TCPM would initially be UFP and then end up as DFP in this scenario.",
+      "revId": "43854b0925def38fa25da61d49099cb35c60bd60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8639351d_7ed67529",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_pd_ctrl_msg.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-04-18T18:15:54Z",
+      "side": 1,
+      "message": "If possible, I\u0027d like to avoid committing code with known bugs. If this test isn\u0027t ready yet, maybe split it into its own CL and merge the other ones?\n\nBut IIUC, you\u0027re trying to trigger the TCPM to swap from UFP to DFP, but after your setup, you\u0027re already DFP. If that\u0027s the case, you could probably just swap from DFP to UFP and then back to DFP using 2 host commands.",
+      "revId": "43854b0925def38fa25da61d49099cb35c60bd60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
