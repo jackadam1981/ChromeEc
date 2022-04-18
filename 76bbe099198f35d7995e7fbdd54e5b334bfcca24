@@ -33,6 +33,24 @@
       "message": "Looks fine except the 5s delay, isn\u0027t it too long? Add Vijay who originally implemented the solution to keep same power state during sysjump to review the code. \nAlso does system_jumped_to_this_image() return the true jumped or not by the time pwrseq_init() is called? ",
       "revId": "76bbe099198f35d7995e7fbdd54e5b334bfcca24",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9a951cc_3ef029ef",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-04-18T12:30:16Z",
+      "side": 1,
+      "message": "There\u0027s a couple of odd things happening with the eSPI interface during the sysjump that I haven\u0027t figured out yet.\nSome of the calls like system_jump_to_this_image() may not work at the SYS_INIT\ntime. I found (for example) that system_jumped_late() does not return the correct value because it relies on initialisation that occurs after all the SYS_INIT\ninitialisation. This is being worked on.",
+      "parentUuid": "c748cc46_4c865aaf",
+      "revId": "76bbe099198f35d7995e7fbdd54e5b334bfcca24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
