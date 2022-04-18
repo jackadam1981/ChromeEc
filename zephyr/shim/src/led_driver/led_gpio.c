@@ -46,6 +46,9 @@ struct led_pins_node_t {
 
 	/* Array of GPIO pins to set to enable particular color */
 	struct gpio_pin_t gpio_pins[LED_PIN_COUNT];
+
+	/* Number of pins per color */
+	uint8_t pins_count;
 };
 
 #define SET_PIN(node_id, prop, i)					\
@@ -59,12 +62,18 @@ struct led_pins_node_t {
 	DT_FOREACH_PROP_ELEM(node_id, led_pins, SET_PIN)		\
 }
 
+#define GEN_PINS_ARRAY(id)						\
+struct gpio_pin_t PINS_ARRAY(id)[] = SET_GPIO_PIN(id)			\
+
+DT_FOREACH_CHILD(GPIO_LED_PINS_NODE, GEN_PINS_ARRAY)
+
 #define SET_PIN_NODE(node_id)						\
 {									\
 	.led_color = GET_PROP(node_id, led_color),			\
 	.led_id = GET_PROP(node_id, led_id),				\
-	.br_color = GET_BR_COLOR(node_id, br_color),			\
+	.br_color = GET_PROP_NVE(node_id, br_color),			\
 	.gpio_pins = SET_GPIO_PIN(node_id)				\
+	.pins_count = DT_PROP_LEN(node_id, led_pins)			\
 },
 
 struct led_pins_node_t pins_node[] = {
@@ -76,11 +85,12 @@ struct led_pins_node_t pins_node[] = {
  * Set all the GPIO pins defined in the node to the defined value,
  * to enable the color.
  */
-void led_set_color(enum led_color color)
+void led_set_color(enum led_color color, enum led_id id)
 {
-	for (int i = 0; i < LED_COLOR_COUNT; i++) {
-		if (pins_node[i].led_color == color) {
-			for (int j = 0; j < LED_PIN_COUNT; j++) {
+	for (int i = 0; i < ARRAY_SIZE(pins_node); i++) {
+		if ((pins_node[i].led_color == color) &&
+		    (pins_node[i].led_id == id)) {
+			for (int j = 0; j < pins_node[i].pins_count; j++) {
 				gpio_pin_set_dt(gpio_get_dt_spec(
 					pins_node[i].gpio_pins[j].signal),
 					pins_node[i].gpio_pins[j].val);
