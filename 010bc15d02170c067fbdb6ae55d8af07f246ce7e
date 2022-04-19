@@ -46,6 +46,30 @@
       },
       "revId": "010bc15d02170c067fbdb6ae55d8af07f246ce7e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "59e86d5a_c033b59b",
+        "filename": "zephyr/projects/intelrvp/adlrvp/cbi_eeprom.dts",
+        "patchSetId": 13
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-04-19T17:53:45Z",
+      "side": 1,
+      "message": "Ack\npls move to adlrvp_npcx",
+      "parentUuid": "0f46cf1c_cae1f47a",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 7
+      },
+      "revId": "010bc15d02170c067fbdb6ae55d8af07f246ce7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
