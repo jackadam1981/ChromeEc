@@ -6,6 +6,8 @@
 #ifndef __CROS_EC_MT8195_CONFIG_CHIP_H
 #define __CROS_EC_MT8195_CONFIG_CHIP_H
 
+#define CONFIG_CHIP_MEMORY_REGIONS
+
 #define CONFIG_PANIC_CONSOLE_OUTPUT
 
 /* Add some space (0x100) before panic for jump data */
