@@ -26,6 +26,10 @@
 #include "util.h"
 #include "watchdog.h"
 
+#if defined(__clang__)
+#error "Building with clang"
+#endif
+
 #if !defined(CONFIG_RNG)
 #error "fpsensor requires RNG"
 #endif
