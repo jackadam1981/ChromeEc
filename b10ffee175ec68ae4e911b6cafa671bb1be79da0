@@ -65,6 +65,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d291c640_b15620e4",
+        "filename": "zephyr/projects/intelrvp/mtlrvp/mtlrvpp_npcx/bb_retimer.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2022-04-19T22:05:08Z",
+      "side": 1,
+      "message": "Do we want all references to bb to be removed? there are still several that will need to stay with CL:3138214 is the goal to only use hb references when the board has hb retimer?\n\nI updated this to be hb",
+      "parentUuid": "c67fc991_63e4406b",
+      "revId": "b10ffee175ec68ae4e911b6cafa671bb1be79da0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f2d445b6_842621bc",

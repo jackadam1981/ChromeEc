@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e16e359f_a48dc1a1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2022-04-19T22:05:08Z",
+      "side": 1,
+      "message": "will update once we are able to test",
+      "parentUuid": "7650cb8c_d424892c",
+      "range": {
+        "startLine": 14,
+        "startChar": 6,
+        "endLine": 14,
+        "endChar": 42
+      },
+      "revId": "f22797751844637ccfe01cbc37fdd5ee3e59eb29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "382189cf_1bb87a65",
         "filename": "zephyr/projects/intelrvp/CMakeLists.txt",
         "patchSetId": 7
@@ -107,6 +131,30 @@
       "writtenOn": "2022-04-08T00:53:50Z",
       "side": 1,
       "message": "refer other comment about HBR",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 40
+      },
+      "revId": "f22797751844637ccfe01cbc37fdd5ee3e59eb29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a63dd2c_ba0038dd",
+        "filename": "zephyr/projects/intelrvp/mtlrvp/prj.conf",
+        "patchSetId": 7
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2022-04-19T22:05:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "35714a2c_9b5c1b2e",
       "range": {
         "startLine": 41,
         "startChar": 0,
@@ -224,6 +272,24 @@
       "writtenOn": "2022-04-08T00:53:50Z",
       "side": 1,
       "message": "submit a separate CL",
+      "revId": "f22797751844637ccfe01cbc37fdd5ee3e59eb29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "be43daf4_a105cea6",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 1407,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2022-04-19T22:05:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6a2f0aa7_c612bd23",
       "revId": "f22797751844637ccfe01cbc37fdd5ee3e59eb29",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
