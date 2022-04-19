@@ -17,6 +17,7 @@
 
 #ifdef CHIP_VARIANT_MT8195
 #define CONFIG_PANIC_CONSOLE_OUTPUT
+#define CONFIG_CHIP_MEMORY_REGIONS
 #endif
 
 /* IPI configs */
