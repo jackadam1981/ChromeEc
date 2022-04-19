@@ -16,6 +16,7 @@
 #include "gpio_signal.h"
 #include "power_button.h"
 #include "hooks.h"
+#include "peripheral_charger.h"
 #include "power.h"
 #include "switch.h"
 #include "throttle_ap.h"
@@ -38,6 +39,21 @@ const int usb_port_enable[USB_PORT_COUNT] = {
 	GPIO_EN_PP5000_USBA,
 };
 BUILD_ASSERT(ARRAY_SIZE(usb_port_enable) == USB_PORT_COUNT);
+
+extern struct pchg_drv cps8100_drv;
+struct pchg pchgs[] = {
+	[0] = {
+		.cfg = &(const struct pchg_config) {
+			.drv = &cps8100_drv,
+			.i2c_port = I2C_PORT_QI,
+			.irq_pin = GPIO_QI_INT_ODL,
+			.full_percent = 96,
+			.block_size = 128,
+		},
+		.events = QUEUE_NULL(PCHG_EVENT_QUEUE_SIZE, enum pchg_event),
+	},
+};
+const int pchg_count = ARRAY_SIZE(pchgs);
 
 /******************************************************************************/
 
