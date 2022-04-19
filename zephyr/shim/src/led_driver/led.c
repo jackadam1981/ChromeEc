@@ -5,6 +5,7 @@
  * Power and battery LED control.
  */
 
+#include <assert.h>
 #include <drivers/gpio.h>
 
 #include "battery.h"
@@ -23,8 +24,6 @@
 #include <devicetree.h>
 #include <logging/log.h>
 LOG_MODULE_REGISTER(gpio_led, LOG_LEVEL_ERR);
-
-#define LED_ONE_SEC (1000 / HOOK_TICK_INTERVAL_MS)
 
 #define LED_COLOR_NODE  DT_PATH(led_colors)
 
@@ -71,8 +70,8 @@ struct node_prop_t {
  * and so on. If period prop or color node doesn't exist, period val is 0
  */
 
-#define PERIOD_VAL(id) COND_CODE_1(DT_NODE_HAS_PROP(id, period),	\
-				   (DT_PROP(id, period)),		\
+#define PERIOD_VAL(id) COND_CODE_1(DT_NODE_HAS_PROP(id, period_ms),	\
+				   (DT_PROP(id, period_ms)),		\
 				   (0))
 
 #define LED_PERIOD(color_num, state_id)					\
@@ -218,11 +217,24 @@ static int find_color(int node_idx, int ticks)
 	/* If period value at index 0 is not 0, it's a blinking LED */
 	if (GET_PERIOD(node_idx, 0) != 0) {
 		/*  Period is accumulated at the last index */
-		ticks = (ticks * LED_ONE_SEC) %
-			GET_PERIOD(node_idx, MAX_COLOR - 1);
+		int acc_period = GET_PERIOD(node_idx, MAX_COLOR - 1) /
+					HOOK_TICK_INTERVAL_MS;
+
+		ticks = ticks % acc_period;
 
 		for (color_idx = 0; color_idx < MAX_COLOR; color_idx++) {
-			if (ticks < GET_PERIOD(node_idx, color_idx))
+			int period_ms = GET_PERIOD(node_idx, color_idx);
+
+			/*
+			 * Make sure the period value is a multiple of
+			 * HOOK_TICK_INTERVAL_MS
+			 */
+			__ASSERT(period_ms % HOOK_TICK_INTERVAL_MS == 0,
+				"Period value: %d is not a multiple of HOOK_TICK_INTERVAL_MS: %d",
+				period_ms, HOOK_TICK_INTERVAL_MS);
+
+			/* Convert period-ms into period-ticks */
+			if (ticks < (period_ms / HOOK_TICK_INTERVAL_MS))
 				break;
 		}
 	}
@@ -261,7 +273,7 @@ static void led_tick(void)
 	if (led_auto_control_is_enabled(EC_LED_ID_BATTERY_LED))
 		board_led_set_color();
 }
-DECLARE_HOOK(HOOK_SECOND, led_tick, HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_TICK, led_tick, HOOK_PRIO_DEFAULT);
 
 void led_control(enum ec_led_id led_id, enum ec_led_state state)
 {
