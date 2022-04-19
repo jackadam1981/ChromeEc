@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "08708630_647e0a23",
+        "filename": "common/usb_common.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-04-19T16:01:54Z",
+      "side": 1,
+      "message": "This implies that the sink has been disconnected, when it\u0027s in fact still plugged in.\n\nCan you point out in the PD specification where this test requirement is coming from?  With the exception of recent PD WG discussions regarding requirements around the capabilities mismatch bit, I can\u0027t recall any sections dictating that we can\u0027t leave power in reserve for a port partner which has indicated it may need that power in the future.",
+      "revId": "9108e35f72e4f12e6876eaf1fd319520266f872b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
