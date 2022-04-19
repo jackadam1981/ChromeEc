@@ -351,6 +351,14 @@ int pd_check_requested_voltage(uint32_t rdo, const int port)
 	if (max_ma > pdo_ma && !(rdo & RDO_CAP_MISMATCH))
 		return EC_ERROR_INVAL; /* too much max current */
 
+	/*
+	 * If port partner return SNK CAP can support 3A, but
+	 * request 1.5A. Remove sink_max_pdo_requested and supply
+	 * 1.5A for it.
+	 */
+	if (op_ma != pdo_ma)
+		dpm_remove_sink(port);
+
 	CPRINTF("Requested %d mV %d mA (for %d/%d mA)\n",
 		 ((pdo >> 10) & 0x3ff) * 50, (pdo & 0x3ff) * 10,
 		 op_ma * 10, max_ma * 10);
