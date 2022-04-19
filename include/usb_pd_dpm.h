@@ -91,6 +91,14 @@ void dpm_evaluate_sink_fixed_pdo(int port, uint32_t vsafe5v_pdo);
 void dpm_add_non_pd_sink(int port);
 
 /*
+ * Determines the current allocation for the connection, past the basic
+ * CONFIG_USB_PD_PULLUP value set by the TC (generally 1.5 A)
+ *
+ * @param port		USB-C port number
+ */
+void dpm_evaluate_request_rdo(int port, uint32_t rdo);
+
+/*
  * Remove this port as a sink, and reallocate maximum current as needed.
  *
  * @param port		USB-C port number
