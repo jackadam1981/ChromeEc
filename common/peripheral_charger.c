@@ -525,6 +525,7 @@ void pchg_irq(enum gpio_signal signal)
 		ctx = &pchgs[i];
 		if (signal == ctx->cfg->irq_pin) {
 			ctx->irq = 1;
+			ctx->irq_count++;
 			task_wake(TASK_ID_PCHG);
 			return;
 		}
@@ -588,8 +589,10 @@ void pchg_task(void *u)
 		for (p = 0; p < pchg_count; p++) {
 			ctx = &pchgs[p];
 			do {
-				if (atomic_clear(&ctx->irq))
+				if (atomic_clear(&ctx->irq)) {
+					msleep(10);
 					pchg_queue_event(ctx, PCHG_EVENT_IRQ);
+				}
 				if (pchg_run(ctx))
 					pchg_queue_host_event(
 						ctx, EC_MKBP_PCHG_DEVICE_EVENT);
@@ -760,8 +763,10 @@ static int cc_pchg(int argc, char **argv)
 		ccprintf("P%d STATE_%s EVENT_%s SOC=%d%%\n",
 			 port, _text_state(ctx->state), _text_event(ctx->event),
 			 ctx->battery_percent);
-		ccprintf("error=0x%x dropped=%u fw_version=0x%x\n",
+		ccprintf("error=0x%x dropped_event=%u fw_version=0x%x\n",
 			 ctx->error, ctx->dropped_event_count, ctx->fw_version);
+		ccprintf("irq_count=%u dropped_host_event=%u\n",
+			 ctx->irq_count, ctx->dropped_host_event_count);
 		return EC_SUCCESS;
 	}
 
