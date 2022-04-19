@@ -527,6 +527,8 @@ static atomic_t sink_max_pdo_requested;
 static atomic_t source_frs_max_requested;
 /* Ports with non-PD sinks, so current requirements are unknown */
 static atomic_t non_pd_sink_max_requested;
+/* Ports with PD sink capability is 3A, but request 1.5 A */
+static atomic_t sink_max_pdo_requested_mismatch;
 
 #define LOWEST_PORT(p) __builtin_ctz(p)  /* Undefined behavior if p == 0 */
 
@@ -568,7 +570,8 @@ static void balance_source_ports(void)
 	/* Remove any ports which no longer require 3.0 A */
 	removed_ports = max_current_claimed & ~(sink_max_pdo_requested |
 						source_frs_max_requested |
-						non_pd_sink_max_requested);
+						non_pd_sink_max_requested |
+						sink_max_pdo_requested_mismatch);
 	max_current_claimed &= ~removed_ports;
 
 	/* Allocate 3.0 A to new PD sink ports that need it */
@@ -610,6 +613,20 @@ static void balance_source_ports(void)
 			/* No lower priority ports to downgrade */
 			goto unlock;
 		}
+		new_ports &= ~BIT(new_max_port);
+	}
+
+	/*
+	 * Allocate 1.5 A to any ports which sink capability is 3A
+	 * but request 1.5 A.
+	 */
+	new_ports = sink_max_pdo_requested_mismatch & max_current_claimed;
+	while (new_ports) {
+		int new_max_port = LOWEST_PORT(new_ports);
+		/* remove 3A from this port */
+		max_current_claimed &= ~BIT(new_max_port);
+		typec_select_src_current_limit_rp(new_max_port,
+							TYPEC_RP_1A5);
 		new_ports &= ~BIT(new_max_port);
 	}
 
@@ -718,6 +735,22 @@ void dpm_add_non_pd_sink(int port)
 		return;
 
 	atomic_or(&non_pd_sink_max_requested, BIT(port));
+
+	balance_source_ports();
+}
+
+void dpm_add_pd_sink_mismatch(int port)
+{
+	if (CONFIG_USB_PD_3A_PORTS == 0)
+		return;
+
+	atomic_or(&sink_max_pdo_requested_mismatch, BIT(port));
+	/*
+	 * sink_max_pdo_requested will be set when we get 5V/3A sink
+	 * capability from port partner. If port partner only request
+	 * 5V/1.5A, we need to provide 5V/1.5A.
+	 */
+	atomic_clear_bits(&sink_max_pdo_requested, BIT(port));
 
 	balance_source_ports();
 }
