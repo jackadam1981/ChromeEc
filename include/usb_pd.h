@@ -3477,4 +3477,12 @@ void typec_select_src_collision_rp(int port, enum tcpc_rp_value rp);
 int typec_update_cc(int port);
 /****************************************************************************/
 
+/*
+ * Evaluates the request from port partner
+ *
+ * @param port		USB-C port number
+ * @param rdo		Request from port partner
+ */
+void dpm_evaluate_request_rdo(int port, uint32_t rdo);
+
 #endif  /* __CROS_EC_USB_PD_H */
