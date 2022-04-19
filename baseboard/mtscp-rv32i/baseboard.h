@@ -91,8 +91,8 @@
  * (4) 0x10500000 0x500000
  * (5) 0x10A00000
  * MT8195 dual - core1
- * (1) 0x10A00000 0x4FF000
- * (2) 0x10EFF000 0
+ * (1) 0x10A00000 0x400000
+ * (2) 0x10E00000 0xFF000
  * (3) 0x10EFF000 0x1000
  * (4) 0x10F00000 0x500000
  * (5) 0x11400000
@@ -119,7 +119,11 @@
 
 /* (2) DRAM non-cacheable region */
 #define DRAM_NC_BASE (CONFIG_DRAM_BASE + CONFIG_DRAM_SIZE)
+#ifdef CHIP_VARIANT_MT8195_CORE1
+#define DRAM_NC_SIZE 0xFF000
+#else
 #define DRAM_NC_SIZE 0
+#endif
 
 /* (3) panic data */
 #define CONFIG_PANIC_DRAM_BASE (DRAM_NC_BASE + DRAM_NC_SIZE)
