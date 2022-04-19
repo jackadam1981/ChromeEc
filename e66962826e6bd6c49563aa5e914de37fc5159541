@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "675e637b_b03adc10",
+        "filename": "zephyr/shim/include/shimmed_task_id.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-04-19T14:42:38Z",
+      "side": 1,
+      "message": "Good idea, done.",
+      "parentUuid": "b28869f2_ecf86679",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 23
+      },
+      "revId": "e66962826e6bd6c49563aa5e914de37fc5159541",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "11004ad4_9eba220c",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a970a0d7_c145d25b",
+        "filename": "zephyr/shim/include/shimmed_task_id.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-04-19T14:42:38Z",
+      "side": 1,
+      "message": "Was wondering about it... added a task, prio and bumped up the max priorities count.",
+      "parentUuid": "11004ad4_9eba220c",
+      "range": {
+        "startLine": 35,
+        "startChar": 1,
+        "endLine": 35,
+        "endChar": 24
+      },
+      "revId": "e66962826e6bd6c49563aa5e914de37fc5159541",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c34283d6_22551115",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-04-19T13:50:28Z",
       "side": 1,
       "message": "EC_TASK_PRIO_LOWEST",
+      "range": {
+        "startLine": 23,
+        "startChar": 30,
+        "endLine": 23,
+        "endChar": 31
+      },
+      "revId": "e66962826e6bd6c49563aa5e914de37fc5159541",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4861d8a8_551e40e8",
+        "filename": "zephyr/shim/src/tasks.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-04-19T14:42:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c34283d6_22551115",
       "range": {
         "startLine": 23,
         "startChar": 30,
