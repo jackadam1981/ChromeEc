@@ -34,6 +34,41 @@
       "parentUuid": "7be24408_6b4823cd",
       "revId": "e55b6cf9b3aaa4c7a321e4d5d31d0dedc37720af",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "49713565_9bb4c8c4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-04-19T04:42:42Z",
+      "side": 1,
+      "message": "Comparator callbacks run in a work queue rather than the ADC ISR, so it makes sense that leaving the interrupt enabled before clearing state might do the wrong thing since this handler isn\u0027t blocking any further IRQ.",
+      "parentUuid": "3aa7d50c_c7562977",
+      "revId": "e55b6cf9b3aaa4c7a321e4d5d31d0dedc37720af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b52d3555_e80169ff",
+        "filename": "zephyr/subsys/ap_pwrseq/signal_adc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-04-19T04:42:42Z",
+      "side": 1,
+      "message": "I think this ordering is potentially problematic, since the following program order is possible:\n\n1. Disable high trigger\n2. Enable low trigger\n3. Low trigger fires, clearing ADC_BIT_VALUE\n4. This function sets ADC_BIT_VALUE\n\nThat would leave the value high but last interrupt low; any changes to the ADC_BIT_VALUE need to occur with the threshold interrupts blocked (disable high, set bit, enable low and similar in trigger_low).",
+      "revId": "e55b6cf9b3aaa4c7a321e4d5d31d0dedc37720af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
