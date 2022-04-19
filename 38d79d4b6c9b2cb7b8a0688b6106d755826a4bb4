@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60a15248_bc93d768",
+        "filename": "zephyr/dts/bindings/leds/cros-ec,led-colors.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-04-19T17:50:53Z",
+      "side": 1,
+      "message": "Please mention the time period should be a multiple of HOOK_TICK_INTERVAL_MS.",
+      "range": {
+        "startLine": 71,
+        "startChar": 73,
+        "endLine": 71,
+        "endChar": 78
+      },
+      "revId": "38d79d4b6c9b2cb7b8a0688b6106d755826a4bb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d37b56fe_cd1a4250",
+        "filename": "zephyr/dts/bindings/leds/cros-ec,led-colors.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-04-19T17:50:53Z",
+      "side": 1,
+      "message": "Better to rename this property to `period-ms`, more understandable without checking the above description.",
+      "range": {
+        "startLine": 78,
+        "startChar": 34,
+        "endLine": 78,
+        "endChar": 40
+      },
+      "revId": "38d79d4b6c9b2cb7b8a0688b6106d755826a4bb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "222738a6_ec563bb1",
+        "filename": "zephyr/shim/src/led_driver/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-04-19T17:50:53Z",
+      "side": 1,
+      "message": "Can we have a build-time check to enforce all period values are multiples of HOOK_TICK_INTERVAL_MS? People are not aware of this implicit flooring. A build-time error forces the developer to modify the values.",
+      "range": {
+        "startLine": 75,
+        "startChar": 3,
+        "endLine": 75,
+        "endChar": 47
+      },
+      "revId": "38d79d4b6c9b2cb7b8a0688b6106d755826a4bb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1423d01_6d848366",
+        "filename": "zephyr/shim/src/led_driver/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-04-19T17:50:53Z",
+      "side": 1,
+      "message": "Replace the tab to a space.",
+      "range": {
+        "startLine": 220,
+        "startChar": 17,
+        "endLine": 220,
+        "endChar": 18
+      },
+      "revId": "38d79d4b6c9b2cb7b8a0688b6106d755826a4bb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
