@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "252674aa_1bce916c",
+        "filename": "driver/led/is31fl3733b.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-04-19T18:25:46Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "35f1e7b4_4cc45d83",
+      "range": {
+        "startLine": 91,
+        "startChar": 4,
+        "endLine": 91,
+        "endChar": 10
+      },
+      "revId": "a98ac5c7235defacae7d5a79560606740db7e8e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a3fdc623_e5c0598b",
@@ -132,6 +156,30 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "8260358f_485e2922",
+      "range": {
+        "startLine": 148,
+        "startChar": 8,
+        "endLine": 148,
+        "endChar": 40
+      },
+      "revId": "a98ac5c7235defacae7d5a79560606740db7e8e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ec95d4e_77ad0378",
+        "filename": "driver/led/is31fl3733b.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-04-19T18:25:46Z",
+      "side": 1,
+      "message": "The patch has been submitted. Please change it to:\n\n  WRITE_BIT(u8, 4, 1);\n  WRITE_BIT(u8, 0, enable);",
+      "parentUuid": "51aa6a22_57f3b447",
       "range": {
         "startLine": 148,
         "startChar": 8,
