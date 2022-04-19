@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7feb368_ea0181fe",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-04-19T19:49:50Z",
+      "side": 1,
+      "message": "See my comment on the bug.  Zephyr has solved this and we\u0027ve made Zephyr\u0027s atomic support available to the legacy EC code.\nIf we need to pull in more Zephyr sources into platform/ec/third_party/zephyr, we can do that.",
+      "range": {
+        "startLine": 89,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 47
+      },
+      "revId": "8aec7585922915e004e439e2f7bbb1fd12549eb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
