@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b28869f2_ecf86679",
+        "filename": "zephyr/shim/include/shimmed_task_id.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-04-19T13:50:28Z",
+      "side": 1,
+      "message": "Explicitly specify the lowest priority thread:L\n\n```\nenum {\n    EC_TASK_PRIO_LOWEST \u003d 0,\n    EC_TASK_CHG_RAMP_PRIO \u003d EC_TASK_PRIO_LOWEST,\n```",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 23
+      },
+      "revId": "e66962826e6bd6c49563aa5e914de37fc5159541",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11004ad4_9eba220c",
+        "filename": "zephyr/shim/include/shimmed_task_id.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-04-19T13:50:28Z",
+      "side": 1,
+      "message": "We currently allocate 1 USB_CHG thread per USB-C port and there can be up to 4 ports.  It was an oversight that there isn\u0027t a thread setup for `USB_CHG_P3`.  Might as well add that support.",
+      "range": {
+        "startLine": 35,
+        "startChar": 1,
+        "endLine": 35,
+        "endChar": 24
+      },
+      "revId": "e66962826e6bd6c49563aa5e914de37fc5159541",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c34283d6_22551115",
+        "filename": "zephyr/shim/src/tasks.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-04-19T13:50:28Z",
+      "side": 1,
+      "message": "EC_TASK_PRIO_LOWEST",
+      "range": {
+        "startLine": 23,
+        "startChar": 30,
+        "endLine": 23,
+        "endChar": 31
+      },
+      "revId": "e66962826e6bd6c49563aa5e914de37fc5159541",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
