@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5344d5ed_3a84e35a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-04-19T19:22:10Z",
+      "side": 1,
+      "message": "This change is causing DR swap tests to fail. Could you guys take a look? I\u0027m assuming there\u0027s some order deperency that\u0027s being broken.",
+      "revId": "588480a39b4303ad83d91e5a72be4f699e2e66d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
