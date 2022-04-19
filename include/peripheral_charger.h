@@ -198,6 +198,7 @@ struct pchg {
 	struct mutex mtx;
 	/* 1:Pending IRQ 0:No pending IRQ */
 	atomic_t irq;
+	uint32_t irq_count;
 	/* Event currently being handled */
 	enum pchg_event event;
 	/* Error (enum pchg_error). Port is disabled until it's cleared. */
