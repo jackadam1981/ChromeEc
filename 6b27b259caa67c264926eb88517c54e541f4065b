@@ -39,6 +39,30 @@
       },
       "revId": "6b27b259caa67c264926eb88517c54e541f4065b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4dc9c07e_6debe4a2",
+        "filename": "test/usb_pe.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-04-19T21:54:49Z",
+      "side": 1,
+      "message": "Zephyr defines the main include paths here:\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/6b3a0839/zephyr/CMakeLists.txt#102\n\nI see 2 zephyr files that include test/usb_pe.h.  If these files only need the flag definitions, then the sources should include usb_pe_private.h directly.",
+      "parentUuid": "19805709_a08aebe7",
+      "range": {
+        "startLine": 11,
+        "startChar": 9,
+        "endLine": 11,
+        "endChar": 27
+      },
+      "revId": "6b27b259caa67c264926eb88517c54e541f4065b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
