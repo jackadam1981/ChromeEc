@@ -69,6 +69,30 @@
       },
       "revId": "812b4a8ae5f52151758745286c200ce6a54fe6f6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a1669f4_797858e3",
+        "filename": "zephyr/shim/src/charger.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-04-19T20:11:18Z",
+      "side": 1,
+      "message": "My point is that once all boards stop defining a custom `chg_chips[]` array, then you don\u0027t need this guard.  If the board defines `CONFIG_PLATFORM_EC_CHARGER`, then this file gets compiled in to define the `chg_chips[]` array.\n\nThe BUILD_ASSERTs below will catch errors if the user neglects to define at least one charger chip.\n\nPlease remove this guard with a new CL on the top of this stack.",
+      "parentUuid": "2eca2c72_9dc2368c",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 0
+      },
+      "revId": "812b4a8ae5f52151758745286c200ce6a54fe6f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
