@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "08f5abe9_d68944e2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-04-19T20:41:33Z",
+      "side": 1,
+      "message": "argh",
+      "revId": "6b27b259caa67c264926eb88517c54e541f4065b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19805709_a08aebe7",
+        "filename": "test/usb_pe.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-04-19T20:41:33Z",
+      "side": 1,
+      "message": "argh.\nzephyr can\u0027t find this:\ntest/usb_pe.h:11:10: fatal error: \u0027usb_pe_private.h\u0027 file not found\n\nwhat\u0027s zephyr\u0027s include path strategy?",
+      "range": {
+        "startLine": 11,
+        "startChar": 9,
+        "endLine": 11,
+        "endChar": 27
+      },
+      "revId": "6b27b259caa67c264926eb88517c54e541f4065b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
