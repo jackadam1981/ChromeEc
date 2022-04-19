@@ -46,6 +46,30 @@
       },
       "revId": "b7f91ecd3583b2e8ec6404cf40469621daaac129",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf09484c_0e1d27a9",
+        "filename": "zephyr/dts/bindings/charger/intersil,isl9241.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-04-19T20:05:53Z",
+      "side": 0,
+      "message": "The current isl9241 driver only supports a single switching frequency for all ports.  So a Kconfig is better match for how the driver operates today.\n\nIf an OCPC board had two isl9241 chargers, the devicetree property implies that each charger can use a different switch frequency.\n\nYou should at least update the description here to note this limitation - only the first intersil,isl9241 device found in the tree can set the switching frequency.",
+      "parentUuid": "6bec43ac_4cf47fe0",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 0
+      },
+      "revId": "b7f91ecd3583b2e8ec6404cf40469621daaac129",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
