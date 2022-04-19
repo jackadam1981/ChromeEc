@@ -69,6 +69,24 @@
       "message": "I think this ordering is potentially problematic, since the following program order is possible:\n\n1. Disable high trigger\n2. Enable low trigger\n3. Low trigger fires, clearing ADC_BIT_VALUE\n4. This function sets ADC_BIT_VALUE\n\nThat would leave the value high but last interrupt low; any changes to the ADC_BIT_VALUE need to occur with the threshold interrupts blocked (disable high, set bit, enable low and similar in trigger_low).",
       "revId": "e55b6cf9b3aaa4c7a321e4d5d31d0dedc37720af",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "84e1244a_d71535f6",
+        "filename": "zephyr/subsys/ap_pwrseq/signal_adc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2022-04-19T17:14:53Z",
+      "side": 1,
+      "message": "Done, moved enable interruption statement after changing ADC_BIT_VALUE.",
+      "parentUuid": "b52d3555_e80169ff",
+      "revId": "e55b6cf9b3aaa4c7a321e4d5d31d0dedc37720af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
