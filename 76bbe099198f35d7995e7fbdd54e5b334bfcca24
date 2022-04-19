@@ -55,6 +55,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "86db33f9_04b4a6b7",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 448,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-04-19T00:52:46Z",
+      "side": 1,
+      "message": "Those masks and values are chipset dependent as Vijay mentioned.\nAlready some masks and values has been defined in x86_power_signals.h, also I updated in one of my patch:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3577181/4/zephyr/subsys/ap_pwrseq/include/x86_power_signals.h#23\n\nMasks and values can move to x86_power_signals.h.",
+      "range": {
+        "startLine": 434,
+        "startChar": 0,
+        "endLine": 448,
+        "endChar": 32
+      },
+      "revId": "76bbe099198f35d7995e7fbdd54e5b334bfcca24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "13aed1cf_e62f1e30",
         "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
         "patchSetId": 2
@@ -71,6 +94,29 @@
         "startChar": 1,
         "endLine": 449,
         "endChar": 0
+      },
+      "revId": "76bbe099198f35d7995e7fbdd54e5b334bfcca24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76678fb6_6a13bfff",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 508,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-04-19T00:52:46Z",
+      "side": 1,
+      "message": "I think only in the  case of sysjump, the power state will be kept, others are start from G3. So here the code need do condition check. \ncheck this one: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2213733/9/power/intel_x86.c",
+      "range": {
+        "startLine": 467,
+        "startChar": 1,
+        "endLine": 508,
+        "endChar": 2
       },
       "revId": "76bbe099198f35d7995e7fbdd54e5b334bfcca24",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
