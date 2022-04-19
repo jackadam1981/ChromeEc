@@ -72,18 +72,24 @@
 #define CPRINTS_L2(format, args...) CPRINTS_LX(2, format, ## args)
 #define CPRINTS_L3(format, args...) CPRINTS_LX(3, format, ## args)
 
-#define PE_SET_FN(port, _fn) atomic_or(&pe[port].flags,	\
-				       BIT(_fn))
-#define PE_CLR_FN(port, _fn) atomic_clear_bits(&pe[port].flags,	\
-					       BIT(_fn))
-#define PE_CHK_FN(port, _fn) (pe[port].flags & BIT(_fn))
+#define FN_H(_fn)	((_fn) >> 5)
+#define FN_L(_fn)	((_fn) & 0x1f)
+
+#define PE_SET_FN(port, _fn) atomic_or(&pe[port].flags_a[FN_H(_fn)],	\
+				       BIT(FN_L(_fn)))
+#define PE_CLR_FN(port, _fn) atomic_clear_bits(&pe[port].flags_a[FN_H(_fn)], \
+					       BIT(FN_L(_fn)))
+#define PE_CHK_FN(port, _fn) (pe[port].flags_a[FN_H(_fn)] & BIT(FN_L(_fn)))
 
 #define PE_SET_FLAG(port, name) PE_SET_FN(port, (name ## _FN))
 #define PE_CLR_FLAG(port, name) PE_CLR_FN(port, (name ## _FN))
 #define PE_CHK_FLAG(port, name) PE_CHK_FN(port, (name ## _FN))
 
-#define PE_SET_MASK(port, mask) atomic_or(&pe[port].flags, (mask))
-#define PE_CLR_MASK(port, mask) atomic_clear_bits(&pe[port].flags, (mask))
+/*
+ * TODO(b/229655319): support more than 32 bits
+ */
+#define PE_SET_MASK(port, mask) atomic_or(&pe[port].flags_a[0], (mask))
+#define PE_CLR_MASK(port, mask) atomic_clear_bits(&pe[port].flags_a[0], (mask))
 
 /*
  * These macros SET, CLEAR, and CHECK, a DPM (Device Policy Manager)
@@ -513,7 +519,7 @@ static struct policy_engine {
 	/* current port data role (DFP or UFP) */
 	enum pd_data_role data_role;
 	/* state machine flags */
-	atomic_t flags;
+	atomic_t flags_a[DIV_ROUND_UP(PE_FLAGS_COUNT, 8 * sizeof(atomic_t))];
 	/* Device Policy Manager Request */
 	atomic_t dpm_request;
 	uint32_t dpm_curr_request;
@@ -705,7 +711,10 @@ static void set_cable_rev(int port)
 
 static void pe_init(int port)
 {
-	pe[port].flags = 0;
+	/*
+	 * TODO(b/229655319): support more than 32 bits
+	 */
+	pe[port].flags_a[0] = 0;
 	pe[port].dpm_request = 0;
 	pe[port].dpm_curr_request = 0;
 	pd_timer_disable_range(port, PE_TIMER_RANGE);
@@ -2896,7 +2905,10 @@ static void pe_src_transition_to_default_entry(int port)
 	print_current_state(port);
 
 	/* Reset flags */
-	pe[port].flags = 0;
+	/*
+	 * TODO(b/229655319): support more than 32 bits
+	 */
+	pe[port].flags_a[0] = 0;
 
 	/* Reset DPM Request */
 	pe[port].dpm_request = 0;
@@ -3685,7 +3697,10 @@ static void pe_snk_transition_to_default_entry(int port)
 	print_current_state(port);
 
 	/* Reset flags */
-	pe[port].flags = 0;
+	/*
+	 * TODO(b/229655319): support more than 32 bits
+	 */
+	pe[port].flags_a[0] = 0;
 
 	/* Reset DPM Request */
 	pe[port].dpm_request = 0;
@@ -7307,7 +7322,10 @@ const char *pe_get_current_state(int port)
 
 uint32_t pe_get_flags(int port)
 {
-	return pe[port].flags;
+	/*
+	 * TODO(b/229655319): support more than 32 bits
+	 */
+	return pe[port].flags_a[0];
 }
 
 static __const_data const struct usb_state pe_states[] = {
