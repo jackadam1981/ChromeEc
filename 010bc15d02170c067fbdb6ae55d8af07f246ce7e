@@ -22,6 +22,30 @@
       },
       "revId": "010bc15d02170c067fbdb6ae55d8af07f246ce7e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f46cf1c_cae1f47a",
+        "filename": "zephyr/projects/intelrvp/adlrvp/cbi_eeprom.dts",
+        "patchSetId": 13
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-04-19T17:52:04Z",
+      "side": 1,
+      "message": "I think we can\u0027t use charger or batter instead of this controller. Its better to move this file in adlrvp_npcx directory and let all variants have their own file.",
+      "parentUuid": "2e9103c4_e875fbf6",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 7
+      },
+      "revId": "010bc15d02170c067fbdb6ae55d8af07f246ce7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
