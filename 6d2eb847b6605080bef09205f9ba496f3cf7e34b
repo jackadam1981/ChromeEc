@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0bbdfb16_0a87ce22",
+        "filename": "zephyr/drivers/cros_kb_raw/cros_kb_raw_xec.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2022-04-19T13:34:04Z",
+      "side": 1,
+      "message": "ack\nwill check and try it.",
+      "parentUuid": "b5f4701f_7fccd897",
+      "range": {
+        "startLine": 63,
+        "startChar": 13,
+        "endLine": 63,
+        "endChar": 47
+      },
+      "revId": "6d2eb847b6605080bef09205f9ba496f3cf7e34b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cca28c31_37340df3",
         "filename": "zephyr/drivers/cros_kb_raw/cros_kb_raw_xec.c",
         "patchSetId": 1
@@ -72,6 +96,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d5e853e5_b4fd526b",
+        "filename": "zephyr/drivers/cros_kb_raw/cros_kb_raw_xec.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2022-04-19T13:34:04Z",
+      "side": 1,
+      "message": "ack.\nwill try to remove them.\nyes, as this clear code is executed and user presses key simultaneously, then event may be missed.",
+      "parentUuid": "a872c71c_ab35556a",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 61
+      },
+      "revId": "6d2eb847b6605080bef09205f9ba496f3cf7e34b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "019061a2_6aebf802",
         "filename": "zephyr/drivers/cros_kb_raw/cros_kb_raw_xec.c",
         "patchSetId": 1
@@ -83,6 +131,30 @@
       "writtenOn": "2022-04-18T20:09:24Z",
       "side": 1,
       "message": "`cros_kb_raw_set_col2()` already as this guard, you don\u0027t need to duplicate it here.",
+      "range": {
+        "startLine": 98,
+        "startChar": 0,
+        "endLine": 98,
+        "endChar": 60
+      },
+      "revId": "6d2eb847b6605080bef09205f9ba496f3cf7e34b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f13d23a6_98890641",
+        "filename": "zephyr/drivers/cros_kb_raw/cros_kb_raw_xec.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2022-04-19T13:34:04Z",
+      "side": 1,
+      "message": "ack.\nagree.",
+      "parentUuid": "019061a2_6aebf802",
       "range": {
         "startLine": 98,
         "startChar": 0,
@@ -129,6 +201,30 @@
       "writtenOn": "2022-04-18T20:09:24Z",
       "side": 1,
       "message": "This sequence is duplicated in the enable_interrupt path, here, and during init.  If at least 2 of these are actually needed, please create a helper function.",
+      "range": {
+        "startLine": 112,
+        "startChar": 0,
+        "endLine": 116,
+        "endChar": 35
+      },
+      "revId": "6d2eb847b6605080bef09205f9ba496f3cf7e34b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11ffbfdd_bdba5c18",
+        "filename": "zephyr/drivers/cros_kb_raw/cros_kb_raw_xec.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2022-04-19T13:34:04Z",
+      "side": 1,
+      "message": "This is mchp hardware related, one helper function will be added to simplify code.",
+      "parentUuid": "47f91fe8_0559f0cc",
       "range": {
         "startLine": 112,
         "startChar": 0,
