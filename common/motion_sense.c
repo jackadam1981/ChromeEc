@@ -1807,7 +1807,7 @@ static int command_display_accel_info(int argc, char **argv)
 {
 	int val, i, j;
 
-	if (argc > 3)
+	if (argc >= 3)
 		return EC_ERROR_PARAM_COUNT;
 
 	ccprintf("Motion sensors count = %d\n", motion_sensor_count);
