@@ -535,6 +535,7 @@ void pchg_irq(enum gpio_signal signal)
 }
 
 
+#ifdef CONFIG_DEVICE_EVENT
 static void pchg_suspend_complete(void)
 {
 	CPRINTS("%s", __func__);
@@ -542,6 +543,7 @@ static void pchg_suspend_complete(void)
 }
 DECLARE_HOOK(HOOK_CHIPSET_SUSPEND_COMPLETE, pchg_suspend_complete,
 	     HOOK_PRIO_DEFAULT);
+#endif
 
 static void pchg_startup(void)
 {
