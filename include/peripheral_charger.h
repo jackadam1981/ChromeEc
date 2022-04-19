@@ -160,6 +160,8 @@ struct pchg_config {
 	const struct pchg_drv *drv;
 	/* I2C port number */
 	const int i2c_port;
+	/* GPIO pin for power on/off */
+	const enum gpio_signal power_pin;
 	/* GPIO pin used for IRQ */
 	const enum gpio_signal irq_pin;
 	/* Full battery percentage */
