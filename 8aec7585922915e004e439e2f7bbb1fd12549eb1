@@ -22,6 +22,30 @@
       },
       "revId": "8aec7585922915e004e439e2f7bbb1fd12549eb1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "99e25715_62d967f8",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-04-19T20:59:35Z",
+      "side": 1,
+      "message": "i\u0027m hoping that switching to the zephyr API is more or less a trivial\nmatter of updating the PE_*_FN() macros.\n\nsome of the strangeness you might observe\nhere is motivated by being able to make as many changes toward\nremoving current 32 bit limit while using compare_builds to verify\ncorrectness.",
+      "parentUuid": "f7feb368_ea0181fe",
+      "range": {
+        "startLine": 89,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 47
+      },
+      "revId": "8aec7585922915e004e439e2f7bbb1fd12549eb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
