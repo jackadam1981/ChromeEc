@@ -110,6 +110,20 @@ __override int svdm_dp_config(int port, uint32_t *payload)
 
 __override void svdm_dp_post_config(int port)
 {
+	mux_state_t mux_mode = svdm_dp_get_mux_mode(port);
+
+	/*
+	 * Prior to post-config, the mux will be reset to safe mode, and this
+	 * will break mux config and aux path config we did in the first DP
+	 * status command. Only enable this if the port is the current aux-port.
+	 */
+	if (port == active_aux_port) {
+		usb_mux_set(port, mux_mode, USB_SWITCH_CONNECT,
+			polarity_rm_dts(pd_get_polarity(port)));
+		usb_mux_hpd_update(port, USB_PD_MUX_HPD_LVL |
+					 USB_PD_MUX_HPD_IRQ_DEASSERTED);
+	}
+
 	dp_flags[port] |= DP_FLAGS_DP_ON;
 }
 
@@ -166,14 +180,6 @@ __override int svdm_dp_attention(int port, uint32_t *payload)
 		if (IS_ENABLED(CONFIG_MKBP_EVENT)) {
 			pd_notify_dp_alt_mode_entry(port);
 		}
-	}
-
-	/* Its initial DP status message prior to config */
-	if (!(dp_flags[port] & DP_FLAGS_DP_ON)) {
-		if (lvl) {
-			dp_flags[port] |= DP_FLAGS_HPD_HI_PENDING;
-		}
-		return 1;
 	}
 
 #ifdef CONFIG_USB_PD_DP_HPD_GPIO
