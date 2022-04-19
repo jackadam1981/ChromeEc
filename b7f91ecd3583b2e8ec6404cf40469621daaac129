@@ -22,6 +22,30 @@
       },
       "revId": "b7f91ecd3583b2e8ec6404cf40469621daaac129",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6bec43ac_4cf47fe0",
+        "filename": "zephyr/dts/bindings/charger/intersil,isl9241.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2022-04-19T13:19:30Z",
+      "side": 0,
+      "message": "Ohh, sorry. I misunderstood this property. I reverted it to the previous state and it should work. Why do you think a new Kconfig config is better here?",
+      "parentUuid": "23acd4a6_44613de8",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 0
+      },
+      "revId": "b7f91ecd3583b2e8ec6404cf40469621daaac129",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
