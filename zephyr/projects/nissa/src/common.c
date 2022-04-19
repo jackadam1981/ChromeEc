@@ -29,23 +29,6 @@ static const struct prochot_cfg nissa_prochot_cfg = {
 	.gpio_prochot_in = PROCHOT_GPIO_ENUM,
 };
 
-struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
-	{
-		.usb_port = 0,
-		.driver = &virtual_usb_mux_driver,
-		.hpd_update = &virtual_hpd_update,
-	},
-	{ /* sub-board */
-		.usb_port = 1,
-		.driver = &virtual_usb_mux_driver,
-		.hpd_update = &virtual_hpd_update,
-		/*
-		 * next_mux filled in by board config code
-		 * if sub-board has type-C USB port.
-		 */
-	},
-};
-
 static uint8_t cached_usb_pd_port_count;
 
 __override uint8_t board_get_usb_pd_port_count(void)
