@@ -45,6 +45,30 @@
       },
       "revId": "812b4a8ae5f52151758745286c200ce6a54fe6f6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2eca2c72_9dc2368c",
+        "filename": "zephyr/shim/src/charger.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2022-04-19T13:22:19Z",
+      "side": 1,
+      "message": "I\u0027m aware that it is not the best way to check if there is any charger chip, I would prefer to avoid relying on a path/name of a node(chg node).",
+      "parentUuid": "c69777bc_192a2be0",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 0
+      },
+      "revId": "812b4a8ae5f52151758745286c200ce6a54fe6f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
