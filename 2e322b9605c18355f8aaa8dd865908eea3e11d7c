@@ -118,6 +118,30 @@
       },
       "revId": "2e322b9605c18355f8aaa8dd865908eea3e11d7c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "30e358bb_d66eec02",
+        "filename": "zephyr/projects/intelrvp/src/intelrvp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-04-19T00:44:45Z",
+      "side": 1,
+      "message": "Ack.\nMissed this comment in This CL.. As This is merged. Created another CL to address this: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3591955",
+      "parentUuid": "096b94d7_4fa730c5",
+      "range": {
+        "startLine": 21,
+        "startChar": 39,
+        "endLine": 23,
+        "endChar": 19
+      },
+      "revId": "2e322b9605c18355f8aaa8dd865908eea3e11d7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
