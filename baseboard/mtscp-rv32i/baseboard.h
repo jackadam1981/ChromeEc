@@ -49,21 +49,60 @@
 
 #define SCP_IPI_NS_SERVICE 0xFF
 
+/*
+ * ---+-------------------- (1) CONFIG_DRAM_BASE
+ * C  | DRAM .text, .rodata, .data LMA
+ *    | DRAM .bss, .data
+ * ---+-------------------- (2) DRAM_NC_BASE
+ * NC | .dramnc
+ *    +-------------------- (3) CONFIG_PANIC_DRAM_BASE
+ *    | Panic Data
+ *    +-------------------- (4) KERNEL_BASE
+ *    | Kernel DMA allocable for MDP, etc.
+ * ---+-------------------- (5) (KERNEL_BASE + KERNEL_SIZE) = (CONFIG_DRAM_BASE + DRAM_TOTAL_SIZE)
+ *
+ * MT8192
+ *     base       size
+ * (1) 0x10000000 0x500000
+ * (2) 0x10500000 0
+ * (3) 0x10500000 0
+ * (4) 0x10500000 0xF00000
+ * (5) 0x11400000
+ * MT8195
+ * (1) 0x10000000 0x4FF000
+ * (2) 0x104FF000 0
+ * (3) 0x104FF000 0x1000
+ * (4) 0x10500000 0xF00000
+ * (5) 0x11400000
+ */
+
+/* (1) DRAM cacheable region */
 /* Access DRAM through cached access */
 #define CONFIG_DRAM_BASE 0x10000000
 /* Shared memory address in AP physical address space. */
 #define CONFIG_DRAM_BASE_LOAD 0x50000000
-#define CONFIG_DRAM_SIZE 0x01400000 /* 20 MB */
+#define CONFIG_DRAM_SIZE (DRAM_TOTAL_SIZE - CONFIG_PANIC_DRAM_SIZE - DRAM_NC_SIZE - KERNEL_SIZE)
+#define DRAM_TOTAL_SIZE 0x01400000 /* 20 MB */
 
-/* Add some space (0x100) before panic for jump data */
+/* (2) DRAM non-cacheable region */
+#define DRAM_NC_BASE (CONFIG_DRAM_BASE + CONFIG_DRAM_SIZE)
+#define DRAM_NC_SIZE 0
+
+/* (3) panic data */
+#define CONFIG_PANIC_DRAM_BASE (DRAM_NC_BASE + DRAM_NC_SIZE)
+
+#ifdef CONFIG_PANIC_CONSOLE_OUTPUT
 #define CONFIG_PANIC_DRAM_SIZE 0x00001000 /* 4K */
-#define CONFIG_PANIC_DRAM_BASE (CONFIG_DRAM_BASE + CONFIG_DRAM_SIZE - CONFIG_PANIC_DRAM_SIZE)
-
+/* Add some space (0x100) before panic for jump data */
 #define CONFIG_PANIC_BASE_OFFSET 0x100 /* reserved for jump data */
-
-#ifdef CHIP_VARIANT_MT8195
 #define CONFIG_PANIC_DATA_BASE (CONFIG_PANIC_DRAM_BASE + CONFIG_PANIC_BASE_OFFSET)
-#endif
+#else
+#define CONFIG_PANIC_DRAM_SIZE 0
+#endif /* CONFIG_PANIC_CONSOLE_OUTPUT */
+
+/* (4) kernel DMA allocable region */
+#define KERNEL_BASE (CONFIG_PANIC_DRAM_BASE + CONFIG_PANIC_DRAM_SIZE)
+#define KERNEL_SIZE 0xF00000
 
 /* MPU settings */
 #define NR_MPU_ENTRIES 16
