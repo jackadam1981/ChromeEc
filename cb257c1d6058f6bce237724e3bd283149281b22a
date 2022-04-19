@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e114c0d2_240b28f4",
+        "filename": "zephyr/dts/bindings/usbc/mux/cros-ec,usbc-mux-tcpci.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-04-19T23:20:28Z",
+      "side": 1,
+      "message": "Would it be possible to make this the default for a PS8xxx binding? In most configurations this will be required for correct operation when using PS8xxx, but making it an option seems error-prone when we could instead make a separate binding that works out of the box with that chip.",
+      "revId": "cb257c1d6058f6bce237724e3bd283149281b22a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
