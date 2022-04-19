@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0069d36f_6fd9bbb7",
+        "filename": "common/usbc/usb_pe_private.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-04-19T19:43:26Z",
+      "side": 1,
+      "message": "This needs a check that the number of flags is \u003c\u003d 32.",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 4
+      },
+      "revId": "a8b38dc6006a82c54baadd50c46fbc512829cfc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
