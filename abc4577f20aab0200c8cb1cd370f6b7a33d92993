@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd3f1181_0142e1ce",
+        "filename": "zephyr/dts/bindings/usbc/mux/cros-ec,usbc-mux-virtual.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2022-04-19T20:10:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4e772c2a_93dcce1b",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 3,
+        "endChar": 0
+      },
+      "revId": "abc4577f20aab0200c8cb1cd370f6b7a33d92993",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4c9a440f_1f917e15",
@@ -71,6 +95,30 @@
       "writtenOn": "2022-04-15T18:22:59Z",
       "side": 1,
       "message": "Use the Chromium BSD license.  The Apache license will be used when we add files into the Zephyr GitHub repo.\n\n```\n# Copyright 2022 The Chromium OS Authors. All rights reserved.\n# Use of this source code is governed by a BSD-style license that can be\n# found in the LICENSE file.\n```",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 4,
+        "endChar": 0
+      },
+      "revId": "abc4577f20aab0200c8cb1cd370f6b7a33d92993",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1ad85b3_70e4b2cb",
+        "filename": "zephyr/dts/bindings/usbc/mux/cros-ec,usbc-mux.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2022-04-19T20:10:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4c9a440f_1f917e15",
       "range": {
         "startLine": 1,
         "startChar": 0,
@@ -104,6 +152,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dacca2cd_2b563e5f",
+        "filename": "zephyr/dts/bindings/usbc/mux/ite,it5205.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2022-04-19T20:10:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7f42e1ee_2b19f954",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 3,
+        "endChar": 0
+      },
+      "revId": "abc4577f20aab0200c8cb1cd370f6b7a33d92993",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b615a068_abee423e",
@@ -117,6 +189,30 @@
       "writtenOn": "2022-04-15T18:22:59Z",
       "side": 1,
       "message": "Fix license.",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 3,
+        "endChar": 0
+      },
+      "revId": "abc4577f20aab0200c8cb1cd370f6b7a33d92993",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf428ecd_9488d92e",
+        "filename": "zephyr/dts/bindings/usbc/mux/ti,tusb1064.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2022-04-19T20:10:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b615a068_abee423e",
       "range": {
         "startLine": 1,
         "startChar": 0,
