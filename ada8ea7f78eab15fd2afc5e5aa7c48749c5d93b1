@@ -16,6 +16,23 @@
       "message": "Tested with a few different values for the alignment sizeof() reports correctly.",
       "revId": "ada8ea7f78eab15fd2afc5e5aa7c48749c5d93b1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a84d5f6e_5a1e72a6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1347380
+      },
+      "writtenOn": "2022-04-20T15:34:25Z",
+      "side": 1,
+      "message": "Zero length arrays can cause problems which can be easily fixed as it\u0027s undefined behavior. Clang\u0027s static analysis tools for instance are not compatible.\nhttps://news.ycombinator.com/item?id\u003d7581714\n\nSomething like this should work for everything:\n\nstruct persist_state {\n...\n#ifdef CONFIG_SERIALNO_LEN\n\tuint8_t serialno[CONFIG_SERIALNO_LEN]; /* Serial number. */\n#endif /* CONFIG_SERIALNO_LEN */\n#ifdef CONFIG_MAC_ADDR_LEN\n\tuint8_t mac_addr[CONFIG_MAC_ADDR_LEN];\n#endif /* CONFIG_MAC_ADDR_LEN */\n#if !defined(CONFIG_SERIALNO_LEN) \u0026\u0026 !defined(CONFIG_MAC_ADDR_LEN)\n\tuint8_t padding[0] __aligned(CONFIG_FLASH_WRITE_SIZE);\n#endif\n} __aligned(CONFIG_FLASH_WRITE_SIZE);\n",
+      "revId": "ada8ea7f78eab15fd2afc5e5aa7c48749c5d93b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
