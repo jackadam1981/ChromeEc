@@ -1,5 +1,5 @@
-Building /tmp/z/vol:ro: /usr/bin/ninja -C /tmp/z/vol/build-ro
-Running /usr/bin/ninja -C /tmp/z/vol/build-ro
+Building /tmp/z/vol:ro: /usr/bin/ninja -C /tmp/z/vol/build-ro -j1
+Running /usr/bin/ninja -C /tmp/z/vol/build-ro -j1
 ninja: Entering directory `/tmp/z/vol/build-ro'
 devicetree error: 'adc' is marked as required in 'properties:' in /home/sjg/c/src/platform/ec/zephyr/dts/bindings/temp/temp-3v3-30k9-47k-4050b.yaml, but does not appear in <Node /named-temp-sensors/ddr_soc in 'volteer.dts.pre.tmp'>
 [1/310] Preparing syscall dependency handling

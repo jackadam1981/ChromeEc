@@ -169,10 +169,10 @@ class TestFilters:
             "Configuring fakeproject:rw.",
             "Configuring fakeproject:ro.",
             "Building fakeproject in {}/ec/build/zephyr/fakeproject.".format(tmp_path),
-            "Building fakeproject:ro: /usr/bin/ninja -C {}-ro".format(
+            "Building fakeproject:ro: /usr/bin/ninja -C {}-ro -j1".format(
                 tmp_path / "ec/build/zephyr/fakeproject/build"
             ),
-            "Building fakeproject:rw: /usr/bin/ninja -C {}-rw".format(
+            "Building fakeproject:rw: /usr/bin/ninja -C {}-rw -j1".format(
                 tmp_path / "ec/build/zephyr/fakeproject/build"
             ),
         }
@@ -193,10 +193,10 @@ class TestFilters:
             "Configuring fakeproject:rw.",
             "Configuring fakeproject:ro.",
             "Building fakeproject in {}/ec/build/zephyr/fakeproject.".format(tmp_path),
-            "Building fakeproject:ro: /usr/bin/ninja -C {}-ro".format(
+            "Building fakeproject:ro: /usr/bin/ninja -C {}-ro -j1".format(
                 tmp_path / "ec/build/zephyr/fakeproject/build"
             ),
-            "Building fakeproject:rw: /usr/bin/ninja -C {}-rw".format(
+            "Building fakeproject:rw: /usr/bin/ninja -C {}-rw -j1".format(
                 tmp_path / "ec/build/zephyr/fakeproject/build"
             ),
             "Running cat {}/files/sample_ro.txt".format(OUR_PATH),
