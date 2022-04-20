@@ -16,6 +16,24 @@
       "message": "Please open a bug to move this driver upstream to Zephyr.  It\u0027s only used on RVP platforms.  Because this is a pure I2C device with no dependencies, it should be pretty straight forward to port to Zephyr.",
       "revId": "68a992b44d04cb72dae4a92906728c4266adc4f7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9e6611e_edf35395",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-04-20T23:05:26Z",
+      "side": 1,
+      "message": "https://partnerissuetracker.corp.google.com/issues/229877862",
+      "parentUuid": "e3e29cb7_ee73bd9a",
+      "revId": "68a992b44d04cb72dae4a92906728c4266adc4f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
