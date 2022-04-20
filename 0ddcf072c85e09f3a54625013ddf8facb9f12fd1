@@ -22,6 +22,30 @@
       },
       "revId": "0ddcf072c85e09f3a54625013ddf8facb9f12fd1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b328fb8b_8ef1ce1a",
+        "filename": "zephyr/dts/bindings/leds/cros-ec,led-colors.yaml",
+        "patchSetId": 5
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1513493
+      },
+      "writtenOn": "2022-04-20T20:36:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ea4f5d04_8b15eaa8",
+      "range": {
+        "startLine": 74,
+        "startChar": 29,
+        "endLine": 74,
+        "endChar": 33
+      },
+      "revId": "0ddcf072c85e09f3a54625013ddf8facb9f12fd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
