@@ -88,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f678daff_30044455",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2022-04-20T19:22:12Z",
+      "side": 1,
+      "message": "updated test result on commit message.",
+      "parentUuid": "5f9cf067_a5326d8e",
+      "revId": "1306d71db903ea7cdf4e0b688725ad73dce64ca2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "455402af_69bec60b",
@@ -125,6 +143,30 @@
       "side": 1,
       "message": "ack.\nwill remove and verify build result.",
       "parentUuid": "455402af_69bec60b",
+      "range": {
+        "startLine": 234,
+        "startChar": 1,
+        "endLine": 244,
+        "endChar": 35
+      },
+      "revId": "1306d71db903ea7cdf4e0b688725ad73dce64ca2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a573b087_2352dc50",
+        "filename": "zephyr/zmake/zmake/output_packers.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2022-04-20T19:22:12Z",
+      "side": 1,
+      "message": "removed this part of code in patch set 2.\nthis part of code is not used, removal doesn\u0027t impact SPI generation result.",
+      "parentUuid": "7d041046_be909c64",
       "range": {
         "startLine": 234,
         "startChar": 1,
