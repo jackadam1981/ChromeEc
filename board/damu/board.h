@@ -91,6 +91,14 @@
 #define CONFIG_MKBP_EVENT
 #define CONFIG_MKBP_USE_GPIO
 
+/* Virutal battery optional MFG function */
+#define CONFIG_SMART_BATTERY_OPTIONAL_MFG_FUNC
+#define SB_OPTIONAL_MFG_FUNC1 0x3C
+#define SB_OPTIONAL_MFG_FUNC2 0x3D
+#define SB_OPTIONAL_MFG_FUNC3 0x3E
+#define SB_OPTIONAL_MFG_FUNC4 0x3F
+#define SB_OPTIONAL_MFG_FUNC5 0x70
+
 #ifndef __ASSEMBLER__
 
 enum adc_channel {
