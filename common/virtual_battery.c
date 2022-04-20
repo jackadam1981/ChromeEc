@@ -410,6 +410,17 @@ int virtual_battery_operation(const uint8_t *batt_cmd_head,
 		val = 0x0011;
 		memcpy(dest, &val, bounded_read_len);
 		break;
+#ifdef CONFIG_SMART_BATTERY_OPTIONAL_MFC_FUNC
+	case SB_OPTIONAL_MFG_FUNC1:
+	case SB_OPTIONAL_MFG_FUNC2:
+	case SB_OPTIONAL_MFG_FUNC3:
+	case SB_OPTIONAL_MFG_FUNC4:
+	case SB_OPTIONAL_MFG_FUNC5:
+		return board_virtual_battery_operation(batt_cmd_head,
+						       dest,
+						       read_len,
+						       write_len);
+#endif
 	default:
 		CPRINTS("Unhandled VB reg %x", *batt_cmd_head);
 		return EC_ERROR_INVAL;
