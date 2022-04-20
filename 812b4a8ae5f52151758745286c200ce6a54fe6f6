@@ -93,6 +93,30 @@
       },
       "revId": "812b4a8ae5f52151758745286c200ce6a54fe6f6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1d94256_df2a8e75",
+        "filename": "zephyr/shim/src/charger.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2022-04-20T14:11:04Z",
+      "side": 1,
+      "message": "I see your point, done.",
+      "parentUuid": "4a1669f4_797858e3",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 0
+      },
+      "revId": "812b4a8ae5f52151758745286c200ce6a54fe6f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
