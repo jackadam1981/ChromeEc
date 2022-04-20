@@ -51,6 +51,24 @@
       "message": "Just for curiosity sake, I see that the charger is being defined as a device\non the USB C config with a property indicating the I2C bus that is used,\nrather than as a device on the I2C bus itself.\nIs this the eventual plan?",
       "revId": "2b22e13b97f3fe1f92548e1fffc455b45b0d9628",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cda795f3_27fac1ab",
+        "filename": "zephyr/projects/nissa/nereid_overlay.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2022-04-20T14:17:58Z",
+      "side": 1,
+      "message": "No, this approach is used to generate the chg_chips array used in the EC codebase. With the OCPC config, it is also useful to connect the charger with the port. Once we upstream the drivers to Zephyr, I think the chargers should be added to DTS as devices on the I2C bus like you said.",
+      "parentUuid": "d679ad89_d26330ed",
+      "revId": "2b22e13b97f3fe1f92548e1fffc455b45b0d9628",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
