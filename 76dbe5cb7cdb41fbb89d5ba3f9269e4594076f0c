@@ -20,6 +20,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "44d6b4d5_bc180d7e",
+        "filename": "zephyr/Kconfig.tasks",
+        "patchSetId": 10
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-04-20T22:51:28Z",
+      "side": 1,
+      "message": "Nit: would suggest \"DEDICATED\" instead of \"SHIM\"",
+      "range": {
+        "startLine": 101,
+        "startChar": 27,
+        "endLine": 101,
+        "endChar": 31
+      },
+      "revId": "76dbe5cb7cdb41fbb89d5ba3f9269e4594076f0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7e06a71f_70fb8f36",
         "filename": "zephyr/app/ec/main_shim.c",
         "patchSetId": 10
@@ -36,6 +59,29 @@
         "startChar": 0,
         "endLine": 15,
         "endChar": 44
+      },
+      "revId": "76dbe5cb7cdb41fbb89d5ba3f9269e4594076f0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ce4b409_8ae01124",
+        "filename": "zephyr/shim/include/zephyr_host_command.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-04-20T22:51:28Z",
+      "side": 1,
+      "message": "add `stdbool.h` up top for completeness",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 4
       },
       "revId": "76dbe5cb7cdb41fbb89d5ba3f9269e4594076f0c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
