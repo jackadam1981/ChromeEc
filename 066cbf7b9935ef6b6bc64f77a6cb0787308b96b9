@@ -46,6 +46,30 @@
       },
       "revId": "066cbf7b9935ef6b6bc64f77a6cb0787308b96b9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ead04ec_dc357835",
+        "filename": "zephyr/shim/src/led_driver/led.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1513493
+      },
+      "writtenOn": "2022-04-20T21:28:42Z",
+      "side": 1,
+      "message": "For HOOK_TICK_INTERVAL_MS \u003d 1000",
+      "parentUuid": "c1484bd5_27232ff8",
+      "range": {
+        "startLine": 219,
+        "startChar": 54,
+        "endLine": 220,
+        "endChar": 26
+      },
+      "revId": "066cbf7b9935ef6b6bc64f77a6cb0787308b96b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
