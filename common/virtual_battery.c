@@ -171,6 +171,15 @@ void copy_memmap_string(uint8_t *dest, int offset, int len)
 	memcpy(dest + 1, memmap_str, MIN(memmap_strlen, len - 1));
 }
 
+__overridable int board_virtual_battery_operation(const uint8_t *batt_cmd_head,
+					       uint8_t *dest,
+					       int read_len,
+					       int write_len)
+{
+	CPRINTS("Unhandled VB reg %x", *batt_cmd_head);
+	return EC_ERROR_INVAL;
+}
+
 int virtual_battery_operation(const uint8_t *batt_cmd_head,
 			      uint8_t *dest,
 			      int read_len,
@@ -357,6 +366,16 @@ int virtual_battery_operation(const uint8_t *batt_cmd_head,
 #endif
 	case SB_MANUFACTURER_ACCESS:
 		/* No manuf. access reg access allowed over VB interface */
+#ifdef CONFIG_BATTERY_SMART
+		if (write_len >= 1) {
+			val = batt_cmd_head[1] | batt_cmd_head[2] << 8;
+			CPRINTS("Virtual battery manufacturer access: 0x%x", val);
+			if (battery_manufacturer_access(val)) 
+				return EC_ERROR_INVAL;
+			else
+				return EC_SUCCESS;
+		}
+#endif
 		return EC_ERROR_INVAL;
 	case SB_SPECIFICATION_INFO:
 		/* v1.1 without PEC, no scale factor to voltage and current */
@@ -364,8 +383,18 @@ int virtual_battery_operation(const uint8_t *batt_cmd_head,
 		memcpy(dest, &val, bounded_read_len);
 		break;
 	default:
+		if (board_virtual_battery_operation(batt_cmd_head,
+							dest,
+							read_len,
+							write_len)) {
+			return EC_ERROR_INVAL;
+		} else {
+			return EC_SUCCESS;
+		}
+		/*
 		CPRINTS("Unhandled VB reg %x", *batt_cmd_head);
 		return EC_ERROR_INVAL;
+		*/
 	}
 	return EC_SUCCESS;
 }

@@ -5,7 +5,14 @@
 
 #include "battery.h"
 #include "battery_fuel_gauge.h"
+#include "battery_smart.h"
 #include "gpio.h"
+#include "string.h"
+#include "system.h"
+#include "util.h"
+#include "virtual_battery.h"
+
+#define CPRINTS(format, args...) cprints(CC_I2C, format, ## args)
 
 const struct board_batt_params board_battery_info[] = {
 	[BATTERY_C235] = {
@@ -43,4 +50,58 @@ const enum battery_type DEFAULT_BATTERY_TYPE = BATTERY_C235;
 enum battery_present battery_hw_present(void)
 {
 	return gpio_get_level(GPIO_EC_BATT_PRES_ODL) ? BP_NO : BP_YES;
+}
+
+__override int board_virtual_battery_operation(const uint8_t *batt_cmd_head,
+					   uint8_t *dest,
+					   int read_len,
+					   int write_len)
+{
+	int val;
+	char str[8];
+	int bound_read_len = MIN(read_len, 2);
+
+	switch (*batt_cmd_head) {
+	case 0x3C:
+		if (sb_read(0x3c, &val)) {
+			CPRINTS("Dame battery read 0x3C fail");
+			return EC_ERROR_INVAL;
+		} else {
+			CPRINTS("Damu battery 0x3c: 0x%x", val);
+			memcpy(dest, &val, bound_read_len);
+			return EC_SUCCESS;
+		}
+	case 0x3D:
+		if (sb_read(0x3d, &val)) {
+			return EC_ERROR_INVAL;
+		} else {
+			memcpy(dest, &val, bound_read_len);
+			return EC_SUCCESS;
+		}
+	case 0x3E:
+		if (sb_read(0x3e, &val)) {
+			return EC_ERROR_INVAL;
+		} else {
+			memcpy(dest, &val, bound_read_len);
+			return EC_SUCCESS;
+		}
+	case 0x3F:
+		if (sb_read(0x3f, &val)) {
+			return EC_ERROR_INVAL;
+		} else {
+			memcpy(dest, &val, bound_read_len);
+			return EC_SUCCESS;
+		}
+	case 0x70:
+		if (sb_read_string(0x70, str, 2)) {
+			return EC_ERROR_INVAL;
+		} else {
+			CPRINTS("Damu battery register 0x70: 0x%x, 0x%x", str[0], str[1]);
+			memcpy(dest, &str, bound_read_len);
+			return EC_SUCCESS;
+		}
+	default:
+		return EC_ERROR_INVAL;
+	}
+	return EC_SUCCESS;
 }

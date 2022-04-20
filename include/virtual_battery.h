@@ -43,6 +43,11 @@ int virtual_battery_handler(struct ec_response_i2c_passthru *resp,
 				   int read_len, int write_len,
 				   const uint8_t *out);
 
+int board_virtual_battery_operation(const uint8_t *batt_cmd_head,
+				    uint8_t *dest,
+				    int read_len,
+				    int write_len);
+
 /* Reset the state machine and static variables. */
 void reset_parse_state(void);
 

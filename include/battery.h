@@ -367,6 +367,8 @@ int battery_manufacturer_date(int *year, int *month, int *day);
  */
 int battery_manufacturer_data(char *data, int size);
 
+int battery_manufacturer_access(int cmd);
+
 /**
  * Report the absolute difference between the highest and lowest cell voltage in
  * the battery pack, in millivolts.  On error or unimplemented, returns '0'.
