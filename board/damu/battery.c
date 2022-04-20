@@ -5,7 +5,11 @@
 
 #include "battery.h"
 #include "battery_fuel_gauge.h"
+#include "battery_smart.h"
 #include "gpio.h"
+#include "system.h"
+#include "util.h"
+#include "virtual_battery.h"
 
 const struct board_batt_params board_battery_info[] = {
 	[BATTERY_C235] = {
@@ -43,4 +47,34 @@ const enum battery_type DEFAULT_BATTERY_TYPE = BATTERY_C235;
 enum battery_present battery_hw_present(void)
 {
 	return gpio_get_level(GPIO_EC_BATT_PRES_ODL) ? BP_NO : BP_YES;
+}
+
+__override int board_virtual_battery_operation(const uint8_t *batt_cmd_head,
+					   uint8_t *dest,
+					   int read_len,
+					   int write_len)
+{
+	int val;
+	char str[2];
+	int bound_read_len = MIN(read_len, 2);
+
+	switch (*batt_cmd_head) {
+	case 0x3C:
+	case 0x3D:
+	case 0x3E:
+	case 0x3F:
+		if (sb_read(*batt_cmd_head, &val))
+			return EC_ERROR_INVAL;
+		memcpy(dest, &val, bound_read_len);
+		break;
+	case 0x70:
+		if (sb_read_string(0x70, str, ARRAY_SIZE(str)))
+			return EC_ERROR_INVAL;
+		bound_read_len = MIN(read_len, ARRAY_SIZE(str));
+		memcpy(dest, &str, bound_read_len);
+		break;
+	default:
+		return EC_ERROR_INVAL;
+	}
+	return EC_SUCCESS;
 }
