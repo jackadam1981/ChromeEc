@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b49bee1_f26a971c",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1810,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-04-20T06:29:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "58fda014_435f0484",
+      "revId": "588480a39b4303ad83d91e5a72be4f699e2e66d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0d26d8ed_86604f54",
@@ -48,6 +66,24 @@
       "writtenOn": "2022-04-19T21:20:49Z",
       "side": 1,
       "message": "What about too few args? or invalid bool?",
+      "revId": "588480a39b4303ad83d91e5a72be4f699e2e66d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1fe3d8bd_3e30bac2",
+        "filename": "zephyr/test/drivers/src/console_cmd/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-04-20T06:29:57Z",
+      "side": 1,
+      "message": "I just wanted to upload the minimum for what I was seeing breaking the test runs (those are coming next)",
+      "parentUuid": "0d26d8ed_86604f54",
       "revId": "588480a39b4303ad83d91e5a72be4f699e2e66d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
