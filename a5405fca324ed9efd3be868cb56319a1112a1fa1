@@ -16,6 +16,23 @@
       "message": "I think this needs I2C configuration?",
       "revId": "a5405fca324ed9efd3be868cb56319a1112a1fa1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "340e2cf1_29f76bce",
+        "filename": "zephyr/projects/nissa/nivviks_overlay.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-04-20T00:24:21Z",
+      "side": 1,
+      "message": "I\u0027m just trying to get my head around the different nodes and structures here.\nSpecifically, the port0-muxes and port1-muxes are separate nodes that don\u0027t need to be child nodes of the usbc node? Since child nodes of these have their own node label and compats, and there are phandle references to them from nodes such as port1@1.\nBy putting them as child nodes of usbc, there\u0027s an implication that they are connected or expected to be child nodes, and there\u0027s no such connection (instead a phandle to a node label is used).\n\nUsing the port1@1 register style model maybe better here (if that works) so you could perhaps use port0-mux@0 style of identifying which port the muxes belong to.\n\nEven better, why not put the muxes as child nodes of the portN@N node, and then use DT_PARENT to automatically identify the USB port that the muxes belong to.\nThen you wouldn\u0027t need the node labels and phandles to link these nodes together.\nOr iterate through the child nodes of named-usbc-port compats, and checking which are muxes (maybe through a property check), and processing them that way, so that the order is maintained (which is important).\nI\u0027d be interested to see if there is a doc that captures the overall design here so I can understand better the intent - feel free to share it with me.",
+      "revId": "a5405fca324ed9efd3be868cb56319a1112a1fa1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
