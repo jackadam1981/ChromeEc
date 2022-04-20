@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e2e48ba2_a0d97111",
+        "filename": "zephyr/projects/nissa/nereid_overlay.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2022-04-20T13:59:32Z",
+      "side": 1,
+      "message": "The I2C address is not required, because `tcpci_tcpm_usb_mux_driver` use `mux_write()/mux_read()` functions. As long as an `struct usb_mux` has not a `USB_MUX_FLAG_NOT_TCPC` in its flags, the I2C address from the `tcpc_config` is used to access mux registers. In that case, `struct usb_mux` `i2c_port` and `i2c_addr_flags` are never used.",
+      "parentUuid": "c55bd00b_91a5e334",
+      "revId": "a5405fca324ed9efd3be868cb56319a1112a1fa1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "340e2cf1_29f76bce",
         "filename": "zephyr/projects/nissa/nivviks_overlay.dts",
         "patchSetId": 2
@@ -31,6 +49,24 @@
       "writtenOn": "2022-04-20T00:24:21Z",
       "side": 1,
       "message": "I\u0027m just trying to get my head around the different nodes and structures here.\nSpecifically, the port0-muxes and port1-muxes are separate nodes that don\u0027t need to be child nodes of the usbc node? Since child nodes of these have their own node label and compats, and there are phandle references to them from nodes such as port1@1.\nBy putting them as child nodes of usbc, there\u0027s an implication that they are connected or expected to be child nodes, and there\u0027s no such connection (instead a phandle to a node label is used).\n\nUsing the port1@1 register style model maybe better here (if that works) so you could perhaps use port0-mux@0 style of identifying which port the muxes belong to.\n\nEven better, why not put the muxes as child nodes of the portN@N node, and then use DT_PARENT to automatically identify the USB port that the muxes belong to.\nThen you wouldn\u0027t need the node labels and phandles to link these nodes together.\nOr iterate through the child nodes of named-usbc-port compats, and checking which are muxes (maybe through a property check), and processing them that way, so that the order is maintained (which is important).\nI\u0027d be interested to see if there is a doc that captures the overall design here so I can understand better the intent - feel free to share it with me.",
+      "revId": "a5405fca324ed9efd3be868cb56319a1112a1fa1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb8c227d_0dd11697",
+        "filename": "zephyr/projects/nissa/nivviks_overlay.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2022-04-20T13:59:32Z",
+      "side": 1,
+      "message": "I discussed with Keith what be the best approach to define an usb muxes chain in the DTS in comments to the bug https://b.corp.google.com/issues/227757117\nWe decided that `usb-muxes` property in usbc node will be good to enforce the order of muxes in chain, since order of children in `*_FOREACH_CHILD` macro is not guaranteed.\n\nI thought about putting usb muxes as a child of the usbc node, but it doesn\u0027t work out because of chain of dependencies in a DTS (discussed here https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3575157/2..4/zephyr/projects/corsola/usbc_krabby.dts#b36)\n\nPutting usb muxes in port0-mux@0 may be possible option, but it create problem with devices like Intel JHL8040R which is a retimer, but it is also usb mux. If we will relay on that the parent reg property is port number, than JHL8040R would have two nodes: one on I2C bus and second in port0-mux@0. If it is okay to have two nodes in DTS for one device than it is not a problem.\n\nUnfortunately we don\u0027t have doc describing usb muxes configuration yet.",
+      "parentUuid": "340e2cf1_29f76bce",
       "revId": "a5405fca324ed9efd3be868cb56319a1112a1fa1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
