@@ -405,9 +405,18 @@ void rt1718s_vendor_defined_alert(int port)
 			return;
 
 		if ((int1 & RT1718S_RT_INT1_INT_RX_FRS)) {
-			atomic_or(&frs_flag[port], FLAG_FRS_RX_SIGNALED);
-			/* notify TCPM we got FRS signal */
-			pd_got_frs_signal(port);
+			/*
+			 * Only call pd_got_frs_signal when this is the first
+			 * Rx interrupt for this FRS swap. The Rx interrupt
+			 * may re-send when the sink voltage is 5V, and this
+			 * will make us re-entry the FRS states.
+			 */
+			if (!(frs_flag[port] & FLAG_FRS_RX_SIGNALED)) {
+				atomic_or(&frs_flag[port],
+					  FLAG_FRS_RX_SIGNALED);
+				/* notify TCPM we got FRS signal */
+				pd_got_frs_signal(port);
+			}
 		}
 
 		if ((int1 & RT1718S_RT_INT1_INT_VBUS_FRS_LOW)) {
