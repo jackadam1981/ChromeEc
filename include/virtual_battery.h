@@ -44,6 +44,21 @@ int virtual_battery_handler(struct ec_response_i2c_passthru *resp,
 				   int read_len, int write_len,
 				   const uint8_t *out);
 
+/**
+ * Read/write value of battery parameter by customized.
+ *
+ * @param batt_cmd_head	The beginning of the smart battery command
+ * @param dest		Destination buffer for data
+ * @param read_len	Number of bytes to read to the buffer
+ * @param write_len	Number of bytes to write
+ * @return EC_SUCCESS if successful, non-zero if error.
+ *
+ */
+int board_virtual_battery_operation(const uint8_t *batt_cmd_head,
+				    uint8_t *dest,
+				    int read_len,
+				    int write_len);
+
 /* Reset the state machine and static variables. */
 void reset_parse_state(void);
 
