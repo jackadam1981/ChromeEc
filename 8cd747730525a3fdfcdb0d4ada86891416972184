@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1be6ad56_d3f1abea",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-04-20T21:12:21Z",
+      "side": 1,
+      "message": "this is good info we should keep around.\n\nwhat \u0027s missing is that this patch only refactors\nor generalizes an existing GLK SoC specific config option\ninto a general config option that is enabled for\nspecific cases like the GLK SoC. there are no\nbehavior changes introduced here.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 28
+      },
+      "revId": "8cd747730525a3fdfcdb0d4ada86891416972184",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
