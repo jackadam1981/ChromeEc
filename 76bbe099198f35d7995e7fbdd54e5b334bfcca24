@@ -76,6 +76,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2b13b32_41cff6cf",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 448,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-04-20T02:56:27Z",
+      "side": 1,
+      "message": "I am not sure how many of these masks are common to all chipsets.\nIt may be useful to keep these specific to this file until\nit becomes clear they can be made common.",
+      "parentUuid": "86db33f9_04b4a6b7",
+      "range": {
+        "startLine": 434,
+        "startChar": 0,
+        "endLine": 448,
+        "endChar": 32
+      },
+      "revId": "76bbe099198f35d7995e7fbdd54e5b334bfcca24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "13aed1cf_e62f1e30",
@@ -99,6 +123,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2599d361_486e2841",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 449,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-04-20T02:56:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "13aed1cf_e62f1e30",
+      "range": {
+        "startLine": 434,
+        "startChar": 1,
+        "endLine": 449,
+        "endChar": 0
+      },
+      "revId": "76bbe099198f35d7995e7fbdd54e5b334bfcca24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "76678fb6_6a13bfff",
@@ -112,6 +160,30 @@
       "writtenOn": "2022-04-19T00:52:46Z",
       "side": 1,
       "message": "I think only in the  case of sysjump, the power state will be kept, others are start from G3. So here the code need do condition check. \ncheck this one: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2213733/9/power/intel_x86.c",
+      "range": {
+        "startLine": 467,
+        "startChar": 1,
+        "endLine": 508,
+        "endChar": 2
+      },
+      "revId": "76bbe099198f35d7995e7fbdd54e5b334bfcca24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "021e6530_5a635a11",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 508,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-04-20T02:56:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "76678fb6_6a13bfff",
       "range": {
         "startLine": 467,
         "startChar": 1,
