@@ -16,6 +16,24 @@
       "message": "The original comment said \"not allowed\". I\u0027m not sure if the author has any security concern, I need some time to read old bugs about this.\n\nWhy do you need to write this reg?",
       "revId": "ce0f9475aa2bd0c75df796c649daceed6a1d430e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d6abe51_60891148",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1294441
+      },
+      "writtenOn": "2022-04-20T05:32:27Z",
+      "side": 1,
+      "message": "Dependent on ODM request. Need access commands and get correct data.\nectool i2cwrite 16 \u003cbus_port\u003e 0x16 0x00 0x0001\nectool i2cxfer \u003cbus_port\u003e 0x0b 0x03 0x23\nectool i2cwrite 16 \u003cbus_port\u003e 0x16 0x00 0x51\nectool i2cxfer \u003cbus_port\u003e 0x0b 0x05 0x23",
+      "parentUuid": "1c2ebb5b_ab6e9fa9",
+      "revId": "ce0f9475aa2bd0c75df796c649daceed6a1d430e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
