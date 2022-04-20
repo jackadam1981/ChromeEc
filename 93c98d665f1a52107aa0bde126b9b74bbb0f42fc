@@ -16,6 +16,23 @@
       "message": "Please take another look.",
       "revId": "93c98d665f1a52107aa0bde126b9b74bbb0f42fc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d3b619b5_e47e2272",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-04-20T04:11:30Z",
+      "side": 1,
+      "message": "I just tried this patch( w/CL:3586352 which is merged). \"sysjump RW\" stays in S0, but there are repeated eSPI printed; \neSPI Bus Error 00000000\neSPI Bus Error 00000200\nuntil watchdog is triggered and system reboot to RO again.\nAttached full log to b:227970724.",
+      "revId": "93c98d665f1a52107aa0bde126b9b74bbb0f42fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
