@@ -16,6 +16,41 @@
       "message": "Andrew and Peter - can you verify this works on nissa/nereid?",
       "revId": "2b22e13b97f3fe1f92548e1fffc455b45b0d9628",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fea7f3f0_f2f2b11f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-04-20T00:07:45Z",
+      "side": 1,
+      "message": "I cherry-picked the first 2 CLs in the series, and this one as well, built and confirmed that Nivviks is working OK (chgsup and chgstate looks fine).",
+      "parentUuid": "b974e0fa_c6333513",
+      "revId": "2b22e13b97f3fe1f92548e1fffc455b45b0d9628",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d679ad89_d26330ed",
+        "filename": "zephyr/projects/nissa/nereid_overlay.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-04-20T00:07:45Z",
+      "side": 1,
+      "message": "Just for curiosity sake, I see that the charger is being defined as a device\non the USB C config with a property indicating the I2C bus that is used,\nrather than as a device on the I2C bus itself.\nIs this the eventual plan?",
+      "revId": "2b22e13b97f3fe1f92548e1fffc455b45b0d9628",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
