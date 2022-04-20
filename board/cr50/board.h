@@ -288,6 +288,7 @@ enum nvmem_vars {
 	NVMEM_VARS_COUNT
 };
 
+void board_booted(void);
 void board_configure_deep_sleep_wakepins(void);
 void ap_detect_asserted(enum gpio_signal signal);
 void ec_detect_asserted(enum gpio_signal signal);
