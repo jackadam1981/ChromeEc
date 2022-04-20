@@ -599,7 +599,7 @@ static int console_command_bb_retimer(int argc, char **argv)
 	/* Get value to be written */
 	if (rw == 'w') {
 		val = strtoi(argv[4], &e, 0);
-		if (*e || val < 0)
+		if (*e)
 			return EC_ERROR_PARAM4;
 	}
 
