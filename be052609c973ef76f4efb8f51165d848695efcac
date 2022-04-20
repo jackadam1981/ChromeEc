@@ -16,6 +16,24 @@
       "message": "I think we need to keep these under \"zephyr/boards/arm/npcx9\" and support different variants of NPCX9",
       "revId": "be052609c973ef76f4efb8f51165d848695efcac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "093db629_e244c1c1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2022-04-20T10:12:15Z",
+      "side": 1,
+      "message": "If you want to keep these under \"zephyr/boards/arm/npcx9\", a problem is how to include the correct NPCX_VARIANTS.dtsi (npcx9m3f.dtsi/npcx9m6f.dtsi/npcx9m7f.dtsi) in zephyr/boards/arm/npcx9/npcx9.dts conditionally? I am not sure if there is a approach to pass a defination to npcx9.dts file. If it is, we may include the variant like this:\n```\n#ifdef IS_SOC_NPCX9M3F\n#include \u003cnuvoton/npcx9m3f.dtsi\n...\n```\n@Keith\nDo you have comments on if we should support differecnt varianst in the single npcx9.dts or seperate npcx9mxf.dts files?",
+      "parentUuid": "9ec00ecf_d44b3207",
+      "revId": "be052609c973ef76f4efb8f51165d848695efcac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
