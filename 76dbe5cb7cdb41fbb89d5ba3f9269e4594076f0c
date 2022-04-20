@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1580824f_382dd4a7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-04-20T21:49:19Z",
+      "side": 1,
+      "message": "Hey, so this works and saves one stack, though I\u0027m a bit unhappy on the specific implementation, couple forward references not quite where I like them but I kicked few alternatives around and this is the one I dislike the least. Let me know if you have any better idea.",
+      "revId": "76dbe5cb7cdb41fbb89d5ba3f9269e4594076f0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
