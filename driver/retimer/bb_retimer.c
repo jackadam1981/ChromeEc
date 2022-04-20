@@ -564,7 +564,9 @@ const struct usb_mux_driver bb_usb_retimer = {
 static int console_command_bb_retimer(int argc, char **argv)
 {
 	char rw, *e;
-	int port, reg, data, val = 0;
+	int port;
+	uint8_t reg;
+	uint32_t data, val = 0;
 	int rv = EC_SUCCESS;
 	const struct usb_mux *mux;
 
@@ -592,14 +594,14 @@ static int console_command_bb_retimer(int argc, char **argv)
 		return EC_ERROR_PARAM2;
 
 	/* Get register address */
-	reg = strtoi(argv[3], &e, 0);
-	if (*e || reg < 0)
+	reg = (uint8_t)strtoull(argv[3], &e, 0);
+	if (*e)
 		return EC_ERROR_PARAM3;
 
 	/* Get value to be written */
 	if (rw == 'w') {
-		val = strtoi(argv[4], &e, 0);
-		if (*e || val < 0)
+		val = strtoull(argv[4], &e, 0);
+		if (*e)
 			return EC_ERROR_PARAM4;
 	}
 
@@ -625,6 +627,6 @@ static int console_command_bb_retimer(int argc, char **argv)
 	return rv;
 }
 DECLARE_CONSOLE_COMMAND(bb, console_command_bb_retimer,
-			"<port> <r/w> <reg> | <val>",
+			"<port> <r/w> <reg> | [val]",
 			"Read or write to BB retimer register");
 #endif /* CONFIG_CMD_RETIMER */
