@@ -100,6 +100,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "711fa0ab_5cca30e5",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 448,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-04-20T19:16:00Z",
+      "side": 1,
+      "message": "we can move all macros to chipset specific header and still keep the code in common file",
+      "parentUuid": "e2b13b32_41cff6cf",
+      "range": {
+        "startLine": 434,
+        "startChar": 0,
+        "endLine": 448,
+        "endChar": 32
+      },
+      "revId": "76bbe099198f35d7995e7fbdd54e5b334bfcca24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "13aed1cf_e62f1e30",
