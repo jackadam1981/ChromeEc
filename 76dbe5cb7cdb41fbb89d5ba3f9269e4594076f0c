@@ -16,6 +16,75 @@
       "message": "Hey, so this works and saves one stack, though I\u0027m a bit unhappy on the specific implementation, couple forward references not quite where I like them but I kicked few alternatives around and this is the one I dislike the least. Let me know if you have any better idea.",
       "revId": "76dbe5cb7cdb41fbb89d5ba3f9269e4594076f0c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e06a71f_70fb8f36",
+        "filename": "zephyr/app/ec/main_shim.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-04-20T22:45:49Z",
+      "side": 1,
+      "message": "Switch this to use IS_ENABLED\n```\nif (IS_ENABLED(CONFIG_TASK_HOSTCMD_THREAD_MAIN))\n    ...\nelse if (IS_ENABLED(CONFIG_THREAD_MONITOR))\n    ...\n```",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 44
+      },
+      "revId": "76dbe5cb7cdb41fbb89d5ba3f9269e4594076f0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3403d906_51cb4340",
+        "filename": "zephyr/shim/src/host_command.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-04-20T22:45:49Z",
+      "side": 1,
+      "message": "Why the \"*\"?",
+      "range": {
+        "startLine": 28,
+        "startChar": 36,
+        "endLine": 28,
+        "endChar": 44
+      },
+      "revId": "76dbe5cb7cdb41fbb89d5ba3f9269e4594076f0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9c33b06_f2a7a16d",
+        "filename": "zephyr/shim/src/tasks.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-04-20T22:45:49Z",
+      "side": 1,
+      "message": "Can these be combined? Maybe with a routine that processes an array populated with `EXTRA_TASK_COUNT` items?\n\nIt may not be worth the complication, unless we think there might be other items that we add to the extra tasks.\n\nIf it\u0027s too messy, at least put a comment in shimmed_task_id() indicating that `task_get_current()` should be updated for additions/deletions to the extra tasks.",
+      "range": {
+        "startLine": 115,
+        "startChar": 0,
+        "endLine": 124,
+        "endChar": 0
+      },
+      "revId": "76dbe5cb7cdb41fbb89d5ba3f9269e4594076f0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
