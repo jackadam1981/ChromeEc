@@ -40,6 +40,14 @@ config AP_PWRSEQ_STACK_SIZE
 	  this Kconfig appears before the EC chip specific stack
 	  sizes.
 
+config AP_PWRSEQ_THREAD_PRIORITY
+	int "AP pwrseq thread priority"
+	default -2
+	help
+	  This option sets AP power sequence thread priority, negative
+	  value is higly recommended in order to keep this thread
+	  priority in the cooperative range.
+
 config X86_NON_DSX_PWRSEQ
 	bool
 	default n
