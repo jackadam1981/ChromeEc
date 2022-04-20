@@ -34,6 +34,24 @@
       "parentUuid": "91bd9ec3_600d7796",
       "revId": "1a5b17f5525954da8f58d534ed088a5a8306b8e4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab3a138b_97b3c231",
+        "filename": "zephyr/dts/bindings/usbc/mux/analogix,anx7483.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-04-20T23:42:25Z",
+      "side": 1,
+      "message": "I would be happy for that to change across all of the drivers, but it might be something to do in a follow-up change since these constants are inherited from the legacy code and it seems useful to reduce the footprint of this porting.",
+      "parentUuid": "272b44fc_d5047c59",
+      "revId": "1a5b17f5525954da8f58d534ed088a5a8306b8e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
