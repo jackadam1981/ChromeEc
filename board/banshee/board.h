@@ -18,6 +18,8 @@
 /* Baseboard features */
 #include "baseboard.h"
 
+#define CONFIG_CHIPSET_X86_RSMRST_AFTER_S5
+
 #undef CONFIG_TABLET_MODE
 #undef CONFIG_TABLET_MODE_SWITCH
 #undef CONFIG_GMR_TABLET_MODE
