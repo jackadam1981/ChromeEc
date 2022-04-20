@@ -180,6 +180,15 @@ static void copy_battery_info_string(uint8_t *dst, const uint8_t *src, int len)
 	strncpy(dst + 1, src, len - 1);
 }
 
+__overridable int board_virtual_battery_operation(const uint8_t *batt_cmd_head,
+						  uint8_t *dest,
+						  int read_len,
+						  int write_len)
+{
+	CPRINTS("Unhandled VB reg %x", *batt_cmd_head);
+	return EC_ERROR_INVAL;
+}
+
 int virtual_battery_operation(const uint8_t *batt_cmd_head,
 			      uint8_t *dest,
 			      int read_len,
@@ -411,8 +420,10 @@ int virtual_battery_operation(const uint8_t *batt_cmd_head,
 		memcpy(dest, &val, bounded_read_len);
 		break;
 	default:
-		CPRINTS("Unhandled VB reg %x", *batt_cmd_head);
-		return EC_ERROR_INVAL;
+		return board_virtual_battery_operation(batt_cmd_head,
+						    dest,
+						    read_len,
+						    write_len);
 	}
 	return EC_SUCCESS;
 }
