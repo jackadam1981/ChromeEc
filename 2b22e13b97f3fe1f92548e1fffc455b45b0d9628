@@ -69,6 +69,24 @@
       "parentUuid": "d679ad89_d26330ed",
       "revId": "2b22e13b97f3fe1f92548e1fffc455b45b0d9628",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "18b95456_1f393f86",
+        "filename": "zephyr/projects/nissa/nereid_overlay.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-04-20T21:29:32Z",
+      "side": 1,
+      "message": "Because the drivers in the legacy code still rely in the I2C bus enumeration, we need to the devicetree entries to be associated with the \"named-i2c-port\" instead of the Zephyr I2C bus.\n\nAs Dawid notes, once the driver moves upstream, then the USB-C related chip will be added directly onto the I2C bus, and the USB-C port will just contain phandles to the correct USB-C chip.",
+      "parentUuid": "cda795f3_27fac1ab",
+      "revId": "2b22e13b97f3fe1f92548e1fffc455b45b0d9628",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
