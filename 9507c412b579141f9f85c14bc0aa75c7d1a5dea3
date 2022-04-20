@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3eb2acb0_938dd662",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-04-20T21:24:56Z",
+      "side": 1,
+      "message": "Try deleting CONFIG_ISL9241_SWITCHING_FREQ from the allow list to see if that fixes the firmware-ec-cq failure.",
+      "revId": "9507c412b579141f9f85c14bc0aa75c7d1a5dea3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ba27128_c72c6406",
+        "filename": "zephyr/Kconfig.charger",
+        "patchSetId": 4
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-04-20T21:24:56Z",
+      "side": 1,
+      "message": "frequency",
+      "range": {
+        "startLine": 122,
+        "startChar": 24,
+        "endLine": 122,
+        "endChar": 32
+      },
+      "revId": "9507c412b579141f9f85c14bc0aa75c7d1a5dea3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc51a227_3a560857",
+        "filename": "zephyr/Kconfig.charger",
+        "patchSetId": 4
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-04-20T21:24:56Z",
+      "side": 1,
+      "message": "0 is a valid setting for the switching frequency in the Control1 register.  Can you use -1 here?\n\nYou should also document that the -1 setting selects no-override, switching frequency set by the PROG pin.",
+      "range": {
+        "startLine": 123,
+        "startChar": 9,
+        "endLine": 123,
+        "endChar": 10
+      },
+      "revId": "9507c412b579141f9f85c14bc0aa75c7d1a5dea3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
