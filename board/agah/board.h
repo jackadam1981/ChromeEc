@@ -18,6 +18,7 @@
 /* Baseboard features */
 #include "baseboard.h"
 
+#define CONFIG_CHIPSET_X86_RSMRST_AFTER_S5
 /*
  * This will happen automatically on NPCX9 ES2 and later. Do not remove
  * until we can confirm all earlier chips are out of service.
