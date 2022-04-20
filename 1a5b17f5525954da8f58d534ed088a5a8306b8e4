@@ -16,6 +16,24 @@
       "message": "Is it useful to have an enum of these? The chip is documented to support a selection of addresses but are these symbolic constants any clearer than just writing a numeric address?\n\nIn either case the `_FLAGS` suffix only seems to make this more confusing and could probably be removed here.",
       "revId": "1a5b17f5525954da8f58d534ed088a5a8306b8e4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "272b44fc_d5047c59",
+        "filename": "zephyr/dts/bindings/usbc/mux/analogix,anx7483.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2022-04-20T13:59:57Z",
+      "side": 1,
+      "message": "These defines are used across ec code base. It is similar pattern to e.g. `zephyr/dts/bindings/usbc/pericom,pi3usb9201.yaml` or `zephyr/dts/bindings/usbc/parade,ps8xxx.yaml`. If a numeric address is better approach, than I think it would be better to change all instances at once. This will avoid confusions why one device use different pattern than others.",
+      "parentUuid": "91bd9ec3_600d7796",
+      "revId": "1a5b17f5525954da8f58d534ed088a5a8306b8e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
