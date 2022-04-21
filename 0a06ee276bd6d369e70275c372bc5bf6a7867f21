@@ -16,6 +16,24 @@
       "message": "Nit: Instead of \"NOT_RAW\", could be better to use more meaningful name.",
       "revId": "0a06ee276bd6d369e70275c372bc5bf6a7867f21",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf8ef9cf_e38ad0a3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-04-21T23:26:55Z",
+      "side": 1,
+      "message": "I used the legacy EC names.\nWill check if there was some background on the name they used",
+      "parentUuid": "d9a6ca77_a73856c0",
+      "revId": "0a06ee276bd6d369e70275c372bc5bf6a7867f21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
