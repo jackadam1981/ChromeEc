@@ -195,7 +195,7 @@ static void lpc_generate_sci(void)
 	udelay(65);
 	/* Generate a falling edge */
 	NPCX_HIPMIC(PMC_ACPI) = NPCX_VW_SCI(0);
-	udelay(65);
+	udelay(150);
 	/* Set signal high */
 	NPCX_HIPMIC(PMC_ACPI) = NPCX_VW_SCI(1);
 #else
