@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e34f8795_547d02b6",
+        "filename": "include/peripheral_charger.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2022-04-21T01:13:34Z",
+      "side": 1,
+      "message": "ERROR?",
+      "range": {
+        "startLine": 54,
+        "startChar": 40,
+        "endLine": 54,
+        "endChar": 46
+      },
+      "revId": "e7f7e8c0f8921e7e5757e761736056f692b13106",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e5463aab_4fa9ed23",
+        "filename": "include/peripheral_charger.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2022-04-21T01:13:34Z",
+      "side": 1,
+      "message": "This is only one direction, right? How about using one arrow?",
+      "range": {
+        "startLine": 59,
+        "startChar": 26,
+        "endLine": 59,
+        "endChar": 27
+      },
+      "revId": "e7f7e8c0f8921e7e5757e761736056f692b13106",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
