@@ -22,6 +22,208 @@
       },
       "revId": "5b03d94ebc509544621873bd77bcbc8a1423b423",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01b4f356_be7936a1",
+        "filename": "driver/wpc/cps8100.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-04-21T22:25:47Z",
+      "side": 1,
+      "message": "if nothing uses them outside of this driver,\nit\u0027s better to keep them private to this file.\n\nhopefully, nothing outside this file needs to use these.\n\nwe sometimes put stuff like this in a *_private.h file\nto support unit tests or when the implementation\nsomehow spans multiple files.",
+      "parentUuid": "0fd94ba8_fc6db604",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 60
+      },
+      "revId": "5b03d94ebc509544621873bd77bcbc8a1423b423",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52faf5a9_d9d97138",
+        "filename": "driver/wpc/cps8100.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-04-21T22:25:47Z",
+      "side": 1,
+      "message": "the _t suffix should only be on type typedef.",
+      "range": {
+        "startLine": 58,
+        "startChar": 7,
+        "endLine": 58,
+        "endChar": 22
+      },
+      "revId": "5b03d94ebc509544621873bd77bcbc8a1423b423",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1822ff1f_c91290ef",
+        "filename": "driver/wpc/cps8100.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-04-21T22:25:47Z",
+      "side": 1,
+      "message": "do you need to explicitly include task.h?",
+      "range": {
+        "startLine": 59,
+        "startChar": 1,
+        "endLine": 59,
+        "endChar": 13
+      },
+      "revId": "5b03d94ebc509544621873bd77bcbc8a1423b423",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf3666e6_f97ead83",
+        "filename": "driver/wpc/cps8100.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-04-21T22:25:47Z",
+      "side": 1,
+      "message": "#defines should precede declarations",
+      "range": {
+        "startLine": 66,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 0
+      },
+      "revId": "5b03d94ebc509544621873bd77bcbc8a1423b423",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a22d06dd_d638798a",
+        "filename": "driver/wpc/cps8100.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-04-21T22:25:47Z",
+      "side": 1,
+      "message": "no comma on \"guaranteed\" last element",
+      "range": {
+        "startLine": 106,
+        "startChar": 23,
+        "endLine": 106,
+        "endChar": 24
+      },
+      "revId": "5b03d94ebc509544621873bd77bcbc8a1423b423",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "140a75e2_01b11b2f",
+        "filename": "driver/wpc/cps8100.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-04-21T22:25:47Z",
+      "side": 1,
+      "message": "can u add an enum or #defs for these reg bits?",
+      "range": {
+        "startLine": 152,
+        "startChar": 15,
+        "endLine": 152,
+        "endChar": 16
+      },
+      "revId": "5b03d94ebc509544621873bd77bcbc8a1423b423",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cafd82b0_570a8b5a",
+        "filename": "driver/wpc/cps8100.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-04-21T22:25:47Z",
+      "side": 1,
+      "message": "not sure we really want to call this a password.\nis this more like a write-enable or unlock?\n\nis there a corresponding lock, or does the chip\nauto-lock after access?",
+      "range": {
+        "startLine": 204,
+        "startChar": 11,
+        "endLine": 204,
+        "endChar": 31
+      },
+      "revId": "5b03d94ebc509544621873bd77bcbc8a1423b423",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "878759a0_7d4196ee",
+        "filename": "driver/wpc/cps8100.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-04-21T22:25:47Z",
+      "side": 1,
+      "message": "do you also need to wait for the chip to come\nout of reset and be responsive over I2C?",
+      "revId": "5b03d94ebc509544621873bd77bcbc8a1423b423",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58fd6ced_b1810807",
+        "filename": "zephyr/Kconfig.wireless_charger",
+        "patchSetId": 5
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-04-21T22:25:47Z",
+      "side": 1,
+      "message": "please add a brief description of this device.",
+      "range": {
+        "startLine": 15,
+        "startChar": 7,
+        "endLine": 15,
+        "endChar": 14
+      },
+      "revId": "5b03d94ebc509544621873bd77bcbc8a1423b423",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
