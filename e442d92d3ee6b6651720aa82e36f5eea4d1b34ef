@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "786588a4_c307772c",
+        "filename": "zephyr/projects/herobrine/led_villager.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-04-21T00:33:51Z",
+      "side": 1,
+      "message": "Don\u0027t need it. The name `period-ms` is quite clear.",
+      "range": {
+        "startLine": 29,
+        "startChar": 23,
+        "endLine": 29,
+        "endChar": 34
+      },
+      "revId": "e442d92d3ee6b6651720aa82e36f5eea4d1b34ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
