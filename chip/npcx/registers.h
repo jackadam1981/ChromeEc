@@ -1111,6 +1111,11 @@ enum PM_CHANNEL_T {
 #define NPCX_FLASHCTL               REG32(NPCX_ESPI_BASE_ADDR + 0X38)
 #define NPCX_ESPIERR                REG32(NPCX_ESPI_BASE_ADDR + 0X3C)
 
+#define NPCX_ONLY_ESPI_REG1         REG8(NPCX_ESPI_BASE_ADDR + 0XF0)
+#define NPCX_ONLY_ESPI_REG2         REG8(NPCX_ESPI_BASE_ADDR + 0XF1)
+
+#define NPCX_ONLY_ESPI_REG2_TRANS_END_CONFIG    4
+
 /* eSPI Virtual Wire channel registers */
 #define NPCX_VWEVSM(n)              REG32(NPCX_ESPI_BASE_ADDR + 0x100 + (4*(n)))
 #define NPCX_VWEVMS(n)              REG32(NPCX_ESPI_BASE_ADDR + 0x140 + (4*(n)))
