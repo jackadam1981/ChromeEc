@@ -8,7 +8,8 @@
 #ifndef __CROS_EC_BASEBOARD_H
 #define __CROS_EC_BASEBOARD_H
 
-#define CC_DEFAULT (CC_ALL & ~(CC_MASK(CC_HOSTCMD) | CC_MASK(CC_IPI)))
+/* #define CC_DEFAULT (CC_ALL & ~(CC_MASK(CC_HOSTCMD) | CC_MASK(CC_IPI))) */
+#define CC_DEFAULT (CC_ALL)
 
 #define CONFIG_FLASH_SIZE_BYTES CONFIG_RAM_BASE
 #define CONFIG_LTO
@@ -17,10 +18,10 @@
 #if defined(BOARD_CHERRY_SCP_CORE1) || defined(BOARD_GERALT_SCP_CORE1)
 #undef CONFIG_LTO
 #define SCP_CORE_SN 1
-#define CONFIG_UART_CONSOLE 1
+#define CONFIG_UART_CONSOLE 0
 #else
 #define SCP_CORE_SN 0
-#define CONFIG_UART_CONSOLE 0
+#define CONFIG_UART_CONSOLE 1
 #endif
 
 /* IPI configs */
