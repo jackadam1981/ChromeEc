@@ -46,6 +46,30 @@
       },
       "revId": "2dfa51d6f7350d627d896789ff29667e90414e3c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7205192b_20b8432e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-04-21T20:11:36Z",
+      "side": 1,
+      "message": "compilation error? does buildall work?\n\ni use gitk to get the desired SHAs for revisions to compare, then invoke as:\n\nutil/compare_build.sh -j 33 -b all --ref1 $SHA1 --ref2 $SHA2\n\nin the chroot.\n\ntry \"-b brya\" first for quick results.",
+      "parentUuid": "a21b7353_4d73297d",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 4
+      },
+      "revId": "2dfa51d6f7350d627d896789ff29667e90414e3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
