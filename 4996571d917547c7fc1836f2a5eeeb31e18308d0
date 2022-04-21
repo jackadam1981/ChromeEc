@@ -46,6 +46,30 @@
       },
       "revId": "4996571d917547c7fc1836f2a5eeeb31e18308d0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ee87548_1f6176e5",
+        "filename": "zephyr/subsys/ap_pwrseq/Kconfig",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-04-21T03:12:08Z",
+      "side": 1,
+      "message": "We may want to revisit this priority (should it actually be a cooperative thread?), but that seems like a task for another bug. This seems okay for now, since it\u0027s already a cooperative thread.",
+      "parentUuid": "d7d2b8af_4ed9bf87",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 0
+      },
+      "revId": "4996571d917547c7fc1836f2a5eeeb31e18308d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
