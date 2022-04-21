@@ -191,6 +191,17 @@ static int nct38xx_tcpm_init(int port)
 	return nct38xx_init(port);
 }
 
+static bool nct38xx_get_snk_ctrl(int port)
+{
+	int rv;
+	int pwr_sts;
+
+	rv = tcpc_read(port, TCPC_REG_POWER_STATUS, &pwr_sts);
+
+	return rv == EC_SUCCESS &&
+		pwr_sts & TCPC_REG_POWER_STATUS_SINKING_VBUS;
+}
+
 static int nct38xx_tcpm_set_cc(int port, int pull)
 {
 	/*
@@ -218,7 +229,7 @@ static int nct38xx_tcpm_set_cc(int port, int pull)
 	 */
 	int rv;
 	enum mask_update_action action =
-			pull == TYPEC_CC_OPEN && tcpm_get_snk_ctrl(port) ?
+			pull == TYPEC_CC_OPEN && nct38xx_get_snk_ctrl(port) ?
 				MASK_CLR : MASK_SET;
 
 	rv = tcpc_update8(port,
