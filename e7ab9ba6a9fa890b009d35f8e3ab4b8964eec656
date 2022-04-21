@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9574bcf3_555f4ebb",
+        "filename": "zephyr/projects/intelrvp/mtlrvp/mtlrvpp_npcx/bb_retimer.dts",
+        "patchSetId": 18
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-04-21T18:21:53Z",
+      "side": 1,
+      "message": "nit: rename hb_retimer.dts\n\nif applicable change everything from bb to hb ?",
+      "revId": "e7ab9ba6a9fa890b009d35f8e3ab4b8964eec656",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4565860f_60ac51ca",
+        "filename": "zephyr/projects/intelrvp/mtlrvp/mtlrvpp_npcx/bb_retimer.dts",
+        "patchSetId": 18
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-04-21T18:21:53Z",
+      "side": 1,
+      "message": "Low priority: is it possible to implement it similar to zephyr/projects/intelrvp/adlrvp/ioex.dts to avoid redefining it for other EC vendors?",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 7
+      },
+      "revId": "e7ab9ba6a9fa890b009d35f8e3ab4b8964eec656",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13d33c45_9410ca4b",
+        "filename": "zephyr/projects/intelrvp/mtlrvp/mtlrvpp_npcx/usbc.dts",
+        "patchSetId": 18
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-04-21T18:21:53Z",
+      "side": 1,
+      "message": "nit: use tabs\n\nmove to zephyr/projects/intelrvp/mtlrvp?",
+      "revId": "e7ab9ba6a9fa890b009d35f8e3ab4b8964eec656",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "79b06845_ca80ed58",
+        "filename": "zephyr/projects/intelrvp/mtlrvp/prj.conf",
+        "patchSetId": 18
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-04-21T18:21:53Z",
+      "side": 1,
+      "message": "not needed",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 57
+      },
+      "revId": "e7ab9ba6a9fa890b009d35f8e3ab4b8964eec656",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
