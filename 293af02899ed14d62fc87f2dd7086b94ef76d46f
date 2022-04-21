@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d1c02ec_987820e7",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 6834,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2022-04-21T19:54:30Z",
+      "side": 1,
+      "message": "Thanks for the explanation! will do",
+      "parentUuid": "a9afcd8b_238ba58f",
+      "range": {
+        "startLine": 6834,
+        "startChar": 15,
+        "endLine": 6834,
+        "endChar": 26
+      },
+      "revId": "293af02899ed14d62fc87f2dd7086b94ef76d46f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "156b9cc8_d308c5ab",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-04-21T18:53:23Z",
       "side": 1,
       "message": "Once you add the mapping to config_chip.h, you won\u0027t need this.",
+      "range": {
+        "startLine": 705,
+        "startChar": 0,
+        "endLine": 705,
+        "endChar": 44
+      },
+      "revId": "293af02899ed14d62fc87f2dd7086b94ef76d46f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c361f7d2_19dcf2e0",
+        "filename": "util/config_allowed.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 705,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2022-04-21T19:54:30Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "156b9cc8_d308c5ab",
       "range": {
         "startLine": 705,
         "startChar": 0,
