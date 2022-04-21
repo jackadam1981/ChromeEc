@@ -16,6 +16,24 @@
       "message": "Increasing the pulse width will increase the pre-pulse (\"HIGH\") width too. Maybe this should be a separate define, or just leave \"65\"? Since Intel team was suggesting to remove it at all...",
       "revId": "07b49e15731ccda9041f69d6ab5b128d2da394bc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a28d1470_32b37790",
+        "filename": "chip/npcx/lpc.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2022-04-21T21:21:15Z",
+      "side": 1,
+      "message": "I wanted to keep the fundamental SCI generation logic the same, which is to ensure before the falling edge that the SCI# signal has been deasserted for at least one pulse width",
+      "parentUuid": "aba45fbf_f8b88c80",
+      "revId": "07b49e15731ccda9041f69d6ab5b128d2da394bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
