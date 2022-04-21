@@ -87,6 +87,24 @@
       "parentUuid": "340e2cf1_29f76bce",
       "revId": "a5405fca324ed9efd3be868cb56319a1112a1fa1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a376bfc7_ffce323a",
+        "filename": "zephyr/projects/nissa/nivviks_overlay.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-04-21T04:28:33Z",
+      "side": 1,
+      "message": "So I think that _FOREACH_CHILD order is guaranteed (and we have code that does rely on that), but it is DT_FOREACH_STATUS_OKAY where the order is not guaranteed.\nSee https://docs.zephyrproject.org/3.0.0/reference/devicetree/api.html?highlight\u003ddt_foreach_status_okay#c.DT_FOREACH_STATUS_OKAY\n\nI haven\u0027t found anywhere where it is stated that _FOREACH_CHILD is not iterated in node order (the documentation for DT_FOREACH_CHILD implies the ordering in the example, as compared to DT_FOREACH_STATUS_OKAY documentation which explicitly states the ordering is not guaranteed, and the example shows that).\n\nIt would be good to get a definitive answer on the ordering, because I think if the child ordering is guaranteed, it\u0027s a much better design to use these mux nodes as children on the port node, and then you don\u0027t have to use a phandle array, and the DTS is more natural.",
+      "parentUuid": "fb8c227d_0dd11697",
+      "revId": "a5405fca324ed9efd3be868cb56319a1112a1fa1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
