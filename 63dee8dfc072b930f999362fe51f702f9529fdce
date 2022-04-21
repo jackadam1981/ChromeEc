@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d1d2822_788b3d05",
+        "filename": "board/cr50/ap_state.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2022-04-21T19:03:08Z",
+      "side": 1,
+      "message": "We could check the gpio level here and leave deferred_set_ap_off alone if TPM_RST_L is asserted, but I think that\u0027s riskier than just polling the AP state.",
+      "range": {
+        "startLine": 177,
+        "startChar": 0,
+        "endLine": 177,
+        "endChar": 51
+      },
+      "revId": "63dee8dfc072b930f999362fe51f702f9529fdce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
