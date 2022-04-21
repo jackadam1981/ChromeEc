@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9afcd8b_238ba58f",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 6834,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-04-21T18:53:23Z",
+      "side": 1,
+      "message": "The \"PLATFORM_EC\" tag is used to keep the name spaces between the legacy CONFIG options defined in this file separate from the Kconfig options.\n\nSo define this as `CONFIG_ESPI_DEFAULT_SCI_WIDTH_US` here, and then provide a mapping of the Kconfig `CONFIG_PLATFORM_EC_ESPI_DEFAULT_SCI_WIDTH_US` to legacy `CONFIG_ESPI_DEFAULT_SCI_WIDTH_US` in the file zephyr/shim/include.h",
+      "range": {
+        "startLine": 6834,
+        "startChar": 15,
+        "endLine": 6834,
+        "endChar": 26
+      },
+      "revId": "293af02899ed14d62fc87f2dd7086b94ef76d46f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "156b9cc8_d308c5ab",
+        "filename": "util/config_allowed.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 705,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-04-21T18:53:23Z",
+      "side": 1,
+      "message": "Once you add the mapping to config_chip.h, you won\u0027t need this.",
+      "range": {
+        "startLine": 705,
+        "startChar": 0,
+        "endLine": 705,
+        "endChar": 44
+      },
+      "revId": "293af02899ed14d62fc87f2dd7086b94ef76d46f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
