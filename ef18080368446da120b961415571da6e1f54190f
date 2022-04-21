@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f632cd05_2fa32dd2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-04-21T16:19:41Z",
+      "side": 1,
+      "message": "Thanks Craig for the quick code review!",
+      "revId": "ef18080368446da120b961415571da6e1f54190f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "45cc8e46_aee56610",
@@ -31,6 +48,30 @@
       "writtenOn": "2022-04-21T04:47:07Z",
       "side": 1,
       "message": "We might want to add another (different) printout for when we start a test pattern capture here, too, but up to you.",
+      "range": {
+        "startLine": 267,
+        "startChar": 4,
+        "endLine": 267,
+        "endChar": 37
+      },
+      "revId": "ef18080368446da120b961415571da6e1f54190f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92502d4e_49e9f49f",
+        "filename": "common/fpsensor/fpsensor.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-04-21T16:19:41Z",
+      "side": 1,
+      "message": "Good point! For my understanding, is this normally executed during normal operations?\n\nI see the lines above refer to enroll, but the image is only acquired if `is_test_capture(mode)`.",
+      "parentUuid": "45cc8e46_aee56610",
       "range": {
         "startLine": 267,
         "startChar": 4,
