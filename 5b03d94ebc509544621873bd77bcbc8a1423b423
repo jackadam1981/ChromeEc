@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0fd94ba8_fc6db604",
+        "filename": "driver/wpc/cps8100.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2022-04-21T04:28:24Z",
+      "side": 1,
+      "message": "Do we need to move those #define to a header file eg. cps8100.h?",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 60
+      },
+      "revId": "5b03d94ebc509544621873bd77bcbc8a1423b423",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
