@@ -16,6 +16,24 @@
       "message": "We don\u0027t need mdp.c vdec.c venc.c when build for core 1. These functions will be optimized out using -flto, but it will be better to configure them in build.mk.",
       "revId": "70a8df1133c96067da5b611bcb9ec5cdab78df47",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3c1b299_5ca8792c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1470933
+      },
+      "writtenOn": "2022-04-21T03:17:47Z",
+      "side": 1,
+      "message": "This CL was introduced because a build error on core 0.\nIt is because I didn\u0027t make it right on private-*/build.mk for core 0.\nI fix it and the build error gone without overridable attribute.\n\nI update this CL and it is for build error of core 1.",
+      "parentUuid": "c523a369_4e8fcc41",
+      "revId": "70a8df1133c96067da5b611bcb9ec5cdab78df47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
