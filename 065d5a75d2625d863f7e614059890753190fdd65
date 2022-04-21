@@ -34,6 +34,24 @@
       "parentUuid": "848a78c7_b79a17e2",
       "revId": "065d5a75d2625d863f7e614059890753190fdd65",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b955ec9f_4e107a10",
+        "filename": "zephyr/dts/bindings/usbc/mux/cros-ec,usbc-mux-tcpci.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-04-21T23:37:26Z",
+      "side": 1,
+      "message": "Yes, that sounds fine (I think that\u0027s the same as I suggested about inferring `NOT_TCPC`). The binding should document that behavior though, so readers can understand what omitting the I2C information means.",
+      "parentUuid": "e8877203_ded6ed79",
+      "revId": "065d5a75d2625d863f7e614059890753190fdd65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
