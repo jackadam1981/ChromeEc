@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7984d67_ea1d179d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1384576
+      },
+      "writtenOn": "2022-04-21T11:12:15Z",
+      "side": 1,
+      "message": "AP19B8M is kano battery and just add for early support",
+      "parentUuid": "0e0bbfa6_67351fa5",
+      "range": {
+        "startLine": 11,
+        "startChar": 4,
+        "endLine": 11,
+        "endChar": 8
+      },
+      "revId": "28e461e10061d7ff8d8ecef7fb81fb5a62d0329f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "db0215cb_20ad7455",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-04-20T15:18:28Z",
       "side": 1,
       "message": "none",
+      "range": {
+        "startLine": 12,
+        "startChar": 7,
+        "endLine": 12,
+        "endChar": 11
+      },
+      "revId": "28e461e10061d7ff8d8ecef7fb81fb5a62d0329f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5be64799_86d7c841",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1384576
+      },
+      "writtenOn": "2022-04-21T11:12:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "db0215cb_20ad7455",
       "range": {
         "startLine": 12,
         "startChar": 7,
