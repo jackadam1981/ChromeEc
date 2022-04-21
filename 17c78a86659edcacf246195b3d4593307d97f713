@@ -22,6 +22,30 @@
       },
       "revId": "17c78a86659edcacf246195b3d4593307d97f713",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f8c064d_e6962a0b",
+        "filename": "zephyr/projects/brya/prj.conf",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2022-04-21T21:10:00Z",
+      "side": 1,
+      "message": "Unknown what value MTL will require, Subrata, can you file a bug for MTL?",
+      "parentUuid": "d4481d00_7c19d80b",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 48
+      },
+      "revId": "17c78a86659edcacf246195b3d4593307d97f713",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
