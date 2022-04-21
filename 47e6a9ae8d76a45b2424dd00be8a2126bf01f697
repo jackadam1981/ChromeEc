@@ -52,6 +52,24 @@
       "parentUuid": "9e6aab43_30c27a73",
       "revId": "47e6a9ae8d76a45b2424dd00be8a2126bf01f697",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54a9d740_2af7ed98",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2022-04-21T15:18:05Z",
+      "side": 1,
+      "message": "yes, it should not be an issue in the general case. It looks the problem would happen when someone triggers the recovery mode and uses the C2D2 to flash the ap firmware.\n\nAs Caveh mentioned in https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3583905/1..6/power/intel_x86.c#b576 , this change is in the critical path, but we probably can put this to the baseboard and observe the second wave project status? Thought?",
+      "parentUuid": "0ee1ba13_683ed31c",
+      "revId": "47e6a9ae8d76a45b2424dd00be8a2126bf01f697",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
