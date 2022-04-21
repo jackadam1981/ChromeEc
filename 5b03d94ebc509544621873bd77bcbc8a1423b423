@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "48df829c_cb3fa27e",
+        "filename": "driver/wpc/cps8100.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-04-21T22:45:59Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "01b4f356_be7936a1",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 60
+      },
+      "revId": "5b03d94ebc509544621873bd77bcbc8a1423b423",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "52faf5a9_d9d97138",
@@ -61,6 +85,30 @@
       "writtenOn": "2022-04-21T22:25:47Z",
       "side": 1,
       "message": "the _t suffix should only be on type typedef.",
+      "range": {
+        "startLine": 58,
+        "startChar": 7,
+        "endLine": 58,
+        "endChar": 22
+      },
+      "revId": "5b03d94ebc509544621873bd77bcbc8a1423b423",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d45ec64_eccf8bd3",
+        "filename": "driver/wpc/cps8100.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-04-21T22:45:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "52faf5a9_d9d97138",
       "range": {
         "startLine": 58,
         "startChar": 7,
@@ -94,6 +142,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dbb58246_73c39e90",
+        "filename": "driver/wpc/cps8100.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-04-21T22:45:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1822ff1f_c91290ef",
+      "range": {
+        "startLine": 59,
+        "startChar": 1,
+        "endLine": 59,
+        "endChar": 13
+      },
+      "revId": "5b03d94ebc509544621873bd77bcbc8a1423b423",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bf3666e6_f97ead83",
@@ -107,6 +179,30 @@
       "writtenOn": "2022-04-21T22:25:47Z",
       "side": 1,
       "message": "#defines should precede declarations",
+      "range": {
+        "startLine": 66,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 0
+      },
+      "revId": "5b03d94ebc509544621873bd77bcbc8a1423b423",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bfe5d94d_df500c03",
+        "filename": "driver/wpc/cps8100.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-04-21T22:45:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bf3666e6_f97ead83",
       "range": {
         "startLine": 66,
         "startChar": 0,
@@ -140,6 +236,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "352e723a_ec59c73b",
+        "filename": "driver/wpc/cps8100.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-04-21T22:45:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a22d06dd_d638798a",
+      "range": {
+        "startLine": 106,
+        "startChar": 23,
+        "endLine": 106,
+        "endChar": 24
+      },
+      "revId": "5b03d94ebc509544621873bd77bcbc8a1423b423",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "140a75e2_01b11b2f",
@@ -153,6 +273,30 @@
       "writtenOn": "2022-04-21T22:25:47Z",
       "side": 1,
       "message": "can u add an enum or #defs for these reg bits?",
+      "range": {
+        "startLine": 152,
+        "startChar": 15,
+        "endLine": 152,
+        "endChar": 16
+      },
+      "revId": "5b03d94ebc509544621873bd77bcbc8a1423b423",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "272b5881_c19733db",
+        "filename": "driver/wpc/cps8100.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-04-21T22:45:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "140a75e2_01b11b2f",
       "range": {
         "startLine": 152,
         "startChar": 15,
@@ -188,6 +332,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7ee95ab8_75b99188",
+        "filename": "driver/wpc/cps8100.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-04-21T22:45:59Z",
+      "side": 1,
+      "message": "Done. A question is posted to the bug.",
+      "parentUuid": "cafd82b0_570a8b5a",
+      "range": {
+        "startLine": 204,
+        "startChar": 11,
+        "endLine": 204,
+        "endChar": 31
+      },
+      "revId": "5b03d94ebc509544621873bd77bcbc8a1423b423",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "878759a0_7d4196ee",
         "filename": "driver/wpc/cps8100.c",
         "patchSetId": 5
@@ -199,6 +367,24 @@
       "writtenOn": "2022-04-21T22:25:47Z",
       "side": 1,
       "message": "do you also need to wait for the chip to come\nout of reset and be responsive over I2C?",
+      "revId": "5b03d94ebc509544621873bd77bcbc8a1423b423",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c1b5e27_206220ac",
+        "filename": "driver/wpc/cps8100.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-04-21T22:45:59Z",
+      "side": 1,
+      "message": "It should send an IRQ on reset (and when it\u0027s ready for I2C).",
+      "parentUuid": "878759a0_7d4196ee",
       "revId": "5b03d94ebc509544621873bd77bcbc8a1423b423",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -216,6 +402,30 @@
       "writtenOn": "2022-04-21T22:25:47Z",
       "side": 1,
       "message": "please add a brief description of this device.",
+      "range": {
+        "startLine": 15,
+        "startChar": 7,
+        "endLine": 15,
+        "endChar": 14
+      },
+      "revId": "5b03d94ebc509544621873bd77bcbc8a1423b423",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dee72bcc_9f8fc470",
+        "filename": "zephyr/Kconfig.wireless_charger",
+        "patchSetId": 5
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-04-21T22:45:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "58fd6ced_b1810807",
       "range": {
         "startLine": 15,
         "startChar": 7,
