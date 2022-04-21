@@ -38,6 +38,7 @@ void cache_init(void)
 			write_csr(CSR_MPU_H(i), mpu_entries[i].end_addr);
 			mpu_en |= BIT(i);
 		}
+		ccprintf("(%x %x %x\n", mpu_entries[i].start_addr, mpu_entries[i].end_addr, mpu_entries[i].attribute);
 	}
 
 	/* enable mpu entries */
