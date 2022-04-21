@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "70e85d30_4a4924d5",
+        "filename": "zephyr/drivers/cros_kb_raw/cros_kb_raw_xec.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2022-04-21T21:43:38Z",
+      "side": 1,
+      "message": "done, applied cfg-\u003eirq.",
+      "parentUuid": "0bbdfb16_0a87ce22",
+      "range": {
+        "startLine": 63,
+        "startChar": 13,
+        "endLine": 63,
+        "endChar": 47
+      },
+      "revId": "6d2eb847b6605080bef09205f9ba496f3cf7e34b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cca28c31_37340df3",
@@ -61,6 +85,30 @@
       "writtenOn": "2022-04-18T20:09:24Z",
       "side": 1,
       "message": "Same here: `cfg-\u003eirq`.",
+      "range": {
+        "startLine": 66,
+        "startChar": 14,
+        "endLine": 66,
+        "endChar": 48
+      },
+      "revId": "6d2eb847b6605080bef09205f9ba496f3cf7e34b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ed94b4d_d95aed0f",
+        "filename": "zephyr/drivers/cros_kb_raw/cros_kb_raw_xec.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2022-04-21T21:43:38Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "cca28c31_37340df3",
       "range": {
         "startLine": 66,
         "startChar": 14,
@@ -118,6 +166,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "df9d74ce_0c549d7c",
+        "filename": "zephyr/drivers/cros_kb_raw/cros_kb_raw_xec.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2022-04-21T21:43:38Z",
+      "side": 1,
+      "message": "removed them.",
+      "parentUuid": "d5e853e5_b4fd526b",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 61
+      },
+      "revId": "6d2eb847b6605080bef09205f9ba496f3cf7e34b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "019061a2_6aebf802",
@@ -165,6 +237,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c0563b84_71a8c35c",
+        "filename": "zephyr/drivers/cros_kb_raw/cros_kb_raw_xec.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2022-04-21T21:43:38Z",
+      "side": 1,
+      "message": "done.",
+      "parentUuid": "f13d23a6_98890641",
+      "range": {
+        "startLine": 98,
+        "startChar": 0,
+        "endLine": 98,
+        "endChar": 60
+      },
+      "revId": "6d2eb847b6605080bef09205f9ba496f3cf7e34b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "47d5ae75_ad9a76f0",
@@ -178,6 +274,30 @@
       "writtenOn": "2022-04-18T20:09:24Z",
       "side": 1,
       "message": "Same here, this guard isn\u0027t needed.",
+      "range": {
+        "startLine": 107,
+        "startChar": 0,
+        "endLine": 107,
+        "endChar": 60
+      },
+      "revId": "6d2eb847b6605080bef09205f9ba496f3cf7e34b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "48b16ce0_faa1b8f2",
+        "filename": "zephyr/drivers/cros_kb_raw/cros_kb_raw_xec.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2022-04-21T21:43:38Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "47d5ae75_ad9a76f0",
       "range": {
         "startLine": 107,
         "startChar": 0,
@@ -225,6 +345,30 @@
       "side": 1,
       "message": "This is mchp hardware related, one helper function will be added to simplify code.",
       "parentUuid": "47f91fe8_0559f0cc",
+      "range": {
+        "startLine": 112,
+        "startChar": 0,
+        "endLine": 116,
+        "endChar": 35
+      },
+      "revId": "6d2eb847b6605080bef09205f9ba496f3cf7e34b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1afffea6_07356bf9",
+        "filename": "zephyr/drivers/cros_kb_raw/cros_kb_raw_xec.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2022-04-21T21:43:38Z",
+      "side": 1,
+      "message": "need this source bits clear, can prevent abundant interrupt firing.\nadding kb_raw_xec_clr_src() function to simplify code",
+      "parentUuid": "11ffbfdd_bdba5c18",
       "range": {
         "startLine": 112,
         "startChar": 0,
