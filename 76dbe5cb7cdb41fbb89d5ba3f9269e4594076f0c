@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "53c2bf52_2713cee9",
+        "filename": "zephyr/Kconfig.tasks",
+        "patchSetId": 10
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-04-21T10:39:13Z",
+      "side": 1,
+      "message": "Cool with that.",
+      "parentUuid": "44d6b4d5_bc180d7e",
+      "range": {
+        "startLine": 101,
+        "startChar": 27,
+        "endLine": 101,
+        "endChar": 31
+      },
+      "revId": "76dbe5cb7cdb41fbb89d5ba3f9269e4594076f0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7e06a71f_70fb8f36",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-04-20T22:45:49Z",
       "side": 1,
       "message": "Switch this to use IS_ENABLED\n```\nif (IS_ENABLED(CONFIG_TASK_HOSTCMD_THREAD_MAIN))\n    ...\nelse if (IS_ENABLED(CONFIG_THREAD_MONITOR))\n    ...\n```",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 44
+      },
+      "revId": "76dbe5cb7cdb41fbb89d5ba3f9269e4594076f0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7a10c46_5e74cd6a",
+        "filename": "zephyr/app/ec/main_shim.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-04-21T10:39:13Z",
+      "side": 1,
+      "message": "Cool, tried and was having test problems, had to move the declarations out of `#ifdef CONFIG_PLATFORM_EC_HOSTCMD` as well in zephyr_host_command.h, works fine now. Changed in tasks.c as well.",
+      "parentUuid": "7e06a71f_70fb8f36",
       "range": {
         "startLine": 15,
         "startChar": 0,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f451618b_1f814f2f",
+        "filename": "zephyr/shim/include/zephyr_host_command.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-04-21T10:39:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0ce4b409_8ae01124",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 4
+      },
+      "revId": "76dbe5cb7cdb41fbb89d5ba3f9269e4594076f0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3403d906_51cb4340",
@@ -110,6 +182,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e369275c_f8d94203",
+        "filename": "zephyr/shim/src/host_command.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-04-21T10:39:13Z",
+      "side": 1,
+      "message": "I added it while testing this to have a clear indication of what was running, but yeah thinking about it now it\u0027s just noisy, let\u0027s drop it.",
+      "parentUuid": "3403d906_51cb4340",
+      "range": {
+        "startLine": 28,
+        "startChar": 36,
+        "endLine": 28,
+        "endChar": 44
+      },
+      "revId": "76dbe5cb7cdb41fbb89d5ba3f9269e4594076f0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a9c33b06_f2a7a16d",
@@ -123,6 +219,30 @@
       "writtenOn": "2022-04-20T22:45:49Z",
       "side": 1,
       "message": "Can these be combined? Maybe with a routine that processes an array populated with `EXTRA_TASK_COUNT` items?\n\nIt may not be worth the complication, unless we think there might be other items that we add to the extra tasks.\n\nIf it\u0027s too messy, at least put a comment in shimmed_task_id() indicating that `task_get_current()` should be updated for additions/deletions to the extra tasks.",
+      "range": {
+        "startLine": 115,
+        "startChar": 0,
+        "endLine": 124,
+        "endChar": 0
+      },
+      "revId": "76dbe5cb7cdb41fbb89d5ba3f9269e4594076f0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c5c261c_874a83ac",
+        "filename": "zephyr/shim/src/tasks.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-04-21T10:39:13Z",
+      "side": 1,
+      "message": "I combined the \"if\"s and added the comment, for structuring this I was thinking about moving the `k_tid_t` pointer to `task_ctx_base_data` so that we can cycle through it in the same way as we do it below here, but then we\u0027d still need special cases and a note to manually map those thread ids, so I\u0027ve figured I may as well go this way to keep the diff minimal in this file.\n\nHard to say if we\u0027ll have more of these, on one side we only have these two \"system\" threads for now, but then we are certainly going to have more non shimmed threads showing up (there\u0027s already one: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c;l\u003d479;drc\u003dcc64bd97f25244e7facc3f6bbfb12c7362f9f19c).\n\nI\u0027m thinking long term what we need is a redesign of the task code to use a couple of iterable sections so we can have the details on the specific driver rather than filling tasks.c with quirks. I could work on that on a followup, what do you think?",
+      "parentUuid": "a9c33b06_f2a7a16d",
       "range": {
         "startLine": 115,
         "startChar": 0,
