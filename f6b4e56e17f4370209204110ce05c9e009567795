@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8be40336_adaa1aa6",
+        "filename": "include/config.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 6835,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-04-21T20:43:30Z",
+      "side": 1,
+      "message": "Looking at the next CL, you\u0027re using #undef/#define pairs to override this in the board file.\n\nSo you should move this above `#include \"board.h\"`, and unconditionally set the default.  This better matches the pattern used by other configs.",
+      "range": {
+        "startLine": 6835,
+        "startChar": 0,
+        "endLine": 6835,
+        "endChar": 43
+      },
+      "revId": "f6b4e56e17f4370209204110ce05c9e009567795",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "db32859f_b45fdd9b",
         "filename": "zephyr/Kconfig.espi",
         "patchSetId": 3
