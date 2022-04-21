@@ -14,6 +14,7 @@
 #include "chipset.h"
 #include "common.h"
 #include "cros_board_info.h"
+#include "driver/charger/isl9241.h"
 #include "driver/retimer/pi3hdx1204.h"
 #include "driver/retimer/ps8811.h"
 #include "driver/retimer/ps8818.h"
@@ -532,3 +533,10 @@ void board_set_current_limit(void)
 }
 DECLARE_HOOK(HOOK_BATTERY_SOC_CHANGE, board_set_current_limit,
 	     HOOK_PRIO_INIT_EXTPOWER);
+
+/* Set the DCPROCHOT base on battery over discharging current 5.888A */
+static void set_dc_prochot(void)
+{
+	isl9241_set_dc_prochot(CHARGER_SOLO, 5888);
+}
+DECLARE_HOOK(HOOK_INIT, set_dc_prochot, HOOK_PRIO_DEFAULT);
