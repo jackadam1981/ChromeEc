@@ -14,8 +14,7 @@
 #include "usbc/tcpci.h"
 #include "usbc/utils.h"
 
-#if DT_HAS_COMPAT_STATUS_OKAY(CCGXXF_TCPC_COMPAT) ||                           \
-	DT_HAS_COMPAT_STATUS_OKAY(FUSB302_TCPC_COMPAT) ||                      \
+#if	DT_HAS_COMPAT_STATUS_OKAY(FUSB302_TCPC_COMPAT) ||                      \
 	DT_HAS_COMPAT_STATUS_OKAY(IT8XXX2_TCPC_COMPAT) ||                      \
 	DT_HAS_COMPAT_STATUS_OKAY(PS8XXX_COMPAT) ||                            \
 	DT_HAS_COMPAT_STATUS_OKAY(TCPCI_COMPAT)                                \
@@ -26,8 +25,6 @@
 				(), (const))
 
 MAYBE_CONST struct tcpc_config_t tcpc_config[] = {
-	DT_FOREACH_STATUS_OKAY_VARGS(CCGXXF_TCPC_COMPAT, TCPC_CONFIG,
-				     TCPC_CONFIG_CCGXXF)
 	DT_FOREACH_STATUS_OKAY_VARGS(FUSB302_TCPC_COMPAT, TCPC_CONFIG,
 				     TCPC_CONFIG_FUSB302)
 	DT_FOREACH_STATUS_OKAY_VARGS(IT8XXX2_TCPC_COMPAT, TCPC_CONFIG,
