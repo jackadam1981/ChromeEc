@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db32859f_b45fdd9b",
+        "filename": "zephyr/Kconfig.espi",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-04-21T20:41:23Z",
+      "side": 1,
+      "message": "This needs prompt text - otherwise the user won\u0027t be able to change with menuconfig.\n\n`int \"SCI# signal pulse width\"`",
+      "range": {
+        "startLine": 35,
+        "startChar": 1,
+        "endLine": 35,
+        "endChar": 4
+      },
+      "revId": "f6b4e56e17f4370209204110ce05c9e009567795",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
