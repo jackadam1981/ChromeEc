@@ -22,6 +22,30 @@
       },
       "revId": "2dfa51d6f7350d627d896789ff29667e90414e3c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a21b7353_4d73297d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2022-04-21T19:55:41Z",
+      "side": 1,
+      "message": "All I get is\n`# Failed to make one or more of the refs`\nwith no indication which one...",
+      "parentUuid": "8d227040_080c7625",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 4
+      },
+      "revId": "2dfa51d6f7350d627d896789ff29667e90414e3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
