@@ -16,6 +16,24 @@
       "message": "Can this binding use different behavior from the default around I2C? It\u0027s not clear here that this refers to the port TCPC unless `USB_MUX_FLAG_NOT_TCPC` is set: perhaps make them mutually required so it\u0027s an error to specify I2C information unless `NOT_TCPC` is specified (and if it is, then I2C information is required)? Or even infer `NOT_TCPC` based on I2C information and document that behavior in this binding.\n\nHaving this hold a reference to the TCPC would be nice since there wouldn\u0027t be a magic mapping through the port, but that doesn\u0027t seem possible at the moment since the TCPC doesn\u0027t currently appear in the device tree.",
       "revId": "065d5a75d2625d863f7e614059890753190fdd65",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8877203_ded6ed79",
+        "filename": "zephyr/dts/bindings/usbc/mux/cros-ec,usbc-mux-tcpci.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2022-04-21T10:19:35Z",
+      "side": 1,
+      "message": "I didn\u0027t found possibility to make property required if some other property is present. Only option for that would be failure at compile time e.g. in `USB_MUX_CONFIG_TCPCI_TCPM` macro.\n\nWhat do you think about adding `port` and `i2c-addr-flags` properties as not required and in `USB_MUX_CONFIG_TCPCI_TCPM` setting `USB_MUX_FLAG_NOT_TCPC` if these properties are present?",
+      "parentUuid": "848a78c7_b79a17e2",
+      "revId": "065d5a75d2625d863f7e614059890753190fdd65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
