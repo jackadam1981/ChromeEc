@@ -128,6 +128,30 @@
       },
       "revId": "ef18080368446da120b961415571da6e1f54190f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a4b7bae_38bd70a2",
+        "filename": "common/fpsensor/fpsensor.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-04-21T19:34:47Z",
+      "side": 1,
+      "message": "Thanks Craig for the additional info! I\u0027ll submit this as is since our main goal is to unblock the UX study.\n\nI am working from the office today and don\u0027t have a setup to test this out, but wanted to submit asap since we will have to create a new release and flash the devices for the study.",
+      "parentUuid": "7f321d6a_6560780f",
+      "range": {
+        "startLine": 267,
+        "startChar": 4,
+        "endLine": 267,
+        "endChar": 37
+      },
+      "revId": "ef18080368446da120b961415571da6e1f54190f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
