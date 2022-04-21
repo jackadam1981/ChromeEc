@@ -60,6 +60,15 @@
 #define NPCX_PSL_CFG_PSL_OUT_OD		BIT(1)
 #define CONFIG_HIBERNATE_PSL_OUT_FLAGS	0
 
+/*
+ * Workaound the issue 3.10 in the NPCX99nF errata rev1.2
+ * Enabling an eSPI channel (r.g. Peripheral Channel, Virtual Wire Channel, etc.
+ * ) during an eSPI transaction might (with low probability) cause the eSPI_SIF
+ * module to transition to a wrong state and therefore response with FATAL_ERROR
+ * on an incoming transaction.
+ */
+#define NPCX_EPSI_RESPONSE_FATAL_ERROR_BYPASS
+
 /*****************************************************************************/
 /* Memory mapping */
 

@@ -623,6 +623,13 @@ void espi_init(void)
 {
 	int i;
 
+#ifdef NPCX_EPSI_RESPONSE_FATAL_ERROR_BYPASS
+	/* Enable the access to the NPCX_ONLY_ESPI_REG2 register */
+	NPCX_ONLY_ESPI_REG1 = 0x55;
+	CLEAR_BIT(NPCX_ONLY_ESPI_REG2, NPCX_ONLY_ESPI_REG2_TRANS_END_CONFIG);
+	/* Disable the access to the NPCX_ONLY_ESPI_REG2 register */
+	NPCX_ONLY_ESPI_REG1 = 0x0;
+#endif
 	/* Support all channels */
 	NPCX_ESPICFG |= ESPI_SUPP_CH_ALL;
 
