@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f535bd4a_b08b4014",
+        "filename": "zephyr/Kconfig.charger",
+        "patchSetId": 4
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2022-04-21T08:10:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ba27128_c72c6406",
+      "range": {
+        "startLine": 122,
+        "startChar": 24,
+        "endLine": 122,
+        "endChar": 32
+      },
+      "revId": "9507c412b579141f9f85c14bc0aa75c7d1a5dea3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cc51a227_3a560857",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-04-20T21:24:56Z",
       "side": 1,
       "message": "0 is a valid setting for the switching frequency in the Control1 register.  Can you use -1 here?\n\nYou should also document that the -1 setting selects no-override, switching frequency set by the PROG pin.",
+      "range": {
+        "startLine": 123,
+        "startChar": 9,
+        "endLine": 123,
+        "endChar": 10
+      },
+      "revId": "9507c412b579141f9f85c14bc0aa75c7d1a5dea3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5fed9434_0df676ad",
+        "filename": "zephyr/Kconfig.charger",
+        "patchSetId": 4
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2022-04-21T08:10:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cc51a227_3a560857",
       "range": {
         "startLine": 123,
         "startChar": 9,
