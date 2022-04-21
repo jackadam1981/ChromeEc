@@ -16,6 +16,24 @@
       "message": "Because this change won\u0027t pass compare_build, can you also create a CL to use `ATOMIC_DEFINE` and use the Zephyr atomic functions that are array friendly?",
       "revId": "da3f05fdba9d960a553c40f2cfc33fb06a5e2d22",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee4491b4_ae0d771a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-04-21T08:13:48Z",
+      "side": 1,
+      "message": "i managed to roll most of zephyr atomics into the previous patch\nand pass compare_builds.",
+      "parentUuid": "41be80ec_29aef885",
+      "revId": "da3f05fdba9d960a553c40f2cfc33fb06a5e2d22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
