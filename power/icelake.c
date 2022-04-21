@@ -28,7 +28,7 @@
 #endif
 
 /* The wait time is ~150 msec, allow for safety margin. */
-#define IN_PCH_SLP_SUS_WAIT_TIME_USEC	(250 * MSEC)
+#define IN_PCH_SLP_SUS_WAIT_TIME_USEC	(500 * MSEC)
 
 static int forcing_shutdown;  /* Forced shutdown in progress? */
 
