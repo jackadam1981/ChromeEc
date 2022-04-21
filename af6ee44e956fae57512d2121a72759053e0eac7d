@@ -70,6 +70,30 @@
       },
       "revId": "af6ee44e956fae57512d2121a72759053e0eac7d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2b7c7be_18ffec52",
+        "filename": "chip/npcx/lpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2022-04-21T19:56:40Z",
+      "side": 1,
+      "message": "that\u0027s what https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3600137 is for",
+      "parentUuid": "ce6fc2d5_35ce16cf",
+      "range": {
+        "startLine": 198,
+        "startChar": 8,
+        "endLine": 198,
+        "endChar": 11
+      },
+      "revId": "af6ee44e956fae57512d2121a72759053e0eac7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
