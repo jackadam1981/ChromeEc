@@ -90,7 +90,7 @@ static void board_led_set_battery(void)
 		} else if (chipset_in_state(CHIPSET_STATE_ANY_OFF)) {
 			/* Discharging in S5: off */
 			color = LED_OFF;
-		} else {
+		} else if (chipset_in_state(CHIPSET_STATE_ON)) {
 			/* Discharging in S0: Blue on */
 			color = LED_BLUE;
 		}
