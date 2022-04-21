@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e34912c_b67a86bf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2022-04-21T14:23:35Z",
+      "side": 1,
+      "message": "now that the brya boards are all missing the SPI flash mux, shouldn\u0027t this config be applied to all brya boards?",
+      "revId": "47e6a9ae8d76a45b2424dd00be8a2126bf01f697",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
