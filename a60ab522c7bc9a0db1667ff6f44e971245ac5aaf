@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f97b7e1f_b1a71312",
+        "filename": "driver/tcpm/nct38xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-04-21T20:58:11Z",
+      "side": 0,
+      "message": "Should we just re-configure this function to exist on boards with no PPC, as opposed to maintaining a duplicate function?",
+      "range": {
+        "startLine": 221,
+        "startChar": 28,
+        "endLine": 221,
+        "endChar": 45
+      },
+      "revId": "a60ab522c7bc9a0db1667ff6f44e971245ac5aaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
