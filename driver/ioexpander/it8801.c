@@ -29,14 +29,14 @@ DECLARE_DEFERRED(it8801_ioex_event_handler);
 
 static int it8801_read(int reg, int *data)
 {
-	return i2c_read8(IT8801_KEYBOARD_PWM_I2C_PORT,
-		IT8801_KEYBOARD_PWM_I2C_ADDR_FLAGS, reg, data);
+	return i2c_read8(I2C_PORT_KB_NOT_RAW,
+		KB_NOT_RAW_I2C_ADDR_FLAGS, reg, data);
 }
 
 __maybe_unused static int it8801_write(int reg, int data)
 {
-	return i2c_write8(IT8801_KEYBOARD_PWM_I2C_PORT,
-		IT8801_KEYBOARD_PWM_I2C_ADDR_FLAGS, reg, data);
+	return i2c_write8(I2C_PORT_KB_NOT_RAW,
+		KB_NOT_RAW_I2C_ADDR_FLAGS, reg, data);
 }
 
 struct it8801_vendor_id_t {
@@ -82,8 +82,8 @@ static void it8801_muxed_kbd_gpio_intr_enable(void)
 	 * IOEX init code whichever gets called first.
 	 */
 	if (!intr_enabled) {
-		gpio_clear_pending_interrupt(GPIO_IT8801_SMB_INT);
-		gpio_enable_interrupt(GPIO_IT8801_SMB_INT);
+		gpio_clear_pending_interrupt(GPIO_KB_NOT_RAW_INT);
+		gpio_enable_interrupt(GPIO_KB_NOT_RAW_INT);
 		intr_enabled = true;
 	}
 }
