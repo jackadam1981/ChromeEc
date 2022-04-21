@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "180feb57_9c27b5ec",
+        "filename": "zephyr/projects/nissa/nereid_overlay.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-04-21T00:01:52Z",
+      "side": 1,
+      "message": "Ah, that\u0027s surprising. I\u0027ve commented further on the TCPCI mux binding to see if we can make it less surprising.",
+      "parentUuid": "e2e48ba2_a0d97111",
+      "revId": "a5405fca324ed9efd3be868cb56319a1112a1fa1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "340e2cf1_29f76bce",
