@@ -120,6 +120,9 @@
 #define CONFIG_CMD_AP_RESET_LOG
 #define CONFIG_HOSTCMD_AP_RESET
 
+/* ADL has new lower-power features that require extra-wide SCI pulses. */
+#define CONFIG_PLATFORM_EC_ESPI_DEFAULT_SCI_WIDTH_US 150
+
 /* Buttons / Switches */
 #define CONFIG_VOLUME_BUTTONS
 #define CONFIG_SWITCH
