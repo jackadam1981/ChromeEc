@@ -9,6 +9,7 @@
 
 	usb_c0_bb_retimer: jhl8040r@56 {
 		compatible = "intel,jhl8040r";
+		port = <&typec_0>;
 		reg = <0x56>;
 		label = "USB_C0_BB_RETIMER";
 		reset-pin = <&usb_c0_bb_retimer_rst>;
@@ -21,6 +22,7 @@
 
 	usb_c1_bb_retimer: jhl8040r@57 {
 		compatible = "intel,jhl8040r";
+		port = <&typec_1>;
 		reg = <0x57>;
 		label = "USB_C1_BB_RETIMER";
 		reset-pin = <&usb_c1_bb_retimer_rst>;
@@ -33,6 +35,7 @@
 
 	usb_c2_bb_retimer: jhl8040r@58 {
 		compatible = "intel,jhl8040r";
+		port = <&typec_2>;
 		reg = <0x58>;
 		label = "USB_C2_BB_RETIMER";
 		reset-pin = <&usb_c2_bb_retimer_rst>;
@@ -45,6 +48,7 @@
 
 	usb_c3_bb_retimer: jhl8040r@59 {
 		compatible = "intel,jhl8040r";
+		port = <&typec_3>;
 		reg = <0x59>;
 		label = "USB_C3_BB_RETIMER";
 		reset-pin = <&usb_c3_bb_retimer_rst>;

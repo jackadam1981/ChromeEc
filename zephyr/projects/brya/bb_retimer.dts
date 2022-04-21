@@ -9,6 +9,7 @@
 
 	usb_c0_bb_retimer: jhl8040r@56 {
 		compatible = "intel,jhl8040r";
+		port = <&retimer0_2>;
 		reg = <0x56>;
 		label = "USB_C0_BB_RETIMER";
 		int-pin = <&usb_c0_rt_int_odl>;
@@ -16,6 +17,7 @@
 	};
 	usb_c2_bb_retimer: jhl8040r@57 {
 		compatible = "intel,jhl8040r";
+		port = <&retimer0_2>;
 		reg = <0x57>;
 		label = "USB_C2_BB_RETIMER";
 		int-pin = <&usb_c2_rt_int_odl>;
