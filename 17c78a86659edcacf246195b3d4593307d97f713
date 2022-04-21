@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4481d00_7c19d80b",
+        "filename": "zephyr/projects/brya/prj.conf",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-04-21T20:46:12Z",
+      "side": 1,
+      "message": "Also add this to the intelrvp projects for Zephyr.  Do you know if MTL has the same requirement?\n\nIf so, add to https://chromium.googlesource.com/chromiumos/platform/ec/+/dce9c964/zephyr/projects/intelrvp/prj.conf#\n\nOtherwise add to the ADL specific config:\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/dce9c964/zephyr/projects/intelrvp/adlrvp/prj.conf#",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 48
+      },
+      "revId": "17c78a86659edcacf246195b3d4593307d97f713",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
