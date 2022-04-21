@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f13bf364_5b7de76a",
+        "filename": "include/config.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 6835,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2022-04-21T21:09:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8be40336_adaa1aa6",
+      "range": {
+        "startLine": 6835,
+        "startChar": 0,
+        "endLine": 6835,
+        "endChar": 43
+      },
+      "revId": "f6b4e56e17f4370209204110ce05c9e009567795",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "db32859f_b45fdd9b",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-04-21T20:41:23Z",
       "side": 1,
       "message": "This needs prompt text - otherwise the user won\u0027t be able to change with menuconfig.\n\n`int \"SCI# signal pulse width\"`",
+      "range": {
+        "startLine": 35,
+        "startChar": 1,
+        "endLine": 35,
+        "endChar": 4
+      },
+      "revId": "f6b4e56e17f4370209204110ce05c9e009567795",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7e41108_3e94235b",
+        "filename": "zephyr/Kconfig.espi",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2022-04-21T21:09:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "db32859f_b45fdd9b",
       "range": {
         "startLine": 35,
         "startChar": 1,
