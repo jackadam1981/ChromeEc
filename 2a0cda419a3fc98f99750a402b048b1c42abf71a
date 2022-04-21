@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "526662db_259ce2ec",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-04-21T08:11:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a4fd69a_4151ef51",
+      "range": {
+        "startLine": 75,
+        "startChar": 8,
+        "endLine": 75,
+        "endChar": 12
+      },
+      "revId": "2a0cda419a3fc98f99750a402b048b1c42abf71a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3ceb0265_bf75cf6a",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-04-20T21:53:02Z",
       "side": 1,
       "message": "Can you use `ATOMIC_MASK`?",
+      "range": {
+        "startLine": 76,
+        "startChar": 8,
+        "endLine": 76,
+        "endChar": 12
+      },
+      "revId": "2a0cda419a3fc98f99750a402b048b1c42abf71a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "34982a4f_e0b706bd",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-04-21T08:11:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3ceb0265_bf75cf6a",
       "range": {
         "startLine": 76,
         "startChar": 8,

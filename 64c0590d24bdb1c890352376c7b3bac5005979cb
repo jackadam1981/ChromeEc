@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ce9ed2c_4a1ab156",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-04-21T08:11:20Z",
+      "side": 1,
+      "message": "this strangeness is required to get compare_builds to pass.",
+      "range": {
+        "startLine": 79,
+        "startChar": 47,
+        "endLine": 79,
+        "endChar": 68
+      },
+      "revId": "64c0590d24bdb1c890352376c7b3bac5005979cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
