@@ -123,6 +123,7 @@ BUILD_ASSERT(ARRAY_SIZE(ppc_chips) == USBC_PORT_COUNT);
 
 unsigned int ppc_cnt = ARRAY_SIZE(ppc_chips);
 
+#ifndef CONFIG_ZEPHYR
 /* USBC mux configuration - Alder Lake includes internal mux */
 static const struct usb_mux usbc0_tcss_usb_mux = {
 	.usb_port = USBC_PORT_C0,
@@ -173,7 +174,6 @@ const struct usb_mux usb_muxes[] = {
 };
 BUILD_ASSERT(ARRAY_SIZE(usb_muxes) == USBC_PORT_COUNT);
 
-#ifndef CONFIG_ZEPHYR
 /* BC1.2 charger detect configuration */
 const struct pi3usb9201_config_t pi3usb9201_bc12_chips[] = {
 	[USBC_PORT_C0] = {

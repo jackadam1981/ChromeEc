@@ -27,6 +27,12 @@
 				status = "okay";
 				port = <&i2c_charger>;
 			};
+			usb-muxes = <&usb_c0_bb_retimer &virtual_mux_c0>;
+		};
+		port0-muxes {
+			virtual_mux_c0: virtual-mux-c0 {
+				compatible = "cros-ec,usbc-mux-virtual";
+			};
 		};
 
 		port1@1 {
@@ -38,6 +44,16 @@
 				irq = <&int_usb_c1_bc12>;
 				port = <&c1_bc12>;
 				i2c-addr-flags = "PI3USB9201_I2C_ADDR_3_FLAGS";
+			};
+			usb-muxes = <&virtual_mux_c1 &tcpci_mux_c1>;
+		};
+		port1-muxes {
+			tcpci_mux_c1: tcpci-mux-c1 {
+				compatible = "cros-ec,usbc-mux-tcpci";
+				hpd-update = "ps8xxx_tcpc_update_hpd_status";
+			};
+			virtual_mux_c1: virtual-mux-c1 {
+				compatible = "cros-ec,usbc-mux-virtual";
 			};
 		};
 
@@ -54,6 +70,12 @@
 			tcpc {
 				compatible = "nuvoton,nct38xx";
 				gpio-dev = <&nct3808_0_P2>;
+			};
+			usb-muxes = <&usb_c2_bb_retimer &virtual_mux_c2>;
+		};
+		port2-muxes {
+			virtual_mux_c2: virtual-mux-c2 {
+				compatible = "cros-ec,usbc-mux-virtual";
 			};
 		};
 	};
