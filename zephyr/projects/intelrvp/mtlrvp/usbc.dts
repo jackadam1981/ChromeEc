@@ -29,6 +29,26 @@
                                 gpio-dev = <&nct38xx_C1>;
                         };
                 };
+
+		port2@2 {
+			compatible = "named-usbc-port";
+			reg = <2>;
+			tcpc {
+				compatible = "cypress,ccgxxf";
+				port = <&typec_aic2>;
+				i2c-addr-flags = "CCGXXF_I2C_ADDR1_FLAGS";
+			};
+		};
+
+		port3@3 {
+			compatible = "named-usbc-port";
+			reg = <3>;
+			tcpc {
+				compatible = "cypress,ccgxxf";
+				port = <&typec_aic2>;
+				i2c-addr-flags = "CCGXXF_I2C_ADDR2_FLAGS";
+			};
+		};
         };
 };
 
