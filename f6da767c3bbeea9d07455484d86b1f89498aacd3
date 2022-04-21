@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5652fa29_7d577ec8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-04-21T23:42:06Z",
+      "side": 1,
+      "message": "nit: Can you remove this? (Not sure what exactly caused it to be generated; if you know we can update the script.)",
+      "range": {
+        "startLine": 16,
+        "startChar": 11,
+        "endLine": 16,
+        "endChar": 36
+      },
+      "revId": "f6da767c3bbeea9d07455484d86b1f89498aacd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4e6d0a61_7ff27eb7",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
