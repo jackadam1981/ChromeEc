@@ -251,6 +251,30 @@
       },
       "revId": "76dbe5cb7cdb41fbb89d5ba3f9269e4594076f0c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b2cfee9_5af21a4c",
+        "filename": "zephyr/shim/src/tasks.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-04-21T11:27:41Z",
+      "side": 1,
+      "message": "Oh, right, can\u0027t use IS_ENABLED here, `/mnt/host/source/src/platform/ec/zephyr/shim/src/tasks.c:119:10: error: use of undeclared identifier \u0027TASK_ID_HOSTCMD\u0027`. :-(",
+      "parentUuid": "4c5c261c_874a83ac",
+      "range": {
+        "startLine": 115,
+        "startChar": 0,
+        "endLine": 124,
+        "endChar": 0
+      },
+      "revId": "76dbe5cb7cdb41fbb89d5ba3f9269e4594076f0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
