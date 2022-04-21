@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d227040_080c7625",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-04-21T19:15:29Z",
+      "side": 1,
+      "message": "you should be able to verify this patch with\nutil/compare_build.sh -b all",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 4
+      },
+      "revId": "2dfa51d6f7350d627d896789ff29667e90414e3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
