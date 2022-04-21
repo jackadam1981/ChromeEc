@@ -53,7 +53,15 @@
 /* USB-C ports */
 enum usbc_port {
 	USBC_PORT_C0 = 0,
+#if defined(HAS_TASK_PD_C1)
 	USBC_PORT_C1,
+#endif
+#if defined(HAS_TASK_PD_C2)
+	USBC_PORT_C2,
+#endif
+#if defined(HAS_TASK_PD_C2)
+	USBC_PORT_C3,
+#endif
 	USBC_PORT_COUNT
 };
 BUILD_ASSERT(USBC_PORT_COUNT == CONFIG_USB_PD_PORT_MAX_COUNT);
@@ -65,11 +73,13 @@ struct ppc_config_t ppc_chips[] = {
 		.i2c_addr_flags = I2C_ADDR_SN5S330_P0,
 		.drv = &sn5s330_drv,
 	},
+#if defined(HAS_TASK_PD_C1)
 	[USBC_PORT_C1] = {
 		.i2c_port = I2C_PORT_TYPEC_AIC_1,
 		.i2c_addr_flags = I2C_ADDR_SN5S330_P1,
 		.drv = &sn5s330_drv,
 	},
+#endif
 };
 BUILD_ASSERT(ARRAY_SIZE(ppc_chips) == CONFIG_USB_PD_PORT_MAX_COUNT);
 unsigned int ppc_cnt = ARRAY_SIZE(ppc_chips);
@@ -119,14 +129,14 @@ struct usb_mux usbc1_tcss_usb_mux = {
 #endif
 #if defined(HAS_TASK_PD_C2)
 struct usb_mux usbc2_tcss_usb_mux = {
-	.usb_port = TYPE_C_PORT_2,
+	.usb_port = USBC_PORT_C2,
 	.driver = &virtual_usb_mux_driver,
 	.hpd_update = &virtual_hpd_update,
 };
 #endif
 #if defined(HAS_TASK_PD_C3)
 struct usb_mux usbc3_tcss_usb_mux = {
-	.usb_port = TYPE_C_PORT_3,
+	.usb_port = USBC_PORT_C3,
 	.driver = &virtual_usb_mux_driver,
 	.hpd_update = &virtual_hpd_update,
 };
