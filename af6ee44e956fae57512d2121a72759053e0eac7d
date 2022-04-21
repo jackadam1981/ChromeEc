@@ -46,6 +46,30 @@
       },
       "revId": "af6ee44e956fae57512d2121a72759053e0eac7d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce6fc2d5_35ce16cf",
+        "filename": "chip/npcx/lpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1532003
+      },
+      "writtenOn": "2022-04-21T19:03:58Z",
+      "side": 1,
+      "message": "\u003e please make this a configurable parameter on mainline.\n\u003e i see this is repeated a lot in chip/*/lpc.c with\n\u003e varying levels of documentation.\n\u003e then, tune to 150 where applicable.\n\n+1 to Caveh\u0027s thought.\n\nI would also suggest to first have appropriate changes to incorporate higher SCI pulse width change then followed by dropping GPIO event and keep only MKBP alone.",
+      "parentUuid": "4a251677_c2ec5729",
+      "range": {
+        "startLine": 198,
+        "startChar": 8,
+        "endLine": 198,
+        "endChar": 11
+      },
+      "revId": "af6ee44e956fae57512d2121a72759053e0eac7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
