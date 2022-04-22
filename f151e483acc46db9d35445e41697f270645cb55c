@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c86205c9_4e1acba3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-04-22T17:43:50Z",
+      "side": 1,
+      "message": "Make sure you don\u0027t have \"ignore all whitespace\" selected in the diff or you won\u0027t see any changes! I only updated the files under `docs/fingerprint` for now because I didn\u0027t want to push a massive set of changes.\n\nI tried to verify that I didn\u0027t inadvertently edit an external reference (that would no longer be correct) but please keep an eye out for that!",
+      "revId": "f151e483acc46db9d35445e41697f270645cb55c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
