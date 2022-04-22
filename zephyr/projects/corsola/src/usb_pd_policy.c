@@ -22,7 +22,12 @@
 #define CPRINTS(format, args...) cprints(CC_USBPD, format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_USBPD, format, ## args)
 
+/* RAM code section */
+//define __pd_ram_code __attribute__((section(".__ram_code")))
+#define __pd_ram_code
+
 static int active_aux_port = -1;
+//int int_num = 0;
 
 int pd_check_vconn_swap(int port)
 {
@@ -50,7 +55,7 @@ static void reset_aux_deferred(void)
 }
 DECLARE_DEFERRED(reset_aux_deferred);
 
-void svdm_set_hpd_gpio(int port, int en)
+__pd_ram_code void svdm_set_hpd_gpio(int port, int en)
 {
 	/*
 	 * HPD is low active, inverse the en.
@@ -127,7 +132,7 @@ __override void svdm_dp_post_config(int port)
 	dp_flags[port] |= DP_FLAGS_DP_ON;
 }
 
-int corsola_is_dp_muxable(int port)
+__pd_ram_code int corsola_is_dp_muxable(int port)
 {
 	int i;
 
@@ -142,7 +147,46 @@ int corsola_is_dp_muxable(int port)
 	return 1;
 }
 
-__override int svdm_dp_attention(int port, uint32_t *payload)
+ __pd_ram_code int hpd_pulse(int argc, char **argv)
+{
+	int port = 1;
+	//timestamp_t ts, tss;
+	unsigned int dticks, dticks_temp;
+	//int int_num_temp = 0;
+	/* Disable global interrupt for critical section */
+	unsigned int key = irq_lock();
+
+	//ts = get_time(); //spend lots time, call timer api
+	dticks_temp = sys_clock_cycle_get_32();
+	//int_num_temp = int_num;
+
+	/* generate IRQ_HPD pulse */
+	svdm_set_hpd_gpio(port, 0);
+	/*
+	 * b/171172053#comment14: since the HPD_DSTREAM_DEBOUNCE_IRQ is
+	 * very short (500us), we can use udelay instead of usleep for
+	 * more stable pulse period.
+	 */
+	udelay(HPD_DSTREAM_DEBOUNCE_IRQ); //arch_busy_wait() = 480~510us
+	svdm_set_hpd_gpio(port, 1);
+
+	//int_num_temp = int_num - int_num_temp;
+	dticks = sys_clock_cycle_get_32();
+	//tss = get_time();
+
+	irq_unlock(key);
+
+	//ccprintf("Time elaspe: %d us, INT %d\n", (dticks - dticks_temp)*30, int_num_temp);
+	ccprintf("Time elaspe: %d us\n", (dticks - dticks_temp)*30); //540, 660~690us
+	//ccprintf("Time elaspe: %.6lld s\n", (tss.val - ts.val)); //580, 672~702us
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(hpd, hpd_pulse,
+			NULL,
+			"HPD pulse");
+
+__override __pd_ram_code int svdm_dp_attention(int port, uint32_t *payload)
 {
 	int lvl = PD_VDO_DPSTS_HPD_LVL(payload[1]);
 	int irq = PD_VDO_DPSTS_HPD_IRQ(payload[1]);
