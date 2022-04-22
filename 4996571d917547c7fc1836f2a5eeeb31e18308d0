@@ -70,6 +70,30 @@
       },
       "revId": "4996571d917547c7fc1836f2a5eeeb31e18308d0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2977f845_5951dbd2",
+        "filename": "zephyr/subsys/ap_pwrseq/Kconfig",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-04-22T16:50:26Z",
+      "side": 1,
+      "message": "I\u0027m good with that. I added a comment on the bug to address switching to a preemptive thread.",
+      "parentUuid": "0ee87548_1f6176e5",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 0
+      },
+      "revId": "4996571d917547c7fc1836f2a5eeeb31e18308d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
