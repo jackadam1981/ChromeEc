@@ -1219,6 +1219,25 @@ static int command_8042_internal(int argc, char **argv)
 	return EC_SUCCESS;
 }
 
+/* Simulates typing on the keyboard */
+static int command_8042_kbw(int argc, char **argv)
+{
+	int i, cnt = 0;
+
+	uint8_t scan_codes[8];
+
+	for (i = 1; i < argc && cnt < ARRAY_SIZE(scan_codes); ++i)
+		scan_codes[cnt++] = strtoi(argv[i], NULL, 0);
+
+	if (cnt)
+		i8042_send_to_host(cnt, scan_codes, CHAN_KBD);
+
+	keyboard_wakeup();
+	task_wake(TASK_ID_KEYPROTO);
+
+	return EC_SUCCESS;
+}
+
 /* Zephyr only provides these as subcommands*/
 #ifndef CONFIG_ZEPHYR
 DECLARE_CONSOLE_COMMAND(typematic, command_typematic,
@@ -1253,6 +1272,8 @@ static int command_8042(int argc, char **argv)
 			return command_keyboard_log(argc - 1, argv + 1);
 		else if (!strcasecmp(argv[1], "kbd"))
 			return command_keyboard(argc - 1, argv + 1);
+		else if (!strcasecmp(argv[1], "kbw"))
+			return command_8042_kbw(argc - 1, argv + 1);
 		else
 			return EC_ERROR_PARAM1;
 	} else {
@@ -1281,7 +1302,7 @@ static int command_8042(int argc, char **argv)
 }
 DECLARE_CONSOLE_COMMAND(8042, command_8042,
 			"[internal | typematic | codeset | ctrlram |"
-			" kblog | kbd]",
+			" kblog | kbd | kbw <scan code...> ]",
 			"Print 8042 state in one place");
 #endif
 
