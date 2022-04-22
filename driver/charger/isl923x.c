@@ -617,6 +617,13 @@ static void isl923x_init(int chgnum)
 		goto init_fail;
 
 	if (IS_ENABLED(CONFIG_CHARGE_RAMP_HW)) {
+		/*
+		 * Disable input regulation until other tasks such as
+		 * USB-C, charger_manager, etc. have had time to gather
+		 * information about the state of the connected charger.
+		 */
+		isl923x_set_hw_ramp(chgnum, 0);
+
 		if (IS_ENABLED(CONFIG_CHARGER_ISL9237)) {
 			if (raw_read16(chgnum, ISL923X_REG_CONTROL0, &reg))
 				goto init_fail;
@@ -649,15 +656,6 @@ static void isl923x_init(int chgnum)
 			if (raw_write16(chgnum, ISL9238_REG_INPUT_VOLTAGE, reg))
 				goto init_fail;
 		}
-	} else {
-		if (raw_read16(chgnum, ISL923X_REG_CONTROL0, &reg))
-			goto init_fail;
-
-		/* Disable voltage regulation loop to disable charge ramp */
-		reg |= ISL923X_C0_DISABLE_VREG;
-
-		if (raw_write16(chgnum, ISL923X_REG_CONTROL0, reg))
-			goto init_fail;
 	}
 
 	if (IS_ENABLED(CONFIG_CHARGER_ISL9238C)) {
