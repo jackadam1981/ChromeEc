@@ -632,6 +632,15 @@ static void isl923x_init(int chgnum)
 				goto init_fail;
 		} else {
 			/*
+			 * Disable input regulation until other tasks such as
+			 * USB-C, charger_manager, etc. have had time to gather
+			 * information about the state of the connected charger.
+			 */
+			if (IS_ENABLED(CONFIG_CHARGE_RAMP_HW)) {
+				isl923x_set_hw_ramp(chgnum, 0);
+			}
+
+			/*
 			 * For the ISL9238, set the input voltage regulation to
 			 * 4.439V.  Note, the voltage is set in 341.3 mV steps.
 			 *
