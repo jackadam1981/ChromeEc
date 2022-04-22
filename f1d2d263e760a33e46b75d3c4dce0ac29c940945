@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee421493_a6e62815",
+        "filename": "driver/charger/isl923x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 625,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-04-22T22:55:43Z",
+      "side": 1,
+      "message": "Move it out of the if clause. The else clause does the same thing and can be removed.",
+      "range": {
+        "startLine": 625,
+        "startChar": 2,
+        "endLine": 625,
+        "endChar": 33
+      },
+      "revId": "f1d2d263e760a33e46b75d3c4dce0ac29c940945",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
