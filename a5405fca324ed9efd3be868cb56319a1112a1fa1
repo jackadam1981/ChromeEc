@@ -123,6 +123,24 @@
       "parentUuid": "a376bfc7_ffce323a",
       "revId": "a5405fca324ed9efd3be868cb56319a1112a1fa1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8e46784_511df578",
+        "filename": "zephyr/projects/nissa/nivviks_overlay.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-04-22T16:03:18Z",
+      "side": 1,
+      "message": "Also regarding the general DTS organization.  This is meant to be an interim solution to use the legacy EC mux/retimer drivers.  There is a separate effort to upstream USB-C as a Zephyr subsystem.  I added a link to the design doc on the bug.",
+      "parentUuid": "84b40207_8d5555b4",
+      "revId": "a5405fca324ed9efd3be868cb56319a1112a1fa1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
