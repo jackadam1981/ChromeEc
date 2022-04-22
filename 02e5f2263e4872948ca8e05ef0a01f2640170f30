@@ -33,6 +33,24 @@
       "message": "Can we have these CL\u0027s rebased and comments addressed",
       "revId": "02e5f2263e4872948ca8e05ef0a01f2640170f30",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "be5f170b_199325da",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1442982
+      },
+      "writtenOn": "2022-04-22T21:15:16Z",
+      "side": 1,
+      "message": "Oh, seems that I made some confusion.\n\nActually this patchset isn\u0027t meant to be merged into main (thus I put WIP). These are simply a cherry-picks from main to the top of currently released servo_v4p1 firmware.\n\nWe don\u0027t have any branch for servo_v4p1 so far, thus I have used main as a target. The whole idea is to take tip of this patchset (create a servo_v4p1 branch?) make a build which will be a release candidate for servo_v4p1 firmware.\n\nOnce again - these patches already _are_ merged to main. This is solely for the rolling out purposes.",
+      "parentUuid": "147016a2_0b2a53a5",
+      "revId": "02e5f2263e4872948ca8e05ef0a01f2640170f30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
