@@ -70,6 +70,30 @@
       },
       "revId": "17c78a86659edcacf246195b3d4593307d97f713",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5874238d_27bd1552",
+        "filename": "zephyr/projects/brya/prj.conf",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1532003
+      },
+      "writtenOn": "2022-04-22T05:56:16Z",
+      "side": 1,
+      "message": "\u003e \u003e Unknown what value MTL will require, Subrata, can you file a bug for MTL?\n\u003e \n\u003e Sure, let me do this. from GPIO pulse width standpoint, Intel has confirmed it\u0027s the same. So, will check for eSPI as well.\n\nhttps://buganizer.corp.google.com/issues/230058857",
+      "parentUuid": "d2cbb4a8_2b6912c8",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 48
+      },
+      "revId": "17c78a86659edcacf246195b3d4593307d97f713",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
