@@ -95,6 +95,13 @@ void dpm_add_non_pd_sink(int port);
  *
  * @param port		USB-C port number
  */
+void dpm_add_pd_sink_mismatch(int port);
+
+/*
+ * Remove this port as a sink, and reallocate maximum current as needed.
+ *
+ * @param port		USB-C port number
+ */
 void dpm_remove_sink(int port);
 
 /*
