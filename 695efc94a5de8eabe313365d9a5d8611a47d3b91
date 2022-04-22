@@ -16,6 +16,52 @@
       "message": "Hi Diana,\ncan you take a look at this CL? It depends on an earlier CL which adds a blank Status response to Get_Status messages. This CL updates how we build the SDB to include temperature information.",
       "revId": "695efc94a5de8eabe313365d9a5d8611a47d3b91",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0fe69a1_e6510004",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 4315,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-04-22T17:15:06Z",
+      "side": 1,
+      "message": "We\u0027ve got a K_TO_C macro you can use here",
+      "range": {
+        "startLine": 4315,
+        "startChar": 11,
+        "endLine": 4315,
+        "endChar": 24
+      },
+      "revId": "695efc94a5de8eabe313365d9a5d8611a47d3b91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d6d209e_822bc1d6",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 4328,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-04-22T17:15:06Z",
+      "side": 1,
+      "message": "Should we use an enum for this?",
+      "range": {
+        "startLine": 4328,
+        "startChar": 33,
+        "endLine": 4328,
+        "endChar": 36
+      },
+      "revId": "695efc94a5de8eabe313365d9a5d8611a47d3b91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
