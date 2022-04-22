@@ -22,6 +22,30 @@
       },
       "revId": "97ba9b744801173a959a2df0f886ae969dc285d9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "db77df81_2eb05ddc",
+        "filename": "zephyr/Kconfig.keyboard",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-04-22T23:29:59Z",
+      "side": 1,
+      "message": "Done\n\nUpdated CL:3600627 to accommodate these changes",
+      "parentUuid": "272f3cd9_ffdeed81",
+      "range": {
+        "startLine": 51,
+        "startChar": 7,
+        "endLine": 51,
+        "endChar": 35
+      },
+      "revId": "97ba9b744801173a959a2df0f886ae969dc285d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
