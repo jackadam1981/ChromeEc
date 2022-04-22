@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7d1f132_eb7d495a",
+        "filename": "zephyr/drivers/cros_kb_raw/cros_kb_raw_xec.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-04-22T19:02:40Z",
+      "side": 1,
+      "message": "This function can never fail and no callers check the return value.  Please set return type to `void`",
+      "range": {
+        "startLine": 51,
+        "startChar": 7,
+        "endLine": 51,
+        "endChar": 10
+      },
+      "revId": "49e3deae09296e91b14a9d3b5afece07ee4b84b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e3a2479_31d83067",
+        "filename": "zephyr/drivers/cros_kb_raw/cros_kb_raw_xec.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-04-22T19:02:40Z",
+      "side": 1,
+      "message": "So this always clears the interrupts on any keypress?  Can you add more details to the comment about why this is needed.\n\nI see the previous patchset was checking `if (inst-\u003eKSI_INT \u003d\u003d 0xff)` (no keys pressed).",
+      "range": {
+        "startLine": 114,
+        "startChar": 0,
+        "endLine": 114,
+        "endChar": 29
+      },
+      "revId": "49e3deae09296e91b14a9d3b5afece07ee4b84b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
