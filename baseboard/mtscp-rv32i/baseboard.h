@@ -18,7 +18,7 @@
 #if defined(CHIP_VARIANT_MT8195_CORE1)
 #define CONFIG_UART_CONSOLE 0
 #else
-#define CONFIG_UART_CONSOLE 2
+#define CONFIG_UART_CONSOLE 1
 #endif
 
 /* IPI configs */
