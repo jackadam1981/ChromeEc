@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "272f3cd9_ffdeed81",
+        "filename": "zephyr/Kconfig.keyboard",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2022-04-22T19:54:15Z",
+      "side": 1,
+      "message": "I know the old CrOS-EC code named this CONFIG_KEYBOARD_NOT_RAW but this seems more appropriately named as CONFIG_PLATFORM_EC_KAYBOARD_DISCRETE rather that NOT_RAW?",
+      "range": {
+        "startLine": 51,
+        "startChar": 7,
+        "endLine": 51,
+        "endChar": 35
+      },
+      "revId": "97ba9b744801173a959a2df0f886ae969dc285d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
