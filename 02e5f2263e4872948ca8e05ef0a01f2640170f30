@@ -69,6 +69,24 @@
       "parentUuid": "be5f170b_199325da",
       "revId": "02e5f2263e4872948ca8e05ef0a01f2640170f30",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0fef48bd_d496dd5b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1442982
+      },
+      "writtenOn": "2022-04-22T22:05:43Z",
+      "side": 1,
+      "message": "I prepared a short design doc and we (actually only pgeorgi@ reacted with some comments) had a discussion about what branching policy should we take for servo_v4p1. Agreement was to cherry-pick changes on top of old known-to-be-working firmware for this USB3 change (which itself is risky).\n\nLater on, when more tests are added for servo firmware QA, we could go with the ToT (fast forward tree). Actually there are no tests conducted (even on developers\u0027 desks) which can confirm that servo_v4p1 works on ToT.\n\nAs you pointed out, previous servo_v4p1 release was performed a year ago (~April 2021). This means that diff between current firmware and ToT is huge. Do we have enough verification tests to quickly gain a confidence that new servo_v4p1 firmware will be reliable?",
+      "parentUuid": "60f35e59_7eb0161a",
+      "revId": "02e5f2263e4872948ca8e05ef0a01f2640170f30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
