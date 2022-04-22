@@ -116,7 +116,7 @@ static void usb_pd_ctrl_msg_before(void *data)
 	/* TODO(b/214401892): Check why need to give time TCPM to spin */
 	k_sleep(K_SECONDS(1));
 
-	tcpci_drp_emul_init(&fixture->partner_emul);
+	tcpci_drp_emul_init(&fixture->partner_emul, PD_REV20);
 
 	fixture->partner_emul.data.sink = fixture->drp_partner_is_sink;
 
