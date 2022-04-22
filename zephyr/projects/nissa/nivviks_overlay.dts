@@ -212,7 +212,7 @@
 
 		fan_0 {
 			label = "FAN_0";
-			pwms = <&pwm5 5 PWM_POLARITY_NORMAL>;
+			pwms = <&pwm5 5 PWM_KHZ(1) PWM_POLARITY_NORMAL>;
 			pwm-frequency = <1000>;
 			rpm_min = <2200>;
 			rpm_start = <2200>;
