@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eeade733_10ad4a6b",
+        "filename": "zephyr/dts/bindings/usbc/mux/cros-ec,usbc-mux-tcpci.yaml",
+        "patchSetId": 4
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-04-22T22:03:56Z",
+      "side": 1,
+      "message": "I think it\u0027s better to describe this property based on the hardware configuration, rather than the effect on the USB_MUX_FLAG_NOT_TCPC flag.\n\nSomething like:\n\n```\nIf the TCPC in your design is used to manage both the power-delivery interface and configure the mux for the USB superspeed signals, this property, and the i2c-addr-flags should be omitted.  The driver uses the I2C configuration specified in the corresponding TCPC node.\n\nExample below:\n\nport0@0 {\n\tcompatible \u003d \"named-usbc-port\";\n\treg \u003d \u003c0\u003e;\n\ttcpc {\n\t\tcompatible \u003d \"parade,ps8xxx\";\n\t\tstatus \u003d \"okay\";\n\t\tport \u003d \u003c\u0026i2c_tcpc0\u003e;\n\t\ti2c-addr-flags \u003d \"PS8XXX_I2C_ADDR1_FLAGS\";\n\t};\n\tusb-muxes \u003d \u003c\u0026usb_mux_0\u003e;\n};\nusb_mux_0: usb-mux-0 {\n\tcompatible \u003d \"parade,usbc-mux-ps8xxx\";\n\t/* I2C configuration provide by TCPC node */\n};\n\nIf the TCPC in your design only configures the USB superspeed signals, for instance when the EC chip contains an embedded TCPC controller, then port and i2c-addr-flags are required.\n\nport0@0 {\n\tcompatible \u003d \"named-usbc-port\";\n\treg \u003d \u003c0\u003e;\n\ttcpc {\n\t\tcompatible \u003d \"ite,it8xxx2-tcpc\";\n\t};\n};\nusb_mux_0: usb-mux-0 {\n\tcompatible \u003d \"parade,usbc-mux-ps8xxx\";\n\tport \u003d \u003ci2c_usbc0\u003e;\n\ti2c-addr-flags \u003d \"PS8XXX_I2C_ADDR1_FLAGS\";\n};\n```\n\nWe could also require the I2C bus/addr infor, and add a bool property that explicitly states when to use the TCPC configuration.  This is probably closer to what an upstream Zephyr driver will look like.  The second example would set USB_MUX_FLAG_NOT_TCPC.\n\n```\nusb_mux_0: usb-mux-0 {\n\tcompatible \u003d \"parade,usbc-mux-ps8xxx\";\n\tport \u003d \u003ci2c_usbc0\u003e;\n\ti2c-addr-flags \u003d \"PS8XXX_I2C_ADDR1_FLAGS\";\n        /* TCPC/mux combination device, communicate through TCPC driver */\n\tuse-tcpc-communication;\n};\nusb_mux_0: usb-mux-0 {\n\tcompatible \u003d \"parade,usbc-mux-ps8xxx\";\n\tport \u003d \u003ci2c_usbc0\u003e;\n\ti2c-addr-flags \u003d \"PS8XXX_I2C_ADDR1_FLAGS\";\n\t/* mux only device - communicate directly to mux */\n};\n```",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 0
+      },
+      "revId": "81c3b04c7c30893798dcd249340bb26dbdc2fb7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
