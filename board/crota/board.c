@@ -10,6 +10,7 @@
 #include "common.h"
 #include "compile_time_macros.h"
 #include "console.h"
+#include "extpower.h"
 #include "gpio.h"
 #include "gpio_signal.h"
 #include "hooks.h"
@@ -33,6 +34,8 @@
 #define CPRINTF(format, args...) cprintf(CC_CHARGER, format, ## args)
 #define CPRINTS(format, args...) cprints(CC_CHARGER, format, ## args)
 
+#define USBA_EVENT_200MS_TICK	TASK_EVENT_CUSTOM_BIT(0)
+
 __override void board_cbi_init(void)
 {
 	config_usb_db_type();
@@ -55,3 +58,35 @@ static void board_chipset_suspend(void)
 	gpio_set_level(GPIO_EC_KB_BL_EN_L, 1);
 }
 DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, board_chipset_suspend, HOOK_PRIO_DEFAULT);
+
+#ifdef CONFIG_USB_PORT_POWER_DUMB_CUSTOM_HOOK
+static void usb_port_startup(void)
+{
+	gpio_set_level(GPIO_EN_PP5000_USBA_R, 1);
+}
+DECLARE_HOOK(HOOK_CHIPSET_STARTUP, usb_port_startup, HOOK_PRIO_DEFAULT);
+
+static void usba_tick(void)
+{
+	if (chipset_in_state(CHIPSET_STATE_ANY_OFF))
+		task_set_event(TASK_ID_USBA, USBA_EVENT_200MS_TICK);
+}
+DECLARE_HOOK(HOOK_TICK, usba_tick, HOOK_PRIO_DEFAULT);
+
+/* Called by hook task every 200 ms */
+void usba_task(void *u)
+{
+	uint32_t evt;
+
+	while (1) {
+		evt = task_wait_event(-1);
+
+		if (evt & USBA_EVENT_200MS_TICK) {
+			if (extpower_is_present())
+				gpio_set_level(GPIO_EN_PP5000_USBA_R, 1);
+			else
+				gpio_set_level(GPIO_EN_PP5000_USBA_R, 0);
+		}
+	}
+}
+#endif  /* CONFIG_USB_PORT_POWER_DUMB_CUSTOM_HOOK */
