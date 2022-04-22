@@ -22,6 +22,9 @@
 #define CPRINTS(format, args...) cprints(CC_USBPD, format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_USBPD, format, ## args)
 
+/* RAM code section */
+#define __pd_ram_code __attribute__((section(".__ram_code")))
+
 static int active_aux_port = -1;
 
 int pd_check_vconn_swap(int port)
@@ -50,7 +53,7 @@ static void reset_aux_deferred(void)
 }
 DECLARE_DEFERRED(reset_aux_deferred);
 
-void svdm_set_hpd_gpio(int port, int en)
+__pd_ram_code void svdm_set_hpd_gpio(int port, int en)
 {
 	/*
 	 * HPD is low active, inverse the en.
@@ -127,7 +130,7 @@ __override void svdm_dp_post_config(int port)
 	dp_flags[port] |= DP_FLAGS_DP_ON;
 }
 
-int corsola_is_dp_muxable(int port)
+__pd_ram_code int corsola_is_dp_muxable(int port)
 {
 	int i;
 
@@ -142,7 +145,7 @@ int corsola_is_dp_muxable(int port)
 	return 1;
 }
 
-__override int svdm_dp_attention(int port, uint32_t *payload)
+__override __pd_ram_code int svdm_dp_attention(int port, uint32_t *payload)
 {
 	int lvl = PD_VDO_DPSTS_HPD_LVL(payload[1]);
 	int irq = PD_VDO_DPSTS_HPD_IRQ(payload[1]);
@@ -150,9 +153,26 @@ __override int svdm_dp_attention(int port, uint32_t *payload)
 	int cur_lvl = svdm_get_hpd_gpio(port);
 #endif /* CONFIG_USB_PD_DP_HPD_GPIO */
 	mux_state_t mux_state;
+#if 1 //fw measure HPD
+	timestamp_t ts, tss;
 
 	dp_status[port] = payload[1];
 
+	ts = get_time();
+
+	/* generate IRQ_HPD pulse */
+	svdm_set_hpd_gpio(port, 0);
+	/*
+	 * b/171172053#comment14: since the HPD_DSTREAM_DEBOUNCE_IRQ is
+	 * very short (500us), we can use udelay instead of usleep for
+	 * more stable pulse period.
+	 */
+	udelay(HPD_DSTREAM_DEBOUNCE_IRQ);
+	svdm_set_hpd_gpio(port, 1);
+
+	tss = get_time();
+	ccprintf("Time elaspe: %.6lld s\n", (tss.val - ts.val));
+#endif
 	if (!corsola_is_dp_muxable(port)) {
 		/* TODO(waihong): Info user? */
 		CPRINTS("p%d: The other port is already muxed.", port);
