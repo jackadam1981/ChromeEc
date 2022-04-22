@@ -34,6 +34,24 @@
       "parentUuid": "7d7ce536_33f52e54",
       "revId": "85852f54d45c50a07cff52546a8e147f52aa5331",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49d0ccc1_d136528e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2022-04-22T04:44:01Z",
+      "side": 1,
+      "message": "The i2c address is decided by the BB firmware. The FW was provide by Intel and customized by us. I have described the detail in the issue.",
+      "parentUuid": "20c1d99c_4d0df226",
+      "revId": "85852f54d45c50a07cff52546a8e147f52aa5331",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
