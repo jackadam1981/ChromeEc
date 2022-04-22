@@ -184,6 +184,8 @@ __maybe_unused void usb_mux_task(void *u)
 	while (1) {
 		int port;
 
+		//ccprints("mux task");
+
 		/* Wait if we had no queue items to service */
 		if (!items_waiting)
 			task_wait_event(-1);
