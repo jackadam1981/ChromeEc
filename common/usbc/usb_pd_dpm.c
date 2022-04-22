@@ -523,6 +523,8 @@ K_MUTEX_DEFINE(max_current_claimed_lock);
 
 /* Ports with PD sink needing > 1.5 A */
 static atomic_t sink_max_pdo_requested;
+/* Ports with PD sink needing > 1.5 A, but request 1.5 A */
+static atomic_t sink_max_pdo_requested_mismatch;
 /* Ports with FRS source needing > 1.5 A */
 static atomic_t source_frs_max_requested;
 /* Ports with non-PD sinks, so current requirements are unknown */
@@ -555,7 +557,7 @@ static void balance_source_ports(void)
 
 	if (in_deferred_context())
 		deferred_waiting = false;
-
+	ccprints("[SC] 1111");
 	/*
 	 * Ignore balance attempts while we're waiting for a downgraded port to
 	 * finish the downgrade.
@@ -564,21 +566,29 @@ static void balance_source_ports(void)
 		return;
 
 	mutex_lock(&max_current_claimed_lock);
-
+	ccprints("[SC] max_current_claimed111=%x", max_current_claimed);
 	/* Remove any ports which no longer require 3.0 A */
 	removed_ports = max_current_claimed & ~(sink_max_pdo_requested |
 						source_frs_max_requested |
-						non_pd_sink_max_requested);
+						non_pd_sink_max_requested |
+						sink_max_pdo_requested_mismatch);
+	ccprints("[SC] removed_ports=%x", removed_ports);
 	max_current_claimed &= ~removed_ports;
-
+	ccprints("[SC] max_current_claimed=%x", max_current_claimed);
+	if (BIT(0) & (uint32_t)sink_max_pdo_requested_mismatch)
+		ccprints("sink_max_pdo_requested_mismatch555=1");
+	if (BIT(1) & (uint32_t)sink_max_pdo_requested_mismatch)
+		ccprints("sink_max_pdo_requested_mismatch666=1");
 	/* Allocate 3.0 A to new PD sink ports that need it */
 	new_ports = sink_max_pdo_requested & ~max_current_claimed;
+	ccprints("[SC] new_ports12121=%x", new_ports);
 	while (new_ports) {
 		int new_max_port = LOWEST_PORT(new_ports);
-
+		ccprints("[SC] 3333");
 		if (count_port_bits(max_current_claimed) <
 						CONFIG_USB_PD_3A_PORTS) {
 			max_current_claimed |= BIT(new_max_port);
+			ccprints("[SC] max_current_claimed11=%x", max_current_claimed);
 			typec_select_src_current_limit_rp(new_max_port,
 							  TYPEC_RP_3A0);
 		} else if (non_pd_sink_max_requested & max_current_claimed) {
@@ -588,6 +598,7 @@ static void balance_source_ports(void)
 			typec_select_src_current_limit_rp(rem_non_pd,
 				typec_get_default_current_limit_rp(rem_non_pd));
 			max_current_claimed &= ~BIT(rem_non_pd);
+			ccprints("[SC] max_current_claimed22=%x", max_current_claimed);
 
 			/* Wait tSinkAdj before using current */
 			deferred_waiting = true;
@@ -600,6 +611,7 @@ static void balance_source_ports(void)
 						 max_current_claimed);
 			pd_dpm_request(rem_frs, DPM_REQUEST_FRS_DET_DISABLE);
 			max_current_claimed &= ~BIT(rem_frs);
+			ccprints("[SC] max_current_claimed33=%x", max_current_claimed);
 
 			/* Give 20 ms for the PD task to process DPM flag */
 			deferred_waiting = true;
@@ -612,7 +624,7 @@ static void balance_source_ports(void)
 		}
 		new_ports &= ~BIT(new_max_port);
 	}
-
+	ccprints("[SC] 2222");
 	/* Allocate 3.0 A to any new FRS ports that need it */
 	new_ports = source_frs_max_requested & ~max_current_claimed;
 	while (new_ports) {
@@ -621,6 +633,7 @@ static void balance_source_ports(void)
 		if (count_port_bits(max_current_claimed) <
 						CONFIG_USB_PD_3A_PORTS) {
 			max_current_claimed |= BIT(new_frs_port);
+			ccprints("[SC] max_current_claimed44=%x", max_current_claimed);
 			pd_dpm_request(new_frs_port,
 				       DPM_REQUEST_FRS_DET_ENABLE);
 		} else if (non_pd_sink_max_requested & max_current_claimed) {
@@ -629,6 +642,7 @@ static void balance_source_ports(void)
 			typec_select_src_current_limit_rp(rem_non_pd,
 				typec_get_default_current_limit_rp(rem_non_pd));
 			max_current_claimed &= ~BIT(rem_non_pd);
+			ccprints("[SC] max_current_claimed55=%x", max_current_claimed);
 
 			/* Wait tSinkAdj before using current */
 			deferred_waiting = true;
@@ -641,7 +655,7 @@ static void balance_source_ports(void)
 		}
 		new_ports &= ~BIT(new_frs_port);
 	}
-
+	ccprints("[SC] 666666");
 	/* Allocate 3.0 A to any non-PD ports which could need it */
 	new_ports = non_pd_sink_max_requested & ~max_current_claimed;
 	while (new_ports) {
@@ -650,8 +664,29 @@ static void balance_source_ports(void)
 		if (count_port_bits(max_current_claimed) <
 						CONFIG_USB_PD_3A_PORTS) {
 			max_current_claimed |= BIT(new_max_port);
+			ccprints("[SC] max_current_claimed66=%x", max_current_claimed);
 			typec_select_src_current_limit_rp(new_max_port,
 							  TYPEC_RP_3A0);
+		} else {
+			/* No lower priority ports to downgrade */
+			goto unlock;
+		}
+		new_ports &= ~BIT(new_max_port);
+	}
+	ccprints("[SC] 77777");
+	/* Allocate 3.0 A to any non-PD ports which could need it */
+	new_ports = sink_max_pdo_requested_mismatch & ~max_current_claimed;
+	ccprints("[SC] new_ports2222=%d", new_ports);
+	ccprints("[SC] max_current_claimed333333=%d", max_current_claimed);
+	while (new_ports) {
+		int new_max_port = LOWEST_PORT(new_ports);
+		ccprints("[SC] 11ggggggg");
+		if (count_port_bits(max_current_claimed) <
+						CONFIG_USB_PD_3A_PORTS) {
+			max_current_claimed |= BIT(new_max_port);
+			ccprints("[SC] max_current_claimed77=%x", max_current_claimed);
+			typec_select_src_current_limit_rp(new_max_port,
+							  TYPEC_RP_1A5);
 		} else {
 			/* No lower priority ports to downgrade */
 			goto unlock;
@@ -681,6 +716,7 @@ void dpm_evaluate_sink_fixed_pdo(int port, uint32_t vsafe5v_pdo)
 			return;
 
 		atomic_or(&sink_max_pdo_requested, BIT(port));
+		ccprints("[SC] sink_max_pdo_requested11111");
 	} else {
 		int frs_current = vsafe5v_pdo & PDO_FIXED_FRS_CURR_MASK;
 
@@ -722,6 +758,22 @@ void dpm_add_non_pd_sink(int port)
 	balance_source_ports();
 }
 
+void dpm_add_pd_sink_mismatch(int port)
+{
+	if (CONFIG_USB_PD_3A_PORTS == 0)
+		return;
+	ccprints("[SC] dpm_add_pd_sink_mismatch, port=%d", port);
+	atomic_or(&sink_max_pdo_requested_mismatch, BIT(port));
+	atomic_clear_bits(&sink_max_pdo_requested, BIT(port));
+
+	if (BIT(port) & (uint32_t)sink_max_pdo_requested_mismatch)
+		ccprints("sink_max_pdo_requested_mismatch22=1");
+	if (BIT(port) & (uint32_t)sink_max_pdo_requested)
+		ccprints("sink_max_pdo_requested22=1");
+
+	balance_source_ports();
+}
+
 void dpm_remove_sink(int port)
 {
 	if (CONFIG_USB_PD_3A_PORTS == 0)
@@ -730,9 +782,10 @@ void dpm_remove_sink(int port)
 	if (!(BIT(port) & (uint32_t)sink_max_pdo_requested) &&
 	    !(BIT(port) & (uint32_t)non_pd_sink_max_requested))
 		return;
-
+	ccprints("[SC] dpm_remove_sink");
 	atomic_clear_bits(&sink_max_pdo_requested, BIT(port));
 	atomic_clear_bits(&non_pd_sink_max_requested, BIT(port));
+	//atomic_clear_bits(&sink_max_pdo_requested_mismatch, BIT(port));
 
 	/* Restore selected default Rp on the port */
 	typec_select_src_current_limit_rp(port,
@@ -767,11 +820,12 @@ __overridable int dpm_get_source_pdo(const uint32_t **src_pdo, const int port)
 	/* Max PDO may not exist on boards which don't offer 3 A */
 #if CONFIG_USB_PD_3A_PORTS > 0
 	if (max_current_claimed & BIT(port)) {
+		ccprints("[SC] ggggggg");
 		*src_pdo = pd_src_pdo_max;
 		return pd_src_pdo_max_cnt;
 	}
 #endif
-
+	ccprints("[SC] aaaaaaaa");
 	*src_pdo = pd_src_pdo;
 	return pd_src_pdo_cnt;
 }
