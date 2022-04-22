@@ -116,8 +116,32 @@ static int pd_task_timeout(int port)
 
 static bool pd_task_loop(int port)
 {
+#if 0 /* test */
+	if (port == 1) {
+		IT8XXX2_GPIO_GPDRA &= ~0x80;
+
+		//gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(ec_ap_dp_hpd_odl), 0); //svdm_set_hpd_gpio(port, 1);
+
+		//ccprintf("p%d wait event\n", port);
+	}
+#endif /* test */
+
 	/* wait for next event/packet or timeout expiration */
 	const uint32_t evt = task_wait_event(pd_task_timeout(port));
+
+#if 0 /* test */
+	if (port == 1) {
+		//volatile int task_waiting = task_get_current(); //result = 7
+		//int fix_id = TASK_ID_PD_C1; //result = 7
+		//ccprintf("task id %d, fix id %d\n", task_waiting, fix_id);
+
+		IT8XXX2_GPIO_GPDRA |= 0x80;
+
+		//gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(ec_ap_dp_hpd_odl), 1); //svdm_set_hpd_gpio(port, 0);
+
+		//ccprintf("p%d get event\n", port);
+	}
+#endif /* test */
 
 	/* Manage expired PD Timers on timeouts */
 	if (evt & TASK_EVENT_TIMER)
@@ -165,6 +189,11 @@ void pd_task(void *u)
 	 */
 	if (port >= board_get_usb_pd_port_count())
 		return;
+
+#if 0 /* test */
+	/* Set GPA7 output mode */
+	IT8XXX2_GPIO_GPCRA7 = 0x40;
+#endif /* test */
 
 #if CONFIG_USB_PD_STARTUP_DELAY_MS > 0
 	msleep(CONFIG_USB_PD_STARTUP_DELAY_MS);
