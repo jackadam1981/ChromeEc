@@ -87,6 +87,24 @@
       "parentUuid": "60f35e59_7eb0161a",
       "revId": "02e5f2263e4872948ca8e05ef0a01f2640170f30",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d68edbd9_40cf40ed",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1347380
+      },
+      "writtenOn": "2022-04-22T23:13:11Z",
+      "side": 1,
+      "message": "Acknowledged. Neither is ideal. It looks like 3 builds need to be tested then. ToT by itself, this patch based on 2021\u0027s last release, and this patch cherrypicked into ToT.\n\nTest coverage of the Servo EC firmware is effectively 0 outside of the release process and it\u0027ll be a multi-quarter effort to get any meaningful coverage. Features like the USB are likely never going to get proper coverage within servo itself and relies heavily on the coverage from the rest of the EC codebase so the best thing that can be done is refine the release process to make bad releases less costly.\n\nThis is a case with both options of a branched release missing thousands of commits is both good and bad. In general though most platforms remain on ToT at least until release but dev boards are never really released like a consumer EC inside of the Chromebooks since their flows are different.",
+      "parentUuid": "0fef48bd_d496dd5b",
+      "revId": "02e5f2263e4872948ca8e05ef0a01f2640170f30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
