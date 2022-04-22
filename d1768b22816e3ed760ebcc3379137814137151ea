@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a8b6869_90d95f24",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-04-22T22:38:51Z",
+      "side": 1,
+      "message": "Hi Diana and Abe,\nfollowing up on your feedback from https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3587509/5, I have split that CL into 2. That CL now only handles the Alert updates. This CL will add the Status updates. I have responded to all your comments here. Can you take a look? Sorry if this causes any confusion.\n\nThanks,\nJameson",
+      "revId": "d1768b22816e3ed760ebcc3379137814137151ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b5345b8_fa1170db",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 797,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-04-22T22:38:51Z",
+      "side": 1,
+      "message": "Responding to comment from crrev/3587509: \"If you expect to populate all this stuff eventually, then leave a TODO with a bug.\"\n\nDone.",
+      "range": {
+        "startLine": 797,
+        "startChar": 1,
+        "endLine": 797,
+        "endChar": 58
+      },
+      "revId": "d1768b22816e3ed760ebcc3379137814137151ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0a022da_abde9921",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 4186,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-04-22T22:38:51Z",
+      "side": 1,
+      "message": "Responding to comment from crrev/3587509: \"Note the spec-state names here.  We don\u0027t need to actually have different states per source/sink role, but noting them in a comment makes the state search-able in our code\"\n\nDone. I changed the comment to use the Status state names from the pd spec.",
+      "range": {
+        "startLine": 4185,
+        "startChar": 0,
+        "endLine": 4186,
+        "endChar": 26
+      },
+      "revId": "d1768b22816e3ed760ebcc3379137814137151ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e497e81_104ccdc3",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 4195,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-04-22T22:38:51Z",
+      "side": 1,
+      "message": "Responding to comment from crrev/3587509: \"Some of the items in here aren\u0027t very related to PD as far as our codebase is concerned. I think it would be nice going forward if the DPM acted as an interface between the PD stack and the rest of the system. (This would fit well with what Sam is currently doing upstream in Zephyr.) So maybe we could have a function like  dpm_get_status_msg  or  dpm_populate_status_msg  that handled all the GPIO polling and sensor checking and whatever else we need to do to get this info.\"\n\nDone. The status data block is built by the dpm_get_status_msg function defined in this CL.",
+      "range": {
+        "startLine": 4195,
+        "startChar": 5,
+        "endLine": 4195,
+        "endChar": 23
+      },
+      "revId": "d1768b22816e3ed760ebcc3379137814137151ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4e8e876_604487f3",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 4205,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-04-22T22:38:51Z",
+      "side": 1,
+      "message": "Responding to comment from crrev/3587509: \"This should go back to source or sink ready as appropriate\"\n\nDone. I have changed it to use pe_set_ready_state.",
+      "range": {
+        "startLine": 4205,
+        "startChar": 2,
+        "endLine": 4205,
+        "endChar": 27
+      },
+      "revId": "d1768b22816e3ed760ebcc3379137814137151ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "82886938_68f77107",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 4209,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-04-22T22:38:51Z",
+      "side": 1,
+      "message": "Responding to comment from crrev/3587509: \"Oddly, the spec doesn\u0027t seem to contemplate this process failing, but I think we should be bailing out if we fail to transmit, similar to most of our other message sending states. (We don\u0027t seem to do this in Give_Battery_Status either. Maybe I\u0027m missing something.)\"\n\nDone. I have conditioned hard reset on a pd timer expiration or a protocol error like I see the other *_run functions in this file do.",
+      "range": {
+        "startLine": 4209,
+        "startChar": 2,
+        "endLine": 4209,
+        "endChar": 26
+      },
+      "revId": "d1768b22816e3ed760ebcc3379137814137151ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
