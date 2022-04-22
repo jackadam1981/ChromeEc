@@ -122,7 +122,11 @@
 #define CONFIG_USB_PD_USB4
 
 /* Retimer */
-#define CONFIG_USBC_RETIMER_FW_UPDATE
+/*
+ * TODO: b/223468686, Disable BBR firmware until the issue
+ * be clarified.
+ */
+#undef CONFIG_USBC_RETIMER_FW_UPDATE
 
 /* Thermal features */
 #define CONFIG_THERMISTOR
