@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef4955eb_0d39ec71",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-04-22T21:27:36Z",
+      "side": 1,
+      "message": "Confirmed only difference is `OWNERS` files:\n\n```\ngit diff 8961e9ff14..HEAD --name-only \n\nOWNERS\nboard/hatch_fp/OWNERS\nboard/nocturne_fp/OWNERS\ncommon/fpsensor/OWNERS\ndocs/fingerprint/OWNERS\ndriver/fingerprint/OWNERS\ntest/OWNERS\nutil/OWNERS\nutil/ec3po/OWNERS\n```",
+      "revId": "6fcfe697803fd4e16e7f9d9c64ac091fa6034efe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
