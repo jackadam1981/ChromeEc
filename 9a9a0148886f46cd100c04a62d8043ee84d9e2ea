@@ -16,6 +16,24 @@
       "message": "What about the existing `kbpress` command?",
       "revId": "9a9a0148886f46cd100c04a62d8043ee84d9e2ea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d8fae76_9778aa51",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2022-04-22T22:55:17Z",
+      "side": 1,
+      "message": "ah, didn\u0027t know about that one. That works with row/col, while this works with scan code sequences. This makes it easy to do key down/key up in the same command. I\u0027m fine abandoning this if you feel it isn\u0027t necessary though.",
+      "parentUuid": "b7fe2bb6_d2513f76",
+      "revId": "9a9a0148886f46cd100c04a62d8043ee84d9e2ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
