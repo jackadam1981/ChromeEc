@@ -121,7 +121,6 @@ struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 	[USBC_PORT_C0] = {
 		.usb_port = USBC_PORT_C0,
 		.driver = &anx7447_usb_mux_driver,
-		.hpd_update = &anx7447_tcpc_update_hpd_status,
 		.next_mux = &usbc0_virtual_mux,
 	},
 	[USBC_PORT_C1] = {
