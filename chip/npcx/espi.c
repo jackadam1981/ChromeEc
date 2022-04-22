@@ -7,6 +7,7 @@
 
 #include "chipset.h"
 #include "console.h"
+<<<<<<< HEAD   (d25bb37aa5eb0f86f66403945bfe0cccb7c3aec1 TCPMV2: Fix Battery Cap's full capacity)
 #include "espi.h"
 #include "hooks.h"
 #include "lpc_chip.h"
@@ -16,6 +17,10 @@
 #include "system_boot_time.h"
 #include "task.h"
 #include "timer.h"
+||||||| BASE   (ad4f6abce2f269e9b3869ecd5c8fbca1eace90fb common/keyboard_8042: Add a method to pause the to_host queu)
+=======
+#include "keyboard_8042.h"
+>>>>>>> CHANGE (3d1c81a84c5855c8560aabb7f9833aaef76f074a chip/npcx/espi: Pause i8042 to_host queue until eSPI is conf)
 #include "uart.h"
 #include "util.h"
 
@@ -460,10 +465,21 @@ void espi_vw_evt_pltrst(void)
 		/* Enable eSPI peripheral channel */
 		SET_BIT(NPCX_ESPICFG, NPCX_ESPICFG_PCHANEN);
 #endif
+<<<<<<< HEAD   (d25bb37aa5eb0f86f66403945bfe0cccb7c3aec1 TCPMV2: Fix Battery Cap's full capacity)
 		update_ap_boot_time(PLTRST_HIGH);
 
+||||||| BASE   (ad4f6abce2f269e9b3869ecd5c8fbca1eace90fb common/keyboard_8042: Add a method to pause the to_host queu)
+=======
+
+		if (IS_ENABLED(HAS_TASK_KEYPROTO))
+			i8042_pause_to_host_queue(false);
+>>>>>>> CHANGE (3d1c81a84c5855c8560aabb7f9833aaef76f074a chip/npcx/espi: Pause i8042 to_host queue until eSPI is conf)
 	} else {
 		/* PLTRST# asserted */
+
+		if (IS_ENABLED(HAS_TASK_KEYPROTO))
+			i8042_pause_to_host_queue(true);
+
 #ifdef CONFIG_CHIPSET_RESET_HOOK
 		hook_call_deferred(&espi_chipset_reset_data, MSEC);
 #endif
@@ -685,6 +701,9 @@ void espi_init(void)
 	/* Configure MIWU for eSPI VW */
 	for (i = 0; i < ARRAY_SIZE(espi_vw_int_list); i++)
 		espi_enable_vw_int(&espi_vw_int_list[i]);
+
+	if (IS_ENABLED(HAS_TASK_KEYPROTO))
+		i8042_pause_to_host_queue(true);
 }
 
 static int command_espi(int argc, const char **argv)
