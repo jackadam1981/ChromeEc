@@ -46,6 +46,30 @@
       },
       "revId": "a60ab522c7bc9a0db1667ff6f44e971245ac5aaf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e1bd38c_361817de",
+        "filename": "driver/tcpm/nct38xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-04-22T15:38:13Z",
+      "side": 0,
+      "message": "I\u0027m suggesting we could consider allowing the function to exist regardless of PPC presence.  We tend to use sink and source control with PPCs, but they exist generally in TCPCI specification independently of PPCs.",
+      "parentUuid": "2b3ce957_9ffa225e",
+      "range": {
+        "startLine": 221,
+        "startChar": 28,
+        "endLine": 221,
+        "endChar": 45
+      },
+      "revId": "a60ab522c7bc9a0db1667ff6f44e971245ac5aaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
