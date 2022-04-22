@@ -11,8 +11,6 @@
 #ifdef HAS_TASK_HOSTCMD
 /* #define CC_DEFAULT (CC_ALL & ~(CC_MASK(CC_HOSTCMD) | CC_MASK(CC_IPI))) */
 #define CC_DEFAULT (CC_ALL)
-#else
-#define CC_DEFAULT (CC_ALL)
 #endif
 
 #define CONFIG_FLASH_SIZE_BYTES CONFIG_RAM_BASE
