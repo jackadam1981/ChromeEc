@@ -272,6 +272,7 @@ enum usb_pe_state {
 	PE_FRS_SNK_SRC_START_AMS,
 	PE_GIVE_BATTERY_CAP,
 	PE_GIVE_BATTERY_STATUS,
+	PE_GIVE_STATUS,
 	PE_SEND_ALERT,
 	PE_SRC_CHUNK_RECEIVED,
 	PE_SNK_CHUNK_RECEIVED,
@@ -394,6 +395,7 @@ __maybe_unused static __const_data const char * const pe_state_names[] = {
 #ifdef CONFIG_USB_PD_EXTENDED_MESSAGES
 	[PE_GIVE_BATTERY_CAP] = "PE_Give_Battery_Cap",
 	[PE_GIVE_BATTERY_STATUS] = "PE_Give_Battery_Status",
+	[PE_GIVE_STATUS] = "PE_Give_Status",
 	[PE_SEND_ALERT] = "PE_Send_Alert",
 #else
 	[PE_SRC_CHUNK_RECEIVED] = "PE_SRC_Chunk_Received",
@@ -446,6 +448,8 @@ GEN_NOT_SUPPORTED(PE_GIVE_BATTERY_CAP);
 #define PE_GIVE_BATTERY_CAP PE_GIVE_BATTERY_CAP_NOT_SUPPORTED
 GEN_NOT_SUPPORTED(PE_GIVE_BATTERY_STATUS);
 #define PE_GIVE_BATTERY_STATUS PE_GIVE_BATTERY_STATUS_NOT_SUPPORTED
+GEN_NOT_SUPPORTED(PE_GIVE_STATUS);
+#define PE_GIVE_STATUS PE_GIVE_STATUS_NOT_SUPPORTED
 GEN_NOT_SUPPORTED(PE_SEND_ALERT);
 #define PE_SEND_ALERT PE_SEND_ALERT_NOT_SUPPORTED
 #endif /* CONFIG_USB_PD_EXTENDED_MESSAGES */
@@ -2678,6 +2682,9 @@ static void pe_src_ready_run(int port)
 					set_state_pe(port,
 							PE_SEND_NOT_SUPPORTED);
 				return;
+			case PD_CTRL_GET_STATUS:
+				set_state_pe(port, PE_GIVE_STATUS);
+				return;
 			/*
 			 * USB PD 3.0 6.8.1:
 			 * Receiving an unexpected message shall be responded
@@ -3499,6 +3506,9 @@ static void pe_snk_ready_run(int port)
 					set_state_pe(port,
 							PE_SEND_NOT_SUPPORTED);
 				return;
+			case PD_CTRL_GET_STATUS:
+				set_state_pe(port, PE_GIVE_STATUS);
+				return;
 			case PD_CTRL_NOT_SUPPORTED:
 				/* Do nothing */
 				break;
@@ -4170,6 +4180,37 @@ static void pe_give_battery_status_run(int port)
 		set_state_pe(port, PE_SRC_READY);
 	}
 }
+
+/**
+ * PE_SRC_Give_Source_Status and
+ * PE_SNK_Give_Sink_Status
+ */
+static void pe_give_status_entry(int port)
+{
+	uint8_t *msg = (uint8_t *)tx_emsg[port].buf;
+	uint32_t *len = &tx_emsg[port].len;
+
+	print_current_state(port);
+
+	if (dpm_get_status_msg(port, msg, len) != EC_SUCCESS)
+		pe_set_ready_state(port);
+
+	send_ext_data_msg(port, TCPCI_MSG_SOP, PD_EXT_STATUS);
+}
+
+static void pe_give_status_run(int port)
+{
+	if (PE_CHK_FLAG(port, PE_FLAGS_TX_COMPLETE)) {
+		PE_CLR_FLAG(port, PE_FLAGS_TX_COMPLETE);
+		pe_set_ready_state(port);
+	} else if (PE_CHK_FLAG(port, PE_FLAGS_PROTOCOL_ERROR) ||
+		   PE_CHK_FLAG(port, PE_FLAGS_MSG_DISCARDED)) {
+		PE_CLR_FLAG(port, PE_FLAGS_PROTOCOL_ERROR);
+		PE_CLR_FLAG(port, PE_FLAGS_MSG_DISCARDED);
+		pe_send_soft_reset(port, TCPCI_MSG_SOP);
+	}
+}
+
 
 /**
  * PE_SRC_Send_Source_Alert and
@@ -7649,6 +7690,10 @@ static __const_data const struct usb_state pe_states[] = {
 	[PE_GIVE_BATTERY_STATUS] = {
 		.entry = pe_give_battery_status_entry,
 		.run   = pe_give_battery_status_run,
+	},
+	[PE_GIVE_STATUS] = {
+		.entry = pe_give_status_entry,
+		.run   = pe_give_status_run,
 	},
 	[PE_SEND_ALERT] = {
 		.entry = pe_send_alert_entry,

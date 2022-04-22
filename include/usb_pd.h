@@ -1190,6 +1190,23 @@ enum pd_ctrl_msg_type {
  */
 #define BATT_CAP_REF(n)  (((n) >> 16) & 0xff)
 
+/* SOP SDB fields for PD Rev 3.0 Section 6.5.2.1 */
+enum pd_sdb_temperature_status {
+	PD_SDB_TEMPERATURE_STATUS_NOT_SUPPORTED    = 0,
+	PD_SDB_TEMPERATURE_STATUS_NORMAL           = 2,
+	PD_SDB_TEMPERATURE_STATUS_WARNING          = 4,
+	PD_SDB_TEMPERATURE_STATUS_OVER_TEMPERATURE = 6,
+};
+
+struct pd_sdb {
+	uint8_t internal_temp : 8;
+	uint8_t present_input : 8;
+	uint8_t present_battery_input : 8;
+	uint8_t event_flags : 8;
+	enum pd_sdb_temperature_status temperature_status : 8;
+	uint8_t power_status : 8;
+};
+
 /* Extended message type for REV 3.0 */
 enum pd_ext_msg_type {
 	/* 0 Reserved */
