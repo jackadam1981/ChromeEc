@@ -16,6 +16,24 @@
       "message": "It might be better to set the target voltage to the nominal voltage if the battery isn\u0027t present or it\u0027s a bad reading rather than skipping the reset altogether.",
       "revId": "c3f6b3ed660a6c8aa875cd84555917aef99537ab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf99ed94_cd273a3b",
+        "filename": "common/ocpc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 670,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2022-04-22T11:17:14Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9fdcba63_949e0129",
+      "revId": "c3f6b3ed660a6c8aa875cd84555917aef99537ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
