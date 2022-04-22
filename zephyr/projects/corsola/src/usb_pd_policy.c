@@ -136,8 +136,24 @@ __override int svdm_dp_attention(int port, uint32_t *payload)
 	int cur_lvl = svdm_get_hpd_gpio(port);
 #endif /* CONFIG_USB_PD_DP_HPD_GPIO */
 	mux_state_t mux_state;
+	timestamp_t ts, tss;
 
 	dp_status[port] = payload[1];
+
+	ts = get_time();
+
+	/* generate IRQ_HPD pulse */
+	svdm_set_hpd_gpio(port, 0);
+	/*
+	 * b/171172053#comment14: since the HPD_DSTREAM_DEBOUNCE_IRQ is
+	 * very short (500us), we can use udelay instead of usleep for
+	 * more stable pulse period.
+	 */
+	udelay(HPD_DSTREAM_DEBOUNCE_IRQ);
+	svdm_set_hpd_gpio(port, 1);
+
+	tss = get_time();
+	ccprintf("Time elaspe: %.6lld s\n", (tss.val - ts.val));
 
 	if (!corsola_is_dp_muxable(port)) {
 		/* TODO(waihong): Info user? */
