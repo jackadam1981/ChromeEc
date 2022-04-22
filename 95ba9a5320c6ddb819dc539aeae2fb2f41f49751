@@ -16,6 +16,29 @@
       "message": "LGTM as long as Wai-Hong\u0027s concerns are addressed.",
       "revId": "95ba9a5320c6ddb819dc539aeae2fb2f41f49751",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c637545_3df673fe",
+        "filename": "board/quackingstick/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-04-22T16:37:57Z",
+      "side": 1,
+      "message": "Change this function too; otherwise, the transition state (S0-\u003eS3) will show BLUE.",
+      "range": {
+        "startLine": 82,
+        "startChar": 6,
+        "endLine": 82,
+        "endChar": 22
+      },
+      "revId": "95ba9a5320c6ddb819dc539aeae2fb2f41f49751",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
