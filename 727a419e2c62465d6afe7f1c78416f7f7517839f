@@ -16,6 +16,23 @@
       "message": "Thanks Tom for helping with the tests! I think we are ready submit the patch 😊",
       "revId": "727a419e2c62465d6afe7f1c78416f7f7517839f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5cd40535_8ab8eb8b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-04-22T21:25:42Z",
+      "side": 1,
+      "message": "Confirmed `OWNERS` files are the only differences:\n\n```\ngit diff 48d14ca09d..HEAD --name-only\n```\n\n```\nOWNERS\nboard/hatch_fp/OWNERS\nboard/nocturne_fp/OWNERS\ncommon/fpsensor/OWNERS\ndocs/fingerprint/OWNERS\ndriver/fingerprint/OWNERS\ntest/OWNERS\nutil/OWNERS\nutil/ec3po/OWNERS\n\n```\n",
+      "revId": "727a419e2c62465d6afe7f1c78416f7f7517839f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
